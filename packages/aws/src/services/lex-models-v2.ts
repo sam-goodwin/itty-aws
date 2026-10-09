@@ -4836,9 +4836,7 @@ export interface GenerationSortBy {
   attribute: GenerationSortByAttribute;
   order: SortOrder;
 }
-export const GenerationSortBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ attribute: GenerationSortByAttribute, order: SortOrder }),
-).annotate({ identifier: "GenerationSortBy" }) as any as S.Schema<GenerationSortBy>;
+export const GenerationSortBy = BotLocaleSortBy as any as S.Schema<GenerationSortBy>;
 export interface ListBotResourceGenerationsRequest {
   botId: string;
   botVersion: string;
@@ -4912,9 +4910,7 @@ export interface BotSortBy {
   attribute: BotSortAttribute;
   order: SortOrder;
 }
-export const BotSortBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ attribute: BotSortAttribute, order: SortOrder }),
-).annotate({ identifier: "BotSortBy" }) as any as S.Schema<BotSortBy>;
+export const BotSortBy = BotLocaleSortBy as any as S.Schema<BotSortBy>;
 export type BotFilterName = "BotName" | "BotType" | (string & {});
 export const BotFilterName = S.String;
 
@@ -4926,11 +4922,9 @@ export interface BotFilter {
   values: string[];
   operator: BotFilterOperator;
 }
-export const BotFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: BotFilterName, values: FilterValues, operator: BotFilterOperator }),
-).annotate({ identifier: "BotFilter" }) as any as S.Schema<BotFilter>;
+export const BotFilter = BotLocaleFilter as any as S.Schema<BotFilter>;
 export type BotFilters = BotFilter[];
-export const BotFilters = /*@__PURE__*/ S.Array(BotFilter);
+export const BotFilters = BotLocaleFilters as any as S.Schema<BotFilters>;
 export interface ListBotsRequest {
   sortBy?: BotSortBy;
   filters?: BotFilter[];
@@ -4981,9 +4975,7 @@ export interface BotVersionReplicaSortBy {
   attribute: BotVersionReplicaSortAttribute;
   order: SortOrder;
 }
-export const BotVersionReplicaSortBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ attribute: BotVersionReplicaSortAttribute, order: SortOrder }),
-).annotate({ identifier: "BotVersionReplicaSortBy" }) as any as S.Schema<BotVersionReplicaSortBy>;
+export const BotVersionReplicaSortBy = BotLocaleSortBy as any as S.Schema<BotVersionReplicaSortBy>;
 export interface ListBotVersionReplicasRequest {
   botId: string;
   replicaRegion: string;
@@ -5060,9 +5052,7 @@ export interface BotVersionSortBy {
   attribute: BotVersionSortAttribute;
   order: SortOrder;
 }
-export const BotVersionSortBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ attribute: BotVersionSortAttribute, order: SortOrder }),
-).annotate({ identifier: "BotVersionSortBy" }) as any as S.Schema<BotVersionSortBy>;
+export const BotVersionSortBy = BotLocaleSortBy as any as S.Schema<BotVersionSortBy>;
 export interface ListBotVersionsRequest {
   botId: string;
   sortBy?: BotVersionSortBy;
@@ -5123,9 +5113,7 @@ export interface BuiltInIntentSortBy {
   attribute: BuiltInIntentSortAttribute;
   order: SortOrder;
 }
-export const BuiltInIntentSortBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ attribute: BuiltInIntentSortAttribute, order: SortOrder }),
-).annotate({ identifier: "BuiltInIntentSortBy" }) as any as S.Schema<BuiltInIntentSortBy>;
+export const BuiltInIntentSortBy = BotLocaleSortBy as any as S.Schema<BuiltInIntentSortBy>;
 export type BuiltInsMaxResults = number;
 export interface ListBuiltInIntentsRequest {
   localeId: string;
@@ -5182,9 +5170,7 @@ export interface BuiltInSlotTypeSortBy {
   attribute: BuiltInSlotTypeSortAttribute;
   order: SortOrder;
 }
-export const BuiltInSlotTypeSortBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ attribute: BuiltInSlotTypeSortAttribute, order: SortOrder }),
-).annotate({ identifier: "BuiltInSlotTypeSortBy" }) as any as S.Schema<BuiltInSlotTypeSortBy>;
+export const BuiltInSlotTypeSortBy = BotLocaleSortBy as any as S.Schema<BuiltInSlotTypeSortBy>;
 export interface ListBuiltInSlotTypesRequest {
   localeId: string;
   sortBy?: BuiltInSlotTypeSortBy;
@@ -5288,9 +5274,7 @@ export interface ExportSortBy {
   attribute: ExportSortAttribute;
   order: SortOrder;
 }
-export const ExportSortBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ attribute: ExportSortAttribute, order: SortOrder }),
-).annotate({ identifier: "ExportSortBy" }) as any as S.Schema<ExportSortBy>;
+export const ExportSortBy = BotLocaleSortBy as any as S.Schema<ExportSortBy>;
 export type ExportFilterName = "ExportResourceType" | (string & {});
 export const ExportFilterName = S.String;
 
@@ -5302,11 +5286,9 @@ export interface ExportFilter {
   values: string[];
   operator: ExportFilterOperator;
 }
-export const ExportFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: ExportFilterName, values: FilterValues, operator: ExportFilterOperator }),
-).annotate({ identifier: "ExportFilter" }) as any as S.Schema<ExportFilter>;
+export const ExportFilter = BotLocaleFilter as any as S.Schema<ExportFilter>;
 export type ExportFilters = ExportFilter[];
-export const ExportFilters = /*@__PURE__*/ S.Array(ExportFilter);
+export const ExportFilters = BotLocaleFilters as any as S.Schema<ExportFilters>;
 export interface ListExportsRequest {
   botId?: string;
   botVersion?: string;
@@ -5370,9 +5352,7 @@ export interface ImportSortBy {
   attribute: ImportSortAttribute;
   order: SortOrder;
 }
-export const ImportSortBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ attribute: ImportSortAttribute, order: SortOrder }),
-).annotate({ identifier: "ImportSortBy" }) as any as S.Schema<ImportSortBy>;
+export const ImportSortBy = BotLocaleSortBy as any as S.Schema<ImportSortBy>;
 export type ImportFilterName = "ImportResourceType" | (string & {});
 export const ImportFilterName = S.String;
 
@@ -5384,11 +5364,9 @@ export interface ImportFilter {
   values: string[];
   operator: ImportFilterOperator;
 }
-export const ImportFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: ImportFilterName, values: FilterValues, operator: ImportFilterOperator }),
-).annotate({ identifier: "ImportFilter" }) as any as S.Schema<ImportFilter>;
+export const ImportFilter = BotLocaleFilter as any as S.Schema<ImportFilter>;
 export type ImportFilters = ImportFilter[];
-export const ImportFilters = /*@__PURE__*/ S.Array(ImportFilter);
+export const ImportFilters = BotLocaleFilters as any as S.Schema<ImportFilters>;
 export interface ListImportsRequest {
   botId?: string;
   botVersion?: string;
@@ -5671,15 +5649,9 @@ export interface AnalyticsPathFilter {
   operator: AnalyticsFilterOperator;
   values: string[];
 }
-export const AnalyticsPathFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: AnalyticsCommonFilterName,
-    operator: AnalyticsFilterOperator,
-    values: AnalyticsFilterValues,
-  }),
-).annotate({ identifier: "AnalyticsPathFilter" }) as any as S.Schema<AnalyticsPathFilter>;
+export const AnalyticsPathFilter = AnalyticsIntentFilter as any as S.Schema<AnalyticsPathFilter>;
 export type AnalyticsPathFilters = AnalyticsPathFilter[];
-export const AnalyticsPathFilters = /*@__PURE__*/ S.Array(AnalyticsPathFilter);
+export const AnalyticsPathFilters = AnalyticsIntentFilters as any as S.Schema<AnalyticsPathFilters>;
 export interface ListIntentPathsRequest {
   botId: string;
   startDateTime: Date;
@@ -5743,9 +5715,7 @@ export interface IntentSortBy {
   attribute: IntentSortAttribute;
   order: SortOrder;
 }
-export const IntentSortBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ attribute: IntentSortAttribute, order: SortOrder }),
-).annotate({ identifier: "IntentSortBy" }) as any as S.Schema<IntentSortBy>;
+export const IntentSortBy = BotLocaleSortBy as any as S.Schema<IntentSortBy>;
 export type IntentFilterName = "IntentName" | (string & {});
 export const IntentFilterName = S.String;
 
@@ -5757,11 +5727,9 @@ export interface IntentFilter {
   values: string[];
   operator: IntentFilterOperator;
 }
-export const IntentFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: IntentFilterName, values: FilterValues, operator: IntentFilterOperator }),
-).annotate({ identifier: "IntentFilter" }) as any as S.Schema<IntentFilter>;
+export const IntentFilter = BotLocaleFilter as any as S.Schema<IntentFilter>;
 export type IntentFilters = IntentFilter[];
-export const IntentFilters = /*@__PURE__*/ S.Array(IntentFilter);
+export const IntentFilters = BotLocaleFilters as any as S.Schema<IntentFilters>;
 export interface ListIntentsRequest {
   botId: string;
   botVersion: string;
@@ -5865,15 +5833,11 @@ export const AnalyticsIntentStageField = S.String;
 export interface AnalyticsIntentStageGroupBySpecification {
   name: AnalyticsIntentStageField;
 }
-export const AnalyticsIntentStageGroupBySpecification = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: AnalyticsIntentStageField }),
-).annotate({
-  identifier: "AnalyticsIntentStageGroupBySpecification",
-}) as any as S.Schema<AnalyticsIntentStageGroupBySpecification>;
+export const AnalyticsIntentStageGroupBySpecification =
+  AnalyticsIntentGroupBySpecification as any as S.Schema<AnalyticsIntentStageGroupBySpecification>;
 export type AnalyticsIntentStageGroupByList = AnalyticsIntentStageGroupBySpecification[];
-export const AnalyticsIntentStageGroupByList = /*@__PURE__*/ S.Array(
-  AnalyticsIntentStageGroupBySpecification,
-);
+export const AnalyticsIntentStageGroupByList =
+  AnalyticsIntentGroupByList as any as S.Schema<AnalyticsIntentStageGroupByList>;
 export type AnalyticsIntentStageFilterName =
   | "BotAliasId"
   | "BotVersion"
@@ -5942,11 +5906,8 @@ export interface AnalyticsIntentStageGroupByKey {
   name?: AnalyticsIntentStageField;
   value?: string;
 }
-export const AnalyticsIntentStageGroupByKey = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.optional(AnalyticsIntentStageField), value: S.optional(S.String) }),
-).annotate({
-  identifier: "AnalyticsIntentStageGroupByKey",
-}) as any as S.Schema<AnalyticsIntentStageGroupByKey>;
+export const AnalyticsIntentStageGroupByKey =
+  AnalyticsIntentGroupByKey as any as S.Schema<AnalyticsIntentStageGroupByKey>;
 export type AnalyticsIntentStageGroupByKeys = AnalyticsIntentStageGroupByKey[];
 export const AnalyticsIntentStageGroupByKeys = /*@__PURE__*/ S.Array(
   AnalyticsIntentStageGroupByKey,
@@ -5956,15 +5917,8 @@ export interface AnalyticsIntentStageMetricResult {
   statistic?: AnalyticsMetricStatistic;
   value?: number;
 }
-export const AnalyticsIntentStageMetricResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(AnalyticsIntentStageMetricName),
-    statistic: S.optional(AnalyticsMetricStatistic),
-    value: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "AnalyticsIntentStageMetricResult",
-}) as any as S.Schema<AnalyticsIntentStageMetricResult>;
+export const AnalyticsIntentStageMetricResult =
+  AnalyticsIntentMetricResult as any as S.Schema<AnalyticsIntentStageMetricResult>;
 export type AnalyticsIntentStageMetricResults = AnalyticsIntentStageMetricResult[];
 export const AnalyticsIntentStageMetricResults = /*@__PURE__*/ S.Array(
   AnalyticsIntentStageMetricResult,
@@ -6099,15 +6053,11 @@ export interface AnalyticsSessionFilter {
   operator: AnalyticsFilterOperator;
   values: string[];
 }
-export const AnalyticsSessionFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: AnalyticsSessionFilterName,
-    operator: AnalyticsFilterOperator,
-    values: AnalyticsFilterValues,
-  }),
-).annotate({ identifier: "AnalyticsSessionFilter" }) as any as S.Schema<AnalyticsSessionFilter>;
+export const AnalyticsSessionFilter =
+  AnalyticsIntentFilter as any as S.Schema<AnalyticsSessionFilter>;
 export type AnalyticsSessionFilters = AnalyticsSessionFilter[];
-export const AnalyticsSessionFilters = /*@__PURE__*/ S.Array(AnalyticsSessionFilter);
+export const AnalyticsSessionFilters =
+  AnalyticsIntentFilters as any as S.Schema<AnalyticsSessionFilters>;
 export interface ListSessionAnalyticsDataRequest {
   botId: string;
   startDateTime: Date;
@@ -6221,30 +6171,22 @@ export interface AnalyticsSessionMetric {
   statistic: AnalyticsMetricStatistic;
   order?: AnalyticsSortOrder;
 }
-export const AnalyticsSessionMetric = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: AnalyticsSessionMetricName,
-    statistic: AnalyticsMetricStatistic,
-    order: S.optional(AnalyticsSortOrder),
-  }),
-).annotate({ identifier: "AnalyticsSessionMetric" }) as any as S.Schema<AnalyticsSessionMetric>;
+export const AnalyticsSessionMetric =
+  AnalyticsIntentMetric as any as S.Schema<AnalyticsSessionMetric>;
 export type AnalyticsSessionMetrics = AnalyticsSessionMetric[];
-export const AnalyticsSessionMetrics = /*@__PURE__*/ S.Array(AnalyticsSessionMetric);
+export const AnalyticsSessionMetrics =
+  AnalyticsIntentMetrics as any as S.Schema<AnalyticsSessionMetrics>;
 export type AnalyticsSessionField = "ConversationEndState" | "LocaleId" | (string & {});
 export const AnalyticsSessionField = S.String;
 
 export interface AnalyticsSessionGroupBySpecification {
   name: AnalyticsSessionField;
 }
-export const AnalyticsSessionGroupBySpecification = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: AnalyticsSessionField }),
-).annotate({
-  identifier: "AnalyticsSessionGroupBySpecification",
-}) as any as S.Schema<AnalyticsSessionGroupBySpecification>;
+export const AnalyticsSessionGroupBySpecification =
+  AnalyticsIntentGroupBySpecification as any as S.Schema<AnalyticsSessionGroupBySpecification>;
 export type AnalyticsSessionGroupByList = AnalyticsSessionGroupBySpecification[];
-export const AnalyticsSessionGroupByList = /*@__PURE__*/ S.Array(
-  AnalyticsSessionGroupBySpecification,
-);
+export const AnalyticsSessionGroupByList =
+  AnalyticsIntentGroupByList as any as S.Schema<AnalyticsSessionGroupByList>;
 export interface ListSessionMetricsRequest {
   botId: string;
   startDateTime: Date;
@@ -6284,57 +6226,38 @@ export interface AnalyticsSessionGroupByKey {
   name?: AnalyticsSessionField;
   value?: string;
 }
-export const AnalyticsSessionGroupByKey = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.optional(AnalyticsSessionField), value: S.optional(S.String) }),
-).annotate({
-  identifier: "AnalyticsSessionGroupByKey",
-}) as any as S.Schema<AnalyticsSessionGroupByKey>;
+export const AnalyticsSessionGroupByKey =
+  AnalyticsIntentGroupByKey as any as S.Schema<AnalyticsSessionGroupByKey>;
 export type AnalyticsSessionGroupByKeys = AnalyticsSessionGroupByKey[];
-export const AnalyticsSessionGroupByKeys = /*@__PURE__*/ S.Array(AnalyticsSessionGroupByKey);
+export const AnalyticsSessionGroupByKeys =
+  AnalyticsIntentGroupByKeys as any as S.Schema<AnalyticsSessionGroupByKeys>;
 export interface AnalyticsSessionMetricResult {
   name?: AnalyticsSessionMetricName;
   statistic?: AnalyticsMetricStatistic;
   value?: number;
 }
-export const AnalyticsSessionMetricResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(AnalyticsSessionMetricName),
-    statistic: S.optional(AnalyticsMetricStatistic),
-    value: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "AnalyticsSessionMetricResult",
-}) as any as S.Schema<AnalyticsSessionMetricResult>;
+export const AnalyticsSessionMetricResult =
+  AnalyticsIntentMetricResult as any as S.Schema<AnalyticsSessionMetricResult>;
 export type AnalyticsSessionMetricResults = AnalyticsSessionMetricResult[];
-export const AnalyticsSessionMetricResults = /*@__PURE__*/ S.Array(AnalyticsSessionMetricResult);
+export const AnalyticsSessionMetricResults =
+  AnalyticsIntentMetricResults as any as S.Schema<AnalyticsSessionMetricResults>;
 export interface AnalyticsSessionResult {
   binKeys?: AnalyticsBinKey[];
   groupByKeys?: AnalyticsSessionGroupByKey[];
   metricsResults?: AnalyticsSessionMetricResult[];
 }
-export const AnalyticsSessionResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    binKeys: S.optional(AnalyticsBinKeys),
-    groupByKeys: S.optional(AnalyticsSessionGroupByKeys),
-    metricsResults: S.optional(AnalyticsSessionMetricResults),
-  }),
-).annotate({ identifier: "AnalyticsSessionResult" }) as any as S.Schema<AnalyticsSessionResult>;
+export const AnalyticsSessionResult =
+  AnalyticsIntentResult as any as S.Schema<AnalyticsSessionResult>;
 export type AnalyticsSessionResults = AnalyticsSessionResult[];
-export const AnalyticsSessionResults = /*@__PURE__*/ S.Array(AnalyticsSessionResult);
+export const AnalyticsSessionResults =
+  AnalyticsIntentResults as any as S.Schema<AnalyticsSessionResults>;
 export interface ListSessionMetricsResponse {
   botId?: string;
   results?: AnalyticsSessionResult[];
   nextToken?: string;
 }
-export const ListSessionMetricsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    botId: S.optional(S.String),
-    results: S.optional(AnalyticsSessionResults),
-    nextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListSessionMetricsResponse",
-}) as any as S.Schema<ListSessionMetricsResponse>;
+export const ListSessionMetricsResponse =
+  ListIntentMetricsResponse as any as S.Schema<ListSessionMetricsResponse>;
 export type SlotSortAttribute = "SlotName" | "LastUpdatedDateTime" | (string & {});
 export const SlotSortAttribute = S.String;
 
@@ -6342,9 +6265,7 @@ export interface SlotSortBy {
   attribute: SlotSortAttribute;
   order: SortOrder;
 }
-export const SlotSortBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ attribute: SlotSortAttribute, order: SortOrder }),
-).annotate({ identifier: "SlotSortBy" }) as any as S.Schema<SlotSortBy>;
+export const SlotSortBy = BotLocaleSortBy as any as S.Schema<SlotSortBy>;
 export type SlotFilterName = "SlotName" | (string & {});
 export const SlotFilterName = S.String;
 
@@ -6356,11 +6277,9 @@ export interface SlotFilter {
   values: string[];
   operator: SlotFilterOperator;
 }
-export const SlotFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: SlotFilterName, values: FilterValues, operator: SlotFilterOperator }),
-).annotate({ identifier: "SlotFilter" }) as any as S.Schema<SlotFilter>;
+export const SlotFilter = BotLocaleFilter as any as S.Schema<SlotFilter>;
 export type SlotFilters = SlotFilter[];
-export const SlotFilters = /*@__PURE__*/ S.Array(SlotFilter);
+export const SlotFilters = BotLocaleFilters as any as S.Schema<SlotFilters>;
 export interface ListSlotsRequest {
   botId: string;
   botVersion: string;
@@ -6442,9 +6361,7 @@ export interface SlotTypeSortBy {
   attribute: SlotTypeSortAttribute;
   order: SortOrder;
 }
-export const SlotTypeSortBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ attribute: SlotTypeSortAttribute, order: SortOrder }),
-).annotate({ identifier: "SlotTypeSortBy" }) as any as S.Schema<SlotTypeSortBy>;
+export const SlotTypeSortBy = BotLocaleSortBy as any as S.Schema<SlotTypeSortBy>;
 export type SlotTypeFilterName = "SlotTypeName" | "ExternalSourceType" | (string & {});
 export const SlotTypeFilterName = S.String;
 
@@ -6456,11 +6373,9 @@ export interface SlotTypeFilter {
   values: string[];
   operator: SlotTypeFilterOperator;
 }
-export const SlotTypeFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: SlotTypeFilterName, values: FilterValues, operator: SlotTypeFilterOperator }),
-).annotate({ identifier: "SlotTypeFilter" }) as any as S.Schema<SlotTypeFilter>;
+export const SlotTypeFilter = BotLocaleFilter as any as S.Schema<SlotTypeFilter>;
 export type SlotTypeFilters = SlotTypeFilter[];
-export const SlotTypeFilters = /*@__PURE__*/ S.Array(SlotTypeFilter);
+export const SlotTypeFilters = BotLocaleFilters as any as S.Schema<SlotTypeFilters>;
 export interface ListSlotTypesRequest {
   botId: string;
   botVersion: string;
@@ -7067,9 +6982,7 @@ export interface TestExecutionSortBy {
   attribute: TestExecutionSortAttribute;
   order: SortOrder;
 }
-export const TestExecutionSortBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ attribute: TestExecutionSortAttribute, order: SortOrder }),
-).annotate({ identifier: "TestExecutionSortBy" }) as any as S.Schema<TestExecutionSortBy>;
+export const TestExecutionSortBy = BotLocaleSortBy as any as S.Schema<TestExecutionSortBy>;
 export interface ListTestExecutionsRequest {
   sortBy?: TestExecutionSortBy;
   maxResults?: number;
@@ -7201,9 +7114,7 @@ export interface TestSetSortBy {
   attribute: TestSetSortAttribute;
   order: SortOrder;
 }
-export const TestSetSortBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ attribute: TestSetSortAttribute, order: SortOrder }),
-).annotate({ identifier: "TestSetSortBy" }) as any as S.Schema<TestSetSortBy>;
+export const TestSetSortBy = BotLocaleSortBy as any as S.Schema<TestSetSortBy>;
 export interface ListTestSetsRequest {
   sortBy?: TestSetSortBy;
   maxResults?: number;
@@ -7245,9 +7156,7 @@ export interface UtteranceDataSortBy {
   name: AnalyticsUtteranceSortByName;
   order: AnalyticsSortOrder;
 }
-export const UtteranceDataSortBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: AnalyticsUtteranceSortByName, order: AnalyticsSortOrder }),
-).annotate({ identifier: "UtteranceDataSortBy" }) as any as S.Schema<UtteranceDataSortBy>;
+export const UtteranceDataSortBy = SessionDataSortBy as any as S.Schema<UtteranceDataSortBy>;
 export type AnalyticsUtteranceFilterName =
   | "BotAliasId"
   | "BotVersion"
@@ -7266,15 +7175,11 @@ export interface AnalyticsUtteranceFilter {
   operator: AnalyticsFilterOperator;
   values: string[];
 }
-export const AnalyticsUtteranceFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: AnalyticsUtteranceFilterName,
-    operator: AnalyticsFilterOperator,
-    values: AnalyticsFilterValues,
-  }),
-).annotate({ identifier: "AnalyticsUtteranceFilter" }) as any as S.Schema<AnalyticsUtteranceFilter>;
+export const AnalyticsUtteranceFilter =
+  AnalyticsIntentFilter as any as S.Schema<AnalyticsUtteranceFilter>;
 export type AnalyticsUtteranceFilters = AnalyticsUtteranceFilter[];
-export const AnalyticsUtteranceFilters = /*@__PURE__*/ S.Array(AnalyticsUtteranceFilter);
+export const AnalyticsUtteranceFilters =
+  AnalyticsIntentFilters as any as S.Schema<AnalyticsUtteranceFilters>;
 export interface ListUtteranceAnalyticsDataRequest {
   botId: string;
   startDateTime: Date;
@@ -7418,41 +7323,30 @@ export interface AnalyticsUtteranceMetric {
   statistic: AnalyticsMetricStatistic;
   order?: AnalyticsSortOrder;
 }
-export const AnalyticsUtteranceMetric = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: AnalyticsUtteranceMetricName,
-    statistic: AnalyticsMetricStatistic,
-    order: S.optional(AnalyticsSortOrder),
-  }),
-).annotate({ identifier: "AnalyticsUtteranceMetric" }) as any as S.Schema<AnalyticsUtteranceMetric>;
+export const AnalyticsUtteranceMetric =
+  AnalyticsIntentMetric as any as S.Schema<AnalyticsUtteranceMetric>;
 export type AnalyticsUtteranceMetrics = AnalyticsUtteranceMetric[];
-export const AnalyticsUtteranceMetrics = /*@__PURE__*/ S.Array(AnalyticsUtteranceMetric);
+export const AnalyticsUtteranceMetrics =
+  AnalyticsIntentMetrics as any as S.Schema<AnalyticsUtteranceMetrics>;
 export type AnalyticsUtteranceField = "UtteranceText" | "UtteranceState" | (string & {});
 export const AnalyticsUtteranceField = S.String;
 
 export interface AnalyticsUtteranceGroupBySpecification {
   name: AnalyticsUtteranceField;
 }
-export const AnalyticsUtteranceGroupBySpecification = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: AnalyticsUtteranceField }),
-).annotate({
-  identifier: "AnalyticsUtteranceGroupBySpecification",
-}) as any as S.Schema<AnalyticsUtteranceGroupBySpecification>;
+export const AnalyticsUtteranceGroupBySpecification =
+  AnalyticsIntentGroupBySpecification as any as S.Schema<AnalyticsUtteranceGroupBySpecification>;
 export type AnalyticsUtteranceGroupByList = AnalyticsUtteranceGroupBySpecification[];
-export const AnalyticsUtteranceGroupByList = /*@__PURE__*/ S.Array(
-  AnalyticsUtteranceGroupBySpecification,
-);
+export const AnalyticsUtteranceGroupByList =
+  AnalyticsIntentGroupByList as any as S.Schema<AnalyticsUtteranceGroupByList>;
 export type AnalyticsUtteranceAttributeName = "LastUsedIntent" | (string & {});
 export const AnalyticsUtteranceAttributeName = S.String;
 
 export interface AnalyticsUtteranceAttribute {
   name: AnalyticsUtteranceAttributeName;
 }
-export const AnalyticsUtteranceAttribute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: AnalyticsUtteranceAttributeName }),
-).annotate({
-  identifier: "AnalyticsUtteranceAttribute",
-}) as any as S.Schema<AnalyticsUtteranceAttribute>;
+export const AnalyticsUtteranceAttribute =
+  AnalyticsIntentGroupBySpecification as any as S.Schema<AnalyticsUtteranceAttribute>;
 export type AnalyticsUtteranceAttributes = AnalyticsUtteranceAttribute[];
 export const AnalyticsUtteranceAttributes = /*@__PURE__*/ S.Array(AnalyticsUtteranceAttribute);
 export interface ListUtteranceMetricsRequest {
@@ -7496,31 +7390,21 @@ export interface AnalyticsUtteranceGroupByKey {
   name?: AnalyticsUtteranceField;
   value?: string;
 }
-export const AnalyticsUtteranceGroupByKey = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.optional(AnalyticsUtteranceField), value: S.optional(S.String) }),
-).annotate({
-  identifier: "AnalyticsUtteranceGroupByKey",
-}) as any as S.Schema<AnalyticsUtteranceGroupByKey>;
+export const AnalyticsUtteranceGroupByKey =
+  AnalyticsIntentGroupByKey as any as S.Schema<AnalyticsUtteranceGroupByKey>;
 export type AnalyticsUtteranceGroupByKeys = AnalyticsUtteranceGroupByKey[];
-export const AnalyticsUtteranceGroupByKeys = /*@__PURE__*/ S.Array(AnalyticsUtteranceGroupByKey);
+export const AnalyticsUtteranceGroupByKeys =
+  AnalyticsIntentGroupByKeys as any as S.Schema<AnalyticsUtteranceGroupByKeys>;
 export interface AnalyticsUtteranceMetricResult {
   name?: AnalyticsUtteranceMetricName;
   statistic?: AnalyticsMetricStatistic;
   value?: number;
 }
-export const AnalyticsUtteranceMetricResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(AnalyticsUtteranceMetricName),
-    statistic: S.optional(AnalyticsMetricStatistic),
-    value: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "AnalyticsUtteranceMetricResult",
-}) as any as S.Schema<AnalyticsUtteranceMetricResult>;
+export const AnalyticsUtteranceMetricResult =
+  AnalyticsIntentMetricResult as any as S.Schema<AnalyticsUtteranceMetricResult>;
 export type AnalyticsUtteranceMetricResults = AnalyticsUtteranceMetricResult[];
-export const AnalyticsUtteranceMetricResults = /*@__PURE__*/ S.Array(
-  AnalyticsUtteranceMetricResult,
-);
+export const AnalyticsUtteranceMetricResults =
+  AnalyticsIntentStageMetricResults as any as S.Schema<AnalyticsUtteranceMetricResults>;
 export interface AnalyticsUtteranceAttributeResult {
   lastUsedIntent?: string;
 }

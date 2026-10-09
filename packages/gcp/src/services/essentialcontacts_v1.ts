@@ -204,9 +204,8 @@ export const ComputeOrganizationsContactsNotificationCategoriesEnum = S.String;
 export type ComputeOrganizationsContactsNotificationCategoriesEnumList = Array<
   ComputeOrganizationsContactsNotificationCategoriesEnum | (string & {})
 >;
-export const ComputeOrganizationsContactsNotificationCategoriesEnumList = /*@__PURE__*/ S.Array(
-  ComputeOrganizationsContactsNotificationCategoriesEnum,
-) as any as S.Schema<ComputeOrganizationsContactsNotificationCategoriesEnumList>;
+export const ComputeOrganizationsContactsNotificationCategoriesEnumList =
+  ComputeFoldersContactsNotificationCategoriesEnumList as any as S.Schema<ComputeOrganizationsContactsNotificationCategoriesEnumList>;
 
 export interface ComputeOrganizationsContactsRequest {
   /** Required. The name of the resource to compute contacts for. Format: organizations/{organization}, folders/{folder} or projects/{project} (where {project} is the project number) */
@@ -252,9 +251,8 @@ export const ComputeProjectsContactsNotificationCategoriesEnum = S.String;
 export type ComputeProjectsContactsNotificationCategoriesEnumList = Array<
   ComputeProjectsContactsNotificationCategoriesEnum | (string & {})
 >;
-export const ComputeProjectsContactsNotificationCategoriesEnumList = /*@__PURE__*/ S.Array(
-  ComputeProjectsContactsNotificationCategoriesEnum,
-) as any as S.Schema<ComputeProjectsContactsNotificationCategoriesEnumList>;
+export const ComputeProjectsContactsNotificationCategoriesEnumList =
+  ComputeFoldersContactsNotificationCategoriesEnumList as any as S.Schema<ComputeProjectsContactsNotificationCategoriesEnumList>;
 
 export interface ComputeProjectsContactsRequest {
   /** Optional. The maximum number of results to return from this request. Non-positive values are ignored. The presence of `next_page_token` in the response indicates that more results might be available. If not specified, the default page_size is 100. */

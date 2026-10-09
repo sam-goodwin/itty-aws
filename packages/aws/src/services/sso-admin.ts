@@ -1389,9 +1389,7 @@ export type Token = string;
 export interface OperationStatusFilter {
   Status?: StatusValues;
 }
-export const OperationStatusFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Status: S.optional(StatusValues) }),
-).annotate({ identifier: "OperationStatusFilter" }) as any as S.Schema<OperationStatusFilter>;
+export const OperationStatusFilter = AddRegionResponse as any as S.Schema<OperationStatusFilter>;
 export interface ListAccountAssignmentCreationStatusRequest {
   InstanceArn: string;
   MaxResults?: number;

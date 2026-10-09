@@ -325,15 +325,8 @@ export interface GetCertificateResponseCertificateStatus {
   /** If issuance or renewal reports `failed`, this property contains information about what happened. */
   error?: CreateCertificateResponseCertificateStatusError | null;
 }
-export const GetCertificateResponseCertificateStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    issuance: S.optional(GetCertificateResponseCertificateStatusIssuance),
-    renewal: S.optional(GetCertificateResponseCertificateStatusRenewal),
-    error: S.optional(S.NullOr(CreateCertificateResponseCertificateStatusError)),
-  }),
-).annotate({
-  identifier: "GetCertificateResponseCertificateStatus",
-}) as any as S.Schema<GetCertificateResponseCertificateStatus>;
+export const GetCertificateResponseCertificateStatus =
+  CreateCertificateResponseCertificateStatus as any as S.Schema<GetCertificateResponseCertificateStatus>;
 
 export type GetCertificateResponseCertificateUsedByItem =
   CreateCertificateResponseCertificateUsedByItem;
@@ -426,9 +419,8 @@ export const ListCertificatesRequestTypeItem = S.String;
 export type ListCertificatesRequestTypeList = Array<
   ListCertificatesRequestTypeItem | (string & {})
 >;
-export const ListCertificatesRequestTypeList = /*@__PURE__*/ S.Array(
-  ListCertificatesRequestTypeItem,
-) as any as S.Schema<ListCertificatesRequestTypeList>;
+export const ListCertificatesRequestTypeList =
+  ListCertificatesRequestSortList as any as S.Schema<ListCertificatesRequestTypeList>;
 
 export interface ListCertificatesRequest {
   /** Sort resources by field and direction. May be used multiple times. For more information, see "[Sorting](#description/sorting)". */
@@ -501,15 +493,8 @@ export interface ListCertificatesResponseCertificatesItemStatus {
   /** If issuance or renewal reports `failed`, this property contains information about what happened. */
   error?: CreateCertificateResponseCertificateStatusError | null;
 }
-export const ListCertificatesResponseCertificatesItemStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    issuance: S.optional(ListCertificatesResponseCertificatesItemStatusIssuance),
-    renewal: S.optional(ListCertificatesResponseCertificatesItemStatusRenewal),
-    error: S.optional(S.NullOr(CreateCertificateResponseCertificateStatusError)),
-  }),
-).annotate({
-  identifier: "ListCertificatesResponseCertificatesItemStatus",
-}) as any as S.Schema<ListCertificatesResponseCertificatesItemStatus>;
+export const ListCertificatesResponseCertificatesItemStatus =
+  CreateCertificateResponseCertificateStatus as any as S.Schema<ListCertificatesResponseCertificatesItemStatus>;
 
 export type ListCertificatesResponseCertificatesItemUsedByItem =
   CreateCertificateResponseCertificateUsedByItem;
@@ -686,15 +671,8 @@ export interface UpdateCertificateResponseCertificateStatus {
   /** If issuance or renewal reports `failed`, this property contains information about what happened. */
   error?: CreateCertificateResponseCertificateStatusError | null;
 }
-export const UpdateCertificateResponseCertificateStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    issuance: S.optional(UpdateCertificateResponseCertificateStatusIssuance),
-    renewal: S.optional(UpdateCertificateResponseCertificateStatusRenewal),
-    error: S.optional(S.NullOr(CreateCertificateResponseCertificateStatusError)),
-  }),
-).annotate({
-  identifier: "UpdateCertificateResponseCertificateStatus",
-}) as any as S.Schema<UpdateCertificateResponseCertificateStatus>;
+export const UpdateCertificateResponseCertificateStatus =
+  CreateCertificateResponseCertificateStatus as any as S.Schema<UpdateCertificateResponseCertificateStatus>;
 
 export type UpdateCertificateResponseCertificateUsedByItem =
   CreateCertificateResponseCertificateUsedByItem;

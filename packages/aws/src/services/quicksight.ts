@@ -10302,12 +10302,12 @@ export type GovernedAction = "SHARE" | (string & {});
 export const GovernedAction = S.String;
 
 export type GovernedActionList = GovernedAction[];
-export const GovernedActionList = /*@__PURE__*/ S.Array(GovernedAction);
+export const GovernedActionList = ResourceTypeList as any as S.Schema<GovernedActionList>;
 export type AssetType = "AGENT" | "SPACE" | "KNOWLEDGE_BASE" | (string & {});
 export const AssetType = S.String;
 
 export type AssetTypeList = AssetType[];
-export const AssetTypeList = /*@__PURE__*/ S.Array(AssetType);
+export const AssetTypeList = ResourceTypeList as any as S.Schema<AssetTypeList>;
 export type ApplicableToType = "GROUP" | (string & {});
 export const ApplicableToType = S.String;
 
@@ -12214,7 +12214,7 @@ export type ColumnTagName = "COLUMN_GEOGRAPHIC_ROLE" | "COLUMN_DESCRIPTION" | (s
 export const ColumnTagName = S.String;
 
 export type ColumnTagNames = ColumnTagName[];
-export const ColumnTagNames = /*@__PURE__*/ S.Array(ColumnTagName);
+export const ColumnTagNames = ResourceTypeList as any as S.Schema<ColumnTagNames>;
 export interface UntagColumnOperation {
   ColumnName: string;
   TagNames: ColumnTagName[];
@@ -17192,7 +17192,8 @@ export type AuthorSpecifiedAggregation =
 export const AuthorSpecifiedAggregation = S.String;
 
 export type AuthorSpecifiedAggregations = AuthorSpecifiedAggregation[];
-export const AuthorSpecifiedAggregations = /*@__PURE__*/ S.Array(AuthorSpecifiedAggregation);
+export const AuthorSpecifiedAggregations =
+  ResourceTypeList as any as S.Schema<AuthorSpecifiedAggregations>;
 export interface DefaultFormatting {
   DisplayFormat?: DisplayFormat;
   DisplayFormatOptions?: DisplayFormatOptions;
@@ -20078,9 +20079,8 @@ export const AssetBundleExportJobRefreshSchedulePropertyToOverride = S.String;
 
 export type AssetBundleExportJobRefreshSchedulePropertyToOverrideList =
   AssetBundleExportJobRefreshSchedulePropertyToOverride[];
-export const AssetBundleExportJobRefreshSchedulePropertyToOverrideList = /*@__PURE__*/ S.Array(
-  AssetBundleExportJobRefreshSchedulePropertyToOverride,
-);
+export const AssetBundleExportJobRefreshSchedulePropertyToOverrideList =
+  AssetBundleExportJobVPCConnectionPropertyToOverrideList as any as S.Schema<AssetBundleExportJobRefreshSchedulePropertyToOverrideList>;
 export interface AssetBundleExportJobRefreshScheduleOverrideProperties {
   Arn: string;
   Properties: AssetBundleExportJobRefreshSchedulePropertyToOverride[];
@@ -20122,23 +20122,18 @@ export const AssetBundleExportJobDataSourcePropertyToOverride = S.String;
 
 export type AssetBundleExportJobDataSourcePropertyToOverrideList =
   AssetBundleExportJobDataSourcePropertyToOverride[];
-export const AssetBundleExportJobDataSourcePropertyToOverrideList = /*@__PURE__*/ S.Array(
-  AssetBundleExportJobDataSourcePropertyToOverride,
-);
+export const AssetBundleExportJobDataSourcePropertyToOverrideList =
+  AssetBundleExportJobVPCConnectionPropertyToOverrideList as any as S.Schema<AssetBundleExportJobDataSourcePropertyToOverrideList>;
 export interface AssetBundleExportJobDataSourceOverrideProperties {
   Arn: string;
   Properties: AssetBundleExportJobDataSourcePropertyToOverride[];
 }
-export const AssetBundleExportJobDataSourceOverrideProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Arn: S.String, Properties: AssetBundleExportJobDataSourcePropertyToOverrideList }),
-).annotate({
-  identifier: "AssetBundleExportJobDataSourceOverrideProperties",
-}) as any as S.Schema<AssetBundleExportJobDataSourceOverrideProperties>;
+export const AssetBundleExportJobDataSourceOverrideProperties =
+  AssetBundleExportJobVPCConnectionOverrideProperties as any as S.Schema<AssetBundleExportJobDataSourceOverrideProperties>;
 export type AssetBundleExportJobDataSourceOverridePropertiesList =
   AssetBundleExportJobDataSourceOverrideProperties[];
-export const AssetBundleExportJobDataSourceOverridePropertiesList = /*@__PURE__*/ S.Array(
-  AssetBundleExportJobDataSourceOverrideProperties,
-);
+export const AssetBundleExportJobDataSourceOverridePropertiesList =
+  AssetBundleExportJobVPCConnectionOverridePropertiesList as any as S.Schema<AssetBundleExportJobDataSourceOverridePropertiesList>;
 export type AssetBundleExportJobDataSetPropertyToOverride =
   | "Name"
   | "RefreshFailureEmailAlertStatus"
@@ -20147,89 +20142,69 @@ export const AssetBundleExportJobDataSetPropertyToOverride = S.String;
 
 export type AssetBundleExportJobDataSetPropertyToOverrideList =
   AssetBundleExportJobDataSetPropertyToOverride[];
-export const AssetBundleExportJobDataSetPropertyToOverrideList = /*@__PURE__*/ S.Array(
-  AssetBundleExportJobDataSetPropertyToOverride,
-);
+export const AssetBundleExportJobDataSetPropertyToOverrideList =
+  AssetBundleExportJobVPCConnectionPropertyToOverrideList as any as S.Schema<AssetBundleExportJobDataSetPropertyToOverrideList>;
 export interface AssetBundleExportJobDataSetOverrideProperties {
   Arn: string;
   Properties: AssetBundleExportJobDataSetPropertyToOverride[];
 }
-export const AssetBundleExportJobDataSetOverrideProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Arn: S.String, Properties: AssetBundleExportJobDataSetPropertyToOverrideList }),
-).annotate({
-  identifier: "AssetBundleExportJobDataSetOverrideProperties",
-}) as any as S.Schema<AssetBundleExportJobDataSetOverrideProperties>;
+export const AssetBundleExportJobDataSetOverrideProperties =
+  AssetBundleExportJobVPCConnectionOverrideProperties as any as S.Schema<AssetBundleExportJobDataSetOverrideProperties>;
 export type AssetBundleExportJobDataSetOverridePropertiesList =
   AssetBundleExportJobDataSetOverrideProperties[];
-export const AssetBundleExportJobDataSetOverridePropertiesList = /*@__PURE__*/ S.Array(
-  AssetBundleExportJobDataSetOverrideProperties,
-);
+export const AssetBundleExportJobDataSetOverridePropertiesList =
+  AssetBundleExportJobVPCConnectionOverridePropertiesList as any as S.Schema<AssetBundleExportJobDataSetOverridePropertiesList>;
 export type AssetBundleExportJobThemePropertyToOverride = "Name" | (string & {});
 export const AssetBundleExportJobThemePropertyToOverride = S.String;
 
 export type AssetBundleExportJobThemePropertyToOverrideList =
   AssetBundleExportJobThemePropertyToOverride[];
-export const AssetBundleExportJobThemePropertyToOverrideList = /*@__PURE__*/ S.Array(
-  AssetBundleExportJobThemePropertyToOverride,
-);
+export const AssetBundleExportJobThemePropertyToOverrideList =
+  AssetBundleExportJobVPCConnectionPropertyToOverrideList as any as S.Schema<AssetBundleExportJobThemePropertyToOverrideList>;
 export interface AssetBundleExportJobThemeOverrideProperties {
   Arn: string;
   Properties: AssetBundleExportJobThemePropertyToOverride[];
 }
-export const AssetBundleExportJobThemeOverrideProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Arn: S.String, Properties: AssetBundleExportJobThemePropertyToOverrideList }),
-).annotate({
-  identifier: "AssetBundleExportJobThemeOverrideProperties",
-}) as any as S.Schema<AssetBundleExportJobThemeOverrideProperties>;
+export const AssetBundleExportJobThemeOverrideProperties =
+  AssetBundleExportJobVPCConnectionOverrideProperties as any as S.Schema<AssetBundleExportJobThemeOverrideProperties>;
 export type AssetBundleExportJobThemeOverridePropertiesList =
   AssetBundleExportJobThemeOverrideProperties[];
-export const AssetBundleExportJobThemeOverridePropertiesList = /*@__PURE__*/ S.Array(
-  AssetBundleExportJobThemeOverrideProperties,
-);
+export const AssetBundleExportJobThemeOverridePropertiesList =
+  AssetBundleExportJobVPCConnectionOverridePropertiesList as any as S.Schema<AssetBundleExportJobThemeOverridePropertiesList>;
 export type AssetBundleExportJobAnalysisPropertyToOverride = "Name" | (string & {});
 export const AssetBundleExportJobAnalysisPropertyToOverride = S.String;
 
 export type AssetBundleExportJobAnalysisPropertyToOverrideList =
   AssetBundleExportJobAnalysisPropertyToOverride[];
-export const AssetBundleExportJobAnalysisPropertyToOverrideList = /*@__PURE__*/ S.Array(
-  AssetBundleExportJobAnalysisPropertyToOverride,
-);
+export const AssetBundleExportJobAnalysisPropertyToOverrideList =
+  AssetBundleExportJobVPCConnectionPropertyToOverrideList as any as S.Schema<AssetBundleExportJobAnalysisPropertyToOverrideList>;
 export interface AssetBundleExportJobAnalysisOverrideProperties {
   Arn: string;
   Properties: AssetBundleExportJobAnalysisPropertyToOverride[];
 }
-export const AssetBundleExportJobAnalysisOverrideProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Arn: S.String, Properties: AssetBundleExportJobAnalysisPropertyToOverrideList }),
-).annotate({
-  identifier: "AssetBundleExportJobAnalysisOverrideProperties",
-}) as any as S.Schema<AssetBundleExportJobAnalysisOverrideProperties>;
+export const AssetBundleExportJobAnalysisOverrideProperties =
+  AssetBundleExportJobVPCConnectionOverrideProperties as any as S.Schema<AssetBundleExportJobAnalysisOverrideProperties>;
 export type AssetBundleExportJobAnalysisOverridePropertiesList =
   AssetBundleExportJobAnalysisOverrideProperties[];
-export const AssetBundleExportJobAnalysisOverridePropertiesList = /*@__PURE__*/ S.Array(
-  AssetBundleExportJobAnalysisOverrideProperties,
-);
+export const AssetBundleExportJobAnalysisOverridePropertiesList =
+  AssetBundleExportJobVPCConnectionOverridePropertiesList as any as S.Schema<AssetBundleExportJobAnalysisOverridePropertiesList>;
 export type AssetBundleExportJobDashboardPropertyToOverride = "Name" | (string & {});
 export const AssetBundleExportJobDashboardPropertyToOverride = S.String;
 
 export type AssetBundleExportJobDashboardPropertyToOverrideList =
   AssetBundleExportJobDashboardPropertyToOverride[];
-export const AssetBundleExportJobDashboardPropertyToOverrideList = /*@__PURE__*/ S.Array(
-  AssetBundleExportJobDashboardPropertyToOverride,
-);
+export const AssetBundleExportJobDashboardPropertyToOverrideList =
+  AssetBundleExportJobVPCConnectionPropertyToOverrideList as any as S.Schema<AssetBundleExportJobDashboardPropertyToOverrideList>;
 export interface AssetBundleExportJobDashboardOverrideProperties {
   Arn: string;
   Properties: AssetBundleExportJobDashboardPropertyToOverride[];
 }
-export const AssetBundleExportJobDashboardOverrideProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Arn: S.String, Properties: AssetBundleExportJobDashboardPropertyToOverrideList }),
-).annotate({
-  identifier: "AssetBundleExportJobDashboardOverrideProperties",
-}) as any as S.Schema<AssetBundleExportJobDashboardOverrideProperties>;
+export const AssetBundleExportJobDashboardOverrideProperties =
+  AssetBundleExportJobVPCConnectionOverrideProperties as any as S.Schema<AssetBundleExportJobDashboardOverrideProperties>;
 export type AssetBundleExportJobDashboardOverridePropertiesList =
   AssetBundleExportJobDashboardOverrideProperties[];
-export const AssetBundleExportJobDashboardOverridePropertiesList = /*@__PURE__*/ S.Array(
-  AssetBundleExportJobDashboardOverrideProperties,
-);
+export const AssetBundleExportJobDashboardOverridePropertiesList =
+  AssetBundleExportJobVPCConnectionOverridePropertiesList as any as S.Schema<AssetBundleExportJobDashboardOverridePropertiesList>;
 export type AssetBundleExportJobFolderPropertyToOverride =
   | "Name"
   | "ParentFolderArn"
@@ -20238,45 +20213,35 @@ export const AssetBundleExportJobFolderPropertyToOverride = S.String;
 
 export type AssetBundleExportJobFolderPropertyToOverrideList =
   AssetBundleExportJobFolderPropertyToOverride[];
-export const AssetBundleExportJobFolderPropertyToOverrideList = /*@__PURE__*/ S.Array(
-  AssetBundleExportJobFolderPropertyToOverride,
-);
+export const AssetBundleExportJobFolderPropertyToOverrideList =
+  AssetBundleExportJobVPCConnectionPropertyToOverrideList as any as S.Schema<AssetBundleExportJobFolderPropertyToOverrideList>;
 export interface AssetBundleExportJobFolderOverrideProperties {
   Arn: string;
   Properties: AssetBundleExportJobFolderPropertyToOverride[];
 }
-export const AssetBundleExportJobFolderOverrideProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Arn: S.String, Properties: AssetBundleExportJobFolderPropertyToOverrideList }),
-).annotate({
-  identifier: "AssetBundleExportJobFolderOverrideProperties",
-}) as any as S.Schema<AssetBundleExportJobFolderOverrideProperties>;
+export const AssetBundleExportJobFolderOverrideProperties =
+  AssetBundleExportJobVPCConnectionOverrideProperties as any as S.Schema<AssetBundleExportJobFolderOverrideProperties>;
 export type AssetBundleExportJobFolderOverridePropertiesList =
   AssetBundleExportJobFolderOverrideProperties[];
-export const AssetBundleExportJobFolderOverridePropertiesList = /*@__PURE__*/ S.Array(
-  AssetBundleExportJobFolderOverrideProperties,
-);
+export const AssetBundleExportJobFolderOverridePropertiesList =
+  AssetBundleExportJobVPCConnectionOverridePropertiesList as any as S.Schema<AssetBundleExportJobFolderOverridePropertiesList>;
 export type AssetBundleExportJobTopicV2PropertyToOverride = "Name" | "Description" | (string & {});
 export const AssetBundleExportJobTopicV2PropertyToOverride = S.String;
 
 export type AssetBundleExportJobTopicV2PropertyToOverrideList =
   AssetBundleExportJobTopicV2PropertyToOverride[];
-export const AssetBundleExportJobTopicV2PropertyToOverrideList = /*@__PURE__*/ S.Array(
-  AssetBundleExportJobTopicV2PropertyToOverride,
-);
+export const AssetBundleExportJobTopicV2PropertyToOverrideList =
+  AssetBundleExportJobVPCConnectionPropertyToOverrideList as any as S.Schema<AssetBundleExportJobTopicV2PropertyToOverrideList>;
 export interface AssetBundleExportJobTopicV2OverrideProperties {
   Arn: string;
   Properties: AssetBundleExportJobTopicV2PropertyToOverride[];
 }
-export const AssetBundleExportJobTopicV2OverrideProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Arn: S.String, Properties: AssetBundleExportJobTopicV2PropertyToOverrideList }),
-).annotate({
-  identifier: "AssetBundleExportJobTopicV2OverrideProperties",
-}) as any as S.Schema<AssetBundleExportJobTopicV2OverrideProperties>;
+export const AssetBundleExportJobTopicV2OverrideProperties =
+  AssetBundleExportJobVPCConnectionOverrideProperties as any as S.Schema<AssetBundleExportJobTopicV2OverrideProperties>;
 export type AssetBundleExportJobTopicV2OverridePropertiesList =
   AssetBundleExportJobTopicV2OverrideProperties[];
-export const AssetBundleExportJobTopicV2OverridePropertiesList = /*@__PURE__*/ S.Array(
-  AssetBundleExportJobTopicV2OverrideProperties,
-);
+export const AssetBundleExportJobTopicV2OverridePropertiesList =
+  AssetBundleExportJobVPCConnectionOverridePropertiesList as any as S.Schema<AssetBundleExportJobTopicV2OverridePropertiesList>;
 export interface AssetBundleCloudFormationOverridePropertyConfiguration {
   ResourceIdOverrideConfiguration?: AssetBundleExportJobResourceIdOverrideConfiguration;
   VPCConnections?: AssetBundleExportJobVPCConnectionOverrideProperties[];
@@ -21312,15 +21277,9 @@ export interface DashboardError {
   Message?: string;
   ViolatedEntities?: Entity[];
 }
-export const DashboardError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Type: S.optional(DashboardErrorType),
-    Message: S.optional(S.String),
-    ViolatedEntities: S.optional(EntityList),
-  }),
-).annotate({ identifier: "DashboardError" }) as any as S.Schema<DashboardError>;
+export const DashboardError = AnalysisError as any as S.Schema<DashboardError>;
 export type DashboardErrorList = DashboardError[];
-export const DashboardErrorList = /*@__PURE__*/ S.Array(DashboardError);
+export const DashboardErrorList = AnalysisErrorList as any as S.Schema<DashboardErrorList>;
 export interface DashboardVersion {
   CreatedTime?: Date;
   Errors?: DashboardError[];
@@ -22627,9 +22586,7 @@ export interface ErrorInfo {
   Type?: IngestionErrorType;
   Message?: string;
 }
-export const ErrorInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Type: S.optional(IngestionErrorType), Message: S.optional(S.String) }),
-).annotate({ identifier: "ErrorInfo" }) as any as S.Schema<ErrorInfo>;
+export const ErrorInfo = DataSourceErrorInfo as any as S.Schema<ErrorInfo>;
 export interface RowInfo {
   RowsIngested?: number;
   RowsDropped?: number;
@@ -23053,9 +23010,7 @@ export interface NamespaceError {
   Type?: NamespaceErrorType;
   Message?: string;
 }
-export const NamespaceError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Type: S.optional(NamespaceErrorType), Message: S.optional(S.String) }),
-).annotate({ identifier: "NamespaceError" }) as any as S.Schema<NamespaceError>;
+export const NamespaceError = DataSourceErrorInfo as any as S.Schema<NamespaceError>;
 export interface NamespaceInfoV2 {
   Name?: string;
   Arn?: string;
@@ -23523,15 +23478,9 @@ export interface TemplateError {
   Message?: string;
   ViolatedEntities?: Entity[];
 }
-export const TemplateError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Type: S.optional(TemplateErrorType),
-    Message: S.optional(S.String),
-    ViolatedEntities: S.optional(EntityList),
-  }),
-).annotate({ identifier: "TemplateError" }) as any as S.Schema<TemplateError>;
+export const TemplateError = AnalysisError as any as S.Schema<TemplateError>;
 export type TemplateErrorList = TemplateError[];
-export const TemplateErrorList = /*@__PURE__*/ S.Array(TemplateError);
+export const TemplateErrorList = AnalysisErrorList as any as S.Schema<TemplateErrorList>;
 export interface TemplateVersion {
   CreatedTime?: Date;
   Errors?: TemplateError[];
@@ -23740,9 +23689,7 @@ export interface ThemeError {
   Type?: ThemeErrorType;
   Message?: string;
 }
-export const ThemeError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Type: S.optional(ThemeErrorType), Message: S.optional(S.String) }),
-).annotate({ identifier: "ThemeError" }) as any as S.Schema<ThemeError>;
+export const ThemeError = DataSourceErrorInfo as any as S.Schema<ThemeError>;
 export type ThemeErrorList = ThemeError[];
 export const ThemeErrorList = /*@__PURE__*/ S.Array(ThemeError);
 export interface ThemeVersion {
@@ -24328,9 +24275,8 @@ export const AnonymousUserDashboardEmbeddingConfigurationEnabledFeature = S.Stri
 
 export type AnonymousUserDashboardEmbeddingConfigurationEnabledFeatures =
   AnonymousUserDashboardEmbeddingConfigurationEnabledFeature[];
-export const AnonymousUserDashboardEmbeddingConfigurationEnabledFeatures = /*@__PURE__*/ S.Array(
-  AnonymousUserDashboardEmbeddingConfigurationEnabledFeature,
-);
+export const AnonymousUserDashboardEmbeddingConfigurationEnabledFeatures =
+  AssetBundleExportJobVPCConnectionPropertyToOverrideList as any as S.Schema<AnonymousUserDashboardEmbeddingConfigurationEnabledFeatures>;
 export type AnonymousUserDashboardEmbeddingConfigurationDisabledFeature =
   | "SHARED_VIEW"
   | (string & {});
@@ -24338,9 +24284,8 @@ export const AnonymousUserDashboardEmbeddingConfigurationDisabledFeature = S.Str
 
 export type AnonymousUserDashboardEmbeddingConfigurationDisabledFeatures =
   AnonymousUserDashboardEmbeddingConfigurationDisabledFeature[];
-export const AnonymousUserDashboardEmbeddingConfigurationDisabledFeatures = /*@__PURE__*/ S.Array(
-  AnonymousUserDashboardEmbeddingConfigurationDisabledFeature,
-);
+export const AnonymousUserDashboardEmbeddingConfigurationDisabledFeatures =
+  AssetBundleExportJobVPCConnectionPropertyToOverrideList as any as S.Schema<AnonymousUserDashboardEmbeddingConfigurationDisabledFeatures>;
 export interface SharedViewConfigurations {
   Enabled: boolean;
 }
@@ -28110,11 +28055,11 @@ export interface DataSourceSearchFilter {
   Name: DataSourceFilterAttribute;
   Value: string;
 }
-export const DataSourceSearchFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Operator: FilterOperator, Name: DataSourceFilterAttribute, Value: S.String }),
-).annotate({ identifier: "DataSourceSearchFilter" }) as any as S.Schema<DataSourceSearchFilter>;
+export const DataSourceSearchFilter =
+  DataSetSearchFilter as any as S.Schema<DataSourceSearchFilter>;
 export type DataSourceSearchFilterList = DataSourceSearchFilter[];
-export const DataSourceSearchFilterList = /*@__PURE__*/ S.Array(DataSourceSearchFilter);
+export const DataSourceSearchFilterList =
+  DataSetSearchFilterList as any as S.Schema<DataSourceSearchFilterList>;
 export interface SearchDataSourcesRequest {
   AwsAccountId: string;
   Filters: DataSourceSearchFilter[];
@@ -28191,11 +28136,9 @@ export interface SearchFlowsFilter {
   Operator: SearchFilterOperator;
   Value: string;
 }
-export const SearchFlowsFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: FieldName, Operator: SearchFilterOperator, Value: S.String }),
-).annotate({ identifier: "SearchFlowsFilter" }) as any as S.Schema<SearchFlowsFilter>;
+export const SearchFlowsFilter = SearchAppsFilter as any as S.Schema<SearchFlowsFilter>;
 export type SearchFlowsFilterList = SearchFlowsFilter[];
-export const SearchFlowsFilterList = /*@__PURE__*/ S.Array(SearchFlowsFilter);
+export const SearchFlowsFilterList = SearchAppsFilterList as any as S.Schema<SearchFlowsFilterList>;
 export interface SearchFlowsInput {
   AwsAccountId: string;
   Filters: SearchFlowsFilter[];
@@ -28249,15 +28192,10 @@ export interface FolderSearchFilter {
   Name?: FolderFilterAttribute;
   Value?: string;
 }
-export const FolderSearchFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Operator: S.optional(FilterOperator),
-    Name: S.optional(FolderFilterAttribute),
-    Value: S.optional(S.String),
-  }),
-).annotate({ identifier: "FolderSearchFilter" }) as any as S.Schema<FolderSearchFilter>;
+export const FolderSearchFilter = AnalysisSearchFilter as any as S.Schema<FolderSearchFilter>;
 export type FolderSearchFilterList = FolderSearchFilter[];
-export const FolderSearchFilterList = /*@__PURE__*/ S.Array(FolderSearchFilter);
+export const FolderSearchFilterList =
+  AnalysisSearchFilterList as any as S.Schema<FolderSearchFilterList>;
 export interface SearchFoldersRequest {
   AwsAccountId: string;
   Filters: FolderSearchFilter[];
@@ -28299,11 +28237,10 @@ export interface GroupSearchFilter {
   Name: GroupFilterAttribute;
   Value: string;
 }
-export const GroupSearchFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Operator: GroupFilterOperator, Name: GroupFilterAttribute, Value: S.String }),
-).annotate({ identifier: "GroupSearchFilter" }) as any as S.Schema<GroupSearchFilter>;
+export const GroupSearchFilter = DataSetSearchFilter as any as S.Schema<GroupSearchFilter>;
 export type GroupSearchFilterList = GroupSearchFilter[];
-export const GroupSearchFilterList = /*@__PURE__*/ S.Array(GroupSearchFilter);
+export const GroupSearchFilterList =
+  DataSetSearchFilterList as any as S.Schema<GroupSearchFilterList>;
 export interface SearchGroupsRequest {
   AwsAccountId: string;
   NextToken?: string;
@@ -28443,17 +28380,11 @@ export interface SpaceQuicksightSearchFilter {
   operator: SpaceSearchOperator;
   value: string;
 }
-export const SpaceQuicksightSearchFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: SpaceQuickSightSearchFilterName,
-    operator: SpaceSearchOperator,
-    value: S.String,
-  }),
-).annotate({
-  identifier: "SpaceQuicksightSearchFilter",
-}) as any as S.Schema<SpaceQuicksightSearchFilter>;
+export const SpaceQuicksightSearchFilter =
+  KnowledgeBaseSearchFilter as any as S.Schema<SpaceQuicksightSearchFilter>;
 export type SpaceQuicksightSearchFilters = SpaceQuicksightSearchFilter[];
-export const SpaceQuicksightSearchFilters = /*@__PURE__*/ S.Array(SpaceQuicksightSearchFilter);
+export const SpaceQuicksightSearchFilters =
+  KnowledgeBaseSearchFilters as any as S.Schema<SpaceQuicksightSearchFilters>;
 export interface SearchSpacesRequest {
   AwsAccountId: string;
   NextToken?: string;

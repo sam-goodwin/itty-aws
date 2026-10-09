@@ -1418,15 +1418,8 @@ export interface ThreatEventsTagsCreateRequestActorCategoryCase1 {
   confidence?: number;
   tlp?: ThreatEventsTagsCreateRequestActorCategoryCase1Tlp | (string & {});
 }
-export const ThreatEventsTagsCreateRequestActorCategoryCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.String,
-    confidence: S.optional(S.Number),
-    tlp: S.optional(ThreatEventsTagsCreateRequestActorCategoryCase1Tlp),
-  }),
-).annotate({
-  identifier: "ThreatEventsTagsCreateRequestActorCategoryCase1",
-}) as any as S.Schema<ThreatEventsTagsCreateRequestActorCategoryCase1>;
+export const ThreatEventsTagsCreateRequestActorCategoryCase1 =
+  ThreatEventsTagsCreateRequestActiveDurationCase1 as any as S.Schema<ThreatEventsTagsCreateRequestActorCategoryCase1>;
 
 export type ThreatEventsTagsCreateRequestActorCategory =
   | string
@@ -1450,15 +1443,8 @@ export interface ThreatEventsTagsCreateRequestAliasesItem {
   confidence?: number;
   tlp?: ThreatEventsTagsCreateRequestAliasesItemTlp | (string & {});
 }
-export const ThreatEventsTagsCreateRequestAliasesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.String,
-    confidence: S.optional(S.Number),
-    tlp: S.optional(ThreatEventsTagsCreateRequestAliasesItemTlp),
-  }),
-).annotate({
-  identifier: "ThreatEventsTagsCreateRequestAliasesItem",
-}) as any as S.Schema<ThreatEventsTagsCreateRequestAliasesItem>;
+export const ThreatEventsTagsCreateRequestAliasesItem =
+  ThreatEventsTagsCreateRequestActiveDurationCase1 as any as S.Schema<ThreatEventsTagsCreateRequestAliasesItem>;
 
 export type ThreatEventsTagsCreateRequestAliasesList =
   Array<ThreatEventsTagsCreateRequestAliasesItem>;
@@ -1545,21 +1531,13 @@ export interface ThreatEventsTagsCreateRequestInternalAliasesItem {
   confidence?: number;
   tlp?: ThreatEventsTagsCreateRequestInternalAliasesItemTlp | (string & {});
 }
-export const ThreatEventsTagsCreateRequestInternalAliasesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.String,
-    confidence: S.optional(S.Number),
-    tlp: S.optional(ThreatEventsTagsCreateRequestInternalAliasesItemTlp),
-  }),
-).annotate({
-  identifier: "ThreatEventsTagsCreateRequestInternalAliasesItem",
-}) as any as S.Schema<ThreatEventsTagsCreateRequestInternalAliasesItem>;
+export const ThreatEventsTagsCreateRequestInternalAliasesItem =
+  ThreatEventsTagsCreateRequestActiveDurationCase1 as any as S.Schema<ThreatEventsTagsCreateRequestInternalAliasesItem>;
 
 export type ThreatEventsTagsCreateRequestInternalAliasesList =
   Array<ThreatEventsTagsCreateRequestInternalAliasesItem>;
-export const ThreatEventsTagsCreateRequestInternalAliasesList = /*@__PURE__*/ S.Array(
-  ThreatEventsTagsCreateRequestInternalAliasesItem,
-) as any as S.Schema<ThreatEventsTagsCreateRequestInternalAliasesList>;
+export const ThreatEventsTagsCreateRequestInternalAliasesList =
+  ThreatEventsTagsCreateRequestAliasesList as any as S.Schema<ThreatEventsTagsCreateRequestInternalAliasesList>;
 
 export type ThreatEventsTagsCreateRequestMotiveCase1Tlp =
   | "red"
@@ -1576,15 +1554,8 @@ export interface ThreatEventsTagsCreateRequestMotiveCase1 {
   confidence?: number;
   tlp?: ThreatEventsTagsCreateRequestMotiveCase1Tlp | (string & {});
 }
-export const ThreatEventsTagsCreateRequestMotiveCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.String,
-    confidence: S.optional(S.Number),
-    tlp: S.optional(ThreatEventsTagsCreateRequestMotiveCase1Tlp),
-  }),
-).annotate({
-  identifier: "ThreatEventsTagsCreateRequestMotiveCase1",
-}) as any as S.Schema<ThreatEventsTagsCreateRequestMotiveCase1>;
+export const ThreatEventsTagsCreateRequestMotiveCase1 =
+  ThreatEventsTagsCreateRequestActiveDurationCase1 as any as S.Schema<ThreatEventsTagsCreateRequestMotiveCase1>;
 
 export type ThreatEventsTagsCreateRequestMotive = string | ThreatEventsTagsCreateRequestMotiveCase1;
 export const ThreatEventsTagsCreateRequestMotive = /*@__PURE__*/ S.Unknown.pipe(
@@ -1606,15 +1577,8 @@ export interface ThreatEventsTagsCreateRequestOpsecLevelCase1 {
   confidence?: number;
   tlp?: ThreatEventsTagsCreateRequestOpsecLevelCase1Tlp | (string & {});
 }
-export const ThreatEventsTagsCreateRequestOpsecLevelCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.String,
-    confidence: S.optional(S.Number),
-    tlp: S.optional(ThreatEventsTagsCreateRequestOpsecLevelCase1Tlp),
-  }),
-).annotate({
-  identifier: "ThreatEventsTagsCreateRequestOpsecLevelCase1",
-}) as any as S.Schema<ThreatEventsTagsCreateRequestOpsecLevelCase1>;
+export const ThreatEventsTagsCreateRequestOpsecLevelCase1 =
+  ThreatEventsTagsCreateRequestActiveDurationCase1 as any as S.Schema<ThreatEventsTagsCreateRequestOpsecLevelCase1>;
 
 export type ThreatEventsTagsCreateRequestOpsecLevel =
   | string
@@ -1638,15 +1602,8 @@ export interface ThreatEventsTagsCreateRequestOriginCountryISOCase1 {
   confidence?: number;
   tlp?: ThreatEventsTagsCreateRequestOriginCountryISOCase1Tlp | (string & {});
 }
-export const ThreatEventsTagsCreateRequestOriginCountryISOCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.String,
-    confidence: S.optional(S.Number),
-    tlp: S.optional(ThreatEventsTagsCreateRequestOriginCountryISOCase1Tlp),
-  }),
-).annotate({
-  identifier: "ThreatEventsTagsCreateRequestOriginCountryISOCase1",
-}) as any as S.Schema<ThreatEventsTagsCreateRequestOriginCountryISOCase1>;
+export const ThreatEventsTagsCreateRequestOriginCountryISOCase1 =
+  ThreatEventsTagsCreateRequestActiveDurationCase1 as any as S.Schema<ThreatEventsTagsCreateRequestOriginCountryISOCase1>;
 
 export type ThreatEventsTagsCreateRequestOriginCountryISO =
   | string
@@ -1706,15 +1663,8 @@ export interface ThreatEventsTagsCreateRequestSophisticationLevelCase1 {
   confidence?: number;
   tlp?: ThreatEventsTagsCreateRequestSophisticationLevelCase1Tlp | (string & {});
 }
-export const ThreatEventsTagsCreateRequestSophisticationLevelCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.String,
-    confidence: S.optional(S.Number),
-    tlp: S.optional(ThreatEventsTagsCreateRequestSophisticationLevelCase1Tlp),
-  }),
-).annotate({
-  identifier: "ThreatEventsTagsCreateRequestSophisticationLevelCase1",
-}) as any as S.Schema<ThreatEventsTagsCreateRequestSophisticationLevelCase1>;
+export const ThreatEventsTagsCreateRequestSophisticationLevelCase1 =
+  ThreatEventsTagsCreateRequestActiveDurationCase1 as any as S.Schema<ThreatEventsTagsCreateRequestSophisticationLevelCase1>;
 
 export type ThreatEventsTagsCreateRequestSophisticationLevel =
   | string
@@ -1870,15 +1820,8 @@ export interface ThreatEventsTagsCreateResponseAliasesItem {
   confidence?: number | null;
   tlp?: ThreatEventsTagsCreateResponseAliasesItemTlp | null;
 }
-export const ThreatEventsTagsCreateResponseAliasesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.String,
-    confidence: S.optional(S.NullOr(S.Number)),
-    tlp: S.optional(S.NullOr(ThreatEventsTagsCreateResponseAliasesItemTlp)),
-  }),
-).annotate({
-  identifier: "ThreatEventsTagsCreateResponseAliasesItem",
-}) as any as S.Schema<ThreatEventsTagsCreateResponseAliasesItem>;
+export const ThreatEventsTagsCreateResponseAliasesItem =
+  ThreatEventsTagsCreateResponseActorCategoryAnnotated as any as S.Schema<ThreatEventsTagsCreateResponseAliasesItem>;
 
 export type ThreatEventsTagsCreateResponseAliasesList =
   Array<ThreatEventsTagsCreateResponseAliasesItem>;
@@ -1988,21 +1931,13 @@ export interface ThreatEventsTagsCreateResponseInternalAliasesItem {
   confidence?: number | null;
   tlp?: ThreatEventsTagsCreateResponseInternalAliasesItemTlp | null;
 }
-export const ThreatEventsTagsCreateResponseInternalAliasesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.String,
-    confidence: S.optional(S.NullOr(S.Number)),
-    tlp: S.optional(S.NullOr(ThreatEventsTagsCreateResponseInternalAliasesItemTlp)),
-  }),
-).annotate({
-  identifier: "ThreatEventsTagsCreateResponseInternalAliasesItem",
-}) as any as S.Schema<ThreatEventsTagsCreateResponseInternalAliasesItem>;
+export const ThreatEventsTagsCreateResponseInternalAliasesItem =
+  ThreatEventsTagsCreateResponseActorCategoryAnnotated as any as S.Schema<ThreatEventsTagsCreateResponseInternalAliasesItem>;
 
 export type ThreatEventsTagsCreateResponseInternalAliasesList =
   Array<ThreatEventsTagsCreateResponseInternalAliasesItem>;
-export const ThreatEventsTagsCreateResponseInternalAliasesList = /*@__PURE__*/ S.Array(
-  ThreatEventsTagsCreateResponseInternalAliasesItem,
-) as any as S.Schema<ThreatEventsTagsCreateResponseInternalAliasesList>;
+export const ThreatEventsTagsCreateResponseInternalAliasesList =
+  ThreatEventsTagsCreateResponseAliasesList as any as S.Schema<ThreatEventsTagsCreateResponseInternalAliasesList>;
 
 export type ThreatEventsTagsCreateResponseMotiveAnnotatedTlp =
   | "red"
@@ -2019,15 +1954,8 @@ export interface ThreatEventsTagsCreateResponseMotiveAnnotated {
   confidence?: number | null;
   tlp?: ThreatEventsTagsCreateResponseMotiveAnnotatedTlp | null;
 }
-export const ThreatEventsTagsCreateResponseMotiveAnnotated = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.String,
-    confidence: S.optional(S.NullOr(S.Number)),
-    tlp: S.optional(S.NullOr(ThreatEventsTagsCreateResponseMotiveAnnotatedTlp)),
-  }),
-).annotate({
-  identifier: "ThreatEventsTagsCreateResponseMotiveAnnotated",
-}) as any as S.Schema<ThreatEventsTagsCreateResponseMotiveAnnotated>;
+export const ThreatEventsTagsCreateResponseMotiveAnnotated =
+  ThreatEventsTagsCreateResponseActorCategoryAnnotated as any as S.Schema<ThreatEventsTagsCreateResponseMotiveAnnotated>;
 
 export type ThreatEventsTagsCreateResponseOpsecLevelAnnotatedTlp =
   | "red"
@@ -2044,15 +1972,8 @@ export interface ThreatEventsTagsCreateResponseOpsecLevelAnnotated {
   confidence?: number | null;
   tlp?: ThreatEventsTagsCreateResponseOpsecLevelAnnotatedTlp | null;
 }
-export const ThreatEventsTagsCreateResponseOpsecLevelAnnotated = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.String,
-    confidence: S.optional(S.NullOr(S.Number)),
-    tlp: S.optional(S.NullOr(ThreatEventsTagsCreateResponseOpsecLevelAnnotatedTlp)),
-  }),
-).annotate({
-  identifier: "ThreatEventsTagsCreateResponseOpsecLevelAnnotated",
-}) as any as S.Schema<ThreatEventsTagsCreateResponseOpsecLevelAnnotated>;
+export const ThreatEventsTagsCreateResponseOpsecLevelAnnotated =
+  ThreatEventsTagsCreateResponseActorCategoryAnnotated as any as S.Schema<ThreatEventsTagsCreateResponseOpsecLevelAnnotated>;
 
 export type ThreatEventsTagsCreateResponseOriginCountryISOAnnotatedTlp =
   | "red"
@@ -2069,15 +1990,8 @@ export interface ThreatEventsTagsCreateResponseOriginCountryISOAnnotated {
   confidence?: number | null;
   tlp?: ThreatEventsTagsCreateResponseOriginCountryISOAnnotatedTlp | null;
 }
-export const ThreatEventsTagsCreateResponseOriginCountryISOAnnotated = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.String,
-    confidence: S.optional(S.NullOr(S.Number)),
-    tlp: S.optional(S.NullOr(ThreatEventsTagsCreateResponseOriginCountryISOAnnotatedTlp)),
-  }),
-).annotate({
-  identifier: "ThreatEventsTagsCreateResponseOriginCountryISOAnnotated",
-}) as any as S.Schema<ThreatEventsTagsCreateResponseOriginCountryISOAnnotated>;
+export const ThreatEventsTagsCreateResponseOriginCountryISOAnnotated =
+  ThreatEventsTagsCreateResponseActorCategoryAnnotated as any as S.Schema<ThreatEventsTagsCreateResponseOriginCountryISOAnnotated>;
 
 export type ThreatEventsTagsCreateResponsePriorityAnnotatedTlp =
   | "red"
@@ -2863,16 +2777,8 @@ export interface DeleteThreatSignalsArticlesTagResponse {
   uuid: string;
   value: string;
 }
-export const DeleteThreatSignalsArticlesTagResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    appliedBy: DeleteThreatSignalsArticlesTagResponseAppliedBy.pipe(T.Body("applied_by")),
-    categoryId: S.String,
-    uuid: S.String,
-    value: S.String,
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "DeleteThreatSignalsArticlesTagResponse",
-}) as any as S.Schema<DeleteThreatSignalsArticlesTagResponse>;
+export const DeleteThreatSignalsArticlesTagResponse =
+  CreateThreatSignalsArticlesTagResponse as any as S.Schema<DeleteThreatSignalsArticlesTagResponse>;
 
 export interface DeleteThreatSignalsFeedRequest {
   accountId: string;
@@ -2962,22 +2868,8 @@ export interface DeleteThreatSignalsSkillResponse {
   type: string;
   updatedAt: string;
 }
-export const DeleteThreatSignalsSkillResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    config: S.String,
-    createdAt: S.String.pipe(T.Body("created_at")),
-    isActive: S.Number.pipe(T.Body("is_active")),
-    name: S.String,
-    outputSchema: S.String.pipe(T.Body("output_schema")),
-    prompt: S.String,
-    source: DeleteThreatSignalsSkillResponseSource,
-    type: S.String,
-    updatedAt: S.String.pipe(T.Body("updated_at")),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "DeleteThreatSignalsSkillResponse",
-}) as any as S.Schema<DeleteThreatSignalsSkillResponse>;
+export const DeleteThreatSignalsSkillResponse =
+  CreateThreatSignalsSkillResponse as any as S.Schema<DeleteThreatSignalsSkillResponse>;
 
 export interface EditThreatEventsQueryRequest {
   /** Account ID. */
@@ -3067,15 +2959,8 @@ export interface EditThreatEventsTagRequestActiveDurationCase1 {
   confidence?: number;
   tlp?: EditThreatEventsTagRequestActiveDurationCase1Tlp | (string & {});
 }
-export const EditThreatEventsTagRequestActiveDurationCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.String,
-    confidence: S.optional(S.Number),
-    tlp: S.optional(EditThreatEventsTagRequestActiveDurationCase1Tlp),
-  }),
-).annotate({
-  identifier: "EditThreatEventsTagRequestActiveDurationCase1",
-}) as any as S.Schema<EditThreatEventsTagRequestActiveDurationCase1>;
+export const EditThreatEventsTagRequestActiveDurationCase1 =
+  ThreatEventsTagsCreateRequestActiveDurationCase1 as any as S.Schema<EditThreatEventsTagRequestActiveDurationCase1>;
 
 export type EditThreatEventsTagRequestActiveDuration =
   | string
@@ -3099,15 +2984,8 @@ export interface EditThreatEventsTagRequestActorCategoryCase1 {
   confidence?: number;
   tlp?: EditThreatEventsTagRequestActorCategoryCase1Tlp | (string & {});
 }
-export const EditThreatEventsTagRequestActorCategoryCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.String,
-    confidence: S.optional(S.Number),
-    tlp: S.optional(EditThreatEventsTagRequestActorCategoryCase1Tlp),
-  }),
-).annotate({
-  identifier: "EditThreatEventsTagRequestActorCategoryCase1",
-}) as any as S.Schema<EditThreatEventsTagRequestActorCategoryCase1>;
+export const EditThreatEventsTagRequestActorCategoryCase1 =
+  ThreatEventsTagsCreateRequestActiveDurationCase1 as any as S.Schema<EditThreatEventsTagRequestActorCategoryCase1>;
 
 export type EditThreatEventsTagRequestActorCategory =
   | string
@@ -3131,20 +3009,12 @@ export interface EditThreatEventsTagRequestAliasesItem {
   confidence?: number;
   tlp?: EditThreatEventsTagRequestAliasesItemTlp | (string & {});
 }
-export const EditThreatEventsTagRequestAliasesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.String,
-    confidence: S.optional(S.Number),
-    tlp: S.optional(EditThreatEventsTagRequestAliasesItemTlp),
-  }),
-).annotate({
-  identifier: "EditThreatEventsTagRequestAliasesItem",
-}) as any as S.Schema<EditThreatEventsTagRequestAliasesItem>;
+export const EditThreatEventsTagRequestAliasesItem =
+  ThreatEventsTagsCreateRequestActiveDurationCase1 as any as S.Schema<EditThreatEventsTagRequestAliasesItem>;
 
 export type EditThreatEventsTagRequestAliasesList = Array<EditThreatEventsTagRequestAliasesItem>;
-export const EditThreatEventsTagRequestAliasesList = /*@__PURE__*/ S.Array(
-  EditThreatEventsTagRequestAliasesItem,
-) as any as S.Schema<EditThreatEventsTagRequestAliasesList>;
+export const EditThreatEventsTagRequestAliasesList =
+  ThreatEventsTagsCreateRequestAliasesList as any as S.Schema<EditThreatEventsTagRequestAliasesList>;
 
 export type EditThreatEventsTagRequestAliasGroupNamesList = Array<string>;
 export const EditThreatEventsTagRequestAliasGroupNamesList =
@@ -3169,15 +3039,8 @@ export interface EditThreatEventsTagRequestAttributionOrganizationCase1 {
   confidence?: number;
   tlp?: EditThreatEventsTagRequestAttributionOrganizationCase1Tlp | (string & {});
 }
-export const EditThreatEventsTagRequestAttributionOrganizationCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.String,
-    confidence: S.optional(S.Number),
-    tlp: S.optional(EditThreatEventsTagRequestAttributionOrganizationCase1Tlp),
-  }),
-).annotate({
-  identifier: "EditThreatEventsTagRequestAttributionOrganizationCase1",
-}) as any as S.Schema<EditThreatEventsTagRequestAttributionOrganizationCase1>;
+export const EditThreatEventsTagRequestAttributionOrganizationCase1 =
+  ThreatEventsTagsCreateRequestActiveDurationCase1 as any as S.Schema<EditThreatEventsTagRequestAttributionOrganizationCase1>;
 
 export type EditThreatEventsTagRequestAttributionOrganization =
   | string
@@ -3215,21 +3078,13 @@ export interface EditThreatEventsTagRequestInternalAliasesItem {
   confidence?: number;
   tlp?: EditThreatEventsTagRequestInternalAliasesItemTlp | (string & {});
 }
-export const EditThreatEventsTagRequestInternalAliasesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.String,
-    confidence: S.optional(S.Number),
-    tlp: S.optional(EditThreatEventsTagRequestInternalAliasesItemTlp),
-  }),
-).annotate({
-  identifier: "EditThreatEventsTagRequestInternalAliasesItem",
-}) as any as S.Schema<EditThreatEventsTagRequestInternalAliasesItem>;
+export const EditThreatEventsTagRequestInternalAliasesItem =
+  ThreatEventsTagsCreateRequestActiveDurationCase1 as any as S.Schema<EditThreatEventsTagRequestInternalAliasesItem>;
 
 export type EditThreatEventsTagRequestInternalAliasesList =
   Array<EditThreatEventsTagRequestInternalAliasesItem>;
-export const EditThreatEventsTagRequestInternalAliasesList = /*@__PURE__*/ S.Array(
-  EditThreatEventsTagRequestInternalAliasesItem,
-) as any as S.Schema<EditThreatEventsTagRequestInternalAliasesList>;
+export const EditThreatEventsTagRequestInternalAliasesList =
+  ThreatEventsTagsCreateRequestAliasesList as any as S.Schema<EditThreatEventsTagRequestInternalAliasesList>;
 
 export type EditThreatEventsTagRequestMotiveCase1Tlp =
   | "red"
@@ -3246,15 +3101,8 @@ export interface EditThreatEventsTagRequestMotiveCase1 {
   confidence?: number;
   tlp?: EditThreatEventsTagRequestMotiveCase1Tlp | (string & {});
 }
-export const EditThreatEventsTagRequestMotiveCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.String,
-    confidence: S.optional(S.Number),
-    tlp: S.optional(EditThreatEventsTagRequestMotiveCase1Tlp),
-  }),
-).annotate({
-  identifier: "EditThreatEventsTagRequestMotiveCase1",
-}) as any as S.Schema<EditThreatEventsTagRequestMotiveCase1>;
+export const EditThreatEventsTagRequestMotiveCase1 =
+  ThreatEventsTagsCreateRequestActiveDurationCase1 as any as S.Schema<EditThreatEventsTagRequestMotiveCase1>;
 
 export type EditThreatEventsTagRequestMotive = string | EditThreatEventsTagRequestMotiveCase1;
 export const EditThreatEventsTagRequestMotive = /*@__PURE__*/ S.Unknown.pipe(
@@ -3276,15 +3124,8 @@ export interface EditThreatEventsTagRequestOpsecLevelCase1 {
   confidence?: number;
   tlp?: EditThreatEventsTagRequestOpsecLevelCase1Tlp | (string & {});
 }
-export const EditThreatEventsTagRequestOpsecLevelCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.String,
-    confidence: S.optional(S.Number),
-    tlp: S.optional(EditThreatEventsTagRequestOpsecLevelCase1Tlp),
-  }),
-).annotate({
-  identifier: "EditThreatEventsTagRequestOpsecLevelCase1",
-}) as any as S.Schema<EditThreatEventsTagRequestOpsecLevelCase1>;
+export const EditThreatEventsTagRequestOpsecLevelCase1 =
+  ThreatEventsTagsCreateRequestActiveDurationCase1 as any as S.Schema<EditThreatEventsTagRequestOpsecLevelCase1>;
 
 export type EditThreatEventsTagRequestOpsecLevel =
   | string
@@ -3308,15 +3149,8 @@ export interface EditThreatEventsTagRequestOriginCountryISOCase1 {
   confidence?: number;
   tlp?: EditThreatEventsTagRequestOriginCountryISOCase1Tlp | (string & {});
 }
-export const EditThreatEventsTagRequestOriginCountryISOCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.String,
-    confidence: S.optional(S.Number),
-    tlp: S.optional(EditThreatEventsTagRequestOriginCountryISOCase1Tlp),
-  }),
-).annotate({
-  identifier: "EditThreatEventsTagRequestOriginCountryISOCase1",
-}) as any as S.Schema<EditThreatEventsTagRequestOriginCountryISOCase1>;
+export const EditThreatEventsTagRequestOriginCountryISOCase1 =
+  ThreatEventsTagsCreateRequestActiveDurationCase1 as any as S.Schema<EditThreatEventsTagRequestOriginCountryISOCase1>;
 
 export type EditThreatEventsTagRequestOriginCountryISO =
   | string
@@ -3340,15 +3174,8 @@ export interface EditThreatEventsTagRequestPriorityCase1 {
   confidence?: number;
   tlp?: EditThreatEventsTagRequestPriorityCase1Tlp | (string & {});
 }
-export const EditThreatEventsTagRequestPriorityCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.Number,
-    confidence: S.optional(S.Number),
-    tlp: S.optional(EditThreatEventsTagRequestPriorityCase1Tlp),
-  }),
-).annotate({
-  identifier: "EditThreatEventsTagRequestPriorityCase1",
-}) as any as S.Schema<EditThreatEventsTagRequestPriorityCase1>;
+export const EditThreatEventsTagRequestPriorityCase1 =
+  ThreatEventsTagsCreateRequestPriorityCase1 as any as S.Schema<EditThreatEventsTagRequestPriorityCase1>;
 
 export type EditThreatEventsTagRequestPriority = number | EditThreatEventsTagRequestPriorityCase1;
 export const EditThreatEventsTagRequestPriority = /*@__PURE__*/ S.Unknown.pipe(
@@ -3374,15 +3201,8 @@ export interface EditThreatEventsTagRequestSophisticationLevelCase1 {
   confidence?: number;
   tlp?: EditThreatEventsTagRequestSophisticationLevelCase1Tlp | (string & {});
 }
-export const EditThreatEventsTagRequestSophisticationLevelCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.String,
-    confidence: S.optional(S.Number),
-    tlp: S.optional(EditThreatEventsTagRequestSophisticationLevelCase1Tlp),
-  }),
-).annotate({
-  identifier: "EditThreatEventsTagRequestSophisticationLevelCase1",
-}) as any as S.Schema<EditThreatEventsTagRequestSophisticationLevelCase1>;
+export const EditThreatEventsTagRequestSophisticationLevelCase1 =
+  ThreatEventsTagsCreateRequestActiveDurationCase1 as any as S.Schema<EditThreatEventsTagRequestSophisticationLevelCase1>;
 
 export type EditThreatEventsTagRequestSophisticationLevel =
   | string
@@ -3492,14 +3312,8 @@ export interface EditThreatEventsTagResponseActiveDurationAnnotated {
   value: string;
   tlp?: EditThreatEventsTagResponseActiveDurationAnnotatedTlp | null;
 }
-export const EditThreatEventsTagResponseActiveDurationAnnotated = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.String,
-    tlp: S.optional(S.NullOr(EditThreatEventsTagResponseActiveDurationAnnotatedTlp)),
-  }),
-).annotate({
-  identifier: "EditThreatEventsTagResponseActiveDurationAnnotated",
-}) as any as S.Schema<EditThreatEventsTagResponseActiveDurationAnnotated>;
+export const EditThreatEventsTagResponseActiveDurationAnnotated =
+  ThreatEventsTagsCreateResponseActiveDurationAnnotated as any as S.Schema<EditThreatEventsTagResponseActiveDurationAnnotated>;
 
 export type EditThreatEventsTagResponseActorCategoryAnnotatedTlp =
   | "red"
@@ -3516,15 +3330,8 @@ export interface EditThreatEventsTagResponseActorCategoryAnnotated {
   confidence?: number | null;
   tlp?: EditThreatEventsTagResponseActorCategoryAnnotatedTlp | null;
 }
-export const EditThreatEventsTagResponseActorCategoryAnnotated = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.String,
-    confidence: S.optional(S.NullOr(S.Number)),
-    tlp: S.optional(S.NullOr(EditThreatEventsTagResponseActorCategoryAnnotatedTlp)),
-  }),
-).annotate({
-  identifier: "EditThreatEventsTagResponseActorCategoryAnnotated",
-}) as any as S.Schema<EditThreatEventsTagResponseActorCategoryAnnotated>;
+export const EditThreatEventsTagResponseActorCategoryAnnotated =
+  ThreatEventsTagsCreateResponseActorCategoryAnnotated as any as S.Schema<EditThreatEventsTagResponseActorCategoryAnnotated>;
 
 export type EditThreatEventsTagResponseAliasesItemTlp =
   | "red"
@@ -3541,20 +3348,12 @@ export interface EditThreatEventsTagResponseAliasesItem {
   confidence?: number | null;
   tlp?: EditThreatEventsTagResponseAliasesItemTlp | null;
 }
-export const EditThreatEventsTagResponseAliasesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.String,
-    confidence: S.optional(S.NullOr(S.Number)),
-    tlp: S.optional(S.NullOr(EditThreatEventsTagResponseAliasesItemTlp)),
-  }),
-).annotate({
-  identifier: "EditThreatEventsTagResponseAliasesItem",
-}) as any as S.Schema<EditThreatEventsTagResponseAliasesItem>;
+export const EditThreatEventsTagResponseAliasesItem =
+  ThreatEventsTagsCreateResponseActorCategoryAnnotated as any as S.Schema<EditThreatEventsTagResponseAliasesItem>;
 
 export type EditThreatEventsTagResponseAliasesList = Array<EditThreatEventsTagResponseAliasesItem>;
-export const EditThreatEventsTagResponseAliasesList = /*@__PURE__*/ S.Array(
-  EditThreatEventsTagResponseAliasesItem,
-) as any as S.Schema<EditThreatEventsTagResponseAliasesList>;
+export const EditThreatEventsTagResponseAliasesList =
+  ThreatEventsTagsCreateResponseAliasesList as any as S.Schema<EditThreatEventsTagResponseAliasesList>;
 
 export type EditThreatEventsTagResponseAliasGroupNamesList = Array<string>;
 export const EditThreatEventsTagResponseAliasGroupNamesList =
@@ -3579,16 +3378,8 @@ export interface EditThreatEventsTagResponseAttributionOrganizationAnnotated {
   confidence?: number | null;
   tlp?: EditThreatEventsTagResponseAttributionOrganizationAnnotatedTlp | null;
 }
-export const EditThreatEventsTagResponseAttributionOrganizationAnnotated = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      value: S.String,
-      confidence: S.optional(S.NullOr(S.Number)),
-      tlp: S.optional(S.NullOr(EditThreatEventsTagResponseAttributionOrganizationAnnotatedTlp)),
-    }),
-).annotate({
-  identifier: "EditThreatEventsTagResponseAttributionOrganizationAnnotated",
-}) as any as S.Schema<EditThreatEventsTagResponseAttributionOrganizationAnnotated>;
+export const EditThreatEventsTagResponseAttributionOrganizationAnnotated =
+  ThreatEventsTagsCreateResponseSophisticationLevelAnnotated as any as S.Schema<EditThreatEventsTagResponseAttributionOrganizationAnnotated>;
 
 export type EditThreatEventsTagResponseExternalReferenceLinksList = Array<string>;
 export const EditThreatEventsTagResponseExternalReferenceLinksList =
@@ -3649,21 +3440,13 @@ export interface EditThreatEventsTagResponseInternalAliasesItem {
   confidence?: number | null;
   tlp?: EditThreatEventsTagResponseInternalAliasesItemTlp | null;
 }
-export const EditThreatEventsTagResponseInternalAliasesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.String,
-    confidence: S.optional(S.NullOr(S.Number)),
-    tlp: S.optional(S.NullOr(EditThreatEventsTagResponseInternalAliasesItemTlp)),
-  }),
-).annotate({
-  identifier: "EditThreatEventsTagResponseInternalAliasesItem",
-}) as any as S.Schema<EditThreatEventsTagResponseInternalAliasesItem>;
+export const EditThreatEventsTagResponseInternalAliasesItem =
+  ThreatEventsTagsCreateResponseActorCategoryAnnotated as any as S.Schema<EditThreatEventsTagResponseInternalAliasesItem>;
 
 export type EditThreatEventsTagResponseInternalAliasesList =
   Array<EditThreatEventsTagResponseInternalAliasesItem>;
-export const EditThreatEventsTagResponseInternalAliasesList = /*@__PURE__*/ S.Array(
-  EditThreatEventsTagResponseInternalAliasesItem,
-) as any as S.Schema<EditThreatEventsTagResponseInternalAliasesList>;
+export const EditThreatEventsTagResponseInternalAliasesList =
+  ThreatEventsTagsCreateResponseAliasesList as any as S.Schema<EditThreatEventsTagResponseInternalAliasesList>;
 
 export type EditThreatEventsTagResponseMotiveAnnotatedTlp =
   | "red"
@@ -3680,15 +3463,8 @@ export interface EditThreatEventsTagResponseMotiveAnnotated {
   confidence?: number | null;
   tlp?: EditThreatEventsTagResponseMotiveAnnotatedTlp | null;
 }
-export const EditThreatEventsTagResponseMotiveAnnotated = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.String,
-    confidence: S.optional(S.NullOr(S.Number)),
-    tlp: S.optional(S.NullOr(EditThreatEventsTagResponseMotiveAnnotatedTlp)),
-  }),
-).annotate({
-  identifier: "EditThreatEventsTagResponseMotiveAnnotated",
-}) as any as S.Schema<EditThreatEventsTagResponseMotiveAnnotated>;
+export const EditThreatEventsTagResponseMotiveAnnotated =
+  ThreatEventsTagsCreateResponseActorCategoryAnnotated as any as S.Schema<EditThreatEventsTagResponseMotiveAnnotated>;
 
 export type EditThreatEventsTagResponseOpsecLevelAnnotatedTlp =
   | "red"
@@ -3705,15 +3481,8 @@ export interface EditThreatEventsTagResponseOpsecLevelAnnotated {
   confidence?: number | null;
   tlp?: EditThreatEventsTagResponseOpsecLevelAnnotatedTlp | null;
 }
-export const EditThreatEventsTagResponseOpsecLevelAnnotated = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.String,
-    confidence: S.optional(S.NullOr(S.Number)),
-    tlp: S.optional(S.NullOr(EditThreatEventsTagResponseOpsecLevelAnnotatedTlp)),
-  }),
-).annotate({
-  identifier: "EditThreatEventsTagResponseOpsecLevelAnnotated",
-}) as any as S.Schema<EditThreatEventsTagResponseOpsecLevelAnnotated>;
+export const EditThreatEventsTagResponseOpsecLevelAnnotated =
+  ThreatEventsTagsCreateResponseActorCategoryAnnotated as any as S.Schema<EditThreatEventsTagResponseOpsecLevelAnnotated>;
 
 export type EditThreatEventsTagResponseOriginCountryISOAnnotatedTlp =
   | "red"
@@ -3730,15 +3499,8 @@ export interface EditThreatEventsTagResponseOriginCountryISOAnnotated {
   confidence?: number | null;
   tlp?: EditThreatEventsTagResponseOriginCountryISOAnnotatedTlp | null;
 }
-export const EditThreatEventsTagResponseOriginCountryISOAnnotated = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.String,
-    confidence: S.optional(S.NullOr(S.Number)),
-    tlp: S.optional(S.NullOr(EditThreatEventsTagResponseOriginCountryISOAnnotatedTlp)),
-  }),
-).annotate({
-  identifier: "EditThreatEventsTagResponseOriginCountryISOAnnotated",
-}) as any as S.Schema<EditThreatEventsTagResponseOriginCountryISOAnnotated>;
+export const EditThreatEventsTagResponseOriginCountryISOAnnotated =
+  ThreatEventsTagsCreateResponseActorCategoryAnnotated as any as S.Schema<EditThreatEventsTagResponseOriginCountryISOAnnotated>;
 
 export type EditThreatEventsTagResponsePriorityAnnotatedTlp =
   | "red"
@@ -3754,14 +3516,8 @@ export interface EditThreatEventsTagResponsePriorityAnnotated {
   value: number;
   tlp?: EditThreatEventsTagResponsePriorityAnnotatedTlp | null;
 }
-export const EditThreatEventsTagResponsePriorityAnnotated = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.Number,
-    tlp: S.optional(S.NullOr(EditThreatEventsTagResponsePriorityAnnotatedTlp)),
-  }),
-).annotate({
-  identifier: "EditThreatEventsTagResponsePriorityAnnotated",
-}) as any as S.Schema<EditThreatEventsTagResponsePriorityAnnotated>;
+export const EditThreatEventsTagResponsePriorityAnnotated =
+  ThreatEventsTagsCreateResponsePriorityAnnotated as any as S.Schema<EditThreatEventsTagResponsePriorityAnnotated>;
 
 export type EditThreatEventsTagResponsePropertiesMap = { [key: string]: unknown | undefined };
 export const EditThreatEventsTagResponsePropertiesMap =
@@ -3782,15 +3538,8 @@ export interface EditThreatEventsTagResponseSophisticationLevelAnnotated {
   confidence?: number | null;
   tlp?: EditThreatEventsTagResponseSophisticationLevelAnnotatedTlp | null;
 }
-export const EditThreatEventsTagResponseSophisticationLevelAnnotated = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.String,
-    confidence: S.optional(S.NullOr(S.Number)),
-    tlp: S.optional(S.NullOr(EditThreatEventsTagResponseSophisticationLevelAnnotatedTlp)),
-  }),
-).annotate({
-  identifier: "EditThreatEventsTagResponseSophisticationLevelAnnotated",
-}) as any as S.Schema<EditThreatEventsTagResponseSophisticationLevelAnnotated>;
+export const EditThreatEventsTagResponseSophisticationLevelAnnotated =
+  ThreatEventsTagsCreateResponseActorCategoryAnnotated as any as S.Schema<EditThreatEventsTagResponseSophisticationLevelAnnotated>;
 
 export type EditThreatEventsTagResponseTlp =
   | "red"
@@ -4413,22 +4162,8 @@ export interface EditThreatSignalsSkillResponse {
   type: string;
   updatedAt: string;
 }
-export const EditThreatSignalsSkillResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    config: S.String,
-    createdAt: S.String.pipe(T.Body("created_at")),
-    isActive: S.Number.pipe(T.Body("is_active")),
-    name: S.String,
-    outputSchema: S.String.pipe(T.Body("output_schema")),
-    prompt: S.String,
-    source: EditThreatSignalsSkillResponseSource,
-    type: S.String,
-    updatedAt: S.String.pipe(T.Body("updated_at")),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "EditThreatSignalsSkillResponse",
-}) as any as S.Schema<EditThreatSignalsSkillResponse>;
+export const EditThreatSignalsSkillResponse =
+  CreateThreatSignalsSkillResponse as any as S.Schema<EditThreatSignalsSkillResponse>;
 
 export interface GenerateThreatSignalsArticlesTagRequest {
   accountId: string;
@@ -4460,22 +4195,13 @@ export interface GenerateThreatSignalsArticlesTagResponseTagsItem {
   uuid: string;
   value: string;
 }
-export const GenerateThreatSignalsArticlesTagResponseTagsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    appliedBy: GenerateThreatSignalsArticlesTagResponseTagsItemAppliedBy.pipe(T.Body("applied_by")),
-    categoryId: S.String,
-    uuid: S.String,
-    value: S.String,
-  }),
-).annotate({
-  identifier: "GenerateThreatSignalsArticlesTagResponseTagsItem",
-}) as any as S.Schema<GenerateThreatSignalsArticlesTagResponseTagsItem>;
+export const GenerateThreatSignalsArticlesTagResponseTagsItem =
+  EditThreatSignalsArticleResponseTagsItem as any as S.Schema<GenerateThreatSignalsArticlesTagResponseTagsItem>;
 
 export type GenerateThreatSignalsArticlesTagResponseTagsList =
   Array<GenerateThreatSignalsArticlesTagResponseTagsItem>;
-export const GenerateThreatSignalsArticlesTagResponseTagsList = /*@__PURE__*/ S.Array(
-  GenerateThreatSignalsArticlesTagResponseTagsItem,
-) as any as S.Schema<GenerateThreatSignalsArticlesTagResponseTagsList>;
+export const GenerateThreatSignalsArticlesTagResponseTagsList =
+  EditThreatSignalsArticleResponseTagsList as any as S.Schema<GenerateThreatSignalsArticlesTagResponseTagsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GenerateThreatSignalsArticlesTagResponse {
@@ -4575,23 +4301,7 @@ export interface GetRequestResponse {
   /** Tokens for the request. */
   tokens?: number | null;
 }
-export const GetRequestResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    content: S.String,
-    created: S.String,
-    priority: S.String,
-    request: S.String,
-    summary: S.String,
-    tlp: RequestsGetResponseTlp,
-    updated: S.String,
-    completed: S.optional(S.NullOr(S.String)),
-    messageTokens: S.optional(S.NullOr(S.Number).pipe(T.Body("message_tokens"))),
-    readableId: S.optional(S.NullOr(S.String).pipe(T.Body("readable_id"))),
-    status: S.optional(S.NullOr(RequestsGetResponseStatus)),
-    tokens: S.optional(S.NullOr(S.Number)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "GetRequestResponse" }) as any as S.Schema<GetRequestResponse>;
+export const GetRequestResponse = CreateRequestResponse as any as S.Schema<GetRequestResponse>;
 
 export type RequestsMessageGetRequestSortOrder = "asc" | "desc";
 export const RequestsMessageGetRequestSortOrder = S.String;
@@ -5385,22 +5095,13 @@ export interface GetThreatSignalsArticleResponseTagsItem {
   uuid: string;
   value: string;
 }
-export const GetThreatSignalsArticleResponseTagsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    appliedBy: GetThreatSignalsArticleResponseTagsItemAppliedBy.pipe(T.Body("applied_by")),
-    categoryId: S.String,
-    uuid: S.String,
-    value: S.String,
-  }),
-).annotate({
-  identifier: "GetThreatSignalsArticleResponseTagsItem",
-}) as any as S.Schema<GetThreatSignalsArticleResponseTagsItem>;
+export const GetThreatSignalsArticleResponseTagsItem =
+  EditThreatSignalsArticleResponseTagsItem as any as S.Schema<GetThreatSignalsArticleResponseTagsItem>;
 
 export type GetThreatSignalsArticleResponseTagsList =
   Array<GetThreatSignalsArticleResponseTagsItem>;
-export const GetThreatSignalsArticleResponseTagsList = /*@__PURE__*/ S.Array(
-  GetThreatSignalsArticleResponseTagsItem,
-) as any as S.Schema<GetThreatSignalsArticleResponseTagsList>;
+export const GetThreatSignalsArticleResponseTagsList =
+  EditThreatSignalsArticleResponseTagsList as any as S.Schema<GetThreatSignalsArticleResponseTagsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetThreatSignalsArticleResponse {
@@ -5677,22 +5378,8 @@ export interface GetThreatSignalsSkillResponse {
   type: string;
   updatedAt: string;
 }
-export const GetThreatSignalsSkillResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    config: S.String,
-    createdAt: S.String.pipe(T.Body("created_at")),
-    isActive: S.Number.pipe(T.Body("is_active")),
-    name: S.String,
-    outputSchema: S.String.pipe(T.Body("output_schema")),
-    prompt: S.String,
-    source: GetThreatSignalsSkillResponseSource,
-    type: S.String,
-    updatedAt: S.String.pipe(T.Body("updated_at")),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "GetThreatSignalsSkillResponse",
-}) as any as S.Schema<GetThreatSignalsSkillResponse>;
+export const GetThreatSignalsSkillResponse =
+  CreateThreatSignalsSkillResponse as any as S.Schema<GetThreatSignalsSkillResponse>;
 
 export type GetThreatSignalsSkillsTagCategoryRequestSkillId = "default-tagging-skill";
 export const GetThreatSignalsSkillsTagCategoryRequestSkillId = S.String;
@@ -7168,24 +6855,12 @@ export interface ListThreatEventsIndicatorsByDatasetResponseIndicatorsItemSource
   title: string;
 }
 export const ListThreatEventsIndicatorsByDatasetResponseIndicatorsItemSourcesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resourceId: S.String,
-      resourceType:
-        ListThreatEventsIndicatorsByDatasetResponseIndicatorsItemSourcesItemResourceType,
-      system: ListThreatEventsIndicatorsByDatasetResponseIndicatorsItemSourcesItemSystem,
-      title: S.String,
-    }),
-  ).annotate({
-    identifier: "ListThreatEventsIndicatorsByDatasetResponseIndicatorsItemSourcesItem",
-  }) as any as S.Schema<ListThreatEventsIndicatorsByDatasetResponseIndicatorsItemSourcesItem>;
+  ListThreatEventsIndicatorsResponsePropertiesIndicatorsItemsSourcesItem as any as S.Schema<ListThreatEventsIndicatorsByDatasetResponseIndicatorsItemSourcesItem>;
 
 export type ListThreatEventsIndicatorsByDatasetResponseIndicatorsItemSourcesList =
   Array<ListThreatEventsIndicatorsByDatasetResponseIndicatorsItemSourcesItem>;
 export const ListThreatEventsIndicatorsByDatasetResponseIndicatorsItemSourcesList =
-  /*@__PURE__*/ S.Array(
-    ListThreatEventsIndicatorsByDatasetResponseIndicatorsItemSourcesItem,
-  ) as any as S.Schema<ListThreatEventsIndicatorsByDatasetResponseIndicatorsItemSourcesList>;
+  ListThreatEventsIndicatorsResponsePropertiesIndicatorsItemsSourcesList as any as S.Schema<ListThreatEventsIndicatorsByDatasetResponseIndicatorsItemSourcesList>;
 
 export type ListThreatEventsIndicatorsByDatasetResponseIndicatorsItemRelatedEventsItem =
   GetThreatEventsIndicatorsByDatasetResponseRelatedEventsItem;
@@ -7578,15 +7253,8 @@ export interface ListThreatEventsTagsResponseTagsItemActiveDurationAnnotated {
   value: string;
   tlp?: ListThreatEventsTagsResponseTagsItemActiveDurationAnnotatedTlp | null;
 }
-export const ListThreatEventsTagsResponseTagsItemActiveDurationAnnotated = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      value: S.String,
-      tlp: S.optional(S.NullOr(ListThreatEventsTagsResponseTagsItemActiveDurationAnnotatedTlp)),
-    }),
-).annotate({
-  identifier: "ListThreatEventsTagsResponseTagsItemActiveDurationAnnotated",
-}) as any as S.Schema<ListThreatEventsTagsResponseTagsItemActiveDurationAnnotated>;
+export const ListThreatEventsTagsResponseTagsItemActiveDurationAnnotated =
+  EditThreatEventsTagResponseExternalReferencesAnnotatedItem as any as S.Schema<ListThreatEventsTagsResponseTagsItemActiveDurationAnnotated>;
 
 export type ListThreatEventsTagsResponseTagsItemActorCategoryAnnotatedTlp =
   | "red"
@@ -7603,16 +7271,8 @@ export interface ListThreatEventsTagsResponseTagsItemActorCategoryAnnotated {
   confidence?: number | null;
   tlp?: ListThreatEventsTagsResponseTagsItemActorCategoryAnnotatedTlp | null;
 }
-export const ListThreatEventsTagsResponseTagsItemActorCategoryAnnotated = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      value: S.String,
-      confidence: S.optional(S.NullOr(S.Number)),
-      tlp: S.optional(S.NullOr(ListThreatEventsTagsResponseTagsItemActorCategoryAnnotatedTlp)),
-    }),
-).annotate({
-  identifier: "ListThreatEventsTagsResponseTagsItemActorCategoryAnnotated",
-}) as any as S.Schema<ListThreatEventsTagsResponseTagsItemActorCategoryAnnotated>;
+export const ListThreatEventsTagsResponseTagsItemActorCategoryAnnotated =
+  ThreatEventsTagsCreateResponseSophisticationLevelAnnotated as any as S.Schema<ListThreatEventsTagsResponseTagsItemActorCategoryAnnotated>;
 
 export type ListThreatEventsTagsResponseTagsItemAliasesItemTlp =
   | "red"
@@ -7629,21 +7289,13 @@ export interface ListThreatEventsTagsResponseTagsItemAliasesItem {
   confidence?: number | null;
   tlp?: ListThreatEventsTagsResponseTagsItemAliasesItemTlp | null;
 }
-export const ListThreatEventsTagsResponseTagsItemAliasesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.String,
-    confidence: S.optional(S.NullOr(S.Number)),
-    tlp: S.optional(S.NullOr(ListThreatEventsTagsResponseTagsItemAliasesItemTlp)),
-  }),
-).annotate({
-  identifier: "ListThreatEventsTagsResponseTagsItemAliasesItem",
-}) as any as S.Schema<ListThreatEventsTagsResponseTagsItemAliasesItem>;
+export const ListThreatEventsTagsResponseTagsItemAliasesItem =
+  ThreatEventsTagsCreateResponseActorCategoryAnnotated as any as S.Schema<ListThreatEventsTagsResponseTagsItemAliasesItem>;
 
 export type ListThreatEventsTagsResponseTagsItemAliasesList =
   Array<ListThreatEventsTagsResponseTagsItemAliasesItem>;
-export const ListThreatEventsTagsResponseTagsItemAliasesList = /*@__PURE__*/ S.Array(
-  ListThreatEventsTagsResponseTagsItemAliasesItem,
-) as any as S.Schema<ListThreatEventsTagsResponseTagsItemAliasesList>;
+export const ListThreatEventsTagsResponseTagsItemAliasesList =
+  ThreatEventsTagsCreateResponseAliasesList as any as S.Schema<ListThreatEventsTagsResponseTagsItemAliasesList>;
 
 export type ListThreatEventsTagsResponseTagsItemAliasGroupNamesList = Array<string>;
 export const ListThreatEventsTagsResponseTagsItemAliasGroupNamesList =
@@ -7743,21 +7395,13 @@ export interface ListThreatEventsTagsResponseTagsItemInternalAliasesItem {
   confidence?: number | null;
   tlp?: ListThreatEventsTagsResponseTagsItemInternalAliasesItemTlp | null;
 }
-export const ListThreatEventsTagsResponseTagsItemInternalAliasesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.String,
-    confidence: S.optional(S.NullOr(S.Number)),
-    tlp: S.optional(S.NullOr(ListThreatEventsTagsResponseTagsItemInternalAliasesItemTlp)),
-  }),
-).annotate({
-  identifier: "ListThreatEventsTagsResponseTagsItemInternalAliasesItem",
-}) as any as S.Schema<ListThreatEventsTagsResponseTagsItemInternalAliasesItem>;
+export const ListThreatEventsTagsResponseTagsItemInternalAliasesItem =
+  ThreatEventsTagsCreateResponseActorCategoryAnnotated as any as S.Schema<ListThreatEventsTagsResponseTagsItemInternalAliasesItem>;
 
 export type ListThreatEventsTagsResponseTagsItemInternalAliasesList =
   Array<ListThreatEventsTagsResponseTagsItemInternalAliasesItem>;
-export const ListThreatEventsTagsResponseTagsItemInternalAliasesList = /*@__PURE__*/ S.Array(
-  ListThreatEventsTagsResponseTagsItemInternalAliasesItem,
-) as any as S.Schema<ListThreatEventsTagsResponseTagsItemInternalAliasesList>;
+export const ListThreatEventsTagsResponseTagsItemInternalAliasesList =
+  ThreatEventsTagsCreateResponseAliasesList as any as S.Schema<ListThreatEventsTagsResponseTagsItemInternalAliasesList>;
 
 export type ListThreatEventsTagsResponseTagsItemMotiveAnnotatedTlp =
   | "red"
@@ -7774,15 +7418,8 @@ export interface ListThreatEventsTagsResponseTagsItemMotiveAnnotated {
   confidence?: number | null;
   tlp?: ListThreatEventsTagsResponseTagsItemMotiveAnnotatedTlp | null;
 }
-export const ListThreatEventsTagsResponseTagsItemMotiveAnnotated = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.String,
-    confidence: S.optional(S.NullOr(S.Number)),
-    tlp: S.optional(S.NullOr(ListThreatEventsTagsResponseTagsItemMotiveAnnotatedTlp)),
-  }),
-).annotate({
-  identifier: "ListThreatEventsTagsResponseTagsItemMotiveAnnotated",
-}) as any as S.Schema<ListThreatEventsTagsResponseTagsItemMotiveAnnotated>;
+export const ListThreatEventsTagsResponseTagsItemMotiveAnnotated =
+  ThreatEventsTagsCreateResponseActorCategoryAnnotated as any as S.Schema<ListThreatEventsTagsResponseTagsItemMotiveAnnotated>;
 
 export type ListThreatEventsTagsResponseTagsItemOpsecLevelAnnotatedTlp =
   | "red"
@@ -7799,15 +7436,8 @@ export interface ListThreatEventsTagsResponseTagsItemOpsecLevelAnnotated {
   confidence?: number | null;
   tlp?: ListThreatEventsTagsResponseTagsItemOpsecLevelAnnotatedTlp | null;
 }
-export const ListThreatEventsTagsResponseTagsItemOpsecLevelAnnotated = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.String,
-    confidence: S.optional(S.NullOr(S.Number)),
-    tlp: S.optional(S.NullOr(ListThreatEventsTagsResponseTagsItemOpsecLevelAnnotatedTlp)),
-  }),
-).annotate({
-  identifier: "ListThreatEventsTagsResponseTagsItemOpsecLevelAnnotated",
-}) as any as S.Schema<ListThreatEventsTagsResponseTagsItemOpsecLevelAnnotated>;
+export const ListThreatEventsTagsResponseTagsItemOpsecLevelAnnotated =
+  ThreatEventsTagsCreateResponseActorCategoryAnnotated as any as S.Schema<ListThreatEventsTagsResponseTagsItemOpsecLevelAnnotated>;
 
 export type ListThreatEventsTagsResponseTagsItemOriginCountryISOAnnotatedTlp =
   | "red"
@@ -7825,15 +7455,7 @@ export interface ListThreatEventsTagsResponseTagsItemOriginCountryISOAnnotated {
   tlp?: ListThreatEventsTagsResponseTagsItemOriginCountryISOAnnotatedTlp | null;
 }
 export const ListThreatEventsTagsResponseTagsItemOriginCountryISOAnnotated =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      value: S.String,
-      confidence: S.optional(S.NullOr(S.Number)),
-      tlp: S.optional(S.NullOr(ListThreatEventsTagsResponseTagsItemOriginCountryISOAnnotatedTlp)),
-    }),
-  ).annotate({
-    identifier: "ListThreatEventsTagsResponseTagsItemOriginCountryISOAnnotated",
-  }) as any as S.Schema<ListThreatEventsTagsResponseTagsItemOriginCountryISOAnnotated>;
+  ThreatEventsTagsCreateResponseAttributionOrganizationAnnotated as any as S.Schema<ListThreatEventsTagsResponseTagsItemOriginCountryISOAnnotated>;
 
 export type ListThreatEventsTagsResponseTagsItemPriorityAnnotatedTlp =
   | "red"
@@ -7849,14 +7471,8 @@ export interface ListThreatEventsTagsResponseTagsItemPriorityAnnotated {
   value: number;
   tlp?: ListThreatEventsTagsResponseTagsItemPriorityAnnotatedTlp | null;
 }
-export const ListThreatEventsTagsResponseTagsItemPriorityAnnotated = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.Number,
-    tlp: S.optional(S.NullOr(ListThreatEventsTagsResponseTagsItemPriorityAnnotatedTlp)),
-  }),
-).annotate({
-  identifier: "ListThreatEventsTagsResponseTagsItemPriorityAnnotated",
-}) as any as S.Schema<ListThreatEventsTagsResponseTagsItemPriorityAnnotated>;
+export const ListThreatEventsTagsResponseTagsItemPriorityAnnotated =
+  ThreatEventsTagsCreateResponsePriorityAnnotated as any as S.Schema<ListThreatEventsTagsResponseTagsItemPriorityAnnotated>;
 
 export type ListThreatEventsTagsResponseTagsItemPropertiesMap = {
   [key: string]: unknown | undefined;
@@ -7880,17 +7496,7 @@ export interface ListThreatEventsTagsResponseTagsItemSophisticationLevelAnnotate
   tlp?: ListThreatEventsTagsResponseTagsItemSophisticationLevelAnnotatedTlp | null;
 }
 export const ListThreatEventsTagsResponseTagsItemSophisticationLevelAnnotated =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      value: S.String,
-      confidence: S.optional(S.NullOr(S.Number)),
-      tlp: S.optional(
-        S.NullOr(ListThreatEventsTagsResponseTagsItemSophisticationLevelAnnotatedTlp),
-      ),
-    }),
-  ).annotate({
-    identifier: "ListThreatEventsTagsResponseTagsItemSophisticationLevelAnnotated",
-  }) as any as S.Schema<ListThreatEventsTagsResponseTagsItemSophisticationLevelAnnotated>;
+  ListThreatEventsTagsResponseTagsItemAttributionOrganizationAnnotated as any as S.Schema<ListThreatEventsTagsResponseTagsItemSophisticationLevelAnnotated>;
 
 export type ListThreatEventsTagsResponseTagsItemTlp =
   | "red"
@@ -9091,28 +8697,13 @@ export interface ListThreatSignalsSkillsResponseSkillsItem {
   type: string;
   updatedAt: string;
 }
-export const ListThreatSignalsSkillsResponseSkillsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    config: S.String,
-    createdAt: S.String.pipe(T.Body("created_at")),
-    isActive: S.Number.pipe(T.Body("is_active")),
-    name: S.String,
-    outputSchema: S.String.pipe(T.Body("output_schema")),
-    prompt: S.String,
-    source: ListThreatSignalsSkillsResponseSkillsItemSource,
-    type: S.String,
-    updatedAt: S.String.pipe(T.Body("updated_at")),
-  }),
-).annotate({
-  identifier: "ListThreatSignalsSkillsResponseSkillsItem",
-}) as any as S.Schema<ListThreatSignalsSkillsResponseSkillsItem>;
+export const ListThreatSignalsSkillsResponseSkillsItem =
+  GetThreatSignalsFeedsSkillResponseSkillsItem as any as S.Schema<ListThreatSignalsSkillsResponseSkillsItem>;
 
 export type ListThreatSignalsSkillsResponseSkillsList =
   Array<ListThreatSignalsSkillsResponseSkillsItem>;
-export const ListThreatSignalsSkillsResponseSkillsList = /*@__PURE__*/ S.Array(
-  ListThreatSignalsSkillsResponseSkillsItem,
-) as any as S.Schema<ListThreatSignalsSkillsResponseSkillsList>;
+export const ListThreatSignalsSkillsResponseSkillsList =
+  GetThreatSignalsFeedsSkillResponseSkillsList as any as S.Schema<ListThreatSignalsSkillsResponseSkillsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ListThreatSignalsSkillsResponse {
@@ -9665,17 +9256,15 @@ export type RequestsConstantsResponseStatusItem =
 export const RequestsConstantsResponseStatusItem = S.String;
 
 export type RequestsConstantsResponseStatusList = Array<RequestsConstantsResponseStatusItem>;
-export const RequestsConstantsResponseStatusList = /*@__PURE__*/ S.Array(
-  RequestsConstantsResponseStatusItem,
-) as any as S.Schema<RequestsConstantsResponseStatusList>;
+export const RequestsConstantsResponseStatusList =
+  RequestsConstantsResponsePriorityList as any as S.Schema<RequestsConstantsResponseStatusList>;
 
 export type RequestsConstantsResponseTlpItem = "clear" | "amber" | "amber-strict" | "green" | "red";
 export const RequestsConstantsResponseTlpItem = S.String;
 
 export type RequestsConstantsResponseTlpList = Array<RequestsConstantsResponseTlpItem>;
-export const RequestsConstantsResponseTlpList = /*@__PURE__*/ S.Array(
-  RequestsConstantsResponseTlpItem,
-) as any as S.Schema<RequestsConstantsResponseTlpList>;
+export const RequestsConstantsResponseTlpList =
+  RequestsConstantsResponsePriorityList as any as S.Schema<RequestsConstantsResponseTlpList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface RequestsConstantsResponse {
@@ -10139,23 +9728,8 @@ export interface UpdateRequestResponse {
   /** Tokens for the request. */
   tokens?: number | null;
 }
-export const UpdateRequestResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    content: S.String,
-    created: S.String,
-    priority: S.String,
-    request: S.String,
-    summary: S.String,
-    tlp: UpdateRequestResponseTlp,
-    updated: S.String,
-    completed: S.optional(S.NullOr(S.String)),
-    messageTokens: S.optional(S.NullOr(S.Number).pipe(T.Body("message_tokens"))),
-    readableId: S.optional(S.NullOr(S.String).pipe(T.Body("readable_id"))),
-    status: S.optional(S.NullOr(UpdateRequestResponseStatus)),
-    tokens: S.optional(S.NullOr(S.Number)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "UpdateRequestResponse" }) as any as S.Schema<UpdateRequestResponse>;
+export const UpdateRequestResponse =
+  CreateRequestResponse as any as S.Schema<UpdateRequestResponse>;
 
 export interface UpdateRequestAssetRequest {
   /** Identifier. */
@@ -10341,25 +9915,8 @@ export interface UpdateRequestPriorityResponse {
   /** Tokens for the request. */
   tokens?: number | null;
 }
-export const UpdateRequestPriorityResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    content: S.String,
-    created: S.String,
-    priority: S.String,
-    request: S.String,
-    summary: S.String,
-    tlp: RequestsPriorityUpdateResponseTlp,
-    updated: S.String,
-    completed: S.optional(S.NullOr(S.String)),
-    messageTokens: S.optional(S.NullOr(S.Number).pipe(T.Body("message_tokens"))),
-    readableId: S.optional(S.NullOr(S.String).pipe(T.Body("readable_id"))),
-    status: S.optional(S.NullOr(RequestsPriorityUpdateResponseStatus)),
-    tokens: S.optional(S.NullOr(S.Number)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "UpdateRequestPriorityResponse",
-}) as any as S.Schema<UpdateRequestPriorityResponse>;
+export const UpdateRequestPriorityResponse =
+  GetRequestPriorityResponse as any as S.Schema<UpdateRequestPriorityResponse>;
 
 export type UpdateThreatSignalsFeedsSkillRequestSkillIdsList = Array<string>;
 export const UpdateThreatSignalsFeedsSkillRequestSkillIdsList =

@@ -504,7 +504,7 @@ export type SkillType = "FINDING_PERSONALIZATION" | "LOGIN_OPTIMIZATION" | (stri
 export const SkillType = S.String;
 
 export type SkillTypeList = SkillType[];
-export const SkillTypeList = /*@__PURE__*/ S.Array(SkillType);
+export const SkillTypeList = RiskTypeList as any as S.Schema<SkillTypeList>;
 export interface ReportDestination {
   integrationId: string;
   containerId: string;
@@ -530,7 +530,7 @@ export type RiskLevel =
 export const RiskLevel = S.String;
 
 export type RiskLevelFilterList = RiskLevel[];
-export const RiskLevelFilterList = /*@__PURE__*/ S.Array(RiskLevel);
+export const RiskLevelFilterList = RiskTypeList as any as S.Schema<RiskLevelFilterList>;
 export type ConfidenceLevel =
   | "FALSE_POSITIVE"
   | "UNCONFIRMED"
@@ -541,12 +541,12 @@ export type ConfidenceLevel =
 export const ConfidenceLevel = S.String;
 
 export type ConfidenceLevelFilterList = ConfidenceLevel[];
-export const ConfidenceLevelFilterList = /*@__PURE__*/ S.Array(ConfidenceLevel);
+export const ConfidenceLevelFilterList = RiskTypeList as any as S.Schema<ConfidenceLevelFilterList>;
 export type FindingStatus = "ACTIVE" | "RESOLVED" | "ACCEPTED" | "FALSE_POSITIVE" | (string & {});
 export const FindingStatus = S.String;
 
 export type FindingStatusFilterList = FindingStatus[];
-export const FindingStatusFilterList = /*@__PURE__*/ S.Array(FindingStatus);
+export const FindingStatusFilterList = RiskTypeList as any as S.Schema<FindingStatusFilterList>;
 export type RiskTypeFilterList = RiskType[];
 export const RiskTypeFilterList = RiskTypeList as any as S.Schema<RiskTypeFilterList>;
 export type ReportFilterValue = string;
@@ -562,7 +562,8 @@ export type TaskExecutionStatus =
 export const TaskExecutionStatus = S.String;
 
 export type TaskExecutionStatusFilterList = TaskExecutionStatus[];
-export const TaskExecutionStatusFilterList = /*@__PURE__*/ S.Array(TaskExecutionStatus);
+export const TaskExecutionStatusFilterList =
+  RiskTypeList as any as S.Schema<TaskExecutionStatusFilterList>;
 export interface ReportFilters {
   riskLevels?: RiskLevel[];
   confidenceLevels?: ConfidenceLevel[];
@@ -1856,7 +1857,7 @@ export type StrideCategory =
 export const StrideCategory = S.String;
 
 export type StrideCategoryList = StrideCategory[];
-export const StrideCategoryList = /*@__PURE__*/ S.Array(StrideCategory);
+export const StrideCategoryList = RiskTypeList as any as S.Schema<StrideCategoryList>;
 export type ThreatActor = "CUSTOMER" | "AGENT" | (string & {});
 export const ThreatActor = S.String;
 
@@ -3740,7 +3741,7 @@ export type TriggerEvent =
 export const TriggerEvent = S.String;
 
 export type TriggerEventList = TriggerEvent[];
-export const TriggerEventList = /*@__PURE__*/ S.Array(TriggerEvent);
+export const TriggerEventList = RiskTypeList as any as S.Schema<TriggerEventList>;
 export type TriggerFilterType = "TARGET_BRANCH" | "LABEL" | (string & {});
 export const TriggerFilterType = S.String;
 

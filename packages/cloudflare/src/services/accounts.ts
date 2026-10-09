@@ -1733,16 +1733,7 @@ export interface GetAccountResponse {
   /** Account settings */
   settings?: CreateResponseSettings | null;
 }
-export const GetAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    type: GetResponseType,
-    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-    managedBy: S.optional(S.NullOr(CreateResponseManagedBy).pipe(T.Body("managed_by"))),
-    settings: S.optional(S.NullOr(CreateResponseSettings)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "GetAccountResponse" }) as any as S.Schema<GetAccountResponse>;
+export const GetAccountResponse = CreateAccountResponse as any as S.Schema<GetAccountResponse>;
 
 export interface GetAccountProfileRequest {
   accountId: string;
@@ -2859,9 +2850,8 @@ export const LogsAuditListRequestActionResultNotItem = S.String;
 export type LogsAuditListRequestActionResultNotList = Array<
   LogsAuditListRequestActionResultNotItem | (string & {})
 >;
-export const LogsAuditListRequestActionResultNotList = /*@__PURE__*/ S.Array(
-  LogsAuditListRequestActionResultNotItem,
-) as any as S.Schema<LogsAuditListRequestActionResultNotList>;
+export const LogsAuditListRequestActionResultNotList =
+  TokensPermissionGroupsGetResultItemScopesList as any as S.Schema<LogsAuditListRequestActionResultNotList>;
 
 export interface LogsAuditListRequestActionResult {
   /** Filters out audit logs by whether the action was successful or not. */
@@ -2881,21 +2871,15 @@ export const LogsAuditListRequestActionTypeNotItem = S.String;
 export type LogsAuditListRequestActionTypeNotList = Array<
   LogsAuditListRequestActionTypeNotItem | (string & {})
 >;
-export const LogsAuditListRequestActionTypeNotList = /*@__PURE__*/ S.Array(
-  LogsAuditListRequestActionTypeNotItem,
-) as any as S.Schema<LogsAuditListRequestActionTypeNotList>;
+export const LogsAuditListRequestActionTypeNotList =
+  TokensPermissionGroupsGetResultItemScopesList as any as S.Schema<LogsAuditListRequestActionTypeNotList>;
 
 export interface LogsAuditListRequestActionType {
   /** Filters out audit logs by the action type. */
   not?: LogsAuditListRequestActionTypeNotList;
 }
-export const LogsAuditListRequestActionType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    not: S.optional(LogsAuditListRequestActionTypeNotList),
-  }),
-).annotate({
-  identifier: "LogsAuditListRequestActionType",
-}) as any as S.Schema<LogsAuditListRequestActionType>;
+export const LogsAuditListRequestActionType =
+  LogsAuditListRequestActionResult as any as S.Schema<LogsAuditListRequestActionType>;
 
 export type LogsAuditListRequestActorContextNotItem =
   | "api"
@@ -2909,21 +2893,15 @@ export const LogsAuditListRequestActorContextNotItem = S.String;
 export type LogsAuditListRequestActorContextNotList = Array<
   LogsAuditListRequestActorContextNotItem | (string & {})
 >;
-export const LogsAuditListRequestActorContextNotList = /*@__PURE__*/ S.Array(
-  LogsAuditListRequestActorContextNotItem,
-) as any as S.Schema<LogsAuditListRequestActorContextNotList>;
+export const LogsAuditListRequestActorContextNotList =
+  TokensPermissionGroupsGetResultItemScopesList as any as S.Schema<LogsAuditListRequestActorContextNotList>;
 
 export interface LogsAuditListRequestActorContext {
   /** Filters out audit logs by the actor context. */
   not?: LogsAuditListRequestActorContextNotList;
 }
-export const LogsAuditListRequestActorContext = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    not: S.optional(LogsAuditListRequestActorContextNotList),
-  }),
-).annotate({
-  identifier: "LogsAuditListRequestActorContext",
-}) as any as S.Schema<LogsAuditListRequestActorContext>;
+export const LogsAuditListRequestActorContext =
+  LogsAuditListRequestActionResult as any as S.Schema<LogsAuditListRequestActorContext>;
 
 export type LogsAuditListRequestActorEmailNotList = Array<string>;
 export const LogsAuditListRequestActorEmailNotList =
@@ -2991,21 +2969,15 @@ export const LogsAuditListRequestActorTypeNotItem = S.String;
 export type LogsAuditListRequestActorTypeNotList = Array<
   LogsAuditListRequestActorTypeNotItem | (string & {})
 >;
-export const LogsAuditListRequestActorTypeNotList = /*@__PURE__*/ S.Array(
-  LogsAuditListRequestActorTypeNotItem,
-) as any as S.Schema<LogsAuditListRequestActorTypeNotList>;
+export const LogsAuditListRequestActorTypeNotList =
+  TokensPermissionGroupsGetResultItemScopesList as any as S.Schema<LogsAuditListRequestActorTypeNotList>;
 
 export interface LogsAuditListRequestActorType {
   /** Filters out audit logs by the actor type. */
   not?: LogsAuditListRequestActorTypeNotList;
 }
-export const LogsAuditListRequestActorType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    not: S.optional(LogsAuditListRequestActorTypeNotList),
-  }),
-).annotate({
-  identifier: "LogsAuditListRequestActorType",
-}) as any as S.Schema<LogsAuditListRequestActorType>;
+export const LogsAuditListRequestActorType =
+  LogsAuditListRequestActionResult as any as S.Schema<LogsAuditListRequestActorType>;
 
 export type LogsAuditListRequestAuditLogIdNotList = Array<string>;
 export const LogsAuditListRequestAuditLogIdNotList =
@@ -3106,21 +3078,15 @@ export const LogsAuditListRequestResourceScopeNotItem = S.String;
 export type LogsAuditListRequestResourceScopeNotList = Array<
   LogsAuditListRequestResourceScopeNotItem | (string & {})
 >;
-export const LogsAuditListRequestResourceScopeNotList = /*@__PURE__*/ S.Array(
-  LogsAuditListRequestResourceScopeNotItem,
-) as any as S.Schema<LogsAuditListRequestResourceScopeNotList>;
+export const LogsAuditListRequestResourceScopeNotList =
+  TokensPermissionGroupsGetResultItemScopesList as any as S.Schema<LogsAuditListRequestResourceScopeNotList>;
 
 export interface LogsAuditListRequestResourceScope {
   /** Filters out audit logs by the resource scope, specifying whether the resource is associated with an user, an account, a zone, or a membership. */
   not?: LogsAuditListRequestResourceScopeNotList;
 }
-export const LogsAuditListRequestResourceScope = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    not: S.optional(LogsAuditListRequestResourceScopeNotList),
-  }),
-).annotate({
-  identifier: "LogsAuditListRequestResourceScope",
-}) as any as S.Schema<LogsAuditListRequestResourceScope>;
+export const LogsAuditListRequestResourceScope =
+  LogsAuditListRequestActionResult as any as S.Schema<LogsAuditListRequestResourceScope>;
 
 export type LogsAuditListRequestResourceTypeNotList = Array<string>;
 export const LogsAuditListRequestResourceTypeNotList =
@@ -4175,9 +4141,8 @@ export const ListTokensPermissionGroupsResultItemScopesItem = S.String;
 
 export type ListTokensPermissionGroupsResultItemScopesList =
   Array<ListTokensPermissionGroupsResultItemScopesItem>;
-export const ListTokensPermissionGroupsResultItemScopesList = /*@__PURE__*/ S.Array(
-  ListTokensPermissionGroupsResultItemScopesItem,
-) as any as S.Schema<ListTokensPermissionGroupsResultItemScopesList>;
+export const ListTokensPermissionGroupsResultItemScopesList =
+  TokensPermissionGroupsGetResultItemScopesList as any as S.Schema<ListTokensPermissionGroupsResultItemScopesList>;
 
 export interface ListTokensPermissionGroupsResultItem {
   /** Public ID. */
@@ -4191,32 +4156,16 @@ export interface ListTokensPermissionGroupsResultItem {
   /** Resources to which the Permission Group is scoped */
   scopes?: ListTokensPermissionGroupsResultItemScopesList | null;
 }
-export const ListTokensPermissionGroupsResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    category: S.optional(S.NullOr(ListTokensPermissionGroupsResultItemCategory)),
-    isSelectable: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_selectable"))),
-    name: S.optional(S.NullOr(S.String)),
-    scopes: S.optional(S.NullOr(ListTokensPermissionGroupsResultItemScopesList)),
-  }),
-).annotate({
-  identifier: "ListTokensPermissionGroupsResultItem",
-}) as any as S.Schema<ListTokensPermissionGroupsResultItem>;
+export const ListTokensPermissionGroupsResultItem =
+  TokensPermissionGroupsGetResultItem as any as S.Schema<ListTokensPermissionGroupsResultItem>;
 
 export type ListTokensPermissionGroupsResultList = Array<ListTokensPermissionGroupsResultItem>;
-export const ListTokensPermissionGroupsResultList = /*@__PURE__*/ S.Array(
-  ListTokensPermissionGroupsResultItem,
-) as any as S.Schema<ListTokensPermissionGroupsResultList>;
+export const ListTokensPermissionGroupsResultList =
+  TokensPermissionGroupsGetResultList as any as S.Schema<ListTokensPermissionGroupsResultList>;
 
 export type ListTokensPermissionGroupsResponse = ListTokensPermissionGroupsResultList;
-export const ListTokensPermissionGroupsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListTokensPermissionGroupsResultList.pipe(
-    T.EnvelopePayloadRoot(),
-    T.KeyDictionary(KEY_DICTIONARY),
-  ),
-).annotate({
-  identifier: "ListTokensPermissionGroupsResponse",
-}) as any as S.Schema<ListTokensPermissionGroupsResponse>;
+export const ListTokensPermissionGroupsResponse =
+  GetTokenPermissionGroupResponse as any as S.Schema<ListTokensPermissionGroupsResponse>;
 
 export type LogsAuditHistoryRequestDirection = "desc" | "asc";
 export const LogsAuditHistoryRequestDirection = S.String;
@@ -4295,19 +4244,8 @@ export interface LogsAuditHistoryResultItemActor {
   /** The type of actor. */
   type?: LogsAuditHistoryResultItemActorType | null;
 }
-export const LogsAuditHistoryResultItemActor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    context: S.optional(S.NullOr(LogsAuditHistoryResultItemActorContext)),
-    email: S.optional(S.NullOr(S.String)),
-    ipAddress: S.optional(S.NullOr(S.String).pipe(T.Body("ip_address"))),
-    tokenId: S.optional(S.NullOr(S.String).pipe(T.Body("token_id"))),
-    tokenName: S.optional(S.NullOr(S.String).pipe(T.Body("token_name"))),
-    type: S.optional(S.NullOr(LogsAuditHistoryResultItemActorType)),
-  }),
-).annotate({
-  identifier: "LogsAuditHistoryResultItemActor",
-}) as any as S.Schema<LogsAuditHistoryResultItemActor>;
+export const LogsAuditHistoryResultItemActor =
+  LogsAuditListResultItemActor as any as S.Schema<LogsAuditHistoryResultItemActor>;
 
 export type LogsAuditHistoryResultItemRaw = LogsAuditListResultItemRaw;
 export const LogsAuditHistoryResultItemRaw = LogsAuditListResultItemRaw;
@@ -5173,16 +5111,8 @@ export interface UpdateAccountResponse {
   /** Account settings */
   settings?: CreateResponseSettings | null;
 }
-export const UpdateAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    type: UpdateResponseType,
-    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-    managedBy: S.optional(S.NullOr(CreateResponseManagedBy).pipe(T.Body("managed_by"))),
-    settings: S.optional(S.NullOr(CreateResponseSettings)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "UpdateAccountResponse" }) as any as S.Schema<UpdateAccountResponse>;
+export const UpdateAccountResponse =
+  CreateAccountResponse as any as S.Schema<UpdateAccountResponse>;
 
 export interface UpdateAccountProfileRequest {
   accountId: string;
@@ -5810,37 +5740,8 @@ export interface UpdatePaymentMethodResponse {
   /** Billing zip code. */
   zipcode?: string | null;
 }
-export const UpdatePaymentMethodResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    address: S.optional(S.NullOr(S.String)),
-    address2: S.optional(S.NullOr(S.String)),
-    bankAccountType: S.optional(S.NullOr(S.String).pipe(T.Body("bank_account_type"))),
-    bankCode: S.optional(S.NullOr(S.String).pipe(T.Body("bank_code"))),
-    bankCountry: S.optional(S.NullOr(S.String).pipe(T.Body("bank_country"))),
-    bankName: S.optional(S.NullOr(S.String).pipe(T.Body("bank_name"))),
-    bankRoutingNumber: S.optional(S.NullOr(S.String).pipe(T.Body("bank_routing_number"))),
-    cashappCashTag: S.optional(S.NullOr(S.String).pipe(T.Body("cashapp_cash_tag"))),
-    city: S.optional(S.NullOr(S.String)),
-    country: S.optional(S.NullOr(S.String)),
-    default: S.optional(S.NullOr(S.Boolean)),
-    deviceData: S.optional(S.NullOr(S.String).pipe(T.Body("device_data"))),
-    expirationDate: S.optional(S.NullOr(S.String).pipe(T.Body("expiration_date"))),
-    firstName: S.optional(S.NullOr(S.String).pipe(T.Body("first_name"))),
-    lastFour: S.optional(S.NullOr(S.String).pipe(T.Body("last_four"))),
-    lastName: S.optional(S.NullOr(S.String).pipe(T.Body("last_name"))),
-    nickName: S.optional(S.NullOr(S.String).pipe(T.Body("nick_name"))),
-    paymentAccountEmail: S.optional(S.NullOr(S.String).pipe(T.Body("payment_account_email"))),
-    paymentEmail: S.optional(S.NullOr(S.String).pipe(T.Body("payment_email"))),
-    paymentGateway: S.optional(S.NullOr(S.String).pipe(T.Body("payment_gateway"))),
-    paymentNonce: S.optional(S.NullOr(S.String).pipe(T.Body("payment_nonce"))),
-    state: S.optional(S.NullOr(S.String)),
-    type: S.optional(S.NullOr(UpdatePaymentMethodResponseType)),
-    zipcode: S.optional(S.NullOr(S.String)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "UpdatePaymentMethodResponse",
-}) as any as S.Schema<UpdatePaymentMethodResponse>;
+export const UpdatePaymentMethodResponse =
+  CreatePaymentMethodResponse as any as S.Schema<UpdatePaymentMethodResponse>;
 
 export type SubscriptionsUpdateRequestFrequency = "weekly" | "monthly" | "quarterly" | "yearly";
 export const SubscriptionsUpdateRequestFrequency = S.String;

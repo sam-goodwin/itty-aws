@@ -5840,9 +5840,7 @@ export type GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfigApiHubGat
     | (string & {})
   >;
 export const GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfigApiHubGatewayTypeArrayGatewayTypesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfigApiHubGatewayTypeArrayGatewayTypesItemEnum,
-  ) as any as S.Schema<GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfigApiHubGatewayTypeArrayGatewayTypesItemEnumList>;
+  GoogleCloudApigeeV1ApimServiceExtensionExtensionSupportedEventsItemEnumList as any as S.Schema<GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfigApiHubGatewayTypeArrayGatewayTypesItemEnumList>;
 
 /** Message for the array of API Hub Gateway Types. */
 export interface GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfigApiHubGatewayTypeArray {
@@ -8414,14 +8412,8 @@ export interface GoogleCloudApigeeV1RuntimeTraceSamplingConfig {
   /** Sampler of distributed tracing. OFF is the default value. */
   sampler?: GoogleCloudApigeeV1RuntimeTraceSamplingConfigSamplerEnum;
 }
-export const GoogleCloudApigeeV1RuntimeTraceSamplingConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    samplingRate: S.optional(S.Number),
-    sampler: S.optional(GoogleCloudApigeeV1RuntimeTraceSamplingConfigSamplerEnum),
-  }),
-).annotate({
-  identifier: "GoogleCloudApigeeV1RuntimeTraceSamplingConfig",
-}) as any as S.Schema<GoogleCloudApigeeV1RuntimeTraceSamplingConfig>;
+export const GoogleCloudApigeeV1RuntimeTraceSamplingConfig =
+  GoogleCloudApigeeV1TraceSamplingConfig as any as S.Schema<GoogleCloudApigeeV1RuntimeTraceSamplingConfig>;
 
 export type GoogleCloudApigeeV1RuntimeTraceConfigTraceProtocolEnum =
   | "TRACE_PROTOCOL_UNSPECIFIED"
@@ -9353,13 +9345,8 @@ export interface GoogleCloudApigeeV1DeveloperMonetizationConfig {
   /** Billing type. */
   billingType?: GoogleCloudApigeeV1DeveloperMonetizationConfigBillingTypeEnum | (string & {});
 }
-export const GoogleCloudApigeeV1DeveloperMonetizationConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    billingType: S.optional(GoogleCloudApigeeV1DeveloperMonetizationConfigBillingTypeEnum),
-  }),
-).annotate({
-  identifier: "GoogleCloudApigeeV1DeveloperMonetizationConfig",
-}) as any as S.Schema<GoogleCloudApigeeV1DeveloperMonetizationConfig>;
+export const GoogleCloudApigeeV1DeveloperMonetizationConfig =
+  GoogleCloudApigeeV1AppGroupMonetizationConfig as any as S.Schema<GoogleCloudApigeeV1DeveloperMonetizationConfig>;
 
 export interface GetOrganizationsRequest {
   /** Required. Apigee organization name in the following format: `organizations/{org}` */

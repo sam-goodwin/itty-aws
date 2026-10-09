@@ -970,7 +970,7 @@ export type ReportType =
 export const ReportType = S.String;
 
 export type ReportTypeList = ReportType[];
-export const ReportTypeList = /*@__PURE__*/ S.Array(ReportType);
+export const ReportTypeList = AllowedOperationList as any as S.Schema<ReportTypeList>;
 export type ArnList = string[];
 export const ArnList = PrincipalArnList as any as S.Schema<ArnList>;
 export interface ReportContext {

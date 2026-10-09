@@ -2527,9 +2527,8 @@ export const PlayerScoreResponseBeatenScoreTimeSpansItemEnum = S.String;
 
 export type PlayerScoreResponseBeatenScoreTimeSpansItemEnumList =
   Array<PlayerScoreResponseBeatenScoreTimeSpansItemEnum>;
-export const PlayerScoreResponseBeatenScoreTimeSpansItemEnumList = /*@__PURE__*/ S.Array(
-  PlayerScoreResponseBeatenScoreTimeSpansItemEnum,
-) as any as S.Schema<PlayerScoreResponseBeatenScoreTimeSpansItemEnumList>;
+export const PlayerScoreResponseBeatenScoreTimeSpansItemEnumList =
+  ApplicationEnabledFeaturesItemEnumList as any as S.Schema<PlayerScoreResponseBeatenScoreTimeSpansItemEnumList>;
 
 /** A list of leaderboard entry resources. */
 export interface PlayerScoreResponse {

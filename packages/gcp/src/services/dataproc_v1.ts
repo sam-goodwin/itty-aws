@@ -2246,10 +2246,8 @@ export const LoggingConfigDriverLogLevelsValueEnum = S.String;
 export type LoggingConfigDriverLogLevelsValueEnumMap = {
   [key: string]: LoggingConfigDriverLogLevelsValueEnum | (string & {}) | undefined;
 };
-export const LoggingConfigDriverLogLevelsValueEnumMap = /*@__PURE__*/ S.Record(
-  S.String,
-  LoggingConfigDriverLogLevelsValueEnum,
-) as any as S.Schema<LoggingConfigDriverLogLevelsValueEnumMap>;
+export const LoggingConfigDriverLogLevelsValueEnumMap =
+  SqlExecutionUiDataJobsValueEnumMap as any as S.Schema<LoggingConfigDriverLogLevelsValueEnumMap>;
 
 /** The runtime logging config of the job. */
 export interface LoggingConfig {
@@ -3731,9 +3729,8 @@ export type NodeGroupRolesItemEnum = "ROLE_UNSPECIFIED" | "DRIVER";
 export const NodeGroupRolesItemEnum = S.String;
 
 export type NodeGroupRolesItemEnumList = Array<NodeGroupRolesItemEnum | (string & {})>;
-export const NodeGroupRolesItemEnumList = /*@__PURE__*/ S.Array(
-  NodeGroupRolesItemEnum,
-) as any as S.Schema<NodeGroupRolesItemEnumList>;
+export const NodeGroupRolesItemEnumList =
+  AutotuningConfigScenariosItemEnumList as any as S.Schema<NodeGroupRolesItemEnumList>;
 
 /** A reference to a Compute Engine instance. */
 export interface InstanceReference {
@@ -4429,9 +4426,8 @@ export const SoftwareConfigOptionalComponentsItemEnum = S.String;
 export type SoftwareConfigOptionalComponentsItemEnumList = Array<
   SoftwareConfigOptionalComponentsItemEnum | (string & {})
 >;
-export const SoftwareConfigOptionalComponentsItemEnumList = /*@__PURE__*/ S.Array(
-  SoftwareConfigOptionalComponentsItemEnum,
-) as any as S.Schema<SoftwareConfigOptionalComponentsItemEnumList>;
+export const SoftwareConfigOptionalComponentsItemEnumList =
+  AutotuningConfigScenariosItemEnumList as any as S.Schema<SoftwareConfigOptionalComponentsItemEnumList>;
 
 /** Specifies the selection and config of software inside the cluster. */
 export interface SoftwareConfig {
@@ -4472,9 +4468,8 @@ export const GkeNodePoolTargetRolesItemEnum = S.String;
 export type GkeNodePoolTargetRolesItemEnumList = Array<
   GkeNodePoolTargetRolesItemEnum | (string & {})
 >;
-export const GkeNodePoolTargetRolesItemEnumList = /*@__PURE__*/ S.Array(
-  GkeNodePoolTargetRolesItemEnum,
-) as any as S.Schema<GkeNodePoolTargetRolesItemEnumList>;
+export const GkeNodePoolTargetRolesItemEnumList =
+  AutotuningConfigScenariosItemEnumList as any as S.Schema<GkeNodePoolTargetRolesItemEnumList>;
 
 /** A GkeNodeConfigAcceleratorConfig represents a Hardware Accelerator request for a node pool. */
 export interface GkeNodePoolAcceleratorConfig {

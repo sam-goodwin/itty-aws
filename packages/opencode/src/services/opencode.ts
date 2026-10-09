@@ -188,11 +188,7 @@ export const MCPStatusDisabledStatus = S.String;
 export interface MCPStatusDisabled {
   status: MCPStatusDisabledStatus;
 }
-export const MCPStatusDisabled = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: MCPStatusDisabledStatus,
-  }),
-).annotate({ identifier: "MCPStatusDisabled" }) as any as S.Schema<MCPStatusDisabled>;
+export const MCPStatusDisabled = MCPStatusConnected as any as S.Schema<MCPStatusDisabled>;
 
 export type MCPStatusFailedStatus = "failed";
 export const MCPStatusFailedStatus = S.String;
@@ -214,11 +210,7 @@ export const MCPStatusNeedsAuthStatus = S.String;
 export interface MCPStatusNeedsAuth {
   status: MCPStatusNeedsAuthStatus;
 }
-export const MCPStatusNeedsAuth = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: MCPStatusNeedsAuthStatus,
-  }),
-).annotate({ identifier: "MCPStatusNeedsAuth" }) as any as S.Schema<MCPStatusNeedsAuth>;
+export const MCPStatusNeedsAuth = MCPStatusConnected as any as S.Schema<MCPStatusNeedsAuth>;
 
 export type MCPStatusNeedsClientRegistrationStatus = "needs_client_registration";
 export const MCPStatusNeedsClientRegistrationStatus = S.String;
@@ -2586,9 +2578,8 @@ export const ProviderConfigModelsValueModalitiesOutputItem = S.String;
 export type ProviderConfigModelsValueModalitiesOutputList = Array<
   ProviderConfigModelsValueModalitiesOutputItem | (string & {})
 >;
-export const ProviderConfigModelsValueModalitiesOutputList = /*@__PURE__*/ S.Array(
-  ProviderConfigModelsValueModalitiesOutputItem,
-) as any as S.Schema<ProviderConfigModelsValueModalitiesOutputList>;
+export const ProviderConfigModelsValueModalitiesOutputList =
+  ProviderConfigModelsValueModalitiesInputList as any as S.Schema<ProviderConfigModelsValueModalitiesOutputList>;
 
 export interface ProviderConfigModelsValueModalities {
   input?: ProviderConfigModelsValueModalitiesInputList;
@@ -4334,15 +4325,8 @@ export interface ProviderAuthMethodPromptsItemCase1When {
   op: ProviderAuthMethodPromptsItemCase1WhenOp;
   value: string;
 }
-export const ProviderAuthMethodPromptsItemCase1When = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.String,
-    op: ProviderAuthMethodPromptsItemCase1WhenOp,
-    value: S.String,
-  }),
-).annotate({
-  identifier: "ProviderAuthMethodPromptsItemCase1When",
-}) as any as S.Schema<ProviderAuthMethodPromptsItemCase1When>;
+export const ProviderAuthMethodPromptsItemCase1When =
+  ProviderAuthMethodPromptsItemCase0When as any as S.Schema<ProviderAuthMethodPromptsItemCase1When>;
 
 export interface ProviderAuthMethodPromptsItemCase1 {
   type: ProviderAuthMethodPromptsItemCase1Type;
@@ -4983,12 +4967,7 @@ export interface ModelCostTier {
   type: ModelCostTierType;
   size: number;
 }
-export const ModelCostTier = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ModelCostTierType,
-    size: S.Number,
-  }),
-).annotate({ identifier: "ModelCostTier" }) as any as S.Schema<ModelCostTier>;
+export const ModelCostTier = ModelCostTiersItemTier as any as S.Schema<ModelCostTier>;
 
 export type ModelCostCache2 = ModelCostCache;
 export const ModelCostCache2 = ModelCostCache;
@@ -6612,12 +6591,7 @@ export interface ContentFilterError {
   name: ContentFilterErrorName;
   data: MessageAbortedErrorData;
 }
-export const ContentFilterError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: ContentFilterErrorName,
-    data: MessageAbortedErrorData,
-  }),
-).annotate({ identifier: "ContentFilterError" }) as any as S.Schema<ContentFilterError>;
+export const ContentFilterError = MessageAbortedError as any as S.Schema<ContentFilterError>;
 
 export type APIErrorName = "APIError";
 export const APIErrorName = S.String;
@@ -7758,11 +7732,7 @@ export const SessionStatusCase0Type = S.String;
 export interface SessionStatusCase0 {
   type: SessionStatusCase0Type;
 }
-export const SessionStatusCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: SessionStatusCase0Type,
-  }),
-).annotate({ identifier: "SessionStatusCase0" }) as any as S.Schema<SessionStatusCase0>;
+export const SessionStatusCase0 = OutputFormatText as any as S.Schema<SessionStatusCase0>;
 
 export type SessionStatusCase1Type = "retry";
 export const SessionStatusCase1Type = S.String;
@@ -7809,11 +7779,7 @@ export const SessionStatusCase2Type = S.String;
 export interface SessionStatusCase2 {
   type: SessionStatusCase2Type;
 }
-export const SessionStatusCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: SessionStatusCase2Type,
-  }),
-).annotate({ identifier: "SessionStatusCase2" }) as any as S.Schema<SessionStatusCase2>;
+export const SessionStatusCase2 = OutputFormatText as any as S.Schema<SessionStatusCase2>;
 
 export type SessionStatus = SessionStatusCase0 | SessionStatusCase1 | SessionStatusCase2;
 export const SessionStatus = S.Unknown as any as S.Schema<SessionStatus>;

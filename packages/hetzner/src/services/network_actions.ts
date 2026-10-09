@@ -616,9 +616,8 @@ export const ListNetworkActionsRequestStatusItem = S.String;
 export type ListNetworkActionsRequestStatusList = Array<
   ListNetworkActionsRequestStatusItem | (string & {})
 >;
-export const ListNetworkActionsRequestStatusList = /*@__PURE__*/ S.Array(
-  ListNetworkActionsRequestStatusItem,
-) as any as S.Schema<ListNetworkActionsRequestStatusList>;
+export const ListNetworkActionsRequestStatusList =
+  ListNetworkActionsRequestSortList as any as S.Schema<ListNetworkActionsRequestStatusList>;
 
 export interface ListNetworkActionsRequest {
   /** ID of the Network. */
@@ -780,9 +779,8 @@ export const ListNetworksActionsRequestSortItem = S.String;
 export type ListNetworksActionsRequestSortList = Array<
   ListNetworksActionsRequestSortItem | (string & {})
 >;
-export const ListNetworksActionsRequestSortList = /*@__PURE__*/ S.Array(
-  ListNetworksActionsRequestSortItem,
-) as any as S.Schema<ListNetworksActionsRequestSortList>;
+export const ListNetworksActionsRequestSortList =
+  ListNetworkActionsRequestSortList as any as S.Schema<ListNetworksActionsRequestSortList>;
 
 /** Status of the Action. */
 export type ListNetworksActionsRequestStatusItem = "running" | "success" | "error";
@@ -791,9 +789,8 @@ export const ListNetworksActionsRequestStatusItem = S.String;
 export type ListNetworksActionsRequestStatusList = Array<
   ListNetworksActionsRequestStatusItem | (string & {})
 >;
-export const ListNetworksActionsRequestStatusList = /*@__PURE__*/ S.Array(
-  ListNetworksActionsRequestStatusItem,
-) as any as S.Schema<ListNetworksActionsRequestStatusList>;
+export const ListNetworksActionsRequestStatusList =
+  ListNetworkActionsRequestSortList as any as S.Schema<ListNetworksActionsRequestStatusList>;
 
 export interface ListNetworksActionsRequest {
   /** Filter the actions by ID. May be used multiple times. The response will only contain actions matching the specified IDs. */

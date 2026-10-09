@@ -1010,9 +1010,8 @@ export type ListByBlogCommentsStatusEnum = "LIVE" | "EMPTIED" | "PENDING" | "SPA
 export const ListByBlogCommentsStatusEnum = S.String;
 
 export type ListByBlogCommentsStatusEnumList = Array<ListByBlogCommentsStatusEnum | (string & {})>;
-export const ListByBlogCommentsStatusEnumList = /*@__PURE__*/ S.Array(
-  ListByBlogCommentsStatusEnum,
-) as any as S.Schema<ListByBlogCommentsStatusEnumList>;
+export const ListByBlogCommentsStatusEnumList =
+  GetPageViewsRangeEnumList as any as S.Schema<ListByBlogCommentsStatusEnumList>;
 
 export interface ListByBlogCommentsRequest {
   fetchBodies?: boolean;
@@ -1069,17 +1068,15 @@ export type ListByUserBlogsRoleEnum = "VIEW_TYPE_UNSPECIFIED" | "READER" | "AUTH
 export const ListByUserBlogsRoleEnum = S.String;
 
 export type ListByUserBlogsRoleEnumList = Array<ListByUserBlogsRoleEnum | (string & {})>;
-export const ListByUserBlogsRoleEnumList = /*@__PURE__*/ S.Array(
-  ListByUserBlogsRoleEnum,
-) as any as S.Schema<ListByUserBlogsRoleEnumList>;
+export const ListByUserBlogsRoleEnumList =
+  GetPageViewsRangeEnumList as any as S.Schema<ListByUserBlogsRoleEnumList>;
 
 export type ListByUserBlogsStatusEnum = "LIVE" | "DELETED";
 export const ListByUserBlogsStatusEnum = S.String;
 
 export type ListByUserBlogsStatusEnumList = Array<ListByUserBlogsStatusEnum | (string & {})>;
-export const ListByUserBlogsStatusEnumList = /*@__PURE__*/ S.Array(
-  ListByUserBlogsStatusEnum,
-) as any as S.Schema<ListByUserBlogsStatusEnumList>;
+export const ListByUserBlogsStatusEnumList =
+  GetPageViewsRangeEnumList as any as S.Schema<ListByUserBlogsStatusEnumList>;
 
 export type ListByUserBlogsViewEnum = "VIEW_TYPE_UNSPECIFIED" | "READER" | "AUTHOR" | "ADMIN";
 export const ListByUserBlogsViewEnum = S.String;
@@ -1174,9 +1171,8 @@ export type ListPagesStatusEnum = "LIVE" | "DRAFT" | "SOFT_TRASHED";
 export const ListPagesStatusEnum = S.String;
 
 export type ListPagesStatusEnumList = Array<ListPagesStatusEnum | (string & {})>;
-export const ListPagesStatusEnumList = /*@__PURE__*/ S.Array(
-  ListPagesStatusEnum,
-) as any as S.Schema<ListPagesStatusEnumList>;
+export const ListPagesStatusEnumList =
+  GetPageViewsRangeEnumList as any as S.Schema<ListPagesStatusEnumList>;
 
 export type ListPagesViewEnum = "VIEW_TYPE_UNSPECIFIED" | "READER" | "AUTHOR" | "ADMIN";
 export const ListPagesViewEnum = S.String;
@@ -1241,9 +1237,8 @@ export type ListPostsStatusEnum = "LIVE" | "DRAFT" | "SCHEDULED" | "SOFT_TRASHED
 export const ListPostsStatusEnum = S.String;
 
 export type ListPostsStatusEnumList = Array<ListPostsStatusEnum | (string & {})>;
-export const ListPostsStatusEnumList = /*@__PURE__*/ S.Array(
-  ListPostsStatusEnum,
-) as any as S.Schema<ListPostsStatusEnumList>;
+export const ListPostsStatusEnumList =
+  GetPageViewsRangeEnumList as any as S.Schema<ListPostsStatusEnumList>;
 
 export interface ListPostsRequest {
   view?: ListPostsViewEnum | (string & {});
@@ -1315,9 +1310,8 @@ export type ListPostUserInfosStatusEnum = "LIVE" | "DRAFT" | "SCHEDULED" | "SOFT
 export const ListPostUserInfosStatusEnum = S.String;
 
 export type ListPostUserInfosStatusEnumList = Array<ListPostUserInfosStatusEnum | (string & {})>;
-export const ListPostUserInfosStatusEnumList = /*@__PURE__*/ S.Array(
-  ListPostUserInfosStatusEnum,
-) as any as S.Schema<ListPostUserInfosStatusEnumList>;
+export const ListPostUserInfosStatusEnumList =
+  GetPageViewsRangeEnumList as any as S.Schema<ListPostUserInfosStatusEnumList>;
 
 export interface ListPostUserInfosRequest {
   startDate?: string;

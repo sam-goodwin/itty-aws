@@ -1016,7 +1016,8 @@ export type TransformInstanceType =
 export const TransformInstanceType = S.String;
 
 export type TransformInstanceTypes = TransformInstanceType[];
-export const TransformInstanceTypes = /*@__PURE__*/ S.Array(TransformInstanceType);
+export const TransformInstanceTypes =
+  ClusterInstanceTypes as any as S.Schema<TransformInstanceTypes>;
 export type ProductionVariantInstanceType =
   | "ml.t2.medium"
   | "ml.t2.large"
@@ -1299,7 +1300,8 @@ export type ProductionVariantInstanceType =
 export const ProductionVariantInstanceType = S.String;
 
 export type RealtimeInferenceInstanceTypes = ProductionVariantInstanceType[];
-export const RealtimeInferenceInstanceTypes = /*@__PURE__*/ S.Array(ProductionVariantInstanceType);
+export const RealtimeInferenceInstanceTypes =
+  ClusterInstanceTypes as any as S.Schema<RealtimeInferenceInstanceTypes>;
 export type ContentType = string;
 export type ContentTypes = string[];
 export const ContentTypes = ClusterAvailabilityZones as any as S.Schema<ContentTypes>;
@@ -1560,19 +1562,11 @@ export interface BatchReplaceClusterNodeLogicalIdsError {
   ErrorCode?: BatchReplaceClusterNodesErrorCode;
   Message?: string;
 }
-export const BatchReplaceClusterNodeLogicalIdsError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    NodeLogicalId: S.optional(S.String),
-    ErrorCode: S.optional(BatchReplaceClusterNodesErrorCode),
-    Message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BatchReplaceClusterNodeLogicalIdsError",
-}) as any as S.Schema<BatchReplaceClusterNodeLogicalIdsError>;
+export const BatchReplaceClusterNodeLogicalIdsError =
+  BatchRebootClusterNodeLogicalIdsError as any as S.Schema<BatchReplaceClusterNodeLogicalIdsError>;
 export type BatchReplaceClusterNodeLogicalIdsErrors = BatchReplaceClusterNodeLogicalIdsError[];
-export const BatchReplaceClusterNodeLogicalIdsErrors = /*@__PURE__*/ S.Array(
-  BatchReplaceClusterNodeLogicalIdsError,
-);
+export const BatchReplaceClusterNodeLogicalIdsErrors =
+  BatchRebootClusterNodeLogicalIdsErrors as any as S.Schema<BatchReplaceClusterNodeLogicalIdsErrors>;
 export interface BatchReplaceClusterNodesResponse {
   Successful?: string[];
   Failed?: (BatchReplaceClusterNodesError & {
@@ -1880,7 +1874,8 @@ export type AIRecommendationInstanceType =
 export const AIRecommendationInstanceType = S.String;
 
 export type AIRecommendationInstanceTypeList = AIRecommendationInstanceType[];
-export const AIRecommendationInstanceTypeList = /*@__PURE__*/ S.Array(AIRecommendationInstanceType);
+export const AIRecommendationInstanceTypeList =
+  ClusterInstanceTypes as any as S.Schema<AIRecommendationInstanceTypeList>;
 export type AICapacityReservationPreference = "capacity-reservations-only" | (string & {});
 export const AICapacityReservationPreference = S.String;
 
@@ -2335,7 +2330,7 @@ export type TrainingInstanceType =
 export const TrainingInstanceType = S.String;
 
 export type TrainingInstanceTypes = TrainingInstanceType[];
-export const TrainingInstanceTypes = /*@__PURE__*/ S.Array(TrainingInstanceType);
+export const TrainingInstanceTypes = ClusterInstanceTypes as any as S.Schema<TrainingInstanceTypes>;
 export type MetricName = string;
 export type MetricRegex = string;
 export interface MetricDefinition {
@@ -2349,12 +2344,12 @@ export type MetricDefinitionList = MetricDefinition[];
 export const MetricDefinitionList = /*@__PURE__*/ S.Array(MetricDefinition);
 export type ChannelName = string;
 export type CompressionTypes = CompressionType[];
-export const CompressionTypes = /*@__PURE__*/ S.Array(CompressionType);
+export const CompressionTypes = ClusterInstanceTypes as any as S.Schema<CompressionTypes>;
 export type TrainingInputMode = "Pipe" | "File" | "FastFile" | (string & {});
 export const TrainingInputMode = S.String;
 
 export type InputModes = TrainingInputMode[];
-export const InputModes = /*@__PURE__*/ S.Array(TrainingInputMode);
+export const InputModes = ClusterInstanceTypes as any as S.Schema<InputModes>;
 export interface ChannelSpecification {
   Name?: string;
   Description?: string;
@@ -3224,15 +3219,11 @@ export interface AutoMLS3DataSource {
   S3DataType?: AutoMLS3DataType;
   S3Uri?: string;
 }
-export const AutoMLS3DataSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ S3DataType: S.optional(AutoMLS3DataType), S3Uri: S.optional(S.String) }),
-).annotate({ identifier: "AutoMLS3DataSource" }) as any as S.Schema<AutoMLS3DataSource>;
+export const AutoMLS3DataSource = TransformS3DataSource as any as S.Schema<AutoMLS3DataSource>;
 export interface AutoMLDataSource {
   S3DataSource?: AutoMLS3DataSource;
 }
-export const AutoMLDataSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ S3DataSource: S.optional(AutoMLS3DataSource) }),
-).annotate({ identifier: "AutoMLDataSource" }) as any as S.Schema<AutoMLDataSource>;
+export const AutoMLDataSource = TransformDataSource as any as S.Schema<AutoMLDataSource>;
 export type TargetAttributeName = string;
 export type AutoMLChannelType = "training" | "validation" | (string & {});
 export const AutoMLChannelType = S.String;
@@ -3348,7 +3339,7 @@ export type AutoMLAlgorithm =
 export const AutoMLAlgorithm = S.String;
 
 export type AutoMLAlgorithms = AutoMLAlgorithm[];
-export const AutoMLAlgorithms = /*@__PURE__*/ S.Array(AutoMLAlgorithm);
+export const AutoMLAlgorithms = ClusterInstanceTypes as any as S.Schema<AutoMLAlgorithms>;
 export interface AutoMLAlgorithmConfig {
   AutoMLAlgorithms?: AutoMLAlgorithm[];
 }
@@ -3805,7 +3796,8 @@ export type DeepHealthCheckType = "InstanceStress" | "InstanceConnectivity" | (s
 export const DeepHealthCheckType = S.String;
 
 export type OnStartDeepHealthChecks = DeepHealthCheckType[];
-export const OnStartDeepHealthChecks = /*@__PURE__*/ S.Array(DeepHealthCheckType);
+export const OnStartDeepHealthChecks =
+  ClusterInstanceTypes as any as S.Schema<OnStartDeepHealthChecks>;
 export type CronScheduleExpression = string;
 export type NodeUnavailabilityType = "INSTANCE_COUNT" | "CAPACITY_PERCENTAGE" | (string & {});
 export const NodeUnavailabilityType = S.String;
@@ -5571,11 +5563,12 @@ export type MlTools =
 export const MlTools = S.String;
 
 export type HiddenMlToolsList = MlTools[];
-export const HiddenMlToolsList = /*@__PURE__*/ S.Array(MlTools);
+export const HiddenMlToolsList = ClusterInstanceTypes as any as S.Schema<HiddenMlToolsList>;
 export type HiddenAppTypesList = AppType[];
-export const HiddenAppTypesList = /*@__PURE__*/ S.Array(AppType);
+export const HiddenAppTypesList = ClusterInstanceTypes as any as S.Schema<HiddenAppTypesList>;
 export type HiddenInstanceTypesList = AppInstanceType[];
-export const HiddenInstanceTypesList = /*@__PURE__*/ S.Array(AppInstanceType);
+export const HiddenInstanceTypesList =
+  ClusterInstanceTypes as any as S.Schema<HiddenInstanceTypesList>;
 export type SageMakerImageName = "sagemaker_distribution" | (string & {});
 export const SageMakerImageName = S.String;
 
@@ -5984,9 +5977,7 @@ export interface CapacitySize {
   Type?: CapacitySizeType;
   Value?: number;
 }
-export const CapacitySize = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Type: S.optional(CapacitySizeType), Value: S.optional(S.Number) }),
-).annotate({ identifier: "CapacitySize" }) as any as S.Schema<CapacitySize>;
+export const CapacitySize = CapacitySizeConfig as any as S.Schema<CapacitySize>;
 export interface TrafficRoutingConfig {
   Type?: TrafficRoutingConfigType;
   WaitIntervalInSeconds?: number;
@@ -6338,7 +6329,8 @@ export type AsyncNotificationTopicTypes =
 export const AsyncNotificationTopicTypes = S.String;
 
 export type AsyncNotificationTopicTypeList = AsyncNotificationTopicTypes[];
-export const AsyncNotificationTopicTypeList = /*@__PURE__*/ S.Array(AsyncNotificationTopicTypes);
+export const AsyncNotificationTopicTypeList =
+  ClusterInstanceTypes as any as S.Schema<AsyncNotificationTopicTypeList>;
 export interface AsyncInferenceNotificationConfig {
   SuccessTopic?: string;
   ErrorTopic?: string;
@@ -6398,7 +6390,7 @@ export type ClarifyFeatureType = "numerical" | "categorical" | "text" | (string 
 export const ClarifyFeatureType = S.String;
 
 export type ClarifyFeatureTypes = ClarifyFeatureType[];
-export const ClarifyFeatureTypes = /*@__PURE__*/ S.Array(ClarifyFeatureType);
+export const ClarifyFeatureTypes = ClusterInstanceTypes as any as S.Schema<ClarifyFeatureTypes>;
 export interface ClarifyInferenceConfig {
   FeaturesAttribute?: string;
   ContentTemplate?: string;
@@ -8210,7 +8202,7 @@ export type ContentClassifier =
 export const ContentClassifier = S.String;
 
 export type ContentClassifiers = ContentClassifier[];
-export const ContentClassifiers = /*@__PURE__*/ S.Array(ContentClassifier);
+export const ContentClassifiers = ClusterInstanceTypes as any as S.Schema<ContentClassifiers>;
 export interface LabelingJobDataAttributes {
   ContentClassifiers?: ContentClassifier[];
 }
@@ -8527,9 +8519,7 @@ export const InferenceExecutionMode = S.String;
 export interface InferenceExecutionConfig {
   Mode?: InferenceExecutionMode;
 }
-export const InferenceExecutionConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Mode: S.optional(InferenceExecutionMode) }),
-).annotate({ identifier: "InferenceExecutionConfig" }) as any as S.Schema<InferenceExecutionConfig>;
+export const InferenceExecutionConfig = Autotune as any as S.Schema<InferenceExecutionConfig>;
 export interface CreateModelInput {
   ModelName?: string;
   PrimaryContainer?: ContainerDefinition;
@@ -17853,15 +17843,11 @@ export interface ModelPackageStatusItem {
   Status?: DetailedModelPackageStatus;
   FailureReason?: string;
 }
-export const ModelPackageStatusItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.optional(S.String),
-    Status: S.optional(DetailedModelPackageStatus),
-    FailureReason: S.optional(S.String),
-  }),
-).annotate({ identifier: "ModelPackageStatusItem" }) as any as S.Schema<ModelPackageStatusItem>;
+export const ModelPackageStatusItem =
+  AlgorithmStatusItem as any as S.Schema<ModelPackageStatusItem>;
 export type ModelPackageStatusItemList = ModelPackageStatusItem[];
-export const ModelPackageStatusItemList = /*@__PURE__*/ S.Array(ModelPackageStatusItem);
+export const ModelPackageStatusItemList =
+  AlgorithmStatusItemList as any as S.Schema<ModelPackageStatusItemList>;
 export interface ModelPackageStatusDetails {
   ValidationStatuses?: ModelPackageStatusItem[];
   ImageScanStatuses?: ModelPackageStatusItem[];
@@ -19285,18 +19271,11 @@ export interface SecondaryStatusTransition {
   EndTime?: Date;
   StatusMessage?: string;
 }
-export const SecondaryStatusTransition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Status: S.optional(SecondaryStatus),
-    StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    StatusMessage: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SecondaryStatusTransition",
-}) as any as S.Schema<SecondaryStatusTransition>;
+export const SecondaryStatusTransition =
+  JobSecondaryStatusTransition as any as S.Schema<SecondaryStatusTransition>;
 export type SecondaryStatusTransitions = SecondaryStatusTransition[];
-export const SecondaryStatusTransitions = /*@__PURE__*/ S.Array(SecondaryStatusTransition);
+export const SecondaryStatusTransitions =
+  JobSecondaryStatusTransitions as any as S.Schema<SecondaryStatusTransitions>;
 export interface MetricData {
   MetricName?: string;
   Value?: number;
@@ -19575,7 +19554,8 @@ export type SageMakerResourceName =
 export const SageMakerResourceName = S.String;
 
 export type SageMakerResourceNames = SageMakerResourceName[];
-export const SageMakerResourceNames = /*@__PURE__*/ S.Array(SageMakerResourceName);
+export const SageMakerResourceNames =
+  ClusterInstanceTypes as any as S.Schema<SageMakerResourceNames>;
 export type AvailabilityZoneId = string;
 export interface ReservedCapacitySummary {
   ReservedCapacityArn?: string;
@@ -26172,11 +26152,9 @@ export interface TrainingPlanFilter {
   Name?: TrainingPlanFilterName;
   Value?: string;
 }
-export const TrainingPlanFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.optional(TrainingPlanFilterName), Value: S.optional(S.String) }),
-).annotate({ identifier: "TrainingPlanFilter" }) as any as S.Schema<TrainingPlanFilter>;
+export const TrainingPlanFilter = ModelMetadataFilter as any as S.Schema<TrainingPlanFilter>;
 export type TrainingPlanFilters = TrainingPlanFilter[];
-export const TrainingPlanFilters = /*@__PURE__*/ S.Array(TrainingPlanFilter);
+export const TrainingPlanFilters = ModelMetadataFilters as any as S.Schema<TrainingPlanFilters>;
 export interface ListTrainingPlansRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -26667,7 +26645,7 @@ export type LineageType = "TrialComponent" | "Artifact" | "Context" | "Action" |
 export const LineageType = S.String;
 
 export type QueryLineageTypes = LineageType[];
-export const QueryLineageTypes = /*@__PURE__*/ S.Array(LineageType);
+export const QueryLineageTypes = ClusterInstanceTypes as any as S.Schema<QueryLineageTypes>;
 export type QueryProperties = { [key: string]: string | undefined };
 export const QueryProperties = EnvironmentMap as any as S.Schema<QueryProperties>;
 export interface QueryFilters {
@@ -29279,10 +29257,8 @@ export type ModelVariantAction = "Retain" | "Remove" | "Promote" | (string & {})
 export const ModelVariantAction = S.String;
 
 export type ModelVariantActionMap = { [key: string]: ModelVariantAction | undefined };
-export const ModelVariantActionMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ ModelVariantAction.pipe(S.optional),
-);
+export const ModelVariantActionMap =
+  AggregationTransformations as any as S.Schema<ModelVariantActionMap>;
 export type InferenceExperimentStopDesiredState = "Completed" | "Cancelled" | (string & {});
 export const InferenceExperimentStopDesiredState = S.String;
 

@@ -7811,13 +7811,7 @@ export interface AliasPattern {
   /** The pattern for an alias path. */
   type?: AliasPatternType;
 }
-export const AliasPattern = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    phrase: S.optional(S.String),
-    variable: S.optional(S.String),
-    type: S.optional(AliasPatternType),
-  }),
-).annotate({ identifier: "AliasPattern" }) as any as S.Schema<AliasPattern>;
+export const AliasPattern = AliasPattern_2 as any as S.Schema<AliasPattern>;
 
 /** The alias path metadata. */
 export type AliasPathMetadata = AliasPathMetadata_2;
@@ -7834,14 +7828,7 @@ export interface AliasPath {
   /** The metadata of the alias path. If missing, fall back to the default metadata of the alias. */
   metadata?: AliasPathMetadata_2;
 }
-export const AliasPath = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    path: S.optional(S.String),
-    apiVersions: S.optional(AliasPathApiVersionsList),
-    pattern: S.optional(AliasPattern),
-    metadata: S.optional(AliasPathMetadata_2),
-  }),
-).annotate({ identifier: "AliasPath" }) as any as S.Schema<AliasPath>;
+export const AliasPath = AliasPath_2 as any as S.Schema<AliasPath>;
 
 /** The paths for an alias. */
 export type AliasPathsList = Array<AliasPath>;
@@ -11247,18 +11234,8 @@ export interface GetTemplateSpecResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetTemplateSpecResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetTemplateSpecResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetTemplateSpecResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetTemplateSpecResponseSystemData",
-}) as any as S.Schema<GetTemplateSpecResponseSystemData>;
+export const GetTemplateSpecResponseSystemData =
+  ManagementLockObjectSystemData as any as S.Schema<GetTemplateSpecResponseSystemData>;
 
 /** High-level information about a Template Spec version. */
 export interface TemplateSpecVersionInfo {
@@ -11395,18 +11372,8 @@ export interface GetTemplateSpecBuiltInResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetTemplateSpecBuiltInResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetTemplateSpecBuiltInResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetTemplateSpecBuiltInResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetTemplateSpecBuiltInResponseSystemData",
-}) as any as S.Schema<GetTemplateSpecBuiltInResponseSystemData>;
+export const GetTemplateSpecBuiltInResponseSystemData =
+  ManagementLockObjectSystemData as any as S.Schema<GetTemplateSpecBuiltInResponseSystemData>;
 
 /** Resource tags. */
 export type GetTemplateSpecBuiltInResponseTagsMap = { [key: string]: string | undefined };
@@ -11502,18 +11469,8 @@ export interface GetTemplateSpecVersionResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetTemplateSpecVersionResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetTemplateSpecVersionResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetTemplateSpecVersionResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetTemplateSpecVersionResponseSystemData",
-}) as any as S.Schema<GetTemplateSpecVersionResponseSystemData>;
+export const GetTemplateSpecVersionResponseSystemData =
+  ManagementLockObjectSystemData as any as S.Schema<GetTemplateSpecVersionResponseSystemData>;
 
 /** Represents a Template Spec artifact containing an embedded Azure Resource Manager template for use as a linked template. */
 export interface LinkedTemplateArtifact {
@@ -14869,16 +14826,7 @@ export interface TemplateSpecSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const TemplateSpecSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(TemplateSpecSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(TemplateSpecSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({ identifier: "TemplateSpecSystemData" }) as any as S.Schema<TemplateSpecSystemData>;
+export const TemplateSpecSystemData = SystemData as any as S.Schema<TemplateSpecSystemData>;
 
 /** Resource tags. */
 export type TemplateSpecTagsMap = { [key: string]: string | undefined };
@@ -15037,18 +14985,8 @@ export interface TemplateSpecVersionSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const TemplateSpecVersionSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(TemplateSpecVersionSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(TemplateSpecVersionSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TemplateSpecVersionSystemData",
-}) as any as S.Schema<TemplateSpecVersionSystemData>;
+export const TemplateSpecVersionSystemData =
+  ManagementLockObjectSystemData as any as S.Schema<TemplateSpecVersionSystemData>;
 
 /** Resource tags. */
 export type TemplateSpecVersionTagsMap = { [key: string]: string | undefined };
@@ -17266,18 +17204,8 @@ export interface TemplateSpecsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const TemplateSpecsCreateOrUpdateResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(TemplateSpecsCreateOrUpdateResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(TemplateSpecsCreateOrUpdateResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TemplateSpecsCreateOrUpdateResponseSystemData",
-}) as any as S.Schema<TemplateSpecsCreateOrUpdateResponseSystemData>;
+export const TemplateSpecsCreateOrUpdateResponseSystemData =
+  ManagementLockObjectSystemData as any as S.Schema<TemplateSpecsCreateOrUpdateResponseSystemData>;
 
 /** Resource tags. */
 export type TemplateSpecsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
@@ -17389,20 +17317,8 @@ export interface TemplateSpecVersionsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const TemplateSpecVersionsCreateOrUpdateResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(TemplateSpecVersionsCreateOrUpdateResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      TemplateSpecVersionsCreateOrUpdateResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TemplateSpecVersionsCreateOrUpdateResponseSystemData",
-}) as any as S.Schema<TemplateSpecVersionsCreateOrUpdateResponseSystemData>;
+export const TemplateSpecVersionsCreateOrUpdateResponseSystemData =
+  GetTemplateSpecVersionBuiltInResponseSystemData as any as S.Schema<TemplateSpecVersionsCreateOrUpdateResponseSystemData>;
 
 /** Resource tags. */
 export type TemplateSpecVersionsCreateOrUpdateResponseTagsMap = {
@@ -18203,18 +18119,8 @@ export interface UpdateTemplateSpecResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdateTemplateSpecResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(UpdateTemplateSpecResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(UpdateTemplateSpecResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateTemplateSpecResponseSystemData",
-}) as any as S.Schema<UpdateTemplateSpecResponseSystemData>;
+export const UpdateTemplateSpecResponseSystemData =
+  ManagementLockObjectSystemData as any as S.Schema<UpdateTemplateSpecResponseSystemData>;
 
 /** Resource tags. */
 export type UpdateTemplateSpecResponseTagsMap = { [key: string]: string | undefined };
@@ -18318,18 +18224,8 @@ export interface UpdateTemplateSpecVersionResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdateTemplateSpecVersionResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(UpdateTemplateSpecVersionResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(UpdateTemplateSpecVersionResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateTemplateSpecVersionResponseSystemData",
-}) as any as S.Schema<UpdateTemplateSpecVersionResponseSystemData>;
+export const UpdateTemplateSpecVersionResponseSystemData =
+  ManagementLockObjectSystemData as any as S.Schema<UpdateTemplateSpecVersionResponseSystemData>;
 
 /** Resource tags. */
 export type UpdateTemplateSpecVersionResponseTagsMap = { [key: string]: string | undefined };
@@ -18651,18 +18547,8 @@ export interface DeploymentStackValidateResultSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const DeploymentStackValidateResultSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(DeploymentStackValidateResultSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(DeploymentStackValidateResultSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeploymentStackValidateResultSystemData",
-}) as any as S.Schema<DeploymentStackValidateResultSystemData>;
+export const DeploymentStackValidateResultSystemData =
+  ManagementLockObjectSystemData as any as S.Schema<DeploymentStackValidateResultSystemData>;
 
 /** The error details. */
 export type DeploymentStackValidateResultErrorDetailsList = Array<ErrorDetail>;

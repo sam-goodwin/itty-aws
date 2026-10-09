@@ -1347,9 +1347,8 @@ export interface ToolboxProxyUrl {
 export const ToolboxProxyUrl = Url as any as S.Schema<ToolboxProxyUrl>;
 
 export type ListSandboxesRequestStatesList = Array<SandboxState | (string & {})>;
-export const ListSandboxesRequestStatesList = /*@__PURE__*/ S.Array(
-  SandboxState,
-) as any as S.Schema<ListSandboxesRequestStatesList>;
+export const ListSandboxesRequestStatesList =
+  CreateSandboxRequestGpuTypeList as any as S.Schema<ListSandboxesRequestStatesList>;
 
 export type ListSandboxesRequestSnapshotsList = Array<string>;
 export const ListSandboxesRequestSnapshotsList =
@@ -1360,9 +1359,8 @@ export const ListSandboxesRequestRegionIdsList =
   BuildInfoContextHashesList as any as S.Schema<ListSandboxesRequestRegionIdsList>;
 
 export type ListSandboxesRequestSandboxClassesList = Array<SandboxClass | (string & {})>;
-export const ListSandboxesRequestSandboxClassesList = /*@__PURE__*/ S.Array(
-  SandboxClass,
-) as any as S.Schema<ListSandboxesRequestSandboxClassesList>;
+export const ListSandboxesRequestSandboxClassesList =
+  CreateSandboxRequestGpuTypeList as any as S.Schema<ListSandboxesRequestSandboxClassesList>;
 
 export type SandboxListSortField =
   | "name"

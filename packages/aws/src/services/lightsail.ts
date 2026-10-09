@@ -3061,9 +3061,10 @@ export type MetricUnit =
 export const MetricUnit = S.String;
 
 export type ContactProtocolsList = ContactProtocol[];
-export const ContactProtocolsList = /*@__PURE__*/ S.Array(ContactProtocol);
+export const ContactProtocolsList = HeaderForwardList as any as S.Schema<ContactProtocolsList>;
 export type NotificationTriggerList = AlarmState[];
-export const NotificationTriggerList = /*@__PURE__*/ S.Array(AlarmState);
+export const NotificationTriggerList =
+  HeaderForwardList as any as S.Schema<NotificationTriggerList>;
 export interface Alarm {
   name?: string;
   arn?: string;
@@ -3319,7 +3320,7 @@ export type BucketMetricName = "BucketSizeBytes" | "NumberOfObjects" | (string &
 export const BucketMetricName = S.String;
 
 export type MetricStatisticList = MetricStatistic[];
-export const MetricStatisticList = /*@__PURE__*/ S.Array(MetricStatistic);
+export const MetricStatisticList = HeaderForwardList as any as S.Schema<MetricStatisticList>;
 export interface GetBucketMetricDataRequest {
   bucketName: string;
   metricName: BucketMetricName;
@@ -3474,9 +3475,9 @@ export const GetBundlesRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "GetBundlesRequest" }) as any as S.Schema<GetBundlesRequest>;
 export type InstancePlatformList = InstancePlatform[];
-export const InstancePlatformList = /*@__PURE__*/ S.Array(InstancePlatform);
+export const InstancePlatformList = HeaderForwardList as any as S.Schema<InstancePlatformList>;
 export type AppCategoryList = AppCategory[];
-export const AppCategoryList = /*@__PURE__*/ S.Array(AppCategory);
+export const AppCategoryList = HeaderForwardList as any as S.Schema<AppCategoryList>;
 export interface Bundle {
   price?: number;
   cpuCount?: number;
@@ -3519,7 +3520,7 @@ export const GetBundlesResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ bundles: S.optional(BundleList), nextPageToken: S.optional(S.String) }),
 ).annotate({ identifier: "GetBundlesResult" }) as any as S.Schema<GetBundlesResult>;
 export type CertificateStatusList = CertificateStatus[];
-export const CertificateStatusList = /*@__PURE__*/ S.Array(CertificateStatus);
+export const CertificateStatusList = HeaderForwardList as any as S.Schema<CertificateStatusList>;
 export type IncludeCertificateDetails = boolean;
 export interface GetCertificatesRequest {
   certificateStatuses?: CertificateStatus[];
@@ -3883,14 +3884,8 @@ export interface GetContainerServiceMetricDataResult {
   metricName?: ContainerServiceMetricName;
   metricData?: MetricDatapoint[];
 }
-export const GetContainerServiceMetricDataResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.optional(ContainerServiceMetricName),
-    metricData: S.optional(MetricDatapointList),
-  }),
-).annotate({
-  identifier: "GetContainerServiceMetricDataResult",
-}) as any as S.Schema<GetContainerServiceMetricDataResult>;
+export const GetContainerServiceMetricDataResult =
+  GetBucketMetricDataResult as any as S.Schema<GetContainerServiceMetricDataResult>;
 export interface GetContainerServicePowersRequest {}
 export const GetContainerServicePowersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
@@ -4361,14 +4356,8 @@ export interface GetDistributionMetricDataResult {
   metricName?: DistributionMetricName;
   metricData?: MetricDatapoint[];
 }
-export const GetDistributionMetricDataResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.optional(DistributionMetricName),
-    metricData: S.optional(MetricDatapointList),
-  }),
-).annotate({
-  identifier: "GetDistributionMetricDataResult",
-}) as any as S.Schema<GetDistributionMetricDataResult>;
+export const GetDistributionMetricDataResult =
+  GetBucketMetricDataResult as any as S.Schema<GetDistributionMetricDataResult>;
 export interface GetDistributionsRequest {
   distributionName?: string;
   pageToken?: string;
@@ -4423,9 +4412,8 @@ export interface NameServersUpdateState {
   code?: NameServersUpdateStateCode;
   message?: string;
 }
-export const NameServersUpdateState = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ code: S.optional(NameServersUpdateStateCode), message: S.optional(S.String) }),
-).annotate({ identifier: "NameServersUpdateState" }) as any as S.Schema<NameServersUpdateState>;
+export const NameServersUpdateState =
+  DnsRecordCreationState as any as S.Schema<NameServersUpdateState>;
 export type R53HostedZoneDeletionStateCode =
   | "SUCCEEDED"
   | "PENDING"
@@ -4438,11 +4426,8 @@ export interface R53HostedZoneDeletionState {
   code?: R53HostedZoneDeletionStateCode;
   message?: string;
 }
-export const R53HostedZoneDeletionState = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ code: S.optional(R53HostedZoneDeletionStateCode), message: S.optional(S.String) }),
-).annotate({
-  identifier: "R53HostedZoneDeletionState",
-}) as any as S.Schema<R53HostedZoneDeletionState>;
+export const R53HostedZoneDeletionState =
+  ContainerServiceStateDetail as any as S.Schema<R53HostedZoneDeletionState>;
 export interface RegisteredDomainDelegationInfo {
   nameServersUpdateState?: NameServersUpdateState;
   r53HostedZoneDeletionState?: R53HostedZoneDeletionState;
@@ -4929,14 +4914,8 @@ export interface GetInstanceMetricDataResult {
   metricName?: InstanceMetricName;
   metricData?: MetricDatapoint[];
 }
-export const GetInstanceMetricDataResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.optional(InstanceMetricName),
-    metricData: S.optional(MetricDatapointList),
-  }),
-).annotate({
-  identifier: "GetInstanceMetricDataResult",
-}) as any as S.Schema<GetInstanceMetricDataResult>;
+export const GetInstanceMetricDataResult =
+  GetBucketMetricDataResult as any as S.Schema<GetInstanceMetricDataResult>;
 export interface GetInstancePortStatesRequest {
   instanceName: string;
 }
@@ -5371,14 +5350,8 @@ export interface GetLoadBalancerMetricDataResult {
   metricName?: LoadBalancerMetricName;
   metricData?: MetricDatapoint[];
 }
-export const GetLoadBalancerMetricDataResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.optional(LoadBalancerMetricName),
-    metricData: S.optional(MetricDatapointList),
-  }),
-).annotate({
-  identifier: "GetLoadBalancerMetricDataResult",
-}) as any as S.Schema<GetLoadBalancerMetricDataResult>;
+export const GetLoadBalancerMetricDataResult =
+  GetBucketMetricDataResult as any as S.Schema<GetLoadBalancerMetricDataResult>;
 export interface GetLoadBalancersRequest {
   pageToken?: string;
 }
@@ -6279,14 +6252,8 @@ export interface GetRelationalDatabaseMetricDataResult {
   metricName?: RelationalDatabaseMetricName;
   metricData?: MetricDatapoint[];
 }
-export const GetRelationalDatabaseMetricDataResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.optional(RelationalDatabaseMetricName),
-    metricData: S.optional(MetricDatapointList),
-  }),
-).annotate({
-  identifier: "GetRelationalDatabaseMetricDataResult",
-}) as any as S.Schema<GetRelationalDatabaseMetricDataResult>;
+export const GetRelationalDatabaseMetricDataResult =
+  GetBucketMetricDataResult as any as S.Schema<GetRelationalDatabaseMetricDataResult>;
 export interface GetRelationalDatabaseParametersRequest {
   relationalDatabaseName: string;
   pageToken?: string;

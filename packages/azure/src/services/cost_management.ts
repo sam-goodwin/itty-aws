@@ -459,15 +459,8 @@ export interface CheckScheduledActionNameAvailabilityResponse {
   /** Detailed reason why the given name is available. */
   message?: string;
 }
-export const CheckScheduledActionNameAvailabilityResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nameAvailable: S.optional(S.Boolean),
-    reason: S.optional(CheckScheduledActionNameAvailabilityResponseReason),
-    message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CheckScheduledActionNameAvailabilityResponse",
-}) as any as S.Schema<CheckScheduledActionNameAvailabilityResponse>;
+export const CheckScheduledActionNameAvailabilityResponse =
+  CostAllocationRuleCheckNameAvailabilityResponse as any as S.Schema<CheckScheduledActionNameAvailabilityResponse>;
 
 export interface CheckScheduledActionNameAvailabilityByScopeRequest {
   /** The scope associated with scheduled action operations. This includes 'subscriptions/{subscriptionId}' for subscription scope, 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for BillingProfile scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}' for InvoiceSection scope, 'providers/Microsoft.CostManagement/externalBillingAccounts/{externalBillingAccountName}' for External Billing Account scope and 'providers/Microsoft.CostManagement/externalSubscriptions/{externalSubscriptionName}' for External Subscription scope. Note: Insight Alerts are only available on subscription scope. */
@@ -506,15 +499,8 @@ export interface CheckScheduledActionNameAvailabilityByScopeResponse {
   /** Detailed reason why the given name is available. */
   message?: string;
 }
-export const CheckScheduledActionNameAvailabilityByScopeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nameAvailable: S.optional(S.Boolean),
-    reason: S.optional(CheckScheduledActionNameAvailabilityByScopeResponseReason),
-    message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CheckScheduledActionNameAvailabilityByScopeResponse",
-}) as any as S.Schema<CheckScheduledActionNameAvailabilityByScopeResponse>;
+export const CheckScheduledActionNameAvailabilityByScopeResponse =
+  CostAllocationRuleCheckNameAvailabilityResponse as any as S.Schema<CheckScheduledActionNameAvailabilityByScopeResponse>;
 
 /** Category of resource to use for allocation. */
 export type CostAllocationResourceType = "Dimension" | "Tag";
@@ -3699,9 +3685,8 @@ export const DaysOfWeek = S.String;
 
 /** Day names in english on which cost analysis data will be emailed. This property is applicable when frequency is Weekly or Monthly. */
 export type SchedulePropertiesDaysOfWeekList = Array<DaysOfWeek | (string & {})>;
-export const SchedulePropertiesDaysOfWeekList = /*@__PURE__*/ S.Array(
-  DaysOfWeek,
-) as any as S.Schema<SchedulePropertiesDaysOfWeekList>;
+export const SchedulePropertiesDaysOfWeekList =
+  FileDestinationFileFormatsList as any as S.Schema<SchedulePropertiesDaysOfWeekList>;
 
 /** Weeks of month. */
 export type WeeksOfMonth = "First" | "Second" | "Third" | "Fourth" | "Last";
@@ -3709,9 +3694,8 @@ export const WeeksOfMonth = S.String;
 
 /** Weeks in which cost analysis data will be emailed. This property is applicable when frequency is Monthly and used in combination with daysOfWeek. */
 export type SchedulePropertiesWeeksOfMonthList = Array<WeeksOfMonth | (string & {})>;
-export const SchedulePropertiesWeeksOfMonthList = /*@__PURE__*/ S.Array(
-  WeeksOfMonth,
-) as any as S.Schema<SchedulePropertiesWeeksOfMonthList>;
+export const SchedulePropertiesWeeksOfMonthList =
+  FileDestinationFileFormatsList as any as S.Schema<SchedulePropertiesWeeksOfMonthList>;
 
 /** The properties of the schedule. */
 export interface ScheduleProperties {
@@ -4644,17 +4628,8 @@ export interface BenefitUtilizationSummary {
   /** Supported values: 'SavingsPlan'. */
   kind: BenefitKind;
 }
-export const BenefitUtilizationSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    kind: BenefitKind,
-  }),
-).annotate({
-  identifier: "BenefitUtilizationSummary",
-}) as any as S.Schema<BenefitUtilizationSummary>;
+export const BenefitUtilizationSummary =
+  GetSettingsByScopeResponse as any as S.Schema<BenefitUtilizationSummary>;
 
 /** The list of benefit utilization summaries. */
 export type BenefitUtilizationSummariesListResultValueList = Array<BenefitUtilizationSummary>;

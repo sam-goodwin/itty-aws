@@ -2177,9 +2177,8 @@ export type MoodsValencesItemEnum = "VALENCE_UNSPECIFIED" | "UNPLEASANT" | "BASE
 export const MoodsValencesItemEnum = S.String;
 
 export type MoodsValencesItemEnumList = Array<MoodsValencesItemEnum | (string & {})>;
-export const MoodsValencesItemEnumList = /*@__PURE__*/ S.Array(
-  MoodsValencesItemEnum,
-) as any as S.Schema<MoodsValencesItemEnumList>;
+export const MoodsValencesItemEnumList =
+  SymptomsSymptomsItemEnumList as any as S.Schema<MoodsValencesItemEnumList>;
 
 export type MoodsMoodsItemEnum =
   | "MOOD_UNSPECIFIED"
@@ -2254,9 +2253,8 @@ export type MoodsMoodsItemEnum =
 export const MoodsMoodsItemEnum = S.String;
 
 export type MoodsMoodsItemEnumList = Array<MoodsMoodsItemEnum | (string & {})>;
-export const MoodsMoodsItemEnumList = /*@__PURE__*/ S.Array(
-  MoodsMoodsItemEnum,
-) as any as S.Schema<MoodsMoodsItemEnumList>;
+export const MoodsMoodsItemEnumList =
+  SymptomsSymptomsItemEnumList as any as S.Schema<MoodsMoodsItemEnumList>;
 
 /** Moods record. */
 export interface Moods {

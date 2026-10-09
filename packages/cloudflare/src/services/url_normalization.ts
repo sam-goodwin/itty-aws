@@ -109,14 +109,8 @@ export interface PutUrlNormalizationResponse {
   /** The type of URL normalization performed by Cloudflare. */
   type: UpdateResponseType;
 }
-export const PutUrlNormalizationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scope: UpdateResponseScope,
-    type: UpdateResponseType,
-  }),
-).annotate({
-  identifier: "PutUrlNormalizationResponse",
-}) as any as S.Schema<PutUrlNormalizationResponse>;
+export const PutUrlNormalizationResponse =
+  GetUrlNormalizationResponse as any as S.Schema<PutUrlNormalizationResponse>;
 
 export type DeleteUrlNormalizationError = Forbidden | CloudflareOpError;
 /** Deletes the URL Normalization settings. */

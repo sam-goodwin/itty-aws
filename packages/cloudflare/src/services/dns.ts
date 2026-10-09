@@ -5621,28 +5621,8 @@ export interface RecordsCreateRequestDataLOCRecord {
   /** Size of location in meters. */
   size?: number;
 }
-export const RecordsCreateRequestDataLOCRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    altitude: S.optional(S.Number),
-    latDegrees: S.optional(S.Number.pipe(T.Body("lat_degrees"))),
-    latDirection: S.optional(
-      RecordsCreateRequestDataLOCRecordLatDirection.pipe(T.Body("lat_direction")),
-    ),
-    latMinutes: S.optional(S.Number.pipe(T.Body("lat_minutes"))),
-    latSeconds: S.optional(S.Number.pipe(T.Body("lat_seconds"))),
-    longDegrees: S.optional(S.Number.pipe(T.Body("long_degrees"))),
-    longDirection: S.optional(
-      RecordsCreateRequestDataLOCRecordLongDirection.pipe(T.Body("long_direction")),
-    ),
-    longMinutes: S.optional(S.Number.pipe(T.Body("long_minutes"))),
-    longSeconds: S.optional(S.Number.pipe(T.Body("long_seconds"))),
-    precisionHorz: S.optional(S.Number.pipe(T.Body("precision_horz"))),
-    precisionVert: S.optional(S.Number.pipe(T.Body("precision_vert"))),
-    size: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RecordsCreateRequestDataLOCRecord",
-}) as any as S.Schema<RecordsCreateRequestDataLOCRecord>;
+export const RecordsCreateRequestDataLOCRecord =
+  RecordsBatchRequestPostsItemLOCRecordData as any as S.Schema<RecordsCreateRequestDataLOCRecord>;
 
 export type RecordsCreateRequestDataNAPTRRecord = RecordsBatchRequestPostsItemNAPTRRecordData;
 export const RecordsCreateRequestDataNAPTRRecord = RecordsBatchRequestPostsItemNAPTRRecordData;
@@ -7892,9 +7872,7 @@ export const CreateSettingsAccountNameserverSetResultDNSSettingsNameserverSetAdv
 export type CreateSettingsAccountNameserverSetResultDNSSettingsNameserverSetAdvancedResponseNameserversItemIpv6GroupsList =
   Array<CreateSettingsAccountNameserverSetResultDNSSettingsNameserverSetAdvancedResponseNameserversItemIpv6GroupsItem>;
 export const CreateSettingsAccountNameserverSetResultDNSSettingsNameserverSetAdvancedResponseNameserversItemIpv6GroupsList =
-  /*@__PURE__*/ S.Array(
-    CreateSettingsAccountNameserverSetResultDNSSettingsNameserverSetAdvancedResponseNameserversItemIpv6GroupsItem,
-  ) as any as S.Schema<CreateSettingsAccountNameserverSetResultDNSSettingsNameserverSetAdvancedResponseNameserversItemIpv6GroupsList>;
+  CreateSettingsAccountNameserverSetResultDNSSettingsNameserverSetAdvancedResponseNameserversItemIpv4GroupsList as any as S.Schema<CreateSettingsAccountNameserverSetResultDNSSettingsNameserverSetAdvancedResponseNameserversItemIpv6GroupsList>;
 
 export interface CreateSettingsAccountNameserverSetResultDNSSettingsNameserverSetAdvancedResponseNameserversItem {
   /** IPv4 addresses assigned to the nameserver. */
@@ -10759,9 +10737,7 @@ export const GetSettingsAccountNameserverSetResultDNSSettingsNameserverSetAdvanc
 export type GetSettingsAccountNameserverSetResultDNSSettingsNameserverSetAdvancedResponseNameserversItemIpv4GroupsList =
   Array<GetSettingsAccountNameserverSetResultDNSSettingsNameserverSetAdvancedResponseNameserversItemIpv4GroupsItem>;
 export const GetSettingsAccountNameserverSetResultDNSSettingsNameserverSetAdvancedResponseNameserversItemIpv4GroupsList =
-  /*@__PURE__*/ S.Array(
-    GetSettingsAccountNameserverSetResultDNSSettingsNameserverSetAdvancedResponseNameserversItemIpv4GroupsItem,
-  ) as any as S.Schema<GetSettingsAccountNameserverSetResultDNSSettingsNameserverSetAdvancedResponseNameserversItemIpv4GroupsList>;
+  CreateSettingsAccountNameserverSetResultDNSSettingsNameserverSetAdvancedResponseNameserversItemIpv4GroupsList as any as S.Schema<GetSettingsAccountNameserverSetResultDNSSettingsNameserverSetAdvancedResponseNameserversItemIpv4GroupsList>;
 
 export type GetSettingsAccountNameserverSetResultDNSSettingsNameserverSetAdvancedResponseNameserversItemIpv6List =
   Array<string>;
@@ -10778,9 +10754,7 @@ export const GetSettingsAccountNameserverSetResultDNSSettingsNameserverSetAdvanc
 export type GetSettingsAccountNameserverSetResultDNSSettingsNameserverSetAdvancedResponseNameserversItemIpv6GroupsList =
   Array<GetSettingsAccountNameserverSetResultDNSSettingsNameserverSetAdvancedResponseNameserversItemIpv6GroupsItem>;
 export const GetSettingsAccountNameserverSetResultDNSSettingsNameserverSetAdvancedResponseNameserversItemIpv6GroupsList =
-  /*@__PURE__*/ S.Array(
-    GetSettingsAccountNameserverSetResultDNSSettingsNameserverSetAdvancedResponseNameserversItemIpv6GroupsItem,
-  ) as any as S.Schema<GetSettingsAccountNameserverSetResultDNSSettingsNameserverSetAdvancedResponseNameserversItemIpv6GroupsList>;
+  CreateSettingsAccountNameserverSetResultDNSSettingsNameserverSetAdvancedResponseNameserversItemIpv4GroupsList as any as S.Schema<GetSettingsAccountNameserverSetResultDNSSettingsNameserverSetAdvancedResponseNameserversItemIpv6GroupsList>;
 
 export interface GetSettingsAccountNameserverSetResultDNSSettingsNameserverSetAdvancedResponseNameserversItem {
   /** IPv4 addresses assigned to the nameserver. */
@@ -13761,9 +13735,7 @@ export const ListSettingsAccountNameserverSetsResultItemDNSSettingsNameserverSet
 export type ListSettingsAccountNameserverSetsResultItemDNSSettingsNameserverSetAdvancedResponseNameserversItemIpv4GroupsList =
   Array<ListSettingsAccountNameserverSetsResultItemDNSSettingsNameserverSetAdvancedResponseNameserversItemIpv4GroupsItem>;
 export const ListSettingsAccountNameserverSetsResultItemDNSSettingsNameserverSetAdvancedResponseNameserversItemIpv4GroupsList =
-  /*@__PURE__*/ S.Array(
-    ListSettingsAccountNameserverSetsResultItemDNSSettingsNameserverSetAdvancedResponseNameserversItemIpv4GroupsItem,
-  ) as any as S.Schema<ListSettingsAccountNameserverSetsResultItemDNSSettingsNameserverSetAdvancedResponseNameserversItemIpv4GroupsList>;
+  CreateSettingsAccountNameserverSetResultDNSSettingsNameserverSetAdvancedResponseNameserversItemIpv4GroupsList as any as S.Schema<ListSettingsAccountNameserverSetsResultItemDNSSettingsNameserverSetAdvancedResponseNameserversItemIpv4GroupsList>;
 
 export type ListSettingsAccountNameserverSetsResultItemDNSSettingsNameserverSetAdvancedResponseNameserversItemIpv6List =
   Array<string>;
@@ -13780,9 +13752,7 @@ export const ListSettingsAccountNameserverSetsResultItemDNSSettingsNameserverSet
 export type ListSettingsAccountNameserverSetsResultItemDNSSettingsNameserverSetAdvancedResponseNameserversItemIpv6GroupsList =
   Array<ListSettingsAccountNameserverSetsResultItemDNSSettingsNameserverSetAdvancedResponseNameserversItemIpv6GroupsItem>;
 export const ListSettingsAccountNameserverSetsResultItemDNSSettingsNameserverSetAdvancedResponseNameserversItemIpv6GroupsList =
-  /*@__PURE__*/ S.Array(
-    ListSettingsAccountNameserverSetsResultItemDNSSettingsNameserverSetAdvancedResponseNameserversItemIpv6GroupsItem,
-  ) as any as S.Schema<ListSettingsAccountNameserverSetsResultItemDNSSettingsNameserverSetAdvancedResponseNameserversItemIpv6GroupsList>;
+  CreateSettingsAccountNameserverSetResultDNSSettingsNameserverSetAdvancedResponseNameserversItemIpv4GroupsList as any as S.Schema<ListSettingsAccountNameserverSetsResultItemDNSSettingsNameserverSetAdvancedResponseNameserversItemIpv6GroupsList>;
 
 export interface ListSettingsAccountNameserverSetsResultItemDNSSettingsNameserverSetAdvancedResponseNameserversItem {
   /** IPv4 addresses assigned to the nameserver. */
@@ -14103,24 +14073,7 @@ export interface PatchDnssecResponse {
   /** Status of DNSSEC, based on user-desired state and presence of necessary records. */
   status?: DnssecEditResponseStatus | null;
 }
-export const PatchDnssecResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    algorithm: S.optional(S.NullOr(S.String)),
-    digest: S.optional(S.NullOr(S.String)),
-    digestAlgorithm: S.optional(S.NullOr(S.String).pipe(T.Body("digest_algorithm"))),
-    digestType: S.optional(S.NullOr(S.String).pipe(T.Body("digest_type"))),
-    dnssecMultiSigner: S.optional(S.NullOr(S.Boolean).pipe(T.Body("dnssec_multi_signer"))),
-    dnssecPresigned: S.optional(S.NullOr(S.Boolean).pipe(T.Body("dnssec_presigned"))),
-    dnssecUseNsec3: S.optional(S.NullOr(S.Boolean).pipe(T.Body("dnssec_use_nsec3"))),
-    ds: S.optional(S.NullOr(S.String)),
-    flags: S.optional(S.NullOr(S.Number)),
-    keyTag: S.optional(S.NullOr(S.Number).pipe(T.Body("key_tag"))),
-    keyType: S.optional(S.NullOr(S.String).pipe(T.Body("key_type"))),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-    publicKey: S.optional(S.NullOr(S.String).pipe(T.Body("public_key"))),
-    status: S.optional(S.NullOr(DnssecEditResponseStatus)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "PatchDnssecResponse" }) as any as S.Schema<PatchDnssecResponse>;
+export const PatchDnssecResponse = GetDnssecResponse as any as S.Schema<PatchDnssecResponse>;
 
 export type RecordsEditRequestType =
   | "A"
@@ -14216,28 +14169,8 @@ export interface RecordsEditRequestDataLOCRecord {
   /** Size of location in meters. */
   size?: number;
 }
-export const RecordsEditRequestDataLOCRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    altitude: S.optional(S.Number),
-    latDegrees: S.optional(S.Number.pipe(T.Body("lat_degrees"))),
-    latDirection: S.optional(
-      RecordsEditRequestDataLOCRecordLatDirection.pipe(T.Body("lat_direction")),
-    ),
-    latMinutes: S.optional(S.Number.pipe(T.Body("lat_minutes"))),
-    latSeconds: S.optional(S.Number.pipe(T.Body("lat_seconds"))),
-    longDegrees: S.optional(S.Number.pipe(T.Body("long_degrees"))),
-    longDirection: S.optional(
-      RecordsEditRequestDataLOCRecordLongDirection.pipe(T.Body("long_direction")),
-    ),
-    longMinutes: S.optional(S.Number.pipe(T.Body("long_minutes"))),
-    longSeconds: S.optional(S.Number.pipe(T.Body("long_seconds"))),
-    precisionHorz: S.optional(S.Number.pipe(T.Body("precision_horz"))),
-    precisionVert: S.optional(S.Number.pipe(T.Body("precision_vert"))),
-    size: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RecordsEditRequestDataLOCRecord",
-}) as any as S.Schema<RecordsEditRequestDataLOCRecord>;
+export const RecordsEditRequestDataLOCRecord =
+  RecordsBatchRequestPostsItemLOCRecordData as any as S.Schema<RecordsEditRequestDataLOCRecord>;
 
 export type RecordsEditRequestDataNAPTRRecord = RecordsBatchRequestPostsItemNAPTRRecordData;
 export const RecordsEditRequestDataNAPTRRecord = RecordsBatchRequestPostsItemNAPTRRecordData;
@@ -15948,13 +15881,8 @@ export interface SettingsAccountEditResponseZoneDefaultsNameservers {
   /** Nameserver type */
   type: SettingsAccountEditResponseZoneDefaultsNameserversType;
 }
-export const SettingsAccountEditResponseZoneDefaultsNameservers = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: SettingsAccountEditResponseZoneDefaultsNameserversType,
-  }),
-).annotate({
-  identifier: "SettingsAccountEditResponseZoneDefaultsNameservers",
-}) as any as S.Schema<SettingsAccountEditResponseZoneDefaultsNameservers>;
+export const SettingsAccountEditResponseZoneDefaultsNameservers =
+  SettingsAccountGetResponseZoneDefaultsNameservers as any as S.Schema<SettingsAccountEditResponseZoneDefaultsNameservers>;
 
 export type SettingsAccountEditResponseZoneDefaultsSoa = SettingsAccountGetResponseZoneDefaultsSoa;
 export const SettingsAccountEditResponseZoneDefaultsSoa = SettingsAccountGetResponseZoneDefaultsSoa;
@@ -15982,21 +15910,8 @@ export interface SettingsAccountEditResponseZoneDefaults {
   /** Whether the zone mode is a regular or CDN/DNS only zone. */
   zoneMode: SettingsAccountEditResponseZoneDefaultsZoneMode;
 }
-export const SettingsAccountEditResponseZoneDefaults = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    flattenAllCnames: S.Boolean.pipe(T.Body("flatten_all_cnames")),
-    foundationDns: S.Boolean.pipe(T.Body("foundation_dns")),
-    internalDns: SettingsAccountGetResponseZoneDefaultsInternalDns.pipe(T.Body("internal_dns")),
-    multiProvider: S.Boolean.pipe(T.Body("multi_provider")),
-    nameservers: SettingsAccountEditResponseZoneDefaultsNameservers,
-    nsTtl: S.Number.pipe(T.Body("ns_ttl")),
-    secondaryOverrides: S.Boolean.pipe(T.Body("secondary_overrides")),
-    soa: SettingsAccountGetResponseZoneDefaultsSoa,
-    zoneMode: SettingsAccountEditResponseZoneDefaultsZoneMode.pipe(T.Body("zone_mode")),
-  }),
-).annotate({
-  identifier: "SettingsAccountEditResponseZoneDefaults",
-}) as any as S.Schema<SettingsAccountEditResponseZoneDefaults>;
+export const SettingsAccountEditResponseZoneDefaults =
+  SettingsAccountGetResponseZoneDefaults as any as S.Schema<SettingsAccountEditResponseZoneDefaults>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchSettingAccountResponse {
@@ -16005,14 +15920,8 @@ export interface PatchSettingAccountResponse {
   /** When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record's individual proxy setting. Note that this account-level override does not modify the records themselves; it only affects how they are served at the edge. See more on [Enforce DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only). */
   enforceDnsOnly?: boolean | null;
 }
-export const PatchSettingAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneDefaults: SettingsAccountEditResponseZoneDefaults.pipe(T.Body("zone_defaults")),
-    enforceDnsOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("enforce_dns_only"))),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "PatchSettingAccountResponse",
-}) as any as S.Schema<PatchSettingAccountResponse>;
+export const PatchSettingAccountResponse =
+  GetSettingAccountResponse as any as S.Schema<PatchSettingAccountResponse>;
 
 export type SettingsAccountViewsEditRequestZonesList = Array<string>;
 export const SettingsAccountViewsEditRequestZonesList =
@@ -16080,13 +15989,7 @@ export interface SettingsZoneEditRequestNameserversDNSSettingsZoneNameserversClo
   type: SettingsZoneEditRequestNameserversDNSSettingsZoneNameserversCloudflareType | (string & {});
 }
 export const SettingsZoneEditRequestNameserversDNSSettingsZoneNameserversCloudflare =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: SettingsZoneEditRequestNameserversDNSSettingsZoneNameserversCloudflareType,
-    }),
-  ).annotate({
-    identifier: "SettingsZoneEditRequestNameserversDNSSettingsZoneNameserversCloudflare",
-  }) as any as S.Schema<SettingsZoneEditRequestNameserversDNSSettingsZoneNameserversCloudflare>;
+  SettingsZoneGetResponseNameserversDNSSettingsZoneNameserversCloudflare as any as S.Schema<SettingsZoneEditRequestNameserversDNSSettingsZoneNameserversCloudflare>;
 
 export type SettingsZoneEditRequestNameserversDNSSettingsZoneNameserversCustomExistingType =
   | "custom.account"
@@ -16123,14 +16026,7 @@ export interface SettingsZoneEditRequestNameserversDNSSettingsZoneNameserversCus
   type: SettingsZoneEditRequestNameserversDNSSettingsZoneNameserversCustomSetType;
 }
 export const SettingsZoneEditRequestNameserversDNSSettingsZoneNameserversCustomSet =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      nameserverSetId: S.String.pipe(T.Body("nameserver_set_id")),
-      type: SettingsZoneEditRequestNameserversDNSSettingsZoneNameserversCustomSetType,
-    }),
-  ).annotate({
-    identifier: "SettingsZoneEditRequestNameserversDNSSettingsZoneNameserversCustomSet",
-  }) as any as S.Schema<SettingsZoneEditRequestNameserversDNSSettingsZoneNameserversCustomSet>;
+  SettingsZoneGetResponseNameserversDNSSettingsZoneNameserversCustomSet as any as S.Schema<SettingsZoneEditRequestNameserversDNSSettingsZoneNameserversCustomSet>;
 
 export type SettingsZoneEditRequestNameservers =
   | SettingsZoneEditRequestNameserversDNSSettingsZoneNameserversCloudflare
@@ -16201,13 +16097,7 @@ export interface SettingsZoneEditResponseNameserversDNSSettingsZoneNameserversCl
   type: SettingsZoneEditResponseNameserversDNSSettingsZoneNameserversCloudflareType;
 }
 export const SettingsZoneEditResponseNameserversDNSSettingsZoneNameserversCloudflare =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: SettingsZoneEditResponseNameserversDNSSettingsZoneNameserversCloudflareType,
-    }),
-  ).annotate({
-    identifier: "SettingsZoneEditResponseNameserversDNSSettingsZoneNameserversCloudflare",
-  }) as any as S.Schema<SettingsZoneEditResponseNameserversDNSSettingsZoneNameserversCloudflare>;
+  SettingsZoneGetResponseNameserversDNSSettingsZoneNameserversCloudflare as any as S.Schema<SettingsZoneEditResponseNameserversDNSSettingsZoneNameserversCloudflare>;
 
 export type SettingsZoneEditResponseNameserversDNSSettingsZoneNameserversCustomExistingType =
   | "custom.account"
@@ -16223,14 +16113,7 @@ export interface SettingsZoneEditResponseNameserversDNSSettingsZoneNameserversCu
   nsSet?: number | null;
 }
 export const SettingsZoneEditResponseNameserversDNSSettingsZoneNameserversCustomExisting =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: SettingsZoneEditResponseNameserversDNSSettingsZoneNameserversCustomExistingType,
-      nsSet: S.optional(S.NullOr(S.Number).pipe(T.Body("ns_set"))),
-    }),
-  ).annotate({
-    identifier: "SettingsZoneEditResponseNameserversDNSSettingsZoneNameserversCustomExisting",
-  }) as any as S.Schema<SettingsZoneEditResponseNameserversDNSSettingsZoneNameserversCustomExisting>;
+  SettingsZoneGetResponseNameserversDNSSettingsZoneNameserversCustomExisting as any as S.Schema<SettingsZoneEditResponseNameserversDNSSettingsZoneNameserversCustomExisting>;
 
 export type SettingsZoneEditResponseNameserversDNSSettingsZoneNameserversCustomSetType = "custom";
 export const SettingsZoneEditResponseNameserversDNSSettingsZoneNameserversCustomSetType = S.String;
@@ -16242,14 +16125,7 @@ export interface SettingsZoneEditResponseNameserversDNSSettingsZoneNameserversCu
   type: SettingsZoneEditResponseNameserversDNSSettingsZoneNameserversCustomSetType;
 }
 export const SettingsZoneEditResponseNameserversDNSSettingsZoneNameserversCustomSet =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      nameserverSetId: S.String.pipe(T.Body("nameserver_set_id")),
-      type: SettingsZoneEditResponseNameserversDNSSettingsZoneNameserversCustomSetType,
-    }),
-  ).annotate({
-    identifier: "SettingsZoneEditResponseNameserversDNSSettingsZoneNameserversCustomSet",
-  }) as any as S.Schema<SettingsZoneEditResponseNameserversDNSSettingsZoneNameserversCustomSet>;
+  SettingsZoneGetResponseNameserversDNSSettingsZoneNameserversCustomSet as any as S.Schema<SettingsZoneEditResponseNameserversDNSSettingsZoneNameserversCustomSet>;
 
 export type SettingsZoneEditResponseNameservers =
   | SettingsZoneEditResponseNameserversDNSSettingsZoneNameserversCloudflare
@@ -18476,28 +18352,8 @@ export interface RecordsScanReviewRequestAcceptsItemLOCRecordData {
   /** Size of location in meters. */
   size?: number;
 }
-export const RecordsScanReviewRequestAcceptsItemLOCRecordData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    altitude: S.optional(S.Number),
-    latDegrees: S.optional(S.Number.pipe(T.Body("lat_degrees"))),
-    latDirection: S.optional(
-      RecordsScanReviewRequestAcceptsItemLOCRecordDataLatDirection.pipe(T.Body("lat_direction")),
-    ),
-    latMinutes: S.optional(S.Number.pipe(T.Body("lat_minutes"))),
-    latSeconds: S.optional(S.Number.pipe(T.Body("lat_seconds"))),
-    longDegrees: S.optional(S.Number.pipe(T.Body("long_degrees"))),
-    longDirection: S.optional(
-      RecordsScanReviewRequestAcceptsItemLOCRecordDataLongDirection.pipe(T.Body("long_direction")),
-    ),
-    longMinutes: S.optional(S.Number.pipe(T.Body("long_minutes"))),
-    longSeconds: S.optional(S.Number.pipe(T.Body("long_seconds"))),
-    precisionHorz: S.optional(S.Number.pipe(T.Body("precision_horz"))),
-    precisionVert: S.optional(S.Number.pipe(T.Body("precision_vert"))),
-    size: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RecordsScanReviewRequestAcceptsItemLOCRecordData",
-}) as any as S.Schema<RecordsScanReviewRequestAcceptsItemLOCRecordData>;
+export const RecordsScanReviewRequestAcceptsItemLOCRecordData =
+  RecordsBatchRequestPostsItemLOCRecordData as any as S.Schema<RecordsScanReviewRequestAcceptsItemLOCRecordData>;
 
 export type RecordsScanReviewRequestAcceptsItemLOCRecordSettings =
   RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
@@ -20079,28 +19935,8 @@ export interface RecordsUpdateRequestDataLOCRecord {
   /** Size of location in meters. */
   size?: number;
 }
-export const RecordsUpdateRequestDataLOCRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    altitude: S.optional(S.Number),
-    latDegrees: S.optional(S.Number.pipe(T.Body("lat_degrees"))),
-    latDirection: S.optional(
-      RecordsUpdateRequestDataLOCRecordLatDirection.pipe(T.Body("lat_direction")),
-    ),
-    latMinutes: S.optional(S.Number.pipe(T.Body("lat_minutes"))),
-    latSeconds: S.optional(S.Number.pipe(T.Body("lat_seconds"))),
-    longDegrees: S.optional(S.Number.pipe(T.Body("long_degrees"))),
-    longDirection: S.optional(
-      RecordsUpdateRequestDataLOCRecordLongDirection.pipe(T.Body("long_direction")),
-    ),
-    longMinutes: S.optional(S.Number.pipe(T.Body("long_minutes"))),
-    longSeconds: S.optional(S.Number.pipe(T.Body("long_seconds"))),
-    precisionHorz: S.optional(S.Number.pipe(T.Body("precision_horz"))),
-    precisionVert: S.optional(S.Number.pipe(T.Body("precision_vert"))),
-    size: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RecordsUpdateRequestDataLOCRecord",
-}) as any as S.Schema<RecordsUpdateRequestDataLOCRecord>;
+export const RecordsUpdateRequestDataLOCRecord =
+  RecordsBatchRequestPostsItemLOCRecordData as any as S.Schema<RecordsUpdateRequestDataLOCRecord>;
 
 export type RecordsUpdateRequestDataNAPTRRecord = RecordsBatchRequestPostsItemNAPTRRecordData;
 export const RecordsUpdateRequestDataNAPTRRecord = RecordsBatchRequestPostsItemNAPTRRecordData;

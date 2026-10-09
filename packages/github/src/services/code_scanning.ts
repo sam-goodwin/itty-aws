@@ -707,13 +707,8 @@ export interface CodeScanningAiScanOrgSettings {
   /** Whether AI Scan on pull requests is enabled for the organization. The organization setting respects enterprise policy, and repositories inherit it: when disabled, repositories cannot enable AI Scan; when enabled, repositories can still opt out. */
   pr_scan: CodeScanningAiScanOrgSettingsPrScan;
 }
-export const CodeScanningAiScanOrgSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pr_scan: CodeScanningAiScanOrgSettingsPrScan,
-  }),
-).annotate({
-  identifier: "CodeScanningAiScanOrgSettings",
-}) as any as S.Schema<CodeScanningAiScanOrgSettings>;
+export const CodeScanningAiScanOrgSettings =
+  CodeScanningAiScanEnablement as any as S.Schema<CodeScanningAiScanOrgSettings>;
 
 export interface GetAlertRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -2646,9 +2641,8 @@ export const UpdateDefaultSetupRequestLanguagesItem = S.String;
 export type UpdateDefaultSetupRequestLanguagesList = Array<
   UpdateDefaultSetupRequestLanguagesItem | (string & {})
 >;
-export const UpdateDefaultSetupRequestLanguagesList = /*@__PURE__*/ S.Array(
-  UpdateDefaultSetupRequestLanguagesItem,
-) as any as S.Schema<UpdateDefaultSetupRequestLanguagesList>;
+export const UpdateDefaultSetupRequestLanguagesList =
+  CodeScanningDefaultSetupLanguagesList as any as S.Schema<UpdateDefaultSetupRequestLanguagesList>;
 
 export interface UpdateDefaultSetupRequest {
   /** The account owner of the repository. The name is not case sensitive. */

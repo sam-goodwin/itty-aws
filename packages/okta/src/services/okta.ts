@@ -782,13 +782,8 @@ export interface CustomTelephonyProviderSettingsTelesignServiceSms {
     | CustomTelephonyProviderSettingsTelesignServiceSmsTelesignService
     | (string & {});
 }
-export const CustomTelephonyProviderSettingsTelesignServiceSms = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    telesignService: S.optional(CustomTelephonyProviderSettingsTelesignServiceSmsTelesignService),
-  }),
-).annotate({
-  identifier: "CustomTelephonyProviderSettingsTelesignServiceSms",
-}) as any as S.Schema<CustomTelephonyProviderSettingsTelesignServiceSms>;
+export const CustomTelephonyProviderSettingsTelesignServiceSms =
+  CustomTelephonyProviderSettingsTelesignServiceCall as any as S.Schema<CustomTelephonyProviderSettingsTelesignServiceSms>;
 
 /** Method for sending SMS messages. Choose one method for sending SMS messages based on your telephony provider setup. */
 export type CustomTelephonyProviderSettingsSms =
@@ -1502,13 +1497,8 @@ export const ProvisioningSuspendedAction = S.String;
 export interface ProvisioningSuspendedCondition {
   action?: ProvisioningSuspendedAction | (string & {});
 }
-export const ProvisioningSuspendedCondition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.optional(ProvisioningSuspendedAction),
-  }),
-).annotate({
-  identifier: "ProvisioningSuspendedCondition",
-}) as any as S.Schema<ProvisioningSuspendedCondition>;
+export const ProvisioningSuspendedCondition =
+  ProvisioningDeprovisionedCondition as any as S.Schema<ProvisioningSuspendedCondition>;
 
 /** Conditional behaviors for an IdP user during authentication */
 export interface ProvisioningConditions {
@@ -1634,9 +1624,8 @@ export const IdentityProviderPropertiesAdditionalAmrItem = S.String;
 export type IdentityProviderPropertiesAdditionalAmrList = Array<
   IdentityProviderPropertiesAdditionalAmrItem | (string & {})
 >;
-export const IdentityProviderPropertiesAdditionalAmrList = /*@__PURE__*/ S.Array(
-  IdentityProviderPropertiesAdditionalAmrItem,
-) as any as S.Schema<IdentityProviderPropertiesAdditionalAmrList>;
+export const IdentityProviderPropertiesAdditionalAmrList =
+  HrefHintsAllowList as any as S.Schema<IdentityProviderPropertiesAdditionalAmrList>;
 
 /** Metadata about the IDV vendor. Available only for `IDV_STANDARD` IdPs. */
 export interface IdentityProviderPropertiesIdvMetadata {
@@ -1734,14 +1723,8 @@ export interface SamlResponseSignatureAlgorithm {
   algorithm?: SamlSigningAlgorithm | (string & {});
   scope?: ProtocolAlgorithmResponseScope | (string & {});
 }
-export const SamlResponseSignatureAlgorithm = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    algorithm: S.optional(SamlSigningAlgorithm),
-    scope: S.optional(ProtocolAlgorithmResponseScope),
-  }),
-).annotate({
-  identifier: "SamlResponseSignatureAlgorithm",
-}) as any as S.Schema<SamlResponseSignatureAlgorithm>;
+export const SamlResponseSignatureAlgorithm =
+  SamlRequestSignatureAlgorithm as any as S.Schema<SamlResponseSignatureAlgorithm>;
 
 /** Algorithm settings for verifying `<SAMLResponse>` messages and `<Assertion>` elements from the IdP */
 export interface SamlResponseAlgorithm {
@@ -2093,24 +2076,14 @@ export interface OidcRequestSignatureAlgorithm {
   algorithm?: OidcSigningAlgorithm | (string & {});
   scope?: ProtocolAlgorithmRequestScope | (string & {});
 }
-export const OidcRequestSignatureAlgorithm = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    algorithm: S.optional(OidcSigningAlgorithm),
-    scope: S.optional(ProtocolAlgorithmRequestScope),
-  }),
-).annotate({
-  identifier: "OidcRequestSignatureAlgorithm",
-}) as any as S.Schema<OidcRequestSignatureAlgorithm>;
+export const OidcRequestSignatureAlgorithm =
+  SamlRequestSignatureAlgorithm as any as S.Schema<OidcRequestSignatureAlgorithm>;
 
 /** Algorithm settings used to sign an authorization request */
 export interface OidcRequestAlgorithm {
   signature?: OidcRequestSignatureAlgorithm;
 }
-export const OidcRequestAlgorithm = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    signature: S.optional(OidcRequestSignatureAlgorithm),
-  }),
-).annotate({ identifier: "OidcRequestAlgorithm" }) as any as S.Schema<OidcRequestAlgorithm>;
+export const OidcRequestAlgorithm = SamlResponseAlgorithm as any as S.Schema<OidcRequestAlgorithm>;
 
 export interface OidcAlgorithms {
   request?: OidcRequestAlgorithm;
@@ -2294,12 +2267,8 @@ export interface IDVAuthorizationEndpoint {
   /** URL of the `authorization` endpoint of the IDV vendor */
   url?: string;
 }
-export const IDVAuthorizationEndpoint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    binding: S.optional(IDVAuthorizationEndpointBinding),
-    url: S.optional(S.String),
-  }),
-).annotate({ identifier: "IDVAuthorizationEndpoint" }) as any as S.Schema<IDVAuthorizationEndpoint>;
+export const IDVAuthorizationEndpoint =
+  SamlSloEndpoint as any as S.Schema<IDVAuthorizationEndpoint>;
 
 export type IDVParEndpointBinding = "HTTP-POST";
 export const IDVParEndpointBinding = S.String;
@@ -2310,12 +2279,7 @@ export interface IDVParEndpoint {
   /** URL of the `par` endpoint of the IDV vendor */
   url?: string;
 }
-export const IDVParEndpoint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    binding: S.optional(IDVParEndpointBinding),
-    url: S.optional(S.String),
-  }),
-).annotate({ identifier: "IDVParEndpoint" }) as any as S.Schema<IDVParEndpoint>;
+export const IDVParEndpoint = SamlSloEndpoint as any as S.Schema<IDVParEndpoint>;
 
 export type IDVTokenEndpointBinding = "HTTP-POST";
 export const IDVTokenEndpointBinding = S.String;
@@ -2326,12 +2290,7 @@ export interface IDVTokenEndpoint {
   /** URL of the `token` endpoint of the IDV vendor */
   url?: string;
 }
-export const IDVTokenEndpoint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    binding: S.optional(IDVTokenEndpointBinding),
-    url: S.optional(S.String),
-  }),
-).annotate({ identifier: "IDVTokenEndpoint" }) as any as S.Schema<IDVTokenEndpoint>;
+export const IDVTokenEndpoint = SamlSloEndpoint as any as S.Schema<IDVTokenEndpoint>;
 
 /** Contains endpoints for the IDV vendor. When you create an `IDV_STANDARD` IdP, you must include the `par`, `authorization`, `token`, and `jwks` endpoints in the request body. */
 export interface IDVEndpoints {
@@ -2623,12 +2582,8 @@ export interface LogStreamDeactivateLink {
   /** HTTP method allowed for the resource */
   method?: LogStreamDeactivateLinkMethod;
 }
-export const LogStreamDeactivateLink = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    href: S.String,
-    method: S.optional(LogStreamDeactivateLinkMethod),
-  }),
-).annotate({ identifier: "LogStreamDeactivateLink" }) as any as S.Schema<LogStreamDeactivateLink>;
+export const LogStreamDeactivateLink =
+  LogStreamActivateLink as any as S.Schema<LogStreamDeactivateLink>;
 
 /** HTTP method allowed for the resource */
 export type LogStreamSelfLinkMethod = "GET" | "POST";
@@ -2640,12 +2595,7 @@ export interface LogStreamSelfLink {
   /** HTTP method allowed for the resource */
   method?: LogStreamSelfLinkMethod;
 }
-export const LogStreamSelfLink = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    href: S.String,
-    method: S.optional(LogStreamSelfLinkMethod),
-  }),
-).annotate({ identifier: "LogStreamSelfLink" }) as any as S.Schema<LogStreamSelfLink>;
+export const LogStreamSelfLink = LogStreamActivateLink as any as S.Schema<LogStreamSelfLink>;
 
 /** Specifies link relations (see [Web Linking](https://www.rfc-editor.org/rfc/rfc8288)) available for the current status of an application using the [JSON Hypertext Application Language](https://datatracker.ietf.org/doc/html/draft-kelly-json-hal-06) specification. This object is used for dynamic discovery of related resources and lifecycle operations. */
 export interface LogStreamLinksSelfAndLifecycle {
@@ -3340,9 +3290,8 @@ export const IframeEmbedScopeAllowedApps = S.String;
 export type TrustedOriginScopeAllowedOktaAppsList = Array<
   IframeEmbedScopeAllowedApps | (string & {})
 >;
-export const TrustedOriginScopeAllowedOktaAppsList = /*@__PURE__*/ S.Array(
-  IframeEmbedScopeAllowedApps,
-) as any as S.Schema<TrustedOriginScopeAllowedOktaAppsList>;
+export const TrustedOriginScopeAllowedOktaAppsList =
+  HrefHintsAllowList as any as S.Schema<TrustedOriginScopeAllowedOktaAppsList>;
 
 /** The scope type. Supported values: When you use `IFRAME_EMBED` as the scope type, leave the `allowedOktaApps` property empty to allow iFrame embedding of only Okta sign-in pages. Include `OKTA_ENDUSER` as a value for the `allowedOktaApps` property to allow iFrame embedding of both Okta sign-in pages and the Okta End-User Dashboard. */
 export type TrustedOriginScopeType = "CORS" | "IFRAME_EMBED" | "REDIRECT";
@@ -5901,9 +5850,8 @@ export const ApplicationCapability = S.String;
 
 /** Capabilities currently enabled for the app */
 export type ApplicationExpressConfigurationEnabledCapabilitiesList = Array<ApplicationCapability>;
-export const ApplicationExpressConfigurationEnabledCapabilitiesList = /*@__PURE__*/ S.Array(
-  ApplicationCapability,
-) as any as S.Schema<ApplicationExpressConfigurationEnabledCapabilitiesList>;
+export const ApplicationExpressConfigurationEnabledCapabilitiesList =
+  HrefHintsAllowList as any as S.Schema<ApplicationExpressConfigurationEnabledCapabilitiesList>;
 
 /** Capabilities supported by the app */
 export type ApplicationExpressConfigurationSupportedCapabilitiesList = Array<ApplicationCapability>;
@@ -5973,9 +5921,8 @@ export const ApplicationFeaturesItem = S.String;
 
 /** Enabled app features > **Note:** See [Application Features](/openapi/okta-management/management/tags/applicationfeatures/) for app provisioning features. */
 export type ApplicationFeaturesList = Array<ApplicationFeaturesItem>;
-export const ApplicationFeaturesList = /*@__PURE__*/ S.Array(
-  ApplicationFeaturesItem,
-) as any as S.Schema<ApplicationFeaturesList>;
+export const ApplicationFeaturesList =
+  HrefHintsAllowList as any as S.Schema<ApplicationFeaturesList>;
 
 /** Contains any valid JSON schema for specifying properties that can be referenced from a request (only available to OAuth 2.0 client apps). For example, add an app manager contact email address or define an allowlist of groups that you can then reference using the Okta Expression Language `getFilteredGroups` function. > **Notes:** > * `profile` isn't encrypted, so don't store sensitive data in it. > * `profile` doesn't limit the level of nesting in the JSON schema you created, but there is a practical size limit. Okta recommends a JSON schema size of 1 MB or less for best performance. */
 export type ApplicationProfileMap = { [key: string]: unknown | undefined };
@@ -8010,9 +7957,8 @@ export const CreateEmailDomainRequestExpandItem = S.String;
 export type CreateEmailDomainRequestExpandList = Array<
   CreateEmailDomainRequestExpandItem | (string & {})
 >;
-export const CreateEmailDomainRequestExpandList = /*@__PURE__*/ S.Array(
-  CreateEmailDomainRequestExpandItem,
-) as any as S.Schema<CreateEmailDomainRequestExpandList>;
+export const CreateEmailDomainRequestExpandList =
+  HrefHintsAllowList as any as S.Schema<CreateEmailDomainRequestExpandList>;
 
 export interface CreateEmailDomainRequest {
   /** Specifies additional metadata to be included in the response */
@@ -9763,9 +9709,8 @@ export const PolicyTypeSimulation = S.String;
 
 /** Supported policy types for a simulate operation. The default value, `null`, returns all types. */
 export type SimulatePolicyBodyPolicyTypesList = Array<PolicyTypeSimulation | (string & {})>;
-export const SimulatePolicyBodyPolicyTypesList = /*@__PURE__*/ S.Array(
-  PolicyTypeSimulation,
-) as any as S.Schema<SimulatePolicyBodyPolicyTypesList>;
+export const SimulatePolicyBodyPolicyTypesList =
+  HrefHintsAllowList as any as S.Schema<SimulatePolicyBodyPolicyTypesList>;
 
 /** The request body required for a simulate policy operation */
 export interface SimulatePolicyBody {
@@ -10686,11 +10631,7 @@ export interface UIElementOptions {
   /** Specifies how the input appears */
   format?: UIElementOptionsFormat | (string & {});
 }
-export const UIElementOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    format: S.optional(UIElementOptionsFormat),
-  }),
-).annotate({ identifier: "UIElementOptions" }) as any as S.Schema<UIElementOptions>;
+export const UIElementOptions = SamlRelayState as any as S.Schema<UIElementOptions>;
 
 /** Specifies the configuration of an input field on an enrollment form */
 export interface UIElement {
@@ -12332,9 +12273,8 @@ export const DeleteEmailDomainRequestExpandItem = S.String;
 export type DeleteEmailDomainRequestExpandList = Array<
   DeleteEmailDomainRequestExpandItem | (string & {})
 >;
-export const DeleteEmailDomainRequestExpandList = /*@__PURE__*/ S.Array(
-  DeleteEmailDomainRequestExpandItem,
-) as any as S.Schema<DeleteEmailDomainRequestExpandList>;
+export const DeleteEmailDomainRequestExpandList =
+  HrefHintsAllowList as any as S.Schema<DeleteEmailDomainRequestExpandList>;
 
 export interface DeleteEmailDomainRequest {
   emailDomainId: string;
@@ -15391,19 +15331,14 @@ export type CsrPublishHrefHintsAllowItem = "POST";
 export const CsrPublishHrefHintsAllowItem = S.String;
 
 export type CsrPublishHrefHintsAllowList = Array<CsrPublishHrefHintsAllowItem>;
-export const CsrPublishHrefHintsAllowList = /*@__PURE__*/ S.Array(
-  CsrPublishHrefHintsAllowItem,
-) as any as S.Schema<CsrPublishHrefHintsAllowList>;
+export const CsrPublishHrefHintsAllowList =
+  HrefHintsAllowList as any as S.Schema<CsrPublishHrefHintsAllowList>;
 
 /** Describes allowed HTTP verbs for the `href` */
 export interface CsrPublishHrefHints {
   allow?: CsrPublishHrefHintsAllowList;
 }
-export const CsrPublishHrefHints = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allow: S.optional(CsrPublishHrefHintsAllowList),
-  }),
-).annotate({ identifier: "CsrPublishHrefHints" }) as any as S.Schema<CsrPublishHrefHints>;
+export const CsrPublishHrefHints = HrefHints as any as S.Schema<CsrPublishHrefHints>;
 
 /** Link to publish CSR */
 export interface HrefCsrPublishLink {
@@ -15422,19 +15357,14 @@ export type CsrSelfHrefHintsAllowItem = "GET" | "DELETE";
 export const CsrSelfHrefHintsAllowItem = S.String;
 
 export type CsrSelfHrefHintsAllowList = Array<CsrSelfHrefHintsAllowItem>;
-export const CsrSelfHrefHintsAllowList = /*@__PURE__*/ S.Array(
-  CsrSelfHrefHintsAllowItem,
-) as any as S.Schema<CsrSelfHrefHintsAllowList>;
+export const CsrSelfHrefHintsAllowList =
+  HrefHintsAllowList as any as S.Schema<CsrSelfHrefHintsAllowList>;
 
 /** Describes allowed HTTP verbs for the `href` */
 export interface CsrSelfHrefHints {
   allow?: CsrSelfHrefHintsAllowList;
 }
-export const CsrSelfHrefHints = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allow: S.optional(CsrSelfHrefHintsAllowList),
-  }),
-).annotate({ identifier: "CsrSelfHrefHints" }) as any as S.Schema<CsrSelfHrefHints>;
+export const CsrSelfHrefHints = HrefHints as any as S.Schema<CsrSelfHrefHints>;
 
 /** Link to the resource (self) */
 export interface HrefCsrSelfLink {
@@ -15442,12 +15372,7 @@ export interface HrefCsrSelfLink {
   /** Link URI */
   href: string;
 }
-export const HrefCsrSelfLink = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hints: S.optional(CsrSelfHrefHints),
-    href: S.String,
-  }),
-).annotate({ identifier: "HrefCsrSelfLink" }) as any as S.Schema<HrefCsrSelfLink>;
+export const HrefCsrSelfLink = HrefCsrPublishLink as any as S.Schema<HrefCsrSelfLink>;
 
 /** Specifies link relations (see [Web Linking](https://www.rfc-editor.org/rfc/rfc8288)) available for the current status of a CSR object using the [JSON Hypertext Application Language](https://datatracker.ietf.org/doc/html/draft-kelly-json-hal-06) specification. This object is used for dynamic discovery of related resources and lifecycle operations. */
 export interface CSRLinks {
@@ -15765,9 +15690,8 @@ export const GetAllWellKnownURIsRequestExpandItem = S.String;
 export type GetAllWellKnownURIsRequestExpandList = Array<
   GetAllWellKnownURIsRequestExpandItem | (string & {})
 >;
-export const GetAllWellKnownURIsRequestExpandList = /*@__PURE__*/ S.Array(
-  GetAllWellKnownURIsRequestExpandItem,
-) as any as S.Schema<GetAllWellKnownURIsRequestExpandList>;
+export const GetAllWellKnownURIsRequestExpandList =
+  HrefHintsAllowList as any as S.Schema<GetAllWellKnownURIsRequestExpandList>;
 
 export interface GetAllWellKnownURIsRequest {
   /** The ID of the brand */
@@ -16585,9 +16509,8 @@ export const GetAuthenticatorEnrollmentRequestDiscloseIdentifiersItem = S.String
 export type GetAuthenticatorEnrollmentRequestDiscloseIdentifiersList = Array<
   GetAuthenticatorEnrollmentRequestDiscloseIdentifiersItem | (string & {})
 >;
-export const GetAuthenticatorEnrollmentRequestDiscloseIdentifiersList = /*@__PURE__*/ S.Array(
-  GetAuthenticatorEnrollmentRequestDiscloseIdentifiersItem,
-) as any as S.Schema<GetAuthenticatorEnrollmentRequestDiscloseIdentifiersList>;
+export const GetAuthenticatorEnrollmentRequestDiscloseIdentifiersList =
+  HrefHintsAllowList as any as S.Schema<GetAuthenticatorEnrollmentRequestDiscloseIdentifiersList>;
 
 export interface GetAuthenticatorEnrollmentRequest {
   /** ID of an existing Okta user */
@@ -16799,23 +16722,8 @@ export interface GetAuthorizationServerPolicyResponse {
   lastUpdated?: string;
   _links?: CreateAuthorizationServerPolicyResponseLinks;
 }
-export const GetAuthorizationServerPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    type: S.optional(GetAuthorizationServerPolicyResponseType),
-    name: S.optional(S.String),
-    conditions: S.optional(AuthorizationServerPolicyConditions),
-    description: S.optional(S.String),
-    priority: S.optional(S.Number),
-    status: S.optional(GetAuthorizationServerPolicyResponseStatus),
-    system: S.optional(S.Boolean),
-    created: S.optional(S.String),
-    lastUpdated: S.optional(S.String),
-    _links: S.optional(CreateAuthorizationServerPolicyResponseLinks),
-  }),
-).annotate({
-  identifier: "GetAuthorizationServerPolicyResponse",
-}) as any as S.Schema<GetAuthorizationServerPolicyResponse>;
+export const GetAuthorizationServerPolicyResponse =
+  CreateAuthorizationServerPolicyResponse as any as S.Schema<GetAuthorizationServerPolicyResponse>;
 
 export interface GetAuthorizationServerPolicyRuleRequest {
   /** `id` of the Authorization Server */
@@ -16953,9 +16861,8 @@ export const BotProtectionSupportedFlow = S.String;
 
 /** An array of authentication flows that have bot protection enabled */
 export type BotProtectionConfigurationSupportedFlowsList = Array<BotProtectionSupportedFlow>;
-export const BotProtectionConfigurationSupportedFlowsList = /*@__PURE__*/ S.Array(
-  BotProtectionSupportedFlow,
-) as any as S.Schema<BotProtectionConfigurationSupportedFlowsList>;
+export const BotProtectionConfigurationSupportedFlowsList =
+  HrefHintsAllowList as any as S.Schema<BotProtectionConfigurationSupportedFlowsList>;
 
 /** Bot protection configuration for the org */
 export interface BotProtectionConfiguration {
@@ -16982,9 +16889,8 @@ export type GetBrandRequestExpandItem = "themes" | "domains" | "emailDomain";
 export const GetBrandRequestExpandItem = S.String;
 
 export type GetBrandRequestExpandList = Array<GetBrandRequestExpandItem | (string & {})>;
-export const GetBrandRequestExpandList = /*@__PURE__*/ S.Array(
-  GetBrandRequestExpandItem,
-) as any as S.Schema<GetBrandRequestExpandList>;
+export const GetBrandRequestExpandList =
+  HrefHintsAllowList as any as S.Schema<GetBrandRequestExpandList>;
 
 export interface GetBrandRequest {
   /** The ID of the brand */
@@ -18578,9 +18484,8 @@ export const GetDeviceOSAccountRequestExpandItem = S.String;
 export type GetDeviceOSAccountRequestExpandList = Array<
   GetDeviceOSAccountRequestExpandItem | (string & {})
 >;
-export const GetDeviceOSAccountRequestExpandList = /*@__PURE__*/ S.Array(
-  GetDeviceOSAccountRequestExpandItem,
-) as any as S.Schema<GetDeviceOSAccountRequestExpandList>;
+export const GetDeviceOSAccountRequestExpandList =
+  HrefHintsAllowList as any as S.Schema<GetDeviceOSAccountRequestExpandList>;
 
 export interface GetDeviceOSAccountRequest {
   /** `id` of the device */
@@ -19080,9 +18985,8 @@ export const GetEmailDomainRequestExpandItem = S.String;
 export type GetEmailDomainRequestExpandList = Array<
   GetEmailDomainRequestExpandItem | (string & {})
 >;
-export const GetEmailDomainRequestExpandList = /*@__PURE__*/ S.Array(
-  GetEmailDomainRequestExpandItem,
-) as any as S.Schema<GetEmailDomainRequestExpandList>;
+export const GetEmailDomainRequestExpandList =
+  HrefHintsAllowList as any as S.Schema<GetEmailDomainRequestExpandList>;
 
 export interface GetEmailDomainRequest {
   emailDomainId: string;
@@ -19201,9 +19105,8 @@ export const GetEmailTemplateRequestExpandItem = S.String;
 export type GetEmailTemplateRequestExpandList = Array<
   GetEmailTemplateRequestExpandItem | (string & {})
 >;
-export const GetEmailTemplateRequestExpandList = /*@__PURE__*/ S.Array(
-  GetEmailTemplateRequestExpandItem,
-) as any as S.Schema<GetEmailTemplateRequestExpandList>;
+export const GetEmailTemplateRequestExpandList =
+  HrefHintsAllowList as any as S.Schema<GetEmailTemplateRequestExpandList>;
 
 export interface GetEmailTemplateRequest {
   /** The ID of the brand */
@@ -19282,9 +19185,8 @@ export type GetErrorPageRequestExpandItem =
 export const GetErrorPageRequestExpandItem = S.String;
 
 export type GetErrorPageRequestExpandList = Array<GetErrorPageRequestExpandItem | (string & {})>;
-export const GetErrorPageRequestExpandList = /*@__PURE__*/ S.Array(
-  GetErrorPageRequestExpandItem,
-) as any as S.Schema<GetErrorPageRequestExpandList>;
+export const GetErrorPageRequestExpandList =
+  HrefHintsAllowList as any as S.Schema<GetErrorPageRequestExpandList>;
 
 export interface GetErrorPageRequest {
   /** The ID of the brand */
@@ -20837,9 +20739,8 @@ export const EnabledPagesType = S.String;
 
 /** An array of pages that have CAPTCHA enabled */
 export type OrgCAPTCHASettingsEnabledPagesList = Array<EnabledPagesType>;
-export const OrgCAPTCHASettingsEnabledPagesList = /*@__PURE__*/ S.Array(
-  EnabledPagesType,
-) as any as S.Schema<OrgCAPTCHASettingsEnabledPagesList>;
+export const OrgCAPTCHASettingsEnabledPagesList =
+  HrefHintsAllowList as any as S.Schema<OrgCAPTCHASettingsEnabledPagesList>;
 
 /** Link relations for the CAPTCHA settings object */
 export type OrgCAPTCHASettingsLinks = LinksSelf;
@@ -21813,9 +21714,8 @@ export const GetRootBrandWellKnownURIRequestExpandItem = S.String;
 export type GetRootBrandWellKnownURIRequestExpandList = Array<
   GetRootBrandWellKnownURIRequestExpandItem | (string & {})
 >;
-export const GetRootBrandWellKnownURIRequestExpandList = /*@__PURE__*/ S.Array(
-  GetRootBrandWellKnownURIRequestExpandItem,
-) as any as S.Schema<GetRootBrandWellKnownURIRequestExpandList>;
+export const GetRootBrandWellKnownURIRequestExpandList =
+  HrefHintsAllowList as any as S.Schema<GetRootBrandWellKnownURIRequestExpandList>;
 
 export interface GetRootBrandWellKnownURIRequest {
   /** The ID of the brand */
@@ -22004,9 +21904,7 @@ export const SessionAuthenticationMethod = S.String;
 
 /** Authentication method reference */
 export type SessionAmrList = Array<SessionAuthenticationMethod>;
-export const SessionAmrList = /*@__PURE__*/ S.Array(
-  SessionAuthenticationMethod,
-) as any as S.Schema<SessionAmrList>;
+export const SessionAmrList = HrefHintsAllowList as any as S.Schema<SessionAmrList>;
 
 export interface SessionIdentityProvider {
   /** Identity Provider ID. If the `type` is `OKTA`, then the `id` is the org ID. */
@@ -22069,9 +21967,8 @@ export type GetSignInPageRequestExpandItem =
 export const GetSignInPageRequestExpandItem = S.String;
 
 export type GetSignInPageRequestExpandList = Array<GetSignInPageRequestExpandItem | (string & {})>;
-export const GetSignInPageRequestExpandList = /*@__PURE__*/ S.Array(
-  GetSignInPageRequestExpandItem,
-) as any as S.Schema<GetSignInPageRequestExpandList>;
+export const GetSignInPageRequestExpandList =
+  HrefHintsAllowList as any as S.Schema<GetSignInPageRequestExpandList>;
 
 export interface GetSignInPageRequest {
   /** The ID of the brand */
@@ -22702,9 +22599,8 @@ export const AuthenticatorMethodAlgorithm = S.String;
 
 /** The encryption algorithm for this authenticator method */
 export type SupportedMethodsSettingsAlgorithmsList = Array<AuthenticatorMethodAlgorithm>;
-export const SupportedMethodsSettingsAlgorithmsList = /*@__PURE__*/ S.Array(
-  AuthenticatorMethodAlgorithm,
-) as any as S.Schema<SupportedMethodsSettingsAlgorithmsList>;
+export const SupportedMethodsSettingsAlgorithmsList =
+  HrefHintsAllowList as any as S.Schema<SupportedMethodsSettingsAlgorithmsList>;
 
 export type AuthenticatorMethodTransactionType = "CIBA" | "LOGIN";
 export const AuthenticatorMethodTransactionType = S.String;
@@ -22712,9 +22608,8 @@ export const AuthenticatorMethodTransactionType = S.String;
 /** The transaction type for this authenticator method */
 export type SupportedMethodsSettingsTransactionTypesList =
   Array<AuthenticatorMethodTransactionType>;
-export const SupportedMethodsSettingsTransactionTypesList = /*@__PURE__*/ S.Array(
-  AuthenticatorMethodTransactionType,
-) as any as S.Schema<SupportedMethodsSettingsTransactionTypesList>;
+export const SupportedMethodsSettingsTransactionTypesList =
+  HrefHintsAllowList as any as S.Schema<SupportedMethodsSettingsTransactionTypesList>;
 
 export interface SupportedMethodsSettings {
   keyProtection?: PushMethodKeyProtection;
@@ -23766,9 +23661,8 @@ export const ListAuthenticatorEnrollmentsRequestDiscloseIdentifiersItem = S.Stri
 export type ListAuthenticatorEnrollmentsRequestDiscloseIdentifiersList = Array<
   ListAuthenticatorEnrollmentsRequestDiscloseIdentifiersItem | (string & {})
 >;
-export const ListAuthenticatorEnrollmentsRequestDiscloseIdentifiersList = /*@__PURE__*/ S.Array(
-  ListAuthenticatorEnrollmentsRequestDiscloseIdentifiersItem,
-) as any as S.Schema<ListAuthenticatorEnrollmentsRequestDiscloseIdentifiersList>;
+export const ListAuthenticatorEnrollmentsRequestDiscloseIdentifiersList =
+  HrefHintsAllowList as any as S.Schema<ListAuthenticatorEnrollmentsRequestDiscloseIdentifiersList>;
 
 export interface ListAuthenticatorEnrollmentsRequest {
   /** ID of an existing Okta user */
@@ -23918,23 +23812,8 @@ export interface AuthorizationServerPolicy {
   lastUpdated?: string;
   _links?: CreateAuthorizationServerPolicyResponseLinks;
 }
-export const AuthorizationServerPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    type: S.optional(AuthorizationServerPolicyType),
-    name: S.optional(S.String),
-    conditions: S.optional(AuthorizationServerPolicyConditions),
-    description: S.optional(S.String),
-    priority: S.optional(S.Number),
-    status: S.optional(AuthorizationServerPolicyStatus),
-    system: S.optional(S.Boolean),
-    created: S.optional(S.String),
-    lastUpdated: S.optional(S.String),
-    _links: S.optional(CreateAuthorizationServerPolicyResponseLinks),
-  }),
-).annotate({
-  identifier: "AuthorizationServerPolicy",
-}) as any as S.Schema<AuthorizationServerPolicy>;
+export const AuthorizationServerPolicy =
+  CreateAuthorizationServerPolicyResponse as any as S.Schema<AuthorizationServerPolicy>;
 
 export type ListAuthorizationServerPoliciesResponseBodyList = Array<AuthorizationServerPolicy>;
 export const ListAuthorizationServerPoliciesResponseBodyList = /*@__PURE__*/ S.Array(
@@ -24137,9 +24016,8 @@ export type ListBrandsRequestExpandItem = "themes" | "domains" | "emailDomain";
 export const ListBrandsRequestExpandItem = S.String;
 
 export type ListBrandsRequestExpandList = Array<ListBrandsRequestExpandItem | (string & {})>;
-export const ListBrandsRequestExpandList = /*@__PURE__*/ S.Array(
-  ListBrandsRequestExpandItem,
-) as any as S.Schema<ListBrandsRequestExpandList>;
+export const ListBrandsRequestExpandList =
+  HrefHintsAllowList as any as S.Schema<ListBrandsRequestExpandList>;
 
 export interface ListBrandsRequest {
   /** Specifies additional metadata to be included in the response */
@@ -24596,9 +24474,8 @@ export const ListDeviceOSAccountsRequestExpandItem = S.String;
 export type ListDeviceOSAccountsRequestExpandList = Array<
   ListDeviceOSAccountsRequestExpandItem | (string & {})
 >;
-export const ListDeviceOSAccountsRequestExpandList = /*@__PURE__*/ S.Array(
-  ListDeviceOSAccountsRequestExpandItem,
-) as any as S.Schema<ListDeviceOSAccountsRequestExpandList>;
+export const ListDeviceOSAccountsRequestExpandList =
+  HrefHintsAllowList as any as S.Schema<ListDeviceOSAccountsRequestExpandList>;
 
 export interface ListDeviceOSAccountsRequest {
   /** `id` of the device */
@@ -24850,9 +24727,8 @@ export const ListEmailDomainsRequestExpandItem = S.String;
 export type ListEmailDomainsRequestExpandList = Array<
   ListEmailDomainsRequestExpandItem | (string & {})
 >;
-export const ListEmailDomainsRequestExpandList = /*@__PURE__*/ S.Array(
-  ListEmailDomainsRequestExpandItem,
-) as any as S.Schema<ListEmailDomainsRequestExpandList>;
+export const ListEmailDomainsRequestExpandList =
+  HrefHintsAllowList as any as S.Schema<ListEmailDomainsRequestExpandList>;
 
 export interface ListEmailDomainsRequest {
   /** Specifies additional metadata to be included in the response */
@@ -24943,9 +24819,8 @@ export const ListEmailTemplatesRequestExpandItem = S.String;
 export type ListEmailTemplatesRequestExpandList = Array<
   ListEmailTemplatesRequestExpandItem | (string & {})
 >;
-export const ListEmailTemplatesRequestExpandList = /*@__PURE__*/ S.Array(
-  ListEmailTemplatesRequestExpandItem,
-) as any as S.Schema<ListEmailTemplatesRequestExpandList>;
+export const ListEmailTemplatesRequestExpandList =
+  HrefHintsAllowList as any as S.Schema<ListEmailTemplatesRequestExpandList>;
 
 export interface ListEmailTemplatesRequest {
   /** The ID of the brand */
@@ -27224,23 +27099,8 @@ export interface RealmAssignmentOperationResponse {
   realmName?: string;
   _links?: LinksSelf;
 }
-export const RealmAssignmentOperationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    completed: S.optional(S.String),
-    created: S.String,
-    id: S.String,
-    started: S.optional(S.String),
-    status: RealmAssignmentOperationResponseStatus,
-    type: S.String,
-    assignmentOperation: S.optional(ExecuteRealmAssignmentResponseAssignmentOperation),
-    numUserMoved: S.optional(S.Number),
-    realmId: S.optional(S.String),
-    realmName: S.optional(S.String),
-    _links: S.optional(LinksSelf),
-  }),
-).annotate({
-  identifier: "RealmAssignmentOperationResponse",
-}) as any as S.Schema<RealmAssignmentOperationResponse>;
+export const RealmAssignmentOperationResponse =
+  ExecuteRealmAssignmentResponse as any as S.Schema<RealmAssignmentOperationResponse>;
 
 export type ListRealmAssignmentOperationsResponseBodyList = Array<RealmAssignmentOperationResponse>;
 export const ListRealmAssignmentOperationsResponseBodyList = /*@__PURE__*/ S.Array(
@@ -28854,23 +28714,8 @@ export interface ReplaceAuthorizationServerPolicyResponse {
   lastUpdated?: string;
   _links?: CreateAuthorizationServerPolicyResponseLinks;
 }
-export const ReplaceAuthorizationServerPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    type: S.optional(ReplaceAuthorizationServerPolicyResponseType),
-    name: S.optional(S.String),
-    conditions: S.optional(AuthorizationServerPolicyConditions),
-    description: S.optional(S.String),
-    priority: S.optional(S.Number),
-    status: S.optional(ReplaceAuthorizationServerPolicyResponseStatus),
-    system: S.optional(S.Boolean),
-    created: S.optional(S.String),
-    lastUpdated: S.optional(S.String),
-    _links: S.optional(CreateAuthorizationServerPolicyResponseLinks),
-  }),
-).annotate({
-  identifier: "ReplaceAuthorizationServerPolicyResponse",
-}) as any as S.Schema<ReplaceAuthorizationServerPolicyResponse>;
+export const ReplaceAuthorizationServerPolicyResponse =
+  CreateAuthorizationServerPolicyResponse as any as S.Schema<ReplaceAuthorizationServerPolicyResponse>;
 
 /** Status of the rule */
 export type ReplaceAuthorizationServerPolicyRuleRequestStatus = "ACTIVE" | "INACTIVE";
@@ -29354,9 +29199,8 @@ export const ReplaceEmailDomainRequestExpandItem = S.String;
 export type ReplaceEmailDomainRequestExpandList = Array<
   ReplaceEmailDomainRequestExpandItem | (string & {})
 >;
-export const ReplaceEmailDomainRequestExpandList = /*@__PURE__*/ S.Array(
-  ReplaceEmailDomainRequestExpandItem,
-) as any as S.Schema<ReplaceEmailDomainRequestExpandList>;
+export const ReplaceEmailDomainRequestExpandList =
+  HrefHintsAllowList as any as S.Schema<ReplaceEmailDomainRequestExpandList>;
 
 export interface ReplaceEmailDomainRequest {
   emailDomainId: string;

@@ -1052,9 +1052,8 @@ export const ProductVisibilityTracksItemEnum = S.String;
 export type ProductVisibilityTracksItemEnumList = Array<
   ProductVisibilityTracksItemEnum | (string & {})
 >;
-export const ProductVisibilityTracksItemEnumList = /*@__PURE__*/ S.Array(
-  ProductVisibilityTracksItemEnum,
-) as any as S.Schema<ProductVisibilityTracksItemEnumList>;
+export const ProductVisibilityTracksItemEnumList =
+  AdministratorWebTokenSpecPermissionItemEnumList as any as S.Schema<ProductVisibilityTracksItemEnumList>;
 
 /** A product to be made visible to a user. */
 export interface ProductVisibility {
@@ -1174,9 +1173,8 @@ export type ProductPolicyTracksItemEnum = "appTrackUnspecified" | "production" |
 export const ProductPolicyTracksItemEnum = S.String;
 
 export type ProductPolicyTracksItemEnumList = Array<ProductPolicyTracksItemEnum | (string & {})>;
-export const ProductPolicyTracksItemEnumList = /*@__PURE__*/ S.Array(
-  ProductPolicyTracksItemEnum,
-) as any as S.Schema<ProductPolicyTracksItemEnumList>;
+export const ProductPolicyTracksItemEnumList =
+  AdministratorWebTokenSpecPermissionItemEnumList as any as S.Schema<ProductPolicyTracksItemEnumList>;
 
 export type AutoInstallPolicyAutoInstallModeEnum =
   | "autoInstallModeUnspecified"
@@ -1898,9 +1896,8 @@ export type ProductFeaturesItemEnum = "featureUnknown" | "vpnApp";
 export const ProductFeaturesItemEnum = S.String;
 
 export type ProductFeaturesItemEnumList = Array<ProductFeaturesItemEnum>;
-export const ProductFeaturesItemEnumList = /*@__PURE__*/ S.Array(
-  ProductFeaturesItemEnum,
-) as any as S.Schema<ProductFeaturesItemEnumList>;
+export const ProductFeaturesItemEnumList =
+  AdministratorWebTokenSpecPermissionItemEnumList as any as S.Schema<ProductFeaturesItemEnumList>;
 
 export type ProductContentRatingEnum = "ratingUnknown" | "all" | "preTeen" | "teen" | "mature";
 export const ProductContentRatingEnum = S.String;
@@ -1933,9 +1930,8 @@ export type ProductAvailableTracksItemEnum =
 export const ProductAvailableTracksItemEnum = S.String;
 
 export type ProductAvailableTracksItemEnumList = Array<ProductAvailableTracksItemEnum>;
-export const ProductAvailableTracksItemEnumList = /*@__PURE__*/ S.Array(
-  ProductAvailableTracksItemEnum,
-) as any as S.Schema<ProductAvailableTracksItemEnumList>;
+export const ProductAvailableTracksItemEnumList =
+  AdministratorWebTokenSpecPermissionItemEnumList as any as S.Schema<ProductAvailableTracksItemEnumList>;
 
 export type ProductDistributionChannelEnum =
   | "publicGoogleHosted"

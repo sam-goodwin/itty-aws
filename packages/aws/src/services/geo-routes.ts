@@ -690,11 +690,8 @@ export const RouteMatrixZoneCategory = S.String;
 export interface RouteMatrixAvoidanceZoneCategory {
   Category?: RouteMatrixZoneCategory;
 }
-export const RouteMatrixAvoidanceZoneCategory = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Category: S.optional(RouteMatrixZoneCategory) }),
-).annotate({
-  identifier: "RouteMatrixAvoidanceZoneCategory",
-}) as any as S.Schema<RouteMatrixAvoidanceZoneCategory>;
+export const RouteMatrixAvoidanceZoneCategory =
+  IsolineAvoidanceZoneCategory as any as S.Schema<RouteMatrixAvoidanceZoneCategory>;
 export type RouteMatrixAvoidanceZoneCategoryList = RouteMatrixAvoidanceZoneCategory[];
 export const RouteMatrixAvoidanceZoneCategoryList = /*@__PURE__*/ S.Array(
   RouteMatrixAvoidanceZoneCategory,
@@ -1206,7 +1203,8 @@ export type RouteLegAdditionalFeature =
 export const RouteLegAdditionalFeature = S.String;
 
 export type RouteLegAdditionalFeatureList = RouteLegAdditionalFeature[];
-export const RouteLegAdditionalFeatureList = /*@__PURE__*/ S.Array(RouteLegAdditionalFeature);
+export const RouteLegAdditionalFeatureList =
+  IsolineHazardousCargoTypeList as any as S.Schema<RouteLegAdditionalFeatureList>;
 export interface RouteOriginOptions {
   AvoidActionsForDistance?: number;
   AvoidUTurns?: boolean;
@@ -1252,7 +1250,8 @@ export type RouteSpanAdditionalFeature =
 export const RouteSpanAdditionalFeature = S.String;
 
 export type RouteSpanAdditionalFeatureList = RouteSpanAdditionalFeature[];
-export const RouteSpanAdditionalFeatureList = /*@__PURE__*/ S.Array(RouteSpanAdditionalFeature);
+export const RouteSpanAdditionalFeatureList =
+  IsolineHazardousCargoTypeList as any as S.Schema<RouteSpanAdditionalFeatureList>;
 export type CurrencyCode = string;
 export interface RouteEmissionType {
   Co2EmissionClass?: string | redacted.Redacted<string>;
@@ -1347,7 +1346,8 @@ export type RouteHazardousCargoType =
 export const RouteHazardousCargoType = S.String;
 
 export type RouteHazardousCargoTypeList = RouteHazardousCargoType[];
-export const RouteHazardousCargoTypeList = /*@__PURE__*/ S.Array(RouteHazardousCargoType);
+export const RouteHazardousCargoTypeList =
+  IsolineHazardousCargoTypeList as any as S.Schema<RouteHazardousCargoTypeList>;
 export interface RouteTrailerOptions {
   AxleCount?: number;
   TrailerCount?: number;
@@ -1404,7 +1404,8 @@ export type RouteAccessibilityAttribute = "Wheelchair" | (string & {});
 export const RouteAccessibilityAttribute = S.String;
 
 export type RouteAccessibilityAttributeList = RouteAccessibilityAttribute[];
-export const RouteAccessibilityAttributeList = /*@__PURE__*/ S.Array(RouteAccessibilityAttribute);
+export const RouteAccessibilityAttributeList =
+  IsolineHazardousCargoTypeList as any as S.Schema<RouteAccessibilityAttributeList>;
 export interface RouteIntermodalPedestrianOptions {
   MaxDistance?: number;
   Speed?: number;
@@ -1418,7 +1419,8 @@ export type RouteRentalMode = "All" | "Car" | (string & {});
 export const RouteRentalMode = S.String;
 
 export type RouteRentalModeList = RouteRentalMode[];
-export const RouteRentalModeList = /*@__PURE__*/ S.Array(RouteRentalMode);
+export const RouteRentalModeList =
+  IsolineHazardousCargoTypeList as any as S.Schema<RouteRentalModeList>;
 export type RouteIntermodalEnabledLegs =
   | "FirstLeg"
   | "LastLeg"
@@ -1428,7 +1430,8 @@ export type RouteIntermodalEnabledLegs =
 export const RouteIntermodalEnabledLegs = S.String;
 
 export type RouteIntermodalEnabledLegsList = RouteIntermodalEnabledLegs[];
-export const RouteIntermodalEnabledLegsList = /*@__PURE__*/ S.Array(RouteIntermodalEnabledLegs);
+export const RouteIntermodalEnabledLegsList =
+  IsolineHazardousCargoTypeList as any as S.Schema<RouteIntermodalEnabledLegsList>;
 export interface RouteIntermodalRentalOptions {
   AllowedModes?: RouteRentalMode[];
   EnabledFor?: RouteIntermodalEnabledLegs[];
@@ -1447,21 +1450,15 @@ export type RouteTaxiMode = "All" | "Car" | (string & {});
 export const RouteTaxiMode = S.String;
 
 export type RouteTaxiModeList = RouteTaxiMode[];
-export const RouteTaxiModeList = /*@__PURE__*/ S.Array(RouteTaxiMode);
+export const RouteTaxiModeList =
+  IsolineHazardousCargoTypeList as any as S.Schema<RouteTaxiModeList>;
 export interface RouteIntermodalTaxiOptions {
   AllowedModes?: RouteTaxiMode[];
   EnabledFor?: RouteIntermodalEnabledLegs[];
   ExcludedModes?: RouteTaxiMode[];
 }
-export const RouteIntermodalTaxiOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AllowedModes: S.optional(RouteTaxiModeList),
-    EnabledFor: S.optional(RouteIntermodalEnabledLegsList),
-    ExcludedModes: S.optional(RouteTaxiModeList),
-  }),
-).annotate({
-  identifier: "RouteIntermodalTaxiOptions",
-}) as any as S.Schema<RouteIntermodalTaxiOptions>;
+export const RouteIntermodalTaxiOptions =
+  RouteIntermodalRentalOptions as any as S.Schema<RouteIntermodalTaxiOptions>;
 export type RouteTransitMode =
   | "AerialTramway"
   | "Airplane"
@@ -1483,40 +1480,28 @@ export type RouteTransitMode =
 export const RouteTransitMode = S.String;
 
 export type RouteTransitModeList = RouteTransitMode[];
-export const RouteTransitModeList = /*@__PURE__*/ S.Array(RouteTransitMode);
+export const RouteTransitModeList =
+  IsolineHazardousCargoTypeList as any as S.Schema<RouteTransitModeList>;
 export interface RouteIntermodalTransitOptions {
   AllowedModes?: RouteTransitMode[];
   EnabledFor?: RouteIntermodalEnabledLegs[];
   ExcludedModes?: RouteTransitMode[];
 }
-export const RouteIntermodalTransitOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AllowedModes: S.optional(RouteTransitModeList),
-    EnabledFor: S.optional(RouteIntermodalEnabledLegsList),
-    ExcludedModes: S.optional(RouteTransitModeList),
-  }),
-).annotate({
-  identifier: "RouteIntermodalTransitOptions",
-}) as any as S.Schema<RouteIntermodalTransitOptions>;
+export const RouteIntermodalTransitOptions =
+  RouteIntermodalRentalOptions as any as S.Schema<RouteIntermodalTransitOptions>;
 export type RouteVehicleMode = "All" | "Car" | (string & {});
 export const RouteVehicleMode = S.String;
 
 export type RouteVehicleModeList = RouteVehicleMode[];
-export const RouteVehicleModeList = /*@__PURE__*/ S.Array(RouteVehicleMode);
+export const RouteVehicleModeList =
+  IsolineHazardousCargoTypeList as any as S.Schema<RouteVehicleModeList>;
 export interface RouteIntermodalVehicleOptions {
   AllowedModes?: RouteVehicleMode[];
   EnabledFor?: RouteIntermodalEnabledLegs[];
   ExcludedModes?: RouteVehicleMode[];
 }
-export const RouteIntermodalVehicleOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AllowedModes: S.optional(RouteVehicleModeList),
-    EnabledFor: S.optional(RouteIntermodalEnabledLegsList),
-    ExcludedModes: S.optional(RouteVehicleModeList),
-  }),
-).annotate({
-  identifier: "RouteIntermodalVehicleOptions",
-}) as any as S.Schema<RouteIntermodalVehicleOptions>;
+export const RouteIntermodalVehicleOptions =
+  RouteIntermodalRentalOptions as any as S.Schema<RouteIntermodalVehicleOptions>;
 export interface RouteIntermodalOptions {
   AccessibilityAttributes?: RouteAccessibilityAttribute[];
   MaxTransfers?: number;
@@ -1732,17 +1717,11 @@ export interface RouteFerryBeforeTravelStep {
   Instruction?: string | redacted.Redacted<string>;
   Type: RouteFerryBeforeTravelStepType;
 }
-export const RouteFerryBeforeTravelStep = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Duration: S.Number,
-    Instruction: S.optional(SensitiveString),
-    Type: RouteFerryBeforeTravelStepType,
-  }),
-).annotate({
-  identifier: "RouteFerryBeforeTravelStep",
-}) as any as S.Schema<RouteFerryBeforeTravelStep>;
+export const RouteFerryBeforeTravelStep =
+  RouteFerryAfterTravelStep as any as S.Schema<RouteFerryBeforeTravelStep>;
 export type RouteFerryBeforeTravelStepList = RouteFerryBeforeTravelStep[];
-export const RouteFerryBeforeTravelStepList = /*@__PURE__*/ S.Array(RouteFerryBeforeTravelStep);
+export const RouteFerryBeforeTravelStepList =
+  RouteFerryAfterTravelStepList as any as S.Schema<RouteFerryBeforeTravelStepList>;
 export interface RouteFerryDeparture {
   Place: RouteFerryPlace;
   Time?: string | redacted.Redacted<string>;
@@ -1765,11 +1744,10 @@ export interface RouteFerryNotice {
   Code: RouteFerryNoticeCode;
   Impact?: RouteNoticeImpact;
 }
-export const RouteFerryNotice = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Code: RouteFerryNoticeCode, Impact: S.optional(RouteNoticeImpact) }),
-).annotate({ identifier: "RouteFerryNotice" }) as any as S.Schema<RouteFerryNotice>;
+export const RouteFerryNotice = RouteResponseNotice as any as S.Schema<RouteFerryNotice>;
 export type RouteFerryNoticeList = RouteFerryNotice[];
-export const RouteFerryNoticeList = /*@__PURE__*/ S.Array(RouteFerryNotice);
+export const RouteFerryNoticeList =
+  RouteResponseNoticeList as any as S.Schema<RouteFerryNoticeList>;
 export interface RoutePassThroughPlace {
   OriginalPosition?: number[];
   Position: number[];
@@ -1910,15 +1888,8 @@ export interface RoutePedestrianAfterTravelStep {
   Instruction?: string | redacted.Redacted<string>;
   Type: RoutePedestrianAfterTravelStepType;
 }
-export const RoutePedestrianAfterTravelStep = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Duration: S.Number,
-    Instruction: S.optional(SensitiveString),
-    Type: RoutePedestrianAfterTravelStepType,
-  }),
-).annotate({
-  identifier: "RoutePedestrianAfterTravelStep",
-}) as any as S.Schema<RoutePedestrianAfterTravelStep>;
+export const RoutePedestrianAfterTravelStep =
+  RouteFerryAfterTravelStep as any as S.Schema<RoutePedestrianAfterTravelStep>;
 export type RoutePedestrianAfterTravelStepList = RoutePedestrianAfterTravelStep[];
 export const RoutePedestrianAfterTravelStepList = /*@__PURE__*/ S.Array(
   RoutePedestrianAfterTravelStep,
@@ -2017,11 +1988,10 @@ export interface RoutePedestrianNotice {
   Code: RoutePedestrianNoticeCode;
   Impact?: RouteNoticeImpact;
 }
-export const RoutePedestrianNotice = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Code: RoutePedestrianNoticeCode, Impact: S.optional(RouteNoticeImpact) }),
-).annotate({ identifier: "RoutePedestrianNotice" }) as any as S.Schema<RoutePedestrianNotice>;
+export const RoutePedestrianNotice = RouteResponseNotice as any as S.Schema<RoutePedestrianNotice>;
 export type RoutePedestrianNoticeList = RoutePedestrianNotice[];
-export const RoutePedestrianNoticeList = /*@__PURE__*/ S.Array(RoutePedestrianNotice);
+export const RoutePedestrianNoticeList =
+  RouteResponseNoticeList as any as S.Schema<RoutePedestrianNoticeList>;
 export interface RouteSpanDynamicSpeedDetails {
   BestCaseSpeed?: number;
   TurnDuration?: number;
@@ -2049,9 +2019,8 @@ export type RouteSpanPedestrianAccessAttribute =
 export const RouteSpanPedestrianAccessAttribute = S.String;
 
 export type RouteSpanPedestrianAccessAttributeList = RouteSpanPedestrianAccessAttribute[];
-export const RouteSpanPedestrianAccessAttributeList = /*@__PURE__*/ S.Array(
-  RouteSpanPedestrianAccessAttribute,
-);
+export const RouteSpanPedestrianAccessAttributeList =
+  RouteMatrixHazardousCargoTypeList as any as S.Schema<RouteSpanPedestrianAccessAttributeList>;
 export type RouteSpanRoadAttribute =
   | "Bridge"
   | "BuiltUpArea"
@@ -2069,7 +2038,8 @@ export type RouteSpanRoadAttribute =
 export const RouteSpanRoadAttribute = S.String;
 
 export type RouteSpanRoadAttributeList = RouteSpanRoadAttribute[];
-export const RouteSpanRoadAttributeList = /*@__PURE__*/ S.Array(RouteSpanRoadAttribute);
+export const RouteSpanRoadAttributeList =
+  IsolineHazardousCargoTypeList as any as S.Schema<RouteSpanRoadAttributeList>;
 export type RouteDirection = "East" | "North" | "South" | "West" | (string & {});
 export const RouteDirection = S.String;
 
@@ -2607,7 +2577,8 @@ export type RouteSpanCarAccessAttribute =
 export const RouteSpanCarAccessAttribute = S.String;
 
 export type RouteSpanCarAccessAttributeList = RouteSpanCarAccessAttribute[];
-export const RouteSpanCarAccessAttributeList = /*@__PURE__*/ S.Array(RouteSpanCarAccessAttribute);
+export const RouteSpanCarAccessAttributeList =
+  IsolineHazardousCargoTypeList as any as S.Schema<RouteSpanCarAccessAttributeList>;
 export type RouteSpanGateAttribute =
   | "Emergency"
   | "KeyAccess"
@@ -2626,9 +2597,8 @@ export type RouteSpanScooterAccessAttribute =
 export const RouteSpanScooterAccessAttribute = S.String;
 
 export type RouteSpanScooterAccessAttributeList = RouteSpanScooterAccessAttribute[];
-export const RouteSpanScooterAccessAttributeList = /*@__PURE__*/ S.Array(
-  RouteSpanScooterAccessAttribute,
-);
+export const RouteSpanScooterAccessAttributeList =
+  RouteMatrixHazardousCargoTypeList as any as S.Schema<RouteSpanScooterAccessAttributeList>;
 export type RouteSpanTruckAccessAttribute =
   | "Allowed"
   | "NoThroughTraffic"
@@ -2637,9 +2607,8 @@ export type RouteSpanTruckAccessAttribute =
 export const RouteSpanTruckAccessAttribute = S.String;
 
 export type RouteSpanTruckAccessAttributeList = RouteSpanTruckAccessAttribute[];
-export const RouteSpanTruckAccessAttributeList = /*@__PURE__*/ S.Array(
-  RouteSpanTruckAccessAttribute,
-);
+export const RouteSpanTruckAccessAttributeList =
+  RouteMatrixHazardousCargoTypeList as any as S.Schema<RouteSpanTruckAccessAttributeList>;
 export interface RouteVehicleSpan {
   BestCaseDuration?: number;
   CarAccess?: RouteSpanCarAccessAttribute[];
@@ -2815,7 +2784,8 @@ export type RouteTollPaymentMethod =
 export const RouteTollPaymentMethod = S.String;
 
 export type RouteTollPaymentMethodList = RouteTollPaymentMethod[];
-export const RouteTollPaymentMethodList = /*@__PURE__*/ S.Array(RouteTollPaymentMethod);
+export const RouteTollPaymentMethodList =
+  IsolineHazardousCargoTypeList as any as S.Schema<RouteTollPaymentMethodList>;
 export interface RouteTransponder {
   SystemName?: string | redacted.Redacted<string>;
 }
@@ -3032,17 +3002,11 @@ export interface RouteRentalAfterTravelStep {
   Instruction?: string | redacted.Redacted<string>;
   Type: RouteRentalAfterTravelStepType;
 }
-export const RouteRentalAfterTravelStep = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Duration: S.Number,
-    Instruction: S.optional(SensitiveString),
-    Type: RouteRentalAfterTravelStepType,
-  }),
-).annotate({
-  identifier: "RouteRentalAfterTravelStep",
-}) as any as S.Schema<RouteRentalAfterTravelStep>;
+export const RouteRentalAfterTravelStep =
+  RouteFerryAfterTravelStep as any as S.Schema<RouteRentalAfterTravelStep>;
 export type RouteRentalAfterTravelStepList = RouteRentalAfterTravelStep[];
-export const RouteRentalAfterTravelStepList = /*@__PURE__*/ S.Array(RouteRentalAfterTravelStep);
+export const RouteRentalAfterTravelStepList =
+  RouteFerryAfterTravelStepList as any as S.Schema<RouteRentalAfterTravelStepList>;
 export interface RouteRentalAgency {
   Name: string | redacted.Redacted<string>;
   Url?: string | redacted.Redacted<string>;
@@ -3122,17 +3086,11 @@ export interface RouteRentalBeforeTravelStep {
   Instruction?: string | redacted.Redacted<string>;
   Type: RouteRentalBeforeTravelStepType;
 }
-export const RouteRentalBeforeTravelStep = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Duration: S.Number,
-    Instruction: S.optional(SensitiveString),
-    Type: RouteRentalBeforeTravelStepType,
-  }),
-).annotate({
-  identifier: "RouteRentalBeforeTravelStep",
-}) as any as S.Schema<RouteRentalBeforeTravelStep>;
+export const RouteRentalBeforeTravelStep =
+  RouteFerryAfterTravelStep as any as S.Schema<RouteRentalBeforeTravelStep>;
 export type RouteRentalBeforeTravelStepList = RouteRentalBeforeTravelStep[];
-export const RouteRentalBeforeTravelStepList = /*@__PURE__*/ S.Array(RouteRentalBeforeTravelStep);
+export const RouteRentalBeforeTravelStepList =
+  RouteFerryAfterTravelStepList as any as S.Schema<RouteRentalBeforeTravelStepList>;
 export type RouteWebLinkList = RouteWebLink[];
 export const RouteWebLinkList = /*@__PURE__*/ S.Array(RouteWebLink);
 export interface RouteRentalDeparture {
@@ -3301,24 +3259,12 @@ export interface RouteTaxiPlace {
   Type?: RouteTaxiPlaceType;
   WaypointIndex?: number;
 }
-export const RouteTaxiPlace = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AccessPointDetails: S.optional(RouteAccessPointDetails),
-    Name: S.optional(SensitiveString),
-    OriginalPosition: S.optional(Position23),
-    Position: Position23,
-    StationDetails: S.optional(RouteStationDetails),
-    Type: S.optional(RouteTaxiPlaceType),
-    WaypointIndex: S.optional(S.Number),
-  }),
-).annotate({ identifier: "RouteTaxiPlace" }) as any as S.Schema<RouteTaxiPlace>;
+export const RouteTaxiPlace = RouteRentalPlace as any as S.Schema<RouteTaxiPlace>;
 export interface RouteTaxiArrival {
   Place: RouteTaxiPlace;
   Time?: string | redacted.Redacted<string>;
 }
-export const RouteTaxiArrival = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Place: RouteTaxiPlace, Time: S.optional(SensitiveString) }),
-).annotate({ identifier: "RouteTaxiArrival" }) as any as S.Schema<RouteTaxiArrival>;
+export const RouteTaxiArrival = RouteRentalArrival as any as S.Schema<RouteTaxiArrival>;
 export type RouteTaxiBeforeTravelStepType = "Wait" | (string & {});
 export const RouteTaxiBeforeTravelStepType = S.String;
 
@@ -3327,17 +3273,11 @@ export interface RouteTaxiBeforeTravelStep {
   Instruction?: string | redacted.Redacted<string>;
   Type: RouteTaxiBeforeTravelStepType;
 }
-export const RouteTaxiBeforeTravelStep = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Duration: S.Number,
-    Instruction: S.optional(SensitiveString),
-    Type: RouteTaxiBeforeTravelStepType,
-  }),
-).annotate({
-  identifier: "RouteTaxiBeforeTravelStep",
-}) as any as S.Schema<RouteTaxiBeforeTravelStep>;
+export const RouteTaxiBeforeTravelStep =
+  RouteFerryAfterTravelStep as any as S.Schema<RouteTaxiBeforeTravelStep>;
 export type RouteTaxiBeforeTravelStepList = RouteTaxiBeforeTravelStep[];
-export const RouteTaxiBeforeTravelStepList = /*@__PURE__*/ S.Array(RouteTaxiBeforeTravelStep);
+export const RouteTaxiBeforeTravelStepList =
+  RouteFerryAfterTravelStepList as any as S.Schema<RouteTaxiBeforeTravelStepList>;
 export interface RouteTaxiDeparture {
   Place: RouteTaxiPlace;
   Time?: string | redacted.Redacted<string>;
@@ -3350,11 +3290,9 @@ export interface RouteTaxiNotice {
   Code: RouteTaxiNoticeCode;
   Impact?: RouteNoticeImpact;
 }
-export const RouteTaxiNotice = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Code: RouteTaxiNoticeCode, Impact: S.optional(RouteNoticeImpact) }),
-).annotate({ identifier: "RouteTaxiNotice" }) as any as S.Schema<RouteTaxiNotice>;
+export const RouteTaxiNotice = RouteResponseNotice as any as S.Schema<RouteTaxiNotice>;
 export type RouteTaxiNoticeList = RouteTaxiNotice[];
-export const RouteTaxiNoticeList = /*@__PURE__*/ S.Array(RouteTaxiNotice);
+export const RouteTaxiNoticeList = RouteResponseNoticeList as any as S.Schema<RouteTaxiNoticeList>;
 export interface RouteTaxiOverviewSummary {
   Duration: number;
   Distance: number;
@@ -3388,21 +3326,8 @@ export interface RouteTaxiTransportModeDetails {
   Name?: string | redacted.Redacted<string>;
   TextColor?: string | redacted.Redacted<string>;
 }
-export const RouteTaxiTransportModeDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AvailableSeats: S.optional(S.Number),
-    Category: S.optional(SensitiveString),
-    Color: S.optional(SensitiveString),
-    Engine: S.optional(RouteEngineType),
-    LicensePlate: S.optional(SensitiveString),
-    Mode: RouteTaxiMode,
-    Model: S.optional(SensitiveString),
-    Name: S.optional(SensitiveString),
-    TextColor: S.optional(SensitiveString),
-  }),
-).annotate({
-  identifier: "RouteTaxiTransportModeDetails",
-}) as any as S.Schema<RouteTaxiTransportModeDetails>;
+export const RouteTaxiTransportModeDetails =
+  RouteRentalTransportModeDetails as any as S.Schema<RouteTaxiTransportModeDetails>;
 export type RouteTaxiTravelStepType =
   | "Arrive"
   | "Continue"
@@ -3434,26 +3359,10 @@ export interface RouteTaxiTravelStep {
   Type: RouteTaxiTravelStepType;
   UTurnStepDetails?: RouteUTurnStepDetails;
 }
-export const RouteTaxiTravelStep = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ContinueStepDetails: S.optional(RouteContinueStepDetails),
-    Distance: S.optional(S.Number),
-    Duration: S.Number,
-    ExitStepDetails: S.optional(RouteExitStepDetails),
-    GeometryOffset: S.optional(S.Number),
-    Instruction: S.optional(SensitiveString),
-    KeepStepDetails: S.optional(RouteKeepStepDetails),
-    RampStepDetails: S.optional(RouteRampStepDetails),
-    RoundaboutEnterStepDetails: S.optional(RouteRoundaboutEnterStepDetails),
-    RoundaboutExitStepDetails: S.optional(RouteRoundaboutExitStepDetails),
-    RoundaboutPassStepDetails: S.optional(RouteRoundaboutPassStepDetails),
-    TurnStepDetails: S.optional(RouteTurnStepDetails),
-    Type: RouteTaxiTravelStepType,
-    UTurnStepDetails: S.optional(RouteUTurnStepDetails),
-  }),
-).annotate({ identifier: "RouteTaxiTravelStep" }) as any as S.Schema<RouteTaxiTravelStep>;
+export const RouteTaxiTravelStep = RouteRentalTravelStep as any as S.Schema<RouteTaxiTravelStep>;
 export type RouteTaxiTravelStepList = RouteTaxiTravelStep[];
-export const RouteTaxiTravelStepList = /*@__PURE__*/ S.Array(RouteTaxiTravelStep);
+export const RouteTaxiTravelStepList =
+  RouteRentalTravelStepList as any as S.Schema<RouteTaxiTravelStepList>;
 export interface RouteTaxiLegDetails {
   AfterTravelSteps?: RouteTaxiAfterTravelStep[];
   Agency: RouteTaxiAgency;
@@ -3490,17 +3399,11 @@ export interface RouteTransitAfterTravelStep {
   Instruction?: string | redacted.Redacted<string>;
   Type: RouteTransitAfterTravelStepType;
 }
-export const RouteTransitAfterTravelStep = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Duration: S.Number,
-    Instruction: S.optional(SensitiveString),
-    Type: RouteTransitAfterTravelStepType,
-  }),
-).annotate({
-  identifier: "RouteTransitAfterTravelStep",
-}) as any as S.Schema<RouteTransitAfterTravelStep>;
+export const RouteTransitAfterTravelStep =
+  RouteFerryAfterTravelStep as any as S.Schema<RouteTransitAfterTravelStep>;
 export type RouteTransitAfterTravelStepList = RouteTransitAfterTravelStep[];
-export const RouteTransitAfterTravelStepList = /*@__PURE__*/ S.Array(RouteTransitAfterTravelStep);
+export const RouteTransitAfterTravelStepList =
+  RouteFerryAfterTravelStepList as any as S.Schema<RouteTransitAfterTravelStepList>;
 export interface RouteTransitAgency {
   Name: string | redacted.Redacted<string>;
   Url?: string | redacted.Redacted<string>;
@@ -3557,17 +3460,11 @@ export interface RouteTransitBeforeTravelStep {
   Instruction?: string | redacted.Redacted<string>;
   Type: RouteTransitBeforeTravelStepType;
 }
-export const RouteTransitBeforeTravelStep = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Duration: S.Number,
-    Instruction: S.optional(SensitiveString),
-    Type: RouteTransitBeforeTravelStepType,
-  }),
-).annotate({
-  identifier: "RouteTransitBeforeTravelStep",
-}) as any as S.Schema<RouteTransitBeforeTravelStep>;
+export const RouteTransitBeforeTravelStep =
+  RouteFerryAfterTravelStep as any as S.Schema<RouteTransitBeforeTravelStep>;
 export type RouteTransitBeforeTravelStepList = RouteTransitBeforeTravelStep[];
-export const RouteTransitBeforeTravelStepList = /*@__PURE__*/ S.Array(RouteTransitBeforeTravelStep);
+export const RouteTransitBeforeTravelStepList =
+  RouteFerryAfterTravelStepList as any as S.Schema<RouteTransitBeforeTravelStepList>;
 export interface RouteTransitDeparture {
   Delay?: number;
   Place: RouteTransitPlace;
@@ -3626,9 +3523,8 @@ export type RouteTransitIntermediateStopAttribute = "NoEntry" | "NoExit" | (stri
 export const RouteTransitIntermediateStopAttribute = S.String;
 
 export type RouteTransitIntermediateStopAttributeList = RouteTransitIntermediateStopAttribute[];
-export const RouteTransitIntermediateStopAttributeList = /*@__PURE__*/ S.Array(
-  RouteTransitIntermediateStopAttribute,
-);
+export const RouteTransitIntermediateStopAttributeList =
+  RouteMatrixHazardousCargoTypeList as any as S.Schema<RouteTransitIntermediateStopAttributeList>;
 export type HexColor = string | redacted.Redacted<string>;
 export interface RouteTransitTransportModeDetails {
   Accessibility?: RouteAccessibilityAvailabilityDetails;
@@ -3714,11 +3610,10 @@ export interface RouteTransitNotice {
   Code: RouteTransitNoticeCode;
   Impact?: RouteNoticeImpact;
 }
-export const RouteTransitNotice = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Code: RouteTransitNoticeCode, Impact: S.optional(RouteNoticeImpact) }),
-).annotate({ identifier: "RouteTransitNotice" }) as any as S.Schema<RouteTransitNotice>;
+export const RouteTransitNotice = RouteResponseNotice as any as S.Schema<RouteTransitNotice>;
 export type RouteTransitNoticeList = RouteTransitNotice[];
-export const RouteTransitNoticeList = /*@__PURE__*/ S.Array(RouteTransitNotice);
+export const RouteTransitNoticeList =
+  RouteResponseNoticeList as any as S.Schema<RouteTransitNoticeList>;
 export interface RouteTransitSpan {
   Country?: string | redacted.Redacted<string>;
   Distance?: number;
@@ -3756,17 +3651,11 @@ export interface RouteTransitTravelStep {
   Instruction?: string | redacted.Redacted<string>;
   Type: RouteTransitTravelStepType;
 }
-export const RouteTransitTravelStep = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Distance: S.optional(S.Number),
-    Duration: S.Number,
-    GeometryOffset: S.optional(S.Number),
-    Instruction: S.optional(SensitiveString),
-    Type: RouteTransitTravelStepType,
-  }),
-).annotate({ identifier: "RouteTransitTravelStep" }) as any as S.Schema<RouteTransitTravelStep>;
+export const RouteTransitTravelStep =
+  RouteFerryTravelStep as any as S.Schema<RouteTransitTravelStep>;
 export type RouteTransitTravelStepList = RouteTransitTravelStep[];
-export const RouteTransitTravelStepList = /*@__PURE__*/ S.Array(RouteTransitTravelStep);
+export const RouteTransitTravelStepList =
+  RouteFerryTravelStepList as any as S.Schema<RouteTransitTravelStepList>;
 export interface RouteTransitLegDetails {
   AfterTravelSteps?: RouteTransitAfterTravelStep[];
   Agency?: RouteTransitAgency;
@@ -4140,9 +4029,8 @@ export type WaypointOptimizationHazardousCargoType =
 export const WaypointOptimizationHazardousCargoType = S.String;
 
 export type WaypointOptimizationHazardousCargoTypeList = WaypointOptimizationHazardousCargoType[];
-export const WaypointOptimizationHazardousCargoTypeList = /*@__PURE__*/ S.Array(
-  WaypointOptimizationHazardousCargoType,
-);
+export const WaypointOptimizationHazardousCargoTypeList =
+  RouteMatrixHazardousCargoTypeList as any as S.Schema<WaypointOptimizationHazardousCargoTypeList>;
 export interface WaypointOptimizationTrailerOptions {
   TrailerCount?: number;
 }
@@ -4420,7 +4308,8 @@ export type RoadSnapHazardousCargoType =
 export const RoadSnapHazardousCargoType = S.String;
 
 export type RoadSnapHazardousCargoTypeList = RoadSnapHazardousCargoType[];
-export const RoadSnapHazardousCargoTypeList = /*@__PURE__*/ S.Array(RoadSnapHazardousCargoType);
+export const RoadSnapHazardousCargoTypeList =
+  IsolineHazardousCargoTypeList as any as S.Schema<RoadSnapHazardousCargoTypeList>;
 export interface RoadSnapTrailerOptions {
   TrailerCount?: number;
 }

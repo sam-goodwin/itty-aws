@@ -192,13 +192,8 @@ export interface DatabaseCreateResponseReadReplication {
   /** The read replication mode for the database. Mode 'auto' denotes that D1 creates replicas and automatically places them around the world. Mode 'disabled' denotes that no database replicas are used. */
   mode: DatabaseCreateResponseReadReplicationMode;
 }
-export const DatabaseCreateResponseReadReplication = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: DatabaseCreateResponseReadReplicationMode,
-  }),
-).annotate({
-  identifier: "DatabaseCreateResponseReadReplication",
-}) as any as S.Schema<DatabaseCreateResponseReadReplication>;
+export const DatabaseCreateResponseReadReplication =
+  DatabaseCreateRequestReadReplication as any as S.Schema<DatabaseCreateResponseReadReplication>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateDatabaseResponse {
@@ -451,13 +446,8 @@ export interface DatabaseGetResponseReadReplication {
   /** The read replication mode for the database. Mode 'auto' denotes that D1 creates replicas and automatically places them around the world. Mode 'disabled' denotes that no database replicas are used. */
   mode: DatabaseGetResponseReadReplicationMode;
 }
-export const DatabaseGetResponseReadReplication = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: DatabaseGetResponseReadReplicationMode,
-  }),
-).annotate({
-  identifier: "DatabaseGetResponseReadReplication",
-}) as any as S.Schema<DatabaseGetResponseReadReplication>;
+export const DatabaseGetResponseReadReplication =
+  DatabaseCreateRequestReadReplication as any as S.Schema<DatabaseGetResponseReadReplication>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetDatabaseResponse {
@@ -477,20 +467,7 @@ export interface GetDatabaseResponse {
   uuid?: string | null;
   version?: string | null;
 }
-export const GetDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-    fileSize: S.optional(S.NullOr(S.Number).pipe(T.Body("file_size"))),
-    jurisdiction: S.optional(S.NullOr(DatabaseGetResponseJurisdiction)),
-    name: S.optional(S.NullOr(S.String)),
-    numTables: S.optional(S.NullOr(S.Number).pipe(T.Body("num_tables"))),
-    readReplication: S.optional(
-      S.NullOr(DatabaseGetResponseReadReplication).pipe(T.Body("read_replication")),
-    ),
-    uuid: S.optional(S.NullOr(S.String)),
-    version: S.optional(S.NullOr(S.String)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "GetDatabaseResponse" }) as any as S.Schema<GetDatabaseResponse>;
+export const GetDatabaseResponse = CreateDatabaseResponse as any as S.Schema<GetDatabaseResponse>;
 
 export type DatabaseImportRequestAction = "init" | "ingest" | "poll";
 export const DatabaseImportRequestAction = S.String;
@@ -722,13 +699,8 @@ export interface DatabaseEditRequestReadReplication {
   /** The read replication mode for the database. Use 'auto' to create replicas and allow D1 automatically place them around the world, or 'disabled' to not use any database replicas (it can take a few hours for all replicas to be deleted). */
   mode: DatabaseEditRequestReadReplicationMode | (string & {});
 }
-export const DatabaseEditRequestReadReplication = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: DatabaseEditRequestReadReplicationMode,
-  }),
-).annotate({
-  identifier: "DatabaseEditRequestReadReplication",
-}) as any as S.Schema<DatabaseEditRequestReadReplication>;
+export const DatabaseEditRequestReadReplication =
+  DatabaseCreateRequestReadReplication as any as S.Schema<DatabaseEditRequestReadReplication>;
 
 export interface PatchDatabaseRequest {
   /** Account identifier tag. */
@@ -766,13 +738,8 @@ export interface DatabaseEditResponseReadReplication {
   /** The read replication mode for the database. Mode 'auto' denotes that D1 creates replicas and automatically places them around the world. Mode 'disabled' denotes that no database replicas are used. */
   mode: DatabaseEditResponseReadReplicationMode;
 }
-export const DatabaseEditResponseReadReplication = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: DatabaseEditResponseReadReplicationMode,
-  }),
-).annotate({
-  identifier: "DatabaseEditResponseReadReplication",
-}) as any as S.Schema<DatabaseEditResponseReadReplication>;
+export const DatabaseEditResponseReadReplication =
+  DatabaseCreateRequestReadReplication as any as S.Schema<DatabaseEditResponseReadReplication>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchDatabaseResponse {
@@ -792,20 +759,8 @@ export interface PatchDatabaseResponse {
   uuid?: string | null;
   version?: string | null;
 }
-export const PatchDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-    fileSize: S.optional(S.NullOr(S.Number).pipe(T.Body("file_size"))),
-    jurisdiction: S.optional(S.NullOr(DatabaseEditResponseJurisdiction)),
-    name: S.optional(S.NullOr(S.String)),
-    numTables: S.optional(S.NullOr(S.Number).pipe(T.Body("num_tables"))),
-    readReplication: S.optional(
-      S.NullOr(DatabaseEditResponseReadReplication).pipe(T.Body("read_replication")),
-    ),
-    uuid: S.optional(S.NullOr(S.String)),
-    version: S.optional(S.NullOr(S.String)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "PatchDatabaseResponse" }) as any as S.Schema<PatchDatabaseResponse>;
+export const PatchDatabaseResponse =
+  CreateDatabaseResponse as any as S.Schema<PatchDatabaseResponse>;
 
 export type DatabaseQueryRequestParamsList = Array<unknown>;
 export const DatabaseQueryRequestParamsList = /*@__PURE__*/ S.Array(
@@ -899,25 +854,8 @@ export interface DatabaseQueryResultItemMeta {
   /** Various durations for the query. */
   timings?: DatabaseImportResponseResultMetaTimings | null;
 }
-export const DatabaseQueryResultItemMeta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    changedDb: S.optional(S.NullOr(S.Boolean).pipe(T.Body("changed_db"))),
-    changes: S.optional(S.NullOr(S.Number)),
-    duration: S.optional(S.NullOr(S.Number)),
-    lastRowId: S.optional(S.NullOr(S.Number).pipe(T.Body("last_row_id"))),
-    rowsRead: S.optional(S.NullOr(S.Number).pipe(T.Body("rows_read"))),
-    rowsWritten: S.optional(S.NullOr(S.Number).pipe(T.Body("rows_written"))),
-    servedByColo: S.optional(S.NullOr(S.String).pipe(T.Body("served_by_colo"))),
-    servedByPrimary: S.optional(S.NullOr(S.Boolean).pipe(T.Body("served_by_primary"))),
-    servedByRegion: S.optional(
-      S.NullOr(DatabaseQueryResultItemMetaServedByRegion).pipe(T.Body("served_by_region")),
-    ),
-    sizeAfter: S.optional(S.NullOr(S.Number).pipe(T.Body("size_after"))),
-    timings: S.optional(S.NullOr(DatabaseImportResponseResultMetaTimings)),
-  }),
-).annotate({
-  identifier: "DatabaseQueryResultItemMeta",
-}) as any as S.Schema<DatabaseQueryResultItemMeta>;
+export const DatabaseQueryResultItemMeta =
+  DatabaseImportResponseResultMeta as any as S.Schema<DatabaseQueryResultItemMeta>;
 
 export type DatabaseQueryResultItemResultsList = Array<unknown>;
 export const DatabaseQueryResultItemResultsList =
@@ -1038,25 +976,8 @@ export interface DatabaseRawResultItemMeta {
   /** Various durations for the query. */
   timings?: DatabaseImportResponseResultMetaTimings | null;
 }
-export const DatabaseRawResultItemMeta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    changedDb: S.optional(S.NullOr(S.Boolean).pipe(T.Body("changed_db"))),
-    changes: S.optional(S.NullOr(S.Number)),
-    duration: S.optional(S.NullOr(S.Number)),
-    lastRowId: S.optional(S.NullOr(S.Number).pipe(T.Body("last_row_id"))),
-    rowsRead: S.optional(S.NullOr(S.Number).pipe(T.Body("rows_read"))),
-    rowsWritten: S.optional(S.NullOr(S.Number).pipe(T.Body("rows_written"))),
-    servedByColo: S.optional(S.NullOr(S.String).pipe(T.Body("served_by_colo"))),
-    servedByPrimary: S.optional(S.NullOr(S.Boolean).pipe(T.Body("served_by_primary"))),
-    servedByRegion: S.optional(
-      S.NullOr(DatabaseRawResultItemMetaServedByRegion).pipe(T.Body("served_by_region")),
-    ),
-    sizeAfter: S.optional(S.NullOr(S.Number).pipe(T.Body("size_after"))),
-    timings: S.optional(S.NullOr(DatabaseImportResponseResultMetaTimings)),
-  }),
-).annotate({
-  identifier: "DatabaseRawResultItemMeta",
-}) as any as S.Schema<DatabaseRawResultItemMeta>;
+export const DatabaseRawResultItemMeta =
+  DatabaseImportResponseResultMeta as any as S.Schema<DatabaseRawResultItemMeta>;
 
 export type DatabaseRawResultItemResultsColumnsList = Array<string>;
 export const DatabaseRawResultItemResultsColumnsList =
@@ -1165,13 +1086,8 @@ export interface DatabaseUpdateRequestReadReplication {
   /** The read replication mode for the database. Use 'auto' to create replicas and allow D1 automatically place them around the world, or 'disabled' to not use any database replicas (it can take a few hours for all replicas to be deleted). */
   mode: DatabaseUpdateRequestReadReplicationMode | (string & {});
 }
-export const DatabaseUpdateRequestReadReplication = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: DatabaseUpdateRequestReadReplicationMode,
-  }),
-).annotate({
-  identifier: "DatabaseUpdateRequestReadReplication",
-}) as any as S.Schema<DatabaseUpdateRequestReadReplication>;
+export const DatabaseUpdateRequestReadReplication =
+  DatabaseCreateRequestReadReplication as any as S.Schema<DatabaseUpdateRequestReadReplication>;
 
 export interface UpdateDatabaseRequest {
   /** Account identifier tag. */
@@ -1203,13 +1119,8 @@ export interface DatabaseUpdateResponseReadReplication {
   /** The read replication mode for the database. Mode 'auto' denotes that D1 creates replicas and automatically places them around the world. Mode 'disabled' denotes that no database replicas are used. */
   mode: DatabaseUpdateResponseReadReplicationMode;
 }
-export const DatabaseUpdateResponseReadReplication = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: DatabaseUpdateResponseReadReplicationMode,
-  }),
-).annotate({
-  identifier: "DatabaseUpdateResponseReadReplication",
-}) as any as S.Schema<DatabaseUpdateResponseReadReplication>;
+export const DatabaseUpdateResponseReadReplication =
+  DatabaseCreateRequestReadReplication as any as S.Schema<DatabaseUpdateResponseReadReplication>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateDatabaseResponse {
@@ -1229,20 +1140,8 @@ export interface UpdateDatabaseResponse {
   uuid?: string | null;
   version?: string | null;
 }
-export const UpdateDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-    fileSize: S.optional(S.NullOr(S.Number).pipe(T.Body("file_size"))),
-    jurisdiction: S.optional(S.NullOr(DatabaseUpdateResponseJurisdiction)),
-    name: S.optional(S.NullOr(S.String)),
-    numTables: S.optional(S.NullOr(S.Number).pipe(T.Body("num_tables"))),
-    readReplication: S.optional(
-      S.NullOr(DatabaseUpdateResponseReadReplication).pipe(T.Body("read_replication")),
-    ),
-    uuid: S.optional(S.NullOr(S.String)),
-    version: S.optional(S.NullOr(S.String)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "UpdateDatabaseResponse" }) as any as S.Schema<UpdateDatabaseResponse>;
+export const UpdateDatabaseResponse =
+  CreateDatabaseResponse as any as S.Schema<UpdateDatabaseResponse>;
 
 export type CreateDatabaseError =
   | InvalidObjectIdentifier

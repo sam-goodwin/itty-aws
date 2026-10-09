@@ -3582,26 +3582,15 @@ export interface GetPricingGetResponsePricingValueCouponsValue {
   type?: string;
   amount?: number;
 }
-export const GetPricingGetResponsePricingValueCouponsValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.String),
-    max_per_user: S.optional(S.Number),
-    first_year_only: S.optional(GetPricingGetResponsePricingValueCouponsValueFirstYearOnly),
-    type: S.optional(S.String),
-    amount: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GetPricingGetResponsePricingValueCouponsValue",
-}) as any as S.Schema<GetPricingGetResponsePricingValueCouponsValue>;
+export const GetPricingGetResponsePricingValueCouponsValue =
+  GetPricingResponsePricingValueCouponsValue as any as S.Schema<GetPricingGetResponsePricingValueCouponsValue>;
 
 /** Active coupon codes for this TLD, keyed by product type */
 export type GetPricingGetResponsePricingValueCouponsMap = {
   [key: string]: GetPricingGetResponsePricingValueCouponsValue | undefined;
 };
-export const GetPricingGetResponsePricingValueCouponsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  GetPricingGetResponsePricingValueCouponsValue,
-) as any as S.Schema<GetPricingGetResponsePricingValueCouponsMap>;
+export const GetPricingGetResponsePricingValueCouponsMap =
+  GetPricingResponsePricingValueCouponsMap as any as S.Schema<GetPricingGetResponsePricingValueCouponsMap>;
 
 export interface GetPricingGetResponsePricingValue {
   registration?: string;
@@ -3612,26 +3601,15 @@ export interface GetPricingGetResponsePricingValue {
   /** Active coupon codes for this TLD, keyed by product type */
   coupons?: GetPricingGetResponsePricingValueCouponsMap;
 }
-export const GetPricingGetResponsePricingValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    registration: S.optional(S.String),
-    renewal: S.optional(S.String),
-    transfer: S.optional(S.String),
-    specialType: S.optional(S.String),
-    coupons: S.optional(GetPricingGetResponsePricingValueCouponsMap),
-  }),
-).annotate({
-  identifier: "GetPricingGetResponsePricingValue",
-}) as any as S.Schema<GetPricingGetResponsePricingValue>;
+export const GetPricingGetResponsePricingValue =
+  GetPricingResponsePricingValue as any as S.Schema<GetPricingGetResponsePricingValue>;
 
 /** Object keyed by TLD string */
 export type GetPricingGetResponsePricingMap = {
   [key: string]: GetPricingGetResponsePricingValue | undefined;
 };
-export const GetPricingGetResponsePricingMap = /*@__PURE__*/ S.Record(
-  S.String,
-  GetPricingGetResponsePricingValue,
-) as any as S.Schema<GetPricingGetResponsePricingMap>;
+export const GetPricingGetResponsePricingMap =
+  GetPricingResponsePricingMap as any as S.Schema<GetPricingGetResponsePricingMap>;
 
 export interface GetPricingGetResponse {
   status?: string;
@@ -4389,17 +4367,8 @@ export interface ListTransfersResponseTransfersItem {
   transferDate?: string;
   orderId?: number;
 }
-export const ListTransfersResponseTransfersItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domain: S.optional(S.String),
-    status: S.optional(ListTransfersResponseTransfersItemStatus),
-    statusDescription: S.optional(S.String),
-    transferDate: S.optional(S.String),
-    orderId: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ListTransfersResponseTransfersItem",
-}) as any as S.Schema<ListTransfersResponseTransfersItem>;
+export const ListTransfersResponseTransfersItem =
+  GetTransferResponseTransfer as any as S.Schema<ListTransfersResponseTransfersItem>;
 
 export type ListTransfersResponseTransfersList = Array<ListTransfersResponseTransfersItem>;
 export const ListTransfersResponseTransfersList = /*@__PURE__*/ S.Array(

@@ -277,9 +277,8 @@ export const ListPlacementGroupsRequestTypeItem = S.String;
 export type ListPlacementGroupsRequestTypeList = Array<
   ListPlacementGroupsRequestTypeItem | (string & {})
 >;
-export const ListPlacementGroupsRequestTypeList = /*@__PURE__*/ S.Array(
-  ListPlacementGroupsRequestTypeItem,
-) as any as S.Schema<ListPlacementGroupsRequestTypeList>;
+export const ListPlacementGroupsRequestTypeList =
+  ListPlacementGroupsRequestSortList as any as S.Schema<ListPlacementGroupsRequestTypeList>;
 
 export interface ListPlacementGroupsRequest {
   /** Sort resources by field and direction. May be used multiple times. For more information, see "[Sorting](#description/sorting)". */

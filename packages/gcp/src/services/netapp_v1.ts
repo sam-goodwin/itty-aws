@@ -955,9 +955,8 @@ export const VolumeRestrictedActionsItemEnum = S.String;
 export type VolumeRestrictedActionsItemEnumList = Array<
   VolumeRestrictedActionsItemEnum | (string & {})
 >;
-export const VolumeRestrictedActionsItemEnumList = /*@__PURE__*/ S.Array(
-  VolumeRestrictedActionsItemEnum,
-) as any as S.Schema<VolumeRestrictedActionsItemEnumList>;
+export const VolumeRestrictedActionsItemEnumList =
+  VolumeProtocolsItemEnumList as any as S.Schema<VolumeRestrictedActionsItemEnumList>;
 
 /** Configuration for a Large Capacity Volume. A Large Capacity Volume supports sizes ranging from 4.8 TiB to 20 PiB; it is composed of multiple internal constituents, and must be created in a large capacity pool. */
 export interface LargeCapacityConfig {
@@ -997,9 +996,8 @@ export type VolumeSmbSettingsItemEnum =
 export const VolumeSmbSettingsItemEnum = S.String;
 
 export type VolumeSmbSettingsItemEnumList = Array<VolumeSmbSettingsItemEnum | (string & {})>;
-export const VolumeSmbSettingsItemEnumList = /*@__PURE__*/ S.Array(
-  VolumeSmbSettingsItemEnum,
-) as any as S.Schema<VolumeSmbSettingsItemEnumList>;
+export const VolumeSmbSettingsItemEnumList =
+  VolumeProtocolsItemEnumList as any as S.Schema<VolumeSmbSettingsItemEnumList>;
 
 export type VolumeServiceLevelEnum =
   | "SERVICE_LEVEL_UNSPECIFIED"

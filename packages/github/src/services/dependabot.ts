@@ -929,16 +929,8 @@ export interface DependabotAlertWithRepositoryDependency {
   /** The vulnerable dependency's relationship to your project. > [!NOTE] > We are rolling out support for dependency relationship across ecosystems. This value will be "unknown" for all dependencies in unsupported ecosystems. */
   relationship?: DependabotAlertWithRepositoryDependencyRelationship | null;
 }
-export const DependabotAlertWithRepositoryDependency = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    package: S.optional(DependabotAlertPackage),
-    manifest_path: S.optional(S.String),
-    scope: S.optional(S.NullOr(DependabotAlertWithRepositoryDependencyScope)),
-    relationship: S.optional(S.NullOr(DependabotAlertWithRepositoryDependencyRelationship)),
-  }),
-).annotate({
-  identifier: "DependabotAlertWithRepositoryDependency",
-}) as any as S.Schema<DependabotAlertWithRepositoryDependency>;
+export const DependabotAlertWithRepositoryDependency =
+  DependabotAlertDependency as any as S.Schema<DependabotAlertWithRepositoryDependency>;
 
 /** The reason that the alert was dismissed. */
 export type DependabotAlertWithRepositoryDismissedReason =
@@ -1168,9 +1160,8 @@ export const ListAlertsForOrgRequestHasCase1Item = S.String;
 export type ListAlertsForOrgRequestHasCase1List = Array<
   ListAlertsForOrgRequestHasCase1Item | (string & {})
 >;
-export const ListAlertsForOrgRequestHasCase1List = /*@__PURE__*/ S.Array(
-  ListAlertsForOrgRequestHasCase1Item,
-) as any as S.Schema<ListAlertsForOrgRequestHasCase1List>;
+export const ListAlertsForOrgRequestHasCase1List =
+  ListAlertsForEnterpriseRequestHasCase1List as any as S.Schema<ListAlertsForOrgRequestHasCase1List>;
 
 export type ListAlertsForOrgRequestHas = string | ListAlertsForOrgRequestHasCase1List;
 export const ListAlertsForOrgRequestHas = S.Unknown as any as S.Schema<ListAlertsForOrgRequestHas>;
@@ -1263,9 +1254,8 @@ export const ListAlertsForRepoRequestHasCase1Item = S.String;
 export type ListAlertsForRepoRequestHasCase1List = Array<
   ListAlertsForRepoRequestHasCase1Item | (string & {})
 >;
-export const ListAlertsForRepoRequestHasCase1List = /*@__PURE__*/ S.Array(
-  ListAlertsForRepoRequestHasCase1Item,
-) as any as S.Schema<ListAlertsForRepoRequestHasCase1List>;
+export const ListAlertsForRepoRequestHasCase1List =
+  ListAlertsForEnterpriseRequestHasCase1List as any as S.Schema<ListAlertsForRepoRequestHasCase1List>;
 
 export type ListAlertsForRepoRequestHas = string | ListAlertsForRepoRequestHasCase1List;
 export const ListAlertsForRepoRequestHas =
@@ -1531,13 +1521,8 @@ export const SecurityAndAnalysisCodeSecurityStatus = S.String;
 export interface SecurityAndAnalysisCodeSecurity {
   status?: SecurityAndAnalysisCodeSecurityStatus;
 }
-export const SecurityAndAnalysisCodeSecurity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(SecurityAndAnalysisCodeSecurityStatus),
-  }),
-).annotate({
-  identifier: "SecurityAndAnalysisCodeSecurity",
-}) as any as S.Schema<SecurityAndAnalysisCodeSecurity>;
+export const SecurityAndAnalysisCodeSecurity =
+  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisCodeSecurity>;
 
 /** The enablement status of Dependabot security updates for the repository. */
 export type SecurityAndAnalysisDependabotSecurityUpdatesStatus = "enabled" | "disabled";
@@ -1548,13 +1533,8 @@ export interface SecurityAndAnalysisDependabotSecurityUpdates {
   /** The enablement status of Dependabot security updates for the repository. */
   status?: SecurityAndAnalysisDependabotSecurityUpdatesStatus;
 }
-export const SecurityAndAnalysisDependabotSecurityUpdates = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(SecurityAndAnalysisDependabotSecurityUpdatesStatus),
-  }),
-).annotate({
-  identifier: "SecurityAndAnalysisDependabotSecurityUpdates",
-}) as any as S.Schema<SecurityAndAnalysisDependabotSecurityUpdates>;
+export const SecurityAndAnalysisDependabotSecurityUpdates =
+  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisDependabotSecurityUpdates>;
 
 export type SecurityAndAnalysisSecretScanningStatus = "enabled" | "disabled";
 export const SecurityAndAnalysisSecretScanningStatus = S.String;
@@ -1562,13 +1542,8 @@ export const SecurityAndAnalysisSecretScanningStatus = S.String;
 export interface SecurityAndAnalysisSecretScanning {
   status?: SecurityAndAnalysisSecretScanningStatus;
 }
-export const SecurityAndAnalysisSecretScanning = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(SecurityAndAnalysisSecretScanningStatus),
-  }),
-).annotate({
-  identifier: "SecurityAndAnalysisSecretScanning",
-}) as any as S.Schema<SecurityAndAnalysisSecretScanning>;
+export const SecurityAndAnalysisSecretScanning =
+  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanning>;
 
 export type SecurityAndAnalysisSecretScanningPushProtectionStatus = "enabled" | "disabled";
 export const SecurityAndAnalysisSecretScanningPushProtectionStatus = S.String;
@@ -1576,13 +1551,8 @@ export const SecurityAndAnalysisSecretScanningPushProtectionStatus = S.String;
 export interface SecurityAndAnalysisSecretScanningPushProtection {
   status?: SecurityAndAnalysisSecretScanningPushProtectionStatus;
 }
-export const SecurityAndAnalysisSecretScanningPushProtection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(SecurityAndAnalysisSecretScanningPushProtectionStatus),
-  }),
-).annotate({
-  identifier: "SecurityAndAnalysisSecretScanningPushProtection",
-}) as any as S.Schema<SecurityAndAnalysisSecretScanningPushProtection>;
+export const SecurityAndAnalysisSecretScanningPushProtection =
+  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningPushProtection>;
 
 export type SecurityAndAnalysisSecretScanningNonProviderPatternsStatus = "enabled" | "disabled";
 export const SecurityAndAnalysisSecretScanningNonProviderPatternsStatus = S.String;
@@ -1590,13 +1560,8 @@ export const SecurityAndAnalysisSecretScanningNonProviderPatternsStatus = S.Stri
 export interface SecurityAndAnalysisSecretScanningNonProviderPatterns {
   status?: SecurityAndAnalysisSecretScanningNonProviderPatternsStatus;
 }
-export const SecurityAndAnalysisSecretScanningNonProviderPatterns = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(SecurityAndAnalysisSecretScanningNonProviderPatternsStatus),
-  }),
-).annotate({
-  identifier: "SecurityAndAnalysisSecretScanningNonProviderPatterns",
-}) as any as S.Schema<SecurityAndAnalysisSecretScanningNonProviderPatterns>;
+export const SecurityAndAnalysisSecretScanningNonProviderPatterns =
+  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningNonProviderPatterns>;
 
 export type SecurityAndAnalysisSecretScanningAiDetectionStatus = "enabled" | "disabled";
 export const SecurityAndAnalysisSecretScanningAiDetectionStatus = S.String;
@@ -1604,13 +1569,8 @@ export const SecurityAndAnalysisSecretScanningAiDetectionStatus = S.String;
 export interface SecurityAndAnalysisSecretScanningAiDetection {
   status?: SecurityAndAnalysisSecretScanningAiDetectionStatus;
 }
-export const SecurityAndAnalysisSecretScanningAiDetection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(SecurityAndAnalysisSecretScanningAiDetectionStatus),
-  }),
-).annotate({
-  identifier: "SecurityAndAnalysisSecretScanningAiDetection",
-}) as any as S.Schema<SecurityAndAnalysisSecretScanningAiDetection>;
+export const SecurityAndAnalysisSecretScanningAiDetection =
+  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningAiDetection>;
 
 export type SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus = "enabled" | "disabled";
 export const SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus = S.String;
@@ -1633,13 +1593,8 @@ export const SecurityAndAnalysisSecretScanningDelegatedBypassStatus = S.String;
 export interface SecurityAndAnalysisSecretScanningDelegatedBypass {
   status?: SecurityAndAnalysisSecretScanningDelegatedBypassStatus;
 }
-export const SecurityAndAnalysisSecretScanningDelegatedBypass = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(SecurityAndAnalysisSecretScanningDelegatedBypassStatus),
-  }),
-).annotate({
-  identifier: "SecurityAndAnalysisSecretScanningDelegatedBypass",
-}) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypass>;
+export const SecurityAndAnalysisSecretScanningDelegatedBypass =
+  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypass>;
 
 /** The type of the bypass reviewer */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =

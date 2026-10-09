@@ -1032,7 +1032,7 @@ export type OutputFormat = "json" | "plain" | "w3c" | "raw" | "parquet" | (strin
 export const OutputFormat = S.String;
 
 export type OutputFormats = OutputFormat[];
-export const OutputFormats = /*@__PURE__*/ S.Array(OutputFormat);
+export const OutputFormats = DeliveryDestinationTypes as any as S.Schema<OutputFormats>;
 export type AllowedActionForAllowVendedLogsDeliveryForResource = string;
 export type AllowedFieldDelimiters = string[];
 export const AllowedFieldDelimiters = RecordFields as any as S.Schema<AllowedFieldDelimiters>;
@@ -1393,7 +1393,7 @@ export type IndexCategory = "DEFAULT" | "CUSTOM" | "AUTO" | "INACTIVE" | (string
 export const IndexCategory = S.String;
 
 export type IndexCategories = IndexCategory[];
-export const IndexCategories = /*@__PURE__*/ S.Array(IndexCategory);
+export const IndexCategories = DeliveryDestinationTypes as any as S.Schema<IndexCategories>;
 export interface DescribeFieldIndexesRequest {
   logGroupIdentifiers: string[];
   indexCategories?: IndexCategory[];
@@ -1444,7 +1444,7 @@ export const DescribeFieldIndexesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeFieldIndexesResponse",
 }) as any as S.Schema<DescribeFieldIndexesResponse>;
 export type ImportStatusList = ImportStatus[];
-export const ImportStatusList = /*@__PURE__*/ S.Array(ImportStatus);
+export const ImportStatusList = DeliveryDestinationTypes as any as S.Schema<ImportStatusList>;
 export interface DescribeImportTaskBatchesRequest {
   importId: string;
   batchImportStatus?: ImportStatus[];
@@ -1629,7 +1629,7 @@ export type InheritedProperty = "ACCOUNT_DATA_PROTECTION" | (string & {});
 export const InheritedProperty = S.String;
 
 export type InheritedProperties = InheritedProperty[];
-export const InheritedProperties = /*@__PURE__*/ S.Array(InheritedProperty);
+export const InheritedProperties = DeliveryDestinationTypes as any as S.Schema<InheritedProperties>;
 export type BearerTokenAuthenticationEnabled = boolean;
 export interface LogGroup {
   logGroupName?: string;
@@ -2899,7 +2899,7 @@ export const GetScheduledQueryResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetScheduledQueryResponse",
 }) as any as S.Schema<GetScheduledQueryResponse>;
 export type ExecutionStatusList = ExecutionStatus[];
-export const ExecutionStatusList = /*@__PURE__*/ S.Array(ExecutionStatus);
+export const ExecutionStatusList = DeliveryDestinationTypes as any as S.Schema<ExecutionStatusList>;
 export type GetScheduledQueryHistoryMaxResults = number;
 export interface GetScheduledQueryHistoryRequest {
   identifier: string;

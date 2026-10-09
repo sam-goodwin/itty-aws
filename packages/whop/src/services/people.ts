@@ -154,20 +154,8 @@ export interface GetPersonResponseLastSource {
   type: GetPersonResponseLastSourceType;
   utm_source?: string | null;
 }
-export const GetPersonResponseLastSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ad: S.optional(S.NullOr(GetPersonResponseFirstSourceAd)),
-    ad_group: S.optional(S.NullOr(GetPersonResponseFirstSourceAd)),
-    campaign: S.optional(S.NullOr(GetPersonResponseFirstSourceAd)),
-    domain: S.optional(S.NullOr(S.String)),
-    occurred_at: S.optional(S.NullOr(S.String)),
-    platform: S.optional(S.NullOr(S.String)),
-    type: GetPersonResponseLastSourceType,
-    utm_source: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "GetPersonResponseLastSource",
-}) as any as S.Schema<GetPersonResponseLastSource>;
+export const GetPersonResponseLastSource =
+  GetPersonResponseFirstSource as any as S.Schema<GetPersonResponseLastSource>;
 
 export interface GetPersonResponseLocation {
   city?: string | null;
@@ -262,20 +250,8 @@ export interface GetPersonResponseSourcesItem {
   type: GetPersonResponseSourcesItemType;
   utm_source?: string | null;
 }
-export const GetPersonResponseSourcesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ad: S.optional(S.NullOr(GetPersonResponseFirstSourceAd)),
-    ad_group: S.optional(S.NullOr(GetPersonResponseFirstSourceAd)),
-    campaign: S.optional(S.NullOr(GetPersonResponseFirstSourceAd)),
-    domain: S.optional(S.NullOr(S.String)),
-    occurred_at: S.optional(S.NullOr(S.String)),
-    platform: S.optional(S.NullOr(S.String)),
-    type: GetPersonResponseSourcesItemType,
-    utm_source: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "GetPersonResponseSourcesItem",
-}) as any as S.Schema<GetPersonResponseSourcesItem>;
+export const GetPersonResponseSourcesItem =
+  GetPersonResponseFirstSource as any as S.Schema<GetPersonResponseSourcesItem>;
 
 /** Every distinct acquisition signal the person ever carried, ad entities hydrated. */
 export type GetPersonResponseSourcesList = Array<GetPersonResponseSourcesItem>;
@@ -679,20 +655,8 @@ export interface ListPeopleResponseDataItemFirstSource {
   type: ListPeopleResponseDataItemFirstSourceType;
   utm_source?: string | null;
 }
-export const ListPeopleResponseDataItemFirstSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ad: S.optional(S.NullOr(GetPersonResponseFirstSourceAd)),
-    ad_group: S.optional(S.NullOr(GetPersonResponseFirstSourceAd)),
-    campaign: S.optional(S.NullOr(GetPersonResponseFirstSourceAd)),
-    domain: S.optional(S.NullOr(S.String)),
-    occurred_at: S.optional(S.NullOr(S.String)),
-    platform: S.optional(S.NullOr(S.String)),
-    type: ListPeopleResponseDataItemFirstSourceType,
-    utm_source: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "ListPeopleResponseDataItemFirstSource",
-}) as any as S.Schema<ListPeopleResponseDataItemFirstSource>;
+export const ListPeopleResponseDataItemFirstSource =
+  GetPersonResponseFirstSource as any as S.Schema<ListPeopleResponseDataItemFirstSource>;
 
 export type ListPeopleResponseDataItemLastSourceAd = GetPersonResponseFirstSourceAd;
 export const ListPeopleResponseDataItemLastSourceAd = GetPersonResponseFirstSourceAd;
@@ -722,20 +686,8 @@ export interface ListPeopleResponseDataItemLastSource {
   type: ListPeopleResponseDataItemLastSourceType;
   utm_source?: string | null;
 }
-export const ListPeopleResponseDataItemLastSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ad: S.optional(S.NullOr(GetPersonResponseFirstSourceAd)),
-    ad_group: S.optional(S.NullOr(GetPersonResponseFirstSourceAd)),
-    campaign: S.optional(S.NullOr(GetPersonResponseFirstSourceAd)),
-    domain: S.optional(S.NullOr(S.String)),
-    occurred_at: S.optional(S.NullOr(S.String)),
-    platform: S.optional(S.NullOr(S.String)),
-    type: ListPeopleResponseDataItemLastSourceType,
-    utm_source: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "ListPeopleResponseDataItemLastSource",
-}) as any as S.Schema<ListPeopleResponseDataItemLastSource>;
+export const ListPeopleResponseDataItemLastSource =
+  GetPersonResponseFirstSource as any as S.Schema<ListPeopleResponseDataItemLastSource>;
 
 export type ListPeopleResponseDataItemLocation = GetPersonResponseLocation;
 export const ListPeopleResponseDataItemLocation = GetPersonResponseLocation;

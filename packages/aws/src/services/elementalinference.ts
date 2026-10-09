@@ -440,9 +440,7 @@ export interface DeleteFeedResponse {
   id: string;
   status: FeedStatus;
 }
-export const DeleteFeedResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ arn: S.String, id: S.String, status: FeedStatus }),
-).annotate({ identifier: "DeleteFeedResponse" }) as any as S.Schema<DeleteFeedResponse>;
+export const DeleteFeedResponse = DeleteDictionaryResponse as any as S.Schema<DeleteFeedResponse>;
 export interface DeleteFeedPolicyRequest {
   id: string;
 }

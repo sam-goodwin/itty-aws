@@ -1813,9 +1813,7 @@ export type GoogleAnalyticsAdminV1alphaCustomMetricRestrictedMetricTypeItemEnumL
   GoogleAnalyticsAdminV1alphaCustomMetricRestrictedMetricTypeItemEnum | (string & {})
 >;
 export const GoogleAnalyticsAdminV1alphaCustomMetricRestrictedMetricTypeItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleAnalyticsAdminV1alphaCustomMetricRestrictedMetricTypeItemEnum,
-  ) as any as S.Schema<GoogleAnalyticsAdminV1alphaCustomMetricRestrictedMetricTypeItemEnumList>;
+  GoogleAnalyticsAdminV1alphaCalculatedMetricRestrictedMetricTypeItemEnumList as any as S.Schema<GoogleAnalyticsAdminV1alphaCustomMetricRestrictedMetricTypeItemEnumList>;
 
 export type GoogleAnalyticsAdminV1alphaCustomMetricMeasurementUnitEnum =
   | "MEASUREMENT_UNIT_UNSPECIFIED"
@@ -7208,9 +7206,7 @@ export type GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequestResourceT
     GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequestResourceTypeItemEnum | (string & {})
   >;
 export const GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequestResourceTypeItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequestResourceTypeItemEnum,
-  ) as any as S.Schema<GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequestResourceTypeItemEnumList>;
+  GoogleAnalyticsAdminV1alphaCalculatedMetricRestrictedMetricTypeItemEnumList as any as S.Schema<GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequestResourceTypeItemEnumList>;
 
 export type GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequestActionItemEnum =
   | "ACTION_TYPE_UNSPECIFIED"
@@ -7223,9 +7219,7 @@ export type GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequestActionIte
   GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequestActionItemEnum | (string & {})
 >;
 export const GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequestActionItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequestActionItemEnum,
-  ) as any as S.Schema<GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequestActionItemEnumList>;
+  GoogleAnalyticsAdminV1alphaCalculatedMetricRestrictedMetricTypeItemEnumList as any as S.Schema<GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequestActionItemEnumList>;
 
 /** Request message for SearchChangeHistoryEvents RPC. */
 export interface GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequest {

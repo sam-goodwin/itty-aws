@@ -262,9 +262,8 @@ export const MediationReportSpecDimensionsItemEnum = S.String;
 export type MediationReportSpecDimensionsItemEnumList = Array<
   MediationReportSpecDimensionsItemEnum | (string & {})
 >;
-export const MediationReportSpecDimensionsItemEnumList = /*@__PURE__*/ S.Array(
-  MediationReportSpecDimensionsItemEnum,
-) as any as S.Schema<MediationReportSpecDimensionsItemEnumList>;
+export const MediationReportSpecDimensionsItemEnumList =
+  MediationReportSpecMetricsItemEnumList as any as S.Schema<MediationReportSpecDimensionsItemEnumList>;
 
 /** The specification for generating an AdMob Mediation report. For example, the specification to get observed ECPM sliced by ad source and app for the 'US' and 'CN' countries can look like the following example: { "date_range": { "start_date": {"year": 2021, "month": 9, "day": 1}, "end_date": {"year": 2021, "month": 9, "day": 30} }, "dimensions": ["AD_SOURCE", "APP", "COUNTRY"], "metrics": ["OBSERVED_ECPM"], "dimension_filters": [ { "dimension": "COUNTRY", "matches_any": {"values": [{"value": "US", "value": "CN"}]} } ], "sort_conditions": [ {"dimension":"APP", order: "ASCENDING"} ], "localization_settings": { "currency_code": "USD", "language_code": "en-US" } } For a better understanding, you can treat the preceding specification like the following pseudo SQL: SELECT AD_SOURCE, APP, COUNTRY, OBSERVED_ECPM FROM MEDIATION_REPORT WHERE DATE >= '2021-09-01' AND DATE <= '2021-09-30' AND COUNTRY IN ('US', 'CN') GROUP BY AD_SOURCE, APP, COUNTRY ORDER BY APP ASC; */
 export interface MediationReportSpec {
@@ -584,9 +583,8 @@ export const NetworkReportSpecDimensionsItemEnum = S.String;
 export type NetworkReportSpecDimensionsItemEnumList = Array<
   NetworkReportSpecDimensionsItemEnum | (string & {})
 >;
-export const NetworkReportSpecDimensionsItemEnumList = /*@__PURE__*/ S.Array(
-  NetworkReportSpecDimensionsItemEnum,
-) as any as S.Schema<NetworkReportSpecDimensionsItemEnumList>;
+export const NetworkReportSpecDimensionsItemEnumList =
+  MediationReportSpecMetricsItemEnumList as any as S.Schema<NetworkReportSpecDimensionsItemEnumList>;
 
 export type NetworkReportSpecMetricsItemEnum =
   | "METRIC_UNSPECIFIED"
@@ -604,9 +602,8 @@ export const NetworkReportSpecMetricsItemEnum = S.String;
 export type NetworkReportSpecMetricsItemEnumList = Array<
   NetworkReportSpecMetricsItemEnum | (string & {})
 >;
-export const NetworkReportSpecMetricsItemEnumList = /*@__PURE__*/ S.Array(
-  NetworkReportSpecMetricsItemEnum,
-) as any as S.Schema<NetworkReportSpecMetricsItemEnumList>;
+export const NetworkReportSpecMetricsItemEnumList =
+  MediationReportSpecMetricsItemEnumList as any as S.Schema<NetworkReportSpecMetricsItemEnumList>;
 
 /** The specification for generating an AdMob Network report. For example, the specification to get clicks and estimated earnings for only the 'US' and 'CN' countries can look like the following example: { 'date_range': { 'start_date': {'year': 2021, 'month': 9, 'day': 1}, 'end_date': {'year': 2021, 'month': 9, 'day': 30} }, 'dimensions': ['DATE', 'APP', 'COUNTRY'], 'metrics': ['CLICKS', 'ESTIMATED_EARNINGS'], 'dimension_filters': [ { 'dimension': 'COUNTRY', 'matches_any': {'values': [{'value': 'US', 'value': 'CN'}]} } ], 'sort_conditions': [ {'dimension':'APP', order: 'ASCENDING'}, {'metric':'CLICKS', order: 'DESCENDING'} ], 'localization_settings': { 'currency_code': 'USD', 'language_code': 'en-US' } } For a better understanding, you can treat the preceding specification like the following pseudo SQL: SELECT DATE, APP, COUNTRY, CLICKS, ESTIMATED_EARNINGS FROM NETWORK_REPORT WHERE DATE >= '2021-09-01' AND DATE <= '2021-09-30' AND COUNTRY IN ('US', 'CN') GROUP BY DATE, APP, COUNTRY ORDER BY APP ASC, CLICKS DESC; */
 export interface NetworkReportSpec {

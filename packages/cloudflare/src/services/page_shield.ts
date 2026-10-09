@@ -389,16 +389,7 @@ export interface GetPolicyResponse {
   /** The policy which will be applied */
   value: string;
 }
-export const GetPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    action: PoliciesGetResponseAction,
-    description: S.String,
-    enabled: S.Boolean,
-    expression: S.String,
-    value: S.String,
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "GetPolicyResponse" }) as any as S.Schema<GetPolicyResponse>;
+export const GetPolicyResponse = CreatePolicyResponse as any as S.Schema<GetPolicyResponse>;
 
 export interface GetScriptRequest {
   /** Identifier */
@@ -1116,16 +1107,7 @@ export interface UpdatePolicyResponse {
   /** The policy which will be applied */
   value: string;
 }
-export const UpdatePolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    action: PoliciesUpdateResponseAction,
-    description: S.String,
-    enabled: S.Boolean,
-    expression: S.String,
-    value: S.String,
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "UpdatePolicyResponse" }) as any as S.Schema<UpdatePolicyResponse>;
+export const UpdatePolicyResponse = CreatePolicyResponse as any as S.Schema<UpdatePolicyResponse>;
 
 export type CreatePolicyError = PolicyQuotaExceeded | Forbidden | CloudflareOpError;
 /** Creates a rule that applies a client-side security action when its filter expression matches. */

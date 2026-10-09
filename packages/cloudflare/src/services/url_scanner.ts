@@ -305,9 +305,8 @@ export const ScansCreateRequestScreenshotsResolutionsItem = S.String;
 export type ScansCreateRequestScreenshotsResolutionsList = Array<
   ScansCreateRequestScreenshotsResolutionsItem | (string & {})
 >;
-export const ScansCreateRequestScreenshotsResolutionsList = /*@__PURE__*/ S.Array(
-  ScansCreateRequestScreenshotsResolutionsItem,
-) as any as S.Schema<ScansCreateRequestScreenshotsResolutionsList>;
+export const ScansCreateRequestScreenshotsResolutionsList =
+  ScansBulkCreateRequestBodyItemScreenshotsResolutionsList as any as S.Schema<ScansCreateRequestScreenshotsResolutionsList>;
 
 export type ScansCreateRequestVisibility = "Public" | "Unlisted";
 export const ScansCreateRequestVisibility = S.String;

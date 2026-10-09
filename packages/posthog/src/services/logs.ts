@@ -1123,9 +1123,8 @@ export const NotificationDestinationTypeEnum = S.String;
 
 /** Notification destination types configured for this alert -- e.g. 'slack', 'webhook'. Empty list means no notifications will fire. One or more destinations should be added after creating an alert. */
 export type LogsAlertConfigurationDestinationTypesList = Array<NotificationDestinationTypeEnum>;
-export const LogsAlertConfigurationDestinationTypesList = /*@__PURE__*/ S.Array(
-  NotificationDestinationTypeEnum,
-) as any as S.Schema<LogsAlertConfigurationDestinationTypesList>;
+export const LogsAlertConfigurationDestinationTypesList =
+  LogsAlertFiltersSeverityLevelsList as any as S.Schema<LogsAlertConfigurationDestinationTypesList>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
 export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
@@ -1448,9 +1447,8 @@ export const BindingConstraintsEnum = S.String;
 
 /** Everything that limited the baseline, empty for an unconstrained scan. team_retention: the project's log retention is shorter than the full lookback. byte_budget: the scan degraded to stay inside its ClickHouse read budget. */
 export type LogsAnomalyScanResponseBindingConstraintsList = Array<BindingConstraintsEnum>;
-export const LogsAnomalyScanResponseBindingConstraintsList = /*@__PURE__*/ S.Array(
-  BindingConstraintsEnum,
-) as any as S.Schema<LogsAnomalyScanResponseBindingConstraintsList>;
+export const LogsAnomalyScanResponseBindingConstraintsList =
+  LogsAlertFiltersSeverityLevelsList as any as S.Schema<LogsAnomalyScanResponseBindingConstraintsList>;
 
 /** * `insufficient` - insufficient * `cold_start` - cold_start * `developing` - developing * `mature` - mature */
 export type LogsAnomalyBaselineStageEnum = "insufficient" | "cold_start" | "developing" | "mature";
@@ -1779,9 +1777,8 @@ export const SeverityLevelsEnum = S.String;
 
 /** Filter by log severity levels. */
 export type LogsCountBodySeverityLevelsList = Array<SeverityLevelsEnum | (string & {})>;
-export const LogsCountBodySeverityLevelsList = /*@__PURE__*/ S.Array(
-  SeverityLevelsEnum,
-) as any as S.Schema<LogsCountBodySeverityLevelsList>;
+export const LogsCountBodySeverityLevelsList =
+  LogsAlertFiltersSeverityLevelsList as any as S.Schema<LogsCountBodySeverityLevelsList>;
 
 /** Filter by service names. */
 export type LogsCountBodyServiceNamesList = Array<string>;

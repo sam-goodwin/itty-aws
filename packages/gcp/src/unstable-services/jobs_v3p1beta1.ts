@@ -590,9 +590,8 @@ export type JobEmploymentTypesItemEnum =
 export const JobEmploymentTypesItemEnum = S.String;
 
 export type JobEmploymentTypesItemEnumList = Array<JobEmploymentTypesItemEnum | (string & {})>;
-export const JobEmploymentTypesItemEnumList = /*@__PURE__*/ S.Array(
-  JobEmploymentTypesItemEnum,
-) as any as S.Schema<JobEmploymentTypesItemEnumList>;
+export const JobEmploymentTypesItemEnumList =
+  JobJobBenefitsItemEnumList as any as S.Schema<JobEmploymentTypesItemEnumList>;
 
 export type JobDegreeTypesItemEnum =
   | "DEGREE_TYPE_UNSPECIFIED"
@@ -607,9 +606,8 @@ export type JobDegreeTypesItemEnum =
 export const JobDegreeTypesItemEnum = S.String;
 
 export type JobDegreeTypesItemEnumList = Array<JobDegreeTypesItemEnum | (string & {})>;
-export const JobDegreeTypesItemEnumList = /*@__PURE__*/ S.Array(
-  JobDegreeTypesItemEnum,
-) as any as S.Schema<JobDegreeTypesItemEnumList>;
+export const JobDegreeTypesItemEnumList =
+  JobJobBenefitsItemEnumList as any as S.Schema<JobDegreeTypesItemEnumList>;
 
 /** Represents an amount of money with its currency type. */
 export interface Money {
@@ -750,9 +748,8 @@ export const JobDerivedInfoJobCategoriesItemEnum = S.String;
 export type JobDerivedInfoJobCategoriesItemEnumList = Array<
   JobDerivedInfoJobCategoriesItemEnum | (string & {})
 >;
-export const JobDerivedInfoJobCategoriesItemEnumList = /*@__PURE__*/ S.Array(
-  JobDerivedInfoJobCategoriesItemEnum,
-) as any as S.Schema<JobDerivedInfoJobCategoriesItemEnumList>;
+export const JobDerivedInfoJobCategoriesItemEnumList =
+  JobJobBenefitsItemEnumList as any as S.Schema<JobDerivedInfoJobCategoriesItemEnumList>;
 
 export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
@@ -1257,9 +1254,8 @@ export const JobQueryEmploymentTypesItemEnum = S.String;
 export type JobQueryEmploymentTypesItemEnumList = Array<
   JobQueryEmploymentTypesItemEnum | (string & {})
 >;
-export const JobQueryEmploymentTypesItemEnumList = /*@__PURE__*/ S.Array(
-  JobQueryEmploymentTypesItemEnum,
-) as any as S.Schema<JobQueryEmploymentTypesItemEnumList>;
+export const JobQueryEmploymentTypesItemEnumList =
+  JobJobBenefitsItemEnumList as any as S.Schema<JobQueryEmploymentTypesItemEnumList>;
 
 /** Message representing a period of time between two timestamps. */
 export interface TimestampRange {
@@ -1289,9 +1285,8 @@ export const CompensationFilterUnitsItemEnum = S.String;
 export type CompensationFilterUnitsItemEnumList = Array<
   CompensationFilterUnitsItemEnum | (string & {})
 >;
-export const CompensationFilterUnitsItemEnumList = /*@__PURE__*/ S.Array(
-  CompensationFilterUnitsItemEnum,
-) as any as S.Schema<CompensationFilterUnitsItemEnumList>;
+export const CompensationFilterUnitsItemEnumList =
+  JobJobBenefitsItemEnumList as any as S.Schema<CompensationFilterUnitsItemEnumList>;
 
 export type CompensationFilterTypeEnum =
   | "FILTER_TYPE_UNSPECIFIED"
@@ -1358,9 +1353,8 @@ export const JobQueryJobCategoriesItemEnum = S.String;
 export type JobQueryJobCategoriesItemEnumList = Array<
   JobQueryJobCategoriesItemEnum | (string & {})
 >;
-export const JobQueryJobCategoriesItemEnumList = /*@__PURE__*/ S.Array(
-  JobQueryJobCategoriesItemEnum,
-) as any as S.Schema<JobQueryJobCategoriesItemEnumList>;
+export const JobQueryJobCategoriesItemEnumList =
+  JobJobBenefitsItemEnumList as any as S.Schema<JobQueryJobCategoriesItemEnumList>;
 
 export type CommuteFilterRoadTrafficEnum =
   | "ROAD_TRAFFIC_UNSPECIFIED"
@@ -1610,9 +1604,8 @@ export const HistogramFacetsSimpleHistogramFacetsItemEnum = S.String;
 export type HistogramFacetsSimpleHistogramFacetsItemEnumList = Array<
   HistogramFacetsSimpleHistogramFacetsItemEnum | (string & {})
 >;
-export const HistogramFacetsSimpleHistogramFacetsItemEnumList = /*@__PURE__*/ S.Array(
-  HistogramFacetsSimpleHistogramFacetsItemEnum,
-) as any as S.Schema<HistogramFacetsSimpleHistogramFacetsItemEnumList>;
+export const HistogramFacetsSimpleHistogramFacetsItemEnumList =
+  JobJobBenefitsItemEnumList as any as S.Schema<HistogramFacetsSimpleHistogramFacetsItemEnumList>;
 
 /** Input only. Histogram facets to be specified in SearchJobsRequest. */
 export interface HistogramFacets {

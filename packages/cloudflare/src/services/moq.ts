@@ -224,9 +224,7 @@ export const CreateRelaysTokenResponseIssuersItemCloudflareTokensItemOperationsI
 export type CreateRelaysTokenResponseIssuersItemCloudflareTokensItemOperationsList =
   Array<CreateRelaysTokenResponseIssuersItemCloudflareTokensItemOperationsItem>;
 export const CreateRelaysTokenResponseIssuersItemCloudflareTokensItemOperationsList =
-  /*@__PURE__*/ S.Array(
-    CreateRelaysTokenResponseIssuersItemCloudflareTokensItemOperationsItem,
-  ) as any as S.Schema<CreateRelaysTokenResponseIssuersItemCloudflareTokensItemOperationsList>;
+  RelaysCreateResponseIssuersItemCloudflareTokensItemOperationsList as any as S.Schema<CreateRelaysTokenResponseIssuersItemCloudflareTokensItemOperationsList>;
 
 export interface CreateRelaysTokenResponseIssuersItemCloudflareTokensItem {
   created: string;
@@ -503,9 +501,7 @@ export const ListRelaysTokensResponseIssuersItemCloudflareTokensItemOperationsIt
 export type ListRelaysTokensResponseIssuersItemCloudflareTokensItemOperationsList =
   Array<ListRelaysTokensResponseIssuersItemCloudflareTokensItemOperationsItem>;
 export const ListRelaysTokensResponseIssuersItemCloudflareTokensItemOperationsList =
-  /*@__PURE__*/ S.Array(
-    ListRelaysTokensResponseIssuersItemCloudflareTokensItemOperationsItem,
-  ) as any as S.Schema<ListRelaysTokensResponseIssuersItemCloudflareTokensItemOperationsList>;
+  RelaysCreateResponseIssuersItemCloudflareTokensItemOperationsList as any as S.Schema<ListRelaysTokensResponseIssuersItemCloudflareTokensItemOperationsList>;
 
 export interface ListRelaysTokensResponseIssuersItemCloudflareTokensItem {
   created: string;
@@ -520,24 +516,13 @@ export interface ListRelaysTokensResponseIssuersItemCloudflareTokensItem {
   /** The signed JWT. Present ONLY in create / auto-create responses (shown once); never returned by list, never stored. */
   secret?: string | null;
 }
-export const ListRelaysTokensResponseIssuersItemCloudflareTokensItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    created: S.String,
-    expires: S.String,
-    jti: S.String,
-    operations: ListRelaysTokensResponseIssuersItemCloudflareTokensItemOperationsList,
-    label: S.optional(S.NullOr(S.String)),
-    secret: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "ListRelaysTokensResponseIssuersItemCloudflareTokensItem",
-}) as any as S.Schema<ListRelaysTokensResponseIssuersItemCloudflareTokensItem>;
+export const ListRelaysTokensResponseIssuersItemCloudflareTokensItem =
+  RelaysCreateResponseIssuersItemCloudflareTokensItem as any as S.Schema<ListRelaysTokensResponseIssuersItemCloudflareTokensItem>;
 
 export type ListRelaysTokensResponseIssuersItemCloudflareTokensList =
   Array<ListRelaysTokensResponseIssuersItemCloudflareTokensItem>;
-export const ListRelaysTokensResponseIssuersItemCloudflareTokensList = /*@__PURE__*/ S.Array(
-  ListRelaysTokensResponseIssuersItemCloudflareTokensItem,
-) as any as S.Schema<ListRelaysTokensResponseIssuersItemCloudflareTokensList>;
+export const ListRelaysTokensResponseIssuersItemCloudflareTokensList =
+  RelaysCreateResponseIssuersItemCloudflareTokensList as any as S.Schema<ListRelaysTokensResponseIssuersItemCloudflareTokensList>;
 
 export type ListRelaysTokensResponseIssuersItemIssuer = "cloudflare";
 export const ListRelaysTokensResponseIssuersItemIssuer = S.String;
@@ -551,22 +536,12 @@ export interface ListRelaysTokensResponseIssuersItem {
   issuer: ListRelaysTokensResponseIssuersItemIssuer;
   type: ListRelaysTokensResponseIssuersItemType;
 }
-export const ListRelaysTokensResponseIssuersItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cloudflareTokens: ListRelaysTokensResponseIssuersItemCloudflareTokensList.pipe(
-      T.Body("cloudflare_tokens"),
-    ),
-    issuer: ListRelaysTokensResponseIssuersItemIssuer,
-    type: ListRelaysTokensResponseIssuersItemType,
-  }),
-).annotate({
-  identifier: "ListRelaysTokensResponseIssuersItem",
-}) as any as S.Schema<ListRelaysTokensResponseIssuersItem>;
+export const ListRelaysTokensResponseIssuersItem =
+  RelaysCreateResponseIssuersItem as any as S.Schema<ListRelaysTokensResponseIssuersItem>;
 
 export type ListRelaysTokensResponseIssuersList = Array<ListRelaysTokensResponseIssuersItem>;
-export const ListRelaysTokensResponseIssuersList = /*@__PURE__*/ S.Array(
-  ListRelaysTokensResponseIssuersItem,
-) as any as S.Schema<ListRelaysTokensResponseIssuersList>;
+export const ListRelaysTokensResponseIssuersList =
+  RelaysCreateResponseIssuersList as any as S.Schema<ListRelaysTokensResponseIssuersList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ListRelaysTokensResponse {

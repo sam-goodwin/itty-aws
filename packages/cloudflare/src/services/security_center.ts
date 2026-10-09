@@ -333,9 +333,8 @@ export const InsightsSeverityGetRequestSource = S.String;
 export type InsightsSeverityGetRequestSourceList = Array<
   InsightsSeverityGetRequestSource | (string & {})
 >;
-export const InsightsSeverityGetRequestSourceList = /*@__PURE__*/ S.Array(
-  InsightsSeverityGetRequestSource,
-) as any as S.Schema<InsightsSeverityGetRequestSourceList>;
+export const InsightsSeverityGetRequestSourceList =
+  InsightsClassGetRequestSourceList as any as S.Schema<InsightsSeverityGetRequestSourceList>;
 
 export type InsightsSeverityGetRequestSubjectList = Array<string>;
 export const InsightsSeverityGetRequestSubjectList =
@@ -495,9 +494,8 @@ export type InsightsTypeGetRequestSource = "cloudflare" | "riskrecon";
 export const InsightsTypeGetRequestSource = S.String;
 
 export type InsightsTypeGetRequestSourceList = Array<InsightsTypeGetRequestSource | (string & {})>;
-export const InsightsTypeGetRequestSourceList = /*@__PURE__*/ S.Array(
-  InsightsTypeGetRequestSource,
-) as any as S.Schema<InsightsTypeGetRequestSourceList>;
+export const InsightsTypeGetRequestSourceList =
+  InsightsClassGetRequestSourceList as any as S.Schema<InsightsTypeGetRequestSourceList>;
 
 export type InsightsTypeGetRequestSubjectList = Array<string>;
 export const InsightsTypeGetRequestSubjectList =
@@ -840,28 +838,12 @@ export interface InsightsAuditLogsListResultItem {
   /** The zone ID associated with the insight. Only present for zone-level insights. */
   zoneId?: number | null;
 }
-export const InsightsAuditLogsListResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    changedAt: S.optional(S.NullOr(S.String).pipe(T.Body("changed_at"))),
-    changedBy: S.optional(S.NullOr(S.String).pipe(T.Body("changed_by"))),
-    currentValue: S.optional(S.NullOr(S.String).pipe(T.Body("current_value"))),
-    fieldChanged: S.optional(
-      S.NullOr(InsightsAuditLogsListResultItemFieldChanged).pipe(T.Body("field_changed")),
-    ),
-    issueId: S.optional(S.NullOr(S.String).pipe(T.Body("issue_id"))),
-    previousValue: S.optional(S.NullOr(S.String).pipe(T.Body("previous_value"))),
-    rationale: S.optional(S.NullOr(S.String)),
-    zoneId: S.optional(S.NullOr(S.Number).pipe(T.Body("zone_id"))),
-  }),
-).annotate({
-  identifier: "InsightsAuditLogsListResultItem",
-}) as any as S.Schema<InsightsAuditLogsListResultItem>;
+export const InsightsAuditLogsListResultItem =
+  InsightsAuditLogsListByInsightResultItem as any as S.Schema<InsightsAuditLogsListResultItem>;
 
 export type InsightsAuditLogsListResultList = Array<InsightsAuditLogsListResultItem>;
-export const InsightsAuditLogsListResultList = /*@__PURE__*/ S.Array(
-  InsightsAuditLogsListResultItem,
-) as any as S.Schema<InsightsAuditLogsListResultList>;
+export const InsightsAuditLogsListResultList =
+  InsightsAuditLogsListByInsightResultList as any as S.Schema<InsightsAuditLogsListResultList>;
 
 export interface ListInsightAuditLogsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
@@ -869,14 +851,8 @@ export interface ListInsightAuditLogsResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListInsightAuditLogsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: InsightsAuditLogsListResultList.pipe(T.EnvelopePayload()),
-    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "ListInsightAuditLogsResponse",
-}) as any as S.Schema<ListInsightAuditLogsResponse>;
+export const ListInsightAuditLogsResponse =
+  ListByInsightInsightAuditLogResponse as any as S.Schema<ListInsightAuditLogsResponse>;
 
 export interface ListInsightAuditLogsForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
@@ -957,9 +933,8 @@ export type InsightsListRequestSource = "cloudflare" | "riskrecon";
 export const InsightsListRequestSource = S.String;
 
 export type InsightsListRequestSourceList = Array<InsightsListRequestSource | (string & {})>;
-export const InsightsListRequestSourceList = /*@__PURE__*/ S.Array(
-  InsightsListRequestSource,
-) as any as S.Schema<InsightsListRequestSourceList>;
+export const InsightsListRequestSourceList =
+  InsightsClassGetRequestSourceList as any as S.Schema<InsightsListRequestSourceList>;
 
 export type InsightsListRequestSubjectList = Array<string>;
 export const InsightsListRequestSubjectList =

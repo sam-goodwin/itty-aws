@@ -1863,9 +1863,8 @@ export const ListActionTasksRequestStatusItem = S.String;
 export type ListActionTasksRequestStatusList = Array<
   ListActionTasksRequestStatusItem | (string & {})
 >;
-export const ListActionTasksRequestStatusList = /*@__PURE__*/ S.Array(
-  ListActionTasksRequestStatusItem,
-) as any as S.Schema<ListActionTasksRequestStatusList>;
+export const ListActionTasksRequestStatusList =
+  ListActionRunsRequestStatusList as any as S.Schema<ListActionTasksRequestStatusList>;
 
 export interface ListActionTasksRequest {
   /** owner of the repo */

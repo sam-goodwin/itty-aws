@@ -2029,26 +2029,7 @@ export interface BackupPolicy {
   /** Whether the policy is a required system backup */
   required: boolean;
 }
-export const BackupPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    display_name: S.String,
-    name: S.String,
-    target: BackupPolicyTarget,
-    retention_value: S.Number,
-    retention_unit: S.String,
-    frequency_value: S.Number,
-    frequency_unit: S.String,
-    schedule_time: S.optional(S.NullOr(S.String)),
-    schedule_day: S.NullOr(S.Number),
-    schedule_week: S.NullOr(S.Number),
-    created_at: S.String,
-    updated_at: S.String,
-    last_ran_at: S.NullOr(S.String),
-    next_run_at: S.NullOr(S.String),
-    required: S.Boolean,
-  }),
-).annotate({ identifier: "BackupPolicy" }) as any as S.Schema<BackupPolicy>;
+export const BackupPolicy = BackupBackupPolicy as any as S.Schema<BackupPolicy>;
 
 export interface CreateBouncerRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
@@ -4718,9 +4699,8 @@ export const PostgresRoleInheritedRolesItem = S.String;
 
 /** Database roles these credentials inherit */
 export type PostgresRoleInheritedRolesList = Array<PostgresRoleInheritedRolesItem>;
-export const PostgresRoleInheritedRolesList = /*@__PURE__*/ S.Array(
-  PostgresRoleInheritedRolesItem,
-) as any as S.Schema<PostgresRoleInheritedRolesList>;
+export const PostgresRoleInheritedRolesList =
+  CreateRoleRequestInheritedRolesList as any as S.Schema<PostgresRoleInheritedRolesList>;
 
 export type PostgresRoleBranch = OrganizationTeamMembershipUserDefaultOrganization;
 export const PostgresRoleBranch = OrganizationTeamMembershipUserDefaultOrganization;
@@ -5600,9 +5580,8 @@ export const DatabaseWebhookEventsItem = S.String;
 
 /** The events this webhook subscribes to */
 export type DatabaseWebhookEventsList = Array<DatabaseWebhookEventsItem>;
-export const DatabaseWebhookEventsList = /*@__PURE__*/ S.Array(
-  DatabaseWebhookEventsItem,
-) as any as S.Schema<DatabaseWebhookEventsList>;
+export const DatabaseWebhookEventsList =
+  CreateRoleRequestInheritedRolesList as any as S.Schema<DatabaseWebhookEventsList>;
 
 export interface DatabaseWebhook {
   /** The ID of the webhook */
@@ -7619,9 +7598,8 @@ export const GetBranchMetricsRequestMetricsItem = S.String;
 export type GetBranchMetricsRequestMetricsList = Array<
   GetBranchMetricsRequestMetricsItem | (string & {})
 >;
-export const GetBranchMetricsRequestMetricsList = /*@__PURE__*/ S.Array(
-  GetBranchMetricsRequestMetricsItem,
-) as any as S.Schema<GetBranchMetricsRequestMetricsList>;
+export const GetBranchMetricsRequestMetricsList =
+  CreateRoleRequestInheritedRolesList as any as S.Schema<GetBranchMetricsRequestMetricsList>;
 
 export type GetBranchMetricsRequestPeriod =
   | "15m"
@@ -8139,9 +8117,8 @@ export const GetBranchQueryMetricsRequestMetricsItem = S.String;
 export type GetBranchQueryMetricsRequestMetricsList = Array<
   GetBranchQueryMetricsRequestMetricsItem | (string & {})
 >;
-export const GetBranchQueryMetricsRequestMetricsList = /*@__PURE__*/ S.Array(
-  GetBranchQueryMetricsRequestMetricsItem,
-) as any as S.Schema<GetBranchQueryMetricsRequestMetricsList>;
+export const GetBranchQueryMetricsRequestMetricsList =
+  CreateRoleRequestInheritedRolesList as any as S.Schema<GetBranchQueryMetricsRequestMetricsList>;
 
 export type GetBranchQueryMetricsRequestQueryIdsList = Array<string>;
 export const GetBranchQueryMetricsRequestQueryIdsList =
@@ -8574,9 +8551,8 @@ export const GetBranchTagMetricsRequestMetricsItem = S.String;
 export type GetBranchTagMetricsRequestMetricsList = Array<
   GetBranchTagMetricsRequestMetricsItem | (string & {})
 >;
-export const GetBranchTagMetricsRequestMetricsList = /*@__PURE__*/ S.Array(
-  GetBranchTagMetricsRequestMetricsItem,
-) as any as S.Schema<GetBranchTagMetricsRequestMetricsList>;
+export const GetBranchTagMetricsRequestMetricsList =
+  CreateRoleRequestInheritedRolesList as any as S.Schema<GetBranchTagMetricsRequestMetricsList>;
 
 export type GetBranchTagMetricsRequestTagSetsList = Array<string>;
 export const GetBranchTagMetricsRequestTagSetsList =
@@ -9549,24 +9525,12 @@ export interface PaginatedDeploymentDataItemDeployOperationSummariesItemOperatio
   eta_seconds: number;
 }
 export const PaginatedDeploymentDataItemDeployOperationSummariesItemOperationsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      shard: S.String,
-      state: PaginatedDeploymentDataItemDeployOperationSummariesItemOperationsItemState,
-      progress_percentage: S.Number,
-      eta_seconds: S.Number,
-    }),
-  ).annotate({
-    identifier: "PaginatedDeploymentDataItemDeployOperationSummariesItemOperationsItem",
-  }) as any as S.Schema<PaginatedDeploymentDataItemDeployOperationSummariesItemOperationsItem>;
+  DatabaseDeployRequestDeploymentDeployOperationSummariesItemOperationsItem as any as S.Schema<PaginatedDeploymentDataItemDeployOperationSummariesItemOperationsItem>;
 
 export type PaginatedDeploymentDataItemDeployOperationSummariesItemOperationsList =
   Array<PaginatedDeploymentDataItemDeployOperationSummariesItemOperationsItem>;
 export const PaginatedDeploymentDataItemDeployOperationSummariesItemOperationsList =
-  /*@__PURE__*/ S.Array(
-    PaginatedDeploymentDataItemDeployOperationSummariesItemOperationsItem,
-  ) as any as S.Schema<PaginatedDeploymentDataItemDeployOperationSummariesItemOperationsList>;
+  DatabaseDeployRequestDeploymentDeployOperationSummariesItemOperationsList as any as S.Schema<PaginatedDeploymentDataItemDeployOperationSummariesItemOperationsList>;
 
 export interface PaginatedDeploymentDataItemDeployOperationSummariesItem {
   /** The ID for the deploy operation summary */
@@ -9945,9 +9909,8 @@ export const GetInstantBranchMetricsRequestMetricsItem = S.String;
 export type GetInstantBranchMetricsRequestMetricsList = Array<
   GetInstantBranchMetricsRequestMetricsItem | (string & {})
 >;
-export const GetInstantBranchMetricsRequestMetricsList = /*@__PURE__*/ S.Array(
-  GetInstantBranchMetricsRequestMetricsItem,
-) as any as S.Schema<GetInstantBranchMetricsRequestMetricsList>;
+export const GetInstantBranchMetricsRequestMetricsList =
+  CreateRoleRequestInheritedRolesList as any as S.Schema<GetInstantBranchMetricsRequestMetricsList>;
 
 export interface GetInstantBranchMetricsRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
@@ -10070,9 +10033,8 @@ export const GetInstantTabletMetricsRequestMetricsItem = S.String;
 export type GetInstantTabletMetricsRequestMetricsList = Array<
   GetInstantTabletMetricsRequestMetricsItem | (string & {})
 >;
-export const GetInstantTabletMetricsRequestMetricsList = /*@__PURE__*/ S.Array(
-  GetInstantTabletMetricsRequestMetricsItem,
-) as any as S.Schema<GetInstantTabletMetricsRequestMetricsList>;
+export const GetInstantTabletMetricsRequestMetricsList =
+  CreateRoleRequestInheritedRolesList as any as S.Schema<GetInstantTabletMetricsRequestMetricsList>;
 
 export interface GetInstantTabletMetricsRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
@@ -12457,9 +12419,8 @@ export const GetTabletMetricsRequestMetricsItem = S.String;
 export type GetTabletMetricsRequestMetricsList = Array<
   GetTabletMetricsRequestMetricsItem | (string & {})
 >;
-export const GetTabletMetricsRequestMetricsList = /*@__PURE__*/ S.Array(
-  GetTabletMetricsRequestMetricsItem,
-) as any as S.Schema<GetTabletMetricsRequestMetricsList>;
+export const GetTabletMetricsRequestMetricsList =
+  CreateRoleRequestInheritedRolesList as any as S.Schema<GetTabletMetricsRequestMetricsList>;
 
 export type GetTabletMetricsRequestPeriod =
   | "15m"
@@ -13396,28 +13357,8 @@ export interface PaginatedBackupDataItemBackupPolicy {
   /** Whether the policy is a required system backup */
   required: boolean;
 }
-export const PaginatedBackupDataItemBackupPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    display_name: S.String,
-    name: S.String,
-    target: PaginatedBackupDataItemBackupPolicyTarget,
-    retention_value: S.Number,
-    retention_unit: S.String,
-    frequency_value: S.Number,
-    frequency_unit: S.String,
-    schedule_time: S.optional(S.NullOr(S.String)),
-    schedule_day: S.NullOr(S.Number),
-    schedule_week: S.NullOr(S.Number),
-    created_at: S.String,
-    updated_at: S.String,
-    last_ran_at: S.NullOr(S.String),
-    next_run_at: S.NullOr(S.String),
-    required: S.Boolean,
-  }),
-).annotate({
-  identifier: "PaginatedBackupDataItemBackupPolicy",
-}) as any as S.Schema<PaginatedBackupDataItemBackupPolicy>;
+export const PaginatedBackupDataItemBackupPolicy =
+  PaginatedBackupPolicyDataItem as any as S.Schema<PaginatedBackupDataItemBackupPolicy>;
 
 export type PaginatedBackupDataItemSchemaSnapshot = BackupSchemaSnapshot;
 export const PaginatedBackupDataItemSchemaSnapshot = BackupSchemaSnapshot;
@@ -15839,33 +15780,8 @@ export interface PaginatedMysqlClusterResizeRequestDataItem {
   previous_vtgate_display_name: string;
   actor: OrganizationTeamMembershipActor;
 }
-export const PaginatedMysqlClusterResizeRequestDataItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    state: PaginatedMysqlClusterResizeRequestDataItemState,
-    started_at: S.NullOr(S.String),
-    completed_at: S.NullOr(S.String),
-    created_at: S.String,
-    updated_at: S.String,
-    vtgate_size: S.String,
-    previous_vtgate_size: S.String,
-    vtgate_count: S.Number,
-    previous_vtgate_count: S.Number,
-    vtgate_max_count: S.NullOr(S.Number),
-    previous_vtgate_max_count: S.NullOr(S.Number),
-    vtgate_autoscaling: S.Boolean,
-    previous_vtgate_autoscaling: S.Boolean,
-    vtgate_target_cpu_utilization: S.NullOr(S.Number),
-    previous_vtgate_target_cpu_utilization: S.NullOr(S.Number),
-    vtgate_name: S.String,
-    vtgate_display_name: S.String,
-    previous_vtgate_name: S.String,
-    previous_vtgate_display_name: S.String,
-    actor: OrganizationTeamMembershipActor,
-  }),
-).annotate({
-  identifier: "PaginatedMysqlClusterResizeRequestDataItem",
-}) as any as S.Schema<PaginatedMysqlClusterResizeRequestDataItem>;
+export const PaginatedMysqlClusterResizeRequestDataItem =
+  MysqlClusterResizeRequest as any as S.Schema<PaginatedMysqlClusterResizeRequestDataItem>;
 
 export type PaginatedMysqlClusterResizeRequestDataList =
   Array<PaginatedMysqlClusterResizeRequestDataItem>;
@@ -18711,15 +18627,8 @@ export interface PaginatedDatabaseBranchKeyspaceDataItemStorage {
   /** The disk scaling strategy */
   disk_scaling_strategy: PaginatedDatabaseBranchKeyspaceDataItemStorageDiskScalingStrategy;
 }
-export const PaginatedDatabaseBranchKeyspaceDataItemStorage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storage_bytes: S.Number,
-    max_storage_bytes: S.Number,
-    disk_scaling_strategy: PaginatedDatabaseBranchKeyspaceDataItemStorageDiskScalingStrategy,
-  }),
-).annotate({
-  identifier: "PaginatedDatabaseBranchKeyspaceDataItemStorage",
-}) as any as S.Schema<PaginatedDatabaseBranchKeyspaceDataItemStorage>;
+export const PaginatedDatabaseBranchKeyspaceDataItemStorage =
+  DatabaseBranchKeyspaceStorage as any as S.Schema<PaginatedDatabaseBranchKeyspaceDataItemStorage>;
 
 /** The replication durability strategy */
 export type PaginatedDatabaseBranchKeyspaceDataItemReplicationDurabilityConstraintsStrategy =
@@ -18971,32 +18880,8 @@ export interface PaginatedBranchMaintenanceScheduleDataItem {
   /** The pending MySQL version, if any */
   pending_mysql_version?: string | null;
 }
-export const PaginatedBranchMaintenanceScheduleDataItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    created_at: S.String,
-    updated_at: S.String,
-    last_window_datetime: S.String,
-    next_window_datetime: S.String,
-    duration: S.Number,
-    day: S.Number,
-    hour: S.Number,
-    week: S.Number,
-    frequency_value: S.Number,
-    frequency_unit: PaginatedBranchMaintenanceScheduleDataItemFrequencyUnit,
-    enabled: S.Boolean,
-    expires_at: S.NullOr(S.String),
-    deadline_at: S.NullOr(S.String),
-    required: S.Boolean,
-    pending_vitess_version_update: S.optional(S.NullOr(S.Boolean)),
-    pending_vitess_version: S.optional(S.NullOr(S.String)),
-    pending_mysql_version_update: S.optional(S.NullOr(S.Boolean)),
-    pending_mysql_version: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "PaginatedBranchMaintenanceScheduleDataItem",
-}) as any as S.Schema<PaginatedBranchMaintenanceScheduleDataItem>;
+export const PaginatedBranchMaintenanceScheduleDataItem =
+  BranchMaintenanceSchedule as any as S.Schema<PaginatedBranchMaintenanceScheduleDataItem>;
 
 export type PaginatedBranchMaintenanceScheduleDataList =
   Array<PaginatedBranchMaintenanceScheduleDataItem>;
@@ -21418,9 +21303,8 @@ export const PaginatedPostgresRoleDataItemInheritedRolesItem = S.String;
 /** Database roles these credentials inherit */
 export type PaginatedPostgresRoleDataItemInheritedRolesList =
   Array<PaginatedPostgresRoleDataItemInheritedRolesItem>;
-export const PaginatedPostgresRoleDataItemInheritedRolesList = /*@__PURE__*/ S.Array(
-  PaginatedPostgresRoleDataItemInheritedRolesItem,
-) as any as S.Schema<PaginatedPostgresRoleDataItemInheritedRolesList>;
+export const PaginatedPostgresRoleDataItemInheritedRolesList =
+  CreateRoleRequestInheritedRolesList as any as S.Schema<PaginatedPostgresRoleDataItemInheritedRolesList>;
 
 export type PaginatedPostgresRoleDataItemBranch = OrganizationTeamMembershipUserDefaultOrganization;
 export const PaginatedPostgresRoleDataItemBranch =
@@ -21449,14 +21333,8 @@ export interface PaginatedPostgresRoleDataItemQuerySafetySettings {
   /** Require WHERE clause on UPDATE statements */
   require_where_on_update: PaginatedPostgresRoleDataItemQuerySafetySettingsRequireWhereOnUpdate;
 }
-export const PaginatedPostgresRoleDataItemQuerySafetySettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    require_where_on_delete: PaginatedPostgresRoleDataItemQuerySafetySettingsRequireWhereOnDelete,
-    require_where_on_update: PaginatedPostgresRoleDataItemQuerySafetySettingsRequireWhereOnUpdate,
-  }),
-).annotate({
-  identifier: "PaginatedPostgresRoleDataItemQuerySafetySettings",
-}) as any as S.Schema<PaginatedPostgresRoleDataItemQuerySafetySettings>;
+export const PaginatedPostgresRoleDataItemQuerySafetySettings =
+  PostgresRoleQuerySafetySettings as any as S.Schema<PaginatedPostgresRoleDataItemQuerySafetySettings>;
 
 export interface PaginatedPostgresRoleDataItem {
   /** The ID of the role */
@@ -22674,22 +22552,13 @@ export interface PaginatedTrafficBudgetDataItemRulesItemTagsItem {
   /** The source of this tag */
   source: PaginatedTrafficBudgetDataItemRulesItemTagsItemSource;
 }
-export const PaginatedTrafficBudgetDataItemRulesItemTagsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key_id: S.String,
-    key: S.String,
-    value: S.String,
-    source: PaginatedTrafficBudgetDataItemRulesItemTagsItemSource,
-  }),
-).annotate({
-  identifier: "PaginatedTrafficBudgetDataItemRulesItemTagsItem",
-}) as any as S.Schema<PaginatedTrafficBudgetDataItemRulesItemTagsItem>;
+export const PaginatedTrafficBudgetDataItemRulesItemTagsItem =
+  TrafficBudgetRulesItemTagsItem as any as S.Schema<PaginatedTrafficBudgetDataItemRulesItemTagsItem>;
 
 export type PaginatedTrafficBudgetDataItemRulesItemTagsList =
   Array<PaginatedTrafficBudgetDataItemRulesItemTagsItem>;
-export const PaginatedTrafficBudgetDataItemRulesItemTagsList = /*@__PURE__*/ S.Array(
-  PaginatedTrafficBudgetDataItemRulesItemTagsItem,
-) as any as S.Schema<PaginatedTrafficBudgetDataItemRulesItemTagsList>;
+export const PaginatedTrafficBudgetDataItemRulesItemTagsList =
+  TrafficBudgetRulesItemTagsList as any as S.Schema<PaginatedTrafficBudgetDataItemRulesItemTagsList>;
 
 export type PaginatedTrafficBudgetDataItemRulesItemActor = OrganizationTeamMembershipActor;
 export const PaginatedTrafficBudgetDataItemRulesItemActor = OrganizationTeamMembershipActor;
@@ -22901,9 +22770,8 @@ export const PaginatedDatabaseWebhookDataItemEventsItem = S.String;
 /** The events this webhook subscribes to */
 export type PaginatedDatabaseWebhookDataItemEventsList =
   Array<PaginatedDatabaseWebhookDataItemEventsItem>;
-export const PaginatedDatabaseWebhookDataItemEventsList = /*@__PURE__*/ S.Array(
-  PaginatedDatabaseWebhookDataItemEventsItem,
-) as any as S.Schema<PaginatedDatabaseWebhookDataItemEventsList>;
+export const PaginatedDatabaseWebhookDataItemEventsList =
+  CreateRoleRequestInheritedRolesList as any as S.Schema<PaginatedDatabaseWebhookDataItemEventsList>;
 
 export interface PaginatedDatabaseWebhookDataItem {
   /** The ID of the webhook */

@@ -125,11 +125,10 @@ export interface MonitorRemoteResource {
   type: MonitorRemoteResourceType;
   identifier: string;
 }
-export const MonitorRemoteResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ type: MonitorRemoteResourceType, identifier: S.String }),
-).annotate({ identifier: "MonitorRemoteResource" }) as any as S.Schema<MonitorRemoteResource>;
+export const MonitorRemoteResource = MonitorLocalResource as any as S.Schema<MonitorRemoteResource>;
 export type MonitorRemoteResources = MonitorRemoteResource[];
-export const MonitorRemoteResources = /*@__PURE__*/ S.Array(MonitorRemoteResource);
+export const MonitorRemoteResources =
+  MonitorLocalResources as any as S.Schema<MonitorRemoteResources>;
 export type Arn = string;
 export type UuidString = string;
 export type TagKey = string;

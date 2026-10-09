@@ -2570,9 +2570,8 @@ export const ListVpsIpCountryAvailableRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListVpsIpCountryAvailableRequest>;
 
 export type ListVpsIpCountryAvailableResponseBodyList = Array<VpsIpGeolocationEnum>;
-export const ListVpsIpCountryAvailableResponseBodyList = /*@__PURE__*/ S.Array(
-  VpsIpGeolocationEnum,
-) as any as S.Schema<ListVpsIpCountryAvailableResponseBodyList>;
+export const ListVpsIpCountryAvailableResponseBodyList =
+  VpsModelAvailableOptionsList as any as S.Schema<ListVpsIpCountryAvailableResponseBodyList>;
 
 export type ListVpsIpCountryAvailableResponse = ListVpsIpCountryAvailableResponseBodyList;
 export const ListVpsIpCountryAvailableResponse = /*@__PURE__*/ S.suspend(() =>

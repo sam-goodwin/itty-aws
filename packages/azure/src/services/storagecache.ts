@@ -5256,13 +5256,8 @@ export interface AutoImportJobUpdateProperties {
   /** The administrative status of the auto import job. Possible values: 'Enable', 'Disable'. Passing in a value of 'Disable' will disable the current active auto import job. By default it is set to 'Enable'. */
   adminStatus?: AutoImportJobUpdatePropertiesAdminStatus | (string & {});
 }
-export const AutoImportJobUpdateProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    adminStatus: S.optional(AutoImportJobUpdatePropertiesAdminStatus),
-  }),
-).annotate({
-  identifier: "AutoImportJobUpdateProperties",
-}) as any as S.Schema<AutoImportJobUpdateProperties>;
+export const AutoImportJobUpdateProperties =
+  AutoExportJobUpdateProperties as any as S.Schema<AutoImportJobUpdateProperties>;
 
 export interface UpdateAutoImportJobRequest {
   /** The ID of the target subscription. */
@@ -5465,13 +5460,8 @@ export interface ImportJobUpdateProperties {
   /** The administrative status of the import job. Possible values: 'Active', 'Cancel'. Passing in a value of 'Cancel' will cancel the current active import job. */
   adminStatus?: ImportJobAdminStatus | (string & {});
 }
-export const ImportJobUpdateProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    adminStatus: S.optional(ImportJobAdminStatus),
-  }),
-).annotate({
-  identifier: "ImportJobUpdateProperties",
-}) as any as S.Schema<ImportJobUpdateProperties>;
+export const ImportJobUpdateProperties =
+  AutoExportJobUpdateProperties as any as S.Schema<ImportJobUpdateProperties>;
 
 export interface UpdateImportJobRequest {
   /** The ID of the target subscription. */
@@ -5533,13 +5523,8 @@ export interface RebalanceJobUpdateProperties {
   /** The administrative status of the rebalance job. Passing in a value of 'Cancel' will cancel the current active rebalance job. */
   adminStatus?: RebalanceJobAdminStatus | (string & {});
 }
-export const RebalanceJobUpdateProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    adminStatus: S.optional(RebalanceJobAdminStatus),
-  }),
-).annotate({
-  identifier: "RebalanceJobUpdateProperties",
-}) as any as S.Schema<RebalanceJobUpdateProperties>;
+export const RebalanceJobUpdateProperties =
+  AutoExportJobUpdateProperties as any as S.Schema<RebalanceJobUpdateProperties>;
 
 export interface UpdateRebalanceJobRequest {
   /** The ID of the target subscription. */

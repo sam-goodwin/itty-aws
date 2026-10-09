@@ -5135,9 +5135,8 @@ export const UserDeveloperAccountPermissionsItemEnum = S.String;
 export type UserDeveloperAccountPermissionsItemEnumList = Array<
   UserDeveloperAccountPermissionsItemEnum | (string & {})
 >;
-export const UserDeveloperAccountPermissionsItemEnumList = /*@__PURE__*/ S.Array(
-  UserDeveloperAccountPermissionsItemEnum,
-) as any as S.Schema<UserDeveloperAccountPermissionsItemEnumList>;
+export const UserDeveloperAccountPermissionsItemEnumList =
+  GrantAppLevelPermissionsItemEnumList as any as S.Schema<UserDeveloperAccountPermissionsItemEnumList>;
 
 /** A user resource. */
 export interface User {
@@ -6442,9 +6441,8 @@ export const DeviceCompatibilityRequirementsSupportedScreensItemEnum = S.String;
 
 export type DeviceCompatibilityRequirementsSupportedScreensItemEnumList =
   Array<DeviceCompatibilityRequirementsSupportedScreensItemEnum>;
-export const DeviceCompatibilityRequirementsSupportedScreensItemEnumList = /*@__PURE__*/ S.Array(
-  DeviceCompatibilityRequirementsSupportedScreensItemEnum,
-) as any as S.Schema<DeviceCompatibilityRequirementsSupportedScreensItemEnumList>;
+export const DeviceCompatibilityRequirementsSupportedScreensItemEnumList =
+  GrantAppLevelPermissionsItemEnumList as any as S.Schema<DeviceCompatibilityRequirementsSupportedScreensItemEnumList>;
 
 /** Defines a range of SDK versions. A device is considered compatible uf its\ SDK version falls within the min_sdk_version and max_sdk_version range. */
 export interface CatalogSdkVersion {
@@ -8772,11 +8770,7 @@ export interface Abi {
   /** Alias for an abi. */
   alias?: AbiAliasEnum;
 }
-export const Abi = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    alias: S.optional(AbiAliasEnum),
-  }),
-).annotate({ identifier: "Abi" }) as any as S.Schema<Abi>;
+export const Abi = TextureCompressionFormat as any as S.Schema<Abi>;
 
 export type AbiList = Array<Abi>;
 export const AbiList = /*@__PURE__*/ S.Array(Abi) as any as S.Schema<AbiList>;

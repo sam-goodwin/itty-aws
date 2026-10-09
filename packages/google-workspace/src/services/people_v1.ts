@@ -90,9 +90,8 @@ export const ProfileMetadataUserTypesItemEnum = S.String;
 export type ProfileMetadataUserTypesItemEnumList = Array<
   ProfileMetadataUserTypesItemEnum | (string & {})
 >;
-export const ProfileMetadataUserTypesItemEnumList = /*@__PURE__*/ S.Array(
-  ProfileMetadataUserTypesItemEnum,
-) as any as S.Schema<ProfileMetadataUserTypesItemEnumList>;
+export const ProfileMetadataUserTypesItemEnumList =
+  BatchCreateContactsRequestSourcesItemEnumList as any as S.Schema<ProfileMetadataUserTypesItemEnumList>;
 
 export type ProfileMetadataObjectTypeEnum = "OBJECT_TYPE_UNSPECIFIED" | "PERSON" | "PAGE";
 export const ProfileMetadataObjectTypeEnum = S.String;
@@ -1518,9 +1517,8 @@ export const BatchUpdateContactsRequestSourcesItemEnum = S.String;
 export type BatchUpdateContactsRequestSourcesItemEnumList = Array<
   BatchUpdateContactsRequestSourcesItemEnum | (string & {})
 >;
-export const BatchUpdateContactsRequestSourcesItemEnumList = /*@__PURE__*/ S.Array(
-  BatchUpdateContactsRequestSourcesItemEnum,
-) as any as S.Schema<BatchUpdateContactsRequestSourcesItemEnumList>;
+export const BatchUpdateContactsRequestSourcesItemEnumList =
+  BatchCreateContactsRequestSourcesItemEnumList as any as S.Schema<BatchUpdateContactsRequestSourcesItemEnumList>;
 
 /** A request to update a batch of contacts. */
 export interface BatchUpdateContactsRequest {
@@ -1592,9 +1590,8 @@ export const CopyOtherContactToMyContactsGroupRequestSourcesItemEnum = S.String;
 export type CopyOtherContactToMyContactsGroupRequestSourcesItemEnumList = Array<
   CopyOtherContactToMyContactsGroupRequestSourcesItemEnum | (string & {})
 >;
-export const CopyOtherContactToMyContactsGroupRequestSourcesItemEnumList = /*@__PURE__*/ S.Array(
-  CopyOtherContactToMyContactsGroupRequestSourcesItemEnum,
-) as any as S.Schema<CopyOtherContactToMyContactsGroupRequestSourcesItemEnumList>;
+export const CopyOtherContactToMyContactsGroupRequestSourcesItemEnumList =
+  BatchCreateContactsRequestSourcesItemEnumList as any as S.Schema<CopyOtherContactToMyContactsGroupRequestSourcesItemEnumList>;
 
 /** A request to copy an "Other contact" to my contacts group. */
 export interface CopyOtherContactToMyContactsGroupRequest {
@@ -1677,9 +1674,8 @@ export const CreateContactPeopleSourcesEnum = S.String;
 export type CreateContactPeopleSourcesEnumList = Array<
   CreateContactPeopleSourcesEnum | (string & {})
 >;
-export const CreateContactPeopleSourcesEnumList = /*@__PURE__*/ S.Array(
-  CreateContactPeopleSourcesEnum,
-) as any as S.Schema<CreateContactPeopleSourcesEnumList>;
+export const CreateContactPeopleSourcesEnumList =
+  BatchCreateContactsRequestSourcesItemEnumList as any as S.Schema<CreateContactPeopleSourcesEnumList>;
 
 export interface CreateContactPeopleRequest {
   /** Required. A field mask to restrict which fields on each person are returned. Multiple fields can be specified by separating them with commas. Defaults to all fields if not set. Valid values are: * addresses * ageRanges * biographies * birthdays * calendarUrls * clientData * coverPhotos * emailAddresses * events * externalIds * genders * imClients * interests * locales * locations * memberships * metadata * miscKeywords * names * nicknames * occupations * organizations * phoneNumbers * photos * relations * sipAddresses * skills * urls * userDefined */
@@ -1755,9 +1751,8 @@ export const DeleteContactPhotoPeopleSourcesEnum = S.String;
 export type DeleteContactPhotoPeopleSourcesEnumList = Array<
   DeleteContactPhotoPeopleSourcesEnum | (string & {})
 >;
-export const DeleteContactPhotoPeopleSourcesEnumList = /*@__PURE__*/ S.Array(
-  DeleteContactPhotoPeopleSourcesEnum,
-) as any as S.Schema<DeleteContactPhotoPeopleSourcesEnumList>;
+export const DeleteContactPhotoPeopleSourcesEnumList =
+  BatchCreateContactsRequestSourcesItemEnumList as any as S.Schema<DeleteContactPhotoPeopleSourcesEnumList>;
 
 export interface DeleteContactPhotoPeopleRequest {
   /** Required. The resource name of the contact whose photo will be deleted. */
@@ -1805,9 +1800,8 @@ export type GetBatchGetPeopleSourcesEnum =
 export const GetBatchGetPeopleSourcesEnum = S.String;
 
 export type GetBatchGetPeopleSourcesEnumList = Array<GetBatchGetPeopleSourcesEnum | (string & {})>;
-export const GetBatchGetPeopleSourcesEnumList = /*@__PURE__*/ S.Array(
-  GetBatchGetPeopleSourcesEnum,
-) as any as S.Schema<GetBatchGetPeopleSourcesEnumList>;
+export const GetBatchGetPeopleSourcesEnumList =
+  BatchCreateContactsRequestSourcesItemEnumList as any as S.Schema<GetBatchGetPeopleSourcesEnumList>;
 
 export interface GetBatchGetPeopleRequest {
   /** Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT and READ_SOURCE_TYPE_PROFILE if not set. */
@@ -1868,9 +1862,8 @@ export type GetPeopleSourcesEnum =
 export const GetPeopleSourcesEnum = S.String;
 
 export type GetPeopleSourcesEnumList = Array<GetPeopleSourcesEnum | (string & {})>;
-export const GetPeopleSourcesEnumList = /*@__PURE__*/ S.Array(
-  GetPeopleSourcesEnum,
-) as any as S.Schema<GetPeopleSourcesEnumList>;
+export const GetPeopleSourcesEnumList =
+  BatchCreateContactsRequestSourcesItemEnumList as any as S.Schema<GetPeopleSourcesEnumList>;
 
 export interface GetPeopleRequest {
   /** Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_PROFILE and READ_SOURCE_TYPE_CONTACT if not set. */
@@ -1950,9 +1943,8 @@ export const ListDirectoryPeoplePeopleSourcesEnum = S.String;
 export type ListDirectoryPeoplePeopleSourcesEnumList = Array<
   ListDirectoryPeoplePeopleSourcesEnum | (string & {})
 >;
-export const ListDirectoryPeoplePeopleSourcesEnumList = /*@__PURE__*/ S.Array(
-  ListDirectoryPeoplePeopleSourcesEnum,
-) as any as S.Schema<ListDirectoryPeoplePeopleSourcesEnumList>;
+export const ListDirectoryPeoplePeopleSourcesEnumList =
+  BatchCreateContactsRequestSourcesItemEnumList as any as S.Schema<ListDirectoryPeoplePeopleSourcesEnumList>;
 
 export type ListDirectoryPeoplePeopleMergeSourcesEnum =
   | "DIRECTORY_MERGE_SOURCE_TYPE_UNSPECIFIED"
@@ -1962,9 +1954,8 @@ export const ListDirectoryPeoplePeopleMergeSourcesEnum = S.String;
 export type ListDirectoryPeoplePeopleMergeSourcesEnumList = Array<
   ListDirectoryPeoplePeopleMergeSourcesEnum | (string & {})
 >;
-export const ListDirectoryPeoplePeopleMergeSourcesEnumList = /*@__PURE__*/ S.Array(
-  ListDirectoryPeoplePeopleMergeSourcesEnum,
-) as any as S.Schema<ListDirectoryPeoplePeopleMergeSourcesEnumList>;
+export const ListDirectoryPeoplePeopleMergeSourcesEnumList =
+  BatchCreateContactsRequestSourcesItemEnumList as any as S.Schema<ListDirectoryPeoplePeopleMergeSourcesEnumList>;
 
 export interface ListDirectoryPeoplePeopleRequest {
   /** Required. Directory sources to return. */
@@ -2033,9 +2024,8 @@ export type ListOtherContactsSourcesEnum =
 export const ListOtherContactsSourcesEnum = S.String;
 
 export type ListOtherContactsSourcesEnumList = Array<ListOtherContactsSourcesEnum | (string & {})>;
-export const ListOtherContactsSourcesEnumList = /*@__PURE__*/ S.Array(
-  ListOtherContactsSourcesEnum,
-) as any as S.Schema<ListOtherContactsSourcesEnumList>;
+export const ListOtherContactsSourcesEnumList =
+  BatchCreateContactsRequestSourcesItemEnumList as any as S.Schema<ListOtherContactsSourcesEnumList>;
 
 export interface ListOtherContactsRequest {
   /** Optional. A sync token, received from a previous response `next_sync_token` Provide this to retrieve only the resources changed since the last request. When syncing, all other parameters provided to `otherContacts.list` must match the first call that provided the sync token. More details about sync behavior at `otherContacts.list`. */
@@ -2104,9 +2094,8 @@ export const ListPeopleConnectionsSourcesEnum = S.String;
 export type ListPeopleConnectionsSourcesEnumList = Array<
   ListPeopleConnectionsSourcesEnum | (string & {})
 >;
-export const ListPeopleConnectionsSourcesEnumList = /*@__PURE__*/ S.Array(
-  ListPeopleConnectionsSourcesEnum,
-) as any as S.Schema<ListPeopleConnectionsSourcesEnumList>;
+export const ListPeopleConnectionsSourcesEnumList =
+  BatchCreateContactsRequestSourcesItemEnumList as any as S.Schema<ListPeopleConnectionsSourcesEnumList>;
 
 export interface ListPeopleConnectionsRequest {
   /** Optional. The order in which the connections should be sorted. Defaults to `LAST_MODIFIED_ASCENDING`. */
@@ -2237,9 +2226,8 @@ export const SearchContactsPeopleSourcesEnum = S.String;
 export type SearchContactsPeopleSourcesEnumList = Array<
   SearchContactsPeopleSourcesEnum | (string & {})
 >;
-export const SearchContactsPeopleSourcesEnumList = /*@__PURE__*/ S.Array(
-  SearchContactsPeopleSourcesEnum,
-) as any as S.Schema<SearchContactsPeopleSourcesEnumList>;
+export const SearchContactsPeopleSourcesEnumList =
+  BatchCreateContactsRequestSourcesItemEnumList as any as S.Schema<SearchContactsPeopleSourcesEnumList>;
 
 export interface SearchContactsPeopleRequest {
   /** Required. A field mask to restrict which fields on each person are returned. Multiple fields can be specified by separating them with commas. Valid values are: * addresses * ageRanges * biographies * birthdays * calendarUrls * clientData * coverPhotos * emailAddresses * events * externalIds * genders * imClients * interests * locales * locations * memberships * metadata * miscKeywords * names * nicknames * occupations * organizations * phoneNumbers * photos * relations * sipAddresses * skills * urls * userDefined */
@@ -2304,9 +2292,8 @@ export const SearchDirectoryPeoplePeopleSourcesEnum = S.String;
 export type SearchDirectoryPeoplePeopleSourcesEnumList = Array<
   SearchDirectoryPeoplePeopleSourcesEnum | (string & {})
 >;
-export const SearchDirectoryPeoplePeopleSourcesEnumList = /*@__PURE__*/ S.Array(
-  SearchDirectoryPeoplePeopleSourcesEnum,
-) as any as S.Schema<SearchDirectoryPeoplePeopleSourcesEnumList>;
+export const SearchDirectoryPeoplePeopleSourcesEnumList =
+  BatchCreateContactsRequestSourcesItemEnumList as any as S.Schema<SearchDirectoryPeoplePeopleSourcesEnumList>;
 
 export type SearchDirectoryPeoplePeopleMergeSourcesEnum =
   | "DIRECTORY_MERGE_SOURCE_TYPE_UNSPECIFIED"
@@ -2316,9 +2303,8 @@ export const SearchDirectoryPeoplePeopleMergeSourcesEnum = S.String;
 export type SearchDirectoryPeoplePeopleMergeSourcesEnumList = Array<
   SearchDirectoryPeoplePeopleMergeSourcesEnum | (string & {})
 >;
-export const SearchDirectoryPeoplePeopleMergeSourcesEnumList = /*@__PURE__*/ S.Array(
-  SearchDirectoryPeoplePeopleMergeSourcesEnum,
-) as any as S.Schema<SearchDirectoryPeoplePeopleMergeSourcesEnumList>;
+export const SearchDirectoryPeoplePeopleMergeSourcesEnumList =
+  BatchCreateContactsRequestSourcesItemEnumList as any as S.Schema<SearchDirectoryPeoplePeopleMergeSourcesEnumList>;
 
 export interface SearchDirectoryPeoplePeopleRequest {
   /** Optional. A page token, received from a previous response `next_page_token`. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `SearchDirectoryPeople` must match the first call that provided the page token. */
@@ -2443,9 +2429,8 @@ export const UpdateContactPeopleSourcesEnum = S.String;
 export type UpdateContactPeopleSourcesEnumList = Array<
   UpdateContactPeopleSourcesEnum | (string & {})
 >;
-export const UpdateContactPeopleSourcesEnumList = /*@__PURE__*/ S.Array(
-  UpdateContactPeopleSourcesEnum,
-) as any as S.Schema<UpdateContactPeopleSourcesEnumList>;
+export const UpdateContactPeopleSourcesEnumList =
+  BatchCreateContactsRequestSourcesItemEnumList as any as S.Schema<UpdateContactPeopleSourcesEnumList>;
 
 export interface UpdateContactPeopleRequest {
   /** Optional. A field mask to restrict which fields on each person are returned. Multiple fields can be specified by separating them with commas. Defaults to all fields if not set. Valid values are: * addresses * ageRanges * biographies * birthdays * calendarUrls * clientData * coverPhotos * emailAddresses * events * externalIds * genders * imClients * interests * locales * locations * memberships * metadata * miscKeywords * names * nicknames * occupations * organizations * phoneNumbers * photos * relations * sipAddresses * skills * urls * userDefined */
@@ -2488,9 +2473,8 @@ export const UpdateContactPhotoRequestSourcesItemEnum = S.String;
 export type UpdateContactPhotoRequestSourcesItemEnumList = Array<
   UpdateContactPhotoRequestSourcesItemEnum | (string & {})
 >;
-export const UpdateContactPhotoRequestSourcesItemEnumList = /*@__PURE__*/ S.Array(
-  UpdateContactPhotoRequestSourcesItemEnum,
-) as any as S.Schema<UpdateContactPhotoRequestSourcesItemEnumList>;
+export const UpdateContactPhotoRequestSourcesItemEnumList =
+  BatchCreateContactsRequestSourcesItemEnumList as any as S.Schema<UpdateContactPhotoRequestSourcesItemEnumList>;
 
 /** A request to update an existing contact's photo. All requests must have a valid photo format: JPEG or PNG. */
 export interface UpdateContactPhotoRequest {

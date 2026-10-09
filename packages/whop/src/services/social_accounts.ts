@@ -553,9 +553,8 @@ export type SocialAccountPostRestrictionsItem =
 export const SocialAccountPostRestrictionsItem = S.String;
 
 export type SocialAccountPostRestrictionsList = Array<SocialAccountPostRestrictionsItem>;
-export const SocialAccountPostRestrictionsList = /*@__PURE__*/ S.Array(
-  SocialAccountPostRestrictionsItem,
-) as any as S.Schema<SocialAccountPostRestrictionsList>;
+export const SocialAccountPostRestrictionsList =
+  ConnectSocialAccountRequestScopesList as any as S.Schema<SocialAccountPostRestrictionsList>;
 
 export interface SocialAccountPost {
   /** The post's call-to-action button, for example shop_now (Facebook only; null for Instagram and TikTok). */
@@ -639,9 +638,8 @@ export const ListSocialAccountsRequestScopesItem = S.String;
 export type ListSocialAccountsRequestScopesList = Array<
   ListSocialAccountsRequestScopesItem | (string & {})
 >;
-export const ListSocialAccountsRequestScopesList = /*@__PURE__*/ S.Array(
-  ListSocialAccountsRequestScopesItem,
-) as any as S.Schema<ListSocialAccountsRequestScopesList>;
+export const ListSocialAccountsRequestScopesList =
+  ConnectSocialAccountRequestScopesList as any as S.Schema<ListSocialAccountsRequestScopesList>;
 
 export type ListSocialAccountsRequestOrder = "display_order" | "created_at";
 export const ListSocialAccountsRequestOrder = S.String;

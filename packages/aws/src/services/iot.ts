@@ -1894,11 +1894,8 @@ export const CACertificateUpdateAction = S.String;
 export interface UpdateCACertificateParams {
   action: CACertificateUpdateAction;
 }
-export const UpdateCACertificateParams = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ action: CACertificateUpdateAction }),
-).annotate({
-  identifier: "UpdateCACertificateParams",
-}) as any as S.Schema<UpdateCACertificateParams>;
+export const UpdateCACertificateParams =
+  UpdateDeviceCertificateParams as any as S.Schema<UpdateCACertificateParams>;
 export type ThingGroupNames = string[];
 export const ThingGroupNames = JobTargets as any as S.Schema<ThingGroupNames>;
 export interface AddThingsToThingGroupParams {
@@ -2072,16 +2069,10 @@ export interface AwsJobAbortCriteria {
   thresholdPercentage: number;
   minNumberOfExecutedThings: number;
 }
-export const AwsJobAbortCriteria = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    failureType: AwsJobAbortCriteriaFailureType,
-    action: AwsJobAbortCriteriaAbortAction,
-    thresholdPercentage: S.Number,
-    minNumberOfExecutedThings: S.Number,
-  }),
-).annotate({ identifier: "AwsJobAbortCriteria" }) as any as S.Schema<AwsJobAbortCriteria>;
+export const AwsJobAbortCriteria = AbortCriteria as any as S.Schema<AwsJobAbortCriteria>;
 export type AwsJobAbortCriteriaList = AwsJobAbortCriteria[];
-export const AwsJobAbortCriteriaList = /*@__PURE__*/ S.Array(AwsJobAbortCriteria);
+export const AwsJobAbortCriteriaList =
+  AbortCriteriaList as any as S.Schema<AwsJobAbortCriteriaList>;
 export interface AwsJobAbortConfig {
   abortCriteriaList: AwsJobAbortCriteria[];
 }
@@ -7193,7 +7184,7 @@ export type FleetIndexingApi = "GET_THING_CONNECTIVITY_DATA" | (string & {});
 export const FleetIndexingApi = S.String;
 
 export type FleetIndexingApiList = FleetIndexingApi[];
-export const FleetIndexingApiList = /*@__PURE__*/ S.Array(FleetIndexingApi);
+export const FleetIndexingApiList = Protocols as any as S.Schema<FleetIndexingApiList>;
 export interface ConnectivityFilter {
   includeSocketInformation?: FleetIndexingApi[];
 }

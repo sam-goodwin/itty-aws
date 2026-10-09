@@ -1724,9 +1724,8 @@ export const ClientDefaultOrganizationFlowsEnum = S.String;
 export type ClientDefaultOrganizationFlowsList = Array<
   ClientDefaultOrganizationFlowsEnum | (string & {})
 >;
-export const ClientDefaultOrganizationFlowsList = /*@__PURE__*/ S.Array(
-  ClientDefaultOrganizationFlowsEnum,
-) as any as S.Schema<ClientDefaultOrganizationFlowsList>;
+export const ClientDefaultOrganizationFlowsList =
+  ClientOIDCBackchannelLogoutInitiatorsSelectedInitiatorsList as any as S.Schema<ClientDefaultOrganizationFlowsList>;
 
 /** Defines the default Organization ID and flows */
 export interface ClientDefaultOrganization {
@@ -1763,9 +1762,8 @@ export const ClientOrganizationDiscoveryEnum = S.String;
 export type CreateClientRequestOrganizationDiscoveryMethodsList = Array<
   ClientOrganizationDiscoveryEnum | (string & {})
 >;
-export const CreateClientRequestOrganizationDiscoveryMethodsList = /*@__PURE__*/ S.Array(
-  ClientOrganizationDiscoveryEnum,
-) as any as S.Schema<CreateClientRequestOrganizationDiscoveryMethodsList>;
+export const CreateClientRequestOrganizationDiscoveryMethodsList =
+  ClientOIDCBackchannelLogoutInitiatorsSelectedInitiatorsList as any as S.Schema<CreateClientRequestOrganizationDiscoveryMethodsList>;
 
 /** Credential type. Supported types: public_key. */
 export type PublicKeyCredentialTypeEnum = "public_key";
@@ -2003,9 +2001,8 @@ export const ClientTokenExchangeTypeEnum = S.String;
 export type ClientTokenExchangeConfigurationAllowAnyProfileOfTypeList = Array<
   ClientTokenExchangeTypeEnum | (string & {})
 >;
-export const ClientTokenExchangeConfigurationAllowAnyProfileOfTypeList = /*@__PURE__*/ S.Array(
-  ClientTokenExchangeTypeEnum,
-) as any as S.Schema<ClientTokenExchangeConfigurationAllowAnyProfileOfTypeList>;
+export const ClientTokenExchangeConfigurationAllowAnyProfileOfTypeList =
+  ClientOIDCBackchannelLogoutInitiatorsSelectedInitiatorsList as any as S.Schema<ClientTokenExchangeConfigurationAllowAnyProfileOfTypeList>;
 
 /** Configuration for token exchange. */
 export interface ClientTokenExchangeConfiguration {
@@ -2182,9 +2179,8 @@ export const ClientMyOrganizationConfigurationAllowedStrategiesEnum = S.String;
 export type ClientMyOrganizationPostConfigurationAllowedStrategiesList = Array<
   ClientMyOrganizationConfigurationAllowedStrategiesEnum | (string & {})
 >;
-export const ClientMyOrganizationPostConfigurationAllowedStrategiesList = /*@__PURE__*/ S.Array(
-  ClientMyOrganizationConfigurationAllowedStrategiesEnum,
-) as any as S.Schema<ClientMyOrganizationPostConfigurationAllowedStrategiesList>;
+export const ClientMyOrganizationPostConfigurationAllowedStrategiesList =
+  ClientOIDCBackchannelLogoutInitiatorsSelectedInitiatorsList as any as S.Schema<ClientMyOrganizationPostConfigurationAllowedStrategiesList>;
 
 /** The default third-party client access value for the My Organization Configuration. */
 export type ClientMyOrganizationConfigurationThirdPartyClientAccessDefaultValueEnum = "block";
@@ -2201,9 +2197,7 @@ export type ClientMyOrganizationThirdPartyClientAccessConfigurationAllowedValues
   ClientMyOrganizationConfigurationThirdPartyClientAccessAllowedValuesEnum | (string & {})
 >;
 export const ClientMyOrganizationThirdPartyClientAccessConfigurationAllowedValuesList =
-  /*@__PURE__*/ S.Array(
-    ClientMyOrganizationConfigurationThirdPartyClientAccessAllowedValuesEnum,
-  ) as any as S.Schema<ClientMyOrganizationThirdPartyClientAccessConfigurationAllowedValuesList>;
+  ClientSessionTransferConfigurationAllowedAuthenticationMethodsList as any as S.Schema<ClientMyOrganizationThirdPartyClientAccessConfigurationAllowedValuesList>;
 
 /** The third-party client access configuration for the My Organization Configuration. */
 export interface ClientMyOrganizationThirdPartyClientAccessConfiguration {
@@ -2265,9 +2259,8 @@ export const AsyncApprovalNotificationsChannelsEnum = S.String;
 export type ClientAsyncApprovalNotificationsChannelsAPIPostConfiguration = Array<
   AsyncApprovalNotificationsChannelsEnum | (string & {})
 >;
-export const ClientAsyncApprovalNotificationsChannelsAPIPostConfiguration = /*@__PURE__*/ S.Array(
-  AsyncApprovalNotificationsChannelsEnum,
-) as any as S.Schema<ClientAsyncApprovalNotificationsChannelsAPIPostConfiguration>;
+export const ClientAsyncApprovalNotificationsChannelsAPIPostConfiguration =
+  ClientOIDCBackchannelLogoutInitiatorsSelectedInitiatorsList as any as S.Schema<ClientAsyncApprovalNotificationsChannelsAPIPostConfiguration>;
 
 export type ClientOidcSupportAllowedScopesEnum = "profile" | "email" | "address" | "phone";
 export const ClientOidcSupportAllowedScopesEnum = S.String;
@@ -2275,9 +2268,8 @@ export const ClientOidcSupportAllowedScopesEnum = S.String;
 export type ClientOidcSupportPostAllowedScopesList = Array<
   ClientOidcSupportAllowedScopesEnum | (string & {})
 >;
-export const ClientOidcSupportPostAllowedScopesList = /*@__PURE__*/ S.Array(
-  ClientOidcSupportAllowedScopesEnum,
-) as any as S.Schema<ClientOidcSupportPostAllowedScopesList>;
+export const ClientOidcSupportPostAllowedScopesList =
+  ClientOIDCBackchannelLogoutInitiatorsSelectedInitiatorsList as any as S.Schema<ClientOidcSupportPostAllowedScopesList>;
 
 /** OIDC support configuration for a client. Controls whether OIDC flows are allowed and which scopes the client may request. */
 export interface ClientOidcSupportPost {
@@ -3272,9 +3264,8 @@ export const ConnectionIdentifierPrecedenceEnum = S.String;
 export type ConnectionPropertiesOptionsPrecedenceList = Array<
   ConnectionIdentifierPrecedenceEnum | (string & {})
 >;
-export const ConnectionPropertiesOptionsPrecedenceList = /*@__PURE__*/ S.Array(
-  ConnectionIdentifierPrecedenceEnum,
-) as any as S.Schema<ConnectionPropertiesOptionsPrecedenceList>;
+export const ConnectionPropertiesOptionsPrecedenceList =
+  ClientOIDCBackchannelLogoutInitiatorsSelectedInitiatorsList as any as S.Schema<ConnectionPropertiesOptionsPrecedenceList>;
 
 /** Default authentication method for email identifier */
 export type DefaultMethodEmailIdentifierEnum = "password" | "email_otp";
@@ -3347,12 +3338,8 @@ export interface PhoneAttributeIdentifier {
   active?: boolean;
   default_method?: DefaultMethodPhoneNumberIdentifierEnum | (string & {});
 }
-export const PhoneAttributeIdentifier = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    active: S.optional(S.Boolean),
-    default_method: S.optional(DefaultMethodPhoneNumberIdentifierEnum),
-  }),
-).annotate({ identifier: "PhoneAttributeIdentifier" }) as any as S.Schema<PhoneAttributeIdentifier>;
+export const PhoneAttributeIdentifier =
+  EmailAttributeIdentifier as any as S.Schema<PhoneAttributeIdentifier>;
 
 /** Configuration for the phone number attribute for users. */
 export interface PhoneAttribute {
@@ -3719,9 +3706,8 @@ export const PasswordCharacterTypeEnum = S.String;
 export type ConnectionPasswordOptionsComplexityCharacterTypesList = Array<
   PasswordCharacterTypeEnum | (string & {})
 >;
-export const ConnectionPasswordOptionsComplexityCharacterTypesList = /*@__PURE__*/ S.Array(
-  PasswordCharacterTypeEnum,
-) as any as S.Schema<ConnectionPasswordOptionsComplexityCharacterTypesList>;
+export const ConnectionPasswordOptionsComplexityCharacterTypesList =
+  ClientOIDCBackchannelLogoutInitiatorsSelectedInitiatorsList as any as S.Schema<ConnectionPasswordOptionsComplexityCharacterTypesList>;
 
 /** When enabled, passwords must contain at least 3 out of 4 character types. Can only be enabled when all 4 character types are specified */
 export type PasswordCharacterTypeRulePolicyEnum = "all" | "three_of_four";
@@ -3884,9 +3870,8 @@ export const ConnectionIdTokenSignedResponseAlgEnum = S.String;
 export type ConnectionIdTokenSignedResponseAlgs = Array<
   ConnectionIdTokenSignedResponseAlgEnum | (string & {})
 >;
-export const ConnectionIdTokenSignedResponseAlgs = /*@__PURE__*/ S.Array(
-  ConnectionIdTokenSignedResponseAlgEnum,
-) as any as S.Schema<ConnectionIdTokenSignedResponseAlgs>;
+export const ConnectionIdTokenSignedResponseAlgs =
+  ClientOIDCBackchannelLogoutInitiatorsSelectedInitiatorsList as any as S.Schema<ConnectionIdTokenSignedResponseAlgs>;
 
 /** Algorithm used for DPoP proof JWT signing. */
 export type ConnectionDpopSigningAlgEnum = "ES256" | "ES384" | "ES512" | "Ed25519";
@@ -4497,9 +4482,8 @@ export const EnabledFeaturesEnum = S.String;
 
 /** Enabled features for the connection profile. */
 export type ConnectionProfileEnabledFeatures = Array<EnabledFeaturesEnum | (string & {})>;
-export const ConnectionProfileEnabledFeatures = /*@__PURE__*/ S.Array(
-  EnabledFeaturesEnum,
-) as any as S.Schema<ConnectionProfileEnabledFeatures>;
+export const ConnectionProfileEnabledFeatures =
+  ClientOIDCBackchannelLogoutInitiatorsSelectedInitiatorsList as any as S.Schema<ConnectionProfileEnabledFeatures>;
 
 /** Enabled features for a connections profile strategy override. */
 export type ConnectionProfileStrategyOverridesEnabledFeatures = Array<
@@ -4521,9 +4505,8 @@ export const ConnectionProfileProvisioningScimTokenScopeEnum = S.String;
 export type ConnectionProfileProvisioningScimTokenScopes = Array<
   ConnectionProfileProvisioningScimTokenScopeEnum | (string & {})
 >;
-export const ConnectionProfileProvisioningScimTokenScopes = /*@__PURE__*/ S.Array(
-  ConnectionProfileProvisioningScimTokenScopeEnum,
-) as any as S.Schema<ConnectionProfileProvisioningScimTokenScopes>;
+export const ConnectionProfileProvisioningScimTokenScopes =
+  ClientOIDCBackchannelLogoutInitiatorsSelectedInitiatorsList as any as S.Schema<ConnectionProfileProvisioningScimTokenScopes>;
 
 /** SCIM token settings for connections created from this profile. */
 export interface ConnectionProfileProvisioningScimTokens {
@@ -4626,9 +4609,7 @@ export type ConnectionProfileCrossAppAccessResourceAppStatusAllowedValuesEnum = 
   ConnectionProfileCrossAppAccessResourceAppStatusValueEnum | (string & {})
 >;
 export const ConnectionProfileCrossAppAccessResourceAppStatusAllowedValuesEnum =
-  /*@__PURE__*/ S.Array(
-    ConnectionProfileCrossAppAccessResourceAppStatusValueEnum,
-  ) as any as S.Schema<ConnectionProfileCrossAppAccessResourceAppStatusAllowedValuesEnum>;
+  ClientSessionTransferConfigurationAllowedAuthenticationMethodsList as any as S.Schema<ConnectionProfileCrossAppAccessResourceAppStatusAllowedValuesEnum>;
 
 /** The Cross App Access resource app status configuration. */
 export interface ConnectionProfileCrossAppAccessResourceAppStatus {
@@ -6407,19 +6388,8 @@ export interface FlowActionClearbitFindPerson {
   mask_output?: boolean;
   params: FlowActionActivecampaignListContactsParams;
 }
-export const FlowActionClearbitFindPerson = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    alias: S.optional(S.String),
-    type: FlowActionClearbitFindPersonType,
-    action: FlowActionClearbitFindPersonAction,
-    allow_failure: S.optional(S.Boolean),
-    mask_output: S.optional(S.Boolean),
-    params: FlowActionActivecampaignListContactsParams,
-  }),
-).annotate({
-  identifier: "FlowActionClearbitFindPerson",
-}) as any as S.Schema<FlowActionClearbitFindPerson>;
+export const FlowActionClearbitFindPerson =
+  FlowActionActivecampaignListContacts as any as S.Schema<FlowActionClearbitFindPerson>;
 
 export type FlowActionClearbitFindCompanyType = "CLEARBIT";
 export const FlowActionClearbitFindCompanyType = S.String;
@@ -7095,19 +7065,8 @@ export interface FlowActionHubspotGetContact {
   mask_output?: boolean;
   params: FlowActionActivecampaignListContactsParams;
 }
-export const FlowActionHubspotGetContact = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    alias: S.optional(S.String),
-    type: FlowActionHubspotGetContactType,
-    action: FlowActionHubspotGetContactAction,
-    allow_failure: S.optional(S.Boolean),
-    mask_output: S.optional(S.Boolean),
-    params: FlowActionActivecampaignListContactsParams,
-  }),
-).annotate({
-  identifier: "FlowActionHubspotGetContact",
-}) as any as S.Schema<FlowActionHubspotGetContact>;
+export const FlowActionHubspotGetContact =
+  FlowActionActivecampaignListContacts as any as S.Schema<FlowActionHubspotGetContact>;
 
 export type FlowActionHubspotUpsertContactType = "HUBSPOT";
 export const FlowActionHubspotUpsertContactType = S.String;
@@ -8458,19 +8417,8 @@ export interface FlowActionStripeFindCustomers {
   mask_output?: boolean;
   params: FlowActionActivecampaignListContactsParams;
 }
-export const FlowActionStripeFindCustomers = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    alias: S.optional(S.String),
-    type: FlowActionStripeFindCustomersType,
-    action: FlowActionStripeFindCustomersAction,
-    allow_failure: S.optional(S.Boolean),
-    mask_output: S.optional(S.Boolean),
-    params: FlowActionActivecampaignListContactsParams,
-  }),
-).annotate({
-  identifier: "FlowActionStripeFindCustomers",
-}) as any as S.Schema<FlowActionStripeFindCustomers>;
+export const FlowActionStripeFindCustomers =
+  FlowActionActivecampaignListContacts as any as S.Schema<FlowActionStripeFindCustomers>;
 
 export type FlowActionStripeGetCustomerType = "STRIPE";
 export const FlowActionStripeGetCustomerType = S.String;
@@ -9088,14 +9036,8 @@ export interface CreateFlowsVaultConnectionAirtableUninitialized {
   name: string;
   app_id: FlowsVaultConnectionAppIdAirtableEnum;
 }
-export const CreateFlowsVaultConnectionAirtableUninitialized = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    app_id: FlowsVaultConnectionAppIdAirtableEnum,
-  }),
-).annotate({
-  identifier: "CreateFlowsVaultConnectionAirtableUninitialized",
-}) as any as S.Schema<CreateFlowsVaultConnectionAirtableUninitialized>;
+export const CreateFlowsVaultConnectionAirtableUninitialized =
+  CreateFlowsVaultConnectionActivecampaignUninitialized as any as S.Schema<CreateFlowsVaultConnectionAirtableUninitialized>;
 
 export type CreateFlowsVaultConnectionAirtable =
   | CreateFlowsVaultConnectionAirtableApiKey
@@ -9150,14 +9092,8 @@ export interface CreateFlowsVaultConnectionAuth0Uninitialized {
   name: string;
   app_id: FlowsVaultConnectionAppIdAuth0Enum;
 }
-export const CreateFlowsVaultConnectionAuth0Uninitialized = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    app_id: FlowsVaultConnectionAppIdAuth0Enum,
-  }),
-).annotate({
-  identifier: "CreateFlowsVaultConnectionAuth0Uninitialized",
-}) as any as S.Schema<CreateFlowsVaultConnectionAuth0Uninitialized>;
+export const CreateFlowsVaultConnectionAuth0Uninitialized =
+  CreateFlowsVaultConnectionActivecampaignUninitialized as any as S.Schema<CreateFlowsVaultConnectionAuth0Uninitialized>;
 
 export type CreateFlowsVaultConnectionAuth0 =
   | CreateFlowsVaultConnectionAuth0OauthApp
@@ -9210,14 +9146,8 @@ export interface CreateFlowsVaultConnectionBigqueryUninitialized {
   name: string;
   app_id: FlowsVaultConnectionAppIdBigqueryEnum;
 }
-export const CreateFlowsVaultConnectionBigqueryUninitialized = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    app_id: FlowsVaultConnectionAppIdBigqueryEnum,
-  }),
-).annotate({
-  identifier: "CreateFlowsVaultConnectionBigqueryUninitialized",
-}) as any as S.Schema<CreateFlowsVaultConnectionBigqueryUninitialized>;
+export const CreateFlowsVaultConnectionBigqueryUninitialized =
+  CreateFlowsVaultConnectionActivecampaignUninitialized as any as S.Schema<CreateFlowsVaultConnectionBigqueryUninitialized>;
 
 export type CreateFlowsVaultConnectionBigquery =
   | CreateFlowsVaultConnectionBigqueryJwt
@@ -9263,14 +9193,8 @@ export interface CreateFlowsVaultConnectionClearbitUninitialized {
   name: string;
   app_id: FlowsVaultConnectionAppIdClearbitEnum;
 }
-export const CreateFlowsVaultConnectionClearbitUninitialized = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    app_id: FlowsVaultConnectionAppIdClearbitEnum,
-  }),
-).annotate({
-  identifier: "CreateFlowsVaultConnectionClearbitUninitialized",
-}) as any as S.Schema<CreateFlowsVaultConnectionClearbitUninitialized>;
+export const CreateFlowsVaultConnectionClearbitUninitialized =
+  CreateFlowsVaultConnectionActivecampaignUninitialized as any as S.Schema<CreateFlowsVaultConnectionClearbitUninitialized>;
 
 export type CreateFlowsVaultConnectionClearbit =
   | CreateFlowsVaultConnectionClearbitApiKey
@@ -9319,14 +9243,8 @@ export interface CreateFlowsVaultConnectionDocusignUninitialized {
   name: string;
   app_id: FlowsVaultConnectionAppIdDocusignEnum;
 }
-export const CreateFlowsVaultConnectionDocusignUninitialized = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    app_id: FlowsVaultConnectionAppIdDocusignEnum,
-  }),
-).annotate({
-  identifier: "CreateFlowsVaultConnectionDocusignUninitialized",
-}) as any as S.Schema<CreateFlowsVaultConnectionDocusignUninitialized>;
+export const CreateFlowsVaultConnectionDocusignUninitialized =
+  CreateFlowsVaultConnectionActivecampaignUninitialized as any as S.Schema<CreateFlowsVaultConnectionDocusignUninitialized>;
 
 export type CreateFlowsVaultConnectionDocusign =
   | CreateFlowsVaultConnectionDocusignOauthCode
@@ -9344,29 +9262,16 @@ export interface CreateFlowsVaultConnectionGoogleSheetsOauthCode {
   app_id: FlowsVaultConnectionAppIdGoogleSheetsEnum;
   setup: FlowsVaultConnectioSetupOauthCode;
 }
-export const CreateFlowsVaultConnectionGoogleSheetsOauthCode = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    app_id: FlowsVaultConnectionAppIdGoogleSheetsEnum,
-    setup: FlowsVaultConnectioSetupOauthCode,
-  }),
-).annotate({
-  identifier: "CreateFlowsVaultConnectionGoogleSheetsOauthCode",
-}) as any as S.Schema<CreateFlowsVaultConnectionGoogleSheetsOauthCode>;
+export const CreateFlowsVaultConnectionGoogleSheetsOauthCode =
+  CreateFlowsVaultConnectionDocusignOauthCode as any as S.Schema<CreateFlowsVaultConnectionGoogleSheetsOauthCode>;
 
 export interface CreateFlowsVaultConnectionGoogleSheetsUninitialized {
   /** Flows Vault Connection name. */
   name: string;
   app_id: FlowsVaultConnectionAppIdGoogleSheetsEnum;
 }
-export const CreateFlowsVaultConnectionGoogleSheetsUninitialized = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    app_id: FlowsVaultConnectionAppIdGoogleSheetsEnum,
-  }),
-).annotate({
-  identifier: "CreateFlowsVaultConnectionGoogleSheetsUninitialized",
-}) as any as S.Schema<CreateFlowsVaultConnectionGoogleSheetsUninitialized>;
+export const CreateFlowsVaultConnectionGoogleSheetsUninitialized =
+  CreateFlowsVaultConnectionActivecampaignUninitialized as any as S.Schema<CreateFlowsVaultConnectionGoogleSheetsUninitialized>;
 
 export type CreateFlowsVaultConnectionGoogleSheets =
   | CreateFlowsVaultConnectionGoogleSheetsOauthCode
@@ -9530,14 +9435,8 @@ export interface CreateFlowsVaultConnectionHttpUninitialized {
   name: string;
   app_id: FlowsVaultConnectionAppIdHttpEnum;
 }
-export const CreateFlowsVaultConnectionHttpUninitialized = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    app_id: FlowsVaultConnectionAppIdHttpEnum,
-  }),
-).annotate({
-  identifier: "CreateFlowsVaultConnectionHttpUninitialized",
-}) as any as S.Schema<CreateFlowsVaultConnectionHttpUninitialized>;
+export const CreateFlowsVaultConnectionHttpUninitialized =
+  CreateFlowsVaultConnectionActivecampaignUninitialized as any as S.Schema<CreateFlowsVaultConnectionHttpUninitialized>;
 
 export type CreateFlowsVaultConnectionHttp =
   | CreateFlowsVaultConnectionHttpBearer
@@ -9558,15 +9457,8 @@ export interface CreateFlowsVaultConnectionHubspotApiKey {
   app_id: FlowsVaultConnectionAppIdHubspotEnum;
   setup: FlowsVaultConnectioSetupApiKey;
 }
-export const CreateFlowsVaultConnectionHubspotApiKey = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    app_id: FlowsVaultConnectionAppIdHubspotEnum,
-    setup: FlowsVaultConnectioSetupApiKey,
-  }),
-).annotate({
-  identifier: "CreateFlowsVaultConnectionHubspotApiKey",
-}) as any as S.Schema<CreateFlowsVaultConnectionHubspotApiKey>;
+export const CreateFlowsVaultConnectionHubspotApiKey =
+  CreateFlowsVaultConnectionAirtableApiKey as any as S.Schema<CreateFlowsVaultConnectionHubspotApiKey>;
 
 export interface CreateFlowsVaultConnectionHubspotOauthCode {
   /** Flows Vault Connection name. */
@@ -9574,29 +9466,16 @@ export interface CreateFlowsVaultConnectionHubspotOauthCode {
   app_id: FlowsVaultConnectionAppIdHubspotEnum;
   setup: FlowsVaultConnectioSetupOauthCode;
 }
-export const CreateFlowsVaultConnectionHubspotOauthCode = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    app_id: FlowsVaultConnectionAppIdHubspotEnum,
-    setup: FlowsVaultConnectioSetupOauthCode,
-  }),
-).annotate({
-  identifier: "CreateFlowsVaultConnectionHubspotOauthCode",
-}) as any as S.Schema<CreateFlowsVaultConnectionHubspotOauthCode>;
+export const CreateFlowsVaultConnectionHubspotOauthCode =
+  CreateFlowsVaultConnectionDocusignOauthCode as any as S.Schema<CreateFlowsVaultConnectionHubspotOauthCode>;
 
 export interface CreateFlowsVaultConnectionHubspotUninitialized {
   /** Flows Vault Connection name. */
   name: string;
   app_id: FlowsVaultConnectionAppIdHubspotEnum;
 }
-export const CreateFlowsVaultConnectionHubspotUninitialized = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    app_id: FlowsVaultConnectionAppIdHubspotEnum,
-  }),
-).annotate({
-  identifier: "CreateFlowsVaultConnectionHubspotUninitialized",
-}) as any as S.Schema<CreateFlowsVaultConnectionHubspotUninitialized>;
+export const CreateFlowsVaultConnectionHubspotUninitialized =
+  CreateFlowsVaultConnectionActivecampaignUninitialized as any as S.Schema<CreateFlowsVaultConnectionHubspotUninitialized>;
 
 export type CreateFlowsVaultConnectionHubspot =
   | CreateFlowsVaultConnectionHubspotApiKey
@@ -9661,14 +9540,8 @@ export interface CreateFlowsVaultConnectionJwtUninitialized {
   name: string;
   app_id: FlowsVaultConnectionAppIdJwtEnum;
 }
-export const CreateFlowsVaultConnectionJwtUninitialized = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    app_id: FlowsVaultConnectionAppIdJwtEnum,
-  }),
-).annotate({
-  identifier: "CreateFlowsVaultConnectionJwtUninitialized",
-}) as any as S.Schema<CreateFlowsVaultConnectionJwtUninitialized>;
+export const CreateFlowsVaultConnectionJwtUninitialized =
+  CreateFlowsVaultConnectionActivecampaignUninitialized as any as S.Schema<CreateFlowsVaultConnectionJwtUninitialized>;
 
 export type CreateFlowsVaultConnectionJwt =
   | CreateFlowsVaultConnectionJwtJwt
@@ -9686,15 +9559,8 @@ export interface CreateFlowsVaultConnectionMailchimpApiKey {
   app_id: FlowsVaultConnectionAppIdMailchimpEnum;
   setup: FlowsVaultConnectioSetupSecretApiKey;
 }
-export const CreateFlowsVaultConnectionMailchimpApiKey = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    app_id: FlowsVaultConnectionAppIdMailchimpEnum,
-    setup: FlowsVaultConnectioSetupSecretApiKey,
-  }),
-).annotate({
-  identifier: "CreateFlowsVaultConnectionMailchimpApiKey",
-}) as any as S.Schema<CreateFlowsVaultConnectionMailchimpApiKey>;
+export const CreateFlowsVaultConnectionMailchimpApiKey =
+  CreateFlowsVaultConnectionClearbitApiKey as any as S.Schema<CreateFlowsVaultConnectionMailchimpApiKey>;
 
 export interface CreateFlowsVaultConnectionMailchimpOauthCode {
   /** Flows Vault Connection name. */
@@ -9702,29 +9568,16 @@ export interface CreateFlowsVaultConnectionMailchimpOauthCode {
   app_id: FlowsVaultConnectionAppIdMailchimpEnum;
   setup: FlowsVaultConnectioSetupOauthCode;
 }
-export const CreateFlowsVaultConnectionMailchimpOauthCode = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    app_id: FlowsVaultConnectionAppIdMailchimpEnum,
-    setup: FlowsVaultConnectioSetupOauthCode,
-  }),
-).annotate({
-  identifier: "CreateFlowsVaultConnectionMailchimpOauthCode",
-}) as any as S.Schema<CreateFlowsVaultConnectionMailchimpOauthCode>;
+export const CreateFlowsVaultConnectionMailchimpOauthCode =
+  CreateFlowsVaultConnectionDocusignOauthCode as any as S.Schema<CreateFlowsVaultConnectionMailchimpOauthCode>;
 
 export interface CreateFlowsVaultConnectionMailchimpUninitialized {
   /** Flows Vault Connection name. */
   name: string;
   app_id: FlowsVaultConnectionAppIdMailchimpEnum;
 }
-export const CreateFlowsVaultConnectionMailchimpUninitialized = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    app_id: FlowsVaultConnectionAppIdMailchimpEnum,
-  }),
-).annotate({
-  identifier: "CreateFlowsVaultConnectionMailchimpUninitialized",
-}) as any as S.Schema<CreateFlowsVaultConnectionMailchimpUninitialized>;
+export const CreateFlowsVaultConnectionMailchimpUninitialized =
+  CreateFlowsVaultConnectionActivecampaignUninitialized as any as S.Schema<CreateFlowsVaultConnectionMailchimpUninitialized>;
 
 export type CreateFlowsVaultConnectionMailchimp =
   | CreateFlowsVaultConnectionMailchimpApiKey
@@ -9773,14 +9626,8 @@ export interface CreateFlowsVaultConnectionMailjetUninitialized {
   name: string;
   app_id: FlowsVaultConnectionAppIdMailjetEnum;
 }
-export const CreateFlowsVaultConnectionMailjetUninitialized = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    app_id: FlowsVaultConnectionAppIdMailjetEnum,
-  }),
-).annotate({
-  identifier: "CreateFlowsVaultConnectionMailjetUninitialized",
-}) as any as S.Schema<CreateFlowsVaultConnectionMailjetUninitialized>;
+export const CreateFlowsVaultConnectionMailjetUninitialized =
+  CreateFlowsVaultConnectionActivecampaignUninitialized as any as S.Schema<CreateFlowsVaultConnectionMailjetUninitialized>;
 
 export type CreateFlowsVaultConnectionMailjet =
   | CreateFlowsVaultConnectionMailjetApiKey
@@ -9799,14 +9646,8 @@ export interface FlowsVaultConnectioSetupToken {
   type: FlowsVaultConnectioSetupTypeTokenEnum;
   token: string;
 }
-export const FlowsVaultConnectioSetupToken = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: FlowsVaultConnectioSetupTypeTokenEnum,
-    token: S.String,
-  }),
-).annotate({
-  identifier: "FlowsVaultConnectioSetupToken",
-}) as any as S.Schema<FlowsVaultConnectioSetupToken>;
+export const FlowsVaultConnectioSetupToken =
+  FlowsVaultConnectioSetupHttpBearer as any as S.Schema<FlowsVaultConnectioSetupToken>;
 
 export interface CreateFlowsVaultConnectionPipedriveToken {
   /** Flows Vault Connection name. */
@@ -9814,15 +9655,8 @@ export interface CreateFlowsVaultConnectionPipedriveToken {
   app_id: FlowsVaultConnectionAppIdPipedriveEnum;
   setup: FlowsVaultConnectioSetupToken;
 }
-export const CreateFlowsVaultConnectionPipedriveToken = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    app_id: FlowsVaultConnectionAppIdPipedriveEnum,
-    setup: FlowsVaultConnectioSetupToken,
-  }),
-).annotate({
-  identifier: "CreateFlowsVaultConnectionPipedriveToken",
-}) as any as S.Schema<CreateFlowsVaultConnectionPipedriveToken>;
+export const CreateFlowsVaultConnectionPipedriveToken =
+  CreateFlowsVaultConnectionHttpBearer as any as S.Schema<CreateFlowsVaultConnectionPipedriveToken>;
 
 export interface CreateFlowsVaultConnectionPipedriveOauthCode {
   /** Flows Vault Connection name. */
@@ -9830,29 +9664,16 @@ export interface CreateFlowsVaultConnectionPipedriveOauthCode {
   app_id: FlowsVaultConnectionAppIdPipedriveEnum;
   setup: FlowsVaultConnectioSetupOauthCode;
 }
-export const CreateFlowsVaultConnectionPipedriveOauthCode = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    app_id: FlowsVaultConnectionAppIdPipedriveEnum,
-    setup: FlowsVaultConnectioSetupOauthCode,
-  }),
-).annotate({
-  identifier: "CreateFlowsVaultConnectionPipedriveOauthCode",
-}) as any as S.Schema<CreateFlowsVaultConnectionPipedriveOauthCode>;
+export const CreateFlowsVaultConnectionPipedriveOauthCode =
+  CreateFlowsVaultConnectionDocusignOauthCode as any as S.Schema<CreateFlowsVaultConnectionPipedriveOauthCode>;
 
 export interface CreateFlowsVaultConnectionPipedriveUninitialized {
   /** Flows Vault Connection name. */
   name: string;
   app_id: FlowsVaultConnectionAppIdPipedriveEnum;
 }
-export const CreateFlowsVaultConnectionPipedriveUninitialized = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    app_id: FlowsVaultConnectionAppIdPipedriveEnum,
-  }),
-).annotate({
-  identifier: "CreateFlowsVaultConnectionPipedriveUninitialized",
-}) as any as S.Schema<CreateFlowsVaultConnectionPipedriveUninitialized>;
+export const CreateFlowsVaultConnectionPipedriveUninitialized =
+  CreateFlowsVaultConnectionActivecampaignUninitialized as any as S.Schema<CreateFlowsVaultConnectionPipedriveUninitialized>;
 
 export type CreateFlowsVaultConnectionPipedrive =
   | CreateFlowsVaultConnectionPipedriveToken
@@ -9871,29 +9692,16 @@ export interface CreateFlowsVaultConnectionSalesforceOauthCode {
   app_id: FlowsVaultConnectionAppIdSalesforceEnum;
   setup: FlowsVaultConnectioSetupOauthCode;
 }
-export const CreateFlowsVaultConnectionSalesforceOauthCode = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    app_id: FlowsVaultConnectionAppIdSalesforceEnum,
-    setup: FlowsVaultConnectioSetupOauthCode,
-  }),
-).annotate({
-  identifier: "CreateFlowsVaultConnectionSalesforceOauthCode",
-}) as any as S.Schema<CreateFlowsVaultConnectionSalesforceOauthCode>;
+export const CreateFlowsVaultConnectionSalesforceOauthCode =
+  CreateFlowsVaultConnectionDocusignOauthCode as any as S.Schema<CreateFlowsVaultConnectionSalesforceOauthCode>;
 
 export interface CreateFlowsVaultConnectionSalesforceUninitialized {
   /** Flows Vault Connection name. */
   name: string;
   app_id: FlowsVaultConnectionAppIdSalesforceEnum;
 }
-export const CreateFlowsVaultConnectionSalesforceUninitialized = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    app_id: FlowsVaultConnectionAppIdSalesforceEnum,
-  }),
-).annotate({
-  identifier: "CreateFlowsVaultConnectionSalesforceUninitialized",
-}) as any as S.Schema<CreateFlowsVaultConnectionSalesforceUninitialized>;
+export const CreateFlowsVaultConnectionSalesforceUninitialized =
+  CreateFlowsVaultConnectionActivecampaignUninitialized as any as S.Schema<CreateFlowsVaultConnectionSalesforceUninitialized>;
 
 export type CreateFlowsVaultConnectionSalesforce =
   | CreateFlowsVaultConnectionSalesforceOauthCode
@@ -9911,29 +9719,16 @@ export interface CreateFlowsVaultConnectionSendgridApiKey {
   app_id: FlowsVaultConnectionAppIdSendgridEnum;
   setup: FlowsVaultConnectioSetupApiKey;
 }
-export const CreateFlowsVaultConnectionSendgridApiKey = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    app_id: FlowsVaultConnectionAppIdSendgridEnum,
-    setup: FlowsVaultConnectioSetupApiKey,
-  }),
-).annotate({
-  identifier: "CreateFlowsVaultConnectionSendgridApiKey",
-}) as any as S.Schema<CreateFlowsVaultConnectionSendgridApiKey>;
+export const CreateFlowsVaultConnectionSendgridApiKey =
+  CreateFlowsVaultConnectionAirtableApiKey as any as S.Schema<CreateFlowsVaultConnectionSendgridApiKey>;
 
 export interface CreateFlowsVaultConnectionSendgridUninitialized {
   /** Flows Vault Connection name. */
   name: string;
   app_id: FlowsVaultConnectionAppIdSendgridEnum;
 }
-export const CreateFlowsVaultConnectionSendgridUninitialized = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    app_id: FlowsVaultConnectionAppIdSendgridEnum,
-  }),
-).annotate({
-  identifier: "CreateFlowsVaultConnectionSendgridUninitialized",
-}) as any as S.Schema<CreateFlowsVaultConnectionSendgridUninitialized>;
+export const CreateFlowsVaultConnectionSendgridUninitialized =
+  CreateFlowsVaultConnectionActivecampaignUninitialized as any as S.Schema<CreateFlowsVaultConnectionSendgridUninitialized>;
 
 export type CreateFlowsVaultConnectionSendgrid =
   | CreateFlowsVaultConnectionSendgridApiKey
@@ -9983,29 +9778,16 @@ export interface CreateFlowsVaultConnectionSlackOauthCode {
   app_id: FlowsVaultConnectionAppIdSlackEnum;
   setup: FlowsVaultConnectioSetupOauthCode;
 }
-export const CreateFlowsVaultConnectionSlackOauthCode = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    app_id: FlowsVaultConnectionAppIdSlackEnum,
-    setup: FlowsVaultConnectioSetupOauthCode,
-  }),
-).annotate({
-  identifier: "CreateFlowsVaultConnectionSlackOauthCode",
-}) as any as S.Schema<CreateFlowsVaultConnectionSlackOauthCode>;
+export const CreateFlowsVaultConnectionSlackOauthCode =
+  CreateFlowsVaultConnectionDocusignOauthCode as any as S.Schema<CreateFlowsVaultConnectionSlackOauthCode>;
 
 export interface CreateFlowsVaultConnectionSlackUninitialized {
   /** Flows Vault Connection name. */
   name: string;
   app_id: FlowsVaultConnectionAppIdSlackEnum;
 }
-export const CreateFlowsVaultConnectionSlackUninitialized = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    app_id: FlowsVaultConnectionAppIdSlackEnum,
-  }),
-).annotate({
-  identifier: "CreateFlowsVaultConnectionSlackUninitialized",
-}) as any as S.Schema<CreateFlowsVaultConnectionSlackUninitialized>;
+export const CreateFlowsVaultConnectionSlackUninitialized =
+  CreateFlowsVaultConnectionActivecampaignUninitialized as any as S.Schema<CreateFlowsVaultConnectionSlackUninitialized>;
 
 export type CreateFlowsVaultConnectionSlack =
   | CreateFlowsVaultConnectionSlackWebhook
@@ -10058,29 +9840,16 @@ export interface CreateFlowsVaultConnectionStripeOauthCode {
   app_id: FlowsVaultConnectionAppIdStripeEnum;
   setup: FlowsVaultConnectioSetupOauthCode;
 }
-export const CreateFlowsVaultConnectionStripeOauthCode = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    app_id: FlowsVaultConnectionAppIdStripeEnum,
-    setup: FlowsVaultConnectioSetupOauthCode,
-  }),
-).annotate({
-  identifier: "CreateFlowsVaultConnectionStripeOauthCode",
-}) as any as S.Schema<CreateFlowsVaultConnectionStripeOauthCode>;
+export const CreateFlowsVaultConnectionStripeOauthCode =
+  CreateFlowsVaultConnectionDocusignOauthCode as any as S.Schema<CreateFlowsVaultConnectionStripeOauthCode>;
 
 export interface CreateFlowsVaultConnectionStripeUninitialized {
   /** Flows Vault Connection name. */
   name: string;
   app_id: FlowsVaultConnectionAppIdStripeEnum;
 }
-export const CreateFlowsVaultConnectionStripeUninitialized = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    app_id: FlowsVaultConnectionAppIdStripeEnum,
-  }),
-).annotate({
-  identifier: "CreateFlowsVaultConnectionStripeUninitialized",
-}) as any as S.Schema<CreateFlowsVaultConnectionStripeUninitialized>;
+export const CreateFlowsVaultConnectionStripeUninitialized =
+  CreateFlowsVaultConnectionActivecampaignUninitialized as any as S.Schema<CreateFlowsVaultConnectionStripeUninitialized>;
 
 export type CreateFlowsVaultConnectionStripe =
   | CreateFlowsVaultConnectionStripeKeyPair
@@ -10099,29 +9868,16 @@ export interface CreateFlowsVaultConnectionTelegramToken {
   app_id: FlowsVaultConnectionAppIdTelegramEnum;
   setup: FlowsVaultConnectioSetupToken;
 }
-export const CreateFlowsVaultConnectionTelegramToken = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    app_id: FlowsVaultConnectionAppIdTelegramEnum,
-    setup: FlowsVaultConnectioSetupToken,
-  }),
-).annotate({
-  identifier: "CreateFlowsVaultConnectionTelegramToken",
-}) as any as S.Schema<CreateFlowsVaultConnectionTelegramToken>;
+export const CreateFlowsVaultConnectionTelegramToken =
+  CreateFlowsVaultConnectionHttpBearer as any as S.Schema<CreateFlowsVaultConnectionTelegramToken>;
 
 export interface CreateFlowsVaultConnectionTelegramUninitialized {
   /** Flows Vault Connection name. */
   name: string;
   app_id: FlowsVaultConnectionAppIdTelegramEnum;
 }
-export const CreateFlowsVaultConnectionTelegramUninitialized = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    app_id: FlowsVaultConnectionAppIdTelegramEnum,
-  }),
-).annotate({
-  identifier: "CreateFlowsVaultConnectionTelegramUninitialized",
-}) as any as S.Schema<CreateFlowsVaultConnectionTelegramUninitialized>;
+export const CreateFlowsVaultConnectionTelegramUninitialized =
+  CreateFlowsVaultConnectionActivecampaignUninitialized as any as S.Schema<CreateFlowsVaultConnectionTelegramUninitialized>;
 
 export type CreateFlowsVaultConnectionTelegram =
   | CreateFlowsVaultConnectionTelegramToken
@@ -10169,14 +9925,8 @@ export interface CreateFlowsVaultConnectionTwilioUninitialized {
   name: string;
   app_id: FlowsVaultConnectionAppIdTwilioEnum;
 }
-export const CreateFlowsVaultConnectionTwilioUninitialized = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    app_id: FlowsVaultConnectionAppIdTwilioEnum,
-  }),
-).annotate({
-  identifier: "CreateFlowsVaultConnectionTwilioUninitialized",
-}) as any as S.Schema<CreateFlowsVaultConnectionTwilioUninitialized>;
+export const CreateFlowsVaultConnectionTwilioUninitialized =
+  CreateFlowsVaultConnectionActivecampaignUninitialized as any as S.Schema<CreateFlowsVaultConnectionTwilioUninitialized>;
 
 export type CreateFlowsVaultConnectionTwilio =
   | CreateFlowsVaultConnectionTwilioApiKey
@@ -10194,29 +9944,16 @@ export interface CreateFlowsVaultConnectionWhatsappToken {
   app_id: FlowsVaultConnectionAppIdWhatsappEnum;
   setup: FlowsVaultConnectioSetupToken;
 }
-export const CreateFlowsVaultConnectionWhatsappToken = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    app_id: FlowsVaultConnectionAppIdWhatsappEnum,
-    setup: FlowsVaultConnectioSetupToken,
-  }),
-).annotate({
-  identifier: "CreateFlowsVaultConnectionWhatsappToken",
-}) as any as S.Schema<CreateFlowsVaultConnectionWhatsappToken>;
+export const CreateFlowsVaultConnectionWhatsappToken =
+  CreateFlowsVaultConnectionHttpBearer as any as S.Schema<CreateFlowsVaultConnectionWhatsappToken>;
 
 export interface CreateFlowsVaultConnectionWhatsappUninitialized {
   /** Flows Vault Connection name. */
   name: string;
   app_id: FlowsVaultConnectionAppIdWhatsappEnum;
 }
-export const CreateFlowsVaultConnectionWhatsappUninitialized = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    app_id: FlowsVaultConnectionAppIdWhatsappEnum,
-  }),
-).annotate({
-  identifier: "CreateFlowsVaultConnectionWhatsappUninitialized",
-}) as any as S.Schema<CreateFlowsVaultConnectionWhatsappUninitialized>;
+export const CreateFlowsVaultConnectionWhatsappUninitialized =
+  CreateFlowsVaultConnectionActivecampaignUninitialized as any as S.Schema<CreateFlowsVaultConnectionWhatsappUninitialized>;
 
 export type CreateFlowsVaultConnectionWhatsapp =
   | CreateFlowsVaultConnectionWhatsappToken
@@ -10234,29 +9971,16 @@ export interface CreateFlowsVaultConnectionZapierWebhook {
   app_id: FlowsVaultConnectionAppIdZapierEnum;
   setup: FlowsVaultConnectioSetupWebhook;
 }
-export const CreateFlowsVaultConnectionZapierWebhook = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    app_id: FlowsVaultConnectionAppIdZapierEnum,
-    setup: FlowsVaultConnectioSetupWebhook,
-  }),
-).annotate({
-  identifier: "CreateFlowsVaultConnectionZapierWebhook",
-}) as any as S.Schema<CreateFlowsVaultConnectionZapierWebhook>;
+export const CreateFlowsVaultConnectionZapierWebhook =
+  CreateFlowsVaultConnectionSlackWebhook as any as S.Schema<CreateFlowsVaultConnectionZapierWebhook>;
 
 export interface CreateFlowsVaultConnectionZapierUninitialized {
   /** Flows Vault Connection name. */
   name: string;
   app_id: FlowsVaultConnectionAppIdZapierEnum;
 }
-export const CreateFlowsVaultConnectionZapierUninitialized = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    app_id: FlowsVaultConnectionAppIdZapierEnum,
-  }),
-).annotate({
-  identifier: "CreateFlowsVaultConnectionZapierUninitialized",
-}) as any as S.Schema<CreateFlowsVaultConnectionZapierUninitialized>;
+export const CreateFlowsVaultConnectionZapierUninitialized =
+  CreateFlowsVaultConnectionActivecampaignUninitialized as any as S.Schema<CreateFlowsVaultConnectionZapierUninitialized>;
 
 export type CreateFlowsVaultConnectionZapier =
   | CreateFlowsVaultConnectionZapierWebhook
@@ -10697,14 +10421,8 @@ export interface FormBlockPreviousButton {
   type: FormBlockTypePreviousButtonConst;
   config: FormBlockNextButtonConfig;
 }
-export const FormBlockPreviousButton = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    category: FormComponentCategoryBlockConst,
-    type: FormBlockTypePreviousButtonConst,
-    config: FormBlockNextButtonConfig,
-  }),
-).annotate({ identifier: "FormBlockPreviousButton" }) as any as S.Schema<FormBlockPreviousButton>;
+export const FormBlockPreviousButton =
+  FormBlockNextButton as any as S.Schema<FormBlockPreviousButton>;
 
 export type FormBlockTypeRichTextConst = "RICH_TEXT";
 export const FormBlockTypeRichTextConst = S.String;
@@ -10718,14 +10436,7 @@ export interface FormBlockRichText {
   type: FormBlockTypeRichTextConst;
   config?: FormBlockHtmlConfig;
 }
-export const FormBlockRichText = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    category: FormComponentCategoryBlockConst,
-    type: FormBlockTypeRichTextConst,
-    config: S.optional(FormBlockHtmlConfig),
-  }),
-).annotate({ identifier: "FormBlockRichText" }) as any as S.Schema<FormBlockRichText>;
+export const FormBlockRichText = FormBlockHtml as any as S.Schema<FormBlockRichText>;
 
 export type FormBlock =
   | FormBlockDivider
@@ -11259,9 +10970,8 @@ export const FormFieldFileConfigCategoryEnum = S.String;
 export type FormFieldFileConfigCategoriesList = Array<
   FormFieldFileConfigCategoryEnum | (string & {})
 >;
-export const FormFieldFileConfigCategoriesList = /*@__PURE__*/ S.Array(
-  FormFieldFileConfigCategoryEnum,
-) as any as S.Schema<FormFieldFileConfigCategoriesList>;
+export const FormFieldFileConfigCategoriesList =
+  ClientOIDCBackchannelLogoutInitiatorsSelectedInitiatorsList as any as S.Schema<FormFieldFileConfigCategoriesList>;
 
 export type FormFieldFileConfigExtensionsList = Array<string>;
 export const FormFieldFileConfigExtensionsList =
@@ -11734,18 +11444,7 @@ export interface FormFieldUrl {
   required?: boolean;
   sensitive?: boolean;
 }
-export const FormFieldUrl = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    category: FormComponentCategoryFieldConst,
-    type: FormFieldTypeUrlConst,
-    config: S.optional(FormFieldEmailConfig),
-    label: S.optional(S.String),
-    hint: S.optional(S.String),
-    required: S.optional(S.Boolean),
-    sensitive: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "FormFieldUrl" }) as any as S.Schema<FormFieldUrl>;
+export const FormFieldUrl = FormFieldEmail as any as S.Schema<FormFieldUrl>;
 
 export type FormField =
   | FormFieldBoolean
@@ -12131,9 +11830,8 @@ export type LogStreamPiiLogFieldsEnum =
 export const LogStreamPiiLogFieldsEnum = S.String;
 
 export type LogStreamPiiConfigLogFieldsList = Array<LogStreamPiiLogFieldsEnum | (string & {})>;
-export const LogStreamPiiConfigLogFieldsList = /*@__PURE__*/ S.Array(
-  LogStreamPiiLogFieldsEnum,
-) as any as S.Schema<LogStreamPiiConfigLogFieldsList>;
+export const LogStreamPiiConfigLogFieldsList =
+  ClientOIDCBackchannelLogoutInitiatorsSelectedInitiatorsList as any as S.Schema<LogStreamPiiConfigLogFieldsList>;
 
 export type LogStreamPiiMethodEnum = "mask" | "hash";
 export const LogStreamPiiMethodEnum = S.String;
@@ -13628,9 +13326,8 @@ export const TwilioProviderDeliveryMethodEnum = S.String;
 export type TwilioProviderConfigurationDeliveryMethodsList = Array<
   TwilioProviderDeliveryMethodEnum | (string & {})
 >;
-export const TwilioProviderConfigurationDeliveryMethodsList = /*@__PURE__*/ S.Array(
-  TwilioProviderDeliveryMethodEnum,
-) as any as S.Schema<TwilioProviderConfigurationDeliveryMethodsList>;
+export const TwilioProviderConfigurationDeliveryMethodsList =
+  ClientOIDCBackchannelLogoutInitiatorsSelectedInitiatorsList as any as S.Schema<TwilioProviderConfigurationDeliveryMethodsList>;
 
 export interface TwilioProviderConfiguration {
   default_from?: string;
@@ -13655,9 +13352,8 @@ export const CustomProviderDeliveryMethodEnum = S.String;
 export type CustomProviderConfigurationDeliveryMethodsList = Array<
   CustomProviderDeliveryMethodEnum | (string & {})
 >;
-export const CustomProviderConfigurationDeliveryMethodsList = /*@__PURE__*/ S.Array(
-  CustomProviderDeliveryMethodEnum,
-) as any as S.Schema<CustomProviderConfigurationDeliveryMethodsList>;
+export const CustomProviderConfigurationDeliveryMethodsList =
+  ClientOIDCBackchannelLogoutInitiatorsSelectedInitiatorsList as any as S.Schema<CustomProviderConfigurationDeliveryMethodsList>;
 
 export interface CustomProviderConfiguration {
   delivery_methods: CustomProviderConfigurationDeliveryMethodsList;
@@ -14111,13 +13807,8 @@ export const ResourceServerSubjectTypeAuthorizationClientPolicyEnum = S.String;
 export interface ResourceServerSubjectTypeAuthorizationClient {
   policy?: ResourceServerSubjectTypeAuthorizationClientPolicyEnum | (string & {});
 }
-export const ResourceServerSubjectTypeAuthorizationClient = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policy: S.optional(ResourceServerSubjectTypeAuthorizationClientPolicyEnum),
-  }),
-).annotate({
-  identifier: "ResourceServerSubjectTypeAuthorizationClient",
-}) as any as S.Schema<ResourceServerSubjectTypeAuthorizationClient>;
+export const ResourceServerSubjectTypeAuthorizationClient =
+  ResourceServerSubjectTypeAuthorizationUser as any as S.Schema<ResourceServerSubjectTypeAuthorizationClient>;
 
 /** Defines the anonymous user flows policy for the resource server */
 export type ResourceServerSubjectTypeAuthorizationAnonymousUserPolicyEnum =
@@ -14129,13 +13820,8 @@ export const ResourceServerSubjectTypeAuthorizationAnonymousUserPolicyEnum = S.S
 export interface ResourceServerSubjectTypeAuthorizationAnonymousUser {
   policy?: ResourceServerSubjectTypeAuthorizationAnonymousUserPolicyEnum | (string & {});
 }
-export const ResourceServerSubjectTypeAuthorizationAnonymousUser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policy: S.optional(ResourceServerSubjectTypeAuthorizationAnonymousUserPolicyEnum),
-  }),
-).annotate({
-  identifier: "ResourceServerSubjectTypeAuthorizationAnonymousUser",
-}) as any as S.Schema<ResourceServerSubjectTypeAuthorizationAnonymousUser>;
+export const ResourceServerSubjectTypeAuthorizationAnonymousUser =
+  ResourceServerSubjectTypeAuthorizationUser as any as S.Schema<ResourceServerSubjectTypeAuthorizationAnonymousUser>;
 
 /** Defines application access permission for a resource server */
 export interface ResourceServerSubjectTypeAuthorization {
@@ -14665,9 +14351,8 @@ export const SelfServiceProfileAllowedStrategyEnum = S.String;
 export type CreateSelfServiceProfileRequestAllowedStrategiesList = Array<
   SelfServiceProfileAllowedStrategyEnum | (string & {})
 >;
-export const CreateSelfServiceProfileRequestAllowedStrategiesList = /*@__PURE__*/ S.Array(
-  SelfServiceProfileAllowedStrategyEnum,
-) as any as S.Schema<CreateSelfServiceProfileRequestAllowedStrategiesList>;
+export const CreateSelfServiceProfileRequestAllowedStrategiesList =
+  ClientOIDCBackchannelLogoutInitiatorsSelectedInitiatorsList as any as S.Schema<CreateSelfServiceProfileRequestAllowedStrategiesList>;
 
 export interface SelfServiceProfileUserAttribute {
   /** Identifier of this attribute. */
@@ -18974,9 +18659,8 @@ export const BreachedPasswordDetectionShieldsEnum = S.String;
 /** Action to take when a breached password is detected during a login. Possible values: <code>block</code>, <code>user_notification</code>, <code>admin_notification</code>. */
 export type GetBreachedPasswordDetectionSettingsResponseContentShieldsList =
   Array<BreachedPasswordDetectionShieldsEnum>;
-export const GetBreachedPasswordDetectionSettingsResponseContentShieldsList = /*@__PURE__*/ S.Array(
-  BreachedPasswordDetectionShieldsEnum,
-) as any as S.Schema<GetBreachedPasswordDetectionSettingsResponseContentShieldsList>;
+export const GetBreachedPasswordDetectionSettingsResponseContentShieldsList =
+  ClientOIDCBackchannelLogoutInitiatorsSelectedInitiatorsList as any as S.Schema<GetBreachedPasswordDetectionSettingsResponseContentShieldsList>;
 
 export type BreachedPasswordDetectionAdminNotificationFrequencyEnum =
   | "immediately"
@@ -18989,9 +18673,7 @@ export const BreachedPasswordDetectionAdminNotificationFrequencyEnum = S.String;
 export type GetBreachedPasswordDetectionSettingsResponseContentAdminNotificationFrequencyList =
   Array<BreachedPasswordDetectionAdminNotificationFrequencyEnum>;
 export const GetBreachedPasswordDetectionSettingsResponseContentAdminNotificationFrequencyList =
-  /*@__PURE__*/ S.Array(
-    BreachedPasswordDetectionAdminNotificationFrequencyEnum,
-  ) as any as S.Schema<GetBreachedPasswordDetectionSettingsResponseContentAdminNotificationFrequencyList>;
+  ClientSessionTransferConfigurationAllowedAuthenticationMethodsList as any as S.Schema<GetBreachedPasswordDetectionSettingsResponseContentAdminNotificationFrequencyList>;
 
 /** The subscription level for breached password detection methods. Use "enhanced" to enable Credential Guard. Possible values: <code>standard</code>, <code>enhanced</code>. */
 export type BreachedPasswordDetectionMethodEnum = "standard" | "enhanced";
@@ -19006,9 +18688,8 @@ export const BreachedPasswordDetectionPreUserRegistrationShieldsEnum = S.String;
 export type BreachedPasswordDetectionPreUserRegistrationStageShieldsList = Array<
   BreachedPasswordDetectionPreUserRegistrationShieldsEnum | (string & {})
 >;
-export const BreachedPasswordDetectionPreUserRegistrationStageShieldsList = /*@__PURE__*/ S.Array(
-  BreachedPasswordDetectionPreUserRegistrationShieldsEnum,
-) as any as S.Schema<BreachedPasswordDetectionPreUserRegistrationStageShieldsList>;
+export const BreachedPasswordDetectionPreUserRegistrationStageShieldsList =
+  ClientOIDCBackchannelLogoutInitiatorsSelectedInitiatorsList as any as S.Schema<BreachedPasswordDetectionPreUserRegistrationStageShieldsList>;
 
 export interface BreachedPasswordDetectionPreUserRegistrationStage {
   /** Action to take when a breached password is detected during a signup. Possible values: <code>block</code>, <code>admin_notification</code>. */
@@ -19029,21 +18710,15 @@ export const BreachedPasswordDetectionPreChangePasswordShieldsEnum = S.String;
 export type BreachedPasswordDetectionPreChangePasswordStageShieldsList = Array<
   BreachedPasswordDetectionPreChangePasswordShieldsEnum | (string & {})
 >;
-export const BreachedPasswordDetectionPreChangePasswordStageShieldsList = /*@__PURE__*/ S.Array(
-  BreachedPasswordDetectionPreChangePasswordShieldsEnum,
-) as any as S.Schema<BreachedPasswordDetectionPreChangePasswordStageShieldsList>;
+export const BreachedPasswordDetectionPreChangePasswordStageShieldsList =
+  ClientOIDCBackchannelLogoutInitiatorsSelectedInitiatorsList as any as S.Schema<BreachedPasswordDetectionPreChangePasswordStageShieldsList>;
 
 export interface BreachedPasswordDetectionPreChangePasswordStage {
   /** Action to take when a breached password is detected during a password reset. Possible values: <code>block</code>, <code>admin_notification</code>. */
   shields?: BreachedPasswordDetectionPreChangePasswordStageShieldsList;
 }
-export const BreachedPasswordDetectionPreChangePasswordStage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    shields: S.optional(BreachedPasswordDetectionPreChangePasswordStageShieldsList),
-  }),
-).annotate({
-  identifier: "BreachedPasswordDetectionPreChangePasswordStage",
-}) as any as S.Schema<BreachedPasswordDetectionPreChangePasswordStage>;
+export const BreachedPasswordDetectionPreChangePasswordStage =
+  BreachedPasswordDetectionPreUserRegistrationStage as any as S.Schema<BreachedPasswordDetectionPreChangePasswordStage>;
 
 export interface BreachedPasswordDetectionStage {
   pre_user_registration?: BreachedPasswordDetectionPreUserRegistrationStage;
@@ -19101,9 +18776,8 @@ export const BruteForceProtectionShieldsEnum = S.String;
 /** Action to take when a brute force protection threshold is violated. Possible values: <code>block</code>, <code>user_notification</code>. */
 export type GetBruteForceSettingsResponseContentShieldsList =
   Array<BruteForceProtectionShieldsEnum>;
-export const GetBruteForceSettingsResponseContentShieldsList = /*@__PURE__*/ S.Array(
-  BruteForceProtectionShieldsEnum,
-) as any as S.Schema<GetBruteForceSettingsResponseContentShieldsList>;
+export const GetBruteForceSettingsResponseContentShieldsList =
+  ClientOIDCBackchannelLogoutInitiatorsSelectedInitiatorsList as any as S.Schema<GetBruteForceSettingsResponseContentShieldsList>;
 
 /** List of trusted IP addresses that will not have attack protection enforced against them. */
 export type GetBruteForceSettingsResponseContentAllowlistList = Array<string>;
@@ -19567,9 +19241,8 @@ export type ConnectionStrategyEnum =
 export const ConnectionStrategyEnum = S.String;
 
 export type GetClientConnectionsRequestStrategyList = Array<ConnectionStrategyEnum | (string & {})>;
-export const GetClientConnectionsRequestStrategyList = /*@__PURE__*/ S.Array(
-  ConnectionStrategyEnum,
-) as any as S.Schema<GetClientConnectionsRequestStrategyList>;
+export const GetClientConnectionsRequestStrategyList =
+  ClientOIDCBackchannelLogoutInitiatorsSelectedInitiatorsList as any as S.Schema<GetClientConnectionsRequestStrategyList>;
 
 export interface GetClientConnectionsRequest {
   /** ID of the client for which to retrieve enabled connections. */
@@ -21491,9 +21164,8 @@ export const CustomSigningKeyOperationEnum = S.String;
 
 /** Key operations */
 export type CustomSigningKeyJWKKeyOpsList = Array<CustomSigningKeyOperationEnum | (string & {})>;
-export const CustomSigningKeyJWKKeyOpsList = /*@__PURE__*/ S.Array(
-  CustomSigningKeyOperationEnum,
-) as any as S.Schema<CustomSigningKeyJWKKeyOpsList>;
+export const CustomSigningKeyJWKKeyOpsList =
+  ClientOIDCBackchannelLogoutInitiatorsSelectedInitiatorsList as any as S.Schema<CustomSigningKeyJWKKeyOpsList>;
 
 /** Key algorithm */
 export type CustomSigningKeyAlgorithmEnum =
@@ -23436,9 +23108,8 @@ export type GetFlowRequestParametersHydrateEnum = "form_count" | "forms";
 export const GetFlowRequestParametersHydrateEnum = S.String;
 
 export type GetFlowRequestHydrateList = Array<GetFlowRequestParametersHydrateEnum | (string & {})>;
-export const GetFlowRequestHydrateList = /*@__PURE__*/ S.Array(
-  GetFlowRequestParametersHydrateEnum,
-) as any as S.Schema<GetFlowRequestHydrateList>;
+export const GetFlowRequestHydrateList =
+  ClientOIDCBackchannelLogoutInitiatorsSelectedInitiatorsList as any as S.Schema<GetFlowRequestHydrateList>;
 
 export interface GetFlowRequest {
   /** Flow identifier */
@@ -23482,9 +23153,8 @@ export const ListFlowsRequestParametersHydrateEnum = S.String;
 export type GetFlowsRequestHydrateList = Array<
   ListFlowsRequestParametersHydrateEnum | (string & {})
 >;
-export const GetFlowsRequestHydrateList = /*@__PURE__*/ S.Array(
-  ListFlowsRequestParametersHydrateEnum,
-) as any as S.Schema<GetFlowsRequestHydrateList>;
+export const GetFlowsRequestHydrateList =
+  ClientOIDCBackchannelLogoutInitiatorsSelectedInitiatorsList as any as S.Schema<GetFlowsRequestHydrateList>;
 
 export interface GetFlowsRequest {
   /** Page index of the results to return. First page is 0. */
@@ -23567,9 +23237,8 @@ export const GetFlowExecutionRequestParametersHydrateEnum = S.String;
 export type GetFlowsExecutionRequestHydrateList = Array<
   GetFlowExecutionRequestParametersHydrateEnum | (string & {})
 >;
-export const GetFlowsExecutionRequestHydrateList = /*@__PURE__*/ S.Array(
-  GetFlowExecutionRequestParametersHydrateEnum,
-) as any as S.Schema<GetFlowsExecutionRequestHydrateList>;
+export const GetFlowsExecutionRequestHydrateList =
+  ClientOIDCBackchannelLogoutInitiatorsSelectedInitiatorsList as any as S.Schema<GetFlowsExecutionRequestHydrateList>;
 
 export interface GetFlowsExecutionRequest {
   /** Flow id */
@@ -23878,9 +23547,8 @@ export type FormsRequestParametersHydrateEnum = "flow_count" | "links";
 export const FormsRequestParametersHydrateEnum = S.String;
 
 export type GetFormRequestHydrateList = Array<FormsRequestParametersHydrateEnum | (string & {})>;
-export const GetFormRequestHydrateList = /*@__PURE__*/ S.Array(
-  FormsRequestParametersHydrateEnum,
-) as any as S.Schema<GetFormRequestHydrateList>;
+export const GetFormRequestHydrateList =
+  ClientOIDCBackchannelLogoutInitiatorsSelectedInitiatorsList as any as S.Schema<GetFormRequestHydrateList>;
 
 export interface GetFormRequest {
   /** The ID of the form to retrieve. */
@@ -25273,9 +24941,7 @@ export const GuardianFactorPhoneFactorMessageTypeEnum = S.String;
 export type GetGuardianFactorPhoneMessageTypesResponseContentMessageTypesList =
   Array<GuardianFactorPhoneFactorMessageTypeEnum>;
 export const GetGuardianFactorPhoneMessageTypesResponseContentMessageTypesList =
-  /*@__PURE__*/ S.Array(
-    GuardianFactorPhoneFactorMessageTypeEnum,
-  ) as any as S.Schema<GetGuardianFactorPhoneMessageTypesResponseContentMessageTypesList>;
+  ClientSessionTransferConfigurationAllowedAuthenticationMethodsList as any as S.Schema<GetGuardianFactorPhoneMessageTypesResponseContentMessageTypesList>;
 
 export interface GetGuardianFactorPhoneMessageTypesResponseContent {
   /** The list of phone factors to enable on the tenant. Can include `sms` and `voice`. */
@@ -25930,9 +25596,8 @@ export const OrganizationMemberEffectiveRoleSource = S.String;
 /** Sources of the role assignment (direct or through group membership) */
 export type OrganizationMemberEffectiveRoleSourcesList =
   Array<OrganizationMemberEffectiveRoleSource>;
-export const OrganizationMemberEffectiveRoleSourcesList = /*@__PURE__*/ S.Array(
-  OrganizationMemberEffectiveRoleSource,
-) as any as S.Schema<OrganizationMemberEffectiveRoleSourcesList>;
+export const OrganizationMemberEffectiveRoleSourcesList =
+  ClientOIDCBackchannelLogoutInitiatorsSelectedInitiatorsList as any as S.Schema<OrganizationMemberEffectiveRoleSourcesList>;
 
 export interface OrganizationMemberEffectiveRole {
   /** Role ID */
@@ -26626,13 +26291,8 @@ export const PhoneProviderProtectionBackoffStrategyEnum = S.String;
 export interface GetPhoneProviderProtectionResponseContent {
   type: PhoneProviderProtectionBackoffStrategyEnum;
 }
-export const GetPhoneProviderProtectionResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: PhoneProviderProtectionBackoffStrategyEnum,
-  }),
-).annotate({
-  identifier: "GetPhoneProviderProtectionResponseContent",
-}) as any as S.Schema<GetPhoneProviderProtectionResponseContent>;
+export const GetPhoneProviderProtectionResponseContent =
+  FormFieldFileConfigStorage as any as S.Schema<GetPhoneProviderProtectionResponseContent>;
 
 export interface GetPhoneTemplateRequest {
   id: string;
@@ -26770,9 +26430,8 @@ export type MFAPolicyEnum = "all-applications" | "confidence-score";
 export const MFAPolicyEnum = S.String;
 
 export type ListGuardianPoliciesResponseContent = Array<MFAPolicyEnum>;
-export const ListGuardianPoliciesResponseContent = /*@__PURE__*/ S.Array(
-  MFAPolicyEnum,
-) as any as S.Schema<ListGuardianPoliciesResponseContent>;
+export const ListGuardianPoliciesResponseContent =
+  ClientOIDCBackchannelLogoutInitiatorsSelectedInitiatorsList as any as S.Schema<ListGuardianPoliciesResponseContent>;
 
 export type GetPoliciesResponse = ListGuardianPoliciesResponseContent;
 export const GetPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
@@ -29153,9 +28812,8 @@ export const SuspiciousIPThrottlingShieldsEnum = S.String;
 /** Action to take when a suspicious IP throttling threshold is violated. Possible values: <code>block</code>, <code>admin_notification</code>. */
 export type GetSuspiciousIPThrottlingSettingsResponseContentShieldsList =
   Array<SuspiciousIPThrottlingShieldsEnum>;
-export const GetSuspiciousIPThrottlingSettingsResponseContentShieldsList = /*@__PURE__*/ S.Array(
-  SuspiciousIPThrottlingShieldsEnum,
-) as any as S.Schema<GetSuspiciousIPThrottlingSettingsResponseContentShieldsList>;
+export const GetSuspiciousIPThrottlingSettingsResponseContentShieldsList =
+  ClientOIDCBackchannelLogoutInitiatorsSelectedInitiatorsList as any as S.Schema<GetSuspiciousIPThrottlingSettingsResponseContentShieldsList>;
 
 /** List of trusted IP addresses that will not have attack protection enforced against them. */
 export type SuspiciousIPThrottlingAllowlist = Array<string>;
@@ -29803,9 +29461,8 @@ export const UserEffectivePermissionRoleSourceEnum = S.String;
 /** List of sources where this role is coming from. */
 export type UserEffectivePermissionRoleSourceResponseContentSourcesList =
   Array<UserEffectivePermissionRoleSourceEnum>;
-export const UserEffectivePermissionRoleSourceResponseContentSourcesList = /*@__PURE__*/ S.Array(
-  UserEffectivePermissionRoleSourceEnum,
-) as any as S.Schema<UserEffectivePermissionRoleSourceResponseContentSourcesList>;
+export const UserEffectivePermissionRoleSourceResponseContentSourcesList =
+  ClientOIDCBackchannelLogoutInitiatorsSelectedInitiatorsList as any as S.Schema<UserEffectivePermissionRoleSourceResponseContentSourcesList>;
 
 export interface UserEffectivePermissionRoleSourceResponseContent {
   /** ID for this role. */
@@ -29883,9 +29540,8 @@ export const UserEffectivePermissionSourceEnum = S.String;
 /** List of sources where this permission is coming from. */
 export type UserEffectivePermissionResponseContentSourcesList =
   Array<UserEffectivePermissionSourceEnum>;
-export const UserEffectivePermissionResponseContentSourcesList = /*@__PURE__*/ S.Array(
-  UserEffectivePermissionSourceEnum,
-) as any as S.Schema<UserEffectivePermissionResponseContentSourcesList>;
+export const UserEffectivePermissionResponseContentSourcesList =
+  ClientOIDCBackchannelLogoutInitiatorsSelectedInitiatorsList as any as S.Schema<UserEffectivePermissionResponseContentSourcesList>;
 
 export interface UserEffectivePermissionResponseContent {
   /** Resource server (API) identifier that this permission is for. */
@@ -29956,9 +29612,8 @@ export const UserEffectiveRoleSource = S.String;
 
 /** Sources of the role assignment (direct or through group membership) */
 export type UserEffectiveRoleSourcesList = Array<UserEffectiveRoleSource>;
-export const UserEffectiveRoleSourcesList = /*@__PURE__*/ S.Array(
-  UserEffectiveRoleSource,
-) as any as S.Schema<UserEffectiveRoleSourcesList>;
+export const UserEffectiveRoleSourcesList =
+  ClientOIDCBackchannelLogoutInitiatorsSelectedInitiatorsList as any as S.Schema<UserEffectiveRoleSourcesList>;
 
 export interface UserEffectiveRole {
   /** Role ID */
@@ -31144,9 +30799,7 @@ export const PatchBreachedPasswordDetectionRequest = /*@__PURE__*/ S.suspend(() 
 export type UpdateBreachedPasswordDetectionSettingsResponseContentShieldsList =
   Array<BreachedPasswordDetectionShieldsEnum>;
 export const UpdateBreachedPasswordDetectionSettingsResponseContentShieldsList =
-  /*@__PURE__*/ S.Array(
-    BreachedPasswordDetectionShieldsEnum,
-  ) as any as S.Schema<UpdateBreachedPasswordDetectionSettingsResponseContentShieldsList>;
+  ClientSessionTransferConfigurationAllowedAuthenticationMethodsList as any as S.Schema<UpdateBreachedPasswordDetectionSettingsResponseContentShieldsList>;
 
 /** When "admin_notification" is enabled, determines how often email notifications are sent. Possible values: <code>immediately</code>, <code>daily</code>, <code>weekly</code>, <code>monthly</code>. */
 export type UpdateBreachedPasswordDetectionSettingsResponseContentAdminNotificationFrequencyList =
@@ -32655,9 +32308,8 @@ export const TenantSettingsSupportedLocalesEnum = S.String;
 export type PatchSettingsRequestEnabledLocalesList = Array<
   TenantSettingsSupportedLocalesEnum | (string & {})
 >;
-export const PatchSettingsRequestEnabledLocalesList = /*@__PURE__*/ S.Array(
-  TenantSettingsSupportedLocalesEnum,
-) as any as S.Schema<PatchSettingsRequestEnabledLocalesList>;
+export const PatchSettingsRequestEnabledLocalesList =
+  ClientOIDCBackchannelLogoutInitiatorsSelectedInitiatorsList as any as S.Schema<PatchSettingsRequestEnabledLocalesList>;
 
 /** Policy mode: enforcing or reporting. */
 export type CspPolicyMode = "enforcing" | "reporting";
@@ -33145,9 +32797,8 @@ export const SupportedLocales = S.String;
 
 /** Supported locales for the user interface. */
 export type UpdateTenantSettingsResponseContentEnabledLocalesList = Array<SupportedLocales>;
-export const UpdateTenantSettingsResponseContentEnabledLocalesList = /*@__PURE__*/ S.Array(
-  SupportedLocales,
-) as any as S.Schema<UpdateTenantSettingsResponseContentEnabledLocalesList>;
+export const UpdateTenantSettingsResponseContentEnabledLocalesList =
+  ClientOIDCBackchannelLogoutInitiatorsSelectedInitiatorsList as any as S.Schema<UpdateTenantSettingsResponseContentEnabledLocalesList>;
 
 /** Supported ACR values */
 export type UpdateTenantSettingsResponseContentAcrValuesSupportedList = Array<string>;
@@ -33707,9 +33358,8 @@ export const AssessorsTypeEnum = S.String;
 
 /** List of assessors to clear. */
 export type PostClearAssessorsRequestAssessorsList = Array<AssessorsTypeEnum | (string & {})>;
-export const PostClearAssessorsRequestAssessorsList = /*@__PURE__*/ S.Array(
-  AssessorsTypeEnum,
-) as any as S.Schema<PostClearAssessorsRequestAssessorsList>;
+export const PostClearAssessorsRequestAssessorsList =
+  ClientOIDCBackchannelLogoutInitiatorsSelectedInitiatorsList as any as S.Schema<PostClearAssessorsRequestAssessorsList>;
 
 export interface PostClearAssessorsRequest {
   /** ID of the user to clear assessors for. */
@@ -34572,9 +34222,8 @@ export const RegenerateUsersRecoveryCodeResponseContent = /*@__PURE__*/ S.suspen
 
 /** Filter by status */
 export type PostRedeliverRequestStatusesList = Array<EventStreamDeliveryStatusEnum | (string & {})>;
-export const PostRedeliverRequestStatusesList = /*@__PURE__*/ S.Array(
-  EventStreamDeliveryStatusEnum,
-) as any as S.Schema<PostRedeliverRequestStatusesList>;
+export const PostRedeliverRequestStatusesList =
+  ClientOIDCBackchannelLogoutInitiatorsSelectedInitiatorsList as any as S.Schema<PostRedeliverRequestStatusesList>;
 
 export type EventStreamEventTypeEnum =
   | "connection.created"
@@ -34606,9 +34255,8 @@ export const EventStreamEventTypeEnum = S.String;
 
 /** Filter by event type */
 export type PostRedeliverRequestEventTypesList = Array<EventStreamEventTypeEnum | (string & {})>;
-export const PostRedeliverRequestEventTypesList = /*@__PURE__*/ S.Array(
-  EventStreamEventTypeEnum,
-) as any as S.Schema<PostRedeliverRequestEventTypesList>;
+export const PostRedeliverRequestEventTypesList =
+  ClientOIDCBackchannelLogoutInitiatorsSelectedInitiatorsList as any as S.Schema<PostRedeliverRequestEventTypesList>;
 
 export interface PostRedeliverRequest {
   /** Unique identifier for the event stream. */
@@ -34807,9 +34455,7 @@ export const RotateClientSecretResponseContentGrantTypesList =
 export type RotateClientSecretResponseContentOrganizationDiscoveryMethodsList =
   Array<ClientOrganizationDiscoveryEnum>;
 export const RotateClientSecretResponseContentOrganizationDiscoveryMethodsList =
-  /*@__PURE__*/ S.Array(
-    ClientOrganizationDiscoveryEnum,
-  ) as any as S.Schema<RotateClientSecretResponseContentOrganizationDiscoveryMethodsList>;
+  ClientSessionTransferConfigurationAllowedAuthenticationMethodsList as any as S.Schema<RotateClientSecretResponseContentOrganizationDiscoveryMethodsList>;
 
 export interface RotateClientSecretResponseContent {
   /** ID of this client. */
@@ -35291,9 +34937,8 @@ export const SelfServiceProfileSsoTicketProvisioningScopeEnum = S.String;
 export type SelfServiceProfileSsoTicketProvisioningConfigScopesList = Array<
   SelfServiceProfileSsoTicketProvisioningScopeEnum | (string & {})
 >;
-export const SelfServiceProfileSsoTicketProvisioningConfigScopesList = /*@__PURE__*/ S.Array(
-  SelfServiceProfileSsoTicketProvisioningScopeEnum,
-) as any as S.Schema<SelfServiceProfileSsoTicketProvisioningConfigScopesList>;
+export const SelfServiceProfileSsoTicketProvisioningConfigScopesList =
+  ClientOIDCBackchannelLogoutInitiatorsSelectedInitiatorsList as any as S.Schema<SelfServiceProfileSsoTicketProvisioningConfigScopesList>;
 
 /** Configuration for Google Workspace Directory Sync during the self-service flow. */
 export interface SelfServiceProfileSsoTicketGoogleWorkspaceConfig {
@@ -36411,9 +36056,8 @@ export const PutFcmv1Response = PatchFcmResponse as any as S.Schema<PutFcmv1Resp
 export type PutMessageTypesRequestMessageTypesList = Array<
   GuardianFactorPhoneFactorMessageTypeEnum | (string & {})
 >;
-export const PutMessageTypesRequestMessageTypesList = /*@__PURE__*/ S.Array(
-  GuardianFactorPhoneFactorMessageTypeEnum,
-) as any as S.Schema<PutMessageTypesRequestMessageTypesList>;
+export const PutMessageTypesRequestMessageTypesList =
+  ClientOIDCBackchannelLogoutInitiatorsSelectedInitiatorsList as any as S.Schema<PutMessageTypesRequestMessageTypesList>;
 
 export interface PutMessageTypesRequest {
   /** The list of phone factors to enable on the tenant. Can include `sms` and `voice`. */
@@ -37040,9 +36684,8 @@ export const EventStreamSubscribeEventsEventTypeEnum = S.String;
 export type EventStreamSubscribeEventsEventTypeParam = Array<
   EventStreamSubscribeEventsEventTypeEnum | (string & {})
 >;
-export const EventStreamSubscribeEventsEventTypeParam = /*@__PURE__*/ S.Array(
-  EventStreamSubscribeEventsEventTypeEnum,
-) as any as S.Schema<EventStreamSubscribeEventsEventTypeParam>;
+export const EventStreamSubscribeEventsEventTypeParam =
+  ClientOIDCBackchannelLogoutInitiatorsSelectedInitiatorsList as any as S.Schema<EventStreamSubscribeEventsEventTypeParam>;
 
 export interface SubscribeEventsRequest {
   /** Opaque token representing position in the stream. If not provided, stream will start from the latest events. */
@@ -37573,9 +37216,7 @@ export type ClientTokenExchangeConfigurationOrNullAllowAnyProfileOfTypeList = Ar
   ClientTokenExchangeTypeEnum | (string & {})
 >;
 export const ClientTokenExchangeConfigurationOrNullAllowAnyProfileOfTypeList =
-  /*@__PURE__*/ S.Array(
-    ClientTokenExchangeTypeEnum,
-  ) as any as S.Schema<ClientTokenExchangeConfigurationOrNullAllowAnyProfileOfTypeList>;
+  ClientSessionTransferConfigurationAllowedAuthenticationMethodsList as any as S.Schema<ClientTokenExchangeConfigurationOrNullAllowAnyProfileOfTypeList>;
 
 /** Configuration for token exchange. */
 export interface ClientTokenExchangeConfigurationOrNull {
@@ -39275,13 +38916,8 @@ export interface PatchRateLimitPolicyConfigurationRequestContentCase0 {
   /** Determines the action to take when the rate limit is exceeded. */
   action: PatchRateLimitPolicyConfigurationRequestContentCase0Action;
 }
-export const PatchRateLimitPolicyConfigurationRequestContentCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: PatchRateLimitPolicyConfigurationRequestContentCase0Action,
-  }),
-).annotate({
-  identifier: "PatchRateLimitPolicyConfigurationRequestContentCase0",
-}) as any as S.Schema<PatchRateLimitPolicyConfigurationRequestContentCase0>;
+export const PatchRateLimitPolicyConfigurationRequestContentCase0 =
+  RateLimitPolicyConfigurationCase0 as any as S.Schema<PatchRateLimitPolicyConfigurationRequestContentCase0>;
 
 /** Determines the action to take when the rate limit is exceeded. */
 export type PatchRateLimitPolicyConfigurationRequestContentCase1Action = "block" | "log";
@@ -39293,14 +38929,8 @@ export interface PatchRateLimitPolicyConfigurationRequestContentCase1 {
   /** The maximum number of requests allowed per second. */
   limit: number;
 }
-export const PatchRateLimitPolicyConfigurationRequestContentCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: PatchRateLimitPolicyConfigurationRequestContentCase1Action,
-    limit: S.Number,
-  }),
-).annotate({
-  identifier: "PatchRateLimitPolicyConfigurationRequestContentCase1",
-}) as any as S.Schema<PatchRateLimitPolicyConfigurationRequestContentCase1>;
+export const PatchRateLimitPolicyConfigurationRequestContentCase1 =
+  RateLimitPolicyConfigurationCase1 as any as S.Schema<PatchRateLimitPolicyConfigurationRequestContentCase1>;
 
 /** Determines the action to take when the rate limit is exceeded. */
 export type PatchRateLimitPolicyConfigurationRequestContentCase2Action = "redirect";
@@ -39314,15 +38944,8 @@ export interface PatchRateLimitPolicyConfigurationRequestContentCase2 {
   /** The HTTPS URI to redirect to when the rate limit is exceeded. */
   redirect_uri: string;
 }
-export const PatchRateLimitPolicyConfigurationRequestContentCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: PatchRateLimitPolicyConfigurationRequestContentCase2Action,
-    limit: S.Number,
-    redirect_uri: S.String,
-  }),
-).annotate({
-  identifier: "PatchRateLimitPolicyConfigurationRequestContentCase2",
-}) as any as S.Schema<PatchRateLimitPolicyConfigurationRequestContentCase2>;
+export const PatchRateLimitPolicyConfigurationRequestContentCase2 =
+  RateLimitPolicyConfigurationCase2 as any as S.Schema<PatchRateLimitPolicyConfigurationRequestContentCase2>;
 
 export type PatchRateLimitPolicyConfigurationRequestContent =
   | PatchRateLimitPolicyConfigurationRequestContentCase0

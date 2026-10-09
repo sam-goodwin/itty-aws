@@ -824,17 +824,7 @@ export interface ClusterCreatePropertiesEncryptionCustomerManagedKeyEncryptionKe
   identityType?: ClusterCreatePropertiesEncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityIdentityType;
 }
 export const ClusterCreatePropertiesEncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      userAssignedIdentityResourceId: S.optional(S.String),
-      identityType: S.optional(
-        ClusterCreatePropertiesEncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityIdentityType,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "ClusterCreatePropertiesEncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentity",
-  }) as any as S.Schema<ClusterCreatePropertiesEncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentity>;
+  ClusterCreatePropertiesInputEncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentity as any as S.Schema<ClusterCreatePropertiesEncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentity>;
 
 /** All Customer-managed key encryption properties for the resource. Set this to an empty object to use Microsoft-managed key encryption. */
 export interface ClusterCreatePropertiesEncryptionCustomerManagedKeyEncryption {
@@ -844,31 +834,15 @@ export interface ClusterCreatePropertiesEncryptionCustomerManagedKeyEncryption {
   keyEncryptionKeyUrl?: string;
 }
 export const ClusterCreatePropertiesEncryptionCustomerManagedKeyEncryption =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      keyEncryptionKeyIdentity: S.optional(
-        ClusterCreatePropertiesEncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentity,
-      ),
-      keyEncryptionKeyUrl: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ClusterCreatePropertiesEncryptionCustomerManagedKeyEncryption",
-  }) as any as S.Schema<ClusterCreatePropertiesEncryptionCustomerManagedKeyEncryption>;
+  ClusterCreatePropertiesInputEncryptionCustomerManagedKeyEncryption as any as S.Schema<ClusterCreatePropertiesEncryptionCustomerManagedKeyEncryption>;
 
 /** Encryption-at-rest configuration for the cluster. */
 export interface ClusterCreatePropertiesEncryption {
   /** All Customer-managed key encryption properties for the resource. Set this to an empty object to use Microsoft-managed key encryption. */
   customerManagedKeyEncryption?: ClusterCreatePropertiesEncryptionCustomerManagedKeyEncryption;
 }
-export const ClusterCreatePropertiesEncryption = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customerManagedKeyEncryption: S.optional(
-      ClusterCreatePropertiesEncryptionCustomerManagedKeyEncryption,
-    ),
-  }),
-).annotate({
-  identifier: "ClusterCreatePropertiesEncryption",
-}) as any as S.Schema<ClusterCreatePropertiesEncryption>;
+export const ClusterCreatePropertiesEncryption =
+  ClusterCreatePropertiesInputEncryption as any as S.Schema<ClusterCreatePropertiesEncryption>;
 
 /** Explains the current redundancy strategy of the cluster, which affects the expected SLA. */
 export type ClusterCreatePropertiesRedundancyMode = "None" | "LR" | "ZR";
@@ -2521,17 +2495,7 @@ export interface ClusterUpdatePropertiesInputEncryptionCustomerManagedKeyEncrypt
     | (string & {});
 }
 export const ClusterUpdatePropertiesInputEncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      userAssignedIdentityResourceId: S.optional(S.String),
-      identityType: S.optional(
-        ClusterUpdatePropertiesInputEncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityIdentityType,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "ClusterUpdatePropertiesInputEncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentity",
-  }) as any as S.Schema<ClusterUpdatePropertiesInputEncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentity>;
+  ClusterCreatePropertiesInputEncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentity as any as S.Schema<ClusterUpdatePropertiesInputEncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentity>;
 
 /** All Customer-managed key encryption properties for the resource. Set this to an empty object to use Microsoft-managed key encryption. */
 export interface ClusterUpdatePropertiesInputEncryptionCustomerManagedKeyEncryption {
@@ -2541,31 +2505,15 @@ export interface ClusterUpdatePropertiesInputEncryptionCustomerManagedKeyEncrypt
   keyEncryptionKeyUrl?: string;
 }
 export const ClusterUpdatePropertiesInputEncryptionCustomerManagedKeyEncryption =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      keyEncryptionKeyIdentity: S.optional(
-        ClusterUpdatePropertiesInputEncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentity,
-      ),
-      keyEncryptionKeyUrl: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ClusterUpdatePropertiesInputEncryptionCustomerManagedKeyEncryption",
-  }) as any as S.Schema<ClusterUpdatePropertiesInputEncryptionCustomerManagedKeyEncryption>;
+  ClusterCreatePropertiesInputEncryptionCustomerManagedKeyEncryption as any as S.Schema<ClusterUpdatePropertiesInputEncryptionCustomerManagedKeyEncryption>;
 
 /** Encryption-at-rest configuration for the cluster. */
 export interface ClusterUpdatePropertiesInputEncryption {
   /** All Customer-managed key encryption properties for the resource. Set this to an empty object to use Microsoft-managed key encryption. */
   customerManagedKeyEncryption?: ClusterUpdatePropertiesInputEncryptionCustomerManagedKeyEncryption;
 }
-export const ClusterUpdatePropertiesInputEncryption = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customerManagedKeyEncryption: S.optional(
-      ClusterUpdatePropertiesInputEncryptionCustomerManagedKeyEncryption,
-    ),
-  }),
-).annotate({
-  identifier: "ClusterUpdatePropertiesInputEncryption",
-}) as any as S.Schema<ClusterUpdatePropertiesInputEncryption>;
+export const ClusterUpdatePropertiesInputEncryption =
+  ClusterCreatePropertiesInputEncryption as any as S.Schema<ClusterUpdatePropertiesInputEncryption>;
 
 /** Whether or not public network traffic can access the Redis cluster. Only 'Enabled' or 'Disabled' can be set. null is returned only for clusters created using an old API version which do not have this property and cannot be set. */
 export type ClusterUpdatePropertiesInputPublicNetworkAccess = "Enabled" | "Disabled";

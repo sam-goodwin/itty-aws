@@ -424,14 +424,8 @@ export interface AppsCreateResultSpectrumConfigPaygoAppConfigDns {
   /** The type of DNS record associated with the application. */
   type?: AppsCreateResultSpectrumConfigPaygoAppConfigDnsType | null;
 }
-export const AppsCreateResultSpectrumConfigPaygoAppConfigDns = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.NullOr(S.String)),
-    type: S.optional(S.NullOr(AppsCreateResultSpectrumConfigPaygoAppConfigDnsType)),
-  }),
-).annotate({
-  identifier: "AppsCreateResultSpectrumConfigPaygoAppConfigDns",
-}) as any as S.Schema<AppsCreateResultSpectrumConfigPaygoAppConfigDns>;
+export const AppsCreateResultSpectrumConfigPaygoAppConfigDns =
+  AppsCreateResultSpectrumConfigAppConfigDns as any as S.Schema<AppsCreateResultSpectrumConfigPaygoAppConfigDns>;
 
 export type AppsCreateResultSpectrumConfigPaygoAppConfigOriginDirectList = Array<string>;
 export const AppsCreateResultSpectrumConfigPaygoAppConfigOriginDirectList =
@@ -733,9 +727,8 @@ export const AnalyticsEventsBytimesGetResponseQueryDimensionsItem = S.String;
 
 export type AnalyticsEventsBytimesGetResponseQueryDimensionsList =
   Array<AnalyticsEventsBytimesGetResponseQueryDimensionsItem>;
-export const AnalyticsEventsBytimesGetResponseQueryDimensionsList = /*@__PURE__*/ S.Array(
-  AnalyticsEventsBytimesGetResponseQueryDimensionsItem,
-) as any as S.Schema<AnalyticsEventsBytimesGetResponseQueryDimensionsList>;
+export const AnalyticsEventsBytimesGetResponseQueryDimensionsList =
+  AnalyticsEventsBytimesGetRequestMetricsList as any as S.Schema<AnalyticsEventsBytimesGetResponseQueryDimensionsList>;
 
 export type AnalyticsEventsBytimesGetResponseQueryMetricsItem =
   | "count"
@@ -749,9 +742,8 @@ export const AnalyticsEventsBytimesGetResponseQueryMetricsItem = S.String;
 
 export type AnalyticsEventsBytimesGetResponseQueryMetricsList =
   Array<AnalyticsEventsBytimesGetResponseQueryMetricsItem>;
-export const AnalyticsEventsBytimesGetResponseQueryMetricsList = /*@__PURE__*/ S.Array(
-  AnalyticsEventsBytimesGetResponseQueryMetricsItem,
-) as any as S.Schema<AnalyticsEventsBytimesGetResponseQueryMetricsList>;
+export const AnalyticsEventsBytimesGetResponseQueryMetricsList =
+  AnalyticsEventsBytimesGetRequestMetricsList as any as S.Schema<AnalyticsEventsBytimesGetResponseQueryMetricsList>;
 
 export type AnalyticsEventsBytimesGetResponseQuerySortList = Array<string>;
 export const AnalyticsEventsBytimesGetResponseQuerySortList =
@@ -853,9 +845,8 @@ export const AnalyticsEventsSummariesGetRequestMetrics = S.String;
 export type AnalyticsEventsSummariesGetRequestMetricsList = Array<
   AnalyticsEventsSummariesGetRequestMetrics | (string & {})
 >;
-export const AnalyticsEventsSummariesGetRequestMetricsList = /*@__PURE__*/ S.Array(
-  AnalyticsEventsSummariesGetRequestMetrics,
-) as any as S.Schema<AnalyticsEventsSummariesGetRequestMetricsList>;
+export const AnalyticsEventsSummariesGetRequestMetricsList =
+  AnalyticsEventsBytimesGetRequestMetricsList as any as S.Schema<AnalyticsEventsSummariesGetRequestMetricsList>;
 
 export type AnalyticsEventsSummariesGetRequestSortList = Array<string>;
 export const AnalyticsEventsSummariesGetRequestSortList =
@@ -962,9 +953,8 @@ export const AnalyticsEventsSummariesGetResponseQueryDimensionsItem = S.String;
 
 export type AnalyticsEventsSummariesGetResponseQueryDimensionsList =
   Array<AnalyticsEventsSummariesGetResponseQueryDimensionsItem>;
-export const AnalyticsEventsSummariesGetResponseQueryDimensionsList = /*@__PURE__*/ S.Array(
-  AnalyticsEventsSummariesGetResponseQueryDimensionsItem,
-) as any as S.Schema<AnalyticsEventsSummariesGetResponseQueryDimensionsList>;
+export const AnalyticsEventsSummariesGetResponseQueryDimensionsList =
+  AnalyticsEventsBytimesGetRequestMetricsList as any as S.Schema<AnalyticsEventsSummariesGetResponseQueryDimensionsList>;
 
 export type AnalyticsEventsSummariesGetResponseQueryMetricsItem =
   | "count"
@@ -978,9 +968,8 @@ export const AnalyticsEventsSummariesGetResponseQueryMetricsItem = S.String;
 
 export type AnalyticsEventsSummariesGetResponseQueryMetricsList =
   Array<AnalyticsEventsSummariesGetResponseQueryMetricsItem>;
-export const AnalyticsEventsSummariesGetResponseQueryMetricsList = /*@__PURE__*/ S.Array(
-  AnalyticsEventsSummariesGetResponseQueryMetricsItem,
-) as any as S.Schema<AnalyticsEventsSummariesGetResponseQueryMetricsList>;
+export const AnalyticsEventsSummariesGetResponseQueryMetricsList =
+  AnalyticsEventsBytimesGetRequestMetricsList as any as S.Schema<AnalyticsEventsSummariesGetResponseQueryMetricsList>;
 
 export type AnalyticsEventsSummariesGetResponseQuerySortList = Array<string>;
 export const AnalyticsEventsSummariesGetResponseQuerySortList =
@@ -1088,14 +1077,8 @@ export interface AppsGetResultSpectrumConfigAppConfigDns {
   /** The type of DNS record associated with the application. */
   type?: AppsGetResultSpectrumConfigAppConfigDnsType | null;
 }
-export const AppsGetResultSpectrumConfigAppConfigDns = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.NullOr(S.String)),
-    type: S.optional(S.NullOr(AppsGetResultSpectrumConfigAppConfigDnsType)),
-  }),
-).annotate({
-  identifier: "AppsGetResultSpectrumConfigAppConfigDns",
-}) as any as S.Schema<AppsGetResultSpectrumConfigAppConfigDns>;
+export const AppsGetResultSpectrumConfigAppConfigDns =
+  AppsCreateResultSpectrumConfigAppConfigDns as any as S.Schema<AppsGetResultSpectrumConfigAppConfigDns>;
 
 export type AppsGetResultSpectrumConfigAppConfigTrafficType =
   | "direct"
@@ -1119,16 +1102,8 @@ export interface AppsGetResultSpectrumConfigAppConfigEdgeIpsDynamic {
   /** The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names. */
   type?: AppsGetResultSpectrumConfigAppConfigEdgeIpsDynamicType | null;
 }
-export const AppsGetResultSpectrumConfigAppConfigEdgeIpsDynamic = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    connectivity: S.optional(
-      S.NullOr(AppsGetResultSpectrumConfigAppConfigEdgeIpsDynamicConnectivity),
-    ),
-    type: S.optional(S.NullOr(AppsGetResultSpectrumConfigAppConfigEdgeIpsDynamicType)),
-  }),
-).annotate({
-  identifier: "AppsGetResultSpectrumConfigAppConfigEdgeIpsDynamic",
-}) as any as S.Schema<AppsGetResultSpectrumConfigAppConfigEdgeIpsDynamic>;
+export const AppsGetResultSpectrumConfigAppConfigEdgeIpsDynamic =
+  AppsCreateResultSpectrumConfigAppConfigEdgeIpsDynamic as any as S.Schema<AppsGetResultSpectrumConfigAppConfigEdgeIpsDynamic>;
 
 export type AppsGetResultSpectrumConfigAppConfigEdgeIpsStaticIpsList = Array<string>;
 export const AppsGetResultSpectrumConfigAppConfigEdgeIpsStaticIpsList =
@@ -1180,15 +1155,8 @@ export interface AppsGetResultSpectrumConfigAppConfigOriginDns {
   /** The type of DNS record associated with the origin. "" is used to specify a combination of A/AAAA records. */
   type?: AppsGetResultSpectrumConfigAppConfigOriginDnsType | null;
 }
-export const AppsGetResultSpectrumConfigAppConfigOriginDns = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.NullOr(S.String)),
-    ttl: S.optional(S.NullOr(S.Number)),
-    type: S.optional(S.NullOr(AppsGetResultSpectrumConfigAppConfigOriginDnsType)),
-  }),
-).annotate({
-  identifier: "AppsGetResultSpectrumConfigAppConfigOriginDns",
-}) as any as S.Schema<AppsGetResultSpectrumConfigAppConfigOriginDns>;
+export const AppsGetResultSpectrumConfigAppConfigOriginDns =
+  AppsCreateResultSpectrumConfigAppConfigOriginDns as any as S.Schema<AppsGetResultSpectrumConfigAppConfigOriginDns>;
 
 export type AppsGetResultSpectrumConfigAppConfigOriginPort = string | number;
 export const AppsGetResultSpectrumConfigAppConfigOriginPort = /*@__PURE__*/ S.Unknown.pipe(
@@ -1277,14 +1245,8 @@ export interface AppsGetResultSpectrumConfigPaygoAppConfigDns {
   /** The type of DNS record associated with the application. */
   type?: AppsGetResultSpectrumConfigPaygoAppConfigDnsType | null;
 }
-export const AppsGetResultSpectrumConfigPaygoAppConfigDns = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.NullOr(S.String)),
-    type: S.optional(S.NullOr(AppsGetResultSpectrumConfigPaygoAppConfigDnsType)),
-  }),
-).annotate({
-  identifier: "AppsGetResultSpectrumConfigPaygoAppConfigDns",
-}) as any as S.Schema<AppsGetResultSpectrumConfigPaygoAppConfigDns>;
+export const AppsGetResultSpectrumConfigPaygoAppConfigDns =
+  AppsCreateResultSpectrumConfigAppConfigDns as any as S.Schema<AppsGetResultSpectrumConfigPaygoAppConfigDns>;
 
 export type AppsGetResultSpectrumConfigPaygoAppConfigOriginDirectList = Array<string>;
 export const AppsGetResultSpectrumConfigPaygoAppConfigOriginDirectList =
@@ -1392,14 +1354,8 @@ export interface AppsListResultCase0ItemDns {
   /** The type of DNS record associated with the application. */
   type?: AppsListResultCase0ItemDnsType | null;
 }
-export const AppsListResultCase0ItemDns = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.NullOr(S.String)),
-    type: S.optional(S.NullOr(AppsListResultCase0ItemDnsType)),
-  }),
-).annotate({
-  identifier: "AppsListResultCase0ItemDns",
-}) as any as S.Schema<AppsListResultCase0ItemDns>;
+export const AppsListResultCase0ItemDns =
+  AppsCreateResultSpectrumConfigAppConfigDns as any as S.Schema<AppsListResultCase0ItemDns>;
 
 export type AppsListResultCase0ItemTrafficType = "direct" | "http" | "https" | "worker";
 export const AppsListResultCase0ItemTrafficType = S.String;
@@ -1475,15 +1431,8 @@ export interface AppsListResultCase0ItemOriginDns {
   /** The type of DNS record associated with the origin. "" is used to specify a combination of A/AAAA records. */
   type?: AppsListResultCase0ItemOriginDnsType | null;
 }
-export const AppsListResultCase0ItemOriginDns = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.NullOr(S.String)),
-    ttl: S.optional(S.NullOr(S.Number)),
-    type: S.optional(S.NullOr(AppsListResultCase0ItemOriginDnsType)),
-  }),
-).annotate({
-  identifier: "AppsListResultCase0ItemOriginDns",
-}) as any as S.Schema<AppsListResultCase0ItemOriginDns>;
+export const AppsListResultCase0ItemOriginDns =
+  AppsCreateResultSpectrumConfigAppConfigOriginDns as any as S.Schema<AppsListResultCase0ItemOriginDns>;
 
 export type AppsListResultCase0ItemOriginPort = string | number;
 export const AppsListResultCase0ItemOriginPort = /*@__PURE__*/ S.Unknown.pipe(
@@ -1569,14 +1518,8 @@ export interface AppsListResultCase1ItemDns {
   /** The type of DNS record associated with the application. */
   type?: AppsListResultCase1ItemDnsType | null;
 }
-export const AppsListResultCase1ItemDns = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.NullOr(S.String)),
-    type: S.optional(S.NullOr(AppsListResultCase1ItemDnsType)),
-  }),
-).annotate({
-  identifier: "AppsListResultCase1ItemDns",
-}) as any as S.Schema<AppsListResultCase1ItemDns>;
+export const AppsListResultCase1ItemDns =
+  AppsCreateResultSpectrumConfigAppConfigDns as any as S.Schema<AppsListResultCase1ItemDns>;
 
 export type AppsListResultCase1ItemOriginDirectList = Array<string>;
 export const AppsListResultCase1ItemOriginDirectList =
@@ -1684,12 +1627,7 @@ export interface AppsUpdateRequestDns {
   /** The type of DNS record associated with the application. */
   type?: AppsUpdateRequestDnsType | (string & {});
 }
-export const AppsUpdateRequestDns = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    type: S.optional(AppsUpdateRequestDnsType),
-  }),
-).annotate({ identifier: "AppsUpdateRequestDns" }) as any as S.Schema<AppsUpdateRequestDns>;
+export const AppsUpdateRequestDns = AppsCreateRequestDns as any as S.Schema<AppsUpdateRequestDns>;
 
 export type AppsUpdateRequestTrafficType = "direct" | "http" | "https" | "worker";
 export const AppsUpdateRequestTrafficType = S.String;
@@ -1706,14 +1644,8 @@ export interface AppsUpdateRequestEdgeIpsDynamic {
   /** The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names. */
   type?: AppsUpdateRequestEdgeIpsDynamicType | (string & {});
 }
-export const AppsUpdateRequestEdgeIpsDynamic = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    connectivity: S.optional(AppsUpdateRequestEdgeIpsDynamicConnectivity),
-    type: S.optional(AppsUpdateRequestEdgeIpsDynamicType),
-  }),
-).annotate({
-  identifier: "AppsUpdateRequestEdgeIpsDynamic",
-}) as any as S.Schema<AppsUpdateRequestEdgeIpsDynamic>;
+export const AppsUpdateRequestEdgeIpsDynamic =
+  AppsCreateRequestEdgeIpsDynamic as any as S.Schema<AppsUpdateRequestEdgeIpsDynamic>;
 
 export type AppsUpdateRequestEdgeIpsStaticIpsList = Array<string>;
 export const AppsUpdateRequestEdgeIpsStaticIpsList =
@@ -1765,15 +1697,8 @@ export interface AppsUpdateRequestOriginDns {
   /** The type of DNS record associated with the origin. "" is used to specify a combination of A/AAAA records. */
   type?: AppsUpdateRequestOriginDnsType | (string & {});
 }
-export const AppsUpdateRequestOriginDns = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    ttl: S.optional(S.Number),
-    type: S.optional(AppsUpdateRequestOriginDnsType),
-  }),
-).annotate({
-  identifier: "AppsUpdateRequestOriginDns",
-}) as any as S.Schema<AppsUpdateRequestOriginDns>;
+export const AppsUpdateRequestOriginDns =
+  AppsCreateRequestOriginDns as any as S.Schema<AppsUpdateRequestOriginDns>;
 
 export type AppsUpdateRequestOriginPort = string | number;
 export const AppsUpdateRequestOriginPort = /*@__PURE__*/ S.Unknown.pipe(
@@ -1849,14 +1774,8 @@ export interface AppsUpdateResultSpectrumConfigAppConfigDns {
   /** The type of DNS record associated with the application. */
   type?: AppsUpdateResultSpectrumConfigAppConfigDnsType | null;
 }
-export const AppsUpdateResultSpectrumConfigAppConfigDns = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.NullOr(S.String)),
-    type: S.optional(S.NullOr(AppsUpdateResultSpectrumConfigAppConfigDnsType)),
-  }),
-).annotate({
-  identifier: "AppsUpdateResultSpectrumConfigAppConfigDns",
-}) as any as S.Schema<AppsUpdateResultSpectrumConfigAppConfigDns>;
+export const AppsUpdateResultSpectrumConfigAppConfigDns =
+  AppsCreateResultSpectrumConfigAppConfigDns as any as S.Schema<AppsUpdateResultSpectrumConfigAppConfigDns>;
 
 export type AppsUpdateResultSpectrumConfigAppConfigTrafficType =
   | "direct"
@@ -1880,16 +1799,8 @@ export interface AppsUpdateResultSpectrumConfigAppConfigEdgeIpsDynamic {
   /** The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names. */
   type?: AppsUpdateResultSpectrumConfigAppConfigEdgeIpsDynamicType | null;
 }
-export const AppsUpdateResultSpectrumConfigAppConfigEdgeIpsDynamic = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    connectivity: S.optional(
-      S.NullOr(AppsUpdateResultSpectrumConfigAppConfigEdgeIpsDynamicConnectivity),
-    ),
-    type: S.optional(S.NullOr(AppsUpdateResultSpectrumConfigAppConfigEdgeIpsDynamicType)),
-  }),
-).annotate({
-  identifier: "AppsUpdateResultSpectrumConfigAppConfigEdgeIpsDynamic",
-}) as any as S.Schema<AppsUpdateResultSpectrumConfigAppConfigEdgeIpsDynamic>;
+export const AppsUpdateResultSpectrumConfigAppConfigEdgeIpsDynamic =
+  AppsCreateResultSpectrumConfigAppConfigEdgeIpsDynamic as any as S.Schema<AppsUpdateResultSpectrumConfigAppConfigEdgeIpsDynamic>;
 
 export type AppsUpdateResultSpectrumConfigAppConfigEdgeIpsStaticIpsList = Array<string>;
 export const AppsUpdateResultSpectrumConfigAppConfigEdgeIpsStaticIpsList =
@@ -1941,15 +1852,8 @@ export interface AppsUpdateResultSpectrumConfigAppConfigOriginDns {
   /** The type of DNS record associated with the origin. "" is used to specify a combination of A/AAAA records. */
   type?: AppsUpdateResultSpectrumConfigAppConfigOriginDnsType | null;
 }
-export const AppsUpdateResultSpectrumConfigAppConfigOriginDns = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.NullOr(S.String)),
-    ttl: S.optional(S.NullOr(S.Number)),
-    type: S.optional(S.NullOr(AppsUpdateResultSpectrumConfigAppConfigOriginDnsType)),
-  }),
-).annotate({
-  identifier: "AppsUpdateResultSpectrumConfigAppConfigOriginDns",
-}) as any as S.Schema<AppsUpdateResultSpectrumConfigAppConfigOriginDns>;
+export const AppsUpdateResultSpectrumConfigAppConfigOriginDns =
+  AppsCreateResultSpectrumConfigAppConfigOriginDns as any as S.Schema<AppsUpdateResultSpectrumConfigAppConfigOriginDns>;
 
 export type AppsUpdateResultSpectrumConfigAppConfigOriginPort = string | number;
 export const AppsUpdateResultSpectrumConfigAppConfigOriginPort = /*@__PURE__*/ S.Unknown.pipe(
@@ -2040,14 +1944,8 @@ export interface AppsUpdateResultSpectrumConfigPaygoAppConfigDns {
   /** The type of DNS record associated with the application. */
   type?: AppsUpdateResultSpectrumConfigPaygoAppConfigDnsType | null;
 }
-export const AppsUpdateResultSpectrumConfigPaygoAppConfigDns = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.NullOr(S.String)),
-    type: S.optional(S.NullOr(AppsUpdateResultSpectrumConfigPaygoAppConfigDnsType)),
-  }),
-).annotate({
-  identifier: "AppsUpdateResultSpectrumConfigPaygoAppConfigDns",
-}) as any as S.Schema<AppsUpdateResultSpectrumConfigPaygoAppConfigDns>;
+export const AppsUpdateResultSpectrumConfigPaygoAppConfigDns =
+  AppsCreateResultSpectrumConfigAppConfigDns as any as S.Schema<AppsUpdateResultSpectrumConfigPaygoAppConfigDns>;
 
 export type AppsUpdateResultSpectrumConfigPaygoAppConfigOriginDirectList = Array<string>;
 export const AppsUpdateResultSpectrumConfigPaygoAppConfigOriginDirectList =

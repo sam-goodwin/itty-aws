@@ -230,20 +230,8 @@ export interface GetCustomTrustStoreResponse {
   /** When the certificate was uploaded to Cloudflare. */
   uploadedOn: string;
 }
-export const GetCustomTrustStoreResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    certificate: S.String,
-    expiresOn: S.String.pipe(T.Body("expires_on")),
-    issuer: S.String,
-    signature: S.String,
-    status: CustomTrustStoreGetResponseStatus,
-    updatedAt: S.String.pipe(T.Body("updated_at")),
-    uploadedOn: S.String.pipe(T.Body("uploaded_on")),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "GetCustomTrustStoreResponse",
-}) as any as S.Schema<GetCustomTrustStoreResponse>;
+export const GetCustomTrustStoreResponse =
+  CreateCustomTrustStoreResponse as any as S.Schema<GetCustomTrustStoreResponse>;
 
 export interface GetTotalTlRequest {
   /** Identifier. */
@@ -410,17 +398,7 @@ export interface UpdateTotalTlResponse {
   /** The validity period in days for the certificates ordered via Total TLS. */
   validityPeriod?: TotalTlsEditResponseValidityPeriod | null;
 }
-export const UpdateTotalTlResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    certificateAuthority: S.optional(
-      S.NullOr(TotalTlsEditResponseCertificateAuthority).pipe(T.Body("certificate_authority")),
-    ),
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    validityPeriod: S.optional(
-      S.NullOr(TotalTlsEditResponseValidityPeriod).pipe(T.Body("validity_period")),
-    ),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "UpdateTotalTlResponse" }) as any as S.Schema<UpdateTotalTlResponse>;
+export const UpdateTotalTlResponse = GetTotalTlResponse as any as S.Schema<UpdateTotalTlResponse>;
 
 export type UpdateTotalTlsRequestCertificateAuthority = "google" | "lets_encrypt" | "ssl_com";
 export const UpdateTotalTlsRequestCertificateAuthority = S.String;
@@ -460,17 +438,7 @@ export interface UpdateTotalTlsResponse {
   /** The validity period in days for the certificates ordered via Total TLS. */
   validityPeriod?: UpdateTotalTlsResponseValidityPeriod | null;
 }
-export const UpdateTotalTlsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    certificateAuthority: S.optional(
-      S.NullOr(UpdateTotalTlsResponseCertificateAuthority).pipe(T.Body("certificate_authority")),
-    ),
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    validityPeriod: S.optional(
-      S.NullOr(UpdateTotalTlsResponseValidityPeriod).pipe(T.Body("validity_period")),
-    ),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "UpdateTotalTlsResponse" }) as any as S.Schema<UpdateTotalTlsResponse>;
+export const UpdateTotalTlsResponse = GetTotalTlResponse as any as S.Schema<UpdateTotalTlsResponse>;
 
 export type CreateCustomTrustStoreError =
   | InvalidObjectIdentifier

@@ -1538,9 +1538,8 @@ export const TaxForm = S.String;
 
 /** Required tax attestation forms the Customer has not yet completed. This field appears only under the requirement key `taxAttestation`. Submit each `form` back via `taxAttestations[].form` on `Update Customer` (or `Create Customer`) together with the other fields required for that form to clear the requirement. */
 export type RequirementTaxFormsList = Array<TaxForm>;
-export const RequirementTaxFormsList = /*@__PURE__*/ S.Array(
-  TaxForm,
-) as any as S.Schema<RequirementTaxFormsList>;
+export const RequirementTaxFormsList =
+  RequirementImpactList as any as S.Schema<RequirementTaxFormsList>;
 
 /** A single requirement that a customer must submit to enable capabilities. Requirements are only shown for requested capabilities. */
 export interface Requirement {
@@ -1899,9 +1898,8 @@ export const BankAccountUSCurrency = S.String;
 
 /** The payment rails this account can receive deposits on. */
 export type BankAccountUSSupportedRailsList = Array<DepositDestinationPaymentRail>;
-export const BankAccountUSSupportedRailsList = /*@__PURE__*/ S.Array(
-  DepositDestinationPaymentRail,
-) as any as S.Schema<BankAccountUSSupportedRailsList>;
+export const BankAccountUSSupportedRailsList =
+  RequirementImpactList as any as S.Schema<BankAccountUSSupportedRailsList>;
 
 /** A US bank account identified by ABA routing number and account number. */
 export interface BankAccountUS {
@@ -3636,9 +3634,8 @@ export const EvmNetworkCriterionNetworksItem = S.String;
 export type EvmNetworkCriterionNetworksList = Array<
   EvmNetworkCriterionNetworksItem | (string & {})
 >;
-export const EvmNetworkCriterionNetworksList = /*@__PURE__*/ S.Array(
-  EvmNetworkCriterionNetworksItem,
-) as any as S.Schema<EvmNetworkCriterionNetworksList>;
+export const EvmNetworkCriterionNetworksList =
+  RequirementImpactList as any as S.Schema<EvmNetworkCriterionNetworksList>;
 
 /** The operator to use for the comparison. The transaction's intended `network` will be on the left-hand side of the operator, and the `networks` field will be on the right-hand side. */
 export type EvmNetworkCriterionOperator = "in" | "not in";
@@ -4246,15 +4243,8 @@ export interface SolDataParameterCondition {
   /** The value to compare against. */
   value: string;
 }
-export const SolDataParameterCondition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    operator: SolDataParameterConditionOperator,
-    value: S.String,
-  }),
-).annotate({
-  identifier: "SolDataParameterCondition",
-}) as any as S.Schema<SolDataParameterCondition>;
+export const SolDataParameterCondition =
+  EvmDataParameterCondition as any as S.Schema<SolDataParameterCondition>;
 
 /** The operator to use for the comparison. The value resolved at the `name` will be on the left-hand side of the operator, and the `value` field will be on the right-hand side. */
 export type SolDataParameterConditionListOperator = "in" | "not in";
@@ -4413,9 +4403,8 @@ export const SolNetworkCriterionNetworksItem = S.String;
 export type SolNetworkCriterionNetworksList = Array<
   SolNetworkCriterionNetworksItem | (string & {})
 >;
-export const SolNetworkCriterionNetworksList = /*@__PURE__*/ S.Array(
-  SolNetworkCriterionNetworksItem,
-) as any as S.Schema<SolNetworkCriterionNetworksList>;
+export const SolNetworkCriterionNetworksList =
+  RequirementImpactList as any as S.Schema<SolNetworkCriterionNetworksList>;
 
 /** The operator to use for the comparison. The transaction's intended network will be on the left-hand side of the operator, and the `networks` field will be on the right-hand side. */
 export type SolNetworkCriterionOperator = "in" | "not in";
@@ -4430,13 +4419,7 @@ export interface SolNetworkCriterion {
   /** The operator to use for the comparison. The transaction's intended network will be on the left-hand side of the operator, and the `networks` field will be on the right-hand side. */
   operator: SolNetworkCriterionOperator | (string & {});
 }
-export const SolNetworkCriterion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: SolNetworkCriterionType,
-    networks: SolNetworkCriterionNetworksList,
-    operator: SolNetworkCriterionOperator,
-  }),
-).annotate({ identifier: "SolNetworkCriterion" }) as any as S.Schema<SolNetworkCriterion>;
+export const SolNetworkCriterion = EvmNetworkCriterion as any as S.Schema<SolNetworkCriterion>;
 
 export type SendSolTransactionCriteriaItem =
   | SolAddressCriterion
@@ -4490,18 +4473,12 @@ export interface SolMessageCriterion {
   /** A regular expression the field is matched against. */
   match: string;
 }
-export const SolMessageCriterion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: SolMessageCriterionType,
-    match: S.String,
-  }),
-).annotate({ identifier: "SolMessageCriterion" }) as any as S.Schema<SolMessageCriterion>;
+export const SolMessageCriterion = EvmMessageCriterion as any as S.Schema<SolMessageCriterion>;
 
 /** A schema for specifying criteria for the SignSolMessage operation. */
 export type SignSolMessageCriteria = Array<SolMessageCriterion>;
-export const SignSolMessageCriteria = /*@__PURE__*/ S.Array(
-  SolMessageCriterion,
-) as any as S.Schema<SignSolMessageCriteria>;
+export const SignSolMessageCriteria =
+  SignEvmMessageCriteria as any as S.Schema<SignSolMessageCriteria>;
 
 export interface SignSolMessageRule {
   /** Whether matching the rule will cause the request to be rejected or accepted. */
@@ -4510,13 +4487,7 @@ export interface SignSolMessageRule {
   operation: SignSolMessageRuleOperation;
   criteria: SignSolMessageCriteria;
 }
-export const SignSolMessageRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: SignSolMessageRuleAction,
-    operation: SignSolMessageRuleOperation,
-    criteria: SignSolMessageCriteria,
-  }),
-).annotate({ identifier: "SignSolMessageRule" }) as any as S.Schema<SignSolMessageRule>;
+export const SignSolMessageRule = SignEvmMessageRule as any as S.Schema<SignSolMessageRule>;
 
 /** Whether any attempts to sign a hash will be accepted or rejected. This rule does not accept any criteria. */
 export type SignEvmHashRuleAction = "reject" | "accept";
@@ -4775,12 +4746,7 @@ export interface SignEndUserEvmHashRule {
   /** The operation to which the rule applies. */
   operation: SignEndUserEvmHashRuleOperation;
 }
-export const SignEndUserEvmHashRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: SignEndUserEvmHashRuleAction,
-    operation: SignEndUserEvmHashRuleOperation,
-  }),
-).annotate({ identifier: "SignEndUserEvmHashRule" }) as any as S.Schema<SignEndUserEvmHashRule>;
+export const SignEndUserEvmHashRule = SignEvmHashRule as any as S.Schema<SignEndUserEvmHashRule>;
 
 /** Whether matching the rule will cause the request to be rejected or accepted. */
 export type SignEndUserSolTransactionRuleAction = "reject" | "accept";
@@ -5688,9 +5654,8 @@ export const EventType = S.String;
 
 /** Types of events to subscribe to. Event types follow a dot-separated format: service.resource.verb (e.g., "onchain.activity.detected", "wallet.activity.detected", "onramp.transaction.created", "acceptance.payment_session.authorization_succeeded"). The subscription will only receive events matching these types AND the label filter(s). */
 export type CreateWebhookSubscriptionRequestEventTypesList = Array<EventType | (string & {})>;
-export const CreateWebhookSubscriptionRequestEventTypesList = /*@__PURE__*/ S.Array(
-  EventType,
-) as any as S.Schema<CreateWebhookSubscriptionRequestEventTypesList>;
+export const CreateWebhookSubscriptionRequestEventTypesList =
+  RequirementImpactList as any as S.Schema<CreateWebhookSubscriptionRequestEventTypesList>;
 
 /** Additional headers to include in webhook requests. */
 export type WebhookTargetHeadersMap = { [key: string]: string | undefined };
@@ -6731,9 +6696,8 @@ export const OnrampLimitUpgradeIdentityFieldKey = S.String;
 
 /** The identity fields associated with the current status. Contains fields to submit for `unrequested` and `resubmit`, fields pending review for `pending`, and is empty for `active` and `inactive`. */
 export type OnrampLimitUpgradeOptionFieldsList = Array<OnrampLimitUpgradeIdentityFieldKey>;
-export const OnrampLimitUpgradeOptionFieldsList = /*@__PURE__*/ S.Array(
-  OnrampLimitUpgradeIdentityFieldKey,
-) as any as S.Schema<OnrampLimitUpgradeOptionFieldsList>;
+export const OnrampLimitUpgradeOptionFieldsList =
+  RequirementImpactList as any as S.Schema<OnrampLimitUpgradeOptionFieldsList>;
 
 /** Describes a limit value associated with an upgrade. */
 export interface OnrampLimitUpgrade {
@@ -7302,13 +7266,7 @@ export interface Permit2Payload {
   /** EIP-712 typed data for a Permit2 PermitTransferFrom. Pass to `eth_signTypedData_v4`. */
   data: EIP712Message;
 }
-export const Permit2Payload = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    payloadId: S.String,
-    type: Permit2PayloadType,
-    data: EIP712Message,
-  }),
-).annotate({ identifier: "Permit2Payload" }) as any as S.Schema<Permit2Payload>;
+export const Permit2Payload = EIP3009Payload as any as S.Schema<Permit2Payload>;
 
 /** The payload type. */
 export type Erc20ApprovalPayloadType = "erc20_approval";
@@ -7373,13 +7331,7 @@ export interface SpendPermissionPayload {
   /** EIP-712 typed data for a SpendPermission approval. Pass to `eth_signTypedData_v4`. */
   data: EIP712Message;
 }
-export const SpendPermissionPayload = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    payloadId: S.String,
-    type: SpendPermissionPayloadType,
-    data: EIP712Message,
-  }),
-).annotate({ identifier: "SpendPermissionPayload" }) as any as S.Schema<SpendPermissionPayload>;
+export const SpendPermissionPayload = EIP3009Payload as any as S.Schema<SpendPermissionPayload>;
 
 /** A single onchain payload the payer must process to complete an onchain payment option. Inspect `type` to determine how to handle the `data` field: - `eip3009` -- pass `data` to `eth_signTypedData_v4`, return the signature. - `permit2` -- pass `data` to `eth_signTypedData_v4`, return the signature. - `erc20_approval` -- send `data` via `eth_sendTransaction`, return the transaction hash. - `spend_permission` -- pass `data` to `eth_signTypedData_v4`, return the signature. */
 export type OnchainSignaturePayload =
@@ -8297,9 +8249,8 @@ export type ListEndUsersRequestSortItem = "createdAt=asc" | "createdAt=desc";
 export const ListEndUsersRequestSortItem = S.String;
 
 export type ListEndUsersRequestSortList = Array<ListEndUsersRequestSortItem | (string & {})>;
-export const ListEndUsersRequestSortList = /*@__PURE__*/ S.Array(
-  ListEndUsersRequestSortItem,
-) as any as S.Schema<ListEndUsersRequestSortList>;
+export const ListEndUsersRequestSortList =
+  RequirementImpactList as any as S.Schema<ListEndUsersRequestSortList>;
 
 export interface ListEndUsersRequest {
   /** The number of end users to return per page. */

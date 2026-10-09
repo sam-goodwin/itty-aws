@@ -381,9 +381,8 @@ export const ListPrimaryIpActionsRequestStatusItem = S.String;
 export type ListPrimaryIpActionsRequestStatusList = Array<
   ListPrimaryIpActionsRequestStatusItem | (string & {})
 >;
-export const ListPrimaryIpActionsRequestStatusList = /*@__PURE__*/ S.Array(
-  ListPrimaryIpActionsRequestStatusItem,
-) as any as S.Schema<ListPrimaryIpActionsRequestStatusList>;
+export const ListPrimaryIpActionsRequestStatusList =
+  ListPrimaryIpActionsRequestSortList as any as S.Schema<ListPrimaryIpActionsRequestStatusList>;
 
 export interface ListPrimaryIpActionsRequest {
   /** ID of the Primary IP. */
@@ -546,9 +545,8 @@ export const ListPrimaryIpsActionsRequestSortItem = S.String;
 export type ListPrimaryIpsActionsRequestSortList = Array<
   ListPrimaryIpsActionsRequestSortItem | (string & {})
 >;
-export const ListPrimaryIpsActionsRequestSortList = /*@__PURE__*/ S.Array(
-  ListPrimaryIpsActionsRequestSortItem,
-) as any as S.Schema<ListPrimaryIpsActionsRequestSortList>;
+export const ListPrimaryIpsActionsRequestSortList =
+  ListPrimaryIpActionsRequestSortList as any as S.Schema<ListPrimaryIpsActionsRequestSortList>;
 
 /** Status of the Action. */
 export type ListPrimaryIpsActionsRequestStatusItem = "running" | "success" | "error";
@@ -557,9 +555,8 @@ export const ListPrimaryIpsActionsRequestStatusItem = S.String;
 export type ListPrimaryIpsActionsRequestStatusList = Array<
   ListPrimaryIpsActionsRequestStatusItem | (string & {})
 >;
-export const ListPrimaryIpsActionsRequestStatusList = /*@__PURE__*/ S.Array(
-  ListPrimaryIpsActionsRequestStatusItem,
-) as any as S.Schema<ListPrimaryIpsActionsRequestStatusList>;
+export const ListPrimaryIpsActionsRequestStatusList =
+  ListPrimaryIpActionsRequestSortList as any as S.Schema<ListPrimaryIpsActionsRequestStatusList>;
 
 export interface ListPrimaryIpsActionsRequest {
   /** Filter the actions by ID. May be used multiple times. The response will only contain actions matching the specified IDs. */

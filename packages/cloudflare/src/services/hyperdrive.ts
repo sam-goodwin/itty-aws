@@ -447,17 +447,8 @@ export interface ConfigsGetResponseOriginPublicDatabase {
   /** Set the user of your origin database. */
   user: string;
 }
-export const ConfigsGetResponseOriginPublicDatabase = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    database: S.String,
-    host: S.String,
-    port: S.Number,
-    scheme: ConfigsGetResponseOriginPublicDatabaseScheme,
-    user: S.String,
-  }),
-).annotate({
-  identifier: "ConfigsGetResponseOriginPublicDatabase",
-}) as any as S.Schema<ConfigsGetResponseOriginPublicDatabase>;
+export const ConfigsGetResponseOriginPublicDatabase =
+  ConfigsCreateResponseOriginPublicDatabase as any as S.Schema<ConfigsGetResponseOriginPublicDatabase>;
 
 export type ConfigsGetResponseOriginAccessProtectedDatabaseBehindCloudflareTunnelScheme =
   | "postgres"
@@ -480,18 +471,7 @@ export interface ConfigsGetResponseOriginAccessProtectedDatabaseBehindCloudflare
   user: string;
 }
 export const ConfigsGetResponseOriginAccessProtectedDatabaseBehindCloudflareTunnel =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accessClientId: S.String.pipe(T.Body("access_client_id")),
-      accessClientSecret: S.String.pipe(T.Body("access_client_secret")),
-      database: S.String,
-      host: S.String,
-      scheme: ConfigsGetResponseOriginAccessProtectedDatabaseBehindCloudflareTunnelScheme,
-      user: S.String,
-    }),
-  ).annotate({
-    identifier: "ConfigsGetResponseOriginAccessProtectedDatabaseBehindCloudflareTunnel",
-  }) as any as S.Schema<ConfigsGetResponseOriginAccessProtectedDatabaseBehindCloudflareTunnel>;
+  ConfigsCreateResponseOriginAccessProtectedDatabaseBehindCloudflareTunnel as any as S.Schema<ConfigsGetResponseOriginAccessProtectedDatabaseBehindCloudflareTunnel>;
 
 export type ConfigsGetResponseOriginDatabaseReachableThroughAWorkersVPCScheme =
   | "postgres"
@@ -553,18 +533,8 @@ export interface ConfigsGetResponseIntegration {
   /** The database name to use when connecting. Defaults to `postgres` for PostgreSQL and `mysql` for MySQL. */
   customDatabaseName?: string | null;
 }
-export const ConfigsGetResponseIntegration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    databaseBranchName: S.String.pipe(T.Body("database_branch_name")),
-    databaseName: S.String.pipe(T.Body("database_name")),
-    organizationName: S.String.pipe(T.Body("organization_name")),
-    provider: ConfigsGetResponseIntegrationProvider,
-    scheme: ConfigsGetResponseIntegrationScheme,
-    customDatabaseName: S.optional(S.NullOr(S.String).pipe(T.Body("custom_database_name"))),
-  }),
-).annotate({
-  identifier: "ConfigsGetResponseIntegration",
-}) as any as S.Schema<ConfigsGetResponseIntegration>;
+export const ConfigsGetResponseIntegration =
+  ConfigsCreateResponseIntegration as any as S.Schema<ConfigsGetResponseIntegration>;
 
 export type ConfigsGetResponseMtls = ConfigsCreateResponseMtls;
 export const ConfigsGetResponseMtls = ConfigsCreateResponseMtls;
@@ -642,17 +612,8 @@ export interface ConfigsListResultItemOriginPublicDatabase {
   /** Set the user of your origin database. */
   user: string;
 }
-export const ConfigsListResultItemOriginPublicDatabase = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    database: S.String,
-    host: S.String,
-    port: S.Number,
-    scheme: ConfigsListResultItemOriginPublicDatabaseScheme,
-    user: S.String,
-  }),
-).annotate({
-  identifier: "ConfigsListResultItemOriginPublicDatabase",
-}) as any as S.Schema<ConfigsListResultItemOriginPublicDatabase>;
+export const ConfigsListResultItemOriginPublicDatabase =
+  ConfigsCreateResponseOriginPublicDatabase as any as S.Schema<ConfigsListResultItemOriginPublicDatabase>;
 
 export type ConfigsListResultItemOriginAccessProtectedDatabaseBehindCloudflareTunnelScheme =
   | "postgres"
@@ -676,18 +637,7 @@ export interface ConfigsListResultItemOriginAccessProtectedDatabaseBehindCloudfl
   user: string;
 }
 export const ConfigsListResultItemOriginAccessProtectedDatabaseBehindCloudflareTunnel =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accessClientId: S.String.pipe(T.Body("access_client_id")),
-      accessClientSecret: S.String.pipe(T.Body("access_client_secret")),
-      database: S.String,
-      host: S.String,
-      scheme: ConfigsListResultItemOriginAccessProtectedDatabaseBehindCloudflareTunnelScheme,
-      user: S.String,
-    }),
-  ).annotate({
-    identifier: "ConfigsListResultItemOriginAccessProtectedDatabaseBehindCloudflareTunnel",
-  }) as any as S.Schema<ConfigsListResultItemOriginAccessProtectedDatabaseBehindCloudflareTunnel>;
+  ConfigsCreateResponseOriginAccessProtectedDatabaseBehindCloudflareTunnel as any as S.Schema<ConfigsListResultItemOriginAccessProtectedDatabaseBehindCloudflareTunnel>;
 
 export type ConfigsListResultItemOriginDatabaseReachableThroughAWorkersVPCScheme =
   | "postgres"
@@ -706,16 +656,7 @@ export interface ConfigsListResultItemOriginDatabaseReachableThroughAWorkersVPC 
   user: string;
 }
 export const ConfigsListResultItemOriginDatabaseReachableThroughAWorkersVPC =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      database: S.String,
-      scheme: ConfigsListResultItemOriginDatabaseReachableThroughAWorkersVPCScheme,
-      serviceId: S.String.pipe(T.Body("service_id")),
-      user: S.String,
-    }),
-  ).annotate({
-    identifier: "ConfigsListResultItemOriginDatabaseReachableThroughAWorkersVPC",
-  }) as any as S.Schema<ConfigsListResultItemOriginDatabaseReachableThroughAWorkersVPC>;
+  ConfigsCreateResponseOriginDatabaseReachableThroughAWorkersVPC as any as S.Schema<ConfigsListResultItemOriginDatabaseReachableThroughAWorkersVPC>;
 
 export type ConfigsListResultItemOrigin =
   | ConfigsListResultItemOriginPublicDatabase
@@ -749,18 +690,8 @@ export interface ConfigsListResultItemIntegration {
   /** The database name to use when connecting. Defaults to `postgres` for PostgreSQL and `mysql` for MySQL. */
   customDatabaseName?: string | null;
 }
-export const ConfigsListResultItemIntegration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    databaseBranchName: S.String.pipe(T.Body("database_branch_name")),
-    databaseName: S.String.pipe(T.Body("database_name")),
-    organizationName: S.String.pipe(T.Body("organization_name")),
-    provider: ConfigsListResultItemIntegrationProvider,
-    scheme: ConfigsListResultItemIntegrationScheme,
-    customDatabaseName: S.optional(S.NullOr(S.String).pipe(T.Body("custom_database_name"))),
-  }),
-).annotate({
-  identifier: "ConfigsListResultItemIntegration",
-}) as any as S.Schema<ConfigsListResultItemIntegration>;
+export const ConfigsListResultItemIntegration =
+  ConfigsCreateResponseIntegration as any as S.Schema<ConfigsListResultItemIntegration>;
 
 export type ConfigsListResultItemMtls = ConfigsCreateResponseMtls;
 export const ConfigsListResultItemMtls = ConfigsCreateResponseMtls;
@@ -1000,17 +931,8 @@ export interface ConfigsEditResponseOriginPublicDatabase {
   /** Set the user of your origin database. */
   user: string;
 }
-export const ConfigsEditResponseOriginPublicDatabase = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    database: S.String,
-    host: S.String,
-    port: S.Number,
-    scheme: ConfigsEditResponseOriginPublicDatabaseScheme,
-    user: S.String,
-  }),
-).annotate({
-  identifier: "ConfigsEditResponseOriginPublicDatabase",
-}) as any as S.Schema<ConfigsEditResponseOriginPublicDatabase>;
+export const ConfigsEditResponseOriginPublicDatabase =
+  ConfigsCreateResponseOriginPublicDatabase as any as S.Schema<ConfigsEditResponseOriginPublicDatabase>;
 
 export type ConfigsEditResponseOriginAccessProtectedDatabaseBehindCloudflareTunnelScheme =
   | "postgres"
@@ -1034,18 +956,7 @@ export interface ConfigsEditResponseOriginAccessProtectedDatabaseBehindCloudflar
   user: string;
 }
 export const ConfigsEditResponseOriginAccessProtectedDatabaseBehindCloudflareTunnel =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accessClientId: S.String.pipe(T.Body("access_client_id")),
-      accessClientSecret: S.String.pipe(T.Body("access_client_secret")),
-      database: S.String,
-      host: S.String,
-      scheme: ConfigsEditResponseOriginAccessProtectedDatabaseBehindCloudflareTunnelScheme,
-      user: S.String,
-    }),
-  ).annotate({
-    identifier: "ConfigsEditResponseOriginAccessProtectedDatabaseBehindCloudflareTunnel",
-  }) as any as S.Schema<ConfigsEditResponseOriginAccessProtectedDatabaseBehindCloudflareTunnel>;
+  ConfigsCreateResponseOriginAccessProtectedDatabaseBehindCloudflareTunnel as any as S.Schema<ConfigsEditResponseOriginAccessProtectedDatabaseBehindCloudflareTunnel>;
 
 export type ConfigsEditResponseOriginDatabaseReachableThroughAWorkersVPCScheme =
   | "postgres"
@@ -1063,17 +974,8 @@ export interface ConfigsEditResponseOriginDatabaseReachableThroughAWorkersVPC {
   /** Set the user of your origin database. */
   user: string;
 }
-export const ConfigsEditResponseOriginDatabaseReachableThroughAWorkersVPC = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      database: S.String,
-      scheme: ConfigsEditResponseOriginDatabaseReachableThroughAWorkersVPCScheme,
-      serviceId: S.String.pipe(T.Body("service_id")),
-      user: S.String,
-    }),
-).annotate({
-  identifier: "ConfigsEditResponseOriginDatabaseReachableThroughAWorkersVPC",
-}) as any as S.Schema<ConfigsEditResponseOriginDatabaseReachableThroughAWorkersVPC>;
+export const ConfigsEditResponseOriginDatabaseReachableThroughAWorkersVPC =
+  ConfigsGetResponseOriginDatabaseReachableThroughAWorkersVPC as any as S.Schema<ConfigsEditResponseOriginDatabaseReachableThroughAWorkersVPC>;
 
 export type ConfigsEditResponseOrigin =
   | ConfigsEditResponseOriginPublicDatabase
@@ -1107,18 +1009,8 @@ export interface ConfigsEditResponseIntegration {
   /** The database name to use when connecting. Defaults to `postgres` for PostgreSQL and `mysql` for MySQL. */
   customDatabaseName?: string | null;
 }
-export const ConfigsEditResponseIntegration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    databaseBranchName: S.String.pipe(T.Body("database_branch_name")),
-    databaseName: S.String.pipe(T.Body("database_name")),
-    organizationName: S.String.pipe(T.Body("organization_name")),
-    provider: ConfigsEditResponseIntegrationProvider,
-    scheme: ConfigsEditResponseIntegrationScheme,
-    customDatabaseName: S.optional(S.NullOr(S.String).pipe(T.Body("custom_database_name"))),
-  }),
-).annotate({
-  identifier: "ConfigsEditResponseIntegration",
-}) as any as S.Schema<ConfigsEditResponseIntegration>;
+export const ConfigsEditResponseIntegration =
+  ConfigsCreateResponseIntegration as any as S.Schema<ConfigsEditResponseIntegration>;
 
 export type ConfigsEditResponseMtls = ConfigsCreateResponseMtls;
 export const ConfigsEditResponseMtls = ConfigsCreateResponseMtls;
@@ -1315,18 +1207,8 @@ export interface RestartConfigResponseIntegration {
   /** The database name to use when connecting. Defaults to `postgres` for PostgreSQL and `mysql` for MySQL. */
   customDatabaseName?: string | null;
 }
-export const RestartConfigResponseIntegration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    databaseBranchName: S.String.pipe(T.Body("database_branch_name")),
-    databaseName: S.String.pipe(T.Body("database_name")),
-    organizationName: S.String.pipe(T.Body("organization_name")),
-    provider: RestartConfigResponseIntegrationProvider,
-    scheme: RestartConfigResponseIntegrationScheme,
-    customDatabaseName: S.optional(S.NullOr(S.String).pipe(T.Body("custom_database_name"))),
-  }),
-).annotate({
-  identifier: "RestartConfigResponseIntegration",
-}) as any as S.Schema<RestartConfigResponseIntegration>;
+export const RestartConfigResponseIntegration =
+  ConfigsCreateResponseIntegration as any as S.Schema<RestartConfigResponseIntegration>;
 
 export type RestartConfigResponseMtls = ConfigsCreateResponseMtls;
 export const RestartConfigResponseMtls = ConfigsCreateResponseMtls;
@@ -1385,18 +1267,8 @@ export interface ConfigsUpdateRequestOriginPublicDatabase {
   /** Set the user of your origin database. */
   user: string;
 }
-export const ConfigsUpdateRequestOriginPublicDatabase = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    database: S.String,
-    host: S.String,
-    password: S.String,
-    port: S.Number,
-    scheme: ConfigsUpdateRequestOriginPublicDatabaseScheme,
-    user: S.String,
-  }),
-).annotate({
-  identifier: "ConfigsUpdateRequestOriginPublicDatabase",
-}) as any as S.Schema<ConfigsUpdateRequestOriginPublicDatabase>;
+export const ConfigsUpdateRequestOriginPublicDatabase =
+  RestartConfigResponseOriginPublicDatabase as any as S.Schema<ConfigsUpdateRequestOriginPublicDatabase>;
 
 export type ConfigsUpdateRequestOriginAccessProtectedDatabaseBehindCloudflareTunnelScheme =
   | "postgres"
@@ -1424,19 +1296,7 @@ export interface ConfigsUpdateRequestOriginAccessProtectedDatabaseBehindCloudfla
   user: string;
 }
 export const ConfigsUpdateRequestOriginAccessProtectedDatabaseBehindCloudflareTunnel =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accessClientId: S.String.pipe(T.Body("access_client_id")),
-      accessClientSecret: S.String.pipe(T.Body("access_client_secret")),
-      database: S.String,
-      host: S.String,
-      password: S.String,
-      scheme: ConfigsUpdateRequestOriginAccessProtectedDatabaseBehindCloudflareTunnelScheme,
-      user: S.String,
-    }),
-  ).annotate({
-    identifier: "ConfigsUpdateRequestOriginAccessProtectedDatabaseBehindCloudflareTunnel",
-  }) as any as S.Schema<ConfigsUpdateRequestOriginAccessProtectedDatabaseBehindCloudflareTunnel>;
+  RestartConfigResponseOriginAccessProtectedDatabaseBehindCloudflareTunnel as any as S.Schema<ConfigsUpdateRequestOriginAccessProtectedDatabaseBehindCloudflareTunnel>;
 
 export type ConfigsUpdateRequestOriginDatabaseReachableThroughAWorkersVPCScheme =
   | "postgres"
@@ -1457,17 +1317,7 @@ export interface ConfigsUpdateRequestOriginDatabaseReachableThroughAWorkersVPC {
   user: string;
 }
 export const ConfigsUpdateRequestOriginDatabaseReachableThroughAWorkersVPC =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      database: S.String,
-      password: S.String,
-      scheme: ConfigsUpdateRequestOriginDatabaseReachableThroughAWorkersVPCScheme,
-      serviceId: S.String.pipe(T.Body("service_id")),
-      user: S.String,
-    }),
-  ).annotate({
-    identifier: "ConfigsUpdateRequestOriginDatabaseReachableThroughAWorkersVPC",
-  }) as any as S.Schema<ConfigsUpdateRequestOriginDatabaseReachableThroughAWorkersVPC>;
+  RestartConfigResponseOriginDatabaseReachableThroughAWorkersVPC as any as S.Schema<ConfigsUpdateRequestOriginDatabaseReachableThroughAWorkersVPC>;
 
 export type ConfigsUpdateRequestOrigin =
   | ConfigsUpdateRequestOriginPublicDatabase
@@ -1554,17 +1404,8 @@ export interface ConfigsUpdateResponseOriginPublicDatabase {
   /** Set the user of your origin database. */
   user: string;
 }
-export const ConfigsUpdateResponseOriginPublicDatabase = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    database: S.String,
-    host: S.String,
-    port: S.Number,
-    scheme: ConfigsUpdateResponseOriginPublicDatabaseScheme,
-    user: S.String,
-  }),
-).annotate({
-  identifier: "ConfigsUpdateResponseOriginPublicDatabase",
-}) as any as S.Schema<ConfigsUpdateResponseOriginPublicDatabase>;
+export const ConfigsUpdateResponseOriginPublicDatabase =
+  ConfigsCreateResponseOriginPublicDatabase as any as S.Schema<ConfigsUpdateResponseOriginPublicDatabase>;
 
 export type ConfigsUpdateResponseOriginAccessProtectedDatabaseBehindCloudflareTunnelScheme =
   | "postgres"
@@ -1588,18 +1429,7 @@ export interface ConfigsUpdateResponseOriginAccessProtectedDatabaseBehindCloudfl
   user: string;
 }
 export const ConfigsUpdateResponseOriginAccessProtectedDatabaseBehindCloudflareTunnel =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accessClientId: S.String.pipe(T.Body("access_client_id")),
-      accessClientSecret: S.String.pipe(T.Body("access_client_secret")),
-      database: S.String,
-      host: S.String,
-      scheme: ConfigsUpdateResponseOriginAccessProtectedDatabaseBehindCloudflareTunnelScheme,
-      user: S.String,
-    }),
-  ).annotate({
-    identifier: "ConfigsUpdateResponseOriginAccessProtectedDatabaseBehindCloudflareTunnel",
-  }) as any as S.Schema<ConfigsUpdateResponseOriginAccessProtectedDatabaseBehindCloudflareTunnel>;
+  ConfigsCreateResponseOriginAccessProtectedDatabaseBehindCloudflareTunnel as any as S.Schema<ConfigsUpdateResponseOriginAccessProtectedDatabaseBehindCloudflareTunnel>;
 
 export type ConfigsUpdateResponseOriginDatabaseReachableThroughAWorkersVPCScheme =
   | "postgres"
@@ -1618,16 +1448,7 @@ export interface ConfigsUpdateResponseOriginDatabaseReachableThroughAWorkersVPC 
   user: string;
 }
 export const ConfigsUpdateResponseOriginDatabaseReachableThroughAWorkersVPC =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      database: S.String,
-      scheme: ConfigsUpdateResponseOriginDatabaseReachableThroughAWorkersVPCScheme,
-      serviceId: S.String.pipe(T.Body("service_id")),
-      user: S.String,
-    }),
-  ).annotate({
-    identifier: "ConfigsUpdateResponseOriginDatabaseReachableThroughAWorkersVPC",
-  }) as any as S.Schema<ConfigsUpdateResponseOriginDatabaseReachableThroughAWorkersVPC>;
+  ConfigsCreateResponseOriginDatabaseReachableThroughAWorkersVPC as any as S.Schema<ConfigsUpdateResponseOriginDatabaseReachableThroughAWorkersVPC>;
 
 export type ConfigsUpdateResponseOrigin =
   | ConfigsUpdateResponseOriginPublicDatabase
@@ -1661,18 +1482,8 @@ export interface ConfigsUpdateResponseIntegration {
   /** The database name to use when connecting. Defaults to `postgres` for PostgreSQL and `mysql` for MySQL. */
   customDatabaseName?: string | null;
 }
-export const ConfigsUpdateResponseIntegration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    databaseBranchName: S.String.pipe(T.Body("database_branch_name")),
-    databaseName: S.String.pipe(T.Body("database_name")),
-    organizationName: S.String.pipe(T.Body("organization_name")),
-    provider: ConfigsUpdateResponseIntegrationProvider,
-    scheme: ConfigsUpdateResponseIntegrationScheme,
-    customDatabaseName: S.optional(S.NullOr(S.String).pipe(T.Body("custom_database_name"))),
-  }),
-).annotate({
-  identifier: "ConfigsUpdateResponseIntegration",
-}) as any as S.Schema<ConfigsUpdateResponseIntegration>;
+export const ConfigsUpdateResponseIntegration =
+  ConfigsCreateResponseIntegration as any as S.Schema<ConfigsUpdateResponseIntegration>;
 
 export type ConfigsUpdateResponseMtls = ConfigsCreateResponseMtls;
 export const ConfigsUpdateResponseMtls = ConfigsCreateResponseMtls;

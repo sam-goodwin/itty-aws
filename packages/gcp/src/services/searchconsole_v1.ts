@@ -489,12 +489,7 @@ export interface RichResultsIssue {
   /** Severity of this issue: WARNING, or ERROR. Items with an issue of status ERROR cannot appear with rich result features in Google Search results. */
   severity?: RichResultsIssueSeverityEnum;
 }
-export const RichResultsIssue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    issueMessage: S.optional(S.String),
-    severity: S.optional(RichResultsIssueSeverityEnum),
-  }),
-).annotate({ identifier: "RichResultsIssue" }) as any as S.Schema<RichResultsIssue>;
+export const RichResultsIssue = AmpIssue as any as S.Schema<RichResultsIssue>;
 
 export type RichResultsIssueList = Array<RichResultsIssue>;
 export const RichResultsIssueList = /*@__PURE__*/ S.Array(

@@ -1171,11 +1171,8 @@ export const PaymentSessionStatus = S.String;
 export interface DeletePaymentSessionResponse {
   status: PaymentSessionStatus;
 }
-export const DeletePaymentSessionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ status: PaymentSessionStatus }),
-).annotate({
-  identifier: "DeletePaymentSessionResponse",
-}) as any as S.Schema<DeletePaymentSessionResponse>;
+export const DeletePaymentSessionResponse =
+  DeletePaymentInstrumentResponse as any as S.Schema<DeletePaymentSessionResponse>;
 export type RecommendationId = string;
 export interface DeleteRecommendationRequest {
   recommendationId: string;

@@ -2872,13 +2872,8 @@ export interface EnterpriseCrmEventbusProtoSuccessPolicy {
   /** State to which the execution snapshot status will be set if the task succeeds. */
   finalState?: EnterpriseCrmEventbusProtoSuccessPolicyFinalStateEnum | (string & {});
 }
-export const EnterpriseCrmEventbusProtoSuccessPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    finalState: S.optional(EnterpriseCrmEventbusProtoSuccessPolicyFinalStateEnum),
-  }),
-).annotate({
-  identifier: "EnterpriseCrmEventbusProtoSuccessPolicy",
-}) as any as S.Schema<EnterpriseCrmEventbusProtoSuccessPolicy>;
+export const EnterpriseCrmEventbusProtoSuccessPolicy =
+  GoogleCloudIntegrationsV1alphaSuccessPolicy as any as S.Schema<EnterpriseCrmEventbusProtoSuccessPolicy>;
 
 export type EnterpriseCrmFrontendsEventbusProtoParameterEntryDataTypeEnum =
   | "DATA_TYPE_UNSPECIFIED"
@@ -4681,9 +4676,8 @@ export const DownloadProjectsLocationsIntegrationsVersionsFilesEnum = S.String;
 export type DownloadProjectsLocationsIntegrationsVersionsFilesEnumList = Array<
   DownloadProjectsLocationsIntegrationsVersionsFilesEnum | (string & {})
 >;
-export const DownloadProjectsLocationsIntegrationsVersionsFilesEnumList = /*@__PURE__*/ S.Array(
-  DownloadProjectsLocationsIntegrationsVersionsFilesEnum,
-) as any as S.Schema<DownloadProjectsLocationsIntegrationsVersionsFilesEnumList>;
+export const DownloadProjectsLocationsIntegrationsVersionsFilesEnumList =
+  GoogleCloudIntegrationsV1alphaTemplateCategoriesItemEnumList as any as S.Schema<DownloadProjectsLocationsIntegrationsVersionsFilesEnumList>;
 
 export interface DownloadProjectsLocationsIntegrationsVersionsRequest {
   /** File format for download request. */
@@ -4829,9 +4823,7 @@ export type DownloadProjectsLocationsProductsIntegrationsVersionsFilesEnumList =
   DownloadProjectsLocationsProductsIntegrationsVersionsFilesEnum | (string & {})
 >;
 export const DownloadProjectsLocationsProductsIntegrationsVersionsFilesEnumList =
-  /*@__PURE__*/ S.Array(
-    DownloadProjectsLocationsProductsIntegrationsVersionsFilesEnum,
-  ) as any as S.Schema<DownloadProjectsLocationsProductsIntegrationsVersionsFilesEnumList>;
+  DownloadJsonPackageProjectsLocationsIntegrationsVersionsFilesEnumList as any as S.Schema<DownloadProjectsLocationsProductsIntegrationsVersionsFilesEnumList>;
 
 export interface DownloadProjectsLocationsProductsIntegrationsVersionsRequest {
   /** Required. The version to download. Format: projects/{project}/locations/{location}/integrations/{integration}/versions/{version} */
@@ -9556,9 +9548,7 @@ export type GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorRequestWor
     | (string & {})
   >;
 export const GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorRequestWorkflowsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorRequestWorkflowsItemEnum,
-  ) as any as S.Schema<GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorRequestWorkflowsItemEnumList>;
+  DownloadJsonPackageProjectsLocationsIntegrationsVersionsFilesEnumList as any as S.Schema<GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorRequestWorkflowsItemEnumList>;
 
 /** Request for PostProvisioning rpc call. */
 export interface GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorRequest {
@@ -10398,9 +10388,7 @@ export const GoogleCloudIntegrationsV1alphaTestIntegrationsResponseHardenedPaths
 export type GoogleCloudIntegrationsV1alphaTestIntegrationsResponseHardenedPathsItemEnumList =
   Array<GoogleCloudIntegrationsV1alphaTestIntegrationsResponseHardenedPathsItemEnum>;
 export const GoogleCloudIntegrationsV1alphaTestIntegrationsResponseHardenedPathsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudIntegrationsV1alphaTestIntegrationsResponseHardenedPathsItemEnum,
-  ) as any as S.Schema<GoogleCloudIntegrationsV1alphaTestIntegrationsResponseHardenedPathsItemEnumList>;
+  DownloadJsonPackageProjectsLocationsIntegrationsVersionsFilesEnumList as any as S.Schema<GoogleCloudIntegrationsV1alphaTestIntegrationsResponseHardenedPathsItemEnumList>;
 
 /** The response for testing an integration. */
 export interface GoogleCloudIntegrationsV1alphaTestIntegrationsResponse {

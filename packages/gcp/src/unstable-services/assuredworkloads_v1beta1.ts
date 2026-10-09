@@ -1141,9 +1141,7 @@ export const GoogleCloudAssuredworkloadsV1beta1FetchDbFrameworkComplianceReportR
 export type GoogleCloudAssuredworkloadsV1beta1FetchDbFrameworkComplianceReportResponseFrameworkCategoriesItemEnumList =
   Array<GoogleCloudAssuredworkloadsV1beta1FetchDbFrameworkComplianceReportResponseFrameworkCategoriesItemEnum>;
 export const GoogleCloudAssuredworkloadsV1beta1FetchDbFrameworkComplianceReportResponseFrameworkCategoriesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudAssuredworkloadsV1beta1FetchDbFrameworkComplianceReportResponseFrameworkCategoriesItemEnum,
-  ) as any as S.Schema<GoogleCloudAssuredworkloadsV1beta1FetchDbFrameworkComplianceReportResponseFrameworkCategoriesItemEnumList>;
+  GoogleCloudAssuredworkloadsV1beta1WorkloadSaaEnrollmentResponseSetupErrorsItemEnumList as any as S.Schema<GoogleCloudAssuredworkloadsV1beta1FetchDbFrameworkComplianceReportResponseFrameworkCategoriesItemEnumList>;
 
 export type GoogleCloudAssuredworkloadsV1beta1FetchDbFrameworkComplianceReportResponseSupportedCloudProvidersItemEnum =
   | "CLOUD_PROVIDER_UNSPECIFIED"
@@ -1156,9 +1154,7 @@ export const GoogleCloudAssuredworkloadsV1beta1FetchDbFrameworkComplianceReportR
 export type GoogleCloudAssuredworkloadsV1beta1FetchDbFrameworkComplianceReportResponseSupportedCloudProvidersItemEnumList =
   Array<GoogleCloudAssuredworkloadsV1beta1FetchDbFrameworkComplianceReportResponseSupportedCloudProvidersItemEnum>;
 export const GoogleCloudAssuredworkloadsV1beta1FetchDbFrameworkComplianceReportResponseSupportedCloudProvidersItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudAssuredworkloadsV1beta1FetchDbFrameworkComplianceReportResponseSupportedCloudProvidersItemEnum,
-  ) as any as S.Schema<GoogleCloudAssuredworkloadsV1beta1FetchDbFrameworkComplianceReportResponseSupportedCloudProvidersItemEnumList>;
+  GoogleCloudAssuredworkloadsV1beta1WorkloadSaaEnrollmentResponseSetupErrorsItemEnumList as any as S.Schema<GoogleCloudAssuredworkloadsV1beta1FetchDbFrameworkComplianceReportResponseSupportedCloudProvidersItemEnumList>;
 
 /** The details for a target resource. */
 export interface GoogleCloudAssuredworkloadsV1beta1TargetResourceDetails {
@@ -1839,9 +1835,7 @@ export const GoogleCloudAssuredworkloadsV1beta1RuleRuleActionTypesItemEnum = S.S
 export type GoogleCloudAssuredworkloadsV1beta1RuleRuleActionTypesItemEnumList =
   Array<GoogleCloudAssuredworkloadsV1beta1RuleRuleActionTypesItemEnum>;
 export const GoogleCloudAssuredworkloadsV1beta1RuleRuleActionTypesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudAssuredworkloadsV1beta1RuleRuleActionTypesItemEnum,
-  ) as any as S.Schema<GoogleCloudAssuredworkloadsV1beta1RuleRuleActionTypesItemEnumList>;
+  GoogleCloudAssuredworkloadsV1beta1WorkloadSaaEnrollmentResponseSetupErrorsItemEnumList as any as S.Schema<GoogleCloudAssuredworkloadsV1beta1RuleRuleActionTypesItemEnumList>;
 
 /** A rule in the cloud control. */
 export interface GoogleCloudAssuredworkloadsV1beta1Rule {
@@ -2098,9 +2092,7 @@ export const GoogleCloudAssuredworkloadsV1beta1DbFrameworkComplianceSummarySuppo
 export type GoogleCloudAssuredworkloadsV1beta1DbFrameworkComplianceSummarySupportedCloudProvidersItemEnumList =
   Array<GoogleCloudAssuredworkloadsV1beta1DbFrameworkComplianceSummarySupportedCloudProvidersItemEnum>;
 export const GoogleCloudAssuredworkloadsV1beta1DbFrameworkComplianceSummarySupportedCloudProvidersItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudAssuredworkloadsV1beta1DbFrameworkComplianceSummarySupportedCloudProvidersItemEnum,
-  ) as any as S.Schema<GoogleCloudAssuredworkloadsV1beta1DbFrameworkComplianceSummarySupportedCloudProvidersItemEnumList>;
+  GoogleCloudAssuredworkloadsV1beta1WorkloadSaaEnrollmentResponseSetupErrorsItemEnumList as any as S.Schema<GoogleCloudAssuredworkloadsV1beta1DbFrameworkComplianceSummarySupportedCloudProvidersItemEnumList>;
 
 /** The trend of a compliance metric. */
 export interface GoogleCloudAssuredworkloadsV1beta1Trend {
@@ -2131,9 +2123,7 @@ export const GoogleCloudAssuredworkloadsV1beta1DbFrameworkComplianceSummaryFrame
 export type GoogleCloudAssuredworkloadsV1beta1DbFrameworkComplianceSummaryFrameworkCategoriesItemEnumList =
   Array<GoogleCloudAssuredworkloadsV1beta1DbFrameworkComplianceSummaryFrameworkCategoriesItemEnum>;
 export const GoogleCloudAssuredworkloadsV1beta1DbFrameworkComplianceSummaryFrameworkCategoriesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudAssuredworkloadsV1beta1DbFrameworkComplianceSummaryFrameworkCategoriesItemEnum,
-  ) as any as S.Schema<GoogleCloudAssuredworkloadsV1beta1DbFrameworkComplianceSummaryFrameworkCategoriesItemEnumList>;
+  GoogleCloudAssuredworkloadsV1beta1WorkloadSaaEnrollmentResponseSetupErrorsItemEnumList as any as S.Schema<GoogleCloudAssuredworkloadsV1beta1DbFrameworkComplianceSummaryFrameworkCategoriesItemEnumList>;
 
 /** The details for a framework compliance summary. */
 export interface GoogleCloudAssuredworkloadsV1beta1DbFrameworkComplianceSummary {

@@ -519,9 +519,8 @@ export const CreateOrganizationRoleRequestPermissionsItem = S.String;
 export type CreateOrganizationRoleRequestPermissionsList = Array<
   CreateOrganizationRoleRequestPermissionsItem | (string & {})
 >;
-export const CreateOrganizationRoleRequestPermissionsList = /*@__PURE__*/ S.Array(
-  CreateOrganizationRoleRequestPermissionsItem,
-) as any as S.Schema<CreateOrganizationRoleRequestPermissionsList>;
+export const CreateOrganizationRoleRequestPermissionsList =
+  OrganizationRolePermissionsList as any as S.Schema<CreateOrganizationRoleRequestPermissionsList>;
 
 export interface CreateOrganizationRoleRequest {
   /** Organization ID */
@@ -911,9 +910,8 @@ export type SandboxClass = "linux-vm" | "container" | "windows";
 export const SandboxClass = S.String;
 
 export type RegionUsageOverviewAllowedGpuTypesList = Array<GpuType>;
-export const RegionUsageOverviewAllowedGpuTypesList = /*@__PURE__*/ S.Array(
-  GpuType,
-) as any as S.Schema<RegionUsageOverviewAllowedGpuTypesList>;
+export const RegionUsageOverviewAllowedGpuTypesList =
+  OrganizationRolePermissionsList as any as S.Schema<RegionUsageOverviewAllowedGpuTypesList>;
 
 export interface RegionUsageOverview {
   regionId: string;
@@ -1793,9 +1791,8 @@ export const UpdateOrganizationRoleRequestPermissionsItem = S.String;
 export type UpdateOrganizationRoleRequestPermissionsList = Array<
   UpdateOrganizationRoleRequestPermissionsItem | (string & {})
 >;
-export const UpdateOrganizationRoleRequestPermissionsList = /*@__PURE__*/ S.Array(
-  UpdateOrganizationRoleRequestPermissionsItem,
-) as any as S.Schema<UpdateOrganizationRoleRequestPermissionsList>;
+export const UpdateOrganizationRoleRequestPermissionsList =
+  OrganizationRolePermissionsList as any as S.Schema<UpdateOrganizationRoleRequestPermissionsList>;
 
 export interface UpdateOrganizationRoleRequest {
   /** Organization ID */

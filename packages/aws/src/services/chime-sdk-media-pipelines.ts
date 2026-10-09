@@ -252,11 +252,8 @@ export interface ContentArtifactsConfiguration {
   State: ArtifactsState;
   MuxType?: ContentMuxType;
 }
-export const ContentArtifactsConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ State: ArtifactsState, MuxType: S.optional(ContentMuxType) }),
-).annotate({
-  identifier: "ContentArtifactsConfiguration",
-}) as any as S.Schema<ContentArtifactsConfiguration>;
+export const ContentArtifactsConfiguration =
+  VideoArtifactsConfiguration as any as S.Schema<ContentArtifactsConfiguration>;
 export type LayoutOption = "GridView" | (string & {});
 export const LayoutOption = S.String;
 
@@ -336,16 +333,8 @@ export interface VerticalLayoutConfiguration {
   TileCount?: number;
   TileAspectRatio?: string;
 }
-export const VerticalLayoutConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TileOrder: S.optional(TileOrder),
-    TilePosition: S.optional(VerticalTilePosition),
-    TileCount: S.optional(S.Number),
-    TileAspectRatio: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "VerticalLayoutConfiguration",
-}) as any as S.Schema<VerticalLayoutConfiguration>;
+export const VerticalLayoutConfiguration =
+  HorizontalLayoutConfiguration as any as S.Schema<VerticalLayoutConfiguration>;
 export type CornerRadius = number;
 export type BorderColor = "Black" | "Blue" | "Red" | "Green" | "White" | "Yellow" | (string & {});
 export const BorderColor = S.String;
@@ -564,11 +553,8 @@ export const ArtifactsConcatenationState = S.String;
 export interface VideoConcatenationConfiguration {
   State: ArtifactsConcatenationState;
 }
-export const VideoConcatenationConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ State: ArtifactsConcatenationState }),
-).annotate({
-  identifier: "VideoConcatenationConfiguration",
-}) as any as S.Schema<VideoConcatenationConfiguration>;
+export const VideoConcatenationConfiguration =
+  AudioConcatenationConfiguration as any as S.Schema<VideoConcatenationConfiguration>;
 export interface ContentConcatenationConfiguration {
   State: ArtifactsConcatenationState;
 }

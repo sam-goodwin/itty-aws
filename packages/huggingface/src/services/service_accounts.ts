@@ -85,9 +85,8 @@ export const CreateServiceAccountTokenRequestRepoPermissionsItem = S.String;
 export type CreateServiceAccountTokenRequestRepoPermissionsList = Array<
   CreateServiceAccountTokenRequestRepoPermissionsItem | (string & {})
 >;
-export const CreateServiceAccountTokenRequestRepoPermissionsList = /*@__PURE__*/ S.Array(
-  CreateServiceAccountTokenRequestRepoPermissionsItem,
-) as any as S.Schema<CreateServiceAccountTokenRequestRepoPermissionsList>;
+export const CreateServiceAccountTokenRequestRepoPermissionsList =
+  CreateServiceAccountTokenRequestPermissionsList as any as S.Schema<CreateServiceAccountTokenRequestRepoPermissionsList>;
 
 /** Inference endpoint name patterns (wildcards allowed, e.g. `gpt2-*`) restricting the token's org-wide Inference Endpoint permissions to matching endpoints. Empty means all endpoints. */
 export type CreateServiceAccountTokenRequestEndpointPatternsList = Array<string>;
@@ -277,9 +276,8 @@ export const GetServiceAccountResponseAccessTokensItemPermissionsItem = S.String
 
 export type GetServiceAccountResponseAccessTokensItemPermissionsList =
   Array<GetServiceAccountResponseAccessTokensItemPermissionsItem>;
-export const GetServiceAccountResponseAccessTokensItemPermissionsList = /*@__PURE__*/ S.Array(
-  GetServiceAccountResponseAccessTokensItemPermissionsItem,
-) as any as S.Schema<GetServiceAccountResponseAccessTokensItemPermissionsList>;
+export const GetServiceAccountResponseAccessTokensItemPermissionsList =
+  CreateServiceAccountTokenRequestPermissionsList as any as S.Schema<GetServiceAccountResponseAccessTokensItemPermissionsList>;
 
 export type GetServiceAccountResponseAccessTokensItemRepoIdsList = Array<string>;
 export const GetServiceAccountResponseAccessTokensItemRepoIdsList =
@@ -292,9 +290,8 @@ export const GetServiceAccountResponseAccessTokensItemRepoPermissionsItem = S.St
 
 export type GetServiceAccountResponseAccessTokensItemRepoPermissionsList =
   Array<GetServiceAccountResponseAccessTokensItemRepoPermissionsItem>;
-export const GetServiceAccountResponseAccessTokensItemRepoPermissionsList = /*@__PURE__*/ S.Array(
-  GetServiceAccountResponseAccessTokensItemRepoPermissionsItem,
-) as any as S.Schema<GetServiceAccountResponseAccessTokensItemRepoPermissionsList>;
+export const GetServiceAccountResponseAccessTokensItemRepoPermissionsList =
+  CreateServiceAccountTokenRequestPermissionsList as any as S.Schema<GetServiceAccountResponseAccessTokensItemRepoPermissionsList>;
 
 export type GetServiceAccountResponseAccessTokensItemEndpointPatternsList = Array<string>;
 export const GetServiceAccountResponseAccessTokensItemEndpointPatternsList =
@@ -482,9 +479,8 @@ export const UpdateServiceAccountTokenRequestPermissionsItem = S.String;
 export type UpdateServiceAccountTokenRequestPermissionsList = Array<
   UpdateServiceAccountTokenRequestPermissionsItem | (string & {})
 >;
-export const UpdateServiceAccountTokenRequestPermissionsList = /*@__PURE__*/ S.Array(
-  UpdateServiceAccountTokenRequestPermissionsItem,
-) as any as S.Schema<UpdateServiceAccountTokenRequestPermissionsList>;
+export const UpdateServiceAccountTokenRequestPermissionsList =
+  CreateServiceAccountTokenRequestPermissionsList as any as S.Schema<UpdateServiceAccountTokenRequestPermissionsList>;
 
 /** Repositories to grant `repoPermissions` on. Can be repositories owned by the organization or any public repository. These override the org-wide permissions. */
 export type UpdateServiceAccountTokenRequestRepoIdsList = Array<string>;
@@ -500,9 +496,8 @@ export const UpdateServiceAccountTokenRequestRepoPermissionsItem = S.String;
 export type UpdateServiceAccountTokenRequestRepoPermissionsList = Array<
   UpdateServiceAccountTokenRequestRepoPermissionsItem | (string & {})
 >;
-export const UpdateServiceAccountTokenRequestRepoPermissionsList = /*@__PURE__*/ S.Array(
-  UpdateServiceAccountTokenRequestRepoPermissionsItem,
-) as any as S.Schema<UpdateServiceAccountTokenRequestRepoPermissionsList>;
+export const UpdateServiceAccountTokenRequestRepoPermissionsList =
+  CreateServiceAccountTokenRequestPermissionsList as any as S.Schema<UpdateServiceAccountTokenRequestRepoPermissionsList>;
 
 /** Inference endpoint name patterns (wildcards allowed, e.g. `gpt2-*`) restricting the token's org-wide Inference Endpoint permissions to matching endpoints. Empty means all endpoints. */
 export type UpdateServiceAccountTokenRequestEndpointPatternsList = Array<string>;

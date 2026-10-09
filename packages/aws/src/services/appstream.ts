@@ -1743,11 +1743,9 @@ export interface StackError {
   ErrorCode?: StackErrorCode;
   ErrorMessage?: string;
 }
-export const StackError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ErrorCode: S.optional(StackErrorCode), ErrorMessage: S.optional(S.String) }),
-).annotate({ identifier: "StackError" }) as any as S.Schema<StackError>;
+export const StackError = FleetError as any as S.Schema<StackError>;
 export type StackErrors = StackError[];
-export const StackErrors = /*@__PURE__*/ S.Array(StackError);
+export const StackErrors = FleetErrors as any as S.Schema<StackErrors>;
 export interface ApplicationSettingsResponse {
   Enabled?: boolean;
   SettingsGroup?: string;
@@ -3297,7 +3295,7 @@ export type AppBlockBuilderAttribute =
 export const AppBlockBuilderAttribute = S.String;
 
 export type AppBlockBuilderAttributes = AppBlockBuilderAttribute[];
-export const AppBlockBuilderAttributes = /*@__PURE__*/ S.Array(AppBlockBuilderAttribute);
+export const AppBlockBuilderAttributes = Platforms as any as S.Schema<AppBlockBuilderAttributes>;
 export interface UpdateAppBlockBuilderRequest {
   Name?: string;
   Description?: string;
@@ -3345,7 +3343,7 @@ export type ApplicationAttribute = "LAUNCH_PARAMETERS" | "WORKING_DIRECTORY" | (
 export const ApplicationAttribute = S.String;
 
 export type ApplicationAttributes = ApplicationAttribute[];
-export const ApplicationAttributes = /*@__PURE__*/ S.Array(ApplicationAttribute);
+export const ApplicationAttributes = Platforms as any as S.Schema<ApplicationAttributes>;
 export interface UpdateApplicationRequest {
   Name?: string;
   DisplayName?: string;
@@ -3441,7 +3439,7 @@ export type FleetAttribute =
 export const FleetAttribute = S.String;
 
 export type FleetAttributes = FleetAttribute[];
-export const FleetAttributes = /*@__PURE__*/ S.Array(FleetAttribute);
+export const FleetAttributes = Platforms as any as S.Schema<FleetAttributes>;
 export interface UpdateFleetRequest {
   ImageName?: string;
   ImageArn?: string;
@@ -3543,7 +3541,7 @@ export type StackAttribute =
 export const StackAttribute = S.String;
 
 export type StackAttributes = StackAttribute[];
-export const StackAttributes = /*@__PURE__*/ S.Array(StackAttribute);
+export const StackAttributes = Platforms as any as S.Schema<StackAttributes>;
 export interface AgentAccessConfigForUpdate {
   Settings?: AgentAccessSetting[];
   S3BucketArn?: string;
@@ -3621,7 +3619,7 @@ export type ThemeAttribute = "FOOTER_LINKS" | (string & {});
 export const ThemeAttribute = S.String;
 
 export type ThemeAttributes = ThemeAttribute[];
-export const ThemeAttributes = /*@__PURE__*/ S.Array(ThemeAttribute);
+export const ThemeAttributes = Platforms as any as S.Schema<ThemeAttributes>;
 export interface UpdateThemeForStackRequest {
   StackName?: string;
   FooterLinks?: ThemeFooterLink[];

@@ -1439,17 +1439,8 @@ export interface BucketEncryptionCustomerManagedEncryptionEnforcementConfig {
   /** Server-determined value that indicates the time from which configuration was enforced and effective. This value is in RFC 3339 format. */
   effectiveTime?: string;
 }
-export const BucketEncryptionCustomerManagedEncryptionEnforcementConfig = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      restrictionMode: S.optional(
-        BucketEncryptionCustomerManagedEncryptionEnforcementConfigRestrictionModeEnum,
-      ),
-      effectiveTime: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "BucketEncryptionCustomerManagedEncryptionEnforcementConfig",
-}) as any as S.Schema<BucketEncryptionCustomerManagedEncryptionEnforcementConfig>;
+export const BucketEncryptionCustomerManagedEncryptionEnforcementConfig =
+  BucketEncryptionGoogleManagedEncryptionEnforcementConfig as any as S.Schema<BucketEncryptionCustomerManagedEncryptionEnforcementConfig>;
 
 export type BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigRestrictionModeEnum =
   | "NotRestricted"
@@ -1465,17 +1456,8 @@ export interface BucketEncryptionCustomerSuppliedEncryptionEnforcementConfig {
   /** Server-determined value that indicates the time from which configuration was enforced and effective. This value is in RFC 3339 format. */
   effectiveTime?: string;
 }
-export const BucketEncryptionCustomerSuppliedEncryptionEnforcementConfig = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      restrictionMode: S.optional(
-        BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigRestrictionModeEnum,
-      ),
-      effectiveTime: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "BucketEncryptionCustomerSuppliedEncryptionEnforcementConfig",
-}) as any as S.Schema<BucketEncryptionCustomerSuppliedEncryptionEnforcementConfig>;
+export const BucketEncryptionCustomerSuppliedEncryptionEnforcementConfig =
+  BucketEncryptionGoogleManagedEncryptionEnforcementConfig as any as S.Schema<BucketEncryptionCustomerSuppliedEncryptionEnforcementConfig>;
 
 export interface BucketEncryption {
   /** A Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified. */

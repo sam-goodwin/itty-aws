@@ -3167,9 +3167,7 @@ export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPrope
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase11GitProvidersList =
   Array<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase11GitProvidersItem>;
 export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase11GitProvidersList =
-  /*@__PURE__*/ S.Array(
-    CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase11GitProvidersItem,
-  ) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase11GitProvidersList>;
+  CreateIntegrationStoreDirectResponseStoreProjectFilterGitProvidersCase0List as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase11GitProvidersList>;
 
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase11Type =
   "string";
@@ -3395,9 +3393,7 @@ export const CreateIntegrationStoreDirectResponseStoreProductProjectConnectionSc
 export type CreateIntegrationStoreDirectResponseStoreProductProjectConnectionScopesList =
   Array<CreateIntegrationStoreDirectResponseStoreProductProjectConnectionScopesItem>;
 export const CreateIntegrationStoreDirectResponseStoreProductProjectConnectionScopesList =
-  /*@__PURE__*/ S.Array(
-    CreateIntegrationStoreDirectResponseStoreProductProjectConnectionScopesItem,
-  ) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductProjectConnectionScopesList>;
+  CreateIntegrationStoreDirectResponseStoreProjectFilterGitProvidersCase0List as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductProjectConnectionScopesList>;
 
 export interface CreateIntegrationStoreDirectResponseStoreProductResourceLinksItem {
   href: string;
@@ -3701,9 +3697,7 @@ export const CreateIntegrationStoreDirectResponseStoreProductSupportedProtocolsI
 export type CreateIntegrationStoreDirectResponseStoreProductSupportedProtocolsList =
   Array<CreateIntegrationStoreDirectResponseStoreProductSupportedProtocolsItem>;
 export const CreateIntegrationStoreDirectResponseStoreProductSupportedProtocolsList =
-  /*@__PURE__*/ S.Array(
-    CreateIntegrationStoreDirectResponseStoreProductSupportedProtocolsItem,
-  ) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductSupportedProtocolsList>;
+  CreateIntegrationStoreDirectResponseStoreProjectFilterGitProvidersCase0List as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductSupportedProtocolsList>;
 
 export interface CreateIntegrationStoreDirectResponseStoreProduct {
   /** URLs to skills/guides for how AI agents should use this product. Providers can specify these to help agents understand how to interact with their integration. */
@@ -3873,9 +3867,8 @@ export const CreateIntegrationStoreDirectResponseStoreTargetsItem = S.String;
 /** The deployment targets that this resource is available for. */
 export type CreateIntegrationStoreDirectResponseStoreTargetsList =
   Array<CreateIntegrationStoreDirectResponseStoreTargetsItem>;
-export const CreateIntegrationStoreDirectResponseStoreTargetsList = /*@__PURE__*/ S.Array(
-  CreateIntegrationStoreDirectResponseStoreTargetsItem,
-) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreTargetsList>;
+export const CreateIntegrationStoreDirectResponseStoreTargetsList =
+  CreateIntegrationStoreDirectResponseStoreProductTagsList as any as S.Schema<CreateIntegrationStoreDirectResponseStoreTargetsList>;
 
 export interface CreateIntegrationStoreDirectResponseStore {
   projectFilter?: CreateIntegrationStoreDirectResponseStoreProjectFilter;
@@ -4145,16 +4138,8 @@ export interface GetConfigurationResponseBodyCase0Notification {
   message?: string;
   title: string;
 }
-export const GetConfigurationResponseBodyCase0Notification = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    href: S.optional(S.String),
-    level: GetConfigurationResponseBodyCase0NotificationLevel,
-    message: S.optional(S.String),
-    title: S.String,
-  }),
-).annotate({
-  identifier: "GetConfigurationResponseBodyCase0Notification",
-}) as any as S.Schema<GetConfigurationResponseBodyCase0Notification>;
+export const GetConfigurationResponseBodyCase0Notification =
+  CreateIntegrationStoreDirectResponseStoreNotification as any as S.Schema<GetConfigurationResponseBodyCase0Notification>;
 
 /** When a configuration is limited to access certain projects, this will contain each of the project ID it is allowed to access. If it is not defined, the configuration has full access. */
 export type GetConfigurationResponseBodyCase0ProjectsList = Array<string>;
@@ -5180,20 +5165,7 @@ export interface GetConfigurationProductsResponseProductsItemMetadataSchemaPrope
   type: GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3ItemsType;
 }
 export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3Items =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      default: S.optional(S.Number),
-      description: S.optional(S.String),
-      exclusiveMaximum: S.optional(S.Number),
-      exclusiveMinimum: S.optional(S.Number),
-      maximum: S.optional(S.Number),
-      minimum: S.optional(S.Number),
-      type: GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3ItemsType,
-    }),
-  ).annotate({
-    identifier:
-      "GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3Items",
-  }) as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3Items>;
+  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3Items as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3Items>;
 
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3Type =
   "array";
@@ -7146,9 +7118,7 @@ export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertie
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase11GitProvidersList =
   Array<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase11GitProvidersItem>;
 export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase11GitProvidersList =
-  /*@__PURE__*/ S.Array(
-    GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase11GitProvidersItem,
-  ) as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase11GitProvidersList>;
+  CreateIntegrationStoreDirectResponseStoreProjectFilterGitProvidersCase0List as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase11GitProvidersList>;
 
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase11Type =
   "string";
@@ -7497,13 +7467,7 @@ export interface GetConfigurationProductsResponseProductsItemProtocolsObservabil
   status: GetConfigurationProductsResponseProductsItemProtocolsObservabilityStatus;
 }
 export const GetConfigurationProductsResponseProductsItemProtocolsObservability =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      status: GetConfigurationProductsResponseProductsItemProtocolsObservabilityStatus,
-    }),
-  ).annotate({
-    identifier: "GetConfigurationProductsResponseProductsItemProtocolsObservability",
-  }) as any as S.Schema<GetConfigurationProductsResponseProductsItemProtocolsObservability>;
+  GetConfigurationProductsResponseProductsItemProtocolsMessaging as any as S.Schema<GetConfigurationProductsResponseProductsItemProtocolsObservability>;
 
 export type GetConfigurationProductsResponseProductsItemProtocolsOtherStatus =
   | "disabled"
@@ -7513,14 +7477,8 @@ export const GetConfigurationProductsResponseProductsItemProtocolsOtherStatus = 
 export interface GetConfigurationProductsResponseProductsItemProtocolsOther {
   status: GetConfigurationProductsResponseProductsItemProtocolsOtherStatus;
 }
-export const GetConfigurationProductsResponseProductsItemProtocolsOther = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      status: GetConfigurationProductsResponseProductsItemProtocolsOtherStatus,
-    }),
-).annotate({
-  identifier: "GetConfigurationProductsResponseProductsItemProtocolsOther",
-}) as any as S.Schema<GetConfigurationProductsResponseProductsItemProtocolsOther>;
+export const GetConfigurationProductsResponseProductsItemProtocolsOther =
+  GetConfigurationProductsResponseProductsItemProtocolsChecks as any as S.Schema<GetConfigurationProductsResponseProductsItemProtocolsOther>;
 
 export type GetConfigurationProductsResponseProductsItemProtocolsStorageStatus =
   | "disabled"
@@ -7590,14 +7548,8 @@ export const GetConfigurationProductsResponseProductsItemProtocolsVideoStatus = 
 export interface GetConfigurationProductsResponseProductsItemProtocolsVideo {
   status: GetConfigurationProductsResponseProductsItemProtocolsVideoStatus;
 }
-export const GetConfigurationProductsResponseProductsItemProtocolsVideo = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      status: GetConfigurationProductsResponseProductsItemProtocolsVideoStatus,
-    }),
-).annotate({
-  identifier: "GetConfigurationProductsResponseProductsItemProtocolsVideo",
-}) as any as S.Schema<GetConfigurationProductsResponseProductsItemProtocolsVideo>;
+export const GetConfigurationProductsResponseProductsItemProtocolsVideo =
+  GetConfigurationProductsResponseProductsItemProtocolsChecks as any as S.Schema<GetConfigurationProductsResponseProductsItemProtocolsVideo>;
 
 export type GetConfigurationProductsResponseProductsItemProtocolsWorkflowStatus =
   | "disabled"
@@ -7608,13 +7560,7 @@ export interface GetConfigurationProductsResponseProductsItemProtocolsWorkflow {
   status: GetConfigurationProductsResponseProductsItemProtocolsWorkflowStatus;
 }
 export const GetConfigurationProductsResponseProductsItemProtocolsWorkflow =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      status: GetConfigurationProductsResponseProductsItemProtocolsWorkflowStatus,
-    }),
-  ).annotate({
-    identifier: "GetConfigurationProductsResponseProductsItemProtocolsWorkflow",
-  }) as any as S.Schema<GetConfigurationProductsResponseProductsItemProtocolsWorkflow>;
+  GetConfigurationProductsResponseProductsItemProtocolsMessaging as any as S.Schema<GetConfigurationProductsResponseProductsItemProtocolsWorkflow>;
 
 export interface GetConfigurationProductsResponseProductsItemProtocols {
   ai?: GetConfigurationProductsResponseProductsItemProtocolsAi;
@@ -7900,9 +7846,8 @@ export const GetConfigurationsResponseBodyCase1ItemIntegrationTagIdsItem = S.Str
 
 export type GetConfigurationsResponseBodyCase1ItemIntegrationTagIdsList =
   Array<GetConfigurationsResponseBodyCase1ItemIntegrationTagIdsItem>;
-export const GetConfigurationsResponseBodyCase1ItemIntegrationTagIdsList = /*@__PURE__*/ S.Array(
-  GetConfigurationsResponseBodyCase1ItemIntegrationTagIdsItem,
-) as any as S.Schema<GetConfigurationsResponseBodyCase1ItemIntegrationTagIdsList>;
+export const GetConfigurationsResponseBodyCase1ItemIntegrationTagIdsList =
+  CreateIntegrationStoreDirectResponseStoreProductTagsList as any as S.Schema<GetConfigurationsResponseBodyCase1ItemIntegrationTagIdsList>;
 
 export interface GetConfigurationsResponseBodyCase1ItemIntegration {
   assignedBetaLabelAt?: number;

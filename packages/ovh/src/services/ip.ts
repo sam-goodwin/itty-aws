@@ -1228,15 +1228,7 @@ export interface IpArpBlockedIp {
   /** Time (in seconds) remaining before you can request your IP to be unblocked */
   time?: number;
 }
-export const IpArpBlockedIp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    blockedSince: S.optional(S.String),
-    ipBlocked: S.optional(S.String),
-    logs: S.optional(S.NullOr(S.String)),
-    state: S.optional(IpArpStateEnum),
-    time: S.optional(S.Number),
-  }),
-).annotate({ identifier: "IpArpBlockedIp" }) as any as S.Schema<IpArpBlockedIp>;
+export const IpArpBlockedIp = IpBlockedIp as any as S.Schema<IpArpBlockedIp>;
 
 export interface GetIpDelegationRequest {
   ip: string;
@@ -1297,9 +1289,8 @@ export const IpGameMitigationStateEnum = S.String;
 
 /** List of protocols available on this IP */
 export type IpGameMitigationSupportedProtocolsList = Array<IpGameMitigationRuleProtocolEnum>;
-export const IpGameMitigationSupportedProtocolsList = /*@__PURE__*/ S.Array(
-  IpGameMitigationRuleProtocolEnum,
-) as any as S.Schema<IpGameMitigationSupportedProtocolsList>;
+export const IpGameMitigationSupportedProtocolsList =
+  IpIpWithIAMRegionsList as any as S.Schema<IpGameMitigationSupportedProtocolsList>;
 
 /** GAME Anti-DDoS */
 export interface IpGameMitigation {
@@ -1879,9 +1870,8 @@ export const DedicatedDatacenterEnum = S.String;
 
 /** List of datacenters in the campus */
 export type IpCampusDatacentersList = Array<DedicatedDatacenterEnum>;
-export const IpCampusDatacentersList = /*@__PURE__*/ S.Array(
-  DedicatedDatacenterEnum,
-) as any as S.Schema<IpCampusDatacentersList>;
+export const IpCampusDatacentersList =
+  IpIpWithIAMRegionsList as any as S.Schema<IpCampusDatacentersList>;
 
 /** Possible values for IP campuses' names */
 export type IpCampusEnum =

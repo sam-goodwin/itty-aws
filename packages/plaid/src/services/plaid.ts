@@ -1127,13 +1127,7 @@ export interface Email {
   /** The type of email account as described by the financial institution. */
   type: EmailType;
 }
-export const Email = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: S.String,
-    primary: S.Boolean,
-    type: EmailType,
-  }),
-).annotate({ identifier: "Email" }) as any as S.Schema<Email>;
+export const Email = PhoneNumber as any as S.Schema<Email>;
 
 /** A list of email addresses associated with the account by the financial institution. May be an empty array if no relevant information is returned from the financial institution. */
 export type OwnerEmailsList = Array<Email>;
@@ -1722,9 +1716,8 @@ export const Products = S.String;
 
 /** The Plaid products affected by the issue. */
 export type BetaIssuesV1IssueAffectedProductsList = Array<Products>;
-export const BetaIssuesV1IssueAffectedProductsList = /*@__PURE__*/ S.Array(
-  Products,
-) as any as S.Schema<BetaIssuesV1IssueAffectedProductsList>;
+export const BetaIssuesV1IssueAffectedProductsList =
+  BetaIssuesV1IssueBehaviorsList as any as S.Schema<BetaIssuesV1IssueAffectedProductsList>;
 
 /** How an issue was considered resolved. `MANUAL_RESOLUTION` indicates Plaid's engineering team has reviewed the issue and mitigated its impact. Issues that are manually resolved may still have a small number of occurrences. `AUTOMATED_RESOLUTION` indicates the error has not recently occurred and was automatically closed. */
 export type BetaIssuesV1IssueResolutionType = "MANUAL_RESOLUTION" | "AUTOMATED_RESOLUTION";
@@ -1965,9 +1958,8 @@ export const AssetReportAddOns = S.String;
 
 /** A list of add-ons that should be included in the Asset Report. When Fast Assets is requested, Plaid will create two versions of the Asset Report: the Fast Asset Report, which will contain only Identity and Balance information, and the Full Asset Report, which will also contain Transactions information. A `PRODUCT_READY` webhook will be fired for each Asset Report when it is ready, and the `report_type` field will indicate whether the webhook is firing for the `FULL` or `FAST` Asset Report. To retrieve the Fast Asset Report, call `/asset_report/get` with `fast_report` set to `true`. There is no additional charge for using Fast Assets. To create a Fast Asset Report, Plaid must successfully retrieve both Identity and Balance data; if Plaid encounters an error obtaining this data, the Fast Asset Report will not be created. However, as long as Plaid can obtain Transactions data, the Full Asset Report will still be available. When Investments is requested, `investments` must be specified in the `optional_products` array when initializing Link. */
 export type AssetReportCreateRequestOptionsAddOnsList = Array<AssetReportAddOns | (string & {})>;
-export const AssetReportCreateRequestOptionsAddOnsList = /*@__PURE__*/ S.Array(
-  AssetReportAddOns,
-) as any as S.Schema<AssetReportCreateRequestOptionsAddOnsList>;
+export const AssetReportCreateRequestOptionsAddOnsList =
+  BetaIssuesV1IssueBehaviorsList as any as S.Schema<AssetReportCreateRequestOptionsAddOnsList>;
 
 /** An optional object to filter `/asset_report/create` results. If provided, must be non-`null`. The optional `user` object is required for the report to be eligible for Fannie Mae's Day 1 Certainty program. */
 export interface AssetReportCreateRequestOptions {
@@ -2131,9 +2123,8 @@ export const PartnerEndCustomerCRAUseCase = S.String;
 export type PartnerEndCustomerCRAUseCasesUseCasesList = Array<
   PartnerEndCustomerCRAUseCase | (string & {})
 >;
-export const PartnerEndCustomerCRAUseCasesUseCasesList = /*@__PURE__*/ S.Array(
-  PartnerEndCustomerCRAUseCase,
-) as any as S.Schema<PartnerEndCustomerCRAUseCasesUseCasesList>;
+export const PartnerEndCustomerCRAUseCasesUseCasesList =
+  BetaIssuesV1IssueBehaviorsList as any as S.Schema<PartnerEndCustomerCRAUseCasesUseCasesList>;
 
 /** The list of use cases associated with a given permissible purpose. */
 export interface PartnerEndCustomerCRAUseCases {
@@ -2287,9 +2278,8 @@ export const PartnerEndCustomerRequirementDue = S.String;
 
 /** A list of fields that are still required to be submitted. */
 export type PartnerEndCustomerRequirementsDue = Array<PartnerEndCustomerRequirementDue>;
-export const PartnerEndCustomerRequirementsDue = /*@__PURE__*/ S.Array(
-  PartnerEndCustomerRequirementDue,
-) as any as S.Schema<PartnerEndCustomerRequirementsDue>;
+export const PartnerEndCustomerRequirementsDue =
+  BetaIssuesV1IssueBehaviorsList as any as S.Schema<PartnerEndCustomerRequirementsDue>;
 
 /** The secrets for the newly created end customer. */
 export interface PartnerEndCustomerSecrets {
@@ -2814,9 +2804,8 @@ export const GSEReportType = S.String;
 
 /** Specifies which types of reports should be made available to GSEs. */
 export type CraCheckReportGSEOptionsReportTypesList = Array<GSEReportType | (string & {})>;
-export const CraCheckReportGSEOptionsReportTypesList = /*@__PURE__*/ S.Array(
-  GSEReportType,
-) as any as S.Schema<CraCheckReportGSEOptionsReportTypesList>;
+export const CraCheckReportGSEOptionsReportTypesList =
+  BetaIssuesV1IssueBehaviorsList as any as S.Schema<CraCheckReportGSEOptionsReportTypesList>;
 
 /** Specifies options for creating reports that can be shared with GSEs for mortgage verification. */
 export interface CraCheckReportGSEOptions {
@@ -2837,9 +2826,8 @@ export const CraCheckReportVerificationGetReportType = S.String;
 export type CraCheckReportHomeLendingReportOptionsReportsRequestedList = Array<
   CraCheckReportVerificationGetReportType | (string & {})
 >;
-export const CraCheckReportHomeLendingReportOptionsReportsRequestedList = /*@__PURE__*/ S.Array(
-  CraCheckReportVerificationGetReportType,
-) as any as S.Schema<CraCheckReportHomeLendingReportOptionsReportsRequestedList>;
+export const CraCheckReportHomeLendingReportOptionsReportsRequestedList =
+  BetaIssuesV1IssueBehaviorsList as any as S.Schema<CraCheckReportHomeLendingReportOptionsReportsRequestedList>;
 
 /** Defines configuration options for the Employment Refresh Report. */
 export interface CraCheckReportCreateEmploymentRefreshOptions {
@@ -3267,9 +3255,8 @@ export const CraReportCreateHomeLendingReportType = S.String;
 export type CraReportCreateHomeLendingOptionsReportsRequestedList = Array<
   CraReportCreateHomeLendingReportType | (string & {})
 >;
-export const CraReportCreateHomeLendingOptionsReportsRequestedList = /*@__PURE__*/ S.Array(
-  CraReportCreateHomeLendingReportType,
-) as any as S.Schema<CraReportCreateHomeLendingOptionsReportsRequestedList>;
+export const CraReportCreateHomeLendingOptionsReportsRequestedList =
+  BetaIssuesV1IssueBehaviorsList as any as S.Schema<CraReportCreateHomeLendingOptionsReportsRequestedList>;
 
 /** Configures the Employment Refresh report. */
 export interface CraReportCreateEmploymentRefreshOptions {
@@ -3354,14 +3341,8 @@ export interface CraReportCreateLendScoreProductConfig {
   product: CraReportCreateLendScoreProductConfigProduct;
   version: string;
 }
-export const CraReportCreateLendScoreProductConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    product: CraReportCreateLendScoreProductConfigProduct,
-    version: S.String,
-  }),
-).annotate({
-  identifier: "CraReportCreateLendScoreProductConfig",
-}) as any as S.Schema<CraReportCreateLendScoreProductConfig>;
+export const CraReportCreateLendScoreProductConfig =
+  CraReportCreateCashflowInsightsProductConfig as any as S.Schema<CraReportCreateLendScoreProductConfig>;
 
 /** Set to `cra_network_insights` to request the Network Insights product. */
 export type CraReportCreateNetworkInsightsProductConfigProduct = "cra_network_insights";
@@ -3373,14 +3354,8 @@ export interface CraReportCreateNetworkInsightsProductConfig {
   product: CraReportCreateNetworkInsightsProductConfigProduct;
   version: string;
 }
-export const CraReportCreateNetworkInsightsProductConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    product: CraReportCreateNetworkInsightsProductConfigProduct,
-    version: S.String,
-  }),
-).annotate({
-  identifier: "CraReportCreateNetworkInsightsProductConfig",
-}) as any as S.Schema<CraReportCreateNetworkInsightsProductConfig>;
+export const CraReportCreateNetworkInsightsProductConfig =
+  CraReportCreateCashflowInsightsProductConfig as any as S.Schema<CraReportCreateNetworkInsightsProductConfig>;
 
 /** Set to `cra_qualify` to request the Qualify product. */
 export type CraReportCreateQualifyProductConfigProduct = "cra_qualify";
@@ -3392,14 +3367,8 @@ export interface CraReportCreateQualifyProductConfig {
   product: CraReportCreateQualifyProductConfigProduct;
   version: string;
 }
-export const CraReportCreateQualifyProductConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    product: CraReportCreateQualifyProductConfigProduct,
-    version: S.String,
-  }),
-).annotate({
-  identifier: "CraReportCreateQualifyProductConfig",
-}) as any as S.Schema<CraReportCreateQualifyProductConfig>;
+export const CraReportCreateQualifyProductConfig =
+  CraReportCreateCashflowInsightsProductConfig as any as S.Schema<CraReportCreateQualifyProductConfig>;
 
 /** A Plaid Check product and version to generate for the report, with the options that apply to that product, selected by the `product` field. */
 export type CraReportProduct =
@@ -3506,14 +3475,8 @@ export interface CraBaseReportProductConfig {
   product: CraBaseReportProductConfigProduct;
   version: string;
 }
-export const CraBaseReportProductConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    product: CraBaseReportProductConfigProduct,
-    version: S.String,
-  }),
-).annotate({
-  identifier: "CraBaseReportProductConfig",
-}) as any as S.Schema<CraBaseReportProductConfig>;
+export const CraBaseReportProductConfig =
+  CraReportCreateCashflowInsightsProductConfig as any as S.Schema<CraBaseReportProductConfig>;
 
 /** The Income Insights product discriminator. */
 export type CraIncomeInsightsProductConfigProduct = "cra_income_insights";
@@ -4624,9 +4587,8 @@ export const RiskCheckLinkedService = S.String;
 
 /** A list of online services where this email address has been detected to have accounts or other activity. */
 export type RiskCheckEmailLinkedServicesList = Array<RiskCheckLinkedService>;
-export const RiskCheckEmailLinkedServicesList = /*@__PURE__*/ S.Array(
-  RiskCheckLinkedService,
-) as any as S.Schema<RiskCheckEmailLinkedServicesList>;
+export const RiskCheckEmailLinkedServicesList =
+  BetaIssuesV1IssueBehaviorsList as any as S.Schema<RiskCheckEmailLinkedServicesList>;
 
 /** Risk level for the given risk check type. */
 export type RiskLevel = "low" | "medium" | "high";
@@ -5117,9 +5079,8 @@ export const CountryCode = S.String;
 
 /** Specify an array of Plaid-supported country codes using the ISO-3166-1 alpha-2 country code standard. Institutions from all listed countries will be shown. For a complete mapping of supported products by country, see [What Plaid products are supported in each country and region?](https://support.plaid.com/hc/en-us/articles/27895826947735-What-Plaid-products-are-supported-in-each-country-and-region). For access to additional countries beyond what you have been approved for, [contact sales](https://plaid.com/contact/), your account manager, or support. If using Identity Verification, `country_codes` should be set to the country where your company is based, not the country where your user is located. For all other products, `country_codes` represents the location of your user's financial institution. If Link is launched with multiple country codes, only products that you are enabled for in all countries will be used by Link. While all countries are enabled by default in Sandbox, in Production only the countries you have requested access for are shown. To request access to additional countries, [file a product access Support ticket](https://dashboard.plaid.com/support/new/product-and-development/product-troubleshooting/request-product-access) via the Plaid dashboard. If using a Link customization, make sure the country codes in the customization match those specified in `country_codes`, or the customization may not be applied. If using the Auth features Instant Match, Instant Micro-deposits, Same-Day Micro-deposits, Automated Micro-deposits, or Database Auth, `country_codes` must be set to `['US']`. */
 export type CreateLinkTokenRequestCountryCodesList = Array<CountryCode | (string & {})>;
-export const CreateLinkTokenRequestCountryCodesList = /*@__PURE__*/ S.Array(
-  CountryCode,
-) as any as S.Schema<CreateLinkTokenRequestCountryCodesList>;
+export const CreateLinkTokenRequestCountryCodesList =
+  BetaIssuesV1IssueBehaviorsList as any as S.Schema<CreateLinkTokenRequestCountryCodesList>;
 
 export type LinkTokenCreateRequestUserName = IdentityVerificationRequestUserName;
 export const LinkTokenCreateRequestUserName = IdentityVerificationRequestUserName;
@@ -5242,9 +5203,8 @@ export const DepositoryAccountSubtype = S.String;
 
 /** An array of account subtypes to display in Link. If not specified, all account subtypes will be shown. For a full list of valid types and subtypes, see the [Account schema](https://plaid.com/docs/api/accounts#account-type-schema). */
 export type DepositoryAccountSubtypes = Array<DepositoryAccountSubtype | (string & {})>;
-export const DepositoryAccountSubtypes = /*@__PURE__*/ S.Array(
-  DepositoryAccountSubtype,
-) as any as S.Schema<DepositoryAccountSubtypes>;
+export const DepositoryAccountSubtypes =
+  BetaIssuesV1IssueBehaviorsList as any as S.Schema<DepositoryAccountSubtypes>;
 
 /** A specific use case for a limited purpose checking account. Limited purpose checking accounts will reject or return ACH transactions that aren't for eligible use cases. For example, a `RENT_MORTGAGE` limited purpose checking account will reject ACH transactions that are not specifically rent or mortgage payments. */
 export type LimitedPurposeType = "RENT_MORTGAGE";
@@ -5252,9 +5212,8 @@ export const LimitedPurposeType = S.String;
 
 /** An array of limited purpose types. Restricts which kinds of limited purpose checking accounts may be connected in Link to prevent users from connecting them for unsupported use cases. Required when 'limited purpose checking' is in the subtypes filter. */
 export type LimitedPurposeTypes = Array<LimitedPurposeType | (string & {})>;
-export const LimitedPurposeTypes = /*@__PURE__*/ S.Array(
-  LimitedPurposeType,
-) as any as S.Schema<LimitedPurposeTypes>;
+export const LimitedPurposeTypes =
+  BetaIssuesV1IssueBehaviorsList as any as S.Schema<LimitedPurposeTypes>;
 
 /** A filter to apply to `depository`-type accounts */
 export interface DepositoryFilter {
@@ -5274,9 +5233,8 @@ export const CreditAccountSubtype = S.String;
 
 /** An array of account subtypes to display in Link. If not specified, all account subtypes will be shown. For a full list of valid types and subtypes, see the [Account schema](https://plaid.com/docs/api/accounts#account-type-schema). */
 export type CreditAccountSubtypes = Array<CreditAccountSubtype | (string & {})>;
-export const CreditAccountSubtypes = /*@__PURE__*/ S.Array(
-  CreditAccountSubtype,
-) as any as S.Schema<CreditAccountSubtypes>;
+export const CreditAccountSubtypes =
+  BetaIssuesV1IssueBehaviorsList as any as S.Schema<CreditAccountSubtypes>;
 
 /** A filter to apply to `credit`-type accounts */
 export interface CreditFilter {
@@ -5309,19 +5267,14 @@ export const LoanAccountSubtype = S.String;
 
 /** An array of account subtypes to display in Link. If not specified, all account subtypes will be shown. For a full list of valid types and subtypes, see the [Account schema](https://plaid.com/docs/api/accounts#account-type-schema). */
 export type LoanAccountSubtypes = Array<LoanAccountSubtype | (string & {})>;
-export const LoanAccountSubtypes = /*@__PURE__*/ S.Array(
-  LoanAccountSubtype,
-) as any as S.Schema<LoanAccountSubtypes>;
+export const LoanAccountSubtypes =
+  BetaIssuesV1IssueBehaviorsList as any as S.Schema<LoanAccountSubtypes>;
 
 /** A filter to apply to `loan`-type accounts */
 export interface LoanFilter {
   account_subtypes: LoanAccountSubtypes;
 }
-export const LoanFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    account_subtypes: LoanAccountSubtypes,
-  }),
-).annotate({ identifier: "LoanFilter" }) as any as S.Schema<LoanFilter>;
+export const LoanFilter = CreditFilter as any as S.Schema<LoanFilter>;
 
 /** Valid account subtypes for investment accounts. For a list containing descriptions of each subtype, see [Account schemas](https://plaid.com/docs/api/accounts/#StandaloneAccountType-investment). */
 export type InvestmentAccountSubtype =
@@ -5388,19 +5341,14 @@ export const InvestmentAccountSubtype = S.String;
 
 /** An array of account subtypes to display in Link. If not specified, all account subtypes will be shown. For a full list of valid types and subtypes, see the [Account schema](https://plaid.com/docs/api/accounts#account-type-schema). */
 export type InvestmentAccountSubtypes = Array<InvestmentAccountSubtype | (string & {})>;
-export const InvestmentAccountSubtypes = /*@__PURE__*/ S.Array(
-  InvestmentAccountSubtype,
-) as any as S.Schema<InvestmentAccountSubtypes>;
+export const InvestmentAccountSubtypes =
+  BetaIssuesV1IssueBehaviorsList as any as S.Schema<InvestmentAccountSubtypes>;
 
 /** A filter to apply to `investment`-type accounts (or `brokerage`-type accounts for API versions 2018-05-22 and earlier). */
 export interface InvestmentFilter {
   account_subtypes: InvestmentAccountSubtypes;
 }
-export const InvestmentFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    account_subtypes: InvestmentAccountSubtypes,
-  }),
-).annotate({ identifier: "InvestmentFilter" }) as any as S.Schema<InvestmentFilter>;
+export const InvestmentFilter = CreditFilter as any as S.Schema<InvestmentFilter>;
 
 /** Valid account subtypes for other accounts. For a list containing descriptions of each subtype, see [Account schemas](https://plaid.com/docs/api/accounts/#StandaloneAccountType-other). */
 export type OtherAccountSubtype = "other" | "all";
@@ -5408,19 +5356,14 @@ export const OtherAccountSubtype = S.String;
 
 /** An array of account subtypes to display in Link. If not specified, all account subtypes will be shown. For a full list of valid types and subtypes, see the [Account schema](https://plaid.com/docs/api/accounts#account-type-schema). */
 export type OtherAccountSubtypes = Array<OtherAccountSubtype | (string & {})>;
-export const OtherAccountSubtypes = /*@__PURE__*/ S.Array(
-  OtherAccountSubtype,
-) as any as S.Schema<OtherAccountSubtypes>;
+export const OtherAccountSubtypes =
+  BetaIssuesV1IssueBehaviorsList as any as S.Schema<OtherAccountSubtypes>;
 
 /** A filter to apply to `other`-type accounts */
 export interface OtherFilter {
   account_subtypes: OtherAccountSubtypes;
 }
-export const OtherFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    account_subtypes: OtherAccountSubtypes,
-  }),
-).annotate({ identifier: "OtherFilter" }) as any as S.Schema<OtherFilter>;
+export const OtherFilter = CreditFilter as any as S.Schema<OtherFilter>;
 
 /** By default, Link will provide limited account filtering: it will only display Institutions that are compatible with all products supplied in the `products` parameter of `/link/token/create`, and, if `auth` is specified in the `products` array, will also filter out accounts other than `checking`, `savings`, and `cash management` accounts on the Account Select pane. You can further limit the accounts shown in Link by using `account_filters` to specify the account subtypes to be shown in Link. Only the specified subtypes will be shown. This filtering applies to both the Account Select view (if enabled) and the Institution Select view. Institutions that do not support the selected subtypes will be omitted from Link. To indicate that all subtypes should be shown, use the value `"all"`. If the `account_filters` filter is used, any account type for which a filter is not specified will be entirely omitted from Link. For a full list of valid types and subtypes, see the [Account schema](https://plaid.com/docs/api/accounts#account-type-schema). The filter may or may not impact the list of accounts shown by the institution in the OAuth account selection flow, depending on the specific institution. If the user selects excluded account subtypes in the OAuth flow, these accounts will not be added to the Item. If the user selects only excluded account subtypes, the link attempt will fail and the user will be prompted to try again. */
 export interface LinkTokenAccountFilters {
@@ -5491,9 +5434,8 @@ export const EmploymentSourceType = S.String;
 export type LinkTokenCreateRequestEmploymentEmploymentSourceTypesList = Array<
   EmploymentSourceType | (string & {})
 >;
-export const LinkTokenCreateRequestEmploymentEmploymentSourceTypesList = /*@__PURE__*/ S.Array(
-  EmploymentSourceType,
-) as any as S.Schema<LinkTokenCreateRequestEmploymentEmploymentSourceTypesList>;
+export const LinkTokenCreateRequestEmploymentEmploymentSourceTypesList =
+  BetaIssuesV1IssueBehaviorsList as any as S.Schema<LinkTokenCreateRequestEmploymentEmploymentSourceTypesList>;
 
 /** Specifies options for initializing Link for use with Bank Employment. This field is required if `employment` is included in the `products` array and `bank` is specified in `employment_source_types`. */
 export interface LinkTokenCreateRequestEmploymentBankIncome {
@@ -5531,9 +5473,8 @@ export const IncomeVerificationSourceType = S.String;
 export type LinkTokenCreateRequestIncomeVerificationIncomeSourceTypesList = Array<
   IncomeVerificationSourceType | (string & {})
 >;
-export const LinkTokenCreateRequestIncomeVerificationIncomeSourceTypesList = /*@__PURE__*/ S.Array(
-  IncomeVerificationSourceType,
-) as any as S.Schema<LinkTokenCreateRequestIncomeVerificationIncomeSourceTypesList>;
+export const LinkTokenCreateRequestIncomeVerificationIncomeSourceTypesList =
+  BetaIssuesV1IssueBehaviorsList as any as S.Schema<LinkTokenCreateRequestIncomeVerificationIncomeSourceTypesList>;
 
 /** Specifies options for initializing Link for use with Bank Income. This field is required if `income_verification` is included in the `products` array and `bank` is specified in `income_source_types`. */
 export interface LinkTokenCreateRequestIncomeVerificationBankIncome {
@@ -5575,9 +5516,7 @@ export type LinkTokenCreateRequestIncomeVerificationPayrollIncomeParsingConfigLi
   IncomeVerificationDocParsingConfig | (string & {})
 >;
 export const LinkTokenCreateRequestIncomeVerificationPayrollIncomeParsingConfigList =
-  /*@__PURE__*/ S.Array(
-    IncomeVerificationDocParsingConfig,
-  ) as any as S.Schema<LinkTokenCreateRequestIncomeVerificationPayrollIncomeParsingConfigList>;
+  LinkTokenCreateRequestIncomeVerificationPayrollIncomeFlowTypesList as any as S.Schema<LinkTokenCreateRequestIncomeVerificationPayrollIncomeParsingConfigList>;
 
 /** Specifies options for initializing Link for use with Payroll Income (including Document Income). Further customization options for Document Income, such as customizing which document types may be uploaded, are also available via the [Link Customization pane](https://dashboard.plaid.com/link) in the Dashboard. (Requires Production enablement.) */
 export interface LinkTokenCreateRequestIncomeVerificationPayrollIncome {
@@ -5737,9 +5676,7 @@ export type LinkTokenCreateRequestCraOptionsBaseReportGSEOptionsReportTypesList 
   GSEReportType | (string & {})
 >;
 export const LinkTokenCreateRequestCraOptionsBaseReportGSEOptionsReportTypesList =
-  /*@__PURE__*/ S.Array(
-    GSEReportType,
-  ) as any as S.Schema<LinkTokenCreateRequestCraOptionsBaseReportGSEOptionsReportTypesList>;
+  LinkTokenCreateRequestIncomeVerificationPayrollIncomeFlowTypesList as any as S.Schema<LinkTokenCreateRequestCraOptionsBaseReportGSEOptionsReportTypesList>;
 
 /** Specifies options for initializing Link to create reports that can be shared with GSEs for mortgage verification. */
 export interface LinkTokenCreateRequestCraOptionsBaseReportGSEOptions {
@@ -6074,9 +6011,8 @@ export const LinkTokenCreateIdentityAccountIdsList =
 export type LinkTokenCreateIdentityParsingConfigsList = Array<
   IncomeVerificationDocParsingConfig | (string & {})
 >;
-export const LinkTokenCreateIdentityParsingConfigsList = /*@__PURE__*/ S.Array(
-  IncomeVerificationDocParsingConfig,
-) as any as S.Schema<LinkTokenCreateIdentityParsingConfigsList>;
+export const LinkTokenCreateIdentityParsingConfigsList =
+  BetaIssuesV1IssueBehaviorsList as any as S.Schema<LinkTokenCreateIdentityParsingConfigsList>;
 
 /** Identity object used to specify document upload */
 export interface LinkTokenCreateIdentity {
@@ -6364,9 +6300,8 @@ export const PaymentInitiationConsentScope = S.String;
 export type CreatePaymentInitiationConsentRequestScopesList = Array<
   PaymentInitiationConsentScope | (string & {})
 >;
-export const CreatePaymentInitiationConsentRequestScopesList = /*@__PURE__*/ S.Array(
-  PaymentInitiationConsentScope,
-) as any as S.Schema<CreatePaymentInitiationConsentRequestScopesList>;
+export const CreatePaymentInitiationConsentRequestScopesList =
+  BetaIssuesV1IssueBehaviorsList as any as S.Schema<CreatePaymentInitiationConsentRequestScopesList>;
 
 /** Payment consent type. Defines possible use case for payments made with the given consent. `SWEEPING`: Allows moving money between accounts owned by the same user. `COMMERCIAL`: Allows initiating payments from the user's account to third parties. */
 export type PaymentInitiationConsentType = "SWEEPING" | "COMMERCIAL";
@@ -7322,9 +7257,7 @@ export type SandboxPublicTokenCreateRequestOptionsIncomeVerificationIncomeSource
   IncomeVerificationSourceType | (string & {})
 >;
 export const SandboxPublicTokenCreateRequestOptionsIncomeVerificationIncomeSourceTypesList =
-  /*@__PURE__*/ S.Array(
-    IncomeVerificationSourceType,
-  ) as any as S.Schema<SandboxPublicTokenCreateRequestOptionsIncomeVerificationIncomeSourceTypesList>;
+  LinkTokenCreateRequestIncomeVerificationPayrollIncomeFlowTypesList as any as S.Schema<SandboxPublicTokenCreateRequestOptionsIncomeVerificationIncomeSourceTypesList>;
 
 /** Specifies options for Bank Income. This field is required if `income_verification` is included in the `initial_products` array and `bank` is specified in `income_source_types`. */
 export interface SandboxPublicTokenCreateRequestIncomeVerificationBankIncome {
@@ -8284,14 +8217,8 @@ export interface TransferAuthorizationDecisionRationale {
   /** A human-readable description of the code associated with a transfer approval or transfer decline. */
   description: string;
 }
-export const TransferAuthorizationDecisionRationale = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: TransferAuthorizationDecisionRationaleCode,
-    description: S.String,
-  }),
-).annotate({
-  identifier: "TransferAuthorizationDecisionRationale",
-}) as any as S.Schema<TransferAuthorizationDecisionRationale>;
+export const TransferAuthorizationDecisionRationale =
+  TransferAuthorizationGuaranteeDecisionRationale as any as S.Schema<TransferAuthorizationDecisionRationale>;
 
 /** The adaptive guarantee outcome for a transfer. `FULL_INSTANT`: The full transfer amount is guaranteed and funds are available instantly. `PARTIAL_INSTANT_ONLY`: A partial amount is guaranteed and available instantly; the remainder is not guaranteed. `PARTIAL_INSTANT_WITH_OBSERVATION_WINDOW`: A partial amount is guaranteed instantly; an additional amount is conditionally guaranteed subject to an observation window. `NOT_GUARANTEED`: Plaid did not provide a guarantee for this transfer. */
 export type TransferGuaranteeOutcome =
@@ -10385,9 +10312,8 @@ export const FDXContentTypes = S.String;
 
 /** Content-types that can be used in the Accept header */
 export type FDXHateoasLinkTypesList = Array<FDXContentTypes | (string & {})>;
-export const FDXHateoasLinkTypesList = /*@__PURE__*/ S.Array(
-  FDXContentTypes,
-) as any as S.Schema<FDXHateoasLinkTypesList>;
+export const FDXHateoasLinkTypesList =
+  BetaIssuesV1IssueBehaviorsList as any as S.Schema<FDXHateoasLinkTypesList>;
 
 /** REST application constraint (Hypermedia As The Engine Of Application State) */
 export interface FDXHateoasLink {
@@ -12748,19 +12674,12 @@ export interface BaseReportWarning {
   warning_code: BaseReportWarningCode;
   cause: Cause | null;
 }
-export const BaseReportWarning = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    warning_type: S.String,
-    warning_code: BaseReportWarningCode,
-    cause: S.NullOr(Cause),
-  }),
-).annotate({ identifier: "BaseReportWarning" }) as any as S.Schema<BaseReportWarning>;
+export const BaseReportWarning = Warning as any as S.Schema<BaseReportWarning>;
 
 /** This array contains any information about errors or alerts related to the Base Report that did not block generation of the report. */
 export type CraCheckReportBaseReportGetResponseWarningsList = Array<BaseReportWarning>;
-export const CraCheckReportBaseReportGetResponseWarningsList = /*@__PURE__*/ S.Array(
-  BaseReportWarning,
-) as any as S.Schema<CraCheckReportBaseReportGetResponseWarningsList>;
+export const CraCheckReportBaseReportGetResponseWarningsList =
+  AssetReportGetResponseWarningsList as any as S.Schema<CraCheckReportBaseReportGetResponseWarningsList>;
 
 /** CraCheckReportBaseReportGetResponse defines the response schema for `/cra/check_report/base_report/get` */
 export interface CraCheckReportBaseReportGetResponse {
@@ -12836,19 +12755,12 @@ export interface CheckReportWarning {
   warning_code: CheckReportWarningCode;
   cause: Cause | null;
 }
-export const CheckReportWarning = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    warning_type: S.String,
-    warning_code: CheckReportWarningCode,
-    cause: S.NullOr(Cause),
-  }),
-).annotate({ identifier: "CheckReportWarning" }) as any as S.Schema<CheckReportWarning>;
+export const CheckReportWarning = Warning as any as S.Schema<CheckReportWarning>;
 
 /** If the Cashflow Insights generation was successful but a subset of data could not be retrieved, this array will contain information about the errors causing information to be missing */
 export type CraCheckReportCashflowInsightsGetResponseWarningsList = Array<CheckReportWarning>;
-export const CraCheckReportCashflowInsightsGetResponseWarningsList = /*@__PURE__*/ S.Array(
-  CheckReportWarning,
-) as any as S.Schema<CraCheckReportCashflowInsightsGetResponseWarningsList>;
+export const CraCheckReportCashflowInsightsGetResponseWarningsList =
+  AssetReportGetResponseWarningsList as any as S.Schema<CraCheckReportCashflowInsightsGetResponseWarningsList>;
 
 /** CraCheckReportCashflowInsightsGetResponse defines the response schema for `/cra/check_report/cashflow_insights/get`. */
 export interface CraCheckReportCashflowInsightsGetResponse {
@@ -14337,9 +14249,8 @@ export const CraPDFAddOns = S.String;
 
 /** Use this field to include the most recent Income Insights, Partner Insights, or LendScore report in the PDF. */
 export type GetCraCheckReportPdfRequestAddOnsList = Array<CraPDFAddOns | (string & {})>;
-export const GetCraCheckReportPdfRequestAddOnsList = /*@__PURE__*/ S.Array(
-  CraPDFAddOns,
-) as any as S.Schema<GetCraCheckReportPdfRequestAddOnsList>;
+export const GetCraCheckReportPdfRequestAddOnsList =
+  BetaIssuesV1IssueBehaviorsList as any as S.Schema<GetCraCheckReportPdfRequestAddOnsList>;
 
 export interface GetCraCheckReportPdfRequest {
   client_id?: string;
@@ -15158,9 +15069,8 @@ export const CraCheckReportVerificationPdfReportType = S.String;
 export type GetCraCheckReportVerificationPdfRequestReportsRequestedList = Array<
   CraCheckReportVerificationPdfReportType | (string & {})
 >;
-export const GetCraCheckReportVerificationPdfRequestReportsRequestedList = /*@__PURE__*/ S.Array(
-  CraCheckReportVerificationPdfReportType,
-) as any as S.Schema<GetCraCheckReportVerificationPdfRequestReportsRequestedList>;
+export const GetCraCheckReportVerificationPdfRequestReportsRequestedList =
+  BetaIssuesV1IssueBehaviorsList as any as S.Schema<GetCraCheckReportVerificationPdfRequestReportsRequestedList>;
 
 export interface GetCraCheckReportVerificationPdfRequest {
   client_id?: string;
@@ -15417,12 +15327,7 @@ export interface CraQualifyProduct {
   product: CraQualifyProductProduct;
   version: string;
 }
-export const CraQualifyProduct = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    product: CraQualifyProductProduct,
-    version: S.String,
-  }),
-).annotate({ identifier: "CraQualifyProduct" }) as any as S.Schema<CraQualifyProduct>;
+export const CraQualifyProduct = CraQualifyProductConfig as any as S.Schema<CraQualifyProduct>;
 
 /** The Income Insights product discriminator. */
 export type CraIncomeInsightsProductProduct = "cra_income_insights";
@@ -15434,12 +15339,8 @@ export interface CraIncomeInsightsProduct {
   product: CraIncomeInsightsProductProduct;
   version: string;
 }
-export const CraIncomeInsightsProduct = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    product: CraIncomeInsightsProductProduct,
-    version: S.String,
-  }),
-).annotate({ identifier: "CraIncomeInsightsProduct" }) as any as S.Schema<CraIncomeInsightsProduct>;
+export const CraIncomeInsightsProduct =
+  CraQualifyProductConfig as any as S.Schema<CraIncomeInsightsProduct>;
 
 /** The Home Lending product discriminator. */
 export type CraHomeLendingProductProduct = "cra_home_lending";
@@ -15451,12 +15352,8 @@ export interface CraHomeLendingProduct {
   product: CraHomeLendingProductProduct;
   version: string;
 }
-export const CraHomeLendingProduct = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    product: CraHomeLendingProductProduct,
-    version: S.String,
-  }),
-).annotate({ identifier: "CraHomeLendingProduct" }) as any as S.Schema<CraHomeLendingProduct>;
+export const CraHomeLendingProduct =
+  CraQualifyProductConfig as any as S.Schema<CraHomeLendingProduct>;
 
 /** The Base Report product discriminator. */
 export type CraBaseReportProductProduct = "cra_base_report";
@@ -15468,12 +15365,8 @@ export interface CraBaseReportProduct {
   product: CraBaseReportProductProduct;
   version: string;
 }
-export const CraBaseReportProduct = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    product: CraBaseReportProductProduct,
-    version: S.String,
-  }),
-).annotate({ identifier: "CraBaseReportProduct" }) as any as S.Schema<CraBaseReportProduct>;
+export const CraBaseReportProduct =
+  CraQualifyProductConfig as any as S.Schema<CraBaseReportProduct>;
 
 /** The LendScore product discriminator. */
 export type CraLendScoreProductProduct = "cra_lend_score";
@@ -15485,12 +15378,7 @@ export interface CraLendScoreProduct {
   product: CraLendScoreProductProduct;
   version: string;
 }
-export const CraLendScoreProduct = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    product: CraLendScoreProductProduct,
-    version: S.String,
-  }),
-).annotate({ identifier: "CraLendScoreProduct" }) as any as S.Schema<CraLendScoreProduct>;
+export const CraLendScoreProduct = CraQualifyProductConfig as any as S.Schema<CraLendScoreProduct>;
 
 /** The Cashflow Insights product discriminator. */
 export type CraCashflowInsightsProductProduct = "cra_cashflow_insights";
@@ -15502,14 +15390,8 @@ export interface CraCashflowInsightsProduct {
   product: CraCashflowInsightsProductProduct;
   version: string;
 }
-export const CraCashflowInsightsProduct = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    product: CraCashflowInsightsProductProduct,
-    version: S.String,
-  }),
-).annotate({
-  identifier: "CraCashflowInsightsProduct",
-}) as any as S.Schema<CraCashflowInsightsProduct>;
+export const CraCashflowInsightsProduct =
+  CraReportCreateCashflowInsightsProductConfig as any as S.Schema<CraCashflowInsightsProduct>;
 
 /** The Network Insights product discriminator. */
 export type CraNetworkInsightsProductProduct = "cra_network_insights";
@@ -15521,14 +15403,8 @@ export interface CraNetworkInsightsProduct {
   product: CraNetworkInsightsProductProduct;
   version: string;
 }
-export const CraNetworkInsightsProduct = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    product: CraNetworkInsightsProductProduct,
-    version: S.String,
-  }),
-).annotate({
-  identifier: "CraNetworkInsightsProduct",
-}) as any as S.Schema<CraNetworkInsightsProduct>;
+export const CraNetworkInsightsProduct =
+  CraReportCreateCashflowInsightsProductConfig as any as S.Schema<CraNetworkInsightsProduct>;
 
 /** CraReportGetRequestProduct specifies one product and version requested from `/cra/report/get`, selected by the `product` discriminator. */
 export type CraReportGetRequestProduct =
@@ -19350,22 +19226,14 @@ export interface CreditSessionBankEmploymentResult {
   /** The Plaid Institution ID associated with the Item. */
   institution_id?: string;
 }
-export const CreditSessionBankEmploymentResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(CreditSessionBankEmploymentStatus),
-    item_id: S.optional(S.String),
-    institution_id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreditSessionBankEmploymentResult",
-}) as any as S.Schema<CreditSessionBankEmploymentResult>;
+export const CreditSessionBankEmploymentResult =
+  CreditSessionBankIncomeResult as any as S.Schema<CreditSessionBankEmploymentResult>;
 
 /** The set of bank employment verifications for the Link session. */
 export type CreditSessionResultsBankEmploymentResultsList =
   Array<CreditSessionBankEmploymentResult>;
-export const CreditSessionResultsBankEmploymentResultsList = /*@__PURE__*/ S.Array(
-  CreditSessionBankEmploymentResult,
-) as any as S.Schema<CreditSessionResultsBankEmploymentResultsList>;
+export const CreditSessionResultsBankEmploymentResultsList =
+  CreditSessionResultsBankIncomeResultsList as any as S.Schema<CreditSessionResultsBankEmploymentResultsList>;
 
 /** The details of a digital payroll income verification in Link */
 export interface CreditSessionPayrollIncomeResult {
@@ -19589,9 +19457,8 @@ export const FDXDataCluster = S.String;
 
 /** Names of clusters of data elements permissioned. */
 export type FDXConsentGrantResourceDataClustersList = Array<FDXDataCluster>;
-export const FDXConsentGrantResourceDataClustersList = /*@__PURE__*/ S.Array(
-  FDXDataCluster,
-) as any as S.Schema<FDXConsentGrantResourceDataClustersList>;
+export const FDXConsentGrantResourceDataClustersList =
+  BetaIssuesV1IssueBehaviorsList as any as S.Schema<FDXConsentGrantResourceDataClustersList>;
 
 /** One permissioned resource on a consent grant. */
 export interface FDXConsentGrantResource {
@@ -20300,9 +20167,7 @@ export const PaymentInitiationMaximumPaymentAmount =
 export type PaymentInitiationStandingOrderMetadataValidStandingOrderIntervalsList =
   Array<PaymentScheduleInterval>;
 export const PaymentInitiationStandingOrderMetadataValidStandingOrderIntervalsList =
-  /*@__PURE__*/ S.Array(
-    PaymentScheduleInterval,
-  ) as any as S.Schema<PaymentInitiationStandingOrderMetadataValidStandingOrderIntervalsList>;
+  LinkTokenCreateRequestIncomeVerificationPayrollIncomeFlowTypesList as any as S.Schema<PaymentInitiationStandingOrderMetadataValidStandingOrderIntervalsList>;
 
 /** Metadata specifically related to valid Payment Initiation standing order configurations for the institution. */
 export interface PaymentInitiationStandingOrderMetadata {
@@ -20520,29 +20385,12 @@ export interface InvestmentAccount {
   apy?: number | null;
   holder_category?: AccountHolderCategory | null;
 }
-export const InvestmentAccount = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    account_id: S.String,
-    balances: AccountBalance,
-    mask: S.NullOr(S.String),
-    name: S.String,
-    official_name: S.NullOr(S.String),
-    type: AccountType,
-    subtype: S.NullOr(AccountSubtype),
-    verification_status: S.optional(InvestmentAccountVerificationStatus),
-    verification_name: S.optional(S.String),
-    verification_insights: S.optional(AccountVerificationInsights),
-    persistent_account_id: S.optional(S.String),
-    apy: S.optional(S.NullOr(S.Number)),
-    holder_category: S.optional(S.NullOr(AccountHolderCategory)),
-  }),
-).annotate({ identifier: "InvestmentAccount" }) as any as S.Schema<InvestmentAccount>;
+export const InvestmentAccount = AccountBase as any as S.Schema<InvestmentAccount>;
 
 /** The accounts for which data is being retrieved */
 export type InvestmentsAuthGetResponseAccountsList = Array<InvestmentAccount>;
-export const InvestmentsAuthGetResponseAccountsList = /*@__PURE__*/ S.Array(
-  InvestmentAccount,
-) as any as S.Schema<InvestmentsAuthGetResponseAccountsList>;
+export const InvestmentsAuthGetResponseAccountsList =
+  AccountsGetResponseAccountsList as any as S.Schema<InvestmentsAuthGetResponseAccountsList>;
 
 /** Per-lot acquisition data for this holding. An empty array indicates the institution does not provide lot-level data. */
 export type HoldingTaxLotsList = Array<HoldingTaxLot>;
@@ -21339,9 +21187,8 @@ export const ItemConsentedDataScope = S.String;
 
 /** A list of data scopes that the user has consented to for the Item via [Data Transparency Messaging](https://plaid.com/docs/link/data-transparency-messaging-migration-guide). These are based on the `consented_products`; see the [full mapping](https://plaid.com/docs/link/data-transparency-messaging-migration-guide/#data-scopes-by-product) of data scopes and products. */
 export type ItemWithConsentFieldsConsentedDataScopesList = Array<ItemConsentedDataScope>;
-export const ItemWithConsentFieldsConsentedDataScopesList = /*@__PURE__*/ S.Array(
-  ItemConsentedDataScope,
-) as any as S.Schema<ItemWithConsentFieldsConsentedDataScopesList>;
+export const ItemWithConsentFieldsConsentedDataScopesList =
+  BetaIssuesV1IssueBehaviorsList as any as S.Schema<ItemWithConsentFieldsConsentedDataScopesList>;
 
 /** Metadata about the Item */
 export interface ItemWithConsentFields {
@@ -25746,9 +25593,8 @@ export const EntityWatchlistCode = S.String;
 
 /** Watchlists enabled for the associated program */
 export type WatchlistScreeningEntityProgramGetResponseListsEnabledList = Array<EntityWatchlistCode>;
-export const WatchlistScreeningEntityProgramGetResponseListsEnabledList = /*@__PURE__*/ S.Array(
-  EntityWatchlistCode,
-) as any as S.Schema<WatchlistScreeningEntityProgramGetResponseListsEnabledList>;
+export const WatchlistScreeningEntityProgramGetResponseListsEnabledList =
+  BetaIssuesV1IssueBehaviorsList as any as S.Schema<WatchlistScreeningEntityProgramGetResponseListsEnabledList>;
 
 /** The valid name matching sensitivity configurations for a screening program. Note that while certain matching techniques may be more prevalent on less strict settings, all matching algorithms are enabled for every sensitivity. `coarse` - See more potential matches. This sensitivity will see more broad phonetic matches across alphabets that make missing a potential hit very unlikely. This setting is noisier and will require more manual review. `balanced` - A good default for most companies. This sensitivity is balanced to show high quality hits with reduced noise. `strict` - Aggressive false positive reduction. This sensitivity will require names to be more similar than `coarse` and `balanced` settings, relying less on phonetics, while still accounting for character transpositions, missing tokens, and other common permutations. `exact` - Matches must be nearly exact. This sensitivity will only show hits with exact or nearly exact name matches with only basic correction such as extraneous symbols and capitalization. This setting is generally not recommended unless you have a very specific use case. */
 export type ProgramNameSensitivity = "coarse" | "balanced" | "strict" | "exact";
@@ -25861,9 +25707,8 @@ export const IndividualWatchlistCode = S.String;
 /** Watchlists enabled for the associated program */
 export type WatchlistScreeningIndividualProgramGetResponseListsEnabledList =
   Array<IndividualWatchlistCode>;
-export const WatchlistScreeningIndividualProgramGetResponseListsEnabledList = /*@__PURE__*/ S.Array(
-  IndividualWatchlistCode,
-) as any as S.Schema<WatchlistScreeningIndividualProgramGetResponseListsEnabledList>;
+export const WatchlistScreeningIndividualProgramGetResponseListsEnabledList =
+  BetaIssuesV1IssueBehaviorsList as any as S.Schema<WatchlistScreeningIndividualProgramGetResponseListsEnabledList>;
 
 /** A program that configures the active lists, search parameters, and other behavior for initial and ongoing screening of individuals. */
 export interface WatchlistScreeningIndividualProgramGetResponse {
@@ -25879,21 +25724,8 @@ export interface WatchlistScreeningIndividualProgramGetResponse {
   is_archived: boolean;
   request_id: string;
 }
-export const WatchlistScreeningIndividualProgramGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    created_at: S.String,
-    is_rescanning_enabled: S.Boolean,
-    lists_enabled: WatchlistScreeningIndividualProgramGetResponseListsEnabledList,
-    name: S.String,
-    name_sensitivity: ProgramNameSensitivity,
-    audit_trail: WatchlistScreeningAuditTrail,
-    is_archived: S.Boolean,
-    request_id: S.String,
-  }),
-).annotate({
-  identifier: "WatchlistScreeningIndividualProgramGetResponse",
-}) as any as S.Schema<WatchlistScreeningIndividualProgramGetResponse>;
+export const WatchlistScreeningIndividualProgramGetResponse =
+  WatchlistScreeningEntityProgramGetResponse as any as S.Schema<WatchlistScreeningIndividualProgramGetResponse>;
 
 export interface GetWebhookVerificationKeyRequest {
   client_id?: string;
@@ -26406,9 +26238,8 @@ export const BankTransferEventType = S.String;
 export type ListBankTransferEventRequestEventTypesList = Array<
   BankTransferEventType | (string & {})
 >;
-export const ListBankTransferEventRequestEventTypesList = /*@__PURE__*/ S.Array(
-  BankTransferEventType,
-) as any as S.Schema<ListBankTransferEventRequestEventTypesList>;
+export const ListBankTransferEventRequestEventTypesList =
+  BetaIssuesV1IssueBehaviorsList as any as S.Schema<ListBankTransferEventRequestEventTypesList>;
 
 /** Indicates the direction of the transfer: `outbound`: for API-initiated transfers `inbound`: for payments received by the FBO account. */
 export type BankTransferEventListDirection = "inbound" | "outbound";
@@ -26600,9 +26431,8 @@ export const WebhookEventDeliveryStatus = S.String;
 export type ListBetaWebhookEventsRequestDeliveryStatusesList = Array<
   WebhookEventDeliveryStatus | (string & {})
 >;
-export const ListBetaWebhookEventsRequestDeliveryStatusesList = /*@__PURE__*/ S.Array(
-  WebhookEventDeliveryStatus,
-) as any as S.Schema<ListBetaWebhookEventsRequestDeliveryStatusesList>;
+export const ListBetaWebhookEventsRequestDeliveryStatusesList =
+  BetaIssuesV1IssueBehaviorsList as any as S.Schema<ListBetaWebhookEventsRequestDeliveryStatusesList>;
 
 export interface ListBetaWebhookEventsRequest {
   client_id?: string;
@@ -27794,9 +27624,8 @@ export const TransferEventType = S.String;
 
 /** Filter events by event type. */
 export type ListTransferEventRequestEventTypesList = Array<TransferEventType | (string & {})>;
-export const ListTransferEventRequestEventTypesList = /*@__PURE__*/ S.Array(
-  TransferEventType,
-) as any as S.Schema<ListTransferEventRequestEventTypesList>;
+export const ListTransferEventRequestEventTypesList =
+  BetaIssuesV1IssueBehaviorsList as any as S.Schema<ListTransferEventRequestEventTypesList>;
 
 export interface ListTransferEventRequest {
   client_id?: string;
@@ -32616,9 +32445,8 @@ export const CreditACHClass = S.String;
 
 /** Specifies the expected use cases for the originator's credit transfers. This should be a list that contains one or more of the following codes: `"ccd"` - Corporate Credit or Debit - fund transfer between two corporate bank accounts `"ppd"` - Prearranged Payment or Deposit. The transfer is part of a pre-existing relationship with a consumer. Authorization was obtained from the consumer in person via writing, or through online authorization, or via an electronic document signing, e.g. Docusign. For example language for online authorization, see the 2025 Nacha Operating Rules -- Section 2.3.2, Authorization of Entries via Electronic Means. Can be used for credits or debits. `"web"` - Internet-Initiated Entry. The transfer debits a consumer's bank account. Authorization from the consumer is obtained over the Internet (e.g. a web or mobile application). Can be used for single debits or recurring debits. */
 export type TransferCreditUsageConfigurationSecCodesList = Array<CreditACHClass | (string & {})>;
-export const TransferCreditUsageConfigurationSecCodesList = /*@__PURE__*/ S.Array(
-  CreditACHClass,
-) as any as S.Schema<TransferCreditUsageConfigurationSecCodesList>;
+export const TransferCreditUsageConfigurationSecCodesList =
+  BetaIssuesV1IssueBehaviorsList as any as S.Schema<TransferCreditUsageConfigurationSecCodesList>;
 
 /** Specifies the originator's expected usage of credits. For all dollar amounts, use a decimal string with two digits of precision e.g. "10.00". This field is required if the originator is expected to process credit transfers. */
 export interface TransferCreditUsageConfiguration {
@@ -32646,9 +32474,8 @@ export const TransferCreditUsageConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifies the expected use cases for the originator's debit transfers. This should be a list that contains one or more of the following codes: `"ccd"` - Corporate Credit or Debit - fund transfer between two corporate bank accounts `"ppd"` - Prearranged Payment or Deposit - The transfer is part of a pre-existing relationship with a consumer. Authorization was obtained in writing either in person or via an electronic document signing, e.g. Docusign, by the consumer. Can be used for credits or debits. `"web"` - Internet-Initiated Entry. The transfer debits a consumer's bank account. Authorization from the consumer is obtained over the Internet (e.g. a web or mobile application). Can be used for single debits or recurring debits. `"tel"` - Telephone-Initiated Entry. The transfer debits a consumer. Debit authorization has been received orally over the telephone via a recorded call. */
 export type TransferDebitUsageConfigurationSecCodesList = Array<ACHClass | (string & {})>;
-export const TransferDebitUsageConfigurationSecCodesList = /*@__PURE__*/ S.Array(
-  ACHClass,
-) as any as S.Schema<TransferDebitUsageConfigurationSecCodesList>;
+export const TransferDebitUsageConfigurationSecCodesList =
+  BetaIssuesV1IssueBehaviorsList as any as S.Schema<TransferDebitUsageConfigurationSecCodesList>;
 
 /** Specifies the originator's expected usage of debits. For all dollar amounts, use a decimal string with two digits of precision e.g. "10.00". This field is required if the originator is expected to process debit transfers. */
 export interface TransferDebitUsageConfiguration {
@@ -32662,17 +32489,8 @@ export interface TransferDebitUsageConfiguration {
   /** Specifies the expected use cases for the originator's debit transfers. This should be a list that contains one or more of the following codes: `"ccd"` - Corporate Credit or Debit - fund transfer between two corporate bank accounts `"ppd"` - Prearranged Payment or Deposit - The transfer is part of a pre-existing relationship with a consumer. Authorization was obtained in writing either in person or via an electronic document signing, e.g. Docusign, by the consumer. Can be used for credits or debits. `"web"` - Internet-Initiated Entry. The transfer debits a consumer's bank account. Authorization from the consumer is obtained over the Internet (e.g. a web or mobile application). Can be used for single debits or recurring debits. `"tel"` - Telephone-Initiated Entry. The transfer debits a consumer. Debit authorization has been received orally over the telephone via a recorded call. */
   sec_codes: TransferDebitUsageConfigurationSecCodesList;
 }
-export const TransferDebitUsageConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    expected_frequency: OriginatorExpectedTransferFrequency,
-    expected_highest_amount: S.String,
-    expected_average_amount: S.String,
-    expected_monthly_amount: S.String,
-    sec_codes: TransferDebitUsageConfigurationSecCodesList,
-  }),
-).annotate({
-  identifier: "TransferDebitUsageConfiguration",
-}) as any as S.Schema<TransferDebitUsageConfiguration>;
+export const TransferDebitUsageConfiguration =
+  TransferCreditUsageConfiguration as any as S.Schema<TransferDebitUsageConfiguration>;
 
 /** The originator's address. */
 export interface TransferOriginatorAddress {
@@ -32998,23 +32816,7 @@ export interface AccountBaseNullable {
   apy?: number | null;
   holder_category?: AccountHolderCategory | null;
 }
-export const AccountBaseNullable = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    account_id: S.String,
-    balances: AccountBalance,
-    mask: S.NullOr(S.String),
-    name: S.String,
-    official_name: S.NullOr(S.String),
-    type: AccountType,
-    subtype: S.NullOr(AccountSubtype),
-    verification_status: S.optional(AccountBaseNullableVerificationStatus),
-    verification_name: S.optional(S.String),
-    verification_insights: S.optional(AccountVerificationInsights),
-    persistent_account_id: S.optional(S.String),
-    apy: S.optional(S.NullOr(S.Number)),
-    holder_category: S.optional(S.NullOr(AccountHolderCategory)),
-  }),
-).annotate({ identifier: "AccountBaseNullable" }) as any as S.Schema<AccountBaseNullable>;
+export const AccountBaseNullable = AccountBase as any as S.Schema<AccountBaseNullable>;
 
 /** Transactions that have been added to the Item since `cursor` ordered by ascending last modified time. */
 export type ProcessorTransactionsSyncResponseAddedList = Array<Transaction>;
@@ -34061,9 +33863,8 @@ export const CraServicingSubscriptionUpdateRequestResettableField = S.String;
 export type CraServicingSubscriptionUpdateRequestResettableFieldList = Array<
   CraServicingSubscriptionUpdateRequestResettableField | (string & {})
 >;
-export const CraServicingSubscriptionUpdateRequestResettableFieldList = /*@__PURE__*/ S.Array(
-  CraServicingSubscriptionUpdateRequestResettableField,
-) as any as S.Schema<CraServicingSubscriptionUpdateRequestResettableFieldList>;
+export const CraServicingSubscriptionUpdateRequestResettableFieldList =
+  BetaIssuesV1IssueBehaviorsList as any as S.Schema<CraServicingSubscriptionUpdateRequestResettableFieldList>;
 
 export interface UpdateCraServicingSubscriptionRequest {
   client_id?: string;
@@ -34274,9 +34075,8 @@ export const CashFlowUpdatesEventWebhookCodes = S.String;
 export type UpdateSandboxCraCashflowUpdateRequestWebhookCodesList = Array<
   CashFlowUpdatesEventWebhookCodes | (string & {})
 >;
-export const UpdateSandboxCraCashflowUpdateRequestWebhookCodesList = /*@__PURE__*/ S.Array(
-  CashFlowUpdatesEventWebhookCodes,
-) as any as S.Schema<UpdateSandboxCraCashflowUpdateRequestWebhookCodesList>;
+export const UpdateSandboxCraCashflowUpdateRequestWebhookCodesList =
+  BetaIssuesV1IssueBehaviorsList as any as S.Schema<UpdateSandboxCraCashflowUpdateRequestWebhookCodesList>;
 
 export interface UpdateSandboxCraCashflowUpdateRequest {
   client_id?: string;
@@ -34389,9 +34189,8 @@ export const WatchlistScreeningEntityUpdateRequestResettableField = S.String;
 export type WatchlistScreeningEntityUpdateRequestResettableFieldList = Array<
   WatchlistScreeningEntityUpdateRequestResettableField | (string & {})
 >;
-export const WatchlistScreeningEntityUpdateRequestResettableFieldList = /*@__PURE__*/ S.Array(
-  WatchlistScreeningEntityUpdateRequestResettableField,
-) as any as S.Schema<WatchlistScreeningEntityUpdateRequestResettableFieldList>;
+export const WatchlistScreeningEntityUpdateRequestResettableFieldList =
+  BetaIssuesV1IssueBehaviorsList as any as S.Schema<WatchlistScreeningEntityUpdateRequestResettableFieldList>;
 
 export interface UpdateWatchlistScreeningEntityRequest {
   entity_watchlist_screening_id: string;
@@ -34459,9 +34258,8 @@ export const WatchlistScreeningIndividualUpdateRequestResettableField = S.String
 export type WatchlistScreeningIndividualUpdateRequestResettableFieldList = Array<
   WatchlistScreeningIndividualUpdateRequestResettableField | (string & {})
 >;
-export const WatchlistScreeningIndividualUpdateRequestResettableFieldList = /*@__PURE__*/ S.Array(
-  WatchlistScreeningIndividualUpdateRequestResettableField,
-) as any as S.Schema<WatchlistScreeningIndividualUpdateRequestResettableFieldList>;
+export const WatchlistScreeningIndividualUpdateRequestResettableFieldList =
+  BetaIssuesV1IssueBehaviorsList as any as S.Schema<WatchlistScreeningIndividualUpdateRequestResettableFieldList>;
 
 export interface UpdateWatchlistScreeningIndividualRequest {
   watchlist_screening_id: string;

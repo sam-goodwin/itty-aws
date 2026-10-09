@@ -505,9 +505,8 @@ export const GoogleCloudRetailV2alphaServingConfigSolutionTypesItemEnum = S.Stri
 export type GoogleCloudRetailV2alphaServingConfigSolutionTypesItemEnumList = Array<
   GoogleCloudRetailV2alphaServingConfigSolutionTypesItemEnum | (string & {})
 >;
-export const GoogleCloudRetailV2alphaServingConfigSolutionTypesItemEnumList = /*@__PURE__*/ S.Array(
-  GoogleCloudRetailV2alphaServingConfigSolutionTypesItemEnum,
-) as any as S.Schema<GoogleCloudRetailV2alphaServingConfigSolutionTypesItemEnumList>;
+export const GoogleCloudRetailV2alphaServingConfigSolutionTypesItemEnumList =
+  GoogleCloudRetailV2alphaProjectEnrolledSolutionsItemEnumList as any as S.Schema<GoogleCloudRetailV2alphaServingConfigSolutionTypesItemEnumList>;
 
 export type GoogleCloudRetailV2alphaServingConfigDiversityTypeEnum =
   | "DIVERSITY_TYPE_UNSPECIFIED"
@@ -2035,9 +2034,8 @@ export const GoogleCloudRetailV2alphaControlSolutionTypesItemEnum = S.String;
 export type GoogleCloudRetailV2alphaControlSolutionTypesItemEnumList = Array<
   GoogleCloudRetailV2alphaControlSolutionTypesItemEnum | (string & {})
 >;
-export const GoogleCloudRetailV2alphaControlSolutionTypesItemEnumList = /*@__PURE__*/ S.Array(
-  GoogleCloudRetailV2alphaControlSolutionTypesItemEnum,
-) as any as S.Schema<GoogleCloudRetailV2alphaControlSolutionTypesItemEnumList>;
+export const GoogleCloudRetailV2alphaControlSolutionTypesItemEnumList =
+  GoogleCloudRetailV2alphaProjectEnrolledSolutionsItemEnumList as any as S.Schema<GoogleCloudRetailV2alphaControlSolutionTypesItemEnumList>;
 
 /** Redirects a shopper to a specific page. * Rule Condition: Must specify Condition.query_terms. * Action Input: Request Query * Action Result: Redirects shopper to provided uri. */
 export interface GoogleCloudRetailV2alphaRuleRedirectAction {
@@ -4248,9 +4246,7 @@ export const GoogleCloudRetailV2alphaListEnrolledSolutionsResponseEnrolledSoluti
 export type GoogleCloudRetailV2alphaListEnrolledSolutionsResponseEnrolledSolutionsItemEnumList =
   Array<GoogleCloudRetailV2alphaListEnrolledSolutionsResponseEnrolledSolutionsItemEnum>;
 export const GoogleCloudRetailV2alphaListEnrolledSolutionsResponseEnrolledSolutionsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudRetailV2alphaListEnrolledSolutionsResponseEnrolledSolutionsItemEnum,
-  ) as any as S.Schema<GoogleCloudRetailV2alphaListEnrolledSolutionsResponseEnrolledSolutionsItemEnumList>;
+  GoogleCloudRetailV2alphaControlSearchSolutionUseCaseItemEnumList as any as S.Schema<GoogleCloudRetailV2alphaListEnrolledSolutionsResponseEnrolledSolutionsItemEnumList>;
 
 /** Response for ListEnrolledSolutions method. */
 export interface GoogleCloudRetailV2alphaListEnrolledSolutionsResponse {
@@ -5662,14 +5658,8 @@ export interface GoogleCloudRetailV2alphaSearchRequestSpellCorrectionSpec {
   /** The mode under which spell correction should take effect to replace the original search query. Default to Mode.AUTO. */
   mode?: GoogleCloudRetailV2alphaSearchRequestSpellCorrectionSpecModeEnum | (string & {});
 }
-export const GoogleCloudRetailV2alphaSearchRequestSpellCorrectionSpec = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      mode: S.optional(GoogleCloudRetailV2alphaSearchRequestSpellCorrectionSpecModeEnum),
-    }),
-).annotate({
-  identifier: "GoogleCloudRetailV2alphaSearchRequestSpellCorrectionSpec",
-}) as any as S.Schema<GoogleCloudRetailV2alphaSearchRequestSpellCorrectionSpec>;
+export const GoogleCloudRetailV2alphaSearchRequestSpellCorrectionSpec =
+  GoogleCloudRetailV2alphaSearchRequestPersonalizationSpec as any as S.Schema<GoogleCloudRetailV2alphaSearchRequestSpellCorrectionSpec>;
 
 /** Request message for SearchService.Search method. */
 export interface GoogleCloudRetailV2alphaSearchRequest {

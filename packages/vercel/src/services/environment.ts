@@ -385,9 +385,8 @@ export const CreateSharedEnvVariableResponseCreatedItemTargetItem = S.String;
 /** environments this env variable targets */
 export type CreateSharedEnvVariableResponseCreatedItemTargetList =
   Array<CreateSharedEnvVariableResponseCreatedItemTargetItem>;
-export const CreateSharedEnvVariableResponseCreatedItemTargetList = /*@__PURE__*/ S.Array(
-  CreateSharedEnvVariableResponseCreatedItemTargetItem,
-) as any as S.Schema<CreateSharedEnvVariableResponseCreatedItemTargetList>;
+export const CreateSharedEnvVariableResponseCreatedItemTargetList =
+  CreateSharedEnvVariableRequestTargetList as any as S.Schema<CreateSharedEnvVariableResponseCreatedItemTargetList>;
 
 /** The type of this cosmos doc instance, if blank, assume secret. */
 export type CreateSharedEnvVariableResponseCreatedItemType =
@@ -485,9 +484,8 @@ export const CreateSharedEnvVariableResponseFailedItemErrorTargetCase0Item = S.S
 
 export type CreateSharedEnvVariableResponseFailedItemErrorTargetCase0List =
   Array<CreateSharedEnvVariableResponseFailedItemErrorTargetCase0Item>;
-export const CreateSharedEnvVariableResponseFailedItemErrorTargetCase0List = /*@__PURE__*/ S.Array(
-  CreateSharedEnvVariableResponseFailedItemErrorTargetCase0Item,
-) as any as S.Schema<CreateSharedEnvVariableResponseFailedItemErrorTargetCase0List>;
+export const CreateSharedEnvVariableResponseFailedItemErrorTargetCase0List =
+  CreateSharedEnvVariableRequestTargetList as any as S.Schema<CreateSharedEnvVariableResponseFailedItemErrorTargetCase0List>;
 
 export type CreateSharedEnvVariableResponseFailedItemErrorTargetCase1 =
   | "development"
@@ -513,9 +511,8 @@ export const CreateSharedEnvVariableResponseFailedItemErrorValueCase1Item = S.St
 
 export type CreateSharedEnvVariableResponseFailedItemErrorValueCase1List =
   Array<CreateSharedEnvVariableResponseFailedItemErrorValueCase1Item>;
-export const CreateSharedEnvVariableResponseFailedItemErrorValueCase1List = /*@__PURE__*/ S.Array(
-  CreateSharedEnvVariableResponseFailedItemErrorValueCase1Item,
-) as any as S.Schema<CreateSharedEnvVariableResponseFailedItemErrorValueCase1List>;
+export const CreateSharedEnvVariableResponseFailedItemErrorValueCase1List =
+  CreateSharedEnvVariableRequestTargetList as any as S.Schema<CreateSharedEnvVariableResponseFailedItemErrorValueCase1List>;
 
 export type CreateSharedEnvVariableResponseFailedItemErrorValue =
   | string
@@ -621,9 +618,8 @@ export const DeleteSharedEnvVariableResponseFailedItemErrorTargetCase0Item = S.S
 
 export type DeleteSharedEnvVariableResponseFailedItemErrorTargetCase0List =
   Array<DeleteSharedEnvVariableResponseFailedItemErrorTargetCase0Item>;
-export const DeleteSharedEnvVariableResponseFailedItemErrorTargetCase0List = /*@__PURE__*/ S.Array(
-  DeleteSharedEnvVariableResponseFailedItemErrorTargetCase0Item,
-) as any as S.Schema<DeleteSharedEnvVariableResponseFailedItemErrorTargetCase0List>;
+export const DeleteSharedEnvVariableResponseFailedItemErrorTargetCase0List =
+  CreateSharedEnvVariableRequestTargetList as any as S.Schema<DeleteSharedEnvVariableResponseFailedItemErrorTargetCase0List>;
 
 export type DeleteSharedEnvVariableResponseFailedItemErrorTargetCase1 =
   | "development"
@@ -649,9 +645,8 @@ export const DeleteSharedEnvVariableResponseFailedItemErrorValueCase1Item = S.St
 
 export type DeleteSharedEnvVariableResponseFailedItemErrorValueCase1List =
   Array<DeleteSharedEnvVariableResponseFailedItemErrorValueCase1Item>;
-export const DeleteSharedEnvVariableResponseFailedItemErrorValueCase1List = /*@__PURE__*/ S.Array(
-  DeleteSharedEnvVariableResponseFailedItemErrorValueCase1Item,
-) as any as S.Schema<DeleteSharedEnvVariableResponseFailedItemErrorValueCase1List>;
+export const DeleteSharedEnvVariableResponseFailedItemErrorValueCase1List =
+  CreateSharedEnvVariableRequestTargetList as any as S.Schema<DeleteSharedEnvVariableResponseFailedItemErrorValueCase1List>;
 
 export type DeleteSharedEnvVariableResponseFailedItemErrorValue =
   | string
@@ -758,14 +753,8 @@ export interface GetCustomEnvironmentResponseBranchMatcher {
   /** The type of matching to perform */
   type: GetCustomEnvironmentResponseBranchMatcherType;
 }
-export const GetCustomEnvironmentResponseBranchMatcher = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pattern: S.String,
-    type: GetCustomEnvironmentResponseBranchMatcherType,
-  }),
-).annotate({
-  identifier: "GetCustomEnvironmentResponseBranchMatcher",
-}) as any as S.Schema<GetCustomEnvironmentResponseBranchMatcher>;
+export const GetCustomEnvironmentResponseBranchMatcher =
+  CreateCustomEnvironmentResponseBranchMatcher as any as S.Schema<GetCustomEnvironmentResponseBranchMatcher>;
 
 /** List of aliases for the current deployment */
 export type GetCustomEnvironmentResponseCurrentDeploymentAliasesList = Array<string>;
@@ -1149,9 +1138,8 @@ export const GetSharedEnvVarResponseTargetItem = S.String;
 
 /** environments this env variable targets */
 export type GetSharedEnvVarResponseTargetList = Array<GetSharedEnvVarResponseTargetItem>;
-export const GetSharedEnvVarResponseTargetList = /*@__PURE__*/ S.Array(
-  GetSharedEnvVarResponseTargetItem,
-) as any as S.Schema<GetSharedEnvVarResponseTargetList>;
+export const GetSharedEnvVarResponseTargetList =
+  CreateSharedEnvVariableRequestTargetList as any as S.Schema<GetSharedEnvVarResponseTargetList>;
 
 /** The type of this cosmos doc instance, if blank, assume secret. */
 export type GetSharedEnvVarResponseType = "encrypted" | "plain" | "sensitive" | "system";
@@ -1269,17 +1257,7 @@ export interface ListSharedEnvVariableResponseDataItemLastEditedByPrincipalCase0
   username: string;
 }
 export const ListSharedEnvVariableResponseDataItemLastEditedByPrincipalCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      avatar: S.optional(S.String),
-      id: S.String,
-      name: S.optional(S.NullOr(S.String)),
-      type: ListSharedEnvVariableResponseDataItemLastEditedByPrincipalCase0Type,
-      username: S.String,
-    }),
-  ).annotate({
-    identifier: "ListSharedEnvVariableResponseDataItemLastEditedByPrincipalCase0",
-  }) as any as S.Schema<ListSharedEnvVariableResponseDataItemLastEditedByPrincipalCase0>;
+  CreateSharedEnvVariableResponseCreatedItemLastEditedByPrincipalCase0 as any as S.Schema<ListSharedEnvVariableResponseDataItemLastEditedByPrincipalCase0>;
 
 export type ListSharedEnvVariableResponseDataItemLastEditedByPrincipalCase1Type = "app";
 export const ListSharedEnvVariableResponseDataItemLastEditedByPrincipalCase1Type = S.String;
@@ -1292,16 +1270,7 @@ export interface ListSharedEnvVariableResponseDataItemLastEditedByPrincipalCase1
   type: ListSharedEnvVariableResponseDataItemLastEditedByPrincipalCase1Type;
 }
 export const ListSharedEnvVariableResponseDataItemLastEditedByPrincipalCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      avatar: S.optional(S.String),
-      id: S.String,
-      name: S.String,
-      type: ListSharedEnvVariableResponseDataItemLastEditedByPrincipalCase1Type,
-    }),
-  ).annotate({
-    identifier: "ListSharedEnvVariableResponseDataItemLastEditedByPrincipalCase1",
-  }) as any as S.Schema<ListSharedEnvVariableResponseDataItemLastEditedByPrincipalCase1>;
+  CreateSharedEnvVariableResponseCreatedItemLastEditedByPrincipalCase1 as any as S.Schema<ListSharedEnvVariableResponseDataItemLastEditedByPrincipalCase1>;
 
 export type ListSharedEnvVariableResponseDataItemLastEditedByPrincipal =
   | ListSharedEnvVariableResponseDataItemLastEditedByPrincipalCase0
@@ -1321,9 +1290,8 @@ export const ListSharedEnvVariableResponseDataItemSecurityIssuesItem = S.String;
 
 export type ListSharedEnvVariableResponseDataItemSecurityIssuesList =
   Array<ListSharedEnvVariableResponseDataItemSecurityIssuesItem>;
-export const ListSharedEnvVariableResponseDataItemSecurityIssuesList = /*@__PURE__*/ S.Array(
-  ListSharedEnvVariableResponseDataItemSecurityIssuesItem,
-) as any as S.Schema<ListSharedEnvVariableResponseDataItemSecurityIssuesList>;
+export const ListSharedEnvVariableResponseDataItemSecurityIssuesList =
+  CreateSharedEnvVariableRequestTargetList as any as S.Schema<ListSharedEnvVariableResponseDataItemSecurityIssuesList>;
 
 /** environments this env variable targets */
 export type ListSharedEnvVariableResponseDataItemTargetItem =
@@ -1335,9 +1303,8 @@ export const ListSharedEnvVariableResponseDataItemTargetItem = S.String;
 /** environments this env variable targets */
 export type ListSharedEnvVariableResponseDataItemTargetList =
   Array<ListSharedEnvVariableResponseDataItemTargetItem>;
-export const ListSharedEnvVariableResponseDataItemTargetList = /*@__PURE__*/ S.Array(
-  ListSharedEnvVariableResponseDataItemTargetItem,
-) as any as S.Schema<ListSharedEnvVariableResponseDataItemTargetList>;
+export const ListSharedEnvVariableResponseDataItemTargetList =
+  CreateSharedEnvVariableRequestTargetList as any as S.Schema<ListSharedEnvVariableResponseDataItemTargetList>;
 
 /** The type of this cosmos doc instance, if blank, assume secret. */
 export type ListSharedEnvVariableResponseDataItemType =
@@ -1493,14 +1460,8 @@ export interface RemoveCustomEnvironmentResponseBranchMatcher {
   /** The type of matching to perform */
   type: RemoveCustomEnvironmentResponseBranchMatcherType;
 }
-export const RemoveCustomEnvironmentResponseBranchMatcher = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pattern: S.String,
-    type: RemoveCustomEnvironmentResponseBranchMatcherType,
-  }),
-).annotate({
-  identifier: "RemoveCustomEnvironmentResponseBranchMatcher",
-}) as any as S.Schema<RemoveCustomEnvironmentResponseBranchMatcher>;
+export const RemoveCustomEnvironmentResponseBranchMatcher =
+  CreateCustomEnvironmentResponseBranchMatcher as any as S.Schema<RemoveCustomEnvironmentResponseBranchMatcher>;
 
 /** List of aliases for the current deployment */
 export type RemoveCustomEnvironmentResponseCurrentDeploymentAliasesList = Array<string>;
@@ -1649,14 +1610,8 @@ export interface UpdateCustomEnvironmentRequestBranchMatcher {
   /** Git branch name or portion thereof. */
   pattern: string;
 }
-export const UpdateCustomEnvironmentRequestBranchMatcher = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: UpdateCustomEnvironmentRequestBranchMatcherType,
-    pattern: S.String,
-  }),
-).annotate({
-  identifier: "UpdateCustomEnvironmentRequestBranchMatcher",
-}) as any as S.Schema<UpdateCustomEnvironmentRequestBranchMatcher>;
+export const UpdateCustomEnvironmentRequestBranchMatcher =
+  CreateCustomEnvironmentRequestBranchMatcher as any as S.Schema<UpdateCustomEnvironmentRequestBranchMatcher>;
 
 export interface UpdateCustomEnvironmentRequest {
   /** The unique project identifier or the project name */
@@ -1702,14 +1657,8 @@ export interface UpdateCustomEnvironmentResponseBranchMatcher {
   /** The type of matching to perform */
   type: UpdateCustomEnvironmentResponseBranchMatcherType;
 }
-export const UpdateCustomEnvironmentResponseBranchMatcher = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pattern: S.String,
-    type: UpdateCustomEnvironmentResponseBranchMatcherType,
-  }),
-).annotate({
-  identifier: "UpdateCustomEnvironmentResponseBranchMatcher",
-}) as any as S.Schema<UpdateCustomEnvironmentResponseBranchMatcher>;
+export const UpdateCustomEnvironmentResponseBranchMatcher =
+  CreateCustomEnvironmentResponseBranchMatcher as any as S.Schema<UpdateCustomEnvironmentResponseBranchMatcher>;
 
 /** List of aliases for the current deployment */
 export type UpdateCustomEnvironmentResponseCurrentDeploymentAliasesList = Array<string>;
@@ -1826,9 +1775,8 @@ export const UpdateSharedEnvVariableRequestUpdatesValueTargetItem = S.String;
 export type UpdateSharedEnvVariableRequestUpdatesValueTargetList = Array<
   UpdateSharedEnvVariableRequestUpdatesValueTargetItem | (string & {})
 >;
-export const UpdateSharedEnvVariableRequestUpdatesValueTargetList = /*@__PURE__*/ S.Array(
-  UpdateSharedEnvVariableRequestUpdatesValueTargetItem,
-) as any as S.Schema<UpdateSharedEnvVariableRequestUpdatesValueTargetList>;
+export const UpdateSharedEnvVariableRequestUpdatesValueTargetList =
+  CreateSharedEnvVariableRequestTargetList as any as S.Schema<UpdateSharedEnvVariableRequestUpdatesValueTargetList>;
 
 /** Associate a Shared Environment Variable to projects. */
 export type UpdateSharedEnvVariableRequestUpdatesValueProjectIdList = Array<string>;
@@ -1933,9 +1881,8 @@ export const UpdateSharedEnvVariableResponseFailedItemErrorTargetCase0Item = S.S
 
 export type UpdateSharedEnvVariableResponseFailedItemErrorTargetCase0List =
   Array<UpdateSharedEnvVariableResponseFailedItemErrorTargetCase0Item>;
-export const UpdateSharedEnvVariableResponseFailedItemErrorTargetCase0List = /*@__PURE__*/ S.Array(
-  UpdateSharedEnvVariableResponseFailedItemErrorTargetCase0Item,
-) as any as S.Schema<UpdateSharedEnvVariableResponseFailedItemErrorTargetCase0List>;
+export const UpdateSharedEnvVariableResponseFailedItemErrorTargetCase0List =
+  CreateSharedEnvVariableRequestTargetList as any as S.Schema<UpdateSharedEnvVariableResponseFailedItemErrorTargetCase0List>;
 
 export type UpdateSharedEnvVariableResponseFailedItemErrorTargetCase1 =
   | "development"
@@ -1961,9 +1908,8 @@ export const UpdateSharedEnvVariableResponseFailedItemErrorValueCase1Item = S.St
 
 export type UpdateSharedEnvVariableResponseFailedItemErrorValueCase1List =
   Array<UpdateSharedEnvVariableResponseFailedItemErrorValueCase1Item>;
-export const UpdateSharedEnvVariableResponseFailedItemErrorValueCase1List = /*@__PURE__*/ S.Array(
-  UpdateSharedEnvVariableResponseFailedItemErrorValueCase1Item,
-) as any as S.Schema<UpdateSharedEnvVariableResponseFailedItemErrorValueCase1List>;
+export const UpdateSharedEnvVariableResponseFailedItemErrorValueCase1List =
+  CreateSharedEnvVariableRequestTargetList as any as S.Schema<UpdateSharedEnvVariableResponseFailedItemErrorValueCase1List>;
 
 export type UpdateSharedEnvVariableResponseFailedItemErrorValue =
   | string
@@ -2036,17 +1982,7 @@ export interface UpdateSharedEnvVariableResponseUpdatedItemLastEditedByPrincipal
   username: string;
 }
 export const UpdateSharedEnvVariableResponseUpdatedItemLastEditedByPrincipalCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      avatar: S.optional(S.String),
-      id: S.String,
-      name: S.optional(S.NullOr(S.String)),
-      type: UpdateSharedEnvVariableResponseUpdatedItemLastEditedByPrincipalCase0Type,
-      username: S.String,
-    }),
-  ).annotate({
-    identifier: "UpdateSharedEnvVariableResponseUpdatedItemLastEditedByPrincipalCase0",
-  }) as any as S.Schema<UpdateSharedEnvVariableResponseUpdatedItemLastEditedByPrincipalCase0>;
+  CreateSharedEnvVariableResponseCreatedItemLastEditedByPrincipalCase0 as any as S.Schema<UpdateSharedEnvVariableResponseUpdatedItemLastEditedByPrincipalCase0>;
 
 export type UpdateSharedEnvVariableResponseUpdatedItemLastEditedByPrincipalCase1Type = "app";
 export const UpdateSharedEnvVariableResponseUpdatedItemLastEditedByPrincipalCase1Type = S.String;
@@ -2059,16 +1995,7 @@ export interface UpdateSharedEnvVariableResponseUpdatedItemLastEditedByPrincipal
   type: UpdateSharedEnvVariableResponseUpdatedItemLastEditedByPrincipalCase1Type;
 }
 export const UpdateSharedEnvVariableResponseUpdatedItemLastEditedByPrincipalCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      avatar: S.optional(S.String),
-      id: S.String,
-      name: S.String,
-      type: UpdateSharedEnvVariableResponseUpdatedItemLastEditedByPrincipalCase1Type,
-    }),
-  ).annotate({
-    identifier: "UpdateSharedEnvVariableResponseUpdatedItemLastEditedByPrincipalCase1",
-  }) as any as S.Schema<UpdateSharedEnvVariableResponseUpdatedItemLastEditedByPrincipalCase1>;
+  CreateSharedEnvVariableResponseCreatedItemLastEditedByPrincipalCase1 as any as S.Schema<UpdateSharedEnvVariableResponseUpdatedItemLastEditedByPrincipalCase1>;
 
 export type UpdateSharedEnvVariableResponseUpdatedItemLastEditedByPrincipal =
   | UpdateSharedEnvVariableResponseUpdatedItemLastEditedByPrincipalCase0
@@ -2091,9 +2018,8 @@ export const UpdateSharedEnvVariableResponseUpdatedItemTargetItem = S.String;
 /** environments this env variable targets */
 export type UpdateSharedEnvVariableResponseUpdatedItemTargetList =
   Array<UpdateSharedEnvVariableResponseUpdatedItemTargetItem>;
-export const UpdateSharedEnvVariableResponseUpdatedItemTargetList = /*@__PURE__*/ S.Array(
-  UpdateSharedEnvVariableResponseUpdatedItemTargetItem,
-) as any as S.Schema<UpdateSharedEnvVariableResponseUpdatedItemTargetList>;
+export const UpdateSharedEnvVariableResponseUpdatedItemTargetList =
+  CreateSharedEnvVariableRequestTargetList as any as S.Schema<UpdateSharedEnvVariableResponseUpdatedItemTargetList>;
 
 /** The type of this cosmos doc instance, if blank, assume secret. */
 export type UpdateSharedEnvVariableResponseUpdatedItemType =

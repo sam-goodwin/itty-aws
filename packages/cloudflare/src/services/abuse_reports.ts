@@ -925,9 +925,8 @@ export type ListSubmittedRequestStatus = "submitted" | "accepted" | "denied";
 export const ListSubmittedRequestStatus = S.String;
 
 export type ListSubmittedRequestStatusList = Array<ListSubmittedRequestStatus | (string & {})>;
-export const ListSubmittedRequestStatusList = /*@__PURE__*/ S.Array(
-  ListSubmittedRequestStatus,
-) as any as S.Schema<ListSubmittedRequestStatusList>;
+export const ListSubmittedRequestStatusList =
+  CreateRequestRegWhoRequestRegWhoRequestedDataElementsList as any as S.Schema<ListSubmittedRequestStatusList>;
 
 export type ListSubmittedRequestType =
   | "PHISH"
@@ -942,9 +941,8 @@ export type ListSubmittedRequestType =
 export const ListSubmittedRequestType = S.String;
 
 export type ListSubmittedRequestTypeList = Array<ListSubmittedRequestType | (string & {})>;
-export const ListSubmittedRequestTypeList = /*@__PURE__*/ S.Array(
-  ListSubmittedRequestType,
-) as any as S.Schema<ListSubmittedRequestTypeList>;
+export const ListSubmittedRequestTypeList =
+  CreateRequestRegWhoRequestRegWhoRequestedDataElementsList as any as S.Schema<ListSubmittedRequestTypeList>;
 
 export interface ListSubmittedRequest {
   accountId: string;
@@ -1256,23 +1254,12 @@ export interface MitigationsReviewResultItem {
   /** The type of mitigation applied to a reported entity. */
   type: string;
 }
-export const MitigationsReviewResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    effectiveDate: S.String.pipe(T.Body("effective_date")),
-    entityId: S.String.pipe(T.Body("entity_id")),
-    entityType: MitigationsReviewResultItemEntityType.pipe(T.Body("entity_type")),
-    status: MitigationsReviewResultItemStatus,
-    type: S.String,
-  }),
-).annotate({
-  identifier: "MitigationsReviewResultItem",
-}) as any as S.Schema<MitigationsReviewResultItem>;
+export const MitigationsReviewResultItem =
+  MitigationsListResponseMitigationsItem as any as S.Schema<MitigationsReviewResultItem>;
 
 export type MitigationsReviewResultList = Array<MitigationsReviewResultItem>;
-export const MitigationsReviewResultList = /*@__PURE__*/ S.Array(
-  MitigationsReviewResultItem,
-) as any as S.Schema<MitigationsReviewResultList>;
+export const MitigationsReviewResultList =
+  MitigationsListResponseMitigationsList as any as S.Schema<MitigationsReviewResultList>;
 
 export interface ReviewMitigationResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */

@@ -1438,19 +1438,8 @@ export interface EnqueueReplicationServerProperties {
   /** Defines the health of SAP Instances. */
   health?: SAPHealthState;
 }
-export const EnqueueReplicationServerProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ersVersion: S.optional(EnqueueReplicationServerType),
-    instanceNo: S.optional(S.String),
-    hostname: S.optional(S.String),
-    kernelVersion: S.optional(S.String),
-    kernelPatch: S.optional(S.String),
-    ipAddress: S.optional(S.String),
-    health: S.optional(SAPHealthState),
-  }),
-).annotate({
-  identifier: "EnqueueReplicationServerProperties",
-}) as any as S.Schema<EnqueueReplicationServerProperties>;
+export const EnqueueReplicationServerProperties =
+  EnqueueReplicationServerProperties_2 as any as S.Schema<EnqueueReplicationServerProperties>;
 
 /** Storage details of all the Storage Accounts attached to the ASCS Virtual Machine. For e.g. NFS on AFS Shared Storage. */
 export type CentralServerVmDetailsStorageDetailsList = Array<StorageInformation>;
@@ -5319,13 +5308,8 @@ export const SAPSizingRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface SAPSizingRecommendationResult_2 {
   deploymentType: DeploymentType;
 }
-export const SAPSizingRecommendationResult_2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deploymentType: DeploymentType,
-  }),
-).annotate({
-  identifier: "SAPSizingRecommendationResult_2",
-}) as any as S.Schema<SAPSizingRecommendationResult_2>;
+export const SAPSizingRecommendationResult_2 =
+  SAPSizingRecommendationResult as any as S.Schema<SAPSizingRecommendationResult_2>;
 
 export interface SAPSupportedSkuRequest {
   /** The ID of the target subscription. */

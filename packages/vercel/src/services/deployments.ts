@@ -1311,18 +1311,8 @@ export interface CancelDeploymentResponseGitSourceCase5 {
   sha?: string;
   type: CancelDeploymentResponseGitSourceCase5Type;
 }
-export const CancelDeploymentResponseGitSourceCase5 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    org: S.String,
-    prId: S.optional(S.NullOr(S.Number)),
-    ref: S.optional(S.NullOr(S.String)),
-    repo: S.String,
-    sha: S.optional(S.String),
-    type: CancelDeploymentResponseGitSourceCase5Type,
-  }),
-).annotate({
-  identifier: "CancelDeploymentResponseGitSourceCase5",
-}) as any as S.Schema<CancelDeploymentResponseGitSourceCase5>;
+export const CancelDeploymentResponseGitSourceCase5 =
+  CancelDeploymentResponseGitSourceCase1 as any as S.Schema<CancelDeploymentResponseGitSourceCase5>;
 
 export type CancelDeploymentResponseGitSourceCase6ProjectId = string | number;
 export const CancelDeploymentResponseGitSourceCase6ProjectId =
@@ -1574,18 +1564,8 @@ export interface CancelDeploymentResponseGitSourceCase14 {
   sha: string;
   type: CancelDeploymentResponseGitSourceCase14Type;
 }
-export const CancelDeploymentResponseGitSourceCase14 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    org: S.optional(S.String),
-    ref: S.String,
-    repo: S.optional(S.String),
-    repoId: S.Number,
-    sha: S.String,
-    type: CancelDeploymentResponseGitSourceCase14Type,
-  }),
-).annotate({
-  identifier: "CancelDeploymentResponseGitSourceCase14",
-}) as any as S.Schema<CancelDeploymentResponseGitSourceCase14>;
+export const CancelDeploymentResponseGitSourceCase14 =
+  CancelDeploymentResponseGitSourceCase12 as any as S.Schema<CancelDeploymentResponseGitSourceCase14>;
 
 export type CancelDeploymentResponseGitSourceCase15Type = "gitlab";
 export const CancelDeploymentResponseGitSourceCase15Type = S.String;
@@ -1735,9 +1715,8 @@ export const CancelDeploymentResponseImagesFormatsItem = S.String;
 
 export type CancelDeploymentResponseImagesFormatsList =
   Array<CancelDeploymentResponseImagesFormatsItem>;
-export const CancelDeploymentResponseImagesFormatsList = /*@__PURE__*/ S.Array(
-  CancelDeploymentResponseImagesFormatsItem,
-) as any as S.Schema<CancelDeploymentResponseImagesFormatsList>;
+export const CancelDeploymentResponseImagesFormatsList =
+  CancelDeploymentResponseAtprotoCase1SubscriptionKindsList as any as S.Schema<CancelDeploymentResponseImagesFormatsList>;
 
 export interface CancelDeploymentResponseImagesLocalPatternsItem {
   /** Can be literal or wildcard. Single `*` matches a single path segment. Double `**` matches any number of path segments. */
@@ -3718,13 +3697,7 @@ export interface CancelDeploymentResponseServicesItemCase1BuilderConfigFunctions
   mode: CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueAffinityMode;
 }
 export const CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueAffinity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      mode: CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueAffinityMode,
-    }),
-  ).annotate({
-    identifier: "CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueAffinity",
-  }) as any as S.Schema<CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueAffinity>;
+  CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueAffinity as any as S.Schema<CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueAffinity>;
 
 export type CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueArchitecture =
   | "arm64"
@@ -3756,20 +3729,7 @@ export interface CancelDeploymentResponseServicesItemCase1BuilderConfigFunctions
   type: CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase0Type;
 }
 export const CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      consumer: S.String,
-      initialDelaySeconds: S.optional(S.Number),
-      maxConcurrency: S.optional(S.Number),
-      maxDeliveries: S.optional(S.Number),
-      retryAfterSeconds: S.optional(S.Number),
-      topic: S.String,
-      type: CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase0Type,
-    }),
-  ).annotate({
-    identifier:
-      "CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase0",
-  }) as any as S.Schema<CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase0>;
+  CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase0 as any as S.Schema<CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase0>;
 
 /** Event type - must be "queue/v2beta" (REQUIRED) */
 export type CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase1Type =
@@ -3793,19 +3753,7 @@ export interface CancelDeploymentResponseServicesItemCase1BuilderConfigFunctions
   type: CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase1Type;
 }
 export const CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      initialDelaySeconds: S.optional(S.Number),
-      maxConcurrency: S.optional(S.Number),
-      maxDeliveries: S.optional(S.Number),
-      retryAfterSeconds: S.optional(S.Number),
-      topic: S.String,
-      type: CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase1Type,
-    }),
-  ).annotate({
-    identifier:
-      "CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase1",
-  }) as any as S.Schema<CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase1>;
+  CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase1 as any as S.Schema<CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase1>;
 
 /** Event type - must be "schedule/v1beta" (REQUIRED) */
 export type CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase2Type =
@@ -3818,14 +3766,7 @@ export interface CancelDeploymentResponseServicesItemCase1BuilderConfigFunctions
   type: CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase2Type;
 }
 export const CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase2Type,
-    }),
-  ).annotate({
-    identifier:
-      "CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase2",
-  }) as any as S.Schema<CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase2>;
+  CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase2 as any as S.Schema<CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase2>;
 
 export type CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItem =
   | CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase0
@@ -4085,13 +4026,7 @@ export interface CancelDeploymentResponseServicesItemCase1FunctionsValueAffinity
   mode: CancelDeploymentResponseServicesItemCase1FunctionsValueAffinityMode;
 }
 export const CancelDeploymentResponseServicesItemCase1FunctionsValueAffinity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      mode: CancelDeploymentResponseServicesItemCase1FunctionsValueAffinityMode,
-    }),
-  ).annotate({
-    identifier: "CancelDeploymentResponseServicesItemCase1FunctionsValueAffinity",
-  }) as any as S.Schema<CancelDeploymentResponseServicesItemCase1FunctionsValueAffinity>;
+  CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueAffinity as any as S.Schema<CancelDeploymentResponseServicesItemCase1FunctionsValueAffinity>;
 
 export type CancelDeploymentResponseServicesItemCase1FunctionsValueArchitecture =
   | "arm64"
@@ -4122,20 +4057,7 @@ export interface CancelDeploymentResponseServicesItemCase1FunctionsValueExperime
   type: CancelDeploymentResponseServicesItemCase1FunctionsValueExperimentalTriggersItemCase0Type;
 }
 export const CancelDeploymentResponseServicesItemCase1FunctionsValueExperimentalTriggersItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      consumer: S.String,
-      initialDelaySeconds: S.optional(S.Number),
-      maxConcurrency: S.optional(S.Number),
-      maxDeliveries: S.optional(S.Number),
-      retryAfterSeconds: S.optional(S.Number),
-      topic: S.String,
-      type: CancelDeploymentResponseServicesItemCase1FunctionsValueExperimentalTriggersItemCase0Type,
-    }),
-  ).annotate({
-    identifier:
-      "CancelDeploymentResponseServicesItemCase1FunctionsValueExperimentalTriggersItemCase0",
-  }) as any as S.Schema<CancelDeploymentResponseServicesItemCase1FunctionsValueExperimentalTriggersItemCase0>;
+  CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase0 as any as S.Schema<CancelDeploymentResponseServicesItemCase1FunctionsValueExperimentalTriggersItemCase0>;
 
 /** Event type - must be "queue/v2beta" (REQUIRED) */
 export type CancelDeploymentResponseServicesItemCase1FunctionsValueExperimentalTriggersItemCase1Type =
@@ -4159,19 +4081,7 @@ export interface CancelDeploymentResponseServicesItemCase1FunctionsValueExperime
   type: CancelDeploymentResponseServicesItemCase1FunctionsValueExperimentalTriggersItemCase1Type;
 }
 export const CancelDeploymentResponseServicesItemCase1FunctionsValueExperimentalTriggersItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      initialDelaySeconds: S.optional(S.Number),
-      maxConcurrency: S.optional(S.Number),
-      maxDeliveries: S.optional(S.Number),
-      retryAfterSeconds: S.optional(S.Number),
-      topic: S.String,
-      type: CancelDeploymentResponseServicesItemCase1FunctionsValueExperimentalTriggersItemCase1Type,
-    }),
-  ).annotate({
-    identifier:
-      "CancelDeploymentResponseServicesItemCase1FunctionsValueExperimentalTriggersItemCase1",
-  }) as any as S.Schema<CancelDeploymentResponseServicesItemCase1FunctionsValueExperimentalTriggersItemCase1>;
+  CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase1 as any as S.Schema<CancelDeploymentResponseServicesItemCase1FunctionsValueExperimentalTriggersItemCase1>;
 
 /** Event type - must be "schedule/v1beta" (REQUIRED) */
 export type CancelDeploymentResponseServicesItemCase1FunctionsValueExperimentalTriggersItemCase2Type =
@@ -4184,14 +4094,7 @@ export interface CancelDeploymentResponseServicesItemCase1FunctionsValueExperime
   type: CancelDeploymentResponseServicesItemCase1FunctionsValueExperimentalTriggersItemCase2Type;
 }
 export const CancelDeploymentResponseServicesItemCase1FunctionsValueExperimentalTriggersItemCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: CancelDeploymentResponseServicesItemCase1FunctionsValueExperimentalTriggersItemCase2Type,
-    }),
-  ).annotate({
-    identifier:
-      "CancelDeploymentResponseServicesItemCase1FunctionsValueExperimentalTriggersItemCase2",
-  }) as any as S.Schema<CancelDeploymentResponseServicesItemCase1FunctionsValueExperimentalTriggersItemCase2>;
+  CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase2 as any as S.Schema<CancelDeploymentResponseServicesItemCase1FunctionsValueExperimentalTriggersItemCase2>;
 
 export type CancelDeploymentResponseServicesItemCase1FunctionsValueExperimentalTriggersItem =
   | CancelDeploymentResponseServicesItemCase1FunctionsValueExperimentalTriggersItemCase0
@@ -6761,17 +6664,8 @@ export interface CreateDeploymentRequestGitSourceCase4 {
   sha?: string;
   type: CreateDeploymentRequestGitSourceCase4Type;
 }
-export const CreateDeploymentRequestGitSourceCase4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    org: S.String,
-    ref: S.String,
-    repo: S.String,
-    sha: S.optional(S.String),
-    type: CreateDeploymentRequestGitSourceCase4Type,
-  }),
-).annotate({
-  identifier: "CreateDeploymentRequestGitSourceCase4",
-}) as any as S.Schema<CreateDeploymentRequestGitSourceCase4>;
+export const CreateDeploymentRequestGitSourceCase4 =
+  CreateDeploymentRequestGitSourceCase2 as any as S.Schema<CreateDeploymentRequestGitSourceCase4>;
 
 export type CreateDeploymentRequestGitSourceCase5ProjectId = number | string;
 export const CreateDeploymentRequestGitSourceCase5ProjectId =
@@ -7353,29 +7247,15 @@ export interface CreateDeploymentResponseBodyCase1ChecksDeploymentAlias {
   startedAt: number;
   state: CreateDeploymentResponseBodyCase1ChecksDeploymentAliasState;
 }
-export const CreateDeploymentResponseBodyCase1ChecksDeploymentAlias = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    completedAt: S.optional(S.Number),
-    startedAt: S.Number,
-    state: CreateDeploymentResponseBodyCase1ChecksDeploymentAliasState,
-  }),
-).annotate({
-  identifier: "CreateDeploymentResponseBodyCase1ChecksDeploymentAlias",
-}) as any as S.Schema<CreateDeploymentResponseBodyCase1ChecksDeploymentAlias>;
+export const CreateDeploymentResponseBodyCase1ChecksDeploymentAlias =
+  CancelDeploymentResponseChecksDeploymentAlias as any as S.Schema<CreateDeploymentResponseBodyCase1ChecksDeploymentAlias>;
 
 export interface CreateDeploymentResponseBodyCase1Checks {
   /** Condensed check data. Retrieve individual check and check run data using api-checks v2 routes. */
   deployment_alias: CreateDeploymentResponseBodyCase1ChecksDeploymentAlias;
 }
-export const CreateDeploymentResponseBodyCase1Checks = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deployment_alias: CreateDeploymentResponseBodyCase1ChecksDeploymentAlias.pipe(
-      T.Body("deployment-alias"),
-    ),
-  }),
-).annotate({
-  identifier: "CreateDeploymentResponseBodyCase1Checks",
-}) as any as S.Schema<CreateDeploymentResponseBodyCase1Checks>;
+export const CreateDeploymentResponseBodyCase1Checks =
+  CancelDeploymentResponseChecks as any as S.Schema<CreateDeploymentResponseBodyCase1Checks>;
 
 export type CreateDeploymentResponseBodyCase1ChecksConclusion =
   | "canceled"
@@ -7517,16 +7397,8 @@ export interface CreateDeploymentResponseBodyCase1Creator {
   /** The username of the user that created the deployment */
   username?: string;
 }
-export const CreateDeploymentResponseBodyCase1Creator = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    avatar: S.optional(S.String),
-    type: S.optional(CreateDeploymentResponseBodyCase1CreatorType),
-    uid: S.String,
-    username: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateDeploymentResponseBodyCase1Creator",
-}) as any as S.Schema<CreateDeploymentResponseBodyCase1Creator>;
+export const CreateDeploymentResponseBodyCase1Creator =
+  CancelDeploymentResponseCreator as any as S.Schema<CreateDeploymentResponseBodyCase1Creator>;
 
 export type CreateDeploymentResponseBodyCase1CronsItem = CancelDeploymentResponseCronsItem;
 export const CreateDeploymentResponseBodyCase1CronsItem = CancelDeploymentResponseCronsItem;
@@ -7764,13 +7636,8 @@ export const CreateDeploymentResponseBodyCase1FunctionsValueAffinityMode = S.Str
 export interface CreateDeploymentResponseBodyCase1FunctionsValueAffinity {
   mode: CreateDeploymentResponseBodyCase1FunctionsValueAffinityMode;
 }
-export const CreateDeploymentResponseBodyCase1FunctionsValueAffinity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: CreateDeploymentResponseBodyCase1FunctionsValueAffinityMode,
-  }),
-).annotate({
-  identifier: "CreateDeploymentResponseBodyCase1FunctionsValueAffinity",
-}) as any as S.Schema<CreateDeploymentResponseBodyCase1FunctionsValueAffinity>;
+export const CreateDeploymentResponseBodyCase1FunctionsValueAffinity =
+  CancelDeploymentResponseFunctionsValueAffinity as any as S.Schema<CreateDeploymentResponseBodyCase1FunctionsValueAffinity>;
 
 export type CreateDeploymentResponseBodyCase1FunctionsValueArchitecture = "arm64" | "x86_64";
 export const CreateDeploymentResponseBodyCase1FunctionsValueArchitecture = S.String;
@@ -7799,19 +7666,7 @@ export interface CreateDeploymentResponseBodyCase1FunctionsValueExperimentalTrig
   type: CreateDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase0Type;
 }
 export const CreateDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      consumer: S.String,
-      initialDelaySeconds: S.optional(S.Number),
-      maxConcurrency: S.optional(S.Number),
-      maxDeliveries: S.optional(S.Number),
-      retryAfterSeconds: S.optional(S.Number),
-      topic: S.String,
-      type: CreateDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase0Type,
-    }),
-  ).annotate({
-    identifier: "CreateDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase0",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase0>;
+  CancelDeploymentResponseFunctionsValueExperimentalTriggersItemCase0 as any as S.Schema<CreateDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase0>;
 
 /** Event type - must be "queue/v2beta" (REQUIRED) */
 export type CreateDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase1Type =
@@ -7835,18 +7690,7 @@ export interface CreateDeploymentResponseBodyCase1FunctionsValueExperimentalTrig
   type: CreateDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase1Type;
 }
 export const CreateDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      initialDelaySeconds: S.optional(S.Number),
-      maxConcurrency: S.optional(S.Number),
-      maxDeliveries: S.optional(S.Number),
-      retryAfterSeconds: S.optional(S.Number),
-      topic: S.String,
-      type: CreateDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase1Type,
-    }),
-  ).annotate({
-    identifier: "CreateDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase1",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase1>;
+  CancelDeploymentResponseFunctionsValueExperimentalTriggersItemCase1 as any as S.Schema<CreateDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase1>;
 
 /** Event type - must be "schedule/v1beta" (REQUIRED) */
 export type CreateDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase2Type =
@@ -7859,13 +7703,7 @@ export interface CreateDeploymentResponseBodyCase1FunctionsValueExperimentalTrig
   type: CreateDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase2Type;
 }
 export const CreateDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: CreateDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase2Type,
-    }),
-  ).annotate({
-    identifier: "CreateDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase2",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase2>;
+  CancelDeploymentResponseFunctionsValueExperimentalTriggersItemCase2 as any as S.Schema<CreateDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase2>;
 
 export type CreateDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItem =
   | CreateDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase0
@@ -7961,21 +7799,8 @@ export interface CreateDeploymentResponseBodyCase1GitRepoCase0 {
   type: CreateDeploymentResponseBodyCase1GitRepoCase0Type;
   url: string;
 }
-export const CreateDeploymentResponseBodyCase1GitRepoCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultBranch: S.String,
-    name: S.String,
-    namespace: S.String,
-    ownerType: CreateDeploymentResponseBodyCase1GitRepoCase0OwnerType,
-    path: S.String,
-    private: S.Boolean,
-    projectId: S.Number,
-    type: CreateDeploymentResponseBodyCase1GitRepoCase0Type,
-    url: S.String,
-  }),
-).annotate({
-  identifier: "CreateDeploymentResponseBodyCase1GitRepoCase0",
-}) as any as S.Schema<CreateDeploymentResponseBodyCase1GitRepoCase0>;
+export const CreateDeploymentResponseBodyCase1GitRepoCase0 =
+  CancelDeploymentResponseGitRepoCase0 as any as S.Schema<CreateDeploymentResponseBodyCase1GitRepoCase0>;
 
 export type CreateDeploymentResponseBodyCase1GitRepoCase1OwnerType = "team" | "user";
 export const CreateDeploymentResponseBodyCase1GitRepoCase1OwnerType = S.String;
@@ -7995,22 +7820,8 @@ export interface CreateDeploymentResponseBodyCase1GitRepoCase1 {
   repoOwnerId: number;
   type: CreateDeploymentResponseBodyCase1GitRepoCase1Type;
 }
-export const CreateDeploymentResponseBodyCase1GitRepoCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultBranch: S.String,
-    name: S.String,
-    org: S.String,
-    ownerType: CreateDeploymentResponseBodyCase1GitRepoCase1OwnerType,
-    path: S.String,
-    private: S.Boolean,
-    repo: S.String,
-    repoId: S.Number,
-    repoOwnerId: S.Number,
-    type: CreateDeploymentResponseBodyCase1GitRepoCase1Type,
-  }),
-).annotate({
-  identifier: "CreateDeploymentResponseBodyCase1GitRepoCase1",
-}) as any as S.Schema<CreateDeploymentResponseBodyCase1GitRepoCase1>;
+export const CreateDeploymentResponseBodyCase1GitRepoCase1 =
+  CancelDeploymentResponseGitRepoCase1 as any as S.Schema<CreateDeploymentResponseBodyCase1GitRepoCase1>;
 
 export type CreateDeploymentResponseBodyCase1GitRepoCase2OwnerType = "team" | "user";
 export const CreateDeploymentResponseBodyCase1GitRepoCase2OwnerType = S.String;
@@ -8030,22 +7841,8 @@ export interface CreateDeploymentResponseBodyCase1GitRepoCase2 {
   type: CreateDeploymentResponseBodyCase1GitRepoCase2Type;
   workspaceUuid: string;
 }
-export const CreateDeploymentResponseBodyCase1GitRepoCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultBranch: S.String,
-    name: S.String,
-    owner: S.String,
-    ownerType: CreateDeploymentResponseBodyCase1GitRepoCase2OwnerType,
-    path: S.String,
-    private: S.Boolean,
-    repoUuid: S.String,
-    slug: S.String,
-    type: CreateDeploymentResponseBodyCase1GitRepoCase2Type,
-    workspaceUuid: S.String,
-  }),
-).annotate({
-  identifier: "CreateDeploymentResponseBodyCase1GitRepoCase2",
-}) as any as S.Schema<CreateDeploymentResponseBodyCase1GitRepoCase2>;
+export const CreateDeploymentResponseBodyCase1GitRepoCase2 =
+  CancelDeploymentResponseGitRepoCase2 as any as S.Schema<CreateDeploymentResponseBodyCase1GitRepoCase2>;
 
 export type CreateDeploymentResponseBodyCase1GitRepoCase3OwnerType = "team" | "user";
 export const CreateDeploymentResponseBodyCase1GitRepoCase3OwnerType = S.String;
@@ -8063,20 +7860,8 @@ export interface CreateDeploymentResponseBodyCase1GitRepoCase3 {
   repo: string;
   type: CreateDeploymentResponseBodyCase1GitRepoCase3Type;
 }
-export const CreateDeploymentResponseBodyCase1GitRepoCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultBranch: S.String,
-    name: S.String,
-    org: S.String,
-    ownerType: CreateDeploymentResponseBodyCase1GitRepoCase3OwnerType,
-    path: S.String,
-    private: S.Boolean,
-    repo: S.String,
-    type: CreateDeploymentResponseBodyCase1GitRepoCase3Type,
-  }),
-).annotate({
-  identifier: "CreateDeploymentResponseBodyCase1GitRepoCase3",
-}) as any as S.Schema<CreateDeploymentResponseBodyCase1GitRepoCase3>;
+export const CreateDeploymentResponseBodyCase1GitRepoCase3 =
+  CancelDeploymentResponseGitRepoCase3 as any as S.Schema<CreateDeploymentResponseBodyCase1GitRepoCase3>;
 
 export type CreateDeploymentResponseBodyCase1GitRepoCase4OwnerType = "team" | "user";
 export const CreateDeploymentResponseBodyCase1GitRepoCase4OwnerType = S.String;
@@ -8097,21 +7882,8 @@ export interface CreateDeploymentResponseBodyCase1GitRepoCase4 {
   repoId: string;
   type: CreateDeploymentResponseBodyCase1GitRepoCase4Type;
 }
-export const CreateDeploymentResponseBodyCase1GitRepoCase4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultBranch: S.String,
-    name: S.String,
-    owner: S.String,
-    ownerType: CreateDeploymentResponseBodyCase1GitRepoCase4OwnerType,
-    path: S.String,
-    private: S.Boolean,
-    repo: S.String,
-    repoId: S.String,
-    type: CreateDeploymentResponseBodyCase1GitRepoCase4Type,
-  }),
-).annotate({
-  identifier: "CreateDeploymentResponseBodyCase1GitRepoCase4",
-}) as any as S.Schema<CreateDeploymentResponseBodyCase1GitRepoCase4>;
+export const CreateDeploymentResponseBodyCase1GitRepoCase4 =
+  CancelDeploymentResponseGitRepoCase4 as any as S.Schema<CreateDeploymentResponseBodyCase1GitRepoCase4>;
 
 export type CreateDeploymentResponseBodyCase1GitRepo =
   | CreateDeploymentResponseBodyCase1GitRepoCase0
@@ -8159,18 +7931,8 @@ export interface CreateDeploymentResponseBodyCase1GitSourceCase1 {
   sha?: string;
   type: CreateDeploymentResponseBodyCase1GitSourceCase1Type;
 }
-export const CreateDeploymentResponseBodyCase1GitSourceCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    org: S.String,
-    prId: S.optional(S.NullOr(S.Number)),
-    ref: S.optional(S.NullOr(S.String)),
-    repo: S.String,
-    sha: S.optional(S.String),
-    type: CreateDeploymentResponseBodyCase1GitSourceCase1Type,
-  }),
-).annotate({
-  identifier: "CreateDeploymentResponseBodyCase1GitSourceCase1",
-}) as any as S.Schema<CreateDeploymentResponseBodyCase1GitSourceCase1>;
+export const CreateDeploymentResponseBodyCase1GitSourceCase1 =
+  CancelDeploymentResponseGitSourceCase1 as any as S.Schema<CreateDeploymentResponseBodyCase1GitSourceCase1>;
 
 export type CreateDeploymentResponseBodyCase1GitSourceCase2RepoId = string | number;
 export const CreateDeploymentResponseBodyCase1GitSourceCase2RepoId =
@@ -8212,19 +7974,8 @@ export interface CreateDeploymentResponseBodyCase1GitSourceCase3 {
   sha?: string;
   type: CreateDeploymentResponseBodyCase1GitSourceCase3Type;
 }
-export const CreateDeploymentResponseBodyCase1GitSourceCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    host: S.String,
-    org: S.String,
-    prId: S.optional(S.NullOr(S.Number)),
-    ref: S.optional(S.NullOr(S.String)),
-    repo: S.String,
-    sha: S.optional(S.String),
-    type: CreateDeploymentResponseBodyCase1GitSourceCase3Type,
-  }),
-).annotate({
-  identifier: "CreateDeploymentResponseBodyCase1GitSourceCase3",
-}) as any as S.Schema<CreateDeploymentResponseBodyCase1GitSourceCase3>;
+export const CreateDeploymentResponseBodyCase1GitSourceCase3 =
+  CancelDeploymentResponseGitSourceCase3 as any as S.Schema<CreateDeploymentResponseBodyCase1GitSourceCase3>;
 
 export type CreateDeploymentResponseBodyCase1GitSourceCase4RepoId = string | number;
 export const CreateDeploymentResponseBodyCase1GitSourceCase4RepoId =
@@ -8263,18 +8014,8 @@ export interface CreateDeploymentResponseBodyCase1GitSourceCase5 {
   sha?: string;
   type: CreateDeploymentResponseBodyCase1GitSourceCase5Type;
 }
-export const CreateDeploymentResponseBodyCase1GitSourceCase5 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    org: S.String,
-    prId: S.optional(S.NullOr(S.Number)),
-    ref: S.optional(S.NullOr(S.String)),
-    repo: S.String,
-    sha: S.optional(S.String),
-    type: CreateDeploymentResponseBodyCase1GitSourceCase5Type,
-  }),
-).annotate({
-  identifier: "CreateDeploymentResponseBodyCase1GitSourceCase5",
-}) as any as S.Schema<CreateDeploymentResponseBodyCase1GitSourceCase5>;
+export const CreateDeploymentResponseBodyCase1GitSourceCase5 =
+  CancelDeploymentResponseGitSourceCase1 as any as S.Schema<CreateDeploymentResponseBodyCase1GitSourceCase5>;
 
 export type CreateDeploymentResponseBodyCase1GitSourceCase6ProjectId = string | number;
 export const CreateDeploymentResponseBodyCase1GitSourceCase6ProjectId =
@@ -8313,18 +8054,8 @@ export interface CreateDeploymentResponseBodyCase1GitSourceCase7 {
   type: CreateDeploymentResponseBodyCase1GitSourceCase7Type;
   workspaceUuid?: string;
 }
-export const CreateDeploymentResponseBodyCase1GitSourceCase7 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    prId: S.optional(S.NullOr(S.Number)),
-    ref: S.optional(S.NullOr(S.String)),
-    repoUuid: S.String,
-    sha: S.optional(S.String),
-    type: CreateDeploymentResponseBodyCase1GitSourceCase7Type,
-    workspaceUuid: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateDeploymentResponseBodyCase1GitSourceCase7",
-}) as any as S.Schema<CreateDeploymentResponseBodyCase1GitSourceCase7>;
+export const CreateDeploymentResponseBodyCase1GitSourceCase7 =
+  CancelDeploymentResponseGitSourceCase7 as any as S.Schema<CreateDeploymentResponseBodyCase1GitSourceCase7>;
 
 export type CreateDeploymentResponseBodyCase1GitSourceCase8Type = "bitbucket";
 export const CreateDeploymentResponseBodyCase1GitSourceCase8Type = S.String;
@@ -8337,18 +8068,8 @@ export interface CreateDeploymentResponseBodyCase1GitSourceCase8 {
   slug: string;
   type: CreateDeploymentResponseBodyCase1GitSourceCase8Type;
 }
-export const CreateDeploymentResponseBodyCase1GitSourceCase8 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    owner: S.String,
-    prId: S.optional(S.NullOr(S.Number)),
-    ref: S.optional(S.NullOr(S.String)),
-    sha: S.optional(S.String),
-    slug: S.String,
-    type: CreateDeploymentResponseBodyCase1GitSourceCase8Type,
-  }),
-).annotate({
-  identifier: "CreateDeploymentResponseBodyCase1GitSourceCase8",
-}) as any as S.Schema<CreateDeploymentResponseBodyCase1GitSourceCase8>;
+export const CreateDeploymentResponseBodyCase1GitSourceCase8 =
+  CancelDeploymentResponseGitSourceCase8 as any as S.Schema<CreateDeploymentResponseBodyCase1GitSourceCase8>;
 
 export type CreateDeploymentResponseBodyCase1GitSourceCase9CommitMetadataAuthor =
   CancelDeploymentResponseGitSourceCase9CommitMetadataAuthor;
@@ -8379,21 +8100,8 @@ export interface CreateDeploymentResponseBodyCase1GitSourceCase9 {
   sha: string;
   type: CreateDeploymentResponseBodyCase1GitSourceCase9Type;
 }
-export const CreateDeploymentResponseBodyCase1GitSourceCase9 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    commitMetadata: S.optional(CancelDeploymentResponseGitSourceCase9CommitMetadata),
-    org: S.optional(S.String),
-    prId: S.optional(S.NullOr(S.Number)),
-    ref: S.optional(S.NullOr(S.String)),
-    repo: S.optional(S.String),
-    repoId: S.String,
-    repoPushedAt: S.optional(S.Number),
-    sha: S.String,
-    type: CreateDeploymentResponseBodyCase1GitSourceCase9Type,
-  }),
-).annotate({
-  identifier: "CreateDeploymentResponseBodyCase1GitSourceCase9",
-}) as any as S.Schema<CreateDeploymentResponseBodyCase1GitSourceCase9>;
+export const CreateDeploymentResponseBodyCase1GitSourceCase9 =
+  CancelDeploymentResponseGitSourceCase9 as any as S.Schema<CreateDeploymentResponseBodyCase1GitSourceCase9>;
 
 export type CreateDeploymentResponseBodyCase1GitSourceCase10Type = "cursor-origin";
 export const CreateDeploymentResponseBodyCase1GitSourceCase10Type = S.String;
@@ -8409,19 +8117,8 @@ export interface CreateDeploymentResponseBodyCase1GitSourceCase10 {
   sha?: string;
   type: CreateDeploymentResponseBodyCase1GitSourceCase10Type;
 }
-export const CreateDeploymentResponseBodyCase1GitSourceCase10 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    owner: S.optional(S.String),
-    prId: S.optional(S.NullOr(S.Number)),
-    ref: S.optional(S.NullOr(S.String)),
-    repo: S.optional(S.String),
-    repoId: S.String,
-    sha: S.optional(S.String),
-    type: CreateDeploymentResponseBodyCase1GitSourceCase10Type,
-  }),
-).annotate({
-  identifier: "CreateDeploymentResponseBodyCase1GitSourceCase10",
-}) as any as S.Schema<CreateDeploymentResponseBodyCase1GitSourceCase10>;
+export const CreateDeploymentResponseBodyCase1GitSourceCase10 =
+  CancelDeploymentResponseGitSourceCase10 as any as S.Schema<CreateDeploymentResponseBodyCase1GitSourceCase10>;
 
 export type CreateDeploymentResponseBodyCase1GitSourceCase11Type = "custom";
 export const CreateDeploymentResponseBodyCase1GitSourceCase11Type = S.String;
@@ -8433,16 +8130,8 @@ export interface CreateDeploymentResponseBodyCase1GitSourceCase11 {
   sha: string;
   type: CreateDeploymentResponseBodyCase1GitSourceCase11Type;
 }
-export const CreateDeploymentResponseBodyCase1GitSourceCase11 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gitUrl: S.String,
-    ref: S.String,
-    sha: S.String,
-    type: CreateDeploymentResponseBodyCase1GitSourceCase11Type,
-  }),
-).annotate({
-  identifier: "CreateDeploymentResponseBodyCase1GitSourceCase11",
-}) as any as S.Schema<CreateDeploymentResponseBodyCase1GitSourceCase11>;
+export const CreateDeploymentResponseBodyCase1GitSourceCase11 =
+  CancelDeploymentResponseGitSourceCase11 as any as S.Schema<CreateDeploymentResponseBodyCase1GitSourceCase11>;
 
 export type CreateDeploymentResponseBodyCase1GitSourceCase12Type = "github";
 export const CreateDeploymentResponseBodyCase1GitSourceCase12Type = S.String;
@@ -8455,18 +8144,8 @@ export interface CreateDeploymentResponseBodyCase1GitSourceCase12 {
   sha: string;
   type: CreateDeploymentResponseBodyCase1GitSourceCase12Type;
 }
-export const CreateDeploymentResponseBodyCase1GitSourceCase12 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    org: S.optional(S.String),
-    ref: S.String,
-    repo: S.optional(S.String),
-    repoId: S.Number,
-    sha: S.String,
-    type: CreateDeploymentResponseBodyCase1GitSourceCase12Type,
-  }),
-).annotate({
-  identifier: "CreateDeploymentResponseBodyCase1GitSourceCase12",
-}) as any as S.Schema<CreateDeploymentResponseBodyCase1GitSourceCase12>;
+export const CreateDeploymentResponseBodyCase1GitSourceCase12 =
+  CancelDeploymentResponseGitSourceCase12 as any as S.Schema<CreateDeploymentResponseBodyCase1GitSourceCase12>;
 
 export type CreateDeploymentResponseBodyCase1GitSourceCase13Type = "github-custom-host";
 export const CreateDeploymentResponseBodyCase1GitSourceCase13Type = S.String;
@@ -8480,19 +8159,8 @@ export interface CreateDeploymentResponseBodyCase1GitSourceCase13 {
   sha: string;
   type: CreateDeploymentResponseBodyCase1GitSourceCase13Type;
 }
-export const CreateDeploymentResponseBodyCase1GitSourceCase13 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    host: S.String,
-    org: S.optional(S.String),
-    ref: S.String,
-    repo: S.optional(S.String),
-    repoId: S.Number,
-    sha: S.String,
-    type: CreateDeploymentResponseBodyCase1GitSourceCase13Type,
-  }),
-).annotate({
-  identifier: "CreateDeploymentResponseBodyCase1GitSourceCase13",
-}) as any as S.Schema<CreateDeploymentResponseBodyCase1GitSourceCase13>;
+export const CreateDeploymentResponseBodyCase1GitSourceCase13 =
+  CancelDeploymentResponseGitSourceCase13 as any as S.Schema<CreateDeploymentResponseBodyCase1GitSourceCase13>;
 
 export type CreateDeploymentResponseBodyCase1GitSourceCase14Type = "github-limited";
 export const CreateDeploymentResponseBodyCase1GitSourceCase14Type = S.String;
@@ -8505,18 +8173,8 @@ export interface CreateDeploymentResponseBodyCase1GitSourceCase14 {
   sha: string;
   type: CreateDeploymentResponseBodyCase1GitSourceCase14Type;
 }
-export const CreateDeploymentResponseBodyCase1GitSourceCase14 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    org: S.optional(S.String),
-    ref: S.String,
-    repo: S.optional(S.String),
-    repoId: S.Number,
-    sha: S.String,
-    type: CreateDeploymentResponseBodyCase1GitSourceCase14Type,
-  }),
-).annotate({
-  identifier: "CreateDeploymentResponseBodyCase1GitSourceCase14",
-}) as any as S.Schema<CreateDeploymentResponseBodyCase1GitSourceCase14>;
+export const CreateDeploymentResponseBodyCase1GitSourceCase14 =
+  CancelDeploymentResponseGitSourceCase12 as any as S.Schema<CreateDeploymentResponseBodyCase1GitSourceCase14>;
 
 export type CreateDeploymentResponseBodyCase1GitSourceCase15Type = "gitlab";
 export const CreateDeploymentResponseBodyCase1GitSourceCase15Type = S.String;
@@ -8527,16 +8185,8 @@ export interface CreateDeploymentResponseBodyCase1GitSourceCase15 {
   sha: string;
   type: CreateDeploymentResponseBodyCase1GitSourceCase15Type;
 }
-export const CreateDeploymentResponseBodyCase1GitSourceCase15 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    projectId: S.Number,
-    ref: S.String,
-    sha: S.String,
-    type: CreateDeploymentResponseBodyCase1GitSourceCase15Type,
-  }),
-).annotate({
-  identifier: "CreateDeploymentResponseBodyCase1GitSourceCase15",
-}) as any as S.Schema<CreateDeploymentResponseBodyCase1GitSourceCase15>;
+export const CreateDeploymentResponseBodyCase1GitSourceCase15 =
+  CancelDeploymentResponseGitSourceCase15 as any as S.Schema<CreateDeploymentResponseBodyCase1GitSourceCase15>;
 
 export type CreateDeploymentResponseBodyCase1GitSourceCase16Type = "bitbucket";
 export const CreateDeploymentResponseBodyCase1GitSourceCase16Type = S.String;
@@ -8550,19 +8200,8 @@ export interface CreateDeploymentResponseBodyCase1GitSourceCase16 {
   type: CreateDeploymentResponseBodyCase1GitSourceCase16Type;
   workspaceUuid: string;
 }
-export const CreateDeploymentResponseBodyCase1GitSourceCase16 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    owner: S.optional(S.String),
-    ref: S.String,
-    repoUuid: S.String,
-    sha: S.String,
-    slug: S.optional(S.String),
-    type: CreateDeploymentResponseBodyCase1GitSourceCase16Type,
-    workspaceUuid: S.String,
-  }),
-).annotate({
-  identifier: "CreateDeploymentResponseBodyCase1GitSourceCase16",
-}) as any as S.Schema<CreateDeploymentResponseBodyCase1GitSourceCase16>;
+export const CreateDeploymentResponseBodyCase1GitSourceCase16 =
+  CancelDeploymentResponseGitSourceCase16 as any as S.Schema<CreateDeploymentResponseBodyCase1GitSourceCase16>;
 
 export type CreateDeploymentResponseBodyCase1GitSourceCase17CommitMetadataAuthor =
   CancelDeploymentResponseGitSourceCase9CommitMetadataAuthor;
@@ -8592,20 +8231,8 @@ export interface CreateDeploymentResponseBodyCase1GitSourceCase17 {
   sha: string;
   type: CreateDeploymentResponseBodyCase1GitSourceCase17Type;
 }
-export const CreateDeploymentResponseBodyCase1GitSourceCase17 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    commitMetadata: S.optional(CancelDeploymentResponseGitSourceCase9CommitMetadata),
-    org: S.String,
-    ref: S.String,
-    repo: S.String,
-    repoId: S.optional(S.String),
-    repoPushedAt: S.optional(S.Number),
-    sha: S.String,
-    type: CreateDeploymentResponseBodyCase1GitSourceCase17Type,
-  }),
-).annotate({
-  identifier: "CreateDeploymentResponseBodyCase1GitSourceCase17",
-}) as any as S.Schema<CreateDeploymentResponseBodyCase1GitSourceCase17>;
+export const CreateDeploymentResponseBodyCase1GitSourceCase17 =
+  CancelDeploymentResponseGitSourceCase17 as any as S.Schema<CreateDeploymentResponseBodyCase1GitSourceCase17>;
 
 export type CreateDeploymentResponseBodyCase1GitSourceCase18Type = "cursor-origin";
 export const CreateDeploymentResponseBodyCase1GitSourceCase18Type = S.String;
@@ -8618,18 +8245,8 @@ export interface CreateDeploymentResponseBodyCase1GitSourceCase18 {
   sha: string;
   type: CreateDeploymentResponseBodyCase1GitSourceCase18Type;
 }
-export const CreateDeploymentResponseBodyCase1GitSourceCase18 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    owner: S.String,
-    ref: S.String,
-    repo: S.String,
-    repoId: S.String,
-    sha: S.String,
-    type: CreateDeploymentResponseBodyCase1GitSourceCase18Type,
-  }),
-).annotate({
-  identifier: "CreateDeploymentResponseBodyCase1GitSourceCase18",
-}) as any as S.Schema<CreateDeploymentResponseBodyCase1GitSourceCase18>;
+export const CreateDeploymentResponseBodyCase1GitSourceCase18 =
+  CancelDeploymentResponseGitSourceCase18 as any as S.Schema<CreateDeploymentResponseBodyCase1GitSourceCase18>;
 
 export type CreateDeploymentResponseBodyCase1GitSource =
   | CreateDeploymentResponseBodyCase1GitSourceCase0
@@ -8666,9 +8283,8 @@ export const CreateDeploymentResponseBodyCase1ImagesFormatsItem = S.String;
 
 export type CreateDeploymentResponseBodyCase1ImagesFormatsList =
   Array<CreateDeploymentResponseBodyCase1ImagesFormatsItem>;
-export const CreateDeploymentResponseBodyCase1ImagesFormatsList = /*@__PURE__*/ S.Array(
-  CreateDeploymentResponseBodyCase1ImagesFormatsItem,
-) as any as S.Schema<CreateDeploymentResponseBodyCase1ImagesFormatsList>;
+export const CreateDeploymentResponseBodyCase1ImagesFormatsList =
+  CancelDeploymentResponseAtprotoCase1SubscriptionKindsList as any as S.Schema<CreateDeploymentResponseBodyCase1ImagesFormatsList>;
 
 export type CreateDeploymentResponseBodyCase1ImagesLocalPatternsItem =
   CancelDeploymentResponseImagesLocalPatternsItem;
@@ -8770,18 +8386,8 @@ export interface CreateDeploymentResponseBodyCase1Integrations {
   startedAt: number;
   status: CreateDeploymentResponseBodyCase1IntegrationsStatus;
 }
-export const CreateDeploymentResponseBodyCase1Integrations = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    claimedAt: S.optional(S.Number),
-    completedAt: S.optional(S.Number),
-    skippedAt: S.optional(S.Number),
-    skippedBy: S.optional(S.String),
-    startedAt: S.Number,
-    status: CreateDeploymentResponseBodyCase1IntegrationsStatus,
-  }),
-).annotate({
-  identifier: "CreateDeploymentResponseBodyCase1Integrations",
-}) as any as S.Schema<CreateDeploymentResponseBodyCase1Integrations>;
+export const CreateDeploymentResponseBodyCase1Integrations =
+  CancelDeploymentResponseIntegrations as any as S.Schema<CreateDeploymentResponseBodyCase1Integrations>;
 
 export type CreateDeploymentResponseBodyCase1LambdasItemReadyState =
   | "BUILDING"
@@ -8842,14 +8448,8 @@ export interface CreateDeploymentResponseBodyCase1ManualProvisioning {
   /** Current provisioning state */
   state: CreateDeploymentResponseBodyCase1ManualProvisioningState;
 }
-export const CreateDeploymentResponseBodyCase1ManualProvisioning = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    completedAt: S.optional(S.Number),
-    state: CreateDeploymentResponseBodyCase1ManualProvisioningState,
-  }),
-).annotate({
-  identifier: "CreateDeploymentResponseBodyCase1ManualProvisioning",
-}) as any as S.Schema<CreateDeploymentResponseBodyCase1ManualProvisioning>;
+export const CreateDeploymentResponseBodyCase1ManualProvisioning =
+  CancelDeploymentResponseManualProvisioning as any as S.Schema<CreateDeploymentResponseBodyCase1ManualProvisioning>;
 
 export type CreateDeploymentResponseBodyCase1MetaMap = { [key: string]: string | undefined };
 export const CreateDeploymentResponseBodyCase1MetaMap =
@@ -9010,14 +8610,8 @@ export interface CreateDeploymentResponseBodyCase1PlatformOrigin {
   /** The identifier or URL pointing to the originating entity. */
   value: string;
 }
-export const CreateDeploymentResponseBodyCase1PlatformOrigin = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: CreateDeploymentResponseBodyCase1PlatformOriginType,
-    value: S.String,
-  }),
-).annotate({
-  identifier: "CreateDeploymentResponseBodyCase1PlatformOrigin",
-}) as any as S.Schema<CreateDeploymentResponseBodyCase1PlatformOrigin>;
+export const CreateDeploymentResponseBodyCase1PlatformOrigin =
+  CancelDeploymentResponsePlatformOrigin as any as S.Schema<CreateDeploymentResponseBodyCase1PlatformOrigin>;
 
 /** The external platform that created the deployment (e.g. its display name). */
 export type CreateDeploymentResponseBodyCase1PlatformSource =
@@ -9161,21 +8755,8 @@ export interface CreateDeploymentResponseBodyCase1ProjectSettings {
   speedInsights?: CancelDeploymentResponseProjectSettingsSpeedInsights;
   webAnalytics?: CancelDeploymentResponseProjectSettingsWebAnalytics;
 }
-export const CreateDeploymentResponseBodyCase1ProjectSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    buildCommand: S.optional(S.NullOr(S.String)),
-    commandForIgnoringBuildStep: S.optional(S.NullOr(S.String)),
-    devCommand: S.optional(S.NullOr(S.String)),
-    framework: S.optional(S.NullOr(CreateDeploymentResponseBodyCase1ProjectSettingsFramework)),
-    installCommand: S.optional(S.NullOr(S.String)),
-    nodeVersion: S.optional(CreateDeploymentResponseBodyCase1ProjectSettingsNodeVersion),
-    outputDirectory: S.optional(S.NullOr(S.String)),
-    speedInsights: S.optional(CancelDeploymentResponseProjectSettingsSpeedInsights),
-    webAnalytics: S.optional(CancelDeploymentResponseProjectSettingsWebAnalytics),
-  }),
-).annotate({
-  identifier: "CreateDeploymentResponseBodyCase1ProjectSettings",
-}) as any as S.Schema<CreateDeploymentResponseBodyCase1ProjectSettings>;
+export const CreateDeploymentResponseBodyCase1ProjectSettings =
+  CancelDeploymentResponseProjectSettings as any as S.Schema<CreateDeploymentResponseBodyCase1ProjectSettings>;
 
 /** The state of the deployment depending on the process of deploying, or if it is ready or in an error state */
 export type CreateDeploymentResponseBodyCase1ReadyState =
@@ -9292,15 +8873,7 @@ export interface CreateDeploymentResponseBodyCase1RoutesItemCase0DestinationCase
   type?: CreateDeploymentResponseBodyCase1RoutesItemCase0DestinationCase1Type;
 }
 export const CreateDeploymentResponseBodyCase1RoutesItemCase0DestinationCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      path: S.optional(S.String),
-      service: S.String,
-      type: S.optional(CreateDeploymentResponseBodyCase1RoutesItemCase0DestinationCase1Type),
-    }),
-  ).annotate({
-    identifier: "CreateDeploymentResponseBodyCase1RoutesItemCase0DestinationCase1",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0DestinationCase1>;
+  CancelDeploymentResponseServicesItemCase1RewritesItemDestinationCase1 as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0DestinationCase1>;
 
 export type CreateDeploymentResponseBodyCase1RoutesItemCase0Destination =
   | string
@@ -9931,16 +9504,8 @@ export interface CreateDeploymentResponseBodyCase1RoutesItemCase1 {
   src?: string;
   status?: number;
 }
-export const CreateDeploymentResponseBodyCase1RoutesItemCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dest: S.optional(S.String),
-    handle: CreateDeploymentResponseBodyCase1RoutesItemCase1Handle,
-    src: S.optional(S.String),
-    status: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "CreateDeploymentResponseBodyCase1RoutesItemCase1",
-}) as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase1>;
+export const CreateDeploymentResponseBodyCase1RoutesItemCase1 =
+  CancelDeploymentResponseRoutesItemCase1 as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase1>;
 
 export type CreateDeploymentResponseBodyCase1RoutesItemCase2Middleware = 0;
 export const CreateDeploymentResponseBodyCase1RoutesItemCase2Middleware = S.Number;
@@ -9950,15 +9515,8 @@ export interface CreateDeploymentResponseBodyCase1RoutesItemCase2 {
   middleware: CreateDeploymentResponseBodyCase1RoutesItemCase2Middleware;
   src: string;
 }
-export const CreateDeploymentResponseBodyCase1RoutesItemCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    continue: S.Boolean,
-    middleware: CreateDeploymentResponseBodyCase1RoutesItemCase2Middleware,
-    src: S.String,
-  }),
-).annotate({
-  identifier: "CreateDeploymentResponseBodyCase1RoutesItemCase2",
-}) as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase2>;
+export const CreateDeploymentResponseBodyCase1RoutesItemCase2 =
+  CancelDeploymentResponseRoutesItemCase2 as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase2>;
 
 export type CreateDeploymentResponseBodyCase1RoutesItem =
   | CreateDeploymentResponseBodyCase1RoutesItemCase0
@@ -10073,20 +9631,7 @@ export interface CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfig
   type: CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase0Type;
 }
 export const CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      consumer: S.String,
-      initialDelaySeconds: S.optional(S.Number),
-      maxConcurrency: S.optional(S.Number),
-      maxDeliveries: S.optional(S.Number),
-      retryAfterSeconds: S.optional(S.Number),
-      topic: S.String,
-      type: CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase0Type,
-    }),
-  ).annotate({
-    identifier:
-      "CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase0",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase0>;
+  CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase0 as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase0>;
 
 /** Event type - must be "queue/v2beta" (REQUIRED) */
 export type CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase1Type =
@@ -10110,19 +9655,7 @@ export interface CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfig
   type: CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase1Type;
 }
 export const CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      initialDelaySeconds: S.optional(S.Number),
-      maxConcurrency: S.optional(S.Number),
-      maxDeliveries: S.optional(S.Number),
-      retryAfterSeconds: S.optional(S.Number),
-      topic: S.String,
-      type: CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase1Type,
-    }),
-  ).annotate({
-    identifier:
-      "CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase1",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase1>;
+  CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase1 as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase1>;
 
 /** Event type - must be "schedule/v1beta" (REQUIRED) */
 export type CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase2Type =
@@ -10135,14 +9668,7 @@ export interface CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfig
   type: CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase2Type;
 }
 export const CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase2Type,
-    }),
-  ).annotate({
-    identifier:
-      "CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase2",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase2>;
+  CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase2 as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase2>;
 
 export type CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItem =
   | CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase0
@@ -10589,14 +10115,7 @@ export interface CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfig
   mode: CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueAffinityMode;
 }
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueAffinity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      mode: CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueAffinityMode,
-    }),
-  ).annotate({
-    identifier:
-      "CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueAffinity",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueAffinity>;
+  CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueAffinity as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueAffinity>;
 
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueArchitecture =
   | "arm64"
@@ -10628,20 +10147,7 @@ export interface CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfig
   type: CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase0Type;
 }
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      consumer: S.String,
-      initialDelaySeconds: S.optional(S.Number),
-      maxConcurrency: S.optional(S.Number),
-      maxDeliveries: S.optional(S.Number),
-      retryAfterSeconds: S.optional(S.Number),
-      topic: S.String,
-      type: CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase0Type,
-    }),
-  ).annotate({
-    identifier:
-      "CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase0",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase0>;
+  CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase0 as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase0>;
 
 /** Event type - must be "queue/v2beta" (REQUIRED) */
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase1Type =
@@ -10665,19 +10171,7 @@ export interface CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfig
   type: CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase1Type;
 }
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      initialDelaySeconds: S.optional(S.Number),
-      maxConcurrency: S.optional(S.Number),
-      maxDeliveries: S.optional(S.Number),
-      retryAfterSeconds: S.optional(S.Number),
-      topic: S.String,
-      type: CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase1Type,
-    }),
-  ).annotate({
-    identifier:
-      "CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase1",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase1>;
+  CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase1 as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase1>;
 
 /** Event type - must be "schedule/v1beta" (REQUIRED) */
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase2Type =
@@ -10690,14 +10184,7 @@ export interface CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfig
   type: CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase2Type;
 }
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase2Type,
-    }),
-  ).annotate({
-    identifier:
-      "CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase2",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase2>;
+  CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase2 as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase2>;
 
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItem =
   | CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase0
@@ -10970,13 +10457,7 @@ export interface CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValu
   mode: CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueAffinityMode;
 }
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueAffinity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      mode: CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueAffinityMode,
-    }),
-  ).annotate({
-    identifier: "CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueAffinity",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueAffinity>;
+  CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueAffinity as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueAffinity>;
 
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueArchitecture =
   | "arm64"
@@ -11008,20 +10489,7 @@ export interface CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValu
   type: CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase0Type;
 }
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      consumer: S.String,
-      initialDelaySeconds: S.optional(S.Number),
-      maxConcurrency: S.optional(S.Number),
-      maxDeliveries: S.optional(S.Number),
-      retryAfterSeconds: S.optional(S.Number),
-      topic: S.String,
-      type: CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase0Type,
-    }),
-  ).annotate({
-    identifier:
-      "CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase0",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase0>;
+  CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase0 as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase0>;
 
 /** Event type - must be "queue/v2beta" (REQUIRED) */
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase1Type =
@@ -11045,19 +10513,7 @@ export interface CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValu
   type: CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase1Type;
 }
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      initialDelaySeconds: S.optional(S.Number),
-      maxConcurrency: S.optional(S.Number),
-      maxDeliveries: S.optional(S.Number),
-      retryAfterSeconds: S.optional(S.Number),
-      topic: S.String,
-      type: CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase1Type,
-    }),
-  ).annotate({
-    identifier:
-      "CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase1",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase1>;
+  CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase1 as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase1>;
 
 /** Event type - must be "schedule/v1beta" (REQUIRED) */
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase2Type =
@@ -11070,14 +10526,7 @@ export interface CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValu
   type: CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase2Type;
 }
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase2Type,
-    }),
-  ).annotate({
-    identifier:
-      "CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase2",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase2>;
+  CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase2 as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase2>;
 
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItem =
   | CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase0
@@ -11971,17 +11420,7 @@ export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemD
   type?: CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemDestinationCase1Type;
 }
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemDestinationCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      path: S.optional(S.String),
-      service: S.String,
-      type: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemDestinationCase1Type,
-      ),
-    }),
-  ).annotate({
-    identifier: "CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemDestinationCase1",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemDestinationCase1>;
+  CancelDeploymentResponseServicesItemCase1RoutesItemCase0DestinationCase1 as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemDestinationCase1>;
 
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemDestination =
   | string
@@ -12441,17 +11880,7 @@ export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCas
   type?: CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0DestinationCase1Type;
 }
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0DestinationCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      path: S.optional(S.String),
-      service: S.String,
-      type: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0DestinationCase1Type,
-      ),
-    }),
-  ).annotate({
-    identifier: "CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0DestinationCase1",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0DestinationCase1>;
+  CancelDeploymentResponseServicesItemCase1RoutesItemCase0DestinationCase1 as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0DestinationCase1>;
 
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0Destination =
   | string
@@ -12862,13 +12291,7 @@ export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCas
   action: CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MitigateAction;
 }
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0Mitigate =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      action: CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MitigateAction,
-    }),
-  ).annotate({
-    identifier: "CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0Mitigate",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0Mitigate>;
+  CancelDeploymentResponseServicesItemCase1RoutesItemCase0Mitigate as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0Mitigate>;
 
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0ArgsCase1List =
   Array<string>;
@@ -13678,9 +13101,7 @@ export const GetDeploymentResponseBodyCase1AtprotoCase1SubscriptionKindsItem = S
 export type GetDeploymentResponseBodyCase1AtprotoCase1SubscriptionKindsList =
   Array<GetDeploymentResponseBodyCase1AtprotoCase1SubscriptionKindsItem>;
 export const GetDeploymentResponseBodyCase1AtprotoCase1SubscriptionKindsList =
-  /*@__PURE__*/ S.Array(
-    GetDeploymentResponseBodyCase1AtprotoCase1SubscriptionKindsItem,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1AtprotoCase1SubscriptionKindsList>;
+  CreateDeploymentResponseBodyCase1AtprotoCase1SubscriptionKindsList as any as S.Schema<GetDeploymentResponseBodyCase1AtprotoCase1SubscriptionKindsList>;
 
 export interface GetDeploymentResponseBodyCase1AtprotoCase1Subscription {
   collections: GetDeploymentResponseBodyCase1AtprotoCase1SubscriptionCollectionsList;
@@ -13834,29 +13255,15 @@ export interface GetDeploymentResponseBodyCase1ChecksDeploymentAlias {
   startedAt: number;
   state: GetDeploymentResponseBodyCase1ChecksDeploymentAliasState;
 }
-export const GetDeploymentResponseBodyCase1ChecksDeploymentAlias = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    completedAt: S.optional(S.Number),
-    startedAt: S.Number,
-    state: GetDeploymentResponseBodyCase1ChecksDeploymentAliasState,
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1ChecksDeploymentAlias",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1ChecksDeploymentAlias>;
+export const GetDeploymentResponseBodyCase1ChecksDeploymentAlias =
+  CancelDeploymentResponseChecksDeploymentAlias as any as S.Schema<GetDeploymentResponseBodyCase1ChecksDeploymentAlias>;
 
 export interface GetDeploymentResponseBodyCase1Checks {
   /** Condensed check data. Retrieve individual check and check run data using api-checks v2 routes. */
   deployment_alias: GetDeploymentResponseBodyCase1ChecksDeploymentAlias;
 }
-export const GetDeploymentResponseBodyCase1Checks = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deployment_alias: GetDeploymentResponseBodyCase1ChecksDeploymentAlias.pipe(
-      T.Body("deployment-alias"),
-    ),
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1Checks",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1Checks>;
+export const GetDeploymentResponseBodyCase1Checks =
+  CancelDeploymentResponseChecks as any as S.Schema<GetDeploymentResponseBodyCase1Checks>;
 
 export type GetDeploymentResponseBodyCase1ChecksConclusion =
   | "canceled"
@@ -13920,15 +13327,7 @@ export interface GetDeploymentResponseBodyCase1ConfigResourceConfigBuildMachine 
   purchaseType?: GetDeploymentResponseBodyCase1ConfigResourceConfigBuildMachinePurchaseType | null;
 }
 export const GetDeploymentResponseBodyCase1ConfigResourceConfigBuildMachine =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      purchaseType: S.optional(
-        S.NullOr(GetDeploymentResponseBodyCase1ConfigResourceConfigBuildMachinePurchaseType),
-      ),
-    }),
-  ).annotate({
-    identifier: "GetDeploymentResponseBodyCase1ConfigResourceConfigBuildMachine",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1ConfigResourceConfigBuildMachine>;
+  CreateDeploymentResponseBodyCase1ConfigResourceConfigBuildMachine as any as S.Schema<GetDeploymentResponseBodyCase1ConfigResourceConfigBuildMachine>;
 
 /** Build resource configuration snapshot for this deployment. */
 export interface GetDeploymentResponseBodyCase1ConfigResourceConfig {
@@ -13992,16 +13391,8 @@ export interface GetDeploymentResponseBodyCase1Creator {
   /** The username of the user that created the deployment */
   username?: string;
 }
-export const GetDeploymentResponseBodyCase1Creator = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    avatar: S.optional(S.String),
-    type: S.optional(GetDeploymentResponseBodyCase1CreatorType),
-    uid: S.String,
-    username: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1Creator",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1Creator>;
+export const GetDeploymentResponseBodyCase1Creator =
+  CancelDeploymentResponseCreator as any as S.Schema<GetDeploymentResponseBodyCase1Creator>;
 
 export type GetDeploymentResponseBodyCase1CronsItem = CancelDeploymentResponseCronsItem;
 export const GetDeploymentResponseBodyCase1CronsItem = CancelDeploymentResponseCronsItem;
@@ -14025,14 +13416,7 @@ export interface GetDeploymentResponseBodyCase1CustomEnvironmentCase0BranchMatch
   type: GetDeploymentResponseBodyCase1CustomEnvironmentCase0BranchMatcherType;
 }
 export const GetDeploymentResponseBodyCase1CustomEnvironmentCase0BranchMatcher =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pattern: S.String,
-      type: GetDeploymentResponseBodyCase1CustomEnvironmentCase0BranchMatcherType,
-    }),
-  ).annotate({
-    identifier: "GetDeploymentResponseBodyCase1CustomEnvironmentCase0BranchMatcher",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1CustomEnvironmentCase0BranchMatcher>;
+  CreateDeploymentResponseBodyCase1CustomEnvironmentCase0BranchMatcher as any as S.Schema<GetDeploymentResponseBodyCase1CustomEnvironmentCase0BranchMatcher>;
 
 /** List of aliases for the current deployment */
 export type GetDeploymentResponseBodyCase1CustomEnvironmentCase0CurrentDeploymentAliasesList =
@@ -14220,13 +13604,8 @@ export const GetDeploymentResponseBodyCase1FunctionsValueAffinityMode = S.String
 export interface GetDeploymentResponseBodyCase1FunctionsValueAffinity {
   mode: GetDeploymentResponseBodyCase1FunctionsValueAffinityMode;
 }
-export const GetDeploymentResponseBodyCase1FunctionsValueAffinity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: GetDeploymentResponseBodyCase1FunctionsValueAffinityMode,
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1FunctionsValueAffinity",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1FunctionsValueAffinity>;
+export const GetDeploymentResponseBodyCase1FunctionsValueAffinity =
+  CancelDeploymentResponseFunctionsValueAffinity as any as S.Schema<GetDeploymentResponseBodyCase1FunctionsValueAffinity>;
 
 export type GetDeploymentResponseBodyCase1FunctionsValueArchitecture = "arm64" | "x86_64";
 export const GetDeploymentResponseBodyCase1FunctionsValueArchitecture = S.String;
@@ -14255,19 +13634,7 @@ export interface GetDeploymentResponseBodyCase1FunctionsValueExperimentalTrigger
   type: GetDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase0Type;
 }
 export const GetDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      consumer: S.String,
-      initialDelaySeconds: S.optional(S.Number),
-      maxConcurrency: S.optional(S.Number),
-      maxDeliveries: S.optional(S.Number),
-      retryAfterSeconds: S.optional(S.Number),
-      topic: S.String,
-      type: GetDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase0Type,
-    }),
-  ).annotate({
-    identifier: "GetDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase0",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase0>;
+  CancelDeploymentResponseFunctionsValueExperimentalTriggersItemCase0 as any as S.Schema<GetDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase0>;
 
 /** Event type - must be "queue/v2beta" (REQUIRED) */
 export type GetDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase1Type =
@@ -14291,18 +13658,7 @@ export interface GetDeploymentResponseBodyCase1FunctionsValueExperimentalTrigger
   type: GetDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase1Type;
 }
 export const GetDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      initialDelaySeconds: S.optional(S.Number),
-      maxConcurrency: S.optional(S.Number),
-      maxDeliveries: S.optional(S.Number),
-      retryAfterSeconds: S.optional(S.Number),
-      topic: S.String,
-      type: GetDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase1Type,
-    }),
-  ).annotate({
-    identifier: "GetDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase1",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase1>;
+  CancelDeploymentResponseFunctionsValueExperimentalTriggersItemCase1 as any as S.Schema<GetDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase1>;
 
 /** Event type - must be "schedule/v1beta" (REQUIRED) */
 export type GetDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase2Type =
@@ -14315,13 +13671,7 @@ export interface GetDeploymentResponseBodyCase1FunctionsValueExperimentalTrigger
   type: GetDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase2Type;
 }
 export const GetDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: GetDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase2Type,
-    }),
-  ).annotate({
-    identifier: "GetDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase2",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase2>;
+  CancelDeploymentResponseFunctionsValueExperimentalTriggersItemCase2 as any as S.Schema<GetDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase2>;
 
 export type GetDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItem =
   | GetDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase0
@@ -14416,21 +13766,8 @@ export interface GetDeploymentResponseBodyCase1GitRepoCase0 {
   type: GetDeploymentResponseBodyCase1GitRepoCase0Type;
   url: string;
 }
-export const GetDeploymentResponseBodyCase1GitRepoCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultBranch: S.String,
-    name: S.String,
-    namespace: S.String,
-    ownerType: GetDeploymentResponseBodyCase1GitRepoCase0OwnerType,
-    path: S.String,
-    private: S.Boolean,
-    projectId: S.Number,
-    type: GetDeploymentResponseBodyCase1GitRepoCase0Type,
-    url: S.String,
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1GitRepoCase0",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1GitRepoCase0>;
+export const GetDeploymentResponseBodyCase1GitRepoCase0 =
+  CancelDeploymentResponseGitRepoCase0 as any as S.Schema<GetDeploymentResponseBodyCase1GitRepoCase0>;
 
 export type GetDeploymentResponseBodyCase1GitRepoCase1OwnerType = "team" | "user";
 export const GetDeploymentResponseBodyCase1GitRepoCase1OwnerType = S.String;
@@ -14450,22 +13787,8 @@ export interface GetDeploymentResponseBodyCase1GitRepoCase1 {
   repoOwnerId: number;
   type: GetDeploymentResponseBodyCase1GitRepoCase1Type;
 }
-export const GetDeploymentResponseBodyCase1GitRepoCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultBranch: S.String,
-    name: S.String,
-    org: S.String,
-    ownerType: GetDeploymentResponseBodyCase1GitRepoCase1OwnerType,
-    path: S.String,
-    private: S.Boolean,
-    repo: S.String,
-    repoId: S.Number,
-    repoOwnerId: S.Number,
-    type: GetDeploymentResponseBodyCase1GitRepoCase1Type,
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1GitRepoCase1",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1GitRepoCase1>;
+export const GetDeploymentResponseBodyCase1GitRepoCase1 =
+  CancelDeploymentResponseGitRepoCase1 as any as S.Schema<GetDeploymentResponseBodyCase1GitRepoCase1>;
 
 export type GetDeploymentResponseBodyCase1GitRepoCase2OwnerType = "team" | "user";
 export const GetDeploymentResponseBodyCase1GitRepoCase2OwnerType = S.String;
@@ -14485,22 +13808,8 @@ export interface GetDeploymentResponseBodyCase1GitRepoCase2 {
   type: GetDeploymentResponseBodyCase1GitRepoCase2Type;
   workspaceUuid: string;
 }
-export const GetDeploymentResponseBodyCase1GitRepoCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultBranch: S.String,
-    name: S.String,
-    owner: S.String,
-    ownerType: GetDeploymentResponseBodyCase1GitRepoCase2OwnerType,
-    path: S.String,
-    private: S.Boolean,
-    repoUuid: S.String,
-    slug: S.String,
-    type: GetDeploymentResponseBodyCase1GitRepoCase2Type,
-    workspaceUuid: S.String,
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1GitRepoCase2",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1GitRepoCase2>;
+export const GetDeploymentResponseBodyCase1GitRepoCase2 =
+  CancelDeploymentResponseGitRepoCase2 as any as S.Schema<GetDeploymentResponseBodyCase1GitRepoCase2>;
 
 export type GetDeploymentResponseBodyCase1GitRepoCase3OwnerType = "team" | "user";
 export const GetDeploymentResponseBodyCase1GitRepoCase3OwnerType = S.String;
@@ -14518,20 +13827,8 @@ export interface GetDeploymentResponseBodyCase1GitRepoCase3 {
   repo: string;
   type: GetDeploymentResponseBodyCase1GitRepoCase3Type;
 }
-export const GetDeploymentResponseBodyCase1GitRepoCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultBranch: S.String,
-    name: S.String,
-    org: S.String,
-    ownerType: GetDeploymentResponseBodyCase1GitRepoCase3OwnerType,
-    path: S.String,
-    private: S.Boolean,
-    repo: S.String,
-    type: GetDeploymentResponseBodyCase1GitRepoCase3Type,
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1GitRepoCase3",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1GitRepoCase3>;
+export const GetDeploymentResponseBodyCase1GitRepoCase3 =
+  CancelDeploymentResponseGitRepoCase3 as any as S.Schema<GetDeploymentResponseBodyCase1GitRepoCase3>;
 
 export type GetDeploymentResponseBodyCase1GitRepoCase4OwnerType = "team" | "user";
 export const GetDeploymentResponseBodyCase1GitRepoCase4OwnerType = S.String;
@@ -14552,21 +13849,8 @@ export interface GetDeploymentResponseBodyCase1GitRepoCase4 {
   repoId: string;
   type: GetDeploymentResponseBodyCase1GitRepoCase4Type;
 }
-export const GetDeploymentResponseBodyCase1GitRepoCase4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultBranch: S.String,
-    name: S.String,
-    owner: S.String,
-    ownerType: GetDeploymentResponseBodyCase1GitRepoCase4OwnerType,
-    path: S.String,
-    private: S.Boolean,
-    repo: S.String,
-    repoId: S.String,
-    type: GetDeploymentResponseBodyCase1GitRepoCase4Type,
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1GitRepoCase4",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1GitRepoCase4>;
+export const GetDeploymentResponseBodyCase1GitRepoCase4 =
+  CancelDeploymentResponseGitRepoCase4 as any as S.Schema<GetDeploymentResponseBodyCase1GitRepoCase4>;
 
 export type GetDeploymentResponseBodyCase1GitRepo =
   | GetDeploymentResponseBodyCase1GitRepoCase0
@@ -14614,18 +13898,8 @@ export interface GetDeploymentResponseBodyCase1GitSourceCase1 {
   sha?: string;
   type: GetDeploymentResponseBodyCase1GitSourceCase1Type;
 }
-export const GetDeploymentResponseBodyCase1GitSourceCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    org: S.String,
-    prId: S.optional(S.NullOr(S.Number)),
-    ref: S.optional(S.NullOr(S.String)),
-    repo: S.String,
-    sha: S.optional(S.String),
-    type: GetDeploymentResponseBodyCase1GitSourceCase1Type,
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1GitSourceCase1",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1GitSourceCase1>;
+export const GetDeploymentResponseBodyCase1GitSourceCase1 =
+  CancelDeploymentResponseGitSourceCase1 as any as S.Schema<GetDeploymentResponseBodyCase1GitSourceCase1>;
 
 export type GetDeploymentResponseBodyCase1GitSourceCase2RepoId = string | number;
 export const GetDeploymentResponseBodyCase1GitSourceCase2RepoId =
@@ -14667,19 +13941,8 @@ export interface GetDeploymentResponseBodyCase1GitSourceCase3 {
   sha?: string;
   type: GetDeploymentResponseBodyCase1GitSourceCase3Type;
 }
-export const GetDeploymentResponseBodyCase1GitSourceCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    host: S.String,
-    org: S.String,
-    prId: S.optional(S.NullOr(S.Number)),
-    ref: S.optional(S.NullOr(S.String)),
-    repo: S.String,
-    sha: S.optional(S.String),
-    type: GetDeploymentResponseBodyCase1GitSourceCase3Type,
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1GitSourceCase3",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1GitSourceCase3>;
+export const GetDeploymentResponseBodyCase1GitSourceCase3 =
+  CancelDeploymentResponseGitSourceCase3 as any as S.Schema<GetDeploymentResponseBodyCase1GitSourceCase3>;
 
 export type GetDeploymentResponseBodyCase1GitSourceCase4RepoId = string | number;
 export const GetDeploymentResponseBodyCase1GitSourceCase4RepoId =
@@ -14718,18 +13981,8 @@ export interface GetDeploymentResponseBodyCase1GitSourceCase5 {
   sha?: string;
   type: GetDeploymentResponseBodyCase1GitSourceCase5Type;
 }
-export const GetDeploymentResponseBodyCase1GitSourceCase5 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    org: S.String,
-    prId: S.optional(S.NullOr(S.Number)),
-    ref: S.optional(S.NullOr(S.String)),
-    repo: S.String,
-    sha: S.optional(S.String),
-    type: GetDeploymentResponseBodyCase1GitSourceCase5Type,
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1GitSourceCase5",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1GitSourceCase5>;
+export const GetDeploymentResponseBodyCase1GitSourceCase5 =
+  CancelDeploymentResponseGitSourceCase1 as any as S.Schema<GetDeploymentResponseBodyCase1GitSourceCase5>;
 
 export type GetDeploymentResponseBodyCase1GitSourceCase6ProjectId = string | number;
 export const GetDeploymentResponseBodyCase1GitSourceCase6ProjectId =
@@ -14768,18 +14021,8 @@ export interface GetDeploymentResponseBodyCase1GitSourceCase7 {
   type: GetDeploymentResponseBodyCase1GitSourceCase7Type;
   workspaceUuid?: string;
 }
-export const GetDeploymentResponseBodyCase1GitSourceCase7 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    prId: S.optional(S.NullOr(S.Number)),
-    ref: S.optional(S.NullOr(S.String)),
-    repoUuid: S.String,
-    sha: S.optional(S.String),
-    type: GetDeploymentResponseBodyCase1GitSourceCase7Type,
-    workspaceUuid: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1GitSourceCase7",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1GitSourceCase7>;
+export const GetDeploymentResponseBodyCase1GitSourceCase7 =
+  CancelDeploymentResponseGitSourceCase7 as any as S.Schema<GetDeploymentResponseBodyCase1GitSourceCase7>;
 
 export type GetDeploymentResponseBodyCase1GitSourceCase8Type = "bitbucket";
 export const GetDeploymentResponseBodyCase1GitSourceCase8Type = S.String;
@@ -14792,18 +14035,8 @@ export interface GetDeploymentResponseBodyCase1GitSourceCase8 {
   slug: string;
   type: GetDeploymentResponseBodyCase1GitSourceCase8Type;
 }
-export const GetDeploymentResponseBodyCase1GitSourceCase8 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    owner: S.String,
-    prId: S.optional(S.NullOr(S.Number)),
-    ref: S.optional(S.NullOr(S.String)),
-    sha: S.optional(S.String),
-    slug: S.String,
-    type: GetDeploymentResponseBodyCase1GitSourceCase8Type,
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1GitSourceCase8",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1GitSourceCase8>;
+export const GetDeploymentResponseBodyCase1GitSourceCase8 =
+  CancelDeploymentResponseGitSourceCase8 as any as S.Schema<GetDeploymentResponseBodyCase1GitSourceCase8>;
 
 export type GetDeploymentResponseBodyCase1GitSourceCase9CommitMetadataAuthor =
   CancelDeploymentResponseGitSourceCase9CommitMetadataAuthor;
@@ -14834,21 +14067,8 @@ export interface GetDeploymentResponseBodyCase1GitSourceCase9 {
   sha: string;
   type: GetDeploymentResponseBodyCase1GitSourceCase9Type;
 }
-export const GetDeploymentResponseBodyCase1GitSourceCase9 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    commitMetadata: S.optional(CancelDeploymentResponseGitSourceCase9CommitMetadata),
-    org: S.optional(S.String),
-    prId: S.optional(S.NullOr(S.Number)),
-    ref: S.optional(S.NullOr(S.String)),
-    repo: S.optional(S.String),
-    repoId: S.String,
-    repoPushedAt: S.optional(S.Number),
-    sha: S.String,
-    type: GetDeploymentResponseBodyCase1GitSourceCase9Type,
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1GitSourceCase9",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1GitSourceCase9>;
+export const GetDeploymentResponseBodyCase1GitSourceCase9 =
+  CancelDeploymentResponseGitSourceCase9 as any as S.Schema<GetDeploymentResponseBodyCase1GitSourceCase9>;
 
 export type GetDeploymentResponseBodyCase1GitSourceCase10Type = "cursor-origin";
 export const GetDeploymentResponseBodyCase1GitSourceCase10Type = S.String;
@@ -14864,19 +14084,8 @@ export interface GetDeploymentResponseBodyCase1GitSourceCase10 {
   sha?: string;
   type: GetDeploymentResponseBodyCase1GitSourceCase10Type;
 }
-export const GetDeploymentResponseBodyCase1GitSourceCase10 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    owner: S.optional(S.String),
-    prId: S.optional(S.NullOr(S.Number)),
-    ref: S.optional(S.NullOr(S.String)),
-    repo: S.optional(S.String),
-    repoId: S.String,
-    sha: S.optional(S.String),
-    type: GetDeploymentResponseBodyCase1GitSourceCase10Type,
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1GitSourceCase10",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1GitSourceCase10>;
+export const GetDeploymentResponseBodyCase1GitSourceCase10 =
+  CancelDeploymentResponseGitSourceCase10 as any as S.Schema<GetDeploymentResponseBodyCase1GitSourceCase10>;
 
 export type GetDeploymentResponseBodyCase1GitSourceCase11Type = "custom";
 export const GetDeploymentResponseBodyCase1GitSourceCase11Type = S.String;
@@ -14888,16 +14097,8 @@ export interface GetDeploymentResponseBodyCase1GitSourceCase11 {
   sha: string;
   type: GetDeploymentResponseBodyCase1GitSourceCase11Type;
 }
-export const GetDeploymentResponseBodyCase1GitSourceCase11 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gitUrl: S.String,
-    ref: S.String,
-    sha: S.String,
-    type: GetDeploymentResponseBodyCase1GitSourceCase11Type,
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1GitSourceCase11",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1GitSourceCase11>;
+export const GetDeploymentResponseBodyCase1GitSourceCase11 =
+  CancelDeploymentResponseGitSourceCase11 as any as S.Schema<GetDeploymentResponseBodyCase1GitSourceCase11>;
 
 export type GetDeploymentResponseBodyCase1GitSourceCase12Type = "github";
 export const GetDeploymentResponseBodyCase1GitSourceCase12Type = S.String;
@@ -14910,18 +14111,8 @@ export interface GetDeploymentResponseBodyCase1GitSourceCase12 {
   sha: string;
   type: GetDeploymentResponseBodyCase1GitSourceCase12Type;
 }
-export const GetDeploymentResponseBodyCase1GitSourceCase12 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    org: S.optional(S.String),
-    ref: S.String,
-    repo: S.optional(S.String),
-    repoId: S.Number,
-    sha: S.String,
-    type: GetDeploymentResponseBodyCase1GitSourceCase12Type,
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1GitSourceCase12",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1GitSourceCase12>;
+export const GetDeploymentResponseBodyCase1GitSourceCase12 =
+  CancelDeploymentResponseGitSourceCase12 as any as S.Schema<GetDeploymentResponseBodyCase1GitSourceCase12>;
 
 export type GetDeploymentResponseBodyCase1GitSourceCase13Type = "github-custom-host";
 export const GetDeploymentResponseBodyCase1GitSourceCase13Type = S.String;
@@ -14935,19 +14126,8 @@ export interface GetDeploymentResponseBodyCase1GitSourceCase13 {
   sha: string;
   type: GetDeploymentResponseBodyCase1GitSourceCase13Type;
 }
-export const GetDeploymentResponseBodyCase1GitSourceCase13 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    host: S.String,
-    org: S.optional(S.String),
-    ref: S.String,
-    repo: S.optional(S.String),
-    repoId: S.Number,
-    sha: S.String,
-    type: GetDeploymentResponseBodyCase1GitSourceCase13Type,
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1GitSourceCase13",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1GitSourceCase13>;
+export const GetDeploymentResponseBodyCase1GitSourceCase13 =
+  CancelDeploymentResponseGitSourceCase13 as any as S.Schema<GetDeploymentResponseBodyCase1GitSourceCase13>;
 
 export type GetDeploymentResponseBodyCase1GitSourceCase14Type = "github-limited";
 export const GetDeploymentResponseBodyCase1GitSourceCase14Type = S.String;
@@ -14960,18 +14140,8 @@ export interface GetDeploymentResponseBodyCase1GitSourceCase14 {
   sha: string;
   type: GetDeploymentResponseBodyCase1GitSourceCase14Type;
 }
-export const GetDeploymentResponseBodyCase1GitSourceCase14 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    org: S.optional(S.String),
-    ref: S.String,
-    repo: S.optional(S.String),
-    repoId: S.Number,
-    sha: S.String,
-    type: GetDeploymentResponseBodyCase1GitSourceCase14Type,
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1GitSourceCase14",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1GitSourceCase14>;
+export const GetDeploymentResponseBodyCase1GitSourceCase14 =
+  CancelDeploymentResponseGitSourceCase12 as any as S.Schema<GetDeploymentResponseBodyCase1GitSourceCase14>;
 
 export type GetDeploymentResponseBodyCase1GitSourceCase15Type = "gitlab";
 export const GetDeploymentResponseBodyCase1GitSourceCase15Type = S.String;
@@ -14982,16 +14152,8 @@ export interface GetDeploymentResponseBodyCase1GitSourceCase15 {
   sha: string;
   type: GetDeploymentResponseBodyCase1GitSourceCase15Type;
 }
-export const GetDeploymentResponseBodyCase1GitSourceCase15 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    projectId: S.Number,
-    ref: S.String,
-    sha: S.String,
-    type: GetDeploymentResponseBodyCase1GitSourceCase15Type,
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1GitSourceCase15",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1GitSourceCase15>;
+export const GetDeploymentResponseBodyCase1GitSourceCase15 =
+  CancelDeploymentResponseGitSourceCase15 as any as S.Schema<GetDeploymentResponseBodyCase1GitSourceCase15>;
 
 export type GetDeploymentResponseBodyCase1GitSourceCase16Type = "bitbucket";
 export const GetDeploymentResponseBodyCase1GitSourceCase16Type = S.String;
@@ -15005,19 +14167,8 @@ export interface GetDeploymentResponseBodyCase1GitSourceCase16 {
   type: GetDeploymentResponseBodyCase1GitSourceCase16Type;
   workspaceUuid: string;
 }
-export const GetDeploymentResponseBodyCase1GitSourceCase16 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    owner: S.optional(S.String),
-    ref: S.String,
-    repoUuid: S.String,
-    sha: S.String,
-    slug: S.optional(S.String),
-    type: GetDeploymentResponseBodyCase1GitSourceCase16Type,
-    workspaceUuid: S.String,
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1GitSourceCase16",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1GitSourceCase16>;
+export const GetDeploymentResponseBodyCase1GitSourceCase16 =
+  CancelDeploymentResponseGitSourceCase16 as any as S.Schema<GetDeploymentResponseBodyCase1GitSourceCase16>;
 
 export type GetDeploymentResponseBodyCase1GitSourceCase17CommitMetadataAuthor =
   CancelDeploymentResponseGitSourceCase9CommitMetadataAuthor;
@@ -15047,20 +14198,8 @@ export interface GetDeploymentResponseBodyCase1GitSourceCase17 {
   sha: string;
   type: GetDeploymentResponseBodyCase1GitSourceCase17Type;
 }
-export const GetDeploymentResponseBodyCase1GitSourceCase17 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    commitMetadata: S.optional(CancelDeploymentResponseGitSourceCase9CommitMetadata),
-    org: S.String,
-    ref: S.String,
-    repo: S.String,
-    repoId: S.optional(S.String),
-    repoPushedAt: S.optional(S.Number),
-    sha: S.String,
-    type: GetDeploymentResponseBodyCase1GitSourceCase17Type,
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1GitSourceCase17",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1GitSourceCase17>;
+export const GetDeploymentResponseBodyCase1GitSourceCase17 =
+  CancelDeploymentResponseGitSourceCase17 as any as S.Schema<GetDeploymentResponseBodyCase1GitSourceCase17>;
 
 export type GetDeploymentResponseBodyCase1GitSourceCase18Type = "cursor-origin";
 export const GetDeploymentResponseBodyCase1GitSourceCase18Type = S.String;
@@ -15073,18 +14212,8 @@ export interface GetDeploymentResponseBodyCase1GitSourceCase18 {
   sha: string;
   type: GetDeploymentResponseBodyCase1GitSourceCase18Type;
 }
-export const GetDeploymentResponseBodyCase1GitSourceCase18 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    owner: S.String,
-    ref: S.String,
-    repo: S.String,
-    repoId: S.String,
-    sha: S.String,
-    type: GetDeploymentResponseBodyCase1GitSourceCase18Type,
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1GitSourceCase18",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1GitSourceCase18>;
+export const GetDeploymentResponseBodyCase1GitSourceCase18 =
+  CancelDeploymentResponseGitSourceCase18 as any as S.Schema<GetDeploymentResponseBodyCase1GitSourceCase18>;
 
 export type GetDeploymentResponseBodyCase1GitSource =
   | GetDeploymentResponseBodyCase1GitSourceCase0
@@ -15121,9 +14250,8 @@ export const GetDeploymentResponseBodyCase1ImagesFormatsItem = S.String;
 
 export type GetDeploymentResponseBodyCase1ImagesFormatsList =
   Array<GetDeploymentResponseBodyCase1ImagesFormatsItem>;
-export const GetDeploymentResponseBodyCase1ImagesFormatsList = /*@__PURE__*/ S.Array(
-  GetDeploymentResponseBodyCase1ImagesFormatsItem,
-) as any as S.Schema<GetDeploymentResponseBodyCase1ImagesFormatsList>;
+export const GetDeploymentResponseBodyCase1ImagesFormatsList =
+  CancelDeploymentResponseAtprotoCase1SubscriptionKindsList as any as S.Schema<GetDeploymentResponseBodyCase1ImagesFormatsList>;
 
 export type GetDeploymentResponseBodyCase1ImagesLocalPatternsItem =
   CancelDeploymentResponseImagesLocalPatternsItem;
@@ -15155,23 +14283,13 @@ export interface GetDeploymentResponseBodyCase1ImagesRemotePatternsItem {
   /** Can be literal query string such as `?v=1` or empty string meaning no query string. */
   search?: string;
 }
-export const GetDeploymentResponseBodyCase1ImagesRemotePatternsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hostname: S.String,
-    pathname: S.optional(S.String),
-    port: S.optional(S.String),
-    protocol: S.optional(GetDeploymentResponseBodyCase1ImagesRemotePatternsItemProtocol),
-    search: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1ImagesRemotePatternsItem",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1ImagesRemotePatternsItem>;
+export const GetDeploymentResponseBodyCase1ImagesRemotePatternsItem =
+  CancelDeploymentResponseImagesRemotePatternsItem as any as S.Schema<GetDeploymentResponseBodyCase1ImagesRemotePatternsItem>;
 
 export type GetDeploymentResponseBodyCase1ImagesRemotePatternsList =
   Array<GetDeploymentResponseBodyCase1ImagesRemotePatternsItem>;
-export const GetDeploymentResponseBodyCase1ImagesRemotePatternsList = /*@__PURE__*/ S.Array(
-  GetDeploymentResponseBodyCase1ImagesRemotePatternsItem,
-) as any as S.Schema<GetDeploymentResponseBodyCase1ImagesRemotePatternsList>;
+export const GetDeploymentResponseBodyCase1ImagesRemotePatternsList =
+  CancelDeploymentResponseImagesRemotePatternsList as any as S.Schema<GetDeploymentResponseBodyCase1ImagesRemotePatternsList>;
 
 export type GetDeploymentResponseBodyCase1ImagesSizesList = Array<number>;
 export const GetDeploymentResponseBodyCase1ImagesSizesList =
@@ -15222,18 +14340,8 @@ export interface GetDeploymentResponseBodyCase1Integrations {
   startedAt: number;
   status: GetDeploymentResponseBodyCase1IntegrationsStatus;
 }
-export const GetDeploymentResponseBodyCase1Integrations = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    claimedAt: S.optional(S.Number),
-    completedAt: S.optional(S.Number),
-    skippedAt: S.optional(S.Number),
-    skippedBy: S.optional(S.String),
-    startedAt: S.Number,
-    status: GetDeploymentResponseBodyCase1IntegrationsStatus,
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1Integrations",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1Integrations>;
+export const GetDeploymentResponseBodyCase1Integrations =
+  CancelDeploymentResponseIntegrations as any as S.Schema<GetDeploymentResponseBodyCase1Integrations>;
 
 export type GetDeploymentResponseBodyCase1LambdasItemReadyState =
   | "BUILDING"
@@ -15294,14 +14402,8 @@ export interface GetDeploymentResponseBodyCase1ManualProvisioning {
   /** Current provisioning state */
   state: GetDeploymentResponseBodyCase1ManualProvisioningState;
 }
-export const GetDeploymentResponseBodyCase1ManualProvisioning = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    completedAt: S.optional(S.Number),
-    state: GetDeploymentResponseBodyCase1ManualProvisioningState,
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1ManualProvisioning",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1ManualProvisioning>;
+export const GetDeploymentResponseBodyCase1ManualProvisioning =
+  CancelDeploymentResponseManualProvisioning as any as S.Schema<GetDeploymentResponseBodyCase1ManualProvisioning>;
 
 export type GetDeploymentResponseBodyCase1MetaMap = { [key: string]: string | undefined };
 export const GetDeploymentResponseBodyCase1MetaMap =
@@ -15434,14 +14536,8 @@ export interface GetDeploymentResponseBodyCase1PlatformOrigin {
   /** The identifier or URL pointing to the originating entity. */
   value: string;
 }
-export const GetDeploymentResponseBodyCase1PlatformOrigin = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: GetDeploymentResponseBodyCase1PlatformOriginType,
-    value: S.String,
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1PlatformOrigin",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1PlatformOrigin>;
+export const GetDeploymentResponseBodyCase1PlatformOrigin =
+  CancelDeploymentResponsePlatformOrigin as any as S.Schema<GetDeploymentResponseBodyCase1PlatformOrigin>;
 
 /** The external platform that created the deployment (e.g. its display name). */
 export type GetDeploymentResponseBodyCase1PlatformSource = CancelDeploymentResponsePlatformSource;
@@ -15583,21 +14679,8 @@ export interface GetDeploymentResponseBodyCase1ProjectSettings {
   speedInsights?: CancelDeploymentResponseProjectSettingsSpeedInsights;
   webAnalytics?: CancelDeploymentResponseProjectSettingsWebAnalytics;
 }
-export const GetDeploymentResponseBodyCase1ProjectSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    buildCommand: S.optional(S.NullOr(S.String)),
-    commandForIgnoringBuildStep: S.optional(S.NullOr(S.String)),
-    devCommand: S.optional(S.NullOr(S.String)),
-    framework: S.optional(S.NullOr(GetDeploymentResponseBodyCase1ProjectSettingsFramework)),
-    installCommand: S.optional(S.NullOr(S.String)),
-    nodeVersion: S.optional(GetDeploymentResponseBodyCase1ProjectSettingsNodeVersion),
-    outputDirectory: S.optional(S.NullOr(S.String)),
-    speedInsights: S.optional(CancelDeploymentResponseProjectSettingsSpeedInsights),
-    webAnalytics: S.optional(CancelDeploymentResponseProjectSettingsWebAnalytics),
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1ProjectSettings",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1ProjectSettings>;
+export const GetDeploymentResponseBodyCase1ProjectSettings =
+  CancelDeploymentResponseProjectSettings as any as S.Schema<GetDeploymentResponseBodyCase1ProjectSettings>;
 
 /** The state of the deployment depending on the process of deploying, or if it is ready or in an error state */
 export type GetDeploymentResponseBodyCase1ReadyState =
@@ -15667,39 +14750,15 @@ export interface GetDeploymentResponseBodyCase1ResourceConfigBuildMachine {
   /** The setting which selected the build machine when the deployment was created. Frozen here so later project or team changes do not rewrite its history. */
   selectionSource?: GetDeploymentResponseBodyCase1ResourceConfigBuildMachineSelectionSource;
 }
-export const GetDeploymentResponseBodyCase1ResourceConfigBuildMachine = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      cores: S.optional(S.Number),
-      defaultPurchaseType: S.optional(
-        GetDeploymentResponseBodyCase1ResourceConfigBuildMachineDefaultPurchaseType,
-      ),
-      machineSelectionType: S.optional(
-        GetDeploymentResponseBodyCase1ResourceConfigBuildMachineMachineSelectionType,
-      ),
-      memory: S.optional(S.Number),
-      purchaseType: S.optional(
-        GetDeploymentResponseBodyCase1ResourceConfigBuildMachinePurchaseType,
-      ),
-      selectionSource: S.optional(
-        GetDeploymentResponseBodyCase1ResourceConfigBuildMachineSelectionSource,
-      ),
-    }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1ResourceConfigBuildMachine",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1ResourceConfigBuildMachine>;
+export const GetDeploymentResponseBodyCase1ResourceConfigBuildMachine =
+  CreateDeploymentResponseBodyCase1ResourceConfigBuildMachine as any as S.Schema<GetDeploymentResponseBodyCase1ResourceConfigBuildMachine>;
 
 export interface GetDeploymentResponseBodyCase1ResourceConfig {
   /** Build machine configuration recorded for this deployment's build. See {@link DeploymentBuildMachine}. Distinct from the team/user `resourceConfig.buildMachine`, which only carries `default`. */
   buildMachine?: GetDeploymentResponseBodyCase1ResourceConfigBuildMachine;
 }
-export const GetDeploymentResponseBodyCase1ResourceConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    buildMachine: S.optional(GetDeploymentResponseBodyCase1ResourceConfigBuildMachine),
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1ResourceConfig",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1ResourceConfig>;
+export const GetDeploymentResponseBodyCase1ResourceConfig =
+  CreateDeploymentResponseBodyCase1ResourceConfig as any as S.Schema<GetDeploymentResponseBodyCase1ResourceConfig>;
 
 /** Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required. */
 export type GetDeploymentResponseBodyCase1RoutesItemCase0DestinationCase1Type = "service";
@@ -15713,15 +14772,7 @@ export interface GetDeploymentResponseBodyCase1RoutesItemCase0DestinationCase1 {
   type?: GetDeploymentResponseBodyCase1RoutesItemCase0DestinationCase1Type;
 }
 export const GetDeploymentResponseBodyCase1RoutesItemCase0DestinationCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      path: S.optional(S.String),
-      service: S.String,
-      type: S.optional(GetDeploymentResponseBodyCase1RoutesItemCase0DestinationCase1Type),
-    }),
-  ).annotate({
-    identifier: "GetDeploymentResponseBodyCase1RoutesItemCase0DestinationCase1",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0DestinationCase1>;
+  CancelDeploymentResponseServicesItemCase1RewritesItemDestinationCase1 as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0DestinationCase1>;
 
 export type GetDeploymentResponseBodyCase1RoutesItemCase0Destination =
   | string
@@ -16089,13 +15140,8 @@ export const GetDeploymentResponseBodyCase1RoutesItemCase0MitigateAction = S.Str
 export interface GetDeploymentResponseBodyCase1RoutesItemCase0Mitigate {
   action: GetDeploymentResponseBodyCase1RoutesItemCase0MitigateAction;
 }
-export const GetDeploymentResponseBodyCase1RoutesItemCase0Mitigate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: GetDeploymentResponseBodyCase1RoutesItemCase0MitigateAction,
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1RoutesItemCase0Mitigate",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0Mitigate>;
+export const GetDeploymentResponseBodyCase1RoutesItemCase0Mitigate =
+  CancelDeploymentResponseRoutesItemCase0Mitigate as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0Mitigate>;
 
 export type GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0ArgsCase1List =
   Array<string>;
@@ -16328,16 +15374,8 @@ export interface GetDeploymentResponseBodyCase1RoutesItemCase1 {
   src?: string;
   status?: number;
 }
-export const GetDeploymentResponseBodyCase1RoutesItemCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dest: S.optional(S.String),
-    handle: GetDeploymentResponseBodyCase1RoutesItemCase1Handle,
-    src: S.optional(S.String),
-    status: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1RoutesItemCase1",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase1>;
+export const GetDeploymentResponseBodyCase1RoutesItemCase1 =
+  CancelDeploymentResponseRoutesItemCase1 as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase1>;
 
 export type GetDeploymentResponseBodyCase1RoutesItemCase2Middleware = 0;
 export const GetDeploymentResponseBodyCase1RoutesItemCase2Middleware = S.Number;
@@ -16347,15 +15385,8 @@ export interface GetDeploymentResponseBodyCase1RoutesItemCase2 {
   middleware: GetDeploymentResponseBodyCase1RoutesItemCase2Middleware;
   src: string;
 }
-export const GetDeploymentResponseBodyCase1RoutesItemCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    continue: S.Boolean,
-    middleware: GetDeploymentResponseBodyCase1RoutesItemCase2Middleware,
-    src: S.String,
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1RoutesItemCase2",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase2>;
+export const GetDeploymentResponseBodyCase1RoutesItemCase2 =
+  CancelDeploymentResponseRoutesItemCase2 as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase2>;
 
 export type GetDeploymentResponseBodyCase1RoutesItem =
   | GetDeploymentResponseBodyCase1RoutesItemCase0
@@ -16428,14 +15459,7 @@ export interface GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFun
   mode: GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueAffinityMode;
 }
 export const GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueAffinity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      mode: GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueAffinityMode,
-    }),
-  ).annotate({
-    identifier:
-      "GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueAffinity",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueAffinity>;
+  CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueAffinity as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueAffinity>;
 
 export type GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueArchitecture =
   | "arm64"
@@ -16467,20 +15491,7 @@ export interface GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFun
   type: GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase0Type;
 }
 export const GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      consumer: S.String,
-      initialDelaySeconds: S.optional(S.Number),
-      maxConcurrency: S.optional(S.Number),
-      maxDeliveries: S.optional(S.Number),
-      retryAfterSeconds: S.optional(S.Number),
-      topic: S.String,
-      type: GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase0Type,
-    }),
-  ).annotate({
-    identifier:
-      "GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase0",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase0>;
+  CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase0 as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase0>;
 
 /** Event type - must be "queue/v2beta" (REQUIRED) */
 export type GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase1Type =
@@ -16504,19 +15515,7 @@ export interface GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFun
   type: GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase1Type;
 }
 export const GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      initialDelaySeconds: S.optional(S.Number),
-      maxConcurrency: S.optional(S.Number),
-      maxDeliveries: S.optional(S.Number),
-      retryAfterSeconds: S.optional(S.Number),
-      topic: S.String,
-      type: GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase1Type,
-    }),
-  ).annotate({
-    identifier:
-      "GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase1",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase1>;
+  CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase1 as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase1>;
 
 /** Event type - must be "schedule/v1beta" (REQUIRED) */
 export type GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase2Type =
@@ -16529,14 +15528,7 @@ export interface GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFun
   type: GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase2Type;
 }
 export const GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase2Type,
-    }),
-  ).annotate({
-    identifier:
-      "GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase2",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase2>;
+  CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase2 as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase2>;
 
 export type GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItem =
   | GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase0
@@ -16801,22 +15793,14 @@ export interface GetDeploymentResponseBodyCase1ServicesItemCase0EnvValue {
   service: string;
   type: GetDeploymentResponseBodyCase1ServicesItemCase0EnvValueType;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase0EnvValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    service: S.String,
-    type: GetDeploymentResponseBodyCase1ServicesItemCase0EnvValueType,
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1ServicesItemCase0EnvValue",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase0EnvValue>;
+export const GetDeploymentResponseBodyCase1ServicesItemCase0EnvValue =
+  CancelDeploymentResponseServicesItemCase0EnvValue as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase0EnvValue>;
 
 export type GetDeploymentResponseBodyCase1ServicesItemCase0EnvMap = {
   [key: string]: GetDeploymentResponseBodyCase1ServicesItemCase0EnvValue | undefined;
 };
-export const GetDeploymentResponseBodyCase1ServicesItemCase0EnvMap = /*@__PURE__*/ S.Record(
-  S.String,
-  GetDeploymentResponseBodyCase1ServicesItemCase0EnvValue,
-) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase0EnvMap>;
+export const GetDeploymentResponseBodyCase1ServicesItemCase0EnvMap =
+  CancelDeploymentResponseServicesItemCase0EnvMap as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase0EnvMap>;
 
 export type GetDeploymentResponseBodyCase1ServicesItemCase0RoutePrefixSource =
   | "configured"
@@ -16973,14 +15957,7 @@ export interface GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFun
   mode: GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueAffinityMode;
 }
 export const GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueAffinity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      mode: GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueAffinityMode,
-    }),
-  ).annotate({
-    identifier:
-      "GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueAffinity",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueAffinity>;
+  CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueAffinity as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueAffinity>;
 
 export type GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueArchitecture =
   | "arm64"
@@ -17012,20 +15989,7 @@ export interface GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFun
   type: GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase0Type;
 }
 export const GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      consumer: S.String,
-      initialDelaySeconds: S.optional(S.Number),
-      maxConcurrency: S.optional(S.Number),
-      maxDeliveries: S.optional(S.Number),
-      retryAfterSeconds: S.optional(S.Number),
-      topic: S.String,
-      type: GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase0Type,
-    }),
-  ).annotate({
-    identifier:
-      "GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase0",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase0>;
+  CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase0 as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase0>;
 
 /** Event type - must be "queue/v2beta" (REQUIRED) */
 export type GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase1Type =
@@ -17049,19 +16013,7 @@ export interface GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFun
   type: GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase1Type;
 }
 export const GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      initialDelaySeconds: S.optional(S.Number),
-      maxConcurrency: S.optional(S.Number),
-      maxDeliveries: S.optional(S.Number),
-      retryAfterSeconds: S.optional(S.Number),
-      topic: S.String,
-      type: GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase1Type,
-    }),
-  ).annotate({
-    identifier:
-      "GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase1",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase1>;
+  CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase1 as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase1>;
 
 /** Event type - must be "schedule/v1beta" (REQUIRED) */
 export type GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase2Type =
@@ -17074,14 +16026,7 @@ export interface GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFun
   type: GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase2Type;
 }
 export const GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase2Type,
-    }),
-  ).annotate({
-    identifier:
-      "GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase2",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase2>;
+  CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase2 as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase2>;
 
 export type GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItem =
   | GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase0
@@ -17352,13 +16297,7 @@ export interface GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueAf
   mode: GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueAffinityMode;
 }
 export const GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueAffinity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      mode: GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueAffinityMode,
-    }),
-  ).annotate({
-    identifier: "GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueAffinity",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueAffinity>;
+  CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueAffinity as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueAffinity>;
 
 export type GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueArchitecture =
   | "arm64"
@@ -17389,20 +16328,7 @@ export interface GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueEx
   type: GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase0Type;
 }
 export const GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      consumer: S.String,
-      initialDelaySeconds: S.optional(S.Number),
-      maxConcurrency: S.optional(S.Number),
-      maxDeliveries: S.optional(S.Number),
-      retryAfterSeconds: S.optional(S.Number),
-      topic: S.String,
-      type: GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase0Type,
-    }),
-  ).annotate({
-    identifier:
-      "GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase0",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase0>;
+  CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase0 as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase0>;
 
 /** Event type - must be "queue/v2beta" (REQUIRED) */
 export type GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase1Type =
@@ -17426,19 +16352,7 @@ export interface GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueEx
   type: GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase1Type;
 }
 export const GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      initialDelaySeconds: S.optional(S.Number),
-      maxConcurrency: S.optional(S.Number),
-      maxDeliveries: S.optional(S.Number),
-      retryAfterSeconds: S.optional(S.Number),
-      topic: S.String,
-      type: GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase1Type,
-    }),
-  ).annotate({
-    identifier:
-      "GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase1",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase1>;
+  CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase1 as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase1>;
 
 /** Event type - must be "schedule/v1beta" (REQUIRED) */
 export type GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase2Type =
@@ -17451,14 +16365,7 @@ export interface GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueEx
   type: GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase2Type;
 }
 export const GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase2Type,
-    }),
-  ).annotate({
-    identifier:
-      "GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase2",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase2>;
+  CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase2 as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase2>;
 
 export type GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItem =
   | GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase0
@@ -18337,17 +17244,7 @@ export interface GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemDest
   type?: GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemDestinationCase1Type;
 }
 export const GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemDestinationCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      path: S.optional(S.String),
-      service: S.String,
-      type: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemDestinationCase1Type,
-      ),
-    }),
-  ).annotate({
-    identifier: "GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemDestinationCase1",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemDestinationCase1>;
+  CancelDeploymentResponseServicesItemCase1RoutesItemCase0DestinationCase1 as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemDestinationCase1>;
 
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemDestination =
   | string
@@ -18800,17 +17697,7 @@ export interface GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0D
   type?: GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0DestinationCase1Type;
 }
 export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0DestinationCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      path: S.optional(S.String),
-      service: S.String,
-      type: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0DestinationCase1Type,
-      ),
-    }),
-  ).annotate({
-    identifier: "GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0DestinationCase1",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0DestinationCase1>;
+  CancelDeploymentResponseServicesItemCase1RoutesItemCase0DestinationCase1 as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0DestinationCase1>;
 
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0Destination =
   | string
@@ -19219,13 +18106,7 @@ export interface GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0M
   action: GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MitigateAction;
 }
 export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0Mitigate =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      action: GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MitigateAction,
-    }),
-  ).annotate({
-    identifier: "GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0Mitigate",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0Mitigate>;
+  CancelDeploymentResponseServicesItemCase1RoutesItemCase0Mitigate as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0Mitigate>;
 
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0ArgsCase1List =
   Array<string>;
@@ -19488,16 +18369,7 @@ export interface GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase1 
   status?: number;
 }
 export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dest: S.optional(S.String),
-      handle: GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase1Handle,
-      src: S.optional(S.String),
-      status: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase1",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase1>;
+  CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase1 as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase1>;
 
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItem =
   | GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0
@@ -19904,16 +18776,8 @@ export interface GetDeploymentResponseBodyCase2Creator {
   /** The username of the user that created the deployment */
   username?: string;
 }
-export const GetDeploymentResponseBodyCase2Creator = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    avatar: S.optional(S.String),
-    type: S.optional(GetDeploymentResponseBodyCase2CreatorType),
-    uid: S.String,
-    username: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase2Creator",
-}) as any as S.Schema<GetDeploymentResponseBodyCase2Creator>;
+export const GetDeploymentResponseBodyCase2Creator =
+  CancelDeploymentResponseCreator as any as S.Schema<GetDeploymentResponseBodyCase2Creator>;
 
 /** The type of matching to perform */
 export type GetDeploymentResponseBodyCase2CustomEnvironmentCase0BranchMatcherType =
@@ -19930,14 +18794,7 @@ export interface GetDeploymentResponseBodyCase2CustomEnvironmentCase0BranchMatch
   type: GetDeploymentResponseBodyCase2CustomEnvironmentCase0BranchMatcherType;
 }
 export const GetDeploymentResponseBodyCase2CustomEnvironmentCase0BranchMatcher =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pattern: S.String,
-      type: GetDeploymentResponseBodyCase2CustomEnvironmentCase0BranchMatcherType,
-    }),
-  ).annotate({
-    identifier: "GetDeploymentResponseBodyCase2CustomEnvironmentCase0BranchMatcher",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase2CustomEnvironmentCase0BranchMatcher>;
+  CreateDeploymentResponseBodyCase1CustomEnvironmentCase0BranchMatcher as any as S.Schema<GetDeploymentResponseBodyCase2CustomEnvironmentCase0BranchMatcher>;
 
 /** List of aliases for the current deployment */
 export type GetDeploymentResponseBodyCase2CustomEnvironmentCase0CurrentDeploymentAliasesList =
@@ -20111,18 +18968,8 @@ export interface GetDeploymentResponseBodyCase2GitSourceCase1 {
   sha?: string;
   type: GetDeploymentResponseBodyCase2GitSourceCase1Type;
 }
-export const GetDeploymentResponseBodyCase2GitSourceCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    org: S.String,
-    prId: S.optional(S.NullOr(S.Number)),
-    ref: S.optional(S.NullOr(S.String)),
-    repo: S.String,
-    sha: S.optional(S.String),
-    type: GetDeploymentResponseBodyCase2GitSourceCase1Type,
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase2GitSourceCase1",
-}) as any as S.Schema<GetDeploymentResponseBodyCase2GitSourceCase1>;
+export const GetDeploymentResponseBodyCase2GitSourceCase1 =
+  CancelDeploymentResponseGitSourceCase1 as any as S.Schema<GetDeploymentResponseBodyCase2GitSourceCase1>;
 
 export type GetDeploymentResponseBodyCase2GitSourceCase2RepoId = string | number;
 export const GetDeploymentResponseBodyCase2GitSourceCase2RepoId =
@@ -20164,19 +19011,8 @@ export interface GetDeploymentResponseBodyCase2GitSourceCase3 {
   sha?: string;
   type: GetDeploymentResponseBodyCase2GitSourceCase3Type;
 }
-export const GetDeploymentResponseBodyCase2GitSourceCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    host: S.String,
-    org: S.String,
-    prId: S.optional(S.NullOr(S.Number)),
-    ref: S.optional(S.NullOr(S.String)),
-    repo: S.String,
-    sha: S.optional(S.String),
-    type: GetDeploymentResponseBodyCase2GitSourceCase3Type,
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase2GitSourceCase3",
-}) as any as S.Schema<GetDeploymentResponseBodyCase2GitSourceCase3>;
+export const GetDeploymentResponseBodyCase2GitSourceCase3 =
+  CancelDeploymentResponseGitSourceCase3 as any as S.Schema<GetDeploymentResponseBodyCase2GitSourceCase3>;
 
 export type GetDeploymentResponseBodyCase2GitSourceCase4RepoId = string | number;
 export const GetDeploymentResponseBodyCase2GitSourceCase4RepoId =
@@ -20215,18 +19051,8 @@ export interface GetDeploymentResponseBodyCase2GitSourceCase5 {
   sha?: string;
   type: GetDeploymentResponseBodyCase2GitSourceCase5Type;
 }
-export const GetDeploymentResponseBodyCase2GitSourceCase5 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    org: S.String,
-    prId: S.optional(S.NullOr(S.Number)),
-    ref: S.optional(S.NullOr(S.String)),
-    repo: S.String,
-    sha: S.optional(S.String),
-    type: GetDeploymentResponseBodyCase2GitSourceCase5Type,
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase2GitSourceCase5",
-}) as any as S.Schema<GetDeploymentResponseBodyCase2GitSourceCase5>;
+export const GetDeploymentResponseBodyCase2GitSourceCase5 =
+  CancelDeploymentResponseGitSourceCase1 as any as S.Schema<GetDeploymentResponseBodyCase2GitSourceCase5>;
 
 export type GetDeploymentResponseBodyCase2GitSourceCase6ProjectId = string | number;
 export const GetDeploymentResponseBodyCase2GitSourceCase6ProjectId =
@@ -20265,18 +19091,8 @@ export interface GetDeploymentResponseBodyCase2GitSourceCase7 {
   type: GetDeploymentResponseBodyCase2GitSourceCase7Type;
   workspaceUuid?: string;
 }
-export const GetDeploymentResponseBodyCase2GitSourceCase7 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    prId: S.optional(S.NullOr(S.Number)),
-    ref: S.optional(S.NullOr(S.String)),
-    repoUuid: S.String,
-    sha: S.optional(S.String),
-    type: GetDeploymentResponseBodyCase2GitSourceCase7Type,
-    workspaceUuid: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase2GitSourceCase7",
-}) as any as S.Schema<GetDeploymentResponseBodyCase2GitSourceCase7>;
+export const GetDeploymentResponseBodyCase2GitSourceCase7 =
+  CancelDeploymentResponseGitSourceCase7 as any as S.Schema<GetDeploymentResponseBodyCase2GitSourceCase7>;
 
 export type GetDeploymentResponseBodyCase2GitSourceCase8Type = "bitbucket";
 export const GetDeploymentResponseBodyCase2GitSourceCase8Type = S.String;
@@ -20289,18 +19105,8 @@ export interface GetDeploymentResponseBodyCase2GitSourceCase8 {
   slug: string;
   type: GetDeploymentResponseBodyCase2GitSourceCase8Type;
 }
-export const GetDeploymentResponseBodyCase2GitSourceCase8 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    owner: S.String,
-    prId: S.optional(S.NullOr(S.Number)),
-    ref: S.optional(S.NullOr(S.String)),
-    sha: S.optional(S.String),
-    slug: S.String,
-    type: GetDeploymentResponseBodyCase2GitSourceCase8Type,
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase2GitSourceCase8",
-}) as any as S.Schema<GetDeploymentResponseBodyCase2GitSourceCase8>;
+export const GetDeploymentResponseBodyCase2GitSourceCase8 =
+  CancelDeploymentResponseGitSourceCase8 as any as S.Schema<GetDeploymentResponseBodyCase2GitSourceCase8>;
 
 export type GetDeploymentResponseBodyCase2GitSourceCase9CommitMetadataAuthor =
   CancelDeploymentResponseGitSourceCase9CommitMetadataAuthor;
@@ -20331,21 +19137,8 @@ export interface GetDeploymentResponseBodyCase2GitSourceCase9 {
   sha: string;
   type: GetDeploymentResponseBodyCase2GitSourceCase9Type;
 }
-export const GetDeploymentResponseBodyCase2GitSourceCase9 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    commitMetadata: S.optional(CancelDeploymentResponseGitSourceCase9CommitMetadata),
-    org: S.optional(S.String),
-    prId: S.optional(S.NullOr(S.Number)),
-    ref: S.optional(S.NullOr(S.String)),
-    repo: S.optional(S.String),
-    repoId: S.String,
-    repoPushedAt: S.optional(S.Number),
-    sha: S.String,
-    type: GetDeploymentResponseBodyCase2GitSourceCase9Type,
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase2GitSourceCase9",
-}) as any as S.Schema<GetDeploymentResponseBodyCase2GitSourceCase9>;
+export const GetDeploymentResponseBodyCase2GitSourceCase9 =
+  CancelDeploymentResponseGitSourceCase9 as any as S.Schema<GetDeploymentResponseBodyCase2GitSourceCase9>;
 
 export type GetDeploymentResponseBodyCase2GitSourceCase10Type = "cursor-origin";
 export const GetDeploymentResponseBodyCase2GitSourceCase10Type = S.String;
@@ -20361,19 +19154,8 @@ export interface GetDeploymentResponseBodyCase2GitSourceCase10 {
   sha?: string;
   type: GetDeploymentResponseBodyCase2GitSourceCase10Type;
 }
-export const GetDeploymentResponseBodyCase2GitSourceCase10 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    owner: S.optional(S.String),
-    prId: S.optional(S.NullOr(S.Number)),
-    ref: S.optional(S.NullOr(S.String)),
-    repo: S.optional(S.String),
-    repoId: S.String,
-    sha: S.optional(S.String),
-    type: GetDeploymentResponseBodyCase2GitSourceCase10Type,
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase2GitSourceCase10",
-}) as any as S.Schema<GetDeploymentResponseBodyCase2GitSourceCase10>;
+export const GetDeploymentResponseBodyCase2GitSourceCase10 =
+  CancelDeploymentResponseGitSourceCase10 as any as S.Schema<GetDeploymentResponseBodyCase2GitSourceCase10>;
 
 export type GetDeploymentResponseBodyCase2GitSourceCase11Type = "custom";
 export const GetDeploymentResponseBodyCase2GitSourceCase11Type = S.String;
@@ -20385,16 +19167,8 @@ export interface GetDeploymentResponseBodyCase2GitSourceCase11 {
   sha: string;
   type: GetDeploymentResponseBodyCase2GitSourceCase11Type;
 }
-export const GetDeploymentResponseBodyCase2GitSourceCase11 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gitUrl: S.String,
-    ref: S.String,
-    sha: S.String,
-    type: GetDeploymentResponseBodyCase2GitSourceCase11Type,
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase2GitSourceCase11",
-}) as any as S.Schema<GetDeploymentResponseBodyCase2GitSourceCase11>;
+export const GetDeploymentResponseBodyCase2GitSourceCase11 =
+  CancelDeploymentResponseGitSourceCase11 as any as S.Schema<GetDeploymentResponseBodyCase2GitSourceCase11>;
 
 export type GetDeploymentResponseBodyCase2GitSourceCase12Type = "github";
 export const GetDeploymentResponseBodyCase2GitSourceCase12Type = S.String;
@@ -20407,18 +19181,8 @@ export interface GetDeploymentResponseBodyCase2GitSourceCase12 {
   sha: string;
   type: GetDeploymentResponseBodyCase2GitSourceCase12Type;
 }
-export const GetDeploymentResponseBodyCase2GitSourceCase12 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    org: S.optional(S.String),
-    ref: S.String,
-    repo: S.optional(S.String),
-    repoId: S.Number,
-    sha: S.String,
-    type: GetDeploymentResponseBodyCase2GitSourceCase12Type,
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase2GitSourceCase12",
-}) as any as S.Schema<GetDeploymentResponseBodyCase2GitSourceCase12>;
+export const GetDeploymentResponseBodyCase2GitSourceCase12 =
+  CancelDeploymentResponseGitSourceCase12 as any as S.Schema<GetDeploymentResponseBodyCase2GitSourceCase12>;
 
 export type GetDeploymentResponseBodyCase2GitSourceCase13Type = "github-custom-host";
 export const GetDeploymentResponseBodyCase2GitSourceCase13Type = S.String;
@@ -20432,19 +19196,8 @@ export interface GetDeploymentResponseBodyCase2GitSourceCase13 {
   sha: string;
   type: GetDeploymentResponseBodyCase2GitSourceCase13Type;
 }
-export const GetDeploymentResponseBodyCase2GitSourceCase13 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    host: S.String,
-    org: S.optional(S.String),
-    ref: S.String,
-    repo: S.optional(S.String),
-    repoId: S.Number,
-    sha: S.String,
-    type: GetDeploymentResponseBodyCase2GitSourceCase13Type,
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase2GitSourceCase13",
-}) as any as S.Schema<GetDeploymentResponseBodyCase2GitSourceCase13>;
+export const GetDeploymentResponseBodyCase2GitSourceCase13 =
+  CancelDeploymentResponseGitSourceCase13 as any as S.Schema<GetDeploymentResponseBodyCase2GitSourceCase13>;
 
 export type GetDeploymentResponseBodyCase2GitSourceCase14Type = "github-limited";
 export const GetDeploymentResponseBodyCase2GitSourceCase14Type = S.String;
@@ -20457,18 +19210,8 @@ export interface GetDeploymentResponseBodyCase2GitSourceCase14 {
   sha: string;
   type: GetDeploymentResponseBodyCase2GitSourceCase14Type;
 }
-export const GetDeploymentResponseBodyCase2GitSourceCase14 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    org: S.optional(S.String),
-    ref: S.String,
-    repo: S.optional(S.String),
-    repoId: S.Number,
-    sha: S.String,
-    type: GetDeploymentResponseBodyCase2GitSourceCase14Type,
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase2GitSourceCase14",
-}) as any as S.Schema<GetDeploymentResponseBodyCase2GitSourceCase14>;
+export const GetDeploymentResponseBodyCase2GitSourceCase14 =
+  CancelDeploymentResponseGitSourceCase12 as any as S.Schema<GetDeploymentResponseBodyCase2GitSourceCase14>;
 
 export type GetDeploymentResponseBodyCase2GitSourceCase15Type = "gitlab";
 export const GetDeploymentResponseBodyCase2GitSourceCase15Type = S.String;
@@ -20479,16 +19222,8 @@ export interface GetDeploymentResponseBodyCase2GitSourceCase15 {
   sha: string;
   type: GetDeploymentResponseBodyCase2GitSourceCase15Type;
 }
-export const GetDeploymentResponseBodyCase2GitSourceCase15 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    projectId: S.Number,
-    ref: S.String,
-    sha: S.String,
-    type: GetDeploymentResponseBodyCase2GitSourceCase15Type,
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase2GitSourceCase15",
-}) as any as S.Schema<GetDeploymentResponseBodyCase2GitSourceCase15>;
+export const GetDeploymentResponseBodyCase2GitSourceCase15 =
+  CancelDeploymentResponseGitSourceCase15 as any as S.Schema<GetDeploymentResponseBodyCase2GitSourceCase15>;
 
 export type GetDeploymentResponseBodyCase2GitSourceCase16Type = "bitbucket";
 export const GetDeploymentResponseBodyCase2GitSourceCase16Type = S.String;
@@ -20502,19 +19237,8 @@ export interface GetDeploymentResponseBodyCase2GitSourceCase16 {
   type: GetDeploymentResponseBodyCase2GitSourceCase16Type;
   workspaceUuid: string;
 }
-export const GetDeploymentResponseBodyCase2GitSourceCase16 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    owner: S.optional(S.String),
-    ref: S.String,
-    repoUuid: S.String,
-    sha: S.String,
-    slug: S.optional(S.String),
-    type: GetDeploymentResponseBodyCase2GitSourceCase16Type,
-    workspaceUuid: S.String,
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase2GitSourceCase16",
-}) as any as S.Schema<GetDeploymentResponseBodyCase2GitSourceCase16>;
+export const GetDeploymentResponseBodyCase2GitSourceCase16 =
+  CancelDeploymentResponseGitSourceCase16 as any as S.Schema<GetDeploymentResponseBodyCase2GitSourceCase16>;
 
 export type GetDeploymentResponseBodyCase2GitSourceCase17CommitMetadataAuthor =
   CancelDeploymentResponseGitSourceCase9CommitMetadataAuthor;
@@ -20544,20 +19268,8 @@ export interface GetDeploymentResponseBodyCase2GitSourceCase17 {
   sha: string;
   type: GetDeploymentResponseBodyCase2GitSourceCase17Type;
 }
-export const GetDeploymentResponseBodyCase2GitSourceCase17 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    commitMetadata: S.optional(CancelDeploymentResponseGitSourceCase9CommitMetadata),
-    org: S.String,
-    ref: S.String,
-    repo: S.String,
-    repoId: S.optional(S.String),
-    repoPushedAt: S.optional(S.Number),
-    sha: S.String,
-    type: GetDeploymentResponseBodyCase2GitSourceCase17Type,
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase2GitSourceCase17",
-}) as any as S.Schema<GetDeploymentResponseBodyCase2GitSourceCase17>;
+export const GetDeploymentResponseBodyCase2GitSourceCase17 =
+  CancelDeploymentResponseGitSourceCase17 as any as S.Schema<GetDeploymentResponseBodyCase2GitSourceCase17>;
 
 export type GetDeploymentResponseBodyCase2GitSourceCase18Type = "cursor-origin";
 export const GetDeploymentResponseBodyCase2GitSourceCase18Type = S.String;
@@ -20570,18 +19282,8 @@ export interface GetDeploymentResponseBodyCase2GitSourceCase18 {
   sha: string;
   type: GetDeploymentResponseBodyCase2GitSourceCase18Type;
 }
-export const GetDeploymentResponseBodyCase2GitSourceCase18 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    owner: S.String,
-    ref: S.String,
-    repo: S.String,
-    repoId: S.String,
-    sha: S.String,
-    type: GetDeploymentResponseBodyCase2GitSourceCase18Type,
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase2GitSourceCase18",
-}) as any as S.Schema<GetDeploymentResponseBodyCase2GitSourceCase18>;
+export const GetDeploymentResponseBodyCase2GitSourceCase18 =
+  CancelDeploymentResponseGitSourceCase18 as any as S.Schema<GetDeploymentResponseBodyCase2GitSourceCase18>;
 
 export type GetDeploymentResponseBodyCase2GitSource =
   | GetDeploymentResponseBodyCase2GitSourceCase0
@@ -20665,14 +19367,8 @@ export interface GetDeploymentResponseBodyCase2ManualProvisioning {
   /** Current provisioning state */
   state: GetDeploymentResponseBodyCase2ManualProvisioningState;
 }
-export const GetDeploymentResponseBodyCase2ManualProvisioning = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    completedAt: S.optional(S.Number),
-    state: GetDeploymentResponseBodyCase2ManualProvisioningState,
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase2ManualProvisioning",
-}) as any as S.Schema<GetDeploymentResponseBodyCase2ManualProvisioning>;
+export const GetDeploymentResponseBodyCase2ManualProvisioning =
+  CancelDeploymentResponseManualProvisioning as any as S.Schema<GetDeploymentResponseBodyCase2ManualProvisioning>;
 
 export type GetDeploymentResponseBodyCase2MetaMap = { [key: string]: string | undefined };
 export const GetDeploymentResponseBodyCase2MetaMap =
@@ -21387,21 +20083,8 @@ export interface GetDeploymentEventsResponseBodyItemCase2Case1 {
   text?: string;
   type: GetDeploymentEventsResponseBodyItemCase2Case1Type;
 }
-export const GetDeploymentEventsResponseBodyItemCase2Case1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    created: S.Number,
-    date: S.Number,
-    deploymentId: S.String,
-    id: S.String,
-    info: GetDeploymentEventsResponseBodyItemCase0PayloadInfo,
-    level: S.optional(GetDeploymentEventsResponseBodyItemCase2Case1Level),
-    serial: S.String,
-    text: S.optional(S.String),
-    type: GetDeploymentEventsResponseBodyItemCase2Case1Type,
-  }),
-).annotate({
-  identifier: "GetDeploymentEventsResponseBodyItemCase2Case1",
-}) as any as S.Schema<GetDeploymentEventsResponseBodyItemCase2Case1>;
+export const GetDeploymentEventsResponseBodyItemCase2Case1 =
+  GetDeploymentEventsResponseBodyItemCase1 as any as S.Schema<GetDeploymentEventsResponseBodyItemCase2Case1>;
 
 export type GetDeploymentEventsResponseBodyItemCase2Case2Type = "alias-assigned";
 export const GetDeploymentEventsResponseBodyItemCase2Case2Type = S.String;
@@ -21759,14 +20442,8 @@ export interface GetDeploymentsResponseDeploymentsItemManualProvisioning {
   /** Current provisioning state */
   state: GetDeploymentsResponseDeploymentsItemManualProvisioningState;
 }
-export const GetDeploymentsResponseDeploymentsItemManualProvisioning = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    completedAt: S.optional(S.Number),
-    state: GetDeploymentsResponseDeploymentsItemManualProvisioningState,
-  }),
-).annotate({
-  identifier: "GetDeploymentsResponseDeploymentsItemManualProvisioning",
-}) as any as S.Schema<GetDeploymentsResponseDeploymentsItemManualProvisioning>;
+export const GetDeploymentsResponseDeploymentsItemManualProvisioning =
+  CancelDeploymentResponseManualProvisioning as any as S.Schema<GetDeploymentsResponseDeploymentsItemManualProvisioning>;
 
 /** Metadata information from the Git provider. */
 export type GetDeploymentsResponseDeploymentsItemMetaMap = { [key: string]: string | undefined };
@@ -21801,14 +20478,8 @@ export interface GetDeploymentsResponseDeploymentsItemPlatformOrigin {
   /** The identifier or URL pointing to the originating entity. */
   value: string;
 }
-export const GetDeploymentsResponseDeploymentsItemPlatformOrigin = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: GetDeploymentsResponseDeploymentsItemPlatformOriginType,
-    value: S.String,
-  }),
-).annotate({
-  identifier: "GetDeploymentsResponseDeploymentsItemPlatformOrigin",
-}) as any as S.Schema<GetDeploymentsResponseDeploymentsItemPlatformOrigin>;
+export const GetDeploymentsResponseDeploymentsItemPlatformOrigin =
+  CancelDeploymentResponsePlatformOrigin as any as S.Schema<GetDeploymentsResponseDeploymentsItemPlatformOrigin>;
 
 /** The external platform that created the deployment (e.g. its display name). */
 export type GetDeploymentsResponseDeploymentsItemPlatformSource =

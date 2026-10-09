@@ -664,9 +664,8 @@ export const ContinuousBackupInfoScheduleItemEnum = S.String;
 export type ContinuousBackupInfoScheduleItemEnumList = Array<
   ContinuousBackupInfoScheduleItemEnum | (string & {})
 >;
-export const ContinuousBackupInfoScheduleItemEnumList = /*@__PURE__*/ S.Array(
-  ContinuousBackupInfoScheduleItemEnum,
-) as any as S.Schema<ContinuousBackupInfoScheduleItemEnumList>;
+export const ContinuousBackupInfoScheduleItemEnumList =
+  WeeklyScheduleDaysOfWeekItemEnumList as any as S.Schema<ContinuousBackupInfoScheduleItemEnumList>;
 
 /** ContinuousBackupInfo describes the continuous backup properties of a cluster. */
 export interface ContinuousBackupInfo {
@@ -2585,9 +2584,8 @@ export const SupportedDatabaseFlagSupportedDbVersionsItemEnum = S.String;
 
 export type SupportedDatabaseFlagSupportedDbVersionsItemEnumList =
   Array<SupportedDatabaseFlagSupportedDbVersionsItemEnum>;
-export const SupportedDatabaseFlagSupportedDbVersionsItemEnumList = /*@__PURE__*/ S.Array(
-  SupportedDatabaseFlagSupportedDbVersionsItemEnum,
-) as any as S.Schema<SupportedDatabaseFlagSupportedDbVersionsItemEnumList>;
+export const SupportedDatabaseFlagSupportedDbVersionsItemEnumList =
+  WeeklyScheduleDaysOfWeekItemEnumList as any as S.Schema<SupportedDatabaseFlagSupportedDbVersionsItemEnumList>;
 
 /** Restrictions on INTEGER type values. */
 export interface IntegerRestrictions {

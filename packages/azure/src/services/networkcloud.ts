@@ -444,21 +444,14 @@ export interface TrunkedNetworkAttachmentConfiguration {
   /** The indicator of how this network will be utilized by the Kubernetes cluster. */
   pluginType?: TrunkedNetworkAttachmentConfigurationPluginType | (string & {});
 }
-export const TrunkedNetworkAttachmentConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    networkId: S.String,
-    pluginType: S.optional(TrunkedNetworkAttachmentConfigurationPluginType),
-  }),
-).annotate({
-  identifier: "TrunkedNetworkAttachmentConfiguration",
-}) as any as S.Schema<TrunkedNetworkAttachmentConfiguration>;
+export const TrunkedNetworkAttachmentConfiguration =
+  L2NetworkAttachmentConfiguration as any as S.Schema<TrunkedNetworkAttachmentConfiguration>;
 
 /** The list of Trunked Networks and related configuration for attachment. */
 export type AttachedNetworkConfigurationTrunkedNetworksList =
   Array<TrunkedNetworkAttachmentConfiguration>;
-export const AttachedNetworkConfigurationTrunkedNetworksList = /*@__PURE__*/ S.Array(
-  TrunkedNetworkAttachmentConfiguration,
-) as any as S.Schema<AttachedNetworkConfigurationTrunkedNetworksList>;
+export const AttachedNetworkConfigurationTrunkedNetworksList =
+  AttachedNetworkConfigurationL2NetworksList as any as S.Schema<AttachedNetworkConfigurationTrunkedNetworksList>;
 
 /** AttachedNetworkConfiguration represents the set of workload networks to attach to a resource. */
 export interface AttachedNetworkConfiguration {
@@ -6887,14 +6880,8 @@ export interface StorageApplianceMonitoringConfigurationStatus {
   /** The metrics level for the monitoring configuration status of the storage appliance. */
   metricsLevel?: StorageApplianceMonitoringConfigurationStatusMetricsLevel;
 }
-export const StorageApplianceMonitoringConfigurationStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    logLevel: S.optional(StorageApplianceMonitoringConfigurationStatusLogLevel),
-    metricsLevel: S.optional(StorageApplianceMonitoringConfigurationStatusMetricsLevel),
-  }),
-).annotate({
-  identifier: "StorageApplianceMonitoringConfigurationStatus",
-}) as any as S.Schema<StorageApplianceMonitoringConfigurationStatus>;
+export const StorageApplianceMonitoringConfigurationStatus =
+  BareMetalMachineMonitoringConfigurationStatus as any as S.Schema<StorageApplianceMonitoringConfigurationStatus>;
 
 /** The indicator of whether the storage appliance supports remote vendor management. */
 export type RemoteVendorManagementFeature = "Supported" | "Unsupported";
@@ -11687,15 +11674,8 @@ export interface CloudServicesNetworkStorageOptionsPatch {
   /** The resource ID of the storage appliance that hosts the storage. */
   storageApplianceId?: string;
 }
-export const CloudServicesNetworkStorageOptionsPatch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: S.optional(CloudServicesNetworkStorageMode),
-    sizeMiB: S.optional(S.Number),
-    storageApplianceId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CloudServicesNetworkStorageOptionsPatch",
-}) as any as S.Schema<CloudServicesNetworkStorageOptionsPatch>;
+export const CloudServicesNetworkStorageOptionsPatch =
+  CloudServicesNetworkStorageOptions as any as S.Schema<CloudServicesNetworkStorageOptionsPatch>;
 
 /** CloudServicesNetworkPatchProperties represents the properties of the cloud services network that can be updated using a patch request. */
 export interface CloudServicesNetworkPatchProperties {
@@ -11974,14 +11954,8 @@ export interface RuntimeProtectionConfigurationPatch {
   /** The mode of operation for runtime protection. */
   enforcementLevel?: RuntimeProtectionEnforcementLevel | (string & {});
 }
-export const RuntimeProtectionConfigurationPatch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    definitionUpdateMode: S.optional(RuntimeProtectionDefinitionUpdateMode),
-    enforcementLevel: S.optional(RuntimeProtectionEnforcementLevel),
-  }),
-).annotate({
-  identifier: "RuntimeProtectionConfigurationPatch",
-}) as any as S.Schema<RuntimeProtectionConfigurationPatch>;
+export const RuntimeProtectionConfigurationPatch =
+  RuntimeProtectionConfiguration as any as S.Schema<RuntimeProtectionConfigurationPatch>;
 
 /** The indicator if the specified key vault should be used to archive the secrets of the cluster. */
 export type ClusterSecretArchiveEnabled = "True" | "False";
@@ -12037,13 +12011,8 @@ export interface VulnerabilityScanningSettingsPatch {
   /** The mode selection for container vulnerability scanning. */
   containerScan?: VulnerabilityScanningSettingsContainerScan2 | (string & {});
 }
-export const VulnerabilityScanningSettingsPatch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    containerScan: S.optional(VulnerabilityScanningSettingsContainerScan2),
-  }),
-).annotate({
-  identifier: "VulnerabilityScanningSettingsPatch",
-}) as any as S.Schema<VulnerabilityScanningSettingsPatch>;
+export const VulnerabilityScanningSettingsPatch =
+  VulnerabilityScanningSettings as any as S.Schema<VulnerabilityScanningSettingsPatch>;
 
 /** ClusterPatchProperties represents the properties of the cluster for patching. */
 export interface ClusterPatchPropertiesInput {

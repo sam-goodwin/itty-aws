@@ -948,19 +948,9 @@ export interface QueueSummary {
   modifiedAt: Date;
   status: QueueStatus;
 }
-export const QueueSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    id: S.String,
-    arn: S.String,
-    clusterId: S.String,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    modifiedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    status: QueueStatus,
-  }),
-).annotate({ identifier: "QueueSummary" }) as any as S.Schema<QueueSummary>;
+export const QueueSummary = ComputeNodeGroupSummary as any as S.Schema<QueueSummary>;
 export type QueueList = QueueSummary[];
-export const QueueList = /*@__PURE__*/ S.Array(QueueSummary);
+export const QueueList = ComputeNodeGroupList as any as S.Schema<QueueList>;
 export interface ListQueuesResponse {
   queues: QueueSummary[];
   nextToken?: string;

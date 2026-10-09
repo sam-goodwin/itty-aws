@@ -79,20 +79,12 @@ export interface AddRouteRequestRouteRouteMissingItem {
   key?: string;
   value?: string;
 }
-export const AddRouteRequestRouteRouteMissingItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(AddRouteRequestRouteRouteMissingItemType),
-    key: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AddRouteRequestRouteRouteMissingItem",
-}) as any as S.Schema<AddRouteRequestRouteRouteMissingItem>;
+export const AddRouteRequestRouteRouteMissingItem =
+  AddRouteRequestRouteRouteHasItem as any as S.Schema<AddRouteRequestRouteRouteMissingItem>;
 
 export type AddRouteRequestRouteRouteMissingList = Array<AddRouteRequestRouteRouteMissingItem>;
-export const AddRouteRequestRouteRouteMissingList = /*@__PURE__*/ S.Array(
-  AddRouteRequestRouteRouteMissingItem,
-) as any as S.Schema<AddRouteRequestRouteRouteMissingList>;
+export const AddRouteRequestRouteRouteMissingList =
+  AddRouteRequestRouteRouteHasList as any as S.Schema<AddRouteRequestRouteRouteMissingList>;
 
 export type AddRouteRequestRouteRouteTransformsItemType =
   | "request.headers"
@@ -919,20 +911,12 @@ export interface EditRouteRequestRouteRouteHasItem {
   key?: string;
   value?: string;
 }
-export const EditRouteRequestRouteRouteHasItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(EditRouteRequestRouteRouteHasItemType),
-    key: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "EditRouteRequestRouteRouteHasItem",
-}) as any as S.Schema<EditRouteRequestRouteRouteHasItem>;
+export const EditRouteRequestRouteRouteHasItem =
+  AddRouteRequestRouteRouteHasItem as any as S.Schema<EditRouteRequestRouteRouteHasItem>;
 
 export type EditRouteRequestRouteRouteHasList = Array<EditRouteRequestRouteRouteHasItem>;
-export const EditRouteRequestRouteRouteHasList = /*@__PURE__*/ S.Array(
-  EditRouteRequestRouteRouteHasItem,
-) as any as S.Schema<EditRouteRequestRouteRouteHasList>;
+export const EditRouteRequestRouteRouteHasList =
+  AddRouteRequestRouteRouteHasList as any as S.Schema<EditRouteRequestRouteRouteHasList>;
 
 export type EditRouteRequestRouteRouteMissingItemType = "host" | "header" | "cookie" | "query";
 export const EditRouteRequestRouteRouteMissingItemType = S.String;
@@ -942,20 +926,12 @@ export interface EditRouteRequestRouteRouteMissingItem {
   key?: string;
   value?: string;
 }
-export const EditRouteRequestRouteRouteMissingItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(EditRouteRequestRouteRouteMissingItemType),
-    key: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "EditRouteRequestRouteRouteMissingItem",
-}) as any as S.Schema<EditRouteRequestRouteRouteMissingItem>;
+export const EditRouteRequestRouteRouteMissingItem =
+  AddRouteRequestRouteRouteHasItem as any as S.Schema<EditRouteRequestRouteRouteMissingItem>;
 
 export type EditRouteRequestRouteRouteMissingList = Array<EditRouteRequestRouteRouteMissingItem>;
-export const EditRouteRequestRouteRouteMissingList = /*@__PURE__*/ S.Array(
-  EditRouteRequestRouteRouteMissingItem,
-) as any as S.Schema<EditRouteRequestRouteRouteMissingList>;
+export const EditRouteRequestRouteRouteMissingList =
+  AddRouteRequestRouteRouteHasList as any as S.Schema<EditRouteRequestRouteRouteMissingList>;
 
 export type EditRouteRequestRouteRouteTransformsItemType =
   | "request.headers"
@@ -1075,15 +1051,8 @@ export interface EditRouteResponseRouteRouteDestinationCase1 {
   /** Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required. */
   type?: EditRouteResponseRouteRouteDestinationCase1Type;
 }
-export const EditRouteResponseRouteRouteDestinationCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    path: S.optional(S.String),
-    service: S.String,
-    type: S.optional(EditRouteResponseRouteRouteDestinationCase1Type),
-  }),
-).annotate({
-  identifier: "EditRouteResponseRouteRouteDestinationCase1",
-}) as any as S.Schema<EditRouteResponseRouteRouteDestinationCase1>;
+export const EditRouteResponseRouteRouteDestinationCase1 =
+  AddRouteResponseRouteRouteDestinationCase1 as any as S.Schema<EditRouteResponseRouteRouteDestinationCase1>;
 
 export type EditRouteResponseRouteRouteDestination =
   | string
@@ -1411,13 +1380,8 @@ export const EditRouteResponseRouteRouteMitigateAction = S.String;
 export interface EditRouteResponseRouteRouteMitigate {
   action: EditRouteResponseRouteRouteMitigateAction;
 }
-export const EditRouteResponseRouteRouteMitigate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: EditRouteResponseRouteRouteMitigateAction,
-  }),
-).annotate({
-  identifier: "EditRouteResponseRouteRouteMitigate",
-}) as any as S.Schema<EditRouteResponseRouteRouteMitigate>;
+export const EditRouteResponseRouteRouteMitigate =
+  AddRouteResponseRouteRouteMitigate as any as S.Schema<EditRouteResponseRouteRouteMitigate>;
 
 export type EditRouteResponseRouteRouteTransformsItemCase0ArgsCase1List = Array<string>;
 export const EditRouteResponseRouteRouteTransformsItemCase0ArgsCase1List =
@@ -2340,13 +2304,8 @@ export const GetRoutesResponseBodyCase1RoutesItemRouteMitigateAction = S.String;
 export interface GetRoutesResponseBodyCase1RoutesItemRouteMitigate {
   action: GetRoutesResponseBodyCase1RoutesItemRouteMitigateAction;
 }
-export const GetRoutesResponseBodyCase1RoutesItemRouteMitigate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: GetRoutesResponseBodyCase1RoutesItemRouteMitigateAction,
-  }),
-).annotate({
-  identifier: "GetRoutesResponseBodyCase1RoutesItemRouteMitigate",
-}) as any as S.Schema<GetRoutesResponseBodyCase1RoutesItemRouteMitigate>;
+export const GetRoutesResponseBodyCase1RoutesItemRouteMitigate =
+  AddRouteResponseRouteRouteMitigate as any as S.Schema<GetRoutesResponseBodyCase1RoutesItemRouteMitigate>;
 
 export type GetRoutesResponseBodyCase1RoutesItemRouteTransformsItemCase0ArgsCase1List =
   Array<string>;
@@ -2651,16 +2610,8 @@ export interface GetRoutesResponseBodyCase2RoutesItemRouteDestinationCase1 {
   /** Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required. */
   type?: GetRoutesResponseBodyCase2RoutesItemRouteDestinationCase1Type;
 }
-export const GetRoutesResponseBodyCase2RoutesItemRouteDestinationCase1 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      path: S.optional(S.String),
-      service: S.String,
-      type: S.optional(GetRoutesResponseBodyCase2RoutesItemRouteDestinationCase1Type),
-    }),
-).annotate({
-  identifier: "GetRoutesResponseBodyCase2RoutesItemRouteDestinationCase1",
-}) as any as S.Schema<GetRoutesResponseBodyCase2RoutesItemRouteDestinationCase1>;
+export const GetRoutesResponseBodyCase2RoutesItemRouteDestinationCase1 =
+  GetRoutesResponseBodyCase1RoutesItemRouteDestinationCase1 as any as S.Schema<GetRoutesResponseBodyCase2RoutesItemRouteDestinationCase1>;
 
 export type GetRoutesResponseBodyCase2RoutesItemRouteDestination =
   | string
@@ -3010,13 +2961,8 @@ export const GetRoutesResponseBodyCase2RoutesItemRouteMitigateAction = S.String;
 export interface GetRoutesResponseBodyCase2RoutesItemRouteMitigate {
   action: GetRoutesResponseBodyCase2RoutesItemRouteMitigateAction;
 }
-export const GetRoutesResponseBodyCase2RoutesItemRouteMitigate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: GetRoutesResponseBodyCase2RoutesItemRouteMitigateAction,
-  }),
-).annotate({
-  identifier: "GetRoutesResponseBodyCase2RoutesItemRouteMitigate",
-}) as any as S.Schema<GetRoutesResponseBodyCase2RoutesItemRouteMitigate>;
+export const GetRoutesResponseBodyCase2RoutesItemRouteMitigate =
+  AddRouteResponseRouteRouteMitigate as any as S.Schema<GetRoutesResponseBodyCase2RoutesItemRouteMitigate>;
 
 export type GetRoutesResponseBodyCase2RoutesItemRouteTransformsItemCase0ArgsCase1List =
   Array<string>;
@@ -3332,16 +3278,8 @@ export interface GetRoutesResponseBodyCase3RoutesItemRouteDestinationCase1 {
   /** Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required. */
   type?: GetRoutesResponseBodyCase3RoutesItemRouteDestinationCase1Type;
 }
-export const GetRoutesResponseBodyCase3RoutesItemRouteDestinationCase1 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      path: S.optional(S.String),
-      service: S.String,
-      type: S.optional(GetRoutesResponseBodyCase3RoutesItemRouteDestinationCase1Type),
-    }),
-).annotate({
-  identifier: "GetRoutesResponseBodyCase3RoutesItemRouteDestinationCase1",
-}) as any as S.Schema<GetRoutesResponseBodyCase3RoutesItemRouteDestinationCase1>;
+export const GetRoutesResponseBodyCase3RoutesItemRouteDestinationCase1 =
+  GetRoutesResponseBodyCase1RoutesItemRouteDestinationCase1 as any as S.Schema<GetRoutesResponseBodyCase3RoutesItemRouteDestinationCase1>;
 
 export type GetRoutesResponseBodyCase3RoutesItemRouteDestination =
   | string
@@ -3691,13 +3629,8 @@ export const GetRoutesResponseBodyCase3RoutesItemRouteMitigateAction = S.String;
 export interface GetRoutesResponseBodyCase3RoutesItemRouteMitigate {
   action: GetRoutesResponseBodyCase3RoutesItemRouteMitigateAction;
 }
-export const GetRoutesResponseBodyCase3RoutesItemRouteMitigate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: GetRoutesResponseBodyCase3RoutesItemRouteMitigateAction,
-  }),
-).annotate({
-  identifier: "GetRoutesResponseBodyCase3RoutesItemRouteMitigate",
-}) as any as S.Schema<GetRoutesResponseBodyCase3RoutesItemRouteMitigate>;
+export const GetRoutesResponseBodyCase3RoutesItemRouteMitigate =
+  AddRouteResponseRouteRouteMitigate as any as S.Schema<GetRoutesResponseBodyCase3RoutesItemRouteMitigate>;
 
 export type GetRoutesResponseBodyCase3RoutesItemRouteTransformsItemCase0ArgsCase1List =
   Array<string>;
@@ -4044,21 +3977,13 @@ export interface StageRoutesRequestRoutesItemRouteHasItem {
   key?: string;
   value?: string;
 }
-export const StageRoutesRequestRoutesItemRouteHasItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(StageRoutesRequestRoutesItemRouteHasItemType),
-    key: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "StageRoutesRequestRoutesItemRouteHasItem",
-}) as any as S.Schema<StageRoutesRequestRoutesItemRouteHasItem>;
+export const StageRoutesRequestRoutesItemRouteHasItem =
+  AddRouteRequestRouteRouteHasItem as any as S.Schema<StageRoutesRequestRoutesItemRouteHasItem>;
 
 export type StageRoutesRequestRoutesItemRouteHasList =
   Array<StageRoutesRequestRoutesItemRouteHasItem>;
-export const StageRoutesRequestRoutesItemRouteHasList = /*@__PURE__*/ S.Array(
-  StageRoutesRequestRoutesItemRouteHasItem,
-) as any as S.Schema<StageRoutesRequestRoutesItemRouteHasList>;
+export const StageRoutesRequestRoutesItemRouteHasList =
+  AddRouteRequestRouteRouteHasList as any as S.Schema<StageRoutesRequestRoutesItemRouteHasList>;
 
 export type StageRoutesRequestRoutesItemRouteMissingItemType =
   | "host"
@@ -4072,21 +3997,13 @@ export interface StageRoutesRequestRoutesItemRouteMissingItem {
   key?: string;
   value?: string;
 }
-export const StageRoutesRequestRoutesItemRouteMissingItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(StageRoutesRequestRoutesItemRouteMissingItemType),
-    key: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "StageRoutesRequestRoutesItemRouteMissingItem",
-}) as any as S.Schema<StageRoutesRequestRoutesItemRouteMissingItem>;
+export const StageRoutesRequestRoutesItemRouteMissingItem =
+  AddRouteRequestRouteRouteHasItem as any as S.Schema<StageRoutesRequestRoutesItemRouteMissingItem>;
 
 export type StageRoutesRequestRoutesItemRouteMissingList =
   Array<StageRoutesRequestRoutesItemRouteMissingItem>;
-export const StageRoutesRequestRoutesItemRouteMissingList = /*@__PURE__*/ S.Array(
-  StageRoutesRequestRoutesItemRouteMissingItem,
-) as any as S.Schema<StageRoutesRequestRoutesItemRouteMissingList>;
+export const StageRoutesRequestRoutesItemRouteMissingList =
+  AddRouteRequestRouteRouteHasList as any as S.Schema<StageRoutesRequestRoutesItemRouteMissingList>;
 
 export type StageRoutesRequestRoutesItemRouteTransformsItemType =
   | "request.headers"

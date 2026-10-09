@@ -309,12 +309,8 @@ export interface AnalyzeSentimentRequest {
   /** The encoding type used by the API to calculate sentence offsets for the sentence sentiment. */
   encodingType?: AnalyzeSentimentRequestEncodingTypeEnum | (string & {});
 }
-export const AnalyzeSentimentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    document: S.optional(Document),
-    encodingType: S.optional(AnalyzeSentimentRequestEncodingTypeEnum),
-  }),
-).annotate({ identifier: "AnalyzeSentimentRequest" }) as any as S.Schema<AnalyzeSentimentRequest>;
+export const AnalyzeSentimentRequest =
+  AnalyzeEntitiesRequest as any as S.Schema<AnalyzeSentimentRequest>;
 
 export interface AnalyzeSentimentDocumentsRequest {
   /** Request body */
@@ -378,12 +374,7 @@ export interface AnalyzeSyntaxRequest {
   /** The encoding type used by the API to calculate offsets. */
   encodingType?: AnalyzeSyntaxRequestEncodingTypeEnum | (string & {});
 }
-export const AnalyzeSyntaxRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    document: S.optional(Document),
-    encodingType: S.optional(AnalyzeSyntaxRequestEncodingTypeEnum),
-  }),
-).annotate({ identifier: "AnalyzeSyntaxRequest" }) as any as S.Schema<AnalyzeSyntaxRequest>;
+export const AnalyzeSyntaxRequest = AnalyzeEntitiesRequest as any as S.Schema<AnalyzeSyntaxRequest>;
 
 export interface AnalyzeSyntaxDocumentsRequest {
   /** Request body */

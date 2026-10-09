@@ -1379,9 +1379,7 @@ export type GoogleChromeManagementVersionsV1ReportingSettingsEnabledDefaultEvent
     GoogleChromeManagementVersionsV1ReportingSettingsEnabledDefaultEventsItemEnum | (string & {})
   >;
 export const GoogleChromeManagementVersionsV1ReportingSettingsEnabledDefaultEventsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleChromeManagementVersionsV1ReportingSettingsEnabledDefaultEventsItemEnum,
-  ) as any as S.Schema<GoogleChromeManagementVersionsV1ReportingSettingsEnabledDefaultEventsItemEnumList>;
+  GoogleChromeManagementVersionsV1ReportingSettingsEnabledOptInEventsItemEnumList as any as S.Schema<GoogleChromeManagementVersionsV1ReportingSettingsEnabledDefaultEventsItemEnumList>;
 
 export type GoogleChromeManagementVersionsV1ReportingSettingsEnabledDeviceEventsItemEnum =
   | "DEVICE_EVENT_UNSPECIFIED"
@@ -1398,9 +1396,7 @@ export type GoogleChromeManagementVersionsV1ReportingSettingsEnabledDeviceEvents
     GoogleChromeManagementVersionsV1ReportingSettingsEnabledDeviceEventsItemEnum | (string & {})
   >;
 export const GoogleChromeManagementVersionsV1ReportingSettingsEnabledDeviceEventsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleChromeManagementVersionsV1ReportingSettingsEnabledDeviceEventsItemEnum,
-  ) as any as S.Schema<GoogleChromeManagementVersionsV1ReportingSettingsEnabledDeviceEventsItemEnumList>;
+  GoogleChromeManagementVersionsV1ReportingSettingsEnabledOptInEventsItemEnumList as any as S.Schema<GoogleChromeManagementVersionsV1ReportingSettingsEnabledDeviceEventsItemEnumList>;
 
 /** Reporting settings for connector configs. */
 export interface GoogleChromeManagementVersionsV1ReportingSettings {
@@ -1667,9 +1663,7 @@ export type GoogleChromeManagementVersionsV1SecureGatewayConfigEnabledPlatformsI
   GoogleChromeManagementVersionsV1SecureGatewayConfigEnabledPlatformsItemEnum | (string & {})
 >;
 export const GoogleChromeManagementVersionsV1SecureGatewayConfigEnabledPlatformsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleChromeManagementVersionsV1SecureGatewayConfigEnabledPlatformsItemEnum,
-  ) as any as S.Schema<GoogleChromeManagementVersionsV1SecureGatewayConfigEnabledPlatformsItemEnumList>;
+  GoogleChromeManagementVersionsV1ReportingSettingsEnabledOptInEventsItemEnumList as any as S.Schema<GoogleChromeManagementVersionsV1SecureGatewayConfigEnabledPlatformsItemEnumList>;
 
 /** Secure gateway connector config. */
 export interface GoogleChromeManagementVersionsV1SecureGatewayConfig {
@@ -1911,9 +1905,7 @@ export type GoogleChromeManagementV1TelemetryEventNotificationFilterEventTypesIt
   GoogleChromeManagementV1TelemetryEventNotificationFilterEventTypesItemEnum | (string & {})
 >;
 export const GoogleChromeManagementV1TelemetryEventNotificationFilterEventTypesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleChromeManagementV1TelemetryEventNotificationFilterEventTypesItemEnum,
-  ) as any as S.Schema<GoogleChromeManagementV1TelemetryEventNotificationFilterEventTypesItemEnumList>;
+  GoogleChromeManagementVersionsV1ReportingSettingsEnabledOptInEventsItemEnumList as any as S.Schema<GoogleChromeManagementV1TelemetryEventNotificationFilterEventTypesItemEnumList>;
 
 /** Configures how the telemetry events should be filtered. */
 export interface GoogleChromeManagementV1TelemetryEventNotificationFilter {
@@ -2164,15 +2156,8 @@ export interface GoogleChromeManagementVersionsV1EnableInsightsResponse {
   /** The state of the insights feature. */
   insightsState?: GoogleChromeManagementVersionsV1EnableInsightsResponseInsightsStateEnum;
 }
-export const GoogleChromeManagementVersionsV1EnableInsightsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    insightsState: S.optional(
-      GoogleChromeManagementVersionsV1EnableInsightsResponseInsightsStateEnum,
-    ),
-  }),
-).annotate({
-  identifier: "GoogleChromeManagementVersionsV1EnableInsightsResponse",
-}) as any as S.Schema<GoogleChromeManagementVersionsV1EnableInsightsResponse>;
+export const GoogleChromeManagementVersionsV1EnableInsightsResponse =
+  GoogleChromeManagementVersionsV1DisableInsightsResponse as any as S.Schema<GoogleChromeManagementVersionsV1EnableInsightsResponse>;
 
 export interface EnumeratePrintJobsCustomersReportsRequest {
   /** Required. Customer ID prefixed with "customers/" or "customers/my_customer" to use the customer associated to the account making the request. */
@@ -3283,9 +3268,7 @@ export const GoogleChromeManagementVersionsV1ScepProfileKeyUsagesItemEnum = S.St
 export type GoogleChromeManagementVersionsV1ScepProfileKeyUsagesItemEnumList =
   Array<GoogleChromeManagementVersionsV1ScepProfileKeyUsagesItemEnum>;
 export const GoogleChromeManagementVersionsV1ScepProfileKeyUsagesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleChromeManagementVersionsV1ScepProfileKeyUsagesItemEnum,
-  ) as any as S.Schema<GoogleChromeManagementVersionsV1ScepProfileKeyUsagesItemEnumList>;
+  GoogleChromeManagementVersionsV1ReportingSettingsEnabledOptInEventsItemEnumList as any as S.Schema<GoogleChromeManagementVersionsV1ScepProfileKeyUsagesItemEnumList>;
 
 export type GoogleChromeManagementVersionsV1SubjectAltNameTypeEnum =
   | "SUBJECT_ALT_NAME_TYPE_UNSPECIFIED"
@@ -6621,14 +6604,8 @@ export interface GoogleChromeManagementVersionsV1UrlVisitsSummary {
   /** The type of URL visits metric. */
   metric?: GoogleChromeManagementVersionsV1UrlVisitsSummaryMetricEnum;
 }
-export const GoogleChromeManagementVersionsV1UrlVisitsSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    count: S.optional(S.String),
-    metric: S.optional(GoogleChromeManagementVersionsV1UrlVisitsSummaryMetricEnum),
-  }),
-).annotate({
-  identifier: "GoogleChromeManagementVersionsV1UrlVisitsSummary",
-}) as any as S.Schema<GoogleChromeManagementVersionsV1UrlVisitsSummary>;
+export const GoogleChromeManagementVersionsV1UrlVisitsSummary =
+  GoogleChromeManagementVersionsV1ContentTransfersSummary as any as S.Schema<GoogleChromeManagementVersionsV1UrlVisitsSummary>;
 
 /** A URL visits summary for a given breakdown dimension. */
 export interface GoogleChromeManagementVersionsV1UrlVisitsBreakdown {
@@ -6696,9 +6673,8 @@ export const QueryUrlVisitsCustomersEnterpriseSecurityInsightsRequest = /*@__PUR
 
 export type GoogleChromeManagementVersionsV1UrlVisitsSummaryList =
   Array<GoogleChromeManagementVersionsV1UrlVisitsSummary>;
-export const GoogleChromeManagementVersionsV1UrlVisitsSummaryList = /*@__PURE__*/ S.Array(
-  GoogleChromeManagementVersionsV1UrlVisitsSummary,
-) as any as S.Schema<GoogleChromeManagementVersionsV1UrlVisitsSummaryList>;
+export const GoogleChromeManagementVersionsV1UrlVisitsSummaryList =
+  GoogleChromeManagementVersionsV1ContentTransfersSummaryList as any as S.Schema<GoogleChromeManagementVersionsV1UrlVisitsSummaryList>;
 
 /** Response message for QueryUrlVisits. */
 export interface GoogleChromeManagementVersionsV1QueryUrlVisitsResponse {

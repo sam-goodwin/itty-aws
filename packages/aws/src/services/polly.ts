@@ -446,7 +446,7 @@ export type VoiceName = string;
 export type LanguageCodeList = LanguageCode[];
 export const LanguageCodeList = /*@__PURE__*/ S.Array(LanguageCode);
 export type EngineList = Engine[];
-export const EngineList = /*@__PURE__*/ S.Array(Engine);
+export const EngineList = LanguageCodeList as any as S.Schema<EngineList>;
 export interface Voice {
   Gender?: Gender;
   Id?: VoiceId;
@@ -568,7 +568,7 @@ export type SpeechMarkType = "sentence" | "ssml" | "viseme" | "word" | (string &
 export const SpeechMarkType = S.String;
 
 export type SpeechMarkTypeList = SpeechMarkType[];
-export const SpeechMarkTypeList = /*@__PURE__*/ S.Array(SpeechMarkType);
+export const SpeechMarkTypeList = LanguageCodeList as any as S.Schema<SpeechMarkTypeList>;
 export type TextType = "ssml" | "text" | (string & {});
 export const TextType = S.String;
 

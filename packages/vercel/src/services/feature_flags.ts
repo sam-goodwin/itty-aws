@@ -737,15 +737,8 @@ export interface CreateFlagResponseEnvironmentsValueFallthroughCase2Base {
   kind: string;
   type: CreateFlagResponseEnvironmentsValueFallthroughCase2BaseType;
 }
-export const CreateFlagResponseEnvironmentsValueFallthroughCase2Base = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attribute: S.String,
-    kind: S.String,
-    type: CreateFlagResponseEnvironmentsValueFallthroughCase2BaseType,
-  }),
-).annotate({
-  identifier: "CreateFlagResponseEnvironmentsValueFallthroughCase2Base",
-}) as any as S.Schema<CreateFlagResponseEnvironmentsValueFallthroughCase2Base>;
+export const CreateFlagResponseEnvironmentsValueFallthroughCase2Base =
+  CreateFlagResponseEnvironmentsValueFallthroughCase1Base as any as S.Schema<CreateFlagResponseEnvironmentsValueFallthroughCase2Base>;
 
 export interface CreateFlagResponseEnvironmentsValueFallthroughCase2SlotsItem {
   durationMs: number;
@@ -824,14 +817,8 @@ export interface CreateFlagResponseEnvironmentsValuePausedOutcome {
   type: CreateFlagResponseEnvironmentsValuePausedOutcomeType;
   variantId: string;
 }
-export const CreateFlagResponseEnvironmentsValuePausedOutcome = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: CreateFlagResponseEnvironmentsValuePausedOutcomeType,
-    variantId: S.String,
-  }),
-).annotate({
-  identifier: "CreateFlagResponseEnvironmentsValuePausedOutcome",
-}) as any as S.Schema<CreateFlagResponseEnvironmentsValuePausedOutcome>;
+export const CreateFlagResponseEnvironmentsValuePausedOutcome =
+  CreateFlagResponseEnvironmentsValueFallthroughCase0 as any as S.Schema<CreateFlagResponseEnvironmentsValuePausedOutcome>;
 
 export interface CreateFlagResponseEnvironmentsValueReuse {
   active: boolean;
@@ -1076,16 +1063,8 @@ export interface CreateFlagResponseEnvironmentsValueRulesItemOutcomeCase2Base {
   kind: string;
   type: CreateFlagResponseEnvironmentsValueRulesItemOutcomeCase2BaseType;
 }
-export const CreateFlagResponseEnvironmentsValueRulesItemOutcomeCase2Base = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      attribute: S.String,
-      kind: S.String,
-      type: CreateFlagResponseEnvironmentsValueRulesItemOutcomeCase2BaseType,
-    }),
-).annotate({
-  identifier: "CreateFlagResponseEnvironmentsValueRulesItemOutcomeCase2Base",
-}) as any as S.Schema<CreateFlagResponseEnvironmentsValueRulesItemOutcomeCase2Base>;
+export const CreateFlagResponseEnvironmentsValueRulesItemOutcomeCase2Base =
+  CreateFlagResponseEnvironmentsValueRulesItemOutcomeCase1Base as any as S.Schema<CreateFlagResponseEnvironmentsValueRulesItemOutcomeCase2Base>;
 
 export type CreateFlagResponseEnvironmentsValueRulesItemOutcomeCase2SlotsItem =
   CreateFlagResponseEnvironmentsValueFallthroughCase2SlotsItem;
@@ -1686,14 +1665,8 @@ export const CreateFlagSegmentResponseDataRulesItemConditionsItemLhsCase0Type = 
 export interface CreateFlagSegmentResponseDataRulesItemConditionsItemLhsCase0 {
   type: CreateFlagSegmentResponseDataRulesItemConditionsItemLhsCase0Type;
 }
-export const CreateFlagSegmentResponseDataRulesItemConditionsItemLhsCase0 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      type: CreateFlagSegmentResponseDataRulesItemConditionsItemLhsCase0Type,
-    }),
-).annotate({
-  identifier: "CreateFlagSegmentResponseDataRulesItemConditionsItemLhsCase0",
-}) as any as S.Schema<CreateFlagSegmentResponseDataRulesItemConditionsItemLhsCase0>;
+export const CreateFlagSegmentResponseDataRulesItemConditionsItemLhsCase0 =
+  CreateFlagResponseEnvironmentsValueRulesItemOutcomeCase3 as any as S.Schema<CreateFlagSegmentResponseDataRulesItemConditionsItemLhsCase0>;
 
 export type CreateFlagSegmentResponseDataRulesItemConditionsItemLhsCase1Type = "entity";
 export const CreateFlagSegmentResponseDataRulesItemConditionsItemLhsCase1Type = S.String;
@@ -1703,16 +1676,8 @@ export interface CreateFlagSegmentResponseDataRulesItemConditionsItemLhsCase1 {
   kind: string;
   type: CreateFlagSegmentResponseDataRulesItemConditionsItemLhsCase1Type;
 }
-export const CreateFlagSegmentResponseDataRulesItemConditionsItemLhsCase1 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      attribute: S.String,
-      kind: S.String,
-      type: CreateFlagSegmentResponseDataRulesItemConditionsItemLhsCase1Type,
-    }),
-).annotate({
-  identifier: "CreateFlagSegmentResponseDataRulesItemConditionsItemLhsCase1",
-}) as any as S.Schema<CreateFlagSegmentResponseDataRulesItemConditionsItemLhsCase1>;
+export const CreateFlagSegmentResponseDataRulesItemConditionsItemLhsCase1 =
+  CreateFlagResponseEnvironmentsValueRulesItemOutcomeCase1Base as any as S.Schema<CreateFlagSegmentResponseDataRulesItemConditionsItemLhsCase1>;
 
 export type CreateFlagSegmentResponseDataRulesItemConditionsItemLhs =
   | CreateFlagSegmentResponseDataRulesItemConditionsItemLhsCase0
@@ -1819,13 +1784,8 @@ export const CreateFlagSegmentResponseDataRulesItemOutcomeCase0Type = S.String;
 export interface CreateFlagSegmentResponseDataRulesItemOutcomeCase0 {
   type: CreateFlagSegmentResponseDataRulesItemOutcomeCase0Type;
 }
-export const CreateFlagSegmentResponseDataRulesItemOutcomeCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: CreateFlagSegmentResponseDataRulesItemOutcomeCase0Type,
-  }),
-).annotate({
-  identifier: "CreateFlagSegmentResponseDataRulesItemOutcomeCase0",
-}) as any as S.Schema<CreateFlagSegmentResponseDataRulesItemOutcomeCase0>;
+export const CreateFlagSegmentResponseDataRulesItemOutcomeCase0 =
+  CreateFlagResponseEnvironmentsValueFallthroughCase3 as any as S.Schema<CreateFlagSegmentResponseDataRulesItemOutcomeCase0>;
 
 export type CreateFlagSegmentResponseDataRulesItemOutcomeCase1BaseType = "entity";
 export const CreateFlagSegmentResponseDataRulesItemOutcomeCase1BaseType = S.String;
@@ -1835,15 +1795,8 @@ export interface CreateFlagSegmentResponseDataRulesItemOutcomeCase1Base {
   kind: string;
   type: CreateFlagSegmentResponseDataRulesItemOutcomeCase1BaseType;
 }
-export const CreateFlagSegmentResponseDataRulesItemOutcomeCase1Base = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attribute: S.String,
-    kind: S.String,
-    type: CreateFlagSegmentResponseDataRulesItemOutcomeCase1BaseType,
-  }),
-).annotate({
-  identifier: "CreateFlagSegmentResponseDataRulesItemOutcomeCase1Base",
-}) as any as S.Schema<CreateFlagSegmentResponseDataRulesItemOutcomeCase1Base>;
+export const CreateFlagSegmentResponseDataRulesItemOutcomeCase1Base =
+  CreateFlagResponseEnvironmentsValueFallthroughCase1Base as any as S.Schema<CreateFlagSegmentResponseDataRulesItemOutcomeCase1Base>;
 
 export type CreateFlagSegmentResponseDataRulesItemOutcomeCase1Type = "split";
 export const CreateFlagSegmentResponseDataRulesItemOutcomeCase1Type = S.String;
@@ -2210,14 +2163,8 @@ export interface FlagEnvironmentsValueFallthroughCase0 {
   type: FlagEnvironmentsValueFallthroughCase0Type;
   variantId: string;
 }
-export const FlagEnvironmentsValueFallthroughCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: FlagEnvironmentsValueFallthroughCase0Type,
-    variantId: S.String,
-  }),
-).annotate({
-  identifier: "FlagEnvironmentsValueFallthroughCase0",
-}) as any as S.Schema<FlagEnvironmentsValueFallthroughCase0>;
+export const FlagEnvironmentsValueFallthroughCase0 =
+  CreateFlagResponseEnvironmentsValueFallthroughCase0 as any as S.Schema<FlagEnvironmentsValueFallthroughCase0>;
 
 export type FlagEnvironmentsValueFallthroughCase1BaseType = "entity";
 export const FlagEnvironmentsValueFallthroughCase1BaseType = S.String;
@@ -2227,15 +2174,8 @@ export interface FlagEnvironmentsValueFallthroughCase1Base {
   kind: string;
   type: FlagEnvironmentsValueFallthroughCase1BaseType;
 }
-export const FlagEnvironmentsValueFallthroughCase1Base = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attribute: S.String,
-    kind: S.String,
-    type: FlagEnvironmentsValueFallthroughCase1BaseType,
-  }),
-).annotate({
-  identifier: "FlagEnvironmentsValueFallthroughCase1Base",
-}) as any as S.Schema<FlagEnvironmentsValueFallthroughCase1Base>;
+export const FlagEnvironmentsValueFallthroughCase1Base =
+  CreateFlagResponseEnvironmentsValueFallthroughCase1Base as any as S.Schema<FlagEnvironmentsValueFallthroughCase1Base>;
 
 export type FlagEnvironmentsValueFallthroughCase1Type = "split";
 export const FlagEnvironmentsValueFallthroughCase1Type = S.String;
@@ -2269,15 +2209,8 @@ export interface FlagEnvironmentsValueFallthroughCase2Base {
   kind: string;
   type: FlagEnvironmentsValueFallthroughCase2BaseType;
 }
-export const FlagEnvironmentsValueFallthroughCase2Base = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attribute: S.String,
-    kind: S.String,
-    type: FlagEnvironmentsValueFallthroughCase2BaseType,
-  }),
-).annotate({
-  identifier: "FlagEnvironmentsValueFallthroughCase2Base",
-}) as any as S.Schema<FlagEnvironmentsValueFallthroughCase2Base>;
+export const FlagEnvironmentsValueFallthroughCase2Base =
+  CreateFlagResponseEnvironmentsValueFallthroughCase1Base as any as S.Schema<FlagEnvironmentsValueFallthroughCase2Base>;
 
 export type FlagEnvironmentsValueFallthroughCase2SlotsItem =
   CreateFlagResponseEnvironmentsValueFallthroughCase2SlotsItem;
@@ -2323,13 +2256,8 @@ export const FlagEnvironmentsValueFallthroughCase3Type = S.String;
 export interface FlagEnvironmentsValueFallthroughCase3 {
   type: FlagEnvironmentsValueFallthroughCase3Type;
 }
-export const FlagEnvironmentsValueFallthroughCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: FlagEnvironmentsValueFallthroughCase3Type,
-  }),
-).annotate({
-  identifier: "FlagEnvironmentsValueFallthroughCase3",
-}) as any as S.Schema<FlagEnvironmentsValueFallthroughCase3>;
+export const FlagEnvironmentsValueFallthroughCase3 =
+  CreateFlagResponseEnvironmentsValueFallthroughCase3 as any as S.Schema<FlagEnvironmentsValueFallthroughCase3>;
 
 export type FlagEnvironmentsValueFallthrough =
   | FlagEnvironmentsValueFallthroughCase0
@@ -2346,14 +2274,8 @@ export interface FlagEnvironmentsValuePausedOutcome {
   type: FlagEnvironmentsValuePausedOutcomeType;
   variantId: string;
 }
-export const FlagEnvironmentsValuePausedOutcome = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: FlagEnvironmentsValuePausedOutcomeType,
-    variantId: S.String,
-  }),
-).annotate({
-  identifier: "FlagEnvironmentsValuePausedOutcome",
-}) as any as S.Schema<FlagEnvironmentsValuePausedOutcome>;
+export const FlagEnvironmentsValuePausedOutcome =
+  CreateFlagResponseEnvironmentsValueFallthroughCase0 as any as S.Schema<FlagEnvironmentsValuePausedOutcome>;
 
 export type FlagEnvironmentsValueReuse = CreateFlagResponseEnvironmentsValueReuse;
 export const FlagEnvironmentsValueReuse = CreateFlagResponseEnvironmentsValueReuse;
@@ -2395,13 +2317,8 @@ export const FlagEnvironmentsValueRulesItemConditionsItemLhsCase0Type = S.String
 export interface FlagEnvironmentsValueRulesItemConditionsItemLhsCase0 {
   type: FlagEnvironmentsValueRulesItemConditionsItemLhsCase0Type;
 }
-export const FlagEnvironmentsValueRulesItemConditionsItemLhsCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: FlagEnvironmentsValueRulesItemConditionsItemLhsCase0Type,
-  }),
-).annotate({
-  identifier: "FlagEnvironmentsValueRulesItemConditionsItemLhsCase0",
-}) as any as S.Schema<FlagEnvironmentsValueRulesItemConditionsItemLhsCase0>;
+export const FlagEnvironmentsValueRulesItemConditionsItemLhsCase0 =
+  CreateFlagResponseEnvironmentsValueFallthroughCase3 as any as S.Schema<FlagEnvironmentsValueRulesItemConditionsItemLhsCase0>;
 
 export type FlagEnvironmentsValueRulesItemConditionsItemLhsCase1Type = "entity";
 export const FlagEnvironmentsValueRulesItemConditionsItemLhsCase1Type = S.String;
@@ -2411,15 +2328,8 @@ export interface FlagEnvironmentsValueRulesItemConditionsItemLhsCase1 {
   kind: string;
   type: FlagEnvironmentsValueRulesItemConditionsItemLhsCase1Type;
 }
-export const FlagEnvironmentsValueRulesItemConditionsItemLhsCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attribute: S.String,
-    kind: S.String,
-    type: FlagEnvironmentsValueRulesItemConditionsItemLhsCase1Type,
-  }),
-).annotate({
-  identifier: "FlagEnvironmentsValueRulesItemConditionsItemLhsCase1",
-}) as any as S.Schema<FlagEnvironmentsValueRulesItemConditionsItemLhsCase1>;
+export const FlagEnvironmentsValueRulesItemConditionsItemLhsCase1 =
+  CreateFlagResponseEnvironmentsValueFallthroughCase1Base as any as S.Schema<FlagEnvironmentsValueRulesItemConditionsItemLhsCase1>;
 
 export type FlagEnvironmentsValueRulesItemConditionsItemLhs =
   | FlagEnvironmentsValueRulesItemConditionsItemLhsCase0
@@ -2522,14 +2432,8 @@ export interface FlagEnvironmentsValueRulesItemOutcomeCase0 {
   type: FlagEnvironmentsValueRulesItemOutcomeCase0Type;
   variantId: string;
 }
-export const FlagEnvironmentsValueRulesItemOutcomeCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: FlagEnvironmentsValueRulesItemOutcomeCase0Type,
-    variantId: S.String,
-  }),
-).annotate({
-  identifier: "FlagEnvironmentsValueRulesItemOutcomeCase0",
-}) as any as S.Schema<FlagEnvironmentsValueRulesItemOutcomeCase0>;
+export const FlagEnvironmentsValueRulesItemOutcomeCase0 =
+  CreateFlagResponseEnvironmentsValueFallthroughCase0 as any as S.Schema<FlagEnvironmentsValueRulesItemOutcomeCase0>;
 
 export type FlagEnvironmentsValueRulesItemOutcomeCase1BaseType = "entity";
 export const FlagEnvironmentsValueRulesItemOutcomeCase1BaseType = S.String;
@@ -2539,15 +2443,8 @@ export interface FlagEnvironmentsValueRulesItemOutcomeCase1Base {
   kind: string;
   type: FlagEnvironmentsValueRulesItemOutcomeCase1BaseType;
 }
-export const FlagEnvironmentsValueRulesItemOutcomeCase1Base = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attribute: S.String,
-    kind: S.String,
-    type: FlagEnvironmentsValueRulesItemOutcomeCase1BaseType,
-  }),
-).annotate({
-  identifier: "FlagEnvironmentsValueRulesItemOutcomeCase1Base",
-}) as any as S.Schema<FlagEnvironmentsValueRulesItemOutcomeCase1Base>;
+export const FlagEnvironmentsValueRulesItemOutcomeCase1Base =
+  CreateFlagResponseEnvironmentsValueFallthroughCase1Base as any as S.Schema<FlagEnvironmentsValueRulesItemOutcomeCase1Base>;
 
 export type FlagEnvironmentsValueRulesItemOutcomeCase1Type = "split";
 export const FlagEnvironmentsValueRulesItemOutcomeCase1Type = S.String;
@@ -2583,15 +2480,8 @@ export interface FlagEnvironmentsValueRulesItemOutcomeCase2Base {
   kind: string;
   type: FlagEnvironmentsValueRulesItemOutcomeCase2BaseType;
 }
-export const FlagEnvironmentsValueRulesItemOutcomeCase2Base = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attribute: S.String,
-    kind: S.String,
-    type: FlagEnvironmentsValueRulesItemOutcomeCase2BaseType,
-  }),
-).annotate({
-  identifier: "FlagEnvironmentsValueRulesItemOutcomeCase2Base",
-}) as any as S.Schema<FlagEnvironmentsValueRulesItemOutcomeCase2Base>;
+export const FlagEnvironmentsValueRulesItemOutcomeCase2Base =
+  CreateFlagResponseEnvironmentsValueFallthroughCase1Base as any as S.Schema<FlagEnvironmentsValueRulesItemOutcomeCase2Base>;
 
 export type FlagEnvironmentsValueRulesItemOutcomeCase2SlotsItem =
   CreateFlagResponseEnvironmentsValueFallthroughCase2SlotsItem;
@@ -2637,13 +2527,8 @@ export const FlagEnvironmentsValueRulesItemOutcomeCase3Type = S.String;
 export interface FlagEnvironmentsValueRulesItemOutcomeCase3 {
   type: FlagEnvironmentsValueRulesItemOutcomeCase3Type;
 }
-export const FlagEnvironmentsValueRulesItemOutcomeCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: FlagEnvironmentsValueRulesItemOutcomeCase3Type,
-  }),
-).annotate({
-  identifier: "FlagEnvironmentsValueRulesItemOutcomeCase3",
-}) as any as S.Schema<FlagEnvironmentsValueRulesItemOutcomeCase3>;
+export const FlagEnvironmentsValueRulesItemOutcomeCase3 =
+  CreateFlagResponseEnvironmentsValueFallthroughCase3 as any as S.Schema<FlagEnvironmentsValueRulesItemOutcomeCase3>;
 
 export type FlagEnvironmentsValueRulesItemOutcome =
   | FlagEnvironmentsValueRulesItemOutcomeCase0
@@ -2952,13 +2837,8 @@ export const SegmentDataRulesItemConditionsItemLhsCase0Type = S.String;
 export interface SegmentDataRulesItemConditionsItemLhsCase0 {
   type: SegmentDataRulesItemConditionsItemLhsCase0Type;
 }
-export const SegmentDataRulesItemConditionsItemLhsCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: SegmentDataRulesItemConditionsItemLhsCase0Type,
-  }),
-).annotate({
-  identifier: "SegmentDataRulesItemConditionsItemLhsCase0",
-}) as any as S.Schema<SegmentDataRulesItemConditionsItemLhsCase0>;
+export const SegmentDataRulesItemConditionsItemLhsCase0 =
+  CreateFlagResponseEnvironmentsValueFallthroughCase3 as any as S.Schema<SegmentDataRulesItemConditionsItemLhsCase0>;
 
 export type SegmentDataRulesItemConditionsItemLhsCase1Type = "entity";
 export const SegmentDataRulesItemConditionsItemLhsCase1Type = S.String;
@@ -2968,15 +2848,8 @@ export interface SegmentDataRulesItemConditionsItemLhsCase1 {
   kind: string;
   type: SegmentDataRulesItemConditionsItemLhsCase1Type;
 }
-export const SegmentDataRulesItemConditionsItemLhsCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attribute: S.String,
-    kind: S.String,
-    type: SegmentDataRulesItemConditionsItemLhsCase1Type,
-  }),
-).annotate({
-  identifier: "SegmentDataRulesItemConditionsItemLhsCase1",
-}) as any as S.Schema<SegmentDataRulesItemConditionsItemLhsCase1>;
+export const SegmentDataRulesItemConditionsItemLhsCase1 =
+  CreateFlagResponseEnvironmentsValueFallthroughCase1Base as any as S.Schema<SegmentDataRulesItemConditionsItemLhsCase1>;
 
 export type SegmentDataRulesItemConditionsItemLhs =
   | SegmentDataRulesItemConditionsItemLhsCase0
@@ -3030,15 +2903,8 @@ export interface SegmentDataRulesItemConditionsItemRhsCase3 {
   pattern: string;
   type: SegmentDataRulesItemConditionsItemRhsCase3Type;
 }
-export const SegmentDataRulesItemConditionsItemRhsCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    flags: S.String,
-    pattern: S.String,
-    type: SegmentDataRulesItemConditionsItemRhsCase3Type,
-  }),
-).annotate({
-  identifier: "SegmentDataRulesItemConditionsItemRhsCase3",
-}) as any as S.Schema<SegmentDataRulesItemConditionsItemRhsCase3>;
+export const SegmentDataRulesItemConditionsItemRhsCase3 =
+  FlagEnvironmentsValueRulesItemConditionsItemRhsCase3 as any as S.Schema<SegmentDataRulesItemConditionsItemRhsCase3>;
 
 export type SegmentDataRulesItemConditionsItemRhs =
   | string
@@ -3077,13 +2943,8 @@ export const SegmentDataRulesItemOutcomeCase0Type = S.String;
 export interface SegmentDataRulesItemOutcomeCase0 {
   type: SegmentDataRulesItemOutcomeCase0Type;
 }
-export const SegmentDataRulesItemOutcomeCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: SegmentDataRulesItemOutcomeCase0Type,
-  }),
-).annotate({
-  identifier: "SegmentDataRulesItemOutcomeCase0",
-}) as any as S.Schema<SegmentDataRulesItemOutcomeCase0>;
+export const SegmentDataRulesItemOutcomeCase0 =
+  CreateFlagResponseEnvironmentsValueFallthroughCase3 as any as S.Schema<SegmentDataRulesItemOutcomeCase0>;
 
 export type SegmentDataRulesItemOutcomeCase1BaseType = "entity";
 export const SegmentDataRulesItemOutcomeCase1BaseType = S.String;
@@ -3093,15 +2954,8 @@ export interface SegmentDataRulesItemOutcomeCase1Base {
   kind: string;
   type: SegmentDataRulesItemOutcomeCase1BaseType;
 }
-export const SegmentDataRulesItemOutcomeCase1Base = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attribute: S.String,
-    kind: S.String,
-    type: SegmentDataRulesItemOutcomeCase1BaseType,
-  }),
-).annotate({
-  identifier: "SegmentDataRulesItemOutcomeCase1Base",
-}) as any as S.Schema<SegmentDataRulesItemOutcomeCase1Base>;
+export const SegmentDataRulesItemOutcomeCase1Base =
+  CreateFlagResponseEnvironmentsValueFallthroughCase1Base as any as S.Schema<SegmentDataRulesItemOutcomeCase1Base>;
 
 export type SegmentDataRulesItemOutcomeCase1Type = "split";
 export const SegmentDataRulesItemOutcomeCase1Type = S.String;
@@ -3111,15 +2965,8 @@ export interface SegmentDataRulesItemOutcomeCase1 {
   passPromille: number;
   type: SegmentDataRulesItemOutcomeCase1Type;
 }
-export const SegmentDataRulesItemOutcomeCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    base: SegmentDataRulesItemOutcomeCase1Base,
-    passPromille: S.Number,
-    type: SegmentDataRulesItemOutcomeCase1Type,
-  }),
-).annotate({
-  identifier: "SegmentDataRulesItemOutcomeCase1",
-}) as any as S.Schema<SegmentDataRulesItemOutcomeCase1>;
+export const SegmentDataRulesItemOutcomeCase1 =
+  CreateFlagSegmentResponseDataRulesItemOutcomeCase1 as any as S.Schema<SegmentDataRulesItemOutcomeCase1>;
 
 export type SegmentDataRulesItemOutcome =
   | SegmentDataRulesItemOutcomeCase0
@@ -3720,15 +3567,7 @@ export interface ListFlagVersionsResponseVersionsItemDataEnvironmentsValueFallth
   type: ListFlagVersionsResponseVersionsItemDataEnvironmentsValueFallthroughCase1BaseType;
 }
 export const ListFlagVersionsResponseVersionsItemDataEnvironmentsValueFallthroughCase1Base =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      attribute: S.String,
-      kind: S.String,
-      type: ListFlagVersionsResponseVersionsItemDataEnvironmentsValueFallthroughCase1BaseType,
-    }),
-  ).annotate({
-    identifier: "ListFlagVersionsResponseVersionsItemDataEnvironmentsValueFallthroughCase1Base",
-  }) as any as S.Schema<ListFlagVersionsResponseVersionsItemDataEnvironmentsValueFallthroughCase1Base>;
+  CreateFlagResponseEnvironmentsValueRulesItemConditionsItemLhsCase1 as any as S.Schema<ListFlagVersionsResponseVersionsItemDataEnvironmentsValueFallthroughCase1Base>;
 
 export type ListFlagVersionsResponseVersionsItemDataEnvironmentsValueFallthroughCase1Type = "split";
 export const ListFlagVersionsResponseVersionsItemDataEnvironmentsValueFallthroughCase1Type =
@@ -3769,15 +3608,7 @@ export interface ListFlagVersionsResponseVersionsItemDataEnvironmentsValueFallth
   type: ListFlagVersionsResponseVersionsItemDataEnvironmentsValueFallthroughCase2BaseType;
 }
 export const ListFlagVersionsResponseVersionsItemDataEnvironmentsValueFallthroughCase2Base =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      attribute: S.String,
-      kind: S.String,
-      type: ListFlagVersionsResponseVersionsItemDataEnvironmentsValueFallthroughCase2BaseType,
-    }),
-  ).annotate({
-    identifier: "ListFlagVersionsResponseVersionsItemDataEnvironmentsValueFallthroughCase2Base",
-  }) as any as S.Schema<ListFlagVersionsResponseVersionsItemDataEnvironmentsValueFallthroughCase2Base>;
+  CreateFlagResponseEnvironmentsValueRulesItemConditionsItemLhsCase1 as any as S.Schema<ListFlagVersionsResponseVersionsItemDataEnvironmentsValueFallthroughCase2Base>;
 
 export type ListFlagVersionsResponseVersionsItemDataEnvironmentsValueFallthroughCase2SlotsItem =
   CreateFlagResponseEnvironmentsValueFallthroughCase2SlotsItem;
@@ -3829,13 +3660,7 @@ export interface ListFlagVersionsResponseVersionsItemDataEnvironmentsValueFallth
   type: ListFlagVersionsResponseVersionsItemDataEnvironmentsValueFallthroughCase3Type;
 }
 export const ListFlagVersionsResponseVersionsItemDataEnvironmentsValueFallthroughCase3 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: ListFlagVersionsResponseVersionsItemDataEnvironmentsValueFallthroughCase3Type,
-    }),
-  ).annotate({
-    identifier: "ListFlagVersionsResponseVersionsItemDataEnvironmentsValueFallthroughCase3",
-  }) as any as S.Schema<ListFlagVersionsResponseVersionsItemDataEnvironmentsValueFallthroughCase3>;
+  CreateFlagResponseEnvironmentsValueRulesItemConditionsItemLhsCase0 as any as S.Schema<ListFlagVersionsResponseVersionsItemDataEnvironmentsValueFallthroughCase3>;
 
 export type ListFlagVersionsResponseVersionsItemDataEnvironmentsValueFallthrough =
   | ListFlagVersionsResponseVersionsItemDataEnvironmentsValueFallthroughCase0
@@ -3853,14 +3678,7 @@ export interface ListFlagVersionsResponseVersionsItemDataEnvironmentsValuePaused
   variantId: string;
 }
 export const ListFlagVersionsResponseVersionsItemDataEnvironmentsValuePausedOutcome =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: ListFlagVersionsResponseVersionsItemDataEnvironmentsValuePausedOutcomeType,
-      variantId: S.String,
-    }),
-  ).annotate({
-    identifier: "ListFlagVersionsResponseVersionsItemDataEnvironmentsValuePausedOutcome",
-  }) as any as S.Schema<ListFlagVersionsResponseVersionsItemDataEnvironmentsValuePausedOutcome>;
+  ListFlagVersionsResponseVersionsItemDataEnvironmentsValueFallthroughCase0 as any as S.Schema<ListFlagVersionsResponseVersionsItemDataEnvironmentsValuePausedOutcome>;
 
 export type ListFlagVersionsResponseVersionsItemDataEnvironmentsValueReuse =
   CreateFlagResponseEnvironmentsValueReuse;
@@ -4058,14 +3876,7 @@ export interface ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesI
   variantId: string;
 }
 export const ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemOutcomeCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemOutcomeCase0Type,
-      variantId: S.String,
-    }),
-  ).annotate({
-    identifier: "ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemOutcomeCase0",
-  }) as any as S.Schema<ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemOutcomeCase0>;
+  ListFlagVersionsResponseVersionsItemDataEnvironmentsValueFallthroughCase0 as any as S.Schema<ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemOutcomeCase0>;
 
 export type ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemOutcomeCase1BaseType =
   "entity";
@@ -4078,16 +3889,7 @@ export interface ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesI
   type: ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemOutcomeCase1BaseType;
 }
 export const ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemOutcomeCase1Base =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      attribute: S.String,
-      kind: S.String,
-      type: ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemOutcomeCase1BaseType,
-    }),
-  ).annotate({
-    identifier:
-      "ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemOutcomeCase1Base",
-  }) as any as S.Schema<ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemOutcomeCase1Base>;
+  ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemConditionsItemLhsCase1 as any as S.Schema<ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemOutcomeCase1Base>;
 
 export type ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemOutcomeCase1Type =
   "split";
@@ -4129,16 +3931,7 @@ export interface ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesI
   type: ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemOutcomeCase2BaseType;
 }
 export const ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemOutcomeCase2Base =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      attribute: S.String,
-      kind: S.String,
-      type: ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemOutcomeCase2BaseType,
-    }),
-  ).annotate({
-    identifier:
-      "ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemOutcomeCase2Base",
-  }) as any as S.Schema<ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemOutcomeCase2Base>;
+  ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemConditionsItemLhsCase1 as any as S.Schema<ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemOutcomeCase2Base>;
 
 export type ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemOutcomeCase2SlotsItem =
   CreateFlagResponseEnvironmentsValueFallthroughCase2SlotsItem;
@@ -4191,13 +3984,7 @@ export interface ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesI
   type: ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemOutcomeCase3Type;
 }
 export const ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemOutcomeCase3 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemOutcomeCase3Type,
-    }),
-  ).annotate({
-    identifier: "ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemOutcomeCase3",
-  }) as any as S.Schema<ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemOutcomeCase3>;
+  CreateFlagResponseEnvironmentsValueRulesItemConditionsItemLhsCase0 as any as S.Schema<ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemOutcomeCase3>;
 
 export type ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemOutcome =
   | ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemOutcomeCase0
@@ -5211,15 +4998,8 @@ export interface UpdateFlagResponseBodyCase0EnvironmentsValueFallthroughCase0 {
   type: UpdateFlagResponseBodyCase0EnvironmentsValueFallthroughCase0Type;
   variantId: string;
 }
-export const UpdateFlagResponseBodyCase0EnvironmentsValueFallthroughCase0 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      type: UpdateFlagResponseBodyCase0EnvironmentsValueFallthroughCase0Type,
-      variantId: S.String,
-    }),
-).annotate({
-  identifier: "UpdateFlagResponseBodyCase0EnvironmentsValueFallthroughCase0",
-}) as any as S.Schema<UpdateFlagResponseBodyCase0EnvironmentsValueFallthroughCase0>;
+export const UpdateFlagResponseBodyCase0EnvironmentsValueFallthroughCase0 =
+  CreateFlagResponseEnvironmentsValueRulesItemOutcomeCase0 as any as S.Schema<UpdateFlagResponseBodyCase0EnvironmentsValueFallthroughCase0>;
 
 export type UpdateFlagResponseBodyCase0EnvironmentsValueFallthroughCase1BaseType = "entity";
 export const UpdateFlagResponseBodyCase0EnvironmentsValueFallthroughCase1BaseType = S.String;
@@ -5230,15 +5010,7 @@ export interface UpdateFlagResponseBodyCase0EnvironmentsValueFallthroughCase1Bas
   type: UpdateFlagResponseBodyCase0EnvironmentsValueFallthroughCase1BaseType;
 }
 export const UpdateFlagResponseBodyCase0EnvironmentsValueFallthroughCase1Base =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      attribute: S.String,
-      kind: S.String,
-      type: UpdateFlagResponseBodyCase0EnvironmentsValueFallthroughCase1BaseType,
-    }),
-  ).annotate({
-    identifier: "UpdateFlagResponseBodyCase0EnvironmentsValueFallthroughCase1Base",
-  }) as any as S.Schema<UpdateFlagResponseBodyCase0EnvironmentsValueFallthroughCase1Base>;
+  CreateFlagResponseEnvironmentsValueRulesItemConditionsItemLhsCase1 as any as S.Schema<UpdateFlagResponseBodyCase0EnvironmentsValueFallthroughCase1Base>;
 
 export type UpdateFlagResponseBodyCase0EnvironmentsValueFallthroughCase1Type = "split";
 export const UpdateFlagResponseBodyCase0EnvironmentsValueFallthroughCase1Type = S.String;
@@ -5276,15 +5048,7 @@ export interface UpdateFlagResponseBodyCase0EnvironmentsValueFallthroughCase2Bas
   type: UpdateFlagResponseBodyCase0EnvironmentsValueFallthroughCase2BaseType;
 }
 export const UpdateFlagResponseBodyCase0EnvironmentsValueFallthroughCase2Base =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      attribute: S.String,
-      kind: S.String,
-      type: UpdateFlagResponseBodyCase0EnvironmentsValueFallthroughCase2BaseType,
-    }),
-  ).annotate({
-    identifier: "UpdateFlagResponseBodyCase0EnvironmentsValueFallthroughCase2Base",
-  }) as any as S.Schema<UpdateFlagResponseBodyCase0EnvironmentsValueFallthroughCase2Base>;
+  CreateFlagResponseEnvironmentsValueRulesItemConditionsItemLhsCase1 as any as S.Schema<UpdateFlagResponseBodyCase0EnvironmentsValueFallthroughCase2Base>;
 
 export type UpdateFlagResponseBodyCase0EnvironmentsValueFallthroughCase2SlotsItem =
   CreateFlagResponseEnvironmentsValueFallthroughCase2SlotsItem;
@@ -5331,14 +5095,8 @@ export const UpdateFlagResponseBodyCase0EnvironmentsValueFallthroughCase3Type = 
 export interface UpdateFlagResponseBodyCase0EnvironmentsValueFallthroughCase3 {
   type: UpdateFlagResponseBodyCase0EnvironmentsValueFallthroughCase3Type;
 }
-export const UpdateFlagResponseBodyCase0EnvironmentsValueFallthroughCase3 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      type: UpdateFlagResponseBodyCase0EnvironmentsValueFallthroughCase3Type,
-    }),
-).annotate({
-  identifier: "UpdateFlagResponseBodyCase0EnvironmentsValueFallthroughCase3",
-}) as any as S.Schema<UpdateFlagResponseBodyCase0EnvironmentsValueFallthroughCase3>;
+export const UpdateFlagResponseBodyCase0EnvironmentsValueFallthroughCase3 =
+  CreateFlagResponseEnvironmentsValueRulesItemOutcomeCase3 as any as S.Schema<UpdateFlagResponseBodyCase0EnvironmentsValueFallthroughCase3>;
 
 export type UpdateFlagResponseBodyCase0EnvironmentsValueFallthrough =
   | UpdateFlagResponseBodyCase0EnvironmentsValueFallthroughCase0
@@ -5355,15 +5113,8 @@ export interface UpdateFlagResponseBodyCase0EnvironmentsValuePausedOutcome {
   type: UpdateFlagResponseBodyCase0EnvironmentsValuePausedOutcomeType;
   variantId: string;
 }
-export const UpdateFlagResponseBodyCase0EnvironmentsValuePausedOutcome = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      type: UpdateFlagResponseBodyCase0EnvironmentsValuePausedOutcomeType,
-      variantId: S.String,
-    }),
-).annotate({
-  identifier: "UpdateFlagResponseBodyCase0EnvironmentsValuePausedOutcome",
-}) as any as S.Schema<UpdateFlagResponseBodyCase0EnvironmentsValuePausedOutcome>;
+export const UpdateFlagResponseBodyCase0EnvironmentsValuePausedOutcome =
+  CreateFlagResponseEnvironmentsValueRulesItemOutcomeCase0 as any as S.Schema<UpdateFlagResponseBodyCase0EnvironmentsValuePausedOutcome>;
 
 export type UpdateFlagResponseBodyCase0EnvironmentsValueReuse =
   CreateFlagResponseEnvironmentsValueReuse;
@@ -5410,13 +5161,7 @@ export interface UpdateFlagResponseBodyCase0EnvironmentsValueRulesItemConditions
   type: UpdateFlagResponseBodyCase0EnvironmentsValueRulesItemConditionsItemLhsCase0Type;
 }
 export const UpdateFlagResponseBodyCase0EnvironmentsValueRulesItemConditionsItemLhsCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: UpdateFlagResponseBodyCase0EnvironmentsValueRulesItemConditionsItemLhsCase0Type,
-    }),
-  ).annotate({
-    identifier: "UpdateFlagResponseBodyCase0EnvironmentsValueRulesItemConditionsItemLhsCase0",
-  }) as any as S.Schema<UpdateFlagResponseBodyCase0EnvironmentsValueRulesItemConditionsItemLhsCase0>;
+  CreateFlagResponseEnvironmentsValueRulesItemConditionsItemLhsCase0 as any as S.Schema<UpdateFlagResponseBodyCase0EnvironmentsValueRulesItemConditionsItemLhsCase0>;
 
 export type UpdateFlagResponseBodyCase0EnvironmentsValueRulesItemConditionsItemLhsCase1Type =
   "entity";
@@ -5429,15 +5174,7 @@ export interface UpdateFlagResponseBodyCase0EnvironmentsValueRulesItemConditions
   type: UpdateFlagResponseBodyCase0EnvironmentsValueRulesItemConditionsItemLhsCase1Type;
 }
 export const UpdateFlagResponseBodyCase0EnvironmentsValueRulesItemConditionsItemLhsCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      attribute: S.String,
-      kind: S.String,
-      type: UpdateFlagResponseBodyCase0EnvironmentsValueRulesItemConditionsItemLhsCase1Type,
-    }),
-  ).annotate({
-    identifier: "UpdateFlagResponseBodyCase0EnvironmentsValueRulesItemConditionsItemLhsCase1",
-  }) as any as S.Schema<UpdateFlagResponseBodyCase0EnvironmentsValueRulesItemConditionsItemLhsCase1>;
+  CreateFlagResponseEnvironmentsValueRulesItemConditionsItemLhsCase1 as any as S.Schema<UpdateFlagResponseBodyCase0EnvironmentsValueRulesItemConditionsItemLhsCase1>;
 
 export type UpdateFlagResponseBodyCase0EnvironmentsValueRulesItemConditionsItemLhs =
   | UpdateFlagResponseBodyCase0EnvironmentsValueRulesItemConditionsItemLhsCase0
@@ -5499,15 +5236,7 @@ export interface UpdateFlagResponseBodyCase0EnvironmentsValueRulesItemConditions
   type: UpdateFlagResponseBodyCase0EnvironmentsValueRulesItemConditionsItemRhsCase3Type;
 }
 export const UpdateFlagResponseBodyCase0EnvironmentsValueRulesItemConditionsItemRhsCase3 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      flags: S.String,
-      pattern: S.String,
-      type: UpdateFlagResponseBodyCase0EnvironmentsValueRulesItemConditionsItemRhsCase3Type,
-    }),
-  ).annotate({
-    identifier: "UpdateFlagResponseBodyCase0EnvironmentsValueRulesItemConditionsItemRhsCase3",
-  }) as any as S.Schema<UpdateFlagResponseBodyCase0EnvironmentsValueRulesItemConditionsItemRhsCase3>;
+  CreateFlagResponseEnvironmentsValueRulesItemConditionsItemRhsCase3 as any as S.Schema<UpdateFlagResponseBodyCase0EnvironmentsValueRulesItemConditionsItemRhsCase3>;
 
 export type UpdateFlagResponseBodyCase0EnvironmentsValueRulesItemConditionsItemRhs =
   | string
@@ -5551,14 +5280,7 @@ export interface UpdateFlagResponseBodyCase0EnvironmentsValueRulesItemOutcomeCas
   variantId: string;
 }
 export const UpdateFlagResponseBodyCase0EnvironmentsValueRulesItemOutcomeCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: UpdateFlagResponseBodyCase0EnvironmentsValueRulesItemOutcomeCase0Type,
-      variantId: S.String,
-    }),
-  ).annotate({
-    identifier: "UpdateFlagResponseBodyCase0EnvironmentsValueRulesItemOutcomeCase0",
-  }) as any as S.Schema<UpdateFlagResponseBodyCase0EnvironmentsValueRulesItemOutcomeCase0>;
+  ListFlagVersionsResponseVersionsItemDataEnvironmentsValueFallthroughCase0 as any as S.Schema<UpdateFlagResponseBodyCase0EnvironmentsValueRulesItemOutcomeCase0>;
 
 export type UpdateFlagResponseBodyCase0EnvironmentsValueRulesItemOutcomeCase1BaseType = "entity";
 export const UpdateFlagResponseBodyCase0EnvironmentsValueRulesItemOutcomeCase1BaseType = S.String;
@@ -5569,15 +5291,7 @@ export interface UpdateFlagResponseBodyCase0EnvironmentsValueRulesItemOutcomeCas
   type: UpdateFlagResponseBodyCase0EnvironmentsValueRulesItemOutcomeCase1BaseType;
 }
 export const UpdateFlagResponseBodyCase0EnvironmentsValueRulesItemOutcomeCase1Base =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      attribute: S.String,
-      kind: S.String,
-      type: UpdateFlagResponseBodyCase0EnvironmentsValueRulesItemOutcomeCase1BaseType,
-    }),
-  ).annotate({
-    identifier: "UpdateFlagResponseBodyCase0EnvironmentsValueRulesItemOutcomeCase1Base",
-  }) as any as S.Schema<UpdateFlagResponseBodyCase0EnvironmentsValueRulesItemOutcomeCase1Base>;
+  CreateFlagResponseEnvironmentsValueRulesItemConditionsItemLhsCase1 as any as S.Schema<UpdateFlagResponseBodyCase0EnvironmentsValueRulesItemOutcomeCase1Base>;
 
 export type UpdateFlagResponseBodyCase0EnvironmentsValueRulesItemOutcomeCase1Type = "split";
 export const UpdateFlagResponseBodyCase0EnvironmentsValueRulesItemOutcomeCase1Type = S.String;
@@ -5615,15 +5329,7 @@ export interface UpdateFlagResponseBodyCase0EnvironmentsValueRulesItemOutcomeCas
   type: UpdateFlagResponseBodyCase0EnvironmentsValueRulesItemOutcomeCase2BaseType;
 }
 export const UpdateFlagResponseBodyCase0EnvironmentsValueRulesItemOutcomeCase2Base =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      attribute: S.String,
-      kind: S.String,
-      type: UpdateFlagResponseBodyCase0EnvironmentsValueRulesItemOutcomeCase2BaseType,
-    }),
-  ).annotate({
-    identifier: "UpdateFlagResponseBodyCase0EnvironmentsValueRulesItemOutcomeCase2Base",
-  }) as any as S.Schema<UpdateFlagResponseBodyCase0EnvironmentsValueRulesItemOutcomeCase2Base>;
+  CreateFlagResponseEnvironmentsValueRulesItemConditionsItemLhsCase1 as any as S.Schema<UpdateFlagResponseBodyCase0EnvironmentsValueRulesItemOutcomeCase2Base>;
 
 export type UpdateFlagResponseBodyCase0EnvironmentsValueRulesItemOutcomeCase2SlotsItem =
   CreateFlagResponseEnvironmentsValueFallthroughCase2SlotsItem;
@@ -5671,13 +5377,7 @@ export interface UpdateFlagResponseBodyCase0EnvironmentsValueRulesItemOutcomeCas
   type: UpdateFlagResponseBodyCase0EnvironmentsValueRulesItemOutcomeCase3Type;
 }
 export const UpdateFlagResponseBodyCase0EnvironmentsValueRulesItemOutcomeCase3 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: UpdateFlagResponseBodyCase0EnvironmentsValueRulesItemOutcomeCase3Type,
-    }),
-  ).annotate({
-    identifier: "UpdateFlagResponseBodyCase0EnvironmentsValueRulesItemOutcomeCase3",
-  }) as any as S.Schema<UpdateFlagResponseBodyCase0EnvironmentsValueRulesItemOutcomeCase3>;
+  CreateFlagResponseEnvironmentsValueRulesItemConditionsItemLhsCase0 as any as S.Schema<UpdateFlagResponseBodyCase0EnvironmentsValueRulesItemOutcomeCase3>;
 
 export type UpdateFlagResponseBodyCase0EnvironmentsValueRulesItemOutcome =
   | UpdateFlagResponseBodyCase0EnvironmentsValueRulesItemOutcomeCase0
@@ -6268,13 +5968,7 @@ export interface UpdateFlagSegmentResponseBodyCase0DataRulesItemConditionsItemLh
   type: UpdateFlagSegmentResponseBodyCase0DataRulesItemConditionsItemLhsCase0Type;
 }
 export const UpdateFlagSegmentResponseBodyCase0DataRulesItemConditionsItemLhsCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: UpdateFlagSegmentResponseBodyCase0DataRulesItemConditionsItemLhsCase0Type,
-    }),
-  ).annotate({
-    identifier: "UpdateFlagSegmentResponseBodyCase0DataRulesItemConditionsItemLhsCase0",
-  }) as any as S.Schema<UpdateFlagSegmentResponseBodyCase0DataRulesItemConditionsItemLhsCase0>;
+  CreateFlagResponseEnvironmentsValueRulesItemConditionsItemLhsCase0 as any as S.Schema<UpdateFlagSegmentResponseBodyCase0DataRulesItemConditionsItemLhsCase0>;
 
 export type UpdateFlagSegmentResponseBodyCase0DataRulesItemConditionsItemLhsCase1Type = "entity";
 export const UpdateFlagSegmentResponseBodyCase0DataRulesItemConditionsItemLhsCase1Type = S.String;
@@ -6285,15 +5979,7 @@ export interface UpdateFlagSegmentResponseBodyCase0DataRulesItemConditionsItemLh
   type: UpdateFlagSegmentResponseBodyCase0DataRulesItemConditionsItemLhsCase1Type;
 }
 export const UpdateFlagSegmentResponseBodyCase0DataRulesItemConditionsItemLhsCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      attribute: S.String,
-      kind: S.String,
-      type: UpdateFlagSegmentResponseBodyCase0DataRulesItemConditionsItemLhsCase1Type,
-    }),
-  ).annotate({
-    identifier: "UpdateFlagSegmentResponseBodyCase0DataRulesItemConditionsItemLhsCase1",
-  }) as any as S.Schema<UpdateFlagSegmentResponseBodyCase0DataRulesItemConditionsItemLhsCase1>;
+  CreateFlagResponseEnvironmentsValueRulesItemConditionsItemLhsCase1 as any as S.Schema<UpdateFlagSegmentResponseBodyCase0DataRulesItemConditionsItemLhsCase1>;
 
 export type UpdateFlagSegmentResponseBodyCase0DataRulesItemConditionsItemLhs =
   | UpdateFlagSegmentResponseBodyCase0DataRulesItemConditionsItemLhsCase0
@@ -6352,15 +6038,7 @@ export interface UpdateFlagSegmentResponseBodyCase0DataRulesItemConditionsItemRh
   type: UpdateFlagSegmentResponseBodyCase0DataRulesItemConditionsItemRhsCase3Type;
 }
 export const UpdateFlagSegmentResponseBodyCase0DataRulesItemConditionsItemRhsCase3 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      flags: S.String,
-      pattern: S.String,
-      type: UpdateFlagSegmentResponseBodyCase0DataRulesItemConditionsItemRhsCase3Type,
-    }),
-  ).annotate({
-    identifier: "UpdateFlagSegmentResponseBodyCase0DataRulesItemConditionsItemRhsCase3",
-  }) as any as S.Schema<UpdateFlagSegmentResponseBodyCase0DataRulesItemConditionsItemRhsCase3>;
+  CreateFlagResponseEnvironmentsValueRulesItemConditionsItemRhsCase3 as any as S.Schema<UpdateFlagSegmentResponseBodyCase0DataRulesItemConditionsItemRhsCase3>;
 
 export type UpdateFlagSegmentResponseBodyCase0DataRulesItemConditionsItemRhs =
   | string
@@ -6401,14 +6079,8 @@ export const UpdateFlagSegmentResponseBodyCase0DataRulesItemOutcomeCase0Type = S
 export interface UpdateFlagSegmentResponseBodyCase0DataRulesItemOutcomeCase0 {
   type: UpdateFlagSegmentResponseBodyCase0DataRulesItemOutcomeCase0Type;
 }
-export const UpdateFlagSegmentResponseBodyCase0DataRulesItemOutcomeCase0 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      type: UpdateFlagSegmentResponseBodyCase0DataRulesItemOutcomeCase0Type,
-    }),
-).annotate({
-  identifier: "UpdateFlagSegmentResponseBodyCase0DataRulesItemOutcomeCase0",
-}) as any as S.Schema<UpdateFlagSegmentResponseBodyCase0DataRulesItemOutcomeCase0>;
+export const UpdateFlagSegmentResponseBodyCase0DataRulesItemOutcomeCase0 =
+  CreateFlagResponseEnvironmentsValueRulesItemOutcomeCase3 as any as S.Schema<UpdateFlagSegmentResponseBodyCase0DataRulesItemOutcomeCase0>;
 
 export type UpdateFlagSegmentResponseBodyCase0DataRulesItemOutcomeCase1BaseType = "entity";
 export const UpdateFlagSegmentResponseBodyCase0DataRulesItemOutcomeCase1BaseType = S.String;
@@ -6419,15 +6091,7 @@ export interface UpdateFlagSegmentResponseBodyCase0DataRulesItemOutcomeCase1Base
   type: UpdateFlagSegmentResponseBodyCase0DataRulesItemOutcomeCase1BaseType;
 }
 export const UpdateFlagSegmentResponseBodyCase0DataRulesItemOutcomeCase1Base =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      attribute: S.String,
-      kind: S.String,
-      type: UpdateFlagSegmentResponseBodyCase0DataRulesItemOutcomeCase1BaseType,
-    }),
-  ).annotate({
-    identifier: "UpdateFlagSegmentResponseBodyCase0DataRulesItemOutcomeCase1Base",
-  }) as any as S.Schema<UpdateFlagSegmentResponseBodyCase0DataRulesItemOutcomeCase1Base>;
+  CreateFlagResponseEnvironmentsValueRulesItemConditionsItemLhsCase1 as any as S.Schema<UpdateFlagSegmentResponseBodyCase0DataRulesItemOutcomeCase1Base>;
 
 export type UpdateFlagSegmentResponseBodyCase0DataRulesItemOutcomeCase1Type = "split";
 export const UpdateFlagSegmentResponseBodyCase0DataRulesItemOutcomeCase1Type = S.String;

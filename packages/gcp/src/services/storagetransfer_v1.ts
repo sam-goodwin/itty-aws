@@ -701,9 +701,8 @@ export const LoggingConfigLogActionsItemEnum = S.String;
 export type LoggingConfigLogActionsItemEnumList = Array<
   LoggingConfigLogActionsItemEnum | (string & {})
 >;
-export const LoggingConfigLogActionsItemEnumList = /*@__PURE__*/ S.Array(
-  LoggingConfigLogActionsItemEnum,
-) as any as S.Schema<LoggingConfigLogActionsItemEnumList>;
+export const LoggingConfigLogActionsItemEnumList =
+  NotificationConfigEventTypesItemEnumList as any as S.Schema<LoggingConfigLogActionsItemEnumList>;
 
 export type LoggingConfigLogActionStatesItemEnum =
   | "LOGGABLE_ACTION_STATE_UNSPECIFIED"
@@ -715,9 +714,8 @@ export const LoggingConfigLogActionStatesItemEnum = S.String;
 export type LoggingConfigLogActionStatesItemEnumList = Array<
   LoggingConfigLogActionStatesItemEnum | (string & {})
 >;
-export const LoggingConfigLogActionStatesItemEnumList = /*@__PURE__*/ S.Array(
-  LoggingConfigLogActionStatesItemEnum,
-) as any as S.Schema<LoggingConfigLogActionStatesItemEnumList>;
+export const LoggingConfigLogActionStatesItemEnumList =
+  NotificationConfigEventTypesItemEnumList as any as S.Schema<LoggingConfigLogActionStatesItemEnumList>;
 
 /** Specifies the logging behavior for transfer operations. Logs can be sent to Cloud Logging for all transfer types. See [Read transfer logs](https://cloud.google.com/storage-transfer/docs/read-transfer-logs) for details. */
 export interface LoggingConfig {

@@ -224,16 +224,8 @@ export interface V1VariantsCreateResponseVariantOptions {
   /** Maximum width in image pixels. */
   width: number;
 }
-export const V1VariantsCreateResponseVariantOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fit: V1VariantsCreateResponseVariantOptionsFit,
-    height: S.Number,
-    metadata: V1VariantsCreateResponseVariantOptionsMetadata,
-    width: S.Number,
-  }),
-).annotate({
-  identifier: "V1VariantsCreateResponseVariantOptions",
-}) as any as S.Schema<V1VariantsCreateResponseVariantOptions>;
+export const V1VariantsCreateResponseVariantOptions =
+  V1VariantsCreateRequestOptions as any as S.Schema<V1VariantsCreateResponseVariantOptions>;
 
 export interface V1VariantsCreateResponseVariant {
   id: string;
@@ -540,16 +532,8 @@ export interface V1VariantsGetResponseVariantOptions {
   /** Maximum width in image pixels. */
   width: number;
 }
-export const V1VariantsGetResponseVariantOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fit: V1VariantsGetResponseVariantOptionsFit,
-    height: S.Number,
-    metadata: V1VariantsGetResponseVariantOptionsMetadata,
-    width: S.Number,
-  }),
-).annotate({
-  identifier: "V1VariantsGetResponseVariantOptions",
-}) as any as S.Schema<V1VariantsGetResponseVariantOptions>;
+export const V1VariantsGetResponseVariantOptions =
+  V1VariantsCreateRequestOptions as any as S.Schema<V1VariantsGetResponseVariantOptions>;
 
 export interface V1VariantsGetResponseVariant {
   id: string;
@@ -558,25 +542,15 @@ export interface V1VariantsGetResponseVariant {
   /** Indicates whether the variant can access an image without a signature, regardless of image access control. */
   neverRequireSignedURLs?: boolean | null;
 }
-export const V1VariantsGetResponseVariant = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    options: V1VariantsGetResponseVariantOptions,
-    neverRequireSignedURLs: S.optional(S.NullOr(S.Boolean)),
-  }),
-).annotate({
-  identifier: "V1VariantsGetResponseVariant",
-}) as any as S.Schema<V1VariantsGetResponseVariant>;
+export const V1VariantsGetResponseVariant =
+  V1VariantsCreateResponseVariant as any as S.Schema<V1VariantsGetResponseVariant>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetV1VariantResponse {
   variant?: V1VariantsGetResponseVariant | null;
 }
-export const GetV1VariantResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    variant: S.optional(S.NullOr(V1VariantsGetResponseVariant)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "GetV1VariantResponse" }) as any as S.Schema<GetV1VariantResponse>;
+export const GetV1VariantResponse =
+  CreateV1VariantResponse as any as S.Schema<GetV1VariantResponse>;
 
 export interface ListV1KeysRequest {
   /** Account identifier tag. */
@@ -704,16 +678,8 @@ export interface V1VariantsListResponseVariantsHeroOptions {
   /** Maximum width in image pixels. */
   width: number;
 }
-export const V1VariantsListResponseVariantsHeroOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fit: V1VariantsListResponseVariantsHeroOptionsFit,
-    height: S.Number,
-    metadata: V1VariantsListResponseVariantsHeroOptionsMetadata,
-    width: S.Number,
-  }),
-).annotate({
-  identifier: "V1VariantsListResponseVariantsHeroOptions",
-}) as any as S.Schema<V1VariantsListResponseVariantsHeroOptions>;
+export const V1VariantsListResponseVariantsHeroOptions =
+  V1VariantsCreateRequestOptions as any as S.Schema<V1VariantsListResponseVariantsHeroOptions>;
 
 export interface V1VariantsListResponseVariantsHero {
   id: string;
@@ -722,15 +688,8 @@ export interface V1VariantsListResponseVariantsHero {
   /** Indicates whether the variant can access an image without a signature, regardless of image access control. */
   neverRequireSignedURLs?: boolean | null;
 }
-export const V1VariantsListResponseVariantsHero = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    options: V1VariantsListResponseVariantsHeroOptions,
-    neverRequireSignedURLs: S.optional(S.NullOr(S.Boolean)),
-  }),
-).annotate({
-  identifier: "V1VariantsListResponseVariantsHero",
-}) as any as S.Schema<V1VariantsListResponseVariantsHero>;
+export const V1VariantsListResponseVariantsHero =
+  V1VariantsCreateResponseVariant as any as S.Schema<V1VariantsListResponseVariantsHero>;
 
 export interface V1VariantsListResponseVariants {
   hero?: V1VariantsListResponseVariantsHero | null;
@@ -897,16 +856,8 @@ export interface V1VariantsEditRequestOptions {
   /** Maximum width in image pixels. */
   width: number;
 }
-export const V1VariantsEditRequestOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fit: V1VariantsEditRequestOptionsFit,
-    height: S.Number,
-    metadata: V1VariantsEditRequestOptionsMetadata,
-    width: S.Number,
-  }),
-).annotate({
-  identifier: "V1VariantsEditRequestOptions",
-}) as any as S.Schema<V1VariantsEditRequestOptions>;
+export const V1VariantsEditRequestOptions =
+  V1VariantsCreateRequestOptions as any as S.Schema<V1VariantsEditRequestOptions>;
 
 export interface PatchV1VariantRequest {
   /** Account identifier tag. */
@@ -955,16 +906,8 @@ export interface V1VariantsEditResponseVariantOptions {
   /** Maximum width in image pixels. */
   width: number;
 }
-export const V1VariantsEditResponseVariantOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fit: V1VariantsEditResponseVariantOptionsFit,
-    height: S.Number,
-    metadata: V1VariantsEditResponseVariantOptionsMetadata,
-    width: S.Number,
-  }),
-).annotate({
-  identifier: "V1VariantsEditResponseVariantOptions",
-}) as any as S.Schema<V1VariantsEditResponseVariantOptions>;
+export const V1VariantsEditResponseVariantOptions =
+  V1VariantsCreateRequestOptions as any as S.Schema<V1VariantsEditResponseVariantOptions>;
 
 export interface V1VariantsEditResponseVariant {
   id: string;
@@ -973,25 +916,15 @@ export interface V1VariantsEditResponseVariant {
   /** Indicates whether the variant can access an image without a signature, regardless of image access control. */
   neverRequireSignedURLs?: boolean | null;
 }
-export const V1VariantsEditResponseVariant = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    options: V1VariantsEditResponseVariantOptions,
-    neverRequireSignedURLs: S.optional(S.NullOr(S.Boolean)),
-  }),
-).annotate({
-  identifier: "V1VariantsEditResponseVariant",
-}) as any as S.Schema<V1VariantsEditResponseVariant>;
+export const V1VariantsEditResponseVariant =
+  V1VariantsCreateResponseVariant as any as S.Schema<V1VariantsEditResponseVariant>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchV1VariantResponse {
   variant?: V1VariantsEditResponseVariant | null;
 }
-export const PatchV1VariantResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    variant: S.optional(S.NullOr(V1VariantsEditResponseVariant)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "PatchV1VariantResponse" }) as any as S.Schema<PatchV1VariantResponse>;
+export const PatchV1VariantResponse =
+  CreateV1VariantResponse as any as S.Schema<PatchV1VariantResponse>;
 
 export interface PutV1KeyRequest {
   /** Account identifier tag. */

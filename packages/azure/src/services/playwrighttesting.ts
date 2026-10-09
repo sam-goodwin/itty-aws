@@ -822,14 +822,8 @@ export interface AccountUpdateProperties {
   /** When enabled, this feature allows the workspace to use local auth (through service access token) for executing operations. */
   localAuth?: EnablementStatus | (string & {});
 }
-export const AccountUpdateProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    regionalAffinity: S.optional(EnablementStatus),
-    scalableExecution: S.optional(EnablementStatus),
-    reporting: S.optional(EnablementStatus),
-    localAuth: S.optional(EnablementStatus),
-  }),
-).annotate({ identifier: "AccountUpdateProperties" }) as any as S.Schema<AccountUpdateProperties>;
+export const AccountUpdateProperties =
+  AccountPropertiesInput as any as S.Schema<AccountUpdateProperties>;
 
 export interface UpdateAccountRequest {
   /** The ID of the target subscription. The value must be an UUID. */

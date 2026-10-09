@@ -892,10 +892,8 @@ export const ServiceActionDefinitionKey = S.String;
 
 export type ServiceActionDefinitionValue = string;
 export type ServiceActionDefinitionMap = { [key in ServiceActionDefinitionKey]?: string };
-export const ServiceActionDefinitionMap = /*@__PURE__*/ S.Record(
-  ServiceActionDefinitionKey,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const ServiceActionDefinitionMap =
+  SourceProvisioningArtifactPropertiesMap as any as S.Schema<ServiceActionDefinitionMap>;
 export type ServiceActionDescription = string;
 export interface CreateServiceActionInput {
   Name: string;
@@ -1601,7 +1599,7 @@ export type ResourceAttribute =
 export const ResourceAttribute = S.String;
 
 export type Scope = ResourceAttribute[];
-export const Scope = /*@__PURE__*/ S.Array(ResourceAttribute);
+export const Scope = CopyOptions as any as S.Schema<Scope>;
 export type PropertyName = string;
 export type RequiresRecreation = "NEVER" | "CONDITIONALLY" | "ALWAYS" | (string & {});
 export const RequiresRecreation = S.String;
@@ -3502,10 +3500,8 @@ export const PropertyKey = S.String;
 
 export type PropertyValue = string;
 export type ProvisionedProductProperties = { [key in PropertyKey]?: string };
-export const ProvisionedProductProperties = /*@__PURE__*/ S.Record(
-  PropertyKey,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const ProvisionedProductProperties =
+  SourceProvisioningArtifactPropertiesMap as any as S.Schema<ProvisionedProductProperties>;
 export interface UpdateProvisionedProductPropertiesInput {
   AcceptLanguage?: string;
   ProvisionedProductId: string;

@@ -579,9 +579,7 @@ export const DocumentDbUngracefulBehavior = S.String;
 export interface DocumentDbUngraceful {
   ungraceful?: DocumentDbUngracefulBehavior;
 }
-export const DocumentDbUngraceful = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ungraceful: S.optional(DocumentDbUngracefulBehavior) }),
-).annotate({ identifier: "DocumentDbUngraceful" }) as any as S.Schema<DocumentDbUngraceful>;
+export const DocumentDbUngraceful = GlobalAuroraUngraceful as any as S.Schema<DocumentDbUngraceful>;
 export type DocumentDbGlobalClusterIdentifier = string;
 export type DocumentDbClusterArn = string;
 export type DocumentDbClusterArns = string[];
@@ -740,9 +738,7 @@ export const NeptuneUngracefulBehavior = S.String;
 export interface NeptuneUngraceful {
   ungraceful?: NeptuneUngracefulBehavior;
 }
-export const NeptuneUngraceful = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ungraceful: S.optional(NeptuneUngracefulBehavior) }),
-).annotate({ identifier: "NeptuneUngraceful" }) as any as S.Schema<NeptuneUngraceful>;
+export const NeptuneUngraceful = GlobalAuroraUngraceful as any as S.Schema<NeptuneUngraceful>;
 export type NeptuneGlobalClusterIdentifier = string;
 export type NeptuneClusterArn = string;
 export type RegionNeptuneClusterArnMap = { [key: string]: string | undefined };
@@ -776,9 +772,7 @@ export const RdsUngracefulBehavior = S.String;
 export interface RdsUngraceful {
   ungraceful?: RdsUngracefulBehavior;
 }
-export const RdsUngraceful = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ungraceful: S.optional(RdsUngracefulBehavior) }),
-).annotate({ identifier: "RdsUngraceful" }) as any as S.Schema<RdsUngraceful>;
+export const RdsUngraceful = GlobalAuroraUngraceful as any as S.Schema<RdsUngraceful>;
 export interface RdsSwitchoverReadReplicaConfiguration {
   timeoutMinutes?: number;
   crossAccountRole?: string;

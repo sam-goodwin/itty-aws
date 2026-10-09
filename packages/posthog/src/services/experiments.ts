@@ -1718,18 +1718,8 @@ export interface FeatureFlagFilterPropertySemverSchema {
   /** Semantic version string. */
   value?: string;
 }
-export const FeatureFlagFilterPropertySemverSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    type: S.optional(PropertyGroupTypeEnum),
-    cohort_name: S.optional(S.NullOr(S.String)),
-    group_type_index: S.optional(S.NullOr(S.Number)),
-    operator: S.optional(FeatureFlagFilterPropertySemverSchemaOperatorEnum),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "FeatureFlagFilterPropertySemverSchema",
-}) as any as S.Schema<FeatureFlagFilterPropertySemverSchema>;
+export const FeatureFlagFilterPropertySemverSchema =
+  FeatureFlagFilterPropertyDateSchema as any as S.Schema<FeatureFlagFilterPropertySemverSchema>;
 
 /** * `icontains_multi` - icontains_multi * `not_icontains_multi` - not_icontains_multi */
 export type FeatureFlagFilterPropertyMultiContainsSchemaOperatorEnum =
@@ -1791,18 +1781,8 @@ export interface FeatureFlagFilterPropertyCohortInSchema {
   /** Cohort comparison value (single or list, depending on usage). */
   value?: unknown;
 }
-export const FeatureFlagFilterPropertyCohortInSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    type: S.optional(FeatureFlagFilterPropertyCohortInSchemaTypeEnum),
-    cohort_name: S.optional(S.NullOr(S.String)),
-    group_type_index: S.optional(S.NullOr(S.Number)),
-    operator: S.optional(FeatureFlagFilterPropertyCohortInSchemaOperatorEnum),
-    value: S.optional(S.Unknown),
-  }),
-).annotate({
-  identifier: "FeatureFlagFilterPropertyCohortInSchema",
-}) as any as S.Schema<FeatureFlagFilterPropertyCohortInSchema>;
+export const FeatureFlagFilterPropertyCohortInSchema =
+  FeatureFlagFilterPropertyExistsSchema as any as S.Schema<FeatureFlagFilterPropertyCohortInSchema>;
 
 /** * `flag` - flag */
 export type FeatureFlagFilterPropertyFlagEvaluatesSchemaTypeEnum = "flag";
@@ -1826,18 +1806,8 @@ export interface FeatureFlagFilterPropertyFlagEvaluatesSchema {
   /** Value to compare flag evaluation against. */
   value?: unknown;
 }
-export const FeatureFlagFilterPropertyFlagEvaluatesSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    type: S.optional(FeatureFlagFilterPropertyFlagEvaluatesSchemaTypeEnum),
-    cohort_name: S.optional(S.NullOr(S.String)),
-    group_type_index: S.optional(S.NullOr(S.Number)),
-    operator: S.optional(FeatureFlagFilterPropertyFlagEvaluatesSchemaOperatorEnum),
-    value: S.optional(S.Unknown),
-  }),
-).annotate({
-  identifier: "FeatureFlagFilterPropertyFlagEvaluatesSchema",
-}) as any as S.Schema<FeatureFlagFilterPropertyFlagEvaluatesSchema>;
+export const FeatureFlagFilterPropertyFlagEvaluatesSchema =
+  FeatureFlagFilterPropertyExistsSchema as any as S.Schema<FeatureFlagFilterPropertyFlagEvaluatesSchema>;
 
 export type FeatureFlagFilterPropertySchema =
   | FeatureFlagFilterPropertyGenericSchema

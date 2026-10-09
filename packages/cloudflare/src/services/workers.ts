@@ -662,15 +662,8 @@ export interface ScriptsSecretsBulkUpdateResultValueSecretText {
   /** The kind of resource that the binding provides. */
   type: ScriptsSecretsBulkUpdateResultValueSecretTextType;
 }
-export const ScriptsSecretsBulkUpdateResultValueSecretText = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    text: S.String,
-    type: ScriptsSecretsBulkUpdateResultValueSecretTextType,
-  }),
-).annotate({
-  identifier: "ScriptsSecretsBulkUpdateResultValueSecretText",
-}) as any as S.Schema<ScriptsSecretsBulkUpdateResultValueSecretText>;
+export const ScriptsSecretsBulkUpdateResultValueSecretText =
+  ScriptsSecretsBulkUpdateRequestSecretsValueSecretText as any as S.Schema<ScriptsSecretsBulkUpdateResultValueSecretText>;
 
 export type ScriptsSecretsBulkUpdateResultValueSecretKeyFormat = "raw" | "pkcs8" | "spki" | "jwk";
 export const ScriptsSecretsBulkUpdateResultValueSecretKeyFormat = S.String;
@@ -691,9 +684,8 @@ export const ScriptsSecretsBulkUpdateResultValueSecretKeyUsagesItem = S.String;
 
 export type ScriptsSecretsBulkUpdateResultValueSecretKeyUsagesList =
   Array<ScriptsSecretsBulkUpdateResultValueSecretKeyUsagesItem>;
-export const ScriptsSecretsBulkUpdateResultValueSecretKeyUsagesList = /*@__PURE__*/ S.Array(
-  ScriptsSecretsBulkUpdateResultValueSecretKeyUsagesItem,
-) as any as S.Schema<ScriptsSecretsBulkUpdateResultValueSecretKeyUsagesList>;
+export const ScriptsSecretsBulkUpdateResultValueSecretKeyUsagesList =
+  ScriptsSecretsBulkUpdateRequestSecretsValueSecretKeyUsagesList as any as S.Schema<ScriptsSecretsBulkUpdateResultValueSecretKeyUsagesList>;
 
 export interface ScriptsSecretsBulkUpdateResultValueSecretKey {
   /** Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
@@ -1873,15 +1865,8 @@ export interface BetaWorkersCreateResponsePreviewsBaseConfigPlacementCase4 {
   /** Cloud region for targeted placement in format 'provider:region'. */
   region: string;
 }
-export const BetaWorkersCreateResponsePreviewsBaseConfigPlacementCase4 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      mode: BetaWorkersCreateResponsePreviewsBaseConfigPlacementCase4Mode,
-      region: S.String,
-    }),
-).annotate({
-  identifier: "BetaWorkersCreateResponsePreviewsBaseConfigPlacementCase4",
-}) as any as S.Schema<BetaWorkersCreateResponsePreviewsBaseConfigPlacementCase4>;
+export const BetaWorkersCreateResponsePreviewsBaseConfigPlacementCase4 =
+  BetaWorkersCreateRequestPreviewsBaseConfigPlacementCase4 as any as S.Schema<BetaWorkersCreateResponsePreviewsBaseConfigPlacementCase4>;
 
 export type BetaWorkersCreateResponsePreviewsBaseConfigPlacementCase5Mode = "targeted";
 export const BetaWorkersCreateResponsePreviewsBaseConfigPlacementCase5Mode = S.String;
@@ -1892,15 +1877,8 @@ export interface BetaWorkersCreateResponsePreviewsBaseConfigPlacementCase5 {
   /** Targeted placement mode. */
   mode: BetaWorkersCreateResponsePreviewsBaseConfigPlacementCase5Mode;
 }
-export const BetaWorkersCreateResponsePreviewsBaseConfigPlacementCase5 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      hostname: S.String,
-      mode: BetaWorkersCreateResponsePreviewsBaseConfigPlacementCase5Mode,
-    }),
-).annotate({
-  identifier: "BetaWorkersCreateResponsePreviewsBaseConfigPlacementCase5",
-}) as any as S.Schema<BetaWorkersCreateResponsePreviewsBaseConfigPlacementCase5>;
+export const BetaWorkersCreateResponsePreviewsBaseConfigPlacementCase5 =
+  BetaWorkersCreateRequestPreviewsBaseConfigPlacementCase5 as any as S.Schema<BetaWorkersCreateResponsePreviewsBaseConfigPlacementCase5>;
 
 export type BetaWorkersCreateResponsePreviewsBaseConfigPlacementCase6Mode = "targeted";
 export const BetaWorkersCreateResponsePreviewsBaseConfigPlacementCase6Mode = S.String;
@@ -1911,15 +1889,8 @@ export interface BetaWorkersCreateResponsePreviewsBaseConfigPlacementCase6 {
   /** Targeted placement mode. */
   mode: BetaWorkersCreateResponsePreviewsBaseConfigPlacementCase6Mode;
 }
-export const BetaWorkersCreateResponsePreviewsBaseConfigPlacementCase6 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      host: S.String,
-      mode: BetaWorkersCreateResponsePreviewsBaseConfigPlacementCase6Mode,
-    }),
-).annotate({
-  identifier: "BetaWorkersCreateResponsePreviewsBaseConfigPlacementCase6",
-}) as any as S.Schema<BetaWorkersCreateResponsePreviewsBaseConfigPlacementCase6>;
+export const BetaWorkersCreateResponsePreviewsBaseConfigPlacementCase6 =
+  BetaWorkersCreateRequestPreviewsBaseConfigPlacementCase6 as any as S.Schema<BetaWorkersCreateResponsePreviewsBaseConfigPlacementCase6>;
 
 export type BetaWorkersCreateResponsePreviewsBaseConfigPlacementCase7Mode = "targeted";
 export const BetaWorkersCreateResponsePreviewsBaseConfigPlacementCase7Mode = S.String;
@@ -2289,15 +2260,8 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemArtifacts {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsCreateRequestBindingsItemArtifactsType;
 }
-export const BetaWorkersVersionsCreateRequestBindingsItemArtifacts = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    namespace: S.String,
-    type: BetaWorkersVersionsCreateRequestBindingsItemArtifactsType,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsCreateRequestBindingsItemArtifacts",
-}) as any as S.Schema<BetaWorkersVersionsCreateRequestBindingsItemArtifacts>;
+export const BetaWorkersVersionsCreateRequestBindingsItemArtifacts =
+  BetaWorkersVersionsCreateRequestBindingsItemMessaging as any as S.Schema<BetaWorkersVersionsCreateRequestBindingsItemArtifacts>;
 
 export type BetaWorkersVersionsCreateRequestBindingsItemAssetsType = "assets";
 export const BetaWorkersVersionsCreateRequestBindingsItemAssetsType = S.String;
@@ -2308,14 +2272,8 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemAssets {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsCreateRequestBindingsItemAssetsType;
 }
-export const BetaWorkersVersionsCreateRequestBindingsItemAssets = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    type: BetaWorkersVersionsCreateRequestBindingsItemAssetsType,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsCreateRequestBindingsItemAssets",
-}) as any as S.Schema<BetaWorkersVersionsCreateRequestBindingsItemAssets>;
+export const BetaWorkersVersionsCreateRequestBindingsItemAssets =
+  BetaWorkersVersionsCreateRequestBindingsItemAI as any as S.Schema<BetaWorkersVersionsCreateRequestBindingsItemAssets>;
 
 export type BetaWorkersVersionsCreateRequestBindingsItemBrowserType = "browser";
 export const BetaWorkersVersionsCreateRequestBindingsItemBrowserType = S.String;
@@ -2326,14 +2284,8 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemBrowser {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsCreateRequestBindingsItemBrowserType;
 }
-export const BetaWorkersVersionsCreateRequestBindingsItemBrowser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    type: BetaWorkersVersionsCreateRequestBindingsItemBrowserType,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsCreateRequestBindingsItemBrowser",
-}) as any as S.Schema<BetaWorkersVersionsCreateRequestBindingsItemBrowser>;
+export const BetaWorkersVersionsCreateRequestBindingsItemBrowser =
+  BetaWorkersVersionsCreateRequestBindingsItemAI as any as S.Schema<BetaWorkersVersionsCreateRequestBindingsItemBrowser>;
 
 export type BetaWorkersVersionsCreateRequestBindingsItemD1Type = "d1";
 export const BetaWorkersVersionsCreateRequestBindingsItemD1Type = S.String;
@@ -2554,14 +2506,8 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemImages {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsCreateRequestBindingsItemImagesType;
 }
-export const BetaWorkersVersionsCreateRequestBindingsItemImages = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    type: BetaWorkersVersionsCreateRequestBindingsItemImagesType,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsCreateRequestBindingsItemImages",
-}) as any as S.Schema<BetaWorkersVersionsCreateRequestBindingsItemImages>;
+export const BetaWorkersVersionsCreateRequestBindingsItemImages =
+  BetaWorkersVersionsCreateRequestBindingsItemAI as any as S.Schema<BetaWorkersVersionsCreateRequestBindingsItemImages>;
 
 export type BetaWorkersVersionsCreateRequestBindingsItemJsonType = "json";
 export const BetaWorkersVersionsCreateRequestBindingsItemJsonType = S.String;
@@ -2614,14 +2560,8 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemMedia {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsCreateRequestBindingsItemMediaType;
 }
-export const BetaWorkersVersionsCreateRequestBindingsItemMedia = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    type: BetaWorkersVersionsCreateRequestBindingsItemMediaType,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsCreateRequestBindingsItemMedia",
-}) as any as S.Schema<BetaWorkersVersionsCreateRequestBindingsItemMedia>;
+export const BetaWorkersVersionsCreateRequestBindingsItemMedia =
+  BetaWorkersVersionsCreateRequestBindingsItemAI as any as S.Schema<BetaWorkersVersionsCreateRequestBindingsItemMedia>;
 
 export type BetaWorkersVersionsCreateRequestBindingsItemMTLSCertificateType = "mtls_certificate";
 export const BetaWorkersVersionsCreateRequestBindingsItemMTLSCertificateType = S.String;
@@ -2656,15 +2596,8 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemPlainText {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsCreateRequestBindingsItemPlainTextType;
 }
-export const BetaWorkersVersionsCreateRequestBindingsItemPlainText = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    text: S.String,
-    type: BetaWorkersVersionsCreateRequestBindingsItemPlainTextType,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsCreateRequestBindingsItemPlainText",
-}) as any as S.Schema<BetaWorkersVersionsCreateRequestBindingsItemPlainText>;
+export const BetaWorkersVersionsCreateRequestBindingsItemPlainText =
+  ScriptsSecretsBulkUpdateRequestSecretsValueSecretText as any as S.Schema<BetaWorkersVersionsCreateRequestBindingsItemPlainText>;
 
 export type BetaWorkersVersionsCreateRequestBindingsItemPipelinesType = "pipelines";
 export const BetaWorkersVersionsCreateRequestBindingsItemPipelinesType = S.String;
@@ -2814,15 +2747,8 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemSecretText {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsCreateRequestBindingsItemSecretTextType;
 }
-export const BetaWorkersVersionsCreateRequestBindingsItemSecretText = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    text: S.String,
-    type: BetaWorkersVersionsCreateRequestBindingsItemSecretTextType,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsCreateRequestBindingsItemSecretText",
-}) as any as S.Schema<BetaWorkersVersionsCreateRequestBindingsItemSecretText>;
+export const BetaWorkersVersionsCreateRequestBindingsItemSecretText =
+  ScriptsSecretsBulkUpdateRequestSecretsValueSecretText as any as S.Schema<BetaWorkersVersionsCreateRequestBindingsItemSecretText>;
 
 export type BetaWorkersVersionsCreateRequestBindingsItemSendEmailType = "send_email";
 export const BetaWorkersVersionsCreateRequestBindingsItemSendEmailType = S.String;
@@ -2907,15 +2833,8 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemTextBlob {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsCreateRequestBindingsItemTextBlobType;
 }
-export const BetaWorkersVersionsCreateRequestBindingsItemTextBlob = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    part: S.String,
-    type: BetaWorkersVersionsCreateRequestBindingsItemTextBlobType,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsCreateRequestBindingsItemTextBlob",
-}) as any as S.Schema<BetaWorkersVersionsCreateRequestBindingsItemTextBlob>;
+export const BetaWorkersVersionsCreateRequestBindingsItemTextBlob =
+  BetaWorkersVersionsCreateRequestBindingsItemDataBlob as any as S.Schema<BetaWorkersVersionsCreateRequestBindingsItemTextBlob>;
 
 export type BetaWorkersVersionsCreateRequestBindingsItemVectorizeType = "vectorize";
 export const BetaWorkersVersionsCreateRequestBindingsItemVectorizeType = S.String;
@@ -3101,15 +3020,8 @@ export interface BetaWorkersVersionsCreateRequestBindingsItemWasmModule {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsCreateRequestBindingsItemWasmModuleType;
 }
-export const BetaWorkersVersionsCreateRequestBindingsItemWasmModule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    part: S.String,
-    type: BetaWorkersVersionsCreateRequestBindingsItemWasmModuleType,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsCreateRequestBindingsItemWasmModule",
-}) as any as S.Schema<BetaWorkersVersionsCreateRequestBindingsItemWasmModule>;
+export const BetaWorkersVersionsCreateRequestBindingsItemWasmModule =
+  BetaWorkersVersionsCreateRequestBindingsItemDataBlob as any as S.Schema<BetaWorkersVersionsCreateRequestBindingsItemWasmModule>;
 
 export type BetaWorkersVersionsCreateRequestBindingsItemVPCServiceType = "vpc_service";
 export const BetaWorkersVersionsCreateRequestBindingsItemVPCServiceType = S.String;
@@ -3880,13 +3792,8 @@ export interface BetaWorkersVersionsCreateRequestPlacementMode {
   /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
   mode: BetaWorkersVersionsCreateRequestPlacementModeMode;
 }
-export const BetaWorkersVersionsCreateRequestPlacementMode = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: BetaWorkersVersionsCreateRequestPlacementModeMode,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsCreateRequestPlacementMode",
-}) as any as S.Schema<BetaWorkersVersionsCreateRequestPlacementMode>;
+export const BetaWorkersVersionsCreateRequestPlacementMode =
+  BetaWorkersCreateRequestPreviewsBaseConfigPlacementMode as any as S.Schema<BetaWorkersVersionsCreateRequestPlacementMode>;
 
 export type BetaWorkersVersionsCreateRequestPlacementRegion =
   BetaWorkersCreateRequestPreviewsBaseConfigPlacementRegion;
@@ -4207,14 +4114,8 @@ export interface BetaWorkersVersionsCreateResponseBindingsItemAI {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsCreateResponseBindingsItemAIType;
 }
-export const BetaWorkersVersionsCreateResponseBindingsItemAI = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    type: BetaWorkersVersionsCreateResponseBindingsItemAIType,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsCreateResponseBindingsItemAI",
-}) as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemAI>;
+export const BetaWorkersVersionsCreateResponseBindingsItemAI =
+  BetaWorkersVersionsCreateRequestBindingsItemAI as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemAI>;
 
 export type BetaWorkersVersionsCreateResponseBindingsItemAISearchType = "ai_search";
 export const BetaWorkersVersionsCreateResponseBindingsItemAISearchType = S.String;
@@ -4253,15 +4154,7 @@ export interface BetaWorkersVersionsCreateResponseBindingsItemAISearchNamespace 
   type: BetaWorkersVersionsCreateResponseBindingsItemAISearchNamespaceType;
 }
 export const BetaWorkersVersionsCreateResponseBindingsItemAISearchNamespace =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      namespace: S.String,
-      type: BetaWorkersVersionsCreateResponseBindingsItemAISearchNamespaceType,
-    }),
-  ).annotate({
-    identifier: "BetaWorkersVersionsCreateResponseBindingsItemAISearchNamespace",
-  }) as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemAISearchNamespace>;
+  BetaWorkersVersionsCreateRequestBindingsItemAISearchNamespace as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemAISearchNamespace>;
 
 export type BetaWorkersVersionsCreateResponseBindingsItemMessagingType = "messaging";
 export const BetaWorkersVersionsCreateResponseBindingsItemMessagingType = S.String;
@@ -4274,15 +4167,8 @@ export interface BetaWorkersVersionsCreateResponseBindingsItemMessaging {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsCreateResponseBindingsItemMessagingType;
 }
-export const BetaWorkersVersionsCreateResponseBindingsItemMessaging = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    namespace: S.String,
-    type: BetaWorkersVersionsCreateResponseBindingsItemMessagingType,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsCreateResponseBindingsItemMessaging",
-}) as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemMessaging>;
+export const BetaWorkersVersionsCreateResponseBindingsItemMessaging =
+  BetaWorkersVersionsCreateRequestBindingsItemMessaging as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemMessaging>;
 
 export type BetaWorkersVersionsCreateResponseBindingsItemAnalyticsEngineType = "analytics_engine";
 export const BetaWorkersVersionsCreateResponseBindingsItemAnalyticsEngineType = S.String;
@@ -4295,16 +4181,8 @@ export interface BetaWorkersVersionsCreateResponseBindingsItemAnalyticsEngine {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsCreateResponseBindingsItemAnalyticsEngineType;
 }
-export const BetaWorkersVersionsCreateResponseBindingsItemAnalyticsEngine = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      dataset: S.String,
-      name: S.String,
-      type: BetaWorkersVersionsCreateResponseBindingsItemAnalyticsEngineType,
-    }),
-).annotate({
-  identifier: "BetaWorkersVersionsCreateResponseBindingsItemAnalyticsEngine",
-}) as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemAnalyticsEngine>;
+export const BetaWorkersVersionsCreateResponseBindingsItemAnalyticsEngine =
+  BetaWorkersVersionsCreateRequestBindingsItemAnalyticsEngine as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemAnalyticsEngine>;
 
 export type BetaWorkersVersionsCreateResponseBindingsItemArtifactsType = "artifacts";
 export const BetaWorkersVersionsCreateResponseBindingsItemArtifactsType = S.String;
@@ -4317,15 +4195,8 @@ export interface BetaWorkersVersionsCreateResponseBindingsItemArtifacts {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsCreateResponseBindingsItemArtifactsType;
 }
-export const BetaWorkersVersionsCreateResponseBindingsItemArtifacts = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    namespace: S.String,
-    type: BetaWorkersVersionsCreateResponseBindingsItemArtifactsType,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsCreateResponseBindingsItemArtifacts",
-}) as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemArtifacts>;
+export const BetaWorkersVersionsCreateResponseBindingsItemArtifacts =
+  BetaWorkersVersionsCreateRequestBindingsItemMessaging as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemArtifacts>;
 
 export type BetaWorkersVersionsCreateResponseBindingsItemAssetsType = "assets";
 export const BetaWorkersVersionsCreateResponseBindingsItemAssetsType = S.String;
@@ -4336,14 +4207,8 @@ export interface BetaWorkersVersionsCreateResponseBindingsItemAssets {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsCreateResponseBindingsItemAssetsType;
 }
-export const BetaWorkersVersionsCreateResponseBindingsItemAssets = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    type: BetaWorkersVersionsCreateResponseBindingsItemAssetsType,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsCreateResponseBindingsItemAssets",
-}) as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemAssets>;
+export const BetaWorkersVersionsCreateResponseBindingsItemAssets =
+  BetaWorkersVersionsCreateRequestBindingsItemAI as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemAssets>;
 
 export type BetaWorkersVersionsCreateResponseBindingsItemBrowserType = "browser";
 export const BetaWorkersVersionsCreateResponseBindingsItemBrowserType = S.String;
@@ -4354,14 +4219,8 @@ export interface BetaWorkersVersionsCreateResponseBindingsItemBrowser {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsCreateResponseBindingsItemBrowserType;
 }
-export const BetaWorkersVersionsCreateResponseBindingsItemBrowser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    type: BetaWorkersVersionsCreateResponseBindingsItemBrowserType,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsCreateResponseBindingsItemBrowser",
-}) as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemBrowser>;
+export const BetaWorkersVersionsCreateResponseBindingsItemBrowser =
+  BetaWorkersVersionsCreateRequestBindingsItemAI as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemBrowser>;
 
 export type BetaWorkersVersionsCreateResponseBindingsItemD1Type = "d1";
 export const BetaWorkersVersionsCreateResponseBindingsItemD1Type = S.String;
@@ -4398,15 +4257,8 @@ export interface BetaWorkersVersionsCreateResponseBindingsItemDataBlob {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsCreateResponseBindingsItemDataBlobType;
 }
-export const BetaWorkersVersionsCreateResponseBindingsItemDataBlob = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    part: S.String,
-    type: BetaWorkersVersionsCreateResponseBindingsItemDataBlobType,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsCreateResponseBindingsItemDataBlob",
-}) as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemDataBlob>;
+export const BetaWorkersVersionsCreateResponseBindingsItemDataBlob =
+  BetaWorkersVersionsCreateRequestBindingsItemDataBlob as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemDataBlob>;
 
 export type BetaWorkersVersionsCreateResponseBindingsItemDispatchNamespaceType =
   "dispatch_namespace";
@@ -4531,15 +4383,8 @@ export interface BetaWorkersVersionsCreateResponseBindingsItemHyperdrive {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsCreateResponseBindingsItemHyperdriveType;
 }
-export const BetaWorkersVersionsCreateResponseBindingsItemHyperdrive = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    type: BetaWorkersVersionsCreateResponseBindingsItemHyperdriveType,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsCreateResponseBindingsItemHyperdrive",
-}) as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemHyperdrive>;
+export const BetaWorkersVersionsCreateResponseBindingsItemHyperdrive =
+  BetaWorkersVersionsCreateRequestBindingsItemHyperdrive as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemHyperdrive>;
 
 export type BetaWorkersVersionsCreateResponseBindingsItemInheritType = "inherit";
 export const BetaWorkersVersionsCreateResponseBindingsItemInheritType = S.String;
@@ -4574,14 +4419,8 @@ export interface BetaWorkersVersionsCreateResponseBindingsItemImages {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsCreateResponseBindingsItemImagesType;
 }
-export const BetaWorkersVersionsCreateResponseBindingsItemImages = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    type: BetaWorkersVersionsCreateResponseBindingsItemImagesType,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsCreateResponseBindingsItemImages",
-}) as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemImages>;
+export const BetaWorkersVersionsCreateResponseBindingsItemImages =
+  BetaWorkersVersionsCreateRequestBindingsItemAI as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemImages>;
 
 export type BetaWorkersVersionsCreateResponseBindingsItemJsonType = "json";
 export const BetaWorkersVersionsCreateResponseBindingsItemJsonType = S.String;
@@ -4594,15 +4433,8 @@ export interface BetaWorkersVersionsCreateResponseBindingsItemJson {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsCreateResponseBindingsItemJsonType;
 }
-export const BetaWorkersVersionsCreateResponseBindingsItemJson = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    json: S.Unknown,
-    name: S.String,
-    type: BetaWorkersVersionsCreateResponseBindingsItemJsonType,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsCreateResponseBindingsItemJson",
-}) as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemJson>;
+export const BetaWorkersVersionsCreateResponseBindingsItemJson =
+  BetaWorkersVersionsCreateRequestBindingsItemJson as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemJson>;
 
 export type BetaWorkersVersionsCreateResponseBindingsItemKVNamespaceType = "kv_namespace";
 export const BetaWorkersVersionsCreateResponseBindingsItemKVNamespaceType = S.String;
@@ -4635,14 +4467,8 @@ export interface BetaWorkersVersionsCreateResponseBindingsItemMedia {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsCreateResponseBindingsItemMediaType;
 }
-export const BetaWorkersVersionsCreateResponseBindingsItemMedia = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    type: BetaWorkersVersionsCreateResponseBindingsItemMediaType,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsCreateResponseBindingsItemMedia",
-}) as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemMedia>;
+export const BetaWorkersVersionsCreateResponseBindingsItemMedia =
+  BetaWorkersVersionsCreateRequestBindingsItemAI as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemMedia>;
 
 export type BetaWorkersVersionsCreateResponseBindingsItemMTLSCertificateType = "mtls_certificate";
 export const BetaWorkersVersionsCreateResponseBindingsItemMTLSCertificateType = S.String;
@@ -4655,16 +4481,8 @@ export interface BetaWorkersVersionsCreateResponseBindingsItemMTLSCertificate {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsCreateResponseBindingsItemMTLSCertificateType;
 }
-export const BetaWorkersVersionsCreateResponseBindingsItemMTLSCertificate = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      certificateId: S.String.pipe(T.Body("certificate_id")),
-      name: S.String,
-      type: BetaWorkersVersionsCreateResponseBindingsItemMTLSCertificateType,
-    }),
-).annotate({
-  identifier: "BetaWorkersVersionsCreateResponseBindingsItemMTLSCertificate",
-}) as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemMTLSCertificate>;
+export const BetaWorkersVersionsCreateResponseBindingsItemMTLSCertificate =
+  BetaWorkersVersionsCreateRequestBindingsItemMTLSCertificate as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemMTLSCertificate>;
 
 export type BetaWorkersVersionsCreateResponseBindingsItemPlainTextType = "plain_text";
 export const BetaWorkersVersionsCreateResponseBindingsItemPlainTextType = S.String;
@@ -4677,15 +4495,8 @@ export interface BetaWorkersVersionsCreateResponseBindingsItemPlainText {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsCreateResponseBindingsItemPlainTextType;
 }
-export const BetaWorkersVersionsCreateResponseBindingsItemPlainText = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    text: S.String,
-    type: BetaWorkersVersionsCreateResponseBindingsItemPlainTextType,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsCreateResponseBindingsItemPlainText",
-}) as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemPlainText>;
+export const BetaWorkersVersionsCreateResponseBindingsItemPlainText =
+  ScriptsSecretsBulkUpdateRequestSecretsValueSecretText as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemPlainText>;
 
 export type BetaWorkersVersionsCreateResponseBindingsItemPipelinesType = "pipelines";
 export const BetaWorkersVersionsCreateResponseBindingsItemPipelinesType = S.String;
@@ -4698,15 +4509,8 @@ export interface BetaWorkersVersionsCreateResponseBindingsItemPipelines {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsCreateResponseBindingsItemPipelinesType;
 }
-export const BetaWorkersVersionsCreateResponseBindingsItemPipelines = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    pipeline: S.String,
-    type: BetaWorkersVersionsCreateResponseBindingsItemPipelinesType,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsCreateResponseBindingsItemPipelines",
-}) as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemPipelines>;
+export const BetaWorkersVersionsCreateResponseBindingsItemPipelines =
+  BetaWorkersVersionsCreateRequestBindingsItemPipelines as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemPipelines>;
 
 export type BetaWorkersVersionsCreateResponseBindingsItemK2Type = "k2";
 export const BetaWorkersVersionsCreateResponseBindingsItemK2Type = S.String;
@@ -4719,15 +4523,8 @@ export interface BetaWorkersVersionsCreateResponseBindingsItemK2 {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsCreateResponseBindingsItemK2Type;
 }
-export const BetaWorkersVersionsCreateResponseBindingsItemK2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    stream: S.String,
-    type: BetaWorkersVersionsCreateResponseBindingsItemK2Type,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsCreateResponseBindingsItemK2",
-}) as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemK2>;
+export const BetaWorkersVersionsCreateResponseBindingsItemK2 =
+  BetaWorkersVersionsCreateRequestBindingsItemK2 as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemK2>;
 
 export type BetaWorkersVersionsCreateResponseBindingsItemQueueType = "queue";
 export const BetaWorkersVersionsCreateResponseBindingsItemQueueType = S.String;
@@ -4740,15 +4537,8 @@ export interface BetaWorkersVersionsCreateResponseBindingsItemQueue {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsCreateResponseBindingsItemQueueType;
 }
-export const BetaWorkersVersionsCreateResponseBindingsItemQueue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    queueName: S.String.pipe(T.Body("queue_name")),
-    type: BetaWorkersVersionsCreateResponseBindingsItemQueueType,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsCreateResponseBindingsItemQueue",
-}) as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemQueue>;
+export const BetaWorkersVersionsCreateResponseBindingsItemQueue =
+  BetaWorkersVersionsCreateRequestBindingsItemQueue as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemQueue>;
 
 export interface BetaWorkersVersionsCreateResponseBindingsItemRatelimitSimple {
   /** The limit (requests per period). */
@@ -4837,15 +4627,8 @@ export interface BetaWorkersVersionsCreateResponseBindingsItemSecretText {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsCreateResponseBindingsItemSecretTextType;
 }
-export const BetaWorkersVersionsCreateResponseBindingsItemSecretText = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    text: S.String,
-    type: BetaWorkersVersionsCreateResponseBindingsItemSecretTextType,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsCreateResponseBindingsItemSecretText",
-}) as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemSecretText>;
+export const BetaWorkersVersionsCreateResponseBindingsItemSecretText =
+  ScriptsSecretsBulkUpdateRequestSecretsValueSecretText as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemSecretText>;
 
 export type BetaWorkersVersionsCreateResponseBindingsItemSendEmailType = "send_email";
 export const BetaWorkersVersionsCreateResponseBindingsItemSendEmailType = S.String;
@@ -4930,15 +4713,8 @@ export interface BetaWorkersVersionsCreateResponseBindingsItemTextBlob {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsCreateResponseBindingsItemTextBlobType;
 }
-export const BetaWorkersVersionsCreateResponseBindingsItemTextBlob = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    part: S.String,
-    type: BetaWorkersVersionsCreateResponseBindingsItemTextBlobType,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsCreateResponseBindingsItemTextBlob",
-}) as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemTextBlob>;
+export const BetaWorkersVersionsCreateResponseBindingsItemTextBlob =
+  BetaWorkersVersionsCreateRequestBindingsItemDataBlob as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemTextBlob>;
 
 export type BetaWorkersVersionsCreateResponseBindingsItemVectorizeType = "vectorize";
 export const BetaWorkersVersionsCreateResponseBindingsItemVectorizeType = S.String;
@@ -4951,15 +4727,8 @@ export interface BetaWorkersVersionsCreateResponseBindingsItemVectorize {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsCreateResponseBindingsItemVectorizeType;
 }
-export const BetaWorkersVersionsCreateResponseBindingsItemVectorize = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    indexName: S.String.pipe(T.Body("index_name")),
-    name: S.String,
-    type: BetaWorkersVersionsCreateResponseBindingsItemVectorizeType,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsCreateResponseBindingsItemVectorize",
-}) as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemVectorize>;
+export const BetaWorkersVersionsCreateResponseBindingsItemVectorize =
+  BetaWorkersVersionsCreateRequestBindingsItemVectorize as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemVectorize>;
 
 export type BetaWorkersVersionsCreateResponseBindingsItemVersionMetadataType = "version_metadata";
 export const BetaWorkersVersionsCreateResponseBindingsItemVersionMetadataType = S.String;
@@ -4970,15 +4739,8 @@ export interface BetaWorkersVersionsCreateResponseBindingsItemVersionMetadata {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsCreateResponseBindingsItemVersionMetadataType;
 }
-export const BetaWorkersVersionsCreateResponseBindingsItemVersionMetadata = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      type: BetaWorkersVersionsCreateResponseBindingsItemVersionMetadataType,
-    }),
-).annotate({
-  identifier: "BetaWorkersVersionsCreateResponseBindingsItemVersionMetadata",
-}) as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemVersionMetadata>;
+export const BetaWorkersVersionsCreateResponseBindingsItemVersionMetadata =
+  BetaWorkersVersionsCreateRequestBindingsItemVersionMetadata as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemVersionMetadata>;
 
 export type BetaWorkersVersionsCreateResponseBindingsItemSecretsStoreSecretType =
   "secrets_store_secret";
@@ -4995,16 +4757,7 @@ export interface BetaWorkersVersionsCreateResponseBindingsItemSecretsStoreSecret
   type: BetaWorkersVersionsCreateResponseBindingsItemSecretsStoreSecretType;
 }
 export const BetaWorkersVersionsCreateResponseBindingsItemSecretsStoreSecret =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      secretName: S.String.pipe(T.Body("secret_name")),
-      storeId: S.String.pipe(T.Body("store_id")),
-      type: BetaWorkersVersionsCreateResponseBindingsItemSecretsStoreSecretType,
-    }),
-  ).annotate({
-    identifier: "BetaWorkersVersionsCreateResponseBindingsItemSecretsStoreSecret",
-  }) as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemSecretsStoreSecret>;
+  BetaWorkersVersionsCreateRequestBindingsItemSecretsStoreSecret as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemSecretsStoreSecret>;
 
 export type BetaWorkersVersionsCreateResponseBindingsItemFlagshipType = "flagship";
 export const BetaWorkersVersionsCreateResponseBindingsItemFlagshipType = S.String;
@@ -5017,15 +4770,8 @@ export interface BetaWorkersVersionsCreateResponseBindingsItemFlagship {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsCreateResponseBindingsItemFlagshipType;
 }
-export const BetaWorkersVersionsCreateResponseBindingsItemFlagship = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    appId: S.String.pipe(T.Body("app_id")),
-    name: S.String,
-    type: BetaWorkersVersionsCreateResponseBindingsItemFlagshipType,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsCreateResponseBindingsItemFlagship",
-}) as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemFlagship>;
+export const BetaWorkersVersionsCreateResponseBindingsItemFlagship =
+  BetaWorkersVersionsCreateRequestBindingsItemFlagship as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemFlagship>;
 
 export type BetaWorkersVersionsCreateResponseBindingsItemSecretKeyFormat =
   | "raw"
@@ -5051,9 +4797,7 @@ export const BetaWorkersVersionsCreateResponseBindingsItemSecretKeyUsagesItem = 
 export type BetaWorkersVersionsCreateResponseBindingsItemSecretKeyUsagesList =
   Array<BetaWorkersVersionsCreateResponseBindingsItemSecretKeyUsagesItem>;
 export const BetaWorkersVersionsCreateResponseBindingsItemSecretKeyUsagesList =
-  /*@__PURE__*/ S.Array(
-    BetaWorkersVersionsCreateResponseBindingsItemSecretKeyUsagesItem,
-  ) as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemSecretKeyUsagesList>;
+  BetaWorkersVersionsCreateRequestBindingsItemSecretKeyUsagesList as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemSecretKeyUsagesList>;
 
 export interface BetaWorkersVersionsCreateResponseBindingsItemSecretKey {
   /** Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
@@ -5123,15 +4867,8 @@ export interface BetaWorkersVersionsCreateResponseBindingsItemWasmModule {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsCreateResponseBindingsItemWasmModuleType;
 }
-export const BetaWorkersVersionsCreateResponseBindingsItemWasmModule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    part: S.String,
-    type: BetaWorkersVersionsCreateResponseBindingsItemWasmModuleType,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsCreateResponseBindingsItemWasmModule",
-}) as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemWasmModule>;
+export const BetaWorkersVersionsCreateResponseBindingsItemWasmModule =
+  BetaWorkersVersionsCreateRequestBindingsItemDataBlob as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemWasmModule>;
 
 export type BetaWorkersVersionsCreateResponseBindingsItemVPCServiceType = "vpc_service";
 export const BetaWorkersVersionsCreateResponseBindingsItemVPCServiceType = S.String;
@@ -5144,15 +4881,8 @@ export interface BetaWorkersVersionsCreateResponseBindingsItemVPCService {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsCreateResponseBindingsItemVPCServiceType;
 }
-export const BetaWorkersVersionsCreateResponseBindingsItemVPCService = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    serviceId: S.String.pipe(T.Body("service_id")),
-    type: BetaWorkersVersionsCreateResponseBindingsItemVPCServiceType,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsCreateResponseBindingsItemVPCService",
-}) as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemVPCService>;
+export const BetaWorkersVersionsCreateResponseBindingsItemVPCService =
+  BetaWorkersVersionsCreateRequestBindingsItemVPCService as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemVPCService>;
 
 export type BetaWorkersVersionsCreateResponseBindingsItemVPCNetworkType = "vpc_network";
 export const BetaWorkersVersionsCreateResponseBindingsItemVPCNetworkType = S.String;
@@ -5447,14 +5177,7 @@ export interface BetaWorkersVersionsCreateResponseExportsValueWorkersDurableObje
   type: BetaWorkersVersionsCreateResponseExportsValueWorkersDurableObjectDeletedExportType;
 }
 export const BetaWorkersVersionsCreateResponseExportsValueWorkersDurableObjectDeletedExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state: BetaWorkersVersionsCreateResponseExportsValueWorkersDurableObjectDeletedExportState,
-      type: BetaWorkersVersionsCreateResponseExportsValueWorkersDurableObjectDeletedExportType,
-    }),
-  ).annotate({
-    identifier: "BetaWorkersVersionsCreateResponseExportsValueWorkersDurableObjectDeletedExport",
-  }) as any as S.Schema<BetaWorkersVersionsCreateResponseExportsValueWorkersDurableObjectDeletedExport>;
+  BetaWorkersVersionsCreateRequestExportsValueWorkersDurableObjectDeletedExport as any as S.Schema<BetaWorkersVersionsCreateResponseExportsValueWorkersDurableObjectDeletedExport>;
 
 export type BetaWorkersVersionsCreateResponseExportsValueWorkersDurableObjectRenamedExportState =
   "renamed";
@@ -5475,15 +5198,7 @@ export interface BetaWorkersVersionsCreateResponseExportsValueWorkersDurableObje
   type: BetaWorkersVersionsCreateResponseExportsValueWorkersDurableObjectRenamedExportType;
 }
 export const BetaWorkersVersionsCreateResponseExportsValueWorkersDurableObjectRenamedExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      renamedTo: S.String.pipe(T.Body("renamed_to")),
-      state: BetaWorkersVersionsCreateResponseExportsValueWorkersDurableObjectRenamedExportState,
-      type: BetaWorkersVersionsCreateResponseExportsValueWorkersDurableObjectRenamedExportType,
-    }),
-  ).annotate({
-    identifier: "BetaWorkersVersionsCreateResponseExportsValueWorkersDurableObjectRenamedExport",
-  }) as any as S.Schema<BetaWorkersVersionsCreateResponseExportsValueWorkersDurableObjectRenamedExport>;
+  BetaWorkersVersionsCreateRequestExportsValueWorkersDurableObjectRenamedExport as any as S.Schema<BetaWorkersVersionsCreateResponseExportsValueWorkersDurableObjectRenamedExport>;
 
 export type BetaWorkersVersionsCreateResponseExportsValueWorkersDurableObjectTransferredExportState =
   "transferred";
@@ -6134,13 +5849,8 @@ export interface BetaWorkersVersionsCreateResponsePlacementMode {
   /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
   mode: BetaWorkersVersionsCreateResponsePlacementModeMode;
 }
-export const BetaWorkersVersionsCreateResponsePlacementMode = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: BetaWorkersVersionsCreateResponsePlacementModeMode,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsCreateResponsePlacementMode",
-}) as any as S.Schema<BetaWorkersVersionsCreateResponsePlacementMode>;
+export const BetaWorkersVersionsCreateResponsePlacementMode =
+  BetaWorkersCreateRequestPreviewsBaseConfigPlacementMode as any as S.Schema<BetaWorkersVersionsCreateResponsePlacementMode>;
 
 export type BetaWorkersVersionsCreateResponsePlacementRegion =
   BetaWorkersCreateRequestPreviewsBaseConfigPlacementRegion;
@@ -6166,14 +5876,8 @@ export interface BetaWorkersVersionsCreateResponsePlacementCase4 {
   /** Cloud region for targeted placement in format 'provider:region'. */
   region: string;
 }
-export const BetaWorkersVersionsCreateResponsePlacementCase4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: BetaWorkersVersionsCreateResponsePlacementCase4Mode,
-    region: S.String,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsCreateResponsePlacementCase4",
-}) as any as S.Schema<BetaWorkersVersionsCreateResponsePlacementCase4>;
+export const BetaWorkersVersionsCreateResponsePlacementCase4 =
+  BetaWorkersVersionsCreateRequestPlacementCase4 as any as S.Schema<BetaWorkersVersionsCreateResponsePlacementCase4>;
 
 export type BetaWorkersVersionsCreateResponsePlacementCase5Mode = "targeted";
 export const BetaWorkersVersionsCreateResponsePlacementCase5Mode = S.String;
@@ -6184,14 +5888,8 @@ export interface BetaWorkersVersionsCreateResponsePlacementCase5 {
   /** Targeted placement mode. */
   mode: BetaWorkersVersionsCreateResponsePlacementCase5Mode;
 }
-export const BetaWorkersVersionsCreateResponsePlacementCase5 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hostname: S.String,
-    mode: BetaWorkersVersionsCreateResponsePlacementCase5Mode,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsCreateResponsePlacementCase5",
-}) as any as S.Schema<BetaWorkersVersionsCreateResponsePlacementCase5>;
+export const BetaWorkersVersionsCreateResponsePlacementCase5 =
+  BetaWorkersVersionsCreateRequestPlacementCase5 as any as S.Schema<BetaWorkersVersionsCreateResponsePlacementCase5>;
 
 export type BetaWorkersVersionsCreateResponsePlacementCase6Mode = "targeted";
 export const BetaWorkersVersionsCreateResponsePlacementCase6Mode = S.String;
@@ -6202,14 +5900,8 @@ export interface BetaWorkersVersionsCreateResponsePlacementCase6 {
   /** Targeted placement mode. */
   mode: BetaWorkersVersionsCreateResponsePlacementCase6Mode;
 }
-export const BetaWorkersVersionsCreateResponsePlacementCase6 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    host: S.String,
-    mode: BetaWorkersVersionsCreateResponsePlacementCase6Mode,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsCreateResponsePlacementCase6",
-}) as any as S.Schema<BetaWorkersVersionsCreateResponsePlacementCase6>;
+export const BetaWorkersVersionsCreateResponsePlacementCase6 =
+  BetaWorkersVersionsCreateRequestPlacementCase6 as any as S.Schema<BetaWorkersVersionsCreateResponsePlacementCase6>;
 
 export type BetaWorkersVersionsCreateResponsePlacementCase7Mode = "targeted";
 export const BetaWorkersVersionsCreateResponsePlacementCase7Mode = S.String;
@@ -7224,21 +6916,13 @@ export interface ObservabilityQueriesCreateResponseParametersHavingsItem {
   operation: ObservabilityQueriesCreateResponseParametersHavingsItemOperation;
   value: number;
 }
-export const ObservabilityQueriesCreateResponseParametersHavingsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.String,
-    operation: ObservabilityQueriesCreateResponseParametersHavingsItemOperation,
-    value: S.Number,
-  }),
-).annotate({
-  identifier: "ObservabilityQueriesCreateResponseParametersHavingsItem",
-}) as any as S.Schema<ObservabilityQueriesCreateResponseParametersHavingsItem>;
+export const ObservabilityQueriesCreateResponseParametersHavingsItem =
+  ObservabilityQueriesCreateRequestParametersHavingsItem as any as S.Schema<ObservabilityQueriesCreateResponseParametersHavingsItem>;
 
 export type ObservabilityQueriesCreateResponseParametersHavingsList =
   Array<ObservabilityQueriesCreateResponseParametersHavingsItem>;
-export const ObservabilityQueriesCreateResponseParametersHavingsList = /*@__PURE__*/ S.Array(
-  ObservabilityQueriesCreateResponseParametersHavingsItem,
-) as any as S.Schema<ObservabilityQueriesCreateResponseParametersHavingsList>;
+export const ObservabilityQueriesCreateResponseParametersHavingsList =
+  ObservabilityQueriesCreateRequestParametersHavingsList as any as S.Schema<ObservabilityQueriesCreateResponseParametersHavingsList>;
 
 export type ObservabilityQueriesCreateResponseParametersNeedleValue = string | number | boolean;
 export const ObservabilityQueriesCreateResponseParametersNeedleValue = /*@__PURE__*/ S.Unknown.pipe(
@@ -8550,15 +8234,8 @@ export interface CreateScriptEdgePreviewMetadataBindingSecretText {
   name: string;
   text: string;
 }
-export const CreateScriptEdgePreviewMetadataBindingSecretText = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: CreateScriptEdgePreviewMetadataBindingSecretTextType,
-    name: S.String,
-    text: S.String,
-  }),
-).annotate({
-  identifier: "CreateScriptEdgePreviewMetadataBindingSecretText",
-}) as any as S.Schema<CreateScriptEdgePreviewMetadataBindingSecretText>;
+export const CreateScriptEdgePreviewMetadataBindingSecretText =
+  CreateScriptEdgePreviewMetadataBindingPlainText as any as S.Schema<CreateScriptEdgePreviewMetadataBindingSecretText>;
 
 export type CreateScriptEdgePreviewMetadataBindingJsonType = "json";
 export const CreateScriptEdgePreviewMetadataBindingJsonType = S.String;
@@ -8760,15 +8437,8 @@ export interface CreateScriptEdgePreviewMetadataBindingImages {
   name: string;
   raw?: boolean;
 }
-export const CreateScriptEdgePreviewMetadataBindingImages = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: CreateScriptEdgePreviewMetadataBindingImagesType,
-    name: S.String,
-    raw: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "CreateScriptEdgePreviewMetadataBindingImages",
-}) as any as S.Schema<CreateScriptEdgePreviewMetadataBindingImages>;
+export const CreateScriptEdgePreviewMetadataBindingImages =
+  CreateScriptEdgePreviewMetadataBindingBrowser as any as S.Schema<CreateScriptEdgePreviewMetadataBindingImages>;
 
 export type CreateScriptEdgePreviewMetadataBindingVectorizeType = "vectorize";
 export const CreateScriptEdgePreviewMetadataBindingVectorizeType = S.String;
@@ -8982,15 +8652,8 @@ export interface CreateScriptEdgePreviewMetadataBindingTextBlob {
   name: string;
   part: string;
 }
-export const CreateScriptEdgePreviewMetadataBindingTextBlob = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: CreateScriptEdgePreviewMetadataBindingTextBlobType,
-    name: S.String,
-    part: S.String,
-  }),
-).annotate({
-  identifier: "CreateScriptEdgePreviewMetadataBindingTextBlob",
-}) as any as S.Schema<CreateScriptEdgePreviewMetadataBindingTextBlob>;
+export const CreateScriptEdgePreviewMetadataBindingTextBlob =
+  CreateScriptEdgePreviewMetadataBindingWasmModule as any as S.Schema<CreateScriptEdgePreviewMetadataBindingTextBlob>;
 
 export type CreateScriptEdgePreviewMetadataBindingDataBlobType = "data_blob";
 export const CreateScriptEdgePreviewMetadataBindingDataBlobType = S.String;
@@ -9000,15 +8663,8 @@ export interface CreateScriptEdgePreviewMetadataBindingDataBlob {
   name: string;
   part: string;
 }
-export const CreateScriptEdgePreviewMetadataBindingDataBlob = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: CreateScriptEdgePreviewMetadataBindingDataBlobType,
-    name: S.String,
-    part: S.String,
-  }),
-).annotate({
-  identifier: "CreateScriptEdgePreviewMetadataBindingDataBlob",
-}) as any as S.Schema<CreateScriptEdgePreviewMetadataBindingDataBlob>;
+export const CreateScriptEdgePreviewMetadataBindingDataBlob =
+  CreateScriptEdgePreviewMetadataBindingWasmModule as any as S.Schema<CreateScriptEdgePreviewMetadataBindingDataBlob>;
 
 export type CreateScriptEdgePreviewMetadataBindingPipelinesType = "pipelines";
 export const CreateScriptEdgePreviewMetadataBindingPipelinesType = S.String;
@@ -9072,14 +8728,8 @@ export interface CreateScriptEdgePreviewMetadataBindingMedia {
   type: CreateScriptEdgePreviewMetadataBindingMediaType;
   name: string;
 }
-export const CreateScriptEdgePreviewMetadataBindingMedia = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: CreateScriptEdgePreviewMetadataBindingMediaType,
-    name: S.String,
-  }),
-).annotate({
-  identifier: "CreateScriptEdgePreviewMetadataBindingMedia",
-}) as any as S.Schema<CreateScriptEdgePreviewMetadataBindingMedia>;
+export const CreateScriptEdgePreviewMetadataBindingMedia =
+  CreateScriptEdgePreviewMetadataBindingStream as any as S.Schema<CreateScriptEdgePreviewMetadataBindingMedia>;
 
 export type CreateScriptEdgePreviewMetadataBindingVersionMetadataType = "version_metadata";
 export const CreateScriptEdgePreviewMetadataBindingVersionMetadataType = S.String;
@@ -9088,14 +8738,8 @@ export interface CreateScriptEdgePreviewMetadataBindingVersionMetadata {
   type: CreateScriptEdgePreviewMetadataBindingVersionMetadataType;
   name: string;
 }
-export const CreateScriptEdgePreviewMetadataBindingVersionMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: CreateScriptEdgePreviewMetadataBindingVersionMetadataType,
-    name: S.String,
-  }),
-).annotate({
-  identifier: "CreateScriptEdgePreviewMetadataBindingVersionMetadata",
-}) as any as S.Schema<CreateScriptEdgePreviewMetadataBindingVersionMetadata>;
+export const CreateScriptEdgePreviewMetadataBindingVersionMetadata =
+  CreateScriptEdgePreviewMetadataBindingStream as any as S.Schema<CreateScriptEdgePreviewMetadataBindingVersionMetadata>;
 
 export type CreateScriptEdgePreviewMetadataBindingAssetsType = "assets";
 export const CreateScriptEdgePreviewMetadataBindingAssetsType = S.String;
@@ -9104,14 +8748,8 @@ export interface CreateScriptEdgePreviewMetadataBindingAssets {
   type: CreateScriptEdgePreviewMetadataBindingAssetsType;
   name: string;
 }
-export const CreateScriptEdgePreviewMetadataBindingAssets = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: CreateScriptEdgePreviewMetadataBindingAssetsType,
-    name: S.String,
-  }),
-).annotate({
-  identifier: "CreateScriptEdgePreviewMetadataBindingAssets",
-}) as any as S.Schema<CreateScriptEdgePreviewMetadataBindingAssets>;
+export const CreateScriptEdgePreviewMetadataBindingAssets =
+  CreateScriptEdgePreviewMetadataBindingStream as any as S.Schema<CreateScriptEdgePreviewMetadataBindingAssets>;
 
 export type CreateScriptEdgePreviewMetadataBindingWorkerLoaderType = "worker_loader";
 export const CreateScriptEdgePreviewMetadataBindingWorkerLoaderType = S.String;
@@ -9120,14 +8758,8 @@ export interface CreateScriptEdgePreviewMetadataBindingWorkerLoader {
   type: CreateScriptEdgePreviewMetadataBindingWorkerLoaderType;
   name: string;
 }
-export const CreateScriptEdgePreviewMetadataBindingWorkerLoader = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: CreateScriptEdgePreviewMetadataBindingWorkerLoaderType,
-    name: S.String,
-  }),
-).annotate({
-  identifier: "CreateScriptEdgePreviewMetadataBindingWorkerLoader",
-}) as any as S.Schema<CreateScriptEdgePreviewMetadataBindingWorkerLoader>;
+export const CreateScriptEdgePreviewMetadataBindingWorkerLoader =
+  CreateScriptEdgePreviewMetadataBindingStream as any as S.Schema<CreateScriptEdgePreviewMetadataBindingWorkerLoader>;
 
 export type CreateScriptEdgePreviewMetadataBindingLogfwdrType = "logfwdr";
 export const CreateScriptEdgePreviewMetadataBindingLogfwdrType = S.String;
@@ -9227,15 +8859,8 @@ export interface CreateScriptEdgePreviewMetadataBindingArtifacts {
   name: string;
   namespace: string;
 }
-export const CreateScriptEdgePreviewMetadataBindingArtifacts = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: CreateScriptEdgePreviewMetadataBindingArtifactsType,
-    name: S.String,
-    namespace: S.String,
-  }),
-).annotate({
-  identifier: "CreateScriptEdgePreviewMetadataBindingArtifacts",
-}) as any as S.Schema<CreateScriptEdgePreviewMetadataBindingArtifacts>;
+export const CreateScriptEdgePreviewMetadataBindingArtifacts =
+  CreateScriptEdgePreviewMetadataBindingAiSearchNamespace as any as S.Schema<CreateScriptEdgePreviewMetadataBindingArtifacts>;
 
 export type CreateScriptEdgePreviewMetadataBindingUnsafeHelloWorldType = "unsafe_hello_world";
 export const CreateScriptEdgePreviewMetadataBindingUnsafeHelloWorldType = S.String;
@@ -9318,14 +8943,8 @@ export interface CreateScriptEdgePreviewMetadataBindingInherit {
   type: CreateScriptEdgePreviewMetadataBindingInheritType;
   name: string;
 }
-export const CreateScriptEdgePreviewMetadataBindingInherit = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: CreateScriptEdgePreviewMetadataBindingInheritType,
-    name: S.String,
-  }),
-).annotate({
-  identifier: "CreateScriptEdgePreviewMetadataBindingInherit",
-}) as any as S.Schema<CreateScriptEdgePreviewMetadataBindingInherit>;
+export const CreateScriptEdgePreviewMetadataBindingInherit =
+  CreateScriptEdgePreviewMetadataBindingStream as any as S.Schema<CreateScriptEdgePreviewMetadataBindingInherit>;
 
 export type CreateScriptEdgePreviewMetadataBinding =
   | CreateScriptEdgePreviewMetadataBindingPlainText
@@ -10044,15 +9663,8 @@ export interface PutScriptBindingAiSearchNamespace {
   namespace: string;
   type: PutScriptBindingAiSearchNamespaceType;
 }
-export const PutScriptBindingAiSearchNamespace = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    namespace: S.String,
-    type: PutScriptBindingAiSearchNamespaceType,
-  }),
-).annotate({
-  identifier: "PutScriptBindingAiSearchNamespace",
-}) as any as S.Schema<PutScriptBindingAiSearchNamespace>;
+export const PutScriptBindingAiSearchNamespace =
+  BetaWorkersVersionsCreateRequestBindingsItemMessaging as any as S.Schema<PutScriptBindingAiSearchNamespace>;
 
 export type PutScriptBindingAnalyticsEngineType = "analytics_engine";
 export const PutScriptBindingAnalyticsEngineType = S.String;
@@ -10079,12 +9691,7 @@ export interface PutScriptBindingAssets {
   name: string;
   type: PutScriptBindingAssetsType;
 }
-export const PutScriptBindingAssets = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    type: PutScriptBindingAssetsType,
-  }),
-).annotate({ identifier: "PutScriptBindingAssets" }) as any as S.Schema<PutScriptBindingAssets>;
+export const PutScriptBindingAssets = PutScriptBindingAi as any as S.Schema<PutScriptBindingAssets>;
 
 export type PutScriptBindingBrowserType = "browser";
 export const PutScriptBindingBrowserType = S.String;
@@ -10093,12 +9700,8 @@ export interface PutScriptBindingBrowser {
   name: string;
   type: PutScriptBindingBrowserType;
 }
-export const PutScriptBindingBrowser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    type: PutScriptBindingBrowserType,
-  }),
-).annotate({ identifier: "PutScriptBindingBrowser" }) as any as S.Schema<PutScriptBindingBrowser>;
+export const PutScriptBindingBrowser =
+  PutScriptBindingAi as any as S.Schema<PutScriptBindingBrowser>;
 
 export type PutScriptBindingD1Type = "d1";
 export const PutScriptBindingD1Type = S.String;
@@ -10223,15 +9826,8 @@ export interface PutScriptBindingHyperdrive {
   name: string;
   type: PutScriptBindingHyperdriveType;
 }
-export const PutScriptBindingHyperdrive = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    type: PutScriptBindingHyperdriveType,
-  }),
-).annotate({
-  identifier: "PutScriptBindingHyperdrive",
-}) as any as S.Schema<PutScriptBindingHyperdrive>;
+export const PutScriptBindingHyperdrive =
+  BetaWorkersVersionsCreateRequestBindingsItemHyperdrive as any as S.Schema<PutScriptBindingHyperdrive>;
 
 export type PutScriptBindingInheritType = "inherit";
 export const PutScriptBindingInheritType = S.String;
@@ -10258,12 +9854,7 @@ export interface PutScriptBindingImages {
   name: string;
   type: PutScriptBindingImagesType;
 }
-export const PutScriptBindingImages = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    type: PutScriptBindingImagesType,
-  }),
-).annotate({ identifier: "PutScriptBindingImages" }) as any as S.Schema<PutScriptBindingImages>;
+export const PutScriptBindingImages = PutScriptBindingAi as any as S.Schema<PutScriptBindingImages>;
 
 export type PutScriptBindingJsonType = "json";
 export const PutScriptBindingJsonType = S.String;
@@ -10289,15 +9880,8 @@ export interface PutScriptBindingKvNamespace {
   namespaceId: string;
   type: PutScriptBindingKvNamespaceType;
 }
-export const PutScriptBindingKvNamespace = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    namespaceId: S.String.pipe(T.Body("namespace_id")),
-    type: PutScriptBindingKvNamespaceType,
-  }),
-).annotate({
-  identifier: "PutScriptBindingKvNamespace",
-}) as any as S.Schema<PutScriptBindingKvNamespace>;
+export const PutScriptBindingKvNamespace =
+  BetaWorkersVersionsCreateRequestBindingsItemKVNamespace as any as S.Schema<PutScriptBindingKvNamespace>;
 
 export type PutScriptBindingMediaType = "media";
 export const PutScriptBindingMediaType = S.String;
@@ -10306,12 +9890,7 @@ export interface PutScriptBindingMedia {
   name: string;
   type: PutScriptBindingMediaType;
 }
-export const PutScriptBindingMedia = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    type: PutScriptBindingMediaType,
-  }),
-).annotate({ identifier: "PutScriptBindingMedia" }) as any as S.Schema<PutScriptBindingMedia>;
+export const PutScriptBindingMedia = PutScriptBindingAi as any as S.Schema<PutScriptBindingMedia>;
 
 export type PutScriptBindingMtlsCertificateType = "mtls_certificate";
 export const PutScriptBindingMtlsCertificateType = S.String;
@@ -10339,15 +9918,8 @@ export interface PutScriptBindingPlainText {
   text: string;
   type: PutScriptBindingPlainTextType;
 }
-export const PutScriptBindingPlainText = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    text: S.String,
-    type: PutScriptBindingPlainTextType,
-  }),
-).annotate({
-  identifier: "PutScriptBindingPlainText",
-}) as any as S.Schema<PutScriptBindingPlainText>;
+export const PutScriptBindingPlainText =
+  ScriptsSecretsBulkUpdateRequestSecretsValueSecretText as any as S.Schema<PutScriptBindingPlainText>;
 
 export type PutScriptBindingPipelinesType = "pipelines";
 export const PutScriptBindingPipelinesType = S.String;
@@ -10357,15 +9929,8 @@ export interface PutScriptBindingPipelines {
   pipeline: string;
   type: PutScriptBindingPipelinesType;
 }
-export const PutScriptBindingPipelines = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    pipeline: S.String,
-    type: PutScriptBindingPipelinesType,
-  }),
-).annotate({
-  identifier: "PutScriptBindingPipelines",
-}) as any as S.Schema<PutScriptBindingPipelines>;
+export const PutScriptBindingPipelines =
+  BetaWorkersVersionsCreateRequestBindingsItemPipelines as any as S.Schema<PutScriptBindingPipelines>;
 
 export type PutScriptBindingQueueType = "queue";
 export const PutScriptBindingQueueType = S.String;
@@ -10447,15 +10012,8 @@ export interface PutScriptBindingSecretText {
   text: string;
   type: PutScriptBindingSecretTextType;
 }
-export const PutScriptBindingSecretText = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    text: S.String,
-    type: PutScriptBindingSecretTextType,
-  }),
-).annotate({
-  identifier: "PutScriptBindingSecretText",
-}) as any as S.Schema<PutScriptBindingSecretText>;
+export const PutScriptBindingSecretText =
+  ScriptsSecretsBulkUpdateRequestSecretsValueSecretText as any as S.Schema<PutScriptBindingSecretText>;
 
 export type PutScriptBindingSendEmailType = "send_email";
 export const PutScriptBindingSendEmailType = S.String;
@@ -10511,13 +10069,8 @@ export interface PutScriptBindingTextBlob {
   part: string;
   type: PutScriptBindingTextBlobType;
 }
-export const PutScriptBindingTextBlob = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    part: S.String,
-    type: PutScriptBindingTextBlobType,
-  }),
-).annotate({ identifier: "PutScriptBindingTextBlob" }) as any as S.Schema<PutScriptBindingTextBlob>;
+export const PutScriptBindingTextBlob =
+  PutScriptBindingDataBlob as any as S.Schema<PutScriptBindingTextBlob>;
 
 export type PutScriptBindingVectorizeType = "vectorize";
 export const PutScriptBindingVectorizeType = S.String;
@@ -10527,15 +10080,8 @@ export interface PutScriptBindingVectorize {
   name: string;
   type: PutScriptBindingVectorizeType;
 }
-export const PutScriptBindingVectorize = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    indexName: S.String.pipe(T.Body("index_name")),
-    name: S.String,
-    type: PutScriptBindingVectorizeType,
-  }),
-).annotate({
-  identifier: "PutScriptBindingVectorize",
-}) as any as S.Schema<PutScriptBindingVectorize>;
+export const PutScriptBindingVectorize =
+  BetaWorkersVersionsCreateRequestBindingsItemVectorize as any as S.Schema<PutScriptBindingVectorize>;
 
 export type PutScriptBindingVersionMetadataType = "version_metadata";
 export const PutScriptBindingVersionMetadataType = S.String;
@@ -10544,14 +10090,8 @@ export interface PutScriptBindingVersionMetadata {
   name: string;
   type: PutScriptBindingVersionMetadataType;
 }
-export const PutScriptBindingVersionMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    type: PutScriptBindingVersionMetadataType,
-  }),
-).annotate({
-  identifier: "PutScriptBindingVersionMetadata",
-}) as any as S.Schema<PutScriptBindingVersionMetadata>;
+export const PutScriptBindingVersionMetadata =
+  BetaWorkersVersionsCreateRequestBindingsItemAI as any as S.Schema<PutScriptBindingVersionMetadata>;
 
 export type PutScriptBindingSecretsStoreSecretType = "secrets_store_secret";
 export const PutScriptBindingSecretsStoreSecretType = S.String;
@@ -10606,9 +10146,8 @@ export const PutScriptBindingSecretKeyUsage = S.String;
 export type PutScriptBindingSecretKeyUsagesList = Array<
   PutScriptBindingSecretKeyUsage | (string & {})
 >;
-export const PutScriptBindingSecretKeyUsagesList = /*@__PURE__*/ S.Array(
-  PutScriptBindingSecretKeyUsage,
-) as any as S.Schema<PutScriptBindingSecretKeyUsagesList>;
+export const PutScriptBindingSecretKeyUsagesList =
+  ScriptsSecretsBulkUpdateRequestSecretsValueSecretKeyUsagesList as any as S.Schema<PutScriptBindingSecretKeyUsagesList>;
 
 export type PutScriptBindingSecretKeyType = "secret_key";
 export const PutScriptBindingSecretKeyType = S.String;
@@ -10664,15 +10203,8 @@ export interface PutScriptBindingWasmModule {
   part: string;
   type: PutScriptBindingWasmModuleType;
 }
-export const PutScriptBindingWasmModule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    part: S.String,
-    type: PutScriptBindingWasmModuleType,
-  }),
-).annotate({
-  identifier: "PutScriptBindingWasmModule",
-}) as any as S.Schema<PutScriptBindingWasmModule>;
+export const PutScriptBindingWasmModule =
+  BetaWorkersVersionsCreateRequestBindingsItemDataBlob as any as S.Schema<PutScriptBindingWasmModule>;
 
 export type PutScriptBindingVpcServiceType = "vpc_service";
 export const PutScriptBindingVpcServiceType = S.String;
@@ -10682,15 +10214,8 @@ export interface PutScriptBindingVpcService {
   serviceId: string;
   type: PutScriptBindingVpcServiceType;
 }
-export const PutScriptBindingVpcService = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    serviceId: S.String.pipe(T.Body("service_id")),
-    type: PutScriptBindingVpcServiceType,
-  }),
-).annotate({
-  identifier: "PutScriptBindingVpcService",
-}) as any as S.Schema<PutScriptBindingVpcService>;
+export const PutScriptBindingVpcService =
+  BetaWorkersVersionsCreateRequestBindingsItemVPCService as any as S.Schema<PutScriptBindingVpcService>;
 
 export type PutScriptBindingVpcNetworkType = "vpc_network";
 export const PutScriptBindingVpcNetworkType = S.String;
@@ -10719,14 +10244,8 @@ export interface PutScriptBindingWorkerLoader {
   name: string;
   type: PutScriptBindingWorkerLoaderType;
 }
-export const PutScriptBindingWorkerLoader = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    type: PutScriptBindingWorkerLoaderType,
-  }),
-).annotate({
-  identifier: "PutScriptBindingWorkerLoader",
-}) as any as S.Schema<PutScriptBindingWorkerLoader>;
+export const PutScriptBindingWorkerLoader =
+  BetaWorkersVersionsCreateRequestBindingsItemAI as any as S.Schema<PutScriptBindingWorkerLoader>;
 
 export type PutScriptBindingArtifactsType = "artifacts";
 export const PutScriptBindingArtifactsType = S.String;
@@ -10736,15 +10255,8 @@ export interface PutScriptBindingArtifacts {
   namespace: string;
   type: PutScriptBindingArtifactsType;
 }
-export const PutScriptBindingArtifacts = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    namespace: S.String,
-    type: PutScriptBindingArtifactsType,
-  }),
-).annotate({
-  identifier: "PutScriptBindingArtifacts",
-}) as any as S.Schema<PutScriptBindingArtifacts>;
+export const PutScriptBindingArtifacts =
+  BetaWorkersVersionsCreateRequestBindingsItemMessaging as any as S.Schema<PutScriptBindingArtifacts>;
 
 export type PutScriptBindingStreamType = "stream";
 export const PutScriptBindingStreamType = S.String;
@@ -10753,12 +10265,7 @@ export interface PutScriptBindingStream {
   name: string;
   type: PutScriptBindingStreamType;
 }
-export const PutScriptBindingStream = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    type: PutScriptBindingStreamType,
-  }),
-).annotate({ identifier: "PutScriptBindingStream" }) as any as S.Schema<PutScriptBindingStream>;
+export const PutScriptBindingStream = PutScriptBindingAi as any as S.Schema<PutScriptBindingStream>;
 
 export type PutScriptBindingK2Type = "k2";
 export const PutScriptBindingK2Type = S.String;
@@ -11142,40 +10649,22 @@ export interface PutScriptPlacementTargetedRegion {
   mode: PutScriptPlacementTargetedMode;
   region: string;
 }
-export const PutScriptPlacementTargetedRegion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: PutScriptPlacementTargetedMode,
-    region: S.String,
-  }),
-).annotate({
-  identifier: "PutScriptPlacementTargetedRegion",
-}) as any as S.Schema<PutScriptPlacementTargetedRegion>;
+export const PutScriptPlacementTargetedRegion =
+  BetaWorkersVersionsCreateRequestPlacementCase4 as any as S.Schema<PutScriptPlacementTargetedRegion>;
 
 export interface PutScriptPlacementTargetedHostname {
   hostname: string;
   mode: PutScriptPlacementTargetedMode;
 }
-export const PutScriptPlacementTargetedHostname = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hostname: S.String,
-    mode: PutScriptPlacementTargetedMode,
-  }),
-).annotate({
-  identifier: "PutScriptPlacementTargetedHostname",
-}) as any as S.Schema<PutScriptPlacementTargetedHostname>;
+export const PutScriptPlacementTargetedHostname =
+  BetaWorkersVersionsCreateRequestPlacementCase5 as any as S.Schema<PutScriptPlacementTargetedHostname>;
 
 export interface PutScriptPlacementTargetedHost {
   host: string;
   mode: PutScriptPlacementTargetedMode;
 }
-export const PutScriptPlacementTargetedHost = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    host: S.String,
-    mode: PutScriptPlacementTargetedMode,
-  }),
-).annotate({
-  identifier: "PutScriptPlacementTargetedHost",
-}) as any as S.Schema<PutScriptPlacementTargetedHost>;
+export const PutScriptPlacementTargetedHost =
+  BetaWorkersVersionsCreateRequestPlacementCase6 as any as S.Schema<PutScriptPlacementTargetedHost>;
 
 export type PutScriptPlacementTargetRegion = CreateScriptEdgePreviewMetadataPlacementRegion;
 export const PutScriptPlacementTargetRegion = CreateScriptEdgePreviewMetadataPlacementRegion;
@@ -11723,17 +11212,7 @@ export interface ScriptsVersionsCreateResponseResourcesScriptRuntimeExportsValue
   type: ScriptsVersionsCreateResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectTransferredExportType;
 }
 export const ScriptsVersionsCreateResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectTransferredExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state:
-        ScriptsVersionsCreateResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectTransferredExportState,
-      transferredTo: S.String.pipe(T.Body("transferred_to")),
-      type: ScriptsVersionsCreateResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectTransferredExportType,
-    }),
-  ).annotate({
-    identifier:
-      "ScriptsVersionsCreateResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectTransferredExport",
-  }) as any as S.Schema<ScriptsVersionsCreateResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectTransferredExport>;
+  BetaWorkersVersionsCreateResponseExportsValueWorkersDurableObjectTransferredExport as any as S.Schema<ScriptsVersionsCreateResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectTransferredExport>;
 
 export type ScriptsVersionsCreateResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectExpectingTransferExportState =
   "expecting-transfer";
@@ -11764,20 +11243,7 @@ export interface ScriptsVersionsCreateResponseResourcesScriptRuntimeExportsValue
   container?: string | null;
 }
 export const ScriptsVersionsCreateResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectExpectingTransferExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state:
-        ScriptsVersionsCreateResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectExpectingTransferExportState,
-      storage:
-        ScriptsVersionsCreateResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectExpectingTransferExportStorage,
-      transferFrom: S.String.pipe(T.Body("transfer_from")),
-      type: ScriptsVersionsCreateResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectExpectingTransferExportType,
-      container: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier:
-      "ScriptsVersionsCreateResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectExpectingTransferExport",
-  }) as any as S.Schema<ScriptsVersionsCreateResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectExpectingTransferExport>;
+  BetaWorkersVersionsCreateResponseExportsValueWorkersDurableObjectExpectingTransferExport as any as S.Schema<ScriptsVersionsCreateResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectExpectingTransferExport>;
 
 export type ScriptsVersionsCreateResponseResourcesScriptRuntimeExportsValue =
   | ScriptsVersionsCreateResponseResourcesScriptRuntimeExportsValueWorker
@@ -12002,22 +11468,12 @@ export interface ScriptsVersionsCreateResponseExportsReconciliationTransferredIt
   to: string;
 }
 export const ScriptsVersionsCreateResponseExportsReconciliationTransferredItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      class: S.String,
-      phase: ScriptsVersionsCreateResponseExportsReconciliationTransferredItemPhase,
-      to: S.String,
-    }),
-  ).annotate({
-    identifier: "ScriptsVersionsCreateResponseExportsReconciliationTransferredItem",
-  }) as any as S.Schema<ScriptsVersionsCreateResponseExportsReconciliationTransferredItem>;
+  BetaWorkersVersionsCreateResponseExportsReconciliationTransferredItem as any as S.Schema<ScriptsVersionsCreateResponseExportsReconciliationTransferredItem>;
 
 export type ScriptsVersionsCreateResponseExportsReconciliationTransferredList =
   Array<ScriptsVersionsCreateResponseExportsReconciliationTransferredItem>;
 export const ScriptsVersionsCreateResponseExportsReconciliationTransferredList =
-  /*@__PURE__*/ S.Array(
-    ScriptsVersionsCreateResponseExportsReconciliationTransferredItem,
-  ) as any as S.Schema<ScriptsVersionsCreateResponseExportsReconciliationTransferredList>;
+  BetaWorkersVersionsCreateResponseExportsReconciliationTransferredList as any as S.Schema<ScriptsVersionsCreateResponseExportsReconciliationTransferredList>;
 
 export type ScriptsVersionsCreateResponseExportsReconciliationUpdatedList = Array<string>;
 export const ScriptsVersionsCreateResponseExportsReconciliationUpdatedList =
@@ -12070,16 +11526,7 @@ export interface ScriptsVersionsCreateResponseExportsReconciliationWarningsItem 
   namespaceId?: string | null;
 }
 export const ScriptsVersionsCreateResponseExportsReconciliationWarningsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      class: S.String,
-      message: S.String,
-      scenario: ScriptsVersionsCreateResponseExportsReconciliationWarningsItemScenario,
-      namespaceId: S.optional(S.NullOr(S.String).pipe(T.Body("namespace_id"))),
-    }),
-  ).annotate({
-    identifier: "ScriptsVersionsCreateResponseExportsReconciliationWarningsItem",
-  }) as any as S.Schema<ScriptsVersionsCreateResponseExportsReconciliationWarningsItem>;
+  BetaWorkersVersionsCreateResponseExportsReconciliationWarningsItem as any as S.Schema<ScriptsVersionsCreateResponseExportsReconciliationWarningsItem>;
 
 export type ScriptsVersionsCreateResponseExportsReconciliationWarningsList =
   Array<ScriptsVersionsCreateResponseExportsReconciliationWarningsItem>;
@@ -12430,17 +11877,8 @@ export interface ObservabilityDestinationsDeleteResponseConfiguration {
   type: ObservabilityDestinationsDeleteResponseConfigurationType;
   url: string;
 }
-export const ObservabilityDestinationsDeleteResponseConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    destinationConf: S.String.pipe(T.Body("destination_conf")),
-    logpushDataset: ObservabilityDestinationsDeleteResponseConfigurationLogpushDataset,
-    logpushJob: S.Number,
-    type: ObservabilityDestinationsDeleteResponseConfigurationType,
-    url: S.String,
-  }),
-).annotate({
-  identifier: "ObservabilityDestinationsDeleteResponseConfiguration",
-}) as any as S.Schema<ObservabilityDestinationsDeleteResponseConfiguration>;
+export const ObservabilityDestinationsDeleteResponseConfiguration =
+  ObservabilityDestinationsCreateResponseConfiguration as any as S.Schema<ObservabilityDestinationsDeleteResponseConfiguration>;
 
 export type ObservabilityDestinationsDeleteResponseScriptsList = Array<string>;
 export const ObservabilityDestinationsDeleteResponseScriptsList =
@@ -13043,13 +12481,8 @@ export interface BetaWorkersGetResponsePreviewsBaseConfigPlacementMode {
   /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
   mode: BetaWorkersGetResponsePreviewsBaseConfigPlacementModeMode;
 }
-export const BetaWorkersGetResponsePreviewsBaseConfigPlacementMode = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: BetaWorkersGetResponsePreviewsBaseConfigPlacementModeMode,
-  }),
-).annotate({
-  identifier: "BetaWorkersGetResponsePreviewsBaseConfigPlacementMode",
-}) as any as S.Schema<BetaWorkersGetResponsePreviewsBaseConfigPlacementMode>;
+export const BetaWorkersGetResponsePreviewsBaseConfigPlacementMode =
+  BetaWorkersCreateRequestPreviewsBaseConfigPlacementMode as any as S.Schema<BetaWorkersGetResponsePreviewsBaseConfigPlacementMode>;
 
 export type BetaWorkersGetResponsePreviewsBaseConfigPlacementRegion =
   BetaWorkersCreateRequestPreviewsBaseConfigPlacementRegion;
@@ -13075,14 +12508,8 @@ export interface BetaWorkersGetResponsePreviewsBaseConfigPlacementCase4 {
   /** Cloud region for targeted placement in format 'provider:region'. */
   region: string;
 }
-export const BetaWorkersGetResponsePreviewsBaseConfigPlacementCase4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: BetaWorkersGetResponsePreviewsBaseConfigPlacementCase4Mode,
-    region: S.String,
-  }),
-).annotate({
-  identifier: "BetaWorkersGetResponsePreviewsBaseConfigPlacementCase4",
-}) as any as S.Schema<BetaWorkersGetResponsePreviewsBaseConfigPlacementCase4>;
+export const BetaWorkersGetResponsePreviewsBaseConfigPlacementCase4 =
+  BetaWorkersVersionsCreateRequestPlacementCase4 as any as S.Schema<BetaWorkersGetResponsePreviewsBaseConfigPlacementCase4>;
 
 export type BetaWorkersGetResponsePreviewsBaseConfigPlacementCase5Mode = "targeted";
 export const BetaWorkersGetResponsePreviewsBaseConfigPlacementCase5Mode = S.String;
@@ -13093,14 +12520,8 @@ export interface BetaWorkersGetResponsePreviewsBaseConfigPlacementCase5 {
   /** Targeted placement mode. */
   mode: BetaWorkersGetResponsePreviewsBaseConfigPlacementCase5Mode;
 }
-export const BetaWorkersGetResponsePreviewsBaseConfigPlacementCase5 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hostname: S.String,
-    mode: BetaWorkersGetResponsePreviewsBaseConfigPlacementCase5Mode,
-  }),
-).annotate({
-  identifier: "BetaWorkersGetResponsePreviewsBaseConfigPlacementCase5",
-}) as any as S.Schema<BetaWorkersGetResponsePreviewsBaseConfigPlacementCase5>;
+export const BetaWorkersGetResponsePreviewsBaseConfigPlacementCase5 =
+  BetaWorkersVersionsCreateRequestPlacementCase5 as any as S.Schema<BetaWorkersGetResponsePreviewsBaseConfigPlacementCase5>;
 
 export type BetaWorkersGetResponsePreviewsBaseConfigPlacementCase6Mode = "targeted";
 export const BetaWorkersGetResponsePreviewsBaseConfigPlacementCase6Mode = S.String;
@@ -13111,14 +12532,8 @@ export interface BetaWorkersGetResponsePreviewsBaseConfigPlacementCase6 {
   /** Targeted placement mode. */
   mode: BetaWorkersGetResponsePreviewsBaseConfigPlacementCase6Mode;
 }
-export const BetaWorkersGetResponsePreviewsBaseConfigPlacementCase6 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    host: S.String,
-    mode: BetaWorkersGetResponsePreviewsBaseConfigPlacementCase6Mode,
-  }),
-).annotate({
-  identifier: "BetaWorkersGetResponsePreviewsBaseConfigPlacementCase6",
-}) as any as S.Schema<BetaWorkersGetResponsePreviewsBaseConfigPlacementCase6>;
+export const BetaWorkersGetResponsePreviewsBaseConfigPlacementCase6 =
+  BetaWorkersVersionsCreateRequestPlacementCase6 as any as S.Schema<BetaWorkersGetResponsePreviewsBaseConfigPlacementCase6>;
 
 export type BetaWorkersGetResponsePreviewsBaseConfigPlacementCase7Mode = "targeted";
 export const BetaWorkersGetResponsePreviewsBaseConfigPlacementCase7Mode = S.String;
@@ -13404,14 +12819,8 @@ export interface BetaWorkersVersionsGetResponseBindingsItemAI {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsGetResponseBindingsItemAIType;
 }
-export const BetaWorkersVersionsGetResponseBindingsItemAI = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    type: BetaWorkersVersionsGetResponseBindingsItemAIType,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsGetResponseBindingsItemAI",
-}) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemAI>;
+export const BetaWorkersVersionsGetResponseBindingsItemAI =
+  BetaWorkersVersionsCreateRequestBindingsItemAI as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemAI>;
 
 export type BetaWorkersVersionsGetResponseBindingsItemAISearchType = "ai_search";
 export const BetaWorkersVersionsGetResponseBindingsItemAISearchType = S.String;
@@ -13426,16 +12835,8 @@ export interface BetaWorkersVersionsGetResponseBindingsItemAISearch {
   /** The namespace the instance belongs to. Defaults to "default" if omitted. Customers who don't use namespaces can simply omit this field. */
   namespace?: string | null;
 }
-export const BetaWorkersVersionsGetResponseBindingsItemAISearch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instanceName: S.String.pipe(T.Body("instance_name")),
-    name: S.String,
-    type: BetaWorkersVersionsGetResponseBindingsItemAISearchType,
-    namespace: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsGetResponseBindingsItemAISearch",
-}) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemAISearch>;
+export const BetaWorkersVersionsGetResponseBindingsItemAISearch =
+  BetaWorkersVersionsCreateResponseBindingsItemAISearch as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemAISearch>;
 
 export type BetaWorkersVersionsGetResponseBindingsItemAISearchNamespaceType = "ai_search_namespace";
 export const BetaWorkersVersionsGetResponseBindingsItemAISearchNamespaceType = S.String;
@@ -13470,15 +12871,8 @@ export interface BetaWorkersVersionsGetResponseBindingsItemMessaging {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsGetResponseBindingsItemMessagingType;
 }
-export const BetaWorkersVersionsGetResponseBindingsItemMessaging = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    namespace: S.String,
-    type: BetaWorkersVersionsGetResponseBindingsItemMessagingType,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsGetResponseBindingsItemMessaging",
-}) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemMessaging>;
+export const BetaWorkersVersionsGetResponseBindingsItemMessaging =
+  BetaWorkersVersionsCreateRequestBindingsItemMessaging as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemMessaging>;
 
 export type BetaWorkersVersionsGetResponseBindingsItemAnalyticsEngineType = "analytics_engine";
 export const BetaWorkersVersionsGetResponseBindingsItemAnalyticsEngineType = S.String;
@@ -13491,16 +12885,8 @@ export interface BetaWorkersVersionsGetResponseBindingsItemAnalyticsEngine {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsGetResponseBindingsItemAnalyticsEngineType;
 }
-export const BetaWorkersVersionsGetResponseBindingsItemAnalyticsEngine = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      dataset: S.String,
-      name: S.String,
-      type: BetaWorkersVersionsGetResponseBindingsItemAnalyticsEngineType,
-    }),
-).annotate({
-  identifier: "BetaWorkersVersionsGetResponseBindingsItemAnalyticsEngine",
-}) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemAnalyticsEngine>;
+export const BetaWorkersVersionsGetResponseBindingsItemAnalyticsEngine =
+  BetaWorkersVersionsCreateRequestBindingsItemAnalyticsEngine as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemAnalyticsEngine>;
 
 export type BetaWorkersVersionsGetResponseBindingsItemArtifactsType = "artifacts";
 export const BetaWorkersVersionsGetResponseBindingsItemArtifactsType = S.String;
@@ -13513,15 +12899,8 @@ export interface BetaWorkersVersionsGetResponseBindingsItemArtifacts {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsGetResponseBindingsItemArtifactsType;
 }
-export const BetaWorkersVersionsGetResponseBindingsItemArtifacts = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    namespace: S.String,
-    type: BetaWorkersVersionsGetResponseBindingsItemArtifactsType,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsGetResponseBindingsItemArtifacts",
-}) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemArtifacts>;
+export const BetaWorkersVersionsGetResponseBindingsItemArtifacts =
+  BetaWorkersVersionsCreateRequestBindingsItemMessaging as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemArtifacts>;
 
 export type BetaWorkersVersionsGetResponseBindingsItemAssetsType = "assets";
 export const BetaWorkersVersionsGetResponseBindingsItemAssetsType = S.String;
@@ -13532,14 +12911,8 @@ export interface BetaWorkersVersionsGetResponseBindingsItemAssets {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsGetResponseBindingsItemAssetsType;
 }
-export const BetaWorkersVersionsGetResponseBindingsItemAssets = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    type: BetaWorkersVersionsGetResponseBindingsItemAssetsType,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsGetResponseBindingsItemAssets",
-}) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemAssets>;
+export const BetaWorkersVersionsGetResponseBindingsItemAssets =
+  BetaWorkersVersionsCreateRequestBindingsItemAI as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemAssets>;
 
 export type BetaWorkersVersionsGetResponseBindingsItemBrowserType = "browser";
 export const BetaWorkersVersionsGetResponseBindingsItemBrowserType = S.String;
@@ -13550,14 +12923,8 @@ export interface BetaWorkersVersionsGetResponseBindingsItemBrowser {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsGetResponseBindingsItemBrowserType;
 }
-export const BetaWorkersVersionsGetResponseBindingsItemBrowser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    type: BetaWorkersVersionsGetResponseBindingsItemBrowserType,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsGetResponseBindingsItemBrowser",
-}) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemBrowser>;
+export const BetaWorkersVersionsGetResponseBindingsItemBrowser =
+  BetaWorkersVersionsCreateRequestBindingsItemAI as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemBrowser>;
 
 export type BetaWorkersVersionsGetResponseBindingsItemD1Type = "d1";
 export const BetaWorkersVersionsGetResponseBindingsItemD1Type = S.String;
@@ -13572,16 +12939,8 @@ export interface BetaWorkersVersionsGetResponseBindingsItemD1 {
   /** This property has been renamed to `database_id`. */
   id?: string | null;
 }
-export const BetaWorkersVersionsGetResponseBindingsItemD1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    databaseId: S.String.pipe(T.Body("database_id")),
-    name: S.String,
-    type: BetaWorkersVersionsGetResponseBindingsItemD1Type,
-    id: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsGetResponseBindingsItemD1",
-}) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemD1>;
+export const BetaWorkersVersionsGetResponseBindingsItemD1 =
+  BetaWorkersVersionsCreateResponseBindingsItemD1 as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemD1>;
 
 export type BetaWorkersVersionsGetResponseBindingsItemDataBlobType = "data_blob";
 export const BetaWorkersVersionsGetResponseBindingsItemDataBlobType = S.String;
@@ -13594,15 +12953,8 @@ export interface BetaWorkersVersionsGetResponseBindingsItemDataBlob {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsGetResponseBindingsItemDataBlobType;
 }
-export const BetaWorkersVersionsGetResponseBindingsItemDataBlob = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    part: S.String,
-    type: BetaWorkersVersionsGetResponseBindingsItemDataBlobType,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsGetResponseBindingsItemDataBlob",
-}) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemDataBlob>;
+export const BetaWorkersVersionsGetResponseBindingsItemDataBlob =
+  BetaWorkersVersionsCreateRequestBindingsItemDataBlob as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemDataBlob>;
 
 export type BetaWorkersVersionsGetResponseBindingsItemDispatchNamespaceType = "dispatch_namespace";
 export const BetaWorkersVersionsGetResponseBindingsItemDispatchNamespaceType = S.String;
@@ -13676,19 +13028,7 @@ export interface BetaWorkersVersionsGetResponseBindingsItemDurableObjectNamespac
   scriptName?: string | null;
 }
 export const BetaWorkersVersionsGetResponseBindingsItemDurableObjectNamespace =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      type: BetaWorkersVersionsGetResponseBindingsItemDurableObjectNamespaceType,
-      className: S.optional(S.NullOr(S.String).pipe(T.Body("class_name"))),
-      dispatchNamespace: S.optional(S.NullOr(S.String).pipe(T.Body("dispatch_namespace"))),
-      environment: S.optional(S.NullOr(S.String)),
-      namespaceId: S.optional(S.NullOr(S.String).pipe(T.Body("namespace_id"))),
-      scriptName: S.optional(S.NullOr(S.String).pipe(T.Body("script_name"))),
-    }),
-  ).annotate({
-    identifier: "BetaWorkersVersionsGetResponseBindingsItemDurableObjectNamespace",
-  }) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemDurableObjectNamespace>;
+  BetaWorkersVersionsCreateResponseBindingsItemDurableObjectNamespace as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemDurableObjectNamespace>;
 
 export type BetaWorkersVersionsGetResponseBindingsItemHyperdriveType = "hyperdrive";
 export const BetaWorkersVersionsGetResponseBindingsItemHyperdriveType = S.String;
@@ -13701,15 +13041,8 @@ export interface BetaWorkersVersionsGetResponseBindingsItemHyperdrive {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsGetResponseBindingsItemHyperdriveType;
 }
-export const BetaWorkersVersionsGetResponseBindingsItemHyperdrive = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    type: BetaWorkersVersionsGetResponseBindingsItemHyperdriveType,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsGetResponseBindingsItemHyperdrive",
-}) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemHyperdrive>;
+export const BetaWorkersVersionsGetResponseBindingsItemHyperdrive =
+  BetaWorkersVersionsCreateRequestBindingsItemHyperdrive as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemHyperdrive>;
 
 export type BetaWorkersVersionsGetResponseBindingsItemInheritType = "inherit";
 export const BetaWorkersVersionsGetResponseBindingsItemInheritType = S.String;
@@ -13724,16 +13057,8 @@ export interface BetaWorkersVersionsGetResponseBindingsItemInherit {
   /** Identifier for the version to inherit the binding from, which can be the version ID or the literal "latest" to inherit from the latest version. Defaults to inheriting the binding from the latest version. */
   versionId?: string | null;
 }
-export const BetaWorkersVersionsGetResponseBindingsItemInherit = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    type: BetaWorkersVersionsGetResponseBindingsItemInheritType,
-    oldName: S.optional(S.NullOr(S.String).pipe(T.Body("old_name"))),
-    versionId: S.optional(S.NullOr(S.String).pipe(T.Body("version_id"))),
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsGetResponseBindingsItemInherit",
-}) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemInherit>;
+export const BetaWorkersVersionsGetResponseBindingsItemInherit =
+  BetaWorkersVersionsCreateResponseBindingsItemInherit as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemInherit>;
 
 export type BetaWorkersVersionsGetResponseBindingsItemImagesType = "images";
 export const BetaWorkersVersionsGetResponseBindingsItemImagesType = S.String;
@@ -13744,14 +13069,8 @@ export interface BetaWorkersVersionsGetResponseBindingsItemImages {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsGetResponseBindingsItemImagesType;
 }
-export const BetaWorkersVersionsGetResponseBindingsItemImages = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    type: BetaWorkersVersionsGetResponseBindingsItemImagesType,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsGetResponseBindingsItemImages",
-}) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemImages>;
+export const BetaWorkersVersionsGetResponseBindingsItemImages =
+  BetaWorkersVersionsCreateRequestBindingsItemAI as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemImages>;
 
 export type BetaWorkersVersionsGetResponseBindingsItemJsonType = "json";
 export const BetaWorkersVersionsGetResponseBindingsItemJsonType = S.String;
@@ -13764,15 +13083,8 @@ export interface BetaWorkersVersionsGetResponseBindingsItemJson {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsGetResponseBindingsItemJsonType;
 }
-export const BetaWorkersVersionsGetResponseBindingsItemJson = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    json: S.Unknown,
-    name: S.String,
-    type: BetaWorkersVersionsGetResponseBindingsItemJsonType,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsGetResponseBindingsItemJson",
-}) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemJson>;
+export const BetaWorkersVersionsGetResponseBindingsItemJson =
+  BetaWorkersVersionsCreateRequestBindingsItemJson as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemJson>;
 
 export type BetaWorkersVersionsGetResponseBindingsItemKVNamespaceType = "kv_namespace";
 export const BetaWorkersVersionsGetResponseBindingsItemKVNamespaceType = S.String;
@@ -13785,15 +13097,8 @@ export interface BetaWorkersVersionsGetResponseBindingsItemKVNamespace {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsGetResponseBindingsItemKVNamespaceType;
 }
-export const BetaWorkersVersionsGetResponseBindingsItemKVNamespace = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    namespaceId: S.String.pipe(T.Body("namespace_id")),
-    type: BetaWorkersVersionsGetResponseBindingsItemKVNamespaceType,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsGetResponseBindingsItemKVNamespace",
-}) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemKVNamespace>;
+export const BetaWorkersVersionsGetResponseBindingsItemKVNamespace =
+  BetaWorkersVersionsCreateRequestBindingsItemKVNamespace as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemKVNamespace>;
 
 export type BetaWorkersVersionsGetResponseBindingsItemMediaType = "media";
 export const BetaWorkersVersionsGetResponseBindingsItemMediaType = S.String;
@@ -13804,14 +13109,8 @@ export interface BetaWorkersVersionsGetResponseBindingsItemMedia {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsGetResponseBindingsItemMediaType;
 }
-export const BetaWorkersVersionsGetResponseBindingsItemMedia = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    type: BetaWorkersVersionsGetResponseBindingsItemMediaType,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsGetResponseBindingsItemMedia",
-}) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemMedia>;
+export const BetaWorkersVersionsGetResponseBindingsItemMedia =
+  BetaWorkersVersionsCreateRequestBindingsItemAI as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemMedia>;
 
 export type BetaWorkersVersionsGetResponseBindingsItemMTLSCertificateType = "mtls_certificate";
 export const BetaWorkersVersionsGetResponseBindingsItemMTLSCertificateType = S.String;
@@ -13824,16 +13123,8 @@ export interface BetaWorkersVersionsGetResponseBindingsItemMTLSCertificate {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsGetResponseBindingsItemMTLSCertificateType;
 }
-export const BetaWorkersVersionsGetResponseBindingsItemMTLSCertificate = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      certificateId: S.String.pipe(T.Body("certificate_id")),
-      name: S.String,
-      type: BetaWorkersVersionsGetResponseBindingsItemMTLSCertificateType,
-    }),
-).annotate({
-  identifier: "BetaWorkersVersionsGetResponseBindingsItemMTLSCertificate",
-}) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemMTLSCertificate>;
+export const BetaWorkersVersionsGetResponseBindingsItemMTLSCertificate =
+  BetaWorkersVersionsCreateRequestBindingsItemMTLSCertificate as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemMTLSCertificate>;
 
 export type BetaWorkersVersionsGetResponseBindingsItemPlainTextType = "plain_text";
 export const BetaWorkersVersionsGetResponseBindingsItemPlainTextType = S.String;
@@ -13846,15 +13137,8 @@ export interface BetaWorkersVersionsGetResponseBindingsItemPlainText {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsGetResponseBindingsItemPlainTextType;
 }
-export const BetaWorkersVersionsGetResponseBindingsItemPlainText = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    text: S.String,
-    type: BetaWorkersVersionsGetResponseBindingsItemPlainTextType,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsGetResponseBindingsItemPlainText",
-}) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemPlainText>;
+export const BetaWorkersVersionsGetResponseBindingsItemPlainText =
+  ScriptsSecretsBulkUpdateRequestSecretsValueSecretText as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemPlainText>;
 
 export type BetaWorkersVersionsGetResponseBindingsItemPipelinesType = "pipelines";
 export const BetaWorkersVersionsGetResponseBindingsItemPipelinesType = S.String;
@@ -13867,15 +13151,8 @@ export interface BetaWorkersVersionsGetResponseBindingsItemPipelines {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsGetResponseBindingsItemPipelinesType;
 }
-export const BetaWorkersVersionsGetResponseBindingsItemPipelines = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    pipeline: S.String,
-    type: BetaWorkersVersionsGetResponseBindingsItemPipelinesType,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsGetResponseBindingsItemPipelines",
-}) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemPipelines>;
+export const BetaWorkersVersionsGetResponseBindingsItemPipelines =
+  BetaWorkersVersionsCreateRequestBindingsItemPipelines as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemPipelines>;
 
 export type BetaWorkersVersionsGetResponseBindingsItemK2Type = "k2";
 export const BetaWorkersVersionsGetResponseBindingsItemK2Type = S.String;
@@ -13888,15 +13165,8 @@ export interface BetaWorkersVersionsGetResponseBindingsItemK2 {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsGetResponseBindingsItemK2Type;
 }
-export const BetaWorkersVersionsGetResponseBindingsItemK2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    stream: S.String,
-    type: BetaWorkersVersionsGetResponseBindingsItemK2Type,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsGetResponseBindingsItemK2",
-}) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemK2>;
+export const BetaWorkersVersionsGetResponseBindingsItemK2 =
+  BetaWorkersVersionsCreateRequestBindingsItemK2 as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemK2>;
 
 export type BetaWorkersVersionsGetResponseBindingsItemQueueType = "queue";
 export const BetaWorkersVersionsGetResponseBindingsItemQueueType = S.String;
@@ -13909,15 +13179,8 @@ export interface BetaWorkersVersionsGetResponseBindingsItemQueue {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsGetResponseBindingsItemQueueType;
 }
-export const BetaWorkersVersionsGetResponseBindingsItemQueue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    queueName: S.String.pipe(T.Body("queue_name")),
-    type: BetaWorkersVersionsGetResponseBindingsItemQueueType,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsGetResponseBindingsItemQueue",
-}) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemQueue>;
+export const BetaWorkersVersionsGetResponseBindingsItemQueue =
+  BetaWorkersVersionsCreateRequestBindingsItemQueue as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemQueue>;
 
 export type BetaWorkersVersionsGetResponseBindingsItemRatelimitSimple =
   BetaWorkersVersionsCreateResponseBindingsItemRatelimitSimple;
@@ -13937,16 +13200,8 @@ export interface BetaWorkersVersionsGetResponseBindingsItemRatelimit {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsGetResponseBindingsItemRatelimitType;
 }
-export const BetaWorkersVersionsGetResponseBindingsItemRatelimit = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    namespaceId: S.String.pipe(T.Body("namespace_id")),
-    simple: BetaWorkersVersionsCreateResponseBindingsItemRatelimitSimple,
-    type: BetaWorkersVersionsGetResponseBindingsItemRatelimitType,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsGetResponseBindingsItemRatelimit",
-}) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemRatelimit>;
+export const BetaWorkersVersionsGetResponseBindingsItemRatelimit =
+  BetaWorkersVersionsCreateResponseBindingsItemRatelimit as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemRatelimit>;
 
 export type BetaWorkersVersionsGetResponseBindingsItemR2BucketType = "r2_bucket";
 export const BetaWorkersVersionsGetResponseBindingsItemR2BucketType = S.String;
@@ -13968,18 +13223,8 @@ export interface BetaWorkersVersionsGetResponseBindingsItemR2Bucket {
   /** The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket. */
   jurisdiction?: BetaWorkersVersionsGetResponseBindingsItemR2BucketJurisdiction | null;
 }
-export const BetaWorkersVersionsGetResponseBindingsItemR2Bucket = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bucketName: S.String.pipe(T.Body("bucket_name")),
-    name: S.String,
-    type: BetaWorkersVersionsGetResponseBindingsItemR2BucketType,
-    jurisdiction: S.optional(
-      S.NullOr(BetaWorkersVersionsGetResponseBindingsItemR2BucketJurisdiction),
-    ),
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsGetResponseBindingsItemR2Bucket",
-}) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemR2Bucket>;
+export const BetaWorkersVersionsGetResponseBindingsItemR2Bucket =
+  BetaWorkersVersionsCreateResponseBindingsItemR2Bucket as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemR2Bucket>;
 
 export type BetaWorkersVersionsGetResponseBindingsItemSecretTextType = "secret_text";
 export const BetaWorkersVersionsGetResponseBindingsItemSecretTextType = S.String;
@@ -13992,15 +13237,8 @@ export interface BetaWorkersVersionsGetResponseBindingsItemSecretText {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsGetResponseBindingsItemSecretTextType;
 }
-export const BetaWorkersVersionsGetResponseBindingsItemSecretText = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    text: S.String,
-    type: BetaWorkersVersionsGetResponseBindingsItemSecretTextType,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsGetResponseBindingsItemSecretText",
-}) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemSecretText>;
+export const BetaWorkersVersionsGetResponseBindingsItemSecretText =
+  ScriptsSecretsBulkUpdateRequestSecretsValueSecretText as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemSecretText>;
 
 export type BetaWorkersVersionsGetResponseBindingsItemSendEmailType = "send_email";
 export const BetaWorkersVersionsGetResponseBindingsItemSendEmailType = S.String;
@@ -14062,17 +13300,8 @@ export interface BetaWorkersVersionsGetResponseBindingsItemService {
   /** Optional environment if the Worker utilizes one. */
   environment?: string | null;
 }
-export const BetaWorkersVersionsGetResponseBindingsItemService = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    service: S.String,
-    type: BetaWorkersVersionsGetResponseBindingsItemServiceType,
-    entrypoint: S.optional(S.NullOr(S.String)),
-    environment: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsGetResponseBindingsItemService",
-}) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemService>;
+export const BetaWorkersVersionsGetResponseBindingsItemService =
+  BetaWorkersVersionsCreateResponseBindingsItemService as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemService>;
 
 export type BetaWorkersVersionsGetResponseBindingsItemTextBlobType = "text_blob";
 export const BetaWorkersVersionsGetResponseBindingsItemTextBlobType = S.String;
@@ -14085,15 +13314,8 @@ export interface BetaWorkersVersionsGetResponseBindingsItemTextBlob {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsGetResponseBindingsItemTextBlobType;
 }
-export const BetaWorkersVersionsGetResponseBindingsItemTextBlob = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    part: S.String,
-    type: BetaWorkersVersionsGetResponseBindingsItemTextBlobType,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsGetResponseBindingsItemTextBlob",
-}) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemTextBlob>;
+export const BetaWorkersVersionsGetResponseBindingsItemTextBlob =
+  BetaWorkersVersionsCreateRequestBindingsItemDataBlob as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemTextBlob>;
 
 export type BetaWorkersVersionsGetResponseBindingsItemVectorizeType = "vectorize";
 export const BetaWorkersVersionsGetResponseBindingsItemVectorizeType = S.String;
@@ -14106,15 +13328,8 @@ export interface BetaWorkersVersionsGetResponseBindingsItemVectorize {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsGetResponseBindingsItemVectorizeType;
 }
-export const BetaWorkersVersionsGetResponseBindingsItemVectorize = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    indexName: S.String.pipe(T.Body("index_name")),
-    name: S.String,
-    type: BetaWorkersVersionsGetResponseBindingsItemVectorizeType,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsGetResponseBindingsItemVectorize",
-}) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemVectorize>;
+export const BetaWorkersVersionsGetResponseBindingsItemVectorize =
+  BetaWorkersVersionsCreateRequestBindingsItemVectorize as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemVectorize>;
 
 export type BetaWorkersVersionsGetResponseBindingsItemVersionMetadataType = "version_metadata";
 export const BetaWorkersVersionsGetResponseBindingsItemVersionMetadataType = S.String;
@@ -14125,15 +13340,8 @@ export interface BetaWorkersVersionsGetResponseBindingsItemVersionMetadata {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsGetResponseBindingsItemVersionMetadataType;
 }
-export const BetaWorkersVersionsGetResponseBindingsItemVersionMetadata = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      type: BetaWorkersVersionsGetResponseBindingsItemVersionMetadataType,
-    }),
-).annotate({
-  identifier: "BetaWorkersVersionsGetResponseBindingsItemVersionMetadata",
-}) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemVersionMetadata>;
+export const BetaWorkersVersionsGetResponseBindingsItemVersionMetadata =
+  BetaWorkersVersionsCreateRequestBindingsItemVersionMetadata as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemVersionMetadata>;
 
 export type BetaWorkersVersionsGetResponseBindingsItemSecretsStoreSecretType =
   "secrets_store_secret";
@@ -14172,15 +13380,8 @@ export interface BetaWorkersVersionsGetResponseBindingsItemFlagship {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsGetResponseBindingsItemFlagshipType;
 }
-export const BetaWorkersVersionsGetResponseBindingsItemFlagship = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    appId: S.String.pipe(T.Body("app_id")),
-    name: S.String,
-    type: BetaWorkersVersionsGetResponseBindingsItemFlagshipType,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsGetResponseBindingsItemFlagship",
-}) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemFlagship>;
+export const BetaWorkersVersionsGetResponseBindingsItemFlagship =
+  BetaWorkersVersionsCreateRequestBindingsItemFlagship as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemFlagship>;
 
 export type BetaWorkersVersionsGetResponseBindingsItemSecretKeyFormat =
   | "raw"
@@ -14205,9 +13406,8 @@ export const BetaWorkersVersionsGetResponseBindingsItemSecretKeyUsagesItem = S.S
 
 export type BetaWorkersVersionsGetResponseBindingsItemSecretKeyUsagesList =
   Array<BetaWorkersVersionsGetResponseBindingsItemSecretKeyUsagesItem>;
-export const BetaWorkersVersionsGetResponseBindingsItemSecretKeyUsagesList = /*@__PURE__*/ S.Array(
-  BetaWorkersVersionsGetResponseBindingsItemSecretKeyUsagesItem,
-) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemSecretKeyUsagesList>;
+export const BetaWorkersVersionsGetResponseBindingsItemSecretKeyUsagesList =
+  ScriptsSecretsBulkUpdateRequestSecretsValueSecretKeyUsagesList as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemSecretKeyUsagesList>;
 
 export interface BetaWorkersVersionsGetResponseBindingsItemSecretKey {
   /** Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
@@ -14225,19 +13425,8 @@ export interface BetaWorkersVersionsGetResponseBindingsItemSecretKey {
   /** Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk". */
   keyJwk?: unknown | null;
 }
-export const BetaWorkersVersionsGetResponseBindingsItemSecretKey = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    algorithm: S.Unknown,
-    format: BetaWorkersVersionsGetResponseBindingsItemSecretKeyFormat,
-    name: S.String,
-    type: BetaWorkersVersionsGetResponseBindingsItemSecretKeyType,
-    usages: BetaWorkersVersionsGetResponseBindingsItemSecretKeyUsagesList,
-    keyBase64: S.optional(S.NullOr(S.String).pipe(T.Body("key_base64"))),
-    keyJwk: S.optional(S.NullOr(S.Unknown).pipe(T.Body("key_jwk"))),
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsGetResponseBindingsItemSecretKey",
-}) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemSecretKey>;
+export const BetaWorkersVersionsGetResponseBindingsItemSecretKey =
+  ScriptsSecretsBulkUpdateResultValueSecretKey as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemSecretKey>;
 
 export type BetaWorkersVersionsGetResponseBindingsItemWorkflowType = "workflow";
 export const BetaWorkersVersionsGetResponseBindingsItemWorkflowType = S.String;
@@ -14254,17 +13443,8 @@ export interface BetaWorkersVersionsGetResponseBindingsItemWorkflow {
   /** Script name that contains the Workflow. If not provided, defaults to this script name. */
   scriptName?: string | null;
 }
-export const BetaWorkersVersionsGetResponseBindingsItemWorkflow = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    type: BetaWorkersVersionsGetResponseBindingsItemWorkflowType,
-    workflowName: S.String.pipe(T.Body("workflow_name")),
-    className: S.optional(S.NullOr(S.String).pipe(T.Body("class_name"))),
-    scriptName: S.optional(S.NullOr(S.String).pipe(T.Body("script_name"))),
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsGetResponseBindingsItemWorkflow",
-}) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemWorkflow>;
+export const BetaWorkersVersionsGetResponseBindingsItemWorkflow =
+  BetaWorkersVersionsCreateResponseBindingsItemWorkflow as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemWorkflow>;
 
 export type BetaWorkersVersionsGetResponseBindingsItemWasmModuleType = "wasm_module";
 export const BetaWorkersVersionsGetResponseBindingsItemWasmModuleType = S.String;
@@ -14277,15 +13457,8 @@ export interface BetaWorkersVersionsGetResponseBindingsItemWasmModule {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsGetResponseBindingsItemWasmModuleType;
 }
-export const BetaWorkersVersionsGetResponseBindingsItemWasmModule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    part: S.String,
-    type: BetaWorkersVersionsGetResponseBindingsItemWasmModuleType,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsGetResponseBindingsItemWasmModule",
-}) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemWasmModule>;
+export const BetaWorkersVersionsGetResponseBindingsItemWasmModule =
+  BetaWorkersVersionsCreateRequestBindingsItemDataBlob as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemWasmModule>;
 
 export type BetaWorkersVersionsGetResponseBindingsItemVPCServiceType = "vpc_service";
 export const BetaWorkersVersionsGetResponseBindingsItemVPCServiceType = S.String;
@@ -14298,15 +13471,8 @@ export interface BetaWorkersVersionsGetResponseBindingsItemVPCService {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsGetResponseBindingsItemVPCServiceType;
 }
-export const BetaWorkersVersionsGetResponseBindingsItemVPCService = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    serviceId: S.String.pipe(T.Body("service_id")),
-    type: BetaWorkersVersionsGetResponseBindingsItemVPCServiceType,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsGetResponseBindingsItemVPCService",
-}) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemVPCService>;
+export const BetaWorkersVersionsGetResponseBindingsItemVPCService =
+  BetaWorkersVersionsCreateRequestBindingsItemVPCService as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemVPCService>;
 
 export type BetaWorkersVersionsGetResponseBindingsItemVPCNetworkType = "vpc_network";
 export const BetaWorkersVersionsGetResponseBindingsItemVPCNetworkType = S.String;
@@ -14326,17 +13492,8 @@ export interface BetaWorkersVersionsGetResponseBindingsItemVPCNetwork {
   /** UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id. */
   tunnelId?: string | null;
 }
-export const BetaWorkersVersionsGetResponseBindingsItemVPCNetwork = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    type: BetaWorkersVersionsGetResponseBindingsItemVPCNetworkType,
-    identity: S.optional(S.NullOr(BetaWorkersVersionsGetResponseBindingsItemVPCNetworkIdentity)),
-    networkId: S.optional(S.NullOr(S.String).pipe(T.Body("network_id"))),
-    tunnelId: S.optional(S.NullOr(S.String).pipe(T.Body("tunnel_id"))),
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsGetResponseBindingsItemVPCNetwork",
-}) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemVPCNetwork>;
+export const BetaWorkersVersionsGetResponseBindingsItemVPCNetwork =
+  BetaWorkersVersionsCreateResponseBindingsItemVPCNetwork as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemVPCNetwork>;
 
 export type BetaWorkersVersionsGetResponseBindingsItem =
   | BetaWorkersVersionsGetResponseBindingsItemAI
@@ -14523,15 +13680,8 @@ export interface BetaWorkersVersionsGetResponseExportsValueWorker {
   /** Live export. May be omitted; defaults to `created`. */
   state?: BetaWorkersVersionsGetResponseExportsValueWorkerState | null;
 }
-export const BetaWorkersVersionsGetResponseExportsValueWorker = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: BetaWorkersVersionsGetResponseExportsValueWorkerType,
-    cache: S.optional(S.NullOr(BetaWorkersVersionsCreateRequestExportsValueWorkerCache)),
-    state: S.optional(S.NullOr(BetaWorkersVersionsGetResponseExportsValueWorkerState)),
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsGetResponseExportsValueWorker",
-}) as any as S.Schema<BetaWorkersVersionsGetResponseExportsValueWorker>;
+export const BetaWorkersVersionsGetResponseExportsValueWorker =
+  BetaWorkersVersionsCreateResponseExportsValueWorker as any as S.Schema<BetaWorkersVersionsGetResponseExportsValueWorker>;
 
 export type BetaWorkersVersionsGetResponseExportsValueWorkersDurableObjectExportStorage =
   | "sqlite"
@@ -14556,18 +13706,7 @@ export interface BetaWorkersVersionsGetResponseExportsValueWorkersDurableObjectE
   state?: BetaWorkersVersionsGetResponseExportsValueWorkersDurableObjectExportState | null;
 }
 export const BetaWorkersVersionsGetResponseExportsValueWorkersDurableObjectExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storage: BetaWorkersVersionsGetResponseExportsValueWorkersDurableObjectExportStorage,
-      type: BetaWorkersVersionsGetResponseExportsValueWorkersDurableObjectExportType,
-      container: S.optional(S.NullOr(S.String)),
-      state: S.optional(
-        S.NullOr(BetaWorkersVersionsGetResponseExportsValueWorkersDurableObjectExportState),
-      ),
-    }),
-  ).annotate({
-    identifier: "BetaWorkersVersionsGetResponseExportsValueWorkersDurableObjectExport",
-  }) as any as S.Schema<BetaWorkersVersionsGetResponseExportsValueWorkersDurableObjectExport>;
+  BetaWorkersVersionsCreateResponseExportsValueWorkersDurableObjectExport as any as S.Schema<BetaWorkersVersionsGetResponseExportsValueWorkersDurableObjectExport>;
 
 export type BetaWorkersVersionsGetResponseExportsValueWorkersDurableObjectDeletedExportState =
   "deleted";
@@ -14586,14 +13725,7 @@ export interface BetaWorkersVersionsGetResponseExportsValueWorkersDurableObjectD
   type: BetaWorkersVersionsGetResponseExportsValueWorkersDurableObjectDeletedExportType;
 }
 export const BetaWorkersVersionsGetResponseExportsValueWorkersDurableObjectDeletedExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state: BetaWorkersVersionsGetResponseExportsValueWorkersDurableObjectDeletedExportState,
-      type: BetaWorkersVersionsGetResponseExportsValueWorkersDurableObjectDeletedExportType,
-    }),
-  ).annotate({
-    identifier: "BetaWorkersVersionsGetResponseExportsValueWorkersDurableObjectDeletedExport",
-  }) as any as S.Schema<BetaWorkersVersionsGetResponseExportsValueWorkersDurableObjectDeletedExport>;
+  BetaWorkersVersionsCreateRequestExportsValueWorkersDurableObjectDeletedExport as any as S.Schema<BetaWorkersVersionsGetResponseExportsValueWorkersDurableObjectDeletedExport>;
 
 export type BetaWorkersVersionsGetResponseExportsValueWorkersDurableObjectRenamedExportState =
   "renamed";
@@ -14614,15 +13746,7 @@ export interface BetaWorkersVersionsGetResponseExportsValueWorkersDurableObjectR
   type: BetaWorkersVersionsGetResponseExportsValueWorkersDurableObjectRenamedExportType;
 }
 export const BetaWorkersVersionsGetResponseExportsValueWorkersDurableObjectRenamedExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      renamedTo: S.String.pipe(T.Body("renamed_to")),
-      state: BetaWorkersVersionsGetResponseExportsValueWorkersDurableObjectRenamedExportState,
-      type: BetaWorkersVersionsGetResponseExportsValueWorkersDurableObjectRenamedExportType,
-    }),
-  ).annotate({
-    identifier: "BetaWorkersVersionsGetResponseExportsValueWorkersDurableObjectRenamedExport",
-  }) as any as S.Schema<BetaWorkersVersionsGetResponseExportsValueWorkersDurableObjectRenamedExport>;
+  BetaWorkersVersionsCreateRequestExportsValueWorkersDurableObjectRenamedExport as any as S.Schema<BetaWorkersVersionsGetResponseExportsValueWorkersDurableObjectRenamedExport>;
 
 export type BetaWorkersVersionsGetResponseExportsValueWorkersDurableObjectTransferredExportState =
   "transferred";
@@ -14643,15 +13767,7 @@ export interface BetaWorkersVersionsGetResponseExportsValueWorkersDurableObjectT
   type: BetaWorkersVersionsGetResponseExportsValueWorkersDurableObjectTransferredExportType;
 }
 export const BetaWorkersVersionsGetResponseExportsValueWorkersDurableObjectTransferredExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state: BetaWorkersVersionsGetResponseExportsValueWorkersDurableObjectTransferredExportState,
-      transferredTo: S.String.pipe(T.Body("transferred_to")),
-      type: BetaWorkersVersionsGetResponseExportsValueWorkersDurableObjectTransferredExportType,
-    }),
-  ).annotate({
-    identifier: "BetaWorkersVersionsGetResponseExportsValueWorkersDurableObjectTransferredExport",
-  }) as any as S.Schema<BetaWorkersVersionsGetResponseExportsValueWorkersDurableObjectTransferredExport>;
+  BetaWorkersVersionsCreateRequestExportsValueWorkersDurableObjectTransferredExport as any as S.Schema<BetaWorkersVersionsGetResponseExportsValueWorkersDurableObjectTransferredExport>;
 
 export type BetaWorkersVersionsGetResponseExportsValueWorkersDurableObjectExpectingTransferExportState =
   "expecting-transfer";
@@ -14682,20 +13798,7 @@ export interface BetaWorkersVersionsGetResponseExportsValueWorkersDurableObjectE
   container?: string | null;
 }
 export const BetaWorkersVersionsGetResponseExportsValueWorkersDurableObjectExpectingTransferExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state:
-        BetaWorkersVersionsGetResponseExportsValueWorkersDurableObjectExpectingTransferExportState,
-      storage:
-        BetaWorkersVersionsGetResponseExportsValueWorkersDurableObjectExpectingTransferExportStorage,
-      transferFrom: S.String.pipe(T.Body("transfer_from")),
-      type: BetaWorkersVersionsGetResponseExportsValueWorkersDurableObjectExpectingTransferExportType,
-      container: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier:
-      "BetaWorkersVersionsGetResponseExportsValueWorkersDurableObjectExpectingTransferExport",
-  }) as any as S.Schema<BetaWorkersVersionsGetResponseExportsValueWorkersDurableObjectExpectingTransferExport>;
+  BetaWorkersVersionsCreateResponseExportsValueWorkersDurableObjectExpectingTransferExport as any as S.Schema<BetaWorkersVersionsGetResponseExportsValueWorkersDurableObjectExpectingTransferExport>;
 
 export type BetaWorkersVersionsGetResponseExportsValue =
   | BetaWorkersVersionsGetResponseExportsValueWorker
@@ -14843,22 +13946,12 @@ export interface BetaWorkersVersionsGetResponseExportsReconciliationTransferredI
   to: string;
 }
 export const BetaWorkersVersionsGetResponseExportsReconciliationTransferredItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      class: S.String,
-      phase: BetaWorkersVersionsGetResponseExportsReconciliationTransferredItemPhase,
-      to: S.String,
-    }),
-  ).annotate({
-    identifier: "BetaWorkersVersionsGetResponseExportsReconciliationTransferredItem",
-  }) as any as S.Schema<BetaWorkersVersionsGetResponseExportsReconciliationTransferredItem>;
+  BetaWorkersVersionsCreateResponseExportsReconciliationTransferredItem as any as S.Schema<BetaWorkersVersionsGetResponseExportsReconciliationTransferredItem>;
 
 export type BetaWorkersVersionsGetResponseExportsReconciliationTransferredList =
   Array<BetaWorkersVersionsGetResponseExportsReconciliationTransferredItem>;
 export const BetaWorkersVersionsGetResponseExportsReconciliationTransferredList =
-  /*@__PURE__*/ S.Array(
-    BetaWorkersVersionsGetResponseExportsReconciliationTransferredItem,
-  ) as any as S.Schema<BetaWorkersVersionsGetResponseExportsReconciliationTransferredList>;
+  BetaWorkersVersionsCreateResponseExportsReconciliationTransferredList as any as S.Schema<BetaWorkersVersionsGetResponseExportsReconciliationTransferredList>;
 
 export type BetaWorkersVersionsGetResponseExportsReconciliationUpdatedList = Array<string>;
 export const BetaWorkersVersionsGetResponseExportsReconciliationUpdatedList =
@@ -14911,23 +14004,12 @@ export interface BetaWorkersVersionsGetResponseExportsReconciliationWarningsItem
   namespaceId?: string | null;
 }
 export const BetaWorkersVersionsGetResponseExportsReconciliationWarningsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      class: S.String,
-      message: S.String,
-      scenario: BetaWorkersVersionsGetResponseExportsReconciliationWarningsItemScenario,
-      namespaceId: S.optional(S.NullOr(S.String).pipe(T.Body("namespace_id"))),
-    }),
-  ).annotate({
-    identifier: "BetaWorkersVersionsGetResponseExportsReconciliationWarningsItem",
-  }) as any as S.Schema<BetaWorkersVersionsGetResponseExportsReconciliationWarningsItem>;
+  BetaWorkersVersionsCreateResponseExportsReconciliationWarningsItem as any as S.Schema<BetaWorkersVersionsGetResponseExportsReconciliationWarningsItem>;
 
 export type BetaWorkersVersionsGetResponseExportsReconciliationWarningsList =
   Array<BetaWorkersVersionsGetResponseExportsReconciliationWarningsItem>;
 export const BetaWorkersVersionsGetResponseExportsReconciliationWarningsList =
-  /*@__PURE__*/ S.Array(
-    BetaWorkersVersionsGetResponseExportsReconciliationWarningsItem,
-  ) as any as S.Schema<BetaWorkersVersionsGetResponseExportsReconciliationWarningsList>;
+  BetaWorkersVersionsCreateResponseExportsReconciliationWarningsList as any as S.Schema<BetaWorkersVersionsGetResponseExportsReconciliationWarningsList>;
 
 export interface BetaWorkersVersionsGetResponseExportsReconciliation {
   /** Class names for which a new namespace was provisioned. */
@@ -15168,13 +14250,8 @@ export interface BetaWorkersVersionsGetResponsePlacementMode {
   /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
   mode: BetaWorkersVersionsGetResponsePlacementModeMode;
 }
-export const BetaWorkersVersionsGetResponsePlacementMode = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: BetaWorkersVersionsGetResponsePlacementModeMode,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsGetResponsePlacementMode",
-}) as any as S.Schema<BetaWorkersVersionsGetResponsePlacementMode>;
+export const BetaWorkersVersionsGetResponsePlacementMode =
+  BetaWorkersCreateRequestPreviewsBaseConfigPlacementMode as any as S.Schema<BetaWorkersVersionsGetResponsePlacementMode>;
 
 export type BetaWorkersVersionsGetResponsePlacementRegion =
   BetaWorkersCreateRequestPreviewsBaseConfigPlacementRegion;
@@ -15200,14 +14277,8 @@ export interface BetaWorkersVersionsGetResponsePlacementCase4 {
   /** Cloud region for targeted placement in format 'provider:region'. */
   region: string;
 }
-export const BetaWorkersVersionsGetResponsePlacementCase4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: BetaWorkersVersionsGetResponsePlacementCase4Mode,
-    region: S.String,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsGetResponsePlacementCase4",
-}) as any as S.Schema<BetaWorkersVersionsGetResponsePlacementCase4>;
+export const BetaWorkersVersionsGetResponsePlacementCase4 =
+  BetaWorkersVersionsCreateRequestPlacementCase4 as any as S.Schema<BetaWorkersVersionsGetResponsePlacementCase4>;
 
 export type BetaWorkersVersionsGetResponsePlacementCase5Mode = "targeted";
 export const BetaWorkersVersionsGetResponsePlacementCase5Mode = S.String;
@@ -15218,14 +14289,8 @@ export interface BetaWorkersVersionsGetResponsePlacementCase5 {
   /** Targeted placement mode. */
   mode: BetaWorkersVersionsGetResponsePlacementCase5Mode;
 }
-export const BetaWorkersVersionsGetResponsePlacementCase5 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hostname: S.String,
-    mode: BetaWorkersVersionsGetResponsePlacementCase5Mode,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsGetResponsePlacementCase5",
-}) as any as S.Schema<BetaWorkersVersionsGetResponsePlacementCase5>;
+export const BetaWorkersVersionsGetResponsePlacementCase5 =
+  BetaWorkersVersionsCreateRequestPlacementCase5 as any as S.Schema<BetaWorkersVersionsGetResponsePlacementCase5>;
 
 export type BetaWorkersVersionsGetResponsePlacementCase6Mode = "targeted";
 export const BetaWorkersVersionsGetResponsePlacementCase6Mode = S.String;
@@ -15236,14 +14301,8 @@ export interface BetaWorkersVersionsGetResponsePlacementCase6 {
   /** Targeted placement mode. */
   mode: BetaWorkersVersionsGetResponsePlacementCase6Mode;
 }
-export const BetaWorkersVersionsGetResponsePlacementCase6 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    host: S.String,
-    mode: BetaWorkersVersionsGetResponsePlacementCase6Mode,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsGetResponsePlacementCase6",
-}) as any as S.Schema<BetaWorkersVersionsGetResponsePlacementCase6>;
+export const BetaWorkersVersionsGetResponsePlacementCase6 =
+  BetaWorkersVersionsCreateRequestPlacementCase6 as any as S.Schema<BetaWorkersVersionsGetResponsePlacementCase6>;
 
 export type BetaWorkersVersionsGetResponsePlacementCase7Mode = "targeted";
 export const BetaWorkersVersionsGetResponsePlacementCase7Mode = S.String;
@@ -15789,14 +14848,7 @@ export interface ObservabilitySharedQueriesGetResponseRunQueryParametersGroupBys
   value: string;
 }
 export const ObservabilitySharedQueriesGetResponseRunQueryParametersGroupBysItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: ObservabilitySharedQueriesGetResponseRunQueryParametersGroupBysItemType,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "ObservabilitySharedQueriesGetResponseRunQueryParametersGroupBysItem",
-  }) as any as S.Schema<ObservabilitySharedQueriesGetResponseRunQueryParametersGroupBysItem>;
+  ObservabilitySharedQueriesCreateRequestParametersGroupBysItem as any as S.Schema<ObservabilitySharedQueriesGetResponseRunQueryParametersGroupBysItem>;
 
 export type ObservabilitySharedQueriesGetResponseRunQueryParametersGroupBysList =
   Array<ObservabilitySharedQueriesGetResponseRunQueryParametersGroupBysItem>;
@@ -17846,15 +16898,8 @@ export interface ScriptsScriptAndVersionSettingsGetResponseBindingsItemAI {
   /** The kind of resource that the binding provides. */
   type: ScriptsScriptAndVersionSettingsGetResponseBindingsItemAIType;
 }
-export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemAI = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      type: ScriptsScriptAndVersionSettingsGetResponseBindingsItemAIType,
-    }),
-).annotate({
-  identifier: "ScriptsScriptAndVersionSettingsGetResponseBindingsItemAI",
-}) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemAI>;
+export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemAI =
+  BetaWorkersVersionsCreateRequestBindingsItemVersionMetadata as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemAI>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseBindingsItemAISearchType = "ai_search";
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemAISearchType = S.String;
@@ -17894,15 +16939,7 @@ export interface ScriptsScriptAndVersionSettingsGetResponseBindingsItemAISearchN
   type: ScriptsScriptAndVersionSettingsGetResponseBindingsItemAISearchNamespaceType;
 }
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemAISearchNamespace =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      namespace: S.String,
-      type: ScriptsScriptAndVersionSettingsGetResponseBindingsItemAISearchNamespaceType,
-    }),
-  ).annotate({
-    identifier: "ScriptsScriptAndVersionSettingsGetResponseBindingsItemAISearchNamespace",
-  }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemAISearchNamespace>;
+  BetaWorkersVersionsCreateRequestBindingsItemAISearchNamespace as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemAISearchNamespace>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseBindingsItemMessagingType = "messaging";
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemMessagingType = S.String;
@@ -17916,15 +16953,7 @@ export interface ScriptsScriptAndVersionSettingsGetResponseBindingsItemMessaging
   type: ScriptsScriptAndVersionSettingsGetResponseBindingsItemMessagingType;
 }
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemMessaging =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      namespace: S.String,
-      type: ScriptsScriptAndVersionSettingsGetResponseBindingsItemMessagingType,
-    }),
-  ).annotate({
-    identifier: "ScriptsScriptAndVersionSettingsGetResponseBindingsItemMessaging",
-  }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemMessaging>;
+  BetaWorkersVersionsCreateRequestBindingsItemAISearchNamespace as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemMessaging>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseBindingsItemAnalyticsEngineType =
   "analytics_engine";
@@ -17961,15 +16990,7 @@ export interface ScriptsScriptAndVersionSettingsGetResponseBindingsItemArtifacts
   type: ScriptsScriptAndVersionSettingsGetResponseBindingsItemArtifactsType;
 }
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemArtifacts =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      namespace: S.String,
-      type: ScriptsScriptAndVersionSettingsGetResponseBindingsItemArtifactsType,
-    }),
-  ).annotate({
-    identifier: "ScriptsScriptAndVersionSettingsGetResponseBindingsItemArtifacts",
-  }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemArtifacts>;
+  BetaWorkersVersionsCreateRequestBindingsItemAISearchNamespace as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemArtifacts>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseBindingsItemAssetsType = "assets";
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemAssetsType = S.String;
@@ -17980,15 +17001,8 @@ export interface ScriptsScriptAndVersionSettingsGetResponseBindingsItemAssets {
   /** The kind of resource that the binding provides. */
   type: ScriptsScriptAndVersionSettingsGetResponseBindingsItemAssetsType;
 }
-export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemAssets = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      type: ScriptsScriptAndVersionSettingsGetResponseBindingsItemAssetsType,
-    }),
-).annotate({
-  identifier: "ScriptsScriptAndVersionSettingsGetResponseBindingsItemAssets",
-}) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemAssets>;
+export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemAssets =
+  BetaWorkersVersionsCreateRequestBindingsItemVersionMetadata as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemAssets>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseBindingsItemBrowserType = "browser";
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemBrowserType = S.String;
@@ -18143,19 +17157,7 @@ export interface ScriptsScriptAndVersionSettingsGetResponseBindingsItemDurableOb
   scriptName?: string | null;
 }
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemDurableObjectNamespace =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      type: ScriptsScriptAndVersionSettingsGetResponseBindingsItemDurableObjectNamespaceType,
-      className: S.optional(S.NullOr(S.String).pipe(T.Body("class_name"))),
-      dispatchNamespace: S.optional(S.NullOr(S.String).pipe(T.Body("dispatch_namespace"))),
-      environment: S.optional(S.NullOr(S.String)),
-      namespaceId: S.optional(S.NullOr(S.String).pipe(T.Body("namespace_id"))),
-      scriptName: S.optional(S.NullOr(S.String).pipe(T.Body("script_name"))),
-    }),
-  ).annotate({
-    identifier: "ScriptsScriptAndVersionSettingsGetResponseBindingsItemDurableObjectNamespace",
-  }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemDurableObjectNamespace>;
+  BetaWorkersVersionsCreateResponseBindingsItemDurableObjectNamespace as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemDurableObjectNamespace>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseBindingsItemHyperdriveType = "hyperdrive";
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemHyperdriveType = S.String;
@@ -18213,15 +17215,8 @@ export interface ScriptsScriptAndVersionSettingsGetResponseBindingsItemImages {
   /** The kind of resource that the binding provides. */
   type: ScriptsScriptAndVersionSettingsGetResponseBindingsItemImagesType;
 }
-export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemImages = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      type: ScriptsScriptAndVersionSettingsGetResponseBindingsItemImagesType,
-    }),
-).annotate({
-  identifier: "ScriptsScriptAndVersionSettingsGetResponseBindingsItemImages",
-}) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemImages>;
+export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemImages =
+  BetaWorkersVersionsCreateRequestBindingsItemVersionMetadata as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemImages>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseBindingsItemJsonType = "json";
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemJsonType = S.String;
@@ -18276,15 +17271,8 @@ export interface ScriptsScriptAndVersionSettingsGetResponseBindingsItemMedia {
   /** The kind of resource that the binding provides. */
   type: ScriptsScriptAndVersionSettingsGetResponseBindingsItemMediaType;
 }
-export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemMedia = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      type: ScriptsScriptAndVersionSettingsGetResponseBindingsItemMediaType,
-    }),
-).annotate({
-  identifier: "ScriptsScriptAndVersionSettingsGetResponseBindingsItemMedia",
-}) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemMedia>;
+export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemMedia =
+  BetaWorkersVersionsCreateRequestBindingsItemVersionMetadata as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemMedia>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseBindingsItemMTLSCertificateType =
   "mtls_certificate";
@@ -18473,15 +17461,7 @@ export interface ScriptsScriptAndVersionSettingsGetResponseBindingsItemSecretTex
   type: ScriptsScriptAndVersionSettingsGetResponseBindingsItemSecretTextType;
 }
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemSecretText =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      text: S.String,
-      type: ScriptsScriptAndVersionSettingsGetResponseBindingsItemSecretTextType,
-    }),
-  ).annotate({
-    identifier: "ScriptsScriptAndVersionSettingsGetResponseBindingsItemSecretText",
-  }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemSecretText>;
+  ScriptsScriptAndVersionSettingsGetResponseBindingsItemPlainText as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemSecretText>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseBindingsItemSendEmailType = "send_email";
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemSendEmailType = S.String;
@@ -18569,15 +17549,7 @@ export interface ScriptsScriptAndVersionSettingsGetResponseBindingsItemTextBlob 
   type: ScriptsScriptAndVersionSettingsGetResponseBindingsItemTextBlobType;
 }
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemTextBlob =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      part: S.String,
-      type: ScriptsScriptAndVersionSettingsGetResponseBindingsItemTextBlobType,
-    }),
-  ).annotate({
-    identifier: "ScriptsScriptAndVersionSettingsGetResponseBindingsItemTextBlob",
-  }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemTextBlob>;
+  ScriptsScriptAndVersionSettingsGetResponseBindingsItemDataBlob as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemTextBlob>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseBindingsItemVectorizeType = "vectorize";
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemVectorizeType = S.String;
@@ -18612,14 +17584,7 @@ export interface ScriptsScriptAndVersionSettingsGetResponseBindingsItemVersionMe
   type: ScriptsScriptAndVersionSettingsGetResponseBindingsItemVersionMetadataType;
 }
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemVersionMetadata =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      type: ScriptsScriptAndVersionSettingsGetResponseBindingsItemVersionMetadataType,
-    }),
-  ).annotate({
-    identifier: "ScriptsScriptAndVersionSettingsGetResponseBindingsItemVersionMetadata",
-  }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemVersionMetadata>;
+  ScriptsScriptAndVersionSettingsGetResponseBindingsItemBrowser as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemVersionMetadata>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseBindingsItemSecretsStoreSecretType =
   "secrets_store_secret";
@@ -18637,16 +17602,7 @@ export interface ScriptsScriptAndVersionSettingsGetResponseBindingsItemSecretsSt
   type: ScriptsScriptAndVersionSettingsGetResponseBindingsItemSecretsStoreSecretType;
 }
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemSecretsStoreSecret =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      secretName: S.String.pipe(T.Body("secret_name")),
-      storeId: S.String.pipe(T.Body("store_id")),
-      type: ScriptsScriptAndVersionSettingsGetResponseBindingsItemSecretsStoreSecretType,
-    }),
-  ).annotate({
-    identifier: "ScriptsScriptAndVersionSettingsGetResponseBindingsItemSecretsStoreSecret",
-  }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemSecretsStoreSecret>;
+  BetaWorkersVersionsCreateRequestBindingsItemSecretsStoreSecret as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemSecretsStoreSecret>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseBindingsItemFlagshipType = "flagship";
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemFlagshipType = S.String;
@@ -18694,9 +17650,7 @@ export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemSecretKeyUsag
 export type ScriptsScriptAndVersionSettingsGetResponseBindingsItemSecretKeyUsagesList =
   Array<ScriptsScriptAndVersionSettingsGetResponseBindingsItemSecretKeyUsagesItem>;
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemSecretKeyUsagesList =
-  /*@__PURE__*/ S.Array(
-    ScriptsScriptAndVersionSettingsGetResponseBindingsItemSecretKeyUsagesItem,
-  ) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemSecretKeyUsagesList>;
+  BetaWorkersVersionsCreateRequestBindingsItemSecretKeyUsagesList as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemSecretKeyUsagesList>;
 
 export interface ScriptsScriptAndVersionSettingsGetResponseBindingsItemSecretKey {
   /** Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
@@ -18769,15 +17723,7 @@ export interface ScriptsScriptAndVersionSettingsGetResponseBindingsItemWasmModul
   type: ScriptsScriptAndVersionSettingsGetResponseBindingsItemWasmModuleType;
 }
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemWasmModule =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      part: S.String,
-      type: ScriptsScriptAndVersionSettingsGetResponseBindingsItemWasmModuleType,
-    }),
-  ).annotate({
-    identifier: "ScriptsScriptAndVersionSettingsGetResponseBindingsItemWasmModule",
-  }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemWasmModule>;
+  ScriptsScriptAndVersionSettingsGetResponseBindingsItemDataBlob as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemWasmModule>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseBindingsItemVPCServiceType = "vpc_service";
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemVPCServiceType = S.String;
@@ -19083,16 +18029,7 @@ export interface ScriptsScriptAndVersionSettingsGetResponseExportsValueWorkersDu
   type: ScriptsScriptAndVersionSettingsGetResponseExportsValueWorkersDurableObjectDeletedExportType;
 }
 export const ScriptsScriptAndVersionSettingsGetResponseExportsValueWorkersDurableObjectDeletedExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state:
-        ScriptsScriptAndVersionSettingsGetResponseExportsValueWorkersDurableObjectDeletedExportState,
-      type: ScriptsScriptAndVersionSettingsGetResponseExportsValueWorkersDurableObjectDeletedExportType,
-    }),
-  ).annotate({
-    identifier:
-      "ScriptsScriptAndVersionSettingsGetResponseExportsValueWorkersDurableObjectDeletedExport",
-  }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseExportsValueWorkersDurableObjectDeletedExport>;
+  ScriptsVersionsCreateResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectDeletedExport as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseExportsValueWorkersDurableObjectDeletedExport>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseExportsValueWorkersDurableObjectRenamedExportState =
   "renamed";
@@ -19113,17 +18050,7 @@ export interface ScriptsScriptAndVersionSettingsGetResponseExportsValueWorkersDu
   type: ScriptsScriptAndVersionSettingsGetResponseExportsValueWorkersDurableObjectRenamedExportType;
 }
 export const ScriptsScriptAndVersionSettingsGetResponseExportsValueWorkersDurableObjectRenamedExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      renamedTo: S.String.pipe(T.Body("renamed_to")),
-      state:
-        ScriptsScriptAndVersionSettingsGetResponseExportsValueWorkersDurableObjectRenamedExportState,
-      type: ScriptsScriptAndVersionSettingsGetResponseExportsValueWorkersDurableObjectRenamedExportType,
-    }),
-  ).annotate({
-    identifier:
-      "ScriptsScriptAndVersionSettingsGetResponseExportsValueWorkersDurableObjectRenamedExport",
-  }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseExportsValueWorkersDurableObjectRenamedExport>;
+  ScriptsVersionsCreateResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectRenamedExport as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseExportsValueWorkersDurableObjectRenamedExport>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseExportsValueWorkersDurableObjectTransferredExportState =
   "transferred";
@@ -19144,17 +18071,7 @@ export interface ScriptsScriptAndVersionSettingsGetResponseExportsValueWorkersDu
   type: ScriptsScriptAndVersionSettingsGetResponseExportsValueWorkersDurableObjectTransferredExportType;
 }
 export const ScriptsScriptAndVersionSettingsGetResponseExportsValueWorkersDurableObjectTransferredExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state:
-        ScriptsScriptAndVersionSettingsGetResponseExportsValueWorkersDurableObjectTransferredExportState,
-      transferredTo: S.String.pipe(T.Body("transferred_to")),
-      type: ScriptsScriptAndVersionSettingsGetResponseExportsValueWorkersDurableObjectTransferredExportType,
-    }),
-  ).annotate({
-    identifier:
-      "ScriptsScriptAndVersionSettingsGetResponseExportsValueWorkersDurableObjectTransferredExport",
-  }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseExportsValueWorkersDurableObjectTransferredExport>;
+  BetaWorkersVersionsCreateResponseExportsValueWorkersDurableObjectTransferredExport as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseExportsValueWorkersDurableObjectTransferredExport>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseExportsValueWorkersDurableObjectExpectingTransferExportState =
   "expecting-transfer";
@@ -19185,20 +18102,7 @@ export interface ScriptsScriptAndVersionSettingsGetResponseExportsValueWorkersDu
   container?: string | null;
 }
 export const ScriptsScriptAndVersionSettingsGetResponseExportsValueWorkersDurableObjectExpectingTransferExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state:
-        ScriptsScriptAndVersionSettingsGetResponseExportsValueWorkersDurableObjectExpectingTransferExportState,
-      storage:
-        ScriptsScriptAndVersionSettingsGetResponseExportsValueWorkersDurableObjectExpectingTransferExportStorage,
-      transferFrom: S.String.pipe(T.Body("transfer_from")),
-      type: ScriptsScriptAndVersionSettingsGetResponseExportsValueWorkersDurableObjectExpectingTransferExportType,
-      container: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier:
-      "ScriptsScriptAndVersionSettingsGetResponseExportsValueWorkersDurableObjectExpectingTransferExport",
-  }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseExportsValueWorkersDurableObjectExpectingTransferExport>;
+  BetaWorkersVersionsCreateResponseExportsValueWorkersDurableObjectExpectingTransferExport as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseExportsValueWorkersDurableObjectExpectingTransferExport>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseExportsValue =
   | ScriptsScriptAndVersionSettingsGetResponseExportsValueWorker
@@ -19353,22 +18257,12 @@ export interface ScriptsScriptAndVersionSettingsGetResponseExportsReconciliation
   to: string;
 }
 export const ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationTransferredItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      class: S.String,
-      phase: ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationTransferredItemPhase,
-      to: S.String,
-    }),
-  ).annotate({
-    identifier: "ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationTransferredItem",
-  }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationTransferredItem>;
+  BetaWorkersVersionsCreateResponseExportsReconciliationTransferredItem as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationTransferredItem>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationTransferredList =
   Array<ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationTransferredItem>;
 export const ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationTransferredList =
-  /*@__PURE__*/ S.Array(
-    ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationTransferredItem,
-  ) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationTransferredList>;
+  BetaWorkersVersionsCreateResponseExportsReconciliationTransferredList as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationTransferredList>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationUpdatedList =
   Array<string>;
@@ -19423,23 +18317,12 @@ export interface ScriptsScriptAndVersionSettingsGetResponseExportsReconciliation
   namespaceId?: string | null;
 }
 export const ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationWarningsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      class: S.String,
-      message: S.String,
-      scenario: ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationWarningsItemScenario,
-      namespaceId: S.optional(S.NullOr(S.String).pipe(T.Body("namespace_id"))),
-    }),
-  ).annotate({
-    identifier: "ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationWarningsItem",
-  }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationWarningsItem>;
+  BetaWorkersVersionsCreateResponseExportsReconciliationWarningsItem as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationWarningsItem>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationWarningsList =
   Array<ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationWarningsItem>;
 export const ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationWarningsList =
-  /*@__PURE__*/ S.Array(
-    ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationWarningsItem,
-  ) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationWarningsList>;
+  BetaWorkersVersionsCreateResponseExportsReconciliationWarningsList as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationWarningsList>;
 
 export interface ScriptsScriptAndVersionSettingsGetResponseExportsReconciliation {
   /** Class names for which a new namespace was provisioned. */
@@ -19817,13 +18700,8 @@ export interface ScriptsScriptAndVersionSettingsGetResponsePlacementMode {
   /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
   mode: ScriptsScriptAndVersionSettingsGetResponsePlacementModeMode;
 }
-export const ScriptsScriptAndVersionSettingsGetResponsePlacementMode = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: ScriptsScriptAndVersionSettingsGetResponsePlacementModeMode,
-  }),
-).annotate({
-  identifier: "ScriptsScriptAndVersionSettingsGetResponsePlacementMode",
-}) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponsePlacementMode>;
+export const ScriptsScriptAndVersionSettingsGetResponsePlacementMode =
+  BetaWorkersCreateRequestPreviewsBaseConfigPlacementMode as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponsePlacementMode>;
 
 export type ScriptsScriptAndVersionSettingsGetResponsePlacementRegion =
   BetaWorkersCreateRequestPreviewsBaseConfigPlacementRegion;
@@ -19849,15 +18727,8 @@ export interface ScriptsScriptAndVersionSettingsGetResponsePlacementCase4 {
   /** Cloud region for targeted placement in format 'provider:region'. */
   region: string;
 }
-export const ScriptsScriptAndVersionSettingsGetResponsePlacementCase4 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      mode: ScriptsScriptAndVersionSettingsGetResponsePlacementCase4Mode,
-      region: S.String,
-    }),
-).annotate({
-  identifier: "ScriptsScriptAndVersionSettingsGetResponsePlacementCase4",
-}) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponsePlacementCase4>;
+export const ScriptsScriptAndVersionSettingsGetResponsePlacementCase4 =
+  BetaWorkersCreateRequestPreviewsBaseConfigPlacementCase4 as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponsePlacementCase4>;
 
 export type ScriptsScriptAndVersionSettingsGetResponsePlacementCase5Mode = "targeted";
 export const ScriptsScriptAndVersionSettingsGetResponsePlacementCase5Mode = S.String;
@@ -19868,15 +18739,8 @@ export interface ScriptsScriptAndVersionSettingsGetResponsePlacementCase5 {
   /** Targeted placement mode. */
   mode: ScriptsScriptAndVersionSettingsGetResponsePlacementCase5Mode;
 }
-export const ScriptsScriptAndVersionSettingsGetResponsePlacementCase5 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      hostname: S.String,
-      mode: ScriptsScriptAndVersionSettingsGetResponsePlacementCase5Mode,
-    }),
-).annotate({
-  identifier: "ScriptsScriptAndVersionSettingsGetResponsePlacementCase5",
-}) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponsePlacementCase5>;
+export const ScriptsScriptAndVersionSettingsGetResponsePlacementCase5 =
+  BetaWorkersCreateRequestPreviewsBaseConfigPlacementCase5 as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponsePlacementCase5>;
 
 export type ScriptsScriptAndVersionSettingsGetResponsePlacementCase6Mode = "targeted";
 export const ScriptsScriptAndVersionSettingsGetResponsePlacementCase6Mode = S.String;
@@ -19887,15 +18751,8 @@ export interface ScriptsScriptAndVersionSettingsGetResponsePlacementCase6 {
   /** Targeted placement mode. */
   mode: ScriptsScriptAndVersionSettingsGetResponsePlacementCase6Mode;
 }
-export const ScriptsScriptAndVersionSettingsGetResponsePlacementCase6 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      host: S.String,
-      mode: ScriptsScriptAndVersionSettingsGetResponsePlacementCase6Mode,
-    }),
-).annotate({
-  identifier: "ScriptsScriptAndVersionSettingsGetResponsePlacementCase6",
-}) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponsePlacementCase6>;
+export const ScriptsScriptAndVersionSettingsGetResponsePlacementCase6 =
+  BetaWorkersCreateRequestPreviewsBaseConfigPlacementCase6 as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponsePlacementCase6>;
 
 export type ScriptsScriptAndVersionSettingsGetResponsePlacementCase7Mode = "targeted";
 export const ScriptsScriptAndVersionSettingsGetResponsePlacementCase7Mode = S.String;
@@ -20113,15 +18970,8 @@ export interface ScriptsSecretsGetResultSecretText {
   /** The kind of resource that the binding provides. */
   type: ScriptsSecretsGetResultSecretTextType;
 }
-export const ScriptsSecretsGetResultSecretText = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    text: S.String,
-    type: ScriptsSecretsGetResultSecretTextType,
-  }),
-).annotate({
-  identifier: "ScriptsSecretsGetResultSecretText",
-}) as any as S.Schema<ScriptsSecretsGetResultSecretText>;
+export const ScriptsSecretsGetResultSecretText =
+  ScriptsSecretsBulkUpdateRequestSecretsValueSecretText as any as S.Schema<ScriptsSecretsGetResultSecretText>;
 
 export type ScriptsSecretsGetResultSecretKeyFormat = "raw" | "pkcs8" | "spki" | "jwk";
 export const ScriptsSecretsGetResultSecretKeyFormat = S.String;
@@ -20142,9 +18992,8 @@ export const ScriptsSecretsGetResultSecretKeyUsagesItem = S.String;
 
 export type ScriptsSecretsGetResultSecretKeyUsagesList =
   Array<ScriptsSecretsGetResultSecretKeyUsagesItem>;
-export const ScriptsSecretsGetResultSecretKeyUsagesList = /*@__PURE__*/ S.Array(
-  ScriptsSecretsGetResultSecretKeyUsagesItem,
-) as any as S.Schema<ScriptsSecretsGetResultSecretKeyUsagesList>;
+export const ScriptsSecretsGetResultSecretKeyUsagesList =
+  ScriptsSecretsBulkUpdateRequestSecretsValueSecretKeyUsagesList as any as S.Schema<ScriptsSecretsGetResultSecretKeyUsagesList>;
 
 export interface ScriptsSecretsGetResultSecretKey {
   /** Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
@@ -20162,19 +19011,8 @@ export interface ScriptsSecretsGetResultSecretKey {
   /** Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk". */
   keyJwk?: unknown | null;
 }
-export const ScriptsSecretsGetResultSecretKey = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    algorithm: S.Unknown,
-    format: ScriptsSecretsGetResultSecretKeyFormat,
-    name: S.String,
-    type: ScriptsSecretsGetResultSecretKeyType,
-    usages: ScriptsSecretsGetResultSecretKeyUsagesList,
-    keyBase64: S.optional(S.NullOr(S.String).pipe(T.Body("key_base64"))),
-    keyJwk: S.optional(S.NullOr(S.Unknown).pipe(T.Body("key_jwk"))),
-  }),
-).annotate({
-  identifier: "ScriptsSecretsGetResultSecretKey",
-}) as any as S.Schema<ScriptsSecretsGetResultSecretKey>;
+export const ScriptsSecretsGetResultSecretKey =
+  ScriptsSecretsBulkUpdateResultValueSecretKey as any as S.Schema<ScriptsSecretsGetResultSecretKey>;
 
 export type ScriptsSecretsGetResult =
   | ScriptsSecretsGetResultSecretText
@@ -20518,17 +19356,7 @@ export interface ScriptsVersionsGetResponseResourcesScriptRuntimeExportsValueWor
   state?: ScriptsVersionsGetResponseResourcesScriptRuntimeExportsValueWorkerState | null;
 }
 export const ScriptsVersionsGetResponseResourcesScriptRuntimeExportsValueWorker =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: ScriptsVersionsGetResponseResourcesScriptRuntimeExportsValueWorkerType,
-      cache: S.optional(S.NullOr(BetaWorkersVersionsCreateRequestExportsValueWorkerCache)),
-      state: S.optional(
-        S.NullOr(ScriptsVersionsGetResponseResourcesScriptRuntimeExportsValueWorkerState),
-      ),
-    }),
-  ).annotate({
-    identifier: "ScriptsVersionsGetResponseResourcesScriptRuntimeExportsValueWorker",
-  }) as any as S.Schema<ScriptsVersionsGetResponseResourcesScriptRuntimeExportsValueWorker>;
+  ScriptsVersionsCreateResponseResourcesScriptRuntimeExportsValueWorker as any as S.Schema<ScriptsVersionsGetResponseResourcesScriptRuntimeExportsValueWorker>;
 
 export type ScriptsVersionsGetResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectExportStorage =
   | "sqlite"
@@ -20557,22 +19385,7 @@ export interface ScriptsVersionsGetResponseResourcesScriptRuntimeExportsValueWor
   state?: ScriptsVersionsGetResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectExportState | null;
 }
 export const ScriptsVersionsGetResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storage:
-        ScriptsVersionsGetResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectExportStorage,
-      type: ScriptsVersionsGetResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectExportType,
-      container: S.optional(S.NullOr(S.String)),
-      state: S.optional(
-        S.NullOr(
-          ScriptsVersionsGetResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectExportState,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "ScriptsVersionsGetResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectExport",
-  }) as any as S.Schema<ScriptsVersionsGetResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectExport>;
+  ScriptsVersionsCreateResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectExport as any as S.Schema<ScriptsVersionsGetResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectExport>;
 
 export type ScriptsVersionsGetResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectDeletedExportState =
   "deleted";
@@ -20591,16 +19404,7 @@ export interface ScriptsVersionsGetResponseResourcesScriptRuntimeExportsValueWor
   type: ScriptsVersionsGetResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectDeletedExportType;
 }
 export const ScriptsVersionsGetResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectDeletedExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state:
-        ScriptsVersionsGetResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectDeletedExportState,
-      type: ScriptsVersionsGetResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectDeletedExportType,
-    }),
-  ).annotate({
-    identifier:
-      "ScriptsVersionsGetResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectDeletedExport",
-  }) as any as S.Schema<ScriptsVersionsGetResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectDeletedExport>;
+  ScriptsVersionsCreateResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectDeletedExport as any as S.Schema<ScriptsVersionsGetResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectDeletedExport>;
 
 export type ScriptsVersionsGetResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectRenamedExportState =
   "renamed";
@@ -20621,17 +19425,7 @@ export interface ScriptsVersionsGetResponseResourcesScriptRuntimeExportsValueWor
   type: ScriptsVersionsGetResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectRenamedExportType;
 }
 export const ScriptsVersionsGetResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectRenamedExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      renamedTo: S.String.pipe(T.Body("renamed_to")),
-      state:
-        ScriptsVersionsGetResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectRenamedExportState,
-      type: ScriptsVersionsGetResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectRenamedExportType,
-    }),
-  ).annotate({
-    identifier:
-      "ScriptsVersionsGetResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectRenamedExport",
-  }) as any as S.Schema<ScriptsVersionsGetResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectRenamedExport>;
+  ScriptsVersionsCreateResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectRenamedExport as any as S.Schema<ScriptsVersionsGetResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectRenamedExport>;
 
 export type ScriptsVersionsGetResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectTransferredExportState =
   "transferred";
@@ -20652,17 +19446,7 @@ export interface ScriptsVersionsGetResponseResourcesScriptRuntimeExportsValueWor
   type: ScriptsVersionsGetResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectTransferredExportType;
 }
 export const ScriptsVersionsGetResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectTransferredExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state:
-        ScriptsVersionsGetResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectTransferredExportState,
-      transferredTo: S.String.pipe(T.Body("transferred_to")),
-      type: ScriptsVersionsGetResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectTransferredExportType,
-    }),
-  ).annotate({
-    identifier:
-      "ScriptsVersionsGetResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectTransferredExport",
-  }) as any as S.Schema<ScriptsVersionsGetResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectTransferredExport>;
+  BetaWorkersVersionsCreateResponseExportsValueWorkersDurableObjectTransferredExport as any as S.Schema<ScriptsVersionsGetResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectTransferredExport>;
 
 export type ScriptsVersionsGetResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectExpectingTransferExportState =
   "expecting-transfer";
@@ -20693,20 +19477,7 @@ export interface ScriptsVersionsGetResponseResourcesScriptRuntimeExportsValueWor
   container?: string | null;
 }
 export const ScriptsVersionsGetResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectExpectingTransferExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state:
-        ScriptsVersionsGetResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectExpectingTransferExportState,
-      storage:
-        ScriptsVersionsGetResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectExpectingTransferExportStorage,
-      transferFrom: S.String.pipe(T.Body("transfer_from")),
-      type: ScriptsVersionsGetResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectExpectingTransferExportType,
-      container: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier:
-      "ScriptsVersionsGetResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectExpectingTransferExport",
-  }) as any as S.Schema<ScriptsVersionsGetResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectExpectingTransferExport>;
+  BetaWorkersVersionsCreateResponseExportsValueWorkersDurableObjectExpectingTransferExport as any as S.Schema<ScriptsVersionsGetResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectExpectingTransferExport>;
 
 export type ScriptsVersionsGetResponseResourcesScriptRuntimeExportsValue =
   | ScriptsVersionsGetResponseResourcesScriptRuntimeExportsValueWorker
@@ -20830,18 +19601,8 @@ export interface ScriptsVersionsGetResponseMetadata {
   /** The source of the version upload. */
   source?: ScriptsVersionsGetResponseMetadataSource | null;
 }
-export const ScriptsVersionsGetResponseMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    authorEmail: S.optional(S.NullOr(S.String).pipe(T.Body("author_email"))),
-    authorId: S.optional(S.NullOr(S.String).pipe(T.Body("author_id"))),
-    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-    hasPreview: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-    source: S.optional(S.NullOr(ScriptsVersionsGetResponseMetadataSource)),
-  }),
-).annotate({
-  identifier: "ScriptsVersionsGetResponseMetadata",
-}) as any as S.Schema<ScriptsVersionsGetResponseMetadata>;
+export const ScriptsVersionsGetResponseMetadata =
+  ScriptsVersionsCreateResponseMetadata as any as S.Schema<ScriptsVersionsGetResponseMetadata>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetScriptVersionResponse {
@@ -21614,14 +20375,8 @@ export interface BetaWorkersListResultItemPreviewsBaseConfigPlacementMode {
   /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
   mode: BetaWorkersListResultItemPreviewsBaseConfigPlacementModeMode;
 }
-export const BetaWorkersListResultItemPreviewsBaseConfigPlacementMode = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      mode: BetaWorkersListResultItemPreviewsBaseConfigPlacementModeMode,
-    }),
-).annotate({
-  identifier: "BetaWorkersListResultItemPreviewsBaseConfigPlacementMode",
-}) as any as S.Schema<BetaWorkersListResultItemPreviewsBaseConfigPlacementMode>;
+export const BetaWorkersListResultItemPreviewsBaseConfigPlacementMode =
+  BetaWorkersCreateResponsePreviewsBaseConfigPlacementMode as any as S.Schema<BetaWorkersListResultItemPreviewsBaseConfigPlacementMode>;
 
 export type BetaWorkersListResultItemPreviewsBaseConfigPlacementRegion =
   BetaWorkersCreateRequestPreviewsBaseConfigPlacementRegion;
@@ -21647,15 +20402,8 @@ export interface BetaWorkersListResultItemPreviewsBaseConfigPlacementCase4 {
   /** Cloud region for targeted placement in format 'provider:region'. */
   region: string;
 }
-export const BetaWorkersListResultItemPreviewsBaseConfigPlacementCase4 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      mode: BetaWorkersListResultItemPreviewsBaseConfigPlacementCase4Mode,
-      region: S.String,
-    }),
-).annotate({
-  identifier: "BetaWorkersListResultItemPreviewsBaseConfigPlacementCase4",
-}) as any as S.Schema<BetaWorkersListResultItemPreviewsBaseConfigPlacementCase4>;
+export const BetaWorkersListResultItemPreviewsBaseConfigPlacementCase4 =
+  BetaWorkersCreateRequestPreviewsBaseConfigPlacementCase4 as any as S.Schema<BetaWorkersListResultItemPreviewsBaseConfigPlacementCase4>;
 
 export type BetaWorkersListResultItemPreviewsBaseConfigPlacementCase5Mode = "targeted";
 export const BetaWorkersListResultItemPreviewsBaseConfigPlacementCase5Mode = S.String;
@@ -21666,15 +20414,8 @@ export interface BetaWorkersListResultItemPreviewsBaseConfigPlacementCase5 {
   /** Targeted placement mode. */
   mode: BetaWorkersListResultItemPreviewsBaseConfigPlacementCase5Mode;
 }
-export const BetaWorkersListResultItemPreviewsBaseConfigPlacementCase5 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      hostname: S.String,
-      mode: BetaWorkersListResultItemPreviewsBaseConfigPlacementCase5Mode,
-    }),
-).annotate({
-  identifier: "BetaWorkersListResultItemPreviewsBaseConfigPlacementCase5",
-}) as any as S.Schema<BetaWorkersListResultItemPreviewsBaseConfigPlacementCase5>;
+export const BetaWorkersListResultItemPreviewsBaseConfigPlacementCase5 =
+  BetaWorkersCreateRequestPreviewsBaseConfigPlacementCase5 as any as S.Schema<BetaWorkersListResultItemPreviewsBaseConfigPlacementCase5>;
 
 export type BetaWorkersListResultItemPreviewsBaseConfigPlacementCase6Mode = "targeted";
 export const BetaWorkersListResultItemPreviewsBaseConfigPlacementCase6Mode = S.String;
@@ -21685,15 +20426,8 @@ export interface BetaWorkersListResultItemPreviewsBaseConfigPlacementCase6 {
   /** Targeted placement mode. */
   mode: BetaWorkersListResultItemPreviewsBaseConfigPlacementCase6Mode;
 }
-export const BetaWorkersListResultItemPreviewsBaseConfigPlacementCase6 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      host: S.String,
-      mode: BetaWorkersListResultItemPreviewsBaseConfigPlacementCase6Mode,
-    }),
-).annotate({
-  identifier: "BetaWorkersListResultItemPreviewsBaseConfigPlacementCase6",
-}) as any as S.Schema<BetaWorkersListResultItemPreviewsBaseConfigPlacementCase6>;
+export const BetaWorkersListResultItemPreviewsBaseConfigPlacementCase6 =
+  BetaWorkersCreateRequestPreviewsBaseConfigPlacementCase6 as any as S.Schema<BetaWorkersListResultItemPreviewsBaseConfigPlacementCase6>;
 
 export type BetaWorkersListResultItemPreviewsBaseConfigPlacementCase7Mode = "targeted";
 export const BetaWorkersListResultItemPreviewsBaseConfigPlacementCase7Mode = S.String;
@@ -21996,14 +20730,8 @@ export interface BetaWorkersVersionsListResultItemBindingsItemAI {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsListResultItemBindingsItemAIType;
 }
-export const BetaWorkersVersionsListResultItemBindingsItemAI = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    type: BetaWorkersVersionsListResultItemBindingsItemAIType,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsListResultItemBindingsItemAI",
-}) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemAI>;
+export const BetaWorkersVersionsListResultItemBindingsItemAI =
+  BetaWorkersVersionsCreateRequestBindingsItemAI as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemAI>;
 
 export type BetaWorkersVersionsListResultItemBindingsItemAISearchType = "ai_search";
 export const BetaWorkersVersionsListResultItemBindingsItemAISearchType = S.String;
@@ -22018,16 +20746,8 @@ export interface BetaWorkersVersionsListResultItemBindingsItemAISearch {
   /** The namespace the instance belongs to. Defaults to "default" if omitted. Customers who don't use namespaces can simply omit this field. */
   namespace?: string | null;
 }
-export const BetaWorkersVersionsListResultItemBindingsItemAISearch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instanceName: S.String.pipe(T.Body("instance_name")),
-    name: S.String,
-    type: BetaWorkersVersionsListResultItemBindingsItemAISearchType,
-    namespace: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsListResultItemBindingsItemAISearch",
-}) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemAISearch>;
+export const BetaWorkersVersionsListResultItemBindingsItemAISearch =
+  BetaWorkersVersionsCreateResponseBindingsItemAISearch as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemAISearch>;
 
 export type BetaWorkersVersionsListResultItemBindingsItemAISearchNamespaceType =
   "ai_search_namespace";
@@ -22042,15 +20762,7 @@ export interface BetaWorkersVersionsListResultItemBindingsItemAISearchNamespace 
   type: BetaWorkersVersionsListResultItemBindingsItemAISearchNamespaceType;
 }
 export const BetaWorkersVersionsListResultItemBindingsItemAISearchNamespace =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      namespace: S.String,
-      type: BetaWorkersVersionsListResultItemBindingsItemAISearchNamespaceType,
-    }),
-  ).annotate({
-    identifier: "BetaWorkersVersionsListResultItemBindingsItemAISearchNamespace",
-  }) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemAISearchNamespace>;
+  BetaWorkersVersionsCreateRequestBindingsItemAISearchNamespace as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemAISearchNamespace>;
 
 export type BetaWorkersVersionsListResultItemBindingsItemMessagingType = "messaging";
 export const BetaWorkersVersionsListResultItemBindingsItemMessagingType = S.String;
@@ -22063,15 +20775,8 @@ export interface BetaWorkersVersionsListResultItemBindingsItemMessaging {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsListResultItemBindingsItemMessagingType;
 }
-export const BetaWorkersVersionsListResultItemBindingsItemMessaging = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    namespace: S.String,
-    type: BetaWorkersVersionsListResultItemBindingsItemMessagingType,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsListResultItemBindingsItemMessaging",
-}) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemMessaging>;
+export const BetaWorkersVersionsListResultItemBindingsItemMessaging =
+  BetaWorkersVersionsCreateRequestBindingsItemMessaging as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemMessaging>;
 
 export type BetaWorkersVersionsListResultItemBindingsItemAnalyticsEngineType = "analytics_engine";
 export const BetaWorkersVersionsListResultItemBindingsItemAnalyticsEngineType = S.String;
@@ -22084,16 +20789,8 @@ export interface BetaWorkersVersionsListResultItemBindingsItemAnalyticsEngine {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsListResultItemBindingsItemAnalyticsEngineType;
 }
-export const BetaWorkersVersionsListResultItemBindingsItemAnalyticsEngine = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      dataset: S.String,
-      name: S.String,
-      type: BetaWorkersVersionsListResultItemBindingsItemAnalyticsEngineType,
-    }),
-).annotate({
-  identifier: "BetaWorkersVersionsListResultItemBindingsItemAnalyticsEngine",
-}) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemAnalyticsEngine>;
+export const BetaWorkersVersionsListResultItemBindingsItemAnalyticsEngine =
+  BetaWorkersVersionsCreateRequestBindingsItemAnalyticsEngine as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemAnalyticsEngine>;
 
 export type BetaWorkersVersionsListResultItemBindingsItemArtifactsType = "artifacts";
 export const BetaWorkersVersionsListResultItemBindingsItemArtifactsType = S.String;
@@ -22106,15 +20803,8 @@ export interface BetaWorkersVersionsListResultItemBindingsItemArtifacts {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsListResultItemBindingsItemArtifactsType;
 }
-export const BetaWorkersVersionsListResultItemBindingsItemArtifacts = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    namespace: S.String,
-    type: BetaWorkersVersionsListResultItemBindingsItemArtifactsType,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsListResultItemBindingsItemArtifacts",
-}) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemArtifacts>;
+export const BetaWorkersVersionsListResultItemBindingsItemArtifacts =
+  BetaWorkersVersionsCreateRequestBindingsItemMessaging as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemArtifacts>;
 
 export type BetaWorkersVersionsListResultItemBindingsItemAssetsType = "assets";
 export const BetaWorkersVersionsListResultItemBindingsItemAssetsType = S.String;
@@ -22125,14 +20815,8 @@ export interface BetaWorkersVersionsListResultItemBindingsItemAssets {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsListResultItemBindingsItemAssetsType;
 }
-export const BetaWorkersVersionsListResultItemBindingsItemAssets = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    type: BetaWorkersVersionsListResultItemBindingsItemAssetsType,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsListResultItemBindingsItemAssets",
-}) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemAssets>;
+export const BetaWorkersVersionsListResultItemBindingsItemAssets =
+  BetaWorkersVersionsCreateRequestBindingsItemAI as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemAssets>;
 
 export type BetaWorkersVersionsListResultItemBindingsItemBrowserType = "browser";
 export const BetaWorkersVersionsListResultItemBindingsItemBrowserType = S.String;
@@ -22143,14 +20827,8 @@ export interface BetaWorkersVersionsListResultItemBindingsItemBrowser {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsListResultItemBindingsItemBrowserType;
 }
-export const BetaWorkersVersionsListResultItemBindingsItemBrowser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    type: BetaWorkersVersionsListResultItemBindingsItemBrowserType,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsListResultItemBindingsItemBrowser",
-}) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemBrowser>;
+export const BetaWorkersVersionsListResultItemBindingsItemBrowser =
+  BetaWorkersVersionsCreateRequestBindingsItemAI as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemBrowser>;
 
 export type BetaWorkersVersionsListResultItemBindingsItemD1Type = "d1";
 export const BetaWorkersVersionsListResultItemBindingsItemD1Type = S.String;
@@ -22165,16 +20843,8 @@ export interface BetaWorkersVersionsListResultItemBindingsItemD1 {
   /** This property has been renamed to `database_id`. */
   id?: string | null;
 }
-export const BetaWorkersVersionsListResultItemBindingsItemD1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    databaseId: S.String.pipe(T.Body("database_id")),
-    name: S.String,
-    type: BetaWorkersVersionsListResultItemBindingsItemD1Type,
-    id: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsListResultItemBindingsItemD1",
-}) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemD1>;
+export const BetaWorkersVersionsListResultItemBindingsItemD1 =
+  BetaWorkersVersionsCreateResponseBindingsItemD1 as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemD1>;
 
 export type BetaWorkersVersionsListResultItemBindingsItemDataBlobType = "data_blob";
 export const BetaWorkersVersionsListResultItemBindingsItemDataBlobType = S.String;
@@ -22187,15 +20857,8 @@ export interface BetaWorkersVersionsListResultItemBindingsItemDataBlob {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsListResultItemBindingsItemDataBlobType;
 }
-export const BetaWorkersVersionsListResultItemBindingsItemDataBlob = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    part: S.String,
-    type: BetaWorkersVersionsListResultItemBindingsItemDataBlobType,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsListResultItemBindingsItemDataBlob",
-}) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemDataBlob>;
+export const BetaWorkersVersionsListResultItemBindingsItemDataBlob =
+  BetaWorkersVersionsCreateRequestBindingsItemDataBlob as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemDataBlob>;
 
 export type BetaWorkersVersionsListResultItemBindingsItemDispatchNamespaceType =
   "dispatch_namespace";
@@ -22270,19 +20933,7 @@ export interface BetaWorkersVersionsListResultItemBindingsItemDurableObjectNames
   scriptName?: string | null;
 }
 export const BetaWorkersVersionsListResultItemBindingsItemDurableObjectNamespace =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      type: BetaWorkersVersionsListResultItemBindingsItemDurableObjectNamespaceType,
-      className: S.optional(S.NullOr(S.String).pipe(T.Body("class_name"))),
-      dispatchNamespace: S.optional(S.NullOr(S.String).pipe(T.Body("dispatch_namespace"))),
-      environment: S.optional(S.NullOr(S.String)),
-      namespaceId: S.optional(S.NullOr(S.String).pipe(T.Body("namespace_id"))),
-      scriptName: S.optional(S.NullOr(S.String).pipe(T.Body("script_name"))),
-    }),
-  ).annotate({
-    identifier: "BetaWorkersVersionsListResultItemBindingsItemDurableObjectNamespace",
-  }) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemDurableObjectNamespace>;
+  BetaWorkersVersionsCreateResponseBindingsItemDurableObjectNamespace as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemDurableObjectNamespace>;
 
 export type BetaWorkersVersionsListResultItemBindingsItemHyperdriveType = "hyperdrive";
 export const BetaWorkersVersionsListResultItemBindingsItemHyperdriveType = S.String;
@@ -22295,15 +20946,8 @@ export interface BetaWorkersVersionsListResultItemBindingsItemHyperdrive {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsListResultItemBindingsItemHyperdriveType;
 }
-export const BetaWorkersVersionsListResultItemBindingsItemHyperdrive = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    type: BetaWorkersVersionsListResultItemBindingsItemHyperdriveType,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsListResultItemBindingsItemHyperdrive",
-}) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemHyperdrive>;
+export const BetaWorkersVersionsListResultItemBindingsItemHyperdrive =
+  BetaWorkersVersionsCreateRequestBindingsItemHyperdrive as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemHyperdrive>;
 
 export type BetaWorkersVersionsListResultItemBindingsItemInheritType = "inherit";
 export const BetaWorkersVersionsListResultItemBindingsItemInheritType = S.String;
@@ -22318,16 +20962,8 @@ export interface BetaWorkersVersionsListResultItemBindingsItemInherit {
   /** Identifier for the version to inherit the binding from, which can be the version ID or the literal "latest" to inherit from the latest version. Defaults to inheriting the binding from the latest version. */
   versionId?: string | null;
 }
-export const BetaWorkersVersionsListResultItemBindingsItemInherit = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    type: BetaWorkersVersionsListResultItemBindingsItemInheritType,
-    oldName: S.optional(S.NullOr(S.String).pipe(T.Body("old_name"))),
-    versionId: S.optional(S.NullOr(S.String).pipe(T.Body("version_id"))),
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsListResultItemBindingsItemInherit",
-}) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemInherit>;
+export const BetaWorkersVersionsListResultItemBindingsItemInherit =
+  BetaWorkersVersionsCreateResponseBindingsItemInherit as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemInherit>;
 
 export type BetaWorkersVersionsListResultItemBindingsItemImagesType = "images";
 export const BetaWorkersVersionsListResultItemBindingsItemImagesType = S.String;
@@ -22338,14 +20974,8 @@ export interface BetaWorkersVersionsListResultItemBindingsItemImages {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsListResultItemBindingsItemImagesType;
 }
-export const BetaWorkersVersionsListResultItemBindingsItemImages = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    type: BetaWorkersVersionsListResultItemBindingsItemImagesType,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsListResultItemBindingsItemImages",
-}) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemImages>;
+export const BetaWorkersVersionsListResultItemBindingsItemImages =
+  BetaWorkersVersionsCreateRequestBindingsItemAI as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemImages>;
 
 export type BetaWorkersVersionsListResultItemBindingsItemJsonType = "json";
 export const BetaWorkersVersionsListResultItemBindingsItemJsonType = S.String;
@@ -22358,15 +20988,8 @@ export interface BetaWorkersVersionsListResultItemBindingsItemJson {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsListResultItemBindingsItemJsonType;
 }
-export const BetaWorkersVersionsListResultItemBindingsItemJson = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    json: S.Unknown,
-    name: S.String,
-    type: BetaWorkersVersionsListResultItemBindingsItemJsonType,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsListResultItemBindingsItemJson",
-}) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemJson>;
+export const BetaWorkersVersionsListResultItemBindingsItemJson =
+  BetaWorkersVersionsCreateRequestBindingsItemJson as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemJson>;
 
 export type BetaWorkersVersionsListResultItemBindingsItemKVNamespaceType = "kv_namespace";
 export const BetaWorkersVersionsListResultItemBindingsItemKVNamespaceType = S.String;
@@ -22379,16 +21002,8 @@ export interface BetaWorkersVersionsListResultItemBindingsItemKVNamespace {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsListResultItemBindingsItemKVNamespaceType;
 }
-export const BetaWorkersVersionsListResultItemBindingsItemKVNamespace = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      namespaceId: S.String.pipe(T.Body("namespace_id")),
-      type: BetaWorkersVersionsListResultItemBindingsItemKVNamespaceType,
-    }),
-).annotate({
-  identifier: "BetaWorkersVersionsListResultItemBindingsItemKVNamespace",
-}) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemKVNamespace>;
+export const BetaWorkersVersionsListResultItemBindingsItemKVNamespace =
+  BetaWorkersVersionsCreateResponseBindingsItemKVNamespace as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemKVNamespace>;
 
 export type BetaWorkersVersionsListResultItemBindingsItemMediaType = "media";
 export const BetaWorkersVersionsListResultItemBindingsItemMediaType = S.String;
@@ -22399,14 +21014,8 @@ export interface BetaWorkersVersionsListResultItemBindingsItemMedia {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsListResultItemBindingsItemMediaType;
 }
-export const BetaWorkersVersionsListResultItemBindingsItemMedia = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    type: BetaWorkersVersionsListResultItemBindingsItemMediaType,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsListResultItemBindingsItemMedia",
-}) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemMedia>;
+export const BetaWorkersVersionsListResultItemBindingsItemMedia =
+  BetaWorkersVersionsCreateRequestBindingsItemAI as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemMedia>;
 
 export type BetaWorkersVersionsListResultItemBindingsItemMTLSCertificateType = "mtls_certificate";
 export const BetaWorkersVersionsListResultItemBindingsItemMTLSCertificateType = S.String;
@@ -22419,16 +21028,8 @@ export interface BetaWorkersVersionsListResultItemBindingsItemMTLSCertificate {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsListResultItemBindingsItemMTLSCertificateType;
 }
-export const BetaWorkersVersionsListResultItemBindingsItemMTLSCertificate = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      certificateId: S.String.pipe(T.Body("certificate_id")),
-      name: S.String,
-      type: BetaWorkersVersionsListResultItemBindingsItemMTLSCertificateType,
-    }),
-).annotate({
-  identifier: "BetaWorkersVersionsListResultItemBindingsItemMTLSCertificate",
-}) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemMTLSCertificate>;
+export const BetaWorkersVersionsListResultItemBindingsItemMTLSCertificate =
+  BetaWorkersVersionsCreateRequestBindingsItemMTLSCertificate as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemMTLSCertificate>;
 
 export type BetaWorkersVersionsListResultItemBindingsItemPlainTextType = "plain_text";
 export const BetaWorkersVersionsListResultItemBindingsItemPlainTextType = S.String;
@@ -22441,15 +21042,8 @@ export interface BetaWorkersVersionsListResultItemBindingsItemPlainText {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsListResultItemBindingsItemPlainTextType;
 }
-export const BetaWorkersVersionsListResultItemBindingsItemPlainText = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    text: S.String,
-    type: BetaWorkersVersionsListResultItemBindingsItemPlainTextType,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsListResultItemBindingsItemPlainText",
-}) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemPlainText>;
+export const BetaWorkersVersionsListResultItemBindingsItemPlainText =
+  ScriptsSecretsBulkUpdateRequestSecretsValueSecretText as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemPlainText>;
 
 export type BetaWorkersVersionsListResultItemBindingsItemPipelinesType = "pipelines";
 export const BetaWorkersVersionsListResultItemBindingsItemPipelinesType = S.String;
@@ -22462,15 +21056,8 @@ export interface BetaWorkersVersionsListResultItemBindingsItemPipelines {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsListResultItemBindingsItemPipelinesType;
 }
-export const BetaWorkersVersionsListResultItemBindingsItemPipelines = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    pipeline: S.String,
-    type: BetaWorkersVersionsListResultItemBindingsItemPipelinesType,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsListResultItemBindingsItemPipelines",
-}) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemPipelines>;
+export const BetaWorkersVersionsListResultItemBindingsItemPipelines =
+  BetaWorkersVersionsCreateRequestBindingsItemPipelines as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemPipelines>;
 
 export type BetaWorkersVersionsListResultItemBindingsItemK2Type = "k2";
 export const BetaWorkersVersionsListResultItemBindingsItemK2Type = S.String;
@@ -22483,15 +21070,8 @@ export interface BetaWorkersVersionsListResultItemBindingsItemK2 {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsListResultItemBindingsItemK2Type;
 }
-export const BetaWorkersVersionsListResultItemBindingsItemK2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    stream: S.String,
-    type: BetaWorkersVersionsListResultItemBindingsItemK2Type,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsListResultItemBindingsItemK2",
-}) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemK2>;
+export const BetaWorkersVersionsListResultItemBindingsItemK2 =
+  BetaWorkersVersionsCreateRequestBindingsItemK2 as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemK2>;
 
 export type BetaWorkersVersionsListResultItemBindingsItemQueueType = "queue";
 export const BetaWorkersVersionsListResultItemBindingsItemQueueType = S.String;
@@ -22504,15 +21084,8 @@ export interface BetaWorkersVersionsListResultItemBindingsItemQueue {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsListResultItemBindingsItemQueueType;
 }
-export const BetaWorkersVersionsListResultItemBindingsItemQueue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    queueName: S.String.pipe(T.Body("queue_name")),
-    type: BetaWorkersVersionsListResultItemBindingsItemQueueType,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsListResultItemBindingsItemQueue",
-}) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemQueue>;
+export const BetaWorkersVersionsListResultItemBindingsItemQueue =
+  BetaWorkersVersionsCreateRequestBindingsItemQueue as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemQueue>;
 
 export type BetaWorkersVersionsListResultItemBindingsItemRatelimitSimple =
   BetaWorkersVersionsCreateResponseBindingsItemRatelimitSimple;
@@ -22532,16 +21105,8 @@ export interface BetaWorkersVersionsListResultItemBindingsItemRatelimit {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsListResultItemBindingsItemRatelimitType;
 }
-export const BetaWorkersVersionsListResultItemBindingsItemRatelimit = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    namespaceId: S.String.pipe(T.Body("namespace_id")),
-    simple: BetaWorkersVersionsCreateResponseBindingsItemRatelimitSimple,
-    type: BetaWorkersVersionsListResultItemBindingsItemRatelimitType,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsListResultItemBindingsItemRatelimit",
-}) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemRatelimit>;
+export const BetaWorkersVersionsListResultItemBindingsItemRatelimit =
+  BetaWorkersVersionsCreateResponseBindingsItemRatelimit as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemRatelimit>;
 
 export type BetaWorkersVersionsListResultItemBindingsItemR2BucketType = "r2_bucket";
 export const BetaWorkersVersionsListResultItemBindingsItemR2BucketType = S.String;
@@ -22563,18 +21128,8 @@ export interface BetaWorkersVersionsListResultItemBindingsItemR2Bucket {
   /** The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket. */
   jurisdiction?: BetaWorkersVersionsListResultItemBindingsItemR2BucketJurisdiction | null;
 }
-export const BetaWorkersVersionsListResultItemBindingsItemR2Bucket = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bucketName: S.String.pipe(T.Body("bucket_name")),
-    name: S.String,
-    type: BetaWorkersVersionsListResultItemBindingsItemR2BucketType,
-    jurisdiction: S.optional(
-      S.NullOr(BetaWorkersVersionsListResultItemBindingsItemR2BucketJurisdiction),
-    ),
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsListResultItemBindingsItemR2Bucket",
-}) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemR2Bucket>;
+export const BetaWorkersVersionsListResultItemBindingsItemR2Bucket =
+  BetaWorkersVersionsCreateResponseBindingsItemR2Bucket as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemR2Bucket>;
 
 export type BetaWorkersVersionsListResultItemBindingsItemSecretTextType = "secret_text";
 export const BetaWorkersVersionsListResultItemBindingsItemSecretTextType = S.String;
@@ -22587,15 +21142,8 @@ export interface BetaWorkersVersionsListResultItemBindingsItemSecretText {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsListResultItemBindingsItemSecretTextType;
 }
-export const BetaWorkersVersionsListResultItemBindingsItemSecretText = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    text: S.String,
-    type: BetaWorkersVersionsListResultItemBindingsItemSecretTextType,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsListResultItemBindingsItemSecretText",
-}) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemSecretText>;
+export const BetaWorkersVersionsListResultItemBindingsItemSecretText =
+  ScriptsSecretsBulkUpdateRequestSecretsValueSecretText as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemSecretText>;
 
 export type BetaWorkersVersionsListResultItemBindingsItemSendEmailType = "send_email";
 export const BetaWorkersVersionsListResultItemBindingsItemSendEmailType = S.String;
@@ -22657,17 +21205,8 @@ export interface BetaWorkersVersionsListResultItemBindingsItemService {
   /** Optional environment if the Worker utilizes one. */
   environment?: string | null;
 }
-export const BetaWorkersVersionsListResultItemBindingsItemService = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    service: S.String,
-    type: BetaWorkersVersionsListResultItemBindingsItemServiceType,
-    entrypoint: S.optional(S.NullOr(S.String)),
-    environment: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsListResultItemBindingsItemService",
-}) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemService>;
+export const BetaWorkersVersionsListResultItemBindingsItemService =
+  BetaWorkersVersionsCreateResponseBindingsItemService as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemService>;
 
 export type BetaWorkersVersionsListResultItemBindingsItemTextBlobType = "text_blob";
 export const BetaWorkersVersionsListResultItemBindingsItemTextBlobType = S.String;
@@ -22680,15 +21219,8 @@ export interface BetaWorkersVersionsListResultItemBindingsItemTextBlob {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsListResultItemBindingsItemTextBlobType;
 }
-export const BetaWorkersVersionsListResultItemBindingsItemTextBlob = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    part: S.String,
-    type: BetaWorkersVersionsListResultItemBindingsItemTextBlobType,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsListResultItemBindingsItemTextBlob",
-}) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemTextBlob>;
+export const BetaWorkersVersionsListResultItemBindingsItemTextBlob =
+  BetaWorkersVersionsCreateRequestBindingsItemDataBlob as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemTextBlob>;
 
 export type BetaWorkersVersionsListResultItemBindingsItemVectorizeType = "vectorize";
 export const BetaWorkersVersionsListResultItemBindingsItemVectorizeType = S.String;
@@ -22701,15 +21233,8 @@ export interface BetaWorkersVersionsListResultItemBindingsItemVectorize {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsListResultItemBindingsItemVectorizeType;
 }
-export const BetaWorkersVersionsListResultItemBindingsItemVectorize = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    indexName: S.String.pipe(T.Body("index_name")),
-    name: S.String,
-    type: BetaWorkersVersionsListResultItemBindingsItemVectorizeType,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsListResultItemBindingsItemVectorize",
-}) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemVectorize>;
+export const BetaWorkersVersionsListResultItemBindingsItemVectorize =
+  BetaWorkersVersionsCreateRequestBindingsItemVectorize as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemVectorize>;
 
 export type BetaWorkersVersionsListResultItemBindingsItemVersionMetadataType = "version_metadata";
 export const BetaWorkersVersionsListResultItemBindingsItemVersionMetadataType = S.String;
@@ -22720,15 +21245,8 @@ export interface BetaWorkersVersionsListResultItemBindingsItemVersionMetadata {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsListResultItemBindingsItemVersionMetadataType;
 }
-export const BetaWorkersVersionsListResultItemBindingsItemVersionMetadata = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      type: BetaWorkersVersionsListResultItemBindingsItemVersionMetadataType,
-    }),
-).annotate({
-  identifier: "BetaWorkersVersionsListResultItemBindingsItemVersionMetadata",
-}) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemVersionMetadata>;
+export const BetaWorkersVersionsListResultItemBindingsItemVersionMetadata =
+  BetaWorkersVersionsCreateRequestBindingsItemVersionMetadata as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemVersionMetadata>;
 
 export type BetaWorkersVersionsListResultItemBindingsItemSecretsStoreSecretType =
   "secrets_store_secret";
@@ -22745,16 +21263,7 @@ export interface BetaWorkersVersionsListResultItemBindingsItemSecretsStoreSecret
   type: BetaWorkersVersionsListResultItemBindingsItemSecretsStoreSecretType;
 }
 export const BetaWorkersVersionsListResultItemBindingsItemSecretsStoreSecret =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      secretName: S.String.pipe(T.Body("secret_name")),
-      storeId: S.String.pipe(T.Body("store_id")),
-      type: BetaWorkersVersionsListResultItemBindingsItemSecretsStoreSecretType,
-    }),
-  ).annotate({
-    identifier: "BetaWorkersVersionsListResultItemBindingsItemSecretsStoreSecret",
-  }) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemSecretsStoreSecret>;
+  BetaWorkersVersionsCreateRequestBindingsItemSecretsStoreSecret as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemSecretsStoreSecret>;
 
 export type BetaWorkersVersionsListResultItemBindingsItemFlagshipType = "flagship";
 export const BetaWorkersVersionsListResultItemBindingsItemFlagshipType = S.String;
@@ -22767,15 +21276,8 @@ export interface BetaWorkersVersionsListResultItemBindingsItemFlagship {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsListResultItemBindingsItemFlagshipType;
 }
-export const BetaWorkersVersionsListResultItemBindingsItemFlagship = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    appId: S.String.pipe(T.Body("app_id")),
-    name: S.String,
-    type: BetaWorkersVersionsListResultItemBindingsItemFlagshipType,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsListResultItemBindingsItemFlagship",
-}) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemFlagship>;
+export const BetaWorkersVersionsListResultItemBindingsItemFlagship =
+  BetaWorkersVersionsCreateRequestBindingsItemFlagship as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemFlagship>;
 
 export type BetaWorkersVersionsListResultItemBindingsItemSecretKeyFormat =
   | "raw"
@@ -22801,9 +21303,7 @@ export const BetaWorkersVersionsListResultItemBindingsItemSecretKeyUsagesItem = 
 export type BetaWorkersVersionsListResultItemBindingsItemSecretKeyUsagesList =
   Array<BetaWorkersVersionsListResultItemBindingsItemSecretKeyUsagesItem>;
 export const BetaWorkersVersionsListResultItemBindingsItemSecretKeyUsagesList =
-  /*@__PURE__*/ S.Array(
-    BetaWorkersVersionsListResultItemBindingsItemSecretKeyUsagesItem,
-  ) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemSecretKeyUsagesList>;
+  BetaWorkersVersionsCreateRequestBindingsItemSecretKeyUsagesList as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemSecretKeyUsagesList>;
 
 export interface BetaWorkersVersionsListResultItemBindingsItemSecretKey {
   /** Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
@@ -22821,19 +21321,8 @@ export interface BetaWorkersVersionsListResultItemBindingsItemSecretKey {
   /** Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk". */
   keyJwk?: unknown | null;
 }
-export const BetaWorkersVersionsListResultItemBindingsItemSecretKey = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    algorithm: S.Unknown,
-    format: BetaWorkersVersionsListResultItemBindingsItemSecretKeyFormat,
-    name: S.String,
-    type: BetaWorkersVersionsListResultItemBindingsItemSecretKeyType,
-    usages: BetaWorkersVersionsListResultItemBindingsItemSecretKeyUsagesList,
-    keyBase64: S.optional(S.NullOr(S.String).pipe(T.Body("key_base64"))),
-    keyJwk: S.optional(S.NullOr(S.Unknown).pipe(T.Body("key_jwk"))),
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsListResultItemBindingsItemSecretKey",
-}) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemSecretKey>;
+export const BetaWorkersVersionsListResultItemBindingsItemSecretKey =
+  BetaWorkersVersionsCreateResponseBindingsItemSecretKey as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemSecretKey>;
 
 export type BetaWorkersVersionsListResultItemBindingsItemWorkflowType = "workflow";
 export const BetaWorkersVersionsListResultItemBindingsItemWorkflowType = S.String;
@@ -22850,17 +21339,8 @@ export interface BetaWorkersVersionsListResultItemBindingsItemWorkflow {
   /** Script name that contains the Workflow. If not provided, defaults to this script name. */
   scriptName?: string | null;
 }
-export const BetaWorkersVersionsListResultItemBindingsItemWorkflow = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    type: BetaWorkersVersionsListResultItemBindingsItemWorkflowType,
-    workflowName: S.String.pipe(T.Body("workflow_name")),
-    className: S.optional(S.NullOr(S.String).pipe(T.Body("class_name"))),
-    scriptName: S.optional(S.NullOr(S.String).pipe(T.Body("script_name"))),
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsListResultItemBindingsItemWorkflow",
-}) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemWorkflow>;
+export const BetaWorkersVersionsListResultItemBindingsItemWorkflow =
+  BetaWorkersVersionsCreateResponseBindingsItemWorkflow as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemWorkflow>;
 
 export type BetaWorkersVersionsListResultItemBindingsItemWasmModuleType = "wasm_module";
 export const BetaWorkersVersionsListResultItemBindingsItemWasmModuleType = S.String;
@@ -22873,15 +21353,8 @@ export interface BetaWorkersVersionsListResultItemBindingsItemWasmModule {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsListResultItemBindingsItemWasmModuleType;
 }
-export const BetaWorkersVersionsListResultItemBindingsItemWasmModule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    part: S.String,
-    type: BetaWorkersVersionsListResultItemBindingsItemWasmModuleType,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsListResultItemBindingsItemWasmModule",
-}) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemWasmModule>;
+export const BetaWorkersVersionsListResultItemBindingsItemWasmModule =
+  BetaWorkersVersionsCreateRequestBindingsItemDataBlob as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemWasmModule>;
 
 export type BetaWorkersVersionsListResultItemBindingsItemVPCServiceType = "vpc_service";
 export const BetaWorkersVersionsListResultItemBindingsItemVPCServiceType = S.String;
@@ -22894,15 +21367,8 @@ export interface BetaWorkersVersionsListResultItemBindingsItemVPCService {
   /** The kind of resource that the binding provides. */
   type: BetaWorkersVersionsListResultItemBindingsItemVPCServiceType;
 }
-export const BetaWorkersVersionsListResultItemBindingsItemVPCService = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    serviceId: S.String.pipe(T.Body("service_id")),
-    type: BetaWorkersVersionsListResultItemBindingsItemVPCServiceType,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsListResultItemBindingsItemVPCService",
-}) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemVPCService>;
+export const BetaWorkersVersionsListResultItemBindingsItemVPCService =
+  BetaWorkersVersionsCreateRequestBindingsItemVPCService as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemVPCService>;
 
 export type BetaWorkersVersionsListResultItemBindingsItemVPCNetworkType = "vpc_network";
 export const BetaWorkersVersionsListResultItemBindingsItemVPCNetworkType = S.String;
@@ -22922,17 +21388,8 @@ export interface BetaWorkersVersionsListResultItemBindingsItemVPCNetwork {
   /** UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id. */
   tunnelId?: string | null;
 }
-export const BetaWorkersVersionsListResultItemBindingsItemVPCNetwork = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    type: BetaWorkersVersionsListResultItemBindingsItemVPCNetworkType,
-    identity: S.optional(S.NullOr(BetaWorkersVersionsListResultItemBindingsItemVPCNetworkIdentity)),
-    networkId: S.optional(S.NullOr(S.String).pipe(T.Body("network_id"))),
-    tunnelId: S.optional(S.NullOr(S.String).pipe(T.Body("tunnel_id"))),
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsListResultItemBindingsItemVPCNetwork",
-}) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemVPCNetwork>;
+export const BetaWorkersVersionsListResultItemBindingsItemVPCNetwork =
+  BetaWorkersVersionsCreateResponseBindingsItemVPCNetwork as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemVPCNetwork>;
 
 export type BetaWorkersVersionsListResultItemBindingsItem =
   | BetaWorkersVersionsListResultItemBindingsItemAI
@@ -23119,15 +21576,8 @@ export interface BetaWorkersVersionsListResultItemExportsValueWorker {
   /** Live export. May be omitted; defaults to `created`. */
   state?: BetaWorkersVersionsListResultItemExportsValueWorkerState | null;
 }
-export const BetaWorkersVersionsListResultItemExportsValueWorker = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: BetaWorkersVersionsListResultItemExportsValueWorkerType,
-    cache: S.optional(S.NullOr(BetaWorkersVersionsCreateRequestExportsValueWorkerCache)),
-    state: S.optional(S.NullOr(BetaWorkersVersionsListResultItemExportsValueWorkerState)),
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsListResultItemExportsValueWorker",
-}) as any as S.Schema<BetaWorkersVersionsListResultItemExportsValueWorker>;
+export const BetaWorkersVersionsListResultItemExportsValueWorker =
+  BetaWorkersVersionsCreateResponseExportsValueWorker as any as S.Schema<BetaWorkersVersionsListResultItemExportsValueWorker>;
 
 export type BetaWorkersVersionsListResultItemExportsValueWorkersDurableObjectExportStorage =
   | "sqlite"
@@ -23155,18 +21605,7 @@ export interface BetaWorkersVersionsListResultItemExportsValueWorkersDurableObje
   state?: BetaWorkersVersionsListResultItemExportsValueWorkersDurableObjectExportState | null;
 }
 export const BetaWorkersVersionsListResultItemExportsValueWorkersDurableObjectExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storage: BetaWorkersVersionsListResultItemExportsValueWorkersDurableObjectExportStorage,
-      type: BetaWorkersVersionsListResultItemExportsValueWorkersDurableObjectExportType,
-      container: S.optional(S.NullOr(S.String)),
-      state: S.optional(
-        S.NullOr(BetaWorkersVersionsListResultItemExportsValueWorkersDurableObjectExportState),
-      ),
-    }),
-  ).annotate({
-    identifier: "BetaWorkersVersionsListResultItemExportsValueWorkersDurableObjectExport",
-  }) as any as S.Schema<BetaWorkersVersionsListResultItemExportsValueWorkersDurableObjectExport>;
+  BetaWorkersVersionsCreateResponseExportsValueWorkersDurableObjectExport as any as S.Schema<BetaWorkersVersionsListResultItemExportsValueWorkersDurableObjectExport>;
 
 export type BetaWorkersVersionsListResultItemExportsValueWorkersDurableObjectDeletedExportState =
   "deleted";
@@ -23185,14 +21624,7 @@ export interface BetaWorkersVersionsListResultItemExportsValueWorkersDurableObje
   type: BetaWorkersVersionsListResultItemExportsValueWorkersDurableObjectDeletedExportType;
 }
 export const BetaWorkersVersionsListResultItemExportsValueWorkersDurableObjectDeletedExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state: BetaWorkersVersionsListResultItemExportsValueWorkersDurableObjectDeletedExportState,
-      type: BetaWorkersVersionsListResultItemExportsValueWorkersDurableObjectDeletedExportType,
-    }),
-  ).annotate({
-    identifier: "BetaWorkersVersionsListResultItemExportsValueWorkersDurableObjectDeletedExport",
-  }) as any as S.Schema<BetaWorkersVersionsListResultItemExportsValueWorkersDurableObjectDeletedExport>;
+  BetaWorkersVersionsCreateRequestExportsValueWorkersDurableObjectDeletedExport as any as S.Schema<BetaWorkersVersionsListResultItemExportsValueWorkersDurableObjectDeletedExport>;
 
 export type BetaWorkersVersionsListResultItemExportsValueWorkersDurableObjectRenamedExportState =
   "renamed";
@@ -23213,15 +21645,7 @@ export interface BetaWorkersVersionsListResultItemExportsValueWorkersDurableObje
   type: BetaWorkersVersionsListResultItemExportsValueWorkersDurableObjectRenamedExportType;
 }
 export const BetaWorkersVersionsListResultItemExportsValueWorkersDurableObjectRenamedExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      renamedTo: S.String.pipe(T.Body("renamed_to")),
-      state: BetaWorkersVersionsListResultItemExportsValueWorkersDurableObjectRenamedExportState,
-      type: BetaWorkersVersionsListResultItemExportsValueWorkersDurableObjectRenamedExportType,
-    }),
-  ).annotate({
-    identifier: "BetaWorkersVersionsListResultItemExportsValueWorkersDurableObjectRenamedExport",
-  }) as any as S.Schema<BetaWorkersVersionsListResultItemExportsValueWorkersDurableObjectRenamedExport>;
+  BetaWorkersVersionsCreateRequestExportsValueWorkersDurableObjectRenamedExport as any as S.Schema<BetaWorkersVersionsListResultItemExportsValueWorkersDurableObjectRenamedExport>;
 
 export type BetaWorkersVersionsListResultItemExportsValueWorkersDurableObjectTransferredExportState =
   "transferred";
@@ -23242,17 +21666,7 @@ export interface BetaWorkersVersionsListResultItemExportsValueWorkersDurableObje
   type: BetaWorkersVersionsListResultItemExportsValueWorkersDurableObjectTransferredExportType;
 }
 export const BetaWorkersVersionsListResultItemExportsValueWorkersDurableObjectTransferredExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state:
-        BetaWorkersVersionsListResultItemExportsValueWorkersDurableObjectTransferredExportState,
-      transferredTo: S.String.pipe(T.Body("transferred_to")),
-      type: BetaWorkersVersionsListResultItemExportsValueWorkersDurableObjectTransferredExportType,
-    }),
-  ).annotate({
-    identifier:
-      "BetaWorkersVersionsListResultItemExportsValueWorkersDurableObjectTransferredExport",
-  }) as any as S.Schema<BetaWorkersVersionsListResultItemExportsValueWorkersDurableObjectTransferredExport>;
+  BetaWorkersVersionsCreateResponseExportsValueWorkersDurableObjectTransferredExport as any as S.Schema<BetaWorkersVersionsListResultItemExportsValueWorkersDurableObjectTransferredExport>;
 
 export type BetaWorkersVersionsListResultItemExportsValueWorkersDurableObjectExpectingTransferExportState =
   "expecting-transfer";
@@ -23283,20 +21697,7 @@ export interface BetaWorkersVersionsListResultItemExportsValueWorkersDurableObje
   container?: string | null;
 }
 export const BetaWorkersVersionsListResultItemExportsValueWorkersDurableObjectExpectingTransferExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state:
-        BetaWorkersVersionsListResultItemExportsValueWorkersDurableObjectExpectingTransferExportState,
-      storage:
-        BetaWorkersVersionsListResultItemExportsValueWorkersDurableObjectExpectingTransferExportStorage,
-      transferFrom: S.String.pipe(T.Body("transfer_from")),
-      type: BetaWorkersVersionsListResultItemExportsValueWorkersDurableObjectExpectingTransferExportType,
-      container: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier:
-      "BetaWorkersVersionsListResultItemExportsValueWorkersDurableObjectExpectingTransferExport",
-  }) as any as S.Schema<BetaWorkersVersionsListResultItemExportsValueWorkersDurableObjectExpectingTransferExport>;
+  BetaWorkersVersionsCreateResponseExportsValueWorkersDurableObjectExpectingTransferExport as any as S.Schema<BetaWorkersVersionsListResultItemExportsValueWorkersDurableObjectExpectingTransferExport>;
 
 export type BetaWorkersVersionsListResultItemExportsValue =
   | BetaWorkersVersionsListResultItemExportsValueWorker
@@ -23446,22 +21847,12 @@ export interface BetaWorkersVersionsListResultItemExportsReconciliationTransferr
   to: string;
 }
 export const BetaWorkersVersionsListResultItemExportsReconciliationTransferredItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      class: S.String,
-      phase: BetaWorkersVersionsListResultItemExportsReconciliationTransferredItemPhase,
-      to: S.String,
-    }),
-  ).annotate({
-    identifier: "BetaWorkersVersionsListResultItemExportsReconciliationTransferredItem",
-  }) as any as S.Schema<BetaWorkersVersionsListResultItemExportsReconciliationTransferredItem>;
+  BetaWorkersVersionsCreateResponseExportsReconciliationTransferredItem as any as S.Schema<BetaWorkersVersionsListResultItemExportsReconciliationTransferredItem>;
 
 export type BetaWorkersVersionsListResultItemExportsReconciliationTransferredList =
   Array<BetaWorkersVersionsListResultItemExportsReconciliationTransferredItem>;
 export const BetaWorkersVersionsListResultItemExportsReconciliationTransferredList =
-  /*@__PURE__*/ S.Array(
-    BetaWorkersVersionsListResultItemExportsReconciliationTransferredItem,
-  ) as any as S.Schema<BetaWorkersVersionsListResultItemExportsReconciliationTransferredList>;
+  BetaWorkersVersionsCreateResponseExportsReconciliationTransferredList as any as S.Schema<BetaWorkersVersionsListResultItemExportsReconciliationTransferredList>;
 
 export type BetaWorkersVersionsListResultItemExportsReconciliationUpdatedList = Array<string>;
 export const BetaWorkersVersionsListResultItemExportsReconciliationUpdatedList =
@@ -23514,23 +21905,12 @@ export interface BetaWorkersVersionsListResultItemExportsReconciliationWarningsI
   namespaceId?: string | null;
 }
 export const BetaWorkersVersionsListResultItemExportsReconciliationWarningsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      class: S.String,
-      message: S.String,
-      scenario: BetaWorkersVersionsListResultItemExportsReconciliationWarningsItemScenario,
-      namespaceId: S.optional(S.NullOr(S.String).pipe(T.Body("namespace_id"))),
-    }),
-  ).annotate({
-    identifier: "BetaWorkersVersionsListResultItemExportsReconciliationWarningsItem",
-  }) as any as S.Schema<BetaWorkersVersionsListResultItemExportsReconciliationWarningsItem>;
+  BetaWorkersVersionsCreateResponseExportsReconciliationWarningsItem as any as S.Schema<BetaWorkersVersionsListResultItemExportsReconciliationWarningsItem>;
 
 export type BetaWorkersVersionsListResultItemExportsReconciliationWarningsList =
   Array<BetaWorkersVersionsListResultItemExportsReconciliationWarningsItem>;
 export const BetaWorkersVersionsListResultItemExportsReconciliationWarningsList =
-  /*@__PURE__*/ S.Array(
-    BetaWorkersVersionsListResultItemExportsReconciliationWarningsItem,
-  ) as any as S.Schema<BetaWorkersVersionsListResultItemExportsReconciliationWarningsList>;
+  BetaWorkersVersionsCreateResponseExportsReconciliationWarningsList as any as S.Schema<BetaWorkersVersionsListResultItemExportsReconciliationWarningsList>;
 
 export interface BetaWorkersVersionsListResultItemExportsReconciliation {
   /** Class names for which a new namespace was provisioned. */
@@ -23741,13 +22121,8 @@ export interface BetaWorkersVersionsListResultItemPlacementMode {
   /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
   mode: BetaWorkersVersionsListResultItemPlacementModeMode;
 }
-export const BetaWorkersVersionsListResultItemPlacementMode = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: BetaWorkersVersionsListResultItemPlacementModeMode,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsListResultItemPlacementMode",
-}) as any as S.Schema<BetaWorkersVersionsListResultItemPlacementMode>;
+export const BetaWorkersVersionsListResultItemPlacementMode =
+  BetaWorkersCreateRequestPreviewsBaseConfigPlacementMode as any as S.Schema<BetaWorkersVersionsListResultItemPlacementMode>;
 
 export type BetaWorkersVersionsListResultItemPlacementRegion =
   BetaWorkersCreateRequestPreviewsBaseConfigPlacementRegion;
@@ -23773,14 +22148,8 @@ export interface BetaWorkersVersionsListResultItemPlacementCase4 {
   /** Cloud region for targeted placement in format 'provider:region'. */
   region: string;
 }
-export const BetaWorkersVersionsListResultItemPlacementCase4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: BetaWorkersVersionsListResultItemPlacementCase4Mode,
-    region: S.String,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsListResultItemPlacementCase4",
-}) as any as S.Schema<BetaWorkersVersionsListResultItemPlacementCase4>;
+export const BetaWorkersVersionsListResultItemPlacementCase4 =
+  BetaWorkersVersionsCreateRequestPlacementCase4 as any as S.Schema<BetaWorkersVersionsListResultItemPlacementCase4>;
 
 export type BetaWorkersVersionsListResultItemPlacementCase5Mode = "targeted";
 export const BetaWorkersVersionsListResultItemPlacementCase5Mode = S.String;
@@ -23791,14 +22160,8 @@ export interface BetaWorkersVersionsListResultItemPlacementCase5 {
   /** Targeted placement mode. */
   mode: BetaWorkersVersionsListResultItemPlacementCase5Mode;
 }
-export const BetaWorkersVersionsListResultItemPlacementCase5 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hostname: S.String,
-    mode: BetaWorkersVersionsListResultItemPlacementCase5Mode,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsListResultItemPlacementCase5",
-}) as any as S.Schema<BetaWorkersVersionsListResultItemPlacementCase5>;
+export const BetaWorkersVersionsListResultItemPlacementCase5 =
+  BetaWorkersVersionsCreateRequestPlacementCase5 as any as S.Schema<BetaWorkersVersionsListResultItemPlacementCase5>;
 
 export type BetaWorkersVersionsListResultItemPlacementCase6Mode = "targeted";
 export const BetaWorkersVersionsListResultItemPlacementCase6Mode = S.String;
@@ -23809,14 +22172,8 @@ export interface BetaWorkersVersionsListResultItemPlacementCase6 {
   /** Targeted placement mode. */
   mode: BetaWorkersVersionsListResultItemPlacementCase6Mode;
 }
-export const BetaWorkersVersionsListResultItemPlacementCase6 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    host: S.String,
-    mode: BetaWorkersVersionsListResultItemPlacementCase6Mode,
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsListResultItemPlacementCase6",
-}) as any as S.Schema<BetaWorkersVersionsListResultItemPlacementCase6>;
+export const BetaWorkersVersionsListResultItemPlacementCase6 =
+  BetaWorkersVersionsCreateRequestPlacementCase6 as any as S.Schema<BetaWorkersVersionsListResultItemPlacementCase6>;
 
 export type BetaWorkersVersionsListResultItemPlacementCase7Mode = "targeted";
 export const BetaWorkersVersionsListResultItemPlacementCase7Mode = S.String;
@@ -24270,18 +22627,7 @@ export interface ObservabilityQueriesListResultItemParametersCalculationsItemCas
   keyType?: ObservabilityQueriesListResultItemParametersCalculationsItemCase0KeyType | null;
 }
 export const ObservabilityQueriesListResultItemParametersCalculationsItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operator: ObservabilityQueriesListResultItemParametersCalculationsItemCase0Operator,
-      alias: S.optional(S.NullOr(S.String)),
-      key: S.optional(S.NullOr(S.String)),
-      keyType: S.optional(
-        S.NullOr(ObservabilityQueriesListResultItemParametersCalculationsItemCase0KeyType),
-      ),
-    }),
-  ).annotate({
-    identifier: "ObservabilityQueriesListResultItemParametersCalculationsItemCase0",
-  }) as any as S.Schema<ObservabilityQueriesListResultItemParametersCalculationsItemCase0>;
+  ObservabilityQueriesCreateResponseParametersCalculationsItemCase0 as any as S.Schema<ObservabilityQueriesListResultItemParametersCalculationsItemCase0>;
 
 export type ObservabilityQueriesListResultItemParametersCalculationsItemCase1Operator =
   | "uniq"
@@ -24335,18 +22681,7 @@ export interface ObservabilityQueriesListResultItemParametersCalculationsItemCas
   keyType?: ObservabilityQueriesListResultItemParametersCalculationsItemCase1KeyType | null;
 }
 export const ObservabilityQueriesListResultItemParametersCalculationsItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.String,
-      operator: ObservabilityQueriesListResultItemParametersCalculationsItemCase1Operator,
-      alias: S.optional(S.NullOr(S.String)),
-      keyType: S.optional(
-        S.NullOr(ObservabilityQueriesListResultItemParametersCalculationsItemCase1KeyType),
-      ),
-    }),
-  ).annotate({
-    identifier: "ObservabilityQueriesListResultItemParametersCalculationsItemCase1",
-  }) as any as S.Schema<ObservabilityQueriesListResultItemParametersCalculationsItemCase1>;
+  ObservabilityQueriesCreateResponseParametersCalculationsItemCase1 as any as S.Schema<ObservabilityQueriesListResultItemParametersCalculationsItemCase1>;
 
 export type ObservabilityQueriesListResultItemParametersCalculationsItem =
   | ObservabilityQueriesListResultItemParametersCalculationsItemCase0
@@ -24526,21 +22861,13 @@ export interface ObservabilityQueriesListResultItemParametersGroupBysItem {
   type: ObservabilityQueriesListResultItemParametersGroupBysItemType;
   value: string;
 }
-export const ObservabilityQueriesListResultItemParametersGroupBysItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      type: ObservabilityQueriesListResultItemParametersGroupBysItemType,
-      value: S.String,
-    }),
-).annotate({
-  identifier: "ObservabilityQueriesListResultItemParametersGroupBysItem",
-}) as any as S.Schema<ObservabilityQueriesListResultItemParametersGroupBysItem>;
+export const ObservabilityQueriesListResultItemParametersGroupBysItem =
+  ObservabilityQueriesCreateResponseParametersGroupBysItem as any as S.Schema<ObservabilityQueriesListResultItemParametersGroupBysItem>;
 
 export type ObservabilityQueriesListResultItemParametersGroupBysList =
   Array<ObservabilityQueriesListResultItemParametersGroupBysItem>;
-export const ObservabilityQueriesListResultItemParametersGroupBysList = /*@__PURE__*/ S.Array(
-  ObservabilityQueriesListResultItemParametersGroupBysItem,
-) as any as S.Schema<ObservabilityQueriesListResultItemParametersGroupBysList>;
+export const ObservabilityQueriesListResultItemParametersGroupBysList =
+  ObservabilityQueriesCreateResponseParametersGroupBysList as any as S.Schema<ObservabilityQueriesListResultItemParametersGroupBysList>;
 
 export type ObservabilityQueriesListResultItemParametersHavingsItemOperation =
   | "eq"
@@ -24556,21 +22883,13 @@ export interface ObservabilityQueriesListResultItemParametersHavingsItem {
   operation: ObservabilityQueriesListResultItemParametersHavingsItemOperation;
   value: number;
 }
-export const ObservabilityQueriesListResultItemParametersHavingsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.String,
-    operation: ObservabilityQueriesListResultItemParametersHavingsItemOperation,
-    value: S.Number,
-  }),
-).annotate({
-  identifier: "ObservabilityQueriesListResultItemParametersHavingsItem",
-}) as any as S.Schema<ObservabilityQueriesListResultItemParametersHavingsItem>;
+export const ObservabilityQueriesListResultItemParametersHavingsItem =
+  ObservabilityQueriesCreateRequestParametersHavingsItem as any as S.Schema<ObservabilityQueriesListResultItemParametersHavingsItem>;
 
 export type ObservabilityQueriesListResultItemParametersHavingsList =
   Array<ObservabilityQueriesListResultItemParametersHavingsItem>;
-export const ObservabilityQueriesListResultItemParametersHavingsList = /*@__PURE__*/ S.Array(
-  ObservabilityQueriesListResultItemParametersHavingsItem,
-) as any as S.Schema<ObservabilityQueriesListResultItemParametersHavingsList>;
+export const ObservabilityQueriesListResultItemParametersHavingsList =
+  ObservabilityQueriesCreateRequestParametersHavingsList as any as S.Schema<ObservabilityQueriesListResultItemParametersHavingsList>;
 
 export type ObservabilityQueriesListResultItemParametersNeedleValue = string | number | boolean;
 export const ObservabilityQueriesListResultItemParametersNeedleValue = /*@__PURE__*/ S.Unknown.pipe(
@@ -24601,14 +22920,8 @@ export interface ObservabilityQueriesListResultItemParametersOrderBy {
   /** Set the order of the results */
   order?: ObservabilityQueriesListResultItemParametersOrderByOrder | null;
 }
-export const ObservabilityQueriesListResultItemParametersOrderBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.String,
-    order: S.optional(S.NullOr(ObservabilityQueriesListResultItemParametersOrderByOrder)),
-  }),
-).annotate({
-  identifier: "ObservabilityQueriesListResultItemParametersOrderBy",
-}) as any as S.Schema<ObservabilityQueriesListResultItemParametersOrderBy>;
+export const ObservabilityQueriesListResultItemParametersOrderBy =
+  ObservabilityQueriesCreateResponseParametersOrderBy as any as S.Schema<ObservabilityQueriesListResultItemParametersOrderBy>;
 
 export interface ObservabilityQueriesListResultItemParameters {
   /** Create Calculations to compute as part of the query. */
@@ -24883,15 +23196,8 @@ export interface ScriptsListResultItemExportsValueWorker {
   /** Live export. May be omitted; defaults to `created`. */
   state?: ScriptsListResultItemExportsValueWorkerState | null;
 }
-export const ScriptsListResultItemExportsValueWorker = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ScriptsListResultItemExportsValueWorkerType,
-    cache: S.optional(S.NullOr(BetaWorkersVersionsCreateRequestExportsValueWorkerCache)),
-    state: S.optional(S.NullOr(ScriptsListResultItemExportsValueWorkerState)),
-  }),
-).annotate({
-  identifier: "ScriptsListResultItemExportsValueWorker",
-}) as any as S.Schema<ScriptsListResultItemExportsValueWorker>;
+export const ScriptsListResultItemExportsValueWorker =
+  BetaWorkersVersionsCreateResponseExportsValueWorker as any as S.Schema<ScriptsListResultItemExportsValueWorker>;
 
 export type ScriptsListResultItemExportsValueWorkersDurableObjectExportStorage =
   | "sqlite"
@@ -24940,14 +23246,7 @@ export interface ScriptsListResultItemExportsValueWorkersDurableObjectDeletedExp
   type: ScriptsListResultItemExportsValueWorkersDurableObjectDeletedExportType;
 }
 export const ScriptsListResultItemExportsValueWorkersDurableObjectDeletedExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state: ScriptsListResultItemExportsValueWorkersDurableObjectDeletedExportState,
-      type: ScriptsListResultItemExportsValueWorkersDurableObjectDeletedExportType,
-    }),
-  ).annotate({
-    identifier: "ScriptsListResultItemExportsValueWorkersDurableObjectDeletedExport",
-  }) as any as S.Schema<ScriptsListResultItemExportsValueWorkersDurableObjectDeletedExport>;
+  BetaWorkersVersionsCreateRequestExportsValueWorkersDurableObjectDeletedExport as any as S.Schema<ScriptsListResultItemExportsValueWorkersDurableObjectDeletedExport>;
 
 export type ScriptsListResultItemExportsValueWorkersDurableObjectRenamedExportState = "renamed";
 export const ScriptsListResultItemExportsValueWorkersDurableObjectRenamedExportState = S.String;
@@ -24965,15 +23264,7 @@ export interface ScriptsListResultItemExportsValueWorkersDurableObjectRenamedExp
   type: ScriptsListResultItemExportsValueWorkersDurableObjectRenamedExportType;
 }
 export const ScriptsListResultItemExportsValueWorkersDurableObjectRenamedExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      renamedTo: S.String.pipe(T.Body("renamed_to")),
-      state: ScriptsListResultItemExportsValueWorkersDurableObjectRenamedExportState,
-      type: ScriptsListResultItemExportsValueWorkersDurableObjectRenamedExportType,
-    }),
-  ).annotate({
-    identifier: "ScriptsListResultItemExportsValueWorkersDurableObjectRenamedExport",
-  }) as any as S.Schema<ScriptsListResultItemExportsValueWorkersDurableObjectRenamedExport>;
+  BetaWorkersVersionsCreateRequestExportsValueWorkersDurableObjectRenamedExport as any as S.Schema<ScriptsListResultItemExportsValueWorkersDurableObjectRenamedExport>;
 
 export type ScriptsListResultItemExportsValueWorkersDurableObjectTransferredExportState =
   "transferred";
@@ -24992,15 +23283,7 @@ export interface ScriptsListResultItemExportsValueWorkersDurableObjectTransferre
   type: ScriptsListResultItemExportsValueWorkersDurableObjectTransferredExportType;
 }
 export const ScriptsListResultItemExportsValueWorkersDurableObjectTransferredExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state: ScriptsListResultItemExportsValueWorkersDurableObjectTransferredExportState,
-      transferredTo: S.String.pipe(T.Body("transferred_to")),
-      type: ScriptsListResultItemExportsValueWorkersDurableObjectTransferredExportType,
-    }),
-  ).annotate({
-    identifier: "ScriptsListResultItemExportsValueWorkersDurableObjectTransferredExport",
-  }) as any as S.Schema<ScriptsListResultItemExportsValueWorkersDurableObjectTransferredExport>;
+  BetaWorkersVersionsCreateRequestExportsValueWorkersDurableObjectTransferredExport as any as S.Schema<ScriptsListResultItemExportsValueWorkersDurableObjectTransferredExport>;
 
 export type ScriptsListResultItemExportsValueWorkersDurableObjectExpectingTransferExportState =
   "expecting-transfer";
@@ -25626,15 +23909,8 @@ export interface ScriptsSecretsListResultItemSecretText {
   /** The kind of resource that the binding provides. */
   type: ScriptsSecretsListResultItemSecretTextType;
 }
-export const ScriptsSecretsListResultItemSecretText = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    text: S.String,
-    type: ScriptsSecretsListResultItemSecretTextType,
-  }),
-).annotate({
-  identifier: "ScriptsSecretsListResultItemSecretText",
-}) as any as S.Schema<ScriptsSecretsListResultItemSecretText>;
+export const ScriptsSecretsListResultItemSecretText =
+  ScriptsSecretsBulkUpdateRequestSecretsValueSecretText as any as S.Schema<ScriptsSecretsListResultItemSecretText>;
 
 export type ScriptsSecretsListResultItemSecretKeyFormat = "raw" | "pkcs8" | "spki" | "jwk";
 export const ScriptsSecretsListResultItemSecretKeyFormat = S.String;
@@ -25655,9 +23931,8 @@ export const ScriptsSecretsListResultItemSecretKeyUsagesItem = S.String;
 
 export type ScriptsSecretsListResultItemSecretKeyUsagesList =
   Array<ScriptsSecretsListResultItemSecretKeyUsagesItem>;
-export const ScriptsSecretsListResultItemSecretKeyUsagesList = /*@__PURE__*/ S.Array(
-  ScriptsSecretsListResultItemSecretKeyUsagesItem,
-) as any as S.Schema<ScriptsSecretsListResultItemSecretKeyUsagesList>;
+export const ScriptsSecretsListResultItemSecretKeyUsagesList =
+  ScriptsSecretsBulkUpdateRequestSecretsValueSecretKeyUsagesList as any as S.Schema<ScriptsSecretsListResultItemSecretKeyUsagesList>;
 
 export interface ScriptsSecretsListResultItemSecretKey {
   /** Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
@@ -25675,19 +23950,8 @@ export interface ScriptsSecretsListResultItemSecretKey {
   /** Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk". */
   keyJwk?: unknown | null;
 }
-export const ScriptsSecretsListResultItemSecretKey = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    algorithm: S.Unknown,
-    format: ScriptsSecretsListResultItemSecretKeyFormat,
-    name: S.String,
-    type: ScriptsSecretsListResultItemSecretKeyType,
-    usages: ScriptsSecretsListResultItemSecretKeyUsagesList,
-    keyBase64: S.optional(S.NullOr(S.String).pipe(T.Body("key_base64"))),
-    keyJwk: S.optional(S.NullOr(S.Unknown).pipe(T.Body("key_jwk"))),
-  }),
-).annotate({
-  identifier: "ScriptsSecretsListResultItemSecretKey",
-}) as any as S.Schema<ScriptsSecretsListResultItemSecretKey>;
+export const ScriptsSecretsListResultItemSecretKey =
+  ScriptsSecretsBulkUpdateResultValueSecretKey as any as S.Schema<ScriptsSecretsListResultItemSecretKey>;
 
 export type ScriptsSecretsListResultItem =
   | ScriptsSecretsListResultItemSecretText
@@ -25782,18 +24046,8 @@ export interface ScriptsVersionsListResponseItemsItemMetadata {
   /** The source of the version upload. */
   source?: ScriptsVersionsListResponseItemsItemMetadataSource | null;
 }
-export const ScriptsVersionsListResponseItemsItemMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    authorEmail: S.optional(S.NullOr(S.String).pipe(T.Body("author_email"))),
-    authorId: S.optional(S.NullOr(S.String).pipe(T.Body("author_id"))),
-    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-    hasPreview: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-    source: S.optional(S.NullOr(ScriptsVersionsListResponseItemsItemMetadataSource)),
-  }),
-).annotate({
-  identifier: "ScriptsVersionsListResponseItemsItemMetadata",
-}) as any as S.Schema<ScriptsVersionsListResponseItemsItemMetadata>;
+export const ScriptsVersionsListResponseItemsItemMetadata =
+  ScriptsVersionsCreateResponseMetadata as any as S.Schema<ScriptsVersionsListResponseItemsItemMetadata>;
 
 export interface ScriptsVersionsListResponseItemsItem {
   /** Unique identifier for the version. */
@@ -26402,13 +24656,8 @@ export interface BetaWorkersEditRequestPreviewsBaseConfigPlacementMode {
   /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
   mode: BetaWorkersEditRequestPreviewsBaseConfigPlacementModeMode;
 }
-export const BetaWorkersEditRequestPreviewsBaseConfigPlacementMode = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: BetaWorkersEditRequestPreviewsBaseConfigPlacementModeMode,
-  }),
-).annotate({
-  identifier: "BetaWorkersEditRequestPreviewsBaseConfigPlacementMode",
-}) as any as S.Schema<BetaWorkersEditRequestPreviewsBaseConfigPlacementMode>;
+export const BetaWorkersEditRequestPreviewsBaseConfigPlacementMode =
+  BetaWorkersCreateRequestPreviewsBaseConfigPlacementMode as any as S.Schema<BetaWorkersEditRequestPreviewsBaseConfigPlacementMode>;
 
 export type BetaWorkersEditRequestPreviewsBaseConfigPlacementRegion =
   BetaWorkersCreateRequestPreviewsBaseConfigPlacementRegion;
@@ -26434,14 +24683,8 @@ export interface BetaWorkersEditRequestPreviewsBaseConfigPlacementCase4 {
   /** Cloud region for targeted placement in format 'provider:region'. */
   region: string;
 }
-export const BetaWorkersEditRequestPreviewsBaseConfigPlacementCase4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: BetaWorkersEditRequestPreviewsBaseConfigPlacementCase4Mode,
-    region: S.String,
-  }),
-).annotate({
-  identifier: "BetaWorkersEditRequestPreviewsBaseConfigPlacementCase4",
-}) as any as S.Schema<BetaWorkersEditRequestPreviewsBaseConfigPlacementCase4>;
+export const BetaWorkersEditRequestPreviewsBaseConfigPlacementCase4 =
+  BetaWorkersVersionsCreateRequestPlacementCase4 as any as S.Schema<BetaWorkersEditRequestPreviewsBaseConfigPlacementCase4>;
 
 export type BetaWorkersEditRequestPreviewsBaseConfigPlacementCase5Mode = "targeted";
 export const BetaWorkersEditRequestPreviewsBaseConfigPlacementCase5Mode = S.String;
@@ -26452,14 +24695,8 @@ export interface BetaWorkersEditRequestPreviewsBaseConfigPlacementCase5 {
   /** Targeted placement mode. */
   mode: BetaWorkersEditRequestPreviewsBaseConfigPlacementCase5Mode;
 }
-export const BetaWorkersEditRequestPreviewsBaseConfigPlacementCase5 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hostname: S.String,
-    mode: BetaWorkersEditRequestPreviewsBaseConfigPlacementCase5Mode,
-  }),
-).annotate({
-  identifier: "BetaWorkersEditRequestPreviewsBaseConfigPlacementCase5",
-}) as any as S.Schema<BetaWorkersEditRequestPreviewsBaseConfigPlacementCase5>;
+export const BetaWorkersEditRequestPreviewsBaseConfigPlacementCase5 =
+  BetaWorkersVersionsCreateRequestPlacementCase5 as any as S.Schema<BetaWorkersEditRequestPreviewsBaseConfigPlacementCase5>;
 
 export type BetaWorkersEditRequestPreviewsBaseConfigPlacementCase6Mode = "targeted";
 export const BetaWorkersEditRequestPreviewsBaseConfigPlacementCase6Mode = S.String;
@@ -26470,14 +24707,8 @@ export interface BetaWorkersEditRequestPreviewsBaseConfigPlacementCase6 {
   /** Targeted placement mode. */
   mode: BetaWorkersEditRequestPreviewsBaseConfigPlacementCase6Mode;
 }
-export const BetaWorkersEditRequestPreviewsBaseConfigPlacementCase6 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    host: S.String,
-    mode: BetaWorkersEditRequestPreviewsBaseConfigPlacementCase6Mode,
-  }),
-).annotate({
-  identifier: "BetaWorkersEditRequestPreviewsBaseConfigPlacementCase6",
-}) as any as S.Schema<BetaWorkersEditRequestPreviewsBaseConfigPlacementCase6>;
+export const BetaWorkersEditRequestPreviewsBaseConfigPlacementCase6 =
+  BetaWorkersVersionsCreateRequestPlacementCase6 as any as S.Schema<BetaWorkersEditRequestPreviewsBaseConfigPlacementCase6>;
 
 export type BetaWorkersEditRequestPreviewsBaseConfigPlacementCase7Mode = "targeted";
 export const BetaWorkersEditRequestPreviewsBaseConfigPlacementCase7Mode = S.String;
@@ -26928,13 +25159,8 @@ export interface BetaWorkersEditResponsePreviewsBaseConfigPlacementMode {
   /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
   mode: BetaWorkersEditResponsePreviewsBaseConfigPlacementModeMode;
 }
-export const BetaWorkersEditResponsePreviewsBaseConfigPlacementMode = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: BetaWorkersEditResponsePreviewsBaseConfigPlacementModeMode,
-  }),
-).annotate({
-  identifier: "BetaWorkersEditResponsePreviewsBaseConfigPlacementMode",
-}) as any as S.Schema<BetaWorkersEditResponsePreviewsBaseConfigPlacementMode>;
+export const BetaWorkersEditResponsePreviewsBaseConfigPlacementMode =
+  BetaWorkersCreateRequestPreviewsBaseConfigPlacementMode as any as S.Schema<BetaWorkersEditResponsePreviewsBaseConfigPlacementMode>;
 
 export type BetaWorkersEditResponsePreviewsBaseConfigPlacementRegion =
   BetaWorkersCreateRequestPreviewsBaseConfigPlacementRegion;
@@ -26960,14 +25186,8 @@ export interface BetaWorkersEditResponsePreviewsBaseConfigPlacementCase4 {
   /** Cloud region for targeted placement in format 'provider:region'. */
   region: string;
 }
-export const BetaWorkersEditResponsePreviewsBaseConfigPlacementCase4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: BetaWorkersEditResponsePreviewsBaseConfigPlacementCase4Mode,
-    region: S.String,
-  }),
-).annotate({
-  identifier: "BetaWorkersEditResponsePreviewsBaseConfigPlacementCase4",
-}) as any as S.Schema<BetaWorkersEditResponsePreviewsBaseConfigPlacementCase4>;
+export const BetaWorkersEditResponsePreviewsBaseConfigPlacementCase4 =
+  BetaWorkersVersionsCreateRequestPlacementCase4 as any as S.Schema<BetaWorkersEditResponsePreviewsBaseConfigPlacementCase4>;
 
 export type BetaWorkersEditResponsePreviewsBaseConfigPlacementCase5Mode = "targeted";
 export const BetaWorkersEditResponsePreviewsBaseConfigPlacementCase5Mode = S.String;
@@ -26978,14 +25198,8 @@ export interface BetaWorkersEditResponsePreviewsBaseConfigPlacementCase5 {
   /** Targeted placement mode. */
   mode: BetaWorkersEditResponsePreviewsBaseConfigPlacementCase5Mode;
 }
-export const BetaWorkersEditResponsePreviewsBaseConfigPlacementCase5 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hostname: S.String,
-    mode: BetaWorkersEditResponsePreviewsBaseConfigPlacementCase5Mode,
-  }),
-).annotate({
-  identifier: "BetaWorkersEditResponsePreviewsBaseConfigPlacementCase5",
-}) as any as S.Schema<BetaWorkersEditResponsePreviewsBaseConfigPlacementCase5>;
+export const BetaWorkersEditResponsePreviewsBaseConfigPlacementCase5 =
+  BetaWorkersVersionsCreateRequestPlacementCase5 as any as S.Schema<BetaWorkersEditResponsePreviewsBaseConfigPlacementCase5>;
 
 export type BetaWorkersEditResponsePreviewsBaseConfigPlacementCase6Mode = "targeted";
 export const BetaWorkersEditResponsePreviewsBaseConfigPlacementCase6Mode = S.String;
@@ -26996,14 +25210,8 @@ export interface BetaWorkersEditResponsePreviewsBaseConfigPlacementCase6 {
   /** Targeted placement mode. */
   mode: BetaWorkersEditResponsePreviewsBaseConfigPlacementCase6Mode;
 }
-export const BetaWorkersEditResponsePreviewsBaseConfigPlacementCase6 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    host: S.String,
-    mode: BetaWorkersEditResponsePreviewsBaseConfigPlacementCase6Mode,
-  }),
-).annotate({
-  identifier: "BetaWorkersEditResponsePreviewsBaseConfigPlacementCase6",
-}) as any as S.Schema<BetaWorkersEditResponsePreviewsBaseConfigPlacementCase6>;
+export const BetaWorkersEditResponsePreviewsBaseConfigPlacementCase6 =
+  BetaWorkersVersionsCreateRequestPlacementCase6 as any as S.Schema<BetaWorkersEditResponsePreviewsBaseConfigPlacementCase6>;
 
 export type BetaWorkersEditResponsePreviewsBaseConfigPlacementCase7Mode = "targeted";
 export const BetaWorkersEditResponsePreviewsBaseConfigPlacementCase7Mode = S.String;
@@ -27233,17 +25441,8 @@ export interface ObservabilityDestinationsUpdateResponseConfiguration {
   type: ObservabilityDestinationsUpdateResponseConfigurationType;
   url: string;
 }
-export const ObservabilityDestinationsUpdateResponseConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    destinationConf: S.String.pipe(T.Body("destination_conf")),
-    logpushDataset: ObservabilityDestinationsUpdateResponseConfigurationLogpushDataset,
-    logpushJob: S.Number,
-    type: ObservabilityDestinationsUpdateResponseConfigurationType,
-    url: S.String,
-  }),
-).annotate({
-  identifier: "ObservabilityDestinationsUpdateResponseConfiguration",
-}) as any as S.Schema<ObservabilityDestinationsUpdateResponseConfiguration>;
+export const ObservabilityDestinationsUpdateResponseConfiguration =
+  ObservabilityDestinationsCreateResponseConfiguration as any as S.Schema<ObservabilityDestinationsUpdateResponseConfiguration>;
 
 export type ObservabilityDestinationsUpdateResponseScriptsList = Array<string>;
 export const ObservabilityDestinationsUpdateResponseScriptsList =
@@ -27310,15 +25509,8 @@ export interface ScriptsScriptAndVersionSettingsEditResponseBindingsItemAI {
   /** The kind of resource that the binding provides. */
   type: ScriptsScriptAndVersionSettingsEditResponseBindingsItemAIType;
 }
-export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemAI = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      type: ScriptsScriptAndVersionSettingsEditResponseBindingsItemAIType,
-    }),
-).annotate({
-  identifier: "ScriptsScriptAndVersionSettingsEditResponseBindingsItemAI",
-}) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemAI>;
+export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemAI =
+  BetaWorkersVersionsCreateRequestBindingsItemVersionMetadata as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemAI>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemAISearchType = "ai_search";
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemAISearchType = S.String;
@@ -27334,16 +25526,7 @@ export interface ScriptsScriptAndVersionSettingsEditResponseBindingsItemAISearch
   namespace?: string | null;
 }
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemAISearch =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      instanceName: S.String.pipe(T.Body("instance_name")),
-      name: S.String,
-      type: ScriptsScriptAndVersionSettingsEditResponseBindingsItemAISearchType,
-      namespace: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "ScriptsScriptAndVersionSettingsEditResponseBindingsItemAISearch",
-  }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemAISearch>;
+  ScriptsScriptAndVersionSettingsGetResponseBindingsItemAISearch as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemAISearch>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemAISearchNamespaceType =
   "ai_search_namespace";
@@ -27359,15 +25542,7 @@ export interface ScriptsScriptAndVersionSettingsEditResponseBindingsItemAISearch
   type: ScriptsScriptAndVersionSettingsEditResponseBindingsItemAISearchNamespaceType;
 }
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemAISearchNamespace =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      namespace: S.String,
-      type: ScriptsScriptAndVersionSettingsEditResponseBindingsItemAISearchNamespaceType,
-    }),
-  ).annotate({
-    identifier: "ScriptsScriptAndVersionSettingsEditResponseBindingsItemAISearchNamespace",
-  }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemAISearchNamespace>;
+  BetaWorkersVersionsCreateRequestBindingsItemAISearchNamespace as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemAISearchNamespace>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemMessagingType = "messaging";
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemMessagingType = S.String;
@@ -27381,15 +25556,7 @@ export interface ScriptsScriptAndVersionSettingsEditResponseBindingsItemMessagin
   type: ScriptsScriptAndVersionSettingsEditResponseBindingsItemMessagingType;
 }
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemMessaging =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      namespace: S.String,
-      type: ScriptsScriptAndVersionSettingsEditResponseBindingsItemMessagingType,
-    }),
-  ).annotate({
-    identifier: "ScriptsScriptAndVersionSettingsEditResponseBindingsItemMessaging",
-  }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemMessaging>;
+  BetaWorkersVersionsCreateRequestBindingsItemAISearchNamespace as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemMessaging>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemAnalyticsEngineType =
   "analytics_engine";
@@ -27404,15 +25571,7 @@ export interface ScriptsScriptAndVersionSettingsEditResponseBindingsItemAnalytic
   type: ScriptsScriptAndVersionSettingsEditResponseBindingsItemAnalyticsEngineType;
 }
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemAnalyticsEngine =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dataset: S.String,
-      name: S.String,
-      type: ScriptsScriptAndVersionSettingsEditResponseBindingsItemAnalyticsEngineType,
-    }),
-  ).annotate({
-    identifier: "ScriptsScriptAndVersionSettingsEditResponseBindingsItemAnalyticsEngine",
-  }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemAnalyticsEngine>;
+  ScriptsScriptAndVersionSettingsGetResponseBindingsItemAnalyticsEngine as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemAnalyticsEngine>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemArtifactsType = "artifacts";
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemArtifactsType = S.String;
@@ -27426,15 +25585,7 @@ export interface ScriptsScriptAndVersionSettingsEditResponseBindingsItemArtifact
   type: ScriptsScriptAndVersionSettingsEditResponseBindingsItemArtifactsType;
 }
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemArtifacts =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      namespace: S.String,
-      type: ScriptsScriptAndVersionSettingsEditResponseBindingsItemArtifactsType,
-    }),
-  ).annotate({
-    identifier: "ScriptsScriptAndVersionSettingsEditResponseBindingsItemArtifacts",
-  }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemArtifacts>;
+  BetaWorkersVersionsCreateRequestBindingsItemAISearchNamespace as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemArtifacts>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemAssetsType = "assets";
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemAssetsType = S.String;
@@ -27446,14 +25597,7 @@ export interface ScriptsScriptAndVersionSettingsEditResponseBindingsItemAssets {
   type: ScriptsScriptAndVersionSettingsEditResponseBindingsItemAssetsType;
 }
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemAssets =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      type: ScriptsScriptAndVersionSettingsEditResponseBindingsItemAssetsType,
-    }),
-  ).annotate({
-    identifier: "ScriptsScriptAndVersionSettingsEditResponseBindingsItemAssets",
-  }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemAssets>;
+  ScriptsScriptAndVersionSettingsGetResponseBindingsItemBrowser as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemAssets>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemBrowserType = "browser";
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemBrowserType = S.String;
@@ -27465,14 +25609,7 @@ export interface ScriptsScriptAndVersionSettingsEditResponseBindingsItemBrowser 
   type: ScriptsScriptAndVersionSettingsEditResponseBindingsItemBrowserType;
 }
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemBrowser =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      type: ScriptsScriptAndVersionSettingsEditResponseBindingsItemBrowserType,
-    }),
-  ).annotate({
-    identifier: "ScriptsScriptAndVersionSettingsEditResponseBindingsItemBrowser",
-  }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemBrowser>;
+  ScriptsScriptAndVersionSettingsGetResponseBindingsItemBrowser as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemBrowser>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemD1Type = "d1";
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemD1Type = S.String;
@@ -27487,17 +25624,8 @@ export interface ScriptsScriptAndVersionSettingsEditResponseBindingsItemD1 {
   /** This property has been renamed to `database_id`. */
   id?: string | null;
 }
-export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemD1 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      databaseId: S.String.pipe(T.Body("database_id")),
-      name: S.String,
-      type: ScriptsScriptAndVersionSettingsEditResponseBindingsItemD1Type,
-      id: S.optional(S.NullOr(S.String)),
-    }),
-).annotate({
-  identifier: "ScriptsScriptAndVersionSettingsEditResponseBindingsItemD1",
-}) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemD1>;
+export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemD1 =
+  ScriptsScriptAndVersionSettingsGetResponseBindingsItemD1 as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemD1>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemDataBlobType = "data_blob";
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemDataBlobType = S.String;
@@ -27511,15 +25639,7 @@ export interface ScriptsScriptAndVersionSettingsEditResponseBindingsItemDataBlob
   type: ScriptsScriptAndVersionSettingsEditResponseBindingsItemDataBlobType;
 }
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemDataBlob =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      part: S.String,
-      type: ScriptsScriptAndVersionSettingsEditResponseBindingsItemDataBlobType,
-    }),
-  ).annotate({
-    identifier: "ScriptsScriptAndVersionSettingsEditResponseBindingsItemDataBlob",
-  }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemDataBlob>;
+  ScriptsScriptAndVersionSettingsGetResponseBindingsItemDataBlob as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemDataBlob>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemDispatchNamespaceType =
   "dispatch_namespace";
@@ -27596,19 +25716,7 @@ export interface ScriptsScriptAndVersionSettingsEditResponseBindingsItemDurableO
   scriptName?: string | null;
 }
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemDurableObjectNamespace =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      type: ScriptsScriptAndVersionSettingsEditResponseBindingsItemDurableObjectNamespaceType,
-      className: S.optional(S.NullOr(S.String).pipe(T.Body("class_name"))),
-      dispatchNamespace: S.optional(S.NullOr(S.String).pipe(T.Body("dispatch_namespace"))),
-      environment: S.optional(S.NullOr(S.String)),
-      namespaceId: S.optional(S.NullOr(S.String).pipe(T.Body("namespace_id"))),
-      scriptName: S.optional(S.NullOr(S.String).pipe(T.Body("script_name"))),
-    }),
-  ).annotate({
-    identifier: "ScriptsScriptAndVersionSettingsEditResponseBindingsItemDurableObjectNamespace",
-  }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemDurableObjectNamespace>;
+  BetaWorkersVersionsCreateResponseBindingsItemDurableObjectNamespace as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemDurableObjectNamespace>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemHyperdriveType = "hyperdrive";
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemHyperdriveType = S.String;
@@ -27622,15 +25730,7 @@ export interface ScriptsScriptAndVersionSettingsEditResponseBindingsItemHyperdri
   type: ScriptsScriptAndVersionSettingsEditResponseBindingsItemHyperdriveType;
 }
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemHyperdrive =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      name: S.String,
-      type: ScriptsScriptAndVersionSettingsEditResponseBindingsItemHyperdriveType,
-    }),
-  ).annotate({
-    identifier: "ScriptsScriptAndVersionSettingsEditResponseBindingsItemHyperdrive",
-  }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemHyperdrive>;
+  ScriptsScriptAndVersionSettingsGetResponseBindingsItemHyperdrive as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemHyperdrive>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemInheritType = "inherit";
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemInheritType = S.String;
@@ -27646,16 +25746,7 @@ export interface ScriptsScriptAndVersionSettingsEditResponseBindingsItemInherit 
   versionId?: string | null;
 }
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemInherit =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      type: ScriptsScriptAndVersionSettingsEditResponseBindingsItemInheritType,
-      oldName: S.optional(S.NullOr(S.String).pipe(T.Body("old_name"))),
-      versionId: S.optional(S.NullOr(S.String).pipe(T.Body("version_id"))),
-    }),
-  ).annotate({
-    identifier: "ScriptsScriptAndVersionSettingsEditResponseBindingsItemInherit",
-  }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemInherit>;
+  ScriptsScriptAndVersionSettingsGetResponseBindingsItemInherit as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemInherit>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemImagesType = "images";
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemImagesType = S.String;
@@ -27667,14 +25758,7 @@ export interface ScriptsScriptAndVersionSettingsEditResponseBindingsItemImages {
   type: ScriptsScriptAndVersionSettingsEditResponseBindingsItemImagesType;
 }
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemImages =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      type: ScriptsScriptAndVersionSettingsEditResponseBindingsItemImagesType,
-    }),
-  ).annotate({
-    identifier: "ScriptsScriptAndVersionSettingsEditResponseBindingsItemImages",
-  }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemImages>;
+  ScriptsScriptAndVersionSettingsGetResponseBindingsItemBrowser as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemImages>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemJsonType = "json";
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemJsonType = S.String;
@@ -27687,16 +25771,8 @@ export interface ScriptsScriptAndVersionSettingsEditResponseBindingsItemJson {
   /** The kind of resource that the binding provides. */
   type: ScriptsScriptAndVersionSettingsEditResponseBindingsItemJsonType;
 }
-export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemJson = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      json: S.Unknown,
-      name: S.String,
-      type: ScriptsScriptAndVersionSettingsEditResponseBindingsItemJsonType,
-    }),
-).annotate({
-  identifier: "ScriptsScriptAndVersionSettingsEditResponseBindingsItemJson",
-}) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemJson>;
+export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemJson =
+  ScriptsScriptAndVersionSettingsGetResponseBindingsItemJson as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemJson>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemKVNamespaceType = "kv_namespace";
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemKVNamespaceType = S.String;
@@ -27710,15 +25786,7 @@ export interface ScriptsScriptAndVersionSettingsEditResponseBindingsItemKVNamesp
   type: ScriptsScriptAndVersionSettingsEditResponseBindingsItemKVNamespaceType;
 }
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemKVNamespace =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      namespaceId: S.String.pipe(T.Body("namespace_id")),
-      type: ScriptsScriptAndVersionSettingsEditResponseBindingsItemKVNamespaceType,
-    }),
-  ).annotate({
-    identifier: "ScriptsScriptAndVersionSettingsEditResponseBindingsItemKVNamespace",
-  }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemKVNamespace>;
+  ScriptsScriptAndVersionSettingsGetResponseBindingsItemKVNamespace as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemKVNamespace>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemMediaType = "media";
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemMediaType = S.String;
@@ -27729,15 +25797,8 @@ export interface ScriptsScriptAndVersionSettingsEditResponseBindingsItemMedia {
   /** The kind of resource that the binding provides. */
   type: ScriptsScriptAndVersionSettingsEditResponseBindingsItemMediaType;
 }
-export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemMedia = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      type: ScriptsScriptAndVersionSettingsEditResponseBindingsItemMediaType,
-    }),
-).annotate({
-  identifier: "ScriptsScriptAndVersionSettingsEditResponseBindingsItemMedia",
-}) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemMedia>;
+export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemMedia =
+  BetaWorkersVersionsCreateRequestBindingsItemVersionMetadata as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemMedia>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemMTLSCertificateType =
   "mtls_certificate";
@@ -27752,15 +25813,7 @@ export interface ScriptsScriptAndVersionSettingsEditResponseBindingsItemMTLSCert
   type: ScriptsScriptAndVersionSettingsEditResponseBindingsItemMTLSCertificateType;
 }
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemMTLSCertificate =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      certificateId: S.String.pipe(T.Body("certificate_id")),
-      name: S.String,
-      type: ScriptsScriptAndVersionSettingsEditResponseBindingsItemMTLSCertificateType,
-    }),
-  ).annotate({
-    identifier: "ScriptsScriptAndVersionSettingsEditResponseBindingsItemMTLSCertificate",
-  }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemMTLSCertificate>;
+  ScriptsScriptAndVersionSettingsGetResponseBindingsItemMTLSCertificate as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemMTLSCertificate>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemPlainTextType = "plain_text";
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemPlainTextType = S.String;
@@ -27774,15 +25827,7 @@ export interface ScriptsScriptAndVersionSettingsEditResponseBindingsItemPlainTex
   type: ScriptsScriptAndVersionSettingsEditResponseBindingsItemPlainTextType;
 }
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemPlainText =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      text: S.String,
-      type: ScriptsScriptAndVersionSettingsEditResponseBindingsItemPlainTextType,
-    }),
-  ).annotate({
-    identifier: "ScriptsScriptAndVersionSettingsEditResponseBindingsItemPlainText",
-  }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemPlainText>;
+  ScriptsScriptAndVersionSettingsGetResponseBindingsItemPlainText as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemPlainText>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemPipelinesType = "pipelines";
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemPipelinesType = S.String;
@@ -27796,15 +25841,7 @@ export interface ScriptsScriptAndVersionSettingsEditResponseBindingsItemPipeline
   type: ScriptsScriptAndVersionSettingsEditResponseBindingsItemPipelinesType;
 }
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemPipelines =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      pipeline: S.String,
-      type: ScriptsScriptAndVersionSettingsEditResponseBindingsItemPipelinesType,
-    }),
-  ).annotate({
-    identifier: "ScriptsScriptAndVersionSettingsEditResponseBindingsItemPipelines",
-  }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemPipelines>;
+  ScriptsScriptAndVersionSettingsGetResponseBindingsItemPipelines as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemPipelines>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemK2Type = "k2";
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemK2Type = S.String;
@@ -27817,16 +25854,8 @@ export interface ScriptsScriptAndVersionSettingsEditResponseBindingsItemK2 {
   /** The kind of resource that the binding provides. */
   type: ScriptsScriptAndVersionSettingsEditResponseBindingsItemK2Type;
 }
-export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemK2 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      stream: S.String,
-      type: ScriptsScriptAndVersionSettingsEditResponseBindingsItemK2Type,
-    }),
-).annotate({
-  identifier: "ScriptsScriptAndVersionSettingsEditResponseBindingsItemK2",
-}) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemK2>;
+export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemK2 =
+  ScriptsScriptAndVersionSettingsGetResponseBindingsItemK2 as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemK2>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemQueueType = "queue";
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemQueueType = S.String;
@@ -27839,16 +25868,8 @@ export interface ScriptsScriptAndVersionSettingsEditResponseBindingsItemQueue {
   /** The kind of resource that the binding provides. */
   type: ScriptsScriptAndVersionSettingsEditResponseBindingsItemQueueType;
 }
-export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemQueue = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      queueName: S.String.pipe(T.Body("queue_name")),
-      type: ScriptsScriptAndVersionSettingsEditResponseBindingsItemQueueType,
-    }),
-).annotate({
-  identifier: "ScriptsScriptAndVersionSettingsEditResponseBindingsItemQueue",
-}) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemQueue>;
+export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemQueue =
+  ScriptsScriptAndVersionSettingsGetResponseBindingsItemQueue as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemQueue>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemRatelimitSimple =
   BetaWorkersVersionsCreateResponseBindingsItemRatelimitSimple;
@@ -27869,16 +25890,7 @@ export interface ScriptsScriptAndVersionSettingsEditResponseBindingsItemRatelimi
   type: ScriptsScriptAndVersionSettingsEditResponseBindingsItemRatelimitType;
 }
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemRatelimit =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      namespaceId: S.String.pipe(T.Body("namespace_id")),
-      simple: BetaWorkersVersionsCreateResponseBindingsItemRatelimitSimple,
-      type: ScriptsScriptAndVersionSettingsEditResponseBindingsItemRatelimitType,
-    }),
-  ).annotate({
-    identifier: "ScriptsScriptAndVersionSettingsEditResponseBindingsItemRatelimit",
-  }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemRatelimit>;
+  ScriptsScriptAndVersionSettingsGetResponseBindingsItemRatelimit as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemRatelimit>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemR2BucketType = "r2_bucket";
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemR2BucketType = S.String;
@@ -27901,18 +25913,7 @@ export interface ScriptsScriptAndVersionSettingsEditResponseBindingsItemR2Bucket
   jurisdiction?: ScriptsScriptAndVersionSettingsEditResponseBindingsItemR2BucketJurisdiction | null;
 }
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemR2Bucket =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      bucketName: S.String.pipe(T.Body("bucket_name")),
-      name: S.String,
-      type: ScriptsScriptAndVersionSettingsEditResponseBindingsItemR2BucketType,
-      jurisdiction: S.optional(
-        S.NullOr(ScriptsScriptAndVersionSettingsEditResponseBindingsItemR2BucketJurisdiction),
-      ),
-    }),
-  ).annotate({
-    identifier: "ScriptsScriptAndVersionSettingsEditResponseBindingsItemR2Bucket",
-  }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemR2Bucket>;
+  ScriptsScriptAndVersionSettingsGetResponseBindingsItemR2Bucket as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemR2Bucket>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretTextType = "secret_text";
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretTextType = S.String;
@@ -27926,15 +25927,7 @@ export interface ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretTe
   type: ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretTextType;
 }
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretText =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      text: S.String,
-      type: ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretTextType,
-    }),
-  ).annotate({
-    identifier: "ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretText",
-  }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretText>;
+  ScriptsScriptAndVersionSettingsGetResponseBindingsItemPlainText as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretText>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemSendEmailType = "send_email";
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemSendEmailType = S.String;
@@ -27998,17 +25991,7 @@ export interface ScriptsScriptAndVersionSettingsEditResponseBindingsItemService 
   environment?: string | null;
 }
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemService =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      service: S.String,
-      type: ScriptsScriptAndVersionSettingsEditResponseBindingsItemServiceType,
-      entrypoint: S.optional(S.NullOr(S.String)),
-      environment: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "ScriptsScriptAndVersionSettingsEditResponseBindingsItemService",
-  }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemService>;
+  ScriptsScriptAndVersionSettingsGetResponseBindingsItemService as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemService>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemTextBlobType = "text_blob";
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemTextBlobType = S.String;
@@ -28022,15 +26005,7 @@ export interface ScriptsScriptAndVersionSettingsEditResponseBindingsItemTextBlob
   type: ScriptsScriptAndVersionSettingsEditResponseBindingsItemTextBlobType;
 }
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemTextBlob =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      part: S.String,
-      type: ScriptsScriptAndVersionSettingsEditResponseBindingsItemTextBlobType,
-    }),
-  ).annotate({
-    identifier: "ScriptsScriptAndVersionSettingsEditResponseBindingsItemTextBlob",
-  }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemTextBlob>;
+  ScriptsScriptAndVersionSettingsGetResponseBindingsItemDataBlob as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemTextBlob>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemVectorizeType = "vectorize";
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemVectorizeType = S.String;
@@ -28044,15 +26019,7 @@ export interface ScriptsScriptAndVersionSettingsEditResponseBindingsItemVectoriz
   type: ScriptsScriptAndVersionSettingsEditResponseBindingsItemVectorizeType;
 }
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemVectorize =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      indexName: S.String.pipe(T.Body("index_name")),
-      name: S.String,
-      type: ScriptsScriptAndVersionSettingsEditResponseBindingsItemVectorizeType,
-    }),
-  ).annotate({
-    identifier: "ScriptsScriptAndVersionSettingsEditResponseBindingsItemVectorize",
-  }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemVectorize>;
+  ScriptsScriptAndVersionSettingsGetResponseBindingsItemVectorize as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemVectorize>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemVersionMetadataType =
   "version_metadata";
@@ -28065,14 +26032,7 @@ export interface ScriptsScriptAndVersionSettingsEditResponseBindingsItemVersionM
   type: ScriptsScriptAndVersionSettingsEditResponseBindingsItemVersionMetadataType;
 }
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemVersionMetadata =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      type: ScriptsScriptAndVersionSettingsEditResponseBindingsItemVersionMetadataType,
-    }),
-  ).annotate({
-    identifier: "ScriptsScriptAndVersionSettingsEditResponseBindingsItemVersionMetadata",
-  }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemVersionMetadata>;
+  ScriptsScriptAndVersionSettingsGetResponseBindingsItemBrowser as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemVersionMetadata>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretsStoreSecretType =
   "secrets_store_secret";
@@ -28090,16 +26050,7 @@ export interface ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretsS
   type: ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretsStoreSecretType;
 }
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretsStoreSecret =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      secretName: S.String.pipe(T.Body("secret_name")),
-      storeId: S.String.pipe(T.Body("store_id")),
-      type: ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretsStoreSecretType,
-    }),
-  ).annotate({
-    identifier: "ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretsStoreSecret",
-  }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretsStoreSecret>;
+  BetaWorkersVersionsCreateRequestBindingsItemSecretsStoreSecret as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretsStoreSecret>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemFlagshipType = "flagship";
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemFlagshipType = S.String;
@@ -28113,15 +26064,7 @@ export interface ScriptsScriptAndVersionSettingsEditResponseBindingsItemFlagship
   type: ScriptsScriptAndVersionSettingsEditResponseBindingsItemFlagshipType;
 }
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemFlagship =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      appId: S.String.pipe(T.Body("app_id")),
-      name: S.String,
-      type: ScriptsScriptAndVersionSettingsEditResponseBindingsItemFlagshipType,
-    }),
-  ).annotate({
-    identifier: "ScriptsScriptAndVersionSettingsEditResponseBindingsItemFlagship",
-  }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemFlagship>;
+  ScriptsScriptAndVersionSettingsGetResponseBindingsItemFlagship as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemFlagship>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretKeyFormat =
   | "raw"
@@ -28147,9 +26090,7 @@ export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretKeyUsa
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretKeyUsagesList =
   Array<ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretKeyUsagesItem>;
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretKeyUsagesList =
-  /*@__PURE__*/ S.Array(
-    ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretKeyUsagesItem,
-  ) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretKeyUsagesList>;
+  BetaWorkersVersionsCreateRequestBindingsItemSecretKeyUsagesList as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretKeyUsagesList>;
 
 export interface ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretKey {
   /** Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
@@ -28168,19 +26109,7 @@ export interface ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretKe
   keyJwk?: unknown | null;
 }
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretKey =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      algorithm: S.Unknown,
-      format: ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretKeyFormat,
-      name: S.String,
-      type: ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretKeyType,
-      usages: ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretKeyUsagesList,
-      keyBase64: S.optional(S.NullOr(S.String).pipe(T.Body("key_base64"))),
-      keyJwk: S.optional(S.NullOr(S.Unknown).pipe(T.Body("key_jwk"))),
-    }),
-  ).annotate({
-    identifier: "ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretKey",
-  }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretKey>;
+  ScriptsScriptAndVersionSettingsGetResponseBindingsItemSecretKey as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemSecretKey>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemWorkflowType = "workflow";
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemWorkflowType = S.String;
@@ -28198,17 +26127,7 @@ export interface ScriptsScriptAndVersionSettingsEditResponseBindingsItemWorkflow
   scriptName?: string | null;
 }
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemWorkflow =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      type: ScriptsScriptAndVersionSettingsEditResponseBindingsItemWorkflowType,
-      workflowName: S.String.pipe(T.Body("workflow_name")),
-      className: S.optional(S.NullOr(S.String).pipe(T.Body("class_name"))),
-      scriptName: S.optional(S.NullOr(S.String).pipe(T.Body("script_name"))),
-    }),
-  ).annotate({
-    identifier: "ScriptsScriptAndVersionSettingsEditResponseBindingsItemWorkflow",
-  }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemWorkflow>;
+  ScriptsScriptAndVersionSettingsGetResponseBindingsItemWorkflow as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemWorkflow>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemWasmModuleType = "wasm_module";
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemWasmModuleType = S.String;
@@ -28222,15 +26141,7 @@ export interface ScriptsScriptAndVersionSettingsEditResponseBindingsItemWasmModu
   type: ScriptsScriptAndVersionSettingsEditResponseBindingsItemWasmModuleType;
 }
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemWasmModule =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      part: S.String,
-      type: ScriptsScriptAndVersionSettingsEditResponseBindingsItemWasmModuleType,
-    }),
-  ).annotate({
-    identifier: "ScriptsScriptAndVersionSettingsEditResponseBindingsItemWasmModule",
-  }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemWasmModule>;
+  ScriptsScriptAndVersionSettingsGetResponseBindingsItemDataBlob as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemWasmModule>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemVPCServiceType = "vpc_service";
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemVPCServiceType = S.String;
@@ -28244,15 +26155,7 @@ export interface ScriptsScriptAndVersionSettingsEditResponseBindingsItemVPCServi
   type: ScriptsScriptAndVersionSettingsEditResponseBindingsItemVPCServiceType;
 }
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemVPCService =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      serviceId: S.String.pipe(T.Body("service_id")),
-      type: ScriptsScriptAndVersionSettingsEditResponseBindingsItemVPCServiceType,
-    }),
-  ).annotate({
-    identifier: "ScriptsScriptAndVersionSettingsEditResponseBindingsItemVPCService",
-  }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemVPCService>;
+  ScriptsScriptAndVersionSettingsGetResponseBindingsItemVPCService as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemVPCService>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemVPCNetworkType = "vpc_network";
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemVPCNetworkType = S.String;
@@ -28274,19 +26177,7 @@ export interface ScriptsScriptAndVersionSettingsEditResponseBindingsItemVPCNetwo
   tunnelId?: string | null;
 }
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemVPCNetwork =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      type: ScriptsScriptAndVersionSettingsEditResponseBindingsItemVPCNetworkType,
-      identity: S.optional(
-        S.NullOr(ScriptsScriptAndVersionSettingsEditResponseBindingsItemVPCNetworkIdentity),
-      ),
-      networkId: S.optional(S.NullOr(S.String).pipe(T.Body("network_id"))),
-      tunnelId: S.optional(S.NullOr(S.String).pipe(T.Body("tunnel_id"))),
-    }),
-  ).annotate({
-    identifier: "ScriptsScriptAndVersionSettingsEditResponseBindingsItemVPCNetwork",
-  }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemVPCNetwork>;
+  ScriptsScriptAndVersionSettingsGetResponseBindingsItemVPCNetwork as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemVPCNetwork>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItem =
   | ScriptsScriptAndVersionSettingsEditResponseBindingsItemAI
@@ -28464,17 +26355,7 @@ export interface ScriptsScriptAndVersionSettingsEditResponseExportsValueWorker {
   state?: ScriptsScriptAndVersionSettingsEditResponseExportsValueWorkerState | null;
 }
 export const ScriptsScriptAndVersionSettingsEditResponseExportsValueWorker =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: ScriptsScriptAndVersionSettingsEditResponseExportsValueWorkerType,
-      cache: S.optional(S.NullOr(BetaWorkersVersionsCreateRequestExportsValueWorkerCache)),
-      state: S.optional(
-        S.NullOr(ScriptsScriptAndVersionSettingsEditResponseExportsValueWorkerState),
-      ),
-    }),
-  ).annotate({
-    identifier: "ScriptsScriptAndVersionSettingsEditResponseExportsValueWorker",
-  }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseExportsValueWorker>;
+  ScriptsVersionsCreateResponseResourcesScriptRuntimeExportsValueWorker as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseExportsValueWorker>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseExportsValueWorkersDurableObjectExportStorage =
   | "sqlite"
@@ -28503,21 +26384,7 @@ export interface ScriptsScriptAndVersionSettingsEditResponseExportsValueWorkersD
   state?: ScriptsScriptAndVersionSettingsEditResponseExportsValueWorkersDurableObjectExportState | null;
 }
 export const ScriptsScriptAndVersionSettingsEditResponseExportsValueWorkersDurableObjectExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storage:
-        ScriptsScriptAndVersionSettingsEditResponseExportsValueWorkersDurableObjectExportStorage,
-      type: ScriptsScriptAndVersionSettingsEditResponseExportsValueWorkersDurableObjectExportType,
-      container: S.optional(S.NullOr(S.String)),
-      state: S.optional(
-        S.NullOr(
-          ScriptsScriptAndVersionSettingsEditResponseExportsValueWorkersDurableObjectExportState,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "ScriptsScriptAndVersionSettingsEditResponseExportsValueWorkersDurableObjectExport",
-  }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseExportsValueWorkersDurableObjectExport>;
+  ScriptsScriptAndVersionSettingsGetResponseExportsValueWorkersDurableObjectExport as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseExportsValueWorkersDurableObjectExport>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseExportsValueWorkersDurableObjectDeletedExportState =
   "deleted";
@@ -28536,16 +26403,7 @@ export interface ScriptsScriptAndVersionSettingsEditResponseExportsValueWorkersD
   type: ScriptsScriptAndVersionSettingsEditResponseExportsValueWorkersDurableObjectDeletedExportType;
 }
 export const ScriptsScriptAndVersionSettingsEditResponseExportsValueWorkersDurableObjectDeletedExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state:
-        ScriptsScriptAndVersionSettingsEditResponseExportsValueWorkersDurableObjectDeletedExportState,
-      type: ScriptsScriptAndVersionSettingsEditResponseExportsValueWorkersDurableObjectDeletedExportType,
-    }),
-  ).annotate({
-    identifier:
-      "ScriptsScriptAndVersionSettingsEditResponseExportsValueWorkersDurableObjectDeletedExport",
-  }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseExportsValueWorkersDurableObjectDeletedExport>;
+  ScriptsVersionsCreateResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectDeletedExport as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseExportsValueWorkersDurableObjectDeletedExport>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseExportsValueWorkersDurableObjectRenamedExportState =
   "renamed";
@@ -28566,17 +26424,7 @@ export interface ScriptsScriptAndVersionSettingsEditResponseExportsValueWorkersD
   type: ScriptsScriptAndVersionSettingsEditResponseExportsValueWorkersDurableObjectRenamedExportType;
 }
 export const ScriptsScriptAndVersionSettingsEditResponseExportsValueWorkersDurableObjectRenamedExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      renamedTo: S.String.pipe(T.Body("renamed_to")),
-      state:
-        ScriptsScriptAndVersionSettingsEditResponseExportsValueWorkersDurableObjectRenamedExportState,
-      type: ScriptsScriptAndVersionSettingsEditResponseExportsValueWorkersDurableObjectRenamedExportType,
-    }),
-  ).annotate({
-    identifier:
-      "ScriptsScriptAndVersionSettingsEditResponseExportsValueWorkersDurableObjectRenamedExport",
-  }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseExportsValueWorkersDurableObjectRenamedExport>;
+  ScriptsVersionsCreateResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectRenamedExport as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseExportsValueWorkersDurableObjectRenamedExport>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseExportsValueWorkersDurableObjectTransferredExportState =
   "transferred";
@@ -28597,17 +26445,7 @@ export interface ScriptsScriptAndVersionSettingsEditResponseExportsValueWorkersD
   type: ScriptsScriptAndVersionSettingsEditResponseExportsValueWorkersDurableObjectTransferredExportType;
 }
 export const ScriptsScriptAndVersionSettingsEditResponseExportsValueWorkersDurableObjectTransferredExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state:
-        ScriptsScriptAndVersionSettingsEditResponseExportsValueWorkersDurableObjectTransferredExportState,
-      transferredTo: S.String.pipe(T.Body("transferred_to")),
-      type: ScriptsScriptAndVersionSettingsEditResponseExportsValueWorkersDurableObjectTransferredExportType,
-    }),
-  ).annotate({
-    identifier:
-      "ScriptsScriptAndVersionSettingsEditResponseExportsValueWorkersDurableObjectTransferredExport",
-  }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseExportsValueWorkersDurableObjectTransferredExport>;
+  BetaWorkersVersionsCreateResponseExportsValueWorkersDurableObjectTransferredExport as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseExportsValueWorkersDurableObjectTransferredExport>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseExportsValueWorkersDurableObjectExpectingTransferExportState =
   "expecting-transfer";
@@ -28638,20 +26476,7 @@ export interface ScriptsScriptAndVersionSettingsEditResponseExportsValueWorkersD
   container?: string | null;
 }
 export const ScriptsScriptAndVersionSettingsEditResponseExportsValueWorkersDurableObjectExpectingTransferExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state:
-        ScriptsScriptAndVersionSettingsEditResponseExportsValueWorkersDurableObjectExpectingTransferExportState,
-      storage:
-        ScriptsScriptAndVersionSettingsEditResponseExportsValueWorkersDurableObjectExpectingTransferExportStorage,
-      transferFrom: S.String.pipe(T.Body("transfer_from")),
-      type: ScriptsScriptAndVersionSettingsEditResponseExportsValueWorkersDurableObjectExpectingTransferExportType,
-      container: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier:
-      "ScriptsScriptAndVersionSettingsEditResponseExportsValueWorkersDurableObjectExpectingTransferExport",
-  }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseExportsValueWorkersDurableObjectExpectingTransferExport>;
+  BetaWorkersVersionsCreateResponseExportsValueWorkersDurableObjectExpectingTransferExport as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseExportsValueWorkersDurableObjectExpectingTransferExport>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseExportsValue =
   | ScriptsScriptAndVersionSettingsEditResponseExportsValueWorker
@@ -28806,22 +26631,12 @@ export interface ScriptsScriptAndVersionSettingsEditResponseExportsReconciliatio
   to: string;
 }
 export const ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationTransferredItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      class: S.String,
-      phase: ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationTransferredItemPhase,
-      to: S.String,
-    }),
-  ).annotate({
-    identifier: "ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationTransferredItem",
-  }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationTransferredItem>;
+  BetaWorkersVersionsCreateResponseExportsReconciliationTransferredItem as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationTransferredItem>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationTransferredList =
   Array<ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationTransferredItem>;
 export const ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationTransferredList =
-  /*@__PURE__*/ S.Array(
-    ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationTransferredItem,
-  ) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationTransferredList>;
+  BetaWorkersVersionsCreateResponseExportsReconciliationTransferredList as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationTransferredList>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationUpdatedList =
   Array<string>;
@@ -29196,14 +27011,8 @@ export interface ScriptsScriptAndVersionSettingsEditResponsePlacementMode {
   /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
   mode: ScriptsScriptAndVersionSettingsEditResponsePlacementModeMode;
 }
-export const ScriptsScriptAndVersionSettingsEditResponsePlacementMode = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      mode: ScriptsScriptAndVersionSettingsEditResponsePlacementModeMode,
-    }),
-).annotate({
-  identifier: "ScriptsScriptAndVersionSettingsEditResponsePlacementMode",
-}) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponsePlacementMode>;
+export const ScriptsScriptAndVersionSettingsEditResponsePlacementMode =
+  BetaWorkersCreateResponsePreviewsBaseConfigPlacementMode as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponsePlacementMode>;
 
 export type ScriptsScriptAndVersionSettingsEditResponsePlacementRegion =
   BetaWorkersCreateRequestPreviewsBaseConfigPlacementRegion;
@@ -29229,15 +27038,8 @@ export interface ScriptsScriptAndVersionSettingsEditResponsePlacementCase4 {
   /** Cloud region for targeted placement in format 'provider:region'. */
   region: string;
 }
-export const ScriptsScriptAndVersionSettingsEditResponsePlacementCase4 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      mode: ScriptsScriptAndVersionSettingsEditResponsePlacementCase4Mode,
-      region: S.String,
-    }),
-).annotate({
-  identifier: "ScriptsScriptAndVersionSettingsEditResponsePlacementCase4",
-}) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponsePlacementCase4>;
+export const ScriptsScriptAndVersionSettingsEditResponsePlacementCase4 =
+  BetaWorkersCreateRequestPreviewsBaseConfigPlacementCase4 as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponsePlacementCase4>;
 
 export type ScriptsScriptAndVersionSettingsEditResponsePlacementCase5Mode = "targeted";
 export const ScriptsScriptAndVersionSettingsEditResponsePlacementCase5Mode = S.String;
@@ -29248,15 +27050,8 @@ export interface ScriptsScriptAndVersionSettingsEditResponsePlacementCase5 {
   /** Targeted placement mode. */
   mode: ScriptsScriptAndVersionSettingsEditResponsePlacementCase5Mode;
 }
-export const ScriptsScriptAndVersionSettingsEditResponsePlacementCase5 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      hostname: S.String,
-      mode: ScriptsScriptAndVersionSettingsEditResponsePlacementCase5Mode,
-    }),
-).annotate({
-  identifier: "ScriptsScriptAndVersionSettingsEditResponsePlacementCase5",
-}) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponsePlacementCase5>;
+export const ScriptsScriptAndVersionSettingsEditResponsePlacementCase5 =
+  BetaWorkersCreateRequestPreviewsBaseConfigPlacementCase5 as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponsePlacementCase5>;
 
 export type ScriptsScriptAndVersionSettingsEditResponsePlacementCase6Mode = "targeted";
 export const ScriptsScriptAndVersionSettingsEditResponsePlacementCase6Mode = S.String;
@@ -29267,15 +27062,8 @@ export interface ScriptsScriptAndVersionSettingsEditResponsePlacementCase6 {
   /** Targeted placement mode. */
   mode: ScriptsScriptAndVersionSettingsEditResponsePlacementCase6Mode;
 }
-export const ScriptsScriptAndVersionSettingsEditResponsePlacementCase6 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      host: S.String,
-      mode: ScriptsScriptAndVersionSettingsEditResponsePlacementCase6Mode,
-    }),
-).annotate({
-  identifier: "ScriptsScriptAndVersionSettingsEditResponsePlacementCase6",
-}) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponsePlacementCase6>;
+export const ScriptsScriptAndVersionSettingsEditResponsePlacementCase6 =
+  BetaWorkersCreateRequestPreviewsBaseConfigPlacementCase6 as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponsePlacementCase6>;
 
 export type ScriptsScriptAndVersionSettingsEditResponsePlacementCase7Mode = "targeted";
 export const ScriptsScriptAndVersionSettingsEditResponsePlacementCase7Mode = S.String;
@@ -29986,15 +27774,8 @@ export interface ScriptsUpdateResponseExportsValueWorker {
   /** Live export. May be omitted; defaults to `created`. */
   state?: ScriptsUpdateResponseExportsValueWorkerState | null;
 }
-export const ScriptsUpdateResponseExportsValueWorker = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ScriptsUpdateResponseExportsValueWorkerType,
-    cache: S.optional(S.NullOr(BetaWorkersVersionsCreateRequestExportsValueWorkerCache)),
-    state: S.optional(S.NullOr(ScriptsUpdateResponseExportsValueWorkerState)),
-  }),
-).annotate({
-  identifier: "ScriptsUpdateResponseExportsValueWorker",
-}) as any as S.Schema<ScriptsUpdateResponseExportsValueWorker>;
+export const ScriptsUpdateResponseExportsValueWorker =
+  BetaWorkersVersionsCreateResponseExportsValueWorker as any as S.Schema<ScriptsUpdateResponseExportsValueWorker>;
 
 export type ScriptsUpdateResponseExportsValueWorkersDurableObjectExportStorage =
   | "sqlite"
@@ -30017,17 +27798,8 @@ export interface ScriptsUpdateResponseExportsValueWorkersDurableObjectExport {
   /** Live export. May be omitted; defaults to `created`. */
   state?: ScriptsUpdateResponseExportsValueWorkersDurableObjectExportState | null;
 }
-export const ScriptsUpdateResponseExportsValueWorkersDurableObjectExport = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      storage: ScriptsUpdateResponseExportsValueWorkersDurableObjectExportStorage,
-      type: ScriptsUpdateResponseExportsValueWorkersDurableObjectExportType,
-      container: S.optional(S.NullOr(S.String)),
-      state: S.optional(S.NullOr(ScriptsUpdateResponseExportsValueWorkersDurableObjectExportState)),
-    }),
-).annotate({
-  identifier: "ScriptsUpdateResponseExportsValueWorkersDurableObjectExport",
-}) as any as S.Schema<ScriptsUpdateResponseExportsValueWorkersDurableObjectExport>;
+export const ScriptsUpdateResponseExportsValueWorkersDurableObjectExport =
+  ScriptsListResultItemExportsValueWorkersDurableObjectExport as any as S.Schema<ScriptsUpdateResponseExportsValueWorkersDurableObjectExport>;
 
 export type ScriptsUpdateResponseExportsValueWorkersDurableObjectDeletedExportState = "deleted";
 export const ScriptsUpdateResponseExportsValueWorkersDurableObjectDeletedExportState = S.String;
@@ -30043,14 +27815,7 @@ export interface ScriptsUpdateResponseExportsValueWorkersDurableObjectDeletedExp
   type: ScriptsUpdateResponseExportsValueWorkersDurableObjectDeletedExportType;
 }
 export const ScriptsUpdateResponseExportsValueWorkersDurableObjectDeletedExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state: ScriptsUpdateResponseExportsValueWorkersDurableObjectDeletedExportState,
-      type: ScriptsUpdateResponseExportsValueWorkersDurableObjectDeletedExportType,
-    }),
-  ).annotate({
-    identifier: "ScriptsUpdateResponseExportsValueWorkersDurableObjectDeletedExport",
-  }) as any as S.Schema<ScriptsUpdateResponseExportsValueWorkersDurableObjectDeletedExport>;
+  BetaWorkersVersionsCreateRequestExportsValueWorkersDurableObjectDeletedExport as any as S.Schema<ScriptsUpdateResponseExportsValueWorkersDurableObjectDeletedExport>;
 
 export type ScriptsUpdateResponseExportsValueWorkersDurableObjectRenamedExportState = "renamed";
 export const ScriptsUpdateResponseExportsValueWorkersDurableObjectRenamedExportState = S.String;
@@ -30068,15 +27833,7 @@ export interface ScriptsUpdateResponseExportsValueWorkersDurableObjectRenamedExp
   type: ScriptsUpdateResponseExportsValueWorkersDurableObjectRenamedExportType;
 }
 export const ScriptsUpdateResponseExportsValueWorkersDurableObjectRenamedExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      renamedTo: S.String.pipe(T.Body("renamed_to")),
-      state: ScriptsUpdateResponseExportsValueWorkersDurableObjectRenamedExportState,
-      type: ScriptsUpdateResponseExportsValueWorkersDurableObjectRenamedExportType,
-    }),
-  ).annotate({
-    identifier: "ScriptsUpdateResponseExportsValueWorkersDurableObjectRenamedExport",
-  }) as any as S.Schema<ScriptsUpdateResponseExportsValueWorkersDurableObjectRenamedExport>;
+  BetaWorkersVersionsCreateRequestExportsValueWorkersDurableObjectRenamedExport as any as S.Schema<ScriptsUpdateResponseExportsValueWorkersDurableObjectRenamedExport>;
 
 export type ScriptsUpdateResponseExportsValueWorkersDurableObjectTransferredExportState =
   "transferred";
@@ -30095,15 +27852,7 @@ export interface ScriptsUpdateResponseExportsValueWorkersDurableObjectTransferre
   type: ScriptsUpdateResponseExportsValueWorkersDurableObjectTransferredExportType;
 }
 export const ScriptsUpdateResponseExportsValueWorkersDurableObjectTransferredExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state: ScriptsUpdateResponseExportsValueWorkersDurableObjectTransferredExportState,
-      transferredTo: S.String.pipe(T.Body("transferred_to")),
-      type: ScriptsUpdateResponseExportsValueWorkersDurableObjectTransferredExportType,
-    }),
-  ).annotate({
-    identifier: "ScriptsUpdateResponseExportsValueWorkersDurableObjectTransferredExport",
-  }) as any as S.Schema<ScriptsUpdateResponseExportsValueWorkersDurableObjectTransferredExport>;
+  BetaWorkersVersionsCreateRequestExportsValueWorkersDurableObjectTransferredExport as any as S.Schema<ScriptsUpdateResponseExportsValueWorkersDurableObjectTransferredExport>;
 
 export type ScriptsUpdateResponseExportsValueWorkersDurableObjectExpectingTransferExportState =
   "expecting-transfer";
@@ -30134,17 +27883,7 @@ export interface ScriptsUpdateResponseExportsValueWorkersDurableObjectExpectingT
   container?: string | null;
 }
 export const ScriptsUpdateResponseExportsValueWorkersDurableObjectExpectingTransferExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state: ScriptsUpdateResponseExportsValueWorkersDurableObjectExpectingTransferExportState,
-      storage: ScriptsUpdateResponseExportsValueWorkersDurableObjectExpectingTransferExportStorage,
-      transferFrom: S.String.pipe(T.Body("transfer_from")),
-      type: ScriptsUpdateResponseExportsValueWorkersDurableObjectExpectingTransferExportType,
-      container: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "ScriptsUpdateResponseExportsValueWorkersDurableObjectExpectingTransferExport",
-  }) as any as S.Schema<ScriptsUpdateResponseExportsValueWorkersDurableObjectExpectingTransferExport>;
+  ScriptsListResultItemExportsValueWorkersDurableObjectExpectingTransferExport as any as S.Schema<ScriptsUpdateResponseExportsValueWorkersDurableObjectExpectingTransferExport>;
 
 export type ScriptsUpdateResponseExportsValue =
   | ScriptsUpdateResponseExportsValueWorker
@@ -30295,15 +28034,8 @@ export interface ScriptsUpdateResponsePlacementCase0 {
   /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
   status?: ScriptsUpdateResponsePlacementCase0Status | null;
 }
-export const ScriptsUpdateResponsePlacementCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: ScriptsUpdateResponsePlacementCase0Mode,
-    lastAnalyzedAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_analyzed_at"))),
-    status: S.optional(S.NullOr(ScriptsUpdateResponsePlacementCase0Status)),
-  }),
-).annotate({
-  identifier: "ScriptsUpdateResponsePlacementCase0",
-}) as any as S.Schema<ScriptsUpdateResponsePlacementCase0>;
+export const ScriptsUpdateResponsePlacementCase0 =
+  ScriptsListResultItemPlacementCase0 as any as S.Schema<ScriptsUpdateResponsePlacementCase0>;
 
 export type ScriptsUpdateResponsePlacementCase1Status =
   | "SUCCESS"
@@ -30319,15 +28051,8 @@ export interface ScriptsUpdateResponsePlacementCase1 {
   /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
   status?: ScriptsUpdateResponsePlacementCase1Status | null;
 }
-export const ScriptsUpdateResponsePlacementCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    region: S.String,
-    lastAnalyzedAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_analyzed_at"))),
-    status: S.optional(S.NullOr(ScriptsUpdateResponsePlacementCase1Status)),
-  }),
-).annotate({
-  identifier: "ScriptsUpdateResponsePlacementCase1",
-}) as any as S.Schema<ScriptsUpdateResponsePlacementCase1>;
+export const ScriptsUpdateResponsePlacementCase1 =
+  ScriptsListResultItemPlacementCase1 as any as S.Schema<ScriptsUpdateResponsePlacementCase1>;
 
 export type ScriptsUpdateResponsePlacementCase2Status =
   | "SUCCESS"
@@ -30343,15 +28068,8 @@ export interface ScriptsUpdateResponsePlacementCase2 {
   /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
   status?: ScriptsUpdateResponsePlacementCase2Status | null;
 }
-export const ScriptsUpdateResponsePlacementCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hostname: S.String,
-    lastAnalyzedAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_analyzed_at"))),
-    status: S.optional(S.NullOr(ScriptsUpdateResponsePlacementCase2Status)),
-  }),
-).annotate({
-  identifier: "ScriptsUpdateResponsePlacementCase2",
-}) as any as S.Schema<ScriptsUpdateResponsePlacementCase2>;
+export const ScriptsUpdateResponsePlacementCase2 =
+  ScriptsListResultItemPlacementCase2 as any as S.Schema<ScriptsUpdateResponsePlacementCase2>;
 
 export type ScriptsUpdateResponsePlacementCase3Status =
   | "SUCCESS"
@@ -30367,15 +28085,8 @@ export interface ScriptsUpdateResponsePlacementCase3 {
   /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
   status?: ScriptsUpdateResponsePlacementCase3Status | null;
 }
-export const ScriptsUpdateResponsePlacementCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    host: S.String,
-    lastAnalyzedAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_analyzed_at"))),
-    status: S.optional(S.NullOr(ScriptsUpdateResponsePlacementCase3Status)),
-  }),
-).annotate({
-  identifier: "ScriptsUpdateResponsePlacementCase3",
-}) as any as S.Schema<ScriptsUpdateResponsePlacementCase3>;
+export const ScriptsUpdateResponsePlacementCase3 =
+  ScriptsListResultItemPlacementCase3 as any as S.Schema<ScriptsUpdateResponsePlacementCase3>;
 
 export type ScriptsUpdateResponsePlacementCase4Mode = "targeted";
 export const ScriptsUpdateResponsePlacementCase4Mode = S.String;
@@ -30396,16 +28107,8 @@ export interface ScriptsUpdateResponsePlacementCase4 {
   /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
   status?: ScriptsUpdateResponsePlacementCase4Status | null;
 }
-export const ScriptsUpdateResponsePlacementCase4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: ScriptsUpdateResponsePlacementCase4Mode,
-    region: S.String,
-    lastAnalyzedAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_analyzed_at"))),
-    status: S.optional(S.NullOr(ScriptsUpdateResponsePlacementCase4Status)),
-  }),
-).annotate({
-  identifier: "ScriptsUpdateResponsePlacementCase4",
-}) as any as S.Schema<ScriptsUpdateResponsePlacementCase4>;
+export const ScriptsUpdateResponsePlacementCase4 =
+  ScriptsListResultItemPlacementCase4 as any as S.Schema<ScriptsUpdateResponsePlacementCase4>;
 
 export type ScriptsUpdateResponsePlacementCase5Mode = "targeted";
 export const ScriptsUpdateResponsePlacementCase5Mode = S.String;
@@ -30426,16 +28129,8 @@ export interface ScriptsUpdateResponsePlacementCase5 {
   /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
   status?: ScriptsUpdateResponsePlacementCase5Status | null;
 }
-export const ScriptsUpdateResponsePlacementCase5 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hostname: S.String,
-    mode: ScriptsUpdateResponsePlacementCase5Mode,
-    lastAnalyzedAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_analyzed_at"))),
-    status: S.optional(S.NullOr(ScriptsUpdateResponsePlacementCase5Status)),
-  }),
-).annotate({
-  identifier: "ScriptsUpdateResponsePlacementCase5",
-}) as any as S.Schema<ScriptsUpdateResponsePlacementCase5>;
+export const ScriptsUpdateResponsePlacementCase5 =
+  ScriptsListResultItemPlacementCase5 as any as S.Schema<ScriptsUpdateResponsePlacementCase5>;
 
 export type ScriptsUpdateResponsePlacementCase6Mode = "targeted";
 export const ScriptsUpdateResponsePlacementCase6Mode = S.String;
@@ -30456,16 +28151,8 @@ export interface ScriptsUpdateResponsePlacementCase6 {
   /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
   status?: ScriptsUpdateResponsePlacementCase6Status | null;
 }
-export const ScriptsUpdateResponsePlacementCase6 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    host: S.String,
-    mode: ScriptsUpdateResponsePlacementCase6Mode,
-    lastAnalyzedAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_analyzed_at"))),
-    status: S.optional(S.NullOr(ScriptsUpdateResponsePlacementCase6Status)),
-  }),
-).annotate({
-  identifier: "ScriptsUpdateResponsePlacementCase6",
-}) as any as S.Schema<ScriptsUpdateResponsePlacementCase6>;
+export const ScriptsUpdateResponsePlacementCase6 =
+  ScriptsListResultItemPlacementCase6 as any as S.Schema<ScriptsUpdateResponsePlacementCase6>;
 
 export type ScriptsUpdateResponsePlacementCase7Mode = "targeted";
 export const ScriptsUpdateResponsePlacementCase7Mode = S.String;
@@ -30530,13 +28217,8 @@ export interface ScriptsUpdateResponsePlacementCase8 {
   /** Targeted placement mode (no target echoed). */
   mode: ScriptsUpdateResponsePlacementCase7Mode;
 }
-export const ScriptsUpdateResponsePlacementCase8 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: ScriptsUpdateResponsePlacementCase7Mode,
-  }),
-).annotate({
-  identifier: "ScriptsUpdateResponsePlacementCase8",
-}) as any as S.Schema<ScriptsUpdateResponsePlacementCase8>;
+export const ScriptsUpdateResponsePlacementCase8 =
+  BetaWorkersCreateRequestPreviewsBaseConfigPlacementMode as any as S.Schema<ScriptsUpdateResponsePlacementCase8>;
 
 export type ScriptsUpdateResponsePlacement =
   | ScriptsUpdateResponsePlacementCase0
@@ -30760,15 +28442,8 @@ export interface ScriptsContentUpdateResponseExportsValueWorker {
   /** Live export. May be omitted; defaults to `created`. */
   state?: ScriptsContentUpdateResponseExportsValueWorkerState | null;
 }
-export const ScriptsContentUpdateResponseExportsValueWorker = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ScriptsContentUpdateResponseExportsValueWorkerType,
-    cache: S.optional(S.NullOr(BetaWorkersVersionsCreateRequestExportsValueWorkerCache)),
-    state: S.optional(S.NullOr(ScriptsContentUpdateResponseExportsValueWorkerState)),
-  }),
-).annotate({
-  identifier: "ScriptsContentUpdateResponseExportsValueWorker",
-}) as any as S.Schema<ScriptsContentUpdateResponseExportsValueWorker>;
+export const ScriptsContentUpdateResponseExportsValueWorker =
+  BetaWorkersVersionsCreateResponseExportsValueWorker as any as S.Schema<ScriptsContentUpdateResponseExportsValueWorker>;
 
 export type ScriptsContentUpdateResponseExportsValueWorkersDurableObjectExportStorage =
   | "sqlite"
@@ -30793,18 +28468,7 @@ export interface ScriptsContentUpdateResponseExportsValueWorkersDurableObjectExp
   state?: ScriptsContentUpdateResponseExportsValueWorkersDurableObjectExportState | null;
 }
 export const ScriptsContentUpdateResponseExportsValueWorkersDurableObjectExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storage: ScriptsContentUpdateResponseExportsValueWorkersDurableObjectExportStorage,
-      type: ScriptsContentUpdateResponseExportsValueWorkersDurableObjectExportType,
-      container: S.optional(S.NullOr(S.String)),
-      state: S.optional(
-        S.NullOr(ScriptsContentUpdateResponseExportsValueWorkersDurableObjectExportState),
-      ),
-    }),
-  ).annotate({
-    identifier: "ScriptsContentUpdateResponseExportsValueWorkersDurableObjectExport",
-  }) as any as S.Schema<ScriptsContentUpdateResponseExportsValueWorkersDurableObjectExport>;
+  BetaWorkersVersionsCreateResponseExportsValueWorkersDurableObjectExport as any as S.Schema<ScriptsContentUpdateResponseExportsValueWorkersDurableObjectExport>;
 
 export type ScriptsContentUpdateResponseExportsValueWorkersDurableObjectDeletedExportState =
   "deleted";
@@ -30823,14 +28487,7 @@ export interface ScriptsContentUpdateResponseExportsValueWorkersDurableObjectDel
   type: ScriptsContentUpdateResponseExportsValueWorkersDurableObjectDeletedExportType;
 }
 export const ScriptsContentUpdateResponseExportsValueWorkersDurableObjectDeletedExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state: ScriptsContentUpdateResponseExportsValueWorkersDurableObjectDeletedExportState,
-      type: ScriptsContentUpdateResponseExportsValueWorkersDurableObjectDeletedExportType,
-    }),
-  ).annotate({
-    identifier: "ScriptsContentUpdateResponseExportsValueWorkersDurableObjectDeletedExport",
-  }) as any as S.Schema<ScriptsContentUpdateResponseExportsValueWorkersDurableObjectDeletedExport>;
+  BetaWorkersVersionsCreateRequestExportsValueWorkersDurableObjectDeletedExport as any as S.Schema<ScriptsContentUpdateResponseExportsValueWorkersDurableObjectDeletedExport>;
 
 export type ScriptsContentUpdateResponseExportsValueWorkersDurableObjectRenamedExportState =
   "renamed";
@@ -30851,15 +28508,7 @@ export interface ScriptsContentUpdateResponseExportsValueWorkersDurableObjectRen
   type: ScriptsContentUpdateResponseExportsValueWorkersDurableObjectRenamedExportType;
 }
 export const ScriptsContentUpdateResponseExportsValueWorkersDurableObjectRenamedExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      renamedTo: S.String.pipe(T.Body("renamed_to")),
-      state: ScriptsContentUpdateResponseExportsValueWorkersDurableObjectRenamedExportState,
-      type: ScriptsContentUpdateResponseExportsValueWorkersDurableObjectRenamedExportType,
-    }),
-  ).annotate({
-    identifier: "ScriptsContentUpdateResponseExportsValueWorkersDurableObjectRenamedExport",
-  }) as any as S.Schema<ScriptsContentUpdateResponseExportsValueWorkersDurableObjectRenamedExport>;
+  BetaWorkersVersionsCreateRequestExportsValueWorkersDurableObjectRenamedExport as any as S.Schema<ScriptsContentUpdateResponseExportsValueWorkersDurableObjectRenamedExport>;
 
 export type ScriptsContentUpdateResponseExportsValueWorkersDurableObjectTransferredExportState =
   "transferred";
@@ -30880,15 +28529,7 @@ export interface ScriptsContentUpdateResponseExportsValueWorkersDurableObjectTra
   type: ScriptsContentUpdateResponseExportsValueWorkersDurableObjectTransferredExportType;
 }
 export const ScriptsContentUpdateResponseExportsValueWorkersDurableObjectTransferredExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state: ScriptsContentUpdateResponseExportsValueWorkersDurableObjectTransferredExportState,
-      transferredTo: S.String.pipe(T.Body("transferred_to")),
-      type: ScriptsContentUpdateResponseExportsValueWorkersDurableObjectTransferredExportType,
-    }),
-  ).annotate({
-    identifier: "ScriptsContentUpdateResponseExportsValueWorkersDurableObjectTransferredExport",
-  }) as any as S.Schema<ScriptsContentUpdateResponseExportsValueWorkersDurableObjectTransferredExport>;
+  BetaWorkersVersionsCreateRequestExportsValueWorkersDurableObjectTransferredExport as any as S.Schema<ScriptsContentUpdateResponseExportsValueWorkersDurableObjectTransferredExport>;
 
 export type ScriptsContentUpdateResponseExportsValueWorkersDurableObjectExpectingTransferExportState =
   "expecting-transfer";
@@ -30919,20 +28560,7 @@ export interface ScriptsContentUpdateResponseExportsValueWorkersDurableObjectExp
   container?: string | null;
 }
 export const ScriptsContentUpdateResponseExportsValueWorkersDurableObjectExpectingTransferExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state:
-        ScriptsContentUpdateResponseExportsValueWorkersDurableObjectExpectingTransferExportState,
-      storage:
-        ScriptsContentUpdateResponseExportsValueWorkersDurableObjectExpectingTransferExportStorage,
-      transferFrom: S.String.pipe(T.Body("transfer_from")),
-      type: ScriptsContentUpdateResponseExportsValueWorkersDurableObjectExpectingTransferExportType,
-      container: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier:
-      "ScriptsContentUpdateResponseExportsValueWorkersDurableObjectExpectingTransferExport",
-  }) as any as S.Schema<ScriptsContentUpdateResponseExportsValueWorkersDurableObjectExpectingTransferExport>;
+  BetaWorkersVersionsCreateResponseExportsValueWorkersDurableObjectExpectingTransferExport as any as S.Schema<ScriptsContentUpdateResponseExportsValueWorkersDurableObjectExpectingTransferExport>;
 
 export type ScriptsContentUpdateResponseExportsValue =
   | ScriptsContentUpdateResponseExportsValueWorker
@@ -31089,15 +28717,8 @@ export interface ScriptsContentUpdateResponsePlacementCase0 {
   /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
   status?: ScriptsContentUpdateResponsePlacementCase0Status | null;
 }
-export const ScriptsContentUpdateResponsePlacementCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: ScriptsContentUpdateResponsePlacementCase0Mode,
-    lastAnalyzedAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_analyzed_at"))),
-    status: S.optional(S.NullOr(ScriptsContentUpdateResponsePlacementCase0Status)),
-  }),
-).annotate({
-  identifier: "ScriptsContentUpdateResponsePlacementCase0",
-}) as any as S.Schema<ScriptsContentUpdateResponsePlacementCase0>;
+export const ScriptsContentUpdateResponsePlacementCase0 =
+  ScriptsListResultItemPlacementCase0 as any as S.Schema<ScriptsContentUpdateResponsePlacementCase0>;
 
 export type ScriptsContentUpdateResponsePlacementCase1Status =
   | "SUCCESS"
@@ -31113,15 +28734,8 @@ export interface ScriptsContentUpdateResponsePlacementCase1 {
   /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
   status?: ScriptsContentUpdateResponsePlacementCase1Status | null;
 }
-export const ScriptsContentUpdateResponsePlacementCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    region: S.String,
-    lastAnalyzedAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_analyzed_at"))),
-    status: S.optional(S.NullOr(ScriptsContentUpdateResponsePlacementCase1Status)),
-  }),
-).annotate({
-  identifier: "ScriptsContentUpdateResponsePlacementCase1",
-}) as any as S.Schema<ScriptsContentUpdateResponsePlacementCase1>;
+export const ScriptsContentUpdateResponsePlacementCase1 =
+  ScriptsListResultItemPlacementCase1 as any as S.Schema<ScriptsContentUpdateResponsePlacementCase1>;
 
 export type ScriptsContentUpdateResponsePlacementCase2Status =
   | "SUCCESS"
@@ -31137,15 +28751,8 @@ export interface ScriptsContentUpdateResponsePlacementCase2 {
   /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
   status?: ScriptsContentUpdateResponsePlacementCase2Status | null;
 }
-export const ScriptsContentUpdateResponsePlacementCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hostname: S.String,
-    lastAnalyzedAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_analyzed_at"))),
-    status: S.optional(S.NullOr(ScriptsContentUpdateResponsePlacementCase2Status)),
-  }),
-).annotate({
-  identifier: "ScriptsContentUpdateResponsePlacementCase2",
-}) as any as S.Schema<ScriptsContentUpdateResponsePlacementCase2>;
+export const ScriptsContentUpdateResponsePlacementCase2 =
+  ScriptsListResultItemPlacementCase2 as any as S.Schema<ScriptsContentUpdateResponsePlacementCase2>;
 
 export type ScriptsContentUpdateResponsePlacementCase3Status =
   | "SUCCESS"
@@ -31161,15 +28768,8 @@ export interface ScriptsContentUpdateResponsePlacementCase3 {
   /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
   status?: ScriptsContentUpdateResponsePlacementCase3Status | null;
 }
-export const ScriptsContentUpdateResponsePlacementCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    host: S.String,
-    lastAnalyzedAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_analyzed_at"))),
-    status: S.optional(S.NullOr(ScriptsContentUpdateResponsePlacementCase3Status)),
-  }),
-).annotate({
-  identifier: "ScriptsContentUpdateResponsePlacementCase3",
-}) as any as S.Schema<ScriptsContentUpdateResponsePlacementCase3>;
+export const ScriptsContentUpdateResponsePlacementCase3 =
+  ScriptsListResultItemPlacementCase3 as any as S.Schema<ScriptsContentUpdateResponsePlacementCase3>;
 
 export type ScriptsContentUpdateResponsePlacementCase4Mode = "targeted";
 export const ScriptsContentUpdateResponsePlacementCase4Mode = S.String;
@@ -31190,16 +28790,8 @@ export interface ScriptsContentUpdateResponsePlacementCase4 {
   /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
   status?: ScriptsContentUpdateResponsePlacementCase4Status | null;
 }
-export const ScriptsContentUpdateResponsePlacementCase4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: ScriptsContentUpdateResponsePlacementCase4Mode,
-    region: S.String,
-    lastAnalyzedAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_analyzed_at"))),
-    status: S.optional(S.NullOr(ScriptsContentUpdateResponsePlacementCase4Status)),
-  }),
-).annotate({
-  identifier: "ScriptsContentUpdateResponsePlacementCase4",
-}) as any as S.Schema<ScriptsContentUpdateResponsePlacementCase4>;
+export const ScriptsContentUpdateResponsePlacementCase4 =
+  ScriptsListResultItemPlacementCase4 as any as S.Schema<ScriptsContentUpdateResponsePlacementCase4>;
 
 export type ScriptsContentUpdateResponsePlacementCase5Mode = "targeted";
 export const ScriptsContentUpdateResponsePlacementCase5Mode = S.String;
@@ -31220,16 +28812,8 @@ export interface ScriptsContentUpdateResponsePlacementCase5 {
   /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
   status?: ScriptsContentUpdateResponsePlacementCase5Status | null;
 }
-export const ScriptsContentUpdateResponsePlacementCase5 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hostname: S.String,
-    mode: ScriptsContentUpdateResponsePlacementCase5Mode,
-    lastAnalyzedAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_analyzed_at"))),
-    status: S.optional(S.NullOr(ScriptsContentUpdateResponsePlacementCase5Status)),
-  }),
-).annotate({
-  identifier: "ScriptsContentUpdateResponsePlacementCase5",
-}) as any as S.Schema<ScriptsContentUpdateResponsePlacementCase5>;
+export const ScriptsContentUpdateResponsePlacementCase5 =
+  ScriptsListResultItemPlacementCase5 as any as S.Schema<ScriptsContentUpdateResponsePlacementCase5>;
 
 export type ScriptsContentUpdateResponsePlacementCase6Mode = "targeted";
 export const ScriptsContentUpdateResponsePlacementCase6Mode = S.String;
@@ -31250,16 +28834,8 @@ export interface ScriptsContentUpdateResponsePlacementCase6 {
   /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
   status?: ScriptsContentUpdateResponsePlacementCase6Status | null;
 }
-export const ScriptsContentUpdateResponsePlacementCase6 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    host: S.String,
-    mode: ScriptsContentUpdateResponsePlacementCase6Mode,
-    lastAnalyzedAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_analyzed_at"))),
-    status: S.optional(S.NullOr(ScriptsContentUpdateResponsePlacementCase6Status)),
-  }),
-).annotate({
-  identifier: "ScriptsContentUpdateResponsePlacementCase6",
-}) as any as S.Schema<ScriptsContentUpdateResponsePlacementCase6>;
+export const ScriptsContentUpdateResponsePlacementCase6 =
+  ScriptsListResultItemPlacementCase6 as any as S.Schema<ScriptsContentUpdateResponsePlacementCase6>;
 
 export type ScriptsContentUpdateResponsePlacementCase7Mode = "targeted";
 export const ScriptsContentUpdateResponsePlacementCase7Mode = S.String;
@@ -31566,9 +29142,8 @@ export const ScriptsSecretsUpdateRequestUsagesItem = S.String;
 export type ScriptsSecretsUpdateRequestUsagesList = Array<
   ScriptsSecretsUpdateRequestUsagesItem | (string & {})
 >;
-export const ScriptsSecretsUpdateRequestUsagesList = /*@__PURE__*/ S.Array(
-  ScriptsSecretsUpdateRequestUsagesItem,
-) as any as S.Schema<ScriptsSecretsUpdateRequestUsagesList>;
+export const ScriptsSecretsUpdateRequestUsagesList =
+  ScriptsSecretsBulkUpdateRequestSecretsValueSecretKeyUsagesList as any as S.Schema<ScriptsSecretsUpdateRequestUsagesList>;
 
 export interface PutScriptSecretRequest {
   /** Identifier. */
@@ -31626,15 +29201,8 @@ export interface ScriptsSecretsUpdateResultSecretText {
   /** The kind of resource that the binding provides. */
   type: ScriptsSecretsUpdateResultSecretTextType;
 }
-export const ScriptsSecretsUpdateResultSecretText = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    text: S.String,
-    type: ScriptsSecretsUpdateResultSecretTextType,
-  }),
-).annotate({
-  identifier: "ScriptsSecretsUpdateResultSecretText",
-}) as any as S.Schema<ScriptsSecretsUpdateResultSecretText>;
+export const ScriptsSecretsUpdateResultSecretText =
+  ScriptsSecretsBulkUpdateRequestSecretsValueSecretText as any as S.Schema<ScriptsSecretsUpdateResultSecretText>;
 
 export type ScriptsSecretsUpdateResultSecretKeyFormat = "raw" | "pkcs8" | "spki" | "jwk";
 export const ScriptsSecretsUpdateResultSecretKeyFormat = S.String;
@@ -31655,9 +29223,8 @@ export const ScriptsSecretsUpdateResultSecretKeyUsagesItem = S.String;
 
 export type ScriptsSecretsUpdateResultSecretKeyUsagesList =
   Array<ScriptsSecretsUpdateResultSecretKeyUsagesItem>;
-export const ScriptsSecretsUpdateResultSecretKeyUsagesList = /*@__PURE__*/ S.Array(
-  ScriptsSecretsUpdateResultSecretKeyUsagesItem,
-) as any as S.Schema<ScriptsSecretsUpdateResultSecretKeyUsagesList>;
+export const ScriptsSecretsUpdateResultSecretKeyUsagesList =
+  ScriptsSecretsBulkUpdateRequestSecretsValueSecretKeyUsagesList as any as S.Schema<ScriptsSecretsUpdateResultSecretKeyUsagesList>;
 
 export interface ScriptsSecretsUpdateResultSecretKey {
   /** Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
@@ -31675,19 +29242,8 @@ export interface ScriptsSecretsUpdateResultSecretKey {
   /** Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk". */
   keyJwk?: unknown | null;
 }
-export const ScriptsSecretsUpdateResultSecretKey = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    algorithm: S.Unknown,
-    format: ScriptsSecretsUpdateResultSecretKeyFormat,
-    name: S.String,
-    type: ScriptsSecretsUpdateResultSecretKeyType,
-    usages: ScriptsSecretsUpdateResultSecretKeyUsagesList,
-    keyBase64: S.optional(S.NullOr(S.String).pipe(T.Body("key_base64"))),
-    keyJwk: S.optional(S.NullOr(S.Unknown).pipe(T.Body("key_jwk"))),
-  }),
-).annotate({
-  identifier: "ScriptsSecretsUpdateResultSecretKey",
-}) as any as S.Schema<ScriptsSecretsUpdateResultSecretKey>;
+export const ScriptsSecretsUpdateResultSecretKey =
+  ScriptsSecretsBulkUpdateResultValueSecretKey as any as S.Schema<ScriptsSecretsUpdateResultSecretKey>;
 
 export type ScriptsSecretsUpdateResult =
   | ScriptsSecretsUpdateResultSecretText
@@ -31768,16 +29324,7 @@ export interface ObservabilityTelemetryQueryRequestParametersCalculationsItemCas
     | (string & {});
 }
 export const ObservabilityTelemetryQueryRequestParametersCalculationsItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operator: ObservabilityTelemetryQueryRequestParametersCalculationsItemCase0Operator,
-      alias: S.optional(S.String),
-      key: S.optional(S.String),
-      keyType: S.optional(ObservabilityTelemetryQueryRequestParametersCalculationsItemCase0KeyType),
-    }),
-  ).annotate({
-    identifier: "ObservabilityTelemetryQueryRequestParametersCalculationsItemCase0",
-  }) as any as S.Schema<ObservabilityTelemetryQueryRequestParametersCalculationsItemCase0>;
+  ObservabilityQueriesCreateRequestParametersCalculationsItemCase0 as any as S.Schema<ObservabilityTelemetryQueryRequestParametersCalculationsItemCase0>;
 
 export type ObservabilityTelemetryQueryRequestParametersCalculationsItemCase1Operator =
   | "uniq"
@@ -31839,16 +29386,7 @@ export interface ObservabilityTelemetryQueryRequestParametersCalculationsItemCas
     | (string & {});
 }
 export const ObservabilityTelemetryQueryRequestParametersCalculationsItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.String,
-      operator: ObservabilityTelemetryQueryRequestParametersCalculationsItemCase1Operator,
-      alias: S.optional(S.String),
-      keyType: S.optional(ObservabilityTelemetryQueryRequestParametersCalculationsItemCase1KeyType),
-    }),
-  ).annotate({
-    identifier: "ObservabilityTelemetryQueryRequestParametersCalculationsItemCase1",
-  }) as any as S.Schema<ObservabilityTelemetryQueryRequestParametersCalculationsItemCase1>;
+  ObservabilityQueriesCreateRequestParametersCalculationsItemCase1 as any as S.Schema<ObservabilityTelemetryQueryRequestParametersCalculationsItemCase1>;
 
 export type ObservabilityTelemetryQueryRequestParametersCalculationsItem =
   | ObservabilityTelemetryQueryRequestParametersCalculationsItemCase0
@@ -32178,21 +29716,13 @@ export interface ObservabilityTelemetryQueryRequestParametersGroupBysItem {
   /** Field name to group results by (e.g. $metadata.service, $metadata.statusCode). */
   value: string;
 }
-export const ObservabilityTelemetryQueryRequestParametersGroupBysItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      type: ObservabilityTelemetryQueryRequestParametersGroupBysItemType,
-      value: S.String,
-    }),
-).annotate({
-  identifier: "ObservabilityTelemetryQueryRequestParametersGroupBysItem",
-}) as any as S.Schema<ObservabilityTelemetryQueryRequestParametersGroupBysItem>;
+export const ObservabilityTelemetryQueryRequestParametersGroupBysItem =
+  ObservabilityQueriesCreateResponseParametersGroupBysItem as any as S.Schema<ObservabilityTelemetryQueryRequestParametersGroupBysItem>;
 
 export type ObservabilityTelemetryQueryRequestParametersGroupBysList =
   Array<ObservabilityTelemetryQueryRequestParametersGroupBysItem>;
-export const ObservabilityTelemetryQueryRequestParametersGroupBysList = /*@__PURE__*/ S.Array(
-  ObservabilityTelemetryQueryRequestParametersGroupBysItem,
-) as any as S.Schema<ObservabilityTelemetryQueryRequestParametersGroupBysList>;
+export const ObservabilityTelemetryQueryRequestParametersGroupBysList =
+  ObservabilityQueriesCreateResponseParametersGroupBysList as any as S.Schema<ObservabilityTelemetryQueryRequestParametersGroupBysList>;
 
 export type ObservabilityTelemetryQueryRequestParametersHavingsItemOperation =
   | "eq"
@@ -32211,21 +29741,13 @@ export interface ObservabilityTelemetryQueryRequestParametersHavingsItem {
   /** Threshold value to compare the calculation result against. */
   value: number;
 }
-export const ObservabilityTelemetryQueryRequestParametersHavingsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.String,
-    operation: ObservabilityTelemetryQueryRequestParametersHavingsItemOperation,
-    value: S.Number,
-  }),
-).annotate({
-  identifier: "ObservabilityTelemetryQueryRequestParametersHavingsItem",
-}) as any as S.Schema<ObservabilityTelemetryQueryRequestParametersHavingsItem>;
+export const ObservabilityTelemetryQueryRequestParametersHavingsItem =
+  ObservabilityQueriesCreateRequestParametersHavingsItem as any as S.Schema<ObservabilityTelemetryQueryRequestParametersHavingsItem>;
 
 export type ObservabilityTelemetryQueryRequestParametersHavingsList =
   Array<ObservabilityTelemetryQueryRequestParametersHavingsItem>;
-export const ObservabilityTelemetryQueryRequestParametersHavingsList = /*@__PURE__*/ S.Array(
-  ObservabilityTelemetryQueryRequestParametersHavingsItem,
-) as any as S.Schema<ObservabilityTelemetryQueryRequestParametersHavingsList>;
+export const ObservabilityTelemetryQueryRequestParametersHavingsList =
+  ObservabilityQueriesCreateRequestParametersHavingsList as any as S.Schema<ObservabilityTelemetryQueryRequestParametersHavingsList>;
 
 export type ObservabilityTelemetryQueryRequestParametersNeedleValue = string | number | boolean;
 export const ObservabilityTelemetryQueryRequestParametersNeedleValue = /*@__PURE__*/ S.Unknown.pipe(
@@ -32259,14 +29781,8 @@ export interface ObservabilityTelemetryQueryRequestParametersOrderBy {
   /** Sort direction: 'asc' for ascending, 'desc' for descending. */
   order?: ObservabilityTelemetryQueryRequestParametersOrderByOrder | (string & {});
 }
-export const ObservabilityTelemetryQueryRequestParametersOrderBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.String,
-    order: S.optional(ObservabilityTelemetryQueryRequestParametersOrderByOrder),
-  }),
-).annotate({
-  identifier: "ObservabilityTelemetryQueryRequestParametersOrderBy",
-}) as any as S.Schema<ObservabilityTelemetryQueryRequestParametersOrderBy>;
+export const ObservabilityTelemetryQueryRequestParametersOrderBy =
+  ObservabilityQueriesCreateRequestParametersOrderBy as any as S.Schema<ObservabilityTelemetryQueryRequestParametersOrderBy>;
 
 export interface ObservabilityTelemetryQueryRequestParameters {
   /** Aggregation calculations to compute (e.g. count, avg, p99). Each calculation produces aggregate values and optional time-series data. */
@@ -32397,18 +29913,7 @@ export interface ObservabilityTelemetryQueryResponseRunQueryParametersCalculatio
   keyType?: ObservabilityTelemetryQueryResponseRunQueryParametersCalculationsItemCase0KeyType | null;
 }
 export const ObservabilityTelemetryQueryResponseRunQueryParametersCalculationsItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operator: ObservabilityTelemetryQueryResponseRunQueryParametersCalculationsItemCase0Operator,
-      alias: S.optional(S.NullOr(S.String)),
-      key: S.optional(S.NullOr(S.String)),
-      keyType: S.optional(
-        S.NullOr(ObservabilityTelemetryQueryResponseRunQueryParametersCalculationsItemCase0KeyType),
-      ),
-    }),
-  ).annotate({
-    identifier: "ObservabilityTelemetryQueryResponseRunQueryParametersCalculationsItemCase0",
-  }) as any as S.Schema<ObservabilityTelemetryQueryResponseRunQueryParametersCalculationsItemCase0>;
+  ObservabilityQueriesCreateResponseParametersCalculationsItemCase0 as any as S.Schema<ObservabilityTelemetryQueryResponseRunQueryParametersCalculationsItemCase0>;
 
 export type ObservabilityTelemetryQueryResponseRunQueryParametersCalculationsItemCase1Operator =
   | "uniq"
@@ -32464,18 +29969,7 @@ export interface ObservabilityTelemetryQueryResponseRunQueryParametersCalculatio
   keyType?: ObservabilityTelemetryQueryResponseRunQueryParametersCalculationsItemCase1KeyType | null;
 }
 export const ObservabilityTelemetryQueryResponseRunQueryParametersCalculationsItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.String,
-      operator: ObservabilityTelemetryQueryResponseRunQueryParametersCalculationsItemCase1Operator,
-      alias: S.optional(S.NullOr(S.String)),
-      keyType: S.optional(
-        S.NullOr(ObservabilityTelemetryQueryResponseRunQueryParametersCalculationsItemCase1KeyType),
-      ),
-    }),
-  ).annotate({
-    identifier: "ObservabilityTelemetryQueryResponseRunQueryParametersCalculationsItemCase1",
-  }) as any as S.Schema<ObservabilityTelemetryQueryResponseRunQueryParametersCalculationsItemCase1>;
+  ObservabilityQueriesCreateResponseParametersCalculationsItemCase1 as any as S.Schema<ObservabilityTelemetryQueryResponseRunQueryParametersCalculationsItemCase1>;
 
 export type ObservabilityTelemetryQueryResponseRunQueryParametersCalculationsItem =
   | ObservabilityTelemetryQueryResponseRunQueryParametersCalculationsItemCase0
@@ -32659,21 +30153,12 @@ export interface ObservabilityTelemetryQueryResponseRunQueryParametersGroupBysIt
   value: string;
 }
 export const ObservabilityTelemetryQueryResponseRunQueryParametersGroupBysItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: ObservabilityTelemetryQueryResponseRunQueryParametersGroupBysItemType,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "ObservabilityTelemetryQueryResponseRunQueryParametersGroupBysItem",
-  }) as any as S.Schema<ObservabilityTelemetryQueryResponseRunQueryParametersGroupBysItem>;
+  ObservabilitySharedQueriesCreateRequestParametersGroupBysItem as any as S.Schema<ObservabilityTelemetryQueryResponseRunQueryParametersGroupBysItem>;
 
 export type ObservabilityTelemetryQueryResponseRunQueryParametersGroupBysList =
   Array<ObservabilityTelemetryQueryResponseRunQueryParametersGroupBysItem>;
 export const ObservabilityTelemetryQueryResponseRunQueryParametersGroupBysList =
-  /*@__PURE__*/ S.Array(
-    ObservabilityTelemetryQueryResponseRunQueryParametersGroupBysItem,
-  ) as any as S.Schema<ObservabilityTelemetryQueryResponseRunQueryParametersGroupBysList>;
+  ObservabilitySharedQueriesGetResponseRunQueryParametersGroupBysList as any as S.Schema<ObservabilityTelemetryQueryResponseRunQueryParametersGroupBysList>;
 
 export type ObservabilityTelemetryQueryResponseRunQueryParametersHavingsItemOperation =
   | "eq"
@@ -32690,22 +30175,12 @@ export interface ObservabilityTelemetryQueryResponseRunQueryParametersHavingsIte
   value: number;
 }
 export const ObservabilityTelemetryQueryResponseRunQueryParametersHavingsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.String,
-      operation: ObservabilityTelemetryQueryResponseRunQueryParametersHavingsItemOperation,
-      value: S.Number,
-    }),
-  ).annotate({
-    identifier: "ObservabilityTelemetryQueryResponseRunQueryParametersHavingsItem",
-  }) as any as S.Schema<ObservabilityTelemetryQueryResponseRunQueryParametersHavingsItem>;
+  ObservabilitySharedQueriesGetResponseRunQueryParametersHavingsItem as any as S.Schema<ObservabilityTelemetryQueryResponseRunQueryParametersHavingsItem>;
 
 export type ObservabilityTelemetryQueryResponseRunQueryParametersHavingsList =
   Array<ObservabilityTelemetryQueryResponseRunQueryParametersHavingsItem>;
 export const ObservabilityTelemetryQueryResponseRunQueryParametersHavingsList =
-  /*@__PURE__*/ S.Array(
-    ObservabilityTelemetryQueryResponseRunQueryParametersHavingsItem,
-  ) as any as S.Schema<ObservabilityTelemetryQueryResponseRunQueryParametersHavingsList>;
+  ObservabilitySharedQueriesGetResponseRunQueryParametersHavingsList as any as S.Schema<ObservabilityTelemetryQueryResponseRunQueryParametersHavingsList>;
 
 export type ObservabilityTelemetryQueryResponseRunQueryParametersNeedle =
   ObservabilitySharedQueriesGetResponseRunQueryParametersNeedle;
@@ -34389,13 +31864,8 @@ export interface BetaWorkersUpdateRequestPreviewsBaseConfigPlacementMode {
   /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
   mode: BetaWorkersUpdateRequestPreviewsBaseConfigPlacementModeMode;
 }
-export const BetaWorkersUpdateRequestPreviewsBaseConfigPlacementMode = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: BetaWorkersUpdateRequestPreviewsBaseConfigPlacementModeMode,
-  }),
-).annotate({
-  identifier: "BetaWorkersUpdateRequestPreviewsBaseConfigPlacementMode",
-}) as any as S.Schema<BetaWorkersUpdateRequestPreviewsBaseConfigPlacementMode>;
+export const BetaWorkersUpdateRequestPreviewsBaseConfigPlacementMode =
+  BetaWorkersCreateRequestPreviewsBaseConfigPlacementMode as any as S.Schema<BetaWorkersUpdateRequestPreviewsBaseConfigPlacementMode>;
 
 export type BetaWorkersUpdateRequestPreviewsBaseConfigPlacementRegion =
   BetaWorkersCreateRequestPreviewsBaseConfigPlacementRegion;
@@ -34421,15 +31891,8 @@ export interface BetaWorkersUpdateRequestPreviewsBaseConfigPlacementCase4 {
   /** Cloud region for targeted placement in format 'provider:region'. */
   region: string;
 }
-export const BetaWorkersUpdateRequestPreviewsBaseConfigPlacementCase4 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      mode: BetaWorkersUpdateRequestPreviewsBaseConfigPlacementCase4Mode,
-      region: S.String,
-    }),
-).annotate({
-  identifier: "BetaWorkersUpdateRequestPreviewsBaseConfigPlacementCase4",
-}) as any as S.Schema<BetaWorkersUpdateRequestPreviewsBaseConfigPlacementCase4>;
+export const BetaWorkersUpdateRequestPreviewsBaseConfigPlacementCase4 =
+  BetaWorkersCreateRequestPreviewsBaseConfigPlacementCase4 as any as S.Schema<BetaWorkersUpdateRequestPreviewsBaseConfigPlacementCase4>;
 
 export type BetaWorkersUpdateRequestPreviewsBaseConfigPlacementCase5Mode = "targeted";
 export const BetaWorkersUpdateRequestPreviewsBaseConfigPlacementCase5Mode = S.String;
@@ -34440,15 +31903,8 @@ export interface BetaWorkersUpdateRequestPreviewsBaseConfigPlacementCase5 {
   /** Targeted placement mode. */
   mode: BetaWorkersUpdateRequestPreviewsBaseConfigPlacementCase5Mode;
 }
-export const BetaWorkersUpdateRequestPreviewsBaseConfigPlacementCase5 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      hostname: S.String,
-      mode: BetaWorkersUpdateRequestPreviewsBaseConfigPlacementCase5Mode,
-    }),
-).annotate({
-  identifier: "BetaWorkersUpdateRequestPreviewsBaseConfigPlacementCase5",
-}) as any as S.Schema<BetaWorkersUpdateRequestPreviewsBaseConfigPlacementCase5>;
+export const BetaWorkersUpdateRequestPreviewsBaseConfigPlacementCase5 =
+  BetaWorkersCreateRequestPreviewsBaseConfigPlacementCase5 as any as S.Schema<BetaWorkersUpdateRequestPreviewsBaseConfigPlacementCase5>;
 
 export type BetaWorkersUpdateRequestPreviewsBaseConfigPlacementCase6Mode = "targeted";
 export const BetaWorkersUpdateRequestPreviewsBaseConfigPlacementCase6Mode = S.String;
@@ -34459,15 +31915,8 @@ export interface BetaWorkersUpdateRequestPreviewsBaseConfigPlacementCase6 {
   /** Targeted placement mode. */
   mode: BetaWorkersUpdateRequestPreviewsBaseConfigPlacementCase6Mode;
 }
-export const BetaWorkersUpdateRequestPreviewsBaseConfigPlacementCase6 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      host: S.String,
-      mode: BetaWorkersUpdateRequestPreviewsBaseConfigPlacementCase6Mode,
-    }),
-).annotate({
-  identifier: "BetaWorkersUpdateRequestPreviewsBaseConfigPlacementCase6",
-}) as any as S.Schema<BetaWorkersUpdateRequestPreviewsBaseConfigPlacementCase6>;
+export const BetaWorkersUpdateRequestPreviewsBaseConfigPlacementCase6 =
+  BetaWorkersCreateRequestPreviewsBaseConfigPlacementCase6 as any as S.Schema<BetaWorkersUpdateRequestPreviewsBaseConfigPlacementCase6>;
 
 export type BetaWorkersUpdateRequestPreviewsBaseConfigPlacementCase7Mode = "targeted";
 export const BetaWorkersUpdateRequestPreviewsBaseConfigPlacementCase7Mode = S.String;
@@ -34941,14 +32390,8 @@ export interface BetaWorkersUpdateResponsePreviewsBaseConfigPlacementMode {
   /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
   mode: BetaWorkersUpdateResponsePreviewsBaseConfigPlacementModeMode;
 }
-export const BetaWorkersUpdateResponsePreviewsBaseConfigPlacementMode = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      mode: BetaWorkersUpdateResponsePreviewsBaseConfigPlacementModeMode,
-    }),
-).annotate({
-  identifier: "BetaWorkersUpdateResponsePreviewsBaseConfigPlacementMode",
-}) as any as S.Schema<BetaWorkersUpdateResponsePreviewsBaseConfigPlacementMode>;
+export const BetaWorkersUpdateResponsePreviewsBaseConfigPlacementMode =
+  BetaWorkersCreateResponsePreviewsBaseConfigPlacementMode as any as S.Schema<BetaWorkersUpdateResponsePreviewsBaseConfigPlacementMode>;
 
 export type BetaWorkersUpdateResponsePreviewsBaseConfigPlacementRegion =
   BetaWorkersCreateRequestPreviewsBaseConfigPlacementRegion;
@@ -34974,15 +32417,8 @@ export interface BetaWorkersUpdateResponsePreviewsBaseConfigPlacementCase4 {
   /** Cloud region for targeted placement in format 'provider:region'. */
   region: string;
 }
-export const BetaWorkersUpdateResponsePreviewsBaseConfigPlacementCase4 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      mode: BetaWorkersUpdateResponsePreviewsBaseConfigPlacementCase4Mode,
-      region: S.String,
-    }),
-).annotate({
-  identifier: "BetaWorkersUpdateResponsePreviewsBaseConfigPlacementCase4",
-}) as any as S.Schema<BetaWorkersUpdateResponsePreviewsBaseConfigPlacementCase4>;
+export const BetaWorkersUpdateResponsePreviewsBaseConfigPlacementCase4 =
+  BetaWorkersCreateRequestPreviewsBaseConfigPlacementCase4 as any as S.Schema<BetaWorkersUpdateResponsePreviewsBaseConfigPlacementCase4>;
 
 export type BetaWorkersUpdateResponsePreviewsBaseConfigPlacementCase5Mode = "targeted";
 export const BetaWorkersUpdateResponsePreviewsBaseConfigPlacementCase5Mode = S.String;
@@ -34993,15 +32429,8 @@ export interface BetaWorkersUpdateResponsePreviewsBaseConfigPlacementCase5 {
   /** Targeted placement mode. */
   mode: BetaWorkersUpdateResponsePreviewsBaseConfigPlacementCase5Mode;
 }
-export const BetaWorkersUpdateResponsePreviewsBaseConfigPlacementCase5 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      hostname: S.String,
-      mode: BetaWorkersUpdateResponsePreviewsBaseConfigPlacementCase5Mode,
-    }),
-).annotate({
-  identifier: "BetaWorkersUpdateResponsePreviewsBaseConfigPlacementCase5",
-}) as any as S.Schema<BetaWorkersUpdateResponsePreviewsBaseConfigPlacementCase5>;
+export const BetaWorkersUpdateResponsePreviewsBaseConfigPlacementCase5 =
+  BetaWorkersCreateRequestPreviewsBaseConfigPlacementCase5 as any as S.Schema<BetaWorkersUpdateResponsePreviewsBaseConfigPlacementCase5>;
 
 export type BetaWorkersUpdateResponsePreviewsBaseConfigPlacementCase6Mode = "targeted";
 export const BetaWorkersUpdateResponsePreviewsBaseConfigPlacementCase6Mode = S.String;
@@ -35012,15 +32441,8 @@ export interface BetaWorkersUpdateResponsePreviewsBaseConfigPlacementCase6 {
   /** Targeted placement mode. */
   mode: BetaWorkersUpdateResponsePreviewsBaseConfigPlacementCase6Mode;
 }
-export const BetaWorkersUpdateResponsePreviewsBaseConfigPlacementCase6 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      host: S.String,
-      mode: BetaWorkersUpdateResponsePreviewsBaseConfigPlacementCase6Mode,
-    }),
-).annotate({
-  identifier: "BetaWorkersUpdateResponsePreviewsBaseConfigPlacementCase6",
-}) as any as S.Schema<BetaWorkersUpdateResponsePreviewsBaseConfigPlacementCase6>;
+export const BetaWorkersUpdateResponsePreviewsBaseConfigPlacementCase6 =
+  BetaWorkersCreateRequestPreviewsBaseConfigPlacementCase6 as any as S.Schema<BetaWorkersUpdateResponsePreviewsBaseConfigPlacementCase6>;
 
 export type BetaWorkersUpdateResponsePreviewsBaseConfigPlacementCase7Mode = "targeted";
 export const BetaWorkersUpdateResponsePreviewsBaseConfigPlacementCase7Mode = S.String;

@@ -367,9 +367,7 @@ export const NlpStatus = S.String;
 export interface NlpConfiguration {
   Status?: NlpStatus;
 }
-export const NlpConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Status: S.optional(NlpStatus) }),
-).annotate({ identifier: "NlpConfiguration" }) as any as S.Schema<NlpConfiguration>;
+export const NlpConfiguration = AnalyticsConfiguration as any as S.Schema<NlpConfiguration>;
 export type HealthLakeString = string;
 export type DefaultProfiles = string[];
 export const DefaultProfiles = /*@__PURE__*/ S.Array(S.String);

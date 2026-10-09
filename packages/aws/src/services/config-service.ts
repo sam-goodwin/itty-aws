@@ -1689,7 +1689,7 @@ export const DescribeAggregationAuthorizationsResponse = /*@__PURE__*/ S.suspend
 export type ConfigRuleNames = string[];
 export const ConfigRuleNames = ScopeValues as any as S.Schema<ConfigRuleNames>;
 export type ComplianceTypes = ComplianceType[];
-export const ComplianceTypes = /*@__PURE__*/ S.Array(ComplianceType);
+export const ComplianceTypes = ResourceTypeList as any as S.Schema<ComplianceTypes>;
 export interface DescribeComplianceByConfigRuleRequest {
   ConfigRuleNames?: string[];
   ComplianceTypes?: ComplianceType[];
@@ -2146,7 +2146,8 @@ export type AggregatedSourceStatusType = "FAILED" | "SUCCEEDED" | "OUTDATED" | (
 export const AggregatedSourceStatusType = S.String;
 
 export type AggregatedSourceStatusTypeList = AggregatedSourceStatusType[];
-export const AggregatedSourceStatusTypeList = /*@__PURE__*/ S.Array(AggregatedSourceStatusType);
+export const AggregatedSourceStatusTypeList =
+  ResourceTypeList as any as S.Schema<AggregatedSourceStatusTypeList>;
 export interface DescribeConfigurationAggregatorSourcesStatusRequest {
   ConfigurationAggregatorName: string;
   UpdateStatus?: AggregatedSourceStatusType[];
@@ -2703,9 +2704,8 @@ export type OrganizationConfigRuleTriggerTypeNoSN =
 export const OrganizationConfigRuleTriggerTypeNoSN = S.String;
 
 export type OrganizationConfigRuleTriggerTypeNoSNs = OrganizationConfigRuleTriggerTypeNoSN[];
-export const OrganizationConfigRuleTriggerTypeNoSNs = /*@__PURE__*/ S.Array(
-  OrganizationConfigRuleTriggerTypeNoSN,
-);
+export const OrganizationConfigRuleTriggerTypeNoSNs =
+  OrganizationConfigRuleTriggerTypes as any as S.Schema<OrganizationConfigRuleTriggerTypeNoSNs>;
 export type DebugLogDeliveryAccounts = string[];
 export const DebugLogDeliveryAccounts = ScopeValues as any as S.Schema<DebugLogDeliveryAccounts>;
 export interface OrganizationCustomPolicyRuleMetadataNoPolicy {

@@ -1295,9 +1295,8 @@ export const Transform = S.String;
 
 /** List of transforms */
 export type RulesEngineMatchConditionTransformsList = Array<Transform | (string & {})>;
-export const RulesEngineMatchConditionTransformsList = /*@__PURE__*/ S.Array(
-  Transform,
-) as any as S.Schema<RulesEngineMatchConditionTransformsList>;
+export const RulesEngineMatchConditionTransformsList =
+  RoutingRulePropertiesAcceptedProtocolsList as any as S.Schema<RulesEngineMatchConditionTransformsList>;
 
 /** Define a match condition */
 export interface RulesEngineMatchCondition {
@@ -1942,9 +1941,8 @@ export const TransformType = S.String;
 
 /** List of transforms. */
 export type MatchConditionTransformsList = Array<TransformType | (string & {})>;
-export const MatchConditionTransformsList = /*@__PURE__*/ S.Array(
-  TransformType,
-) as any as S.Schema<MatchConditionTransformsList>;
+export const MatchConditionTransformsList =
+  RoutingRulePropertiesAcceptedProtocolsList as any as S.Schema<MatchConditionTransformsList>;
 
 /** Define a match condition. */
 export interface MatchCondition {

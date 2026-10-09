@@ -2135,7 +2135,7 @@ export type ComputeEnvironments = "SPARK" | "ATHENA" | "PYTHON" | (string & {});
 export const ComputeEnvironments = S.String;
 
 export type ComputeEnvironmentsList = ComputeEnvironments[];
-export const ComputeEnvironmentsList = /*@__PURE__*/ S.Array(ComputeEnvironments);
+export const ComputeEnvironmentsList = S3Permissions as any as S.Schema<ComputeEnvironmentsList>;
 export type AuthenticationType = "BASIC" | "OAUTH2" | "CUSTOM" | (string & {});
 export const AuthenticationType = S.String;
 
@@ -4846,7 +4846,8 @@ export type GlossaryUsageRestriction = "ASSET_GOVERNED_TERMS" | (string & {});
 export const GlossaryUsageRestriction = S.String;
 
 export type GlossaryUsageRestrictions = GlossaryUsageRestriction[];
-export const GlossaryUsageRestrictions = /*@__PURE__*/ S.Array(GlossaryUsageRestriction);
+export const GlossaryUsageRestrictions =
+  S3Permissions as any as S.Schema<GlossaryUsageRestrictions>;
 export interface CreateGlossaryInput {
   domainIdentifier: string;
   name: string | redacted.Redacted<string>;
@@ -8628,7 +8629,8 @@ export type MetadataGenerationRunStatus =
 export const MetadataGenerationRunStatus = S.String;
 
 export type MetadataGenerationRunTypes = MetadataGenerationRunType[];
-export const MetadataGenerationRunTypes = /*@__PURE__*/ S.Array(MetadataGenerationRunType);
+export const MetadataGenerationRunTypes =
+  S3Permissions as any as S.Schema<MetadataGenerationRunTypes>;
 export interface MetadataGenerationRunTypeStat {
   type: MetadataGenerationRunType;
   status: MetadataGenerationRunStatus;
@@ -8876,7 +8878,7 @@ export type NotifyOnState =
 export const NotifyOnState = S.String;
 
 export type NotifyOnStates = NotifyOnState[];
-export const NotifyOnStates = /*@__PURE__*/ S.Array(NotifyOnState);
+export const NotifyOnStates = S3Permissions as any as S.Schema<NotifyOnStates>;
 export interface NotificationConfig {
   notifyOn: NotifyOnState[];
 }
@@ -12098,9 +12100,7 @@ export interface RejectRule {
   rule?: RejectRuleBehavior;
   threshold?: number;
 }
-export const RejectRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ rule: S.optional(RejectRuleBehavior), threshold: S.optional(S.Number) }),
-).annotate({ identifier: "RejectRule" }) as any as S.Schema<RejectRule>;
+export const RejectRule = AcceptRule as any as S.Schema<RejectRule>;
 export type PredictionChoices = number[];
 export const PredictionChoices = /*@__PURE__*/ S.Array(S.Number);
 export interface RejectChoice {

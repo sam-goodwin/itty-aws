@@ -1964,7 +1964,7 @@ export type SourceEventCategory = "Management" | "Data" | (string & {});
 export const SourceEventCategory = S.String;
 
 export type SourceEventCategories = SourceEventCategory[];
-export const SourceEventCategories = /*@__PURE__*/ S.Array(SourceEventCategory);
+export const SourceEventCategories = Templates as any as S.Schema<SourceEventCategories>;
 export interface InsightSelector {
   InsightType?: InsightType;
   EventCategories?: SourceEventCategory[];

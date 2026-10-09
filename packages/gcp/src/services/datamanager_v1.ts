@@ -1224,12 +1224,7 @@ export interface ErrorCount {
   recordCount?: string;
   reason?: ErrorCountReasonEnum;
 }
-export const ErrorCount = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    recordCount: S.optional(S.String),
-    reason: S.optional(ErrorCountReasonEnum),
-  }),
-).annotate({ identifier: "ErrorCount" }) as any as S.Schema<ErrorCount>;
+export const ErrorCount = WarningCount as any as S.Schema<ErrorCount>;
 
 export type ErrorCountList = Array<ErrorCount>;
 export const ErrorCountList = /*@__PURE__*/ S.Array(ErrorCount) as any as S.Schema<ErrorCountList>;

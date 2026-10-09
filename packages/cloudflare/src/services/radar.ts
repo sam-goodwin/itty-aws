@@ -278,9 +278,8 @@ export const AiTimeseriesGroupsSummaryRequestResponseStatusCategory = S.String;
 export type AiTimeseriesGroupsSummaryRequestResponseStatusCategoryList = Array<
   AiTimeseriesGroupsSummaryRequestResponseStatusCategory | (string & {})
 >;
-export const AiTimeseriesGroupsSummaryRequestResponseStatusCategoryList = /*@__PURE__*/ S.Array(
-  AiTimeseriesGroupsSummaryRequestResponseStatusCategory,
-) as any as S.Schema<AiTimeseriesGroupsSummaryRequestResponseStatusCategoryList>;
+export const AiTimeseriesGroupsSummaryRequestResponseStatusCategoryList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AiTimeseriesGroupsSummaryRequestResponseStatusCategoryList>;
 
 export type AiTimeseriesGroupsSummaryRequestUserAgentList = Array<string>;
 export const AiTimeseriesGroupsSummaryRequestUserAgentList =
@@ -573,9 +572,8 @@ export const AiTimeseriesGroupsTimeseriesRequestContentType = S.String;
 export type AiTimeseriesGroupsTimeseriesRequestContentTypeList = Array<
   AiTimeseriesGroupsTimeseriesRequestContentType | (string & {})
 >;
-export const AiTimeseriesGroupsTimeseriesRequestContentTypeList = /*@__PURE__*/ S.Array(
-  AiTimeseriesGroupsTimeseriesRequestContentType,
-) as any as S.Schema<AiTimeseriesGroupsTimeseriesRequestContentTypeList>;
+export const AiTimeseriesGroupsTimeseriesRequestContentTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AiTimeseriesGroupsTimeseriesRequestContentTypeList>;
 
 export type AiTimeseriesGroupsTimeseriesRequestContinentList = Array<string>;
 export const AiTimeseriesGroupsTimeseriesRequestContinentList =
@@ -627,9 +625,8 @@ export const AiTimeseriesGroupsTimeseriesRequestResponseStatusCategory = S.Strin
 export type AiTimeseriesGroupsTimeseriesRequestResponseStatusCategoryList = Array<
   AiTimeseriesGroupsTimeseriesRequestResponseStatusCategory | (string & {})
 >;
-export const AiTimeseriesGroupsTimeseriesRequestResponseStatusCategoryList = /*@__PURE__*/ S.Array(
-  AiTimeseriesGroupsTimeseriesRequestResponseStatusCategory,
-) as any as S.Schema<AiTimeseriesGroupsTimeseriesRequestResponseStatusCategoryList>;
+export const AiTimeseriesGroupsTimeseriesRequestResponseStatusCategoryList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AiTimeseriesGroupsTimeseriesRequestResponseStatusCategoryList>;
 
 export type AiTimeseriesGroupsTimeseriesRequestUserAgentList = Array<string>;
 export const AiTimeseriesGroupsTimeseriesRequestUserAgentList =
@@ -916,9 +913,8 @@ export const AiTimeseriesGroupsTimeseriesGroupsRequestContentType = S.String;
 export type AiTimeseriesGroupsTimeseriesGroupsRequestContentTypeList = Array<
   AiTimeseriesGroupsTimeseriesGroupsRequestContentType | (string & {})
 >;
-export const AiTimeseriesGroupsTimeseriesGroupsRequestContentTypeList = /*@__PURE__*/ S.Array(
-  AiTimeseriesGroupsTimeseriesGroupsRequestContentType,
-) as any as S.Schema<AiTimeseriesGroupsTimeseriesGroupsRequestContentTypeList>;
+export const AiTimeseriesGroupsTimeseriesGroupsRequestContentTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AiTimeseriesGroupsTimeseriesGroupsRequestContentTypeList>;
 
 export type AiTimeseriesGroupsTimeseriesGroupsRequestContinentList = Array<string>;
 export const AiTimeseriesGroupsTimeseriesGroupsRequestContinentList =
@@ -1279,9 +1275,8 @@ export const EmailRoutingSummaryArcRequestDkim = S.String;
 export type EmailRoutingSummaryArcRequestDkimList = Array<
   EmailRoutingSummaryArcRequestDkim | (string & {})
 >;
-export const EmailRoutingSummaryArcRequestDkimList = /*@__PURE__*/ S.Array(
-  EmailRoutingSummaryArcRequestDkim,
-) as any as S.Schema<EmailRoutingSummaryArcRequestDkimList>;
+export const EmailRoutingSummaryArcRequestDkimList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingSummaryArcRequestDkimList>;
 
 export type EmailRoutingSummaryArcRequestDmarc = "PASS" | "NONE" | "FAIL";
 export const EmailRoutingSummaryArcRequestDmarc = S.String;
@@ -1289,9 +1284,8 @@ export const EmailRoutingSummaryArcRequestDmarc = S.String;
 export type EmailRoutingSummaryArcRequestDmarcList = Array<
   EmailRoutingSummaryArcRequestDmarc | (string & {})
 >;
-export const EmailRoutingSummaryArcRequestDmarcList = /*@__PURE__*/ S.Array(
-  EmailRoutingSummaryArcRequestDmarc,
-) as any as S.Schema<EmailRoutingSummaryArcRequestDmarcList>;
+export const EmailRoutingSummaryArcRequestDmarcList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingSummaryArcRequestDmarcList>;
 
 export type EmailRoutingSummaryArcRequestEncrypted = "ENCRYPTED" | "NOT_ENCRYPTED";
 export const EmailRoutingSummaryArcRequestEncrypted = S.String;
@@ -1299,9 +1293,8 @@ export const EmailRoutingSummaryArcRequestEncrypted = S.String;
 export type EmailRoutingSummaryArcRequestEncryptedList = Array<
   EmailRoutingSummaryArcRequestEncrypted | (string & {})
 >;
-export const EmailRoutingSummaryArcRequestEncryptedList = /*@__PURE__*/ S.Array(
-  EmailRoutingSummaryArcRequestEncrypted,
-) as any as S.Schema<EmailRoutingSummaryArcRequestEncryptedList>;
+export const EmailRoutingSummaryArcRequestEncryptedList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingSummaryArcRequestEncryptedList>;
 
 export type EmailRoutingSummaryArcRequestFormat = "JSON" | "CSV";
 export const EmailRoutingSummaryArcRequestFormat = S.String;
@@ -1312,9 +1305,8 @@ export const EmailRoutingSummaryArcRequestIpVersion = S.String;
 export type EmailRoutingSummaryArcRequestIpVersionList = Array<
   EmailRoutingSummaryArcRequestIpVersion | (string & {})
 >;
-export const EmailRoutingSummaryArcRequestIpVersionList = /*@__PURE__*/ S.Array(
-  EmailRoutingSummaryArcRequestIpVersion,
-) as any as S.Schema<EmailRoutingSummaryArcRequestIpVersionList>;
+export const EmailRoutingSummaryArcRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingSummaryArcRequestIpVersionList>;
 
 export type EmailRoutingSummaryArcRequestNameList = Array<string>;
 export const EmailRoutingSummaryArcRequestNameList =
@@ -1326,9 +1318,8 @@ export const EmailRoutingSummaryArcRequestSpf = S.String;
 export type EmailRoutingSummaryArcRequestSpfList = Array<
   EmailRoutingSummaryArcRequestSpf | (string & {})
 >;
-export const EmailRoutingSummaryArcRequestSpfList = /*@__PURE__*/ S.Array(
-  EmailRoutingSummaryArcRequestSpf,
-) as any as S.Schema<EmailRoutingSummaryArcRequestSpfList>;
+export const EmailRoutingSummaryArcRequestSpfList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingSummaryArcRequestSpfList>;
 
 export interface ArcEmailRoutingSummaryRequest {
   /** End of the date range (inclusive). Alternative to `dateRange`; provide together with `dateStart`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected. */
@@ -1570,9 +1561,8 @@ export const EmailRoutingTimeseriesGroupsArcRequestDkim = S.String;
 export type EmailRoutingTimeseriesGroupsArcRequestDkimList = Array<
   EmailRoutingTimeseriesGroupsArcRequestDkim | (string & {})
 >;
-export const EmailRoutingTimeseriesGroupsArcRequestDkimList = /*@__PURE__*/ S.Array(
-  EmailRoutingTimeseriesGroupsArcRequestDkim,
-) as any as S.Schema<EmailRoutingTimeseriesGroupsArcRequestDkimList>;
+export const EmailRoutingTimeseriesGroupsArcRequestDkimList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingTimeseriesGroupsArcRequestDkimList>;
 
 export type EmailRoutingTimeseriesGroupsArcRequestDmarc = "PASS" | "NONE" | "FAIL";
 export const EmailRoutingTimeseriesGroupsArcRequestDmarc = S.String;
@@ -1580,9 +1570,8 @@ export const EmailRoutingTimeseriesGroupsArcRequestDmarc = S.String;
 export type EmailRoutingTimeseriesGroupsArcRequestDmarcList = Array<
   EmailRoutingTimeseriesGroupsArcRequestDmarc | (string & {})
 >;
-export const EmailRoutingTimeseriesGroupsArcRequestDmarcList = /*@__PURE__*/ S.Array(
-  EmailRoutingTimeseriesGroupsArcRequestDmarc,
-) as any as S.Schema<EmailRoutingTimeseriesGroupsArcRequestDmarcList>;
+export const EmailRoutingTimeseriesGroupsArcRequestDmarcList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingTimeseriesGroupsArcRequestDmarcList>;
 
 export type EmailRoutingTimeseriesGroupsArcRequestEncrypted = "ENCRYPTED" | "NOT_ENCRYPTED";
 export const EmailRoutingTimeseriesGroupsArcRequestEncrypted = S.String;
@@ -1590,9 +1579,8 @@ export const EmailRoutingTimeseriesGroupsArcRequestEncrypted = S.String;
 export type EmailRoutingTimeseriesGroupsArcRequestEncryptedList = Array<
   EmailRoutingTimeseriesGroupsArcRequestEncrypted | (string & {})
 >;
-export const EmailRoutingTimeseriesGroupsArcRequestEncryptedList = /*@__PURE__*/ S.Array(
-  EmailRoutingTimeseriesGroupsArcRequestEncrypted,
-) as any as S.Schema<EmailRoutingTimeseriesGroupsArcRequestEncryptedList>;
+export const EmailRoutingTimeseriesGroupsArcRequestEncryptedList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingTimeseriesGroupsArcRequestEncryptedList>;
 
 export type EmailRoutingTimeseriesGroupsArcRequestFormat = "JSON" | "CSV";
 export const EmailRoutingTimeseriesGroupsArcRequestFormat = S.String;
@@ -1603,9 +1591,8 @@ export const EmailRoutingTimeseriesGroupsArcRequestIpVersion = S.String;
 export type EmailRoutingTimeseriesGroupsArcRequestIpVersionList = Array<
   EmailRoutingTimeseriesGroupsArcRequestIpVersion | (string & {})
 >;
-export const EmailRoutingTimeseriesGroupsArcRequestIpVersionList = /*@__PURE__*/ S.Array(
-  EmailRoutingTimeseriesGroupsArcRequestIpVersion,
-) as any as S.Schema<EmailRoutingTimeseriesGroupsArcRequestIpVersionList>;
+export const EmailRoutingTimeseriesGroupsArcRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingTimeseriesGroupsArcRequestIpVersionList>;
 
 export type EmailRoutingTimeseriesGroupsArcRequestNameList = Array<string>;
 export const EmailRoutingTimeseriesGroupsArcRequestNameList =
@@ -1617,9 +1604,8 @@ export const EmailRoutingTimeseriesGroupsArcRequestSpf = S.String;
 export type EmailRoutingTimeseriesGroupsArcRequestSpfList = Array<
   EmailRoutingTimeseriesGroupsArcRequestSpf | (string & {})
 >;
-export const EmailRoutingTimeseriesGroupsArcRequestSpfList = /*@__PURE__*/ S.Array(
-  EmailRoutingTimeseriesGroupsArcRequestSpf,
-) as any as S.Schema<EmailRoutingTimeseriesGroupsArcRequestSpfList>;
+export const EmailRoutingTimeseriesGroupsArcRequestSpfList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingTimeseriesGroupsArcRequestSpfList>;
 
 export interface ArcEmailRoutingTimeseriesGroupRequest {
   /** Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/). When omitted, the interval is auto-selected from the requested date range; finer intervals are only available for shorter ranges. If the requested interval is too granular for the date range, the request is rejected. */
@@ -1886,9 +1872,8 @@ export const EmailSecuritySummaryArcRequestDkim = S.String;
 export type EmailSecuritySummaryArcRequestDkimList = Array<
   EmailSecuritySummaryArcRequestDkim | (string & {})
 >;
-export const EmailSecuritySummaryArcRequestDkimList = /*@__PURE__*/ S.Array(
-  EmailSecuritySummaryArcRequestDkim,
-) as any as S.Schema<EmailSecuritySummaryArcRequestDkimList>;
+export const EmailSecuritySummaryArcRequestDkimList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecuritySummaryArcRequestDkimList>;
 
 export type EmailSecuritySummaryArcRequestDmarc = "PASS" | "NONE" | "FAIL";
 export const EmailSecuritySummaryArcRequestDmarc = S.String;
@@ -1896,9 +1881,8 @@ export const EmailSecuritySummaryArcRequestDmarc = S.String;
 export type EmailSecuritySummaryArcRequestDmarcList = Array<
   EmailSecuritySummaryArcRequestDmarc | (string & {})
 >;
-export const EmailSecuritySummaryArcRequestDmarcList = /*@__PURE__*/ S.Array(
-  EmailSecuritySummaryArcRequestDmarc,
-) as any as S.Schema<EmailSecuritySummaryArcRequestDmarcList>;
+export const EmailSecuritySummaryArcRequestDmarcList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecuritySummaryArcRequestDmarcList>;
 
 export type EmailSecuritySummaryArcRequestFormat = "JSON" | "CSV";
 export const EmailSecuritySummaryArcRequestFormat = S.String;
@@ -1913,9 +1897,8 @@ export const EmailSecuritySummaryArcRequestSpf = S.String;
 export type EmailSecuritySummaryArcRequestSpfList = Array<
   EmailSecuritySummaryArcRequestSpf | (string & {})
 >;
-export const EmailSecuritySummaryArcRequestSpfList = /*@__PURE__*/ S.Array(
-  EmailSecuritySummaryArcRequestSpf,
-) as any as S.Schema<EmailSecuritySummaryArcRequestSpfList>;
+export const EmailSecuritySummaryArcRequestSpfList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecuritySummaryArcRequestSpfList>;
 
 export type EmailSecuritySummaryArcRequestTlsVersion =
   | "TLSv1_0"
@@ -1927,9 +1910,8 @@ export const EmailSecuritySummaryArcRequestTlsVersion = S.String;
 export type EmailSecuritySummaryArcRequestTlsVersionList = Array<
   EmailSecuritySummaryArcRequestTlsVersion | (string & {})
 >;
-export const EmailSecuritySummaryArcRequestTlsVersionList = /*@__PURE__*/ S.Array(
-  EmailSecuritySummaryArcRequestTlsVersion,
-) as any as S.Schema<EmailSecuritySummaryArcRequestTlsVersionList>;
+export const EmailSecuritySummaryArcRequestTlsVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecuritySummaryArcRequestTlsVersionList>;
 
 export interface ArcEmailSecuritySummaryRequest {
   /** End of the date range (inclusive). Alternative to `dateRange`; provide together with `dateStart`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected. */
@@ -2154,9 +2136,8 @@ export const EmailSecurityTimeseriesGroupsArcRequestDkim = S.String;
 export type EmailSecurityTimeseriesGroupsArcRequestDkimList = Array<
   EmailSecurityTimeseriesGroupsArcRequestDkim | (string & {})
 >;
-export const EmailSecurityTimeseriesGroupsArcRequestDkimList = /*@__PURE__*/ S.Array(
-  EmailSecurityTimeseriesGroupsArcRequestDkim,
-) as any as S.Schema<EmailSecurityTimeseriesGroupsArcRequestDkimList>;
+export const EmailSecurityTimeseriesGroupsArcRequestDkimList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecurityTimeseriesGroupsArcRequestDkimList>;
 
 export type EmailSecurityTimeseriesGroupsArcRequestDmarc = "PASS" | "NONE" | "FAIL";
 export const EmailSecurityTimeseriesGroupsArcRequestDmarc = S.String;
@@ -2164,9 +2145,8 @@ export const EmailSecurityTimeseriesGroupsArcRequestDmarc = S.String;
 export type EmailSecurityTimeseriesGroupsArcRequestDmarcList = Array<
   EmailSecurityTimeseriesGroupsArcRequestDmarc | (string & {})
 >;
-export const EmailSecurityTimeseriesGroupsArcRequestDmarcList = /*@__PURE__*/ S.Array(
-  EmailSecurityTimeseriesGroupsArcRequestDmarc,
-) as any as S.Schema<EmailSecurityTimeseriesGroupsArcRequestDmarcList>;
+export const EmailSecurityTimeseriesGroupsArcRequestDmarcList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecurityTimeseriesGroupsArcRequestDmarcList>;
 
 export type EmailSecurityTimeseriesGroupsArcRequestFormat = "JSON" | "CSV";
 export const EmailSecurityTimeseriesGroupsArcRequestFormat = S.String;
@@ -2181,9 +2161,8 @@ export const EmailSecurityTimeseriesGroupsArcRequestSpf = S.String;
 export type EmailSecurityTimeseriesGroupsArcRequestSpfList = Array<
   EmailSecurityTimeseriesGroupsArcRequestSpf | (string & {})
 >;
-export const EmailSecurityTimeseriesGroupsArcRequestSpfList = /*@__PURE__*/ S.Array(
-  EmailSecurityTimeseriesGroupsArcRequestSpf,
-) as any as S.Schema<EmailSecurityTimeseriesGroupsArcRequestSpfList>;
+export const EmailSecurityTimeseriesGroupsArcRequestSpfList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecurityTimeseriesGroupsArcRequestSpfList>;
 
 export type EmailSecurityTimeseriesGroupsArcRequestTlsVersion =
   | "TLSv1_0"
@@ -2195,9 +2174,8 @@ export const EmailSecurityTimeseriesGroupsArcRequestTlsVersion = S.String;
 export type EmailSecurityTimeseriesGroupsArcRequestTlsVersionList = Array<
   EmailSecurityTimeseriesGroupsArcRequestTlsVersion | (string & {})
 >;
-export const EmailSecurityTimeseriesGroupsArcRequestTlsVersionList = /*@__PURE__*/ S.Array(
-  EmailSecurityTimeseriesGroupsArcRequestTlsVersion,
-) as any as S.Schema<EmailSecurityTimeseriesGroupsArcRequestTlsVersionList>;
+export const EmailSecurityTimeseriesGroupsArcRequestTlsVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecurityTimeseriesGroupsArcRequestTlsVersionList>;
 
 export interface ArcEmailSecurityTimeseriesGroupRequest {
   /** Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/). When omitted, the interval is auto-selected from the requested date range; finer intervals are only available for shorter ranges. If the requested interval is too granular for the date range, the request is rejected. */
@@ -2644,17 +2622,15 @@ export type DnsTopAsesRequestDnssec = "INVALID" | "INSECURE" | "SECURE" | "OTHER
 export const DnsTopAsesRequestDnssec = S.String;
 
 export type DnsTopAsesRequestDnssecList = Array<DnsTopAsesRequestDnssec | (string & {})>;
-export const DnsTopAsesRequestDnssecList = /*@__PURE__*/ S.Array(
-  DnsTopAsesRequestDnssec,
-) as any as S.Schema<DnsTopAsesRequestDnssecList>;
+export const DnsTopAsesRequestDnssecList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsTopAsesRequestDnssecList>;
 
 export type DnsTopAsesRequestDnssecAware = "SUPPORTED" | "NOT_SUPPORTED";
 export const DnsTopAsesRequestDnssecAware = S.String;
 
 export type DnsTopAsesRequestDnssecAwareList = Array<DnsTopAsesRequestDnssecAware | (string & {})>;
-export const DnsTopAsesRequestDnssecAwareList = /*@__PURE__*/ S.Array(
-  DnsTopAsesRequestDnssecAware,
-) as any as S.Schema<DnsTopAsesRequestDnssecAwareList>;
+export const DnsTopAsesRequestDnssecAwareList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsTopAsesRequestDnssecAwareList>;
 
 export type DnsTopAsesRequestDnssecE2eList = Array<boolean>;
 export const DnsTopAsesRequestDnssecE2eList =
@@ -2671,9 +2647,8 @@ export type DnsTopAsesRequestIpVersion = "IPv4" | "IPv6";
 export const DnsTopAsesRequestIpVersion = S.String;
 
 export type DnsTopAsesRequestIpVersionList = Array<DnsTopAsesRequestIpVersion | (string & {})>;
-export const DnsTopAsesRequestIpVersionList = /*@__PURE__*/ S.Array(
-  DnsTopAsesRequestIpVersion,
-) as any as S.Schema<DnsTopAsesRequestIpVersionList>;
+export const DnsTopAsesRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsTopAsesRequestIpVersionList>;
 
 export type DnsTopAsesRequestLocationList = Array<string>;
 export const DnsTopAsesRequestLocationList =
@@ -2695,9 +2670,8 @@ export type DnsTopAsesRequestProtocol = "UDP" | "TCP" | "HTTPS" | "TLS";
 export const DnsTopAsesRequestProtocol = S.String;
 
 export type DnsTopAsesRequestProtocolList = Array<DnsTopAsesRequestProtocol | (string & {})>;
-export const DnsTopAsesRequestProtocolList = /*@__PURE__*/ S.Array(
-  DnsTopAsesRequestProtocol,
-) as any as S.Schema<DnsTopAsesRequestProtocolList>;
+export const DnsTopAsesRequestProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsTopAsesRequestProtocolList>;
 
 export type DnsTopAsesRequestQueryType =
   | "A"
@@ -2791,9 +2765,8 @@ export type DnsTopAsesRequestQueryType =
 export const DnsTopAsesRequestQueryType = S.String;
 
 export type DnsTopAsesRequestQueryTypeList = Array<DnsTopAsesRequestQueryType | (string & {})>;
-export const DnsTopAsesRequestQueryTypeList = /*@__PURE__*/ S.Array(
-  DnsTopAsesRequestQueryType,
-) as any as S.Schema<DnsTopAsesRequestQueryTypeList>;
+export const DnsTopAsesRequestQueryTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsTopAsesRequestQueryTypeList>;
 
 export type DnsTopAsesRequestResponseCode =
   | "NOERROR"
@@ -2820,9 +2793,8 @@ export const DnsTopAsesRequestResponseCode = S.String;
 export type DnsTopAsesRequestResponseCodeList = Array<
   DnsTopAsesRequestResponseCode | (string & {})
 >;
-export const DnsTopAsesRequestResponseCodeList = /*@__PURE__*/ S.Array(
-  DnsTopAsesRequestResponseCode,
-) as any as S.Schema<DnsTopAsesRequestResponseCodeList>;
+export const DnsTopAsesRequestResponseCodeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsTopAsesRequestResponseCodeList>;
 
 export type DnsTopAsesRequestResponseTtl =
   | "LTE_1M"
@@ -2835,9 +2807,8 @@ export type DnsTopAsesRequestResponseTtl =
 export const DnsTopAsesRequestResponseTtl = S.String;
 
 export type DnsTopAsesRequestResponseTtlList = Array<DnsTopAsesRequestResponseTtl | (string & {})>;
-export const DnsTopAsesRequestResponseTtlList = /*@__PURE__*/ S.Array(
-  DnsTopAsesRequestResponseTtl,
-) as any as S.Schema<DnsTopAsesRequestResponseTtlList>;
+export const DnsTopAsesRequestResponseTtlList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsTopAsesRequestResponseTtlList>;
 
 export interface AsesDnsTopRequest {
   /** Filters results by Autonomous System. Specify one or more Autonomous System Numbers (ASNs) as a comma-separated list. Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356. */
@@ -3694,9 +3665,8 @@ export const AttacksLayer3TopAttacksRequestIpVersion = S.String;
 export type AttacksLayer3TopAttacksRequestIpVersionList = Array<
   AttacksLayer3TopAttacksRequestIpVersion | (string & {})
 >;
-export const AttacksLayer3TopAttacksRequestIpVersionList = /*@__PURE__*/ S.Array(
-  AttacksLayer3TopAttacksRequestIpVersion,
-) as any as S.Schema<AttacksLayer3TopAttacksRequestIpVersionList>;
+export const AttacksLayer3TopAttacksRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer3TopAttacksRequestIpVersionList>;
 
 export type AttacksLayer3TopAttacksRequestLimitDirection = "ORIGIN" | "TARGET";
 export const AttacksLayer3TopAttacksRequestLimitDirection = S.String;
@@ -3721,9 +3691,8 @@ export const AttacksLayer3TopAttacksRequestProtocol = S.String;
 export type AttacksLayer3TopAttacksRequestProtocolList = Array<
   AttacksLayer3TopAttacksRequestProtocol | (string & {})
 >;
-export const AttacksLayer3TopAttacksRequestProtocolList = /*@__PURE__*/ S.Array(
-  AttacksLayer3TopAttacksRequestProtocol,
-) as any as S.Schema<AttacksLayer3TopAttacksRequestProtocolList>;
+export const AttacksLayer3TopAttacksRequestProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer3TopAttacksRequestProtocolList>;
 
 export interface AttacksAttackLayer3TopRequest {
   /** Filters results by continent. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA. */
@@ -4003,9 +3972,8 @@ export const AttacksLayer7TopAttacksRequestMitigationProduct = S.String;
 export type AttacksLayer7TopAttacksRequestMitigationProductList = Array<
   AttacksLayer7TopAttacksRequestMitigationProduct | (string & {})
 >;
-export const AttacksLayer7TopAttacksRequestMitigationProductList = /*@__PURE__*/ S.Array(
-  AttacksLayer7TopAttacksRequestMitigationProduct,
-) as any as S.Schema<AttacksLayer7TopAttacksRequestMitigationProductList>;
+export const AttacksLayer7TopAttacksRequestMitigationProductList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer7TopAttacksRequestMitigationProductList>;
 
 export type AttacksLayer7TopAttacksRequestNameList = Array<string>;
 export const AttacksLayer7TopAttacksRequestNameList =
@@ -4358,9 +4326,8 @@ export const AttacksLayer3SummaryBitrateRequestIpVersion = S.String;
 export type AttacksLayer3SummaryBitrateRequestIpVersionList = Array<
   AttacksLayer3SummaryBitrateRequestIpVersion | (string & {})
 >;
-export const AttacksLayer3SummaryBitrateRequestIpVersionList = /*@__PURE__*/ S.Array(
-  AttacksLayer3SummaryBitrateRequestIpVersion,
-) as any as S.Schema<AttacksLayer3SummaryBitrateRequestIpVersionList>;
+export const AttacksLayer3SummaryBitrateRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer3SummaryBitrateRequestIpVersionList>;
 
 export type AttacksLayer3SummaryBitrateRequestLocationList = Array<string>;
 export const AttacksLayer3SummaryBitrateRequestLocationList =
@@ -4376,9 +4343,8 @@ export const AttacksLayer3SummaryBitrateRequestProtocol = S.String;
 export type AttacksLayer3SummaryBitrateRequestProtocolList = Array<
   AttacksLayer3SummaryBitrateRequestProtocol | (string & {})
 >;
-export const AttacksLayer3SummaryBitrateRequestProtocolList = /*@__PURE__*/ S.Array(
-  AttacksLayer3SummaryBitrateRequestProtocol,
-) as any as S.Schema<AttacksLayer3SummaryBitrateRequestProtocolList>;
+export const AttacksLayer3SummaryBitrateRequestProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer3SummaryBitrateRequestProtocolList>;
 
 export interface BitrateAttackLayer3SummaryRequest {
   /** Filters results by continent. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA. */
@@ -4639,9 +4605,8 @@ export const AttacksLayer3TimeseriesGroupsBitrateRequestIpVersion = S.String;
 export type AttacksLayer3TimeseriesGroupsBitrateRequestIpVersionList = Array<
   AttacksLayer3TimeseriesGroupsBitrateRequestIpVersion | (string & {})
 >;
-export const AttacksLayer3TimeseriesGroupsBitrateRequestIpVersionList = /*@__PURE__*/ S.Array(
-  AttacksLayer3TimeseriesGroupsBitrateRequestIpVersion,
-) as any as S.Schema<AttacksLayer3TimeseriesGroupsBitrateRequestIpVersionList>;
+export const AttacksLayer3TimeseriesGroupsBitrateRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer3TimeseriesGroupsBitrateRequestIpVersionList>;
 
 export type AttacksLayer3TimeseriesGroupsBitrateRequestLocationList = Array<string>;
 export const AttacksLayer3TimeseriesGroupsBitrateRequestLocationList =
@@ -4660,9 +4625,8 @@ export const AttacksLayer3TimeseriesGroupsBitrateRequestProtocol = S.String;
 export type AttacksLayer3TimeseriesGroupsBitrateRequestProtocolList = Array<
   AttacksLayer3TimeseriesGroupsBitrateRequestProtocol | (string & {})
 >;
-export const AttacksLayer3TimeseriesGroupsBitrateRequestProtocolList = /*@__PURE__*/ S.Array(
-  AttacksLayer3TimeseriesGroupsBitrateRequestProtocol,
-) as any as S.Schema<AttacksLayer3TimeseriesGroupsBitrateRequestProtocolList>;
+export const AttacksLayer3TimeseriesGroupsBitrateRequestProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer3TimeseriesGroupsBitrateRequestProtocolList>;
 
 export interface BitrateAttackLayer3TimeseriesGroupRequest {
   /** Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/). When omitted, the interval is auto-selected from the requested date range; finer intervals are only available for shorter ranges. If the requested interval is too granular for the date range, the request is rejected. */
@@ -4956,9 +4920,8 @@ export const HttpSummaryBotClassRequestBrowserFamily = S.String;
 export type HttpSummaryBotClassRequestBrowserFamilyList = Array<
   HttpSummaryBotClassRequestBrowserFamily | (string & {})
 >;
-export const HttpSummaryBotClassRequestBrowserFamilyList = /*@__PURE__*/ S.Array(
-  HttpSummaryBotClassRequestBrowserFamily,
-) as any as S.Schema<HttpSummaryBotClassRequestBrowserFamilyList>;
+export const HttpSummaryBotClassRequestBrowserFamilyList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpSummaryBotClassRequestBrowserFamilyList>;
 
 export type HttpSummaryBotClassRequestContinentList = Array<string>;
 export const HttpSummaryBotClassRequestContinentList =
@@ -4982,9 +4945,8 @@ export const HttpSummaryBotClassRequestDeviceType = S.String;
 export type HttpSummaryBotClassRequestDeviceTypeList = Array<
   HttpSummaryBotClassRequestDeviceType | (string & {})
 >;
-export const HttpSummaryBotClassRequestDeviceTypeList = /*@__PURE__*/ S.Array(
-  HttpSummaryBotClassRequestDeviceType,
-) as any as S.Schema<HttpSummaryBotClassRequestDeviceTypeList>;
+export const HttpSummaryBotClassRequestDeviceTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpSummaryBotClassRequestDeviceTypeList>;
 
 export type HttpSummaryBotClassRequestFormat = "JSON" | "CSV";
 export const HttpSummaryBotClassRequestFormat = S.String;
@@ -4999,9 +4961,8 @@ export const HttpSummaryBotClassRequestHttpProtocol = S.String;
 export type HttpSummaryBotClassRequestHttpProtocolList = Array<
   HttpSummaryBotClassRequestHttpProtocol | (string & {})
 >;
-export const HttpSummaryBotClassRequestHttpProtocolList = /*@__PURE__*/ S.Array(
-  HttpSummaryBotClassRequestHttpProtocol,
-) as any as S.Schema<HttpSummaryBotClassRequestHttpProtocolList>;
+export const HttpSummaryBotClassRequestHttpProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpSummaryBotClassRequestHttpProtocolList>;
 
 export type HttpSummaryBotClassRequestHttpVersion = "HTTPv1" | "HTTPv2" | "HTTPv3";
 export const HttpSummaryBotClassRequestHttpVersion = S.String;
@@ -5009,9 +4970,8 @@ export const HttpSummaryBotClassRequestHttpVersion = S.String;
 export type HttpSummaryBotClassRequestHttpVersionList = Array<
   HttpSummaryBotClassRequestHttpVersion | (string & {})
 >;
-export const HttpSummaryBotClassRequestHttpVersionList = /*@__PURE__*/ S.Array(
-  HttpSummaryBotClassRequestHttpVersion,
-) as any as S.Schema<HttpSummaryBotClassRequestHttpVersionList>;
+export const HttpSummaryBotClassRequestHttpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpSummaryBotClassRequestHttpVersionList>;
 
 export type HttpSummaryBotClassRequestIpVersion = "IPv4" | "IPv6";
 export const HttpSummaryBotClassRequestIpVersion = S.String;
@@ -5019,9 +4979,8 @@ export const HttpSummaryBotClassRequestIpVersion = S.String;
 export type HttpSummaryBotClassRequestIpVersionList = Array<
   HttpSummaryBotClassRequestIpVersion | (string & {})
 >;
-export const HttpSummaryBotClassRequestIpVersionList = /*@__PURE__*/ S.Array(
-  HttpSummaryBotClassRequestIpVersion,
-) as any as S.Schema<HttpSummaryBotClassRequestIpVersionList>;
+export const HttpSummaryBotClassRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpSummaryBotClassRequestIpVersionList>;
 
 export type HttpSummaryBotClassRequestLocationList = Array<string>;
 export const HttpSummaryBotClassRequestLocationList =
@@ -5042,9 +5001,8 @@ export type HttpSummaryBotClassRequestOs =
 export const HttpSummaryBotClassRequestOs = S.String;
 
 export type HttpSummaryBotClassRequestOsList = Array<HttpSummaryBotClassRequestOs | (string & {})>;
-export const HttpSummaryBotClassRequestOsList = /*@__PURE__*/ S.Array(
-  HttpSummaryBotClassRequestOs,
-) as any as S.Schema<HttpSummaryBotClassRequestOsList>;
+export const HttpSummaryBotClassRequestOsList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpSummaryBotClassRequestOsList>;
 
 export type HttpSummaryBotClassRequestTlsVersion =
   | "TLSv1_0"
@@ -5057,9 +5015,8 @@ export const HttpSummaryBotClassRequestTlsVersion = S.String;
 export type HttpSummaryBotClassRequestTlsVersionList = Array<
   HttpSummaryBotClassRequestTlsVersion | (string & {})
 >;
-export const HttpSummaryBotClassRequestTlsVersionList = /*@__PURE__*/ S.Array(
-  HttpSummaryBotClassRequestTlsVersion,
-) as any as S.Schema<HttpSummaryBotClassRequestTlsVersionList>;
+export const HttpSummaryBotClassRequestTlsVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpSummaryBotClassRequestTlsVersionList>;
 
 export interface BotClassHttpSummaryRequest {
   /** Filters results by Autonomous System. Specify one or more Autonomous System Numbers (ASNs) as a comma-separated list. Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356. */
@@ -5311,9 +5268,8 @@ export const HttpTimeseriesGroupsBotClassRequestBrowserFamily = S.String;
 export type HttpTimeseriesGroupsBotClassRequestBrowserFamilyList = Array<
   HttpTimeseriesGroupsBotClassRequestBrowserFamily | (string & {})
 >;
-export const HttpTimeseriesGroupsBotClassRequestBrowserFamilyList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsBotClassRequestBrowserFamily,
-) as any as S.Schema<HttpTimeseriesGroupsBotClassRequestBrowserFamilyList>;
+export const HttpTimeseriesGroupsBotClassRequestBrowserFamilyList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsBotClassRequestBrowserFamilyList>;
 
 export type HttpTimeseriesGroupsBotClassRequestContinentList = Array<string>;
 export const HttpTimeseriesGroupsBotClassRequestContinentList =
@@ -5337,9 +5293,8 @@ export const HttpTimeseriesGroupsBotClassRequestDeviceType = S.String;
 export type HttpTimeseriesGroupsBotClassRequestDeviceTypeList = Array<
   HttpTimeseriesGroupsBotClassRequestDeviceType | (string & {})
 >;
-export const HttpTimeseriesGroupsBotClassRequestDeviceTypeList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsBotClassRequestDeviceType,
-) as any as S.Schema<HttpTimeseriesGroupsBotClassRequestDeviceTypeList>;
+export const HttpTimeseriesGroupsBotClassRequestDeviceTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsBotClassRequestDeviceTypeList>;
 
 export type HttpTimeseriesGroupsBotClassRequestFormat = "JSON" | "CSV";
 export const HttpTimeseriesGroupsBotClassRequestFormat = S.String;
@@ -5354,9 +5309,8 @@ export const HttpTimeseriesGroupsBotClassRequestHttpProtocol = S.String;
 export type HttpTimeseriesGroupsBotClassRequestHttpProtocolList = Array<
   HttpTimeseriesGroupsBotClassRequestHttpProtocol | (string & {})
 >;
-export const HttpTimeseriesGroupsBotClassRequestHttpProtocolList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsBotClassRequestHttpProtocol,
-) as any as S.Schema<HttpTimeseriesGroupsBotClassRequestHttpProtocolList>;
+export const HttpTimeseriesGroupsBotClassRequestHttpProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsBotClassRequestHttpProtocolList>;
 
 export type HttpTimeseriesGroupsBotClassRequestHttpVersion = "HTTPv1" | "HTTPv2" | "HTTPv3";
 export const HttpTimeseriesGroupsBotClassRequestHttpVersion = S.String;
@@ -5364,9 +5318,8 @@ export const HttpTimeseriesGroupsBotClassRequestHttpVersion = S.String;
 export type HttpTimeseriesGroupsBotClassRequestHttpVersionList = Array<
   HttpTimeseriesGroupsBotClassRequestHttpVersion | (string & {})
 >;
-export const HttpTimeseriesGroupsBotClassRequestHttpVersionList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsBotClassRequestHttpVersion,
-) as any as S.Schema<HttpTimeseriesGroupsBotClassRequestHttpVersionList>;
+export const HttpTimeseriesGroupsBotClassRequestHttpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsBotClassRequestHttpVersionList>;
 
 export type HttpTimeseriesGroupsBotClassRequestIpVersion = "IPv4" | "IPv6";
 export const HttpTimeseriesGroupsBotClassRequestIpVersion = S.String;
@@ -5374,9 +5327,8 @@ export const HttpTimeseriesGroupsBotClassRequestIpVersion = S.String;
 export type HttpTimeseriesGroupsBotClassRequestIpVersionList = Array<
   HttpTimeseriesGroupsBotClassRequestIpVersion | (string & {})
 >;
-export const HttpTimeseriesGroupsBotClassRequestIpVersionList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsBotClassRequestIpVersion,
-) as any as S.Schema<HttpTimeseriesGroupsBotClassRequestIpVersionList>;
+export const HttpTimeseriesGroupsBotClassRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsBotClassRequestIpVersionList>;
 
 export type HttpTimeseriesGroupsBotClassRequestLocationList = Array<string>;
 export const HttpTimeseriesGroupsBotClassRequestLocationList =
@@ -5399,9 +5351,8 @@ export const HttpTimeseriesGroupsBotClassRequestOs = S.String;
 export type HttpTimeseriesGroupsBotClassRequestOsList = Array<
   HttpTimeseriesGroupsBotClassRequestOs | (string & {})
 >;
-export const HttpTimeseriesGroupsBotClassRequestOsList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsBotClassRequestOs,
-) as any as S.Schema<HttpTimeseriesGroupsBotClassRequestOsList>;
+export const HttpTimeseriesGroupsBotClassRequestOsList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsBotClassRequestOsList>;
 
 export type HttpTimeseriesGroupsBotClassRequestTlsVersion =
   | "TLSv1_0"
@@ -5414,9 +5365,8 @@ export const HttpTimeseriesGroupsBotClassRequestTlsVersion = S.String;
 export type HttpTimeseriesGroupsBotClassRequestTlsVersionList = Array<
   HttpTimeseriesGroupsBotClassRequestTlsVersion | (string & {})
 >;
-export const HttpTimeseriesGroupsBotClassRequestTlsVersionList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsBotClassRequestTlsVersion,
-) as any as S.Schema<HttpTimeseriesGroupsBotClassRequestTlsVersionList>;
+export const HttpTimeseriesGroupsBotClassRequestTlsVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsBotClassRequestTlsVersionList>;
 
 export interface BotClassHttpTimeseriesGroupRequest {
   /** Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/). When omitted, the interval is auto-selected from the requested date range; finer intervals are only available for shorter ranges. If the requested interval is too granular for the date range, the request is rejected. */
@@ -5687,9 +5637,8 @@ export const LeakedCredentialsSummaryBotClassRequestCompromised = S.String;
 export type LeakedCredentialsSummaryBotClassRequestCompromisedList = Array<
   LeakedCredentialsSummaryBotClassRequestCompromised | (string & {})
 >;
-export const LeakedCredentialsSummaryBotClassRequestCompromisedList = /*@__PURE__*/ S.Array(
-  LeakedCredentialsSummaryBotClassRequestCompromised,
-) as any as S.Schema<LeakedCredentialsSummaryBotClassRequestCompromisedList>;
+export const LeakedCredentialsSummaryBotClassRequestCompromisedList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<LeakedCredentialsSummaryBotClassRequestCompromisedList>;
 
 export type LeakedCredentialsSummaryBotClassRequestDateEndList = Array<string>;
 export const LeakedCredentialsSummaryBotClassRequestDateEndList =
@@ -5927,9 +5876,7 @@ export type LeakedCredentialsTimeseriesGroupsBotClassRequestCompromisedList = Ar
   LeakedCredentialsTimeseriesGroupsBotClassRequestCompromised | (string & {})
 >;
 export const LeakedCredentialsTimeseriesGroupsBotClassRequestCompromisedList =
-  /*@__PURE__*/ S.Array(
-    LeakedCredentialsTimeseriesGroupsBotClassRequestCompromised,
-  ) as any as S.Schema<LeakedCredentialsTimeseriesGroupsBotClassRequestCompromisedList>;
+  AiTimeseriesGroupsTimeseriesGroupsRequestResponseStatusCategoryList as any as S.Schema<LeakedCredentialsTimeseriesGroupsBotClassRequestCompromisedList>;
 
 export type LeakedCredentialsTimeseriesGroupsBotClassRequestDateEndList = Array<string>;
 export const LeakedCredentialsTimeseriesGroupsBotClassRequestDateEndList =
@@ -6577,9 +6524,8 @@ export const HttpTimeseriesGroupsBrowserFamilyRequestBotClass = S.String;
 export type HttpTimeseriesGroupsBrowserFamilyRequestBotClassList = Array<
   HttpTimeseriesGroupsBrowserFamilyRequestBotClass | (string & {})
 >;
-export const HttpTimeseriesGroupsBrowserFamilyRequestBotClassList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsBrowserFamilyRequestBotClass,
-) as any as S.Schema<HttpTimeseriesGroupsBrowserFamilyRequestBotClassList>;
+export const HttpTimeseriesGroupsBrowserFamilyRequestBotClassList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsBrowserFamilyRequestBotClassList>;
 
 export type HttpTimeseriesGroupsBrowserFamilyRequestContinentList = Array<string>;
 export const HttpTimeseriesGroupsBrowserFamilyRequestContinentList =
@@ -6603,9 +6549,8 @@ export const HttpTimeseriesGroupsBrowserFamilyRequestDeviceType = S.String;
 export type HttpTimeseriesGroupsBrowserFamilyRequestDeviceTypeList = Array<
   HttpTimeseriesGroupsBrowserFamilyRequestDeviceType | (string & {})
 >;
-export const HttpTimeseriesGroupsBrowserFamilyRequestDeviceTypeList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsBrowserFamilyRequestDeviceType,
-) as any as S.Schema<HttpTimeseriesGroupsBrowserFamilyRequestDeviceTypeList>;
+export const HttpTimeseriesGroupsBrowserFamilyRequestDeviceTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsBrowserFamilyRequestDeviceTypeList>;
 
 export type HttpTimeseriesGroupsBrowserFamilyRequestFormat = "JSON" | "CSV";
 export const HttpTimeseriesGroupsBrowserFamilyRequestFormat = S.String;
@@ -6620,9 +6565,8 @@ export const HttpTimeseriesGroupsBrowserFamilyRequestHttpProtocol = S.String;
 export type HttpTimeseriesGroupsBrowserFamilyRequestHttpProtocolList = Array<
   HttpTimeseriesGroupsBrowserFamilyRequestHttpProtocol | (string & {})
 >;
-export const HttpTimeseriesGroupsBrowserFamilyRequestHttpProtocolList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsBrowserFamilyRequestHttpProtocol,
-) as any as S.Schema<HttpTimeseriesGroupsBrowserFamilyRequestHttpProtocolList>;
+export const HttpTimeseriesGroupsBrowserFamilyRequestHttpProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsBrowserFamilyRequestHttpProtocolList>;
 
 export type HttpTimeseriesGroupsBrowserFamilyRequestHttpVersion = "HTTPv1" | "HTTPv2" | "HTTPv3";
 export const HttpTimeseriesGroupsBrowserFamilyRequestHttpVersion = S.String;
@@ -6630,9 +6574,8 @@ export const HttpTimeseriesGroupsBrowserFamilyRequestHttpVersion = S.String;
 export type HttpTimeseriesGroupsBrowserFamilyRequestHttpVersionList = Array<
   HttpTimeseriesGroupsBrowserFamilyRequestHttpVersion | (string & {})
 >;
-export const HttpTimeseriesGroupsBrowserFamilyRequestHttpVersionList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsBrowserFamilyRequestHttpVersion,
-) as any as S.Schema<HttpTimeseriesGroupsBrowserFamilyRequestHttpVersionList>;
+export const HttpTimeseriesGroupsBrowserFamilyRequestHttpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsBrowserFamilyRequestHttpVersionList>;
 
 export type HttpTimeseriesGroupsBrowserFamilyRequestIpVersion = "IPv4" | "IPv6";
 export const HttpTimeseriesGroupsBrowserFamilyRequestIpVersion = S.String;
@@ -6640,9 +6583,8 @@ export const HttpTimeseriesGroupsBrowserFamilyRequestIpVersion = S.String;
 export type HttpTimeseriesGroupsBrowserFamilyRequestIpVersionList = Array<
   HttpTimeseriesGroupsBrowserFamilyRequestIpVersion | (string & {})
 >;
-export const HttpTimeseriesGroupsBrowserFamilyRequestIpVersionList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsBrowserFamilyRequestIpVersion,
-) as any as S.Schema<HttpTimeseriesGroupsBrowserFamilyRequestIpVersionList>;
+export const HttpTimeseriesGroupsBrowserFamilyRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsBrowserFamilyRequestIpVersionList>;
 
 export type HttpTimeseriesGroupsBrowserFamilyRequestLocationList = Array<string>;
 export const HttpTimeseriesGroupsBrowserFamilyRequestLocationList =
@@ -6665,9 +6607,8 @@ export const HttpTimeseriesGroupsBrowserFamilyRequestOs = S.String;
 export type HttpTimeseriesGroupsBrowserFamilyRequestOsList = Array<
   HttpTimeseriesGroupsBrowserFamilyRequestOs | (string & {})
 >;
-export const HttpTimeseriesGroupsBrowserFamilyRequestOsList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsBrowserFamilyRequestOs,
-) as any as S.Schema<HttpTimeseriesGroupsBrowserFamilyRequestOsList>;
+export const HttpTimeseriesGroupsBrowserFamilyRequestOsList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsBrowserFamilyRequestOsList>;
 
 export type HttpTimeseriesGroupsBrowserFamilyRequestTlsVersion =
   | "TLSv1_0"
@@ -6680,9 +6621,8 @@ export const HttpTimeseriesGroupsBrowserFamilyRequestTlsVersion = S.String;
 export type HttpTimeseriesGroupsBrowserFamilyRequestTlsVersionList = Array<
   HttpTimeseriesGroupsBrowserFamilyRequestTlsVersion | (string & {})
 >;
-export const HttpTimeseriesGroupsBrowserFamilyRequestTlsVersionList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsBrowserFamilyRequestTlsVersion,
-) as any as S.Schema<HttpTimeseriesGroupsBrowserFamilyRequestTlsVersionList>;
+export const HttpTimeseriesGroupsBrowserFamilyRequestTlsVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsBrowserFamilyRequestTlsVersionList>;
 
 export interface BrowserFamilyHttpTimeseriesGroupRequest {
   /** Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/). When omitted, the interval is auto-selected from the requested date range; finer intervals are only available for shorter ranges. If the requested interval is too granular for the date range, the request is rejected. */
@@ -6952,9 +6892,8 @@ export const HttpTopBrowserFamilyRequestBotClass = S.String;
 export type HttpTopBrowserFamilyRequestBotClassList = Array<
   HttpTopBrowserFamilyRequestBotClass | (string & {})
 >;
-export const HttpTopBrowserFamilyRequestBotClassList = /*@__PURE__*/ S.Array(
-  HttpTopBrowserFamilyRequestBotClass,
-) as any as S.Schema<HttpTopBrowserFamilyRequestBotClassList>;
+export const HttpTopBrowserFamilyRequestBotClassList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTopBrowserFamilyRequestBotClassList>;
 
 export type HttpTopBrowserFamilyRequestContinentList = Array<string>;
 export const HttpTopBrowserFamilyRequestContinentList =
@@ -6978,9 +6917,8 @@ export const HttpTopBrowserFamilyRequestDeviceType = S.String;
 export type HttpTopBrowserFamilyRequestDeviceTypeList = Array<
   HttpTopBrowserFamilyRequestDeviceType | (string & {})
 >;
-export const HttpTopBrowserFamilyRequestDeviceTypeList = /*@__PURE__*/ S.Array(
-  HttpTopBrowserFamilyRequestDeviceType,
-) as any as S.Schema<HttpTopBrowserFamilyRequestDeviceTypeList>;
+export const HttpTopBrowserFamilyRequestDeviceTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTopBrowserFamilyRequestDeviceTypeList>;
 
 export type HttpTopBrowserFamilyRequestFormat = "JSON" | "CSV";
 export const HttpTopBrowserFamilyRequestFormat = S.String;
@@ -6995,9 +6933,8 @@ export const HttpTopBrowserFamilyRequestHttpProtocol = S.String;
 export type HttpTopBrowserFamilyRequestHttpProtocolList = Array<
   HttpTopBrowserFamilyRequestHttpProtocol | (string & {})
 >;
-export const HttpTopBrowserFamilyRequestHttpProtocolList = /*@__PURE__*/ S.Array(
-  HttpTopBrowserFamilyRequestHttpProtocol,
-) as any as S.Schema<HttpTopBrowserFamilyRequestHttpProtocolList>;
+export const HttpTopBrowserFamilyRequestHttpProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTopBrowserFamilyRequestHttpProtocolList>;
 
 export type HttpTopBrowserFamilyRequestHttpVersion = "HTTPv1" | "HTTPv2" | "HTTPv3";
 export const HttpTopBrowserFamilyRequestHttpVersion = S.String;
@@ -7005,9 +6942,8 @@ export const HttpTopBrowserFamilyRequestHttpVersion = S.String;
 export type HttpTopBrowserFamilyRequestHttpVersionList = Array<
   HttpTopBrowserFamilyRequestHttpVersion | (string & {})
 >;
-export const HttpTopBrowserFamilyRequestHttpVersionList = /*@__PURE__*/ S.Array(
-  HttpTopBrowserFamilyRequestHttpVersion,
-) as any as S.Schema<HttpTopBrowserFamilyRequestHttpVersionList>;
+export const HttpTopBrowserFamilyRequestHttpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTopBrowserFamilyRequestHttpVersionList>;
 
 export type HttpTopBrowserFamilyRequestIpVersion = "IPv4" | "IPv6";
 export const HttpTopBrowserFamilyRequestIpVersion = S.String;
@@ -7015,9 +6951,8 @@ export const HttpTopBrowserFamilyRequestIpVersion = S.String;
 export type HttpTopBrowserFamilyRequestIpVersionList = Array<
   HttpTopBrowserFamilyRequestIpVersion | (string & {})
 >;
-export const HttpTopBrowserFamilyRequestIpVersionList = /*@__PURE__*/ S.Array(
-  HttpTopBrowserFamilyRequestIpVersion,
-) as any as S.Schema<HttpTopBrowserFamilyRequestIpVersionList>;
+export const HttpTopBrowserFamilyRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTopBrowserFamilyRequestIpVersionList>;
 
 export type HttpTopBrowserFamilyRequestLocationList = Array<string>;
 export const HttpTopBrowserFamilyRequestLocationList =
@@ -7040,9 +6975,8 @@ export const HttpTopBrowserFamilyRequestOs = S.String;
 export type HttpTopBrowserFamilyRequestOsList = Array<
   HttpTopBrowserFamilyRequestOs | (string & {})
 >;
-export const HttpTopBrowserFamilyRequestOsList = /*@__PURE__*/ S.Array(
-  HttpTopBrowserFamilyRequestOs,
-) as any as S.Schema<HttpTopBrowserFamilyRequestOsList>;
+export const HttpTopBrowserFamilyRequestOsList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTopBrowserFamilyRequestOsList>;
 
 export type HttpTopBrowserFamilyRequestTlsVersion =
   | "TLSv1_0"
@@ -7055,9 +6989,8 @@ export const HttpTopBrowserFamilyRequestTlsVersion = S.String;
 export type HttpTopBrowserFamilyRequestTlsVersionList = Array<
   HttpTopBrowserFamilyRequestTlsVersion | (string & {})
 >;
-export const HttpTopBrowserFamilyRequestTlsVersionList = /*@__PURE__*/ S.Array(
-  HttpTopBrowserFamilyRequestTlsVersion,
-) as any as S.Schema<HttpTopBrowserFamilyRequestTlsVersionList>;
+export const HttpTopBrowserFamilyRequestTlsVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTopBrowserFamilyRequestTlsVersionList>;
 
 export interface BrowserFamilyHttpTopRequest {
   /** Filters results by Autonomous System. Specify one or more Autonomous System Numbers (ASNs) as a comma-separated list. Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356. */
@@ -7301,9 +7234,8 @@ export const HttpTimeseriesGroupsBrowserRequestBotClass = S.String;
 export type HttpTimeseriesGroupsBrowserRequestBotClassList = Array<
   HttpTimeseriesGroupsBrowserRequestBotClass | (string & {})
 >;
-export const HttpTimeseriesGroupsBrowserRequestBotClassList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsBrowserRequestBotClass,
-) as any as S.Schema<HttpTimeseriesGroupsBrowserRequestBotClassList>;
+export const HttpTimeseriesGroupsBrowserRequestBotClassList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsBrowserRequestBotClassList>;
 
 export type HttpTimeseriesGroupsBrowserRequestBrowserFamily =
   | "CHROME"
@@ -7315,9 +7247,8 @@ export const HttpTimeseriesGroupsBrowserRequestBrowserFamily = S.String;
 export type HttpTimeseriesGroupsBrowserRequestBrowserFamilyList = Array<
   HttpTimeseriesGroupsBrowserRequestBrowserFamily | (string & {})
 >;
-export const HttpTimeseriesGroupsBrowserRequestBrowserFamilyList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsBrowserRequestBrowserFamily,
-) as any as S.Schema<HttpTimeseriesGroupsBrowserRequestBrowserFamilyList>;
+export const HttpTimeseriesGroupsBrowserRequestBrowserFamilyList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsBrowserRequestBrowserFamilyList>;
 
 export type HttpTimeseriesGroupsBrowserRequestContinentList = Array<string>;
 export const HttpTimeseriesGroupsBrowserRequestContinentList =
@@ -7341,9 +7272,8 @@ export const HttpTimeseriesGroupsBrowserRequestDeviceType = S.String;
 export type HttpTimeseriesGroupsBrowserRequestDeviceTypeList = Array<
   HttpTimeseriesGroupsBrowserRequestDeviceType | (string & {})
 >;
-export const HttpTimeseriesGroupsBrowserRequestDeviceTypeList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsBrowserRequestDeviceType,
-) as any as S.Schema<HttpTimeseriesGroupsBrowserRequestDeviceTypeList>;
+export const HttpTimeseriesGroupsBrowserRequestDeviceTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsBrowserRequestDeviceTypeList>;
 
 export type HttpTimeseriesGroupsBrowserRequestFormat = "JSON" | "CSV";
 export const HttpTimeseriesGroupsBrowserRequestFormat = S.String;
@@ -7358,9 +7288,8 @@ export const HttpTimeseriesGroupsBrowserRequestHttpProtocol = S.String;
 export type HttpTimeseriesGroupsBrowserRequestHttpProtocolList = Array<
   HttpTimeseriesGroupsBrowserRequestHttpProtocol | (string & {})
 >;
-export const HttpTimeseriesGroupsBrowserRequestHttpProtocolList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsBrowserRequestHttpProtocol,
-) as any as S.Schema<HttpTimeseriesGroupsBrowserRequestHttpProtocolList>;
+export const HttpTimeseriesGroupsBrowserRequestHttpProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsBrowserRequestHttpProtocolList>;
 
 export type HttpTimeseriesGroupsBrowserRequestHttpVersion = "HTTPv1" | "HTTPv2" | "HTTPv3";
 export const HttpTimeseriesGroupsBrowserRequestHttpVersion = S.String;
@@ -7368,9 +7297,8 @@ export const HttpTimeseriesGroupsBrowserRequestHttpVersion = S.String;
 export type HttpTimeseriesGroupsBrowserRequestHttpVersionList = Array<
   HttpTimeseriesGroupsBrowserRequestHttpVersion | (string & {})
 >;
-export const HttpTimeseriesGroupsBrowserRequestHttpVersionList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsBrowserRequestHttpVersion,
-) as any as S.Schema<HttpTimeseriesGroupsBrowserRequestHttpVersionList>;
+export const HttpTimeseriesGroupsBrowserRequestHttpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsBrowserRequestHttpVersionList>;
 
 export type HttpTimeseriesGroupsBrowserRequestIpVersion = "IPv4" | "IPv6";
 export const HttpTimeseriesGroupsBrowserRequestIpVersion = S.String;
@@ -7378,9 +7306,8 @@ export const HttpTimeseriesGroupsBrowserRequestIpVersion = S.String;
 export type HttpTimeseriesGroupsBrowserRequestIpVersionList = Array<
   HttpTimeseriesGroupsBrowserRequestIpVersion | (string & {})
 >;
-export const HttpTimeseriesGroupsBrowserRequestIpVersionList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsBrowserRequestIpVersion,
-) as any as S.Schema<HttpTimeseriesGroupsBrowserRequestIpVersionList>;
+export const HttpTimeseriesGroupsBrowserRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsBrowserRequestIpVersionList>;
 
 export type HttpTimeseriesGroupsBrowserRequestLocationList = Array<string>;
 export const HttpTimeseriesGroupsBrowserRequestLocationList =
@@ -7403,9 +7330,8 @@ export const HttpTimeseriesGroupsBrowserRequestOs = S.String;
 export type HttpTimeseriesGroupsBrowserRequestOsList = Array<
   HttpTimeseriesGroupsBrowserRequestOs | (string & {})
 >;
-export const HttpTimeseriesGroupsBrowserRequestOsList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsBrowserRequestOs,
-) as any as S.Schema<HttpTimeseriesGroupsBrowserRequestOsList>;
+export const HttpTimeseriesGroupsBrowserRequestOsList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsBrowserRequestOsList>;
 
 export type HttpTimeseriesGroupsBrowserRequestTlsVersion =
   | "TLSv1_0"
@@ -7418,9 +7344,8 @@ export const HttpTimeseriesGroupsBrowserRequestTlsVersion = S.String;
 export type HttpTimeseriesGroupsBrowserRequestTlsVersionList = Array<
   HttpTimeseriesGroupsBrowserRequestTlsVersion | (string & {})
 >;
-export const HttpTimeseriesGroupsBrowserRequestTlsVersionList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsBrowserRequestTlsVersion,
-) as any as S.Schema<HttpTimeseriesGroupsBrowserRequestTlsVersionList>;
+export const HttpTimeseriesGroupsBrowserRequestTlsVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsBrowserRequestTlsVersionList>;
 
 export interface BrowserHttpTimeseriesGroupRequest {
   /** Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/). When omitted, the interval is auto-selected from the requested date range; finer intervals are only available for shorter ranges. If the requested interval is too granular for the date range, the request is rejected. */
@@ -7684,9 +7609,8 @@ export const HttpTopBrowserRequestBotClass = S.String;
 export type HttpTopBrowserRequestBotClassList = Array<
   HttpTopBrowserRequestBotClass | (string & {})
 >;
-export const HttpTopBrowserRequestBotClassList = /*@__PURE__*/ S.Array(
-  HttpTopBrowserRequestBotClass,
-) as any as S.Schema<HttpTopBrowserRequestBotClassList>;
+export const HttpTopBrowserRequestBotClassList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTopBrowserRequestBotClassList>;
 
 export type HttpTopBrowserRequestBrowserFamily = "CHROME" | "EDGE" | "FIREFOX" | "SAFARI";
 export const HttpTopBrowserRequestBrowserFamily = S.String;
@@ -7694,9 +7618,8 @@ export const HttpTopBrowserRequestBrowserFamily = S.String;
 export type HttpTopBrowserRequestBrowserFamilyList = Array<
   HttpTopBrowserRequestBrowserFamily | (string & {})
 >;
-export const HttpTopBrowserRequestBrowserFamilyList = /*@__PURE__*/ S.Array(
-  HttpTopBrowserRequestBrowserFamily,
-) as any as S.Schema<HttpTopBrowserRequestBrowserFamilyList>;
+export const HttpTopBrowserRequestBrowserFamilyList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTopBrowserRequestBrowserFamilyList>;
 
 export type HttpTopBrowserRequestContinentList = Array<string>;
 export const HttpTopBrowserRequestContinentList =
@@ -7720,9 +7643,8 @@ export const HttpTopBrowserRequestDeviceType = S.String;
 export type HttpTopBrowserRequestDeviceTypeList = Array<
   HttpTopBrowserRequestDeviceType | (string & {})
 >;
-export const HttpTopBrowserRequestDeviceTypeList = /*@__PURE__*/ S.Array(
-  HttpTopBrowserRequestDeviceType,
-) as any as S.Schema<HttpTopBrowserRequestDeviceTypeList>;
+export const HttpTopBrowserRequestDeviceTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTopBrowserRequestDeviceTypeList>;
 
 export type HttpTopBrowserRequestFormat = "JSON" | "CSV";
 export const HttpTopBrowserRequestFormat = S.String;
@@ -7737,9 +7659,8 @@ export const HttpTopBrowserRequestHttpProtocol = S.String;
 export type HttpTopBrowserRequestHttpProtocolList = Array<
   HttpTopBrowserRequestHttpProtocol | (string & {})
 >;
-export const HttpTopBrowserRequestHttpProtocolList = /*@__PURE__*/ S.Array(
-  HttpTopBrowserRequestHttpProtocol,
-) as any as S.Schema<HttpTopBrowserRequestHttpProtocolList>;
+export const HttpTopBrowserRequestHttpProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTopBrowserRequestHttpProtocolList>;
 
 export type HttpTopBrowserRequestHttpVersion = "HTTPv1" | "HTTPv2" | "HTTPv3";
 export const HttpTopBrowserRequestHttpVersion = S.String;
@@ -7747,9 +7668,8 @@ export const HttpTopBrowserRequestHttpVersion = S.String;
 export type HttpTopBrowserRequestHttpVersionList = Array<
   HttpTopBrowserRequestHttpVersion | (string & {})
 >;
-export const HttpTopBrowserRequestHttpVersionList = /*@__PURE__*/ S.Array(
-  HttpTopBrowserRequestHttpVersion,
-) as any as S.Schema<HttpTopBrowserRequestHttpVersionList>;
+export const HttpTopBrowserRequestHttpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTopBrowserRequestHttpVersionList>;
 
 export type HttpTopBrowserRequestIpVersion = "IPv4" | "IPv6";
 export const HttpTopBrowserRequestIpVersion = S.String;
@@ -7757,9 +7677,8 @@ export const HttpTopBrowserRequestIpVersion = S.String;
 export type HttpTopBrowserRequestIpVersionList = Array<
   HttpTopBrowserRequestIpVersion | (string & {})
 >;
-export const HttpTopBrowserRequestIpVersionList = /*@__PURE__*/ S.Array(
-  HttpTopBrowserRequestIpVersion,
-) as any as S.Schema<HttpTopBrowserRequestIpVersionList>;
+export const HttpTopBrowserRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTopBrowserRequestIpVersionList>;
 
 export type HttpTopBrowserRequestLocationList = Array<string>;
 export const HttpTopBrowserRequestLocationList =
@@ -7780,9 +7699,8 @@ export type HttpTopBrowserRequestOs =
 export const HttpTopBrowserRequestOs = S.String;
 
 export type HttpTopBrowserRequestOsList = Array<HttpTopBrowserRequestOs | (string & {})>;
-export const HttpTopBrowserRequestOsList = /*@__PURE__*/ S.Array(
-  HttpTopBrowserRequestOs,
-) as any as S.Schema<HttpTopBrowserRequestOsList>;
+export const HttpTopBrowserRequestOsList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTopBrowserRequestOsList>;
 
 export type HttpTopBrowserRequestTlsVersion =
   | "TLSv1_0"
@@ -7795,9 +7713,8 @@ export const HttpTopBrowserRequestTlsVersion = S.String;
 export type HttpTopBrowserRequestTlsVersionList = Array<
   HttpTopBrowserRequestTlsVersion | (string & {})
 >;
-export const HttpTopBrowserRequestTlsVersionList = /*@__PURE__*/ S.Array(
-  HttpTopBrowserRequestTlsVersion,
-) as any as S.Schema<HttpTopBrowserRequestTlsVersionList>;
+export const HttpTopBrowserRequestTlsVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTopBrowserRequestTlsVersionList>;
 
 export interface BrowserHttpTopRequest {
   /** Filters results by Autonomous System. Specify one or more Autonomous System Numbers (ASNs) as a comma-separated list. Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356. */
@@ -8062,9 +7979,8 @@ export const DnsSummaryCacheHitRequestProtocol = S.String;
 export type DnsSummaryCacheHitRequestProtocolList = Array<
   DnsSummaryCacheHitRequestProtocol | (string & {})
 >;
-export const DnsSummaryCacheHitRequestProtocolList = /*@__PURE__*/ S.Array(
-  DnsSummaryCacheHitRequestProtocol,
-) as any as S.Schema<DnsSummaryCacheHitRequestProtocolList>;
+export const DnsSummaryCacheHitRequestProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsSummaryCacheHitRequestProtocolList>;
 
 export type DnsSummaryCacheHitRequestQueryType =
   | "A"
@@ -8160,9 +8076,8 @@ export const DnsSummaryCacheHitRequestQueryType = S.String;
 export type DnsSummaryCacheHitRequestQueryTypeList = Array<
   DnsSummaryCacheHitRequestQueryType | (string & {})
 >;
-export const DnsSummaryCacheHitRequestQueryTypeList = /*@__PURE__*/ S.Array(
-  DnsSummaryCacheHitRequestQueryType,
-) as any as S.Schema<DnsSummaryCacheHitRequestQueryTypeList>;
+export const DnsSummaryCacheHitRequestQueryTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsSummaryCacheHitRequestQueryTypeList>;
 
 export type DnsSummaryCacheHitRequestResponseCode =
   | "NOERROR"
@@ -8189,9 +8104,8 @@ export const DnsSummaryCacheHitRequestResponseCode = S.String;
 export type DnsSummaryCacheHitRequestResponseCodeList = Array<
   DnsSummaryCacheHitRequestResponseCode | (string & {})
 >;
-export const DnsSummaryCacheHitRequestResponseCodeList = /*@__PURE__*/ S.Array(
-  DnsSummaryCacheHitRequestResponseCode,
-) as any as S.Schema<DnsSummaryCacheHitRequestResponseCodeList>;
+export const DnsSummaryCacheHitRequestResponseCodeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsSummaryCacheHitRequestResponseCodeList>;
 
 export type DnsSummaryCacheHitRequestTldList = Array<string>;
 export const DnsSummaryCacheHitRequestTldList =
@@ -8465,9 +8379,8 @@ export const DnsTimeseriesGroupsCacheHitRequestProtocol = S.String;
 export type DnsTimeseriesGroupsCacheHitRequestProtocolList = Array<
   DnsTimeseriesGroupsCacheHitRequestProtocol | (string & {})
 >;
-export const DnsTimeseriesGroupsCacheHitRequestProtocolList = /*@__PURE__*/ S.Array(
-  DnsTimeseriesGroupsCacheHitRequestProtocol,
-) as any as S.Schema<DnsTimeseriesGroupsCacheHitRequestProtocolList>;
+export const DnsTimeseriesGroupsCacheHitRequestProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsTimeseriesGroupsCacheHitRequestProtocolList>;
 
 export type DnsTimeseriesGroupsCacheHitRequestQueryType =
   | "A"
@@ -8563,9 +8476,8 @@ export const DnsTimeseriesGroupsCacheHitRequestQueryType = S.String;
 export type DnsTimeseriesGroupsCacheHitRequestQueryTypeList = Array<
   DnsTimeseriesGroupsCacheHitRequestQueryType | (string & {})
 >;
-export const DnsTimeseriesGroupsCacheHitRequestQueryTypeList = /*@__PURE__*/ S.Array(
-  DnsTimeseriesGroupsCacheHitRequestQueryType,
-) as any as S.Schema<DnsTimeseriesGroupsCacheHitRequestQueryTypeList>;
+export const DnsTimeseriesGroupsCacheHitRequestQueryTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsTimeseriesGroupsCacheHitRequestQueryTypeList>;
 
 export type DnsTimeseriesGroupsCacheHitRequestResponseCode =
   | "NOERROR"
@@ -8592,9 +8504,8 @@ export const DnsTimeseriesGroupsCacheHitRequestResponseCode = S.String;
 export type DnsTimeseriesGroupsCacheHitRequestResponseCodeList = Array<
   DnsTimeseriesGroupsCacheHitRequestResponseCode | (string & {})
 >;
-export const DnsTimeseriesGroupsCacheHitRequestResponseCodeList = /*@__PURE__*/ S.Array(
-  DnsTimeseriesGroupsCacheHitRequestResponseCode,
-) as any as S.Schema<DnsTimeseriesGroupsCacheHitRequestResponseCodeList>;
+export const DnsTimeseriesGroupsCacheHitRequestResponseCodeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsTimeseriesGroupsCacheHitRequestResponseCodeList>;
 
 export type DnsTimeseriesGroupsCacheHitRequestTldList = Array<string>;
 export const DnsTimeseriesGroupsCacheHitRequestTldList =
@@ -9328,9 +9239,8 @@ export const LeakedCredentialsSummaryCompromisedRequestBotClass = S.String;
 export type LeakedCredentialsSummaryCompromisedRequestBotClassList = Array<
   LeakedCredentialsSummaryCompromisedRequestBotClass | (string & {})
 >;
-export const LeakedCredentialsSummaryCompromisedRequestBotClassList = /*@__PURE__*/ S.Array(
-  LeakedCredentialsSummaryCompromisedRequestBotClass,
-) as any as S.Schema<LeakedCredentialsSummaryCompromisedRequestBotClassList>;
+export const LeakedCredentialsSummaryCompromisedRequestBotClassList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<LeakedCredentialsSummaryCompromisedRequestBotClassList>;
 
 export type LeakedCredentialsSummaryCompromisedRequestDateEndList = Array<string>;
 export const LeakedCredentialsSummaryCompromisedRequestDateEndList =
@@ -9585,9 +9495,7 @@ export type LeakedCredentialsTimeseriesGroupsCompromisedRequestBotClassList = Ar
   LeakedCredentialsTimeseriesGroupsCompromisedRequestBotClass | (string & {})
 >;
 export const LeakedCredentialsTimeseriesGroupsCompromisedRequestBotClassList =
-  /*@__PURE__*/ S.Array(
-    LeakedCredentialsTimeseriesGroupsCompromisedRequestBotClass,
-  ) as any as S.Schema<LeakedCredentialsTimeseriesGroupsCompromisedRequestBotClassList>;
+  AiTimeseriesGroupsTimeseriesGroupsRequestResponseStatusCategoryList as any as S.Schema<LeakedCredentialsTimeseriesGroupsCompromisedRequestBotClassList>;
 
 export type LeakedCredentialsTimeseriesGroupsCompromisedRequestDateEndList = Array<string>;
 export const LeakedCredentialsTimeseriesGroupsCompromisedRequestDateEndList =
@@ -9884,9 +9792,8 @@ export const HttpSummaryDeviceTypeRequestBotClass = S.String;
 export type HttpSummaryDeviceTypeRequestBotClassList = Array<
   HttpSummaryDeviceTypeRequestBotClass | (string & {})
 >;
-export const HttpSummaryDeviceTypeRequestBotClassList = /*@__PURE__*/ S.Array(
-  HttpSummaryDeviceTypeRequestBotClass,
-) as any as S.Schema<HttpSummaryDeviceTypeRequestBotClassList>;
+export const HttpSummaryDeviceTypeRequestBotClassList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpSummaryDeviceTypeRequestBotClassList>;
 
 export type HttpSummaryDeviceTypeRequestBrowserFamily = "CHROME" | "EDGE" | "FIREFOX" | "SAFARI";
 export const HttpSummaryDeviceTypeRequestBrowserFamily = S.String;
@@ -9894,9 +9801,8 @@ export const HttpSummaryDeviceTypeRequestBrowserFamily = S.String;
 export type HttpSummaryDeviceTypeRequestBrowserFamilyList = Array<
   HttpSummaryDeviceTypeRequestBrowserFamily | (string & {})
 >;
-export const HttpSummaryDeviceTypeRequestBrowserFamilyList = /*@__PURE__*/ S.Array(
-  HttpSummaryDeviceTypeRequestBrowserFamily,
-) as any as S.Schema<HttpSummaryDeviceTypeRequestBrowserFamilyList>;
+export const HttpSummaryDeviceTypeRequestBrowserFamilyList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpSummaryDeviceTypeRequestBrowserFamilyList>;
 
 export type HttpSummaryDeviceTypeRequestContinentList = Array<string>;
 export const HttpSummaryDeviceTypeRequestContinentList =
@@ -9927,9 +9833,8 @@ export const HttpSummaryDeviceTypeRequestHttpProtocol = S.String;
 export type HttpSummaryDeviceTypeRequestHttpProtocolList = Array<
   HttpSummaryDeviceTypeRequestHttpProtocol | (string & {})
 >;
-export const HttpSummaryDeviceTypeRequestHttpProtocolList = /*@__PURE__*/ S.Array(
-  HttpSummaryDeviceTypeRequestHttpProtocol,
-) as any as S.Schema<HttpSummaryDeviceTypeRequestHttpProtocolList>;
+export const HttpSummaryDeviceTypeRequestHttpProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpSummaryDeviceTypeRequestHttpProtocolList>;
 
 export type HttpSummaryDeviceTypeRequestHttpVersion = "HTTPv1" | "HTTPv2" | "HTTPv3";
 export const HttpSummaryDeviceTypeRequestHttpVersion = S.String;
@@ -9937,9 +9842,8 @@ export const HttpSummaryDeviceTypeRequestHttpVersion = S.String;
 export type HttpSummaryDeviceTypeRequestHttpVersionList = Array<
   HttpSummaryDeviceTypeRequestHttpVersion | (string & {})
 >;
-export const HttpSummaryDeviceTypeRequestHttpVersionList = /*@__PURE__*/ S.Array(
-  HttpSummaryDeviceTypeRequestHttpVersion,
-) as any as S.Schema<HttpSummaryDeviceTypeRequestHttpVersionList>;
+export const HttpSummaryDeviceTypeRequestHttpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpSummaryDeviceTypeRequestHttpVersionList>;
 
 export type HttpSummaryDeviceTypeRequestIpVersion = "IPv4" | "IPv6";
 export const HttpSummaryDeviceTypeRequestIpVersion = S.String;
@@ -9947,9 +9851,8 @@ export const HttpSummaryDeviceTypeRequestIpVersion = S.String;
 export type HttpSummaryDeviceTypeRequestIpVersionList = Array<
   HttpSummaryDeviceTypeRequestIpVersion | (string & {})
 >;
-export const HttpSummaryDeviceTypeRequestIpVersionList = /*@__PURE__*/ S.Array(
-  HttpSummaryDeviceTypeRequestIpVersion,
-) as any as S.Schema<HttpSummaryDeviceTypeRequestIpVersionList>;
+export const HttpSummaryDeviceTypeRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpSummaryDeviceTypeRequestIpVersionList>;
 
 export type HttpSummaryDeviceTypeRequestLocationList = Array<string>;
 export const HttpSummaryDeviceTypeRequestLocationList =
@@ -9972,9 +9875,8 @@ export const HttpSummaryDeviceTypeRequestOs = S.String;
 export type HttpSummaryDeviceTypeRequestOsList = Array<
   HttpSummaryDeviceTypeRequestOs | (string & {})
 >;
-export const HttpSummaryDeviceTypeRequestOsList = /*@__PURE__*/ S.Array(
-  HttpSummaryDeviceTypeRequestOs,
-) as any as S.Schema<HttpSummaryDeviceTypeRequestOsList>;
+export const HttpSummaryDeviceTypeRequestOsList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpSummaryDeviceTypeRequestOsList>;
 
 export type HttpSummaryDeviceTypeRequestTlsVersion =
   | "TLSv1_0"
@@ -9987,9 +9889,8 @@ export const HttpSummaryDeviceTypeRequestTlsVersion = S.String;
 export type HttpSummaryDeviceTypeRequestTlsVersionList = Array<
   HttpSummaryDeviceTypeRequestTlsVersion | (string & {})
 >;
-export const HttpSummaryDeviceTypeRequestTlsVersionList = /*@__PURE__*/ S.Array(
-  HttpSummaryDeviceTypeRequestTlsVersion,
-) as any as S.Schema<HttpSummaryDeviceTypeRequestTlsVersionList>;
+export const HttpSummaryDeviceTypeRequestTlsVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpSummaryDeviceTypeRequestTlsVersionList>;
 
 export interface DeviceTypeHttpSummaryRequest {
   /** Filters results by Autonomous System. Specify one or more Autonomous System Numbers (ASNs) as a comma-separated list. Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356. */
@@ -10240,9 +10141,8 @@ export const HttpTimeseriesGroupsDeviceTypeRequestBotClass = S.String;
 export type HttpTimeseriesGroupsDeviceTypeRequestBotClassList = Array<
   HttpTimeseriesGroupsDeviceTypeRequestBotClass | (string & {})
 >;
-export const HttpTimeseriesGroupsDeviceTypeRequestBotClassList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsDeviceTypeRequestBotClass,
-) as any as S.Schema<HttpTimeseriesGroupsDeviceTypeRequestBotClassList>;
+export const HttpTimeseriesGroupsDeviceTypeRequestBotClassList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsDeviceTypeRequestBotClassList>;
 
 export type HttpTimeseriesGroupsDeviceTypeRequestBrowserFamily =
   | "CHROME"
@@ -10254,9 +10154,8 @@ export const HttpTimeseriesGroupsDeviceTypeRequestBrowserFamily = S.String;
 export type HttpTimeseriesGroupsDeviceTypeRequestBrowserFamilyList = Array<
   HttpTimeseriesGroupsDeviceTypeRequestBrowserFamily | (string & {})
 >;
-export const HttpTimeseriesGroupsDeviceTypeRequestBrowserFamilyList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsDeviceTypeRequestBrowserFamily,
-) as any as S.Schema<HttpTimeseriesGroupsDeviceTypeRequestBrowserFamilyList>;
+export const HttpTimeseriesGroupsDeviceTypeRequestBrowserFamilyList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsDeviceTypeRequestBrowserFamilyList>;
 
 export type HttpTimeseriesGroupsDeviceTypeRequestContinentList = Array<string>;
 export const HttpTimeseriesGroupsDeviceTypeRequestContinentList =
@@ -10287,9 +10186,8 @@ export const HttpTimeseriesGroupsDeviceTypeRequestHttpProtocol = S.String;
 export type HttpTimeseriesGroupsDeviceTypeRequestHttpProtocolList = Array<
   HttpTimeseriesGroupsDeviceTypeRequestHttpProtocol | (string & {})
 >;
-export const HttpTimeseriesGroupsDeviceTypeRequestHttpProtocolList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsDeviceTypeRequestHttpProtocol,
-) as any as S.Schema<HttpTimeseriesGroupsDeviceTypeRequestHttpProtocolList>;
+export const HttpTimeseriesGroupsDeviceTypeRequestHttpProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsDeviceTypeRequestHttpProtocolList>;
 
 export type HttpTimeseriesGroupsDeviceTypeRequestHttpVersion = "HTTPv1" | "HTTPv2" | "HTTPv3";
 export const HttpTimeseriesGroupsDeviceTypeRequestHttpVersion = S.String;
@@ -10297,9 +10195,8 @@ export const HttpTimeseriesGroupsDeviceTypeRequestHttpVersion = S.String;
 export type HttpTimeseriesGroupsDeviceTypeRequestHttpVersionList = Array<
   HttpTimeseriesGroupsDeviceTypeRequestHttpVersion | (string & {})
 >;
-export const HttpTimeseriesGroupsDeviceTypeRequestHttpVersionList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsDeviceTypeRequestHttpVersion,
-) as any as S.Schema<HttpTimeseriesGroupsDeviceTypeRequestHttpVersionList>;
+export const HttpTimeseriesGroupsDeviceTypeRequestHttpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsDeviceTypeRequestHttpVersionList>;
 
 export type HttpTimeseriesGroupsDeviceTypeRequestIpVersion = "IPv4" | "IPv6";
 export const HttpTimeseriesGroupsDeviceTypeRequestIpVersion = S.String;
@@ -10307,9 +10204,8 @@ export const HttpTimeseriesGroupsDeviceTypeRequestIpVersion = S.String;
 export type HttpTimeseriesGroupsDeviceTypeRequestIpVersionList = Array<
   HttpTimeseriesGroupsDeviceTypeRequestIpVersion | (string & {})
 >;
-export const HttpTimeseriesGroupsDeviceTypeRequestIpVersionList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsDeviceTypeRequestIpVersion,
-) as any as S.Schema<HttpTimeseriesGroupsDeviceTypeRequestIpVersionList>;
+export const HttpTimeseriesGroupsDeviceTypeRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsDeviceTypeRequestIpVersionList>;
 
 export type HttpTimeseriesGroupsDeviceTypeRequestLocationList = Array<string>;
 export const HttpTimeseriesGroupsDeviceTypeRequestLocationList =
@@ -10332,9 +10228,8 @@ export const HttpTimeseriesGroupsDeviceTypeRequestOs = S.String;
 export type HttpTimeseriesGroupsDeviceTypeRequestOsList = Array<
   HttpTimeseriesGroupsDeviceTypeRequestOs | (string & {})
 >;
-export const HttpTimeseriesGroupsDeviceTypeRequestOsList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsDeviceTypeRequestOs,
-) as any as S.Schema<HttpTimeseriesGroupsDeviceTypeRequestOsList>;
+export const HttpTimeseriesGroupsDeviceTypeRequestOsList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsDeviceTypeRequestOsList>;
 
 export type HttpTimeseriesGroupsDeviceTypeRequestTlsVersion =
   | "TLSv1_0"
@@ -10347,9 +10242,8 @@ export const HttpTimeseriesGroupsDeviceTypeRequestTlsVersion = S.String;
 export type HttpTimeseriesGroupsDeviceTypeRequestTlsVersionList = Array<
   HttpTimeseriesGroupsDeviceTypeRequestTlsVersion | (string & {})
 >;
-export const HttpTimeseriesGroupsDeviceTypeRequestTlsVersionList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsDeviceTypeRequestTlsVersion,
-) as any as S.Schema<HttpTimeseriesGroupsDeviceTypeRequestTlsVersionList>;
+export const HttpTimeseriesGroupsDeviceTypeRequestTlsVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsDeviceTypeRequestTlsVersionList>;
 
 export interface DeviceTypeHttpTimeseriesGroupRequest {
   /** Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/). When omitted, the interval is auto-selected from the requested date range; finer intervals are only available for shorter ranges. If the requested interval is too granular for the date range, the request is rejected. */
@@ -10874,9 +10768,8 @@ export const EmailRoutingSummaryDkimRequestArc = S.String;
 export type EmailRoutingSummaryDkimRequestArcList = Array<
   EmailRoutingSummaryDkimRequestArc | (string & {})
 >;
-export const EmailRoutingSummaryDkimRequestArcList = /*@__PURE__*/ S.Array(
-  EmailRoutingSummaryDkimRequestArc,
-) as any as S.Schema<EmailRoutingSummaryDkimRequestArcList>;
+export const EmailRoutingSummaryDkimRequestArcList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingSummaryDkimRequestArcList>;
 
 export type EmailRoutingSummaryDkimRequestDateEndList = Array<string>;
 export const EmailRoutingSummaryDkimRequestDateEndList =
@@ -10896,9 +10789,8 @@ export const EmailRoutingSummaryDkimRequestDmarc = S.String;
 export type EmailRoutingSummaryDkimRequestDmarcList = Array<
   EmailRoutingSummaryDkimRequestDmarc | (string & {})
 >;
-export const EmailRoutingSummaryDkimRequestDmarcList = /*@__PURE__*/ S.Array(
-  EmailRoutingSummaryDkimRequestDmarc,
-) as any as S.Schema<EmailRoutingSummaryDkimRequestDmarcList>;
+export const EmailRoutingSummaryDkimRequestDmarcList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingSummaryDkimRequestDmarcList>;
 
 export type EmailRoutingSummaryDkimRequestEncrypted = "ENCRYPTED" | "NOT_ENCRYPTED";
 export const EmailRoutingSummaryDkimRequestEncrypted = S.String;
@@ -10906,9 +10798,8 @@ export const EmailRoutingSummaryDkimRequestEncrypted = S.String;
 export type EmailRoutingSummaryDkimRequestEncryptedList = Array<
   EmailRoutingSummaryDkimRequestEncrypted | (string & {})
 >;
-export const EmailRoutingSummaryDkimRequestEncryptedList = /*@__PURE__*/ S.Array(
-  EmailRoutingSummaryDkimRequestEncrypted,
-) as any as S.Schema<EmailRoutingSummaryDkimRequestEncryptedList>;
+export const EmailRoutingSummaryDkimRequestEncryptedList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingSummaryDkimRequestEncryptedList>;
 
 export type EmailRoutingSummaryDkimRequestFormat = "JSON" | "CSV";
 export const EmailRoutingSummaryDkimRequestFormat = S.String;
@@ -10919,9 +10810,8 @@ export const EmailRoutingSummaryDkimRequestIpVersion = S.String;
 export type EmailRoutingSummaryDkimRequestIpVersionList = Array<
   EmailRoutingSummaryDkimRequestIpVersion | (string & {})
 >;
-export const EmailRoutingSummaryDkimRequestIpVersionList = /*@__PURE__*/ S.Array(
-  EmailRoutingSummaryDkimRequestIpVersion,
-) as any as S.Schema<EmailRoutingSummaryDkimRequestIpVersionList>;
+export const EmailRoutingSummaryDkimRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingSummaryDkimRequestIpVersionList>;
 
 export type EmailRoutingSummaryDkimRequestNameList = Array<string>;
 export const EmailRoutingSummaryDkimRequestNameList =
@@ -10933,9 +10823,8 @@ export const EmailRoutingSummaryDkimRequestSpf = S.String;
 export type EmailRoutingSummaryDkimRequestSpfList = Array<
   EmailRoutingSummaryDkimRequestSpf | (string & {})
 >;
-export const EmailRoutingSummaryDkimRequestSpfList = /*@__PURE__*/ S.Array(
-  EmailRoutingSummaryDkimRequestSpf,
-) as any as S.Schema<EmailRoutingSummaryDkimRequestSpfList>;
+export const EmailRoutingSummaryDkimRequestSpfList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingSummaryDkimRequestSpfList>;
 
 export interface DkimEmailRoutingSummaryRequest {
   /** Filters results by ARC (Authenticated Received Chain) validation. */
@@ -11151,9 +11040,8 @@ export const EmailRoutingTimeseriesGroupsDkimRequestArc = S.String;
 export type EmailRoutingTimeseriesGroupsDkimRequestArcList = Array<
   EmailRoutingTimeseriesGroupsDkimRequestArc | (string & {})
 >;
-export const EmailRoutingTimeseriesGroupsDkimRequestArcList = /*@__PURE__*/ S.Array(
-  EmailRoutingTimeseriesGroupsDkimRequestArc,
-) as any as S.Schema<EmailRoutingTimeseriesGroupsDkimRequestArcList>;
+export const EmailRoutingTimeseriesGroupsDkimRequestArcList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingTimeseriesGroupsDkimRequestArcList>;
 
 export type EmailRoutingTimeseriesGroupsDkimRequestDateEndList = Array<string>;
 export const EmailRoutingTimeseriesGroupsDkimRequestDateEndList =
@@ -11173,9 +11061,8 @@ export const EmailRoutingTimeseriesGroupsDkimRequestDmarc = S.String;
 export type EmailRoutingTimeseriesGroupsDkimRequestDmarcList = Array<
   EmailRoutingTimeseriesGroupsDkimRequestDmarc | (string & {})
 >;
-export const EmailRoutingTimeseriesGroupsDkimRequestDmarcList = /*@__PURE__*/ S.Array(
-  EmailRoutingTimeseriesGroupsDkimRequestDmarc,
-) as any as S.Schema<EmailRoutingTimeseriesGroupsDkimRequestDmarcList>;
+export const EmailRoutingTimeseriesGroupsDkimRequestDmarcList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingTimeseriesGroupsDkimRequestDmarcList>;
 
 export type EmailRoutingTimeseriesGroupsDkimRequestEncrypted = "ENCRYPTED" | "NOT_ENCRYPTED";
 export const EmailRoutingTimeseriesGroupsDkimRequestEncrypted = S.String;
@@ -11183,9 +11070,8 @@ export const EmailRoutingTimeseriesGroupsDkimRequestEncrypted = S.String;
 export type EmailRoutingTimeseriesGroupsDkimRequestEncryptedList = Array<
   EmailRoutingTimeseriesGroupsDkimRequestEncrypted | (string & {})
 >;
-export const EmailRoutingTimeseriesGroupsDkimRequestEncryptedList = /*@__PURE__*/ S.Array(
-  EmailRoutingTimeseriesGroupsDkimRequestEncrypted,
-) as any as S.Schema<EmailRoutingTimeseriesGroupsDkimRequestEncryptedList>;
+export const EmailRoutingTimeseriesGroupsDkimRequestEncryptedList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingTimeseriesGroupsDkimRequestEncryptedList>;
 
 export type EmailRoutingTimeseriesGroupsDkimRequestFormat = "JSON" | "CSV";
 export const EmailRoutingTimeseriesGroupsDkimRequestFormat = S.String;
@@ -11196,9 +11082,8 @@ export const EmailRoutingTimeseriesGroupsDkimRequestIpVersion = S.String;
 export type EmailRoutingTimeseriesGroupsDkimRequestIpVersionList = Array<
   EmailRoutingTimeseriesGroupsDkimRequestIpVersion | (string & {})
 >;
-export const EmailRoutingTimeseriesGroupsDkimRequestIpVersionList = /*@__PURE__*/ S.Array(
-  EmailRoutingTimeseriesGroupsDkimRequestIpVersion,
-) as any as S.Schema<EmailRoutingTimeseriesGroupsDkimRequestIpVersionList>;
+export const EmailRoutingTimeseriesGroupsDkimRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingTimeseriesGroupsDkimRequestIpVersionList>;
 
 export type EmailRoutingTimeseriesGroupsDkimRequestNameList = Array<string>;
 export const EmailRoutingTimeseriesGroupsDkimRequestNameList =
@@ -11210,9 +11095,8 @@ export const EmailRoutingTimeseriesGroupsDkimRequestSpf = S.String;
 export type EmailRoutingTimeseriesGroupsDkimRequestSpfList = Array<
   EmailRoutingTimeseriesGroupsDkimRequestSpf | (string & {})
 >;
-export const EmailRoutingTimeseriesGroupsDkimRequestSpfList = /*@__PURE__*/ S.Array(
-  EmailRoutingTimeseriesGroupsDkimRequestSpf,
-) as any as S.Schema<EmailRoutingTimeseriesGroupsDkimRequestSpfList>;
+export const EmailRoutingTimeseriesGroupsDkimRequestSpfList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingTimeseriesGroupsDkimRequestSpfList>;
 
 export interface DkimEmailRoutingTimeseriesGroupRequest {
   /** Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/). When omitted, the interval is auto-selected from the requested date range; finer intervals are only available for shorter ranges. If the requested interval is too granular for the date range, the request is rejected. */
@@ -11460,9 +11344,8 @@ export const EmailSecuritySummaryDkimRequestArc = S.String;
 export type EmailSecuritySummaryDkimRequestArcList = Array<
   EmailSecuritySummaryDkimRequestArc | (string & {})
 >;
-export const EmailSecuritySummaryDkimRequestArcList = /*@__PURE__*/ S.Array(
-  EmailSecuritySummaryDkimRequestArc,
-) as any as S.Schema<EmailSecuritySummaryDkimRequestArcList>;
+export const EmailSecuritySummaryDkimRequestArcList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecuritySummaryDkimRequestArcList>;
 
 export type EmailSecuritySummaryDkimRequestDateEndList = Array<string>;
 export const EmailSecuritySummaryDkimRequestDateEndList =
@@ -11482,9 +11365,8 @@ export const EmailSecuritySummaryDkimRequestDmarc = S.String;
 export type EmailSecuritySummaryDkimRequestDmarcList = Array<
   EmailSecuritySummaryDkimRequestDmarc | (string & {})
 >;
-export const EmailSecuritySummaryDkimRequestDmarcList = /*@__PURE__*/ S.Array(
-  EmailSecuritySummaryDkimRequestDmarc,
-) as any as S.Schema<EmailSecuritySummaryDkimRequestDmarcList>;
+export const EmailSecuritySummaryDkimRequestDmarcList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecuritySummaryDkimRequestDmarcList>;
 
 export type EmailSecuritySummaryDkimRequestFormat = "JSON" | "CSV";
 export const EmailSecuritySummaryDkimRequestFormat = S.String;
@@ -11499,9 +11381,8 @@ export const EmailSecuritySummaryDkimRequestSpf = S.String;
 export type EmailSecuritySummaryDkimRequestSpfList = Array<
   EmailSecuritySummaryDkimRequestSpf | (string & {})
 >;
-export const EmailSecuritySummaryDkimRequestSpfList = /*@__PURE__*/ S.Array(
-  EmailSecuritySummaryDkimRequestSpf,
-) as any as S.Schema<EmailSecuritySummaryDkimRequestSpfList>;
+export const EmailSecuritySummaryDkimRequestSpfList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecuritySummaryDkimRequestSpfList>;
 
 export type EmailSecuritySummaryDkimRequestTlsVersion =
   | "TLSv1_0"
@@ -11513,9 +11394,8 @@ export const EmailSecuritySummaryDkimRequestTlsVersion = S.String;
 export type EmailSecuritySummaryDkimRequestTlsVersionList = Array<
   EmailSecuritySummaryDkimRequestTlsVersion | (string & {})
 >;
-export const EmailSecuritySummaryDkimRequestTlsVersionList = /*@__PURE__*/ S.Array(
-  EmailSecuritySummaryDkimRequestTlsVersion,
-) as any as S.Schema<EmailSecuritySummaryDkimRequestTlsVersionList>;
+export const EmailSecuritySummaryDkimRequestTlsVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecuritySummaryDkimRequestTlsVersionList>;
 
 export interface DkimEmailSecuritySummaryRequest {
   /** Filters results by ARC (Authenticated Received Chain) validation. */
@@ -11728,9 +11608,8 @@ export const EmailSecurityTimeseriesGroupsDkimRequestArc = S.String;
 export type EmailSecurityTimeseriesGroupsDkimRequestArcList = Array<
   EmailSecurityTimeseriesGroupsDkimRequestArc | (string & {})
 >;
-export const EmailSecurityTimeseriesGroupsDkimRequestArcList = /*@__PURE__*/ S.Array(
-  EmailSecurityTimeseriesGroupsDkimRequestArc,
-) as any as S.Schema<EmailSecurityTimeseriesGroupsDkimRequestArcList>;
+export const EmailSecurityTimeseriesGroupsDkimRequestArcList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecurityTimeseriesGroupsDkimRequestArcList>;
 
 export type EmailSecurityTimeseriesGroupsDkimRequestDateEndList = Array<string>;
 export const EmailSecurityTimeseriesGroupsDkimRequestDateEndList =
@@ -11750,9 +11629,8 @@ export const EmailSecurityTimeseriesGroupsDkimRequestDmarc = S.String;
 export type EmailSecurityTimeseriesGroupsDkimRequestDmarcList = Array<
   EmailSecurityTimeseriesGroupsDkimRequestDmarc | (string & {})
 >;
-export const EmailSecurityTimeseriesGroupsDkimRequestDmarcList = /*@__PURE__*/ S.Array(
-  EmailSecurityTimeseriesGroupsDkimRequestDmarc,
-) as any as S.Schema<EmailSecurityTimeseriesGroupsDkimRequestDmarcList>;
+export const EmailSecurityTimeseriesGroupsDkimRequestDmarcList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecurityTimeseriesGroupsDkimRequestDmarcList>;
 
 export type EmailSecurityTimeseriesGroupsDkimRequestFormat = "JSON" | "CSV";
 export const EmailSecurityTimeseriesGroupsDkimRequestFormat = S.String;
@@ -11767,9 +11645,8 @@ export const EmailSecurityTimeseriesGroupsDkimRequestSpf = S.String;
 export type EmailSecurityTimeseriesGroupsDkimRequestSpfList = Array<
   EmailSecurityTimeseriesGroupsDkimRequestSpf | (string & {})
 >;
-export const EmailSecurityTimeseriesGroupsDkimRequestSpfList = /*@__PURE__*/ S.Array(
-  EmailSecurityTimeseriesGroupsDkimRequestSpf,
-) as any as S.Schema<EmailSecurityTimeseriesGroupsDkimRequestSpfList>;
+export const EmailSecurityTimeseriesGroupsDkimRequestSpfList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecurityTimeseriesGroupsDkimRequestSpfList>;
 
 export type EmailSecurityTimeseriesGroupsDkimRequestTlsVersion =
   | "TLSv1_0"
@@ -11781,9 +11658,8 @@ export const EmailSecurityTimeseriesGroupsDkimRequestTlsVersion = S.String;
 export type EmailSecurityTimeseriesGroupsDkimRequestTlsVersionList = Array<
   EmailSecurityTimeseriesGroupsDkimRequestTlsVersion | (string & {})
 >;
-export const EmailSecurityTimeseriesGroupsDkimRequestTlsVersionList = /*@__PURE__*/ S.Array(
-  EmailSecurityTimeseriesGroupsDkimRequestTlsVersion,
-) as any as S.Schema<EmailSecurityTimeseriesGroupsDkimRequestTlsVersionList>;
+export const EmailSecurityTimeseriesGroupsDkimRequestTlsVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecurityTimeseriesGroupsDkimRequestTlsVersionList>;
 
 export interface DkimEmailSecurityTimeseriesGroupRequest {
   /** Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/). When omitted, the interval is auto-selected from the requested date range; finer intervals are only available for shorter ranges. If the requested interval is too granular for the date range, the request is rejected. */
@@ -12031,9 +11907,8 @@ export const EmailRoutingSummaryDmarcRequestArc = S.String;
 export type EmailRoutingSummaryDmarcRequestArcList = Array<
   EmailRoutingSummaryDmarcRequestArc | (string & {})
 >;
-export const EmailRoutingSummaryDmarcRequestArcList = /*@__PURE__*/ S.Array(
-  EmailRoutingSummaryDmarcRequestArc,
-) as any as S.Schema<EmailRoutingSummaryDmarcRequestArcList>;
+export const EmailRoutingSummaryDmarcRequestArcList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingSummaryDmarcRequestArcList>;
 
 export type EmailRoutingSummaryDmarcRequestDateEndList = Array<string>;
 export const EmailRoutingSummaryDmarcRequestDateEndList =
@@ -12053,9 +11928,8 @@ export const EmailRoutingSummaryDmarcRequestDkim = S.String;
 export type EmailRoutingSummaryDmarcRequestDkimList = Array<
   EmailRoutingSummaryDmarcRequestDkim | (string & {})
 >;
-export const EmailRoutingSummaryDmarcRequestDkimList = /*@__PURE__*/ S.Array(
-  EmailRoutingSummaryDmarcRequestDkim,
-) as any as S.Schema<EmailRoutingSummaryDmarcRequestDkimList>;
+export const EmailRoutingSummaryDmarcRequestDkimList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingSummaryDmarcRequestDkimList>;
 
 export type EmailRoutingSummaryDmarcRequestEncrypted = "ENCRYPTED" | "NOT_ENCRYPTED";
 export const EmailRoutingSummaryDmarcRequestEncrypted = S.String;
@@ -12063,9 +11937,8 @@ export const EmailRoutingSummaryDmarcRequestEncrypted = S.String;
 export type EmailRoutingSummaryDmarcRequestEncryptedList = Array<
   EmailRoutingSummaryDmarcRequestEncrypted | (string & {})
 >;
-export const EmailRoutingSummaryDmarcRequestEncryptedList = /*@__PURE__*/ S.Array(
-  EmailRoutingSummaryDmarcRequestEncrypted,
-) as any as S.Schema<EmailRoutingSummaryDmarcRequestEncryptedList>;
+export const EmailRoutingSummaryDmarcRequestEncryptedList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingSummaryDmarcRequestEncryptedList>;
 
 export type EmailRoutingSummaryDmarcRequestFormat = "JSON" | "CSV";
 export const EmailRoutingSummaryDmarcRequestFormat = S.String;
@@ -12076,9 +11949,8 @@ export const EmailRoutingSummaryDmarcRequestIpVersion = S.String;
 export type EmailRoutingSummaryDmarcRequestIpVersionList = Array<
   EmailRoutingSummaryDmarcRequestIpVersion | (string & {})
 >;
-export const EmailRoutingSummaryDmarcRequestIpVersionList = /*@__PURE__*/ S.Array(
-  EmailRoutingSummaryDmarcRequestIpVersion,
-) as any as S.Schema<EmailRoutingSummaryDmarcRequestIpVersionList>;
+export const EmailRoutingSummaryDmarcRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingSummaryDmarcRequestIpVersionList>;
 
 export type EmailRoutingSummaryDmarcRequestNameList = Array<string>;
 export const EmailRoutingSummaryDmarcRequestNameList =
@@ -12090,9 +11962,8 @@ export const EmailRoutingSummaryDmarcRequestSpf = S.String;
 export type EmailRoutingSummaryDmarcRequestSpfList = Array<
   EmailRoutingSummaryDmarcRequestSpf | (string & {})
 >;
-export const EmailRoutingSummaryDmarcRequestSpfList = /*@__PURE__*/ S.Array(
-  EmailRoutingSummaryDmarcRequestSpf,
-) as any as S.Schema<EmailRoutingSummaryDmarcRequestSpfList>;
+export const EmailRoutingSummaryDmarcRequestSpfList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingSummaryDmarcRequestSpfList>;
 
 export interface DmarcEmailRoutingSummaryRequest {
   /** Filters results by ARC (Authenticated Received Chain) validation. */
@@ -12308,9 +12179,8 @@ export const EmailRoutingTimeseriesGroupsDmarcRequestArc = S.String;
 export type EmailRoutingTimeseriesGroupsDmarcRequestArcList = Array<
   EmailRoutingTimeseriesGroupsDmarcRequestArc | (string & {})
 >;
-export const EmailRoutingTimeseriesGroupsDmarcRequestArcList = /*@__PURE__*/ S.Array(
-  EmailRoutingTimeseriesGroupsDmarcRequestArc,
-) as any as S.Schema<EmailRoutingTimeseriesGroupsDmarcRequestArcList>;
+export const EmailRoutingTimeseriesGroupsDmarcRequestArcList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingTimeseriesGroupsDmarcRequestArcList>;
 
 export type EmailRoutingTimeseriesGroupsDmarcRequestDateEndList = Array<string>;
 export const EmailRoutingTimeseriesGroupsDmarcRequestDateEndList =
@@ -12330,9 +12200,8 @@ export const EmailRoutingTimeseriesGroupsDmarcRequestDkim = S.String;
 export type EmailRoutingTimeseriesGroupsDmarcRequestDkimList = Array<
   EmailRoutingTimeseriesGroupsDmarcRequestDkim | (string & {})
 >;
-export const EmailRoutingTimeseriesGroupsDmarcRequestDkimList = /*@__PURE__*/ S.Array(
-  EmailRoutingTimeseriesGroupsDmarcRequestDkim,
-) as any as S.Schema<EmailRoutingTimeseriesGroupsDmarcRequestDkimList>;
+export const EmailRoutingTimeseriesGroupsDmarcRequestDkimList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingTimeseriesGroupsDmarcRequestDkimList>;
 
 export type EmailRoutingTimeseriesGroupsDmarcRequestEncrypted = "ENCRYPTED" | "NOT_ENCRYPTED";
 export const EmailRoutingTimeseriesGroupsDmarcRequestEncrypted = S.String;
@@ -12340,9 +12209,8 @@ export const EmailRoutingTimeseriesGroupsDmarcRequestEncrypted = S.String;
 export type EmailRoutingTimeseriesGroupsDmarcRequestEncryptedList = Array<
   EmailRoutingTimeseriesGroupsDmarcRequestEncrypted | (string & {})
 >;
-export const EmailRoutingTimeseriesGroupsDmarcRequestEncryptedList = /*@__PURE__*/ S.Array(
-  EmailRoutingTimeseriesGroupsDmarcRequestEncrypted,
-) as any as S.Schema<EmailRoutingTimeseriesGroupsDmarcRequestEncryptedList>;
+export const EmailRoutingTimeseriesGroupsDmarcRequestEncryptedList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingTimeseriesGroupsDmarcRequestEncryptedList>;
 
 export type EmailRoutingTimeseriesGroupsDmarcRequestFormat = "JSON" | "CSV";
 export const EmailRoutingTimeseriesGroupsDmarcRequestFormat = S.String;
@@ -12353,9 +12221,8 @@ export const EmailRoutingTimeseriesGroupsDmarcRequestIpVersion = S.String;
 export type EmailRoutingTimeseriesGroupsDmarcRequestIpVersionList = Array<
   EmailRoutingTimeseriesGroupsDmarcRequestIpVersion | (string & {})
 >;
-export const EmailRoutingTimeseriesGroupsDmarcRequestIpVersionList = /*@__PURE__*/ S.Array(
-  EmailRoutingTimeseriesGroupsDmarcRequestIpVersion,
-) as any as S.Schema<EmailRoutingTimeseriesGroupsDmarcRequestIpVersionList>;
+export const EmailRoutingTimeseriesGroupsDmarcRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingTimeseriesGroupsDmarcRequestIpVersionList>;
 
 export type EmailRoutingTimeseriesGroupsDmarcRequestNameList = Array<string>;
 export const EmailRoutingTimeseriesGroupsDmarcRequestNameList =
@@ -12367,9 +12234,8 @@ export const EmailRoutingTimeseriesGroupsDmarcRequestSpf = S.String;
 export type EmailRoutingTimeseriesGroupsDmarcRequestSpfList = Array<
   EmailRoutingTimeseriesGroupsDmarcRequestSpf | (string & {})
 >;
-export const EmailRoutingTimeseriesGroupsDmarcRequestSpfList = /*@__PURE__*/ S.Array(
-  EmailRoutingTimeseriesGroupsDmarcRequestSpf,
-) as any as S.Schema<EmailRoutingTimeseriesGroupsDmarcRequestSpfList>;
+export const EmailRoutingTimeseriesGroupsDmarcRequestSpfList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingTimeseriesGroupsDmarcRequestSpfList>;
 
 export interface DmarcEmailRoutingTimeseriesGroupRequest {
   /** Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/). When omitted, the interval is auto-selected from the requested date range; finer intervals are only available for shorter ranges. If the requested interval is too granular for the date range, the request is rejected. */
@@ -12620,9 +12486,8 @@ export const EmailSecuritySummaryDmarcRequestArc = S.String;
 export type EmailSecuritySummaryDmarcRequestArcList = Array<
   EmailSecuritySummaryDmarcRequestArc | (string & {})
 >;
-export const EmailSecuritySummaryDmarcRequestArcList = /*@__PURE__*/ S.Array(
-  EmailSecuritySummaryDmarcRequestArc,
-) as any as S.Schema<EmailSecuritySummaryDmarcRequestArcList>;
+export const EmailSecuritySummaryDmarcRequestArcList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecuritySummaryDmarcRequestArcList>;
 
 export type EmailSecuritySummaryDmarcRequestDateEndList = Array<string>;
 export const EmailSecuritySummaryDmarcRequestDateEndList =
@@ -12642,9 +12507,8 @@ export const EmailSecuritySummaryDmarcRequestDkim = S.String;
 export type EmailSecuritySummaryDmarcRequestDkimList = Array<
   EmailSecuritySummaryDmarcRequestDkim | (string & {})
 >;
-export const EmailSecuritySummaryDmarcRequestDkimList = /*@__PURE__*/ S.Array(
-  EmailSecuritySummaryDmarcRequestDkim,
-) as any as S.Schema<EmailSecuritySummaryDmarcRequestDkimList>;
+export const EmailSecuritySummaryDmarcRequestDkimList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecuritySummaryDmarcRequestDkimList>;
 
 export type EmailSecuritySummaryDmarcRequestFormat = "JSON" | "CSV";
 export const EmailSecuritySummaryDmarcRequestFormat = S.String;
@@ -12659,9 +12523,8 @@ export const EmailSecuritySummaryDmarcRequestSpf = S.String;
 export type EmailSecuritySummaryDmarcRequestSpfList = Array<
   EmailSecuritySummaryDmarcRequestSpf | (string & {})
 >;
-export const EmailSecuritySummaryDmarcRequestSpfList = /*@__PURE__*/ S.Array(
-  EmailSecuritySummaryDmarcRequestSpf,
-) as any as S.Schema<EmailSecuritySummaryDmarcRequestSpfList>;
+export const EmailSecuritySummaryDmarcRequestSpfList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecuritySummaryDmarcRequestSpfList>;
 
 export type EmailSecuritySummaryDmarcRequestTlsVersion =
   | "TLSv1_0"
@@ -12673,9 +12536,8 @@ export const EmailSecuritySummaryDmarcRequestTlsVersion = S.String;
 export type EmailSecuritySummaryDmarcRequestTlsVersionList = Array<
   EmailSecuritySummaryDmarcRequestTlsVersion | (string & {})
 >;
-export const EmailSecuritySummaryDmarcRequestTlsVersionList = /*@__PURE__*/ S.Array(
-  EmailSecuritySummaryDmarcRequestTlsVersion,
-) as any as S.Schema<EmailSecuritySummaryDmarcRequestTlsVersionList>;
+export const EmailSecuritySummaryDmarcRequestTlsVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecuritySummaryDmarcRequestTlsVersionList>;
 
 export interface DmarcEmailSecuritySummaryRequest {
   /** Filters results by ARC (Authenticated Received Chain) validation. */
@@ -12889,9 +12751,8 @@ export const EmailSecurityTimeseriesGroupsDmarcRequestArc = S.String;
 export type EmailSecurityTimeseriesGroupsDmarcRequestArcList = Array<
   EmailSecurityTimeseriesGroupsDmarcRequestArc | (string & {})
 >;
-export const EmailSecurityTimeseriesGroupsDmarcRequestArcList = /*@__PURE__*/ S.Array(
-  EmailSecurityTimeseriesGroupsDmarcRequestArc,
-) as any as S.Schema<EmailSecurityTimeseriesGroupsDmarcRequestArcList>;
+export const EmailSecurityTimeseriesGroupsDmarcRequestArcList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecurityTimeseriesGroupsDmarcRequestArcList>;
 
 export type EmailSecurityTimeseriesGroupsDmarcRequestDateEndList = Array<string>;
 export const EmailSecurityTimeseriesGroupsDmarcRequestDateEndList =
@@ -12911,9 +12772,8 @@ export const EmailSecurityTimeseriesGroupsDmarcRequestDkim = S.String;
 export type EmailSecurityTimeseriesGroupsDmarcRequestDkimList = Array<
   EmailSecurityTimeseriesGroupsDmarcRequestDkim | (string & {})
 >;
-export const EmailSecurityTimeseriesGroupsDmarcRequestDkimList = /*@__PURE__*/ S.Array(
-  EmailSecurityTimeseriesGroupsDmarcRequestDkim,
-) as any as S.Schema<EmailSecurityTimeseriesGroupsDmarcRequestDkimList>;
+export const EmailSecurityTimeseriesGroupsDmarcRequestDkimList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecurityTimeseriesGroupsDmarcRequestDkimList>;
 
 export type EmailSecurityTimeseriesGroupsDmarcRequestFormat = "JSON" | "CSV";
 export const EmailSecurityTimeseriesGroupsDmarcRequestFormat = S.String;
@@ -12928,9 +12788,8 @@ export const EmailSecurityTimeseriesGroupsDmarcRequestSpf = S.String;
 export type EmailSecurityTimeseriesGroupsDmarcRequestSpfList = Array<
   EmailSecurityTimeseriesGroupsDmarcRequestSpf | (string & {})
 >;
-export const EmailSecurityTimeseriesGroupsDmarcRequestSpfList = /*@__PURE__*/ S.Array(
-  EmailSecurityTimeseriesGroupsDmarcRequestSpf,
-) as any as S.Schema<EmailSecurityTimeseriesGroupsDmarcRequestSpfList>;
+export const EmailSecurityTimeseriesGroupsDmarcRequestSpfList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecurityTimeseriesGroupsDmarcRequestSpfList>;
 
 export type EmailSecurityTimeseriesGroupsDmarcRequestTlsVersion =
   | "TLSv1_0"
@@ -12942,9 +12801,8 @@ export const EmailSecurityTimeseriesGroupsDmarcRequestTlsVersion = S.String;
 export type EmailSecurityTimeseriesGroupsDmarcRequestTlsVersionList = Array<
   EmailSecurityTimeseriesGroupsDmarcRequestTlsVersion | (string & {})
 >;
-export const EmailSecurityTimeseriesGroupsDmarcRequestTlsVersionList = /*@__PURE__*/ S.Array(
-  EmailSecurityTimeseriesGroupsDmarcRequestTlsVersion,
-) as any as S.Schema<EmailSecurityTimeseriesGroupsDmarcRequestTlsVersionList>;
+export const EmailSecurityTimeseriesGroupsDmarcRequestTlsVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecurityTimeseriesGroupsDmarcRequestTlsVersionList>;
 
 export interface DmarcEmailSecurityTimeseriesGroupRequest {
   /** Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/). When omitted, the interval is auto-selected from the requested date range; finer intervals are only available for shorter ranges. If the requested interval is too granular for the date range, the request is rejected. */
@@ -13221,9 +13079,8 @@ export const As112SummaryDnssecRequestProtocol = S.String;
 export type As112SummaryDnssecRequestProtocolList = Array<
   As112SummaryDnssecRequestProtocol | (string & {})
 >;
-export const As112SummaryDnssecRequestProtocolList = /*@__PURE__*/ S.Array(
-  As112SummaryDnssecRequestProtocol,
-) as any as S.Schema<As112SummaryDnssecRequestProtocolList>;
+export const As112SummaryDnssecRequestProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<As112SummaryDnssecRequestProtocolList>;
 
 export type As112SummaryDnssecRequestQueryType =
   | "A"
@@ -13319,9 +13176,8 @@ export const As112SummaryDnssecRequestQueryType = S.String;
 export type As112SummaryDnssecRequestQueryTypeList = Array<
   As112SummaryDnssecRequestQueryType | (string & {})
 >;
-export const As112SummaryDnssecRequestQueryTypeList = /*@__PURE__*/ S.Array(
-  As112SummaryDnssecRequestQueryType,
-) as any as S.Schema<As112SummaryDnssecRequestQueryTypeList>;
+export const As112SummaryDnssecRequestQueryTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<As112SummaryDnssecRequestQueryTypeList>;
 
 export type As112SummaryDnssecRequestResponseCode =
   | "NOERROR"
@@ -13348,9 +13204,8 @@ export const As112SummaryDnssecRequestResponseCode = S.String;
 export type As112SummaryDnssecRequestResponseCodeList = Array<
   As112SummaryDnssecRequestResponseCode | (string & {})
 >;
-export const As112SummaryDnssecRequestResponseCodeList = /*@__PURE__*/ S.Array(
-  As112SummaryDnssecRequestResponseCode,
-) as any as S.Schema<As112SummaryDnssecRequestResponseCodeList>;
+export const As112SummaryDnssecRequestResponseCodeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<As112SummaryDnssecRequestResponseCodeList>;
 
 export interface DnssecAs112SummaryRequest {
   /** Filters results by continent. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA. */
@@ -13603,9 +13458,8 @@ export const As112TimeseriesGroupsDnssecRequestProtocol = S.String;
 export type As112TimeseriesGroupsDnssecRequestProtocolList = Array<
   As112TimeseriesGroupsDnssecRequestProtocol | (string & {})
 >;
-export const As112TimeseriesGroupsDnssecRequestProtocolList = /*@__PURE__*/ S.Array(
-  As112TimeseriesGroupsDnssecRequestProtocol,
-) as any as S.Schema<As112TimeseriesGroupsDnssecRequestProtocolList>;
+export const As112TimeseriesGroupsDnssecRequestProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<As112TimeseriesGroupsDnssecRequestProtocolList>;
 
 export type As112TimeseriesGroupsDnssecRequestQueryType =
   | "A"
@@ -13701,9 +13555,8 @@ export const As112TimeseriesGroupsDnssecRequestQueryType = S.String;
 export type As112TimeseriesGroupsDnssecRequestQueryTypeList = Array<
   As112TimeseriesGroupsDnssecRequestQueryType | (string & {})
 >;
-export const As112TimeseriesGroupsDnssecRequestQueryTypeList = /*@__PURE__*/ S.Array(
-  As112TimeseriesGroupsDnssecRequestQueryType,
-) as any as S.Schema<As112TimeseriesGroupsDnssecRequestQueryTypeList>;
+export const As112TimeseriesGroupsDnssecRequestQueryTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<As112TimeseriesGroupsDnssecRequestQueryTypeList>;
 
 export type As112TimeseriesGroupsDnssecRequestResponseCode =
   | "NOERROR"
@@ -13730,9 +13583,8 @@ export const As112TimeseriesGroupsDnssecRequestResponseCode = S.String;
 export type As112TimeseriesGroupsDnssecRequestResponseCodeList = Array<
   As112TimeseriesGroupsDnssecRequestResponseCode | (string & {})
 >;
-export const As112TimeseriesGroupsDnssecRequestResponseCodeList = /*@__PURE__*/ S.Array(
-  As112TimeseriesGroupsDnssecRequestResponseCode,
-) as any as S.Schema<As112TimeseriesGroupsDnssecRequestResponseCodeList>;
+export const As112TimeseriesGroupsDnssecRequestResponseCodeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<As112TimeseriesGroupsDnssecRequestResponseCodeList>;
 
 export interface DnssecAs112TimeseriesGroupRequest {
   /** Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/). When omitted, the interval is auto-selected from the requested date range; finer intervals are only available for shorter ranges. If the requested interval is too granular for the date range, the request is rejected. */
@@ -14255,9 +14107,8 @@ export const DnsSummaryDnssecAwareRequestProtocol = S.String;
 export type DnsSummaryDnssecAwareRequestProtocolList = Array<
   DnsSummaryDnssecAwareRequestProtocol | (string & {})
 >;
-export const DnsSummaryDnssecAwareRequestProtocolList = /*@__PURE__*/ S.Array(
-  DnsSummaryDnssecAwareRequestProtocol,
-) as any as S.Schema<DnsSummaryDnssecAwareRequestProtocolList>;
+export const DnsSummaryDnssecAwareRequestProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsSummaryDnssecAwareRequestProtocolList>;
 
 export type DnsSummaryDnssecAwareRequestQueryType =
   | "A"
@@ -14353,9 +14204,8 @@ export const DnsSummaryDnssecAwareRequestQueryType = S.String;
 export type DnsSummaryDnssecAwareRequestQueryTypeList = Array<
   DnsSummaryDnssecAwareRequestQueryType | (string & {})
 >;
-export const DnsSummaryDnssecAwareRequestQueryTypeList = /*@__PURE__*/ S.Array(
-  DnsSummaryDnssecAwareRequestQueryType,
-) as any as S.Schema<DnsSummaryDnssecAwareRequestQueryTypeList>;
+export const DnsSummaryDnssecAwareRequestQueryTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsSummaryDnssecAwareRequestQueryTypeList>;
 
 export type DnsSummaryDnssecAwareRequestResponseCode =
   | "NOERROR"
@@ -14382,9 +14232,8 @@ export const DnsSummaryDnssecAwareRequestResponseCode = S.String;
 export type DnsSummaryDnssecAwareRequestResponseCodeList = Array<
   DnsSummaryDnssecAwareRequestResponseCode | (string & {})
 >;
-export const DnsSummaryDnssecAwareRequestResponseCodeList = /*@__PURE__*/ S.Array(
-  DnsSummaryDnssecAwareRequestResponseCode,
-) as any as S.Schema<DnsSummaryDnssecAwareRequestResponseCodeList>;
+export const DnsSummaryDnssecAwareRequestResponseCodeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsSummaryDnssecAwareRequestResponseCodeList>;
 
 export type DnsSummaryDnssecAwareRequestTldList = Array<string>;
 export const DnsSummaryDnssecAwareRequestTldList =
@@ -14646,9 +14495,8 @@ export const DnsTimeseriesGroupsDnssecAwareRequestProtocol = S.String;
 export type DnsTimeseriesGroupsDnssecAwareRequestProtocolList = Array<
   DnsTimeseriesGroupsDnssecAwareRequestProtocol | (string & {})
 >;
-export const DnsTimeseriesGroupsDnssecAwareRequestProtocolList = /*@__PURE__*/ S.Array(
-  DnsTimeseriesGroupsDnssecAwareRequestProtocol,
-) as any as S.Schema<DnsTimeseriesGroupsDnssecAwareRequestProtocolList>;
+export const DnsTimeseriesGroupsDnssecAwareRequestProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsTimeseriesGroupsDnssecAwareRequestProtocolList>;
 
 export type DnsTimeseriesGroupsDnssecAwareRequestQueryType =
   | "A"
@@ -14744,9 +14592,8 @@ export const DnsTimeseriesGroupsDnssecAwareRequestQueryType = S.String;
 export type DnsTimeseriesGroupsDnssecAwareRequestQueryTypeList = Array<
   DnsTimeseriesGroupsDnssecAwareRequestQueryType | (string & {})
 >;
-export const DnsTimeseriesGroupsDnssecAwareRequestQueryTypeList = /*@__PURE__*/ S.Array(
-  DnsTimeseriesGroupsDnssecAwareRequestQueryType,
-) as any as S.Schema<DnsTimeseriesGroupsDnssecAwareRequestQueryTypeList>;
+export const DnsTimeseriesGroupsDnssecAwareRequestQueryTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsTimeseriesGroupsDnssecAwareRequestQueryTypeList>;
 
 export type DnsTimeseriesGroupsDnssecAwareRequestResponseCode =
   | "NOERROR"
@@ -14773,9 +14620,8 @@ export const DnsTimeseriesGroupsDnssecAwareRequestResponseCode = S.String;
 export type DnsTimeseriesGroupsDnssecAwareRequestResponseCodeList = Array<
   DnsTimeseriesGroupsDnssecAwareRequestResponseCode | (string & {})
 >;
-export const DnsTimeseriesGroupsDnssecAwareRequestResponseCodeList = /*@__PURE__*/ S.Array(
-  DnsTimeseriesGroupsDnssecAwareRequestResponseCode,
-) as any as S.Schema<DnsTimeseriesGroupsDnssecAwareRequestResponseCodeList>;
+export const DnsTimeseriesGroupsDnssecAwareRequestResponseCodeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsTimeseriesGroupsDnssecAwareRequestResponseCodeList>;
 
 export type DnsTimeseriesGroupsDnssecAwareRequestTldList = Array<string>;
 export const DnsTimeseriesGroupsDnssecAwareRequestTldList =
@@ -15065,9 +14911,8 @@ export const DnsSummaryDnssecRequestProtocol = S.String;
 export type DnsSummaryDnssecRequestProtocolList = Array<
   DnsSummaryDnssecRequestProtocol | (string & {})
 >;
-export const DnsSummaryDnssecRequestProtocolList = /*@__PURE__*/ S.Array(
-  DnsSummaryDnssecRequestProtocol,
-) as any as S.Schema<DnsSummaryDnssecRequestProtocolList>;
+export const DnsSummaryDnssecRequestProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsSummaryDnssecRequestProtocolList>;
 
 export type DnsSummaryDnssecRequestQueryType =
   | "A"
@@ -15163,9 +15008,8 @@ export const DnsSummaryDnssecRequestQueryType = S.String;
 export type DnsSummaryDnssecRequestQueryTypeList = Array<
   DnsSummaryDnssecRequestQueryType | (string & {})
 >;
-export const DnsSummaryDnssecRequestQueryTypeList = /*@__PURE__*/ S.Array(
-  DnsSummaryDnssecRequestQueryType,
-) as any as S.Schema<DnsSummaryDnssecRequestQueryTypeList>;
+export const DnsSummaryDnssecRequestQueryTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsSummaryDnssecRequestQueryTypeList>;
 
 export type DnsSummaryDnssecRequestResponseCode =
   | "NOERROR"
@@ -15192,9 +15036,8 @@ export const DnsSummaryDnssecRequestResponseCode = S.String;
 export type DnsSummaryDnssecRequestResponseCodeList = Array<
   DnsSummaryDnssecRequestResponseCode | (string & {})
 >;
-export const DnsSummaryDnssecRequestResponseCodeList = /*@__PURE__*/ S.Array(
-  DnsSummaryDnssecRequestResponseCode,
-) as any as S.Schema<DnsSummaryDnssecRequestResponseCodeList>;
+export const DnsSummaryDnssecRequestResponseCodeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsSummaryDnssecRequestResponseCodeList>;
 
 export type DnsSummaryDnssecRequestTldList = Array<string>;
 export const DnsSummaryDnssecRequestTldList =
@@ -15466,9 +15309,8 @@ export const DnsTimeseriesGroupsDnssecRequestProtocol = S.String;
 export type DnsTimeseriesGroupsDnssecRequestProtocolList = Array<
   DnsTimeseriesGroupsDnssecRequestProtocol | (string & {})
 >;
-export const DnsTimeseriesGroupsDnssecRequestProtocolList = /*@__PURE__*/ S.Array(
-  DnsTimeseriesGroupsDnssecRequestProtocol,
-) as any as S.Schema<DnsTimeseriesGroupsDnssecRequestProtocolList>;
+export const DnsTimeseriesGroupsDnssecRequestProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsTimeseriesGroupsDnssecRequestProtocolList>;
 
 export type DnsTimeseriesGroupsDnssecRequestQueryType =
   | "A"
@@ -15564,9 +15406,8 @@ export const DnsTimeseriesGroupsDnssecRequestQueryType = S.String;
 export type DnsTimeseriesGroupsDnssecRequestQueryTypeList = Array<
   DnsTimeseriesGroupsDnssecRequestQueryType | (string & {})
 >;
-export const DnsTimeseriesGroupsDnssecRequestQueryTypeList = /*@__PURE__*/ S.Array(
-  DnsTimeseriesGroupsDnssecRequestQueryType,
-) as any as S.Schema<DnsTimeseriesGroupsDnssecRequestQueryTypeList>;
+export const DnsTimeseriesGroupsDnssecRequestQueryTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsTimeseriesGroupsDnssecRequestQueryTypeList>;
 
 export type DnsTimeseriesGroupsDnssecRequestResponseCode =
   | "NOERROR"
@@ -15593,9 +15434,8 @@ export const DnsTimeseriesGroupsDnssecRequestResponseCode = S.String;
 export type DnsTimeseriesGroupsDnssecRequestResponseCodeList = Array<
   DnsTimeseriesGroupsDnssecRequestResponseCode | (string & {})
 >;
-export const DnsTimeseriesGroupsDnssecRequestResponseCodeList = /*@__PURE__*/ S.Array(
-  DnsTimeseriesGroupsDnssecRequestResponseCode,
-) as any as S.Schema<DnsTimeseriesGroupsDnssecRequestResponseCodeList>;
+export const DnsTimeseriesGroupsDnssecRequestResponseCodeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsTimeseriesGroupsDnssecRequestResponseCodeList>;
 
 export type DnsTimeseriesGroupsDnssecRequestTldList = Array<string>;
 export const DnsTimeseriesGroupsDnssecRequestTldList =
@@ -15901,9 +15741,8 @@ export const DnsSummaryDnssecE2eRequestProtocol = S.String;
 export type DnsSummaryDnssecE2eRequestProtocolList = Array<
   DnsSummaryDnssecE2eRequestProtocol | (string & {})
 >;
-export const DnsSummaryDnssecE2eRequestProtocolList = /*@__PURE__*/ S.Array(
-  DnsSummaryDnssecE2eRequestProtocol,
-) as any as S.Schema<DnsSummaryDnssecE2eRequestProtocolList>;
+export const DnsSummaryDnssecE2eRequestProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsSummaryDnssecE2eRequestProtocolList>;
 
 export type DnsSummaryDnssecE2eRequestQueryType =
   | "A"
@@ -15999,9 +15838,8 @@ export const DnsSummaryDnssecE2eRequestQueryType = S.String;
 export type DnsSummaryDnssecE2eRequestQueryTypeList = Array<
   DnsSummaryDnssecE2eRequestQueryType | (string & {})
 >;
-export const DnsSummaryDnssecE2eRequestQueryTypeList = /*@__PURE__*/ S.Array(
-  DnsSummaryDnssecE2eRequestQueryType,
-) as any as S.Schema<DnsSummaryDnssecE2eRequestQueryTypeList>;
+export const DnsSummaryDnssecE2eRequestQueryTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsSummaryDnssecE2eRequestQueryTypeList>;
 
 export type DnsSummaryDnssecE2eRequestResponseCode =
   | "NOERROR"
@@ -16028,9 +15866,8 @@ export const DnsSummaryDnssecE2eRequestResponseCode = S.String;
 export type DnsSummaryDnssecE2eRequestResponseCodeList = Array<
   DnsSummaryDnssecE2eRequestResponseCode | (string & {})
 >;
-export const DnsSummaryDnssecE2eRequestResponseCodeList = /*@__PURE__*/ S.Array(
-  DnsSummaryDnssecE2eRequestResponseCode,
-) as any as S.Schema<DnsSummaryDnssecE2eRequestResponseCodeList>;
+export const DnsSummaryDnssecE2eRequestResponseCodeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsSummaryDnssecE2eRequestResponseCodeList>;
 
 export type DnsSummaryDnssecE2eRequestTldList = Array<string>;
 export const DnsSummaryDnssecE2eRequestTldList =
@@ -16292,9 +16129,8 @@ export const DnsTimeseriesGroupsDnssecE2eRequestProtocol = S.String;
 export type DnsTimeseriesGroupsDnssecE2eRequestProtocolList = Array<
   DnsTimeseriesGroupsDnssecE2eRequestProtocol | (string & {})
 >;
-export const DnsTimeseriesGroupsDnssecE2eRequestProtocolList = /*@__PURE__*/ S.Array(
-  DnsTimeseriesGroupsDnssecE2eRequestProtocol,
-) as any as S.Schema<DnsTimeseriesGroupsDnssecE2eRequestProtocolList>;
+export const DnsTimeseriesGroupsDnssecE2eRequestProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsTimeseriesGroupsDnssecE2eRequestProtocolList>;
 
 export type DnsTimeseriesGroupsDnssecE2eRequestQueryType =
   | "A"
@@ -16390,9 +16226,8 @@ export const DnsTimeseriesGroupsDnssecE2eRequestQueryType = S.String;
 export type DnsTimeseriesGroupsDnssecE2eRequestQueryTypeList = Array<
   DnsTimeseriesGroupsDnssecE2eRequestQueryType | (string & {})
 >;
-export const DnsTimeseriesGroupsDnssecE2eRequestQueryTypeList = /*@__PURE__*/ S.Array(
-  DnsTimeseriesGroupsDnssecE2eRequestQueryType,
-) as any as S.Schema<DnsTimeseriesGroupsDnssecE2eRequestQueryTypeList>;
+export const DnsTimeseriesGroupsDnssecE2eRequestQueryTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsTimeseriesGroupsDnssecE2eRequestQueryTypeList>;
 
 export type DnsTimeseriesGroupsDnssecE2eRequestResponseCode =
   | "NOERROR"
@@ -16419,9 +16254,8 @@ export const DnsTimeseriesGroupsDnssecE2eRequestResponseCode = S.String;
 export type DnsTimeseriesGroupsDnssecE2eRequestResponseCodeList = Array<
   DnsTimeseriesGroupsDnssecE2eRequestResponseCode | (string & {})
 >;
-export const DnsTimeseriesGroupsDnssecE2eRequestResponseCodeList = /*@__PURE__*/ S.Array(
-  DnsTimeseriesGroupsDnssecE2eRequestResponseCode,
-) as any as S.Schema<DnsTimeseriesGroupsDnssecE2eRequestResponseCodeList>;
+export const DnsTimeseriesGroupsDnssecE2eRequestResponseCodeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsTimeseriesGroupsDnssecE2eRequestResponseCodeList>;
 
 export type DnsTimeseriesGroupsDnssecE2eRequestTldList = Array<string>;
 export const DnsTimeseriesGroupsDnssecE2eRequestTldList =
@@ -16959,9 +16793,8 @@ export const AttacksLayer3SummaryDurationRequestIpVersion = S.String;
 export type AttacksLayer3SummaryDurationRequestIpVersionList = Array<
   AttacksLayer3SummaryDurationRequestIpVersion | (string & {})
 >;
-export const AttacksLayer3SummaryDurationRequestIpVersionList = /*@__PURE__*/ S.Array(
-  AttacksLayer3SummaryDurationRequestIpVersion,
-) as any as S.Schema<AttacksLayer3SummaryDurationRequestIpVersionList>;
+export const AttacksLayer3SummaryDurationRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer3SummaryDurationRequestIpVersionList>;
 
 export type AttacksLayer3SummaryDurationRequestLocationList = Array<string>;
 export const AttacksLayer3SummaryDurationRequestLocationList =
@@ -16977,9 +16810,8 @@ export const AttacksLayer3SummaryDurationRequestProtocol = S.String;
 export type AttacksLayer3SummaryDurationRequestProtocolList = Array<
   AttacksLayer3SummaryDurationRequestProtocol | (string & {})
 >;
-export const AttacksLayer3SummaryDurationRequestProtocolList = /*@__PURE__*/ S.Array(
-  AttacksLayer3SummaryDurationRequestProtocol,
-) as any as S.Schema<AttacksLayer3SummaryDurationRequestProtocolList>;
+export const AttacksLayer3SummaryDurationRequestProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer3SummaryDurationRequestProtocolList>;
 
 export interface DurationAttackLayer3SummaryRequest {
   /** Filters results by continent. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA. */
@@ -17243,9 +17075,8 @@ export const AttacksLayer3TimeseriesGroupsDurationRequestIpVersion = S.String;
 export type AttacksLayer3TimeseriesGroupsDurationRequestIpVersionList = Array<
   AttacksLayer3TimeseriesGroupsDurationRequestIpVersion | (string & {})
 >;
-export const AttacksLayer3TimeseriesGroupsDurationRequestIpVersionList = /*@__PURE__*/ S.Array(
-  AttacksLayer3TimeseriesGroupsDurationRequestIpVersion,
-) as any as S.Schema<AttacksLayer3TimeseriesGroupsDurationRequestIpVersionList>;
+export const AttacksLayer3TimeseriesGroupsDurationRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer3TimeseriesGroupsDurationRequestIpVersionList>;
 
 export type AttacksLayer3TimeseriesGroupsDurationRequestLocationList = Array<string>;
 export const AttacksLayer3TimeseriesGroupsDurationRequestLocationList =
@@ -17264,9 +17095,8 @@ export const AttacksLayer3TimeseriesGroupsDurationRequestProtocol = S.String;
 export type AttacksLayer3TimeseriesGroupsDurationRequestProtocolList = Array<
   AttacksLayer3TimeseriesGroupsDurationRequestProtocol | (string & {})
 >;
-export const AttacksLayer3TimeseriesGroupsDurationRequestProtocolList = /*@__PURE__*/ S.Array(
-  AttacksLayer3TimeseriesGroupsDurationRequestProtocol,
-) as any as S.Schema<AttacksLayer3TimeseriesGroupsDurationRequestProtocolList>;
+export const AttacksLayer3TimeseriesGroupsDurationRequestProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer3TimeseriesGroupsDurationRequestProtocolList>;
 
 export interface DurationAttackLayer3TimeseriesGroupRequest {
   /** Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/). When omitted, the interval is auto-selected from the requested date range; finer intervals are only available for shorter ranges. If the requested interval is too granular for the date range, the request is rejected. */
@@ -17602,9 +17432,8 @@ export const As112SummaryEdnsRequestProtocol = S.String;
 export type As112SummaryEdnsRequestProtocolList = Array<
   As112SummaryEdnsRequestProtocol | (string & {})
 >;
-export const As112SummaryEdnsRequestProtocolList = /*@__PURE__*/ S.Array(
-  As112SummaryEdnsRequestProtocol,
-) as any as S.Schema<As112SummaryEdnsRequestProtocolList>;
+export const As112SummaryEdnsRequestProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<As112SummaryEdnsRequestProtocolList>;
 
 export type As112SummaryEdnsRequestQueryType =
   | "A"
@@ -17700,9 +17529,8 @@ export const As112SummaryEdnsRequestQueryType = S.String;
 export type As112SummaryEdnsRequestQueryTypeList = Array<
   As112SummaryEdnsRequestQueryType | (string & {})
 >;
-export const As112SummaryEdnsRequestQueryTypeList = /*@__PURE__*/ S.Array(
-  As112SummaryEdnsRequestQueryType,
-) as any as S.Schema<As112SummaryEdnsRequestQueryTypeList>;
+export const As112SummaryEdnsRequestQueryTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<As112SummaryEdnsRequestQueryTypeList>;
 
 export type As112SummaryEdnsRequestResponseCode =
   | "NOERROR"
@@ -17729,9 +17557,8 @@ export const As112SummaryEdnsRequestResponseCode = S.String;
 export type As112SummaryEdnsRequestResponseCodeList = Array<
   As112SummaryEdnsRequestResponseCode | (string & {})
 >;
-export const As112SummaryEdnsRequestResponseCodeList = /*@__PURE__*/ S.Array(
-  As112SummaryEdnsRequestResponseCode,
-) as any as S.Schema<As112SummaryEdnsRequestResponseCodeList>;
+export const As112SummaryEdnsRequestResponseCodeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<As112SummaryEdnsRequestResponseCodeList>;
 
 export interface EdnsAs112SummaryRequest {
   /** Filters results by continent. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA. */
@@ -17964,9 +17791,8 @@ export const As112TimeseriesGroupsEdnsRequestProtocol = S.String;
 export type As112TimeseriesGroupsEdnsRequestProtocolList = Array<
   As112TimeseriesGroupsEdnsRequestProtocol | (string & {})
 >;
-export const As112TimeseriesGroupsEdnsRequestProtocolList = /*@__PURE__*/ S.Array(
-  As112TimeseriesGroupsEdnsRequestProtocol,
-) as any as S.Schema<As112TimeseriesGroupsEdnsRequestProtocolList>;
+export const As112TimeseriesGroupsEdnsRequestProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<As112TimeseriesGroupsEdnsRequestProtocolList>;
 
 export type As112TimeseriesGroupsEdnsRequestQueryType =
   | "A"
@@ -18062,9 +17888,8 @@ export const As112TimeseriesGroupsEdnsRequestQueryType = S.String;
 export type As112TimeseriesGroupsEdnsRequestQueryTypeList = Array<
   As112TimeseriesGroupsEdnsRequestQueryType | (string & {})
 >;
-export const As112TimeseriesGroupsEdnsRequestQueryTypeList = /*@__PURE__*/ S.Array(
-  As112TimeseriesGroupsEdnsRequestQueryType,
-) as any as S.Schema<As112TimeseriesGroupsEdnsRequestQueryTypeList>;
+export const As112TimeseriesGroupsEdnsRequestQueryTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<As112TimeseriesGroupsEdnsRequestQueryTypeList>;
 
 export type As112TimeseriesGroupsEdnsRequestResponseCode =
   | "NOERROR"
@@ -18091,9 +17916,8 @@ export const As112TimeseriesGroupsEdnsRequestResponseCode = S.String;
 export type As112TimeseriesGroupsEdnsRequestResponseCodeList = Array<
   As112TimeseriesGroupsEdnsRequestResponseCode | (string & {})
 >;
-export const As112TimeseriesGroupsEdnsRequestResponseCodeList = /*@__PURE__*/ S.Array(
-  As112TimeseriesGroupsEdnsRequestResponseCode,
-) as any as S.Schema<As112TimeseriesGroupsEdnsRequestResponseCodeList>;
+export const As112TimeseriesGroupsEdnsRequestResponseCodeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<As112TimeseriesGroupsEdnsRequestResponseCodeList>;
 
 export interface EdnsAs112TimeseriesGroupRequest {
   /** Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/). When omitted, the interval is auto-selected from the requested date range; finer intervals are only available for shorter ranges. If the requested interval is too granular for the date range, the request is rejected. */
@@ -18556,9 +18380,8 @@ export const EmailRoutingSummaryEncryptedRequestArc = S.String;
 export type EmailRoutingSummaryEncryptedRequestArcList = Array<
   EmailRoutingSummaryEncryptedRequestArc | (string & {})
 >;
-export const EmailRoutingSummaryEncryptedRequestArcList = /*@__PURE__*/ S.Array(
-  EmailRoutingSummaryEncryptedRequestArc,
-) as any as S.Schema<EmailRoutingSummaryEncryptedRequestArcList>;
+export const EmailRoutingSummaryEncryptedRequestArcList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingSummaryEncryptedRequestArcList>;
 
 export type EmailRoutingSummaryEncryptedRequestDateEndList = Array<string>;
 export const EmailRoutingSummaryEncryptedRequestDateEndList =
@@ -18578,9 +18401,8 @@ export const EmailRoutingSummaryEncryptedRequestDkim = S.String;
 export type EmailRoutingSummaryEncryptedRequestDkimList = Array<
   EmailRoutingSummaryEncryptedRequestDkim | (string & {})
 >;
-export const EmailRoutingSummaryEncryptedRequestDkimList = /*@__PURE__*/ S.Array(
-  EmailRoutingSummaryEncryptedRequestDkim,
-) as any as S.Schema<EmailRoutingSummaryEncryptedRequestDkimList>;
+export const EmailRoutingSummaryEncryptedRequestDkimList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingSummaryEncryptedRequestDkimList>;
 
 export type EmailRoutingSummaryEncryptedRequestDmarc = "PASS" | "NONE" | "FAIL";
 export const EmailRoutingSummaryEncryptedRequestDmarc = S.String;
@@ -18588,9 +18410,8 @@ export const EmailRoutingSummaryEncryptedRequestDmarc = S.String;
 export type EmailRoutingSummaryEncryptedRequestDmarcList = Array<
   EmailRoutingSummaryEncryptedRequestDmarc | (string & {})
 >;
-export const EmailRoutingSummaryEncryptedRequestDmarcList = /*@__PURE__*/ S.Array(
-  EmailRoutingSummaryEncryptedRequestDmarc,
-) as any as S.Schema<EmailRoutingSummaryEncryptedRequestDmarcList>;
+export const EmailRoutingSummaryEncryptedRequestDmarcList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingSummaryEncryptedRequestDmarcList>;
 
 export type EmailRoutingSummaryEncryptedRequestFormat = "JSON" | "CSV";
 export const EmailRoutingSummaryEncryptedRequestFormat = S.String;
@@ -18601,9 +18422,8 @@ export const EmailRoutingSummaryEncryptedRequestIpVersion = S.String;
 export type EmailRoutingSummaryEncryptedRequestIpVersionList = Array<
   EmailRoutingSummaryEncryptedRequestIpVersion | (string & {})
 >;
-export const EmailRoutingSummaryEncryptedRequestIpVersionList = /*@__PURE__*/ S.Array(
-  EmailRoutingSummaryEncryptedRequestIpVersion,
-) as any as S.Schema<EmailRoutingSummaryEncryptedRequestIpVersionList>;
+export const EmailRoutingSummaryEncryptedRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingSummaryEncryptedRequestIpVersionList>;
 
 export type EmailRoutingSummaryEncryptedRequestNameList = Array<string>;
 export const EmailRoutingSummaryEncryptedRequestNameList =
@@ -18615,9 +18435,8 @@ export const EmailRoutingSummaryEncryptedRequestSpf = S.String;
 export type EmailRoutingSummaryEncryptedRequestSpfList = Array<
   EmailRoutingSummaryEncryptedRequestSpf | (string & {})
 >;
-export const EmailRoutingSummaryEncryptedRequestSpfList = /*@__PURE__*/ S.Array(
-  EmailRoutingSummaryEncryptedRequestSpf,
-) as any as S.Schema<EmailRoutingSummaryEncryptedRequestSpfList>;
+export const EmailRoutingSummaryEncryptedRequestSpfList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingSummaryEncryptedRequestSpfList>;
 
 export interface EncryptedEmailRoutingSummaryRequest {
   /** Filters results by ARC (Authenticated Received Chain) validation. */
@@ -18847,9 +18666,8 @@ export const EmailRoutingTimeseriesGroupsEncryptedRequestArc = S.String;
 export type EmailRoutingTimeseriesGroupsEncryptedRequestArcList = Array<
   EmailRoutingTimeseriesGroupsEncryptedRequestArc | (string & {})
 >;
-export const EmailRoutingTimeseriesGroupsEncryptedRequestArcList = /*@__PURE__*/ S.Array(
-  EmailRoutingTimeseriesGroupsEncryptedRequestArc,
-) as any as S.Schema<EmailRoutingTimeseriesGroupsEncryptedRequestArcList>;
+export const EmailRoutingTimeseriesGroupsEncryptedRequestArcList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingTimeseriesGroupsEncryptedRequestArcList>;
 
 export type EmailRoutingTimeseriesGroupsEncryptedRequestDateEndList = Array<string>;
 export const EmailRoutingTimeseriesGroupsEncryptedRequestDateEndList =
@@ -18869,9 +18687,8 @@ export const EmailRoutingTimeseriesGroupsEncryptedRequestDkim = S.String;
 export type EmailRoutingTimeseriesGroupsEncryptedRequestDkimList = Array<
   EmailRoutingTimeseriesGroupsEncryptedRequestDkim | (string & {})
 >;
-export const EmailRoutingTimeseriesGroupsEncryptedRequestDkimList = /*@__PURE__*/ S.Array(
-  EmailRoutingTimeseriesGroupsEncryptedRequestDkim,
-) as any as S.Schema<EmailRoutingTimeseriesGroupsEncryptedRequestDkimList>;
+export const EmailRoutingTimeseriesGroupsEncryptedRequestDkimList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingTimeseriesGroupsEncryptedRequestDkimList>;
 
 export type EmailRoutingTimeseriesGroupsEncryptedRequestDmarc = "PASS" | "NONE" | "FAIL";
 export const EmailRoutingTimeseriesGroupsEncryptedRequestDmarc = S.String;
@@ -18879,9 +18696,8 @@ export const EmailRoutingTimeseriesGroupsEncryptedRequestDmarc = S.String;
 export type EmailRoutingTimeseriesGroupsEncryptedRequestDmarcList = Array<
   EmailRoutingTimeseriesGroupsEncryptedRequestDmarc | (string & {})
 >;
-export const EmailRoutingTimeseriesGroupsEncryptedRequestDmarcList = /*@__PURE__*/ S.Array(
-  EmailRoutingTimeseriesGroupsEncryptedRequestDmarc,
-) as any as S.Schema<EmailRoutingTimeseriesGroupsEncryptedRequestDmarcList>;
+export const EmailRoutingTimeseriesGroupsEncryptedRequestDmarcList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingTimeseriesGroupsEncryptedRequestDmarcList>;
 
 export type EmailRoutingTimeseriesGroupsEncryptedRequestFormat = "JSON" | "CSV";
 export const EmailRoutingTimeseriesGroupsEncryptedRequestFormat = S.String;
@@ -18892,9 +18708,8 @@ export const EmailRoutingTimeseriesGroupsEncryptedRequestIpVersion = S.String;
 export type EmailRoutingTimeseriesGroupsEncryptedRequestIpVersionList = Array<
   EmailRoutingTimeseriesGroupsEncryptedRequestIpVersion | (string & {})
 >;
-export const EmailRoutingTimeseriesGroupsEncryptedRequestIpVersionList = /*@__PURE__*/ S.Array(
-  EmailRoutingTimeseriesGroupsEncryptedRequestIpVersion,
-) as any as S.Schema<EmailRoutingTimeseriesGroupsEncryptedRequestIpVersionList>;
+export const EmailRoutingTimeseriesGroupsEncryptedRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingTimeseriesGroupsEncryptedRequestIpVersionList>;
 
 export type EmailRoutingTimeseriesGroupsEncryptedRequestNameList = Array<string>;
 export const EmailRoutingTimeseriesGroupsEncryptedRequestNameList =
@@ -18906,9 +18721,8 @@ export const EmailRoutingTimeseriesGroupsEncryptedRequestSpf = S.String;
 export type EmailRoutingTimeseriesGroupsEncryptedRequestSpfList = Array<
   EmailRoutingTimeseriesGroupsEncryptedRequestSpf | (string & {})
 >;
-export const EmailRoutingTimeseriesGroupsEncryptedRequestSpfList = /*@__PURE__*/ S.Array(
-  EmailRoutingTimeseriesGroupsEncryptedRequestSpf,
-) as any as S.Schema<EmailRoutingTimeseriesGroupsEncryptedRequestSpfList>;
+export const EmailRoutingTimeseriesGroupsEncryptedRequestSpfList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingTimeseriesGroupsEncryptedRequestSpfList>;
 
 export interface EncryptedEmailRoutingTimeseriesGroupRequest {
   /** Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/). When omitted, the interval is auto-selected from the requested date range; finer intervals are only available for shorter ranges. If the requested interval is too granular for the date range, the request is rejected. */
@@ -19328,9 +19142,8 @@ export const AnnotationsOutagesGetRequestTags = S.String;
 export type AnnotationsOutagesGetRequestTagsList = Array<
   AnnotationsOutagesGetRequestTags | (string & {})
 >;
-export const AnnotationsOutagesGetRequestTagsList = /*@__PURE__*/ S.Array(
-  AnnotationsOutagesGetRequestTags,
-) as any as S.Schema<AnnotationsOutagesGetRequestTagsList>;
+export const AnnotationsOutagesGetRequestTagsList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AnnotationsOutagesGetRequestTagsList>;
 
 export interface GetAnnotationOutageRequest {
   /** Filters results by Autonomous System. Specify a single Autonomous System Number (ASN) as integer. */
@@ -19619,9 +19432,8 @@ export const BgpTopAsesGetRequestUpdateType = S.String;
 export type BgpTopAsesGetRequestUpdateTypeList = Array<
   BgpTopAsesGetRequestUpdateType | (string & {})
 >;
-export const BgpTopAsesGetRequestUpdateTypeList = /*@__PURE__*/ S.Array(
-  BgpTopAsesGetRequestUpdateType,
-) as any as S.Schema<BgpTopAsesGetRequestUpdateTypeList>;
+export const BgpTopAsesGetRequestUpdateTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<BgpTopAsesGetRequestUpdateTypeList>;
 
 export interface GetBgpTopAsRequest {
   /** Filters results by Autonomous System. Specify one or more Autonomous System Numbers (ASNs) as a comma-separated list. Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356. */
@@ -20169,9 +19981,8 @@ export const EmailSecurityTopTldsGetRequestArc = S.String;
 export type EmailSecurityTopTldsGetRequestArcList = Array<
   EmailSecurityTopTldsGetRequestArc | (string & {})
 >;
-export const EmailSecurityTopTldsGetRequestArcList = /*@__PURE__*/ S.Array(
-  EmailSecurityTopTldsGetRequestArc,
-) as any as S.Schema<EmailSecurityTopTldsGetRequestArcList>;
+export const EmailSecurityTopTldsGetRequestArcList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecurityTopTldsGetRequestArcList>;
 
 export type EmailSecurityTopTldsGetRequestDateEndList = Array<string>;
 export const EmailSecurityTopTldsGetRequestDateEndList =
@@ -20191,9 +20002,8 @@ export const EmailSecurityTopTldsGetRequestDkim = S.String;
 export type EmailSecurityTopTldsGetRequestDkimList = Array<
   EmailSecurityTopTldsGetRequestDkim | (string & {})
 >;
-export const EmailSecurityTopTldsGetRequestDkimList = /*@__PURE__*/ S.Array(
-  EmailSecurityTopTldsGetRequestDkim,
-) as any as S.Schema<EmailSecurityTopTldsGetRequestDkimList>;
+export const EmailSecurityTopTldsGetRequestDkimList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecurityTopTldsGetRequestDkimList>;
 
 export type EmailSecurityTopTldsGetRequestDmarc = "PASS" | "NONE" | "FAIL";
 export const EmailSecurityTopTldsGetRequestDmarc = S.String;
@@ -20201,9 +20011,8 @@ export const EmailSecurityTopTldsGetRequestDmarc = S.String;
 export type EmailSecurityTopTldsGetRequestDmarcList = Array<
   EmailSecurityTopTldsGetRequestDmarc | (string & {})
 >;
-export const EmailSecurityTopTldsGetRequestDmarcList = /*@__PURE__*/ S.Array(
-  EmailSecurityTopTldsGetRequestDmarc,
-) as any as S.Schema<EmailSecurityTopTldsGetRequestDmarcList>;
+export const EmailSecurityTopTldsGetRequestDmarcList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecurityTopTldsGetRequestDmarcList>;
 
 export type EmailSecurityTopTldsGetRequestFormat = "JSON" | "CSV";
 export const EmailSecurityTopTldsGetRequestFormat = S.String;
@@ -20218,9 +20027,8 @@ export const EmailSecurityTopTldsGetRequestSpf = S.String;
 export type EmailSecurityTopTldsGetRequestSpfList = Array<
   EmailSecurityTopTldsGetRequestSpf | (string & {})
 >;
-export const EmailSecurityTopTldsGetRequestSpfList = /*@__PURE__*/ S.Array(
-  EmailSecurityTopTldsGetRequestSpf,
-) as any as S.Schema<EmailSecurityTopTldsGetRequestSpfList>;
+export const EmailSecurityTopTldsGetRequestSpfList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecurityTopTldsGetRequestSpfList>;
 
 export type EmailSecurityTopTldsGetRequestTldCategory = "CLASSIC" | "COUNTRY";
 export const EmailSecurityTopTldsGetRequestTldCategory = S.String;
@@ -20235,9 +20043,8 @@ export const EmailSecurityTopTldsGetRequestTlsVersion = S.String;
 export type EmailSecurityTopTldsGetRequestTlsVersionList = Array<
   EmailSecurityTopTldsGetRequestTlsVersion | (string & {})
 >;
-export const EmailSecurityTopTldsGetRequestTlsVersionList = /*@__PURE__*/ S.Array(
-  EmailSecurityTopTldsGetRequestTlsVersion,
-) as any as S.Schema<EmailSecurityTopTldsGetRequestTlsVersionList>;
+export const EmailSecurityTopTldsGetRequestTlsVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecurityTopTldsGetRequestTlsVersionList>;
 
 export interface GetEmailSecurityTopTldRequest {
   /** Filters results by ARC (Authenticated Received Chain) validation. */
@@ -20469,9 +20276,8 @@ export const EmailSecurityTopTldsMaliciousGetRequestArc = S.String;
 export type EmailSecurityTopTldsMaliciousGetRequestArcList = Array<
   EmailSecurityTopTldsMaliciousGetRequestArc | (string & {})
 >;
-export const EmailSecurityTopTldsMaliciousGetRequestArcList = /*@__PURE__*/ S.Array(
-  EmailSecurityTopTldsMaliciousGetRequestArc,
-) as any as S.Schema<EmailSecurityTopTldsMaliciousGetRequestArcList>;
+export const EmailSecurityTopTldsMaliciousGetRequestArcList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecurityTopTldsMaliciousGetRequestArcList>;
 
 export type EmailSecurityTopTldsMaliciousGetRequestDateEndList = Array<string>;
 export const EmailSecurityTopTldsMaliciousGetRequestDateEndList =
@@ -20491,9 +20297,8 @@ export const EmailSecurityTopTldsMaliciousGetRequestDkim = S.String;
 export type EmailSecurityTopTldsMaliciousGetRequestDkimList = Array<
   EmailSecurityTopTldsMaliciousGetRequestDkim | (string & {})
 >;
-export const EmailSecurityTopTldsMaliciousGetRequestDkimList = /*@__PURE__*/ S.Array(
-  EmailSecurityTopTldsMaliciousGetRequestDkim,
-) as any as S.Schema<EmailSecurityTopTldsMaliciousGetRequestDkimList>;
+export const EmailSecurityTopTldsMaliciousGetRequestDkimList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecurityTopTldsMaliciousGetRequestDkimList>;
 
 export type EmailSecurityTopTldsMaliciousGetRequestDmarc = "PASS" | "NONE" | "FAIL";
 export const EmailSecurityTopTldsMaliciousGetRequestDmarc = S.String;
@@ -20501,9 +20306,8 @@ export const EmailSecurityTopTldsMaliciousGetRequestDmarc = S.String;
 export type EmailSecurityTopTldsMaliciousGetRequestDmarcList = Array<
   EmailSecurityTopTldsMaliciousGetRequestDmarc | (string & {})
 >;
-export const EmailSecurityTopTldsMaliciousGetRequestDmarcList = /*@__PURE__*/ S.Array(
-  EmailSecurityTopTldsMaliciousGetRequestDmarc,
-) as any as S.Schema<EmailSecurityTopTldsMaliciousGetRequestDmarcList>;
+export const EmailSecurityTopTldsMaliciousGetRequestDmarcList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecurityTopTldsMaliciousGetRequestDmarcList>;
 
 export type EmailSecurityTopTldsMaliciousGetRequestFormat = "JSON" | "CSV";
 export const EmailSecurityTopTldsMaliciousGetRequestFormat = S.String;
@@ -20518,9 +20322,8 @@ export const EmailSecurityTopTldsMaliciousGetRequestSpf = S.String;
 export type EmailSecurityTopTldsMaliciousGetRequestSpfList = Array<
   EmailSecurityTopTldsMaliciousGetRequestSpf | (string & {})
 >;
-export const EmailSecurityTopTldsMaliciousGetRequestSpfList = /*@__PURE__*/ S.Array(
-  EmailSecurityTopTldsMaliciousGetRequestSpf,
-) as any as S.Schema<EmailSecurityTopTldsMaliciousGetRequestSpfList>;
+export const EmailSecurityTopTldsMaliciousGetRequestSpfList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecurityTopTldsMaliciousGetRequestSpfList>;
 
 export type EmailSecurityTopTldsMaliciousGetRequestTldCategory = "CLASSIC" | "COUNTRY";
 export const EmailSecurityTopTldsMaliciousGetRequestTldCategory = S.String;
@@ -20535,9 +20338,8 @@ export const EmailSecurityTopTldsMaliciousGetRequestTlsVersion = S.String;
 export type EmailSecurityTopTldsMaliciousGetRequestTlsVersionList = Array<
   EmailSecurityTopTldsMaliciousGetRequestTlsVersion | (string & {})
 >;
-export const EmailSecurityTopTldsMaliciousGetRequestTlsVersionList = /*@__PURE__*/ S.Array(
-  EmailSecurityTopTldsMaliciousGetRequestTlsVersion,
-) as any as S.Schema<EmailSecurityTopTldsMaliciousGetRequestTlsVersionList>;
+export const EmailSecurityTopTldsMaliciousGetRequestTlsVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecurityTopTldsMaliciousGetRequestTlsVersionList>;
 
 export interface GetEmailSecurityTopTldMaliciousRequest {
   /** Malicious classification. */
@@ -20779,9 +20581,8 @@ export const EmailSecurityTopTldsSpamGetRequestArc = S.String;
 export type EmailSecurityTopTldsSpamGetRequestArcList = Array<
   EmailSecurityTopTldsSpamGetRequestArc | (string & {})
 >;
-export const EmailSecurityTopTldsSpamGetRequestArcList = /*@__PURE__*/ S.Array(
-  EmailSecurityTopTldsSpamGetRequestArc,
-) as any as S.Schema<EmailSecurityTopTldsSpamGetRequestArcList>;
+export const EmailSecurityTopTldsSpamGetRequestArcList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecurityTopTldsSpamGetRequestArcList>;
 
 export type EmailSecurityTopTldsSpamGetRequestDateEndList = Array<string>;
 export const EmailSecurityTopTldsSpamGetRequestDateEndList =
@@ -20801,9 +20602,8 @@ export const EmailSecurityTopTldsSpamGetRequestDkim = S.String;
 export type EmailSecurityTopTldsSpamGetRequestDkimList = Array<
   EmailSecurityTopTldsSpamGetRequestDkim | (string & {})
 >;
-export const EmailSecurityTopTldsSpamGetRequestDkimList = /*@__PURE__*/ S.Array(
-  EmailSecurityTopTldsSpamGetRequestDkim,
-) as any as S.Schema<EmailSecurityTopTldsSpamGetRequestDkimList>;
+export const EmailSecurityTopTldsSpamGetRequestDkimList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecurityTopTldsSpamGetRequestDkimList>;
 
 export type EmailSecurityTopTldsSpamGetRequestDmarc = "PASS" | "NONE" | "FAIL";
 export const EmailSecurityTopTldsSpamGetRequestDmarc = S.String;
@@ -20811,9 +20611,8 @@ export const EmailSecurityTopTldsSpamGetRequestDmarc = S.String;
 export type EmailSecurityTopTldsSpamGetRequestDmarcList = Array<
   EmailSecurityTopTldsSpamGetRequestDmarc | (string & {})
 >;
-export const EmailSecurityTopTldsSpamGetRequestDmarcList = /*@__PURE__*/ S.Array(
-  EmailSecurityTopTldsSpamGetRequestDmarc,
-) as any as S.Schema<EmailSecurityTopTldsSpamGetRequestDmarcList>;
+export const EmailSecurityTopTldsSpamGetRequestDmarcList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecurityTopTldsSpamGetRequestDmarcList>;
 
 export type EmailSecurityTopTldsSpamGetRequestFormat = "JSON" | "CSV";
 export const EmailSecurityTopTldsSpamGetRequestFormat = S.String;
@@ -20828,9 +20627,8 @@ export const EmailSecurityTopTldsSpamGetRequestSpf = S.String;
 export type EmailSecurityTopTldsSpamGetRequestSpfList = Array<
   EmailSecurityTopTldsSpamGetRequestSpf | (string & {})
 >;
-export const EmailSecurityTopTldsSpamGetRequestSpfList = /*@__PURE__*/ S.Array(
-  EmailSecurityTopTldsSpamGetRequestSpf,
-) as any as S.Schema<EmailSecurityTopTldsSpamGetRequestSpfList>;
+export const EmailSecurityTopTldsSpamGetRequestSpfList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecurityTopTldsSpamGetRequestSpfList>;
 
 export type EmailSecurityTopTldsSpamGetRequestTldCategory = "CLASSIC" | "COUNTRY";
 export const EmailSecurityTopTldsSpamGetRequestTldCategory = S.String;
@@ -20845,9 +20643,8 @@ export const EmailSecurityTopTldsSpamGetRequestTlsVersion = S.String;
 export type EmailSecurityTopTldsSpamGetRequestTlsVersionList = Array<
   EmailSecurityTopTldsSpamGetRequestTlsVersion | (string & {})
 >;
-export const EmailSecurityTopTldsSpamGetRequestTlsVersionList = /*@__PURE__*/ S.Array(
-  EmailSecurityTopTldsSpamGetRequestTlsVersion,
-) as any as S.Schema<EmailSecurityTopTldsSpamGetRequestTlsVersionList>;
+export const EmailSecurityTopTldsSpamGetRequestTlsVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecurityTopTldsSpamGetRequestTlsVersionList>;
 
 export interface GetEmailSecurityTopTldSpamRequest {
   /** Spam classification. */
@@ -21079,9 +20876,8 @@ export const EmailSecurityTopTldsSpoofGetRequestArc = S.String;
 export type EmailSecurityTopTldsSpoofGetRequestArcList = Array<
   EmailSecurityTopTldsSpoofGetRequestArc | (string & {})
 >;
-export const EmailSecurityTopTldsSpoofGetRequestArcList = /*@__PURE__*/ S.Array(
-  EmailSecurityTopTldsSpoofGetRequestArc,
-) as any as S.Schema<EmailSecurityTopTldsSpoofGetRequestArcList>;
+export const EmailSecurityTopTldsSpoofGetRequestArcList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecurityTopTldsSpoofGetRequestArcList>;
 
 export type EmailSecurityTopTldsSpoofGetRequestDateEndList = Array<string>;
 export const EmailSecurityTopTldsSpoofGetRequestDateEndList =
@@ -21101,9 +20897,8 @@ export const EmailSecurityTopTldsSpoofGetRequestDkim = S.String;
 export type EmailSecurityTopTldsSpoofGetRequestDkimList = Array<
   EmailSecurityTopTldsSpoofGetRequestDkim | (string & {})
 >;
-export const EmailSecurityTopTldsSpoofGetRequestDkimList = /*@__PURE__*/ S.Array(
-  EmailSecurityTopTldsSpoofGetRequestDkim,
-) as any as S.Schema<EmailSecurityTopTldsSpoofGetRequestDkimList>;
+export const EmailSecurityTopTldsSpoofGetRequestDkimList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecurityTopTldsSpoofGetRequestDkimList>;
 
 export type EmailSecurityTopTldsSpoofGetRequestDmarc = "PASS" | "NONE" | "FAIL";
 export const EmailSecurityTopTldsSpoofGetRequestDmarc = S.String;
@@ -21111,9 +20906,8 @@ export const EmailSecurityTopTldsSpoofGetRequestDmarc = S.String;
 export type EmailSecurityTopTldsSpoofGetRequestDmarcList = Array<
   EmailSecurityTopTldsSpoofGetRequestDmarc | (string & {})
 >;
-export const EmailSecurityTopTldsSpoofGetRequestDmarcList = /*@__PURE__*/ S.Array(
-  EmailSecurityTopTldsSpoofGetRequestDmarc,
-) as any as S.Schema<EmailSecurityTopTldsSpoofGetRequestDmarcList>;
+export const EmailSecurityTopTldsSpoofGetRequestDmarcList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecurityTopTldsSpoofGetRequestDmarcList>;
 
 export type EmailSecurityTopTldsSpoofGetRequestFormat = "JSON" | "CSV";
 export const EmailSecurityTopTldsSpoofGetRequestFormat = S.String;
@@ -21128,9 +20922,8 @@ export const EmailSecurityTopTldsSpoofGetRequestSpf = S.String;
 export type EmailSecurityTopTldsSpoofGetRequestSpfList = Array<
   EmailSecurityTopTldsSpoofGetRequestSpf | (string & {})
 >;
-export const EmailSecurityTopTldsSpoofGetRequestSpfList = /*@__PURE__*/ S.Array(
-  EmailSecurityTopTldsSpoofGetRequestSpf,
-) as any as S.Schema<EmailSecurityTopTldsSpoofGetRequestSpfList>;
+export const EmailSecurityTopTldsSpoofGetRequestSpfList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecurityTopTldsSpoofGetRequestSpfList>;
 
 export type EmailSecurityTopTldsSpoofGetRequestTldCategory = "CLASSIC" | "COUNTRY";
 export const EmailSecurityTopTldsSpoofGetRequestTldCategory = S.String;
@@ -21145,9 +20938,8 @@ export const EmailSecurityTopTldsSpoofGetRequestTlsVersion = S.String;
 export type EmailSecurityTopTldsSpoofGetRequestTlsVersionList = Array<
   EmailSecurityTopTldsSpoofGetRequestTlsVersion | (string & {})
 >;
-export const EmailSecurityTopTldsSpoofGetRequestTlsVersionList = /*@__PURE__*/ S.Array(
-  EmailSecurityTopTldsSpoofGetRequestTlsVersion,
-) as any as S.Schema<EmailSecurityTopTldsSpoofGetRequestTlsVersionList>;
+export const EmailSecurityTopTldsSpoofGetRequestTlsVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecurityTopTldsSpoofGetRequestTlsVersionList>;
 
 export interface GetEmailSecurityTopTldSpoofRequest {
   /** Spoof classification. */
@@ -21727,9 +21519,8 @@ export type HttpAsesGetRequestBotClass = "LIKELY_AUTOMATED" | "LIKELY_HUMAN";
 export const HttpAsesGetRequestBotClass = S.String;
 
 export type HttpAsesGetRequestBotClassList = Array<HttpAsesGetRequestBotClass | (string & {})>;
-export const HttpAsesGetRequestBotClassList = /*@__PURE__*/ S.Array(
-  HttpAsesGetRequestBotClass,
-) as any as S.Schema<HttpAsesGetRequestBotClassList>;
+export const HttpAsesGetRequestBotClassList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpAsesGetRequestBotClassList>;
 
 export type HttpAsesGetRequestBrowserFamily = "CHROME" | "EDGE" | "FIREFOX" | "SAFARI";
 export const HttpAsesGetRequestBrowserFamily = S.String;
@@ -21737,9 +21528,8 @@ export const HttpAsesGetRequestBrowserFamily = S.String;
 export type HttpAsesGetRequestBrowserFamilyList = Array<
   HttpAsesGetRequestBrowserFamily | (string & {})
 >;
-export const HttpAsesGetRequestBrowserFamilyList = /*@__PURE__*/ S.Array(
-  HttpAsesGetRequestBrowserFamily,
-) as any as S.Schema<HttpAsesGetRequestBrowserFamilyList>;
+export const HttpAsesGetRequestBrowserFamilyList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpAsesGetRequestBrowserFamilyList>;
 
 export type HttpAsesGetRequestContinentList = Array<string>;
 export const HttpAsesGetRequestContinentList =
@@ -21761,9 +21551,8 @@ export type HttpAsesGetRequestDeviceType = "DESKTOP" | "MOBILE" | "OTHER";
 export const HttpAsesGetRequestDeviceType = S.String;
 
 export type HttpAsesGetRequestDeviceTypeList = Array<HttpAsesGetRequestDeviceType | (string & {})>;
-export const HttpAsesGetRequestDeviceTypeList = /*@__PURE__*/ S.Array(
-  HttpAsesGetRequestDeviceType,
-) as any as S.Schema<HttpAsesGetRequestDeviceTypeList>;
+export const HttpAsesGetRequestDeviceTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpAsesGetRequestDeviceTypeList>;
 
 export type HttpAsesGetRequestFormat = "JSON" | "CSV";
 export const HttpAsesGetRequestFormat = S.String;
@@ -21778,9 +21567,8 @@ export const HttpAsesGetRequestHttpProtocol = S.String;
 export type HttpAsesGetRequestHttpProtocolList = Array<
   HttpAsesGetRequestHttpProtocol | (string & {})
 >;
-export const HttpAsesGetRequestHttpProtocolList = /*@__PURE__*/ S.Array(
-  HttpAsesGetRequestHttpProtocol,
-) as any as S.Schema<HttpAsesGetRequestHttpProtocolList>;
+export const HttpAsesGetRequestHttpProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpAsesGetRequestHttpProtocolList>;
 
 export type HttpAsesGetRequestHttpVersion = "HTTPv1" | "HTTPv2" | "HTTPv3";
 export const HttpAsesGetRequestHttpVersion = S.String;
@@ -21788,17 +21576,15 @@ export const HttpAsesGetRequestHttpVersion = S.String;
 export type HttpAsesGetRequestHttpVersionList = Array<
   HttpAsesGetRequestHttpVersion | (string & {})
 >;
-export const HttpAsesGetRequestHttpVersionList = /*@__PURE__*/ S.Array(
-  HttpAsesGetRequestHttpVersion,
-) as any as S.Schema<HttpAsesGetRequestHttpVersionList>;
+export const HttpAsesGetRequestHttpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpAsesGetRequestHttpVersionList>;
 
 export type HttpAsesGetRequestIpVersion = "IPv4" | "IPv6";
 export const HttpAsesGetRequestIpVersion = S.String;
 
 export type HttpAsesGetRequestIpVersionList = Array<HttpAsesGetRequestIpVersion | (string & {})>;
-export const HttpAsesGetRequestIpVersionList = /*@__PURE__*/ S.Array(
-  HttpAsesGetRequestIpVersion,
-) as any as S.Schema<HttpAsesGetRequestIpVersionList>;
+export const HttpAsesGetRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpAsesGetRequestIpVersionList>;
 
 export type HttpAsesGetRequestLocationList = Array<string>;
 export const HttpAsesGetRequestLocationList =
@@ -21819,9 +21605,8 @@ export type HttpAsesGetRequestOs =
 export const HttpAsesGetRequestOs = S.String;
 
 export type HttpAsesGetRequestOsList = Array<HttpAsesGetRequestOs | (string & {})>;
-export const HttpAsesGetRequestOsList = /*@__PURE__*/ S.Array(
-  HttpAsesGetRequestOs,
-) as any as S.Schema<HttpAsesGetRequestOsList>;
+export const HttpAsesGetRequestOsList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpAsesGetRequestOsList>;
 
 export type HttpAsesGetRequestTlsVersion =
   | "TLSv1_0"
@@ -21832,9 +21617,8 @@ export type HttpAsesGetRequestTlsVersion =
 export const HttpAsesGetRequestTlsVersion = S.String;
 
 export type HttpAsesGetRequestTlsVersionList = Array<HttpAsesGetRequestTlsVersion | (string & {})>;
-export const HttpAsesGetRequestTlsVersionList = /*@__PURE__*/ S.Array(
-  HttpAsesGetRequestTlsVersion,
-) as any as S.Schema<HttpAsesGetRequestTlsVersionList>;
+export const HttpAsesGetRequestTlsVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpAsesGetRequestTlsVersionList>;
 
 export interface GetHttpAsRequest {
   /** Filters results by Autonomous System. Specify one or more Autonomous System Numbers (ASNs) as a comma-separated list. Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356. */
@@ -22069,9 +21853,8 @@ export const HttpAsesBotClassGetRequestBrowserFamily = S.String;
 export type HttpAsesBotClassGetRequestBrowserFamilyList = Array<
   HttpAsesBotClassGetRequestBrowserFamily | (string & {})
 >;
-export const HttpAsesBotClassGetRequestBrowserFamilyList = /*@__PURE__*/ S.Array(
-  HttpAsesBotClassGetRequestBrowserFamily,
-) as any as S.Schema<HttpAsesBotClassGetRequestBrowserFamilyList>;
+export const HttpAsesBotClassGetRequestBrowserFamilyList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpAsesBotClassGetRequestBrowserFamilyList>;
 
 export type HttpAsesBotClassGetRequestContinentList = Array<string>;
 export const HttpAsesBotClassGetRequestContinentList =
@@ -22095,9 +21878,8 @@ export const HttpAsesBotClassGetRequestDeviceType = S.String;
 export type HttpAsesBotClassGetRequestDeviceTypeList = Array<
   HttpAsesBotClassGetRequestDeviceType | (string & {})
 >;
-export const HttpAsesBotClassGetRequestDeviceTypeList = /*@__PURE__*/ S.Array(
-  HttpAsesBotClassGetRequestDeviceType,
-) as any as S.Schema<HttpAsesBotClassGetRequestDeviceTypeList>;
+export const HttpAsesBotClassGetRequestDeviceTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpAsesBotClassGetRequestDeviceTypeList>;
 
 export type HttpAsesBotClassGetRequestFormat = "JSON" | "CSV";
 export const HttpAsesBotClassGetRequestFormat = S.String;
@@ -22112,9 +21894,8 @@ export const HttpAsesBotClassGetRequestHttpProtocol = S.String;
 export type HttpAsesBotClassGetRequestHttpProtocolList = Array<
   HttpAsesBotClassGetRequestHttpProtocol | (string & {})
 >;
-export const HttpAsesBotClassGetRequestHttpProtocolList = /*@__PURE__*/ S.Array(
-  HttpAsesBotClassGetRequestHttpProtocol,
-) as any as S.Schema<HttpAsesBotClassGetRequestHttpProtocolList>;
+export const HttpAsesBotClassGetRequestHttpProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpAsesBotClassGetRequestHttpProtocolList>;
 
 export type HttpAsesBotClassGetRequestHttpVersion = "HTTPv1" | "HTTPv2" | "HTTPv3";
 export const HttpAsesBotClassGetRequestHttpVersion = S.String;
@@ -22122,9 +21903,8 @@ export const HttpAsesBotClassGetRequestHttpVersion = S.String;
 export type HttpAsesBotClassGetRequestHttpVersionList = Array<
   HttpAsesBotClassGetRequestHttpVersion | (string & {})
 >;
-export const HttpAsesBotClassGetRequestHttpVersionList = /*@__PURE__*/ S.Array(
-  HttpAsesBotClassGetRequestHttpVersion,
-) as any as S.Schema<HttpAsesBotClassGetRequestHttpVersionList>;
+export const HttpAsesBotClassGetRequestHttpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpAsesBotClassGetRequestHttpVersionList>;
 
 export type HttpAsesBotClassGetRequestIpVersion = "IPv4" | "IPv6";
 export const HttpAsesBotClassGetRequestIpVersion = S.String;
@@ -22132,9 +21912,8 @@ export const HttpAsesBotClassGetRequestIpVersion = S.String;
 export type HttpAsesBotClassGetRequestIpVersionList = Array<
   HttpAsesBotClassGetRequestIpVersion | (string & {})
 >;
-export const HttpAsesBotClassGetRequestIpVersionList = /*@__PURE__*/ S.Array(
-  HttpAsesBotClassGetRequestIpVersion,
-) as any as S.Schema<HttpAsesBotClassGetRequestIpVersionList>;
+export const HttpAsesBotClassGetRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpAsesBotClassGetRequestIpVersionList>;
 
 export type HttpAsesBotClassGetRequestLocationList = Array<string>;
 export const HttpAsesBotClassGetRequestLocationList =
@@ -22155,9 +21934,8 @@ export type HttpAsesBotClassGetRequestOs =
 export const HttpAsesBotClassGetRequestOs = S.String;
 
 export type HttpAsesBotClassGetRequestOsList = Array<HttpAsesBotClassGetRequestOs | (string & {})>;
-export const HttpAsesBotClassGetRequestOsList = /*@__PURE__*/ S.Array(
-  HttpAsesBotClassGetRequestOs,
-) as any as S.Schema<HttpAsesBotClassGetRequestOsList>;
+export const HttpAsesBotClassGetRequestOsList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpAsesBotClassGetRequestOsList>;
 
 export type HttpAsesBotClassGetRequestTlsVersion =
   | "TLSv1_0"
@@ -22170,9 +21948,8 @@ export const HttpAsesBotClassGetRequestTlsVersion = S.String;
 export type HttpAsesBotClassGetRequestTlsVersionList = Array<
   HttpAsesBotClassGetRequestTlsVersion | (string & {})
 >;
-export const HttpAsesBotClassGetRequestTlsVersionList = /*@__PURE__*/ S.Array(
-  HttpAsesBotClassGetRequestTlsVersion,
-) as any as S.Schema<HttpAsesBotClassGetRequestTlsVersionList>;
+export const HttpAsesBotClassGetRequestTlsVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpAsesBotClassGetRequestTlsVersionList>;
 
 export interface GetHttpAsBotClassRequest {
   /** Bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/). */
@@ -22416,9 +22193,8 @@ export const HttpAsesBrowserFamilyGetRequestBotClass = S.String;
 export type HttpAsesBrowserFamilyGetRequestBotClassList = Array<
   HttpAsesBrowserFamilyGetRequestBotClass | (string & {})
 >;
-export const HttpAsesBrowserFamilyGetRequestBotClassList = /*@__PURE__*/ S.Array(
-  HttpAsesBrowserFamilyGetRequestBotClass,
-) as any as S.Schema<HttpAsesBrowserFamilyGetRequestBotClassList>;
+export const HttpAsesBrowserFamilyGetRequestBotClassList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpAsesBrowserFamilyGetRequestBotClassList>;
 
 export type HttpAsesBrowserFamilyGetRequestContinentList = Array<string>;
 export const HttpAsesBrowserFamilyGetRequestContinentList =
@@ -22442,9 +22218,8 @@ export const HttpAsesBrowserFamilyGetRequestDeviceType = S.String;
 export type HttpAsesBrowserFamilyGetRequestDeviceTypeList = Array<
   HttpAsesBrowserFamilyGetRequestDeviceType | (string & {})
 >;
-export const HttpAsesBrowserFamilyGetRequestDeviceTypeList = /*@__PURE__*/ S.Array(
-  HttpAsesBrowserFamilyGetRequestDeviceType,
-) as any as S.Schema<HttpAsesBrowserFamilyGetRequestDeviceTypeList>;
+export const HttpAsesBrowserFamilyGetRequestDeviceTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpAsesBrowserFamilyGetRequestDeviceTypeList>;
 
 export type HttpAsesBrowserFamilyGetRequestFormat = "JSON" | "CSV";
 export const HttpAsesBrowserFamilyGetRequestFormat = S.String;
@@ -22459,9 +22234,8 @@ export const HttpAsesBrowserFamilyGetRequestHttpProtocol = S.String;
 export type HttpAsesBrowserFamilyGetRequestHttpProtocolList = Array<
   HttpAsesBrowserFamilyGetRequestHttpProtocol | (string & {})
 >;
-export const HttpAsesBrowserFamilyGetRequestHttpProtocolList = /*@__PURE__*/ S.Array(
-  HttpAsesBrowserFamilyGetRequestHttpProtocol,
-) as any as S.Schema<HttpAsesBrowserFamilyGetRequestHttpProtocolList>;
+export const HttpAsesBrowserFamilyGetRequestHttpProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpAsesBrowserFamilyGetRequestHttpProtocolList>;
 
 export type HttpAsesBrowserFamilyGetRequestHttpVersion = "HTTPv1" | "HTTPv2" | "HTTPv3";
 export const HttpAsesBrowserFamilyGetRequestHttpVersion = S.String;
@@ -22469,9 +22243,8 @@ export const HttpAsesBrowserFamilyGetRequestHttpVersion = S.String;
 export type HttpAsesBrowserFamilyGetRequestHttpVersionList = Array<
   HttpAsesBrowserFamilyGetRequestHttpVersion | (string & {})
 >;
-export const HttpAsesBrowserFamilyGetRequestHttpVersionList = /*@__PURE__*/ S.Array(
-  HttpAsesBrowserFamilyGetRequestHttpVersion,
-) as any as S.Schema<HttpAsesBrowserFamilyGetRequestHttpVersionList>;
+export const HttpAsesBrowserFamilyGetRequestHttpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpAsesBrowserFamilyGetRequestHttpVersionList>;
 
 export type HttpAsesBrowserFamilyGetRequestIpVersion = "IPv4" | "IPv6";
 export const HttpAsesBrowserFamilyGetRequestIpVersion = S.String;
@@ -22479,9 +22252,8 @@ export const HttpAsesBrowserFamilyGetRequestIpVersion = S.String;
 export type HttpAsesBrowserFamilyGetRequestIpVersionList = Array<
   HttpAsesBrowserFamilyGetRequestIpVersion | (string & {})
 >;
-export const HttpAsesBrowserFamilyGetRequestIpVersionList = /*@__PURE__*/ S.Array(
-  HttpAsesBrowserFamilyGetRequestIpVersion,
-) as any as S.Schema<HttpAsesBrowserFamilyGetRequestIpVersionList>;
+export const HttpAsesBrowserFamilyGetRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpAsesBrowserFamilyGetRequestIpVersionList>;
 
 export type HttpAsesBrowserFamilyGetRequestLocationList = Array<string>;
 export const HttpAsesBrowserFamilyGetRequestLocationList =
@@ -22504,9 +22276,8 @@ export const HttpAsesBrowserFamilyGetRequestOs = S.String;
 export type HttpAsesBrowserFamilyGetRequestOsList = Array<
   HttpAsesBrowserFamilyGetRequestOs | (string & {})
 >;
-export const HttpAsesBrowserFamilyGetRequestOsList = /*@__PURE__*/ S.Array(
-  HttpAsesBrowserFamilyGetRequestOs,
-) as any as S.Schema<HttpAsesBrowserFamilyGetRequestOsList>;
+export const HttpAsesBrowserFamilyGetRequestOsList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpAsesBrowserFamilyGetRequestOsList>;
 
 export type HttpAsesBrowserFamilyGetRequestTlsVersion =
   | "TLSv1_0"
@@ -22519,9 +22290,8 @@ export const HttpAsesBrowserFamilyGetRequestTlsVersion = S.String;
 export type HttpAsesBrowserFamilyGetRequestTlsVersionList = Array<
   HttpAsesBrowserFamilyGetRequestTlsVersion | (string & {})
 >;
-export const HttpAsesBrowserFamilyGetRequestTlsVersionList = /*@__PURE__*/ S.Array(
-  HttpAsesBrowserFamilyGetRequestTlsVersion,
-) as any as S.Schema<HttpAsesBrowserFamilyGetRequestTlsVersionList>;
+export const HttpAsesBrowserFamilyGetRequestTlsVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpAsesBrowserFamilyGetRequestTlsVersionList>;
 
 export interface GetHttpAsBrowserFamilyRequest {
   /** Browser family. */
@@ -22775,9 +22545,8 @@ export const HttpAsesDeviceTypeGetRequestBotClass = S.String;
 export type HttpAsesDeviceTypeGetRequestBotClassList = Array<
   HttpAsesDeviceTypeGetRequestBotClass | (string & {})
 >;
-export const HttpAsesDeviceTypeGetRequestBotClassList = /*@__PURE__*/ S.Array(
-  HttpAsesDeviceTypeGetRequestBotClass,
-) as any as S.Schema<HttpAsesDeviceTypeGetRequestBotClassList>;
+export const HttpAsesDeviceTypeGetRequestBotClassList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpAsesDeviceTypeGetRequestBotClassList>;
 
 export type HttpAsesDeviceTypeGetRequestBrowserFamily = "CHROME" | "EDGE" | "FIREFOX" | "SAFARI";
 export const HttpAsesDeviceTypeGetRequestBrowserFamily = S.String;
@@ -22785,9 +22554,8 @@ export const HttpAsesDeviceTypeGetRequestBrowserFamily = S.String;
 export type HttpAsesDeviceTypeGetRequestBrowserFamilyList = Array<
   HttpAsesDeviceTypeGetRequestBrowserFamily | (string & {})
 >;
-export const HttpAsesDeviceTypeGetRequestBrowserFamilyList = /*@__PURE__*/ S.Array(
-  HttpAsesDeviceTypeGetRequestBrowserFamily,
-) as any as S.Schema<HttpAsesDeviceTypeGetRequestBrowserFamilyList>;
+export const HttpAsesDeviceTypeGetRequestBrowserFamilyList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpAsesDeviceTypeGetRequestBrowserFamilyList>;
 
 export type HttpAsesDeviceTypeGetRequestContinentList = Array<string>;
 export const HttpAsesDeviceTypeGetRequestContinentList =
@@ -22818,9 +22586,8 @@ export const HttpAsesDeviceTypeGetRequestHttpProtocol = S.String;
 export type HttpAsesDeviceTypeGetRequestHttpProtocolList = Array<
   HttpAsesDeviceTypeGetRequestHttpProtocol | (string & {})
 >;
-export const HttpAsesDeviceTypeGetRequestHttpProtocolList = /*@__PURE__*/ S.Array(
-  HttpAsesDeviceTypeGetRequestHttpProtocol,
-) as any as S.Schema<HttpAsesDeviceTypeGetRequestHttpProtocolList>;
+export const HttpAsesDeviceTypeGetRequestHttpProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpAsesDeviceTypeGetRequestHttpProtocolList>;
 
 export type HttpAsesDeviceTypeGetRequestHttpVersion = "HTTPv1" | "HTTPv2" | "HTTPv3";
 export const HttpAsesDeviceTypeGetRequestHttpVersion = S.String;
@@ -22828,9 +22595,8 @@ export const HttpAsesDeviceTypeGetRequestHttpVersion = S.String;
 export type HttpAsesDeviceTypeGetRequestHttpVersionList = Array<
   HttpAsesDeviceTypeGetRequestHttpVersion | (string & {})
 >;
-export const HttpAsesDeviceTypeGetRequestHttpVersionList = /*@__PURE__*/ S.Array(
-  HttpAsesDeviceTypeGetRequestHttpVersion,
-) as any as S.Schema<HttpAsesDeviceTypeGetRequestHttpVersionList>;
+export const HttpAsesDeviceTypeGetRequestHttpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpAsesDeviceTypeGetRequestHttpVersionList>;
 
 export type HttpAsesDeviceTypeGetRequestIpVersion = "IPv4" | "IPv6";
 export const HttpAsesDeviceTypeGetRequestIpVersion = S.String;
@@ -22838,9 +22604,8 @@ export const HttpAsesDeviceTypeGetRequestIpVersion = S.String;
 export type HttpAsesDeviceTypeGetRequestIpVersionList = Array<
   HttpAsesDeviceTypeGetRequestIpVersion | (string & {})
 >;
-export const HttpAsesDeviceTypeGetRequestIpVersionList = /*@__PURE__*/ S.Array(
-  HttpAsesDeviceTypeGetRequestIpVersion,
-) as any as S.Schema<HttpAsesDeviceTypeGetRequestIpVersionList>;
+export const HttpAsesDeviceTypeGetRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpAsesDeviceTypeGetRequestIpVersionList>;
 
 export type HttpAsesDeviceTypeGetRequestLocationList = Array<string>;
 export const HttpAsesDeviceTypeGetRequestLocationList =
@@ -22863,9 +22628,8 @@ export const HttpAsesDeviceTypeGetRequestOs = S.String;
 export type HttpAsesDeviceTypeGetRequestOsList = Array<
   HttpAsesDeviceTypeGetRequestOs | (string & {})
 >;
-export const HttpAsesDeviceTypeGetRequestOsList = /*@__PURE__*/ S.Array(
-  HttpAsesDeviceTypeGetRequestOs,
-) as any as S.Schema<HttpAsesDeviceTypeGetRequestOsList>;
+export const HttpAsesDeviceTypeGetRequestOsList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpAsesDeviceTypeGetRequestOsList>;
 
 export type HttpAsesDeviceTypeGetRequestTlsVersion =
   | "TLSv1_0"
@@ -22878,9 +22642,8 @@ export const HttpAsesDeviceTypeGetRequestTlsVersion = S.String;
 export type HttpAsesDeviceTypeGetRequestTlsVersionList = Array<
   HttpAsesDeviceTypeGetRequestTlsVersion | (string & {})
 >;
-export const HttpAsesDeviceTypeGetRequestTlsVersionList = /*@__PURE__*/ S.Array(
-  HttpAsesDeviceTypeGetRequestTlsVersion,
-) as any as S.Schema<HttpAsesDeviceTypeGetRequestTlsVersionList>;
+export const HttpAsesDeviceTypeGetRequestTlsVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpAsesDeviceTypeGetRequestTlsVersionList>;
 
 export interface GetHttpAsDeviceTypeRequest {
   /** Device type. */
@@ -23128,9 +22891,8 @@ export const HttpAsesHttpMethodGetRequestBotClass = S.String;
 export type HttpAsesHttpMethodGetRequestBotClassList = Array<
   HttpAsesHttpMethodGetRequestBotClass | (string & {})
 >;
-export const HttpAsesHttpMethodGetRequestBotClassList = /*@__PURE__*/ S.Array(
-  HttpAsesHttpMethodGetRequestBotClass,
-) as any as S.Schema<HttpAsesHttpMethodGetRequestBotClassList>;
+export const HttpAsesHttpMethodGetRequestBotClassList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpAsesHttpMethodGetRequestBotClassList>;
 
 export type HttpAsesHttpMethodGetRequestBrowserFamily = "CHROME" | "EDGE" | "FIREFOX" | "SAFARI";
 export const HttpAsesHttpMethodGetRequestBrowserFamily = S.String;
@@ -23138,9 +22900,8 @@ export const HttpAsesHttpMethodGetRequestBrowserFamily = S.String;
 export type HttpAsesHttpMethodGetRequestBrowserFamilyList = Array<
   HttpAsesHttpMethodGetRequestBrowserFamily | (string & {})
 >;
-export const HttpAsesHttpMethodGetRequestBrowserFamilyList = /*@__PURE__*/ S.Array(
-  HttpAsesHttpMethodGetRequestBrowserFamily,
-) as any as S.Schema<HttpAsesHttpMethodGetRequestBrowserFamilyList>;
+export const HttpAsesHttpMethodGetRequestBrowserFamilyList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpAsesHttpMethodGetRequestBrowserFamilyList>;
 
 export type HttpAsesHttpMethodGetRequestContinentList = Array<string>;
 export const HttpAsesHttpMethodGetRequestContinentList =
@@ -23164,9 +22925,8 @@ export const HttpAsesHttpMethodGetRequestDeviceType = S.String;
 export type HttpAsesHttpMethodGetRequestDeviceTypeList = Array<
   HttpAsesHttpMethodGetRequestDeviceType | (string & {})
 >;
-export const HttpAsesHttpMethodGetRequestDeviceTypeList = /*@__PURE__*/ S.Array(
-  HttpAsesHttpMethodGetRequestDeviceType,
-) as any as S.Schema<HttpAsesHttpMethodGetRequestDeviceTypeList>;
+export const HttpAsesHttpMethodGetRequestDeviceTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpAsesHttpMethodGetRequestDeviceTypeList>;
 
 export type HttpAsesHttpMethodGetRequestFormat = "JSON" | "CSV";
 export const HttpAsesHttpMethodGetRequestFormat = S.String;
@@ -23181,9 +22941,8 @@ export const HttpAsesHttpMethodGetRequestHttpProtocol = S.String;
 export type HttpAsesHttpMethodGetRequestHttpProtocolList = Array<
   HttpAsesHttpMethodGetRequestHttpProtocol | (string & {})
 >;
-export const HttpAsesHttpMethodGetRequestHttpProtocolList = /*@__PURE__*/ S.Array(
-  HttpAsesHttpMethodGetRequestHttpProtocol,
-) as any as S.Schema<HttpAsesHttpMethodGetRequestHttpProtocolList>;
+export const HttpAsesHttpMethodGetRequestHttpProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpAsesHttpMethodGetRequestHttpProtocolList>;
 
 export type HttpAsesHttpMethodGetRequestIpVersion = "IPv4" | "IPv6";
 export const HttpAsesHttpMethodGetRequestIpVersion = S.String;
@@ -23191,9 +22950,8 @@ export const HttpAsesHttpMethodGetRequestIpVersion = S.String;
 export type HttpAsesHttpMethodGetRequestIpVersionList = Array<
   HttpAsesHttpMethodGetRequestIpVersion | (string & {})
 >;
-export const HttpAsesHttpMethodGetRequestIpVersionList = /*@__PURE__*/ S.Array(
-  HttpAsesHttpMethodGetRequestIpVersion,
-) as any as S.Schema<HttpAsesHttpMethodGetRequestIpVersionList>;
+export const HttpAsesHttpMethodGetRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpAsesHttpMethodGetRequestIpVersionList>;
 
 export type HttpAsesHttpMethodGetRequestLocationList = Array<string>;
 export const HttpAsesHttpMethodGetRequestLocationList =
@@ -23216,9 +22974,8 @@ export const HttpAsesHttpMethodGetRequestOs = S.String;
 export type HttpAsesHttpMethodGetRequestOsList = Array<
   HttpAsesHttpMethodGetRequestOs | (string & {})
 >;
-export const HttpAsesHttpMethodGetRequestOsList = /*@__PURE__*/ S.Array(
-  HttpAsesHttpMethodGetRequestOs,
-) as any as S.Schema<HttpAsesHttpMethodGetRequestOsList>;
+export const HttpAsesHttpMethodGetRequestOsList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpAsesHttpMethodGetRequestOsList>;
 
 export type HttpAsesHttpMethodGetRequestTlsVersion =
   | "TLSv1_0"
@@ -23231,9 +22988,8 @@ export const HttpAsesHttpMethodGetRequestTlsVersion = S.String;
 export type HttpAsesHttpMethodGetRequestTlsVersionList = Array<
   HttpAsesHttpMethodGetRequestTlsVersion | (string & {})
 >;
-export const HttpAsesHttpMethodGetRequestTlsVersionList = /*@__PURE__*/ S.Array(
-  HttpAsesHttpMethodGetRequestTlsVersion,
-) as any as S.Schema<HttpAsesHttpMethodGetRequestTlsVersionList>;
+export const HttpAsesHttpMethodGetRequestTlsVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpAsesHttpMethodGetRequestTlsVersionList>;
 
 export interface GetHttpAsHttpMethodRequest {
   /** HTTP version. */
@@ -23481,9 +23237,8 @@ export const HttpAsesHttpProtocolGetRequestBotClass = S.String;
 export type HttpAsesHttpProtocolGetRequestBotClassList = Array<
   HttpAsesHttpProtocolGetRequestBotClass | (string & {})
 >;
-export const HttpAsesHttpProtocolGetRequestBotClassList = /*@__PURE__*/ S.Array(
-  HttpAsesHttpProtocolGetRequestBotClass,
-) as any as S.Schema<HttpAsesHttpProtocolGetRequestBotClassList>;
+export const HttpAsesHttpProtocolGetRequestBotClassList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpAsesHttpProtocolGetRequestBotClassList>;
 
 export type HttpAsesHttpProtocolGetRequestBrowserFamily = "CHROME" | "EDGE" | "FIREFOX" | "SAFARI";
 export const HttpAsesHttpProtocolGetRequestBrowserFamily = S.String;
@@ -23491,9 +23246,8 @@ export const HttpAsesHttpProtocolGetRequestBrowserFamily = S.String;
 export type HttpAsesHttpProtocolGetRequestBrowserFamilyList = Array<
   HttpAsesHttpProtocolGetRequestBrowserFamily | (string & {})
 >;
-export const HttpAsesHttpProtocolGetRequestBrowserFamilyList = /*@__PURE__*/ S.Array(
-  HttpAsesHttpProtocolGetRequestBrowserFamily,
-) as any as S.Schema<HttpAsesHttpProtocolGetRequestBrowserFamilyList>;
+export const HttpAsesHttpProtocolGetRequestBrowserFamilyList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpAsesHttpProtocolGetRequestBrowserFamilyList>;
 
 export type HttpAsesHttpProtocolGetRequestContinentList = Array<string>;
 export const HttpAsesHttpProtocolGetRequestContinentList =
@@ -23517,9 +23271,8 @@ export const HttpAsesHttpProtocolGetRequestDeviceType = S.String;
 export type HttpAsesHttpProtocolGetRequestDeviceTypeList = Array<
   HttpAsesHttpProtocolGetRequestDeviceType | (string & {})
 >;
-export const HttpAsesHttpProtocolGetRequestDeviceTypeList = /*@__PURE__*/ S.Array(
-  HttpAsesHttpProtocolGetRequestDeviceType,
-) as any as S.Schema<HttpAsesHttpProtocolGetRequestDeviceTypeList>;
+export const HttpAsesHttpProtocolGetRequestDeviceTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpAsesHttpProtocolGetRequestDeviceTypeList>;
 
 export type HttpAsesHttpProtocolGetRequestFormat = "JSON" | "CSV";
 export const HttpAsesHttpProtocolGetRequestFormat = S.String;
@@ -23534,9 +23287,8 @@ export const HttpAsesHttpProtocolGetRequestHttpVersion = S.String;
 export type HttpAsesHttpProtocolGetRequestHttpVersionList = Array<
   HttpAsesHttpProtocolGetRequestHttpVersion | (string & {})
 >;
-export const HttpAsesHttpProtocolGetRequestHttpVersionList = /*@__PURE__*/ S.Array(
-  HttpAsesHttpProtocolGetRequestHttpVersion,
-) as any as S.Schema<HttpAsesHttpProtocolGetRequestHttpVersionList>;
+export const HttpAsesHttpProtocolGetRequestHttpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpAsesHttpProtocolGetRequestHttpVersionList>;
 
 export type HttpAsesHttpProtocolGetRequestIpVersion = "IPv4" | "IPv6";
 export const HttpAsesHttpProtocolGetRequestIpVersion = S.String;
@@ -23544,9 +23296,8 @@ export const HttpAsesHttpProtocolGetRequestIpVersion = S.String;
 export type HttpAsesHttpProtocolGetRequestIpVersionList = Array<
   HttpAsesHttpProtocolGetRequestIpVersion | (string & {})
 >;
-export const HttpAsesHttpProtocolGetRequestIpVersionList = /*@__PURE__*/ S.Array(
-  HttpAsesHttpProtocolGetRequestIpVersion,
-) as any as S.Schema<HttpAsesHttpProtocolGetRequestIpVersionList>;
+export const HttpAsesHttpProtocolGetRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpAsesHttpProtocolGetRequestIpVersionList>;
 
 export type HttpAsesHttpProtocolGetRequestLocationList = Array<string>;
 export const HttpAsesHttpProtocolGetRequestLocationList =
@@ -23569,9 +23320,8 @@ export const HttpAsesHttpProtocolGetRequestOs = S.String;
 export type HttpAsesHttpProtocolGetRequestOsList = Array<
   HttpAsesHttpProtocolGetRequestOs | (string & {})
 >;
-export const HttpAsesHttpProtocolGetRequestOsList = /*@__PURE__*/ S.Array(
-  HttpAsesHttpProtocolGetRequestOs,
-) as any as S.Schema<HttpAsesHttpProtocolGetRequestOsList>;
+export const HttpAsesHttpProtocolGetRequestOsList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpAsesHttpProtocolGetRequestOsList>;
 
 export type HttpAsesHttpProtocolGetRequestTlsVersion =
   | "TLSv1_0"
@@ -23584,9 +23334,8 @@ export const HttpAsesHttpProtocolGetRequestTlsVersion = S.String;
 export type HttpAsesHttpProtocolGetRequestTlsVersionList = Array<
   HttpAsesHttpProtocolGetRequestTlsVersion | (string & {})
 >;
-export const HttpAsesHttpProtocolGetRequestTlsVersionList = /*@__PURE__*/ S.Array(
-  HttpAsesHttpProtocolGetRequestTlsVersion,
-) as any as S.Schema<HttpAsesHttpProtocolGetRequestTlsVersionList>;
+export const HttpAsesHttpProtocolGetRequestTlsVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpAsesHttpProtocolGetRequestTlsVersionList>;
 
 export interface GetHttpAsHttpProtocolRequest {
   /** HTTP protocol (HTTP vs. HTTPS). */
@@ -23840,9 +23589,8 @@ export const HttpAsesIpVersionGetRequestBotClass = S.String;
 export type HttpAsesIpVersionGetRequestBotClassList = Array<
   HttpAsesIpVersionGetRequestBotClass | (string & {})
 >;
-export const HttpAsesIpVersionGetRequestBotClassList = /*@__PURE__*/ S.Array(
-  HttpAsesIpVersionGetRequestBotClass,
-) as any as S.Schema<HttpAsesIpVersionGetRequestBotClassList>;
+export const HttpAsesIpVersionGetRequestBotClassList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpAsesIpVersionGetRequestBotClassList>;
 
 export type HttpAsesIpVersionGetRequestBrowserFamily = "CHROME" | "EDGE" | "FIREFOX" | "SAFARI";
 export const HttpAsesIpVersionGetRequestBrowserFamily = S.String;
@@ -23850,9 +23598,8 @@ export const HttpAsesIpVersionGetRequestBrowserFamily = S.String;
 export type HttpAsesIpVersionGetRequestBrowserFamilyList = Array<
   HttpAsesIpVersionGetRequestBrowserFamily | (string & {})
 >;
-export const HttpAsesIpVersionGetRequestBrowserFamilyList = /*@__PURE__*/ S.Array(
-  HttpAsesIpVersionGetRequestBrowserFamily,
-) as any as S.Schema<HttpAsesIpVersionGetRequestBrowserFamilyList>;
+export const HttpAsesIpVersionGetRequestBrowserFamilyList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpAsesIpVersionGetRequestBrowserFamilyList>;
 
 export type HttpAsesIpVersionGetRequestContinentList = Array<string>;
 export const HttpAsesIpVersionGetRequestContinentList =
@@ -23876,9 +23623,8 @@ export const HttpAsesIpVersionGetRequestDeviceType = S.String;
 export type HttpAsesIpVersionGetRequestDeviceTypeList = Array<
   HttpAsesIpVersionGetRequestDeviceType | (string & {})
 >;
-export const HttpAsesIpVersionGetRequestDeviceTypeList = /*@__PURE__*/ S.Array(
-  HttpAsesIpVersionGetRequestDeviceType,
-) as any as S.Schema<HttpAsesIpVersionGetRequestDeviceTypeList>;
+export const HttpAsesIpVersionGetRequestDeviceTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpAsesIpVersionGetRequestDeviceTypeList>;
 
 export type HttpAsesIpVersionGetRequestFormat = "JSON" | "CSV";
 export const HttpAsesIpVersionGetRequestFormat = S.String;
@@ -23893,9 +23639,8 @@ export const HttpAsesIpVersionGetRequestHttpProtocol = S.String;
 export type HttpAsesIpVersionGetRequestHttpProtocolList = Array<
   HttpAsesIpVersionGetRequestHttpProtocol | (string & {})
 >;
-export const HttpAsesIpVersionGetRequestHttpProtocolList = /*@__PURE__*/ S.Array(
-  HttpAsesIpVersionGetRequestHttpProtocol,
-) as any as S.Schema<HttpAsesIpVersionGetRequestHttpProtocolList>;
+export const HttpAsesIpVersionGetRequestHttpProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpAsesIpVersionGetRequestHttpProtocolList>;
 
 export type HttpAsesIpVersionGetRequestHttpVersion = "HTTPv1" | "HTTPv2" | "HTTPv3";
 export const HttpAsesIpVersionGetRequestHttpVersion = S.String;
@@ -23903,9 +23648,8 @@ export const HttpAsesIpVersionGetRequestHttpVersion = S.String;
 export type HttpAsesIpVersionGetRequestHttpVersionList = Array<
   HttpAsesIpVersionGetRequestHttpVersion | (string & {})
 >;
-export const HttpAsesIpVersionGetRequestHttpVersionList = /*@__PURE__*/ S.Array(
-  HttpAsesIpVersionGetRequestHttpVersion,
-) as any as S.Schema<HttpAsesIpVersionGetRequestHttpVersionList>;
+export const HttpAsesIpVersionGetRequestHttpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpAsesIpVersionGetRequestHttpVersionList>;
 
 export type HttpAsesIpVersionGetRequestLocationList = Array<string>;
 export const HttpAsesIpVersionGetRequestLocationList =
@@ -23928,9 +23672,8 @@ export const HttpAsesIpVersionGetRequestOs = S.String;
 export type HttpAsesIpVersionGetRequestOsList = Array<
   HttpAsesIpVersionGetRequestOs | (string & {})
 >;
-export const HttpAsesIpVersionGetRequestOsList = /*@__PURE__*/ S.Array(
-  HttpAsesIpVersionGetRequestOs,
-) as any as S.Schema<HttpAsesIpVersionGetRequestOsList>;
+export const HttpAsesIpVersionGetRequestOsList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpAsesIpVersionGetRequestOsList>;
 
 export type HttpAsesIpVersionGetRequestTlsVersion =
   | "TLSv1_0"
@@ -23943,9 +23686,8 @@ export const HttpAsesIpVersionGetRequestTlsVersion = S.String;
 export type HttpAsesIpVersionGetRequestTlsVersionList = Array<
   HttpAsesIpVersionGetRequestTlsVersion | (string & {})
 >;
-export const HttpAsesIpVersionGetRequestTlsVersionList = /*@__PURE__*/ S.Array(
-  HttpAsesIpVersionGetRequestTlsVersion,
-) as any as S.Schema<HttpAsesIpVersionGetRequestTlsVersionList>;
+export const HttpAsesIpVersionGetRequestTlsVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpAsesIpVersionGetRequestTlsVersionList>;
 
 export interface GetHttpAsIpVersionRequest {
   /** IP version. */
@@ -24196,9 +23938,8 @@ export type HttpAsesOsGetRequestBotClass = "LIKELY_AUTOMATED" | "LIKELY_HUMAN";
 export const HttpAsesOsGetRequestBotClass = S.String;
 
 export type HttpAsesOsGetRequestBotClassList = Array<HttpAsesOsGetRequestBotClass | (string & {})>;
-export const HttpAsesOsGetRequestBotClassList = /*@__PURE__*/ S.Array(
-  HttpAsesOsGetRequestBotClass,
-) as any as S.Schema<HttpAsesOsGetRequestBotClassList>;
+export const HttpAsesOsGetRequestBotClassList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpAsesOsGetRequestBotClassList>;
 
 export type HttpAsesOsGetRequestBrowserFamily = "CHROME" | "EDGE" | "FIREFOX" | "SAFARI";
 export const HttpAsesOsGetRequestBrowserFamily = S.String;
@@ -24206,9 +23947,8 @@ export const HttpAsesOsGetRequestBrowserFamily = S.String;
 export type HttpAsesOsGetRequestBrowserFamilyList = Array<
   HttpAsesOsGetRequestBrowserFamily | (string & {})
 >;
-export const HttpAsesOsGetRequestBrowserFamilyList = /*@__PURE__*/ S.Array(
-  HttpAsesOsGetRequestBrowserFamily,
-) as any as S.Schema<HttpAsesOsGetRequestBrowserFamilyList>;
+export const HttpAsesOsGetRequestBrowserFamilyList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpAsesOsGetRequestBrowserFamilyList>;
 
 export type HttpAsesOsGetRequestContinentList = Array<string>;
 export const HttpAsesOsGetRequestContinentList =
@@ -24232,9 +23972,8 @@ export const HttpAsesOsGetRequestDeviceType = S.String;
 export type HttpAsesOsGetRequestDeviceTypeList = Array<
   HttpAsesOsGetRequestDeviceType | (string & {})
 >;
-export const HttpAsesOsGetRequestDeviceTypeList = /*@__PURE__*/ S.Array(
-  HttpAsesOsGetRequestDeviceType,
-) as any as S.Schema<HttpAsesOsGetRequestDeviceTypeList>;
+export const HttpAsesOsGetRequestDeviceTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpAsesOsGetRequestDeviceTypeList>;
 
 export type HttpAsesOsGetRequestFormat = "JSON" | "CSV";
 export const HttpAsesOsGetRequestFormat = S.String;
@@ -24249,9 +23988,8 @@ export const HttpAsesOsGetRequestHttpProtocol = S.String;
 export type HttpAsesOsGetRequestHttpProtocolList = Array<
   HttpAsesOsGetRequestHttpProtocol | (string & {})
 >;
-export const HttpAsesOsGetRequestHttpProtocolList = /*@__PURE__*/ S.Array(
-  HttpAsesOsGetRequestHttpProtocol,
-) as any as S.Schema<HttpAsesOsGetRequestHttpProtocolList>;
+export const HttpAsesOsGetRequestHttpProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpAsesOsGetRequestHttpProtocolList>;
 
 export type HttpAsesOsGetRequestHttpVersion = "HTTPv1" | "HTTPv2" | "HTTPv3";
 export const HttpAsesOsGetRequestHttpVersion = S.String;
@@ -24259,9 +23997,8 @@ export const HttpAsesOsGetRequestHttpVersion = S.String;
 export type HttpAsesOsGetRequestHttpVersionList = Array<
   HttpAsesOsGetRequestHttpVersion | (string & {})
 >;
-export const HttpAsesOsGetRequestHttpVersionList = /*@__PURE__*/ S.Array(
-  HttpAsesOsGetRequestHttpVersion,
-) as any as S.Schema<HttpAsesOsGetRequestHttpVersionList>;
+export const HttpAsesOsGetRequestHttpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpAsesOsGetRequestHttpVersionList>;
 
 export type HttpAsesOsGetRequestIpVersion = "IPv4" | "IPv6";
 export const HttpAsesOsGetRequestIpVersion = S.String;
@@ -24269,9 +24006,8 @@ export const HttpAsesOsGetRequestIpVersion = S.String;
 export type HttpAsesOsGetRequestIpVersionList = Array<
   HttpAsesOsGetRequestIpVersion | (string & {})
 >;
-export const HttpAsesOsGetRequestIpVersionList = /*@__PURE__*/ S.Array(
-  HttpAsesOsGetRequestIpVersion,
-) as any as S.Schema<HttpAsesOsGetRequestIpVersionList>;
+export const HttpAsesOsGetRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpAsesOsGetRequestIpVersionList>;
 
 export type HttpAsesOsGetRequestLocationList = Array<string>;
 export const HttpAsesOsGetRequestLocationList =
@@ -24292,9 +24028,8 @@ export const HttpAsesOsGetRequestTlsVersion = S.String;
 export type HttpAsesOsGetRequestTlsVersionList = Array<
   HttpAsesOsGetRequestTlsVersion | (string & {})
 >;
-export const HttpAsesOsGetRequestTlsVersionList = /*@__PURE__*/ S.Array(
-  HttpAsesOsGetRequestTlsVersion,
-) as any as S.Schema<HttpAsesOsGetRequestTlsVersionList>;
+export const HttpAsesOsGetRequestTlsVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpAsesOsGetRequestTlsVersionList>;
 
 export interface GetHttpAsOsRequest {
   /** Operating system. */
@@ -24536,9 +24271,8 @@ export const HttpAsesTlsVersionGetRequestBotClass = S.String;
 export type HttpAsesTlsVersionGetRequestBotClassList = Array<
   HttpAsesTlsVersionGetRequestBotClass | (string & {})
 >;
-export const HttpAsesTlsVersionGetRequestBotClassList = /*@__PURE__*/ S.Array(
-  HttpAsesTlsVersionGetRequestBotClass,
-) as any as S.Schema<HttpAsesTlsVersionGetRequestBotClassList>;
+export const HttpAsesTlsVersionGetRequestBotClassList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpAsesTlsVersionGetRequestBotClassList>;
 
 export type HttpAsesTlsVersionGetRequestBrowserFamily = "CHROME" | "EDGE" | "FIREFOX" | "SAFARI";
 export const HttpAsesTlsVersionGetRequestBrowserFamily = S.String;
@@ -24546,9 +24280,8 @@ export const HttpAsesTlsVersionGetRequestBrowserFamily = S.String;
 export type HttpAsesTlsVersionGetRequestBrowserFamilyList = Array<
   HttpAsesTlsVersionGetRequestBrowserFamily | (string & {})
 >;
-export const HttpAsesTlsVersionGetRequestBrowserFamilyList = /*@__PURE__*/ S.Array(
-  HttpAsesTlsVersionGetRequestBrowserFamily,
-) as any as S.Schema<HttpAsesTlsVersionGetRequestBrowserFamilyList>;
+export const HttpAsesTlsVersionGetRequestBrowserFamilyList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpAsesTlsVersionGetRequestBrowserFamilyList>;
 
 export type HttpAsesTlsVersionGetRequestContinentList = Array<string>;
 export const HttpAsesTlsVersionGetRequestContinentList =
@@ -24572,9 +24305,8 @@ export const HttpAsesTlsVersionGetRequestDeviceType = S.String;
 export type HttpAsesTlsVersionGetRequestDeviceTypeList = Array<
   HttpAsesTlsVersionGetRequestDeviceType | (string & {})
 >;
-export const HttpAsesTlsVersionGetRequestDeviceTypeList = /*@__PURE__*/ S.Array(
-  HttpAsesTlsVersionGetRequestDeviceType,
-) as any as S.Schema<HttpAsesTlsVersionGetRequestDeviceTypeList>;
+export const HttpAsesTlsVersionGetRequestDeviceTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpAsesTlsVersionGetRequestDeviceTypeList>;
 
 export type HttpAsesTlsVersionGetRequestFormat = "JSON" | "CSV";
 export const HttpAsesTlsVersionGetRequestFormat = S.String;
@@ -24589,9 +24321,8 @@ export const HttpAsesTlsVersionGetRequestHttpProtocol = S.String;
 export type HttpAsesTlsVersionGetRequestHttpProtocolList = Array<
   HttpAsesTlsVersionGetRequestHttpProtocol | (string & {})
 >;
-export const HttpAsesTlsVersionGetRequestHttpProtocolList = /*@__PURE__*/ S.Array(
-  HttpAsesTlsVersionGetRequestHttpProtocol,
-) as any as S.Schema<HttpAsesTlsVersionGetRequestHttpProtocolList>;
+export const HttpAsesTlsVersionGetRequestHttpProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpAsesTlsVersionGetRequestHttpProtocolList>;
 
 export type HttpAsesTlsVersionGetRequestHttpVersion = "HTTPv1" | "HTTPv2" | "HTTPv3";
 export const HttpAsesTlsVersionGetRequestHttpVersion = S.String;
@@ -24599,9 +24330,8 @@ export const HttpAsesTlsVersionGetRequestHttpVersion = S.String;
 export type HttpAsesTlsVersionGetRequestHttpVersionList = Array<
   HttpAsesTlsVersionGetRequestHttpVersion | (string & {})
 >;
-export const HttpAsesTlsVersionGetRequestHttpVersionList = /*@__PURE__*/ S.Array(
-  HttpAsesTlsVersionGetRequestHttpVersion,
-) as any as S.Schema<HttpAsesTlsVersionGetRequestHttpVersionList>;
+export const HttpAsesTlsVersionGetRequestHttpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpAsesTlsVersionGetRequestHttpVersionList>;
 
 export type HttpAsesTlsVersionGetRequestIpVersion = "IPv4" | "IPv6";
 export const HttpAsesTlsVersionGetRequestIpVersion = S.String;
@@ -24609,9 +24339,8 @@ export const HttpAsesTlsVersionGetRequestIpVersion = S.String;
 export type HttpAsesTlsVersionGetRequestIpVersionList = Array<
   HttpAsesTlsVersionGetRequestIpVersion | (string & {})
 >;
-export const HttpAsesTlsVersionGetRequestIpVersionList = /*@__PURE__*/ S.Array(
-  HttpAsesTlsVersionGetRequestIpVersion,
-) as any as S.Schema<HttpAsesTlsVersionGetRequestIpVersionList>;
+export const HttpAsesTlsVersionGetRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpAsesTlsVersionGetRequestIpVersionList>;
 
 export type HttpAsesTlsVersionGetRequestLocationList = Array<string>;
 export const HttpAsesTlsVersionGetRequestLocationList =
@@ -24634,9 +24363,8 @@ export const HttpAsesTlsVersionGetRequestOs = S.String;
 export type HttpAsesTlsVersionGetRequestOsList = Array<
   HttpAsesTlsVersionGetRequestOs | (string & {})
 >;
-export const HttpAsesTlsVersionGetRequestOsList = /*@__PURE__*/ S.Array(
-  HttpAsesTlsVersionGetRequestOs,
-) as any as S.Schema<HttpAsesTlsVersionGetRequestOsList>;
+export const HttpAsesTlsVersionGetRequestOsList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpAsesTlsVersionGetRequestOsList>;
 
 export interface GetHttpAsTlsVersionRequest {
   /** TLS version. */
@@ -24881,9 +24609,8 @@ export const HttpLocationsGetRequestBotClass = S.String;
 export type HttpLocationsGetRequestBotClassList = Array<
   HttpLocationsGetRequestBotClass | (string & {})
 >;
-export const HttpLocationsGetRequestBotClassList = /*@__PURE__*/ S.Array(
-  HttpLocationsGetRequestBotClass,
-) as any as S.Schema<HttpLocationsGetRequestBotClassList>;
+export const HttpLocationsGetRequestBotClassList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpLocationsGetRequestBotClassList>;
 
 export type HttpLocationsGetRequestBrowserFamily = "CHROME" | "EDGE" | "FIREFOX" | "SAFARI";
 export const HttpLocationsGetRequestBrowserFamily = S.String;
@@ -24891,9 +24618,8 @@ export const HttpLocationsGetRequestBrowserFamily = S.String;
 export type HttpLocationsGetRequestBrowserFamilyList = Array<
   HttpLocationsGetRequestBrowserFamily | (string & {})
 >;
-export const HttpLocationsGetRequestBrowserFamilyList = /*@__PURE__*/ S.Array(
-  HttpLocationsGetRequestBrowserFamily,
-) as any as S.Schema<HttpLocationsGetRequestBrowserFamilyList>;
+export const HttpLocationsGetRequestBrowserFamilyList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpLocationsGetRequestBrowserFamilyList>;
 
 export type HttpLocationsGetRequestContinentList = Array<string>;
 export const HttpLocationsGetRequestContinentList =
@@ -24917,9 +24643,8 @@ export const HttpLocationsGetRequestDeviceType = S.String;
 export type HttpLocationsGetRequestDeviceTypeList = Array<
   HttpLocationsGetRequestDeviceType | (string & {})
 >;
-export const HttpLocationsGetRequestDeviceTypeList = /*@__PURE__*/ S.Array(
-  HttpLocationsGetRequestDeviceType,
-) as any as S.Schema<HttpLocationsGetRequestDeviceTypeList>;
+export const HttpLocationsGetRequestDeviceTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpLocationsGetRequestDeviceTypeList>;
 
 export type HttpLocationsGetRequestFormat = "JSON" | "CSV";
 export const HttpLocationsGetRequestFormat = S.String;
@@ -24934,9 +24659,8 @@ export const HttpLocationsGetRequestHttpProtocol = S.String;
 export type HttpLocationsGetRequestHttpProtocolList = Array<
   HttpLocationsGetRequestHttpProtocol | (string & {})
 >;
-export const HttpLocationsGetRequestHttpProtocolList = /*@__PURE__*/ S.Array(
-  HttpLocationsGetRequestHttpProtocol,
-) as any as S.Schema<HttpLocationsGetRequestHttpProtocolList>;
+export const HttpLocationsGetRequestHttpProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpLocationsGetRequestHttpProtocolList>;
 
 export type HttpLocationsGetRequestHttpVersion = "HTTPv1" | "HTTPv2" | "HTTPv3";
 export const HttpLocationsGetRequestHttpVersion = S.String;
@@ -24944,9 +24668,8 @@ export const HttpLocationsGetRequestHttpVersion = S.String;
 export type HttpLocationsGetRequestHttpVersionList = Array<
   HttpLocationsGetRequestHttpVersion | (string & {})
 >;
-export const HttpLocationsGetRequestHttpVersionList = /*@__PURE__*/ S.Array(
-  HttpLocationsGetRequestHttpVersion,
-) as any as S.Schema<HttpLocationsGetRequestHttpVersionList>;
+export const HttpLocationsGetRequestHttpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpLocationsGetRequestHttpVersionList>;
 
 export type HttpLocationsGetRequestIpVersion = "IPv4" | "IPv6";
 export const HttpLocationsGetRequestIpVersion = S.String;
@@ -24954,9 +24677,8 @@ export const HttpLocationsGetRequestIpVersion = S.String;
 export type HttpLocationsGetRequestIpVersionList = Array<
   HttpLocationsGetRequestIpVersion | (string & {})
 >;
-export const HttpLocationsGetRequestIpVersionList = /*@__PURE__*/ S.Array(
-  HttpLocationsGetRequestIpVersion,
-) as any as S.Schema<HttpLocationsGetRequestIpVersionList>;
+export const HttpLocationsGetRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpLocationsGetRequestIpVersionList>;
 
 export type HttpLocationsGetRequestLocationList = Array<string>;
 export const HttpLocationsGetRequestLocationList =
@@ -24977,9 +24699,8 @@ export type HttpLocationsGetRequestOs =
 export const HttpLocationsGetRequestOs = S.String;
 
 export type HttpLocationsGetRequestOsList = Array<HttpLocationsGetRequestOs | (string & {})>;
-export const HttpLocationsGetRequestOsList = /*@__PURE__*/ S.Array(
-  HttpLocationsGetRequestOs,
-) as any as S.Schema<HttpLocationsGetRequestOsList>;
+export const HttpLocationsGetRequestOsList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpLocationsGetRequestOsList>;
 
 export type HttpLocationsGetRequestTlsVersion =
   | "TLSv1_0"
@@ -24992,9 +24713,8 @@ export const HttpLocationsGetRequestTlsVersion = S.String;
 export type HttpLocationsGetRequestTlsVersionList = Array<
   HttpLocationsGetRequestTlsVersion | (string & {})
 >;
-export const HttpLocationsGetRequestTlsVersionList = /*@__PURE__*/ S.Array(
-  HttpLocationsGetRequestTlsVersion,
-) as any as S.Schema<HttpLocationsGetRequestTlsVersionList>;
+export const HttpLocationsGetRequestTlsVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpLocationsGetRequestTlsVersionList>;
 
 export interface GetHttpLocationRequest {
   /** Filters results by Autonomous System. Specify one or more Autonomous System Numbers (ASNs) as a comma-separated list. Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356. */
@@ -25232,9 +24952,8 @@ export const HttpLocationsBotClassGetRequestBrowserFamily = S.String;
 export type HttpLocationsBotClassGetRequestBrowserFamilyList = Array<
   HttpLocationsBotClassGetRequestBrowserFamily | (string & {})
 >;
-export const HttpLocationsBotClassGetRequestBrowserFamilyList = /*@__PURE__*/ S.Array(
-  HttpLocationsBotClassGetRequestBrowserFamily,
-) as any as S.Schema<HttpLocationsBotClassGetRequestBrowserFamilyList>;
+export const HttpLocationsBotClassGetRequestBrowserFamilyList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpLocationsBotClassGetRequestBrowserFamilyList>;
 
 export type HttpLocationsBotClassGetRequestContinentList = Array<string>;
 export const HttpLocationsBotClassGetRequestContinentList =
@@ -25258,9 +24977,8 @@ export const HttpLocationsBotClassGetRequestDeviceType = S.String;
 export type HttpLocationsBotClassGetRequestDeviceTypeList = Array<
   HttpLocationsBotClassGetRequestDeviceType | (string & {})
 >;
-export const HttpLocationsBotClassGetRequestDeviceTypeList = /*@__PURE__*/ S.Array(
-  HttpLocationsBotClassGetRequestDeviceType,
-) as any as S.Schema<HttpLocationsBotClassGetRequestDeviceTypeList>;
+export const HttpLocationsBotClassGetRequestDeviceTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpLocationsBotClassGetRequestDeviceTypeList>;
 
 export type HttpLocationsBotClassGetRequestFormat = "JSON" | "CSV";
 export const HttpLocationsBotClassGetRequestFormat = S.String;
@@ -25275,9 +24993,8 @@ export const HttpLocationsBotClassGetRequestHttpProtocol = S.String;
 export type HttpLocationsBotClassGetRequestHttpProtocolList = Array<
   HttpLocationsBotClassGetRequestHttpProtocol | (string & {})
 >;
-export const HttpLocationsBotClassGetRequestHttpProtocolList = /*@__PURE__*/ S.Array(
-  HttpLocationsBotClassGetRequestHttpProtocol,
-) as any as S.Schema<HttpLocationsBotClassGetRequestHttpProtocolList>;
+export const HttpLocationsBotClassGetRequestHttpProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpLocationsBotClassGetRequestHttpProtocolList>;
 
 export type HttpLocationsBotClassGetRequestHttpVersion = "HTTPv1" | "HTTPv2" | "HTTPv3";
 export const HttpLocationsBotClassGetRequestHttpVersion = S.String;
@@ -25285,9 +25002,8 @@ export const HttpLocationsBotClassGetRequestHttpVersion = S.String;
 export type HttpLocationsBotClassGetRequestHttpVersionList = Array<
   HttpLocationsBotClassGetRequestHttpVersion | (string & {})
 >;
-export const HttpLocationsBotClassGetRequestHttpVersionList = /*@__PURE__*/ S.Array(
-  HttpLocationsBotClassGetRequestHttpVersion,
-) as any as S.Schema<HttpLocationsBotClassGetRequestHttpVersionList>;
+export const HttpLocationsBotClassGetRequestHttpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpLocationsBotClassGetRequestHttpVersionList>;
 
 export type HttpLocationsBotClassGetRequestIpVersion = "IPv4" | "IPv6";
 export const HttpLocationsBotClassGetRequestIpVersion = S.String;
@@ -25295,9 +25011,8 @@ export const HttpLocationsBotClassGetRequestIpVersion = S.String;
 export type HttpLocationsBotClassGetRequestIpVersionList = Array<
   HttpLocationsBotClassGetRequestIpVersion | (string & {})
 >;
-export const HttpLocationsBotClassGetRequestIpVersionList = /*@__PURE__*/ S.Array(
-  HttpLocationsBotClassGetRequestIpVersion,
-) as any as S.Schema<HttpLocationsBotClassGetRequestIpVersionList>;
+export const HttpLocationsBotClassGetRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpLocationsBotClassGetRequestIpVersionList>;
 
 export type HttpLocationsBotClassGetRequestLocationList = Array<string>;
 export const HttpLocationsBotClassGetRequestLocationList =
@@ -25320,9 +25035,8 @@ export const HttpLocationsBotClassGetRequestOs = S.String;
 export type HttpLocationsBotClassGetRequestOsList = Array<
   HttpLocationsBotClassGetRequestOs | (string & {})
 >;
-export const HttpLocationsBotClassGetRequestOsList = /*@__PURE__*/ S.Array(
-  HttpLocationsBotClassGetRequestOs,
-) as any as S.Schema<HttpLocationsBotClassGetRequestOsList>;
+export const HttpLocationsBotClassGetRequestOsList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpLocationsBotClassGetRequestOsList>;
 
 export type HttpLocationsBotClassGetRequestTlsVersion =
   | "TLSv1_0"
@@ -25335,9 +25049,8 @@ export const HttpLocationsBotClassGetRequestTlsVersion = S.String;
 export type HttpLocationsBotClassGetRequestTlsVersionList = Array<
   HttpLocationsBotClassGetRequestTlsVersion | (string & {})
 >;
-export const HttpLocationsBotClassGetRequestTlsVersionList = /*@__PURE__*/ S.Array(
-  HttpLocationsBotClassGetRequestTlsVersion,
-) as any as S.Schema<HttpLocationsBotClassGetRequestTlsVersionList>;
+export const HttpLocationsBotClassGetRequestTlsVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpLocationsBotClassGetRequestTlsVersionList>;
 
 export interface GetHttpLocationBotClassRequest {
   /** Bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/). */
@@ -25591,9 +25304,8 @@ export const HttpLocationsBrowserFamilyGetRequestBotClass = S.String;
 export type HttpLocationsBrowserFamilyGetRequestBotClassList = Array<
   HttpLocationsBrowserFamilyGetRequestBotClass | (string & {})
 >;
-export const HttpLocationsBrowserFamilyGetRequestBotClassList = /*@__PURE__*/ S.Array(
-  HttpLocationsBrowserFamilyGetRequestBotClass,
-) as any as S.Schema<HttpLocationsBrowserFamilyGetRequestBotClassList>;
+export const HttpLocationsBrowserFamilyGetRequestBotClassList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpLocationsBrowserFamilyGetRequestBotClassList>;
 
 export type HttpLocationsBrowserFamilyGetRequestContinentList = Array<string>;
 export const HttpLocationsBrowserFamilyGetRequestContinentList =
@@ -25617,9 +25329,8 @@ export const HttpLocationsBrowserFamilyGetRequestDeviceType = S.String;
 export type HttpLocationsBrowserFamilyGetRequestDeviceTypeList = Array<
   HttpLocationsBrowserFamilyGetRequestDeviceType | (string & {})
 >;
-export const HttpLocationsBrowserFamilyGetRequestDeviceTypeList = /*@__PURE__*/ S.Array(
-  HttpLocationsBrowserFamilyGetRequestDeviceType,
-) as any as S.Schema<HttpLocationsBrowserFamilyGetRequestDeviceTypeList>;
+export const HttpLocationsBrowserFamilyGetRequestDeviceTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpLocationsBrowserFamilyGetRequestDeviceTypeList>;
 
 export type HttpLocationsBrowserFamilyGetRequestFormat = "JSON" | "CSV";
 export const HttpLocationsBrowserFamilyGetRequestFormat = S.String;
@@ -25634,9 +25345,8 @@ export const HttpLocationsBrowserFamilyGetRequestHttpProtocol = S.String;
 export type HttpLocationsBrowserFamilyGetRequestHttpProtocolList = Array<
   HttpLocationsBrowserFamilyGetRequestHttpProtocol | (string & {})
 >;
-export const HttpLocationsBrowserFamilyGetRequestHttpProtocolList = /*@__PURE__*/ S.Array(
-  HttpLocationsBrowserFamilyGetRequestHttpProtocol,
-) as any as S.Schema<HttpLocationsBrowserFamilyGetRequestHttpProtocolList>;
+export const HttpLocationsBrowserFamilyGetRequestHttpProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpLocationsBrowserFamilyGetRequestHttpProtocolList>;
 
 export type HttpLocationsBrowserFamilyGetRequestHttpVersion = "HTTPv1" | "HTTPv2" | "HTTPv3";
 export const HttpLocationsBrowserFamilyGetRequestHttpVersion = S.String;
@@ -25644,9 +25354,8 @@ export const HttpLocationsBrowserFamilyGetRequestHttpVersion = S.String;
 export type HttpLocationsBrowserFamilyGetRequestHttpVersionList = Array<
   HttpLocationsBrowserFamilyGetRequestHttpVersion | (string & {})
 >;
-export const HttpLocationsBrowserFamilyGetRequestHttpVersionList = /*@__PURE__*/ S.Array(
-  HttpLocationsBrowserFamilyGetRequestHttpVersion,
-) as any as S.Schema<HttpLocationsBrowserFamilyGetRequestHttpVersionList>;
+export const HttpLocationsBrowserFamilyGetRequestHttpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpLocationsBrowserFamilyGetRequestHttpVersionList>;
 
 export type HttpLocationsBrowserFamilyGetRequestIpVersion = "IPv4" | "IPv6";
 export const HttpLocationsBrowserFamilyGetRequestIpVersion = S.String;
@@ -25654,9 +25363,8 @@ export const HttpLocationsBrowserFamilyGetRequestIpVersion = S.String;
 export type HttpLocationsBrowserFamilyGetRequestIpVersionList = Array<
   HttpLocationsBrowserFamilyGetRequestIpVersion | (string & {})
 >;
-export const HttpLocationsBrowserFamilyGetRequestIpVersionList = /*@__PURE__*/ S.Array(
-  HttpLocationsBrowserFamilyGetRequestIpVersion,
-) as any as S.Schema<HttpLocationsBrowserFamilyGetRequestIpVersionList>;
+export const HttpLocationsBrowserFamilyGetRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpLocationsBrowserFamilyGetRequestIpVersionList>;
 
 export type HttpLocationsBrowserFamilyGetRequestLocationList = Array<string>;
 export const HttpLocationsBrowserFamilyGetRequestLocationList =
@@ -25679,9 +25387,8 @@ export const HttpLocationsBrowserFamilyGetRequestOs = S.String;
 export type HttpLocationsBrowserFamilyGetRequestOsList = Array<
   HttpLocationsBrowserFamilyGetRequestOs | (string & {})
 >;
-export const HttpLocationsBrowserFamilyGetRequestOsList = /*@__PURE__*/ S.Array(
-  HttpLocationsBrowserFamilyGetRequestOs,
-) as any as S.Schema<HttpLocationsBrowserFamilyGetRequestOsList>;
+export const HttpLocationsBrowserFamilyGetRequestOsList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpLocationsBrowserFamilyGetRequestOsList>;
 
 export type HttpLocationsBrowserFamilyGetRequestTlsVersion =
   | "TLSv1_0"
@@ -25694,9 +25401,8 @@ export const HttpLocationsBrowserFamilyGetRequestTlsVersion = S.String;
 export type HttpLocationsBrowserFamilyGetRequestTlsVersionList = Array<
   HttpLocationsBrowserFamilyGetRequestTlsVersion | (string & {})
 >;
-export const HttpLocationsBrowserFamilyGetRequestTlsVersionList = /*@__PURE__*/ S.Array(
-  HttpLocationsBrowserFamilyGetRequestTlsVersion,
-) as any as S.Schema<HttpLocationsBrowserFamilyGetRequestTlsVersionList>;
+export const HttpLocationsBrowserFamilyGetRequestTlsVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpLocationsBrowserFamilyGetRequestTlsVersionList>;
 
 export interface GetHttpLocationBrowserFamilyRequest {
   /** Browser family. */
@@ -25954,9 +25660,8 @@ export const HttpLocationsDeviceTypeGetRequestBotClass = S.String;
 export type HttpLocationsDeviceTypeGetRequestBotClassList = Array<
   HttpLocationsDeviceTypeGetRequestBotClass | (string & {})
 >;
-export const HttpLocationsDeviceTypeGetRequestBotClassList = /*@__PURE__*/ S.Array(
-  HttpLocationsDeviceTypeGetRequestBotClass,
-) as any as S.Schema<HttpLocationsDeviceTypeGetRequestBotClassList>;
+export const HttpLocationsDeviceTypeGetRequestBotClassList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpLocationsDeviceTypeGetRequestBotClassList>;
 
 export type HttpLocationsDeviceTypeGetRequestBrowserFamily =
   | "CHROME"
@@ -25968,9 +25673,8 @@ export const HttpLocationsDeviceTypeGetRequestBrowserFamily = S.String;
 export type HttpLocationsDeviceTypeGetRequestBrowserFamilyList = Array<
   HttpLocationsDeviceTypeGetRequestBrowserFamily | (string & {})
 >;
-export const HttpLocationsDeviceTypeGetRequestBrowserFamilyList = /*@__PURE__*/ S.Array(
-  HttpLocationsDeviceTypeGetRequestBrowserFamily,
-) as any as S.Schema<HttpLocationsDeviceTypeGetRequestBrowserFamilyList>;
+export const HttpLocationsDeviceTypeGetRequestBrowserFamilyList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpLocationsDeviceTypeGetRequestBrowserFamilyList>;
 
 export type HttpLocationsDeviceTypeGetRequestContinentList = Array<string>;
 export const HttpLocationsDeviceTypeGetRequestContinentList =
@@ -26001,9 +25705,8 @@ export const HttpLocationsDeviceTypeGetRequestHttpProtocol = S.String;
 export type HttpLocationsDeviceTypeGetRequestHttpProtocolList = Array<
   HttpLocationsDeviceTypeGetRequestHttpProtocol | (string & {})
 >;
-export const HttpLocationsDeviceTypeGetRequestHttpProtocolList = /*@__PURE__*/ S.Array(
-  HttpLocationsDeviceTypeGetRequestHttpProtocol,
-) as any as S.Schema<HttpLocationsDeviceTypeGetRequestHttpProtocolList>;
+export const HttpLocationsDeviceTypeGetRequestHttpProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpLocationsDeviceTypeGetRequestHttpProtocolList>;
 
 export type HttpLocationsDeviceTypeGetRequestHttpVersion = "HTTPv1" | "HTTPv2" | "HTTPv3";
 export const HttpLocationsDeviceTypeGetRequestHttpVersion = S.String;
@@ -26011,9 +25714,8 @@ export const HttpLocationsDeviceTypeGetRequestHttpVersion = S.String;
 export type HttpLocationsDeviceTypeGetRequestHttpVersionList = Array<
   HttpLocationsDeviceTypeGetRequestHttpVersion | (string & {})
 >;
-export const HttpLocationsDeviceTypeGetRequestHttpVersionList = /*@__PURE__*/ S.Array(
-  HttpLocationsDeviceTypeGetRequestHttpVersion,
-) as any as S.Schema<HttpLocationsDeviceTypeGetRequestHttpVersionList>;
+export const HttpLocationsDeviceTypeGetRequestHttpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpLocationsDeviceTypeGetRequestHttpVersionList>;
 
 export type HttpLocationsDeviceTypeGetRequestIpVersion = "IPv4" | "IPv6";
 export const HttpLocationsDeviceTypeGetRequestIpVersion = S.String;
@@ -26021,9 +25723,8 @@ export const HttpLocationsDeviceTypeGetRequestIpVersion = S.String;
 export type HttpLocationsDeviceTypeGetRequestIpVersionList = Array<
   HttpLocationsDeviceTypeGetRequestIpVersion | (string & {})
 >;
-export const HttpLocationsDeviceTypeGetRequestIpVersionList = /*@__PURE__*/ S.Array(
-  HttpLocationsDeviceTypeGetRequestIpVersion,
-) as any as S.Schema<HttpLocationsDeviceTypeGetRequestIpVersionList>;
+export const HttpLocationsDeviceTypeGetRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpLocationsDeviceTypeGetRequestIpVersionList>;
 
 export type HttpLocationsDeviceTypeGetRequestLocationList = Array<string>;
 export const HttpLocationsDeviceTypeGetRequestLocationList =
@@ -26046,9 +25747,8 @@ export const HttpLocationsDeviceTypeGetRequestOs = S.String;
 export type HttpLocationsDeviceTypeGetRequestOsList = Array<
   HttpLocationsDeviceTypeGetRequestOs | (string & {})
 >;
-export const HttpLocationsDeviceTypeGetRequestOsList = /*@__PURE__*/ S.Array(
-  HttpLocationsDeviceTypeGetRequestOs,
-) as any as S.Schema<HttpLocationsDeviceTypeGetRequestOsList>;
+export const HttpLocationsDeviceTypeGetRequestOsList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpLocationsDeviceTypeGetRequestOsList>;
 
 export type HttpLocationsDeviceTypeGetRequestTlsVersion =
   | "TLSv1_0"
@@ -26061,9 +25761,8 @@ export const HttpLocationsDeviceTypeGetRequestTlsVersion = S.String;
 export type HttpLocationsDeviceTypeGetRequestTlsVersionList = Array<
   HttpLocationsDeviceTypeGetRequestTlsVersion | (string & {})
 >;
-export const HttpLocationsDeviceTypeGetRequestTlsVersionList = /*@__PURE__*/ S.Array(
-  HttpLocationsDeviceTypeGetRequestTlsVersion,
-) as any as S.Schema<HttpLocationsDeviceTypeGetRequestTlsVersionList>;
+export const HttpLocationsDeviceTypeGetRequestTlsVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpLocationsDeviceTypeGetRequestTlsVersionList>;
 
 export interface GetHttpLocationDeviceTypeRequest {
   /** Device type. */
@@ -26319,9 +26018,8 @@ export const HttpLocationsHttpMethodGetRequestBotClass = S.String;
 export type HttpLocationsHttpMethodGetRequestBotClassList = Array<
   HttpLocationsHttpMethodGetRequestBotClass | (string & {})
 >;
-export const HttpLocationsHttpMethodGetRequestBotClassList = /*@__PURE__*/ S.Array(
-  HttpLocationsHttpMethodGetRequestBotClass,
-) as any as S.Schema<HttpLocationsHttpMethodGetRequestBotClassList>;
+export const HttpLocationsHttpMethodGetRequestBotClassList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpLocationsHttpMethodGetRequestBotClassList>;
 
 export type HttpLocationsHttpMethodGetRequestBrowserFamily =
   | "CHROME"
@@ -26333,9 +26031,8 @@ export const HttpLocationsHttpMethodGetRequestBrowserFamily = S.String;
 export type HttpLocationsHttpMethodGetRequestBrowserFamilyList = Array<
   HttpLocationsHttpMethodGetRequestBrowserFamily | (string & {})
 >;
-export const HttpLocationsHttpMethodGetRequestBrowserFamilyList = /*@__PURE__*/ S.Array(
-  HttpLocationsHttpMethodGetRequestBrowserFamily,
-) as any as S.Schema<HttpLocationsHttpMethodGetRequestBrowserFamilyList>;
+export const HttpLocationsHttpMethodGetRequestBrowserFamilyList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpLocationsHttpMethodGetRequestBrowserFamilyList>;
 
 export type HttpLocationsHttpMethodGetRequestContinentList = Array<string>;
 export const HttpLocationsHttpMethodGetRequestContinentList =
@@ -26359,9 +26056,8 @@ export const HttpLocationsHttpMethodGetRequestDeviceType = S.String;
 export type HttpLocationsHttpMethodGetRequestDeviceTypeList = Array<
   HttpLocationsHttpMethodGetRequestDeviceType | (string & {})
 >;
-export const HttpLocationsHttpMethodGetRequestDeviceTypeList = /*@__PURE__*/ S.Array(
-  HttpLocationsHttpMethodGetRequestDeviceType,
-) as any as S.Schema<HttpLocationsHttpMethodGetRequestDeviceTypeList>;
+export const HttpLocationsHttpMethodGetRequestDeviceTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpLocationsHttpMethodGetRequestDeviceTypeList>;
 
 export type HttpLocationsHttpMethodGetRequestFormat = "JSON" | "CSV";
 export const HttpLocationsHttpMethodGetRequestFormat = S.String;
@@ -26376,9 +26072,8 @@ export const HttpLocationsHttpMethodGetRequestHttpProtocol = S.String;
 export type HttpLocationsHttpMethodGetRequestHttpProtocolList = Array<
   HttpLocationsHttpMethodGetRequestHttpProtocol | (string & {})
 >;
-export const HttpLocationsHttpMethodGetRequestHttpProtocolList = /*@__PURE__*/ S.Array(
-  HttpLocationsHttpMethodGetRequestHttpProtocol,
-) as any as S.Schema<HttpLocationsHttpMethodGetRequestHttpProtocolList>;
+export const HttpLocationsHttpMethodGetRequestHttpProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpLocationsHttpMethodGetRequestHttpProtocolList>;
 
 export type HttpLocationsHttpMethodGetRequestIpVersion = "IPv4" | "IPv6";
 export const HttpLocationsHttpMethodGetRequestIpVersion = S.String;
@@ -26386,9 +26081,8 @@ export const HttpLocationsHttpMethodGetRequestIpVersion = S.String;
 export type HttpLocationsHttpMethodGetRequestIpVersionList = Array<
   HttpLocationsHttpMethodGetRequestIpVersion | (string & {})
 >;
-export const HttpLocationsHttpMethodGetRequestIpVersionList = /*@__PURE__*/ S.Array(
-  HttpLocationsHttpMethodGetRequestIpVersion,
-) as any as S.Schema<HttpLocationsHttpMethodGetRequestIpVersionList>;
+export const HttpLocationsHttpMethodGetRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpLocationsHttpMethodGetRequestIpVersionList>;
 
 export type HttpLocationsHttpMethodGetRequestLocationList = Array<string>;
 export const HttpLocationsHttpMethodGetRequestLocationList =
@@ -26411,9 +26105,8 @@ export const HttpLocationsHttpMethodGetRequestOs = S.String;
 export type HttpLocationsHttpMethodGetRequestOsList = Array<
   HttpLocationsHttpMethodGetRequestOs | (string & {})
 >;
-export const HttpLocationsHttpMethodGetRequestOsList = /*@__PURE__*/ S.Array(
-  HttpLocationsHttpMethodGetRequestOs,
-) as any as S.Schema<HttpLocationsHttpMethodGetRequestOsList>;
+export const HttpLocationsHttpMethodGetRequestOsList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpLocationsHttpMethodGetRequestOsList>;
 
 export type HttpLocationsHttpMethodGetRequestTlsVersion =
   | "TLSv1_0"
@@ -26426,9 +26119,8 @@ export const HttpLocationsHttpMethodGetRequestTlsVersion = S.String;
 export type HttpLocationsHttpMethodGetRequestTlsVersionList = Array<
   HttpLocationsHttpMethodGetRequestTlsVersion | (string & {})
 >;
-export const HttpLocationsHttpMethodGetRequestTlsVersionList = /*@__PURE__*/ S.Array(
-  HttpLocationsHttpMethodGetRequestTlsVersion,
-) as any as S.Schema<HttpLocationsHttpMethodGetRequestTlsVersionList>;
+export const HttpLocationsHttpMethodGetRequestTlsVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpLocationsHttpMethodGetRequestTlsVersionList>;
 
 export interface GetHttpLocationHttpMethodRequest {
   /** HTTP version. */
@@ -26684,9 +26376,8 @@ export const HttpLocationsHttpProtocolGetRequestBotClass = S.String;
 export type HttpLocationsHttpProtocolGetRequestBotClassList = Array<
   HttpLocationsHttpProtocolGetRequestBotClass | (string & {})
 >;
-export const HttpLocationsHttpProtocolGetRequestBotClassList = /*@__PURE__*/ S.Array(
-  HttpLocationsHttpProtocolGetRequestBotClass,
-) as any as S.Schema<HttpLocationsHttpProtocolGetRequestBotClassList>;
+export const HttpLocationsHttpProtocolGetRequestBotClassList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpLocationsHttpProtocolGetRequestBotClassList>;
 
 export type HttpLocationsHttpProtocolGetRequestBrowserFamily =
   | "CHROME"
@@ -26698,9 +26389,8 @@ export const HttpLocationsHttpProtocolGetRequestBrowserFamily = S.String;
 export type HttpLocationsHttpProtocolGetRequestBrowserFamilyList = Array<
   HttpLocationsHttpProtocolGetRequestBrowserFamily | (string & {})
 >;
-export const HttpLocationsHttpProtocolGetRequestBrowserFamilyList = /*@__PURE__*/ S.Array(
-  HttpLocationsHttpProtocolGetRequestBrowserFamily,
-) as any as S.Schema<HttpLocationsHttpProtocolGetRequestBrowserFamilyList>;
+export const HttpLocationsHttpProtocolGetRequestBrowserFamilyList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpLocationsHttpProtocolGetRequestBrowserFamilyList>;
 
 export type HttpLocationsHttpProtocolGetRequestContinentList = Array<string>;
 export const HttpLocationsHttpProtocolGetRequestContinentList =
@@ -26724,9 +26414,8 @@ export const HttpLocationsHttpProtocolGetRequestDeviceType = S.String;
 export type HttpLocationsHttpProtocolGetRequestDeviceTypeList = Array<
   HttpLocationsHttpProtocolGetRequestDeviceType | (string & {})
 >;
-export const HttpLocationsHttpProtocolGetRequestDeviceTypeList = /*@__PURE__*/ S.Array(
-  HttpLocationsHttpProtocolGetRequestDeviceType,
-) as any as S.Schema<HttpLocationsHttpProtocolGetRequestDeviceTypeList>;
+export const HttpLocationsHttpProtocolGetRequestDeviceTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpLocationsHttpProtocolGetRequestDeviceTypeList>;
 
 export type HttpLocationsHttpProtocolGetRequestFormat = "JSON" | "CSV";
 export const HttpLocationsHttpProtocolGetRequestFormat = S.String;
@@ -26741,9 +26430,8 @@ export const HttpLocationsHttpProtocolGetRequestHttpVersion = S.String;
 export type HttpLocationsHttpProtocolGetRequestHttpVersionList = Array<
   HttpLocationsHttpProtocolGetRequestHttpVersion | (string & {})
 >;
-export const HttpLocationsHttpProtocolGetRequestHttpVersionList = /*@__PURE__*/ S.Array(
-  HttpLocationsHttpProtocolGetRequestHttpVersion,
-) as any as S.Schema<HttpLocationsHttpProtocolGetRequestHttpVersionList>;
+export const HttpLocationsHttpProtocolGetRequestHttpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpLocationsHttpProtocolGetRequestHttpVersionList>;
 
 export type HttpLocationsHttpProtocolGetRequestIpVersion = "IPv4" | "IPv6";
 export const HttpLocationsHttpProtocolGetRequestIpVersion = S.String;
@@ -26751,9 +26439,8 @@ export const HttpLocationsHttpProtocolGetRequestIpVersion = S.String;
 export type HttpLocationsHttpProtocolGetRequestIpVersionList = Array<
   HttpLocationsHttpProtocolGetRequestIpVersion | (string & {})
 >;
-export const HttpLocationsHttpProtocolGetRequestIpVersionList = /*@__PURE__*/ S.Array(
-  HttpLocationsHttpProtocolGetRequestIpVersion,
-) as any as S.Schema<HttpLocationsHttpProtocolGetRequestIpVersionList>;
+export const HttpLocationsHttpProtocolGetRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpLocationsHttpProtocolGetRequestIpVersionList>;
 
 export type HttpLocationsHttpProtocolGetRequestLocationList = Array<string>;
 export const HttpLocationsHttpProtocolGetRequestLocationList =
@@ -26776,9 +26463,8 @@ export const HttpLocationsHttpProtocolGetRequestOs = S.String;
 export type HttpLocationsHttpProtocolGetRequestOsList = Array<
   HttpLocationsHttpProtocolGetRequestOs | (string & {})
 >;
-export const HttpLocationsHttpProtocolGetRequestOsList = /*@__PURE__*/ S.Array(
-  HttpLocationsHttpProtocolGetRequestOs,
-) as any as S.Schema<HttpLocationsHttpProtocolGetRequestOsList>;
+export const HttpLocationsHttpProtocolGetRequestOsList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpLocationsHttpProtocolGetRequestOsList>;
 
 export type HttpLocationsHttpProtocolGetRequestTlsVersion =
   | "TLSv1_0"
@@ -26791,9 +26477,8 @@ export const HttpLocationsHttpProtocolGetRequestTlsVersion = S.String;
 export type HttpLocationsHttpProtocolGetRequestTlsVersionList = Array<
   HttpLocationsHttpProtocolGetRequestTlsVersion | (string & {})
 >;
-export const HttpLocationsHttpProtocolGetRequestTlsVersionList = /*@__PURE__*/ S.Array(
-  HttpLocationsHttpProtocolGetRequestTlsVersion,
-) as any as S.Schema<HttpLocationsHttpProtocolGetRequestTlsVersionList>;
+export const HttpLocationsHttpProtocolGetRequestTlsVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpLocationsHttpProtocolGetRequestTlsVersionList>;
 
 export interface GetHttpLocationHttpProtocolRequest {
   /** HTTP protocol (HTTP vs. HTTPS). */
@@ -27049,9 +26734,8 @@ export const HttpLocationsIpVersionGetRequestBotClass = S.String;
 export type HttpLocationsIpVersionGetRequestBotClassList = Array<
   HttpLocationsIpVersionGetRequestBotClass | (string & {})
 >;
-export const HttpLocationsIpVersionGetRequestBotClassList = /*@__PURE__*/ S.Array(
-  HttpLocationsIpVersionGetRequestBotClass,
-) as any as S.Schema<HttpLocationsIpVersionGetRequestBotClassList>;
+export const HttpLocationsIpVersionGetRequestBotClassList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpLocationsIpVersionGetRequestBotClassList>;
 
 export type HttpLocationsIpVersionGetRequestBrowserFamily =
   | "CHROME"
@@ -27063,9 +26747,8 @@ export const HttpLocationsIpVersionGetRequestBrowserFamily = S.String;
 export type HttpLocationsIpVersionGetRequestBrowserFamilyList = Array<
   HttpLocationsIpVersionGetRequestBrowserFamily | (string & {})
 >;
-export const HttpLocationsIpVersionGetRequestBrowserFamilyList = /*@__PURE__*/ S.Array(
-  HttpLocationsIpVersionGetRequestBrowserFamily,
-) as any as S.Schema<HttpLocationsIpVersionGetRequestBrowserFamilyList>;
+export const HttpLocationsIpVersionGetRequestBrowserFamilyList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpLocationsIpVersionGetRequestBrowserFamilyList>;
 
 export type HttpLocationsIpVersionGetRequestContinentList = Array<string>;
 export const HttpLocationsIpVersionGetRequestContinentList =
@@ -27089,9 +26772,8 @@ export const HttpLocationsIpVersionGetRequestDeviceType = S.String;
 export type HttpLocationsIpVersionGetRequestDeviceTypeList = Array<
   HttpLocationsIpVersionGetRequestDeviceType | (string & {})
 >;
-export const HttpLocationsIpVersionGetRequestDeviceTypeList = /*@__PURE__*/ S.Array(
-  HttpLocationsIpVersionGetRequestDeviceType,
-) as any as S.Schema<HttpLocationsIpVersionGetRequestDeviceTypeList>;
+export const HttpLocationsIpVersionGetRequestDeviceTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpLocationsIpVersionGetRequestDeviceTypeList>;
 
 export type HttpLocationsIpVersionGetRequestFormat = "JSON" | "CSV";
 export const HttpLocationsIpVersionGetRequestFormat = S.String;
@@ -27106,9 +26788,8 @@ export const HttpLocationsIpVersionGetRequestHttpProtocol = S.String;
 export type HttpLocationsIpVersionGetRequestHttpProtocolList = Array<
   HttpLocationsIpVersionGetRequestHttpProtocol | (string & {})
 >;
-export const HttpLocationsIpVersionGetRequestHttpProtocolList = /*@__PURE__*/ S.Array(
-  HttpLocationsIpVersionGetRequestHttpProtocol,
-) as any as S.Schema<HttpLocationsIpVersionGetRequestHttpProtocolList>;
+export const HttpLocationsIpVersionGetRequestHttpProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpLocationsIpVersionGetRequestHttpProtocolList>;
 
 export type HttpLocationsIpVersionGetRequestHttpVersion = "HTTPv1" | "HTTPv2" | "HTTPv3";
 export const HttpLocationsIpVersionGetRequestHttpVersion = S.String;
@@ -27116,9 +26797,8 @@ export const HttpLocationsIpVersionGetRequestHttpVersion = S.String;
 export type HttpLocationsIpVersionGetRequestHttpVersionList = Array<
   HttpLocationsIpVersionGetRequestHttpVersion | (string & {})
 >;
-export const HttpLocationsIpVersionGetRequestHttpVersionList = /*@__PURE__*/ S.Array(
-  HttpLocationsIpVersionGetRequestHttpVersion,
-) as any as S.Schema<HttpLocationsIpVersionGetRequestHttpVersionList>;
+export const HttpLocationsIpVersionGetRequestHttpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpLocationsIpVersionGetRequestHttpVersionList>;
 
 export type HttpLocationsIpVersionGetRequestLocationList = Array<string>;
 export const HttpLocationsIpVersionGetRequestLocationList =
@@ -27141,9 +26821,8 @@ export const HttpLocationsIpVersionGetRequestOs = S.String;
 export type HttpLocationsIpVersionGetRequestOsList = Array<
   HttpLocationsIpVersionGetRequestOs | (string & {})
 >;
-export const HttpLocationsIpVersionGetRequestOsList = /*@__PURE__*/ S.Array(
-  HttpLocationsIpVersionGetRequestOs,
-) as any as S.Schema<HttpLocationsIpVersionGetRequestOsList>;
+export const HttpLocationsIpVersionGetRequestOsList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpLocationsIpVersionGetRequestOsList>;
 
 export type HttpLocationsIpVersionGetRequestTlsVersion =
   | "TLSv1_0"
@@ -27156,9 +26835,8 @@ export const HttpLocationsIpVersionGetRequestTlsVersion = S.String;
 export type HttpLocationsIpVersionGetRequestTlsVersionList = Array<
   HttpLocationsIpVersionGetRequestTlsVersion | (string & {})
 >;
-export const HttpLocationsIpVersionGetRequestTlsVersionList = /*@__PURE__*/ S.Array(
-  HttpLocationsIpVersionGetRequestTlsVersion,
-) as any as S.Schema<HttpLocationsIpVersionGetRequestTlsVersionList>;
+export const HttpLocationsIpVersionGetRequestTlsVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpLocationsIpVersionGetRequestTlsVersionList>;
 
 export interface GetHttpLocationIpVersionRequest {
   /** IP version. */
@@ -27420,9 +27098,8 @@ export const HttpLocationsOsGetRequestBotClass = S.String;
 export type HttpLocationsOsGetRequestBotClassList = Array<
   HttpLocationsOsGetRequestBotClass | (string & {})
 >;
-export const HttpLocationsOsGetRequestBotClassList = /*@__PURE__*/ S.Array(
-  HttpLocationsOsGetRequestBotClass,
-) as any as S.Schema<HttpLocationsOsGetRequestBotClassList>;
+export const HttpLocationsOsGetRequestBotClassList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpLocationsOsGetRequestBotClassList>;
 
 export type HttpLocationsOsGetRequestBrowserFamily = "CHROME" | "EDGE" | "FIREFOX" | "SAFARI";
 export const HttpLocationsOsGetRequestBrowserFamily = S.String;
@@ -27430,9 +27107,8 @@ export const HttpLocationsOsGetRequestBrowserFamily = S.String;
 export type HttpLocationsOsGetRequestBrowserFamilyList = Array<
   HttpLocationsOsGetRequestBrowserFamily | (string & {})
 >;
-export const HttpLocationsOsGetRequestBrowserFamilyList = /*@__PURE__*/ S.Array(
-  HttpLocationsOsGetRequestBrowserFamily,
-) as any as S.Schema<HttpLocationsOsGetRequestBrowserFamilyList>;
+export const HttpLocationsOsGetRequestBrowserFamilyList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpLocationsOsGetRequestBrowserFamilyList>;
 
 export type HttpLocationsOsGetRequestContinentList = Array<string>;
 export const HttpLocationsOsGetRequestContinentList =
@@ -27456,9 +27132,8 @@ export const HttpLocationsOsGetRequestDeviceType = S.String;
 export type HttpLocationsOsGetRequestDeviceTypeList = Array<
   HttpLocationsOsGetRequestDeviceType | (string & {})
 >;
-export const HttpLocationsOsGetRequestDeviceTypeList = /*@__PURE__*/ S.Array(
-  HttpLocationsOsGetRequestDeviceType,
-) as any as S.Schema<HttpLocationsOsGetRequestDeviceTypeList>;
+export const HttpLocationsOsGetRequestDeviceTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpLocationsOsGetRequestDeviceTypeList>;
 
 export type HttpLocationsOsGetRequestFormat = "JSON" | "CSV";
 export const HttpLocationsOsGetRequestFormat = S.String;
@@ -27473,9 +27148,8 @@ export const HttpLocationsOsGetRequestHttpProtocol = S.String;
 export type HttpLocationsOsGetRequestHttpProtocolList = Array<
   HttpLocationsOsGetRequestHttpProtocol | (string & {})
 >;
-export const HttpLocationsOsGetRequestHttpProtocolList = /*@__PURE__*/ S.Array(
-  HttpLocationsOsGetRequestHttpProtocol,
-) as any as S.Schema<HttpLocationsOsGetRequestHttpProtocolList>;
+export const HttpLocationsOsGetRequestHttpProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpLocationsOsGetRequestHttpProtocolList>;
 
 export type HttpLocationsOsGetRequestHttpVersion = "HTTPv1" | "HTTPv2" | "HTTPv3";
 export const HttpLocationsOsGetRequestHttpVersion = S.String;
@@ -27483,9 +27157,8 @@ export const HttpLocationsOsGetRequestHttpVersion = S.String;
 export type HttpLocationsOsGetRequestHttpVersionList = Array<
   HttpLocationsOsGetRequestHttpVersion | (string & {})
 >;
-export const HttpLocationsOsGetRequestHttpVersionList = /*@__PURE__*/ S.Array(
-  HttpLocationsOsGetRequestHttpVersion,
-) as any as S.Schema<HttpLocationsOsGetRequestHttpVersionList>;
+export const HttpLocationsOsGetRequestHttpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpLocationsOsGetRequestHttpVersionList>;
 
 export type HttpLocationsOsGetRequestIpVersion = "IPv4" | "IPv6";
 export const HttpLocationsOsGetRequestIpVersion = S.String;
@@ -27493,9 +27166,8 @@ export const HttpLocationsOsGetRequestIpVersion = S.String;
 export type HttpLocationsOsGetRequestIpVersionList = Array<
   HttpLocationsOsGetRequestIpVersion | (string & {})
 >;
-export const HttpLocationsOsGetRequestIpVersionList = /*@__PURE__*/ S.Array(
-  HttpLocationsOsGetRequestIpVersion,
-) as any as S.Schema<HttpLocationsOsGetRequestIpVersionList>;
+export const HttpLocationsOsGetRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpLocationsOsGetRequestIpVersionList>;
 
 export type HttpLocationsOsGetRequestLocationList = Array<string>;
 export const HttpLocationsOsGetRequestLocationList =
@@ -27516,9 +27188,8 @@ export const HttpLocationsOsGetRequestTlsVersion = S.String;
 export type HttpLocationsOsGetRequestTlsVersionList = Array<
   HttpLocationsOsGetRequestTlsVersion | (string & {})
 >;
-export const HttpLocationsOsGetRequestTlsVersionList = /*@__PURE__*/ S.Array(
-  HttpLocationsOsGetRequestTlsVersion,
-) as any as S.Schema<HttpLocationsOsGetRequestTlsVersionList>;
+export const HttpLocationsOsGetRequestTlsVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpLocationsOsGetRequestTlsVersionList>;
 
 export interface GetHttpLocationOsRequest {
   /** Operating system. */
@@ -27767,9 +27438,8 @@ export const HttpLocationsTlsVersionGetRequestBotClass = S.String;
 export type HttpLocationsTlsVersionGetRequestBotClassList = Array<
   HttpLocationsTlsVersionGetRequestBotClass | (string & {})
 >;
-export const HttpLocationsTlsVersionGetRequestBotClassList = /*@__PURE__*/ S.Array(
-  HttpLocationsTlsVersionGetRequestBotClass,
-) as any as S.Schema<HttpLocationsTlsVersionGetRequestBotClassList>;
+export const HttpLocationsTlsVersionGetRequestBotClassList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpLocationsTlsVersionGetRequestBotClassList>;
 
 export type HttpLocationsTlsVersionGetRequestBrowserFamily =
   | "CHROME"
@@ -27781,9 +27451,8 @@ export const HttpLocationsTlsVersionGetRequestBrowserFamily = S.String;
 export type HttpLocationsTlsVersionGetRequestBrowserFamilyList = Array<
   HttpLocationsTlsVersionGetRequestBrowserFamily | (string & {})
 >;
-export const HttpLocationsTlsVersionGetRequestBrowserFamilyList = /*@__PURE__*/ S.Array(
-  HttpLocationsTlsVersionGetRequestBrowserFamily,
-) as any as S.Schema<HttpLocationsTlsVersionGetRequestBrowserFamilyList>;
+export const HttpLocationsTlsVersionGetRequestBrowserFamilyList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpLocationsTlsVersionGetRequestBrowserFamilyList>;
 
 export type HttpLocationsTlsVersionGetRequestContinentList = Array<string>;
 export const HttpLocationsTlsVersionGetRequestContinentList =
@@ -27807,9 +27476,8 @@ export const HttpLocationsTlsVersionGetRequestDeviceType = S.String;
 export type HttpLocationsTlsVersionGetRequestDeviceTypeList = Array<
   HttpLocationsTlsVersionGetRequestDeviceType | (string & {})
 >;
-export const HttpLocationsTlsVersionGetRequestDeviceTypeList = /*@__PURE__*/ S.Array(
-  HttpLocationsTlsVersionGetRequestDeviceType,
-) as any as S.Schema<HttpLocationsTlsVersionGetRequestDeviceTypeList>;
+export const HttpLocationsTlsVersionGetRequestDeviceTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpLocationsTlsVersionGetRequestDeviceTypeList>;
 
 export type HttpLocationsTlsVersionGetRequestFormat = "JSON" | "CSV";
 export const HttpLocationsTlsVersionGetRequestFormat = S.String;
@@ -27824,9 +27492,8 @@ export const HttpLocationsTlsVersionGetRequestHttpProtocol = S.String;
 export type HttpLocationsTlsVersionGetRequestHttpProtocolList = Array<
   HttpLocationsTlsVersionGetRequestHttpProtocol | (string & {})
 >;
-export const HttpLocationsTlsVersionGetRequestHttpProtocolList = /*@__PURE__*/ S.Array(
-  HttpLocationsTlsVersionGetRequestHttpProtocol,
-) as any as S.Schema<HttpLocationsTlsVersionGetRequestHttpProtocolList>;
+export const HttpLocationsTlsVersionGetRequestHttpProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpLocationsTlsVersionGetRequestHttpProtocolList>;
 
 export type HttpLocationsTlsVersionGetRequestHttpVersion = "HTTPv1" | "HTTPv2" | "HTTPv3";
 export const HttpLocationsTlsVersionGetRequestHttpVersion = S.String;
@@ -27834,9 +27501,8 @@ export const HttpLocationsTlsVersionGetRequestHttpVersion = S.String;
 export type HttpLocationsTlsVersionGetRequestHttpVersionList = Array<
   HttpLocationsTlsVersionGetRequestHttpVersion | (string & {})
 >;
-export const HttpLocationsTlsVersionGetRequestHttpVersionList = /*@__PURE__*/ S.Array(
-  HttpLocationsTlsVersionGetRequestHttpVersion,
-) as any as S.Schema<HttpLocationsTlsVersionGetRequestHttpVersionList>;
+export const HttpLocationsTlsVersionGetRequestHttpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpLocationsTlsVersionGetRequestHttpVersionList>;
 
 export type HttpLocationsTlsVersionGetRequestIpVersion = "IPv4" | "IPv6";
 export const HttpLocationsTlsVersionGetRequestIpVersion = S.String;
@@ -27844,9 +27510,8 @@ export const HttpLocationsTlsVersionGetRequestIpVersion = S.String;
 export type HttpLocationsTlsVersionGetRequestIpVersionList = Array<
   HttpLocationsTlsVersionGetRequestIpVersion | (string & {})
 >;
-export const HttpLocationsTlsVersionGetRequestIpVersionList = /*@__PURE__*/ S.Array(
-  HttpLocationsTlsVersionGetRequestIpVersion,
-) as any as S.Schema<HttpLocationsTlsVersionGetRequestIpVersionList>;
+export const HttpLocationsTlsVersionGetRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpLocationsTlsVersionGetRequestIpVersionList>;
 
 export type HttpLocationsTlsVersionGetRequestLocationList = Array<string>;
 export const HttpLocationsTlsVersionGetRequestLocationList =
@@ -27869,9 +27534,8 @@ export const HttpLocationsTlsVersionGetRequestOs = S.String;
 export type HttpLocationsTlsVersionGetRequestOsList = Array<
   HttpLocationsTlsVersionGetRequestOs | (string & {})
 >;
-export const HttpLocationsTlsVersionGetRequestOsList = /*@__PURE__*/ S.Array(
-  HttpLocationsTlsVersionGetRequestOs,
-) as any as S.Schema<HttpLocationsTlsVersionGetRequestOsList>;
+export const HttpLocationsTlsVersionGetRequestOsList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpLocationsTlsVersionGetRequestOsList>;
 
 export interface GetHttpLocationTlsVersionRequest {
   /** TLS version. */
@@ -28392,9 +28056,8 @@ export const TrafficAnomaliesGetRequestType = S.String;
 export type TrafficAnomaliesGetRequestTypeList = Array<
   TrafficAnomaliesGetRequestType | (string & {})
 >;
-export const TrafficAnomaliesGetRequestTypeList = /*@__PURE__*/ S.Array(
-  TrafficAnomaliesGetRequestType,
-) as any as S.Schema<TrafficAnomaliesGetRequestTypeList>;
+export const TrafficAnomaliesGetRequestTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<TrafficAnomaliesGetRequestTypeList>;
 
 export interface GetTrafficAnomalyRequest {
   /** Filters results by Autonomous System. Specify a single Autonomous System Number (ASN) as integer. */
@@ -28850,9 +28513,8 @@ export const AttacksLayer7SummaryHttpMethodRequestHttpVersion = S.String;
 export type AttacksLayer7SummaryHttpMethodRequestHttpVersionList = Array<
   AttacksLayer7SummaryHttpMethodRequestHttpVersion | (string & {})
 >;
-export const AttacksLayer7SummaryHttpMethodRequestHttpVersionList = /*@__PURE__*/ S.Array(
-  AttacksLayer7SummaryHttpMethodRequestHttpVersion,
-) as any as S.Schema<AttacksLayer7SummaryHttpMethodRequestHttpVersionList>;
+export const AttacksLayer7SummaryHttpMethodRequestHttpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer7SummaryHttpMethodRequestHttpVersionList>;
 
 export type AttacksLayer7SummaryHttpMethodRequestIpVersion = "IPv4" | "IPv6";
 export const AttacksLayer7SummaryHttpMethodRequestIpVersion = S.String;
@@ -28860,9 +28522,8 @@ export const AttacksLayer7SummaryHttpMethodRequestIpVersion = S.String;
 export type AttacksLayer7SummaryHttpMethodRequestIpVersionList = Array<
   AttacksLayer7SummaryHttpMethodRequestIpVersion | (string & {})
 >;
-export const AttacksLayer7SummaryHttpMethodRequestIpVersionList = /*@__PURE__*/ S.Array(
-  AttacksLayer7SummaryHttpMethodRequestIpVersion,
-) as any as S.Schema<AttacksLayer7SummaryHttpMethodRequestIpVersionList>;
+export const AttacksLayer7SummaryHttpMethodRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer7SummaryHttpMethodRequestIpVersionList>;
 
 export type AttacksLayer7SummaryHttpMethodRequestLocationList = Array<string>;
 export const AttacksLayer7SummaryHttpMethodRequestLocationList =
@@ -28881,9 +28542,8 @@ export const AttacksLayer7SummaryHttpMethodRequestMitigationProduct = S.String;
 export type AttacksLayer7SummaryHttpMethodRequestMitigationProductList = Array<
   AttacksLayer7SummaryHttpMethodRequestMitigationProduct | (string & {})
 >;
-export const AttacksLayer7SummaryHttpMethodRequestMitigationProductList = /*@__PURE__*/ S.Array(
-  AttacksLayer7SummaryHttpMethodRequestMitigationProduct,
-) as any as S.Schema<AttacksLayer7SummaryHttpMethodRequestMitigationProductList>;
+export const AttacksLayer7SummaryHttpMethodRequestMitigationProductList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer7SummaryHttpMethodRequestMitigationProductList>;
 
 export type AttacksLayer7SummaryHttpMethodRequestNameList = Array<string>;
 export const AttacksLayer7SummaryHttpMethodRequestNameList =
@@ -29143,9 +28803,8 @@ export const AttacksLayer7TimeseriesGroupsHttpMethodRequestHttpVersion = S.Strin
 export type AttacksLayer7TimeseriesGroupsHttpMethodRequestHttpVersionList = Array<
   AttacksLayer7TimeseriesGroupsHttpMethodRequestHttpVersion | (string & {})
 >;
-export const AttacksLayer7TimeseriesGroupsHttpMethodRequestHttpVersionList = /*@__PURE__*/ S.Array(
-  AttacksLayer7TimeseriesGroupsHttpMethodRequestHttpVersion,
-) as any as S.Schema<AttacksLayer7TimeseriesGroupsHttpMethodRequestHttpVersionList>;
+export const AttacksLayer7TimeseriesGroupsHttpMethodRequestHttpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer7TimeseriesGroupsHttpMethodRequestHttpVersionList>;
 
 export type AttacksLayer7TimeseriesGroupsHttpMethodRequestIpVersion = "IPv4" | "IPv6";
 export const AttacksLayer7TimeseriesGroupsHttpMethodRequestIpVersion = S.String;
@@ -29153,9 +28812,8 @@ export const AttacksLayer7TimeseriesGroupsHttpMethodRequestIpVersion = S.String;
 export type AttacksLayer7TimeseriesGroupsHttpMethodRequestIpVersionList = Array<
   AttacksLayer7TimeseriesGroupsHttpMethodRequestIpVersion | (string & {})
 >;
-export const AttacksLayer7TimeseriesGroupsHttpMethodRequestIpVersionList = /*@__PURE__*/ S.Array(
-  AttacksLayer7TimeseriesGroupsHttpMethodRequestIpVersion,
-) as any as S.Schema<AttacksLayer7TimeseriesGroupsHttpMethodRequestIpVersionList>;
+export const AttacksLayer7TimeseriesGroupsHttpMethodRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer7TimeseriesGroupsHttpMethodRequestIpVersionList>;
 
 export type AttacksLayer7TimeseriesGroupsHttpMethodRequestLocationList = Array<string>;
 export const AttacksLayer7TimeseriesGroupsHttpMethodRequestLocationList =
@@ -29175,9 +28833,7 @@ export type AttacksLayer7TimeseriesGroupsHttpMethodRequestMitigationProductList 
   AttacksLayer7TimeseriesGroupsHttpMethodRequestMitigationProduct | (string & {})
 >;
 export const AttacksLayer7TimeseriesGroupsHttpMethodRequestMitigationProductList =
-  /*@__PURE__*/ S.Array(
-    AttacksLayer7TimeseriesGroupsHttpMethodRequestMitigationProduct,
-  ) as any as S.Schema<AttacksLayer7TimeseriesGroupsHttpMethodRequestMitigationProductList>;
+  AiTimeseriesGroupsTimeseriesGroupsRequestResponseStatusCategoryList as any as S.Schema<AttacksLayer7TimeseriesGroupsHttpMethodRequestMitigationProductList>;
 
 export type AttacksLayer7TimeseriesGroupsHttpMethodRequestNameList = Array<string>;
 export const AttacksLayer7TimeseriesGroupsHttpMethodRequestNameList =
@@ -29467,9 +29123,8 @@ export const HttpSummaryHttpProtocolRequestBotClass = S.String;
 export type HttpSummaryHttpProtocolRequestBotClassList = Array<
   HttpSummaryHttpProtocolRequestBotClass | (string & {})
 >;
-export const HttpSummaryHttpProtocolRequestBotClassList = /*@__PURE__*/ S.Array(
-  HttpSummaryHttpProtocolRequestBotClass,
-) as any as S.Schema<HttpSummaryHttpProtocolRequestBotClassList>;
+export const HttpSummaryHttpProtocolRequestBotClassList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpSummaryHttpProtocolRequestBotClassList>;
 
 export type HttpSummaryHttpProtocolRequestBrowserFamily = "CHROME" | "EDGE" | "FIREFOX" | "SAFARI";
 export const HttpSummaryHttpProtocolRequestBrowserFamily = S.String;
@@ -29477,9 +29132,8 @@ export const HttpSummaryHttpProtocolRequestBrowserFamily = S.String;
 export type HttpSummaryHttpProtocolRequestBrowserFamilyList = Array<
   HttpSummaryHttpProtocolRequestBrowserFamily | (string & {})
 >;
-export const HttpSummaryHttpProtocolRequestBrowserFamilyList = /*@__PURE__*/ S.Array(
-  HttpSummaryHttpProtocolRequestBrowserFamily,
-) as any as S.Schema<HttpSummaryHttpProtocolRequestBrowserFamilyList>;
+export const HttpSummaryHttpProtocolRequestBrowserFamilyList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpSummaryHttpProtocolRequestBrowserFamilyList>;
 
 export type HttpSummaryHttpProtocolRequestContinentList = Array<string>;
 export const HttpSummaryHttpProtocolRequestContinentList =
@@ -29503,9 +29157,8 @@ export const HttpSummaryHttpProtocolRequestDeviceType = S.String;
 export type HttpSummaryHttpProtocolRequestDeviceTypeList = Array<
   HttpSummaryHttpProtocolRequestDeviceType | (string & {})
 >;
-export const HttpSummaryHttpProtocolRequestDeviceTypeList = /*@__PURE__*/ S.Array(
-  HttpSummaryHttpProtocolRequestDeviceType,
-) as any as S.Schema<HttpSummaryHttpProtocolRequestDeviceTypeList>;
+export const HttpSummaryHttpProtocolRequestDeviceTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpSummaryHttpProtocolRequestDeviceTypeList>;
 
 export type HttpSummaryHttpProtocolRequestFormat = "JSON" | "CSV";
 export const HttpSummaryHttpProtocolRequestFormat = S.String;
@@ -29520,9 +29173,8 @@ export const HttpSummaryHttpProtocolRequestHttpVersion = S.String;
 export type HttpSummaryHttpProtocolRequestHttpVersionList = Array<
   HttpSummaryHttpProtocolRequestHttpVersion | (string & {})
 >;
-export const HttpSummaryHttpProtocolRequestHttpVersionList = /*@__PURE__*/ S.Array(
-  HttpSummaryHttpProtocolRequestHttpVersion,
-) as any as S.Schema<HttpSummaryHttpProtocolRequestHttpVersionList>;
+export const HttpSummaryHttpProtocolRequestHttpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpSummaryHttpProtocolRequestHttpVersionList>;
 
 export type HttpSummaryHttpProtocolRequestIpVersion = "IPv4" | "IPv6";
 export const HttpSummaryHttpProtocolRequestIpVersion = S.String;
@@ -29530,9 +29182,8 @@ export const HttpSummaryHttpProtocolRequestIpVersion = S.String;
 export type HttpSummaryHttpProtocolRequestIpVersionList = Array<
   HttpSummaryHttpProtocolRequestIpVersion | (string & {})
 >;
-export const HttpSummaryHttpProtocolRequestIpVersionList = /*@__PURE__*/ S.Array(
-  HttpSummaryHttpProtocolRequestIpVersion,
-) as any as S.Schema<HttpSummaryHttpProtocolRequestIpVersionList>;
+export const HttpSummaryHttpProtocolRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpSummaryHttpProtocolRequestIpVersionList>;
 
 export type HttpSummaryHttpProtocolRequestLocationList = Array<string>;
 export const HttpSummaryHttpProtocolRequestLocationList =
@@ -29555,9 +29206,8 @@ export const HttpSummaryHttpProtocolRequestOs = S.String;
 export type HttpSummaryHttpProtocolRequestOsList = Array<
   HttpSummaryHttpProtocolRequestOs | (string & {})
 >;
-export const HttpSummaryHttpProtocolRequestOsList = /*@__PURE__*/ S.Array(
-  HttpSummaryHttpProtocolRequestOs,
-) as any as S.Schema<HttpSummaryHttpProtocolRequestOsList>;
+export const HttpSummaryHttpProtocolRequestOsList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpSummaryHttpProtocolRequestOsList>;
 
 export type HttpSummaryHttpProtocolRequestTlsVersion =
   | "TLSv1_0"
@@ -29570,9 +29220,8 @@ export const HttpSummaryHttpProtocolRequestTlsVersion = S.String;
 export type HttpSummaryHttpProtocolRequestTlsVersionList = Array<
   HttpSummaryHttpProtocolRequestTlsVersion | (string & {})
 >;
-export const HttpSummaryHttpProtocolRequestTlsVersionList = /*@__PURE__*/ S.Array(
-  HttpSummaryHttpProtocolRequestTlsVersion,
-) as any as S.Schema<HttpSummaryHttpProtocolRequestTlsVersionList>;
+export const HttpSummaryHttpProtocolRequestTlsVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpSummaryHttpProtocolRequestTlsVersionList>;
 
 export interface HttpProtocolHttpSummaryRequest {
   /** Filters results by Autonomous System. Specify one or more Autonomous System Numbers (ASNs) as a comma-separated list. Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356. */
@@ -29822,9 +29471,8 @@ export const HttpTimeseriesGroupsHttpProtocolRequestBotClass = S.String;
 export type HttpTimeseriesGroupsHttpProtocolRequestBotClassList = Array<
   HttpTimeseriesGroupsHttpProtocolRequestBotClass | (string & {})
 >;
-export const HttpTimeseriesGroupsHttpProtocolRequestBotClassList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsHttpProtocolRequestBotClass,
-) as any as S.Schema<HttpTimeseriesGroupsHttpProtocolRequestBotClassList>;
+export const HttpTimeseriesGroupsHttpProtocolRequestBotClassList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsHttpProtocolRequestBotClassList>;
 
 export type HttpTimeseriesGroupsHttpProtocolRequestBrowserFamily =
   | "CHROME"
@@ -29836,9 +29484,8 @@ export const HttpTimeseriesGroupsHttpProtocolRequestBrowserFamily = S.String;
 export type HttpTimeseriesGroupsHttpProtocolRequestBrowserFamilyList = Array<
   HttpTimeseriesGroupsHttpProtocolRequestBrowserFamily | (string & {})
 >;
-export const HttpTimeseriesGroupsHttpProtocolRequestBrowserFamilyList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsHttpProtocolRequestBrowserFamily,
-) as any as S.Schema<HttpTimeseriesGroupsHttpProtocolRequestBrowserFamilyList>;
+export const HttpTimeseriesGroupsHttpProtocolRequestBrowserFamilyList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsHttpProtocolRequestBrowserFamilyList>;
 
 export type HttpTimeseriesGroupsHttpProtocolRequestContinentList = Array<string>;
 export const HttpTimeseriesGroupsHttpProtocolRequestContinentList =
@@ -29862,9 +29509,8 @@ export const HttpTimeseriesGroupsHttpProtocolRequestDeviceType = S.String;
 export type HttpTimeseriesGroupsHttpProtocolRequestDeviceTypeList = Array<
   HttpTimeseriesGroupsHttpProtocolRequestDeviceType | (string & {})
 >;
-export const HttpTimeseriesGroupsHttpProtocolRequestDeviceTypeList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsHttpProtocolRequestDeviceType,
-) as any as S.Schema<HttpTimeseriesGroupsHttpProtocolRequestDeviceTypeList>;
+export const HttpTimeseriesGroupsHttpProtocolRequestDeviceTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsHttpProtocolRequestDeviceTypeList>;
 
 export type HttpTimeseriesGroupsHttpProtocolRequestFormat = "JSON" | "CSV";
 export const HttpTimeseriesGroupsHttpProtocolRequestFormat = S.String;
@@ -29879,9 +29525,8 @@ export const HttpTimeseriesGroupsHttpProtocolRequestHttpVersion = S.String;
 export type HttpTimeseriesGroupsHttpProtocolRequestHttpVersionList = Array<
   HttpTimeseriesGroupsHttpProtocolRequestHttpVersion | (string & {})
 >;
-export const HttpTimeseriesGroupsHttpProtocolRequestHttpVersionList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsHttpProtocolRequestHttpVersion,
-) as any as S.Schema<HttpTimeseriesGroupsHttpProtocolRequestHttpVersionList>;
+export const HttpTimeseriesGroupsHttpProtocolRequestHttpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsHttpProtocolRequestHttpVersionList>;
 
 export type HttpTimeseriesGroupsHttpProtocolRequestIpVersion = "IPv4" | "IPv6";
 export const HttpTimeseriesGroupsHttpProtocolRequestIpVersion = S.String;
@@ -29889,9 +29534,8 @@ export const HttpTimeseriesGroupsHttpProtocolRequestIpVersion = S.String;
 export type HttpTimeseriesGroupsHttpProtocolRequestIpVersionList = Array<
   HttpTimeseriesGroupsHttpProtocolRequestIpVersion | (string & {})
 >;
-export const HttpTimeseriesGroupsHttpProtocolRequestIpVersionList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsHttpProtocolRequestIpVersion,
-) as any as S.Schema<HttpTimeseriesGroupsHttpProtocolRequestIpVersionList>;
+export const HttpTimeseriesGroupsHttpProtocolRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsHttpProtocolRequestIpVersionList>;
 
 export type HttpTimeseriesGroupsHttpProtocolRequestLocationList = Array<string>;
 export const HttpTimeseriesGroupsHttpProtocolRequestLocationList =
@@ -29914,9 +29558,8 @@ export const HttpTimeseriesGroupsHttpProtocolRequestOs = S.String;
 export type HttpTimeseriesGroupsHttpProtocolRequestOsList = Array<
   HttpTimeseriesGroupsHttpProtocolRequestOs | (string & {})
 >;
-export const HttpTimeseriesGroupsHttpProtocolRequestOsList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsHttpProtocolRequestOs,
-) as any as S.Schema<HttpTimeseriesGroupsHttpProtocolRequestOsList>;
+export const HttpTimeseriesGroupsHttpProtocolRequestOsList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsHttpProtocolRequestOsList>;
 
 export type HttpTimeseriesGroupsHttpProtocolRequestTlsVersion =
   | "TLSv1_0"
@@ -29929,9 +29572,8 @@ export const HttpTimeseriesGroupsHttpProtocolRequestTlsVersion = S.String;
 export type HttpTimeseriesGroupsHttpProtocolRequestTlsVersionList = Array<
   HttpTimeseriesGroupsHttpProtocolRequestTlsVersion | (string & {})
 >;
-export const HttpTimeseriesGroupsHttpProtocolRequestTlsVersionList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsHttpProtocolRequestTlsVersion,
-) as any as S.Schema<HttpTimeseriesGroupsHttpProtocolRequestTlsVersionList>;
+export const HttpTimeseriesGroupsHttpProtocolRequestTlsVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsHttpProtocolRequestTlsVersionList>;
 
 export interface HttpProtocolHttpTimeseriesGroupRequest {
   /** Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/). When omitted, the interval is auto-selected from the requested date range; finer intervals are only available for shorter ranges. If the requested interval is too granular for the date range, the request is rejected. */
@@ -30275,9 +29917,8 @@ export const AttacksLayer7SummaryHttpVersionRequestHttpMethod = S.String;
 export type AttacksLayer7SummaryHttpVersionRequestHttpMethodList = Array<
   AttacksLayer7SummaryHttpVersionRequestHttpMethod | (string & {})
 >;
-export const AttacksLayer7SummaryHttpVersionRequestHttpMethodList = /*@__PURE__*/ S.Array(
-  AttacksLayer7SummaryHttpVersionRequestHttpMethod,
-) as any as S.Schema<AttacksLayer7SummaryHttpVersionRequestHttpMethodList>;
+export const AttacksLayer7SummaryHttpVersionRequestHttpMethodList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer7SummaryHttpVersionRequestHttpMethodList>;
 
 export type AttacksLayer7SummaryHttpVersionRequestIpVersion = "IPv4" | "IPv6";
 export const AttacksLayer7SummaryHttpVersionRequestIpVersion = S.String;
@@ -30285,9 +29926,8 @@ export const AttacksLayer7SummaryHttpVersionRequestIpVersion = S.String;
 export type AttacksLayer7SummaryHttpVersionRequestIpVersionList = Array<
   AttacksLayer7SummaryHttpVersionRequestIpVersion | (string & {})
 >;
-export const AttacksLayer7SummaryHttpVersionRequestIpVersionList = /*@__PURE__*/ S.Array(
-  AttacksLayer7SummaryHttpVersionRequestIpVersion,
-) as any as S.Schema<AttacksLayer7SummaryHttpVersionRequestIpVersionList>;
+export const AttacksLayer7SummaryHttpVersionRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer7SummaryHttpVersionRequestIpVersionList>;
 
 export type AttacksLayer7SummaryHttpVersionRequestLocationList = Array<string>;
 export const AttacksLayer7SummaryHttpVersionRequestLocationList =
@@ -30306,9 +29946,8 @@ export const AttacksLayer7SummaryHttpVersionRequestMitigationProduct = S.String;
 export type AttacksLayer7SummaryHttpVersionRequestMitigationProductList = Array<
   AttacksLayer7SummaryHttpVersionRequestMitigationProduct | (string & {})
 >;
-export const AttacksLayer7SummaryHttpVersionRequestMitigationProductList = /*@__PURE__*/ S.Array(
-  AttacksLayer7SummaryHttpVersionRequestMitigationProduct,
-) as any as S.Schema<AttacksLayer7SummaryHttpVersionRequestMitigationProductList>;
+export const AttacksLayer7SummaryHttpVersionRequestMitigationProductList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer7SummaryHttpVersionRequestMitigationProductList>;
 
 export type AttacksLayer7SummaryHttpVersionRequestNameList = Array<string>;
 export const AttacksLayer7SummaryHttpVersionRequestNameList =
@@ -30618,9 +30257,8 @@ export const AttacksLayer7TimeseriesGroupsHttpVersionRequestHttpMethod = S.Strin
 export type AttacksLayer7TimeseriesGroupsHttpVersionRequestHttpMethodList = Array<
   AttacksLayer7TimeseriesGroupsHttpVersionRequestHttpMethod | (string & {})
 >;
-export const AttacksLayer7TimeseriesGroupsHttpVersionRequestHttpMethodList = /*@__PURE__*/ S.Array(
-  AttacksLayer7TimeseriesGroupsHttpVersionRequestHttpMethod,
-) as any as S.Schema<AttacksLayer7TimeseriesGroupsHttpVersionRequestHttpMethodList>;
+export const AttacksLayer7TimeseriesGroupsHttpVersionRequestHttpMethodList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer7TimeseriesGroupsHttpVersionRequestHttpMethodList>;
 
 export type AttacksLayer7TimeseriesGroupsHttpVersionRequestIpVersion = "IPv4" | "IPv6";
 export const AttacksLayer7TimeseriesGroupsHttpVersionRequestIpVersion = S.String;
@@ -30628,9 +30266,8 @@ export const AttacksLayer7TimeseriesGroupsHttpVersionRequestIpVersion = S.String
 export type AttacksLayer7TimeseriesGroupsHttpVersionRequestIpVersionList = Array<
   AttacksLayer7TimeseriesGroupsHttpVersionRequestIpVersion | (string & {})
 >;
-export const AttacksLayer7TimeseriesGroupsHttpVersionRequestIpVersionList = /*@__PURE__*/ S.Array(
-  AttacksLayer7TimeseriesGroupsHttpVersionRequestIpVersion,
-) as any as S.Schema<AttacksLayer7TimeseriesGroupsHttpVersionRequestIpVersionList>;
+export const AttacksLayer7TimeseriesGroupsHttpVersionRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer7TimeseriesGroupsHttpVersionRequestIpVersionList>;
 
 export type AttacksLayer7TimeseriesGroupsHttpVersionRequestLocationList = Array<string>;
 export const AttacksLayer7TimeseriesGroupsHttpVersionRequestLocationList =
@@ -30650,9 +30287,7 @@ export type AttacksLayer7TimeseriesGroupsHttpVersionRequestMitigationProductList
   AttacksLayer7TimeseriesGroupsHttpVersionRequestMitigationProduct | (string & {})
 >;
 export const AttacksLayer7TimeseriesGroupsHttpVersionRequestMitigationProductList =
-  /*@__PURE__*/ S.Array(
-    AttacksLayer7TimeseriesGroupsHttpVersionRequestMitigationProduct,
-  ) as any as S.Schema<AttacksLayer7TimeseriesGroupsHttpVersionRequestMitigationProductList>;
+  AiTimeseriesGroupsTimeseriesGroupsRequestResponseStatusCategoryList as any as S.Schema<AttacksLayer7TimeseriesGroupsHttpVersionRequestMitigationProductList>;
 
 export type AttacksLayer7TimeseriesGroupsHttpVersionRequestNameList = Array<string>;
 export const AttacksLayer7TimeseriesGroupsHttpVersionRequestNameList =
@@ -30962,9 +30597,8 @@ export const HttpSummaryHttpVersionRequestBotClass = S.String;
 export type HttpSummaryHttpVersionRequestBotClassList = Array<
   HttpSummaryHttpVersionRequestBotClass | (string & {})
 >;
-export const HttpSummaryHttpVersionRequestBotClassList = /*@__PURE__*/ S.Array(
-  HttpSummaryHttpVersionRequestBotClass,
-) as any as S.Schema<HttpSummaryHttpVersionRequestBotClassList>;
+export const HttpSummaryHttpVersionRequestBotClassList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpSummaryHttpVersionRequestBotClassList>;
 
 export type HttpSummaryHttpVersionRequestBrowserFamily = "CHROME" | "EDGE" | "FIREFOX" | "SAFARI";
 export const HttpSummaryHttpVersionRequestBrowserFamily = S.String;
@@ -30972,9 +30606,8 @@ export const HttpSummaryHttpVersionRequestBrowserFamily = S.String;
 export type HttpSummaryHttpVersionRequestBrowserFamilyList = Array<
   HttpSummaryHttpVersionRequestBrowserFamily | (string & {})
 >;
-export const HttpSummaryHttpVersionRequestBrowserFamilyList = /*@__PURE__*/ S.Array(
-  HttpSummaryHttpVersionRequestBrowserFamily,
-) as any as S.Schema<HttpSummaryHttpVersionRequestBrowserFamilyList>;
+export const HttpSummaryHttpVersionRequestBrowserFamilyList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpSummaryHttpVersionRequestBrowserFamilyList>;
 
 export type HttpSummaryHttpVersionRequestContinentList = Array<string>;
 export const HttpSummaryHttpVersionRequestContinentList =
@@ -30998,9 +30631,8 @@ export const HttpSummaryHttpVersionRequestDeviceType = S.String;
 export type HttpSummaryHttpVersionRequestDeviceTypeList = Array<
   HttpSummaryHttpVersionRequestDeviceType | (string & {})
 >;
-export const HttpSummaryHttpVersionRequestDeviceTypeList = /*@__PURE__*/ S.Array(
-  HttpSummaryHttpVersionRequestDeviceType,
-) as any as S.Schema<HttpSummaryHttpVersionRequestDeviceTypeList>;
+export const HttpSummaryHttpVersionRequestDeviceTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpSummaryHttpVersionRequestDeviceTypeList>;
 
 export type HttpSummaryHttpVersionRequestFormat = "JSON" | "CSV";
 export const HttpSummaryHttpVersionRequestFormat = S.String;
@@ -31015,9 +30647,8 @@ export const HttpSummaryHttpVersionRequestHttpProtocol = S.String;
 export type HttpSummaryHttpVersionRequestHttpProtocolList = Array<
   HttpSummaryHttpVersionRequestHttpProtocol | (string & {})
 >;
-export const HttpSummaryHttpVersionRequestHttpProtocolList = /*@__PURE__*/ S.Array(
-  HttpSummaryHttpVersionRequestHttpProtocol,
-) as any as S.Schema<HttpSummaryHttpVersionRequestHttpProtocolList>;
+export const HttpSummaryHttpVersionRequestHttpProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpSummaryHttpVersionRequestHttpProtocolList>;
 
 export type HttpSummaryHttpVersionRequestIpVersion = "IPv4" | "IPv6";
 export const HttpSummaryHttpVersionRequestIpVersion = S.String;
@@ -31025,9 +30656,8 @@ export const HttpSummaryHttpVersionRequestIpVersion = S.String;
 export type HttpSummaryHttpVersionRequestIpVersionList = Array<
   HttpSummaryHttpVersionRequestIpVersion | (string & {})
 >;
-export const HttpSummaryHttpVersionRequestIpVersionList = /*@__PURE__*/ S.Array(
-  HttpSummaryHttpVersionRequestIpVersion,
-) as any as S.Schema<HttpSummaryHttpVersionRequestIpVersionList>;
+export const HttpSummaryHttpVersionRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpSummaryHttpVersionRequestIpVersionList>;
 
 export type HttpSummaryHttpVersionRequestLocationList = Array<string>;
 export const HttpSummaryHttpVersionRequestLocationList =
@@ -31050,9 +30680,8 @@ export const HttpSummaryHttpVersionRequestOs = S.String;
 export type HttpSummaryHttpVersionRequestOsList = Array<
   HttpSummaryHttpVersionRequestOs | (string & {})
 >;
-export const HttpSummaryHttpVersionRequestOsList = /*@__PURE__*/ S.Array(
-  HttpSummaryHttpVersionRequestOs,
-) as any as S.Schema<HttpSummaryHttpVersionRequestOsList>;
+export const HttpSummaryHttpVersionRequestOsList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpSummaryHttpVersionRequestOsList>;
 
 export type HttpSummaryHttpVersionRequestTlsVersion =
   | "TLSv1_0"
@@ -31065,9 +30694,8 @@ export const HttpSummaryHttpVersionRequestTlsVersion = S.String;
 export type HttpSummaryHttpVersionRequestTlsVersionList = Array<
   HttpSummaryHttpVersionRequestTlsVersion | (string & {})
 >;
-export const HttpSummaryHttpVersionRequestTlsVersionList = /*@__PURE__*/ S.Array(
-  HttpSummaryHttpVersionRequestTlsVersion,
-) as any as S.Schema<HttpSummaryHttpVersionRequestTlsVersionList>;
+export const HttpSummaryHttpVersionRequestTlsVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpSummaryHttpVersionRequestTlsVersionList>;
 
 export interface HttpVersionHttpSummaryRequest {
   /** Filters results by Autonomous System. Specify one or more Autonomous System Numbers (ASNs) as a comma-separated list. Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356. */
@@ -31312,9 +30940,8 @@ export const HttpTimeseriesGroupsHttpVersionRequestBotClass = S.String;
 export type HttpTimeseriesGroupsHttpVersionRequestBotClassList = Array<
   HttpTimeseriesGroupsHttpVersionRequestBotClass | (string & {})
 >;
-export const HttpTimeseriesGroupsHttpVersionRequestBotClassList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsHttpVersionRequestBotClass,
-) as any as S.Schema<HttpTimeseriesGroupsHttpVersionRequestBotClassList>;
+export const HttpTimeseriesGroupsHttpVersionRequestBotClassList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsHttpVersionRequestBotClassList>;
 
 export type HttpTimeseriesGroupsHttpVersionRequestBrowserFamily =
   | "CHROME"
@@ -31326,9 +30953,8 @@ export const HttpTimeseriesGroupsHttpVersionRequestBrowserFamily = S.String;
 export type HttpTimeseriesGroupsHttpVersionRequestBrowserFamilyList = Array<
   HttpTimeseriesGroupsHttpVersionRequestBrowserFamily | (string & {})
 >;
-export const HttpTimeseriesGroupsHttpVersionRequestBrowserFamilyList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsHttpVersionRequestBrowserFamily,
-) as any as S.Schema<HttpTimeseriesGroupsHttpVersionRequestBrowserFamilyList>;
+export const HttpTimeseriesGroupsHttpVersionRequestBrowserFamilyList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsHttpVersionRequestBrowserFamilyList>;
 
 export type HttpTimeseriesGroupsHttpVersionRequestContinentList = Array<string>;
 export const HttpTimeseriesGroupsHttpVersionRequestContinentList =
@@ -31352,9 +30978,8 @@ export const HttpTimeseriesGroupsHttpVersionRequestDeviceType = S.String;
 export type HttpTimeseriesGroupsHttpVersionRequestDeviceTypeList = Array<
   HttpTimeseriesGroupsHttpVersionRequestDeviceType | (string & {})
 >;
-export const HttpTimeseriesGroupsHttpVersionRequestDeviceTypeList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsHttpVersionRequestDeviceType,
-) as any as S.Schema<HttpTimeseriesGroupsHttpVersionRequestDeviceTypeList>;
+export const HttpTimeseriesGroupsHttpVersionRequestDeviceTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsHttpVersionRequestDeviceTypeList>;
 
 export type HttpTimeseriesGroupsHttpVersionRequestFormat = "JSON" | "CSV";
 export const HttpTimeseriesGroupsHttpVersionRequestFormat = S.String;
@@ -31369,9 +30994,8 @@ export const HttpTimeseriesGroupsHttpVersionRequestHttpProtocol = S.String;
 export type HttpTimeseriesGroupsHttpVersionRequestHttpProtocolList = Array<
   HttpTimeseriesGroupsHttpVersionRequestHttpProtocol | (string & {})
 >;
-export const HttpTimeseriesGroupsHttpVersionRequestHttpProtocolList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsHttpVersionRequestHttpProtocol,
-) as any as S.Schema<HttpTimeseriesGroupsHttpVersionRequestHttpProtocolList>;
+export const HttpTimeseriesGroupsHttpVersionRequestHttpProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsHttpVersionRequestHttpProtocolList>;
 
 export type HttpTimeseriesGroupsHttpVersionRequestIpVersion = "IPv4" | "IPv6";
 export const HttpTimeseriesGroupsHttpVersionRequestIpVersion = S.String;
@@ -31379,9 +31003,8 @@ export const HttpTimeseriesGroupsHttpVersionRequestIpVersion = S.String;
 export type HttpTimeseriesGroupsHttpVersionRequestIpVersionList = Array<
   HttpTimeseriesGroupsHttpVersionRequestIpVersion | (string & {})
 >;
-export const HttpTimeseriesGroupsHttpVersionRequestIpVersionList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsHttpVersionRequestIpVersion,
-) as any as S.Schema<HttpTimeseriesGroupsHttpVersionRequestIpVersionList>;
+export const HttpTimeseriesGroupsHttpVersionRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsHttpVersionRequestIpVersionList>;
 
 export type HttpTimeseriesGroupsHttpVersionRequestLocationList = Array<string>;
 export const HttpTimeseriesGroupsHttpVersionRequestLocationList =
@@ -31404,9 +31027,8 @@ export const HttpTimeseriesGroupsHttpVersionRequestOs = S.String;
 export type HttpTimeseriesGroupsHttpVersionRequestOsList = Array<
   HttpTimeseriesGroupsHttpVersionRequestOs | (string & {})
 >;
-export const HttpTimeseriesGroupsHttpVersionRequestOsList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsHttpVersionRequestOs,
-) as any as S.Schema<HttpTimeseriesGroupsHttpVersionRequestOsList>;
+export const HttpTimeseriesGroupsHttpVersionRequestOsList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsHttpVersionRequestOsList>;
 
 export type HttpTimeseriesGroupsHttpVersionRequestTlsVersion =
   | "TLSv1_0"
@@ -31419,9 +31041,8 @@ export const HttpTimeseriesGroupsHttpVersionRequestTlsVersion = S.String;
 export type HttpTimeseriesGroupsHttpVersionRequestTlsVersionList = Array<
   HttpTimeseriesGroupsHttpVersionRequestTlsVersion | (string & {})
 >;
-export const HttpTimeseriesGroupsHttpVersionRequestTlsVersionList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsHttpVersionRequestTlsVersion,
-) as any as S.Schema<HttpTimeseriesGroupsHttpVersionRequestTlsVersionList>;
+export const HttpTimeseriesGroupsHttpVersionRequestTlsVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsHttpVersionRequestTlsVersionList>;
 
 export interface HttpVersionHttpTimeseriesGroupRequest {
   /** Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/). When omitted, the interval is auto-selected from the requested date range; finer intervals are only available for shorter ranges. If the requested interval is too granular for the date range, the request is rejected. */
@@ -31726,9 +31347,8 @@ export const AttacksLayer3SummaryIndustryRequestIpVersion = S.String;
 export type AttacksLayer3SummaryIndustryRequestIpVersionList = Array<
   AttacksLayer3SummaryIndustryRequestIpVersion | (string & {})
 >;
-export const AttacksLayer3SummaryIndustryRequestIpVersionList = /*@__PURE__*/ S.Array(
-  AttacksLayer3SummaryIndustryRequestIpVersion,
-) as any as S.Schema<AttacksLayer3SummaryIndustryRequestIpVersionList>;
+export const AttacksLayer3SummaryIndustryRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer3SummaryIndustryRequestIpVersionList>;
 
 export type AttacksLayer3SummaryIndustryRequestLocationList = Array<string>;
 export const AttacksLayer3SummaryIndustryRequestLocationList =
@@ -31744,9 +31364,8 @@ export const AttacksLayer3SummaryIndustryRequestProtocol = S.String;
 export type AttacksLayer3SummaryIndustryRequestProtocolList = Array<
   AttacksLayer3SummaryIndustryRequestProtocol | (string & {})
 >;
-export const AttacksLayer3SummaryIndustryRequestProtocolList = /*@__PURE__*/ S.Array(
-  AttacksLayer3SummaryIndustryRequestProtocol,
-) as any as S.Schema<AttacksLayer3SummaryIndustryRequestProtocolList>;
+export const AttacksLayer3SummaryIndustryRequestProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer3SummaryIndustryRequestProtocolList>;
 
 export interface IndustryAttackLayer3SummaryRequest {
   /** Filters results by continent. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA. */
@@ -31990,9 +31609,8 @@ export const AttacksLayer3TimeseriesGroupsIndustryRequestIpVersion = S.String;
 export type AttacksLayer3TimeseriesGroupsIndustryRequestIpVersionList = Array<
   AttacksLayer3TimeseriesGroupsIndustryRequestIpVersion | (string & {})
 >;
-export const AttacksLayer3TimeseriesGroupsIndustryRequestIpVersionList = /*@__PURE__*/ S.Array(
-  AttacksLayer3TimeseriesGroupsIndustryRequestIpVersion,
-) as any as S.Schema<AttacksLayer3TimeseriesGroupsIndustryRequestIpVersionList>;
+export const AttacksLayer3TimeseriesGroupsIndustryRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer3TimeseriesGroupsIndustryRequestIpVersionList>;
 
 export type AttacksLayer3TimeseriesGroupsIndustryRequestLocationList = Array<string>;
 export const AttacksLayer3TimeseriesGroupsIndustryRequestLocationList =
@@ -32011,9 +31629,8 @@ export const AttacksLayer3TimeseriesGroupsIndustryRequestProtocol = S.String;
 export type AttacksLayer3TimeseriesGroupsIndustryRequestProtocolList = Array<
   AttacksLayer3TimeseriesGroupsIndustryRequestProtocol | (string & {})
 >;
-export const AttacksLayer3TimeseriesGroupsIndustryRequestProtocolList = /*@__PURE__*/ S.Array(
-  AttacksLayer3TimeseriesGroupsIndustryRequestProtocol,
-) as any as S.Schema<AttacksLayer3TimeseriesGroupsIndustryRequestProtocolList>;
+export const AttacksLayer3TimeseriesGroupsIndustryRequestProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer3TimeseriesGroupsIndustryRequestProtocolList>;
 
 export interface IndustryAttackLayer3TimeseriesGroupRequest {
   /** Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/). When omitted, the interval is auto-selected from the requested date range; finer intervals are only available for shorter ranges. If the requested interval is too granular for the date range, the request is rejected. */
@@ -32293,9 +31910,8 @@ export const AttacksLayer3TopIndustryRequestIpVersion = S.String;
 export type AttacksLayer3TopIndustryRequestIpVersionList = Array<
   AttacksLayer3TopIndustryRequestIpVersion | (string & {})
 >;
-export const AttacksLayer3TopIndustryRequestIpVersionList = /*@__PURE__*/ S.Array(
-  AttacksLayer3TopIndustryRequestIpVersion,
-) as any as S.Schema<AttacksLayer3TopIndustryRequestIpVersionList>;
+export const AttacksLayer3TopIndustryRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer3TopIndustryRequestIpVersionList>;
 
 export type AttacksLayer3TopIndustryRequestLocationList = Array<string>;
 export const AttacksLayer3TopIndustryRequestLocationList =
@@ -32311,9 +31927,8 @@ export const AttacksLayer3TopIndustryRequestProtocol = S.String;
 export type AttacksLayer3TopIndustryRequestProtocolList = Array<
   AttacksLayer3TopIndustryRequestProtocol | (string & {})
 >;
-export const AttacksLayer3TopIndustryRequestProtocolList = /*@__PURE__*/ S.Array(
-  AttacksLayer3TopIndustryRequestProtocol,
-) as any as S.Schema<AttacksLayer3TopIndustryRequestProtocolList>;
+export const AttacksLayer3TopIndustryRequestProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer3TopIndustryRequestProtocolList>;
 
 export interface IndustryAttackLayer3TopRequest {
   /** Filters results by continent. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA. */
@@ -32602,9 +32217,8 @@ export const AttacksLayer7SummaryIndustryRequestHttpMethod = S.String;
 export type AttacksLayer7SummaryIndustryRequestHttpMethodList = Array<
   AttacksLayer7SummaryIndustryRequestHttpMethod | (string & {})
 >;
-export const AttacksLayer7SummaryIndustryRequestHttpMethodList = /*@__PURE__*/ S.Array(
-  AttacksLayer7SummaryIndustryRequestHttpMethod,
-) as any as S.Schema<AttacksLayer7SummaryIndustryRequestHttpMethodList>;
+export const AttacksLayer7SummaryIndustryRequestHttpMethodList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer7SummaryIndustryRequestHttpMethodList>;
 
 export type AttacksLayer7SummaryIndustryRequestHttpVersion = "HTTPv1" | "HTTPv2" | "HTTPv3";
 export const AttacksLayer7SummaryIndustryRequestHttpVersion = S.String;
@@ -32612,9 +32226,8 @@ export const AttacksLayer7SummaryIndustryRequestHttpVersion = S.String;
 export type AttacksLayer7SummaryIndustryRequestHttpVersionList = Array<
   AttacksLayer7SummaryIndustryRequestHttpVersion | (string & {})
 >;
-export const AttacksLayer7SummaryIndustryRequestHttpVersionList = /*@__PURE__*/ S.Array(
-  AttacksLayer7SummaryIndustryRequestHttpVersion,
-) as any as S.Schema<AttacksLayer7SummaryIndustryRequestHttpVersionList>;
+export const AttacksLayer7SummaryIndustryRequestHttpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer7SummaryIndustryRequestHttpVersionList>;
 
 export type AttacksLayer7SummaryIndustryRequestIpVersion = "IPv4" | "IPv6";
 export const AttacksLayer7SummaryIndustryRequestIpVersion = S.String;
@@ -32622,9 +32235,8 @@ export const AttacksLayer7SummaryIndustryRequestIpVersion = S.String;
 export type AttacksLayer7SummaryIndustryRequestIpVersionList = Array<
   AttacksLayer7SummaryIndustryRequestIpVersion | (string & {})
 >;
-export const AttacksLayer7SummaryIndustryRequestIpVersionList = /*@__PURE__*/ S.Array(
-  AttacksLayer7SummaryIndustryRequestIpVersion,
-) as any as S.Schema<AttacksLayer7SummaryIndustryRequestIpVersionList>;
+export const AttacksLayer7SummaryIndustryRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer7SummaryIndustryRequestIpVersionList>;
 
 export type AttacksLayer7SummaryIndustryRequestLocationList = Array<string>;
 export const AttacksLayer7SummaryIndustryRequestLocationList =
@@ -32643,9 +32255,8 @@ export const AttacksLayer7SummaryIndustryRequestMitigationProduct = S.String;
 export type AttacksLayer7SummaryIndustryRequestMitigationProductList = Array<
   AttacksLayer7SummaryIndustryRequestMitigationProduct | (string & {})
 >;
-export const AttacksLayer7SummaryIndustryRequestMitigationProductList = /*@__PURE__*/ S.Array(
-  AttacksLayer7SummaryIndustryRequestMitigationProduct,
-) as any as S.Schema<AttacksLayer7SummaryIndustryRequestMitigationProductList>;
+export const AttacksLayer7SummaryIndustryRequestMitigationProductList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer7SummaryIndustryRequestMitigationProductList>;
 
 export type AttacksLayer7SummaryIndustryRequestNameList = Array<string>;
 export const AttacksLayer7SummaryIndustryRequestNameList =
@@ -32948,9 +32559,8 @@ export const AttacksLayer7TimeseriesGroupsIndustryRequestHttpMethod = S.String;
 export type AttacksLayer7TimeseriesGroupsIndustryRequestHttpMethodList = Array<
   AttacksLayer7TimeseriesGroupsIndustryRequestHttpMethod | (string & {})
 >;
-export const AttacksLayer7TimeseriesGroupsIndustryRequestHttpMethodList = /*@__PURE__*/ S.Array(
-  AttacksLayer7TimeseriesGroupsIndustryRequestHttpMethod,
-) as any as S.Schema<AttacksLayer7TimeseriesGroupsIndustryRequestHttpMethodList>;
+export const AttacksLayer7TimeseriesGroupsIndustryRequestHttpMethodList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer7TimeseriesGroupsIndustryRequestHttpMethodList>;
 
 export type AttacksLayer7TimeseriesGroupsIndustryRequestHttpVersion =
   | "HTTPv1"
@@ -32961,9 +32571,8 @@ export const AttacksLayer7TimeseriesGroupsIndustryRequestHttpVersion = S.String;
 export type AttacksLayer7TimeseriesGroupsIndustryRequestHttpVersionList = Array<
   AttacksLayer7TimeseriesGroupsIndustryRequestHttpVersion | (string & {})
 >;
-export const AttacksLayer7TimeseriesGroupsIndustryRequestHttpVersionList = /*@__PURE__*/ S.Array(
-  AttacksLayer7TimeseriesGroupsIndustryRequestHttpVersion,
-) as any as S.Schema<AttacksLayer7TimeseriesGroupsIndustryRequestHttpVersionList>;
+export const AttacksLayer7TimeseriesGroupsIndustryRequestHttpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer7TimeseriesGroupsIndustryRequestHttpVersionList>;
 
 export type AttacksLayer7TimeseriesGroupsIndustryRequestIpVersion = "IPv4" | "IPv6";
 export const AttacksLayer7TimeseriesGroupsIndustryRequestIpVersion = S.String;
@@ -32971,9 +32580,8 @@ export const AttacksLayer7TimeseriesGroupsIndustryRequestIpVersion = S.String;
 export type AttacksLayer7TimeseriesGroupsIndustryRequestIpVersionList = Array<
   AttacksLayer7TimeseriesGroupsIndustryRequestIpVersion | (string & {})
 >;
-export const AttacksLayer7TimeseriesGroupsIndustryRequestIpVersionList = /*@__PURE__*/ S.Array(
-  AttacksLayer7TimeseriesGroupsIndustryRequestIpVersion,
-) as any as S.Schema<AttacksLayer7TimeseriesGroupsIndustryRequestIpVersionList>;
+export const AttacksLayer7TimeseriesGroupsIndustryRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer7TimeseriesGroupsIndustryRequestIpVersionList>;
 
 export type AttacksLayer7TimeseriesGroupsIndustryRequestLocationList = Array<string>;
 export const AttacksLayer7TimeseriesGroupsIndustryRequestLocationList =
@@ -32993,9 +32601,7 @@ export type AttacksLayer7TimeseriesGroupsIndustryRequestMitigationProductList = 
   AttacksLayer7TimeseriesGroupsIndustryRequestMitigationProduct | (string & {})
 >;
 export const AttacksLayer7TimeseriesGroupsIndustryRequestMitigationProductList =
-  /*@__PURE__*/ S.Array(
-    AttacksLayer7TimeseriesGroupsIndustryRequestMitigationProduct,
-  ) as any as S.Schema<AttacksLayer7TimeseriesGroupsIndustryRequestMitigationProductList>;
+  AiTimeseriesGroupsTimeseriesGroupsRequestResponseStatusCategoryList as any as S.Schema<AttacksLayer7TimeseriesGroupsIndustryRequestMitigationProductList>;
 
 export type AttacksLayer7TimeseriesGroupsIndustryRequestNameList = Array<string>;
 export const AttacksLayer7TimeseriesGroupsIndustryRequestNameList =
@@ -33344,9 +32950,8 @@ export const AttacksLayer7TopIndustryRequestHttpMethod = S.String;
 export type AttacksLayer7TopIndustryRequestHttpMethodList = Array<
   AttacksLayer7TopIndustryRequestHttpMethod | (string & {})
 >;
-export const AttacksLayer7TopIndustryRequestHttpMethodList = /*@__PURE__*/ S.Array(
-  AttacksLayer7TopIndustryRequestHttpMethod,
-) as any as S.Schema<AttacksLayer7TopIndustryRequestHttpMethodList>;
+export const AttacksLayer7TopIndustryRequestHttpMethodList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer7TopIndustryRequestHttpMethodList>;
 
 export type AttacksLayer7TopIndustryRequestHttpVersion = "HTTPv1" | "HTTPv2" | "HTTPv3";
 export const AttacksLayer7TopIndustryRequestHttpVersion = S.String;
@@ -33354,9 +32959,8 @@ export const AttacksLayer7TopIndustryRequestHttpVersion = S.String;
 export type AttacksLayer7TopIndustryRequestHttpVersionList = Array<
   AttacksLayer7TopIndustryRequestHttpVersion | (string & {})
 >;
-export const AttacksLayer7TopIndustryRequestHttpVersionList = /*@__PURE__*/ S.Array(
-  AttacksLayer7TopIndustryRequestHttpVersion,
-) as any as S.Schema<AttacksLayer7TopIndustryRequestHttpVersionList>;
+export const AttacksLayer7TopIndustryRequestHttpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer7TopIndustryRequestHttpVersionList>;
 
 export type AttacksLayer7TopIndustryRequestIpVersion = "IPv4" | "IPv6";
 export const AttacksLayer7TopIndustryRequestIpVersion = S.String;
@@ -33364,9 +32968,8 @@ export const AttacksLayer7TopIndustryRequestIpVersion = S.String;
 export type AttacksLayer7TopIndustryRequestIpVersionList = Array<
   AttacksLayer7TopIndustryRequestIpVersion | (string & {})
 >;
-export const AttacksLayer7TopIndustryRequestIpVersionList = /*@__PURE__*/ S.Array(
-  AttacksLayer7TopIndustryRequestIpVersion,
-) as any as S.Schema<AttacksLayer7TopIndustryRequestIpVersionList>;
+export const AttacksLayer7TopIndustryRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer7TopIndustryRequestIpVersionList>;
 
 export type AttacksLayer7TopIndustryRequestLocationList = Array<string>;
 export const AttacksLayer7TopIndustryRequestLocationList =
@@ -33385,9 +32988,8 @@ export const AttacksLayer7TopIndustryRequestMitigationProduct = S.String;
 export type AttacksLayer7TopIndustryRequestMitigationProductList = Array<
   AttacksLayer7TopIndustryRequestMitigationProduct | (string & {})
 >;
-export const AttacksLayer7TopIndustryRequestMitigationProductList = /*@__PURE__*/ S.Array(
-  AttacksLayer7TopIndustryRequestMitigationProduct,
-) as any as S.Schema<AttacksLayer7TopIndustryRequestMitigationProductList>;
+export const AttacksLayer7TopIndustryRequestMitigationProductList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer7TopIndustryRequestMitigationProductList>;
 
 export type AttacksLayer7TopIndustryRequestNameList = Array<string>;
 export const AttacksLayer7TopIndustryRequestNameList =
@@ -33732,9 +33334,8 @@ export const As112SummaryIpVersionRequestProtocol = S.String;
 export type As112SummaryIpVersionRequestProtocolList = Array<
   As112SummaryIpVersionRequestProtocol | (string & {})
 >;
-export const As112SummaryIpVersionRequestProtocolList = /*@__PURE__*/ S.Array(
-  As112SummaryIpVersionRequestProtocol,
-) as any as S.Schema<As112SummaryIpVersionRequestProtocolList>;
+export const As112SummaryIpVersionRequestProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<As112SummaryIpVersionRequestProtocolList>;
 
 export type As112SummaryIpVersionRequestQueryType =
   | "A"
@@ -33830,9 +33431,8 @@ export const As112SummaryIpVersionRequestQueryType = S.String;
 export type As112SummaryIpVersionRequestQueryTypeList = Array<
   As112SummaryIpVersionRequestQueryType | (string & {})
 >;
-export const As112SummaryIpVersionRequestQueryTypeList = /*@__PURE__*/ S.Array(
-  As112SummaryIpVersionRequestQueryType,
-) as any as S.Schema<As112SummaryIpVersionRequestQueryTypeList>;
+export const As112SummaryIpVersionRequestQueryTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<As112SummaryIpVersionRequestQueryTypeList>;
 
 export type As112SummaryIpVersionRequestResponseCode =
   | "NOERROR"
@@ -33859,9 +33459,8 @@ export const As112SummaryIpVersionRequestResponseCode = S.String;
 export type As112SummaryIpVersionRequestResponseCodeList = Array<
   As112SummaryIpVersionRequestResponseCode | (string & {})
 >;
-export const As112SummaryIpVersionRequestResponseCodeList = /*@__PURE__*/ S.Array(
-  As112SummaryIpVersionRequestResponseCode,
-) as any as S.Schema<As112SummaryIpVersionRequestResponseCodeList>;
+export const As112SummaryIpVersionRequestResponseCodeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<As112SummaryIpVersionRequestResponseCodeList>;
 
 export interface IpVersionAs112SummaryRequest {
   /** Filters results by continent. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA. */
@@ -34114,9 +33713,8 @@ export const As112TimeseriesGroupsIpVersionRequestProtocol = S.String;
 export type As112TimeseriesGroupsIpVersionRequestProtocolList = Array<
   As112TimeseriesGroupsIpVersionRequestProtocol | (string & {})
 >;
-export const As112TimeseriesGroupsIpVersionRequestProtocolList = /*@__PURE__*/ S.Array(
-  As112TimeseriesGroupsIpVersionRequestProtocol,
-) as any as S.Schema<As112TimeseriesGroupsIpVersionRequestProtocolList>;
+export const As112TimeseriesGroupsIpVersionRequestProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<As112TimeseriesGroupsIpVersionRequestProtocolList>;
 
 export type As112TimeseriesGroupsIpVersionRequestQueryType =
   | "A"
@@ -34212,9 +33810,8 @@ export const As112TimeseriesGroupsIpVersionRequestQueryType = S.String;
 export type As112TimeseriesGroupsIpVersionRequestQueryTypeList = Array<
   As112TimeseriesGroupsIpVersionRequestQueryType | (string & {})
 >;
-export const As112TimeseriesGroupsIpVersionRequestQueryTypeList = /*@__PURE__*/ S.Array(
-  As112TimeseriesGroupsIpVersionRequestQueryType,
-) as any as S.Schema<As112TimeseriesGroupsIpVersionRequestQueryTypeList>;
+export const As112TimeseriesGroupsIpVersionRequestQueryTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<As112TimeseriesGroupsIpVersionRequestQueryTypeList>;
 
 export type As112TimeseriesGroupsIpVersionRequestResponseCode =
   | "NOERROR"
@@ -34241,9 +33838,8 @@ export const As112TimeseriesGroupsIpVersionRequestResponseCode = S.String;
 export type As112TimeseriesGroupsIpVersionRequestResponseCodeList = Array<
   As112TimeseriesGroupsIpVersionRequestResponseCode | (string & {})
 >;
-export const As112TimeseriesGroupsIpVersionRequestResponseCodeList = /*@__PURE__*/ S.Array(
-  As112TimeseriesGroupsIpVersionRequestResponseCode,
-) as any as S.Schema<As112TimeseriesGroupsIpVersionRequestResponseCodeList>;
+export const As112TimeseriesGroupsIpVersionRequestResponseCodeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<As112TimeseriesGroupsIpVersionRequestResponseCodeList>;
 
 export interface IpVersionAs112TimeseriesGroupRequest {
   /** Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/). When omitted, the interval is auto-selected from the requested date range; finer intervals are only available for shorter ranges. If the requested interval is too granular for the date range, the request is rejected. */
@@ -34758,9 +34354,8 @@ export const AttacksLayer3SummaryIpVersionRequestProtocol = S.String;
 export type AttacksLayer3SummaryIpVersionRequestProtocolList = Array<
   AttacksLayer3SummaryIpVersionRequestProtocol | (string & {})
 >;
-export const AttacksLayer3SummaryIpVersionRequestProtocolList = /*@__PURE__*/ S.Array(
-  AttacksLayer3SummaryIpVersionRequestProtocol,
-) as any as S.Schema<AttacksLayer3SummaryIpVersionRequestProtocolList>;
+export const AttacksLayer3SummaryIpVersionRequestProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer3SummaryIpVersionRequestProtocolList>;
 
 export interface IpVersionAttackLayer3SummaryRequest {
   /** Filters results by continent. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA. */
@@ -35008,9 +34603,8 @@ export const AttacksLayer3TimeseriesGroupsIpVersionRequestProtocol = S.String;
 export type AttacksLayer3TimeseriesGroupsIpVersionRequestProtocolList = Array<
   AttacksLayer3TimeseriesGroupsIpVersionRequestProtocol | (string & {})
 >;
-export const AttacksLayer3TimeseriesGroupsIpVersionRequestProtocolList = /*@__PURE__*/ S.Array(
-  AttacksLayer3TimeseriesGroupsIpVersionRequestProtocol,
-) as any as S.Schema<AttacksLayer3TimeseriesGroupsIpVersionRequestProtocolList>;
+export const AttacksLayer3TimeseriesGroupsIpVersionRequestProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer3TimeseriesGroupsIpVersionRequestProtocolList>;
 
 export interface IpVersionAttackLayer3TimeseriesGroupRequest {
   /** Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/). When omitted, the interval is auto-selected from the requested date range; finer intervals are only available for shorter ranges. If the requested interval is too granular for the date range, the request is rejected. */
@@ -35353,9 +34947,8 @@ export const AttacksLayer7SummaryIpVersionRequestHttpMethod = S.String;
 export type AttacksLayer7SummaryIpVersionRequestHttpMethodList = Array<
   AttacksLayer7SummaryIpVersionRequestHttpMethod | (string & {})
 >;
-export const AttacksLayer7SummaryIpVersionRequestHttpMethodList = /*@__PURE__*/ S.Array(
-  AttacksLayer7SummaryIpVersionRequestHttpMethod,
-) as any as S.Schema<AttacksLayer7SummaryIpVersionRequestHttpMethodList>;
+export const AttacksLayer7SummaryIpVersionRequestHttpMethodList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer7SummaryIpVersionRequestHttpMethodList>;
 
 export type AttacksLayer7SummaryIpVersionRequestHttpVersion = "HTTPv1" | "HTTPv2" | "HTTPv3";
 export const AttacksLayer7SummaryIpVersionRequestHttpVersion = S.String;
@@ -35363,9 +34956,8 @@ export const AttacksLayer7SummaryIpVersionRequestHttpVersion = S.String;
 export type AttacksLayer7SummaryIpVersionRequestHttpVersionList = Array<
   AttacksLayer7SummaryIpVersionRequestHttpVersion | (string & {})
 >;
-export const AttacksLayer7SummaryIpVersionRequestHttpVersionList = /*@__PURE__*/ S.Array(
-  AttacksLayer7SummaryIpVersionRequestHttpVersion,
-) as any as S.Schema<AttacksLayer7SummaryIpVersionRequestHttpVersionList>;
+export const AttacksLayer7SummaryIpVersionRequestHttpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer7SummaryIpVersionRequestHttpVersionList>;
 
 export type AttacksLayer7SummaryIpVersionRequestLocationList = Array<string>;
 export const AttacksLayer7SummaryIpVersionRequestLocationList =
@@ -35384,9 +34976,8 @@ export const AttacksLayer7SummaryIpVersionRequestMitigationProduct = S.String;
 export type AttacksLayer7SummaryIpVersionRequestMitigationProductList = Array<
   AttacksLayer7SummaryIpVersionRequestMitigationProduct | (string & {})
 >;
-export const AttacksLayer7SummaryIpVersionRequestMitigationProductList = /*@__PURE__*/ S.Array(
-  AttacksLayer7SummaryIpVersionRequestMitigationProduct,
-) as any as S.Schema<AttacksLayer7SummaryIpVersionRequestMitigationProductList>;
+export const AttacksLayer7SummaryIpVersionRequestMitigationProductList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer7SummaryIpVersionRequestMitigationProductList>;
 
 export type AttacksLayer7SummaryIpVersionRequestNameList = Array<string>;
 export const AttacksLayer7SummaryIpVersionRequestNameList =
@@ -35686,9 +35277,8 @@ export const AttacksLayer7TimeseriesGroupsIpVersionRequestHttpMethod = S.String;
 export type AttacksLayer7TimeseriesGroupsIpVersionRequestHttpMethodList = Array<
   AttacksLayer7TimeseriesGroupsIpVersionRequestHttpMethod | (string & {})
 >;
-export const AttacksLayer7TimeseriesGroupsIpVersionRequestHttpMethodList = /*@__PURE__*/ S.Array(
-  AttacksLayer7TimeseriesGroupsIpVersionRequestHttpMethod,
-) as any as S.Schema<AttacksLayer7TimeseriesGroupsIpVersionRequestHttpMethodList>;
+export const AttacksLayer7TimeseriesGroupsIpVersionRequestHttpMethodList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer7TimeseriesGroupsIpVersionRequestHttpMethodList>;
 
 export type AttacksLayer7TimeseriesGroupsIpVersionRequestHttpVersion =
   | "HTTPv1"
@@ -35699,9 +35289,8 @@ export const AttacksLayer7TimeseriesGroupsIpVersionRequestHttpVersion = S.String
 export type AttacksLayer7TimeseriesGroupsIpVersionRequestHttpVersionList = Array<
   AttacksLayer7TimeseriesGroupsIpVersionRequestHttpVersion | (string & {})
 >;
-export const AttacksLayer7TimeseriesGroupsIpVersionRequestHttpVersionList = /*@__PURE__*/ S.Array(
-  AttacksLayer7TimeseriesGroupsIpVersionRequestHttpVersion,
-) as any as S.Schema<AttacksLayer7TimeseriesGroupsIpVersionRequestHttpVersionList>;
+export const AttacksLayer7TimeseriesGroupsIpVersionRequestHttpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer7TimeseriesGroupsIpVersionRequestHttpVersionList>;
 
 export type AttacksLayer7TimeseriesGroupsIpVersionRequestLocationList = Array<string>;
 export const AttacksLayer7TimeseriesGroupsIpVersionRequestLocationList =
@@ -35721,9 +35310,7 @@ export type AttacksLayer7TimeseriesGroupsIpVersionRequestMitigationProductList =
   AttacksLayer7TimeseriesGroupsIpVersionRequestMitigationProduct | (string & {})
 >;
 export const AttacksLayer7TimeseriesGroupsIpVersionRequestMitigationProductList =
-  /*@__PURE__*/ S.Array(
-    AttacksLayer7TimeseriesGroupsIpVersionRequestMitigationProduct,
-  ) as any as S.Schema<AttacksLayer7TimeseriesGroupsIpVersionRequestMitigationProductList>;
+  AiTimeseriesGroupsTimeseriesGroupsRequestResponseStatusCategoryList as any as S.Schema<AttacksLayer7TimeseriesGroupsIpVersionRequestMitigationProductList>;
 
 export type AttacksLayer7TimeseriesGroupsIpVersionRequestNameList = Array<string>;
 export const AttacksLayer7TimeseriesGroupsIpVersionRequestNameList =
@@ -36044,9 +35631,8 @@ export const DnsSummaryIpVersionRequestProtocol = S.String;
 export type DnsSummaryIpVersionRequestProtocolList = Array<
   DnsSummaryIpVersionRequestProtocol | (string & {})
 >;
-export const DnsSummaryIpVersionRequestProtocolList = /*@__PURE__*/ S.Array(
-  DnsSummaryIpVersionRequestProtocol,
-) as any as S.Schema<DnsSummaryIpVersionRequestProtocolList>;
+export const DnsSummaryIpVersionRequestProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsSummaryIpVersionRequestProtocolList>;
 
 export type DnsSummaryIpVersionRequestQueryType =
   | "A"
@@ -36142,9 +35728,8 @@ export const DnsSummaryIpVersionRequestQueryType = S.String;
 export type DnsSummaryIpVersionRequestQueryTypeList = Array<
   DnsSummaryIpVersionRequestQueryType | (string & {})
 >;
-export const DnsSummaryIpVersionRequestQueryTypeList = /*@__PURE__*/ S.Array(
-  DnsSummaryIpVersionRequestQueryType,
-) as any as S.Schema<DnsSummaryIpVersionRequestQueryTypeList>;
+export const DnsSummaryIpVersionRequestQueryTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsSummaryIpVersionRequestQueryTypeList>;
 
 export type DnsSummaryIpVersionRequestResponseCode =
   | "NOERROR"
@@ -36171,9 +35756,8 @@ export const DnsSummaryIpVersionRequestResponseCode = S.String;
 export type DnsSummaryIpVersionRequestResponseCodeList = Array<
   DnsSummaryIpVersionRequestResponseCode | (string & {})
 >;
-export const DnsSummaryIpVersionRequestResponseCodeList = /*@__PURE__*/ S.Array(
-  DnsSummaryIpVersionRequestResponseCode,
-) as any as S.Schema<DnsSummaryIpVersionRequestResponseCodeList>;
+export const DnsSummaryIpVersionRequestResponseCodeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsSummaryIpVersionRequestResponseCodeList>;
 
 export type DnsSummaryIpVersionRequestTldList = Array<string>;
 export const DnsSummaryIpVersionRequestTldList =
@@ -36435,9 +36019,8 @@ export const DnsTimeseriesGroupsIpVersionRequestProtocol = S.String;
 export type DnsTimeseriesGroupsIpVersionRequestProtocolList = Array<
   DnsTimeseriesGroupsIpVersionRequestProtocol | (string & {})
 >;
-export const DnsTimeseriesGroupsIpVersionRequestProtocolList = /*@__PURE__*/ S.Array(
-  DnsTimeseriesGroupsIpVersionRequestProtocol,
-) as any as S.Schema<DnsTimeseriesGroupsIpVersionRequestProtocolList>;
+export const DnsTimeseriesGroupsIpVersionRequestProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsTimeseriesGroupsIpVersionRequestProtocolList>;
 
 export type DnsTimeseriesGroupsIpVersionRequestQueryType =
   | "A"
@@ -36533,9 +36116,8 @@ export const DnsTimeseriesGroupsIpVersionRequestQueryType = S.String;
 export type DnsTimeseriesGroupsIpVersionRequestQueryTypeList = Array<
   DnsTimeseriesGroupsIpVersionRequestQueryType | (string & {})
 >;
-export const DnsTimeseriesGroupsIpVersionRequestQueryTypeList = /*@__PURE__*/ S.Array(
-  DnsTimeseriesGroupsIpVersionRequestQueryType,
-) as any as S.Schema<DnsTimeseriesGroupsIpVersionRequestQueryTypeList>;
+export const DnsTimeseriesGroupsIpVersionRequestQueryTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsTimeseriesGroupsIpVersionRequestQueryTypeList>;
 
 export type DnsTimeseriesGroupsIpVersionRequestResponseCode =
   | "NOERROR"
@@ -36562,9 +36144,8 @@ export const DnsTimeseriesGroupsIpVersionRequestResponseCode = S.String;
 export type DnsTimeseriesGroupsIpVersionRequestResponseCodeList = Array<
   DnsTimeseriesGroupsIpVersionRequestResponseCode | (string & {})
 >;
-export const DnsTimeseriesGroupsIpVersionRequestResponseCodeList = /*@__PURE__*/ S.Array(
-  DnsTimeseriesGroupsIpVersionRequestResponseCode,
-) as any as S.Schema<DnsTimeseriesGroupsIpVersionRequestResponseCodeList>;
+export const DnsTimeseriesGroupsIpVersionRequestResponseCodeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsTimeseriesGroupsIpVersionRequestResponseCodeList>;
 
 export type DnsTimeseriesGroupsIpVersionRequestTldList = Array<string>;
 export const DnsTimeseriesGroupsIpVersionRequestTldList =
@@ -36818,9 +36399,8 @@ export const EmailRoutingSummaryIpVersionRequestArc = S.String;
 export type EmailRoutingSummaryIpVersionRequestArcList = Array<
   EmailRoutingSummaryIpVersionRequestArc | (string & {})
 >;
-export const EmailRoutingSummaryIpVersionRequestArcList = /*@__PURE__*/ S.Array(
-  EmailRoutingSummaryIpVersionRequestArc,
-) as any as S.Schema<EmailRoutingSummaryIpVersionRequestArcList>;
+export const EmailRoutingSummaryIpVersionRequestArcList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingSummaryIpVersionRequestArcList>;
 
 export type EmailRoutingSummaryIpVersionRequestDateEndList = Array<string>;
 export const EmailRoutingSummaryIpVersionRequestDateEndList =
@@ -36840,9 +36420,8 @@ export const EmailRoutingSummaryIpVersionRequestDkim = S.String;
 export type EmailRoutingSummaryIpVersionRequestDkimList = Array<
   EmailRoutingSummaryIpVersionRequestDkim | (string & {})
 >;
-export const EmailRoutingSummaryIpVersionRequestDkimList = /*@__PURE__*/ S.Array(
-  EmailRoutingSummaryIpVersionRequestDkim,
-) as any as S.Schema<EmailRoutingSummaryIpVersionRequestDkimList>;
+export const EmailRoutingSummaryIpVersionRequestDkimList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingSummaryIpVersionRequestDkimList>;
 
 export type EmailRoutingSummaryIpVersionRequestDmarc = "PASS" | "NONE" | "FAIL";
 export const EmailRoutingSummaryIpVersionRequestDmarc = S.String;
@@ -36850,9 +36429,8 @@ export const EmailRoutingSummaryIpVersionRequestDmarc = S.String;
 export type EmailRoutingSummaryIpVersionRequestDmarcList = Array<
   EmailRoutingSummaryIpVersionRequestDmarc | (string & {})
 >;
-export const EmailRoutingSummaryIpVersionRequestDmarcList = /*@__PURE__*/ S.Array(
-  EmailRoutingSummaryIpVersionRequestDmarc,
-) as any as S.Schema<EmailRoutingSummaryIpVersionRequestDmarcList>;
+export const EmailRoutingSummaryIpVersionRequestDmarcList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingSummaryIpVersionRequestDmarcList>;
 
 export type EmailRoutingSummaryIpVersionRequestEncrypted = "ENCRYPTED" | "NOT_ENCRYPTED";
 export const EmailRoutingSummaryIpVersionRequestEncrypted = S.String;
@@ -36860,9 +36438,8 @@ export const EmailRoutingSummaryIpVersionRequestEncrypted = S.String;
 export type EmailRoutingSummaryIpVersionRequestEncryptedList = Array<
   EmailRoutingSummaryIpVersionRequestEncrypted | (string & {})
 >;
-export const EmailRoutingSummaryIpVersionRequestEncryptedList = /*@__PURE__*/ S.Array(
-  EmailRoutingSummaryIpVersionRequestEncrypted,
-) as any as S.Schema<EmailRoutingSummaryIpVersionRequestEncryptedList>;
+export const EmailRoutingSummaryIpVersionRequestEncryptedList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingSummaryIpVersionRequestEncryptedList>;
 
 export type EmailRoutingSummaryIpVersionRequestFormat = "JSON" | "CSV";
 export const EmailRoutingSummaryIpVersionRequestFormat = S.String;
@@ -36877,9 +36454,8 @@ export const EmailRoutingSummaryIpVersionRequestSpf = S.String;
 export type EmailRoutingSummaryIpVersionRequestSpfList = Array<
   EmailRoutingSummaryIpVersionRequestSpf | (string & {})
 >;
-export const EmailRoutingSummaryIpVersionRequestSpfList = /*@__PURE__*/ S.Array(
-  EmailRoutingSummaryIpVersionRequestSpf,
-) as any as S.Schema<EmailRoutingSummaryIpVersionRequestSpfList>;
+export const EmailRoutingSummaryIpVersionRequestSpfList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingSummaryIpVersionRequestSpfList>;
 
 export interface IpVersionEmailRoutingSummaryRequest {
   /** Filters results by ARC (Authenticated Received Chain) validation. */
@@ -37097,9 +36673,8 @@ export const EmailRoutingTimeseriesGroupsIpVersionRequestArc = S.String;
 export type EmailRoutingTimeseriesGroupsIpVersionRequestArcList = Array<
   EmailRoutingTimeseriesGroupsIpVersionRequestArc | (string & {})
 >;
-export const EmailRoutingTimeseriesGroupsIpVersionRequestArcList = /*@__PURE__*/ S.Array(
-  EmailRoutingTimeseriesGroupsIpVersionRequestArc,
-) as any as S.Schema<EmailRoutingTimeseriesGroupsIpVersionRequestArcList>;
+export const EmailRoutingTimeseriesGroupsIpVersionRequestArcList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingTimeseriesGroupsIpVersionRequestArcList>;
 
 export type EmailRoutingTimeseriesGroupsIpVersionRequestDateEndList = Array<string>;
 export const EmailRoutingTimeseriesGroupsIpVersionRequestDateEndList =
@@ -37119,9 +36694,8 @@ export const EmailRoutingTimeseriesGroupsIpVersionRequestDkim = S.String;
 export type EmailRoutingTimeseriesGroupsIpVersionRequestDkimList = Array<
   EmailRoutingTimeseriesGroupsIpVersionRequestDkim | (string & {})
 >;
-export const EmailRoutingTimeseriesGroupsIpVersionRequestDkimList = /*@__PURE__*/ S.Array(
-  EmailRoutingTimeseriesGroupsIpVersionRequestDkim,
-) as any as S.Schema<EmailRoutingTimeseriesGroupsIpVersionRequestDkimList>;
+export const EmailRoutingTimeseriesGroupsIpVersionRequestDkimList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingTimeseriesGroupsIpVersionRequestDkimList>;
 
 export type EmailRoutingTimeseriesGroupsIpVersionRequestDmarc = "PASS" | "NONE" | "FAIL";
 export const EmailRoutingTimeseriesGroupsIpVersionRequestDmarc = S.String;
@@ -37129,9 +36703,8 @@ export const EmailRoutingTimeseriesGroupsIpVersionRequestDmarc = S.String;
 export type EmailRoutingTimeseriesGroupsIpVersionRequestDmarcList = Array<
   EmailRoutingTimeseriesGroupsIpVersionRequestDmarc | (string & {})
 >;
-export const EmailRoutingTimeseriesGroupsIpVersionRequestDmarcList = /*@__PURE__*/ S.Array(
-  EmailRoutingTimeseriesGroupsIpVersionRequestDmarc,
-) as any as S.Schema<EmailRoutingTimeseriesGroupsIpVersionRequestDmarcList>;
+export const EmailRoutingTimeseriesGroupsIpVersionRequestDmarcList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingTimeseriesGroupsIpVersionRequestDmarcList>;
 
 export type EmailRoutingTimeseriesGroupsIpVersionRequestEncrypted = "ENCRYPTED" | "NOT_ENCRYPTED";
 export const EmailRoutingTimeseriesGroupsIpVersionRequestEncrypted = S.String;
@@ -37139,9 +36712,8 @@ export const EmailRoutingTimeseriesGroupsIpVersionRequestEncrypted = S.String;
 export type EmailRoutingTimeseriesGroupsIpVersionRequestEncryptedList = Array<
   EmailRoutingTimeseriesGroupsIpVersionRequestEncrypted | (string & {})
 >;
-export const EmailRoutingTimeseriesGroupsIpVersionRequestEncryptedList = /*@__PURE__*/ S.Array(
-  EmailRoutingTimeseriesGroupsIpVersionRequestEncrypted,
-) as any as S.Schema<EmailRoutingTimeseriesGroupsIpVersionRequestEncryptedList>;
+export const EmailRoutingTimeseriesGroupsIpVersionRequestEncryptedList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingTimeseriesGroupsIpVersionRequestEncryptedList>;
 
 export type EmailRoutingTimeseriesGroupsIpVersionRequestFormat = "JSON" | "CSV";
 export const EmailRoutingTimeseriesGroupsIpVersionRequestFormat = S.String;
@@ -37156,9 +36728,8 @@ export const EmailRoutingTimeseriesGroupsIpVersionRequestSpf = S.String;
 export type EmailRoutingTimeseriesGroupsIpVersionRequestSpfList = Array<
   EmailRoutingTimeseriesGroupsIpVersionRequestSpf | (string & {})
 >;
-export const EmailRoutingTimeseriesGroupsIpVersionRequestSpfList = /*@__PURE__*/ S.Array(
-  EmailRoutingTimeseriesGroupsIpVersionRequestSpf,
-) as any as S.Schema<EmailRoutingTimeseriesGroupsIpVersionRequestSpfList>;
+export const EmailRoutingTimeseriesGroupsIpVersionRequestSpfList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingTimeseriesGroupsIpVersionRequestSpfList>;
 
 export interface IpVersionEmailRoutingTimeseriesGroupRequest {
   /** Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/). When omitted, the interval is auto-selected from the requested date range; finer intervals are only available for shorter ranges. If the requested interval is too granular for the date range, the request is rejected. */
@@ -37422,9 +36993,8 @@ export const HttpSummaryIpVersionRequestBotClass = S.String;
 export type HttpSummaryIpVersionRequestBotClassList = Array<
   HttpSummaryIpVersionRequestBotClass | (string & {})
 >;
-export const HttpSummaryIpVersionRequestBotClassList = /*@__PURE__*/ S.Array(
-  HttpSummaryIpVersionRequestBotClass,
-) as any as S.Schema<HttpSummaryIpVersionRequestBotClassList>;
+export const HttpSummaryIpVersionRequestBotClassList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpSummaryIpVersionRequestBotClassList>;
 
 export type HttpSummaryIpVersionRequestBrowserFamily = "CHROME" | "EDGE" | "FIREFOX" | "SAFARI";
 export const HttpSummaryIpVersionRequestBrowserFamily = S.String;
@@ -37432,9 +37002,8 @@ export const HttpSummaryIpVersionRequestBrowserFamily = S.String;
 export type HttpSummaryIpVersionRequestBrowserFamilyList = Array<
   HttpSummaryIpVersionRequestBrowserFamily | (string & {})
 >;
-export const HttpSummaryIpVersionRequestBrowserFamilyList = /*@__PURE__*/ S.Array(
-  HttpSummaryIpVersionRequestBrowserFamily,
-) as any as S.Schema<HttpSummaryIpVersionRequestBrowserFamilyList>;
+export const HttpSummaryIpVersionRequestBrowserFamilyList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpSummaryIpVersionRequestBrowserFamilyList>;
 
 export type HttpSummaryIpVersionRequestContinentList = Array<string>;
 export const HttpSummaryIpVersionRequestContinentList =
@@ -37458,9 +37027,8 @@ export const HttpSummaryIpVersionRequestDeviceType = S.String;
 export type HttpSummaryIpVersionRequestDeviceTypeList = Array<
   HttpSummaryIpVersionRequestDeviceType | (string & {})
 >;
-export const HttpSummaryIpVersionRequestDeviceTypeList = /*@__PURE__*/ S.Array(
-  HttpSummaryIpVersionRequestDeviceType,
-) as any as S.Schema<HttpSummaryIpVersionRequestDeviceTypeList>;
+export const HttpSummaryIpVersionRequestDeviceTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpSummaryIpVersionRequestDeviceTypeList>;
 
 export type HttpSummaryIpVersionRequestFormat = "JSON" | "CSV";
 export const HttpSummaryIpVersionRequestFormat = S.String;
@@ -37475,9 +37043,8 @@ export const HttpSummaryIpVersionRequestHttpProtocol = S.String;
 export type HttpSummaryIpVersionRequestHttpProtocolList = Array<
   HttpSummaryIpVersionRequestHttpProtocol | (string & {})
 >;
-export const HttpSummaryIpVersionRequestHttpProtocolList = /*@__PURE__*/ S.Array(
-  HttpSummaryIpVersionRequestHttpProtocol,
-) as any as S.Schema<HttpSummaryIpVersionRequestHttpProtocolList>;
+export const HttpSummaryIpVersionRequestHttpProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpSummaryIpVersionRequestHttpProtocolList>;
 
 export type HttpSummaryIpVersionRequestHttpVersion = "HTTPv1" | "HTTPv2" | "HTTPv3";
 export const HttpSummaryIpVersionRequestHttpVersion = S.String;
@@ -37485,9 +37052,8 @@ export const HttpSummaryIpVersionRequestHttpVersion = S.String;
 export type HttpSummaryIpVersionRequestHttpVersionList = Array<
   HttpSummaryIpVersionRequestHttpVersion | (string & {})
 >;
-export const HttpSummaryIpVersionRequestHttpVersionList = /*@__PURE__*/ S.Array(
-  HttpSummaryIpVersionRequestHttpVersion,
-) as any as S.Schema<HttpSummaryIpVersionRequestHttpVersionList>;
+export const HttpSummaryIpVersionRequestHttpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpSummaryIpVersionRequestHttpVersionList>;
 
 export type HttpSummaryIpVersionRequestLocationList = Array<string>;
 export const HttpSummaryIpVersionRequestLocationList =
@@ -37510,9 +37076,8 @@ export const HttpSummaryIpVersionRequestOs = S.String;
 export type HttpSummaryIpVersionRequestOsList = Array<
   HttpSummaryIpVersionRequestOs | (string & {})
 >;
-export const HttpSummaryIpVersionRequestOsList = /*@__PURE__*/ S.Array(
-  HttpSummaryIpVersionRequestOs,
-) as any as S.Schema<HttpSummaryIpVersionRequestOsList>;
+export const HttpSummaryIpVersionRequestOsList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpSummaryIpVersionRequestOsList>;
 
 export type HttpSummaryIpVersionRequestTlsVersion =
   | "TLSv1_0"
@@ -37525,9 +37090,8 @@ export const HttpSummaryIpVersionRequestTlsVersion = S.String;
 export type HttpSummaryIpVersionRequestTlsVersionList = Array<
   HttpSummaryIpVersionRequestTlsVersion | (string & {})
 >;
-export const HttpSummaryIpVersionRequestTlsVersionList = /*@__PURE__*/ S.Array(
-  HttpSummaryIpVersionRequestTlsVersion,
-) as any as S.Schema<HttpSummaryIpVersionRequestTlsVersionList>;
+export const HttpSummaryIpVersionRequestTlsVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpSummaryIpVersionRequestTlsVersionList>;
 
 export interface IpVersionHttpSummaryRequest {
   /** Filters results by Autonomous System. Specify one or more Autonomous System Numbers (ASNs) as a comma-separated list. Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356. */
@@ -37763,9 +37327,8 @@ export const HttpTimeseriesGroupsIpVersionRequestBotClass = S.String;
 export type HttpTimeseriesGroupsIpVersionRequestBotClassList = Array<
   HttpTimeseriesGroupsIpVersionRequestBotClass | (string & {})
 >;
-export const HttpTimeseriesGroupsIpVersionRequestBotClassList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsIpVersionRequestBotClass,
-) as any as S.Schema<HttpTimeseriesGroupsIpVersionRequestBotClassList>;
+export const HttpTimeseriesGroupsIpVersionRequestBotClassList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsIpVersionRequestBotClassList>;
 
 export type HttpTimeseriesGroupsIpVersionRequestBrowserFamily =
   | "CHROME"
@@ -37777,9 +37340,8 @@ export const HttpTimeseriesGroupsIpVersionRequestBrowserFamily = S.String;
 export type HttpTimeseriesGroupsIpVersionRequestBrowserFamilyList = Array<
   HttpTimeseriesGroupsIpVersionRequestBrowserFamily | (string & {})
 >;
-export const HttpTimeseriesGroupsIpVersionRequestBrowserFamilyList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsIpVersionRequestBrowserFamily,
-) as any as S.Schema<HttpTimeseriesGroupsIpVersionRequestBrowserFamilyList>;
+export const HttpTimeseriesGroupsIpVersionRequestBrowserFamilyList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsIpVersionRequestBrowserFamilyList>;
 
 export type HttpTimeseriesGroupsIpVersionRequestContinentList = Array<string>;
 export const HttpTimeseriesGroupsIpVersionRequestContinentList =
@@ -37803,9 +37365,8 @@ export const HttpTimeseriesGroupsIpVersionRequestDeviceType = S.String;
 export type HttpTimeseriesGroupsIpVersionRequestDeviceTypeList = Array<
   HttpTimeseriesGroupsIpVersionRequestDeviceType | (string & {})
 >;
-export const HttpTimeseriesGroupsIpVersionRequestDeviceTypeList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsIpVersionRequestDeviceType,
-) as any as S.Schema<HttpTimeseriesGroupsIpVersionRequestDeviceTypeList>;
+export const HttpTimeseriesGroupsIpVersionRequestDeviceTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsIpVersionRequestDeviceTypeList>;
 
 export type HttpTimeseriesGroupsIpVersionRequestFormat = "JSON" | "CSV";
 export const HttpTimeseriesGroupsIpVersionRequestFormat = S.String;
@@ -37820,9 +37381,8 @@ export const HttpTimeseriesGroupsIpVersionRequestHttpProtocol = S.String;
 export type HttpTimeseriesGroupsIpVersionRequestHttpProtocolList = Array<
   HttpTimeseriesGroupsIpVersionRequestHttpProtocol | (string & {})
 >;
-export const HttpTimeseriesGroupsIpVersionRequestHttpProtocolList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsIpVersionRequestHttpProtocol,
-) as any as S.Schema<HttpTimeseriesGroupsIpVersionRequestHttpProtocolList>;
+export const HttpTimeseriesGroupsIpVersionRequestHttpProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsIpVersionRequestHttpProtocolList>;
 
 export type HttpTimeseriesGroupsIpVersionRequestHttpVersion = "HTTPv1" | "HTTPv2" | "HTTPv3";
 export const HttpTimeseriesGroupsIpVersionRequestHttpVersion = S.String;
@@ -37830,9 +37390,8 @@ export const HttpTimeseriesGroupsIpVersionRequestHttpVersion = S.String;
 export type HttpTimeseriesGroupsIpVersionRequestHttpVersionList = Array<
   HttpTimeseriesGroupsIpVersionRequestHttpVersion | (string & {})
 >;
-export const HttpTimeseriesGroupsIpVersionRequestHttpVersionList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsIpVersionRequestHttpVersion,
-) as any as S.Schema<HttpTimeseriesGroupsIpVersionRequestHttpVersionList>;
+export const HttpTimeseriesGroupsIpVersionRequestHttpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsIpVersionRequestHttpVersionList>;
 
 export type HttpTimeseriesGroupsIpVersionRequestLocationList = Array<string>;
 export const HttpTimeseriesGroupsIpVersionRequestLocationList =
@@ -37855,9 +37414,8 @@ export const HttpTimeseriesGroupsIpVersionRequestOs = S.String;
 export type HttpTimeseriesGroupsIpVersionRequestOsList = Array<
   HttpTimeseriesGroupsIpVersionRequestOs | (string & {})
 >;
-export const HttpTimeseriesGroupsIpVersionRequestOsList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsIpVersionRequestOs,
-) as any as S.Schema<HttpTimeseriesGroupsIpVersionRequestOsList>;
+export const HttpTimeseriesGroupsIpVersionRequestOsList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsIpVersionRequestOsList>;
 
 export type HttpTimeseriesGroupsIpVersionRequestTlsVersion =
   | "TLSv1_0"
@@ -37870,9 +37428,8 @@ export const HttpTimeseriesGroupsIpVersionRequestTlsVersion = S.String;
 export type HttpTimeseriesGroupsIpVersionRequestTlsVersionList = Array<
   HttpTimeseriesGroupsIpVersionRequestTlsVersion | (string & {})
 >;
-export const HttpTimeseriesGroupsIpVersionRequestTlsVersionList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsIpVersionRequestTlsVersion,
-) as any as S.Schema<HttpTimeseriesGroupsIpVersionRequestTlsVersionList>;
+export const HttpTimeseriesGroupsIpVersionRequestTlsVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsIpVersionRequestTlsVersionList>;
 
 export interface IpVersionHttpTimeseriesGroupRequest {
   /** Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/). When omitted, the interval is auto-selected from the requested date range; finer intervals are only available for shorter ranges. If the requested interval is too granular for the date range, the request is rejected. */
@@ -38302,9 +37859,8 @@ export type AnnotationsListRequestTags =
 export const AnnotationsListRequestTags = S.String;
 
 export type AnnotationsListRequestTagsList = Array<AnnotationsListRequestTags | (string & {})>;
-export const AnnotationsListRequestTagsList = /*@__PURE__*/ S.Array(
-  AnnotationsListRequestTags,
-) as any as S.Schema<AnnotationsListRequestTagsList>;
+export const AnnotationsListRequestTagsList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AnnotationsListRequestTagsList>;
 
 export interface ListAnnotationsRequest {
   /** Filters results by Autonomous System. Specify a single Autonomous System Number (ASN) as integer. */
@@ -39477,19 +39033,8 @@ export interface GeolocationsListResponseGeolocationsItemParentParent {
   /** BCP 47 locale code used for the geolocation name translation */
   locale?: string | null;
 }
-export const GeolocationsListResponseGeolocationsItemParentParent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    geoId: S.String,
-    latitude: S.String,
-    longitude: S.String,
-    name: S.String,
-    type: GeolocationsListResponseGeolocationsItemParentParentType,
-    code: S.optional(S.NullOr(S.String)),
-    locale: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "GeolocationsListResponseGeolocationsItemParentParent",
-}) as any as S.Schema<GeolocationsListResponseGeolocationsItemParentParent>;
+export const GeolocationsListResponseGeolocationsItemParentParent =
+  GeolocationsGetResponseGeolocationParentParent as any as S.Schema<GeolocationsListResponseGeolocationsItemParentParent>;
 
 export type GeolocationsListResponseGeolocationsItemParentType = "CONTINENT" | "COUNTRY" | "ADM1";
 export const GeolocationsListResponseGeolocationsItemParentType = S.String;
@@ -39508,20 +39053,8 @@ export interface GeolocationsListResponseGeolocationsItemParent {
   /** BCP 47 locale code used for the geolocation name translation */
   locale?: string | null;
 }
-export const GeolocationsListResponseGeolocationsItemParent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    geoId: S.String,
-    latitude: S.String,
-    longitude: S.String,
-    name: S.String,
-    parent: GeolocationsListResponseGeolocationsItemParentParent,
-    type: GeolocationsListResponseGeolocationsItemParentType,
-    code: S.optional(S.NullOr(S.String)),
-    locale: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "GeolocationsListResponseGeolocationsItemParent",
-}) as any as S.Schema<GeolocationsListResponseGeolocationsItemParent>;
+export const GeolocationsListResponseGeolocationsItemParent =
+  GeolocationsGetResponseGeolocationParent as any as S.Schema<GeolocationsListResponseGeolocationsItemParent>;
 
 export type GeolocationsListResponseGeolocationsItemType = "CONTINENT" | "COUNTRY" | "ADM1";
 export const GeolocationsListResponseGeolocationsItemType = S.String;
@@ -39540,20 +39073,8 @@ export interface GeolocationsListResponseGeolocationsItem {
   /** BCP 47 locale code used for the geolocation name translation */
   locale?: string | null;
 }
-export const GeolocationsListResponseGeolocationsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    geoId: S.String,
-    latitude: S.String,
-    longitude: S.String,
-    name: S.String,
-    parent: GeolocationsListResponseGeolocationsItemParent,
-    type: GeolocationsListResponseGeolocationsItemType,
-    code: S.optional(S.NullOr(S.String)),
-    locale: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "GeolocationsListResponseGeolocationsItem",
-}) as any as S.Schema<GeolocationsListResponseGeolocationsItem>;
+export const GeolocationsListResponseGeolocationsItem =
+  GeolocationsGetResponseGeolocation as any as S.Schema<GeolocationsListResponseGeolocationsItem>;
 
 export type GeolocationsListResponseGeolocationsList =
   Array<GeolocationsListResponseGeolocationsItem>;
@@ -39986,9 +39507,8 @@ export type DnsTopLocationsRequestDnssec = "INVALID" | "INSECURE" | "SECURE" | "
 export const DnsTopLocationsRequestDnssec = S.String;
 
 export type DnsTopLocationsRequestDnssecList = Array<DnsTopLocationsRequestDnssec | (string & {})>;
-export const DnsTopLocationsRequestDnssecList = /*@__PURE__*/ S.Array(
-  DnsTopLocationsRequestDnssec,
-) as any as S.Schema<DnsTopLocationsRequestDnssecList>;
+export const DnsTopLocationsRequestDnssecList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsTopLocationsRequestDnssecList>;
 
 export type DnsTopLocationsRequestDnssecAware = "SUPPORTED" | "NOT_SUPPORTED";
 export const DnsTopLocationsRequestDnssecAware = S.String;
@@ -39996,9 +39516,8 @@ export const DnsTopLocationsRequestDnssecAware = S.String;
 export type DnsTopLocationsRequestDnssecAwareList = Array<
   DnsTopLocationsRequestDnssecAware | (string & {})
 >;
-export const DnsTopLocationsRequestDnssecAwareList = /*@__PURE__*/ S.Array(
-  DnsTopLocationsRequestDnssecAware,
-) as any as S.Schema<DnsTopLocationsRequestDnssecAwareList>;
+export const DnsTopLocationsRequestDnssecAwareList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsTopLocationsRequestDnssecAwareList>;
 
 export type DnsTopLocationsRequestDnssecE2eList = Array<boolean>;
 export const DnsTopLocationsRequestDnssecE2eList =
@@ -40017,9 +39536,8 @@ export const DnsTopLocationsRequestIpVersion = S.String;
 export type DnsTopLocationsRequestIpVersionList = Array<
   DnsTopLocationsRequestIpVersion | (string & {})
 >;
-export const DnsTopLocationsRequestIpVersionList = /*@__PURE__*/ S.Array(
-  DnsTopLocationsRequestIpVersion,
-) as any as S.Schema<DnsTopLocationsRequestIpVersionList>;
+export const DnsTopLocationsRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsTopLocationsRequestIpVersionList>;
 
 export type DnsTopLocationsRequestLocationList = Array<string>;
 export const DnsTopLocationsRequestLocationList =
@@ -40043,9 +39561,8 @@ export const DnsTopLocationsRequestProtocol = S.String;
 export type DnsTopLocationsRequestProtocolList = Array<
   DnsTopLocationsRequestProtocol | (string & {})
 >;
-export const DnsTopLocationsRequestProtocolList = /*@__PURE__*/ S.Array(
-  DnsTopLocationsRequestProtocol,
-) as any as S.Schema<DnsTopLocationsRequestProtocolList>;
+export const DnsTopLocationsRequestProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsTopLocationsRequestProtocolList>;
 
 export type DnsTopLocationsRequestQueryType =
   | "A"
@@ -40141,9 +39658,8 @@ export const DnsTopLocationsRequestQueryType = S.String;
 export type DnsTopLocationsRequestQueryTypeList = Array<
   DnsTopLocationsRequestQueryType | (string & {})
 >;
-export const DnsTopLocationsRequestQueryTypeList = /*@__PURE__*/ S.Array(
-  DnsTopLocationsRequestQueryType,
-) as any as S.Schema<DnsTopLocationsRequestQueryTypeList>;
+export const DnsTopLocationsRequestQueryTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsTopLocationsRequestQueryTypeList>;
 
 export type DnsTopLocationsRequestResponseCode =
   | "NOERROR"
@@ -40170,9 +39686,8 @@ export const DnsTopLocationsRequestResponseCode = S.String;
 export type DnsTopLocationsRequestResponseCodeList = Array<
   DnsTopLocationsRequestResponseCode | (string & {})
 >;
-export const DnsTopLocationsRequestResponseCodeList = /*@__PURE__*/ S.Array(
-  DnsTopLocationsRequestResponseCode,
-) as any as S.Schema<DnsTopLocationsRequestResponseCodeList>;
+export const DnsTopLocationsRequestResponseCodeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsTopLocationsRequestResponseCodeList>;
 
 export type DnsTopLocationsRequestResponseTtl =
   | "LTE_1M"
@@ -40187,9 +39702,8 @@ export const DnsTopLocationsRequestResponseTtl = S.String;
 export type DnsTopLocationsRequestResponseTtlList = Array<
   DnsTopLocationsRequestResponseTtl | (string & {})
 >;
-export const DnsTopLocationsRequestResponseTtlList = /*@__PURE__*/ S.Array(
-  DnsTopLocationsRequestResponseTtl,
-) as any as S.Schema<DnsTopLocationsRequestResponseTtlList>;
+export const DnsTopLocationsRequestResponseTtlList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsTopLocationsRequestResponseTtlList>;
 
 export type DnsTopLocationsRequestTldList = Array<string>;
 export const DnsTopLocationsRequestTldList =
@@ -40950,9 +40464,8 @@ export const EmailSecuritySummaryMaliciousRequestArc = S.String;
 export type EmailSecuritySummaryMaliciousRequestArcList = Array<
   EmailSecuritySummaryMaliciousRequestArc | (string & {})
 >;
-export const EmailSecuritySummaryMaliciousRequestArcList = /*@__PURE__*/ S.Array(
-  EmailSecuritySummaryMaliciousRequestArc,
-) as any as S.Schema<EmailSecuritySummaryMaliciousRequestArcList>;
+export const EmailSecuritySummaryMaliciousRequestArcList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecuritySummaryMaliciousRequestArcList>;
 
 export type EmailSecuritySummaryMaliciousRequestDateEndList = Array<string>;
 export const EmailSecuritySummaryMaliciousRequestDateEndList =
@@ -40972,9 +40485,8 @@ export const EmailSecuritySummaryMaliciousRequestDkim = S.String;
 export type EmailSecuritySummaryMaliciousRequestDkimList = Array<
   EmailSecuritySummaryMaliciousRequestDkim | (string & {})
 >;
-export const EmailSecuritySummaryMaliciousRequestDkimList = /*@__PURE__*/ S.Array(
-  EmailSecuritySummaryMaliciousRequestDkim,
-) as any as S.Schema<EmailSecuritySummaryMaliciousRequestDkimList>;
+export const EmailSecuritySummaryMaliciousRequestDkimList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecuritySummaryMaliciousRequestDkimList>;
 
 export type EmailSecuritySummaryMaliciousRequestDmarc = "PASS" | "NONE" | "FAIL";
 export const EmailSecuritySummaryMaliciousRequestDmarc = S.String;
@@ -40982,9 +40494,8 @@ export const EmailSecuritySummaryMaliciousRequestDmarc = S.String;
 export type EmailSecuritySummaryMaliciousRequestDmarcList = Array<
   EmailSecuritySummaryMaliciousRequestDmarc | (string & {})
 >;
-export const EmailSecuritySummaryMaliciousRequestDmarcList = /*@__PURE__*/ S.Array(
-  EmailSecuritySummaryMaliciousRequestDmarc,
-) as any as S.Schema<EmailSecuritySummaryMaliciousRequestDmarcList>;
+export const EmailSecuritySummaryMaliciousRequestDmarcList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecuritySummaryMaliciousRequestDmarcList>;
 
 export type EmailSecuritySummaryMaliciousRequestFormat = "JSON" | "CSV";
 export const EmailSecuritySummaryMaliciousRequestFormat = S.String;
@@ -40999,9 +40510,8 @@ export const EmailSecuritySummaryMaliciousRequestSpf = S.String;
 export type EmailSecuritySummaryMaliciousRequestSpfList = Array<
   EmailSecuritySummaryMaliciousRequestSpf | (string & {})
 >;
-export const EmailSecuritySummaryMaliciousRequestSpfList = /*@__PURE__*/ S.Array(
-  EmailSecuritySummaryMaliciousRequestSpf,
-) as any as S.Schema<EmailSecuritySummaryMaliciousRequestSpfList>;
+export const EmailSecuritySummaryMaliciousRequestSpfList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecuritySummaryMaliciousRequestSpfList>;
 
 export type EmailSecuritySummaryMaliciousRequestTlsVersion =
   | "TLSv1_0"
@@ -41013,9 +40523,8 @@ export const EmailSecuritySummaryMaliciousRequestTlsVersion = S.String;
 export type EmailSecuritySummaryMaliciousRequestTlsVersionList = Array<
   EmailSecuritySummaryMaliciousRequestTlsVersion | (string & {})
 >;
-export const EmailSecuritySummaryMaliciousRequestTlsVersionList = /*@__PURE__*/ S.Array(
-  EmailSecuritySummaryMaliciousRequestTlsVersion,
-) as any as S.Schema<EmailSecuritySummaryMaliciousRequestTlsVersionList>;
+export const EmailSecuritySummaryMaliciousRequestTlsVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecuritySummaryMaliciousRequestTlsVersionList>;
 
 export interface MaliciousEmailSecuritySummaryRequest {
   /** Filters results by ARC (Authenticated Received Chain) validation. */
@@ -41245,9 +40754,8 @@ export const EmailSecurityTimeseriesGroupsMaliciousRequestArc = S.String;
 export type EmailSecurityTimeseriesGroupsMaliciousRequestArcList = Array<
   EmailSecurityTimeseriesGroupsMaliciousRequestArc | (string & {})
 >;
-export const EmailSecurityTimeseriesGroupsMaliciousRequestArcList = /*@__PURE__*/ S.Array(
-  EmailSecurityTimeseriesGroupsMaliciousRequestArc,
-) as any as S.Schema<EmailSecurityTimeseriesGroupsMaliciousRequestArcList>;
+export const EmailSecurityTimeseriesGroupsMaliciousRequestArcList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecurityTimeseriesGroupsMaliciousRequestArcList>;
 
 export type EmailSecurityTimeseriesGroupsMaliciousRequestDateEndList = Array<string>;
 export const EmailSecurityTimeseriesGroupsMaliciousRequestDateEndList =
@@ -41267,9 +40775,8 @@ export const EmailSecurityTimeseriesGroupsMaliciousRequestDkim = S.String;
 export type EmailSecurityTimeseriesGroupsMaliciousRequestDkimList = Array<
   EmailSecurityTimeseriesGroupsMaliciousRequestDkim | (string & {})
 >;
-export const EmailSecurityTimeseriesGroupsMaliciousRequestDkimList = /*@__PURE__*/ S.Array(
-  EmailSecurityTimeseriesGroupsMaliciousRequestDkim,
-) as any as S.Schema<EmailSecurityTimeseriesGroupsMaliciousRequestDkimList>;
+export const EmailSecurityTimeseriesGroupsMaliciousRequestDkimList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecurityTimeseriesGroupsMaliciousRequestDkimList>;
 
 export type EmailSecurityTimeseriesGroupsMaliciousRequestDmarc = "PASS" | "NONE" | "FAIL";
 export const EmailSecurityTimeseriesGroupsMaliciousRequestDmarc = S.String;
@@ -41277,9 +40784,8 @@ export const EmailSecurityTimeseriesGroupsMaliciousRequestDmarc = S.String;
 export type EmailSecurityTimeseriesGroupsMaliciousRequestDmarcList = Array<
   EmailSecurityTimeseriesGroupsMaliciousRequestDmarc | (string & {})
 >;
-export const EmailSecurityTimeseriesGroupsMaliciousRequestDmarcList = /*@__PURE__*/ S.Array(
-  EmailSecurityTimeseriesGroupsMaliciousRequestDmarc,
-) as any as S.Schema<EmailSecurityTimeseriesGroupsMaliciousRequestDmarcList>;
+export const EmailSecurityTimeseriesGroupsMaliciousRequestDmarcList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecurityTimeseriesGroupsMaliciousRequestDmarcList>;
 
 export type EmailSecurityTimeseriesGroupsMaliciousRequestFormat = "JSON" | "CSV";
 export const EmailSecurityTimeseriesGroupsMaliciousRequestFormat = S.String;
@@ -41294,9 +40800,8 @@ export const EmailSecurityTimeseriesGroupsMaliciousRequestSpf = S.String;
 export type EmailSecurityTimeseriesGroupsMaliciousRequestSpfList = Array<
   EmailSecurityTimeseriesGroupsMaliciousRequestSpf | (string & {})
 >;
-export const EmailSecurityTimeseriesGroupsMaliciousRequestSpfList = /*@__PURE__*/ S.Array(
-  EmailSecurityTimeseriesGroupsMaliciousRequestSpf,
-) as any as S.Schema<EmailSecurityTimeseriesGroupsMaliciousRequestSpfList>;
+export const EmailSecurityTimeseriesGroupsMaliciousRequestSpfList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecurityTimeseriesGroupsMaliciousRequestSpfList>;
 
 export type EmailSecurityTimeseriesGroupsMaliciousRequestTlsVersion =
   | "TLSv1_0"
@@ -41308,9 +40813,8 @@ export const EmailSecurityTimeseriesGroupsMaliciousRequestTlsVersion = S.String;
 export type EmailSecurityTimeseriesGroupsMaliciousRequestTlsVersionList = Array<
   EmailSecurityTimeseriesGroupsMaliciousRequestTlsVersion | (string & {})
 >;
-export const EmailSecurityTimeseriesGroupsMaliciousRequestTlsVersionList = /*@__PURE__*/ S.Array(
-  EmailSecurityTimeseriesGroupsMaliciousRequestTlsVersion,
-) as any as S.Schema<EmailSecurityTimeseriesGroupsMaliciousRequestTlsVersionList>;
+export const EmailSecurityTimeseriesGroupsMaliciousRequestTlsVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecurityTimeseriesGroupsMaliciousRequestTlsVersionList>;
 
 export interface MaliciousEmailSecurityTimeseriesGroupRequest {
   /** Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/). When omitted, the interval is auto-selected from the requested date range; finer intervals are only available for shorter ranges. If the requested interval is too granular for the date range, the request is rejected. */
@@ -41649,9 +41153,8 @@ export const AttacksLayer7SummaryManagedRulesRequestHttpMethod = S.String;
 export type AttacksLayer7SummaryManagedRulesRequestHttpMethodList = Array<
   AttacksLayer7SummaryManagedRulesRequestHttpMethod | (string & {})
 >;
-export const AttacksLayer7SummaryManagedRulesRequestHttpMethodList = /*@__PURE__*/ S.Array(
-  AttacksLayer7SummaryManagedRulesRequestHttpMethod,
-) as any as S.Schema<AttacksLayer7SummaryManagedRulesRequestHttpMethodList>;
+export const AttacksLayer7SummaryManagedRulesRequestHttpMethodList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer7SummaryManagedRulesRequestHttpMethodList>;
 
 export type AttacksLayer7SummaryManagedRulesRequestHttpVersion = "HTTPv1" | "HTTPv2" | "HTTPv3";
 export const AttacksLayer7SummaryManagedRulesRequestHttpVersion = S.String;
@@ -41659,9 +41162,8 @@ export const AttacksLayer7SummaryManagedRulesRequestHttpVersion = S.String;
 export type AttacksLayer7SummaryManagedRulesRequestHttpVersionList = Array<
   AttacksLayer7SummaryManagedRulesRequestHttpVersion | (string & {})
 >;
-export const AttacksLayer7SummaryManagedRulesRequestHttpVersionList = /*@__PURE__*/ S.Array(
-  AttacksLayer7SummaryManagedRulesRequestHttpVersion,
-) as any as S.Schema<AttacksLayer7SummaryManagedRulesRequestHttpVersionList>;
+export const AttacksLayer7SummaryManagedRulesRequestHttpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer7SummaryManagedRulesRequestHttpVersionList>;
 
 export type AttacksLayer7SummaryManagedRulesRequestIpVersion = "IPv4" | "IPv6";
 export const AttacksLayer7SummaryManagedRulesRequestIpVersion = S.String;
@@ -41669,9 +41171,8 @@ export const AttacksLayer7SummaryManagedRulesRequestIpVersion = S.String;
 export type AttacksLayer7SummaryManagedRulesRequestIpVersionList = Array<
   AttacksLayer7SummaryManagedRulesRequestIpVersion | (string & {})
 >;
-export const AttacksLayer7SummaryManagedRulesRequestIpVersionList = /*@__PURE__*/ S.Array(
-  AttacksLayer7SummaryManagedRulesRequestIpVersion,
-) as any as S.Schema<AttacksLayer7SummaryManagedRulesRequestIpVersionList>;
+export const AttacksLayer7SummaryManagedRulesRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer7SummaryManagedRulesRequestIpVersionList>;
 
 export type AttacksLayer7SummaryManagedRulesRequestLocationList = Array<string>;
 export const AttacksLayer7SummaryManagedRulesRequestLocationList =
@@ -41690,9 +41191,8 @@ export const AttacksLayer7SummaryManagedRulesRequestMitigationProduct = S.String
 export type AttacksLayer7SummaryManagedRulesRequestMitigationProductList = Array<
   AttacksLayer7SummaryManagedRulesRequestMitigationProduct | (string & {})
 >;
-export const AttacksLayer7SummaryManagedRulesRequestMitigationProductList = /*@__PURE__*/ S.Array(
-  AttacksLayer7SummaryManagedRulesRequestMitigationProduct,
-) as any as S.Schema<AttacksLayer7SummaryManagedRulesRequestMitigationProductList>;
+export const AttacksLayer7SummaryManagedRulesRequestMitigationProductList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer7SummaryManagedRulesRequestMitigationProductList>;
 
 export type AttacksLayer7SummaryManagedRulesRequestNameList = Array<string>;
 export const AttacksLayer7SummaryManagedRulesRequestNameList =
@@ -42003,9 +41503,8 @@ export const AttacksLayer7TimeseriesGroupsManagedRulesRequestHttpMethod = S.Stri
 export type AttacksLayer7TimeseriesGroupsManagedRulesRequestHttpMethodList = Array<
   AttacksLayer7TimeseriesGroupsManagedRulesRequestHttpMethod | (string & {})
 >;
-export const AttacksLayer7TimeseriesGroupsManagedRulesRequestHttpMethodList = /*@__PURE__*/ S.Array(
-  AttacksLayer7TimeseriesGroupsManagedRulesRequestHttpMethod,
-) as any as S.Schema<AttacksLayer7TimeseriesGroupsManagedRulesRequestHttpMethodList>;
+export const AttacksLayer7TimeseriesGroupsManagedRulesRequestHttpMethodList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer7TimeseriesGroupsManagedRulesRequestHttpMethodList>;
 
 export type AttacksLayer7TimeseriesGroupsManagedRulesRequestHttpVersion =
   | "HTTPv1"
@@ -42017,9 +41516,7 @@ export type AttacksLayer7TimeseriesGroupsManagedRulesRequestHttpVersionList = Ar
   AttacksLayer7TimeseriesGroupsManagedRulesRequestHttpVersion | (string & {})
 >;
 export const AttacksLayer7TimeseriesGroupsManagedRulesRequestHttpVersionList =
-  /*@__PURE__*/ S.Array(
-    AttacksLayer7TimeseriesGroupsManagedRulesRequestHttpVersion,
-  ) as any as S.Schema<AttacksLayer7TimeseriesGroupsManagedRulesRequestHttpVersionList>;
+  AiTimeseriesGroupsTimeseriesGroupsRequestResponseStatusCategoryList as any as S.Schema<AttacksLayer7TimeseriesGroupsManagedRulesRequestHttpVersionList>;
 
 export type AttacksLayer7TimeseriesGroupsManagedRulesRequestIpVersion = "IPv4" | "IPv6";
 export const AttacksLayer7TimeseriesGroupsManagedRulesRequestIpVersion = S.String;
@@ -42027,9 +41524,8 @@ export const AttacksLayer7TimeseriesGroupsManagedRulesRequestIpVersion = S.Strin
 export type AttacksLayer7TimeseriesGroupsManagedRulesRequestIpVersionList = Array<
   AttacksLayer7TimeseriesGroupsManagedRulesRequestIpVersion | (string & {})
 >;
-export const AttacksLayer7TimeseriesGroupsManagedRulesRequestIpVersionList = /*@__PURE__*/ S.Array(
-  AttacksLayer7TimeseriesGroupsManagedRulesRequestIpVersion,
-) as any as S.Schema<AttacksLayer7TimeseriesGroupsManagedRulesRequestIpVersionList>;
+export const AttacksLayer7TimeseriesGroupsManagedRulesRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer7TimeseriesGroupsManagedRulesRequestIpVersionList>;
 
 export type AttacksLayer7TimeseriesGroupsManagedRulesRequestLocationList = Array<string>;
 export const AttacksLayer7TimeseriesGroupsManagedRulesRequestLocationList =
@@ -42049,9 +41545,7 @@ export type AttacksLayer7TimeseriesGroupsManagedRulesRequestMitigationProductLis
   AttacksLayer7TimeseriesGroupsManagedRulesRequestMitigationProduct | (string & {})
 >;
 export const AttacksLayer7TimeseriesGroupsManagedRulesRequestMitigationProductList =
-  /*@__PURE__*/ S.Array(
-    AttacksLayer7TimeseriesGroupsManagedRulesRequestMitigationProduct,
-  ) as any as S.Schema<AttacksLayer7TimeseriesGroupsManagedRulesRequestMitigationProductList>;
+  AiTimeseriesGroupsTimeseriesGroupsRequestResponseStatusCategoryList as any as S.Schema<AttacksLayer7TimeseriesGroupsManagedRulesRequestMitigationProductList>;
 
 export type AttacksLayer7TimeseriesGroupsManagedRulesRequestNameList = Array<string>;
 export const AttacksLayer7TimeseriesGroupsManagedRulesRequestNameList =
@@ -42378,9 +41872,8 @@ export const DnsSummaryMatchingAnswerRequestProtocol = S.String;
 export type DnsSummaryMatchingAnswerRequestProtocolList = Array<
   DnsSummaryMatchingAnswerRequestProtocol | (string & {})
 >;
-export const DnsSummaryMatchingAnswerRequestProtocolList = /*@__PURE__*/ S.Array(
-  DnsSummaryMatchingAnswerRequestProtocol,
-) as any as S.Schema<DnsSummaryMatchingAnswerRequestProtocolList>;
+export const DnsSummaryMatchingAnswerRequestProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsSummaryMatchingAnswerRequestProtocolList>;
 
 export type DnsSummaryMatchingAnswerRequestQueryType =
   | "A"
@@ -42476,9 +41969,8 @@ export const DnsSummaryMatchingAnswerRequestQueryType = S.String;
 export type DnsSummaryMatchingAnswerRequestQueryTypeList = Array<
   DnsSummaryMatchingAnswerRequestQueryType | (string & {})
 >;
-export const DnsSummaryMatchingAnswerRequestQueryTypeList = /*@__PURE__*/ S.Array(
-  DnsSummaryMatchingAnswerRequestQueryType,
-) as any as S.Schema<DnsSummaryMatchingAnswerRequestQueryTypeList>;
+export const DnsSummaryMatchingAnswerRequestQueryTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsSummaryMatchingAnswerRequestQueryTypeList>;
 
 export type DnsSummaryMatchingAnswerRequestResponseCode =
   | "NOERROR"
@@ -42505,9 +41997,8 @@ export const DnsSummaryMatchingAnswerRequestResponseCode = S.String;
 export type DnsSummaryMatchingAnswerRequestResponseCodeList = Array<
   DnsSummaryMatchingAnswerRequestResponseCode | (string & {})
 >;
-export const DnsSummaryMatchingAnswerRequestResponseCodeList = /*@__PURE__*/ S.Array(
-  DnsSummaryMatchingAnswerRequestResponseCode,
-) as any as S.Schema<DnsSummaryMatchingAnswerRequestResponseCodeList>;
+export const DnsSummaryMatchingAnswerRequestResponseCodeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsSummaryMatchingAnswerRequestResponseCodeList>;
 
 export type DnsSummaryMatchingAnswerRequestTldList = Array<string>;
 export const DnsSummaryMatchingAnswerRequestTldList =
@@ -42771,9 +42262,8 @@ export const DnsTimeseriesGroupsMatchingAnswerRequestProtocol = S.String;
 export type DnsTimeseriesGroupsMatchingAnswerRequestProtocolList = Array<
   DnsTimeseriesGroupsMatchingAnswerRequestProtocol | (string & {})
 >;
-export const DnsTimeseriesGroupsMatchingAnswerRequestProtocolList = /*@__PURE__*/ S.Array(
-  DnsTimeseriesGroupsMatchingAnswerRequestProtocol,
-) as any as S.Schema<DnsTimeseriesGroupsMatchingAnswerRequestProtocolList>;
+export const DnsTimeseriesGroupsMatchingAnswerRequestProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsTimeseriesGroupsMatchingAnswerRequestProtocolList>;
 
 export type DnsTimeseriesGroupsMatchingAnswerRequestQueryType =
   | "A"
@@ -42869,9 +42359,8 @@ export const DnsTimeseriesGroupsMatchingAnswerRequestQueryType = S.String;
 export type DnsTimeseriesGroupsMatchingAnswerRequestQueryTypeList = Array<
   DnsTimeseriesGroupsMatchingAnswerRequestQueryType | (string & {})
 >;
-export const DnsTimeseriesGroupsMatchingAnswerRequestQueryTypeList = /*@__PURE__*/ S.Array(
-  DnsTimeseriesGroupsMatchingAnswerRequestQueryType,
-) as any as S.Schema<DnsTimeseriesGroupsMatchingAnswerRequestQueryTypeList>;
+export const DnsTimeseriesGroupsMatchingAnswerRequestQueryTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsTimeseriesGroupsMatchingAnswerRequestQueryTypeList>;
 
 export type DnsTimeseriesGroupsMatchingAnswerRequestResponseCode =
   | "NOERROR"
@@ -42898,9 +42387,8 @@ export const DnsTimeseriesGroupsMatchingAnswerRequestResponseCode = S.String;
 export type DnsTimeseriesGroupsMatchingAnswerRequestResponseCodeList = Array<
   DnsTimeseriesGroupsMatchingAnswerRequestResponseCode | (string & {})
 >;
-export const DnsTimeseriesGroupsMatchingAnswerRequestResponseCodeList = /*@__PURE__*/ S.Array(
-  DnsTimeseriesGroupsMatchingAnswerRequestResponseCode,
-) as any as S.Schema<DnsTimeseriesGroupsMatchingAnswerRequestResponseCodeList>;
+export const DnsTimeseriesGroupsMatchingAnswerRequestResponseCodeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsTimeseriesGroupsMatchingAnswerRequestResponseCodeList>;
 
 export type DnsTimeseriesGroupsMatchingAnswerRequestTldList = Array<string>;
 export const DnsTimeseriesGroupsMatchingAnswerRequestTldList =
@@ -43230,9 +42718,8 @@ export const AttacksLayer7SummaryMitigationProductRequestHttpMethod = S.String;
 export type AttacksLayer7SummaryMitigationProductRequestHttpMethodList = Array<
   AttacksLayer7SummaryMitigationProductRequestHttpMethod | (string & {})
 >;
-export const AttacksLayer7SummaryMitigationProductRequestHttpMethodList = /*@__PURE__*/ S.Array(
-  AttacksLayer7SummaryMitigationProductRequestHttpMethod,
-) as any as S.Schema<AttacksLayer7SummaryMitigationProductRequestHttpMethodList>;
+export const AttacksLayer7SummaryMitigationProductRequestHttpMethodList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer7SummaryMitigationProductRequestHttpMethodList>;
 
 export type AttacksLayer7SummaryMitigationProductRequestHttpVersion =
   | "HTTPv1"
@@ -43243,9 +42730,8 @@ export const AttacksLayer7SummaryMitigationProductRequestHttpVersion = S.String;
 export type AttacksLayer7SummaryMitigationProductRequestHttpVersionList = Array<
   AttacksLayer7SummaryMitigationProductRequestHttpVersion | (string & {})
 >;
-export const AttacksLayer7SummaryMitigationProductRequestHttpVersionList = /*@__PURE__*/ S.Array(
-  AttacksLayer7SummaryMitigationProductRequestHttpVersion,
-) as any as S.Schema<AttacksLayer7SummaryMitigationProductRequestHttpVersionList>;
+export const AttacksLayer7SummaryMitigationProductRequestHttpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer7SummaryMitigationProductRequestHttpVersionList>;
 
 export type AttacksLayer7SummaryMitigationProductRequestIpVersion = "IPv4" | "IPv6";
 export const AttacksLayer7SummaryMitigationProductRequestIpVersion = S.String;
@@ -43253,9 +42739,8 @@ export const AttacksLayer7SummaryMitigationProductRequestIpVersion = S.String;
 export type AttacksLayer7SummaryMitigationProductRequestIpVersionList = Array<
   AttacksLayer7SummaryMitigationProductRequestIpVersion | (string & {})
 >;
-export const AttacksLayer7SummaryMitigationProductRequestIpVersionList = /*@__PURE__*/ S.Array(
-  AttacksLayer7SummaryMitigationProductRequestIpVersion,
-) as any as S.Schema<AttacksLayer7SummaryMitigationProductRequestIpVersionList>;
+export const AttacksLayer7SummaryMitigationProductRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer7SummaryMitigationProductRequestIpVersionList>;
 
 export type AttacksLayer7SummaryMitigationProductRequestLocationList = Array<string>;
 export const AttacksLayer7SummaryMitigationProductRequestLocationList =
@@ -43583,9 +43068,7 @@ export type AttacksLayer7TimeseriesGroupsMitigationProductRequestHttpMethodList 
   AttacksLayer7TimeseriesGroupsMitigationProductRequestHttpMethod | (string & {})
 >;
 export const AttacksLayer7TimeseriesGroupsMitigationProductRequestHttpMethodList =
-  /*@__PURE__*/ S.Array(
-    AttacksLayer7TimeseriesGroupsMitigationProductRequestHttpMethod,
-  ) as any as S.Schema<AttacksLayer7TimeseriesGroupsMitigationProductRequestHttpMethodList>;
+  AiTimeseriesGroupsTimeseriesGroupsRequestResponseStatusCategoryList as any as S.Schema<AttacksLayer7TimeseriesGroupsMitigationProductRequestHttpMethodList>;
 
 export type AttacksLayer7TimeseriesGroupsMitigationProductRequestHttpVersion =
   | "HTTPv1"
@@ -43597,9 +43080,7 @@ export type AttacksLayer7TimeseriesGroupsMitigationProductRequestHttpVersionList
   AttacksLayer7TimeseriesGroupsMitigationProductRequestHttpVersion | (string & {})
 >;
 export const AttacksLayer7TimeseriesGroupsMitigationProductRequestHttpVersionList =
-  /*@__PURE__*/ S.Array(
-    AttacksLayer7TimeseriesGroupsMitigationProductRequestHttpVersion,
-  ) as any as S.Schema<AttacksLayer7TimeseriesGroupsMitigationProductRequestHttpVersionList>;
+  AiTimeseriesGroupsTimeseriesGroupsRequestResponseStatusCategoryList as any as S.Schema<AttacksLayer7TimeseriesGroupsMitigationProductRequestHttpVersionList>;
 
 export type AttacksLayer7TimeseriesGroupsMitigationProductRequestIpVersion = "IPv4" | "IPv6";
 export const AttacksLayer7TimeseriesGroupsMitigationProductRequestIpVersion = S.String;
@@ -43608,9 +43089,7 @@ export type AttacksLayer7TimeseriesGroupsMitigationProductRequestIpVersionList =
   AttacksLayer7TimeseriesGroupsMitigationProductRequestIpVersion | (string & {})
 >;
 export const AttacksLayer7TimeseriesGroupsMitigationProductRequestIpVersionList =
-  /*@__PURE__*/ S.Array(
-    AttacksLayer7TimeseriesGroupsMitigationProductRequestIpVersion,
-  ) as any as S.Schema<AttacksLayer7TimeseriesGroupsMitigationProductRequestIpVersionList>;
+  AiTimeseriesGroupsTimeseriesGroupsRequestResponseStatusCategoryList as any as S.Schema<AttacksLayer7TimeseriesGroupsMitigationProductRequestIpVersionList>;
 
 export type AttacksLayer7TimeseriesGroupsMitigationProductRequestLocationList = Array<string>;
 export const AttacksLayer7TimeseriesGroupsMitigationProductRequestLocationList =
@@ -44481,9 +43960,8 @@ export const AttacksLayer3TopLocationsOriginRequestIpVersion = S.String;
 export type AttacksLayer3TopLocationsOriginRequestIpVersionList = Array<
   AttacksLayer3TopLocationsOriginRequestIpVersion | (string & {})
 >;
-export const AttacksLayer3TopLocationsOriginRequestIpVersionList = /*@__PURE__*/ S.Array(
-  AttacksLayer3TopLocationsOriginRequestIpVersion,
-) as any as S.Schema<AttacksLayer3TopLocationsOriginRequestIpVersionList>;
+export const AttacksLayer3TopLocationsOriginRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer3TopLocationsOriginRequestIpVersionList>;
 
 export type AttacksLayer3TopLocationsOriginRequestLocationList = Array<string>;
 export const AttacksLayer3TopLocationsOriginRequestLocationList =
@@ -44499,9 +43977,8 @@ export const AttacksLayer3TopLocationsOriginRequestProtocol = S.String;
 export type AttacksLayer3TopLocationsOriginRequestProtocolList = Array<
   AttacksLayer3TopLocationsOriginRequestProtocol | (string & {})
 >;
-export const AttacksLayer3TopLocationsOriginRequestProtocolList = /*@__PURE__*/ S.Array(
-  AttacksLayer3TopLocationsOriginRequestProtocol,
-) as any as S.Schema<AttacksLayer3TopLocationsOriginRequestProtocolList>;
+export const AttacksLayer3TopLocationsOriginRequestProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer3TopLocationsOriginRequestProtocolList>;
 
 export interface OriginAttackLayer3TopLocationRequest {
   /** Filters results by continent. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA. */
@@ -44803,9 +44280,8 @@ export const AttacksLayer7TopAsesOriginRequestHttpMethod = S.String;
 export type AttacksLayer7TopAsesOriginRequestHttpMethodList = Array<
   AttacksLayer7TopAsesOriginRequestHttpMethod | (string & {})
 >;
-export const AttacksLayer7TopAsesOriginRequestHttpMethodList = /*@__PURE__*/ S.Array(
-  AttacksLayer7TopAsesOriginRequestHttpMethod,
-) as any as S.Schema<AttacksLayer7TopAsesOriginRequestHttpMethodList>;
+export const AttacksLayer7TopAsesOriginRequestHttpMethodList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer7TopAsesOriginRequestHttpMethodList>;
 
 export type AttacksLayer7TopAsesOriginRequestHttpVersion = "HTTPv1" | "HTTPv2" | "HTTPv3";
 export const AttacksLayer7TopAsesOriginRequestHttpVersion = S.String;
@@ -44813,9 +44289,8 @@ export const AttacksLayer7TopAsesOriginRequestHttpVersion = S.String;
 export type AttacksLayer7TopAsesOriginRequestHttpVersionList = Array<
   AttacksLayer7TopAsesOriginRequestHttpVersion | (string & {})
 >;
-export const AttacksLayer7TopAsesOriginRequestHttpVersionList = /*@__PURE__*/ S.Array(
-  AttacksLayer7TopAsesOriginRequestHttpVersion,
-) as any as S.Schema<AttacksLayer7TopAsesOriginRequestHttpVersionList>;
+export const AttacksLayer7TopAsesOriginRequestHttpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer7TopAsesOriginRequestHttpVersionList>;
 
 export type AttacksLayer7TopAsesOriginRequestIpVersion = "IPv4" | "IPv6";
 export const AttacksLayer7TopAsesOriginRequestIpVersion = S.String;
@@ -44823,9 +44298,8 @@ export const AttacksLayer7TopAsesOriginRequestIpVersion = S.String;
 export type AttacksLayer7TopAsesOriginRequestIpVersionList = Array<
   AttacksLayer7TopAsesOriginRequestIpVersion | (string & {})
 >;
-export const AttacksLayer7TopAsesOriginRequestIpVersionList = /*@__PURE__*/ S.Array(
-  AttacksLayer7TopAsesOriginRequestIpVersion,
-) as any as S.Schema<AttacksLayer7TopAsesOriginRequestIpVersionList>;
+export const AttacksLayer7TopAsesOriginRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer7TopAsesOriginRequestIpVersionList>;
 
 export type AttacksLayer7TopAsesOriginRequestLocationList = Array<string>;
 export const AttacksLayer7TopAsesOriginRequestLocationList =
@@ -44844,9 +44318,8 @@ export const AttacksLayer7TopAsesOriginRequestMitigationProduct = S.String;
 export type AttacksLayer7TopAsesOriginRequestMitigationProductList = Array<
   AttacksLayer7TopAsesOriginRequestMitigationProduct | (string & {})
 >;
-export const AttacksLayer7TopAsesOriginRequestMitigationProductList = /*@__PURE__*/ S.Array(
-  AttacksLayer7TopAsesOriginRequestMitigationProduct,
-) as any as S.Schema<AttacksLayer7TopAsesOriginRequestMitigationProductList>;
+export const AttacksLayer7TopAsesOriginRequestMitigationProductList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer7TopAsesOriginRequestMitigationProductList>;
 
 export type AttacksLayer7TopAsesOriginRequestNameList = Array<string>;
 export const AttacksLayer7TopAsesOriginRequestNameList =
@@ -45162,9 +44635,8 @@ export const AttacksLayer7TopLocationsOriginRequestHttpMethod = S.String;
 export type AttacksLayer7TopLocationsOriginRequestHttpMethodList = Array<
   AttacksLayer7TopLocationsOriginRequestHttpMethod | (string & {})
 >;
-export const AttacksLayer7TopLocationsOriginRequestHttpMethodList = /*@__PURE__*/ S.Array(
-  AttacksLayer7TopLocationsOriginRequestHttpMethod,
-) as any as S.Schema<AttacksLayer7TopLocationsOriginRequestHttpMethodList>;
+export const AttacksLayer7TopLocationsOriginRequestHttpMethodList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer7TopLocationsOriginRequestHttpMethodList>;
 
 export type AttacksLayer7TopLocationsOriginRequestHttpVersion = "HTTPv1" | "HTTPv2" | "HTTPv3";
 export const AttacksLayer7TopLocationsOriginRequestHttpVersion = S.String;
@@ -45172,9 +44644,8 @@ export const AttacksLayer7TopLocationsOriginRequestHttpVersion = S.String;
 export type AttacksLayer7TopLocationsOriginRequestHttpVersionList = Array<
   AttacksLayer7TopLocationsOriginRequestHttpVersion | (string & {})
 >;
-export const AttacksLayer7TopLocationsOriginRequestHttpVersionList = /*@__PURE__*/ S.Array(
-  AttacksLayer7TopLocationsOriginRequestHttpVersion,
-) as any as S.Schema<AttacksLayer7TopLocationsOriginRequestHttpVersionList>;
+export const AttacksLayer7TopLocationsOriginRequestHttpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer7TopLocationsOriginRequestHttpVersionList>;
 
 export type AttacksLayer7TopLocationsOriginRequestIpVersion = "IPv4" | "IPv6";
 export const AttacksLayer7TopLocationsOriginRequestIpVersion = S.String;
@@ -45182,9 +44653,8 @@ export const AttacksLayer7TopLocationsOriginRequestIpVersion = S.String;
 export type AttacksLayer7TopLocationsOriginRequestIpVersionList = Array<
   AttacksLayer7TopLocationsOriginRequestIpVersion | (string & {})
 >;
-export const AttacksLayer7TopLocationsOriginRequestIpVersionList = /*@__PURE__*/ S.Array(
-  AttacksLayer7TopLocationsOriginRequestIpVersion,
-) as any as S.Schema<AttacksLayer7TopLocationsOriginRequestIpVersionList>;
+export const AttacksLayer7TopLocationsOriginRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer7TopLocationsOriginRequestIpVersionList>;
 
 export type AttacksLayer7TopLocationsOriginRequestMitigationProduct =
   | "DDOS"
@@ -45199,9 +44669,8 @@ export const AttacksLayer7TopLocationsOriginRequestMitigationProduct = S.String;
 export type AttacksLayer7TopLocationsOriginRequestMitigationProductList = Array<
   AttacksLayer7TopLocationsOriginRequestMitigationProduct | (string & {})
 >;
-export const AttacksLayer7TopLocationsOriginRequestMitigationProductList = /*@__PURE__*/ S.Array(
-  AttacksLayer7TopLocationsOriginRequestMitigationProduct,
-) as any as S.Schema<AttacksLayer7TopLocationsOriginRequestMitigationProductList>;
+export const AttacksLayer7TopLocationsOriginRequestMitigationProductList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer7TopLocationsOriginRequestMitigationProductList>;
 
 export type AttacksLayer7TopLocationsOriginRequestNameList = Array<string>;
 export const AttacksLayer7TopLocationsOriginRequestNameList =
@@ -45466,9 +44935,8 @@ export type OriginsSummaryRequestOrigin = "AMAZON" | "GOOGLE" | "MICROSOFT" | "O
 export const OriginsSummaryRequestOrigin = S.String;
 
 export type OriginsSummaryRequestOriginList = Array<OriginsSummaryRequestOrigin | (string & {})>;
-export const OriginsSummaryRequestOriginList = /*@__PURE__*/ S.Array(
-  OriginsSummaryRequestOrigin,
-) as any as S.Schema<OriginsSummaryRequestOriginList>;
+export const OriginsSummaryRequestOriginList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<OriginsSummaryRequestOriginList>;
 
 export type OriginsSummaryRequestRegionList = Array<string>;
 export const OriginsSummaryRequestRegionList =
@@ -45684,9 +45152,8 @@ export const OriginsTimeseriesRequestOrigin = S.String;
 export type OriginsTimeseriesRequestOriginList = Array<
   OriginsTimeseriesRequestOrigin | (string & {})
 >;
-export const OriginsTimeseriesRequestOriginList = /*@__PURE__*/ S.Array(
-  OriginsTimeseriesRequestOrigin,
-) as any as S.Schema<OriginsTimeseriesRequestOriginList>;
+export const OriginsTimeseriesRequestOriginList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<OriginsTimeseriesRequestOriginList>;
 
 export type OriginsTimeseriesRequestAggInterval = "15m" | "1h" | "1d" | "1w";
 export const OriginsTimeseriesRequestAggInterval = S.String;
@@ -45964,9 +45431,8 @@ export const OriginsTimeseriesGroupsRequestOrigin = S.String;
 export type OriginsTimeseriesGroupsRequestOriginList = Array<
   OriginsTimeseriesGroupsRequestOrigin | (string & {})
 >;
-export const OriginsTimeseriesGroupsRequestOriginList = /*@__PURE__*/ S.Array(
-  OriginsTimeseriesGroupsRequestOrigin,
-) as any as S.Schema<OriginsTimeseriesGroupsRequestOriginList>;
+export const OriginsTimeseriesGroupsRequestOriginList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<OriginsTimeseriesGroupsRequestOriginList>;
 
 export type OriginsTimeseriesGroupsRequestRegionList = Array<string>;
 export const OriginsTimeseriesGroupsRequestRegionList =
@@ -46209,9 +45675,8 @@ export type HttpSummaryOsRequestBotClass = "LIKELY_AUTOMATED" | "LIKELY_HUMAN";
 export const HttpSummaryOsRequestBotClass = S.String;
 
 export type HttpSummaryOsRequestBotClassList = Array<HttpSummaryOsRequestBotClass | (string & {})>;
-export const HttpSummaryOsRequestBotClassList = /*@__PURE__*/ S.Array(
-  HttpSummaryOsRequestBotClass,
-) as any as S.Schema<HttpSummaryOsRequestBotClassList>;
+export const HttpSummaryOsRequestBotClassList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpSummaryOsRequestBotClassList>;
 
 export type HttpSummaryOsRequestBrowserFamily = "CHROME" | "EDGE" | "FIREFOX" | "SAFARI";
 export const HttpSummaryOsRequestBrowserFamily = S.String;
@@ -46219,9 +45684,8 @@ export const HttpSummaryOsRequestBrowserFamily = S.String;
 export type HttpSummaryOsRequestBrowserFamilyList = Array<
   HttpSummaryOsRequestBrowserFamily | (string & {})
 >;
-export const HttpSummaryOsRequestBrowserFamilyList = /*@__PURE__*/ S.Array(
-  HttpSummaryOsRequestBrowserFamily,
-) as any as S.Schema<HttpSummaryOsRequestBrowserFamilyList>;
+export const HttpSummaryOsRequestBrowserFamilyList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpSummaryOsRequestBrowserFamilyList>;
 
 export type HttpSummaryOsRequestContinentList = Array<string>;
 export const HttpSummaryOsRequestContinentList =
@@ -46245,9 +45709,8 @@ export const HttpSummaryOsRequestDeviceType = S.String;
 export type HttpSummaryOsRequestDeviceTypeList = Array<
   HttpSummaryOsRequestDeviceType | (string & {})
 >;
-export const HttpSummaryOsRequestDeviceTypeList = /*@__PURE__*/ S.Array(
-  HttpSummaryOsRequestDeviceType,
-) as any as S.Schema<HttpSummaryOsRequestDeviceTypeList>;
+export const HttpSummaryOsRequestDeviceTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpSummaryOsRequestDeviceTypeList>;
 
 export type HttpSummaryOsRequestFormat = "JSON" | "CSV";
 export const HttpSummaryOsRequestFormat = S.String;
@@ -46262,9 +45725,8 @@ export const HttpSummaryOsRequestHttpProtocol = S.String;
 export type HttpSummaryOsRequestHttpProtocolList = Array<
   HttpSummaryOsRequestHttpProtocol | (string & {})
 >;
-export const HttpSummaryOsRequestHttpProtocolList = /*@__PURE__*/ S.Array(
-  HttpSummaryOsRequestHttpProtocol,
-) as any as S.Schema<HttpSummaryOsRequestHttpProtocolList>;
+export const HttpSummaryOsRequestHttpProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpSummaryOsRequestHttpProtocolList>;
 
 export type HttpSummaryOsRequestHttpVersion = "HTTPv1" | "HTTPv2" | "HTTPv3";
 export const HttpSummaryOsRequestHttpVersion = S.String;
@@ -46272,9 +45734,8 @@ export const HttpSummaryOsRequestHttpVersion = S.String;
 export type HttpSummaryOsRequestHttpVersionList = Array<
   HttpSummaryOsRequestHttpVersion | (string & {})
 >;
-export const HttpSummaryOsRequestHttpVersionList = /*@__PURE__*/ S.Array(
-  HttpSummaryOsRequestHttpVersion,
-) as any as S.Schema<HttpSummaryOsRequestHttpVersionList>;
+export const HttpSummaryOsRequestHttpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpSummaryOsRequestHttpVersionList>;
 
 export type HttpSummaryOsRequestIpVersion = "IPv4" | "IPv6";
 export const HttpSummaryOsRequestIpVersion = S.String;
@@ -46282,9 +45743,8 @@ export const HttpSummaryOsRequestIpVersion = S.String;
 export type HttpSummaryOsRequestIpVersionList = Array<
   HttpSummaryOsRequestIpVersion | (string & {})
 >;
-export const HttpSummaryOsRequestIpVersionList = /*@__PURE__*/ S.Array(
-  HttpSummaryOsRequestIpVersion,
-) as any as S.Schema<HttpSummaryOsRequestIpVersionList>;
+export const HttpSummaryOsRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpSummaryOsRequestIpVersionList>;
 
 export type HttpSummaryOsRequestLocationList = Array<string>;
 export const HttpSummaryOsRequestLocationList =
@@ -46305,9 +45765,8 @@ export const HttpSummaryOsRequestTlsVersion = S.String;
 export type HttpSummaryOsRequestTlsVersionList = Array<
   HttpSummaryOsRequestTlsVersion | (string & {})
 >;
-export const HttpSummaryOsRequestTlsVersionList = /*@__PURE__*/ S.Array(
-  HttpSummaryOsRequestTlsVersion,
-) as any as S.Schema<HttpSummaryOsRequestTlsVersionList>;
+export const HttpSummaryOsRequestTlsVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpSummaryOsRequestTlsVersionList>;
 
 export interface OsHttpSummaryRequest {
   /** Filters results by Autonomous System. Specify one or more Autonomous System Numbers (ASNs) as a comma-separated list. Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356. */
@@ -46546,9 +46005,8 @@ export const HttpTimeseriesGroupsOsRequestBotClass = S.String;
 export type HttpTimeseriesGroupsOsRequestBotClassList = Array<
   HttpTimeseriesGroupsOsRequestBotClass | (string & {})
 >;
-export const HttpTimeseriesGroupsOsRequestBotClassList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsOsRequestBotClass,
-) as any as S.Schema<HttpTimeseriesGroupsOsRequestBotClassList>;
+export const HttpTimeseriesGroupsOsRequestBotClassList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsOsRequestBotClassList>;
 
 export type HttpTimeseriesGroupsOsRequestBrowserFamily = "CHROME" | "EDGE" | "FIREFOX" | "SAFARI";
 export const HttpTimeseriesGroupsOsRequestBrowserFamily = S.String;
@@ -46556,9 +46014,8 @@ export const HttpTimeseriesGroupsOsRequestBrowserFamily = S.String;
 export type HttpTimeseriesGroupsOsRequestBrowserFamilyList = Array<
   HttpTimeseriesGroupsOsRequestBrowserFamily | (string & {})
 >;
-export const HttpTimeseriesGroupsOsRequestBrowserFamilyList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsOsRequestBrowserFamily,
-) as any as S.Schema<HttpTimeseriesGroupsOsRequestBrowserFamilyList>;
+export const HttpTimeseriesGroupsOsRequestBrowserFamilyList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsOsRequestBrowserFamilyList>;
 
 export type HttpTimeseriesGroupsOsRequestContinentList = Array<string>;
 export const HttpTimeseriesGroupsOsRequestContinentList =
@@ -46582,9 +46039,8 @@ export const HttpTimeseriesGroupsOsRequestDeviceType = S.String;
 export type HttpTimeseriesGroupsOsRequestDeviceTypeList = Array<
   HttpTimeseriesGroupsOsRequestDeviceType | (string & {})
 >;
-export const HttpTimeseriesGroupsOsRequestDeviceTypeList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsOsRequestDeviceType,
-) as any as S.Schema<HttpTimeseriesGroupsOsRequestDeviceTypeList>;
+export const HttpTimeseriesGroupsOsRequestDeviceTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsOsRequestDeviceTypeList>;
 
 export type HttpTimeseriesGroupsOsRequestFormat = "JSON" | "CSV";
 export const HttpTimeseriesGroupsOsRequestFormat = S.String;
@@ -46599,9 +46055,8 @@ export const HttpTimeseriesGroupsOsRequestHttpProtocol = S.String;
 export type HttpTimeseriesGroupsOsRequestHttpProtocolList = Array<
   HttpTimeseriesGroupsOsRequestHttpProtocol | (string & {})
 >;
-export const HttpTimeseriesGroupsOsRequestHttpProtocolList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsOsRequestHttpProtocol,
-) as any as S.Schema<HttpTimeseriesGroupsOsRequestHttpProtocolList>;
+export const HttpTimeseriesGroupsOsRequestHttpProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsOsRequestHttpProtocolList>;
 
 export type HttpTimeseriesGroupsOsRequestHttpVersion = "HTTPv1" | "HTTPv2" | "HTTPv3";
 export const HttpTimeseriesGroupsOsRequestHttpVersion = S.String;
@@ -46609,9 +46064,8 @@ export const HttpTimeseriesGroupsOsRequestHttpVersion = S.String;
 export type HttpTimeseriesGroupsOsRequestHttpVersionList = Array<
   HttpTimeseriesGroupsOsRequestHttpVersion | (string & {})
 >;
-export const HttpTimeseriesGroupsOsRequestHttpVersionList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsOsRequestHttpVersion,
-) as any as S.Schema<HttpTimeseriesGroupsOsRequestHttpVersionList>;
+export const HttpTimeseriesGroupsOsRequestHttpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsOsRequestHttpVersionList>;
 
 export type HttpTimeseriesGroupsOsRequestIpVersion = "IPv4" | "IPv6";
 export const HttpTimeseriesGroupsOsRequestIpVersion = S.String;
@@ -46619,9 +46073,8 @@ export const HttpTimeseriesGroupsOsRequestIpVersion = S.String;
 export type HttpTimeseriesGroupsOsRequestIpVersionList = Array<
   HttpTimeseriesGroupsOsRequestIpVersion | (string & {})
 >;
-export const HttpTimeseriesGroupsOsRequestIpVersionList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsOsRequestIpVersion,
-) as any as S.Schema<HttpTimeseriesGroupsOsRequestIpVersionList>;
+export const HttpTimeseriesGroupsOsRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsOsRequestIpVersionList>;
 
 export type HttpTimeseriesGroupsOsRequestLocationList = Array<string>;
 export const HttpTimeseriesGroupsOsRequestLocationList =
@@ -46642,9 +46095,8 @@ export const HttpTimeseriesGroupsOsRequestTlsVersion = S.String;
 export type HttpTimeseriesGroupsOsRequestTlsVersionList = Array<
   HttpTimeseriesGroupsOsRequestTlsVersion | (string & {})
 >;
-export const HttpTimeseriesGroupsOsRequestTlsVersionList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsOsRequestTlsVersion,
-) as any as S.Schema<HttpTimeseriesGroupsOsRequestTlsVersionList>;
+export const HttpTimeseriesGroupsOsRequestTlsVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsOsRequestTlsVersionList>;
 
 export interface OsHttpTimeseriesGroupRequest {
   /** Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/). When omitted, the interval is auto-selected from the requested date range; finer intervals are only available for shorter ranges. If the requested interval is too granular for the date range, the request is rejected. */
@@ -46966,9 +46418,8 @@ export const HttpSummaryPostQuantumRequestBotClass = S.String;
 export type HttpSummaryPostQuantumRequestBotClassList = Array<
   HttpSummaryPostQuantumRequestBotClass | (string & {})
 >;
-export const HttpSummaryPostQuantumRequestBotClassList = /*@__PURE__*/ S.Array(
-  HttpSummaryPostQuantumRequestBotClass,
-) as any as S.Schema<HttpSummaryPostQuantumRequestBotClassList>;
+export const HttpSummaryPostQuantumRequestBotClassList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpSummaryPostQuantumRequestBotClassList>;
 
 export type HttpSummaryPostQuantumRequestBrowserFamily = "CHROME" | "EDGE" | "FIREFOX" | "SAFARI";
 export const HttpSummaryPostQuantumRequestBrowserFamily = S.String;
@@ -46976,9 +46427,8 @@ export const HttpSummaryPostQuantumRequestBrowserFamily = S.String;
 export type HttpSummaryPostQuantumRequestBrowserFamilyList = Array<
   HttpSummaryPostQuantumRequestBrowserFamily | (string & {})
 >;
-export const HttpSummaryPostQuantumRequestBrowserFamilyList = /*@__PURE__*/ S.Array(
-  HttpSummaryPostQuantumRequestBrowserFamily,
-) as any as S.Schema<HttpSummaryPostQuantumRequestBrowserFamilyList>;
+export const HttpSummaryPostQuantumRequestBrowserFamilyList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpSummaryPostQuantumRequestBrowserFamilyList>;
 
 export type HttpSummaryPostQuantumRequestContinentList = Array<string>;
 export const HttpSummaryPostQuantumRequestContinentList =
@@ -47002,9 +46452,8 @@ export const HttpSummaryPostQuantumRequestDeviceType = S.String;
 export type HttpSummaryPostQuantumRequestDeviceTypeList = Array<
   HttpSummaryPostQuantumRequestDeviceType | (string & {})
 >;
-export const HttpSummaryPostQuantumRequestDeviceTypeList = /*@__PURE__*/ S.Array(
-  HttpSummaryPostQuantumRequestDeviceType,
-) as any as S.Schema<HttpSummaryPostQuantumRequestDeviceTypeList>;
+export const HttpSummaryPostQuantumRequestDeviceTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpSummaryPostQuantumRequestDeviceTypeList>;
 
 export type HttpSummaryPostQuantumRequestFormat = "JSON" | "CSV";
 export const HttpSummaryPostQuantumRequestFormat = S.String;
@@ -47019,9 +46468,8 @@ export const HttpSummaryPostQuantumRequestHttpProtocol = S.String;
 export type HttpSummaryPostQuantumRequestHttpProtocolList = Array<
   HttpSummaryPostQuantumRequestHttpProtocol | (string & {})
 >;
-export const HttpSummaryPostQuantumRequestHttpProtocolList = /*@__PURE__*/ S.Array(
-  HttpSummaryPostQuantumRequestHttpProtocol,
-) as any as S.Schema<HttpSummaryPostQuantumRequestHttpProtocolList>;
+export const HttpSummaryPostQuantumRequestHttpProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpSummaryPostQuantumRequestHttpProtocolList>;
 
 export type HttpSummaryPostQuantumRequestHttpVersion = "HTTPv1" | "HTTPv2" | "HTTPv3";
 export const HttpSummaryPostQuantumRequestHttpVersion = S.String;
@@ -47029,9 +46477,8 @@ export const HttpSummaryPostQuantumRequestHttpVersion = S.String;
 export type HttpSummaryPostQuantumRequestHttpVersionList = Array<
   HttpSummaryPostQuantumRequestHttpVersion | (string & {})
 >;
-export const HttpSummaryPostQuantumRequestHttpVersionList = /*@__PURE__*/ S.Array(
-  HttpSummaryPostQuantumRequestHttpVersion,
-) as any as S.Schema<HttpSummaryPostQuantumRequestHttpVersionList>;
+export const HttpSummaryPostQuantumRequestHttpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpSummaryPostQuantumRequestHttpVersionList>;
 
 export type HttpSummaryPostQuantumRequestIpVersion = "IPv4" | "IPv6";
 export const HttpSummaryPostQuantumRequestIpVersion = S.String;
@@ -47039,9 +46486,8 @@ export const HttpSummaryPostQuantumRequestIpVersion = S.String;
 export type HttpSummaryPostQuantumRequestIpVersionList = Array<
   HttpSummaryPostQuantumRequestIpVersion | (string & {})
 >;
-export const HttpSummaryPostQuantumRequestIpVersionList = /*@__PURE__*/ S.Array(
-  HttpSummaryPostQuantumRequestIpVersion,
-) as any as S.Schema<HttpSummaryPostQuantumRequestIpVersionList>;
+export const HttpSummaryPostQuantumRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpSummaryPostQuantumRequestIpVersionList>;
 
 export type HttpSummaryPostQuantumRequestLocationList = Array<string>;
 export const HttpSummaryPostQuantumRequestLocationList =
@@ -47064,9 +46510,8 @@ export const HttpSummaryPostQuantumRequestOs = S.String;
 export type HttpSummaryPostQuantumRequestOsList = Array<
   HttpSummaryPostQuantumRequestOs | (string & {})
 >;
-export const HttpSummaryPostQuantumRequestOsList = /*@__PURE__*/ S.Array(
-  HttpSummaryPostQuantumRequestOs,
-) as any as S.Schema<HttpSummaryPostQuantumRequestOsList>;
+export const HttpSummaryPostQuantumRequestOsList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpSummaryPostQuantumRequestOsList>;
 
 export type HttpSummaryPostQuantumRequestTlsVersion =
   | "TLSv1_0"
@@ -47079,9 +46524,8 @@ export const HttpSummaryPostQuantumRequestTlsVersion = S.String;
 export type HttpSummaryPostQuantumRequestTlsVersionList = Array<
   HttpSummaryPostQuantumRequestTlsVersion | (string & {})
 >;
-export const HttpSummaryPostQuantumRequestTlsVersionList = /*@__PURE__*/ S.Array(
-  HttpSummaryPostQuantumRequestTlsVersion,
-) as any as S.Schema<HttpSummaryPostQuantumRequestTlsVersionList>;
+export const HttpSummaryPostQuantumRequestTlsVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpSummaryPostQuantumRequestTlsVersionList>;
 
 export interface PostQuantumHttpSummaryRequest {
   /** Filters results by Autonomous System. Specify one or more Autonomous System Numbers (ASNs) as a comma-separated list. Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356. */
@@ -47321,9 +46765,8 @@ export const HttpTimeseriesGroupsPostQuantumRequestBotClass = S.String;
 export type HttpTimeseriesGroupsPostQuantumRequestBotClassList = Array<
   HttpTimeseriesGroupsPostQuantumRequestBotClass | (string & {})
 >;
-export const HttpTimeseriesGroupsPostQuantumRequestBotClassList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsPostQuantumRequestBotClass,
-) as any as S.Schema<HttpTimeseriesGroupsPostQuantumRequestBotClassList>;
+export const HttpTimeseriesGroupsPostQuantumRequestBotClassList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsPostQuantumRequestBotClassList>;
 
 export type HttpTimeseriesGroupsPostQuantumRequestBrowserFamily =
   | "CHROME"
@@ -47335,9 +46778,8 @@ export const HttpTimeseriesGroupsPostQuantumRequestBrowserFamily = S.String;
 export type HttpTimeseriesGroupsPostQuantumRequestBrowserFamilyList = Array<
   HttpTimeseriesGroupsPostQuantumRequestBrowserFamily | (string & {})
 >;
-export const HttpTimeseriesGroupsPostQuantumRequestBrowserFamilyList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsPostQuantumRequestBrowserFamily,
-) as any as S.Schema<HttpTimeseriesGroupsPostQuantumRequestBrowserFamilyList>;
+export const HttpTimeseriesGroupsPostQuantumRequestBrowserFamilyList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsPostQuantumRequestBrowserFamilyList>;
 
 export type HttpTimeseriesGroupsPostQuantumRequestContinentList = Array<string>;
 export const HttpTimeseriesGroupsPostQuantumRequestContinentList =
@@ -47361,9 +46803,8 @@ export const HttpTimeseriesGroupsPostQuantumRequestDeviceType = S.String;
 export type HttpTimeseriesGroupsPostQuantumRequestDeviceTypeList = Array<
   HttpTimeseriesGroupsPostQuantumRequestDeviceType | (string & {})
 >;
-export const HttpTimeseriesGroupsPostQuantumRequestDeviceTypeList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsPostQuantumRequestDeviceType,
-) as any as S.Schema<HttpTimeseriesGroupsPostQuantumRequestDeviceTypeList>;
+export const HttpTimeseriesGroupsPostQuantumRequestDeviceTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsPostQuantumRequestDeviceTypeList>;
 
 export type HttpTimeseriesGroupsPostQuantumRequestFormat = "JSON" | "CSV";
 export const HttpTimeseriesGroupsPostQuantumRequestFormat = S.String;
@@ -47378,9 +46819,8 @@ export const HttpTimeseriesGroupsPostQuantumRequestHttpProtocol = S.String;
 export type HttpTimeseriesGroupsPostQuantumRequestHttpProtocolList = Array<
   HttpTimeseriesGroupsPostQuantumRequestHttpProtocol | (string & {})
 >;
-export const HttpTimeseriesGroupsPostQuantumRequestHttpProtocolList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsPostQuantumRequestHttpProtocol,
-) as any as S.Schema<HttpTimeseriesGroupsPostQuantumRequestHttpProtocolList>;
+export const HttpTimeseriesGroupsPostQuantumRequestHttpProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsPostQuantumRequestHttpProtocolList>;
 
 export type HttpTimeseriesGroupsPostQuantumRequestHttpVersion = "HTTPv1" | "HTTPv2" | "HTTPv3";
 export const HttpTimeseriesGroupsPostQuantumRequestHttpVersion = S.String;
@@ -47388,9 +46828,8 @@ export const HttpTimeseriesGroupsPostQuantumRequestHttpVersion = S.String;
 export type HttpTimeseriesGroupsPostQuantumRequestHttpVersionList = Array<
   HttpTimeseriesGroupsPostQuantumRequestHttpVersion | (string & {})
 >;
-export const HttpTimeseriesGroupsPostQuantumRequestHttpVersionList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsPostQuantumRequestHttpVersion,
-) as any as S.Schema<HttpTimeseriesGroupsPostQuantumRequestHttpVersionList>;
+export const HttpTimeseriesGroupsPostQuantumRequestHttpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsPostQuantumRequestHttpVersionList>;
 
 export type HttpTimeseriesGroupsPostQuantumRequestIpVersion = "IPv4" | "IPv6";
 export const HttpTimeseriesGroupsPostQuantumRequestIpVersion = S.String;
@@ -47398,9 +46837,8 @@ export const HttpTimeseriesGroupsPostQuantumRequestIpVersion = S.String;
 export type HttpTimeseriesGroupsPostQuantumRequestIpVersionList = Array<
   HttpTimeseriesGroupsPostQuantumRequestIpVersion | (string & {})
 >;
-export const HttpTimeseriesGroupsPostQuantumRequestIpVersionList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsPostQuantumRequestIpVersion,
-) as any as S.Schema<HttpTimeseriesGroupsPostQuantumRequestIpVersionList>;
+export const HttpTimeseriesGroupsPostQuantumRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsPostQuantumRequestIpVersionList>;
 
 export type HttpTimeseriesGroupsPostQuantumRequestLocationList = Array<string>;
 export const HttpTimeseriesGroupsPostQuantumRequestLocationList =
@@ -47423,9 +46861,8 @@ export const HttpTimeseriesGroupsPostQuantumRequestOs = S.String;
 export type HttpTimeseriesGroupsPostQuantumRequestOsList = Array<
   HttpTimeseriesGroupsPostQuantumRequestOs | (string & {})
 >;
-export const HttpTimeseriesGroupsPostQuantumRequestOsList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsPostQuantumRequestOs,
-) as any as S.Schema<HttpTimeseriesGroupsPostQuantumRequestOsList>;
+export const HttpTimeseriesGroupsPostQuantumRequestOsList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsPostQuantumRequestOsList>;
 
 export type HttpTimeseriesGroupsPostQuantumRequestTlsVersion =
   | "TLSv1_0"
@@ -47438,9 +46875,8 @@ export const HttpTimeseriesGroupsPostQuantumRequestTlsVersion = S.String;
 export type HttpTimeseriesGroupsPostQuantumRequestTlsVersionList = Array<
   HttpTimeseriesGroupsPostQuantumRequestTlsVersion | (string & {})
 >;
-export const HttpTimeseriesGroupsPostQuantumRequestTlsVersionList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsPostQuantumRequestTlsVersion,
-) as any as S.Schema<HttpTimeseriesGroupsPostQuantumRequestTlsVersionList>;
+export const HttpTimeseriesGroupsPostQuantumRequestTlsVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsPostQuantumRequestTlsVersionList>;
 
 export interface PostQuantumHttpTimeseriesGroupRequest {
   /** Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/). When omitted, the interval is auto-selected from the requested date range; finer intervals are only available for shorter ranges. If the requested interval is too granular for the date range, the request is rejected. */
@@ -47745,9 +47181,8 @@ export const BgpTopPrefixesRequestUpdateType = S.String;
 export type BgpTopPrefixesRequestUpdateTypeList = Array<
   BgpTopPrefixesRequestUpdateType | (string & {})
 >;
-export const BgpTopPrefixesRequestUpdateTypeList = /*@__PURE__*/ S.Array(
-  BgpTopPrefixesRequestUpdateType,
-) as any as S.Schema<BgpTopPrefixesRequestUpdateTypeList>;
+export const BgpTopPrefixesRequestUpdateTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<BgpTopPrefixesRequestUpdateTypeList>;
 
 export interface PrefixesBgpTopRequest {
   /** Filters results by Autonomous System. Specify one or more Autonomous System Numbers (ASNs) as a comma-separated list. Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356. */
@@ -48008,9 +47443,8 @@ export const As112SummaryProtocolRequestQueryType = S.String;
 export type As112SummaryProtocolRequestQueryTypeList = Array<
   As112SummaryProtocolRequestQueryType | (string & {})
 >;
-export const As112SummaryProtocolRequestQueryTypeList = /*@__PURE__*/ S.Array(
-  As112SummaryProtocolRequestQueryType,
-) as any as S.Schema<As112SummaryProtocolRequestQueryTypeList>;
+export const As112SummaryProtocolRequestQueryTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<As112SummaryProtocolRequestQueryTypeList>;
 
 export type As112SummaryProtocolRequestResponseCode =
   | "NOERROR"
@@ -48037,9 +47471,8 @@ export const As112SummaryProtocolRequestResponseCode = S.String;
 export type As112SummaryProtocolRequestResponseCodeList = Array<
   As112SummaryProtocolRequestResponseCode | (string & {})
 >;
-export const As112SummaryProtocolRequestResponseCodeList = /*@__PURE__*/ S.Array(
-  As112SummaryProtocolRequestResponseCode,
-) as any as S.Schema<As112SummaryProtocolRequestResponseCodeList>;
+export const As112SummaryProtocolRequestResponseCodeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<As112SummaryProtocolRequestResponseCodeList>;
 
 export interface ProtocolAs112SummaryRequest {
   /** Filters results by continent. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA. */
@@ -48383,9 +47816,8 @@ export const As112TimeseriesGroupsProtocolRequestQueryType = S.String;
 export type As112TimeseriesGroupsProtocolRequestQueryTypeList = Array<
   As112TimeseriesGroupsProtocolRequestQueryType | (string & {})
 >;
-export const As112TimeseriesGroupsProtocolRequestQueryTypeList = /*@__PURE__*/ S.Array(
-  As112TimeseriesGroupsProtocolRequestQueryType,
-) as any as S.Schema<As112TimeseriesGroupsProtocolRequestQueryTypeList>;
+export const As112TimeseriesGroupsProtocolRequestQueryTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<As112TimeseriesGroupsProtocolRequestQueryTypeList>;
 
 export type As112TimeseriesGroupsProtocolRequestResponseCode =
   | "NOERROR"
@@ -48412,9 +47844,8 @@ export const As112TimeseriesGroupsProtocolRequestResponseCode = S.String;
 export type As112TimeseriesGroupsProtocolRequestResponseCodeList = Array<
   As112TimeseriesGroupsProtocolRequestResponseCode | (string & {})
 >;
-export const As112TimeseriesGroupsProtocolRequestResponseCodeList = /*@__PURE__*/ S.Array(
-  As112TimeseriesGroupsProtocolRequestResponseCode,
-) as any as S.Schema<As112TimeseriesGroupsProtocolRequestResponseCodeList>;
+export const As112TimeseriesGroupsProtocolRequestResponseCodeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<As112TimeseriesGroupsProtocolRequestResponseCodeList>;
 
 export interface ProtocolAs112TimeseriesGroupRequest {
   /** Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/). When omitted, the interval is auto-selected from the requested date range; finer intervals are only available for shorter ranges. If the requested interval is too granular for the date range, the request is rejected. */
@@ -48692,9 +48123,8 @@ export const AttacksLayer3SummaryProtocolRequestIpVersion = S.String;
 export type AttacksLayer3SummaryProtocolRequestIpVersionList = Array<
   AttacksLayer3SummaryProtocolRequestIpVersion | (string & {})
 >;
-export const AttacksLayer3SummaryProtocolRequestIpVersionList = /*@__PURE__*/ S.Array(
-  AttacksLayer3SummaryProtocolRequestIpVersion,
-) as any as S.Schema<AttacksLayer3SummaryProtocolRequestIpVersionList>;
+export const AttacksLayer3SummaryProtocolRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer3SummaryProtocolRequestIpVersionList>;
 
 export type AttacksLayer3SummaryProtocolRequestLocationList = Array<string>;
 export const AttacksLayer3SummaryProtocolRequestLocationList =
@@ -48957,9 +48387,8 @@ export const AttacksLayer3TimeseriesGroupsProtocolRequestIpVersion = S.String;
 export type AttacksLayer3TimeseriesGroupsProtocolRequestIpVersionList = Array<
   AttacksLayer3TimeseriesGroupsProtocolRequestIpVersion | (string & {})
 >;
-export const AttacksLayer3TimeseriesGroupsProtocolRequestIpVersionList = /*@__PURE__*/ S.Array(
-  AttacksLayer3TimeseriesGroupsProtocolRequestIpVersion,
-) as any as S.Schema<AttacksLayer3TimeseriesGroupsProtocolRequestIpVersionList>;
+export const AttacksLayer3TimeseriesGroupsProtocolRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer3TimeseriesGroupsProtocolRequestIpVersionList>;
 
 export type AttacksLayer3TimeseriesGroupsProtocolRequestLocationList = Array<string>;
 export const AttacksLayer3TimeseriesGroupsProtocolRequestLocationList =
@@ -49377,9 +48806,8 @@ export const DnsSummaryProtocolRequestQueryType = S.String;
 export type DnsSummaryProtocolRequestQueryTypeList = Array<
   DnsSummaryProtocolRequestQueryType | (string & {})
 >;
-export const DnsSummaryProtocolRequestQueryTypeList = /*@__PURE__*/ S.Array(
-  DnsSummaryProtocolRequestQueryType,
-) as any as S.Schema<DnsSummaryProtocolRequestQueryTypeList>;
+export const DnsSummaryProtocolRequestQueryTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsSummaryProtocolRequestQueryTypeList>;
 
 export type DnsSummaryProtocolRequestResponseCode =
   | "NOERROR"
@@ -49406,9 +48834,8 @@ export const DnsSummaryProtocolRequestResponseCode = S.String;
 export type DnsSummaryProtocolRequestResponseCodeList = Array<
   DnsSummaryProtocolRequestResponseCode | (string & {})
 >;
-export const DnsSummaryProtocolRequestResponseCodeList = /*@__PURE__*/ S.Array(
-  DnsSummaryProtocolRequestResponseCode,
-) as any as S.Schema<DnsSummaryProtocolRequestResponseCodeList>;
+export const DnsSummaryProtocolRequestResponseCodeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsSummaryProtocolRequestResponseCodeList>;
 
 export type DnsSummaryProtocolRequestTldList = Array<string>;
 export const DnsSummaryProtocolRequestTldList =
@@ -49755,9 +49182,8 @@ export const DnsTimeseriesGroupsProtocolRequestQueryType = S.String;
 export type DnsTimeseriesGroupsProtocolRequestQueryTypeList = Array<
   DnsTimeseriesGroupsProtocolRequestQueryType | (string & {})
 >;
-export const DnsTimeseriesGroupsProtocolRequestQueryTypeList = /*@__PURE__*/ S.Array(
-  DnsTimeseriesGroupsProtocolRequestQueryType,
-) as any as S.Schema<DnsTimeseriesGroupsProtocolRequestQueryTypeList>;
+export const DnsTimeseriesGroupsProtocolRequestQueryTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsTimeseriesGroupsProtocolRequestQueryTypeList>;
 
 export type DnsTimeseriesGroupsProtocolRequestResponseCode =
   | "NOERROR"
@@ -49784,9 +49210,8 @@ export const DnsTimeseriesGroupsProtocolRequestResponseCode = S.String;
 export type DnsTimeseriesGroupsProtocolRequestResponseCodeList = Array<
   DnsTimeseriesGroupsProtocolRequestResponseCode | (string & {})
 >;
-export const DnsTimeseriesGroupsProtocolRequestResponseCodeList = /*@__PURE__*/ S.Array(
-  DnsTimeseriesGroupsProtocolRequestResponseCode,
-) as any as S.Schema<DnsTimeseriesGroupsProtocolRequestResponseCodeList>;
+export const DnsTimeseriesGroupsProtocolRequestResponseCodeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsTimeseriesGroupsProtocolRequestResponseCodeList>;
 
 export type DnsTimeseriesGroupsProtocolRequestTldList = Array<string>;
 export const DnsTimeseriesGroupsProtocolRequestTldList =
@@ -50074,9 +49499,8 @@ export const As112SummaryQueryTypeRequestProtocol = S.String;
 export type As112SummaryQueryTypeRequestProtocolList = Array<
   As112SummaryQueryTypeRequestProtocol | (string & {})
 >;
-export const As112SummaryQueryTypeRequestProtocolList = /*@__PURE__*/ S.Array(
-  As112SummaryQueryTypeRequestProtocol,
-) as any as S.Schema<As112SummaryQueryTypeRequestProtocolList>;
+export const As112SummaryQueryTypeRequestProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<As112SummaryQueryTypeRequestProtocolList>;
 
 export type As112SummaryQueryTypeRequestResponseCode =
   | "NOERROR"
@@ -50103,9 +49527,8 @@ export const As112SummaryQueryTypeRequestResponseCode = S.String;
 export type As112SummaryQueryTypeRequestResponseCodeList = Array<
   As112SummaryQueryTypeRequestResponseCode | (string & {})
 >;
-export const As112SummaryQueryTypeRequestResponseCodeList = /*@__PURE__*/ S.Array(
-  As112SummaryQueryTypeRequestResponseCode,
-) as any as S.Schema<As112SummaryQueryTypeRequestResponseCodeList>;
+export const As112SummaryQueryTypeRequestResponseCodeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<As112SummaryQueryTypeRequestResponseCodeList>;
 
 export interface QueryTypeAs112SummaryRequest {
   /** Filters results by continent. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA. */
@@ -50347,9 +49770,8 @@ export const As112TimeseriesGroupsQueryTypeRequestProtocol = S.String;
 export type As112TimeseriesGroupsQueryTypeRequestProtocolList = Array<
   As112TimeseriesGroupsQueryTypeRequestProtocol | (string & {})
 >;
-export const As112TimeseriesGroupsQueryTypeRequestProtocolList = /*@__PURE__*/ S.Array(
-  As112TimeseriesGroupsQueryTypeRequestProtocol,
-) as any as S.Schema<As112TimeseriesGroupsQueryTypeRequestProtocolList>;
+export const As112TimeseriesGroupsQueryTypeRequestProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<As112TimeseriesGroupsQueryTypeRequestProtocolList>;
 
 export type As112TimeseriesGroupsQueryTypeRequestResponseCode =
   | "NOERROR"
@@ -50376,9 +49798,8 @@ export const As112TimeseriesGroupsQueryTypeRequestResponseCode = S.String;
 export type As112TimeseriesGroupsQueryTypeRequestResponseCodeList = Array<
   As112TimeseriesGroupsQueryTypeRequestResponseCode | (string & {})
 >;
-export const As112TimeseriesGroupsQueryTypeRequestResponseCodeList = /*@__PURE__*/ S.Array(
-  As112TimeseriesGroupsQueryTypeRequestResponseCode,
-) as any as S.Schema<As112TimeseriesGroupsQueryTypeRequestResponseCodeList>;
+export const As112TimeseriesGroupsQueryTypeRequestResponseCodeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<As112TimeseriesGroupsQueryTypeRequestResponseCodeList>;
 
 export interface QueryTypeAs112TimeseriesGroupRequest {
   /** Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/). When omitted, the interval is auto-selected from the requested date range; finer intervals are only available for shorter ranges. If the requested interval is too granular for the date range, the request is rejected. */
@@ -50650,9 +50071,8 @@ export const DnsSummaryQueryTypeRequestProtocol = S.String;
 export type DnsSummaryQueryTypeRequestProtocolList = Array<
   DnsSummaryQueryTypeRequestProtocol | (string & {})
 >;
-export const DnsSummaryQueryTypeRequestProtocolList = /*@__PURE__*/ S.Array(
-  DnsSummaryQueryTypeRequestProtocol,
-) as any as S.Schema<DnsSummaryQueryTypeRequestProtocolList>;
+export const DnsSummaryQueryTypeRequestProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsSummaryQueryTypeRequestProtocolList>;
 
 export type DnsSummaryQueryTypeRequestResponseCode =
   | "NOERROR"
@@ -50679,9 +50099,8 @@ export const DnsSummaryQueryTypeRequestResponseCode = S.String;
 export type DnsSummaryQueryTypeRequestResponseCodeList = Array<
   DnsSummaryQueryTypeRequestResponseCode | (string & {})
 >;
-export const DnsSummaryQueryTypeRequestResponseCodeList = /*@__PURE__*/ S.Array(
-  DnsSummaryQueryTypeRequestResponseCode,
-) as any as S.Schema<DnsSummaryQueryTypeRequestResponseCodeList>;
+export const DnsSummaryQueryTypeRequestResponseCodeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsSummaryQueryTypeRequestResponseCodeList>;
 
 export type DnsSummaryQueryTypeRequestTldList = Array<string>;
 export const DnsSummaryQueryTypeRequestTldList =
@@ -50944,9 +50363,8 @@ export const DnsTimeseriesGroupsQueryTypeRequestProtocol = S.String;
 export type DnsTimeseriesGroupsQueryTypeRequestProtocolList = Array<
   DnsTimeseriesGroupsQueryTypeRequestProtocol | (string & {})
 >;
-export const DnsTimeseriesGroupsQueryTypeRequestProtocolList = /*@__PURE__*/ S.Array(
-  DnsTimeseriesGroupsQueryTypeRequestProtocol,
-) as any as S.Schema<DnsTimeseriesGroupsQueryTypeRequestProtocolList>;
+export const DnsTimeseriesGroupsQueryTypeRequestProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsTimeseriesGroupsQueryTypeRequestProtocolList>;
 
 export type DnsTimeseriesGroupsQueryTypeRequestResponseCode =
   | "NOERROR"
@@ -50973,9 +50391,8 @@ export const DnsTimeseriesGroupsQueryTypeRequestResponseCode = S.String;
 export type DnsTimeseriesGroupsQueryTypeRequestResponseCodeList = Array<
   DnsTimeseriesGroupsQueryTypeRequestResponseCode | (string & {})
 >;
-export const DnsTimeseriesGroupsQueryTypeRequestResponseCodeList = /*@__PURE__*/ S.Array(
-  DnsTimeseriesGroupsQueryTypeRequestResponseCode,
-) as any as S.Schema<DnsTimeseriesGroupsQueryTypeRequestResponseCodeList>;
+export const DnsTimeseriesGroupsQueryTypeRequestResponseCodeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsTimeseriesGroupsQueryTypeRequestResponseCodeList>;
 
 export type DnsTimeseriesGroupsQueryTypeRequestTldList = Array<string>;
 export const DnsTimeseriesGroupsQueryTypeRequestTldList =
@@ -51509,9 +50926,8 @@ export const DnsSummaryResponseCodeRequestProtocol = S.String;
 export type DnsSummaryResponseCodeRequestProtocolList = Array<
   DnsSummaryResponseCodeRequestProtocol | (string & {})
 >;
-export const DnsSummaryResponseCodeRequestProtocolList = /*@__PURE__*/ S.Array(
-  DnsSummaryResponseCodeRequestProtocol,
-) as any as S.Schema<DnsSummaryResponseCodeRequestProtocolList>;
+export const DnsSummaryResponseCodeRequestProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsSummaryResponseCodeRequestProtocolList>;
 
 export type DnsSummaryResponseCodeRequestQueryType =
   | "A"
@@ -51607,9 +51023,8 @@ export const DnsSummaryResponseCodeRequestQueryType = S.String;
 export type DnsSummaryResponseCodeRequestQueryTypeList = Array<
   DnsSummaryResponseCodeRequestQueryType | (string & {})
 >;
-export const DnsSummaryResponseCodeRequestQueryTypeList = /*@__PURE__*/ S.Array(
-  DnsSummaryResponseCodeRequestQueryType,
-) as any as S.Schema<DnsSummaryResponseCodeRequestQueryTypeList>;
+export const DnsSummaryResponseCodeRequestQueryTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsSummaryResponseCodeRequestQueryTypeList>;
 
 export type DnsSummaryResponseCodeRequestTldList = Array<string>;
 export const DnsSummaryResponseCodeRequestTldList =
@@ -51873,9 +51288,8 @@ export const DnsTimeseriesGroupsResponseCodeRequestProtocol = S.String;
 export type DnsTimeseriesGroupsResponseCodeRequestProtocolList = Array<
   DnsTimeseriesGroupsResponseCodeRequestProtocol | (string & {})
 >;
-export const DnsTimeseriesGroupsResponseCodeRequestProtocolList = /*@__PURE__*/ S.Array(
-  DnsTimeseriesGroupsResponseCodeRequestProtocol,
-) as any as S.Schema<DnsTimeseriesGroupsResponseCodeRequestProtocolList>;
+export const DnsTimeseriesGroupsResponseCodeRequestProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsTimeseriesGroupsResponseCodeRequestProtocolList>;
 
 export type DnsTimeseriesGroupsResponseCodeRequestQueryType =
   | "A"
@@ -51971,9 +51385,8 @@ export const DnsTimeseriesGroupsResponseCodeRequestQueryType = S.String;
 export type DnsTimeseriesGroupsResponseCodeRequestQueryTypeList = Array<
   DnsTimeseriesGroupsResponseCodeRequestQueryType | (string & {})
 >;
-export const DnsTimeseriesGroupsResponseCodeRequestQueryTypeList = /*@__PURE__*/ S.Array(
-  DnsTimeseriesGroupsResponseCodeRequestQueryType,
-) as any as S.Schema<DnsTimeseriesGroupsResponseCodeRequestQueryTypeList>;
+export const DnsTimeseriesGroupsResponseCodeRequestQueryTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsTimeseriesGroupsResponseCodeRequestQueryTypeList>;
 
 export type DnsTimeseriesGroupsResponseCodeRequestTldList = Array<string>;
 export const DnsTimeseriesGroupsResponseCodeRequestTldList =
@@ -52251,9 +51664,8 @@ export const As112SummaryResponseCodesRequestProtocol = S.String;
 export type As112SummaryResponseCodesRequestProtocolList = Array<
   As112SummaryResponseCodesRequestProtocol | (string & {})
 >;
-export const As112SummaryResponseCodesRequestProtocolList = /*@__PURE__*/ S.Array(
-  As112SummaryResponseCodesRequestProtocol,
-) as any as S.Schema<As112SummaryResponseCodesRequestProtocolList>;
+export const As112SummaryResponseCodesRequestProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<As112SummaryResponseCodesRequestProtocolList>;
 
 export type As112SummaryResponseCodesRequestQueryType =
   | "A"
@@ -52349,9 +51761,8 @@ export const As112SummaryResponseCodesRequestQueryType = S.String;
 export type As112SummaryResponseCodesRequestQueryTypeList = Array<
   As112SummaryResponseCodesRequestQueryType | (string & {})
 >;
-export const As112SummaryResponseCodesRequestQueryTypeList = /*@__PURE__*/ S.Array(
-  As112SummaryResponseCodesRequestQueryType,
-) as any as S.Schema<As112SummaryResponseCodesRequestQueryTypeList>;
+export const As112SummaryResponseCodesRequestQueryTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<As112SummaryResponseCodesRequestQueryTypeList>;
 
 export interface ResponseCodesAs112SummaryRequest {
   /** Filters results by continent. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA. */
@@ -52596,9 +52007,8 @@ export const As112TimeseriesGroupsResponseCodesRequestProtocol = S.String;
 export type As112TimeseriesGroupsResponseCodesRequestProtocolList = Array<
   As112TimeseriesGroupsResponseCodesRequestProtocol | (string & {})
 >;
-export const As112TimeseriesGroupsResponseCodesRequestProtocolList = /*@__PURE__*/ S.Array(
-  As112TimeseriesGroupsResponseCodesRequestProtocol,
-) as any as S.Schema<As112TimeseriesGroupsResponseCodesRequestProtocolList>;
+export const As112TimeseriesGroupsResponseCodesRequestProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<As112TimeseriesGroupsResponseCodesRequestProtocolList>;
 
 export type As112TimeseriesGroupsResponseCodesRequestQueryType =
   | "A"
@@ -52694,9 +52104,8 @@ export const As112TimeseriesGroupsResponseCodesRequestQueryType = S.String;
 export type As112TimeseriesGroupsResponseCodesRequestQueryTypeList = Array<
   As112TimeseriesGroupsResponseCodesRequestQueryType | (string & {})
 >;
-export const As112TimeseriesGroupsResponseCodesRequestQueryTypeList = /*@__PURE__*/ S.Array(
-  As112TimeseriesGroupsResponseCodesRequestQueryType,
-) as any as S.Schema<As112TimeseriesGroupsResponseCodesRequestQueryTypeList>;
+export const As112TimeseriesGroupsResponseCodesRequestQueryTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<As112TimeseriesGroupsResponseCodesRequestQueryTypeList>;
 
 export interface ResponseCodesAs112TimeseriesGroupRequest {
   /** Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/). When omitted, the interval is auto-selected from the requested date range; finer intervals are only available for shorter ranges. If the requested interval is too granular for the date range, the request is rejected. */
@@ -52974,9 +52383,8 @@ export const DnsSummaryResponseTtlRequestProtocol = S.String;
 export type DnsSummaryResponseTtlRequestProtocolList = Array<
   DnsSummaryResponseTtlRequestProtocol | (string & {})
 >;
-export const DnsSummaryResponseTtlRequestProtocolList = /*@__PURE__*/ S.Array(
-  DnsSummaryResponseTtlRequestProtocol,
-) as any as S.Schema<DnsSummaryResponseTtlRequestProtocolList>;
+export const DnsSummaryResponseTtlRequestProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsSummaryResponseTtlRequestProtocolList>;
 
 export type DnsSummaryResponseTtlRequestQueryType =
   | "A"
@@ -53072,9 +52480,8 @@ export const DnsSummaryResponseTtlRequestQueryType = S.String;
 export type DnsSummaryResponseTtlRequestQueryTypeList = Array<
   DnsSummaryResponseTtlRequestQueryType | (string & {})
 >;
-export const DnsSummaryResponseTtlRequestQueryTypeList = /*@__PURE__*/ S.Array(
-  DnsSummaryResponseTtlRequestQueryType,
-) as any as S.Schema<DnsSummaryResponseTtlRequestQueryTypeList>;
+export const DnsSummaryResponseTtlRequestQueryTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsSummaryResponseTtlRequestQueryTypeList>;
 
 export type DnsSummaryResponseTtlRequestResponseCode =
   | "NOERROR"
@@ -53101,9 +52508,8 @@ export const DnsSummaryResponseTtlRequestResponseCode = S.String;
 export type DnsSummaryResponseTtlRequestResponseCodeList = Array<
   DnsSummaryResponseTtlRequestResponseCode | (string & {})
 >;
-export const DnsSummaryResponseTtlRequestResponseCodeList = /*@__PURE__*/ S.Array(
-  DnsSummaryResponseTtlRequestResponseCode,
-) as any as S.Schema<DnsSummaryResponseTtlRequestResponseCodeList>;
+export const DnsSummaryResponseTtlRequestResponseCodeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsSummaryResponseTtlRequestResponseCodeList>;
 
 export type DnsSummaryResponseTtlRequestTldList = Array<string>;
 export const DnsSummaryResponseTtlRequestTldList =
@@ -53392,9 +52798,8 @@ export const DnsTimeseriesGroupsResponseTtlRequestProtocol = S.String;
 export type DnsTimeseriesGroupsResponseTtlRequestProtocolList = Array<
   DnsTimeseriesGroupsResponseTtlRequestProtocol | (string & {})
 >;
-export const DnsTimeseriesGroupsResponseTtlRequestProtocolList = /*@__PURE__*/ S.Array(
-  DnsTimeseriesGroupsResponseTtlRequestProtocol,
-) as any as S.Schema<DnsTimeseriesGroupsResponseTtlRequestProtocolList>;
+export const DnsTimeseriesGroupsResponseTtlRequestProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsTimeseriesGroupsResponseTtlRequestProtocolList>;
 
 export type DnsTimeseriesGroupsResponseTtlRequestQueryType =
   | "A"
@@ -53490,9 +52895,8 @@ export const DnsTimeseriesGroupsResponseTtlRequestQueryType = S.String;
 export type DnsTimeseriesGroupsResponseTtlRequestQueryTypeList = Array<
   DnsTimeseriesGroupsResponseTtlRequestQueryType | (string & {})
 >;
-export const DnsTimeseriesGroupsResponseTtlRequestQueryTypeList = /*@__PURE__*/ S.Array(
-  DnsTimeseriesGroupsResponseTtlRequestQueryType,
-) as any as S.Schema<DnsTimeseriesGroupsResponseTtlRequestQueryTypeList>;
+export const DnsTimeseriesGroupsResponseTtlRequestQueryTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsTimeseriesGroupsResponseTtlRequestQueryTypeList>;
 
 export type DnsTimeseriesGroupsResponseTtlRequestResponseCode =
   | "NOERROR"
@@ -53519,9 +52923,8 @@ export const DnsTimeseriesGroupsResponseTtlRequestResponseCode = S.String;
 export type DnsTimeseriesGroupsResponseTtlRequestResponseCodeList = Array<
   DnsTimeseriesGroupsResponseTtlRequestResponseCode | (string & {})
 >;
-export const DnsTimeseriesGroupsResponseTtlRequestResponseCodeList = /*@__PURE__*/ S.Array(
-  DnsTimeseriesGroupsResponseTtlRequestResponseCode,
-) as any as S.Schema<DnsTimeseriesGroupsResponseTtlRequestResponseCodeList>;
+export const DnsTimeseriesGroupsResponseTtlRequestResponseCodeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsTimeseriesGroupsResponseTtlRequestResponseCodeList>;
 
 export type DnsTimeseriesGroupsResponseTtlRequestTldList = Array<string>;
 export const DnsTimeseriesGroupsResponseTtlRequestTldList =
@@ -53822,9 +53225,8 @@ export type SearchGlobalRequestExclude =
 export const SearchGlobalRequestExclude = S.String;
 
 export type SearchGlobalRequestExcludeList = Array<SearchGlobalRequestExclude | (string & {})>;
-export const SearchGlobalRequestExcludeList = /*@__PURE__*/ S.Array(
-  SearchGlobalRequestExclude,
-) as any as S.Schema<SearchGlobalRequestExcludeList>;
+export const SearchGlobalRequestExcludeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<SearchGlobalRequestExcludeList>;
 
 export type SearchGlobalRequestFormat = "JSON" | "CSV";
 export const SearchGlobalRequestFormat = S.String;
@@ -53845,9 +53247,8 @@ export type SearchGlobalRequestInclude =
 export const SearchGlobalRequestInclude = S.String;
 
 export type SearchGlobalRequestIncludeList = Array<SearchGlobalRequestInclude | (string & {})>;
-export const SearchGlobalRequestIncludeList = /*@__PURE__*/ S.Array(
-  SearchGlobalRequestInclude,
-) as any as S.Schema<SearchGlobalRequestIncludeList>;
+export const SearchGlobalRequestIncludeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<SearchGlobalRequestIncludeList>;
 
 export interface SearchGlobalRequest {
   /** String used to perform the search operation. */
@@ -54005,9 +53406,8 @@ export const EmailSecuritySummarySpamRequestArc = S.String;
 export type EmailSecuritySummarySpamRequestArcList = Array<
   EmailSecuritySummarySpamRequestArc | (string & {})
 >;
-export const EmailSecuritySummarySpamRequestArcList = /*@__PURE__*/ S.Array(
-  EmailSecuritySummarySpamRequestArc,
-) as any as S.Schema<EmailSecuritySummarySpamRequestArcList>;
+export const EmailSecuritySummarySpamRequestArcList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecuritySummarySpamRequestArcList>;
 
 export type EmailSecuritySummarySpamRequestDateEndList = Array<string>;
 export const EmailSecuritySummarySpamRequestDateEndList =
@@ -54027,9 +53427,8 @@ export const EmailSecuritySummarySpamRequestDkim = S.String;
 export type EmailSecuritySummarySpamRequestDkimList = Array<
   EmailSecuritySummarySpamRequestDkim | (string & {})
 >;
-export const EmailSecuritySummarySpamRequestDkimList = /*@__PURE__*/ S.Array(
-  EmailSecuritySummarySpamRequestDkim,
-) as any as S.Schema<EmailSecuritySummarySpamRequestDkimList>;
+export const EmailSecuritySummarySpamRequestDkimList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecuritySummarySpamRequestDkimList>;
 
 export type EmailSecuritySummarySpamRequestDmarc = "PASS" | "NONE" | "FAIL";
 export const EmailSecuritySummarySpamRequestDmarc = S.String;
@@ -54037,9 +53436,8 @@ export const EmailSecuritySummarySpamRequestDmarc = S.String;
 export type EmailSecuritySummarySpamRequestDmarcList = Array<
   EmailSecuritySummarySpamRequestDmarc | (string & {})
 >;
-export const EmailSecuritySummarySpamRequestDmarcList = /*@__PURE__*/ S.Array(
-  EmailSecuritySummarySpamRequestDmarc,
-) as any as S.Schema<EmailSecuritySummarySpamRequestDmarcList>;
+export const EmailSecuritySummarySpamRequestDmarcList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecuritySummarySpamRequestDmarcList>;
 
 export type EmailSecuritySummarySpamRequestFormat = "JSON" | "CSV";
 export const EmailSecuritySummarySpamRequestFormat = S.String;
@@ -54054,9 +53452,8 @@ export const EmailSecuritySummarySpamRequestSpf = S.String;
 export type EmailSecuritySummarySpamRequestSpfList = Array<
   EmailSecuritySummarySpamRequestSpf | (string & {})
 >;
-export const EmailSecuritySummarySpamRequestSpfList = /*@__PURE__*/ S.Array(
-  EmailSecuritySummarySpamRequestSpf,
-) as any as S.Schema<EmailSecuritySummarySpamRequestSpfList>;
+export const EmailSecuritySummarySpamRequestSpfList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecuritySummarySpamRequestSpfList>;
 
 export type EmailSecuritySummarySpamRequestTlsVersion =
   | "TLSv1_0"
@@ -54068,9 +53465,8 @@ export const EmailSecuritySummarySpamRequestTlsVersion = S.String;
 export type EmailSecuritySummarySpamRequestTlsVersionList = Array<
   EmailSecuritySummarySpamRequestTlsVersion | (string & {})
 >;
-export const EmailSecuritySummarySpamRequestTlsVersionList = /*@__PURE__*/ S.Array(
-  EmailSecuritySummarySpamRequestTlsVersion,
-) as any as S.Schema<EmailSecuritySummarySpamRequestTlsVersionList>;
+export const EmailSecuritySummarySpamRequestTlsVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecuritySummarySpamRequestTlsVersionList>;
 
 export interface SpamEmailSecuritySummaryRequest {
   /** Filters results by ARC (Authenticated Received Chain) validation. */
@@ -54298,9 +53694,8 @@ export const EmailSecurityTimeseriesGroupsSpamRequestArc = S.String;
 export type EmailSecurityTimeseriesGroupsSpamRequestArcList = Array<
   EmailSecurityTimeseriesGroupsSpamRequestArc | (string & {})
 >;
-export const EmailSecurityTimeseriesGroupsSpamRequestArcList = /*@__PURE__*/ S.Array(
-  EmailSecurityTimeseriesGroupsSpamRequestArc,
-) as any as S.Schema<EmailSecurityTimeseriesGroupsSpamRequestArcList>;
+export const EmailSecurityTimeseriesGroupsSpamRequestArcList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecurityTimeseriesGroupsSpamRequestArcList>;
 
 export type EmailSecurityTimeseriesGroupsSpamRequestDateEndList = Array<string>;
 export const EmailSecurityTimeseriesGroupsSpamRequestDateEndList =
@@ -54320,9 +53715,8 @@ export const EmailSecurityTimeseriesGroupsSpamRequestDkim = S.String;
 export type EmailSecurityTimeseriesGroupsSpamRequestDkimList = Array<
   EmailSecurityTimeseriesGroupsSpamRequestDkim | (string & {})
 >;
-export const EmailSecurityTimeseriesGroupsSpamRequestDkimList = /*@__PURE__*/ S.Array(
-  EmailSecurityTimeseriesGroupsSpamRequestDkim,
-) as any as S.Schema<EmailSecurityTimeseriesGroupsSpamRequestDkimList>;
+export const EmailSecurityTimeseriesGroupsSpamRequestDkimList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecurityTimeseriesGroupsSpamRequestDkimList>;
 
 export type EmailSecurityTimeseriesGroupsSpamRequestDmarc = "PASS" | "NONE" | "FAIL";
 export const EmailSecurityTimeseriesGroupsSpamRequestDmarc = S.String;
@@ -54330,9 +53724,8 @@ export const EmailSecurityTimeseriesGroupsSpamRequestDmarc = S.String;
 export type EmailSecurityTimeseriesGroupsSpamRequestDmarcList = Array<
   EmailSecurityTimeseriesGroupsSpamRequestDmarc | (string & {})
 >;
-export const EmailSecurityTimeseriesGroupsSpamRequestDmarcList = /*@__PURE__*/ S.Array(
-  EmailSecurityTimeseriesGroupsSpamRequestDmarc,
-) as any as S.Schema<EmailSecurityTimeseriesGroupsSpamRequestDmarcList>;
+export const EmailSecurityTimeseriesGroupsSpamRequestDmarcList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecurityTimeseriesGroupsSpamRequestDmarcList>;
 
 export type EmailSecurityTimeseriesGroupsSpamRequestFormat = "JSON" | "CSV";
 export const EmailSecurityTimeseriesGroupsSpamRequestFormat = S.String;
@@ -54347,9 +53740,8 @@ export const EmailSecurityTimeseriesGroupsSpamRequestSpf = S.String;
 export type EmailSecurityTimeseriesGroupsSpamRequestSpfList = Array<
   EmailSecurityTimeseriesGroupsSpamRequestSpf | (string & {})
 >;
-export const EmailSecurityTimeseriesGroupsSpamRequestSpfList = /*@__PURE__*/ S.Array(
-  EmailSecurityTimeseriesGroupsSpamRequestSpf,
-) as any as S.Schema<EmailSecurityTimeseriesGroupsSpamRequestSpfList>;
+export const EmailSecurityTimeseriesGroupsSpamRequestSpfList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecurityTimeseriesGroupsSpamRequestSpfList>;
 
 export type EmailSecurityTimeseriesGroupsSpamRequestTlsVersion =
   | "TLSv1_0"
@@ -54361,9 +53753,8 @@ export const EmailSecurityTimeseriesGroupsSpamRequestTlsVersion = S.String;
 export type EmailSecurityTimeseriesGroupsSpamRequestTlsVersionList = Array<
   EmailSecurityTimeseriesGroupsSpamRequestTlsVersion | (string & {})
 >;
-export const EmailSecurityTimeseriesGroupsSpamRequestTlsVersionList = /*@__PURE__*/ S.Array(
-  EmailSecurityTimeseriesGroupsSpamRequestTlsVersion,
-) as any as S.Schema<EmailSecurityTimeseriesGroupsSpamRequestTlsVersionList>;
+export const EmailSecurityTimeseriesGroupsSpamRequestTlsVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecurityTimeseriesGroupsSpamRequestTlsVersionList>;
 
 export interface SpamEmailSecurityTimeseriesGroupRequest {
   /** Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/). When omitted, the interval is auto-selected from the requested date range; finer intervals are only available for shorter ranges. If the requested interval is too granular for the date range, the request is rejected. */
@@ -54615,9 +54006,8 @@ export const EmailRoutingSummarySpfRequestArc = S.String;
 export type EmailRoutingSummarySpfRequestArcList = Array<
   EmailRoutingSummarySpfRequestArc | (string & {})
 >;
-export const EmailRoutingSummarySpfRequestArcList = /*@__PURE__*/ S.Array(
-  EmailRoutingSummarySpfRequestArc,
-) as any as S.Schema<EmailRoutingSummarySpfRequestArcList>;
+export const EmailRoutingSummarySpfRequestArcList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingSummarySpfRequestArcList>;
 
 export type EmailRoutingSummarySpfRequestDateEndList = Array<string>;
 export const EmailRoutingSummarySpfRequestDateEndList =
@@ -54637,9 +54027,8 @@ export const EmailRoutingSummarySpfRequestDkim = S.String;
 export type EmailRoutingSummarySpfRequestDkimList = Array<
   EmailRoutingSummarySpfRequestDkim | (string & {})
 >;
-export const EmailRoutingSummarySpfRequestDkimList = /*@__PURE__*/ S.Array(
-  EmailRoutingSummarySpfRequestDkim,
-) as any as S.Schema<EmailRoutingSummarySpfRequestDkimList>;
+export const EmailRoutingSummarySpfRequestDkimList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingSummarySpfRequestDkimList>;
 
 export type EmailRoutingSummarySpfRequestDmarc = "PASS" | "NONE" | "FAIL";
 export const EmailRoutingSummarySpfRequestDmarc = S.String;
@@ -54647,9 +54036,8 @@ export const EmailRoutingSummarySpfRequestDmarc = S.String;
 export type EmailRoutingSummarySpfRequestDmarcList = Array<
   EmailRoutingSummarySpfRequestDmarc | (string & {})
 >;
-export const EmailRoutingSummarySpfRequestDmarcList = /*@__PURE__*/ S.Array(
-  EmailRoutingSummarySpfRequestDmarc,
-) as any as S.Schema<EmailRoutingSummarySpfRequestDmarcList>;
+export const EmailRoutingSummarySpfRequestDmarcList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingSummarySpfRequestDmarcList>;
 
 export type EmailRoutingSummarySpfRequestEncrypted = "ENCRYPTED" | "NOT_ENCRYPTED";
 export const EmailRoutingSummarySpfRequestEncrypted = S.String;
@@ -54657,9 +54045,8 @@ export const EmailRoutingSummarySpfRequestEncrypted = S.String;
 export type EmailRoutingSummarySpfRequestEncryptedList = Array<
   EmailRoutingSummarySpfRequestEncrypted | (string & {})
 >;
-export const EmailRoutingSummarySpfRequestEncryptedList = /*@__PURE__*/ S.Array(
-  EmailRoutingSummarySpfRequestEncrypted,
-) as any as S.Schema<EmailRoutingSummarySpfRequestEncryptedList>;
+export const EmailRoutingSummarySpfRequestEncryptedList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingSummarySpfRequestEncryptedList>;
 
 export type EmailRoutingSummarySpfRequestFormat = "JSON" | "CSV";
 export const EmailRoutingSummarySpfRequestFormat = S.String;
@@ -54670,9 +54057,8 @@ export const EmailRoutingSummarySpfRequestIpVersion = S.String;
 export type EmailRoutingSummarySpfRequestIpVersionList = Array<
   EmailRoutingSummarySpfRequestIpVersion | (string & {})
 >;
-export const EmailRoutingSummarySpfRequestIpVersionList = /*@__PURE__*/ S.Array(
-  EmailRoutingSummarySpfRequestIpVersion,
-) as any as S.Schema<EmailRoutingSummarySpfRequestIpVersionList>;
+export const EmailRoutingSummarySpfRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingSummarySpfRequestIpVersionList>;
 
 export type EmailRoutingSummarySpfRequestNameList = Array<string>;
 export const EmailRoutingSummarySpfRequestNameList =
@@ -54891,9 +54277,8 @@ export const EmailRoutingTimeseriesGroupsSpfRequestArc = S.String;
 export type EmailRoutingTimeseriesGroupsSpfRequestArcList = Array<
   EmailRoutingTimeseriesGroupsSpfRequestArc | (string & {})
 >;
-export const EmailRoutingTimeseriesGroupsSpfRequestArcList = /*@__PURE__*/ S.Array(
-  EmailRoutingTimeseriesGroupsSpfRequestArc,
-) as any as S.Schema<EmailRoutingTimeseriesGroupsSpfRequestArcList>;
+export const EmailRoutingTimeseriesGroupsSpfRequestArcList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingTimeseriesGroupsSpfRequestArcList>;
 
 export type EmailRoutingTimeseriesGroupsSpfRequestDateEndList = Array<string>;
 export const EmailRoutingTimeseriesGroupsSpfRequestDateEndList =
@@ -54913,9 +54298,8 @@ export const EmailRoutingTimeseriesGroupsSpfRequestDkim = S.String;
 export type EmailRoutingTimeseriesGroupsSpfRequestDkimList = Array<
   EmailRoutingTimeseriesGroupsSpfRequestDkim | (string & {})
 >;
-export const EmailRoutingTimeseriesGroupsSpfRequestDkimList = /*@__PURE__*/ S.Array(
-  EmailRoutingTimeseriesGroupsSpfRequestDkim,
-) as any as S.Schema<EmailRoutingTimeseriesGroupsSpfRequestDkimList>;
+export const EmailRoutingTimeseriesGroupsSpfRequestDkimList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingTimeseriesGroupsSpfRequestDkimList>;
 
 export type EmailRoutingTimeseriesGroupsSpfRequestDmarc = "PASS" | "NONE" | "FAIL";
 export const EmailRoutingTimeseriesGroupsSpfRequestDmarc = S.String;
@@ -54923,9 +54307,8 @@ export const EmailRoutingTimeseriesGroupsSpfRequestDmarc = S.String;
 export type EmailRoutingTimeseriesGroupsSpfRequestDmarcList = Array<
   EmailRoutingTimeseriesGroupsSpfRequestDmarc | (string & {})
 >;
-export const EmailRoutingTimeseriesGroupsSpfRequestDmarcList = /*@__PURE__*/ S.Array(
-  EmailRoutingTimeseriesGroupsSpfRequestDmarc,
-) as any as S.Schema<EmailRoutingTimeseriesGroupsSpfRequestDmarcList>;
+export const EmailRoutingTimeseriesGroupsSpfRequestDmarcList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingTimeseriesGroupsSpfRequestDmarcList>;
 
 export type EmailRoutingTimeseriesGroupsSpfRequestEncrypted = "ENCRYPTED" | "NOT_ENCRYPTED";
 export const EmailRoutingTimeseriesGroupsSpfRequestEncrypted = S.String;
@@ -54933,9 +54316,8 @@ export const EmailRoutingTimeseriesGroupsSpfRequestEncrypted = S.String;
 export type EmailRoutingTimeseriesGroupsSpfRequestEncryptedList = Array<
   EmailRoutingTimeseriesGroupsSpfRequestEncrypted | (string & {})
 >;
-export const EmailRoutingTimeseriesGroupsSpfRequestEncryptedList = /*@__PURE__*/ S.Array(
-  EmailRoutingTimeseriesGroupsSpfRequestEncrypted,
-) as any as S.Schema<EmailRoutingTimeseriesGroupsSpfRequestEncryptedList>;
+export const EmailRoutingTimeseriesGroupsSpfRequestEncryptedList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingTimeseriesGroupsSpfRequestEncryptedList>;
 
 export type EmailRoutingTimeseriesGroupsSpfRequestFormat = "JSON" | "CSV";
 export const EmailRoutingTimeseriesGroupsSpfRequestFormat = S.String;
@@ -54946,9 +54328,8 @@ export const EmailRoutingTimeseriesGroupsSpfRequestIpVersion = S.String;
 export type EmailRoutingTimeseriesGroupsSpfRequestIpVersionList = Array<
   EmailRoutingTimeseriesGroupsSpfRequestIpVersion | (string & {})
 >;
-export const EmailRoutingTimeseriesGroupsSpfRequestIpVersionList = /*@__PURE__*/ S.Array(
-  EmailRoutingTimeseriesGroupsSpfRequestIpVersion,
-) as any as S.Schema<EmailRoutingTimeseriesGroupsSpfRequestIpVersionList>;
+export const EmailRoutingTimeseriesGroupsSpfRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingTimeseriesGroupsSpfRequestIpVersionList>;
 
 export type EmailRoutingTimeseriesGroupsSpfRequestNameList = Array<string>;
 export const EmailRoutingTimeseriesGroupsSpfRequestNameList =
@@ -55200,9 +54581,8 @@ export const EmailSecuritySummarySpfRequestArc = S.String;
 export type EmailSecuritySummarySpfRequestArcList = Array<
   EmailSecuritySummarySpfRequestArc | (string & {})
 >;
-export const EmailSecuritySummarySpfRequestArcList = /*@__PURE__*/ S.Array(
-  EmailSecuritySummarySpfRequestArc,
-) as any as S.Schema<EmailSecuritySummarySpfRequestArcList>;
+export const EmailSecuritySummarySpfRequestArcList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecuritySummarySpfRequestArcList>;
 
 export type EmailSecuritySummarySpfRequestDateEndList = Array<string>;
 export const EmailSecuritySummarySpfRequestDateEndList =
@@ -55222,9 +54602,8 @@ export const EmailSecuritySummarySpfRequestDkim = S.String;
 export type EmailSecuritySummarySpfRequestDkimList = Array<
   EmailSecuritySummarySpfRequestDkim | (string & {})
 >;
-export const EmailSecuritySummarySpfRequestDkimList = /*@__PURE__*/ S.Array(
-  EmailSecuritySummarySpfRequestDkim,
-) as any as S.Schema<EmailSecuritySummarySpfRequestDkimList>;
+export const EmailSecuritySummarySpfRequestDkimList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecuritySummarySpfRequestDkimList>;
 
 export type EmailSecuritySummarySpfRequestDmarc = "PASS" | "NONE" | "FAIL";
 export const EmailSecuritySummarySpfRequestDmarc = S.String;
@@ -55232,9 +54611,8 @@ export const EmailSecuritySummarySpfRequestDmarc = S.String;
 export type EmailSecuritySummarySpfRequestDmarcList = Array<
   EmailSecuritySummarySpfRequestDmarc | (string & {})
 >;
-export const EmailSecuritySummarySpfRequestDmarcList = /*@__PURE__*/ S.Array(
-  EmailSecuritySummarySpfRequestDmarc,
-) as any as S.Schema<EmailSecuritySummarySpfRequestDmarcList>;
+export const EmailSecuritySummarySpfRequestDmarcList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecuritySummarySpfRequestDmarcList>;
 
 export type EmailSecuritySummarySpfRequestFormat = "JSON" | "CSV";
 export const EmailSecuritySummarySpfRequestFormat = S.String;
@@ -55253,9 +54631,8 @@ export const EmailSecuritySummarySpfRequestTlsVersion = S.String;
 export type EmailSecuritySummarySpfRequestTlsVersionList = Array<
   EmailSecuritySummarySpfRequestTlsVersion | (string & {})
 >;
-export const EmailSecuritySummarySpfRequestTlsVersionList = /*@__PURE__*/ S.Array(
-  EmailSecuritySummarySpfRequestTlsVersion,
-) as any as S.Schema<EmailSecuritySummarySpfRequestTlsVersionList>;
+export const EmailSecuritySummarySpfRequestTlsVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecuritySummarySpfRequestTlsVersionList>;
 
 export interface SpfEmailSecuritySummaryRequest {
   /** Filters results by ARC (Authenticated Received Chain) validation. */
@@ -55468,9 +54845,8 @@ export const EmailSecurityTimeseriesGroupsSpfRequestArc = S.String;
 export type EmailSecurityTimeseriesGroupsSpfRequestArcList = Array<
   EmailSecurityTimeseriesGroupsSpfRequestArc | (string & {})
 >;
-export const EmailSecurityTimeseriesGroupsSpfRequestArcList = /*@__PURE__*/ S.Array(
-  EmailSecurityTimeseriesGroupsSpfRequestArc,
-) as any as S.Schema<EmailSecurityTimeseriesGroupsSpfRequestArcList>;
+export const EmailSecurityTimeseriesGroupsSpfRequestArcList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecurityTimeseriesGroupsSpfRequestArcList>;
 
 export type EmailSecurityTimeseriesGroupsSpfRequestDateEndList = Array<string>;
 export const EmailSecurityTimeseriesGroupsSpfRequestDateEndList =
@@ -55490,9 +54866,8 @@ export const EmailSecurityTimeseriesGroupsSpfRequestDkim = S.String;
 export type EmailSecurityTimeseriesGroupsSpfRequestDkimList = Array<
   EmailSecurityTimeseriesGroupsSpfRequestDkim | (string & {})
 >;
-export const EmailSecurityTimeseriesGroupsSpfRequestDkimList = /*@__PURE__*/ S.Array(
-  EmailSecurityTimeseriesGroupsSpfRequestDkim,
-) as any as S.Schema<EmailSecurityTimeseriesGroupsSpfRequestDkimList>;
+export const EmailSecurityTimeseriesGroupsSpfRequestDkimList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecurityTimeseriesGroupsSpfRequestDkimList>;
 
 export type EmailSecurityTimeseriesGroupsSpfRequestDmarc = "PASS" | "NONE" | "FAIL";
 export const EmailSecurityTimeseriesGroupsSpfRequestDmarc = S.String;
@@ -55500,9 +54875,8 @@ export const EmailSecurityTimeseriesGroupsSpfRequestDmarc = S.String;
 export type EmailSecurityTimeseriesGroupsSpfRequestDmarcList = Array<
   EmailSecurityTimeseriesGroupsSpfRequestDmarc | (string & {})
 >;
-export const EmailSecurityTimeseriesGroupsSpfRequestDmarcList = /*@__PURE__*/ S.Array(
-  EmailSecurityTimeseriesGroupsSpfRequestDmarc,
-) as any as S.Schema<EmailSecurityTimeseriesGroupsSpfRequestDmarcList>;
+export const EmailSecurityTimeseriesGroupsSpfRequestDmarcList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecurityTimeseriesGroupsSpfRequestDmarcList>;
 
 export type EmailSecurityTimeseriesGroupsSpfRequestFormat = "JSON" | "CSV";
 export const EmailSecurityTimeseriesGroupsSpfRequestFormat = S.String;
@@ -55521,9 +54895,8 @@ export const EmailSecurityTimeseriesGroupsSpfRequestTlsVersion = S.String;
 export type EmailSecurityTimeseriesGroupsSpfRequestTlsVersionList = Array<
   EmailSecurityTimeseriesGroupsSpfRequestTlsVersion | (string & {})
 >;
-export const EmailSecurityTimeseriesGroupsSpfRequestTlsVersionList = /*@__PURE__*/ S.Array(
-  EmailSecurityTimeseriesGroupsSpfRequestTlsVersion,
-) as any as S.Schema<EmailSecurityTimeseriesGroupsSpfRequestTlsVersionList>;
+export const EmailSecurityTimeseriesGroupsSpfRequestTlsVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecurityTimeseriesGroupsSpfRequestTlsVersionList>;
 
 export interface SpfEmailSecurityTimeseriesGroupRequest {
   /** Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/). When omitted, the interval is auto-selected from the requested date range; finer intervals are only available for shorter ranges. If the requested interval is too granular for the date range, the request is rejected. */
@@ -55768,9 +55141,8 @@ export const EmailSecuritySummarySpoofRequestArc = S.String;
 export type EmailSecuritySummarySpoofRequestArcList = Array<
   EmailSecuritySummarySpoofRequestArc | (string & {})
 >;
-export const EmailSecuritySummarySpoofRequestArcList = /*@__PURE__*/ S.Array(
-  EmailSecuritySummarySpoofRequestArc,
-) as any as S.Schema<EmailSecuritySummarySpoofRequestArcList>;
+export const EmailSecuritySummarySpoofRequestArcList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecuritySummarySpoofRequestArcList>;
 
 export type EmailSecuritySummarySpoofRequestDateEndList = Array<string>;
 export const EmailSecuritySummarySpoofRequestDateEndList =
@@ -55790,9 +55162,8 @@ export const EmailSecuritySummarySpoofRequestDkim = S.String;
 export type EmailSecuritySummarySpoofRequestDkimList = Array<
   EmailSecuritySummarySpoofRequestDkim | (string & {})
 >;
-export const EmailSecuritySummarySpoofRequestDkimList = /*@__PURE__*/ S.Array(
-  EmailSecuritySummarySpoofRequestDkim,
-) as any as S.Schema<EmailSecuritySummarySpoofRequestDkimList>;
+export const EmailSecuritySummarySpoofRequestDkimList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecuritySummarySpoofRequestDkimList>;
 
 export type EmailSecuritySummarySpoofRequestDmarc = "PASS" | "NONE" | "FAIL";
 export const EmailSecuritySummarySpoofRequestDmarc = S.String;
@@ -55800,9 +55171,8 @@ export const EmailSecuritySummarySpoofRequestDmarc = S.String;
 export type EmailSecuritySummarySpoofRequestDmarcList = Array<
   EmailSecuritySummarySpoofRequestDmarc | (string & {})
 >;
-export const EmailSecuritySummarySpoofRequestDmarcList = /*@__PURE__*/ S.Array(
-  EmailSecuritySummarySpoofRequestDmarc,
-) as any as S.Schema<EmailSecuritySummarySpoofRequestDmarcList>;
+export const EmailSecuritySummarySpoofRequestDmarcList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecuritySummarySpoofRequestDmarcList>;
 
 export type EmailSecuritySummarySpoofRequestFormat = "JSON" | "CSV";
 export const EmailSecuritySummarySpoofRequestFormat = S.String;
@@ -55817,9 +55187,8 @@ export const EmailSecuritySummarySpoofRequestSpf = S.String;
 export type EmailSecuritySummarySpoofRequestSpfList = Array<
   EmailSecuritySummarySpoofRequestSpf | (string & {})
 >;
-export const EmailSecuritySummarySpoofRequestSpfList = /*@__PURE__*/ S.Array(
-  EmailSecuritySummarySpoofRequestSpf,
-) as any as S.Schema<EmailSecuritySummarySpoofRequestSpfList>;
+export const EmailSecuritySummarySpoofRequestSpfList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecuritySummarySpoofRequestSpfList>;
 
 export type EmailSecuritySummarySpoofRequestTlsVersion =
   | "TLSv1_0"
@@ -55831,9 +55200,8 @@ export const EmailSecuritySummarySpoofRequestTlsVersion = S.String;
 export type EmailSecuritySummarySpoofRequestTlsVersionList = Array<
   EmailSecuritySummarySpoofRequestTlsVersion | (string & {})
 >;
-export const EmailSecuritySummarySpoofRequestTlsVersionList = /*@__PURE__*/ S.Array(
-  EmailSecuritySummarySpoofRequestTlsVersion,
-) as any as S.Schema<EmailSecuritySummarySpoofRequestTlsVersionList>;
+export const EmailSecuritySummarySpoofRequestTlsVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecuritySummarySpoofRequestTlsVersionList>;
 
 export interface SpoofEmailSecuritySummaryRequest {
   /** Filters results by ARC (Authenticated Received Chain) validation. */
@@ -56062,9 +55430,8 @@ export const EmailSecurityTimeseriesGroupsSpoofRequestArc = S.String;
 export type EmailSecurityTimeseriesGroupsSpoofRequestArcList = Array<
   EmailSecurityTimeseriesGroupsSpoofRequestArc | (string & {})
 >;
-export const EmailSecurityTimeseriesGroupsSpoofRequestArcList = /*@__PURE__*/ S.Array(
-  EmailSecurityTimeseriesGroupsSpoofRequestArc,
-) as any as S.Schema<EmailSecurityTimeseriesGroupsSpoofRequestArcList>;
+export const EmailSecurityTimeseriesGroupsSpoofRequestArcList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecurityTimeseriesGroupsSpoofRequestArcList>;
 
 export type EmailSecurityTimeseriesGroupsSpoofRequestDateEndList = Array<string>;
 export const EmailSecurityTimeseriesGroupsSpoofRequestDateEndList =
@@ -56084,9 +55451,8 @@ export const EmailSecurityTimeseriesGroupsSpoofRequestDkim = S.String;
 export type EmailSecurityTimeseriesGroupsSpoofRequestDkimList = Array<
   EmailSecurityTimeseriesGroupsSpoofRequestDkim | (string & {})
 >;
-export const EmailSecurityTimeseriesGroupsSpoofRequestDkimList = /*@__PURE__*/ S.Array(
-  EmailSecurityTimeseriesGroupsSpoofRequestDkim,
-) as any as S.Schema<EmailSecurityTimeseriesGroupsSpoofRequestDkimList>;
+export const EmailSecurityTimeseriesGroupsSpoofRequestDkimList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecurityTimeseriesGroupsSpoofRequestDkimList>;
 
 export type EmailSecurityTimeseriesGroupsSpoofRequestDmarc = "PASS" | "NONE" | "FAIL";
 export const EmailSecurityTimeseriesGroupsSpoofRequestDmarc = S.String;
@@ -56094,9 +55460,8 @@ export const EmailSecurityTimeseriesGroupsSpoofRequestDmarc = S.String;
 export type EmailSecurityTimeseriesGroupsSpoofRequestDmarcList = Array<
   EmailSecurityTimeseriesGroupsSpoofRequestDmarc | (string & {})
 >;
-export const EmailSecurityTimeseriesGroupsSpoofRequestDmarcList = /*@__PURE__*/ S.Array(
-  EmailSecurityTimeseriesGroupsSpoofRequestDmarc,
-) as any as S.Schema<EmailSecurityTimeseriesGroupsSpoofRequestDmarcList>;
+export const EmailSecurityTimeseriesGroupsSpoofRequestDmarcList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecurityTimeseriesGroupsSpoofRequestDmarcList>;
 
 export type EmailSecurityTimeseriesGroupsSpoofRequestFormat = "JSON" | "CSV";
 export const EmailSecurityTimeseriesGroupsSpoofRequestFormat = S.String;
@@ -56111,9 +55476,8 @@ export const EmailSecurityTimeseriesGroupsSpoofRequestSpf = S.String;
 export type EmailSecurityTimeseriesGroupsSpoofRequestSpfList = Array<
   EmailSecurityTimeseriesGroupsSpoofRequestSpf | (string & {})
 >;
-export const EmailSecurityTimeseriesGroupsSpoofRequestSpfList = /*@__PURE__*/ S.Array(
-  EmailSecurityTimeseriesGroupsSpoofRequestSpf,
-) as any as S.Schema<EmailSecurityTimeseriesGroupsSpoofRequestSpfList>;
+export const EmailSecurityTimeseriesGroupsSpoofRequestSpfList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecurityTimeseriesGroupsSpoofRequestSpfList>;
 
 export type EmailSecurityTimeseriesGroupsSpoofRequestTlsVersion =
   | "TLSv1_0"
@@ -56125,9 +55489,8 @@ export const EmailSecurityTimeseriesGroupsSpoofRequestTlsVersion = S.String;
 export type EmailSecurityTimeseriesGroupsSpoofRequestTlsVersionList = Array<
   EmailSecurityTimeseriesGroupsSpoofRequestTlsVersion | (string & {})
 >;
-export const EmailSecurityTimeseriesGroupsSpoofRequestTlsVersionList = /*@__PURE__*/ S.Array(
-  EmailSecurityTimeseriesGroupsSpoofRequestTlsVersion,
-) as any as S.Schema<EmailSecurityTimeseriesGroupsSpoofRequestTlsVersionList>;
+export const EmailSecurityTimeseriesGroupsSpoofRequestTlsVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecurityTimeseriesGroupsSpoofRequestTlsVersionList>;
 
 export interface SpoofEmailSecurityTimeseriesGroupRequest {
   /** Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/). When omitted, the interval is auto-selected from the requested date range; finer intervals are only available for shorter ranges. If the requested interval is too granular for the date range, the request is rejected. */
@@ -56837,9 +56200,8 @@ export const AiBotsSummaryV2RequestContentType = S.String;
 export type AiBotsSummaryV2RequestContentTypeList = Array<
   AiBotsSummaryV2RequestContentType | (string & {})
 >;
-export const AiBotsSummaryV2RequestContentTypeList = /*@__PURE__*/ S.Array(
-  AiBotsSummaryV2RequestContentType,
-) as any as S.Schema<AiBotsSummaryV2RequestContentTypeList>;
+export const AiBotsSummaryV2RequestContentTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AiBotsSummaryV2RequestContentTypeList>;
 
 export type AiBotsSummaryV2RequestContinentList = Array<string>;
 export const AiBotsSummaryV2RequestContinentList =
@@ -56891,9 +56253,8 @@ export const AiBotsSummaryV2RequestResponseStatusCategory = S.String;
 export type AiBotsSummaryV2RequestResponseStatusCategoryList = Array<
   AiBotsSummaryV2RequestResponseStatusCategory | (string & {})
 >;
-export const AiBotsSummaryV2RequestResponseStatusCategoryList = /*@__PURE__*/ S.Array(
-  AiBotsSummaryV2RequestResponseStatusCategory,
-) as any as S.Schema<AiBotsSummaryV2RequestResponseStatusCategoryList>;
+export const AiBotsSummaryV2RequestResponseStatusCategoryList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AiBotsSummaryV2RequestResponseStatusCategoryList>;
 
 export type AiBotsSummaryV2RequestUserAgentList = Array<string>;
 export const AiBotsSummaryV2RequestUserAgentList =
@@ -57159,17 +56520,15 @@ export const BotsSummaryRequestBotCategory = S.String;
 export type BotsSummaryRequestBotCategoryList = Array<
   BotsSummaryRequestBotCategory | (string & {})
 >;
-export const BotsSummaryRequestBotCategoryList = /*@__PURE__*/ S.Array(
-  BotsSummaryRequestBotCategory,
-) as any as S.Schema<BotsSummaryRequestBotCategoryList>;
+export const BotsSummaryRequestBotCategoryList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<BotsSummaryRequestBotCategoryList>;
 
 export type BotsSummaryRequestBotKind = "AGENT" | "BOT";
 export const BotsSummaryRequestBotKind = S.String;
 
 export type BotsSummaryRequestBotKindList = Array<BotsSummaryRequestBotKind | (string & {})>;
-export const BotsSummaryRequestBotKindList = /*@__PURE__*/ S.Array(
-  BotsSummaryRequestBotKind,
-) as any as S.Schema<BotsSummaryRequestBotKindList>;
+export const BotsSummaryRequestBotKindList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<BotsSummaryRequestBotKindList>;
 
 export type BotsSummaryRequestBotOperatorList = Array<string>;
 export const BotsSummaryRequestBotOperatorList =
@@ -57181,9 +56540,8 @@ export const BotsSummaryRequestBotVerificationStatus = S.String;
 export type BotsSummaryRequestBotVerificationStatusList = Array<
   BotsSummaryRequestBotVerificationStatus | (string & {})
 >;
-export const BotsSummaryRequestBotVerificationStatusList = /*@__PURE__*/ S.Array(
-  BotsSummaryRequestBotVerificationStatus,
-) as any as S.Schema<BotsSummaryRequestBotVerificationStatusList>;
+export const BotsSummaryRequestBotVerificationStatusList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<BotsSummaryRequestBotVerificationStatusList>;
 
 export type BotsSummaryRequestContinentList = Array<string>;
 export const BotsSummaryRequestContinentList =
@@ -57445,9 +56803,8 @@ export const BotsWebCrawlersSummaryRequestClientType = S.String;
 export type BotsWebCrawlersSummaryRequestClientTypeList = Array<
   BotsWebCrawlersSummaryRequestClientType | (string & {})
 >;
-export const BotsWebCrawlersSummaryRequestClientTypeList = /*@__PURE__*/ S.Array(
-  BotsWebCrawlersSummaryRequestClientType,
-) as any as S.Schema<BotsWebCrawlersSummaryRequestClientTypeList>;
+export const BotsWebCrawlersSummaryRequestClientTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<BotsWebCrawlersSummaryRequestClientTypeList>;
 
 export type BotsWebCrawlersSummaryRequestDateEndList = Array<string>;
 export const BotsWebCrawlersSummaryRequestDateEndList =
@@ -57487,9 +56844,8 @@ export const BotsWebCrawlersSummaryRequestResponseStatusCategory = S.String;
 export type BotsWebCrawlersSummaryRequestResponseStatusCategoryList = Array<
   BotsWebCrawlersSummaryRequestResponseStatusCategory | (string & {})
 >;
-export const BotsWebCrawlersSummaryRequestResponseStatusCategoryList = /*@__PURE__*/ S.Array(
-  BotsWebCrawlersSummaryRequestResponseStatusCategory,
-) as any as S.Schema<BotsWebCrawlersSummaryRequestResponseStatusCategoryList>;
+export const BotsWebCrawlersSummaryRequestResponseStatusCategoryList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<BotsWebCrawlersSummaryRequestResponseStatusCategoryList>;
 
 export type BotsWebCrawlersSummaryRequestVerticalList = Array<string>;
 export const BotsWebCrawlersSummaryRequestVerticalList =
@@ -57759,17 +57115,15 @@ export type CtSummaryRequestDuration =
 export const CtSummaryRequestDuration = S.String;
 
 export type CtSummaryRequestDurationList = Array<CtSummaryRequestDuration | (string & {})>;
-export const CtSummaryRequestDurationList = /*@__PURE__*/ S.Array(
-  CtSummaryRequestDuration,
-) as any as S.Schema<CtSummaryRequestDurationList>;
+export const CtSummaryRequestDurationList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<CtSummaryRequestDurationList>;
 
 export type CtSummaryRequestEntryType = "PRECERTIFICATE" | "CERTIFICATE";
 export const CtSummaryRequestEntryType = S.String;
 
 export type CtSummaryRequestEntryTypeList = Array<CtSummaryRequestEntryType | (string & {})>;
-export const CtSummaryRequestEntryTypeList = /*@__PURE__*/ S.Array(
-  CtSummaryRequestEntryType,
-) as any as S.Schema<CtSummaryRequestEntryTypeList>;
+export const CtSummaryRequestEntryTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<CtSummaryRequestEntryTypeList>;
 
 export type CtSummaryRequestExpirationStatus = "EXPIRED" | "VALID";
 export const CtSummaryRequestExpirationStatus = S.String;
@@ -57777,9 +57131,8 @@ export const CtSummaryRequestExpirationStatus = S.String;
 export type CtSummaryRequestExpirationStatusList = Array<
   CtSummaryRequestExpirationStatus | (string & {})
 >;
-export const CtSummaryRequestExpirationStatusList = /*@__PURE__*/ S.Array(
-  CtSummaryRequestExpirationStatus,
-) as any as S.Schema<CtSummaryRequestExpirationStatusList>;
+export const CtSummaryRequestExpirationStatusList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<CtSummaryRequestExpirationStatusList>;
 
 export type CtSummaryRequestFormat = "JSON" | "CSV";
 export const CtSummaryRequestFormat = S.String;
@@ -57800,9 +57153,8 @@ export type CtSummaryRequestLogApi = "RFC6962" | "STATIC";
 export const CtSummaryRequestLogApi = S.String;
 
 export type CtSummaryRequestLogApiList = Array<CtSummaryRequestLogApi | (string & {})>;
-export const CtSummaryRequestLogApiList = /*@__PURE__*/ S.Array(
-  CtSummaryRequestLogApi,
-) as any as S.Schema<CtSummaryRequestLogApiList>;
+export const CtSummaryRequestLogApiList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<CtSummaryRequestLogApiList>;
 
 export type CtSummaryRequestLogOperatorList = Array<string>;
 export const CtSummaryRequestLogOperatorList =
@@ -57821,9 +57173,8 @@ export const CtSummaryRequestPublicKeyAlgorithm = S.String;
 export type CtSummaryRequestPublicKeyAlgorithmList = Array<
   CtSummaryRequestPublicKeyAlgorithm | (string & {})
 >;
-export const CtSummaryRequestPublicKeyAlgorithmList = /*@__PURE__*/ S.Array(
-  CtSummaryRequestPublicKeyAlgorithm,
-) as any as S.Schema<CtSummaryRequestPublicKeyAlgorithmList>;
+export const CtSummaryRequestPublicKeyAlgorithmList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<CtSummaryRequestPublicKeyAlgorithmList>;
 
 export type CtSummaryRequestSignatureAlgorithm =
   | "DSA_SHA_1"
@@ -57846,9 +57197,8 @@ export const CtSummaryRequestSignatureAlgorithm = S.String;
 export type CtSummaryRequestSignatureAlgorithmList = Array<
   CtSummaryRequestSignatureAlgorithm | (string & {})
 >;
-export const CtSummaryRequestSignatureAlgorithmList = /*@__PURE__*/ S.Array(
-  CtSummaryRequestSignatureAlgorithm,
-) as any as S.Schema<CtSummaryRequestSignatureAlgorithmList>;
+export const CtSummaryRequestSignatureAlgorithmList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<CtSummaryRequestSignatureAlgorithmList>;
 
 export type CtSummaryRequestTldList = Array<string>;
 export const CtSummaryRequestTldList =
@@ -57864,9 +57214,8 @@ export const CtSummaryRequestValidationLevel = S.String;
 export type CtSummaryRequestValidationLevelList = Array<
   CtSummaryRequestValidationLevel | (string & {})
 >;
-export const CtSummaryRequestValidationLevelList = /*@__PURE__*/ S.Array(
-  CtSummaryRequestValidationLevel,
-) as any as S.Schema<CtSummaryRequestValidationLevelList>;
+export const CtSummaryRequestValidationLevelList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<CtSummaryRequestValidationLevelList>;
 
 export interface SummaryCtRequest {
   /** Specifies the certificate attribute by which to group the results. */
@@ -59694,9 +59043,8 @@ export const As112SummaryV2RequestProtocol = S.String;
 export type As112SummaryV2RequestProtocolList = Array<
   As112SummaryV2RequestProtocol | (string & {})
 >;
-export const As112SummaryV2RequestProtocolList = /*@__PURE__*/ S.Array(
-  As112SummaryV2RequestProtocol,
-) as any as S.Schema<As112SummaryV2RequestProtocolList>;
+export const As112SummaryV2RequestProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<As112SummaryV2RequestProtocolList>;
 
 export type As112SummaryV2RequestQueryType =
   | "A"
@@ -59792,9 +59140,8 @@ export const As112SummaryV2RequestQueryType = S.String;
 export type As112SummaryV2RequestQueryTypeList = Array<
   As112SummaryV2RequestQueryType | (string & {})
 >;
-export const As112SummaryV2RequestQueryTypeList = /*@__PURE__*/ S.Array(
-  As112SummaryV2RequestQueryType,
-) as any as S.Schema<As112SummaryV2RequestQueryTypeList>;
+export const As112SummaryV2RequestQueryTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<As112SummaryV2RequestQueryTypeList>;
 
 export type As112SummaryV2RequestResponseCode =
   | "NOERROR"
@@ -59821,9 +59168,8 @@ export const As112SummaryV2RequestResponseCode = S.String;
 export type As112SummaryV2RequestResponseCodeList = Array<
   As112SummaryV2RequestResponseCode | (string & {})
 >;
-export const As112SummaryV2RequestResponseCodeList = /*@__PURE__*/ S.Array(
-  As112SummaryV2RequestResponseCode,
-) as any as S.Schema<As112SummaryV2RequestResponseCodeList>;
+export const As112SummaryV2RequestResponseCodeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<As112SummaryV2RequestResponseCodeList>;
 
 export interface SummaryV2As112Request {
   /** Specifies the attribute by which to group the results. */
@@ -60064,9 +59410,8 @@ export const AttacksLayer3SummaryV2RequestIpVersion = S.String;
 export type AttacksLayer3SummaryV2RequestIpVersionList = Array<
   AttacksLayer3SummaryV2RequestIpVersion | (string & {})
 >;
-export const AttacksLayer3SummaryV2RequestIpVersionList = /*@__PURE__*/ S.Array(
-  AttacksLayer3SummaryV2RequestIpVersion,
-) as any as S.Schema<AttacksLayer3SummaryV2RequestIpVersionList>;
+export const AttacksLayer3SummaryV2RequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer3SummaryV2RequestIpVersionList>;
 
 export type AttacksLayer3SummaryV2RequestLocationList = Array<string>;
 export const AttacksLayer3SummaryV2RequestLocationList =
@@ -60082,9 +59427,8 @@ export const AttacksLayer3SummaryV2RequestProtocol = S.String;
 export type AttacksLayer3SummaryV2RequestProtocolList = Array<
   AttacksLayer3SummaryV2RequestProtocol | (string & {})
 >;
-export const AttacksLayer3SummaryV2RequestProtocolList = /*@__PURE__*/ S.Array(
-  AttacksLayer3SummaryV2RequestProtocol,
-) as any as S.Schema<AttacksLayer3SummaryV2RequestProtocolList>;
+export const AttacksLayer3SummaryV2RequestProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer3SummaryV2RequestProtocolList>;
 
 export interface SummaryV2AttackLayer3Request {
   /** Specifies the attribute by which to group the results. */
@@ -60382,9 +59726,8 @@ export const AttacksLayer7SummaryV2RequestHttpMethod = S.String;
 export type AttacksLayer7SummaryV2RequestHttpMethodList = Array<
   AttacksLayer7SummaryV2RequestHttpMethod | (string & {})
 >;
-export const AttacksLayer7SummaryV2RequestHttpMethodList = /*@__PURE__*/ S.Array(
-  AttacksLayer7SummaryV2RequestHttpMethod,
-) as any as S.Schema<AttacksLayer7SummaryV2RequestHttpMethodList>;
+export const AttacksLayer7SummaryV2RequestHttpMethodList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer7SummaryV2RequestHttpMethodList>;
 
 export type AttacksLayer7SummaryV2RequestHttpVersion = "HTTPv1" | "HTTPv2" | "HTTPv3";
 export const AttacksLayer7SummaryV2RequestHttpVersion = S.String;
@@ -60392,9 +59735,8 @@ export const AttacksLayer7SummaryV2RequestHttpVersion = S.String;
 export type AttacksLayer7SummaryV2RequestHttpVersionList = Array<
   AttacksLayer7SummaryV2RequestHttpVersion | (string & {})
 >;
-export const AttacksLayer7SummaryV2RequestHttpVersionList = /*@__PURE__*/ S.Array(
-  AttacksLayer7SummaryV2RequestHttpVersion,
-) as any as S.Schema<AttacksLayer7SummaryV2RequestHttpVersionList>;
+export const AttacksLayer7SummaryV2RequestHttpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer7SummaryV2RequestHttpVersionList>;
 
 export type AttacksLayer7SummaryV2RequestIpVersion = "IPv4" | "IPv6";
 export const AttacksLayer7SummaryV2RequestIpVersion = S.String;
@@ -60402,9 +59744,8 @@ export const AttacksLayer7SummaryV2RequestIpVersion = S.String;
 export type AttacksLayer7SummaryV2RequestIpVersionList = Array<
   AttacksLayer7SummaryV2RequestIpVersion | (string & {})
 >;
-export const AttacksLayer7SummaryV2RequestIpVersionList = /*@__PURE__*/ S.Array(
-  AttacksLayer7SummaryV2RequestIpVersion,
-) as any as S.Schema<AttacksLayer7SummaryV2RequestIpVersionList>;
+export const AttacksLayer7SummaryV2RequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer7SummaryV2RequestIpVersionList>;
 
 export type AttacksLayer7SummaryV2RequestLocationList = Array<string>;
 export const AttacksLayer7SummaryV2RequestLocationList =
@@ -60423,9 +59764,8 @@ export const AttacksLayer7SummaryV2RequestMitigationProduct = S.String;
 export type AttacksLayer7SummaryV2RequestMitigationProductList = Array<
   AttacksLayer7SummaryV2RequestMitigationProduct | (string & {})
 >;
-export const AttacksLayer7SummaryV2RequestMitigationProductList = /*@__PURE__*/ S.Array(
-  AttacksLayer7SummaryV2RequestMitigationProduct,
-) as any as S.Schema<AttacksLayer7SummaryV2RequestMitigationProductList>;
+export const AttacksLayer7SummaryV2RequestMitigationProductList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer7SummaryV2RequestMitigationProductList>;
 
 export type AttacksLayer7SummaryV2RequestNameList = Array<string>;
 export const AttacksLayer7SummaryV2RequestNameList =
@@ -60695,9 +60035,8 @@ export type DnsSummaryV2RequestDnssec = "INVALID" | "INSECURE" | "SECURE" | "OTH
 export const DnsSummaryV2RequestDnssec = S.String;
 
 export type DnsSummaryV2RequestDnssecList = Array<DnsSummaryV2RequestDnssec | (string & {})>;
-export const DnsSummaryV2RequestDnssecList = /*@__PURE__*/ S.Array(
-  DnsSummaryV2RequestDnssec,
-) as any as S.Schema<DnsSummaryV2RequestDnssecList>;
+export const DnsSummaryV2RequestDnssecList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsSummaryV2RequestDnssecList>;
 
 export type DnsSummaryV2RequestDnssecAware = "SUPPORTED" | "NOT_SUPPORTED";
 export const DnsSummaryV2RequestDnssecAware = S.String;
@@ -60705,9 +60044,8 @@ export const DnsSummaryV2RequestDnssecAware = S.String;
 export type DnsSummaryV2RequestDnssecAwareList = Array<
   DnsSummaryV2RequestDnssecAware | (string & {})
 >;
-export const DnsSummaryV2RequestDnssecAwareList = /*@__PURE__*/ S.Array(
-  DnsSummaryV2RequestDnssecAware,
-) as any as S.Schema<DnsSummaryV2RequestDnssecAwareList>;
+export const DnsSummaryV2RequestDnssecAwareList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsSummaryV2RequestDnssecAwareList>;
 
 export type DnsSummaryV2RequestDnssecE2eList = Array<boolean>;
 export const DnsSummaryV2RequestDnssecE2eList =
@@ -60720,9 +60058,8 @@ export type DnsSummaryV2RequestIpVersion = "IPv4" | "IPv6";
 export const DnsSummaryV2RequestIpVersion = S.String;
 
 export type DnsSummaryV2RequestIpVersionList = Array<DnsSummaryV2RequestIpVersion | (string & {})>;
-export const DnsSummaryV2RequestIpVersionList = /*@__PURE__*/ S.Array(
-  DnsSummaryV2RequestIpVersion,
-) as any as S.Schema<DnsSummaryV2RequestIpVersionList>;
+export const DnsSummaryV2RequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsSummaryV2RequestIpVersionList>;
 
 export type DnsSummaryV2RequestLocationList = Array<string>;
 export const DnsSummaryV2RequestLocationList =
@@ -60744,9 +60081,8 @@ export type DnsSummaryV2RequestProtocol = "UDP" | "TCP" | "HTTPS" | "TLS";
 export const DnsSummaryV2RequestProtocol = S.String;
 
 export type DnsSummaryV2RequestProtocolList = Array<DnsSummaryV2RequestProtocol | (string & {})>;
-export const DnsSummaryV2RequestProtocolList = /*@__PURE__*/ S.Array(
-  DnsSummaryV2RequestProtocol,
-) as any as S.Schema<DnsSummaryV2RequestProtocolList>;
+export const DnsSummaryV2RequestProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsSummaryV2RequestProtocolList>;
 
 export type DnsSummaryV2RequestQueryType =
   | "A"
@@ -60840,9 +60176,8 @@ export type DnsSummaryV2RequestQueryType =
 export const DnsSummaryV2RequestQueryType = S.String;
 
 export type DnsSummaryV2RequestQueryTypeList = Array<DnsSummaryV2RequestQueryType | (string & {})>;
-export const DnsSummaryV2RequestQueryTypeList = /*@__PURE__*/ S.Array(
-  DnsSummaryV2RequestQueryType,
-) as any as S.Schema<DnsSummaryV2RequestQueryTypeList>;
+export const DnsSummaryV2RequestQueryTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsSummaryV2RequestQueryTypeList>;
 
 export type DnsSummaryV2RequestResponseCode =
   | "NOERROR"
@@ -60869,9 +60204,8 @@ export const DnsSummaryV2RequestResponseCode = S.String;
 export type DnsSummaryV2RequestResponseCodeList = Array<
   DnsSummaryV2RequestResponseCode | (string & {})
 >;
-export const DnsSummaryV2RequestResponseCodeList = /*@__PURE__*/ S.Array(
-  DnsSummaryV2RequestResponseCode,
-) as any as S.Schema<DnsSummaryV2RequestResponseCodeList>;
+export const DnsSummaryV2RequestResponseCodeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsSummaryV2RequestResponseCodeList>;
 
 export type DnsSummaryV2RequestResponseTtl =
   | "LTE_1M"
@@ -60886,9 +60220,8 @@ export const DnsSummaryV2RequestResponseTtl = S.String;
 export type DnsSummaryV2RequestResponseTtlList = Array<
   DnsSummaryV2RequestResponseTtl | (string & {})
 >;
-export const DnsSummaryV2RequestResponseTtlList = /*@__PURE__*/ S.Array(
-  DnsSummaryV2RequestResponseTtl,
-) as any as S.Schema<DnsSummaryV2RequestResponseTtlList>;
+export const DnsSummaryV2RequestResponseTtlList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsSummaryV2RequestResponseTtlList>;
 
 export type DnsSummaryV2RequestTldList = Array<string>;
 export const DnsSummaryV2RequestTldList =
@@ -61138,9 +60471,8 @@ export const EmailRoutingSummaryV2RequestArc = S.String;
 export type EmailRoutingSummaryV2RequestArcList = Array<
   EmailRoutingSummaryV2RequestArc | (string & {})
 >;
-export const EmailRoutingSummaryV2RequestArcList = /*@__PURE__*/ S.Array(
-  EmailRoutingSummaryV2RequestArc,
-) as any as S.Schema<EmailRoutingSummaryV2RequestArcList>;
+export const EmailRoutingSummaryV2RequestArcList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingSummaryV2RequestArcList>;
 
 export type EmailRoutingSummaryV2RequestDateEndList = Array<string>;
 export const EmailRoutingSummaryV2RequestDateEndList =
@@ -61160,9 +60492,8 @@ export const EmailRoutingSummaryV2RequestDkim = S.String;
 export type EmailRoutingSummaryV2RequestDkimList = Array<
   EmailRoutingSummaryV2RequestDkim | (string & {})
 >;
-export const EmailRoutingSummaryV2RequestDkimList = /*@__PURE__*/ S.Array(
-  EmailRoutingSummaryV2RequestDkim,
-) as any as S.Schema<EmailRoutingSummaryV2RequestDkimList>;
+export const EmailRoutingSummaryV2RequestDkimList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingSummaryV2RequestDkimList>;
 
 export type EmailRoutingSummaryV2RequestDmarc = "PASS" | "NONE" | "FAIL";
 export const EmailRoutingSummaryV2RequestDmarc = S.String;
@@ -61170,9 +60501,8 @@ export const EmailRoutingSummaryV2RequestDmarc = S.String;
 export type EmailRoutingSummaryV2RequestDmarcList = Array<
   EmailRoutingSummaryV2RequestDmarc | (string & {})
 >;
-export const EmailRoutingSummaryV2RequestDmarcList = /*@__PURE__*/ S.Array(
-  EmailRoutingSummaryV2RequestDmarc,
-) as any as S.Schema<EmailRoutingSummaryV2RequestDmarcList>;
+export const EmailRoutingSummaryV2RequestDmarcList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingSummaryV2RequestDmarcList>;
 
 export type EmailRoutingSummaryV2RequestEncrypted = "ENCRYPTED" | "NOT_ENCRYPTED";
 export const EmailRoutingSummaryV2RequestEncrypted = S.String;
@@ -61180,9 +60510,8 @@ export const EmailRoutingSummaryV2RequestEncrypted = S.String;
 export type EmailRoutingSummaryV2RequestEncryptedList = Array<
   EmailRoutingSummaryV2RequestEncrypted | (string & {})
 >;
-export const EmailRoutingSummaryV2RequestEncryptedList = /*@__PURE__*/ S.Array(
-  EmailRoutingSummaryV2RequestEncrypted,
-) as any as S.Schema<EmailRoutingSummaryV2RequestEncryptedList>;
+export const EmailRoutingSummaryV2RequestEncryptedList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingSummaryV2RequestEncryptedList>;
 
 export type EmailRoutingSummaryV2RequestFormat = "JSON" | "CSV";
 export const EmailRoutingSummaryV2RequestFormat = S.String;
@@ -61193,9 +60522,8 @@ export const EmailRoutingSummaryV2RequestIpVersion = S.String;
 export type EmailRoutingSummaryV2RequestIpVersionList = Array<
   EmailRoutingSummaryV2RequestIpVersion | (string & {})
 >;
-export const EmailRoutingSummaryV2RequestIpVersionList = /*@__PURE__*/ S.Array(
-  EmailRoutingSummaryV2RequestIpVersion,
-) as any as S.Schema<EmailRoutingSummaryV2RequestIpVersionList>;
+export const EmailRoutingSummaryV2RequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingSummaryV2RequestIpVersionList>;
 
 export type EmailRoutingSummaryV2RequestNameList = Array<string>;
 export const EmailRoutingSummaryV2RequestNameList =
@@ -61207,9 +60535,8 @@ export const EmailRoutingSummaryV2RequestSpf = S.String;
 export type EmailRoutingSummaryV2RequestSpfList = Array<
   EmailRoutingSummaryV2RequestSpf | (string & {})
 >;
-export const EmailRoutingSummaryV2RequestSpfList = /*@__PURE__*/ S.Array(
-  EmailRoutingSummaryV2RequestSpf,
-) as any as S.Schema<EmailRoutingSummaryV2RequestSpfList>;
+export const EmailRoutingSummaryV2RequestSpfList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingSummaryV2RequestSpfList>;
 
 export interface SummaryV2EmailRoutingRequest {
   /** Specifies the attribute by which to group the results. */
@@ -61442,9 +60769,8 @@ export const EmailSecuritySummaryV2RequestArc = S.String;
 export type EmailSecuritySummaryV2RequestArcList = Array<
   EmailSecuritySummaryV2RequestArc | (string & {})
 >;
-export const EmailSecuritySummaryV2RequestArcList = /*@__PURE__*/ S.Array(
-  EmailSecuritySummaryV2RequestArc,
-) as any as S.Schema<EmailSecuritySummaryV2RequestArcList>;
+export const EmailSecuritySummaryV2RequestArcList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecuritySummaryV2RequestArcList>;
 
 export type EmailSecuritySummaryV2RequestDateEndList = Array<string>;
 export const EmailSecuritySummaryV2RequestDateEndList =
@@ -61464,9 +60790,8 @@ export const EmailSecuritySummaryV2RequestDkim = S.String;
 export type EmailSecuritySummaryV2RequestDkimList = Array<
   EmailSecuritySummaryV2RequestDkim | (string & {})
 >;
-export const EmailSecuritySummaryV2RequestDkimList = /*@__PURE__*/ S.Array(
-  EmailSecuritySummaryV2RequestDkim,
-) as any as S.Schema<EmailSecuritySummaryV2RequestDkimList>;
+export const EmailSecuritySummaryV2RequestDkimList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecuritySummaryV2RequestDkimList>;
 
 export type EmailSecuritySummaryV2RequestDmarc = "PASS" | "NONE" | "FAIL";
 export const EmailSecuritySummaryV2RequestDmarc = S.String;
@@ -61474,9 +60799,8 @@ export const EmailSecuritySummaryV2RequestDmarc = S.String;
 export type EmailSecuritySummaryV2RequestDmarcList = Array<
   EmailSecuritySummaryV2RequestDmarc | (string & {})
 >;
-export const EmailSecuritySummaryV2RequestDmarcList = /*@__PURE__*/ S.Array(
-  EmailSecuritySummaryV2RequestDmarc,
-) as any as S.Schema<EmailSecuritySummaryV2RequestDmarcList>;
+export const EmailSecuritySummaryV2RequestDmarcList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecuritySummaryV2RequestDmarcList>;
 
 export type EmailSecuritySummaryV2RequestFormat = "JSON" | "CSV";
 export const EmailSecuritySummaryV2RequestFormat = S.String;
@@ -61491,9 +60815,8 @@ export const EmailSecuritySummaryV2RequestSpf = S.String;
 export type EmailSecuritySummaryV2RequestSpfList = Array<
   EmailSecuritySummaryV2RequestSpf | (string & {})
 >;
-export const EmailSecuritySummaryV2RequestSpfList = /*@__PURE__*/ S.Array(
-  EmailSecuritySummaryV2RequestSpf,
-) as any as S.Schema<EmailSecuritySummaryV2RequestSpfList>;
+export const EmailSecuritySummaryV2RequestSpfList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecuritySummaryV2RequestSpfList>;
 
 export type EmailSecuritySummaryV2RequestTlsVersion = "TLSv1_0" | "TLSv1_1" | "TLSv1_2" | "TLSv1_3";
 export const EmailSecuritySummaryV2RequestTlsVersion = S.String;
@@ -61501,9 +60824,8 @@ export const EmailSecuritySummaryV2RequestTlsVersion = S.String;
 export type EmailSecuritySummaryV2RequestTlsVersionList = Array<
   EmailSecuritySummaryV2RequestTlsVersion | (string & {})
 >;
-export const EmailSecuritySummaryV2RequestTlsVersionList = /*@__PURE__*/ S.Array(
-  EmailSecuritySummaryV2RequestTlsVersion,
-) as any as S.Schema<EmailSecuritySummaryV2RequestTlsVersionList>;
+export const EmailSecuritySummaryV2RequestTlsVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecuritySummaryV2RequestTlsVersionList>;
 
 export interface SummaryV2EmailSecurityRequest {
   /** Specifies the attribute by which to group the results. */
@@ -61740,9 +61062,8 @@ export const HttpSummaryV2RequestApiTraffic = S.String;
 export type HttpSummaryV2RequestApiTrafficList = Array<
   HttpSummaryV2RequestApiTraffic | (string & {})
 >;
-export const HttpSummaryV2RequestApiTrafficList = /*@__PURE__*/ S.Array(
-  HttpSummaryV2RequestApiTraffic,
-) as any as S.Schema<HttpSummaryV2RequestApiTrafficList>;
+export const HttpSummaryV2RequestApiTrafficList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpSummaryV2RequestApiTrafficList>;
 
 export type HttpSummaryV2RequestAsnList = Array<string>;
 export const HttpSummaryV2RequestAsnList =
@@ -61752,9 +61073,8 @@ export type HttpSummaryV2RequestBotClass = "LIKELY_AUTOMATED" | "LIKELY_HUMAN";
 export const HttpSummaryV2RequestBotClass = S.String;
 
 export type HttpSummaryV2RequestBotClassList = Array<HttpSummaryV2RequestBotClass | (string & {})>;
-export const HttpSummaryV2RequestBotClassList = /*@__PURE__*/ S.Array(
-  HttpSummaryV2RequestBotClass,
-) as any as S.Schema<HttpSummaryV2RequestBotClassList>;
+export const HttpSummaryV2RequestBotClassList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpSummaryV2RequestBotClassList>;
 
 export type HttpSummaryV2RequestContentType =
   | "HTML"
@@ -61778,9 +61098,8 @@ export const HttpSummaryV2RequestContentType = S.String;
 export type HttpSummaryV2RequestContentTypeList = Array<
   HttpSummaryV2RequestContentType | (string & {})
 >;
-export const HttpSummaryV2RequestContentTypeList = /*@__PURE__*/ S.Array(
-  HttpSummaryV2RequestContentType,
-) as any as S.Schema<HttpSummaryV2RequestContentTypeList>;
+export const HttpSummaryV2RequestContentTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpSummaryV2RequestContentTypeList>;
 
 export type HttpSummaryV2RequestContinentList = Array<string>;
 export const HttpSummaryV2RequestContinentList =
@@ -61804,9 +61123,8 @@ export const HttpSummaryV2RequestDeviceType = S.String;
 export type HttpSummaryV2RequestDeviceTypeList = Array<
   HttpSummaryV2RequestDeviceType | (string & {})
 >;
-export const HttpSummaryV2RequestDeviceTypeList = /*@__PURE__*/ S.Array(
-  HttpSummaryV2RequestDeviceType,
-) as any as S.Schema<HttpSummaryV2RequestDeviceTypeList>;
+export const HttpSummaryV2RequestDeviceTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpSummaryV2RequestDeviceTypeList>;
 
 export type HttpSummaryV2RequestFormat = "JSON" | "CSV";
 export const HttpSummaryV2RequestFormat = S.String;
@@ -61821,9 +61139,8 @@ export const HttpSummaryV2RequestHttpProtocol = S.String;
 export type HttpSummaryV2RequestHttpProtocolList = Array<
   HttpSummaryV2RequestHttpProtocol | (string & {})
 >;
-export const HttpSummaryV2RequestHttpProtocolList = /*@__PURE__*/ S.Array(
-  HttpSummaryV2RequestHttpProtocol,
-) as any as S.Schema<HttpSummaryV2RequestHttpProtocolList>;
+export const HttpSummaryV2RequestHttpProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpSummaryV2RequestHttpProtocolList>;
 
 export type HttpSummaryV2RequestHttpVersion = "HTTPv1" | "HTTPv2" | "HTTPv3";
 export const HttpSummaryV2RequestHttpVersion = S.String;
@@ -61831,9 +61148,8 @@ export const HttpSummaryV2RequestHttpVersion = S.String;
 export type HttpSummaryV2RequestHttpVersionList = Array<
   HttpSummaryV2RequestHttpVersion | (string & {})
 >;
-export const HttpSummaryV2RequestHttpVersionList = /*@__PURE__*/ S.Array(
-  HttpSummaryV2RequestHttpVersion,
-) as any as S.Schema<HttpSummaryV2RequestHttpVersionList>;
+export const HttpSummaryV2RequestHttpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpSummaryV2RequestHttpVersionList>;
 
 export type HttpSummaryV2RequestIpVersion = "IPv4" | "IPv6";
 export const HttpSummaryV2RequestIpVersion = S.String;
@@ -61841,9 +61157,8 @@ export const HttpSummaryV2RequestIpVersion = S.String;
 export type HttpSummaryV2RequestIpVersionList = Array<
   HttpSummaryV2RequestIpVersion | (string & {})
 >;
-export const HttpSummaryV2RequestIpVersionList = /*@__PURE__*/ S.Array(
-  HttpSummaryV2RequestIpVersion,
-) as any as S.Schema<HttpSummaryV2RequestIpVersionList>;
+export const HttpSummaryV2RequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpSummaryV2RequestIpVersionList>;
 
 export type HttpSummaryV2RequestLocationList = Array<string>;
 export const HttpSummaryV2RequestLocationList =
@@ -61864,9 +61179,8 @@ export type HttpSummaryV2RequestOs =
 export const HttpSummaryV2RequestOs = S.String;
 
 export type HttpSummaryV2RequestOsList = Array<HttpSummaryV2RequestOs | (string & {})>;
-export const HttpSummaryV2RequestOsList = /*@__PURE__*/ S.Array(
-  HttpSummaryV2RequestOs,
-) as any as S.Schema<HttpSummaryV2RequestOsList>;
+export const HttpSummaryV2RequestOsList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpSummaryV2RequestOsList>;
 
 export type HttpSummaryV2RequestTlsVersion =
   | "TLSv1_0"
@@ -61879,9 +61193,8 @@ export const HttpSummaryV2RequestTlsVersion = S.String;
 export type HttpSummaryV2RequestTlsVersionList = Array<
   HttpSummaryV2RequestTlsVersion | (string & {})
 >;
-export const HttpSummaryV2RequestTlsVersionList = /*@__PURE__*/ S.Array(
-  HttpSummaryV2RequestTlsVersion,
-) as any as S.Schema<HttpSummaryV2RequestTlsVersionList>;
+export const HttpSummaryV2RequestTlsVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpSummaryV2RequestTlsVersionList>;
 
 export interface SummaryV2HttpRequest {
   /** Specifies the HTTP attribute by which to group the results. */
@@ -62121,9 +61434,8 @@ export const LeakedCredentialsSummaryV2RequestBotClass = S.String;
 export type LeakedCredentialsSummaryV2RequestBotClassList = Array<
   LeakedCredentialsSummaryV2RequestBotClass | (string & {})
 >;
-export const LeakedCredentialsSummaryV2RequestBotClassList = /*@__PURE__*/ S.Array(
-  LeakedCredentialsSummaryV2RequestBotClass,
-) as any as S.Schema<LeakedCredentialsSummaryV2RequestBotClassList>;
+export const LeakedCredentialsSummaryV2RequestBotClassList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<LeakedCredentialsSummaryV2RequestBotClassList>;
 
 export type LeakedCredentialsSummaryV2RequestCompromised = "CLEAN" | "COMPROMISED";
 export const LeakedCredentialsSummaryV2RequestCompromised = S.String;
@@ -62131,9 +61443,8 @@ export const LeakedCredentialsSummaryV2RequestCompromised = S.String;
 export type LeakedCredentialsSummaryV2RequestCompromisedList = Array<
   LeakedCredentialsSummaryV2RequestCompromised | (string & {})
 >;
-export const LeakedCredentialsSummaryV2RequestCompromisedList = /*@__PURE__*/ S.Array(
-  LeakedCredentialsSummaryV2RequestCompromised,
-) as any as S.Schema<LeakedCredentialsSummaryV2RequestCompromisedList>;
+export const LeakedCredentialsSummaryV2RequestCompromisedList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<LeakedCredentialsSummaryV2RequestCompromisedList>;
 
 export type LeakedCredentialsSummaryV2RequestContinentList = Array<string>;
 export const LeakedCredentialsSummaryV2RequestContinentList =
@@ -62426,9 +61737,8 @@ export const NetflowsSummaryV2RequestProduct = S.String;
 export type NetflowsSummaryV2RequestProductList = Array<
   NetflowsSummaryV2RequestProduct | (string & {})
 >;
-export const NetflowsSummaryV2RequestProductList = /*@__PURE__*/ S.Array(
-  NetflowsSummaryV2RequestProduct,
-) as any as S.Schema<NetflowsSummaryV2RequestProductList>;
+export const NetflowsSummaryV2RequestProductList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<NetflowsSummaryV2RequestProductList>;
 
 export interface SummaryV2NetflowRequest {
   /** Specifies the NetFlows attribute by which to group the results. */
@@ -62716,9 +62026,8 @@ export const AttacksLayer3TopLocationsTargetRequestIpVersion = S.String;
 export type AttacksLayer3TopLocationsTargetRequestIpVersionList = Array<
   AttacksLayer3TopLocationsTargetRequestIpVersion | (string & {})
 >;
-export const AttacksLayer3TopLocationsTargetRequestIpVersionList = /*@__PURE__*/ S.Array(
-  AttacksLayer3TopLocationsTargetRequestIpVersion,
-) as any as S.Schema<AttacksLayer3TopLocationsTargetRequestIpVersionList>;
+export const AttacksLayer3TopLocationsTargetRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer3TopLocationsTargetRequestIpVersionList>;
 
 export type AttacksLayer3TopLocationsTargetRequestLocationList = Array<string>;
 export const AttacksLayer3TopLocationsTargetRequestLocationList =
@@ -62734,9 +62043,8 @@ export const AttacksLayer3TopLocationsTargetRequestProtocol = S.String;
 export type AttacksLayer3TopLocationsTargetRequestProtocolList = Array<
   AttacksLayer3TopLocationsTargetRequestProtocol | (string & {})
 >;
-export const AttacksLayer3TopLocationsTargetRequestProtocolList = /*@__PURE__*/ S.Array(
-  AttacksLayer3TopLocationsTargetRequestProtocol,
-) as any as S.Schema<AttacksLayer3TopLocationsTargetRequestProtocolList>;
+export const AttacksLayer3TopLocationsTargetRequestProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer3TopLocationsTargetRequestProtocolList>;
 
 export interface TargetAttackLayer3TopLocationRequest {
   /** Filters results by continent. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA. */
@@ -62999,9 +62307,8 @@ export const AttacksLayer7TopLocationsTargetRequestMitigationProduct = S.String;
 export type AttacksLayer7TopLocationsTargetRequestMitigationProductList = Array<
   AttacksLayer7TopLocationsTargetRequestMitigationProduct | (string & {})
 >;
-export const AttacksLayer7TopLocationsTargetRequestMitigationProductList = /*@__PURE__*/ S.Array(
-  AttacksLayer7TopLocationsTargetRequestMitigationProduct,
-) as any as S.Schema<AttacksLayer7TopLocationsTargetRequestMitigationProductList>;
+export const AttacksLayer7TopLocationsTargetRequestMitigationProductList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer7TopLocationsTargetRequestMitigationProductList>;
 
 export type AttacksLayer7TopLocationsTargetRequestNameList = Array<string>;
 export const AttacksLayer7TopLocationsTargetRequestNameList =
@@ -63686,9 +62993,8 @@ export const EmailSecuritySummaryThreatCategoryRequestArc = S.String;
 export type EmailSecuritySummaryThreatCategoryRequestArcList = Array<
   EmailSecuritySummaryThreatCategoryRequestArc | (string & {})
 >;
-export const EmailSecuritySummaryThreatCategoryRequestArcList = /*@__PURE__*/ S.Array(
-  EmailSecuritySummaryThreatCategoryRequestArc,
-) as any as S.Schema<EmailSecuritySummaryThreatCategoryRequestArcList>;
+export const EmailSecuritySummaryThreatCategoryRequestArcList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecuritySummaryThreatCategoryRequestArcList>;
 
 export type EmailSecuritySummaryThreatCategoryRequestDateEndList = Array<string>;
 export const EmailSecuritySummaryThreatCategoryRequestDateEndList =
@@ -63708,9 +63014,8 @@ export const EmailSecuritySummaryThreatCategoryRequestDkim = S.String;
 export type EmailSecuritySummaryThreatCategoryRequestDkimList = Array<
   EmailSecuritySummaryThreatCategoryRequestDkim | (string & {})
 >;
-export const EmailSecuritySummaryThreatCategoryRequestDkimList = /*@__PURE__*/ S.Array(
-  EmailSecuritySummaryThreatCategoryRequestDkim,
-) as any as S.Schema<EmailSecuritySummaryThreatCategoryRequestDkimList>;
+export const EmailSecuritySummaryThreatCategoryRequestDkimList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecuritySummaryThreatCategoryRequestDkimList>;
 
 export type EmailSecuritySummaryThreatCategoryRequestDmarc = "PASS" | "NONE" | "FAIL";
 export const EmailSecuritySummaryThreatCategoryRequestDmarc = S.String;
@@ -63718,9 +63023,8 @@ export const EmailSecuritySummaryThreatCategoryRequestDmarc = S.String;
 export type EmailSecuritySummaryThreatCategoryRequestDmarcList = Array<
   EmailSecuritySummaryThreatCategoryRequestDmarc | (string & {})
 >;
-export const EmailSecuritySummaryThreatCategoryRequestDmarcList = /*@__PURE__*/ S.Array(
-  EmailSecuritySummaryThreatCategoryRequestDmarc,
-) as any as S.Schema<EmailSecuritySummaryThreatCategoryRequestDmarcList>;
+export const EmailSecuritySummaryThreatCategoryRequestDmarcList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecuritySummaryThreatCategoryRequestDmarcList>;
 
 export type EmailSecuritySummaryThreatCategoryRequestFormat = "JSON" | "CSV";
 export const EmailSecuritySummaryThreatCategoryRequestFormat = S.String;
@@ -63735,9 +63039,8 @@ export const EmailSecuritySummaryThreatCategoryRequestSpf = S.String;
 export type EmailSecuritySummaryThreatCategoryRequestSpfList = Array<
   EmailSecuritySummaryThreatCategoryRequestSpf | (string & {})
 >;
-export const EmailSecuritySummaryThreatCategoryRequestSpfList = /*@__PURE__*/ S.Array(
-  EmailSecuritySummaryThreatCategoryRequestSpf,
-) as any as S.Schema<EmailSecuritySummaryThreatCategoryRequestSpfList>;
+export const EmailSecuritySummaryThreatCategoryRequestSpfList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecuritySummaryThreatCategoryRequestSpfList>;
 
 export type EmailSecuritySummaryThreatCategoryRequestTlsVersion =
   | "TLSv1_0"
@@ -63749,9 +63052,8 @@ export const EmailSecuritySummaryThreatCategoryRequestTlsVersion = S.String;
 export type EmailSecuritySummaryThreatCategoryRequestTlsVersionList = Array<
   EmailSecuritySummaryThreatCategoryRequestTlsVersion | (string & {})
 >;
-export const EmailSecuritySummaryThreatCategoryRequestTlsVersionList = /*@__PURE__*/ S.Array(
-  EmailSecuritySummaryThreatCategoryRequestTlsVersion,
-) as any as S.Schema<EmailSecuritySummaryThreatCategoryRequestTlsVersionList>;
+export const EmailSecuritySummaryThreatCategoryRequestTlsVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecuritySummaryThreatCategoryRequestTlsVersionList>;
 
 export interface ThreatCategoryEmailSecuritySummaryRequest {
   /** Filters results by ARC (Authenticated Received Chain) validation. */
@@ -63998,9 +63300,8 @@ export const EmailSecurityTimeseriesGroupsThreatCategoryRequestArc = S.String;
 export type EmailSecurityTimeseriesGroupsThreatCategoryRequestArcList = Array<
   EmailSecurityTimeseriesGroupsThreatCategoryRequestArc | (string & {})
 >;
-export const EmailSecurityTimeseriesGroupsThreatCategoryRequestArcList = /*@__PURE__*/ S.Array(
-  EmailSecurityTimeseriesGroupsThreatCategoryRequestArc,
-) as any as S.Schema<EmailSecurityTimeseriesGroupsThreatCategoryRequestArcList>;
+export const EmailSecurityTimeseriesGroupsThreatCategoryRequestArcList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecurityTimeseriesGroupsThreatCategoryRequestArcList>;
 
 export type EmailSecurityTimeseriesGroupsThreatCategoryRequestDateEndList = Array<string>;
 export const EmailSecurityTimeseriesGroupsThreatCategoryRequestDateEndList =
@@ -64020,9 +63321,8 @@ export const EmailSecurityTimeseriesGroupsThreatCategoryRequestDkim = S.String;
 export type EmailSecurityTimeseriesGroupsThreatCategoryRequestDkimList = Array<
   EmailSecurityTimeseriesGroupsThreatCategoryRequestDkim | (string & {})
 >;
-export const EmailSecurityTimeseriesGroupsThreatCategoryRequestDkimList = /*@__PURE__*/ S.Array(
-  EmailSecurityTimeseriesGroupsThreatCategoryRequestDkim,
-) as any as S.Schema<EmailSecurityTimeseriesGroupsThreatCategoryRequestDkimList>;
+export const EmailSecurityTimeseriesGroupsThreatCategoryRequestDkimList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecurityTimeseriesGroupsThreatCategoryRequestDkimList>;
 
 export type EmailSecurityTimeseriesGroupsThreatCategoryRequestDmarc = "PASS" | "NONE" | "FAIL";
 export const EmailSecurityTimeseriesGroupsThreatCategoryRequestDmarc = S.String;
@@ -64030,9 +63330,8 @@ export const EmailSecurityTimeseriesGroupsThreatCategoryRequestDmarc = S.String;
 export type EmailSecurityTimeseriesGroupsThreatCategoryRequestDmarcList = Array<
   EmailSecurityTimeseriesGroupsThreatCategoryRequestDmarc | (string & {})
 >;
-export const EmailSecurityTimeseriesGroupsThreatCategoryRequestDmarcList = /*@__PURE__*/ S.Array(
-  EmailSecurityTimeseriesGroupsThreatCategoryRequestDmarc,
-) as any as S.Schema<EmailSecurityTimeseriesGroupsThreatCategoryRequestDmarcList>;
+export const EmailSecurityTimeseriesGroupsThreatCategoryRequestDmarcList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecurityTimeseriesGroupsThreatCategoryRequestDmarcList>;
 
 export type EmailSecurityTimeseriesGroupsThreatCategoryRequestFormat = "JSON" | "CSV";
 export const EmailSecurityTimeseriesGroupsThreatCategoryRequestFormat = S.String;
@@ -64047,9 +63346,8 @@ export const EmailSecurityTimeseriesGroupsThreatCategoryRequestSpf = S.String;
 export type EmailSecurityTimeseriesGroupsThreatCategoryRequestSpfList = Array<
   EmailSecurityTimeseriesGroupsThreatCategoryRequestSpf | (string & {})
 >;
-export const EmailSecurityTimeseriesGroupsThreatCategoryRequestSpfList = /*@__PURE__*/ S.Array(
-  EmailSecurityTimeseriesGroupsThreatCategoryRequestSpf,
-) as any as S.Schema<EmailSecurityTimeseriesGroupsThreatCategoryRequestSpfList>;
+export const EmailSecurityTimeseriesGroupsThreatCategoryRequestSpfList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecurityTimeseriesGroupsThreatCategoryRequestSpfList>;
 
 export type EmailSecurityTimeseriesGroupsThreatCategoryRequestTlsVersion =
   | "TLSv1_0"
@@ -64062,9 +63360,7 @@ export type EmailSecurityTimeseriesGroupsThreatCategoryRequestTlsVersionList = A
   EmailSecurityTimeseriesGroupsThreatCategoryRequestTlsVersion | (string & {})
 >;
 export const EmailSecurityTimeseriesGroupsThreatCategoryRequestTlsVersionList =
-  /*@__PURE__*/ S.Array(
-    EmailSecurityTimeseriesGroupsThreatCategoryRequestTlsVersion,
-  ) as any as S.Schema<EmailSecurityTimeseriesGroupsThreatCategoryRequestTlsVersionList>;
+  AiTimeseriesGroupsTimeseriesGroupsRequestResponseStatusCategoryList as any as S.Schema<EmailSecurityTimeseriesGroupsThreatCategoryRequestTlsVersionList>;
 
 export interface ThreatCategoryEmailSecurityTimeseriesGroupRequest {
   /** Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/). When omitted, the interval is auto-selected from the requested date range; finer intervals are only available for shorter ranges. If the requested interval is too granular for the date range, the request is rejected. */
@@ -64382,9 +63678,8 @@ export const AiBotsTimeseriesRequestContentType = S.String;
 export type AiBotsTimeseriesRequestContentTypeList = Array<
   AiBotsTimeseriesRequestContentType | (string & {})
 >;
-export const AiBotsTimeseriesRequestContentTypeList = /*@__PURE__*/ S.Array(
-  AiBotsTimeseriesRequestContentType,
-) as any as S.Schema<AiBotsTimeseriesRequestContentTypeList>;
+export const AiBotsTimeseriesRequestContentTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AiBotsTimeseriesRequestContentTypeList>;
 
 export type AiBotsTimeseriesRequestContinentList = Array<string>;
 export const AiBotsTimeseriesRequestContinentList =
@@ -64436,9 +63731,8 @@ export const AiBotsTimeseriesRequestResponseStatusCategory = S.String;
 export type AiBotsTimeseriesRequestResponseStatusCategoryList = Array<
   AiBotsTimeseriesRequestResponseStatusCategory | (string & {})
 >;
-export const AiBotsTimeseriesRequestResponseStatusCategoryList = /*@__PURE__*/ S.Array(
-  AiBotsTimeseriesRequestResponseStatusCategory,
-) as any as S.Schema<AiBotsTimeseriesRequestResponseStatusCategoryList>;
+export const AiBotsTimeseriesRequestResponseStatusCategoryList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AiBotsTimeseriesRequestResponseStatusCategoryList>;
 
 export type AiBotsTimeseriesRequestUserAgentList = Array<string>;
 export const AiBotsTimeseriesRequestUserAgentList =
@@ -64931,9 +64225,8 @@ export const As112TimeseriesRequestProtocol = S.String;
 export type As112TimeseriesRequestProtocolList = Array<
   As112TimeseriesRequestProtocol | (string & {})
 >;
-export const As112TimeseriesRequestProtocolList = /*@__PURE__*/ S.Array(
-  As112TimeseriesRequestProtocol,
-) as any as S.Schema<As112TimeseriesRequestProtocolList>;
+export const As112TimeseriesRequestProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<As112TimeseriesRequestProtocolList>;
 
 export type As112TimeseriesRequestQueryType =
   | "A"
@@ -65029,9 +64322,8 @@ export const As112TimeseriesRequestQueryType = S.String;
 export type As112TimeseriesRequestQueryTypeList = Array<
   As112TimeseriesRequestQueryType | (string & {})
 >;
-export const As112TimeseriesRequestQueryTypeList = /*@__PURE__*/ S.Array(
-  As112TimeseriesRequestQueryType,
-) as any as S.Schema<As112TimeseriesRequestQueryTypeList>;
+export const As112TimeseriesRequestQueryTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<As112TimeseriesRequestQueryTypeList>;
 
 export type As112TimeseriesRequestResponseCode =
   | "NOERROR"
@@ -65058,9 +64350,8 @@ export const As112TimeseriesRequestResponseCode = S.String;
 export type As112TimeseriesRequestResponseCodeList = Array<
   As112TimeseriesRequestResponseCode | (string & {})
 >;
-export const As112TimeseriesRequestResponseCodeList = /*@__PURE__*/ S.Array(
-  As112TimeseriesRequestResponseCode,
-) as any as S.Schema<As112TimeseriesRequestResponseCodeList>;
+export const As112TimeseriesRequestResponseCodeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<As112TimeseriesRequestResponseCodeList>;
 
 export interface TimeseriesAs112Request {
   /** Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/). When omitted, the interval is auto-selected from the requested date range; finer intervals are only available for shorter ranges. If the requested interval is too granular for the date range, the request is rejected. */
@@ -65301,9 +64592,8 @@ export const AttacksLayer3TimeseriesRequestIpVersion = S.String;
 export type AttacksLayer3TimeseriesRequestIpVersionList = Array<
   AttacksLayer3TimeseriesRequestIpVersion | (string & {})
 >;
-export const AttacksLayer3TimeseriesRequestIpVersionList = /*@__PURE__*/ S.Array(
-  AttacksLayer3TimeseriesRequestIpVersion,
-) as any as S.Schema<AttacksLayer3TimeseriesRequestIpVersionList>;
+export const AttacksLayer3TimeseriesRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer3TimeseriesRequestIpVersionList>;
 
 export type AttacksLayer3TimeseriesRequestLocationList = Array<string>;
 export const AttacksLayer3TimeseriesRequestLocationList =
@@ -65325,9 +64615,8 @@ export const AttacksLayer3TimeseriesRequestProtocol = S.String;
 export type AttacksLayer3TimeseriesRequestProtocolList = Array<
   AttacksLayer3TimeseriesRequestProtocol | (string & {})
 >;
-export const AttacksLayer3TimeseriesRequestProtocolList = /*@__PURE__*/ S.Array(
-  AttacksLayer3TimeseriesRequestProtocol,
-) as any as S.Schema<AttacksLayer3TimeseriesRequestProtocolList>;
+export const AttacksLayer3TimeseriesRequestProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer3TimeseriesRequestProtocolList>;
 
 export interface TimeseriesAttackLayer3Request {
   /** Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/). When omitted, the interval is auto-selected from the requested date range; finer intervals are only available for shorter ranges. If the requested interval is too granular for the date range, the request is rejected. */
@@ -65630,9 +64919,8 @@ export const AttacksLayer7TimeseriesRequestHttpMethod = S.String;
 export type AttacksLayer7TimeseriesRequestHttpMethodList = Array<
   AttacksLayer7TimeseriesRequestHttpMethod | (string & {})
 >;
-export const AttacksLayer7TimeseriesRequestHttpMethodList = /*@__PURE__*/ S.Array(
-  AttacksLayer7TimeseriesRequestHttpMethod,
-) as any as S.Schema<AttacksLayer7TimeseriesRequestHttpMethodList>;
+export const AttacksLayer7TimeseriesRequestHttpMethodList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer7TimeseriesRequestHttpMethodList>;
 
 export type AttacksLayer7TimeseriesRequestHttpVersion = "HTTPv1" | "HTTPv2" | "HTTPv3";
 export const AttacksLayer7TimeseriesRequestHttpVersion = S.String;
@@ -65640,9 +64928,8 @@ export const AttacksLayer7TimeseriesRequestHttpVersion = S.String;
 export type AttacksLayer7TimeseriesRequestHttpVersionList = Array<
   AttacksLayer7TimeseriesRequestHttpVersion | (string & {})
 >;
-export const AttacksLayer7TimeseriesRequestHttpVersionList = /*@__PURE__*/ S.Array(
-  AttacksLayer7TimeseriesRequestHttpVersion,
-) as any as S.Schema<AttacksLayer7TimeseriesRequestHttpVersionList>;
+export const AttacksLayer7TimeseriesRequestHttpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer7TimeseriesRequestHttpVersionList>;
 
 export type AttacksLayer7TimeseriesRequestIpVersion = "IPv4" | "IPv6";
 export const AttacksLayer7TimeseriesRequestIpVersion = S.String;
@@ -65650,9 +64937,8 @@ export const AttacksLayer7TimeseriesRequestIpVersion = S.String;
 export type AttacksLayer7TimeseriesRequestIpVersionList = Array<
   AttacksLayer7TimeseriesRequestIpVersion | (string & {})
 >;
-export const AttacksLayer7TimeseriesRequestIpVersionList = /*@__PURE__*/ S.Array(
-  AttacksLayer7TimeseriesRequestIpVersion,
-) as any as S.Schema<AttacksLayer7TimeseriesRequestIpVersionList>;
+export const AttacksLayer7TimeseriesRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer7TimeseriesRequestIpVersionList>;
 
 export type AttacksLayer7TimeseriesRequestLocationList = Array<string>;
 export const AttacksLayer7TimeseriesRequestLocationList =
@@ -65671,9 +64957,8 @@ export const AttacksLayer7TimeseriesRequestMitigationProduct = S.String;
 export type AttacksLayer7TimeseriesRequestMitigationProductList = Array<
   AttacksLayer7TimeseriesRequestMitigationProduct | (string & {})
 >;
-export const AttacksLayer7TimeseriesRequestMitigationProductList = /*@__PURE__*/ S.Array(
-  AttacksLayer7TimeseriesRequestMitigationProduct,
-) as any as S.Schema<AttacksLayer7TimeseriesRequestMitigationProductList>;
+export const AttacksLayer7TimeseriesRequestMitigationProductList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer7TimeseriesRequestMitigationProductList>;
 
 export type AttacksLayer7TimeseriesRequestNameList = Array<string>;
 export const AttacksLayer7TimeseriesRequestNameList =
@@ -65966,9 +65251,8 @@ export const BgpTimeseriesRequestUpdateType = S.String;
 export type BgpTimeseriesRequestUpdateTypeList = Array<
   BgpTimeseriesRequestUpdateType | (string & {})
 >;
-export const BgpTimeseriesRequestUpdateTypeList = /*@__PURE__*/ S.Array(
-  BgpTimeseriesRequestUpdateType,
-) as any as S.Schema<BgpTimeseriesRequestUpdateTypeList>;
+export const BgpTimeseriesRequestUpdateTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<BgpTimeseriesRequestUpdateTypeList>;
 
 export interface TimeseriesBgpRequest {
   /** Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/). When omitted, the interval is auto-selected from the requested date range; finer intervals are only available for shorter ranges. If the requested interval is too granular for the date range, the request is rejected. */
@@ -66176,9 +65460,8 @@ export const BgpIpsTimeseriesRequestIpVersion = S.String;
 export type BgpIpsTimeseriesRequestIpVersionList = Array<
   BgpIpsTimeseriesRequestIpVersion | (string & {})
 >;
-export const BgpIpsTimeseriesRequestIpVersionList = /*@__PURE__*/ S.Array(
-  BgpIpsTimeseriesRequestIpVersion,
-) as any as S.Schema<BgpIpsTimeseriesRequestIpVersionList>;
+export const BgpIpsTimeseriesRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<BgpIpsTimeseriesRequestIpVersionList>;
 
 export type BgpIpsTimeseriesRequestLocationList = Array<string>;
 export const BgpIpsTimeseriesRequestLocationList =
@@ -66513,9 +65796,8 @@ export const BgpRpkiAspaTimeseriesRequestRir = S.String;
 export type BgpRpkiAspaTimeseriesRequestRirList = Array<
   BgpRpkiAspaTimeseriesRequestRir | (string & {})
 >;
-export const BgpRpkiAspaTimeseriesRequestRirList = /*@__PURE__*/ S.Array(
-  BgpRpkiAspaTimeseriesRequestRir,
-) as any as S.Schema<BgpRpkiAspaTimeseriesRequestRirList>;
+export const BgpRpkiAspaTimeseriesRequestRirList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<BgpRpkiAspaTimeseriesRequestRirList>;
 
 export interface TimeseriesBgpRpkiAspaRequest {
   /** End of the date range (inclusive). Alternative to `dateRange`; provide together with `dateStart`. */
@@ -66693,17 +65975,15 @@ export const BotsTimeseriesRequestBotCategory = S.String;
 export type BotsTimeseriesRequestBotCategoryList = Array<
   BotsTimeseriesRequestBotCategory | (string & {})
 >;
-export const BotsTimeseriesRequestBotCategoryList = /*@__PURE__*/ S.Array(
-  BotsTimeseriesRequestBotCategory,
-) as any as S.Schema<BotsTimeseriesRequestBotCategoryList>;
+export const BotsTimeseriesRequestBotCategoryList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<BotsTimeseriesRequestBotCategoryList>;
 
 export type BotsTimeseriesRequestBotKind = "AGENT" | "BOT";
 export const BotsTimeseriesRequestBotKind = S.String;
 
 export type BotsTimeseriesRequestBotKindList = Array<BotsTimeseriesRequestBotKind | (string & {})>;
-export const BotsTimeseriesRequestBotKindList = /*@__PURE__*/ S.Array(
-  BotsTimeseriesRequestBotKind,
-) as any as S.Schema<BotsTimeseriesRequestBotKindList>;
+export const BotsTimeseriesRequestBotKindList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<BotsTimeseriesRequestBotKindList>;
 
 export type BotsTimeseriesRequestBotOperatorList = Array<string>;
 export const BotsTimeseriesRequestBotOperatorList =
@@ -66715,9 +65995,8 @@ export const BotsTimeseriesRequestBotVerificationStatus = S.String;
 export type BotsTimeseriesRequestBotVerificationStatusList = Array<
   BotsTimeseriesRequestBotVerificationStatus | (string & {})
 >;
-export const BotsTimeseriesRequestBotVerificationStatusList = /*@__PURE__*/ S.Array(
-  BotsTimeseriesRequestBotVerificationStatus,
-) as any as S.Schema<BotsTimeseriesRequestBotVerificationStatusList>;
+export const BotsTimeseriesRequestBotVerificationStatusList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<BotsTimeseriesRequestBotVerificationStatusList>;
 
 export type BotsTimeseriesRequestContinentList = Array<string>;
 export const BotsTimeseriesRequestContinentList =
@@ -66994,17 +66273,15 @@ export type CtTimeseriesRequestDuration =
 export const CtTimeseriesRequestDuration = S.String;
 
 export type CtTimeseriesRequestDurationList = Array<CtTimeseriesRequestDuration | (string & {})>;
-export const CtTimeseriesRequestDurationList = /*@__PURE__*/ S.Array(
-  CtTimeseriesRequestDuration,
-) as any as S.Schema<CtTimeseriesRequestDurationList>;
+export const CtTimeseriesRequestDurationList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<CtTimeseriesRequestDurationList>;
 
 export type CtTimeseriesRequestEntryType = "PRECERTIFICATE" | "CERTIFICATE";
 export const CtTimeseriesRequestEntryType = S.String;
 
 export type CtTimeseriesRequestEntryTypeList = Array<CtTimeseriesRequestEntryType | (string & {})>;
-export const CtTimeseriesRequestEntryTypeList = /*@__PURE__*/ S.Array(
-  CtTimeseriesRequestEntryType,
-) as any as S.Schema<CtTimeseriesRequestEntryTypeList>;
+export const CtTimeseriesRequestEntryTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<CtTimeseriesRequestEntryTypeList>;
 
 export type CtTimeseriesRequestExpirationStatus = "EXPIRED" | "VALID";
 export const CtTimeseriesRequestExpirationStatus = S.String;
@@ -67012,9 +66289,8 @@ export const CtTimeseriesRequestExpirationStatus = S.String;
 export type CtTimeseriesRequestExpirationStatusList = Array<
   CtTimeseriesRequestExpirationStatus | (string & {})
 >;
-export const CtTimeseriesRequestExpirationStatusList = /*@__PURE__*/ S.Array(
-  CtTimeseriesRequestExpirationStatus,
-) as any as S.Schema<CtTimeseriesRequestExpirationStatusList>;
+export const CtTimeseriesRequestExpirationStatusList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<CtTimeseriesRequestExpirationStatusList>;
 
 export type CtTimeseriesRequestFormat = "JSON" | "CSV";
 export const CtTimeseriesRequestFormat = S.String;
@@ -67035,9 +66311,8 @@ export type CtTimeseriesRequestLogApi = "RFC6962" | "STATIC";
 export const CtTimeseriesRequestLogApi = S.String;
 
 export type CtTimeseriesRequestLogApiList = Array<CtTimeseriesRequestLogApi | (string & {})>;
-export const CtTimeseriesRequestLogApiList = /*@__PURE__*/ S.Array(
-  CtTimeseriesRequestLogApi,
-) as any as S.Schema<CtTimeseriesRequestLogApiList>;
+export const CtTimeseriesRequestLogApiList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<CtTimeseriesRequestLogApiList>;
 
 export type CtTimeseriesRequestLogOperatorList = Array<string>;
 export const CtTimeseriesRequestLogOperatorList =
@@ -67053,9 +66328,8 @@ export const CtTimeseriesRequestPublicKeyAlgorithm = S.String;
 export type CtTimeseriesRequestPublicKeyAlgorithmList = Array<
   CtTimeseriesRequestPublicKeyAlgorithm | (string & {})
 >;
-export const CtTimeseriesRequestPublicKeyAlgorithmList = /*@__PURE__*/ S.Array(
-  CtTimeseriesRequestPublicKeyAlgorithm,
-) as any as S.Schema<CtTimeseriesRequestPublicKeyAlgorithmList>;
+export const CtTimeseriesRequestPublicKeyAlgorithmList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<CtTimeseriesRequestPublicKeyAlgorithmList>;
 
 export type CtTimeseriesRequestSignatureAlgorithm =
   | "DSA_SHA_1"
@@ -67078,9 +66352,8 @@ export const CtTimeseriesRequestSignatureAlgorithm = S.String;
 export type CtTimeseriesRequestSignatureAlgorithmList = Array<
   CtTimeseriesRequestSignatureAlgorithm | (string & {})
 >;
-export const CtTimeseriesRequestSignatureAlgorithmList = /*@__PURE__*/ S.Array(
-  CtTimeseriesRequestSignatureAlgorithm,
-) as any as S.Schema<CtTimeseriesRequestSignatureAlgorithmList>;
+export const CtTimeseriesRequestSignatureAlgorithmList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<CtTimeseriesRequestSignatureAlgorithmList>;
 
 export type CtTimeseriesRequestTldList = Array<string>;
 export const CtTimeseriesRequestTldList =
@@ -67096,9 +66369,8 @@ export const CtTimeseriesRequestValidationLevel = S.String;
 export type CtTimeseriesRequestValidationLevelList = Array<
   CtTimeseriesRequestValidationLevel | (string & {})
 >;
-export const CtTimeseriesRequestValidationLevelList = /*@__PURE__*/ S.Array(
-  CtTimeseriesRequestValidationLevel,
-) as any as S.Schema<CtTimeseriesRequestValidationLevelList>;
+export const CtTimeseriesRequestValidationLevelList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<CtTimeseriesRequestValidationLevelList>;
 
 export interface TimeseriesCtRequest {
   /** Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/). When omitted, the interval is auto-selected from the requested date range; finer intervals are only available for shorter ranges. If the requested interval is too granular for the date range, the request is rejected. */
@@ -67364,9 +66636,8 @@ export type DnsTimeseriesRequestDnssec = "INVALID" | "INSECURE" | "SECURE" | "OT
 export const DnsTimeseriesRequestDnssec = S.String;
 
 export type DnsTimeseriesRequestDnssecList = Array<DnsTimeseriesRequestDnssec | (string & {})>;
-export const DnsTimeseriesRequestDnssecList = /*@__PURE__*/ S.Array(
-  DnsTimeseriesRequestDnssec,
-) as any as S.Schema<DnsTimeseriesRequestDnssecList>;
+export const DnsTimeseriesRequestDnssecList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsTimeseriesRequestDnssecList>;
 
 export type DnsTimeseriesRequestDnssecAware = "SUPPORTED" | "NOT_SUPPORTED";
 export const DnsTimeseriesRequestDnssecAware = S.String;
@@ -67374,9 +66645,8 @@ export const DnsTimeseriesRequestDnssecAware = S.String;
 export type DnsTimeseriesRequestDnssecAwareList = Array<
   DnsTimeseriesRequestDnssecAware | (string & {})
 >;
-export const DnsTimeseriesRequestDnssecAwareList = /*@__PURE__*/ S.Array(
-  DnsTimeseriesRequestDnssecAware,
-) as any as S.Schema<DnsTimeseriesRequestDnssecAwareList>;
+export const DnsTimeseriesRequestDnssecAwareList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsTimeseriesRequestDnssecAwareList>;
 
 export type DnsTimeseriesRequestDnssecE2eList = Array<boolean>;
 export const DnsTimeseriesRequestDnssecE2eList =
@@ -67391,9 +66661,8 @@ export const DnsTimeseriesRequestIpVersion = S.String;
 export type DnsTimeseriesRequestIpVersionList = Array<
   DnsTimeseriesRequestIpVersion | (string & {})
 >;
-export const DnsTimeseriesRequestIpVersionList = /*@__PURE__*/ S.Array(
-  DnsTimeseriesRequestIpVersion,
-) as any as S.Schema<DnsTimeseriesRequestIpVersionList>;
+export const DnsTimeseriesRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsTimeseriesRequestIpVersionList>;
 
 export type DnsTimeseriesRequestLocationList = Array<string>;
 export const DnsTimeseriesRequestLocationList =
@@ -67415,9 +66684,8 @@ export type DnsTimeseriesRequestProtocol = "UDP" | "TCP" | "HTTPS" | "TLS";
 export const DnsTimeseriesRequestProtocol = S.String;
 
 export type DnsTimeseriesRequestProtocolList = Array<DnsTimeseriesRequestProtocol | (string & {})>;
-export const DnsTimeseriesRequestProtocolList = /*@__PURE__*/ S.Array(
-  DnsTimeseriesRequestProtocol,
-) as any as S.Schema<DnsTimeseriesRequestProtocolList>;
+export const DnsTimeseriesRequestProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsTimeseriesRequestProtocolList>;
 
 export type DnsTimeseriesRequestQueryType =
   | "A"
@@ -67513,9 +66781,8 @@ export const DnsTimeseriesRequestQueryType = S.String;
 export type DnsTimeseriesRequestQueryTypeList = Array<
   DnsTimeseriesRequestQueryType | (string & {})
 >;
-export const DnsTimeseriesRequestQueryTypeList = /*@__PURE__*/ S.Array(
-  DnsTimeseriesRequestQueryType,
-) as any as S.Schema<DnsTimeseriesRequestQueryTypeList>;
+export const DnsTimeseriesRequestQueryTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsTimeseriesRequestQueryTypeList>;
 
 export type DnsTimeseriesRequestResponseCode =
   | "NOERROR"
@@ -67542,9 +66809,8 @@ export const DnsTimeseriesRequestResponseCode = S.String;
 export type DnsTimeseriesRequestResponseCodeList = Array<
   DnsTimeseriesRequestResponseCode | (string & {})
 >;
-export const DnsTimeseriesRequestResponseCodeList = /*@__PURE__*/ S.Array(
-  DnsTimeseriesRequestResponseCode,
-) as any as S.Schema<DnsTimeseriesRequestResponseCodeList>;
+export const DnsTimeseriesRequestResponseCodeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsTimeseriesRequestResponseCodeList>;
 
 export type DnsTimeseriesRequestResponseTtl =
   | "LTE_1M"
@@ -67559,9 +66825,8 @@ export const DnsTimeseriesRequestResponseTtl = S.String;
 export type DnsTimeseriesRequestResponseTtlList = Array<
   DnsTimeseriesRequestResponseTtl | (string & {})
 >;
-export const DnsTimeseriesRequestResponseTtlList = /*@__PURE__*/ S.Array(
-  DnsTimeseriesRequestResponseTtl,
-) as any as S.Schema<DnsTimeseriesRequestResponseTtlList>;
+export const DnsTimeseriesRequestResponseTtlList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsTimeseriesRequestResponseTtlList>;
 
 export type DnsTimeseriesRequestTldList = Array<string>;
 export const DnsTimeseriesRequestTldList =
@@ -67839,9 +67104,8 @@ export const AiBotsTimeseriesGroupsRequestContentType = S.String;
 export type AiBotsTimeseriesGroupsRequestContentTypeList = Array<
   AiBotsTimeseriesGroupsRequestContentType | (string & {})
 >;
-export const AiBotsTimeseriesGroupsRequestContentTypeList = /*@__PURE__*/ S.Array(
-  AiBotsTimeseriesGroupsRequestContentType,
-) as any as S.Schema<AiBotsTimeseriesGroupsRequestContentTypeList>;
+export const AiBotsTimeseriesGroupsRequestContentTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AiBotsTimeseriesGroupsRequestContentTypeList>;
 
 export type AiBotsTimeseriesGroupsRequestContinentList = Array<string>;
 export const AiBotsTimeseriesGroupsRequestContinentList =
@@ -67899,9 +67163,8 @@ export const AiBotsTimeseriesGroupsRequestResponseStatusCategory = S.String;
 export type AiBotsTimeseriesGroupsRequestResponseStatusCategoryList = Array<
   AiBotsTimeseriesGroupsRequestResponseStatusCategory | (string & {})
 >;
-export const AiBotsTimeseriesGroupsRequestResponseStatusCategoryList = /*@__PURE__*/ S.Array(
-  AiBotsTimeseriesGroupsRequestResponseStatusCategory,
-) as any as S.Schema<AiBotsTimeseriesGroupsRequestResponseStatusCategoryList>;
+export const AiBotsTimeseriesGroupsRequestResponseStatusCategoryList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AiBotsTimeseriesGroupsRequestResponseStatusCategoryList>;
 
 export type AiBotsTimeseriesGroupsRequestUserAgentList = Array<string>;
 export const AiBotsTimeseriesGroupsRequestUserAgentList =
@@ -68202,9 +67465,8 @@ export const BotsTimeseriesGroupsRequestBotCategory = S.String;
 export type BotsTimeseriesGroupsRequestBotCategoryList = Array<
   BotsTimeseriesGroupsRequestBotCategory | (string & {})
 >;
-export const BotsTimeseriesGroupsRequestBotCategoryList = /*@__PURE__*/ S.Array(
-  BotsTimeseriesGroupsRequestBotCategory,
-) as any as S.Schema<BotsTimeseriesGroupsRequestBotCategoryList>;
+export const BotsTimeseriesGroupsRequestBotCategoryList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<BotsTimeseriesGroupsRequestBotCategoryList>;
 
 export type BotsTimeseriesGroupsRequestBotKind = "AGENT" | "BOT";
 export const BotsTimeseriesGroupsRequestBotKind = S.String;
@@ -68212,9 +67474,8 @@ export const BotsTimeseriesGroupsRequestBotKind = S.String;
 export type BotsTimeseriesGroupsRequestBotKindList = Array<
   BotsTimeseriesGroupsRequestBotKind | (string & {})
 >;
-export const BotsTimeseriesGroupsRequestBotKindList = /*@__PURE__*/ S.Array(
-  BotsTimeseriesGroupsRequestBotKind,
-) as any as S.Schema<BotsTimeseriesGroupsRequestBotKindList>;
+export const BotsTimeseriesGroupsRequestBotKindList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<BotsTimeseriesGroupsRequestBotKindList>;
 
 export type BotsTimeseriesGroupsRequestBotOperatorList = Array<string>;
 export const BotsTimeseriesGroupsRequestBotOperatorList =
@@ -68226,9 +67487,8 @@ export const BotsTimeseriesGroupsRequestBotVerificationStatus = S.String;
 export type BotsTimeseriesGroupsRequestBotVerificationStatusList = Array<
   BotsTimeseriesGroupsRequestBotVerificationStatus | (string & {})
 >;
-export const BotsTimeseriesGroupsRequestBotVerificationStatusList = /*@__PURE__*/ S.Array(
-  BotsTimeseriesGroupsRequestBotVerificationStatus,
-) as any as S.Schema<BotsTimeseriesGroupsRequestBotVerificationStatusList>;
+export const BotsTimeseriesGroupsRequestBotVerificationStatusList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<BotsTimeseriesGroupsRequestBotVerificationStatusList>;
 
 export type BotsTimeseriesGroupsRequestContinentList = Array<string>;
 export const BotsTimeseriesGroupsRequestContinentList =
@@ -68526,9 +67786,8 @@ export const BotsWebCrawlersTimeseriesGroupsRequestClientType = S.String;
 export type BotsWebCrawlersTimeseriesGroupsRequestClientTypeList = Array<
   BotsWebCrawlersTimeseriesGroupsRequestClientType | (string & {})
 >;
-export const BotsWebCrawlersTimeseriesGroupsRequestClientTypeList = /*@__PURE__*/ S.Array(
-  BotsWebCrawlersTimeseriesGroupsRequestClientType,
-) as any as S.Schema<BotsWebCrawlersTimeseriesGroupsRequestClientTypeList>;
+export const BotsWebCrawlersTimeseriesGroupsRequestClientTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<BotsWebCrawlersTimeseriesGroupsRequestClientTypeList>;
 
 export type BotsWebCrawlersTimeseriesGroupsRequestDateEndList = Array<string>;
 export const BotsWebCrawlersTimeseriesGroupsRequestDateEndList =
@@ -68575,9 +67834,7 @@ export type BotsWebCrawlersTimeseriesGroupsRequestResponseStatusCategoryList = A
   BotsWebCrawlersTimeseriesGroupsRequestResponseStatusCategory | (string & {})
 >;
 export const BotsWebCrawlersTimeseriesGroupsRequestResponseStatusCategoryList =
-  /*@__PURE__*/ S.Array(
-    BotsWebCrawlersTimeseriesGroupsRequestResponseStatusCategory,
-  ) as any as S.Schema<BotsWebCrawlersTimeseriesGroupsRequestResponseStatusCategoryList>;
+  AiTimeseriesGroupsTimeseriesGroupsRequestResponseStatusCategoryList as any as S.Schema<BotsWebCrawlersTimeseriesGroupsRequestResponseStatusCategoryList>;
 
 export type BotsWebCrawlersTimeseriesGroupsRequestVerticalList = Array<string>;
 export const BotsWebCrawlersTimeseriesGroupsRequestVerticalList =
@@ -68888,9 +68145,8 @@ export const CtTimeseriesGroupsRequestDuration = S.String;
 export type CtTimeseriesGroupsRequestDurationList = Array<
   CtTimeseriesGroupsRequestDuration | (string & {})
 >;
-export const CtTimeseriesGroupsRequestDurationList = /*@__PURE__*/ S.Array(
-  CtTimeseriesGroupsRequestDuration,
-) as any as S.Schema<CtTimeseriesGroupsRequestDurationList>;
+export const CtTimeseriesGroupsRequestDurationList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<CtTimeseriesGroupsRequestDurationList>;
 
 export type CtTimeseriesGroupsRequestEntryType = "PRECERTIFICATE" | "CERTIFICATE";
 export const CtTimeseriesGroupsRequestEntryType = S.String;
@@ -68898,9 +68154,8 @@ export const CtTimeseriesGroupsRequestEntryType = S.String;
 export type CtTimeseriesGroupsRequestEntryTypeList = Array<
   CtTimeseriesGroupsRequestEntryType | (string & {})
 >;
-export const CtTimeseriesGroupsRequestEntryTypeList = /*@__PURE__*/ S.Array(
-  CtTimeseriesGroupsRequestEntryType,
-) as any as S.Schema<CtTimeseriesGroupsRequestEntryTypeList>;
+export const CtTimeseriesGroupsRequestEntryTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<CtTimeseriesGroupsRequestEntryTypeList>;
 
 export type CtTimeseriesGroupsRequestExpirationStatus = "EXPIRED" | "VALID";
 export const CtTimeseriesGroupsRequestExpirationStatus = S.String;
@@ -68908,9 +68163,8 @@ export const CtTimeseriesGroupsRequestExpirationStatus = S.String;
 export type CtTimeseriesGroupsRequestExpirationStatusList = Array<
   CtTimeseriesGroupsRequestExpirationStatus | (string & {})
 >;
-export const CtTimeseriesGroupsRequestExpirationStatusList = /*@__PURE__*/ S.Array(
-  CtTimeseriesGroupsRequestExpirationStatus,
-) as any as S.Schema<CtTimeseriesGroupsRequestExpirationStatusList>;
+export const CtTimeseriesGroupsRequestExpirationStatusList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<CtTimeseriesGroupsRequestExpirationStatusList>;
 
 export type CtTimeseriesGroupsRequestFormat = "JSON" | "CSV";
 export const CtTimeseriesGroupsRequestFormat = S.String;
@@ -68933,9 +68187,8 @@ export const CtTimeseriesGroupsRequestLogApi = S.String;
 export type CtTimeseriesGroupsRequestLogApiList = Array<
   CtTimeseriesGroupsRequestLogApi | (string & {})
 >;
-export const CtTimeseriesGroupsRequestLogApiList = /*@__PURE__*/ S.Array(
-  CtTimeseriesGroupsRequestLogApi,
-) as any as S.Schema<CtTimeseriesGroupsRequestLogApiList>;
+export const CtTimeseriesGroupsRequestLogApiList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<CtTimeseriesGroupsRequestLogApiList>;
 
 export type CtTimeseriesGroupsRequestLogOperatorList = Array<string>;
 export const CtTimeseriesGroupsRequestLogOperatorList =
@@ -68954,9 +68207,8 @@ export const CtTimeseriesGroupsRequestPublicKeyAlgorithm = S.String;
 export type CtTimeseriesGroupsRequestPublicKeyAlgorithmList = Array<
   CtTimeseriesGroupsRequestPublicKeyAlgorithm | (string & {})
 >;
-export const CtTimeseriesGroupsRequestPublicKeyAlgorithmList = /*@__PURE__*/ S.Array(
-  CtTimeseriesGroupsRequestPublicKeyAlgorithm,
-) as any as S.Schema<CtTimeseriesGroupsRequestPublicKeyAlgorithmList>;
+export const CtTimeseriesGroupsRequestPublicKeyAlgorithmList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<CtTimeseriesGroupsRequestPublicKeyAlgorithmList>;
 
 export type CtTimeseriesGroupsRequestSignatureAlgorithm =
   | "DSA_SHA_1"
@@ -68979,9 +68231,8 @@ export const CtTimeseriesGroupsRequestSignatureAlgorithm = S.String;
 export type CtTimeseriesGroupsRequestSignatureAlgorithmList = Array<
   CtTimeseriesGroupsRequestSignatureAlgorithm | (string & {})
 >;
-export const CtTimeseriesGroupsRequestSignatureAlgorithmList = /*@__PURE__*/ S.Array(
-  CtTimeseriesGroupsRequestSignatureAlgorithm,
-) as any as S.Schema<CtTimeseriesGroupsRequestSignatureAlgorithmList>;
+export const CtTimeseriesGroupsRequestSignatureAlgorithmList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<CtTimeseriesGroupsRequestSignatureAlgorithmList>;
 
 export type CtTimeseriesGroupsRequestTldList = Array<string>;
 export const CtTimeseriesGroupsRequestTldList =
@@ -68997,9 +68248,8 @@ export const CtTimeseriesGroupsRequestValidationLevel = S.String;
 export type CtTimeseriesGroupsRequestValidationLevelList = Array<
   CtTimeseriesGroupsRequestValidationLevel | (string & {})
 >;
-export const CtTimeseriesGroupsRequestValidationLevelList = /*@__PURE__*/ S.Array(
-  CtTimeseriesGroupsRequestValidationLevel,
-) as any as S.Schema<CtTimeseriesGroupsRequestValidationLevelList>;
+export const CtTimeseriesGroupsRequestValidationLevelList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<CtTimeseriesGroupsRequestValidationLevelList>;
 
 export interface TimeseriesGroupsCtRequest {
   /** Specifies the certificate attribute by which to group the results. */
@@ -69534,9 +68784,8 @@ export const NetflowsTimeseriesGroupsRequestProduct = S.String;
 export type NetflowsTimeseriesGroupsRequestProductList = Array<
   NetflowsTimeseriesGroupsRequestProduct | (string & {})
 >;
-export const NetflowsTimeseriesGroupsRequestProductList = /*@__PURE__*/ S.Array(
-  NetflowsTimeseriesGroupsRequestProduct,
-) as any as S.Schema<NetflowsTimeseriesGroupsRequestProductList>;
+export const NetflowsTimeseriesGroupsRequestProductList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<NetflowsTimeseriesGroupsRequestProductList>;
 
 export interface TimeseriesGroupsNetflowRequest {
   /** Specifies the NetFlows attribute by which to group the results. */
@@ -71422,9 +70671,8 @@ export const As112TimeseriesGroupsV2RequestProtocol = S.String;
 export type As112TimeseriesGroupsV2RequestProtocolList = Array<
   As112TimeseriesGroupsV2RequestProtocol | (string & {})
 >;
-export const As112TimeseriesGroupsV2RequestProtocolList = /*@__PURE__*/ S.Array(
-  As112TimeseriesGroupsV2RequestProtocol,
-) as any as S.Schema<As112TimeseriesGroupsV2RequestProtocolList>;
+export const As112TimeseriesGroupsV2RequestProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<As112TimeseriesGroupsV2RequestProtocolList>;
 
 export type As112TimeseriesGroupsV2RequestQueryType =
   | "A"
@@ -71520,9 +70768,8 @@ export const As112TimeseriesGroupsV2RequestQueryType = S.String;
 export type As112TimeseriesGroupsV2RequestQueryTypeList = Array<
   As112TimeseriesGroupsV2RequestQueryType | (string & {})
 >;
-export const As112TimeseriesGroupsV2RequestQueryTypeList = /*@__PURE__*/ S.Array(
-  As112TimeseriesGroupsV2RequestQueryType,
-) as any as S.Schema<As112TimeseriesGroupsV2RequestQueryTypeList>;
+export const As112TimeseriesGroupsV2RequestQueryTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<As112TimeseriesGroupsV2RequestQueryTypeList>;
 
 export type As112TimeseriesGroupsV2RequestResponseCode =
   | "NOERROR"
@@ -71549,9 +70796,8 @@ export const As112TimeseriesGroupsV2RequestResponseCode = S.String;
 export type As112TimeseriesGroupsV2RequestResponseCodeList = Array<
   As112TimeseriesGroupsV2RequestResponseCode | (string & {})
 >;
-export const As112TimeseriesGroupsV2RequestResponseCodeList = /*@__PURE__*/ S.Array(
-  As112TimeseriesGroupsV2RequestResponseCode,
-) as any as S.Schema<As112TimeseriesGroupsV2RequestResponseCodeList>;
+export const As112TimeseriesGroupsV2RequestResponseCodeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<As112TimeseriesGroupsV2RequestResponseCodeList>;
 
 export interface TimeseriesGroupsV2As112Request {
   /** Specifies the attribute by which to group the results. */
@@ -71826,9 +71072,8 @@ export const AttacksLayer3TimeseriesGroupsV2RequestIpVersion = S.String;
 export type AttacksLayer3TimeseriesGroupsV2RequestIpVersionList = Array<
   AttacksLayer3TimeseriesGroupsV2RequestIpVersion | (string & {})
 >;
-export const AttacksLayer3TimeseriesGroupsV2RequestIpVersionList = /*@__PURE__*/ S.Array(
-  AttacksLayer3TimeseriesGroupsV2RequestIpVersion,
-) as any as S.Schema<AttacksLayer3TimeseriesGroupsV2RequestIpVersionList>;
+export const AttacksLayer3TimeseriesGroupsV2RequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer3TimeseriesGroupsV2RequestIpVersionList>;
 
 export type AttacksLayer3TimeseriesGroupsV2RequestLocationList = Array<string>;
 export const AttacksLayer3TimeseriesGroupsV2RequestLocationList =
@@ -71847,9 +71092,8 @@ export const AttacksLayer3TimeseriesGroupsV2RequestProtocol = S.String;
 export type AttacksLayer3TimeseriesGroupsV2RequestProtocolList = Array<
   AttacksLayer3TimeseriesGroupsV2RequestProtocol | (string & {})
 >;
-export const AttacksLayer3TimeseriesGroupsV2RequestProtocolList = /*@__PURE__*/ S.Array(
-  AttacksLayer3TimeseriesGroupsV2RequestProtocol,
-) as any as S.Schema<AttacksLayer3TimeseriesGroupsV2RequestProtocolList>;
+export const AttacksLayer3TimeseriesGroupsV2RequestProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer3TimeseriesGroupsV2RequestProtocolList>;
 
 export interface TimeseriesGroupsV2AttackLayer3Request {
   /** Specifies the attribute by which to group the results. */
@@ -72184,9 +71428,8 @@ export const AttacksLayer7TimeseriesGroupsV2RequestHttpMethod = S.String;
 export type AttacksLayer7TimeseriesGroupsV2RequestHttpMethodList = Array<
   AttacksLayer7TimeseriesGroupsV2RequestHttpMethod | (string & {})
 >;
-export const AttacksLayer7TimeseriesGroupsV2RequestHttpMethodList = /*@__PURE__*/ S.Array(
-  AttacksLayer7TimeseriesGroupsV2RequestHttpMethod,
-) as any as S.Schema<AttacksLayer7TimeseriesGroupsV2RequestHttpMethodList>;
+export const AttacksLayer7TimeseriesGroupsV2RequestHttpMethodList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer7TimeseriesGroupsV2RequestHttpMethodList>;
 
 export type AttacksLayer7TimeseriesGroupsV2RequestHttpVersion = "HTTPv1" | "HTTPv2" | "HTTPv3";
 export const AttacksLayer7TimeseriesGroupsV2RequestHttpVersion = S.String;
@@ -72194,9 +71437,8 @@ export const AttacksLayer7TimeseriesGroupsV2RequestHttpVersion = S.String;
 export type AttacksLayer7TimeseriesGroupsV2RequestHttpVersionList = Array<
   AttacksLayer7TimeseriesGroupsV2RequestHttpVersion | (string & {})
 >;
-export const AttacksLayer7TimeseriesGroupsV2RequestHttpVersionList = /*@__PURE__*/ S.Array(
-  AttacksLayer7TimeseriesGroupsV2RequestHttpVersion,
-) as any as S.Schema<AttacksLayer7TimeseriesGroupsV2RequestHttpVersionList>;
+export const AttacksLayer7TimeseriesGroupsV2RequestHttpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer7TimeseriesGroupsV2RequestHttpVersionList>;
 
 export type AttacksLayer7TimeseriesGroupsV2RequestIpVersion = "IPv4" | "IPv6";
 export const AttacksLayer7TimeseriesGroupsV2RequestIpVersion = S.String;
@@ -72204,9 +71446,8 @@ export const AttacksLayer7TimeseriesGroupsV2RequestIpVersion = S.String;
 export type AttacksLayer7TimeseriesGroupsV2RequestIpVersionList = Array<
   AttacksLayer7TimeseriesGroupsV2RequestIpVersion | (string & {})
 >;
-export const AttacksLayer7TimeseriesGroupsV2RequestIpVersionList = /*@__PURE__*/ S.Array(
-  AttacksLayer7TimeseriesGroupsV2RequestIpVersion,
-) as any as S.Schema<AttacksLayer7TimeseriesGroupsV2RequestIpVersionList>;
+export const AttacksLayer7TimeseriesGroupsV2RequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer7TimeseriesGroupsV2RequestIpVersionList>;
 
 export type AttacksLayer7TimeseriesGroupsV2RequestLocationList = Array<string>;
 export const AttacksLayer7TimeseriesGroupsV2RequestLocationList =
@@ -72225,9 +71466,8 @@ export const AttacksLayer7TimeseriesGroupsV2RequestMitigationProduct = S.String;
 export type AttacksLayer7TimeseriesGroupsV2RequestMitigationProductList = Array<
   AttacksLayer7TimeseriesGroupsV2RequestMitigationProduct | (string & {})
 >;
-export const AttacksLayer7TimeseriesGroupsV2RequestMitigationProductList = /*@__PURE__*/ S.Array(
-  AttacksLayer7TimeseriesGroupsV2RequestMitigationProduct,
-) as any as S.Schema<AttacksLayer7TimeseriesGroupsV2RequestMitigationProductList>;
+export const AttacksLayer7TimeseriesGroupsV2RequestMitigationProductList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer7TimeseriesGroupsV2RequestMitigationProductList>;
 
 export type AttacksLayer7TimeseriesGroupsV2RequestNameList = Array<string>;
 export const AttacksLayer7TimeseriesGroupsV2RequestNameList =
@@ -72539,9 +71779,8 @@ export const DnsTimeseriesGroupsV2RequestDnssec = S.String;
 export type DnsTimeseriesGroupsV2RequestDnssecList = Array<
   DnsTimeseriesGroupsV2RequestDnssec | (string & {})
 >;
-export const DnsTimeseriesGroupsV2RequestDnssecList = /*@__PURE__*/ S.Array(
-  DnsTimeseriesGroupsV2RequestDnssec,
-) as any as S.Schema<DnsTimeseriesGroupsV2RequestDnssecList>;
+export const DnsTimeseriesGroupsV2RequestDnssecList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsTimeseriesGroupsV2RequestDnssecList>;
 
 export type DnsTimeseriesGroupsV2RequestDnssecAware = "SUPPORTED" | "NOT_SUPPORTED";
 export const DnsTimeseriesGroupsV2RequestDnssecAware = S.String;
@@ -72549,9 +71788,8 @@ export const DnsTimeseriesGroupsV2RequestDnssecAware = S.String;
 export type DnsTimeseriesGroupsV2RequestDnssecAwareList = Array<
   DnsTimeseriesGroupsV2RequestDnssecAware | (string & {})
 >;
-export const DnsTimeseriesGroupsV2RequestDnssecAwareList = /*@__PURE__*/ S.Array(
-  DnsTimeseriesGroupsV2RequestDnssecAware,
-) as any as S.Schema<DnsTimeseriesGroupsV2RequestDnssecAwareList>;
+export const DnsTimeseriesGroupsV2RequestDnssecAwareList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsTimeseriesGroupsV2RequestDnssecAwareList>;
 
 export type DnsTimeseriesGroupsV2RequestDnssecE2eList = Array<boolean>;
 export const DnsTimeseriesGroupsV2RequestDnssecE2eList =
@@ -72566,9 +71804,8 @@ export const DnsTimeseriesGroupsV2RequestIpVersion = S.String;
 export type DnsTimeseriesGroupsV2RequestIpVersionList = Array<
   DnsTimeseriesGroupsV2RequestIpVersion | (string & {})
 >;
-export const DnsTimeseriesGroupsV2RequestIpVersionList = /*@__PURE__*/ S.Array(
-  DnsTimeseriesGroupsV2RequestIpVersion,
-) as any as S.Schema<DnsTimeseriesGroupsV2RequestIpVersionList>;
+export const DnsTimeseriesGroupsV2RequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsTimeseriesGroupsV2RequestIpVersionList>;
 
 export type DnsTimeseriesGroupsV2RequestLocationList = Array<string>;
 export const DnsTimeseriesGroupsV2RequestLocationList =
@@ -72595,9 +71832,8 @@ export const DnsTimeseriesGroupsV2RequestProtocol = S.String;
 export type DnsTimeseriesGroupsV2RequestProtocolList = Array<
   DnsTimeseriesGroupsV2RequestProtocol | (string & {})
 >;
-export const DnsTimeseriesGroupsV2RequestProtocolList = /*@__PURE__*/ S.Array(
-  DnsTimeseriesGroupsV2RequestProtocol,
-) as any as S.Schema<DnsTimeseriesGroupsV2RequestProtocolList>;
+export const DnsTimeseriesGroupsV2RequestProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsTimeseriesGroupsV2RequestProtocolList>;
 
 export type DnsTimeseriesGroupsV2RequestQueryType =
   | "A"
@@ -72693,9 +71929,8 @@ export const DnsTimeseriesGroupsV2RequestQueryType = S.String;
 export type DnsTimeseriesGroupsV2RequestQueryTypeList = Array<
   DnsTimeseriesGroupsV2RequestQueryType | (string & {})
 >;
-export const DnsTimeseriesGroupsV2RequestQueryTypeList = /*@__PURE__*/ S.Array(
-  DnsTimeseriesGroupsV2RequestQueryType,
-) as any as S.Schema<DnsTimeseriesGroupsV2RequestQueryTypeList>;
+export const DnsTimeseriesGroupsV2RequestQueryTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsTimeseriesGroupsV2RequestQueryTypeList>;
 
 export type DnsTimeseriesGroupsV2RequestResponseCode =
   | "NOERROR"
@@ -72722,9 +71957,8 @@ export const DnsTimeseriesGroupsV2RequestResponseCode = S.String;
 export type DnsTimeseriesGroupsV2RequestResponseCodeList = Array<
   DnsTimeseriesGroupsV2RequestResponseCode | (string & {})
 >;
-export const DnsTimeseriesGroupsV2RequestResponseCodeList = /*@__PURE__*/ S.Array(
-  DnsTimeseriesGroupsV2RequestResponseCode,
-) as any as S.Schema<DnsTimeseriesGroupsV2RequestResponseCodeList>;
+export const DnsTimeseriesGroupsV2RequestResponseCodeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsTimeseriesGroupsV2RequestResponseCodeList>;
 
 export type DnsTimeseriesGroupsV2RequestResponseTtl =
   | "LTE_1M"
@@ -72739,9 +71973,8 @@ export const DnsTimeseriesGroupsV2RequestResponseTtl = S.String;
 export type DnsTimeseriesGroupsV2RequestResponseTtlList = Array<
   DnsTimeseriesGroupsV2RequestResponseTtl | (string & {})
 >;
-export const DnsTimeseriesGroupsV2RequestResponseTtlList = /*@__PURE__*/ S.Array(
-  DnsTimeseriesGroupsV2RequestResponseTtl,
-) as any as S.Schema<DnsTimeseriesGroupsV2RequestResponseTtlList>;
+export const DnsTimeseriesGroupsV2RequestResponseTtlList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<DnsTimeseriesGroupsV2RequestResponseTtlList>;
 
 export type DnsTimeseriesGroupsV2RequestTldList = Array<string>;
 export const DnsTimeseriesGroupsV2RequestTldList =
@@ -73028,9 +72261,8 @@ export const EmailRoutingTimeseriesGroupsV2RequestArc = S.String;
 export type EmailRoutingTimeseriesGroupsV2RequestArcList = Array<
   EmailRoutingTimeseriesGroupsV2RequestArc | (string & {})
 >;
-export const EmailRoutingTimeseriesGroupsV2RequestArcList = /*@__PURE__*/ S.Array(
-  EmailRoutingTimeseriesGroupsV2RequestArc,
-) as any as S.Schema<EmailRoutingTimeseriesGroupsV2RequestArcList>;
+export const EmailRoutingTimeseriesGroupsV2RequestArcList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingTimeseriesGroupsV2RequestArcList>;
 
 export type EmailRoutingTimeseriesGroupsV2RequestDateEndList = Array<string>;
 export const EmailRoutingTimeseriesGroupsV2RequestDateEndList =
@@ -73050,9 +72282,8 @@ export const EmailRoutingTimeseriesGroupsV2RequestDkim = S.String;
 export type EmailRoutingTimeseriesGroupsV2RequestDkimList = Array<
   EmailRoutingTimeseriesGroupsV2RequestDkim | (string & {})
 >;
-export const EmailRoutingTimeseriesGroupsV2RequestDkimList = /*@__PURE__*/ S.Array(
-  EmailRoutingTimeseriesGroupsV2RequestDkim,
-) as any as S.Schema<EmailRoutingTimeseriesGroupsV2RequestDkimList>;
+export const EmailRoutingTimeseriesGroupsV2RequestDkimList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingTimeseriesGroupsV2RequestDkimList>;
 
 export type EmailRoutingTimeseriesGroupsV2RequestDmarc = "PASS" | "NONE" | "FAIL";
 export const EmailRoutingTimeseriesGroupsV2RequestDmarc = S.String;
@@ -73060,9 +72291,8 @@ export const EmailRoutingTimeseriesGroupsV2RequestDmarc = S.String;
 export type EmailRoutingTimeseriesGroupsV2RequestDmarcList = Array<
   EmailRoutingTimeseriesGroupsV2RequestDmarc | (string & {})
 >;
-export const EmailRoutingTimeseriesGroupsV2RequestDmarcList = /*@__PURE__*/ S.Array(
-  EmailRoutingTimeseriesGroupsV2RequestDmarc,
-) as any as S.Schema<EmailRoutingTimeseriesGroupsV2RequestDmarcList>;
+export const EmailRoutingTimeseriesGroupsV2RequestDmarcList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingTimeseriesGroupsV2RequestDmarcList>;
 
 export type EmailRoutingTimeseriesGroupsV2RequestEncrypted = "ENCRYPTED" | "NOT_ENCRYPTED";
 export const EmailRoutingTimeseriesGroupsV2RequestEncrypted = S.String;
@@ -73070,9 +72300,8 @@ export const EmailRoutingTimeseriesGroupsV2RequestEncrypted = S.String;
 export type EmailRoutingTimeseriesGroupsV2RequestEncryptedList = Array<
   EmailRoutingTimeseriesGroupsV2RequestEncrypted | (string & {})
 >;
-export const EmailRoutingTimeseriesGroupsV2RequestEncryptedList = /*@__PURE__*/ S.Array(
-  EmailRoutingTimeseriesGroupsV2RequestEncrypted,
-) as any as S.Schema<EmailRoutingTimeseriesGroupsV2RequestEncryptedList>;
+export const EmailRoutingTimeseriesGroupsV2RequestEncryptedList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingTimeseriesGroupsV2RequestEncryptedList>;
 
 export type EmailRoutingTimeseriesGroupsV2RequestFormat = "JSON" | "CSV";
 export const EmailRoutingTimeseriesGroupsV2RequestFormat = S.String;
@@ -73083,9 +72312,8 @@ export const EmailRoutingTimeseriesGroupsV2RequestIpVersion = S.String;
 export type EmailRoutingTimeseriesGroupsV2RequestIpVersionList = Array<
   EmailRoutingTimeseriesGroupsV2RequestIpVersion | (string & {})
 >;
-export const EmailRoutingTimeseriesGroupsV2RequestIpVersionList = /*@__PURE__*/ S.Array(
-  EmailRoutingTimeseriesGroupsV2RequestIpVersion,
-) as any as S.Schema<EmailRoutingTimeseriesGroupsV2RequestIpVersionList>;
+export const EmailRoutingTimeseriesGroupsV2RequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingTimeseriesGroupsV2RequestIpVersionList>;
 
 export type EmailRoutingTimeseriesGroupsV2RequestNameList = Array<string>;
 export const EmailRoutingTimeseriesGroupsV2RequestNameList =
@@ -73097,9 +72325,8 @@ export const EmailRoutingTimeseriesGroupsV2RequestSpf = S.String;
 export type EmailRoutingTimeseriesGroupsV2RequestSpfList = Array<
   EmailRoutingTimeseriesGroupsV2RequestSpf | (string & {})
 >;
-export const EmailRoutingTimeseriesGroupsV2RequestSpfList = /*@__PURE__*/ S.Array(
-  EmailRoutingTimeseriesGroupsV2RequestSpf,
-) as any as S.Schema<EmailRoutingTimeseriesGroupsV2RequestSpfList>;
+export const EmailRoutingTimeseriesGroupsV2RequestSpfList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailRoutingTimeseriesGroupsV2RequestSpfList>;
 
 export interface TimeseriesGroupsV2EmailRoutingRequest {
   /** Specifies the attribute by which to group the results. */
@@ -73366,9 +72593,8 @@ export const EmailSecurityTimeseriesGroupsV2RequestArc = S.String;
 export type EmailSecurityTimeseriesGroupsV2RequestArcList = Array<
   EmailSecurityTimeseriesGroupsV2RequestArc | (string & {})
 >;
-export const EmailSecurityTimeseriesGroupsV2RequestArcList = /*@__PURE__*/ S.Array(
-  EmailSecurityTimeseriesGroupsV2RequestArc,
-) as any as S.Schema<EmailSecurityTimeseriesGroupsV2RequestArcList>;
+export const EmailSecurityTimeseriesGroupsV2RequestArcList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecurityTimeseriesGroupsV2RequestArcList>;
 
 export type EmailSecurityTimeseriesGroupsV2RequestDateEndList = Array<string>;
 export const EmailSecurityTimeseriesGroupsV2RequestDateEndList =
@@ -73388,9 +72614,8 @@ export const EmailSecurityTimeseriesGroupsV2RequestDkim = S.String;
 export type EmailSecurityTimeseriesGroupsV2RequestDkimList = Array<
   EmailSecurityTimeseriesGroupsV2RequestDkim | (string & {})
 >;
-export const EmailSecurityTimeseriesGroupsV2RequestDkimList = /*@__PURE__*/ S.Array(
-  EmailSecurityTimeseriesGroupsV2RequestDkim,
-) as any as S.Schema<EmailSecurityTimeseriesGroupsV2RequestDkimList>;
+export const EmailSecurityTimeseriesGroupsV2RequestDkimList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecurityTimeseriesGroupsV2RequestDkimList>;
 
 export type EmailSecurityTimeseriesGroupsV2RequestDmarc = "PASS" | "NONE" | "FAIL";
 export const EmailSecurityTimeseriesGroupsV2RequestDmarc = S.String;
@@ -73398,9 +72623,8 @@ export const EmailSecurityTimeseriesGroupsV2RequestDmarc = S.String;
 export type EmailSecurityTimeseriesGroupsV2RequestDmarcList = Array<
   EmailSecurityTimeseriesGroupsV2RequestDmarc | (string & {})
 >;
-export const EmailSecurityTimeseriesGroupsV2RequestDmarcList = /*@__PURE__*/ S.Array(
-  EmailSecurityTimeseriesGroupsV2RequestDmarc,
-) as any as S.Schema<EmailSecurityTimeseriesGroupsV2RequestDmarcList>;
+export const EmailSecurityTimeseriesGroupsV2RequestDmarcList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecurityTimeseriesGroupsV2RequestDmarcList>;
 
 export type EmailSecurityTimeseriesGroupsV2RequestFormat = "JSON" | "CSV";
 export const EmailSecurityTimeseriesGroupsV2RequestFormat = S.String;
@@ -73415,9 +72639,8 @@ export const EmailSecurityTimeseriesGroupsV2RequestSpf = S.String;
 export type EmailSecurityTimeseriesGroupsV2RequestSpfList = Array<
   EmailSecurityTimeseriesGroupsV2RequestSpf | (string & {})
 >;
-export const EmailSecurityTimeseriesGroupsV2RequestSpfList = /*@__PURE__*/ S.Array(
-  EmailSecurityTimeseriesGroupsV2RequestSpf,
-) as any as S.Schema<EmailSecurityTimeseriesGroupsV2RequestSpfList>;
+export const EmailSecurityTimeseriesGroupsV2RequestSpfList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecurityTimeseriesGroupsV2RequestSpfList>;
 
 export type EmailSecurityTimeseriesGroupsV2RequestTlsVersion =
   | "TLSv1_0"
@@ -73429,9 +72652,8 @@ export const EmailSecurityTimeseriesGroupsV2RequestTlsVersion = S.String;
 export type EmailSecurityTimeseriesGroupsV2RequestTlsVersionList = Array<
   EmailSecurityTimeseriesGroupsV2RequestTlsVersion | (string & {})
 >;
-export const EmailSecurityTimeseriesGroupsV2RequestTlsVersionList = /*@__PURE__*/ S.Array(
-  EmailSecurityTimeseriesGroupsV2RequestTlsVersion,
-) as any as S.Schema<EmailSecurityTimeseriesGroupsV2RequestTlsVersionList>;
+export const EmailSecurityTimeseriesGroupsV2RequestTlsVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecurityTimeseriesGroupsV2RequestTlsVersionList>;
 
 export interface TimeseriesGroupsV2EmailSecurityRequest {
   /** Specifies the attribute by which to group the results. */
@@ -73702,9 +72924,8 @@ export const HttpTimeseriesGroupsV2RequestApiTraffic = S.String;
 export type HttpTimeseriesGroupsV2RequestApiTrafficList = Array<
   HttpTimeseriesGroupsV2RequestApiTraffic | (string & {})
 >;
-export const HttpTimeseriesGroupsV2RequestApiTrafficList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsV2RequestApiTraffic,
-) as any as S.Schema<HttpTimeseriesGroupsV2RequestApiTrafficList>;
+export const HttpTimeseriesGroupsV2RequestApiTrafficList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsV2RequestApiTrafficList>;
 
 export type HttpTimeseriesGroupsV2RequestAsnList = Array<string>;
 export const HttpTimeseriesGroupsV2RequestAsnList =
@@ -73716,9 +72937,8 @@ export const HttpTimeseriesGroupsV2RequestBotClass = S.String;
 export type HttpTimeseriesGroupsV2RequestBotClassList = Array<
   HttpTimeseriesGroupsV2RequestBotClass | (string & {})
 >;
-export const HttpTimeseriesGroupsV2RequestBotClassList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsV2RequestBotClass,
-) as any as S.Schema<HttpTimeseriesGroupsV2RequestBotClassList>;
+export const HttpTimeseriesGroupsV2RequestBotClassList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsV2RequestBotClassList>;
 
 export type HttpTimeseriesGroupsV2RequestContentType =
   | "HTML"
@@ -73742,9 +72962,8 @@ export const HttpTimeseriesGroupsV2RequestContentType = S.String;
 export type HttpTimeseriesGroupsV2RequestContentTypeList = Array<
   HttpTimeseriesGroupsV2RequestContentType | (string & {})
 >;
-export const HttpTimeseriesGroupsV2RequestContentTypeList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsV2RequestContentType,
-) as any as S.Schema<HttpTimeseriesGroupsV2RequestContentTypeList>;
+export const HttpTimeseriesGroupsV2RequestContentTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsV2RequestContentTypeList>;
 
 export type HttpTimeseriesGroupsV2RequestContinentList = Array<string>;
 export const HttpTimeseriesGroupsV2RequestContinentList =
@@ -73768,9 +72987,8 @@ export const HttpTimeseriesGroupsV2RequestDeviceType = S.String;
 export type HttpTimeseriesGroupsV2RequestDeviceTypeList = Array<
   HttpTimeseriesGroupsV2RequestDeviceType | (string & {})
 >;
-export const HttpTimeseriesGroupsV2RequestDeviceTypeList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsV2RequestDeviceType,
-) as any as S.Schema<HttpTimeseriesGroupsV2RequestDeviceTypeList>;
+export const HttpTimeseriesGroupsV2RequestDeviceTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsV2RequestDeviceTypeList>;
 
 export type HttpTimeseriesGroupsV2RequestFormat = "JSON" | "CSV";
 export const HttpTimeseriesGroupsV2RequestFormat = S.String;
@@ -73785,9 +73003,8 @@ export const HttpTimeseriesGroupsV2RequestHttpProtocol = S.String;
 export type HttpTimeseriesGroupsV2RequestHttpProtocolList = Array<
   HttpTimeseriesGroupsV2RequestHttpProtocol | (string & {})
 >;
-export const HttpTimeseriesGroupsV2RequestHttpProtocolList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsV2RequestHttpProtocol,
-) as any as S.Schema<HttpTimeseriesGroupsV2RequestHttpProtocolList>;
+export const HttpTimeseriesGroupsV2RequestHttpProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsV2RequestHttpProtocolList>;
 
 export type HttpTimeseriesGroupsV2RequestHttpVersion = "HTTPv1" | "HTTPv2" | "HTTPv3";
 export const HttpTimeseriesGroupsV2RequestHttpVersion = S.String;
@@ -73795,9 +73012,8 @@ export const HttpTimeseriesGroupsV2RequestHttpVersion = S.String;
 export type HttpTimeseriesGroupsV2RequestHttpVersionList = Array<
   HttpTimeseriesGroupsV2RequestHttpVersion | (string & {})
 >;
-export const HttpTimeseriesGroupsV2RequestHttpVersionList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsV2RequestHttpVersion,
-) as any as S.Schema<HttpTimeseriesGroupsV2RequestHttpVersionList>;
+export const HttpTimeseriesGroupsV2RequestHttpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsV2RequestHttpVersionList>;
 
 export type HttpTimeseriesGroupsV2RequestIpVersion = "IPv4" | "IPv6";
 export const HttpTimeseriesGroupsV2RequestIpVersion = S.String;
@@ -73805,9 +73021,8 @@ export const HttpTimeseriesGroupsV2RequestIpVersion = S.String;
 export type HttpTimeseriesGroupsV2RequestIpVersionList = Array<
   HttpTimeseriesGroupsV2RequestIpVersion | (string & {})
 >;
-export const HttpTimeseriesGroupsV2RequestIpVersionList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsV2RequestIpVersion,
-) as any as S.Schema<HttpTimeseriesGroupsV2RequestIpVersionList>;
+export const HttpTimeseriesGroupsV2RequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsV2RequestIpVersionList>;
 
 export type HttpTimeseriesGroupsV2RequestLocationList = Array<string>;
 export const HttpTimeseriesGroupsV2RequestLocationList =
@@ -73833,9 +73048,8 @@ export const HttpTimeseriesGroupsV2RequestOs = S.String;
 export type HttpTimeseriesGroupsV2RequestOsList = Array<
   HttpTimeseriesGroupsV2RequestOs | (string & {})
 >;
-export const HttpTimeseriesGroupsV2RequestOsList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsV2RequestOs,
-) as any as S.Schema<HttpTimeseriesGroupsV2RequestOsList>;
+export const HttpTimeseriesGroupsV2RequestOsList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsV2RequestOsList>;
 
 export type HttpTimeseriesGroupsV2RequestTlsVersion =
   | "TLSv1_0"
@@ -73848,9 +73062,8 @@ export const HttpTimeseriesGroupsV2RequestTlsVersion = S.String;
 export type HttpTimeseriesGroupsV2RequestTlsVersionList = Array<
   HttpTimeseriesGroupsV2RequestTlsVersion | (string & {})
 >;
-export const HttpTimeseriesGroupsV2RequestTlsVersionList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsV2RequestTlsVersion,
-) as any as S.Schema<HttpTimeseriesGroupsV2RequestTlsVersionList>;
+export const HttpTimeseriesGroupsV2RequestTlsVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsV2RequestTlsVersionList>;
 
 export interface TimeseriesGroupsV2HttpRequest {
   /** Specifies the HTTP attribute by which to group the results. */
@@ -74128,9 +73341,8 @@ export const LeakedCredentialsTimeseriesGroupsV2RequestBotClass = S.String;
 export type LeakedCredentialsTimeseriesGroupsV2RequestBotClassList = Array<
   LeakedCredentialsTimeseriesGroupsV2RequestBotClass | (string & {})
 >;
-export const LeakedCredentialsTimeseriesGroupsV2RequestBotClassList = /*@__PURE__*/ S.Array(
-  LeakedCredentialsTimeseriesGroupsV2RequestBotClass,
-) as any as S.Schema<LeakedCredentialsTimeseriesGroupsV2RequestBotClassList>;
+export const LeakedCredentialsTimeseriesGroupsV2RequestBotClassList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<LeakedCredentialsTimeseriesGroupsV2RequestBotClassList>;
 
 export type LeakedCredentialsTimeseriesGroupsV2RequestCheckResult =
   | "CLEAN"
@@ -74143,9 +73355,8 @@ export const LeakedCredentialsTimeseriesGroupsV2RequestCheckResult = S.String;
 export type LeakedCredentialsTimeseriesGroupsV2RequestCheckResultList = Array<
   LeakedCredentialsTimeseriesGroupsV2RequestCheckResult | (string & {})
 >;
-export const LeakedCredentialsTimeseriesGroupsV2RequestCheckResultList = /*@__PURE__*/ S.Array(
-  LeakedCredentialsTimeseriesGroupsV2RequestCheckResult,
-) as any as S.Schema<LeakedCredentialsTimeseriesGroupsV2RequestCheckResultList>;
+export const LeakedCredentialsTimeseriesGroupsV2RequestCheckResultList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<LeakedCredentialsTimeseriesGroupsV2RequestCheckResultList>;
 
 export type LeakedCredentialsTimeseriesGroupsV2RequestCompromised = "CLEAN" | "COMPROMISED";
 export const LeakedCredentialsTimeseriesGroupsV2RequestCompromised = S.String;
@@ -74153,9 +73364,8 @@ export const LeakedCredentialsTimeseriesGroupsV2RequestCompromised = S.String;
 export type LeakedCredentialsTimeseriesGroupsV2RequestCompromisedList = Array<
   LeakedCredentialsTimeseriesGroupsV2RequestCompromised | (string & {})
 >;
-export const LeakedCredentialsTimeseriesGroupsV2RequestCompromisedList = /*@__PURE__*/ S.Array(
-  LeakedCredentialsTimeseriesGroupsV2RequestCompromised,
-) as any as S.Schema<LeakedCredentialsTimeseriesGroupsV2RequestCompromisedList>;
+export const LeakedCredentialsTimeseriesGroupsV2RequestCompromisedList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<LeakedCredentialsTimeseriesGroupsV2RequestCompromisedList>;
 
 export type LeakedCredentialsTimeseriesGroupsV2RequestContinentList = Array<string>;
 export const LeakedCredentialsTimeseriesGroupsV2RequestContinentList =
@@ -74455,9 +73665,8 @@ export const HttpTimeseriesRequestApiTraffic = S.String;
 export type HttpTimeseriesRequestApiTrafficList = Array<
   HttpTimeseriesRequestApiTraffic | (string & {})
 >;
-export const HttpTimeseriesRequestApiTrafficList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesRequestApiTraffic,
-) as any as S.Schema<HttpTimeseriesRequestApiTrafficList>;
+export const HttpTimeseriesRequestApiTrafficList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesRequestApiTrafficList>;
 
 export type HttpTimeseriesRequestAsnList = Array<string>;
 export const HttpTimeseriesRequestAsnList =
@@ -74469,9 +73678,8 @@ export const HttpTimeseriesRequestBotClass = S.String;
 export type HttpTimeseriesRequestBotClassList = Array<
   HttpTimeseriesRequestBotClass | (string & {})
 >;
-export const HttpTimeseriesRequestBotClassList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesRequestBotClass,
-) as any as S.Schema<HttpTimeseriesRequestBotClassList>;
+export const HttpTimeseriesRequestBotClassList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesRequestBotClassList>;
 
 export type HttpTimeseriesRequestBrowserFamily = "CHROME" | "EDGE" | "FIREFOX" | "SAFARI";
 export const HttpTimeseriesRequestBrowserFamily = S.String;
@@ -74479,9 +73687,8 @@ export const HttpTimeseriesRequestBrowserFamily = S.String;
 export type HttpTimeseriesRequestBrowserFamilyList = Array<
   HttpTimeseriesRequestBrowserFamily | (string & {})
 >;
-export const HttpTimeseriesRequestBrowserFamilyList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesRequestBrowserFamily,
-) as any as S.Schema<HttpTimeseriesRequestBrowserFamilyList>;
+export const HttpTimeseriesRequestBrowserFamilyList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesRequestBrowserFamilyList>;
 
 export type HttpTimeseriesRequestContentType =
   | "HTML"
@@ -74505,9 +73712,8 @@ export const HttpTimeseriesRequestContentType = S.String;
 export type HttpTimeseriesRequestContentTypeList = Array<
   HttpTimeseriesRequestContentType | (string & {})
 >;
-export const HttpTimeseriesRequestContentTypeList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesRequestContentType,
-) as any as S.Schema<HttpTimeseriesRequestContentTypeList>;
+export const HttpTimeseriesRequestContentTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesRequestContentTypeList>;
 
 export type HttpTimeseriesRequestContinentList = Array<string>;
 export const HttpTimeseriesRequestContinentList =
@@ -74531,9 +73737,8 @@ export const HttpTimeseriesRequestDeviceType = S.String;
 export type HttpTimeseriesRequestDeviceTypeList = Array<
   HttpTimeseriesRequestDeviceType | (string & {})
 >;
-export const HttpTimeseriesRequestDeviceTypeList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesRequestDeviceType,
-) as any as S.Schema<HttpTimeseriesRequestDeviceTypeList>;
+export const HttpTimeseriesRequestDeviceTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesRequestDeviceTypeList>;
 
 export type HttpTimeseriesRequestFormat = "JSON" | "CSV";
 export const HttpTimeseriesRequestFormat = S.String;
@@ -74548,9 +73753,8 @@ export const HttpTimeseriesRequestHttpProtocol = S.String;
 export type HttpTimeseriesRequestHttpProtocolList = Array<
   HttpTimeseriesRequestHttpProtocol | (string & {})
 >;
-export const HttpTimeseriesRequestHttpProtocolList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesRequestHttpProtocol,
-) as any as S.Schema<HttpTimeseriesRequestHttpProtocolList>;
+export const HttpTimeseriesRequestHttpProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesRequestHttpProtocolList>;
 
 export type HttpTimeseriesRequestHttpVersion = "HTTPv1" | "HTTPv2" | "HTTPv3";
 export const HttpTimeseriesRequestHttpVersion = S.String;
@@ -74558,9 +73762,8 @@ export const HttpTimeseriesRequestHttpVersion = S.String;
 export type HttpTimeseriesRequestHttpVersionList = Array<
   HttpTimeseriesRequestHttpVersion | (string & {})
 >;
-export const HttpTimeseriesRequestHttpVersionList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesRequestHttpVersion,
-) as any as S.Schema<HttpTimeseriesRequestHttpVersionList>;
+export const HttpTimeseriesRequestHttpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesRequestHttpVersionList>;
 
 export type HttpTimeseriesRequestIpVersion = "IPv4" | "IPv6";
 export const HttpTimeseriesRequestIpVersion = S.String;
@@ -74568,9 +73771,8 @@ export const HttpTimeseriesRequestIpVersion = S.String;
 export type HttpTimeseriesRequestIpVersionList = Array<
   HttpTimeseriesRequestIpVersion | (string & {})
 >;
-export const HttpTimeseriesRequestIpVersionList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesRequestIpVersion,
-) as any as S.Schema<HttpTimeseriesRequestIpVersionList>;
+export const HttpTimeseriesRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesRequestIpVersionList>;
 
 export type HttpTimeseriesRequestLocationList = Array<string>;
 export const HttpTimeseriesRequestLocationList =
@@ -74594,9 +73796,8 @@ export type HttpTimeseriesRequestOs =
 export const HttpTimeseriesRequestOs = S.String;
 
 export type HttpTimeseriesRequestOsList = Array<HttpTimeseriesRequestOs | (string & {})>;
-export const HttpTimeseriesRequestOsList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesRequestOs,
-) as any as S.Schema<HttpTimeseriesRequestOsList>;
+export const HttpTimeseriesRequestOsList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesRequestOsList>;
 
 export type HttpTimeseriesRequestTlsVersion =
   | "TLSv1_0"
@@ -74609,9 +73810,8 @@ export const HttpTimeseriesRequestTlsVersion = S.String;
 export type HttpTimeseriesRequestTlsVersionList = Array<
   HttpTimeseriesRequestTlsVersion | (string & {})
 >;
-export const HttpTimeseriesRequestTlsVersionList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesRequestTlsVersion,
-) as any as S.Schema<HttpTimeseriesRequestTlsVersionList>;
+export const HttpTimeseriesRequestTlsVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesRequestTlsVersionList>;
 
 export interface TimeseriesHttpRequest {
   /** Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/). When omitted, the interval is auto-selected from the requested date range; finer intervals are only available for shorter ranges. If the requested interval is too granular for the date range, the request is rejected. */
@@ -74893,9 +74093,8 @@ export const NetflowsTimeseriesRequestProduct = S.String;
 export type NetflowsTimeseriesRequestProductList = Array<
   NetflowsTimeseriesRequestProduct | (string & {})
 >;
-export const NetflowsTimeseriesRequestProductList = /*@__PURE__*/ S.Array(
-  NetflowsTimeseriesRequestProduct,
-) as any as S.Schema<NetflowsTimeseriesRequestProductList>;
+export const NetflowsTimeseriesRequestProductList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<NetflowsTimeseriesRequestProductList>;
 
 export interface TimeseriesNetflowRequest {
   /** Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/). When omitted, the interval is auto-selected from the requested date range; finer intervals are only available for shorter ranges. If the requested interval is too granular for the date range, the request is rejected. */
@@ -75657,9 +74856,8 @@ export const EmailSecuritySummaryTlsVersionRequestArc = S.String;
 export type EmailSecuritySummaryTlsVersionRequestArcList = Array<
   EmailSecuritySummaryTlsVersionRequestArc | (string & {})
 >;
-export const EmailSecuritySummaryTlsVersionRequestArcList = /*@__PURE__*/ S.Array(
-  EmailSecuritySummaryTlsVersionRequestArc,
-) as any as S.Schema<EmailSecuritySummaryTlsVersionRequestArcList>;
+export const EmailSecuritySummaryTlsVersionRequestArcList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecuritySummaryTlsVersionRequestArcList>;
 
 export type EmailSecuritySummaryTlsVersionRequestDateEndList = Array<string>;
 export const EmailSecuritySummaryTlsVersionRequestDateEndList =
@@ -75679,9 +74877,8 @@ export const EmailSecuritySummaryTlsVersionRequestDkim = S.String;
 export type EmailSecuritySummaryTlsVersionRequestDkimList = Array<
   EmailSecuritySummaryTlsVersionRequestDkim | (string & {})
 >;
-export const EmailSecuritySummaryTlsVersionRequestDkimList = /*@__PURE__*/ S.Array(
-  EmailSecuritySummaryTlsVersionRequestDkim,
-) as any as S.Schema<EmailSecuritySummaryTlsVersionRequestDkimList>;
+export const EmailSecuritySummaryTlsVersionRequestDkimList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecuritySummaryTlsVersionRequestDkimList>;
 
 export type EmailSecuritySummaryTlsVersionRequestDmarc = "PASS" | "NONE" | "FAIL";
 export const EmailSecuritySummaryTlsVersionRequestDmarc = S.String;
@@ -75689,9 +74886,8 @@ export const EmailSecuritySummaryTlsVersionRequestDmarc = S.String;
 export type EmailSecuritySummaryTlsVersionRequestDmarcList = Array<
   EmailSecuritySummaryTlsVersionRequestDmarc | (string & {})
 >;
-export const EmailSecuritySummaryTlsVersionRequestDmarcList = /*@__PURE__*/ S.Array(
-  EmailSecuritySummaryTlsVersionRequestDmarc,
-) as any as S.Schema<EmailSecuritySummaryTlsVersionRequestDmarcList>;
+export const EmailSecuritySummaryTlsVersionRequestDmarcList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecuritySummaryTlsVersionRequestDmarcList>;
 
 export type EmailSecuritySummaryTlsVersionRequestFormat = "JSON" | "CSV";
 export const EmailSecuritySummaryTlsVersionRequestFormat = S.String;
@@ -75706,9 +74902,8 @@ export const EmailSecuritySummaryTlsVersionRequestSpf = S.String;
 export type EmailSecuritySummaryTlsVersionRequestSpfList = Array<
   EmailSecuritySummaryTlsVersionRequestSpf | (string & {})
 >;
-export const EmailSecuritySummaryTlsVersionRequestSpfList = /*@__PURE__*/ S.Array(
-  EmailSecuritySummaryTlsVersionRequestSpf,
-) as any as S.Schema<EmailSecuritySummaryTlsVersionRequestSpfList>;
+export const EmailSecuritySummaryTlsVersionRequestSpfList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecuritySummaryTlsVersionRequestSpfList>;
 
 export interface TlsVersionEmailSecuritySummaryRequest {
   /** Filters results by ARC (Authenticated Received Chain) validation. */
@@ -75942,9 +75137,8 @@ export const EmailSecurityTimeseriesGroupsTlsVersionRequestArc = S.String;
 export type EmailSecurityTimeseriesGroupsTlsVersionRequestArcList = Array<
   EmailSecurityTimeseriesGroupsTlsVersionRequestArc | (string & {})
 >;
-export const EmailSecurityTimeseriesGroupsTlsVersionRequestArcList = /*@__PURE__*/ S.Array(
-  EmailSecurityTimeseriesGroupsTlsVersionRequestArc,
-) as any as S.Schema<EmailSecurityTimeseriesGroupsTlsVersionRequestArcList>;
+export const EmailSecurityTimeseriesGroupsTlsVersionRequestArcList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecurityTimeseriesGroupsTlsVersionRequestArcList>;
 
 export type EmailSecurityTimeseriesGroupsTlsVersionRequestDateEndList = Array<string>;
 export const EmailSecurityTimeseriesGroupsTlsVersionRequestDateEndList =
@@ -75964,9 +75158,8 @@ export const EmailSecurityTimeseriesGroupsTlsVersionRequestDkim = S.String;
 export type EmailSecurityTimeseriesGroupsTlsVersionRequestDkimList = Array<
   EmailSecurityTimeseriesGroupsTlsVersionRequestDkim | (string & {})
 >;
-export const EmailSecurityTimeseriesGroupsTlsVersionRequestDkimList = /*@__PURE__*/ S.Array(
-  EmailSecurityTimeseriesGroupsTlsVersionRequestDkim,
-) as any as S.Schema<EmailSecurityTimeseriesGroupsTlsVersionRequestDkimList>;
+export const EmailSecurityTimeseriesGroupsTlsVersionRequestDkimList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecurityTimeseriesGroupsTlsVersionRequestDkimList>;
 
 export type EmailSecurityTimeseriesGroupsTlsVersionRequestDmarc = "PASS" | "NONE" | "FAIL";
 export const EmailSecurityTimeseriesGroupsTlsVersionRequestDmarc = S.String;
@@ -75974,9 +75167,8 @@ export const EmailSecurityTimeseriesGroupsTlsVersionRequestDmarc = S.String;
 export type EmailSecurityTimeseriesGroupsTlsVersionRequestDmarcList = Array<
   EmailSecurityTimeseriesGroupsTlsVersionRequestDmarc | (string & {})
 >;
-export const EmailSecurityTimeseriesGroupsTlsVersionRequestDmarcList = /*@__PURE__*/ S.Array(
-  EmailSecurityTimeseriesGroupsTlsVersionRequestDmarc,
-) as any as S.Schema<EmailSecurityTimeseriesGroupsTlsVersionRequestDmarcList>;
+export const EmailSecurityTimeseriesGroupsTlsVersionRequestDmarcList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecurityTimeseriesGroupsTlsVersionRequestDmarcList>;
 
 export type EmailSecurityTimeseriesGroupsTlsVersionRequestFormat = "JSON" | "CSV";
 export const EmailSecurityTimeseriesGroupsTlsVersionRequestFormat = S.String;
@@ -75991,9 +75183,8 @@ export const EmailSecurityTimeseriesGroupsTlsVersionRequestSpf = S.String;
 export type EmailSecurityTimeseriesGroupsTlsVersionRequestSpfList = Array<
   EmailSecurityTimeseriesGroupsTlsVersionRequestSpf | (string & {})
 >;
-export const EmailSecurityTimeseriesGroupsTlsVersionRequestSpfList = /*@__PURE__*/ S.Array(
-  EmailSecurityTimeseriesGroupsTlsVersionRequestSpf,
-) as any as S.Schema<EmailSecurityTimeseriesGroupsTlsVersionRequestSpfList>;
+export const EmailSecurityTimeseriesGroupsTlsVersionRequestSpfList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<EmailSecurityTimeseriesGroupsTlsVersionRequestSpfList>;
 
 export interface TlsVersionEmailSecurityTimeseriesGroupRequest {
   /** Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/). When omitted, the interval is auto-selected from the requested date range; finer intervals are only available for shorter ranges. If the requested interval is too granular for the date range, the request is rejected. */
@@ -76270,9 +75461,8 @@ export const HttpSummaryTlsVersionRequestBotClass = S.String;
 export type HttpSummaryTlsVersionRequestBotClassList = Array<
   HttpSummaryTlsVersionRequestBotClass | (string & {})
 >;
-export const HttpSummaryTlsVersionRequestBotClassList = /*@__PURE__*/ S.Array(
-  HttpSummaryTlsVersionRequestBotClass,
-) as any as S.Schema<HttpSummaryTlsVersionRequestBotClassList>;
+export const HttpSummaryTlsVersionRequestBotClassList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpSummaryTlsVersionRequestBotClassList>;
 
 export type HttpSummaryTlsVersionRequestBrowserFamily = "CHROME" | "EDGE" | "FIREFOX" | "SAFARI";
 export const HttpSummaryTlsVersionRequestBrowserFamily = S.String;
@@ -76280,9 +75470,8 @@ export const HttpSummaryTlsVersionRequestBrowserFamily = S.String;
 export type HttpSummaryTlsVersionRequestBrowserFamilyList = Array<
   HttpSummaryTlsVersionRequestBrowserFamily | (string & {})
 >;
-export const HttpSummaryTlsVersionRequestBrowserFamilyList = /*@__PURE__*/ S.Array(
-  HttpSummaryTlsVersionRequestBrowserFamily,
-) as any as S.Schema<HttpSummaryTlsVersionRequestBrowserFamilyList>;
+export const HttpSummaryTlsVersionRequestBrowserFamilyList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpSummaryTlsVersionRequestBrowserFamilyList>;
 
 export type HttpSummaryTlsVersionRequestContinentList = Array<string>;
 export const HttpSummaryTlsVersionRequestContinentList =
@@ -76306,9 +75495,8 @@ export const HttpSummaryTlsVersionRequestDeviceType = S.String;
 export type HttpSummaryTlsVersionRequestDeviceTypeList = Array<
   HttpSummaryTlsVersionRequestDeviceType | (string & {})
 >;
-export const HttpSummaryTlsVersionRequestDeviceTypeList = /*@__PURE__*/ S.Array(
-  HttpSummaryTlsVersionRequestDeviceType,
-) as any as S.Schema<HttpSummaryTlsVersionRequestDeviceTypeList>;
+export const HttpSummaryTlsVersionRequestDeviceTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpSummaryTlsVersionRequestDeviceTypeList>;
 
 export type HttpSummaryTlsVersionRequestFormat = "JSON" | "CSV";
 export const HttpSummaryTlsVersionRequestFormat = S.String;
@@ -76323,9 +75511,8 @@ export const HttpSummaryTlsVersionRequestHttpProtocol = S.String;
 export type HttpSummaryTlsVersionRequestHttpProtocolList = Array<
   HttpSummaryTlsVersionRequestHttpProtocol | (string & {})
 >;
-export const HttpSummaryTlsVersionRequestHttpProtocolList = /*@__PURE__*/ S.Array(
-  HttpSummaryTlsVersionRequestHttpProtocol,
-) as any as S.Schema<HttpSummaryTlsVersionRequestHttpProtocolList>;
+export const HttpSummaryTlsVersionRequestHttpProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpSummaryTlsVersionRequestHttpProtocolList>;
 
 export type HttpSummaryTlsVersionRequestHttpVersion = "HTTPv1" | "HTTPv2" | "HTTPv3";
 export const HttpSummaryTlsVersionRequestHttpVersion = S.String;
@@ -76333,9 +75520,8 @@ export const HttpSummaryTlsVersionRequestHttpVersion = S.String;
 export type HttpSummaryTlsVersionRequestHttpVersionList = Array<
   HttpSummaryTlsVersionRequestHttpVersion | (string & {})
 >;
-export const HttpSummaryTlsVersionRequestHttpVersionList = /*@__PURE__*/ S.Array(
-  HttpSummaryTlsVersionRequestHttpVersion,
-) as any as S.Schema<HttpSummaryTlsVersionRequestHttpVersionList>;
+export const HttpSummaryTlsVersionRequestHttpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpSummaryTlsVersionRequestHttpVersionList>;
 
 export type HttpSummaryTlsVersionRequestIpVersion = "IPv4" | "IPv6";
 export const HttpSummaryTlsVersionRequestIpVersion = S.String;
@@ -76343,9 +75529,8 @@ export const HttpSummaryTlsVersionRequestIpVersion = S.String;
 export type HttpSummaryTlsVersionRequestIpVersionList = Array<
   HttpSummaryTlsVersionRequestIpVersion | (string & {})
 >;
-export const HttpSummaryTlsVersionRequestIpVersionList = /*@__PURE__*/ S.Array(
-  HttpSummaryTlsVersionRequestIpVersion,
-) as any as S.Schema<HttpSummaryTlsVersionRequestIpVersionList>;
+export const HttpSummaryTlsVersionRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpSummaryTlsVersionRequestIpVersionList>;
 
 export type HttpSummaryTlsVersionRequestLocationList = Array<string>;
 export const HttpSummaryTlsVersionRequestLocationList =
@@ -76368,9 +75553,8 @@ export const HttpSummaryTlsVersionRequestOs = S.String;
 export type HttpSummaryTlsVersionRequestOsList = Array<
   HttpSummaryTlsVersionRequestOs | (string & {})
 >;
-export const HttpSummaryTlsVersionRequestOsList = /*@__PURE__*/ S.Array(
-  HttpSummaryTlsVersionRequestOs,
-) as any as S.Schema<HttpSummaryTlsVersionRequestOsList>;
+export const HttpSummaryTlsVersionRequestOsList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpSummaryTlsVersionRequestOsList>;
 
 export interface TlsVersionHttpSummaryRequest {
   /** Filters results by Autonomous System. Specify one or more Autonomous System Numbers (ASNs) as a comma-separated list. Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356. */
@@ -76627,9 +75811,8 @@ export const HttpTimeseriesGroupsTlsVersionRequestBotClass = S.String;
 export type HttpTimeseriesGroupsTlsVersionRequestBotClassList = Array<
   HttpTimeseriesGroupsTlsVersionRequestBotClass | (string & {})
 >;
-export const HttpTimeseriesGroupsTlsVersionRequestBotClassList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsTlsVersionRequestBotClass,
-) as any as S.Schema<HttpTimeseriesGroupsTlsVersionRequestBotClassList>;
+export const HttpTimeseriesGroupsTlsVersionRequestBotClassList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsTlsVersionRequestBotClassList>;
 
 export type HttpTimeseriesGroupsTlsVersionRequestBrowserFamily =
   | "CHROME"
@@ -76641,9 +75824,8 @@ export const HttpTimeseriesGroupsTlsVersionRequestBrowserFamily = S.String;
 export type HttpTimeseriesGroupsTlsVersionRequestBrowserFamilyList = Array<
   HttpTimeseriesGroupsTlsVersionRequestBrowserFamily | (string & {})
 >;
-export const HttpTimeseriesGroupsTlsVersionRequestBrowserFamilyList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsTlsVersionRequestBrowserFamily,
-) as any as S.Schema<HttpTimeseriesGroupsTlsVersionRequestBrowserFamilyList>;
+export const HttpTimeseriesGroupsTlsVersionRequestBrowserFamilyList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsTlsVersionRequestBrowserFamilyList>;
 
 export type HttpTimeseriesGroupsTlsVersionRequestContinentList = Array<string>;
 export const HttpTimeseriesGroupsTlsVersionRequestContinentList =
@@ -76667,9 +75849,8 @@ export const HttpTimeseriesGroupsTlsVersionRequestDeviceType = S.String;
 export type HttpTimeseriesGroupsTlsVersionRequestDeviceTypeList = Array<
   HttpTimeseriesGroupsTlsVersionRequestDeviceType | (string & {})
 >;
-export const HttpTimeseriesGroupsTlsVersionRequestDeviceTypeList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsTlsVersionRequestDeviceType,
-) as any as S.Schema<HttpTimeseriesGroupsTlsVersionRequestDeviceTypeList>;
+export const HttpTimeseriesGroupsTlsVersionRequestDeviceTypeList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsTlsVersionRequestDeviceTypeList>;
 
 export type HttpTimeseriesGroupsTlsVersionRequestFormat = "JSON" | "CSV";
 export const HttpTimeseriesGroupsTlsVersionRequestFormat = S.String;
@@ -76684,9 +75865,8 @@ export const HttpTimeseriesGroupsTlsVersionRequestHttpProtocol = S.String;
 export type HttpTimeseriesGroupsTlsVersionRequestHttpProtocolList = Array<
   HttpTimeseriesGroupsTlsVersionRequestHttpProtocol | (string & {})
 >;
-export const HttpTimeseriesGroupsTlsVersionRequestHttpProtocolList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsTlsVersionRequestHttpProtocol,
-) as any as S.Schema<HttpTimeseriesGroupsTlsVersionRequestHttpProtocolList>;
+export const HttpTimeseriesGroupsTlsVersionRequestHttpProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsTlsVersionRequestHttpProtocolList>;
 
 export type HttpTimeseriesGroupsTlsVersionRequestHttpVersion = "HTTPv1" | "HTTPv2" | "HTTPv3";
 export const HttpTimeseriesGroupsTlsVersionRequestHttpVersion = S.String;
@@ -76694,9 +75874,8 @@ export const HttpTimeseriesGroupsTlsVersionRequestHttpVersion = S.String;
 export type HttpTimeseriesGroupsTlsVersionRequestHttpVersionList = Array<
   HttpTimeseriesGroupsTlsVersionRequestHttpVersion | (string & {})
 >;
-export const HttpTimeseriesGroupsTlsVersionRequestHttpVersionList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsTlsVersionRequestHttpVersion,
-) as any as S.Schema<HttpTimeseriesGroupsTlsVersionRequestHttpVersionList>;
+export const HttpTimeseriesGroupsTlsVersionRequestHttpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsTlsVersionRequestHttpVersionList>;
 
 export type HttpTimeseriesGroupsTlsVersionRequestIpVersion = "IPv4" | "IPv6";
 export const HttpTimeseriesGroupsTlsVersionRequestIpVersion = S.String;
@@ -76704,9 +75883,8 @@ export const HttpTimeseriesGroupsTlsVersionRequestIpVersion = S.String;
 export type HttpTimeseriesGroupsTlsVersionRequestIpVersionList = Array<
   HttpTimeseriesGroupsTlsVersionRequestIpVersion | (string & {})
 >;
-export const HttpTimeseriesGroupsTlsVersionRequestIpVersionList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsTlsVersionRequestIpVersion,
-) as any as S.Schema<HttpTimeseriesGroupsTlsVersionRequestIpVersionList>;
+export const HttpTimeseriesGroupsTlsVersionRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsTlsVersionRequestIpVersionList>;
 
 export type HttpTimeseriesGroupsTlsVersionRequestLocationList = Array<string>;
 export const HttpTimeseriesGroupsTlsVersionRequestLocationList =
@@ -76729,9 +75907,8 @@ export const HttpTimeseriesGroupsTlsVersionRequestOs = S.String;
 export type HttpTimeseriesGroupsTlsVersionRequestOsList = Array<
   HttpTimeseriesGroupsTlsVersionRequestOs | (string & {})
 >;
-export const HttpTimeseriesGroupsTlsVersionRequestOsList = /*@__PURE__*/ S.Array(
-  HttpTimeseriesGroupsTlsVersionRequestOs,
-) as any as S.Schema<HttpTimeseriesGroupsTlsVersionRequestOsList>;
+export const HttpTimeseriesGroupsTlsVersionRequestOsList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<HttpTimeseriesGroupsTlsVersionRequestOsList>;
 
 export interface TlsVersionHttpTimeseriesGroupRequest {
   /** Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/). When omitted, the interval is auto-selected from the requested date range; finer intervals are only available for shorter ranges. If the requested interval is too granular for the date range, the request is rejected. */
@@ -78074,9 +77251,8 @@ export const AttacksLayer3SummaryVectorRequestIpVersion = S.String;
 export type AttacksLayer3SummaryVectorRequestIpVersionList = Array<
   AttacksLayer3SummaryVectorRequestIpVersion | (string & {})
 >;
-export const AttacksLayer3SummaryVectorRequestIpVersionList = /*@__PURE__*/ S.Array(
-  AttacksLayer3SummaryVectorRequestIpVersion,
-) as any as S.Schema<AttacksLayer3SummaryVectorRequestIpVersionList>;
+export const AttacksLayer3SummaryVectorRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer3SummaryVectorRequestIpVersionList>;
 
 export type AttacksLayer3SummaryVectorRequestLocationList = Array<string>;
 export const AttacksLayer3SummaryVectorRequestLocationList =
@@ -78092,9 +77268,8 @@ export const AttacksLayer3SummaryVectorRequestProtocol = S.String;
 export type AttacksLayer3SummaryVectorRequestProtocolList = Array<
   AttacksLayer3SummaryVectorRequestProtocol | (string & {})
 >;
-export const AttacksLayer3SummaryVectorRequestProtocolList = /*@__PURE__*/ S.Array(
-  AttacksLayer3SummaryVectorRequestProtocol,
-) as any as S.Schema<AttacksLayer3SummaryVectorRequestProtocolList>;
+export const AttacksLayer3SummaryVectorRequestProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer3SummaryVectorRequestProtocolList>;
 
 export interface VectorAttackLayer3SummaryRequest {
   /** Filters results by continent. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA. */
@@ -78338,9 +77513,8 @@ export const AttacksLayer3TimeseriesGroupsVectorRequestIpVersion = S.String;
 export type AttacksLayer3TimeseriesGroupsVectorRequestIpVersionList = Array<
   AttacksLayer3TimeseriesGroupsVectorRequestIpVersion | (string & {})
 >;
-export const AttacksLayer3TimeseriesGroupsVectorRequestIpVersionList = /*@__PURE__*/ S.Array(
-  AttacksLayer3TimeseriesGroupsVectorRequestIpVersion,
-) as any as S.Schema<AttacksLayer3TimeseriesGroupsVectorRequestIpVersionList>;
+export const AttacksLayer3TimeseriesGroupsVectorRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer3TimeseriesGroupsVectorRequestIpVersionList>;
 
 export type AttacksLayer3TimeseriesGroupsVectorRequestLocationList = Array<string>;
 export const AttacksLayer3TimeseriesGroupsVectorRequestLocationList =
@@ -78359,9 +77533,8 @@ export const AttacksLayer3TimeseriesGroupsVectorRequestProtocol = S.String;
 export type AttacksLayer3TimeseriesGroupsVectorRequestProtocolList = Array<
   AttacksLayer3TimeseriesGroupsVectorRequestProtocol | (string & {})
 >;
-export const AttacksLayer3TimeseriesGroupsVectorRequestProtocolList = /*@__PURE__*/ S.Array(
-  AttacksLayer3TimeseriesGroupsVectorRequestProtocol,
-) as any as S.Schema<AttacksLayer3TimeseriesGroupsVectorRequestProtocolList>;
+export const AttacksLayer3TimeseriesGroupsVectorRequestProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer3TimeseriesGroupsVectorRequestProtocolList>;
 
 export interface VectorAttackLayer3TimeseriesGroupRequest {
   /** Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/). When omitted, the interval is auto-selected from the requested date range; finer intervals are only available for shorter ranges. If the requested interval is too granular for the date range, the request is rejected. */
@@ -78634,9 +77807,8 @@ export const AttacksLayer3SummaryVerticalRequestIpVersion = S.String;
 export type AttacksLayer3SummaryVerticalRequestIpVersionList = Array<
   AttacksLayer3SummaryVerticalRequestIpVersion | (string & {})
 >;
-export const AttacksLayer3SummaryVerticalRequestIpVersionList = /*@__PURE__*/ S.Array(
-  AttacksLayer3SummaryVerticalRequestIpVersion,
-) as any as S.Schema<AttacksLayer3SummaryVerticalRequestIpVersionList>;
+export const AttacksLayer3SummaryVerticalRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer3SummaryVerticalRequestIpVersionList>;
 
 export type AttacksLayer3SummaryVerticalRequestLocationList = Array<string>;
 export const AttacksLayer3SummaryVerticalRequestLocationList =
@@ -78652,9 +77824,8 @@ export const AttacksLayer3SummaryVerticalRequestProtocol = S.String;
 export type AttacksLayer3SummaryVerticalRequestProtocolList = Array<
   AttacksLayer3SummaryVerticalRequestProtocol | (string & {})
 >;
-export const AttacksLayer3SummaryVerticalRequestProtocolList = /*@__PURE__*/ S.Array(
-  AttacksLayer3SummaryVerticalRequestProtocol,
-) as any as S.Schema<AttacksLayer3SummaryVerticalRequestProtocolList>;
+export const AttacksLayer3SummaryVerticalRequestProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer3SummaryVerticalRequestProtocolList>;
 
 export interface VerticalAttackLayer3SummaryRequest {
   /** Filters results by continent. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA. */
@@ -78898,9 +78069,8 @@ export const AttacksLayer3TimeseriesGroupsVerticalRequestIpVersion = S.String;
 export type AttacksLayer3TimeseriesGroupsVerticalRequestIpVersionList = Array<
   AttacksLayer3TimeseriesGroupsVerticalRequestIpVersion | (string & {})
 >;
-export const AttacksLayer3TimeseriesGroupsVerticalRequestIpVersionList = /*@__PURE__*/ S.Array(
-  AttacksLayer3TimeseriesGroupsVerticalRequestIpVersion,
-) as any as S.Schema<AttacksLayer3TimeseriesGroupsVerticalRequestIpVersionList>;
+export const AttacksLayer3TimeseriesGroupsVerticalRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer3TimeseriesGroupsVerticalRequestIpVersionList>;
 
 export type AttacksLayer3TimeseriesGroupsVerticalRequestLocationList = Array<string>;
 export const AttacksLayer3TimeseriesGroupsVerticalRequestLocationList =
@@ -78919,9 +78089,8 @@ export const AttacksLayer3TimeseriesGroupsVerticalRequestProtocol = S.String;
 export type AttacksLayer3TimeseriesGroupsVerticalRequestProtocolList = Array<
   AttacksLayer3TimeseriesGroupsVerticalRequestProtocol | (string & {})
 >;
-export const AttacksLayer3TimeseriesGroupsVerticalRequestProtocolList = /*@__PURE__*/ S.Array(
-  AttacksLayer3TimeseriesGroupsVerticalRequestProtocol,
-) as any as S.Schema<AttacksLayer3TimeseriesGroupsVerticalRequestProtocolList>;
+export const AttacksLayer3TimeseriesGroupsVerticalRequestProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer3TimeseriesGroupsVerticalRequestProtocolList>;
 
 export interface VerticalAttackLayer3TimeseriesGroupRequest {
   /** Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/). When omitted, the interval is auto-selected from the requested date range; finer intervals are only available for shorter ranges. If the requested interval is too granular for the date range, the request is rejected. */
@@ -79201,9 +78370,8 @@ export const AttacksLayer3TopVerticalRequestIpVersion = S.String;
 export type AttacksLayer3TopVerticalRequestIpVersionList = Array<
   AttacksLayer3TopVerticalRequestIpVersion | (string & {})
 >;
-export const AttacksLayer3TopVerticalRequestIpVersionList = /*@__PURE__*/ S.Array(
-  AttacksLayer3TopVerticalRequestIpVersion,
-) as any as S.Schema<AttacksLayer3TopVerticalRequestIpVersionList>;
+export const AttacksLayer3TopVerticalRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer3TopVerticalRequestIpVersionList>;
 
 export type AttacksLayer3TopVerticalRequestLocationList = Array<string>;
 export const AttacksLayer3TopVerticalRequestLocationList =
@@ -79219,9 +78387,8 @@ export const AttacksLayer3TopVerticalRequestProtocol = S.String;
 export type AttacksLayer3TopVerticalRequestProtocolList = Array<
   AttacksLayer3TopVerticalRequestProtocol | (string & {})
 >;
-export const AttacksLayer3TopVerticalRequestProtocolList = /*@__PURE__*/ S.Array(
-  AttacksLayer3TopVerticalRequestProtocol,
-) as any as S.Schema<AttacksLayer3TopVerticalRequestProtocolList>;
+export const AttacksLayer3TopVerticalRequestProtocolList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer3TopVerticalRequestProtocolList>;
 
 export interface VerticalAttackLayer3TopRequest {
   /** Filters results by continent. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA. */
@@ -79510,9 +78677,8 @@ export const AttacksLayer7SummaryVerticalRequestHttpMethod = S.String;
 export type AttacksLayer7SummaryVerticalRequestHttpMethodList = Array<
   AttacksLayer7SummaryVerticalRequestHttpMethod | (string & {})
 >;
-export const AttacksLayer7SummaryVerticalRequestHttpMethodList = /*@__PURE__*/ S.Array(
-  AttacksLayer7SummaryVerticalRequestHttpMethod,
-) as any as S.Schema<AttacksLayer7SummaryVerticalRequestHttpMethodList>;
+export const AttacksLayer7SummaryVerticalRequestHttpMethodList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer7SummaryVerticalRequestHttpMethodList>;
 
 export type AttacksLayer7SummaryVerticalRequestHttpVersion = "HTTPv1" | "HTTPv2" | "HTTPv3";
 export const AttacksLayer7SummaryVerticalRequestHttpVersion = S.String;
@@ -79520,9 +78686,8 @@ export const AttacksLayer7SummaryVerticalRequestHttpVersion = S.String;
 export type AttacksLayer7SummaryVerticalRequestHttpVersionList = Array<
   AttacksLayer7SummaryVerticalRequestHttpVersion | (string & {})
 >;
-export const AttacksLayer7SummaryVerticalRequestHttpVersionList = /*@__PURE__*/ S.Array(
-  AttacksLayer7SummaryVerticalRequestHttpVersion,
-) as any as S.Schema<AttacksLayer7SummaryVerticalRequestHttpVersionList>;
+export const AttacksLayer7SummaryVerticalRequestHttpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer7SummaryVerticalRequestHttpVersionList>;
 
 export type AttacksLayer7SummaryVerticalRequestIpVersion = "IPv4" | "IPv6";
 export const AttacksLayer7SummaryVerticalRequestIpVersion = S.String;
@@ -79530,9 +78695,8 @@ export const AttacksLayer7SummaryVerticalRequestIpVersion = S.String;
 export type AttacksLayer7SummaryVerticalRequestIpVersionList = Array<
   AttacksLayer7SummaryVerticalRequestIpVersion | (string & {})
 >;
-export const AttacksLayer7SummaryVerticalRequestIpVersionList = /*@__PURE__*/ S.Array(
-  AttacksLayer7SummaryVerticalRequestIpVersion,
-) as any as S.Schema<AttacksLayer7SummaryVerticalRequestIpVersionList>;
+export const AttacksLayer7SummaryVerticalRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer7SummaryVerticalRequestIpVersionList>;
 
 export type AttacksLayer7SummaryVerticalRequestLocationList = Array<string>;
 export const AttacksLayer7SummaryVerticalRequestLocationList =
@@ -79551,9 +78715,8 @@ export const AttacksLayer7SummaryVerticalRequestMitigationProduct = S.String;
 export type AttacksLayer7SummaryVerticalRequestMitigationProductList = Array<
   AttacksLayer7SummaryVerticalRequestMitigationProduct | (string & {})
 >;
-export const AttacksLayer7SummaryVerticalRequestMitigationProductList = /*@__PURE__*/ S.Array(
-  AttacksLayer7SummaryVerticalRequestMitigationProduct,
-) as any as S.Schema<AttacksLayer7SummaryVerticalRequestMitigationProductList>;
+export const AttacksLayer7SummaryVerticalRequestMitigationProductList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer7SummaryVerticalRequestMitigationProductList>;
 
 export type AttacksLayer7SummaryVerticalRequestNameList = Array<string>;
 export const AttacksLayer7SummaryVerticalRequestNameList =
@@ -79856,9 +79019,8 @@ export const AttacksLayer7TimeseriesGroupsVerticalRequestHttpMethod = S.String;
 export type AttacksLayer7TimeseriesGroupsVerticalRequestHttpMethodList = Array<
   AttacksLayer7TimeseriesGroupsVerticalRequestHttpMethod | (string & {})
 >;
-export const AttacksLayer7TimeseriesGroupsVerticalRequestHttpMethodList = /*@__PURE__*/ S.Array(
-  AttacksLayer7TimeseriesGroupsVerticalRequestHttpMethod,
-) as any as S.Schema<AttacksLayer7TimeseriesGroupsVerticalRequestHttpMethodList>;
+export const AttacksLayer7TimeseriesGroupsVerticalRequestHttpMethodList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer7TimeseriesGroupsVerticalRequestHttpMethodList>;
 
 export type AttacksLayer7TimeseriesGroupsVerticalRequestHttpVersion =
   | "HTTPv1"
@@ -79869,9 +79031,8 @@ export const AttacksLayer7TimeseriesGroupsVerticalRequestHttpVersion = S.String;
 export type AttacksLayer7TimeseriesGroupsVerticalRequestHttpVersionList = Array<
   AttacksLayer7TimeseriesGroupsVerticalRequestHttpVersion | (string & {})
 >;
-export const AttacksLayer7TimeseriesGroupsVerticalRequestHttpVersionList = /*@__PURE__*/ S.Array(
-  AttacksLayer7TimeseriesGroupsVerticalRequestHttpVersion,
-) as any as S.Schema<AttacksLayer7TimeseriesGroupsVerticalRequestHttpVersionList>;
+export const AttacksLayer7TimeseriesGroupsVerticalRequestHttpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer7TimeseriesGroupsVerticalRequestHttpVersionList>;
 
 export type AttacksLayer7TimeseriesGroupsVerticalRequestIpVersion = "IPv4" | "IPv6";
 export const AttacksLayer7TimeseriesGroupsVerticalRequestIpVersion = S.String;
@@ -79879,9 +79040,8 @@ export const AttacksLayer7TimeseriesGroupsVerticalRequestIpVersion = S.String;
 export type AttacksLayer7TimeseriesGroupsVerticalRequestIpVersionList = Array<
   AttacksLayer7TimeseriesGroupsVerticalRequestIpVersion | (string & {})
 >;
-export const AttacksLayer7TimeseriesGroupsVerticalRequestIpVersionList = /*@__PURE__*/ S.Array(
-  AttacksLayer7TimeseriesGroupsVerticalRequestIpVersion,
-) as any as S.Schema<AttacksLayer7TimeseriesGroupsVerticalRequestIpVersionList>;
+export const AttacksLayer7TimeseriesGroupsVerticalRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer7TimeseriesGroupsVerticalRequestIpVersionList>;
 
 export type AttacksLayer7TimeseriesGroupsVerticalRequestLocationList = Array<string>;
 export const AttacksLayer7TimeseriesGroupsVerticalRequestLocationList =
@@ -79901,9 +79061,7 @@ export type AttacksLayer7TimeseriesGroupsVerticalRequestMitigationProductList = 
   AttacksLayer7TimeseriesGroupsVerticalRequestMitigationProduct | (string & {})
 >;
 export const AttacksLayer7TimeseriesGroupsVerticalRequestMitigationProductList =
-  /*@__PURE__*/ S.Array(
-    AttacksLayer7TimeseriesGroupsVerticalRequestMitigationProduct,
-  ) as any as S.Schema<AttacksLayer7TimeseriesGroupsVerticalRequestMitigationProductList>;
+  AiTimeseriesGroupsTimeseriesGroupsRequestResponseStatusCategoryList as any as S.Schema<AttacksLayer7TimeseriesGroupsVerticalRequestMitigationProductList>;
 
 export type AttacksLayer7TimeseriesGroupsVerticalRequestNameList = Array<string>;
 export const AttacksLayer7TimeseriesGroupsVerticalRequestNameList =
@@ -80252,9 +79410,8 @@ export const AttacksLayer7TopVerticalRequestHttpMethod = S.String;
 export type AttacksLayer7TopVerticalRequestHttpMethodList = Array<
   AttacksLayer7TopVerticalRequestHttpMethod | (string & {})
 >;
-export const AttacksLayer7TopVerticalRequestHttpMethodList = /*@__PURE__*/ S.Array(
-  AttacksLayer7TopVerticalRequestHttpMethod,
-) as any as S.Schema<AttacksLayer7TopVerticalRequestHttpMethodList>;
+export const AttacksLayer7TopVerticalRequestHttpMethodList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer7TopVerticalRequestHttpMethodList>;
 
 export type AttacksLayer7TopVerticalRequestHttpVersion = "HTTPv1" | "HTTPv2" | "HTTPv3";
 export const AttacksLayer7TopVerticalRequestHttpVersion = S.String;
@@ -80262,9 +79419,8 @@ export const AttacksLayer7TopVerticalRequestHttpVersion = S.String;
 export type AttacksLayer7TopVerticalRequestHttpVersionList = Array<
   AttacksLayer7TopVerticalRequestHttpVersion | (string & {})
 >;
-export const AttacksLayer7TopVerticalRequestHttpVersionList = /*@__PURE__*/ S.Array(
-  AttacksLayer7TopVerticalRequestHttpVersion,
-) as any as S.Schema<AttacksLayer7TopVerticalRequestHttpVersionList>;
+export const AttacksLayer7TopVerticalRequestHttpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer7TopVerticalRequestHttpVersionList>;
 
 export type AttacksLayer7TopVerticalRequestIpVersion = "IPv4" | "IPv6";
 export const AttacksLayer7TopVerticalRequestIpVersion = S.String;
@@ -80272,9 +79428,8 @@ export const AttacksLayer7TopVerticalRequestIpVersion = S.String;
 export type AttacksLayer7TopVerticalRequestIpVersionList = Array<
   AttacksLayer7TopVerticalRequestIpVersion | (string & {})
 >;
-export const AttacksLayer7TopVerticalRequestIpVersionList = /*@__PURE__*/ S.Array(
-  AttacksLayer7TopVerticalRequestIpVersion,
-) as any as S.Schema<AttacksLayer7TopVerticalRequestIpVersionList>;
+export const AttacksLayer7TopVerticalRequestIpVersionList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer7TopVerticalRequestIpVersionList>;
 
 export type AttacksLayer7TopVerticalRequestLocationList = Array<string>;
 export const AttacksLayer7TopVerticalRequestLocationList =
@@ -80293,9 +79448,8 @@ export const AttacksLayer7TopVerticalRequestMitigationProduct = S.String;
 export type AttacksLayer7TopVerticalRequestMitigationProductList = Array<
   AttacksLayer7TopVerticalRequestMitigationProduct | (string & {})
 >;
-export const AttacksLayer7TopVerticalRequestMitigationProductList = /*@__PURE__*/ S.Array(
-  AttacksLayer7TopVerticalRequestMitigationProduct,
-) as any as S.Schema<AttacksLayer7TopVerticalRequestMitigationProductList>;
+export const AttacksLayer7TopVerticalRequestMitigationProductList =
+  AiTimeseriesGroupsSummaryRequestContentTypeList as any as S.Schema<AttacksLayer7TopVerticalRequestMitigationProductList>;
 
 export type AttacksLayer7TopVerticalRequestNameList = Array<string>;
 export const AttacksLayer7TopVerticalRequestNameList =

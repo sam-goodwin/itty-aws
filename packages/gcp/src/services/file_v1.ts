@@ -343,9 +343,8 @@ export const InstanceSuspensionReasonsItemEnum = S.String;
 export type InstanceSuspensionReasonsItemEnumList = Array<
   InstanceSuspensionReasonsItemEnum | (string & {})
 >;
-export const InstanceSuspensionReasonsItemEnumList = /*@__PURE__*/ S.Array(
-  InstanceSuspensionReasonsItemEnum,
-) as any as S.Schema<InstanceSuspensionReasonsItemEnumList>;
+export const InstanceSuspensionReasonsItemEnumList =
+  ReplicaConfigStateReasonsItemEnumList as any as S.Schema<InstanceSuspensionReasonsItemEnumList>;
 
 /** IOPS per TB. Filestore defines TB as 1024^4 bytes (TiB). */
 export interface IOPSPerTB {
@@ -472,9 +471,8 @@ export type NetworkConfigModesItemEnum = "ADDRESS_MODE_UNSPECIFIED" | "MODE_IPV4
 export const NetworkConfigModesItemEnum = S.String;
 
 export type NetworkConfigModesItemEnumList = Array<NetworkConfigModesItemEnum | (string & {})>;
-export const NetworkConfigModesItemEnumList = /*@__PURE__*/ S.Array(
-  NetworkConfigModesItemEnum,
-) as any as S.Schema<NetworkConfigModesItemEnumList>;
+export const NetworkConfigModesItemEnumList =
+  ReplicaConfigStateReasonsItemEnumList as any as S.Schema<NetworkConfigModesItemEnumList>;
 
 export type NetworkConfigConnectModeEnum =
   | "CONNECT_MODE_UNSPECIFIED"

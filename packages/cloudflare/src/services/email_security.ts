@@ -838,19 +838,8 @@ export interface InvestigateBulkCancelCreateResponseActionParamsMove {
   /** This field is nonfunctional. */
   expectedDisposition?: InvestigateBulkCancelCreateResponseActionParamsMoveExpectedDisposition | null;
 }
-export const InvestigateBulkCancelCreateResponseActionParamsMove = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    destination: InvestigateBulkCancelCreateResponseActionParamsMoveDestination,
-    type: InvestigateBulkCancelCreateResponseActionParamsMoveType,
-    expectedDisposition: S.optional(
-      S.NullOr(InvestigateBulkCancelCreateResponseActionParamsMoveExpectedDisposition).pipe(
-        T.Body("expected_disposition"),
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "InvestigateBulkCancelCreateResponseActionParamsMove",
-}) as any as S.Schema<InvestigateBulkCancelCreateResponseActionParamsMove>;
+export const InvestigateBulkCancelCreateResponseActionParamsMove =
+  InvestigateBulkCreateResponseActionParamsMove as any as S.Schema<InvestigateBulkCancelCreateResponseActionParamsMove>;
 
 export type InvestigateBulkCancelCreateResponseActionParamsReleaseType = "RELEASE";
 export const InvestigateBulkCancelCreateResponseActionParamsReleaseType = S.String;
@@ -858,13 +847,8 @@ export const InvestigateBulkCancelCreateResponseActionParamsReleaseType = S.Stri
 export interface InvestigateBulkCancelCreateResponseActionParamsRelease {
   type: InvestigateBulkCancelCreateResponseActionParamsReleaseType;
 }
-export const InvestigateBulkCancelCreateResponseActionParamsRelease = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: InvestigateBulkCancelCreateResponseActionParamsReleaseType,
-  }),
-).annotate({
-  identifier: "InvestigateBulkCancelCreateResponseActionParamsRelease",
-}) as any as S.Schema<InvestigateBulkCancelCreateResponseActionParamsRelease>;
+export const InvestigateBulkCancelCreateResponseActionParamsRelease =
+  InvestigateBulkCreateResponseActionParamsRelease as any as S.Schema<InvestigateBulkCancelCreateResponseActionParamsRelease>;
 
 export type InvestigateBulkCancelCreateResponseActionParams =
   | InvestigateBulkCancelCreateResponseActionParamsMove
@@ -947,42 +931,8 @@ export interface InvestigateBulkCancelCreateResponseSearchParams {
   /** Whether to search reclassification submissions instead of original messages. */
   submissions?: boolean | null;
 }
-export const InvestigateBulkCancelCreateResponseSearchParams = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    actionLog: S.optional(S.NullOr(S.Boolean).pipe(T.Body("action_log"))),
-    alertId: S.optional(S.NullOr(S.String).pipe(T.Body("alert_id"))),
-    deliveryStatus: S.optional(
-      S.NullOr(InvestigateBulkCancelCreateResponseSearchParamsDeliveryStatus).pipe(
-        T.Body("delivery_status"),
-      ),
-    ),
-    detectionsOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("detections_only"))),
-    domain: S.optional(S.NullOr(S.String)),
-    end: S.optional(S.NullOr(S.String)),
-    exactSubject: S.optional(S.NullOr(S.String).pipe(T.Body("exact_subject"))),
-    finalDisposition: S.optional(
-      S.NullOr(InvestigateBulkCancelCreateResponseSearchParamsFinalDisposition).pipe(
-        T.Body("final_disposition"),
-      ),
-    ),
-    messageAction: S.optional(
-      S.NullOr(InvestigateBulkCancelCreateResponseSearchParamsMessageAction).pipe(
-        T.Body("message_action"),
-      ),
-    ),
-    messageId: S.optional(S.NullOr(S.String).pipe(T.Body("message_id"))),
-    metric: S.optional(S.NullOr(S.String)),
-    query: S.optional(S.NullOr(S.String)),
-    recipient: S.optional(S.NullOr(S.String)),
-    sender: S.optional(S.NullOr(S.String)),
-    smtpHeloIp: S.optional(S.NullOr(S.String).pipe(T.Body("smtp_helo_ip"))),
-    start: S.optional(S.NullOr(S.String)),
-    subject: S.optional(S.NullOr(S.String)),
-    submissions: S.optional(S.NullOr(S.Boolean)),
-  }),
-).annotate({
-  identifier: "InvestigateBulkCancelCreateResponseSearchParams",
-}) as any as S.Schema<InvestigateBulkCancelCreateResponseSearchParams>;
+export const InvestigateBulkCancelCreateResponseSearchParams =
+  InvestigateBulkCreateResponseSearchParams as any as S.Schema<InvestigateBulkCancelCreateResponseSearchParams>;
 
 export type InvestigateBulkCancelCreateResponseStatus =
   | "PENDING"
@@ -1526,9 +1476,8 @@ export const CreateSettingsContentPolicyResponseTargetsItem = S.String;
 
 export type CreateSettingsContentPolicyResponseTargetsList =
   Array<CreateSettingsContentPolicyResponseTargetsItem>;
-export const CreateSettingsContentPolicyResponseTargetsList = /*@__PURE__*/ S.Array(
-  CreateSettingsContentPolicyResponseTargetsItem,
-) as any as S.Schema<CreateSettingsContentPolicyResponseTargetsList>;
+export const CreateSettingsContentPolicyResponseTargetsList =
+  CreateSettingsContentPolicyRequestTargetsList as any as S.Schema<CreateSettingsContentPolicyResponseTargetsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateSettingsContentPolicyResponse {
@@ -1573,9 +1522,8 @@ export const CreateSettingsDomainRequestAllowedDeliveryModesItem = S.String;
 export type CreateSettingsDomainRequestAllowedDeliveryModesList = Array<
   CreateSettingsDomainRequestAllowedDeliveryModesItem | (string & {})
 >;
-export const CreateSettingsDomainRequestAllowedDeliveryModesList = /*@__PURE__*/ S.Array(
-  CreateSettingsDomainRequestAllowedDeliveryModesItem,
-) as any as S.Schema<CreateSettingsDomainRequestAllowedDeliveryModesList>;
+export const CreateSettingsDomainRequestAllowedDeliveryModesList =
+  CreateSettingsContentPolicyRequestTargetsList as any as S.Schema<CreateSettingsDomainRequestAllowedDeliveryModesList>;
 
 export type CreateSettingsDomainRequestDropDispositionsItem =
   | "MALICIOUS"
@@ -1593,9 +1541,8 @@ export const CreateSettingsDomainRequestDropDispositionsItem = S.String;
 export type CreateSettingsDomainRequestDropDispositionsList = Array<
   CreateSettingsDomainRequestDropDispositionsItem | (string & {})
 >;
-export const CreateSettingsDomainRequestDropDispositionsList = /*@__PURE__*/ S.Array(
-  CreateSettingsDomainRequestDropDispositionsItem,
-) as any as S.Schema<CreateSettingsDomainRequestDropDispositionsList>;
+export const CreateSettingsDomainRequestDropDispositionsList =
+  CreateSettingsContentPolicyRequestTargetsList as any as S.Schema<CreateSettingsDomainRequestDropDispositionsList>;
 
 export type CreateSettingsDomainRequestIpRestrictionsList = Array<string>;
 export const CreateSettingsDomainRequestIpRestrictionsList =
@@ -1607,9 +1554,8 @@ export const CreateSettingsDomainRequestRegionsItem = S.String;
 export type CreateSettingsDomainRequestRegionsList = Array<
   CreateSettingsDomainRequestRegionsItem | (string & {})
 >;
-export const CreateSettingsDomainRequestRegionsList = /*@__PURE__*/ S.Array(
-  CreateSettingsDomainRequestRegionsItem,
-) as any as S.Schema<CreateSettingsDomainRequestRegionsList>;
+export const CreateSettingsDomainRequestRegionsList =
+  CreateSettingsContentPolicyRequestTargetsList as any as S.Schema<CreateSettingsDomainRequestRegionsList>;
 
 export type CreateSettingsDomainRequestFolder = "AllItems" | "Inbox";
 export const CreateSettingsDomainRequestFolder = S.String;
@@ -1681,9 +1627,8 @@ export const CreateSettingsDomainResponseAllowedDeliveryModesItem = S.String;
 
 export type CreateSettingsDomainResponseAllowedDeliveryModesList =
   Array<CreateSettingsDomainResponseAllowedDeliveryModesItem>;
-export const CreateSettingsDomainResponseAllowedDeliveryModesList = /*@__PURE__*/ S.Array(
-  CreateSettingsDomainResponseAllowedDeliveryModesItem,
-) as any as S.Schema<CreateSettingsDomainResponseAllowedDeliveryModesList>;
+export const CreateSettingsDomainResponseAllowedDeliveryModesList =
+  CreateSettingsContentPolicyRequestTargetsList as any as S.Schema<CreateSettingsDomainResponseAllowedDeliveryModesList>;
 
 export interface CreateSettingsDomainResponseAuthorization {
   authorized: boolean;
@@ -1718,9 +1663,8 @@ export const CreateSettingsDomainResponseDropDispositionsItem = S.String;
 
 export type CreateSettingsDomainResponseDropDispositionsList =
   Array<CreateSettingsDomainResponseDropDispositionsItem>;
-export const CreateSettingsDomainResponseDropDispositionsList = /*@__PURE__*/ S.Array(
-  CreateSettingsDomainResponseDropDispositionsItem,
-) as any as S.Schema<CreateSettingsDomainResponseDropDispositionsList>;
+export const CreateSettingsDomainResponseDropDispositionsList =
+  CreateSettingsContentPolicyRequestTargetsList as any as S.Schema<CreateSettingsDomainResponseDropDispositionsList>;
 
 export interface CreateSettingsDomainResponseEmailsProcessed {
   timestamp: string;
@@ -1752,9 +1696,8 @@ export const CreateSettingsDomainResponseRegionsItem = S.String;
 
 export type CreateSettingsDomainResponseRegionsList =
   Array<CreateSettingsDomainResponseRegionsItem>;
-export const CreateSettingsDomainResponseRegionsList = /*@__PURE__*/ S.Array(
-  CreateSettingsDomainResponseRegionsItem,
-) as any as S.Schema<CreateSettingsDomainResponseRegionsList>;
+export const CreateSettingsDomainResponseRegionsList =
+  CreateSettingsContentPolicyRequestTargetsList as any as S.Schema<CreateSettingsDomainResponseRegionsList>;
 
 export type CreateSettingsDomainResponseSpfStatus =
   | "none"
@@ -2313,9 +2256,8 @@ export const EditSettingsContentPolicyRequestTargetsItem = S.String;
 export type EditSettingsContentPolicyRequestTargetsList = Array<
   EditSettingsContentPolicyRequestTargetsItem | (string & {})
 >;
-export const EditSettingsContentPolicyRequestTargetsList = /*@__PURE__*/ S.Array(
-  EditSettingsContentPolicyRequestTargetsItem,
-) as any as S.Schema<EditSettingsContentPolicyRequestTargetsList>;
+export const EditSettingsContentPolicyRequestTargetsList =
+  CreateSettingsContentPolicyRequestTargetsList as any as S.Schema<EditSettingsContentPolicyRequestTargetsList>;
 
 export interface EditSettingsContentPolicyRequest {
   /** Identifier. */
@@ -2360,9 +2302,8 @@ export const EditSettingsContentPolicyResponseTargetsItem = S.String;
 
 export type EditSettingsContentPolicyResponseTargetsList =
   Array<EditSettingsContentPolicyResponseTargetsItem>;
-export const EditSettingsContentPolicyResponseTargetsList = /*@__PURE__*/ S.Array(
-  EditSettingsContentPolicyResponseTargetsItem,
-) as any as S.Schema<EditSettingsContentPolicyResponseTargetsList>;
+export const EditSettingsContentPolicyResponseTargetsList =
+  CreateSettingsContentPolicyRequestTargetsList as any as S.Schema<EditSettingsContentPolicyResponseTargetsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface EditSettingsContentPolicyResponse {
@@ -2381,20 +2322,8 @@ export interface EditSettingsContentPolicyResponse {
   /** Parts of the email the pattern is matched against. */
   targets?: EditSettingsContentPolicyResponseTargetsList | null;
 }
-export const EditSettingsContentPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
-    name: S.optional(S.NullOr(S.String)),
-    notes: S.optional(S.NullOr(S.String)),
-    pattern: S.optional(S.NullOr(S.String)),
-    targets: S.optional(S.NullOr(EditSettingsContentPolicyResponseTargetsList)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "EditSettingsContentPolicyResponse",
-}) as any as S.Schema<EditSettingsContentPolicyResponse>;
+export const EditSettingsContentPolicyResponse =
+  CreateSettingsContentPolicyResponse as any as S.Schema<EditSettingsContentPolicyResponse>;
 
 export interface GetInvestigateRequest {
   /** Identifier. */
@@ -2562,9 +2491,8 @@ export const InvestigateGetResponseDeliveryStatusItem = S.String;
 
 export type InvestigateGetResponseDeliveryStatusList =
   Array<InvestigateGetResponseDeliveryStatusItem>;
-export const InvestigateGetResponseDeliveryStatusList = /*@__PURE__*/ S.Array(
-  InvestigateGetResponseDeliveryStatusItem,
-) as any as S.Schema<InvestigateGetResponseDeliveryStatusList>;
+export const InvestigateGetResponseDeliveryStatusList =
+  CreateSettingsContentPolicyRequestTargetsList as any as S.Schema<InvestigateGetResponseDeliveryStatusList>;
 
 export type InvestigateGetResponseEnvelopeToList = Array<string>;
 export const InvestigateGetResponseEnvelopeToList =
@@ -2638,9 +2566,8 @@ export const InvestigateGetResponsePostDeliveryOperationsItem = S.String;
 
 export type InvestigateGetResponsePostDeliveryOperationsList =
   Array<InvestigateGetResponsePostDeliveryOperationsItem>;
-export const InvestigateGetResponsePostDeliveryOperationsList = /*@__PURE__*/ S.Array(
-  InvestigateGetResponsePostDeliveryOperationsItem,
-) as any as S.Schema<InvestigateGetResponsePostDeliveryOperationsList>;
+export const InvestigateGetResponsePostDeliveryOperationsList =
+  CreateSettingsContentPolicyRequestTargetsList as any as S.Schema<InvestigateGetResponsePostDeliveryOperationsList>;
 
 export type InvestigateGetResponseThreatCategoriesList = Array<string>;
 export const InvestigateGetResponseThreatCategoriesList =
@@ -2836,19 +2763,8 @@ export interface InvestigateBulkGetResponseActionParamsMove {
   /** This field is nonfunctional. */
   expectedDisposition?: InvestigateBulkGetResponseActionParamsMoveExpectedDisposition | null;
 }
-export const InvestigateBulkGetResponseActionParamsMove = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    destination: InvestigateBulkGetResponseActionParamsMoveDestination,
-    type: InvestigateBulkGetResponseActionParamsMoveType,
-    expectedDisposition: S.optional(
-      S.NullOr(InvestigateBulkGetResponseActionParamsMoveExpectedDisposition).pipe(
-        T.Body("expected_disposition"),
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "InvestigateBulkGetResponseActionParamsMove",
-}) as any as S.Schema<InvestigateBulkGetResponseActionParamsMove>;
+export const InvestigateBulkGetResponseActionParamsMove =
+  InvestigateBulkCreateResponseActionParamsMove as any as S.Schema<InvestigateBulkGetResponseActionParamsMove>;
 
 export type InvestigateBulkGetResponseActionParamsReleaseType = "RELEASE";
 export const InvestigateBulkGetResponseActionParamsReleaseType = S.String;
@@ -2856,13 +2772,8 @@ export const InvestigateBulkGetResponseActionParamsReleaseType = S.String;
 export interface InvestigateBulkGetResponseActionParamsRelease {
   type: InvestigateBulkGetResponseActionParamsReleaseType;
 }
-export const InvestigateBulkGetResponseActionParamsRelease = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: InvestigateBulkGetResponseActionParamsReleaseType,
-  }),
-).annotate({
-  identifier: "InvestigateBulkGetResponseActionParamsRelease",
-}) as any as S.Schema<InvestigateBulkGetResponseActionParamsRelease>;
+export const InvestigateBulkGetResponseActionParamsRelease =
+  InvestigateBulkCreateResponseActionParamsRelease as any as S.Schema<InvestigateBulkGetResponseActionParamsRelease>;
 
 export type InvestigateBulkGetResponseActionParams =
   | InvestigateBulkGetResponseActionParamsMove
@@ -3137,27 +3048,13 @@ export interface InvestigateDetectionsGetResponseFindingsItem {
   score?: number | null;
   value?: string | null;
 }
-export const InvestigateDetectionsGetResponseFindingsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attachment: S.optional(S.NullOr(S.String)),
-    detail: S.optional(S.NullOr(S.String)),
-    detection: S.optional(S.NullOr(InvestigateDetectionsGetResponseFindingsItemDetection)),
-    field: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-    portion: S.optional(S.NullOr(S.String)),
-    reason: S.optional(S.NullOr(S.String)),
-    score: S.optional(S.NullOr(S.Number)),
-    value: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "InvestigateDetectionsGetResponseFindingsItem",
-}) as any as S.Schema<InvestigateDetectionsGetResponseFindingsItem>;
+export const InvestigateDetectionsGetResponseFindingsItem =
+  InvestigateGetResponseFindingsItem as any as S.Schema<InvestigateDetectionsGetResponseFindingsItem>;
 
 export type InvestigateDetectionsGetResponseFindingsList =
   Array<InvestigateDetectionsGetResponseFindingsItem>;
-export const InvestigateDetectionsGetResponseFindingsList = /*@__PURE__*/ S.Array(
-  InvestigateDetectionsGetResponseFindingsItem,
-) as any as S.Schema<InvestigateDetectionsGetResponseFindingsList>;
+export const InvestigateDetectionsGetResponseFindingsList =
+  InvestigateGetResponseFindingsList as any as S.Schema<InvestigateDetectionsGetResponseFindingsList>;
 
 export interface InvestigateDetectionsGetResponseHeadersItem {
   name: string;
@@ -3269,16 +3166,8 @@ export interface InvestigateDetectionsGetResponseValidation {
   dmarc?: InvestigateDetectionsGetResponseValidationDmarc | null;
   spf?: InvestigateDetectionsGetResponseValidationSpf | null;
 }
-export const InvestigateDetectionsGetResponseValidation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    comment: S.optional(S.NullOr(S.String)),
-    dkim: S.optional(S.NullOr(InvestigateDetectionsGetResponseValidationDkim)),
-    dmarc: S.optional(S.NullOr(InvestigateDetectionsGetResponseValidationDmarc)),
-    spf: S.optional(S.NullOr(InvestigateDetectionsGetResponseValidationSpf)),
-  }),
-).annotate({
-  identifier: "InvestigateDetectionsGetResponseValidation",
-}) as any as S.Schema<InvestigateDetectionsGetResponseValidation>;
+export const InvestigateDetectionsGetResponseValidation =
+  InvestigateGetResponseValidation as any as S.Schema<InvestigateDetectionsGetResponseValidation>;
 
 export type InvestigateDetectionsGetResponseFinalDisposition =
   | "MALICIOUS"
@@ -3538,29 +3427,8 @@ export interface GetSettingAllowPolicyResponse {
   /** Enforce DMARC, SPF or DKIM authentication. When on, Email Security only honors policies that pass authentication. */
   verifySender?: boolean | null;
 }
-export const GetSettingAllowPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdAt: S.String.pipe(T.Body("created_at")),
-    lastModified: S.String.pipe(T.Body("last_modified")),
-    comments: S.optional(S.NullOr(S.String)),
-    isAcceptableSender: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_acceptable_sender"))),
-    isExemptRecipient: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_exempt_recipient"))),
-    isRecipient: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_recipient"))),
-    isRegex: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_regex"))),
-    isSender: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_sender"))),
-    isSpoof: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_spoof"))),
-    isTrustedSender: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_trusted_sender"))),
-    modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
-    pattern: S.optional(S.NullOr(S.String)),
-    patternType: S.optional(
-      S.NullOr(SettingsAllowPoliciesGetResponsePatternType).pipe(T.Body("pattern_type")),
-    ),
-    verifySender: S.optional(S.NullOr(S.Boolean).pipe(T.Body("verify_sender"))),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "GetSettingAllowPolicyResponse",
-}) as any as S.Schema<GetSettingAllowPolicyResponse>;
+export const GetSettingAllowPolicyResponse =
+  CreateSettingAllowPolicyResponse as any as S.Schema<GetSettingAllowPolicyResponse>;
 
 export interface GetSettingBlockSenderRequest {
   /** Identifier. */
@@ -3604,22 +3472,8 @@ export interface GetSettingBlockSenderResponse {
   /** Type of pattern matching. */
   patternType?: SettingsBlockSendersGetResponsePatternType | null;
 }
-export const GetSettingBlockSenderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    comments: S.optional(S.NullOr(S.String)),
-    createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-    isRegex: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_regex"))),
-    lastModified: S.optional(S.NullOr(S.String).pipe(T.Body("last_modified"))),
-    modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
-    pattern: S.optional(S.NullOr(S.String)),
-    patternType: S.optional(
-      S.NullOr(SettingsBlockSendersGetResponsePatternType).pipe(T.Body("pattern_type")),
-    ),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "GetSettingBlockSenderResponse",
-}) as any as S.Schema<GetSettingBlockSenderResponse>;
+export const GetSettingBlockSenderResponse =
+  CreateSettingBlockSenderResponse as any as S.Schema<GetSettingBlockSenderResponse>;
 
 export interface GetSettingDomainRequest {
   /** Identifier. */
@@ -3652,9 +3506,8 @@ export const SettingsDomainsGetResponseAllowedDeliveryModesItem = S.String;
 
 export type SettingsDomainsGetResponseAllowedDeliveryModesList =
   Array<SettingsDomainsGetResponseAllowedDeliveryModesItem>;
-export const SettingsDomainsGetResponseAllowedDeliveryModesList = /*@__PURE__*/ S.Array(
-  SettingsDomainsGetResponseAllowedDeliveryModesItem,
-) as any as S.Schema<SettingsDomainsGetResponseAllowedDeliveryModesList>;
+export const SettingsDomainsGetResponseAllowedDeliveryModesList =
+  CreateSettingsContentPolicyRequestTargetsList as any as S.Schema<SettingsDomainsGetResponseAllowedDeliveryModesList>;
 
 export type SettingsDomainsGetResponseAuthorization = CreateSettingsDomainResponseAuthorization;
 export const SettingsDomainsGetResponseAuthorization = CreateSettingsDomainResponseAuthorization;
@@ -3677,9 +3530,8 @@ export const SettingsDomainsGetResponseDropDispositionsItem = S.String;
 
 export type SettingsDomainsGetResponseDropDispositionsList =
   Array<SettingsDomainsGetResponseDropDispositionsItem>;
-export const SettingsDomainsGetResponseDropDispositionsList = /*@__PURE__*/ S.Array(
-  SettingsDomainsGetResponseDropDispositionsItem,
-) as any as S.Schema<SettingsDomainsGetResponseDropDispositionsList>;
+export const SettingsDomainsGetResponseDropDispositionsList =
+  CreateSettingsContentPolicyRequestTargetsList as any as S.Schema<SettingsDomainsGetResponseDropDispositionsList>;
 
 export type SettingsDomainsGetResponseEmailsProcessed = CreateSettingsDomainResponseEmailsProcessed;
 export const SettingsDomainsGetResponseEmailsProcessed =
@@ -3699,9 +3551,8 @@ export type SettingsDomainsGetResponseRegionsItem = "GLOBAL" | "AU" | "DE" | "IN
 export const SettingsDomainsGetResponseRegionsItem = S.String;
 
 export type SettingsDomainsGetResponseRegionsList = Array<SettingsDomainsGetResponseRegionsItem>;
-export const SettingsDomainsGetResponseRegionsList = /*@__PURE__*/ S.Array(
-  SettingsDomainsGetResponseRegionsItem,
-) as any as S.Schema<SettingsDomainsGetResponseRegionsList>;
+export const SettingsDomainsGetResponseRegionsList =
+  CreateSettingsContentPolicyRequestTargetsList as any as S.Schema<SettingsDomainsGetResponseRegionsList>;
 
 export type SettingsDomainsGetResponseSpfStatus = "none" | "good" | "neutral" | "open" | "invalid";
 export const SettingsDomainsGetResponseSpfStatus = S.String;
@@ -3833,26 +3684,8 @@ export interface GetSettingImpersonationRegistryResponse {
   /** Source the entry was created from. */
   provenance?: SettingsImpersonationRegistryGetResponseProvenance | null;
 }
-export const GetSettingImpersonationRegistryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    comments: S.optional(S.NullOr(S.String)),
-    createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-    directoryId: S.optional(S.NullOr(S.Number).pipe(T.Body("directory_id"))),
-    directoryNodeId: S.optional(S.NullOr(S.Number).pipe(T.Body("directory_node_id"))),
-    email: S.optional(S.NullOr(S.String)),
-    externalDirectoryNodeId: S.optional(
-      S.NullOr(S.String).pipe(T.Body("external_directory_node_id")),
-    ),
-    isEmailRegex: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_email_regex"))),
-    lastModified: S.optional(S.NullOr(S.String).pipe(T.Body("last_modified"))),
-    modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
-    name: S.optional(S.NullOr(S.String)),
-    provenance: S.optional(S.NullOr(SettingsImpersonationRegistryGetResponseProvenance)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "GetSettingImpersonationRegistryResponse",
-}) as any as S.Schema<GetSettingImpersonationRegistryResponse>;
+export const GetSettingImpersonationRegistryResponse =
+  CreateSettingImpersonationRegistryResponse as any as S.Schema<GetSettingImpersonationRegistryResponse>;
 
 export interface GetSettingsContentPolicyRequest {
   /** Identifier. */
@@ -3882,9 +3715,8 @@ export const GetSettingsContentPolicyResponseTargetsItem = S.String;
 
 export type GetSettingsContentPolicyResponseTargetsList =
   Array<GetSettingsContentPolicyResponseTargetsItem>;
-export const GetSettingsContentPolicyResponseTargetsList = /*@__PURE__*/ S.Array(
-  GetSettingsContentPolicyResponseTargetsItem,
-) as any as S.Schema<GetSettingsContentPolicyResponseTargetsList>;
+export const GetSettingsContentPolicyResponseTargetsList =
+  CreateSettingsContentPolicyRequestTargetsList as any as S.Schema<GetSettingsContentPolicyResponseTargetsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetSettingsContentPolicyResponse {
@@ -3903,20 +3735,8 @@ export interface GetSettingsContentPolicyResponse {
   /** Parts of the email the pattern is matched against. */
   targets?: GetSettingsContentPolicyResponseTargetsList | null;
 }
-export const GetSettingsContentPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
-    name: S.optional(S.NullOr(S.String)),
-    notes: S.optional(S.NullOr(S.String)),
-    pattern: S.optional(S.NullOr(S.String)),
-    targets: S.optional(S.NullOr(GetSettingsContentPolicyResponseTargetsList)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "GetSettingsContentPolicyResponse",
-}) as any as S.Schema<GetSettingsContentPolicyResponse>;
+export const GetSettingsContentPolicyResponse =
+  CreateSettingsContentPolicyResponse as any as S.Schema<GetSettingsContentPolicyResponse>;
 
 export interface GetSettingSendingDomainRestrictionRequest {
   /** Identifier. */
@@ -4266,25 +4086,8 @@ export interface InvestigateBulkMessagesListResultItemMessageProperties {
   /** Legacy field for allowlist pattern type. */
   whitelistedPatternType?: InvestigateBulkMessagesListResultItemMessagePropertiesWhitelistedPatternType | null;
 }
-export const InvestigateBulkMessagesListResultItemMessageProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allowlistedPattern: S.optional(S.NullOr(S.String).pipe(T.Body("allowlisted_pattern"))),
-    allowlistedPatternType: S.optional(
-      S.NullOr(InvestigateBulkMessagesListResultItemMessagePropertiesAllowlistedPatternType).pipe(
-        T.Body("allowlisted_pattern_type"),
-      ),
-    ),
-    blocklistedMessage: S.optional(S.NullOr(S.Boolean).pipe(T.Body("blocklisted_message"))),
-    blocklistedPattern: S.optional(S.NullOr(S.String).pipe(T.Body("blocklisted_pattern"))),
-    whitelistedPatternType: S.optional(
-      S.NullOr(InvestigateBulkMessagesListResultItemMessagePropertiesWhitelistedPatternType).pipe(
-        T.Body("whitelisted_pattern_type"),
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "InvestigateBulkMessagesListResultItemMessageProperties",
-}) as any as S.Schema<InvestigateBulkMessagesListResultItemMessageProperties>;
+export const InvestigateBulkMessagesListResultItemMessageProperties =
+  InvestigateGetResponseProperties as any as S.Schema<InvestigateBulkMessagesListResultItemMessageProperties>;
 
 export type InvestigateBulkMessagesListResultItemMessageDeliveryMode =
   | "DIRECT"
@@ -4313,9 +4116,8 @@ export const InvestigateBulkMessagesListResultItemMessageDeliveryStatusItem = S.
 
 export type InvestigateBulkMessagesListResultItemMessageDeliveryStatusList =
   Array<InvestigateBulkMessagesListResultItemMessageDeliveryStatusItem>;
-export const InvestigateBulkMessagesListResultItemMessageDeliveryStatusList = /*@__PURE__*/ S.Array(
-  InvestigateBulkMessagesListResultItemMessageDeliveryStatusItem,
-) as any as S.Schema<InvestigateBulkMessagesListResultItemMessageDeliveryStatusList>;
+export const InvestigateBulkMessagesListResultItemMessageDeliveryStatusList =
+  CreateSettingsContentPolicyRequestTargetsList as any as S.Schema<InvestigateBulkMessagesListResultItemMessageDeliveryStatusList>;
 
 export type InvestigateBulkMessagesListResultItemMessageEnvelopeToList = Array<string>;
 export const InvestigateBulkMessagesListResultItemMessageEnvelopeToList =
@@ -4440,16 +4242,8 @@ export interface InvestigateBulkMessagesListResultItemMessageValidation {
   dmarc?: InvestigateBulkMessagesListResultItemMessageValidationDmarc | null;
   spf?: InvestigateBulkMessagesListResultItemMessageValidationSpf | null;
 }
-export const InvestigateBulkMessagesListResultItemMessageValidation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    comment: S.optional(S.NullOr(S.String)),
-    dkim: S.optional(S.NullOr(InvestigateBulkMessagesListResultItemMessageValidationDkim)),
-    dmarc: S.optional(S.NullOr(InvestigateBulkMessagesListResultItemMessageValidationDmarc)),
-    spf: S.optional(S.NullOr(InvestigateBulkMessagesListResultItemMessageValidationSpf)),
-  }),
-).annotate({
-  identifier: "InvestigateBulkMessagesListResultItemMessageValidation",
-}) as any as S.Schema<InvestigateBulkMessagesListResultItemMessageValidation>;
+export const InvestigateBulkMessagesListResultItemMessageValidation =
+  InvestigateGetResponseValidation as any as S.Schema<InvestigateBulkMessagesListResultItemMessageValidation>;
 
 export interface InvestigateBulkMessagesListResultItemMessage {
   /** Unique identifier for a message retrieved from investigation. */
@@ -4702,19 +4496,8 @@ export interface InvestigateBulkListResultItemActionParamsMove {
   /** This field is nonfunctional. */
   expectedDisposition?: InvestigateBulkListResultItemActionParamsMoveExpectedDisposition | null;
 }
-export const InvestigateBulkListResultItemActionParamsMove = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    destination: InvestigateBulkListResultItemActionParamsMoveDestination,
-    type: InvestigateBulkListResultItemActionParamsMoveType,
-    expectedDisposition: S.optional(
-      S.NullOr(InvestigateBulkListResultItemActionParamsMoveExpectedDisposition).pipe(
-        T.Body("expected_disposition"),
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "InvestigateBulkListResultItemActionParamsMove",
-}) as any as S.Schema<InvestigateBulkListResultItemActionParamsMove>;
+export const InvestigateBulkListResultItemActionParamsMove =
+  InvestigateBulkCreateResponseActionParamsMove as any as S.Schema<InvestigateBulkListResultItemActionParamsMove>;
 
 export type InvestigateBulkListResultItemActionParamsReleaseType = "RELEASE";
 export const InvestigateBulkListResultItemActionParamsReleaseType = S.String;
@@ -4722,13 +4505,8 @@ export const InvestigateBulkListResultItemActionParamsReleaseType = S.String;
 export interface InvestigateBulkListResultItemActionParamsRelease {
   type: InvestigateBulkListResultItemActionParamsReleaseType;
 }
-export const InvestigateBulkListResultItemActionParamsRelease = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: InvestigateBulkListResultItemActionParamsReleaseType,
-  }),
-).annotate({
-  identifier: "InvestigateBulkListResultItemActionParamsRelease",
-}) as any as S.Schema<InvestigateBulkListResultItemActionParamsRelease>;
+export const InvestigateBulkListResultItemActionParamsRelease =
+  InvestigateBulkCreateResponseActionParamsRelease as any as S.Schema<InvestigateBulkListResultItemActionParamsRelease>;
 
 export type InvestigateBulkListResultItemActionParams =
   | InvestigateBulkListResultItemActionParamsMove
@@ -4811,42 +4589,8 @@ export interface InvestigateBulkListResultItemSearchParams {
   /** Whether to search reclassification submissions instead of original messages. */
   submissions?: boolean | null;
 }
-export const InvestigateBulkListResultItemSearchParams = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    actionLog: S.optional(S.NullOr(S.Boolean).pipe(T.Body("action_log"))),
-    alertId: S.optional(S.NullOr(S.String).pipe(T.Body("alert_id"))),
-    deliveryStatus: S.optional(
-      S.NullOr(InvestigateBulkListResultItemSearchParamsDeliveryStatus).pipe(
-        T.Body("delivery_status"),
-      ),
-    ),
-    detectionsOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("detections_only"))),
-    domain: S.optional(S.NullOr(S.String)),
-    end: S.optional(S.NullOr(S.String)),
-    exactSubject: S.optional(S.NullOr(S.String).pipe(T.Body("exact_subject"))),
-    finalDisposition: S.optional(
-      S.NullOr(InvestigateBulkListResultItemSearchParamsFinalDisposition).pipe(
-        T.Body("final_disposition"),
-      ),
-    ),
-    messageAction: S.optional(
-      S.NullOr(InvestigateBulkListResultItemSearchParamsMessageAction).pipe(
-        T.Body("message_action"),
-      ),
-    ),
-    messageId: S.optional(S.NullOr(S.String).pipe(T.Body("message_id"))),
-    metric: S.optional(S.NullOr(S.String)),
-    query: S.optional(S.NullOr(S.String)),
-    recipient: S.optional(S.NullOr(S.String)),
-    sender: S.optional(S.NullOr(S.String)),
-    smtpHeloIp: S.optional(S.NullOr(S.String).pipe(T.Body("smtp_helo_ip"))),
-    start: S.optional(S.NullOr(S.String)),
-    subject: S.optional(S.NullOr(S.String)),
-    submissions: S.optional(S.NullOr(S.Boolean)),
-  }),
-).annotate({
-  identifier: "InvestigateBulkListResultItemSearchParams",
-}) as any as S.Schema<InvestigateBulkListResultItemSearchParams>;
+export const InvestigateBulkListResultItemSearchParams =
+  InvestigateBulkCreateResponseSearchParams as any as S.Schema<InvestigateBulkListResultItemSearchParams>;
 
 export type InvestigateBulkListResultItemStatus =
   | "PENDING"
@@ -5046,22 +4790,12 @@ export interface InvestigateListResultItemActionLogItem {
   /** Status of the action. */
   status?: string | null;
 }
-export const InvestigateListResultItemActionLogItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    completedAt: S.String.pipe(T.Body("completed_at")),
-    operation: InvestigateListResultItemActionLogItemOperation,
-    completedTimestamp: S.optional(S.NullOr(S.String).pipe(T.Body("completed_timestamp"))),
-    properties: S.optional(S.NullOr(InvestigateGetResponseActionLogItemProperties)),
-    status: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "InvestigateListResultItemActionLogItem",
-}) as any as S.Schema<InvestigateListResultItemActionLogItem>;
+export const InvestigateListResultItemActionLogItem =
+  InvestigateGetResponseActionLogItem as any as S.Schema<InvestigateListResultItemActionLogItem>;
 
 export type InvestigateListResultItemActionLogList = Array<InvestigateListResultItemActionLogItem>;
-export const InvestigateListResultItemActionLogList = /*@__PURE__*/ S.Array(
-  InvestigateListResultItemActionLogItem,
-) as any as S.Schema<InvestigateListResultItemActionLogList>;
+export const InvestigateListResultItemActionLogList =
+  InvestigateGetResponseActionLogList as any as S.Schema<InvestigateListResultItemActionLogList>;
 
 export type InvestigateListResultItemClientRecipientsList = Array<string>;
 export const InvestigateListResultItemClientRecipientsList =
@@ -5105,25 +4839,8 @@ export interface InvestigateListResultItemProperties {
   /** Legacy field for allowlist pattern type. */
   whitelistedPatternType?: InvestigateListResultItemPropertiesWhitelistedPatternType | null;
 }
-export const InvestigateListResultItemProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allowlistedPattern: S.optional(S.NullOr(S.String).pipe(T.Body("allowlisted_pattern"))),
-    allowlistedPatternType: S.optional(
-      S.NullOr(InvestigateListResultItemPropertiesAllowlistedPatternType).pipe(
-        T.Body("allowlisted_pattern_type"),
-      ),
-    ),
-    blocklistedMessage: S.optional(S.NullOr(S.Boolean).pipe(T.Body("blocklisted_message"))),
-    blocklistedPattern: S.optional(S.NullOr(S.String).pipe(T.Body("blocklisted_pattern"))),
-    whitelistedPatternType: S.optional(
-      S.NullOr(InvestigateListResultItemPropertiesWhitelistedPatternType).pipe(
-        T.Body("whitelisted_pattern_type"),
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "InvestigateListResultItemProperties",
-}) as any as S.Schema<InvestigateListResultItemProperties>;
+export const InvestigateListResultItemProperties =
+  InvestigateGetResponseProperties as any as S.Schema<InvestigateListResultItemProperties>;
 
 export type InvestigateListResultItemDeliveryMode =
   | "DIRECT"
@@ -5152,9 +4869,8 @@ export const InvestigateListResultItemDeliveryStatusItem = S.String;
 
 export type InvestigateListResultItemDeliveryStatusList =
   Array<InvestigateListResultItemDeliveryStatusItem>;
-export const InvestigateListResultItemDeliveryStatusList = /*@__PURE__*/ S.Array(
-  InvestigateListResultItemDeliveryStatusItem,
-) as any as S.Schema<InvestigateListResultItemDeliveryStatusList>;
+export const InvestigateListResultItemDeliveryStatusList =
+  CreateSettingsContentPolicyRequestTargetsList as any as S.Schema<InvestigateListResultItemDeliveryStatusList>;
 
 export type InvestigateListResultItemEnvelopeToList = Array<string>;
 export const InvestigateListResultItemEnvelopeToList =
@@ -5198,26 +4914,12 @@ export interface InvestigateListResultItemFindingsItem {
   score?: number | null;
   value?: string | null;
 }
-export const InvestigateListResultItemFindingsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attachment: S.optional(S.NullOr(S.String)),
-    detail: S.optional(S.NullOr(S.String)),
-    detection: S.optional(S.NullOr(InvestigateListResultItemFindingsItemDetection)),
-    field: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-    portion: S.optional(S.NullOr(S.String)),
-    reason: S.optional(S.NullOr(S.String)),
-    score: S.optional(S.NullOr(S.Number)),
-    value: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "InvestigateListResultItemFindingsItem",
-}) as any as S.Schema<InvestigateListResultItemFindingsItem>;
+export const InvestigateListResultItemFindingsItem =
+  InvestigateGetResponseFindingsItem as any as S.Schema<InvestigateListResultItemFindingsItem>;
 
 export type InvestigateListResultItemFindingsList = Array<InvestigateListResultItemFindingsItem>;
-export const InvestigateListResultItemFindingsList = /*@__PURE__*/ S.Array(
-  InvestigateListResultItemFindingsItem,
-) as any as S.Schema<InvestigateListResultItemFindingsList>;
+export const InvestigateListResultItemFindingsList =
+  InvestigateGetResponseFindingsList as any as S.Schema<InvestigateListResultItemFindingsList>;
 
 export type InvestigateListResultItemPostDeliveryOperationsItem =
   | "PREVIEW"
@@ -5228,9 +4930,8 @@ export const InvestigateListResultItemPostDeliveryOperationsItem = S.String;
 
 export type InvestigateListResultItemPostDeliveryOperationsList =
   Array<InvestigateListResultItemPostDeliveryOperationsItem>;
-export const InvestigateListResultItemPostDeliveryOperationsList = /*@__PURE__*/ S.Array(
-  InvestigateListResultItemPostDeliveryOperationsItem,
-) as any as S.Schema<InvestigateListResultItemPostDeliveryOperationsList>;
+export const InvestigateListResultItemPostDeliveryOperationsList =
+  CreateSettingsContentPolicyRequestTargetsList as any as S.Schema<InvestigateListResultItemPostDeliveryOperationsList>;
 
 export type InvestigateListResultItemThreatCategoriesList = Array<string>;
 export const InvestigateListResultItemThreatCategoriesList =
@@ -5269,16 +4970,8 @@ export interface InvestigateListResultItemValidation {
   dmarc?: InvestigateListResultItemValidationDmarc | null;
   spf?: InvestigateListResultItemValidationSpf | null;
 }
-export const InvestigateListResultItemValidation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    comment: S.optional(S.NullOr(S.String)),
-    dkim: S.optional(S.NullOr(InvestigateListResultItemValidationDkim)),
-    dmarc: S.optional(S.NullOr(InvestigateListResultItemValidationDmarc)),
-    spf: S.optional(S.NullOr(InvestigateListResultItemValidationSpf)),
-  }),
-).annotate({
-  identifier: "InvestigateListResultItemValidation",
-}) as any as S.Schema<InvestigateListResultItemValidation>;
+export const InvestigateListResultItemValidation =
+  InvestigateGetResponseValidation as any as S.Schema<InvestigateListResultItemValidation>;
 
 export interface InvestigateListResultItem {
   /** Unique identifier for a message retrieved from investigation. */
@@ -5889,9 +5582,8 @@ export const SettingsDomainsListResultItemAllowedDeliveryModesItem = S.String;
 
 export type SettingsDomainsListResultItemAllowedDeliveryModesList =
   Array<SettingsDomainsListResultItemAllowedDeliveryModesItem>;
-export const SettingsDomainsListResultItemAllowedDeliveryModesList = /*@__PURE__*/ S.Array(
-  SettingsDomainsListResultItemAllowedDeliveryModesItem,
-) as any as S.Schema<SettingsDomainsListResultItemAllowedDeliveryModesList>;
+export const SettingsDomainsListResultItemAllowedDeliveryModesList =
+  CreateSettingsContentPolicyRequestTargetsList as any as S.Schema<SettingsDomainsListResultItemAllowedDeliveryModesList>;
 
 export type SettingsDomainsListResultItemAuthorization = CreateSettingsDomainResponseAuthorization;
 export const SettingsDomainsListResultItemAuthorization = CreateSettingsDomainResponseAuthorization;
@@ -5914,9 +5606,8 @@ export const SettingsDomainsListResultItemDropDispositionsItem = S.String;
 
 export type SettingsDomainsListResultItemDropDispositionsList =
   Array<SettingsDomainsListResultItemDropDispositionsItem>;
-export const SettingsDomainsListResultItemDropDispositionsList = /*@__PURE__*/ S.Array(
-  SettingsDomainsListResultItemDropDispositionsItem,
-) as any as S.Schema<SettingsDomainsListResultItemDropDispositionsList>;
+export const SettingsDomainsListResultItemDropDispositionsList =
+  CreateSettingsContentPolicyRequestTargetsList as any as S.Schema<SettingsDomainsListResultItemDropDispositionsList>;
 
 export type SettingsDomainsListResultItemEmailsProcessed =
   CreateSettingsDomainResponseEmailsProcessed;
@@ -5938,9 +5629,8 @@ export const SettingsDomainsListResultItemRegionsItem = S.String;
 
 export type SettingsDomainsListResultItemRegionsList =
   Array<SettingsDomainsListResultItemRegionsItem>;
-export const SettingsDomainsListResultItemRegionsList = /*@__PURE__*/ S.Array(
-  SettingsDomainsListResultItemRegionsItem,
-) as any as S.Schema<SettingsDomainsListResultItemRegionsList>;
+export const SettingsDomainsListResultItemRegionsList =
+  CreateSettingsContentPolicyRequestTargetsList as any as S.Schema<SettingsDomainsListResultItemRegionsList>;
 
 export type SettingsDomainsListResultItemSpfStatus =
   | "none"
@@ -6220,9 +5910,8 @@ export const ListSettingsContentPoliciesResultItemTargetsItem = S.String;
 
 export type ListSettingsContentPoliciesResultItemTargetsList =
   Array<ListSettingsContentPoliciesResultItemTargetsItem>;
-export const ListSettingsContentPoliciesResultItemTargetsList = /*@__PURE__*/ S.Array(
-  ListSettingsContentPoliciesResultItemTargetsItem,
-) as any as S.Schema<ListSettingsContentPoliciesResultItemTargetsList>;
+export const ListSettingsContentPoliciesResultItemTargetsList =
+  CreateSettingsContentPolicyRequestTargetsList as any as S.Schema<ListSettingsContentPoliciesResultItemTargetsList>;
 
 export interface ListSettingsContentPoliciesResultItem {
   /** Content policy identifier. */
@@ -6867,29 +6556,8 @@ export interface PatchSettingAllowPolicyResponse {
   /** Enforce DMARC, SPF or DKIM authentication. When on, Email Security only honors policies that pass authentication. */
   verifySender?: boolean | null;
 }
-export const PatchSettingAllowPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdAt: S.String.pipe(T.Body("created_at")),
-    lastModified: S.String.pipe(T.Body("last_modified")),
-    comments: S.optional(S.NullOr(S.String)),
-    isAcceptableSender: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_acceptable_sender"))),
-    isExemptRecipient: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_exempt_recipient"))),
-    isRecipient: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_recipient"))),
-    isRegex: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_regex"))),
-    isSender: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_sender"))),
-    isSpoof: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_spoof"))),
-    isTrustedSender: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_trusted_sender"))),
-    modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
-    pattern: S.optional(S.NullOr(S.String)),
-    patternType: S.optional(
-      S.NullOr(SettingsAllowPoliciesEditResponsePatternType).pipe(T.Body("pattern_type")),
-    ),
-    verifySender: S.optional(S.NullOr(S.Boolean).pipe(T.Body("verify_sender"))),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "PatchSettingAllowPolicyResponse",
-}) as any as S.Schema<PatchSettingAllowPolicyResponse>;
+export const PatchSettingAllowPolicyResponse =
+  CreateSettingAllowPolicyResponse as any as S.Schema<PatchSettingAllowPolicyResponse>;
 
 export type SettingsBlockSendersEditRequestPatternType = "EMAIL" | "DOMAIN" | "IP" | "UNKNOWN";
 export const SettingsBlockSendersEditRequestPatternType = S.String;
@@ -6949,22 +6617,8 @@ export interface PatchSettingBlockSenderResponse {
   /** Type of pattern matching. */
   patternType?: SettingsBlockSendersEditResponsePatternType | null;
 }
-export const PatchSettingBlockSenderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    comments: S.optional(S.NullOr(S.String)),
-    createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-    isRegex: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_regex"))),
-    lastModified: S.optional(S.NullOr(S.String).pipe(T.Body("last_modified"))),
-    modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
-    pattern: S.optional(S.NullOr(S.String)),
-    patternType: S.optional(
-      S.NullOr(SettingsBlockSendersEditResponsePatternType).pipe(T.Body("pattern_type")),
-    ),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "PatchSettingBlockSenderResponse",
-}) as any as S.Schema<PatchSettingBlockSenderResponse>;
+export const PatchSettingBlockSenderResponse =
+  CreateSettingBlockSenderResponse as any as S.Schema<PatchSettingBlockSenderResponse>;
 
 export type SettingsDomainsEditRequestAllowedDeliveryModesItem =
   | "DIRECT"
@@ -6977,9 +6631,8 @@ export const SettingsDomainsEditRequestAllowedDeliveryModesItem = S.String;
 export type SettingsDomainsEditRequestAllowedDeliveryModesList = Array<
   SettingsDomainsEditRequestAllowedDeliveryModesItem | (string & {})
 >;
-export const SettingsDomainsEditRequestAllowedDeliveryModesList = /*@__PURE__*/ S.Array(
-  SettingsDomainsEditRequestAllowedDeliveryModesItem,
-) as any as S.Schema<SettingsDomainsEditRequestAllowedDeliveryModesList>;
+export const SettingsDomainsEditRequestAllowedDeliveryModesList =
+  CreateSettingsContentPolicyRequestTargetsList as any as S.Schema<SettingsDomainsEditRequestAllowedDeliveryModesList>;
 
 export type SettingsDomainsEditRequestDropDispositionsItem =
   | "MALICIOUS"
@@ -6997,9 +6650,8 @@ export const SettingsDomainsEditRequestDropDispositionsItem = S.String;
 export type SettingsDomainsEditRequestDropDispositionsList = Array<
   SettingsDomainsEditRequestDropDispositionsItem | (string & {})
 >;
-export const SettingsDomainsEditRequestDropDispositionsList = /*@__PURE__*/ S.Array(
-  SettingsDomainsEditRequestDropDispositionsItem,
-) as any as S.Schema<SettingsDomainsEditRequestDropDispositionsList>;
+export const SettingsDomainsEditRequestDropDispositionsList =
+  CreateSettingsContentPolicyRequestTargetsList as any as S.Schema<SettingsDomainsEditRequestDropDispositionsList>;
 
 export type SettingsDomainsEditRequestFolder = "AllItems" | "Inbox";
 export const SettingsDomainsEditRequestFolder = S.String;
@@ -7014,9 +6666,8 @@ export const SettingsDomainsEditRequestRegionsItem = S.String;
 export type SettingsDomainsEditRequestRegionsList = Array<
   SettingsDomainsEditRequestRegionsItem | (string & {})
 >;
-export const SettingsDomainsEditRequestRegionsList = /*@__PURE__*/ S.Array(
-  SettingsDomainsEditRequestRegionsItem,
-) as any as S.Schema<SettingsDomainsEditRequestRegionsList>;
+export const SettingsDomainsEditRequestRegionsList =
+  CreateSettingsContentPolicyRequestTargetsList as any as S.Schema<SettingsDomainsEditRequestRegionsList>;
 
 export interface PatchSettingDomainRequest {
   /** Identifier. */
@@ -7087,9 +6738,8 @@ export const SettingsDomainsEditResponseAllowedDeliveryModesItem = S.String;
 
 export type SettingsDomainsEditResponseAllowedDeliveryModesList =
   Array<SettingsDomainsEditResponseAllowedDeliveryModesItem>;
-export const SettingsDomainsEditResponseAllowedDeliveryModesList = /*@__PURE__*/ S.Array(
-  SettingsDomainsEditResponseAllowedDeliveryModesItem,
-) as any as S.Schema<SettingsDomainsEditResponseAllowedDeliveryModesList>;
+export const SettingsDomainsEditResponseAllowedDeliveryModesList =
+  CreateSettingsContentPolicyRequestTargetsList as any as S.Schema<SettingsDomainsEditResponseAllowedDeliveryModesList>;
 
 export type SettingsDomainsEditResponseAuthorization = CreateSettingsDomainResponseAuthorization;
 export const SettingsDomainsEditResponseAuthorization = CreateSettingsDomainResponseAuthorization;
@@ -7112,9 +6762,8 @@ export const SettingsDomainsEditResponseDropDispositionsItem = S.String;
 
 export type SettingsDomainsEditResponseDropDispositionsList =
   Array<SettingsDomainsEditResponseDropDispositionsItem>;
-export const SettingsDomainsEditResponseDropDispositionsList = /*@__PURE__*/ S.Array(
-  SettingsDomainsEditResponseDropDispositionsItem,
-) as any as S.Schema<SettingsDomainsEditResponseDropDispositionsList>;
+export const SettingsDomainsEditResponseDropDispositionsList =
+  CreateSettingsContentPolicyRequestTargetsList as any as S.Schema<SettingsDomainsEditResponseDropDispositionsList>;
 
 export type SettingsDomainsEditResponseEmailsProcessed =
   CreateSettingsDomainResponseEmailsProcessed;
@@ -7135,9 +6784,8 @@ export type SettingsDomainsEditResponseRegionsItem = "GLOBAL" | "AU" | "DE" | "I
 export const SettingsDomainsEditResponseRegionsItem = S.String;
 
 export type SettingsDomainsEditResponseRegionsList = Array<SettingsDomainsEditResponseRegionsItem>;
-export const SettingsDomainsEditResponseRegionsList = /*@__PURE__*/ S.Array(
-  SettingsDomainsEditResponseRegionsItem,
-) as any as S.Schema<SettingsDomainsEditResponseRegionsList>;
+export const SettingsDomainsEditResponseRegionsList =
+  CreateSettingsContentPolicyRequestTargetsList as any as S.Schema<SettingsDomainsEditResponseRegionsList>;
 
 export type SettingsDomainsEditResponseSpfStatus = "none" | "good" | "neutral" | "open" | "invalid";
 export const SettingsDomainsEditResponseSpfStatus = S.String;
@@ -7304,26 +6952,8 @@ export interface PatchSettingImpersonationRegistryResponse {
   /** Source the entry was created from. */
   provenance?: SettingsImpersonationRegistryEditResponseProvenance | null;
 }
-export const PatchSettingImpersonationRegistryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    comments: S.optional(S.NullOr(S.String)),
-    createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-    directoryId: S.optional(S.NullOr(S.Number).pipe(T.Body("directory_id"))),
-    directoryNodeId: S.optional(S.NullOr(S.Number).pipe(T.Body("directory_node_id"))),
-    email: S.optional(S.NullOr(S.String)),
-    externalDirectoryNodeId: S.optional(
-      S.NullOr(S.String).pipe(T.Body("external_directory_node_id")),
-    ),
-    isEmailRegex: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_email_regex"))),
-    lastModified: S.optional(S.NullOr(S.String).pipe(T.Body("last_modified"))),
-    modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
-    name: S.optional(S.NullOr(S.String)),
-    provenance: S.optional(S.NullOr(SettingsImpersonationRegistryEditResponseProvenance)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "PatchSettingImpersonationRegistryResponse",
-}) as any as S.Schema<PatchSettingImpersonationRegistryResponse>;
+export const PatchSettingImpersonationRegistryResponse =
+  CreateSettingImpersonationRegistryResponse as any as S.Schema<PatchSettingImpersonationRegistryResponse>;
 
 export type SettingsSendingDomainRestrictionsEditRequestExcludeList = Array<string>;
 export const SettingsSendingDomainRestrictionsEditRequestExcludeList =
@@ -7665,35 +7295,13 @@ export interface SettingsAllowPoliciesBatchRequestPutsItem {
   /** Enforce DMARC, SPF or DKIM authentication. When on, Email Security only honors policies that pass authentication. */
   verifySender?: boolean;
 }
-export const SettingsAllowPoliciesBatchRequestPutsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdAt: S.String.pipe(T.Body("created_at")),
-    lastModified: S.String.pipe(T.Body("last_modified")),
-    comments: S.optional(S.String),
-    isAcceptableSender: S.optional(S.Boolean.pipe(T.Body("is_acceptable_sender"))),
-    isExemptRecipient: S.optional(S.Boolean.pipe(T.Body("is_exempt_recipient"))),
-    isRecipient: S.optional(S.Boolean.pipe(T.Body("is_recipient"))),
-    isRegex: S.optional(S.Boolean.pipe(T.Body("is_regex"))),
-    isSender: S.optional(S.Boolean.pipe(T.Body("is_sender"))),
-    isSpoof: S.optional(S.Boolean.pipe(T.Body("is_spoof"))),
-    isTrustedSender: S.optional(S.Boolean.pipe(T.Body("is_trusted_sender"))),
-    modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
-    pattern: S.optional(S.String),
-    patternType: S.optional(
-      SettingsAllowPoliciesBatchRequestPutsItemPatternType.pipe(T.Body("pattern_type")),
-    ),
-    verifySender: S.optional(S.Boolean.pipe(T.Body("verify_sender"))),
-  }),
-).annotate({
-  identifier: "SettingsAllowPoliciesBatchRequestPutsItem",
-}) as any as S.Schema<SettingsAllowPoliciesBatchRequestPutsItem>;
+export const SettingsAllowPoliciesBatchRequestPutsItem =
+  SettingsAllowPoliciesBatchRequestPatchesItem as any as S.Schema<SettingsAllowPoliciesBatchRequestPutsItem>;
 
 export type SettingsAllowPoliciesBatchRequestPutsList =
   Array<SettingsAllowPoliciesBatchRequestPutsItem>;
-export const SettingsAllowPoliciesBatchRequestPutsList = /*@__PURE__*/ S.Array(
-  SettingsAllowPoliciesBatchRequestPutsItem,
-) as any as S.Schema<SettingsAllowPoliciesBatchRequestPutsList>;
+export const SettingsAllowPoliciesBatchRequestPutsList =
+  SettingsAllowPoliciesBatchRequestPatchesList as any as S.Schema<SettingsAllowPoliciesBatchRequestPutsList>;
 
 export interface SettingsAllowPoliciesBatchRequest {
   /** Identifier. */
@@ -7839,35 +7447,13 @@ export interface SettingsAllowPoliciesBatchResponsePostsItem {
   /** Enforce DMARC, SPF or DKIM authentication. When on, Email Security only honors policies that pass authentication. */
   verifySender?: boolean | null;
 }
-export const SettingsAllowPoliciesBatchResponsePostsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdAt: S.String.pipe(T.Body("created_at")),
-    lastModified: S.String.pipe(T.Body("last_modified")),
-    comments: S.optional(S.NullOr(S.String)),
-    isAcceptableSender: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_acceptable_sender"))),
-    isExemptRecipient: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_exempt_recipient"))),
-    isRecipient: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_recipient"))),
-    isRegex: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_regex"))),
-    isSender: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_sender"))),
-    isSpoof: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_spoof"))),
-    isTrustedSender: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_trusted_sender"))),
-    modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
-    pattern: S.optional(S.NullOr(S.String)),
-    patternType: S.optional(
-      S.NullOr(SettingsAllowPoliciesBatchResponsePostsItemPatternType).pipe(T.Body("pattern_type")),
-    ),
-    verifySender: S.optional(S.NullOr(S.Boolean).pipe(T.Body("verify_sender"))),
-  }),
-).annotate({
-  identifier: "SettingsAllowPoliciesBatchResponsePostsItem",
-}) as any as S.Schema<SettingsAllowPoliciesBatchResponsePostsItem>;
+export const SettingsAllowPoliciesBatchResponsePostsItem =
+  SettingsAllowPoliciesListResultItem as any as S.Schema<SettingsAllowPoliciesBatchResponsePostsItem>;
 
 export type SettingsAllowPoliciesBatchResponsePostsList =
   Array<SettingsAllowPoliciesBatchResponsePostsItem>;
-export const SettingsAllowPoliciesBatchResponsePostsList = /*@__PURE__*/ S.Array(
-  SettingsAllowPoliciesBatchResponsePostsItem,
-) as any as S.Schema<SettingsAllowPoliciesBatchResponsePostsList>;
+export const SettingsAllowPoliciesBatchResponsePostsList =
+  SettingsAllowPoliciesListResultList as any as S.Schema<SettingsAllowPoliciesBatchResponsePostsList>;
 
 export type SettingsAllowPoliciesBatchResponsePutsItemPatternType =
   | "EMAIL"
@@ -7904,35 +7490,13 @@ export interface SettingsAllowPoliciesBatchResponsePutsItem {
   /** Enforce DMARC, SPF or DKIM authentication. When on, Email Security only honors policies that pass authentication. */
   verifySender?: boolean | null;
 }
-export const SettingsAllowPoliciesBatchResponsePutsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdAt: S.String.pipe(T.Body("created_at")),
-    lastModified: S.String.pipe(T.Body("last_modified")),
-    comments: S.optional(S.NullOr(S.String)),
-    isAcceptableSender: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_acceptable_sender"))),
-    isExemptRecipient: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_exempt_recipient"))),
-    isRecipient: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_recipient"))),
-    isRegex: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_regex"))),
-    isSender: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_sender"))),
-    isSpoof: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_spoof"))),
-    isTrustedSender: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_trusted_sender"))),
-    modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
-    pattern: S.optional(S.NullOr(S.String)),
-    patternType: S.optional(
-      S.NullOr(SettingsAllowPoliciesBatchResponsePutsItemPatternType).pipe(T.Body("pattern_type")),
-    ),
-    verifySender: S.optional(S.NullOr(S.Boolean).pipe(T.Body("verify_sender"))),
-  }),
-).annotate({
-  identifier: "SettingsAllowPoliciesBatchResponsePutsItem",
-}) as any as S.Schema<SettingsAllowPoliciesBatchResponsePutsItem>;
+export const SettingsAllowPoliciesBatchResponsePutsItem =
+  SettingsAllowPoliciesListResultItem as any as S.Schema<SettingsAllowPoliciesBatchResponsePutsItem>;
 
 export type SettingsAllowPoliciesBatchResponsePutsList =
   Array<SettingsAllowPoliciesBatchResponsePutsItem>;
-export const SettingsAllowPoliciesBatchResponsePutsList = /*@__PURE__*/ S.Array(
-  SettingsAllowPoliciesBatchResponsePutsItem,
-) as any as S.Schema<SettingsAllowPoliciesBatchResponsePutsList>;
+export const SettingsAllowPoliciesBatchResponsePutsList =
+  SettingsAllowPoliciesListResultList as any as S.Schema<SettingsAllowPoliciesBatchResponsePutsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface SettingsAllowPoliciesBatchResponse {
@@ -8206,28 +7770,13 @@ export interface SettingsBlockSendersBatchResponsePostsItem {
   /** Type of pattern matching. */
   patternType?: SettingsBlockSendersBatchResponsePostsItemPatternType | null;
 }
-export const SettingsBlockSendersBatchResponsePostsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    comments: S.optional(S.NullOr(S.String)),
-    createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-    isRegex: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_regex"))),
-    lastModified: S.optional(S.NullOr(S.String).pipe(T.Body("last_modified"))),
-    modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
-    pattern: S.optional(S.NullOr(S.String)),
-    patternType: S.optional(
-      S.NullOr(SettingsBlockSendersBatchResponsePostsItemPatternType).pipe(T.Body("pattern_type")),
-    ),
-  }),
-).annotate({
-  identifier: "SettingsBlockSendersBatchResponsePostsItem",
-}) as any as S.Schema<SettingsBlockSendersBatchResponsePostsItem>;
+export const SettingsBlockSendersBatchResponsePostsItem =
+  SettingsBlockSendersListResultItem as any as S.Schema<SettingsBlockSendersBatchResponsePostsItem>;
 
 export type SettingsBlockSendersBatchResponsePostsList =
   Array<SettingsBlockSendersBatchResponsePostsItem>;
-export const SettingsBlockSendersBatchResponsePostsList = /*@__PURE__*/ S.Array(
-  SettingsBlockSendersBatchResponsePostsItem,
-) as any as S.Schema<SettingsBlockSendersBatchResponsePostsList>;
+export const SettingsBlockSendersBatchResponsePostsList =
+  SettingsBlockSendersListResultList as any as S.Schema<SettingsBlockSendersBatchResponsePostsList>;
 
 export type SettingsBlockSendersBatchResponsePutsItemPatternType =
   | "EMAIL"
@@ -8251,28 +7800,13 @@ export interface SettingsBlockSendersBatchResponsePutsItem {
   /** Type of pattern matching. */
   patternType?: SettingsBlockSendersBatchResponsePutsItemPatternType | null;
 }
-export const SettingsBlockSendersBatchResponsePutsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    comments: S.optional(S.NullOr(S.String)),
-    createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-    isRegex: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_regex"))),
-    lastModified: S.optional(S.NullOr(S.String).pipe(T.Body("last_modified"))),
-    modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
-    pattern: S.optional(S.NullOr(S.String)),
-    patternType: S.optional(
-      S.NullOr(SettingsBlockSendersBatchResponsePutsItemPatternType).pipe(T.Body("pattern_type")),
-    ),
-  }),
-).annotate({
-  identifier: "SettingsBlockSendersBatchResponsePutsItem",
-}) as any as S.Schema<SettingsBlockSendersBatchResponsePutsItem>;
+export const SettingsBlockSendersBatchResponsePutsItem =
+  SettingsBlockSendersListResultItem as any as S.Schema<SettingsBlockSendersBatchResponsePutsItem>;
 
 export type SettingsBlockSendersBatchResponsePutsList =
   Array<SettingsBlockSendersBatchResponsePutsItem>;
-export const SettingsBlockSendersBatchResponsePutsList = /*@__PURE__*/ S.Array(
-  SettingsBlockSendersBatchResponsePutsItem,
-) as any as S.Schema<SettingsBlockSendersBatchResponsePutsList>;
+export const SettingsBlockSendersBatchResponsePutsList =
+  SettingsBlockSendersListResultList as any as S.Schema<SettingsBlockSendersBatchResponsePutsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface SettingsBlockSendersBatchResponse {
@@ -8310,9 +7844,8 @@ export const SettingsContentPoliciesBatchRequestPatchesItemTargetsItem = S.Strin
 export type SettingsContentPoliciesBatchRequestPatchesItemTargetsList = Array<
   SettingsContentPoliciesBatchRequestPatchesItemTargetsItem | (string & {})
 >;
-export const SettingsContentPoliciesBatchRequestPatchesItemTargetsList = /*@__PURE__*/ S.Array(
-  SettingsContentPoliciesBatchRequestPatchesItemTargetsItem,
-) as any as S.Schema<SettingsContentPoliciesBatchRequestPatchesItemTargetsList>;
+export const SettingsContentPoliciesBatchRequestPatchesItemTargetsList =
+  CreateSettingsContentPolicyRequestTargetsList as any as S.Schema<SettingsContentPoliciesBatchRequestPatchesItemTargetsList>;
 
 export interface SettingsContentPoliciesBatchRequestPatchesItem {
   /** Content policy identifier. */
@@ -8357,9 +7890,8 @@ export const SettingsContentPoliciesBatchRequestPostsItemTargetsItem = S.String;
 export type SettingsContentPoliciesBatchRequestPostsItemTargetsList = Array<
   SettingsContentPoliciesBatchRequestPostsItemTargetsItem | (string & {})
 >;
-export const SettingsContentPoliciesBatchRequestPostsItemTargetsList = /*@__PURE__*/ S.Array(
-  SettingsContentPoliciesBatchRequestPostsItemTargetsItem,
-) as any as S.Schema<SettingsContentPoliciesBatchRequestPostsItemTargetsList>;
+export const SettingsContentPoliciesBatchRequestPostsItemTargetsList =
+  CreateSettingsContentPolicyRequestTargetsList as any as S.Schema<SettingsContentPoliciesBatchRequestPostsItemTargetsList>;
 
 export interface SettingsContentPoliciesBatchRequestPostsItem {
   /** Whether the policy is active. */
@@ -8404,9 +7936,8 @@ export const SettingsContentPoliciesBatchRequestPutsItemTargetsItem = S.String;
 export type SettingsContentPoliciesBatchRequestPutsItemTargetsList = Array<
   SettingsContentPoliciesBatchRequestPutsItemTargetsItem | (string & {})
 >;
-export const SettingsContentPoliciesBatchRequestPutsItemTargetsList = /*@__PURE__*/ S.Array(
-  SettingsContentPoliciesBatchRequestPutsItemTargetsItem,
-) as any as S.Schema<SettingsContentPoliciesBatchRequestPutsItemTargetsList>;
+export const SettingsContentPoliciesBatchRequestPutsItemTargetsList =
+  CreateSettingsContentPolicyRequestTargetsList as any as S.Schema<SettingsContentPoliciesBatchRequestPutsItemTargetsList>;
 
 export interface SettingsContentPoliciesBatchRequestPutsItem {
   /** Content policy identifier. */
@@ -8492,9 +8023,8 @@ export const SettingsContentPoliciesBatchResponsePatchesItemTargetsItem = S.Stri
 
 export type SettingsContentPoliciesBatchResponsePatchesItemTargetsList =
   Array<SettingsContentPoliciesBatchResponsePatchesItemTargetsItem>;
-export const SettingsContentPoliciesBatchResponsePatchesItemTargetsList = /*@__PURE__*/ S.Array(
-  SettingsContentPoliciesBatchResponsePatchesItemTargetsItem,
-) as any as S.Schema<SettingsContentPoliciesBatchResponsePatchesItemTargetsList>;
+export const SettingsContentPoliciesBatchResponsePatchesItemTargetsList =
+  CreateSettingsContentPolicyRequestTargetsList as any as S.Schema<SettingsContentPoliciesBatchResponsePatchesItemTargetsList>;
 
 export interface SettingsContentPoliciesBatchResponsePatchesItem {
   /** Content policy identifier. */
@@ -8512,35 +8042,21 @@ export interface SettingsContentPoliciesBatchResponsePatchesItem {
   /** Parts of the email the pattern is matched against. */
   targets?: SettingsContentPoliciesBatchResponsePatchesItemTargetsList | null;
 }
-export const SettingsContentPoliciesBatchResponsePatchesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
-    name: S.optional(S.NullOr(S.String)),
-    notes: S.optional(S.NullOr(S.String)),
-    pattern: S.optional(S.NullOr(S.String)),
-    targets: S.optional(S.NullOr(SettingsContentPoliciesBatchResponsePatchesItemTargetsList)),
-  }),
-).annotate({
-  identifier: "SettingsContentPoliciesBatchResponsePatchesItem",
-}) as any as S.Schema<SettingsContentPoliciesBatchResponsePatchesItem>;
+export const SettingsContentPoliciesBatchResponsePatchesItem =
+  ListSettingsContentPoliciesResultItem as any as S.Schema<SettingsContentPoliciesBatchResponsePatchesItem>;
 
 export type SettingsContentPoliciesBatchResponsePatchesList =
   Array<SettingsContentPoliciesBatchResponsePatchesItem>;
-export const SettingsContentPoliciesBatchResponsePatchesList = /*@__PURE__*/ S.Array(
-  SettingsContentPoliciesBatchResponsePatchesItem,
-) as any as S.Schema<SettingsContentPoliciesBatchResponsePatchesList>;
+export const SettingsContentPoliciesBatchResponsePatchesList =
+  ListSettingsContentPoliciesResultList as any as S.Schema<SettingsContentPoliciesBatchResponsePatchesList>;
 
 export type SettingsContentPoliciesBatchResponsePostsItemTargetsItem = "SUBJECT" | "BODY";
 export const SettingsContentPoliciesBatchResponsePostsItemTargetsItem = S.String;
 
 export type SettingsContentPoliciesBatchResponsePostsItemTargetsList =
   Array<SettingsContentPoliciesBatchResponsePostsItemTargetsItem>;
-export const SettingsContentPoliciesBatchResponsePostsItemTargetsList = /*@__PURE__*/ S.Array(
-  SettingsContentPoliciesBatchResponsePostsItemTargetsItem,
-) as any as S.Schema<SettingsContentPoliciesBatchResponsePostsItemTargetsList>;
+export const SettingsContentPoliciesBatchResponsePostsItemTargetsList =
+  CreateSettingsContentPolicyRequestTargetsList as any as S.Schema<SettingsContentPoliciesBatchResponsePostsItemTargetsList>;
 
 export interface SettingsContentPoliciesBatchResponsePostsItem {
   /** Content policy identifier. */
@@ -8558,35 +8074,21 @@ export interface SettingsContentPoliciesBatchResponsePostsItem {
   /** Parts of the email the pattern is matched against. */
   targets?: SettingsContentPoliciesBatchResponsePostsItemTargetsList | null;
 }
-export const SettingsContentPoliciesBatchResponsePostsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
-    name: S.optional(S.NullOr(S.String)),
-    notes: S.optional(S.NullOr(S.String)),
-    pattern: S.optional(S.NullOr(S.String)),
-    targets: S.optional(S.NullOr(SettingsContentPoliciesBatchResponsePostsItemTargetsList)),
-  }),
-).annotate({
-  identifier: "SettingsContentPoliciesBatchResponsePostsItem",
-}) as any as S.Schema<SettingsContentPoliciesBatchResponsePostsItem>;
+export const SettingsContentPoliciesBatchResponsePostsItem =
+  ListSettingsContentPoliciesResultItem as any as S.Schema<SettingsContentPoliciesBatchResponsePostsItem>;
 
 export type SettingsContentPoliciesBatchResponsePostsList =
   Array<SettingsContentPoliciesBatchResponsePostsItem>;
-export const SettingsContentPoliciesBatchResponsePostsList = /*@__PURE__*/ S.Array(
-  SettingsContentPoliciesBatchResponsePostsItem,
-) as any as S.Schema<SettingsContentPoliciesBatchResponsePostsList>;
+export const SettingsContentPoliciesBatchResponsePostsList =
+  ListSettingsContentPoliciesResultList as any as S.Schema<SettingsContentPoliciesBatchResponsePostsList>;
 
 export type SettingsContentPoliciesBatchResponsePutsItemTargetsItem = "SUBJECT" | "BODY";
 export const SettingsContentPoliciesBatchResponsePutsItemTargetsItem = S.String;
 
 export type SettingsContentPoliciesBatchResponsePutsItemTargetsList =
   Array<SettingsContentPoliciesBatchResponsePutsItemTargetsItem>;
-export const SettingsContentPoliciesBatchResponsePutsItemTargetsList = /*@__PURE__*/ S.Array(
-  SettingsContentPoliciesBatchResponsePutsItemTargetsItem,
-) as any as S.Schema<SettingsContentPoliciesBatchResponsePutsItemTargetsList>;
+export const SettingsContentPoliciesBatchResponsePutsItemTargetsList =
+  CreateSettingsContentPolicyRequestTargetsList as any as S.Schema<SettingsContentPoliciesBatchResponsePutsItemTargetsList>;
 
 export interface SettingsContentPoliciesBatchResponsePutsItem {
   /** Content policy identifier. */
@@ -8604,26 +8106,13 @@ export interface SettingsContentPoliciesBatchResponsePutsItem {
   /** Parts of the email the pattern is matched against. */
   targets?: SettingsContentPoliciesBatchResponsePutsItemTargetsList | null;
 }
-export const SettingsContentPoliciesBatchResponsePutsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
-    name: S.optional(S.NullOr(S.String)),
-    notes: S.optional(S.NullOr(S.String)),
-    pattern: S.optional(S.NullOr(S.String)),
-    targets: S.optional(S.NullOr(SettingsContentPoliciesBatchResponsePutsItemTargetsList)),
-  }),
-).annotate({
-  identifier: "SettingsContentPoliciesBatchResponsePutsItem",
-}) as any as S.Schema<SettingsContentPoliciesBatchResponsePutsItem>;
+export const SettingsContentPoliciesBatchResponsePutsItem =
+  ListSettingsContentPoliciesResultItem as any as S.Schema<SettingsContentPoliciesBatchResponsePutsItem>;
 
 export type SettingsContentPoliciesBatchResponsePutsList =
   Array<SettingsContentPoliciesBatchResponsePutsItem>;
-export const SettingsContentPoliciesBatchResponsePutsList = /*@__PURE__*/ S.Array(
-  SettingsContentPoliciesBatchResponsePutsItem,
-) as any as S.Schema<SettingsContentPoliciesBatchResponsePutsList>;
+export const SettingsContentPoliciesBatchResponsePutsList =
+  ListSettingsContentPoliciesResultList as any as S.Schema<SettingsContentPoliciesBatchResponsePutsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface SettingsContentPoliciesBatchResponse {
@@ -8665,9 +8154,8 @@ export const SettingsDomainsBatchRequestPatchesItemAllowedDeliveryModesItem = S.
 export type SettingsDomainsBatchRequestPatchesItemAllowedDeliveryModesList = Array<
   SettingsDomainsBatchRequestPatchesItemAllowedDeliveryModesItem | (string & {})
 >;
-export const SettingsDomainsBatchRequestPatchesItemAllowedDeliveryModesList = /*@__PURE__*/ S.Array(
-  SettingsDomainsBatchRequestPatchesItemAllowedDeliveryModesItem,
-) as any as S.Schema<SettingsDomainsBatchRequestPatchesItemAllowedDeliveryModesList>;
+export const SettingsDomainsBatchRequestPatchesItemAllowedDeliveryModesList =
+  CreateSettingsContentPolicyRequestTargetsList as any as S.Schema<SettingsDomainsBatchRequestPatchesItemAllowedDeliveryModesList>;
 
 export type SettingsDomainsBatchRequestPatchesItemDropDispositionsItem =
   | "MALICIOUS"
@@ -8685,9 +8173,8 @@ export const SettingsDomainsBatchRequestPatchesItemDropDispositionsItem = S.Stri
 export type SettingsDomainsBatchRequestPatchesItemDropDispositionsList = Array<
   SettingsDomainsBatchRequestPatchesItemDropDispositionsItem | (string & {})
 >;
-export const SettingsDomainsBatchRequestPatchesItemDropDispositionsList = /*@__PURE__*/ S.Array(
-  SettingsDomainsBatchRequestPatchesItemDropDispositionsItem,
-) as any as S.Schema<SettingsDomainsBatchRequestPatchesItemDropDispositionsList>;
+export const SettingsDomainsBatchRequestPatchesItemDropDispositionsList =
+  CreateSettingsContentPolicyRequestTargetsList as any as S.Schema<SettingsDomainsBatchRequestPatchesItemDropDispositionsList>;
 
 export type SettingsDomainsBatchRequestPatchesItemFolder = "AllItems" | "Inbox";
 export const SettingsDomainsBatchRequestPatchesItemFolder = S.String;
@@ -8707,9 +8194,8 @@ export const SettingsDomainsBatchRequestPatchesItemRegionsItem = S.String;
 export type SettingsDomainsBatchRequestPatchesItemRegionsList = Array<
   SettingsDomainsBatchRequestPatchesItemRegionsItem | (string & {})
 >;
-export const SettingsDomainsBatchRequestPatchesItemRegionsList = /*@__PURE__*/ S.Array(
-  SettingsDomainsBatchRequestPatchesItemRegionsItem,
-) as any as S.Schema<SettingsDomainsBatchRequestPatchesItemRegionsList>;
+export const SettingsDomainsBatchRequestPatchesItemRegionsList =
+  CreateSettingsContentPolicyRequestTargetsList as any as S.Schema<SettingsDomainsBatchRequestPatchesItemRegionsList>;
 
 export interface SettingsDomainsBatchRequestPatchesItem {
   /** Domain identifier. */
@@ -8777,9 +8263,8 @@ export const SettingsDomainsBatchRequestPostsItemAllowedDeliveryModesItem = S.St
 export type SettingsDomainsBatchRequestPostsItemAllowedDeliveryModesList = Array<
   SettingsDomainsBatchRequestPostsItemAllowedDeliveryModesItem | (string & {})
 >;
-export const SettingsDomainsBatchRequestPostsItemAllowedDeliveryModesList = /*@__PURE__*/ S.Array(
-  SettingsDomainsBatchRequestPostsItemAllowedDeliveryModesItem,
-) as any as S.Schema<SettingsDomainsBatchRequestPostsItemAllowedDeliveryModesList>;
+export const SettingsDomainsBatchRequestPostsItemAllowedDeliveryModesList =
+  CreateSettingsContentPolicyRequestTargetsList as any as S.Schema<SettingsDomainsBatchRequestPostsItemAllowedDeliveryModesList>;
 
 export type SettingsDomainsBatchRequestPostsItemDropDispositionsItem =
   | "MALICIOUS"
@@ -8797,9 +8282,8 @@ export const SettingsDomainsBatchRequestPostsItemDropDispositionsItem = S.String
 export type SettingsDomainsBatchRequestPostsItemDropDispositionsList = Array<
   SettingsDomainsBatchRequestPostsItemDropDispositionsItem | (string & {})
 >;
-export const SettingsDomainsBatchRequestPostsItemDropDispositionsList = /*@__PURE__*/ S.Array(
-  SettingsDomainsBatchRequestPostsItemDropDispositionsItem,
-) as any as S.Schema<SettingsDomainsBatchRequestPostsItemDropDispositionsList>;
+export const SettingsDomainsBatchRequestPostsItemDropDispositionsList =
+  CreateSettingsContentPolicyRequestTargetsList as any as S.Schema<SettingsDomainsBatchRequestPostsItemDropDispositionsList>;
 
 export type SettingsDomainsBatchRequestPostsItemIpRestrictionsList = Array<string>;
 export const SettingsDomainsBatchRequestPostsItemIpRestrictionsList =
@@ -8811,9 +8295,8 @@ export const SettingsDomainsBatchRequestPostsItemRegionsItem = S.String;
 export type SettingsDomainsBatchRequestPostsItemRegionsList = Array<
   SettingsDomainsBatchRequestPostsItemRegionsItem | (string & {})
 >;
-export const SettingsDomainsBatchRequestPostsItemRegionsList = /*@__PURE__*/ S.Array(
-  SettingsDomainsBatchRequestPostsItemRegionsItem,
-) as any as S.Schema<SettingsDomainsBatchRequestPostsItemRegionsList>;
+export const SettingsDomainsBatchRequestPostsItemRegionsList =
+  CreateSettingsContentPolicyRequestTargetsList as any as S.Schema<SettingsDomainsBatchRequestPostsItemRegionsList>;
 
 export type SettingsDomainsBatchRequestPostsItemFolder = "AllItems" | "Inbox";
 export const SettingsDomainsBatchRequestPostsItemFolder = S.String;
@@ -8882,9 +8365,8 @@ export const SettingsDomainsBatchRequestPutsItemAllowedDeliveryModesItem = S.Str
 export type SettingsDomainsBatchRequestPutsItemAllowedDeliveryModesList = Array<
   SettingsDomainsBatchRequestPutsItemAllowedDeliveryModesItem | (string & {})
 >;
-export const SettingsDomainsBatchRequestPutsItemAllowedDeliveryModesList = /*@__PURE__*/ S.Array(
-  SettingsDomainsBatchRequestPutsItemAllowedDeliveryModesItem,
-) as any as S.Schema<SettingsDomainsBatchRequestPutsItemAllowedDeliveryModesList>;
+export const SettingsDomainsBatchRequestPutsItemAllowedDeliveryModesList =
+  CreateSettingsContentPolicyRequestTargetsList as any as S.Schema<SettingsDomainsBatchRequestPutsItemAllowedDeliveryModesList>;
 
 export type SettingsDomainsBatchRequestPutsItemDropDispositionsItem =
   | "MALICIOUS"
@@ -8902,9 +8384,8 @@ export const SettingsDomainsBatchRequestPutsItemDropDispositionsItem = S.String;
 export type SettingsDomainsBatchRequestPutsItemDropDispositionsList = Array<
   SettingsDomainsBatchRequestPutsItemDropDispositionsItem | (string & {})
 >;
-export const SettingsDomainsBatchRequestPutsItemDropDispositionsList = /*@__PURE__*/ S.Array(
-  SettingsDomainsBatchRequestPutsItemDropDispositionsItem,
-) as any as S.Schema<SettingsDomainsBatchRequestPutsItemDropDispositionsList>;
+export const SettingsDomainsBatchRequestPutsItemDropDispositionsList =
+  CreateSettingsContentPolicyRequestTargetsList as any as S.Schema<SettingsDomainsBatchRequestPutsItemDropDispositionsList>;
 
 export type SettingsDomainsBatchRequestPutsItemIpRestrictionsList = Array<string>;
 export const SettingsDomainsBatchRequestPutsItemIpRestrictionsList =
@@ -8916,9 +8397,8 @@ export const SettingsDomainsBatchRequestPutsItemRegionsItem = S.String;
 export type SettingsDomainsBatchRequestPutsItemRegionsList = Array<
   SettingsDomainsBatchRequestPutsItemRegionsItem | (string & {})
 >;
-export const SettingsDomainsBatchRequestPutsItemRegionsList = /*@__PURE__*/ S.Array(
-  SettingsDomainsBatchRequestPutsItemRegionsItem,
-) as any as S.Schema<SettingsDomainsBatchRequestPutsItemRegionsList>;
+export const SettingsDomainsBatchRequestPutsItemRegionsList =
+  CreateSettingsContentPolicyRequestTargetsList as any as S.Schema<SettingsDomainsBatchRequestPutsItemRegionsList>;
 
 export type SettingsDomainsBatchRequestPutsItemFolder = "AllItems" | "Inbox";
 export const SettingsDomainsBatchRequestPutsItemFolder = S.String;
@@ -9026,9 +8506,7 @@ export const SettingsDomainsBatchResponsePatchesItemAllowedDeliveryModesItem = S
 export type SettingsDomainsBatchResponsePatchesItemAllowedDeliveryModesList =
   Array<SettingsDomainsBatchResponsePatchesItemAllowedDeliveryModesItem>;
 export const SettingsDomainsBatchResponsePatchesItemAllowedDeliveryModesList =
-  /*@__PURE__*/ S.Array(
-    SettingsDomainsBatchResponsePatchesItemAllowedDeliveryModesItem,
-  ) as any as S.Schema<SettingsDomainsBatchResponsePatchesItemAllowedDeliveryModesList>;
+  InvestigateBulkMessagesListResultItemMessagePostDeliveryOperationsList as any as S.Schema<SettingsDomainsBatchResponsePatchesItemAllowedDeliveryModesList>;
 
 export type SettingsDomainsBatchResponsePatchesItemAuthorization =
   CreateSettingsDomainResponseAuthorization;
@@ -9053,9 +8531,8 @@ export const SettingsDomainsBatchResponsePatchesItemDropDispositionsItem = S.Str
 
 export type SettingsDomainsBatchResponsePatchesItemDropDispositionsList =
   Array<SettingsDomainsBatchResponsePatchesItemDropDispositionsItem>;
-export const SettingsDomainsBatchResponsePatchesItemDropDispositionsList = /*@__PURE__*/ S.Array(
-  SettingsDomainsBatchResponsePatchesItemDropDispositionsItem,
-) as any as S.Schema<SettingsDomainsBatchResponsePatchesItemDropDispositionsList>;
+export const SettingsDomainsBatchResponsePatchesItemDropDispositionsList =
+  CreateSettingsContentPolicyRequestTargetsList as any as S.Schema<SettingsDomainsBatchResponsePatchesItemDropDispositionsList>;
 
 export type SettingsDomainsBatchResponsePatchesItemEmailsProcessed =
   CreateSettingsDomainResponseEmailsProcessed;
@@ -9082,9 +8559,8 @@ export const SettingsDomainsBatchResponsePatchesItemRegionsItem = S.String;
 
 export type SettingsDomainsBatchResponsePatchesItemRegionsList =
   Array<SettingsDomainsBatchResponsePatchesItemRegionsItem>;
-export const SettingsDomainsBatchResponsePatchesItemRegionsList = /*@__PURE__*/ S.Array(
-  SettingsDomainsBatchResponsePatchesItemRegionsItem,
-) as any as S.Schema<SettingsDomainsBatchResponsePatchesItemRegionsList>;
+export const SettingsDomainsBatchResponsePatchesItemRegionsList =
+  CreateSettingsContentPolicyRequestTargetsList as any as S.Schema<SettingsDomainsBatchResponsePatchesItemRegionsList>;
 
 export type SettingsDomainsBatchResponsePatchesItemSpfStatus =
   | "none"
@@ -9193,9 +8669,8 @@ export const SettingsDomainsBatchResponsePostsItemAllowedDeliveryModesItem = S.S
 
 export type SettingsDomainsBatchResponsePostsItemAllowedDeliveryModesList =
   Array<SettingsDomainsBatchResponsePostsItemAllowedDeliveryModesItem>;
-export const SettingsDomainsBatchResponsePostsItemAllowedDeliveryModesList = /*@__PURE__*/ S.Array(
-  SettingsDomainsBatchResponsePostsItemAllowedDeliveryModesItem,
-) as any as S.Schema<SettingsDomainsBatchResponsePostsItemAllowedDeliveryModesList>;
+export const SettingsDomainsBatchResponsePostsItemAllowedDeliveryModesList =
+  CreateSettingsContentPolicyRequestTargetsList as any as S.Schema<SettingsDomainsBatchResponsePostsItemAllowedDeliveryModesList>;
 
 export type SettingsDomainsBatchResponsePostsItemAuthorization =
   CreateSettingsDomainResponseAuthorization;
@@ -9220,9 +8695,8 @@ export const SettingsDomainsBatchResponsePostsItemDropDispositionsItem = S.Strin
 
 export type SettingsDomainsBatchResponsePostsItemDropDispositionsList =
   Array<SettingsDomainsBatchResponsePostsItemDropDispositionsItem>;
-export const SettingsDomainsBatchResponsePostsItemDropDispositionsList = /*@__PURE__*/ S.Array(
-  SettingsDomainsBatchResponsePostsItemDropDispositionsItem,
-) as any as S.Schema<SettingsDomainsBatchResponsePostsItemDropDispositionsList>;
+export const SettingsDomainsBatchResponsePostsItemDropDispositionsList =
+  CreateSettingsContentPolicyRequestTargetsList as any as S.Schema<SettingsDomainsBatchResponsePostsItemDropDispositionsList>;
 
 export type SettingsDomainsBatchResponsePostsItemEmailsProcessed =
   CreateSettingsDomainResponseEmailsProcessed;
@@ -9244,9 +8718,8 @@ export const SettingsDomainsBatchResponsePostsItemRegionsItem = S.String;
 
 export type SettingsDomainsBatchResponsePostsItemRegionsList =
   Array<SettingsDomainsBatchResponsePostsItemRegionsItem>;
-export const SettingsDomainsBatchResponsePostsItemRegionsList = /*@__PURE__*/ S.Array(
-  SettingsDomainsBatchResponsePostsItemRegionsItem,
-) as any as S.Schema<SettingsDomainsBatchResponsePostsItemRegionsList>;
+export const SettingsDomainsBatchResponsePostsItemRegionsList =
+  CreateSettingsContentPolicyRequestTargetsList as any as S.Schema<SettingsDomainsBatchResponsePostsItemRegionsList>;
 
 export type SettingsDomainsBatchResponsePostsItemSpfStatus =
   | "none"
@@ -9354,9 +8827,8 @@ export const SettingsDomainsBatchResponsePutsItemAllowedDeliveryModesItem = S.St
 
 export type SettingsDomainsBatchResponsePutsItemAllowedDeliveryModesList =
   Array<SettingsDomainsBatchResponsePutsItemAllowedDeliveryModesItem>;
-export const SettingsDomainsBatchResponsePutsItemAllowedDeliveryModesList = /*@__PURE__*/ S.Array(
-  SettingsDomainsBatchResponsePutsItemAllowedDeliveryModesItem,
-) as any as S.Schema<SettingsDomainsBatchResponsePutsItemAllowedDeliveryModesList>;
+export const SettingsDomainsBatchResponsePutsItemAllowedDeliveryModesList =
+  CreateSettingsContentPolicyRequestTargetsList as any as S.Schema<SettingsDomainsBatchResponsePutsItemAllowedDeliveryModesList>;
 
 export type SettingsDomainsBatchResponsePutsItemAuthorization =
   CreateSettingsDomainResponseAuthorization;
@@ -9381,9 +8853,8 @@ export const SettingsDomainsBatchResponsePutsItemDropDispositionsItem = S.String
 
 export type SettingsDomainsBatchResponsePutsItemDropDispositionsList =
   Array<SettingsDomainsBatchResponsePutsItemDropDispositionsItem>;
-export const SettingsDomainsBatchResponsePutsItemDropDispositionsList = /*@__PURE__*/ S.Array(
-  SettingsDomainsBatchResponsePutsItemDropDispositionsItem,
-) as any as S.Schema<SettingsDomainsBatchResponsePutsItemDropDispositionsList>;
+export const SettingsDomainsBatchResponsePutsItemDropDispositionsList =
+  CreateSettingsContentPolicyRequestTargetsList as any as S.Schema<SettingsDomainsBatchResponsePutsItemDropDispositionsList>;
 
 export type SettingsDomainsBatchResponsePutsItemEmailsProcessed =
   CreateSettingsDomainResponseEmailsProcessed;
@@ -9405,9 +8876,8 @@ export const SettingsDomainsBatchResponsePutsItemRegionsItem = S.String;
 
 export type SettingsDomainsBatchResponsePutsItemRegionsList =
   Array<SettingsDomainsBatchResponsePutsItemRegionsItem>;
-export const SettingsDomainsBatchResponsePutsItemRegionsList = /*@__PURE__*/ S.Array(
-  SettingsDomainsBatchResponsePutsItemRegionsItem,
-) as any as S.Schema<SettingsDomainsBatchResponsePutsItemRegionsList>;
+export const SettingsDomainsBatchResponsePutsItemRegionsList =
+  CreateSettingsContentPolicyRequestTargetsList as any as S.Schema<SettingsDomainsBatchResponsePutsItemRegionsList>;
 
 export type SettingsDomainsBatchResponsePutsItemSpfStatus =
   | "none"
@@ -9784,9 +9254,8 @@ export const UpdateSettingsDomainRequestAllowedDeliveryModesItem = S.String;
 export type UpdateSettingsDomainRequestAllowedDeliveryModesList = Array<
   UpdateSettingsDomainRequestAllowedDeliveryModesItem | (string & {})
 >;
-export const UpdateSettingsDomainRequestAllowedDeliveryModesList = /*@__PURE__*/ S.Array(
-  UpdateSettingsDomainRequestAllowedDeliveryModesItem,
-) as any as S.Schema<UpdateSettingsDomainRequestAllowedDeliveryModesList>;
+export const UpdateSettingsDomainRequestAllowedDeliveryModesList =
+  CreateSettingsContentPolicyRequestTargetsList as any as S.Schema<UpdateSettingsDomainRequestAllowedDeliveryModesList>;
 
 export type UpdateSettingsDomainRequestDropDispositionsItem =
   | "MALICIOUS"
@@ -9804,9 +9273,8 @@ export const UpdateSettingsDomainRequestDropDispositionsItem = S.String;
 export type UpdateSettingsDomainRequestDropDispositionsList = Array<
   UpdateSettingsDomainRequestDropDispositionsItem | (string & {})
 >;
-export const UpdateSettingsDomainRequestDropDispositionsList = /*@__PURE__*/ S.Array(
-  UpdateSettingsDomainRequestDropDispositionsItem,
-) as any as S.Schema<UpdateSettingsDomainRequestDropDispositionsList>;
+export const UpdateSettingsDomainRequestDropDispositionsList =
+  CreateSettingsContentPolicyRequestTargetsList as any as S.Schema<UpdateSettingsDomainRequestDropDispositionsList>;
 
 export type UpdateSettingsDomainRequestIpRestrictionsList = Array<string>;
 export const UpdateSettingsDomainRequestIpRestrictionsList =
@@ -9818,9 +9286,8 @@ export const UpdateSettingsDomainRequestRegionsItem = S.String;
 export type UpdateSettingsDomainRequestRegionsList = Array<
   UpdateSettingsDomainRequestRegionsItem | (string & {})
 >;
-export const UpdateSettingsDomainRequestRegionsList = /*@__PURE__*/ S.Array(
-  UpdateSettingsDomainRequestRegionsItem,
-) as any as S.Schema<UpdateSettingsDomainRequestRegionsList>;
+export const UpdateSettingsDomainRequestRegionsList =
+  CreateSettingsContentPolicyRequestTargetsList as any as S.Schema<UpdateSettingsDomainRequestRegionsList>;
 
 export type UpdateSettingsDomainRequestFolder = "AllItems" | "Inbox";
 export const UpdateSettingsDomainRequestFolder = S.String;
@@ -9892,9 +9359,8 @@ export const UpdateSettingsDomainResponseAllowedDeliveryModesItem = S.String;
 
 export type UpdateSettingsDomainResponseAllowedDeliveryModesList =
   Array<UpdateSettingsDomainResponseAllowedDeliveryModesItem>;
-export const UpdateSettingsDomainResponseAllowedDeliveryModesList = /*@__PURE__*/ S.Array(
-  UpdateSettingsDomainResponseAllowedDeliveryModesItem,
-) as any as S.Schema<UpdateSettingsDomainResponseAllowedDeliveryModesList>;
+export const UpdateSettingsDomainResponseAllowedDeliveryModesList =
+  CreateSettingsContentPolicyRequestTargetsList as any as S.Schema<UpdateSettingsDomainResponseAllowedDeliveryModesList>;
 
 export type UpdateSettingsDomainResponseAuthorization = CreateSettingsDomainResponseAuthorization;
 export const UpdateSettingsDomainResponseAuthorization = CreateSettingsDomainResponseAuthorization;
@@ -9917,9 +9383,8 @@ export const UpdateSettingsDomainResponseDropDispositionsItem = S.String;
 
 export type UpdateSettingsDomainResponseDropDispositionsList =
   Array<UpdateSettingsDomainResponseDropDispositionsItem>;
-export const UpdateSettingsDomainResponseDropDispositionsList = /*@__PURE__*/ S.Array(
-  UpdateSettingsDomainResponseDropDispositionsItem,
-) as any as S.Schema<UpdateSettingsDomainResponseDropDispositionsList>;
+export const UpdateSettingsDomainResponseDropDispositionsList =
+  CreateSettingsContentPolicyRequestTargetsList as any as S.Schema<UpdateSettingsDomainResponseDropDispositionsList>;
 
 export type UpdateSettingsDomainResponseEmailsProcessed =
   CreateSettingsDomainResponseEmailsProcessed;
@@ -9941,9 +9406,8 @@ export const UpdateSettingsDomainResponseRegionsItem = S.String;
 
 export type UpdateSettingsDomainResponseRegionsList =
   Array<UpdateSettingsDomainResponseRegionsItem>;
-export const UpdateSettingsDomainResponseRegionsList = /*@__PURE__*/ S.Array(
-  UpdateSettingsDomainResponseRegionsItem,
-) as any as S.Schema<UpdateSettingsDomainResponseRegionsList>;
+export const UpdateSettingsDomainResponseRegionsList =
+  CreateSettingsContentPolicyRequestTargetsList as any as S.Schema<UpdateSettingsDomainResponseRegionsList>;
 
 export type UpdateSettingsDomainResponseSpfStatus =
   | "none"

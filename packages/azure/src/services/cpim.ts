@@ -343,18 +343,8 @@ export interface GuestUsagesResourceSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GuestUsagesResourceSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GuestUsagesResourceSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GuestUsagesResourceSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GuestUsagesResourceSystemData",
-}) as any as S.Schema<GuestUsagesResourceSystemData>;
+export const GuestUsagesResourceSystemData =
+  B2CTenantResourceSystemData as any as S.Schema<GuestUsagesResourceSystemData>;
 
 /** Guest Usages Resource */
 export interface GuestUsagesResource {

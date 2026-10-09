@@ -6039,18 +6039,11 @@ export interface Tag1 {
   name?: string;
   type?: Tag1Type;
 }
-export const Tag1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.Number),
-    name: S.optional(S.String),
-    type: S.optional(Tag1Type),
-  }),
-).annotate({ identifier: "Tag1" }) as any as S.Schema<Tag1>;
+export const Tag1 = Tag as any as S.Schema<Tag1>;
 
 export type DashboardGetResponseSchemaCustomTagsList = Array<Tag1>;
-export const DashboardGetResponseSchemaCustomTagsList = /*@__PURE__*/ S.Array(
-  Tag1,
-) as any as S.Schema<DashboardGetResponseSchemaCustomTagsList>;
+export const DashboardGetResponseSchemaCustomTagsList =
+  ChartGetResponseSchemaTagsList as any as S.Schema<DashboardGetResponseSchemaCustomTagsList>;
 
 export type DashboardGetResponseSchemaEditorsList = Array<SubjectResponse>;
 export const DashboardGetResponseSchemaEditorsList =
@@ -11099,18 +11092,7 @@ export interface TagRestApiGet {
   name?: string | null;
   type?: TagRestApiGetType;
 }
-export const TagRestApiGet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    changed_by: S.optional(AnnotationLayerRestApiGetListUser1),
-    changed_on_delta_humanized: S.optional(S.Unknown),
-    created_by: S.optional(AnnotationLayerRestApiGetListUser1),
-    created_on_delta_humanized: S.optional(S.Unknown),
-    description: S.optional(S.NullOr(S.String)),
-    id: S.optional(S.Number),
-    name: S.optional(S.NullOr(S.String)),
-    type: S.optional(TagRestApiGetType),
-  }),
-).annotate({ identifier: "TagRestApiGet" }) as any as S.Schema<TagRestApiGet>;
+export const TagRestApiGet = TagRestApiGetList as any as S.Schema<TagRestApiGet>;
 
 /** A list of columns */
 export type GetTagByPkResponseShowColumnsList = Array<string>;
@@ -12555,20 +12537,12 @@ export interface DashboardRestApiGetListTag {
   name?: string | null;
   type?: DashboardRestApiGetListTagType;
 }
-export const DashboardRestApiGetListTag = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.Number),
-    name: S.optional(S.NullOr(S.String)),
-    type: S.optional(DashboardRestApiGetListTagType),
-  }),
-).annotate({
-  identifier: "DashboardRestApiGetListTag",
-}) as any as S.Schema<DashboardRestApiGetListTag>;
+export const DashboardRestApiGetListTag =
+  SavedQueryRestApiGetListTag as any as S.Schema<DashboardRestApiGetListTag>;
 
 export type DashboardRestApiGetListTagsList = Array<DashboardRestApiGetListTag>;
-export const DashboardRestApiGetListTagsList = /*@__PURE__*/ S.Array(
-  DashboardRestApiGetListTag,
-) as any as S.Schema<DashboardRestApiGetListTagsList>;
+export const DashboardRestApiGetListTagsList =
+  SavedQueryRestApiGetListTagsList as any as S.Schema<DashboardRestApiGetListTagsList>;
 
 export type DashboardRestApiGetListSubject1 = DatasetRestApiGetListSubject;
 export const DashboardRestApiGetListSubject1 = DatasetRestApiGetListSubject;

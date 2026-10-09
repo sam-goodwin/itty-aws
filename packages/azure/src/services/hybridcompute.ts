@@ -3375,9 +3375,8 @@ export const VMGuestPatchClassificationLinux = S.String;
 export type LinuxParametersClassificationsToIncludeList = Array<
   VMGuestPatchClassificationLinux | (string & {})
 >;
-export const LinuxParametersClassificationsToIncludeList = /*@__PURE__*/ S.Array(
-  VMGuestPatchClassificationLinux,
-) as any as S.Schema<LinuxParametersClassificationsToIncludeList>;
+export const LinuxParametersClassificationsToIncludeList =
+  WindowsParametersClassificationsToIncludeList as any as S.Schema<LinuxParametersClassificationsToIncludeList>;
 
 /** packages to include in the patch operation. Format: packageName_packageVersion */
 export type LinuxParametersPackageNameMasksToIncludeList = Array<string>;

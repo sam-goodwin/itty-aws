@@ -780,15 +780,8 @@ export interface GetResponseOwnershipVerification {
   /** Content for the record. */
   value?: string | null;
 }
-export const GetResponseOwnershipVerification = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.NullOr(S.String)),
-    type: S.optional(S.NullOr(GetResponseOwnershipVerificationType)),
-    value: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "GetResponseOwnershipVerification",
-}) as any as S.Schema<GetResponseOwnershipVerification>;
+export const GetResponseOwnershipVerification =
+  CreateResponseOwnershipVerification as any as S.Schema<GetResponseOwnershipVerification>;
 
 export type GetResponseOwnershipVerificationHttp = CreateResponseOwnershipVerificationHttp;
 export const GetResponseOwnershipVerificationHttp = CreateResponseOwnershipVerificationHttp;
@@ -1306,15 +1299,8 @@ export interface ListResultItemOwnershipVerification {
   /** Content for the record. */
   value?: string | null;
 }
-export const ListResultItemOwnershipVerification = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.NullOr(S.String)),
-    type: S.optional(S.NullOr(ListResultItemOwnershipVerificationType)),
-    value: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "ListResultItemOwnershipVerification",
-}) as any as S.Schema<ListResultItemOwnershipVerification>;
+export const ListResultItemOwnershipVerification =
+  CreateResponseOwnershipVerification as any as S.Schema<ListResultItemOwnershipVerification>;
 
 export type ListResultItemOwnershipVerificationHttp = CreateResponseOwnershipVerificationHttp;
 export const ListResultItemOwnershipVerificationHttp = CreateResponseOwnershipVerificationHttp;
@@ -1791,15 +1777,8 @@ export interface EditResponseOwnershipVerification {
   /** Content for the record. */
   value?: string | null;
 }
-export const EditResponseOwnershipVerification = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.NullOr(S.String)),
-    type: S.optional(S.NullOr(EditResponseOwnershipVerificationType)),
-    value: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "EditResponseOwnershipVerification",
-}) as any as S.Schema<EditResponseOwnershipVerification>;
+export const EditResponseOwnershipVerification =
+  CreateResponseOwnershipVerification as any as S.Schema<EditResponseOwnershipVerification>;
 
 export type EditResponseOwnershipVerificationHttp = CreateResponseOwnershipVerificationHttp;
 export const EditResponseOwnershipVerificationHttp = CreateResponseOwnershipVerificationHttp;

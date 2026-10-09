@@ -2893,13 +2893,8 @@ export interface CloudProjectLoadbalancerNetworkingEgressCreation {
   /** networking egress kind definition */
   kind: CloudProjectLoadbalancerNetworkingEgressKindEnum | (string & {});
 }
-export const CloudProjectLoadbalancerNetworkingEgressCreation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: CloudProjectLoadbalancerNetworkingEgressKindEnum,
-  }),
-).annotate({
-  identifier: "CloudProjectLoadbalancerNetworkingEgressCreation",
-}) as any as S.Schema<CloudProjectLoadbalancerNetworkingEgressCreation>;
+export const CloudProjectLoadbalancerNetworkingEgressCreation =
+  CloudProjectLoadbalancerConfigurationNetworkingIngress as any as S.Schema<CloudProjectLoadbalancerNetworkingEgressCreation>;
 
 /** Networking Ingress definition */
 export interface CloudProjectLoadbalancerNetworkingIngressCreation {
@@ -4745,20 +4740,13 @@ export interface CloudProjectAiJobJobStatusHistory {
   /** State of the job */
   state?: CloudProjectAiJobJobStateEnum;
 }
-export const CloudProjectAiJobJobStatusHistory = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    date: S.optional(S.String),
-    state: S.optional(CloudProjectAiJobJobStateEnum),
-  }),
-).annotate({
-  identifier: "CloudProjectAiJobJobStatusHistory",
-}) as any as S.Schema<CloudProjectAiJobJobStatusHistory>;
+export const CloudProjectAiJobJobStatusHistory =
+  CloudProjectAiAppAppStateHistory as any as S.Schema<CloudProjectAiJobJobStatusHistory>;
 
 /** Job state history */
 export type CloudProjectAiJobJobStatusHistoryList = Array<CloudProjectAiJobJobStatusHistory>;
-export const CloudProjectAiJobJobStatusHistoryList = /*@__PURE__*/ S.Array(
-  CloudProjectAiJobJobStatusHistory,
-) as any as S.Schema<CloudProjectAiJobJobStatusHistoryList>;
+export const CloudProjectAiJobJobStatusHistoryList =
+  CloudProjectAiAppAppStatusHistoryList as any as S.Schema<CloudProjectAiJobJobStatusHistoryList>;
 
 /** Job Data linked */
 export type CloudProjectAiJobJobStatusVolumesList = Array<CloudProjectAiVolumeVolumeStatus>;
@@ -11872,9 +11860,7 @@ export type CreateCloudProjectKubeOpenIdConnectRequestSigningAlgorithmsList = Ar
   CloudKubeOpenIdConnectSigningAlgorithmsEnum | (string & {})
 >;
 export const CreateCloudProjectKubeOpenIdConnectRequestSigningAlgorithmsList =
-  /*@__PURE__*/ S.Array(
-    CloudKubeOpenIdConnectSigningAlgorithmsEnum,
-  ) as any as S.Schema<CreateCloudProjectKubeOpenIdConnectRequestSigningAlgorithmsList>;
+  CloudProjectKubeCustomizationAPIServerAdmissionPluginsDisabledList as any as S.Schema<CreateCloudProjectKubeOpenIdConnectRequestSigningAlgorithmsList>;
 
 export interface CreateCloudProjectKubeOpenIdConnectRequest {
   /** Service name */
@@ -12488,9 +12474,8 @@ export const CloudIpCountryEnum = S.String;
 
 /** Allowed countries for failover ip */
 export type CloudRegionIpCountriesList = Array<CloudIpCountryEnum>;
-export const CloudRegionIpCountriesList = /*@__PURE__*/ S.Array(
-  CloudIpCountryEnum,
-) as any as S.Schema<CloudRegionIpCountriesList>;
+export const CloudRegionIpCountriesList =
+  CloudKubeOpenIdConnectSigningAlgorithmsList as any as S.Schema<CloudRegionIpCountriesList>;
 
 /** Enum values for Status */
 export type CloudServiceStatusEnum = "DOWN" | "UP";
@@ -13447,9 +13432,7 @@ export type CreateCloudProjectRegionLoadbalancingListenerRequestTlsVersionsList 
   CloudLoadbalancingListenerTlsVersionEnum | (string & {})
 >;
 export const CreateCloudProjectRegionLoadbalancingListenerRequestTlsVersionsList =
-  /*@__PURE__*/ S.Array(
-    CloudLoadbalancingListenerTlsVersionEnum,
-  ) as any as S.Schema<CreateCloudProjectRegionLoadbalancingListenerRequestTlsVersionsList>;
+  CloudProjectKubeCustomizationAPIServerAdmissionPluginsDisabledList as any as S.Schema<CreateCloudProjectRegionLoadbalancingListenerRequestTlsVersionsList>;
 
 export interface CreateCloudProjectRegionLoadbalancingListenerRequest {
   /** Service name */
@@ -13518,9 +13501,8 @@ export const CloudLoadbalancingListenerLoadBalancerIdsList =
 /** TLS versions of the listener */
 export type CloudLoadbalancingListenerTlsVersionsList =
   Array<CloudLoadbalancingListenerTlsVersionEnum>;
-export const CloudLoadbalancingListenerTlsVersionsList = /*@__PURE__*/ S.Array(
-  CloudLoadbalancingListenerTlsVersionEnum,
-) as any as S.Schema<CloudLoadbalancingListenerTlsVersionsList>;
+export const CloudLoadbalancingListenerTlsVersionsList =
+  CloudKubeOpenIdConnectSigningAlgorithmsList as any as S.Schema<CloudLoadbalancingListenerTlsVersionsList>;
 
 /** Listener */
 export interface CloudLoadbalancingListener {
@@ -15380,9 +15362,8 @@ export const CloudUserRoleEnum = S.String;
 
 /** Openstack keystone roles names */
 export type CreateCloudProjectUserRequestRolesList = Array<CloudUserRoleEnum | (string & {})>;
-export const CreateCloudProjectUserRequestRolesList = /*@__PURE__*/ S.Array(
-  CloudUserRoleEnum,
-) as any as S.Schema<CreateCloudProjectUserRequestRolesList>;
+export const CreateCloudProjectUserRequestRolesList =
+  CloudKubeOpenIdConnectSigningAlgorithmsList as any as S.Schema<CreateCloudProjectUserRequestRolesList>;
 
 export interface CreateCloudProjectUserRequest {
   /** Service name */
@@ -21859,9 +21840,8 @@ export const GetCloudProjectAiCapabilityRegionPresetRequest = /*@__PURE__*/ S.su
 /** Flavor types */
 export type CloudProjectAiCapabilitiesPresetCapabilitiesFlavorTypesList =
   Array<CloudProjectAiCapabilitiesFlavorTypeEnum>;
-export const CloudProjectAiCapabilitiesPresetCapabilitiesFlavorTypesList = /*@__PURE__*/ S.Array(
-  CloudProjectAiCapabilitiesFlavorTypeEnum,
-) as any as S.Schema<CloudProjectAiCapabilitiesPresetCapabilitiesFlavorTypesList>;
+export const CloudProjectAiCapabilitiesPresetCapabilitiesFlavorTypesList =
+  CloudKubeOpenIdConnectSigningAlgorithmsList as any as S.Schema<CloudProjectAiCapabilitiesPresetCapabilitiesFlavorTypesList>;
 
 /** AI Solutions Preset resources requirements */
 export interface CloudProjectAiCapabilitiesPresetResources {
@@ -32124,9 +32104,8 @@ export type CloudQuotaCategoryEnum =
 export const CloudQuotaCategoryEnum = S.String;
 
 export type GetQuotasRequestCategoriesList = Array<CloudQuotaCategoryEnum | (string & {})>;
-export const GetQuotasRequestCategoriesList = /*@__PURE__*/ S.Array(
-  CloudQuotaCategoryEnum,
-) as any as S.Schema<GetQuotasRequestCategoriesList>;
+export const GetQuotasRequestCategoriesList =
+  CloudKubeOpenIdConnectSigningAlgorithmsList as any as S.Schema<GetQuotasRequestCategoriesList>;
 
 export interface GetQuotasRequest {
   /** Service name */
@@ -32437,9 +32416,8 @@ export const CloudProjectEligibilityAction = S.String;
 
 /** Actions to perform to be eligible */
 export type CloudProjectEligibilityInfoActionsRequiredList = Array<CloudProjectEligibilityAction>;
-export const CloudProjectEligibilityInfoActionsRequiredList = /*@__PURE__*/ S.Array(
-  CloudProjectEligibilityAction,
-) as any as S.Schema<CloudProjectEligibilityInfoActionsRequiredList>;
+export const CloudProjectEligibilityInfoActionsRequiredList =
+  CloudKubeOpenIdConnectSigningAlgorithmsList as any as S.Schema<CloudProjectEligibilityInfoActionsRequiredList>;
 
 /** List of accepted payment methods */
 export type CloudProjectPaymentMethodAuthorized =
@@ -32454,9 +32432,8 @@ export const CloudProjectPaymentMethodAuthorized = S.String;
 /** Payment method accepted to order Public Cloud project */
 export type CloudProjectEligibilityInfoPaymentMethodsAuthorizedList =
   Array<CloudProjectPaymentMethodAuthorized>;
-export const CloudProjectEligibilityInfoPaymentMethodsAuthorizedList = /*@__PURE__*/ S.Array(
-  CloudProjectPaymentMethodAuthorized,
-) as any as S.Schema<CloudProjectEligibilityInfoPaymentMethodsAuthorizedList>;
+export const CloudProjectEligibilityInfoPaymentMethodsAuthorizedList =
+  CloudKubeOpenIdConnectSigningAlgorithmsList as any as S.Schema<CloudProjectEligibilityInfoPaymentMethodsAuthorizedList>;
 
 /** Information about voucher */
 export interface CloudProjectNewProjectInfoVoucher {
@@ -32682,9 +32659,8 @@ export const CloudProjectAiOrderEnum = S.String;
 export type ListCloudProjectAiAppRequestStatusStateList = Array<
   CloudProjectAiAppAppStateEnum | (string & {})
 >;
-export const ListCloudProjectAiAppRequestStatusStateList = /*@__PURE__*/ S.Array(
-  CloudProjectAiAppAppStateEnum,
-) as any as S.Schema<ListCloudProjectAiAppRequestStatusStateList>;
+export const ListCloudProjectAiAppRequestStatusStateList =
+  CloudKubeOpenIdConnectSigningAlgorithmsList as any as S.Schema<ListCloudProjectAiAppRequestStatusStateList>;
 
 export interface ListCloudProjectAiAppRequest {
   /** Service name */
@@ -33215,9 +33191,8 @@ export const ListCloudProjectAiDataRegionAliasResponse = /*@__PURE__*/ S.suspend
 export type ListCloudProjectAiJobRequestStatusStateList = Array<
   CloudProjectAiJobJobStateEnum | (string & {})
 >;
-export const ListCloudProjectAiJobRequestStatusStateList = /*@__PURE__*/ S.Array(
-  CloudProjectAiJobJobStateEnum,
-) as any as S.Schema<ListCloudProjectAiJobRequestStatusStateList>;
+export const ListCloudProjectAiJobRequestStatusStateList =
+  CloudKubeOpenIdConnectSigningAlgorithmsList as any as S.Schema<ListCloudProjectAiJobRequestStatusStateList>;
 
 export interface ListCloudProjectAiJobRequest {
   /** Service name */
@@ -33353,9 +33328,8 @@ export const ListCloudProjectAiJobLogRequest = /*@__PURE__*/ S.suspend(() =>
 export type ListCloudProjectAiNotebookRequestStatusStateList = Array<
   CloudProjectAiNotebookNotebookStateEnum | (string & {})
 >;
-export const ListCloudProjectAiNotebookRequestStatusStateList = /*@__PURE__*/ S.Array(
-  CloudProjectAiNotebookNotebookStateEnum,
-) as any as S.Schema<ListCloudProjectAiNotebookRequestStatusStateList>;
+export const ListCloudProjectAiNotebookRequestStatusStateList =
+  CloudKubeOpenIdConnectSigningAlgorithmsList as any as S.Schema<ListCloudProjectAiNotebookRequestStatusStateList>;
 
 export interface ListCloudProjectAiNotebookRequest {
   /** Service name */
@@ -33818,9 +33792,7 @@ export const ListCloudProjectCapabilityApplicationloadbalancerSizeRequest = /*@_
 export type ListCloudProjectCapabilityApplicationloadbalancerSizeResponseBodyList =
   Array<CloudProjectLoadbalancerSizeEnum>;
 export const ListCloudProjectCapabilityApplicationloadbalancerSizeResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    CloudProjectLoadbalancerSizeEnum,
-  ) as any as S.Schema<ListCloudProjectCapabilityApplicationloadbalancerSizeResponseBodyList>;
+  CloudProjectKubeCustomizationAPIServerAdmissionPluginsDisabledList as any as S.Schema<ListCloudProjectCapabilityApplicationloadbalancerSizeResponseBodyList>;
 
 export type ListCloudProjectCapabilityApplicationloadbalancerSizeResponse =
   ListCloudProjectCapabilityApplicationloadbalancerSizeResponseBodyList;
@@ -33908,9 +33880,8 @@ export const ListCloudProjectCapabilityKubeAdmissionpluginsRequest = /*@__PURE__
 
 export type ListCloudProjectCapabilityKubeAdmissionpluginsResponseBodyList =
   Array<CloudProjectKubeCustomizationAPIServerAdmissionPluginsEnum>;
-export const ListCloudProjectCapabilityKubeAdmissionpluginsResponseBodyList = /*@__PURE__*/ S.Array(
-  CloudProjectKubeCustomizationAPIServerAdmissionPluginsEnum,
-) as any as S.Schema<ListCloudProjectCapabilityKubeAdmissionpluginsResponseBodyList>;
+export const ListCloudProjectCapabilityKubeAdmissionpluginsResponseBodyList =
+  CloudKubeOpenIdConnectSigningAlgorithmsList as any as S.Schema<ListCloudProjectCapabilityKubeAdmissionpluginsResponseBodyList>;
 
 export type ListCloudProjectCapabilityKubeAdmissionpluginsResponse =
   ListCloudProjectCapabilityKubeAdmissionpluginsResponseBodyList;
@@ -34089,17 +34060,13 @@ export const ListCloudProjectCapabilityLoadbalancerSizeRequest = /*@__PURE__*/ S
 
 export type ListCloudProjectCapabilityLoadbalancerSizeResponseBodyList =
   Array<CloudProjectLoadbalancerSizeEnum>;
-export const ListCloudProjectCapabilityLoadbalancerSizeResponseBodyList = /*@__PURE__*/ S.Array(
-  CloudProjectLoadbalancerSizeEnum,
-) as any as S.Schema<ListCloudProjectCapabilityLoadbalancerSizeResponseBodyList>;
+export const ListCloudProjectCapabilityLoadbalancerSizeResponseBodyList =
+  CloudKubeOpenIdConnectSigningAlgorithmsList as any as S.Schema<ListCloudProjectCapabilityLoadbalancerSizeResponseBodyList>;
 
 export type ListCloudProjectCapabilityLoadbalancerSizeResponse =
   ListCloudProjectCapabilityLoadbalancerSizeResponseBodyList;
-export const ListCloudProjectCapabilityLoadbalancerSizeResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectCapabilityLoadbalancerSizeResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectCapabilityLoadbalancerSizeResponse",
-}) as any as S.Schema<ListCloudProjectCapabilityLoadbalancerSizeResponse>;
+export const ListCloudProjectCapabilityLoadbalancerSizeResponse =
+  ListCloudProjectCapabilityKubeAdmissionpluginsResponse as any as S.Schema<ListCloudProjectCapabilityLoadbalancerSizeResponse>;
 
 export interface ListCloudProjectCapabilityNetworkloadbalancerRegionRequest {
   /** Service name */
@@ -35160,21 +35127,14 @@ export interface CloudProjectDatabaseCapabilitiesIntegrationParameter {
   /** Type of the integration parameter */
   type?: CloudProjectDatabaseCapabilitiesIntegrationParameterTypeEnum;
 }
-export const CloudProjectDatabaseCapabilitiesIntegrationParameter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    type: S.optional(CloudProjectDatabaseCapabilitiesIntegrationParameterTypeEnum),
-  }),
-).annotate({
-  identifier: "CloudProjectDatabaseCapabilitiesIntegrationParameter",
-}) as any as S.Schema<CloudProjectDatabaseCapabilitiesIntegrationParameter>;
+export const CloudProjectDatabaseCapabilitiesIntegrationParameter =
+  CloudProjectDatabaseCapabilitiesOption as any as S.Schema<CloudProjectDatabaseCapabilitiesIntegrationParameter>;
 
 /** Parameters for the integration capability */
 export type CloudProjectDatabaseCapabilitiesIntegrationParametersList =
   Array<CloudProjectDatabaseCapabilitiesIntegrationParameter>;
-export const CloudProjectDatabaseCapabilitiesIntegrationParametersList = /*@__PURE__*/ S.Array(
-  CloudProjectDatabaseCapabilitiesIntegrationParameter,
-) as any as S.Schema<CloudProjectDatabaseCapabilitiesIntegrationParametersList>;
+export const CloudProjectDatabaseCapabilitiesIntegrationParametersList =
+  CloudProjectDatabaseCapabilitiesOptionsList as any as S.Schema<CloudProjectDatabaseCapabilitiesIntegrationParametersList>;
 
 /** Integration capability between database engines */
 export interface CloudProjectDatabaseCapabilitiesIntegration {

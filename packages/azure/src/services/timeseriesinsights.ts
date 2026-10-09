@@ -1316,9 +1316,8 @@ export const AccessPolicyMutablePropertiesRolesItem = S.String;
 export type AccessPolicyMutablePropertiesRolesList = Array<
   AccessPolicyMutablePropertiesRolesItem | (string & {})
 >;
-export const AccessPolicyMutablePropertiesRolesList = /*@__PURE__*/ S.Array(
-  AccessPolicyMutablePropertiesRolesItem,
-) as any as S.Schema<AccessPolicyMutablePropertiesRolesList>;
+export const AccessPolicyMutablePropertiesRolesList =
+  AccessPolicyResourcePropertiesRolesList as any as S.Schema<AccessPolicyMutablePropertiesRolesList>;
 
 /** An object that represents a set of mutable access policy resource properties. */
 export interface AccessPolicyMutableProperties {

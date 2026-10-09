@@ -991,9 +991,8 @@ export type UnsuccessfulFaceDeletionReason =
 export const UnsuccessfulFaceDeletionReason = S.String;
 
 export type UnsuccessfulFaceDeletionReasons = UnsuccessfulFaceDeletionReason[];
-export const UnsuccessfulFaceDeletionReasons = /*@__PURE__*/ S.Array(
-  UnsuccessfulFaceDeletionReason,
-);
+export const UnsuccessfulFaceDeletionReasons =
+  UnsuccessfulFaceAssociationReasons as any as S.Schema<UnsuccessfulFaceDeletionReasons>;
 export interface UnsuccessfulFaceDeletion {
   FaceId?: string;
   UserId?: string;
@@ -1514,7 +1513,7 @@ export type Attribute =
 export const Attribute = S.String;
 
 export type Attributes = Attribute[];
-export const Attributes = /*@__PURE__*/ S.Array(Attribute);
+export const Attributes = CustomizationFeatures as any as S.Schema<Attributes>;
 export interface DetectFacesRequest {
   Image: Image;
   Attributes?: Attribute[];
@@ -1644,7 +1643,8 @@ export type DetectLabelsFeatureName = "GENERAL_LABELS" | "IMAGE_PROPERTIES" | (s
 export const DetectLabelsFeatureName = S.String;
 
 export type DetectLabelsFeatureList = DetectLabelsFeatureName[];
-export const DetectLabelsFeatureList = /*@__PURE__*/ S.Array(DetectLabelsFeatureName);
+export const DetectLabelsFeatureList =
+  CustomizationFeatures as any as S.Schema<DetectLabelsFeatureList>;
 export type GeneralLabelsFilterValue = string;
 export type GeneralLabelsFilterList = string[];
 export const GeneralLabelsFilterList = UserFaceIdList as any as S.Schema<GeneralLabelsFilterList>;
@@ -1842,7 +1842,7 @@ export type ContentClassifier =
 export const ContentClassifier = S.String;
 
 export type ContentClassifiers = ContentClassifier[];
-export const ContentClassifiers = /*@__PURE__*/ S.Array(ContentClassifier);
+export const ContentClassifiers = CustomizationFeatures as any as S.Schema<ContentClassifiers>;
 export interface HumanLoopDataAttributes {
   ContentClassifiers?: ContentClassifier[];
 }
@@ -1945,7 +1945,8 @@ export type ProtectiveEquipmentType = "FACE_COVER" | "HAND_COVER" | "HEAD_COVER"
 export const ProtectiveEquipmentType = S.String;
 
 export type ProtectiveEquipmentTypes = ProtectiveEquipmentType[];
-export const ProtectiveEquipmentTypes = /*@__PURE__*/ S.Array(ProtectiveEquipmentType);
+export const ProtectiveEquipmentTypes =
+  CustomizationFeatures as any as S.Schema<ProtectiveEquipmentTypes>;
 export interface ProtectiveEquipmentSummarizationAttributes {
   MinConfidence: number;
   RequiredEquipmentTypes: ProtectiveEquipmentType[];
@@ -2151,9 +2152,8 @@ export type UnsuccessfulFaceDisassociationReason =
 export const UnsuccessfulFaceDisassociationReason = S.String;
 
 export type UnsuccessfulFaceDisassociationReasons = UnsuccessfulFaceDisassociationReason[];
-export const UnsuccessfulFaceDisassociationReasons = /*@__PURE__*/ S.Array(
-  UnsuccessfulFaceDisassociationReason,
-);
+export const UnsuccessfulFaceDisassociationReasons =
+  UnsuccessfulFaceAssociationReasons as any as S.Schema<UnsuccessfulFaceDisassociationReasons>;
 export interface UnsuccessfulFaceDisassociation {
   FaceId?: string;
   UserId?: string;
@@ -2713,14 +2713,8 @@ export interface GetLabelDetectionRequestMetadata {
   SortBy?: LabelDetectionSortBy;
   AggregateBy?: LabelDetectionAggregateBy;
 }
-export const GetLabelDetectionRequestMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SortBy: S.optional(LabelDetectionSortBy),
-    AggregateBy: S.optional(LabelDetectionAggregateBy),
-  }),
-).annotate({
-  identifier: "GetLabelDetectionRequestMetadata",
-}) as any as S.Schema<GetLabelDetectionRequestMetadata>;
+export const GetLabelDetectionRequestMetadata =
+  GetContentModerationRequestMetadata as any as S.Schema<GetLabelDetectionRequestMetadata>;
 export interface GetLabelDetectionResponse {
   JobStatus?: VideoJobStatus;
   StatusMessage?: string;
@@ -2985,9 +2979,7 @@ export interface TechnicalCueSegment {
   Type?: TechnicalCueType;
   Confidence?: number;
 }
-export const TechnicalCueSegment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Type: S.optional(TechnicalCueType), Confidence: S.optional(S.Number) }),
-).annotate({ identifier: "TechnicalCueSegment" }) as any as S.Schema<TechnicalCueSegment>;
+export const TechnicalCueSegment = Emotion as any as S.Schema<TechnicalCueSegment>;
 export interface ShotSegment {
   Index?: number;
   Confidence?: number;
@@ -3149,7 +3141,7 @@ export type Reason =
 export const Reason = S.String;
 
 export type Reasons = Reason[];
-export const Reasons = /*@__PURE__*/ S.Array(Reason);
+export const Reasons = CustomizationFeatures as any as S.Schema<Reasons>;
 export interface UnindexedFace {
   Reasons?: Reason[];
   FaceDetail?: FaceDetail;
@@ -3690,7 +3682,8 @@ export type UnsearchedFaceReason =
 export const UnsearchedFaceReason = S.String;
 
 export type UnsearchedFaceReasons = UnsearchedFaceReason[];
-export const UnsearchedFaceReasons = /*@__PURE__*/ S.Array(UnsearchedFaceReason);
+export const UnsearchedFaceReasons =
+  CustomizationFeatures as any as S.Schema<UnsearchedFaceReasons>;
 export interface UnsearchedFace {
   FaceDetails?: FaceDetail;
   Reasons?: UnsearchedFaceReason[];
@@ -3824,7 +3817,8 @@ export type LabelDetectionFeatureName = "GENERAL_LABELS" | (string & {});
 export const LabelDetectionFeatureName = S.String;
 
 export type LabelDetectionFeatureList = LabelDetectionFeatureName[];
-export const LabelDetectionFeatureList = /*@__PURE__*/ S.Array(LabelDetectionFeatureName);
+export const LabelDetectionFeatureList =
+  CustomizationFeatures as any as S.Schema<LabelDetectionFeatureList>;
 export interface LabelDetectionSettings {
   GeneralLabels?: GeneralLabelsSettings;
 }
@@ -3966,7 +3960,7 @@ export const StartSegmentDetectionFilters = /*@__PURE__*/ S.suspend(() =>
   identifier: "StartSegmentDetectionFilters",
 }) as any as S.Schema<StartSegmentDetectionFilters>;
 export type SegmentTypes = SegmentType[];
-export const SegmentTypes = /*@__PURE__*/ S.Array(SegmentType);
+export const SegmentTypes = CustomizationFeatures as any as S.Schema<SegmentTypes>;
 export interface StartSegmentDetectionRequest {
   Video: Video;
   ClientRequestToken?: string;
@@ -4174,9 +4168,8 @@ export type StreamProcessorParameterToDelete =
 export const StreamProcessorParameterToDelete = S.String;
 
 export type StreamProcessorParametersToDelete = StreamProcessorParameterToDelete[];
-export const StreamProcessorParametersToDelete = /*@__PURE__*/ S.Array(
-  StreamProcessorParameterToDelete,
-);
+export const StreamProcessorParametersToDelete =
+  UnsuccessfulFaceAssociationReasons as any as S.Schema<StreamProcessorParametersToDelete>;
 export interface UpdateStreamProcessorRequest {
   Name: string;
   SettingsForUpdate?: StreamProcessorSettingsForUpdate;

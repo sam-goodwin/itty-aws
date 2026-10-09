@@ -3664,11 +3664,7 @@ export interface DateTimeRule {
   /** The type of date-time grouping to apply. */
   type?: DateTimeRuleTypeEnum | (string & {});
 }
-export const DateTimeRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(DateTimeRuleTypeEnum),
-  }),
-).annotate({ identifier: "DateTimeRule" }) as any as S.Schema<DateTimeRule>;
+export const DateTimeRule = ChartDateTimeRule as any as S.Schema<DateTimeRule>;
 
 export type ErrorValueTypeEnum =
   | "ERROR_TYPE_UNSPECIFIED"
@@ -4661,12 +4657,7 @@ export interface InsertRangeRequest {
   /** The dimension which will be shifted when inserting cells. If ROWS, existing cells will be shifted down. If COLUMNS, existing cells will be shifted right. */
   shiftDimension?: InsertRangeRequestShiftDimensionEnum | (string & {});
 }
-export const InsertRangeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    range: S.optional(GridRange),
-    shiftDimension: S.optional(InsertRangeRequestShiftDimensionEnum),
-  }),
-).annotate({ identifier: "InsertRangeRequest" }) as any as S.Schema<InsertRangeRequest>;
+export const InsertRangeRequest = DeleteRangeRequest as any as S.Schema<InsertRangeRequest>;
 
 /** Properties referring a single dimension (either row or column). If both BandedRange.row_properties and BandedRange.column_properties are set, the fill colors are applied to cells according to the following rules: * header_color and footer_color take priority over band colors. * first_band_color takes priority over second_band_color. * row_properties takes priority over column_properties. For example, the first row color takes priority over the first column color, but the first column color takes priority over the second row color. Similarly, the row header takes priority over the column header in the top left cell, but the column header takes priority over the first row color if the row header is not set. */
 export interface BandingProperties {

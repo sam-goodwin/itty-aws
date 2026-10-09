@@ -507,7 +507,7 @@ export type Reaction = "ThumbsUp" | "ThumbsDown" | (string & {});
 export const Reaction = S.String;
 
 export type Reactions = Reaction[];
-export const Reactions = /*@__PURE__*/ S.Array(Reaction);
+export const Reactions = AnalysisTypes as any as S.Schema<Reactions>;
 export interface RecommendationFeedback {
   CodeReviewArn?: string;
   RecommendationId?: string;
@@ -581,9 +581,9 @@ export interface DisassociateRepositoryResponse {
 export const DisassociateRepositoryResponse =
   AssociateRepositoryResponse as any as S.Schema<DisassociateRepositoryResponse>;
 export type ProviderTypes = ProviderType[];
-export const ProviderTypes = /*@__PURE__*/ S.Array(ProviderType);
+export const ProviderTypes = AnalysisTypes as any as S.Schema<ProviderTypes>;
 export type JobStates = JobState[];
-export const JobStates = /*@__PURE__*/ S.Array(JobState);
+export const JobStates = AnalysisTypes as any as S.Schema<JobStates>;
 export type RepositoryNames = string[];
 export const RepositoryNames = /*@__PURE__*/ S.Array(S.String);
 export type ListCodeReviewsMaxResults = number;
@@ -819,7 +819,8 @@ export const ListRecommendationsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListRecommendationsResponse",
 }) as any as S.Schema<ListRecommendationsResponse>;
 export type RepositoryAssociationStates = RepositoryAssociationState[];
-export const RepositoryAssociationStates = /*@__PURE__*/ S.Array(RepositoryAssociationState);
+export const RepositoryAssociationStates =
+  AnalysisTypes as any as S.Schema<RepositoryAssociationStates>;
 export type Names = string[];
 export const Names = RepositoryNames as any as S.Schema<Names>;
 export type Owners = string[];

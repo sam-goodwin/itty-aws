@@ -500,7 +500,7 @@ export const UserAdmins = AccessorIdList as any as S.Schema<UserAdmins>;
 export type GroupAdmins = string[];
 export const GroupAdmins = AccessorIdList as any as S.Schema<GroupAdmins>;
 export type RoleList = Role[];
-export const RoleList = /*@__PURE__*/ S.Array(Role);
+export const RoleList = ChannelRoleList as any as S.Schema<RoleList>;
 export type Roles = { [key: string]: Role[] | undefined };
 export const Roles = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ RoleList.pipe(S.optional));
 export type UserCount = number;
@@ -512,14 +512,8 @@ export interface SupportedEmailDomainsStatus {
   enabled?: FeatureEnableStatus;
   allowedDomains?: (string | redacted.Redacted<string>)[];
 }
-export const SupportedEmailDomainsStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(FeatureEnableStatus),
-    allowedDomains: S.optional(AllowedDomainsList),
-  }),
-).annotate({
-  identifier: "SupportedEmailDomainsStatus",
-}) as any as S.Schema<SupportedEmailDomainsStatus>;
+export const SupportedEmailDomainsStatus =
+  SupportedEmailDomainsParameters as any as S.Schema<SupportedEmailDomainsStatus>;
 export interface GetSpaceOutput {
   spaceId: string;
   arn: string;

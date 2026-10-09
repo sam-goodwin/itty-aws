@@ -4222,9 +4222,7 @@ export type GoogleCloudAiplatformV1beta1GenerationConfigResponseModalitiesItemEn
   GoogleCloudAiplatformV1beta1GenerationConfigResponseModalitiesItemEnum | (string & {})
 >;
 export const GoogleCloudAiplatformV1beta1GenerationConfigResponseModalitiesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudAiplatformV1beta1GenerationConfigResponseModalitiesItemEnum,
-  ) as any as S.Schema<GoogleCloudAiplatformV1beta1GenerationConfigResponseModalitiesItemEnumList>;
+  GoogleCloudAiplatformV1beta1ToolComputerUseDisabledSafetyPoliciesItemEnumList as any as S.Schema<GoogleCloudAiplatformV1beta1GenerationConfigResponseModalitiesItemEnumList>;
 
 export type GoogleCloudAiplatformV1beta1GenerationConfigModelConfigFeatureSelectionPreferenceEnum =
   | "FEATURE_SELECTION_PREFERENCE_UNSPECIFIED"
@@ -8969,9 +8967,7 @@ export type GenaiVertexV1beta1ComputerUseDisabledSafetyPoliciesItemEnumList = Ar
   GenaiVertexV1beta1ComputerUseDisabledSafetyPoliciesItemEnum | (string & {})
 >;
 export const GenaiVertexV1beta1ComputerUseDisabledSafetyPoliciesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GenaiVertexV1beta1ComputerUseDisabledSafetyPoliciesItemEnum,
-  ) as any as S.Schema<GenaiVertexV1beta1ComputerUseDisabledSafetyPoliciesItemEnumList>;
+  GoogleCloudAiplatformV1beta1ToolComputerUseDisabledSafetyPoliciesItemEnumList as any as S.Schema<GenaiVertexV1beta1ComputerUseDisabledSafetyPoliciesItemEnumList>;
 
 export type GenaiVertexV1beta1ComputerUseEnvironmentEnum =
   | "ENVIRONMENT_UNSPECIFIED"
@@ -9014,9 +9010,8 @@ export const GenaiVertexV1beta1GoogleSearchSearchTypesItemEnum = S.String;
 export type GenaiVertexV1beta1GoogleSearchSearchTypesItemEnumList = Array<
   GenaiVertexV1beta1GoogleSearchSearchTypesItemEnum | (string & {})
 >;
-export const GenaiVertexV1beta1GoogleSearchSearchTypesItemEnumList = /*@__PURE__*/ S.Array(
-  GenaiVertexV1beta1GoogleSearchSearchTypesItemEnum,
-) as any as S.Schema<GenaiVertexV1beta1GoogleSearchSearchTypesItemEnumList>;
+export const GenaiVertexV1beta1GoogleSearchSearchTypesItemEnumList =
+  GenaiVertexV1beta1RetrievalRetrievalTypesItemEnumList as any as S.Schema<GenaiVertexV1beta1GoogleSearchSearchTypesItemEnumList>;
 
 /** A tool that can be used by the model to search Google. */
 export interface GenaiVertexV1beta1GoogleSearch {
@@ -10515,9 +10510,8 @@ export const GenaiVertexV1beta1InteractionResponseModalitiesItemEnum = S.String;
 export type GenaiVertexV1beta1InteractionResponseModalitiesItemEnumList = Array<
   GenaiVertexV1beta1InteractionResponseModalitiesItemEnum | (string & {})
 >;
-export const GenaiVertexV1beta1InteractionResponseModalitiesItemEnumList = /*@__PURE__*/ S.Array(
-  GenaiVertexV1beta1InteractionResponseModalitiesItemEnum,
-) as any as S.Schema<GenaiVertexV1beta1InteractionResponseModalitiesItemEnumList>;
+export const GenaiVertexV1beta1InteractionResponseModalitiesItemEnumList =
+  GenaiVertexV1beta1RetrievalRetrievalTypesItemEnumList as any as S.Schema<GenaiVertexV1beta1InteractionResponseModalitiesItemEnumList>;
 
 /** Response for InteractionService.CreateInteraction. */
 export interface GenaiVertexV1beta1Interaction {
@@ -13494,13 +13488,7 @@ export interface GoogleCloudAiplatformV1beta1CompactionConfigLlmSummarizationCon
   mode?: GoogleCloudAiplatformV1beta1CompactionConfigLlmSummarizationConfigModeEnum | (string & {});
 }
 export const GoogleCloudAiplatformV1beta1CompactionConfigLlmSummarizationConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      mode: S.optional(GoogleCloudAiplatformV1beta1CompactionConfigLlmSummarizationConfigModeEnum),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudAiplatformV1beta1CompactionConfigLlmSummarizationConfig",
-  }) as any as S.Schema<GoogleCloudAiplatformV1beta1CompactionConfigLlmSummarizationConfig>;
+  GoogleCloudAiplatformV1beta1CompactionConfigEventEditingConfig as any as S.Schema<GoogleCloudAiplatformV1beta1CompactionConfigLlmSummarizationConfig>;
 
 /** Configuration for session compaction. Compaction has two independent categories that may be enabled individually or together. When both are enabled they run as a stackable pipeline (deterministic event editing first, then summarization if the session is still above the target). At least one category must be enabled; a config with neither is rejected (enforced server-side). This message is standalone so it can be reused across surfaces (e.g. on the compact request today, and on session creation for a future reactive trigger). */
 export interface GoogleCloudAiplatformV1beta1CompactionConfig {
@@ -18172,9 +18160,7 @@ export type GoogleCloudAiplatformV1beta1MetricAggregationMetricsItemEnumList = A
   GoogleCloudAiplatformV1beta1MetricAggregationMetricsItemEnum | (string & {})
 >;
 export const GoogleCloudAiplatformV1beta1MetricAggregationMetricsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudAiplatformV1beta1MetricAggregationMetricsItemEnum,
-  ) as any as S.Schema<GoogleCloudAiplatformV1beta1MetricAggregationMetricsItemEnumList>;
+  GoogleCloudAiplatformV1beta1ToolComputerUseDisabledSafetyPoliciesItemEnumList as any as S.Schema<GoogleCloudAiplatformV1beta1MetricAggregationMetricsItemEnumList>;
 
 /** Spec for custom output format configuration. */
 export interface GoogleCloudAiplatformV1beta1CustomOutputFormatConfig {
@@ -26246,15 +26232,8 @@ export interface GoogleCloudAiplatformV1beta1A2aTaskStatus {
   /** Output only. The time at which the state was set. */
   timestamp?: string;
 }
-export const GoogleCloudAiplatformV1beta1A2aTaskStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: S.optional(GoogleCloudAiplatformV1beta1A2aTaskStatusStateEnum),
-    message: S.optional(GoogleCloudAiplatformV1beta1A2aTaskMessage),
-    timestamp: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1beta1A2aTaskStatus",
-}) as any as S.Schema<GoogleCloudAiplatformV1beta1A2aTaskStatus>;
+export const GoogleCloudAiplatformV1beta1A2aTaskStatus =
+  GoogleCloudAiplatformV1beta1A2aTaskStatusUpdate as any as S.Schema<GoogleCloudAiplatformV1beta1A2aTaskStatus>;
 
 export type GoogleCloudAiplatformV1beta1A2aTaskMessageList =
   Array<GoogleCloudAiplatformV1beta1A2aTaskMessage>;
@@ -28035,9 +28014,7 @@ export type GoogleCloudAiplatformV1beta1ModelExportFormatExportableContentsItemE
   GoogleCloudAiplatformV1beta1ModelExportFormatExportableContentsItemEnum | (string & {})
 >;
 export const GoogleCloudAiplatformV1beta1ModelExportFormatExportableContentsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudAiplatformV1beta1ModelExportFormatExportableContentsItemEnum,
-  ) as any as S.Schema<GoogleCloudAiplatformV1beta1ModelExportFormatExportableContentsItemEnumList>;
+  GoogleCloudAiplatformV1beta1ToolComputerUseDisabledSafetyPoliciesItemEnumList as any as S.Schema<GoogleCloudAiplatformV1beta1ModelExportFormatExportableContentsItemEnumList>;
 
 /** Represents export format supported by the Model. All formats export to Google Cloud Storage. */
 export interface GoogleCloudAiplatformV1beta1ModelExportFormat {
@@ -28187,9 +28164,7 @@ export type GoogleCloudAiplatformV1beta1ModelSupportedDeploymentResourcesTypesIt
   GoogleCloudAiplatformV1beta1ModelSupportedDeploymentResourcesTypesItemEnum | (string & {})
 >;
 export const GoogleCloudAiplatformV1beta1ModelSupportedDeploymentResourcesTypesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudAiplatformV1beta1ModelSupportedDeploymentResourcesTypesItemEnum,
-  ) as any as S.Schema<GoogleCloudAiplatformV1beta1ModelSupportedDeploymentResourcesTypesItemEnumList>;
+  GoogleCloudAiplatformV1beta1ToolComputerUseDisabledSafetyPoliciesItemEnumList as any as S.Schema<GoogleCloudAiplatformV1beta1ModelSupportedDeploymentResourcesTypesItemEnumList>;
 
 /** A trained machine learning Model. */
 export interface GoogleCloudAiplatformV1beta1Model {
@@ -29776,17 +29751,8 @@ export interface GoogleCloudAiplatformV1beta1DistillationHyperParameters {
   /** Optional. Specifies the learning rate for tuning. Mutually exclusive with `learning_rate_multiplier`. This feature is only available for open source models. */
   learningRate?: number;
 }
-export const GoogleCloudAiplatformV1beta1DistillationHyperParameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    batchSize: S.optional(S.String),
-    learningRateMultiplier: S.optional(S.Number),
-    adapterSize: S.optional(GoogleCloudAiplatformV1beta1DistillationHyperParametersAdapterSizeEnum),
-    epochCount: S.optional(S.String),
-    learningRate: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1beta1DistillationHyperParameters",
-}) as any as S.Schema<GoogleCloudAiplatformV1beta1DistillationHyperParameters>;
+export const GoogleCloudAiplatformV1beta1DistillationHyperParameters =
+  GoogleCloudAiplatformV1beta1SupervisedHyperParameters as any as S.Schema<GoogleCloudAiplatformV1beta1DistillationHyperParameters>;
 
 /** Tuning Spec for Distillation. */
 export interface GoogleCloudAiplatformV1beta1DistillationSpec {
@@ -47307,14 +47273,8 @@ export interface GoogleCloudAiplatformV1beta1FileStatus {
   /** Output only. RagFile state. */
   state?: GoogleCloudAiplatformV1beta1FileStatusStateEnum | (string & {});
 }
-export const GoogleCloudAiplatformV1beta1FileStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    errorStatus: S.optional(S.String),
-    state: S.optional(GoogleCloudAiplatformV1beta1FileStatusStateEnum),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1beta1FileStatus",
-}) as any as S.Schema<GoogleCloudAiplatformV1beta1FileStatus>;
+export const GoogleCloudAiplatformV1beta1FileStatus =
+  GoogleCloudAiplatformV1beta1CorpusStatus as any as S.Schema<GoogleCloudAiplatformV1beta1FileStatus>;
 
 export type GoogleCloudAiplatformV1beta1RagFileRagFileTypeEnum =
   | "RAG_FILE_TYPE_UNSPECIFIED"
@@ -64654,9 +64614,7 @@ export type GoogleCloudAiplatformV1beta1RetrieveMemoriesRequestMemoryTypesItemEn
   GoogleCloudAiplatformV1beta1RetrieveMemoriesRequestMemoryTypesItemEnum | (string & {})
 >;
 export const GoogleCloudAiplatformV1beta1RetrieveMemoriesRequestMemoryTypesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudAiplatformV1beta1RetrieveMemoriesRequestMemoryTypesItemEnum,
-  ) as any as S.Schema<GoogleCloudAiplatformV1beta1RetrieveMemoriesRequestMemoryTypesItemEnumList>;
+  GoogleCloudAiplatformV1beta1ToolComputerUseDisabledSafetyPoliciesItemEnumList as any as S.Schema<GoogleCloudAiplatformV1beta1RetrieveMemoriesRequestMemoryTypesItemEnumList>;
 
 /** Request message for MemoryBankService.RetrieveMemories. */
 export interface GoogleCloudAiplatformV1beta1RetrieveMemoriesRequest {

@@ -1190,9 +1190,8 @@ export const PossibleOperationsDirections = S.String;
 export type RecoveryPlanActionFailoverDirectionsList = Array<
   PossibleOperationsDirections | (string & {})
 >;
-export const RecoveryPlanActionFailoverDirectionsList = /*@__PURE__*/ S.Array(
-  PossibleOperationsDirections,
-) as any as S.Schema<RecoveryPlanActionFailoverDirectionsList>;
+export const RecoveryPlanActionFailoverDirectionsList =
+  RecoveryPlanActionFailoverTypesList as any as S.Schema<RecoveryPlanActionFailoverDirectionsList>;
 
 /** Recovery plan action details. */
 export interface RecoveryPlanAction {
@@ -1864,9 +1863,8 @@ export const MigrationItemOperation = S.String;
 
 /** The allowed operations on the migration item based on the current migration state of the item. */
 export type MigrationItemPropertiesAllowedOperationsList = Array<MigrationItemOperation>;
-export const MigrationItemPropertiesAllowedOperationsList = /*@__PURE__*/ S.Array(
-  MigrationItemOperation,
-) as any as S.Schema<MigrationItemPropertiesAllowedOperationsList>;
+export const MigrationItemPropertiesAllowedOperationsList =
+  RecoveryPlanActionFailoverTypesList as any as S.Schema<MigrationItemPropertiesAllowedOperationsList>;
 
 /** Current job details of the migration item. */
 export interface CurrentJobDetails {

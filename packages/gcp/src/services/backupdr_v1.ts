@@ -449,9 +449,8 @@ export const StandardScheduleMonthsItemEnum = S.String;
 export type StandardScheduleMonthsItemEnumList = Array<
   StandardScheduleMonthsItemEnum | (string & {})
 >;
-export const StandardScheduleMonthsItemEnumList = /*@__PURE__*/ S.Array(
-  StandardScheduleMonthsItemEnum,
-) as any as S.Schema<StandardScheduleMonthsItemEnumList>;
+export const StandardScheduleMonthsItemEnumList =
+  StandardScheduleDaysOfWeekItemEnumList as any as S.Schema<StandardScheduleMonthsItemEnumList>;
 
 export type IntegerList = Array<number>;
 export const IntegerList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IntegerList>;

@@ -879,9 +879,7 @@ export const QueryInsightsMode = S.String;
 export interface QueryInsights {
   Mode: QueryInsightsMode;
 }
-export const QueryInsights = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Mode: QueryInsightsMode }),
-).annotate({ identifier: "QueryInsights" }) as any as S.Schema<QueryInsights>;
+export const QueryInsights = ScheduledQueryInsights as any as S.Schema<QueryInsights>;
 export interface QueryRequest {
   QueryString: string | redacted.Redacted<string>;
   ClientToken?: string | redacted.Redacted<string>;

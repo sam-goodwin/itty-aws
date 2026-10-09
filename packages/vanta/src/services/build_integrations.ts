@@ -1253,15 +1253,7 @@ export interface GetWindowsUserComputerResponseResourcesItemBrowserExtensionsIte
   browser: GetWindowsUserComputerResponseResourcesItemBrowserExtensionsItemBrowser;
 }
 export const GetWindowsUserComputerResponseResourcesItemBrowserExtensionsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      extensionId: S.String,
-      name: S.String,
-      browser: GetWindowsUserComputerResponseResourcesItemBrowserExtensionsItemBrowser,
-    }),
-  ).annotate({
-    identifier: "GetWindowsUserComputerResponseResourcesItemBrowserExtensionsItem",
-  }) as any as S.Schema<GetWindowsUserComputerResponseResourcesItemBrowserExtensionsItem>;
+  GetMacosUserComputerResponseResourcesItemBrowserExtensionsItem as any as S.Schema<GetWindowsUserComputerResponseResourcesItemBrowserExtensionsItem>;
 
 /** A list of browser extensions on this device. Used to match against known password managers to demonstrate use. */
 export type GetWindowsUserComputerResponseResourcesItemBrowserExtensionsList =
@@ -1704,25 +1696,13 @@ export interface PutBackgroundCheckConnectorRequestResourcesItem {
   /** If complete, the date of completion of the background check. */
   completionDate?: string | null;
 }
-export const PutBackgroundCheckConnectorRequestResourcesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.String,
-    uniqueId: S.String,
-    externalUrl: S.String,
-    fullName: S.String,
-    email: S.String,
-    status: PutBackgroundCheckConnectorRequestResourcesItemStatus,
-    completionDate: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "PutBackgroundCheckConnectorRequestResourcesItem",
-}) as any as S.Schema<PutBackgroundCheckConnectorRequestResourcesItem>;
+export const PutBackgroundCheckConnectorRequestResourcesItem =
+  GetBackgroundCheckConnectorResponseResourcesItem as any as S.Schema<PutBackgroundCheckConnectorRequestResourcesItem>;
 
 export type PutBackgroundCheckConnectorRequestResourcesList =
   Array<PutBackgroundCheckConnectorRequestResourcesItem>;
-export const PutBackgroundCheckConnectorRequestResourcesList = /*@__PURE__*/ S.Array(
-  PutBackgroundCheckConnectorRequestResourcesItem,
-) as any as S.Schema<PutBackgroundCheckConnectorRequestResourcesList>;
+export const PutBackgroundCheckConnectorRequestResourcesList =
+  GetBackgroundCheckConnectorResponseResourcesList as any as S.Schema<PutBackgroundCheckConnectorRequestResourcesList>;
 
 export interface PutBackgroundCheckConnectorRequest {
   /** Vanta generated identifier for the given resource, and can be found on the developer console page. See the list of registered resources and their IDs on https://app.vanta.com/settings/developer-console/<app_id>?tab=resources */
@@ -1798,22 +1778,13 @@ export interface PutMacosUserComputerRequestResourcesItemBrowserExtensionsItem {
   browser: PutMacosUserComputerRequestResourcesItemBrowserExtensionsItemBrowser | (string & {});
 }
 export const PutMacosUserComputerRequestResourcesItemBrowserExtensionsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      extensionId: S.String,
-      name: S.String,
-      browser: PutMacosUserComputerRequestResourcesItemBrowserExtensionsItemBrowser,
-    }),
-  ).annotate({
-    identifier: "PutMacosUserComputerRequestResourcesItemBrowserExtensionsItem",
-  }) as any as S.Schema<PutMacosUserComputerRequestResourcesItemBrowserExtensionsItem>;
+  GetMacosUserComputerResponseResourcesItemBrowserExtensionsItem as any as S.Schema<PutMacosUserComputerRequestResourcesItemBrowserExtensionsItem>;
 
 /** A list of browser extensions on this device. Used to match against known password managers to demonstrate use. */
 export type PutMacosUserComputerRequestResourcesItemBrowserExtensionsList =
   Array<PutMacosUserComputerRequestResourcesItemBrowserExtensionsItem>;
-export const PutMacosUserComputerRequestResourcesItemBrowserExtensionsList = /*@__PURE__*/ S.Array(
-  PutMacosUserComputerRequestResourcesItemBrowserExtensionsItem,
-) as any as S.Schema<PutMacosUserComputerRequestResourcesItemBrowserExtensionsList>;
+export const PutMacosUserComputerRequestResourcesItemBrowserExtensionsList =
+  GetMacosUserComputerResponseResourcesItemBrowserExtensionsList as any as S.Schema<PutMacosUserComputerRequestResourcesItemBrowserExtensionsList>;
 
 export type PutMacosUserComputerRequestResourcesItemDrivesItem =
   GetMacosUserComputerResponseResourcesItemDrivesItem;
@@ -2212,9 +2183,8 @@ export const PutUserAccountRequestResourcesItemMfaMethodsItem = S.String;
 export type PutUserAccountRequestResourcesItemMfaMethodsList = Array<
   PutUserAccountRequestResourcesItemMfaMethodsItem | (string & {})
 >;
-export const PutUserAccountRequestResourcesItemMfaMethodsList = /*@__PURE__*/ S.Array(
-  PutUserAccountRequestResourcesItemMfaMethodsItem,
-) as any as S.Schema<PutUserAccountRequestResourcesItemMfaMethodsList>;
+export const PutUserAccountRequestResourcesItemMfaMethodsList =
+  GetUserAccountResponseResourcesItemMfaMethodsList as any as S.Schema<PutUserAccountRequestResourcesItemMfaMethodsList>;
 
 /** How the user logs into the system. This is useful for us to validate security properties, like ensuring MFA is enabled if the user logs in with a password. */
 export type PutUserAccountRequestResourcesItemAuthMethod =
@@ -2329,9 +2299,7 @@ export type PutUserSecurityTrainingStatusRequestResourcesItemFrameworksFulfilled
   PutUserSecurityTrainingStatusRequestResourcesItemFrameworksFulfilledItem | (string & {})
 >;
 export const PutUserSecurityTrainingStatusRequestResourcesItemFrameworksFulfilledList =
-  /*@__PURE__*/ S.Array(
-    PutUserSecurityTrainingStatusRequestResourcesItemFrameworksFulfilledItem,
-  ) as any as S.Schema<PutUserSecurityTrainingStatusRequestResourcesItemFrameworksFulfilledList>;
+  GetUserSecurityTrainingStatusResponseResourcesItemFrameworksFulfilledList as any as S.Schema<PutUserSecurityTrainingStatusRequestResourcesItemFrameworksFulfilledList>;
 
 /** Whether the training has been fully completed. */
 export type PutUserSecurityTrainingStatusRequestResourcesItemStatus = "INCOMPLETE" | "COMPLETE";
@@ -2365,31 +2333,13 @@ export interface PutUserSecurityTrainingStatusRequestResourcesItem {
   /** The time at which this training course was completed by the user. */
   trainingCompletedTimestamp?: string | null;
 }
-export const PutUserSecurityTrainingStatusRequestResourcesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.String,
-    uniqueId: S.String,
-    externalUrl: S.String,
-    trainingId: S.String,
-    trainingName: S.String,
-    frameworksFulfilled: PutUserSecurityTrainingStatusRequestResourcesItemFrameworksFulfilledList,
-    traineeFullName: S.String,
-    traineeAccountName: S.String,
-    traineeEmail: S.String,
-    status: PutUserSecurityTrainingStatusRequestResourcesItemStatus,
-    trainingCreatedTimestamp: S.String,
-    trainingDueTimestamp: S.String,
-    trainingCompletedTimestamp: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "PutUserSecurityTrainingStatusRequestResourcesItem",
-}) as any as S.Schema<PutUserSecurityTrainingStatusRequestResourcesItem>;
+export const PutUserSecurityTrainingStatusRequestResourcesItem =
+  GetUserSecurityTrainingStatusResponseResourcesItem as any as S.Schema<PutUserSecurityTrainingStatusRequestResourcesItem>;
 
 export type PutUserSecurityTrainingStatusRequestResourcesList =
   Array<PutUserSecurityTrainingStatusRequestResourcesItem>;
-export const PutUserSecurityTrainingStatusRequestResourcesList = /*@__PURE__*/ S.Array(
-  PutUserSecurityTrainingStatusRequestResourcesItem,
-) as any as S.Schema<PutUserSecurityTrainingStatusRequestResourcesList>;
+export const PutUserSecurityTrainingStatusRequestResourcesList =
+  GetUserSecurityTrainingStatusResponseResourcesList as any as S.Schema<PutUserSecurityTrainingStatusRequestResourcesList>;
 
 export interface PutUserSecurityTrainingStatusRequest {
   /** Vanta generated identifier for the given resource, and can be found on the developer console page. See the list of registered resources and their IDs on https://app.vanta.com/settings/developer-console/<app_id>?tab=resources */
@@ -2441,25 +2391,13 @@ export interface PutVulnerableComponentRequestResourcesItem {
   /** The type of the system component in which a vulnerability has been detected (eg: container, source code repository). */
   targetType: PutVulnerableComponentRequestResourcesItemTargetType | (string & {});
 }
-export const PutVulnerableComponentRequestResourcesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.String,
-    uniqueId: S.String,
-    externalUrl: S.String,
-    collectedTimestamp: S.String,
-    name: S.String,
-    description: S.String,
-    targetType: PutVulnerableComponentRequestResourcesItemTargetType,
-  }),
-).annotate({
-  identifier: "PutVulnerableComponentRequestResourcesItem",
-}) as any as S.Schema<PutVulnerableComponentRequestResourcesItem>;
+export const PutVulnerableComponentRequestResourcesItem =
+  GetVulnerableComponentResponseResourcesItem as any as S.Schema<PutVulnerableComponentRequestResourcesItem>;
 
 export type PutVulnerableComponentRequestResourcesList =
   Array<PutVulnerableComponentRequestResourcesItem>;
-export const PutVulnerableComponentRequestResourcesList = /*@__PURE__*/ S.Array(
-  PutVulnerableComponentRequestResourcesItem,
-) as any as S.Schema<PutVulnerableComponentRequestResourcesList>;
+export const PutVulnerableComponentRequestResourcesList =
+  GetVulnerableComponentResponseResourcesList as any as S.Schema<PutVulnerableComponentRequestResourcesList>;
 
 export interface PutVulnerableComponentRequest {
   /** Vanta generated identifier for the given resource, and can be found on the developer console page. See the list of registered resources and their IDs on https://app.vanta.com/settings/developer-console/<app_id>?tab=resources */
@@ -2510,23 +2448,13 @@ export interface PutWindowsUserComputerRequestResourcesItemBrowserExtensionsItem
   browser: PutWindowsUserComputerRequestResourcesItemBrowserExtensionsItemBrowser | (string & {});
 }
 export const PutWindowsUserComputerRequestResourcesItemBrowserExtensionsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      extensionId: S.String,
-      name: S.String,
-      browser: PutWindowsUserComputerRequestResourcesItemBrowserExtensionsItemBrowser,
-    }),
-  ).annotate({
-    identifier: "PutWindowsUserComputerRequestResourcesItemBrowserExtensionsItem",
-  }) as any as S.Schema<PutWindowsUserComputerRequestResourcesItemBrowserExtensionsItem>;
+  GetMacosUserComputerResponseResourcesItemBrowserExtensionsItem as any as S.Schema<PutWindowsUserComputerRequestResourcesItemBrowserExtensionsItem>;
 
 /** A list of browser extensions on this device. Used to match against known password managers to demonstrate use. */
 export type PutWindowsUserComputerRequestResourcesItemBrowserExtensionsList =
   Array<PutWindowsUserComputerRequestResourcesItemBrowserExtensionsItem>;
 export const PutWindowsUserComputerRequestResourcesItemBrowserExtensionsList =
-  /*@__PURE__*/ S.Array(
-    PutWindowsUserComputerRequestResourcesItemBrowserExtensionsItem,
-  ) as any as S.Schema<PutWindowsUserComputerRequestResourcesItemBrowserExtensionsList>;
+  GetWindowsUserComputerResponseResourcesItemBrowserExtensionsList as any as S.Schema<PutWindowsUserComputerRequestResourcesItemBrowserExtensionsList>;
 
 export type PutWindowsUserComputerRequestResourcesItemDrivesItem =
   GetWindowsUserComputerResponseResourcesItemDrivesItem;
@@ -2619,25 +2547,13 @@ export interface PutWindowsUserComputerRequestResourcesItemWindowsSecurityProduc
   signaturesUpToDate: boolean;
 }
 export const PutWindowsUserComputerRequestResourcesItemWindowsSecurityProductsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      category: PutWindowsUserComputerRequestResourcesItemWindowsSecurityProductsItemCategory,
-      state: PutWindowsUserComputerRequestResourcesItemWindowsSecurityProductsItemState,
-      stateTimestamp: S.String,
-      signaturesUpToDate: S.Boolean,
-    }),
-  ).annotate({
-    identifier: "PutWindowsUserComputerRequestResourcesItemWindowsSecurityProductsItem",
-  }) as any as S.Schema<PutWindowsUserComputerRequestResourcesItemWindowsSecurityProductsItem>;
+  GetWindowsUserComputerResponseResourcesItemWindowsSecurityProductsItem as any as S.Schema<PutWindowsUserComputerRequestResourcesItemWindowsSecurityProductsItem>;
 
 /** A list of services that are monitored by Windows Security Center (WSC). */
 export type PutWindowsUserComputerRequestResourcesItemWindowsSecurityProductsList =
   Array<PutWindowsUserComputerRequestResourcesItemWindowsSecurityProductsItem>;
 export const PutWindowsUserComputerRequestResourcesItemWindowsSecurityProductsList =
-  /*@__PURE__*/ S.Array(
-    PutWindowsUserComputerRequestResourcesItemWindowsSecurityProductsItem,
-  ) as any as S.Schema<PutWindowsUserComputerRequestResourcesItemWindowsSecurityProductsList>;
+  GetWindowsUserComputerResponseResourcesItemWindowsSecurityProductsList as any as S.Schema<PutWindowsUserComputerRequestResourcesItemWindowsSecurityProductsList>;
 
 /** The health of the monitored Firewall. */
 export type PutWindowsUserComputerRequestResourcesItemWindowsSecurityCenterFirewall =
@@ -2721,21 +2637,7 @@ export interface PutWindowsUserComputerRequestResourcesItemWindowsSecurityCenter
     | (string & {});
 }
 export const PutWindowsUserComputerRequestResourcesItemWindowsSecurityCenter =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      firewall: PutWindowsUserComputerRequestResourcesItemWindowsSecurityCenterFirewall,
-      autoupdate: PutWindowsUserComputerRequestResourcesItemWindowsSecurityCenterAutoupdate,
-      antivirus: PutWindowsUserComputerRequestResourcesItemWindowsSecurityCenterAntivirus,
-      internetSetting:
-        PutWindowsUserComputerRequestResourcesItemWindowsSecurityCenterInternetSetting,
-      userAccountControl:
-        PutWindowsUserComputerRequestResourcesItemWindowsSecurityCenterUserAccountControl,
-      windowsSecurityCenterService:
-        PutWindowsUserComputerRequestResourcesItemWindowsSecurityCenterWindowsSecurityCenterService,
-    }),
-  ).annotate({
-    identifier: "PutWindowsUserComputerRequestResourcesItemWindowsSecurityCenter",
-  }) as any as S.Schema<PutWindowsUserComputerRequestResourcesItemWindowsSecurityCenter>;
+  GetWindowsUserComputerResponseResourcesItemWindowsSecurityCenter as any as S.Schema<PutWindowsUserComputerRequestResourcesItemWindowsSecurityCenter>;
 
 export interface PutWindowsUserComputerRequestResourcesItem {
   /** A human readable label for this resource - will be shown as-is in inventory page. */

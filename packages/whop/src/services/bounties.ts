@@ -784,9 +784,8 @@ export const BountyListItemAcceptedDeliverableTypesItem = S.String;
 
 export type BountyListItemAcceptedDeliverableTypesList =
   Array<BountyListItemAcceptedDeliverableTypesItem>;
-export const BountyListItemAcceptedDeliverableTypesList = /*@__PURE__*/ S.Array(
-  BountyListItemAcceptedDeliverableTypesItem,
-) as any as S.Schema<BountyListItemAcceptedDeliverableTypesList>;
+export const BountyListItemAcceptedDeliverableTypesList =
+  BountyAcceptedDeliverableTypesList as any as S.Schema<BountyListItemAcceptedDeliverableTypesList>;
 
 export type BountyListItemAllowedCountryCodesList = Array<string>;
 export const BountyListItemAllowedCountryCodesList =

@@ -1216,9 +1216,8 @@ export type RegistrationIssuesItemEnum =
 export const RegistrationIssuesItemEnum = S.String;
 
 export type RegistrationIssuesItemEnumList = Array<RegistrationIssuesItemEnum | (string & {})>;
-export const RegistrationIssuesItemEnumList = /*@__PURE__*/ S.Array(
-  RegistrationIssuesItemEnum,
-) as any as S.Schema<RegistrationIssuesItemEnumList>;
+export const RegistrationIssuesItemEnumList =
+  ConfigureContactSettingsRequestContactNoticesItemEnumList as any as S.Schema<RegistrationIssuesItemEnumList>;
 
 export type RegistrationDomainPropertiesItemEnum =
   | "DOMAIN_PROPERTY_UNSPECIFIED"
@@ -1229,9 +1228,8 @@ export const RegistrationDomainPropertiesItemEnum = S.String;
 export type RegistrationDomainPropertiesItemEnumList = Array<
   RegistrationDomainPropertiesItemEnum | (string & {})
 >;
-export const RegistrationDomainPropertiesItemEnumList = /*@__PURE__*/ S.Array(
-  RegistrationDomainPropertiesItemEnum,
-) as any as S.Schema<RegistrationDomainPropertiesItemEnumList>;
+export const RegistrationDomainPropertiesItemEnumList =
+  ConfigureContactSettingsRequestContactNoticesItemEnumList as any as S.Schema<RegistrationDomainPropertiesItemEnumList>;
 
 export type RegistrationSupportedPrivacyItemEnum =
   | "CONTACT_PRIVACY_UNSPECIFIED"
@@ -1243,9 +1241,8 @@ export const RegistrationSupportedPrivacyItemEnum = S.String;
 export type RegistrationSupportedPrivacyItemEnumList = Array<
   RegistrationSupportedPrivacyItemEnum | (string & {})
 >;
-export const RegistrationSupportedPrivacyItemEnumList = /*@__PURE__*/ S.Array(
-  RegistrationSupportedPrivacyItemEnum,
-) as any as S.Schema<RegistrationSupportedPrivacyItemEnumList>;
+export const RegistrationSupportedPrivacyItemEnumList =
+  ConfigureContactSettingsRequestContactNoticesItemEnumList as any as S.Schema<RegistrationSupportedPrivacyItemEnumList>;
 
 export type RegistrationTransferFailureReasonEnum =
   | "TRANSFER_FAILURE_REASON_UNSPECIFIED"
@@ -1368,9 +1365,8 @@ export const RegisterParametersSupportedPrivacyItemEnum = S.String;
 
 export type RegisterParametersSupportedPrivacyItemEnumList =
   Array<RegisterParametersSupportedPrivacyItemEnum>;
-export const RegisterParametersSupportedPrivacyItemEnumList = /*@__PURE__*/ S.Array(
-  RegisterParametersSupportedPrivacyItemEnum,
-) as any as S.Schema<RegisterParametersSupportedPrivacyItemEnumList>;
+export const RegisterParametersSupportedPrivacyItemEnumList =
+  ConfigureContactSettingsRequestContactNoticesItemEnumList as any as S.Schema<RegisterParametersSupportedPrivacyItemEnumList>;
 
 export type RegisterParametersDomainNoticesItemEnum =
   | "DOMAIN_NOTICE_UNSPECIFIED"
@@ -1379,9 +1375,8 @@ export const RegisterParametersDomainNoticesItemEnum = S.String;
 
 export type RegisterParametersDomainNoticesItemEnumList =
   Array<RegisterParametersDomainNoticesItemEnum>;
-export const RegisterParametersDomainNoticesItemEnumList = /*@__PURE__*/ S.Array(
-  RegisterParametersDomainNoticesItemEnum,
-) as any as S.Schema<RegisterParametersDomainNoticesItemEnumList>;
+export const RegisterParametersDomainNoticesItemEnumList =
+  ConfigureContactSettingsRequestContactNoticesItemEnumList as any as S.Schema<RegisterParametersDomainNoticesItemEnumList>;
 
 export type RegisterParametersAvailabilityEnum =
   | "AVAILABILITY_UNSPECIFIED"
@@ -1458,9 +1453,8 @@ export const TransferParametersSupportedPrivacyItemEnum = S.String;
 
 export type TransferParametersSupportedPrivacyItemEnumList =
   Array<TransferParametersSupportedPrivacyItemEnum>;
-export const TransferParametersSupportedPrivacyItemEnumList = /*@__PURE__*/ S.Array(
-  TransferParametersSupportedPrivacyItemEnum,
-) as any as S.Schema<TransferParametersSupportedPrivacyItemEnumList>;
+export const TransferParametersSupportedPrivacyItemEnumList =
+  ConfigureContactSettingsRequestContactNoticesItemEnumList as any as S.Schema<TransferParametersSupportedPrivacyItemEnumList>;
 
 export type TransferParametersTransferLockStateEnum =
   | "TRANSFER_LOCK_STATE_UNSPECIFIED"
@@ -1763,9 +1757,8 @@ export const RegisterDomainRequestContactNoticesItemEnum = S.String;
 export type RegisterDomainRequestContactNoticesItemEnumList = Array<
   RegisterDomainRequestContactNoticesItemEnum | (string & {})
 >;
-export const RegisterDomainRequestContactNoticesItemEnumList = /*@__PURE__*/ S.Array(
-  RegisterDomainRequestContactNoticesItemEnum,
-) as any as S.Schema<RegisterDomainRequestContactNoticesItemEnumList>;
+export const RegisterDomainRequestContactNoticesItemEnumList =
+  ConfigureContactSettingsRequestContactNoticesItemEnumList as any as S.Schema<RegisterDomainRequestContactNoticesItemEnumList>;
 
 export type RegisterDomainRequestDomainNoticesItemEnum =
   | "DOMAIN_NOTICE_UNSPECIFIED"
@@ -1775,9 +1768,8 @@ export const RegisterDomainRequestDomainNoticesItemEnum = S.String;
 export type RegisterDomainRequestDomainNoticesItemEnumList = Array<
   RegisterDomainRequestDomainNoticesItemEnum | (string & {})
 >;
-export const RegisterDomainRequestDomainNoticesItemEnumList = /*@__PURE__*/ S.Array(
-  RegisterDomainRequestDomainNoticesItemEnum,
-) as any as S.Schema<RegisterDomainRequestDomainNoticesItemEnumList>;
+export const RegisterDomainRequestDomainNoticesItemEnumList =
+  ConfigureContactSettingsRequestContactNoticesItemEnumList as any as S.Schema<RegisterDomainRequestDomainNoticesItemEnumList>;
 
 /** Request for the `RegisterDomain` method. */
 export interface RegisterDomainRequest {
@@ -2006,9 +1998,8 @@ export const TransferDomainRequestContactNoticesItemEnum = S.String;
 export type TransferDomainRequestContactNoticesItemEnumList = Array<
   TransferDomainRequestContactNoticesItemEnum | (string & {})
 >;
-export const TransferDomainRequestContactNoticesItemEnumList = /*@__PURE__*/ S.Array(
-  TransferDomainRequestContactNoticesItemEnum,
-) as any as S.Schema<TransferDomainRequestContactNoticesItemEnumList>;
+export const TransferDomainRequestContactNoticesItemEnumList =
+  ConfigureContactSettingsRequestContactNoticesItemEnumList as any as S.Schema<TransferDomainRequestContactNoticesItemEnumList>;
 
 /** Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations). Request for the `TransferDomain` method. */
 export interface TransferDomainRequest {

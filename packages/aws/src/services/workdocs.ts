@@ -1287,10 +1287,8 @@ export const DocumentSourceType = S.String;
 export type DocumentSourceUrlMap = {
   [key in DocumentSourceType]?: string | redacted.Redacted<string>;
 };
-export const DocumentSourceUrlMap = /*@__PURE__*/ S.Record(
-  DocumentSourceType,
-  /*@__PURE__*/ SensitiveString.pipe(S.optional),
-);
+export const DocumentSourceUrlMap =
+  DocumentThumbnailUrlMap as any as S.Schema<DocumentSourceUrlMap>;
 export interface DocumentVersionMetadata {
   Id?: string;
   Name?: string | redacted.Redacted<string>;
@@ -1988,7 +1986,8 @@ export type AdditionalResponseFieldType = "WEBURL" | (string & {});
 export const AdditionalResponseFieldType = S.String;
 
 export type AdditionalResponseFieldsList = AdditionalResponseFieldType[];
-export const AdditionalResponseFieldsList = /*@__PURE__*/ S.Array(AdditionalResponseFieldType);
+export const AdditionalResponseFieldsList =
+  SearchQueryScopeTypeList as any as S.Schema<AdditionalResponseFieldsList>;
 export type LanguageCodeType =
   | "AR"
   | "BG"
@@ -2025,7 +2024,7 @@ export type LanguageCodeType =
 export const LanguageCodeType = S.String;
 
 export type TextLocaleTypeList = LanguageCodeType[];
-export const TextLocaleTypeList = /*@__PURE__*/ S.Array(LanguageCodeType);
+export const TextLocaleTypeList = SearchQueryScopeTypeList as any as S.Schema<TextLocaleTypeList>;
 export type ContentCategoryType =
   | "IMAGE"
   | "DOCUMENT"
@@ -2040,7 +2039,8 @@ export type ContentCategoryType =
 export const ContentCategoryType = S.String;
 
 export type SearchContentCategoryTypeList = ContentCategoryType[];
-export const SearchContentCategoryTypeList = /*@__PURE__*/ S.Array(ContentCategoryType);
+export const SearchContentCategoryTypeList =
+  SearchQueryScopeTypeList as any as S.Schema<SearchContentCategoryTypeList>;
 export type SearchResourceType =
   | "FOLDER"
   | "DOCUMENT"
@@ -2050,7 +2050,8 @@ export type SearchResourceType =
 export const SearchResourceType = S.String;
 
 export type SearchResourceTypeList = SearchResourceType[];
-export const SearchResourceTypeList = /*@__PURE__*/ S.Array(SearchResourceType);
+export const SearchResourceTypeList =
+  SearchQueryScopeTypeList as any as S.Schema<SearchResourceTypeList>;
 export type SearchLabel = string;
 export type SearchLabelList = string[];
 export const SearchLabelList = SharedLabels as any as S.Schema<SearchLabelList>;
@@ -2058,7 +2059,8 @@ export type PrincipalRoleType = "VIEWER" | "CONTRIBUTOR" | "OWNER" | "COOWNER" |
 export const PrincipalRoleType = S.String;
 
 export type SearchPrincipalRoleList = PrincipalRoleType[];
-export const SearchPrincipalRoleList = /*@__PURE__*/ S.Array(PrincipalRoleType);
+export const SearchPrincipalRoleList =
+  SearchQueryScopeTypeList as any as S.Schema<SearchPrincipalRoleList>;
 export interface SearchPrincipalType {
   Id: string;
   Roles?: PrincipalRoleType[];
@@ -2075,7 +2077,8 @@ export type SearchCollectionType = "OWNED" | "SHARED_WITH_ME" | (string & {});
 export const SearchCollectionType = S.String;
 
 export type SearchCollectionTypeList = SearchCollectionType[];
-export const SearchCollectionTypeList = /*@__PURE__*/ S.Array(SearchCollectionType);
+export const SearchCollectionTypeList =
+  SearchQueryScopeTypeList as any as S.Schema<SearchCollectionTypeList>;
 export type LongType = number;
 export interface LongRangeType {
   StartValue?: number;

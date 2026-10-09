@@ -828,23 +828,14 @@ export interface TargetTypeLabelSelectorTargetsItemHealthStatusItem {
   /** HTTP status code returned by the target during the last health check. Only present when `status` is `unhealthy` and `detail` is `unexpected_http_status`. */
   http_status_code?: number;
 }
-export const TargetTypeLabelSelectorTargetsItemHealthStatusItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    listen_port: S.Number,
-    status: TargetTypeLabelSelectorTargetsItemHealthStatusItemStatus,
-    detail: S.optional(TargetTypeLabelSelectorTargetsItemHealthStatusItemDetail),
-    http_status_code: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "TargetTypeLabelSelectorTargetsItemHealthStatusItem",
-}) as any as S.Schema<TargetTypeLabelSelectorTargetsItemHealthStatusItem>;
+export const TargetTypeLabelSelectorTargetsItemHealthStatusItem =
+  TargetTypeServerHealthStatusItem as any as S.Schema<TargetTypeLabelSelectorTargetsItemHealthStatusItem>;
 
 /** List of health statuses of the services on this target. Only present for target types "server" and "ip". */
 export type TargetTypeLabelSelectorTargetsItemHealthStatusList =
   Array<TargetTypeLabelSelectorTargetsItemHealthStatusItem>;
-export const TargetTypeLabelSelectorTargetsItemHealthStatusList = /*@__PURE__*/ S.Array(
-  TargetTypeLabelSelectorTargetsItemHealthStatusItem,
-) as any as S.Schema<TargetTypeLabelSelectorTargetsItemHealthStatusList>;
+export const TargetTypeLabelSelectorTargetsItemHealthStatusList =
+  TargetTypeServerHealthStatusList as any as S.Schema<TargetTypeLabelSelectorTargetsItemHealthStatusList>;
 
 export interface TargetTypeLabelSelectorTargetsItem {
   /** Type of the resource. Here always "server". */
@@ -921,22 +912,13 @@ export interface TargetTypeIPHealthStatusItem {
   /** HTTP status code returned by the target during the last health check. Only present when `status` is `unhealthy` and `detail` is `unexpected_http_status`. */
   http_status_code?: number;
 }
-export const TargetTypeIPHealthStatusItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    listen_port: S.Number,
-    status: TargetTypeIPHealthStatusItemStatus,
-    detail: S.optional(TargetTypeIPHealthStatusItemDetail),
-    http_status_code: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "TargetTypeIPHealthStatusItem",
-}) as any as S.Schema<TargetTypeIPHealthStatusItem>;
+export const TargetTypeIPHealthStatusItem =
+  TargetTypeServerHealthStatusItem as any as S.Schema<TargetTypeIPHealthStatusItem>;
 
 /** List of health statuses of the services on this target. Only present for target types "server" and "ip". */
 export type TargetTypeIPHealthStatusList = Array<TargetTypeIPHealthStatusItem>;
-export const TargetTypeIPHealthStatusList = /*@__PURE__*/ S.Array(
-  TargetTypeIPHealthStatusItem,
-) as any as S.Schema<TargetTypeIPHealthStatusList>;
+export const TargetTypeIPHealthStatusList =
+  TargetTypeServerHealthStatusList as any as S.Schema<TargetTypeIPHealthStatusList>;
 
 export interface TargetTypeIP {
   /** Type of the resource. */
@@ -979,13 +961,8 @@ export interface CreateLoadBalancerResponseLoadBalancerAlgorithm {
   /** Type of the algorithm. */
   type: CreateLoadBalancerResponseLoadBalancerAlgorithmType;
 }
-export const CreateLoadBalancerResponseLoadBalancerAlgorithm = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: CreateLoadBalancerResponseLoadBalancerAlgorithmType,
-  }),
-).annotate({
-  identifier: "CreateLoadBalancerResponseLoadBalancerAlgorithm",
-}) as any as S.Schema<CreateLoadBalancerResponseLoadBalancerAlgorithm>;
+export const CreateLoadBalancerResponseLoadBalancerAlgorithm =
+  CreateLoadBalancerRequestAlgorithm as any as S.Schema<CreateLoadBalancerResponseLoadBalancerAlgorithm>;
 
 export interface CreateLoadBalancerResponseLoadBalancer {
   /** ID of the [Load Balancer](#tag/load-balancers). */
@@ -1311,13 +1288,8 @@ export interface GetLoadBalancerResponseLoadBalancerAlgorithm {
   /** Type of the algorithm. */
   type: GetLoadBalancerResponseLoadBalancerAlgorithmType;
 }
-export const GetLoadBalancerResponseLoadBalancerAlgorithm = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: GetLoadBalancerResponseLoadBalancerAlgorithmType,
-  }),
-).annotate({
-  identifier: "GetLoadBalancerResponseLoadBalancerAlgorithm",
-}) as any as S.Schema<GetLoadBalancerResponseLoadBalancerAlgorithm>;
+export const GetLoadBalancerResponseLoadBalancerAlgorithm =
+  CreateLoadBalancerRequestAlgorithm as any as S.Schema<GetLoadBalancerResponseLoadBalancerAlgorithm>;
 
 export interface GetLoadBalancerResponseLoadBalancer {
   /** ID of the [Load Balancer](#tag/load-balancers). */
@@ -1499,9 +1471,8 @@ export const ListLoadBalancersRequestSortItem = S.String;
 export type ListLoadBalancersRequestSortList = Array<
   ListLoadBalancersRequestSortItem | (string & {})
 >;
-export const ListLoadBalancersRequestSortList = /*@__PURE__*/ S.Array(
-  ListLoadBalancersRequestSortItem,
-) as any as S.Schema<ListLoadBalancersRequestSortList>;
+export const ListLoadBalancersRequestSortList =
+  GetLoadBalancerMetricsRequestTypeList as any as S.Schema<ListLoadBalancersRequestSortList>;
 
 export interface ListLoadBalancersRequest {
   /** Sort resources by field and direction. May be used multiple times. For more information, see "[Sorting](#description/sorting)". */
@@ -1686,13 +1657,8 @@ export interface ListLoadBalancersResponseLoadBalancersItemAlgorithm {
   /** Type of the algorithm. */
   type: ListLoadBalancersResponseLoadBalancersItemAlgorithmType;
 }
-export const ListLoadBalancersResponseLoadBalancersItemAlgorithm = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ListLoadBalancersResponseLoadBalancersItemAlgorithmType,
-  }),
-).annotate({
-  identifier: "ListLoadBalancersResponseLoadBalancersItemAlgorithm",
-}) as any as S.Schema<ListLoadBalancersResponseLoadBalancersItemAlgorithm>;
+export const ListLoadBalancersResponseLoadBalancersItemAlgorithm =
+  CreateLoadBalancerRequestAlgorithm as any as S.Schema<ListLoadBalancersResponseLoadBalancersItemAlgorithm>;
 
 export interface ListLoadBalancersResponseLoadBalancersItem {
   /** ID of the [Load Balancer](#tag/load-balancers). */
@@ -1972,13 +1938,8 @@ export interface UpdateLoadBalancerResponseLoadBalancerAlgorithm {
   /** Type of the algorithm. */
   type: UpdateLoadBalancerResponseLoadBalancerAlgorithmType;
 }
-export const UpdateLoadBalancerResponseLoadBalancerAlgorithm = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: UpdateLoadBalancerResponseLoadBalancerAlgorithmType,
-  }),
-).annotate({
-  identifier: "UpdateLoadBalancerResponseLoadBalancerAlgorithm",
-}) as any as S.Schema<UpdateLoadBalancerResponseLoadBalancerAlgorithm>;
+export const UpdateLoadBalancerResponseLoadBalancerAlgorithm =
+  CreateLoadBalancerRequestAlgorithm as any as S.Schema<UpdateLoadBalancerResponseLoadBalancerAlgorithm>;
 
 export interface UpdateLoadBalancerResponseLoadBalancer {
   /** ID of the [Load Balancer](#tag/load-balancers). */

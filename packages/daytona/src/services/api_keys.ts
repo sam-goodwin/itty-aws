@@ -85,9 +85,8 @@ export const ApiKeyResponsePermissionsItem = S.String;
 
 /** The list of organization resource permissions assigned to the API key */
 export type ApiKeyResponsePermissionsList = Array<ApiKeyResponsePermissionsItem>;
-export const ApiKeyResponsePermissionsList = /*@__PURE__*/ S.Array(
-  ApiKeyResponsePermissionsItem,
-) as any as S.Schema<ApiKeyResponsePermissionsList>;
+export const ApiKeyResponsePermissionsList =
+  CreateApiKeyRequestPermissionsList as any as S.Schema<ApiKeyResponsePermissionsList>;
 
 export interface ApiKeyResponse {
   /** The name of the API key */
@@ -186,9 +185,8 @@ export const ApiKeyListPermissionsItem = S.String;
 
 /** The list of organization resource permissions assigned to the API key */
 export type ApiKeyListPermissionsList = Array<ApiKeyListPermissionsItem>;
-export const ApiKeyListPermissionsList = /*@__PURE__*/ S.Array(
-  ApiKeyListPermissionsItem,
-) as any as S.Schema<ApiKeyListPermissionsList>;
+export const ApiKeyListPermissionsList =
+  CreateApiKeyRequestPermissionsList as any as S.Schema<ApiKeyListPermissionsList>;
 
 export interface ApiKeyList {
   /** The name of the API key */

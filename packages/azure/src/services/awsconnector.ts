@@ -409,9 +409,8 @@ export const KeyUsageName = S.String;
 
 /** <p>A list of Key Usage X.509 v3 extension objects. Each object is a string value that identifies the purpose of the public key contained in the certificate. Possible extension values include DIGITAL_SIGNATURE, KEY_ENCHIPHERMENT, NON_REPUDIATION, and more.</p> */
 export type AwsAcmCertificateSummaryPropertiesKeyUsagesList = Array<KeyUsageName | (string & {})>;
-export const AwsAcmCertificateSummaryPropertiesKeyUsagesList = /*@__PURE__*/ S.Array(
-  KeyUsageName,
-) as any as S.Schema<AwsAcmCertificateSummaryPropertiesKeyUsagesList>;
+export const AwsAcmCertificateSummaryPropertiesKeyUsagesList =
+  AwsAcmCertificateSummaryPropertiesExtendedKeyUsagesList as any as S.Schema<AwsAcmCertificateSummaryPropertiesKeyUsagesList>;
 
 /** RenewalEligibility enum */
 export type RenewalEligibility = "ELIGIBLE" | "INELIGIBLE";
@@ -446,13 +445,8 @@ export interface CertificateStatusEnumValue {
   /** Property value */
   value?: CertificateStatus | (string & {});
 }
-export const CertificateStatusEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(CertificateStatus),
-  }),
-).annotate({
-  identifier: "CertificateStatusEnumValue",
-}) as any as S.Schema<CertificateStatusEnumValue>;
+export const CertificateStatusEnumValue =
+  RenewalEligibilityEnumValue as any as S.Schema<CertificateStatusEnumValue>;
 
 /** <p>One or more domain names (subject alternative names) included in the certificate. This list contains the domain names that are bound to the public key that is contained in the certificate. The subject alternative names include the canonical domain name (CN) of the certificate and additional domain names that can be used to connect to the website. </p> <p>When called by <a href='https://docs.aws.amazon.com/acm/latestAPIReference/API_ListCertificates.html'>ListCertificates</a>, this parameter will only return the first 100 subject alternative names included in the certificate. To display the full list of subject alternative names, use <a href='https://docs.aws.amazon.com/acm/latestAPIReference/API_DescribeCertificate.html'>DescribeCertificate</a>.</p> */
 export type AwsAcmCertificateSummaryPropertiesSubjectAlternativeNameSummariesList = Array<string>;
@@ -470,11 +464,8 @@ export interface CertificateTypeEnumValue {
   /** Property value */
   value?: CertificateType | (string & {});
 }
-export const CertificateTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(CertificateType),
-  }),
-).annotate({ identifier: "CertificateTypeEnumValue" }) as any as S.Schema<CertificateTypeEnumValue>;
+export const CertificateTypeEnumValue =
+  KeyAlgorithmEnumValue as any as S.Schema<CertificateTypeEnumValue>;
 
 /** Definition of awsAcmCertificateSummary */
 export interface AwsAcmCertificateSummaryProperties {
@@ -1315,13 +1306,8 @@ export interface AuthenticationTypeEnumValue {
   /** Property value */
   value?: AuthenticationType | (string & {});
 }
-export const AuthenticationTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(AuthenticationType),
-  }),
-).annotate({
-  identifier: "AuthenticationTypeEnumValue",
-}) as any as S.Schema<AuthenticationTypeEnumValue>;
+export const AuthenticationTypeEnumValue =
+  RenewalEligibilityEnumValue as any as S.Schema<AuthenticationTypeEnumValue>;
 
 /** Definition of LambdaAuthorizerConfig */
 export interface LambdaAuthorizerConfig {
@@ -1416,11 +1402,8 @@ export interface GraphQLApiTypeEnumValue {
   /** Property value */
   value?: GraphQLApiType | (string & {});
 }
-export const GraphQLApiTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(GraphQLApiType),
-  }),
-).annotate({ identifier: "GraphQLApiTypeEnumValue" }) as any as S.Schema<GraphQLApiTypeEnumValue>;
+export const GraphQLApiTypeEnumValue =
+  KeyAlgorithmEnumValue as any as S.Schema<GraphQLApiTypeEnumValue>;
 
 /** <p>The DNS records for the API.</p> */
 export type AwsAppSyncGraphqlApiPropertiesDnsMap = { [key: string]: string | undefined };
@@ -1438,13 +1421,8 @@ export interface DataSourceLevelMetricsBehaviorEnumValue {
   /** Property value */
   value?: DataSourceLevelMetricsBehavior | (string & {});
 }
-export const DataSourceLevelMetricsBehaviorEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(DataSourceLevelMetricsBehavior),
-  }),
-).annotate({
-  identifier: "DataSourceLevelMetricsBehaviorEnumValue",
-}) as any as S.Schema<DataSourceLevelMetricsBehaviorEnumValue>;
+export const DataSourceLevelMetricsBehaviorEnumValue =
+  RenewalEligibilityEnumValue as any as S.Schema<DataSourceLevelMetricsBehaviorEnumValue>;
 
 /** OperationLevelMetricsConfig enum */
 export type OperationLevelMetricsConfig = "DISABLED" | "ENABLED";
@@ -1455,13 +1433,8 @@ export interface OperationLevelMetricsConfigEnumValue {
   /** Property value */
   value?: OperationLevelMetricsConfig | (string & {});
 }
-export const OperationLevelMetricsConfigEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(OperationLevelMetricsConfig),
-  }),
-).annotate({
-  identifier: "OperationLevelMetricsConfigEnumValue",
-}) as any as S.Schema<OperationLevelMetricsConfigEnumValue>;
+export const OperationLevelMetricsConfigEnumValue =
+  RenewalEligibilityEnumValue as any as S.Schema<OperationLevelMetricsConfigEnumValue>;
 
 /** ResolverLevelMetricsBehavior enum */
 export type ResolverLevelMetricsBehavior = "FULL_REQUEST_RESOLVER_METRICS" | "PER_RESOLVER_METRICS";
@@ -1472,13 +1445,8 @@ export interface ResolverLevelMetricsBehaviorEnumValue {
   /** Property value */
   value?: ResolverLevelMetricsBehavior | (string & {});
 }
-export const ResolverLevelMetricsBehaviorEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ResolverLevelMetricsBehavior),
-  }),
-).annotate({
-  identifier: "ResolverLevelMetricsBehaviorEnumValue",
-}) as any as S.Schema<ResolverLevelMetricsBehaviorEnumValue>;
+export const ResolverLevelMetricsBehaviorEnumValue =
+  RenewalEligibilityEnumValue as any as S.Schema<ResolverLevelMetricsBehaviorEnumValue>;
 
 /** Definition of EnhancedMetricsConfig */
 export interface EnhancedMetricsConfig {
@@ -1506,13 +1474,8 @@ export interface GraphQLApiIntrospectionConfigEnumValue {
   /** Property value */
   value?: GraphQLApiIntrospectionConfig | (string & {});
 }
-export const GraphQLApiIntrospectionConfigEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(GraphQLApiIntrospectionConfig),
-  }),
-).annotate({
-  identifier: "GraphQLApiIntrospectionConfigEnumValue",
-}) as any as S.Schema<GraphQLApiIntrospectionConfigEnumValue>;
+export const GraphQLApiIntrospectionConfigEnumValue =
+  RenewalEligibilityEnumValue as any as S.Schema<GraphQLApiIntrospectionConfigEnumValue>;
 
 /** FieldLogLevel enum */
 export type FieldLogLevel = "ALL" | "ERROR" | "NONE";
@@ -1523,11 +1486,8 @@ export interface FieldLogLevelEnumValue {
   /** Property value */
   value?: FieldLogLevel | (string & {});
 }
-export const FieldLogLevelEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(FieldLogLevel),
-  }),
-).annotate({ identifier: "FieldLogLevelEnumValue" }) as any as S.Schema<FieldLogLevelEnumValue>;
+export const FieldLogLevelEnumValue =
+  KeyAlgorithmEnumValue as any as S.Schema<FieldLogLevelEnumValue>;
 
 /** Definition of LogConfig */
 export interface LogConfig {
@@ -1565,11 +1525,8 @@ export interface DefaultActionEnumValue {
   /** Property value */
   value?: DefaultAction | (string & {});
 }
-export const DefaultActionEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(DefaultAction),
-  }),
-).annotate({ identifier: "DefaultActionEnumValue" }) as any as S.Schema<DefaultActionEnumValue>;
+export const DefaultActionEnumValue =
+  KeyAlgorithmEnumValue as any as S.Schema<DefaultActionEnumValue>;
 
 /** Definition of UserPoolConfig */
 export interface UserPoolConfig {
@@ -1600,13 +1557,8 @@ export interface GraphQLApiVisibilityEnumValue {
   /** Property value */
   value?: GraphQLApiVisibility | (string & {});
 }
-export const GraphQLApiVisibilityEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(GraphQLApiVisibility),
-  }),
-).annotate({
-  identifier: "GraphQLApiVisibilityEnumValue",
-}) as any as S.Schema<GraphQLApiVisibilityEnumValue>;
+export const GraphQLApiVisibilityEnumValue =
+  RenewalEligibilityEnumValue as any as S.Schema<GraphQLApiVisibilityEnumValue>;
 
 /** Definition of awsAppSyncGraphqlApi */
 export interface AwsAppSyncGraphqlApiProperties {
@@ -2591,9 +2543,8 @@ export const Capabilities = S.String;
 
 /** Property capabilities */
 export type AwsCloudFormationStackPropertiesCapabilitiesList = Array<Capabilities | (string & {})>;
-export const AwsCloudFormationStackPropertiesCapabilitiesList = /*@__PURE__*/ S.Array(
-  Capabilities,
-) as any as S.Schema<AwsCloudFormationStackPropertiesCapabilitiesList>;
+export const AwsCloudFormationStackPropertiesCapabilitiesList =
+  AwsAcmCertificateSummaryPropertiesExtendedKeyUsagesList as any as S.Schema<AwsCloudFormationStackPropertiesCapabilitiesList>;
 
 /** Property notificationARNs */
 export type AwsCloudFormationStackPropertiesNotificationARNsList = Array<string>;
@@ -4966,13 +4917,8 @@ export interface BucketOwnerAccessEnumValue {
   /** Property value */
   value?: BucketOwnerAccess | (string & {});
 }
-export const BucketOwnerAccessEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(BucketOwnerAccess),
-  }),
-).annotate({
-  identifier: "BucketOwnerAccessEnumValue",
-}) as any as S.Schema<BucketOwnerAccessEnumValue>;
+export const BucketOwnerAccessEnumValue =
+  RenewalEligibilityEnumValue as any as S.Schema<BucketOwnerAccessEnumValue>;
 
 /** ArtifactNamespace enum */
 export type ArtifactNamespace = "BUILD_ID" | "NONE";
@@ -4983,13 +4929,8 @@ export interface ArtifactNamespaceEnumValue {
   /** Property value */
   value?: ArtifactNamespace | (string & {});
 }
-export const ArtifactNamespaceEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ArtifactNamespace),
-  }),
-).annotate({
-  identifier: "ArtifactNamespaceEnumValue",
-}) as any as S.Schema<ArtifactNamespaceEnumValue>;
+export const ArtifactNamespaceEnumValue =
+  RenewalEligibilityEnumValue as any as S.Schema<ArtifactNamespaceEnumValue>;
 
 /** ArtifactPackaging enum */
 export type ArtifactPackaging = "NONE" | "ZIP";
@@ -5000,13 +4941,8 @@ export interface ArtifactPackagingEnumValue {
   /** Property value */
   value?: ArtifactPackaging | (string & {});
 }
-export const ArtifactPackagingEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ArtifactPackaging),
-  }),
-).annotate({
-  identifier: "ArtifactPackagingEnumValue",
-}) as any as S.Schema<ArtifactPackagingEnumValue>;
+export const ArtifactPackagingEnumValue =
+  RenewalEligibilityEnumValue as any as S.Schema<ArtifactPackagingEnumValue>;
 
 /** ArtifactsType enum */
 export type ArtifactsType = "CODEPIPELINE" | "NO_ARTIFACTS" | "S3";
@@ -5017,11 +4953,8 @@ export interface ArtifactsTypeEnumValue {
   /** Property value */
   value?: ArtifactsType | (string & {});
 }
-export const ArtifactsTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ArtifactsType),
-  }),
-).annotate({ identifier: "ArtifactsTypeEnumValue" }) as any as S.Schema<ArtifactsTypeEnumValue>;
+export const ArtifactsTypeEnumValue =
+  KeyAlgorithmEnumValue as any as S.Schema<ArtifactsTypeEnumValue>;
 
 /** Definition of ProjectArtifacts */
 export interface ProjectArtifacts {
@@ -5084,13 +5017,8 @@ export interface BatchReportModeTypeEnumValue {
   /** Property value */
   value?: BatchReportModeType | (string & {});
 }
-export const BatchReportModeTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(BatchReportModeType),
-  }),
-).annotate({
-  identifier: "BatchReportModeTypeEnumValue",
-}) as any as S.Schema<BatchReportModeTypeEnumValue>;
+export const BatchReportModeTypeEnumValue =
+  RenewalEligibilityEnumValue as any as S.Schema<BatchReportModeTypeEnumValue>;
 
 /** <p>An array of strings that specify the compute types that are allowed for the batch build. See <a href='https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html'>Build environment compute types</a> in the <i>CodeBuild User Guide</i> for these values. </p> */
 export type BatchRestrictionsComputeTypesAllowedList = Array<string>;
@@ -5140,9 +5068,8 @@ export const CacheMode = S.String;
 
 /** <p>An array of strings that specify the local cache modes. You can use one or more local cache modes at the same time. This is only used for <code>LOCAL</code> cache types.</p> <p>Possible values are:</p> <dl> <dt>LOCAL_SOURCE_CACHE</dt> <dd> <p>Caches Git metadata for primary and secondary sources. After the cache is created, subsequent builds pull only the change between commits. This mode is a good choice for projects with a clean working directory and a source that is a large Git repository. If you choose this option and your project does not use a Git repository (GitHub, GitHub Enterprise, or Bitbucket), the option is ignored. </p> </dd> <dt>LOCAL_DOCKER_LAYER_CACHE</dt> <dd> <p>Caches existing Docker layers. This mode is a good choice for projects that build or pull large Docker images. It can prevent the performance issues caused by pulling large Docker images down from the network. </p> <note> <ul> <li> <p>You can use a Docker layer cache in the Linux environment only. </p> </li> <li> <p>The <code>privileged</code> flag must be set so that your project has the required Docker permissions. </p> </li> <li> <p>You should consider the security implications before you use a Docker layer cache. </p> </li> </ul> </note> </dd> <dt>LOCAL_CUSTOM_CACHE</dt> <dd> <p>Caches directories you specify in the buildspec file. This mode is a good choice if your build scenario is not suited to one of the other three local cache modes. If you use a custom cache: </p> <ul> <li> <p>Only directories can be specified for caching. You cannot specify individual files. </p> </li> <li> <p>Symlinks are used to reference cached directories. </p> </li> <li> <p>Cached directories are linked to your build before it downloads its project sources. Cached items are overridden if a source item has the same name. Directories are specified using cache paths in the buildspec file. </p> </li> </ul> </dd> </dl> */
 export type ProjectCacheModesList = Array<CacheMode | (string & {})>;
-export const ProjectCacheModesList = /*@__PURE__*/ S.Array(
-  CacheMode,
-) as any as S.Schema<ProjectCacheModesList>;
+export const ProjectCacheModesList =
+  AwsAcmCertificateSummaryPropertiesExtendedKeyUsagesList as any as S.Schema<ProjectCacheModesList>;
 
 /** CacheType enum */
 export type CacheType = "LOCAL" | "NO_CACHE" | "S3";
@@ -5153,11 +5080,7 @@ export interface CacheTypeEnumValue {
   /** Property value */
   value?: CacheType | (string & {});
 }
-export const CacheTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(CacheType),
-  }),
-).annotate({ identifier: "CacheTypeEnumValue" }) as any as S.Schema<CacheTypeEnumValue>;
+export const CacheTypeEnumValue = KeyAlgorithmEnumValue as any as S.Schema<CacheTypeEnumValue>;
 
 /** Definition of ProjectCache */
 export interface ProjectCache {
@@ -5195,11 +5118,7 @@ export interface ComputeTypeEnumValue {
   /** Property value */
   value?: ComputeType | (string & {});
 }
-export const ComputeTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ComputeType),
-  }),
-).annotate({ identifier: "ComputeTypeEnumValue" }) as any as S.Schema<ComputeTypeEnumValue>;
+export const ComputeTypeEnumValue = KeyAlgorithmEnumValue as any as S.Schema<ComputeTypeEnumValue>;
 
 /** EnvironmentVariableType enum */
 export type EnvironmentVariableType = "PARAMETER_STORE" | "PLAINTEXT" | "SECRETS_MANAGER";
@@ -5210,13 +5129,8 @@ export interface EnvironmentVariableTypeEnumValue {
   /** Property value */
   value?: EnvironmentVariableType | (string & {});
 }
-export const EnvironmentVariableTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(EnvironmentVariableType),
-  }),
-).annotate({
-  identifier: "EnvironmentVariableTypeEnumValue",
-}) as any as S.Schema<EnvironmentVariableTypeEnumValue>;
+export const EnvironmentVariableTypeEnumValue =
+  RenewalEligibilityEnumValue as any as S.Schema<EnvironmentVariableTypeEnumValue>;
 
 /** Definition of EnvironmentVariable */
 export interface EnvironmentVariable {
@@ -5261,13 +5175,8 @@ export interface ImagePullCredentialsTypeEnumValue {
   /** Property value */
   value?: ImagePullCredentialsType | (string & {});
 }
-export const ImagePullCredentialsTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ImagePullCredentialsType),
-  }),
-).annotate({
-  identifier: "ImagePullCredentialsTypeEnumValue",
-}) as any as S.Schema<ImagePullCredentialsTypeEnumValue>;
+export const ImagePullCredentialsTypeEnumValue =
+  RenewalEligibilityEnumValue as any as S.Schema<ImagePullCredentialsTypeEnumValue>;
 
 /** CredentialProviderType enum */
 export type CredentialProviderType = "SECRETS_MANAGER";
@@ -5278,13 +5187,8 @@ export interface CredentialProviderTypeEnumValue {
   /** Property value */
   value?: CredentialProviderType | (string & {});
 }
-export const CredentialProviderTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(CredentialProviderType),
-  }),
-).annotate({
-  identifier: "CredentialProviderTypeEnumValue",
-}) as any as S.Schema<CredentialProviderTypeEnumValue>;
+export const CredentialProviderTypeEnumValue =
+  RenewalEligibilityEnumValue as any as S.Schema<CredentialProviderTypeEnumValue>;
 
 /** Definition of RegistryCredential */
 export interface RegistryCredential {
@@ -5316,11 +5220,8 @@ export interface EnvironmentTypeEnumValue {
   /** Property value */
   value?: EnvironmentType | (string & {});
 }
-export const EnvironmentTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(EnvironmentType),
-  }),
-).annotate({ identifier: "EnvironmentTypeEnumValue" }) as any as S.Schema<EnvironmentTypeEnumValue>;
+export const EnvironmentTypeEnumValue =
+  KeyAlgorithmEnumValue as any as S.Schema<EnvironmentTypeEnumValue>;
 
 /** Definition of ProjectEnvironment */
 export interface ProjectEnvironment {
@@ -5366,11 +5267,8 @@ export interface FileSystemTypeEnumValue {
   /** Property value */
   value?: FileSystemType | (string & {});
 }
-export const FileSystemTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(FileSystemType),
-  }),
-).annotate({ identifier: "FileSystemTypeEnumValue" }) as any as S.Schema<FileSystemTypeEnumValue>;
+export const FileSystemTypeEnumValue =
+  KeyAlgorithmEnumValue as any as S.Schema<FileSystemTypeEnumValue>;
 
 /** Definition of ProjectFileSystemLocation */
 export interface ProjectFileSystemLocation {
@@ -5412,13 +5310,8 @@ export interface LogsConfigStatusTypeEnumValue {
   /** Property value */
   value?: LogsConfigStatusType | (string & {});
 }
-export const LogsConfigStatusTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(LogsConfigStatusType),
-  }),
-).annotate({
-  identifier: "LogsConfigStatusTypeEnumValue",
-}) as any as S.Schema<LogsConfigStatusTypeEnumValue>;
+export const LogsConfigStatusTypeEnumValue =
+  RenewalEligibilityEnumValue as any as S.Schema<LogsConfigStatusTypeEnumValue>;
 
 /** Definition of CloudWatchLogsConfig */
 export interface CloudWatchLogsConfig {
@@ -5480,13 +5373,8 @@ export interface ProjectVisibilityTypeEnumValue {
   /** Property value */
   value?: ProjectVisibilityType | (string & {});
 }
-export const ProjectVisibilityTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ProjectVisibilityType),
-  }),
-).annotate({
-  identifier: "ProjectVisibilityTypeEnumValue",
-}) as any as S.Schema<ProjectVisibilityTypeEnumValue>;
+export const ProjectVisibilityTypeEnumValue =
+  RenewalEligibilityEnumValue as any as S.Schema<ProjectVisibilityTypeEnumValue>;
 
 /** <p>An array of <code>ProjectArtifacts</code> objects. </p> */
 export type AwsCodeBuildProjectPropertiesSecondaryArtifactsList = Array<ProjectArtifacts>;
@@ -5523,11 +5411,8 @@ export interface SourceAuthTypeEnumValue {
   /** Property value */
   value?: SourceAuthType | (string & {});
 }
-export const SourceAuthTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(SourceAuthType),
-  }),
-).annotate({ identifier: "SourceAuthTypeEnumValue" }) as any as S.Schema<SourceAuthTypeEnumValue>;
+export const SourceAuthTypeEnumValue =
+  KeyAlgorithmEnumValue as any as S.Schema<SourceAuthTypeEnumValue>;
 
 /** Definition of SourceAuth */
 export interface SourceAuth {
@@ -5586,11 +5471,7 @@ export interface SourceTypeEnumValue {
   /** Property value */
   value?: SourceType | (string & {});
 }
-export const SourceTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(SourceType),
-  }),
-).annotate({ identifier: "SourceTypeEnumValue" }) as any as S.Schema<SourceTypeEnumValue>;
+export const SourceTypeEnumValue = KeyAlgorithmEnumValue as any as S.Schema<SourceTypeEnumValue>;
 
 /** Definition of ProjectSource */
 export interface ProjectSource {
@@ -5685,13 +5566,8 @@ export interface WebhookBuildTypeEnumValue {
   /** Property value */
   value?: WebhookBuildType | (string & {});
 }
-export const WebhookBuildTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(WebhookBuildType),
-  }),
-).annotate({
-  identifier: "WebhookBuildTypeEnumValue",
-}) as any as S.Schema<WebhookBuildTypeEnumValue>;
+export const WebhookBuildTypeEnumValue =
+  RenewalEligibilityEnumValue as any as S.Schema<WebhookBuildTypeEnumValue>;
 
 /** WebhookFilterType enum */
 export type WebhookFilterType =
@@ -5711,13 +5587,8 @@ export interface WebhookFilterTypeEnumValue {
   /** Property value */
   value?: WebhookFilterType | (string & {});
 }
-export const WebhookFilterTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(WebhookFilterType),
-  }),
-).annotate({
-  identifier: "WebhookFilterTypeEnumValue",
-}) as any as S.Schema<WebhookFilterTypeEnumValue>;
+export const WebhookFilterTypeEnumValue =
+  RenewalEligibilityEnumValue as any as S.Schema<WebhookFilterTypeEnumValue>;
 
 /** Definition of WebhookFilter */
 export interface WebhookFilter {
@@ -6042,11 +5913,7 @@ export interface AuthTypeEnumValue {
   /** Property value */
   value?: AuthType | (string & {});
 }
-export const AuthTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(AuthType),
-  }),
-).annotate({ identifier: "AuthTypeEnumValue" }) as any as S.Schema<AuthTypeEnumValue>;
+export const AuthTypeEnumValue = KeyAlgorithmEnumValue as any as S.Schema<AuthTypeEnumValue>;
 
 /** ServerType enum */
 export type ServerType =
@@ -6062,11 +5929,7 @@ export interface ServerTypeEnumValue {
   /** Property value */
   value?: ServerType | (string & {});
 }
-export const ServerTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ServerType),
-  }),
-).annotate({ identifier: "ServerTypeEnumValue" }) as any as S.Schema<ServerTypeEnumValue>;
+export const ServerTypeEnumValue = KeyAlgorithmEnumValue as any as S.Schema<ServerTypeEnumValue>;
 
 /** Definition of awsCodeBuildSourceCredentialsInfo */
 export interface AwsCodeBuildSourceCredentialsInfoProperties {
@@ -6669,9 +6532,8 @@ export const ResourceType = S.String;
 
 /** <p>A comma-separated list of resource types to exclude from recording by the configuration recorder.</p> */
 export type ExclusionByResourceTypesResourceTypesList = Array<ResourceType | (string & {})>;
-export const ExclusionByResourceTypesResourceTypesList = /*@__PURE__*/ S.Array(
-  ResourceType,
-) as any as S.Schema<ExclusionByResourceTypesResourceTypesList>;
+export const ExclusionByResourceTypesResourceTypesList =
+  AwsAcmCertificateSummaryPropertiesExtendedKeyUsagesList as any as S.Schema<ExclusionByResourceTypesResourceTypesList>;
 
 /** Definition of ExclusionByResourceTypes */
 export interface ExclusionByResourceTypes {
@@ -6696,13 +6558,8 @@ export interface RecordingStrategyTypeEnumValue {
   /** Property value */
   value?: RecordingStrategyType | (string & {});
 }
-export const RecordingStrategyTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(RecordingStrategyType),
-  }),
-).annotate({
-  identifier: "RecordingStrategyTypeEnumValue",
-}) as any as S.Schema<RecordingStrategyTypeEnumValue>;
+export const RecordingStrategyTypeEnumValue =
+  RenewalEligibilityEnumValue as any as S.Schema<RecordingStrategyTypeEnumValue>;
 
 /** Definition of RecordingStrategy */
 export interface RecordingStrategy {
@@ -6752,13 +6609,8 @@ export interface RecordingFrequencyEnumValue {
   /** Property value */
   value?: RecordingFrequency | (string & {});
 }
-export const RecordingFrequencyEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(RecordingFrequency),
-  }),
-).annotate({
-  identifier: "RecordingFrequencyEnumValue",
-}) as any as S.Schema<RecordingFrequencyEnumValue>;
+export const RecordingFrequencyEnumValue =
+  RenewalEligibilityEnumValue as any as S.Schema<RecordingFrequencyEnumValue>;
 
 /** <p>A comma-separated list that specifies which resource types Config includes in the override.</p> <important> <p>Daily recording is not supported for the following resource types:</p> <ul> <li> <p> <code>AWS::Config::ResourceCompliance</code> </p> </li> <li> <p> <code>AWS::Config::ConformancePackCompliance</code> </p> </li> <li> <p> <code>AWS::Config::ConfigurationRecorder</code> </p> </li> </ul> </important> */
 export type RecordingModeOverrideResourceTypesList = Array<ResourceType | (string & {})>;
@@ -6998,11 +6850,8 @@ export interface RecorderStatusEnumValue {
   /** Property value */
   value?: RecorderStatus | (string & {});
 }
-export const RecorderStatusEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(RecorderStatus),
-  }),
-).annotate({ identifier: "RecorderStatusEnumValue" }) as any as S.Schema<RecorderStatusEnumValue>;
+export const RecorderStatusEnumValue =
+  KeyAlgorithmEnumValue as any as S.Schema<RecorderStatusEnumValue>;
 
 /** Definition of awsConfigServiceConfigurationRecorderStatus */
 export interface AwsConfigServiceConfigurationRecorderStatusProperties {
@@ -7217,13 +7066,8 @@ export interface MaximumExecutionFrequencyEnumValue {
   /** Property value */
   value?: MaximumExecutionFrequency | (string & {});
 }
-export const MaximumExecutionFrequencyEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(MaximumExecutionFrequency),
-  }),
-).annotate({
-  identifier: "MaximumExecutionFrequencyEnumValue",
-}) as any as S.Schema<MaximumExecutionFrequencyEnumValue>;
+export const MaximumExecutionFrequencyEnumValue =
+  RenewalEligibilityEnumValue as any as S.Schema<MaximumExecutionFrequencyEnumValue>;
 
 /** Definition of ConfigSnapshotDeliveryProperties */
 export interface ConfigSnapshotDeliveryProperties {
@@ -7845,13 +7689,8 @@ export interface ClusterEndpointEncryptionTypeEnumValue {
   /** Property value */
   value?: ClusterEndpointEncryptionType | (string & {});
 }
-export const ClusterEndpointEncryptionTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ClusterEndpointEncryptionType),
-  }),
-).annotate({
-  identifier: "ClusterEndpointEncryptionTypeEnumValue",
-}) as any as S.Schema<ClusterEndpointEncryptionTypeEnumValue>;
+export const ClusterEndpointEncryptionTypeEnumValue =
+  RenewalEligibilityEnumValue as any as S.Schema<ClusterEndpointEncryptionTypeEnumValue>;
 
 /** <p>A list of nodes to be removed from the cluster.</p> */
 export type AwsDaxClusterPropertiesNodeIdsToRemoveList = Array<string>;
@@ -7937,11 +7776,7 @@ export interface SSEStatusEnumValue {
   /** Property value */
   value?: SSEStatus | (string & {});
 }
-export const SSEStatusEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(SSEStatus),
-  }),
-).annotate({ identifier: "SSEStatusEnumValue" }) as any as S.Schema<SSEStatusEnumValue>;
+export const SSEStatusEnumValue = KeyAlgorithmEnumValue as any as S.Schema<SSEStatusEnumValue>;
 
 /** Definition of SSEDescription */
 export interface SSEDescription {
@@ -11403,13 +11238,8 @@ export interface ContinuousBackupsStatusEnumValue {
   /** Property value */
   value?: ContinuousBackupsStatus | (string & {});
 }
-export const ContinuousBackupsStatusEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ContinuousBackupsStatus),
-  }),
-).annotate({
-  identifier: "ContinuousBackupsStatusEnumValue",
-}) as any as S.Schema<ContinuousBackupsStatusEnumValue>;
+export const ContinuousBackupsStatusEnumValue =
+  RenewalEligibilityEnumValue as any as S.Schema<ContinuousBackupsStatusEnumValue>;
 
 /** PointInTimeRecoveryStatus enum */
 export type PointInTimeRecoveryStatus = "DISABLED" | "ENABLED";
@@ -11420,13 +11250,8 @@ export interface PointInTimeRecoveryStatusEnumValue {
   /** Property value */
   value?: PointInTimeRecoveryStatus | (string & {});
 }
-export const PointInTimeRecoveryStatusEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(PointInTimeRecoveryStatus),
-  }),
-).annotate({
-  identifier: "PointInTimeRecoveryStatusEnumValue",
-}) as any as S.Schema<PointInTimeRecoveryStatusEnumValue>;
+export const PointInTimeRecoveryStatusEnumValue =
+  RenewalEligibilityEnumValue as any as S.Schema<PointInTimeRecoveryStatusEnumValue>;
 
 /** Definition of PointInTimeRecoveryDescription */
 export interface PointInTimeRecoveryDescription {
@@ -12375,11 +12200,7 @@ export interface DomainTypeEnumValue {
   /** Property value */
   value?: DomainType | (string & {});
 }
-export const DomainTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(DomainType),
-  }),
-).annotate({ identifier: "DomainTypeEnumValue" }) as any as S.Schema<DomainTypeEnumValue>;
+export const DomainTypeEnumValue = KeyAlgorithmEnumValue as any as S.Schema<DomainTypeEnumValue>;
 
 /** Definition of Tag */
 export interface Tag_10 {
@@ -12856,13 +12677,8 @@ export interface ArchitectureValuesEnumValue {
   /** Property value */
   value?: ArchitectureValues | (string & {});
 }
-export const ArchitectureValuesEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ArchitectureValues),
-  }),
-).annotate({
-  identifier: "ArchitectureValuesEnumValue",
-}) as any as S.Schema<ArchitectureValuesEnumValue>;
+export const ArchitectureValuesEnumValue =
+  RenewalEligibilityEnumValue as any as S.Schema<ArchitectureValuesEnumValue>;
 
 /** VolumeType enum */
 export type VolumeType = "gp2" | "gp3" | "io1" | "io2" | "sc1" | "st1" | "standard";
@@ -12873,11 +12689,7 @@ export interface VolumeTypeEnumValue {
   /** Property value */
   value?: VolumeType | (string & {});
 }
-export const VolumeTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(VolumeType),
-  }),
-).annotate({ identifier: "VolumeTypeEnumValue" }) as any as S.Schema<VolumeTypeEnumValue>;
+export const VolumeTypeEnumValue = KeyAlgorithmEnumValue as any as S.Schema<VolumeTypeEnumValue>;
 
 /** Definition of EbsBlockDevice */
 export interface EbsBlockDevice {
@@ -12949,11 +12761,8 @@ export interface BootModeValuesEnumValue {
   /** Property value */
   value?: BootModeValues | (string & {});
 }
-export const BootModeValuesEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(BootModeValues),
-  }),
-).annotate({ identifier: "BootModeValuesEnumValue" }) as any as S.Schema<BootModeValuesEnumValue>;
+export const BootModeValuesEnumValue =
+  KeyAlgorithmEnumValue as any as S.Schema<BootModeValuesEnumValue>;
 
 /** HypervisorType enum */
 export type HypervisorType = "ovm" | "xen";
@@ -12964,11 +12773,8 @@ export interface HypervisorTypeEnumValue {
   /** Property value */
   value?: HypervisorType | (string & {});
 }
-export const HypervisorTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(HypervisorType),
-  }),
-).annotate({ identifier: "HypervisorTypeEnumValue" }) as any as S.Schema<HypervisorTypeEnumValue>;
+export const HypervisorTypeEnumValue =
+  KeyAlgorithmEnumValue as any as S.Schema<HypervisorTypeEnumValue>;
 
 /** ImageTypeValues enum */
 export type ImageTypeValues = "kernel" | "machine" | "ramdisk";
@@ -12979,11 +12785,8 @@ export interface ImageTypeValuesEnumValue {
   /** Property value */
   value?: ImageTypeValues | (string & {});
 }
-export const ImageTypeValuesEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ImageTypeValues),
-  }),
-).annotate({ identifier: "ImageTypeValuesEnumValue" }) as any as S.Schema<ImageTypeValuesEnumValue>;
+export const ImageTypeValuesEnumValue =
+  KeyAlgorithmEnumValue as any as S.Schema<ImageTypeValuesEnumValue>;
 
 /** ImdsSupportValues enum */
 export type ImdsSupportValues = "v2.0";
@@ -12994,13 +12797,8 @@ export interface ImdsSupportValuesEnumValue {
   /** Property value */
   value?: ImdsSupportValues | (string & {});
 }
-export const ImdsSupportValuesEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ImdsSupportValues),
-  }),
-).annotate({
-  identifier: "ImdsSupportValuesEnumValue",
-}) as any as S.Schema<ImdsSupportValuesEnumValue>;
+export const ImdsSupportValuesEnumValue =
+  RenewalEligibilityEnumValue as any as S.Schema<ImdsSupportValuesEnumValue>;
 
 /** PlatformValues enum */
 export type PlatformValues = "Windows";
@@ -13011,11 +12809,8 @@ export interface PlatformValuesEnumValue {
   /** Property value */
   value?: PlatformValues | (string & {});
 }
-export const PlatformValuesEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(PlatformValues),
-  }),
-).annotate({ identifier: "PlatformValuesEnumValue" }) as any as S.Schema<PlatformValuesEnumValue>;
+export const PlatformValuesEnumValue =
+  KeyAlgorithmEnumValue as any as S.Schema<PlatformValuesEnumValue>;
 
 /** ProductCodeValues enum */
 export type ProductCodeValues = "devpay" | "marketplace";
@@ -13026,13 +12821,8 @@ export interface ProductCodeValuesEnumValue {
   /** Property value */
   value?: ProductCodeValues | (string & {});
 }
-export const ProductCodeValuesEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ProductCodeValues),
-  }),
-).annotate({
-  identifier: "ProductCodeValuesEnumValue",
-}) as any as S.Schema<ProductCodeValuesEnumValue>;
+export const ProductCodeValuesEnumValue =
+  RenewalEligibilityEnumValue as any as S.Schema<ProductCodeValuesEnumValue>;
 
 /** Definition of ProductCode */
 export interface ProductCode {
@@ -13063,11 +12853,7 @@ export interface DeviceTypeEnumValue {
   /** Property value */
   value?: DeviceType | (string & {});
 }
-export const DeviceTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(DeviceType),
-  }),
-).annotate({ identifier: "DeviceTypeEnumValue" }) as any as S.Schema<DeviceTypeEnumValue>;
+export const DeviceTypeEnumValue = KeyAlgorithmEnumValue as any as S.Schema<DeviceTypeEnumValue>;
 
 /** ImageState enum */
 export type ImageState =
@@ -13086,11 +12872,7 @@ export interface ImageStateEnumValue {
   /** Property value */
   value?: ImageState | (string & {});
 }
-export const ImageStateEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ImageState),
-  }),
-).annotate({ identifier: "ImageStateEnumValue" }) as any as S.Schema<ImageStateEnumValue>;
+export const ImageStateEnumValue = KeyAlgorithmEnumValue as any as S.Schema<ImageStateEnumValue>;
 
 /** Definition of StateReason */
 export interface StateReason {
@@ -13124,13 +12906,8 @@ export interface TpmSupportValuesEnumValue {
   /** Property value */
   value?: TpmSupportValues | (string & {});
 }
-export const TpmSupportValuesEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(TpmSupportValues),
-  }),
-).annotate({
-  identifier: "TpmSupportValuesEnumValue",
-}) as any as S.Schema<TpmSupportValuesEnumValue>;
+export const TpmSupportValuesEnumValue =
+  RenewalEligibilityEnumValue as any as S.Schema<TpmSupportValuesEnumValue>;
 
 /** VirtualizationType enum */
 export type VirtualizationType = "hvm" | "paravirtual";
@@ -13141,13 +12918,8 @@ export interface VirtualizationTypeEnumValue {
   /** Property value */
   value?: VirtualizationType | (string & {});
 }
-export const VirtualizationTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(VirtualizationType),
-  }),
-).annotate({
-  identifier: "VirtualizationTypeEnumValue",
-}) as any as S.Schema<VirtualizationTypeEnumValue>;
+export const VirtualizationTypeEnumValue =
+  RenewalEligibilityEnumValue as any as S.Schema<VirtualizationTypeEnumValue>;
 
 /** Definition of awsEc2Image */
 export interface AwsEc2ImageProperties {
@@ -13411,13 +13183,8 @@ export interface AttachmentStatusEnumValue {
   /** Property value */
   value?: AttachmentStatus | (string & {});
 }
-export const AttachmentStatusEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(AttachmentStatus),
-  }),
-).annotate({
-  identifier: "AttachmentStatusEnumValue",
-}) as any as S.Schema<AttachmentStatusEnumValue>;
+export const AttachmentStatusEnumValue =
+  RenewalEligibilityEnumValue as any as S.Schema<AttachmentStatusEnumValue>;
 
 /** Definition of EbsInstanceBlockDevice */
 export interface EbsInstanceBlockDevice {
@@ -13476,13 +13243,8 @@ export interface CapacityReservationPreferenceEnumValue {
   /** Property value */
   value?: CapacityReservationPreference | (string & {});
 }
-export const CapacityReservationPreferenceEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(CapacityReservationPreference),
-  }),
-).annotate({
-  identifier: "CapacityReservationPreferenceEnumValue",
-}) as any as S.Schema<CapacityReservationPreferenceEnumValue>;
+export const CapacityReservationPreferenceEnumValue =
+  RenewalEligibilityEnumValue as any as S.Schema<CapacityReservationPreferenceEnumValue>;
 
 /** Definition of CapacityReservationTargetResponse */
 export interface CapacityReservationTargetResponse {
@@ -13525,13 +13287,8 @@ export interface AmdSevSnpSpecificationEnumValue {
   /** Property value */
   value?: AmdSevSnpSpecification | (string & {});
 }
-export const AmdSevSnpSpecificationEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(AmdSevSnpSpecification),
-  }),
-).annotate({
-  identifier: "AmdSevSnpSpecificationEnumValue",
-}) as any as S.Schema<AmdSevSnpSpecificationEnumValue>;
+export const AmdSevSnpSpecificationEnumValue =
+  RenewalEligibilityEnumValue as any as S.Schema<AmdSevSnpSpecificationEnumValue>;
 
 /** Definition of CpuOptions */
 export interface CpuOptions {
@@ -13559,13 +13316,8 @@ export interface InstanceBootModeValuesEnumValue {
   /** Property value */
   value?: InstanceBootModeValues | (string & {});
 }
-export const InstanceBootModeValuesEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(InstanceBootModeValues),
-  }),
-).annotate({
-  identifier: "InstanceBootModeValuesEnumValue",
-}) as any as S.Schema<InstanceBootModeValuesEnumValue>;
+export const InstanceBootModeValuesEnumValue =
+  RenewalEligibilityEnumValue as any as S.Schema<InstanceBootModeValuesEnumValue>;
 
 /** Definition of ElasticGpuAssociation */
 export interface ElasticGpuAssociation {
@@ -13668,13 +13420,8 @@ export interface InstanceLifecycleTypeEnumValue {
   /** Property value */
   value?: InstanceLifecycleType | (string & {});
 }
-export const InstanceLifecycleTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(InstanceLifecycleType),
-  }),
-).annotate({
-  identifier: "InstanceLifecycleTypeEnumValue",
-}) as any as S.Schema<InstanceLifecycleTypeEnumValue>;
+export const InstanceLifecycleTypeEnumValue =
+  RenewalEligibilityEnumValue as any as S.Schema<InstanceLifecycleTypeEnumValue>;
 
 /** InstanceType enum */
 export type InstanceType =
@@ -14481,11 +14228,8 @@ export interface InstanceTypeEnumValue {
   /** Property value */
   value?: InstanceType | (string & {});
 }
-export const InstanceTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(InstanceType),
-  }),
-).annotate({ identifier: "InstanceTypeEnumValue" }) as any as S.Schema<InstanceTypeEnumValue>;
+export const InstanceTypeEnumValue =
+  KeyAlgorithmEnumValue as any as S.Schema<InstanceTypeEnumValue>;
 
 /** Definition of LicenseConfiguration */
 export interface LicenseConfiguration {
@@ -14513,13 +14257,8 @@ export interface InstanceAutoRecoveryStateEnumValue {
   /** Property value */
   value?: InstanceAutoRecoveryState | (string & {});
 }
-export const InstanceAutoRecoveryStateEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(InstanceAutoRecoveryState),
-  }),
-).annotate({
-  identifier: "InstanceAutoRecoveryStateEnumValue",
-}) as any as S.Schema<InstanceAutoRecoveryStateEnumValue>;
+export const InstanceAutoRecoveryStateEnumValue =
+  RenewalEligibilityEnumValue as any as S.Schema<InstanceAutoRecoveryStateEnumValue>;
 
 /** Definition of InstanceMaintenanceOptions */
 export interface InstanceMaintenanceOptions {
@@ -14543,13 +14282,8 @@ export interface InstanceMetadataEndpointStateEnumValue {
   /** Property value */
   value?: InstanceMetadataEndpointState | (string & {});
 }
-export const InstanceMetadataEndpointStateEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(InstanceMetadataEndpointState),
-  }),
-).annotate({
-  identifier: "InstanceMetadataEndpointStateEnumValue",
-}) as any as S.Schema<InstanceMetadataEndpointStateEnumValue>;
+export const InstanceMetadataEndpointStateEnumValue =
+  RenewalEligibilityEnumValue as any as S.Schema<InstanceMetadataEndpointStateEnumValue>;
 
 /** Property value */
 export type InstanceMetadataProtocolStateEnumValueValue = "disabled" | "enabled";
@@ -14560,13 +14294,8 @@ export interface InstanceMetadataProtocolStateEnumValue {
   /** Property value */
   value?: InstanceMetadataProtocolStateEnumValueValue | (string & {});
 }
-export const InstanceMetadataProtocolStateEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(InstanceMetadataProtocolStateEnumValueValue),
-  }),
-).annotate({
-  identifier: "InstanceMetadataProtocolStateEnumValue",
-}) as any as S.Schema<InstanceMetadataProtocolStateEnumValue>;
+export const InstanceMetadataProtocolStateEnumValue =
+  RenewalEligibilityEnumValue as any as S.Schema<InstanceMetadataProtocolStateEnumValue>;
 
 /** HttpTokensState enum */
 export type HttpTokensState = "optional" | "required";
@@ -14577,11 +14306,8 @@ export interface HttpTokensStateEnumValue {
   /** Property value */
   value?: HttpTokensState | (string & {});
 }
-export const HttpTokensStateEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(HttpTokensState),
-  }),
-).annotate({ identifier: "HttpTokensStateEnumValue" }) as any as S.Schema<HttpTokensStateEnumValue>;
+export const HttpTokensStateEnumValue =
+  KeyAlgorithmEnumValue as any as S.Schema<HttpTokensStateEnumValue>;
 
 /** InstanceMetadataTagsState enum */
 export type InstanceMetadataTagsState = "disabled" | "enabled";
@@ -14592,13 +14318,8 @@ export interface InstanceMetadataTagsStateEnumValue {
   /** Property value */
   value?: InstanceMetadataTagsState | (string & {});
 }
-export const InstanceMetadataTagsStateEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(InstanceMetadataTagsState),
-  }),
-).annotate({
-  identifier: "InstanceMetadataTagsStateEnumValue",
-}) as any as S.Schema<InstanceMetadataTagsStateEnumValue>;
+export const InstanceMetadataTagsStateEnumValue =
+  RenewalEligibilityEnumValue as any as S.Schema<InstanceMetadataTagsStateEnumValue>;
 
 /** InstanceMetadataOptionsState enum */
 export type InstanceMetadataOptionsState = "applied" | "pending";
@@ -14609,13 +14330,8 @@ export interface InstanceMetadataOptionsStateEnumValue {
   /** Property value */
   value?: InstanceMetadataOptionsState | (string & {});
 }
-export const InstanceMetadataOptionsStateEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(InstanceMetadataOptionsState),
-  }),
-).annotate({
-  identifier: "InstanceMetadataOptionsStateEnumValue",
-}) as any as S.Schema<InstanceMetadataOptionsStateEnumValue>;
+export const InstanceMetadataOptionsStateEnumValue =
+  RenewalEligibilityEnumValue as any as S.Schema<InstanceMetadataOptionsStateEnumValue>;
 
 /** Definition of InstanceMetadataOptionsResponse */
 export interface InstanceMetadataOptionsResponse {
@@ -14654,11 +14370,8 @@ export interface MonitoringStateEnumValue {
   /** Property value */
   value?: MonitoringState | (string & {});
 }
-export const MonitoringStateEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(MonitoringState),
-  }),
-).annotate({ identifier: "MonitoringStateEnumValue" }) as any as S.Schema<MonitoringStateEnumValue>;
+export const MonitoringStateEnumValue =
+  KeyAlgorithmEnumValue as any as S.Schema<MonitoringStateEnumValue>;
 
 /** Definition of Monitoring */
 export interface Monitoring {
@@ -14889,13 +14602,8 @@ export interface NetworkInterfaceStatusEnumValue {
   /** Property value */
   value?: NetworkInterfaceStatus | (string & {});
 }
-export const NetworkInterfaceStatusEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(NetworkInterfaceStatus),
-  }),
-).annotate({
-  identifier: "NetworkInterfaceStatusEnumValue",
-}) as any as S.Schema<NetworkInterfaceStatusEnumValue>;
+export const NetworkInterfaceStatusEnumValue =
+  RenewalEligibilityEnumValue as any as S.Schema<NetworkInterfaceStatusEnumValue>;
 
 /** Definition of InstanceNetworkInterface */
 export interface InstanceNetworkInterface {
@@ -14977,11 +14685,7 @@ export interface TenancyEnumValue {
   /** Property value */
   value?: Tenancy | (string & {});
 }
-export const TenancyEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(Tenancy),
-  }),
-).annotate({ identifier: "TenancyEnumValue" }) as any as S.Schema<TenancyEnumValue>;
+export const TenancyEnumValue = KeyAlgorithmEnumValue as any as S.Schema<TenancyEnumValue>;
 
 /** Definition of Placement */
 export interface Placement {
@@ -15027,11 +14731,8 @@ export interface HostnameTypeEnumValue {
   /** Property value */
   value?: HostnameType | (string & {});
 }
-export const HostnameTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(HostnameType),
-  }),
-).annotate({ identifier: "HostnameTypeEnumValue" }) as any as S.Schema<HostnameTypeEnumValue>;
+export const HostnameTypeEnumValue =
+  KeyAlgorithmEnumValue as any as S.Schema<HostnameTypeEnumValue>;
 
 /** Definition of PrivateDnsNameOptionsResponse */
 export interface PrivateDnsNameOptionsResponse {
@@ -15077,13 +14778,8 @@ export interface InstanceStateNameEnumValue {
   /** Property value */
   value?: InstanceStateName | (string & {});
 }
-export const InstanceStateNameEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(InstanceStateName),
-  }),
-).annotate({
-  identifier: "InstanceStateNameEnumValue",
-}) as any as S.Schema<InstanceStateNameEnumValue>;
+export const InstanceStateNameEnumValue =
+  RenewalEligibilityEnumValue as any as S.Schema<InstanceStateNameEnumValue>;
 
 /** Definition of InstanceState */
 export interface InstanceState {
@@ -15435,11 +15131,7 @@ export interface EventCodeEnumValue {
   /** Property value */
   value?: EventCode | (string & {});
 }
-export const EventCodeEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(EventCode),
-  }),
-).annotate({ identifier: "EventCodeEnumValue" }) as any as S.Schema<EventCodeEnumValue>;
+export const EventCodeEnumValue = KeyAlgorithmEnumValue as any as S.Schema<EventCodeEnumValue>;
 
 /** Definition of InstanceStatusEvent */
 export interface InstanceStatusEvent {
@@ -15482,11 +15174,7 @@ export interface StatusNameEnumValue {
   /** Property value */
   value?: StatusName | (string & {});
 }
-export const StatusNameEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(StatusName),
-  }),
-).annotate({ identifier: "StatusNameEnumValue" }) as any as S.Schema<StatusNameEnumValue>;
+export const StatusNameEnumValue = KeyAlgorithmEnumValue as any as S.Schema<StatusNameEnumValue>;
 
 /** StatusType enum */
 export type StatusType = "failed" | "initializing" | "insufficient-data" | "passed";
@@ -15497,11 +15185,7 @@ export interface StatusTypeEnumValue {
   /** Property value */
   value?: StatusType | (string & {});
 }
-export const StatusTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(StatusType),
-  }),
-).annotate({ identifier: "StatusTypeEnumValue" }) as any as S.Schema<StatusTypeEnumValue>;
+export const StatusTypeEnumValue = KeyAlgorithmEnumValue as any as S.Schema<StatusTypeEnumValue>;
 
 /** Definition of InstanceStatusDetails */
 export interface InstanceStatusDetails {
@@ -15540,11 +15224,8 @@ export interface SummaryStatusEnumValue {
   /** Property value */
   value?: SummaryStatus | (string & {});
 }
-export const SummaryStatusEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(SummaryStatus),
-  }),
-).annotate({ identifier: "SummaryStatusEnumValue" }) as any as S.Schema<SummaryStatusEnumValue>;
+export const SummaryStatusEnumValue =
+  KeyAlgorithmEnumValue as any as S.Schema<SummaryStatusEnumValue>;
 
 /** Definition of InstanceStatusSummary */
 export interface InstanceStatusSummary {
@@ -15786,11 +15467,7 @@ export interface IpamStateEnumValue {
   /** Property value */
   value?: IpamState | (string & {});
 }
-export const IpamStateEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(IpamState),
-  }),
-).annotate({ identifier: "IpamStateEnumValue" }) as any as S.Schema<IpamStateEnumValue>;
+export const IpamStateEnumValue = KeyAlgorithmEnumValue as any as S.Schema<IpamStateEnumValue>;
 
 /** Definition of Tag */
 export type Tag_14 = Tag_10;
@@ -15810,11 +15487,7 @@ export interface IpamTierEnumValue {
   /** Property value */
   value?: IpamTier | (string & {});
 }
-export const IpamTierEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(IpamTier),
-  }),
-).annotate({ identifier: "IpamTierEnumValue" }) as any as S.Schema<IpamTierEnumValue>;
+export const IpamTierEnumValue = KeyAlgorithmEnumValue as any as S.Schema<IpamTierEnumValue>;
 
 /** Definition of awsEc2Ipam */
 export interface AwsEc2IpamProperties {
@@ -17265,11 +16938,7 @@ export interface SSETypeEnumValue {
   /** Property value */
   value?: SSEType | (string & {});
 }
-export const SSETypeEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(SSEType),
-  }),
-).annotate({ identifier: "SSETypeEnumValue" }) as any as S.Schema<SSETypeEnumValue>;
+export const SSETypeEnumValue = KeyAlgorithmEnumValue as any as S.Schema<SSETypeEnumValue>;
 
 /** SnapshotState enum */
 export type SnapshotState = "completed" | "error" | "pending" | "recoverable" | "recovering";
@@ -17280,11 +16949,8 @@ export interface SnapshotStateEnumValue {
   /** Property value */
   value?: SnapshotState | (string & {});
 }
-export const SnapshotStateEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(SnapshotState),
-  }),
-).annotate({ identifier: "SnapshotStateEnumValue" }) as any as S.Schema<SnapshotStateEnumValue>;
+export const SnapshotStateEnumValue =
+  KeyAlgorithmEnumValue as any as S.Schema<SnapshotStateEnumValue>;
 
 /** StorageTier enum */
 export type StorageTier = "archive" | "standard";
@@ -17295,11 +16961,7 @@ export interface StorageTierEnumValue {
   /** Property value */
   value?: StorageTier | (string & {});
 }
-export const StorageTierEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(StorageTier),
-  }),
-).annotate({ identifier: "StorageTierEnumValue" }) as any as S.Schema<StorageTierEnumValue>;
+export const StorageTierEnumValue = KeyAlgorithmEnumValue as any as S.Schema<StorageTierEnumValue>;
 
 /** Definition of Tag */
 export type Tag_20 = Tag_10;
@@ -18680,11 +18342,7 @@ export interface ScanStatusEnumValue {
   /** Property value */
   value?: ScanStatus | (string & {});
 }
-export const ScanStatusEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ScanStatus),
-  }),
-).annotate({ identifier: "ScanStatusEnumValue" }) as any as S.Schema<ScanStatusEnumValue>;
+export const ScanStatusEnumValue = KeyAlgorithmEnumValue as any as S.Schema<ScanStatusEnumValue>;
 
 /** Definition of ImageScanStatus */
 export interface ImageScanStatus {
@@ -21720,13 +21378,8 @@ export interface AuthenticationModeEnumValue {
   /** Property value */
   value?: AuthenticationMode | (string & {});
 }
-export const AuthenticationModeEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(AuthenticationMode),
-  }),
-).annotate({
-  identifier: "AuthenticationModeEnumValue",
-}) as any as S.Schema<AuthenticationModeEnumValue>;
+export const AuthenticationModeEnumValue =
+  RenewalEligibilityEnumValue as any as S.Schema<AuthenticationModeEnumValue>;
 
 /** Definition of AccessConfigResponse */
 export interface AccessConfigResponse {
@@ -21840,13 +21493,8 @@ export interface ClusterIssueCodeEnumValue {
   /** Property value */
   value?: ClusterIssueCode | (string & {});
 }
-export const ClusterIssueCodeEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ClusterIssueCode),
-  }),
-).annotate({
-  identifier: "ClusterIssueCodeEnumValue",
-}) as any as S.Schema<ClusterIssueCodeEnumValue>;
+export const ClusterIssueCodeEnumValue =
+  RenewalEligibilityEnumValue as any as S.Schema<ClusterIssueCodeEnumValue>;
 
 /** <p>The resource IDs that the issue relates to.</p> */
 export type ClusterIssueResourceIdsList = Array<string>;
@@ -21918,11 +21566,7 @@ export interface IpFamilyEnumValue {
   /** Property value */
   value?: IpFamily | (string & {});
 }
-export const IpFamilyEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(IpFamily),
-  }),
-).annotate({ identifier: "IpFamilyEnumValue" }) as any as S.Schema<IpFamilyEnumValue>;
+export const IpFamilyEnumValue = KeyAlgorithmEnumValue as any as S.Schema<IpFamilyEnumValue>;
 
 /** Definition of KubernetesNetworkConfigResponse */
 export interface KubernetesNetworkConfigResponse {
@@ -21949,9 +21593,8 @@ export const LogType = S.String;
 
 /** <p>The available cluster control plane log types.</p> */
 export type LogSetupTypesList = Array<LogType | (string & {})>;
-export const LogSetupTypesList = /*@__PURE__*/ S.Array(
-  LogType,
-) as any as S.Schema<LogSetupTypesList>;
+export const LogSetupTypesList =
+  AwsAcmCertificateSummaryPropertiesExtendedKeyUsagesList as any as S.Schema<LogSetupTypesList>;
 
 /** Definition of LogSetup */
 export interface LogSetup {
@@ -22072,11 +21715,8 @@ export interface ClusterStatusEnumValue {
   /** Property value */
   value?: ClusterStatus | (string & {});
 }
-export const ClusterStatusEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ClusterStatus),
-  }),
-).annotate({ identifier: "ClusterStatusEnumValue" }) as any as S.Schema<ClusterStatusEnumValue>;
+export const ClusterStatusEnumValue =
+  KeyAlgorithmEnumValue as any as S.Schema<ClusterStatusEnumValue>;
 
 /** <p>Metadata that assists with categorization and organization. Each tag consists of a key and an optional value. You define both. Tags don't propagate to any other cluster or Amazon Web Services resources.</p> */
 export type AwsEksClusterPropertiesTagsMap = { [key: string]: string | undefined };
@@ -24449,13 +24089,8 @@ export interface MitigationInEffectEnumEnumValue {
   /** Property value */
   value?: MitigationInEffectEnum | (string & {});
 }
-export const MitigationInEffectEnumEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(MitigationInEffectEnum),
-  }),
-).annotate({
-  identifier: "MitigationInEffectEnumEnumValue",
-}) as any as S.Schema<MitigationInEffectEnumEnumValue>;
+export const MitigationInEffectEnumEnumValue =
+  RenewalEligibilityEnumValue as any as S.Schema<MitigationInEffectEnumEnumValue>;
 
 /** AnomalyResultEnum enum */
 export type AnomalyResultEnum = "anomalous" | "normal";
@@ -24466,13 +24101,8 @@ export interface AnomalyResultEnumEnumValue {
   /** Property value */
   value?: AnomalyResultEnum | (string & {});
 }
-export const AnomalyResultEnumEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(AnomalyResultEnum),
-  }),
-).annotate({
-  identifier: "AnomalyResultEnumEnumValue",
-}) as any as S.Schema<AnomalyResultEnumEnumValue>;
+export const AnomalyResultEnumEnumValue =
+  RenewalEligibilityEnumValue as any as S.Schema<AnomalyResultEnumEnumValue>;
 
 /** Definition of AnomalyDetection */
 export interface AnomalyDetection {
@@ -24520,13 +24150,8 @@ export interface TargetHealthReasonEnumEnumValue {
   /** Property value */
   value?: TargetHealthReasonEnum | (string & {});
 }
-export const TargetHealthReasonEnumEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(TargetHealthReasonEnum),
-  }),
-).annotate({
-  identifier: "TargetHealthReasonEnumEnumValue",
-}) as any as S.Schema<TargetHealthReasonEnumEnumValue>;
+export const TargetHealthReasonEnumEnumValue =
+  RenewalEligibilityEnumValue as any as S.Schema<TargetHealthReasonEnumEnumValue>;
 
 /** TargetHealthStateEnum enum */
 export type TargetHealthStateEnum =
@@ -24544,13 +24169,8 @@ export interface TargetHealthStateEnumEnumValue {
   /** Property value */
   value?: TargetHealthStateEnum | (string & {});
 }
-export const TargetHealthStateEnumEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(TargetHealthStateEnum),
-  }),
-).annotate({
-  identifier: "TargetHealthStateEnumEnumValue",
-}) as any as S.Schema<TargetHealthStateEnumEnumValue>;
+export const TargetHealthStateEnumEnumValue =
+  RenewalEligibilityEnumValue as any as S.Schema<TargetHealthStateEnumEnumValue>;
 
 /** Definition of TargetHealth */
 export interface TargetHealth {
@@ -24903,13 +24523,8 @@ export interface InstanceCollectionTypeEnumValue {
   /** Property value */
   value?: InstanceCollectionType | (string & {});
 }
-export const InstanceCollectionTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(InstanceCollectionType),
-  }),
-).annotate({
-  identifier: "InstanceCollectionTypeEnumValue",
-}) as any as S.Schema<InstanceCollectionTypeEnumValue>;
+export const InstanceCollectionTypeEnumValue =
+  RenewalEligibilityEnumValue as any as S.Schema<InstanceCollectionTypeEnumValue>;
 
 /** Definition of KerberosAttributes */
 export interface KerberosAttributes {
@@ -24943,13 +24558,8 @@ export interface InstanceRoleTypeEnumValue {
   /** Property value */
   value?: InstanceRoleType | (string & {});
 }
-export const InstanceRoleTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(InstanceRoleType),
-  }),
-).annotate({
-  identifier: "InstanceRoleTypeEnumValue",
-}) as any as S.Schema<InstanceRoleTypeEnumValue>;
+export const InstanceRoleTypeEnumValue =
+  RenewalEligibilityEnumValue as any as S.Schema<InstanceRoleTypeEnumValue>;
 
 /** PlacementGroupStrategy enum */
 export type PlacementGroupStrategy = "CLUSTER" | "NONE" | "PARTITION" | "SPREAD";
@@ -24960,13 +24570,8 @@ export interface PlacementGroupStrategyEnumValue {
   /** Property value */
   value?: PlacementGroupStrategy | (string & {});
 }
-export const PlacementGroupStrategyEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(PlacementGroupStrategy),
-  }),
-).annotate({
-  identifier: "PlacementGroupStrategyEnumValue",
-}) as any as S.Schema<PlacementGroupStrategyEnumValue>;
+export const PlacementGroupStrategyEnumValue =
+  RenewalEligibilityEnumValue as any as S.Schema<PlacementGroupStrategyEnumValue>;
 
 /** Definition of PlacementGroupConfig */
 export interface PlacementGroupConfig {
@@ -24997,13 +24602,8 @@ export interface RepoUpgradeOnBootEnumValue {
   /** Property value */
   value?: RepoUpgradeOnBoot | (string & {});
 }
-export const RepoUpgradeOnBootEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(RepoUpgradeOnBoot),
-  }),
-).annotate({
-  identifier: "RepoUpgradeOnBootEnumValue",
-}) as any as S.Schema<RepoUpgradeOnBootEnumValue>;
+export const RepoUpgradeOnBootEnumValue =
+  RenewalEligibilityEnumValue as any as S.Schema<RepoUpgradeOnBootEnumValue>;
 
 /** ScaleDownBehavior enum */
 export type ScaleDownBehavior = "TERMINATE_AT_INSTANCE_HOUR" | "TERMINATE_AT_TASK_COMPLETION";
@@ -25014,13 +24614,8 @@ export interface ScaleDownBehaviorEnumValue {
   /** Property value */
   value?: ScaleDownBehavior | (string & {});
 }
-export const ScaleDownBehaviorEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ScaleDownBehavior),
-  }),
-).annotate({
-  identifier: "ScaleDownBehaviorEnumValue",
-}) as any as S.Schema<ScaleDownBehaviorEnumValue>;
+export const ScaleDownBehaviorEnumValue =
+  RenewalEligibilityEnumValue as any as S.Schema<ScaleDownBehaviorEnumValue>;
 
 /** <p>A list of key value pairs that provides contextual information about why an error occured.</p> */
 export type ErrorDetailErrorDataList = Array<unknown>;
@@ -25067,11 +24662,8 @@ export interface ClusterStateEnumValue {
   /** Property value */
   value?: ClusterState | (string & {});
 }
-export const ClusterStateEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ClusterState),
-  }),
-).annotate({ identifier: "ClusterStateEnumValue" }) as any as S.Schema<ClusterStateEnumValue>;
+export const ClusterStateEnumValue =
+  KeyAlgorithmEnumValue as any as S.Schema<ClusterStateEnumValue>;
 
 /** ClusterStateChangeReasonCode enum */
 export type ClusterStateChangeReasonCode =
@@ -25090,13 +24682,8 @@ export interface ClusterStateChangeReasonCodeEnumValue {
   /** Property value */
   value?: ClusterStateChangeReasonCode | (string & {});
 }
-export const ClusterStateChangeReasonCodeEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ClusterStateChangeReasonCode),
-  }),
-).annotate({
-  identifier: "ClusterStateChangeReasonCodeEnumValue",
-}) as any as S.Schema<ClusterStateChangeReasonCodeEnumValue>;
+export const ClusterStateChangeReasonCodeEnumValue =
+  RenewalEligibilityEnumValue as any as S.Schema<ClusterStateChangeReasonCodeEnumValue>;
 
 /** Definition of ClusterStateChangeReason */
 export interface ClusterStateChangeReason {
@@ -28756,11 +28343,8 @@ export interface StatusTypeEnumValue_2 {
   /** Property value */
   value?: StatusType_2 | (string & {});
 }
-export const StatusTypeEnumValue_2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(StatusType_2),
-  }),
-).annotate({ identifier: "StatusTypeEnumValue_2" }) as any as S.Schema<StatusTypeEnumValue_2>;
+export const StatusTypeEnumValue_2 =
+  KeyAlgorithmEnumValue as any as S.Schema<StatusTypeEnumValue_2>;
 
 /** Definition of awsIamAccessKeyMetadata */
 export interface AwsIamAccessKeyMetadataProperties {
@@ -30309,9 +29893,8 @@ export const Architectures = S.String;
 
 /** The instruction set architecture that the function supports. Enter a string array with one of the valid values (arm64 or x86_64). The default value is ``x86_64``. */
 export type AwsLambdaFunctionPropertiesArchitecturesList = Array<Architectures | (string & {})>;
-export const AwsLambdaFunctionPropertiesArchitecturesList = /*@__PURE__*/ S.Array(
-  Architectures,
-) as any as S.Schema<AwsLambdaFunctionPropertiesArchitecturesList>;
+export const AwsLambdaFunctionPropertiesArchitecturesList =
+  AwsAcmCertificateSummaryPropertiesExtendedKeyUsagesList as any as S.Schema<AwsLambdaFunctionPropertiesArchitecturesList>;
 
 /** Definition of Code */
 export interface Code {
@@ -32044,11 +31627,8 @@ export interface JobComparatorEnumValue {
   /** Property value */
   value?: JobComparator | (string & {});
 }
-export const JobComparatorEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(JobComparator),
-  }),
-).annotate({ identifier: "JobComparatorEnumValue" }) as any as S.Schema<JobComparatorEnumValue>;
+export const JobComparatorEnumValue =
+  KeyAlgorithmEnumValue as any as S.Schema<JobComparatorEnumValue>;
 
 /** SimpleCriterionKeyForJob enum */
 export type SimpleCriterionKeyForJob =
@@ -32063,13 +31643,8 @@ export interface SimpleCriterionKeyForJobEnumValue {
   /** Property value */
   value?: SimpleCriterionKeyForJob | (string & {});
 }
-export const SimpleCriterionKeyForJobEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(SimpleCriterionKeyForJob),
-  }),
-).annotate({
-  identifier: "SimpleCriterionKeyForJobEnumValue",
-}) as any as S.Schema<SimpleCriterionKeyForJobEnumValue>;
+export const SimpleCriterionKeyForJobEnumValue =
+  RenewalEligibilityEnumValue as any as S.Schema<SimpleCriterionKeyForJobEnumValue>;
 
 /** <p>An array that lists one or more values to use in the condition. If you specify multiple values, Amazon Macie uses OR logic to join the values. Valid values for each supported property (key) are:</p> <ul><li><p>ACCOUNT_ID - A string that represents the unique identifier for the Amazon Web Services account that owns the bucket.</p></li> <li><p>S3_BUCKET_EFFECTIVE_PERMISSION - A string that represents an enumerated value that Macie defines for the <a href='https://docs.aws.amazon.com/macie/latest/APIReference/datasources-s3.html#datasources-s3-prop-bucketpublicaccess-effectivepermission'>BucketPublicAccess.effectivePermission</a> property of a bucket.</p></li> <li><p>S3_BUCKET_NAME - A string that represents the name of a bucket.</p></li> <li><p>S3_BUCKET_SHARED_ACCESS - A string that represents an enumerated value that Macie defines for the <a href='https://docs.aws.amazon.com/macie/latest/APIReference/datasources-s3.html#datasources-s3-prop-bucketmetadata-sharedaccess'>BucketMetadata.sharedAccess</a> property of a bucket.</p></li></ul> <p>Values are case sensitive. Also, Macie doesn't support use of partial values or wildcard characters in these values.</p> */
 export type SimpleCriterionForJobValuesList = Array<string>;
@@ -32200,11 +31775,7 @@ export interface JobStatusEnumValue {
   /** Property value */
   value?: JobStatus | (string & {});
 }
-export const JobStatusEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(JobStatus),
-  }),
-).annotate({ identifier: "JobStatusEnumValue" }) as any as S.Schema<JobStatusEnumValue>;
+export const JobStatusEnumValue = KeyAlgorithmEnumValue as any as S.Schema<JobStatusEnumValue>;
 
 /** JobType enum */
 export type JobType = "ONE_TIME" | "SCHEDULED";
@@ -32215,11 +31786,7 @@ export interface JobTypeEnumValue {
   /** Property value */
   value?: JobType | (string & {});
 }
-export const JobTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(JobType),
-  }),
-).annotate({ identifier: "JobTypeEnumValue" }) as any as S.Schema<JobTypeEnumValue>;
+export const JobTypeEnumValue = KeyAlgorithmEnumValue as any as S.Schema<JobTypeEnumValue>;
 
 /** LastRunErrorStatusCode enum */
 export type LastRunErrorStatusCode = "ERROR" | "NONE";
@@ -32230,13 +31797,8 @@ export interface LastRunErrorStatusCodeEnumValue {
   /** Property value */
   value?: LastRunErrorStatusCode | (string & {});
 }
-export const LastRunErrorStatusCodeEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(LastRunErrorStatusCode),
-  }),
-).annotate({
-  identifier: "LastRunErrorStatusCodeEnumValue",
-}) as any as S.Schema<LastRunErrorStatusCodeEnumValue>;
+export const LastRunErrorStatusCodeEnumValue =
+  RenewalEligibilityEnumValue as any as S.Schema<LastRunErrorStatusCodeEnumValue>;
 
 /** Definition of LastRunErrorStatus */
 export interface LastRunErrorStatus {
@@ -33793,11 +33355,8 @@ export interface AutoTuneStateEnumValue {
   /** Property value */
   value?: AutoTuneState | (string & {});
 }
-export const AutoTuneStateEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(AutoTuneState),
-  }),
-).annotate({ identifier: "AutoTuneStateEnumValue" }) as any as S.Schema<AutoTuneStateEnumValue>;
+export const AutoTuneStateEnumValue =
+  KeyAlgorithmEnumValue as any as S.Schema<AutoTuneStateEnumValue>;
 
 /** Definition of AutoTuneOptionsOutput */
 export interface AutoTuneOptionsOutput {
@@ -33833,13 +33392,8 @@ export interface ConfigChangeStatusEnumValue {
   /** Property value */
   value?: ConfigChangeStatus | (string & {});
 }
-export const ConfigChangeStatusEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ConfigChangeStatus),
-  }),
-).annotate({
-  identifier: "ConfigChangeStatusEnumValue",
-}) as any as S.Schema<ConfigChangeStatusEnumValue>;
+export const ConfigChangeStatusEnumValue =
+  RenewalEligibilityEnumValue as any as S.Schema<ConfigChangeStatusEnumValue>;
 
 /** InitiatedBy enum */
 export type InitiatedBy = "CUSTOMER" | "SERVICE";
@@ -33850,11 +33404,7 @@ export interface InitiatedByEnumValue {
   /** Property value */
   value?: InitiatedBy | (string & {});
 }
-export const InitiatedByEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(InitiatedBy),
-  }),
-).annotate({ identifier: "InitiatedByEnumValue" }) as any as S.Schema<InitiatedByEnumValue>;
+export const InitiatedByEnumValue = KeyAlgorithmEnumValue as any as S.Schema<InitiatedByEnumValue>;
 
 /** Definition of ChangeProgressDetails */
 export interface ChangeProgressDetails {
@@ -34001,13 +33551,8 @@ export interface OpenSearchPartitionInstanceTypeEnumValue {
   /** Property value */
   value?: OpenSearchPartitionInstanceType | (string & {});
 }
-export const OpenSearchPartitionInstanceTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(OpenSearchPartitionInstanceType),
-  }),
-).annotate({
-  identifier: "OpenSearchPartitionInstanceTypeEnumValue",
-}) as any as S.Schema<OpenSearchPartitionInstanceTypeEnumValue>;
+export const OpenSearchPartitionInstanceTypeEnumValue =
+  RenewalEligibilityEnumValue as any as S.Schema<OpenSearchPartitionInstanceTypeEnumValue>;
 
 /** OpenSearchWarmPartitionInstanceType enum */
 export type OpenSearchWarmPartitionInstanceType =
@@ -34021,13 +33566,8 @@ export interface OpenSearchWarmPartitionInstanceTypeEnumValue {
   /** Property value */
   value?: OpenSearchWarmPartitionInstanceType | (string & {});
 }
-export const OpenSearchWarmPartitionInstanceTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(OpenSearchWarmPartitionInstanceType),
-  }),
-).annotate({
-  identifier: "OpenSearchWarmPartitionInstanceTypeEnumValue",
-}) as any as S.Schema<OpenSearchWarmPartitionInstanceTypeEnumValue>;
+export const OpenSearchWarmPartitionInstanceTypeEnumValue =
+  RenewalEligibilityEnumValue as any as S.Schema<OpenSearchWarmPartitionInstanceTypeEnumValue>;
 
 /** Definition of ZoneAwarenessConfig */
 export interface ZoneAwarenessConfig {
@@ -34116,13 +33656,8 @@ export interface TLSSecurityPolicyEnumValue {
   /** Property value */
   value?: TLSSecurityPolicy | (string & {});
 }
-export const TLSSecurityPolicyEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(TLSSecurityPolicy),
-  }),
-).annotate({
-  identifier: "TLSSecurityPolicyEnumValue",
-}) as any as S.Schema<TLSSecurityPolicyEnumValue>;
+export const TLSSecurityPolicyEnumValue =
+  RenewalEligibilityEnumValue as any as S.Schema<TLSSecurityPolicyEnumValue>;
 
 /** Definition of DomainEndpointOptions */
 export interface DomainEndpointOptions {
@@ -34163,13 +33698,8 @@ export interface DomainProcessingStatusTypeEnumValue {
   /** Property value */
   value?: DomainProcessingStatusType | (string & {});
 }
-export const DomainProcessingStatusTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(DomainProcessingStatusType),
-  }),
-).annotate({
-  identifier: "DomainProcessingStatusTypeEnumValue",
-}) as any as S.Schema<DomainProcessingStatusTypeEnumValue>;
+export const DomainProcessingStatusTypeEnumValue =
+  RenewalEligibilityEnumValue as any as S.Schema<DomainProcessingStatusTypeEnumValue>;
 
 /** VolumeType enum */
 export type VolumeType_2 = "gp2" | "gp3" | "io1" | "standard";
@@ -34180,11 +33710,8 @@ export interface VolumeTypeEnumValue_2 {
   /** Property value */
   value?: VolumeType_2 | (string & {});
 }
-export const VolumeTypeEnumValue_2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(VolumeType_2),
-  }),
-).annotate({ identifier: "VolumeTypeEnumValue_2" }) as any as S.Schema<VolumeTypeEnumValue_2>;
+export const VolumeTypeEnumValue_2 =
+  KeyAlgorithmEnumValue as any as S.Schema<VolumeTypeEnumValue_2>;
 
 /** Definition of EBSOptions */
 export interface EBSOptions {
@@ -34237,11 +33764,8 @@ export interface IPAddressTypeEnumValue {
   /** Property value */
   value?: IPAddressType | (string & {});
 }
-export const IPAddressTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(IPAddressType),
-  }),
-).annotate({ identifier: "IPAddressTypeEnumValue" }) as any as S.Schema<IPAddressTypeEnumValue>;
+export const IPAddressTypeEnumValue =
+  KeyAlgorithmEnumValue as any as S.Schema<IPAddressTypeEnumValue>;
 
 /** Definition of LogPublishingOption */
 export interface LogPublishingOption {
@@ -34275,13 +33799,8 @@ export interface PropertyValueTypeEnumValue {
   /** Property value */
   value?: PropertyValueType | (string & {});
 }
-export const PropertyValueTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(PropertyValueType),
-  }),
-).annotate({
-  identifier: "PropertyValueTypeEnumValue",
-}) as any as S.Schema<PropertyValueTypeEnumValue>;
+export const PropertyValueTypeEnumValue =
+  RenewalEligibilityEnumValue as any as S.Schema<PropertyValueTypeEnumValue>;
 
 /** Definition of ModifyingProperties */
 export interface ModifyingProperties {
@@ -34370,13 +33889,8 @@ export interface DeploymentStatusEnumValue {
   /** Property value */
   value?: DeploymentStatus | (string & {});
 }
-export const DeploymentStatusEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(DeploymentStatus),
-  }),
-).annotate({
-  identifier: "DeploymentStatusEnumValue",
-}) as any as S.Schema<DeploymentStatusEnumValue>;
+export const DeploymentStatusEnumValue =
+  RenewalEligibilityEnumValue as any as S.Schema<DeploymentStatusEnumValue>;
 
 /** Definition of ServiceSoftwareOptions */
 export interface ServiceSoftwareOptions {
@@ -36394,13 +35908,8 @@ export interface ExportSourceTypeEnumValue {
   /** Property value */
   value?: ExportSourceType | (string & {});
 }
-export const ExportSourceTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ExportSourceType),
-  }),
-).annotate({
-  identifier: "ExportSourceTypeEnumValue",
-}) as any as S.Schema<ExportSourceTypeEnumValue>;
+export const ExportSourceTypeEnumValue =
+  RenewalEligibilityEnumValue as any as S.Schema<ExportSourceTypeEnumValue>;
 
 /** Definition of awsRdsExportTask */
 export interface AwsRdsExportTaskProperties {
@@ -37394,13 +36903,8 @@ export interface ResourceRecordSetFailoverEnumValue {
   /** Property value */
   value?: ResourceRecordSetFailover | (string & {});
 }
-export const ResourceRecordSetFailoverEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ResourceRecordSetFailover),
-  }),
-).annotate({
-  identifier: "ResourceRecordSetFailoverEnumValue",
-}) as any as S.Schema<ResourceRecordSetFailoverEnumValue>;
+export const ResourceRecordSetFailoverEnumValue =
+  RenewalEligibilityEnumValue as any as S.Schema<ResourceRecordSetFailoverEnumValue>;
 
 /** Definition of GeoLocation */
 export interface GeoLocation {
@@ -37493,13 +36997,8 @@ export interface ResourceRecordSetRegionEnumValue {
   /** Property value */
   value?: ResourceRecordSetRegion | (string & {});
 }
-export const ResourceRecordSetRegionEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ResourceRecordSetRegion),
-  }),
-).annotate({
-  identifier: "ResourceRecordSetRegionEnumValue",
-}) as any as S.Schema<ResourceRecordSetRegionEnumValue>;
+export const ResourceRecordSetRegionEnumValue =
+  RenewalEligibilityEnumValue as any as S.Schema<ResourceRecordSetRegionEnumValue>;
 
 /** Definition of ResourceRecord */
 export interface ResourceRecord {
@@ -37535,11 +37034,7 @@ export interface RRTypeEnumValue {
   /** Property value */
   value?: RRType | (string & {});
 }
-export const RRTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(RRType),
-  }),
-).annotate({ identifier: "RRTypeEnumValue" }) as any as S.Schema<RRTypeEnumValue>;
+export const RRTypeEnumValue = KeyAlgorithmEnumValue as any as S.Schema<RRTypeEnumValue>;
 
 /** Definition of awsRoute53ResourceRecordSet */
 export interface AwsRoute53ResourceRecordSetProperties {
@@ -37707,11 +37202,7 @@ export interface TypeEnumValue {
   /** Property value */
   value?: Type_2 | (string & {});
 }
-export const TypeEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(Type_2),
-  }),
-).annotate({ identifier: "TypeEnumValue" }) as any as S.Schema<TypeEnumValue>;
+export const TypeEnumValue = KeyAlgorithmEnumValue as any as S.Schema<TypeEnumValue>;
 
 /** Definition of Grantee */
 export interface Grantee {
@@ -37745,11 +37236,7 @@ export interface PermissionEnumValue {
   /** Property value */
   value?: Permission | (string & {});
 }
-export const PermissionEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(Permission),
-  }),
-).annotate({ identifier: "PermissionEnumValue" }) as any as S.Schema<PermissionEnumValue>;
+export const PermissionEnumValue = KeyAlgorithmEnumValue as any as S.Schema<PermissionEnumValue>;
 
 /** Definition of Grant */
 export interface Grant {
@@ -38246,9 +37733,8 @@ export const CorsRuleAllowedMethods = S.String;
 
 /** An HTTP method that you allow the origin to run. *Allowed values*: ``GET`` | ``PUT`` | ``HEAD`` | ``POST`` | ``DELETE`` */
 export type CorsRuleAllowedMethodsList = Array<CorsRuleAllowedMethods | (string & {})>;
-export const CorsRuleAllowedMethodsList = /*@__PURE__*/ S.Array(
-  CorsRuleAllowedMethods,
-) as any as S.Schema<CorsRuleAllowedMethodsList>;
+export const CorsRuleAllowedMethodsList =
+  AwsAcmCertificateSummaryPropertiesExtendedKeyUsagesList as any as S.Schema<CorsRuleAllowedMethodsList>;
 
 /** One or more origins you want customers to be able to access the bucket from. */
 export type CorsRuleAllowedOriginsList = Array<string>;
@@ -38395,9 +37881,8 @@ export const InventoryConfigurationOptionalFields = S.String;
 export type InventoryConfigurationOptionalFieldsList = Array<
   InventoryConfigurationOptionalFields | (string & {})
 >;
-export const InventoryConfigurationOptionalFieldsList = /*@__PURE__*/ S.Array(
-  InventoryConfigurationOptionalFields,
-) as any as S.Schema<InventoryConfigurationOptionalFieldsList>;
+export const InventoryConfigurationOptionalFieldsList =
+  AwsAcmCertificateSummaryPropertiesExtendedKeyUsagesList as any as S.Schema<InventoryConfigurationOptionalFieldsList>;
 
 /** InventoryConfigurationScheduleFrequency enum */
 export type InventoryConfigurationScheduleFrequency = "Daily" | "Weekly";
@@ -38936,11 +38421,7 @@ export interface DeleteMarkerReplication {
   /** Indicates whether to replicate delete markers. Disabled by default. */
   status?: DeleteMarkerReplicationStatus | (string & {});
 }
-export const DeleteMarkerReplication = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(DeleteMarkerReplicationStatus),
-  }),
-).annotate({ identifier: "DeleteMarkerReplication" }) as any as S.Schema<DeleteMarkerReplication>;
+export const DeleteMarkerReplication = BackupPolicy as any as S.Schema<DeleteMarkerReplication>;
 
 /** Definition of AccessControlTranslation */
 export interface AccessControlTranslation {
@@ -39101,11 +38582,7 @@ export interface ReplicaModifications {
   /** Specifies whether Amazon S3 replicates modifications on replicas. *Allowed values*: ``Enabled`` | ``Disabled`` */
   status?: ReplicaModificationsStatus | (string & {});
 }
-export const ReplicaModifications = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(ReplicaModificationsStatus),
-  }),
-).annotate({ identifier: "ReplicaModifications" }) as any as S.Schema<ReplicaModifications>;
+export const ReplicaModifications = BackupPolicy as any as S.Schema<ReplicaModifications>;
 
 /** SseKmsEncryptedObjectsStatus enum */
 export type SseKmsEncryptedObjectsStatus = "Disabled" | "Enabled";
@@ -39116,11 +38593,7 @@ export interface SseKmsEncryptedObjects {
   /** Specifies whether Amazon S3 replicates objects created with server-side encryption using an AWS KMS key stored in AWS Key Management Service. */
   status?: SseKmsEncryptedObjectsStatus | (string & {});
 }
-export const SseKmsEncryptedObjects = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(SseKmsEncryptedObjectsStatus),
-  }),
-).annotate({ identifier: "SseKmsEncryptedObjects" }) as any as S.Schema<SseKmsEncryptedObjects>;
+export const SseKmsEncryptedObjects = BackupPolicy as any as S.Schema<SseKmsEncryptedObjects>;
 
 /** Definition of SourceSelectionCriteria */
 export interface SourceSelectionCriteria {
@@ -39217,11 +38690,7 @@ export interface VersioningConfiguration {
   /** The versioning state of the bucket. */
   status?: VersioningConfigurationStatus | (string & {});
 }
-export const VersioningConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(VersioningConfigurationStatus),
-  }),
-).annotate({ identifier: "VersioningConfiguration" }) as any as S.Schema<VersioningConfiguration>;
+export const VersioningConfiguration = BackupPolicy as any as S.Schema<VersioningConfiguration>;
 
 /** RedirectAllRequestsToProtocol enum */
 export type RedirectAllRequestsToProtocol = "http" | "https";
@@ -40159,11 +39628,8 @@ export interface InstanceTypeEnumValue_2 {
   /** Property value */
   value?: InstanceType_2 | (string & {});
 }
-export const InstanceTypeEnumValue_2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(InstanceType_2),
-  }),
-).annotate({ identifier: "InstanceTypeEnumValue_2" }) as any as S.Schema<InstanceTypeEnumValue_2>;
+export const InstanceTypeEnumValue_2 =
+  KeyAlgorithmEnumValue as any as S.Schema<InstanceTypeEnumValue_2>;
 
 /** NotebookInstanceStatus enum */
 export type NotebookInstanceStatus =
@@ -40181,13 +39647,8 @@ export interface NotebookInstanceStatusEnumValue {
   /** Property value */
   value?: NotebookInstanceStatus | (string & {});
 }
-export const NotebookInstanceStatusEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(NotebookInstanceStatus),
-  }),
-).annotate({
-  identifier: "NotebookInstanceStatusEnumValue",
-}) as any as S.Schema<NotebookInstanceStatusEnumValue>;
+export const NotebookInstanceStatusEnumValue =
+  RenewalEligibilityEnumValue as any as S.Schema<NotebookInstanceStatusEnumValue>;
 
 /** Definition of awsSageMakerNotebookInstanceSummary */
 export interface AwsSageMakerNotebookInstanceSummaryProperties {
@@ -41217,11 +40678,7 @@ export interface PingStatusEnumValue {
   /** Property value */
   value?: PingStatus | (string & {});
 }
-export const PingStatusEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(PingStatus),
-  }),
-).annotate({ identifier: "PingStatusEnumValue" }) as any as S.Schema<PingStatusEnumValue>;
+export const PingStatusEnumValue = KeyAlgorithmEnumValue as any as S.Schema<PingStatusEnumValue>;
 
 /** PlatformType enum */
 export type PlatformType = "Linux" | "MacOS" | "Windows";
@@ -41232,11 +40689,8 @@ export interface PlatformTypeEnumValue {
   /** Property value */
   value?: PlatformType | (string & {});
 }
-export const PlatformTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(PlatformType),
-  }),
-).annotate({ identifier: "PlatformTypeEnumValue" }) as any as S.Schema<PlatformTypeEnumValue>;
+export const PlatformTypeEnumValue =
+  KeyAlgorithmEnumValue as any as S.Schema<PlatformTypeEnumValue>;
 
 /** ResourceType enum */
 export type ResourceType_3 = "EC2Instance" | "ManagedInstance";
@@ -41247,11 +40701,8 @@ export interface ResourceTypeEnumValue {
   /** Property value */
   value?: ResourceType_3 | (string & {});
 }
-export const ResourceTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ResourceType_3),
-  }),
-).annotate({ identifier: "ResourceTypeEnumValue" }) as any as S.Schema<ResourceTypeEnumValue>;
+export const ResourceTypeEnumValue =
+  KeyAlgorithmEnumValue as any as S.Schema<ResourceTypeEnumValue>;
 
 /** SourceType enum */
 export type SourceType_2 = "AWS::EC2::Instance" | "AWS::IoT::Thing" | "AWS::SSM::ManagedInstance";
@@ -41262,11 +40713,8 @@ export interface SourceTypeEnumValue_2 {
   /** Property value */
   value?: SourceType_2 | (string & {});
 }
-export const SourceTypeEnumValue_2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(SourceType_2),
-  }),
-).annotate({ identifier: "SourceTypeEnumValue_2" }) as any as S.Schema<SourceTypeEnumValue_2>;
+export const SourceTypeEnumValue_2 =
+  KeyAlgorithmEnumValue as any as S.Schema<SourceTypeEnumValue_2>;
 
 /** Definition of awsSsmInstanceInformation */
 export interface AwsSsmInstanceInformationProperties {
@@ -41678,13 +41126,8 @@ export interface ComplianceSeverityEnumValue {
   /** Property value */
   value?: ComplianceSeverity | (string & {});
 }
-export const ComplianceSeverityEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ComplianceSeverity),
-  }),
-).annotate({
-  identifier: "ComplianceSeverityEnumValue",
-}) as any as S.Schema<ComplianceSeverityEnumValue>;
+export const ComplianceSeverityEnumValue =
+  RenewalEligibilityEnumValue as any as S.Schema<ComplianceSeverityEnumValue>;
 
 /** ComplianceStatus enum */
 export type ComplianceStatus = "COMPLIANT" | "NON_COMPLIANT";
@@ -41695,13 +41138,8 @@ export interface ComplianceStatusEnumValue {
   /** Property value */
   value?: ComplianceStatus | (string & {});
 }
-export const ComplianceStatusEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ComplianceStatus),
-  }),
-).annotate({
-  identifier: "ComplianceStatusEnumValue",
-}) as any as S.Schema<ComplianceStatusEnumValue>;
+export const ComplianceStatusEnumValue =
+  RenewalEligibilityEnumValue as any as S.Schema<ComplianceStatusEnumValue>;
 
 /** Definition of awsSsmResourceComplianceSummaryItem */
 export interface AwsSsmResourceComplianceSummaryItemProperties {
@@ -41863,13 +41301,8 @@ export interface ActionConditionModelProperties {
   /** Logic to apply to the filtering conditions. You can specify that, in order to satisfy the filter, a log must match all conditions or must match at least one condition. */
   action?: Action_2 | (string & {});
 }
-export const ActionConditionModelProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.optional(Action_2),
-  }),
-).annotate({
-  identifier: "ActionConditionModelProperties",
-}) as any as S.Schema<ActionConditionModelProperties>;
+export const ActionConditionModelProperties =
+  StatefulRuleGroupOverride as any as S.Schema<ActionConditionModelProperties>;
 
 /** Definition of LabelNameConditionModelProperties */
 export interface LabelNameConditionModelProperties {

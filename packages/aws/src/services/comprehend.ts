@@ -2208,7 +2208,8 @@ export interface PiiOutputDataConfig {
 }
 export const PiiOutputDataConfig = OutputDataConfig as any as S.Schema<PiiOutputDataConfig>;
 export type ListOfPiiEntityTypes = PiiEntityType[];
-export const ListOfPiiEntityTypes = /*@__PURE__*/ S.Array(PiiEntityType);
+export const ListOfPiiEntityTypes =
+  ListOfDocumentReadFeatureTypes as any as S.Schema<ListOfPiiEntityTypes>;
 export type PiiEntitiesDetectionMaskMode = "MASK" | "REPLACE_WITH_PII_ENTITY_TYPE" | (string & {});
 export const PiiEntitiesDetectionMaskMode = S.String;
 
@@ -2668,11 +2669,9 @@ export interface ToxicContent {
   Name?: ToxicContentType;
   Score?: number;
 }
-export const ToxicContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.optional(ToxicContentType), Score: S.optional(S.Number) }),
-).annotate({ identifier: "ToxicContent" }) as any as S.Schema<ToxicContent>;
+export const ToxicContent = EntityLabel as any as S.Schema<ToxicContent>;
 export type ListOfToxicContent = ToxicContent[];
-export const ListOfToxicContent = /*@__PURE__*/ S.Array(ToxicContent);
+export const ListOfToxicContent = ListOfEntityLabels as any as S.Schema<ListOfToxicContent>;
 export interface ToxicLabels {
   Labels?: ToxicContent[];
   Toxicity?: number;

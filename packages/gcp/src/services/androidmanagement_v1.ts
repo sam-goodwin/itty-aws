@@ -633,9 +633,8 @@ export type WebTokenPermissionsItemEnum = "WEB_TOKEN_PERMISSION_UNSPECIFIED" | "
 export const WebTokenPermissionsItemEnum = S.String;
 
 export type WebTokenPermissionsItemEnumList = Array<WebTokenPermissionsItemEnum | (string & {})>;
-export const WebTokenPermissionsItemEnumList = /*@__PURE__*/ S.Array(
-  WebTokenPermissionsItemEnum,
-) as any as S.Schema<WebTokenPermissionsItemEnumList>;
+export const WebTokenPermissionsItemEnumList =
+  EnterpriseEnabledNotificationTypesItemEnumList as any as S.Schema<WebTokenPermissionsItemEnumList>;
 
 export type WebTokenEnabledFeaturesItemEnum =
   | "FEATURE_UNSPECIFIED"
@@ -650,9 +649,8 @@ export const WebTokenEnabledFeaturesItemEnum = S.String;
 export type WebTokenEnabledFeaturesItemEnumList = Array<
   WebTokenEnabledFeaturesItemEnum | (string & {})
 >;
-export const WebTokenEnabledFeaturesItemEnumList = /*@__PURE__*/ S.Array(
-  WebTokenEnabledFeaturesItemEnum,
-) as any as S.Schema<WebTokenEnabledFeaturesItemEnumList>;
+export const WebTokenEnabledFeaturesItemEnumList =
+  EnterpriseEnabledNotificationTypesItemEnumList as any as S.Schema<WebTokenEnabledFeaturesItemEnumList>;
 
 /** A web token used to access the managed Google Play iframe. */
 export interface WebToken {
@@ -766,9 +764,8 @@ export const DeleteEnterprisesDevicesWipeDataFlagsEnum = S.String;
 export type DeleteEnterprisesDevicesWipeDataFlagsEnumList = Array<
   DeleteEnterprisesDevicesWipeDataFlagsEnum | (string & {})
 >;
-export const DeleteEnterprisesDevicesWipeDataFlagsEnumList = /*@__PURE__*/ S.Array(
-  DeleteEnterprisesDevicesWipeDataFlagsEnum,
-) as any as S.Schema<DeleteEnterprisesDevicesWipeDataFlagsEnumList>;
+export const DeleteEnterprisesDevicesWipeDataFlagsEnumList =
+  EnterpriseEnabledNotificationTypesItemEnumList as any as S.Schema<DeleteEnterprisesDevicesWipeDataFlagsEnumList>;
 
 export interface DeleteEnterprisesDevicesRequest {
   /** Optional flags that control the device wiping behavior. */
@@ -991,9 +988,8 @@ export type ApplicationFeaturesItemEnum = "APP_FEATURE_UNSPECIFIED" | "VPN_APP";
 export const ApplicationFeaturesItemEnum = S.String;
 
 export type ApplicationFeaturesItemEnumList = Array<ApplicationFeaturesItemEnum>;
-export const ApplicationFeaturesItemEnumList = /*@__PURE__*/ S.Array(
-  ApplicationFeaturesItemEnum,
-) as any as S.Schema<ApplicationFeaturesItemEnumList>;
+export const ApplicationFeaturesItemEnumList =
+  EnterpriseEnabledNotificationTypesItemEnumList as any as S.Schema<ApplicationFeaturesItemEnumList>;
 
 export type ManagedPropertyTypeEnum =
   | "MANAGED_PROPERTY_TYPE_UNSPECIFIED"
@@ -2504,9 +2500,8 @@ export type ApnSettingApnTypesItemEnum =
 export const ApnSettingApnTypesItemEnum = S.String;
 
 export type ApnSettingApnTypesItemEnumList = Array<ApnSettingApnTypesItemEnum | (string & {})>;
-export const ApnSettingApnTypesItemEnumList = /*@__PURE__*/ S.Array(
-  ApnSettingApnTypesItemEnum,
-) as any as S.Schema<ApnSettingApnTypesItemEnumList>;
+export const ApnSettingApnTypesItemEnumList =
+  EnterpriseEnabledNotificationTypesItemEnumList as any as S.Schema<ApnSettingApnTypesItemEnumList>;
 
 export type ApnSettingMvnoTypeEnum = "MVNO_TYPE_UNSPECIFIED" | "GID" | "ICCID" | "IMSI" | "SPN";
 export const ApnSettingMvnoTypeEnum = S.String;
@@ -2536,9 +2531,8 @@ export const ApnSettingNetworkTypesItemEnum = S.String;
 export type ApnSettingNetworkTypesItemEnumList = Array<
   ApnSettingNetworkTypesItemEnum | (string & {})
 >;
-export const ApnSettingNetworkTypesItemEnumList = /*@__PURE__*/ S.Array(
-  ApnSettingNetworkTypesItemEnum,
-) as any as S.Schema<ApnSettingNetworkTypesItemEnumList>;
+export const ApnSettingNetworkTypesItemEnumList =
+  EnterpriseEnabledNotificationTypesItemEnumList as any as S.Schema<ApnSettingNetworkTypesItemEnumList>;
 
 export type ApnSettingAuthTypeEnum =
   | "AUTH_TYPE_UNSPECIFIED"
@@ -3045,9 +3039,8 @@ export const UsageLogEnabledLogTypesItemEnum = S.String;
 export type UsageLogEnabledLogTypesItemEnumList = Array<
   UsageLogEnabledLogTypesItemEnum | (string & {})
 >;
-export const UsageLogEnabledLogTypesItemEnumList = /*@__PURE__*/ S.Array(
-  UsageLogEnabledLogTypesItemEnum,
-) as any as S.Schema<UsageLogEnabledLogTypesItemEnumList>;
+export const UsageLogEnabledLogTypesItemEnumList =
+  EnterpriseEnabledNotificationTypesItemEnumList as any as S.Schema<UsageLogEnabledLogTypesItemEnumList>;
 
 export type UsageLogUploadOnCellularAllowedItemEnum =
   | "LOG_TYPE_UNSPECIFIED"
@@ -3058,9 +3051,8 @@ export const UsageLogUploadOnCellularAllowedItemEnum = S.String;
 export type UsageLogUploadOnCellularAllowedItemEnumList = Array<
   UsageLogUploadOnCellularAllowedItemEnum | (string & {})
 >;
-export const UsageLogUploadOnCellularAllowedItemEnumList = /*@__PURE__*/ S.Array(
-  UsageLogUploadOnCellularAllowedItemEnum,
-) as any as S.Schema<UsageLogUploadOnCellularAllowedItemEnumList>;
+export const UsageLogUploadOnCellularAllowedItemEnumList =
+  EnterpriseEnabledNotificationTypesItemEnumList as any as S.Schema<UsageLogUploadOnCellularAllowedItemEnumList>;
 
 /** Controls types of device activity logs collected from the device and reported via Pub/Sub notification (https://developers.google.com/android/management/notifications). */
 export interface UsageLog {
@@ -3104,9 +3096,8 @@ export type PolicyWipeDataFlagsItemEnum = "WIPE_DATA_FLAG_UNSPECIFIED" | "WIPE_E
 export const PolicyWipeDataFlagsItemEnum = S.String;
 
 export type PolicyWipeDataFlagsItemEnumList = Array<PolicyWipeDataFlagsItemEnum | (string & {})>;
-export const PolicyWipeDataFlagsItemEnumList = /*@__PURE__*/ S.Array(
-  PolicyWipeDataFlagsItemEnum,
-) as any as S.Schema<PolicyWipeDataFlagsItemEnumList>;
+export const PolicyWipeDataFlagsItemEnumList =
+  EnterpriseEnabledNotificationTypesItemEnumList as any as S.Schema<PolicyWipeDataFlagsItemEnumList>;
 
 export type PolicyPrintingPolicyEnum =
   | "PRINTING_POLICY_UNSPECIFIED"
@@ -3196,9 +3187,8 @@ export const PolicyStayOnPluggedModesItemEnum = S.String;
 export type PolicyStayOnPluggedModesItemEnumList = Array<
   PolicyStayOnPluggedModesItemEnum | (string & {})
 >;
-export const PolicyStayOnPluggedModesItemEnumList = /*@__PURE__*/ S.Array(
-  PolicyStayOnPluggedModesItemEnum,
-) as any as S.Schema<PolicyStayOnPluggedModesItemEnumList>;
+export const PolicyStayOnPluggedModesItemEnumList =
+  EnterpriseEnabledNotificationTypesItemEnumList as any as S.Schema<PolicyStayOnPluggedModesItemEnumList>;
 
 export type SystemUpdateTypeEnum =
   | "SYSTEM_UPDATE_TYPE_UNSPECIFIED"
@@ -3328,9 +3318,8 @@ export const ApplicationPolicyDelegatedScopesItemEnum = S.String;
 export type ApplicationPolicyDelegatedScopesItemEnumList = Array<
   ApplicationPolicyDelegatedScopesItemEnum | (string & {})
 >;
-export const ApplicationPolicyDelegatedScopesItemEnumList = /*@__PURE__*/ S.Array(
-  ApplicationPolicyDelegatedScopesItemEnum,
-) as any as S.Schema<ApplicationPolicyDelegatedScopesItemEnumList>;
+export const ApplicationPolicyDelegatedScopesItemEnumList =
+  EnterpriseEnabledNotificationTypesItemEnumList as any as S.Schema<ApplicationPolicyDelegatedScopesItemEnumList>;
 
 export type ApplicationPolicyWorkProfileWidgetsEnum =
   | "WORK_PROFILE_WIDGETS_UNSPECIFIED"
@@ -4060,9 +4049,8 @@ export const PolicyAndroidDevicePolicyTracksItemEnum = S.String;
 export type PolicyAndroidDevicePolicyTracksItemEnumList = Array<
   PolicyAndroidDevicePolicyTracksItemEnum | (string & {})
 >;
-export const PolicyAndroidDevicePolicyTracksItemEnumList = /*@__PURE__*/ S.Array(
-  PolicyAndroidDevicePolicyTracksItemEnum,
-) as any as S.Schema<PolicyAndroidDevicePolicyTracksItemEnumList>;
+export const PolicyAndroidDevicePolicyTracksItemEnumList =
+  EnterpriseEnabledNotificationTypesItemEnumList as any as S.Schema<PolicyAndroidDevicePolicyTracksItemEnumList>;
 
 export type PolicyEnterpriseDisplayNameVisibilityEnum =
   | "ENTERPRISE_DISPLAY_NAME_VISIBILITY_UNSPECIFIED"
@@ -4124,9 +4112,8 @@ export const PolicyKeyguardDisabledFeaturesItemEnum = S.String;
 export type PolicyKeyguardDisabledFeaturesItemEnumList = Array<
   PolicyKeyguardDisabledFeaturesItemEnum | (string & {})
 >;
-export const PolicyKeyguardDisabledFeaturesItemEnumList = /*@__PURE__*/ S.Array(
-  PolicyKeyguardDisabledFeaturesItemEnum,
-) as any as S.Schema<PolicyKeyguardDisabledFeaturesItemEnumList>;
+export const PolicyKeyguardDisabledFeaturesItemEnumList =
+  EnterpriseEnabledNotificationTypesItemEnumList as any as S.Schema<PolicyKeyguardDisabledFeaturesItemEnumList>;
 
 export type PolicyPreferentialNetworkServiceEnum =
   | "PREFERENTIAL_NETWORK_SERVICE_UNSPECIFIED"
@@ -4241,9 +4228,8 @@ export const DefaultApplicationSettingDefaultApplicationScopesItemEnum = S.Strin
 export type DefaultApplicationSettingDefaultApplicationScopesItemEnumList = Array<
   DefaultApplicationSettingDefaultApplicationScopesItemEnum | (string & {})
 >;
-export const DefaultApplicationSettingDefaultApplicationScopesItemEnumList = /*@__PURE__*/ S.Array(
-  DefaultApplicationSettingDefaultApplicationScopesItemEnum,
-) as any as S.Schema<DefaultApplicationSettingDefaultApplicationScopesItemEnumList>;
+export const DefaultApplicationSettingDefaultApplicationScopesItemEnumList =
+  EnterpriseEnabledNotificationTypesItemEnumList as any as S.Schema<DefaultApplicationSettingDefaultApplicationScopesItemEnumList>;
 
 /** The default application setting for a DefaultApplicationType. */
 export interface DefaultApplicationSetting {
@@ -4804,9 +4790,8 @@ export const CommandResetPasswordFlagsItemEnum = S.String;
 export type CommandResetPasswordFlagsItemEnumList = Array<
   CommandResetPasswordFlagsItemEnum | (string & {})
 >;
-export const CommandResetPasswordFlagsItemEnumList = /*@__PURE__*/ S.Array(
-  CommandResetPasswordFlagsItemEnum,
-) as any as S.Schema<CommandResetPasswordFlagsItemEnumList>;
+export const CommandResetPasswordFlagsItemEnumList =
+  EnterpriseEnabledNotificationTypesItemEnumList as any as S.Schema<CommandResetPasswordFlagsItemEnumList>;
 
 export type PerAppResultClearingResultEnum =
   | "CLEARING_RESULT_UNSPECIFIED"
@@ -4884,9 +4869,8 @@ export const WipeParamsWipeDataFlagsItemEnum = S.String;
 export type WipeParamsWipeDataFlagsItemEnumList = Array<
   WipeParamsWipeDataFlagsItemEnum | (string & {})
 >;
-export const WipeParamsWipeDataFlagsItemEnumList = /*@__PURE__*/ S.Array(
-  WipeParamsWipeDataFlagsItemEnum,
-) as any as S.Schema<WipeParamsWipeDataFlagsItemEnumList>;
+export const WipeParamsWipeDataFlagsItemEnumList =
+  EnterpriseEnabledNotificationTypesItemEnumList as any as S.Schema<WipeParamsWipeDataFlagsItemEnumList>;
 
 /** Parameters associated with the WIPE command to wipe the device. */
 export interface WipeParams {
@@ -4919,11 +4903,7 @@ export interface StartLostModeStatus {
   /** The status. See StartLostModeStatus. */
   status?: StartLostModeStatusStatusEnum | (string & {});
 }
-export const StartLostModeStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(StartLostModeStatusStatusEnum),
-  }),
-).annotate({ identifier: "StartLostModeStatus" }) as any as S.Schema<StartLostModeStatus>;
+export const StartLostModeStatus = StopLostModeStatus as any as S.Schema<StartLostModeStatus>;
 
 /** Parameters associated with the CLEAR_APP_DATA command to clear the data of specified apps from the device. */
 export interface ClearAppsDataParams {

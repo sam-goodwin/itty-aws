@@ -170,9 +170,7 @@ export const ReservationTerm = S.String;
 
 /** Available reservation terms for this resource */
 export type CatalogTermsList = Array<ReservationTerm>;
-export const CatalogTermsList = /*@__PURE__*/ S.Array(
-  ReservationTerm,
-) as any as S.Schema<CatalogTermsList>;
+export const CatalogTermsList = CatalogBillingPlansValueList as any as S.Schema<CatalogTermsList>;
 
 export type CatalogLocationsList = Array<string>;
 export const CatalogLocationsList =
@@ -960,19 +958,7 @@ export interface ReservationResponse {
   /** Resource Provider type to be reserved. */
   kind?: ReservationResponseKind;
 }
-export const ReservationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ReservationsProperties),
-    location: S.optional(S.String),
-    etag: S.optional(S.Number),
-    sku: S.optional(SkuName),
-    kind: S.optional(ReservationResponseKind),
-  }),
-).annotate({ identifier: "ReservationResponse" }) as any as S.Schema<ReservationResponse>;
+export const ReservationResponse = GetReservationResponse as any as S.Schema<ReservationResponse>;
 
 export type ReservationOrderPropertiesReservationsList = Array<ReservationResponse>;
 export const ReservationOrderPropertiesReservationsList = /*@__PURE__*/ S.Array(

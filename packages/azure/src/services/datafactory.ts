@@ -3859,19 +3859,12 @@ export interface VariableSpecification {
   /** Default value of variable. */
   defaultValue?: unknown;
 }
-export const VariableSpecification = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: VariableType,
-    defaultValue: S.optional(S.Unknown),
-  }),
-).annotate({ identifier: "VariableSpecification" }) as any as S.Schema<VariableSpecification>;
+export const VariableSpecification =
+  ParameterSpecification as any as S.Schema<VariableSpecification>;
 
 /** List of variables for pipeline. */
 export type PipelineVariablesMap = { [key: string]: VariableSpecification | undefined };
-export const PipelineVariablesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  VariableSpecification,
-) as any as S.Schema<PipelineVariablesMap>;
+export const PipelineVariablesMap = DatasetParametersMap as any as S.Schema<PipelineVariablesMap>;
 
 /** List of tags that can be used for describing the Pipeline. */
 export type PipelineAnnotationsList = Array<unknown>;

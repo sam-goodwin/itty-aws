@@ -255,9 +255,8 @@ export const StoresSecretsCreateResultItemScopesItem = S.String;
 
 export type StoresSecretsCreateResultItemScopesList =
   Array<StoresSecretsCreateResultItemScopesItem>;
-export const StoresSecretsCreateResultItemScopesList = /*@__PURE__*/ S.Array(
-  StoresSecretsCreateResultItemScopesItem,
-) as any as S.Schema<StoresSecretsCreateResultItemScopesList>;
+export const StoresSecretsCreateResultItemScopesList =
+  StoresSecretsCreateRequestBodyItemScopesList as any as S.Schema<StoresSecretsCreateResultItemScopesList>;
 
 export interface StoresSecretsCreateResultItem {
   /** Secret identifier tag. */
@@ -375,9 +374,8 @@ export const StoresSecretsDuplicateRequestScopesItem = S.String;
 export type StoresSecretsDuplicateRequestScopesList = Array<
   StoresSecretsDuplicateRequestScopesItem | (string & {})
 >;
-export const StoresSecretsDuplicateRequestScopesList = /*@__PURE__*/ S.Array(
-  StoresSecretsDuplicateRequestScopesItem,
-) as any as S.Schema<StoresSecretsDuplicateRequestScopesList>;
+export const StoresSecretsDuplicateRequestScopesList =
+  StoresSecretsCreateRequestBodyItemScopesList as any as S.Schema<StoresSecretsDuplicateRequestScopesList>;
 
 export interface DuplicateStoreSecretRequest {
   accountId: string;
@@ -425,9 +423,8 @@ export const StoresSecretsDuplicateResponseScopesItem = S.String;
 
 export type StoresSecretsDuplicateResponseScopesList =
   Array<StoresSecretsDuplicateResponseScopesItem>;
-export const StoresSecretsDuplicateResponseScopesList = /*@__PURE__*/ S.Array(
-  StoresSecretsDuplicateResponseScopesItem,
-) as any as S.Schema<StoresSecretsDuplicateResponseScopesList>;
+export const StoresSecretsDuplicateResponseScopesList =
+  StoresSecretsCreateRequestBodyItemScopesList as any as S.Schema<StoresSecretsDuplicateResponseScopesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DuplicateStoreSecretResponse {
@@ -564,9 +561,8 @@ export type StoresSecretsGetResponseScopesItem =
 export const StoresSecretsGetResponseScopesItem = S.String;
 
 export type StoresSecretsGetResponseScopesList = Array<StoresSecretsGetResponseScopesItem>;
-export const StoresSecretsGetResponseScopesList = /*@__PURE__*/ S.Array(
-  StoresSecretsGetResponseScopesItem,
-) as any as S.Schema<StoresSecretsGetResponseScopesList>;
+export const StoresSecretsGetResponseScopesList =
+  StoresSecretsCreateRequestBodyItemScopesList as any as S.Schema<StoresSecretsGetResponseScopesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetStoreSecretResponse {
@@ -686,9 +682,8 @@ export const StoresSecretsListRequestScopes = S.String;
 export type StoresSecretsListRequestScopesList = Array<
   StoresSecretsListRequestScopes | (string & {})
 >;
-export const StoresSecretsListRequestScopesList = /*@__PURE__*/ S.Array(
-  StoresSecretsListRequestScopes,
-) as any as S.Schema<StoresSecretsListRequestScopesList>;
+export const StoresSecretsListRequestScopesList =
+  StoresSecretsCreateRequestBodyItemScopesList as any as S.Schema<StoresSecretsListRequestScopesList>;
 
 export interface ListStoreSecretsRequest {
   accountId: string;
@@ -740,9 +735,8 @@ export type StoresSecretsListResultItemScopesItem =
 export const StoresSecretsListResultItemScopesItem = S.String;
 
 export type StoresSecretsListResultItemScopesList = Array<StoresSecretsListResultItemScopesItem>;
-export const StoresSecretsListResultItemScopesList = /*@__PURE__*/ S.Array(
-  StoresSecretsListResultItemScopesItem,
-) as any as S.Schema<StoresSecretsListResultItemScopesList>;
+export const StoresSecretsListResultItemScopesList =
+  StoresSecretsCreateRequestBodyItemScopesList as any as S.Schema<StoresSecretsListResultItemScopesList>;
 
 export interface StoresSecretsListResultItem {
   /** Secret identifier tag. */
@@ -761,25 +755,12 @@ export interface StoresSecretsListResultItem {
   /** The list of services that can use this secret. */
   scopes?: StoresSecretsListResultItemScopesList | null;
 }
-export const StoresSecretsListResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    created: S.String,
-    modified: S.String,
-    name: S.String,
-    status: StoresSecretsListResultItemStatus,
-    storeId: S.String.pipe(T.Body("store_id")),
-    comment: S.optional(S.NullOr(S.String)),
-    scopes: S.optional(S.NullOr(StoresSecretsListResultItemScopesList)),
-  }),
-).annotate({
-  identifier: "StoresSecretsListResultItem",
-}) as any as S.Schema<StoresSecretsListResultItem>;
+export const StoresSecretsListResultItem =
+  StoresSecretsCreateResultItem as any as S.Schema<StoresSecretsListResultItem>;
 
 export type StoresSecretsListResultList = Array<StoresSecretsListResultItem>;
-export const StoresSecretsListResultList = /*@__PURE__*/ S.Array(
-  StoresSecretsListResultItem,
-) as any as S.Schema<StoresSecretsListResultList>;
+export const StoresSecretsListResultList =
+  StoresSecretsCreateResultList as any as S.Schema<StoresSecretsListResultList>;
 
 export interface ListStoreSecretsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
@@ -806,9 +787,8 @@ export const StoresSecretsEditRequestScopesItem = S.String;
 export type StoresSecretsEditRequestScopesList = Array<
   StoresSecretsEditRequestScopesItem | (string & {})
 >;
-export const StoresSecretsEditRequestScopesList = /*@__PURE__*/ S.Array(
-  StoresSecretsEditRequestScopesItem,
-) as any as S.Schema<StoresSecretsEditRequestScopesList>;
+export const StoresSecretsEditRequestScopesList =
+  StoresSecretsCreateRequestBodyItemScopesList as any as S.Schema<StoresSecretsEditRequestScopesList>;
 
 export interface PatchStoreSecretRequest {
   accountId: string;
@@ -853,9 +833,8 @@ export type StoresSecretsEditResponseScopesItem =
 export const StoresSecretsEditResponseScopesItem = S.String;
 
 export type StoresSecretsEditResponseScopesList = Array<StoresSecretsEditResponseScopesItem>;
-export const StoresSecretsEditResponseScopesList = /*@__PURE__*/ S.Array(
-  StoresSecretsEditResponseScopesItem,
-) as any as S.Schema<StoresSecretsEditResponseScopesList>;
+export const StoresSecretsEditResponseScopesList =
+  StoresSecretsCreateRequestBodyItemScopesList as any as S.Schema<StoresSecretsEditResponseScopesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchStoreSecretResponse {
@@ -875,18 +854,8 @@ export interface PatchStoreSecretResponse {
   /** The list of services that can use this secret. */
   scopes?: StoresSecretsEditResponseScopesList | null;
 }
-export const PatchStoreSecretResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    created: S.String,
-    modified: S.String,
-    name: S.String,
-    status: StoresSecretsEditResponseStatus,
-    storeId: S.String.pipe(T.Body("store_id")),
-    comment: S.optional(S.NullOr(S.String)),
-    scopes: S.optional(S.NullOr(StoresSecretsEditResponseScopesList)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "PatchStoreSecretResponse" }) as any as S.Schema<PatchStoreSecretResponse>;
+export const PatchStoreSecretResponse =
+  GetStoreSecretResponse as any as S.Schema<PatchStoreSecretResponse>;
 
 export type BulkDeleteStoreSecretsError =
   | StoreNotFound

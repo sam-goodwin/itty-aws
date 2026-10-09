@@ -3344,9 +3344,8 @@ export const ListProjectsServiceAccountsKeysKeyTypesEnum = S.String;
 export type ListProjectsServiceAccountsKeysKeyTypesEnumList = Array<
   ListProjectsServiceAccountsKeysKeyTypesEnum | (string & {})
 >;
-export const ListProjectsServiceAccountsKeysKeyTypesEnumList = /*@__PURE__*/ S.Array(
-  ListProjectsServiceAccountsKeysKeyTypesEnum,
-) as any as S.Schema<ListProjectsServiceAccountsKeysKeyTypesEnumList>;
+export const ListProjectsServiceAccountsKeysKeyTypesEnumList =
+  OauthClientAllowedGrantTypesItemEnumList as any as S.Schema<ListProjectsServiceAccountsKeysKeyTypesEnumList>;
 
 export interface ListProjectsServiceAccountsKeysRequest {
   /** Required. The resource name of the service account. Use one of the following formats: * `projects/{PROJECT_ID}/serviceAccounts/{EMAIL_ADDRESS}` * `projects/{PROJECT_ID}/serviceAccounts/{UNIQUE_ID}` As an alternative, you can use the `-` wildcard character instead of the project ID: * `projects/-/serviceAccounts/{EMAIL_ADDRESS}` * `projects/-/serviceAccounts/{UNIQUE_ID}` When possible, avoid using the `-` wildcard character, because it can cause response messages to contain misleading error codes. For example, if you try to access the service account `projects/-/serviceAccounts/fake@example.com`, which does not exist, the response contains an HTTP `403 Forbidden` error instead of a `404 Not Found` error. */

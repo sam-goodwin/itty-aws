@@ -233,9 +233,8 @@ export type WeeklyScheduleDaysItemEnum =
 export const WeeklyScheduleDaysItemEnum = S.String;
 
 export type WeeklyScheduleDaysItemEnumList = Array<WeeklyScheduleDaysItemEnum | (string & {})>;
-export const WeeklyScheduleDaysItemEnumList = /*@__PURE__*/ S.Array(
-  WeeklyScheduleDaysItemEnum,
-) as any as S.Schema<WeeklyScheduleDaysItemEnumList>;
+export const WeeklyScheduleDaysItemEnumList =
+  SAMLParamsAuthenticationContextsItemEnumList as any as S.Schema<WeeklyScheduleDaysItemEnumList>;
 
 /** Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`. */
 export interface TimeOfDay {

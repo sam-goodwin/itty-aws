@@ -1956,9 +1956,8 @@ export const DatabaseInstanceSuspensionReasonItemEnum = S.String;
 export type DatabaseInstanceSuspensionReasonItemEnumList = Array<
   DatabaseInstanceSuspensionReasonItemEnum | (string & {})
 >;
-export const DatabaseInstanceSuspensionReasonItemEnumList = /*@__PURE__*/ S.Array(
-  DatabaseInstanceSuspensionReasonItemEnum,
-) as any as S.Schema<DatabaseInstanceSuspensionReasonItemEnumList>;
+export const DatabaseInstanceSuspensionReasonItemEnumList =
+  ConnectSettingsMdxProtocolSupportItemEnumList as any as S.Schema<DatabaseInstanceSuspensionReasonItemEnumList>;
 
 /** A list of objects that the user selects for replication from an external source instance. */
 export interface SelectedObjects {
@@ -5172,9 +5171,8 @@ export type FlagAppliesToItemEnum =
 export const FlagAppliesToItemEnum = S.String;
 
 export type FlagAppliesToItemEnumList = Array<FlagAppliesToItemEnum>;
-export const FlagAppliesToItemEnumList = /*@__PURE__*/ S.Array(
-  FlagAppliesToItemEnum,
-) as any as S.Schema<FlagAppliesToItemEnumList>;
+export const FlagAppliesToItemEnumList =
+  ConnectSettingsMdxProtocolSupportItemEnumList as any as S.Schema<FlagAppliesToItemEnumList>;
 
 /** A flag resource. */
 export interface Flag {

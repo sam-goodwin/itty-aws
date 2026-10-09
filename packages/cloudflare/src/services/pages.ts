@@ -1244,16 +1244,8 @@ export interface ProjectsCreateResponseCanonicalDeploymentStagesItem {
   /** State of the current stage. */
   status: ProjectsCreateResponseCanonicalDeploymentStagesItemStatus;
 }
-export const ProjectsCreateResponseCanonicalDeploymentStagesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endedOn: S.String.pipe(T.Body("ended_on")),
-    name: ProjectsCreateResponseCanonicalDeploymentStagesItemName,
-    startedOn: S.String.pipe(T.Body("started_on")),
-    status: ProjectsCreateResponseCanonicalDeploymentStagesItemStatus,
-  }),
-).annotate({
-  identifier: "ProjectsCreateResponseCanonicalDeploymentStagesItem",
-}) as any as S.Schema<ProjectsCreateResponseCanonicalDeploymentStagesItem>;
+export const ProjectsCreateResponseCanonicalDeploymentStagesItem =
+  ProjectsCreateResponseCanonicalDeploymentLatestStage as any as S.Schema<ProjectsCreateResponseCanonicalDeploymentStagesItem>;
 
 export type ProjectsCreateResponseCanonicalDeploymentStagesList =
   Array<ProjectsCreateResponseCanonicalDeploymentStagesItem>;
@@ -1948,15 +1940,8 @@ export interface ProjectsCreateResponseLatestDeploymentEnvVarsValueSecretText {
   /** Secret value. */
   value: string;
 }
-export const ProjectsCreateResponseLatestDeploymentEnvVarsValueSecretText = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      type: ProjectsCreateResponseLatestDeploymentEnvVarsValueSecretTextType,
-      value: S.String,
-    }),
-).annotate({
-  identifier: "ProjectsCreateResponseLatestDeploymentEnvVarsValueSecretText",
-}) as any as S.Schema<ProjectsCreateResponseLatestDeploymentEnvVarsValueSecretText>;
+export const ProjectsCreateResponseLatestDeploymentEnvVarsValueSecretText =
+  ProjectsCreateResponseLatestDeploymentEnvVarsValuePlainText as any as S.Schema<ProjectsCreateResponseLatestDeploymentEnvVarsValueSecretText>;
 
 export type ProjectsCreateResponseLatestDeploymentEnvVarsValue =
   | ProjectsCreateResponseLatestDeploymentEnvVarsValuePlainText
@@ -2009,16 +1994,8 @@ export interface ProjectsCreateResponseLatestDeploymentLatestStage {
   /** State of the current stage. */
   status: ProjectsCreateResponseLatestDeploymentLatestStageStatus;
 }
-export const ProjectsCreateResponseLatestDeploymentLatestStage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endedOn: S.String.pipe(T.Body("ended_on")),
-    name: ProjectsCreateResponseLatestDeploymentLatestStageName,
-    startedOn: S.String.pipe(T.Body("started_on")),
-    status: ProjectsCreateResponseLatestDeploymentLatestStageStatus,
-  }),
-).annotate({
-  identifier: "ProjectsCreateResponseLatestDeploymentLatestStage",
-}) as any as S.Schema<ProjectsCreateResponseLatestDeploymentLatestStage>;
+export const ProjectsCreateResponseLatestDeploymentLatestStage =
+  ProjectsCreateResponseCanonicalDeploymentLatestStage as any as S.Schema<ProjectsCreateResponseLatestDeploymentLatestStage>;
 
 export type ProjectsCreateResponseLatestDeploymentSourceConfigPathExcludesList = Array<string>;
 export const ProjectsCreateResponseLatestDeploymentSourceConfigPathExcludesList =
@@ -2149,22 +2126,13 @@ export interface ProjectsCreateResponseLatestDeploymentStagesItem {
   /** State of the current stage. */
   status: ProjectsCreateResponseLatestDeploymentStagesItemStatus;
 }
-export const ProjectsCreateResponseLatestDeploymentStagesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endedOn: S.String.pipe(T.Body("ended_on")),
-    name: ProjectsCreateResponseLatestDeploymentStagesItemName,
-    startedOn: S.String.pipe(T.Body("started_on")),
-    status: ProjectsCreateResponseLatestDeploymentStagesItemStatus,
-  }),
-).annotate({
-  identifier: "ProjectsCreateResponseLatestDeploymentStagesItem",
-}) as any as S.Schema<ProjectsCreateResponseLatestDeploymentStagesItem>;
+export const ProjectsCreateResponseLatestDeploymentStagesItem =
+  ProjectsCreateResponseCanonicalDeploymentLatestStage as any as S.Schema<ProjectsCreateResponseLatestDeploymentStagesItem>;
 
 export type ProjectsCreateResponseLatestDeploymentStagesList =
   Array<ProjectsCreateResponseLatestDeploymentStagesItem>;
-export const ProjectsCreateResponseLatestDeploymentStagesList = /*@__PURE__*/ S.Array(
-  ProjectsCreateResponseLatestDeploymentStagesItem,
-) as any as S.Schema<ProjectsCreateResponseLatestDeploymentStagesList>;
+export const ProjectsCreateResponseLatestDeploymentStagesList =
+  ProjectsCreateResponseCanonicalDeploymentStagesList as any as S.Schema<ProjectsCreateResponseLatestDeploymentStagesList>;
 
 export type ProjectsCreateResponseLatestDeploymentSkipReason =
   | "commit_message"
@@ -2493,14 +2461,8 @@ export interface ProjectsDeploymentsCreateResponseDeploymentTrigger {
   /** What caused the deployment. */
   type: ProjectsDeploymentsCreateResponseDeploymentTriggerType;
 }
-export const ProjectsDeploymentsCreateResponseDeploymentTrigger = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metadata: ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerMetadata,
-    type: ProjectsDeploymentsCreateResponseDeploymentTriggerType,
-  }),
-).annotate({
-  identifier: "ProjectsDeploymentsCreateResponseDeploymentTrigger",
-}) as any as S.Schema<ProjectsDeploymentsCreateResponseDeploymentTrigger>;
+export const ProjectsDeploymentsCreateResponseDeploymentTrigger =
+  ProjectsCreateResponseLatestDeploymentDeploymentTrigger as any as S.Schema<ProjectsDeploymentsCreateResponseDeploymentTrigger>;
 
 export type ProjectsDeploymentsCreateResponseEnvironment = "preview" | "production";
 export const ProjectsDeploymentsCreateResponseEnvironment = S.String;
@@ -2532,16 +2494,8 @@ export interface ProjectsDeploymentsCreateResponseLatestStage {
   /** State of the current stage. */
   status: ProjectsDeploymentsCreateResponseLatestStageStatus;
 }
-export const ProjectsDeploymentsCreateResponseLatestStage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endedOn: S.String.pipe(T.Body("ended_on")),
-    name: ProjectsDeploymentsCreateResponseLatestStageName,
-    startedOn: S.String.pipe(T.Body("started_on")),
-    status: ProjectsDeploymentsCreateResponseLatestStageStatus,
-  }),
-).annotate({
-  identifier: "ProjectsDeploymentsCreateResponseLatestStage",
-}) as any as S.Schema<ProjectsDeploymentsCreateResponseLatestStage>;
+export const ProjectsDeploymentsCreateResponseLatestStage =
+  ProjectsCreateResponseCanonicalDeploymentLatestStage as any as S.Schema<ProjectsDeploymentsCreateResponseLatestStage>;
 
 export type ProjectsDeploymentsCreateResponseSourceConfigPathExcludesList = Array<string>;
 export const ProjectsDeploymentsCreateResponseSourceConfigPathExcludesList =
@@ -2670,22 +2624,13 @@ export interface ProjectsDeploymentsCreateResponseStagesItem {
   /** State of the current stage. */
   status: ProjectsDeploymentsCreateResponseStagesItemStatus;
 }
-export const ProjectsDeploymentsCreateResponseStagesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endedOn: S.String.pipe(T.Body("ended_on")),
-    name: ProjectsDeploymentsCreateResponseStagesItemName,
-    startedOn: S.String.pipe(T.Body("started_on")),
-    status: ProjectsDeploymentsCreateResponseStagesItemStatus,
-  }),
-).annotate({
-  identifier: "ProjectsDeploymentsCreateResponseStagesItem",
-}) as any as S.Schema<ProjectsDeploymentsCreateResponseStagesItem>;
+export const ProjectsDeploymentsCreateResponseStagesItem =
+  ProjectsCreateResponseCanonicalDeploymentLatestStage as any as S.Schema<ProjectsDeploymentsCreateResponseStagesItem>;
 
 export type ProjectsDeploymentsCreateResponseStagesList =
   Array<ProjectsDeploymentsCreateResponseStagesItem>;
-export const ProjectsDeploymentsCreateResponseStagesList = /*@__PURE__*/ S.Array(
-  ProjectsDeploymentsCreateResponseStagesItem,
-) as any as S.Schema<ProjectsDeploymentsCreateResponseStagesList>;
+export const ProjectsDeploymentsCreateResponseStagesList =
+  ProjectsCreateResponseCanonicalDeploymentStagesList as any as S.Schema<ProjectsDeploymentsCreateResponseStagesList>;
 
 export type ProjectsDeploymentsCreateResponseSkipReason =
   | "commit_message"
@@ -3116,14 +3061,8 @@ export interface ProjectsGetResponseCanonicalDeploymentDeploymentTrigger {
   /** What caused the deployment. */
   type: ProjectsGetResponseCanonicalDeploymentDeploymentTriggerType;
 }
-export const ProjectsGetResponseCanonicalDeploymentDeploymentTrigger = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metadata: ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerMetadata,
-    type: ProjectsGetResponseCanonicalDeploymentDeploymentTriggerType,
-  }),
-).annotate({
-  identifier: "ProjectsGetResponseCanonicalDeploymentDeploymentTrigger",
-}) as any as S.Schema<ProjectsGetResponseCanonicalDeploymentDeploymentTrigger>;
+export const ProjectsGetResponseCanonicalDeploymentDeploymentTrigger =
+  ProjectsCreateResponseLatestDeploymentDeploymentTrigger as any as S.Schema<ProjectsGetResponseCanonicalDeploymentDeploymentTrigger>;
 
 export type ProjectsGetResponseCanonicalDeploymentEnvironment = "preview" | "production";
 export const ProjectsGetResponseCanonicalDeploymentEnvironment = S.String;
@@ -3155,16 +3094,8 @@ export interface ProjectsGetResponseCanonicalDeploymentLatestStage {
   /** State of the current stage. */
   status: ProjectsGetResponseCanonicalDeploymentLatestStageStatus;
 }
-export const ProjectsGetResponseCanonicalDeploymentLatestStage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endedOn: S.String.pipe(T.Body("ended_on")),
-    name: ProjectsGetResponseCanonicalDeploymentLatestStageName,
-    startedOn: S.String.pipe(T.Body("started_on")),
-    status: ProjectsGetResponseCanonicalDeploymentLatestStageStatus,
-  }),
-).annotate({
-  identifier: "ProjectsGetResponseCanonicalDeploymentLatestStage",
-}) as any as S.Schema<ProjectsGetResponseCanonicalDeploymentLatestStage>;
+export const ProjectsGetResponseCanonicalDeploymentLatestStage =
+  ProjectsCreateResponseCanonicalDeploymentLatestStage as any as S.Schema<ProjectsGetResponseCanonicalDeploymentLatestStage>;
 
 export type ProjectsGetResponseCanonicalDeploymentSourceConfigPathExcludesList = Array<string>;
 export const ProjectsGetResponseCanonicalDeploymentSourceConfigPathExcludesList =
@@ -3295,22 +3226,13 @@ export interface ProjectsGetResponseCanonicalDeploymentStagesItem {
   /** State of the current stage. */
   status: ProjectsGetResponseCanonicalDeploymentStagesItemStatus;
 }
-export const ProjectsGetResponseCanonicalDeploymentStagesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endedOn: S.String.pipe(T.Body("ended_on")),
-    name: ProjectsGetResponseCanonicalDeploymentStagesItemName,
-    startedOn: S.String.pipe(T.Body("started_on")),
-    status: ProjectsGetResponseCanonicalDeploymentStagesItemStatus,
-  }),
-).annotate({
-  identifier: "ProjectsGetResponseCanonicalDeploymentStagesItem",
-}) as any as S.Schema<ProjectsGetResponseCanonicalDeploymentStagesItem>;
+export const ProjectsGetResponseCanonicalDeploymentStagesItem =
+  ProjectsCreateResponseCanonicalDeploymentLatestStage as any as S.Schema<ProjectsGetResponseCanonicalDeploymentStagesItem>;
 
 export type ProjectsGetResponseCanonicalDeploymentStagesList =
   Array<ProjectsGetResponseCanonicalDeploymentStagesItem>;
-export const ProjectsGetResponseCanonicalDeploymentStagesList = /*@__PURE__*/ S.Array(
-  ProjectsGetResponseCanonicalDeploymentStagesItem,
-) as any as S.Schema<ProjectsGetResponseCanonicalDeploymentStagesList>;
+export const ProjectsGetResponseCanonicalDeploymentStagesList =
+  ProjectsCreateResponseCanonicalDeploymentStagesList as any as S.Schema<ProjectsGetResponseCanonicalDeploymentStagesList>;
 
 export type ProjectsGetResponseCanonicalDeploymentSkipReason =
   | "commit_message"
@@ -3942,14 +3864,8 @@ export interface ProjectsGetResponseLatestDeploymentDeploymentTrigger {
   /** What caused the deployment. */
   type: ProjectsGetResponseLatestDeploymentDeploymentTriggerType;
 }
-export const ProjectsGetResponseLatestDeploymentDeploymentTrigger = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metadata: ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerMetadata,
-    type: ProjectsGetResponseLatestDeploymentDeploymentTriggerType,
-  }),
-).annotate({
-  identifier: "ProjectsGetResponseLatestDeploymentDeploymentTrigger",
-}) as any as S.Schema<ProjectsGetResponseLatestDeploymentDeploymentTrigger>;
+export const ProjectsGetResponseLatestDeploymentDeploymentTrigger =
+  ProjectsCreateResponseLatestDeploymentDeploymentTrigger as any as S.Schema<ProjectsGetResponseLatestDeploymentDeploymentTrigger>;
 
 export type ProjectsGetResponseLatestDeploymentEnvVarsValuePlainTextType = "plain_text";
 export const ProjectsGetResponseLatestDeploymentEnvVarsValuePlainTextType = S.String;
@@ -3959,15 +3875,8 @@ export interface ProjectsGetResponseLatestDeploymentEnvVarsValuePlainText {
   /** Environment variable value. */
   value: string;
 }
-export const ProjectsGetResponseLatestDeploymentEnvVarsValuePlainText = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      type: ProjectsGetResponseLatestDeploymentEnvVarsValuePlainTextType,
-      value: S.String,
-    }),
-).annotate({
-  identifier: "ProjectsGetResponseLatestDeploymentEnvVarsValuePlainText",
-}) as any as S.Schema<ProjectsGetResponseLatestDeploymentEnvVarsValuePlainText>;
+export const ProjectsGetResponseLatestDeploymentEnvVarsValuePlainText =
+  ProjectsCreateResponseLatestDeploymentEnvVarsValuePlainText as any as S.Schema<ProjectsGetResponseLatestDeploymentEnvVarsValuePlainText>;
 
 export type ProjectsGetResponseLatestDeploymentEnvVarsValueSecretTextType = "secret_text";
 export const ProjectsGetResponseLatestDeploymentEnvVarsValueSecretTextType = S.String;
@@ -3977,15 +3886,8 @@ export interface ProjectsGetResponseLatestDeploymentEnvVarsValueSecretText {
   /** Secret value. */
   value: string;
 }
-export const ProjectsGetResponseLatestDeploymentEnvVarsValueSecretText = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      type: ProjectsGetResponseLatestDeploymentEnvVarsValueSecretTextType,
-      value: S.String,
-    }),
-).annotate({
-  identifier: "ProjectsGetResponseLatestDeploymentEnvVarsValueSecretText",
-}) as any as S.Schema<ProjectsGetResponseLatestDeploymentEnvVarsValueSecretText>;
+export const ProjectsGetResponseLatestDeploymentEnvVarsValueSecretText =
+  ProjectsCreateResponseLatestDeploymentEnvVarsValuePlainText as any as S.Schema<ProjectsGetResponseLatestDeploymentEnvVarsValueSecretText>;
 
 export type ProjectsGetResponseLatestDeploymentEnvVarsValue =
   | ProjectsGetResponseLatestDeploymentEnvVarsValuePlainText
@@ -4038,16 +3940,8 @@ export interface ProjectsGetResponseLatestDeploymentLatestStage {
   /** State of the current stage. */
   status: ProjectsGetResponseLatestDeploymentLatestStageStatus;
 }
-export const ProjectsGetResponseLatestDeploymentLatestStage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endedOn: S.String.pipe(T.Body("ended_on")),
-    name: ProjectsGetResponseLatestDeploymentLatestStageName,
-    startedOn: S.String.pipe(T.Body("started_on")),
-    status: ProjectsGetResponseLatestDeploymentLatestStageStatus,
-  }),
-).annotate({
-  identifier: "ProjectsGetResponseLatestDeploymentLatestStage",
-}) as any as S.Schema<ProjectsGetResponseLatestDeploymentLatestStage>;
+export const ProjectsGetResponseLatestDeploymentLatestStage =
+  ProjectsCreateResponseCanonicalDeploymentLatestStage as any as S.Schema<ProjectsGetResponseLatestDeploymentLatestStage>;
 
 export type ProjectsGetResponseLatestDeploymentSourceConfigPathExcludesList = Array<string>;
 export const ProjectsGetResponseLatestDeploymentSourceConfigPathExcludesList =
@@ -4178,22 +4072,13 @@ export interface ProjectsGetResponseLatestDeploymentStagesItem {
   /** State of the current stage. */
   status: ProjectsGetResponseLatestDeploymentStagesItemStatus;
 }
-export const ProjectsGetResponseLatestDeploymentStagesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endedOn: S.String.pipe(T.Body("ended_on")),
-    name: ProjectsGetResponseLatestDeploymentStagesItemName,
-    startedOn: S.String.pipe(T.Body("started_on")),
-    status: ProjectsGetResponseLatestDeploymentStagesItemStatus,
-  }),
-).annotate({
-  identifier: "ProjectsGetResponseLatestDeploymentStagesItem",
-}) as any as S.Schema<ProjectsGetResponseLatestDeploymentStagesItem>;
+export const ProjectsGetResponseLatestDeploymentStagesItem =
+  ProjectsCreateResponseCanonicalDeploymentLatestStage as any as S.Schema<ProjectsGetResponseLatestDeploymentStagesItem>;
 
 export type ProjectsGetResponseLatestDeploymentStagesList =
   Array<ProjectsGetResponseLatestDeploymentStagesItem>;
-export const ProjectsGetResponseLatestDeploymentStagesList = /*@__PURE__*/ S.Array(
-  ProjectsGetResponseLatestDeploymentStagesItem,
-) as any as S.Schema<ProjectsGetResponseLatestDeploymentStagesList>;
+export const ProjectsGetResponseLatestDeploymentStagesList =
+  ProjectsCreateResponseCanonicalDeploymentStagesList as any as S.Schema<ProjectsGetResponseLatestDeploymentStagesList>;
 
 export type ProjectsGetResponseLatestDeploymentSkipReason =
   | "commit_message"
@@ -4481,14 +4366,8 @@ export interface ProjectsDeploymentsGetResponseDeploymentTrigger {
   /** What caused the deployment. */
   type: ProjectsDeploymentsGetResponseDeploymentTriggerType;
 }
-export const ProjectsDeploymentsGetResponseDeploymentTrigger = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metadata: ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerMetadata,
-    type: ProjectsDeploymentsGetResponseDeploymentTriggerType,
-  }),
-).annotate({
-  identifier: "ProjectsDeploymentsGetResponseDeploymentTrigger",
-}) as any as S.Schema<ProjectsDeploymentsGetResponseDeploymentTrigger>;
+export const ProjectsDeploymentsGetResponseDeploymentTrigger =
+  ProjectsCreateResponseLatestDeploymentDeploymentTrigger as any as S.Schema<ProjectsDeploymentsGetResponseDeploymentTrigger>;
 
 export type ProjectsDeploymentsGetResponseEnvironment = "preview" | "production";
 export const ProjectsDeploymentsGetResponseEnvironment = S.String;
@@ -4520,16 +4399,8 @@ export interface ProjectsDeploymentsGetResponseLatestStage {
   /** State of the current stage. */
   status: ProjectsDeploymentsGetResponseLatestStageStatus;
 }
-export const ProjectsDeploymentsGetResponseLatestStage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endedOn: S.String.pipe(T.Body("ended_on")),
-    name: ProjectsDeploymentsGetResponseLatestStageName,
-    startedOn: S.String.pipe(T.Body("started_on")),
-    status: ProjectsDeploymentsGetResponseLatestStageStatus,
-  }),
-).annotate({
-  identifier: "ProjectsDeploymentsGetResponseLatestStage",
-}) as any as S.Schema<ProjectsDeploymentsGetResponseLatestStage>;
+export const ProjectsDeploymentsGetResponseLatestStage =
+  ProjectsCreateResponseCanonicalDeploymentLatestStage as any as S.Schema<ProjectsDeploymentsGetResponseLatestStage>;
 
 export type ProjectsDeploymentsGetResponseSourceConfigPathExcludesList = Array<string>;
 export const ProjectsDeploymentsGetResponseSourceConfigPathExcludesList =
@@ -4656,22 +4527,13 @@ export interface ProjectsDeploymentsGetResponseStagesItem {
   /** State of the current stage. */
   status: ProjectsDeploymentsGetResponseStagesItemStatus;
 }
-export const ProjectsDeploymentsGetResponseStagesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endedOn: S.String.pipe(T.Body("ended_on")),
-    name: ProjectsDeploymentsGetResponseStagesItemName,
-    startedOn: S.String.pipe(T.Body("started_on")),
-    status: ProjectsDeploymentsGetResponseStagesItemStatus,
-  }),
-).annotate({
-  identifier: "ProjectsDeploymentsGetResponseStagesItem",
-}) as any as S.Schema<ProjectsDeploymentsGetResponseStagesItem>;
+export const ProjectsDeploymentsGetResponseStagesItem =
+  ProjectsCreateResponseCanonicalDeploymentLatestStage as any as S.Schema<ProjectsDeploymentsGetResponseStagesItem>;
 
 export type ProjectsDeploymentsGetResponseStagesList =
   Array<ProjectsDeploymentsGetResponseStagesItem>;
-export const ProjectsDeploymentsGetResponseStagesList = /*@__PURE__*/ S.Array(
-  ProjectsDeploymentsGetResponseStagesItem,
-) as any as S.Schema<ProjectsDeploymentsGetResponseStagesList>;
+export const ProjectsDeploymentsGetResponseStagesList =
+  ProjectsCreateResponseCanonicalDeploymentStagesList as any as S.Schema<ProjectsDeploymentsGetResponseStagesList>;
 
 export type ProjectsDeploymentsGetResponseSkipReason =
   | "commit_message"
@@ -4866,17 +4728,8 @@ export interface ProjectsDomainsGetResponseValidationData {
   txtName?: string | null;
   txtValue?: string | null;
 }
-export const ProjectsDomainsGetResponseValidationData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    method: ProjectsDomainsGetResponseValidationDataMethod,
-    status: ProjectsDomainsGetResponseValidationDataStatus,
-    errorMessage: S.optional(S.NullOr(S.String).pipe(T.Body("error_message"))),
-    txtName: S.optional(S.NullOr(S.String).pipe(T.Body("txt_name"))),
-    txtValue: S.optional(S.NullOr(S.String).pipe(T.Body("txt_value"))),
-  }),
-).annotate({
-  identifier: "ProjectsDomainsGetResponseValidationData",
-}) as any as S.Schema<ProjectsDomainsGetResponseValidationData>;
+export const ProjectsDomainsGetResponseValidationData =
+  ProjectsDomainsCreateResponseValidationData as any as S.Schema<ProjectsDomainsGetResponseValidationData>;
 
 export type ProjectsDomainsGetResponseVerificationDataStatus =
   | "pending"
@@ -4890,14 +4743,8 @@ export interface ProjectsDomainsGetResponseVerificationData {
   status: ProjectsDomainsGetResponseVerificationDataStatus;
   errorMessage?: string | null;
 }
-export const ProjectsDomainsGetResponseVerificationData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: ProjectsDomainsGetResponseVerificationDataStatus,
-    errorMessage: S.optional(S.NullOr(S.String).pipe(T.Body("error_message"))),
-  }),
-).annotate({
-  identifier: "ProjectsDomainsGetResponseVerificationData",
-}) as any as S.Schema<ProjectsDomainsGetResponseVerificationData>;
+export const ProjectsDomainsGetResponseVerificationData =
+  ProjectsDomainsCreateResponseVerificationData as any as S.Schema<ProjectsDomainsGetResponseVerificationData>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetProjectDomainResponse {
@@ -4989,14 +4836,8 @@ export interface ProjectsDeploymentsListResultItemDeploymentTrigger {
   /** What caused the deployment. */
   type: ProjectsDeploymentsListResultItemDeploymentTriggerType;
 }
-export const ProjectsDeploymentsListResultItemDeploymentTrigger = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metadata: ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerMetadata,
-    type: ProjectsDeploymentsListResultItemDeploymentTriggerType,
-  }),
-).annotate({
-  identifier: "ProjectsDeploymentsListResultItemDeploymentTrigger",
-}) as any as S.Schema<ProjectsDeploymentsListResultItemDeploymentTrigger>;
+export const ProjectsDeploymentsListResultItemDeploymentTrigger =
+  ProjectsCreateResponseLatestDeploymentDeploymentTrigger as any as S.Schema<ProjectsDeploymentsListResultItemDeploymentTrigger>;
 
 export type ProjectsDeploymentsListResultItemEnvironment = "preview" | "production";
 export const ProjectsDeploymentsListResultItemEnvironment = S.String;
@@ -5028,16 +4869,8 @@ export interface ProjectsDeploymentsListResultItemLatestStage {
   /** State of the current stage. */
   status: ProjectsDeploymentsListResultItemLatestStageStatus;
 }
-export const ProjectsDeploymentsListResultItemLatestStage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endedOn: S.String.pipe(T.Body("ended_on")),
-    name: ProjectsDeploymentsListResultItemLatestStageName,
-    startedOn: S.String.pipe(T.Body("started_on")),
-    status: ProjectsDeploymentsListResultItemLatestStageStatus,
-  }),
-).annotate({
-  identifier: "ProjectsDeploymentsListResultItemLatestStage",
-}) as any as S.Schema<ProjectsDeploymentsListResultItemLatestStage>;
+export const ProjectsDeploymentsListResultItemLatestStage =
+  ProjectsCreateResponseCanonicalDeploymentLatestStage as any as S.Schema<ProjectsDeploymentsListResultItemLatestStage>;
 
 export type ProjectsDeploymentsListResultItemSourceConfigPathExcludesList = Array<string>;
 export const ProjectsDeploymentsListResultItemSourceConfigPathExcludesList =
@@ -5166,22 +4999,13 @@ export interface ProjectsDeploymentsListResultItemStagesItem {
   /** State of the current stage. */
   status: ProjectsDeploymentsListResultItemStagesItemStatus;
 }
-export const ProjectsDeploymentsListResultItemStagesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endedOn: S.String.pipe(T.Body("ended_on")),
-    name: ProjectsDeploymentsListResultItemStagesItemName,
-    startedOn: S.String.pipe(T.Body("started_on")),
-    status: ProjectsDeploymentsListResultItemStagesItemStatus,
-  }),
-).annotate({
-  identifier: "ProjectsDeploymentsListResultItemStagesItem",
-}) as any as S.Schema<ProjectsDeploymentsListResultItemStagesItem>;
+export const ProjectsDeploymentsListResultItemStagesItem =
+  ProjectsCreateResponseCanonicalDeploymentLatestStage as any as S.Schema<ProjectsDeploymentsListResultItemStagesItem>;
 
 export type ProjectsDeploymentsListResultItemStagesList =
   Array<ProjectsDeploymentsListResultItemStagesItem>;
-export const ProjectsDeploymentsListResultItemStagesList = /*@__PURE__*/ S.Array(
-  ProjectsDeploymentsListResultItemStagesItem,
-) as any as S.Schema<ProjectsDeploymentsListResultItemStagesList>;
+export const ProjectsDeploymentsListResultItemStagesList =
+  ProjectsCreateResponseCanonicalDeploymentStagesList as any as S.Schema<ProjectsDeploymentsListResultItemStagesList>;
 
 export type ProjectsDeploymentsListResultItemSkipReason =
   | "commit_message"
@@ -5333,17 +5157,8 @@ export interface ProjectsDomainsListResultItemValidationData {
   txtName?: string | null;
   txtValue?: string | null;
 }
-export const ProjectsDomainsListResultItemValidationData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    method: ProjectsDomainsListResultItemValidationDataMethod,
-    status: ProjectsDomainsListResultItemValidationDataStatus,
-    errorMessage: S.optional(S.NullOr(S.String).pipe(T.Body("error_message"))),
-    txtName: S.optional(S.NullOr(S.String).pipe(T.Body("txt_name"))),
-    txtValue: S.optional(S.NullOr(S.String).pipe(T.Body("txt_value"))),
-  }),
-).annotate({
-  identifier: "ProjectsDomainsListResultItemValidationData",
-}) as any as S.Schema<ProjectsDomainsListResultItemValidationData>;
+export const ProjectsDomainsListResultItemValidationData =
+  ProjectsDomainsCreateResponseValidationData as any as S.Schema<ProjectsDomainsListResultItemValidationData>;
 
 export type ProjectsDomainsListResultItemVerificationDataStatus =
   | "pending"
@@ -5357,14 +5172,8 @@ export interface ProjectsDomainsListResultItemVerificationData {
   status: ProjectsDomainsListResultItemVerificationDataStatus;
   errorMessage?: string | null;
 }
-export const ProjectsDomainsListResultItemVerificationData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: ProjectsDomainsListResultItemVerificationDataStatus,
-    errorMessage: S.optional(S.NullOr(S.String).pipe(T.Body("error_message"))),
-  }),
-).annotate({
-  identifier: "ProjectsDomainsListResultItemVerificationData",
-}) as any as S.Schema<ProjectsDomainsListResultItemVerificationData>;
+export const ProjectsDomainsListResultItemVerificationData =
+  ProjectsDomainsCreateResponseVerificationData as any as S.Schema<ProjectsDomainsListResultItemVerificationData>;
 
 export interface ProjectsDomainsListResultItem {
   id: string;
@@ -5462,15 +5271,8 @@ export interface ProjectsListResultItemCanonicalDeploymentDeploymentTrigger {
   /** What caused the deployment. */
   type: ProjectsListResultItemCanonicalDeploymentDeploymentTriggerType;
 }
-export const ProjectsListResultItemCanonicalDeploymentDeploymentTrigger = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      metadata: ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerMetadata,
-      type: ProjectsListResultItemCanonicalDeploymentDeploymentTriggerType,
-    }),
-).annotate({
-  identifier: "ProjectsListResultItemCanonicalDeploymentDeploymentTrigger",
-}) as any as S.Schema<ProjectsListResultItemCanonicalDeploymentDeploymentTrigger>;
+export const ProjectsListResultItemCanonicalDeploymentDeploymentTrigger =
+  ProjectsCreateResponseCanonicalDeploymentDeploymentTrigger as any as S.Schema<ProjectsListResultItemCanonicalDeploymentDeploymentTrigger>;
 
 export type ProjectsListResultItemCanonicalDeploymentEnvironment = "preview" | "production";
 export const ProjectsListResultItemCanonicalDeploymentEnvironment = S.String;
@@ -5502,16 +5304,8 @@ export interface ProjectsListResultItemCanonicalDeploymentLatestStage {
   /** State of the current stage. */
   status: ProjectsListResultItemCanonicalDeploymentLatestStageStatus;
 }
-export const ProjectsListResultItemCanonicalDeploymentLatestStage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endedOn: S.String.pipe(T.Body("ended_on")),
-    name: ProjectsListResultItemCanonicalDeploymentLatestStageName,
-    startedOn: S.String.pipe(T.Body("started_on")),
-    status: ProjectsListResultItemCanonicalDeploymentLatestStageStatus,
-  }),
-).annotate({
-  identifier: "ProjectsListResultItemCanonicalDeploymentLatestStage",
-}) as any as S.Schema<ProjectsListResultItemCanonicalDeploymentLatestStage>;
+export const ProjectsListResultItemCanonicalDeploymentLatestStage =
+  ProjectsCreateResponseCanonicalDeploymentLatestStage as any as S.Schema<ProjectsListResultItemCanonicalDeploymentLatestStage>;
 
 export type ProjectsListResultItemCanonicalDeploymentSourceConfigPathExcludesList = Array<string>;
 export const ProjectsListResultItemCanonicalDeploymentSourceConfigPathExcludesList =
@@ -5643,22 +5437,13 @@ export interface ProjectsListResultItemCanonicalDeploymentStagesItem {
   /** State of the current stage. */
   status: ProjectsListResultItemCanonicalDeploymentStagesItemStatus;
 }
-export const ProjectsListResultItemCanonicalDeploymentStagesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endedOn: S.String.pipe(T.Body("ended_on")),
-    name: ProjectsListResultItemCanonicalDeploymentStagesItemName,
-    startedOn: S.String.pipe(T.Body("started_on")),
-    status: ProjectsListResultItemCanonicalDeploymentStagesItemStatus,
-  }),
-).annotate({
-  identifier: "ProjectsListResultItemCanonicalDeploymentStagesItem",
-}) as any as S.Schema<ProjectsListResultItemCanonicalDeploymentStagesItem>;
+export const ProjectsListResultItemCanonicalDeploymentStagesItem =
+  ProjectsCreateResponseCanonicalDeploymentLatestStage as any as S.Schema<ProjectsListResultItemCanonicalDeploymentStagesItem>;
 
 export type ProjectsListResultItemCanonicalDeploymentStagesList =
   Array<ProjectsListResultItemCanonicalDeploymentStagesItem>;
-export const ProjectsListResultItemCanonicalDeploymentStagesList = /*@__PURE__*/ S.Array(
-  ProjectsListResultItemCanonicalDeploymentStagesItem,
-) as any as S.Schema<ProjectsListResultItemCanonicalDeploymentStagesList>;
+export const ProjectsListResultItemCanonicalDeploymentStagesList =
+  ProjectsCreateResponseCanonicalDeploymentStagesList as any as S.Schema<ProjectsListResultItemCanonicalDeploymentStagesList>;
 
 export type ProjectsListResultItemCanonicalDeploymentSkipReason =
   | "commit_message"
@@ -6293,14 +6078,8 @@ export interface ProjectsListResultItemLatestDeploymentDeploymentTrigger {
   /** What caused the deployment. */
   type: ProjectsListResultItemLatestDeploymentDeploymentTriggerType;
 }
-export const ProjectsListResultItemLatestDeploymentDeploymentTrigger = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metadata: ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerMetadata,
-    type: ProjectsListResultItemLatestDeploymentDeploymentTriggerType,
-  }),
-).annotate({
-  identifier: "ProjectsListResultItemLatestDeploymentDeploymentTrigger",
-}) as any as S.Schema<ProjectsListResultItemLatestDeploymentDeploymentTrigger>;
+export const ProjectsListResultItemLatestDeploymentDeploymentTrigger =
+  ProjectsCreateResponseLatestDeploymentDeploymentTrigger as any as S.Schema<ProjectsListResultItemLatestDeploymentDeploymentTrigger>;
 
 export type ProjectsListResultItemLatestDeploymentEnvVarsValuePlainTextType = "plain_text";
 export const ProjectsListResultItemLatestDeploymentEnvVarsValuePlainTextType = S.String;
@@ -6310,15 +6089,8 @@ export interface ProjectsListResultItemLatestDeploymentEnvVarsValuePlainText {
   /** Environment variable value. */
   value: string;
 }
-export const ProjectsListResultItemLatestDeploymentEnvVarsValuePlainText = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      type: ProjectsListResultItemLatestDeploymentEnvVarsValuePlainTextType,
-      value: S.String,
-    }),
-).annotate({
-  identifier: "ProjectsListResultItemLatestDeploymentEnvVarsValuePlainText",
-}) as any as S.Schema<ProjectsListResultItemLatestDeploymentEnvVarsValuePlainText>;
+export const ProjectsListResultItemLatestDeploymentEnvVarsValuePlainText =
+  ProjectsCreateResponseLatestDeploymentEnvVarsValuePlainText as any as S.Schema<ProjectsListResultItemLatestDeploymentEnvVarsValuePlainText>;
 
 export type ProjectsListResultItemLatestDeploymentEnvVarsValueSecretTextType = "secret_text";
 export const ProjectsListResultItemLatestDeploymentEnvVarsValueSecretTextType = S.String;
@@ -6328,15 +6100,8 @@ export interface ProjectsListResultItemLatestDeploymentEnvVarsValueSecretText {
   /** Secret value. */
   value: string;
 }
-export const ProjectsListResultItemLatestDeploymentEnvVarsValueSecretText = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      type: ProjectsListResultItemLatestDeploymentEnvVarsValueSecretTextType,
-      value: S.String,
-    }),
-).annotate({
-  identifier: "ProjectsListResultItemLatestDeploymentEnvVarsValueSecretText",
-}) as any as S.Schema<ProjectsListResultItemLatestDeploymentEnvVarsValueSecretText>;
+export const ProjectsListResultItemLatestDeploymentEnvVarsValueSecretText =
+  ProjectsCreateResponseLatestDeploymentEnvVarsValuePlainText as any as S.Schema<ProjectsListResultItemLatestDeploymentEnvVarsValueSecretText>;
 
 export type ProjectsListResultItemLatestDeploymentEnvVarsValue =
   | ProjectsListResultItemLatestDeploymentEnvVarsValuePlainText
@@ -6389,16 +6154,8 @@ export interface ProjectsListResultItemLatestDeploymentLatestStage {
   /** State of the current stage. */
   status: ProjectsListResultItemLatestDeploymentLatestStageStatus;
 }
-export const ProjectsListResultItemLatestDeploymentLatestStage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endedOn: S.String.pipe(T.Body("ended_on")),
-    name: ProjectsListResultItemLatestDeploymentLatestStageName,
-    startedOn: S.String.pipe(T.Body("started_on")),
-    status: ProjectsListResultItemLatestDeploymentLatestStageStatus,
-  }),
-).annotate({
-  identifier: "ProjectsListResultItemLatestDeploymentLatestStage",
-}) as any as S.Schema<ProjectsListResultItemLatestDeploymentLatestStage>;
+export const ProjectsListResultItemLatestDeploymentLatestStage =
+  ProjectsCreateResponseCanonicalDeploymentLatestStage as any as S.Schema<ProjectsListResultItemLatestDeploymentLatestStage>;
 
 export type ProjectsListResultItemLatestDeploymentSourceConfigPathExcludesList = Array<string>;
 export const ProjectsListResultItemLatestDeploymentSourceConfigPathExcludesList =
@@ -6529,22 +6286,13 @@ export interface ProjectsListResultItemLatestDeploymentStagesItem {
   /** State of the current stage. */
   status: ProjectsListResultItemLatestDeploymentStagesItemStatus;
 }
-export const ProjectsListResultItemLatestDeploymentStagesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endedOn: S.String.pipe(T.Body("ended_on")),
-    name: ProjectsListResultItemLatestDeploymentStagesItemName,
-    startedOn: S.String.pipe(T.Body("started_on")),
-    status: ProjectsListResultItemLatestDeploymentStagesItemStatus,
-  }),
-).annotate({
-  identifier: "ProjectsListResultItemLatestDeploymentStagesItem",
-}) as any as S.Schema<ProjectsListResultItemLatestDeploymentStagesItem>;
+export const ProjectsListResultItemLatestDeploymentStagesItem =
+  ProjectsCreateResponseCanonicalDeploymentLatestStage as any as S.Schema<ProjectsListResultItemLatestDeploymentStagesItem>;
 
 export type ProjectsListResultItemLatestDeploymentStagesList =
   Array<ProjectsListResultItemLatestDeploymentStagesItem>;
-export const ProjectsListResultItemLatestDeploymentStagesList = /*@__PURE__*/ S.Array(
-  ProjectsListResultItemLatestDeploymentStagesItem,
-) as any as S.Schema<ProjectsListResultItemLatestDeploymentStagesList>;
+export const ProjectsListResultItemLatestDeploymentStagesList =
+  ProjectsCreateResponseCanonicalDeploymentStagesList as any as S.Schema<ProjectsListResultItemLatestDeploymentStagesList>;
 
 export type ProjectsListResultItemLatestDeploymentSkipReason =
   | "commit_message"
@@ -7485,15 +7233,8 @@ export interface ProjectsEditResponseCanonicalDeploymentDeploymentTrigger {
   /** What caused the deployment. */
   type: ProjectsEditResponseCanonicalDeploymentDeploymentTriggerType;
 }
-export const ProjectsEditResponseCanonicalDeploymentDeploymentTrigger = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      metadata: ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerMetadata,
-      type: ProjectsEditResponseCanonicalDeploymentDeploymentTriggerType,
-    }),
-).annotate({
-  identifier: "ProjectsEditResponseCanonicalDeploymentDeploymentTrigger",
-}) as any as S.Schema<ProjectsEditResponseCanonicalDeploymentDeploymentTrigger>;
+export const ProjectsEditResponseCanonicalDeploymentDeploymentTrigger =
+  ProjectsCreateResponseCanonicalDeploymentDeploymentTrigger as any as S.Schema<ProjectsEditResponseCanonicalDeploymentDeploymentTrigger>;
 
 export type ProjectsEditResponseCanonicalDeploymentEnvironment = "preview" | "production";
 export const ProjectsEditResponseCanonicalDeploymentEnvironment = S.String;
@@ -7525,16 +7266,8 @@ export interface ProjectsEditResponseCanonicalDeploymentLatestStage {
   /** State of the current stage. */
   status: ProjectsEditResponseCanonicalDeploymentLatestStageStatus;
 }
-export const ProjectsEditResponseCanonicalDeploymentLatestStage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endedOn: S.String.pipe(T.Body("ended_on")),
-    name: ProjectsEditResponseCanonicalDeploymentLatestStageName,
-    startedOn: S.String.pipe(T.Body("started_on")),
-    status: ProjectsEditResponseCanonicalDeploymentLatestStageStatus,
-  }),
-).annotate({
-  identifier: "ProjectsEditResponseCanonicalDeploymentLatestStage",
-}) as any as S.Schema<ProjectsEditResponseCanonicalDeploymentLatestStage>;
+export const ProjectsEditResponseCanonicalDeploymentLatestStage =
+  ProjectsCreateResponseCanonicalDeploymentLatestStage as any as S.Schema<ProjectsEditResponseCanonicalDeploymentLatestStage>;
 
 export type ProjectsEditResponseCanonicalDeploymentSourceConfigPathExcludesList = Array<string>;
 export const ProjectsEditResponseCanonicalDeploymentSourceConfigPathExcludesList =
@@ -7665,22 +7398,13 @@ export interface ProjectsEditResponseCanonicalDeploymentStagesItem {
   /** State of the current stage. */
   status: ProjectsEditResponseCanonicalDeploymentStagesItemStatus;
 }
-export const ProjectsEditResponseCanonicalDeploymentStagesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endedOn: S.String.pipe(T.Body("ended_on")),
-    name: ProjectsEditResponseCanonicalDeploymentStagesItemName,
-    startedOn: S.String.pipe(T.Body("started_on")),
-    status: ProjectsEditResponseCanonicalDeploymentStagesItemStatus,
-  }),
-).annotate({
-  identifier: "ProjectsEditResponseCanonicalDeploymentStagesItem",
-}) as any as S.Schema<ProjectsEditResponseCanonicalDeploymentStagesItem>;
+export const ProjectsEditResponseCanonicalDeploymentStagesItem =
+  ProjectsCreateResponseCanonicalDeploymentLatestStage as any as S.Schema<ProjectsEditResponseCanonicalDeploymentStagesItem>;
 
 export type ProjectsEditResponseCanonicalDeploymentStagesList =
   Array<ProjectsEditResponseCanonicalDeploymentStagesItem>;
-export const ProjectsEditResponseCanonicalDeploymentStagesList = /*@__PURE__*/ S.Array(
-  ProjectsEditResponseCanonicalDeploymentStagesItem,
-) as any as S.Schema<ProjectsEditResponseCanonicalDeploymentStagesList>;
+export const ProjectsEditResponseCanonicalDeploymentStagesList =
+  ProjectsCreateResponseCanonicalDeploymentStagesList as any as S.Schema<ProjectsEditResponseCanonicalDeploymentStagesList>;
 
 export type ProjectsEditResponseCanonicalDeploymentSkipReason =
   | "commit_message"
@@ -8310,14 +8034,8 @@ export interface ProjectsEditResponseLatestDeploymentDeploymentTrigger {
   /** What caused the deployment. */
   type: ProjectsEditResponseLatestDeploymentDeploymentTriggerType;
 }
-export const ProjectsEditResponseLatestDeploymentDeploymentTrigger = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metadata: ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerMetadata,
-    type: ProjectsEditResponseLatestDeploymentDeploymentTriggerType,
-  }),
-).annotate({
-  identifier: "ProjectsEditResponseLatestDeploymentDeploymentTrigger",
-}) as any as S.Schema<ProjectsEditResponseLatestDeploymentDeploymentTrigger>;
+export const ProjectsEditResponseLatestDeploymentDeploymentTrigger =
+  ProjectsCreateResponseLatestDeploymentDeploymentTrigger as any as S.Schema<ProjectsEditResponseLatestDeploymentDeploymentTrigger>;
 
 export type ProjectsEditResponseLatestDeploymentEnvVarsValuePlainTextType = "plain_text";
 export const ProjectsEditResponseLatestDeploymentEnvVarsValuePlainTextType = S.String;
@@ -8327,15 +8045,8 @@ export interface ProjectsEditResponseLatestDeploymentEnvVarsValuePlainText {
   /** Environment variable value. */
   value: string;
 }
-export const ProjectsEditResponseLatestDeploymentEnvVarsValuePlainText = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      type: ProjectsEditResponseLatestDeploymentEnvVarsValuePlainTextType,
-      value: S.String,
-    }),
-).annotate({
-  identifier: "ProjectsEditResponseLatestDeploymentEnvVarsValuePlainText",
-}) as any as S.Schema<ProjectsEditResponseLatestDeploymentEnvVarsValuePlainText>;
+export const ProjectsEditResponseLatestDeploymentEnvVarsValuePlainText =
+  ProjectsCreateResponseLatestDeploymentEnvVarsValuePlainText as any as S.Schema<ProjectsEditResponseLatestDeploymentEnvVarsValuePlainText>;
 
 export type ProjectsEditResponseLatestDeploymentEnvVarsValueSecretTextType = "secret_text";
 export const ProjectsEditResponseLatestDeploymentEnvVarsValueSecretTextType = S.String;
@@ -8345,15 +8056,8 @@ export interface ProjectsEditResponseLatestDeploymentEnvVarsValueSecretText {
   /** Secret value. */
   value: string;
 }
-export const ProjectsEditResponseLatestDeploymentEnvVarsValueSecretText = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      type: ProjectsEditResponseLatestDeploymentEnvVarsValueSecretTextType,
-      value: S.String,
-    }),
-).annotate({
-  identifier: "ProjectsEditResponseLatestDeploymentEnvVarsValueSecretText",
-}) as any as S.Schema<ProjectsEditResponseLatestDeploymentEnvVarsValueSecretText>;
+export const ProjectsEditResponseLatestDeploymentEnvVarsValueSecretText =
+  ProjectsCreateResponseLatestDeploymentEnvVarsValuePlainText as any as S.Schema<ProjectsEditResponseLatestDeploymentEnvVarsValueSecretText>;
 
 export type ProjectsEditResponseLatestDeploymentEnvVarsValue =
   | ProjectsEditResponseLatestDeploymentEnvVarsValuePlainText
@@ -8406,16 +8110,8 @@ export interface ProjectsEditResponseLatestDeploymentLatestStage {
   /** State of the current stage. */
   status: ProjectsEditResponseLatestDeploymentLatestStageStatus;
 }
-export const ProjectsEditResponseLatestDeploymentLatestStage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endedOn: S.String.pipe(T.Body("ended_on")),
-    name: ProjectsEditResponseLatestDeploymentLatestStageName,
-    startedOn: S.String.pipe(T.Body("started_on")),
-    status: ProjectsEditResponseLatestDeploymentLatestStageStatus,
-  }),
-).annotate({
-  identifier: "ProjectsEditResponseLatestDeploymentLatestStage",
-}) as any as S.Schema<ProjectsEditResponseLatestDeploymentLatestStage>;
+export const ProjectsEditResponseLatestDeploymentLatestStage =
+  ProjectsCreateResponseCanonicalDeploymentLatestStage as any as S.Schema<ProjectsEditResponseLatestDeploymentLatestStage>;
 
 export type ProjectsEditResponseLatestDeploymentSourceConfigPathExcludesList = Array<string>;
 export const ProjectsEditResponseLatestDeploymentSourceConfigPathExcludesList =
@@ -8546,22 +8242,13 @@ export interface ProjectsEditResponseLatestDeploymentStagesItem {
   /** State of the current stage. */
   status: ProjectsEditResponseLatestDeploymentStagesItemStatus;
 }
-export const ProjectsEditResponseLatestDeploymentStagesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endedOn: S.String.pipe(T.Body("ended_on")),
-    name: ProjectsEditResponseLatestDeploymentStagesItemName,
-    startedOn: S.String.pipe(T.Body("started_on")),
-    status: ProjectsEditResponseLatestDeploymentStagesItemStatus,
-  }),
-).annotate({
-  identifier: "ProjectsEditResponseLatestDeploymentStagesItem",
-}) as any as S.Schema<ProjectsEditResponseLatestDeploymentStagesItem>;
+export const ProjectsEditResponseLatestDeploymentStagesItem =
+  ProjectsCreateResponseCanonicalDeploymentLatestStage as any as S.Schema<ProjectsEditResponseLatestDeploymentStagesItem>;
 
 export type ProjectsEditResponseLatestDeploymentStagesList =
   Array<ProjectsEditResponseLatestDeploymentStagesItem>;
-export const ProjectsEditResponseLatestDeploymentStagesList = /*@__PURE__*/ S.Array(
-  ProjectsEditResponseLatestDeploymentStagesItem,
-) as any as S.Schema<ProjectsEditResponseLatestDeploymentStagesList>;
+export const ProjectsEditResponseLatestDeploymentStagesList =
+  ProjectsCreateResponseCanonicalDeploymentStagesList as any as S.Schema<ProjectsEditResponseLatestDeploymentStagesList>;
 
 export type ProjectsEditResponseLatestDeploymentSkipReason =
   | "commit_message"
@@ -8853,17 +8540,8 @@ export interface ProjectsDomainsEditResponseValidationData {
   txtName?: string | null;
   txtValue?: string | null;
 }
-export const ProjectsDomainsEditResponseValidationData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    method: ProjectsDomainsEditResponseValidationDataMethod,
-    status: ProjectsDomainsEditResponseValidationDataStatus,
-    errorMessage: S.optional(S.NullOr(S.String).pipe(T.Body("error_message"))),
-    txtName: S.optional(S.NullOr(S.String).pipe(T.Body("txt_name"))),
-    txtValue: S.optional(S.NullOr(S.String).pipe(T.Body("txt_value"))),
-  }),
-).annotate({
-  identifier: "ProjectsDomainsEditResponseValidationData",
-}) as any as S.Schema<ProjectsDomainsEditResponseValidationData>;
+export const ProjectsDomainsEditResponseValidationData =
+  ProjectsDomainsCreateResponseValidationData as any as S.Schema<ProjectsDomainsEditResponseValidationData>;
 
 export type ProjectsDomainsEditResponseVerificationDataStatus =
   | "pending"
@@ -8877,14 +8555,8 @@ export interface ProjectsDomainsEditResponseVerificationData {
   status: ProjectsDomainsEditResponseVerificationDataStatus;
   errorMessage?: string | null;
 }
-export const ProjectsDomainsEditResponseVerificationData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: ProjectsDomainsEditResponseVerificationDataStatus,
-    errorMessage: S.optional(S.NullOr(S.String).pipe(T.Body("error_message"))),
-  }),
-).annotate({
-  identifier: "ProjectsDomainsEditResponseVerificationData",
-}) as any as S.Schema<ProjectsDomainsEditResponseVerificationData>;
+export const ProjectsDomainsEditResponseVerificationData =
+  ProjectsDomainsCreateResponseVerificationData as any as S.Schema<ProjectsDomainsEditResponseVerificationData>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchProjectDomainResponse {
@@ -9032,14 +8704,8 @@ export interface ProjectsDeploymentsRetryResponseDeploymentTrigger {
   /** What caused the deployment. */
   type: ProjectsDeploymentsRetryResponseDeploymentTriggerType;
 }
-export const ProjectsDeploymentsRetryResponseDeploymentTrigger = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metadata: ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerMetadata,
-    type: ProjectsDeploymentsRetryResponseDeploymentTriggerType,
-  }),
-).annotate({
-  identifier: "ProjectsDeploymentsRetryResponseDeploymentTrigger",
-}) as any as S.Schema<ProjectsDeploymentsRetryResponseDeploymentTrigger>;
+export const ProjectsDeploymentsRetryResponseDeploymentTrigger =
+  ProjectsCreateResponseLatestDeploymentDeploymentTrigger as any as S.Schema<ProjectsDeploymentsRetryResponseDeploymentTrigger>;
 
 export type ProjectsDeploymentsRetryResponseEnvironment = "preview" | "production";
 export const ProjectsDeploymentsRetryResponseEnvironment = S.String;
@@ -9071,16 +8737,8 @@ export interface ProjectsDeploymentsRetryResponseLatestStage {
   /** State of the current stage. */
   status: ProjectsDeploymentsRetryResponseLatestStageStatus;
 }
-export const ProjectsDeploymentsRetryResponseLatestStage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endedOn: S.String.pipe(T.Body("ended_on")),
-    name: ProjectsDeploymentsRetryResponseLatestStageName,
-    startedOn: S.String.pipe(T.Body("started_on")),
-    status: ProjectsDeploymentsRetryResponseLatestStageStatus,
-  }),
-).annotate({
-  identifier: "ProjectsDeploymentsRetryResponseLatestStage",
-}) as any as S.Schema<ProjectsDeploymentsRetryResponseLatestStage>;
+export const ProjectsDeploymentsRetryResponseLatestStage =
+  ProjectsCreateResponseCanonicalDeploymentLatestStage as any as S.Schema<ProjectsDeploymentsRetryResponseLatestStage>;
 
 export type ProjectsDeploymentsRetryResponseSourceConfigPathExcludesList = Array<string>;
 export const ProjectsDeploymentsRetryResponseSourceConfigPathExcludesList =
@@ -9209,22 +8867,13 @@ export interface ProjectsDeploymentsRetryResponseStagesItem {
   /** State of the current stage. */
   status: ProjectsDeploymentsRetryResponseStagesItemStatus;
 }
-export const ProjectsDeploymentsRetryResponseStagesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endedOn: S.String.pipe(T.Body("ended_on")),
-    name: ProjectsDeploymentsRetryResponseStagesItemName,
-    startedOn: S.String.pipe(T.Body("started_on")),
-    status: ProjectsDeploymentsRetryResponseStagesItemStatus,
-  }),
-).annotate({
-  identifier: "ProjectsDeploymentsRetryResponseStagesItem",
-}) as any as S.Schema<ProjectsDeploymentsRetryResponseStagesItem>;
+export const ProjectsDeploymentsRetryResponseStagesItem =
+  ProjectsCreateResponseCanonicalDeploymentLatestStage as any as S.Schema<ProjectsDeploymentsRetryResponseStagesItem>;
 
 export type ProjectsDeploymentsRetryResponseStagesList =
   Array<ProjectsDeploymentsRetryResponseStagesItem>;
-export const ProjectsDeploymentsRetryResponseStagesList = /*@__PURE__*/ S.Array(
-  ProjectsDeploymentsRetryResponseStagesItem,
-) as any as S.Schema<ProjectsDeploymentsRetryResponseStagesList>;
+export const ProjectsDeploymentsRetryResponseStagesList =
+  ProjectsCreateResponseCanonicalDeploymentStagesList as any as S.Schema<ProjectsDeploymentsRetryResponseStagesList>;
 
 export type ProjectsDeploymentsRetryResponseSkipReason =
   | "commit_message"
@@ -9356,14 +9005,8 @@ export interface ProjectsDeploymentsRollbackResponseDeploymentTrigger {
   /** What caused the deployment. */
   type: ProjectsDeploymentsRollbackResponseDeploymentTriggerType;
 }
-export const ProjectsDeploymentsRollbackResponseDeploymentTrigger = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metadata: ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerMetadata,
-    type: ProjectsDeploymentsRollbackResponseDeploymentTriggerType,
-  }),
-).annotate({
-  identifier: "ProjectsDeploymentsRollbackResponseDeploymentTrigger",
-}) as any as S.Schema<ProjectsDeploymentsRollbackResponseDeploymentTrigger>;
+export const ProjectsDeploymentsRollbackResponseDeploymentTrigger =
+  ProjectsCreateResponseLatestDeploymentDeploymentTrigger as any as S.Schema<ProjectsDeploymentsRollbackResponseDeploymentTrigger>;
 
 export type ProjectsDeploymentsRollbackResponseEnvironment = "preview" | "production";
 export const ProjectsDeploymentsRollbackResponseEnvironment = S.String;
@@ -9395,16 +9038,8 @@ export interface ProjectsDeploymentsRollbackResponseLatestStage {
   /** State of the current stage. */
   status: ProjectsDeploymentsRollbackResponseLatestStageStatus;
 }
-export const ProjectsDeploymentsRollbackResponseLatestStage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endedOn: S.String.pipe(T.Body("ended_on")),
-    name: ProjectsDeploymentsRollbackResponseLatestStageName,
-    startedOn: S.String.pipe(T.Body("started_on")),
-    status: ProjectsDeploymentsRollbackResponseLatestStageStatus,
-  }),
-).annotate({
-  identifier: "ProjectsDeploymentsRollbackResponseLatestStage",
-}) as any as S.Schema<ProjectsDeploymentsRollbackResponseLatestStage>;
+export const ProjectsDeploymentsRollbackResponseLatestStage =
+  ProjectsCreateResponseCanonicalDeploymentLatestStage as any as S.Schema<ProjectsDeploymentsRollbackResponseLatestStage>;
 
 export type ProjectsDeploymentsRollbackResponseSourceConfigPathExcludesList = Array<string>;
 export const ProjectsDeploymentsRollbackResponseSourceConfigPathExcludesList =
@@ -9535,22 +9170,13 @@ export interface ProjectsDeploymentsRollbackResponseStagesItem {
   /** State of the current stage. */
   status: ProjectsDeploymentsRollbackResponseStagesItemStatus;
 }
-export const ProjectsDeploymentsRollbackResponseStagesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endedOn: S.String.pipe(T.Body("ended_on")),
-    name: ProjectsDeploymentsRollbackResponseStagesItemName,
-    startedOn: S.String.pipe(T.Body("started_on")),
-    status: ProjectsDeploymentsRollbackResponseStagesItemStatus,
-  }),
-).annotate({
-  identifier: "ProjectsDeploymentsRollbackResponseStagesItem",
-}) as any as S.Schema<ProjectsDeploymentsRollbackResponseStagesItem>;
+export const ProjectsDeploymentsRollbackResponseStagesItem =
+  ProjectsCreateResponseCanonicalDeploymentLatestStage as any as S.Schema<ProjectsDeploymentsRollbackResponseStagesItem>;
 
 export type ProjectsDeploymentsRollbackResponseStagesList =
   Array<ProjectsDeploymentsRollbackResponseStagesItem>;
-export const ProjectsDeploymentsRollbackResponseStagesList = /*@__PURE__*/ S.Array(
-  ProjectsDeploymentsRollbackResponseStagesItem,
-) as any as S.Schema<ProjectsDeploymentsRollbackResponseStagesList>;
+export const ProjectsDeploymentsRollbackResponseStagesList =
+  ProjectsCreateResponseCanonicalDeploymentStagesList as any as S.Schema<ProjectsDeploymentsRollbackResponseStagesList>;
 
 export type ProjectsDeploymentsRollbackResponseSkipReason =
   | "commit_message"

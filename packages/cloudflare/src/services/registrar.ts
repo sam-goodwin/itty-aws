@@ -1598,13 +1598,7 @@ export interface TransferCheckResponseDomainsValueNonTransferableResultReasonsIt
   code: TransferCheckResponseDomainsValueNonTransferableResultReasonsItemCode;
 }
 export const TransferCheckResponseDomainsValueNonTransferableResultReasonsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      code: TransferCheckResponseDomainsValueNonTransferableResultReasonsItemCode,
-    }),
-  ).annotate({
-    identifier: "TransferCheckResponseDomainsValueNonTransferableResultReasonsItem",
-  }) as any as S.Schema<TransferCheckResponseDomainsValueNonTransferableResultReasonsItem>;
+  TransferCheckResponseDomainsValueTransferableResultReasonsItem as any as S.Schema<TransferCheckResponseDomainsValueNonTransferableResultReasonsItem>;
 
 export type TransferCheckResponseDomainsValueNonTransferableResultReasonsList =
   Array<TransferCheckResponseDomainsValueNonTransferableResultReasonsItem>;

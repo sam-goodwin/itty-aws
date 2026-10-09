@@ -7269,16 +7269,7 @@ export interface AccountModelSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const AccountModelSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(AccountModelSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(AccountModelSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({ identifier: "AccountModelSystemData" }) as any as S.Schema<AccountModelSystemData>;
+export const AccountModelSystemData = SystemData as any as S.Schema<AccountModelSystemData>;
 
 /** Cognitive Services account Model. */
 export interface AccountModel {

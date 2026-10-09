@@ -313,25 +313,14 @@ export interface CreateWebhookRequestJobCase1VolumesItem {
   /** Subfolder prefix inside the bucket/repo to mount, e.g. 'path/to/dir' */
   path?: string;
 }
-export const CreateWebhookRequestJobCase1VolumesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: CreateWebhookRequestJobCase1VolumesItemType,
-    source: S.String,
-    mountPath: S.String,
-    revision: S.optional(S.String),
-    readOnly: S.optional(S.Boolean),
-    path: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateWebhookRequestJobCase1VolumesItem",
-}) as any as S.Schema<CreateWebhookRequestJobCase1VolumesItem>;
+export const CreateWebhookRequestJobCase1VolumesItem =
+  CreateWebhookRequestJobCase0VolumesItem as any as S.Schema<CreateWebhookRequestJobCase1VolumesItem>;
 
 /** HuggingFace Buckets or Repos to mount as volumes in the job container. */
 export type CreateWebhookRequestJobCase1VolumesList =
   Array<CreateWebhookRequestJobCase1VolumesItem>;
-export const CreateWebhookRequestJobCase1VolumesList = /*@__PURE__*/ S.Array(
-  CreateWebhookRequestJobCase1VolumesItem,
-) as any as S.Schema<CreateWebhookRequestJobCase1VolumesList>;
+export const CreateWebhookRequestJobCase1VolumesList =
+  CreateWebhookRequestJobCase0VolumesList as any as S.Schema<CreateWebhookRequestJobCase1VolumesList>;
 
 export type CreateWebhookRequestJobCase1ExposePortsList = Array<number>;
 export const CreateWebhookRequestJobCase1ExposePortsList =
@@ -670,9 +659,8 @@ export const CreateWebhookResponseWebhookDomainsItem = S.String;
 
 export type CreateWebhookResponseWebhookDomainsList =
   Array<CreateWebhookResponseWebhookDomainsItem>;
-export const CreateWebhookResponseWebhookDomainsList = /*@__PURE__*/ S.Array(
-  CreateWebhookResponseWebhookDomainsItem,
-) as any as S.Schema<CreateWebhookResponseWebhookDomainsList>;
+export const CreateWebhookResponseWebhookDomainsList =
+  CreateWebhookRequestDomainsList as any as S.Schema<CreateWebhookResponseWebhookDomainsList>;
 
 export interface CreateWebhookResponseWebhook {
   /** A hex string of 24 characters representing an ObjectId. */
@@ -940,30 +928,21 @@ export interface EnableDisableWebhookResponseWebhookWatchedItem {
   type: EnableDisableWebhookResponseWebhookWatchedItemType;
   avatarUrl?: string;
 }
-export const EnableDisableWebhookResponseWebhookWatchedItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    type: EnableDisableWebhookResponseWebhookWatchedItemType,
-    avatarUrl: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "EnableDisableWebhookResponseWebhookWatchedItem",
-}) as any as S.Schema<EnableDisableWebhookResponseWebhookWatchedItem>;
+export const EnableDisableWebhookResponseWebhookWatchedItem =
+  CreateWebhookResponseWebhookWatchedItem as any as S.Schema<EnableDisableWebhookResponseWebhookWatchedItem>;
 
 export type EnableDisableWebhookResponseWebhookWatchedList =
   Array<EnableDisableWebhookResponseWebhookWatchedItem>;
-export const EnableDisableWebhookResponseWebhookWatchedList = /*@__PURE__*/ S.Array(
-  EnableDisableWebhookResponseWebhookWatchedItem,
-) as any as S.Schema<EnableDisableWebhookResponseWebhookWatchedList>;
+export const EnableDisableWebhookResponseWebhookWatchedList =
+  CreateWebhookResponseWebhookWatchedList as any as S.Schema<EnableDisableWebhookResponseWebhookWatchedList>;
 
 export type EnableDisableWebhookResponseWebhookDomainsItem = "repo" | "discussion";
 export const EnableDisableWebhookResponseWebhookDomainsItem = S.String;
 
 export type EnableDisableWebhookResponseWebhookDomainsList =
   Array<EnableDisableWebhookResponseWebhookDomainsItem>;
-export const EnableDisableWebhookResponseWebhookDomainsList = /*@__PURE__*/ S.Array(
-  EnableDisableWebhookResponseWebhookDomainsItem,
-) as any as S.Schema<EnableDisableWebhookResponseWebhookDomainsList>;
+export const EnableDisableWebhookResponseWebhookDomainsList =
+  CreateWebhookRequestDomainsList as any as S.Schema<EnableDisableWebhookResponseWebhookDomainsList>;
 
 /** Webhook */
 export interface EnableDisableWebhookResponseWebhook {
@@ -1204,28 +1183,19 @@ export interface GetWebhookResponseWebhookWatchedItem {
   type: GetWebhookResponseWebhookWatchedItemType;
   avatarUrl?: string;
 }
-export const GetWebhookResponseWebhookWatchedItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    type: GetWebhookResponseWebhookWatchedItemType,
-    avatarUrl: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetWebhookResponseWebhookWatchedItem",
-}) as any as S.Schema<GetWebhookResponseWebhookWatchedItem>;
+export const GetWebhookResponseWebhookWatchedItem =
+  CreateWebhookResponseWebhookWatchedItem as any as S.Schema<GetWebhookResponseWebhookWatchedItem>;
 
 export type GetWebhookResponseWebhookWatchedList = Array<GetWebhookResponseWebhookWatchedItem>;
-export const GetWebhookResponseWebhookWatchedList = /*@__PURE__*/ S.Array(
-  GetWebhookResponseWebhookWatchedItem,
-) as any as S.Schema<GetWebhookResponseWebhookWatchedList>;
+export const GetWebhookResponseWebhookWatchedList =
+  CreateWebhookResponseWebhookWatchedList as any as S.Schema<GetWebhookResponseWebhookWatchedList>;
 
 export type GetWebhookResponseWebhookDomainsItem = "repo" | "discussion";
 export const GetWebhookResponseWebhookDomainsItem = S.String;
 
 export type GetWebhookResponseWebhookDomainsList = Array<GetWebhookResponseWebhookDomainsItem>;
-export const GetWebhookResponseWebhookDomainsList = /*@__PURE__*/ S.Array(
-  GetWebhookResponseWebhookDomainsItem,
-) as any as S.Schema<GetWebhookResponseWebhookDomainsList>;
+export const GetWebhookResponseWebhookDomainsList =
+  CreateWebhookRequestDomainsList as any as S.Schema<GetWebhookResponseWebhookDomainsList>;
 
 /** Webhook */
 export interface GetWebhookResponseWebhook {
@@ -1464,30 +1434,21 @@ export interface ListWebhooksResponseBodyItemWatchedItem {
   type: ListWebhooksResponseBodyItemWatchedItemType;
   avatarUrl?: string;
 }
-export const ListWebhooksResponseBodyItemWatchedItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    type: ListWebhooksResponseBodyItemWatchedItemType,
-    avatarUrl: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListWebhooksResponseBodyItemWatchedItem",
-}) as any as S.Schema<ListWebhooksResponseBodyItemWatchedItem>;
+export const ListWebhooksResponseBodyItemWatchedItem =
+  CreateWebhookResponseWebhookWatchedItem as any as S.Schema<ListWebhooksResponseBodyItemWatchedItem>;
 
 export type ListWebhooksResponseBodyItemWatchedList =
   Array<ListWebhooksResponseBodyItemWatchedItem>;
-export const ListWebhooksResponseBodyItemWatchedList = /*@__PURE__*/ S.Array(
-  ListWebhooksResponseBodyItemWatchedItem,
-) as any as S.Schema<ListWebhooksResponseBodyItemWatchedList>;
+export const ListWebhooksResponseBodyItemWatchedList =
+  CreateWebhookResponseWebhookWatchedList as any as S.Schema<ListWebhooksResponseBodyItemWatchedList>;
 
 export type ListWebhooksResponseBodyItemDomainsItem = "repo" | "discussion";
 export const ListWebhooksResponseBodyItemDomainsItem = S.String;
 
 export type ListWebhooksResponseBodyItemDomainsList =
   Array<ListWebhooksResponseBodyItemDomainsItem>;
-export const ListWebhooksResponseBodyItemDomainsList = /*@__PURE__*/ S.Array(
-  ListWebhooksResponseBodyItemDomainsItem,
-) as any as S.Schema<ListWebhooksResponseBodyItemDomainsList>;
+export const ListWebhooksResponseBodyItemDomainsList =
+  CreateWebhookRequestDomainsList as any as S.Schema<ListWebhooksResponseBodyItemDomainsList>;
 
 export interface ListWebhooksResponseBodyItem {
   /** A hex string of 24 characters representing an ObjectId. */
@@ -1566,19 +1527,12 @@ export interface UpdateWebhookRequestWatchedItem {
   type: UpdateWebhookRequestWatchedItemType | (string & {});
   name: string;
 }
-export const UpdateWebhookRequestWatchedItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: UpdateWebhookRequestWatchedItemType,
-    name: S.String,
-  }),
-).annotate({
-  identifier: "UpdateWebhookRequestWatchedItem",
-}) as any as S.Schema<UpdateWebhookRequestWatchedItem>;
+export const UpdateWebhookRequestWatchedItem =
+  CreateWebhookRequestWatchedItem as any as S.Schema<UpdateWebhookRequestWatchedItem>;
 
 export type UpdateWebhookRequestWatchedList = Array<UpdateWebhookRequestWatchedItem>;
-export const UpdateWebhookRequestWatchedList = /*@__PURE__*/ S.Array(
-  UpdateWebhookRequestWatchedItem,
-) as any as S.Schema<UpdateWebhookRequestWatchedList>;
+export const UpdateWebhookRequestWatchedList =
+  CreateWebhookRequestWatchedList as any as S.Schema<UpdateWebhookRequestWatchedList>;
 
 export type UpdateWebhookRequestJobCase0ArgumentsList = Array<string>;
 export const UpdateWebhookRequestJobCase0ArgumentsList =
@@ -1652,25 +1606,14 @@ export interface UpdateWebhookRequestJobCase0VolumesItem {
   /** Subfolder prefix inside the bucket/repo to mount, e.g. 'path/to/dir' */
   path?: string;
 }
-export const UpdateWebhookRequestJobCase0VolumesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: UpdateWebhookRequestJobCase0VolumesItemType,
-    source: S.String,
-    mountPath: S.String,
-    revision: S.optional(S.String),
-    readOnly: S.optional(S.Boolean),
-    path: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateWebhookRequestJobCase0VolumesItem",
-}) as any as S.Schema<UpdateWebhookRequestJobCase0VolumesItem>;
+export const UpdateWebhookRequestJobCase0VolumesItem =
+  CreateWebhookRequestJobCase0VolumesItem as any as S.Schema<UpdateWebhookRequestJobCase0VolumesItem>;
 
 /** HuggingFace Buckets or Repos to mount as volumes in the job container. */
 export type UpdateWebhookRequestJobCase0VolumesList =
   Array<UpdateWebhookRequestJobCase0VolumesItem>;
-export const UpdateWebhookRequestJobCase0VolumesList = /*@__PURE__*/ S.Array(
-  UpdateWebhookRequestJobCase0VolumesItem,
-) as any as S.Schema<UpdateWebhookRequestJobCase0VolumesList>;
+export const UpdateWebhookRequestJobCase0VolumesList =
+  CreateWebhookRequestJobCase0VolumesList as any as S.Schema<UpdateWebhookRequestJobCase0VolumesList>;
 
 export type UpdateWebhookRequestJobCase0ExposePortsList = Array<number>;
 export const UpdateWebhookRequestJobCase0ExposePortsList =
@@ -1828,25 +1771,14 @@ export interface UpdateWebhookRequestJobCase1VolumesItem {
   /** Subfolder prefix inside the bucket/repo to mount, e.g. 'path/to/dir' */
   path?: string;
 }
-export const UpdateWebhookRequestJobCase1VolumesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: UpdateWebhookRequestJobCase1VolumesItemType,
-    source: S.String,
-    mountPath: S.String,
-    revision: S.optional(S.String),
-    readOnly: S.optional(S.Boolean),
-    path: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateWebhookRequestJobCase1VolumesItem",
-}) as any as S.Schema<UpdateWebhookRequestJobCase1VolumesItem>;
+export const UpdateWebhookRequestJobCase1VolumesItem =
+  CreateWebhookRequestJobCase0VolumesItem as any as S.Schema<UpdateWebhookRequestJobCase1VolumesItem>;
 
 /** HuggingFace Buckets or Repos to mount as volumes in the job container. */
 export type UpdateWebhookRequestJobCase1VolumesList =
   Array<UpdateWebhookRequestJobCase1VolumesItem>;
-export const UpdateWebhookRequestJobCase1VolumesList = /*@__PURE__*/ S.Array(
-  UpdateWebhookRequestJobCase1VolumesItem,
-) as any as S.Schema<UpdateWebhookRequestJobCase1VolumesList>;
+export const UpdateWebhookRequestJobCase1VolumesList =
+  CreateWebhookRequestJobCase0VolumesList as any as S.Schema<UpdateWebhookRequestJobCase1VolumesList>;
 
 export type UpdateWebhookRequestJobCase1ExposePortsList = Array<number>;
 export const UpdateWebhookRequestJobCase1ExposePortsList =
@@ -1946,9 +1878,8 @@ export const UpdateWebhookRequestDomainsItem = S.String;
 export type UpdateWebhookRequestDomainsList = Array<
   UpdateWebhookRequestDomainsItem | (string & {})
 >;
-export const UpdateWebhookRequestDomainsList = /*@__PURE__*/ S.Array(
-  UpdateWebhookRequestDomainsItem,
-) as any as S.Schema<UpdateWebhookRequestDomainsList>;
+export const UpdateWebhookRequestDomainsList =
+  CreateWebhookRequestDomainsList as any as S.Schema<UpdateWebhookRequestDomainsList>;
 
 export interface UpdateWebhookRequest {
   webhookId: string;
@@ -2166,30 +2097,21 @@ export interface UpdateWebhookResponseWebhookWatchedItem {
   type: UpdateWebhookResponseWebhookWatchedItemType;
   avatarUrl?: string;
 }
-export const UpdateWebhookResponseWebhookWatchedItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    type: UpdateWebhookResponseWebhookWatchedItemType,
-    avatarUrl: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateWebhookResponseWebhookWatchedItem",
-}) as any as S.Schema<UpdateWebhookResponseWebhookWatchedItem>;
+export const UpdateWebhookResponseWebhookWatchedItem =
+  CreateWebhookResponseWebhookWatchedItem as any as S.Schema<UpdateWebhookResponseWebhookWatchedItem>;
 
 export type UpdateWebhookResponseWebhookWatchedList =
   Array<UpdateWebhookResponseWebhookWatchedItem>;
-export const UpdateWebhookResponseWebhookWatchedList = /*@__PURE__*/ S.Array(
-  UpdateWebhookResponseWebhookWatchedItem,
-) as any as S.Schema<UpdateWebhookResponseWebhookWatchedList>;
+export const UpdateWebhookResponseWebhookWatchedList =
+  CreateWebhookResponseWebhookWatchedList as any as S.Schema<UpdateWebhookResponseWebhookWatchedList>;
 
 export type UpdateWebhookResponseWebhookDomainsItem = "repo" | "discussion";
 export const UpdateWebhookResponseWebhookDomainsItem = S.String;
 
 export type UpdateWebhookResponseWebhookDomainsList =
   Array<UpdateWebhookResponseWebhookDomainsItem>;
-export const UpdateWebhookResponseWebhookDomainsList = /*@__PURE__*/ S.Array(
-  UpdateWebhookResponseWebhookDomainsItem,
-) as any as S.Schema<UpdateWebhookResponseWebhookDomainsList>;
+export const UpdateWebhookResponseWebhookDomainsList =
+  CreateWebhookRequestDomainsList as any as S.Schema<UpdateWebhookResponseWebhookDomainsList>;
 
 /** Webhook */
 export interface UpdateWebhookResponseWebhook {

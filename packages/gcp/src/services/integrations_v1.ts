@@ -2394,13 +2394,8 @@ export interface GoogleCloudIntegrationsV1alphaSuccessPolicy {
   /** State to which the execution snapshot status will be set if the task succeeds. */
   finalState?: GoogleCloudIntegrationsV1alphaSuccessPolicyFinalStateEnum | (string & {});
 }
-export const GoogleCloudIntegrationsV1alphaSuccessPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    finalState: S.optional(GoogleCloudIntegrationsV1alphaSuccessPolicyFinalStateEnum),
-  }),
-).annotate({
-  identifier: "GoogleCloudIntegrationsV1alphaSuccessPolicy",
-}) as any as S.Schema<GoogleCloudIntegrationsV1alphaSuccessPolicy>;
+export const GoogleCloudIntegrationsV1alphaSuccessPolicy =
+  EnterpriseCrmEventbusProtoSuccessPolicy as any as S.Schema<GoogleCloudIntegrationsV1alphaSuccessPolicy>;
 
 export type GoogleCloudIntegrationsV1alphaTaskConfigJsonValidationOptionEnum =
   | "JSON_VALIDATION_OPTION_UNSPECIFIED"
@@ -4684,9 +4679,8 @@ export const DownloadProjectsLocationsIntegrationsVersionsFilesEnum = /*@__PURE_
 export type DownloadProjectsLocationsIntegrationsVersionsFilesEnumList = Array<
   DownloadProjectsLocationsIntegrationsVersionsFilesEnum | (string & {})
 >;
-export const DownloadProjectsLocationsIntegrationsVersionsFilesEnumList = /*@__PURE__*/ S.Array(
-  DownloadProjectsLocationsIntegrationsVersionsFilesEnum,
-) as any as S.Schema<DownloadProjectsLocationsIntegrationsVersionsFilesEnumList>;
+export const DownloadProjectsLocationsIntegrationsVersionsFilesEnumList =
+  GoogleCloudIntegrationsV1alphaTemplateCategoriesItemEnumList as any as S.Schema<DownloadProjectsLocationsIntegrationsVersionsFilesEnumList>;
 
 export interface DownloadProjectsLocationsIntegrationsVersionsRequest {
   /** Required. The version to download. Format: projects/{project}/locations/{location}/integrations/{integration}/versions/{version} */
@@ -4835,9 +4829,7 @@ export type DownloadProjectsLocationsProductsIntegrationsVersionsFilesEnumList =
   DownloadProjectsLocationsProductsIntegrationsVersionsFilesEnum | (string & {})
 >;
 export const DownloadProjectsLocationsProductsIntegrationsVersionsFilesEnumList =
-  /*@__PURE__*/ S.Array(
-    DownloadProjectsLocationsProductsIntegrationsVersionsFilesEnum,
-  ) as any as S.Schema<DownloadProjectsLocationsProductsIntegrationsVersionsFilesEnumList>;
+  DownloadJsonPackageProjectsLocationsIntegrationsVersionsFilesEnumList as any as S.Schema<DownloadProjectsLocationsProductsIntegrationsVersionsFilesEnumList>;
 
 export interface DownloadProjectsLocationsProductsIntegrationsVersionsRequest {
   /** Required. The version to download. Format: projects/{project}/locations/{location}/integrations/{integration}/versions/{version} */
@@ -9603,9 +9595,7 @@ export type GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorRequestWor
     | (string & {})
   >;
 export const GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorRequestWorkflowsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorRequestWorkflowsItemEnum,
-  ) as any as S.Schema<GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorRequestWorkflowsItemEnumList>;
+  DownloadJsonPackageProjectsLocationsIntegrationsVersionsFilesEnumList as any as S.Schema<GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorRequestWorkflowsItemEnumList>;
 
 /** Request for PostProvisioning rpc call. */
 export interface GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorRequest {
@@ -10747,14 +10737,8 @@ export interface GoogleCloudIntegrationsV1alphaUploadTemplateRequest {
   /** Required. File format for upload request. */
   fileFormat?: GoogleCloudIntegrationsV1alphaUploadTemplateRequestFileFormatEnum | (string & {});
 }
-export const GoogleCloudIntegrationsV1alphaUploadTemplateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    content: S.optional(S.String),
-    fileFormat: S.optional(GoogleCloudIntegrationsV1alphaUploadTemplateRequestFileFormatEnum),
-  }),
-).annotate({
-  identifier: "GoogleCloudIntegrationsV1alphaUploadTemplateRequest",
-}) as any as S.Schema<GoogleCloudIntegrationsV1alphaUploadTemplateRequest>;
+export const GoogleCloudIntegrationsV1alphaUploadTemplateRequest =
+  GoogleCloudIntegrationsV1alphaUploadTestCaseRequest as any as S.Schema<GoogleCloudIntegrationsV1alphaUploadTemplateRequest>;
 
 export interface UploadProjectsLocationsTemplatesRequest {
   /** Required. The template to upload. Format: projects/{project}/locations/{location} */

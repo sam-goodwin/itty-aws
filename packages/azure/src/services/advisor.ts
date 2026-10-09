@@ -722,9 +722,8 @@ export const MetadataEntityPropertiesApplicableScenariosItem = S.String;
 /** The list of scenarios applicable to this metadata entity. */
 export type MetadataEntityPropertiesApplicableScenariosList =
   Array<MetadataEntityPropertiesApplicableScenariosItem>;
-export const MetadataEntityPropertiesApplicableScenariosList = /*@__PURE__*/ S.Array(
-  MetadataEntityPropertiesApplicableScenariosItem,
-) as any as S.Schema<MetadataEntityPropertiesApplicableScenariosList>;
+export const MetadataEntityPropertiesApplicableScenariosList =
+  DigestConfigCategoriesList as any as S.Schema<MetadataEntityPropertiesApplicableScenariosList>;
 
 /** The metadata supported value detail. */
 export interface MetadataSupportedValueDetail {

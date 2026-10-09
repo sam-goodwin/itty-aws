@@ -1031,11 +1031,8 @@ export interface DeleteResponderGatewayResponse {
   gatewayId: string;
   status: ResponderGatewayStatus;
 }
-export const DeleteResponderGatewayResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ gatewayId: S.String, status: ResponderGatewayStatus }),
-).annotate({
-  identifier: "DeleteResponderGatewayResponse",
-}) as any as S.Schema<DeleteResponderGatewayResponse>;
+export const DeleteResponderGatewayResponse =
+  DeleteRequesterGatewayResponse as any as S.Schema<DeleteResponderGatewayResponse>;
 export interface DisassociateCertificateRequest {
   gatewayId: string;
   acmCertificateArn: string;

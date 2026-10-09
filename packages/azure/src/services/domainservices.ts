@@ -997,18 +997,8 @@ export interface GetDomainServiceResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetDomainServiceResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetDomainServiceResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetDomainServiceResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetDomainServiceResponseSystemData",
-}) as any as S.Schema<GetDomainServiceResponseSystemData>;
+export const GetDomainServiceResponseSystemData =
+  CreateOuContainerResponseSystemData as any as S.Schema<GetDomainServiceResponseSystemData>;
 
 export interface GetDomainServiceResponse {
   /** Resource Id */
@@ -1103,18 +1093,8 @@ export interface GetOuContainerResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetOuContainerResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetOuContainerResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetOuContainerResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetOuContainerResponseSystemData",
-}) as any as S.Schema<GetOuContainerResponseSystemData>;
+export const GetOuContainerResponseSystemData =
+  CreateOuContainerResponseSystemData as any as S.Schema<GetOuContainerResponseSystemData>;
 
 export interface GetOuContainerResponse {
   /** Resource Id */
@@ -1415,16 +1395,8 @@ export interface OuContainerSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const OuContainerSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(OuContainerSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(OuContainerSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({ identifier: "OuContainerSystemData" }) as any as S.Schema<OuContainerSystemData>;
+export const OuContainerSystemData =
+  DomainServiceSystemData as any as S.Schema<OuContainerSystemData>;
 
 /** Resource for OuContainer. */
 export interface OuContainer {
@@ -1570,18 +1542,8 @@ export interface UpdateDomainServiceResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdateDomainServiceResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(UpdateDomainServiceResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(UpdateDomainServiceResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateDomainServiceResponseSystemData",
-}) as any as S.Schema<UpdateDomainServiceResponseSystemData>;
+export const UpdateDomainServiceResponseSystemData =
+  CreateOuContainerResponseSystemData as any as S.Schema<UpdateDomainServiceResponseSystemData>;
 
 export interface UpdateDomainServiceResponse {
   /** Resource Id */
@@ -1687,18 +1649,8 @@ export interface UpdateOuContainerResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdateOuContainerResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(UpdateOuContainerResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(UpdateOuContainerResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateOuContainerResponseSystemData",
-}) as any as S.Schema<UpdateOuContainerResponseSystemData>;
+export const UpdateOuContainerResponseSystemData =
+  CreateOuContainerResponseSystemData as any as S.Schema<UpdateOuContainerResponseSystemData>;
 
 export interface UpdateOuContainerResponse {
   /** Resource Id */

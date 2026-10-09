@@ -179,9 +179,8 @@ export const InstanceParametersTlsProtocolsItem = S.String;
 export type InstanceParametersTlsProtocolsList = Array<
   InstanceParametersTlsProtocolsItem | (string & {})
 >;
-export const InstanceParametersTlsProtocolsList = /*@__PURE__*/ S.Array(
-  InstanceParametersTlsProtocolsItem,
-) as any as S.Schema<InstanceParametersTlsProtocolsList>;
+export const InstanceParametersTlsProtocolsList =
+  InstanceParametersPluginsList as any as S.Schema<InstanceParametersTlsProtocolsList>;
 
 export interface InstanceParameters {
   enable_monitoring?: boolean;

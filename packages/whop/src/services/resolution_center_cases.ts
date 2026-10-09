@@ -428,9 +428,8 @@ export const GetResolutionCenterCaseSummaryRequestGroupsItem = S.String;
 export type GetResolutionCenterCaseSummaryRequestGroupsList = Array<
   GetResolutionCenterCaseSummaryRequestGroupsItem | (string & {})
 >;
-export const GetResolutionCenterCaseSummaryRequestGroupsList = /*@__PURE__*/ S.Array(
-  GetResolutionCenterCaseSummaryRequestGroupsItem,
-) as any as S.Schema<GetResolutionCenterCaseSummaryRequestGroupsList>;
+export const GetResolutionCenterCaseSummaryRequestGroupsList =
+  ResolutionCenterCaseAvailableActionsList as any as S.Schema<GetResolutionCenterCaseSummaryRequestGroupsList>;
 
 export type GetResolutionCenterCaseSummaryRequestStatusItem =
   | "awaiting_merchant"
@@ -442,9 +441,8 @@ export const GetResolutionCenterCaseSummaryRequestStatusItem = S.String;
 export type GetResolutionCenterCaseSummaryRequestStatusList = Array<
   GetResolutionCenterCaseSummaryRequestStatusItem | (string & {})
 >;
-export const GetResolutionCenterCaseSummaryRequestStatusList = /*@__PURE__*/ S.Array(
-  GetResolutionCenterCaseSummaryRequestStatusItem,
-) as any as S.Schema<GetResolutionCenterCaseSummaryRequestStatusList>;
+export const GetResolutionCenterCaseSummaryRequestStatusList =
+  ResolutionCenterCaseAvailableActionsList as any as S.Schema<GetResolutionCenterCaseSummaryRequestStatusList>;
 
 export type GetResolutionCenterCaseSummaryRequestReasonItem =
   | "fraudulent"
@@ -457,9 +455,8 @@ export const GetResolutionCenterCaseSummaryRequestReasonItem = S.String;
 export type GetResolutionCenterCaseSummaryRequestReasonList = Array<
   GetResolutionCenterCaseSummaryRequestReasonItem | (string & {})
 >;
-export const GetResolutionCenterCaseSummaryRequestReasonList = /*@__PURE__*/ S.Array(
-  GetResolutionCenterCaseSummaryRequestReasonItem,
-) as any as S.Schema<GetResolutionCenterCaseSummaryRequestReasonList>;
+export const GetResolutionCenterCaseSummaryRequestReasonList =
+  ResolutionCenterCaseAvailableActionsList as any as S.Schema<GetResolutionCenterCaseSummaryRequestReasonList>;
 
 export type GetResolutionCenterCaseSummaryRequestOutcomeItem =
   | "customer_won"
@@ -470,9 +467,8 @@ export const GetResolutionCenterCaseSummaryRequestOutcomeItem = S.String;
 export type GetResolutionCenterCaseSummaryRequestOutcomeList = Array<
   GetResolutionCenterCaseSummaryRequestOutcomeItem | (string & {})
 >;
-export const GetResolutionCenterCaseSummaryRequestOutcomeList = /*@__PURE__*/ S.Array(
-  GetResolutionCenterCaseSummaryRequestOutcomeItem,
-) as any as S.Schema<GetResolutionCenterCaseSummaryRequestOutcomeList>;
+export const GetResolutionCenterCaseSummaryRequestOutcomeList =
+  ResolutionCenterCaseAvailableActionsList as any as S.Schema<GetResolutionCenterCaseSummaryRequestOutcomeList>;
 
 export interface GetResolutionCenterCaseSummaryRequest {
   /** Which breakdowns to return, keyed by these names under `groups`. Repeat the parameter to ask for several; omit it for all of them. */
@@ -743,9 +739,8 @@ export const ListResolutionCenterCasesRequestStatusItem = S.String;
 export type ListResolutionCenterCasesRequestStatusList = Array<
   ListResolutionCenterCasesRequestStatusItem | (string & {})
 >;
-export const ListResolutionCenterCasesRequestStatusList = /*@__PURE__*/ S.Array(
-  ListResolutionCenterCasesRequestStatusItem,
-) as any as S.Schema<ListResolutionCenterCasesRequestStatusList>;
+export const ListResolutionCenterCasesRequestStatusList =
+  ResolutionCenterCaseAvailableActionsList as any as S.Schema<ListResolutionCenterCasesRequestStatusList>;
 
 export type ListResolutionCenterCasesRequestReasonItem =
   | "fraudulent"
@@ -758,9 +753,8 @@ export const ListResolutionCenterCasesRequestReasonItem = S.String;
 export type ListResolutionCenterCasesRequestReasonList = Array<
   ListResolutionCenterCasesRequestReasonItem | (string & {})
 >;
-export const ListResolutionCenterCasesRequestReasonList = /*@__PURE__*/ S.Array(
-  ListResolutionCenterCasesRequestReasonItem,
-) as any as S.Schema<ListResolutionCenterCasesRequestReasonList>;
+export const ListResolutionCenterCasesRequestReasonList =
+  ResolutionCenterCaseAvailableActionsList as any as S.Schema<ListResolutionCenterCasesRequestReasonList>;
 
 export type ListResolutionCenterCasesRequestOutcomeItem =
   | "customer_won"
@@ -771,9 +765,8 @@ export const ListResolutionCenterCasesRequestOutcomeItem = S.String;
 export type ListResolutionCenterCasesRequestOutcomeList = Array<
   ListResolutionCenterCasesRequestOutcomeItem | (string & {})
 >;
-export const ListResolutionCenterCasesRequestOutcomeList = /*@__PURE__*/ S.Array(
-  ListResolutionCenterCasesRequestOutcomeItem,
-) as any as S.Schema<ListResolutionCenterCasesRequestOutcomeList>;
+export const ListResolutionCenterCasesRequestOutcomeList =
+  ResolutionCenterCaseAvailableActionsList as any as S.Schema<ListResolutionCenterCasesRequestOutcomeList>;
 
 export interface ListResolutionCenterCasesRequest {
   /** Only cases filed against this account (`biz_` tag). With read access to the account this lists its whole queue; without, only the cases you opened against it. */

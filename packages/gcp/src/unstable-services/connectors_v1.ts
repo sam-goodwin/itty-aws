@@ -1503,12 +1503,7 @@ export interface EventSubscriptionStatus {
   /** Output only. Description of the state. */
   description?: string;
 }
-export const EventSubscriptionStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: S.optional(EventSubscriptionStatusStateEnum),
-    description: S.optional(S.String),
-  }),
-).annotate({ identifier: "EventSubscriptionStatus" }) as any as S.Schema<EventSubscriptionStatus>;
+export const EventSubscriptionStatus = EventingStatus as any as S.Schema<EventSubscriptionStatus>;
 
 export type JMSTypeEnum = "TYPE_UNSPECIFIED" | "QUEUE" | "TOPIC";
 export const JMSTypeEnum = S.String;
@@ -3624,9 +3619,8 @@ export const ConnectorVersionUnsupportedConnectionTypesItemEnum = S.String;
 
 export type ConnectorVersionUnsupportedConnectionTypesItemEnumList =
   Array<ConnectorVersionUnsupportedConnectionTypesItemEnum>;
-export const ConnectorVersionUnsupportedConnectionTypesItemEnumList = /*@__PURE__*/ S.Array(
-  ConnectorVersionUnsupportedConnectionTypesItemEnum,
-) as any as S.Schema<ConnectorVersionUnsupportedConnectionTypesItemEnumList>;
+export const ConnectorVersionUnsupportedConnectionTypesItemEnumList =
+  EndUserAuthenticationRolesItemEnumList as any as S.Schema<ConnectorVersionUnsupportedConnectionTypesItemEnumList>;
 
 /** Standard entity */
 export interface StandardEntity {
@@ -3716,9 +3710,8 @@ export const SslConfigTemplateClientCertTypeItemEnum = S.String;
 
 export type SslConfigTemplateClientCertTypeItemEnumList =
   Array<SslConfigTemplateClientCertTypeItemEnum>;
-export const SslConfigTemplateClientCertTypeItemEnumList = /*@__PURE__*/ S.Array(
-  SslConfigTemplateClientCertTypeItemEnum,
-) as any as S.Schema<SslConfigTemplateClientCertTypeItemEnumList>;
+export const SslConfigTemplateClientCertTypeItemEnumList =
+  EndUserAuthenticationRolesItemEnumList as any as S.Schema<SslConfigTemplateClientCertTypeItemEnumList>;
 
 export type SslConfigTemplateSslTypeEnum = "SSL_TYPE_UNSPECIFIED" | "TLS" | "MTLS";
 export const SslConfigTemplateSslTypeEnum = S.String;
@@ -3728,9 +3721,8 @@ export const SslConfigTemplateServerCertTypeItemEnum = S.String;
 
 export type SslConfigTemplateServerCertTypeItemEnumList =
   Array<SslConfigTemplateServerCertTypeItemEnum>;
-export const SslConfigTemplateServerCertTypeItemEnumList = /*@__PURE__*/ S.Array(
-  SslConfigTemplateServerCertTypeItemEnum,
-) as any as S.Schema<SslConfigTemplateServerCertTypeItemEnumList>;
+export const SslConfigTemplateServerCertTypeItemEnumList =
+  EndUserAuthenticationRolesItemEnumList as any as S.Schema<SslConfigTemplateServerCertTypeItemEnumList>;
 
 /** Ssl config details of a connector version */
 export interface SslConfigTemplate {
@@ -4862,9 +4854,8 @@ export const RuntimeEntitySchemaOperationsItemEnum = S.String;
 
 export type RuntimeEntitySchemaOperationsItemEnumList =
   Array<RuntimeEntitySchemaOperationsItemEnum>;
-export const RuntimeEntitySchemaOperationsItemEnumList = /*@__PURE__*/ S.Array(
-  RuntimeEntitySchemaOperationsItemEnum,
-) as any as S.Schema<RuntimeEntitySchemaOperationsItemEnumList>;
+export const RuntimeEntitySchemaOperationsItemEnumList =
+  EndUserAuthenticationRolesItemEnumList as any as S.Schema<RuntimeEntitySchemaOperationsItemEnumList>;
 
 /** Schema of a runtime entity. */
 export interface RuntimeEntitySchema {

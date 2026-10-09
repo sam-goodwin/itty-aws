@@ -244,16 +244,8 @@ export interface GetAccountResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetAccountResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdByType: S.optional(GetAccountResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedByType: S.optional(GetAccountResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetAccountResponseSystemData",
-}) as any as S.Schema<GetAccountResponseSystemData>;
+export const GetAccountResponseSystemData =
+  AccountsCreateAndUpdateResponseSystemData as any as S.Schema<GetAccountResponseSystemData>;
 
 /** Provisioning state. */
 export type GetAccountResponsePropertiesProvisioningState = "Succeeded" | "Failed" | "Canceled";
@@ -268,15 +260,8 @@ export interface GetAccountResponseProperties {
   /** Billing Plan Id */
   billingPlanId?: string;
 }
-export const GetAccountResponseProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    provisioningState: S.optional(GetAccountResponsePropertiesProvisioningState),
-    appId: S.String,
-    billingPlanId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetAccountResponseProperties",
-}) as any as S.Schema<GetAccountResponseProperties>;
+export const GetAccountResponseProperties =
+  AccountsCreateAndUpdateResponseProperties as any as S.Schema<GetAccountResponseProperties>;
 
 export interface GetAccountResponse {
   /** Azure resource ID. */
@@ -360,16 +345,8 @@ export interface AccountResourceSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const AccountResourceSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdByType: S.optional(AccountResourceSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedByType: S.optional(AccountResourceSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AccountResourceSystemData",
-}) as any as S.Schema<AccountResourceSystemData>;
+export const AccountResourceSystemData =
+  AccountsCreateAndUpdateResponseSystemData as any as S.Schema<AccountResourceSystemData>;
 
 /** Provisioning state. */
 export type AccountResourcePropertiesProvisioningState = "Succeeded" | "Failed" | "Canceled";
@@ -384,15 +361,8 @@ export interface AccountResourceProperties {
   /** Billing Plan Id */
   billingPlanId?: string;
 }
-export const AccountResourceProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    provisioningState: S.optional(AccountResourcePropertiesProvisioningState),
-    appId: S.String,
-    billingPlanId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AccountResourceProperties",
-}) as any as S.Schema<AccountResourceProperties>;
+export const AccountResourceProperties =
+  AccountsCreateAndUpdateResponseProperties as any as S.Schema<AccountResourceProperties>;
 
 /** Account details */
 export interface AccountResource {
@@ -607,16 +577,8 @@ export interface UpdateAccountResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdateAccountResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdByType: S.optional(UpdateAccountResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedByType: S.optional(UpdateAccountResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateAccountResponseSystemData",
-}) as any as S.Schema<UpdateAccountResponseSystemData>;
+export const UpdateAccountResponseSystemData =
+  AccountsCreateAndUpdateResponseSystemData as any as S.Schema<UpdateAccountResponseSystemData>;
 
 /** Provisioning state. */
 export type UpdateAccountResponsePropertiesProvisioningState = "Succeeded" | "Failed" | "Canceled";
@@ -631,15 +593,8 @@ export interface UpdateAccountResponseProperties {
   /** Billing Plan Id */
   billingPlanId?: string;
 }
-export const UpdateAccountResponseProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    provisioningState: S.optional(UpdateAccountResponsePropertiesProvisioningState),
-    appId: S.String,
-    billingPlanId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateAccountResponseProperties",
-}) as any as S.Schema<UpdateAccountResponseProperties>;
+export const UpdateAccountResponseProperties =
+  AccountsCreateAndUpdateResponseProperties as any as S.Schema<UpdateAccountResponseProperties>;
 
 export interface UpdateAccountResponse {
   /** Azure resource ID. */

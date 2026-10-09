@@ -1065,7 +1065,7 @@ export type PiiEntityType =
 export const PiiEntityType = S.String;
 
 export type PiiEntityTypes = PiiEntityType[];
-export const PiiEntityTypes = /*@__PURE__*/ S.Array(PiiEntityType);
+export const PiiEntityTypes = SentimentValueList as any as S.Schema<PiiEntityTypes>;
 export interface ContentRedaction {
   RedactionType: RedactionType;
   RedactionOutput: RedactionOutput;
@@ -1079,7 +1079,7 @@ export const ContentRedaction = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ContentRedaction" }) as any as S.Schema<ContentRedaction>;
 export type LanguageOptions = LanguageCode[];
-export const LanguageOptions = /*@__PURE__*/ S.Array(LanguageCode);
+export const LanguageOptions = SentimentValueList as any as S.Schema<LanguageOptions>;
 export interface LanguageIdSettings {
   VocabularyName?: string;
   VocabularyFilterName?: string;
@@ -1533,7 +1533,7 @@ export type SubtitleFormat = "vtt" | "srt" | (string & {});
 export const SubtitleFormat = S.String;
 
 export type SubtitleFormats = SubtitleFormat[];
-export const SubtitleFormats = /*@__PURE__*/ S.Array(SubtitleFormat);
+export const SubtitleFormats = SentimentValueList as any as S.Schema<SubtitleFormats>;
 export type SubtitleFileUris = string[];
 export const SubtitleFileUris = StringTargetList as any as S.Schema<SubtitleFileUris>;
 export type SubtitleOutputStartIndex = number;
@@ -1553,7 +1553,7 @@ export type ToxicityCategory = "ALL" | (string & {});
 export const ToxicityCategory = S.String;
 
 export type ToxicityCategories = ToxicityCategory[];
-export const ToxicityCategories = /*@__PURE__*/ S.Array(ToxicityCategory);
+export const ToxicityCategories = SentimentValueList as any as S.Schema<ToxicityCategories>;
 export interface ToxicityDetectionSettings {
   ToxicityCategories: ToxicityCategory[];
 }

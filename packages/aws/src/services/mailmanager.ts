@@ -592,9 +592,7 @@ export type RuleIpEmailAttribute = "SOURCE_IP" | (string & {});
 export const RuleIpEmailAttribute = S.String;
 
 export type RuleIpToEvaluate = { Attribute: RuleIpEmailAttribute };
-export const RuleIpToEvaluate = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ Attribute: RuleIpEmailAttribute }),
-]);
+export const RuleIpToEvaluate = RuleNumberToEvaluate as any as S.Schema<RuleIpToEvaluate>;
 export type RuleIpOperator = "CIDR_MATCHES" | "NOT_CIDR_MATCHES" | (string & {});
 export const RuleIpOperator = S.String;
 
@@ -646,7 +644,7 @@ export type RuleDmarcPolicy = "NONE" | "QUARANTINE" | "REJECT" | (string & {});
 export const RuleDmarcPolicy = S.String;
 
 export type RuleDmarcValueList = RuleDmarcPolicy[];
-export const RuleDmarcValueList = /*@__PURE__*/ S.Array(RuleDmarcPolicy);
+export const RuleDmarcValueList = RuleVerdictValueList as any as S.Schema<RuleDmarcValueList>;
 export interface RuleDmarcExpression {
   Operator: RuleDmarcOperator;
   Values: RuleDmarcPolicy[];
@@ -1147,9 +1145,7 @@ export type IngressIpv4Attribute = "SENDER_IP" | (string & {});
 export const IngressIpv4Attribute = S.String;
 
 export type IngressIpToEvaluate = { Attribute: IngressIpv4Attribute };
-export const IngressIpToEvaluate = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ Attribute: IngressIpv4Attribute }),
-]);
+export const IngressIpToEvaluate = RuleNumberToEvaluate as any as S.Schema<IngressIpToEvaluate>;
 export type IngressIpOperator = "CIDR_MATCHES" | "NOT_CIDR_MATCHES" | (string & {});
 export const IngressIpOperator = S.String;
 
@@ -1168,9 +1164,7 @@ export type IngressIpv6Attribute = "SENDER_IPV6" | (string & {});
 export const IngressIpv6Attribute = S.String;
 
 export type IngressIpv6ToEvaluate = { Attribute: IngressIpv6Attribute };
-export const IngressIpv6ToEvaluate = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ Attribute: IngressIpv6Attribute }),
-]);
+export const IngressIpv6ToEvaluate = RuleNumberToEvaluate as any as S.Schema<IngressIpv6ToEvaluate>;
 export type Ipv6Cidr = string;
 export type Ipv6Cidrs = string[];
 export const Ipv6Cidrs = RuleAddressListArnList as any as S.Schema<Ipv6Cidrs>;
@@ -1186,9 +1180,8 @@ export type IngressTlsAttribute = "TLS_PROTOCOL" | (string & {});
 export const IngressTlsAttribute = S.String;
 
 export type IngressTlsProtocolToEvaluate = { Attribute: IngressTlsAttribute };
-export const IngressTlsProtocolToEvaluate = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ Attribute: IngressTlsAttribute }),
-]);
+export const IngressTlsProtocolToEvaluate =
+  RuleNumberToEvaluate as any as S.Schema<IngressTlsProtocolToEvaluate>;
 export type IngressTlsProtocolOperator = "MINIMUM_TLS_VERSION" | "IS" | (string & {});
 export const IngressTlsProtocolOperator = S.String;
 
@@ -1620,9 +1613,8 @@ export type ArchiveStringEmailAttribute =
 export const ArchiveStringEmailAttribute = S.String;
 
 export type ArchiveStringToEvaluate = { Attribute: ArchiveStringEmailAttribute };
-export const ArchiveStringToEvaluate = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ Attribute: ArchiveStringEmailAttribute }),
-]);
+export const ArchiveStringToEvaluate =
+  RuleNumberToEvaluate as any as S.Schema<ArchiveStringToEvaluate>;
 export type ArchiveStringOperator = "CONTAINS" | (string & {});
 export const ArchiveStringOperator = S.String;
 
@@ -1645,9 +1637,8 @@ export type ArchiveBooleanEmailAttribute = "HAS_ATTACHMENTS" | (string & {});
 export const ArchiveBooleanEmailAttribute = S.String;
 
 export type ArchiveBooleanToEvaluate = { Attribute: ArchiveBooleanEmailAttribute };
-export const ArchiveBooleanToEvaluate = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ Attribute: ArchiveBooleanEmailAttribute }),
-]);
+export const ArchiveBooleanToEvaluate =
+  RuleNumberToEvaluate as any as S.Schema<ArchiveBooleanToEvaluate>;
 export type ArchiveBooleanOperator = "IS_TRUE" | "IS_FALSE" | (string & {});
 export const ArchiveBooleanOperator = S.String;
 
@@ -1855,14 +1846,7 @@ export interface SearchStatus {
   State?: SearchState;
   ErrorMessage?: string;
 }
-export const SearchStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SubmissionTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    CompletionTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    State: S.optional(SearchState),
-    ErrorMessage: S.optional(S.String),
-  }),
-).annotate({ identifier: "SearchStatus" }) as any as S.Schema<SearchStatus>;
+export const SearchStatus = ExportStatus as any as S.Schema<SearchStatus>;
 export interface GetArchiveSearchResponse {
   ArchiveId?: string;
   Filters?: ArchiveFilters;

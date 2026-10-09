@@ -1312,7 +1312,7 @@ export type TargetType = "TLS_SNI" | "HTTP_HOST" | (string & {});
 export const TargetType = S.String;
 
 export type TargetTypes = TargetType[];
-export const TargetTypes = /*@__PURE__*/ S.Array(TargetType);
+export const TargetTypes = EnabledAnalysisTypes as any as S.Schema<TargetTypes>;
 export type GeneratedRulesType =
   | "ALLOWLIST"
   | "DENYLIST"
@@ -1434,7 +1434,7 @@ export type TCPFlag = "FIN" | "SYN" | "RST" | "PSH" | "ACK" | "URG" | "ECE" | "C
 export const TCPFlag = S.String;
 
 export type Flags = TCPFlag[];
-export const Flags = /*@__PURE__*/ S.Array(TCPFlag);
+export const Flags = EnabledAnalysisTypes as any as S.Schema<Flags>;
 export interface TCPFlagField {
   Flags: TCPFlag[];
   Masks?: TCPFlag[];
@@ -1535,7 +1535,7 @@ export type SummaryRuleOption = "SID" | "MSG" | "METADATA" | (string & {});
 export const SummaryRuleOption = S.String;
 
 export type SummaryRuleOptions = SummaryRuleOption[];
-export const SummaryRuleOptions = /*@__PURE__*/ S.Array(SummaryRuleOption);
+export const SummaryRuleOptions = EnabledAnalysisTypes as any as S.Schema<SummaryRuleOptions>;
 export interface SummaryConfiguration {
   RuleOptions?: SummaryRuleOption[];
 }

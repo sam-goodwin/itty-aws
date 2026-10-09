@@ -3166,9 +3166,8 @@ export const OrgNotificationRolesItem = S.String;
 
 /** List that contains the one or more organization roles that receive the configured alert. This parameter is available when `"notifications.[n].typeName" : "GROUP"` or `"notifications.[n].typeName" : "ORG"`. If you include this parameter, MongoDB Cloud sends alerts only to users assigned the roles you specify in the array. If you omit this parameter, MongoDB Cloud sends alerts to users assigned any role. */
 export type OrgNotificationRolesList = Array<OrgNotificationRolesItem | (string & {})>;
-export const OrgNotificationRolesList = /*@__PURE__*/ S.Array(
-  OrgNotificationRolesItem,
-) as any as S.Schema<OrgNotificationRolesList>;
+export const OrgNotificationRolesList =
+  OrgUserRolesResponseOrgRolesList as any as S.Schema<OrgNotificationRolesList>;
 
 /** Human-readable label that displays the alert notification type. */
 export type OrgNotificationTypeName = "ORG";
@@ -3651,15 +3650,8 @@ export interface DataMetricThresholdView {
   threshold?: number;
   units?: DataMetricUnits | (string & {});
 }
-export const DataMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(DataMetricThresholdViewMode),
-    operator: S.optional(DataMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(DataMetricUnits),
-  }),
-).annotate({ identifier: "DataMetricThresholdView" }) as any as S.Schema<DataMetricThresholdView>;
+export const DataMetricThresholdView =
+  RawMetricThresholdView as any as S.Schema<DataMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type TimeMetricThresholdViewMode = "AVERAGE";
@@ -3691,15 +3683,8 @@ export interface TimeMetricThresholdView {
   threshold?: number;
   units?: TimeMetricUnits | (string & {});
 }
-export const TimeMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(TimeMetricThresholdViewMode),
-    operator: S.optional(TimeMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(TimeMetricUnits),
-  }),
-).annotate({ identifier: "TimeMetricThresholdView" }) as any as S.Schema<TimeMetricThresholdView>;
+export const TimeMetricThresholdView =
+  RawMetricThresholdView as any as S.Schema<TimeMetricThresholdView>;
 
 /** Threshold for the metric that, when exceeded, triggers an alert. The metric threshold pertains to event types which reflects changes of measurements and metrics in the app services. */
 export type AppServiceMetricThreshold =
@@ -3829,19 +3814,12 @@ export interface ClusterMatcher {
   /** Value to match or exceed using the specified `matchers.operator`. */
   value: string;
 }
-export const ClusterMatcher = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fieldName: ClusterMatcherField,
-    operator: ClusterMatcherOperator,
-    value: S.String,
-  }),
-).annotate({ identifier: "ClusterMatcher" }) as any as S.Schema<ClusterMatcher>;
+export const ClusterMatcher = AppServiceMetricMatcher as any as S.Schema<ClusterMatcher>;
 
 /** List of rules that determine whether MongoDB Cloud checks an object for the alert configuration. You can filter using the matchers array if the `eventTypeName` specifies an event for a host, replica set, or sharded cluster. */
 export type ClusterAlertConfigViewForNdsGroupInputMatchersList = Array<ClusterMatcher>;
-export const ClusterAlertConfigViewForNdsGroupInputMatchersList = /*@__PURE__*/ S.Array(
-  ClusterMatcher,
-) as any as S.Schema<ClusterAlertConfigViewForNdsGroupInputMatchersList>;
+export const ClusterAlertConfigViewForNdsGroupInputMatchersList =
+  AppServiceAlertConfigViewForNdsGroupInputMatchersList as any as S.Schema<ClusterAlertConfigViewForNdsGroupInputMatchersList>;
 
 /** List that contains the targets that MongoDB Cloud sends notifications. */
 export type ClusterAlertConfigViewForNdsGroupInputNotificationsList =
@@ -3902,13 +3880,8 @@ export interface GreaterThanTimeThreshold {
   threshold?: number;
   units?: TimeMetricUnits | (string & {});
 }
-export const GreaterThanTimeThreshold = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operator: S.optional(GreaterThanTimeThresholdOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(TimeMetricUnits),
-  }),
-).annotate({ identifier: "GreaterThanTimeThreshold" }) as any as S.Schema<GreaterThanTimeThreshold>;
+export const GreaterThanTimeThreshold =
+  GreaterThanRawThreshold as any as S.Schema<GreaterThanTimeThreshold>;
 
 /** Cps Backup threshold alert configuration allows to select thresholds for conditions of CPS backup or oplogs anomalies which trigger alerts and how users are notified. */
 export interface CpsBackupThresholdAlertConfigViewForNdsGroupInput {
@@ -4145,17 +4118,8 @@ export interface AssertWarningRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const AssertWarningRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(AssertWarningRawMetricThresholdViewMode),
-    operator: S.optional(AssertWarningRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "AssertWarningRawMetricThresholdView",
-}) as any as S.Schema<AssertWarningRawMetricThresholdView>;
+export const AssertWarningRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<AssertWarningRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type AssertMsgRawMetricThresholdViewMode = "AVERAGE";
@@ -4176,17 +4140,8 @@ export interface AssertMsgRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const AssertMsgRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(AssertMsgRawMetricThresholdViewMode),
-    operator: S.optional(AssertMsgRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "AssertMsgRawMetricThresholdView",
-}) as any as S.Schema<AssertMsgRawMetricThresholdView>;
+export const AssertMsgRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<AssertMsgRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type AssertUserRawMetricThresholdViewMode = "AVERAGE";
@@ -4207,17 +4162,8 @@ export interface AssertUserRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const AssertUserRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(AssertUserRawMetricThresholdViewMode),
-    operator: S.optional(AssertUserRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "AssertUserRawMetricThresholdView",
-}) as any as S.Schema<AssertUserRawMetricThresholdView>;
+export const AssertUserRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<AssertUserRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type OpCounterCmdRawMetricThresholdViewMode = "AVERAGE";
@@ -4238,17 +4184,8 @@ export interface OpCounterCmdRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const OpCounterCmdRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(OpCounterCmdRawMetricThresholdViewMode),
-    operator: S.optional(OpCounterCmdRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "OpCounterCmdRawMetricThresholdView",
-}) as any as S.Schema<OpCounterCmdRawMetricThresholdView>;
+export const OpCounterCmdRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<OpCounterCmdRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type OpCounterQueryRawMetricThresholdViewMode = "AVERAGE";
@@ -4269,17 +4206,8 @@ export interface OpCounterQueryRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const OpCounterQueryRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(OpCounterQueryRawMetricThresholdViewMode),
-    operator: S.optional(OpCounterQueryRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "OpCounterQueryRawMetricThresholdView",
-}) as any as S.Schema<OpCounterQueryRawMetricThresholdView>;
+export const OpCounterQueryRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<OpCounterQueryRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type OpCounterUpdateRawMetricThresholdViewMode = "AVERAGE";
@@ -4300,17 +4228,8 @@ export interface OpCounterUpdateRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const OpCounterUpdateRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(OpCounterUpdateRawMetricThresholdViewMode),
-    operator: S.optional(OpCounterUpdateRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "OpCounterUpdateRawMetricThresholdView",
-}) as any as S.Schema<OpCounterUpdateRawMetricThresholdView>;
+export const OpCounterUpdateRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<OpCounterUpdateRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type OpCounterDeleteRawMetricThresholdViewMode = "AVERAGE";
@@ -4331,17 +4250,8 @@ export interface OpCounterDeleteRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const OpCounterDeleteRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(OpCounterDeleteRawMetricThresholdViewMode),
-    operator: S.optional(OpCounterDeleteRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "OpCounterDeleteRawMetricThresholdView",
-}) as any as S.Schema<OpCounterDeleteRawMetricThresholdView>;
+export const OpCounterDeleteRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<OpCounterDeleteRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type OpCounterTtlDeletedRawMetricThresholdViewMode = "AVERAGE";
@@ -4362,17 +4272,8 @@ export interface OpCounterTtlDeletedRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const OpCounterTtlDeletedRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(OpCounterTtlDeletedRawMetricThresholdViewMode),
-    operator: S.optional(OpCounterTtlDeletedRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "OpCounterTtlDeletedRawMetricThresholdView",
-}) as any as S.Schema<OpCounterTtlDeletedRawMetricThresholdView>;
+export const OpCounterTtlDeletedRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<OpCounterTtlDeletedRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type OpCounterInsertRawMetricThresholdViewMode = "AVERAGE";
@@ -4393,17 +4294,8 @@ export interface OpCounterInsertRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const OpCounterInsertRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(OpCounterInsertRawMetricThresholdViewMode),
-    operator: S.optional(OpCounterInsertRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "OpCounterInsertRawMetricThresholdView",
-}) as any as S.Schema<OpCounterInsertRawMetricThresholdView>;
+export const OpCounterInsertRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<OpCounterInsertRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type OpCounterGetMoreRawMetricThresholdViewMode = "AVERAGE";
@@ -4424,17 +4316,8 @@ export interface OpCounterGetMoreRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const OpCounterGetMoreRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(OpCounterGetMoreRawMetricThresholdViewMode),
-    operator: S.optional(OpCounterGetMoreRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "OpCounterGetMoreRawMetricThresholdView",
-}) as any as S.Schema<OpCounterGetMoreRawMetricThresholdView>;
+export const OpCounterGetMoreRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<OpCounterGetMoreRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type OpCounterReplCmdRawMetricThresholdViewMode = "AVERAGE";
@@ -4455,17 +4338,8 @@ export interface OpCounterReplCmdRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const OpCounterReplCmdRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(OpCounterReplCmdRawMetricThresholdViewMode),
-    operator: S.optional(OpCounterReplCmdRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "OpCounterReplCmdRawMetricThresholdView",
-}) as any as S.Schema<OpCounterReplCmdRawMetricThresholdView>;
+export const OpCounterReplCmdRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<OpCounterReplCmdRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type OpCounterReplUpdateRawMetricThresholdViewMode = "AVERAGE";
@@ -4486,17 +4360,8 @@ export interface OpCounterReplUpdateRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const OpCounterReplUpdateRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(OpCounterReplUpdateRawMetricThresholdViewMode),
-    operator: S.optional(OpCounterReplUpdateRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "OpCounterReplUpdateRawMetricThresholdView",
-}) as any as S.Schema<OpCounterReplUpdateRawMetricThresholdView>;
+export const OpCounterReplUpdateRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<OpCounterReplUpdateRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type OpCounterReplDeleteRawMetricThresholdViewMode = "AVERAGE";
@@ -4517,17 +4382,8 @@ export interface OpCounterReplDeleteRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const OpCounterReplDeleteRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(OpCounterReplDeleteRawMetricThresholdViewMode),
-    operator: S.optional(OpCounterReplDeleteRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "OpCounterReplDeleteRawMetricThresholdView",
-}) as any as S.Schema<OpCounterReplDeleteRawMetricThresholdView>;
+export const OpCounterReplDeleteRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<OpCounterReplDeleteRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type OpCounterReplInsertRawMetricThresholdViewMode = "AVERAGE";
@@ -4548,17 +4404,8 @@ export interface OpCounterReplInsertRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const OpCounterReplInsertRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(OpCounterReplInsertRawMetricThresholdViewMode),
-    operator: S.optional(OpCounterReplInsertRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "OpCounterReplInsertRawMetricThresholdView",
-}) as any as S.Schema<OpCounterReplInsertRawMetricThresholdView>;
+export const OpCounterReplInsertRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<OpCounterReplInsertRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type FtsMemoryResidentDataMetricThresholdViewMode = "AVERAGE";
@@ -4579,17 +4426,8 @@ export interface FtsMemoryResidentDataMetricThresholdView {
   threshold?: number;
   units?: DataMetricUnits | (string & {});
 }
-export const FtsMemoryResidentDataMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(FtsMemoryResidentDataMetricThresholdViewMode),
-    operator: S.optional(FtsMemoryResidentDataMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(DataMetricUnits),
-  }),
-).annotate({
-  identifier: "FtsMemoryResidentDataMetricThresholdView",
-}) as any as S.Schema<FtsMemoryResidentDataMetricThresholdView>;
+export const FtsMemoryResidentDataMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<FtsMemoryResidentDataMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type FtsMemoryVirtualDataMetricThresholdViewMode = "AVERAGE";
@@ -4610,17 +4448,8 @@ export interface FtsMemoryVirtualDataMetricThresholdView {
   threshold?: number;
   units?: DataMetricUnits | (string & {});
 }
-export const FtsMemoryVirtualDataMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(FtsMemoryVirtualDataMetricThresholdViewMode),
-    operator: S.optional(FtsMemoryVirtualDataMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(DataMetricUnits),
-  }),
-).annotate({
-  identifier: "FtsMemoryVirtualDataMetricThresholdView",
-}) as any as S.Schema<FtsMemoryVirtualDataMetricThresholdView>;
+export const FtsMemoryVirtualDataMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<FtsMemoryVirtualDataMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type FtsMemoryMappedDataMetricThresholdViewMode = "AVERAGE";
@@ -4641,17 +4470,8 @@ export interface FtsMemoryMappedDataMetricThresholdView {
   threshold?: number;
   units?: DataMetricUnits | (string & {});
 }
-export const FtsMemoryMappedDataMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(FtsMemoryMappedDataMetricThresholdViewMode),
-    operator: S.optional(FtsMemoryMappedDataMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(DataMetricUnits),
-  }),
-).annotate({
-  identifier: "FtsMemoryMappedDataMetricThresholdView",
-}) as any as S.Schema<FtsMemoryMappedDataMetricThresholdView>;
+export const FtsMemoryMappedDataMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<FtsMemoryMappedDataMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type FtsProcessCpuUserRawMetricThresholdViewMode = "AVERAGE";
@@ -4672,17 +4492,8 @@ export interface FtsProcessCpuUserRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const FtsProcessCpuUserRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(FtsProcessCpuUserRawMetricThresholdViewMode),
-    operator: S.optional(FtsProcessCpuUserRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "FtsProcessCpuUserRawMetricThresholdView",
-}) as any as S.Schema<FtsProcessCpuUserRawMetricThresholdView>;
+export const FtsProcessCpuUserRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<FtsProcessCpuUserRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type FtsProcessCpuKernelRawMetricThresholdViewMode = "AVERAGE";
@@ -4703,17 +4514,8 @@ export interface FtsProcessCpuKernelRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const FtsProcessCpuKernelRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(FtsProcessCpuKernelRawMetricThresholdViewMode),
-    operator: S.optional(FtsProcessCpuKernelRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "FtsProcessCpuKernelRawMetricThresholdView",
-}) as any as S.Schema<FtsProcessCpuKernelRawMetricThresholdView>;
+export const FtsProcessCpuKernelRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<FtsProcessCpuKernelRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type NormalizedFtsProcessCpuUserRawMetricThresholdViewMode = "AVERAGE";
@@ -4736,17 +4538,8 @@ export interface NormalizedFtsProcessCpuUserRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const NormalizedFtsProcessCpuUserRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(NormalizedFtsProcessCpuUserRawMetricThresholdViewMode),
-    operator: S.optional(NormalizedFtsProcessCpuUserRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "NormalizedFtsProcessCpuUserRawMetricThresholdView",
-}) as any as S.Schema<NormalizedFtsProcessCpuUserRawMetricThresholdView>;
+export const NormalizedFtsProcessCpuUserRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<NormalizedFtsProcessCpuUserRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type NormalizedFtsProcessCpuKernelRawMetricThresholdViewMode = "AVERAGE";
@@ -4769,17 +4562,8 @@ export interface NormalizedFtsProcessCpuKernelRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const NormalizedFtsProcessCpuKernelRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(NormalizedFtsProcessCpuKernelRawMetricThresholdViewMode),
-    operator: S.optional(NormalizedFtsProcessCpuKernelRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "NormalizedFtsProcessCpuKernelRawMetricThresholdView",
-}) as any as S.Schema<NormalizedFtsProcessCpuKernelRawMetricThresholdView>;
+export const NormalizedFtsProcessCpuKernelRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<NormalizedFtsProcessCpuKernelRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type SystemMemoryPercentUsedRawMetricThresholdViewMode = "AVERAGE";
@@ -4800,17 +4584,8 @@ export interface SystemMemoryPercentUsedRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const SystemMemoryPercentUsedRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(SystemMemoryPercentUsedRawMetricThresholdViewMode),
-    operator: S.optional(SystemMemoryPercentUsedRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "SystemMemoryPercentUsedRawMetricThresholdView",
-}) as any as S.Schema<SystemMemoryPercentUsedRawMetricThresholdView>;
+export const SystemMemoryPercentUsedRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<SystemMemoryPercentUsedRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type MemoryResidentDataMetricThresholdViewMode = "AVERAGE";
@@ -4831,17 +4606,8 @@ export interface MemoryResidentDataMetricThresholdView {
   threshold?: number;
   units?: DataMetricUnits | (string & {});
 }
-export const MemoryResidentDataMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(MemoryResidentDataMetricThresholdViewMode),
-    operator: S.optional(MemoryResidentDataMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(DataMetricUnits),
-  }),
-).annotate({
-  identifier: "MemoryResidentDataMetricThresholdView",
-}) as any as S.Schema<MemoryResidentDataMetricThresholdView>;
+export const MemoryResidentDataMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<MemoryResidentDataMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type MemoryVirtualDataMetricThresholdViewMode = "AVERAGE";
@@ -4862,17 +4628,8 @@ export interface MemoryVirtualDataMetricThresholdView {
   threshold?: number;
   units?: DataMetricUnits | (string & {});
 }
-export const MemoryVirtualDataMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(MemoryVirtualDataMetricThresholdViewMode),
-    operator: S.optional(MemoryVirtualDataMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(DataMetricUnits),
-  }),
-).annotate({
-  identifier: "MemoryVirtualDataMetricThresholdView",
-}) as any as S.Schema<MemoryVirtualDataMetricThresholdView>;
+export const MemoryVirtualDataMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<MemoryVirtualDataMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type MemoryMappedDataMetricThresholdViewMode = "AVERAGE";
@@ -4893,17 +4650,8 @@ export interface MemoryMappedDataMetricThresholdView {
   threshold?: number;
   units?: DataMetricUnits | (string & {});
 }
-export const MemoryMappedDataMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(MemoryMappedDataMetricThresholdViewMode),
-    operator: S.optional(MemoryMappedDataMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(DataMetricUnits),
-  }),
-).annotate({
-  identifier: "MemoryMappedDataMetricThresholdView",
-}) as any as S.Schema<MemoryMappedDataMetricThresholdView>;
+export const MemoryMappedDataMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<MemoryMappedDataMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type ComputedMemoryDataMetricThresholdViewMode = "AVERAGE";
@@ -4924,17 +4672,8 @@ export interface ComputedMemoryDataMetricThresholdView {
   threshold?: number;
   units?: DataMetricUnits | (string & {});
 }
-export const ComputedMemoryDataMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(ComputedMemoryDataMetricThresholdViewMode),
-    operator: S.optional(ComputedMemoryDataMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(DataMetricUnits),
-  }),
-).annotate({
-  identifier: "ComputedMemoryDataMetricThresholdView",
-}) as any as S.Schema<ComputedMemoryDataMetricThresholdView>;
+export const ComputedMemoryDataMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<ComputedMemoryDataMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type IndexCountersBtreeAccessesRawMetricThresholdViewMode = "AVERAGE";
@@ -4955,17 +4694,8 @@ export interface IndexCountersBtreeAccessesRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const IndexCountersBtreeAccessesRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(IndexCountersBtreeAccessesRawMetricThresholdViewMode),
-    operator: S.optional(IndexCountersBtreeAccessesRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "IndexCountersBtreeAccessesRawMetricThresholdView",
-}) as any as S.Schema<IndexCountersBtreeAccessesRawMetricThresholdView>;
+export const IndexCountersBtreeAccessesRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<IndexCountersBtreeAccessesRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type IndexCountersBtreeHitsRawMetricThresholdViewMode = "AVERAGE";
@@ -4986,17 +4716,8 @@ export interface IndexCountersBtreeHitsRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const IndexCountersBtreeHitsRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(IndexCountersBtreeHitsRawMetricThresholdViewMode),
-    operator: S.optional(IndexCountersBtreeHitsRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "IndexCountersBtreeHitsRawMetricThresholdView",
-}) as any as S.Schema<IndexCountersBtreeHitsRawMetricThresholdView>;
+export const IndexCountersBtreeHitsRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<IndexCountersBtreeHitsRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type IndexCountersBtreeMissesRawMetricThresholdViewMode = "AVERAGE";
@@ -5017,17 +4738,8 @@ export interface IndexCountersBtreeMissesRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const IndexCountersBtreeMissesRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(IndexCountersBtreeMissesRawMetricThresholdViewMode),
-    operator: S.optional(IndexCountersBtreeMissesRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "IndexCountersBtreeMissesRawMetricThresholdView",
-}) as any as S.Schema<IndexCountersBtreeMissesRawMetricThresholdView>;
+export const IndexCountersBtreeMissesRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<IndexCountersBtreeMissesRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type IndexCountersBtreeMissRatioRawMetricThresholdViewMode = "AVERAGE";
@@ -5050,17 +4762,8 @@ export interface IndexCountersBtreeMissRatioRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const IndexCountersBtreeMissRatioRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(IndexCountersBtreeMissRatioRawMetricThresholdViewMode),
-    operator: S.optional(IndexCountersBtreeMissRatioRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "IndexCountersBtreeMissRatioRawMetricThresholdView",
-}) as any as S.Schema<IndexCountersBtreeMissRatioRawMetricThresholdView>;
+export const IndexCountersBtreeMissRatioRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<IndexCountersBtreeMissRatioRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type GlobalLockPercentageRawMetricThresholdViewMode = "AVERAGE";
@@ -5081,17 +4784,8 @@ export interface GlobalLockPercentageRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const GlobalLockPercentageRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(GlobalLockPercentageRawMetricThresholdViewMode),
-    operator: S.optional(GlobalLockPercentageRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "GlobalLockPercentageRawMetricThresholdView",
-}) as any as S.Schema<GlobalLockPercentageRawMetricThresholdView>;
+export const GlobalLockPercentageRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<GlobalLockPercentageRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type ConnectionsRawMetricThresholdViewMode = "AVERAGE";
@@ -5112,17 +4806,8 @@ export interface ConnectionsRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const ConnectionsRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(ConnectionsRawMetricThresholdViewMode),
-    operator: S.optional(ConnectionsRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "ConnectionsRawMetricThresholdView",
-}) as any as S.Schema<ConnectionsRawMetricThresholdView>;
+export const ConnectionsRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<ConnectionsRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type ConnectionsEstablishmentRateLimitRejectedRawMetricThresholdViewMode = "AVERAGE";
@@ -5178,17 +4863,8 @@ export interface ConnectionsMaxRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const ConnectionsMaxRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(ConnectionsMaxRawMetricThresholdViewMode),
-    operator: S.optional(ConnectionsMaxRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "ConnectionsMaxRawMetricThresholdView",
-}) as any as S.Schema<ConnectionsMaxRawMetricThresholdView>;
+export const ConnectionsMaxRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<ConnectionsMaxRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type ConnectionsPercentRawMetricThresholdViewMode = "AVERAGE";
@@ -5209,17 +4885,8 @@ export interface ConnectionsPercentRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const ConnectionsPercentRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(ConnectionsPercentRawMetricThresholdViewMode),
-    operator: S.optional(ConnectionsPercentRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "ConnectionsPercentRawMetricThresholdView",
-}) as any as S.Schema<ConnectionsPercentRawMetricThresholdView>;
+export const ConnectionsPercentRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<ConnectionsPercentRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type GlobalAccessesNotInMemoryRawMetricThresholdViewMode = "AVERAGE";
@@ -5240,17 +4907,8 @@ export interface GlobalAccessesNotInMemoryRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const GlobalAccessesNotInMemoryRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(GlobalAccessesNotInMemoryRawMetricThresholdViewMode),
-    operator: S.optional(GlobalAccessesNotInMemoryRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "GlobalAccessesNotInMemoryRawMetricThresholdView",
-}) as any as S.Schema<GlobalAccessesNotInMemoryRawMetricThresholdView>;
+export const GlobalAccessesNotInMemoryRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<GlobalAccessesNotInMemoryRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type GlobalPageFaultExceptionsThrownRawMetricThresholdViewMode = "AVERAGE";
@@ -5273,17 +4931,8 @@ export interface GlobalPageFaultExceptionsThrownRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const GlobalPageFaultExceptionsThrownRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(GlobalPageFaultExceptionsThrownRawMetricThresholdViewMode),
-    operator: S.optional(GlobalPageFaultExceptionsThrownRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "GlobalPageFaultExceptionsThrownRawMetricThresholdView",
-}) as any as S.Schema<GlobalPageFaultExceptionsThrownRawMetricThresholdView>;
+export const GlobalPageFaultExceptionsThrownRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<GlobalPageFaultExceptionsThrownRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type GlobalLockCurrentQueueTotalRawMetricThresholdViewMode = "AVERAGE";
@@ -5306,17 +4955,8 @@ export interface GlobalLockCurrentQueueTotalRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const GlobalLockCurrentQueueTotalRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(GlobalLockCurrentQueueTotalRawMetricThresholdViewMode),
-    operator: S.optional(GlobalLockCurrentQueueTotalRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "GlobalLockCurrentQueueTotalRawMetricThresholdView",
-}) as any as S.Schema<GlobalLockCurrentQueueTotalRawMetricThresholdView>;
+export const GlobalLockCurrentQueueTotalRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<GlobalLockCurrentQueueTotalRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type GlobalLockCurrentQueueReadersRawMetricThresholdViewMode = "AVERAGE";
@@ -5339,17 +4979,8 @@ export interface GlobalLockCurrentQueueReadersRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const GlobalLockCurrentQueueReadersRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(GlobalLockCurrentQueueReadersRawMetricThresholdViewMode),
-    operator: S.optional(GlobalLockCurrentQueueReadersRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "GlobalLockCurrentQueueReadersRawMetricThresholdView",
-}) as any as S.Schema<GlobalLockCurrentQueueReadersRawMetricThresholdView>;
+export const GlobalLockCurrentQueueReadersRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<GlobalLockCurrentQueueReadersRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type GlobalLockCurrentQueueWritersRawMetricThresholdViewMode = "AVERAGE";
@@ -5372,17 +5003,8 @@ export interface GlobalLockCurrentQueueWritersRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const GlobalLockCurrentQueueWritersRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(GlobalLockCurrentQueueWritersRawMetricThresholdViewMode),
-    operator: S.optional(GlobalLockCurrentQueueWritersRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "GlobalLockCurrentQueueWritersRawMetricThresholdView",
-}) as any as S.Schema<GlobalLockCurrentQueueWritersRawMetricThresholdView>;
+export const GlobalLockCurrentQueueWritersRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<GlobalLockCurrentQueueWritersRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type CursorsTotalOpenRawMetricThresholdViewMode = "AVERAGE";
@@ -5403,17 +5025,8 @@ export interface CursorsTotalOpenRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const CursorsTotalOpenRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(CursorsTotalOpenRawMetricThresholdViewMode),
-    operator: S.optional(CursorsTotalOpenRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "CursorsTotalOpenRawMetricThresholdView",
-}) as any as S.Schema<CursorsTotalOpenRawMetricThresholdView>;
+export const CursorsTotalOpenRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<CursorsTotalOpenRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type CursorsTotalTimedOutRawMetricThresholdViewMode = "AVERAGE";
@@ -5434,17 +5047,8 @@ export interface CursorsTotalTimedOutRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const CursorsTotalTimedOutRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(CursorsTotalTimedOutRawMetricThresholdViewMode),
-    operator: S.optional(CursorsTotalTimedOutRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "CursorsTotalTimedOutRawMetricThresholdView",
-}) as any as S.Schema<CursorsTotalTimedOutRawMetricThresholdView>;
+export const CursorsTotalTimedOutRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<CursorsTotalTimedOutRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type CursorsTotalClientCursorsSizeRawMetricThresholdViewMode = "AVERAGE";
@@ -5467,17 +5071,8 @@ export interface CursorsTotalClientCursorsSizeRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const CursorsTotalClientCursorsSizeRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(CursorsTotalClientCursorsSizeRawMetricThresholdViewMode),
-    operator: S.optional(CursorsTotalClientCursorsSizeRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "CursorsTotalClientCursorsSizeRawMetricThresholdView",
-}) as any as S.Schema<CursorsTotalClientCursorsSizeRawMetricThresholdView>;
+export const CursorsTotalClientCursorsSizeRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<CursorsTotalClientCursorsSizeRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type NetworkBytesInDataMetricThresholdViewMode = "AVERAGE";
@@ -5498,17 +5093,8 @@ export interface NetworkBytesInDataMetricThresholdView {
   threshold?: number;
   units?: DataMetricUnits | (string & {});
 }
-export const NetworkBytesInDataMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(NetworkBytesInDataMetricThresholdViewMode),
-    operator: S.optional(NetworkBytesInDataMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(DataMetricUnits),
-  }),
-).annotate({
-  identifier: "NetworkBytesInDataMetricThresholdView",
-}) as any as S.Schema<NetworkBytesInDataMetricThresholdView>;
+export const NetworkBytesInDataMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<NetworkBytesInDataMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type NetworkBytesOutDataMetricThresholdViewMode = "AVERAGE";
@@ -5529,17 +5115,8 @@ export interface NetworkBytesOutDataMetricThresholdView {
   threshold?: number;
   units?: DataMetricUnits | (string & {});
 }
-export const NetworkBytesOutDataMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(NetworkBytesOutDataMetricThresholdViewMode),
-    operator: S.optional(NetworkBytesOutDataMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(DataMetricUnits),
-  }),
-).annotate({
-  identifier: "NetworkBytesOutDataMetricThresholdView",
-}) as any as S.Schema<NetworkBytesOutDataMetricThresholdView>;
+export const NetworkBytesOutDataMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<NetworkBytesOutDataMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type NetworkNumRequestsRawMetricThresholdViewMode = "AVERAGE";
@@ -5560,17 +5137,8 @@ export interface NetworkNumRequestsRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const NetworkNumRequestsRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(NetworkNumRequestsRawMetricThresholdViewMode),
-    operator: S.optional(NetworkNumRequestsRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "NetworkNumRequestsRawMetricThresholdView",
-}) as any as S.Schema<NetworkNumRequestsRawMetricThresholdView>;
+export const NetworkNumRequestsRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<NetworkNumRequestsRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type OplogMasterTimeTimeMetricThresholdViewMode = "AVERAGE";
@@ -5591,17 +5159,8 @@ export interface OplogMasterTimeTimeMetricThresholdView {
   threshold?: number;
   units?: TimeMetricUnits | (string & {});
 }
-export const OplogMasterTimeTimeMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(OplogMasterTimeTimeMetricThresholdViewMode),
-    operator: S.optional(OplogMasterTimeTimeMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(TimeMetricUnits),
-  }),
-).annotate({
-  identifier: "OplogMasterTimeTimeMetricThresholdView",
-}) as any as S.Schema<OplogMasterTimeTimeMetricThresholdView>;
+export const OplogMasterTimeTimeMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<OplogMasterTimeTimeMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type OplogMasterTimeEstimatedTtlTimeMetricThresholdViewMode = "AVERAGE";
@@ -5624,17 +5183,8 @@ export interface OplogMasterTimeEstimatedTtlTimeMetricThresholdView {
   threshold?: number;
   units?: TimeMetricUnits | (string & {});
 }
-export const OplogMasterTimeEstimatedTtlTimeMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(OplogMasterTimeEstimatedTtlTimeMetricThresholdViewMode),
-    operator: S.optional(OplogMasterTimeEstimatedTtlTimeMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(TimeMetricUnits),
-  }),
-).annotate({
-  identifier: "OplogMasterTimeEstimatedTtlTimeMetricThresholdView",
-}) as any as S.Schema<OplogMasterTimeEstimatedTtlTimeMetricThresholdView>;
+export const OplogMasterTimeEstimatedTtlTimeMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<OplogMasterTimeEstimatedTtlTimeMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type OplogSlaveLagMasterTimeTimeMetricThresholdViewMode = "AVERAGE";
@@ -5655,17 +5205,8 @@ export interface OplogSlaveLagMasterTimeTimeMetricThresholdView {
   threshold?: number;
   units?: TimeMetricUnits | (string & {});
 }
-export const OplogSlaveLagMasterTimeTimeMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(OplogSlaveLagMasterTimeTimeMetricThresholdViewMode),
-    operator: S.optional(OplogSlaveLagMasterTimeTimeMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(TimeMetricUnits),
-  }),
-).annotate({
-  identifier: "OplogSlaveLagMasterTimeTimeMetricThresholdView",
-}) as any as S.Schema<OplogSlaveLagMasterTimeTimeMetricThresholdView>;
+export const OplogSlaveLagMasterTimeTimeMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<OplogSlaveLagMasterTimeTimeMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type OplogMasterLagTimeDiffTimeMetricThresholdViewMode = "AVERAGE";
@@ -5686,17 +5227,8 @@ export interface OplogMasterLagTimeDiffTimeMetricThresholdView {
   threshold?: number;
   units?: TimeMetricUnits | (string & {});
 }
-export const OplogMasterLagTimeDiffTimeMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(OplogMasterLagTimeDiffTimeMetricThresholdViewMode),
-    operator: S.optional(OplogMasterLagTimeDiffTimeMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(TimeMetricUnits),
-  }),
-).annotate({
-  identifier: "OplogMasterLagTimeDiffTimeMetricThresholdView",
-}) as any as S.Schema<OplogMasterLagTimeDiffTimeMetricThresholdView>;
+export const OplogMasterLagTimeDiffTimeMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<OplogMasterLagTimeDiffTimeMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type OplogRateGbPerHourDataMetricThresholdViewMode = "AVERAGE";
@@ -5717,17 +5249,8 @@ export interface OplogRateGbPerHourDataMetricThresholdView {
   threshold?: number;
   units?: DataMetricUnits | (string & {});
 }
-export const OplogRateGbPerHourDataMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(OplogRateGbPerHourDataMetricThresholdViewMode),
-    operator: S.optional(OplogRateGbPerHourDataMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(DataMetricUnits),
-  }),
-).annotate({
-  identifier: "OplogRateGbPerHourDataMetricThresholdView",
-}) as any as S.Schema<OplogRateGbPerHourDataMetricThresholdView>;
+export const OplogRateGbPerHourDataMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<OplogRateGbPerHourDataMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type ExtraInfoPageFaultsRawMetricThresholdViewMode = "AVERAGE";
@@ -5748,17 +5271,8 @@ export interface ExtraInfoPageFaultsRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const ExtraInfoPageFaultsRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(ExtraInfoPageFaultsRawMetricThresholdViewMode),
-    operator: S.optional(ExtraInfoPageFaultsRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "ExtraInfoPageFaultsRawMetricThresholdView",
-}) as any as S.Schema<ExtraInfoPageFaultsRawMetricThresholdView>;
+export const ExtraInfoPageFaultsRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<ExtraInfoPageFaultsRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type DbStorageTotalDataMetricThresholdViewMode = "AVERAGE";
@@ -5779,17 +5293,8 @@ export interface DbStorageTotalDataMetricThresholdView {
   threshold?: number;
   units?: DataMetricUnits | (string & {});
 }
-export const DbStorageTotalDataMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(DbStorageTotalDataMetricThresholdViewMode),
-    operator: S.optional(DbStorageTotalDataMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(DataMetricUnits),
-  }),
-).annotate({
-  identifier: "DbStorageTotalDataMetricThresholdView",
-}) as any as S.Schema<DbStorageTotalDataMetricThresholdView>;
+export const DbStorageTotalDataMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<DbStorageTotalDataMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type DbDataSizeTotalDataMetricThresholdViewMode = "AVERAGE";
@@ -5810,17 +5315,8 @@ export interface DbDataSizeTotalDataMetricThresholdView {
   threshold?: number;
   units?: DataMetricUnits | (string & {});
 }
-export const DbDataSizeTotalDataMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(DbDataSizeTotalDataMetricThresholdViewMode),
-    operator: S.optional(DbDataSizeTotalDataMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(DataMetricUnits),
-  }),
-).annotate({
-  identifier: "DbDataSizeTotalDataMetricThresholdView",
-}) as any as S.Schema<DbDataSizeTotalDataMetricThresholdView>;
+export const DbDataSizeTotalDataMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<DbDataSizeTotalDataMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type DbDataSizeTotalWoSystemDataMetricThresholdViewMode = "AVERAGE";
@@ -5841,17 +5337,8 @@ export interface DbDataSizeTotalWoSystemDataMetricThresholdView {
   threshold?: number;
   units?: DataMetricUnits | (string & {});
 }
-export const DbDataSizeTotalWoSystemDataMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(DbDataSizeTotalWoSystemDataMetricThresholdViewMode),
-    operator: S.optional(DbDataSizeTotalWoSystemDataMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(DataMetricUnits),
-  }),
-).annotate({
-  identifier: "DbDataSizeTotalWoSystemDataMetricThresholdView",
-}) as any as S.Schema<DbDataSizeTotalWoSystemDataMetricThresholdView>;
+export const DbDataSizeTotalWoSystemDataMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<DbDataSizeTotalWoSystemDataMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type DbIndexSizeTotalDataMetricThresholdViewMode = "AVERAGE";
@@ -5872,17 +5359,8 @@ export interface DbIndexSizeTotalDataMetricThresholdView {
   threshold?: number;
   units?: DataMetricUnits | (string & {});
 }
-export const DbIndexSizeTotalDataMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(DbIndexSizeTotalDataMetricThresholdViewMode),
-    operator: S.optional(DbIndexSizeTotalDataMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(DataMetricUnits),
-  }),
-).annotate({
-  identifier: "DbIndexSizeTotalDataMetricThresholdView",
-}) as any as S.Schema<DbIndexSizeTotalDataMetricThresholdView>;
+export const DbIndexSizeTotalDataMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<DbIndexSizeTotalDataMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type JournalingCommitsInWriteLockRawMetricThresholdViewMode = "AVERAGE";
@@ -5905,17 +5383,8 @@ export interface JournalingCommitsInWriteLockRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const JournalingCommitsInWriteLockRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(JournalingCommitsInWriteLockRawMetricThresholdViewMode),
-    operator: S.optional(JournalingCommitsInWriteLockRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "JournalingCommitsInWriteLockRawMetricThresholdView",
-}) as any as S.Schema<JournalingCommitsInWriteLockRawMetricThresholdView>;
+export const JournalingCommitsInWriteLockRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<JournalingCommitsInWriteLockRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type JournalingMbDataMetricThresholdViewMode = "AVERAGE";
@@ -5936,17 +5405,8 @@ export interface JournalingMbDataMetricThresholdView {
   threshold?: number;
   units?: DataMetricUnits | (string & {});
 }
-export const JournalingMbDataMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(JournalingMbDataMetricThresholdViewMode),
-    operator: S.optional(JournalingMbDataMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(DataMetricUnits),
-  }),
-).annotate({
-  identifier: "JournalingMbDataMetricThresholdView",
-}) as any as S.Schema<JournalingMbDataMetricThresholdView>;
+export const JournalingMbDataMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<JournalingMbDataMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type JournalingWriteDataFilesMbDataMetricThresholdViewMode = "AVERAGE";
@@ -5969,17 +5429,8 @@ export interface JournalingWriteDataFilesMbDataMetricThresholdView {
   threshold?: number;
   units?: DataMetricUnits | (string & {});
 }
-export const JournalingWriteDataFilesMbDataMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(JournalingWriteDataFilesMbDataMetricThresholdViewMode),
-    operator: S.optional(JournalingWriteDataFilesMbDataMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(DataMetricUnits),
-  }),
-).annotate({
-  identifier: "JournalingWriteDataFilesMbDataMetricThresholdView",
-}) as any as S.Schema<JournalingWriteDataFilesMbDataMetricThresholdView>;
+export const JournalingWriteDataFilesMbDataMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<JournalingWriteDataFilesMbDataMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type TicketsAvailableReadsRawMetricThresholdViewMode = "AVERAGE";
@@ -6000,17 +5451,8 @@ export interface TicketsAvailableReadsRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const TicketsAvailableReadsRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(TicketsAvailableReadsRawMetricThresholdViewMode),
-    operator: S.optional(TicketsAvailableReadsRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "TicketsAvailableReadsRawMetricThresholdView",
-}) as any as S.Schema<TicketsAvailableReadsRawMetricThresholdView>;
+export const TicketsAvailableReadsRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<TicketsAvailableReadsRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type TicketsAvailableWritesRawMetricThresholdViewMode = "AVERAGE";
@@ -6031,17 +5473,8 @@ export interface TicketsAvailableWritesRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const TicketsAvailableWritesRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(TicketsAvailableWritesRawMetricThresholdViewMode),
-    operator: S.optional(TicketsAvailableWritesRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "TicketsAvailableWritesRawMetricThresholdView",
-}) as any as S.Schema<TicketsAvailableWritesRawMetricThresholdView>;
+export const TicketsAvailableWritesRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<TicketsAvailableWritesRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type CacheUsageDirtyDataMetricThresholdViewMode = "AVERAGE";
@@ -6062,17 +5495,8 @@ export interface CacheUsageDirtyDataMetricThresholdView {
   threshold?: number;
   units?: DataMetricUnits | (string & {});
 }
-export const CacheUsageDirtyDataMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(CacheUsageDirtyDataMetricThresholdViewMode),
-    operator: S.optional(CacheUsageDirtyDataMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(DataMetricUnits),
-  }),
-).annotate({
-  identifier: "CacheUsageDirtyDataMetricThresholdView",
-}) as any as S.Schema<CacheUsageDirtyDataMetricThresholdView>;
+export const CacheUsageDirtyDataMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<CacheUsageDirtyDataMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type CacheUsageUsedDataMetricThresholdViewMode = "AVERAGE";
@@ -6093,17 +5517,8 @@ export interface CacheUsageUsedDataMetricThresholdView {
   threshold?: number;
   units?: DataMetricUnits | (string & {});
 }
-export const CacheUsageUsedDataMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(CacheUsageUsedDataMetricThresholdViewMode),
-    operator: S.optional(CacheUsageUsedDataMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(DataMetricUnits),
-  }),
-).annotate({
-  identifier: "CacheUsageUsedDataMetricThresholdView",
-}) as any as S.Schema<CacheUsageUsedDataMetricThresholdView>;
+export const CacheUsageUsedDataMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<CacheUsageUsedDataMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type CacheBytesReadIntoDataMetricThresholdViewMode = "AVERAGE";
@@ -6124,17 +5539,8 @@ export interface CacheBytesReadIntoDataMetricThresholdView {
   threshold?: number;
   units?: DataMetricUnits | (string & {});
 }
-export const CacheBytesReadIntoDataMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(CacheBytesReadIntoDataMetricThresholdViewMode),
-    operator: S.optional(CacheBytesReadIntoDataMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(DataMetricUnits),
-  }),
-).annotate({
-  identifier: "CacheBytesReadIntoDataMetricThresholdView",
-}) as any as S.Schema<CacheBytesReadIntoDataMetricThresholdView>;
+export const CacheBytesReadIntoDataMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<CacheBytesReadIntoDataMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type CacheBytesWrittenFromDataMetricThresholdViewMode = "AVERAGE";
@@ -6155,17 +5561,8 @@ export interface CacheBytesWrittenFromDataMetricThresholdView {
   threshold?: number;
   units?: DataMetricUnits | (string & {});
 }
-export const CacheBytesWrittenFromDataMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(CacheBytesWrittenFromDataMetricThresholdViewMode),
-    operator: S.optional(CacheBytesWrittenFromDataMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(DataMetricUnits),
-  }),
-).annotate({
-  identifier: "CacheBytesWrittenFromDataMetricThresholdView",
-}) as any as S.Schema<CacheBytesWrittenFromDataMetricThresholdView>;
+export const CacheBytesWrittenFromDataMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<CacheBytesWrittenFromDataMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type NormalizedSystemCpuUserRawMetricThresholdViewMode = "AVERAGE";
@@ -6186,17 +5583,8 @@ export interface NormalizedSystemCpuUserRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const NormalizedSystemCpuUserRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(NormalizedSystemCpuUserRawMetricThresholdViewMode),
-    operator: S.optional(NormalizedSystemCpuUserRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "NormalizedSystemCpuUserRawMetricThresholdView",
-}) as any as S.Schema<NormalizedSystemCpuUserRawMetricThresholdView>;
+export const NormalizedSystemCpuUserRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<NormalizedSystemCpuUserRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type NormalizedSystemCpuStealRawMetricThresholdViewMode = "AVERAGE";
@@ -6217,17 +5605,8 @@ export interface NormalizedSystemCpuStealRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const NormalizedSystemCpuStealRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(NormalizedSystemCpuStealRawMetricThresholdViewMode),
-    operator: S.optional(NormalizedSystemCpuStealRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "NormalizedSystemCpuStealRawMetricThresholdView",
-}) as any as S.Schema<NormalizedSystemCpuStealRawMetricThresholdView>;
+export const NormalizedSystemCpuStealRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<NormalizedSystemCpuStealRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type DiskPartitionSpaceUsedDataRawMetricThresholdViewMode = "AVERAGE";
@@ -6248,17 +5627,8 @@ export interface DiskPartitionSpaceUsedDataRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const DiskPartitionSpaceUsedDataRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(DiskPartitionSpaceUsedDataRawMetricThresholdViewMode),
-    operator: S.optional(DiskPartitionSpaceUsedDataRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "DiskPartitionSpaceUsedDataRawMetricThresholdView",
-}) as any as S.Schema<DiskPartitionSpaceUsedDataRawMetricThresholdView>;
+export const DiskPartitionSpaceUsedDataRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<DiskPartitionSpaceUsedDataRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type DiskPartitionSpaceUsedIndexRawMetricThresholdViewMode = "AVERAGE";
@@ -6281,17 +5651,8 @@ export interface DiskPartitionSpaceUsedIndexRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const DiskPartitionSpaceUsedIndexRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(DiskPartitionSpaceUsedIndexRawMetricThresholdViewMode),
-    operator: S.optional(DiskPartitionSpaceUsedIndexRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "DiskPartitionSpaceUsedIndexRawMetricThresholdView",
-}) as any as S.Schema<DiskPartitionSpaceUsedIndexRawMetricThresholdView>;
+export const DiskPartitionSpaceUsedIndexRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<DiskPartitionSpaceUsedIndexRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type DiskPartitionSpaceUsedJournalRawMetricThresholdViewMode = "AVERAGE";
@@ -6314,17 +5675,8 @@ export interface DiskPartitionSpaceUsedJournalRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const DiskPartitionSpaceUsedJournalRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(DiskPartitionSpaceUsedJournalRawMetricThresholdViewMode),
-    operator: S.optional(DiskPartitionSpaceUsedJournalRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "DiskPartitionSpaceUsedJournalRawMetricThresholdView",
-}) as any as S.Schema<DiskPartitionSpaceUsedJournalRawMetricThresholdView>;
+export const DiskPartitionSpaceUsedJournalRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<DiskPartitionSpaceUsedJournalRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type DiskPartitionReadIopsDataRawMetricThresholdViewMode = "AVERAGE";
@@ -6345,17 +5697,8 @@ export interface DiskPartitionReadIopsDataRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const DiskPartitionReadIopsDataRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(DiskPartitionReadIopsDataRawMetricThresholdViewMode),
-    operator: S.optional(DiskPartitionReadIopsDataRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "DiskPartitionReadIopsDataRawMetricThresholdView",
-}) as any as S.Schema<DiskPartitionReadIopsDataRawMetricThresholdView>;
+export const DiskPartitionReadIopsDataRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<DiskPartitionReadIopsDataRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type DiskPartitionReadIopsIndexRawMetricThresholdViewMode = "AVERAGE";
@@ -6376,17 +5719,8 @@ export interface DiskPartitionReadIopsIndexRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const DiskPartitionReadIopsIndexRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(DiskPartitionReadIopsIndexRawMetricThresholdViewMode),
-    operator: S.optional(DiskPartitionReadIopsIndexRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "DiskPartitionReadIopsIndexRawMetricThresholdView",
-}) as any as S.Schema<DiskPartitionReadIopsIndexRawMetricThresholdView>;
+export const DiskPartitionReadIopsIndexRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<DiskPartitionReadIopsIndexRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type DiskPartitionReadIopsJournalRawMetricThresholdViewMode = "AVERAGE";
@@ -6409,17 +5743,8 @@ export interface DiskPartitionReadIopsJournalRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const DiskPartitionReadIopsJournalRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(DiskPartitionReadIopsJournalRawMetricThresholdViewMode),
-    operator: S.optional(DiskPartitionReadIopsJournalRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "DiskPartitionReadIopsJournalRawMetricThresholdView",
-}) as any as S.Schema<DiskPartitionReadIopsJournalRawMetricThresholdView>;
+export const DiskPartitionReadIopsJournalRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<DiskPartitionReadIopsJournalRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type DiskPartitionWriteIopsDataRawMetricThresholdViewMode = "AVERAGE";
@@ -6440,17 +5765,8 @@ export interface DiskPartitionWriteIopsDataRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const DiskPartitionWriteIopsDataRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(DiskPartitionWriteIopsDataRawMetricThresholdViewMode),
-    operator: S.optional(DiskPartitionWriteIopsDataRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "DiskPartitionWriteIopsDataRawMetricThresholdView",
-}) as any as S.Schema<DiskPartitionWriteIopsDataRawMetricThresholdView>;
+export const DiskPartitionWriteIopsDataRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<DiskPartitionWriteIopsDataRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type DiskPartitionWriteIopsIndexRawMetricThresholdViewMode = "AVERAGE";
@@ -6473,17 +5789,8 @@ export interface DiskPartitionWriteIopsIndexRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const DiskPartitionWriteIopsIndexRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(DiskPartitionWriteIopsIndexRawMetricThresholdViewMode),
-    operator: S.optional(DiskPartitionWriteIopsIndexRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "DiskPartitionWriteIopsIndexRawMetricThresholdView",
-}) as any as S.Schema<DiskPartitionWriteIopsIndexRawMetricThresholdView>;
+export const DiskPartitionWriteIopsIndexRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<DiskPartitionWriteIopsIndexRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type DiskPartitionWriteIopsJournalRawMetricThresholdViewMode = "AVERAGE";
@@ -6506,17 +5813,8 @@ export interface DiskPartitionWriteIopsJournalRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const DiskPartitionWriteIopsJournalRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(DiskPartitionWriteIopsJournalRawMetricThresholdViewMode),
-    operator: S.optional(DiskPartitionWriteIopsJournalRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "DiskPartitionWriteIopsJournalRawMetricThresholdView",
-}) as any as S.Schema<DiskPartitionWriteIopsJournalRawMetricThresholdView>;
+export const DiskPartitionWriteIopsJournalRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<DiskPartitionWriteIopsJournalRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type DiskPartitionReadLatencyDataTimeMetricThresholdViewMode = "AVERAGE";
@@ -6539,17 +5837,8 @@ export interface DiskPartitionReadLatencyDataTimeMetricThresholdView {
   threshold?: number;
   units?: TimeMetricUnits | (string & {});
 }
-export const DiskPartitionReadLatencyDataTimeMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(DiskPartitionReadLatencyDataTimeMetricThresholdViewMode),
-    operator: S.optional(DiskPartitionReadLatencyDataTimeMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(TimeMetricUnits),
-  }),
-).annotate({
-  identifier: "DiskPartitionReadLatencyDataTimeMetricThresholdView",
-}) as any as S.Schema<DiskPartitionReadLatencyDataTimeMetricThresholdView>;
+export const DiskPartitionReadLatencyDataTimeMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<DiskPartitionReadLatencyDataTimeMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type DiskPartitionReadLatencyIndexTimeMetricThresholdViewMode = "AVERAGE";
@@ -6572,17 +5861,8 @@ export interface DiskPartitionReadLatencyIndexTimeMetricThresholdView {
   threshold?: number;
   units?: TimeMetricUnits | (string & {});
 }
-export const DiskPartitionReadLatencyIndexTimeMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(DiskPartitionReadLatencyIndexTimeMetricThresholdViewMode),
-    operator: S.optional(DiskPartitionReadLatencyIndexTimeMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(TimeMetricUnits),
-  }),
-).annotate({
-  identifier: "DiskPartitionReadLatencyIndexTimeMetricThresholdView",
-}) as any as S.Schema<DiskPartitionReadLatencyIndexTimeMetricThresholdView>;
+export const DiskPartitionReadLatencyIndexTimeMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<DiskPartitionReadLatencyIndexTimeMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type DiskPartitionReadLatencyJournalTimeMetricThresholdViewMode = "AVERAGE";
@@ -6605,17 +5885,8 @@ export interface DiskPartitionReadLatencyJournalTimeMetricThresholdView {
   threshold?: number;
   units?: TimeMetricUnits | (string & {});
 }
-export const DiskPartitionReadLatencyJournalTimeMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(DiskPartitionReadLatencyJournalTimeMetricThresholdViewMode),
-    operator: S.optional(DiskPartitionReadLatencyJournalTimeMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(TimeMetricUnits),
-  }),
-).annotate({
-  identifier: "DiskPartitionReadLatencyJournalTimeMetricThresholdView",
-}) as any as S.Schema<DiskPartitionReadLatencyJournalTimeMetricThresholdView>;
+export const DiskPartitionReadLatencyJournalTimeMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<DiskPartitionReadLatencyJournalTimeMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type DiskPartitionWriteLatencyDataTimeMetricThresholdViewMode = "AVERAGE";
@@ -6638,17 +5909,8 @@ export interface DiskPartitionWriteLatencyDataTimeMetricThresholdView {
   threshold?: number;
   units?: TimeMetricUnits | (string & {});
 }
-export const DiskPartitionWriteLatencyDataTimeMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(DiskPartitionWriteLatencyDataTimeMetricThresholdViewMode),
-    operator: S.optional(DiskPartitionWriteLatencyDataTimeMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(TimeMetricUnits),
-  }),
-).annotate({
-  identifier: "DiskPartitionWriteLatencyDataTimeMetricThresholdView",
-}) as any as S.Schema<DiskPartitionWriteLatencyDataTimeMetricThresholdView>;
+export const DiskPartitionWriteLatencyDataTimeMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<DiskPartitionWriteLatencyDataTimeMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type DiskPartitionWriteLatencyIndexTimeMetricThresholdViewMode = "AVERAGE";
@@ -6671,17 +5933,8 @@ export interface DiskPartitionWriteLatencyIndexTimeMetricThresholdView {
   threshold?: number;
   units?: TimeMetricUnits | (string & {});
 }
-export const DiskPartitionWriteLatencyIndexTimeMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(DiskPartitionWriteLatencyIndexTimeMetricThresholdViewMode),
-    operator: S.optional(DiskPartitionWriteLatencyIndexTimeMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(TimeMetricUnits),
-  }),
-).annotate({
-  identifier: "DiskPartitionWriteLatencyIndexTimeMetricThresholdView",
-}) as any as S.Schema<DiskPartitionWriteLatencyIndexTimeMetricThresholdView>;
+export const DiskPartitionWriteLatencyIndexTimeMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<DiskPartitionWriteLatencyIndexTimeMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type DiskPartitionWriteLatencyJournalTimeMetricThresholdViewMode = "AVERAGE";
@@ -6704,17 +5957,8 @@ export interface DiskPartitionWriteLatencyJournalTimeMetricThresholdView {
   threshold?: number;
   units?: TimeMetricUnits | (string & {});
 }
-export const DiskPartitionWriteLatencyJournalTimeMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(DiskPartitionWriteLatencyJournalTimeMetricThresholdViewMode),
-    operator: S.optional(DiskPartitionWriteLatencyJournalTimeMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(TimeMetricUnits),
-  }),
-).annotate({
-  identifier: "DiskPartitionWriteLatencyJournalTimeMetricThresholdView",
-}) as any as S.Schema<DiskPartitionWriteLatencyJournalTimeMetricThresholdView>;
+export const DiskPartitionWriteLatencyJournalTimeMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<DiskPartitionWriteLatencyJournalTimeMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type DiskPartitionQueueDepthDataRawMetricThresholdViewMode = "AVERAGE";
@@ -6737,17 +5981,8 @@ export interface DiskPartitionQueueDepthDataRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const DiskPartitionQueueDepthDataRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(DiskPartitionQueueDepthDataRawMetricThresholdViewMode),
-    operator: S.optional(DiskPartitionQueueDepthDataRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "DiskPartitionQueueDepthDataRawMetricThresholdView",
-}) as any as S.Schema<DiskPartitionQueueDepthDataRawMetricThresholdView>;
+export const DiskPartitionQueueDepthDataRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<DiskPartitionQueueDepthDataRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type DiskPartitionQueueDepthIndexRawMetricThresholdViewMode = "AVERAGE";
@@ -6770,17 +6005,8 @@ export interface DiskPartitionQueueDepthIndexRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const DiskPartitionQueueDepthIndexRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(DiskPartitionQueueDepthIndexRawMetricThresholdViewMode),
-    operator: S.optional(DiskPartitionQueueDepthIndexRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "DiskPartitionQueueDepthIndexRawMetricThresholdView",
-}) as any as S.Schema<DiskPartitionQueueDepthIndexRawMetricThresholdView>;
+export const DiskPartitionQueueDepthIndexRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<DiskPartitionQueueDepthIndexRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type DiskPartitionQueueDepthJournalRawMetricThresholdViewMode = "AVERAGE";
@@ -6803,17 +6029,8 @@ export interface DiskPartitionQueueDepthJournalRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const DiskPartitionQueueDepthJournalRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(DiskPartitionQueueDepthJournalRawMetricThresholdViewMode),
-    operator: S.optional(DiskPartitionQueueDepthJournalRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "DiskPartitionQueueDepthJournalRawMetricThresholdView",
-}) as any as S.Schema<DiskPartitionQueueDepthJournalRawMetricThresholdView>;
+export const DiskPartitionQueueDepthJournalRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<DiskPartitionQueueDepthJournalRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type FtsDiskUtilizationDataMetricThresholdViewMode = "AVERAGE";
@@ -6834,17 +6051,8 @@ export interface FtsDiskUtilizationDataMetricThresholdView {
   threshold?: number;
   units?: DataMetricUnits | (string & {});
 }
-export const FtsDiskUtilizationDataMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(FtsDiskUtilizationDataMetricThresholdViewMode),
-    operator: S.optional(FtsDiskUtilizationDataMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(DataMetricUnits),
-  }),
-).annotate({
-  identifier: "FtsDiskUtilizationDataMetricThresholdView",
-}) as any as S.Schema<FtsDiskUtilizationDataMetricThresholdView>;
+export const FtsDiskUtilizationDataMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<FtsDiskUtilizationDataMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type MuninCpuUserRawMetricThresholdViewMode = "AVERAGE";
@@ -6865,17 +6073,8 @@ export interface MuninCpuUserRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const MuninCpuUserRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(MuninCpuUserRawMetricThresholdViewMode),
-    operator: S.optional(MuninCpuUserRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "MuninCpuUserRawMetricThresholdView",
-}) as any as S.Schema<MuninCpuUserRawMetricThresholdView>;
+export const MuninCpuUserRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<MuninCpuUserRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type MuninCpuNiceRawMetricThresholdViewMode = "AVERAGE";
@@ -6896,17 +6095,8 @@ export interface MuninCpuNiceRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const MuninCpuNiceRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(MuninCpuNiceRawMetricThresholdViewMode),
-    operator: S.optional(MuninCpuNiceRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "MuninCpuNiceRawMetricThresholdView",
-}) as any as S.Schema<MuninCpuNiceRawMetricThresholdView>;
+export const MuninCpuNiceRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<MuninCpuNiceRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type MuninCpuSystemRawMetricThresholdViewMode = "AVERAGE";
@@ -6927,17 +6117,8 @@ export interface MuninCpuSystemRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const MuninCpuSystemRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(MuninCpuSystemRawMetricThresholdViewMode),
-    operator: S.optional(MuninCpuSystemRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "MuninCpuSystemRawMetricThresholdView",
-}) as any as S.Schema<MuninCpuSystemRawMetricThresholdView>;
+export const MuninCpuSystemRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<MuninCpuSystemRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type MuninCpuIowaitRawMetricThresholdViewMode = "AVERAGE";
@@ -6958,17 +6139,8 @@ export interface MuninCpuIowaitRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const MuninCpuIowaitRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(MuninCpuIowaitRawMetricThresholdViewMode),
-    operator: S.optional(MuninCpuIowaitRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "MuninCpuIowaitRawMetricThresholdView",
-}) as any as S.Schema<MuninCpuIowaitRawMetricThresholdView>;
+export const MuninCpuIowaitRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<MuninCpuIowaitRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type MuninCpuIrqRawMetricThresholdViewMode = "AVERAGE";
@@ -6989,17 +6161,8 @@ export interface MuninCpuIrqRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const MuninCpuIrqRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(MuninCpuIrqRawMetricThresholdViewMode),
-    operator: S.optional(MuninCpuIrqRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "MuninCpuIrqRawMetricThresholdView",
-}) as any as S.Schema<MuninCpuIrqRawMetricThresholdView>;
+export const MuninCpuIrqRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<MuninCpuIrqRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type MuninCpuSoftirqRawMetricThresholdViewMode = "AVERAGE";
@@ -7020,17 +6183,8 @@ export interface MuninCpuSoftirqRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const MuninCpuSoftirqRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(MuninCpuSoftirqRawMetricThresholdViewMode),
-    operator: S.optional(MuninCpuSoftirqRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "MuninCpuSoftirqRawMetricThresholdView",
-}) as any as S.Schema<MuninCpuSoftirqRawMetricThresholdView>;
+export const MuninCpuSoftirqRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<MuninCpuSoftirqRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type MuninCpuStealRawMetricThresholdViewMode = "AVERAGE";
@@ -7051,17 +6205,8 @@ export interface MuninCpuStealRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const MuninCpuStealRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(MuninCpuStealRawMetricThresholdViewMode),
-    operator: S.optional(MuninCpuStealRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "MuninCpuStealRawMetricThresholdView",
-}) as any as S.Schema<MuninCpuStealRawMetricThresholdView>;
+export const MuninCpuStealRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<MuninCpuStealRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type DocumentReturnedRawMetricThresholdViewMode = "AVERAGE";
@@ -7082,17 +6227,8 @@ export interface DocumentReturnedRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const DocumentReturnedRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(DocumentReturnedRawMetricThresholdViewMode),
-    operator: S.optional(DocumentReturnedRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "DocumentReturnedRawMetricThresholdView",
-}) as any as S.Schema<DocumentReturnedRawMetricThresholdView>;
+export const DocumentReturnedRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<DocumentReturnedRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type DocumentInsertedRawMetricThresholdViewMode = "AVERAGE";
@@ -7113,17 +6249,8 @@ export interface DocumentInsertedRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const DocumentInsertedRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(DocumentInsertedRawMetricThresholdViewMode),
-    operator: S.optional(DocumentInsertedRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "DocumentInsertedRawMetricThresholdView",
-}) as any as S.Schema<DocumentInsertedRawMetricThresholdView>;
+export const DocumentInsertedRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<DocumentInsertedRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type DocumentUpdatedRawMetricThresholdViewMode = "AVERAGE";
@@ -7144,17 +6271,8 @@ export interface DocumentUpdatedRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const DocumentUpdatedRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(DocumentUpdatedRawMetricThresholdViewMode),
-    operator: S.optional(DocumentUpdatedRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "DocumentUpdatedRawMetricThresholdView",
-}) as any as S.Schema<DocumentUpdatedRawMetricThresholdView>;
+export const DocumentUpdatedRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<DocumentUpdatedRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type DocumentDeletedRawMetricThresholdViewMode = "AVERAGE";
@@ -7175,17 +6293,8 @@ export interface DocumentDeletedRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const DocumentDeletedRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(DocumentDeletedRawMetricThresholdViewMode),
-    operator: S.optional(DocumentDeletedRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "DocumentDeletedRawMetricThresholdView",
-}) as any as S.Schema<DocumentDeletedRawMetricThresholdView>;
+export const DocumentDeletedRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<DocumentDeletedRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type OperationsScanAndOrderRawMetricThresholdViewMode = "AVERAGE";
@@ -7206,17 +6315,8 @@ export interface OperationsScanAndOrderRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const OperationsScanAndOrderRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(OperationsScanAndOrderRawMetricThresholdViewMode),
-    operator: S.optional(OperationsScanAndOrderRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "OperationsScanAndOrderRawMetricThresholdView",
-}) as any as S.Schema<OperationsScanAndOrderRawMetricThresholdView>;
+export const OperationsScanAndOrderRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<OperationsScanAndOrderRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type QueryExecutorScannedRawMetricThresholdViewMode = "AVERAGE";
@@ -7237,17 +6337,8 @@ export interface QueryExecutorScannedRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const QueryExecutorScannedRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(QueryExecutorScannedRawMetricThresholdViewMode),
-    operator: S.optional(QueryExecutorScannedRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "QueryExecutorScannedRawMetricThresholdView",
-}) as any as S.Schema<QueryExecutorScannedRawMetricThresholdView>;
+export const QueryExecutorScannedRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<QueryExecutorScannedRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type QueryExecutorScannedObjectsRawMetricThresholdViewMode = "AVERAGE";
@@ -7270,17 +6361,8 @@ export interface QueryExecutorScannedObjectsRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const QueryExecutorScannedObjectsRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(QueryExecutorScannedObjectsRawMetricThresholdViewMode),
-    operator: S.optional(QueryExecutorScannedObjectsRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "QueryExecutorScannedObjectsRawMetricThresholdView",
-}) as any as S.Schema<QueryExecutorScannedObjectsRawMetricThresholdView>;
+export const QueryExecutorScannedObjectsRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<QueryExecutorScannedObjectsRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type OperationThrottlingRejectedOperationsRawMetricThresholdViewMode = "AVERAGE";
@@ -7335,17 +6417,8 @@ export interface QuerySpillToDiskDuringSortRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const QuerySpillToDiskDuringSortRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(QuerySpillToDiskDuringSortRawMetricThresholdViewMode),
-    operator: S.optional(QuerySpillToDiskDuringSortRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "QuerySpillToDiskDuringSortRawMetricThresholdView",
-}) as any as S.Schema<QuerySpillToDiskDuringSortRawMetricThresholdView>;
+export const QuerySpillToDiskDuringSortRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<QuerySpillToDiskDuringSortRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type OperationsQueriesKilledRawMetricThresholdViewMode = "AVERAGE";
@@ -7366,17 +6439,8 @@ export interface OperationsQueriesKilledRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const OperationsQueriesKilledRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(OperationsQueriesKilledRawMetricThresholdViewMode),
-    operator: S.optional(OperationsQueriesKilledRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "OperationsQueriesKilledRawMetricThresholdView",
-}) as any as S.Schema<OperationsQueriesKilledRawMetricThresholdView>;
+export const OperationsQueriesKilledRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<OperationsQueriesKilledRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type QueryTargetingScannedPerReturnedRawMetricThresholdViewMode = "AVERAGE";
@@ -7399,17 +6463,8 @@ export interface QueryTargetingScannedPerReturnedRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const QueryTargetingScannedPerReturnedRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(QueryTargetingScannedPerReturnedRawMetricThresholdViewMode),
-    operator: S.optional(QueryTargetingScannedPerReturnedRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "QueryTargetingScannedPerReturnedRawMetricThresholdView",
-}) as any as S.Schema<QueryTargetingScannedPerReturnedRawMetricThresholdView>;
+export const QueryTargetingScannedPerReturnedRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<QueryTargetingScannedPerReturnedRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type QueryTargetingScannedObjectsPerReturnedRawMetricThresholdViewMode = "AVERAGE";
@@ -7433,17 +6488,7 @@ export interface QueryTargetingScannedObjectsPerReturnedRawMetricThresholdView {
   units?: RawMetricUnits | (string & {});
 }
 export const QueryTargetingScannedObjectsPerReturnedRawMetricThresholdView =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      metricName: S.String,
-      mode: S.optional(QueryTargetingScannedObjectsPerReturnedRawMetricThresholdViewMode),
-      operator: S.optional(QueryTargetingScannedObjectsPerReturnedRawMetricThresholdViewOperator),
-      threshold: S.optional(S.Number),
-      units: S.optional(RawMetricUnits),
-    }),
-  ).annotate({
-    identifier: "QueryTargetingScannedObjectsPerReturnedRawMetricThresholdView",
-  }) as any as S.Schema<QueryTargetingScannedObjectsPerReturnedRawMetricThresholdView>;
+  ConnectionsEstablishmentRateLimitRejectedRawMetricThresholdView as any as S.Schema<QueryTargetingScannedObjectsPerReturnedRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type AvgReadExecutionTimeTimeMetricThresholdViewMode = "AVERAGE";
@@ -7464,17 +6509,8 @@ export interface AvgReadExecutionTimeTimeMetricThresholdView {
   threshold?: number;
   units?: TimeMetricUnits | (string & {});
 }
-export const AvgReadExecutionTimeTimeMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(AvgReadExecutionTimeTimeMetricThresholdViewMode),
-    operator: S.optional(AvgReadExecutionTimeTimeMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(TimeMetricUnits),
-  }),
-).annotate({
-  identifier: "AvgReadExecutionTimeTimeMetricThresholdView",
-}) as any as S.Schema<AvgReadExecutionTimeTimeMetricThresholdView>;
+export const AvgReadExecutionTimeTimeMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<AvgReadExecutionTimeTimeMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type AvgWriteExecutionTimeTimeMetricThresholdViewMode = "AVERAGE";
@@ -7495,17 +6531,8 @@ export interface AvgWriteExecutionTimeTimeMetricThresholdView {
   threshold?: number;
   units?: TimeMetricUnits | (string & {});
 }
-export const AvgWriteExecutionTimeTimeMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(AvgWriteExecutionTimeTimeMetricThresholdViewMode),
-    operator: S.optional(AvgWriteExecutionTimeTimeMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(TimeMetricUnits),
-  }),
-).annotate({
-  identifier: "AvgWriteExecutionTimeTimeMetricThresholdView",
-}) as any as S.Schema<AvgWriteExecutionTimeTimeMetricThresholdView>;
+export const AvgWriteExecutionTimeTimeMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<AvgWriteExecutionTimeTimeMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type AvgCommandExecutionTimeTimeMetricThresholdViewMode = "AVERAGE";
@@ -7526,17 +6553,8 @@ export interface AvgCommandExecutionTimeTimeMetricThresholdView {
   threshold?: number;
   units?: TimeMetricUnits | (string & {});
 }
-export const AvgCommandExecutionTimeTimeMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(AvgCommandExecutionTimeTimeMetricThresholdViewMode),
-    operator: S.optional(AvgCommandExecutionTimeTimeMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(TimeMetricUnits),
-  }),
-).annotate({
-  identifier: "AvgCommandExecutionTimeTimeMetricThresholdView",
-}) as any as S.Schema<AvgCommandExecutionTimeTimeMetricThresholdView>;
+export const AvgCommandExecutionTimeTimeMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<AvgCommandExecutionTimeTimeMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type LogicalSizeDataMetricThresholdViewMode = "AVERAGE";
@@ -7557,17 +6575,8 @@ export interface LogicalSizeDataMetricThresholdView {
   threshold?: number;
   units?: DataMetricUnits | (string & {});
 }
-export const LogicalSizeDataMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(LogicalSizeDataMetricThresholdViewMode),
-    operator: S.optional(LogicalSizeDataMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(DataMetricUnits),
-  }),
-).annotate({
-  identifier: "LogicalSizeDataMetricThresholdView",
-}) as any as S.Schema<LogicalSizeDataMetricThresholdView>;
+export const LogicalSizeDataMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<LogicalSizeDataMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type RestartsInLastHourRawMetricThresholdViewMode = "AVERAGE";
@@ -7588,17 +6597,8 @@ export interface RestartsInLastHourRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const RestartsInLastHourRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(RestartsInLastHourRawMetricThresholdViewMode),
-    operator: S.optional(RestartsInLastHourRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "RestartsInLastHourRawMetricThresholdView",
-}) as any as S.Schema<RestartsInLastHourRawMetricThresholdView>;
+export const RestartsInLastHourRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<RestartsInLastHourRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type SystemMemoryUsedDataMetricThresholdViewMode = "AVERAGE";
@@ -7619,17 +6619,8 @@ export interface SystemMemoryUsedDataMetricThresholdView {
   threshold?: number;
   units?: DataMetricUnits | (string & {});
 }
-export const SystemMemoryUsedDataMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(SystemMemoryUsedDataMetricThresholdViewMode),
-    operator: S.optional(SystemMemoryUsedDataMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(DataMetricUnits),
-  }),
-).annotate({
-  identifier: "SystemMemoryUsedDataMetricThresholdView",
-}) as any as S.Schema<SystemMemoryUsedDataMetricThresholdView>;
+export const SystemMemoryUsedDataMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<SystemMemoryUsedDataMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type SystemMemoryAvailableDataMetricThresholdViewMode = "AVERAGE";
@@ -7650,17 +6641,8 @@ export interface SystemMemoryAvailableDataMetricThresholdView {
   threshold?: number;
   units?: DataMetricUnits | (string & {});
 }
-export const SystemMemoryAvailableDataMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(SystemMemoryAvailableDataMetricThresholdViewMode),
-    operator: S.optional(SystemMemoryAvailableDataMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(DataMetricUnits),
-  }),
-).annotate({
-  identifier: "SystemMemoryAvailableDataMetricThresholdView",
-}) as any as S.Schema<SystemMemoryAvailableDataMetricThresholdView>;
+export const SystemMemoryAvailableDataMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<SystemMemoryAvailableDataMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type SwapUsageUsedDataMetricThresholdViewMode = "AVERAGE";
@@ -7681,17 +6663,8 @@ export interface SwapUsageUsedDataMetricThresholdView {
   threshold?: number;
   units?: DataMetricUnits | (string & {});
 }
-export const SwapUsageUsedDataMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(SwapUsageUsedDataMetricThresholdViewMode),
-    operator: S.optional(SwapUsageUsedDataMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(DataMetricUnits),
-  }),
-).annotate({
-  identifier: "SwapUsageUsedDataMetricThresholdView",
-}) as any as S.Schema<SwapUsageUsedDataMetricThresholdView>;
+export const SwapUsageUsedDataMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<SwapUsageUsedDataMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type SwapUsageFreeDataMetricThresholdViewMode = "AVERAGE";
@@ -7712,17 +6685,8 @@ export interface SwapUsageFreeDataMetricThresholdView {
   threshold?: number;
   units?: DataMetricUnits | (string & {});
 }
-export const SwapUsageFreeDataMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(SwapUsageFreeDataMetricThresholdViewMode),
-    operator: S.optional(SwapUsageFreeDataMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(DataMetricUnits),
-  }),
-).annotate({
-  identifier: "SwapUsageFreeDataMetricThresholdView",
-}) as any as S.Schema<SwapUsageFreeDataMetricThresholdView>;
+export const SwapUsageFreeDataMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<SwapUsageFreeDataMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type SystemNetworkInDataMetricThresholdViewMode = "AVERAGE";
@@ -7743,17 +6707,8 @@ export interface SystemNetworkInDataMetricThresholdView {
   threshold?: number;
   units?: DataMetricUnits | (string & {});
 }
-export const SystemNetworkInDataMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(SystemNetworkInDataMetricThresholdViewMode),
-    operator: S.optional(SystemNetworkInDataMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(DataMetricUnits),
-  }),
-).annotate({
-  identifier: "SystemNetworkInDataMetricThresholdView",
-}) as any as S.Schema<SystemNetworkInDataMetricThresholdView>;
+export const SystemNetworkInDataMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<SystemNetworkInDataMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type SystemNetworkOutDataMetricThresholdViewMode = "AVERAGE";
@@ -7774,17 +6729,8 @@ export interface SystemNetworkOutDataMetricThresholdView {
   threshold?: number;
   units?: DataMetricUnits | (string & {});
 }
-export const SystemNetworkOutDataMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(SystemNetworkOutDataMetricThresholdViewMode),
-    operator: S.optional(SystemNetworkOutDataMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(DataMetricUnits),
-  }),
-).annotate({
-  identifier: "SystemNetworkOutDataMetricThresholdView",
-}) as any as S.Schema<SystemNetworkOutDataMetricThresholdView>;
+export const SystemNetworkOutDataMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<SystemNetworkOutDataMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type MaxNormalizedSystemCpuUserRawMetricThresholdViewMode = "AVERAGE";
@@ -7805,17 +6751,8 @@ export interface MaxNormalizedSystemCpuUserRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const MaxNormalizedSystemCpuUserRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(MaxNormalizedSystemCpuUserRawMetricThresholdViewMode),
-    operator: S.optional(MaxNormalizedSystemCpuUserRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "MaxNormalizedSystemCpuUserRawMetricThresholdView",
-}) as any as S.Schema<MaxNormalizedSystemCpuUserRawMetricThresholdView>;
+export const MaxNormalizedSystemCpuUserRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<MaxNormalizedSystemCpuUserRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type MaxNormalizedSystemCpuStealRawMetricThresholdViewMode = "AVERAGE";
@@ -7838,17 +6775,8 @@ export interface MaxNormalizedSystemCpuStealRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const MaxNormalizedSystemCpuStealRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(MaxNormalizedSystemCpuStealRawMetricThresholdViewMode),
-    operator: S.optional(MaxNormalizedSystemCpuStealRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "MaxNormalizedSystemCpuStealRawMetricThresholdView",
-}) as any as S.Schema<MaxNormalizedSystemCpuStealRawMetricThresholdView>;
+export const MaxNormalizedSystemCpuStealRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<MaxNormalizedSystemCpuStealRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type MaxDiskPartitionSpaceUsedDataRawMetricThresholdViewMode = "AVERAGE";
@@ -7871,17 +6799,8 @@ export interface MaxDiskPartitionSpaceUsedDataRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const MaxDiskPartitionSpaceUsedDataRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(MaxDiskPartitionSpaceUsedDataRawMetricThresholdViewMode),
-    operator: S.optional(MaxDiskPartitionSpaceUsedDataRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "MaxDiskPartitionSpaceUsedDataRawMetricThresholdView",
-}) as any as S.Schema<MaxDiskPartitionSpaceUsedDataRawMetricThresholdView>;
+export const MaxDiskPartitionSpaceUsedDataRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<MaxDiskPartitionSpaceUsedDataRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type MaxDiskPartitionSpaceUsedIndexRawMetricThresholdViewMode = "AVERAGE";
@@ -7904,17 +6823,8 @@ export interface MaxDiskPartitionSpaceUsedIndexRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const MaxDiskPartitionSpaceUsedIndexRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(MaxDiskPartitionSpaceUsedIndexRawMetricThresholdViewMode),
-    operator: S.optional(MaxDiskPartitionSpaceUsedIndexRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "MaxDiskPartitionSpaceUsedIndexRawMetricThresholdView",
-}) as any as S.Schema<MaxDiskPartitionSpaceUsedIndexRawMetricThresholdView>;
+export const MaxDiskPartitionSpaceUsedIndexRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<MaxDiskPartitionSpaceUsedIndexRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type MaxDiskPartitionSpaceUsedJournalRawMetricThresholdViewMode = "AVERAGE";
@@ -7937,17 +6847,8 @@ export interface MaxDiskPartitionSpaceUsedJournalRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const MaxDiskPartitionSpaceUsedJournalRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(MaxDiskPartitionSpaceUsedJournalRawMetricThresholdViewMode),
-    operator: S.optional(MaxDiskPartitionSpaceUsedJournalRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "MaxDiskPartitionSpaceUsedJournalRawMetricThresholdView",
-}) as any as S.Schema<MaxDiskPartitionSpaceUsedJournalRawMetricThresholdView>;
+export const MaxDiskPartitionSpaceUsedJournalRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<MaxDiskPartitionSpaceUsedJournalRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type MaxDiskPartitionReadIopsDataRawMetricThresholdViewMode = "AVERAGE";
@@ -7970,17 +6871,8 @@ export interface MaxDiskPartitionReadIopsDataRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const MaxDiskPartitionReadIopsDataRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(MaxDiskPartitionReadIopsDataRawMetricThresholdViewMode),
-    operator: S.optional(MaxDiskPartitionReadIopsDataRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "MaxDiskPartitionReadIopsDataRawMetricThresholdView",
-}) as any as S.Schema<MaxDiskPartitionReadIopsDataRawMetricThresholdView>;
+export const MaxDiskPartitionReadIopsDataRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<MaxDiskPartitionReadIopsDataRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type MaxDiskPartitionReadIopsIndexRawMetricThresholdViewMode = "AVERAGE";
@@ -8003,17 +6895,8 @@ export interface MaxDiskPartitionReadIopsIndexRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const MaxDiskPartitionReadIopsIndexRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(MaxDiskPartitionReadIopsIndexRawMetricThresholdViewMode),
-    operator: S.optional(MaxDiskPartitionReadIopsIndexRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "MaxDiskPartitionReadIopsIndexRawMetricThresholdView",
-}) as any as S.Schema<MaxDiskPartitionReadIopsIndexRawMetricThresholdView>;
+export const MaxDiskPartitionReadIopsIndexRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<MaxDiskPartitionReadIopsIndexRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type MaxDiskPartitionReadIopsJournalRawMetricThresholdViewMode = "AVERAGE";
@@ -8036,17 +6919,8 @@ export interface MaxDiskPartitionReadIopsJournalRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const MaxDiskPartitionReadIopsJournalRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(MaxDiskPartitionReadIopsJournalRawMetricThresholdViewMode),
-    operator: S.optional(MaxDiskPartitionReadIopsJournalRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "MaxDiskPartitionReadIopsJournalRawMetricThresholdView",
-}) as any as S.Schema<MaxDiskPartitionReadIopsJournalRawMetricThresholdView>;
+export const MaxDiskPartitionReadIopsJournalRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<MaxDiskPartitionReadIopsJournalRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type MaxDiskPartitionWriteIopsDataRawMetricThresholdViewMode = "AVERAGE";
@@ -8069,17 +6943,8 @@ export interface MaxDiskPartitionWriteIopsDataRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const MaxDiskPartitionWriteIopsDataRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(MaxDiskPartitionWriteIopsDataRawMetricThresholdViewMode),
-    operator: S.optional(MaxDiskPartitionWriteIopsDataRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "MaxDiskPartitionWriteIopsDataRawMetricThresholdView",
-}) as any as S.Schema<MaxDiskPartitionWriteIopsDataRawMetricThresholdView>;
+export const MaxDiskPartitionWriteIopsDataRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<MaxDiskPartitionWriteIopsDataRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type MaxDiskPartitionWriteIopsIndexRawMetricThresholdViewMode = "AVERAGE";
@@ -8102,17 +6967,8 @@ export interface MaxDiskPartitionWriteIopsIndexRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const MaxDiskPartitionWriteIopsIndexRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(MaxDiskPartitionWriteIopsIndexRawMetricThresholdViewMode),
-    operator: S.optional(MaxDiskPartitionWriteIopsIndexRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "MaxDiskPartitionWriteIopsIndexRawMetricThresholdView",
-}) as any as S.Schema<MaxDiskPartitionWriteIopsIndexRawMetricThresholdView>;
+export const MaxDiskPartitionWriteIopsIndexRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<MaxDiskPartitionWriteIopsIndexRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type MaxDiskPartitionWriteIopsJournalRawMetricThresholdViewMode = "AVERAGE";
@@ -8135,17 +6991,8 @@ export interface MaxDiskPartitionWriteIopsJournalRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const MaxDiskPartitionWriteIopsJournalRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(MaxDiskPartitionWriteIopsJournalRawMetricThresholdViewMode),
-    operator: S.optional(MaxDiskPartitionWriteIopsJournalRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "MaxDiskPartitionWriteIopsJournalRawMetricThresholdView",
-}) as any as S.Schema<MaxDiskPartitionWriteIopsJournalRawMetricThresholdView>;
+export const MaxDiskPartitionWriteIopsJournalRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<MaxDiskPartitionWriteIopsJournalRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type MaxDiskPartitionReadLatencyDataTimeMetricThresholdViewMode = "AVERAGE";
@@ -8168,17 +7015,8 @@ export interface MaxDiskPartitionReadLatencyDataTimeMetricThresholdView {
   threshold?: number;
   units?: TimeMetricUnits | (string & {});
 }
-export const MaxDiskPartitionReadLatencyDataTimeMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(MaxDiskPartitionReadLatencyDataTimeMetricThresholdViewMode),
-    operator: S.optional(MaxDiskPartitionReadLatencyDataTimeMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(TimeMetricUnits),
-  }),
-).annotate({
-  identifier: "MaxDiskPartitionReadLatencyDataTimeMetricThresholdView",
-}) as any as S.Schema<MaxDiskPartitionReadLatencyDataTimeMetricThresholdView>;
+export const MaxDiskPartitionReadLatencyDataTimeMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<MaxDiskPartitionReadLatencyDataTimeMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type MaxDiskPartitionReadLatencyIndexTimeMetricThresholdViewMode = "AVERAGE";
@@ -8201,17 +7039,8 @@ export interface MaxDiskPartitionReadLatencyIndexTimeMetricThresholdView {
   threshold?: number;
   units?: TimeMetricUnits | (string & {});
 }
-export const MaxDiskPartitionReadLatencyIndexTimeMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(MaxDiskPartitionReadLatencyIndexTimeMetricThresholdViewMode),
-    operator: S.optional(MaxDiskPartitionReadLatencyIndexTimeMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(TimeMetricUnits),
-  }),
-).annotate({
-  identifier: "MaxDiskPartitionReadLatencyIndexTimeMetricThresholdView",
-}) as any as S.Schema<MaxDiskPartitionReadLatencyIndexTimeMetricThresholdView>;
+export const MaxDiskPartitionReadLatencyIndexTimeMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<MaxDiskPartitionReadLatencyIndexTimeMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type MaxDiskPartitionReadLatencyJournalTimeMetricThresholdViewMode = "AVERAGE";
@@ -8234,18 +7063,8 @@ export interface MaxDiskPartitionReadLatencyJournalTimeMetricThresholdView {
   threshold?: number;
   units?: TimeMetricUnits | (string & {});
 }
-export const MaxDiskPartitionReadLatencyJournalTimeMetricThresholdView = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      metricName: S.String,
-      mode: S.optional(MaxDiskPartitionReadLatencyJournalTimeMetricThresholdViewMode),
-      operator: S.optional(MaxDiskPartitionReadLatencyJournalTimeMetricThresholdViewOperator),
-      threshold: S.optional(S.Number),
-      units: S.optional(TimeMetricUnits),
-    }),
-).annotate({
-  identifier: "MaxDiskPartitionReadLatencyJournalTimeMetricThresholdView",
-}) as any as S.Schema<MaxDiskPartitionReadLatencyJournalTimeMetricThresholdView>;
+export const MaxDiskPartitionReadLatencyJournalTimeMetricThresholdView =
+  OperationThrottlingRejectedOperationsRawMetricThresholdView as any as S.Schema<MaxDiskPartitionReadLatencyJournalTimeMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type MaxDiskPartitionWriteLatencyDataTimeMetricThresholdViewMode = "AVERAGE";
@@ -8268,17 +7087,8 @@ export interface MaxDiskPartitionWriteLatencyDataTimeMetricThresholdView {
   threshold?: number;
   units?: TimeMetricUnits | (string & {});
 }
-export const MaxDiskPartitionWriteLatencyDataTimeMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(MaxDiskPartitionWriteLatencyDataTimeMetricThresholdViewMode),
-    operator: S.optional(MaxDiskPartitionWriteLatencyDataTimeMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(TimeMetricUnits),
-  }),
-).annotate({
-  identifier: "MaxDiskPartitionWriteLatencyDataTimeMetricThresholdView",
-}) as any as S.Schema<MaxDiskPartitionWriteLatencyDataTimeMetricThresholdView>;
+export const MaxDiskPartitionWriteLatencyDataTimeMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<MaxDiskPartitionWriteLatencyDataTimeMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type MaxDiskPartitionWriteLatencyIndexTimeMetricThresholdViewMode = "AVERAGE";
@@ -8301,18 +7111,8 @@ export interface MaxDiskPartitionWriteLatencyIndexTimeMetricThresholdView {
   threshold?: number;
   units?: TimeMetricUnits | (string & {});
 }
-export const MaxDiskPartitionWriteLatencyIndexTimeMetricThresholdView = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      metricName: S.String,
-      mode: S.optional(MaxDiskPartitionWriteLatencyIndexTimeMetricThresholdViewMode),
-      operator: S.optional(MaxDiskPartitionWriteLatencyIndexTimeMetricThresholdViewOperator),
-      threshold: S.optional(S.Number),
-      units: S.optional(TimeMetricUnits),
-    }),
-).annotate({
-  identifier: "MaxDiskPartitionWriteLatencyIndexTimeMetricThresholdView",
-}) as any as S.Schema<MaxDiskPartitionWriteLatencyIndexTimeMetricThresholdView>;
+export const MaxDiskPartitionWriteLatencyIndexTimeMetricThresholdView =
+  OperationThrottlingRejectedOperationsRawMetricThresholdView as any as S.Schema<MaxDiskPartitionWriteLatencyIndexTimeMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type MaxDiskPartitionWriteLatencyJournalTimeMetricThresholdViewMode = "AVERAGE";
@@ -8335,18 +7135,8 @@ export interface MaxDiskPartitionWriteLatencyJournalTimeMetricThresholdView {
   threshold?: number;
   units?: TimeMetricUnits | (string & {});
 }
-export const MaxDiskPartitionWriteLatencyJournalTimeMetricThresholdView = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      metricName: S.String,
-      mode: S.optional(MaxDiskPartitionWriteLatencyJournalTimeMetricThresholdViewMode),
-      operator: S.optional(MaxDiskPartitionWriteLatencyJournalTimeMetricThresholdViewOperator),
-      threshold: S.optional(S.Number),
-      units: S.optional(TimeMetricUnits),
-    }),
-).annotate({
-  identifier: "MaxDiskPartitionWriteLatencyJournalTimeMetricThresholdView",
-}) as any as S.Schema<MaxDiskPartitionWriteLatencyJournalTimeMetricThresholdView>;
+export const MaxDiskPartitionWriteLatencyJournalTimeMetricThresholdView =
+  OperationThrottlingRejectedOperationsRawMetricThresholdView as any as S.Schema<MaxDiskPartitionWriteLatencyJournalTimeMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type MaxDiskPartitionQueueDepthDataRawMetricThresholdViewMode = "AVERAGE";
@@ -8369,17 +7159,8 @@ export interface MaxDiskPartitionQueueDepthDataRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const MaxDiskPartitionQueueDepthDataRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(MaxDiskPartitionQueueDepthDataRawMetricThresholdViewMode),
-    operator: S.optional(MaxDiskPartitionQueueDepthDataRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "MaxDiskPartitionQueueDepthDataRawMetricThresholdView",
-}) as any as S.Schema<MaxDiskPartitionQueueDepthDataRawMetricThresholdView>;
+export const MaxDiskPartitionQueueDepthDataRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<MaxDiskPartitionQueueDepthDataRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type MaxDiskPartitionQueueDepthIndexRawMetricThresholdViewMode = "AVERAGE";
@@ -8402,17 +7183,8 @@ export interface MaxDiskPartitionQueueDepthIndexRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const MaxDiskPartitionQueueDepthIndexRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(MaxDiskPartitionQueueDepthIndexRawMetricThresholdViewMode),
-    operator: S.optional(MaxDiskPartitionQueueDepthIndexRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "MaxDiskPartitionQueueDepthIndexRawMetricThresholdView",
-}) as any as S.Schema<MaxDiskPartitionQueueDepthIndexRawMetricThresholdView>;
+export const MaxDiskPartitionQueueDepthIndexRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<MaxDiskPartitionQueueDepthIndexRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type MaxDiskPartitionQueueDepthJournalRawMetricThresholdViewMode = "AVERAGE";
@@ -8435,17 +7207,8 @@ export interface MaxDiskPartitionQueueDepthJournalRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const MaxDiskPartitionQueueDepthJournalRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(MaxDiskPartitionQueueDepthJournalRawMetricThresholdViewMode),
-    operator: S.optional(MaxDiskPartitionQueueDepthJournalRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "MaxDiskPartitionQueueDepthJournalRawMetricThresholdView",
-}) as any as S.Schema<MaxDiskPartitionQueueDepthJournalRawMetricThresholdView>;
+export const MaxDiskPartitionQueueDepthJournalRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<MaxDiskPartitionQueueDepthJournalRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type MaxSystemMemoryPercentUsedRawMetricThresholdViewMode = "AVERAGE";
@@ -8466,17 +7229,8 @@ export interface MaxSystemMemoryPercentUsedRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const MaxSystemMemoryPercentUsedRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(MaxSystemMemoryPercentUsedRawMetricThresholdViewMode),
-    operator: S.optional(MaxSystemMemoryPercentUsedRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "MaxSystemMemoryPercentUsedRawMetricThresholdView",
-}) as any as S.Schema<MaxSystemMemoryPercentUsedRawMetricThresholdView>;
+export const MaxSystemMemoryPercentUsedRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<MaxSystemMemoryPercentUsedRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type MaxSystemMemoryUsedDataMetricThresholdViewMode = "AVERAGE";
@@ -8497,17 +7251,8 @@ export interface MaxSystemMemoryUsedDataMetricThresholdView {
   threshold?: number;
   units?: DataMetricUnits | (string & {});
 }
-export const MaxSystemMemoryUsedDataMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(MaxSystemMemoryUsedDataMetricThresholdViewMode),
-    operator: S.optional(MaxSystemMemoryUsedDataMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(DataMetricUnits),
-  }),
-).annotate({
-  identifier: "MaxSystemMemoryUsedDataMetricThresholdView",
-}) as any as S.Schema<MaxSystemMemoryUsedDataMetricThresholdView>;
+export const MaxSystemMemoryUsedDataMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<MaxSystemMemoryUsedDataMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type MaxSystemMemoryAvailableDataMetricThresholdViewMode = "AVERAGE";
@@ -8528,17 +7273,8 @@ export interface MaxSystemMemoryAvailableDataMetricThresholdView {
   threshold?: number;
   units?: DataMetricUnits | (string & {});
 }
-export const MaxSystemMemoryAvailableDataMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(MaxSystemMemoryAvailableDataMetricThresholdViewMode),
-    operator: S.optional(MaxSystemMemoryAvailableDataMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(DataMetricUnits),
-  }),
-).annotate({
-  identifier: "MaxSystemMemoryAvailableDataMetricThresholdView",
-}) as any as S.Schema<MaxSystemMemoryAvailableDataMetricThresholdView>;
+export const MaxSystemMemoryAvailableDataMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<MaxSystemMemoryAvailableDataMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type MaxSwapUsageUsedDataMetricThresholdViewMode = "AVERAGE";
@@ -8559,17 +7295,8 @@ export interface MaxSwapUsageUsedDataMetricThresholdView {
   threshold?: number;
   units?: DataMetricUnits | (string & {});
 }
-export const MaxSwapUsageUsedDataMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(MaxSwapUsageUsedDataMetricThresholdViewMode),
-    operator: S.optional(MaxSwapUsageUsedDataMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(DataMetricUnits),
-  }),
-).annotate({
-  identifier: "MaxSwapUsageUsedDataMetricThresholdView",
-}) as any as S.Schema<MaxSwapUsageUsedDataMetricThresholdView>;
+export const MaxSwapUsageUsedDataMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<MaxSwapUsageUsedDataMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type MaxSwapUsageFreeDataMetricThresholdViewMode = "AVERAGE";
@@ -8590,17 +7317,8 @@ export interface MaxSwapUsageFreeDataMetricThresholdView {
   threshold?: number;
   units?: DataMetricUnits | (string & {});
 }
-export const MaxSwapUsageFreeDataMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(MaxSwapUsageFreeDataMetricThresholdViewMode),
-    operator: S.optional(MaxSwapUsageFreeDataMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(DataMetricUnits),
-  }),
-).annotate({
-  identifier: "MaxSwapUsageFreeDataMetricThresholdView",
-}) as any as S.Schema<MaxSwapUsageFreeDataMetricThresholdView>;
+export const MaxSwapUsageFreeDataMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<MaxSwapUsageFreeDataMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type MaxSystemNetworkInDataMetricThresholdViewMode = "AVERAGE";
@@ -8621,17 +7339,8 @@ export interface MaxSystemNetworkInDataMetricThresholdView {
   threshold?: number;
   units?: DataMetricUnits | (string & {});
 }
-export const MaxSystemNetworkInDataMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(MaxSystemNetworkInDataMetricThresholdViewMode),
-    operator: S.optional(MaxSystemNetworkInDataMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(DataMetricUnits),
-  }),
-).annotate({
-  identifier: "MaxSystemNetworkInDataMetricThresholdView",
-}) as any as S.Schema<MaxSystemNetworkInDataMetricThresholdView>;
+export const MaxSystemNetworkInDataMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<MaxSystemNetworkInDataMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type MaxSystemNetworkOutDataMetricThresholdViewMode = "AVERAGE";
@@ -8652,17 +7361,8 @@ export interface MaxSystemNetworkOutDataMetricThresholdView {
   threshold?: number;
   units?: DataMetricUnits | (string & {});
 }
-export const MaxSystemNetworkOutDataMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(MaxSystemNetworkOutDataMetricThresholdViewMode),
-    operator: S.optional(MaxSystemNetworkOutDataMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(DataMetricUnits),
-  }),
-).annotate({
-  identifier: "MaxSystemNetworkOutDataMetricThresholdView",
-}) as any as S.Schema<MaxSystemNetworkOutDataMetricThresholdView>;
+export const MaxSystemNetworkOutDataMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<MaxSystemNetworkOutDataMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type SearchIndexSizeDataMetricThresholdViewMode = "AVERAGE";
@@ -8683,17 +7383,8 @@ export interface SearchIndexSizeDataMetricThresholdView {
   threshold?: number;
   units?: DataMetricUnits | (string & {});
 }
-export const SearchIndexSizeDataMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(SearchIndexSizeDataMetricThresholdViewMode),
-    operator: S.optional(SearchIndexSizeDataMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(DataMetricUnits),
-  }),
-).annotate({
-  identifier: "SearchIndexSizeDataMetricThresholdView",
-}) as any as S.Schema<SearchIndexSizeDataMetricThresholdView>;
+export const SearchIndexSizeDataMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<SearchIndexSizeDataMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type SearchMaxFieldsIndexedRawMetricThresholdViewMode = "AVERAGE";
@@ -8714,17 +7405,8 @@ export interface SearchMaxFieldsIndexedRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const SearchMaxFieldsIndexedRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(SearchMaxFieldsIndexedRawMetricThresholdViewMode),
-    operator: S.optional(SearchMaxFieldsIndexedRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "SearchMaxFieldsIndexedRawMetricThresholdView",
-}) as any as S.Schema<SearchMaxFieldsIndexedRawMetricThresholdView>;
+export const SearchMaxFieldsIndexedRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<SearchMaxFieldsIndexedRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type SearchProcessThrottlingRawMetricThresholdViewMode = "AVERAGE";
@@ -8745,17 +7427,8 @@ export interface SearchProcessThrottlingRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const SearchProcessThrottlingRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(SearchProcessThrottlingRawMetricThresholdViewMode),
-    operator: S.optional(SearchProcessThrottlingRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "SearchProcessThrottlingRawMetricThresholdView",
-}) as any as S.Schema<SearchProcessThrottlingRawMetricThresholdView>;
+export const SearchProcessThrottlingRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<SearchProcessThrottlingRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type SearchNumberOfFieldsInIndexRawMetricThresholdViewMode = "AVERAGE";
@@ -8778,17 +7451,8 @@ export interface SearchNumberOfFieldsInIndexRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const SearchNumberOfFieldsInIndexRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(SearchNumberOfFieldsInIndexRawMetricThresholdViewMode),
-    operator: S.optional(SearchNumberOfFieldsInIndexRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "SearchNumberOfFieldsInIndexRawMetricThresholdView",
-}) as any as S.Schema<SearchNumberOfFieldsInIndexRawMetricThresholdView>;
+export const SearchNumberOfFieldsInIndexRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<SearchNumberOfFieldsInIndexRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type SearchMaxNgramFieldsIndexedRawMetricThresholdViewMode = "AVERAGE";
@@ -8811,17 +7475,8 @@ export interface SearchMaxNgramFieldsIndexedRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const SearchMaxNgramFieldsIndexedRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(SearchMaxNgramFieldsIndexedRawMetricThresholdViewMode),
-    operator: S.optional(SearchMaxNgramFieldsIndexedRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "SearchMaxNgramFieldsIndexedRawMetricThresholdView",
-}) as any as S.Schema<SearchMaxNgramFieldsIndexedRawMetricThresholdView>;
+export const SearchMaxNgramFieldsIndexedRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<SearchMaxNgramFieldsIndexedRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type SearchReplicationLagTimeMetricThresholdViewMode = "AVERAGE";
@@ -8842,17 +7497,8 @@ export interface SearchReplicationLagTimeMetricThresholdView {
   threshold?: number;
   units?: TimeMetricUnits | (string & {});
 }
-export const SearchReplicationLagTimeMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(SearchReplicationLagTimeMetricThresholdViewMode),
-    operator: S.optional(SearchReplicationLagTimeMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(TimeMetricUnits),
-  }),
-).annotate({
-  identifier: "SearchReplicationLagTimeMetricThresholdView",
-}) as any as S.Schema<SearchReplicationLagTimeMetricThresholdView>;
+export const SearchReplicationLagTimeMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<SearchReplicationLagTimeMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type NumberMetricThresholdViewMode = "AVERAGE";
@@ -8877,17 +7523,8 @@ export interface NumberMetricThresholdView {
   threshold?: number;
   units?: NumberMetricUnits | (string & {});
 }
-export const NumberMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(NumberMetricThresholdViewMode),
-    operator: S.optional(NumberMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(NumberMetricUnits),
-  }),
-).annotate({
-  identifier: "NumberMetricThresholdView",
-}) as any as S.Schema<NumberMetricThresholdView>;
+export const NumberMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<NumberMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type SearchOpCounterInsertRawMetricThresholdViewMode = "AVERAGE";
@@ -8908,17 +7545,8 @@ export interface SearchOpCounterInsertRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const SearchOpCounterInsertRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(SearchOpCounterInsertRawMetricThresholdViewMode),
-    operator: S.optional(SearchOpCounterInsertRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "SearchOpCounterInsertRawMetricThresholdView",
-}) as any as S.Schema<SearchOpCounterInsertRawMetricThresholdView>;
+export const SearchOpCounterInsertRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<SearchOpCounterInsertRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type SearchOpCounterDeleteRawMetricThresholdViewMode = "AVERAGE";
@@ -8939,17 +7567,8 @@ export interface SearchOpCounterDeleteRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const SearchOpCounterDeleteRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(SearchOpCounterDeleteRawMetricThresholdViewMode),
-    operator: S.optional(SearchOpCounterDeleteRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "SearchOpCounterDeleteRawMetricThresholdView",
-}) as any as S.Schema<SearchOpCounterDeleteRawMetricThresholdView>;
+export const SearchOpCounterDeleteRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<SearchOpCounterDeleteRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type SearchOpCounterUpdateRawMetricThresholdViewMode = "AVERAGE";
@@ -8970,17 +7589,8 @@ export interface SearchOpCounterUpdateRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const SearchOpCounterUpdateRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(SearchOpCounterUpdateRawMetricThresholdViewMode),
-    operator: S.optional(SearchOpCounterUpdateRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "SearchOpCounterUpdateRawMetricThresholdView",
-}) as any as S.Schema<SearchOpCounterUpdateRawMetricThresholdView>;
+export const SearchOpCounterUpdateRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<SearchOpCounterUpdateRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type SearchOpCounterGetMoreRawMetricThresholdViewMode = "AVERAGE";
@@ -9001,17 +7611,8 @@ export interface SearchOpCounterGetMoreRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const SearchOpCounterGetMoreRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(SearchOpCounterGetMoreRawMetricThresholdViewMode),
-    operator: S.optional(SearchOpCounterGetMoreRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "SearchOpCounterGetMoreRawMetricThresholdView",
-}) as any as S.Schema<SearchOpCounterGetMoreRawMetricThresholdView>;
+export const SearchOpCounterGetMoreRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<SearchOpCounterGetMoreRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type SearchNumberOfQueriesTotalRawMetricThresholdViewMode = "AVERAGE";
@@ -9032,17 +7633,8 @@ export interface SearchNumberOfQueriesTotalRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const SearchNumberOfQueriesTotalRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(SearchNumberOfQueriesTotalRawMetricThresholdViewMode),
-    operator: S.optional(SearchNumberOfQueriesTotalRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "SearchNumberOfQueriesTotalRawMetricThresholdView",
-}) as any as S.Schema<SearchNumberOfQueriesTotalRawMetricThresholdView>;
+export const SearchNumberOfQueriesTotalRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<SearchNumberOfQueriesTotalRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type SearchNumberOfQueriesErrorRawMetricThresholdViewMode = "AVERAGE";
@@ -9063,17 +7655,8 @@ export interface SearchNumberOfQueriesErrorRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const SearchNumberOfQueriesErrorRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(SearchNumberOfQueriesErrorRawMetricThresholdViewMode),
-    operator: S.optional(SearchNumberOfQueriesErrorRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "SearchNumberOfQueriesErrorRawMetricThresholdView",
-}) as any as S.Schema<SearchNumberOfQueriesErrorRawMetricThresholdView>;
+export const SearchNumberOfQueriesErrorRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<SearchNumberOfQueriesErrorRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type SearchNumberOfQueriesSuccessRawMetricThresholdViewMode = "AVERAGE";
@@ -9096,17 +7679,8 @@ export interface SearchNumberOfQueriesSuccessRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const SearchNumberOfQueriesSuccessRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(SearchNumberOfQueriesSuccessRawMetricThresholdViewMode),
-    operator: S.optional(SearchNumberOfQueriesSuccessRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "SearchNumberOfQueriesSuccessRawMetricThresholdView",
-}) as any as S.Schema<SearchNumberOfQueriesSuccessRawMetricThresholdView>;
+export const SearchNumberOfQueriesSuccessRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<SearchNumberOfQueriesSuccessRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type FtsJvmMaxMemoryDataMetricThresholdViewMode = "AVERAGE";
@@ -9127,17 +7701,8 @@ export interface FtsJvmMaxMemoryDataMetricThresholdView {
   threshold?: number;
   units?: DataMetricUnits | (string & {});
 }
-export const FtsJvmMaxMemoryDataMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(FtsJvmMaxMemoryDataMetricThresholdViewMode),
-    operator: S.optional(FtsJvmMaxMemoryDataMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(DataMetricUnits),
-  }),
-).annotate({
-  identifier: "FtsJvmMaxMemoryDataMetricThresholdView",
-}) as any as S.Schema<FtsJvmMaxMemoryDataMetricThresholdView>;
+export const FtsJvmMaxMemoryDataMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<FtsJvmMaxMemoryDataMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type FtsJvmCurrentMemoryDataMetricThresholdViewMode = "AVERAGE";
@@ -9158,17 +7723,8 @@ export interface FtsJvmCurrentMemoryDataMetricThresholdView {
   threshold?: number;
   units?: DataMetricUnits | (string & {});
 }
-export const FtsJvmCurrentMemoryDataMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(FtsJvmCurrentMemoryDataMetricThresholdViewMode),
-    operator: S.optional(FtsJvmCurrentMemoryDataMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(DataMetricUnits),
-  }),
-).annotate({
-  identifier: "FtsJvmCurrentMemoryDataMetricThresholdView",
-}) as any as S.Schema<FtsJvmCurrentMemoryDataMetricThresholdView>;
+export const FtsJvmCurrentMemoryDataMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<FtsJvmCurrentMemoryDataMetricThresholdView>;
 
 /** Threshold for the metric that, when exceeded, triggers an alert. The metric threshold pertains to event types which reflects changes of measurements and metrics about mongod host. */
 export type HostMetricThreshold =
@@ -9452,20 +8008,14 @@ export interface NDSAutoscalingMatcher {
   /** Value to match or exceed using the specified `matchers.operator`. */
   value: string;
 }
-export const NDSAutoscalingMatcher = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fieldName: NDSAutoscalingMatcherField,
-    operator: NDSAutoscalingMatcherOperator,
-    value: S.String,
-  }),
-).annotate({ identifier: "NDSAutoscalingMatcher" }) as any as S.Schema<NDSAutoscalingMatcher>;
+export const NDSAutoscalingMatcher =
+  AppServiceMetricMatcher as any as S.Schema<NDSAutoscalingMatcher>;
 
 /** List of rules that determine whether MongoDB Cloud checks an object for the alert configuration. */
 export type NDSAutoscalingAlertConfigViewForNdsGroupInputMatchersList =
   Array<NDSAutoscalingMatcher>;
-export const NDSAutoscalingAlertConfigViewForNdsGroupInputMatchersList = /*@__PURE__*/ S.Array(
-  NDSAutoscalingMatcher,
-) as any as S.Schema<NDSAutoscalingAlertConfigViewForNdsGroupInputMatchersList>;
+export const NDSAutoscalingAlertConfigViewForNdsGroupInputMatchersList =
+  AppServiceAlertConfigViewForNdsGroupInputMatchersList as any as S.Schema<NDSAutoscalingAlertConfigViewForNdsGroupInputMatchersList>;
 
 /** List that contains the targets that MongoDB Cloud sends notifications. */
 export type NDSAutoscalingAlertConfigViewForNdsGroupInputNotificationsList =
@@ -9534,15 +8084,8 @@ export interface LessThanDaysThresholdView {
   /** Element used to express the quantity. This can be an element of time, storage capacity, and the like. */
   units?: LessThanDaysThresholdViewUnits | (string & {});
 }
-export const LessThanDaysThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operator: S.optional(LessThanDaysThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(LessThanDaysThresholdViewUnits),
-  }),
-).annotate({
-  identifier: "LessThanDaysThresholdView",
-}) as any as S.Schema<LessThanDaysThresholdView>;
+export const LessThanDaysThresholdView =
+  GreaterThanDaysThresholdView as any as S.Schema<LessThanDaysThresholdView>;
 
 /** X509 User Authentication alert configuration allows to select thresholds for expiration of client, CA certificates and CRL which trigger alerts and how users are notified. */
 export interface NDSX509UserAuthenticationAlertConfigViewForNdsGroupInput {
@@ -9599,19 +8142,12 @@ export interface ReplicaSetMatcher {
   /** Value to match or exceed using the specified `matchers.operator`. */
   value: string;
 }
-export const ReplicaSetMatcher = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fieldName: ReplicaSetMatcherField,
-    operator: ReplicaSetMatcherOperator,
-    value: S.String,
-  }),
-).annotate({ identifier: "ReplicaSetMatcher" }) as any as S.Schema<ReplicaSetMatcher>;
+export const ReplicaSetMatcher = AppServiceMetricMatcher as any as S.Schema<ReplicaSetMatcher>;
 
 /** List of rules that determine whether MongoDB Cloud checks an object for the alert configuration. You can filter using the matchers array if the `eventTypeName` specifies an event for a host, replica set, or sharded cluster. */
 export type ReplicaSetAlertConfigViewForNdsGroupInputMatchersList = Array<ReplicaSetMatcher>;
-export const ReplicaSetAlertConfigViewForNdsGroupInputMatchersList = /*@__PURE__*/ S.Array(
-  ReplicaSetMatcher,
-) as any as S.Schema<ReplicaSetAlertConfigViewForNdsGroupInputMatchersList>;
+export const ReplicaSetAlertConfigViewForNdsGroupInputMatchersList =
+  AppServiceAlertConfigViewForNdsGroupInputMatchersList as any as S.Schema<ReplicaSetAlertConfigViewForNdsGroupInputMatchersList>;
 
 /** List that contains the targets that MongoDB Cloud sends notifications. */
 export type ReplicaSetAlertConfigViewForNdsGroupInputNotificationsList =
@@ -9671,13 +8207,8 @@ export interface AlertsThresholdInteger {
   /** Element used to express the quantity. This can be an element of time, storage capacity, and the like. */
   units?: AlertsThresholdIntegerUnits | (string & {});
 }
-export const AlertsThresholdInteger = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operator: S.optional(Operator),
-    threshold: S.optional(S.Number),
-    units: S.optional(AlertsThresholdIntegerUnits),
-  }),
-).annotate({ identifier: "AlertsThresholdInteger" }) as any as S.Schema<AlertsThresholdInteger>;
+export const AlertsThresholdInteger =
+  GreaterThanRawThreshold as any as S.Schema<AlertsThresholdInteger>;
 
 /** Replica Set alert configuration allows to select which conditions of mongod replica set trigger alerts and how users are notified. */
 export interface ReplicaSetAlertConfigViewForNdsGroupInput {
@@ -9779,17 +8310,8 @@ export interface ServerlessAVGCommandExecutionTimeMetricThresholdView {
   threshold?: number;
   units?: TimeMetricUnits | (string & {});
 }
-export const ServerlessAVGCommandExecutionTimeMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(ServerlessAVGCommandExecutionTimeMetricThresholdViewMode),
-    operator: S.optional(ServerlessAVGCommandExecutionTimeMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(TimeMetricUnits),
-  }),
-).annotate({
-  identifier: "ServerlessAVGCommandExecutionTimeMetricThresholdView",
-}) as any as S.Schema<ServerlessAVGCommandExecutionTimeMetricThresholdView>;
+export const ServerlessAVGCommandExecutionTimeMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<ServerlessAVGCommandExecutionTimeMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type ServerlessAVGWriteExecutionTimeMetricThresholdViewMode = "AVERAGE";
@@ -9812,17 +8334,8 @@ export interface ServerlessAVGWriteExecutionTimeMetricThresholdView {
   threshold?: number;
   units?: TimeMetricUnits | (string & {});
 }
-export const ServerlessAVGWriteExecutionTimeMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(ServerlessAVGWriteExecutionTimeMetricThresholdViewMode),
-    operator: S.optional(ServerlessAVGWriteExecutionTimeMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(TimeMetricUnits),
-  }),
-).annotate({
-  identifier: "ServerlessAVGWriteExecutionTimeMetricThresholdView",
-}) as any as S.Schema<ServerlessAVGWriteExecutionTimeMetricThresholdView>;
+export const ServerlessAVGWriteExecutionTimeMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<ServerlessAVGWriteExecutionTimeMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type ServerlessTotalWriteUnitsRPUMetricThresholdViewMode = "AVERAGE";
@@ -9853,17 +8366,8 @@ export interface ServerlessTotalWriteUnitsRPUMetricThresholdView {
   threshold?: number;
   units?: ServerlessMetricUnits | (string & {});
 }
-export const ServerlessTotalWriteUnitsRPUMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(ServerlessTotalWriteUnitsRPUMetricThresholdViewMode),
-    operator: S.optional(ServerlessTotalWriteUnitsRPUMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(ServerlessMetricUnits),
-  }),
-).annotate({
-  identifier: "ServerlessTotalWriteUnitsRPUMetricThresholdView",
-}) as any as S.Schema<ServerlessTotalWriteUnitsRPUMetricThresholdView>;
+export const ServerlessTotalWriteUnitsRPUMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<ServerlessTotalWriteUnitsRPUMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type RPUMetricThresholdViewMode = "AVERAGE";
@@ -9884,15 +8388,8 @@ export interface RPUMetricThresholdView {
   threshold?: number;
   units?: ServerlessMetricUnits | (string & {});
 }
-export const RPUMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(RPUMetricThresholdViewMode),
-    operator: S.optional(RPUMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(ServerlessMetricUnits),
-  }),
-).annotate({ identifier: "RPUMetricThresholdView" }) as any as S.Schema<RPUMetricThresholdView>;
+export const RPUMetricThresholdView =
+  RawMetricThresholdView as any as S.Schema<RPUMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type ServerlessOpCounterUpdateRawMetricThresholdViewMode = "AVERAGE";
@@ -9913,17 +8410,8 @@ export interface ServerlessOpCounterUpdateRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const ServerlessOpCounterUpdateRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(ServerlessOpCounterUpdateRawMetricThresholdViewMode),
-    operator: S.optional(ServerlessOpCounterUpdateRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "ServerlessOpCounterUpdateRawMetricThresholdView",
-}) as any as S.Schema<ServerlessOpCounterUpdateRawMetricThresholdView>;
+export const ServerlessOpCounterUpdateRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<ServerlessOpCounterUpdateRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type ServerlessOpCounterQueryRawMetricThresholdViewMode = "AVERAGE";
@@ -9944,17 +8432,8 @@ export interface ServerlessOpCounterQueryRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const ServerlessOpCounterQueryRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(ServerlessOpCounterQueryRawMetricThresholdViewMode),
-    operator: S.optional(ServerlessOpCounterQueryRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "ServerlessOpCounterQueryRawMetricThresholdView",
-}) as any as S.Schema<ServerlessOpCounterQueryRawMetricThresholdView>;
+export const ServerlessOpCounterQueryRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<ServerlessOpCounterQueryRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type ServerlessOpCounterInsertRawMetricThresholdViewMode = "AVERAGE";
@@ -9975,17 +8454,8 @@ export interface ServerlessOpCounterInsertRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const ServerlessOpCounterInsertRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(ServerlessOpCounterInsertRawMetricThresholdViewMode),
-    operator: S.optional(ServerlessOpCounterInsertRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "ServerlessOpCounterInsertRawMetricThresholdView",
-}) as any as S.Schema<ServerlessOpCounterInsertRawMetricThresholdView>;
+export const ServerlessOpCounterInsertRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<ServerlessOpCounterInsertRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type ServerlessOpCounterGetMoreRawMetricThresholdViewMode = "AVERAGE";
@@ -10006,17 +8476,8 @@ export interface ServerlessOpCounterGetMoreRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const ServerlessOpCounterGetMoreRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(ServerlessOpCounterGetMoreRawMetricThresholdViewMode),
-    operator: S.optional(ServerlessOpCounterGetMoreRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "ServerlessOpCounterGetMoreRawMetricThresholdView",
-}) as any as S.Schema<ServerlessOpCounterGetMoreRawMetricThresholdView>;
+export const ServerlessOpCounterGetMoreRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<ServerlessOpCounterGetMoreRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type ServerlessOpCounterDeleteRawMetricThresholdViewMode = "AVERAGE";
@@ -10037,17 +8498,8 @@ export interface ServerlessOpCounterDeleteRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const ServerlessOpCounterDeleteRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(ServerlessOpCounterDeleteRawMetricThresholdViewMode),
-    operator: S.optional(ServerlessOpCounterDeleteRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "ServerlessOpCounterDeleteRawMetricThresholdView",
-}) as any as S.Schema<ServerlessOpCounterDeleteRawMetricThresholdView>;
+export const ServerlessOpCounterDeleteRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<ServerlessOpCounterDeleteRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type ServerlessOpCounterCDMRawMetricThresholdViewMode = "AVERAGE";
@@ -10068,17 +8520,8 @@ export interface ServerlessOpCounterCDMRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const ServerlessOpCounterCDMRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(ServerlessOpCounterCDMRawMetricThresholdViewMode),
-    operator: S.optional(ServerlessOpCounterCDMRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "ServerlessOpCounterCDMRawMetricThresholdView",
-}) as any as S.Schema<ServerlessOpCounterCDMRawMetricThresholdView>;
+export const ServerlessOpCounterCDMRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<ServerlessOpCounterCDMRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type ServerlessNetworkNumRequestRawMetricThresholdViewMode = "AVERAGE";
@@ -10101,17 +8544,8 @@ export interface ServerlessNetworkNumRequestRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const ServerlessNetworkNumRequestRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(ServerlessNetworkNumRequestRawMetricThresholdViewMode),
-    operator: S.optional(ServerlessNetworkNumRequestRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "ServerlessNetworkNumRequestRawMetricThresholdView",
-}) as any as S.Schema<ServerlessNetworkNumRequestRawMetricThresholdView>;
+export const ServerlessNetworkNumRequestRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<ServerlessNetworkNumRequestRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type ServerlessNetworkBytesOutDataMetricThresholdViewMode = "AVERAGE";
@@ -10132,17 +8566,8 @@ export interface ServerlessNetworkBytesOutDataMetricThresholdView {
   threshold?: number;
   units?: DataMetricUnits | (string & {});
 }
-export const ServerlessNetworkBytesOutDataMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(ServerlessNetworkBytesOutDataMetricThresholdViewMode),
-    operator: S.optional(ServerlessNetworkBytesOutDataMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(DataMetricUnits),
-  }),
-).annotate({
-  identifier: "ServerlessNetworkBytesOutDataMetricThresholdView",
-}) as any as S.Schema<ServerlessNetworkBytesOutDataMetricThresholdView>;
+export const ServerlessNetworkBytesOutDataMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<ServerlessNetworkBytesOutDataMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type ServerlessNetworkBytesInDataMetricThresholdViewMode = "AVERAGE";
@@ -10163,17 +8588,8 @@ export interface ServerlessNetworkBytesInDataMetricThresholdView {
   threshold?: number;
   units?: DataMetricUnits | (string & {});
 }
-export const ServerlessNetworkBytesInDataMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(ServerlessNetworkBytesInDataMetricThresholdViewMode),
-    operator: S.optional(ServerlessNetworkBytesInDataMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(DataMetricUnits),
-  }),
-).annotate({
-  identifier: "ServerlessNetworkBytesInDataMetricThresholdView",
-}) as any as S.Schema<ServerlessNetworkBytesInDataMetricThresholdView>;
+export const ServerlessNetworkBytesInDataMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<ServerlessNetworkBytesInDataMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type ServerlessConnectionPercentageRawMetricThresholdViewMode = "AVERAGE";
@@ -10196,17 +8612,8 @@ export interface ServerlessConnectionPercentageRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const ServerlessConnectionPercentageRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(ServerlessConnectionPercentageRawMetricThresholdViewMode),
-    operator: S.optional(ServerlessConnectionPercentageRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "ServerlessConnectionPercentageRawMetricThresholdView",
-}) as any as S.Schema<ServerlessConnectionPercentageRawMetricThresholdView>;
+export const ServerlessConnectionPercentageRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<ServerlessConnectionPercentageRawMetricThresholdView>;
 
 /** Threshold for the metric that, when exceeded, triggers an alert. The metric threshold pertains to event types which reflects changes of measurements and metrics about the serverless database. */
 export type ServerlessMetricThreshold =
@@ -10284,17 +8691,8 @@ export interface FlexConnectionPercentRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const FlexConnectionPercentRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(FlexConnectionPercentRawMetricThresholdViewMode),
-    operator: S.optional(FlexConnectionPercentRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "FlexConnectionPercentRawMetricThresholdView",
-}) as any as S.Schema<FlexConnectionPercentRawMetricThresholdView>;
+export const FlexConnectionPercentRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<FlexConnectionPercentRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type FlexNetworkBytesInDataMetricThresholdViewMode = "AVERAGE";
@@ -10315,17 +8713,8 @@ export interface FlexNetworkBytesInDataMetricThresholdView {
   threshold?: number;
   units?: DataMetricUnits | (string & {});
 }
-export const FlexNetworkBytesInDataMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(FlexNetworkBytesInDataMetricThresholdViewMode),
-    operator: S.optional(FlexNetworkBytesInDataMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(DataMetricUnits),
-  }),
-).annotate({
-  identifier: "FlexNetworkBytesInDataMetricThresholdView",
-}) as any as S.Schema<FlexNetworkBytesInDataMetricThresholdView>;
+export const FlexNetworkBytesInDataMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<FlexNetworkBytesInDataMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type FlexNetworkBytesOutDataMetricThresholdViewMode = "AVERAGE";
@@ -10346,17 +8735,8 @@ export interface FlexNetworkBytesOutDataMetricThresholdView {
   threshold?: number;
   units?: DataMetricUnits | (string & {});
 }
-export const FlexNetworkBytesOutDataMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(FlexNetworkBytesOutDataMetricThresholdViewMode),
-    operator: S.optional(FlexNetworkBytesOutDataMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(DataMetricUnits),
-  }),
-).annotate({
-  identifier: "FlexNetworkBytesOutDataMetricThresholdView",
-}) as any as S.Schema<FlexNetworkBytesOutDataMetricThresholdView>;
+export const FlexNetworkBytesOutDataMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<FlexNetworkBytesOutDataMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type FlexNetworkNumRequestsRawMetricThresholdViewMode = "AVERAGE";
@@ -10377,17 +8757,8 @@ export interface FlexNetworkNumRequestsRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const FlexNetworkNumRequestsRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(FlexNetworkNumRequestsRawMetricThresholdViewMode),
-    operator: S.optional(FlexNetworkNumRequestsRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "FlexNetworkNumRequestsRawMetricThresholdView",
-}) as any as S.Schema<FlexNetworkNumRequestsRawMetricThresholdView>;
+export const FlexNetworkNumRequestsRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<FlexNetworkNumRequestsRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type FlexOpCounterCMDRawMetricThresholdViewMode = "AVERAGE";
@@ -10408,17 +8779,8 @@ export interface FlexOpCounterCMDRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const FlexOpCounterCMDRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(FlexOpCounterCMDRawMetricThresholdViewMode),
-    operator: S.optional(FlexOpCounterCMDRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "FlexOpCounterCMDRawMetricThresholdView",
-}) as any as S.Schema<FlexOpCounterCMDRawMetricThresholdView>;
+export const FlexOpCounterCMDRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<FlexOpCounterCMDRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type FlexOpCounterDeleteRawMetricThresholdViewMode = "AVERAGE";
@@ -10439,17 +8801,8 @@ export interface FlexOpCounterDeleteRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const FlexOpCounterDeleteRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(FlexOpCounterDeleteRawMetricThresholdViewMode),
-    operator: S.optional(FlexOpCounterDeleteRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "FlexOpCounterDeleteRawMetricThresholdView",
-}) as any as S.Schema<FlexOpCounterDeleteRawMetricThresholdView>;
+export const FlexOpCounterDeleteRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<FlexOpCounterDeleteRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type FlexOpCounterInsertRawMetricThresholdViewMode = "AVERAGE";
@@ -10470,17 +8823,8 @@ export interface FlexOpCounterInsertRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const FlexOpCounterInsertRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(FlexOpCounterInsertRawMetricThresholdViewMode),
-    operator: S.optional(FlexOpCounterInsertRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "FlexOpCounterInsertRawMetricThresholdView",
-}) as any as S.Schema<FlexOpCounterInsertRawMetricThresholdView>;
+export const FlexOpCounterInsertRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<FlexOpCounterInsertRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type FlexOpCounterQueryRawMetricThresholdViewMode = "AVERAGE";
@@ -10501,17 +8845,8 @@ export interface FlexOpCounterQueryRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const FlexOpCounterQueryRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(FlexOpCounterQueryRawMetricThresholdViewMode),
-    operator: S.optional(FlexOpCounterQueryRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "FlexOpCounterQueryRawMetricThresholdView",
-}) as any as S.Schema<FlexOpCounterQueryRawMetricThresholdView>;
+export const FlexOpCounterQueryRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<FlexOpCounterQueryRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type FlexOpCounterUpdateRawMetricThresholdViewMode = "AVERAGE";
@@ -10532,17 +8867,8 @@ export interface FlexOpCounterUpdateRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const FlexOpCounterUpdateRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(FlexOpCounterUpdateRawMetricThresholdViewMode),
-    operator: S.optional(FlexOpCounterUpdateRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "FlexOpCounterUpdateRawMetricThresholdView",
-}) as any as S.Schema<FlexOpCounterUpdateRawMetricThresholdView>;
+export const FlexOpCounterUpdateRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<FlexOpCounterUpdateRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type FlexOpCounterGetMoreRawMetricThresholdViewMode = "AVERAGE";
@@ -10563,17 +8889,8 @@ export interface FlexOpCounterGetMoreRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const FlexOpCounterGetMoreRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(FlexOpCounterGetMoreRawMetricThresholdViewMode),
-    operator: S.optional(FlexOpCounterGetMoreRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "FlexOpCounterGetMoreRawMetricThresholdView",
-}) as any as S.Schema<FlexOpCounterGetMoreRawMetricThresholdView>;
+export const FlexOpCounterGetMoreRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<FlexOpCounterGetMoreRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type FlexAVGWriteExecutionTimeMetricThresholdViewMode = "AVERAGE";
@@ -10594,17 +8911,8 @@ export interface FlexAVGWriteExecutionTimeMetricThresholdView {
   threshold?: number;
   units?: TimeMetricUnits | (string & {});
 }
-export const FlexAVGWriteExecutionTimeMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(FlexAVGWriteExecutionTimeMetricThresholdViewMode),
-    operator: S.optional(FlexAVGWriteExecutionTimeMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(TimeMetricUnits),
-  }),
-).annotate({
-  identifier: "FlexAVGWriteExecutionTimeMetricThresholdView",
-}) as any as S.Schema<FlexAVGWriteExecutionTimeMetricThresholdView>;
+export const FlexAVGWriteExecutionTimeMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<FlexAVGWriteExecutionTimeMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type FlexAVGCommandExecutionTimeMetricThresholdViewMode = "AVERAGE";
@@ -10625,17 +8933,8 @@ export interface FlexAVGCommandExecutionTimeMetricThresholdView {
   threshold?: number;
   units?: TimeMetricUnits | (string & {});
 }
-export const FlexAVGCommandExecutionTimeMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(FlexAVGCommandExecutionTimeMetricThresholdViewMode),
-    operator: S.optional(FlexAVGCommandExecutionTimeMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(TimeMetricUnits),
-  }),
-).annotate({
-  identifier: "FlexAVGCommandExecutionTimeMetricThresholdView",
-}) as any as S.Schema<FlexAVGCommandExecutionTimeMetricThresholdView>;
+export const FlexAVGCommandExecutionTimeMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<FlexAVGCommandExecutionTimeMetricThresholdView>;
 
 /** Threshold for the metric that, when exceeded, triggers an alert. The metric threshold pertains to event types which reflects changes of measurements and metrics about the serverless database. */
 export type FlexClusterMetricThreshold =
@@ -10716,19 +9015,12 @@ export interface StreamsMatcher {
   /** Value to match or exceed using the specified `matchers.operator`. */
   value: string;
 }
-export const StreamsMatcher = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fieldName: StreamsMatcherField,
-    operator: StreamsMatcherOperator,
-    value: S.String,
-  }),
-).annotate({ identifier: "StreamsMatcher" }) as any as S.Schema<StreamsMatcher>;
+export const StreamsMatcher = AppServiceMetricMatcher as any as S.Schema<StreamsMatcher>;
 
 /** List of rules that determine whether MongoDB Cloud checks an object for the alert configuration. */
 export type StreamProcessorAlertConfigViewForNdsGroupInputMatchersList = Array<StreamsMatcher>;
-export const StreamProcessorAlertConfigViewForNdsGroupInputMatchersList = /*@__PURE__*/ S.Array(
-  StreamsMatcher,
-) as any as S.Schema<StreamProcessorAlertConfigViewForNdsGroupInputMatchersList>;
+export const StreamProcessorAlertConfigViewForNdsGroupInputMatchersList =
+  AppServiceAlertConfigViewForNdsGroupInputMatchersList as any as S.Schema<StreamProcessorAlertConfigViewForNdsGroupInputMatchersList>;
 
 /** List that contains the targets that MongoDB Cloud sends notifications. */
 export type StreamProcessorAlertConfigViewForNdsGroupInputNotificationsList =
@@ -10791,17 +9083,8 @@ export interface KafkaRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const KafkaRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(KafkaRawMetricThresholdViewMode),
-    operator: S.optional(KafkaRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "KafkaRawMetricThresholdView",
-}) as any as S.Schema<KafkaRawMetricThresholdView>;
+export const KafkaRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<KafkaRawMetricThresholdView>;
 
 /** MongoDB Cloud computes the current metric value as an average. */
 export type DLQRawMetricThresholdViewMode = "AVERAGE";
@@ -10822,17 +9105,8 @@ export interface DLQRawMetricThresholdView {
   threshold?: number;
   units?: RawMetricUnits | (string & {});
 }
-export const DLQRawMetricThresholdView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.String,
-    mode: S.optional(DLQRawMetricThresholdViewMode),
-    operator: S.optional(DLQRawMetricThresholdViewOperator),
-    threshold: S.optional(S.Number),
-    units: S.optional(RawMetricUnits),
-  }),
-).annotate({
-  identifier: "DLQRawMetricThresholdView",
-}) as any as S.Schema<DLQRawMetricThresholdView>;
+export const DLQRawMetricThresholdView =
+  AssertRegularRawMetricThresholdView as any as S.Schema<DLQRawMetricThresholdView>;
 
 /** Threshold for the metric that, when exceeded, triggers an alert. The metric threshold pertains to event types which reflects changes of measurements and metrics in stream processors. */
 export type StreamProcessorMetricThreshold =
@@ -12547,9 +10821,7 @@ export type ApiAtlasClusterAdvancedConfigurationViewCustomOpensslCipherConfigTls
   ApiAtlasClusterAdvancedConfigurationViewCustomOpensslCipherConfigTls13Item | (string & {})
 >;
 export const ApiAtlasClusterAdvancedConfigurationViewCustomOpensslCipherConfigTls13List =
-  /*@__PURE__*/ S.Array(
-    ApiAtlasClusterAdvancedConfigurationViewCustomOpensslCipherConfigTls13Item,
-  ) as any as S.Schema<ApiAtlasClusterAdvancedConfigurationViewCustomOpensslCipherConfigTls13List>;
+  ApiAtlasClusterAdvancedConfigurationViewCustomOpensslCipherConfigTls12List as any as S.Schema<ApiAtlasClusterAdvancedConfigurationViewCustomOpensslCipherConfigTls13List>;
 
 /** Minimum Transport Layer Security (TLS) version that the cluster accepts for incoming connections. Clusters using TLS 1.0 or 1.1 should consider setting TLS 1.2 as the minimum TLS protocol version. */
 export type ApiAtlasClusterAdvancedConfigurationViewMinimumEnabledTlsProtocol =
@@ -12899,16 +11171,8 @@ export interface GCPHardwareSpec20240805Input {
   /** Number of nodes of the given type for MongoDB Cloud to deploy to the region. */
   nodeCount?: number;
 }
-export const GCPHardwareSpec20240805Input = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    diskIOPS: S.optional(S.Number),
-    diskSizeGB: S.optional(S.Number),
-    instanceSize: S.optional(GCPHardwareSpec20240805InputInstanceSize),
-    nodeCount: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GCPHardwareSpec20240805Input",
-}) as any as S.Schema<GCPHardwareSpec20240805Input>;
+export const GCPHardwareSpec20240805Input =
+  AzureHardwareSpec20240805 as any as S.Schema<GCPHardwareSpec20240805Input>;
 
 /** Hardware specification for the instances in this M0/M2/M5 tier cluster. */
 export type TenantHardwareSpec20240805InputInstanceSize = "M0" | "M2" | "M5";
@@ -16640,17 +14904,7 @@ export interface WeeklyScheduleView {
   /** Type of schedule. */
   type: WeeklyScheduleViewType | (string & {});
 }
-export const WeeklyScheduleView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endHour: S.optional(S.Number),
-    endMinute: S.optional(S.Number),
-    startHour: S.optional(S.Number),
-    startMinute: S.optional(S.Number),
-    dayOfWeek: S.optional(S.Number),
-    dayOfMonth: S.optional(S.Number),
-    type: WeeklyScheduleViewType,
-  }),
-).annotate({ identifier: "WeeklyScheduleView" }) as any as S.Schema<WeeklyScheduleView>;
+export const WeeklyScheduleView = DailyScheduleView as any as S.Schema<WeeklyScheduleView>;
 
 /** Type of schedule. */
 export type MonthlyScheduleViewType = "DEFAULT" | "DAILY" | "WEEKLY" | "MONTHLY";
@@ -16672,17 +14926,7 @@ export interface MonthlyScheduleView {
   /** Type of schedule. */
   type: MonthlyScheduleViewType | (string & {});
 }
-export const MonthlyScheduleView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endHour: S.optional(S.Number),
-    endMinute: S.optional(S.Number),
-    startHour: S.optional(S.Number),
-    startMinute: S.optional(S.Number),
-    dayOfWeek: S.optional(S.Number),
-    dayOfMonth: S.optional(S.Number),
-    type: MonthlyScheduleViewType,
-  }),
-).annotate({ identifier: "MonthlyScheduleView" }) as any as S.Schema<MonthlyScheduleView>;
+export const MonthlyScheduleView = DailyScheduleView as any as S.Schema<MonthlyScheduleView>;
 
 /** Regular frequency and duration when archiving process occurs. */
 export type OnlineArchiveSchedule = DailyScheduleView | WeeklyScheduleView | MonthlyScheduleView;
@@ -17385,17 +15629,8 @@ export interface SearchStagedIndexStatusDetail {
   /** Condition of the search index when you made this request. - `DELETING`: The index is being deleted. - `FAILED` The index build failed. Indexes can enter the FAILED state due to an invalid index definition. - `STALE`: The index is queryable but has stopped replicating data from the indexed collection. Searches on the index may return out-of-date data. - `PENDING`: Atlas has not yet started building the index. - `BUILDING`: Atlas is building or re-building the index after an edit. - `READY`: The index is ready and can support queries. */
   status?: SearchStagedIndexStatusDetailStatus;
 }
-export const SearchStagedIndexStatusDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    definition: S.optional(SearchIndexDefinition),
-    definitionVersion: S.optional(SearchIndexDefinitionVersion),
-    message: S.optional(S.String),
-    queryable: S.optional(S.Boolean),
-    status: S.optional(SearchStagedIndexStatusDetailStatus),
-  }),
-).annotate({
-  identifier: "SearchStagedIndexStatusDetail",
-}) as any as S.Schema<SearchStagedIndexStatusDetail>;
+export const SearchStagedIndexStatusDetail =
+  SearchMainIndexStatusDetail as any as S.Schema<SearchStagedIndexStatusDetail>;
 
 /** Condition of the search index when you made this request. - `DELETING`: The index is being deleted. - `FAILED` The index build failed. Indexes can enter the FAILED state due to an invalid index definition. - `STALE`: The index is queryable but has stopped replicating data from the indexed collection. Searches on the index may return out-of-date data. - `PENDING`: Atlas has not yet started building the index. - `BUILDING`: Atlas is building or re-building the index after an edit. - `READY`: The index is ready and can support queries. */
 export type SearchHostStatusDetailStatus =
@@ -17554,9 +15789,8 @@ export const AzureCloudProviderContainerRegionsItem = S.String;
 
 /** List of GCP regions to which you want to deploy this MongoDB Cloud network peering container. In this MongoDB Cloud project, you can deploy clusters only to the GCP regions in this list. To deploy MongoDB Cloud clusters to other GCP regions, create additional projects. */
 export type AzureCloudProviderContainerRegionsList = Array<AzureCloudProviderContainerRegionsItem>;
-export const AzureCloudProviderContainerRegionsList = /*@__PURE__*/ S.Array(
-  AzureCloudProviderContainerRegionsItem,
-) as any as S.Schema<AzureCloudProviderContainerRegionsList>;
+export const AzureCloudProviderContainerRegionsList =
+  OrgUserRolesResponseOrgRolesList as any as S.Schema<AzureCloudProviderContainerRegionsList>;
 
 /** Geographic area that Amazon Web Services (AWS) defines to which MongoDB Cloud deployed this network peering container. */
 export type AzureCloudProviderContainerRegionName =
@@ -17764,9 +15998,8 @@ export const GCPCloudProviderContainerRegionsItem = S.String;
 
 /** List of GCP regions to which you want to deploy this MongoDB Cloud network peering container. In this MongoDB Cloud project, you can deploy clusters only to the GCP regions in this list. To deploy MongoDB Cloud clusters to other GCP regions, create additional projects. */
 export type GCPCloudProviderContainerRegionsList = Array<GCPCloudProviderContainerRegionsItem>;
-export const GCPCloudProviderContainerRegionsList = /*@__PURE__*/ S.Array(
-  GCPCloudProviderContainerRegionsItem,
-) as any as S.Schema<GCPCloudProviderContainerRegionsList>;
+export const GCPCloudProviderContainerRegionsList =
+  OrgUserRolesResponseOrgRolesList as any as S.Schema<GCPCloudProviderContainerRegionsList>;
 
 /** Geographic area that Amazon Web Services (AWS) defines to which MongoDB Cloud deployed this network peering container. */
 export type GCPCloudProviderContainerRegionName =
@@ -17974,9 +16207,8 @@ export const AWSCloudProviderContainerRegionsItem = S.String;
 
 /** List of GCP regions to which you want to deploy this MongoDB Cloud network peering container. In this MongoDB Cloud project, you can deploy clusters only to the GCP regions in this list. To deploy MongoDB Cloud clusters to other GCP regions, create additional projects. */
 export type AWSCloudProviderContainerRegionsList = Array<AWSCloudProviderContainerRegionsItem>;
-export const AWSCloudProviderContainerRegionsList = /*@__PURE__*/ S.Array(
-  AWSCloudProviderContainerRegionsItem,
-) as any as S.Schema<AWSCloudProviderContainerRegionsList>;
+export const AWSCloudProviderContainerRegionsList =
+  OrgUserRolesResponseOrgRolesList as any as S.Schema<AWSCloudProviderContainerRegionsList>;
 
 /** Geographic area that Amazon Web Services (AWS) defines to which MongoDB Cloud deployed this network peering container. */
 export type AWSCloudProviderContainerRegionName =
@@ -18988,9 +17220,8 @@ export const DataLakeS3StoreSettingsInputAdditionalStorageClassesItem = S.String
 export type DataLakeS3StoreSettingsInputAdditionalStorageClassesList = Array<
   DataLakeS3StoreSettingsInputAdditionalStorageClassesItem | (string & {})
 >;
-export const DataLakeS3StoreSettingsInputAdditionalStorageClassesList = /*@__PURE__*/ S.Array(
-  DataLakeS3StoreSettingsInputAdditionalStorageClassesItem,
-) as any as S.Schema<DataLakeS3StoreSettingsInputAdditionalStorageClassesList>;
+export const DataLakeS3StoreSettingsInputAdditionalStorageClassesList =
+  OrgUserRolesResponseOrgRolesList as any as S.Schema<DataLakeS3StoreSettingsInputAdditionalStorageClassesList>;
 
 export interface DataLakeS3StoreSettingsInput {
   /** Physical location where MongoDB Cloud deploys your AWS-hosted MongoDB cluster nodes. The region you choose can affect network latency for clients accessing your databases. When MongoDB Cloud deploys a dedicated cluster, it checks if a VPC or VPC connection exists for that provider and region. If not, MongoDB Cloud creates them as part of the deployment. MongoDB Cloud assigns the VPC a CIDR block. To limit a new VPC peering connection to one CIDR block and region, create the connection first. Deploy the cluster after the connection starts. */
@@ -19106,9 +17337,8 @@ export const DataLakeDLSAWSStoreInputAdditionalStorageClassesItem = S.String;
 export type DataLakeDLSAWSStoreInputAdditionalStorageClassesList = Array<
   DataLakeDLSAWSStoreInputAdditionalStorageClassesItem | (string & {})
 >;
-export const DataLakeDLSAWSStoreInputAdditionalStorageClassesList = /*@__PURE__*/ S.Array(
-  DataLakeDLSAWSStoreInputAdditionalStorageClassesItem,
-) as any as S.Schema<DataLakeDLSAWSStoreInputAdditionalStorageClassesList>;
+export const DataLakeDLSAWSStoreInputAdditionalStorageClassesList =
+  OrgUserRolesResponseOrgRolesList as any as S.Schema<DataLakeDLSAWSStoreInputAdditionalStorageClassesList>;
 
 export interface DataLakeDLSAWSStoreInput {
   /** Physical location where MongoDB Cloud deploys your AWS-hosted MongoDB cluster nodes. The region you choose can affect network latency for clients accessing your databases. When MongoDB Cloud deploys a dedicated cluster, it checks if a VPC or VPC connection exists for that provider and region. If not, MongoDB Cloud creates them as part of the deployment. MongoDB Cloud assigns the VPC a CIDR block. To limit a new VPC peering connection to one CIDR block and region, create the connection first. Deploy the cluster after the connection starts. */
@@ -19222,9 +17452,8 @@ export const DataLakeDLSAzureStoreInputAdditionalStorageClassesItem = S.String;
 export type DataLakeDLSAzureStoreInputAdditionalStorageClassesList = Array<
   DataLakeDLSAzureStoreInputAdditionalStorageClassesItem | (string & {})
 >;
-export const DataLakeDLSAzureStoreInputAdditionalStorageClassesList = /*@__PURE__*/ S.Array(
-  DataLakeDLSAzureStoreInputAdditionalStorageClassesItem,
-) as any as S.Schema<DataLakeDLSAzureStoreInputAdditionalStorageClassesList>;
+export const DataLakeDLSAzureStoreInputAdditionalStorageClassesList =
+  OrgUserRolesResponseOrgRolesList as any as S.Schema<DataLakeDLSAzureStoreInputAdditionalStorageClassesList>;
 
 export interface DataLakeDLSAzureStoreInput {
   /** Physical location where MongoDB Cloud deploys your AWS-hosted MongoDB cluster nodes. The region you choose can affect network latency for clients accessing your databases. When MongoDB Cloud deploys a dedicated cluster, it checks if a VPC or VPC connection exists for that provider and region. If not, MongoDB Cloud creates them as part of the deployment. MongoDB Cloud assigns the VPC a CIDR block. To limit a new VPC peering connection to one CIDR block and region, create the connection first. Deploy the cluster after the connection starts. */
@@ -19340,9 +17569,8 @@ export const DataLakeDLSGCPStoreInputAdditionalStorageClassesItem = S.String;
 export type DataLakeDLSGCPStoreInputAdditionalStorageClassesList = Array<
   DataLakeDLSGCPStoreInputAdditionalStorageClassesItem | (string & {})
 >;
-export const DataLakeDLSGCPStoreInputAdditionalStorageClassesList = /*@__PURE__*/ S.Array(
-  DataLakeDLSGCPStoreInputAdditionalStorageClassesItem,
-) as any as S.Schema<DataLakeDLSGCPStoreInputAdditionalStorageClassesList>;
+export const DataLakeDLSGCPStoreInputAdditionalStorageClassesList =
+  OrgUserRolesResponseOrgRolesList as any as S.Schema<DataLakeDLSGCPStoreInputAdditionalStorageClassesList>;
 
 export interface DataLakeDLSGCPStoreInput {
   /** Physical location where MongoDB Cloud deploys your AWS-hosted MongoDB cluster nodes. The region you choose can affect network latency for clients accessing your databases. When MongoDB Cloud deploys a dedicated cluster, it checks if a VPC or VPC connection exists for that provider and region. If not, MongoDB Cloud creates them as part of the deployment. MongoDB Cloud assigns the VPC a CIDR block. To limit a new VPC peering connection to one CIDR block and region, create the connection first. Deploy the cluster after the connection starts. */
@@ -19456,9 +17684,8 @@ export const DataLakeAtlasStoreInstanceInputAdditionalStorageClassesItem = S.Str
 export type DataLakeAtlasStoreInstanceInputAdditionalStorageClassesList = Array<
   DataLakeAtlasStoreInstanceInputAdditionalStorageClassesItem | (string & {})
 >;
-export const DataLakeAtlasStoreInstanceInputAdditionalStorageClassesList = /*@__PURE__*/ S.Array(
-  DataLakeAtlasStoreInstanceInputAdditionalStorageClassesItem,
-) as any as S.Schema<DataLakeAtlasStoreInstanceInputAdditionalStorageClassesList>;
+export const DataLakeAtlasStoreInstanceInputAdditionalStorageClassesList =
+  OrgUserRolesResponseOrgRolesList as any as S.Schema<DataLakeAtlasStoreInstanceInputAdditionalStorageClassesList>;
 
 export interface DataLakeAtlasStoreInstanceInput {
   /** Physical location where MongoDB Cloud deploys your AWS-hosted MongoDB cluster nodes. The region you choose can affect network latency for clients accessing your databases. When MongoDB Cloud deploys a dedicated cluster, it checks if a VPC or VPC connection exists for that provider and region. If not, MongoDB Cloud creates them as part of the deployment. MongoDB Cloud assigns the VPC a CIDR block. To limit a new VPC peering connection to one CIDR block and region, create the connection first. Deploy the cluster after the connection starts. */
@@ -19576,9 +17803,8 @@ export const DataLakeHTTPStoreInputAdditionalStorageClassesItem = S.String;
 export type DataLakeHTTPStoreInputAdditionalStorageClassesList = Array<
   DataLakeHTTPStoreInputAdditionalStorageClassesItem | (string & {})
 >;
-export const DataLakeHTTPStoreInputAdditionalStorageClassesList = /*@__PURE__*/ S.Array(
-  DataLakeHTTPStoreInputAdditionalStorageClassesItem,
-) as any as S.Schema<DataLakeHTTPStoreInputAdditionalStorageClassesList>;
+export const DataLakeHTTPStoreInputAdditionalStorageClassesList =
+  OrgUserRolesResponseOrgRolesList as any as S.Schema<DataLakeHTTPStoreInputAdditionalStorageClassesList>;
 
 export interface DataLakeHTTPStoreInput {
   /** Physical location where MongoDB Cloud deploys your AWS-hosted MongoDB cluster nodes. The region you choose can affect network latency for clients accessing your databases. When MongoDB Cloud deploys a dedicated cluster, it checks if a VPC or VPC connection exists for that provider and region. If not, MongoDB Cloud creates them as part of the deployment. MongoDB Cloud assigns the VPC a CIDR block. To limit a new VPC peering connection to one CIDR block and region, create the connection first. Deploy the cluster after the connection starts. */
@@ -19692,9 +17918,8 @@ export const DataLakeAzureBlobStoreInputAdditionalStorageClassesItem = S.String;
 export type DataLakeAzureBlobStoreInputAdditionalStorageClassesList = Array<
   DataLakeAzureBlobStoreInputAdditionalStorageClassesItem | (string & {})
 >;
-export const DataLakeAzureBlobStoreInputAdditionalStorageClassesList = /*@__PURE__*/ S.Array(
-  DataLakeAzureBlobStoreInputAdditionalStorageClassesItem,
-) as any as S.Schema<DataLakeAzureBlobStoreInputAdditionalStorageClassesList>;
+export const DataLakeAzureBlobStoreInputAdditionalStorageClassesList =
+  OrgUserRolesResponseOrgRolesList as any as S.Schema<DataLakeAzureBlobStoreInputAdditionalStorageClassesList>;
 
 export interface DataLakeAzureBlobStoreInput {
   /** Physical location where MongoDB Cloud deploys your AWS-hosted MongoDB cluster nodes. The region you choose can affect network latency for clients accessing your databases. When MongoDB Cloud deploys a dedicated cluster, it checks if a VPC or VPC connection exists for that provider and region. If not, MongoDB Cloud creates them as part of the deployment. MongoDB Cloud assigns the VPC a CIDR block. To limit a new VPC peering connection to one CIDR block and region, create the connection first. Deploy the cluster after the connection starts. */
@@ -19811,9 +18036,7 @@ export type DataLakeGoogleCloudStorageStoreInputAdditionalStorageClassesList = A
   DataLakeGoogleCloudStorageStoreInputAdditionalStorageClassesItem | (string & {})
 >;
 export const DataLakeGoogleCloudStorageStoreInputAdditionalStorageClassesList =
-  /*@__PURE__*/ S.Array(
-    DataLakeGoogleCloudStorageStoreInputAdditionalStorageClassesItem,
-  ) as any as S.Schema<DataLakeGoogleCloudStorageStoreInputAdditionalStorageClassesList>;
+  ApiAtlasClusterAdvancedConfigurationViewCustomOpensslCipherConfigTls12List as any as S.Schema<DataLakeGoogleCloudStorageStoreInputAdditionalStorageClassesList>;
 
 export interface DataLakeGoogleCloudStorageStoreInput {
   /** Physical location where MongoDB Cloud deploys your AWS-hosted MongoDB cluster nodes. The region you choose can affect network latency for clients accessing your databases. When MongoDB Cloud deploys a dedicated cluster, it checks if a VPC or VPC connection exists for that provider and region. If not, MongoDB Cloud creates them as part of the deployment. MongoDB Cloud assigns the VPC a CIDR block. To limit a new VPC peering connection to one CIDR block and region, create the connection first. Deploy the cluster after the connection starts. */
@@ -20109,9 +18332,8 @@ export const DataLakeS3StoreSettingsAdditionalStorageClassesItem = S.String;
 /** Collection of AWS S3 [storage classes](https://aws.amazon.com/s3/storage-classes/). Atlas Data Lake includes the files in these storage classes in the query results. */
 export type DataLakeS3StoreSettingsAdditionalStorageClassesList =
   Array<DataLakeS3StoreSettingsAdditionalStorageClassesItem>;
-export const DataLakeS3StoreSettingsAdditionalStorageClassesList = /*@__PURE__*/ S.Array(
-  DataLakeS3StoreSettingsAdditionalStorageClassesItem,
-) as any as S.Schema<DataLakeS3StoreSettingsAdditionalStorageClassesList>;
+export const DataLakeS3StoreSettingsAdditionalStorageClassesList =
+  OrgUserRolesResponseOrgRolesList as any as S.Schema<DataLakeS3StoreSettingsAdditionalStorageClassesList>;
 
 export interface DataLakeS3StoreSettings {
   /** Physical location where MongoDB Cloud deploys your AWS-hosted MongoDB cluster nodes. The region you choose can affect network latency for clients accessing your databases. When MongoDB Cloud deploys a dedicated cluster, it checks if a VPC or VPC connection exists for that provider and region. If not, MongoDB Cloud creates them as part of the deployment. MongoDB Cloud assigns the VPC a CIDR block. To limit a new VPC peering connection to one CIDR block and region, create the connection first. Deploy the cluster after the connection starts. */
@@ -20227,9 +18449,8 @@ export const DataLakeDLSAWSStoreAdditionalStorageClassesItem = S.String;
 /** Collection of AWS S3 [storage classes](https://aws.amazon.com/s3/storage-classes/). Atlas Data Lake includes the files in these storage classes in the query results. */
 export type DataLakeDLSAWSStoreAdditionalStorageClassesList =
   Array<DataLakeDLSAWSStoreAdditionalStorageClassesItem>;
-export const DataLakeDLSAWSStoreAdditionalStorageClassesList = /*@__PURE__*/ S.Array(
-  DataLakeDLSAWSStoreAdditionalStorageClassesItem,
-) as any as S.Schema<DataLakeDLSAWSStoreAdditionalStorageClassesList>;
+export const DataLakeDLSAWSStoreAdditionalStorageClassesList =
+  OrgUserRolesResponseOrgRolesList as any as S.Schema<DataLakeDLSAWSStoreAdditionalStorageClassesList>;
 
 export interface DataLakeDLSAWSStore {
   /** Physical location where MongoDB Cloud deploys your AWS-hosted MongoDB cluster nodes. The region you choose can affect network latency for clients accessing your databases. When MongoDB Cloud deploys a dedicated cluster, it checks if a VPC or VPC connection exists for that provider and region. If not, MongoDB Cloud creates them as part of the deployment. MongoDB Cloud assigns the VPC a CIDR block. To limit a new VPC peering connection to one CIDR block and region, create the connection first. Deploy the cluster after the connection starts. */
@@ -20345,9 +18566,8 @@ export const DataLakeDLSAzureStoreAdditionalStorageClassesItem = S.String;
 /** Collection of AWS S3 [storage classes](https://aws.amazon.com/s3/storage-classes/). Atlas Data Lake includes the files in these storage classes in the query results. */
 export type DataLakeDLSAzureStoreAdditionalStorageClassesList =
   Array<DataLakeDLSAzureStoreAdditionalStorageClassesItem>;
-export const DataLakeDLSAzureStoreAdditionalStorageClassesList = /*@__PURE__*/ S.Array(
-  DataLakeDLSAzureStoreAdditionalStorageClassesItem,
-) as any as S.Schema<DataLakeDLSAzureStoreAdditionalStorageClassesList>;
+export const DataLakeDLSAzureStoreAdditionalStorageClassesList =
+  OrgUserRolesResponseOrgRolesList as any as S.Schema<DataLakeDLSAzureStoreAdditionalStorageClassesList>;
 
 export interface DataLakeDLSAzureStore {
   /** Physical location where MongoDB Cloud deploys your AWS-hosted MongoDB cluster nodes. The region you choose can affect network latency for clients accessing your databases. When MongoDB Cloud deploys a dedicated cluster, it checks if a VPC or VPC connection exists for that provider and region. If not, MongoDB Cloud creates them as part of the deployment. MongoDB Cloud assigns the VPC a CIDR block. To limit a new VPC peering connection to one CIDR block and region, create the connection first. Deploy the cluster after the connection starts. */
@@ -20463,9 +18683,8 @@ export const DataLakeDLSGCPStoreAdditionalStorageClassesItem = S.String;
 /** Collection of AWS S3 [storage classes](https://aws.amazon.com/s3/storage-classes/). Atlas Data Lake includes the files in these storage classes in the query results. */
 export type DataLakeDLSGCPStoreAdditionalStorageClassesList =
   Array<DataLakeDLSGCPStoreAdditionalStorageClassesItem>;
-export const DataLakeDLSGCPStoreAdditionalStorageClassesList = /*@__PURE__*/ S.Array(
-  DataLakeDLSGCPStoreAdditionalStorageClassesItem,
-) as any as S.Schema<DataLakeDLSGCPStoreAdditionalStorageClassesList>;
+export const DataLakeDLSGCPStoreAdditionalStorageClassesList =
+  OrgUserRolesResponseOrgRolesList as any as S.Schema<DataLakeDLSGCPStoreAdditionalStorageClassesList>;
 
 export interface DataLakeDLSGCPStore {
   /** Physical location where MongoDB Cloud deploys your AWS-hosted MongoDB cluster nodes. The region you choose can affect network latency for clients accessing your databases. When MongoDB Cloud deploys a dedicated cluster, it checks if a VPC or VPC connection exists for that provider and region. If not, MongoDB Cloud creates them as part of the deployment. MongoDB Cloud assigns the VPC a CIDR block. To limit a new VPC peering connection to one CIDR block and region, create the connection first. Deploy the cluster after the connection starts. */
@@ -20581,9 +18800,8 @@ export const DataLakeAtlasStoreInstanceAdditionalStorageClassesItem = S.String;
 /** Collection of AWS S3 [storage classes](https://aws.amazon.com/s3/storage-classes/). Atlas Data Lake includes the files in these storage classes in the query results. */
 export type DataLakeAtlasStoreInstanceAdditionalStorageClassesList =
   Array<DataLakeAtlasStoreInstanceAdditionalStorageClassesItem>;
-export const DataLakeAtlasStoreInstanceAdditionalStorageClassesList = /*@__PURE__*/ S.Array(
-  DataLakeAtlasStoreInstanceAdditionalStorageClassesItem,
-) as any as S.Schema<DataLakeAtlasStoreInstanceAdditionalStorageClassesList>;
+export const DataLakeAtlasStoreInstanceAdditionalStorageClassesList =
+  OrgUserRolesResponseOrgRolesList as any as S.Schema<DataLakeAtlasStoreInstanceAdditionalStorageClassesList>;
 
 export interface DataLakeAtlasStoreInstance {
   /** Physical location where MongoDB Cloud deploys your AWS-hosted MongoDB cluster nodes. The region you choose can affect network latency for clients accessing your databases. When MongoDB Cloud deploys a dedicated cluster, it checks if a VPC or VPC connection exists for that provider and region. If not, MongoDB Cloud creates them as part of the deployment. MongoDB Cloud assigns the VPC a CIDR block. To limit a new VPC peering connection to one CIDR block and region, create the connection first. Deploy the cluster after the connection starts. */
@@ -20701,9 +18919,8 @@ export const DataLakeHTTPStoreAdditionalStorageClassesItem = S.String;
 /** Collection of AWS S3 [storage classes](https://aws.amazon.com/s3/storage-classes/). Atlas Data Lake includes the files in these storage classes in the query results. */
 export type DataLakeHTTPStoreAdditionalStorageClassesList =
   Array<DataLakeHTTPStoreAdditionalStorageClassesItem>;
-export const DataLakeHTTPStoreAdditionalStorageClassesList = /*@__PURE__*/ S.Array(
-  DataLakeHTTPStoreAdditionalStorageClassesItem,
-) as any as S.Schema<DataLakeHTTPStoreAdditionalStorageClassesList>;
+export const DataLakeHTTPStoreAdditionalStorageClassesList =
+  OrgUserRolesResponseOrgRolesList as any as S.Schema<DataLakeHTTPStoreAdditionalStorageClassesList>;
 
 export interface DataLakeHTTPStore {
   /** Physical location where MongoDB Cloud deploys your AWS-hosted MongoDB cluster nodes. The region you choose can affect network latency for clients accessing your databases. When MongoDB Cloud deploys a dedicated cluster, it checks if a VPC or VPC connection exists for that provider and region. If not, MongoDB Cloud creates them as part of the deployment. MongoDB Cloud assigns the VPC a CIDR block. To limit a new VPC peering connection to one CIDR block and region, create the connection first. Deploy the cluster after the connection starts. */
@@ -20819,9 +19036,8 @@ export const DataLakeAzureBlobStoreAdditionalStorageClassesItem = S.String;
 /** Collection of AWS S3 [storage classes](https://aws.amazon.com/s3/storage-classes/). Atlas Data Lake includes the files in these storage classes in the query results. */
 export type DataLakeAzureBlobStoreAdditionalStorageClassesList =
   Array<DataLakeAzureBlobStoreAdditionalStorageClassesItem>;
-export const DataLakeAzureBlobStoreAdditionalStorageClassesList = /*@__PURE__*/ S.Array(
-  DataLakeAzureBlobStoreAdditionalStorageClassesItem,
-) as any as S.Schema<DataLakeAzureBlobStoreAdditionalStorageClassesList>;
+export const DataLakeAzureBlobStoreAdditionalStorageClassesList =
+  OrgUserRolesResponseOrgRolesList as any as S.Schema<DataLakeAzureBlobStoreAdditionalStorageClassesList>;
 
 export interface DataLakeAzureBlobStore {
   /** Physical location where MongoDB Cloud deploys your AWS-hosted MongoDB cluster nodes. The region you choose can affect network latency for clients accessing your databases. When MongoDB Cloud deploys a dedicated cluster, it checks if a VPC or VPC connection exists for that provider and region. If not, MongoDB Cloud creates them as part of the deployment. MongoDB Cloud assigns the VPC a CIDR block. To limit a new VPC peering connection to one CIDR block and region, create the connection first. Deploy the cluster after the connection starts. */
@@ -20937,9 +19153,8 @@ export const DataLakeGoogleCloudStorageStoreAdditionalStorageClassesItem = S.Str
 /** Collection of AWS S3 [storage classes](https://aws.amazon.com/s3/storage-classes/). Atlas Data Lake includes the files in these storage classes in the query results. */
 export type DataLakeGoogleCloudStorageStoreAdditionalStorageClassesList =
   Array<DataLakeGoogleCloudStorageStoreAdditionalStorageClassesItem>;
-export const DataLakeGoogleCloudStorageStoreAdditionalStorageClassesList = /*@__PURE__*/ S.Array(
-  DataLakeGoogleCloudStorageStoreAdditionalStorageClassesItem,
-) as any as S.Schema<DataLakeGoogleCloudStorageStoreAdditionalStorageClassesList>;
+export const DataLakeGoogleCloudStorageStoreAdditionalStorageClassesList =
+  OrgUserRolesResponseOrgRolesList as any as S.Schema<DataLakeGoogleCloudStorageStoreAdditionalStorageClassesList>;
 
 export interface DataLakeGoogleCloudStorageStore {
   /** Physical location where MongoDB Cloud deploys your AWS-hosted MongoDB cluster nodes. The region you choose can affect network latency for clients accessing your databases. When MongoDB Cloud deploys a dedicated cluster, it checks if a VPC or VPC connection exists for that provider and region. If not, MongoDB Cloud creates them as part of the deployment. MongoDB Cloud assigns the VPC a CIDR block. To limit a new VPC peering connection to one CIDR block and region, create the connection first. Deploy the cluster after the connection starts. */
@@ -22104,9 +20319,8 @@ export const CreateGroupLogIntegrationRequestLogTypesItem = S.String;
 export type CreateGroupLogIntegrationRequestLogTypesList = Array<
   CreateGroupLogIntegrationRequestLogTypesItem | (string & {})
 >;
-export const CreateGroupLogIntegrationRequestLogTypesList = /*@__PURE__*/ S.Array(
-  CreateGroupLogIntegrationRequestLogTypesItem,
-) as any as S.Schema<CreateGroupLogIntegrationRequestLogTypesList>;
+export const CreateGroupLogIntegrationRequestLogTypesList =
+  OrgUserRolesResponseOrgRolesList as any as S.Schema<CreateGroupLogIntegrationRequestLogTypesList>;
 
 /** Type of log integration. Identifies which service will receive the exported logs. This value cannot be modified after the integration is created. */
 export type CreateGroupLogIntegrationRequestType =
@@ -22192,9 +20406,8 @@ export const S3LogIntegrationResponseOutputLogTypesItem = S.String;
 /** Array of log types exported by this integration. */
 export type S3LogIntegrationResponseOutputLogTypesList =
   Array<S3LogIntegrationResponseOutputLogTypesItem>;
-export const S3LogIntegrationResponseOutputLogTypesList = /*@__PURE__*/ S.Array(
-  S3LogIntegrationResponseOutputLogTypesItem,
-) as any as S.Schema<S3LogIntegrationResponseOutputLogTypesList>;
+export const S3LogIntegrationResponseOutputLogTypesList =
+  OrgUserRolesResponseOrgRolesList as any as S.Schema<S3LogIntegrationResponseOutputLogTypesList>;
 
 /** Details to integrate S3 log export with one Atlas project. */
 export interface S3LogIntegrationResponseOutput {
@@ -22288,9 +20501,8 @@ export const DatadogLogIntegrationResponseOutputLogTypesItem = S.String;
 /** Array of log types exported by this integration. */
 export type DatadogLogIntegrationResponseOutputLogTypesList =
   Array<DatadogLogIntegrationResponseOutputLogTypesItem>;
-export const DatadogLogIntegrationResponseOutputLogTypesList = /*@__PURE__*/ S.Array(
-  DatadogLogIntegrationResponseOutputLogTypesItem,
-) as any as S.Schema<DatadogLogIntegrationResponseOutputLogTypesList>;
+export const DatadogLogIntegrationResponseOutputLogTypesList =
+  OrgUserRolesResponseOrgRolesList as any as S.Schema<DatadogLogIntegrationResponseOutputLogTypesList>;
 
 /** Details to integrate Datadog log export with one Atlas project. */
 export interface DatadogLogIntegrationResponseOutput {
@@ -22384,9 +20596,8 @@ export const GcsLogIntegrationResponseOutputLogTypesItem = S.String;
 /** Array of log types exported by this integration. */
 export type GcsLogIntegrationResponseOutputLogTypesList =
   Array<GcsLogIntegrationResponseOutputLogTypesItem>;
-export const GcsLogIntegrationResponseOutputLogTypesList = /*@__PURE__*/ S.Array(
-  GcsLogIntegrationResponseOutputLogTypesItem,
-) as any as S.Schema<GcsLogIntegrationResponseOutputLogTypesList>;
+export const GcsLogIntegrationResponseOutputLogTypesList =
+  OrgUserRolesResponseOrgRolesList as any as S.Schema<GcsLogIntegrationResponseOutputLogTypesList>;
 
 /** Details to integrate Google Cloud Storage log export with one Atlas project. */
 export interface GcsLogIntegrationResponseOutput {
@@ -22480,9 +20691,8 @@ export const OtelLogIntegrationResponseOutputLogTypesItem = S.String;
 /** Array of log types exported by this integration. */
 export type OtelLogIntegrationResponseOutputLogTypesList =
   Array<OtelLogIntegrationResponseOutputLogTypesItem>;
-export const OtelLogIntegrationResponseOutputLogTypesList = /*@__PURE__*/ S.Array(
-  OtelLogIntegrationResponseOutputLogTypesItem,
-) as any as S.Schema<OtelLogIntegrationResponseOutputLogTypesList>;
+export const OtelLogIntegrationResponseOutputLogTypesList =
+  OrgUserRolesResponseOrgRolesList as any as S.Schema<OtelLogIntegrationResponseOutputLogTypesList>;
 
 /** Details to integrate OpenTelemetry log export with one Atlas project. */
 export interface OtelLogIntegrationResponseOutput {
@@ -22576,9 +20786,8 @@ export const SplunkLogIntegrationResponseOutputLogTypesItem = S.String;
 /** Array of log types exported by this integration. */
 export type SplunkLogIntegrationResponseOutputLogTypesList =
   Array<SplunkLogIntegrationResponseOutputLogTypesItem>;
-export const SplunkLogIntegrationResponseOutputLogTypesList = /*@__PURE__*/ S.Array(
-  SplunkLogIntegrationResponseOutputLogTypesItem,
-) as any as S.Schema<SplunkLogIntegrationResponseOutputLogTypesList>;
+export const SplunkLogIntegrationResponseOutputLogTypesList =
+  OrgUserRolesResponseOrgRolesList as any as S.Schema<SplunkLogIntegrationResponseOutputLogTypesList>;
 
 /** Details to integrate Splunk log export with one Atlas project. */
 export interface SplunkLogIntegrationResponseOutput {
@@ -22672,9 +20881,8 @@ export const AzureLogIntegrationResponseOutputLogTypesItem = S.String;
 /** Array of log types exported by this integration. */
 export type AzureLogIntegrationResponseOutputLogTypesList =
   Array<AzureLogIntegrationResponseOutputLogTypesItem>;
-export const AzureLogIntegrationResponseOutputLogTypesList = /*@__PURE__*/ S.Array(
-  AzureLogIntegrationResponseOutputLogTypesItem,
-) as any as S.Schema<AzureLogIntegrationResponseOutputLogTypesList>;
+export const AzureLogIntegrationResponseOutputLogTypesList =
+  OrgUserRolesResponseOrgRolesList as any as S.Schema<AzureLogIntegrationResponseOutputLogTypesList>;
 
 /** Details to integrate Azure Blob Storage log export with one Atlas project. */
 export interface AzureLogIntegrationResponseOutput {
@@ -22958,9 +21166,8 @@ export const CreateGroupMetricIntegrationRequestMetricSelectionItem = S.String;
 export type CreateGroupMetricIntegrationRequestMetricSelectionList = Array<
   CreateGroupMetricIntegrationRequestMetricSelectionItem | (string & {})
 >;
-export const CreateGroupMetricIntegrationRequestMetricSelectionList = /*@__PURE__*/ S.Array(
-  CreateGroupMetricIntegrationRequestMetricSelectionItem,
-) as any as S.Schema<CreateGroupMetricIntegrationRequestMetricSelectionList>;
+export const CreateGroupMetricIntegrationRequestMetricSelectionList =
+  OrgUserRolesResponseOrgRolesList as any as S.Schema<CreateGroupMetricIntegrationRequestMetricSelectionList>;
 
 /** How the client authenticates to the token endpoint. `CLIENT_SECRET` sends a shared secret. `PRIVATE_KEY_JWT` signs a client assertion with an Atlas-generated, Atlas-managed key. Register the returned JWKS URL with your identity provider. */
 export type OAuthConfigRequestClientAuthMethod = "CLIENT_SECRET" | "PRIVATE_KEY_JWT";
@@ -23093,9 +21300,8 @@ export const MetricIntegrationResponseMetricSelectionItem = S.String;
 /** Array of metric categories to export. Determines which types of metrics are sent to the integration. */
 export type MetricIntegrationResponseMetricSelectionList =
   Array<MetricIntegrationResponseMetricSelectionItem>;
-export const MetricIntegrationResponseMetricSelectionList = /*@__PURE__*/ S.Array(
-  MetricIntegrationResponseMetricSelectionItem,
-) as any as S.Schema<MetricIntegrationResponseMetricSelectionList>;
+export const MetricIntegrationResponseMetricSelectionList =
+  OrgUserRolesResponseOrgRolesList as any as S.Schema<MetricIntegrationResponseMetricSelectionList>;
 
 /** How the client authenticates to the token endpoint. */
 export type OAuthConfigResponseClientAuthMethod = "CLIENT_SECRET" | "PRIVATE_KEY_JWT";
@@ -26158,9 +24364,8 @@ export const CreateAtlasOrganizationApiKeyRolesItem = S.String;
 export type CreateAtlasOrganizationApiKeyRolesList = Array<
   CreateAtlasOrganizationApiKeyRolesItem | (string & {}) | null
 >;
-export const CreateAtlasOrganizationApiKeyRolesList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.NullOr(CreateAtlasOrganizationApiKeyRolesItem),
-) as any as S.Schema<CreateAtlasOrganizationApiKeyRolesList>;
+export const CreateAtlasOrganizationApiKeyRolesList =
+  ConnectedOrgConfigPostAuthRoleGrantsList as any as S.Schema<CreateAtlasOrganizationApiKeyRolesList>;
 
 /** Organization Service Account that Atlas creates for this organization. If omitted, Atlas doesn't create an organization Service Account for this organization. If specified, this object requires all body parameters. Note that API Keys cannot be specified in the same request. */
 export interface CreateAtlasOrganizationApiKey {
@@ -26193,9 +24398,8 @@ export const OrgServiceAccountRequestRolesItem = S.String;
 export type OrgServiceAccountRequestRolesList = Array<
   OrgServiceAccountRequestRolesItem | (string & {})
 >;
-export const OrgServiceAccountRequestRolesList = /*@__PURE__*/ S.Array(
-  OrgServiceAccountRequestRolesItem,
-) as any as S.Schema<OrgServiceAccountRequestRolesList>;
+export const OrgServiceAccountRequestRolesList =
+  OrgUserRolesResponseOrgRolesList as any as S.Schema<OrgServiceAccountRequestRolesList>;
 
 /** Organization Service Account that Atlas creates for this organization. If omitted, Atlas doesn't create an organization Service Account for this organization. If specified, this object requires all body parameters. Note that API Keys cannot be specified in the same request. */
 export interface OrgServiceAccountRequest {
@@ -26297,9 +24501,8 @@ export const OrgServiceAccountRolesItem = S.String;
 
 /** A list of Organization roles associated with the Service Account. */
 export type OrgServiceAccountRolesList = Array<OrgServiceAccountRolesItem>;
-export const OrgServiceAccountRolesList = /*@__PURE__*/ S.Array(
-  OrgServiceAccountRolesItem,
-) as any as S.Schema<OrgServiceAccountRolesList>;
+export const OrgServiceAccountRolesList =
+  OrgUserRolesResponseOrgRolesList as any as S.Schema<OrgServiceAccountRolesList>;
 
 /** A list of secrets associated with the specified Service Account. */
 export type OrgServiceAccountSecretsList = Array<ServiceAccountSecret>;
@@ -26373,9 +24576,8 @@ export const CreateOrgApiKeyRequestRolesItem = S.String;
 export type CreateOrgApiKeyRequestRolesList = Array<
   CreateOrgApiKeyRequestRolesItem | (string & {}) | null
 >;
-export const CreateOrgApiKeyRequestRolesList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.NullOr(CreateOrgApiKeyRequestRolesItem),
-) as any as S.Schema<CreateOrgApiKeyRequestRolesList>;
+export const CreateOrgApiKeyRequestRolesList =
+  ConnectedOrgConfigPostAuthRoleGrantsList as any as S.Schema<CreateOrgApiKeyRequestRolesList>;
 
 export interface CreateOrgApiKeyRequest {
   /** Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. */
@@ -26576,9 +24778,8 @@ export const CreateOrgBillingCostExplorerUsageProcessRequestServicesItem = S.Str
 export type CreateOrgBillingCostExplorerUsageProcessRequestServicesList = Array<
   CreateOrgBillingCostExplorerUsageProcessRequestServicesItem | (string & {})
 >;
-export const CreateOrgBillingCostExplorerUsageProcessRequestServicesList = /*@__PURE__*/ S.Array(
-  CreateOrgBillingCostExplorerUsageProcessRequestServicesItem,
-) as any as S.Schema<CreateOrgBillingCostExplorerUsageProcessRequestServicesList>;
+export const CreateOrgBillingCostExplorerUsageProcessRequestServicesList =
+  OrgUserRolesResponseOrgRolesList as any as S.Schema<CreateOrgBillingCostExplorerUsageProcessRequestServicesList>;
 
 export interface CreateOrgBillingCostExplorerUsageProcessRequest {
   /** Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. */
@@ -26766,9 +24967,8 @@ export const CreateOrgLogIntegrationRequestLogTypesItem = S.String;
 export type CreateOrgLogIntegrationRequestLogTypesList = Array<
   CreateOrgLogIntegrationRequestLogTypesItem | (string & {})
 >;
-export const CreateOrgLogIntegrationRequestLogTypesList = /*@__PURE__*/ S.Array(
-  CreateOrgLogIntegrationRequestLogTypesItem,
-) as any as S.Schema<CreateOrgLogIntegrationRequestLogTypesList>;
+export const CreateOrgLogIntegrationRequestLogTypesList =
+  OrgUserRolesResponseOrgRolesList as any as S.Schema<CreateOrgLogIntegrationRequestLogTypesList>;
 
 /** Type of log integration. Identifies which service will receive the exported events. This value cannot be modified after the integration is created. */
 export type CreateOrgLogIntegrationRequestType = "OTEL_LOG_EXPORT";
@@ -26811,9 +25011,8 @@ export const CreateOrgLogIntegrationResponseLogTypesItem = S.String;
 /** Array of log types exported by this integration. */
 export type CreateOrgLogIntegrationResponseLogTypesList =
   Array<CreateOrgLogIntegrationResponseLogTypesItem>;
-export const CreateOrgLogIntegrationResponseLogTypesList = /*@__PURE__*/ S.Array(
-  CreateOrgLogIntegrationResponseLogTypesItem,
-) as any as S.Schema<CreateOrgLogIntegrationResponseLogTypesList>;
+export const CreateOrgLogIntegrationResponseLogTypesList =
+  OrgUserRolesResponseOrgRolesList as any as S.Schema<CreateOrgLogIntegrationResponseLogTypesList>;
 
 /** Type of log integration. Identifies which service will receive the exported events. This value cannot be modified after the integration is created. */
 export type CreateOrgLogIntegrationResponseType = "OTEL_LOG_EXPORT";
@@ -26857,9 +25056,8 @@ export const CreateOrgMcpConfigRequestRolesItem = S.String;
 export type CreateOrgMcpConfigRequestRolesList = Array<
   CreateOrgMcpConfigRequestRolesItem | (string & {})
 >;
-export const CreateOrgMcpConfigRequestRolesList = /*@__PURE__*/ S.Array(
-  CreateOrgMcpConfigRequestRolesItem,
-) as any as S.Schema<CreateOrgMcpConfigRequestRolesList>;
+export const CreateOrgMcpConfigRequestRolesList =
+  OrgUserRolesResponseOrgRolesList as any as S.Schema<CreateOrgMcpConfigRequestRolesList>;
 
 export interface CreateOrgMcpConfigRequest {
   /** Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. */
@@ -26907,9 +25105,8 @@ export const OrgMcpConfigResponseRolesItem = S.String;
 
 /** List of organization roles associated with this MCP configuration. */
 export type OrgMcpConfigResponseRolesList = Array<OrgMcpConfigResponseRolesItem>;
-export const OrgMcpConfigResponseRolesList = /*@__PURE__*/ S.Array(
-  OrgMcpConfigResponseRolesItem,
-) as any as S.Schema<OrgMcpConfigResponseRolesList>;
+export const OrgMcpConfigResponseRolesList =
+  OrgUserRolesResponseOrgRolesList as any as S.Schema<OrgMcpConfigResponseRolesList>;
 
 export interface OrgMcpConfigResponse {
   /** Unique identifier for the Service Account client associated with this MCP configuration. Use this Service Account to connect to the Atlas Remote MCP. */
@@ -27096,9 +25293,8 @@ export const CreateOrgServiceAccountRequestRolesItem = S.String;
 export type CreateOrgServiceAccountRequestRolesList = Array<
   CreateOrgServiceAccountRequestRolesItem | (string & {})
 >;
-export const CreateOrgServiceAccountRequestRolesList = /*@__PURE__*/ S.Array(
-  CreateOrgServiceAccountRequestRolesItem,
-) as any as S.Schema<CreateOrgServiceAccountRequestRolesList>;
+export const CreateOrgServiceAccountRequestRolesList =
+  OrgUserRolesResponseOrgRolesList as any as S.Schema<CreateOrgServiceAccountRequestRolesList>;
 
 export interface CreateOrgServiceAccountRequest {
   /** Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. */
@@ -27297,9 +25493,8 @@ export const OrgUserRolesRequestOrgRolesItem = S.String;
 export type OrgUserRolesRequestOrgRolesList = Array<
   OrgUserRolesRequestOrgRolesItem | (string & {})
 >;
-export const OrgUserRolesRequestOrgRolesList = /*@__PURE__*/ S.Array(
-  OrgUserRolesRequestOrgRolesItem,
-) as any as S.Schema<OrgUserRolesRequestOrgRolesList>;
+export const OrgUserRolesRequestOrgRolesList =
+  OrgUserRolesResponseOrgRolesList as any as S.Schema<OrgUserRolesRequestOrgRolesList>;
 
 /** Organization and project level roles to assign the MongoDB Cloud user within one organization. */
 export interface OrgUserRolesRequest {
@@ -27847,9 +26042,8 @@ export const DiskBackupCopySetting20240805FrequenciesItem = S.String;
 /** Deprecated: use `copyPolicyItems`, which defines which snapshots to copy and their retention. Allowed only when `copyPolicyItemsEnabled` is false or omitted. Responses omit this field when `copyPolicyItemsEnabled` is true. */
 export type DiskBackupCopySetting20240805FrequenciesList =
   Array<DiskBackupCopySetting20240805FrequenciesItem>;
-export const DiskBackupCopySetting20240805FrequenciesList = /*@__PURE__*/ S.Array(
-  DiskBackupCopySetting20240805FrequenciesItem,
-) as any as S.Schema<DiskBackupCopySetting20240805FrequenciesList>;
+export const DiskBackupCopySetting20240805FrequenciesList =
+  OrgUserRolesResponseOrgRolesList as any as S.Schema<DiskBackupCopySetting20240805FrequenciesList>;
 
 /** Copy setting item in the desired backup policy. */
 export interface DiskBackupCopySetting20240805 {
@@ -32062,17 +30256,8 @@ export interface BackupComplianceScheduledPolicyItem {
   /** Duration in days, weeks, months, or years that MongoDB Cloud retains the Snapshot. For less frequent policy items, MongoDB Cloud requires that you specify a value greater than or equal to the value specified for more frequent policy items. For example: If the hourly policy item specifies a retention of two days, you must specify two days or greater for the retention of the weekly policy item. */
   retentionValue: number;
 }
-export const BackupComplianceScheduledPolicyItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    frequencyInterval: BackupComplianceScheduledPolicyItemFrequencyInterval,
-    frequencyType: BackupComplianceScheduledPolicyItemFrequencyType,
-    id: S.optional(S.String),
-    retentionUnit: BackupComplianceScheduledPolicyItemRetentionUnit,
-    retentionValue: S.Number,
-  }),
-).annotate({
-  identifier: "BackupComplianceScheduledPolicyItem",
-}) as any as S.Schema<BackupComplianceScheduledPolicyItem>;
+export const BackupComplianceScheduledPolicyItem =
+  BackupComplianceOnDemandPolicyItem as any as S.Schema<BackupComplianceScheduledPolicyItem>;
 
 /** List that contains the specifications for one scheduled policy. */
 export type DataProtectionSettings20231001ScheduledPolicyItemsList =
@@ -33175,9 +31360,7 @@ export const ClusterDescriptionProcessArgs20240805CustomOpensslCipherConfigTls12
 export type ClusterDescriptionProcessArgs20240805CustomOpensslCipherConfigTls12List =
   Array<ClusterDescriptionProcessArgs20240805CustomOpensslCipherConfigTls12Item>;
 export const ClusterDescriptionProcessArgs20240805CustomOpensslCipherConfigTls12List =
-  /*@__PURE__*/ S.Array(
-    ClusterDescriptionProcessArgs20240805CustomOpensslCipherConfigTls12Item,
-  ) as any as S.Schema<ClusterDescriptionProcessArgs20240805CustomOpensslCipherConfigTls12List>;
+  ApiAtlasClusterAdvancedConfigurationViewCustomOpensslCipherConfigTls12List as any as S.Schema<ClusterDescriptionProcessArgs20240805CustomOpensslCipherConfigTls12List>;
 
 export type ClusterDescriptionProcessArgs20240805CustomOpensslCipherConfigTls13Item =
   | "TLS_AES_256_GCM_SHA384"
@@ -33190,9 +31373,7 @@ export const ClusterDescriptionProcessArgs20240805CustomOpensslCipherConfigTls13
 export type ClusterDescriptionProcessArgs20240805CustomOpensslCipherConfigTls13List =
   Array<ClusterDescriptionProcessArgs20240805CustomOpensslCipherConfigTls13Item>;
 export const ClusterDescriptionProcessArgs20240805CustomOpensslCipherConfigTls13List =
-  /*@__PURE__*/ S.Array(
-    ClusterDescriptionProcessArgs20240805CustomOpensslCipherConfigTls13Item,
-  ) as any as S.Schema<ClusterDescriptionProcessArgs20240805CustomOpensslCipherConfigTls13List>;
+  ApiAtlasClusterAdvancedConfigurationViewCustomOpensslCipherConfigTls12List as any as S.Schema<ClusterDescriptionProcessArgs20240805CustomOpensslCipherConfigTls13List>;
 
 /** Minimum Transport Layer Security (TLS) version that the cluster accepts for incoming connections. Clusters using TLS 1.0 or 1.1 should consider setting TLS 1.2 as the minimum TLS protocol version. */
 export type ClusterDescriptionProcessArgs20240805MinimumEnabledTlsProtocol =
@@ -37338,9 +35519,8 @@ export const GetGroupHostFtsMetricIndexMeasurementsRequestMetricsItem = S.String
 export type GetGroupHostFtsMetricIndexMeasurementsRequestMetricsList = Array<
   GetGroupHostFtsMetricIndexMeasurementsRequestMetricsItem | (string & {})
 >;
-export const GetGroupHostFtsMetricIndexMeasurementsRequestMetricsList = /*@__PURE__*/ S.Array(
-  GetGroupHostFtsMetricIndexMeasurementsRequestMetricsItem,
-) as any as S.Schema<GetGroupHostFtsMetricIndexMeasurementsRequestMetricsList>;
+export const GetGroupHostFtsMetricIndexMeasurementsRequestMetricsList =
+  OrgUserRolesResponseOrgRolesList as any as S.Schema<GetGroupHostFtsMetricIndexMeasurementsRequestMetricsList>;
 
 export interface GetGroupHostFtsMetricIndexMeasurementsRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -38459,9 +36639,8 @@ export const GetGroupProcessDatabaseMeasurementsRequestMItem = S.String;
 export type GetGroupProcessDatabaseMeasurementsRequestMList = Array<
   GetGroupProcessDatabaseMeasurementsRequestMItem | (string & {})
 >;
-export const GetGroupProcessDatabaseMeasurementsRequestMList = /*@__PURE__*/ S.Array(
-  GetGroupProcessDatabaseMeasurementsRequestMItem,
-) as any as S.Schema<GetGroupProcessDatabaseMeasurementsRequestMList>;
+export const GetGroupProcessDatabaseMeasurementsRequestMList =
+  OrgUserRolesResponseOrgRolesList as any as S.Schema<GetGroupProcessDatabaseMeasurementsRequestMList>;
 
 export interface GetGroupProcessDatabaseMeasurementsRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -38676,9 +36855,8 @@ export const GetGroupProcessDiskMeasurementsRequestMItem = S.String;
 export type GetGroupProcessDiskMeasurementsRequestMList = Array<
   GetGroupProcessDiskMeasurementsRequestMItem | (string & {})
 >;
-export const GetGroupProcessDiskMeasurementsRequestMList = /*@__PURE__*/ S.Array(
-  GetGroupProcessDiskMeasurementsRequestMItem,
-) as any as S.Schema<GetGroupProcessDiskMeasurementsRequestMList>;
+export const GetGroupProcessDiskMeasurementsRequestMList =
+  OrgUserRolesResponseOrgRolesList as any as S.Schema<GetGroupProcessDiskMeasurementsRequestMList>;
 
 export interface GetGroupProcessDiskMeasurementsRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -38905,9 +37083,8 @@ export const GetGroupProcessMeasurementsRequestMItem = S.String;
 export type GetGroupProcessMeasurementsRequestMList = Array<
   GetGroupProcessMeasurementsRequestMItem | (string & {})
 >;
-export const GetGroupProcessMeasurementsRequestMList = /*@__PURE__*/ S.Array(
-  GetGroupProcessMeasurementsRequestMItem,
-) as any as S.Schema<GetGroupProcessMeasurementsRequestMList>;
+export const GetGroupProcessMeasurementsRequestMList =
+  OrgUserRolesResponseOrgRolesList as any as S.Schema<GetGroupProcessMeasurementsRequestMList>;
 
 export interface GetGroupProcessMeasurementsRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -39539,9 +37716,8 @@ export const GetGroupUserRequestOrgMembershipStatusesItem = S.String;
 export type GetGroupUserRequestOrgMembershipStatusesList = Array<
   GetGroupUserRequestOrgMembershipStatusesItem | (string & {})
 >;
-export const GetGroupUserRequestOrgMembershipStatusesList = /*@__PURE__*/ S.Array(
-  GetGroupUserRequestOrgMembershipStatusesItem,
-) as any as S.Schema<GetGroupUserRequestOrgMembershipStatusesList>;
+export const GetGroupUserRequestOrgMembershipStatusesList =
+  OrgUserRolesResponseOrgRolesList as any as S.Schema<GetGroupUserRequestOrgMembershipStatusesList>;
 
 export interface GetGroupUserRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -42051,9 +40227,8 @@ export const GetOrgLogIntegrationResponseLogTypesItem = S.String;
 /** Array of log types exported by this integration. */
 export type GetOrgLogIntegrationResponseLogTypesList =
   Array<GetOrgLogIntegrationResponseLogTypesItem>;
-export const GetOrgLogIntegrationResponseLogTypesList = /*@__PURE__*/ S.Array(
-  GetOrgLogIntegrationResponseLogTypesItem,
-) as any as S.Schema<GetOrgLogIntegrationResponseLogTypesList>;
+export const GetOrgLogIntegrationResponseLogTypesList =
+  OrgUserRolesResponseOrgRolesList as any as S.Schema<GetOrgLogIntegrationResponseLogTypesList>;
 
 /** Type of log integration. Identifies which service will receive the exported events. This value cannot be modified after the integration is created. */
 export type GetOrgLogIntegrationResponseType = "OTEL_LOG_EXPORT";
@@ -42067,15 +40242,8 @@ export interface GetOrgLogIntegrationResponse {
   /** Type of log integration. Identifies which service will receive the exported events. This value cannot be modified after the integration is created. */
   type: GetOrgLogIntegrationResponseType;
 }
-export const GetOrgLogIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    logTypes: GetOrgLogIntegrationResponseLogTypesList,
-    type: GetOrgLogIntegrationResponseType,
-  }),
-).annotate({
-  identifier: "GetOrgLogIntegrationResponse",
-}) as any as S.Schema<GetOrgLogIntegrationResponse>;
+export const GetOrgLogIntegrationResponse =
+  CreateOrgLogIntegrationResponse as any as S.Schema<GetOrgLogIntegrationResponse>;
 
 export interface GetOrgMaintenanceSettingsRequest {
   /** Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. */
@@ -42602,9 +40770,8 @@ export const GetOrgUserRequestOrgMembershipStatusesItem = S.String;
 export type GetOrgUserRequestOrgMembershipStatusesList = Array<
   GetOrgUserRequestOrgMembershipStatusesItem | (string & {})
 >;
-export const GetOrgUserRequestOrgMembershipStatusesList = /*@__PURE__*/ S.Array(
-  GetOrgUserRequestOrgMembershipStatusesItem,
-) as any as S.Schema<GetOrgUserRequestOrgMembershipStatusesList>;
+export const GetOrgUserRequestOrgMembershipStatusesList =
+  OrgUserRolesResponseOrgRolesList as any as S.Schema<GetOrgUserRequestOrgMembershipStatusesList>;
 
 export interface GetOrgUserRequest {
   /** Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. */
@@ -43573,9 +41740,8 @@ export const ListFederationSettingIdentityProvidersRequestProtocolItem = S.Strin
 export type ListFederationSettingIdentityProvidersRequestProtocolList = Array<
   ListFederationSettingIdentityProvidersRequestProtocolItem | (string & {})
 >;
-export const ListFederationSettingIdentityProvidersRequestProtocolList = /*@__PURE__*/ S.Array(
-  ListFederationSettingIdentityProvidersRequestProtocolItem,
-) as any as S.Schema<ListFederationSettingIdentityProvidersRequestProtocolList>;
+export const ListFederationSettingIdentityProvidersRequestProtocolList =
+  OrgUserRolesResponseOrgRolesList as any as S.Schema<ListFederationSettingIdentityProvidersRequestProtocolList>;
 
 export type ListFederationSettingIdentityProvidersRequestIdpTypeItem = "WORKFORCE" | "WORKLOAD";
 export const ListFederationSettingIdentityProvidersRequestIdpTypeItem = S.String;
@@ -43583,9 +41749,8 @@ export const ListFederationSettingIdentityProvidersRequestIdpTypeItem = S.String
 export type ListFederationSettingIdentityProvidersRequestIdpTypeList = Array<
   ListFederationSettingIdentityProvidersRequestIdpTypeItem | (string & {})
 >;
-export const ListFederationSettingIdentityProvidersRequestIdpTypeList = /*@__PURE__*/ S.Array(
-  ListFederationSettingIdentityProvidersRequestIdpTypeItem,
-) as any as S.Schema<ListFederationSettingIdentityProvidersRequestIdpTypeList>;
+export const ListFederationSettingIdentityProvidersRequestIdpTypeList =
+  OrgUserRolesResponseOrgRolesList as any as S.Schema<ListFederationSettingIdentityProvidersRequestIdpTypeList>;
 
 export interface ListFederationSettingIdentityProvidersRequest {
   /** Unique 24-hexadecimal digit string that identifies your federation. */
@@ -44666,9 +42831,8 @@ export const ListGroupClusterCollStatMeasurementsRequestMetricsItem = S.String;
 export type ListGroupClusterCollStatMeasurementsRequestMetricsList = Array<
   ListGroupClusterCollStatMeasurementsRequestMetricsItem | (string & {})
 >;
-export const ListGroupClusterCollStatMeasurementsRequestMetricsList = /*@__PURE__*/ S.Array(
-  ListGroupClusterCollStatMeasurementsRequestMetricsItem,
-) as any as S.Schema<ListGroupClusterCollStatMeasurementsRequestMetricsList>;
+export const ListGroupClusterCollStatMeasurementsRequestMetricsList =
+  OrgUserRolesResponseOrgRolesList as any as S.Schema<ListGroupClusterCollStatMeasurementsRequestMetricsList>;
 
 export interface ListGroupClusterCollStatMeasurementsRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -45643,9 +43807,8 @@ export const ListGroupClusterQueryShapeInsightSummariesRequestCommandsItem = S.S
 export type ListGroupClusterQueryShapeInsightSummariesRequestCommandsList = Array<
   ListGroupClusterQueryShapeInsightSummariesRequestCommandsItem | (string & {})
 >;
-export const ListGroupClusterQueryShapeInsightSummariesRequestCommandsList = /*@__PURE__*/ S.Array(
-  ListGroupClusterQueryShapeInsightSummariesRequestCommandsItem,
-) as any as S.Schema<ListGroupClusterQueryShapeInsightSummariesRequestCommandsList>;
+export const ListGroupClusterQueryShapeInsightSummariesRequestCommandsList =
+  OrgUserRolesResponseOrgRolesList as any as S.Schema<ListGroupClusterQueryShapeInsightSummariesRequestCommandsList>;
 
 export type ListGroupClusterQueryShapeInsightSummariesRequestSeriesItem =
   | "TOTAL_EXECUTION_TIME"
@@ -45676,9 +43839,8 @@ export const ListGroupClusterQueryShapeInsightSummariesRequestSeriesItem = S.Str
 export type ListGroupClusterQueryShapeInsightSummariesRequestSeriesList = Array<
   ListGroupClusterQueryShapeInsightSummariesRequestSeriesItem | (string & {})
 >;
-export const ListGroupClusterQueryShapeInsightSummariesRequestSeriesList = /*@__PURE__*/ S.Array(
-  ListGroupClusterQueryShapeInsightSummariesRequestSeriesItem,
-) as any as S.Schema<ListGroupClusterQueryShapeInsightSummariesRequestSeriesList>;
+export const ListGroupClusterQueryShapeInsightSummariesRequestSeriesList =
+  OrgUserRolesResponseOrgRolesList as any as S.Schema<ListGroupClusterQueryShapeInsightSummariesRequestSeriesList>;
 
 /** A list of SHA256 hashes of desired query shapes, output by MongoDB commands like `$queryStats` and `$explain` or slow query logs. To include multiple series, pass the parameter multiple times delimited with an ampersand (`&`) between each series. Omit this parameter to return results for all available series. */
 export type ListGroupClusterQueryShapeInsightSummariesRequestQueryShapeHashesList = Array<string>;
@@ -46839,9 +45001,8 @@ export const ListGroupHostFtsMetricIndexMeasurementsRequestMetricsItem = S.Strin
 export type ListGroupHostFtsMetricIndexMeasurementsRequestMetricsList = Array<
   ListGroupHostFtsMetricIndexMeasurementsRequestMetricsItem | (string & {})
 >;
-export const ListGroupHostFtsMetricIndexMeasurementsRequestMetricsList = /*@__PURE__*/ S.Array(
-  ListGroupHostFtsMetricIndexMeasurementsRequestMetricsItem,
-) as any as S.Schema<ListGroupHostFtsMetricIndexMeasurementsRequestMetricsList>;
+export const ListGroupHostFtsMetricIndexMeasurementsRequestMetricsList =
+  OrgUserRolesResponseOrgRolesList as any as S.Schema<ListGroupHostFtsMetricIndexMeasurementsRequestMetricsList>;
 
 export interface ListGroupHostFtsMetricIndexMeasurementsRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -46907,9 +45068,8 @@ export const ListGroupHostFtsMetricMeasurementsRequestMetricsItem = S.String;
 export type ListGroupHostFtsMetricMeasurementsRequestMetricsList = Array<
   ListGroupHostFtsMetricMeasurementsRequestMetricsItem | (string & {})
 >;
-export const ListGroupHostFtsMetricMeasurementsRequestMetricsList = /*@__PURE__*/ S.Array(
-  ListGroupHostFtsMetricMeasurementsRequestMetricsItem,
-) as any as S.Schema<ListGroupHostFtsMetricMeasurementsRequestMetricsList>;
+export const ListGroupHostFtsMetricMeasurementsRequestMetricsList =
+  OrgUserRolesResponseOrgRolesList as any as S.Schema<ListGroupHostFtsMetricMeasurementsRequestMetricsList>;
 
 export interface ListGroupHostFtsMetricMeasurementsRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -47635,9 +45795,8 @@ export const ListGroupProcessCollStatMeasurementsRequestMetricsItem = S.String;
 export type ListGroupProcessCollStatMeasurementsRequestMetricsList = Array<
   ListGroupProcessCollStatMeasurementsRequestMetricsItem | (string & {})
 >;
-export const ListGroupProcessCollStatMeasurementsRequestMetricsList = /*@__PURE__*/ S.Array(
-  ListGroupProcessCollStatMeasurementsRequestMetricsItem,
-) as any as S.Schema<ListGroupProcessCollStatMeasurementsRequestMetricsList>;
+export const ListGroupProcessCollStatMeasurementsRequestMetricsList =
+  OrgUserRolesResponseOrgRolesList as any as S.Schema<ListGroupProcessCollStatMeasurementsRequestMetricsList>;
 
 export interface ListGroupProcessCollStatMeasurementsRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -48783,9 +46942,8 @@ export const ListGroupUsersRequestOrgMembershipStatusesItem = S.String;
 export type ListGroupUsersRequestOrgMembershipStatusesList = Array<
   ListGroupUsersRequestOrgMembershipStatusesItem | (string & {})
 >;
-export const ListGroupUsersRequestOrgMembershipStatusesList = /*@__PURE__*/ S.Array(
-  ListGroupUsersRequestOrgMembershipStatusesItem,
-) as any as S.Schema<ListGroupUsersRequestOrgMembershipStatusesList>;
+export const ListGroupUsersRequestOrgMembershipStatusesList =
+  OrgUserRolesResponseOrgRolesList as any as S.Schema<ListGroupUsersRequestOrgMembershipStatusesList>;
 
 export interface ListGroupUsersRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */
@@ -49170,9 +47328,8 @@ export const ListOrgInvoicesRequestStatusNamesItem = S.String;
 export type ListOrgInvoicesRequestStatusNamesList = Array<
   ListOrgInvoicesRequestStatusNamesItem | (string & {})
 >;
-export const ListOrgInvoicesRequestStatusNamesList = /*@__PURE__*/ S.Array(
-  ListOrgInvoicesRequestStatusNamesItem,
-) as any as S.Schema<ListOrgInvoicesRequestStatusNamesList>;
+export const ListOrgInvoicesRequestStatusNamesList =
+  OrgUserRolesResponseOrgRolesList as any as S.Schema<ListOrgInvoicesRequestStatusNamesList>;
 
 export type ListOrgInvoicesRequestSortBy = "START_DATE" | "END_DATE";
 export const ListOrgInvoicesRequestSortBy = S.String;
@@ -49493,9 +47650,8 @@ export const OrgOtelLogIntegrationResponseLogTypesItem = S.String;
 /** Array of log types exported by this integration. */
 export type OrgOtelLogIntegrationResponseLogTypesList =
   Array<OrgOtelLogIntegrationResponseLogTypesItem>;
-export const OrgOtelLogIntegrationResponseLogTypesList = /*@__PURE__*/ S.Array(
-  OrgOtelLogIntegrationResponseLogTypesItem,
-) as any as S.Schema<OrgOtelLogIntegrationResponseLogTypesList>;
+export const OrgOtelLogIntegrationResponseLogTypesList =
+  OrgUserRolesResponseOrgRolesList as any as S.Schema<OrgOtelLogIntegrationResponseLogTypesList>;
 
 /** Type of log integration. Identifies which service will receive the exported events. This value cannot be modified after the integration is created. */
 export type OrgOtelLogIntegrationResponseType = "OTEL_LOG_EXPORT";
@@ -49930,9 +48086,8 @@ export const ListOrgTeamUsersRequestOrgMembershipStatusesItem = S.String;
 export type ListOrgTeamUsersRequestOrgMembershipStatusesList = Array<
   ListOrgTeamUsersRequestOrgMembershipStatusesItem | (string & {})
 >;
-export const ListOrgTeamUsersRequestOrgMembershipStatusesList = /*@__PURE__*/ S.Array(
-  ListOrgTeamUsersRequestOrgMembershipStatusesItem,
-) as any as S.Schema<ListOrgTeamUsersRequestOrgMembershipStatusesList>;
+export const ListOrgTeamUsersRequestOrgMembershipStatusesList =
+  OrgUserRolesResponseOrgRolesList as any as S.Schema<ListOrgTeamUsersRequestOrgMembershipStatusesList>;
 
 export interface ListOrgTeamUsersRequest {
   /** Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. */
@@ -50017,9 +48172,8 @@ export const ListOrgUsersRequestOrgMembershipStatusesItem = S.String;
 export type ListOrgUsersRequestOrgMembershipStatusesList = Array<
   ListOrgUsersRequestOrgMembershipStatusesItem | (string & {})
 >;
-export const ListOrgUsersRequestOrgMembershipStatusesList = /*@__PURE__*/ S.Array(
-  ListOrgUsersRequestOrgMembershipStatusesItem,
-) as any as S.Schema<ListOrgUsersRequestOrgMembershipStatusesList>;
+export const ListOrgUsersRequestOrgMembershipStatusesList =
+  OrgUserRolesResponseOrgRolesList as any as S.Schema<ListOrgUsersRequestOrgMembershipStatusesList>;
 
 export interface ListOrgUsersRequest {
   /** Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. */
@@ -50915,9 +49069,8 @@ export const UsageDetailsFilterRequestSkuServicesItem = S.String;
 export type UsageDetailsFilterRequestSkuServicesList = Array<
   UsageDetailsFilterRequestSkuServicesItem | (string & {})
 >;
-export const UsageDetailsFilterRequestSkuServicesList = /*@__PURE__*/ S.Array(
-  UsageDetailsFilterRequestSkuServicesItem,
-) as any as S.Schema<UsageDetailsFilterRequestSkuServicesList>;
+export const UsageDetailsFilterRequestSkuServicesList =
+  OrgUserRolesResponseOrgRolesList as any as S.Schema<UsageDetailsFilterRequestSkuServicesList>;
 
 /** Request body which contains various fields to filter line items as part of certain Invoice Usage Details queries. */
 export interface UsageDetailsFilterRequest {
@@ -52430,16 +50583,8 @@ export interface BackupComplianceScheduledPolicyItemInput {
   /** Duration in days, weeks, months, or years that MongoDB Cloud retains the Snapshot. For less frequent policy items, MongoDB Cloud requires that you specify a value greater than or equal to the value specified for more frequent policy items. For example: If the hourly policy item specifies a retention of two days, you must specify two days or greater for the retention of the weekly policy item. */
   retentionValue: number;
 }
-export const BackupComplianceScheduledPolicyItemInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    frequencyInterval: BackupComplianceScheduledPolicyItemInputFrequencyInterval,
-    frequencyType: BackupComplianceScheduledPolicyItemInputFrequencyType,
-    retentionUnit: BackupComplianceScheduledPolicyItemInputRetentionUnit,
-    retentionValue: S.Number,
-  }),
-).annotate({
-  identifier: "BackupComplianceScheduledPolicyItemInput",
-}) as any as S.Schema<BackupComplianceScheduledPolicyItemInput>;
+export const BackupComplianceScheduledPolicyItemInput =
+  BackupComplianceOnDemandPolicyItemInput as any as S.Schema<BackupComplianceScheduledPolicyItemInput>;
 
 /** List that contains the specifications for one scheduled policy. */
 export type UpdateGroupBackupCompliancePolicyRequestScheduledPolicyItemsList =
@@ -52831,9 +50976,8 @@ export const DiskBackupCopySetting20240805InputFrequenciesItem = S.String;
 export type DiskBackupCopySetting20240805InputFrequenciesList = Array<
   DiskBackupCopySetting20240805InputFrequenciesItem | (string & {})
 >;
-export const DiskBackupCopySetting20240805InputFrequenciesList = /*@__PURE__*/ S.Array(
-  DiskBackupCopySetting20240805InputFrequenciesItem,
-) as any as S.Schema<DiskBackupCopySetting20240805InputFrequenciesList>;
+export const DiskBackupCopySetting20240805InputFrequenciesList =
+  OrgUserRolesResponseOrgRolesList as any as S.Schema<DiskBackupCopySetting20240805InputFrequenciesList>;
 
 /** Copy setting item in the desired backup policy. */
 export interface DiskBackupCopySetting20240805Input {
@@ -52967,16 +51111,8 @@ export interface DiskBackupApiPolicyItemInput {
   /** Duration in days, weeks, months, or years that MongoDB Cloud retains the Snapshot. For less frequent policy items, MongoDB Cloud requires that you specify a value greater than or equal to the value specified for more frequent policy items. For example: If the hourly policy item specifies a retention of two days, you must specify two days or greater for the retention of the weekly policy item. */
   retentionValue: number;
 }
-export const DiskBackupApiPolicyItemInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    frequencyInterval: DiskBackupApiPolicyItemInputFrequencyInterval,
-    frequencyType: DiskBackupApiPolicyItemInputFrequencyType,
-    retentionUnit: DiskBackupApiPolicyItemInputRetentionUnit,
-    retentionValue: S.Number,
-  }),
-).annotate({
-  identifier: "DiskBackupApiPolicyItemInput",
-}) as any as S.Schema<DiskBackupApiPolicyItemInput>;
+export const DiskBackupApiPolicyItemInput =
+  BackupComplianceOnDemandPolicyItemInput as any as S.Schema<DiskBackupApiPolicyItemInput>;
 
 /** List that contains the specifications for one policy. */
 export type AdvancedDiskBackupSnapshotSchedulePolicyInputPolicyItemsList =
@@ -53213,9 +51349,7 @@ export type UpdateGroupClusterProcessArgsRequestCustomOpensslCipherConfigTls12Li
   UpdateGroupClusterProcessArgsRequestCustomOpensslCipherConfigTls12Item | (string & {})
 >;
 export const UpdateGroupClusterProcessArgsRequestCustomOpensslCipherConfigTls12List =
-  /*@__PURE__*/ S.Array(
-    UpdateGroupClusterProcessArgsRequestCustomOpensslCipherConfigTls12Item,
-  ) as any as S.Schema<UpdateGroupClusterProcessArgsRequestCustomOpensslCipherConfigTls12List>;
+  ApiAtlasClusterAdvancedConfigurationViewCustomOpensslCipherConfigTls12List as any as S.Schema<UpdateGroupClusterProcessArgsRequestCustomOpensslCipherConfigTls12List>;
 
 export type UpdateGroupClusterProcessArgsRequestCustomOpensslCipherConfigTls13Item =
   | "TLS_AES_256_GCM_SHA384"
@@ -53229,9 +51363,7 @@ export type UpdateGroupClusterProcessArgsRequestCustomOpensslCipherConfigTls13Li
   UpdateGroupClusterProcessArgsRequestCustomOpensslCipherConfigTls13Item | (string & {})
 >;
 export const UpdateGroupClusterProcessArgsRequestCustomOpensslCipherConfigTls13List =
-  /*@__PURE__*/ S.Array(
-    UpdateGroupClusterProcessArgsRequestCustomOpensslCipherConfigTls13Item,
-  ) as any as S.Schema<UpdateGroupClusterProcessArgsRequestCustomOpensslCipherConfigTls13List>;
+  ApiAtlasClusterAdvancedConfigurationViewCustomOpensslCipherConfigTls12List as any as S.Schema<UpdateGroupClusterProcessArgsRequestCustomOpensslCipherConfigTls13List>;
 
 /** Minimum Transport Layer Security (TLS) version that the cluster accepts for incoming connections. Clusters using TLS 1.0 or 1.1 should consider setting TLS 1.2 as the minimum TLS protocol version. */
 export type UpdateGroupClusterProcessArgsRequestMinimumEnabledTlsProtocol =
@@ -54348,9 +52480,8 @@ export const UpdateGroupLogIntegrationRequestLogTypesItem = S.String;
 export type UpdateGroupLogIntegrationRequestLogTypesList = Array<
   UpdateGroupLogIntegrationRequestLogTypesItem | (string & {})
 >;
-export const UpdateGroupLogIntegrationRequestLogTypesList = /*@__PURE__*/ S.Array(
-  UpdateGroupLogIntegrationRequestLogTypesItem,
-) as any as S.Schema<UpdateGroupLogIntegrationRequestLogTypesList>;
+export const UpdateGroupLogIntegrationRequestLogTypesList =
+  OrgUserRolesResponseOrgRolesList as any as S.Schema<UpdateGroupLogIntegrationRequestLogTypesList>;
 
 /** Type of log integration. Identifies which service will receive the exported logs. This value cannot be modified after the integration is created. */
 export type UpdateGroupLogIntegrationRequestType =
@@ -54511,9 +52642,8 @@ export const UpdateGroupMetricIntegrationRequestMetricSelectionItem = S.String;
 export type UpdateGroupMetricIntegrationRequestMetricSelectionList = Array<
   UpdateGroupMetricIntegrationRequestMetricSelectionItem | (string & {})
 >;
-export const UpdateGroupMetricIntegrationRequestMetricSelectionList = /*@__PURE__*/ S.Array(
-  UpdateGroupMetricIntegrationRequestMetricSelectionItem,
-) as any as S.Schema<UpdateGroupMetricIntegrationRequestMetricSelectionList>;
+export const UpdateGroupMetricIntegrationRequestMetricSelectionList =
+  OrgUserRolesResponseOrgRolesList as any as S.Schema<UpdateGroupMetricIntegrationRequestMetricSelectionList>;
 
 /** The provider type for the metric integration. Identifies the third-party service provider. */
 export type UpdateGroupMetricIntegrationRequestProviderType =
@@ -55208,9 +53338,8 @@ export const UpdateOrgApiKeyRequestRolesItem = S.String;
 export type UpdateOrgApiKeyRequestRolesList = Array<
   UpdateOrgApiKeyRequestRolesItem | (string & {}) | null
 >;
-export const UpdateOrgApiKeyRequestRolesList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.NullOr(UpdateOrgApiKeyRequestRolesItem),
-) as any as S.Schema<UpdateOrgApiKeyRequestRolesList>;
+export const UpdateOrgApiKeyRequestRolesList =
+  ConnectedOrgConfigPostAuthRoleGrantsList as any as S.Schema<UpdateOrgApiKeyRequestRolesList>;
 
 export interface UpdateOrgApiKeyRequest {
   /** Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. */
@@ -55304,9 +53433,8 @@ export const UpdateOrgLogIntegrationRequestLogTypesItem = S.String;
 export type UpdateOrgLogIntegrationRequestLogTypesList = Array<
   UpdateOrgLogIntegrationRequestLogTypesItem | (string & {})
 >;
-export const UpdateOrgLogIntegrationRequestLogTypesList = /*@__PURE__*/ S.Array(
-  UpdateOrgLogIntegrationRequestLogTypesItem,
-) as any as S.Schema<UpdateOrgLogIntegrationRequestLogTypesList>;
+export const UpdateOrgLogIntegrationRequestLogTypesList =
+  OrgUserRolesResponseOrgRolesList as any as S.Schema<UpdateOrgLogIntegrationRequestLogTypesList>;
 
 /** Type of log integration. Identifies which service will receive the exported events. This value cannot be modified after the integration is created. */
 export type UpdateOrgLogIntegrationRequestType = "OTEL_LOG_EXPORT";
@@ -55352,9 +53480,8 @@ export const UpdateOrgLogIntegrationResponseLogTypesItem = S.String;
 /** Array of log types exported by this integration. */
 export type UpdateOrgLogIntegrationResponseLogTypesList =
   Array<UpdateOrgLogIntegrationResponseLogTypesItem>;
-export const UpdateOrgLogIntegrationResponseLogTypesList = /*@__PURE__*/ S.Array(
-  UpdateOrgLogIntegrationResponseLogTypesItem,
-) as any as S.Schema<UpdateOrgLogIntegrationResponseLogTypesList>;
+export const UpdateOrgLogIntegrationResponseLogTypesList =
+  OrgUserRolesResponseOrgRolesList as any as S.Schema<UpdateOrgLogIntegrationResponseLogTypesList>;
 
 /** Type of log integration. Identifies which service will receive the exported events. This value cannot be modified after the integration is created. */
 export type UpdateOrgLogIntegrationResponseType = "OTEL_LOG_EXPORT";
@@ -55368,15 +53495,8 @@ export interface UpdateOrgLogIntegrationResponse {
   /** Type of log integration. Identifies which service will receive the exported events. This value cannot be modified after the integration is created. */
   type: UpdateOrgLogIntegrationResponseType;
 }
-export const UpdateOrgLogIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    logTypes: UpdateOrgLogIntegrationResponseLogTypesList,
-    type: UpdateOrgLogIntegrationResponseType,
-  }),
-).annotate({
-  identifier: "UpdateOrgLogIntegrationResponse",
-}) as any as S.Schema<UpdateOrgLogIntegrationResponse>;
+export const UpdateOrgLogIntegrationResponse =
+  CreateOrgLogIntegrationResponse as any as S.Schema<UpdateOrgLogIntegrationResponse>;
 
 /** Mode configured for this organization that determines how maintenance waves are assigned to projects. Possible values are `MANUAL` and `ENV_TAG_MAPPING`. Defaults to `MANUAL` when unset. Set the organization to `ENV_TAG_MAPPING` mode to have Atlas derive the maintenance wave from each project's environment tag. The tag key must be `environment`. The tag value determines the wave: `development` or `test` maps to Wave 1, `staging` maps to Wave 2, and `production` maps to Wave 3. Only this field can be updated; Atlas derives read-only `effectiveWaveAssignmentMode` on GET responses and uses that value for scheduling when it differs from `waveAssignmentMode`. Omit this field to leave the current value unchanged. Specify null to reset to the default value (`MANUAL`). */
 export type UpdateOrgMaintenanceSettingsRequestWaveAssignmentMode = "MANUAL" | "ENV_TAG_MAPPING";
@@ -55430,9 +53550,8 @@ export const UpdateOrgMcpConfigRequestRolesItem = S.String;
 export type UpdateOrgMcpConfigRequestRolesList = Array<
   UpdateOrgMcpConfigRequestRolesItem | (string & {}) | null
 >;
-export const UpdateOrgMcpConfigRequestRolesList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.NullOr(UpdateOrgMcpConfigRequestRolesItem),
-) as any as S.Schema<UpdateOrgMcpConfigRequestRolesList>;
+export const UpdateOrgMcpConfigRequestRolesList =
+  ConnectedOrgConfigPostAuthRoleGrantsList as any as S.Schema<UpdateOrgMcpConfigRequestRolesList>;
 
 export interface UpdateOrgMcpConfigRequest {
   /** Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. */
@@ -55525,9 +53644,8 @@ export const UpdateOrgServiceAccountRequestRolesItem = S.String;
 export type UpdateOrgServiceAccountRequestRolesList = Array<
   UpdateOrgServiceAccountRequestRolesItem | (string & {})
 >;
-export const UpdateOrgServiceAccountRequestRolesList = /*@__PURE__*/ S.Array(
-  UpdateOrgServiceAccountRequestRolesItem,
-) as any as S.Schema<UpdateOrgServiceAccountRequestRolesList>;
+export const UpdateOrgServiceAccountRequestRolesList =
+  OrgUserRolesResponseOrgRolesList as any as S.Schema<UpdateOrgServiceAccountRequestRolesList>;
 
 export interface UpdateOrgServiceAccountRequest {
   /** Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. */
@@ -56066,21 +54184,8 @@ export interface AzureCloudProviderSettingsInput {
   /** Disk Input/Output Operations per Second (IOPS) setting for Amazon Web Services (AWS) storage that you configure only for AWS. Specify whether Disk Input/Output Operations per Second (IOPS) must not exceed the default Input/Output Operations per Second (IOPS) rate for the selected volume size (`STANDARD`), or must fall within the allowable Input/Output Operations per Second (IOPS) range for the selected volume size (`PROVISIONED` or `HIGH_PERFORMANCE`). NVMe clusters require either `PROVISIONED` or `HIGH_PERFORMANCE`. */
   volumeType?: AzureCloudProviderSettingsInputVolumeType | (string & {});
 }
-export const AzureCloudProviderSettingsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    autoScaling: S.optional(CloudProviderAzureAutoScaling),
-    diskTypeName: S.optional(AzureCloudProviderSettingsInputDiskTypeName),
-    instanceSizeName: S.optional(AzureCloudProviderSettingsInputInstanceSizeName),
-    regionName: S.optional(AzureCloudProviderSettingsInputRegionName),
-    backingProviderName: S.optional(AzureCloudProviderSettingsInputBackingProviderName),
-    providerName: S.String,
-    diskIOPS: S.optional(S.Number),
-    encryptEBSVolume: S.optional(S.Boolean),
-    volumeType: S.optional(AzureCloudProviderSettingsInputVolumeType),
-  }),
-).annotate({
-  identifier: "AzureCloudProviderSettingsInput",
-}) as any as S.Schema<AzureCloudProviderSettingsInput>;
+export const AzureCloudProviderSettingsInput =
+  AWSCloudProviderSettingsInput as any as S.Schema<AzureCloudProviderSettingsInput>;
 
 /** Disk type that corresponds to the host's root volume for Azure instances. If omitted, the default disk type for the selected `providerSettings.instanceSizeName` applies. */
 export type CloudGCPProviderSettingsInputDiskTypeName =
@@ -56211,21 +54316,8 @@ export interface CloudGCPProviderSettingsInput {
   /** Disk Input/Output Operations per Second (IOPS) setting for Amazon Web Services (AWS) storage that you configure only for AWS. Specify whether Disk Input/Output Operations per Second (IOPS) must not exceed the default Input/Output Operations per Second (IOPS) rate for the selected volume size (`STANDARD`), or must fall within the allowable Input/Output Operations per Second (IOPS) range for the selected volume size (`PROVISIONED` or `HIGH_PERFORMANCE`). NVMe clusters require either `PROVISIONED` or `HIGH_PERFORMANCE`. */
   volumeType?: CloudGCPProviderSettingsInputVolumeType | (string & {});
 }
-export const CloudGCPProviderSettingsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    autoScaling: S.optional(CloudProviderAzureAutoScaling),
-    diskTypeName: S.optional(CloudGCPProviderSettingsInputDiskTypeName),
-    instanceSizeName: S.optional(CloudGCPProviderSettingsInputInstanceSizeName),
-    regionName: S.optional(CloudGCPProviderSettingsInputRegionName),
-    backingProviderName: S.optional(CloudGCPProviderSettingsInputBackingProviderName),
-    providerName: S.String,
-    diskIOPS: S.optional(S.Number),
-    encryptEBSVolume: S.optional(S.Boolean),
-    volumeType: S.optional(CloudGCPProviderSettingsInputVolumeType),
-  }),
-).annotate({
-  identifier: "CloudGCPProviderSettingsInput",
-}) as any as S.Schema<CloudGCPProviderSettingsInput>;
+export const CloudGCPProviderSettingsInput =
+  AWSCloudProviderSettingsInput as any as S.Schema<CloudGCPProviderSettingsInput>;
 
 /** Disk type that corresponds to the host's root volume for Azure instances. If omitted, the default disk type for the selected `providerSettings.instanceSizeName` applies. */
 export type ClusterFreeProviderSettingsInputDiskTypeName =
@@ -56356,21 +54448,8 @@ export interface ClusterFreeProviderSettingsInput {
   /** Disk Input/Output Operations per Second (IOPS) setting for Amazon Web Services (AWS) storage that you configure only for AWS. Specify whether Disk Input/Output Operations per Second (IOPS) must not exceed the default Input/Output Operations per Second (IOPS) rate for the selected volume size (`STANDARD`), or must fall within the allowable Input/Output Operations per Second (IOPS) range for the selected volume size (`PROVISIONED` or `HIGH_PERFORMANCE`). NVMe clusters require either `PROVISIONED` or `HIGH_PERFORMANCE`. */
   volumeType?: ClusterFreeProviderSettingsInputVolumeType | (string & {});
 }
-export const ClusterFreeProviderSettingsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    autoScaling: S.optional(CloudProviderAzureAutoScaling),
-    diskTypeName: S.optional(ClusterFreeProviderSettingsInputDiskTypeName),
-    instanceSizeName: S.optional(ClusterFreeProviderSettingsInputInstanceSizeName),
-    regionName: S.optional(ClusterFreeProviderSettingsInputRegionName),
-    backingProviderName: S.optional(ClusterFreeProviderSettingsInputBackingProviderName),
-    providerName: S.String,
-    diskIOPS: S.optional(S.Number),
-    encryptEBSVolume: S.optional(S.Boolean),
-    volumeType: S.optional(ClusterFreeProviderSettingsInputVolumeType),
-  }),
-).annotate({
-  identifier: "ClusterFreeProviderSettingsInput",
-}) as any as S.Schema<ClusterFreeProviderSettingsInput>;
+export const ClusterFreeProviderSettingsInput =
+  AWSCloudProviderSettingsInput as any as S.Schema<ClusterFreeProviderSettingsInput>;
 
 /** Disk type that corresponds to the host's root volume for Azure instances. If omitted, the default disk type for the selected `providerSettings.instanceSizeName` applies. */
 export type ClusterFlexProviderSettingsInputDiskTypeName =
@@ -56501,21 +54580,8 @@ export interface ClusterFlexProviderSettingsInput {
   /** Disk Input/Output Operations per Second (IOPS) setting for Amazon Web Services (AWS) storage that you configure only for AWS. Specify whether Disk Input/Output Operations per Second (IOPS) must not exceed the default Input/Output Operations per Second (IOPS) rate for the selected volume size (`STANDARD`), or must fall within the allowable Input/Output Operations per Second (IOPS) range for the selected volume size (`PROVISIONED` or `HIGH_PERFORMANCE`). NVMe clusters require either `PROVISIONED` or `HIGH_PERFORMANCE`. */
   volumeType?: ClusterFlexProviderSettingsInputVolumeType | (string & {});
 }
-export const ClusterFlexProviderSettingsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    autoScaling: S.optional(CloudProviderAzureAutoScaling),
-    diskTypeName: S.optional(ClusterFlexProviderSettingsInputDiskTypeName),
-    instanceSizeName: S.optional(ClusterFlexProviderSettingsInputInstanceSizeName),
-    regionName: S.optional(ClusterFlexProviderSettingsInputRegionName),
-    backingProviderName: S.optional(ClusterFlexProviderSettingsInputBackingProviderName),
-    providerName: S.String,
-    diskIOPS: S.optional(S.Number),
-    encryptEBSVolume: S.optional(S.Boolean),
-    volumeType: S.optional(ClusterFlexProviderSettingsInputVolumeType),
-  }),
-).annotate({
-  identifier: "ClusterFlexProviderSettingsInput",
-}) as any as S.Schema<ClusterFlexProviderSettingsInput>;
+export const ClusterFlexProviderSettingsInput =
+  AWSCloudProviderSettingsInput as any as S.Schema<ClusterFlexProviderSettingsInput>;
 
 /** Group of cloud provider settings that configure the provisioned MongoDB hosts. */
 export type ClusterProviderSettingsInput =
@@ -57205,20 +55271,8 @@ export interface CloudGCPProviderSettings {
   /** Disk Input/Output Operations per Second (IOPS) setting for Amazon Web Services (AWS) storage that you configure only for AWS. Specify whether Disk Input/Output Operations per Second (IOPS) must not exceed the default Input/Output Operations per Second (IOPS) rate for the selected volume size (`STANDARD`), or must fall within the allowable Input/Output Operations per Second (IOPS) range for the selected volume size (`PROVISIONED` or `HIGH_PERFORMANCE`). NVMe clusters require either `PROVISIONED` or `HIGH_PERFORMANCE`. */
   volumeType?: CloudGCPProviderSettingsVolumeType;
 }
-export const CloudGCPProviderSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    autoScaling: S.optional(CloudProviderAzureAutoScaling),
-    diskTypeName: S.optional(CloudGCPProviderSettingsDiskTypeName),
-    instanceSizeName: S.optional(CloudGCPProviderSettingsInstanceSizeName),
-    regionName: S.optional(CloudGCPProviderSettingsRegionName),
-    backingProviderName: S.optional(CloudGCPProviderSettingsBackingProviderName),
-    effectiveInstanceSizeName: S.optional(CloudGCPProviderSettingsEffectiveInstanceSizeName),
-    providerName: S.String,
-    diskIOPS: S.optional(S.Number),
-    encryptEBSVolume: S.optional(S.Boolean),
-    volumeType: S.optional(CloudGCPProviderSettingsVolumeType),
-  }),
-).annotate({ identifier: "CloudGCPProviderSettings" }) as any as S.Schema<CloudGCPProviderSettings>;
+export const CloudGCPProviderSettings =
+  AWSCloudProviderSettings as any as S.Schema<CloudGCPProviderSettings>;
 
 /** Disk type that corresponds to the host's root volume for Azure instances. If omitted, the default disk type for the selected `providerSettings.instanceSizeName` applies. */
 export type ClusterFreeProviderSettingsDiskTypeName =
@@ -57352,22 +55406,8 @@ export interface ClusterFreeProviderSettings {
   /** Disk Input/Output Operations per Second (IOPS) setting for Amazon Web Services (AWS) storage that you configure only for AWS. Specify whether Disk Input/Output Operations per Second (IOPS) must not exceed the default Input/Output Operations per Second (IOPS) rate for the selected volume size (`STANDARD`), or must fall within the allowable Input/Output Operations per Second (IOPS) range for the selected volume size (`PROVISIONED` or `HIGH_PERFORMANCE`). NVMe clusters require either `PROVISIONED` or `HIGH_PERFORMANCE`. */
   volumeType?: ClusterFreeProviderSettingsVolumeType;
 }
-export const ClusterFreeProviderSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    autoScaling: S.optional(CloudProviderAzureAutoScaling),
-    diskTypeName: S.optional(ClusterFreeProviderSettingsDiskTypeName),
-    instanceSizeName: S.optional(ClusterFreeProviderSettingsInstanceSizeName),
-    regionName: S.optional(ClusterFreeProviderSettingsRegionName),
-    backingProviderName: S.optional(ClusterFreeProviderSettingsBackingProviderName),
-    effectiveInstanceSizeName: S.optional(ClusterFreeProviderSettingsEffectiveInstanceSizeName),
-    providerName: S.String,
-    diskIOPS: S.optional(S.Number),
-    encryptEBSVolume: S.optional(S.Boolean),
-    volumeType: S.optional(ClusterFreeProviderSettingsVolumeType),
-  }),
-).annotate({
-  identifier: "ClusterFreeProviderSettings",
-}) as any as S.Schema<ClusterFreeProviderSettings>;
+export const ClusterFreeProviderSettings =
+  AzureCloudProviderSettings as any as S.Schema<ClusterFreeProviderSettings>;
 
 /** Disk type that corresponds to the host's root volume for Azure instances. If omitted, the default disk type for the selected `providerSettings.instanceSizeName` applies. */
 export type ClusterFlexProviderSettingsDiskTypeName =
@@ -57501,22 +55541,8 @@ export interface ClusterFlexProviderSettings {
   /** Disk Input/Output Operations per Second (IOPS) setting for Amazon Web Services (AWS) storage that you configure only for AWS. Specify whether Disk Input/Output Operations per Second (IOPS) must not exceed the default Input/Output Operations per Second (IOPS) rate for the selected volume size (`STANDARD`), or must fall within the allowable Input/Output Operations per Second (IOPS) range for the selected volume size (`PROVISIONED` or `HIGH_PERFORMANCE`). NVMe clusters require either `PROVISIONED` or `HIGH_PERFORMANCE`. */
   volumeType?: ClusterFlexProviderSettingsVolumeType;
 }
-export const ClusterFlexProviderSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    autoScaling: S.optional(CloudProviderAzureAutoScaling),
-    diskTypeName: S.optional(ClusterFlexProviderSettingsDiskTypeName),
-    instanceSizeName: S.optional(ClusterFlexProviderSettingsInstanceSizeName),
-    regionName: S.optional(ClusterFlexProviderSettingsRegionName),
-    backingProviderName: S.optional(ClusterFlexProviderSettingsBackingProviderName),
-    effectiveInstanceSizeName: S.optional(ClusterFlexProviderSettingsEffectiveInstanceSizeName),
-    providerName: S.String,
-    diskIOPS: S.optional(S.Number),
-    encryptEBSVolume: S.optional(S.Boolean),
-    volumeType: S.optional(ClusterFlexProviderSettingsVolumeType),
-  }),
-).annotate({
-  identifier: "ClusterFlexProviderSettings",
-}) as any as S.Schema<ClusterFlexProviderSettings>;
+export const ClusterFlexProviderSettings =
+  AzureCloudProviderSettings as any as S.Schema<ClusterFlexProviderSettings>;
 
 /** Group of cloud provider settings that configure the provisioned MongoDB hosts. */
 export type ClusterProviderSettings =

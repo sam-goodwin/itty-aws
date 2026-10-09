@@ -494,11 +494,8 @@ export const DriftStatus = S.String;
 export interface EnabledControlInheritanceDrift {
   status?: DriftStatus;
 }
-export const EnabledControlInheritanceDrift = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ status: S.optional(DriftStatus) }),
-).annotate({
-  identifier: "EnabledControlInheritanceDrift",
-}) as any as S.Schema<EnabledControlInheritanceDrift>;
+export const EnabledControlInheritanceDrift =
+  EnabledBaselineInheritanceDrift as any as S.Schema<EnabledControlInheritanceDrift>;
 export interface EnabledControlResourceDrift {
   status?: DriftStatus;
 }
@@ -585,11 +582,8 @@ export const LandingZoneDriftStatus = S.String;
 export interface LandingZoneDriftStatusSummary {
   status?: LandingZoneDriftStatus;
 }
-export const LandingZoneDriftStatusSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ status: S.optional(LandingZoneDriftStatus) }),
-).annotate({
-  identifier: "LandingZoneDriftStatusSummary",
-}) as any as S.Schema<LandingZoneDriftStatusSummary>;
+export const LandingZoneDriftStatusSummary =
+  EnabledBaselineInheritanceDrift as any as S.Schema<LandingZoneDriftStatusSummary>;
 export interface LandingZoneDetail {
   version: string;
   remediationTypes?: RemediationType[];
@@ -700,9 +694,10 @@ export type EnabledControlIdentifiers = string[];
 export const EnabledControlIdentifiers =
   ControlIdentifiers as any as S.Schema<EnabledControlIdentifiers>;
 export type ControlOperationStatuses = ControlOperationStatus[];
-export const ControlOperationStatuses = /*@__PURE__*/ S.Array(ControlOperationStatus);
+export const ControlOperationStatuses =
+  RemediationTypes as any as S.Schema<ControlOperationStatuses>;
 export type ControlOperationTypes = ControlOperationType[];
-export const ControlOperationTypes = /*@__PURE__*/ S.Array(ControlOperationType);
+export const ControlOperationTypes = RemediationTypes as any as S.Schema<ControlOperationTypes>;
 export interface ControlOperationFilter {
   controlIdentifiers?: string[];
   targetIdentifiers?: string[];
@@ -777,9 +772,11 @@ export type EnabledBaselineParentIdentifiers = string[];
 export const EnabledBaselineParentIdentifiers =
   ControlIdentifiers as any as S.Schema<EnabledBaselineParentIdentifiers>;
 export type EnabledBaselineEnablementStatuses = EnablementStatus[];
-export const EnabledBaselineEnablementStatuses = /*@__PURE__*/ S.Array(EnablementStatus);
+export const EnabledBaselineEnablementStatuses =
+  RemediationTypes as any as S.Schema<EnabledBaselineEnablementStatuses>;
 export type EnabledBaselineDriftStatuses = EnabledBaselineDriftStatus[];
-export const EnabledBaselineDriftStatuses = /*@__PURE__*/ S.Array(EnabledBaselineDriftStatus);
+export const EnabledBaselineDriftStatuses =
+  RemediationTypes as any as S.Schema<EnabledBaselineDriftStatuses>;
 export interface EnabledBaselineFilter {
   targetIdentifiers?: string[];
   baselineIdentifiers?: string[];
@@ -852,7 +849,7 @@ export type EnablementStatuses = EnablementStatus[];
 export const EnablementStatuses =
   EnabledBaselineEnablementStatuses as any as S.Schema<EnablementStatuses>;
 export type DriftStatuses = DriftStatus[];
-export const DriftStatuses = /*@__PURE__*/ S.Array(DriftStatus);
+export const DriftStatuses = RemediationTypes as any as S.Schema<DriftStatuses>;
 export type ParentIdentifiers = string[];
 export const ParentIdentifiers = ControlIdentifiers as any as S.Schema<ParentIdentifiers>;
 export interface EnabledControlFilter {
@@ -921,9 +918,11 @@ export const ListEnabledControlsOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListEnabledControlsOutput",
 }) as any as S.Schema<ListEnabledControlsOutput>;
 export type LandingZoneOperationTypes = LandingZoneOperationType[];
-export const LandingZoneOperationTypes = /*@__PURE__*/ S.Array(LandingZoneOperationType);
+export const LandingZoneOperationTypes =
+  RemediationTypes as any as S.Schema<LandingZoneOperationTypes>;
 export type LandingZoneOperationStatuses = LandingZoneOperationStatus[];
-export const LandingZoneOperationStatuses = /*@__PURE__*/ S.Array(LandingZoneOperationStatus);
+export const LandingZoneOperationStatuses =
+  RemediationTypes as any as S.Schema<LandingZoneOperationStatuses>;
 export interface LandingZoneOperationFilter {
   types?: LandingZoneOperationType[];
   statuses?: LandingZoneOperationStatus[];

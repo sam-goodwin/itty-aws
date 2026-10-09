@@ -1325,9 +1325,8 @@ export const InteractionContextType = S.Number;
 export type ApplicationCommandUpdateRequestContextsList = Array<
   InteractionContextType | (number & {})
 >;
-export const ApplicationCommandUpdateRequestContextsList = /*@__PURE__*/ S.Array(
-  InteractionContextType,
-) as any as S.Schema<ApplicationCommandUpdateRequestContextsList>;
+export const ApplicationCommandUpdateRequestContextsList =
+  ApplicationCommandChannelOptionChannelTypesList as any as S.Schema<ApplicationCommandUpdateRequestContextsList>;
 
 export type ApplicationIntegrationType = 0 | 1;
 export const ApplicationIntegrationType = S.Number;
@@ -1335,9 +1334,8 @@ export const ApplicationIntegrationType = S.Number;
 export type ApplicationCommandUpdateRequestIntegrationTypesList = Array<
   ApplicationIntegrationType | (number & {})
 >;
-export const ApplicationCommandUpdateRequestIntegrationTypesList = /*@__PURE__*/ S.Array(
-  ApplicationIntegrationType,
-) as any as S.Schema<ApplicationCommandUpdateRequestIntegrationTypesList>;
+export const ApplicationCommandUpdateRequestIntegrationTypesList =
+  ApplicationCommandChannelOptionChannelTypesList as any as S.Schema<ApplicationCommandUpdateRequestIntegrationTypesList>;
 
 export type ApplicationCommandHandler = 1 | 2;
 export const ApplicationCommandHandler = S.Number;
@@ -2918,9 +2916,8 @@ export const AutomodKeywordPresetType = S.Number;
 export type DefaultKeywordListTriggerMetadataPresetsList = Array<
   AutomodKeywordPresetType | (number & {})
 >;
-export const DefaultKeywordListTriggerMetadataPresetsList = /*@__PURE__*/ S.Array(
-  AutomodKeywordPresetType,
-) as any as S.Schema<DefaultKeywordListTriggerMetadataPresetsList>;
+export const DefaultKeywordListTriggerMetadataPresetsList =
+  ApplicationCommandChannelOptionChannelTypesList as any as S.Schema<DefaultKeywordListTriggerMetadataPresetsList>;
 
 export interface DefaultKeywordListTriggerMetadata {
   allow_list?: DefaultKeywordListTriggerMetadataAllowListList | null;
@@ -4121,9 +4118,8 @@ export type OAuth2Scopes =
 export const OAuth2Scopes = S.String;
 
 export type ApplicationOAuth2InstallParamsResponseScopesList = Array<OAuth2Scopes>;
-export const ApplicationOAuth2InstallParamsResponseScopesList = /*@__PURE__*/ S.Array(
-  OAuth2Scopes,
-) as any as S.Schema<ApplicationOAuth2InstallParamsResponseScopesList>;
+export const ApplicationOAuth2InstallParamsResponseScopesList =
+  InviteGuildResponseFeaturesList as any as S.Schema<ApplicationOAuth2InstallParamsResponseScopesList>;
 
 export interface ApplicationOAuth2InstallParamsResponse {
   scopes: ApplicationOAuth2InstallParamsResponseScopesList;
@@ -4232,9 +4228,8 @@ export const RecurrenceRuleWeekdays = S.Number;
 
 /** Set of specific days within a week for the event to recur on */
 export type RecurrenceRuleResponseByWeekdayList = Array<RecurrenceRuleWeekdays>;
-export const RecurrenceRuleResponseByWeekdayList = /*@__PURE__*/ S.Array(
-  RecurrenceRuleWeekdays,
-) as any as S.Schema<RecurrenceRuleResponseByWeekdayList>;
+export const RecurrenceRuleResponseByWeekdayList =
+  ApplicationCommandChannelOptionChannelTypesList as any as S.Schema<RecurrenceRuleResponseByWeekdayList>;
 
 export interface ByNWeekdayResponse {
   /** The week to reoccur on (1-5, where 5 represents the last week) */
@@ -4260,9 +4255,8 @@ export const RecurrenceRuleMonths = S.Number;
 
 /** Set of specific months to recur on */
 export type RecurrenceRuleResponseByMonthList = Array<RecurrenceRuleMonths>;
-export const RecurrenceRuleResponseByMonthList = /*@__PURE__*/ S.Array(
-  RecurrenceRuleMonths,
-) as any as S.Schema<RecurrenceRuleResponseByMonthList>;
+export const RecurrenceRuleResponseByMonthList =
+  ApplicationCommandChannelOptionChannelTypesList as any as S.Schema<RecurrenceRuleResponseByMonthList>;
 
 /** Set of specific dates within a month to recur on */
 export type RecurrenceRuleResponseByMonthDayList = Array<number>;
@@ -11994,9 +11988,8 @@ export type ActionTypes =
 export const ActionTypes = S.String;
 
 export type PrivateApplicationResponseEventWebhooksTypesList = Array<ActionTypes>;
-export const PrivateApplicationResponseEventWebhooksTypesList = /*@__PURE__*/ S.Array(
-  ActionTypes,
-) as any as S.Schema<PrivateApplicationResponseEventWebhooksTypesList>;
+export const PrivateApplicationResponseEventWebhooksTypesList =
+  InviteGuildResponseFeaturesList as any as S.Schema<PrivateApplicationResponseEventWebhooksTypesList>;
 
 export type ApplicationExplicitContentFilterTypes = 0 | 1;
 export const ApplicationExplicitContentFilterTypes = S.Number;
@@ -17070,9 +17063,8 @@ export type AuthorType = "user" | "bot" | "webhook" | "-user" | "-bot" | "-webho
 export const AuthorType = S.String;
 
 export type SearchGuildRequestAuthorTypeList = Array<AuthorType | (string & {})>;
-export const SearchGuildRequestAuthorTypeList = /*@__PURE__*/ S.Array(
-  AuthorType,
-) as any as S.Schema<SearchGuildRequestAuthorTypeList>;
+export const SearchGuildRequestAuthorTypeList =
+  InviteGuildResponseFeaturesList as any as S.Schema<SearchGuildRequestAuthorTypeList>;
 
 export type SearchGuildRequestMentionsList = Array<string>;
 export const SearchGuildRequestMentionsList =
@@ -17112,9 +17104,8 @@ export type HasOption =
 export const HasOption = S.String;
 
 export type SearchGuildRequestHasList = Array<HasOption | (string & {})>;
-export const SearchGuildRequestHasList = /*@__PURE__*/ S.Array(
-  HasOption,
-) as any as S.Schema<SearchGuildRequestHasList>;
+export const SearchGuildRequestHasList =
+  InviteGuildResponseFeaturesList as any as S.Schema<SearchGuildRequestHasList>;
 
 export type SearchGuildRequestLinkHostnameList = Array<string>;
 export const SearchGuildRequestLinkHostnameList =
@@ -17128,9 +17119,8 @@ export type SearchableEmbedType = "image" | "video" | "gif" | "sound" | "article
 export const SearchableEmbedType = S.String;
 
 export type SearchGuildRequestEmbedTypeList = Array<SearchableEmbedType | (string & {})>;
-export const SearchGuildRequestEmbedTypeList = /*@__PURE__*/ S.Array(
-  SearchableEmbedType,
-) as any as S.Schema<SearchGuildRequestEmbedTypeList>;
+export const SearchGuildRequestEmbedTypeList =
+  InviteGuildResponseFeaturesList as any as S.Schema<SearchGuildRequestEmbedTypeList>;
 
 export type SearchGuildRequestAttachmentExtensionList = Array<string>;
 export const SearchGuildRequestAttachmentExtensionList =

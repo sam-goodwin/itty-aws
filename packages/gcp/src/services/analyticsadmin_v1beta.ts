@@ -2607,9 +2607,7 @@ export type GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsRequestActionItem
   GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsRequestActionItemEnum | (string & {})
 >;
 export const GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsRequestActionItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsRequestActionItemEnum,
-  ) as any as S.Schema<GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsRequestActionItemEnumList>;
+  GoogleAnalyticsAdminV1betaCustomMetricRestrictedMetricTypeItemEnumList as any as S.Schema<GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsRequestActionItemEnumList>;
 
 export type GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsRequestResourceTypeItemEnum =
   | "CHANGE_HISTORY_RESOURCE_TYPE_UNSPECIFIED"
@@ -2635,9 +2633,7 @@ export type GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsRequestResourceTy
     GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsRequestResourceTypeItemEnum | (string & {})
   >;
 export const GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsRequestResourceTypeItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsRequestResourceTypeItemEnum,
-  ) as any as S.Schema<GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsRequestResourceTypeItemEnumList>;
+  GoogleAnalyticsAdminV1betaCustomMetricRestrictedMetricTypeItemEnumList as any as S.Schema<GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsRequestResourceTypeItemEnumList>;
 
 /** Request message for SearchChangeHistoryEvents RPC. */
 export interface GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsRequest {

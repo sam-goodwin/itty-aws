@@ -3757,9 +3757,7 @@ export const GoogleCloudApihubV1DiscoveredApiObservationSourceTypesItemEnum = S.
 export type GoogleCloudApihubV1DiscoveredApiObservationSourceTypesItemEnumList =
   Array<GoogleCloudApihubV1DiscoveredApiObservationSourceTypesItemEnum>;
 export const GoogleCloudApihubV1DiscoveredApiObservationSourceTypesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudApihubV1DiscoveredApiObservationSourceTypesItemEnum,
-  ) as any as S.Schema<GoogleCloudApihubV1DiscoveredApiObservationSourceTypesItemEnumList>;
+  GoogleCloudApihubV1AuthConfigTemplateSupportedAuthTypesItemEnumList as any as S.Schema<GoogleCloudApihubV1DiscoveredApiObservationSourceTypesItemEnumList>;
 
 export type GoogleCloudApihubV1DiscoveredApiObservationStyleEnum =
   | "STYLE_UNSPECIFIED"

@@ -990,20 +990,8 @@ export interface ApplicationsCreateOrUpdateByIdResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const ApplicationsCreateOrUpdateByIdResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(ApplicationsCreateOrUpdateByIdResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      ApplicationsCreateOrUpdateByIdResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ApplicationsCreateOrUpdateByIdResponseSystemData",
-}) as any as S.Schema<ApplicationsCreateOrUpdateByIdResponseSystemData>;
+export const ApplicationsCreateOrUpdateByIdResponseSystemData =
+  ApplicationDefinitionsCreateOrUpdateResponseSystemData as any as S.Schema<ApplicationsCreateOrUpdateByIdResponseSystemData>;
 
 export interface ApplicationsCreateOrUpdateByIdResponse {
   /** Resource ID */
@@ -1211,18 +1199,8 @@ export interface GetApplicationResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetApplicationResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetApplicationResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetApplicationResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetApplicationResponseSystemData",
-}) as any as S.Schema<GetApplicationResponseSystemData>;
+export const GetApplicationResponseSystemData =
+  ApplicationsCreateOrUpdateResponseSystemData as any as S.Schema<GetApplicationResponseSystemData>;
 
 export interface GetApplicationResponse {
   /** Resource ID */
@@ -1315,18 +1293,8 @@ export interface GetApplicationByIdResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetApplicationByIdResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetApplicationByIdResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetApplicationByIdResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetApplicationByIdResponseSystemData",
-}) as any as S.Schema<GetApplicationByIdResponseSystemData>;
+export const GetApplicationByIdResponseSystemData =
+  ApplicationsCreateOrUpdateResponseSystemData as any as S.Schema<GetApplicationByIdResponseSystemData>;
 
 export interface GetApplicationByIdResponse {
   /** Resource ID */
@@ -1434,18 +1402,8 @@ export interface GetApplicationDefinitionResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetApplicationDefinitionResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetApplicationDefinitionResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetApplicationDefinitionResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetApplicationDefinitionResponseSystemData",
-}) as any as S.Schema<GetApplicationDefinitionResponseSystemData>;
+export const GetApplicationDefinitionResponseSystemData =
+  ApplicationsCreateOrUpdateResponseSystemData as any as S.Schema<GetApplicationDefinitionResponseSystemData>;
 
 export interface GetApplicationDefinitionResponse {
   /** Resource ID */
@@ -1542,18 +1500,8 @@ export interface GetJitRequestResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetJitRequestResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetJitRequestResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetJitRequestResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetJitRequestResponseSystemData",
-}) as any as S.Schema<GetJitRequestResponseSystemData>;
+export const GetJitRequestResponseSystemData =
+  ApplicationsCreateOrUpdateResponseSystemData as any as S.Schema<GetJitRequestResponseSystemData>;
 
 /** The JIT authorization policies. */
 export interface JitAuthorizationPolicies {
@@ -1761,18 +1709,8 @@ export interface JitRequestsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const JitRequestsCreateOrUpdateResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(JitRequestsCreateOrUpdateResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(JitRequestsCreateOrUpdateResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "JitRequestsCreateOrUpdateResponseSystemData",
-}) as any as S.Schema<JitRequestsCreateOrUpdateResponseSystemData>;
+export const JitRequestsCreateOrUpdateResponseSystemData =
+  ApplicationsCreateOrUpdateResponseSystemData as any as S.Schema<JitRequestsCreateOrUpdateResponseSystemData>;
 
 export interface JitRequestsCreateOrUpdateResponse {
   /** Resource ID */
@@ -2054,18 +1992,8 @@ export interface ApplicationDefinitionSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const ApplicationDefinitionSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(ApplicationDefinitionSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(ApplicationDefinitionSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ApplicationDefinitionSystemData",
-}) as any as S.Schema<ApplicationDefinitionSystemData>;
+export const ApplicationDefinitionSystemData =
+  ApplicationsCreateOrUpdateResponseSystemData as any as S.Schema<ApplicationDefinitionSystemData>;
 
 /** Information about managed application definition. */
 export interface ApplicationDefinition {
@@ -2285,18 +2213,8 @@ export interface JitRequestDefinitionSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const JitRequestDefinitionSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(JitRequestDefinitionSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(JitRequestDefinitionSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "JitRequestDefinitionSystemData",
-}) as any as S.Schema<JitRequestDefinitionSystemData>;
+export const JitRequestDefinitionSystemData =
+  ApplicationsCreateOrUpdateResponseSystemData as any as S.Schema<JitRequestDefinitionSystemData>;
 
 /** Information about JIT request definition. */
 export interface JitRequestDefinition {
@@ -2590,18 +2508,8 @@ export interface UpdateApplicationResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdateApplicationResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(UpdateApplicationResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(UpdateApplicationResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateApplicationResponseSystemData",
-}) as any as S.Schema<UpdateApplicationResponseSystemData>;
+export const UpdateApplicationResponseSystemData =
+  ApplicationsCreateOrUpdateResponseSystemData as any as S.Schema<UpdateApplicationResponseSystemData>;
 
 export interface UpdateApplicationResponse {
   /** Resource ID */
@@ -2797,18 +2705,8 @@ export interface UpdateApplicationByIdResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdateApplicationByIdResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(UpdateApplicationByIdResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(UpdateApplicationByIdResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateApplicationByIdResponseSystemData",
-}) as any as S.Schema<UpdateApplicationByIdResponseSystemData>;
+export const UpdateApplicationByIdResponseSystemData =
+  ApplicationsCreateOrUpdateResponseSystemData as any as S.Schema<UpdateApplicationByIdResponseSystemData>;
 
 export interface UpdateApplicationByIdResponse {
   /** Resource ID */
@@ -2924,18 +2822,8 @@ export interface UpdateApplicationDefinitionResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdateApplicationDefinitionResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(UpdateApplicationDefinitionResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(UpdateApplicationDefinitionResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateApplicationDefinitionResponseSystemData",
-}) as any as S.Schema<UpdateApplicationDefinitionResponseSystemData>;
+export const UpdateApplicationDefinitionResponseSystemData =
+  ApplicationsCreateOrUpdateResponseSystemData as any as S.Schema<UpdateApplicationDefinitionResponseSystemData>;
 
 export interface UpdateApplicationDefinitionResponse {
   /** Resource ID */
@@ -3040,18 +2928,8 @@ export interface UpdateJitRequestResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdateJitRequestResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(UpdateJitRequestResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(UpdateJitRequestResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateJitRequestResponseSystemData",
-}) as any as S.Schema<UpdateJitRequestResponseSystemData>;
+export const UpdateJitRequestResponseSystemData =
+  ApplicationsCreateOrUpdateResponseSystemData as any as S.Schema<UpdateJitRequestResponseSystemData>;
 
 export interface UpdateJitRequestResponse {
   /** Resource ID */

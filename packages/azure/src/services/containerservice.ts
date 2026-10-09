@@ -7474,12 +7474,7 @@ export interface NetworkPolicies {
   /** Enum representing different network policy rules. */
   egress?: NetworkPoliciesEgress | (string & {});
 }
-export const NetworkPolicies = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ingress: S.optional(NetworkPoliciesIngress),
-    egress: S.optional(NetworkPoliciesEgress),
-  }),
-).annotate({ identifier: "NetworkPolicies" }) as any as S.Schema<NetworkPolicies>;
+export const NetworkPolicies = NetworkPolicy_2 as any as S.Schema<NetworkPolicies>;
 
 /** Action if Kubernetes namespace with same name already exists. */
 export type AdoptionPolicy = "Never" | "IfIdentical" | "Always";
@@ -9407,9 +9402,8 @@ export const ListManagedClusterKubernetesVersionsRequest = /*@__PURE__*/ S.suspe
 
 /** Kubernetes support plans available for this version. */
 export type KubernetesVersionCapabilitiesSupportPlanList = Array<KubernetesSupportPlan>;
-export const KubernetesVersionCapabilitiesSupportPlanList = /*@__PURE__*/ S.Array(
-  KubernetesSupportPlan,
-) as any as S.Schema<KubernetesVersionCapabilitiesSupportPlanList>;
+export const KubernetesVersionCapabilitiesSupportPlanList =
+  ContainerServiceNetworkProfileIpFamiliesList as any as S.Schema<KubernetesVersionCapabilitiesSupportPlanList>;
 
 /** Capabilities on this Kubernetes version. */
 export interface KubernetesVersionCapabilities {

@@ -739,18 +739,9 @@ export interface BuildPhase {
   durationInSeconds?: number;
   contexts?: PhaseContext[];
 }
-export const BuildPhase = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    phaseType: S.optional(BuildPhaseType),
-    phaseStatus: S.optional(StatusType),
-    startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    durationInSeconds: S.optional(S.Number),
-    contexts: S.optional(PhaseContexts),
-  }),
-).annotate({ identifier: "BuildPhase" }) as any as S.Schema<BuildPhase>;
+export const BuildPhase = BuildBatchPhase as any as S.Schema<BuildPhase>;
 export type BuildPhases = BuildPhase[];
-export const BuildPhases = /*@__PURE__*/ S.Array(BuildPhase);
+export const BuildPhases = BuildBatchPhases as any as S.Schema<BuildPhases>;
 export interface LogsLocation {
   groupName?: string;
   streamName?: string;
@@ -1260,7 +1251,8 @@ export type PullRequestBuildApproverRole =
 export const PullRequestBuildApproverRole = S.String;
 
 export type PullRequestBuildApproverRoles = PullRequestBuildApproverRole[];
-export const PullRequestBuildApproverRoles = /*@__PURE__*/ S.Array(PullRequestBuildApproverRole);
+export const PullRequestBuildApproverRoles =
+  ProjectCacheModes as any as S.Schema<PullRequestBuildApproverRoles>;
 export interface PullRequestBuildPolicy {
   requiresCommentApproval: PullRequestBuildCommentApproval;
   approverRoles?: PullRequestBuildApproverRole[];
@@ -2428,9 +2420,7 @@ export const ListReportGroupsOutput = /*@__PURE__*/ S.suspend(() =>
 export interface ReportFilter {
   status?: ReportStatusType;
 }
-export const ReportFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ status: S.optional(ReportStatusType) }),
-).annotate({ identifier: "ReportFilter" }) as any as S.Schema<ReportFilter>;
+export const ReportFilter = BuildBatchFilter as any as S.Schema<ReportFilter>;
 export interface ListReportsInput {
   sortOrder?: SortOrderType;
   nextToken?: string;

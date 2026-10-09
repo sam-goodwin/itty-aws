@@ -2773,9 +2773,7 @@ export const GoogleAdsSearchads360V0Resources__CampaignFeedTypesItemEnum = S.Str
 export type GoogleAdsSearchads360V0Resources__CampaignFeedTypesItemEnumList =
   Array<GoogleAdsSearchads360V0Resources__CampaignFeedTypesItemEnum>;
 export const GoogleAdsSearchads360V0Resources__CampaignFeedTypesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V0Resources__CampaignFeedTypesItemEnum,
-  ) as any as S.Schema<GoogleAdsSearchads360V0Resources__CampaignFeedTypesItemEnumList>;
+  GoogleAdsSearchads360V0Common__MetricsInteractionEventTypesItemEnumList as any as S.Schema<GoogleAdsSearchads360V0Resources__CampaignFeedTypesItemEnumList>;
 
 export type GoogleAdsSearchads360V0Resources__CampaignAdvertisingChannelTypeEnum =
   | "UNSPECIFIED"
@@ -2807,9 +2805,7 @@ export const GoogleAdsSearchads360V0Resources_Campaign_OptimizationGoalSettingOp
 export type GoogleAdsSearchads360V0Resources_Campaign_OptimizationGoalSettingOptimizationGoalTypesItemEnumList =
   Array<GoogleAdsSearchads360V0Resources_Campaign_OptimizationGoalSettingOptimizationGoalTypesItemEnum>;
 export const GoogleAdsSearchads360V0Resources_Campaign_OptimizationGoalSettingOptimizationGoalTypesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V0Resources_Campaign_OptimizationGoalSettingOptimizationGoalTypesItemEnum,
-  ) as any as S.Schema<GoogleAdsSearchads360V0Resources_Campaign_OptimizationGoalSettingOptimizationGoalTypesItemEnumList>;
+  GoogleAdsSearchads360V0Common__MetricsInteractionEventTypesItemEnumList as any as S.Schema<GoogleAdsSearchads360V0Resources_Campaign_OptimizationGoalSettingOptimizationGoalTypesItemEnumList>;
 
 /** Optimization goal setting for this campaign, which includes a set of optimization goal types. */
 export interface GoogleAdsSearchads360V0Resources_Campaign_OptimizationGoalSetting {
@@ -2938,9 +2934,7 @@ export const GoogleAdsSearchads360V0Resources__CampaignExcludedParentAssetFieldT
 export type GoogleAdsSearchads360V0Resources__CampaignExcludedParentAssetFieldTypesItemEnumList =
   Array<GoogleAdsSearchads360V0Resources__CampaignExcludedParentAssetFieldTypesItemEnum>;
 export const GoogleAdsSearchads360V0Resources__CampaignExcludedParentAssetFieldTypesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V0Resources__CampaignExcludedParentAssetFieldTypesItemEnum,
-  ) as any as S.Schema<GoogleAdsSearchads360V0Resources__CampaignExcludedParentAssetFieldTypesItemEnumList>;
+  GoogleAdsSearchads360V0Common__MetricsInteractionEventTypesItemEnumList as any as S.Schema<GoogleAdsSearchads360V0Resources__CampaignExcludedParentAssetFieldTypesItemEnumList>;
 
 /** Target CPM (cost per thousand impressions) is an automated bidding strategy that sets bids to optimize performance given the target CPM you set. */
 export type GoogleAdsSearchads360V0Common__TargetCpm =
@@ -3419,13 +3413,8 @@ export interface GoogleAdsSearchads360V0Common__AgeRangeInfo {
   /** Type of the age range. */
   type?: GoogleAdsSearchads360V0Common__AgeRangeInfoTypeEnum;
 }
-export const GoogleAdsSearchads360V0Common__AgeRangeInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(GoogleAdsSearchads360V0Common__AgeRangeInfoTypeEnum),
-  }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V0Common__AgeRangeInfo",
-}) as any as S.Schema<GoogleAdsSearchads360V0Common__AgeRangeInfo>;
+export const GoogleAdsSearchads360V0Common__AgeRangeInfo =
+  GoogleAdsSearchads360V0Common__GenderInfo as any as S.Schema<GoogleAdsSearchads360V0Common__AgeRangeInfo>;
 
 export type GoogleAdsSearchads360V0Resources__CampaignCriterionTypeEnum =
   | "UNSPECIFIED"
@@ -3509,13 +3498,8 @@ export interface GoogleAdsSearchads360V0Common__DeviceInfo {
   /** Type of the device. */
   type?: GoogleAdsSearchads360V0Common__DeviceInfoTypeEnum;
 }
-export const GoogleAdsSearchads360V0Common__DeviceInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(GoogleAdsSearchads360V0Common__DeviceInfoTypeEnum),
-  }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V0Common__DeviceInfo",
-}) as any as S.Schema<GoogleAdsSearchads360V0Common__DeviceInfo>;
+export const GoogleAdsSearchads360V0Common__DeviceInfo =
+  GoogleAdsSearchads360V0Common__GenderInfo as any as S.Schema<GoogleAdsSearchads360V0Common__DeviceInfo>;
 
 /** A location criterion. */
 export interface GoogleAdsSearchads360V0Common__LocationInfo {
@@ -5420,13 +5404,8 @@ export interface GoogleAdsSearchads360V0Common__ListingGroupInfo {
   /** Type of the listing group. */
   type?: GoogleAdsSearchads360V0Common__ListingGroupInfoTypeEnum;
 }
-export const GoogleAdsSearchads360V0Common__ListingGroupInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(GoogleAdsSearchads360V0Common__ListingGroupInfoTypeEnum),
-  }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V0Common__ListingGroupInfo",
-}) as any as S.Schema<GoogleAdsSearchads360V0Common__ListingGroupInfo>;
+export const GoogleAdsSearchads360V0Common__ListingGroupInfo =
+  GoogleAdsSearchads360V0Common__GenderInfo as any as S.Schema<GoogleAdsSearchads360V0Common__ListingGroupInfo>;
 
 export type GoogleAdsSearchads360V0Resources__AdGroupCriterionStatusEnum =
   | "UNSPECIFIED"

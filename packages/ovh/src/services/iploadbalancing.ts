@@ -1223,20 +1223,8 @@ export interface IpLoadbalancingBackendTcpBackendTcp {
   /** Zone of you farm */
   zone?: string;
 }
-export const IpLoadbalancingBackendTcpBackendTcp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    balance: S.optional(S.NullOr(IpLoadbalancingBalanceTCPEnum)),
-    displayName: S.optional(S.NullOr(S.String)),
-    farmId: S.optional(S.Number),
-    port: S.optional(S.NullOr(S.Number)),
-    probe: S.optional(S.NullOr(IpLoadbalancingBackendProbe)),
-    stickiness: S.optional(S.NullOr(IpLoadbalancingStickinessTCPEnum)),
-    vrackNetworkId: S.optional(S.NullOr(S.Number)),
-    zone: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "IpLoadbalancingBackendTcpBackendTcp",
-}) as any as S.Schema<IpLoadbalancingBackendTcpBackendTcp>;
+export const IpLoadbalancingBackendTcpBackendTcp =
+  IpLoadbalancingBackendHttpBackendHttp as any as S.Schema<IpLoadbalancingBackendTcpBackendTcp>;
 
 export interface CreateIpLoadbalancingTcpFarmServerRequest {
   /** The internal name of your IP load balancing */

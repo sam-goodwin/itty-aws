@@ -560,7 +560,8 @@ export type __PeriodTriggersElement = "ADS" | (string & {});
 export const __PeriodTriggersElement = S.String;
 
 export type __listOf__PeriodTriggersElement = __PeriodTriggersElement[];
-export const __listOf__PeriodTriggersElement = /*@__PURE__*/ S.Array(__PeriodTriggersElement);
+export const __listOf__PeriodTriggersElement =
+  AdTriggers as any as S.Schema<__listOf__PeriodTriggersElement>;
 export type Profile = "NONE" | "HBBTV_1_5" | "HYBRIDCAST" | "DVB_DASH_2014" | (string & {});
 export const Profile = S.String;
 

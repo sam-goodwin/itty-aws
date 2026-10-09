@@ -1219,9 +1219,7 @@ export interface WorkspacesPoolError {
   ErrorCode?: WorkspacesPoolErrorCode;
   ErrorMessage?: string;
 }
-export const WorkspacesPoolError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ErrorCode: S.optional(WorkspacesPoolErrorCode), ErrorMessage: S.optional(S.String) }),
-).annotate({ identifier: "WorkspacesPoolError" }) as any as S.Schema<WorkspacesPoolError>;
+export const WorkspacesPoolError = AssociationStateReason as any as S.Schema<WorkspacesPoolError>;
 export type WorkspacesPoolErrors = WorkspacesPoolError[];
 export const WorkspacesPoolErrors = /*@__PURE__*/ S.Array(WorkspacesPoolError);
 export type S3BucketName = string;
@@ -1306,7 +1304,7 @@ export type ClientDeviceType =
 export const ClientDeviceType = S.String;
 
 export type ClientDeviceTypeList = ClientDeviceType[];
-export const ClientDeviceTypeList = /*@__PURE__*/ S.Array(ClientDeviceType);
+export const ClientDeviceTypeList = ProtocolList as any as S.Schema<ClientDeviceTypeList>;
 export interface DeleteClientBrandingRequest {
   ResourceId: string;
   Platforms: ClientDeviceType[];
@@ -1584,12 +1582,12 @@ export type WorkSpaceApplicationIdList = string[];
 export const WorkSpaceApplicationIdList =
   IpGroupIdList as any as S.Schema<WorkSpaceApplicationIdList>;
 export type ComputeList = Compute[];
-export const ComputeList = /*@__PURE__*/ S.Array(Compute);
+export const ComputeList = ProtocolList as any as S.Schema<ComputeList>;
 export type WorkSpaceApplicationLicenseType = "LICENSED" | "UNLICENSED" | (string & {});
 export const WorkSpaceApplicationLicenseType = S.String;
 
 export type OperatingSystemNameList = OperatingSystemName[];
-export const OperatingSystemNameList = /*@__PURE__*/ S.Array(OperatingSystemName);
+export const OperatingSystemNameList = ProtocolList as any as S.Schema<OperatingSystemNameList>;
 export type WorkSpaceApplicationOwner = string;
 export interface DescribeApplicationsRequest {
   ApplicationIds?: string[];
@@ -1663,7 +1661,8 @@ export type BundleAssociatedResourceType = "APPLICATION" | (string & {});
 export const BundleAssociatedResourceType = S.String;
 
 export type BundleAssociatedResourceTypeList = BundleAssociatedResourceType[];
-export const BundleAssociatedResourceTypeList = /*@__PURE__*/ S.Array(BundleAssociatedResourceType);
+export const BundleAssociatedResourceTypeList =
+  ProtocolList as any as S.Schema<BundleAssociatedResourceTypeList>;
 export interface DescribeBundleAssociationsRequest {
   BundleId: string;
   AssociatedResourceTypes: BundleAssociatedResourceType[];
@@ -2082,7 +2081,8 @@ export type ImageAssociatedResourceType = "APPLICATION" | (string & {});
 export const ImageAssociatedResourceType = S.String;
 
 export type ImageAssociatedResourceTypeList = ImageAssociatedResourceType[];
-export const ImageAssociatedResourceTypeList = /*@__PURE__*/ S.Array(ImageAssociatedResourceType);
+export const ImageAssociatedResourceTypeList =
+  ProtocolList as any as S.Schema<ImageAssociatedResourceTypeList>;
 export interface DescribeImageAssociationsRequest {
   ImageId: string;
   AssociatedResourceTypes: ImageAssociatedResourceType[];
@@ -2176,9 +2176,8 @@ export const DescribeTagsResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ TagList: S.optional(TagList) }).pipe(ns),
 ).annotate({ identifier: "DescribeTagsResult" }) as any as S.Schema<DescribeTagsResult>;
 export type WorkSpaceAssociatedResourceTypeList = WorkSpaceAssociatedResourceType[];
-export const WorkSpaceAssociatedResourceTypeList = /*@__PURE__*/ S.Array(
-  WorkSpaceAssociatedResourceType,
-);
+export const WorkSpaceAssociatedResourceTypeList =
+  ApplicationAssociatedResourceTypeList as any as S.Schema<WorkSpaceAssociatedResourceTypeList>;
 export interface DescribeWorkspaceAssociationsRequest {
   WorkspaceId: string;
   AssociatedResourceTypes: WorkSpaceAssociatedResourceType[];
@@ -2347,7 +2346,8 @@ export type InternetFallbackProtocol = "PCOIP" | (string & {});
 export const InternetFallbackProtocol = S.String;
 
 export type InternetFallbackProtocolList = InternetFallbackProtocol[];
-export const InternetFallbackProtocolList = /*@__PURE__*/ S.Array(InternetFallbackProtocol);
+export const InternetFallbackProtocolList =
+  ProtocolList as any as S.Schema<InternetFallbackProtocolList>;
 export interface AccessEndpointConfig {
   AccessEndpoints: AccessEndpoint[];
   InternetFallbackProtocols?: InternetFallbackProtocol[];
@@ -2533,14 +2533,8 @@ export interface GlobalAcceleratorForDirectory {
   Mode: AGAModeForDirectoryEnum;
   PreferredProtocol?: AGAPreferredProtocolForDirectory;
 }
-export const GlobalAcceleratorForDirectory = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Mode: AGAModeForDirectoryEnum,
-    PreferredProtocol: S.optional(AGAPreferredProtocolForDirectory),
-  }),
-).annotate({
-  identifier: "GlobalAcceleratorForDirectory",
-}) as any as S.Schema<GlobalAcceleratorForDirectory>;
+export const GlobalAcceleratorForDirectory =
+  GlobalAcceleratorForWorkSpace as any as S.Schema<GlobalAcceleratorForDirectory>;
 export interface StreamingProperties {
   StreamingExperiencePreferredProtocol?: StreamingExperiencePreferredProtocolEnum;
   UserSettings?: UserSetting[];
@@ -3243,7 +3237,7 @@ export type Application = "Microsoft_Office_2016" | "Microsoft_Office_2019" | (s
 export const Application = S.String;
 
 export type ApplicationList = Application[];
-export const ApplicationList = /*@__PURE__*/ S.Array(Application);
+export const ApplicationList = ProtocolList as any as S.Schema<ApplicationList>;
 export interface ImportWorkspaceImageRequest {
   Ec2ImageId: string;
   IngestionProcess: WorkspaceImageIngestionProcess;
@@ -3270,7 +3264,7 @@ export interface ImportWorkspaceImageResult {
 export const ImportWorkspaceImageResult =
   CreateUpdatedWorkspaceImageResult as any as S.Schema<ImportWorkspaceImageResult>;
 export type LinkStatusFilterList = AccountLinkStatusEnum[];
-export const LinkStatusFilterList = /*@__PURE__*/ S.Array(AccountLinkStatusEnum);
+export const LinkStatusFilterList = ProtocolList as any as S.Schema<LinkStatusFilterList>;
 export interface ListAccountLinksRequest {
   LinkStatusFilter?: AccountLinkStatusEnum[];
   NextToken?: string;
@@ -3367,9 +3361,8 @@ export type DeletableCertificateBasedAuthProperty =
 export const DeletableCertificateBasedAuthProperty = S.String;
 
 export type DeletableCertificateBasedAuthPropertiesList = DeletableCertificateBasedAuthProperty[];
-export const DeletableCertificateBasedAuthPropertiesList = /*@__PURE__*/ S.Array(
-  DeletableCertificateBasedAuthProperty,
-);
+export const DeletableCertificateBasedAuthPropertiesList =
+  ApplicationAssociatedResourceTypeList as any as S.Schema<DeletableCertificateBasedAuthPropertiesList>;
 export interface ModifyCertificateBasedAuthPropertiesRequest {
   ResourceId: string;
   CertificateBasedAuthProperties?: CertificateBasedAuthProperties;
@@ -3422,7 +3415,8 @@ export type DeletableSamlProperty =
 export const DeletableSamlProperty = S.String;
 
 export type DeletableSamlPropertiesList = DeletableSamlProperty[];
-export const DeletableSamlPropertiesList = /*@__PURE__*/ S.Array(DeletableSamlProperty);
+export const DeletableSamlPropertiesList =
+  ProtocolList as any as S.Schema<DeletableSamlPropertiesList>;
 export interface ModifySamlPropertiesRequest {
   ResourceId: string;
   SamlProperties?: SamlProperties;

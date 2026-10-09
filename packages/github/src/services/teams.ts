@@ -1238,13 +1238,8 @@ export const SecurityAndAnalysisCodeSecurityStatus = S.String;
 export interface SecurityAndAnalysisCodeSecurity {
   status?: SecurityAndAnalysisCodeSecurityStatus;
 }
-export const SecurityAndAnalysisCodeSecurity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(SecurityAndAnalysisCodeSecurityStatus),
-  }),
-).annotate({
-  identifier: "SecurityAndAnalysisCodeSecurity",
-}) as any as S.Schema<SecurityAndAnalysisCodeSecurity>;
+export const SecurityAndAnalysisCodeSecurity =
+  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisCodeSecurity>;
 
 /** The enablement status of Dependabot security updates for the repository. */
 export type SecurityAndAnalysisDependabotSecurityUpdatesStatus = "enabled" | "disabled";
@@ -1255,13 +1250,8 @@ export interface SecurityAndAnalysisDependabotSecurityUpdates {
   /** The enablement status of Dependabot security updates for the repository. */
   status?: SecurityAndAnalysisDependabotSecurityUpdatesStatus;
 }
-export const SecurityAndAnalysisDependabotSecurityUpdates = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(SecurityAndAnalysisDependabotSecurityUpdatesStatus),
-  }),
-).annotate({
-  identifier: "SecurityAndAnalysisDependabotSecurityUpdates",
-}) as any as S.Schema<SecurityAndAnalysisDependabotSecurityUpdates>;
+export const SecurityAndAnalysisDependabotSecurityUpdates =
+  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisDependabotSecurityUpdates>;
 
 export type SecurityAndAnalysisSecretScanningStatus = "enabled" | "disabled";
 export const SecurityAndAnalysisSecretScanningStatus = S.String;
@@ -1269,13 +1259,8 @@ export const SecurityAndAnalysisSecretScanningStatus = S.String;
 export interface SecurityAndAnalysisSecretScanning {
   status?: SecurityAndAnalysisSecretScanningStatus;
 }
-export const SecurityAndAnalysisSecretScanning = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(SecurityAndAnalysisSecretScanningStatus),
-  }),
-).annotate({
-  identifier: "SecurityAndAnalysisSecretScanning",
-}) as any as S.Schema<SecurityAndAnalysisSecretScanning>;
+export const SecurityAndAnalysisSecretScanning =
+  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanning>;
 
 export type SecurityAndAnalysisSecretScanningPushProtectionStatus = "enabled" | "disabled";
 export const SecurityAndAnalysisSecretScanningPushProtectionStatus = S.String;
@@ -1283,13 +1268,8 @@ export const SecurityAndAnalysisSecretScanningPushProtectionStatus = S.String;
 export interface SecurityAndAnalysisSecretScanningPushProtection {
   status?: SecurityAndAnalysisSecretScanningPushProtectionStatus;
 }
-export const SecurityAndAnalysisSecretScanningPushProtection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(SecurityAndAnalysisSecretScanningPushProtectionStatus),
-  }),
-).annotate({
-  identifier: "SecurityAndAnalysisSecretScanningPushProtection",
-}) as any as S.Schema<SecurityAndAnalysisSecretScanningPushProtection>;
+export const SecurityAndAnalysisSecretScanningPushProtection =
+  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningPushProtection>;
 
 export type SecurityAndAnalysisSecretScanningNonProviderPatternsStatus = "enabled" | "disabled";
 export const SecurityAndAnalysisSecretScanningNonProviderPatternsStatus = S.String;
@@ -1297,13 +1277,8 @@ export const SecurityAndAnalysisSecretScanningNonProviderPatternsStatus = S.Stri
 export interface SecurityAndAnalysisSecretScanningNonProviderPatterns {
   status?: SecurityAndAnalysisSecretScanningNonProviderPatternsStatus;
 }
-export const SecurityAndAnalysisSecretScanningNonProviderPatterns = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(SecurityAndAnalysisSecretScanningNonProviderPatternsStatus),
-  }),
-).annotate({
-  identifier: "SecurityAndAnalysisSecretScanningNonProviderPatterns",
-}) as any as S.Schema<SecurityAndAnalysisSecretScanningNonProviderPatterns>;
+export const SecurityAndAnalysisSecretScanningNonProviderPatterns =
+  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningNonProviderPatterns>;
 
 export type SecurityAndAnalysisSecretScanningAiDetectionStatus = "enabled" | "disabled";
 export const SecurityAndAnalysisSecretScanningAiDetectionStatus = S.String;
@@ -1311,13 +1286,8 @@ export const SecurityAndAnalysisSecretScanningAiDetectionStatus = S.String;
 export interface SecurityAndAnalysisSecretScanningAiDetection {
   status?: SecurityAndAnalysisSecretScanningAiDetectionStatus;
 }
-export const SecurityAndAnalysisSecretScanningAiDetection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(SecurityAndAnalysisSecretScanningAiDetectionStatus),
-  }),
-).annotate({
-  identifier: "SecurityAndAnalysisSecretScanningAiDetection",
-}) as any as S.Schema<SecurityAndAnalysisSecretScanningAiDetection>;
+export const SecurityAndAnalysisSecretScanningAiDetection =
+  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningAiDetection>;
 
 export type SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus = "enabled" | "disabled";
 export const SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus = S.String;
@@ -1340,13 +1310,8 @@ export const SecurityAndAnalysisSecretScanningDelegatedBypassStatus = S.String;
 export interface SecurityAndAnalysisSecretScanningDelegatedBypass {
   status?: SecurityAndAnalysisSecretScanningDelegatedBypassStatus;
 }
-export const SecurityAndAnalysisSecretScanningDelegatedBypass = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(SecurityAndAnalysisSecretScanningDelegatedBypassStatus),
-  }),
-).annotate({
-  identifier: "SecurityAndAnalysisSecretScanningDelegatedBypass",
-}) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypass>;
+export const SecurityAndAnalysisSecretScanningDelegatedBypass =
+  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypass>;
 
 /** The type of the bypass reviewer */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =

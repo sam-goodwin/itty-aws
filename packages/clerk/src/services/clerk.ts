@@ -879,16 +879,7 @@ export interface VerificationTicket {
   expire_at: number | null;
   verified_at_client?: string | null;
 }
-export const VerificationTicket = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    object: S.optional(VerificationTicketObject),
-    status: VerificationTicketStatus,
-    strategy: VerificationTicketStrategy,
-    attempts: S.NullOr(S.Number),
-    expire_at: S.NullOr(S.Number),
-    verified_at_client: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({ identifier: "VerificationTicket" }) as any as S.Schema<VerificationTicket>;
+export const VerificationTicket = VerificationAdmin as any as S.Schema<VerificationTicket>;
 
 export type VerificationSamlObject = "verification_saml";
 export const VerificationSamlObject = S.String;
@@ -944,16 +935,7 @@ export interface VerificationEmailLink {
   expire_at: number | null;
   verified_at_client?: string | null;
 }
-export const VerificationEmailLink = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    object: S.optional(VerificationEmailLinkObject),
-    status: VerificationEmailLinkStatus,
-    strategy: VerificationEmailLinkStrategy,
-    attempts: S.NullOr(S.Number),
-    expire_at: S.NullOr(S.Number),
-    verified_at_client: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({ identifier: "VerificationEmailLink" }) as any as S.Schema<VerificationEmailLink>;
+export const VerificationEmailLink = VerificationAdmin as any as S.Schema<VerificationEmailLink>;
 
 export type VerificationScimObject = "verification_scim";
 export const VerificationScimObject = S.String;
@@ -4156,14 +4138,8 @@ export interface EnterpriseConnectionSamlConnectionLoginHint {
   /** The user public_metadata key whose value is sent as the login_hint when mode is custom_attribute */
   source?: string;
 }
-export const EnterpriseConnectionSamlConnectionLoginHint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: EnterpriseConnectionSamlConnectionLoginHintMode,
-    source: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "EnterpriseConnectionSamlConnectionLoginHint",
-}) as any as S.Schema<EnterpriseConnectionSamlConnectionLoginHint>;
+export const EnterpriseConnectionSamlConnectionLoginHint =
+  CreateEnterpriseConnectionRequestSamlLoginHint as any as S.Schema<EnterpriseConnectionSamlConnectionLoginHint>;
 
 /** Present when the enterprise connection uses SAML */
 export interface EnterpriseConnectionSamlConnection {
@@ -5685,14 +5661,8 @@ export interface CreateSessionTokenFromTemplateResponse {
   object?: CreateSessionTokenFromTemplateResponseObject;
   jwt?: string;
 }
-export const CreateSessionTokenFromTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    object: S.optional(CreateSessionTokenFromTemplateResponseObject),
-    jwt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateSessionTokenFromTemplateResponse",
-}) as any as S.Schema<CreateSessionTokenFromTemplateResponse>;
+export const CreateSessionTokenFromTemplateResponse =
+  CreateSessionTokenResponse as any as S.Schema<CreateSessionTokenFromTemplateResponse>;
 
 export interface CreateSignInTokenRequest {
   /** The ID of the user that can use the newly created sign in token */
@@ -5869,9 +5839,8 @@ export const CreateUserRequestPhoneNumberIdentificationStatusItem = S.String;
 export type CreateUserRequestPhoneNumberIdentificationStatusList = Array<
   CreateUserRequestPhoneNumberIdentificationStatusItem | (string & {})
 >;
-export const CreateUserRequestPhoneNumberIdentificationStatusList = /*@__PURE__*/ S.Array(
-  CreateUserRequestPhoneNumberIdentificationStatusItem,
-) as any as S.Schema<CreateUserRequestPhoneNumberIdentificationStatusList>;
+export const CreateUserRequestPhoneNumberIdentificationStatusList =
+  CreateUserRequestEmailAddressIdentificationStatusList as any as S.Schema<CreateUserRequestPhoneNumberIdentificationStatusList>;
 
 /** Web3 wallets to add to the user. Must be unique across your instance. The first wallet will be set as the user's primary wallet. */
 export type CreateUserRequestWeb3WalletList = Array<string>;
@@ -6487,15 +6456,8 @@ export interface DeleteSCIMGroupRoleMappingResponse {
   /** Whether the SCIM group role mapping was successfully deleted. */
   deleted: boolean;
 }
-export const DeleteSCIMGroupRoleMappingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    object: DeleteSCIMGroupRoleMappingResponseObject,
-    id: S.String,
-    deleted: S.Boolean,
-  }),
-).annotate({
-  identifier: "DeleteSCIMGroupRoleMappingResponse",
-}) as any as S.Schema<DeleteSCIMGroupRoleMappingResponse>;
+export const DeleteSCIMGroupRoleMappingResponse =
+  DeleteDirectoryGroupRoleMappingResponse as any as S.Schema<DeleteSCIMGroupRoleMappingResponse>;
 
 export interface DeleteSSOBypassAllowlistUserRequest {
   /** The ID of the allowlisted user */
@@ -7471,9 +7433,8 @@ export const OrganizationSettingsDomainsEnrollmentModesItem = S.String;
 
 export type OrganizationSettingsDomainsEnrollmentModesList =
   Array<OrganizationSettingsDomainsEnrollmentModesItem>;
-export const OrganizationSettingsDomainsEnrollmentModesList = /*@__PURE__*/ S.Array(
-  OrganizationSettingsDomainsEnrollmentModesItem,
-) as any as S.Schema<OrganizationSettingsDomainsEnrollmentModesList>;
+export const OrganizationSettingsDomainsEnrollmentModesList =
+  CreateUserRequestEmailAddressIdentificationStatusList as any as S.Schema<OrganizationSettingsDomainsEnrollmentModesList>;
 
 export interface OrganizationSettings {
   /** String representing the object's type. Objects of the same type share the same value. */
@@ -9031,9 +8992,8 @@ export const ListAllOrganizationDomainsRequestEnrollmentModeItem = S.String;
 export type ListAllOrganizationDomainsRequestEnrollmentModeList = Array<
   ListAllOrganizationDomainsRequestEnrollmentModeItem | (string & {})
 >;
-export const ListAllOrganizationDomainsRequestEnrollmentModeList = /*@__PURE__*/ S.Array(
-  ListAllOrganizationDomainsRequestEnrollmentModeItem,
-) as any as S.Schema<ListAllOrganizationDomainsRequestEnrollmentModeList>;
+export const ListAllOrganizationDomainsRequestEnrollmentModeList =
+  CreateUserRequestEmailAddressIdentificationStatusList as any as S.Schema<ListAllOrganizationDomainsRequestEnrollmentModeList>;
 
 export type ListAllOrganizationDomainsRequestDomainsList = Array<string>;
 export const ListAllOrganizationDomainsRequestDomainsList =
@@ -9270,9 +9230,8 @@ export const ListEnterpriseConnectionTestRunsRequestStatusItem = S.String;
 export type ListEnterpriseConnectionTestRunsRequestStatusList = Array<
   ListEnterpriseConnectionTestRunsRequestStatusItem | (string & {})
 >;
-export const ListEnterpriseConnectionTestRunsRequestStatusList = /*@__PURE__*/ S.Array(
-  ListEnterpriseConnectionTestRunsRequestStatusItem,
-) as any as S.Schema<ListEnterpriseConnectionTestRunsRequestStatusList>;
+export const ListEnterpriseConnectionTestRunsRequestStatusList =
+  CreateUserRequestEmailAddressIdentificationStatusList as any as S.Schema<ListEnterpriseConnectionTestRunsRequestStatusList>;
 
 export interface ListEnterpriseConnectionTestRunsRequest {
   /** The ID of the enterprise connection */
@@ -11197,14 +11156,8 @@ export interface RotateMachineSecretKeyResponse {
   /** The secret key for the machine. */
   secret: string | Redacted.Redacted<string>;
 }
-export const RotateMachineSecretKeyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    object: RotateMachineSecretKeyResponseObject,
-    secret: S.String.pipe(T.SensitiveValue({})),
-  }),
-).annotate({
-  identifier: "RotateMachineSecretKeyResponse",
-}) as any as S.Schema<RotateMachineSecretKeyResponse>;
+export const RotateMachineSecretKeyResponse =
+  GetMachineSecretKeyResponse as any as S.Schema<RotateMachineSecretKeyResponse>;
 
 export interface RotateOAuthApplicationSecretRequest {
   /** The ID of the OAuth application for which to rotate the client secret */
@@ -11577,14 +11530,8 @@ export interface UpdateEnterpriseConnectionRequestSamlLoginHint {
   /** The user public_metadata key whose value is sent as the login_hint when mode is custom_attribute */
   source?: string;
 }
-export const UpdateEnterpriseConnectionRequestSamlLoginHint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: UpdateEnterpriseConnectionRequestSamlLoginHintMode,
-    source: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateEnterpriseConnectionRequestSamlLoginHint",
-}) as any as S.Schema<UpdateEnterpriseConnectionRequestSamlLoginHint>;
+export const UpdateEnterpriseConnectionRequestSamlLoginHint =
+  CreateEnterpriseConnectionRequestSamlLoginHint as any as S.Schema<UpdateEnterpriseConnectionRequestSamlLoginHint>;
 
 /** SAML connection-specific properties. Only applied when the enterprise connection uses SAML. Use this to update IdP configuration, attribute mapping, and other SAML-specific settings. */
 export interface UpdateEnterpriseConnectionRequestSaml {

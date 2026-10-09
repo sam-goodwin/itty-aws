@@ -302,9 +302,8 @@ export const CreateWebhookResponseEventsItem = S.String;
 
 /** The webhooks events */
 export type CreateWebhookResponseEventsList = Array<CreateWebhookResponseEventsItem>;
-export const CreateWebhookResponseEventsList = /*@__PURE__*/ S.Array(
-  CreateWebhookResponseEventsItem,
-) as any as S.Schema<CreateWebhookResponseEventsList>;
+export const CreateWebhookResponseEventsList =
+  CreateWebhookRequestEventsList as any as S.Schema<CreateWebhookResponseEventsList>;
 
 /** The ID of the projects the webhook is associated with */
 export type CreateWebhookResponseProjectIdsList = Array<string>;
@@ -501,9 +500,8 @@ export const GetWebhookResponseEventsItem = S.String;
 
 /** The webhooks events */
 export type GetWebhookResponseEventsList = Array<GetWebhookResponseEventsItem>;
-export const GetWebhookResponseEventsList = /*@__PURE__*/ S.Array(
-  GetWebhookResponseEventsItem,
-) as any as S.Schema<GetWebhookResponseEventsList>;
+export const GetWebhookResponseEventsList =
+  CreateWebhookRequestEventsList as any as S.Schema<GetWebhookResponseEventsList>;
 
 /** The ID of the projects the webhook is associated with */
 export type GetWebhookResponseProjectIdsList = Array<string>;
@@ -678,9 +676,8 @@ export const GetWebhooksResponseBodyCase0ItemEventsItem = S.String;
 /** The webhooks events */
 export type GetWebhooksResponseBodyCase0ItemEventsList =
   Array<GetWebhooksResponseBodyCase0ItemEventsItem>;
-export const GetWebhooksResponseBodyCase0ItemEventsList = /*@__PURE__*/ S.Array(
-  GetWebhooksResponseBodyCase0ItemEventsItem,
-) as any as S.Schema<GetWebhooksResponseBodyCase0ItemEventsList>;
+export const GetWebhooksResponseBodyCase0ItemEventsList =
+  CreateWebhookRequestEventsList as any as S.Schema<GetWebhooksResponseBodyCase0ItemEventsList>;
 
 /** The ID of the projects the webhook is associated with */
 export type GetWebhooksResponseBodyCase0ItemProjectIdsList = Array<string>;
@@ -949,9 +946,8 @@ export const GetWebhooksResponseBodyCase1ItemEventsItem = S.String;
 /** The webhooks events */
 export type GetWebhooksResponseBodyCase1ItemEventsList =
   Array<GetWebhooksResponseBodyCase1ItemEventsItem>;
-export const GetWebhooksResponseBodyCase1ItemEventsList = /*@__PURE__*/ S.Array(
-  GetWebhooksResponseBodyCase1ItemEventsItem,
-) as any as S.Schema<GetWebhooksResponseBodyCase1ItemEventsList>;
+export const GetWebhooksResponseBodyCase1ItemEventsList =
+  CreateWebhookRequestEventsList as any as S.Schema<GetWebhooksResponseBodyCase1ItemEventsList>;
 
 /** The ID of the projects the webhook is associated with */
 export type GetWebhooksResponseBodyCase1ItemProjectIdsList = Array<string>;

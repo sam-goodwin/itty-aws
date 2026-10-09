@@ -637,9 +637,7 @@ export type AFDDomainHttpsCustomizedCipherSuiteSetCipherSuiteSetForTls13List = A
   AfdCustomizedCipherSuiteForTls13 | (string & {})
 >;
 export const AFDDomainHttpsCustomizedCipherSuiteSetCipherSuiteSetForTls13List =
-  /*@__PURE__*/ S.Array(
-    AfdCustomizedCipherSuiteForTls13,
-  ) as any as S.Schema<AFDDomainHttpsCustomizedCipherSuiteSetCipherSuiteSetForTls13List>;
+  AFDDomainHttpsCustomizedCipherSuiteSetCipherSuiteSetForTls12List as any as S.Schema<AFDDomainHttpsCustomizedCipherSuiteSetCipherSuiteSetForTls13List>;
 
 /** Customized cipher suite set object that will be used for Https when cipherSuiteSetType is Customized. */
 export interface AFDDomainHttpsCustomizedCipherSuiteSet {
@@ -1749,18 +1747,12 @@ export interface DeliveryRuleAction {
   /** Action parameters (polymorphic on `name`, discriminated by `parameters.typeName`). */
   parameters?: unknown;
 }
-export const DeliveryRuleAction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: DeliveryRuleActionName,
-    parameters: S.optional(S.Unknown),
-  }),
-).annotate({ identifier: "DeliveryRuleAction" }) as any as S.Schema<DeliveryRuleAction>;
+export const DeliveryRuleAction = DeliveryRuleCondition as any as S.Schema<DeliveryRuleAction>;
 
 /** A list of actions that are executed when all the conditions of a rule are satisfied. */
 export type DeliveryRuleActionsList = Array<DeliveryRuleAction>;
-export const DeliveryRuleActionsList = /*@__PURE__*/ S.Array(
-  DeliveryRuleAction,
-) as any as S.Schema<DeliveryRuleActionsList>;
+export const DeliveryRuleActionsList =
+  DeliveryRuleConditionsList as any as S.Schema<DeliveryRuleActionsList>;
 
 /** A rule that specifies a set of actions and conditions */
 export interface DeliveryRule {
@@ -2641,9 +2633,8 @@ export const AFDEndpointProtocols = S.String;
 export type RoutePropertiesInputSupportedProtocolsList = Array<
   AFDEndpointProtocols | (string & {})
 >;
-export const RoutePropertiesInputSupportedProtocolsList = /*@__PURE__*/ S.Array(
-  AFDEndpointProtocols,
-) as any as S.Schema<RoutePropertiesInputSupportedProtocolsList>;
+export const RoutePropertiesInputSupportedProtocolsList =
+  AFDDomainHttpsParametersServerTlsGroupsList as any as S.Schema<RoutePropertiesInputSupportedProtocolsList>;
 
 /** The route patterns of the rule. */
 export type RoutePropertiesInputPatternsToMatchList = Array<string>;
@@ -4462,9 +4453,8 @@ export const GetLogAnalyticsLogAnalyticsMetricsRequestMetricsItem = S.String;
 export type GetLogAnalyticsLogAnalyticsMetricsRequestMetricsList = Array<
   GetLogAnalyticsLogAnalyticsMetricsRequestMetricsItem | (string & {})
 >;
-export const GetLogAnalyticsLogAnalyticsMetricsRequestMetricsList = /*@__PURE__*/ S.Array(
-  GetLogAnalyticsLogAnalyticsMetricsRequestMetricsItem,
-) as any as S.Schema<GetLogAnalyticsLogAnalyticsMetricsRequestMetricsList>;
+export const GetLogAnalyticsLogAnalyticsMetricsRequestMetricsList =
+  AFDDomainHttpsParametersServerTlsGroupsList as any as S.Schema<GetLogAnalyticsLogAnalyticsMetricsRequestMetricsList>;
 
 export type GetLogAnalyticsLogAnalyticsMetricsRequestGranularity = "PT5M" | "PT1H" | "P1D";
 export const GetLogAnalyticsLogAnalyticsMetricsRequestGranularity = S.String;
@@ -4480,9 +4470,8 @@ export const GetLogAnalyticsLogAnalyticsMetricsRequestGroupByItem = S.String;
 export type GetLogAnalyticsLogAnalyticsMetricsRequestGroupByList = Array<
   GetLogAnalyticsLogAnalyticsMetricsRequestGroupByItem | (string & {})
 >;
-export const GetLogAnalyticsLogAnalyticsMetricsRequestGroupByList = /*@__PURE__*/ S.Array(
-  GetLogAnalyticsLogAnalyticsMetricsRequestGroupByItem,
-) as any as S.Schema<GetLogAnalyticsLogAnalyticsMetricsRequestGroupByList>;
+export const GetLogAnalyticsLogAnalyticsMetricsRequestGroupByList =
+  AFDDomainHttpsParametersServerTlsGroupsList as any as S.Schema<GetLogAnalyticsLogAnalyticsMetricsRequestGroupByList>;
 
 export type GetLogAnalyticsLogAnalyticsMetricsRequestContinentsList = Array<string>;
 export const GetLogAnalyticsLogAnalyticsMetricsRequestContinentsList =
@@ -4638,9 +4627,8 @@ export const GetLogAnalyticsLogAnalyticsRankingsRequestRankingsItem = S.String;
 export type GetLogAnalyticsLogAnalyticsRankingsRequestRankingsList = Array<
   GetLogAnalyticsLogAnalyticsRankingsRequestRankingsItem | (string & {})
 >;
-export const GetLogAnalyticsLogAnalyticsRankingsRequestRankingsList = /*@__PURE__*/ S.Array(
-  GetLogAnalyticsLogAnalyticsRankingsRequestRankingsItem,
-) as any as S.Schema<GetLogAnalyticsLogAnalyticsRankingsRequestRankingsList>;
+export const GetLogAnalyticsLogAnalyticsRankingsRequestRankingsList =
+  AFDDomainHttpsParametersServerTlsGroupsList as any as S.Schema<GetLogAnalyticsLogAnalyticsRankingsRequestRankingsList>;
 
 export type GetLogAnalyticsLogAnalyticsRankingsRequestMetricsItem =
   | "clientRequestCount"
@@ -4654,9 +4642,8 @@ export const GetLogAnalyticsLogAnalyticsRankingsRequestMetricsItem = S.String;
 export type GetLogAnalyticsLogAnalyticsRankingsRequestMetricsList = Array<
   GetLogAnalyticsLogAnalyticsRankingsRequestMetricsItem | (string & {})
 >;
-export const GetLogAnalyticsLogAnalyticsRankingsRequestMetricsList = /*@__PURE__*/ S.Array(
-  GetLogAnalyticsLogAnalyticsRankingsRequestMetricsItem,
-) as any as S.Schema<GetLogAnalyticsLogAnalyticsRankingsRequestMetricsList>;
+export const GetLogAnalyticsLogAnalyticsRankingsRequestMetricsList =
+  AFDDomainHttpsParametersServerTlsGroupsList as any as S.Schema<GetLogAnalyticsLogAnalyticsRankingsRequestMetricsList>;
 
 export type GetLogAnalyticsLogAnalyticsRankingsRequestCustomDomainsList = Array<string>;
 export const GetLogAnalyticsLogAnalyticsRankingsRequestCustomDomainsList =
@@ -4868,9 +4855,8 @@ export const GetLogAnalyticsWafLogAnalyticsMetricsRequestMetricsItem = S.String;
 export type GetLogAnalyticsWafLogAnalyticsMetricsRequestMetricsList = Array<
   GetLogAnalyticsWafLogAnalyticsMetricsRequestMetricsItem | (string & {})
 >;
-export const GetLogAnalyticsWafLogAnalyticsMetricsRequestMetricsList = /*@__PURE__*/ S.Array(
-  GetLogAnalyticsWafLogAnalyticsMetricsRequestMetricsItem,
-) as any as S.Schema<GetLogAnalyticsWafLogAnalyticsMetricsRequestMetricsList>;
+export const GetLogAnalyticsWafLogAnalyticsMetricsRequestMetricsList =
+  AFDDomainHttpsParametersServerTlsGroupsList as any as S.Schema<GetLogAnalyticsWafLogAnalyticsMetricsRequestMetricsList>;
 
 export type GetLogAnalyticsWafLogAnalyticsMetricsRequestGranularity = "PT5M" | "PT1H" | "P1D";
 export const GetLogAnalyticsWafLogAnalyticsMetricsRequestGranularity = S.String;
@@ -4885,9 +4871,8 @@ export const GetLogAnalyticsWafLogAnalyticsMetricsRequestActionsItem = S.String;
 export type GetLogAnalyticsWafLogAnalyticsMetricsRequestActionsList = Array<
   GetLogAnalyticsWafLogAnalyticsMetricsRequestActionsItem | (string & {})
 >;
-export const GetLogAnalyticsWafLogAnalyticsMetricsRequestActionsList = /*@__PURE__*/ S.Array(
-  GetLogAnalyticsWafLogAnalyticsMetricsRequestActionsItem,
-) as any as S.Schema<GetLogAnalyticsWafLogAnalyticsMetricsRequestActionsList>;
+export const GetLogAnalyticsWafLogAnalyticsMetricsRequestActionsList =
+  AFDDomainHttpsParametersServerTlsGroupsList as any as S.Schema<GetLogAnalyticsWafLogAnalyticsMetricsRequestActionsList>;
 
 export type GetLogAnalyticsWafLogAnalyticsMetricsRequestGroupByItem =
   | "httpStatusCode"
@@ -4897,9 +4882,8 @@ export const GetLogAnalyticsWafLogAnalyticsMetricsRequestGroupByItem = S.String;
 export type GetLogAnalyticsWafLogAnalyticsMetricsRequestGroupByList = Array<
   GetLogAnalyticsWafLogAnalyticsMetricsRequestGroupByItem | (string & {})
 >;
-export const GetLogAnalyticsWafLogAnalyticsMetricsRequestGroupByList = /*@__PURE__*/ S.Array(
-  GetLogAnalyticsWafLogAnalyticsMetricsRequestGroupByItem,
-) as any as S.Schema<GetLogAnalyticsWafLogAnalyticsMetricsRequestGroupByList>;
+export const GetLogAnalyticsWafLogAnalyticsMetricsRequestGroupByList =
+  AFDDomainHttpsParametersServerTlsGroupsList as any as S.Schema<GetLogAnalyticsWafLogAnalyticsMetricsRequestGroupByList>;
 
 export type GetLogAnalyticsWafLogAnalyticsMetricsRequestRuleTypesItem =
   | "managed"
@@ -4910,9 +4894,8 @@ export const GetLogAnalyticsWafLogAnalyticsMetricsRequestRuleTypesItem = S.Strin
 export type GetLogAnalyticsWafLogAnalyticsMetricsRequestRuleTypesList = Array<
   GetLogAnalyticsWafLogAnalyticsMetricsRequestRuleTypesItem | (string & {})
 >;
-export const GetLogAnalyticsWafLogAnalyticsMetricsRequestRuleTypesList = /*@__PURE__*/ S.Array(
-  GetLogAnalyticsWafLogAnalyticsMetricsRequestRuleTypesItem,
-) as any as S.Schema<GetLogAnalyticsWafLogAnalyticsMetricsRequestRuleTypesList>;
+export const GetLogAnalyticsWafLogAnalyticsMetricsRequestRuleTypesList =
+  AFDDomainHttpsParametersServerTlsGroupsList as any as S.Schema<GetLogAnalyticsWafLogAnalyticsMetricsRequestRuleTypesList>;
 
 export interface GetLogAnalyticsWafLogAnalyticsMetricsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5023,9 +5006,8 @@ export const GetLogAnalyticsWafLogAnalyticsRankingsRequestMetricsItem = S.String
 export type GetLogAnalyticsWafLogAnalyticsRankingsRequestMetricsList = Array<
   GetLogAnalyticsWafLogAnalyticsRankingsRequestMetricsItem | (string & {})
 >;
-export const GetLogAnalyticsWafLogAnalyticsRankingsRequestMetricsList = /*@__PURE__*/ S.Array(
-  GetLogAnalyticsWafLogAnalyticsRankingsRequestMetricsItem,
-) as any as S.Schema<GetLogAnalyticsWafLogAnalyticsRankingsRequestMetricsList>;
+export const GetLogAnalyticsWafLogAnalyticsRankingsRequestMetricsList =
+  AFDDomainHttpsParametersServerTlsGroupsList as any as S.Schema<GetLogAnalyticsWafLogAnalyticsRankingsRequestMetricsList>;
 
 export type GetLogAnalyticsWafLogAnalyticsRankingsRequestRankingsItem =
   | "action"
@@ -5041,9 +5023,8 @@ export const GetLogAnalyticsWafLogAnalyticsRankingsRequestRankingsItem = S.Strin
 export type GetLogAnalyticsWafLogAnalyticsRankingsRequestRankingsList = Array<
   GetLogAnalyticsWafLogAnalyticsRankingsRequestRankingsItem | (string & {})
 >;
-export const GetLogAnalyticsWafLogAnalyticsRankingsRequestRankingsList = /*@__PURE__*/ S.Array(
-  GetLogAnalyticsWafLogAnalyticsRankingsRequestRankingsItem,
-) as any as S.Schema<GetLogAnalyticsWafLogAnalyticsRankingsRequestRankingsList>;
+export const GetLogAnalyticsWafLogAnalyticsRankingsRequestRankingsList =
+  AFDDomainHttpsParametersServerTlsGroupsList as any as S.Schema<GetLogAnalyticsWafLogAnalyticsRankingsRequestRankingsList>;
 
 export type GetLogAnalyticsWafLogAnalyticsRankingsRequestActionsItem =
   | "allow"
@@ -5055,9 +5036,8 @@ export const GetLogAnalyticsWafLogAnalyticsRankingsRequestActionsItem = S.String
 export type GetLogAnalyticsWafLogAnalyticsRankingsRequestActionsList = Array<
   GetLogAnalyticsWafLogAnalyticsRankingsRequestActionsItem | (string & {})
 >;
-export const GetLogAnalyticsWafLogAnalyticsRankingsRequestActionsList = /*@__PURE__*/ S.Array(
-  GetLogAnalyticsWafLogAnalyticsRankingsRequestActionsItem,
-) as any as S.Schema<GetLogAnalyticsWafLogAnalyticsRankingsRequestActionsList>;
+export const GetLogAnalyticsWafLogAnalyticsRankingsRequestActionsList =
+  AFDDomainHttpsParametersServerTlsGroupsList as any as S.Schema<GetLogAnalyticsWafLogAnalyticsRankingsRequestActionsList>;
 
 export type GetLogAnalyticsWafLogAnalyticsRankingsRequestRuleTypesItem =
   | "managed"
@@ -5068,9 +5048,8 @@ export const GetLogAnalyticsWafLogAnalyticsRankingsRequestRuleTypesItem = S.Stri
 export type GetLogAnalyticsWafLogAnalyticsRankingsRequestRuleTypesList = Array<
   GetLogAnalyticsWafLogAnalyticsRankingsRequestRuleTypesItem | (string & {})
 >;
-export const GetLogAnalyticsWafLogAnalyticsRankingsRequestRuleTypesList = /*@__PURE__*/ S.Array(
-  GetLogAnalyticsWafLogAnalyticsRankingsRequestRuleTypesItem,
-) as any as S.Schema<GetLogAnalyticsWafLogAnalyticsRankingsRequestRuleTypesList>;
+export const GetLogAnalyticsWafLogAnalyticsRankingsRequestRuleTypesList =
+  AFDDomainHttpsParametersServerTlsGroupsList as any as S.Schema<GetLogAnalyticsWafLogAnalyticsRankingsRequestRuleTypesList>;
 
 export interface GetLogAnalyticsWafLogAnalyticsRankingsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5376,9 +5355,8 @@ export const TransformType = S.String;
 
 /** List of transforms. */
 export type MatchConditionTransformsList = Array<TransformType | (string & {})>;
-export const MatchConditionTransformsList = /*@__PURE__*/ S.Array(
-  TransformType,
-) as any as S.Schema<MatchConditionTransformsList>;
+export const MatchConditionTransformsList =
+  AFDDomainHttpsParametersServerTlsGroupsList as any as S.Schema<MatchConditionTransformsList>;
 
 /** Define match conditions */
 export interface MatchCondition {
@@ -7446,9 +7424,7 @@ export const ListProfileSupportedOptimizationTypesRequest = /*@__PURE__*/ S.susp
 export type SupportedOptimizationTypesListResultSupportedOptimizationTypesList =
   Array<OptimizationType>;
 export const SupportedOptimizationTypesListResultSupportedOptimizationTypesList =
-  /*@__PURE__*/ S.Array(
-    OptimizationType,
-  ) as any as S.Schema<SupportedOptimizationTypesListResultSupportedOptimizationTypesList>;
+  AFDDomainHttpsCustomizedCipherSuiteSetCipherSuiteSetForTls12List as any as S.Schema<SupportedOptimizationTypesListResultSupportedOptimizationTypesList>;
 
 /** The result of the GetSupportedOptimizationTypes API */
 export interface SupportedOptimizationTypesListResult {

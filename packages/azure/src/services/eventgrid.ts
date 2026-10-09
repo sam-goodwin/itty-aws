@@ -549,20 +549,8 @@ export interface CaCertificatesCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const CaCertificatesCreateOrUpdateResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(CaCertificatesCreateOrUpdateResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      CaCertificatesCreateOrUpdateResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CaCertificatesCreateOrUpdateResponseSystemData",
-}) as any as S.Schema<CaCertificatesCreateOrUpdateResponseSystemData>;
+export const CaCertificatesCreateOrUpdateResponseSystemData =
+  AuthorizePartnerConfigurationPartnerResponseSystemData as any as S.Schema<CaCertificatesCreateOrUpdateResponseSystemData>;
 
 export interface CaCertificatesCreateOrUpdateResponse {
   /** Fully qualified identifier of the resource. */
@@ -718,18 +706,8 @@ export interface ChannelsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const ChannelsCreateOrUpdateResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(ChannelsCreateOrUpdateResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(ChannelsCreateOrUpdateResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ChannelsCreateOrUpdateResponseSystemData",
-}) as any as S.Schema<ChannelsCreateOrUpdateResponseSystemData>;
+export const ChannelsCreateOrUpdateResponseSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<ChannelsCreateOrUpdateResponseSystemData>;
 
 export interface ChannelsCreateOrUpdateResponse {
   /** Fully qualified identifier of the resource. */
@@ -861,18 +839,8 @@ export interface ClientGroupsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const ClientGroupsCreateOrUpdateResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(ClientGroupsCreateOrUpdateResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(ClientGroupsCreateOrUpdateResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ClientGroupsCreateOrUpdateResponseSystemData",
-}) as any as S.Schema<ClientGroupsCreateOrUpdateResponseSystemData>;
+export const ClientGroupsCreateOrUpdateResponseSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<ClientGroupsCreateOrUpdateResponseSystemData>;
 
 export interface ClientGroupsCreateOrUpdateResponse {
   /** Fully qualified identifier of the resource. */
@@ -1072,18 +1040,8 @@ export interface ClientsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const ClientsCreateOrUpdateResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(ClientsCreateOrUpdateResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(ClientsCreateOrUpdateResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ClientsCreateOrUpdateResponseSystemData",
-}) as any as S.Schema<ClientsCreateOrUpdateResponseSystemData>;
+export const ClientsCreateOrUpdateResponseSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<ClientsCreateOrUpdateResponseSystemData>;
 
 export interface ClientsCreateOrUpdateResponse {
   /** Fully qualified identifier of the resource. */
@@ -1170,18 +1128,8 @@ export interface DeactivatePartnerTopicResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const DeactivatePartnerTopicResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(DeactivatePartnerTopicResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(DeactivatePartnerTopicResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeactivatePartnerTopicResponseSystemData",
-}) as any as S.Schema<DeactivatePartnerTopicResponseSystemData>;
+export const DeactivatePartnerTopicResponseSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<DeactivatePartnerTopicResponseSystemData>;
 
 export interface DeactivatePartnerTopicResponse {
   /** Fully qualified identifier of the resource. */
@@ -2722,18 +2670,8 @@ export interface DomainsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const DomainsCreateOrUpdateResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(DomainsCreateOrUpdateResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(DomainsCreateOrUpdateResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DomainsCreateOrUpdateResponseSystemData",
-}) as any as S.Schema<DomainsCreateOrUpdateResponseSystemData>;
+export const DomainsCreateOrUpdateResponseSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<DomainsCreateOrUpdateResponseSystemData>;
 
 export interface DomainsCreateOrUpdateResponse {
   /** Fully qualified identifier of the resource. */
@@ -2956,18 +2894,8 @@ export interface DomainTopicsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const DomainTopicsCreateOrUpdateResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(DomainTopicsCreateOrUpdateResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(DomainTopicsCreateOrUpdateResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DomainTopicsCreateOrUpdateResponseSystemData",
-}) as any as S.Schema<DomainTopicsCreateOrUpdateResponseSystemData>;
+export const DomainTopicsCreateOrUpdateResponseSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<DomainTopicsCreateOrUpdateResponseSystemData>;
 
 export interface DomainTopicsCreateOrUpdateResponse {
   /** Fully qualified identifier of the resource. */
@@ -3049,20 +2977,8 @@ export interface EventSubscriptionsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const EventSubscriptionsCreateOrUpdateResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(EventSubscriptionsCreateOrUpdateResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      EventSubscriptionsCreateOrUpdateResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "EventSubscriptionsCreateOrUpdateResponseSystemData",
-}) as any as S.Schema<EventSubscriptionsCreateOrUpdateResponseSystemData>;
+export const EventSubscriptionsCreateOrUpdateResponseSystemData =
+  AuthorizePartnerConfigurationPartnerResponseSystemData as any as S.Schema<EventSubscriptionsCreateOrUpdateResponseSystemData>;
 
 export interface EventSubscriptionsCreateOrUpdateResponse {
   /** Fully qualified identifier of the resource. */
@@ -3145,18 +3061,8 @@ export interface GetCaCertificateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetCaCertificateResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetCaCertificateResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetCaCertificateResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetCaCertificateResponseSystemData",
-}) as any as S.Schema<GetCaCertificateResponseSystemData>;
+export const GetCaCertificateResponseSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<GetCaCertificateResponseSystemData>;
 
 export interface GetCaCertificateResponse {
   /** Fully qualified identifier of the resource. */
@@ -3237,18 +3143,8 @@ export interface GetChannelResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetChannelResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetChannelResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetChannelResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetChannelResponseSystemData",
-}) as any as S.Schema<GetChannelResponseSystemData>;
+export const GetChannelResponseSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<GetChannelResponseSystemData>;
 
 export interface GetChannelResponse {
   /** Fully qualified identifier of the resource. */
@@ -3366,18 +3262,8 @@ export interface GetClientResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetClientResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetClientResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetClientResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetClientResponseSystemData",
-}) as any as S.Schema<GetClientResponseSystemData>;
+export const GetClientResponseSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<GetClientResponseSystemData>;
 
 export interface GetClientResponse {
   /** Fully qualified identifier of the resource. */
@@ -3458,18 +3344,8 @@ export interface GetClientGroupResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetClientGroupResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetClientGroupResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetClientGroupResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetClientGroupResponseSystemData",
-}) as any as S.Schema<GetClientGroupResponseSystemData>;
+export const GetClientGroupResponseSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<GetClientGroupResponseSystemData>;
 
 export interface GetClientGroupResponse {
   /** Fully qualified identifier of the resource. */
@@ -3552,18 +3428,8 @@ export interface GetDomainResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetDomainResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetDomainResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetDomainResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetDomainResponseSystemData",
-}) as any as S.Schema<GetDomainResponseSystemData>;
+export const GetDomainResponseSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<GetDomainResponseSystemData>;
 
 export interface GetDomainResponse {
   /** Fully qualified identifier of the resource. */
@@ -3655,18 +3521,8 @@ export interface GetDomainEventSubscriptionResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetDomainEventSubscriptionResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetDomainEventSubscriptionResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetDomainEventSubscriptionResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetDomainEventSubscriptionResponseSystemData",
-}) as any as S.Schema<GetDomainEventSubscriptionResponseSystemData>;
+export const GetDomainEventSubscriptionResponseSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<GetDomainEventSubscriptionResponseSystemData>;
 
 export interface GetDomainEventSubscriptionResponse {
   /** Fully qualified identifier of the resource. */
@@ -3842,18 +3698,8 @@ export interface GetDomainTopicResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetDomainTopicResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetDomainTopicResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetDomainTopicResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetDomainTopicResponseSystemData",
-}) as any as S.Schema<GetDomainTopicResponseSystemData>;
+export const GetDomainTopicResponseSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<GetDomainTopicResponseSystemData>;
 
 export interface GetDomainTopicResponse {
   /** Fully qualified identifier of the resource. */
@@ -3939,20 +3785,8 @@ export interface GetDomainTopicEventSubscriptionResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetDomainTopicEventSubscriptionResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetDomainTopicEventSubscriptionResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      GetDomainTopicEventSubscriptionResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetDomainTopicEventSubscriptionResponseSystemData",
-}) as any as S.Schema<GetDomainTopicEventSubscriptionResponseSystemData>;
+export const GetDomainTopicEventSubscriptionResponseSystemData =
+  AuthorizePartnerConfigurationPartnerResponseSystemData as any as S.Schema<GetDomainTopicEventSubscriptionResponseSystemData>;
 
 export interface GetDomainTopicEventSubscriptionResponse {
   /** Fully qualified identifier of the resource. */
@@ -3966,17 +3800,8 @@ export interface GetDomainTopicEventSubscriptionResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetDomainTopicEventSubscriptionResponseSystemData;
 }
-export const GetDomainTopicEventSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(EventSubscriptionProperties),
-    systemData: S.optional(GetDomainTopicEventSubscriptionResponseSystemData),
-  }),
-).annotate({
-  identifier: "GetDomainTopicEventSubscriptionResponse",
-}) as any as S.Schema<GetDomainTopicEventSubscriptionResponse>;
+export const GetDomainTopicEventSubscriptionResponse =
+  EventSubscriptionsCreateOrUpdateResponse as any as S.Schema<GetDomainTopicEventSubscriptionResponse>;
 
 export interface GetDomainTopicEventSubscriptionDeliveryAttributesRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -4094,18 +3919,8 @@ export interface GetEventSubscriptionResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetEventSubscriptionResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetEventSubscriptionResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetEventSubscriptionResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetEventSubscriptionResponseSystemData",
-}) as any as S.Schema<GetEventSubscriptionResponseSystemData>;
+export const GetEventSubscriptionResponseSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<GetEventSubscriptionResponseSystemData>;
 
 export interface GetEventSubscriptionResponse {
   /** Fully qualified identifier of the resource. */
@@ -4119,17 +3934,8 @@ export interface GetEventSubscriptionResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetEventSubscriptionResponseSystemData;
 }
-export const GetEventSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(EventSubscriptionProperties),
-    systemData: S.optional(GetEventSubscriptionResponseSystemData),
-  }),
-).annotate({
-  identifier: "GetEventSubscriptionResponse",
-}) as any as S.Schema<GetEventSubscriptionResponse>;
+export const GetEventSubscriptionResponse =
+  GetDomainEventSubscriptionResponse as any as S.Schema<GetEventSubscriptionResponse>;
 
 export interface GetEventSubscriptionDeliveryAttributesRequest {
   /** The scope of the event subscription. The scope can be a subscription, or a resource group, or a top level resource belonging to a resource provider namespace, or an EventGrid topic. For example, use '/subscriptions/{subscriptionId}/' for a subscription, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for a resource group, and '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}' for a resource, and '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}' for an EventGrid topic. */
@@ -4237,18 +4043,8 @@ export interface GetExtensionTopicResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetExtensionTopicResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetExtensionTopicResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetExtensionTopicResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetExtensionTopicResponseSystemData",
-}) as any as S.Schema<GetExtensionTopicResponseSystemData>;
+export const GetExtensionTopicResponseSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<GetExtensionTopicResponseSystemData>;
 
 export interface GetExtensionTopicResponse {
   /** Fully qualified identifier of the resource. */
@@ -4460,12 +4256,7 @@ export interface RoutingIdentityInfo {
   type?: RoutingIdentityInfoType | (string & {});
   userAssignedIdentity?: string;
 }
-export const RoutingIdentityInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(RoutingIdentityInfoType),
-    userAssignedIdentity: S.optional(S.String),
-  }),
-).annotate({ identifier: "RoutingIdentityInfo" }) as any as S.Schema<RoutingIdentityInfo>;
+export const RoutingIdentityInfo = CustomDomainIdentity as any as S.Schema<RoutingIdentityInfo>;
 
 /** List of custom domain configurations for the namespace. */
 export type TopicSpacesConfigurationCustomDomainsList = Array<CustomDomainConfiguration>;
@@ -4598,18 +4389,8 @@ export interface GetNamespaceResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetNamespaceResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetNamespaceResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetNamespaceResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetNamespaceResponseSystemData",
-}) as any as S.Schema<GetNamespaceResponseSystemData>;
+export const GetNamespaceResponseSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<GetNamespaceResponseSystemData>;
 
 export interface GetNamespaceResponse {
   /** Fully qualified identifier of the resource. */
@@ -4744,18 +4525,8 @@ export interface GetNamespaceTopicResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetNamespaceTopicResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetNamespaceTopicResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetNamespaceTopicResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetNamespaceTopicResponseSystemData",
-}) as any as S.Schema<GetNamespaceTopicResponseSystemData>;
+export const GetNamespaceTopicResponseSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<GetNamespaceTopicResponseSystemData>;
 
 export interface GetNamespaceTopicResponse {
   /** Fully qualified identifier of the resource. */
@@ -4934,20 +4705,12 @@ export interface Filter {
   /** Comparison values (polymorphic on `operatorType`). */
   values?: unknown;
 }
-export const Filter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operatorType: FilterOperatorType,
-    key: S.optional(S.String),
-    value: S.optional(S.Unknown),
-    values: S.optional(S.Unknown),
-  }),
-).annotate({ identifier: "Filter" }) as any as S.Schema<Filter>;
+export const Filter = AdvancedFilter as any as S.Schema<Filter>;
 
 /** An array of filters that are used for filtering event subscriptions. */
 export type FiltersConfigurationFiltersList = Array<Filter>;
-export const FiltersConfigurationFiltersList = /*@__PURE__*/ S.Array(
-  Filter,
-) as any as S.Schema<FiltersConfigurationFiltersList>;
+export const FiltersConfigurationFiltersList =
+  EventSubscriptionFilterAdvancedFiltersList as any as S.Schema<FiltersConfigurationFiltersList>;
 
 /** Filters configuration for the Event Subscription. */
 export interface FiltersConfiguration {
@@ -5017,20 +4780,8 @@ export interface GetNamespaceTopicEventSubscriptionResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetNamespaceTopicEventSubscriptionResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetNamespaceTopicEventSubscriptionResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      GetNamespaceTopicEventSubscriptionResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetNamespaceTopicEventSubscriptionResponseSystemData",
-}) as any as S.Schema<GetNamespaceTopicEventSubscriptionResponseSystemData>;
+export const GetNamespaceTopicEventSubscriptionResponseSystemData =
+  AuthorizePartnerConfigurationPartnerResponseSystemData as any as S.Schema<GetNamespaceTopicEventSubscriptionResponseSystemData>;
 
 export interface GetNamespaceTopicEventSubscriptionResponse {
   /** Fully qualified identifier of the resource. */
@@ -5179,18 +4930,8 @@ export interface GetPartnerConfigurationResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetPartnerConfigurationResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetPartnerConfigurationResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetPartnerConfigurationResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetPartnerConfigurationResponseSystemData",
-}) as any as S.Schema<GetPartnerConfigurationResponseSystemData>;
+export const GetPartnerConfigurationResponseSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<GetPartnerConfigurationResponseSystemData>;
 
 /** Tags of the resource. */
 export type GetPartnerConfigurationResponseTagsMap = { [key: string]: string | undefined };
@@ -5362,18 +5103,8 @@ export interface GetPartnerNamespaceResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetPartnerNamespaceResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetPartnerNamespaceResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetPartnerNamespaceResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetPartnerNamespaceResponseSystemData",
-}) as any as S.Schema<GetPartnerNamespaceResponseSystemData>;
+export const GetPartnerNamespaceResponseSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<GetPartnerNamespaceResponseSystemData>;
 
 export interface GetPartnerNamespaceResponse {
   /** Fully qualified identifier of the resource. */
@@ -5492,18 +5223,8 @@ export interface GetPartnerRegistrationResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetPartnerRegistrationResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetPartnerRegistrationResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetPartnerRegistrationResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetPartnerRegistrationResponseSystemData",
-}) as any as S.Schema<GetPartnerRegistrationResponseSystemData>;
+export const GetPartnerRegistrationResponseSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<GetPartnerRegistrationResponseSystemData>;
 
 export interface GetPartnerRegistrationResponse {
   /** Fully qualified identifier of the resource. */
@@ -5594,18 +5315,8 @@ export interface GetPartnerTopicResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetPartnerTopicResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetPartnerTopicResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetPartnerTopicResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetPartnerTopicResponseSystemData",
-}) as any as S.Schema<GetPartnerTopicResponseSystemData>;
+export const GetPartnerTopicResponseSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<GetPartnerTopicResponseSystemData>;
 
 export interface GetPartnerTopicResponse {
   /** Fully qualified identifier of the resource. */
@@ -5697,20 +5408,8 @@ export interface GetPartnerTopicEventSubscriptionResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetPartnerTopicEventSubscriptionResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetPartnerTopicEventSubscriptionResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      GetPartnerTopicEventSubscriptionResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetPartnerTopicEventSubscriptionResponseSystemData",
-}) as any as S.Schema<GetPartnerTopicEventSubscriptionResponseSystemData>;
+export const GetPartnerTopicEventSubscriptionResponseSystemData =
+  AuthorizePartnerConfigurationPartnerResponseSystemData as any as S.Schema<GetPartnerTopicEventSubscriptionResponseSystemData>;
 
 export interface GetPartnerTopicEventSubscriptionResponse {
   /** Fully qualified identifier of the resource. */
@@ -5724,17 +5423,8 @@ export interface GetPartnerTopicEventSubscriptionResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetPartnerTopicEventSubscriptionResponseSystemData;
 }
-export const GetPartnerTopicEventSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(EventSubscriptionProperties),
-    systemData: S.optional(GetPartnerTopicEventSubscriptionResponseSystemData),
-  }),
-).annotate({
-  identifier: "GetPartnerTopicEventSubscriptionResponse",
-}) as any as S.Schema<GetPartnerTopicEventSubscriptionResponse>;
+export const GetPartnerTopicEventSubscriptionResponse =
+  EventSubscriptionsCreateOrUpdateResponse as any as S.Schema<GetPartnerTopicEventSubscriptionResponse>;
 
 export interface GetPartnerTopicEventSubscriptionDeliveryAttributesRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -5892,18 +5582,8 @@ export interface GetPermissionBindingResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetPermissionBindingResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetPermissionBindingResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetPermissionBindingResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetPermissionBindingResponseSystemData",
-}) as any as S.Schema<GetPermissionBindingResponseSystemData>;
+export const GetPermissionBindingResponseSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<GetPermissionBindingResponseSystemData>;
 
 export interface GetPermissionBindingResponse {
   /** Fully qualified identifier of the resource. */
@@ -6145,18 +5825,8 @@ export interface GetSystemTopicResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetSystemTopicResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetSystemTopicResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetSystemTopicResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetSystemTopicResponseSystemData",
-}) as any as S.Schema<GetSystemTopicResponseSystemData>;
+export const GetSystemTopicResponseSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<GetSystemTopicResponseSystemData>;
 
 export interface GetSystemTopicResponse {
   /** Fully qualified identifier of the resource. */
@@ -6248,20 +5918,8 @@ export interface GetSystemTopicEventSubscriptionResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetSystemTopicEventSubscriptionResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetSystemTopicEventSubscriptionResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      GetSystemTopicEventSubscriptionResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetSystemTopicEventSubscriptionResponseSystemData",
-}) as any as S.Schema<GetSystemTopicEventSubscriptionResponseSystemData>;
+export const GetSystemTopicEventSubscriptionResponseSystemData =
+  AuthorizePartnerConfigurationPartnerResponseSystemData as any as S.Schema<GetSystemTopicEventSubscriptionResponseSystemData>;
 
 export interface GetSystemTopicEventSubscriptionResponse {
   /** Fully qualified identifier of the resource. */
@@ -6275,17 +5933,8 @@ export interface GetSystemTopicEventSubscriptionResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetSystemTopicEventSubscriptionResponseSystemData;
 }
-export const GetSystemTopicEventSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(EventSubscriptionProperties),
-    systemData: S.optional(GetSystemTopicEventSubscriptionResponseSystemData),
-  }),
-).annotate({
-  identifier: "GetSystemTopicEventSubscriptionResponse",
-}) as any as S.Schema<GetSystemTopicEventSubscriptionResponse>;
+export const GetSystemTopicEventSubscriptionResponse =
+  EventSubscriptionsCreateOrUpdateResponse as any as S.Schema<GetSystemTopicEventSubscriptionResponse>;
 
 export interface GetSystemTopicEventSubscriptionDeliveryAttributesRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -6486,18 +6135,8 @@ export interface GetTopicResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetTopicResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetTopicResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetTopicResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetTopicResponseSystemData",
-}) as any as S.Schema<GetTopicResponseSystemData>;
+export const GetTopicResponseSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<GetTopicResponseSystemData>;
 
 export interface GetTopicResponse {
   /** Fully qualified identifier of the resource. */
@@ -6589,18 +6228,8 @@ export interface GetTopicEventSubscriptionResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetTopicEventSubscriptionResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetTopicEventSubscriptionResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetTopicEventSubscriptionResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetTopicEventSubscriptionResponseSystemData",
-}) as any as S.Schema<GetTopicEventSubscriptionResponseSystemData>;
+export const GetTopicEventSubscriptionResponseSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<GetTopicEventSubscriptionResponseSystemData>;
 
 export interface GetTopicEventSubscriptionResponse {
   /** Fully qualified identifier of the resource. */
@@ -6614,17 +6243,8 @@ export interface GetTopicEventSubscriptionResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetTopicEventSubscriptionResponseSystemData;
 }
-export const GetTopicEventSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(EventSubscriptionProperties),
-    systemData: S.optional(GetTopicEventSubscriptionResponseSystemData),
-  }),
-).annotate({
-  identifier: "GetTopicEventSubscriptionResponse",
-}) as any as S.Schema<GetTopicEventSubscriptionResponse>;
+export const GetTopicEventSubscriptionResponse =
+  GetDomainEventSubscriptionResponse as any as S.Schema<GetTopicEventSubscriptionResponse>;
 
 export interface GetTopicEventSubscriptionDeliveryAttributesRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -6772,18 +6392,8 @@ export interface GetTopicSpaceResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetTopicSpaceResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetTopicSpaceResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetTopicSpaceResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetTopicSpaceResponseSystemData",
-}) as any as S.Schema<GetTopicSpaceResponseSystemData>;
+export const GetTopicSpaceResponseSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<GetTopicSpaceResponseSystemData>;
 
 export interface GetTopicSpaceResponse {
   /** Fully qualified identifier of the resource. */
@@ -7036,18 +6646,8 @@ export interface GetVerifiedPartnerResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetVerifiedPartnerResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetVerifiedPartnerResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetVerifiedPartnerResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetVerifiedPartnerResponseSystemData",
-}) as any as S.Schema<GetVerifiedPartnerResponseSystemData>;
+export const GetVerifiedPartnerResponseSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<GetVerifiedPartnerResponseSystemData>;
 
 export interface GetVerifiedPartnerResponse {
   /** Fully qualified identifier of the resource. */
@@ -7247,16 +6847,7 @@ export interface ChannelSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const ChannelSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(ChannelSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(ChannelSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({ identifier: "ChannelSystemData" }) as any as S.Schema<ChannelSystemData>;
+export const ChannelSystemData = CaCertificateSystemData as any as S.Schema<ChannelSystemData>;
 
 /** Channel info. */
 export interface Channel {
@@ -7355,16 +6946,7 @@ export interface ClientSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const ClientSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(ClientSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(ClientSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({ identifier: "ClientSystemData" }) as any as S.Schema<ClientSystemData>;
+export const ClientSystemData = CaCertificateSystemData as any as S.Schema<ClientSystemData>;
 
 /** The Client resource. */
 export interface Client {
@@ -7467,16 +7049,8 @@ export interface ClientGroupSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const ClientGroupSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(ClientGroupSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(ClientGroupSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({ identifier: "ClientGroupSystemData" }) as any as S.Schema<ClientGroupSystemData>;
+export const ClientGroupSystemData =
+  CaCertificateSystemData as any as S.Schema<ClientGroupSystemData>;
 
 /** The Client group resource. */
 export interface ClientGroup {
@@ -7576,16 +7150,7 @@ export interface DomainSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const DomainSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(DomainSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(DomainSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({ identifier: "DomainSystemData" }) as any as S.Schema<DomainSystemData>;
+export const DomainSystemData = CaCertificateSystemData as any as S.Schema<DomainSystemData>;
 
 /** EventGrid Domain. */
 export interface Domain {
@@ -7726,18 +7291,8 @@ export interface EventSubscriptionSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const EventSubscriptionSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(EventSubscriptionSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(EventSubscriptionSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "EventSubscriptionSystemData",
-}) as any as S.Schema<EventSubscriptionSystemData>;
+export const EventSubscriptionSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<EventSubscriptionSystemData>;
 
 /** Event Subscription. */
 export interface EventSubscription {
@@ -7881,16 +7436,8 @@ export interface DomainTopicSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const DomainTopicSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(DomainTopicSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(DomainTopicSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({ identifier: "DomainTopicSystemData" }) as any as S.Schema<DomainTopicSystemData>;
+export const DomainTopicSystemData =
+  CaCertificateSystemData as any as S.Schema<DomainTopicSystemData>;
 
 /** Domain Topic. */
 export interface DomainTopic {
@@ -8340,16 +7887,7 @@ export interface NamespaceSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const NamespaceSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(NamespaceSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(NamespaceSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({ identifier: "NamespaceSystemData" }) as any as S.Schema<NamespaceSystemData>;
+export const NamespaceSystemData = CaCertificateSystemData as any as S.Schema<NamespaceSystemData>;
 
 /** Namespace resource. */
 export interface Namespace {
@@ -8534,16 +8072,8 @@ export interface NamespaceTopicSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const NamespaceTopicSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(NamespaceTopicSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(NamespaceTopicSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({ identifier: "NamespaceTopicSystemData" }) as any as S.Schema<NamespaceTopicSystemData>;
+export const NamespaceTopicSystemData =
+  CaCertificateSystemData as any as S.Schema<NamespaceTopicSystemData>;
 
 /** Namespace topic details. */
 export interface NamespaceTopic {
@@ -8656,16 +8186,8 @@ export interface SubscriptionSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SubscriptionSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(SubscriptionSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(SubscriptionSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({ identifier: "SubscriptionSystemData" }) as any as S.Schema<SubscriptionSystemData>;
+export const SubscriptionSystemData =
+  CaCertificateSystemData as any as S.Schema<SubscriptionSystemData>;
 
 /** Event Subscription. */
 export interface Subscription {
@@ -8873,18 +8395,8 @@ export interface PartnerConfigurationSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const PartnerConfigurationSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(PartnerConfigurationSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(PartnerConfigurationSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PartnerConfigurationSystemData",
-}) as any as S.Schema<PartnerConfigurationSystemData>;
+export const PartnerConfigurationSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<PartnerConfigurationSystemData>;
 
 /** Tags of the resource. */
 export type PartnerConfigurationTagsMap = { [key: string]: string | undefined };
@@ -9031,18 +8543,8 @@ export interface PartnerNamespaceSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const PartnerNamespaceSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(PartnerNamespaceSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(PartnerNamespaceSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PartnerNamespaceSystemData",
-}) as any as S.Schema<PartnerNamespaceSystemData>;
+export const PartnerNamespaceSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<PartnerNamespaceSystemData>;
 
 /** EventGrid Partner Namespace. */
 export interface PartnerNamespace {
@@ -9219,18 +8721,8 @@ export interface PartnerRegistrationSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const PartnerRegistrationSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(PartnerRegistrationSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(PartnerRegistrationSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PartnerRegistrationSystemData",
-}) as any as S.Schema<PartnerRegistrationSystemData>;
+export const PartnerRegistrationSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<PartnerRegistrationSystemData>;
 
 /** Information about a partner registration. */
 export interface PartnerRegistration {
@@ -9372,16 +8864,8 @@ export interface PartnerTopicSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const PartnerTopicSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(PartnerTopicSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(PartnerTopicSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({ identifier: "PartnerTopicSystemData" }) as any as S.Schema<PartnerTopicSystemData>;
+export const PartnerTopicSystemData =
+  CaCertificateSystemData as any as S.Schema<PartnerTopicSystemData>;
 
 /** Event Grid Partner Topic. */
 export interface PartnerTopic {
@@ -9553,18 +9037,8 @@ export interface PermissionBindingSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const PermissionBindingSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(PermissionBindingSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(PermissionBindingSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PermissionBindingSystemData",
-}) as any as S.Schema<PermissionBindingSystemData>;
+export const PermissionBindingSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<PermissionBindingSystemData>;
 
 /** The Permission binding resource. */
 export interface PermissionBinding {
@@ -9789,16 +9263,8 @@ export interface SystemTopicSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemTopicSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(SystemTopicSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(SystemTopicSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({ identifier: "SystemTopicSystemData" }) as any as S.Schema<SystemTopicSystemData>;
+export const SystemTopicSystemData =
+  CaCertificateSystemData as any as S.Schema<SystemTopicSystemData>;
 
 /** EventGrid System Topic. */
 export interface SystemTopic {
@@ -9963,16 +9429,7 @@ export interface TopicSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const TopicSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(TopicSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(TopicSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({ identifier: "TopicSystemData" }) as any as S.Schema<TopicSystemData>;
+export const TopicSystemData = CaCertificateSystemData as any as S.Schema<TopicSystemData>;
 
 /** EventGrid Topic */
 export interface Topic {
@@ -10253,16 +9710,8 @@ export interface TopicSpaceSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const TopicSpaceSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(TopicSpaceSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(TopicSpaceSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({ identifier: "TopicSpaceSystemData" }) as any as S.Schema<TopicSpaceSystemData>;
+export const TopicSpaceSystemData =
+  CaCertificateSystemData as any as S.Schema<TopicSpaceSystemData>;
 
 /** The Topic space resource. */
 export interface TopicSpace {
@@ -10421,18 +9870,8 @@ export interface VerifiedPartnerSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const VerifiedPartnerSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(VerifiedPartnerSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(VerifiedPartnerSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "VerifiedPartnerSystemData",
-}) as any as S.Schema<VerifiedPartnerSystemData>;
+export const VerifiedPartnerSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<VerifiedPartnerSystemData>;
 
 /** Verified partner information */
 export interface VerifiedPartner {
@@ -10677,18 +10116,8 @@ export interface NamespacesCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const NamespacesCreateOrUpdateResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(NamespacesCreateOrUpdateResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(NamespacesCreateOrUpdateResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "NamespacesCreateOrUpdateResponseSystemData",
-}) as any as S.Schema<NamespacesCreateOrUpdateResponseSystemData>;
+export const NamespacesCreateOrUpdateResponseSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<NamespacesCreateOrUpdateResponseSystemData>;
 
 export interface NamespacesCreateOrUpdateResponse {
   /** Fully qualified identifier of the resource. */
@@ -10820,22 +10249,7 @@ export interface NamespaceTopicEventSubscriptionsCreateOrUpdateResponseSystemDat
   lastModifiedAt?: string;
 }
 export const NamespaceTopicEventSubscriptionsCreateOrUpdateResponseSystemData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        NamespaceTopicEventSubscriptionsCreateOrUpdateResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        NamespaceTopicEventSubscriptionsCreateOrUpdateResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "NamespaceTopicEventSubscriptionsCreateOrUpdateResponseSystemData",
-  }) as any as S.Schema<NamespaceTopicEventSubscriptionsCreateOrUpdateResponseSystemData>;
+  DomainTopicEventSubscriptionsCreateOrUpdateResponseSystemData as any as S.Schema<NamespaceTopicEventSubscriptionsCreateOrUpdateResponseSystemData>;
 
 export interface NamespaceTopicEventSubscriptionsCreateOrUpdateResponse {
   /** Fully qualified identifier of the resource. */
@@ -10950,20 +10364,8 @@ export interface NamespaceTopicsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const NamespaceTopicsCreateOrUpdateResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(NamespaceTopicsCreateOrUpdateResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      NamespaceTopicsCreateOrUpdateResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "NamespaceTopicsCreateOrUpdateResponseSystemData",
-}) as any as S.Schema<NamespaceTopicsCreateOrUpdateResponseSystemData>;
+export const NamespaceTopicsCreateOrUpdateResponseSystemData =
+  AuthorizePartnerConfigurationPartnerResponseSystemData as any as S.Schema<NamespaceTopicsCreateOrUpdateResponseSystemData>;
 
 export interface NamespaceTopicsCreateOrUpdateResponse {
   /** Fully qualified identifier of the resource. */
@@ -11058,20 +10460,8 @@ export interface PartnerConfigurationsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const PartnerConfigurationsCreateOrUpdateResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(PartnerConfigurationsCreateOrUpdateResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      PartnerConfigurationsCreateOrUpdateResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PartnerConfigurationsCreateOrUpdateResponseSystemData",
-}) as any as S.Schema<PartnerConfigurationsCreateOrUpdateResponseSystemData>;
+export const PartnerConfigurationsCreateOrUpdateResponseSystemData =
+  AuthorizePartnerConfigurationPartnerResponseSystemData as any as S.Schema<PartnerConfigurationsCreateOrUpdateResponseSystemData>;
 
 /** Tags of the resource. */
 export type PartnerConfigurationsCreateOrUpdateResponseTagsMap = {
@@ -11172,23 +10562,8 @@ export interface PartnerConfigurationsUnauthorizePartnerResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const PartnerConfigurationsUnauthorizePartnerResponseSystemData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        PartnerConfigurationsUnauthorizePartnerResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        PartnerConfigurationsUnauthorizePartnerResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "PartnerConfigurationsUnauthorizePartnerResponseSystemData",
-}) as any as S.Schema<PartnerConfigurationsUnauthorizePartnerResponseSystemData>;
+export const PartnerConfigurationsUnauthorizePartnerResponseSystemData =
+  DomainEventSubscriptionsCreateOrUpdateResponseSystemData as any as S.Schema<PartnerConfigurationsUnauthorizePartnerResponseSystemData>;
 
 /** Tags of the resource. */
 export type PartnerConfigurationsUnauthorizePartnerResponseTagsMap = {
@@ -11351,20 +10726,8 @@ export interface PartnerNamespacesCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const PartnerNamespacesCreateOrUpdateResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(PartnerNamespacesCreateOrUpdateResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      PartnerNamespacesCreateOrUpdateResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PartnerNamespacesCreateOrUpdateResponseSystemData",
-}) as any as S.Schema<PartnerNamespacesCreateOrUpdateResponseSystemData>;
+export const PartnerNamespacesCreateOrUpdateResponseSystemData =
+  AuthorizePartnerConfigurationPartnerResponseSystemData as any as S.Schema<PartnerNamespacesCreateOrUpdateResponseSystemData>;
 
 export interface PartnerNamespacesCreateOrUpdateResponse {
   /** Fully qualified identifier of the resource. */
@@ -11488,20 +10851,8 @@ export interface PartnerRegistrationsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const PartnerRegistrationsCreateOrUpdateResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(PartnerRegistrationsCreateOrUpdateResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      PartnerRegistrationsCreateOrUpdateResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PartnerRegistrationsCreateOrUpdateResponseSystemData",
-}) as any as S.Schema<PartnerRegistrationsCreateOrUpdateResponseSystemData>;
+export const PartnerRegistrationsCreateOrUpdateResponseSystemData =
+  AuthorizePartnerConfigurationPartnerResponseSystemData as any as S.Schema<PartnerRegistrationsCreateOrUpdateResponseSystemData>;
 
 export interface PartnerRegistrationsCreateOrUpdateResponse {
   /** Fully qualified identifier of the resource. */
@@ -11597,22 +10948,7 @@ export interface PartnerTopicEventSubscriptionsCreateOrUpdateResponseSystemData 
   lastModifiedAt?: string;
 }
 export const PartnerTopicEventSubscriptionsCreateOrUpdateResponseSystemData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        PartnerTopicEventSubscriptionsCreateOrUpdateResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        PartnerTopicEventSubscriptionsCreateOrUpdateResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "PartnerTopicEventSubscriptionsCreateOrUpdateResponseSystemData",
-  }) as any as S.Schema<PartnerTopicEventSubscriptionsCreateOrUpdateResponseSystemData>;
+  DomainTopicEventSubscriptionsCreateOrUpdateResponseSystemData as any as S.Schema<PartnerTopicEventSubscriptionsCreateOrUpdateResponseSystemData>;
 
 export interface PartnerTopicEventSubscriptionsCreateOrUpdateResponse {
   /** Fully qualified identifier of the resource. */
@@ -11626,17 +10962,8 @@ export interface PartnerTopicEventSubscriptionsCreateOrUpdateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: PartnerTopicEventSubscriptionsCreateOrUpdateResponseSystemData;
 }
-export const PartnerTopicEventSubscriptionsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(EventSubscriptionProperties),
-    systemData: S.optional(PartnerTopicEventSubscriptionsCreateOrUpdateResponseSystemData),
-  }),
-).annotate({
-  identifier: "PartnerTopicEventSubscriptionsCreateOrUpdateResponse",
-}) as any as S.Schema<PartnerTopicEventSubscriptionsCreateOrUpdateResponse>;
+export const PartnerTopicEventSubscriptionsCreateOrUpdateResponse =
+  DomainTopicEventSubscriptionsCreateOrUpdateResponse as any as S.Schema<PartnerTopicEventSubscriptionsCreateOrUpdateResponse>;
 
 /** Tags of the resource. */
 export type PartnerTopicsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
@@ -11754,18 +11081,8 @@ export interface PartnerTopicsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const PartnerTopicsCreateOrUpdateResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(PartnerTopicsCreateOrUpdateResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(PartnerTopicsCreateOrUpdateResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PartnerTopicsCreateOrUpdateResponseSystemData",
-}) as any as S.Schema<PartnerTopicsCreateOrUpdateResponseSystemData>;
+export const PartnerTopicsCreateOrUpdateResponseSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<PartnerTopicsCreateOrUpdateResponseSystemData>;
 
 export interface PartnerTopicsCreateOrUpdateResponse {
   /** Fully qualified identifier of the resource. */
@@ -11888,20 +11205,8 @@ export interface PermissionBindingsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const PermissionBindingsCreateOrUpdateResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(PermissionBindingsCreateOrUpdateResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      PermissionBindingsCreateOrUpdateResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PermissionBindingsCreateOrUpdateResponseSystemData",
-}) as any as S.Schema<PermissionBindingsCreateOrUpdateResponseSystemData>;
+export const PermissionBindingsCreateOrUpdateResponseSystemData =
+  AuthorizePartnerConfigurationPartnerResponseSystemData as any as S.Schema<PermissionBindingsCreateOrUpdateResponseSystemData>;
 
 export interface PermissionBindingsCreateOrUpdateResponse {
   /** Fully qualified identifier of the resource. */
@@ -12134,22 +11439,7 @@ export interface SystemTopicEventSubscriptionsCreateOrUpdateResponseSystemData {
   lastModifiedAt?: string;
 }
 export const SystemTopicEventSubscriptionsCreateOrUpdateResponseSystemData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        SystemTopicEventSubscriptionsCreateOrUpdateResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        SystemTopicEventSubscriptionsCreateOrUpdateResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "SystemTopicEventSubscriptionsCreateOrUpdateResponseSystemData",
-  }) as any as S.Schema<SystemTopicEventSubscriptionsCreateOrUpdateResponseSystemData>;
+  DomainTopicEventSubscriptionsCreateOrUpdateResponseSystemData as any as S.Schema<SystemTopicEventSubscriptionsCreateOrUpdateResponseSystemData>;
 
 export interface SystemTopicEventSubscriptionsCreateOrUpdateResponse {
   /** Fully qualified identifier of the resource. */
@@ -12163,17 +11453,8 @@ export interface SystemTopicEventSubscriptionsCreateOrUpdateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: SystemTopicEventSubscriptionsCreateOrUpdateResponseSystemData;
 }
-export const SystemTopicEventSubscriptionsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(EventSubscriptionProperties),
-    systemData: S.optional(SystemTopicEventSubscriptionsCreateOrUpdateResponseSystemData),
-  }),
-).annotate({
-  identifier: "SystemTopicEventSubscriptionsCreateOrUpdateResponse",
-}) as any as S.Schema<SystemTopicEventSubscriptionsCreateOrUpdateResponse>;
+export const SystemTopicEventSubscriptionsCreateOrUpdateResponse =
+  DomainTopicEventSubscriptionsCreateOrUpdateResponse as any as S.Schema<SystemTopicEventSubscriptionsCreateOrUpdateResponse>;
 
 /** Tags of the resource. */
 export type SystemTopicsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
@@ -12269,18 +11550,8 @@ export interface SystemTopicsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemTopicsCreateOrUpdateResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(SystemTopicsCreateOrUpdateResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(SystemTopicsCreateOrUpdateResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SystemTopicsCreateOrUpdateResponseSystemData",
-}) as any as S.Schema<SystemTopicsCreateOrUpdateResponseSystemData>;
+export const SystemTopicsCreateOrUpdateResponseSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<SystemTopicsCreateOrUpdateResponseSystemData>;
 
 export interface SystemTopicsCreateOrUpdateResponse {
   /** Fully qualified identifier of the resource. */
@@ -12377,20 +11648,8 @@ export interface TopicEventSubscriptionsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const TopicEventSubscriptionsCreateOrUpdateResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(TopicEventSubscriptionsCreateOrUpdateResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      TopicEventSubscriptionsCreateOrUpdateResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TopicEventSubscriptionsCreateOrUpdateResponseSystemData",
-}) as any as S.Schema<TopicEventSubscriptionsCreateOrUpdateResponseSystemData>;
+export const TopicEventSubscriptionsCreateOrUpdateResponseSystemData =
+  AuthorizePartnerConfigurationPartnerResponseSystemData as any as S.Schema<TopicEventSubscriptionsCreateOrUpdateResponseSystemData>;
 
 export interface TopicEventSubscriptionsCreateOrUpdateResponse {
   /** Fully qualified identifier of the resource. */
@@ -12404,17 +11663,8 @@ export interface TopicEventSubscriptionsCreateOrUpdateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: TopicEventSubscriptionsCreateOrUpdateResponseSystemData;
 }
-export const TopicEventSubscriptionsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(EventSubscriptionProperties),
-    systemData: S.optional(TopicEventSubscriptionsCreateOrUpdateResponseSystemData),
-  }),
-).annotate({
-  identifier: "TopicEventSubscriptionsCreateOrUpdateResponse",
-}) as any as S.Schema<TopicEventSubscriptionsCreateOrUpdateResponse>;
+export const TopicEventSubscriptionsCreateOrUpdateResponse =
+  EventSubscriptionsCreateOrUpdateResponse as any as S.Schema<TopicEventSubscriptionsCreateOrUpdateResponse>;
 
 /** Tags of the resource. */
 export type TopicsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
@@ -12550,18 +11800,8 @@ export interface TopicsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const TopicsCreateOrUpdateResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(TopicsCreateOrUpdateResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(TopicsCreateOrUpdateResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TopicsCreateOrUpdateResponseSystemData",
-}) as any as S.Schema<TopicsCreateOrUpdateResponseSystemData>;
+export const TopicsCreateOrUpdateResponseSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<TopicsCreateOrUpdateResponseSystemData>;
 
 export interface TopicsCreateOrUpdateResponse {
   /** Fully qualified identifier of the resource. */
@@ -12679,18 +11919,8 @@ export interface TopicSpacesCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const TopicSpacesCreateOrUpdateResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(TopicSpacesCreateOrUpdateResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(TopicSpacesCreateOrUpdateResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TopicSpacesCreateOrUpdateResponseSystemData",
-}) as any as S.Schema<TopicSpacesCreateOrUpdateResponseSystemData>;
+export const TopicSpacesCreateOrUpdateResponseSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<TopicSpacesCreateOrUpdateResponseSystemData>;
 
 export interface TopicSpacesCreateOrUpdateResponse {
   /** Fully qualified identifier of the resource. */
@@ -12967,20 +12197,8 @@ export interface UpdateDomainEventSubscriptionResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdateDomainEventSubscriptionResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(UpdateDomainEventSubscriptionResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      UpdateDomainEventSubscriptionResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateDomainEventSubscriptionResponseSystemData",
-}) as any as S.Schema<UpdateDomainEventSubscriptionResponseSystemData>;
+export const UpdateDomainEventSubscriptionResponseSystemData =
+  AuthorizePartnerConfigurationPartnerResponseSystemData as any as S.Schema<UpdateDomainEventSubscriptionResponseSystemData>;
 
 export interface UpdateDomainEventSubscriptionResponse {
   /** Fully qualified identifier of the resource. */
@@ -12994,17 +12212,8 @@ export interface UpdateDomainEventSubscriptionResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: UpdateDomainEventSubscriptionResponseSystemData;
 }
-export const UpdateDomainEventSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(EventSubscriptionProperties),
-    systemData: S.optional(UpdateDomainEventSubscriptionResponseSystemData),
-  }),
-).annotate({
-  identifier: "UpdateDomainEventSubscriptionResponse",
-}) as any as S.Schema<UpdateDomainEventSubscriptionResponse>;
+export const UpdateDomainEventSubscriptionResponse =
+  EventSubscriptionsCreateOrUpdateResponse as any as S.Schema<UpdateDomainEventSubscriptionResponse>;
 
 /** List of user defined labels. */
 export type UpdateDomainTopicEventSubscriptionRequestLabelsList = Array<string>;
@@ -13109,20 +12318,8 @@ export interface UpdateDomainTopicEventSubscriptionResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdateDomainTopicEventSubscriptionResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(UpdateDomainTopicEventSubscriptionResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      UpdateDomainTopicEventSubscriptionResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateDomainTopicEventSubscriptionResponseSystemData",
-}) as any as S.Schema<UpdateDomainTopicEventSubscriptionResponseSystemData>;
+export const UpdateDomainTopicEventSubscriptionResponseSystemData =
+  AuthorizePartnerConfigurationPartnerResponseSystemData as any as S.Schema<UpdateDomainTopicEventSubscriptionResponseSystemData>;
 
 export interface UpdateDomainTopicEventSubscriptionResponse {
   /** Fully qualified identifier of the resource. */
@@ -13136,17 +12333,8 @@ export interface UpdateDomainTopicEventSubscriptionResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: UpdateDomainTopicEventSubscriptionResponseSystemData;
 }
-export const UpdateDomainTopicEventSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(EventSubscriptionProperties),
-    systemData: S.optional(UpdateDomainTopicEventSubscriptionResponseSystemData),
-  }),
-).annotate({
-  identifier: "UpdateDomainTopicEventSubscriptionResponse",
-}) as any as S.Schema<UpdateDomainTopicEventSubscriptionResponse>;
+export const UpdateDomainTopicEventSubscriptionResponse =
+  EventSubscriptionsCreateOrUpdateResponse as any as S.Schema<UpdateDomainTopicEventSubscriptionResponse>;
 
 /** List of user defined labels. */
 export type UpdateEventSubscriptionRequestLabelsList = Array<string>;
@@ -13240,18 +12428,8 @@ export interface UpdateEventSubscriptionResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdateEventSubscriptionResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(UpdateEventSubscriptionResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(UpdateEventSubscriptionResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateEventSubscriptionResponseSystemData",
-}) as any as S.Schema<UpdateEventSubscriptionResponseSystemData>;
+export const UpdateEventSubscriptionResponseSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<UpdateEventSubscriptionResponseSystemData>;
 
 export interface UpdateEventSubscriptionResponse {
   /** Fully qualified identifier of the resource. */
@@ -13265,17 +12443,8 @@ export interface UpdateEventSubscriptionResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: UpdateEventSubscriptionResponseSystemData;
 }
-export const UpdateEventSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(EventSubscriptionProperties),
-    systemData: S.optional(UpdateEventSubscriptionResponseSystemData),
-  }),
-).annotate({
-  identifier: "UpdateEventSubscriptionResponse",
-}) as any as S.Schema<UpdateEventSubscriptionResponse>;
+export const UpdateEventSubscriptionResponse =
+  GetDomainEventSubscriptionResponse as any as S.Schema<UpdateEventSubscriptionResponse>;
 
 /** Tags of the namespace resource. */
 export type UpdateNamespaceRequestTagsMap = { [key: string]: string | undefined };
@@ -13442,18 +12611,8 @@ export interface UpdateNamespaceResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdateNamespaceResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(UpdateNamespaceResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(UpdateNamespaceResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateNamespaceResponseSystemData",
-}) as any as S.Schema<UpdateNamespaceResponseSystemData>;
+export const UpdateNamespaceResponseSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<UpdateNamespaceResponseSystemData>;
 
 export interface UpdateNamespaceResponse {
   /** Fully qualified identifier of the resource. */
@@ -13564,18 +12723,8 @@ export interface UpdateNamespaceTopicResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdateNamespaceTopicResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(UpdateNamespaceTopicResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(UpdateNamespaceTopicResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateNamespaceTopicResponseSystemData",
-}) as any as S.Schema<UpdateNamespaceTopicResponseSystemData>;
+export const UpdateNamespaceTopicResponseSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<UpdateNamespaceTopicResponseSystemData>;
 
 export interface UpdateNamespaceTopicResponse {
   /** Fully qualified identifier of the resource. */
@@ -13589,17 +12738,8 @@ export interface UpdateNamespaceTopicResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: UpdateNamespaceTopicResponseSystemData;
 }
-export const UpdateNamespaceTopicResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(NamespaceTopicProperties),
-    systemData: S.optional(UpdateNamespaceTopicResponseSystemData),
-  }),
-).annotate({
-  identifier: "UpdateNamespaceTopicResponse",
-}) as any as S.Schema<UpdateNamespaceTopicResponse>;
+export const UpdateNamespaceTopicResponse =
+  GetNamespaceTopicResponse as any as S.Schema<UpdateNamespaceTopicResponse>;
 
 /** The event delivery schema for the event subscription. */
 export type SubscriptionUpdateParametersPropertiesEventDeliverySchema = "CloudEventSchemaV1_0";
@@ -13616,16 +12756,8 @@ export interface SubscriptionUpdateParametersProperties {
   /** Expiration time of the event subscription. */
   expirationTimeUtc?: string;
 }
-export const SubscriptionUpdateParametersProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deliveryConfiguration: S.optional(DeliveryConfiguration),
-    eventDeliverySchema: S.optional(SubscriptionUpdateParametersPropertiesEventDeliverySchema),
-    filtersConfiguration: S.optional(FiltersConfiguration),
-    expirationTimeUtc: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SubscriptionUpdateParametersProperties",
-}) as any as S.Schema<SubscriptionUpdateParametersProperties>;
+export const SubscriptionUpdateParametersProperties =
+  SubscriptionPropertiesInput as any as S.Schema<SubscriptionUpdateParametersProperties>;
 
 export interface UpdateNamespaceTopicEventSubscriptionRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -13691,20 +12823,8 @@ export interface UpdateNamespaceTopicEventSubscriptionResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdateNamespaceTopicEventSubscriptionResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(UpdateNamespaceTopicEventSubscriptionResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      UpdateNamespaceTopicEventSubscriptionResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateNamespaceTopicEventSubscriptionResponseSystemData",
-}) as any as S.Schema<UpdateNamespaceTopicEventSubscriptionResponseSystemData>;
+export const UpdateNamespaceTopicEventSubscriptionResponseSystemData =
+  AuthorizePartnerConfigurationPartnerResponseSystemData as any as S.Schema<UpdateNamespaceTopicEventSubscriptionResponseSystemData>;
 
 export interface UpdateNamespaceTopicEventSubscriptionResponse {
   /** Fully qualified identifier of the resource. */
@@ -13718,17 +12838,8 @@ export interface UpdateNamespaceTopicEventSubscriptionResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: UpdateNamespaceTopicEventSubscriptionResponseSystemData;
 }
-export const UpdateNamespaceTopicEventSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(SubscriptionProperties),
-    systemData: S.optional(UpdateNamespaceTopicEventSubscriptionResponseSystemData),
-  }),
-).annotate({
-  identifier: "UpdateNamespaceTopicEventSubscriptionResponse",
-}) as any as S.Schema<UpdateNamespaceTopicEventSubscriptionResponse>;
+export const UpdateNamespaceTopicEventSubscriptionResponse =
+  GetNamespaceTopicEventSubscriptionResponse as any as S.Schema<UpdateNamespaceTopicEventSubscriptionResponse>;
 
 /** Tags of the partner configuration resource. */
 export type UpdatePartnerConfigurationRequestTagsMap = { [key: string]: string | undefined };
@@ -13807,18 +12918,8 @@ export interface UpdatePartnerConfigurationResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdatePartnerConfigurationResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(UpdatePartnerConfigurationResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(UpdatePartnerConfigurationResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdatePartnerConfigurationResponseSystemData",
-}) as any as S.Schema<UpdatePartnerConfigurationResponseSystemData>;
+export const UpdatePartnerConfigurationResponseSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<UpdatePartnerConfigurationResponseSystemData>;
 
 /** Tags of the resource. */
 export type UpdatePartnerConfigurationResponseTagsMap = { [key: string]: string | undefined };
@@ -14116,20 +13217,8 @@ export interface UpdatePartnerTopicEventSubscriptionResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdatePartnerTopicEventSubscriptionResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(UpdatePartnerTopicEventSubscriptionResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      UpdatePartnerTopicEventSubscriptionResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdatePartnerTopicEventSubscriptionResponseSystemData",
-}) as any as S.Schema<UpdatePartnerTopicEventSubscriptionResponseSystemData>;
+export const UpdatePartnerTopicEventSubscriptionResponseSystemData =
+  AuthorizePartnerConfigurationPartnerResponseSystemData as any as S.Schema<UpdatePartnerTopicEventSubscriptionResponseSystemData>;
 
 export interface UpdatePartnerTopicEventSubscriptionResponse {
   /** Fully qualified identifier of the resource. */
@@ -14143,17 +13232,8 @@ export interface UpdatePartnerTopicEventSubscriptionResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: UpdatePartnerTopicEventSubscriptionResponseSystemData;
 }
-export const UpdatePartnerTopicEventSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(EventSubscriptionProperties),
-    systemData: S.optional(UpdatePartnerTopicEventSubscriptionResponseSystemData),
-  }),
-).annotate({
-  identifier: "UpdatePartnerTopicEventSubscriptionResponse",
-}) as any as S.Schema<UpdatePartnerTopicEventSubscriptionResponse>;
+export const UpdatePartnerTopicEventSubscriptionResponse =
+  EventSubscriptionsCreateOrUpdateResponse as any as S.Schema<UpdatePartnerTopicEventSubscriptionResponse>;
 
 export type UpdatePrivateEndpointConnectionRequestParentType =
   | "topics"
@@ -14279,18 +13359,8 @@ export interface UpdateSystemTopicResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdateSystemTopicResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(UpdateSystemTopicResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(UpdateSystemTopicResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateSystemTopicResponseSystemData",
-}) as any as S.Schema<UpdateSystemTopicResponseSystemData>;
+export const UpdateSystemTopicResponseSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<UpdateSystemTopicResponseSystemData>;
 
 export interface UpdateSystemTopicResponse {
   /** Fully qualified identifier of the resource. */
@@ -14425,20 +13495,8 @@ export interface UpdateSystemTopicEventSubscriptionResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdateSystemTopicEventSubscriptionResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(UpdateSystemTopicEventSubscriptionResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      UpdateSystemTopicEventSubscriptionResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateSystemTopicEventSubscriptionResponseSystemData",
-}) as any as S.Schema<UpdateSystemTopicEventSubscriptionResponseSystemData>;
+export const UpdateSystemTopicEventSubscriptionResponseSystemData =
+  AuthorizePartnerConfigurationPartnerResponseSystemData as any as S.Schema<UpdateSystemTopicEventSubscriptionResponseSystemData>;
 
 export interface UpdateSystemTopicEventSubscriptionResponse {
   /** Fully qualified identifier of the resource. */
@@ -14452,17 +13510,8 @@ export interface UpdateSystemTopicEventSubscriptionResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: UpdateSystemTopicEventSubscriptionResponseSystemData;
 }
-export const UpdateSystemTopicEventSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(EventSubscriptionProperties),
-    systemData: S.optional(UpdateSystemTopicEventSubscriptionResponseSystemData),
-  }),
-).annotate({
-  identifier: "UpdateSystemTopicEventSubscriptionResponse",
-}) as any as S.Schema<UpdateSystemTopicEventSubscriptionResponse>;
+export const UpdateSystemTopicEventSubscriptionResponse =
+  EventSubscriptionsCreateOrUpdateResponse as any as S.Schema<UpdateSystemTopicEventSubscriptionResponse>;
 
 /** Tags of the Topic resource. */
 export type UpdateTopicRequestTagsMap = { [key: string]: string | undefined };
@@ -14648,20 +13697,8 @@ export interface UpdateTopicEventSubscriptionResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdateTopicEventSubscriptionResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(UpdateTopicEventSubscriptionResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      UpdateTopicEventSubscriptionResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateTopicEventSubscriptionResponseSystemData",
-}) as any as S.Schema<UpdateTopicEventSubscriptionResponseSystemData>;
+export const UpdateTopicEventSubscriptionResponseSystemData =
+  AuthorizePartnerConfigurationPartnerResponseSystemData as any as S.Schema<UpdateTopicEventSubscriptionResponseSystemData>;
 
 export interface UpdateTopicEventSubscriptionResponse {
   /** Fully qualified identifier of the resource. */
@@ -14675,17 +13712,8 @@ export interface UpdateTopicEventSubscriptionResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: UpdateTopicEventSubscriptionResponseSystemData;
 }
-export const UpdateTopicEventSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(EventSubscriptionProperties),
-    systemData: S.optional(UpdateTopicEventSubscriptionResponseSystemData),
-  }),
-).annotate({
-  identifier: "UpdateTopicEventSubscriptionResponse",
-}) as any as S.Schema<UpdateTopicEventSubscriptionResponse>;
+export const UpdateTopicEventSubscriptionResponse =
+  EventSubscriptionsCreateOrUpdateResponse as any as S.Schema<UpdateTopicEventSubscriptionResponse>;
 
 export interface ValidateNamespaceCustomDomainOwnershipRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */

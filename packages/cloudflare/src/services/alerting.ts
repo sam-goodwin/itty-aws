@@ -529,9 +529,8 @@ export const PoliciesCreateRequestFiltersTrafficExclusionsItem = S.String;
 export type PoliciesCreateRequestFiltersTrafficExclusionsList = Array<
   PoliciesCreateRequestFiltersTrafficExclusionsItem | (string & {})
 >;
-export const PoliciesCreateRequestFiltersTrafficExclusionsList = /*@__PURE__*/ S.Array(
-  PoliciesCreateRequestFiltersTrafficExclusionsItem,
-) as any as S.Schema<PoliciesCreateRequestFiltersTrafficExclusionsList>;
+export const PoliciesCreateRequestFiltersTrafficExclusionsList =
+  PoliciesCreateRequestFiltersIncidentImpactList as any as S.Schema<PoliciesCreateRequestFiltersTrafficExclusionsList>;
 
 export type PoliciesCreateRequestFiltersTunnelIdList = Array<string>;
 export const PoliciesCreateRequestFiltersTunnelIdList =
@@ -1261,9 +1260,8 @@ export const PoliciesGetResponseFiltersIncidentImpactItem = S.String;
 
 export type PoliciesGetResponseFiltersIncidentImpactList =
   Array<PoliciesGetResponseFiltersIncidentImpactItem>;
-export const PoliciesGetResponseFiltersIncidentImpactList = /*@__PURE__*/ S.Array(
-  PoliciesGetResponseFiltersIncidentImpactItem,
-) as any as S.Schema<PoliciesGetResponseFiltersIncidentImpactList>;
+export const PoliciesGetResponseFiltersIncidentImpactList =
+  PoliciesCreateRequestFiltersIncidentImpactList as any as S.Schema<PoliciesGetResponseFiltersIncidentImpactList>;
 
 export type PoliciesGetResponseFiltersInputIdList = Array<string>;
 export const PoliciesGetResponseFiltersInputIdList =
@@ -1362,9 +1360,8 @@ export const PoliciesGetResponseFiltersTrafficExclusionsItem = S.String;
 
 export type PoliciesGetResponseFiltersTrafficExclusionsList =
   Array<PoliciesGetResponseFiltersTrafficExclusionsItem>;
-export const PoliciesGetResponseFiltersTrafficExclusionsList = /*@__PURE__*/ S.Array(
-  PoliciesGetResponseFiltersTrafficExclusionsItem,
-) as any as S.Schema<PoliciesGetResponseFiltersTrafficExclusionsList>;
+export const PoliciesGetResponseFiltersTrafficExclusionsList =
+  PoliciesCreateRequestFiltersIncidentImpactList as any as S.Schema<PoliciesGetResponseFiltersTrafficExclusionsList>;
 
 export type PoliciesGetResponseFiltersTunnelIdList = Array<string>;
 export const PoliciesGetResponseFiltersTunnelIdList =
@@ -2131,9 +2128,8 @@ export const PoliciesListResultItemFiltersIncidentImpactItem = S.String;
 
 export type PoliciesListResultItemFiltersIncidentImpactList =
   Array<PoliciesListResultItemFiltersIncidentImpactItem>;
-export const PoliciesListResultItemFiltersIncidentImpactList = /*@__PURE__*/ S.Array(
-  PoliciesListResultItemFiltersIncidentImpactItem,
-) as any as S.Schema<PoliciesListResultItemFiltersIncidentImpactList>;
+export const PoliciesListResultItemFiltersIncidentImpactList =
+  PoliciesCreateRequestFiltersIncidentImpactList as any as S.Schema<PoliciesListResultItemFiltersIncidentImpactList>;
 
 export type PoliciesListResultItemFiltersInputIdList = Array<string>;
 export const PoliciesListResultItemFiltersInputIdList =
@@ -2232,9 +2228,8 @@ export const PoliciesListResultItemFiltersTrafficExclusionsItem = S.String;
 
 export type PoliciesListResultItemFiltersTrafficExclusionsList =
   Array<PoliciesListResultItemFiltersTrafficExclusionsItem>;
-export const PoliciesListResultItemFiltersTrafficExclusionsList = /*@__PURE__*/ S.Array(
-  PoliciesListResultItemFiltersTrafficExclusionsItem,
-) as any as S.Schema<PoliciesListResultItemFiltersTrafficExclusionsList>;
+export const PoliciesListResultItemFiltersTrafficExclusionsList =
+  PoliciesCreateRequestFiltersIncidentImpactList as any as S.Schema<PoliciesListResultItemFiltersTrafficExclusionsList>;
 
 export type PoliciesListResultItemFiltersTunnelIdList = Array<string>;
 export const PoliciesListResultItemFiltersTunnelIdList =
@@ -2793,9 +2788,8 @@ export const PoliciesUpdateRequestFiltersIncidentImpactItem = S.String;
 export type PoliciesUpdateRequestFiltersIncidentImpactList = Array<
   PoliciesUpdateRequestFiltersIncidentImpactItem | (string & {})
 >;
-export const PoliciesUpdateRequestFiltersIncidentImpactList = /*@__PURE__*/ S.Array(
-  PoliciesUpdateRequestFiltersIncidentImpactItem,
-) as any as S.Schema<PoliciesUpdateRequestFiltersIncidentImpactList>;
+export const PoliciesUpdateRequestFiltersIncidentImpactList =
+  PoliciesCreateRequestFiltersIncidentImpactList as any as S.Schema<PoliciesUpdateRequestFiltersIncidentImpactList>;
 
 export type PoliciesUpdateRequestFiltersInputIdList = Array<string>;
 export const PoliciesUpdateRequestFiltersInputIdList =
@@ -2895,9 +2889,8 @@ export const PoliciesUpdateRequestFiltersTrafficExclusionsItem = S.String;
 export type PoliciesUpdateRequestFiltersTrafficExclusionsList = Array<
   PoliciesUpdateRequestFiltersTrafficExclusionsItem | (string & {})
 >;
-export const PoliciesUpdateRequestFiltersTrafficExclusionsList = /*@__PURE__*/ S.Array(
-  PoliciesUpdateRequestFiltersTrafficExclusionsItem,
-) as any as S.Schema<PoliciesUpdateRequestFiltersTrafficExclusionsList>;
+export const PoliciesUpdateRequestFiltersTrafficExclusionsList =
+  PoliciesCreateRequestFiltersIncidentImpactList as any as S.Schema<PoliciesUpdateRequestFiltersTrafficExclusionsList>;
 
 export type PoliciesUpdateRequestFiltersTunnelIdList = Array<string>;
 export const PoliciesUpdateRequestFiltersTunnelIdList =

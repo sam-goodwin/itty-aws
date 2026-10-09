@@ -762,7 +762,8 @@ export type BenefitApplicationIdentifierList = string[];
 export const BenefitApplicationIdentifierList =
   Arns as any as S.Schema<BenefitApplicationIdentifierList>;
 export type BenefitAllocationStatusList = BenefitAllocationStatus[];
-export const BenefitAllocationStatusList = /*@__PURE__*/ S.Array(BenefitAllocationStatus);
+export const BenefitAllocationStatusList =
+  FulfillmentTypes as any as S.Schema<BenefitAllocationStatusList>;
 export interface ListBenefitAllocationsInput {
   Catalog: string;
   FulfillmentTypes?: FulfillmentType[];
@@ -835,7 +836,7 @@ export const ListBenefitAllocationsOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListBenefitAllocationsOutput",
 }) as any as S.Schema<ListBenefitAllocationsOutput>;
 export type Statuses = BenefitApplicationStatus[];
-export const Statuses = /*@__PURE__*/ S.Array(BenefitApplicationStatus);
+export const Statuses = FulfillmentTypes as any as S.Schema<Statuses>;
 export type Stages = string[];
 export const Stages = Arns as any as S.Schema<Stages>;
 export type ResourceType = "OPPORTUNITY" | "BENEFIT_ALLOCATION" | (string & {});
@@ -943,7 +944,7 @@ export const ListBenefitApplicationsOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListBenefitApplicationsOutput",
 }) as any as S.Schema<ListBenefitApplicationsOutput>;
 export type BenefitStatuses = BenefitStatus[];
-export const BenefitStatuses = /*@__PURE__*/ S.Array(BenefitStatus);
+export const BenefitStatuses = FulfillmentTypes as any as S.Schema<BenefitStatuses>;
 export interface ListBenefitsInput {
   Catalog: string;
   Programs?: string[];

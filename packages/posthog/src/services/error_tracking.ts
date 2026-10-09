@@ -2180,9 +2180,8 @@ export const IncludeEnum = S.String;
 export type CreateErrorTrackingQueryIssueEventRequestIncludeList = Array<
   IncludeEnum | (string & {})
 >;
-export const CreateErrorTrackingQueryIssueEventRequestIncludeList = /*@__PURE__*/ S.Array(
-  IncludeEnum,
-) as any as S.Schema<CreateErrorTrackingQueryIssueEventRequestIncludeList>;
+export const CreateErrorTrackingQueryIssueEventRequestIncludeList =
+  CreateErrorTrackingAlertRequestTriggersList as any as S.Schema<CreateErrorTrackingQueryIssueEventRequestIncludeList>;
 
 export interface CreateErrorTrackingQueryIssueEventRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */

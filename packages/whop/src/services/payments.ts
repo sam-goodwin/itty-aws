@@ -433,9 +433,8 @@ export const PaymentNextActionDisplayInstructionsRenderItem = S.String;
 
 export type PaymentNextActionDisplayInstructionsRenderList =
   Array<PaymentNextActionDisplayInstructionsRenderItem>;
-export const PaymentNextActionDisplayInstructionsRenderList = /*@__PURE__*/ S.Array(
-  PaymentNextActionDisplayInstructionsRenderItem,
-) as any as S.Schema<PaymentNextActionDisplayInstructionsRenderList>;
+export const PaymentNextActionDisplayInstructionsRenderList =
+  PaymentNextActionRedirectRenderList as any as S.Schema<PaymentNextActionDisplayInstructionsRenderList>;
 
 /** Always `display_instructions`: show the buyer `data` -- what to pay, where, and by when. The payment completes once they pay and the rail confirms it, so keep polling `status`. */
 export type PaymentNextActionDisplayInstructionsType = "display_instructions";
@@ -476,9 +475,8 @@ export const PaymentNextActionAwaitConfirmationRenderItem = S.String;
 
 export type PaymentNextActionAwaitConfirmationRenderList =
   Array<PaymentNextActionAwaitConfirmationRenderItem>;
-export const PaymentNextActionAwaitConfirmationRenderList = /*@__PURE__*/ S.Array(
-  PaymentNextActionAwaitConfirmationRenderItem,
-) as any as S.Schema<PaymentNextActionAwaitConfirmationRenderList>;
+export const PaymentNextActionAwaitConfirmationRenderList =
+  PaymentNextActionRedirectRenderList as any as S.Schema<PaymentNextActionAwaitConfirmationRenderList>;
 
 /** Always `await_confirmation`: nothing to show -- the buyer has done their part and the rail settles out of band. Poll `status` until it moves. */
 export type PaymentNextActionAwaitConfirmationType = "await_confirmation";

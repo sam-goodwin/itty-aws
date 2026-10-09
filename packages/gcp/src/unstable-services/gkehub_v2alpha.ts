@@ -2209,22 +2209,16 @@ export const PolicyControllerMonitoringConfigBackendsItemEnum = S.String;
 export type PolicyControllerMonitoringConfigBackendsItemEnumList = Array<
   PolicyControllerMonitoringConfigBackendsItemEnum | (string & {})
 >;
-export const PolicyControllerMonitoringConfigBackendsItemEnumList = /*@__PURE__*/ S.Array(
-  PolicyControllerMonitoringConfigBackendsItemEnum,
-) as any as S.Schema<PolicyControllerMonitoringConfigBackendsItemEnumList>;
+export const PolicyControllerMonitoringConfigBackendsItemEnumList =
+  ConfigManagementPolicyControllerMonitoringBackendsItemEnumList as any as S.Schema<PolicyControllerMonitoringConfigBackendsItemEnumList>;
 
 /** MonitoringConfig specifies the backends Policy Controller should export metrics to. For example, to specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: ["cloudmonitoring", "prometheus"] */
 export interface PolicyControllerMonitoringConfig {
   /** Specifies the list of backends Policy Controller will export to. An empty list would effectively disable metrics export. */
   backends?: PolicyControllerMonitoringConfigBackendsItemEnumList;
 }
-export const PolicyControllerMonitoringConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    backends: S.optional(PolicyControllerMonitoringConfigBackendsItemEnumList),
-  }),
-).annotate({
-  identifier: "PolicyControllerMonitoringConfig",
-}) as any as S.Schema<PolicyControllerMonitoringConfig>;
+export const PolicyControllerMonitoringConfig =
+  ConfigManagementPolicyControllerMonitoring as any as S.Schema<PolicyControllerMonitoringConfig>;
 
 export type PolicyControllerHubConfigInstallSpecEnum =
   | "INSTALL_SPEC_UNSPECIFIED"

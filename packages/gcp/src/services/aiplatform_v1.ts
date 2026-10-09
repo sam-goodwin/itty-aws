@@ -7810,9 +7810,7 @@ export type GoogleCloudAiplatformV1GenerationConfigResponseModalitiesItemEnumLis
   GoogleCloudAiplatformV1GenerationConfigResponseModalitiesItemEnum | (string & {})
 >;
 export const GoogleCloudAiplatformV1GenerationConfigResponseModalitiesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudAiplatformV1GenerationConfigResponseModalitiesItemEnum,
-  ) as any as S.Schema<GoogleCloudAiplatformV1GenerationConfigResponseModalitiesItemEnumList>;
+  GoogleCloudAiplatformV1ToolComputerUseDisabledSafetyPoliciesItemEnumList as any as S.Schema<GoogleCloudAiplatformV1GenerationConfigResponseModalitiesItemEnumList>;
 
 export type GoogleCloudAiplatformV1GenerationConfigRoutingConfigAutoRoutingModeModelRoutingPreferenceEnum =
   | "UNKNOWN"
@@ -19257,9 +19255,7 @@ export type GoogleCloudAiplatformV1ModelSupportedDeploymentResourcesTypesItemEnu
   GoogleCloudAiplatformV1ModelSupportedDeploymentResourcesTypesItemEnum | (string & {})
 >;
 export const GoogleCloudAiplatformV1ModelSupportedDeploymentResourcesTypesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudAiplatformV1ModelSupportedDeploymentResourcesTypesItemEnum,
-  ) as any as S.Schema<GoogleCloudAiplatformV1ModelSupportedDeploymentResourcesTypesItemEnumList>;
+  GoogleCloudAiplatformV1ToolComputerUseDisabledSafetyPoliciesItemEnumList as any as S.Schema<GoogleCloudAiplatformV1ModelSupportedDeploymentResourcesTypesItemEnumList>;
 
 export type GoogleCloudAiplatformV1ModelExportFormatExportableContentsItemEnum =
   | "EXPORTABLE_CONTENT_UNSPECIFIED"
@@ -19271,9 +19267,7 @@ export type GoogleCloudAiplatformV1ModelExportFormatExportableContentsItemEnumLi
   GoogleCloudAiplatformV1ModelExportFormatExportableContentsItemEnum | (string & {})
 >;
 export const GoogleCloudAiplatformV1ModelExportFormatExportableContentsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudAiplatformV1ModelExportFormatExportableContentsItemEnum,
-  ) as any as S.Schema<GoogleCloudAiplatformV1ModelExportFormatExportableContentsItemEnumList>;
+  GoogleCloudAiplatformV1ToolComputerUseDisabledSafetyPoliciesItemEnumList as any as S.Schema<GoogleCloudAiplatformV1ModelExportFormatExportableContentsItemEnumList>;
 
 /** Represents export format supported by the Model. All formats export to Google Cloud Storage. */
 export interface GoogleCloudAiplatformV1ModelExportFormat {
@@ -25713,15 +25707,8 @@ export interface GoogleCloudAiplatformV1MetricxSpec {
   /** Optional. Target language in BCP-47 format. Covers both prediction and reference. */
   targetLanguage?: string;
 }
-export const GoogleCloudAiplatformV1MetricxSpec = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(GoogleCloudAiplatformV1MetricxSpecVersionEnum),
-    sourceLanguage: S.optional(S.String),
-    targetLanguage: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1MetricxSpec",
-}) as any as S.Schema<GoogleCloudAiplatformV1MetricxSpec>;
+export const GoogleCloudAiplatformV1MetricxSpec =
+  GoogleCloudAiplatformV1CometSpec as any as S.Schema<GoogleCloudAiplatformV1MetricxSpec>;
 
 /** Spec for MetricX instance - The fields used for evaluation are dependent on the MetricX version. */
 export interface GoogleCloudAiplatformV1MetricxInstance {
@@ -32209,14 +32196,8 @@ export interface GoogleCloudAiplatformV1FileStatus {
   /** Output only. RagFile state. */
   state?: GoogleCloudAiplatformV1FileStatusStateEnum | (string & {});
 }
-export const GoogleCloudAiplatformV1FileStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    errorStatus: S.optional(S.String),
-    state: S.optional(GoogleCloudAiplatformV1FileStatusStateEnum),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1FileStatus",
-}) as any as S.Schema<GoogleCloudAiplatformV1FileStatus>;
+export const GoogleCloudAiplatformV1FileStatus =
+  GoogleCloudAiplatformV1CorpusStatus as any as S.Schema<GoogleCloudAiplatformV1FileStatus>;
 
 /** The input content is encapsulated and uploaded in the request. */
 export type GoogleCloudAiplatformV1DirectUploadSource =
@@ -44664,9 +44645,7 @@ export type GoogleCloudAiplatformV1RetrieveMemoriesRequestMemoryTypesItemEnumLis
   GoogleCloudAiplatformV1RetrieveMemoriesRequestMemoryTypesItemEnum | (string & {})
 >;
 export const GoogleCloudAiplatformV1RetrieveMemoriesRequestMemoryTypesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudAiplatformV1RetrieveMemoriesRequestMemoryTypesItemEnum,
-  ) as any as S.Schema<GoogleCloudAiplatformV1RetrieveMemoriesRequestMemoryTypesItemEnumList>;
+  GoogleCloudAiplatformV1ToolComputerUseDisabledSafetyPoliciesItemEnumList as any as S.Schema<GoogleCloudAiplatformV1RetrieveMemoriesRequestMemoryTypesItemEnumList>;
 
 /** Request message for MemoryBankService.RetrieveMemories. */
 export interface GoogleCloudAiplatformV1RetrieveMemoriesRequest {

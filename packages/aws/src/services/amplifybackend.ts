@@ -430,7 +430,8 @@ export type OAuthScopesElement =
 export const OAuthScopesElement = S.String;
 
 export type ListOfOAuthScopesElement = OAuthScopesElement[];
-export const ListOfOAuthScopesElement = /*@__PURE__*/ S.Array(OAuthScopesElement);
+export const ListOfOAuthScopesElement =
+  ListOfMfaTypesElement as any as S.Schema<ListOfOAuthScopesElement>;
 export type ListOf__string = string[];
 export const ListOf__string = /*@__PURE__*/ S.Array(S.String);
 export interface BackendAuthSocialProviderConfig {
@@ -561,9 +562,8 @@ export type RequiredSignUpAttributesElement =
 export const RequiredSignUpAttributesElement = S.String;
 
 export type ListOfRequiredSignUpAttributesElement = RequiredSignUpAttributesElement[];
-export const ListOfRequiredSignUpAttributesElement = /*@__PURE__*/ S.Array(
-  RequiredSignUpAttributesElement,
-);
+export const ListOfRequiredSignUpAttributesElement =
+  ListOfAdditionalConstraintsElement as any as S.Schema<ListOfRequiredSignUpAttributesElement>;
 export type SignInMethod =
   | "EMAIL"
   | "EMAIL_AND_PHONE_NUMBER"
@@ -740,12 +740,14 @@ export type AuthenticatedElement = "READ" | "CREATE_AND_UPDATE" | "DELETE" | (st
 export const AuthenticatedElement = S.String;
 
 export type ListOfAuthenticatedElement = AuthenticatedElement[];
-export const ListOfAuthenticatedElement = /*@__PURE__*/ S.Array(AuthenticatedElement);
+export const ListOfAuthenticatedElement =
+  ListOfMfaTypesElement as any as S.Schema<ListOfAuthenticatedElement>;
 export type UnAuthenticatedElement = "READ" | "CREATE_AND_UPDATE" | "DELETE" | (string & {});
 export const UnAuthenticatedElement = S.String;
 
 export type ListOfUnAuthenticatedElement = UnAuthenticatedElement[];
-export const ListOfUnAuthenticatedElement = /*@__PURE__*/ S.Array(UnAuthenticatedElement);
+export const ListOfUnAuthenticatedElement =
+  ListOfMfaTypesElement as any as S.Schema<ListOfUnAuthenticatedElement>;
 export interface BackendStoragePermissions {
   Authenticated?: AuthenticatedElement[];
   UnAuthenticated?: UnAuthenticatedElement[];

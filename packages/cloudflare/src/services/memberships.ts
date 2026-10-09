@@ -472,16 +472,7 @@ export interface ListResultItemAccount {
   /** Account settings */
   settings?: GetResponseAccountSettings | null;
 }
-export const ListResultItemAccount = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    type: ListResultItemAccountType,
-    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-    managedBy: S.optional(S.NullOr(GetResponseAccountManagedBy).pipe(T.Body("managed_by"))),
-    settings: S.optional(S.NullOr(GetResponseAccountSettings)),
-  }),
-).annotate({ identifier: "ListResultItemAccount" }) as any as S.Schema<ListResultItemAccount>;
+export const ListResultItemAccount = GetResponseAccount as any as S.Schema<ListResultItemAccount>;
 
 export type ListResultItemPermissionsAnalytics = GetResponsePermissionsAnalytics;
 export const ListResultItemPermissionsAnalytics = GetResponsePermissionsAnalytics;
@@ -611,16 +602,7 @@ export interface UpdateResponseAccount {
   /** Account settings */
   settings?: GetResponseAccountSettings | null;
 }
-export const UpdateResponseAccount = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    type: UpdateResponseAccountType,
-    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-    managedBy: S.optional(S.NullOr(GetResponseAccountManagedBy).pipe(T.Body("managed_by"))),
-    settings: S.optional(S.NullOr(GetResponseAccountSettings)),
-  }),
-).annotate({ identifier: "UpdateResponseAccount" }) as any as S.Schema<UpdateResponseAccount>;
+export const UpdateResponseAccount = GetResponseAccount as any as S.Schema<UpdateResponseAccount>;
 
 export type UpdateResponsePermissionsAnalytics = GetResponsePermissionsAnalytics;
 export const UpdateResponsePermissionsAnalytics = GetResponsePermissionsAnalytics;

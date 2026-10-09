@@ -1065,14 +1065,8 @@ export interface V1CreateAProjectRequestRegionSelectionCase1 {
   /** The Smart Region Group's code. The codes supported are not a stable API, and should be retrieved from the /available-regions endpoint. */
   code: V1CreateAProjectRequestRegionSelectionCase1Code | (string & {});
 }
-export const V1CreateAProjectRequestRegionSelectionCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: V1CreateAProjectRequestRegionSelectionCase1Type,
-    code: V1CreateAProjectRequestRegionSelectionCase1Code,
-  }),
-).annotate({
-  identifier: "V1CreateAProjectRequestRegionSelectionCase1",
-}) as any as S.Schema<V1CreateAProjectRequestRegionSelectionCase1>;
+export const V1CreateAProjectRequestRegionSelectionCase1 =
+  V1CreateAProjectRequestRegionSelectionCase0 as any as S.Schema<V1CreateAProjectRequestRegionSelectionCase1>;
 
 /** Region selection. Only one of region or region_selection can be specified. */
 export type V1CreateAProjectRequestRegionSelection =
@@ -1649,9 +1643,8 @@ export const V1CreateProjectSigningKeyRequestPrivateJwkCase1KeyOpsItem = S.Strin
 export type V1CreateProjectSigningKeyRequestPrivateJwkCase1KeyOpsList = Array<
   V1CreateProjectSigningKeyRequestPrivateJwkCase1KeyOpsItem | (string & {})
 >;
-export const V1CreateProjectSigningKeyRequestPrivateJwkCase1KeyOpsList = /*@__PURE__*/ S.Array(
-  V1CreateProjectSigningKeyRequestPrivateJwkCase1KeyOpsItem,
-) as any as S.Schema<V1CreateProjectSigningKeyRequestPrivateJwkCase1KeyOpsList>;
+export const V1CreateProjectSigningKeyRequestPrivateJwkCase1KeyOpsList =
+  V1CreateProjectSigningKeyRequestPrivateJwkCase0KeyOpsList as any as S.Schema<V1CreateProjectSigningKeyRequestPrivateJwkCase1KeyOpsList>;
 
 export type V1CreateProjectSigningKeyRequestPrivateJwkCase1Kty = "EC";
 export const V1CreateProjectSigningKeyRequestPrivateJwkCase1Kty = S.String;
@@ -1700,9 +1693,8 @@ export const V1CreateProjectSigningKeyRequestPrivateJwkCase2KeyOpsItem = S.Strin
 export type V1CreateProjectSigningKeyRequestPrivateJwkCase2KeyOpsList = Array<
   V1CreateProjectSigningKeyRequestPrivateJwkCase2KeyOpsItem | (string & {})
 >;
-export const V1CreateProjectSigningKeyRequestPrivateJwkCase2KeyOpsList = /*@__PURE__*/ S.Array(
-  V1CreateProjectSigningKeyRequestPrivateJwkCase2KeyOpsItem,
-) as any as S.Schema<V1CreateProjectSigningKeyRequestPrivateJwkCase2KeyOpsList>;
+export const V1CreateProjectSigningKeyRequestPrivateJwkCase2KeyOpsList =
+  V1CreateProjectSigningKeyRequestPrivateJwkCase0KeyOpsList as any as S.Schema<V1CreateProjectSigningKeyRequestPrivateJwkCase2KeyOpsList>;
 
 export type V1CreateProjectSigningKeyRequestPrivateJwkCase2Kty = "OKP";
 export const V1CreateProjectSigningKeyRequestPrivateJwkCase2Kty = S.String;
@@ -1749,9 +1741,8 @@ export const V1CreateProjectSigningKeyRequestPrivateJwkCase3KeyOpsItem = S.Strin
 export type V1CreateProjectSigningKeyRequestPrivateJwkCase3KeyOpsList = Array<
   V1CreateProjectSigningKeyRequestPrivateJwkCase3KeyOpsItem | (string & {})
 >;
-export const V1CreateProjectSigningKeyRequestPrivateJwkCase3KeyOpsList = /*@__PURE__*/ S.Array(
-  V1CreateProjectSigningKeyRequestPrivateJwkCase3KeyOpsItem,
-) as any as S.Schema<V1CreateProjectSigningKeyRequestPrivateJwkCase3KeyOpsList>;
+export const V1CreateProjectSigningKeyRequestPrivateJwkCase3KeyOpsList =
+  V1CreateProjectSigningKeyRequestPrivateJwkCase0KeyOpsList as any as S.Schema<V1CreateProjectSigningKeyRequestPrivateJwkCase3KeyOpsList>;
 
 export type V1CreateProjectSigningKeyRequestPrivateJwkCase3Kty = "oct";
 export const V1CreateProjectSigningKeyRequestPrivateJwkCase3Kty = S.String;
@@ -2184,13 +2175,8 @@ export const DeleteRolesResponseOutputMessage = S.String;
 export interface DeleteRolesResponseOutput {
   message: DeleteRolesResponseOutputMessage;
 }
-export const DeleteRolesResponseOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: DeleteRolesResponseOutputMessage,
-  }),
-).annotate({
-  identifier: "DeleteRolesResponseOutput",
-}) as any as S.Schema<DeleteRolesResponseOutput>;
+export const DeleteRolesResponseOutput =
+  BranchDeleteResponseOutput as any as S.Schema<DeleteRolesResponseOutput>;
 
 /** List of IP addresses to unban. */
 export type V1DeleteNetworkBansRequestIpv4AddressesList = Array<string>;
@@ -2720,24 +2706,8 @@ export interface FunctionSlugResponseOutput {
   import_map_path?: string;
   ezbr_sha256?: string;
 }
-export const FunctionSlugResponseOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    slug: S.String,
-    name: S.String,
-    status: FunctionSlugResponseOutputStatus,
-    version: S.Number,
-    created_at: S.Number,
-    updated_at: S.Number,
-    verify_jwt: S.optional(S.Boolean),
-    import_map: S.optional(S.Boolean),
-    entrypoint_path: S.optional(S.String),
-    import_map_path: S.optional(S.String),
-    ezbr_sha256: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "FunctionSlugResponseOutput",
-}) as any as S.Schema<FunctionSlugResponseOutput>;
+export const FunctionSlugResponseOutput =
+  BulkUpdateFunctionResponseOutputFunctionsItem as any as S.Schema<FunctionSlugResponseOutput>;
 
 export interface V1GetAFunctionBodyRequest {
   /** Project ref */
@@ -3032,9 +3002,8 @@ export const V1OrganizationSlugResponseOutputOptInTagsItem = S.String;
 
 export type V1OrganizationSlugResponseOutputOptInTagsList =
   Array<V1OrganizationSlugResponseOutputOptInTagsItem>;
-export const V1OrganizationSlugResponseOutputOptInTagsList = /*@__PURE__*/ S.Array(
-  V1OrganizationSlugResponseOutputOptInTagsItem,
-) as any as S.Schema<V1OrganizationSlugResponseOutputOptInTagsList>;
+export const V1OrganizationSlugResponseOutputOptInTagsList =
+  V1CreateProjectSigningKeyRequestPrivateJwkCase0KeyOpsList as any as S.Schema<V1OrganizationSlugResponseOutputOptInTagsList>;
 
 export type V1OrganizationSlugResponseOutputAllowedReleaseChannelsItem =
   | "internal"
@@ -3047,9 +3016,8 @@ export const V1OrganizationSlugResponseOutputAllowedReleaseChannelsItem = S.Stri
 
 export type V1OrganizationSlugResponseOutputAllowedReleaseChannelsList =
   Array<V1OrganizationSlugResponseOutputAllowedReleaseChannelsItem>;
-export const V1OrganizationSlugResponseOutputAllowedReleaseChannelsList = /*@__PURE__*/ S.Array(
-  V1OrganizationSlugResponseOutputAllowedReleaseChannelsItem,
-) as any as S.Schema<V1OrganizationSlugResponseOutputAllowedReleaseChannelsList>;
+export const V1OrganizationSlugResponseOutputAllowedReleaseChannelsList =
+  V1CreateProjectSigningKeyRequestPrivateJwkCase0KeyOpsList as any as S.Schema<V1OrganizationSlugResponseOutputAllowedReleaseChannelsList>;
 
 export interface V1OrganizationSlugResponseOutput {
   id: string;
@@ -3942,15 +3910,8 @@ export interface RegionsInfoOutputAllSmartGroupItem {
   code: RegionsInfoOutputAllSmartGroupItemCode;
   type: RegionsInfoOutputAllSmartGroupItemType;
 }
-export const RegionsInfoOutputAllSmartGroupItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    code: RegionsInfoOutputAllSmartGroupItemCode,
-    type: RegionsInfoOutputAllSmartGroupItemType,
-  }),
-).annotate({
-  identifier: "RegionsInfoOutputAllSmartGroupItem",
-}) as any as S.Schema<RegionsInfoOutputAllSmartGroupItem>;
+export const RegionsInfoOutputAllSmartGroupItem =
+  RegionsInfoOutputRecommendationsSmartGroup as any as S.Schema<RegionsInfoOutputAllSmartGroupItem>;
 
 export type RegionsInfoOutputAllSmartGroupList = Array<RegionsInfoOutputAllSmartGroupItem>;
 export const RegionsInfoOutputAllSmartGroupList = /*@__PURE__*/ S.Array(
@@ -3994,22 +3955,12 @@ export interface RegionsInfoOutputAllSpecificItem {
   provider: RegionsInfoOutputAllSpecificItemProvider;
   status?: RegionsInfoOutputAllSpecificItemStatus;
 }
-export const RegionsInfoOutputAllSpecificItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    code: RegionsInfoOutputAllSpecificItemCode,
-    type: RegionsInfoOutputAllSpecificItemType,
-    provider: RegionsInfoOutputAllSpecificItemProvider,
-    status: S.optional(RegionsInfoOutputAllSpecificItemStatus),
-  }),
-).annotate({
-  identifier: "RegionsInfoOutputAllSpecificItem",
-}) as any as S.Schema<RegionsInfoOutputAllSpecificItem>;
+export const RegionsInfoOutputAllSpecificItem =
+  RegionsInfoOutputRecommendationsSpecificItem as any as S.Schema<RegionsInfoOutputAllSpecificItem>;
 
 export type RegionsInfoOutputAllSpecificList = Array<RegionsInfoOutputAllSpecificItem>;
-export const RegionsInfoOutputAllSpecificList = /*@__PURE__*/ S.Array(
-  RegionsInfoOutputAllSpecificItem,
-) as any as S.Schema<RegionsInfoOutputAllSpecificList>;
+export const RegionsInfoOutputAllSpecificList =
+  RegionsInfoOutputRecommendationsSpecificList as any as S.Schema<RegionsInfoOutputAllSpecificList>;
 
 export interface RegionsInfoOutputAll {
   smartGroup: RegionsInfoOutputAllSmartGroupList;
@@ -4850,9 +4801,8 @@ export const V1ProjectAdvisorsResponseOutputLintsItemCategoriesItem = S.String;
 
 export type V1ProjectAdvisorsResponseOutputLintsItemCategoriesList =
   Array<V1ProjectAdvisorsResponseOutputLintsItemCategoriesItem>;
-export const V1ProjectAdvisorsResponseOutputLintsItemCategoriesList = /*@__PURE__*/ S.Array(
-  V1ProjectAdvisorsResponseOutputLintsItemCategoriesItem,
-) as any as S.Schema<V1ProjectAdvisorsResponseOutputLintsItemCategoriesList>;
+export const V1ProjectAdvisorsResponseOutputLintsItemCategoriesList =
+  V1CreateProjectSigningKeyRequestPrivateJwkCase0KeyOpsList as any as S.Schema<V1ProjectAdvisorsResponseOutputLintsItemCategoriesList>;
 
 export type V1ProjectAdvisorsResponseOutputLintsItemMetadataType =
   | "table"
@@ -5458,13 +5408,7 @@ export interface ProjectUpgradeEligibilityResponseOutputValidationErrorsItemCase
   type: ProjectUpgradeEligibilityResponseOutputValidationErrorsItemCase9Type;
 }
 export const ProjectUpgradeEligibilityResponseOutputValidationErrorsItemCase9 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: ProjectUpgradeEligibilityResponseOutputValidationErrorsItemCase9Type,
-    }),
-  ).annotate({
-    identifier: "ProjectUpgradeEligibilityResponseOutputValidationErrorsItemCase9",
-  }) as any as S.Schema<ProjectUpgradeEligibilityResponseOutputValidationErrorsItemCase9>;
+  ProjectUpgradeEligibilityResponseOutputValidationErrorsItemCase8 as any as S.Schema<ProjectUpgradeEligibilityResponseOutputValidationErrorsItemCase9>;
 
 export type ProjectUpgradeEligibilityResponseOutputValidationErrorsItem =
   | ProjectUpgradeEligibilityResponseOutputValidationErrorsItemCase0
@@ -5538,14 +5482,8 @@ export const ProjectUpgradeEligibilityResponseOutputWarningsItemCase1Type = S.St
 export interface ProjectUpgradeEligibilityResponseOutputWarningsItemCase1 {
   type: ProjectUpgradeEligibilityResponseOutputWarningsItemCase1Type;
 }
-export const ProjectUpgradeEligibilityResponseOutputWarningsItemCase1 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      type: ProjectUpgradeEligibilityResponseOutputWarningsItemCase1Type,
-    }),
-).annotate({
-  identifier: "ProjectUpgradeEligibilityResponseOutputWarningsItemCase1",
-}) as any as S.Schema<ProjectUpgradeEligibilityResponseOutputWarningsItemCase1>;
+export const ProjectUpgradeEligibilityResponseOutputWarningsItemCase1 =
+  ProjectUpgradeEligibilityResponseOutputWarningsItemCase0 as any as S.Schema<ProjectUpgradeEligibilityResponseOutputWarningsItemCase1>;
 
 export type ProjectUpgradeEligibilityResponseOutputWarningsItemCase2Type =
   "operator_estimator_gate";
@@ -5554,14 +5492,8 @@ export const ProjectUpgradeEligibilityResponseOutputWarningsItemCase2Type = S.St
 export interface ProjectUpgradeEligibilityResponseOutputWarningsItemCase2 {
   type: ProjectUpgradeEligibilityResponseOutputWarningsItemCase2Type;
 }
-export const ProjectUpgradeEligibilityResponseOutputWarningsItemCase2 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      type: ProjectUpgradeEligibilityResponseOutputWarningsItemCase2Type,
-    }),
-).annotate({
-  identifier: "ProjectUpgradeEligibilityResponseOutputWarningsItemCase2",
-}) as any as S.Schema<ProjectUpgradeEligibilityResponseOutputWarningsItemCase2>;
+export const ProjectUpgradeEligibilityResponseOutputWarningsItemCase2 =
+  ProjectUpgradeEligibilityResponseOutputWarningsItemCase0 as any as S.Schema<ProjectUpgradeEligibilityResponseOutputWarningsItemCase2>;
 
 export type ProjectUpgradeEligibilityResponseOutputWarningsItemCase3Type = "btree_gist_nan_reindex";
 export const ProjectUpgradeEligibilityResponseOutputWarningsItemCase3Type = S.String;
@@ -5569,14 +5501,8 @@ export const ProjectUpgradeEligibilityResponseOutputWarningsItemCase3Type = S.St
 export interface ProjectUpgradeEligibilityResponseOutputWarningsItemCase3 {
   type: ProjectUpgradeEligibilityResponseOutputWarningsItemCase3Type;
 }
-export const ProjectUpgradeEligibilityResponseOutputWarningsItemCase3 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      type: ProjectUpgradeEligibilityResponseOutputWarningsItemCase3Type,
-    }),
-).annotate({
-  identifier: "ProjectUpgradeEligibilityResponseOutputWarningsItemCase3",
-}) as any as S.Schema<ProjectUpgradeEligibilityResponseOutputWarningsItemCase3>;
+export const ProjectUpgradeEligibilityResponseOutputWarningsItemCase3 =
+  ProjectUpgradeEligibilityResponseOutputWarningsItemCase0 as any as S.Schema<ProjectUpgradeEligibilityResponseOutputWarningsItemCase3>;
 
 export type ProjectUpgradeEligibilityResponseOutputWarningsItem =
   | ProjectUpgradeEligibilityResponseOutputWarningsItemCase0
@@ -6484,9 +6410,8 @@ export const V1GetServicesHealthRequestServicesCase1Item = S.String;
 export type V1GetServicesHealthRequestServicesCase1List = Array<
   V1GetServicesHealthRequestServicesCase1Item | (string & {})
 >;
-export const V1GetServicesHealthRequestServicesCase1List = /*@__PURE__*/ S.Array(
-  V1GetServicesHealthRequestServicesCase1Item,
-) as any as S.Schema<V1GetServicesHealthRequestServicesCase1List>;
+export const V1GetServicesHealthRequestServicesCase1List =
+  V1CreateProjectSigningKeyRequestPrivateJwkCase0KeyOpsList as any as S.Schema<V1GetServicesHealthRequestServicesCase1List>;
 
 export type V1GetServicesHealthRequestServices =
   | string
@@ -7003,22 +6928,13 @@ export interface ListActionRunResponseOutputItemRunStepsItem {
   created_at: string;
   updated_at: string;
 }
-export const ListActionRunResponseOutputItemRunStepsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: ListActionRunResponseOutputItemRunStepsItemName,
-    status: ListActionRunResponseOutputItemRunStepsItemStatus,
-    created_at: S.String,
-    updated_at: S.String,
-  }),
-).annotate({
-  identifier: "ListActionRunResponseOutputItemRunStepsItem",
-}) as any as S.Schema<ListActionRunResponseOutputItemRunStepsItem>;
+export const ListActionRunResponseOutputItemRunStepsItem =
+  ActionRunResponseOutputRunStepsItem as any as S.Schema<ListActionRunResponseOutputItemRunStepsItem>;
 
 export type ListActionRunResponseOutputItemRunStepsList =
   Array<ListActionRunResponseOutputItemRunStepsItem>;
-export const ListActionRunResponseOutputItemRunStepsList = /*@__PURE__*/ S.Array(
-  ListActionRunResponseOutputItemRunStepsItem,
-) as any as S.Schema<ListActionRunResponseOutputItemRunStepsList>;
+export const ListActionRunResponseOutputItemRunStepsList =
+  ActionRunResponseOutputRunStepsList as any as S.Schema<ListActionRunResponseOutputItemRunStepsList>;
 
 export interface ListActionRunResponseOutputItem {
   id: string;
@@ -8161,16 +8077,7 @@ export interface ListProjectAddonsResponseOutputAvailableAddonsItemVariantsItemP
   amount: number;
 }
 export const ListProjectAddonsResponseOutputAvailableAddonsItemVariantsItemPrice =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      description: S.String,
-      type: ListProjectAddonsResponseOutputAvailableAddonsItemVariantsItemPriceType,
-      interval: ListProjectAddonsResponseOutputAvailableAddonsItemVariantsItemPriceInterval,
-      amount: S.Number,
-    }),
-  ).annotate({
-    identifier: "ListProjectAddonsResponseOutputAvailableAddonsItemVariantsItemPrice",
-  }) as any as S.Schema<ListProjectAddonsResponseOutputAvailableAddonsItemVariantsItemPrice>;
+  ListProjectAddonsResponseOutputSelectedAddonsItemVariantPrice as any as S.Schema<ListProjectAddonsResponseOutputAvailableAddonsItemVariantsItemPrice>;
 
 export interface ListProjectAddonsResponseOutputAvailableAddonsItemVariantsItem {
   id: ListProjectAddonsResponseOutputAvailableAddonsItemVariantsItemId;
@@ -8293,16 +8200,8 @@ export interface V1ModifyDatabaseDiskRequestAttributesCase0 {
   throughput_mibps?: number;
   type: V1ModifyDatabaseDiskRequestAttributesCase0Type;
 }
-export const V1ModifyDatabaseDiskRequestAttributesCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    iops: S.Number,
-    size_gb: S.Number,
-    throughput_mibps: S.optional(S.Number),
-    type: V1ModifyDatabaseDiskRequestAttributesCase0Type,
-  }),
-).annotate({
-  identifier: "V1ModifyDatabaseDiskRequestAttributesCase0",
-}) as any as S.Schema<V1ModifyDatabaseDiskRequestAttributesCase0>;
+export const V1ModifyDatabaseDiskRequestAttributesCase0 =
+  DiskResponseOutputAttributesCase0 as any as S.Schema<V1ModifyDatabaseDiskRequestAttributesCase0>;
 
 export type V1ModifyDatabaseDiskRequestAttributesCase1Type = "io2";
 export const V1ModifyDatabaseDiskRequestAttributesCase1Type = S.String;
@@ -8312,15 +8211,8 @@ export interface V1ModifyDatabaseDiskRequestAttributesCase1 {
   size_gb: number;
   type: V1ModifyDatabaseDiskRequestAttributesCase1Type;
 }
-export const V1ModifyDatabaseDiskRequestAttributesCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    iops: S.Number,
-    size_gb: S.Number,
-    type: V1ModifyDatabaseDiskRequestAttributesCase1Type,
-  }),
-).annotate({
-  identifier: "V1ModifyDatabaseDiskRequestAttributesCase1",
-}) as any as S.Schema<V1ModifyDatabaseDiskRequestAttributesCase1>;
+export const V1ModifyDatabaseDiskRequestAttributesCase1 =
+  DiskResponseOutputAttributesCase1 as any as S.Schema<V1ModifyDatabaseDiskRequestAttributesCase1>;
 
 export type V1ModifyDatabaseDiskRequestAttributes =
   | V1ModifyDatabaseDiskRequestAttributesCase0
@@ -8712,13 +8604,8 @@ export const BranchRestoreResponseOutputMessage = S.String;
 export interface BranchRestoreResponseOutput {
   message: BranchRestoreResponseOutputMessage;
 }
-export const BranchRestoreResponseOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: BranchRestoreResponseOutputMessage,
-  }),
-).annotate({
-  identifier: "BranchRestoreResponseOutput",
-}) as any as S.Schema<BranchRestoreResponseOutput>;
+export const BranchRestoreResponseOutput =
+  BranchDeleteResponseOutput as any as S.Schema<BranchRestoreResponseOutput>;
 
 export interface V1RestoreAProjectRequest {
   /** Project ref */
@@ -9070,13 +8957,8 @@ export const UpdateRunStatusResponseOutputMessage = S.String;
 export interface UpdateRunStatusResponseOutput {
   message: UpdateRunStatusResponseOutputMessage;
 }
-export const UpdateRunStatusResponseOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: UpdateRunStatusResponseOutputMessage,
-  }),
-).annotate({
-  identifier: "UpdateRunStatusResponseOutput",
-}) as any as S.Schema<UpdateRunStatusResponseOutput>;
+export const UpdateRunStatusResponseOutput =
+  BranchDeleteResponseOutput as any as S.Schema<UpdateRunStatusResponseOutput>;
 
 export interface V1UpdateAFunctionRequest {
   /** Project ref */
@@ -9973,14 +9855,8 @@ export interface V1UpdateJitAccessConfigResponseBodyCase0 {
   state: V1UpdateJitAccessConfigResponseBodyCase0State;
   appliedSuccessfully?: boolean;
 }
-export const V1UpdateJitAccessConfigResponseBodyCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: V1UpdateJitAccessConfigResponseBodyCase0State,
-    appliedSuccessfully: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "V1UpdateJitAccessConfigResponseBodyCase0",
-}) as any as S.Schema<V1UpdateJitAccessConfigResponseBodyCase0>;
+export const V1UpdateJitAccessConfigResponseBodyCase0 =
+  V1GetJitAccessConfigResponseBodyCase0 as any as S.Schema<V1UpdateJitAccessConfigResponseBodyCase0>;
 
 export type V1UpdateJitAccessConfigResponseBodyCase1UnavailableReason =
   | "platform_unsupported"
@@ -9993,14 +9869,8 @@ export interface V1UpdateJitAccessConfigResponseBodyCase1 {
   state: string;
   unavailableReason: V1UpdateJitAccessConfigResponseBodyCase1UnavailableReason;
 }
-export const V1UpdateJitAccessConfigResponseBodyCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: S.String,
-    unavailableReason: V1UpdateJitAccessConfigResponseBodyCase1UnavailableReason,
-  }),
-).annotate({
-  identifier: "V1UpdateJitAccessConfigResponseBodyCase1",
-}) as any as S.Schema<V1UpdateJitAccessConfigResponseBodyCase1>;
+export const V1UpdateJitAccessConfigResponseBodyCase1 =
+  V1GetJitAccessConfigResponseBodyCase1 as any as S.Schema<V1UpdateJitAccessConfigResponseBodyCase1>;
 
 export type V1UpdateJitAccessConfigResponseBody =
   | V1UpdateJitAccessConfigResponseBodyCase0
@@ -10425,13 +10295,8 @@ export const V1UpdateStorageConfigRequestExternalUpstreamTarget = S.String;
 export interface V1UpdateStorageConfigRequestExternal {
   upstreamTarget: V1UpdateStorageConfigRequestExternalUpstreamTarget | (string & {});
 }
-export const V1UpdateStorageConfigRequestExternal = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    upstreamTarget: V1UpdateStorageConfigRequestExternalUpstreamTarget,
-  }),
-).annotate({
-  identifier: "V1UpdateStorageConfigRequestExternal",
-}) as any as S.Schema<V1UpdateStorageConfigRequestExternal>;
+export const V1UpdateStorageConfigRequestExternal =
+  StorageConfigResponseOutputExternal as any as S.Schema<V1UpdateStorageConfigRequestExternal>;
 
 export interface V1UpdateStorageConfigRequest {
   /** Project ref */

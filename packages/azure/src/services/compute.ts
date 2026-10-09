@@ -2918,14 +2918,8 @@ export interface LinuxVMGuestPatchAutomaticByPlatformSettings {
   /** Enables customer to schedule patching without accidental upgrades */
   bypassPlatformSafetyChecksOnUserSchedule?: boolean;
 }
-export const LinuxVMGuestPatchAutomaticByPlatformSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rebootSetting: S.optional(LinuxVMGuestPatchAutomaticByPlatformRebootSetting),
-    bypassPlatformSafetyChecksOnUserSchedule: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "LinuxVMGuestPatchAutomaticByPlatformSettings",
-}) as any as S.Schema<LinuxVMGuestPatchAutomaticByPlatformSettings>;
+export const LinuxVMGuestPatchAutomaticByPlatformSettings =
+  WindowsVMGuestPatchAutomaticByPlatformSettings as any as S.Schema<LinuxVMGuestPatchAutomaticByPlatformSettings>;
 
 /** Specifies settings related to VM Guest Patching on Linux. */
 export interface LinuxPatchSettings {
@@ -11358,9 +11352,8 @@ export const VMGuestPatchClassificationWindows = S.String;
 export type WindowsParametersClassificationsToIncludeList = Array<
   VMGuestPatchClassificationWindows | (string & {})
 >;
-export const WindowsParametersClassificationsToIncludeList = /*@__PURE__*/ S.Array(
-  VMGuestPatchClassificationWindows,
-) as any as S.Schema<WindowsParametersClassificationsToIncludeList>;
+export const WindowsParametersClassificationsToIncludeList =
+  ScaleInPolicyRulesList as any as S.Schema<WindowsParametersClassificationsToIncludeList>;
 
 /** Kbs to include in the patch operation */
 export type WindowsParametersKbNumbersToIncludeList = Array<string>;
@@ -11418,9 +11411,8 @@ export const VMGuestPatchClassificationLinux = S.String;
 export type LinuxParametersClassificationsToIncludeList = Array<
   VMGuestPatchClassificationLinux | (string & {})
 >;
-export const LinuxParametersClassificationsToIncludeList = /*@__PURE__*/ S.Array(
-  VMGuestPatchClassificationLinux,
-) as any as S.Schema<LinuxParametersClassificationsToIncludeList>;
+export const LinuxParametersClassificationsToIncludeList =
+  ScaleInPolicyRulesList as any as S.Schema<LinuxParametersClassificationsToIncludeList>;
 
 /** packages to include in the patch operation. Format: packageName_packageVersion */
 export type LinuxParametersPackageNameMasksToIncludeList = Array<string>;

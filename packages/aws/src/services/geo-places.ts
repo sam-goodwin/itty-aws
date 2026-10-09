@@ -539,7 +539,8 @@ export type GeocodeFilterPlaceType =
 export const GeocodeFilterPlaceType = S.String;
 
 export type GeocodeFilterPlaceTypeList = GeocodeFilterPlaceType[];
-export const GeocodeFilterPlaceTypeList = /*@__PURE__*/ S.Array(GeocodeFilterPlaceType);
+export const GeocodeFilterPlaceTypeList =
+  AutocompleteFilterPlaceTypeList as any as S.Schema<GeocodeFilterPlaceTypeList>;
 export interface GeocodeFilter {
   IncludeCountries?: (string | redacted.Redacted<string>)[];
   IncludePlaceTypes?: GeocodeFilterPlaceType[];
@@ -559,7 +560,8 @@ export type GeocodeAdditionalFeature =
 export const GeocodeAdditionalFeature = S.String;
 
 export type GeocodeAdditionalFeatureList = GeocodeAdditionalFeature[];
-export const GeocodeAdditionalFeatureList = /*@__PURE__*/ S.Array(GeocodeAdditionalFeature);
+export const GeocodeAdditionalFeatureList =
+  AutocompleteFilterPlaceTypeList as any as S.Schema<GeocodeAdditionalFeatureList>;
 export type GeocodeIntendedUse = "SingleUse" | "Storage" | (string & {});
 export const GeocodeIntendedUse = S.String;
 
@@ -572,7 +574,8 @@ export type AddressTranslationComponent =
 export const AddressTranslationComponent = S.String;
 
 export type AddressTranslationComponentList = AddressTranslationComponent[];
-export const AddressTranslationComponentList = /*@__PURE__*/ S.Array(AddressTranslationComponent);
+export const AddressTranslationComponentList =
+  AutocompleteFilterPlaceTypeList as any as S.Schema<AddressTranslationComponentList>;
 export type GeocodeAddressNamesMode = "Matched" | "Administrative" | (string & {});
 export const GeocodeAddressNamesMode = S.String;
 
@@ -1043,7 +1046,8 @@ export type GetPlaceAdditionalFeature =
 export const GetPlaceAdditionalFeature = S.String;
 
 export type GetPlaceAdditionalFeatureList = GetPlaceAdditionalFeature[];
-export const GetPlaceAdditionalFeatureList = /*@__PURE__*/ S.Array(GetPlaceAdditionalFeature);
+export const GetPlaceAdditionalFeatureList =
+  AutocompleteFilterPlaceTypeList as any as S.Schema<GetPlaceAdditionalFeatureList>;
 export type GetPlaceIntendedUse = "SingleUse" | "Storage" | (string & {});
 export const GetPlaceIntendedUse = S.String;
 
@@ -1205,7 +1209,8 @@ export type PlaceAttribute = "DriveThrough" | (string & {});
 export const PlaceAttribute = S.String;
 
 export type PlaceAttributeList = PlaceAttribute[];
-export const PlaceAttributeList = /*@__PURE__*/ S.Array(PlaceAttribute);
+export const PlaceAttributeList =
+  AutocompleteFilterPlaceTypeList as any as S.Schema<PlaceAttributeList>;
 export interface CrossReference {
   Source: string | redacted.Redacted<string>;
   SourcePlaceId: string | redacted.Redacted<string>;
@@ -1286,9 +1291,8 @@ export type ReverseGeocodeFilterPlaceType =
 export const ReverseGeocodeFilterPlaceType = S.String;
 
 export type ReverseGeocodeFilterPlaceTypeList = ReverseGeocodeFilterPlaceType[];
-export const ReverseGeocodeFilterPlaceTypeList = /*@__PURE__*/ S.Array(
-  ReverseGeocodeFilterPlaceType,
-);
+export const ReverseGeocodeFilterPlaceTypeList =
+  AutocompleteAdditionalFeatureList as any as S.Schema<ReverseGeocodeFilterPlaceTypeList>;
 export interface ReverseGeocodeFilter {
   IncludePlaceTypes?: ReverseGeocodeFilterPlaceType[];
 }
@@ -1303,9 +1307,8 @@ export type ReverseGeocodeAdditionalFeature =
 export const ReverseGeocodeAdditionalFeature = S.String;
 
 export type ReverseGeocodeAdditionalFeatureList = ReverseGeocodeAdditionalFeature[];
-export const ReverseGeocodeAdditionalFeatureList = /*@__PURE__*/ S.Array(
-  ReverseGeocodeAdditionalFeature,
-);
+export const ReverseGeocodeAdditionalFeatureList =
+  AutocompleteAdditionalFeatureList as any as S.Schema<ReverseGeocodeAdditionalFeatureList>;
 export type ReverseGeocodeIntendedUse = "SingleUse" | "Storage" | (string & {});
 export const ReverseGeocodeIntendedUse = S.String;
 
@@ -1433,9 +1436,8 @@ export type SearchNearbyAdditionalFeature =
 export const SearchNearbyAdditionalFeature = S.String;
 
 export type SearchNearbyAdditionalFeatureList = SearchNearbyAdditionalFeature[];
-export const SearchNearbyAdditionalFeatureList = /*@__PURE__*/ S.Array(
-  SearchNearbyAdditionalFeature,
-);
+export const SearchNearbyAdditionalFeatureList =
+  AutocompleteAdditionalFeatureList as any as S.Schema<SearchNearbyAdditionalFeatureList>;
 export type SearchNearbyIntendedUse = "SingleUse" | "Storage" | (string & {});
 export const SearchNearbyIntendedUse = S.String;
 
@@ -1550,7 +1552,8 @@ export type SearchTextAdditionalFeature =
 export const SearchTextAdditionalFeature = S.String;
 
 export type SearchTextAdditionalFeatureList = SearchTextAdditionalFeature[];
-export const SearchTextAdditionalFeatureList = /*@__PURE__*/ S.Array(SearchTextAdditionalFeature);
+export const SearchTextAdditionalFeatureList =
+  AutocompleteFilterPlaceTypeList as any as S.Schema<SearchTextAdditionalFeatureList>;
 export type SearchTextIntendedUse = "SingleUse" | "Storage" | (string & {});
 export const SearchTextIntendedUse = S.String;
 
@@ -1635,7 +1638,8 @@ export type SuggestAdditionalFeature =
 export const SuggestAdditionalFeature = S.String;
 
 export type SuggestAdditionalFeatureList = SuggestAdditionalFeature[];
-export const SuggestAdditionalFeatureList = /*@__PURE__*/ S.Array(SuggestAdditionalFeature);
+export const SuggestAdditionalFeatureList =
+  AutocompleteFilterPlaceTypeList as any as S.Schema<SuggestAdditionalFeatureList>;
 export type SuggestIntendedUse = "SingleUse" | (string & {});
 export const SuggestIntendedUse = S.String;
 

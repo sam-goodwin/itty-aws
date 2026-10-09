@@ -1240,9 +1240,7 @@ export type GoogleCloudDiscoveryengineV1betaAnswerAnswerSkippedReasonsItemEnumLi
   GoogleCloudDiscoveryengineV1betaAnswerAnswerSkippedReasonsItemEnum | (string & {})
 >;
 export const GoogleCloudDiscoveryengineV1betaAnswerAnswerSkippedReasonsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudDiscoveryengineV1betaAnswerAnswerSkippedReasonsItemEnum,
-  ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaAnswerAnswerSkippedReasonsItemEnumList>;
+  GoogleCloudDiscoveryengineV1betaAnswerQueryRequestQueryUnderstandingSpecQueryClassificationSpecTypesItemEnumList as any as S.Schema<GoogleCloudDiscoveryengineV1betaAnswerAnswerSkippedReasonsItemEnumList>;
 
 export type GoogleCloudDiscoveryengineV1betaAnswerStateEnum =
   | "STATE_UNSPECIFIED"
@@ -1816,9 +1814,7 @@ export type GoogleCloudDiscoveryengineV1betaAssistAnswerAssistSkippedReasonsItem
   GoogleCloudDiscoveryengineV1betaAssistAnswerAssistSkippedReasonsItemEnum | (string & {})
 >;
 export const GoogleCloudDiscoveryengineV1betaAssistAnswerAssistSkippedReasonsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudDiscoveryengineV1betaAssistAnswerAssistSkippedReasonsItemEnum,
-  ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaAssistAnswerAssistSkippedReasonsItemEnumList>;
+  GoogleCloudDiscoveryengineV1betaAnswerQueryRequestQueryUnderstandingSpecQueryClassificationSpecTypesItemEnumList as any as S.Schema<GoogleCloudDiscoveryengineV1betaAssistAnswerAssistSkippedReasonsItemEnumList>;
 
 export type IntegerList = Array<number>;
 export const IntegerList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IntegerList>;
@@ -3354,9 +3350,7 @@ export type GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequestSuggesti
     | (string & {})
   >;
 export const GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequestSuggestionTypesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequestSuggestionTypesItemEnum,
-  ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequestSuggestionTypesItemEnumList>;
+  GoogleCloudDiscoveryengineV1betaAnswerQueryRequestQueryUnderstandingSpecQueryClassificationSpecTypesItemEnumList as any as S.Schema<GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequestSuggestionTypesItemEnumList>;
 
 /** Boost applies to suggestions which match a condition. */
 export interface GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequestBoostSpecConditionBoostSpec {
@@ -3978,16 +3972,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecS
     | (string & {});
 }
 export const GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecMultiModalSpec =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      imageSource: S.optional(
-        GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecMultiModalSpecImageSourceEnum,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecMultiModalSpec",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecMultiModalSpec>;
+  GoogleCloudDiscoveryengineV1betaAnswerQueryRequestAnswerGenerationSpecMultimodalSpec as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecMultiModalSpec>;
 
 /** A specification for configuring a summary returned in a search response. */
 export interface GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpec {
@@ -4140,9 +4125,7 @@ export type GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedR
     | (string & {})
   >;
 export const GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItemEnum,
-  ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItemEnumList>;
+  GoogleCloudDiscoveryengineV1betaAnswerQueryRequestQueryUnderstandingSpecQueryClassificationSpecTypesItemEnumList as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItemEnumList>;
 
 /** Stores type and data of the blob. */
 export interface GoogleCloudDiscoveryengineV1betaSearchResponseSummaryBlobAttachmentBlob {
@@ -4671,9 +4654,7 @@ export const GoogleCloudDiscoveryengineV1betaSearchResponseSearchResultRetrieval
 export type GoogleCloudDiscoveryengineV1betaSearchResponseSearchResultRetrievalSignalsRetrievalSourcesItemEnumList =
   Array<GoogleCloudDiscoveryengineV1betaSearchResponseSearchResultRetrievalSignalsRetrievalSourcesItemEnum>;
 export const GoogleCloudDiscoveryengineV1betaSearchResponseSearchResultRetrievalSignalsRetrievalSourcesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudDiscoveryengineV1betaSearchResponseSearchResultRetrievalSignalsRetrievalSourcesItemEnum,
-  ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchResponseSearchResultRetrievalSignalsRetrievalSourcesItemEnumList>;
+  GoogleCloudDiscoveryengineV1betaAnswerQueryRequestQueryUnderstandingSpecQueryClassificationSpecTypesItemEnumList as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchResponseSearchResultRetrievalSignalsRetrievalSourcesItemEnumList>;
 
 /** Contains a set of signals used by the relevance filter. */
 export interface GoogleCloudDiscoveryengineV1betaSearchResponseSearchResultRetrievalSignals {
@@ -5029,9 +5010,7 @@ export type GoogleCloudDiscoveryengineV1betaDataStoreSolutionTypesItemEnumList =
   GoogleCloudDiscoveryengineV1betaDataStoreSolutionTypesItemEnum | (string & {})
 >;
 export const GoogleCloudDiscoveryengineV1betaDataStoreSolutionTypesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudDiscoveryengineV1betaDataStoreSolutionTypesItemEnum,
-  ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaDataStoreSolutionTypesItemEnumList>;
+  GoogleCloudDiscoveryengineV1betaAnswerQueryRequestQueryUnderstandingSpecQueryClassificationSpecTypesItemEnumList as any as S.Schema<GoogleCloudDiscoveryengineV1betaDataStoreSolutionTypesItemEnumList>;
 
 export type GoogleCloudDiscoveryengineV1betaDataStoreContentConfigEnum =
   | "CONTENT_CONFIG_UNSPECIFIED"
@@ -6625,9 +6604,7 @@ export type GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchAddOns
     GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchAddOnsItemEnum | (string & {})
   >;
 export const GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchAddOnsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchAddOnsItemEnum,
-  ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchAddOnsItemEnumList>;
+  GoogleCloudDiscoveryengineV1betaAnswerQueryRequestQueryUnderstandingSpecQueryClassificationSpecTypesItemEnumList as any as S.Schema<GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchAddOnsItemEnumList>;
 
 export type GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigRequiredSubscriptionTierEnum =
   | "SUBSCRIPTION_TIER_UNSPECIFIED"
@@ -7725,13 +7702,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchRequestSpellCorrectionSpe
   mode?: GoogleCloudDiscoveryengineV1betaSearchRequestSpellCorrectionSpecModeEnum | (string & {});
 }
 export const GoogleCloudDiscoveryengineV1betaSearchRequestSpellCorrectionSpec =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      mode: S.optional(GoogleCloudDiscoveryengineV1betaSearchRequestSpellCorrectionSpecModeEnum),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDiscoveryengineV1betaSearchRequestSpellCorrectionSpec",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchRequestSpellCorrectionSpec>;
+  GoogleCloudDiscoveryengineV1betaSearchRequestPersonalizationSpec as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchRequestSpellCorrectionSpec>;
 
 /** SearchAddonSpec is used to disable add-ons for search as per new repricing model. By default if the SearchAddonSpec is not specified, we consider that the customer wants to enable them wherever applicable. */
 export interface GoogleCloudDiscoveryengineV1betaSearchRequestSearchAddonSpec {
@@ -11440,9 +11411,8 @@ export const GoogleCloudDiscoveryengineV1betaFeedbackReasonsItemEnum = S.String;
 export type GoogleCloudDiscoveryengineV1betaFeedbackReasonsItemEnumList = Array<
   GoogleCloudDiscoveryengineV1betaFeedbackReasonsItemEnum | (string & {})
 >;
-export const GoogleCloudDiscoveryengineV1betaFeedbackReasonsItemEnumList = /*@__PURE__*/ S.Array(
-  GoogleCloudDiscoveryengineV1betaFeedbackReasonsItemEnum,
-) as any as S.Schema<GoogleCloudDiscoveryengineV1betaFeedbackReasonsItemEnumList>;
+export const GoogleCloudDiscoveryengineV1betaFeedbackReasonsItemEnumList =
+  GoogleCloudDiscoveryengineV1betaControlUseCasesItemEnumList as any as S.Schema<GoogleCloudDiscoveryengineV1betaFeedbackReasonsItemEnumList>;
 
 /** The conversation information such as the question index and session name. */
 export interface GoogleCloudDiscoveryengineV1betaFeedbackConversationInfo {

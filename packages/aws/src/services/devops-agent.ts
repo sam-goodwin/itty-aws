@@ -2856,11 +2856,11 @@ export const ListAssociationsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ nextToken: S.optional(S.String), associations: AssociationsList }),
 ).annotate({ identifier: "ListAssociationsOutput" }) as any as S.Schema<ListAssociationsOutput>;
 export type PriorityList = Priority[];
-export const PriorityList = /*@__PURE__*/ S.Array(Priority);
+export const PriorityList = TriggerEventList as any as S.Schema<PriorityList>;
 export type TaskStatusList = TaskStatus[];
-export const TaskStatusList = /*@__PURE__*/ S.Array(TaskStatus);
+export const TaskStatusList = TriggerEventList as any as S.Schema<TaskStatusList>;
 export type TaskTypeList = TaskType[];
-export const TaskTypeList = /*@__PURE__*/ S.Array(TaskType);
+export const TaskTypeList = TriggerEventList as any as S.Schema<TaskTypeList>;
 export interface TaskFilter {
   createdAfter?: Date;
   createdBefore?: Date;

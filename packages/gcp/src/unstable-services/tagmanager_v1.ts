@@ -194,9 +194,8 @@ export const ContainerEnabledBuiltInVariableItemEnum = S.String;
 export type ContainerEnabledBuiltInVariableItemEnumList = Array<
   ContainerEnabledBuiltInVariableItemEnum | (string & {})
 >;
-export const ContainerEnabledBuiltInVariableItemEnumList = /*@__PURE__*/ S.Array(
-  ContainerEnabledBuiltInVariableItemEnum,
-) as any as S.Schema<ContainerEnabledBuiltInVariableItemEnumList>;
+export const ContainerEnabledBuiltInVariableItemEnumList =
+  ContainerUsageContextItemEnumList as any as S.Schema<ContainerEnabledBuiltInVariableItemEnumList>;
 
 /** Represents a Google Tag Manager Container. */
 export interface Container {
@@ -906,9 +905,8 @@ export const AccountAccessPermissionItemEnum = S.String;
 export type AccountAccessPermissionItemEnumList = Array<
   AccountAccessPermissionItemEnum | (string & {})
 >;
-export const AccountAccessPermissionItemEnumList = /*@__PURE__*/ S.Array(
-  AccountAccessPermissionItemEnum,
-) as any as S.Schema<AccountAccessPermissionItemEnumList>;
+export const AccountAccessPermissionItemEnumList =
+  ContainerUsageContextItemEnumList as any as S.Schema<AccountAccessPermissionItemEnumList>;
 
 /** Defines the Google Tag Manager Account access permissions. */
 export interface AccountAccess {
@@ -933,9 +931,8 @@ export const ContainerAccessPermissionItemEnum = S.String;
 export type ContainerAccessPermissionItemEnumList = Array<
   ContainerAccessPermissionItemEnum | (string & {})
 >;
-export const ContainerAccessPermissionItemEnumList = /*@__PURE__*/ S.Array(
-  ContainerAccessPermissionItemEnum,
-) as any as S.Schema<ContainerAccessPermissionItemEnumList>;
+export const ContainerAccessPermissionItemEnumList =
+  ContainerUsageContextItemEnumList as any as S.Schema<ContainerAccessPermissionItemEnumList>;
 
 /** Defines the Google Tag Manager Container access permissions. */
 export interface ContainerAccess {

@@ -2435,19 +2435,8 @@ export interface CreateChannelRequestBodyCase3DetailsCase1 {
   /** value must be a valid URL. */
   url: unknown;
 }
-export const CreateChannelRequestBodyCase3DetailsCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    auth_info: S.optional(S.Unknown.pipe(T.Body("auth-info"))),
-    auth_method: CreateChannelRequestBodyCase3DetailsCase1AuthMethod.pipe(T.Body("auth-method")),
-    fe_form_type: S.optional(
-      CreateChannelRequestBodyCase3DetailsCase1FeFormType.pipe(T.Body("fe-form-type")),
-    ),
-    method: S.optional(CreateChannelRequestBodyCase3DetailsCase1Method),
-    url: S.Unknown,
-  }),
-).annotate({
-  identifier: "CreateChannelRequestBodyCase3DetailsCase1",
-}) as any as S.Schema<CreateChannelRequestBodyCase3DetailsCase1>;
+export const CreateChannelRequestBodyCase3DetailsCase1 =
+  CreateChannelRequestBodyCase0Details as any as S.Schema<CreateChannelRequestBodyCase3DetailsCase1>;
 
 export type CreateChannelRequestBodyCase3Details =
   | CreateChannelRequestBodyCase2Details
@@ -2521,19 +2510,8 @@ export interface CreateChannelTestRequestBodyCase0Details {
   /** value must be a valid URL. */
   url: unknown;
 }
-export const CreateChannelTestRequestBodyCase0Details = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    auth_info: S.optional(S.Unknown.pipe(T.Body("auth-info"))),
-    auth_method: CreateChannelTestRequestBodyCase0DetailsAuthMethod.pipe(T.Body("auth-method")),
-    fe_form_type: S.optional(
-      CreateChannelTestRequestBodyCase0DetailsFeFormType.pipe(T.Body("fe-form-type")),
-    ),
-    method: S.optional(CreateChannelTestRequestBodyCase0DetailsMethod),
-    url: S.Unknown,
-  }),
-).annotate({
-  identifier: "CreateChannelTestRequestBodyCase0Details",
-}) as any as S.Schema<CreateChannelTestRequestBodyCase0Details>;
+export const CreateChannelTestRequestBodyCase0Details =
+  CreateChannelRequestBodyCase0Details as any as S.Schema<CreateChannelTestRequestBodyCase0Details>;
 
 export interface CreateChannelTestRequestBodyCase0 {
   details: CreateChannelTestRequestBodyCase0Details;
@@ -9237,9 +9215,8 @@ export const GetActivityRecentsRequestContextItem = S.String;
 export type GetActivityRecentsRequestContextList = Array<
   GetActivityRecentsRequestContextItem | (string & {})
 >;
-export const GetActivityRecentsRequestContextList = /*@__PURE__*/ S.Array(
-  GetActivityRecentsRequestContextItem,
-) as any as S.Schema<GetActivityRecentsRequestContextList>;
+export const GetActivityRecentsRequestContextList =
+  MetabaseParametersSchemaParameterTemporalUnitsList as any as S.Schema<GetActivityRecentsRequestContextList>;
 
 export interface GetActivityRecentsRequest {
   context: GetActivityRecentsRequestContextList;
@@ -9851,9 +9828,8 @@ export type GetCacheRequestModelItem = "root" | "database" | "dashboard" | "ques
 export const GetCacheRequestModelItem = S.String;
 
 export type GetCacheRequestModelList = Array<GetCacheRequestModelItem | (string & {})>;
-export const GetCacheRequestModelList = /*@__PURE__*/ S.Array(
-  GetCacheRequestModelItem,
-) as any as S.Schema<GetCacheRequestModelList>;
+export const GetCacheRequestModelList =
+  MetabaseParametersSchemaParameterTemporalUnitsList as any as S.Schema<GetCacheRequestModelList>;
 
 export type GetCacheRequestSortColumn = "name" | "policy" | "collection";
 export const GetCacheRequestSortColumn = S.String;
@@ -10306,9 +10282,8 @@ export const GetCollectionItemsRequestModelsItem = S.String;
 export type GetCollectionItemsRequestModelsList = Array<
   GetCollectionItemsRequestModelsItem | (string & {})
 >;
-export const GetCollectionItemsRequestModelsList = /*@__PURE__*/ S.Array(
-  GetCollectionItemsRequestModelsItem,
-) as any as S.Schema<GetCollectionItemsRequestModelsList>;
+export const GetCollectionItemsRequestModelsList =
+  MetabaseParametersSchemaParameterTemporalUnitsList as any as S.Schema<GetCollectionItemsRequestModelsList>;
 
 export type GetCollectionItemsRequestPinnedState = "is_not_pinned" | "is_pinned" | "all";
 export const GetCollectionItemsRequestPinnedState = S.String;
@@ -10398,9 +10373,8 @@ export const GetCollectionRootItemsRequestModelsItem = S.String;
 export type GetCollectionRootItemsRequestModelsList = Array<
   GetCollectionRootItemsRequestModelsItem | (string & {})
 >;
-export const GetCollectionRootItemsRequestModelsList = /*@__PURE__*/ S.Array(
-  GetCollectionRootItemsRequestModelsItem,
-) as any as S.Schema<GetCollectionRootItemsRequestModelsList>;
+export const GetCollectionRootItemsRequestModelsList =
+  MetabaseParametersSchemaParameterTemporalUnitsList as any as S.Schema<GetCollectionRootItemsRequestModelsList>;
 
 export type GetCollectionRootItemsRequestCollectionType = "remote-synced";
 export const GetCollectionRootItemsRequestCollectionType = S.String;
@@ -11669,9 +11643,8 @@ export const GetEeDependenciesGraphResponse =
 export type GetEeDependenciesGraphBreakingRequestTypesCase1List = Array<
   MetabaseEnterpriseDependenciesDependencyTypesDependencyTypes | (string & {})
 >;
-export const GetEeDependenciesGraphBreakingRequestTypesCase1List = /*@__PURE__*/ S.Array(
-  MetabaseEnterpriseDependenciesDependencyTypesDependencyTypes,
-) as any as S.Schema<GetEeDependenciesGraphBreakingRequestTypesCase1List>;
+export const GetEeDependenciesGraphBreakingRequestTypesCase1List =
+  MetabaseParametersSchemaParameterTemporalUnitsList as any as S.Schema<GetEeDependenciesGraphBreakingRequestTypesCase1List>;
 
 export type GetEeDependenciesGraphBreakingRequestTypes =
   | MetabaseEnterpriseDependenciesDependencyTypesDependencyTypes
@@ -11691,9 +11664,8 @@ export const GetEeDependenciesGraphBreakingRequestCardTypesCase1Item = S.String;
 export type GetEeDependenciesGraphBreakingRequestCardTypesCase1List = Array<
   GetEeDependenciesGraphBreakingRequestCardTypesCase1Item | (string & {})
 >;
-export const GetEeDependenciesGraphBreakingRequestCardTypesCase1List = /*@__PURE__*/ S.Array(
-  GetEeDependenciesGraphBreakingRequestCardTypesCase1Item,
-) as any as S.Schema<GetEeDependenciesGraphBreakingRequestCardTypesCase1List>;
+export const GetEeDependenciesGraphBreakingRequestCardTypesCase1List =
+  MetabaseParametersSchemaParameterTemporalUnitsList as any as S.Schema<GetEeDependenciesGraphBreakingRequestCardTypesCase1List>;
 
 export type GetEeDependenciesGraphBreakingRequestCardTypes =
   | GetEeDependenciesGraphBreakingRequestCardTypesCase0
@@ -11771,9 +11743,8 @@ export const GetEeDependenciesGraphBrokenRequestDependentCardTypesCase1Item = S.
 export type GetEeDependenciesGraphBrokenRequestDependentCardTypesCase1List = Array<
   GetEeDependenciesGraphBrokenRequestDependentCardTypesCase1Item | (string & {})
 >;
-export const GetEeDependenciesGraphBrokenRequestDependentCardTypesCase1List = /*@__PURE__*/ S.Array(
-  GetEeDependenciesGraphBrokenRequestDependentCardTypesCase1Item,
-) as any as S.Schema<GetEeDependenciesGraphBrokenRequestDependentCardTypesCase1List>;
+export const GetEeDependenciesGraphBrokenRequestDependentCardTypesCase1List =
+  MetabaseParametersSchemaParameterTemporalUnitsList as any as S.Schema<GetEeDependenciesGraphBrokenRequestDependentCardTypesCase1List>;
 
 export type GetEeDependenciesGraphBrokenRequestDependentCardTypes =
   | GetEeDependenciesGraphBrokenRequestDependentCardTypesCase0
@@ -11940,9 +11911,8 @@ export const GetEeDependenciesGraphUnreferencedRequestCardTypesCase1Item = S.Str
 export type GetEeDependenciesGraphUnreferencedRequestCardTypesCase1List = Array<
   GetEeDependenciesGraphUnreferencedRequestCardTypesCase1Item | (string & {})
 >;
-export const GetEeDependenciesGraphUnreferencedRequestCardTypesCase1List = /*@__PURE__*/ S.Array(
-  GetEeDependenciesGraphUnreferencedRequestCardTypesCase1Item,
-) as any as S.Schema<GetEeDependenciesGraphUnreferencedRequestCardTypesCase1List>;
+export const GetEeDependenciesGraphUnreferencedRequestCardTypesCase1List =
+  MetabaseParametersSchemaParameterTemporalUnitsList as any as S.Schema<GetEeDependenciesGraphUnreferencedRequestCardTypesCase1List>;
 
 export type GetEeDependenciesGraphUnreferencedRequestCardTypes =
   | GetEeDependenciesGraphUnreferencedRequestCardTypesCase0
@@ -14367,9 +14337,8 @@ export type GetSearchRequestModelsItem =
 export const GetSearchRequestModelsItem = S.String;
 
 export type GetSearchRequestModelsList = Array<GetSearchRequestModelsItem | (string & {})>;
-export const GetSearchRequestModelsList = /*@__PURE__*/ S.Array(
-  GetSearchRequestModelsItem,
-) as any as S.Schema<GetSearchRequestModelsList>;
+export const GetSearchRequestModelsList =
+  MetabaseParametersSchemaParameterTemporalUnitsList as any as S.Schema<GetSearchRequestModelsList>;
 
 export type GetSearchRequestFilterItemsInPersonalCollection =
   | "all"
@@ -14501,9 +14470,8 @@ export const GetSearchDebugRequestModelsItem = S.String;
 export type GetSearchDebugRequestModelsList = Array<
   GetSearchDebugRequestModelsItem | (string & {})
 >;
-export const GetSearchDebugRequestModelsList = /*@__PURE__*/ S.Array(
-  GetSearchDebugRequestModelsItem,
-) as any as S.Schema<GetSearchDebugRequestModelsList>;
+export const GetSearchDebugRequestModelsList =
+  MetabaseParametersSchemaParameterTemporalUnitsList as any as S.Schema<GetSearchDebugRequestModelsList>;
 
 export type GetSearchDebugRequestFilterItemsInPersonalCollection =
   | "all"
@@ -15229,9 +15197,8 @@ export const GetTransformRequestLastRunStatusesItem = S.String;
 export type GetTransformRequestLastRunStatusesList = Array<
   GetTransformRequestLastRunStatusesItem | (string & {})
 >;
-export const GetTransformRequestLastRunStatusesList = /*@__PURE__*/ S.Array(
-  GetTransformRequestLastRunStatusesItem,
-) as any as S.Schema<GetTransformRequestLastRunStatusesList>;
+export const GetTransformRequestLastRunStatusesList =
+  MetabaseParametersSchemaParameterTemporalUnitsList as any as S.Schema<GetTransformRequestLastRunStatusesList>;
 
 export type GetTransformRequestTagIdsList = Array<number>;
 export const GetTransformRequestTagIdsList =
@@ -15297,9 +15264,8 @@ export const GetTransformJobRequestLastRunStatusesItem = S.String;
 export type GetTransformJobRequestLastRunStatusesList = Array<
   GetTransformJobRequestLastRunStatusesItem | (string & {})
 >;
-export const GetTransformJobRequestLastRunStatusesList = /*@__PURE__*/ S.Array(
-  GetTransformJobRequestLastRunStatusesItem,
-) as any as S.Schema<GetTransformJobRequestLastRunStatusesList>;
+export const GetTransformJobRequestLastRunStatusesList =
+  MetabaseParametersSchemaParameterTemporalUnitsList as any as S.Schema<GetTransformJobRequestLastRunStatusesList>;
 
 export type GetTransformJobRequestTagIdsList = Array<number>;
 export const GetTransformJobRequestTagIdsList =
@@ -15446,9 +15412,8 @@ export const GetTransformRunRequestStatusesItem = S.String;
 export type GetTransformRunRequestStatusesList = Array<
   GetTransformRunRequestStatusesItem | (string & {})
 >;
-export const GetTransformRunRequestStatusesList = /*@__PURE__*/ S.Array(
-  GetTransformRunRequestStatusesItem,
-) as any as S.Schema<GetTransformRunRequestStatusesList>;
+export const GetTransformRunRequestStatusesList =
+  MetabaseParametersSchemaParameterTemporalUnitsList as any as S.Schema<GetTransformRunRequestStatusesList>;
 
 export type GetTransformRunRequestTransformTagIdsList = Array<number>;
 export const GetTransformRunRequestTransformTagIdsList =
@@ -15460,9 +15425,8 @@ export const GetTransformRunRequestRunMethodsItem = S.String;
 export type GetTransformRunRequestRunMethodsList = Array<
   GetTransformRunRequestRunMethodsItem | (string & {})
 >;
-export const GetTransformRunRequestRunMethodsList = /*@__PURE__*/ S.Array(
-  GetTransformRunRequestRunMethodsItem,
-) as any as S.Schema<GetTransformRunRequestRunMethodsList>;
+export const GetTransformRunRequestRunMethodsList =
+  MetabaseParametersSchemaParameterTemporalUnitsList as any as S.Schema<GetTransformRunRequestRunMethodsList>;
 
 export interface GetTransformRunRequest {
   sort_column?: GetTransformRunRequestSortColumn | (string & {});
@@ -16198,19 +16162,8 @@ export interface PutChannelRequestBodyCase0Details {
   /** value must be a valid URL. */
   url: unknown;
 }
-export const PutChannelRequestBodyCase0Details = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    auth_info: S.optional(S.Unknown.pipe(T.Body("auth-info"))),
-    auth_method: PutChannelRequestBodyCase0DetailsAuthMethod.pipe(T.Body("auth-method")),
-    fe_form_type: S.optional(
-      PutChannelRequestBodyCase0DetailsFeFormType.pipe(T.Body("fe-form-type")),
-    ),
-    method: S.optional(PutChannelRequestBodyCase0DetailsMethod),
-    url: S.Unknown,
-  }),
-).annotate({
-  identifier: "PutChannelRequestBodyCase0Details",
-}) as any as S.Schema<PutChannelRequestBodyCase0Details>;
+export const PutChannelRequestBodyCase0Details =
+  CreateChannelRequestBodyCase0Details as any as S.Schema<PutChannelRequestBodyCase0Details>;
 
 export interface PutChannelRequestBodyCase0 {
   active?: boolean | null;
@@ -16301,19 +16254,8 @@ export interface PutChannelRequestBodyCase3DetailsCase1 {
   /** value must be a valid URL. */
   url: unknown;
 }
-export const PutChannelRequestBodyCase3DetailsCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    auth_info: S.optional(S.Unknown.pipe(T.Body("auth-info"))),
-    auth_method: PutChannelRequestBodyCase3DetailsCase1AuthMethod.pipe(T.Body("auth-method")),
-    fe_form_type: S.optional(
-      PutChannelRequestBodyCase3DetailsCase1FeFormType.pipe(T.Body("fe-form-type")),
-    ),
-    method: S.optional(PutChannelRequestBodyCase3DetailsCase1Method),
-    url: S.Unknown,
-  }),
-).annotate({
-  identifier: "PutChannelRequestBodyCase3DetailsCase1",
-}) as any as S.Schema<PutChannelRequestBodyCase3DetailsCase1>;
+export const PutChannelRequestBodyCase3DetailsCase1 =
+  CreateChannelRequestBodyCase0Details as any as S.Schema<PutChannelRequestBodyCase3DetailsCase1>;
 
 export type PutChannelRequestBodyCase3Details =
   | CreateChannelRequestBodyCase2Details
@@ -16450,10 +16392,8 @@ export const PutDashboardRequestEmbeddingParamsValue = S.String;
 export type PutDashboardRequestEmbeddingParamsMap = {
   [key: string]: PutDashboardRequestEmbeddingParamsValue | (string & {}) | undefined;
 };
-export const PutDashboardRequestEmbeddingParamsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  PutDashboardRequestEmbeddingParamsValue,
-) as any as S.Schema<PutDashboardRequestEmbeddingParamsMap>;
+export const PutDashboardRequestEmbeddingParamsMap =
+  PutCardRequestEmbeddingParamsMap as any as S.Schema<PutDashboardRequestEmbeddingParamsMap>;
 
 export type PutDashboardRequestTabsItem = CreateDashboardSaveRequestTabsItem;
 export const PutDashboardRequestTabsItem = CreateDashboardSaveRequestTabsItem;

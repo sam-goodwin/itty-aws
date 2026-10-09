@@ -1961,18 +1961,8 @@ export interface CreateClusterResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const CreateClusterResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(CreateClusterResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(CreateClusterResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateClusterResponseSystemData",
-}) as any as S.Schema<CreateClusterResponseSystemData>;
+export const CreateClusterResponseSystemData =
+  CreateApplicationResponseSystemData as any as S.Schema<CreateClusterResponseSystemData>;
 
 export interface CreateClusterResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2506,18 +2496,8 @@ export interface GetApplicationResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetApplicationResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetApplicationResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetApplicationResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetApplicationResponseSystemData",
-}) as any as S.Schema<GetApplicationResponseSystemData>;
+export const GetApplicationResponseSystemData =
+  CreateApplicationResponseSystemData as any as S.Schema<GetApplicationResponseSystemData>;
 
 export interface GetApplicationResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2664,18 +2644,8 @@ export interface GetClusterResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetClusterResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetClusterResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetClusterResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetClusterResponseSystemData",
-}) as any as S.Schema<GetClusterResponseSystemData>;
+export const GetClusterResponseSystemData =
+  CreateApplicationResponseSystemData as any as S.Schema<GetClusterResponseSystemData>;
 
 export interface GetClusterResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2926,14 +2896,8 @@ export interface GetExtensionAzureAsyncOperationStatusResponse {
   /** The operation error information. */
   error?: ApplicationPropertiesInputErrorsItem;
 }
-export const GetExtensionAzureAsyncOperationStatusResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(GetExtensionAzureAsyncOperationStatusResponseStatus),
-    error: S.optional(ApplicationPropertiesInputErrorsItem),
-  }),
-).annotate({
-  identifier: "GetExtensionAzureAsyncOperationStatusResponse",
-}) as any as S.Schema<GetExtensionAzureAsyncOperationStatusResponse>;
+export const GetExtensionAzureAsyncOperationStatusResponse =
+  GetApplicationAzureAsyncOperationStatusResponse as any as S.Schema<GetExtensionAzureAsyncOperationStatusResponse>;
 
 export interface GetExtensionAzureMonitorStatusRequest {
   /** The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -3040,14 +3004,8 @@ export interface GetLocationAzureAsyncOperationStatusResponse {
   /** The operation error information. */
   error?: ApplicationPropertiesInputErrorsItem;
 }
-export const GetLocationAzureAsyncOperationStatusResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(GetLocationAzureAsyncOperationStatusResponseStatus),
-    error: S.optional(ApplicationPropertiesInputErrorsItem),
-  }),
-).annotate({
-  identifier: "GetLocationAzureAsyncOperationStatusResponse",
-}) as any as S.Schema<GetLocationAzureAsyncOperationStatusResponse>;
+export const GetLocationAzureAsyncOperationStatusResponse =
+  GetApplicationAzureAsyncOperationStatusResponse as any as S.Schema<GetLocationAzureAsyncOperationStatusResponse>;
 
 export interface GetLocationCapabilitiesRequest {
   /** The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -3394,18 +3352,8 @@ export interface GetPrivateLinkResourceResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetPrivateLinkResourceResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetPrivateLinkResourceResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetPrivateLinkResourceResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetPrivateLinkResourceResponseSystemData",
-}) as any as S.Schema<GetPrivateLinkResourceResponseSystemData>;
+export const GetPrivateLinkResourceResponseSystemData =
+  CreateApplicationResponseSystemData as any as S.Schema<GetPrivateLinkResourceResponseSystemData>;
 
 export interface GetPrivateLinkResourceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -3472,14 +3420,8 @@ export interface GetScriptActionExecutionAsyncOperationStatusResponse {
   /** The operation error information. */
   error?: ApplicationPropertiesInputErrorsItem;
 }
-export const GetScriptActionExecutionAsyncOperationStatusResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(GetScriptActionExecutionAsyncOperationStatusResponseStatus),
-    error: S.optional(ApplicationPropertiesInputErrorsItem),
-  }),
-).annotate({
-  identifier: "GetScriptActionExecutionAsyncOperationStatusResponse",
-}) as any as S.Schema<GetScriptActionExecutionAsyncOperationStatusResponse>;
+export const GetScriptActionExecutionAsyncOperationStatusResponse =
+  GetApplicationAzureAsyncOperationStatusResponse as any as S.Schema<GetScriptActionExecutionAsyncOperationStatusResponse>;
 
 export interface GetScriptActionExecutionDetailRequest {
   /** The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -3623,14 +3565,8 @@ export interface GetVirtualMachineAsyncOperationStatusResponse {
   /** The operation error information. */
   error?: ApplicationPropertiesInputErrorsItem;
 }
-export const GetVirtualMachineAsyncOperationStatusResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(GetVirtualMachineAsyncOperationStatusResponseStatus),
-    error: S.optional(ApplicationPropertiesInputErrorsItem),
-  }),
-).annotate({
-  identifier: "GetVirtualMachineAsyncOperationStatusResponse",
-}) as any as S.Schema<GetVirtualMachineAsyncOperationStatusResponse>;
+export const GetVirtualMachineAsyncOperationStatusResponse =
+  GetApplicationAzureAsyncOperationStatusResponse as any as S.Schema<GetVirtualMachineAsyncOperationStatusResponse>;
 
 export interface ListApplicationByClusterRequest {
   /** The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -3807,16 +3743,7 @@ export interface ClusterSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const ClusterSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(ClusterSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(ClusterSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({ identifier: "ClusterSystemData" }) as any as S.Schema<ClusterSystemData>;
+export const ClusterSystemData = ApplicationSystemData as any as S.Schema<ClusterSystemData>;
 
 /** The HDInsight cluster. */
 export interface Cluster {
@@ -3999,9 +3926,8 @@ export const VmSizeCompatibilityFilterV2OsTypeItem = S.String;
 
 /** The OSType affected, Windows or Linux. */
 export type VmSizeCompatibilityFilterV2OsTypeList = Array<VmSizeCompatibilityFilterV2OsTypeItem>;
-export const VmSizeCompatibilityFilterV2OsTypeList = /*@__PURE__*/ S.Array(
-  VmSizeCompatibilityFilterV2OsTypeItem,
-) as any as S.Schema<VmSizeCompatibilityFilterV2OsTypeList>;
+export const VmSizeCompatibilityFilterV2OsTypeList =
+  AutoscaleScheduleDaysList as any as S.Schema<VmSizeCompatibilityFilterV2OsTypeList>;
 
 /** The list of virtual machine sizes to include or exclude. */
 export type VmSizeCompatibilityFilterV2VmSizesList = Array<string>;
@@ -4516,18 +4442,8 @@ export interface PrivateEndpointConnectionSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const PrivateEndpointConnectionSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(PrivateEndpointConnectionSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(PrivateEndpointConnectionSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PrivateEndpointConnectionSystemData",
-}) as any as S.Schema<PrivateEndpointConnectionSystemData>;
+export const PrivateEndpointConnectionSystemData =
+  CreateApplicationResponseSystemData as any as S.Schema<PrivateEndpointConnectionSystemData>;
 
 /** The private endpoint connection. */
 export interface PrivateEndpointConnection {
@@ -4654,18 +4570,8 @@ export interface PrivateLinkResourceSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const PrivateLinkResourceSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(PrivateLinkResourceSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(PrivateLinkResourceSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PrivateLinkResourceSystemData",
-}) as any as S.Schema<PrivateLinkResourceSystemData>;
+export const PrivateLinkResourceSystemData =
+  CreateApplicationResponseSystemData as any as S.Schema<PrivateLinkResourceSystemData>;
 
 /** A private link resource */
 export interface PrivateLinkResource {
@@ -5164,23 +5070,8 @@ export interface PrivateEndpointConnectionsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const PrivateEndpointConnectionsCreateOrUpdateResponseSystemData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        PrivateEndpointConnectionsCreateOrUpdateResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        PrivateEndpointConnectionsCreateOrUpdateResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "PrivateEndpointConnectionsCreateOrUpdateResponseSystemData",
-}) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateResponseSystemData>;
+export const PrivateEndpointConnectionsCreateOrUpdateResponseSystemData =
+  ClusterGetPropertiesPrivateEndpointConnectionsItemSystemData as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateResponseSystemData>;
 
 export interface PrivateEndpointConnectionsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -5194,17 +5085,8 @@ export interface PrivateEndpointConnectionsCreateOrUpdateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: PrivateEndpointConnectionsCreateOrUpdateResponseSystemData;
 }
-export const PrivateEndpointConnectionsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: PrivateEndpointConnectionProperties,
-    systemData: S.optional(PrivateEndpointConnectionsCreateOrUpdateResponseSystemData),
-  }),
-).annotate({
-  identifier: "PrivateEndpointConnectionsCreateOrUpdateResponse",
-}) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateResponse>;
+export const PrivateEndpointConnectionsCreateOrUpdateResponse =
+  ClusterGetPropertiesPrivateEndpointConnectionsItem as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateResponse>;
 
 export interface PromoteScriptExecutionHistoryRequest {
   /** The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -5420,18 +5302,8 @@ export interface UpdateClusterResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdateClusterResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(UpdateClusterResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(UpdateClusterResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateClusterResponseSystemData",
-}) as any as S.Schema<UpdateClusterResponseSystemData>;
+export const UpdateClusterResponseSystemData =
+  CreateApplicationResponseSystemData as any as S.Schema<UpdateClusterResponseSystemData>;
 
 export interface UpdateClusterResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */

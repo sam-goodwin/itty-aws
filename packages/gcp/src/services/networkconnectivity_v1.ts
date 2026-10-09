@@ -837,9 +837,8 @@ export const InternalRangeOverlapsItemEnum = S.String;
 export type InternalRangeOverlapsItemEnumList = Array<
   InternalRangeOverlapsItemEnum | (string & {})
 >;
-export const InternalRangeOverlapsItemEnumList = /*@__PURE__*/ S.Array(
-  InternalRangeOverlapsItemEnum,
-) as any as S.Schema<InternalRangeOverlapsItemEnumList>;
+export const InternalRangeOverlapsItemEnumList =
+  CheckConsumerConfigResponseErrorsItemEnumList as any as S.Schema<InternalRangeOverlapsItemEnumList>;
 
 export type InternalRangePeeringEnum =
   | "PEERING_UNSPECIFIED"
@@ -3684,9 +3683,8 @@ export const RemoteTransportProfileSupportedBandwidthsItemEnum = S.String;
 
 export type RemoteTransportProfileSupportedBandwidthsItemEnumList =
   Array<RemoteTransportProfileSupportedBandwidthsItemEnum>;
-export const RemoteTransportProfileSupportedBandwidthsItemEnumList = /*@__PURE__*/ S.Array(
-  RemoteTransportProfileSupportedBandwidthsItemEnum,
-) as any as S.Schema<RemoteTransportProfileSupportedBandwidthsItemEnumList>;
+export const RemoteTransportProfileSupportedBandwidthsItemEnumList =
+  CheckConsumerConfigResponseErrorsItemEnumList as any as S.Schema<RemoteTransportProfileSupportedBandwidthsItemEnumList>;
 
 export type RemoteTransportProfileFlowEnum =
   | "KEY_PROVISIONING_FLOW_UNSPECIFIED"

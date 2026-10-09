@@ -5437,7 +5437,7 @@ export type Permission =
 export const Permission = S.String;
 
 export type PermissionList = Permission[];
-export const PermissionList = /*@__PURE__*/ S.Array(Permission);
+export const PermissionList = EnableAdditionalMetadata as any as S.Schema<PermissionList>;
 export interface PrincipalPermissions {
   Principal?: DataLakePrincipal;
   Permissions?: Permission[];
@@ -5773,10 +5773,7 @@ export type ConnectionPropertyKey =
 export const ConnectionPropertyKey = S.String;
 
 export type ConnectionProperties = { [key in ConnectionPropertyKey]?: string };
-export const ConnectionProperties = /*@__PURE__*/ S.Record(
-  ConnectionPropertyKey,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const ConnectionProperties = DQAdditionalOptions as any as S.Schema<ConnectionProperties>;
 export type PropertyKey = string;
 export type PropertyValue = string;
 export type PropertyMap = { [key: string]: string | undefined };
@@ -5913,7 +5910,8 @@ export type ComputeEnvironment = "SPARK" | "ATHENA" | "PYTHON" | (string & {});
 export const ComputeEnvironment = S.String;
 
 export type ComputeEnvironmentList = ComputeEnvironment[];
-export const ComputeEnvironmentList = /*@__PURE__*/ S.Array(ComputeEnvironment);
+export const ComputeEnvironmentList =
+  EnableAdditionalMetadata as any as S.Schema<ComputeEnvironmentList>;
 export interface ConnectionInput {
   Name: string;
   Description?: string;
@@ -8287,12 +8285,12 @@ export const DescribeConnectionTypeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeConnectionTypeRequest>;
 export type Description = string;
 export type AuthenticationTypes = AuthenticationType[];
-export const AuthenticationTypes = /*@__PURE__*/ S.Array(AuthenticationType);
+export const AuthenticationTypes = EnableAdditionalMetadata as any as S.Schema<AuthenticationTypes>;
 export type DataOperation = "READ" | "WRITE" | (string & {});
 export const DataOperation = S.String;
 
 export type DataOperations = DataOperation[];
-export const DataOperations = /*@__PURE__*/ S.Array(DataOperation);
+export const DataOperations = EnableAdditionalMetadata as any as S.Schema<DataOperations>;
 export type ComputeEnvironments = ComputeEnvironment[];
 export const ComputeEnvironments = ComputeEnvironmentList as any as S.Schema<ComputeEnvironments>;
 export interface Capabilities {
@@ -8319,7 +8317,7 @@ export type PropertyType =
 export const PropertyType = S.String;
 
 export type PropertyTypes = PropertyType[];
-export const PropertyTypes = /*@__PURE__*/ S.Array(PropertyType);
+export const PropertyTypes = EnableAdditionalMetadata as any as S.Schema<PropertyTypes>;
 export type AllowedValueDescriptionString = string;
 export type AllowedValueValueString = string;
 export interface AllowedValue {
@@ -8731,7 +8729,8 @@ export type FieldFilterOperator =
 export const FieldFilterOperator = S.String;
 
 export type FieldFilterOperatorsList = FieldFilterOperator[];
-export const FieldFilterOperatorsList = /*@__PURE__*/ S.Array(FieldFilterOperator);
+export const FieldFilterOperatorsList =
+  EnableAdditionalMetadata as any as S.Schema<FieldFilterOperatorsList>;
 export type CustomProperties = { [key: string]: string | undefined };
 export const CustomProperties = ParametersMap as any as S.Schema<CustomProperties>;
 export interface Field {
@@ -10106,7 +10105,8 @@ export type DatabaseAttributes = "NAME" | "TARGET_DATABASE" | (string & {});
 export const DatabaseAttributes = S.String;
 
 export type DatabaseAttributesList = DatabaseAttributes[];
-export const DatabaseAttributesList = /*@__PURE__*/ S.Array(DatabaseAttributes);
+export const DatabaseAttributesList =
+  EnableAdditionalMetadata as any as S.Schema<DatabaseAttributesList>;
 export interface GetDatabasesRequest {
   CatalogId?: string;
   NextToken?: string;
@@ -11276,9 +11276,7 @@ export interface TransformSortCriteria {
   Column: TransformSortColumnType;
   SortDirection: SortDirectionType;
 }
-export const TransformSortCriteria = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Column: TransformSortColumnType, SortDirection: SortDirectionType }),
-).annotate({ identifier: "TransformSortCriteria" }) as any as S.Schema<TransformSortCriteria>;
+export const TransformSortCriteria = TaskRunSortCriteria as any as S.Schema<TransformSortCriteria>;
 export interface GetMLTransformsRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -11905,7 +11903,7 @@ export type TableAttributes =
 export const TableAttributes = S.String;
 
 export type TableAttributesList = TableAttributes[];
-export const TableAttributesList = /*@__PURE__*/ S.Array(TableAttributes);
+export const TableAttributesList = EnableAdditionalMetadata as any as S.Schema<TableAttributesList>;
 export interface GetTableRequest {
   CatalogId?: string;
   DatabaseName: string;
@@ -12334,7 +12332,7 @@ export type PermissionType =
 export const PermissionType = S.String;
 
 export type PermissionTypeList = PermissionType[];
-export const PermissionTypeList = /*@__PURE__*/ S.Array(PermissionType);
+export const PermissionTypeList = EnableAdditionalMetadata as any as S.Schema<PermissionTypeList>;
 export interface GetUnfilteredPartitionMetadataRequest {
   Region?: string;
   CatalogId: string;

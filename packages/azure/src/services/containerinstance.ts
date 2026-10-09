@@ -594,18 +594,12 @@ export interface Port {
   /** The port number. */
   port: number;
 }
-export const Port = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    protocol: S.optional(ContainerGroupNetworkProtocol),
-    port: S.Number,
-  }),
-).annotate({ identifier: "Port" }) as any as S.Schema<Port>;
+export const Port = ContainerPort as any as S.Schema<Port>;
 
 /** The list of ports exposed on the container group. */
 export type IpAddressInputPortsList = Array<Port>;
-export const IpAddressInputPortsList = /*@__PURE__*/ S.Array(
-  Port,
-) as any as S.Schema<IpAddressInputPortsList>;
+export const IpAddressInputPortsList =
+  ContainerPropertiesInputPortsList as any as S.Schema<IpAddressInputPortsList>;
 
 /** Specifies if the IP is exposed to the public internet or private VNET. */
 export type ContainerGroupIpAddressType = "Public" | "Private";

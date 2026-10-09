@@ -508,9 +508,8 @@ export const NotifyGetRepoListRequestSubjectTypeItem = S.String;
 export type NotifyGetRepoListRequestSubjectTypeList = Array<
   NotifyGetRepoListRequestSubjectTypeItem | (string & {})
 >;
-export const NotifyGetRepoListRequestSubjectTypeList = /*@__PURE__*/ S.Array(
-  NotifyGetRepoListRequestSubjectTypeItem,
-) as any as S.Schema<NotifyGetRepoListRequestSubjectTypeList>;
+export const NotifyGetRepoListRequestSubjectTypeList =
+  NotifyGetListRequestSubjectTypeList as any as S.Schema<NotifyGetRepoListRequestSubjectTypeList>;
 
 export interface NotifyGetRepoListRequest {
   /** owner of the repo */

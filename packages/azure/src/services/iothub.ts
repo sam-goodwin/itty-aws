@@ -634,27 +634,13 @@ export interface RoutingServiceBusTopicEndpointProperties {
   /** The name of the resource group of the service bus topic endpoint. */
   resourceGroup?: string;
 }
-export const RoutingServiceBusTopicEndpointProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    connectionString: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    endpointUri: S.optional(S.String),
-    entityPath: S.optional(S.String),
-    authenticationType: S.optional(RoutingServiceBusTopicEndpointPropertiesAuthenticationType),
-    identity: S.optional(ManagedIdentity),
-    name: S.String,
-    subscriptionId: S.optional(S.String),
-    resourceGroup: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RoutingServiceBusTopicEndpointProperties",
-}) as any as S.Schema<RoutingServiceBusTopicEndpointProperties>;
+export const RoutingServiceBusTopicEndpointProperties =
+  RoutingServiceBusQueueEndpointProperties as any as S.Schema<RoutingServiceBusTopicEndpointProperties>;
 
 /** The list of Service Bus topic endpoints that the IoT hub routes the messages to, based on the routing rules. */
 export type RoutingEndpointsServiceBusTopicsList = Array<RoutingServiceBusTopicEndpointProperties>;
-export const RoutingEndpointsServiceBusTopicsList = /*@__PURE__*/ S.Array(
-  RoutingServiceBusTopicEndpointProperties,
-) as any as S.Schema<RoutingEndpointsServiceBusTopicsList>;
+export const RoutingEndpointsServiceBusTopicsList =
+  RoutingEndpointsServiceBusQueuesList as any as S.Schema<RoutingEndpointsServiceBusTopicsList>;
 
 /** Method used to authenticate against the event hub endpoint */
 export type RoutingEventHubPropertiesAuthenticationType = "keyBased" | "identityBased";
@@ -681,27 +667,13 @@ export interface RoutingEventHubProperties {
   /** The name of the resource group of the event hub endpoint. */
   resourceGroup?: string;
 }
-export const RoutingEventHubProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    connectionString: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    endpointUri: S.optional(S.String),
-    entityPath: S.optional(S.String),
-    authenticationType: S.optional(RoutingEventHubPropertiesAuthenticationType),
-    identity: S.optional(ManagedIdentity),
-    name: S.String,
-    subscriptionId: S.optional(S.String),
-    resourceGroup: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RoutingEventHubProperties",
-}) as any as S.Schema<RoutingEventHubProperties>;
+export const RoutingEventHubProperties =
+  RoutingServiceBusQueueEndpointProperties as any as S.Schema<RoutingEventHubProperties>;
 
 /** The list of Event Hubs endpoints that IoT hub routes messages to, based on the routing rules. This list does not include the built-in Event Hubs endpoint. */
 export type RoutingEndpointsEventHubsList = Array<RoutingEventHubProperties>;
-export const RoutingEndpointsEventHubsList = /*@__PURE__*/ S.Array(
-  RoutingEventHubProperties,
-) as any as S.Schema<RoutingEndpointsEventHubsList>;
+export const RoutingEndpointsEventHubsList =
+  RoutingEndpointsServiceBusQueuesList as any as S.Schema<RoutingEndpointsEventHubsList>;
 
 /** Method used to authenticate against the storage endpoint */
 export type RoutingStorageContainerPropertiesAuthenticationType = "keyBased" | "identityBased";

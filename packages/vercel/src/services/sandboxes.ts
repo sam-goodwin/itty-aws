@@ -762,9 +762,8 @@ export const NamedSandboxFailoverRegionsItem = S.String;
 
 /** The regions the sandbox fails over to. Empty when it does not fail over. */
 export type NamedSandboxFailoverRegionsList = Array<NamedSandboxFailoverRegionsItem>;
-export const NamedSandboxFailoverRegionsList = /*@__PURE__*/ S.Array(
-  NamedSandboxFailoverRegionsItem,
-) as any as S.Schema<NamedSandboxFailoverRegionsList>;
+export const NamedSandboxFailoverRegionsList =
+  CreateSandboxesByNameForkV2RequestFailoverRegionsList as any as S.Schema<NamedSandboxFailoverRegionsList>;
 
 /** Keep-last snapshot configuration. */
 export interface NamedSandboxKeepLastSnapshots {
@@ -1496,23 +1495,15 @@ export interface CreateSandboxesByNameForkV3RequestMountsValue {
   /** Mount the drive as read-write, or as a read-only snapshot. One writer is permitted at a time. */
   mode?: CreateSandboxesByNameForkV3RequestMountsValueMode | (string & {});
 }
-export const CreateSandboxesByNameForkV3RequestMountsValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    drive: S.String,
-    mode: S.optional(CreateSandboxesByNameForkV3RequestMountsValueMode),
-  }),
-).annotate({
-  identifier: "CreateSandboxesByNameForkV3RequestMountsValue",
-}) as any as S.Schema<CreateSandboxesByNameForkV3RequestMountsValue>;
+export const CreateSandboxesByNameForkV3RequestMountsValue =
+  CreateSandboxesByNameForkV2RequestMountsValue as any as S.Schema<CreateSandboxesByNameForkV3RequestMountsValue>;
 
 /** List of drives to mount to the sandbox at the provided path. */
 export type CreateSandboxesByNameForkV3RequestMountsMap = {
   [key: string]: CreateSandboxesByNameForkV3RequestMountsValue | undefined;
 };
-export const CreateSandboxesByNameForkV3RequestMountsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  CreateSandboxesByNameForkV3RequestMountsValue,
-) as any as S.Schema<CreateSandboxesByNameForkV3RequestMountsMap>;
+export const CreateSandboxesByNameForkV3RequestMountsMap =
+  CreateSandboxesByNameForkV2RequestMountsMap as any as S.Schema<CreateSandboxesByNameForkV3RequestMountsMap>;
 
 /** The Vercel region in which to create the sandbox. */
 export type CreateSandboxesByNameForkV3RequestRegion =
@@ -1563,9 +1554,8 @@ export const CreateSandboxesByNameForkV3RequestFailoverRegionsItem = S.String;
 export type CreateSandboxesByNameForkV3RequestFailoverRegionsList = Array<
   CreateSandboxesByNameForkV3RequestFailoverRegionsItem | (string & {})
 >;
-export const CreateSandboxesByNameForkV3RequestFailoverRegionsList = /*@__PURE__*/ S.Array(
-  CreateSandboxesByNameForkV3RequestFailoverRegionsItem,
-) as any as S.Schema<CreateSandboxesByNameForkV3RequestFailoverRegionsList>;
+export const CreateSandboxesByNameForkV3RequestFailoverRegionsList =
+  CreateSandboxesByNameForkV2RequestFailoverRegionsList as any as S.Schema<CreateSandboxesByNameForkV3RequestFailoverRegionsList>;
 
 /** Default snapshot expiration time in milliseconds. Defaults to 7 days. Set to 0 to disable expiration. When set, this value is used as the default expiration for all snapshots created for this sandbox. */
 export type CreateSandboxesByNameForkV3RequestSnapshotExpiration = unknown | number;
@@ -2287,23 +2277,15 @@ export interface CreateSandboxesV2RequestMountsValue {
   /** Mount the drive as read-write, or as a read-only snapshot. One writer is permitted at a time. */
   mode?: CreateSandboxesV2RequestMountsValueMode | (string & {});
 }
-export const CreateSandboxesV2RequestMountsValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    drive: S.String,
-    mode: S.optional(CreateSandboxesV2RequestMountsValueMode),
-  }),
-).annotate({
-  identifier: "CreateSandboxesV2RequestMountsValue",
-}) as any as S.Schema<CreateSandboxesV2RequestMountsValue>;
+export const CreateSandboxesV2RequestMountsValue =
+  CreateSandboxesByNameForkV2RequestMountsValue as any as S.Schema<CreateSandboxesV2RequestMountsValue>;
 
 /** List of drives to mount to the sandbox at the provided path. */
 export type CreateSandboxesV2RequestMountsMap = {
   [key: string]: CreateSandboxesV2RequestMountsValue | undefined;
 };
-export const CreateSandboxesV2RequestMountsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  CreateSandboxesV2RequestMountsValue,
-) as any as S.Schema<CreateSandboxesV2RequestMountsMap>;
+export const CreateSandboxesV2RequestMountsMap =
+  CreateSandboxesByNameForkV2RequestMountsMap as any as S.Schema<CreateSandboxesV2RequestMountsMap>;
 
 /** The Vercel region in which to create the sandbox. */
 export type CreateSandboxesV2RequestRegion =
@@ -2354,9 +2336,8 @@ export const CreateSandboxesV2RequestFailoverRegionsItem = S.String;
 export type CreateSandboxesV2RequestFailoverRegionsList = Array<
   CreateSandboxesV2RequestFailoverRegionsItem | (string & {})
 >;
-export const CreateSandboxesV2RequestFailoverRegionsList = /*@__PURE__*/ S.Array(
-  CreateSandboxesV2RequestFailoverRegionsItem,
-) as any as S.Schema<CreateSandboxesV2RequestFailoverRegionsList>;
+export const CreateSandboxesV2RequestFailoverRegionsList =
+  CreateSandboxesByNameForkV2RequestFailoverRegionsList as any as S.Schema<CreateSandboxesV2RequestFailoverRegionsList>;
 
 /** Default snapshot expiration time in milliseconds. Set to 0 to disable expiration. When set, this value is used as the default expiration for all snapshots created for this sandbox. */
 export type CreateSandboxesV2RequestSnapshotExpiration = unknown | number;
@@ -2844,23 +2825,15 @@ export interface CreateSandboxesV3RequestMountsValue {
   /** Mount the drive as read-write, or as a read-only snapshot. One writer is permitted at a time. */
   mode?: CreateSandboxesV3RequestMountsValueMode | (string & {});
 }
-export const CreateSandboxesV3RequestMountsValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    drive: S.String,
-    mode: S.optional(CreateSandboxesV3RequestMountsValueMode),
-  }),
-).annotate({
-  identifier: "CreateSandboxesV3RequestMountsValue",
-}) as any as S.Schema<CreateSandboxesV3RequestMountsValue>;
+export const CreateSandboxesV3RequestMountsValue =
+  CreateSandboxesByNameForkV2RequestMountsValue as any as S.Schema<CreateSandboxesV3RequestMountsValue>;
 
 /** List of drives to mount to the sandbox at the provided path. */
 export type CreateSandboxesV3RequestMountsMap = {
   [key: string]: CreateSandboxesV3RequestMountsValue | undefined;
 };
-export const CreateSandboxesV3RequestMountsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  CreateSandboxesV3RequestMountsValue,
-) as any as S.Schema<CreateSandboxesV3RequestMountsMap>;
+export const CreateSandboxesV3RequestMountsMap =
+  CreateSandboxesByNameForkV2RequestMountsMap as any as S.Schema<CreateSandboxesV3RequestMountsMap>;
 
 /** The Vercel region in which to create the sandbox. */
 export type CreateSandboxesV3RequestRegion =
@@ -2911,9 +2884,8 @@ export const CreateSandboxesV3RequestFailoverRegionsItem = S.String;
 export type CreateSandboxesV3RequestFailoverRegionsList = Array<
   CreateSandboxesV3RequestFailoverRegionsItem | (string & {})
 >;
-export const CreateSandboxesV3RequestFailoverRegionsList = /*@__PURE__*/ S.Array(
-  CreateSandboxesV3RequestFailoverRegionsItem,
-) as any as S.Schema<CreateSandboxesV3RequestFailoverRegionsList>;
+export const CreateSandboxesV3RequestFailoverRegionsList =
+  CreateSandboxesByNameForkV2RequestFailoverRegionsList as any as S.Schema<CreateSandboxesV3RequestFailoverRegionsList>;
 
 /** Default snapshot expiration time in milliseconds. Set to 0 to disable expiration. When set, this value is used as the default expiration for all snapshots created for this sandbox. */
 export type CreateSandboxesV3RequestSnapshotExpiration = unknown | number;
@@ -3398,23 +3370,15 @@ export interface CreateSandboxesV4RequestMountsValue {
   /** Mount the drive as read-write, or as a read-only snapshot. One writer is permitted at a time. */
   mode?: CreateSandboxesV4RequestMountsValueMode | (string & {});
 }
-export const CreateSandboxesV4RequestMountsValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    drive: S.String,
-    mode: S.optional(CreateSandboxesV4RequestMountsValueMode),
-  }),
-).annotate({
-  identifier: "CreateSandboxesV4RequestMountsValue",
-}) as any as S.Schema<CreateSandboxesV4RequestMountsValue>;
+export const CreateSandboxesV4RequestMountsValue =
+  CreateSandboxesByNameForkV2RequestMountsValue as any as S.Schema<CreateSandboxesV4RequestMountsValue>;
 
 /** List of drives to mount to the sandbox at the provided path. */
 export type CreateSandboxesV4RequestMountsMap = {
   [key: string]: CreateSandboxesV4RequestMountsValue | undefined;
 };
-export const CreateSandboxesV4RequestMountsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  CreateSandboxesV4RequestMountsValue,
-) as any as S.Schema<CreateSandboxesV4RequestMountsMap>;
+export const CreateSandboxesV4RequestMountsMap =
+  CreateSandboxesByNameForkV2RequestMountsMap as any as S.Schema<CreateSandboxesV4RequestMountsMap>;
 
 /** The Vercel region in which to create the sandbox. */
 export type CreateSandboxesV4RequestRegion =
@@ -3465,9 +3429,8 @@ export const CreateSandboxesV4RequestFailoverRegionsItem = S.String;
 export type CreateSandboxesV4RequestFailoverRegionsList = Array<
   CreateSandboxesV4RequestFailoverRegionsItem | (string & {})
 >;
-export const CreateSandboxesV4RequestFailoverRegionsList = /*@__PURE__*/ S.Array(
-  CreateSandboxesV4RequestFailoverRegionsItem,
-) as any as S.Schema<CreateSandboxesV4RequestFailoverRegionsList>;
+export const CreateSandboxesV4RequestFailoverRegionsList =
+  CreateSandboxesByNameForkV2RequestFailoverRegionsList as any as S.Schema<CreateSandboxesV4RequestFailoverRegionsList>;
 
 /** Default snapshot expiration time in milliseconds. Defaults to 7 days. Set to 0 to disable expiration. When set, this value is used as the default expiration for all snapshots created for this sandbox. */
 export type CreateSandboxesV4RequestSnapshotExpiration = unknown | number;
@@ -4980,9 +4943,8 @@ export const UpdateSandboxRequestFailoverRegionsItem = S.String;
 export type UpdateSandboxRequestFailoverRegionsList = Array<
   UpdateSandboxRequestFailoverRegionsItem | (string & {})
 >;
-export const UpdateSandboxRequestFailoverRegionsList = /*@__PURE__*/ S.Array(
-  UpdateSandboxRequestFailoverRegionsItem,
-) as any as S.Schema<UpdateSandboxRequestFailoverRegionsList>;
+export const UpdateSandboxRequestFailoverRegionsList =
+  CreateSandboxesByNameForkV2RequestFailoverRegionsList as any as S.Schema<UpdateSandboxRequestFailoverRegionsList>;
 
 /** Mount the drive as read-write, or as a read-only snapshot. One writer is permitted at a time. */
 export type UpdateSandboxRequestMountsValueMode = "snapshot" | "read-write";
@@ -4994,23 +4956,15 @@ export interface UpdateSandboxRequestMountsValue {
   /** Mount the drive as read-write, or as a read-only snapshot. One writer is permitted at a time. */
   mode?: UpdateSandboxRequestMountsValueMode | (string & {});
 }
-export const UpdateSandboxRequestMountsValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    drive: S.String,
-    mode: S.optional(UpdateSandboxRequestMountsValueMode),
-  }),
-).annotate({
-  identifier: "UpdateSandboxRequestMountsValue",
-}) as any as S.Schema<UpdateSandboxRequestMountsValue>;
+export const UpdateSandboxRequestMountsValue =
+  CreateSandboxesByNameForkV2RequestMountsValue as any as S.Schema<UpdateSandboxRequestMountsValue>;
 
 /** Drives to mount to the sandbox at the provided path. Replaces the current mounts; an empty object removes them all. Changes take effect when the next session starts. */
 export type UpdateSandboxRequestMountsMap = {
   [key: string]: UpdateSandboxRequestMountsValue | undefined;
 };
-export const UpdateSandboxRequestMountsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  UpdateSandboxRequestMountsValue,
-) as any as S.Schema<UpdateSandboxRequestMountsMap>;
+export const UpdateSandboxRequestMountsMap =
+  CreateSandboxesByNameForkV2RequestMountsMap as any as S.Schema<UpdateSandboxRequestMountsMap>;
 
 /** Default environment variables for the sandbox. Set to empty object to clear. */
 export type UpdateSandboxRequestEnvMap = { [key: string]: string | undefined };

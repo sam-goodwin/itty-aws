@@ -687,13 +687,8 @@ export const SecurityAndAnalysisCodeSecurityStatus = S.String;
 export interface SecurityAndAnalysisCodeSecurity {
   status?: SecurityAndAnalysisCodeSecurityStatus;
 }
-export const SecurityAndAnalysisCodeSecurity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(SecurityAndAnalysisCodeSecurityStatus),
-  }),
-).annotate({
-  identifier: "SecurityAndAnalysisCodeSecurity",
-}) as any as S.Schema<SecurityAndAnalysisCodeSecurity>;
+export const SecurityAndAnalysisCodeSecurity =
+  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisCodeSecurity>;
 
 /** The enablement status of Dependabot security updates for the repository. */
 export type SecurityAndAnalysisDependabotSecurityUpdatesStatus = "enabled" | "disabled";
@@ -704,13 +699,8 @@ export interface SecurityAndAnalysisDependabotSecurityUpdates {
   /** The enablement status of Dependabot security updates for the repository. */
   status?: SecurityAndAnalysisDependabotSecurityUpdatesStatus;
 }
-export const SecurityAndAnalysisDependabotSecurityUpdates = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(SecurityAndAnalysisDependabotSecurityUpdatesStatus),
-  }),
-).annotate({
-  identifier: "SecurityAndAnalysisDependabotSecurityUpdates",
-}) as any as S.Schema<SecurityAndAnalysisDependabotSecurityUpdates>;
+export const SecurityAndAnalysisDependabotSecurityUpdates =
+  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisDependabotSecurityUpdates>;
 
 export type SecurityAndAnalysisSecretScanningStatus = "enabled" | "disabled";
 export const SecurityAndAnalysisSecretScanningStatus = S.String;
@@ -718,13 +708,8 @@ export const SecurityAndAnalysisSecretScanningStatus = S.String;
 export interface SecurityAndAnalysisSecretScanning {
   status?: SecurityAndAnalysisSecretScanningStatus;
 }
-export const SecurityAndAnalysisSecretScanning = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(SecurityAndAnalysisSecretScanningStatus),
-  }),
-).annotate({
-  identifier: "SecurityAndAnalysisSecretScanning",
-}) as any as S.Schema<SecurityAndAnalysisSecretScanning>;
+export const SecurityAndAnalysisSecretScanning =
+  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanning>;
 
 export type SecurityAndAnalysisSecretScanningPushProtectionStatus = "enabled" | "disabled";
 export const SecurityAndAnalysisSecretScanningPushProtectionStatus = S.String;
@@ -732,13 +717,8 @@ export const SecurityAndAnalysisSecretScanningPushProtectionStatus = S.String;
 export interface SecurityAndAnalysisSecretScanningPushProtection {
   status?: SecurityAndAnalysisSecretScanningPushProtectionStatus;
 }
-export const SecurityAndAnalysisSecretScanningPushProtection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(SecurityAndAnalysisSecretScanningPushProtectionStatus),
-  }),
-).annotate({
-  identifier: "SecurityAndAnalysisSecretScanningPushProtection",
-}) as any as S.Schema<SecurityAndAnalysisSecretScanningPushProtection>;
+export const SecurityAndAnalysisSecretScanningPushProtection =
+  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningPushProtection>;
 
 export type SecurityAndAnalysisSecretScanningNonProviderPatternsStatus = "enabled" | "disabled";
 export const SecurityAndAnalysisSecretScanningNonProviderPatternsStatus = S.String;
@@ -746,13 +726,8 @@ export const SecurityAndAnalysisSecretScanningNonProviderPatternsStatus = S.Stri
 export interface SecurityAndAnalysisSecretScanningNonProviderPatterns {
   status?: SecurityAndAnalysisSecretScanningNonProviderPatternsStatus;
 }
-export const SecurityAndAnalysisSecretScanningNonProviderPatterns = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(SecurityAndAnalysisSecretScanningNonProviderPatternsStatus),
-  }),
-).annotate({
-  identifier: "SecurityAndAnalysisSecretScanningNonProviderPatterns",
-}) as any as S.Schema<SecurityAndAnalysisSecretScanningNonProviderPatterns>;
+export const SecurityAndAnalysisSecretScanningNonProviderPatterns =
+  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningNonProviderPatterns>;
 
 export type SecurityAndAnalysisSecretScanningAiDetectionStatus = "enabled" | "disabled";
 export const SecurityAndAnalysisSecretScanningAiDetectionStatus = S.String;
@@ -760,13 +735,8 @@ export const SecurityAndAnalysisSecretScanningAiDetectionStatus = S.String;
 export interface SecurityAndAnalysisSecretScanningAiDetection {
   status?: SecurityAndAnalysisSecretScanningAiDetectionStatus;
 }
-export const SecurityAndAnalysisSecretScanningAiDetection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(SecurityAndAnalysisSecretScanningAiDetectionStatus),
-  }),
-).annotate({
-  identifier: "SecurityAndAnalysisSecretScanningAiDetection",
-}) as any as S.Schema<SecurityAndAnalysisSecretScanningAiDetection>;
+export const SecurityAndAnalysisSecretScanningAiDetection =
+  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningAiDetection>;
 
 export type SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus = "enabled" | "disabled";
 export const SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus = S.String;
@@ -789,13 +759,8 @@ export const SecurityAndAnalysisSecretScanningDelegatedBypassStatus = S.String;
 export interface SecurityAndAnalysisSecretScanningDelegatedBypass {
   status?: SecurityAndAnalysisSecretScanningDelegatedBypassStatus;
 }
-export const SecurityAndAnalysisSecretScanningDelegatedBypass = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(SecurityAndAnalysisSecretScanningDelegatedBypassStatus),
-  }),
-).annotate({
-  identifier: "SecurityAndAnalysisSecretScanningDelegatedBypass",
-}) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypass>;
+export const SecurityAndAnalysisSecretScanningDelegatedBypass =
+  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypass>;
 
 /** The type of the bypass reviewer */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
@@ -1617,27 +1582,13 @@ export interface UpdateRequestOutputAnnotationsItem {
   /** Details about this annotation. The maximum size is 64 KB. */
   raw_details?: string;
 }
-export const UpdateRequestOutputAnnotationsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    path: S.String,
-    start_line: S.Number,
-    end_line: S.Number,
-    start_column: S.optional(S.Number),
-    end_column: S.optional(S.Number),
-    annotation_level: UpdateRequestOutputAnnotationsItemAnnotationLevel,
-    message: S.String,
-    title: S.optional(S.String),
-    raw_details: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateRequestOutputAnnotationsItem",
-}) as any as S.Schema<UpdateRequestOutputAnnotationsItem>;
+export const UpdateRequestOutputAnnotationsItem =
+  CreateRequestOutputAnnotationsItem as any as S.Schema<UpdateRequestOutputAnnotationsItem>;
 
 /** Adds information from your analysis to specific lines of code. Annotations are visible in GitHub's pull request UI. Annotations are visible in GitHub's pull request UI. The Checks API limits the number of annotations to a maximum of 50 per API request. To create more than 50 annotations, you have to make multiple requests to the [Update a check run](https://docs.github.com/rest/checks/runs#update-a-check-run) endpoint. Each time you update the check run, annotations are appended to the list of annotations that already exist for the check run. GitHub Actions are limited to 10 warning annotations and 10 error annotations per step. For details about annotations in the UI, see "[About status checks](https://docs.github.com/articles/about-status-checks#checks)". */
 export type UpdateRequestOutputAnnotationsList = Array<UpdateRequestOutputAnnotationsItem>;
-export const UpdateRequestOutputAnnotationsList = /*@__PURE__*/ S.Array(
-  UpdateRequestOutputAnnotationsItem,
-) as any as S.Schema<UpdateRequestOutputAnnotationsList>;
+export const UpdateRequestOutputAnnotationsList =
+  CreateRequestOutputAnnotationsList as any as S.Schema<UpdateRequestOutputAnnotationsList>;
 
 export type UpdateRequestOutputImagesItem = CreateRequestOutputImagesItem;
 export const UpdateRequestOutputImagesItem = CreateRequestOutputImagesItem;

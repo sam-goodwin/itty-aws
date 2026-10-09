@@ -569,9 +569,7 @@ export interface StorageMaximumSize {
   unit: StorageMaximumSizeUnit;
   value: number;
 }
-export const StorageMaximumSize = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ unit: StorageMaximumSizeUnit, value: S.Number }),
-).annotate({ identifier: "StorageMaximumSize" }) as any as S.Schema<StorageMaximumSize>;
+export const StorageMaximumSize = TimePeriod as any as S.Schema<StorageMaximumSize>;
 export type StorageLocation = string | redacted.Redacted<string>;
 export type StorageMinimumTimeToLiveUnit = "HOURS" | "DAYS" | "WEEKS" | (string & {});
 export const StorageMinimumTimeToLiveUnit = S.String;
@@ -581,9 +579,7 @@ export interface StorageMinimumTimeToLive {
   unit: StorageMinimumTimeToLiveUnit;
   value: number;
 }
-export const StorageMinimumTimeToLive = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ unit: StorageMinimumTimeToLiveUnit, value: S.Number }),
-).annotate({ identifier: "StorageMinimumTimeToLive" }) as any as S.Schema<StorageMinimumTimeToLive>;
+export const StorageMinimumTimeToLive = TimePeriod as any as S.Schema<StorageMinimumTimeToLive>;
 export interface DataPartitionStorageOptions {
   maximumSize: StorageMaximumSize;
   storageLocation: string | redacted.Redacted<string>;

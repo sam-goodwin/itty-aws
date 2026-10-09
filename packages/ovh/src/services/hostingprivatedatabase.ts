@@ -1970,16 +1970,14 @@ export const HostingPrivateDatabaseAvailableRamSizeEnum = S.String;
 /** A list of ram size available for this offer */
 export type HostingPrivateDatabaseAvailableOrderCapacitiesRamList =
   Array<HostingPrivateDatabaseAvailableRamSizeEnum>;
-export const HostingPrivateDatabaseAvailableOrderCapacitiesRamList = /*@__PURE__*/ S.Array(
-  HostingPrivateDatabaseAvailableRamSizeEnum,
-) as any as S.Schema<HostingPrivateDatabaseAvailableOrderCapacitiesRamList>;
+export const HostingPrivateDatabaseAvailableOrderCapacitiesRamList =
+  HostingPrivateDatabaseAvailableOrderCapacitiesDatacenterList as any as S.Schema<HostingPrivateDatabaseAvailableOrderCapacitiesRamList>;
 
 /** A list of version available for this offer */
 export type HostingPrivateDatabaseAvailableOrderCapacitiesVersionList =
   Array<HostingPrivateDatabaseAvailableVersionEnum>;
-export const HostingPrivateDatabaseAvailableOrderCapacitiesVersionList = /*@__PURE__*/ S.Array(
-  HostingPrivateDatabaseAvailableVersionEnum,
-) as any as S.Schema<HostingPrivateDatabaseAvailableOrderCapacitiesVersionList>;
+export const HostingPrivateDatabaseAvailableOrderCapacitiesVersionList =
+  HostingPrivateDatabaseAvailableOrderCapacitiesDatacenterList as any as S.Schema<HostingPrivateDatabaseAvailableOrderCapacitiesVersionList>;
 
 /** Description for available order capacities following an offer */
 export interface HostingPrivateDatabaseAvailableOrderCapacities {

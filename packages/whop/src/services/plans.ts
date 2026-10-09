@@ -1235,24 +1235,13 @@ export interface UpdatePlanRequestCustomFieldsItem {
   /** Whether or not the field is required. */
   required?: boolean;
 }
-export const UpdatePlanRequestCustomFieldsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    field_type: S.optional(UpdatePlanRequestCustomFieldsItemFieldType),
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    order: S.optional(S.Number),
-    placeholder: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "UpdatePlanRequestCustomFieldsItem",
-}) as any as S.Schema<UpdatePlanRequestCustomFieldsItem>;
+export const UpdatePlanRequestCustomFieldsItem =
+  CreatePlanRequestCustomFieldsItem as any as S.Schema<UpdatePlanRequestCustomFieldsItem>;
 
 /** An array of custom field definitions to collect from customers at checkout. Omitting this field clears existing custom fields. */
 export type UpdatePlanRequestCustomFieldsList = Array<UpdatePlanRequestCustomFieldsItem>;
-export const UpdatePlanRequestCustomFieldsList = /*@__PURE__*/ S.Array(
-  UpdatePlanRequestCustomFieldsItem,
-) as any as S.Schema<UpdatePlanRequestCustomFieldsList>;
+export const UpdatePlanRequestCustomFieldsList =
+  CreatePlanRequestCustomFieldsList as any as S.Schema<UpdatePlanRequestCustomFieldsList>;
 
 /** An image displayed on the product page to represent this plan. */
 export type UpdatePlanRequestImage = CreatePlanRequestImage;

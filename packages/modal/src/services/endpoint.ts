@@ -117,9 +117,8 @@ export type EndpointInputModality =
 export const EndpointInputModality = S.String;
 
 export type EndpointInputModalityList = Array<EndpointInputModality | (string & {})>;
-export const EndpointInputModalityList = /*@__PURE__*/ S.Array(
-  EndpointInputModality,
-) as any as S.Schema<EndpointInputModalityList>;
+export const EndpointInputModalityList =
+  EndpointApiSurfaceList as any as S.Schema<EndpointInputModalityList>;
 
 export type EndpointServingMode =
   | "ENDPOINT_SERVING_MODE_UNSPECIFIED"

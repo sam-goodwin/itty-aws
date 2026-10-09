@@ -526,7 +526,7 @@ export type ScteFilter =
 export const ScteFilter = S.String;
 
 export type ScteFilterList = ScteFilter[];
-export const ScteFilterList = /*@__PURE__*/ S.Array(ScteFilter);
+export const ScteFilterList = MultiviewLayoutList as any as S.Schema<ScteFilterList>;
 export type ScteInSegments = "NONE" | "ALL" | "MATCHES_FILTER" | (string & {});
 export const ScteInSegments = S.String;
 
@@ -540,7 +540,7 @@ export type CustomAdType =
 export const CustomAdType = S.String;
 
 export type CustomAdTypeList = CustomAdType[];
-export const CustomAdTypeList = /*@__PURE__*/ S.Array(CustomAdType);
+export const CustomAdTypeList = MultiviewLayoutList as any as S.Schema<CustomAdTypeList>;
 export interface Scte {
   ScteFilter?: ScteFilter[];
   ScteInSegments?: ScteInSegments;
@@ -616,7 +616,7 @@ export type DrmSystem =
 export const DrmSystem = S.String;
 
 export type DrmSystems = DrmSystem[];
-export const DrmSystems = /*@__PURE__*/ S.Array(DrmSystem);
+export const DrmSystems = MultiviewLayoutList as any as S.Schema<DrmSystems>;
 export type SpekeVersion = "V2_0" | "V2_1" | (string & {});
 export const SpekeVersion = S.String;
 
@@ -809,7 +809,7 @@ export type DashPeriodTrigger =
 export const DashPeriodTrigger = S.String;
 
 export type DashPeriodTriggers = DashPeriodTrigger[];
-export const DashPeriodTriggers = /*@__PURE__*/ S.Array(DashPeriodTrigger);
+export const DashPeriodTriggers = MultiviewLayoutList as any as S.Schema<DashPeriodTriggers>;
 export type AdMarkerDash = "BINARY" | "XML" | (string & {});
 export const AdMarkerDash = S.String;
 
@@ -845,7 +845,7 @@ export type DashProfile = "DVB_DASH" | (string & {});
 export const DashProfile = S.String;
 
 export type DashProfiles = DashProfile[];
-export const DashProfiles = /*@__PURE__*/ S.Array(DashProfile);
+export const DashProfiles = MultiviewLayoutList as any as S.Schema<DashProfiles>;
 export interface DashBaseUrl {
   Url: string;
   ServiceLocation?: string;
@@ -1020,7 +1020,8 @@ export type EndpointErrorCondition =
 export const EndpointErrorCondition = S.String;
 
 export type EndpointErrorConditions = EndpointErrorCondition[];
-export const EndpointErrorConditions = /*@__PURE__*/ S.Array(EndpointErrorCondition);
+export const EndpointErrorConditions =
+  MultiviewLayoutList as any as S.Schema<EndpointErrorConditions>;
 export interface ForceEndpointErrorConfiguration {
   EndpointErrorConditions?: EndpointErrorCondition[];
 }

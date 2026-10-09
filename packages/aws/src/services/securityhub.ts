@@ -13308,7 +13308,7 @@ export type IntegrationV2Type =
 export const IntegrationV2Type = S.String;
 
 export type IntegrationV2TypeList = IntegrationV2Type[];
-export const IntegrationV2TypeList = /*@__PURE__*/ S.Array(IntegrationV2Type);
+export const IntegrationV2TypeList = IntegrationTypeList as any as S.Schema<IntegrationV2TypeList>;
 export interface ProductV2 {
   ProductV2Name?: string;
   CompanyName?: string;
@@ -13383,7 +13383,7 @@ export const DescribeSecurityHubV2Response = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeSecurityHubV2Response",
 }) as any as S.Schema<DescribeSecurityHubV2Response>;
 export type StandardsProviders = StandardsProvider[];
-export const StandardsProviders = /*@__PURE__*/ S.Array(StandardsProvider);
+export const StandardsProviders = IntegrationTypeList as any as S.Schema<StandardsProviders>;
 export interface DescribeStandardsRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -14017,14 +14017,7 @@ export interface HealthCheck {
   LastCheckedAt?: Date;
   Issues?: HealthIssue[];
 }
-export const HealthCheck = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ConnectorStatus: S.optional(ConnectorStatus),
-    Message: S.optional(S.String),
-    LastCheckedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    Issues: S.optional(HealthIssueList),
-  }),
-).annotate({ identifier: "HealthCheck" }) as any as S.Schema<HealthCheck>;
+export const HealthCheck = CspmHealthCheck as any as S.Schema<HealthCheck>;
 export type ConnectorAuthStatus = "ACTIVE" | "FAILED" | (string & {});
 export const ConnectorAuthStatus = S.String;
 
@@ -15248,11 +15241,10 @@ export interface ResourcesStringFilter {
   FieldName?: ResourcesStringField;
   Filter?: StringFilter;
 }
-export const ResourcesStringFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ FieldName: S.optional(ResourcesStringField), Filter: S.optional(StringFilter) }),
-).annotate({ identifier: "ResourcesStringFilter" }) as any as S.Schema<ResourcesStringFilter>;
+export const ResourcesStringFilter = OcsfStringFilter as any as S.Schema<ResourcesStringFilter>;
 export type ResourcesStringFilterList = ResourcesStringFilter[];
-export const ResourcesStringFilterList = /*@__PURE__*/ S.Array(ResourcesStringFilter);
+export const ResourcesStringFilterList =
+  OcsfStringFilterList as any as S.Schema<ResourcesStringFilterList>;
 export type ResourcesDateField =
   | "ResourceDetailCaptureTime"
   | "ResourceCreationTime"
@@ -15263,11 +15255,10 @@ export interface ResourcesDateFilter {
   FieldName?: ResourcesDateField;
   Filter?: DateFilter;
 }
-export const ResourcesDateFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ FieldName: S.optional(ResourcesDateField), Filter: S.optional(DateFilter) }),
-).annotate({ identifier: "ResourcesDateFilter" }) as any as S.Schema<ResourcesDateFilter>;
+export const ResourcesDateFilter = OcsfDateFilter as any as S.Schema<ResourcesDateFilter>;
 export type ResourcesDateFilterList = ResourcesDateFilter[];
-export const ResourcesDateFilterList = /*@__PURE__*/ S.Array(ResourcesDateFilter);
+export const ResourcesDateFilterList =
+  OcsfDateFilterList as any as S.Schema<ResourcesDateFilterList>;
 export type ResourcesNumberField =
   | "FindingsSummary.TotalFindings"
   | "FindingsSummary.Severities.Other"
@@ -15293,11 +15284,10 @@ export interface ResourcesNumberFilter {
   FieldName?: ResourcesNumberField;
   Filter?: NumberFilter;
 }
-export const ResourcesNumberFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ FieldName: S.optional(ResourcesNumberField), Filter: S.optional(NumberFilter) }),
-).annotate({ identifier: "ResourcesNumberFilter" }) as any as S.Schema<ResourcesNumberFilter>;
+export const ResourcesNumberFilter = OcsfNumberFilter as any as S.Schema<ResourcesNumberFilter>;
 export type ResourcesNumberFilterList = ResourcesNumberFilter[];
-export const ResourcesNumberFilterList = /*@__PURE__*/ S.Array(ResourcesNumberFilter);
+export const ResourcesNumberFilterList =
+  OcsfNumberFilterList as any as S.Schema<ResourcesNumberFilterList>;
 export type ResourcesMapField = "ResourceTags" | (string & {});
 export const ResourcesMapField = S.String;
 
@@ -15305,11 +15295,9 @@ export interface ResourcesMapFilter {
   FieldName?: ResourcesMapField;
   Filter?: MapFilter;
 }
-export const ResourcesMapFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ FieldName: S.optional(ResourcesMapField), Filter: S.optional(MapFilter) }),
-).annotate({ identifier: "ResourcesMapFilter" }) as any as S.Schema<ResourcesMapFilter>;
+export const ResourcesMapFilter = OcsfMapFilter as any as S.Schema<ResourcesMapFilter>;
 export type ResourcesMapFilterList = ResourcesMapFilter[];
-export const ResourcesMapFilterList = /*@__PURE__*/ S.Array(ResourcesMapFilter);
+export const ResourcesMapFilterList = OcsfMapFilterList as any as S.Schema<ResourcesMapFilterList>;
 export interface ResourcesCompositeFilter {
   StringFilters?: ResourcesStringFilter[];
   DateFilters?: ResourcesDateFilter[];
@@ -15405,13 +15393,11 @@ export interface ResourcesTrendsStringFilter {
   FieldName?: ResourcesTrendsStringField;
   Filter?: StringFilter;
 }
-export const ResourcesTrendsStringFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ FieldName: S.optional(ResourcesTrendsStringField), Filter: S.optional(StringFilter) }),
-).annotate({
-  identifier: "ResourcesTrendsStringFilter",
-}) as any as S.Schema<ResourcesTrendsStringFilter>;
+export const ResourcesTrendsStringFilter =
+  FindingsTrendsStringFilter as any as S.Schema<ResourcesTrendsStringFilter>;
 export type ResourcesTrendsStringFilterList = ResourcesTrendsStringFilter[];
-export const ResourcesTrendsStringFilterList = /*@__PURE__*/ S.Array(ResourcesTrendsStringFilter);
+export const ResourcesTrendsStringFilterList =
+  FindingsTrendsStringFilterList as any as S.Schema<ResourcesTrendsStringFilterList>;
 export interface ResourcesTrendsCompositeFilter {
   StringFilters?: ResourcesTrendsStringFilter[];
   NestedCompositeFilters?: ResourcesTrendsCompositeFilter[];
@@ -15736,7 +15722,8 @@ export type SecurityControlProperty = "Parameters" | (string & {});
 export const SecurityControlProperty = S.String;
 
 export type CustomizableProperties = SecurityControlProperty[];
-export const CustomizableProperties = /*@__PURE__*/ S.Array(SecurityControlProperty);
+export const CustomizableProperties =
+  IntegrationTypeList as any as S.Schema<CustomizableProperties>;
 export interface IntegerConfigurationOptions {
   DefaultValue?: number;
   Min?: number;
@@ -16536,7 +16523,8 @@ export type FreeTrialStatusValue = "ACTIVE" | "INACTIVE" | (string & {});
 export const FreeTrialStatusValue = S.String;
 
 export type FreeTrialStatusValueList = FreeTrialStatusValue[];
-export const FreeTrialStatusValueList = /*@__PURE__*/ S.Array(FreeTrialStatusValue);
+export const FreeTrialStatusValueList =
+  IntegrationTypeList as any as S.Schema<FreeTrialStatusValueList>;
 export interface ListFreeTrialStatusesV2Request {
   AccountIds?: string[];
   Statuses?: FreeTrialStatusValue[];
@@ -16699,7 +16687,8 @@ export const ListOrganizationAdminAccountsResponse = /*@__PURE__*/ S.suspend(() 
   identifier: "ListOrganizationAdminAccountsResponse",
 }) as any as S.Schema<ListOrganizationAdminAccountsResponse>;
 export type SecurityControlsProviders = SecurityControlsProvider[];
-export const SecurityControlsProviders = /*@__PURE__*/ S.Array(SecurityControlsProvider);
+export const SecurityControlsProviders =
+  IntegrationTypeList as any as S.Schema<SecurityControlsProviders>;
 export interface ListSecurityControlDefinitionsRequest {
   StandardsArn?: string;
   NextToken?: string;

@@ -760,13 +760,8 @@ export const PatchEdgeConfigItemsRequestItemsItemCase1Operation = S.String;
 export interface PatchEdgeConfigItemsRequestItemsItemCase1 {
   operation: PatchEdgeConfigItemsRequestItemsItemCase1Operation | (string & {});
 }
-export const PatchEdgeConfigItemsRequestItemsItemCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operation: PatchEdgeConfigItemsRequestItemsItemCase1Operation,
-  }),
-).annotate({
-  identifier: "PatchEdgeConfigItemsRequestItemsItemCase1",
-}) as any as S.Schema<PatchEdgeConfigItemsRequestItemsItemCase1>;
+export const PatchEdgeConfigItemsRequestItemsItemCase1 =
+  PatchEdgeConfigItemsRequestItemsItemCase0 as any as S.Schema<PatchEdgeConfigItemsRequestItemsItemCase1>;
 
 export type PatchEdgeConfigItemsRequestItemsItemCase2Operation = "update" | "upsert";
 export const PatchEdgeConfigItemsRequestItemsItemCase2Operation = S.String;
@@ -774,13 +769,8 @@ export const PatchEdgeConfigItemsRequestItemsItemCase2Operation = S.String;
 export interface PatchEdgeConfigItemsRequestItemsItemCase2 {
   operation: PatchEdgeConfigItemsRequestItemsItemCase2Operation | (string & {});
 }
-export const PatchEdgeConfigItemsRequestItemsItemCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operation: PatchEdgeConfigItemsRequestItemsItemCase2Operation,
-  }),
-).annotate({
-  identifier: "PatchEdgeConfigItemsRequestItemsItemCase2",
-}) as any as S.Schema<PatchEdgeConfigItemsRequestItemsItemCase2>;
+export const PatchEdgeConfigItemsRequestItemsItemCase2 =
+  PatchEdgeConfigItemsRequestItemsItemCase0 as any as S.Schema<PatchEdgeConfigItemsRequestItemsItemCase2>;
 
 export type PatchEdgeConfigItemsRequestItemsItemCase3Operation = "delete";
 export const PatchEdgeConfigItemsRequestItemsItemCase3Operation = S.String;
@@ -788,13 +778,8 @@ export const PatchEdgeConfigItemsRequestItemsItemCase3Operation = S.String;
 export interface PatchEdgeConfigItemsRequestItemsItemCase3 {
   operation: PatchEdgeConfigItemsRequestItemsItemCase3Operation;
 }
-export const PatchEdgeConfigItemsRequestItemsItemCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operation: PatchEdgeConfigItemsRequestItemsItemCase3Operation,
-  }),
-).annotate({
-  identifier: "PatchEdgeConfigItemsRequestItemsItemCase3",
-}) as any as S.Schema<PatchEdgeConfigItemsRequestItemsItemCase3>;
+export const PatchEdgeConfigItemsRequestItemsItemCase3 =
+  PatchEdgeConfigItemsRequestItemsItemCase0 as any as S.Schema<PatchEdgeConfigItemsRequestItemsItemCase3>;
 
 export type PatchEdgeConfigItemsRequestItemsItem =
   | PatchEdgeConfigItemsRequestItemsItemCase0

@@ -213,9 +213,8 @@ export type AdCampaignSpecialAdCategoriesItem =
 export const AdCampaignSpecialAdCategoriesItem = S.String;
 
 export type AdCampaignSpecialAdCategoriesList = Array<AdCampaignSpecialAdCategoriesItem>;
-export const AdCampaignSpecialAdCategoriesList = /*@__PURE__*/ S.Array(
-  AdCampaignSpecialAdCategoriesItem,
-) as any as S.Schema<AdCampaignSpecialAdCategoriesList>;
+export const AdCampaignSpecialAdCategoriesList =
+  CreateAdCampaignRequestSpecialAdCategoriesList as any as S.Schema<AdCampaignSpecialAdCategoriesList>;
 
 /** The configured lifecycle status of the ad campaign. Billing failures preserve active or paused here and set delivery_status to payment_failed. */
 export type AdCampaignStatus =
@@ -678,9 +677,8 @@ export const UpdateAdCampaignRequestSpecialAdCategoriesItem = S.String;
 export type UpdateAdCampaignRequestSpecialAdCategoriesList = Array<
   UpdateAdCampaignRequestSpecialAdCategoriesItem | (string & {})
 >;
-export const UpdateAdCampaignRequestSpecialAdCategoriesList = /*@__PURE__*/ S.Array(
-  UpdateAdCampaignRequestSpecialAdCategoriesItem,
-) as any as S.Schema<UpdateAdCampaignRequestSpecialAdCategoriesList>;
+export const UpdateAdCampaignRequestSpecialAdCategoriesList =
+  CreateAdCampaignRequestSpecialAdCategoriesList as any as S.Schema<UpdateAdCampaignRequestSpecialAdCategoriesList>;
 
 /** Set to active to launch a draft campaign (moderates and pushes it live). Live-campaign pause and resume use the pause and unpause actions. */
 export type UpdateAdCampaignRequestStatus = "active";

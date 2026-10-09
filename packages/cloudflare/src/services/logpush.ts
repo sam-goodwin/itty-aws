@@ -1508,24 +1508,13 @@ export interface GetTransformerResponseAssociatedJobsItem {
   /** Whether the job is zone-scoped or account-scoped. */
   objectType?: GetTransformerResponseAssociatedJobsItemObjectType | null;
 }
-export const GetTransformerResponseAssociatedJobsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.Number)),
-    name: S.optional(S.NullOr(S.String)),
-    objectTag: S.optional(S.NullOr(S.String).pipe(T.Body("object_tag"))),
-    objectType: S.optional(
-      S.NullOr(GetTransformerResponseAssociatedJobsItemObjectType).pipe(T.Body("object_type")),
-    ),
-  }),
-).annotate({
-  identifier: "GetTransformerResponseAssociatedJobsItem",
-}) as any as S.Schema<GetTransformerResponseAssociatedJobsItem>;
+export const GetTransformerResponseAssociatedJobsItem =
+  CreateTransformerResponseAssociatedJobsItem as any as S.Schema<GetTransformerResponseAssociatedJobsItem>;
 
 export type GetTransformerResponseAssociatedJobsList =
   Array<GetTransformerResponseAssociatedJobsItem>;
-export const GetTransformerResponseAssociatedJobsList = /*@__PURE__*/ S.Array(
-  GetTransformerResponseAssociatedJobsItem,
-) as any as S.Schema<GetTransformerResponseAssociatedJobsList>;
+export const GetTransformerResponseAssociatedJobsList =
+  CreateTransformerResponseAssociatedJobsList as any as S.Schema<GetTransformerResponseAssociatedJobsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetTransformerResponse {
@@ -1840,24 +1829,13 @@ export interface ListTransformersResultItemAssociatedJobsItem {
   /** Whether the job is zone-scoped or account-scoped. */
   objectType?: ListTransformersResultItemAssociatedJobsItemObjectType | null;
 }
-export const ListTransformersResultItemAssociatedJobsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.Number)),
-    name: S.optional(S.NullOr(S.String)),
-    objectTag: S.optional(S.NullOr(S.String).pipe(T.Body("object_tag"))),
-    objectType: S.optional(
-      S.NullOr(ListTransformersResultItemAssociatedJobsItemObjectType).pipe(T.Body("object_type")),
-    ),
-  }),
-).annotate({
-  identifier: "ListTransformersResultItemAssociatedJobsItem",
-}) as any as S.Schema<ListTransformersResultItemAssociatedJobsItem>;
+export const ListTransformersResultItemAssociatedJobsItem =
+  CreateTransformerResponseAssociatedJobsItem as any as S.Schema<ListTransformersResultItemAssociatedJobsItem>;
 
 export type ListTransformersResultItemAssociatedJobsList =
   Array<ListTransformersResultItemAssociatedJobsItem>;
-export const ListTransformersResultItemAssociatedJobsList = /*@__PURE__*/ S.Array(
-  ListTransformersResultItemAssociatedJobsItem,
-) as any as S.Schema<ListTransformersResultItemAssociatedJobsList>;
+export const ListTransformersResultItemAssociatedJobsList =
+  CreateTransformerResponseAssociatedJobsList as any as S.Schema<ListTransformersResultItemAssociatedJobsList>;
 
 export interface ListTransformersResultItem {
   /** The transformer ID. */
@@ -2454,24 +2432,13 @@ export interface UpdateTransformerResponseAssociatedJobsItem {
   /** Whether the job is zone-scoped or account-scoped. */
   objectType?: UpdateTransformerResponseAssociatedJobsItemObjectType | null;
 }
-export const UpdateTransformerResponseAssociatedJobsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.Number)),
-    name: S.optional(S.NullOr(S.String)),
-    objectTag: S.optional(S.NullOr(S.String).pipe(T.Body("object_tag"))),
-    objectType: S.optional(
-      S.NullOr(UpdateTransformerResponseAssociatedJobsItemObjectType).pipe(T.Body("object_type")),
-    ),
-  }),
-).annotate({
-  identifier: "UpdateTransformerResponseAssociatedJobsItem",
-}) as any as S.Schema<UpdateTransformerResponseAssociatedJobsItem>;
+export const UpdateTransformerResponseAssociatedJobsItem =
+  CreateTransformerResponseAssociatedJobsItem as any as S.Schema<UpdateTransformerResponseAssociatedJobsItem>;
 
 export type UpdateTransformerResponseAssociatedJobsList =
   Array<UpdateTransformerResponseAssociatedJobsItem>;
-export const UpdateTransformerResponseAssociatedJobsList = /*@__PURE__*/ S.Array(
-  UpdateTransformerResponseAssociatedJobsItem,
-) as any as S.Schema<UpdateTransformerResponseAssociatedJobsList>;
+export const UpdateTransformerResponseAssociatedJobsList =
+  CreateTransformerResponseAssociatedJobsList as any as S.Schema<UpdateTransformerResponseAssociatedJobsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateTransformerResponse {
@@ -2490,21 +2457,8 @@ export interface UpdateTransformerResponse {
   /** When the transformer was last modified (RFC 3339). */
   updatedAt?: string | null;
 }
-export const UpdateTransformerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.Number)),
-    associatedJobs: S.optional(
-      S.NullOr(UpdateTransformerResponseAssociatedJobsList).pipe(T.Body("associated_jobs")),
-    ),
-    createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-    dataset: S.optional(S.NullOr(S.String)),
-    description: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-    updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "UpdateTransformerResponse",
-}) as any as S.Schema<UpdateTransformerResponse>;
+export const UpdateTransformerResponse =
+  CreateTransformerResponse as any as S.Schema<UpdateTransformerResponse>;
 
 export interface ValidateOwnershipForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */

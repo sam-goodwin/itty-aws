@@ -535,16 +535,8 @@ export interface GetRegionalTieredCacheResponse {
   /** Last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const GetRegionalTieredCacheResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: RegionalTieredCacheGetResponseId,
-    editable: S.Boolean,
-    value: RegionalTieredCacheGetResponseValue,
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "GetRegionalTieredCacheResponse",
-}) as any as S.Schema<GetRegionalTieredCacheResponse>;
+export const GetRegionalTieredCacheResponse =
+  CreateSmartTieredCacheResponse as any as S.Schema<GetRegionalTieredCacheResponse>;
 
 export interface GetSmartTieredCacheRequest {
   /** Identifier. */
@@ -583,16 +575,8 @@ export interface GetSmartTieredCacheResponse {
   /** Last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const GetSmartTieredCacheResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SmartTieredCacheGetResponseId,
-    editable: S.Boolean,
-    value: SmartTieredCacheGetResponseValue,
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "GetSmartTieredCacheResponse",
-}) as any as S.Schema<GetSmartTieredCacheResponse>;
+export const GetSmartTieredCacheResponse =
+  CreateSmartTieredCacheResponse as any as S.Schema<GetSmartTieredCacheResponse>;
 
 export interface GetVariantRequest {
   /** Identifier. */
@@ -1270,16 +1254,8 @@ export interface OriginCloudRegionsDeleteV1ResponseValue {
   /** Time this mapping was last modified. */
   modifiedOn?: string | null;
 }
-export const OriginCloudRegionsDeleteV1ResponseValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    originIp: S.String.pipe(T.Body("origin-ip")),
-    region: S.String,
-    vendor: OriginCloudRegionsDeleteV1ResponseValueVendor,
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "OriginCloudRegionsDeleteV1ResponseValue",
-}) as any as S.Schema<OriginCloudRegionsDeleteV1ResponseValue>;
+export const OriginCloudRegionsDeleteV1ResponseValue =
+  OriginCloudRegionsCreateV1ResponseValue as any as S.Schema<OriginCloudRegionsDeleteV1ResponseValue>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface OriginCloudRegionsDeleteV1Response {
@@ -1291,16 +1267,8 @@ export interface OriginCloudRegionsDeleteV1Response {
   /** Time the mapping was last modified. */
   modifiedOn?: string | null;
 }
-export const OriginCloudRegionsDeleteV1Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: OriginCloudRegionsDeleteV1ResponseId,
-    editable: S.Boolean,
-    value: OriginCloudRegionsDeleteV1ResponseValue,
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "OriginCloudRegionsDeleteV1Response",
-}) as any as S.Schema<OriginCloudRegionsDeleteV1Response>;
+export const OriginCloudRegionsDeleteV1Response =
+  OriginCloudRegionsCreateV1Response as any as S.Schema<OriginCloudRegionsDeleteV1Response>;
 
 export type OriginCloudRegionsEditV1RequestVendor = "aws" | "azure" | "gcp" | "oci";
 export const OriginCloudRegionsEditV1RequestVendor = S.String;
@@ -1346,16 +1314,8 @@ export interface OriginCloudRegionsEditV1ResponseValueItem {
   /** Time this mapping was last modified. */
   modifiedOn?: string | null;
 }
-export const OriginCloudRegionsEditV1ResponseValueItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    originIp: S.String.pipe(T.Body("origin-ip")),
-    region: S.String,
-    vendor: OriginCloudRegionsEditV1ResponseValueItemVendor,
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "OriginCloudRegionsEditV1ResponseValueItem",
-}) as any as S.Schema<OriginCloudRegionsEditV1ResponseValueItem>;
+export const OriginCloudRegionsEditV1ResponseValueItem =
+  OriginCloudRegionsCreateV1ResponseValue as any as S.Schema<OriginCloudRegionsEditV1ResponseValueItem>;
 
 export type OriginCloudRegionsEditV1ResponseValueList =
   Array<OriginCloudRegionsEditV1ResponseValueItem>;
@@ -1421,16 +1381,8 @@ export interface OriginCloudRegionsGetV1ResponseValue {
   /** Time this mapping was last modified. */
   modifiedOn?: string | null;
 }
-export const OriginCloudRegionsGetV1ResponseValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    originIp: S.String.pipe(T.Body("origin-ip")),
-    region: S.String,
-    vendor: OriginCloudRegionsGetV1ResponseValueVendor,
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "OriginCloudRegionsGetV1ResponseValue",
-}) as any as S.Schema<OriginCloudRegionsGetV1ResponseValue>;
+export const OriginCloudRegionsGetV1ResponseValue =
+  OriginCloudRegionsCreateV1ResponseValue as any as S.Schema<OriginCloudRegionsGetV1ResponseValue>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface OriginCloudRegionsGetV1Response {
@@ -1442,16 +1394,8 @@ export interface OriginCloudRegionsGetV1Response {
   /** Time the mapping was last modified. */
   modifiedOn?: string | null;
 }
-export const OriginCloudRegionsGetV1Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: OriginCloudRegionsGetV1ResponseId,
-    editable: S.Boolean,
-    value: OriginCloudRegionsGetV1ResponseValue,
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "OriginCloudRegionsGetV1Response",
-}) as any as S.Schema<OriginCloudRegionsGetV1Response>;
+export const OriginCloudRegionsGetV1Response =
+  OriginCloudRegionsCreateV1Response as any as S.Schema<OriginCloudRegionsGetV1Response>;
 
 export interface OriginCloudRegionsListV1Request {
   /** Identifier. */
@@ -1483,22 +1427,13 @@ export interface OriginCloudRegionsListV1ResponseValueItem {
   /** Time this mapping was last modified. */
   modifiedOn?: string | null;
 }
-export const OriginCloudRegionsListV1ResponseValueItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    originIp: S.String.pipe(T.Body("origin-ip")),
-    region: S.String,
-    vendor: OriginCloudRegionsListV1ResponseValueItemVendor,
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "OriginCloudRegionsListV1ResponseValueItem",
-}) as any as S.Schema<OriginCloudRegionsListV1ResponseValueItem>;
+export const OriginCloudRegionsListV1ResponseValueItem =
+  OriginCloudRegionsCreateV1ResponseValue as any as S.Schema<OriginCloudRegionsListV1ResponseValueItem>;
 
 export type OriginCloudRegionsListV1ResponseValueList =
   Array<OriginCloudRegionsListV1ResponseValueItem>;
-export const OriginCloudRegionsListV1ResponseValueList = /*@__PURE__*/ S.Array(
-  OriginCloudRegionsListV1ResponseValueItem,
-) as any as S.Schema<OriginCloudRegionsListV1ResponseValueList>;
+export const OriginCloudRegionsListV1ResponseValueList =
+  OriginCloudRegionsEditV1ResponseValueList as any as S.Schema<OriginCloudRegionsListV1ResponseValueList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface OriginCloudRegionsListV1Response {
@@ -1509,16 +1444,8 @@ export interface OriginCloudRegionsListV1Response {
   /** Time the mapping set was last modified. Null when no mappings exist. */
   modifiedOn?: string | null;
 }
-export const OriginCloudRegionsListV1Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: OriginCloudRegionsListV1ResponseId,
-    editable: S.Boolean,
-    value: OriginCloudRegionsListV1ResponseValueList,
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "OriginCloudRegionsListV1Response",
-}) as any as S.Schema<OriginCloudRegionsListV1Response>;
+export const OriginCloudRegionsListV1Response =
+  OriginCloudRegionsEditV1Response as any as S.Schema<OriginCloudRegionsListV1Response>;
 
 export interface OriginCloudRegionsSupportedRegionsV1Request {
   /** Identifier. */
@@ -1631,16 +1558,8 @@ export interface PatchCacheReserveResponse {
   /** Last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const PatchCacheReserveResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: CacheReserveEditResponseId,
-    editable: S.Boolean,
-    value: CacheReserveEditResponseValue,
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "PatchCacheReserveResponse",
-}) as any as S.Schema<PatchCacheReserveResponse>;
+export const PatchCacheReserveResponse =
+  CreateSmartTieredCacheResponse as any as S.Schema<PatchCacheReserveResponse>;
 
 export type RegionalTieredCacheEditRequestValue = "on" | "off";
 export const RegionalTieredCacheEditRequestValue = S.String;
@@ -1681,16 +1600,8 @@ export interface PatchRegionalTieredCacheResponse {
   /** Last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const PatchRegionalTieredCacheResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: RegionalTieredCacheEditResponseId,
-    editable: S.Boolean,
-    value: RegionalTieredCacheEditResponseValue,
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "PatchRegionalTieredCacheResponse",
-}) as any as S.Schema<PatchRegionalTieredCacheResponse>;
+export const PatchRegionalTieredCacheResponse =
+  CreateSmartTieredCacheResponse as any as S.Schema<PatchRegionalTieredCacheResponse>;
 
 export type SmartTieredCacheEditRequestValue = "on" | "off";
 export const SmartTieredCacheEditRequestValue = S.String;
@@ -1735,16 +1646,8 @@ export interface PatchSmartTieredCacheResponse {
   /** Last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const PatchSmartTieredCacheResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SmartTieredCacheEditResponseId,
-    editable: S.Boolean,
-    value: SmartTieredCacheEditResponseValue,
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "PatchSmartTieredCacheResponse",
-}) as any as S.Schema<PatchSmartTieredCacheResponse>;
+export const PatchSmartTieredCacheResponse =
+  CreateSmartTieredCacheResponse as any as S.Schema<PatchSmartTieredCacheResponse>;
 
 export type VariantsEditRequestValueAvifList = Array<string>;
 export const VariantsEditRequestValueAvifList =
@@ -2165,16 +2068,8 @@ export interface PutOriginCloudRegionResponse {
   /** Time this mapping was last modified. */
   modifiedOn?: string | null;
 }
-export const PutOriginCloudRegionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    originIp: S.String.pipe(T.Body("origin_ip")),
-    region: S.String,
-    vendor: OriginCloudRegionsUpdateResponseVendor,
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "PutOriginCloudRegionResponse",
-}) as any as S.Schema<PutOriginCloudRegionResponse>;
+export const PutOriginCloudRegionResponse =
+  GetOriginCloudRegionResponse as any as S.Schema<PutOriginCloudRegionResponse>;
 
 export interface StatusCacheReserveRequest {
   /** Identifier. */
@@ -2209,17 +2104,8 @@ export interface StatusCacheReserveResponse {
   /** Last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const StatusCacheReserveResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: CacheReserveStatusResponseId,
-    startTs: S.String.pipe(T.Body("start_ts")),
-    state: CacheReserveStatusResponseState,
-    endTs: S.optional(S.NullOr(S.String).pipe(T.Body("end_ts"))),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "StatusCacheReserveResponse",
-}) as any as S.Schema<StatusCacheReserveResponse>;
+export const StatusCacheReserveResponse =
+  ClearCacheReserveResponse as any as S.Schema<StatusCacheReserveResponse>;
 
 export interface SupportedRegionsOriginCloudRegionRequest {
   /** Identifier. */

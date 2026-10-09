@@ -401,18 +401,7 @@ export interface GetListResponse {
   /** An informative summary of the list. */
   description?: string | null;
 }
-export const GetListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdOn: S.String.pipe(T.Body("created_on")),
-    kind: ListsGetResponseKind,
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
-    name: S.String,
-    numItems: S.Number.pipe(T.Body("num_items")),
-    numReferencingFilters: S.Number.pipe(T.Body("num_referencing_filters")),
-    description: S.optional(S.NullOr(S.String)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "GetListResponse" }) as any as S.Schema<GetListResponse>;
+export const GetListResponse = CreateListResponse as any as S.Schema<GetListResponse>;
 
 export interface GetListBulkOperationRequest {
   /** The Account ID for this resource. */
@@ -946,18 +935,7 @@ export interface UpdateListResponse {
   /** An informative summary of the list. */
   description?: string | null;
 }
-export const UpdateListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdOn: S.String.pipe(T.Body("created_on")),
-    kind: ListsUpdateResponseKind,
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
-    name: S.String,
-    numItems: S.Number.pipe(T.Body("num_items")),
-    numReferencingFilters: S.Number.pipe(T.Body("num_referencing_filters")),
-    description: S.optional(S.NullOr(S.String)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "UpdateListResponse" }) as any as S.Schema<UpdateListResponse>;
+export const UpdateListResponse = CreateListResponse as any as S.Schema<UpdateListResponse>;
 
 export type ListsItemsUpdateRequestBodyItemListsListItemIPComment =
   ListsItemsCreateRequestBodyItemListsListItemIPComment;
@@ -984,23 +962,7 @@ export interface ListsItemsUpdateRequestBodyItemListsListItemRedirectCommentRedi
   subpathMatching?: boolean;
 }
 export const ListsItemsUpdateRequestBodyItemListsListItemRedirectCommentRedirect =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      sourceUrl: S.String.pipe(T.Body("source_url")),
-      targetUrl: S.String.pipe(T.Body("target_url")),
-      includeSubdomains: S.optional(S.Boolean.pipe(T.Body("include_subdomains"))),
-      preservePathSuffix: S.optional(S.Boolean.pipe(T.Body("preserve_path_suffix"))),
-      preserveQueryString: S.optional(S.Boolean.pipe(T.Body("preserve_query_string"))),
-      statusCode: S.optional(
-        ListsItemsUpdateRequestBodyItemListsListItemRedirectCommentRedirectStatusCode.pipe(
-          T.Body("status_code"),
-        ),
-      ),
-      subpathMatching: S.optional(S.Boolean.pipe(T.Body("subpath_matching"))),
-    }),
-  ).annotate({
-    identifier: "ListsItemsUpdateRequestBodyItemListsListItemRedirectCommentRedirect",
-  }) as any as S.Schema<ListsItemsUpdateRequestBodyItemListsListItemRedirectCommentRedirect>;
+  ListsItemsCreateRequestBodyItemListsListItemRedirectCommentRedirect as any as S.Schema<ListsItemsUpdateRequestBodyItemListsListItemRedirectCommentRedirect>;
 
 export interface ListsItemsUpdateRequestBodyItemListsListItemRedirectComment {
   /** The definition of the redirect. */
@@ -1008,15 +970,8 @@ export interface ListsItemsUpdateRequestBodyItemListsListItemRedirectComment {
   /** Defines an informative summary of the list item. */
   comment?: string;
 }
-export const ListsItemsUpdateRequestBodyItemListsListItemRedirectComment = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      redirect: ListsItemsUpdateRequestBodyItemListsListItemRedirectCommentRedirect,
-      comment: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "ListsItemsUpdateRequestBodyItemListsListItemRedirectComment",
-}) as any as S.Schema<ListsItemsUpdateRequestBodyItemListsListItemRedirectComment>;
+export const ListsItemsUpdateRequestBodyItemListsListItemRedirectComment =
+  ListsItemsCreateRequestBodyItemListsListItemRedirectComment as any as S.Schema<ListsItemsUpdateRequestBodyItemListsListItemRedirectComment>;
 
 export type ListsItemsUpdateRequestBodyItemListsListItemHostnameCommentHostname =
   ListsItemsCreateRequestBodyItemListsListItemHostnameCommentHostname;

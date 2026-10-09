@@ -1889,12 +1889,7 @@ export interface Sku {
   /** SKU name to specify whether the key vault is a standard vault or a premium vault. */
   name: SkuName | (string & {});
 }
-export const Sku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    family: SkuFamily,
-    name: SkuName,
-  }),
-).annotate({ identifier: "Sku" }) as any as S.Schema<Sku>;
+export const Sku = ManagedHsmSku as any as S.Schema<Sku>;
 
 export type KeyPermissions =
   | "all"
@@ -1922,9 +1917,8 @@ export const KeyPermissions = S.String;
 
 /** Permissions to keys */
 export type PermissionsKeysList = Array<KeyPermissions | (string & {})>;
-export const PermissionsKeysList = /*@__PURE__*/ S.Array(
-  KeyPermissions,
-) as any as S.Schema<PermissionsKeysList>;
+export const PermissionsKeysList =
+  KeyPropertiesInputKeyOpsList as any as S.Schema<PermissionsKeysList>;
 
 export type SecretPermissions =
   | "all"
@@ -1940,9 +1934,8 @@ export const SecretPermissions = S.String;
 
 /** Permissions to secrets */
 export type PermissionsSecretsList = Array<SecretPermissions | (string & {})>;
-export const PermissionsSecretsList = /*@__PURE__*/ S.Array(
-  SecretPermissions,
-) as any as S.Schema<PermissionsSecretsList>;
+export const PermissionsSecretsList =
+  KeyPropertiesInputKeyOpsList as any as S.Schema<PermissionsSecretsList>;
 
 export type CertificatePermissions =
   | "all"
@@ -1966,9 +1959,8 @@ export const CertificatePermissions = S.String;
 
 /** Permissions to certificates */
 export type PermissionsCertificatesList = Array<CertificatePermissions | (string & {})>;
-export const PermissionsCertificatesList = /*@__PURE__*/ S.Array(
-  CertificatePermissions,
-) as any as S.Schema<PermissionsCertificatesList>;
+export const PermissionsCertificatesList =
+  KeyPropertiesInputKeyOpsList as any as S.Schema<PermissionsCertificatesList>;
 
 export type StoragePermissions =
   | "all"
@@ -1990,9 +1982,8 @@ export const StoragePermissions = S.String;
 
 /** Permissions to storage accounts */
 export type PermissionsStorageList = Array<StoragePermissions | (string & {})>;
-export const PermissionsStorageList = /*@__PURE__*/ S.Array(
-  StoragePermissions,
-) as any as S.Schema<PermissionsStorageList>;
+export const PermissionsStorageList =
+  KeyPropertiesInputKeyOpsList as any as S.Schema<PermissionsStorageList>;
 
 /** Permissions the identity has for keys, secrets, certificates and storage. */
 export interface Permissions {

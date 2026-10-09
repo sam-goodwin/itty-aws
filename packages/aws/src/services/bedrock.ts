@@ -1776,11 +1776,8 @@ export const GuardrailContentFiltersTierName = S.String;
 export interface GuardrailContentFiltersTierConfig {
   tierName: GuardrailContentFiltersTierName;
 }
-export const GuardrailContentFiltersTierConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ tierName: GuardrailContentFiltersTierName }),
-).annotate({
-  identifier: "GuardrailContentFiltersTierConfig",
-}) as any as S.Schema<GuardrailContentFiltersTierConfig>;
+export const GuardrailContentFiltersTierConfig =
+  GuardrailTopicsTierConfig as any as S.Schema<GuardrailContentFiltersTierConfig>;
 export interface GuardrailContentPolicyConfig {
   filtersConfig: GuardrailContentFilterConfig[];
   tierConfig?: GuardrailContentFiltersTierConfig;
@@ -5137,7 +5134,7 @@ export type ModelModality = "TEXT" | "IMAGE" | "EMBEDDING" | (string & {});
 export const ModelModality = S.String;
 
 export type ModelModalityList = ModelModality[];
-export const ModelModalityList = /*@__PURE__*/ S.Array(ModelModality);
+export const ModelModalityList = GuardrailModalities as any as S.Schema<ModelModalityList>;
 export type ModelCustomization =
   | "FINE_TUNING"
   | "CONTINUED_PRE_TRAINING"
@@ -5146,12 +5143,13 @@ export type ModelCustomization =
 export const ModelCustomization = S.String;
 
 export type ModelCustomizationList = ModelCustomization[];
-export const ModelCustomizationList = /*@__PURE__*/ S.Array(ModelCustomization);
+export const ModelCustomizationList =
+  GuardrailModalities as any as S.Schema<ModelCustomizationList>;
 export type InferenceType = "ON_DEMAND" | "PROVISIONED" | (string & {});
 export const InferenceType = S.String;
 
 export type InferenceTypeList = InferenceType[];
-export const InferenceTypeList = /*@__PURE__*/ S.Array(InferenceType);
+export const InferenceTypeList = GuardrailModalities as any as S.Schema<InferenceTypeList>;
 export type FoundationModelLifecycleStatus = "ACTIVE" | "LEGACY" | (string & {});
 export const FoundationModelLifecycleStatus = S.String;
 
@@ -6731,7 +6729,7 @@ export const ListEvaluationJobsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListEvaluationJobsRequest",
 }) as any as S.Schema<ListEvaluationJobsRequest>;
 export type EvaluationTaskTypes = EvaluationTaskType[];
-export const EvaluationTaskTypes = /*@__PURE__*/ S.Array(EvaluationTaskType);
+export const EvaluationTaskTypes = GuardrailModalities as any as S.Schema<EvaluationTaskTypes>;
 export type EvaluationBedrockModelIdentifiers = string[];
 export const EvaluationBedrockModelIdentifiers =
   AdvancedPromptOptimizationJobIdentifiers as any as S.Schema<EvaluationBedrockModelIdentifiers>;

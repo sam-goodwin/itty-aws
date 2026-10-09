@@ -926,17 +926,8 @@ export interface GetRecommendationResponse {
   /** Next time this zone will be scanned by the Automatic SSL/TLS. */
   nextScheduledScan?: string | null;
 }
-export const GetRecommendationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    editable: S.Boolean,
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
-    value: GetRecommendationResponseValue,
-    nextScheduledScan: S.optional(S.NullOr(S.String).pipe(T.Body("next_scheduled_scan"))),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "GetRecommendationResponse",
-}) as any as S.Schema<GetRecommendationResponse>;
+export const GetRecommendationResponse =
+  GetAutomaticUpgraderResponse as any as S.Schema<GetRecommendationResponse>;
 
 export interface GetUniversalSettingRequest {
   /** Identifier. */
@@ -1132,15 +1123,7 @@ export interface CertificatePacksListResultItemCertificatesItemGeoRestrictions {
   label?: CertificatePacksListResultItemCertificatesItemGeoRestrictionsLabel | null;
 }
 export const CertificatePacksListResultItemCertificatesItemGeoRestrictions =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      label: S.optional(
-        S.NullOr(CertificatePacksListResultItemCertificatesItemGeoRestrictionsLabel),
-      ),
-    }),
-  ).annotate({
-    identifier: "CertificatePacksListResultItemCertificatesItemGeoRestrictions",
-  }) as any as S.Schema<CertificatePacksListResultItemCertificatesItemGeoRestrictions>;
+  CertificatePacksCreateResponseCertificatesItemGeoRestrictions as any as S.Schema<CertificatePacksListResultItemCertificatesItemGeoRestrictions>;
 
 export interface CertificatePacksListResultItemCertificatesItem {
   /** Certificate identifier. */
@@ -1442,17 +1425,8 @@ export interface PatchAutomaticUpgraderResponse {
   /** Next time this zone will be scanned by the Automatic SSL/TLS. */
   nextScheduledScan?: string | null;
 }
-export const PatchAutomaticUpgraderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    editable: S.Boolean,
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
-    value: PatchAutomaticUpgraderResponseValue,
-    nextScheduledScan: S.optional(S.NullOr(S.String).pipe(T.Body("next_scheduled_scan"))),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "PatchAutomaticUpgraderResponse",
-}) as any as S.Schema<PatchAutomaticUpgraderResponse>;
+export const PatchAutomaticUpgraderResponse =
+  GetAutomaticUpgraderResponse as any as S.Schema<PatchAutomaticUpgraderResponse>;
 
 export interface PatchAutoOriginTlsKexRequest {
   zoneId: string;
@@ -1522,14 +1496,8 @@ export const CertificatePacksEditResponseCertificatesItemGeoRestrictionsLabel = 
 export interface CertificatePacksEditResponseCertificatesItemGeoRestrictions {
   label?: CertificatePacksEditResponseCertificatesItemGeoRestrictionsLabel | null;
 }
-export const CertificatePacksEditResponseCertificatesItemGeoRestrictions = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      label: S.optional(S.NullOr(CertificatePacksEditResponseCertificatesItemGeoRestrictionsLabel)),
-    }),
-).annotate({
-  identifier: "CertificatePacksEditResponseCertificatesItemGeoRestrictions",
-}) as any as S.Schema<CertificatePacksEditResponseCertificatesItemGeoRestrictions>;
+export const CertificatePacksEditResponseCertificatesItemGeoRestrictions =
+  CertificatePacksGetResponseCertificatesItemGeoRestrictions as any as S.Schema<CertificatePacksEditResponseCertificatesItemGeoRestrictions>;
 
 export interface CertificatePacksEditResponseCertificatesItem {
   /** Certificate identifier. */

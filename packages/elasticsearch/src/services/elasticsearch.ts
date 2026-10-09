@@ -8985,20 +8985,8 @@ export interface TypesAggregationsSimpleMovingAverageAggregation {
   model: TypesAggregationsSimpleMovingAverageAggregationModel;
   settings: unknown;
 }
-export const TypesAggregationsSimpleMovingAverageAggregation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    buckets_path: S.optional(TypesAggregationsBucketsPath),
-    format: S.optional(S.String),
-    gap_policy: S.optional(TypesAggregationsGapPolicy),
-    minimize: S.optional(S.Boolean),
-    predict: S.optional(S.Number),
-    window: S.optional(S.Number),
-    model: TypesAggregationsSimpleMovingAverageAggregationModel,
-    settings: S.Unknown,
-  }),
-).annotate({
-  identifier: "TypesAggregationsSimpleMovingAverageAggregation",
-}) as any as S.Schema<TypesAggregationsSimpleMovingAverageAggregation>;
+export const TypesAggregationsSimpleMovingAverageAggregation =
+  TypesAggregationsLinearMovingAverageAggregation as any as S.Schema<TypesAggregationsSimpleMovingAverageAggregation>;
 
 export type TypesAggregationsEwmaMovingAverageAggregationModel = "ewma";
 export const TypesAggregationsEwmaMovingAverageAggregationModel = S.String;
@@ -15459,9 +15447,8 @@ export type CatTypesCatDatafeedColumn =
 export const CatTypesCatDatafeedColumn = S.String;
 
 export type CatTypesCatDatafeedColumnsCase1List = Array<CatTypesCatDatafeedColumn | (string & {})>;
-export const CatTypesCatDatafeedColumnsCase1List = /*@__PURE__*/ S.Array(
-  CatTypesCatDatafeedColumn,
-) as any as S.Schema<CatTypesCatDatafeedColumnsCase1List>;
+export const CatTypesCatDatafeedColumnsCase1List =
+  TypesExpandWildcardsCase1List as any as S.Schema<CatTypesCatDatafeedColumnsCase1List>;
 
 export type CatTypesCatDatafeedColumns =
   | CatTypesCatDatafeedColumn
@@ -15613,9 +15600,8 @@ export type CatTypesCatDfaColumn =
 export const CatTypesCatDfaColumn = S.String;
 
 export type CatTypesCatDfaColumnsCase1List = Array<CatTypesCatDfaColumn | (string & {})>;
-export const CatTypesCatDfaColumnsCase1List = /*@__PURE__*/ S.Array(
-  CatTypesCatDfaColumn,
-) as any as S.Schema<CatTypesCatDfaColumnsCase1List>;
+export const CatTypesCatDfaColumnsCase1List =
+  TypesExpandWildcardsCase1List as any as S.Schema<CatTypesCatDfaColumnsCase1List>;
 
 export type CatTypesCatDfaColumns = CatTypesCatDfaColumn | CatTypesCatDfaColumnsCase1List;
 export const CatTypesCatDfaColumns = S.Unknown as any as S.Schema<CatTypesCatDfaColumns>;
@@ -15919,9 +15905,8 @@ export const CatTypesCatAnomalyDetectorColumn = S.String;
 export type CatTypesCatAnomalyDetectorColumnsCase1List = Array<
   CatTypesCatAnomalyDetectorColumn | (string & {})
 >;
-export const CatTypesCatAnomalyDetectorColumnsCase1List = /*@__PURE__*/ S.Array(
-  CatTypesCatAnomalyDetectorColumn,
-) as any as S.Schema<CatTypesCatAnomalyDetectorColumnsCase1List>;
+export const CatTypesCatAnomalyDetectorColumnsCase1List =
+  TypesExpandWildcardsCase1List as any as S.Schema<CatTypesCatAnomalyDetectorColumnsCase1List>;
 
 export type CatTypesCatAnomalyDetectorColumns =
   | CatTypesCatAnomalyDetectorColumn
@@ -16226,9 +16211,8 @@ export const CatTypesCatTrainedModelsColumn = S.String;
 export type CatTypesCatTrainedModelsColumnsCase1List = Array<
   CatTypesCatTrainedModelsColumn | (string & {})
 >;
-export const CatTypesCatTrainedModelsColumnsCase1List = /*@__PURE__*/ S.Array(
-  CatTypesCatTrainedModelsColumn,
-) as any as S.Schema<CatTypesCatTrainedModelsColumnsCase1List>;
+export const CatTypesCatTrainedModelsColumnsCase1List =
+  TypesExpandWildcardsCase1List as any as S.Schema<CatTypesCatTrainedModelsColumnsCase1List>;
 
 export type CatTypesCatTrainedModelsColumns =
   | CatTypesCatTrainedModelsColumn
@@ -18893,9 +18877,8 @@ export const CatTypesCatTransformColumn = S.String;
 export type CatTypesCatTransformColumnsCase1List = Array<
   CatTypesCatTransformColumn | (string & {})
 >;
-export const CatTypesCatTransformColumnsCase1List = /*@__PURE__*/ S.Array(
-  CatTypesCatTransformColumn,
-) as any as S.Schema<CatTypesCatTransformColumnsCase1List>;
+export const CatTypesCatTransformColumnsCase1List =
+  TypesExpandWildcardsCase1List as any as S.Schema<CatTypesCatTransformColumnsCase1List>;
 
 export type CatTypesCatTransformColumns =
   | CatTypesCatTransformColumn
@@ -20100,9 +20083,7 @@ export type TypesNodeRole =
 export const TypesNodeRole = S.String;
 
 export type TypesNodeRoles = Array<TypesNodeRole>;
-export const TypesNodeRoles = /*@__PURE__*/ S.Array(
-  TypesNodeRole,
-) as any as S.Schema<TypesNodeRoles>;
+export const TypesNodeRoles = TypesExpandWildcardsCase1List as any as S.Schema<TypesNodeRoles>;
 
 export type ClusterAllocationExplainCurrentNodeAttributesMap = {
   [key: string]: string | undefined;
@@ -20584,9 +20565,8 @@ export const IndicesTypesSegmentSortOrder = S.String;
 export type IndicesTypesIndexSegmentSortOrderCase1List = Array<
   IndicesTypesSegmentSortOrder | (string & {})
 >;
-export const IndicesTypesIndexSegmentSortOrderCase1List = /*@__PURE__*/ S.Array(
-  IndicesTypesSegmentSortOrder,
-) as any as S.Schema<IndicesTypesIndexSegmentSortOrderCase1List>;
+export const IndicesTypesIndexSegmentSortOrderCase1List =
+  TypesExpandWildcardsCase1List as any as S.Schema<IndicesTypesIndexSegmentSortOrderCase1List>;
 
 export type IndicesTypesIndexSegmentSortOrder =
   | IndicesTypesSegmentSortOrder
@@ -20600,9 +20580,8 @@ export const IndicesTypesSegmentSortMode = S.String;
 export type IndicesTypesIndexSegmentSortModeCase1List = Array<
   IndicesTypesSegmentSortMode | (string & {})
 >;
-export const IndicesTypesIndexSegmentSortModeCase1List = /*@__PURE__*/ S.Array(
-  IndicesTypesSegmentSortMode,
-) as any as S.Schema<IndicesTypesIndexSegmentSortModeCase1List>;
+export const IndicesTypesIndexSegmentSortModeCase1List =
+  TypesExpandWildcardsCase1List as any as S.Schema<IndicesTypesIndexSegmentSortModeCase1List>;
 
 export type IndicesTypesIndexSegmentSortMode =
   | IndicesTypesSegmentSortMode
@@ -20616,9 +20595,8 @@ export const IndicesTypesSegmentSortMissing = S.String;
 export type IndicesTypesIndexSegmentSortMissingCase1List = Array<
   IndicesTypesSegmentSortMissing | (string & {})
 >;
-export const IndicesTypesIndexSegmentSortMissingCase1List = /*@__PURE__*/ S.Array(
-  IndicesTypesSegmentSortMissing,
-) as any as S.Schema<IndicesTypesIndexSegmentSortMissingCase1List>;
+export const IndicesTypesIndexSegmentSortMissingCase1List =
+  TypesExpandWildcardsCase1List as any as S.Schema<IndicesTypesIndexSegmentSortMissingCase1List>;
 
 export type IndicesTypesIndexSegmentSortMissing =
   | IndicesTypesSegmentSortMissing
@@ -21187,14 +21165,8 @@ export interface TypesAnalysisSimpleAnalyzer {
   type: TypesAnalysisSimpleAnalyzerType;
   version?: string;
 }
-export const TypesAnalysisSimpleAnalyzer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: TypesAnalysisSimpleAnalyzerType,
-    version: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TypesAnalysisSimpleAnalyzer",
-}) as any as S.Schema<TypesAnalysisSimpleAnalyzer>;
+export const TypesAnalysisSimpleAnalyzer =
+  TypesAnalysisKeywordAnalyzer as any as S.Schema<TypesAnalysisSimpleAnalyzer>;
 
 export type TypesAnalysisStandardAnalyzerType = "standard";
 export const TypesAnalysisStandardAnalyzerType = S.String;
@@ -21248,14 +21220,8 @@ export interface TypesAnalysisWhitespaceAnalyzer {
   type: TypesAnalysisWhitespaceAnalyzerType;
   version?: string;
 }
-export const TypesAnalysisWhitespaceAnalyzer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: TypesAnalysisWhitespaceAnalyzerType,
-    version: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TypesAnalysisWhitespaceAnalyzer",
-}) as any as S.Schema<TypesAnalysisWhitespaceAnalyzer>;
+export const TypesAnalysisWhitespaceAnalyzer =
+  TypesAnalysisKeywordAnalyzer as any as S.Schema<TypesAnalysisWhitespaceAnalyzer>;
 
 export type TypesAnalysisIcuAnalyzerType = "icu_analyzer";
 export const TypesAnalysisIcuAnalyzerType = S.String;
@@ -21520,15 +21486,8 @@ export interface TypesAnalysisChineseAnalyzer {
   stopwords?: TypesAnalysisStopWords;
   stopwords_path?: string;
 }
-export const TypesAnalysisChineseAnalyzer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: TypesAnalysisChineseAnalyzerType,
-    stopwords: S.optional(TypesAnalysisStopWords),
-    stopwords_path: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TypesAnalysisChineseAnalyzer",
-}) as any as S.Schema<TypesAnalysisChineseAnalyzer>;
+export const TypesAnalysisChineseAnalyzer =
+  TypesAnalysisBrazilianAnalyzer as any as S.Schema<TypesAnalysisChineseAnalyzer>;
 
 export type TypesAnalysisCjkAnalyzerType = "cjk";
 export const TypesAnalysisCjkAnalyzerType = S.String;
@@ -21578,15 +21537,8 @@ export interface TypesAnalysisDanishAnalyzer {
   stopwords?: TypesAnalysisStopWords;
   stopwords_path?: string;
 }
-export const TypesAnalysisDanishAnalyzer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: TypesAnalysisDanishAnalyzerType,
-    stopwords: S.optional(TypesAnalysisStopWords),
-    stopwords_path: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TypesAnalysisDanishAnalyzer",
-}) as any as S.Schema<TypesAnalysisDanishAnalyzer>;
+export const TypesAnalysisDanishAnalyzer =
+  TypesAnalysisBrazilianAnalyzer as any as S.Schema<TypesAnalysisDanishAnalyzer>;
 
 export type TypesAnalysisDutchAnalyzerType = "dutch";
 export const TypesAnalysisDutchAnalyzerType = S.String;
@@ -21644,15 +21596,8 @@ export interface TypesAnalysisEstonianAnalyzer {
   stopwords?: TypesAnalysisStopWords;
   stopwords_path?: string;
 }
-export const TypesAnalysisEstonianAnalyzer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: TypesAnalysisEstonianAnalyzerType,
-    stopwords: S.optional(TypesAnalysisStopWords),
-    stopwords_path: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TypesAnalysisEstonianAnalyzer",
-}) as any as S.Schema<TypesAnalysisEstonianAnalyzer>;
+export const TypesAnalysisEstonianAnalyzer =
+  TypesAnalysisBrazilianAnalyzer as any as S.Schema<TypesAnalysisEstonianAnalyzer>;
 
 export type TypesAnalysisFinnishAnalyzerType = "finnish";
 export const TypesAnalysisFinnishAnalyzerType = S.String;
@@ -21758,15 +21703,8 @@ export interface TypesAnalysisGreekAnalyzer {
   stopwords?: TypesAnalysisStopWords;
   stopwords_path?: string;
 }
-export const TypesAnalysisGreekAnalyzer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: TypesAnalysisGreekAnalyzerType,
-    stopwords: S.optional(TypesAnalysisStopWords),
-    stopwords_path: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TypesAnalysisGreekAnalyzer",
-}) as any as S.Schema<TypesAnalysisGreekAnalyzer>;
+export const TypesAnalysisGreekAnalyzer =
+  TypesAnalysisBrazilianAnalyzer as any as S.Schema<TypesAnalysisGreekAnalyzer>;
 
 export type TypesAnalysisHindiAnalyzerType = "hindi";
 export const TypesAnalysisHindiAnalyzerType = S.String;
@@ -21968,15 +21906,8 @@ export interface TypesAnalysisPersianAnalyzer {
   stopwords?: TypesAnalysisStopWords;
   stopwords_path?: string;
 }
-export const TypesAnalysisPersianAnalyzer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: TypesAnalysisPersianAnalyzerType,
-    stopwords: S.optional(TypesAnalysisStopWords),
-    stopwords_path: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TypesAnalysisPersianAnalyzer",
-}) as any as S.Schema<TypesAnalysisPersianAnalyzer>;
+export const TypesAnalysisPersianAnalyzer =
+  TypesAnalysisBrazilianAnalyzer as any as S.Schema<TypesAnalysisPersianAnalyzer>;
 
 export type TypesAnalysisPortugueseAnalyzerType = "portuguese";
 export const TypesAnalysisPortugueseAnalyzerType = S.String;
@@ -22178,15 +22109,8 @@ export interface TypesAnalysisThaiAnalyzer {
   stopwords?: TypesAnalysisStopWords;
   stopwords_path?: string;
 }
-export const TypesAnalysisThaiAnalyzer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: TypesAnalysisThaiAnalyzerType,
-    stopwords: S.optional(TypesAnalysisStopWords),
-    stopwords_path: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TypesAnalysisThaiAnalyzer",
-}) as any as S.Schema<TypesAnalysisThaiAnalyzer>;
+export const TypesAnalysisThaiAnalyzer =
+  TypesAnalysisBrazilianAnalyzer as any as S.Schema<TypesAnalysisThaiAnalyzer>;
 
 export type TypesAnalysisAnalyzer =
   | TypesAnalysisCustomAnalyzer
@@ -22401,14 +22325,8 @@ export interface TypesAnalysisArabicStemTokenFilter {
   version?: string;
   type: TypesAnalysisArabicStemTokenFilterType;
 }
-export const TypesAnalysisArabicStemTokenFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.String),
-    type: TypesAnalysisArabicStemTokenFilterType,
-  }),
-).annotate({
-  identifier: "TypesAnalysisArabicStemTokenFilter",
-}) as any as S.Schema<TypesAnalysisArabicStemTokenFilter>;
+export const TypesAnalysisArabicStemTokenFilter =
+  TypesAnalysisApostropheTokenFilter as any as S.Schema<TypesAnalysisArabicStemTokenFilter>;
 
 export type TypesAnalysisArabicNormalizationTokenFilterType = "arabic_normalization";
 export const TypesAnalysisArabicNormalizationTokenFilterType = S.String;
@@ -22417,14 +22335,8 @@ export interface TypesAnalysisArabicNormalizationTokenFilter {
   version?: string;
   type: TypesAnalysisArabicNormalizationTokenFilterType;
 }
-export const TypesAnalysisArabicNormalizationTokenFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.String),
-    type: TypesAnalysisArabicNormalizationTokenFilterType,
-  }),
-).annotate({
-  identifier: "TypesAnalysisArabicNormalizationTokenFilter",
-}) as any as S.Schema<TypesAnalysisArabicNormalizationTokenFilter>;
+export const TypesAnalysisArabicNormalizationTokenFilter =
+  TypesAnalysisApostropheTokenFilter as any as S.Schema<TypesAnalysisArabicNormalizationTokenFilter>;
 
 export type TypesAnalysisAsciiFoldingTokenFilterType = "asciifolding";
 export const TypesAnalysisAsciiFoldingTokenFilterType = S.String;
@@ -22452,14 +22364,8 @@ export interface TypesAnalysisBengaliNormalizationTokenFilter {
   version?: string;
   type: TypesAnalysisBengaliNormalizationTokenFilterType;
 }
-export const TypesAnalysisBengaliNormalizationTokenFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.String),
-    type: TypesAnalysisBengaliNormalizationTokenFilterType,
-  }),
-).annotate({
-  identifier: "TypesAnalysisBengaliNormalizationTokenFilter",
-}) as any as S.Schema<TypesAnalysisBengaliNormalizationTokenFilter>;
+export const TypesAnalysisBengaliNormalizationTokenFilter =
+  TypesAnalysisApostropheTokenFilter as any as S.Schema<TypesAnalysisBengaliNormalizationTokenFilter>;
 
 export type TypesAnalysisBrazilianStemTokenFilterType = "brazilian_stem";
 export const TypesAnalysisBrazilianStemTokenFilterType = S.String;
@@ -22468,14 +22374,8 @@ export interface TypesAnalysisBrazilianStemTokenFilter {
   version?: string;
   type: TypesAnalysisBrazilianStemTokenFilterType;
 }
-export const TypesAnalysisBrazilianStemTokenFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.String),
-    type: TypesAnalysisBrazilianStemTokenFilterType,
-  }),
-).annotate({
-  identifier: "TypesAnalysisBrazilianStemTokenFilter",
-}) as any as S.Schema<TypesAnalysisBrazilianStemTokenFilter>;
+export const TypesAnalysisBrazilianStemTokenFilter =
+  TypesAnalysisApostropheTokenFilter as any as S.Schema<TypesAnalysisBrazilianStemTokenFilter>;
 
 export type TypesAnalysisCjkBigramTokenFilterType = "cjk_bigram";
 export const TypesAnalysisCjkBigramTokenFilterType = S.String;
@@ -22487,9 +22387,8 @@ export const TypesAnalysisCjkBigramIgnoredScript = S.String;
 export type TypesAnalysisCjkBigramTokenFilterIgnoredScriptsList = Array<
   TypesAnalysisCjkBigramIgnoredScript | (string & {})
 >;
-export const TypesAnalysisCjkBigramTokenFilterIgnoredScriptsList = /*@__PURE__*/ S.Array(
-  TypesAnalysisCjkBigramIgnoredScript,
-) as any as S.Schema<TypesAnalysisCjkBigramTokenFilterIgnoredScriptsList>;
+export const TypesAnalysisCjkBigramTokenFilterIgnoredScriptsList =
+  TypesExpandWildcardsCase1List as any as S.Schema<TypesAnalysisCjkBigramTokenFilterIgnoredScriptsList>;
 
 export interface TypesAnalysisCjkBigramTokenFilter {
   version?: string;
@@ -22517,14 +22416,8 @@ export interface TypesAnalysisCjkWidthTokenFilter {
   version?: string;
   type: TypesAnalysisCjkWidthTokenFilterType;
 }
-export const TypesAnalysisCjkWidthTokenFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.String),
-    type: TypesAnalysisCjkWidthTokenFilterType,
-  }),
-).annotate({
-  identifier: "TypesAnalysisCjkWidthTokenFilter",
-}) as any as S.Schema<TypesAnalysisCjkWidthTokenFilter>;
+export const TypesAnalysisCjkWidthTokenFilter =
+  TypesAnalysisApostropheTokenFilter as any as S.Schema<TypesAnalysisCjkWidthTokenFilter>;
 
 export type TypesAnalysisClassicTokenFilterType = "classic";
 export const TypesAnalysisClassicTokenFilterType = S.String;
@@ -22533,14 +22426,8 @@ export interface TypesAnalysisClassicTokenFilter {
   version?: string;
   type: TypesAnalysisClassicTokenFilterType;
 }
-export const TypesAnalysisClassicTokenFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.String),
-    type: TypesAnalysisClassicTokenFilterType,
-  }),
-).annotate({
-  identifier: "TypesAnalysisClassicTokenFilter",
-}) as any as S.Schema<TypesAnalysisClassicTokenFilter>;
+export const TypesAnalysisClassicTokenFilter =
+  TypesAnalysisApostropheTokenFilter as any as S.Schema<TypesAnalysisClassicTokenFilter>;
 
 export type TypesAnalysisCommonGramsTokenFilterType = "common_grams";
 export const TypesAnalysisCommonGramsTokenFilterType = S.String;
@@ -22609,14 +22496,8 @@ export interface TypesAnalysisCzechStemTokenFilter {
   version?: string;
   type: TypesAnalysisCzechStemTokenFilterType;
 }
-export const TypesAnalysisCzechStemTokenFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.String),
-    type: TypesAnalysisCzechStemTokenFilterType,
-  }),
-).annotate({
-  identifier: "TypesAnalysisCzechStemTokenFilter",
-}) as any as S.Schema<TypesAnalysisCzechStemTokenFilter>;
+export const TypesAnalysisCzechStemTokenFilter =
+  TypesAnalysisApostropheTokenFilter as any as S.Schema<TypesAnalysisCzechStemTokenFilter>;
 
 export type TypesAnalysisDecimalDigitTokenFilterType = "decimal_digit";
 export const TypesAnalysisDecimalDigitTokenFilterType = S.String;
@@ -22625,14 +22506,8 @@ export interface TypesAnalysisDecimalDigitTokenFilter {
   version?: string;
   type: TypesAnalysisDecimalDigitTokenFilterType;
 }
-export const TypesAnalysisDecimalDigitTokenFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.String),
-    type: TypesAnalysisDecimalDigitTokenFilterType,
-  }),
-).annotate({
-  identifier: "TypesAnalysisDecimalDigitTokenFilter",
-}) as any as S.Schema<TypesAnalysisDecimalDigitTokenFilter>;
+export const TypesAnalysisDecimalDigitTokenFilter =
+  TypesAnalysisApostropheTokenFilter as any as S.Schema<TypesAnalysisDecimalDigitTokenFilter>;
 
 export type TypesAnalysisDelimitedPayloadTokenFilterType = "delimited_payload";
 export const TypesAnalysisDelimitedPayloadTokenFilterType = S.String;
@@ -22666,14 +22541,8 @@ export interface TypesAnalysisDutchStemTokenFilter {
   version?: string;
   type: TypesAnalysisDutchStemTokenFilterType;
 }
-export const TypesAnalysisDutchStemTokenFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.String),
-    type: TypesAnalysisDutchStemTokenFilterType,
-  }),
-).annotate({
-  identifier: "TypesAnalysisDutchStemTokenFilter",
-}) as any as S.Schema<TypesAnalysisDutchStemTokenFilter>;
+export const TypesAnalysisDutchStemTokenFilter =
+  TypesAnalysisApostropheTokenFilter as any as S.Schema<TypesAnalysisDutchStemTokenFilter>;
 
 export type TypesAnalysisEdgeNGramTokenFilterType = "edge_ngram";
 export const TypesAnalysisEdgeNGramTokenFilterType = S.String;
@@ -22765,14 +22634,8 @@ export interface TypesAnalysisFlattenGraphTokenFilter {
   version?: string;
   type: TypesAnalysisFlattenGraphTokenFilterType;
 }
-export const TypesAnalysisFlattenGraphTokenFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.String),
-    type: TypesAnalysisFlattenGraphTokenFilterType,
-  }),
-).annotate({
-  identifier: "TypesAnalysisFlattenGraphTokenFilter",
-}) as any as S.Schema<TypesAnalysisFlattenGraphTokenFilter>;
+export const TypesAnalysisFlattenGraphTokenFilter =
+  TypesAnalysisApostropheTokenFilter as any as S.Schema<TypesAnalysisFlattenGraphTokenFilter>;
 
 export type TypesAnalysisFrenchStemTokenFilterType = "french_stem";
 export const TypesAnalysisFrenchStemTokenFilterType = S.String;
@@ -22781,14 +22644,8 @@ export interface TypesAnalysisFrenchStemTokenFilter {
   version?: string;
   type: TypesAnalysisFrenchStemTokenFilterType;
 }
-export const TypesAnalysisFrenchStemTokenFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.String),
-    type: TypesAnalysisFrenchStemTokenFilterType,
-  }),
-).annotate({
-  identifier: "TypesAnalysisFrenchStemTokenFilter",
-}) as any as S.Schema<TypesAnalysisFrenchStemTokenFilter>;
+export const TypesAnalysisFrenchStemTokenFilter =
+  TypesAnalysisApostropheTokenFilter as any as S.Schema<TypesAnalysisFrenchStemTokenFilter>;
 
 export type TypesAnalysisGermanNormalizationTokenFilterType = "german_normalization";
 export const TypesAnalysisGermanNormalizationTokenFilterType = S.String;
@@ -22797,14 +22654,8 @@ export interface TypesAnalysisGermanNormalizationTokenFilter {
   version?: string;
   type: TypesAnalysisGermanNormalizationTokenFilterType;
 }
-export const TypesAnalysisGermanNormalizationTokenFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.String),
-    type: TypesAnalysisGermanNormalizationTokenFilterType,
-  }),
-).annotate({
-  identifier: "TypesAnalysisGermanNormalizationTokenFilter",
-}) as any as S.Schema<TypesAnalysisGermanNormalizationTokenFilter>;
+export const TypesAnalysisGermanNormalizationTokenFilter =
+  TypesAnalysisApostropheTokenFilter as any as S.Schema<TypesAnalysisGermanNormalizationTokenFilter>;
 
 export type TypesAnalysisGermanStemTokenFilterType = "german_stem";
 export const TypesAnalysisGermanStemTokenFilterType = S.String;
@@ -22813,14 +22664,8 @@ export interface TypesAnalysisGermanStemTokenFilter {
   version?: string;
   type: TypesAnalysisGermanStemTokenFilterType;
 }
-export const TypesAnalysisGermanStemTokenFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.String),
-    type: TypesAnalysisGermanStemTokenFilterType,
-  }),
-).annotate({
-  identifier: "TypesAnalysisGermanStemTokenFilter",
-}) as any as S.Schema<TypesAnalysisGermanStemTokenFilter>;
+export const TypesAnalysisGermanStemTokenFilter =
+  TypesAnalysisApostropheTokenFilter as any as S.Schema<TypesAnalysisGermanStemTokenFilter>;
 
 export type TypesAnalysisHindiNormalizationTokenFilterType = "hindi_normalization";
 export const TypesAnalysisHindiNormalizationTokenFilterType = S.String;
@@ -22829,14 +22674,8 @@ export interface TypesAnalysisHindiNormalizationTokenFilter {
   version?: string;
   type: TypesAnalysisHindiNormalizationTokenFilterType;
 }
-export const TypesAnalysisHindiNormalizationTokenFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.String),
-    type: TypesAnalysisHindiNormalizationTokenFilterType,
-  }),
-).annotate({
-  identifier: "TypesAnalysisHindiNormalizationTokenFilter",
-}) as any as S.Schema<TypesAnalysisHindiNormalizationTokenFilter>;
+export const TypesAnalysisHindiNormalizationTokenFilter =
+  TypesAnalysisApostropheTokenFilter as any as S.Schema<TypesAnalysisHindiNormalizationTokenFilter>;
 
 export type TypesAnalysisHunspellTokenFilterType = "hunspell";
 export const TypesAnalysisHunspellTokenFilterType = S.String;
@@ -22921,14 +22760,8 @@ export interface TypesAnalysisIndicNormalizationTokenFilter {
   version?: string;
   type: TypesAnalysisIndicNormalizationTokenFilterType;
 }
-export const TypesAnalysisIndicNormalizationTokenFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.String),
-    type: TypesAnalysisIndicNormalizationTokenFilterType,
-  }),
-).annotate({
-  identifier: "TypesAnalysisIndicNormalizationTokenFilter",
-}) as any as S.Schema<TypesAnalysisIndicNormalizationTokenFilter>;
+export const TypesAnalysisIndicNormalizationTokenFilter =
+  TypesAnalysisApostropheTokenFilter as any as S.Schema<TypesAnalysisIndicNormalizationTokenFilter>;
 
 export type TypesAnalysisKeepTypesTokenFilterType = "keep_types";
 export const TypesAnalysisKeepTypesTokenFilterType = S.String;
@@ -23036,14 +22869,8 @@ export interface TypesAnalysisKeywordRepeatTokenFilter {
   version?: string;
   type: TypesAnalysisKeywordRepeatTokenFilterType;
 }
-export const TypesAnalysisKeywordRepeatTokenFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.String),
-    type: TypesAnalysisKeywordRepeatTokenFilterType,
-  }),
-).annotate({
-  identifier: "TypesAnalysisKeywordRepeatTokenFilter",
-}) as any as S.Schema<TypesAnalysisKeywordRepeatTokenFilter>;
+export const TypesAnalysisKeywordRepeatTokenFilter =
+  TypesAnalysisApostropheTokenFilter as any as S.Schema<TypesAnalysisKeywordRepeatTokenFilter>;
 
 export type TypesAnalysisKStemTokenFilterType = "kstem";
 export const TypesAnalysisKStemTokenFilterType = S.String;
@@ -23052,14 +22879,8 @@ export interface TypesAnalysisKStemTokenFilter {
   version?: string;
   type: TypesAnalysisKStemTokenFilterType;
 }
-export const TypesAnalysisKStemTokenFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.String),
-    type: TypesAnalysisKStemTokenFilterType,
-  }),
-).annotate({
-  identifier: "TypesAnalysisKStemTokenFilter",
-}) as any as S.Schema<TypesAnalysisKStemTokenFilter>;
+export const TypesAnalysisKStemTokenFilter =
+  TypesAnalysisApostropheTokenFilter as any as S.Schema<TypesAnalysisKStemTokenFilter>;
 
 export type TypesAnalysisLengthTokenFilterType = "length";
 export const TypesAnalysisLengthTokenFilterType = S.String;
@@ -23292,14 +23113,8 @@ export interface TypesAnalysisPersianNormalizationTokenFilter {
   version?: string;
   type: TypesAnalysisPersianNormalizationTokenFilterType;
 }
-export const TypesAnalysisPersianNormalizationTokenFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.String),
-    type: TypesAnalysisPersianNormalizationTokenFilterType,
-  }),
-).annotate({
-  identifier: "TypesAnalysisPersianNormalizationTokenFilter",
-}) as any as S.Schema<TypesAnalysisPersianNormalizationTokenFilter>;
+export const TypesAnalysisPersianNormalizationTokenFilter =
+  TypesAnalysisApostropheTokenFilter as any as S.Schema<TypesAnalysisPersianNormalizationTokenFilter>;
 
 export type TypesAnalysisPersianStemTokenFilterType = "persian_stem";
 export const TypesAnalysisPersianStemTokenFilterType = S.String;
@@ -23308,14 +23123,8 @@ export interface TypesAnalysisPersianStemTokenFilter {
   version?: string;
   type: TypesAnalysisPersianStemTokenFilterType;
 }
-export const TypesAnalysisPersianStemTokenFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.String),
-    type: TypesAnalysisPersianStemTokenFilterType,
-  }),
-).annotate({
-  identifier: "TypesAnalysisPersianStemTokenFilter",
-}) as any as S.Schema<TypesAnalysisPersianStemTokenFilter>;
+export const TypesAnalysisPersianStemTokenFilter =
+  TypesAnalysisApostropheTokenFilter as any as S.Schema<TypesAnalysisPersianStemTokenFilter>;
 
 export type TypesAnalysisPorterStemTokenFilterType = "porter_stem";
 export const TypesAnalysisPorterStemTokenFilterType = S.String;
@@ -23324,14 +23133,8 @@ export interface TypesAnalysisPorterStemTokenFilter {
   version?: string;
   type: TypesAnalysisPorterStemTokenFilterType;
 }
-export const TypesAnalysisPorterStemTokenFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.String),
-    type: TypesAnalysisPorterStemTokenFilterType,
-  }),
-).annotate({
-  identifier: "TypesAnalysisPorterStemTokenFilter",
-}) as any as S.Schema<TypesAnalysisPorterStemTokenFilter>;
+export const TypesAnalysisPorterStemTokenFilter =
+  TypesAnalysisApostropheTokenFilter as any as S.Schema<TypesAnalysisPorterStemTokenFilter>;
 
 export type TypesAnalysisPredicateTokenFilterType = "predicate_token_filter";
 export const TypesAnalysisPredicateTokenFilterType = S.String;
@@ -23359,14 +23162,8 @@ export interface TypesAnalysisRemoveDuplicatesTokenFilter {
   version?: string;
   type: TypesAnalysisRemoveDuplicatesTokenFilterType;
 }
-export const TypesAnalysisRemoveDuplicatesTokenFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.String),
-    type: TypesAnalysisRemoveDuplicatesTokenFilterType,
-  }),
-).annotate({
-  identifier: "TypesAnalysisRemoveDuplicatesTokenFilter",
-}) as any as S.Schema<TypesAnalysisRemoveDuplicatesTokenFilter>;
+export const TypesAnalysisRemoveDuplicatesTokenFilter =
+  TypesAnalysisApostropheTokenFilter as any as S.Schema<TypesAnalysisRemoveDuplicatesTokenFilter>;
 
 export type TypesAnalysisReverseTokenFilterType = "reverse";
 export const TypesAnalysisReverseTokenFilterType = S.String;
@@ -23375,14 +23172,8 @@ export interface TypesAnalysisReverseTokenFilter {
   version?: string;
   type: TypesAnalysisReverseTokenFilterType;
 }
-export const TypesAnalysisReverseTokenFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.String),
-    type: TypesAnalysisReverseTokenFilterType,
-  }),
-).annotate({
-  identifier: "TypesAnalysisReverseTokenFilter",
-}) as any as S.Schema<TypesAnalysisReverseTokenFilter>;
+export const TypesAnalysisReverseTokenFilter =
+  TypesAnalysisApostropheTokenFilter as any as S.Schema<TypesAnalysisReverseTokenFilter>;
 
 export type TypesAnalysisRussianStemTokenFilterType = "russian_stem";
 export const TypesAnalysisRussianStemTokenFilterType = S.String;
@@ -23391,14 +23182,8 @@ export interface TypesAnalysisRussianStemTokenFilter {
   version?: string;
   type: TypesAnalysisRussianStemTokenFilterType;
 }
-export const TypesAnalysisRussianStemTokenFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.String),
-    type: TypesAnalysisRussianStemTokenFilterType,
-  }),
-).annotate({
-  identifier: "TypesAnalysisRussianStemTokenFilter",
-}) as any as S.Schema<TypesAnalysisRussianStemTokenFilter>;
+export const TypesAnalysisRussianStemTokenFilter =
+  TypesAnalysisApostropheTokenFilter as any as S.Schema<TypesAnalysisRussianStemTokenFilter>;
 
 export type TypesAnalysisScandinavianFoldingTokenFilterType = "scandinavian_folding";
 export const TypesAnalysisScandinavianFoldingTokenFilterType = S.String;
@@ -23407,14 +23192,8 @@ export interface TypesAnalysisScandinavianFoldingTokenFilter {
   version?: string;
   type: TypesAnalysisScandinavianFoldingTokenFilterType;
 }
-export const TypesAnalysisScandinavianFoldingTokenFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.String),
-    type: TypesAnalysisScandinavianFoldingTokenFilterType,
-  }),
-).annotate({
-  identifier: "TypesAnalysisScandinavianFoldingTokenFilter",
-}) as any as S.Schema<TypesAnalysisScandinavianFoldingTokenFilter>;
+export const TypesAnalysisScandinavianFoldingTokenFilter =
+  TypesAnalysisApostropheTokenFilter as any as S.Schema<TypesAnalysisScandinavianFoldingTokenFilter>;
 
 export type TypesAnalysisScandinavianNormalizationTokenFilterType = "scandinavian_normalization";
 export const TypesAnalysisScandinavianNormalizationTokenFilterType = S.String;
@@ -23423,14 +23202,8 @@ export interface TypesAnalysisScandinavianNormalizationTokenFilter {
   version?: string;
   type: TypesAnalysisScandinavianNormalizationTokenFilterType;
 }
-export const TypesAnalysisScandinavianNormalizationTokenFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.String),
-    type: TypesAnalysisScandinavianNormalizationTokenFilterType,
-  }),
-).annotate({
-  identifier: "TypesAnalysisScandinavianNormalizationTokenFilter",
-}) as any as S.Schema<TypesAnalysisScandinavianNormalizationTokenFilter>;
+export const TypesAnalysisScandinavianNormalizationTokenFilter =
+  TypesAnalysisApostropheTokenFilter as any as S.Schema<TypesAnalysisScandinavianNormalizationTokenFilter>;
 
 export type TypesAnalysisSerbianNormalizationTokenFilterType = "serbian_normalization";
 export const TypesAnalysisSerbianNormalizationTokenFilterType = S.String;
@@ -23439,14 +23212,8 @@ export interface TypesAnalysisSerbianNormalizationTokenFilter {
   version?: string;
   type: TypesAnalysisSerbianNormalizationTokenFilterType;
 }
-export const TypesAnalysisSerbianNormalizationTokenFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.String),
-    type: TypesAnalysisSerbianNormalizationTokenFilterType,
-  }),
-).annotate({
-  identifier: "TypesAnalysisSerbianNormalizationTokenFilter",
-}) as any as S.Schema<TypesAnalysisSerbianNormalizationTokenFilter>;
+export const TypesAnalysisSerbianNormalizationTokenFilter =
+  TypesAnalysisApostropheTokenFilter as any as S.Schema<TypesAnalysisSerbianNormalizationTokenFilter>;
 
 export type TypesAnalysisShingleTokenFilterType = "shingle";
 export const TypesAnalysisShingleTokenFilterType = S.String;
@@ -23491,15 +23258,8 @@ export interface TypesAnalysisSnowballTokenFilter {
   /** Controls the language used by the stemmer. */
   language?: TypesAnalysisSnowballLanguage | (string & {});
 }
-export const TypesAnalysisSnowballTokenFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.String),
-    type: TypesAnalysisSnowballTokenFilterType,
-    language: S.optional(TypesAnalysisSnowballLanguage),
-  }),
-).annotate({
-  identifier: "TypesAnalysisSnowballTokenFilter",
-}) as any as S.Schema<TypesAnalysisSnowballTokenFilter>;
+export const TypesAnalysisSnowballTokenFilter =
+  TypesAnalysisLowercaseTokenFilter as any as S.Schema<TypesAnalysisSnowballTokenFilter>;
 
 export type TypesAnalysisSoraniNormalizationTokenFilterType = "sorani_normalization";
 export const TypesAnalysisSoraniNormalizationTokenFilterType = S.String;
@@ -23508,14 +23268,8 @@ export interface TypesAnalysisSoraniNormalizationTokenFilter {
   version?: string;
   type: TypesAnalysisSoraniNormalizationTokenFilterType;
 }
-export const TypesAnalysisSoraniNormalizationTokenFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.String),
-    type: TypesAnalysisSoraniNormalizationTokenFilterType,
-  }),
-).annotate({
-  identifier: "TypesAnalysisSoraniNormalizationTokenFilter",
-}) as any as S.Schema<TypesAnalysisSoraniNormalizationTokenFilter>;
+export const TypesAnalysisSoraniNormalizationTokenFilter =
+  TypesAnalysisApostropheTokenFilter as any as S.Schema<TypesAnalysisSoraniNormalizationTokenFilter>;
 
 export type TypesAnalysisStemmerOverrideTokenFilterType = "stemmer_override";
 export const TypesAnalysisStemmerOverrideTokenFilterType = S.String;
@@ -23712,14 +23466,8 @@ export interface TypesAnalysisTrimTokenFilter {
   version?: string;
   type: TypesAnalysisTrimTokenFilterType;
 }
-export const TypesAnalysisTrimTokenFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.String),
-    type: TypesAnalysisTrimTokenFilterType,
-  }),
-).annotate({
-  identifier: "TypesAnalysisTrimTokenFilter",
-}) as any as S.Schema<TypesAnalysisTrimTokenFilter>;
+export const TypesAnalysisTrimTokenFilter =
+  TypesAnalysisApostropheTokenFilter as any as S.Schema<TypesAnalysisTrimTokenFilter>;
 
 export type TypesAnalysisTruncateTokenFilterType = "truncate";
 export const TypesAnalysisTruncateTokenFilterType = S.String;
@@ -23766,14 +23514,8 @@ export interface TypesAnalysisUppercaseTokenFilter {
   version?: string;
   type: TypesAnalysisUppercaseTokenFilterType;
 }
-export const TypesAnalysisUppercaseTokenFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.String),
-    type: TypesAnalysisUppercaseTokenFilterType,
-  }),
-).annotate({
-  identifier: "TypesAnalysisUppercaseTokenFilter",
-}) as any as S.Schema<TypesAnalysisUppercaseTokenFilter>;
+export const TypesAnalysisUppercaseTokenFilter =
+  TypesAnalysisApostropheTokenFilter as any as S.Schema<TypesAnalysisUppercaseTokenFilter>;
 
 /** Array of tokens the filter won't split. */
 export type TypesAnalysisWordDelimiterGraphTokenFilterProtectedWordsList = Array<string>;
@@ -24139,9 +23881,8 @@ export const TypesAnalysisPhoneticLanguage = S.String;
 export type TypesAnalysisPhoneticTokenFilterLanguagesetCase1List = Array<
   TypesAnalysisPhoneticLanguage | (string & {})
 >;
-export const TypesAnalysisPhoneticTokenFilterLanguagesetCase1List = /*@__PURE__*/ S.Array(
-  TypesAnalysisPhoneticLanguage,
-) as any as S.Schema<TypesAnalysisPhoneticTokenFilterLanguagesetCase1List>;
+export const TypesAnalysisPhoneticTokenFilterLanguagesetCase1List =
+  TypesExpandWildcardsCase1List as any as S.Schema<TypesAnalysisPhoneticTokenFilterLanguagesetCase1List>;
 
 export type TypesAnalysisPhoneticTokenFilterLanguageset =
   | TypesAnalysisPhoneticLanguage
@@ -24314,13 +24055,8 @@ export const TypesAnalysisLowercaseNormalizerType = S.String;
 export interface TypesAnalysisLowercaseNormalizer {
   type: TypesAnalysisLowercaseNormalizerType;
 }
-export const TypesAnalysisLowercaseNormalizer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: TypesAnalysisLowercaseNormalizerType,
-  }),
-).annotate({
-  identifier: "TypesAnalysisLowercaseNormalizer",
-}) as any as S.Schema<TypesAnalysisLowercaseNormalizer>;
+export const TypesAnalysisLowercaseNormalizer =
+  TypesMappingCompositeSubField as any as S.Schema<TypesAnalysisLowercaseNormalizer>;
 
 export type TypesAnalysisCustomNormalizerType = "custom";
 export const TypesAnalysisCustomNormalizerType = S.String;
@@ -24418,9 +24154,8 @@ export const TypesAnalysisTokenChar = S.String;
 export type TypesAnalysisEdgeNGramTokenizerTokenCharsList = Array<
   TypesAnalysisTokenChar | (string & {})
 >;
-export const TypesAnalysisEdgeNGramTokenizerTokenCharsList = /*@__PURE__*/ S.Array(
-  TypesAnalysisTokenChar,
-) as any as S.Schema<TypesAnalysisEdgeNGramTokenizerTokenCharsList>;
+export const TypesAnalysisEdgeNGramTokenizerTokenCharsList =
+  TypesExpandWildcardsCase1List as any as S.Schema<TypesAnalysisEdgeNGramTokenizerTokenCharsList>;
 
 export interface TypesAnalysisEdgeNGramTokenizer {
   version?: string;
@@ -24468,14 +24203,8 @@ export interface TypesAnalysisLetterTokenizer {
   version?: string;
   type: TypesAnalysisLetterTokenizerType;
 }
-export const TypesAnalysisLetterTokenizer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.String),
-    type: TypesAnalysisLetterTokenizerType,
-  }),
-).annotate({
-  identifier: "TypesAnalysisLetterTokenizer",
-}) as any as S.Schema<TypesAnalysisLetterTokenizer>;
+export const TypesAnalysisLetterTokenizer =
+  TypesAnalysisApostropheTokenFilter as any as S.Schema<TypesAnalysisLetterTokenizer>;
 
 export type TypesAnalysisLowercaseTokenizerType = "lowercase";
 export const TypesAnalysisLowercaseTokenizerType = S.String;
@@ -24484,14 +24213,8 @@ export interface TypesAnalysisLowercaseTokenizer {
   version?: string;
   type: TypesAnalysisLowercaseTokenizerType;
 }
-export const TypesAnalysisLowercaseTokenizer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.String),
-    type: TypesAnalysisLowercaseTokenizerType,
-  }),
-).annotate({
-  identifier: "TypesAnalysisLowercaseTokenizer",
-}) as any as S.Schema<TypesAnalysisLowercaseTokenizer>;
+export const TypesAnalysisLowercaseTokenizer =
+  TypesAnalysisApostropheTokenFilter as any as S.Schema<TypesAnalysisLowercaseTokenizer>;
 
 export type TypesAnalysisNGramTokenizerType = "ngram";
 export const TypesAnalysisNGramTokenizerType = S.String;
@@ -24597,15 +24320,8 @@ export interface TypesAnalysisSimplePatternSplitTokenizer {
   type: TypesAnalysisSimplePatternSplitTokenizerType;
   pattern?: string;
 }
-export const TypesAnalysisSimplePatternSplitTokenizer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.String),
-    type: TypesAnalysisSimplePatternSplitTokenizerType,
-    pattern: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TypesAnalysisSimplePatternSplitTokenizer",
-}) as any as S.Schema<TypesAnalysisSimplePatternSplitTokenizer>;
+export const TypesAnalysisSimplePatternSplitTokenizer =
+  TypesAnalysisSimplePatternTokenizer as any as S.Schema<TypesAnalysisSimplePatternSplitTokenizer>;
 
 export type TypesAnalysisStandardTokenizerType = "standard";
 export const TypesAnalysisStandardTokenizerType = S.String;
@@ -24615,15 +24331,8 @@ export interface TypesAnalysisStandardTokenizer {
   type: TypesAnalysisStandardTokenizerType;
   max_token_length?: number;
 }
-export const TypesAnalysisStandardTokenizer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.String),
-    type: TypesAnalysisStandardTokenizerType,
-    max_token_length: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "TypesAnalysisStandardTokenizer",
-}) as any as S.Schema<TypesAnalysisStandardTokenizer>;
+export const TypesAnalysisStandardTokenizer =
+  TypesAnalysisClassicTokenizer as any as S.Schema<TypesAnalysisStandardTokenizer>;
 
 export type TypesAnalysisThaiTokenizerType = "thai";
 export const TypesAnalysisThaiTokenizerType = S.String;
@@ -24632,14 +24341,8 @@ export interface TypesAnalysisThaiTokenizer {
   version?: string;
   type: TypesAnalysisThaiTokenizerType;
 }
-export const TypesAnalysisThaiTokenizer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.String),
-    type: TypesAnalysisThaiTokenizerType,
-  }),
-).annotate({
-  identifier: "TypesAnalysisThaiTokenizer",
-}) as any as S.Schema<TypesAnalysisThaiTokenizer>;
+export const TypesAnalysisThaiTokenizer =
+  TypesAnalysisApostropheTokenFilter as any as S.Schema<TypesAnalysisThaiTokenizer>;
 
 export type TypesAnalysisUaxEmailUrlTokenizerType = "uax_url_email";
 export const TypesAnalysisUaxEmailUrlTokenizerType = S.String;
@@ -24649,15 +24352,8 @@ export interface TypesAnalysisUaxEmailUrlTokenizer {
   type: TypesAnalysisUaxEmailUrlTokenizerType;
   max_token_length?: number;
 }
-export const TypesAnalysisUaxEmailUrlTokenizer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.String),
-    type: TypesAnalysisUaxEmailUrlTokenizerType,
-    max_token_length: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "TypesAnalysisUaxEmailUrlTokenizer",
-}) as any as S.Schema<TypesAnalysisUaxEmailUrlTokenizer>;
+export const TypesAnalysisUaxEmailUrlTokenizer =
+  TypesAnalysisClassicTokenizer as any as S.Schema<TypesAnalysisUaxEmailUrlTokenizer>;
 
 export type TypesAnalysisWhitespaceTokenizerType = "whitespace";
 export const TypesAnalysisWhitespaceTokenizerType = S.String;
@@ -24667,15 +24363,8 @@ export interface TypesAnalysisWhitespaceTokenizer {
   type: TypesAnalysisWhitespaceTokenizerType;
   max_token_length?: number;
 }
-export const TypesAnalysisWhitespaceTokenizer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.String),
-    type: TypesAnalysisWhitespaceTokenizerType,
-    max_token_length: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "TypesAnalysisWhitespaceTokenizer",
-}) as any as S.Schema<TypesAnalysisWhitespaceTokenizer>;
+export const TypesAnalysisWhitespaceTokenizer =
+  TypesAnalysisClassicTokenizer as any as S.Schema<TypesAnalysisWhitespaceTokenizer>;
 
 export type TypesAnalysisIcuTokenizerType = "icu_tokenizer";
 export const TypesAnalysisIcuTokenizerType = S.String;
@@ -24869,13 +24558,8 @@ export const IndicesTypesSettingsSimilarityBooleanType = S.String;
 export interface IndicesTypesSettingsSimilarityBoolean {
   type: IndicesTypesSettingsSimilarityBooleanType;
 }
-export const IndicesTypesSettingsSimilarityBoolean = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: IndicesTypesSettingsSimilarityBooleanType,
-  }),
-).annotate({
-  identifier: "IndicesTypesSettingsSimilarityBoolean",
-}) as any as S.Schema<IndicesTypesSettingsSimilarityBoolean>;
+export const IndicesTypesSettingsSimilarityBoolean =
+  TypesMappingCompositeSubField as any as S.Schema<IndicesTypesSettingsSimilarityBoolean>;
 
 export type IndicesTypesSettingsSimilarityDfiType = "DFI";
 export const IndicesTypesSettingsSimilarityDfiType = S.String;
@@ -32846,14 +32530,8 @@ export interface ConnectorTypesGreaterThanValidation {
   type: ConnectorTypesGreaterThanValidationType;
   constraint: number;
 }
-export const ConnectorTypesGreaterThanValidation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ConnectorTypesGreaterThanValidationType,
-    constraint: S.Number,
-  }),
-).annotate({
-  identifier: "ConnectorTypesGreaterThanValidation",
-}) as any as S.Schema<ConnectorTypesGreaterThanValidation>;
+export const ConnectorTypesGreaterThanValidation =
+  ConnectorTypesLessThanValidation as any as S.Schema<ConnectorTypesGreaterThanValidation>;
 
 export type ConnectorTypesListTypeValidationType = "list_type";
 export const ConnectorTypesListTypeValidationType = S.String;
@@ -32899,14 +32577,8 @@ export interface ConnectorTypesRegexValidation {
   type: ConnectorTypesRegexValidationType;
   constraint: string;
 }
-export const ConnectorTypesRegexValidation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ConnectorTypesRegexValidationType,
-    constraint: S.String,
-  }),
-).annotate({
-  identifier: "ConnectorTypesRegexValidation",
-}) as any as S.Schema<ConnectorTypesRegexValidation>;
+export const ConnectorTypesRegexValidation =
+  ConnectorTypesListTypeValidation as any as S.Schema<ConnectorTypesRegexValidation>;
 
 export type ConnectorTypesValidation =
   | ConnectorTypesLessThanValidation
@@ -38051,9 +37723,8 @@ export type IndicesGetFeature = "aliases" | "mappings" | "settings";
 export const IndicesGetFeature = S.String;
 
 export type IndicesGetFeaturesCase1List = Array<IndicesGetFeature | (string & {})>;
-export const IndicesGetFeaturesCase1List = /*@__PURE__*/ S.Array(
-  IndicesGetFeature,
-) as any as S.Schema<IndicesGetFeaturesCase1List>;
+export const IndicesGetFeaturesCase1List =
+  TypesExpandWildcardsCase1List as any as S.Schema<IndicesGetFeaturesCase1List>;
 
 export type IndicesGetFeatures = IndicesGetFeature | IndicesGetFeaturesCase1List;
 export const IndicesGetFeatures = S.Unknown as any as S.Schema<IndicesGetFeatures>;
@@ -38719,9 +38390,8 @@ export type SnapshotTypesSnapshotState =
 export const SnapshotTypesSnapshotState = S.String;
 
 export type GetSnapshotRequestStateCase1List = Array<SnapshotTypesSnapshotState | (string & {})>;
-export const GetSnapshotRequestStateCase1List = /*@__PURE__*/ S.Array(
-  SnapshotTypesSnapshotState,
-) as any as S.Schema<GetSnapshotRequestStateCase1List>;
+export const GetSnapshotRequestStateCase1List =
+  TypesExpandWildcardsCase1List as any as S.Schema<GetSnapshotRequestStateCase1List>;
 
 export type GetSnapshotRequestState = SnapshotTypesSnapshotState | GetSnapshotRequestStateCase1List;
 export const GetSnapshotRequestState = S.Unknown as any as S.Schema<GetSnapshotRequestState>;
@@ -39901,9 +39571,8 @@ export type GlobalHealthReportImpactArea = "search" | "ingest" | "backup" | "dep
 export const GlobalHealthReportImpactArea = S.String;
 
 export type GlobalHealthReportImpactImpactAreasList = Array<GlobalHealthReportImpactArea>;
-export const GlobalHealthReportImpactImpactAreasList = /*@__PURE__*/ S.Array(
-  GlobalHealthReportImpactArea,
-) as any as S.Schema<GlobalHealthReportImpactImpactAreasList>;
+export const GlobalHealthReportImpactImpactAreasList =
+  TypesExpandWildcardsCase1List as any as S.Schema<GlobalHealthReportImpactImpactAreasList>;
 
 export interface GlobalHealthReportImpact {
   description: string;
@@ -45690,9 +45359,8 @@ export const IndicesResolveCluster1Response =
   IndicesResolveClusterResponse as any as S.Schema<IndicesResolveCluster1Response>;
 
 export type IndicesResolveIndexRequestModeCase1List = Array<IndicesTypesIndexMode | (string & {})>;
-export const IndicesResolveIndexRequestModeCase1List = /*@__PURE__*/ S.Array(
-  IndicesTypesIndexMode,
-) as any as S.Schema<IndicesResolveIndexRequestModeCase1List>;
+export const IndicesResolveIndexRequestModeCase1List =
+  TypesExpandWildcardsCase1List as any as S.Schema<IndicesResolveIndexRequestModeCase1List>;
 
 export type IndicesResolveIndexRequestMode =
   | IndicesTypesIndexMode
@@ -46232,9 +45900,8 @@ export const IndicesShardStoresShardStoreStatus = S.String;
 export type IndicesShardStoresRequestStatusCase1List = Array<
   IndicesShardStoresShardStoreStatus | (string & {})
 >;
-export const IndicesShardStoresRequestStatusCase1List = /*@__PURE__*/ S.Array(
-  IndicesShardStoresShardStoreStatus,
-) as any as S.Schema<IndicesShardStoresRequestStatusCase1List>;
+export const IndicesShardStoresRequestStatusCase1List =
+  TypesExpandWildcardsCase1List as any as S.Schema<IndicesShardStoresRequestStatusCase1List>;
 
 export type IndicesShardStoresRequestStatus =
   | IndicesShardStoresShardStoreStatus
@@ -49615,16 +49282,8 @@ export interface InferencePutAi21Response {
   /** The task type */
   task_type: InferenceTypesTaskTypeAi21;
 }
-export const InferencePutAi21Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    chunking_settings: S.optional(InferenceTypesInferenceChunkingSettings),
-    service: S.String,
-    service_settings: S.Unknown,
-    task_settings: S.optional(S.Unknown),
-    inference_id: S.String,
-    task_type: InferenceTypesTaskTypeAi21,
-  }),
-).annotate({ identifier: "InferencePutAi21Response" }) as any as S.Schema<InferencePutAi21Response>;
+export const InferencePutAi21Response =
+  InferencePut1Response as any as S.Schema<InferencePutAi21Response>;
 
 export type InferencePutAlibabacloudRequestTaskType =
   | "completion"
@@ -49732,18 +49391,8 @@ export interface InferencePutAlibabacloudResponse {
   /** The task type */
   task_type: InferenceTypesTaskTypeAlibabaCloudAI;
 }
-export const InferencePutAlibabacloudResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    chunking_settings: S.optional(InferenceTypesInferenceChunkingSettings),
-    service: S.String,
-    service_settings: S.Unknown,
-    task_settings: S.optional(S.Unknown),
-    inference_id: S.String,
-    task_type: InferenceTypesTaskTypeAlibabaCloudAI,
-  }),
-).annotate({
-  identifier: "InferencePutAlibabacloudResponse",
-}) as any as S.Schema<InferencePutAlibabacloudResponse>;
+export const InferencePutAlibabacloudResponse =
+  InferenceTypesInferenceEndpointInfo as any as S.Schema<InferencePutAlibabacloudResponse>;
 
 export type InferencePutAmazonbedrockRequestTaskType =
   | "chat_completion"
@@ -49858,18 +49507,8 @@ export interface InferencePutAmazonbedrockResponse {
   /** The task type */
   task_type: InferenceTypesTaskTypeAmazonBedrock;
 }
-export const InferencePutAmazonbedrockResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    chunking_settings: S.optional(InferenceTypesInferenceChunkingSettings),
-    service: S.String,
-    service_settings: S.Unknown,
-    task_settings: S.optional(S.Unknown),
-    inference_id: S.String,
-    task_type: InferenceTypesTaskTypeAmazonBedrock,
-  }),
-).annotate({
-  identifier: "InferencePutAmazonbedrockResponse",
-}) as any as S.Schema<InferencePutAmazonbedrockResponse>;
+export const InferencePutAmazonbedrockResponse =
+  InferenceTypesInferenceEndpointInfo as any as S.Schema<InferencePutAmazonbedrockResponse>;
 
 export type InferencePutAmazonsagemakerRequestTaskType =
   | "text_embedding"
@@ -50018,18 +49657,8 @@ export interface InferencePutAmazonsagemakerResponse {
   /** The task type */
   task_type: InferenceTypesTaskTypeAmazonSageMaker;
 }
-export const InferencePutAmazonsagemakerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    chunking_settings: S.optional(InferenceTypesInferenceChunkingSettings),
-    service: S.String,
-    service_settings: S.Unknown,
-    task_settings: S.optional(S.Unknown),
-    inference_id: S.String,
-    task_type: InferenceTypesTaskTypeAmazonSageMaker,
-  }),
-).annotate({
-  identifier: "InferencePutAmazonsagemakerResponse",
-}) as any as S.Schema<InferencePutAmazonsagemakerResponse>;
+export const InferencePutAmazonsagemakerResponse =
+  InferenceTypesInferenceEndpointInfo as any as S.Schema<InferencePutAmazonsagemakerResponse>;
 
 export type InferencePutAnthropicRequestTaskType = "completion" | "chat_completion";
 export const InferencePutAnthropicRequestTaskType = S.String;
@@ -50122,18 +49751,8 @@ export interface InferencePutAnthropicResponse {
   /** The task type */
   task_type: InferenceTypesTaskTypeAnthropic;
 }
-export const InferencePutAnthropicResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    chunking_settings: S.optional(InferenceTypesInferenceChunkingSettings),
-    service: S.String,
-    service_settings: S.Unknown,
-    task_settings: S.optional(S.Unknown),
-    inference_id: S.String,
-    task_type: InferenceTypesTaskTypeAnthropic,
-  }),
-).annotate({
-  identifier: "InferencePutAnthropicResponse",
-}) as any as S.Schema<InferencePutAnthropicResponse>;
+export const InferencePutAnthropicResponse =
+  InferenceTypesInferenceEndpointInfo as any as S.Schema<InferencePutAnthropicResponse>;
 
 export type InferencePutAzureaistudioRequestTaskType = "completion" | "rerank" | "text_embedding";
 export const InferencePutAzureaistudioRequestTaskType = S.String;
@@ -50248,18 +49867,8 @@ export interface InferencePutAzureaistudioResponse {
   /** The task type */
   task_type: InferenceTypesTaskTypeAzureAIStudio;
 }
-export const InferencePutAzureaistudioResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    chunking_settings: S.optional(InferenceTypesInferenceChunkingSettings),
-    service: S.String,
-    service_settings: S.Unknown,
-    task_settings: S.optional(S.Unknown),
-    inference_id: S.String,
-    task_type: InferenceTypesTaskTypeAzureAIStudio,
-  }),
-).annotate({
-  identifier: "InferencePutAzureaistudioResponse",
-}) as any as S.Schema<InferencePutAzureaistudioResponse>;
+export const InferencePutAzureaistudioResponse =
+  InferenceTypesInferenceEndpointInfo as any as S.Schema<InferencePutAzureaistudioResponse>;
 
 export type InferencePutAzureopenaiRequestTaskType =
   | "completion"
@@ -50383,18 +49992,8 @@ export interface InferencePutAzureopenaiResponse {
   /** The task type */
   task_type: InferenceTypesTaskTypeAzureOpenAI;
 }
-export const InferencePutAzureopenaiResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    chunking_settings: S.optional(InferenceTypesInferenceChunkingSettings),
-    service: S.String,
-    service_settings: S.Unknown,
-    task_settings: S.optional(S.Unknown),
-    inference_id: S.String,
-    task_type: InferenceTypesTaskTypeAzureOpenAI,
-  }),
-).annotate({
-  identifier: "InferencePutAzureopenaiResponse",
-}) as any as S.Schema<InferencePutAzureopenaiResponse>;
+export const InferencePutAzureopenaiResponse =
+  InferenceTypesInferenceEndpointInfo as any as S.Schema<InferencePutAzureopenaiResponse>;
 
 export type InferencePutCohereRequestTaskType = "completion" | "rerank" | "text_embedding";
 export const InferencePutCohereRequestTaskType = S.String;
@@ -50508,18 +50107,8 @@ export interface InferencePutCohereResponse {
   /** The task type */
   task_type: InferenceTypesTaskTypeCohere;
 }
-export const InferencePutCohereResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    chunking_settings: S.optional(InferenceTypesInferenceChunkingSettings),
-    service: S.String,
-    service_settings: S.Unknown,
-    task_settings: S.optional(S.Unknown),
-    inference_id: S.String,
-    task_type: InferenceTypesTaskTypeCohere,
-  }),
-).annotate({
-  identifier: "InferencePutCohereResponse",
-}) as any as S.Schema<InferencePutCohereResponse>;
+export const InferencePutCohereResponse =
+  InferenceTypesInferenceEndpointInfo as any as S.Schema<InferencePutCohereResponse>;
 
 export type InferencePutContextualaiRequestTaskType = "rerank";
 export const InferencePutContextualaiRequestTaskType = S.String;
@@ -50603,18 +50192,8 @@ export interface InferencePutContextualaiResponse {
   /** The task type */
   task_type: InferenceTypesTaskTypeContextualAI;
 }
-export const InferencePutContextualaiResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    chunking_settings: S.optional(InferenceTypesInferenceChunkingSettings),
-    service: S.String,
-    service_settings: S.Unknown,
-    task_settings: S.optional(S.Unknown),
-    inference_id: S.String,
-    task_type: InferenceTypesTaskTypeContextualAI,
-  }),
-).annotate({
-  identifier: "InferencePutContextualaiResponse",
-}) as any as S.Schema<InferencePutContextualaiResponse>;
+export const InferencePutContextualaiResponse =
+  InferenceTypesInferenceEndpointInfo as any as S.Schema<InferencePutContextualaiResponse>;
 
 export type InferencePutCustomRequestTaskType =
   | "text_embedding"
@@ -50791,18 +50370,8 @@ export interface InferencePutCustomResponse {
   /** The task type */
   task_type: InferenceTypesTaskTypeCustom;
 }
-export const InferencePutCustomResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    chunking_settings: S.optional(InferenceTypesInferenceChunkingSettings),
-    service: S.String,
-    service_settings: S.Unknown,
-    task_settings: S.optional(S.Unknown),
-    inference_id: S.String,
-    task_type: InferenceTypesTaskTypeCustom,
-  }),
-).annotate({
-  identifier: "InferencePutCustomResponse",
-}) as any as S.Schema<InferencePutCustomResponse>;
+export const InferencePutCustomResponse =
+  InferenceTypesInferenceEndpointInfo as any as S.Schema<InferencePutCustomResponse>;
 
 export type InferencePutDeepseekRequestTaskType = "completion" | "chat_completion";
 export const InferencePutDeepseekRequestTaskType = S.String;
@@ -50871,18 +50440,8 @@ export interface InferencePutDeepseekResponse {
   /** The task type */
   task_type: InferenceTypesTaskTypeDeepSeek;
 }
-export const InferencePutDeepseekResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    chunking_settings: S.optional(InferenceTypesInferenceChunkingSettings),
-    service: S.String,
-    service_settings: S.Unknown,
-    task_settings: S.optional(S.Unknown),
-    inference_id: S.String,
-    task_type: InferenceTypesTaskTypeDeepSeek,
-  }),
-).annotate({
-  identifier: "InferencePutDeepseekResponse",
-}) as any as S.Schema<InferencePutDeepseekResponse>;
+export const InferencePutDeepseekResponse =
+  InferenceTypesInferenceEndpointInfo as any as S.Schema<InferencePutDeepseekResponse>;
 
 export type InferencePutElasticsearchRequestTaskType =
   | "rerank"
@@ -51006,18 +50565,8 @@ export interface InferencePutElasticsearchResponse {
   /** The task type */
   task_type: InferenceTypesTaskTypeElasticsearch;
 }
-export const InferencePutElasticsearchResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    chunking_settings: S.optional(InferenceTypesInferenceChunkingSettings),
-    service: S.String,
-    service_settings: S.Unknown,
-    task_settings: S.optional(S.Unknown),
-    inference_id: S.String,
-    task_type: InferenceTypesTaskTypeElasticsearch,
-  }),
-).annotate({
-  identifier: "InferencePutElasticsearchResponse",
-}) as any as S.Schema<InferencePutElasticsearchResponse>;
+export const InferencePutElasticsearchResponse =
+  InferenceTypesInferenceEndpointInfo as any as S.Schema<InferencePutElasticsearchResponse>;
 
 export type InferencePutFireworksaiRequestTaskType =
   | "chat_completion"
@@ -51121,18 +50670,8 @@ export interface InferencePutFireworksaiResponse {
   /** The task type */
   task_type: InferenceTypesTaskTypeFireworksAI;
 }
-export const InferencePutFireworksaiResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    chunking_settings: S.optional(InferenceTypesInferenceChunkingSettings),
-    service: S.String,
-    service_settings: S.Unknown,
-    task_settings: S.optional(S.Unknown),
-    inference_id: S.String,
-    task_type: InferenceTypesTaskTypeFireworksAI,
-  }),
-).annotate({
-  identifier: "InferencePutFireworksaiResponse",
-}) as any as S.Schema<InferencePutFireworksaiResponse>;
+export const InferencePutFireworksaiResponse =
+  InferenceTypesInferenceEndpointInfo as any as S.Schema<InferencePutFireworksaiResponse>;
 
 export type InferencePutGoogleaistudioRequestTaskType = "completion" | "text_embedding";
 export const InferencePutGoogleaistudioRequestTaskType = S.String;
@@ -51201,18 +50740,8 @@ export interface InferencePutGoogleaistudioResponse {
   /** The task type */
   task_type: InferenceTypesTaskTypeGoogleAIStudio;
 }
-export const InferencePutGoogleaistudioResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    chunking_settings: S.optional(InferenceTypesInferenceChunkingSettings),
-    service: S.String,
-    service_settings: S.Unknown,
-    task_settings: S.optional(S.Unknown),
-    inference_id: S.String,
-    task_type: InferenceTypesTaskTypeGoogleAIStudio,
-  }),
-).annotate({
-  identifier: "InferencePutGoogleaistudioResponse",
-}) as any as S.Schema<InferencePutGoogleaistudioResponse>;
+export const InferencePutGoogleaistudioResponse =
+  InferenceTypesInferenceEndpointInfo as any as S.Schema<InferencePutGoogleaistudioResponse>;
 
 export type InferencePutGooglevertexaiRequestTaskType =
   | "rerank"
@@ -51362,18 +50891,8 @@ export interface InferencePutGooglevertexaiResponse {
   /** The task type */
   task_type: InferenceTypesTaskTypeGoogleVertexAI;
 }
-export const InferencePutGooglevertexaiResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    chunking_settings: S.optional(InferenceTypesInferenceChunkingSettings),
-    service: S.String,
-    service_settings: S.Unknown,
-    task_settings: S.optional(S.Unknown),
-    inference_id: S.String,
-    task_type: InferenceTypesTaskTypeGoogleVertexAI,
-  }),
-).annotate({
-  identifier: "InferencePutGooglevertexaiResponse",
-}) as any as S.Schema<InferencePutGooglevertexaiResponse>;
+export const InferencePutGooglevertexaiResponse =
+  InferenceTypesInferenceEndpointInfo as any as S.Schema<InferencePutGooglevertexaiResponse>;
 
 export type InferencePutGroqRequestTaskType = "chat_completion";
 export const InferencePutGroqRequestTaskType = S.String;
@@ -51431,16 +50950,8 @@ export interface InferencePutGroqResponse {
   /** The task type */
   task_type: InferenceTypesTaskTypeGroq;
 }
-export const InferencePutGroqResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    chunking_settings: S.optional(InferenceTypesInferenceChunkingSettings),
-    service: S.String,
-    service_settings: S.Unknown,
-    task_settings: S.optional(S.Unknown),
-    inference_id: S.String,
-    task_type: InferenceTypesTaskTypeGroq,
-  }),
-).annotate({ identifier: "InferencePutGroqResponse" }) as any as S.Schema<InferencePutGroqResponse>;
+export const InferencePutGroqResponse =
+  InferencePut1Response as any as S.Schema<InferencePutGroqResponse>;
 
 export type InferencePutHuggingFaceRequestTaskType =
   | "chat_completion"
@@ -51541,18 +51052,8 @@ export interface InferencePutHuggingFaceResponse {
   /** The task type */
   task_type: InferenceTypesTaskTypeHuggingFace;
 }
-export const InferencePutHuggingFaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    chunking_settings: S.optional(InferenceTypesInferenceChunkingSettings),
-    service: S.String,
-    service_settings: S.Unknown,
-    task_settings: S.optional(S.Unknown),
-    inference_id: S.String,
-    task_type: InferenceTypesTaskTypeHuggingFace,
-  }),
-).annotate({
-  identifier: "InferencePutHuggingFaceResponse",
-}) as any as S.Schema<InferencePutHuggingFaceResponse>;
+export const InferencePutHuggingFaceResponse =
+  InferenceTypesInferenceEndpointInfo as any as S.Schema<InferencePutHuggingFaceResponse>;
 
 export type InferencePutJinaaiRequestTaskType = "embedding" | "rerank" | "text_embedding";
 export const InferencePutJinaaiRequestTaskType = S.String;
@@ -51673,18 +51174,8 @@ export interface InferencePutJinaaiResponse {
   /** The task type */
   task_type: InferenceTypesTaskTypeJinaAi;
 }
-export const InferencePutJinaaiResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    chunking_settings: S.optional(InferenceTypesInferenceChunkingSettings),
-    service: S.String,
-    service_settings: S.Unknown,
-    task_settings: S.optional(S.Unknown),
-    inference_id: S.String,
-    task_type: InferenceTypesTaskTypeJinaAi,
-  }),
-).annotate({
-  identifier: "InferencePutJinaaiResponse",
-}) as any as S.Schema<InferencePutJinaaiResponse>;
+export const InferencePutJinaaiResponse =
+  InferenceTypesInferenceEndpointInfo as any as S.Schema<InferencePutJinaaiResponse>;
 
 export type InferencePutLlamaRequestTaskType = "text_embedding" | "completion" | "chat_completion";
 export const InferencePutLlamaRequestTaskType = S.String;
@@ -51763,18 +51254,8 @@ export interface InferencePutLlamaResponse {
   /** The task type */
   task_type: InferenceTypesTaskTypeLlama;
 }
-export const InferencePutLlamaResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    chunking_settings: S.optional(InferenceTypesInferenceChunkingSettings),
-    service: S.String,
-    service_settings: S.Unknown,
-    task_settings: S.optional(S.Unknown),
-    inference_id: S.String,
-    task_type: InferenceTypesTaskTypeLlama,
-  }),
-).annotate({
-  identifier: "InferencePutLlamaResponse",
-}) as any as S.Schema<InferencePutLlamaResponse>;
+export const InferencePutLlamaResponse =
+  InferenceTypesInferenceEndpointInfo as any as S.Schema<InferencePutLlamaResponse>;
 
 export type InferencePutMistralRequestTaskType =
   | "text_embedding"
@@ -51852,18 +51333,8 @@ export interface InferencePutMistralResponse {
   /** The task type */
   task_type: InferenceTypesTaskTypeMistral;
 }
-export const InferencePutMistralResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    chunking_settings: S.optional(InferenceTypesInferenceChunkingSettings),
-    service: S.String,
-    service_settings: S.Unknown,
-    task_settings: S.optional(S.Unknown),
-    inference_id: S.String,
-    task_type: InferenceTypesTaskTypeMistral,
-  }),
-).annotate({
-  identifier: "InferencePutMistralResponse",
-}) as any as S.Schema<InferencePutMistralResponse>;
+export const InferencePutMistralResponse =
+  InferenceTypesInferenceEndpointInfo as any as S.Schema<InferencePutMistralResponse>;
 
 export type InferencePutNvidiaRequestTaskType =
   | "chat_completion"
@@ -51976,18 +51447,8 @@ export interface InferencePutNvidiaResponse {
   /** The task type */
   task_type: InferenceTypesTaskTypeNvidia;
 }
-export const InferencePutNvidiaResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    chunking_settings: S.optional(InferenceTypesInferenceChunkingSettings),
-    service: S.String,
-    service_settings: S.Unknown,
-    task_settings: S.optional(S.Unknown),
-    inference_id: S.String,
-    task_type: InferenceTypesTaskTypeNvidia,
-  }),
-).annotate({
-  identifier: "InferencePutNvidiaResponse",
-}) as any as S.Schema<InferencePutNvidiaResponse>;
+export const InferencePutNvidiaResponse =
+  InferenceTypesInferenceEndpointInfo as any as S.Schema<InferencePutNvidiaResponse>;
 
 export type InferencePutOpenaiRequestTaskType =
   | "chat_completion"
@@ -52116,18 +51577,8 @@ export interface InferencePutOpenaiResponse {
   /** The task type */
   task_type: InferenceTypesTaskTypeOpenAI;
 }
-export const InferencePutOpenaiResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    chunking_settings: S.optional(InferenceTypesInferenceChunkingSettings),
-    service: S.String,
-    service_settings: S.Unknown,
-    task_settings: S.optional(S.Unknown),
-    inference_id: S.String,
-    task_type: InferenceTypesTaskTypeOpenAI,
-  }),
-).annotate({
-  identifier: "InferencePutOpenaiResponse",
-}) as any as S.Schema<InferencePutOpenaiResponse>;
+export const InferencePutOpenaiResponse =
+  InferenceTypesInferenceEndpointInfo as any as S.Schema<InferencePutOpenaiResponse>;
 
 export type InferencePutOpenshiftAiRequestTaskType =
   | "text_embedding"
@@ -52231,18 +51682,8 @@ export interface InferencePutOpenshiftAiResponse {
   /** The task type */
   task_type: InferenceTypesTaskTypeOpenShiftAi;
 }
-export const InferencePutOpenshiftAiResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    chunking_settings: S.optional(InferenceTypesInferenceChunkingSettings),
-    service: S.String,
-    service_settings: S.Unknown,
-    task_settings: S.optional(S.Unknown),
-    inference_id: S.String,
-    task_type: InferenceTypesTaskTypeOpenShiftAi,
-  }),
-).annotate({
-  identifier: "InferencePutOpenshiftAiResponse",
-}) as any as S.Schema<InferencePutOpenshiftAiResponse>;
+export const InferencePutOpenshiftAiResponse =
+  InferenceTypesInferenceEndpointInfo as any as S.Schema<InferencePutOpenshiftAiResponse>;
 
 export interface InferencePutRegionPolicyRequest {
   /** If `true`, the region policy is applied even if it would deny access to inference endpoints that are currently in use by ingest pipeline or indices. */
@@ -52356,18 +51797,8 @@ export interface InferencePutVoyageaiResponse {
   /** The task type */
   task_type: InferenceTypesTaskTypeVoyageAI;
 }
-export const InferencePutVoyageaiResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    chunking_settings: S.optional(InferenceTypesInferenceChunkingSettings),
-    service: S.String,
-    service_settings: S.Unknown,
-    task_settings: S.optional(S.Unknown),
-    inference_id: S.String,
-    task_type: InferenceTypesTaskTypeVoyageAI,
-  }),
-).annotate({
-  identifier: "InferencePutVoyageaiResponse",
-}) as any as S.Schema<InferencePutVoyageaiResponse>;
+export const InferencePutVoyageaiResponse =
+  InferenceTypesInferenceEndpointInfo as any as S.Schema<InferencePutVoyageaiResponse>;
 
 export type InferencePutWatsonxRequestTaskType =
   | "text_embedding"
@@ -52452,18 +51883,8 @@ export interface InferencePutWatsonxResponse {
   /** The task type */
   task_type: InferenceTypesTaskTypeWatsonx;
 }
-export const InferencePutWatsonxResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    chunking_settings: S.optional(InferenceTypesInferenceChunkingSettings),
-    service: S.String,
-    service_settings: S.Unknown,
-    task_settings: S.optional(S.Unknown),
-    inference_id: S.String,
-    task_type: InferenceTypesTaskTypeWatsonx,
-  }),
-).annotate({
-  identifier: "InferencePutWatsonxResponse",
-}) as any as S.Schema<InferencePutWatsonxResponse>;
+export const InferencePutWatsonxResponse =
+  InferenceTypesInferenceEndpointInfo as any as S.Schema<InferencePutWatsonxResponse>;
 
 export type InferenceRerankRerankInputType = "text" | "image";
 export const InferenceRerankRerankInputType = S.String;
@@ -52480,15 +51901,8 @@ export interface InferenceRerankRerankInputObject {
   /** The value of the input. For the `base64` format, this must be a base64-encoded data URI, that is, "data:content/type;base64,...". For the `url` format, this must be a URL that points to the content, that is, "https://example.com/image.jpg". */
   value: string;
 }
-export const InferenceRerankRerankInputObject = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: InferenceRerankRerankInputType,
-    format: S.optional(InferenceRerankRerankInputFormat),
-    value: S.String,
-  }),
-).annotate({
-  identifier: "InferenceRerankRerankInputObject",
-}) as any as S.Schema<InferenceRerankRerankInputObject>;
+export const InferenceRerankRerankInputObject =
+  InferenceTypesEmbeddingContentObjectItem as any as S.Schema<InferenceRerankRerankInputObject>;
 
 /** Query input for the `rerank` task. Either a string, or an object. The object form additionally allows specifying non-text inputs, such as images. > info > Only the `elastic` service currently supports non-text queries for the `rerank` task. */
 export type InferenceRerankRerankQuery = string | InferenceRerankRerankInputObject;
@@ -52504,9 +51918,8 @@ export const InferenceRerankRerankStringInput =
   S.Unknown as any as S.Schema<InferenceRerankRerankStringInput>;
 
 export type InferenceRerankRerankObjectInputCase1List = Array<InferenceRerankRerankInputObject>;
-export const InferenceRerankRerankObjectInputCase1List = /*@__PURE__*/ S.Array(
-  InferenceRerankRerankInputObject,
-) as any as S.Schema<InferenceRerankRerankObjectInputCase1List>;
+export const InferenceRerankRerankObjectInputCase1List =
+  InferenceTypesEmbeddingContentObjectGroupCase1List as any as S.Schema<InferenceRerankRerankObjectInputCase1List>;
 
 /** Allows specifying documents to rank as objects, which additionally supports non-text inputs, such as images. */
 export type InferenceRerankRerankObjectInput =
@@ -55265,9 +54678,8 @@ export const IngestTypesUserAgentProperty = S.String;
 export type IngestTypesUserAgentProcessorPropertiesList = Array<
   IngestTypesUserAgentProperty | (string & {})
 >;
-export const IngestTypesUserAgentProcessorPropertiesList = /*@__PURE__*/ S.Array(
-  IngestTypesUserAgentProperty,
-) as any as S.Schema<IngestTypesUserAgentProcessorPropertiesList>;
+export const IngestTypesUserAgentProcessorPropertiesList =
+  TypesExpandWildcardsCase1List as any as S.Schema<IngestTypesUserAgentProcessorPropertiesList>;
 
 export interface IngestTypesUserAgentProcessor {
   /** Description of the processor. Useful for describing the purpose of the processor or its configuration. */
@@ -56389,9 +55801,8 @@ export const ListConnectorResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListConnectorSyncJobRequestJobTypeCase1List = Array<
   ConnectorTypesSyncJobType | (string & {})
 >;
-export const ListConnectorSyncJobRequestJobTypeCase1List = /*@__PURE__*/ S.Array(
-  ConnectorTypesSyncJobType,
-) as any as S.Schema<ListConnectorSyncJobRequestJobTypeCase1List>;
+export const ListConnectorSyncJobRequestJobTypeCase1List =
+  TypesExpandWildcardsCase1List as any as S.Schema<ListConnectorSyncJobRequestJobTypeCase1List>;
 
 export type ListConnectorSyncJobRequestJobType =
   | ConnectorTypesSyncJobType
@@ -57767,9 +57178,8 @@ export const MlTypesRuleAction = S.String;
 
 /** The set of actions to be triggered when the rule applies. If more than one action is specified the effects of all actions are combined. */
 export type MlTypesDetectionRuleActionsList = Array<MlTypesRuleAction | (string & {})>;
-export const MlTypesDetectionRuleActionsList = /*@__PURE__*/ S.Array(
-  MlTypesRuleAction,
-) as any as S.Schema<MlTypesDetectionRuleActionsList>;
+export const MlTypesDetectionRuleActionsList =
+  TypesExpandWildcardsCase1List as any as S.Schema<MlTypesDetectionRuleActionsList>;
 
 export type MlTypesAppliesTo = "actual" | "typical" | "diff_from_typical" | "time";
 export const MlTypesAppliesTo = S.String;
@@ -75644,9 +75054,8 @@ export const SecurityTypesRemoteClusterPrivilege = S.String;
 export type SecurityTypesRemoteClusterPrivilegesPrivilegesList = Array<
   SecurityTypesRemoteClusterPrivilege | (string & {})
 >;
-export const SecurityTypesRemoteClusterPrivilegesPrivilegesList = /*@__PURE__*/ S.Array(
-  SecurityTypesRemoteClusterPrivilege,
-) as any as S.Schema<SecurityTypesRemoteClusterPrivilegesPrivilegesList>;
+export const SecurityTypesRemoteClusterPrivilegesPrivilegesList =
+  TypesExpandWildcardsCase1List as any as S.Schema<SecurityTypesRemoteClusterPrivilegesPrivilegesList>;
 
 /** The subset of cluster level privileges that can be defined for remote clusters. */
 export interface SecurityTypesRemoteClusterPrivileges {
@@ -77803,9 +77212,8 @@ export const SecurityGetServiceAccountsServiceAccountType = S.String;
 export type SecurityGetServiceAccountsRequestTypeCase1List = Array<
   SecurityGetServiceAccountsServiceAccountType | (string & {})
 >;
-export const SecurityGetServiceAccountsRequestTypeCase1List = /*@__PURE__*/ S.Array(
-  SecurityGetServiceAccountsServiceAccountType,
-) as any as S.Schema<SecurityGetServiceAccountsRequestTypeCase1List>;
+export const SecurityGetServiceAccountsRequestTypeCase1List =
+  TypesExpandWildcardsCase1List as any as S.Schema<SecurityGetServiceAccountsRequestTypeCase1List>;
 
 export type SecurityGetServiceAccountsRequestType =
   | SecurityGetServiceAccountsServiceAccountType
@@ -86162,10 +85570,8 @@ export const WatcherTypesActionExecutionMode = S.String;
 export type WatcherExecuteWatchRequestActionModesMap = {
   [key: string]: WatcherTypesActionExecutionMode | (string & {}) | undefined;
 };
-export const WatcherExecuteWatchRequestActionModesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  WatcherTypesActionExecutionMode,
-) as any as S.Schema<WatcherExecuteWatchRequestActionModesMap>;
+export const WatcherExecuteWatchRequestActionModesMap =
+  TypesAggregationsAggregateOrderCase0Map as any as S.Schema<WatcherExecuteWatchRequestActionModesMap>;
 
 /** When present, the watch uses this object as a payload instead of executing its own input. */
 export type WatcherExecuteWatchRequestAlternativeInputMap = { [key: string]: unknown | undefined };
@@ -87050,9 +86456,8 @@ export type WatcherTypesDay =
 export const WatcherTypesDay = S.String;
 
 export type WatcherTypesTimeOfWeekOnList = Array<WatcherTypesDay | (string & {})>;
-export const WatcherTypesTimeOfWeekOnList = /*@__PURE__*/ S.Array(
-  WatcherTypesDay,
-) as any as S.Schema<WatcherTypesTimeOfWeekOnList>;
+export const WatcherTypesTimeOfWeekOnList =
+  TypesExpandWildcardsCase1List as any as S.Schema<WatcherTypesTimeOfWeekOnList>;
 
 export interface WatcherTypesTimeOfWeek {
   at: WatcherTypesTimeOfWeekAtList;
@@ -87096,9 +86501,8 @@ export type WatcherTypesMonth =
 export const WatcherTypesMonth = S.String;
 
 export type WatcherTypesTimeOfYearIntList = Array<WatcherTypesMonth | (string & {})>;
-export const WatcherTypesTimeOfYearIntList = /*@__PURE__*/ S.Array(
-  WatcherTypesMonth,
-) as any as S.Schema<WatcherTypesTimeOfYearIntList>;
+export const WatcherTypesTimeOfYearIntList =
+  TypesExpandWildcardsCase1List as any as S.Schema<WatcherTypesTimeOfYearIntList>;
 
 export type WatcherTypesTimeOfYearOnList = Array<number>;
 export const WatcherTypesTimeOfYearOnList =
@@ -88269,9 +87673,8 @@ export type WatcherStatsWatcherMetric =
 export const WatcherStatsWatcherMetric = S.String;
 
 export type WatcherStatsRequestMetricCase1List = Array<WatcherStatsWatcherMetric | (string & {})>;
-export const WatcherStatsRequestMetricCase1List = /*@__PURE__*/ S.Array(
-  WatcherStatsWatcherMetric,
-) as any as S.Schema<WatcherStatsRequestMetricCase1List>;
+export const WatcherStatsRequestMetricCase1List =
+  TypesExpandWildcardsCase1List as any as S.Schema<WatcherStatsRequestMetricCase1List>;
 
 export type WatcherStatsRequestMetric =
   | WatcherStatsWatcherMetric
@@ -88489,9 +87892,8 @@ export type XpackInfoXPackCategory = "build" | "features" | "license";
 export const XpackInfoXPackCategory = S.String;
 
 export type XpackInfoRequestCategoriesList = Array<XpackInfoXPackCategory | (string & {})>;
-export const XpackInfoRequestCategoriesList = /*@__PURE__*/ S.Array(
-  XpackInfoXPackCategory,
-) as any as S.Schema<XpackInfoRequestCategoriesList>;
+export const XpackInfoRequestCategoriesList =
+  TypesExpandWildcardsCase1List as any as S.Schema<XpackInfoRequestCategoriesList>;
 
 export interface XpackInfoRequest {
   /** A comma-separated list of the information categories to include in the response. For example, `build,license,features`. */

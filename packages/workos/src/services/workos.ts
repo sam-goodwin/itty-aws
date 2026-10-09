@@ -3409,9 +3409,7 @@ export type CreateDataIntegrationsManagementControllerDataIntegrationRequestAuth
   CreateDataIntegrationsManagementControllerDataIntegrationRequestAuthMethodsItem | (string & {})
 >;
 export const CreateDataIntegrationsManagementControllerDataIntegrationRequestAuthMethodsList =
-  /*@__PURE__*/ S.Array(
-    CreateDataIntegrationsManagementControllerDataIntegrationRequestAuthMethodsItem,
-  ) as any as S.Schema<CreateDataIntegrationsManagementControllerDataIntegrationRequestAuthMethodsList>;
+  CreateAgentBlueprintsControllerRequestInvocableAsInstanceTypesList as any as S.Schema<CreateDataIntegrationsManagementControllerDataIntegrationRequestAuthMethodsList>;
 
 /** Provider-specific config values (e.g. a Snowflake `account`), keyed by the config field. Only fields the built-in provider declares are accepted. */
 export type CreateDataIntegrationsManagementControllerDataIntegrationRequestConfigMap = {
@@ -3578,9 +3576,8 @@ export const DataIntegrationAuthMethodsItem = S.String;
 
 /** How accounts authenticate with the provider for this Data Integration. */
 export type DataIntegrationAuthMethodsList = Array<DataIntegrationAuthMethodsItem>;
-export const DataIntegrationAuthMethodsList = /*@__PURE__*/ S.Array(
-  DataIntegrationAuthMethodsItem,
-) as any as S.Schema<DataIntegrationAuthMethodsList>;
+export const DataIntegrationAuthMethodsList =
+  AgentBlueprintInvocableAsInstanceTypesList as any as S.Schema<DataIntegrationAuthMethodsList>;
 
 /** The credentials type. `custom` uses your own OAuth app credentials; `organization` has each organization supply its own credentials (so `client_id`/`redacted_client_secret` are null on the integration itself). */
 export type DataIntegrationCredentialsType = "custom" | "organization";
@@ -5200,9 +5197,8 @@ export const CreateWebhookEndpointsControllerRequestEventsItem = S.String;
 export type CreateWebhookEndpointsControllerRequestEventsList = Array<
   CreateWebhookEndpointsControllerRequestEventsItem | (string & {})
 >;
-export const CreateWebhookEndpointsControllerRequestEventsList = /*@__PURE__*/ S.Array(
-  CreateWebhookEndpointsControllerRequestEventsItem,
-) as any as S.Schema<CreateWebhookEndpointsControllerRequestEventsList>;
+export const CreateWebhookEndpointsControllerRequestEventsList =
+  AgentBlueprintInvocableAsInstanceTypesList as any as S.Schema<CreateWebhookEndpointsControllerRequestEventsList>;
 
 export interface CreateWebhookEndpointsControllerRequest {
   /** The HTTPS URL where webhooks will be sent. */
@@ -7510,14 +7506,8 @@ export interface DataIntegrationAccessTokenResponseCase1 {
   /** - `"not_installed"`: The user does not have the integration installed. - `"needs_reauthorization"`: The user needs to reauthorize the integration. */
   error: DataIntegrationAccessTokenResponseCase1Error;
 }
-export const DataIntegrationAccessTokenResponseCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    active: S.Boolean,
-    error: DataIntegrationAccessTokenResponseCase1Error,
-  }),
-).annotate({
-  identifier: "DataIntegrationAccessTokenResponseCase1",
-}) as any as S.Schema<DataIntegrationAccessTokenResponseCase1>;
+export const DataIntegrationAccessTokenResponseCase1 =
+  DataIntegrationCredentialsResponseCase1 as any as S.Schema<DataIntegrationAccessTokenResponseCase1>;
 
 export type DataIntegrationAccessTokenResponse =
   | DataIntegrationAccessTokenResponseCase0
@@ -7695,9 +7685,8 @@ export const DataIntegrationsListResponseDataItemAuthMethodsItem = S.String;
 /** The authentication methods supported by this provider (`oauth`, `api_key`, `client_credentials`, or a combination). Defaults to `["oauth"]` if absent. */
 export type DataIntegrationsListResponseDataItemAuthMethodsList =
   Array<DataIntegrationsListResponseDataItemAuthMethodsItem>;
-export const DataIntegrationsListResponseDataItemAuthMethodsList = /*@__PURE__*/ S.Array(
-  DataIntegrationsListResponseDataItemAuthMethodsItem,
-) as any as S.Schema<DataIntegrationsListResponseDataItemAuthMethodsList>;
+export const DataIntegrationsListResponseDataItemAuthMethodsList =
+  AgentBlueprintInvocableAsInstanceTypesList as any as S.Schema<DataIntegrationsListResponseDataItemAuthMethodsList>;
 
 /** Who owns connections made through this provider: `user` for connections owned by individual users, or `organization` for a connection shared by every member of the organization. A provider row can exist before any connected account does. */
 export type DataIntegrationsListResponseDataItemConnectionOwner = "user" | "organization";
@@ -8719,9 +8708,8 @@ export const InviteItContactsControllerRequestIntentsItem = S.String;
 export type InviteItContactsControllerRequestIntentsList = Array<
   InviteItContactsControllerRequestIntentsItem | (string & {})
 >;
-export const InviteItContactsControllerRequestIntentsList = /*@__PURE__*/ S.Array(
-  InviteItContactsControllerRequestIntentsItem,
-) as any as S.Schema<InviteItContactsControllerRequestIntentsList>;
+export const InviteItContactsControllerRequestIntentsList =
+  AgentBlueprintInvocableAsInstanceTypesList as any as S.Schema<InviteItContactsControllerRequestIntentsList>;
 
 export interface InviteItContactsControllerRequest {
   /** The ID of the organization. */
@@ -9216,9 +9204,8 @@ export const ListApplicationsControllerRequestRegistrationTypesItem = S.String;
 export type ListApplicationsControllerRequestRegistrationTypesList = Array<
   ListApplicationsControllerRequestRegistrationTypesItem | (string & {})
 >;
-export const ListApplicationsControllerRequestRegistrationTypesList = /*@__PURE__*/ S.Array(
-  ListApplicationsControllerRequestRegistrationTypesItem,
-) as any as S.Schema<ListApplicationsControllerRequestRegistrationTypesList>;
+export const ListApplicationsControllerRequestRegistrationTypesList =
+  AgentBlueprintInvocableAsInstanceTypesList as any as S.Schema<ListApplicationsControllerRequestRegistrationTypesList>;
 
 export interface ListApplicationsControllerRequest {
   /** An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. For example, if you make a list request and receive 100 objects, ending with `"obj_123"`, your subsequent call can include `before="obj_123"` to fetch a new batch of objects before `"obj_123"`. */
@@ -11711,9 +11698,7 @@ export type ListUserlandUserOrganizationMembershipsControllerRequestStatusesList
   ListUserlandUserOrganizationMembershipsControllerRequestStatusesItem | (string & {})
 >;
 export const ListUserlandUserOrganizationMembershipsControllerRequestStatusesList =
-  /*@__PURE__*/ S.Array(
-    ListUserlandUserOrganizationMembershipsControllerRequestStatusesItem,
-  ) as any as S.Schema<ListUserlandUserOrganizationMembershipsControllerRequestStatusesList>;
+  CreateAgentBlueprintsControllerRequestInvocableAsInstanceTypesList as any as S.Schema<ListUserlandUserOrganizationMembershipsControllerRequestStatusesList>;
 
 export interface ListUserlandUserOrganizationMembershipsControllerRequest {
   /** An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. For example, if you make a list request and receive 100 objects, ending with `"obj_123"`, your subsequent call can include `before="obj_123"` to fetch a new batch of objects before `"obj_123"`. */
@@ -12979,27 +12964,8 @@ export interface RevokeUserlandUserInvitesControllerResponse {
   /** The URL where the recipient can accept the invitation. */
   accept_invitation_url: string;
 }
-export const RevokeUserlandUserInvitesControllerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    object: S.String,
-    id: S.String,
-    email: S.String,
-    state: RevokeUserlandUserInvitesControllerResponseState,
-    accepted_at: S.NullOr(S.String),
-    revoked_at: S.NullOr(S.String),
-    expires_at: S.String,
-    organization_id: S.NullOr(S.String),
-    inviter_user_id: S.NullOr(S.String),
-    accepted_user_id: S.NullOr(S.String),
-    role_slug: S.NullOr(S.String),
-    created_at: S.String,
-    updated_at: S.String,
-    token: S.String,
-    accept_invitation_url: S.String,
-  }),
-).annotate({
-  identifier: "RevokeUserlandUserInvitesControllerResponse",
-}) as any as S.Schema<RevokeUserlandUserInvitesControllerResponse>;
+export const RevokeUserlandUserInvitesControllerResponse =
+  AcceptUserlandUserInvitesControllerResponse as any as S.Schema<RevokeUserlandUserInvitesControllerResponse>;
 
 export interface SendPublicRadarChallengesControllerRadarSmsChallengeRequest {
   /** The ID of the user to send the SMS challenge to. */
@@ -13504,22 +13470,15 @@ export type UpdateAgentBlueprintsControllerRequestInvocableAsInstanceTypesList =
   UpdateAgentBlueprintsControllerRequestInvocableAsInstanceTypesItem | (string & {})
 >;
 export const UpdateAgentBlueprintsControllerRequestInvocableAsInstanceTypesList =
-  /*@__PURE__*/ S.Array(
-    UpdateAgentBlueprintsControllerRequestInvocableAsInstanceTypesItem,
-  ) as any as S.Schema<UpdateAgentBlueprintsControllerRequestInvocableAsInstanceTypesList>;
+  CreateAgentBlueprintsControllerRequestInvocableAsInstanceTypesList as any as S.Schema<UpdateAgentBlueprintsControllerRequestInvocableAsInstanceTypesList>;
 
 /** How sessions may be minted from this blueprint. Omitted lists are left unchanged. */
 export interface UpdateAgentBlueprintsControllerRequestInvocableAs {
   /** Instance types that may be minted from this blueprint: `delegated` and/or `autonomous`. At least one is required; existing sessions of a removed type are refused at their next refresh. */
   instance_types?: UpdateAgentBlueprintsControllerRequestInvocableAsInstanceTypesList;
 }
-export const UpdateAgentBlueprintsControllerRequestInvocableAs = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instance_types: S.optional(UpdateAgentBlueprintsControllerRequestInvocableAsInstanceTypesList),
-  }),
-).annotate({
-  identifier: "UpdateAgentBlueprintsControllerRequestInvocableAs",
-}) as any as S.Schema<UpdateAgentBlueprintsControllerRequestInvocableAs>;
+export const UpdateAgentBlueprintsControllerRequestInvocableAs =
+  CreateAgentBlueprintsControllerRequestInvocableAs as any as S.Schema<UpdateAgentBlueprintsControllerRequestInvocableAs>;
 
 /** Token and session lifetimes for sessions minted from this blueprint. Omitted fields are left unchanged. */
 export interface UpdateAgentBlueprintsControllerRequestSessionSettings {
@@ -14594,9 +14553,8 @@ export const UpdateWebhookEndpointsControllerRequestEventsItem = S.String;
 export type UpdateWebhookEndpointsControllerRequestEventsList = Array<
   UpdateWebhookEndpointsControllerRequestEventsItem | (string & {})
 >;
-export const UpdateWebhookEndpointsControllerRequestEventsList = /*@__PURE__*/ S.Array(
-  UpdateWebhookEndpointsControllerRequestEventsItem,
-) as any as S.Schema<UpdateWebhookEndpointsControllerRequestEventsList>;
+export const UpdateWebhookEndpointsControllerRequestEventsList =
+  AgentBlueprintInvocableAsInstanceTypesList as any as S.Schema<UpdateWebhookEndpointsControllerRequestEventsList>;
 
 export interface UpdateWebhookEndpointsControllerRequest {
   /** Unique identifier of the Webhook Endpoint. */
@@ -16334,9 +16292,7 @@ export type WidgetsPublicControllerIssueWidgetSessionTokenRequestScopesList = Ar
   WidgetsPublicControllerIssueWidgetSessionTokenRequestScopesItem | (string & {})
 >;
 export const WidgetsPublicControllerIssueWidgetSessionTokenRequestScopesList =
-  /*@__PURE__*/ S.Array(
-    WidgetsPublicControllerIssueWidgetSessionTokenRequestScopesItem,
-  ) as any as S.Schema<WidgetsPublicControllerIssueWidgetSessionTokenRequestScopesList>;
+  CreateAgentBlueprintsControllerRequestInvocableAsInstanceTypesList as any as S.Schema<WidgetsPublicControllerIssueWidgetSessionTokenRequestScopesList>;
 
 export interface WidgetsPublicControllerIssueWidgetSessionTokenRequest {
   /** The ID of the organization to scope the widget session to. Required when scopes are provided. Optional when issuing a token for user-only widgets (e.g. `UserProfile`, `UserSecurity`) that do not require organization context. */

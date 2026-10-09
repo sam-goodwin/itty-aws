@@ -189,9 +189,8 @@ export const SupportedAccountType = S.String;
 
 /** List of supported account types. */
 export type RecipientTransferPropertiesSupportedAccountsList = Array<SupportedAccountType>;
-export const RecipientTransferPropertiesSupportedAccountsList = /*@__PURE__*/ S.Array(
-  SupportedAccountType,
-) as any as S.Schema<RecipientTransferPropertiesSupportedAccountsList>;
+export const RecipientTransferPropertiesSupportedAccountsList =
+  RecipientTransferPropertiesAllowedProductTypeList as any as S.Schema<RecipientTransferPropertiesSupportedAccountsList>;
 
 /** Transfer Details. */
 export interface RecipientTransferProperties {
@@ -552,9 +551,8 @@ export const BillingRelationshipType = S.String;
 
 /** Identifies the billing relationships represented by a billing account. The billing relationship may be between Microsoft, the customer, and/or a third-party. */
 export type BillingAccountPropertiesBillingRelationshipTypesList = Array<BillingRelationshipType>;
-export const BillingAccountPropertiesBillingRelationshipTypesList = /*@__PURE__*/ S.Array(
-  BillingRelationshipType,
-) as any as S.Schema<BillingAccountPropertiesBillingRelationshipTypesList>;
+export const BillingAccountPropertiesBillingRelationshipTypesList =
+  RecipientTransferPropertiesAllowedProductTypeList as any as S.Schema<BillingAccountPropertiesBillingRelationshipTypesList>;
 
 /** Qualifications for pricing on a billing account. Values may be Commercial, Education, Charity or Government. */
 export type BillingAccountPropertiesQualificationsList = Array<string>;
@@ -9140,21 +9138,14 @@ export interface DeleteInvoiceSectionEligibilityDetail {
   /** Validation message. */
   message?: string;
 }
-export const DeleteInvoiceSectionEligibilityDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(DeleteInvoiceSectionEligibilityCode),
-    message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeleteInvoiceSectionEligibilityDetail",
-}) as any as S.Schema<DeleteInvoiceSectionEligibilityDetail>;
+export const DeleteInvoiceSectionEligibilityDetail =
+  DeleteBillingProfileEligibilityDetail as any as S.Schema<DeleteInvoiceSectionEligibilityDetail>;
 
 /** A list of delete invoice section eligibility result details. */
 export type DeleteInvoiceSectionEligibilityResultEligibilityDetailsList =
   Array<DeleteInvoiceSectionEligibilityDetail>;
-export const DeleteInvoiceSectionEligibilityResultEligibilityDetailsList = /*@__PURE__*/ S.Array(
-  DeleteInvoiceSectionEligibilityDetail,
-) as any as S.Schema<DeleteInvoiceSectionEligibilityResultEligibilityDetailsList>;
+export const DeleteInvoiceSectionEligibilityResultEligibilityDetailsList =
+  DeleteBillingProfileEligibilityResultEligibilityDetailsList as any as S.Schema<DeleteInvoiceSectionEligibilityResultEligibilityDetailsList>;
 
 /** Eligibility to delete an invoice section result. */
 export interface DeleteInvoiceSectionEligibilityResult {
@@ -9163,14 +9154,8 @@ export interface DeleteInvoiceSectionEligibilityResult {
   /** A list of delete invoice section eligibility result details. */
   eligibilityDetails?: DeleteInvoiceSectionEligibilityResultEligibilityDetailsList;
 }
-export const DeleteInvoiceSectionEligibilityResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    eligibilityStatus: S.optional(DeleteInvoiceSectionEligibilityStatus),
-    eligibilityDetails: S.optional(DeleteInvoiceSectionEligibilityResultEligibilityDetailsList),
-  }),
-).annotate({
-  identifier: "DeleteInvoiceSectionEligibilityResult",
-}) as any as S.Schema<DeleteInvoiceSectionEligibilityResult>;
+export const DeleteInvoiceSectionEligibilityResult =
+  DeleteBillingProfileEligibilityResult as any as S.Schema<DeleteInvoiceSectionEligibilityResult>;
 
 export interface ListAgreementByBillingAccountRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -14381,21 +14366,14 @@ export interface PaymentTermsEligibilityDetail {
   /** Indicates the message for the ineligibility of the payment terms. */
   message?: string;
 }
-export const PaymentTermsEligibilityDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(PaymentTermsEligibilityCode),
-    message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PaymentTermsEligibilityDetail",
-}) as any as S.Schema<PaymentTermsEligibilityDetail>;
+export const PaymentTermsEligibilityDetail =
+  DeleteBillingProfileEligibilityDetail as any as S.Schema<PaymentTermsEligibilityDetail>;
 
 /** Details of the payment terms eligibility. */
 export type PaymentTermsEligibilityResultEligibilityDetailsList =
   Array<PaymentTermsEligibilityDetail>;
-export const PaymentTermsEligibilityResultEligibilityDetailsList = /*@__PURE__*/ S.Array(
-  PaymentTermsEligibilityDetail,
-) as any as S.Schema<PaymentTermsEligibilityResultEligibilityDetailsList>;
+export const PaymentTermsEligibilityResultEligibilityDetailsList =
+  DeleteBillingProfileEligibilityResultEligibilityDetailsList as any as S.Schema<PaymentTermsEligibilityResultEligibilityDetailsList>;
 
 /** Result of the payment terms eligibility. */
 export interface PaymentTermsEligibilityResult {
@@ -14404,14 +14382,8 @@ export interface PaymentTermsEligibilityResult {
   /** Details of the payment terms eligibility. */
   eligibilityDetails?: PaymentTermsEligibilityResultEligibilityDetailsList;
 }
-export const PaymentTermsEligibilityResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    eligibilityStatus: S.optional(PaymentTermsEligibilityStatus),
-    eligibilityDetails: S.optional(PaymentTermsEligibilityResultEligibilityDetailsList),
-  }),
-).annotate({
-  identifier: "PaymentTermsEligibilityResult",
-}) as any as S.Schema<PaymentTermsEligibilityResult>;
+export const PaymentTermsEligibilityResult =
+  DeleteBillingProfileEligibilityResult as any as S.Schema<PaymentTermsEligibilityResult>;
 
 export interface ValidateRecipientTransferRequest {
   /** The ID that uniquely identifies a transfer request. */

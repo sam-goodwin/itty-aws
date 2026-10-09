@@ -853,20 +853,8 @@ export interface GetGuestConfigurationAssignmentsVMSSResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetGuestConfigurationAssignmentsVMSSResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetGuestConfigurationAssignmentsVMSSResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      GetGuestConfigurationAssignmentsVMSSResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetGuestConfigurationAssignmentsVMSSResponseSystemData",
-}) as any as S.Schema<GetGuestConfigurationAssignmentsVMSSResponseSystemData>;
+export const GetGuestConfigurationAssignmentsVMSSResponseSystemData =
+  GetGuestConfigurationAssignmentResponseSystemData as any as S.Schema<GetGuestConfigurationAssignmentsVMSSResponseSystemData>;
 
 /** Error the service embeds in a 200 response it could not fulfil. */
 export interface GuestConfigurationAssignmentResponseError {
@@ -1115,20 +1103,8 @@ export interface GetGuestConfigurationHCRPAssignmentResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetGuestConfigurationHCRPAssignmentResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetGuestConfigurationHCRPAssignmentResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      GetGuestConfigurationHCRPAssignmentResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetGuestConfigurationHCRPAssignmentResponseSystemData",
-}) as any as S.Schema<GetGuestConfigurationHCRPAssignmentResponseSystemData>;
+export const GetGuestConfigurationHCRPAssignmentResponseSystemData =
+  GetGuestConfigurationAssignmentResponseSystemData as any as S.Schema<GetGuestConfigurationHCRPAssignmentResponseSystemData>;
 
 export interface GetGuestConfigurationHCRPAssignmentResponse {
   /** ARM resource id of the guest configuration assignment. */
@@ -1144,18 +1120,8 @@ export interface GetGuestConfigurationHCRPAssignmentResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetGuestConfigurationHCRPAssignmentResponseSystemData;
 }
-export const GetGuestConfigurationHCRPAssignmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.String,
-    location: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(GuestConfigurationAssignmentProperties),
-    systemData: S.optional(GetGuestConfigurationHCRPAssignmentResponseSystemData),
-  }),
-).annotate({
-  identifier: "GetGuestConfigurationHCRPAssignmentResponse",
-}) as any as S.Schema<GetGuestConfigurationHCRPAssignmentResponse>;
+export const GetGuestConfigurationHCRPAssignmentResponse =
+  GetGuestConfigurationAssignmentResponse as any as S.Schema<GetGuestConfigurationHCRPAssignmentResponse>;
 
 export interface GetGuestConfigurationHCRPAssignmentReportRequest {
   /** The ID of the target subscription. */
@@ -1407,22 +1373,7 @@ export interface GuestConfigurationAssignmentsCreateOrUpdateResponseSystemData {
   lastModifiedAt?: string;
 }
 export const GuestConfigurationAssignmentsCreateOrUpdateResponseSystemData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        GuestConfigurationAssignmentsCreateOrUpdateResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        GuestConfigurationAssignmentsCreateOrUpdateResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GuestConfigurationAssignmentsCreateOrUpdateResponseSystemData",
-  }) as any as S.Schema<GuestConfigurationAssignmentsCreateOrUpdateResponseSystemData>;
+  GetGuestConfigurationConnectedVMwarevSphereAssignmentResponseSystemData as any as S.Schema<GuestConfigurationAssignmentsCreateOrUpdateResponseSystemData>;
 
 export interface GuestConfigurationAssignmentsCreateOrUpdateResponse {
   /** ARM resource id of the guest configuration assignment. */
@@ -1519,22 +1470,7 @@ export interface GuestConfigurationAssignmentsVMSSCreateOrUpdateResponseSystemDa
   lastModifiedAt?: string;
 }
 export const GuestConfigurationAssignmentsVMSSCreateOrUpdateResponseSystemData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        GuestConfigurationAssignmentsVMSSCreateOrUpdateResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        GuestConfigurationAssignmentsVMSSCreateOrUpdateResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GuestConfigurationAssignmentsVMSSCreateOrUpdateResponseSystemData",
-  }) as any as S.Schema<GuestConfigurationAssignmentsVMSSCreateOrUpdateResponseSystemData>;
+  GetGuestConfigurationConnectedVMwarevSphereAssignmentResponseSystemData as any as S.Schema<GuestConfigurationAssignmentsVMSSCreateOrUpdateResponseSystemData>;
 
 export interface GuestConfigurationAssignmentsVMSSCreateOrUpdateResponse {
   /** ARM resource id of the guest configuration assignment. */
@@ -1757,22 +1693,7 @@ export interface GuestConfigurationHCRPAssignmentsCreateOrUpdateResponseSystemDa
   lastModifiedAt?: string;
 }
 export const GuestConfigurationHCRPAssignmentsCreateOrUpdateResponseSystemData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        GuestConfigurationHCRPAssignmentsCreateOrUpdateResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        GuestConfigurationHCRPAssignmentsCreateOrUpdateResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GuestConfigurationHCRPAssignmentsCreateOrUpdateResponseSystemData",
-  }) as any as S.Schema<GuestConfigurationHCRPAssignmentsCreateOrUpdateResponseSystemData>;
+  GetGuestConfigurationConnectedVMwarevSphereAssignmentResponseSystemData as any as S.Schema<GuestConfigurationHCRPAssignmentsCreateOrUpdateResponseSystemData>;
 
 export interface GuestConfigurationHCRPAssignmentsCreateOrUpdateResponse {
   /** ARM resource id of the guest configuration assignment. */
@@ -1788,18 +1709,8 @@ export interface GuestConfigurationHCRPAssignmentsCreateOrUpdateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GuestConfigurationHCRPAssignmentsCreateOrUpdateResponseSystemData;
 }
-export const GuestConfigurationHCRPAssignmentsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.String,
-    location: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(GuestConfigurationAssignmentProperties),
-    systemData: S.optional(GuestConfigurationHCRPAssignmentsCreateOrUpdateResponseSystemData),
-  }),
-).annotate({
-  identifier: "GuestConfigurationHCRPAssignmentsCreateOrUpdateResponse",
-}) as any as S.Schema<GuestConfigurationHCRPAssignmentsCreateOrUpdateResponse>;
+export const GuestConfigurationHCRPAssignmentsCreateOrUpdateResponse =
+  GuestConfigurationAssignmentsCreateOrUpdateResponse as any as S.Schema<GuestConfigurationHCRPAssignmentsCreateOrUpdateResponse>;
 
 export interface ListGuestConfigurationAssignmentReportsRequest {
   /** The ID of the target subscription. */

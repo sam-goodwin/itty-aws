@@ -7185,9 +7185,7 @@ export interface AssociationFilter {
   key: AssociationFilterKey;
   value: string;
 }
-export const AssociationFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ key: AssociationFilterKey, value: S.String }),
-).annotate({ identifier: "AssociationFilter" }) as any as S.Schema<AssociationFilter>;
+export const AssociationFilter = SessionFilter as any as S.Schema<AssociationFilter>;
 export type AssociationFilterList = AssociationFilter[];
 export const AssociationFilterList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ AssociationFilter.pipe(/*@__PURE__*/ T.XmlName("AssociationFilter")).annotate({
@@ -7408,11 +7406,9 @@ export interface CommandFilter {
   key: CommandFilterKey;
   value: string;
 }
-export const CommandFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ key: CommandFilterKey, value: S.String }),
-).annotate({ identifier: "CommandFilter" }) as any as S.Schema<CommandFilter>;
+export const CommandFilter = SessionFilter as any as S.Schema<CommandFilter>;
 export type CommandFilterList = CommandFilter[];
-export const CommandFilterList = /*@__PURE__*/ S.Array(CommandFilter);
+export const CommandFilterList = SessionFilterList as any as S.Schema<CommandFilterList>;
 export interface ListCommandInvocationsRequest {
   CommandId?: string;
   InstanceId?: string;
@@ -7931,9 +7927,7 @@ export interface DocumentFilter {
   key: DocumentFilterKey;
   value: string;
 }
-export const DocumentFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ key: DocumentFilterKey, value: S.String }),
-).annotate({ identifier: "DocumentFilter" }) as any as S.Schema<DocumentFilter>;
+export const DocumentFilter = SessionFilter as any as S.Schema<DocumentFilter>;
 export type DocumentFilterList = DocumentFilter[];
 export const DocumentFilterList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ DocumentFilter.pipe(/*@__PURE__*/ T.XmlName("DocumentFilter")).annotate({

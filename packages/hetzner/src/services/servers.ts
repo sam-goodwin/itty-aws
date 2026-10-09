@@ -1130,21 +1130,14 @@ export interface GetServerResponseServerPublicNetFirewallsItem {
   /** Status of the Firewall on the Server. */
   status?: GetServerResponseServerPublicNetFirewallsItemStatus;
 }
-export const GetServerResponseServerPublicNetFirewallsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.Number),
-    status: S.optional(GetServerResponseServerPublicNetFirewallsItemStatus),
-  }),
-).annotate({
-  identifier: "GetServerResponseServerPublicNetFirewallsItem",
-}) as any as S.Schema<GetServerResponseServerPublicNetFirewallsItem>;
+export const GetServerResponseServerPublicNetFirewallsItem =
+  CreateServerResponseServerPublicNetFirewallsItem as any as S.Schema<GetServerResponseServerPublicNetFirewallsItem>;
 
 /** Firewalls applied to the public network interface of this Server. */
 export type GetServerResponseServerPublicNetFirewallsList =
   Array<GetServerResponseServerPublicNetFirewallsItem>;
-export const GetServerResponseServerPublicNetFirewallsList = /*@__PURE__*/ S.Array(
-  GetServerResponseServerPublicNetFirewallsItem,
-) as any as S.Schema<GetServerResponseServerPublicNetFirewallsList>;
+export const GetServerResponseServerPublicNetFirewallsList =
+  CreateServerResponseServerPublicNetFirewallsList as any as S.Schema<GetServerResponseServerPublicNetFirewallsList>;
 
 /** Public network information. The Server's IPv4 address can be found in `public_net->ipv4->ip`. */
 export interface GetServerResponseServerPublicNet {
@@ -1449,18 +1442,8 @@ export interface GetServerResponseServerIso {
   /** CPU architecture compatible with the ISO. Null indicates no restriction on the architecture (wildcard). */
   architecture: GetServerResponseServerIsoArchitecture | null;
 }
-export const GetServerResponseServerIso = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    name: S.NullOr(S.String),
-    description: S.String,
-    type: S.NullOr(GetServerResponseServerIsoType),
-    deprecation: S.NullOr(CreateServerResponseServerServerTypeDeprecation),
-    architecture: S.NullOr(GetServerResponseServerIsoArchitecture),
-  }),
-).annotate({
-  identifier: "GetServerResponseServerIso",
-}) as any as S.Schema<GetServerResponseServerIso>;
+export const GetServerResponseServerIso =
+  CreateServerResponseServerIso as any as S.Schema<GetServerResponseServerIso>;
 
 /** Protection configuration for the Server. */
 export type GetServerResponseServerProtection = CreateServerResponseServerProtection;
@@ -1712,9 +1695,8 @@ export type ListServersRequestSortItem =
 export const ListServersRequestSortItem = S.String;
 
 export type ListServersRequestSortList = Array<ListServersRequestSortItem | (string & {})>;
-export const ListServersRequestSortList = /*@__PURE__*/ S.Array(
-  ListServersRequestSortItem,
-) as any as S.Schema<ListServersRequestSortList>;
+export const ListServersRequestSortList =
+  GetServerMetricsRequestTypeList as any as S.Schema<ListServersRequestSortList>;
 
 /** Status of the Server. */
 export type ListServersRequestStatusItem =
@@ -1730,9 +1712,8 @@ export type ListServersRequestStatusItem =
 export const ListServersRequestStatusItem = S.String;
 
 export type ListServersRequestStatusList = Array<ListServersRequestStatusItem | (string & {})>;
-export const ListServersRequestStatusList = /*@__PURE__*/ S.Array(
-  ListServersRequestStatusItem,
-) as any as S.Schema<ListServersRequestStatusList>;
+export const ListServersRequestStatusList =
+  GetServerMetricsRequestTypeList as any as S.Schema<ListServersRequestStatusList>;
 
 export interface ListServersRequest {
   /** Filter resources by their name. The response will only contain the resources matching exactly the specified name. */
@@ -1816,21 +1797,14 @@ export interface ListServersResponseServersItemPublicNetFirewallsItem {
   /** Status of the Firewall on the Server. */
   status?: ListServersResponseServersItemPublicNetFirewallsItemStatus;
 }
-export const ListServersResponseServersItemPublicNetFirewallsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.Number),
-    status: S.optional(ListServersResponseServersItemPublicNetFirewallsItemStatus),
-  }),
-).annotate({
-  identifier: "ListServersResponseServersItemPublicNetFirewallsItem",
-}) as any as S.Schema<ListServersResponseServersItemPublicNetFirewallsItem>;
+export const ListServersResponseServersItemPublicNetFirewallsItem =
+  CreateServerResponseServerPublicNetFirewallsItem as any as S.Schema<ListServersResponseServersItemPublicNetFirewallsItem>;
 
 /** Firewalls applied to the public network interface of this Server. */
 export type ListServersResponseServersItemPublicNetFirewallsList =
   Array<ListServersResponseServersItemPublicNetFirewallsItem>;
-export const ListServersResponseServersItemPublicNetFirewallsList = /*@__PURE__*/ S.Array(
-  ListServersResponseServersItemPublicNetFirewallsItem,
-) as any as S.Schema<ListServersResponseServersItemPublicNetFirewallsList>;
+export const ListServersResponseServersItemPublicNetFirewallsList =
+  CreateServerResponseServerPublicNetFirewallsList as any as S.Schema<ListServersResponseServersItemPublicNetFirewallsList>;
 
 /** Public network information. The Server's IPv4 address can be found in `public_net->ipv4->ip`. */
 export interface ListServersResponseServersItemPublicNet {
@@ -2141,18 +2115,8 @@ export interface ListServersResponseServersItemIso {
   /** CPU architecture compatible with the ISO. Null indicates no restriction on the architecture (wildcard). */
   architecture: ListServersResponseServersItemIsoArchitecture | null;
 }
-export const ListServersResponseServersItemIso = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    name: S.NullOr(S.String),
-    description: S.String,
-    type: S.NullOr(ListServersResponseServersItemIsoType),
-    deprecation: S.NullOr(CreateServerResponseServerServerTypeDeprecation),
-    architecture: S.NullOr(ListServersResponseServersItemIsoArchitecture),
-  }),
-).annotate({
-  identifier: "ListServersResponseServersItemIso",
-}) as any as S.Schema<ListServersResponseServersItemIso>;
+export const ListServersResponseServersItemIso =
+  CreateServerResponseServerIso as any as S.Schema<ListServersResponseServersItemIso>;
 
 /** Protection configuration for the Server. */
 export type ListServersResponseServersItemProtection = CreateServerResponseServerProtection;
@@ -2423,21 +2387,14 @@ export interface UpdateServerResponseServerPublicNetFirewallsItem {
   /** Status of the Firewall on the Server. */
   status?: UpdateServerResponseServerPublicNetFirewallsItemStatus;
 }
-export const UpdateServerResponseServerPublicNetFirewallsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.Number),
-    status: S.optional(UpdateServerResponseServerPublicNetFirewallsItemStatus),
-  }),
-).annotate({
-  identifier: "UpdateServerResponseServerPublicNetFirewallsItem",
-}) as any as S.Schema<UpdateServerResponseServerPublicNetFirewallsItem>;
+export const UpdateServerResponseServerPublicNetFirewallsItem =
+  CreateServerResponseServerPublicNetFirewallsItem as any as S.Schema<UpdateServerResponseServerPublicNetFirewallsItem>;
 
 /** Firewalls applied to the public network interface of this Server. */
 export type UpdateServerResponseServerPublicNetFirewallsList =
   Array<UpdateServerResponseServerPublicNetFirewallsItem>;
-export const UpdateServerResponseServerPublicNetFirewallsList = /*@__PURE__*/ S.Array(
-  UpdateServerResponseServerPublicNetFirewallsItem,
-) as any as S.Schema<UpdateServerResponseServerPublicNetFirewallsList>;
+export const UpdateServerResponseServerPublicNetFirewallsList =
+  CreateServerResponseServerPublicNetFirewallsList as any as S.Schema<UpdateServerResponseServerPublicNetFirewallsList>;
 
 /** Public network information. The Server's IPv4 address can be found in `public_net->ipv4->ip`. */
 export interface UpdateServerResponseServerPublicNet {
@@ -2745,18 +2702,8 @@ export interface UpdateServerResponseServerIso {
   /** CPU architecture compatible with the ISO. Null indicates no restriction on the architecture (wildcard). */
   architecture: UpdateServerResponseServerIsoArchitecture | null;
 }
-export const UpdateServerResponseServerIso = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    name: S.NullOr(S.String),
-    description: S.String,
-    type: S.NullOr(UpdateServerResponseServerIsoType),
-    deprecation: S.NullOr(CreateServerResponseServerServerTypeDeprecation),
-    architecture: S.NullOr(UpdateServerResponseServerIsoArchitecture),
-  }),
-).annotate({
-  identifier: "UpdateServerResponseServerIso",
-}) as any as S.Schema<UpdateServerResponseServerIso>;
+export const UpdateServerResponseServerIso =
+  CreateServerResponseServerIso as any as S.Schema<UpdateServerResponseServerIso>;
 
 /** Protection configuration for the Server. */
 export type UpdateServerResponseServerProtection = CreateServerResponseServerProtection;

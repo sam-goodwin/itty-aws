@@ -1420,15 +1420,8 @@ export interface BenefitGitHubRepositoryCreateProperties {
   /** The permission level to grant. Read more about roles and their permissions on [GitHub documentation](https://docs.github.com/en/organizations/managing-user-access-to-your-organizations-repositories/managing-repository-roles/repository-roles-for-an-organization#permissions-for-each-role). */
   permission: BenefitGitHubRepositoryCreatePropertiesPermission | (string & {});
 }
-export const BenefitGitHubRepositoryCreateProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    repository_owner: S.String,
-    repository_name: S.String,
-    permission: BenefitGitHubRepositoryCreatePropertiesPermission,
-  }),
-).annotate({
-  identifier: "BenefitGitHubRepositoryCreateProperties",
-}) as any as S.Schema<BenefitGitHubRepositoryCreateProperties>;
+export const BenefitGitHubRepositoryCreateProperties =
+  BenefitGitHubRepositoryProperties as any as S.Schema<BenefitGitHubRepositoryCreateProperties>;
 
 export interface BenefitGitHubRepositoryCreate {
   /** Key-value object allowing you to store additional information. The key must be a string with a maximum length of **40 characters**. The value must be either: * A string with a maximum length of **500 characters** * An integer * A floating-point number * A boolean You can store up to **50 key-value pairs**. */
@@ -1899,9 +1892,8 @@ export type BenefitType =
 export const BenefitType = S.String;
 
 export type BenefitsListRequestTypeCase1List = Array<BenefitType | (string & {})>;
-export const BenefitsListRequestTypeCase1List = /*@__PURE__*/ S.Array(
-  BenefitType,
-) as any as S.Schema<BenefitsListRequestTypeCase1List>;
+export const BenefitsListRequestTypeCase1List =
+  BenefitGrantsListRequestSortingList as any as S.Schema<BenefitsListRequestTypeCase1List>;
 
 /** Filter by benefit type. */
 export type BenefitsListRequestType = BenefitType | BenefitsListRequestTypeCase1List;
@@ -1936,9 +1928,8 @@ export type BenefitSortProperty =
 export const BenefitSortProperty = S.String;
 
 export type BenefitsListRequestSortingList = Array<BenefitSortProperty | (string & {})>;
-export const BenefitsListRequestSortingList = /*@__PURE__*/ S.Array(
-  BenefitSortProperty,
-) as any as S.Schema<BenefitsListRequestSortingList>;
+export const BenefitsListRequestSortingList =
+  BenefitGrantsListRequestSortingList as any as S.Schema<BenefitsListRequestSortingList>;
 
 export type MetadataQueryValueCase3List = Array<string>;
 export const MetadataQueryValueCase3List =
@@ -3582,9 +3573,8 @@ export type CheckoutLinkSortProperty =
 export const CheckoutLinkSortProperty = S.String;
 
 export type CheckoutLinksListRequestSortingList = Array<CheckoutLinkSortProperty | (string & {})>;
-export const CheckoutLinksListRequestSortingList = /*@__PURE__*/ S.Array(
-  CheckoutLinkSortProperty,
-) as any as S.Schema<CheckoutLinksListRequestSortingList>;
+export const CheckoutLinksListRequestSortingList =
+  BenefitGrantsListRequestSortingList as any as S.Schema<CheckoutLinksListRequestSortingList>;
 
 export interface CheckoutLinksListRequest {
   /** Filter by organization ID. */
@@ -3969,16 +3959,7 @@ export interface AddressInput {
   state?: string | null;
   country: AddressInputCountry | (string & {});
 }
-export const AddressInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    line1: S.optional(S.NullOr(S.String)),
-    line2: S.optional(S.NullOr(S.String)),
-    postal_code: S.optional(S.NullOr(S.String)),
-    city: S.optional(S.NullOr(S.String)),
-    state: S.optional(S.NullOr(S.String)),
-    country: AddressInputCountry,
-  }),
-).annotate({ identifier: "AddressInput" }) as any as S.Schema<AddressInput>;
+export const AddressInput = Address as any as S.Schema<AddressInput>;
 
 export type CheckoutsCreateRequestCustomerMetadataValue = string | number | number | boolean;
 export const CheckoutsCreateRequestCustomerMetadataValue =
@@ -5229,9 +5210,8 @@ export const CheckoutsListRequestExternalCustomerId =
   S.Unknown as any as S.Schema<CheckoutsListRequestExternalCustomerId>;
 
 export type CheckoutsListRequestStatusCase1List = Array<CheckoutStatus | (string & {})>;
-export const CheckoutsListRequestStatusCase1List = /*@__PURE__*/ S.Array(
-  CheckoutStatus,
-) as any as S.Schema<CheckoutsListRequestStatusCase1List>;
+export const CheckoutsListRequestStatusCase1List =
+  BenefitGrantsListRequestSortingList as any as S.Schema<CheckoutsListRequestStatusCase1List>;
 
 /** Filter by checkout session status. */
 export type CheckoutsListRequestStatus = CheckoutStatus | CheckoutsListRequestStatusCase1List;
@@ -5247,9 +5227,8 @@ export type CheckoutSortProperty =
 export const CheckoutSortProperty = S.String;
 
 export type CheckoutsListRequestSortingList = Array<CheckoutSortProperty | (string & {})>;
-export const CheckoutsListRequestSortingList = /*@__PURE__*/ S.Array(
-  CheckoutSortProperty,
-) as any as S.Schema<CheckoutsListRequestSortingList>;
+export const CheckoutsListRequestSortingList =
+  BenefitGrantsListRequestSortingList as any as S.Schema<CheckoutsListRequestSortingList>;
 
 export interface CheckoutsListRequest {
   /** Filter by organization ID. */
@@ -6026,9 +6005,8 @@ export type CustomerMeterSortProperty =
 export const CustomerMeterSortProperty = S.String;
 
 export type CustomerMetersListRequestSortingList = Array<CustomerMeterSortProperty | (string & {})>;
-export const CustomerMetersListRequestSortingList = /*@__PURE__*/ S.Array(
-  CustomerMeterSortProperty,
-) as any as S.Schema<CustomerMetersListRequestSortingList>;
+export const CustomerMetersListRequestSortingList =
+  BenefitGrantsListRequestSortingList as any as S.Schema<CustomerMetersListRequestSortingList>;
 
 export interface CustomerMetersListRequest {
   /** Filter by organization ID. */
@@ -6975,9 +6953,8 @@ export const CustomerBenefitGrantSortProperty = S.String;
 export type CustomerPortalBenefitGrantsListRequestSortingList = Array<
   CustomerBenefitGrantSortProperty | (string & {})
 >;
-export const CustomerPortalBenefitGrantsListRequestSortingList = /*@__PURE__*/ S.Array(
-  CustomerBenefitGrantSortProperty,
-) as any as S.Schema<CustomerPortalBenefitGrantsListRequestSortingList>;
+export const CustomerPortalBenefitGrantsListRequestSortingList =
+  BenefitGrantsListRequestSortingList as any as S.Schema<CustomerPortalBenefitGrantsListRequestSortingList>;
 
 export interface CustomerPortalBenefitGrantsListRequest {
   /** Filter by benefit description. */
@@ -7243,9 +7220,8 @@ export const CustomerCustomerMeterSortProperty = S.String;
 export type CustomerPortalCustomerMetersListRequestSortingList = Array<
   CustomerCustomerMeterSortProperty | (string & {})
 >;
-export const CustomerPortalCustomerMetersListRequestSortingList = /*@__PURE__*/ S.Array(
-  CustomerCustomerMeterSortProperty,
-) as any as S.Schema<CustomerPortalCustomerMetersListRequestSortingList>;
+export const CustomerPortalCustomerMetersListRequestSortingList =
+  BenefitGrantsListRequestSortingList as any as S.Schema<CustomerPortalCustomerMetersListRequestSortingList>;
 
 export interface CustomerPortalCustomerMetersListRequest {
   /** Filter by meter ID. */
@@ -8268,28 +8244,7 @@ export interface RotatedLicenseKey {
   last_validated_at: string | null;
   expires_at: string | null;
 }
-export const RotatedLicenseKey = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    created_at: S.String,
-    modified_at: S.NullOr(S.String),
-    organization_id: S.String,
-    customer_id: S.String,
-    customer: LicenseKeyCustomer,
-    member_id: S.NullOr(S.String),
-    member: S.NullOr(LicenseKeyMember),
-    benefit_id: S.String,
-    key: S.String,
-    display_key: S.String,
-    status: RotatedLicenseKeyStatus,
-    limit_activations: S.NullOr(S.Number),
-    usage: S.Number,
-    limit_usage: S.NullOr(S.Number),
-    validations: S.Number,
-    last_validated_at: S.NullOr(S.String),
-    expires_at: S.NullOr(S.String),
-  }),
-).annotate({ identifier: "RotatedLicenseKey" }) as any as S.Schema<RotatedLicenseKey>;
+export const RotatedLicenseKey = LicenseKeyRead as any as S.Schema<RotatedLicenseKey>;
 
 export type CustomerPortalLicenseKeysValidateRequestConditionsValue =
   | string
@@ -9055,9 +9010,8 @@ export const ProductBillingType = S.String;
 export type CustomerPortalOrdersListRequestProductBillingTypeCase1List = Array<
   ProductBillingType | (string & {})
 >;
-export const CustomerPortalOrdersListRequestProductBillingTypeCase1List = /*@__PURE__*/ S.Array(
-  ProductBillingType,
-) as any as S.Schema<CustomerPortalOrdersListRequestProductBillingTypeCase1List>;
+export const CustomerPortalOrdersListRequestProductBillingTypeCase1List =
+  BenefitGrantsListRequestSortingList as any as S.Schema<CustomerPortalOrdersListRequestProductBillingTypeCase1List>;
 
 /** Filter by product billing type. `recurring` will filter data corresponding to subscriptions creations or renewals. `one_time` will filter data corresponding to one-time purchases. */
 export type CustomerPortalOrdersListRequestProductBillingType =
@@ -9093,9 +9047,8 @@ export const CustomerOrderSortProperty = S.String;
 export type CustomerPortalOrdersListRequestSortingList = Array<
   CustomerOrderSortProperty | (string & {})
 >;
-export const CustomerPortalOrdersListRequestSortingList = /*@__PURE__*/ S.Array(
-  CustomerOrderSortProperty,
-) as any as S.Schema<CustomerPortalOrdersListRequestSortingList>;
+export const CustomerPortalOrdersListRequestSortingList =
+  BenefitGrantsListRequestSortingList as any as S.Schema<CustomerPortalOrdersListRequestSortingList>;
 
 export interface CustomerPortalOrdersListRequest {
   /** Filter by product ID. */
@@ -9818,9 +9771,8 @@ export const CustomerSubscriptionSortProperty = S.String;
 export type CustomerPortalSubscriptionsListRequestSortingList = Array<
   CustomerSubscriptionSortProperty | (string & {})
 >;
-export const CustomerPortalSubscriptionsListRequestSortingList = /*@__PURE__*/ S.Array(
-  CustomerSubscriptionSortProperty,
-) as any as S.Schema<CustomerPortalSubscriptionsListRequestSortingList>;
+export const CustomerPortalSubscriptionsListRequestSortingList =
+  BenefitGrantsListRequestSortingList as any as S.Schema<CustomerPortalSubscriptionsListRequestSortingList>;
 
 export interface CustomerPortalSubscriptionsListRequest {
   /** Filter by product ID. */
@@ -10010,9 +9962,8 @@ export const CustomerWalletSortProperty = S.String;
 export type CustomerPortalWalletsListRequestSortingList = Array<
   CustomerWalletSortProperty | (string & {})
 >;
-export const CustomerPortalWalletsListRequestSortingList = /*@__PURE__*/ S.Array(
-  CustomerWalletSortProperty,
-) as any as S.Schema<CustomerPortalWalletsListRequestSortingList>;
+export const CustomerPortalWalletsListRequestSortingList =
+  BenefitGrantsListRequestSortingList as any as S.Schema<CustomerPortalWalletsListRequestSortingList>;
 
 export interface CustomerPortalWalletsListRequest {
   /** Page number, defaults to 1. */
@@ -10890,9 +10841,8 @@ export type CustomerSortProperty =
 export const CustomerSortProperty = S.String;
 
 export type CustomersListRequestSortingList = Array<CustomerSortProperty | (string & {})>;
-export const CustomersListRequestSortingList = /*@__PURE__*/ S.Array(
-  CustomerSortProperty,
-) as any as S.Schema<CustomersListRequestSortingList>;
+export const CustomersListRequestSortingList =
+  BenefitGrantsListRequestSortingList as any as S.Schema<CustomersListRequestSortingList>;
 
 export interface CustomersListRequest {
   /** Filter by organization ID. */
@@ -11227,9 +11177,8 @@ export type MemberSortProperty = "created_at" | "-created_at";
 export const MemberSortProperty = S.String;
 
 export type CustomersMembersListRequestSortingList = Array<MemberSortProperty | (string & {})>;
-export const CustomersMembersListRequestSortingList = /*@__PURE__*/ S.Array(
-  MemberSortProperty,
-) as any as S.Schema<CustomersMembersListRequestSortingList>;
+export const CustomersMembersListRequestSortingList =
+  BenefitGrantsListRequestSortingList as any as S.Schema<CustomersMembersListRequestSortingList>;
 
 export interface CustomersMembersListRequest {
   /** The customer ID. */
@@ -11701,9 +11650,8 @@ export type CustomFieldType = "text" | "number" | "date" | "checkbox" | "select"
 export const CustomFieldType = S.String;
 
 export type CustomFieldsListRequestTypeCase1List = Array<CustomFieldType | (string & {})>;
-export const CustomFieldsListRequestTypeCase1List = /*@__PURE__*/ S.Array(
-  CustomFieldType,
-) as any as S.Schema<CustomFieldsListRequestTypeCase1List>;
+export const CustomFieldsListRequestTypeCase1List =
+  BenefitGrantsListRequestSortingList as any as S.Schema<CustomFieldsListRequestTypeCase1List>;
 
 /** Filter by custom field type. */
 export type CustomFieldsListRequestType = CustomFieldType | CustomFieldsListRequestTypeCase1List;
@@ -11722,9 +11670,8 @@ export type CustomFieldSortProperty =
 export const CustomFieldSortProperty = S.String;
 
 export type CustomFieldsListRequestSortingList = Array<CustomFieldSortProperty | (string & {})>;
-export const CustomFieldsListRequestSortingList = /*@__PURE__*/ S.Array(
-  CustomFieldSortProperty,
-) as any as S.Schema<CustomFieldsListRequestSortingList>;
+export const CustomFieldsListRequestSortingList =
+  BenefitGrantsListRequestSortingList as any as S.Schema<CustomFieldsListRequestSortingList>;
 
 export interface CustomFieldsListRequest {
   /** Filter by organization ID. */
@@ -12476,9 +12423,8 @@ export type DiscountSortProperty =
 export const DiscountSortProperty = S.String;
 
 export type DiscountsListRequestSortingList = Array<DiscountSortProperty | (string & {})>;
-export const DiscountsListRequestSortingList = /*@__PURE__*/ S.Array(
-  DiscountSortProperty,
-) as any as S.Schema<DiscountsListRequestSortingList>;
+export const DiscountsListRequestSortingList =
+  BenefitGrantsListRequestSortingList as any as S.Schema<DiscountsListRequestSortingList>;
 
 export interface DiscountsListRequest {
   /** Filter by organization ID. */
@@ -12733,9 +12679,8 @@ export type DisputesListRequestOrderId = string | DisputesListRequestOrderIdCase
 export const DisputesListRequestOrderId = S.Unknown as any as S.Schema<DisputesListRequestOrderId>;
 
 export type DisputesListRequestStatusCase1List = Array<DisputeStatus | (string & {})>;
-export const DisputesListRequestStatusCase1List = /*@__PURE__*/ S.Array(
-  DisputeStatus,
-) as any as S.Schema<DisputesListRequestStatusCase1List>;
+export const DisputesListRequestStatusCase1List =
+  BenefitGrantsListRequestSortingList as any as S.Schema<DisputesListRequestStatusCase1List>;
 
 /** Filter by dispute status. */
 export type DisputesListRequestStatus = DisputeStatus | DisputesListRequestStatusCase1List;
@@ -12745,9 +12690,8 @@ export type DisputeSortProperty = "created_at" | "-created_at" | "amount" | "-am
 export const DisputeSortProperty = S.String;
 
 export type DisputesListRequestSortingList = Array<DisputeSortProperty | (string & {})>;
-export const DisputesListRequestSortingList = /*@__PURE__*/ S.Array(
-  DisputeSortProperty,
-) as any as S.Schema<DisputesListRequestSortingList>;
+export const DisputesListRequestSortingList =
+  BenefitGrantsListRequestSortingList as any as S.Schema<DisputesListRequestSortingList>;
 
 export interface DisputesListRequest {
   /** Filter by organization ID. */
@@ -15064,9 +15008,8 @@ export type EventSource = "system" | "user";
 export const EventSource = S.String;
 
 export type EventsListRequestSourceCase1List = Array<EventSource | (string & {})>;
-export const EventsListRequestSourceCase1List = /*@__PURE__*/ S.Array(
-  EventSource,
-) as any as S.Schema<EventsListRequestSourceCase1List>;
+export const EventsListRequestSourceCase1List =
+  BenefitGrantsListRequestSortingList as any as S.Schema<EventsListRequestSourceCase1List>;
 
 /** Filter by event source. */
 export type EventsListRequestSource = EventSource | EventsListRequestSourceCase1List;
@@ -15076,9 +15019,8 @@ export type EventSortProperty = "timestamp" | "-timestamp";
 export const EventSortProperty = S.String;
 
 export type EventsListRequestSortingList = Array<EventSortProperty | (string & {})>;
-export const EventsListRequestSortingList = /*@__PURE__*/ S.Array(
-  EventSortProperty,
-) as any as S.Schema<EventsListRequestSortingList>;
+export const EventsListRequestSortingList =
+  BenefitGrantsListRequestSortingList as any as S.Schema<EventsListRequestSortingList>;
 
 export interface EventsListRequest {
   /** Filter events following filter clauses. JSON string following the same schema a meter filter clause. */
@@ -15237,9 +15179,8 @@ export type EventNamesSortProperty =
 export const EventNamesSortProperty = S.String;
 
 export type EventsListNamesRequestSortingList = Array<EventNamesSortProperty | (string & {})>;
-export const EventsListNamesRequestSortingList = /*@__PURE__*/ S.Array(
-  EventNamesSortProperty,
-) as any as S.Schema<EventsListNamesRequestSortingList>;
+export const EventsListNamesRequestSortingList =
+  BenefitGrantsListRequestSortingList as any as S.Schema<EventsListNamesRequestSortingList>;
 
 export interface EventsListNamesRequest {
   /** Filter by organization ID. */
@@ -15358,9 +15299,8 @@ export type EventTypesSortProperty =
 export const EventTypesSortProperty = S.String;
 
 export type EventTypesListRequestSortingList = Array<EventTypesSortProperty | (string & {})>;
-export const EventTypesListRequestSortingList = /*@__PURE__*/ S.Array(
-  EventTypesSortProperty,
-) as any as S.Schema<EventTypesListRequestSortingList>;
+export const EventTypesListRequestSortingList =
+  BenefitGrantsListRequestSortingList as any as S.Schema<EventTypesListRequestSortingList>;
 
 export interface EventTypesListRequest {
   /** Filter by organization ID. */
@@ -16313,9 +16253,8 @@ export const LicenseKeysListRequestBenefitId =
   S.Unknown as any as S.Schema<LicenseKeysListRequestBenefitId>;
 
 export type LicenseKeysListRequestStatusCase1List = Array<LicenseKeyStatus | (string & {})>;
-export const LicenseKeysListRequestStatusCase1List = /*@__PURE__*/ S.Array(
-  LicenseKeyStatus,
-) as any as S.Schema<LicenseKeysListRequestStatusCase1List>;
+export const LicenseKeysListRequestStatusCase1List =
+  BenefitGrantsListRequestSortingList as any as S.Schema<LicenseKeysListRequestStatusCase1List>;
 
 /** Filter by license key status. */
 export type LicenseKeysListRequestStatus = LicenseKeyStatus | LicenseKeysListRequestStatusCase1List;
@@ -16484,9 +16423,8 @@ export type MeterSortProperty = "created_at" | "-created_at" | "name" | "-name";
 export const MeterSortProperty = S.String;
 
 export type MetersListRequestSortingList = Array<MeterSortProperty | (string & {})>;
-export const MetersListRequestSortingList = /*@__PURE__*/ S.Array(
-  MeterSortProperty,
-) as any as S.Schema<MetersListRequestSortingList>;
+export const MetersListRequestSortingList =
+  BenefitGrantsListRequestSortingList as any as S.Schema<MetersListRequestSortingList>;
 
 export interface MetersListRequest {
   /** Filter by organization ID. */
@@ -19795,9 +19733,8 @@ export type Scope =
 export const Scope = S.String;
 
 export type AuthorizeResponseUserScopesList = Array<Scope>;
-export const AuthorizeResponseUserScopesList = /*@__PURE__*/ S.Array(
-  Scope,
-) as any as S.Schema<AuthorizeResponseUserScopesList>;
+export const AuthorizeResponseUserScopesList =
+  BenefitGrantsListRequestSortingList as any as S.Schema<AuthorizeResponseUserScopesList>;
 
 export interface AuthorizeOrganization {
   id: string;
@@ -19908,9 +19845,8 @@ export const Oauth2ClientsOauth2CreateClientRequestGrantTypesItem = S.String;
 export type Oauth2ClientsOauth2CreateClientRequestGrantTypesList = Array<
   Oauth2ClientsOauth2CreateClientRequestGrantTypesItem | (string & {})
 >;
-export const Oauth2ClientsOauth2CreateClientRequestGrantTypesList = /*@__PURE__*/ S.Array(
-  Oauth2ClientsOauth2CreateClientRequestGrantTypesItem,
-) as any as S.Schema<Oauth2ClientsOauth2CreateClientRequestGrantTypesList>;
+export const Oauth2ClientsOauth2CreateClientRequestGrantTypesList =
+  BenefitGrantsListRequestSortingList as any as S.Schema<Oauth2ClientsOauth2CreateClientRequestGrantTypesList>;
 
 export type Oauth2ClientsOauth2CreateClientRequestResponseTypesList = Array<string>;
 export const Oauth2ClientsOauth2CreateClientRequestResponseTypesList =
@@ -20009,9 +19945,8 @@ export const Oauth2ClientsOauth2UpdateClientRequestGrantTypesItem = S.String;
 export type Oauth2ClientsOauth2UpdateClientRequestGrantTypesList = Array<
   Oauth2ClientsOauth2UpdateClientRequestGrantTypesItem | (string & {})
 >;
-export const Oauth2ClientsOauth2UpdateClientRequestGrantTypesList = /*@__PURE__*/ S.Array(
-  Oauth2ClientsOauth2UpdateClientRequestGrantTypesItem,
-) as any as S.Schema<Oauth2ClientsOauth2UpdateClientRequestGrantTypesList>;
+export const Oauth2ClientsOauth2UpdateClientRequestGrantTypesList =
+  BenefitGrantsListRequestSortingList as any as S.Schema<Oauth2ClientsOauth2UpdateClientRequestGrantTypesList>;
 
 export type Oauth2ClientsOauth2UpdateClientRequestResponseTypesList = Array<string>;
 export const Oauth2ClientsOauth2UpdateClientRequestResponseTypesList =
@@ -20629,9 +20564,8 @@ export const OrdersExportRequestProductId =
   S.Unknown as any as S.Schema<OrdersExportRequestProductId>;
 
 export type OrdersExportRequestStatusCase1List = Array<OrderStatus | (string & {})>;
-export const OrdersExportRequestStatusCase1List = /*@__PURE__*/ S.Array(
-  OrderStatus,
-) as any as S.Schema<OrdersExportRequestStatusCase1List>;
+export const OrdersExportRequestStatusCase1List =
+  BenefitGrantsListRequestSortingList as any as S.Schema<OrdersExportRequestStatusCase1List>;
 
 /** Filter by order status. */
 export type OrdersExportRequestStatus = OrderStatus | OrdersExportRequestStatusCase1List;
@@ -20657,9 +20591,8 @@ export type OrderExportColumn =
 export const OrderExportColumn = S.String;
 
 export type OrdersExportRequestColumnsCase1List = Array<OrderExportColumn | (string & {})>;
-export const OrdersExportRequestColumnsCase1List = /*@__PURE__*/ S.Array(
-  OrderExportColumn,
-) as any as S.Schema<OrdersExportRequestColumnsCase1List>;
+export const OrdersExportRequestColumnsCase1List =
+  BenefitGrantsListRequestSortingList as any as S.Schema<OrdersExportRequestColumnsCase1List>;
 
 /** Columns to include in the CSV, in order. Defaults to email, created_at, product, net_amount, currency, status and invoice_number. */
 export type OrdersExportRequestColumns = OrderExportColumn | OrdersExportRequestColumnsCase1List;
@@ -20859,9 +20792,8 @@ export type OrderSortProperty =
 export const OrderSortProperty = S.String;
 
 export type OrdersListRequestSortingList = Array<OrderSortProperty | (string & {})>;
-export const OrdersListRequestSortingList = /*@__PURE__*/ S.Array(
-  OrderSortProperty,
-) as any as S.Schema<OrdersListRequestSortingList>;
+export const OrdersListRequestSortingList =
+  BenefitGrantsListRequestSortingList as any as S.Schema<OrdersListRequestSortingList>;
 
 export interface OrdersListRequest {
   /** Filter by organization ID. */
@@ -21945,9 +21877,8 @@ export type OrganizationSortProperty =
 export const OrganizationSortProperty = S.String;
 
 export type OrganizationsListRequestSortingList = Array<OrganizationSortProperty | (string & {})>;
-export const OrganizationsListRequestSortingList = /*@__PURE__*/ S.Array(
-  OrganizationSortProperty,
-) as any as S.Schema<OrganizationsListRequestSortingList>;
+export const OrganizationsListRequestSortingList =
+  BenefitGrantsListRequestSortingList as any as S.Schema<OrganizationsListRequestSortingList>;
 
 export interface OrganizationsListRequest {
   /** Filter by slug. */
@@ -22577,9 +22508,8 @@ export const PaymentsListRequestCustomerId =
   S.Unknown as any as S.Schema<PaymentsListRequestCustomerId>;
 
 export type PaymentsListRequestStatusCase1List = Array<PaymentStatus | (string & {})>;
-export const PaymentsListRequestStatusCase1List = /*@__PURE__*/ S.Array(
-  PaymentStatus,
-) as any as S.Schema<PaymentsListRequestStatusCase1List>;
+export const PaymentsListRequestStatusCase1List =
+  BenefitGrantsListRequestSortingList as any as S.Schema<PaymentsListRequestStatusCase1List>;
 
 /** Filter by payment status. */
 export type PaymentsListRequestStatus = PaymentStatus | PaymentsListRequestStatusCase1List;
@@ -22614,9 +22544,8 @@ export type PaymentSortProperty =
 export const PaymentSortProperty = S.String;
 
 export type PaymentsListRequestSortingList = Array<PaymentSortProperty | (string & {})>;
-export const PaymentsListRequestSortingList = /*@__PURE__*/ S.Array(
-  PaymentSortProperty,
-) as any as S.Schema<PaymentsListRequestSortingList>;
+export const PaymentsListRequestSortingList =
+  BenefitGrantsListRequestSortingList as any as S.Schema<PaymentsListRequestSortingList>;
 
 export interface PaymentsListRequest {
   /** Filter by organization ID. */
@@ -23005,9 +22934,8 @@ export const ProductsListRequestBenefitId =
   S.Unknown as any as S.Schema<ProductsListRequestBenefitId>;
 
 export type ProductsListRequestVisibilityList = Array<ProductVisibility | (string & {})>;
-export const ProductsListRequestVisibilityList = /*@__PURE__*/ S.Array(
-  ProductVisibility,
-) as any as S.Schema<ProductsListRequestVisibilityList>;
+export const ProductsListRequestVisibilityList =
+  BenefitGrantsListRequestSortingList as any as S.Schema<ProductsListRequestVisibilityList>;
 
 export type ProductSortProperty =
   | "created_at"
@@ -23021,9 +22949,8 @@ export type ProductSortProperty =
 export const ProductSortProperty = S.String;
 
 export type ProductsListRequestSortingList = Array<ProductSortProperty | (string & {})>;
-export const ProductsListRequestSortingList = /*@__PURE__*/ S.Array(
-  ProductSortProperty,
-) as any as S.Schema<ProductsListRequestSortingList>;
+export const ProductsListRequestSortingList =
+  BenefitGrantsListRequestSortingList as any as S.Schema<ProductsListRequestSortingList>;
 
 export interface ProductsListRequest {
   /** Filter by product ID. */
@@ -23404,9 +23331,8 @@ export type RefundSortProperty = "created_at" | "-created_at" | "amount" | "-amo
 export const RefundSortProperty = S.String;
 
 export type RefundsListRequestSortingList = Array<RefundSortProperty | (string & {})>;
-export const RefundsListRequestSortingList = /*@__PURE__*/ S.Array(
-  RefundSortProperty,
-) as any as S.Schema<RefundsListRequestSortingList>;
+export const RefundsListRequestSortingList =
+  BenefitGrantsListRequestSortingList as any as S.Schema<RefundsListRequestSortingList>;
 
 export interface RefundsListRequest {
   /** Filter by refund ID. */
@@ -23836,9 +23762,8 @@ export const SubscriptionsExportRequestProductId =
   S.Unknown as any as S.Schema<SubscriptionsExportRequestProductId>;
 
 export type SubscriptionsExportRequestStatusCase1List = Array<SubscriptionStatus | (string & {})>;
-export const SubscriptionsExportRequestStatusCase1List = /*@__PURE__*/ S.Array(
-  SubscriptionStatus,
-) as any as S.Schema<SubscriptionsExportRequestStatusCase1List>;
+export const SubscriptionsExportRequestStatusCase1List =
+  BenefitGrantsListRequestSortingList as any as S.Schema<SubscriptionsExportRequestStatusCase1List>;
 
 /** Filter by subscription status. */
 export type SubscriptionsExportRequestStatus =
@@ -23875,9 +23800,8 @@ export const SubscriptionExportColumn = S.String;
 export type SubscriptionsExportRequestColumnsCase1List = Array<
   SubscriptionExportColumn | (string & {})
 >;
-export const SubscriptionsExportRequestColumnsCase1List = /*@__PURE__*/ S.Array(
-  SubscriptionExportColumn,
-) as any as S.Schema<SubscriptionsExportRequestColumnsCase1List>;
+export const SubscriptionsExportRequestColumnsCase1List =
+  BenefitGrantsListRequestSortingList as any as S.Schema<SubscriptionsExportRequestColumnsCase1List>;
 
 /** Columns to include in the CSV, in order. Defaults to email, started_at, product, amount, currency, status and recurring_interval. */
 export type SubscriptionsExportRequestColumns =
@@ -24000,9 +23924,8 @@ export const SubscriptionsListRequestStatus =
 export type SubscriptionsListRequestCustomerCancellationReasonCase1List = Array<
   CustomerCancellationReason | (string & {})
 >;
-export const SubscriptionsListRequestCustomerCancellationReasonCase1List = /*@__PURE__*/ S.Array(
-  CustomerCancellationReason,
-) as any as S.Schema<SubscriptionsListRequestCustomerCancellationReasonCase1List>;
+export const SubscriptionsListRequestCustomerCancellationReasonCase1List =
+  BenefitGrantsListRequestSortingList as any as S.Schema<SubscriptionsListRequestCustomerCancellationReasonCase1List>;
 
 /** Filter by customer cancellation reason. */
 export type SubscriptionsListRequestCustomerCancellationReason =
@@ -24033,9 +23956,8 @@ export type SubscriptionSortProperty =
 export const SubscriptionSortProperty = S.String;
 
 export type SubscriptionsListRequestSortingList = Array<SubscriptionSortProperty | (string & {})>;
-export const SubscriptionsListRequestSortingList = /*@__PURE__*/ S.Array(
-  SubscriptionSortProperty,
-) as any as S.Schema<SubscriptionsListRequestSortingList>;
+export const SubscriptionsListRequestSortingList =
+  BenefitGrantsListRequestSortingList as any as S.Schema<SubscriptionsListRequestSortingList>;
 
 export interface SubscriptionsListRequest {
   /** Filter by organization ID. */
@@ -24473,9 +24395,8 @@ export const WebhookEventType = S.String;
 export type WebhooksCreateWebhookEndpointRequestEventsList = Array<
   WebhookEventType | (string & {})
 >;
-export const WebhooksCreateWebhookEndpointRequestEventsList = /*@__PURE__*/ S.Array(
-  WebhookEventType,
-) as any as S.Schema<WebhooksCreateWebhookEndpointRequestEventsList>;
+export const WebhooksCreateWebhookEndpointRequestEventsList =
+  BenefitGrantsListRequestSortingList as any as S.Schema<WebhooksCreateWebhookEndpointRequestEventsList>;
 
 export interface WebhooksCreateWebhookEndpointRequest {
   /** The URL where the webhook events will be sent. */

@@ -377,13 +377,8 @@ export const SecurityAndAnalysisCodeSecurityStatus = S.String;
 export interface SecurityAndAnalysisCodeSecurity {
   status?: SecurityAndAnalysisCodeSecurityStatus;
 }
-export const SecurityAndAnalysisCodeSecurity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(SecurityAndAnalysisCodeSecurityStatus),
-  }),
-).annotate({
-  identifier: "SecurityAndAnalysisCodeSecurity",
-}) as any as S.Schema<SecurityAndAnalysisCodeSecurity>;
+export const SecurityAndAnalysisCodeSecurity =
+  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisCodeSecurity>;
 
 /** The enablement status of Dependabot security updates for the repository. */
 export type SecurityAndAnalysisDependabotSecurityUpdatesStatus = "enabled" | "disabled";
@@ -394,13 +389,8 @@ export interface SecurityAndAnalysisDependabotSecurityUpdates {
   /** The enablement status of Dependabot security updates for the repository. */
   status?: SecurityAndAnalysisDependabotSecurityUpdatesStatus;
 }
-export const SecurityAndAnalysisDependabotSecurityUpdates = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(SecurityAndAnalysisDependabotSecurityUpdatesStatus),
-  }),
-).annotate({
-  identifier: "SecurityAndAnalysisDependabotSecurityUpdates",
-}) as any as S.Schema<SecurityAndAnalysisDependabotSecurityUpdates>;
+export const SecurityAndAnalysisDependabotSecurityUpdates =
+  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisDependabotSecurityUpdates>;
 
 export type SecurityAndAnalysisSecretScanningStatus = "enabled" | "disabled";
 export const SecurityAndAnalysisSecretScanningStatus = S.String;
@@ -408,13 +398,8 @@ export const SecurityAndAnalysisSecretScanningStatus = S.String;
 export interface SecurityAndAnalysisSecretScanning {
   status?: SecurityAndAnalysisSecretScanningStatus;
 }
-export const SecurityAndAnalysisSecretScanning = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(SecurityAndAnalysisSecretScanningStatus),
-  }),
-).annotate({
-  identifier: "SecurityAndAnalysisSecretScanning",
-}) as any as S.Schema<SecurityAndAnalysisSecretScanning>;
+export const SecurityAndAnalysisSecretScanning =
+  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanning>;
 
 export type SecurityAndAnalysisSecretScanningPushProtectionStatus = "enabled" | "disabled";
 export const SecurityAndAnalysisSecretScanningPushProtectionStatus = S.String;
@@ -422,13 +407,8 @@ export const SecurityAndAnalysisSecretScanningPushProtectionStatus = S.String;
 export interface SecurityAndAnalysisSecretScanningPushProtection {
   status?: SecurityAndAnalysisSecretScanningPushProtectionStatus;
 }
-export const SecurityAndAnalysisSecretScanningPushProtection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(SecurityAndAnalysisSecretScanningPushProtectionStatus),
-  }),
-).annotate({
-  identifier: "SecurityAndAnalysisSecretScanningPushProtection",
-}) as any as S.Schema<SecurityAndAnalysisSecretScanningPushProtection>;
+export const SecurityAndAnalysisSecretScanningPushProtection =
+  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningPushProtection>;
 
 export type SecurityAndAnalysisSecretScanningNonProviderPatternsStatus = "enabled" | "disabled";
 export const SecurityAndAnalysisSecretScanningNonProviderPatternsStatus = S.String;
@@ -436,13 +416,8 @@ export const SecurityAndAnalysisSecretScanningNonProviderPatternsStatus = S.Stri
 export interface SecurityAndAnalysisSecretScanningNonProviderPatterns {
   status?: SecurityAndAnalysisSecretScanningNonProviderPatternsStatus;
 }
-export const SecurityAndAnalysisSecretScanningNonProviderPatterns = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(SecurityAndAnalysisSecretScanningNonProviderPatternsStatus),
-  }),
-).annotate({
-  identifier: "SecurityAndAnalysisSecretScanningNonProviderPatterns",
-}) as any as S.Schema<SecurityAndAnalysisSecretScanningNonProviderPatterns>;
+export const SecurityAndAnalysisSecretScanningNonProviderPatterns =
+  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningNonProviderPatterns>;
 
 export type SecurityAndAnalysisSecretScanningAiDetectionStatus = "enabled" | "disabled";
 export const SecurityAndAnalysisSecretScanningAiDetectionStatus = S.String;
@@ -450,13 +425,8 @@ export const SecurityAndAnalysisSecretScanningAiDetectionStatus = S.String;
 export interface SecurityAndAnalysisSecretScanningAiDetection {
   status?: SecurityAndAnalysisSecretScanningAiDetectionStatus;
 }
-export const SecurityAndAnalysisSecretScanningAiDetection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(SecurityAndAnalysisSecretScanningAiDetectionStatus),
-  }),
-).annotate({
-  identifier: "SecurityAndAnalysisSecretScanningAiDetection",
-}) as any as S.Schema<SecurityAndAnalysisSecretScanningAiDetection>;
+export const SecurityAndAnalysisSecretScanningAiDetection =
+  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningAiDetection>;
 
 export type SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus = "enabled" | "disabled";
 export const SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus = S.String;
@@ -479,13 +449,8 @@ export const SecurityAndAnalysisSecretScanningDelegatedBypassStatus = S.String;
 export interface SecurityAndAnalysisSecretScanningDelegatedBypass {
   status?: SecurityAndAnalysisSecretScanningDelegatedBypassStatus;
 }
-export const SecurityAndAnalysisSecretScanningDelegatedBypass = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(SecurityAndAnalysisSecretScanningDelegatedBypassStatus),
-  }),
-).annotate({
-  identifier: "SecurityAndAnalysisSecretScanningDelegatedBypass",
-}) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypass>;
+export const SecurityAndAnalysisSecretScanningDelegatedBypass =
+  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypass>;
 
 /** The type of the bypass reviewer */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
@@ -3797,11 +3762,8 @@ export const RepositoryRuleDeletionType = S.String;
 export interface RepositoryRuleDeletion {
   type: RepositoryRuleDeletionType;
 }
-export const RepositoryRuleDeletion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: RepositoryRuleDeletionType,
-  }),
-).annotate({ identifier: "RepositoryRuleDeletion" }) as any as S.Schema<RepositoryRuleDeletion>;
+export const RepositoryRuleDeletion =
+  RepositoryRuleCreation as any as S.Schema<RepositoryRuleDeletion>;
 
 export type RepositoryRuleRequiredLinearHistoryType = "required_linear_history";
 export const RepositoryRuleRequiredLinearHistoryType = S.String;
@@ -3861,13 +3823,8 @@ export const RepositoryRuleRequiredSignaturesType = S.String;
 export interface RepositoryRuleRequiredSignatures {
   type: RepositoryRuleRequiredSignaturesType;
 }
-export const RepositoryRuleRequiredSignatures = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: RepositoryRuleRequiredSignaturesType,
-  }),
-).annotate({
-  identifier: "RepositoryRuleRequiredSignatures",
-}) as any as S.Schema<RepositoryRuleRequiredSignatures>;
+export const RepositoryRuleRequiredSignatures =
+  RepositoryRuleRequiredLinearHistory as any as S.Schema<RepositoryRuleRequiredSignatures>;
 
 export type RepositoryRulePullRequestType = "pull_request";
 export const RepositoryRulePullRequestType = S.String;
@@ -3949,14 +3906,8 @@ export interface RepositoryRuleParamsReviewer {
   /** The type of the reviewer */
   type: RepositoryRuleParamsReviewerType | (string & {});
 }
-export const RepositoryRuleParamsReviewer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    type: RepositoryRuleParamsReviewerType,
-  }),
-).annotate({
-  identifier: "RepositoryRuleParamsReviewer",
-}) as any as S.Schema<RepositoryRuleParamsReviewer>;
+export const RepositoryRuleParamsReviewer =
+  RepositoryRuleParamsActor as any as S.Schema<RepositoryRuleParamsReviewer>;
 
 /** A reviewing team, and file patterns describing which files they must approve changes to. */
 export interface RepositoryRuleParamsRequiredReviewerConfiguration {
@@ -4095,13 +4046,8 @@ export const RepositoryRuleNonFastForwardType = S.String;
 export interface RepositoryRuleNonFastForward {
   type: RepositoryRuleNonFastForwardType;
 }
-export const RepositoryRuleNonFastForward = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: RepositoryRuleNonFastForwardType,
-  }),
-).annotate({
-  identifier: "RepositoryRuleNonFastForward",
-}) as any as S.Schema<RepositoryRuleNonFastForward>;
+export const RepositoryRuleNonFastForward =
+  RepositoryRuleRequiredLinearHistory as any as S.Schema<RepositoryRuleNonFastForward>;
 
 export type RepositoryRuleCommitMessagePatternType = "commit_message_pattern";
 export const RepositoryRuleCommitMessagePatternType = S.String;
@@ -4170,30 +4116,16 @@ export interface RepositoryRuleCommitAuthorEmailPatternParameters {
   /** The pattern to match with. */
   pattern: string;
 }
-export const RepositoryRuleCommitAuthorEmailPatternParameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    negate: S.optional(S.Boolean),
-    operator: RepositoryRuleCommitAuthorEmailPatternParametersOperator,
-    pattern: S.String,
-  }),
-).annotate({
-  identifier: "RepositoryRuleCommitAuthorEmailPatternParameters",
-}) as any as S.Schema<RepositoryRuleCommitAuthorEmailPatternParameters>;
+export const RepositoryRuleCommitAuthorEmailPatternParameters =
+  RepositoryRuleCommitMessagePatternParameters as any as S.Schema<RepositoryRuleCommitAuthorEmailPatternParameters>;
 
 /** Parameters to be used for the commit_author_email_pattern rule */
 export interface RepositoryRuleCommitAuthorEmailPattern {
   type: RepositoryRuleCommitAuthorEmailPatternType;
   parameters?: RepositoryRuleCommitAuthorEmailPatternParameters;
 }
-export const RepositoryRuleCommitAuthorEmailPattern = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: RepositoryRuleCommitAuthorEmailPatternType,
-    parameters: S.optional(RepositoryRuleCommitAuthorEmailPatternParameters),
-  }),
-).annotate({
-  identifier: "RepositoryRuleCommitAuthorEmailPattern",
-}) as any as S.Schema<RepositoryRuleCommitAuthorEmailPattern>;
+export const RepositoryRuleCommitAuthorEmailPattern =
+  RepositoryRuleCommitMessagePattern as any as S.Schema<RepositoryRuleCommitAuthorEmailPattern>;
 
 export type RepositoryRuleCommitterEmailPatternType = "committer_email_pattern";
 export const RepositoryRuleCommitterEmailPatternType = S.String;
@@ -4216,30 +4148,16 @@ export interface RepositoryRuleCommitterEmailPatternParameters {
   /** The pattern to match with. */
   pattern: string;
 }
-export const RepositoryRuleCommitterEmailPatternParameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    negate: S.optional(S.Boolean),
-    operator: RepositoryRuleCommitterEmailPatternParametersOperator,
-    pattern: S.String,
-  }),
-).annotate({
-  identifier: "RepositoryRuleCommitterEmailPatternParameters",
-}) as any as S.Schema<RepositoryRuleCommitterEmailPatternParameters>;
+export const RepositoryRuleCommitterEmailPatternParameters =
+  RepositoryRuleCommitMessagePatternParameters as any as S.Schema<RepositoryRuleCommitterEmailPatternParameters>;
 
 /** Parameters to be used for the committer_email_pattern rule */
 export interface RepositoryRuleCommitterEmailPattern {
   type: RepositoryRuleCommitterEmailPatternType;
   parameters?: RepositoryRuleCommitterEmailPatternParameters;
 }
-export const RepositoryRuleCommitterEmailPattern = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: RepositoryRuleCommitterEmailPatternType,
-    parameters: S.optional(RepositoryRuleCommitterEmailPatternParameters),
-  }),
-).annotate({
-  identifier: "RepositoryRuleCommitterEmailPattern",
-}) as any as S.Schema<RepositoryRuleCommitterEmailPattern>;
+export const RepositoryRuleCommitterEmailPattern =
+  RepositoryRuleCommitMessagePattern as any as S.Schema<RepositoryRuleCommitterEmailPattern>;
 
 export type RepositoryRuleBranchNamePatternType = "branch_name_pattern";
 export const RepositoryRuleBranchNamePatternType = S.String;
@@ -4262,30 +4180,16 @@ export interface RepositoryRuleBranchNamePatternParameters {
   /** The pattern to match with. */
   pattern: string;
 }
-export const RepositoryRuleBranchNamePatternParameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    negate: S.optional(S.Boolean),
-    operator: RepositoryRuleBranchNamePatternParametersOperator,
-    pattern: S.String,
-  }),
-).annotate({
-  identifier: "RepositoryRuleBranchNamePatternParameters",
-}) as any as S.Schema<RepositoryRuleBranchNamePatternParameters>;
+export const RepositoryRuleBranchNamePatternParameters =
+  RepositoryRuleCommitMessagePatternParameters as any as S.Schema<RepositoryRuleBranchNamePatternParameters>;
 
 /** Parameters to be used for the branch_name_pattern rule */
 export interface RepositoryRuleBranchNamePattern {
   type: RepositoryRuleBranchNamePatternType;
   parameters?: RepositoryRuleBranchNamePatternParameters;
 }
-export const RepositoryRuleBranchNamePattern = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: RepositoryRuleBranchNamePatternType,
-    parameters: S.optional(RepositoryRuleBranchNamePatternParameters),
-  }),
-).annotate({
-  identifier: "RepositoryRuleBranchNamePattern",
-}) as any as S.Schema<RepositoryRuleBranchNamePattern>;
+export const RepositoryRuleBranchNamePattern =
+  RepositoryRuleCommitMessagePattern as any as S.Schema<RepositoryRuleBranchNamePattern>;
 
 export type RepositoryRuleTagNamePatternType = "tag_name_pattern";
 export const RepositoryRuleTagNamePatternType = S.String;
@@ -4308,30 +4212,16 @@ export interface RepositoryRuleTagNamePatternParameters {
   /** The pattern to match with. */
   pattern: string;
 }
-export const RepositoryRuleTagNamePatternParameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    negate: S.optional(S.Boolean),
-    operator: RepositoryRuleTagNamePatternParametersOperator,
-    pattern: S.String,
-  }),
-).annotate({
-  identifier: "RepositoryRuleTagNamePatternParameters",
-}) as any as S.Schema<RepositoryRuleTagNamePatternParameters>;
+export const RepositoryRuleTagNamePatternParameters =
+  RepositoryRuleCommitMessagePatternParameters as any as S.Schema<RepositoryRuleTagNamePatternParameters>;
 
 /** Parameters to be used for the tag_name_pattern rule */
 export interface RepositoryRuleTagNamePattern {
   type: RepositoryRuleTagNamePatternType;
   parameters?: RepositoryRuleTagNamePatternParameters;
 }
-export const RepositoryRuleTagNamePattern = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: RepositoryRuleTagNamePatternType,
-    parameters: S.optional(RepositoryRuleTagNamePatternParameters),
-  }),
-).annotate({
-  identifier: "RepositoryRuleTagNamePattern",
-}) as any as S.Schema<RepositoryRuleTagNamePattern>;
+export const RepositoryRuleTagNamePattern =
+  RepositoryRuleCommitMessagePattern as any as S.Schema<RepositoryRuleTagNamePattern>;
 
 export type RepositoryRuleFilePathRestrictionType = "file_path_restriction";
 export const RepositoryRuleFilePathRestrictionType = S.String;
@@ -4894,13 +4784,8 @@ export const RepositoryRuleLicenseComplianceScanningType = S.String;
 export interface RepositoryRuleLicenseComplianceScanning {
   type: RepositoryRuleLicenseComplianceScanningType;
 }
-export const RepositoryRuleLicenseComplianceScanning = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: RepositoryRuleLicenseComplianceScanningType,
-  }),
-).annotate({
-  identifier: "RepositoryRuleLicenseComplianceScanning",
-}) as any as S.Schema<RepositoryRuleLicenseComplianceScanning>;
+export const RepositoryRuleLicenseComplianceScanning =
+  RepositoryRuleRequiredLinearHistory as any as S.Schema<RepositoryRuleLicenseComplianceScanning>;
 
 /** A repository rule. */
 export type RepositoryRule =
@@ -7693,16 +7578,8 @@ export interface RepositoryRuleDetailedCase2 {
   /** The ID of the ruleset that includes this rule. */
   ruleset_id?: number;
 }
-export const RepositoryRuleDetailedCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: RepositoryRuleDetailedCase2Type,
-    ruleset_source_type: S.optional(RepositoryRuleDetailedCase2RulesetSourceType),
-    ruleset_source: S.optional(S.String),
-    ruleset_id: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RepositoryRuleDetailedCase2",
-}) as any as S.Schema<RepositoryRuleDetailedCase2>;
+export const RepositoryRuleDetailedCase2 =
+  RepositoryRuleDetailedCase0 as any as S.Schema<RepositoryRuleDetailedCase2>;
 
 export type RepositoryRuleDetailedCase3Type = "required_linear_history";
 export const RepositoryRuleDetailedCase3Type = S.String;
@@ -7720,16 +7597,8 @@ export interface RepositoryRuleDetailedCase3 {
   /** The ID of the ruleset that includes this rule. */
   ruleset_id?: number;
 }
-export const RepositoryRuleDetailedCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: RepositoryRuleDetailedCase3Type,
-    ruleset_source_type: S.optional(RepositoryRuleDetailedCase3RulesetSourceType),
-    ruleset_source: S.optional(S.String),
-    ruleset_id: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RepositoryRuleDetailedCase3",
-}) as any as S.Schema<RepositoryRuleDetailedCase3>;
+export const RepositoryRuleDetailedCase3 =
+  RepositoryRuleDetailedCase0 as any as S.Schema<RepositoryRuleDetailedCase3>;
 
 export type RepositoryRuleDetailedCase4Type = "merge_queue";
 export const RepositoryRuleDetailedCase4Type = S.String;
@@ -7758,19 +7627,8 @@ export interface RepositoryRuleDetailedCase4Parameters {
   /** The time merge queue should wait after the first PR is added to the queue for the minimum group size to be met. After this time has elapsed, the minimum group size will be ignored and a smaller group will be merged. */
   min_entries_to_merge_wait_minutes: number;
 }
-export const RepositoryRuleDetailedCase4Parameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    check_response_timeout_minutes: S.Number,
-    grouping_strategy: RepositoryRuleDetailedCase4ParametersGroupingStrategy,
-    max_entries_to_build: S.Number,
-    max_entries_to_merge: S.Number,
-    merge_method: RepositoryRuleDetailedCase4ParametersMergeMethod,
-    min_entries_to_merge: S.Number,
-    min_entries_to_merge_wait_minutes: S.Number,
-  }),
-).annotate({
-  identifier: "RepositoryRuleDetailedCase4Parameters",
-}) as any as S.Schema<RepositoryRuleDetailedCase4Parameters>;
+export const RepositoryRuleDetailedCase4Parameters =
+  RepositoryRuleMergeQueueParameters as any as S.Schema<RepositoryRuleDetailedCase4Parameters>;
 
 /** The type of source for the ruleset that includes this rule. */
 export type RepositoryRuleDetailedCase4RulesetSourceType = "Repository" | "Organization";
@@ -7855,16 +7713,8 @@ export interface RepositoryRuleDetailedCase6 {
   /** The ID of the ruleset that includes this rule. */
   ruleset_id?: number;
 }
-export const RepositoryRuleDetailedCase6 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: RepositoryRuleDetailedCase6Type,
-    ruleset_source_type: S.optional(RepositoryRuleDetailedCase6RulesetSourceType),
-    ruleset_source: S.optional(S.String),
-    ruleset_id: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RepositoryRuleDetailedCase6",
-}) as any as S.Schema<RepositoryRuleDetailedCase6>;
+export const RepositoryRuleDetailedCase6 =
+  RepositoryRuleDetailedCase0 as any as S.Schema<RepositoryRuleDetailedCase6>;
 
 export type RepositoryRuleDetailedCase7Type = "pull_request";
 export const RepositoryRuleDetailedCase7Type = S.String;
@@ -7878,9 +7728,8 @@ export const RepositoryRuleDetailedCase7ParametersAllowedMergeMethodsItem = S.St
 /** Array of allowed merge methods. Allowed values include `merge`, `squash`, and `rebase`. At least one option must be enabled. */
 export type RepositoryRuleDetailedCase7ParametersAllowedMergeMethodsList =
   Array<RepositoryRuleDetailedCase7ParametersAllowedMergeMethodsItem>;
-export const RepositoryRuleDetailedCase7ParametersAllowedMergeMethodsList = /*@__PURE__*/ S.Array(
-  RepositoryRuleDetailedCase7ParametersAllowedMergeMethodsItem,
-) as any as S.Schema<RepositoryRuleDetailedCase7ParametersAllowedMergeMethodsList>;
+export const RepositoryRuleDetailedCase7ParametersAllowedMergeMethodsList =
+  RepositoryRulePullRequestParametersAllowedMergeMethodsList as any as S.Schema<RepositoryRuleDetailedCase7ParametersAllowedMergeMethodsList>;
 
 /** > [!NOTE] > `required_reviewers` is in beta and subject to change. A collection of reviewers and associated file patterns. Each reviewer has a list of file patterns which determine the files that reviewer is required to review. */
 export type RepositoryRuleDetailedCase7ParametersRequiredReviewersList =
@@ -8016,16 +7865,8 @@ export interface RepositoryRuleDetailedCase9 {
   /** The ID of the ruleset that includes this rule. */
   ruleset_id?: number;
 }
-export const RepositoryRuleDetailedCase9 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: RepositoryRuleDetailedCase9Type,
-    ruleset_source_type: S.optional(RepositoryRuleDetailedCase9RulesetSourceType),
-    ruleset_source: S.optional(S.String),
-    ruleset_id: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RepositoryRuleDetailedCase9",
-}) as any as S.Schema<RepositoryRuleDetailedCase9>;
+export const RepositoryRuleDetailedCase9 =
+  RepositoryRuleDetailedCase0 as any as S.Schema<RepositoryRuleDetailedCase9>;
 
 export type RepositoryRuleDetailedCase10Type = "commit_message_pattern";
 export const RepositoryRuleDetailedCase10Type = S.String;
@@ -8048,16 +7889,8 @@ export interface RepositoryRuleDetailedCase10Parameters {
   /** The pattern to match with. */
   pattern: string;
 }
-export const RepositoryRuleDetailedCase10Parameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    negate: S.optional(S.Boolean),
-    operator: RepositoryRuleDetailedCase10ParametersOperator,
-    pattern: S.String,
-  }),
-).annotate({
-  identifier: "RepositoryRuleDetailedCase10Parameters",
-}) as any as S.Schema<RepositoryRuleDetailedCase10Parameters>;
+export const RepositoryRuleDetailedCase10Parameters =
+  RepositoryRuleCommitMessagePatternParameters as any as S.Schema<RepositoryRuleDetailedCase10Parameters>;
 
 /** The type of source for the ruleset that includes this rule. */
 export type RepositoryRuleDetailedCase10RulesetSourceType = "Repository" | "Organization";
@@ -8106,16 +7939,8 @@ export interface RepositoryRuleDetailedCase11Parameters {
   /** The pattern to match with. */
   pattern: string;
 }
-export const RepositoryRuleDetailedCase11Parameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    negate: S.optional(S.Boolean),
-    operator: RepositoryRuleDetailedCase11ParametersOperator,
-    pattern: S.String,
-  }),
-).annotate({
-  identifier: "RepositoryRuleDetailedCase11Parameters",
-}) as any as S.Schema<RepositoryRuleDetailedCase11Parameters>;
+export const RepositoryRuleDetailedCase11Parameters =
+  RepositoryRuleCommitMessagePatternParameters as any as S.Schema<RepositoryRuleDetailedCase11Parameters>;
 
 /** The type of source for the ruleset that includes this rule. */
 export type RepositoryRuleDetailedCase11RulesetSourceType = "Repository" | "Organization";
@@ -8131,17 +7956,8 @@ export interface RepositoryRuleDetailedCase11 {
   /** The ID of the ruleset that includes this rule. */
   ruleset_id?: number;
 }
-export const RepositoryRuleDetailedCase11 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: RepositoryRuleDetailedCase11Type,
-    parameters: S.optional(RepositoryRuleDetailedCase11Parameters),
-    ruleset_source_type: S.optional(RepositoryRuleDetailedCase11RulesetSourceType),
-    ruleset_source: S.optional(S.String),
-    ruleset_id: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RepositoryRuleDetailedCase11",
-}) as any as S.Schema<RepositoryRuleDetailedCase11>;
+export const RepositoryRuleDetailedCase11 =
+  RepositoryRuleDetailedCase10 as any as S.Schema<RepositoryRuleDetailedCase11>;
 
 export type RepositoryRuleDetailedCase12Type = "committer_email_pattern";
 export const RepositoryRuleDetailedCase12Type = S.String;
@@ -8164,16 +7980,8 @@ export interface RepositoryRuleDetailedCase12Parameters {
   /** The pattern to match with. */
   pattern: string;
 }
-export const RepositoryRuleDetailedCase12Parameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    negate: S.optional(S.Boolean),
-    operator: RepositoryRuleDetailedCase12ParametersOperator,
-    pattern: S.String,
-  }),
-).annotate({
-  identifier: "RepositoryRuleDetailedCase12Parameters",
-}) as any as S.Schema<RepositoryRuleDetailedCase12Parameters>;
+export const RepositoryRuleDetailedCase12Parameters =
+  RepositoryRuleCommitMessagePatternParameters as any as S.Schema<RepositoryRuleDetailedCase12Parameters>;
 
 /** The type of source for the ruleset that includes this rule. */
 export type RepositoryRuleDetailedCase12RulesetSourceType = "Repository" | "Organization";
@@ -8189,17 +7997,8 @@ export interface RepositoryRuleDetailedCase12 {
   /** The ID of the ruleset that includes this rule. */
   ruleset_id?: number;
 }
-export const RepositoryRuleDetailedCase12 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: RepositoryRuleDetailedCase12Type,
-    parameters: S.optional(RepositoryRuleDetailedCase12Parameters),
-    ruleset_source_type: S.optional(RepositoryRuleDetailedCase12RulesetSourceType),
-    ruleset_source: S.optional(S.String),
-    ruleset_id: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RepositoryRuleDetailedCase12",
-}) as any as S.Schema<RepositoryRuleDetailedCase12>;
+export const RepositoryRuleDetailedCase12 =
+  RepositoryRuleDetailedCase10 as any as S.Schema<RepositoryRuleDetailedCase12>;
 
 export type RepositoryRuleDetailedCase13Type = "branch_name_pattern";
 export const RepositoryRuleDetailedCase13Type = S.String;
@@ -8222,16 +8021,8 @@ export interface RepositoryRuleDetailedCase13Parameters {
   /** The pattern to match with. */
   pattern: string;
 }
-export const RepositoryRuleDetailedCase13Parameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    negate: S.optional(S.Boolean),
-    operator: RepositoryRuleDetailedCase13ParametersOperator,
-    pattern: S.String,
-  }),
-).annotate({
-  identifier: "RepositoryRuleDetailedCase13Parameters",
-}) as any as S.Schema<RepositoryRuleDetailedCase13Parameters>;
+export const RepositoryRuleDetailedCase13Parameters =
+  RepositoryRuleCommitMessagePatternParameters as any as S.Schema<RepositoryRuleDetailedCase13Parameters>;
 
 /** The type of source for the ruleset that includes this rule. */
 export type RepositoryRuleDetailedCase13RulesetSourceType = "Repository" | "Organization";
@@ -8247,17 +8038,8 @@ export interface RepositoryRuleDetailedCase13 {
   /** The ID of the ruleset that includes this rule. */
   ruleset_id?: number;
 }
-export const RepositoryRuleDetailedCase13 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: RepositoryRuleDetailedCase13Type,
-    parameters: S.optional(RepositoryRuleDetailedCase13Parameters),
-    ruleset_source_type: S.optional(RepositoryRuleDetailedCase13RulesetSourceType),
-    ruleset_source: S.optional(S.String),
-    ruleset_id: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RepositoryRuleDetailedCase13",
-}) as any as S.Schema<RepositoryRuleDetailedCase13>;
+export const RepositoryRuleDetailedCase13 =
+  RepositoryRuleDetailedCase10 as any as S.Schema<RepositoryRuleDetailedCase13>;
 
 export type RepositoryRuleDetailedCase14Type = "tag_name_pattern";
 export const RepositoryRuleDetailedCase14Type = S.String;
@@ -8280,16 +8062,8 @@ export interface RepositoryRuleDetailedCase14Parameters {
   /** The pattern to match with. */
   pattern: string;
 }
-export const RepositoryRuleDetailedCase14Parameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    negate: S.optional(S.Boolean),
-    operator: RepositoryRuleDetailedCase14ParametersOperator,
-    pattern: S.String,
-  }),
-).annotate({
-  identifier: "RepositoryRuleDetailedCase14Parameters",
-}) as any as S.Schema<RepositoryRuleDetailedCase14Parameters>;
+export const RepositoryRuleDetailedCase14Parameters =
+  RepositoryRuleCommitMessagePatternParameters as any as S.Schema<RepositoryRuleDetailedCase14Parameters>;
 
 /** The type of source for the ruleset that includes this rule. */
 export type RepositoryRuleDetailedCase14RulesetSourceType = "Repository" | "Organization";
@@ -8305,17 +8079,8 @@ export interface RepositoryRuleDetailedCase14 {
   /** The ID of the ruleset that includes this rule. */
   ruleset_id?: number;
 }
-export const RepositoryRuleDetailedCase14 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: RepositoryRuleDetailedCase14Type,
-    parameters: S.optional(RepositoryRuleDetailedCase14Parameters),
-    ruleset_source_type: S.optional(RepositoryRuleDetailedCase14RulesetSourceType),
-    ruleset_source: S.optional(S.String),
-    ruleset_id: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RepositoryRuleDetailedCase14",
-}) as any as S.Schema<RepositoryRuleDetailedCase14>;
+export const RepositoryRuleDetailedCase14 =
+  RepositoryRuleDetailedCase10 as any as S.Schema<RepositoryRuleDetailedCase14>;
 
 export type RepositoryRuleDetailedCase15Type = "workflows";
 export const RepositoryRuleDetailedCase15Type = S.String;
@@ -8451,16 +8216,8 @@ export interface RepositoryRuleDetailedCase18 {
   /** The ID of the ruleset that includes this rule. */
   ruleset_id?: number;
 }
-export const RepositoryRuleDetailedCase18 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: RepositoryRuleDetailedCase18Type,
-    ruleset_source_type: S.optional(RepositoryRuleDetailedCase18RulesetSourceType),
-    ruleset_source: S.optional(S.String),
-    ruleset_id: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RepositoryRuleDetailedCase18",
-}) as any as S.Schema<RepositoryRuleDetailedCase18>;
+export const RepositoryRuleDetailedCase18 =
+  RepositoryRuleDetailedCase0 as any as S.Schema<RepositoryRuleDetailedCase18>;
 
 export type RepositoryRuleDetailedCase19Type = "file_path_restriction";
 export const RepositoryRuleDetailedCase19Type = S.String;

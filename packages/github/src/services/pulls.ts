@@ -1862,26 +1862,7 @@ export interface NullableTeamSimple {
   /** Unique identifier of the enterprise to which this team belongs */
   enterprise_id?: number;
 }
-export const NullableTeamSimple = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    node_id: S.String,
-    url: S.String,
-    members_url: S.String,
-    name: S.String,
-    description: S.NullOr(S.String),
-    permission: S.String,
-    privacy: S.optional(S.String),
-    notification_setting: S.optional(S.String),
-    html_url: S.String,
-    repositories_url: S.String,
-    slug: S.String,
-    ldap_dn: S.optional(S.String),
-    type: NullableTeamSimpleType,
-    organization_id: S.optional(S.Number),
-    enterprise_id: S.optional(S.Number),
-  }),
-).annotate({ identifier: "NullableTeamSimple" }) as any as S.Schema<NullableTeamSimple>;
+export const NullableTeamSimple = TeamSimple as any as S.Schema<NullableTeamSimple>;
 
 /** Groups of organization members that gives permissions on specified repositories. */
 export interface Team {

@@ -156,11 +156,7 @@ export interface Criticality {
   /** Required. Criticality Type. */
   type?: CriticalityTypeEnum | (string & {});
 }
-export const Criticality = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(CriticalityTypeEnum),
-  }),
-).annotate({ identifier: "Criticality" }) as any as S.Schema<Criticality>;
+export const Criticality = Environment as any as S.Schema<Criticality>;
 
 /** Consumer provided attributes. */
 export interface Attributes {
@@ -193,11 +189,7 @@ export interface Scope {
   /** Required. Scope Type. */
   type?: ScopeTypeEnum | (string & {});
 }
-export const Scope = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(ScopeTypeEnum),
-  }),
-).annotate({ identifier: "Scope" }) as any as S.Schema<Scope>;
+export const Scope = Environment as any as S.Schema<Scope>;
 
 /** Application defines the governance boundary for App Hub entities that perform a logical end-to-end business function. App Hub supports application level IAM permission to align with governance requirements. */
 export interface Application {
@@ -350,11 +342,7 @@ export interface RegistrationType {
   /** Output only. The registration type of a service. */
   type?: RegistrationTypeTypeEnum | (string & {});
 }
-export const RegistrationType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(RegistrationTypeTypeEnum),
-  }),
-).annotate({ identifier: "RegistrationType" }) as any as S.Schema<RegistrationType>;
+export const RegistrationType = Environment as any as S.Schema<RegistrationType>;
 
 export type FunctionalTypeTypeEnum = "TYPE_UNSPECIFIED" | "AGENT" | "MCP_SERVER" | "ENDPOINT";
 export const FunctionalTypeTypeEnum = S.String;
@@ -364,11 +352,7 @@ export interface FunctionalType {
   /** Output only. The functional type of a service or workload. */
   type?: FunctionalTypeTypeEnum | (string & {});
 }
-export const FunctionalType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(FunctionalTypeTypeEnum),
-  }),
-).annotate({ identifier: "FunctionalType" }) as any as S.Schema<FunctionalType>;
+export const FunctionalType = Environment as any as S.Schema<FunctionalType>;
 
 /** Additional metadata for a Service or Workload. */
 export interface ExtendedMetadata {

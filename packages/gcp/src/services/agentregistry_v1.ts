@@ -305,12 +305,7 @@ export interface McpServerSpec {
   /** Required. The type of the MCP Server spec content. */
   type?: McpServerSpecTypeEnum | (string & {});
 }
-export const McpServerSpec = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    content: S.optional(DocumentMap),
-    type: S.optional(McpServerSpecTypeEnum),
-  }),
-).annotate({ identifier: "McpServerSpec" }) as any as S.Schema<McpServerSpec>;
+export const McpServerSpec = AgentSpec as any as S.Schema<McpServerSpec>;
 
 export type EndpointSpecTypeEnum = "TYPE_UNSPECIFIED" | "NO_SPEC";
 export const EndpointSpecTypeEnum = S.String;
@@ -726,12 +721,7 @@ export interface Card {
   /** Output only. The type of agent card. */
   type?: CardTypeEnum;
 }
-export const Card = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    content: S.optional(DocumentMap),
-    type: S.optional(CardTypeEnum),
-  }),
-).annotate({ identifier: "Card" }) as any as S.Schema<Card>;
+export const Card = AgentSpec as any as S.Schema<Card>;
 
 /** Represents the skills of an Agent. */
 export interface A2ASkill {

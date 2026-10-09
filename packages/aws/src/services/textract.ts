@@ -214,7 +214,7 @@ export type ContentClassifier =
 export const ContentClassifier = S.String;
 
 export type ContentClassifiers = ContentClassifier[];
-export const ContentClassifiers = /*@__PURE__*/ S.Array(ContentClassifier);
+export const ContentClassifiers = FeatureTypes as any as S.Schema<ContentClassifiers>;
 export interface HumanLoopDataAttributes {
   ContentClassifiers?: ContentClassifier[];
 }
@@ -404,7 +404,7 @@ export type EntityType =
 export const EntityType = S.String;
 
 export type EntityTypes = EntityType[];
-export const EntityTypes = /*@__PURE__*/ S.Array(EntityType);
+export const EntityTypes = FeatureTypes as any as S.Schema<EntityTypes>;
 export type SelectionStatus = "SELECTED" | "NOT_SELECTED" | (string & {});
 export const SelectionStatus = S.String;
 

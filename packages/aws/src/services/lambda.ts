@@ -1330,7 +1330,8 @@ export type EventSourceMappingMetric = "EventCount" | "ErrorCount" | "KafkaMetri
 export const EventSourceMappingMetric = S.String;
 
 export type EventSourceMappingMetricList = EventSourceMappingMetric[];
-export const EventSourceMappingMetricList = /*@__PURE__*/ S.Array(EventSourceMappingMetric);
+export const EventSourceMappingMetricList =
+  ArchitecturesList as any as S.Schema<EventSourceMappingMetricList>;
 export interface EventSourceMappingMetricsConfig {
   Metrics?: EventSourceMappingMetric[];
 }
@@ -1435,7 +1436,8 @@ export type FunctionResponseType = "ReportBatchItemFailures" | (string & {});
 export const FunctionResponseType = S.String;
 
 export type FunctionResponseTypeList = FunctionResponseType[];
-export const FunctionResponseTypeList = /*@__PURE__*/ S.Array(FunctionResponseType);
+export const FunctionResponseTypeList =
+  ArchitecturesList as any as S.Schema<FunctionResponseTypeList>;
 export type SchemaRegistryUri = string;
 export type SchemaRegistryEventRecordFormat = "JSON" | "SOURCE" | (string & {});
 export const SchemaRegistryEventRecordFormat = S.String;
@@ -1451,11 +1453,8 @@ export interface KafkaSchemaRegistryAccessConfig {
   Type?: KafkaSchemaRegistryAuthType;
   URI?: string;
 }
-export const KafkaSchemaRegistryAccessConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Type: S.optional(KafkaSchemaRegistryAuthType), URI: S.optional(S.String) }),
-).annotate({
-  identifier: "KafkaSchemaRegistryAccessConfig",
-}) as any as S.Schema<KafkaSchemaRegistryAccessConfig>;
+export const KafkaSchemaRegistryAccessConfig =
+  SourceAccessConfiguration as any as S.Schema<KafkaSchemaRegistryAccessConfig>;
 export type KafkaSchemaRegistryAccessConfigList = KafkaSchemaRegistryAccessConfig[];
 export const KafkaSchemaRegistryAccessConfigList = /*@__PURE__*/ S.Array(
   KafkaSchemaRegistryAccessConfig,
@@ -3606,7 +3605,7 @@ export type CompatibleArchitectures = Architecture[];
 export const CompatibleArchitectures =
   ArchitecturesList as any as S.Schema<CompatibleArchitectures>;
 export type CompatibleRuntimes = Runtime[];
-export const CompatibleRuntimes = /*@__PURE__*/ S.Array(Runtime);
+export const CompatibleRuntimes = ArchitecturesList as any as S.Schema<CompatibleRuntimes>;
 export type LicenseInfo = string;
 export interface GetLayerVersionResponse {
   Content?: LayerVersionContentOutput;
@@ -4091,7 +4090,7 @@ export const ListCodeSigningConfigsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCodeSigningConfigsResponse",
 }) as any as S.Schema<ListCodeSigningConfigsResponse>;
 export type ExecutionStatusList = ExecutionStatus[];
-export const ExecutionStatusList = /*@__PURE__*/ S.Array(ExecutionStatus);
+export const ExecutionStatusList = ArchitecturesList as any as S.Schema<ExecutionStatusList>;
 export interface ListDurableExecutionsByFunctionRequest {
   FunctionName: string;
   Qualifier?: string;

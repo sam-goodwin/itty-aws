@@ -1467,9 +1467,8 @@ export const ExtensionCategory = S.String;
 
 /** The extension categories. */
 export type ResourceTypeExtensionExtensionCategoriesList = Array<ExtensionCategory | (string & {})>;
-export const ResourceTypeExtensionExtensionCategoriesList = /*@__PURE__*/ S.Array(
-  ExtensionCategory,
-) as any as S.Schema<ResourceTypeExtensionExtensionCategoriesList>;
+export const ResourceTypeExtensionExtensionCategoriesList =
+  TemplateDeploymentOptionsPreflightOptionsList as any as S.Schema<ResourceTypeExtensionExtensionCategoriesList>;
 
 export interface ResourceTypeExtension {
   /** The endpoint uri. */
@@ -1576,9 +1575,8 @@ export const ExtensionOptionType = S.String;
 
 /** The request. */
 export type ExtensionOptionsRequestList = Array<ExtensionOptionType | (string & {})>;
-export const ExtensionOptionsRequestList = /*@__PURE__*/ S.Array(
-  ExtensionOptionType,
-) as any as S.Schema<ExtensionOptionsRequestList>;
+export const ExtensionOptionsRequestList =
+  TemplateDeploymentOptionsPreflightOptionsList as any as S.Schema<ExtensionOptionsRequestList>;
 
 /** The response. */
 export type ExtensionOptionsResponseList = Array<ExtensionOptionType | (string & {})>;
@@ -2542,9 +2540,8 @@ export const ResourceTypeRegistrationPropertiesLegacyPolicyDisallowedLegacyOpera
 export type LegacyDisallowedConditionDisallowedLegacyOperationsList = Array<
   LegacyOperation | (string & {})
 >;
-export const LegacyDisallowedConditionDisallowedLegacyOperationsList = /*@__PURE__*/ S.Array(
-  LegacyOperation,
-) as any as S.Schema<LegacyDisallowedConditionDisallowedLegacyOperationsList>;
+export const LegacyDisallowedConditionDisallowedLegacyOperationsList =
+  TemplateDeploymentOptionsPreflightOptionsList as any as S.Schema<LegacyDisallowedConditionDisallowedLegacyOperationsList>;
 
 export interface LegacyDisallowedCondition {
   /** The disallowed legacy operations. */
@@ -6648,18 +6645,8 @@ export interface ProviderRegistrationsCreateOrUpdateResponse {
   /** Provider registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type. */
   kind?: ProviderRegistrationsCreateOrUpdateResponseKind;
 }
-export const ProviderRegistrationsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ProviderRegistrationProperties),
-    kind: S.optional(ProviderRegistrationsCreateOrUpdateResponseKind),
-  }),
-).annotate({
-  identifier: "ProviderRegistrationsCreateOrUpdateResponse",
-}) as any as S.Schema<ProviderRegistrationsCreateOrUpdateResponse>;
+export const ProviderRegistrationsCreateOrUpdateResponse =
+  GetProviderRegistrationResponse as any as S.Schema<ProviderRegistrationsCreateOrUpdateResponse>;
 
 /** Resource type registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type. */
 export type ResourceTypeRegistrationsCreateOrUpdateRequestKind = "Managed" | "Hybrid" | "Direct";
@@ -6712,18 +6699,8 @@ export interface ResourceTypeRegistrationsCreateOrUpdateResponse {
   /** Resource type registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type. */
   kind?: ResourceTypeRegistrationsCreateOrUpdateResponseKind;
 }
-export const ResourceTypeRegistrationsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ResourceTypeRegistrationProperties),
-    kind: S.optional(ResourceTypeRegistrationsCreateOrUpdateResponseKind),
-  }),
-).annotate({
-  identifier: "ResourceTypeRegistrationsCreateOrUpdateResponse",
-}) as any as S.Schema<ResourceTypeRegistrationsCreateOrUpdateResponse>;
+export const ResourceTypeRegistrationsCreateOrUpdateResponse =
+  GetResourceTypeRegistrationResponse as any as S.Schema<ResourceTypeRegistrationsCreateOrUpdateResponse>;
 
 export interface SkusCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */

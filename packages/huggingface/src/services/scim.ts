@@ -159,9 +159,8 @@ export const CreateScimInvitationResponseSchemasItem = S.String;
 
 export type CreateScimInvitationResponseSchemasList =
   Array<CreateScimInvitationResponseSchemasItem>;
-export const CreateScimInvitationResponseSchemasList = /*@__PURE__*/ S.Array(
-  CreateScimInvitationResponseSchemasItem,
-) as any as S.Schema<CreateScimInvitationResponseSchemasList>;
+export const CreateScimInvitationResponseSchemasList =
+  CreateScimGroupResponseSchemasList as any as S.Schema<CreateScimInvitationResponseSchemasList>;
 
 export interface CreateScimInvitationResponseName {
   givenName: string;
@@ -210,14 +209,8 @@ export interface CreateScimInvitationResponseMeta {
   resourceType: CreateScimInvitationResponseMetaResourceType;
   location: string;
 }
-export const CreateScimInvitationResponseMeta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceType: CreateScimInvitationResponseMetaResourceType,
-    location: S.String,
-  }),
-).annotate({
-  identifier: "CreateScimInvitationResponseMeta",
-}) as any as S.Schema<CreateScimInvitationResponseMeta>;
+export const CreateScimInvitationResponseMeta =
+  CreateScimGroupResponseMeta as any as S.Schema<CreateScimInvitationResponseMeta>;
 
 export interface CreateScimInvitationResponse {
   schemas: CreateScimInvitationResponseSchemasList;
@@ -285,9 +278,8 @@ export const CreateScimProvisioningGroupResponseSchemasItem = S.String;
 
 export type CreateScimProvisioningGroupResponseSchemasList =
   Array<CreateScimProvisioningGroupResponseSchemasItem>;
-export const CreateScimProvisioningGroupResponseSchemasList = /*@__PURE__*/ S.Array(
-  CreateScimProvisioningGroupResponseSchemasItem,
-) as any as S.Schema<CreateScimProvisioningGroupResponseSchemasList>;
+export const CreateScimProvisioningGroupResponseSchemasList =
+  CreateScimGroupResponseSchemasList as any as S.Schema<CreateScimProvisioningGroupResponseSchemasList>;
 
 export type CreateScimProvisioningGroupResponseMembersItem = CreateScimGroupRequestMembersItem;
 export const CreateScimProvisioningGroupResponseMembersItem = CreateScimGroupRequestMembersItem;
@@ -304,14 +296,8 @@ export interface CreateScimProvisioningGroupResponseMeta {
   resourceType: CreateScimProvisioningGroupResponseMetaResourceType;
   location: string;
 }
-export const CreateScimProvisioningGroupResponseMeta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceType: CreateScimProvisioningGroupResponseMetaResourceType,
-    location: S.String,
-  }),
-).annotate({
-  identifier: "CreateScimProvisioningGroupResponseMeta",
-}) as any as S.Schema<CreateScimProvisioningGroupResponseMeta>;
+export const CreateScimProvisioningGroupResponseMeta =
+  CreateScimGroupResponseMeta as any as S.Schema<CreateScimProvisioningGroupResponseMeta>;
 
 export interface CreateScimProvisioningGroupResponse {
   schemas: CreateScimProvisioningGroupResponseSchemasList;
@@ -370,9 +356,8 @@ export type CreateScimUserResponseSchemasItem = "urn:ietf:params:scim:schemas:co
 export const CreateScimUserResponseSchemasItem = S.String;
 
 export type CreateScimUserResponseSchemasList = Array<CreateScimUserResponseSchemasItem>;
-export const CreateScimUserResponseSchemasList = /*@__PURE__*/ S.Array(
-  CreateScimUserResponseSchemasItem,
-) as any as S.Schema<CreateScimUserResponseSchemasList>;
+export const CreateScimUserResponseSchemasList =
+  CreateScimGroupResponseSchemasList as any as S.Schema<CreateScimUserResponseSchemasList>;
 
 export type CreateScimUserResponseName = CreateScimInvitationResponseName;
 export const CreateScimUserResponseName = CreateScimInvitationResponseName;
@@ -387,20 +372,12 @@ export interface CreateScimUserResponseEmailsItem {
   /** We only support work emails, other types are converted to work */
   type?: CreateScimUserResponseEmailsItemType;
 }
-export const CreateScimUserResponseEmailsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.String,
-    primary: S.Boolean,
-    type: S.optional(CreateScimUserResponseEmailsItemType),
-  }),
-).annotate({
-  identifier: "CreateScimUserResponseEmailsItem",
-}) as any as S.Schema<CreateScimUserResponseEmailsItem>;
+export const CreateScimUserResponseEmailsItem =
+  CreateScimInvitationResponseEmailsItem as any as S.Schema<CreateScimUserResponseEmailsItem>;
 
 export type CreateScimUserResponseEmailsList = Array<CreateScimUserResponseEmailsItem>;
-export const CreateScimUserResponseEmailsList = /*@__PURE__*/ S.Array(
-  CreateScimUserResponseEmailsItem,
-) as any as S.Schema<CreateScimUserResponseEmailsList>;
+export const CreateScimUserResponseEmailsList =
+  CreateScimInvitationResponseEmailsList as any as S.Schema<CreateScimUserResponseEmailsList>;
 
 export type CreateScimUserResponseMetaResourceType = "User";
 export const CreateScimUserResponseMetaResourceType = S.String;
@@ -409,14 +386,8 @@ export interface CreateScimUserResponseMeta {
   resourceType: CreateScimUserResponseMetaResourceType;
   location: string;
 }
-export const CreateScimUserResponseMeta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceType: CreateScimUserResponseMetaResourceType,
-    location: S.String,
-  }),
-).annotate({
-  identifier: "CreateScimUserResponseMeta",
-}) as any as S.Schema<CreateScimUserResponseMeta>;
+export const CreateScimUserResponseMeta =
+  CreateScimGroupResponseMeta as any as S.Schema<CreateScimUserResponseMeta>;
 
 export interface CreateScimUserResponse {
   schemas: CreateScimUserResponseSchemasList;
@@ -690,9 +661,8 @@ export type GetScimGroupResponseSchemasItem = "urn:ietf:params:scim:schemas:core
 export const GetScimGroupResponseSchemasItem = S.String;
 
 export type GetScimGroupResponseSchemasList = Array<GetScimGroupResponseSchemasItem>;
-export const GetScimGroupResponseSchemasList = /*@__PURE__*/ S.Array(
-  GetScimGroupResponseSchemasItem,
-) as any as S.Schema<GetScimGroupResponseSchemasList>;
+export const GetScimGroupResponseSchemasList =
+  CreateScimGroupResponseSchemasList as any as S.Schema<GetScimGroupResponseSchemasList>;
 
 export type GetScimGroupResponseMembersItem = CreateScimGroupRequestMembersItem;
 export const GetScimGroupResponseMembersItem = CreateScimGroupRequestMembersItem;
@@ -761,9 +731,8 @@ export const GetScimProvisioningGroupResponseSchemasItem = S.String;
 
 export type GetScimProvisioningGroupResponseSchemasList =
   Array<GetScimProvisioningGroupResponseSchemasItem>;
-export const GetScimProvisioningGroupResponseSchemasList = /*@__PURE__*/ S.Array(
-  GetScimProvisioningGroupResponseSchemasItem,
-) as any as S.Schema<GetScimProvisioningGroupResponseSchemasList>;
+export const GetScimProvisioningGroupResponseSchemasList =
+  CreateScimGroupResponseSchemasList as any as S.Schema<GetScimProvisioningGroupResponseSchemasList>;
 
 export type GetScimProvisioningGroupResponseMembersItem = CreateScimGroupRequestMembersItem;
 export const GetScimProvisioningGroupResponseMembersItem = CreateScimGroupRequestMembersItem;
@@ -779,14 +748,8 @@ export interface GetScimProvisioningGroupResponseMeta {
   resourceType: GetScimProvisioningGroupResponseMetaResourceType;
   location: string;
 }
-export const GetScimProvisioningGroupResponseMeta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceType: GetScimProvisioningGroupResponseMetaResourceType,
-    location: S.String,
-  }),
-).annotate({
-  identifier: "GetScimProvisioningGroupResponseMeta",
-}) as any as S.Schema<GetScimProvisioningGroupResponseMeta>;
+export const GetScimProvisioningGroupResponseMeta =
+  CreateScimGroupResponseMeta as any as S.Schema<GetScimProvisioningGroupResponseMeta>;
 
 export interface GetScimProvisioningGroupResponse {
   schemas: GetScimProvisioningGroupResponseSchemasList;
@@ -834,9 +797,8 @@ export const GetScimProvisioningUserResponseSchemasItem = S.String;
 
 export type GetScimProvisioningUserResponseSchemasList =
   Array<GetScimProvisioningUserResponseSchemasItem>;
-export const GetScimProvisioningUserResponseSchemasList = /*@__PURE__*/ S.Array(
-  GetScimProvisioningUserResponseSchemasItem,
-) as any as S.Schema<GetScimProvisioningUserResponseSchemasList>;
+export const GetScimProvisioningUserResponseSchemasList =
+  CreateScimGroupResponseSchemasList as any as S.Schema<GetScimProvisioningUserResponseSchemasList>;
 
 export type GetScimProvisioningUserResponseName = CreateScimInvitationResponseName;
 export const GetScimProvisioningUserResponseName = CreateScimInvitationResponseName;
@@ -851,21 +813,13 @@ export interface GetScimProvisioningUserResponseEmailsItem {
   /** We only support work emails, other types are converted to work */
   type?: GetScimProvisioningUserResponseEmailsItemType;
 }
-export const GetScimProvisioningUserResponseEmailsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.String,
-    primary: S.Boolean,
-    type: S.optional(GetScimProvisioningUserResponseEmailsItemType),
-  }),
-).annotate({
-  identifier: "GetScimProvisioningUserResponseEmailsItem",
-}) as any as S.Schema<GetScimProvisioningUserResponseEmailsItem>;
+export const GetScimProvisioningUserResponseEmailsItem =
+  CreateScimInvitationResponseEmailsItem as any as S.Schema<GetScimProvisioningUserResponseEmailsItem>;
 
 export type GetScimProvisioningUserResponseEmailsList =
   Array<GetScimProvisioningUserResponseEmailsItem>;
-export const GetScimProvisioningUserResponseEmailsList = /*@__PURE__*/ S.Array(
-  GetScimProvisioningUserResponseEmailsItem,
-) as any as S.Schema<GetScimProvisioningUserResponseEmailsList>;
+export const GetScimProvisioningUserResponseEmailsList =
+  CreateScimInvitationResponseEmailsList as any as S.Schema<GetScimProvisioningUserResponseEmailsList>;
 
 export type GetScimProvisioningUserResponseMetaResourceType = "User";
 export const GetScimProvisioningUserResponseMetaResourceType = S.String;
@@ -874,14 +828,8 @@ export interface GetScimProvisioningUserResponseMeta {
   resourceType: GetScimProvisioningUserResponseMetaResourceType;
   location: string;
 }
-export const GetScimProvisioningUserResponseMeta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceType: GetScimProvisioningUserResponseMetaResourceType,
-    location: S.String,
-  }),
-).annotate({
-  identifier: "GetScimProvisioningUserResponseMeta",
-}) as any as S.Schema<GetScimProvisioningUserResponseMeta>;
+export const GetScimProvisioningUserResponseMeta =
+  CreateScimGroupResponseMeta as any as S.Schema<GetScimProvisioningUserResponseMeta>;
 
 export interface GetScimProvisioningUserResponse {
   schemas: GetScimProvisioningUserResponseSchemasList;
@@ -894,21 +842,8 @@ export interface GetScimProvisioningUserResponse {
   active: boolean;
   meta: GetScimProvisioningUserResponseMeta;
 }
-export const GetScimProvisioningUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    schemas: GetScimProvisioningUserResponseSchemasList,
-    id: S.String,
-    externalId: S.NullOr(S.String),
-    userName: S.String,
-    displayName: S.String,
-    name: CreateScimInvitationResponseName,
-    emails: GetScimProvisioningUserResponseEmailsList,
-    active: S.Boolean,
-    meta: GetScimProvisioningUserResponseMeta,
-  }),
-).annotate({
-  identifier: "GetScimProvisioningUserResponse",
-}) as any as S.Schema<GetScimProvisioningUserResponse>;
+export const GetScimProvisioningUserResponse =
+  CreateScimInvitationResponse as any as S.Schema<GetScimProvisioningUserResponse>;
 
 export interface GetScimResourceTypesRequest {
   name: string;
@@ -1081,9 +1016,8 @@ export type GetScimUserResponseSchemasItem = "urn:ietf:params:scim:schemas:core:
 export const GetScimUserResponseSchemasItem = S.String;
 
 export type GetScimUserResponseSchemasList = Array<GetScimUserResponseSchemasItem>;
-export const GetScimUserResponseSchemasList = /*@__PURE__*/ S.Array(
-  GetScimUserResponseSchemasItem,
-) as any as S.Schema<GetScimUserResponseSchemasList>;
+export const GetScimUserResponseSchemasList =
+  CreateScimGroupResponseSchemasList as any as S.Schema<GetScimUserResponseSchemasList>;
 
 export type GetScimUserResponseName = CreateScimInvitationResponseName;
 export const GetScimUserResponseName = CreateScimInvitationResponseName;
@@ -1098,20 +1032,12 @@ export interface GetScimUserResponseEmailsItem {
   /** We only support work emails, other types are converted to work */
   type?: GetScimUserResponseEmailsItemType;
 }
-export const GetScimUserResponseEmailsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.String,
-    primary: S.Boolean,
-    type: S.optional(GetScimUserResponseEmailsItemType),
-  }),
-).annotate({
-  identifier: "GetScimUserResponseEmailsItem",
-}) as any as S.Schema<GetScimUserResponseEmailsItem>;
+export const GetScimUserResponseEmailsItem =
+  CreateScimInvitationResponseEmailsItem as any as S.Schema<GetScimUserResponseEmailsItem>;
 
 export type GetScimUserResponseEmailsList = Array<GetScimUserResponseEmailsItem>;
-export const GetScimUserResponseEmailsList = /*@__PURE__*/ S.Array(
-  GetScimUserResponseEmailsItem,
-) as any as S.Schema<GetScimUserResponseEmailsList>;
+export const GetScimUserResponseEmailsList =
+  CreateScimInvitationResponseEmailsList as any as S.Schema<GetScimUserResponseEmailsList>;
 
 export type GetScimUserResponseMetaResourceType = "User";
 export const GetScimUserResponseMetaResourceType = S.String;
@@ -1120,12 +1046,8 @@ export interface GetScimUserResponseMeta {
   resourceType: GetScimUserResponseMetaResourceType;
   location: string;
 }
-export const GetScimUserResponseMeta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceType: GetScimUserResponseMetaResourceType,
-    location: S.String,
-  }),
-).annotate({ identifier: "GetScimUserResponseMeta" }) as any as S.Schema<GetScimUserResponseMeta>;
+export const GetScimUserResponseMeta =
+  GetScimGroupResponseMeta as any as S.Schema<GetScimUserResponseMeta>;
 
 export interface GetScimUserResponse {
   schemas: GetScimUserResponseSchemasList;
@@ -1174,9 +1096,8 @@ export type ListScimGroupsResponseSchemasItem =
 export const ListScimGroupsResponseSchemasItem = S.String;
 
 export type ListScimGroupsResponseSchemasList = Array<ListScimGroupsResponseSchemasItem>;
-export const ListScimGroupsResponseSchemasList = /*@__PURE__*/ S.Array(
-  ListScimGroupsResponseSchemasItem,
-) as any as S.Schema<ListScimGroupsResponseSchemasList>;
+export const ListScimGroupsResponseSchemasList =
+  CreateScimGroupResponseSchemasList as any as S.Schema<ListScimGroupsResponseSchemasList>;
 
 export type ListScimGroupsResponseResourcesItemSchemasItem =
   "urn:ietf:params:scim:schemas:core:2.0:Group";
@@ -1184,9 +1105,8 @@ export const ListScimGroupsResponseResourcesItemSchemasItem = S.String;
 
 export type ListScimGroupsResponseResourcesItemSchemasList =
   Array<ListScimGroupsResponseResourcesItemSchemasItem>;
-export const ListScimGroupsResponseResourcesItemSchemasList = /*@__PURE__*/ S.Array(
-  ListScimGroupsResponseResourcesItemSchemasItem,
-) as any as S.Schema<ListScimGroupsResponseResourcesItemSchemasList>;
+export const ListScimGroupsResponseResourcesItemSchemasList =
+  CreateScimGroupResponseSchemasList as any as S.Schema<ListScimGroupsResponseResourcesItemSchemasList>;
 
 export type ListScimGroupsResponseResourcesItemMembersItem = CreateScimGroupRequestMembersItem;
 export const ListScimGroupsResponseResourcesItemMembersItem = CreateScimGroupRequestMembersItem;
@@ -1203,14 +1123,8 @@ export interface ListScimGroupsResponseResourcesItemMeta {
   resourceType: ListScimGroupsResponseResourcesItemMetaResourceType;
   location: string;
 }
-export const ListScimGroupsResponseResourcesItemMeta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceType: ListScimGroupsResponseResourcesItemMetaResourceType,
-    location: S.String,
-  }),
-).annotate({
-  identifier: "ListScimGroupsResponseResourcesItemMeta",
-}) as any as S.Schema<ListScimGroupsResponseResourcesItemMeta>;
+export const ListScimGroupsResponseResourcesItemMeta =
+  CreateScimGroupResponseMeta as any as S.Schema<ListScimGroupsResponseResourcesItemMeta>;
 
 export interface ListScimGroupsResponseResourcesItem {
   schemas: ListScimGroupsResponseResourcesItemSchemasList;
@@ -1284,9 +1198,8 @@ export const ListScimManagedUsersResponseSchemasItem = S.String;
 
 export type ListScimManagedUsersResponseSchemasList =
   Array<ListScimManagedUsersResponseSchemasItem>;
-export const ListScimManagedUsersResponseSchemasList = /*@__PURE__*/ S.Array(
-  ListScimManagedUsersResponseSchemasItem,
-) as any as S.Schema<ListScimManagedUsersResponseSchemasList>;
+export const ListScimManagedUsersResponseSchemasList =
+  CreateScimGroupResponseSchemasList as any as S.Schema<ListScimManagedUsersResponseSchemasList>;
 
 export type ListScimManagedUsersResponseResourcesItemSchemasItem =
   "urn:ietf:params:scim:schemas:core:2.0:User";
@@ -1294,9 +1207,8 @@ export const ListScimManagedUsersResponseResourcesItemSchemasItem = S.String;
 
 export type ListScimManagedUsersResponseResourcesItemSchemasList =
   Array<ListScimManagedUsersResponseResourcesItemSchemasItem>;
-export const ListScimManagedUsersResponseResourcesItemSchemasList = /*@__PURE__*/ S.Array(
-  ListScimManagedUsersResponseResourcesItemSchemasItem,
-) as any as S.Schema<ListScimManagedUsersResponseResourcesItemSchemasList>;
+export const ListScimManagedUsersResponseResourcesItemSchemasList =
+  CreateScimGroupResponseSchemasList as any as S.Schema<ListScimManagedUsersResponseResourcesItemSchemasList>;
 
 export type ListScimManagedUsersResponseResourcesItemName = CreateScimInvitationResponseName;
 export const ListScimManagedUsersResponseResourcesItemName = CreateScimInvitationResponseName;
@@ -1311,21 +1223,13 @@ export interface ListScimManagedUsersResponseResourcesItemEmailsItem {
   /** We only support work emails, other types are converted to work */
   type?: ListScimManagedUsersResponseResourcesItemEmailsItemType;
 }
-export const ListScimManagedUsersResponseResourcesItemEmailsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.String,
-    primary: S.Boolean,
-    type: S.optional(ListScimManagedUsersResponseResourcesItemEmailsItemType),
-  }),
-).annotate({
-  identifier: "ListScimManagedUsersResponseResourcesItemEmailsItem",
-}) as any as S.Schema<ListScimManagedUsersResponseResourcesItemEmailsItem>;
+export const ListScimManagedUsersResponseResourcesItemEmailsItem =
+  CreateScimInvitationResponseEmailsItem as any as S.Schema<ListScimManagedUsersResponseResourcesItemEmailsItem>;
 
 export type ListScimManagedUsersResponseResourcesItemEmailsList =
   Array<ListScimManagedUsersResponseResourcesItemEmailsItem>;
-export const ListScimManagedUsersResponseResourcesItemEmailsList = /*@__PURE__*/ S.Array(
-  ListScimManagedUsersResponseResourcesItemEmailsItem,
-) as any as S.Schema<ListScimManagedUsersResponseResourcesItemEmailsList>;
+export const ListScimManagedUsersResponseResourcesItemEmailsList =
+  CreateScimInvitationResponseEmailsList as any as S.Schema<ListScimManagedUsersResponseResourcesItemEmailsList>;
 
 export type ListScimManagedUsersResponseResourcesItemMetaResourceType = "User";
 export const ListScimManagedUsersResponseResourcesItemMetaResourceType = S.String;
@@ -1334,14 +1238,8 @@ export interface ListScimManagedUsersResponseResourcesItemMeta {
   resourceType: ListScimManagedUsersResponseResourcesItemMetaResourceType;
   location: string;
 }
-export const ListScimManagedUsersResponseResourcesItemMeta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceType: ListScimManagedUsersResponseResourcesItemMetaResourceType,
-    location: S.String,
-  }),
-).annotate({
-  identifier: "ListScimManagedUsersResponseResourcesItemMeta",
-}) as any as S.Schema<ListScimManagedUsersResponseResourcesItemMeta>;
+export const ListScimManagedUsersResponseResourcesItemMeta =
+  CreateScimGroupResponseMeta as any as S.Schema<ListScimManagedUsersResponseResourcesItemMeta>;
 
 export interface ListScimManagedUsersResponseResourcesItem {
   schemas: ListScimManagedUsersResponseResourcesItemSchemasList;
@@ -1354,21 +1252,8 @@ export interface ListScimManagedUsersResponseResourcesItem {
   active: boolean;
   meta: ListScimManagedUsersResponseResourcesItemMeta;
 }
-export const ListScimManagedUsersResponseResourcesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    schemas: ListScimManagedUsersResponseResourcesItemSchemasList,
-    id: S.String,
-    externalId: S.NullOr(S.String),
-    userName: S.String,
-    displayName: S.String,
-    name: CreateScimInvitationResponseName,
-    emails: ListScimManagedUsersResponseResourcesItemEmailsList,
-    active: S.Boolean,
-    meta: ListScimManagedUsersResponseResourcesItemMeta,
-  }),
-).annotate({
-  identifier: "ListScimManagedUsersResponseResourcesItem",
-}) as any as S.Schema<ListScimManagedUsersResponseResourcesItem>;
+export const ListScimManagedUsersResponseResourcesItem =
+  CreateScimInvitationResponse as any as S.Schema<ListScimManagedUsersResponseResourcesItem>;
 
 export type ListScimManagedUsersResponseResourcesList =
   Array<ListScimManagedUsersResponseResourcesItem>;
@@ -1426,9 +1311,8 @@ export const ListScimProvisioningGroupsResponseSchemasItem = S.String;
 
 export type ListScimProvisioningGroupsResponseSchemasList =
   Array<ListScimProvisioningGroupsResponseSchemasItem>;
-export const ListScimProvisioningGroupsResponseSchemasList = /*@__PURE__*/ S.Array(
-  ListScimProvisioningGroupsResponseSchemasItem,
-) as any as S.Schema<ListScimProvisioningGroupsResponseSchemasList>;
+export const ListScimProvisioningGroupsResponseSchemasList =
+  CreateScimGroupResponseSchemasList as any as S.Schema<ListScimProvisioningGroupsResponseSchemasList>;
 
 export type ListScimProvisioningGroupsResponseResourcesItemSchemasItem =
   "urn:ietf:params:scim:schemas:core:2.0:Group";
@@ -1436,9 +1320,8 @@ export const ListScimProvisioningGroupsResponseResourcesItemSchemasItem = S.Stri
 
 export type ListScimProvisioningGroupsResponseResourcesItemSchemasList =
   Array<ListScimProvisioningGroupsResponseResourcesItemSchemasItem>;
-export const ListScimProvisioningGroupsResponseResourcesItemSchemasList = /*@__PURE__*/ S.Array(
-  ListScimProvisioningGroupsResponseResourcesItemSchemasItem,
-) as any as S.Schema<ListScimProvisioningGroupsResponseResourcesItemSchemasList>;
+export const ListScimProvisioningGroupsResponseResourcesItemSchemasList =
+  CreateScimGroupResponseSchemasList as any as S.Schema<ListScimProvisioningGroupsResponseResourcesItemSchemasList>;
 
 export type ListScimProvisioningGroupsResponseResourcesItemMembersItem =
   CreateScimGroupRequestMembersItem;
@@ -1457,14 +1340,8 @@ export interface ListScimProvisioningGroupsResponseResourcesItemMeta {
   resourceType: ListScimProvisioningGroupsResponseResourcesItemMetaResourceType;
   location: string;
 }
-export const ListScimProvisioningGroupsResponseResourcesItemMeta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceType: ListScimProvisioningGroupsResponseResourcesItemMetaResourceType,
-    location: S.String,
-  }),
-).annotate({
-  identifier: "ListScimProvisioningGroupsResponseResourcesItemMeta",
-}) as any as S.Schema<ListScimProvisioningGroupsResponseResourcesItemMeta>;
+export const ListScimProvisioningGroupsResponseResourcesItemMeta =
+  CreateScimGroupResponseMeta as any as S.Schema<ListScimProvisioningGroupsResponseResourcesItemMeta>;
 
 export interface ListScimProvisioningGroupsResponseResourcesItem {
   schemas: ListScimProvisioningGroupsResponseResourcesItemSchemasList;
@@ -1531,9 +1408,8 @@ export type ListScimUsersResponseSchemasItem = "urn:ietf:params:scim:api:message
 export const ListScimUsersResponseSchemasItem = S.String;
 
 export type ListScimUsersResponseSchemasList = Array<ListScimUsersResponseSchemasItem>;
-export const ListScimUsersResponseSchemasList = /*@__PURE__*/ S.Array(
-  ListScimUsersResponseSchemasItem,
-) as any as S.Schema<ListScimUsersResponseSchemasList>;
+export const ListScimUsersResponseSchemasList =
+  CreateScimGroupResponseSchemasList as any as S.Schema<ListScimUsersResponseSchemasList>;
 
 export type ListScimUsersResponseResourcesItemSchemasItem =
   "urn:ietf:params:scim:schemas:core:2.0:User";
@@ -1541,9 +1417,8 @@ export const ListScimUsersResponseResourcesItemSchemasItem = S.String;
 
 export type ListScimUsersResponseResourcesItemSchemasList =
   Array<ListScimUsersResponseResourcesItemSchemasItem>;
-export const ListScimUsersResponseResourcesItemSchemasList = /*@__PURE__*/ S.Array(
-  ListScimUsersResponseResourcesItemSchemasItem,
-) as any as S.Schema<ListScimUsersResponseResourcesItemSchemasList>;
+export const ListScimUsersResponseResourcesItemSchemasList =
+  CreateScimGroupResponseSchemasList as any as S.Schema<ListScimUsersResponseResourcesItemSchemasList>;
 
 export type ListScimUsersResponseResourcesItemName = CreateScimInvitationResponseName;
 export const ListScimUsersResponseResourcesItemName = CreateScimInvitationResponseName;
@@ -1558,21 +1433,13 @@ export interface ListScimUsersResponseResourcesItemEmailsItem {
   /** We only support work emails, other types are converted to work */
   type?: ListScimUsersResponseResourcesItemEmailsItemType;
 }
-export const ListScimUsersResponseResourcesItemEmailsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.String,
-    primary: S.Boolean,
-    type: S.optional(ListScimUsersResponseResourcesItemEmailsItemType),
-  }),
-).annotate({
-  identifier: "ListScimUsersResponseResourcesItemEmailsItem",
-}) as any as S.Schema<ListScimUsersResponseResourcesItemEmailsItem>;
+export const ListScimUsersResponseResourcesItemEmailsItem =
+  CreateScimInvitationResponseEmailsItem as any as S.Schema<ListScimUsersResponseResourcesItemEmailsItem>;
 
 export type ListScimUsersResponseResourcesItemEmailsList =
   Array<ListScimUsersResponseResourcesItemEmailsItem>;
-export const ListScimUsersResponseResourcesItemEmailsList = /*@__PURE__*/ S.Array(
-  ListScimUsersResponseResourcesItemEmailsItem,
-) as any as S.Schema<ListScimUsersResponseResourcesItemEmailsList>;
+export const ListScimUsersResponseResourcesItemEmailsList =
+  CreateScimInvitationResponseEmailsList as any as S.Schema<ListScimUsersResponseResourcesItemEmailsList>;
 
 export type ListScimUsersResponseResourcesItemMetaResourceType = "User";
 export const ListScimUsersResponseResourcesItemMetaResourceType = S.String;
@@ -1581,14 +1448,8 @@ export interface ListScimUsersResponseResourcesItemMeta {
   resourceType: ListScimUsersResponseResourcesItemMetaResourceType;
   location: string;
 }
-export const ListScimUsersResponseResourcesItemMeta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceType: ListScimUsersResponseResourcesItemMetaResourceType,
-    location: S.String,
-  }),
-).annotate({
-  identifier: "ListScimUsersResponseResourcesItemMeta",
-}) as any as S.Schema<ListScimUsersResponseResourcesItemMeta>;
+export const ListScimUsersResponseResourcesItemMeta =
+  CreateScimGroupResponseMeta as any as S.Schema<ListScimUsersResponseResourcesItemMeta>;
 
 export interface ListScimUsersResponseResourcesItem {
   schemas: ListScimUsersResponseResourcesItemSchemasList;
@@ -1601,26 +1462,12 @@ export interface ListScimUsersResponseResourcesItem {
   active: boolean;
   meta: ListScimUsersResponseResourcesItemMeta;
 }
-export const ListScimUsersResponseResourcesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    schemas: ListScimUsersResponseResourcesItemSchemasList,
-    id: S.String,
-    externalId: S.NullOr(S.String),
-    userName: S.String,
-    displayName: S.String,
-    name: CreateScimInvitationResponseName,
-    emails: ListScimUsersResponseResourcesItemEmailsList,
-    active: S.Boolean,
-    meta: ListScimUsersResponseResourcesItemMeta,
-  }),
-).annotate({
-  identifier: "ListScimUsersResponseResourcesItem",
-}) as any as S.Schema<ListScimUsersResponseResourcesItem>;
+export const ListScimUsersResponseResourcesItem =
+  CreateScimInvitationResponse as any as S.Schema<ListScimUsersResponseResourcesItem>;
 
 export type ListScimUsersResponseResourcesList = Array<ListScimUsersResponseResourcesItem>;
-export const ListScimUsersResponseResourcesList = /*@__PURE__*/ S.Array(
-  ListScimUsersResponseResourcesItem,
-) as any as S.Schema<ListScimUsersResponseResourcesList>;
+export const ListScimUsersResponseResourcesList =
+  ListScimManagedUsersResponseResourcesList as any as S.Schema<ListScimUsersResponseResourcesList>;
 
 export interface ListScimUsersResponse {
   schemas: ListScimUsersResponseSchemasList;
@@ -1675,9 +1522,8 @@ export type ReplaceScimGroupResponseSchemasItem = "urn:ietf:params:scim:schemas:
 export const ReplaceScimGroupResponseSchemasItem = S.String;
 
 export type ReplaceScimGroupResponseSchemasList = Array<ReplaceScimGroupResponseSchemasItem>;
-export const ReplaceScimGroupResponseSchemasList = /*@__PURE__*/ S.Array(
-  ReplaceScimGroupResponseSchemasItem,
-) as any as S.Schema<ReplaceScimGroupResponseSchemasList>;
+export const ReplaceScimGroupResponseSchemasList =
+  CreateScimGroupResponseSchemasList as any as S.Schema<ReplaceScimGroupResponseSchemasList>;
 
 export type ReplaceScimGroupResponseMembersItem = CreateScimGroupRequestMembersItem;
 export const ReplaceScimGroupResponseMembersItem = CreateScimGroupRequestMembersItem;
@@ -1693,14 +1539,8 @@ export interface ReplaceScimGroupResponseMeta {
   resourceType: ReplaceScimGroupResponseMetaResourceType;
   location: string;
 }
-export const ReplaceScimGroupResponseMeta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceType: ReplaceScimGroupResponseMetaResourceType,
-    location: S.String,
-  }),
-).annotate({
-  identifier: "ReplaceScimGroupResponseMeta",
-}) as any as S.Schema<ReplaceScimGroupResponseMeta>;
+export const ReplaceScimGroupResponseMeta =
+  CreateScimGroupResponseMeta as any as S.Schema<ReplaceScimGroupResponseMeta>;
 
 export interface ReplaceScimGroupResponse {
   schemas: ReplaceScimGroupResponseSchemasList;
@@ -1766,9 +1606,8 @@ export const ReplaceScimProvisioningGroupResponseSchemasItem = S.String;
 
 export type ReplaceScimProvisioningGroupResponseSchemasList =
   Array<ReplaceScimProvisioningGroupResponseSchemasItem>;
-export const ReplaceScimProvisioningGroupResponseSchemasList = /*@__PURE__*/ S.Array(
-  ReplaceScimProvisioningGroupResponseSchemasItem,
-) as any as S.Schema<ReplaceScimProvisioningGroupResponseSchemasList>;
+export const ReplaceScimProvisioningGroupResponseSchemasList =
+  CreateScimGroupResponseSchemasList as any as S.Schema<ReplaceScimProvisioningGroupResponseSchemasList>;
 
 export type ReplaceScimProvisioningGroupResponseMembersItem = CreateScimGroupRequestMembersItem;
 export const ReplaceScimProvisioningGroupResponseMembersItem = CreateScimGroupRequestMembersItem;
@@ -1785,14 +1624,8 @@ export interface ReplaceScimProvisioningGroupResponseMeta {
   resourceType: ReplaceScimProvisioningGroupResponseMetaResourceType;
   location: string;
 }
-export const ReplaceScimProvisioningGroupResponseMeta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceType: ReplaceScimProvisioningGroupResponseMetaResourceType,
-    location: S.String,
-  }),
-).annotate({
-  identifier: "ReplaceScimProvisioningGroupResponseMeta",
-}) as any as S.Schema<ReplaceScimProvisioningGroupResponseMeta>;
+export const ReplaceScimProvisioningGroupResponseMeta =
+  CreateScimGroupResponseMeta as any as S.Schema<ReplaceScimProvisioningGroupResponseMeta>;
 
 export interface ReplaceScimProvisioningGroupResponse {
   schemas: ReplaceScimProvisioningGroupResponseSchemasList;
@@ -1850,9 +1683,8 @@ export const ReplaceScimProvisioningUserResponseSchemasItem = S.String;
 
 export type ReplaceScimProvisioningUserResponseSchemasList =
   Array<ReplaceScimProvisioningUserResponseSchemasItem>;
-export const ReplaceScimProvisioningUserResponseSchemasList = /*@__PURE__*/ S.Array(
-  ReplaceScimProvisioningUserResponseSchemasItem,
-) as any as S.Schema<ReplaceScimProvisioningUserResponseSchemasList>;
+export const ReplaceScimProvisioningUserResponseSchemasList =
+  CreateScimGroupResponseSchemasList as any as S.Schema<ReplaceScimProvisioningUserResponseSchemasList>;
 
 export type ReplaceScimProvisioningUserResponseName = CreateScimInvitationResponseName;
 export const ReplaceScimProvisioningUserResponseName = CreateScimInvitationResponseName;
@@ -1867,21 +1699,13 @@ export interface ReplaceScimProvisioningUserResponseEmailsItem {
   /** We only support work emails, other types are converted to work */
   type?: ReplaceScimProvisioningUserResponseEmailsItemType;
 }
-export const ReplaceScimProvisioningUserResponseEmailsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.String,
-    primary: S.Boolean,
-    type: S.optional(ReplaceScimProvisioningUserResponseEmailsItemType),
-  }),
-).annotate({
-  identifier: "ReplaceScimProvisioningUserResponseEmailsItem",
-}) as any as S.Schema<ReplaceScimProvisioningUserResponseEmailsItem>;
+export const ReplaceScimProvisioningUserResponseEmailsItem =
+  CreateScimInvitationResponseEmailsItem as any as S.Schema<ReplaceScimProvisioningUserResponseEmailsItem>;
 
 export type ReplaceScimProvisioningUserResponseEmailsList =
   Array<ReplaceScimProvisioningUserResponseEmailsItem>;
-export const ReplaceScimProvisioningUserResponseEmailsList = /*@__PURE__*/ S.Array(
-  ReplaceScimProvisioningUserResponseEmailsItem,
-) as any as S.Schema<ReplaceScimProvisioningUserResponseEmailsList>;
+export const ReplaceScimProvisioningUserResponseEmailsList =
+  CreateScimInvitationResponseEmailsList as any as S.Schema<ReplaceScimProvisioningUserResponseEmailsList>;
 
 export type ReplaceScimProvisioningUserResponseMetaResourceType = "User";
 export const ReplaceScimProvisioningUserResponseMetaResourceType = S.String;
@@ -1890,14 +1714,8 @@ export interface ReplaceScimProvisioningUserResponseMeta {
   resourceType: ReplaceScimProvisioningUserResponseMetaResourceType;
   location: string;
 }
-export const ReplaceScimProvisioningUserResponseMeta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceType: ReplaceScimProvisioningUserResponseMetaResourceType,
-    location: S.String,
-  }),
-).annotate({
-  identifier: "ReplaceScimProvisioningUserResponseMeta",
-}) as any as S.Schema<ReplaceScimProvisioningUserResponseMeta>;
+export const ReplaceScimProvisioningUserResponseMeta =
+  CreateScimGroupResponseMeta as any as S.Schema<ReplaceScimProvisioningUserResponseMeta>;
 
 export interface ReplaceScimProvisioningUserResponse {
   schemas: ReplaceScimProvisioningUserResponseSchemasList;
@@ -1910,21 +1728,8 @@ export interface ReplaceScimProvisioningUserResponse {
   active: boolean;
   meta: ReplaceScimProvisioningUserResponseMeta;
 }
-export const ReplaceScimProvisioningUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    schemas: ReplaceScimProvisioningUserResponseSchemasList,
-    id: S.String,
-    externalId: S.NullOr(S.String),
-    userName: S.String,
-    displayName: S.String,
-    name: CreateScimInvitationResponseName,
-    emails: ReplaceScimProvisioningUserResponseEmailsList,
-    active: S.Boolean,
-    meta: ReplaceScimProvisioningUserResponseMeta,
-  }),
-).annotate({
-  identifier: "ReplaceScimProvisioningUserResponse",
-}) as any as S.Schema<ReplaceScimProvisioningUserResponse>;
+export const ReplaceScimProvisioningUserResponse =
+  CreateScimInvitationResponse as any as S.Schema<ReplaceScimProvisioningUserResponse>;
 
 export type ReplaceScimUserRequestSchemasList = Array<string>;
 export const ReplaceScimUserRequestSchemasList =
@@ -1965,9 +1770,8 @@ export type ReplaceScimUserResponseSchemasItem = "urn:ietf:params:scim:schemas:c
 export const ReplaceScimUserResponseSchemasItem = S.String;
 
 export type ReplaceScimUserResponseSchemasList = Array<ReplaceScimUserResponseSchemasItem>;
-export const ReplaceScimUserResponseSchemasList = /*@__PURE__*/ S.Array(
-  ReplaceScimUserResponseSchemasItem,
-) as any as S.Schema<ReplaceScimUserResponseSchemasList>;
+export const ReplaceScimUserResponseSchemasList =
+  CreateScimGroupResponseSchemasList as any as S.Schema<ReplaceScimUserResponseSchemasList>;
 
 export type ReplaceScimUserResponseName = CreateScimInvitationResponseName;
 export const ReplaceScimUserResponseName = CreateScimInvitationResponseName;
@@ -1982,20 +1786,12 @@ export interface ReplaceScimUserResponseEmailsItem {
   /** We only support work emails, other types are converted to work */
   type?: ReplaceScimUserResponseEmailsItemType;
 }
-export const ReplaceScimUserResponseEmailsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.String,
-    primary: S.Boolean,
-    type: S.optional(ReplaceScimUserResponseEmailsItemType),
-  }),
-).annotate({
-  identifier: "ReplaceScimUserResponseEmailsItem",
-}) as any as S.Schema<ReplaceScimUserResponseEmailsItem>;
+export const ReplaceScimUserResponseEmailsItem =
+  CreateScimInvitationResponseEmailsItem as any as S.Schema<ReplaceScimUserResponseEmailsItem>;
 
 export type ReplaceScimUserResponseEmailsList = Array<ReplaceScimUserResponseEmailsItem>;
-export const ReplaceScimUserResponseEmailsList = /*@__PURE__*/ S.Array(
-  ReplaceScimUserResponseEmailsItem,
-) as any as S.Schema<ReplaceScimUserResponseEmailsList>;
+export const ReplaceScimUserResponseEmailsList =
+  CreateScimInvitationResponseEmailsList as any as S.Schema<ReplaceScimUserResponseEmailsList>;
 
 export type ReplaceScimUserResponseMetaResourceType = "User";
 export const ReplaceScimUserResponseMetaResourceType = S.String;
@@ -2004,14 +1800,8 @@ export interface ReplaceScimUserResponseMeta {
   resourceType: ReplaceScimUserResponseMetaResourceType;
   location: string;
 }
-export const ReplaceScimUserResponseMeta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceType: ReplaceScimUserResponseMetaResourceType,
-    location: S.String,
-  }),
-).annotate({
-  identifier: "ReplaceScimUserResponseMeta",
-}) as any as S.Schema<ReplaceScimUserResponseMeta>;
+export const ReplaceScimUserResponseMeta =
+  CreateScimGroupResponseMeta as any as S.Schema<ReplaceScimUserResponseMeta>;
 
 export interface ReplaceScimUserResponse {
   schemas: ReplaceScimUserResponseSchemasList;
@@ -2024,19 +1814,8 @@ export interface ReplaceScimUserResponse {
   active: boolean;
   meta: ReplaceScimUserResponseMeta;
 }
-export const ReplaceScimUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    schemas: ReplaceScimUserResponseSchemasList,
-    id: S.String,
-    externalId: S.NullOr(S.String),
-    userName: S.String,
-    displayName: S.String,
-    name: CreateScimInvitationResponseName,
-    emails: ReplaceScimUserResponseEmailsList,
-    active: S.Boolean,
-    meta: ReplaceScimUserResponseMeta,
-  }),
-).annotate({ identifier: "ReplaceScimUserResponse" }) as any as S.Schema<ReplaceScimUserResponse>;
+export const ReplaceScimUserResponse =
+  CreateScimUserResponse as any as S.Schema<ReplaceScimUserResponse>;
 
 export type UpdateScimGroupRequestSchemasList = Array<string>;
 export const UpdateScimGroupRequestSchemasList =
@@ -2116,9 +1895,8 @@ export type UpdateScimGroupResponseSchemasItem = "urn:ietf:params:scim:schemas:c
 export const UpdateScimGroupResponseSchemasItem = S.String;
 
 export type UpdateScimGroupResponseSchemasList = Array<UpdateScimGroupResponseSchemasItem>;
-export const UpdateScimGroupResponseSchemasList = /*@__PURE__*/ S.Array(
-  UpdateScimGroupResponseSchemasItem,
-) as any as S.Schema<UpdateScimGroupResponseSchemasList>;
+export const UpdateScimGroupResponseSchemasList =
+  CreateScimGroupResponseSchemasList as any as S.Schema<UpdateScimGroupResponseSchemasList>;
 
 export type UpdateScimGroupResponseMembersItem = CreateScimGroupRequestMembersItem;
 export const UpdateScimGroupResponseMembersItem = CreateScimGroupRequestMembersItem;
@@ -2134,14 +1912,8 @@ export interface UpdateScimGroupResponseMeta {
   resourceType: UpdateScimGroupResponseMetaResourceType;
   location: string;
 }
-export const UpdateScimGroupResponseMeta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceType: UpdateScimGroupResponseMetaResourceType,
-    location: S.String,
-  }),
-).annotate({
-  identifier: "UpdateScimGroupResponseMeta",
-}) as any as S.Schema<UpdateScimGroupResponseMeta>;
+export const UpdateScimGroupResponseMeta =
+  CreateScimGroupResponseMeta as any as S.Schema<UpdateScimGroupResponseMeta>;
 
 export interface UpdateScimGroupResponse {
   schemas: UpdateScimGroupResponseSchemasList;
@@ -2230,9 +2002,8 @@ export const UpdateScimProvisioningGroupResponseSchemasItem = S.String;
 
 export type UpdateScimProvisioningGroupResponseSchemasList =
   Array<UpdateScimProvisioningGroupResponseSchemasItem>;
-export const UpdateScimProvisioningGroupResponseSchemasList = /*@__PURE__*/ S.Array(
-  UpdateScimProvisioningGroupResponseSchemasItem,
-) as any as S.Schema<UpdateScimProvisioningGroupResponseSchemasList>;
+export const UpdateScimProvisioningGroupResponseSchemasList =
+  CreateScimGroupResponseSchemasList as any as S.Schema<UpdateScimProvisioningGroupResponseSchemasList>;
 
 export type UpdateScimProvisioningGroupResponseMembersItem = CreateScimGroupRequestMembersItem;
 export const UpdateScimProvisioningGroupResponseMembersItem = CreateScimGroupRequestMembersItem;
@@ -2249,14 +2020,8 @@ export interface UpdateScimProvisioningGroupResponseMeta {
   resourceType: UpdateScimProvisioningGroupResponseMetaResourceType;
   location: string;
 }
-export const UpdateScimProvisioningGroupResponseMeta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceType: UpdateScimProvisioningGroupResponseMetaResourceType,
-    location: S.String,
-  }),
-).annotate({
-  identifier: "UpdateScimProvisioningGroupResponseMeta",
-}) as any as S.Schema<UpdateScimProvisioningGroupResponseMeta>;
+export const UpdateScimProvisioningGroupResponseMeta =
+  CreateScimGroupResponseMeta as any as S.Schema<UpdateScimProvisioningGroupResponseMeta>;
 
 export interface UpdateScimProvisioningGroupResponse {
   schemas: UpdateScimProvisioningGroupResponseSchemasList;
@@ -2347,9 +2112,8 @@ export const UpdateScimProvisioningUserResponseSchemasItem = S.String;
 
 export type UpdateScimProvisioningUserResponseSchemasList =
   Array<UpdateScimProvisioningUserResponseSchemasItem>;
-export const UpdateScimProvisioningUserResponseSchemasList = /*@__PURE__*/ S.Array(
-  UpdateScimProvisioningUserResponseSchemasItem,
-) as any as S.Schema<UpdateScimProvisioningUserResponseSchemasList>;
+export const UpdateScimProvisioningUserResponseSchemasList =
+  CreateScimGroupResponseSchemasList as any as S.Schema<UpdateScimProvisioningUserResponseSchemasList>;
 
 export type UpdateScimProvisioningUserResponseName = CreateScimInvitationResponseName;
 export const UpdateScimProvisioningUserResponseName = CreateScimInvitationResponseName;
@@ -2364,21 +2128,13 @@ export interface UpdateScimProvisioningUserResponseEmailsItem {
   /** We only support work emails, other types are converted to work */
   type?: UpdateScimProvisioningUserResponseEmailsItemType;
 }
-export const UpdateScimProvisioningUserResponseEmailsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.String,
-    primary: S.Boolean,
-    type: S.optional(UpdateScimProvisioningUserResponseEmailsItemType),
-  }),
-).annotate({
-  identifier: "UpdateScimProvisioningUserResponseEmailsItem",
-}) as any as S.Schema<UpdateScimProvisioningUserResponseEmailsItem>;
+export const UpdateScimProvisioningUserResponseEmailsItem =
+  CreateScimInvitationResponseEmailsItem as any as S.Schema<UpdateScimProvisioningUserResponseEmailsItem>;
 
 export type UpdateScimProvisioningUserResponseEmailsList =
   Array<UpdateScimProvisioningUserResponseEmailsItem>;
-export const UpdateScimProvisioningUserResponseEmailsList = /*@__PURE__*/ S.Array(
-  UpdateScimProvisioningUserResponseEmailsItem,
-) as any as S.Schema<UpdateScimProvisioningUserResponseEmailsList>;
+export const UpdateScimProvisioningUserResponseEmailsList =
+  CreateScimInvitationResponseEmailsList as any as S.Schema<UpdateScimProvisioningUserResponseEmailsList>;
 
 export type UpdateScimProvisioningUserResponseMetaResourceType = "User";
 export const UpdateScimProvisioningUserResponseMetaResourceType = S.String;
@@ -2387,14 +2143,8 @@ export interface UpdateScimProvisioningUserResponseMeta {
   resourceType: UpdateScimProvisioningUserResponseMetaResourceType;
   location: string;
 }
-export const UpdateScimProvisioningUserResponseMeta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceType: UpdateScimProvisioningUserResponseMetaResourceType,
-    location: S.String,
-  }),
-).annotate({
-  identifier: "UpdateScimProvisioningUserResponseMeta",
-}) as any as S.Schema<UpdateScimProvisioningUserResponseMeta>;
+export const UpdateScimProvisioningUserResponseMeta =
+  CreateScimGroupResponseMeta as any as S.Schema<UpdateScimProvisioningUserResponseMeta>;
 
 export interface UpdateScimProvisioningUserResponse {
   schemas: UpdateScimProvisioningUserResponseSchemasList;
@@ -2407,21 +2157,8 @@ export interface UpdateScimProvisioningUserResponse {
   active: boolean;
   meta: UpdateScimProvisioningUserResponseMeta;
 }
-export const UpdateScimProvisioningUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    schemas: UpdateScimProvisioningUserResponseSchemasList,
-    id: S.String,
-    externalId: S.NullOr(S.String),
-    userName: S.String,
-    displayName: S.String,
-    name: CreateScimInvitationResponseName,
-    emails: UpdateScimProvisioningUserResponseEmailsList,
-    active: S.Boolean,
-    meta: UpdateScimProvisioningUserResponseMeta,
-  }),
-).annotate({
-  identifier: "UpdateScimProvisioningUserResponse",
-}) as any as S.Schema<UpdateScimProvisioningUserResponse>;
+export const UpdateScimProvisioningUserResponse =
+  CreateScimInvitationResponse as any as S.Schema<UpdateScimProvisioningUserResponse>;
 
 export type UpdateScimUserRequestSchemasList = Array<string>;
 export const UpdateScimUserRequestSchemasList =
@@ -2477,9 +2214,8 @@ export type UpdateScimUserResponseSchemasItem = "urn:ietf:params:scim:schemas:co
 export const UpdateScimUserResponseSchemasItem = S.String;
 
 export type UpdateScimUserResponseSchemasList = Array<UpdateScimUserResponseSchemasItem>;
-export const UpdateScimUserResponseSchemasList = /*@__PURE__*/ S.Array(
-  UpdateScimUserResponseSchemasItem,
-) as any as S.Schema<UpdateScimUserResponseSchemasList>;
+export const UpdateScimUserResponseSchemasList =
+  CreateScimGroupResponseSchemasList as any as S.Schema<UpdateScimUserResponseSchemasList>;
 
 export type UpdateScimUserResponseName = CreateScimInvitationResponseName;
 export const UpdateScimUserResponseName = CreateScimInvitationResponseName;
@@ -2494,20 +2230,12 @@ export interface UpdateScimUserResponseEmailsItem {
   /** We only support work emails, other types are converted to work */
   type?: UpdateScimUserResponseEmailsItemType;
 }
-export const UpdateScimUserResponseEmailsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.String,
-    primary: S.Boolean,
-    type: S.optional(UpdateScimUserResponseEmailsItemType),
-  }),
-).annotate({
-  identifier: "UpdateScimUserResponseEmailsItem",
-}) as any as S.Schema<UpdateScimUserResponseEmailsItem>;
+export const UpdateScimUserResponseEmailsItem =
+  CreateScimInvitationResponseEmailsItem as any as S.Schema<UpdateScimUserResponseEmailsItem>;
 
 export type UpdateScimUserResponseEmailsList = Array<UpdateScimUserResponseEmailsItem>;
-export const UpdateScimUserResponseEmailsList = /*@__PURE__*/ S.Array(
-  UpdateScimUserResponseEmailsItem,
-) as any as S.Schema<UpdateScimUserResponseEmailsList>;
+export const UpdateScimUserResponseEmailsList =
+  CreateScimInvitationResponseEmailsList as any as S.Schema<UpdateScimUserResponseEmailsList>;
 
 export type UpdateScimUserResponseMetaResourceType = "User";
 export const UpdateScimUserResponseMetaResourceType = S.String;
@@ -2516,14 +2244,8 @@ export interface UpdateScimUserResponseMeta {
   resourceType: UpdateScimUserResponseMetaResourceType;
   location: string;
 }
-export const UpdateScimUserResponseMeta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceType: UpdateScimUserResponseMetaResourceType,
-    location: S.String,
-  }),
-).annotate({
-  identifier: "UpdateScimUserResponseMeta",
-}) as any as S.Schema<UpdateScimUserResponseMeta>;
+export const UpdateScimUserResponseMeta =
+  CreateScimGroupResponseMeta as any as S.Schema<UpdateScimUserResponseMeta>;
 
 export interface UpdateScimUserResponse {
   schemas: UpdateScimUserResponseSchemasList;
@@ -2536,19 +2258,8 @@ export interface UpdateScimUserResponse {
   active: boolean;
   meta: UpdateScimUserResponseMeta;
 }
-export const UpdateScimUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    schemas: UpdateScimUserResponseSchemasList,
-    id: S.String,
-    externalId: S.NullOr(S.String),
-    userName: S.String,
-    displayName: S.String,
-    name: CreateScimInvitationResponseName,
-    emails: UpdateScimUserResponseEmailsList,
-    active: S.Boolean,
-    meta: UpdateScimUserResponseMeta,
-  }),
-).annotate({ identifier: "UpdateScimUserResponse" }) as any as S.Schema<UpdateScimUserResponse>;
+export const UpdateScimUserResponse =
+  CreateScimUserResponse as any as S.Schema<UpdateScimUserResponse>;
 
 export type CreateScimGroupError = Conflict | HuggingFaceOpError;
 /** Create SCIM group Creates a new group in the organization. The group name must be unique within the organization. */

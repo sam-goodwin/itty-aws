@@ -3885,19 +3885,12 @@ export interface UpdateContactTopicsRequestTopicsItem {
   /** The subscription status (opt_in or opt_out). */
   subscription?: UpdateContactTopicsRequestTopicsItemSubscription | (string & {});
 }
-export const UpdateContactTopicsRequestTopicsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    subscription: S.optional(UpdateContactTopicsRequestTopicsItemSubscription),
-  }),
-).annotate({
-  identifier: "UpdateContactTopicsRequestTopicsItem",
-}) as any as S.Schema<UpdateContactTopicsRequestTopicsItem>;
+export const UpdateContactTopicsRequestTopicsItem =
+  CreateContactRequestTopicsItem as any as S.Schema<UpdateContactTopicsRequestTopicsItem>;
 
 export type UpdateContactTopicsRequestTopicsList = Array<UpdateContactTopicsRequestTopicsItem>;
-export const UpdateContactTopicsRequestTopicsList = /*@__PURE__*/ S.Array(
-  UpdateContactTopicsRequestTopicsItem,
-) as any as S.Schema<UpdateContactTopicsRequestTopicsList>;
+export const UpdateContactTopicsRequestTopicsList =
+  CreateContactRequestTopicsList as any as S.Schema<UpdateContactTopicsRequestTopicsList>;
 
 export interface UpdateContactTopicsRequest {
   /** The Contact ID or email address. */
@@ -3923,21 +3916,14 @@ export interface UpdateContactTopicsResponseSuccessTopicsItem {
   /** The subscription status. */
   subscription?: UpdateContactTopicsResponseSuccessTopicsItemSubscription;
 }
-export const UpdateContactTopicsResponseSuccessTopicsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    subscription: S.optional(UpdateContactTopicsResponseSuccessTopicsItemSubscription),
-  }),
-).annotate({
-  identifier: "UpdateContactTopicsResponseSuccessTopicsItem",
-}) as any as S.Schema<UpdateContactTopicsResponseSuccessTopicsItem>;
+export const UpdateContactTopicsResponseSuccessTopicsItem =
+  CreateContactRequestTopicsItem as any as S.Schema<UpdateContactTopicsResponseSuccessTopicsItem>;
 
 /** Array of updated topic subscriptions. */
 export type UpdateContactTopicsResponseSuccessTopicsList =
   Array<UpdateContactTopicsResponseSuccessTopicsItem>;
-export const UpdateContactTopicsResponseSuccessTopicsList = /*@__PURE__*/ S.Array(
-  UpdateContactTopicsResponseSuccessTopicsItem,
-) as any as S.Schema<UpdateContactTopicsResponseSuccessTopicsList>;
+export const UpdateContactTopicsResponseSuccessTopicsList =
+  CreateContactRequestTopicsList as any as S.Schema<UpdateContactTopicsResponseSuccessTopicsList>;
 
 export interface UpdateContactTopicsResponseSuccess {
   /** The object type. */

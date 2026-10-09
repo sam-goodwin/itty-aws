@@ -1762,14 +1762,8 @@ export interface SetConfigurationAsDefaultResponse {
   default_for_new_repos?: SetConfigurationAsDefaultResponseDefaultForNewRepos;
   configuration?: CodeSecurityConfiguration;
 }
-export const SetConfigurationAsDefaultResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    default_for_new_repos: S.optional(SetConfigurationAsDefaultResponseDefaultForNewRepos),
-    configuration: S.optional(CodeSecurityConfiguration),
-  }),
-).annotate({
-  identifier: "SetConfigurationAsDefaultResponse",
-}) as any as S.Schema<SetConfigurationAsDefaultResponse>;
+export const SetConfigurationAsDefaultResponse =
+  CodeSecurityDefaultConfigurationsItem as any as S.Schema<SetConfigurationAsDefaultResponse>;
 
 /** Specify which types of repository this security configuration should be applied to by default. */
 export type SetConfigurationAsDefaultForEnterpriseRequestDefaultForNewRepos =
@@ -1938,26 +1932,13 @@ export interface UpdateConfigurationRequestSecretScanningDelegatedBypassOptionsR
     | (string & {});
 }
 export const UpdateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      reviewer_id: S.Number,
-      reviewer_type:
-        UpdateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersItemReviewerType,
-      mode: S.optional(
-        UpdateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersItemMode,
-      ),
-    }),
-  ).annotate({
-    identifier: "UpdateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersItem",
-  }) as any as S.Schema<UpdateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersItem>;
+  CreateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersItem as any as S.Schema<UpdateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersItem>;
 
 /** The bypass reviewers for secret scanning delegated bypass */
 export type UpdateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersList =
   Array<UpdateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersItem>;
 export const UpdateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersList =
-  /*@__PURE__*/ S.Array(
-    UpdateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersItem,
-  ) as any as S.Schema<UpdateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersList>;
+  CreateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersList as any as S.Schema<UpdateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersList>;
 
 /** Feature options for secret scanning delegated bypass */
 export interface UpdateConfigurationRequestSecretScanningDelegatedBypassOptions {
@@ -1965,15 +1946,7 @@ export interface UpdateConfigurationRequestSecretScanningDelegatedBypassOptions 
   reviewers?: UpdateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersList;
 }
 export const UpdateConfigurationRequestSecretScanningDelegatedBypassOptions =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      reviewers: S.optional(
-        UpdateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersList,
-      ),
-    }),
-  ).annotate({
-    identifier: "UpdateConfigurationRequestSecretScanningDelegatedBypassOptions",
-  }) as any as S.Schema<UpdateConfigurationRequestSecretScanningDelegatedBypassOptions>;
+  CreateConfigurationRequestSecretScanningDelegatedBypassOptions as any as S.Schema<UpdateConfigurationRequestSecretScanningDelegatedBypassOptions>;
 
 /** The enablement status of secret scanning validity checks */
 export type UpdateConfigurationRequestSecretScanningValidityChecks =

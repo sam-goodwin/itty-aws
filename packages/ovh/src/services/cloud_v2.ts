@@ -8717,30 +8717,18 @@ export interface PublicCloudRancherPlanReference {
   /** Status of the plan */
   status?: PublicCloudRancherPlanReferenceStatusEnum;
 }
-export const PublicCloudRancherPlanReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cause: S.optional(S.NullOr(PublicCloudRancherPlanUnavailabilityCauseEnum)),
-    message: S.optional(S.NullOr(S.String)),
-    name: S.optional(PublicCloudRancherPlanEnum),
-    status: S.optional(PublicCloudRancherPlanReferenceStatusEnum),
-  }),
-).annotate({
-  identifier: "PublicCloudRancherPlanReference",
-}) as any as S.Schema<PublicCloudRancherPlanReference>;
+export const PublicCloudRancherPlanReference =
+  PublicCloudRancherPlanCapability as any as S.Schema<PublicCloudRancherPlanReference>;
 
 export type ListPublicCloudProjectReferenceRancherPlanResponseBodyList =
   Array<PublicCloudRancherPlanReference>;
-export const ListPublicCloudProjectReferenceRancherPlanResponseBodyList = /*@__PURE__*/ S.Array(
-  PublicCloudRancherPlanReference,
-) as any as S.Schema<ListPublicCloudProjectReferenceRancherPlanResponseBodyList>;
+export const ListPublicCloudProjectReferenceRancherPlanResponseBodyList =
+  ListPublicCloudProjectRancherCapabilityPlanResponseBodyList as any as S.Schema<ListPublicCloudProjectReferenceRancherPlanResponseBodyList>;
 
 export type ListPublicCloudProjectReferenceRancherPlanResponse =
   ListPublicCloudProjectReferenceRancherPlanResponseBodyList;
-export const ListPublicCloudProjectReferenceRancherPlanResponse = /*@__PURE__*/ S.suspend(() =>
-  ListPublicCloudProjectReferenceRancherPlanResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListPublicCloudProjectReferenceRancherPlanResponse",
-}) as any as S.Schema<ListPublicCloudProjectReferenceRancherPlanResponse>;
+export const ListPublicCloudProjectReferenceRancherPlanResponse =
+  ListPublicCloudProjectRancherCapabilityPlanResponse as any as S.Schema<ListPublicCloudProjectReferenceRancherPlanResponse>;
 
 export interface ListPublicCloudProjectReferenceRancherVersionRequest {
   /** Project ID */
@@ -8783,31 +8771,18 @@ export interface PublicCloudRancherVersionReference {
   /** Status of the version */
   status?: PublicCloudRancherVersionReferenceStatusEnum;
 }
-export const PublicCloudRancherVersionReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cause: S.optional(S.NullOr(PublicCloudRancherVersionUnavailabilityCauseEnum)),
-    changelogUrl: S.optional(S.String),
-    message: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.String),
-    status: S.optional(PublicCloudRancherVersionReferenceStatusEnum),
-  }),
-).annotate({
-  identifier: "PublicCloudRancherVersionReference",
-}) as any as S.Schema<PublicCloudRancherVersionReference>;
+export const PublicCloudRancherVersionReference =
+  PublicCloudRancherVersionCapability as any as S.Schema<PublicCloudRancherVersionReference>;
 
 export type ListPublicCloudProjectReferenceRancherVersionResponseBodyList =
   Array<PublicCloudRancherVersionReference>;
-export const ListPublicCloudProjectReferenceRancherVersionResponseBodyList = /*@__PURE__*/ S.Array(
-  PublicCloudRancherVersionReference,
-) as any as S.Schema<ListPublicCloudProjectReferenceRancherVersionResponseBodyList>;
+export const ListPublicCloudProjectReferenceRancherVersionResponseBodyList =
+  ListPublicCloudProjectRancherCapabilityVersionResponseBodyList as any as S.Schema<ListPublicCloudProjectReferenceRancherVersionResponseBodyList>;
 
 export type ListPublicCloudProjectReferenceRancherVersionResponse =
   ListPublicCloudProjectReferenceRancherVersionResponseBodyList;
-export const ListPublicCloudProjectReferenceRancherVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  ListPublicCloudProjectReferenceRancherVersionResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListPublicCloudProjectReferenceRancherVersionResponse",
-}) as any as S.Schema<ListPublicCloudProjectReferenceRancherVersionResponse>;
+export const ListPublicCloudProjectReferenceRancherVersionResponse =
+  ListPublicCloudProjectRancherCapabilityVersionResponse as any as S.Schema<ListPublicCloudProjectReferenceRancherVersionResponse>;
 
 export interface ListPublicCloudProjectReferenceRegionRequest {
   /** Project ID */

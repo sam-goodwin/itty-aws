@@ -764,7 +764,8 @@ export type GroupByAttributeName = "PRODUCT_NAME" | "BILLING_PERIOD" | (string &
 export const GroupByAttributeName = S.String;
 
 export type GroupByAttributesList = GroupByAttributeName[];
-export const GroupByAttributesList = /*@__PURE__*/ S.Array(GroupByAttributeName);
+export const GroupByAttributesList =
+  LineItemFilterValuesList as any as S.Schema<GroupByAttributesList>;
 export type MaxBillingGroupCostReportResults = number;
 export type Token = string;
 export interface GetBillingGroupCostReportInput {
@@ -1033,14 +1034,16 @@ export type BillingGroupStatus = "ACTIVE" | "PRIMARY_ACCOUNT_MISSING" | "PENDING
 export const BillingGroupStatus = S.String;
 
 export type BillingGroupStatusList = BillingGroupStatus[];
-export const BillingGroupStatusList = /*@__PURE__*/ S.Array(BillingGroupStatus);
+export const BillingGroupStatusList =
+  LineItemFilterValuesList as any as S.Schema<BillingGroupStatusList>;
 export type PrimaryAccountIdList = string[];
 export const PrimaryAccountIdList = AccountIdList as any as S.Schema<PrimaryAccountIdList>;
 export type BillingGroupType = "STANDARD" | "TRANSFER_BILLING" | (string & {});
 export const BillingGroupType = S.String;
 
 export type BillingGroupTypeList = BillingGroupType[];
-export const BillingGroupTypeList = /*@__PURE__*/ S.Array(BillingGroupType);
+export const BillingGroupTypeList =
+  LineItemFilterValuesList as any as S.Schema<BillingGroupTypeList>;
 export type SearchOption = "STARTS_WITH" | (string & {});
 export const SearchOption = S.String;
 

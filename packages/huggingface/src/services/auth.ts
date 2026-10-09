@@ -177,9 +177,8 @@ export const GetUserInfoResponseBodyOrgsItemSecurityRestrictionsItem = S.String;
 /** Current security restrictions for accessing data in this organization with current authentication method */
 export type GetUserInfoResponseBodyOrgsItemSecurityRestrictionsList =
   Array<GetUserInfoResponseBodyOrgsItemSecurityRestrictionsItem>;
-export const GetUserInfoResponseBodyOrgsItemSecurityRestrictionsList = /*@__PURE__*/ S.Array(
-  GetUserInfoResponseBodyOrgsItemSecurityRestrictionsItem,
-) as any as S.Schema<GetUserInfoResponseBodyOrgsItemSecurityRestrictionsList>;
+export const GetUserInfoResponseBodyOrgsItemSecurityRestrictionsList =
+  GetUserInfoResponseBodyAuthAccessTokenFineGrainedGlobalList as any as S.Schema<GetUserInfoResponseBodyOrgsItemSecurityRestrictionsList>;
 
 export type GetUserInfoResponseBodyOrgsItemResourceGroupsItemRole =
   | "admin"

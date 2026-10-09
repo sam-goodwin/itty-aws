@@ -1213,9 +1213,8 @@ export const RegistrationSupportedPrivacyItemEnum = S.String;
 export type RegistrationSupportedPrivacyItemEnumList = Array<
   RegistrationSupportedPrivacyItemEnum | (string & {})
 >;
-export const RegistrationSupportedPrivacyItemEnumList = /*@__PURE__*/ S.Array(
-  RegistrationSupportedPrivacyItemEnum,
-) as any as S.Schema<RegistrationSupportedPrivacyItemEnumList>;
+export const RegistrationSupportedPrivacyItemEnumList =
+  ConfigureContactSettingsRequestContactNoticesItemEnumList as any as S.Schema<RegistrationSupportedPrivacyItemEnumList>;
 
 export type RegistrationStateEnum =
   | "STATE_UNSPECIFIED"
@@ -1260,9 +1259,8 @@ export const RegistrationDomainPropertiesItemEnum = S.String;
 export type RegistrationDomainPropertiesItemEnumList = Array<
   RegistrationDomainPropertiesItemEnum | (string & {})
 >;
-export const RegistrationDomainPropertiesItemEnumList = /*@__PURE__*/ S.Array(
-  RegistrationDomainPropertiesItemEnum,
-) as any as S.Schema<RegistrationDomainPropertiesItemEnumList>;
+export const RegistrationDomainPropertiesItemEnumList =
+  ConfigureContactSettingsRequestContactNoticesItemEnumList as any as S.Schema<RegistrationDomainPropertiesItemEnumList>;
 
 export type RegistrationIssuesItemEnum =
   | "ISSUE_UNSPECIFIED"
@@ -1274,9 +1272,8 @@ export type RegistrationIssuesItemEnum =
 export const RegistrationIssuesItemEnum = S.String;
 
 export type RegistrationIssuesItemEnumList = Array<RegistrationIssuesItemEnum | (string & {})>;
-export const RegistrationIssuesItemEnumList = /*@__PURE__*/ S.Array(
-  RegistrationIssuesItemEnum,
-) as any as S.Schema<RegistrationIssuesItemEnumList>;
+export const RegistrationIssuesItemEnumList =
+  ConfigureContactSettingsRequestContactNoticesItemEnumList as any as S.Schema<RegistrationIssuesItemEnumList>;
 
 /** The `Registration` resource facilitates managing and configuring domain name registrations. There are several ways to create a new `Registration` resource: To create a new `Registration` resource, find a suitable domain name by calling the `SearchDomains` method with a query to see available domain name options. After choosing a name, call `RetrieveRegisterParameters` to ensure availability and obtain information like pricing, which is needed to build a call to `RegisterDomain`. Another way to create a new `Registration` is to transfer an existing domain from another registrar (Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations)). First, go to the current registrar to unlock the domain for transfer and retrieve the domain's transfer authorization code. Then call `RetrieveTransferParameters` to confirm that the domain is unlocked and to get values needed to build a call to `TransferDomain`. Finally, you can create a new `Registration` by importing an existing domain managed with [Google Domains](https://domains.google/) (Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations)). First, call `RetrieveImportableDomains` to list domains to which the calling user has sufficient access. Then call `ImportDomain` on any domain names you want to use with Cloud Domains. */
 export interface Registration {
@@ -1362,9 +1359,8 @@ export const RegisterParametersSupportedPrivacyItemEnum = S.String;
 
 export type RegisterParametersSupportedPrivacyItemEnumList =
   Array<RegisterParametersSupportedPrivacyItemEnum>;
-export const RegisterParametersSupportedPrivacyItemEnumList = /*@__PURE__*/ S.Array(
-  RegisterParametersSupportedPrivacyItemEnum,
-) as any as S.Schema<RegisterParametersSupportedPrivacyItemEnumList>;
+export const RegisterParametersSupportedPrivacyItemEnumList =
+  ConfigureContactSettingsRequestContactNoticesItemEnumList as any as S.Schema<RegisterParametersSupportedPrivacyItemEnumList>;
 
 export type RegisterParametersAvailabilityEnum =
   | "AVAILABILITY_UNSPECIFIED"
@@ -1381,9 +1377,8 @@ export const RegisterParametersDomainNoticesItemEnum = S.String;
 
 export type RegisterParametersDomainNoticesItemEnumList =
   Array<RegisterParametersDomainNoticesItemEnum>;
-export const RegisterParametersDomainNoticesItemEnumList = /*@__PURE__*/ S.Array(
-  RegisterParametersDomainNoticesItemEnum,
-) as any as S.Schema<RegisterParametersDomainNoticesItemEnumList>;
+export const RegisterParametersDomainNoticesItemEnumList =
+  ConfigureContactSettingsRequestContactNoticesItemEnumList as any as S.Schema<RegisterParametersDomainNoticesItemEnumList>;
 
 /** Parameters required to register a new domain. */
 export interface RegisterParameters {
@@ -1452,9 +1447,8 @@ export const TransferParametersSupportedPrivacyItemEnum = S.String;
 
 export type TransferParametersSupportedPrivacyItemEnumList =
   Array<TransferParametersSupportedPrivacyItemEnum>;
-export const TransferParametersSupportedPrivacyItemEnumList = /*@__PURE__*/ S.Array(
-  TransferParametersSupportedPrivacyItemEnum,
-) as any as S.Schema<TransferParametersSupportedPrivacyItemEnumList>;
+export const TransferParametersSupportedPrivacyItemEnumList =
+  ConfigureContactSettingsRequestContactNoticesItemEnumList as any as S.Schema<TransferParametersSupportedPrivacyItemEnumList>;
 
 export type TransferParametersTransferLockStateEnum =
   | "TRANSFER_LOCK_STATE_UNSPECIFIED"
@@ -1753,9 +1747,8 @@ export const RegisterDomainRequestContactNoticesItemEnum = S.String;
 export type RegisterDomainRequestContactNoticesItemEnumList = Array<
   RegisterDomainRequestContactNoticesItemEnum | (string & {})
 >;
-export const RegisterDomainRequestContactNoticesItemEnumList = /*@__PURE__*/ S.Array(
-  RegisterDomainRequestContactNoticesItemEnum,
-) as any as S.Schema<RegisterDomainRequestContactNoticesItemEnumList>;
+export const RegisterDomainRequestContactNoticesItemEnumList =
+  ConfigureContactSettingsRequestContactNoticesItemEnumList as any as S.Schema<RegisterDomainRequestContactNoticesItemEnumList>;
 
 export type RegisterDomainRequestDomainNoticesItemEnum =
   | "DOMAIN_NOTICE_UNSPECIFIED"
@@ -1765,9 +1758,8 @@ export const RegisterDomainRequestDomainNoticesItemEnum = S.String;
 export type RegisterDomainRequestDomainNoticesItemEnumList = Array<
   RegisterDomainRequestDomainNoticesItemEnum | (string & {})
 >;
-export const RegisterDomainRequestDomainNoticesItemEnumList = /*@__PURE__*/ S.Array(
-  RegisterDomainRequestDomainNoticesItemEnum,
-) as any as S.Schema<RegisterDomainRequestDomainNoticesItemEnumList>;
+export const RegisterDomainRequestDomainNoticesItemEnumList =
+  ConfigureContactSettingsRequestContactNoticesItemEnumList as any as S.Schema<RegisterDomainRequestDomainNoticesItemEnumList>;
 
 /** Request for the `RegisterDomain` method. */
 export interface RegisterDomainRequest {
@@ -1996,9 +1988,8 @@ export const TransferDomainRequestContactNoticesItemEnum = S.String;
 export type TransferDomainRequestContactNoticesItemEnumList = Array<
   TransferDomainRequestContactNoticesItemEnum | (string & {})
 >;
-export const TransferDomainRequestContactNoticesItemEnumList = /*@__PURE__*/ S.Array(
-  TransferDomainRequestContactNoticesItemEnum,
-) as any as S.Schema<TransferDomainRequestContactNoticesItemEnumList>;
+export const TransferDomainRequestContactNoticesItemEnumList =
+  ConfigureContactSettingsRequestContactNoticesItemEnumList as any as S.Schema<TransferDomainRequestContactNoticesItemEnumList>;
 
 /** Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations). Request for the `TransferDomain` method. */
 export interface TransferDomainRequest {

@@ -214,22 +214,7 @@ export interface ConfigurationProfileHCIAssignmentsCreateOrUpdateResponseSystemD
   lastModifiedAt?: string;
 }
 export const ConfigurationProfileHCIAssignmentsCreateOrUpdateResponseSystemData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        ConfigurationProfileHCIAssignmentsCreateOrUpdateResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        ConfigurationProfileHCIAssignmentsCreateOrUpdateResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ConfigurationProfileHCIAssignmentsCreateOrUpdateResponseSystemData",
-  }) as any as S.Schema<ConfigurationProfileHCIAssignmentsCreateOrUpdateResponseSystemData>;
+  ConfigurationProfileAssignmentsCreateOrUpdateResponseSystemData as any as S.Schema<ConfigurationProfileHCIAssignmentsCreateOrUpdateResponseSystemData>;
 
 export interface ConfigurationProfileHCIAssignmentsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -325,22 +310,7 @@ export interface ConfigurationProfileHCRPAssignmentsCreateOrUpdateResponseSystem
   lastModifiedAt?: string;
 }
 export const ConfigurationProfileHCRPAssignmentsCreateOrUpdateResponseSystemData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        ConfigurationProfileHCRPAssignmentsCreateOrUpdateResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        ConfigurationProfileHCRPAssignmentsCreateOrUpdateResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ConfigurationProfileHCRPAssignmentsCreateOrUpdateResponseSystemData",
-  }) as any as S.Schema<ConfigurationProfileHCRPAssignmentsCreateOrUpdateResponseSystemData>;
+  ConfigurationProfileAssignmentsCreateOrUpdateResponseSystemData as any as S.Schema<ConfigurationProfileHCRPAssignmentsCreateOrUpdateResponseSystemData>;
 
 export interface ConfigurationProfileHCRPAssignmentsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -356,19 +326,8 @@ export interface ConfigurationProfileHCRPAssignmentsCreateOrUpdateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: ConfigurationProfileHCRPAssignmentsCreateOrUpdateResponseSystemData;
 }
-export const ConfigurationProfileHCRPAssignmentsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      properties: S.optional(ConfigurationProfileAssignmentProperties),
-      managedBy: S.optional(S.String),
-      systemData: S.optional(ConfigurationProfileHCRPAssignmentsCreateOrUpdateResponseSystemData),
-    }),
-).annotate({
-  identifier: "ConfigurationProfileHCRPAssignmentsCreateOrUpdateResponse",
-}) as any as S.Schema<ConfigurationProfileHCRPAssignmentsCreateOrUpdateResponse>;
+export const ConfigurationProfileHCRPAssignmentsCreateOrUpdateResponse =
+  ConfigurationProfileHCIAssignmentsCreateOrUpdateResponse as any as S.Schema<ConfigurationProfileHCRPAssignmentsCreateOrUpdateResponse>;
 
 /** Resource tags. */
 export type ConfigurationProfilesCreateOrUpdateRequestTagsMap = {
@@ -593,22 +552,7 @@ export interface ConfigurationProfilesVersionsCreateOrUpdateResponseSystemData {
   lastModifiedAt?: string;
 }
 export const ConfigurationProfilesVersionsCreateOrUpdateResponseSystemData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        ConfigurationProfilesVersionsCreateOrUpdateResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        ConfigurationProfilesVersionsCreateOrUpdateResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ConfigurationProfilesVersionsCreateOrUpdateResponseSystemData",
-  }) as any as S.Schema<ConfigurationProfilesVersionsCreateOrUpdateResponseSystemData>;
+  ConfigurationProfileAssignmentsCreateOrUpdateResponseSystemData as any as S.Schema<ConfigurationProfilesVersionsCreateOrUpdateResponseSystemData>;
 
 export interface ConfigurationProfilesVersionsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1067,20 +1011,8 @@ export interface GetConfigurationProfileAssignmentResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetConfigurationProfileAssignmentResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetConfigurationProfileAssignmentResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      GetConfigurationProfileAssignmentResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetConfigurationProfileAssignmentResponseSystemData",
-}) as any as S.Schema<GetConfigurationProfileAssignmentResponseSystemData>;
+export const GetConfigurationProfileAssignmentResponseSystemData =
+  ConfigurationProfilesCreateOrUpdateResponseSystemData as any as S.Schema<GetConfigurationProfileAssignmentResponseSystemData>;
 
 export interface GetConfigurationProfileAssignmentResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1168,20 +1100,8 @@ export interface GetConfigurationProfileHCIAssignmentResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetConfigurationProfileHCIAssignmentResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetConfigurationProfileHCIAssignmentResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      GetConfigurationProfileHCIAssignmentResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetConfigurationProfileHCIAssignmentResponseSystemData",
-}) as any as S.Schema<GetConfigurationProfileHCIAssignmentResponseSystemData>;
+export const GetConfigurationProfileHCIAssignmentResponseSystemData =
+  ConfigurationProfilesCreateOrUpdateResponseSystemData as any as S.Schema<GetConfigurationProfileHCIAssignmentResponseSystemData>;
 
 export interface GetConfigurationProfileHCIAssignmentResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1197,18 +1117,8 @@ export interface GetConfigurationProfileHCIAssignmentResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetConfigurationProfileHCIAssignmentResponseSystemData;
 }
-export const GetConfigurationProfileHCIAssignmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(ConfigurationProfileAssignmentProperties),
-    managedBy: S.optional(S.String),
-    systemData: S.optional(GetConfigurationProfileHCIAssignmentResponseSystemData),
-  }),
-).annotate({
-  identifier: "GetConfigurationProfileHCIAssignmentResponse",
-}) as any as S.Schema<GetConfigurationProfileHCIAssignmentResponse>;
+export const GetConfigurationProfileHCIAssignmentResponse =
+  GetConfigurationProfileAssignmentResponse as any as S.Schema<GetConfigurationProfileHCIAssignmentResponse>;
 
 export interface GetConfigurationProfileHCRPAssignmentRequest {
   /** The ID of the target subscription. */
@@ -1269,20 +1179,8 @@ export interface GetConfigurationProfileHCRPAssignmentResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetConfigurationProfileHCRPAssignmentResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetConfigurationProfileHCRPAssignmentResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      GetConfigurationProfileHCRPAssignmentResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetConfigurationProfileHCRPAssignmentResponseSystemData",
-}) as any as S.Schema<GetConfigurationProfileHCRPAssignmentResponseSystemData>;
+export const GetConfigurationProfileHCRPAssignmentResponseSystemData =
+  ConfigurationProfilesCreateOrUpdateResponseSystemData as any as S.Schema<GetConfigurationProfileHCRPAssignmentResponseSystemData>;
 
 export interface GetConfigurationProfileHCRPAssignmentResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1298,18 +1196,8 @@ export interface GetConfigurationProfileHCRPAssignmentResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetConfigurationProfileHCRPAssignmentResponseSystemData;
 }
-export const GetConfigurationProfileHCRPAssignmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(ConfigurationProfileAssignmentProperties),
-    managedBy: S.optional(S.String),
-    systemData: S.optional(GetConfigurationProfileHCRPAssignmentResponseSystemData),
-  }),
-).annotate({
-  identifier: "GetConfigurationProfileHCRPAssignmentResponse",
-}) as any as S.Schema<GetConfigurationProfileHCRPAssignmentResponse>;
+export const GetConfigurationProfileHCRPAssignmentResponse =
+  GetConfigurationProfileAssignmentResponse as any as S.Schema<GetConfigurationProfileHCRPAssignmentResponse>;
 
 export interface GetConfigurationProfilesVersionRequest {
   /** The ID of the target subscription. */
@@ -1375,20 +1263,8 @@ export interface GetConfigurationProfilesVersionResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetConfigurationProfilesVersionResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetConfigurationProfilesVersionResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      GetConfigurationProfilesVersionResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetConfigurationProfilesVersionResponseSystemData",
-}) as any as S.Schema<GetConfigurationProfilesVersionResponseSystemData>;
+export const GetConfigurationProfilesVersionResponseSystemData =
+  ConfigurationProfilesCreateOrUpdateResponseSystemData as any as S.Schema<GetConfigurationProfilesVersionResponseSystemData>;
 
 export interface GetConfigurationProfilesVersionResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1667,18 +1543,8 @@ export interface GetHCIReportResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetHCIReportResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetHCIReportResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetHCIReportResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetHCIReportResponseSystemData",
-}) as any as S.Schema<GetHCIReportResponseSystemData>;
+export const GetHCIReportResponseSystemData =
+  GetConfigurationProfileResponseSystemData as any as S.Schema<GetHCIReportResponseSystemData>;
 
 export interface GetHCIReportResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1762,18 +1628,8 @@ export interface GetHCRPReportResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetHCRPReportResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetHCRPReportResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetHCRPReportResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetHCRPReportResponseSystemData",
-}) as any as S.Schema<GetHCRPReportResponseSystemData>;
+export const GetHCRPReportResponseSystemData =
+  GetConfigurationProfileResponseSystemData as any as S.Schema<GetHCRPReportResponseSystemData>;
 
 export interface GetHCRPReportResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1787,15 +1643,7 @@ export interface GetHCRPReportResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetHCRPReportResponseSystemData;
 }
-export const GetHCRPReportResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(AssignmentReportProperties),
-    systemData: S.optional(GetHCRPReportResponseSystemData),
-  }),
-).annotate({ identifier: "GetHCRPReportResponse" }) as any as S.Schema<GetHCRPReportResponse>;
+export const GetHCRPReportResponse = GetHCIReportResponse as any as S.Schema<GetHCRPReportResponse>;
 
 export interface GetReportRequest {
   /** The ID of the target subscription. */
@@ -1857,18 +1705,8 @@ export interface GetReportResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetReportResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetReportResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetReportResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetReportResponseSystemData",
-}) as any as S.Schema<GetReportResponseSystemData>;
+export const GetReportResponseSystemData =
+  GetConfigurationProfileResponseSystemData as any as S.Schema<GetReportResponseSystemData>;
 
 export interface GetReportResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1882,15 +1720,7 @@ export interface GetReportResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetReportResponseSystemData;
 }
-export const GetReportResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(AssignmentReportProperties),
-    systemData: S.optional(GetReportResponseSystemData),
-  }),
-).annotate({ identifier: "GetReportResponse" }) as any as S.Schema<GetReportResponse>;
+export const GetReportResponse = GetHCIReportResponse as any as S.Schema<GetReportResponse>;
 
 export interface GetServicePrincipalRequest {
   /** The ID of the target subscription. */
@@ -1958,18 +1788,8 @@ export interface GetServicePrincipalResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetServicePrincipalResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetServicePrincipalResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetServicePrincipalResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetServicePrincipalResponseSystemData",
-}) as any as S.Schema<GetServicePrincipalResponseSystemData>;
+export const GetServicePrincipalResponseSystemData =
+  GetConfigurationProfileResponseSystemData as any as S.Schema<GetServicePrincipalResponseSystemData>;
 
 export interface GetServicePrincipalResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2101,18 +1921,8 @@ export interface ConfigurationProfileAssignmentSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const ConfigurationProfileAssignmentSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(ConfigurationProfileAssignmentSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(ConfigurationProfileAssignmentSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ConfigurationProfileAssignmentSystemData",
-}) as any as S.Schema<ConfigurationProfileAssignmentSystemData>;
+export const ConfigurationProfileAssignmentSystemData =
+  GetConfigurationProfileResponseSystemData as any as S.Schema<ConfigurationProfileAssignmentSystemData>;
 
 /** Configuration profile assignment is an association between a VM and automanage profile configuration. */
 export interface ConfigurationProfileAssignment {
@@ -2311,18 +2121,8 @@ export interface ConfigurationProfileSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const ConfigurationProfileSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(ConfigurationProfileSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(ConfigurationProfileSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ConfigurationProfileSystemData",
-}) as any as S.Schema<ConfigurationProfileSystemData>;
+export const ConfigurationProfileSystemData =
+  GetConfigurationProfileResponseSystemData as any as S.Schema<ConfigurationProfileSystemData>;
 
 /** Definition of the configuration profile. */
 export interface ConfigurationProfile {
@@ -2465,16 +2265,7 @@ export interface ReportSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const ReportSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(ReportSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(ReportSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({ identifier: "ReportSystemData" }) as any as S.Schema<ReportSystemData>;
+export const ReportSystemData = BestPracticeSystemData as any as S.Schema<ReportSystemData>;
 
 /** Definition of the report. */
 export interface Report {
@@ -2704,18 +2495,8 @@ export interface ServicePrincipalSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const ServicePrincipalSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(ServicePrincipalSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(ServicePrincipalSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ServicePrincipalSystemData",
-}) as any as S.Schema<ServicePrincipalSystemData>;
+export const ServicePrincipalSystemData =
+  GetConfigurationProfileResponseSystemData as any as S.Schema<ServicePrincipalSystemData>;
 
 /** The Service Principal Id for the subscription. */
 export interface ServicePrincipal {
@@ -2831,18 +2612,8 @@ export interface UpdateConfigurationProfileResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdateConfigurationProfileResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(UpdateConfigurationProfileResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(UpdateConfigurationProfileResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateConfigurationProfileResponseSystemData",
-}) as any as S.Schema<UpdateConfigurationProfileResponseSystemData>;
+export const UpdateConfigurationProfileResponseSystemData =
+  GetConfigurationProfileResponseSystemData as any as S.Schema<UpdateConfigurationProfileResponseSystemData>;
 
 export interface UpdateConfigurationProfileResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */

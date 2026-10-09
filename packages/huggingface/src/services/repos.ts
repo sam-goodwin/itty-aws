@@ -278,21 +278,13 @@ export interface CreateRepositoryRequestBodyCase1FilesItem {
   path: string;
   encoding?: CreateRepositoryRequestBodyCase1FilesItemEncoding | (string & {});
 }
-export const CreateRepositoryRequestBodyCase1FilesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    content: S.String,
-    path: S.String,
-    encoding: S.optional(CreateRepositoryRequestBodyCase1FilesItemEncoding),
-  }),
-).annotate({
-  identifier: "CreateRepositoryRequestBodyCase1FilesItem",
-}) as any as S.Schema<CreateRepositoryRequestBodyCase1FilesItem>;
+export const CreateRepositoryRequestBodyCase1FilesItem =
+  CreateRepositoryRequestBodyCase0FilesItem as any as S.Schema<CreateRepositoryRequestBodyCase1FilesItem>;
 
 export type CreateRepositoryRequestBodyCase1FilesList =
   Array<CreateRepositoryRequestBodyCase1FilesItem>;
-export const CreateRepositoryRequestBodyCase1FilesList = /*@__PURE__*/ S.Array(
-  CreateRepositoryRequestBodyCase1FilesItem,
-) as any as S.Schema<CreateRepositoryRequestBodyCase1FilesList>;
+export const CreateRepositoryRequestBodyCase1FilesList =
+  CreateRepositoryRequestBodyCase0FilesList as any as S.Schema<CreateRepositoryRequestBodyCase1FilesList>;
 
 export interface CreateRepositoryRequestBodyCase1 {
   name: string;
@@ -432,21 +424,13 @@ export interface CreateRepositoryRequestBodyCase2FilesItem {
   path: string;
   encoding?: CreateRepositoryRequestBodyCase2FilesItemEncoding | (string & {});
 }
-export const CreateRepositoryRequestBodyCase2FilesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    content: S.String,
-    path: S.String,
-    encoding: S.optional(CreateRepositoryRequestBodyCase2FilesItemEncoding),
-  }),
-).annotate({
-  identifier: "CreateRepositoryRequestBodyCase2FilesItem",
-}) as any as S.Schema<CreateRepositoryRequestBodyCase2FilesItem>;
+export const CreateRepositoryRequestBodyCase2FilesItem =
+  CreateRepositoryRequestBodyCase0FilesItem as any as S.Schema<CreateRepositoryRequestBodyCase2FilesItem>;
 
 export type CreateRepositoryRequestBodyCase2FilesList =
   Array<CreateRepositoryRequestBodyCase2FilesItem>;
-export const CreateRepositoryRequestBodyCase2FilesList = /*@__PURE__*/ S.Array(
-  CreateRepositoryRequestBodyCase2FilesItem,
-) as any as S.Schema<CreateRepositoryRequestBodyCase2FilesList>;
+export const CreateRepositoryRequestBodyCase2FilesList =
+  CreateRepositoryRequestBodyCase0FilesList as any as S.Schema<CreateRepositoryRequestBodyCase2FilesList>;
 
 export interface CreateRepositoryRequestBodyCase2 {
   name: string;
@@ -465,23 +449,8 @@ export interface CreateRepositoryRequestBodyCase2 {
   files?: CreateRepositoryRequestBodyCase2FilesList;
   type: string;
 }
-export const CreateRepositoryRequestBodyCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    organization: S.optional(S.NullOr(S.String)),
-    region: S.optional(CreateRepositoryRequestBodyCase2Region),
-    license: S.optional(CreateRepositoryRequestBodyCase2License),
-    license_name: S.optional(S.String),
-    license_link: S.optional(S.String),
-    private: S.optional(S.NullOr(S.Boolean)),
-    visibility: S.optional(CreateRepositoryRequestBodyCase2Visibility),
-    resourceGroupId: S.optional(S.NullOr(S.String)),
-    files: S.optional(CreateRepositoryRequestBodyCase2FilesList),
-    type: S.String,
-  }),
-).annotate({
-  identifier: "CreateRepositoryRequestBodyCase2",
-}) as any as S.Schema<CreateRepositoryRequestBodyCase2>;
+export const CreateRepositoryRequestBodyCase2 =
+  CreateRepositoryRequestBodyCase0 as any as S.Schema<CreateRepositoryRequestBodyCase2>;
 
 /** The region where the repository is hosted. */
 export type CreateRepositoryRequestBodyCase3Region = "us" | "eu";
@@ -586,21 +555,13 @@ export interface CreateRepositoryRequestBodyCase3FilesItem {
   path: string;
   encoding?: CreateRepositoryRequestBodyCase3FilesItemEncoding | (string & {});
 }
-export const CreateRepositoryRequestBodyCase3FilesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    content: S.String,
-    path: S.String,
-    encoding: S.optional(CreateRepositoryRequestBodyCase3FilesItemEncoding),
-  }),
-).annotate({
-  identifier: "CreateRepositoryRequestBodyCase3FilesItem",
-}) as any as S.Schema<CreateRepositoryRequestBodyCase3FilesItem>;
+export const CreateRepositoryRequestBodyCase3FilesItem =
+  CreateRepositoryRequestBodyCase0FilesItem as any as S.Schema<CreateRepositoryRequestBodyCase3FilesItem>;
 
 export type CreateRepositoryRequestBodyCase3FilesList =
   Array<CreateRepositoryRequestBodyCase3FilesItem>;
-export const CreateRepositoryRequestBodyCase3FilesList = /*@__PURE__*/ S.Array(
-  CreateRepositoryRequestBodyCase3FilesItem,
-) as any as S.Schema<CreateRepositoryRequestBodyCase3FilesList>;
+export const CreateRepositoryRequestBodyCase3FilesList =
+  CreateRepositoryRequestBodyCase0FilesList as any as S.Schema<CreateRepositoryRequestBodyCase3FilesList>;
 
 /** The hardware flavor of the space. If you select 'zero-a10g' or 'zerogpu', the SDK must be Gradio. */
 export type CreateRepositoryRequestBodyCase3Hardware =
@@ -881,24 +842,13 @@ export interface DuplicateRepositoryRequestVolumesItem {
   /** Subfolder prefix inside the bucket/repo to mount, e.g. 'path/to/dir' */
   path?: string;
 }
-export const DuplicateRepositoryRequestVolumesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: DuplicateRepositoryRequestVolumesItemType,
-    source: S.String,
-    mountPath: S.String,
-    revision: S.optional(S.String),
-    readOnly: S.optional(S.Boolean),
-    path: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DuplicateRepositoryRequestVolumesItem",
-}) as any as S.Schema<DuplicateRepositoryRequestVolumesItem>;
+export const DuplicateRepositoryRequestVolumesItem =
+  CreateRepositoryRequestBodyCase3VolumesItem as any as S.Schema<DuplicateRepositoryRequestVolumesItem>;
 
 /** HuggingFace Buckets or Repos to mount as volumes in the duplicated Space. */
 export type DuplicateRepositoryRequestVolumesList = Array<DuplicateRepositoryRequestVolumesItem>;
-export const DuplicateRepositoryRequestVolumesList = /*@__PURE__*/ S.Array(
-  DuplicateRepositoryRequestVolumesItem,
-) as any as S.Schema<DuplicateRepositoryRequestVolumesList>;
+export const DuplicateRepositoryRequestVolumesList =
+  CreateRepositoryRequestBodyCase3VolumesList as any as S.Schema<DuplicateRepositoryRequestVolumesList>;
 
 export interface DuplicateRepositoryRequest {
   repoType: DuplicateRepositoryRequestRepoType | (string & {});

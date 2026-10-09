@@ -2482,9 +2482,8 @@ export const WeeklyWindowDaysOfWeekItemEnum = S.String;
 export type WeeklyWindowDaysOfWeekItemEnumList = Array<
   WeeklyWindowDaysOfWeekItemEnum | (string & {})
 >;
-export const WeeklyWindowDaysOfWeekItemEnumList = /*@__PURE__*/ S.Array(
-  WeeklyWindowDaysOfWeekItemEnum,
-) as any as S.Schema<WeeklyWindowDaysOfWeekItemEnumList>;
+export const WeeklyWindowDaysOfWeekItemEnumList =
+  ExecutionConfigUsagesItemEnumList as any as S.Schema<WeeklyWindowDaysOfWeekItemEnumList>;
 
 /** Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`. */
 export interface TimeOfDay {
@@ -2602,9 +2601,8 @@ export const RolloutRestrictionActionsItemEnum = S.String;
 export type RolloutRestrictionActionsItemEnumList = Array<
   RolloutRestrictionActionsItemEnum | (string & {})
 >;
-export const RolloutRestrictionActionsItemEnumList = /*@__PURE__*/ S.Array(
-  RolloutRestrictionActionsItemEnum,
-) as any as S.Schema<RolloutRestrictionActionsItemEnumList>;
+export const RolloutRestrictionActionsItemEnumList =
+  ExecutionConfigUsagesItemEnumList as any as S.Schema<RolloutRestrictionActionsItemEnumList>;
 
 export type RolloutRestrictionInvokersItemEnum =
   | "INVOKER_UNSPECIFIED"
@@ -2615,9 +2613,8 @@ export const RolloutRestrictionInvokersItemEnum = S.String;
 export type RolloutRestrictionInvokersItemEnumList = Array<
   RolloutRestrictionInvokersItemEnum | (string & {})
 >;
-export const RolloutRestrictionInvokersItemEnumList = /*@__PURE__*/ S.Array(
-  RolloutRestrictionInvokersItemEnum,
-) as any as S.Schema<RolloutRestrictionInvokersItemEnumList>;
+export const RolloutRestrictionInvokersItemEnumList =
+  ExecutionConfigUsagesItemEnumList as any as S.Schema<RolloutRestrictionInvokersItemEnumList>;
 
 /** Rollout restrictions. */
 export interface RolloutRestriction {

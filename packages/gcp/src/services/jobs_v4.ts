@@ -289,9 +289,8 @@ export type JobEmploymentTypesItemEnum =
 export const JobEmploymentTypesItemEnum = S.String;
 
 export type JobEmploymentTypesItemEnumList = Array<JobEmploymentTypesItemEnum | (string & {})>;
-export const JobEmploymentTypesItemEnumList = /*@__PURE__*/ S.Array(
-  JobEmploymentTypesItemEnum,
-) as any as S.Schema<JobEmploymentTypesItemEnumList>;
+export const JobEmploymentTypesItemEnumList =
+  JobDerivedInfoJobCategoriesItemEnumList as any as S.Schema<JobEmploymentTypesItemEnumList>;
 
 export type CompensationEntryTypeEnum =
   | "COMPENSATION_TYPE_UNSPECIFIED"
@@ -437,9 +436,8 @@ export type JobJobBenefitsItemEnum =
 export const JobJobBenefitsItemEnum = S.String;
 
 export type JobJobBenefitsItemEnumList = Array<JobJobBenefitsItemEnum | (string & {})>;
-export const JobJobBenefitsItemEnumList = /*@__PURE__*/ S.Array(
-  JobJobBenefitsItemEnum,
-) as any as S.Schema<JobJobBenefitsItemEnumList>;
+export const JobJobBenefitsItemEnumList =
+  JobDerivedInfoJobCategoriesItemEnumList as any as S.Schema<JobJobBenefitsItemEnumList>;
 
 export type JobJobLevelEnum =
   | "JOB_LEVEL_UNSPECIFIED"
@@ -470,9 +468,8 @@ export type JobDegreeTypesItemEnum =
 export const JobDegreeTypesItemEnum = S.String;
 
 export type JobDegreeTypesItemEnumList = Array<JobDegreeTypesItemEnum | (string & {})>;
-export const JobDegreeTypesItemEnumList = /*@__PURE__*/ S.Array(
-  JobDegreeTypesItemEnum,
-) as any as S.Schema<JobDegreeTypesItemEnumList>;
+export const JobDegreeTypesItemEnumList =
+  JobDerivedInfoJobCategoriesItemEnumList as any as S.Schema<JobDegreeTypesItemEnumList>;
 
 /** A Job resource represents a job posting (also referred to as a "job listing" or "job requisition"). A job belongs to a Company, which is the hiring entity responsible for the job. */
 export interface Job {
@@ -1426,9 +1423,8 @@ export const CompensationFilterUnitsItemEnum = S.String;
 export type CompensationFilterUnitsItemEnumList = Array<
   CompensationFilterUnitsItemEnum | (string & {})
 >;
-export const CompensationFilterUnitsItemEnumList = /*@__PURE__*/ S.Array(
-  CompensationFilterUnitsItemEnum,
-) as any as S.Schema<CompensationFilterUnitsItemEnumList>;
+export const CompensationFilterUnitsItemEnumList =
+  JobDerivedInfoJobCategoriesItemEnumList as any as S.Schema<CompensationFilterUnitsItemEnumList>;
 
 /** Filter on job compensation type and amount. */
 export interface CompensationFilter {
@@ -1467,9 +1463,8 @@ export const JobQueryEmploymentTypesItemEnum = S.String;
 export type JobQueryEmploymentTypesItemEnumList = Array<
   JobQueryEmploymentTypesItemEnum | (string & {})
 >;
-export const JobQueryEmploymentTypesItemEnumList = /*@__PURE__*/ S.Array(
-  JobQueryEmploymentTypesItemEnum,
-) as any as S.Schema<JobQueryEmploymentTypesItemEnumList>;
+export const JobQueryEmploymentTypesItemEnumList =
+  JobDerivedInfoJobCategoriesItemEnumList as any as S.Schema<JobQueryEmploymentTypesItemEnumList>;
 
 export type LocationFilterTelecommutePreferenceEnum =
   | "TELECOMMUTE_PREFERENCE_UNSPECIFIED"
@@ -1543,9 +1538,8 @@ export const JobQueryJobCategoriesItemEnum = S.String;
 export type JobQueryJobCategoriesItemEnumList = Array<
   JobQueryJobCategoriesItemEnum | (string & {})
 >;
-export const JobQueryJobCategoriesItemEnumList = /*@__PURE__*/ S.Array(
-  JobQueryJobCategoriesItemEnum,
-) as any as S.Schema<JobQueryJobCategoriesItemEnumList>;
+export const JobQueryJobCategoriesItemEnumList =
+  JobDerivedInfoJobCategoriesItemEnumList as any as S.Schema<JobQueryJobCategoriesItemEnumList>;
 
 /** The query required to perform a search query. */
 export interface JobQuery {

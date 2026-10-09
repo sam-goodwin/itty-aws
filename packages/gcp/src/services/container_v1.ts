@@ -2874,9 +2874,8 @@ export type FilterEventTypeItemEnum =
 export const FilterEventTypeItemEnum = S.String;
 
 export type FilterEventTypeItemEnumList = Array<FilterEventTypeItemEnum | (string & {})>;
-export const FilterEventTypeItemEnumList = /*@__PURE__*/ S.Array(
-  FilterEventTypeItemEnum,
-) as any as S.Schema<FilterEventTypeItemEnumList>;
+export const FilterEventTypeItemEnumList =
+  HostConfigCapabilitiesItemEnumList as any as S.Schema<FilterEventTypeItemEnumList>;
 
 /** Allows filtering to one or more specific event types. If event types are present, those and only those event types will be transmitted to the cluster. Other types will be skipped. If no filter is specified, or no event types are present, all event types will be sent */
 export interface Filter {
@@ -3469,11 +3468,7 @@ export interface ControlPlaneEgress {
   /** Defines the mode of control plane egress. */
   mode?: ControlPlaneEgressModeEnum | (string & {});
 }
-export const ControlPlaneEgress = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: S.optional(ControlPlaneEgressModeEnum),
-  }),
-).annotate({ identifier: "ControlPlaneEgress" }) as any as S.Schema<ControlPlaneEgress>;
+export const ControlPlaneEgress = WorkloadMetadataConfig as any as S.Schema<ControlPlaneEgress>;
 
 /** Subset of NodeConfig message that has defaults. */
 export interface NodeConfigDefaults {
@@ -3584,9 +3579,8 @@ export const MonitoringComponentConfigEnableComponentsItemEnum = S.String;
 export type MonitoringComponentConfigEnableComponentsItemEnumList = Array<
   MonitoringComponentConfigEnableComponentsItemEnum | (string & {})
 >;
-export const MonitoringComponentConfigEnableComponentsItemEnumList = /*@__PURE__*/ S.Array(
-  MonitoringComponentConfigEnableComponentsItemEnum,
-) as any as S.Schema<MonitoringComponentConfigEnableComponentsItemEnumList>;
+export const MonitoringComponentConfigEnableComponentsItemEnumList =
+  HostConfigCapabilitiesItemEnumList as any as S.Schema<MonitoringComponentConfigEnableComponentsItemEnumList>;
 
 /** MonitoringComponentConfig is cluster monitoring component configuration. */
 export interface MonitoringComponentConfig {
@@ -4187,11 +4181,7 @@ export interface GatewayAPIConfig {
   /** The Gateway API release channel to use for Gateway API. */
   channel?: GatewayAPIConfigChannelEnum | (string & {});
 }
-export const GatewayAPIConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    channel: S.optional(GatewayAPIConfigChannelEnum),
-  }),
-).annotate({ identifier: "GatewayAPIConfig" }) as any as S.Schema<GatewayAPIConfig>;
+export const GatewayAPIConfig = ReleaseChannel as any as S.Schema<GatewayAPIConfig>;
 
 export type NetworkConfigInTransitEncryptionConfigEnum =
   | "IN_TRANSIT_ENCRYPTION_CONFIG_UNSPECIFIED"
@@ -4277,9 +4267,8 @@ export const LoggingComponentConfigEnableComponentsItemEnum = S.String;
 export type LoggingComponentConfigEnableComponentsItemEnumList = Array<
   LoggingComponentConfigEnableComponentsItemEnum | (string & {})
 >;
-export const LoggingComponentConfigEnableComponentsItemEnumList = /*@__PURE__*/ S.Array(
-  LoggingComponentConfigEnableComponentsItemEnum,
-) as any as S.Schema<LoggingComponentConfigEnableComponentsItemEnumList>;
+export const LoggingComponentConfigEnableComponentsItemEnumList =
+  HostConfigCapabilitiesItemEnumList as any as S.Schema<LoggingComponentConfigEnableComponentsItemEnumList>;
 
 /** LoggingComponentConfig is cluster logging component configuration. */
 export interface LoggingComponentConfig {
@@ -5107,9 +5096,8 @@ export const ClusterUpgradeInfoPausedReasonItemEnum = S.String;
 
 export type ClusterUpgradeInfoPausedReasonItemEnumList =
   Array<ClusterUpgradeInfoPausedReasonItemEnum>;
-export const ClusterUpgradeInfoPausedReasonItemEnumList = /*@__PURE__*/ S.Array(
-  ClusterUpgradeInfoPausedReasonItemEnum,
-) as any as S.Schema<ClusterUpgradeInfoPausedReasonItemEnumList>;
+export const ClusterUpgradeInfoPausedReasonItemEnumList =
+  HostConfigCapabilitiesItemEnumList as any as S.Schema<ClusterUpgradeInfoPausedReasonItemEnumList>;
 
 export type RollbackSafeUpgradeStatusModeEnum =
   | "MODE_UNSPECIFIED"
@@ -5144,9 +5132,8 @@ export const ClusterUpgradeInfoAutoUpgradeStatusItemEnum = S.String;
 
 export type ClusterUpgradeInfoAutoUpgradeStatusItemEnumList =
   Array<ClusterUpgradeInfoAutoUpgradeStatusItemEnum>;
-export const ClusterUpgradeInfoAutoUpgradeStatusItemEnumList = /*@__PURE__*/ S.Array(
-  ClusterUpgradeInfoAutoUpgradeStatusItemEnum,
-) as any as S.Schema<ClusterUpgradeInfoAutoUpgradeStatusItemEnumList>;
+export const ClusterUpgradeInfoAutoUpgradeStatusItemEnumList =
+  HostConfigCapabilitiesItemEnumList as any as S.Schema<ClusterUpgradeInfoAutoUpgradeStatusItemEnumList>;
 
 /** ClusterUpgradeInfo contains the upgrade information of a cluster. */
 export interface ClusterUpgradeInfo {
@@ -5233,9 +5220,8 @@ export const NodePoolUpgradeInfoPausedReasonItemEnum = S.String;
 
 export type NodePoolUpgradeInfoPausedReasonItemEnumList =
   Array<NodePoolUpgradeInfoPausedReasonItemEnum>;
-export const NodePoolUpgradeInfoPausedReasonItemEnumList = /*@__PURE__*/ S.Array(
-  NodePoolUpgradeInfoPausedReasonItemEnum,
-) as any as S.Schema<NodePoolUpgradeInfoPausedReasonItemEnumList>;
+export const NodePoolUpgradeInfoPausedReasonItemEnumList =
+  HostConfigCapabilitiesItemEnumList as any as S.Schema<NodePoolUpgradeInfoPausedReasonItemEnumList>;
 
 export type NodePoolUpgradeInfoAutoUpgradeStatusItemEnum =
   | "UNKNOWN"
@@ -5246,9 +5232,8 @@ export const NodePoolUpgradeInfoAutoUpgradeStatusItemEnum = S.String;
 
 export type NodePoolUpgradeInfoAutoUpgradeStatusItemEnumList =
   Array<NodePoolUpgradeInfoAutoUpgradeStatusItemEnum>;
-export const NodePoolUpgradeInfoAutoUpgradeStatusItemEnumList = /*@__PURE__*/ S.Array(
-  NodePoolUpgradeInfoAutoUpgradeStatusItemEnum,
-) as any as S.Schema<NodePoolUpgradeInfoAutoUpgradeStatusItemEnumList>;
+export const NodePoolUpgradeInfoAutoUpgradeStatusItemEnumList =
+  HostConfigCapabilitiesItemEnumList as any as S.Schema<NodePoolUpgradeInfoAutoUpgradeStatusItemEnumList>;
 
 /** Contains the custom image info for a node pool. */
 export interface CustomImageInfo {

@@ -555,7 +555,7 @@ export type As2Transport = "HTTP" | (string & {});
 export const As2Transport = S.String;
 
 export type As2Transports = As2Transport[];
-export const As2Transports = /*@__PURE__*/ S.Array(As2Transport);
+export const As2Transports = Protocols as any as S.Schema<As2Transports>;
 export type ProxyMode = "NONE" | "PROXY_PROTOCOL_V2_ENFORCED" | (string & {});
 export const ProxyMode = S.String;
 
@@ -1538,7 +1538,7 @@ export type SecurityPolicyProtocol = "SFTP" | "FTPS" | (string & {});
 export const SecurityPolicyProtocol = S.String;
 
 export type SecurityPolicyProtocols = SecurityPolicyProtocol[];
-export const SecurityPolicyProtocols = /*@__PURE__*/ S.Array(SecurityPolicyProtocol);
+export const SecurityPolicyProtocols = Protocols as any as S.Schema<SecurityPolicyProtocols>;
 export interface DescribedSecurityPolicy {
   Fips?: boolean;
   SecurityPolicyName: string;

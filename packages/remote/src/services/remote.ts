@@ -4590,9 +4590,8 @@ export const TerminationOffboardingRiskAssessmentReasonsItem = S.String;
 /** Reasons that may increase the legal risk of this termination (e.g., the employee is pregnant, on family leave, etc.). */
 export type TerminationOffboardingRiskAssessmentReasonsList =
   Array<TerminationOffboardingRiskAssessmentReasonsItem>;
-export const TerminationOffboardingRiskAssessmentReasonsList = /*@__PURE__*/ S.Array(
-  TerminationOffboardingRiskAssessmentReasonsItem,
-) as any as S.Schema<TerminationOffboardingRiskAssessmentReasonsList>;
+export const TerminationOffboardingRiskAssessmentReasonsList =
+  TerminationDetailsParamsRiskAssessmentReasonsList as any as S.Schema<TerminationOffboardingRiskAssessmentReasonsList>;
 
 /** The current status of the offboarding request. - `submitted`: The request has been submitted and is awaiting review by Remote. - `in_review`: Remote is reviewing the request for legal compliance and risks. - `done`: The offboarding has been completed and the employment is terminated. - `canceled`: The offboarding request was canceled before completion. */
 export type TerminationOffboardingStatus = "submitted" | "in_review" | "done" | "canceled";
@@ -6641,9 +6640,8 @@ export const CreateWebhookCallbackRequestSubscribedEventsItem = S.String;
 export type CreateWebhookCallbackRequestSubscribedEventsList = Array<
   CreateWebhookCallbackRequestSubscribedEventsItem | (string & {})
 >;
-export const CreateWebhookCallbackRequestSubscribedEventsList = /*@__PURE__*/ S.Array(
-  CreateWebhookCallbackRequestSubscribedEventsItem,
-) as any as S.Schema<CreateWebhookCallbackRequestSubscribedEventsList>;
+export const CreateWebhookCallbackRequestSubscribedEventsList =
+  TerminationDetailsParamsRiskAssessmentReasonsList as any as S.Schema<CreateWebhookCallbackRequestSubscribedEventsList>;
 
 export interface CreateWebhookCallbackRequest {
   /** When true, subscribe this callback to all current and future event types. Cannot be combined with `subscribed_events`. */
@@ -6785,9 +6783,8 @@ export type WebhookCallbackSubscribedEventsItem =
 export const WebhookCallbackSubscribedEventsItem = S.String;
 
 export type WebhookCallbackSubscribedEventsList = Array<WebhookCallbackSubscribedEventsItem>;
-export const WebhookCallbackSubscribedEventsList = /*@__PURE__*/ S.Array(
-  WebhookCallbackSubscribedEventsItem,
-) as any as S.Schema<WebhookCallbackSubscribedEventsList>;
+export const WebhookCallbackSubscribedEventsList =
+  TerminationDetailsParamsRiskAssessmentReasonsList as any as S.Schema<WebhookCallbackSubscribedEventsList>;
 
 /** A registered webhook callback endpoint. Remote sends HTTP POST requests to the configured URL when subscribed events occur. */
 export interface WebhookCallback {
@@ -7253,9 +7250,8 @@ export const CountryContractorProductsAvailableItem = S.String;
 export type CountryContractorProductsAvailableList = Array<
   CountryContractorProductsAvailableItem | (string & {})
 >;
-export const CountryContractorProductsAvailableList = /*@__PURE__*/ S.Array(
-  CountryContractorProductsAvailableItem,
-) as any as S.Schema<CountryContractorProductsAvailableList>;
+export const CountryContractorProductsAvailableList =
+  TerminationDetailsParamsRiskAssessmentReasonsList as any as S.Schema<CountryContractorProductsAvailableList>;
 
 /** A subdivision of a supported country on Remote */
 export interface CountrySubdivision {
@@ -12314,15 +12310,8 @@ export interface LeavePolicySummaryPendingApproval {
   hours: number;
   type: LeavePolicySummaryPendingApprovalType;
 }
-export const LeavePolicySummaryPendingApproval = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    days: S.Number,
-    hours: S.Number,
-    type: LeavePolicySummaryPendingApprovalType,
-  }),
-).annotate({
-  identifier: "LeavePolicySummaryPendingApproval",
-}) as any as S.Schema<LeavePolicySummaryPendingApproval>;
+export const LeavePolicySummaryPendingApproval =
+  LimitedDaysandHoursResponse as any as S.Schema<LeavePolicySummaryPendingApproval>;
 
 export type LeavePolicySummaryTakenType = "limited";
 export const LeavePolicySummaryTakenType = S.String;
@@ -12333,13 +12322,8 @@ export interface LeavePolicySummaryTaken {
   hours: number;
   type: LeavePolicySummaryTakenType;
 }
-export const LeavePolicySummaryTaken = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    days: S.Number,
-    hours: S.Number,
-    type: LeavePolicySummaryTakenType,
-  }),
-).annotate({ identifier: "LeavePolicySummaryTaken" }) as any as S.Schema<LeavePolicySummaryTaken>;
+export const LeavePolicySummaryTaken =
+  LeavePolicySummaryBooked as any as S.Schema<LeavePolicySummaryTaken>;
 
 export type LeavePolicySummaryUpcomingApprovedType = "limited";
 export const LeavePolicySummaryUpcomingApprovedType = S.String;
@@ -12350,15 +12334,8 @@ export interface LeavePolicySummaryUpcomingApproved {
   hours: number;
   type: LeavePolicySummaryUpcomingApprovedType;
 }
-export const LeavePolicySummaryUpcomingApproved = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    days: S.Number,
-    hours: S.Number,
-    type: LeavePolicySummaryUpcomingApprovedType,
-  }),
-).annotate({
-  identifier: "LeavePolicySummaryUpcomingApproved",
-}) as any as S.Schema<LeavePolicySummaryUpcomingApproved>;
+export const LeavePolicySummaryUpcomingApproved =
+  LimitedDaysandHoursResponse as any as S.Schema<LeavePolicySummaryUpcomingApproved>;
 
 export type LeavePolicySummaryUpcomingRequestedType = "limited";
 export const LeavePolicySummaryUpcomingRequestedType = S.String;
@@ -12369,15 +12346,8 @@ export interface LeavePolicySummaryUpcomingRequested {
   hours: number;
   type: LeavePolicySummaryUpcomingRequestedType;
 }
-export const LeavePolicySummaryUpcomingRequested = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    days: S.Number,
-    hours: S.Number,
-    type: LeavePolicySummaryUpcomingRequestedType,
-  }),
-).annotate({
-  identifier: "LeavePolicySummaryUpcomingRequested",
-}) as any as S.Schema<LeavePolicySummaryUpcomingRequested>;
+export const LeavePolicySummaryUpcomingRequested =
+  LimitedDaysandHoursResponse as any as S.Schema<LeavePolicySummaryUpcomingRequested>;
 
 export type LeavePolicySummaryUsedType = "limited";
 export const LeavePolicySummaryUsedType = S.String;
@@ -12388,13 +12358,8 @@ export interface LeavePolicySummaryUsed {
   hours: number;
   type: LeavePolicySummaryUsedType;
 }
-export const LeavePolicySummaryUsed = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    days: S.Number,
-    hours: S.Number,
-    type: LeavePolicySummaryUsedType,
-  }),
-).annotate({ identifier: "LeavePolicySummaryUsed" }) as any as S.Schema<LeavePolicySummaryUsed>;
+export const LeavePolicySummaryUsed =
+  LeavePolicySummaryBooked as any as S.Schema<LeavePolicySummaryUsed>;
 
 /** Leave Policy Summary */
 export interface LeavePolicySummary {
@@ -12906,9 +12871,8 @@ export const NullableCountryContractorProductsAvailableItem = S.String;
 /** Contractor product names available for this country */
 export type NullableCountryContractorProductsAvailableList =
   Array<NullableCountryContractorProductsAvailableItem>;
-export const NullableCountryContractorProductsAvailableList = /*@__PURE__*/ S.Array(
-  NullableCountryContractorProductsAvailableItem,
-) as any as S.Schema<NullableCountryContractorProductsAvailableList>;
+export const NullableCountryContractorProductsAvailableList =
+  TerminationDetailsParamsRiskAssessmentReasonsList as any as S.Schema<NullableCountryContractorProductsAvailableList>;
 
 /** Administrative subdivisions of the country (e.g., states, provinces, districts). Null if the country has no subdivisions relevant to Remote's services. */
 export type NullableCountryCountrySubdivisionsList = Array<CountrySubdivision>;
@@ -13629,9 +13593,8 @@ export const CompanyStructureNodesResponse = /*@__PURE__*/ S.suspend(() =>
 export type GetEmploymentContractDocumentsRequestStatusesList = Array<
   ContractorContractDocumentStatus | (string & {})
 >;
-export const GetEmploymentContractDocumentsRequestStatusesList = /*@__PURE__*/ S.Array(
-  ContractorContractDocumentStatus,
-) as any as S.Schema<GetEmploymentContractDocumentsRequestStatusesList>;
+export const GetEmploymentContractDocumentsRequestStatusesList =
+  TerminationDetailsParamsRiskAssessmentReasonsList as any as S.Schema<GetEmploymentContractDocumentsRequestStatusesList>;
 
 export type GetEmploymentContractDocumentsRequestExceptStatusesList = Array<
   ContractorContractDocumentStatus | (string & {})
@@ -19820,13 +19783,8 @@ export interface DeclinedWorkAuthozation {
   reason: string;
   status: DeclinedWorkAuthozationStatus;
 }
-export const DeclinedWorkAuthozation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    employer_special_instructions: S.optional(S.NullOr(S.String)),
-    reason: S.String,
-    status: DeclinedWorkAuthozationStatus,
-  }),
-).annotate({ identifier: "DeclinedWorkAuthozation" }) as any as S.Schema<DeclinedWorkAuthozation>;
+export const DeclinedWorkAuthozation =
+  DeclinedTravelLetter as any as S.Schema<DeclinedWorkAuthozation>;
 
 /** Schema for updating a work authorization request */
 export type UpdateWorkAuthorizationRequestParams =
@@ -21032,9 +20990,8 @@ export const UpdateWebhookCallbackRequestSubscribedEventsItem = S.String;
 export type UpdateWebhookCallbackRequestSubscribedEventsList = Array<
   UpdateWebhookCallbackRequestSubscribedEventsItem | (string & {})
 >;
-export const UpdateWebhookCallbackRequestSubscribedEventsList = /*@__PURE__*/ S.Array(
-  UpdateWebhookCallbackRequestSubscribedEventsItem,
-) as any as S.Schema<UpdateWebhookCallbackRequestSubscribedEventsList>;
+export const UpdateWebhookCallbackRequestSubscribedEventsList =
+  TerminationDetailsParamsRiskAssessmentReasonsList as any as S.Schema<UpdateWebhookCallbackRequestSubscribedEventsList>;
 
 export interface UpdateWebhookCallbackRequest {
   /** Webhook Callback ID */

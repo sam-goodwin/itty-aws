@@ -237,32 +237,8 @@ export interface DeleteClientCertificateResponse {
   /** The number of days the Client Certificate will be valid after the issued_on date. */
   validityDays?: number | null;
 }
-export const DeleteClientCertificateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    certificate: S.optional(S.NullOr(S.String)),
-    certificateAuthority: S.optional(
-      S.NullOr(CreateResponseCertificateAuthority).pipe(T.Body("certificate_authority")),
-    ),
-    commonName: S.optional(S.NullOr(S.String).pipe(T.Body("common_name"))),
-    country: S.optional(S.NullOr(S.String)),
-    csr: S.optional(S.NullOr(S.String)),
-    expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
-    fingerprintSha256: S.optional(S.NullOr(S.String).pipe(T.Body("fingerprint_sha256"))),
-    issuedOn: S.optional(S.NullOr(S.String).pipe(T.Body("issued_on"))),
-    location: S.optional(S.NullOr(S.String)),
-    organization: S.optional(S.NullOr(S.String)),
-    organizationalUnit: S.optional(S.NullOr(S.String).pipe(T.Body("organizational_unit"))),
-    serialNumber: S.optional(S.NullOr(S.String).pipe(T.Body("serial_number"))),
-    signature: S.optional(S.NullOr(S.String)),
-    ski: S.optional(S.NullOr(S.String)),
-    state: S.optional(S.NullOr(S.String)),
-    status: S.optional(S.NullOr(DeleteResponseStatus)),
-    validityDays: S.optional(S.NullOr(S.Number).pipe(T.Body("validity_days"))),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "DeleteClientCertificateResponse",
-}) as any as S.Schema<DeleteClientCertificateResponse>;
+export const DeleteClientCertificateResponse =
+  CreateClientCertificateResponse as any as S.Schema<DeleteClientCertificateResponse>;
 
 export interface GetClientCertificateRequest {
   /** Identifier. */
@@ -336,32 +312,8 @@ export interface GetClientCertificateResponse {
   /** The number of days the Client Certificate will be valid after the issued_on date. */
   validityDays?: number | null;
 }
-export const GetClientCertificateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    certificate: S.optional(S.NullOr(S.String)),
-    certificateAuthority: S.optional(
-      S.NullOr(CreateResponseCertificateAuthority).pipe(T.Body("certificate_authority")),
-    ),
-    commonName: S.optional(S.NullOr(S.String).pipe(T.Body("common_name"))),
-    country: S.optional(S.NullOr(S.String)),
-    csr: S.optional(S.NullOr(S.String)),
-    expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
-    fingerprintSha256: S.optional(S.NullOr(S.String).pipe(T.Body("fingerprint_sha256"))),
-    issuedOn: S.optional(S.NullOr(S.String).pipe(T.Body("issued_on"))),
-    location: S.optional(S.NullOr(S.String)),
-    organization: S.optional(S.NullOr(S.String)),
-    organizationalUnit: S.optional(S.NullOr(S.String).pipe(T.Body("organizational_unit"))),
-    serialNumber: S.optional(S.NullOr(S.String).pipe(T.Body("serial_number"))),
-    signature: S.optional(S.NullOr(S.String)),
-    ski: S.optional(S.NullOr(S.String)),
-    state: S.optional(S.NullOr(S.String)),
-    status: S.optional(S.NullOr(GetResponseStatus)),
-    validityDays: S.optional(S.NullOr(S.Number).pipe(T.Body("validity_days"))),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "GetClientCertificateResponse",
-}) as any as S.Schema<GetClientCertificateResponse>;
+export const GetClientCertificateResponse =
+  CreateClientCertificateResponse as any as S.Schema<GetClientCertificateResponse>;
 
 export type ListRequestStatus =
   | "all"
@@ -567,32 +519,8 @@ export interface PatchClientCertificateResponse {
   /** The number of days the Client Certificate will be valid after the issued_on date. */
   validityDays?: number | null;
 }
-export const PatchClientCertificateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    certificate: S.optional(S.NullOr(S.String)),
-    certificateAuthority: S.optional(
-      S.NullOr(CreateResponseCertificateAuthority).pipe(T.Body("certificate_authority")),
-    ),
-    commonName: S.optional(S.NullOr(S.String).pipe(T.Body("common_name"))),
-    country: S.optional(S.NullOr(S.String)),
-    csr: S.optional(S.NullOr(S.String)),
-    expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
-    fingerprintSha256: S.optional(S.NullOr(S.String).pipe(T.Body("fingerprint_sha256"))),
-    issuedOn: S.optional(S.NullOr(S.String).pipe(T.Body("issued_on"))),
-    location: S.optional(S.NullOr(S.String)),
-    organization: S.optional(S.NullOr(S.String)),
-    organizationalUnit: S.optional(S.NullOr(S.String).pipe(T.Body("organizational_unit"))),
-    serialNumber: S.optional(S.NullOr(S.String).pipe(T.Body("serial_number"))),
-    signature: S.optional(S.NullOr(S.String)),
-    ski: S.optional(S.NullOr(S.String)),
-    state: S.optional(S.NullOr(S.String)),
-    status: S.optional(S.NullOr(EditResponseStatus)),
-    validityDays: S.optional(S.NullOr(S.Number).pipe(T.Body("validity_days"))),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "PatchClientCertificateResponse",
-}) as any as S.Schema<PatchClientCertificateResponse>;
+export const PatchClientCertificateResponse =
+  CreateClientCertificateResponse as any as S.Schema<PatchClientCertificateResponse>;
 
 export type CreateClientCertificateError = Forbidden | CloudflareOpError;
 /** Create a new API Shield mTLS Client Certificate. */

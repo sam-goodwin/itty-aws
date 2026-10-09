@@ -7151,12 +7151,12 @@ export type UsageGroupByField =
 export const UsageGroupByField = S.String;
 
 export type UsageGroupBy = UsageGroupByField[];
-export const UsageGroupBy = /*@__PURE__*/ S.Array(UsageGroupByField);
+export const UsageGroupBy = AcceleratorTypes as any as S.Schema<UsageGroupBy>;
 export type UsageStatistic = "SUM" | "MIN" | "MAX" | "AVG" | (string & {});
 export const UsageStatistic = S.String;
 
 export type UsageStatistics = UsageStatistic[];
-export const UsageStatistics = /*@__PURE__*/ S.Array(UsageStatistic);
+export const UsageStatistics = AcceleratorTypes as any as S.Schema<UsageStatistics>;
 export interface StartSessionsStatisticsAggregationRequest {
   farmId: string;
   resourceIds: SessionsStatisticsResources;

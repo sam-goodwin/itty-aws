@@ -1858,11 +1858,8 @@ export interface WirelessDeviceEventLogOption {
   Event: WirelessDeviceEvent;
   LogLevel: LogLevel;
 }
-export const WirelessDeviceEventLogOption = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Event: WirelessDeviceEvent, LogLevel: LogLevel }),
-).annotate({
-  identifier: "WirelessDeviceEventLogOption",
-}) as any as S.Schema<WirelessDeviceEventLogOption>;
+export const WirelessDeviceEventLogOption =
+  WirelessGatewayEventLogOption as any as S.Schema<WirelessDeviceEventLogOption>;
 export type WirelessDeviceEventLogOptionList = WirelessDeviceEventLogOption[];
 export const WirelessDeviceEventLogOptionList = /*@__PURE__*/ S.Array(WirelessDeviceEventLogOption);
 export interface WirelessDeviceLogOption {

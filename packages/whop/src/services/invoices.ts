@@ -1117,9 +1117,8 @@ export const ListInvoiceRequestCollectionMethodsList = /*@__PURE__*/ S.Array(
 
 /** Filter invoices by their current status. */
 export type ListInvoiceRequestStatusesList = Array<InvoiceStatuses | (string & {})>;
-export const ListInvoiceRequestStatusesList = /*@__PURE__*/ S.Array(
-  InvoiceStatuses,
-) as any as S.Schema<ListInvoiceRequestStatusesList>;
+export const ListInvoiceRequestStatusesList =
+  ListInvoiceRequestCollectionMethodsList as any as S.Schema<ListInvoiceRequestStatusesList>;
 
 /** Which columns can be used to sort. */
 export type InvoicesSortableColumns = "id" | "created_at" | "due_date";
@@ -1356,9 +1355,8 @@ export const UpdateInvoiceRequestPlanCustomFieldsList =
 export type UpdateInvoiceRequestPlanPaymentMethodConfigurationDisabledList = Array<
   LegacyPaymentMethodTypes | (string & {})
 >;
-export const UpdateInvoiceRequestPlanPaymentMethodConfigurationDisabledList = /*@__PURE__*/ S.Array(
-  LegacyPaymentMethodTypes,
-) as any as S.Schema<UpdateInvoiceRequestPlanPaymentMethodConfigurationDisabledList>;
+export const UpdateInvoiceRequestPlanPaymentMethodConfigurationDisabledList =
+  ListInvoiceRequestCollectionMethodsList as any as S.Schema<UpdateInvoiceRequestPlanPaymentMethodConfigurationDisabledList>;
 
 /** An array of payment method identifiers that are explicitly enabled. This means these payment methods will be shown on checkout. Example use case is to only enable a specific payment method like cashapp, or extending the platform defaults with additional methods. */
 export type UpdateInvoiceRequestPlanPaymentMethodConfigurationEnabledList = Array<

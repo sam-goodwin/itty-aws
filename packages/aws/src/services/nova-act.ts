@@ -397,11 +397,8 @@ export const DeleteWorkflowRunRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteWorkflowRunResponse {
   status: WorkflowRunStatus;
 }
-export const DeleteWorkflowRunResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ status: WorkflowRunStatus }),
-).annotate({
-  identifier: "DeleteWorkflowRunResponse",
-}) as any as S.Schema<DeleteWorkflowRunResponse>;
+export const DeleteWorkflowRunResponse =
+  CreateWorkflowDefinitionResponse as any as S.Schema<DeleteWorkflowRunResponse>;
 export interface GetWorkflowDefinitionRequest {
   workflowDefinitionName: string;
 }

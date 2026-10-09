@@ -498,9 +498,8 @@ export const StoredProcedureConfigAllowedStoredProcedureTypesItemEnum = S.String
 export type StoredProcedureConfigAllowedStoredProcedureTypesItemEnumList = Array<
   StoredProcedureConfigAllowedStoredProcedureTypesItemEnum | (string & {})
 >;
-export const StoredProcedureConfigAllowedStoredProcedureTypesItemEnumList = /*@__PURE__*/ S.Array(
-  StoredProcedureConfigAllowedStoredProcedureTypesItemEnum,
-) as any as S.Schema<StoredProcedureConfigAllowedStoredProcedureTypesItemEnumList>;
+export const StoredProcedureConfigAllowedStoredProcedureTypesItemEnumList =
+  ListingCategoriesItemEnumList as any as S.Schema<StoredProcedureConfigAllowedStoredProcedureTypesItemEnumList>;
 
 /** Stored procedure configuration, used to configure stored procedure sharing on linked dataset. */
 export interface StoredProcedureConfig {

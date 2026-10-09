@@ -688,17 +688,7 @@ export interface GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptReposi
   repositoryPath?: string;
 }
 export const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      repositoryBase: S.optional(
-        GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBaseEnum,
-      ),
-      repositoryPath: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository",
-  }) as any as S.Schema<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository>;
+  GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository as any as S.Schema<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository>;
 
 /** Customer-specified publicly available remote repository. */
 export interface GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository {

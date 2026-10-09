@@ -659,20 +659,8 @@ export interface GetPrivateEndpointConnectionsCompResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetPrivateEndpointConnectionsCompResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetPrivateEndpointConnectionsCompResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      GetPrivateEndpointConnectionsCompResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetPrivateEndpointConnectionsCompResponseSystemData",
-}) as any as S.Schema<GetPrivateEndpointConnectionsCompResponseSystemData>;
+export const GetPrivateEndpointConnectionsCompResponseSystemData =
+  GetPrivateEndpointConnectionsAdtAPIResponseSystemData as any as S.Schema<GetPrivateEndpointConnectionsCompResponseSystemData>;
 
 export interface GetPrivateEndpointConnectionsCompResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -686,17 +674,8 @@ export interface GetPrivateEndpointConnectionsCompResponse {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const GetPrivateEndpointConnectionsCompResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(GetPrivateEndpointConnectionsCompResponseSystemData),
-    properties: S.optional(PrivateEndpointConnectionProperties),
-  }),
-).annotate({
-  identifier: "GetPrivateEndpointConnectionsCompResponse",
-}) as any as S.Schema<GetPrivateEndpointConnectionsCompResponse>;
+export const GetPrivateEndpointConnectionsCompResponse =
+  GetPrivateEndpointConnectionsAdtAPIResponse as any as S.Schema<GetPrivateEndpointConnectionsCompResponse>;
 
 export interface GetPrivateEndpointConnectionsForEDMRequest {
   /** The subscription identifier. */
@@ -757,20 +736,8 @@ export interface GetPrivateEndpointConnectionsForEDMResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetPrivateEndpointConnectionsForEDMResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetPrivateEndpointConnectionsForEDMResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      GetPrivateEndpointConnectionsForEDMResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetPrivateEndpointConnectionsForEDMResponseSystemData",
-}) as any as S.Schema<GetPrivateEndpointConnectionsForEDMResponseSystemData>;
+export const GetPrivateEndpointConnectionsForEDMResponseSystemData =
+  GetPrivateEndpointConnectionsAdtAPIResponseSystemData as any as S.Schema<GetPrivateEndpointConnectionsForEDMResponseSystemData>;
 
 export interface GetPrivateEndpointConnectionsForEDMResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -784,17 +751,8 @@ export interface GetPrivateEndpointConnectionsForEDMResponse {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const GetPrivateEndpointConnectionsForEDMResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(GetPrivateEndpointConnectionsForEDMResponseSystemData),
-    properties: S.optional(PrivateEndpointConnectionProperties),
-  }),
-).annotate({
-  identifier: "GetPrivateEndpointConnectionsForEDMResponse",
-}) as any as S.Schema<GetPrivateEndpointConnectionsForEDMResponse>;
+export const GetPrivateEndpointConnectionsForEDMResponse =
+  GetPrivateEndpointConnectionsAdtAPIResponse as any as S.Schema<GetPrivateEndpointConnectionsForEDMResponse>;
 
 export interface GetPrivateEndpointConnectionsForMIPPolicySyncRequest {
   /** The subscription identifier. */
@@ -961,22 +919,7 @@ export interface GetPrivateEndpointConnectionsForSCCPowershellResponseSystemData
   lastModifiedAt?: string;
 }
 export const GetPrivateEndpointConnectionsForSCCPowershellResponseSystemData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        GetPrivateEndpointConnectionsForSCCPowershellResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        GetPrivateEndpointConnectionsForSCCPowershellResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GetPrivateEndpointConnectionsForSCCPowershellResponseSystemData",
-  }) as any as S.Schema<GetPrivateEndpointConnectionsForSCCPowershellResponseSystemData>;
+  GetPrivateEndpointConnectionsForMIPPolicySyncResponseSystemData as any as S.Schema<GetPrivateEndpointConnectionsForSCCPowershellResponseSystemData>;
 
 export interface GetPrivateEndpointConnectionsForSCCPowershellResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -990,17 +933,8 @@ export interface GetPrivateEndpointConnectionsForSCCPowershellResponse {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const GetPrivateEndpointConnectionsForSCCPowershellResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(GetPrivateEndpointConnectionsForSCCPowershellResponseSystemData),
-    properties: S.optional(PrivateEndpointConnectionProperties),
-  }),
-).annotate({
-  identifier: "GetPrivateEndpointConnectionsForSCCPowershellResponse",
-}) as any as S.Schema<GetPrivateEndpointConnectionsForSCCPowershellResponse>;
+export const GetPrivateEndpointConnectionsForSCCPowershellResponse =
+  GetPrivateEndpointConnectionsForMIPPolicySyncResponse as any as S.Schema<GetPrivateEndpointConnectionsForSCCPowershellResponse>;
 
 export interface GetPrivateEndpointConnectionsSecRequest {
   /** The subscription identifier. */
@@ -1061,20 +995,8 @@ export interface GetPrivateEndpointConnectionsSecResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetPrivateEndpointConnectionsSecResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetPrivateEndpointConnectionsSecResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      GetPrivateEndpointConnectionsSecResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetPrivateEndpointConnectionsSecResponseSystemData",
-}) as any as S.Schema<GetPrivateEndpointConnectionsSecResponseSystemData>;
+export const GetPrivateEndpointConnectionsSecResponseSystemData =
+  GetPrivateEndpointConnectionsAdtAPIResponseSystemData as any as S.Schema<GetPrivateEndpointConnectionsSecResponseSystemData>;
 
 export interface GetPrivateEndpointConnectionsSecResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1088,17 +1010,8 @@ export interface GetPrivateEndpointConnectionsSecResponse {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const GetPrivateEndpointConnectionsSecResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(GetPrivateEndpointConnectionsSecResponseSystemData),
-    properties: S.optional(PrivateEndpointConnectionProperties),
-  }),
-).annotate({
-  identifier: "GetPrivateEndpointConnectionsSecResponse",
-}) as any as S.Schema<GetPrivateEndpointConnectionsSecResponse>;
+export const GetPrivateEndpointConnectionsSecResponse =
+  GetPrivateEndpointConnectionsAdtAPIResponse as any as S.Schema<GetPrivateEndpointConnectionsSecResponse>;
 
 export interface GetPrivateLinkResourceRequest {
   /** The subscription identifier. */
@@ -1285,20 +1198,8 @@ export interface GetPrivateLinkResourcesAdtAPIResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetPrivateLinkResourcesAdtAPIResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetPrivateLinkResourcesAdtAPIResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      GetPrivateLinkResourcesAdtAPIResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetPrivateLinkResourcesAdtAPIResponseSystemData",
-}) as any as S.Schema<GetPrivateLinkResourcesAdtAPIResponseSystemData>;
+export const GetPrivateLinkResourcesAdtAPIResponseSystemData =
+  GetPrivateEndpointConnectionsAdtAPIResponseSystemData as any as S.Schema<GetPrivateLinkResourcesAdtAPIResponseSystemData>;
 
 export interface GetPrivateLinkResourcesAdtAPIResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1383,18 +1284,8 @@ export interface GetPrivateLinkResourcesCompResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetPrivateLinkResourcesCompResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetPrivateLinkResourcesCompResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetPrivateLinkResourcesCompResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetPrivateLinkResourcesCompResponseSystemData",
-}) as any as S.Schema<GetPrivateLinkResourcesCompResponseSystemData>;
+export const GetPrivateLinkResourcesCompResponseSystemData =
+  GetPrivateLinkResourceResponseSystemData as any as S.Schema<GetPrivateLinkResourcesCompResponseSystemData>;
 
 export interface GetPrivateLinkResourcesCompResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1408,17 +1299,8 @@ export interface GetPrivateLinkResourcesCompResponse {
   /** Resource properties. */
   properties?: PrivateLinkResourceProperties;
 }
-export const GetPrivateLinkResourcesCompResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(GetPrivateLinkResourcesCompResponseSystemData),
-    properties: S.optional(PrivateLinkResourceProperties),
-  }),
-).annotate({
-  identifier: "GetPrivateLinkResourcesCompResponse",
-}) as any as S.Schema<GetPrivateLinkResourcesCompResponse>;
+export const GetPrivateLinkResourcesCompResponse =
+  GetPrivateLinkResourceResponse as any as S.Schema<GetPrivateLinkResourcesCompResponse>;
 
 export interface GetPrivateLinkResourcesForMIPPolicySyncRequest {
   /** The subscription identifier. */
@@ -1580,23 +1462,8 @@ export interface GetPrivateLinkResourcesForSCCPowershellResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetPrivateLinkResourcesForSCCPowershellResponseSystemData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        GetPrivateLinkResourcesForSCCPowershellResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        GetPrivateLinkResourcesForSCCPowershellResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GetPrivateLinkResourcesForSCCPowershellResponseSystemData",
-}) as any as S.Schema<GetPrivateLinkResourcesForSCCPowershellResponseSystemData>;
+export const GetPrivateLinkResourcesForSCCPowershellResponseSystemData =
+  GetPrivateLinkResourcesForMIPPolicySyncResponseSystemData as any as S.Schema<GetPrivateLinkResourcesForSCCPowershellResponseSystemData>;
 
 export interface GetPrivateLinkResourcesForSCCPowershellResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1610,17 +1477,8 @@ export interface GetPrivateLinkResourcesForSCCPowershellResponse {
   /** Resource properties. */
   properties?: PrivateLinkResourceProperties;
 }
-export const GetPrivateLinkResourcesForSCCPowershellResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(GetPrivateLinkResourcesForSCCPowershellResponseSystemData),
-    properties: S.optional(PrivateLinkResourceProperties),
-  }),
-).annotate({
-  identifier: "GetPrivateLinkResourcesForSCCPowershellResponse",
-}) as any as S.Schema<GetPrivateLinkResourcesForSCCPowershellResponse>;
+export const GetPrivateLinkResourcesForSCCPowershellResponse =
+  GetPrivateLinkResourcesForMIPPolicySyncResponse as any as S.Schema<GetPrivateLinkResourcesForSCCPowershellResponse>;
 
 export interface GetPrivateLinkResourcesSecRequest {
   /** The subscription identifier. */
@@ -1681,18 +1539,8 @@ export interface GetPrivateLinkResourcesSecResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetPrivateLinkResourcesSecResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetPrivateLinkResourcesSecResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetPrivateLinkResourcesSecResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetPrivateLinkResourcesSecResponseSystemData",
-}) as any as S.Schema<GetPrivateLinkResourcesSecResponseSystemData>;
+export const GetPrivateLinkResourcesSecResponseSystemData =
+  GetPrivateLinkResourceResponseSystemData as any as S.Schema<GetPrivateLinkResourcesSecResponseSystemData>;
 
 export interface GetPrivateLinkResourcesSecResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1706,17 +1554,8 @@ export interface GetPrivateLinkResourcesSecResponse {
   /** Resource properties. */
   properties?: PrivateLinkResourceProperties;
 }
-export const GetPrivateLinkResourcesSecResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(GetPrivateLinkResourcesSecResponseSystemData),
-    properties: S.optional(PrivateLinkResourceProperties),
-  }),
-).annotate({
-  identifier: "GetPrivateLinkResourcesSecResponse",
-}) as any as S.Schema<GetPrivateLinkResourcesSecResponse>;
+export const GetPrivateLinkResourcesSecResponse =
+  GetPrivateLinkResourceResponse as any as S.Schema<GetPrivateLinkResourcesSecResponse>;
 
 export interface GetPrivateLinkServicesForEDMUploadRequest {
   /** The subscription identifier. */
@@ -1774,20 +1613,8 @@ export interface GetPrivateLinkServicesForEDMUploadResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetPrivateLinkServicesForEDMUploadResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetPrivateLinkServicesForEDMUploadResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      GetPrivateLinkServicesForEDMUploadResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetPrivateLinkServicesForEDMUploadResponseSystemData",
-}) as any as S.Schema<GetPrivateLinkServicesForEDMUploadResponseSystemData>;
+export const GetPrivateLinkServicesForEDMUploadResponseSystemData =
+  GetPrivateEndpointConnectionsAdtAPIResponseSystemData as any as S.Schema<GetPrivateLinkServicesForEDMUploadResponseSystemData>;
 
 /** The kind of the service. */
 export type GetPrivateLinkServicesForEDMUploadResponseKind = "fhir" | "fhir-Stu3" | "fhir-R4";
@@ -1974,18 +1801,8 @@ export interface PrivateEndpointConnectionSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const PrivateEndpointConnectionSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(PrivateEndpointConnectionSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(PrivateEndpointConnectionSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PrivateEndpointConnectionSystemData",
-}) as any as S.Schema<PrivateEndpointConnectionSystemData>;
+export const PrivateEndpointConnectionSystemData =
+  GetPrivateLinkResourceResponseSystemData as any as S.Schema<PrivateEndpointConnectionSystemData>;
 
 /** The Private Endpoint Connection resource. */
 export interface PrivateEndpointConnection {
@@ -2164,22 +1981,7 @@ export interface GetPrivateLinkServicesForM365ComplianceCenterResponseSystemData
   lastModifiedAt?: string;
 }
 export const GetPrivateLinkServicesForM365ComplianceCenterResponseSystemData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        GetPrivateLinkServicesForM365ComplianceCenterResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        GetPrivateLinkServicesForM365ComplianceCenterResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GetPrivateLinkServicesForM365ComplianceCenterResponseSystemData",
-  }) as any as S.Schema<GetPrivateLinkServicesForM365ComplianceCenterResponseSystemData>;
+  GetPrivateEndpointConnectionsForMIPPolicySyncResponseSystemData as any as S.Schema<GetPrivateLinkServicesForM365ComplianceCenterResponseSystemData>;
 
 /** The kind of the service. */
 export type GetPrivateLinkServicesForM365ComplianceCenterResponseKind =
@@ -2386,22 +2188,7 @@ export interface GetPrivateLinkServicesForM365SecurityCenterResponseSystemData {
   lastModifiedAt?: string;
 }
 export const GetPrivateLinkServicesForM365SecurityCenterResponseSystemData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        GetPrivateLinkServicesForM365SecurityCenterResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        GetPrivateLinkServicesForM365SecurityCenterResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GetPrivateLinkServicesForM365SecurityCenterResponseSystemData",
-  }) as any as S.Schema<GetPrivateLinkServicesForM365SecurityCenterResponseSystemData>;
+  GetPrivateEndpointConnectionsForMIPPolicySyncResponseSystemData as any as S.Schema<GetPrivateLinkServicesForM365SecurityCenterResponseSystemData>;
 
 /** The kind of the service. */
 export type GetPrivateLinkServicesForM365SecurityCenterResponseKind =
@@ -2606,23 +2393,8 @@ export interface GetPrivateLinkServicesForMIPPolicySyncResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetPrivateLinkServicesForMIPPolicySyncResponseSystemData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        GetPrivateLinkServicesForMIPPolicySyncResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        GetPrivateLinkServicesForMIPPolicySyncResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GetPrivateLinkServicesForMIPPolicySyncResponseSystemData",
-}) as any as S.Schema<GetPrivateLinkServicesForMIPPolicySyncResponseSystemData>;
+export const GetPrivateLinkServicesForMIPPolicySyncResponseSystemData =
+  GetPrivateLinkResourcesForMIPPolicySyncResponseSystemData as any as S.Schema<GetPrivateLinkServicesForMIPPolicySyncResponseSystemData>;
 
 /** The kind of the service. */
 export type GetPrivateLinkServicesForMIPPolicySyncResponseKind = "fhir" | "fhir-Stu3" | "fhir-R4";
@@ -2648,15 +2420,8 @@ export interface GetPrivateLinkServicesForMIPPolicySyncResponseIdentity {
   /** Type of identity being specified, currently SystemAssigned and None are allowed. */
   type?: GetPrivateLinkServicesForMIPPolicySyncResponseIdentityType;
 }
-export const GetPrivateLinkServicesForMIPPolicySyncResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: S.optional(GetPrivateLinkServicesForMIPPolicySyncResponseIdentityType),
-  }),
-).annotate({
-  identifier: "GetPrivateLinkServicesForMIPPolicySyncResponseIdentity",
-}) as any as S.Schema<GetPrivateLinkServicesForMIPPolicySyncResponseIdentity>;
+export const GetPrivateLinkServicesForMIPPolicySyncResponseIdentity =
+  GetPrivateLinkServicesForEDMUploadResponseIdentity as any as S.Schema<GetPrivateLinkServicesForMIPPolicySyncResponseIdentity>;
 
 /** The provisioning state. */
 export type GetPrivateLinkServicesForMIPPolicySyncResponsePropertiesProvisioningState =
@@ -2823,22 +2588,7 @@ export interface GetPrivateLinkServicesForO365ManagementActivityAPIResponseSyste
   lastModifiedAt?: string;
 }
 export const GetPrivateLinkServicesForO365ManagementActivityAPIResponseSystemData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        GetPrivateLinkServicesForO365ManagementActivityAPIResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        GetPrivateLinkServicesForO365ManagementActivityAPIResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GetPrivateLinkServicesForO365ManagementActivityAPIResponseSystemData",
-  }) as any as S.Schema<GetPrivateLinkServicesForO365ManagementActivityAPIResponseSystemData>;
+  GetPrivateEndpointConnectionsForMIPPolicySyncResponseSystemData as any as S.Schema<GetPrivateLinkServicesForO365ManagementActivityAPIResponseSystemData>;
 
 /** The kind of the service. */
 export type GetPrivateLinkServicesForO365ManagementActivityAPIResponseKind =
@@ -2873,15 +2623,7 @@ export interface GetPrivateLinkServicesForO365ManagementActivityAPIResponseIdent
   type?: GetPrivateLinkServicesForO365ManagementActivityAPIResponseIdentityType;
 }
 export const GetPrivateLinkServicesForO365ManagementActivityAPIResponseIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: S.optional(GetPrivateLinkServicesForO365ManagementActivityAPIResponseIdentityType),
-    }),
-  ).annotate({
-    identifier: "GetPrivateLinkServicesForO365ManagementActivityAPIResponseIdentity",
-  }) as any as S.Schema<GetPrivateLinkServicesForO365ManagementActivityAPIResponseIdentity>;
+  GetPrivateLinkServicesForM365ComplianceCenterResponseIdentity as any as S.Schema<GetPrivateLinkServicesForO365ManagementActivityAPIResponseIdentity>;
 
 /** The provisioning state. */
 export type GetPrivateLinkServicesForO365ManagementActivityAPIResponsePropertiesProvisioningState =
@@ -3047,23 +2789,8 @@ export interface GetPrivateLinkServicesForSCCPowershellResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetPrivateLinkServicesForSCCPowershellResponseSystemData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        GetPrivateLinkServicesForSCCPowershellResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        GetPrivateLinkServicesForSCCPowershellResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GetPrivateLinkServicesForSCCPowershellResponseSystemData",
-}) as any as S.Schema<GetPrivateLinkServicesForSCCPowershellResponseSystemData>;
+export const GetPrivateLinkServicesForSCCPowershellResponseSystemData =
+  GetPrivateLinkResourcesForMIPPolicySyncResponseSystemData as any as S.Schema<GetPrivateLinkServicesForSCCPowershellResponseSystemData>;
 
 /** The kind of the service. */
 export type GetPrivateLinkServicesForSCCPowershellResponseKind = "fhir" | "fhir-Stu3" | "fhir-R4";
@@ -3089,15 +2816,8 @@ export interface GetPrivateLinkServicesForSCCPowershellResponseIdentity {
   /** Type of identity being specified, currently SystemAssigned and None are allowed. */
   type?: GetPrivateLinkServicesForSCCPowershellResponseIdentityType;
 }
-export const GetPrivateLinkServicesForSCCPowershellResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: S.optional(GetPrivateLinkServicesForSCCPowershellResponseIdentityType),
-  }),
-).annotate({
-  identifier: "GetPrivateLinkServicesForSCCPowershellResponseIdentity",
-}) as any as S.Schema<GetPrivateLinkServicesForSCCPowershellResponseIdentity>;
+export const GetPrivateLinkServicesForSCCPowershellResponseIdentity =
+  GetPrivateLinkServicesForEDMUploadResponseIdentity as any as S.Schema<GetPrivateLinkServicesForSCCPowershellResponseIdentity>;
 
 /** The provisioning state. */
 export type GetPrivateLinkServicesForSCCPowershellResponsePropertiesProvisioningState =
@@ -3588,18 +3308,8 @@ export interface PrivateLinkResourceSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const PrivateLinkResourceSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(PrivateLinkResourceSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(PrivateLinkResourceSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PrivateLinkResourceSystemData",
-}) as any as S.Schema<PrivateLinkResourceSystemData>;
+export const PrivateLinkResourceSystemData =
+  GetPrivateLinkResourceResponseSystemData as any as S.Schema<PrivateLinkResourceSystemData>;
 
 /** A private link resource */
 export interface PrivateLinkResource {
@@ -3903,20 +3613,8 @@ export interface PrivateLinkServicesForEDMUploadDescriptionSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const PrivateLinkServicesForEDMUploadDescriptionSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(PrivateLinkServicesForEDMUploadDescriptionSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      PrivateLinkServicesForEDMUploadDescriptionSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PrivateLinkServicesForEDMUploadDescriptionSystemData",
-}) as any as S.Schema<PrivateLinkServicesForEDMUploadDescriptionSystemData>;
+export const PrivateLinkServicesForEDMUploadDescriptionSystemData =
+  GetPrivateEndpointConnectionsAdtAPIResponseSystemData as any as S.Schema<PrivateLinkServicesForEDMUploadDescriptionSystemData>;
 
 /** The kind of the service. */
 export type PrivateLinkServicesForEDMUploadDescriptionKind = "fhir" | "fhir-Stu3" | "fhir-R4";
@@ -3942,15 +3640,8 @@ export interface PrivateLinkServicesForEDMUploadDescriptionIdentity {
   /** Type of identity being specified, currently SystemAssigned and None are allowed. */
   type?: PrivateLinkServicesForEDMUploadDescriptionIdentityType;
 }
-export const PrivateLinkServicesForEDMUploadDescriptionIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: S.optional(PrivateLinkServicesForEDMUploadDescriptionIdentityType),
-  }),
-).annotate({
-  identifier: "PrivateLinkServicesForEDMUploadDescriptionIdentity",
-}) as any as S.Schema<PrivateLinkServicesForEDMUploadDescriptionIdentity>;
+export const PrivateLinkServicesForEDMUploadDescriptionIdentity =
+  GetPrivateLinkServicesForEDMUploadResponseIdentity as any as S.Schema<PrivateLinkServicesForEDMUploadDescriptionIdentity>;
 
 /** The provisioning state. */
 export type PrivateLinkServicesForEDMUploadDescriptionPropertiesProvisioningState =
@@ -4156,22 +3847,7 @@ export interface PrivateLinkServicesForM365ComplianceCenterDescriptionSystemData
   lastModifiedAt?: string;
 }
 export const PrivateLinkServicesForM365ComplianceCenterDescriptionSystemData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        PrivateLinkServicesForM365ComplianceCenterDescriptionSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        PrivateLinkServicesForM365ComplianceCenterDescriptionSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "PrivateLinkServicesForM365ComplianceCenterDescriptionSystemData",
-  }) as any as S.Schema<PrivateLinkServicesForM365ComplianceCenterDescriptionSystemData>;
+  GetPrivateEndpointConnectionsForMIPPolicySyncResponseSystemData as any as S.Schema<PrivateLinkServicesForM365ComplianceCenterDescriptionSystemData>;
 
 /** The kind of the service. */
 export type PrivateLinkServicesForM365ComplianceCenterDescriptionKind =
@@ -4203,15 +3879,7 @@ export interface PrivateLinkServicesForM365ComplianceCenterDescriptionIdentity {
   type?: PrivateLinkServicesForM365ComplianceCenterDescriptionIdentityType;
 }
 export const PrivateLinkServicesForM365ComplianceCenterDescriptionIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: S.optional(PrivateLinkServicesForM365ComplianceCenterDescriptionIdentityType),
-    }),
-  ).annotate({
-    identifier: "PrivateLinkServicesForM365ComplianceCenterDescriptionIdentity",
-  }) as any as S.Schema<PrivateLinkServicesForM365ComplianceCenterDescriptionIdentity>;
+  GetPrivateLinkServicesForM365ComplianceCenterResponseIdentity as any as S.Schema<PrivateLinkServicesForM365ComplianceCenterDescriptionIdentity>;
 
 /** The provisioning state. */
 export type PrivateLinkServicesForM365ComplianceCenterDescriptionPropertiesProvisioningState =
@@ -4421,22 +4089,7 @@ export interface PrivateLinkServicesForM365SecurityCenterDescriptionSystemData {
   lastModifiedAt?: string;
 }
 export const PrivateLinkServicesForM365SecurityCenterDescriptionSystemData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        PrivateLinkServicesForM365SecurityCenterDescriptionSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        PrivateLinkServicesForM365SecurityCenterDescriptionSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "PrivateLinkServicesForM365SecurityCenterDescriptionSystemData",
-  }) as any as S.Schema<PrivateLinkServicesForM365SecurityCenterDescriptionSystemData>;
+  GetPrivateEndpointConnectionsForMIPPolicySyncResponseSystemData as any as S.Schema<PrivateLinkServicesForM365SecurityCenterDescriptionSystemData>;
 
 /** The kind of the service. */
 export type PrivateLinkServicesForM365SecurityCenterDescriptionKind =
@@ -4467,16 +4120,8 @@ export interface PrivateLinkServicesForM365SecurityCenterDescriptionIdentity {
   /** Type of identity being specified, currently SystemAssigned and None are allowed. */
   type?: PrivateLinkServicesForM365SecurityCenterDescriptionIdentityType;
 }
-export const PrivateLinkServicesForM365SecurityCenterDescriptionIdentity = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: S.optional(PrivateLinkServicesForM365SecurityCenterDescriptionIdentityType),
-    }),
-).annotate({
-  identifier: "PrivateLinkServicesForM365SecurityCenterDescriptionIdentity",
-}) as any as S.Schema<PrivateLinkServicesForM365SecurityCenterDescriptionIdentity>;
+export const PrivateLinkServicesForM365SecurityCenterDescriptionIdentity =
+  GetPrivateLinkServicesForM365SecurityCenterResponseIdentity as any as S.Schema<PrivateLinkServicesForM365SecurityCenterDescriptionIdentity>;
 
 /** The provisioning state. */
 export type PrivateLinkServicesForM365SecurityCenterDescriptionPropertiesProvisioningState =
@@ -4684,23 +4329,8 @@ export interface PrivateLinkServicesForMIPPolicySyncDescriptionSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const PrivateLinkServicesForMIPPolicySyncDescriptionSystemData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        PrivateLinkServicesForMIPPolicySyncDescriptionSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        PrivateLinkServicesForMIPPolicySyncDescriptionSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "PrivateLinkServicesForMIPPolicySyncDescriptionSystemData",
-}) as any as S.Schema<PrivateLinkServicesForMIPPolicySyncDescriptionSystemData>;
+export const PrivateLinkServicesForMIPPolicySyncDescriptionSystemData =
+  GetPrivateLinkResourcesForMIPPolicySyncResponseSystemData as any as S.Schema<PrivateLinkServicesForMIPPolicySyncDescriptionSystemData>;
 
 /** The kind of the service. */
 export type PrivateLinkServicesForMIPPolicySyncDescriptionKind = "fhir" | "fhir-Stu3" | "fhir-R4";
@@ -4726,15 +4356,8 @@ export interface PrivateLinkServicesForMIPPolicySyncDescriptionIdentity {
   /** Type of identity being specified, currently SystemAssigned and None are allowed. */
   type?: PrivateLinkServicesForMIPPolicySyncDescriptionIdentityType;
 }
-export const PrivateLinkServicesForMIPPolicySyncDescriptionIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: S.optional(PrivateLinkServicesForMIPPolicySyncDescriptionIdentityType),
-  }),
-).annotate({
-  identifier: "PrivateLinkServicesForMIPPolicySyncDescriptionIdentity",
-}) as any as S.Schema<PrivateLinkServicesForMIPPolicySyncDescriptionIdentity>;
+export const PrivateLinkServicesForMIPPolicySyncDescriptionIdentity =
+  GetPrivateLinkServicesForEDMUploadResponseIdentity as any as S.Schema<PrivateLinkServicesForMIPPolicySyncDescriptionIdentity>;
 
 /** The provisioning state. */
 export type PrivateLinkServicesForMIPPolicySyncDescriptionPropertiesProvisioningState =
@@ -4944,22 +4567,7 @@ export interface PrivateLinkServicesForO365ManagementActivityAPIDescriptionSyste
   lastModifiedAt?: string;
 }
 export const PrivateLinkServicesForO365ManagementActivityAPIDescriptionSystemData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        PrivateLinkServicesForO365ManagementActivityAPIDescriptionSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        PrivateLinkServicesForO365ManagementActivityAPIDescriptionSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "PrivateLinkServicesForO365ManagementActivityAPIDescriptionSystemData",
-  }) as any as S.Schema<PrivateLinkServicesForO365ManagementActivityAPIDescriptionSystemData>;
+  GetPrivateEndpointConnectionsForMIPPolicySyncResponseSystemData as any as S.Schema<PrivateLinkServicesForO365ManagementActivityAPIDescriptionSystemData>;
 
 /** The kind of the service. */
 export type PrivateLinkServicesForO365ManagementActivityAPIDescriptionKind =
@@ -4991,15 +4599,7 @@ export interface PrivateLinkServicesForO365ManagementActivityAPIDescriptionIdent
   type?: PrivateLinkServicesForO365ManagementActivityAPIDescriptionIdentityType;
 }
 export const PrivateLinkServicesForO365ManagementActivityAPIDescriptionIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: S.optional(PrivateLinkServicesForO365ManagementActivityAPIDescriptionIdentityType),
-    }),
-  ).annotate({
-    identifier: "PrivateLinkServicesForO365ManagementActivityAPIDescriptionIdentity",
-  }) as any as S.Schema<PrivateLinkServicesForO365ManagementActivityAPIDescriptionIdentity>;
+  GetPrivateLinkServicesForM365ComplianceCenterResponseIdentity as any as S.Schema<PrivateLinkServicesForO365ManagementActivityAPIDescriptionIdentity>;
 
 /** The provisioning state. */
 export type PrivateLinkServicesForO365ManagementActivityAPIDescriptionPropertiesProvisioningState =
@@ -5210,23 +4810,8 @@ export interface PrivateLinkServicesForSCCPowershellDescriptionSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const PrivateLinkServicesForSCCPowershellDescriptionSystemData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        PrivateLinkServicesForSCCPowershellDescriptionSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        PrivateLinkServicesForSCCPowershellDescriptionSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "PrivateLinkServicesForSCCPowershellDescriptionSystemData",
-}) as any as S.Schema<PrivateLinkServicesForSCCPowershellDescriptionSystemData>;
+export const PrivateLinkServicesForSCCPowershellDescriptionSystemData =
+  GetPrivateLinkResourcesForMIPPolicySyncResponseSystemData as any as S.Schema<PrivateLinkServicesForSCCPowershellDescriptionSystemData>;
 
 /** The kind of the service. */
 export type PrivateLinkServicesForSCCPowershellDescriptionKind = "fhir" | "fhir-Stu3" | "fhir-R4";
@@ -5252,15 +4837,8 @@ export interface PrivateLinkServicesForSCCPowershellDescriptionIdentity {
   /** Type of identity being specified, currently SystemAssigned and None are allowed. */
   type?: PrivateLinkServicesForSCCPowershellDescriptionIdentityType;
 }
-export const PrivateLinkServicesForSCCPowershellDescriptionIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: S.optional(PrivateLinkServicesForSCCPowershellDescriptionIdentityType),
-  }),
-).annotate({
-  identifier: "PrivateLinkServicesForSCCPowershellDescriptionIdentity",
-}) as any as S.Schema<PrivateLinkServicesForSCCPowershellDescriptionIdentity>;
+export const PrivateLinkServicesForSCCPowershellDescriptionIdentity =
+  GetPrivateLinkServicesForEDMUploadResponseIdentity as any as S.Schema<PrivateLinkServicesForSCCPowershellDescriptionIdentity>;
 
 /** The provisioning state. */
 export type PrivateLinkServicesForSCCPowershellDescriptionPropertiesProvisioningState =
@@ -5501,22 +5079,7 @@ export interface PrivateEndpointConnectionsAdtAPICreateOrUpdateResponseSystemDat
   lastModifiedAt?: string;
 }
 export const PrivateEndpointConnectionsAdtAPICreateOrUpdateResponseSystemData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        PrivateEndpointConnectionsAdtAPICreateOrUpdateResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        PrivateEndpointConnectionsAdtAPICreateOrUpdateResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "PrivateEndpointConnectionsAdtAPICreateOrUpdateResponseSystemData",
-  }) as any as S.Schema<PrivateEndpointConnectionsAdtAPICreateOrUpdateResponseSystemData>;
+  GetPrivateEndpointConnectionsForMIPPolicySyncResponseSystemData as any as S.Schema<PrivateEndpointConnectionsAdtAPICreateOrUpdateResponseSystemData>;
 
 export interface PrivateEndpointConnectionsAdtAPICreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -5530,17 +5093,8 @@ export interface PrivateEndpointConnectionsAdtAPICreateOrUpdateResponse {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const PrivateEndpointConnectionsAdtAPICreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(PrivateEndpointConnectionsAdtAPICreateOrUpdateResponseSystemData),
-    properties: S.optional(PrivateEndpointConnectionProperties),
-  }),
-).annotate({
-  identifier: "PrivateEndpointConnectionsAdtAPICreateOrUpdateResponse",
-}) as any as S.Schema<PrivateEndpointConnectionsAdtAPICreateOrUpdateResponse>;
+export const PrivateEndpointConnectionsAdtAPICreateOrUpdateResponse =
+  GetPrivateEndpointConnectionsForMIPPolicySyncResponse as any as S.Schema<PrivateEndpointConnectionsAdtAPICreateOrUpdateResponse>;
 
 export interface PrivateEndpointConnectionsCompCreateOrUpdateRequest {
   /** The subscription identifier. */
@@ -5606,22 +5160,7 @@ export interface PrivateEndpointConnectionsCompCreateOrUpdateResponseSystemData 
   lastModifiedAt?: string;
 }
 export const PrivateEndpointConnectionsCompCreateOrUpdateResponseSystemData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        PrivateEndpointConnectionsCompCreateOrUpdateResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        PrivateEndpointConnectionsCompCreateOrUpdateResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "PrivateEndpointConnectionsCompCreateOrUpdateResponseSystemData",
-  }) as any as S.Schema<PrivateEndpointConnectionsCompCreateOrUpdateResponseSystemData>;
+  GetPrivateEndpointConnectionsForMIPPolicySyncResponseSystemData as any as S.Schema<PrivateEndpointConnectionsCompCreateOrUpdateResponseSystemData>;
 
 export interface PrivateEndpointConnectionsCompCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -5635,17 +5174,8 @@ export interface PrivateEndpointConnectionsCompCreateOrUpdateResponse {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const PrivateEndpointConnectionsCompCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(PrivateEndpointConnectionsCompCreateOrUpdateResponseSystemData),
-    properties: S.optional(PrivateEndpointConnectionProperties),
-  }),
-).annotate({
-  identifier: "PrivateEndpointConnectionsCompCreateOrUpdateResponse",
-}) as any as S.Schema<PrivateEndpointConnectionsCompCreateOrUpdateResponse>;
+export const PrivateEndpointConnectionsCompCreateOrUpdateResponse =
+  GetPrivateEndpointConnectionsForMIPPolicySyncResponse as any as S.Schema<PrivateEndpointConnectionsCompCreateOrUpdateResponse>;
 
 export interface PrivateEndpointConnectionsForEDMCreateOrUpdateRequest {
   /** The subscription identifier. */
@@ -5712,22 +5242,7 @@ export interface PrivateEndpointConnectionsForEDMCreateOrUpdateResponseSystemDat
   lastModifiedAt?: string;
 }
 export const PrivateEndpointConnectionsForEDMCreateOrUpdateResponseSystemData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        PrivateEndpointConnectionsForEDMCreateOrUpdateResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        PrivateEndpointConnectionsForEDMCreateOrUpdateResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "PrivateEndpointConnectionsForEDMCreateOrUpdateResponseSystemData",
-  }) as any as S.Schema<PrivateEndpointConnectionsForEDMCreateOrUpdateResponseSystemData>;
+  GetPrivateEndpointConnectionsForMIPPolicySyncResponseSystemData as any as S.Schema<PrivateEndpointConnectionsForEDMCreateOrUpdateResponseSystemData>;
 
 export interface PrivateEndpointConnectionsForEDMCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -5741,17 +5256,8 @@ export interface PrivateEndpointConnectionsForEDMCreateOrUpdateResponse {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const PrivateEndpointConnectionsForEDMCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(PrivateEndpointConnectionsForEDMCreateOrUpdateResponseSystemData),
-    properties: S.optional(PrivateEndpointConnectionProperties),
-  }),
-).annotate({
-  identifier: "PrivateEndpointConnectionsForEDMCreateOrUpdateResponse",
-}) as any as S.Schema<PrivateEndpointConnectionsForEDMCreateOrUpdateResponse>;
+export const PrivateEndpointConnectionsForEDMCreateOrUpdateResponse =
+  GetPrivateEndpointConnectionsForMIPPolicySyncResponse as any as S.Schema<PrivateEndpointConnectionsForEDMCreateOrUpdateResponse>;
 
 export interface PrivateEndpointConnectionsForMIPPolicySyncCreateOrUpdateRequest {
   /** The subscription identifier. */
@@ -5819,22 +5325,7 @@ export interface PrivateEndpointConnectionsForMIPPolicySyncCreateOrUpdateRespons
   lastModifiedAt?: string;
 }
 export const PrivateEndpointConnectionsForMIPPolicySyncCreateOrUpdateResponseSystemData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        PrivateEndpointConnectionsForMIPPolicySyncCreateOrUpdateResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        PrivateEndpointConnectionsForMIPPolicySyncCreateOrUpdateResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "PrivateEndpointConnectionsForMIPPolicySyncCreateOrUpdateResponseSystemData",
-  }) as any as S.Schema<PrivateEndpointConnectionsForMIPPolicySyncCreateOrUpdateResponseSystemData>;
+  GetPrivateEndpointConnectionsForMIPPolicySyncResponseSystemData as any as S.Schema<PrivateEndpointConnectionsForMIPPolicySyncCreateOrUpdateResponseSystemData>;
 
 export interface PrivateEndpointConnectionsForMIPPolicySyncCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -5929,22 +5420,7 @@ export interface PrivateEndpointConnectionsForSCCPowershellCreateOrUpdateRespons
   lastModifiedAt?: string;
 }
 export const PrivateEndpointConnectionsForSCCPowershellCreateOrUpdateResponseSystemData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        PrivateEndpointConnectionsForSCCPowershellCreateOrUpdateResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        PrivateEndpointConnectionsForSCCPowershellCreateOrUpdateResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "PrivateEndpointConnectionsForSCCPowershellCreateOrUpdateResponseSystemData",
-  }) as any as S.Schema<PrivateEndpointConnectionsForSCCPowershellCreateOrUpdateResponseSystemData>;
+  GetPrivateEndpointConnectionsForMIPPolicySyncResponseSystemData as any as S.Schema<PrivateEndpointConnectionsForSCCPowershellCreateOrUpdateResponseSystemData>;
 
 export interface PrivateEndpointConnectionsForSCCPowershellCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -5959,19 +5435,7 @@ export interface PrivateEndpointConnectionsForSCCPowershellCreateOrUpdateRespons
   properties?: PrivateEndpointConnectionProperties;
 }
 export const PrivateEndpointConnectionsForSCCPowershellCreateOrUpdateResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(
-        PrivateEndpointConnectionsForSCCPowershellCreateOrUpdateResponseSystemData,
-      ),
-      properties: S.optional(PrivateEndpointConnectionProperties),
-    }),
-  ).annotate({
-    identifier: "PrivateEndpointConnectionsForSCCPowershellCreateOrUpdateResponse",
-  }) as any as S.Schema<PrivateEndpointConnectionsForSCCPowershellCreateOrUpdateResponse>;
+  PrivateEndpointConnectionsForMIPPolicySyncCreateOrUpdateResponse as any as S.Schema<PrivateEndpointConnectionsForSCCPowershellCreateOrUpdateResponse>;
 
 export interface PrivateEndpointConnectionsSecCreateOrUpdateRequest {
   /** The subscription identifier. */
@@ -6037,22 +5501,7 @@ export interface PrivateEndpointConnectionsSecCreateOrUpdateResponseSystemData {
   lastModifiedAt?: string;
 }
 export const PrivateEndpointConnectionsSecCreateOrUpdateResponseSystemData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        PrivateEndpointConnectionsSecCreateOrUpdateResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        PrivateEndpointConnectionsSecCreateOrUpdateResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "PrivateEndpointConnectionsSecCreateOrUpdateResponseSystemData",
-  }) as any as S.Schema<PrivateEndpointConnectionsSecCreateOrUpdateResponseSystemData>;
+  GetPrivateEndpointConnectionsForMIPPolicySyncResponseSystemData as any as S.Schema<PrivateEndpointConnectionsSecCreateOrUpdateResponseSystemData>;
 
 export interface PrivateEndpointConnectionsSecCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -6066,17 +5515,8 @@ export interface PrivateEndpointConnectionsSecCreateOrUpdateResponse {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const PrivateEndpointConnectionsSecCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(PrivateEndpointConnectionsSecCreateOrUpdateResponseSystemData),
-    properties: S.optional(PrivateEndpointConnectionProperties),
-  }),
-).annotate({
-  identifier: "PrivateEndpointConnectionsSecCreateOrUpdateResponse",
-}) as any as S.Schema<PrivateEndpointConnectionsSecCreateOrUpdateResponse>;
+export const PrivateEndpointConnectionsSecCreateOrUpdateResponse =
+  GetPrivateEndpointConnectionsForMIPPolicySyncResponse as any as S.Schema<PrivateEndpointConnectionsSecCreateOrUpdateResponse>;
 
 /** The kind of the service. */
 export type PrivateLinkServicesForEDMUploadCreateOrUpdateRequestKind =
@@ -6255,22 +5695,7 @@ export interface PrivateLinkServicesForEDMUploadCreateOrUpdateResponseSystemData
   lastModifiedAt?: string;
 }
 export const PrivateLinkServicesForEDMUploadCreateOrUpdateResponseSystemData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        PrivateLinkServicesForEDMUploadCreateOrUpdateResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        PrivateLinkServicesForEDMUploadCreateOrUpdateResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "PrivateLinkServicesForEDMUploadCreateOrUpdateResponseSystemData",
-  }) as any as S.Schema<PrivateLinkServicesForEDMUploadCreateOrUpdateResponseSystemData>;
+  GetPrivateEndpointConnectionsForMIPPolicySyncResponseSystemData as any as S.Schema<PrivateLinkServicesForEDMUploadCreateOrUpdateResponseSystemData>;
 
 /** The kind of the service. */
 export type PrivateLinkServicesForEDMUploadCreateOrUpdateResponseKind =
@@ -6302,15 +5727,7 @@ export interface PrivateLinkServicesForEDMUploadCreateOrUpdateResponseIdentity {
   type?: PrivateLinkServicesForEDMUploadCreateOrUpdateResponseIdentityType;
 }
 export const PrivateLinkServicesForEDMUploadCreateOrUpdateResponseIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: S.optional(PrivateLinkServicesForEDMUploadCreateOrUpdateResponseIdentityType),
-    }),
-  ).annotate({
-    identifier: "PrivateLinkServicesForEDMUploadCreateOrUpdateResponseIdentity",
-  }) as any as S.Schema<PrivateLinkServicesForEDMUploadCreateOrUpdateResponseIdentity>;
+  GetPrivateLinkServicesForM365ComplianceCenterResponseIdentity as any as S.Schema<PrivateLinkServicesForEDMUploadCreateOrUpdateResponseIdentity>;
 
 /** The provisioning state. */
 export type PrivateLinkServicesForEDMUploadCreateOrUpdateResponsePropertiesProvisioningState =
@@ -6586,22 +6003,7 @@ export interface PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateRespons
   lastModifiedAt?: string;
 }
 export const PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateResponseSystemData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateResponseSystemData",
-  }) as any as S.Schema<PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateResponseSystemData>;
+  GetPrivateEndpointConnectionsForMIPPolicySyncResponseSystemData as any as S.Schema<PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateResponseSystemData>;
 
 /** The kind of the service. */
 export type PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateResponseKind =
@@ -6786,13 +6188,7 @@ export interface PrivateLinkServicesForM365SecurityCenterCreateOrUpdateRequestId
   type?: PrivateLinkServicesForM365SecurityCenterCreateOrUpdateRequestIdentityType | (string & {});
 }
 export const PrivateLinkServicesForM365SecurityCenterCreateOrUpdateRequestIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.optional(PrivateLinkServicesForM365SecurityCenterCreateOrUpdateRequestIdentityType),
-    }),
-  ).annotate({
-    identifier: "PrivateLinkServicesForM365SecurityCenterCreateOrUpdateRequestIdentity",
-  }) as any as S.Schema<PrivateLinkServicesForM365SecurityCenterCreateOrUpdateRequestIdentity>;
+  PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateRequestIdentity as any as S.Schema<PrivateLinkServicesForM365SecurityCenterCreateOrUpdateRequestIdentity>;
 
 /** The list of private endpoint connections that are set up for this resource. */
 export type PrivateLinkServicesForM365SecurityCenterCreateOrUpdateRequestPropertiesPrivateEndpointConnectionsList =
@@ -6925,22 +6321,7 @@ export interface PrivateLinkServicesForM365SecurityCenterCreateOrUpdateResponseS
   lastModifiedAt?: string;
 }
 export const PrivateLinkServicesForM365SecurityCenterCreateOrUpdateResponseSystemData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        PrivateLinkServicesForM365SecurityCenterCreateOrUpdateResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        PrivateLinkServicesForM365SecurityCenterCreateOrUpdateResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "PrivateLinkServicesForM365SecurityCenterCreateOrUpdateResponseSystemData",
-  }) as any as S.Schema<PrivateLinkServicesForM365SecurityCenterCreateOrUpdateResponseSystemData>;
+  GetPrivateEndpointConnectionsForMIPPolicySyncResponseSystemData as any as S.Schema<PrivateLinkServicesForM365SecurityCenterCreateOrUpdateResponseSystemData>;
 
 /** The kind of the service. */
 export type PrivateLinkServicesForM365SecurityCenterCreateOrUpdateResponseKind =
@@ -6972,15 +6353,7 @@ export interface PrivateLinkServicesForM365SecurityCenterCreateOrUpdateResponseI
   type?: PrivateLinkServicesForM365SecurityCenterCreateOrUpdateResponseIdentityType;
 }
 export const PrivateLinkServicesForM365SecurityCenterCreateOrUpdateResponseIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: S.optional(PrivateLinkServicesForM365SecurityCenterCreateOrUpdateResponseIdentityType),
-    }),
-  ).annotate({
-    identifier: "PrivateLinkServicesForM365SecurityCenterCreateOrUpdateResponseIdentity",
-  }) as any as S.Schema<PrivateLinkServicesForM365SecurityCenterCreateOrUpdateResponseIdentity>;
+  GetPrivateLinkServicesForM365ComplianceCenterResponseIdentity as any as S.Schema<PrivateLinkServicesForM365SecurityCenterCreateOrUpdateResponseIdentity>;
 
 /** The provisioning state. */
 export type PrivateLinkServicesForM365SecurityCenterCreateOrUpdateResponsePropertiesProvisioningState =
@@ -7120,13 +6493,7 @@ export interface PrivateLinkServicesForMIPPolicySyncCreateOrUpdateRequestIdentit
   type?: PrivateLinkServicesForMIPPolicySyncCreateOrUpdateRequestIdentityType | (string & {});
 }
 export const PrivateLinkServicesForMIPPolicySyncCreateOrUpdateRequestIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.optional(PrivateLinkServicesForMIPPolicySyncCreateOrUpdateRequestIdentityType),
-    }),
-  ).annotate({
-    identifier: "PrivateLinkServicesForMIPPolicySyncCreateOrUpdateRequestIdentity",
-  }) as any as S.Schema<PrivateLinkServicesForMIPPolicySyncCreateOrUpdateRequestIdentity>;
+  PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateRequestIdentity as any as S.Schema<PrivateLinkServicesForMIPPolicySyncCreateOrUpdateRequestIdentity>;
 
 /** The list of private endpoint connections that are set up for this resource. */
 export type PrivateLinkServicesForMIPPolicySyncCreateOrUpdateRequestPropertiesPrivateEndpointConnectionsList =
@@ -7257,22 +6624,7 @@ export interface PrivateLinkServicesForMIPPolicySyncCreateOrUpdateResponseSystem
   lastModifiedAt?: string;
 }
 export const PrivateLinkServicesForMIPPolicySyncCreateOrUpdateResponseSystemData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        PrivateLinkServicesForMIPPolicySyncCreateOrUpdateResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        PrivateLinkServicesForMIPPolicySyncCreateOrUpdateResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "PrivateLinkServicesForMIPPolicySyncCreateOrUpdateResponseSystemData",
-  }) as any as S.Schema<PrivateLinkServicesForMIPPolicySyncCreateOrUpdateResponseSystemData>;
+  GetPrivateEndpointConnectionsForMIPPolicySyncResponseSystemData as any as S.Schema<PrivateLinkServicesForMIPPolicySyncCreateOrUpdateResponseSystemData>;
 
 /** The kind of the service. */
 export type PrivateLinkServicesForMIPPolicySyncCreateOrUpdateResponseKind =
@@ -7304,15 +6656,7 @@ export interface PrivateLinkServicesForMIPPolicySyncCreateOrUpdateResponseIdenti
   type?: PrivateLinkServicesForMIPPolicySyncCreateOrUpdateResponseIdentityType;
 }
 export const PrivateLinkServicesForMIPPolicySyncCreateOrUpdateResponseIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: S.optional(PrivateLinkServicesForMIPPolicySyncCreateOrUpdateResponseIdentityType),
-    }),
-  ).annotate({
-    identifier: "PrivateLinkServicesForMIPPolicySyncCreateOrUpdateResponseIdentity",
-  }) as any as S.Schema<PrivateLinkServicesForMIPPolicySyncCreateOrUpdateResponseIdentity>;
+  GetPrivateLinkServicesForM365ComplianceCenterResponseIdentity as any as S.Schema<PrivateLinkServicesForMIPPolicySyncCreateOrUpdateResponseIdentity>;
 
 /** The provisioning state. */
 export type PrivateLinkServicesForMIPPolicySyncCreateOrUpdateResponsePropertiesProvisioningState =
@@ -7594,22 +6938,7 @@ export interface PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateRe
   lastModifiedAt?: string;
 }
 export const PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateResponseSystemData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateResponseSystemData",
-  }) as any as S.Schema<PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateResponseSystemData>;
+  GetPrivateEndpointConnectionsForMIPPolicySyncResponseSystemData as any as S.Schema<PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateResponseSystemData>;
 
 /** The kind of the service. */
 export type PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateResponseKind =
@@ -7642,17 +6971,7 @@ export interface PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateRe
   type?: PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateResponseIdentityType;
 }
 export const PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateResponseIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: S.optional(
-        PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateResponseIdentityType,
-      ),
-    }),
-  ).annotate({
-    identifier: "PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateResponseIdentity",
-  }) as any as S.Schema<PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateResponseIdentity>;
+  PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateResponseIdentity as any as S.Schema<PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateResponseIdentity>;
 
 /** The provisioning state. */
 export type PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateResponsePropertiesProvisioningState =
@@ -7796,13 +7115,7 @@ export interface PrivateLinkServicesForSCCPowershellCreateOrUpdateRequestIdentit
   type?: PrivateLinkServicesForSCCPowershellCreateOrUpdateRequestIdentityType | (string & {});
 }
 export const PrivateLinkServicesForSCCPowershellCreateOrUpdateRequestIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.optional(PrivateLinkServicesForSCCPowershellCreateOrUpdateRequestIdentityType),
-    }),
-  ).annotate({
-    identifier: "PrivateLinkServicesForSCCPowershellCreateOrUpdateRequestIdentity",
-  }) as any as S.Schema<PrivateLinkServicesForSCCPowershellCreateOrUpdateRequestIdentity>;
+  PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateRequestIdentity as any as S.Schema<PrivateLinkServicesForSCCPowershellCreateOrUpdateRequestIdentity>;
 
 /** The list of private endpoint connections that are set up for this resource. */
 export type PrivateLinkServicesForSCCPowershellCreateOrUpdateRequestPropertiesPrivateEndpointConnectionsList =
@@ -7933,22 +7246,7 @@ export interface PrivateLinkServicesForSCCPowershellCreateOrUpdateResponseSystem
   lastModifiedAt?: string;
 }
 export const PrivateLinkServicesForSCCPowershellCreateOrUpdateResponseSystemData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        PrivateLinkServicesForSCCPowershellCreateOrUpdateResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        PrivateLinkServicesForSCCPowershellCreateOrUpdateResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "PrivateLinkServicesForSCCPowershellCreateOrUpdateResponseSystemData",
-  }) as any as S.Schema<PrivateLinkServicesForSCCPowershellCreateOrUpdateResponseSystemData>;
+  GetPrivateEndpointConnectionsForMIPPolicySyncResponseSystemData as any as S.Schema<PrivateLinkServicesForSCCPowershellCreateOrUpdateResponseSystemData>;
 
 /** The kind of the service. */
 export type PrivateLinkServicesForSCCPowershellCreateOrUpdateResponseKind =
@@ -7980,15 +7278,7 @@ export interface PrivateLinkServicesForSCCPowershellCreateOrUpdateResponseIdenti
   type?: PrivateLinkServicesForSCCPowershellCreateOrUpdateResponseIdentityType;
 }
 export const PrivateLinkServicesForSCCPowershellCreateOrUpdateResponseIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: S.optional(PrivateLinkServicesForSCCPowershellCreateOrUpdateResponseIdentityType),
-    }),
-  ).annotate({
-    identifier: "PrivateLinkServicesForSCCPowershellCreateOrUpdateResponseIdentity",
-  }) as any as S.Schema<PrivateLinkServicesForSCCPowershellCreateOrUpdateResponseIdentity>;
+  GetPrivateLinkServicesForM365ComplianceCenterResponseIdentity as any as S.Schema<PrivateLinkServicesForSCCPowershellCreateOrUpdateResponseIdentity>;
 
 /** The provisioning state. */
 export type PrivateLinkServicesForSCCPowershellCreateOrUpdateResponsePropertiesProvisioningState =
@@ -8184,20 +7474,8 @@ export interface UpdatePrivateLinkServicesForEDMUploadResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdatePrivateLinkServicesForEDMUploadResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(UpdatePrivateLinkServicesForEDMUploadResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      UpdatePrivateLinkServicesForEDMUploadResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdatePrivateLinkServicesForEDMUploadResponseSystemData",
-}) as any as S.Schema<UpdatePrivateLinkServicesForEDMUploadResponseSystemData>;
+export const UpdatePrivateLinkServicesForEDMUploadResponseSystemData =
+  GetPrivateEndpointConnectionsAdtAPIResponseSystemData as any as S.Schema<UpdatePrivateLinkServicesForEDMUploadResponseSystemData>;
 
 /** The kind of the service. */
 export type UpdatePrivateLinkServicesForEDMUploadResponseKind = "fhir" | "fhir-Stu3" | "fhir-R4";
@@ -8223,15 +7501,8 @@ export interface UpdatePrivateLinkServicesForEDMUploadResponseIdentity {
   /** Type of identity being specified, currently SystemAssigned and None are allowed. */
   type?: UpdatePrivateLinkServicesForEDMUploadResponseIdentityType;
 }
-export const UpdatePrivateLinkServicesForEDMUploadResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: S.optional(UpdatePrivateLinkServicesForEDMUploadResponseIdentityType),
-  }),
-).annotate({
-  identifier: "UpdatePrivateLinkServicesForEDMUploadResponseIdentity",
-}) as any as S.Schema<UpdatePrivateLinkServicesForEDMUploadResponseIdentity>;
+export const UpdatePrivateLinkServicesForEDMUploadResponseIdentity =
+  GetPrivateLinkServicesForEDMUploadResponseIdentity as any as S.Schema<UpdatePrivateLinkServicesForEDMUploadResponseIdentity>;
 
 /** The provisioning state. */
 export type UpdatePrivateLinkServicesForEDMUploadResponsePropertiesProvisioningState =
@@ -8409,22 +7680,7 @@ export interface UpdatePrivateLinkServicesForM365ComplianceCenterResponseSystemD
   lastModifiedAt?: string;
 }
 export const UpdatePrivateLinkServicesForM365ComplianceCenterResponseSystemData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        UpdatePrivateLinkServicesForM365ComplianceCenterResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        UpdatePrivateLinkServicesForM365ComplianceCenterResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "UpdatePrivateLinkServicesForM365ComplianceCenterResponseSystemData",
-  }) as any as S.Schema<UpdatePrivateLinkServicesForM365ComplianceCenterResponseSystemData>;
+  GetPrivateEndpointConnectionsForMIPPolicySyncResponseSystemData as any as S.Schema<UpdatePrivateLinkServicesForM365ComplianceCenterResponseSystemData>;
 
 /** The kind of the service. */
 export type UpdatePrivateLinkServicesForM365ComplianceCenterResponseKind =
@@ -8456,15 +7712,7 @@ export interface UpdatePrivateLinkServicesForM365ComplianceCenterResponseIdentit
   type?: UpdatePrivateLinkServicesForM365ComplianceCenterResponseIdentityType;
 }
 export const UpdatePrivateLinkServicesForM365ComplianceCenterResponseIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: S.optional(UpdatePrivateLinkServicesForM365ComplianceCenterResponseIdentityType),
-    }),
-  ).annotate({
-    identifier: "UpdatePrivateLinkServicesForM365ComplianceCenterResponseIdentity",
-  }) as any as S.Schema<UpdatePrivateLinkServicesForM365ComplianceCenterResponseIdentity>;
+  GetPrivateLinkServicesForM365ComplianceCenterResponseIdentity as any as S.Schema<UpdatePrivateLinkServicesForM365ComplianceCenterResponseIdentity>;
 
 /** The provisioning state. */
 export type UpdatePrivateLinkServicesForM365ComplianceCenterResponsePropertiesProvisioningState =
@@ -8646,22 +7894,7 @@ export interface UpdatePrivateLinkServicesForM365SecurityCenterResponseSystemDat
   lastModifiedAt?: string;
 }
 export const UpdatePrivateLinkServicesForM365SecurityCenterResponseSystemData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        UpdatePrivateLinkServicesForM365SecurityCenterResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        UpdatePrivateLinkServicesForM365SecurityCenterResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "UpdatePrivateLinkServicesForM365SecurityCenterResponseSystemData",
-  }) as any as S.Schema<UpdatePrivateLinkServicesForM365SecurityCenterResponseSystemData>;
+  GetPrivateEndpointConnectionsForMIPPolicySyncResponseSystemData as any as S.Schema<UpdatePrivateLinkServicesForM365SecurityCenterResponseSystemData>;
 
 /** The kind of the service. */
 export type UpdatePrivateLinkServicesForM365SecurityCenterResponseKind =
@@ -8693,15 +7926,7 @@ export interface UpdatePrivateLinkServicesForM365SecurityCenterResponseIdentity 
   type?: UpdatePrivateLinkServicesForM365SecurityCenterResponseIdentityType;
 }
 export const UpdatePrivateLinkServicesForM365SecurityCenterResponseIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: S.optional(UpdatePrivateLinkServicesForM365SecurityCenterResponseIdentityType),
-    }),
-  ).annotate({
-    identifier: "UpdatePrivateLinkServicesForM365SecurityCenterResponseIdentity",
-  }) as any as S.Schema<UpdatePrivateLinkServicesForM365SecurityCenterResponseIdentity>;
+  GetPrivateLinkServicesForM365ComplianceCenterResponseIdentity as any as S.Schema<UpdatePrivateLinkServicesForM365SecurityCenterResponseIdentity>;
 
 /** The provisioning state. */
 export type UpdatePrivateLinkServicesForM365SecurityCenterResponsePropertiesProvisioningState =
@@ -8880,23 +8105,8 @@ export interface UpdatePrivateLinkServicesForMIPPolicySyncResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdatePrivateLinkServicesForMIPPolicySyncResponseSystemData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        UpdatePrivateLinkServicesForMIPPolicySyncResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        UpdatePrivateLinkServicesForMIPPolicySyncResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "UpdatePrivateLinkServicesForMIPPolicySyncResponseSystemData",
-}) as any as S.Schema<UpdatePrivateLinkServicesForMIPPolicySyncResponseSystemData>;
+export const UpdatePrivateLinkServicesForMIPPolicySyncResponseSystemData =
+  GetPrivateLinkResourcesForMIPPolicySyncResponseSystemData as any as S.Schema<UpdatePrivateLinkServicesForMIPPolicySyncResponseSystemData>;
 
 /** The kind of the service. */
 export type UpdatePrivateLinkServicesForMIPPolicySyncResponseKind =
@@ -8927,16 +8137,8 @@ export interface UpdatePrivateLinkServicesForMIPPolicySyncResponseIdentity {
   /** Type of identity being specified, currently SystemAssigned and None are allowed. */
   type?: UpdatePrivateLinkServicesForMIPPolicySyncResponseIdentityType;
 }
-export const UpdatePrivateLinkServicesForMIPPolicySyncResponseIdentity = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: S.optional(UpdatePrivateLinkServicesForMIPPolicySyncResponseIdentityType),
-    }),
-).annotate({
-  identifier: "UpdatePrivateLinkServicesForMIPPolicySyncResponseIdentity",
-}) as any as S.Schema<UpdatePrivateLinkServicesForMIPPolicySyncResponseIdentity>;
+export const UpdatePrivateLinkServicesForMIPPolicySyncResponseIdentity =
+  GetPrivateLinkServicesForM365SecurityCenterResponseIdentity as any as S.Schema<UpdatePrivateLinkServicesForMIPPolicySyncResponseIdentity>;
 
 /** The provisioning state. */
 export type UpdatePrivateLinkServicesForMIPPolicySyncResponsePropertiesProvisioningState =
@@ -9118,22 +8320,7 @@ export interface UpdatePrivateLinkServicesForO365ManagementActivityAPIResponseSy
   lastModifiedAt?: string;
 }
 export const UpdatePrivateLinkServicesForO365ManagementActivityAPIResponseSystemData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        UpdatePrivateLinkServicesForO365ManagementActivityAPIResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        UpdatePrivateLinkServicesForO365ManagementActivityAPIResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "UpdatePrivateLinkServicesForO365ManagementActivityAPIResponseSystemData",
-  }) as any as S.Schema<UpdatePrivateLinkServicesForO365ManagementActivityAPIResponseSystemData>;
+  GetPrivateEndpointConnectionsForMIPPolicySyncResponseSystemData as any as S.Schema<UpdatePrivateLinkServicesForO365ManagementActivityAPIResponseSystemData>;
 
 /** The kind of the service. */
 export type UpdatePrivateLinkServicesForO365ManagementActivityAPIResponseKind =
@@ -9165,15 +8352,7 @@ export interface UpdatePrivateLinkServicesForO365ManagementActivityAPIResponseId
   type?: UpdatePrivateLinkServicesForO365ManagementActivityAPIResponseIdentityType;
 }
 export const UpdatePrivateLinkServicesForO365ManagementActivityAPIResponseIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: S.optional(UpdatePrivateLinkServicesForO365ManagementActivityAPIResponseIdentityType),
-    }),
-  ).annotate({
-    identifier: "UpdatePrivateLinkServicesForO365ManagementActivityAPIResponseIdentity",
-  }) as any as S.Schema<UpdatePrivateLinkServicesForO365ManagementActivityAPIResponseIdentity>;
+  GetPrivateLinkServicesForM365ComplianceCenterResponseIdentity as any as S.Schema<UpdatePrivateLinkServicesForO365ManagementActivityAPIResponseIdentity>;
 
 /** The provisioning state. */
 export type UpdatePrivateLinkServicesForO365ManagementActivityAPIResponsePropertiesProvisioningState =
@@ -9357,23 +8536,8 @@ export interface UpdatePrivateLinkServicesForSCCPowershellResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdatePrivateLinkServicesForSCCPowershellResponseSystemData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        UpdatePrivateLinkServicesForSCCPowershellResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        UpdatePrivateLinkServicesForSCCPowershellResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "UpdatePrivateLinkServicesForSCCPowershellResponseSystemData",
-}) as any as S.Schema<UpdatePrivateLinkServicesForSCCPowershellResponseSystemData>;
+export const UpdatePrivateLinkServicesForSCCPowershellResponseSystemData =
+  GetPrivateLinkResourcesForMIPPolicySyncResponseSystemData as any as S.Schema<UpdatePrivateLinkServicesForSCCPowershellResponseSystemData>;
 
 /** The kind of the service. */
 export type UpdatePrivateLinkServicesForSCCPowershellResponseKind =
@@ -9404,16 +8568,8 @@ export interface UpdatePrivateLinkServicesForSCCPowershellResponseIdentity {
   /** Type of identity being specified, currently SystemAssigned and None are allowed. */
   type?: UpdatePrivateLinkServicesForSCCPowershellResponseIdentityType;
 }
-export const UpdatePrivateLinkServicesForSCCPowershellResponseIdentity = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: S.optional(UpdatePrivateLinkServicesForSCCPowershellResponseIdentityType),
-    }),
-).annotate({
-  identifier: "UpdatePrivateLinkServicesForSCCPowershellResponseIdentity",
-}) as any as S.Schema<UpdatePrivateLinkServicesForSCCPowershellResponseIdentity>;
+export const UpdatePrivateLinkServicesForSCCPowershellResponseIdentity =
+  GetPrivateLinkServicesForM365SecurityCenterResponseIdentity as any as S.Schema<UpdatePrivateLinkServicesForSCCPowershellResponseIdentity>;
 
 /** The provisioning state. */
 export type UpdatePrivateLinkServicesForSCCPowershellResponsePropertiesProvisioningState =

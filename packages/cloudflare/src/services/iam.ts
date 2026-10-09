@@ -164,9 +164,8 @@ export const OauthClientsCreateRequestResponseTypesItem = S.String;
 export type OauthClientsCreateRequestResponseTypesList = Array<
   OauthClientsCreateRequestResponseTypesItem | (string & {})
 >;
-export const OauthClientsCreateRequestResponseTypesList = /*@__PURE__*/ S.Array(
-  OauthClientsCreateRequestResponseTypesItem,
-) as any as S.Schema<OauthClientsCreateRequestResponseTypesList>;
+export const OauthClientsCreateRequestResponseTypesList =
+  OauthClientsCreateRequestGrantTypesList as any as S.Schema<OauthClientsCreateRequestResponseTypesList>;
 
 export type OauthClientsCreateRequestScopesList = Array<string>;
 export const OauthClientsCreateRequestScopesList =
@@ -283,9 +282,8 @@ export const OauthClientsCreateResponseGrantTypesItem = S.String;
 
 export type OauthClientsCreateResponseGrantTypesList =
   Array<OauthClientsCreateResponseGrantTypesItem>;
-export const OauthClientsCreateResponseGrantTypesList = /*@__PURE__*/ S.Array(
-  OauthClientsCreateResponseGrantTypesItem,
-) as any as S.Schema<OauthClientsCreateResponseGrantTypesList>;
+export const OauthClientsCreateResponseGrantTypesList =
+  OauthClientsCreateRequestGrantTypesList as any as S.Schema<OauthClientsCreateResponseGrantTypesList>;
 
 export type OauthClientsCreateResponseOptionalScopesList = Array<string>;
 export const OauthClientsCreateResponseOptionalScopesList =
@@ -304,9 +302,8 @@ export const OauthClientsCreateResponseResponseTypesItem = S.String;
 
 export type OauthClientsCreateResponseResponseTypesList =
   Array<OauthClientsCreateResponseResponseTypesItem>;
-export const OauthClientsCreateResponseResponseTypesList = /*@__PURE__*/ S.Array(
-  OauthClientsCreateResponseResponseTypesItem,
-) as any as S.Schema<OauthClientsCreateResponseResponseTypesList>;
+export const OauthClientsCreateResponseResponseTypesList =
+  OauthClientsCreateRequestGrantTypesList as any as S.Schema<OauthClientsCreateResponseResponseTypesList>;
 
 export type OauthClientsCreateResponseScopesList = Array<string>;
 export const OauthClientsCreateResponseScopesList =
@@ -1168,22 +1165,15 @@ export interface OauthClientsGetResponseClientUriVerification {
   /** Exact TXT record value that must be added to DNS to prove ownership of the client URI host. */
   text?: string | null;
 }
-export const OauthClientsGetResponseClientUriVerification = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(S.NullOr(OauthClientsGetResponseClientUriVerificationStatus)),
-    text: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "OauthClientsGetResponseClientUriVerification",
-}) as any as S.Schema<OauthClientsGetResponseClientUriVerification>;
+export const OauthClientsGetResponseClientUriVerification =
+  OauthClientsCreateResponseClientUriVerification as any as S.Schema<OauthClientsGetResponseClientUriVerification>;
 
 export type OauthClientsGetResponseGrantTypesItem = "authorization_code" | "refresh_token";
 export const OauthClientsGetResponseGrantTypesItem = S.String;
 
 export type OauthClientsGetResponseGrantTypesList = Array<OauthClientsGetResponseGrantTypesItem>;
-export const OauthClientsGetResponseGrantTypesList = /*@__PURE__*/ S.Array(
-  OauthClientsGetResponseGrantTypesItem,
-) as any as S.Schema<OauthClientsGetResponseGrantTypesList>;
+export const OauthClientsGetResponseGrantTypesList =
+  OauthClientsCreateRequestGrantTypesList as any as S.Schema<OauthClientsGetResponseGrantTypesList>;
 
 export type OauthClientsGetResponseOptionalScopesList = Array<string>;
 export const OauthClientsGetResponseOptionalScopesList =
@@ -1202,9 +1192,8 @@ export const OauthClientsGetResponseResponseTypesItem = S.String;
 
 export type OauthClientsGetResponseResponseTypesList =
   Array<OauthClientsGetResponseResponseTypesItem>;
-export const OauthClientsGetResponseResponseTypesList = /*@__PURE__*/ S.Array(
-  OauthClientsGetResponseResponseTypesItem,
-) as any as S.Schema<OauthClientsGetResponseResponseTypesList>;
+export const OauthClientsGetResponseResponseTypesList =
+  OauthClientsCreateRequestGrantTypesList as any as S.Schema<OauthClientsGetResponseResponseTypesList>;
 
 export type OauthClientsGetResponseScopesList = Array<string>;
 export const OauthClientsGetResponseScopesList =
@@ -1445,14 +1434,8 @@ export interface SsoGetResponseVerification {
   /** The status of the verification code from the verification process. */
   status?: SsoGetResponseVerificationStatus | null;
 }
-export const SsoGetResponseVerification = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.NullOr(S.String)),
-    status: S.optional(S.NullOr(SsoGetResponseVerificationStatus)),
-  }),
-).annotate({
-  identifier: "SsoGetResponseVerification",
-}) as any as S.Schema<SsoGetResponseVerification>;
+export const SsoGetResponseVerification =
+  SsoCreateResponseVerification as any as S.Schema<SsoGetResponseVerification>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetSsoResponse {
@@ -1468,17 +1451,7 @@ export interface GetSsoResponse {
   useFedrampLanguage?: boolean | null;
   verification?: SsoGetResponseVerification | null;
 }
-export const GetSsoResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-    emailDomain: S.optional(S.NullOr(S.String).pipe(T.Body("email_domain"))),
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    updatedOn: S.optional(S.NullOr(S.String).pipe(T.Body("updated_on"))),
-    useFedrampLanguage: S.optional(S.NullOr(S.Boolean).pipe(T.Body("use_fedramp_language"))),
-    verification: S.optional(S.NullOr(SsoGetResponseVerification)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "GetSsoResponse" }) as any as S.Schema<GetSsoResponse>;
+export const GetSsoResponse = CreateSsoResponse as any as S.Schema<GetSsoResponse>;
 
 export interface GetUserGroupRequest {
   /** Account identifier tag. */
@@ -1723,23 +1696,16 @@ export interface OauthClientsListResultItemClientUriVerification {
   /** Exact TXT record value that must be added to DNS to prove ownership of the client URI host. */
   text?: string | null;
 }
-export const OauthClientsListResultItemClientUriVerification = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(S.NullOr(OauthClientsListResultItemClientUriVerificationStatus)),
-    text: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "OauthClientsListResultItemClientUriVerification",
-}) as any as S.Schema<OauthClientsListResultItemClientUriVerification>;
+export const OauthClientsListResultItemClientUriVerification =
+  OauthClientsCreateResponseClientUriVerification as any as S.Schema<OauthClientsListResultItemClientUriVerification>;
 
 export type OauthClientsListResultItemGrantTypesItem = "authorization_code" | "refresh_token";
 export const OauthClientsListResultItemGrantTypesItem = S.String;
 
 export type OauthClientsListResultItemGrantTypesList =
   Array<OauthClientsListResultItemGrantTypesItem>;
-export const OauthClientsListResultItemGrantTypesList = /*@__PURE__*/ S.Array(
-  OauthClientsListResultItemGrantTypesItem,
-) as any as S.Schema<OauthClientsListResultItemGrantTypesList>;
+export const OauthClientsListResultItemGrantTypesList =
+  OauthClientsCreateRequestGrantTypesList as any as S.Schema<OauthClientsListResultItemGrantTypesList>;
 
 export type OauthClientsListResultItemOptionalScopesList = Array<string>;
 export const OauthClientsListResultItemOptionalScopesList =
@@ -1758,9 +1724,8 @@ export const OauthClientsListResultItemResponseTypesItem = S.String;
 
 export type OauthClientsListResultItemResponseTypesList =
   Array<OauthClientsListResultItemResponseTypesItem>;
-export const OauthClientsListResultItemResponseTypesList = /*@__PURE__*/ S.Array(
-  OauthClientsListResultItemResponseTypesItem,
-) as any as S.Schema<OauthClientsListResultItemResponseTypesList>;
+export const OauthClientsListResultItemResponseTypesList =
+  OauthClientsCreateRequestGrantTypesList as any as S.Schema<OauthClientsListResultItemResponseTypesList>;
 
 export type OauthClientsListResultItemScopesList = Array<string>;
 export const OauthClientsListResultItemScopesList =
@@ -2096,14 +2061,8 @@ export interface SsoListResultItemVerification {
   /** The status of the verification code from the verification process. */
   status?: SsoListResultItemVerificationStatus | null;
 }
-export const SsoListResultItemVerification = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.NullOr(S.String)),
-    status: S.optional(S.NullOr(SsoListResultItemVerificationStatus)),
-  }),
-).annotate({
-  identifier: "SsoListResultItemVerification",
-}) as any as S.Schema<SsoListResultItemVerification>;
+export const SsoListResultItemVerification =
+  SsoCreateResponseVerification as any as S.Schema<SsoListResultItemVerification>;
 
 export interface SsoListResultItem {
   /** SSO Connector identifier tag. */
@@ -2197,20 +2156,12 @@ export interface UserGroupsMembersListResultItem {
   /** The member's status in the account. */
   status?: UserGroupsMembersListResultItemStatus | null;
 }
-export const UserGroupsMembersListResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    email: S.optional(S.NullOr(S.String)),
-    status: S.optional(S.NullOr(UserGroupsMembersListResultItemStatus)),
-  }),
-).annotate({
-  identifier: "UserGroupsMembersListResultItem",
-}) as any as S.Schema<UserGroupsMembersListResultItem>;
+export const UserGroupsMembersListResultItem =
+  UserGroupsMembersCreateResultItem as any as S.Schema<UserGroupsMembersListResultItem>;
 
 export type UserGroupsMembersListResultList = Array<UserGroupsMembersListResultItem>;
-export const UserGroupsMembersListResultList = /*@__PURE__*/ S.Array(
-  UserGroupsMembersListResultItem,
-) as any as S.Schema<UserGroupsMembersListResultList>;
+export const UserGroupsMembersListResultList =
+  UserGroupsMembersCreateResultList as any as S.Schema<UserGroupsMembersListResultList>;
 
 export interface ListUserGroupMembersResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
@@ -2218,14 +2169,8 @@ export interface ListUserGroupMembersResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListUserGroupMembersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: UserGroupsMembersListResultList.pipe(T.EnvelopePayload()),
-    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "ListUserGroupMembersResponse",
-}) as any as S.Schema<ListUserGroupMembersResponse>;
+export const ListUserGroupMembersResponse =
+  CreateUserGroupMemberResponse as any as S.Schema<ListUserGroupMembersResponse>;
 
 export type UserGroupsListRequestDirection = "asc" | "desc";
 export const UserGroupsListRequestDirection = S.String;
@@ -2404,9 +2349,8 @@ export const OauthClientsUpdateRequestGrantTypesItem = S.String;
 export type OauthClientsUpdateRequestGrantTypesList = Array<
   OauthClientsUpdateRequestGrantTypesItem | (string & {})
 >;
-export const OauthClientsUpdateRequestGrantTypesList = /*@__PURE__*/ S.Array(
-  OauthClientsUpdateRequestGrantTypesItem,
-) as any as S.Schema<OauthClientsUpdateRequestGrantTypesList>;
+export const OauthClientsUpdateRequestGrantTypesList =
+  OauthClientsCreateRequestGrantTypesList as any as S.Schema<OauthClientsUpdateRequestGrantTypesList>;
 
 export type OauthClientsUpdateRequestOptionalScopesList = Array<string>;
 export const OauthClientsUpdateRequestOptionalScopesList =
@@ -2426,9 +2370,8 @@ export const OauthClientsUpdateRequestResponseTypesItem = S.String;
 export type OauthClientsUpdateRequestResponseTypesList = Array<
   OauthClientsUpdateRequestResponseTypesItem | (string & {})
 >;
-export const OauthClientsUpdateRequestResponseTypesList = /*@__PURE__*/ S.Array(
-  OauthClientsUpdateRequestResponseTypesItem,
-) as any as S.Schema<OauthClientsUpdateRequestResponseTypesList>;
+export const OauthClientsUpdateRequestResponseTypesList =
+  OauthClientsCreateRequestGrantTypesList as any as S.Schema<OauthClientsUpdateRequestResponseTypesList>;
 
 export type OauthClientsUpdateRequestScopesList = Array<string>;
 export const OauthClientsUpdateRequestScopesList =
@@ -2538,23 +2481,16 @@ export interface OauthClientsUpdateResponseClientUriVerification {
   /** Exact TXT record value that must be added to DNS to prove ownership of the client URI host. */
   text?: string | null;
 }
-export const OauthClientsUpdateResponseClientUriVerification = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(S.NullOr(OauthClientsUpdateResponseClientUriVerificationStatus)),
-    text: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "OauthClientsUpdateResponseClientUriVerification",
-}) as any as S.Schema<OauthClientsUpdateResponseClientUriVerification>;
+export const OauthClientsUpdateResponseClientUriVerification =
+  OauthClientsCreateResponseClientUriVerification as any as S.Schema<OauthClientsUpdateResponseClientUriVerification>;
 
 export type OauthClientsUpdateResponseGrantTypesItem = "authorization_code" | "refresh_token";
 export const OauthClientsUpdateResponseGrantTypesItem = S.String;
 
 export type OauthClientsUpdateResponseGrantTypesList =
   Array<OauthClientsUpdateResponseGrantTypesItem>;
-export const OauthClientsUpdateResponseGrantTypesList = /*@__PURE__*/ S.Array(
-  OauthClientsUpdateResponseGrantTypesItem,
-) as any as S.Schema<OauthClientsUpdateResponseGrantTypesList>;
+export const OauthClientsUpdateResponseGrantTypesList =
+  OauthClientsCreateRequestGrantTypesList as any as S.Schema<OauthClientsUpdateResponseGrantTypesList>;
 
 export type OauthClientsUpdateResponseOptionalScopesList = Array<string>;
 export const OauthClientsUpdateResponseOptionalScopesList =
@@ -2573,9 +2509,8 @@ export const OauthClientsUpdateResponseResponseTypesItem = S.String;
 
 export type OauthClientsUpdateResponseResponseTypesList =
   Array<OauthClientsUpdateResponseResponseTypesItem>;
-export const OauthClientsUpdateResponseResponseTypesList = /*@__PURE__*/ S.Array(
-  OauthClientsUpdateResponseResponseTypesItem,
-) as any as S.Schema<OauthClientsUpdateResponseResponseTypesList>;
+export const OauthClientsUpdateResponseResponseTypesList =
+  OauthClientsCreateRequestGrantTypesList as any as S.Schema<OauthClientsUpdateResponseResponseTypesList>;
 
 export type OauthClientsUpdateResponseScopesList = Array<string>;
 export const OauthClientsUpdateResponseScopesList =
@@ -2715,14 +2650,8 @@ export interface SsoUpdateResponseVerification {
   /** The status of the verification code from the verification process. */
   status?: SsoUpdateResponseVerificationStatus | null;
 }
-export const SsoUpdateResponseVerification = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.NullOr(S.String)),
-    status: S.optional(S.NullOr(SsoUpdateResponseVerificationStatus)),
-  }),
-).annotate({
-  identifier: "SsoUpdateResponseVerification",
-}) as any as S.Schema<SsoUpdateResponseVerification>;
+export const SsoUpdateResponseVerification =
+  SsoCreateResponseVerification as any as S.Schema<SsoUpdateResponseVerification>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchSsoResponse {
@@ -2738,17 +2667,7 @@ export interface PatchSsoResponse {
   useFedrampLanguage?: boolean | null;
   verification?: SsoUpdateResponseVerification | null;
 }
-export const PatchSsoResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-    emailDomain: S.optional(S.NullOr(S.String).pipe(T.Body("email_domain"))),
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    updatedOn: S.optional(S.NullOr(S.String).pipe(T.Body("updated_on"))),
-    useFedrampLanguage: S.optional(S.NullOr(S.Boolean).pipe(T.Body("use_fedramp_language"))),
-    verification: S.optional(S.NullOr(SsoUpdateResponseVerification)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "PatchSsoResponse" }) as any as S.Schema<PatchSsoResponse>;
+export const PatchSsoResponse = CreateSsoResponse as any as S.Schema<PatchSsoResponse>;
 
 export interface RotateSecretOauthClientRequest {
   /** Account identifier tag. */
@@ -3112,20 +3031,12 @@ export interface UserGroupsMembersUpdateResultItem {
   /** The member's status in the account. */
   status?: UserGroupsMembersUpdateResultItemStatus | null;
 }
-export const UserGroupsMembersUpdateResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    email: S.optional(S.NullOr(S.String)),
-    status: S.optional(S.NullOr(UserGroupsMembersUpdateResultItemStatus)),
-  }),
-).annotate({
-  identifier: "UserGroupsMembersUpdateResultItem",
-}) as any as S.Schema<UserGroupsMembersUpdateResultItem>;
+export const UserGroupsMembersUpdateResultItem =
+  UserGroupsMembersCreateResultItem as any as S.Schema<UserGroupsMembersUpdateResultItem>;
 
 export type UserGroupsMembersUpdateResultList = Array<UserGroupsMembersUpdateResultItem>;
-export const UserGroupsMembersUpdateResultList = /*@__PURE__*/ S.Array(
-  UserGroupsMembersUpdateResultItem,
-) as any as S.Schema<UserGroupsMembersUpdateResultList>;
+export const UserGroupsMembersUpdateResultList =
+  UserGroupsMembersCreateResultList as any as S.Schema<UserGroupsMembersUpdateResultList>;
 
 export interface UpdateUserGroupMemberResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
@@ -3133,14 +3044,8 @@ export interface UpdateUserGroupMemberResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const UpdateUserGroupMemberResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: UserGroupsMembersUpdateResultList.pipe(T.EnvelopePayload()),
-    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "UpdateUserGroupMemberResponse",
-}) as any as S.Schema<UpdateUserGroupMemberResponse>;
+export const UpdateUserGroupMemberResponse =
+  CreateUserGroupMemberResponse as any as S.Schema<UpdateUserGroupMemberResponse>;
 
 export type BeginVerificationSsoError = CloudflareOpError;
 /** Validates the user has added the DNS TXT record required for validating ownership of the domain they are trying to set up a connector for. */

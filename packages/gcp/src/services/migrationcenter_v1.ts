@@ -1653,12 +1653,8 @@ export interface GenericPlatformDetails {
   /** Free text representation of the machine location. The format of this field should not be relied on. Different VMs in the same location may have different string values for this field. */
   location?: string;
 }
-export const GenericPlatformDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hyperthreading: S.optional(GenericPlatformDetailsHyperthreadingEnum),
-    location: S.optional(S.String),
-  }),
-).annotate({ identifier: "GenericPlatformDetails" }) as any as S.Schema<GenericPlatformDetails>;
+export const GenericPlatformDetails =
+  PhysicalPlatformDetails as any as S.Schema<GenericPlatformDetails>;
 
 export type VmwarePlatformDetailsEsxHyperthreadingEnum =
   | "HYPERTHREADING_STATUS_UNSPECIFIED"

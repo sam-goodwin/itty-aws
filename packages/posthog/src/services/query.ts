@@ -5558,9 +5558,8 @@ export type LifecycleToggle = "new" | "resurrecting" | "returning" | "dormant";
 export const LifecycleToggle = S.String;
 
 export type LifecycleFilterToggledLifecyclesList = Array<LifecycleToggle | (string & {})>;
-export const LifecycleFilterToggledLifecyclesList = /*@__PURE__*/ S.Array(
-  LifecycleToggle,
-) as any as S.Schema<LifecycleFilterToggledLifecyclesList>;
+export const LifecycleFilterToggledLifecyclesList =
+  PathsFilterIncludeEventTypesList as any as S.Schema<LifecycleFilterToggledLifecyclesList>;
 
 export interface LifecycleFilter {
   /** Where the in-chart legend sits relative to the plot. Only applies to the in-chart legend. */
@@ -7487,9 +7486,8 @@ export const ExperimentStatsValidationFailure = S.String;
 export type ExperimentStatsBaseValidatedValidationFailuresList = Array<
   ExperimentStatsValidationFailure | (string & {})
 >;
-export const ExperimentStatsBaseValidatedValidationFailuresList = /*@__PURE__*/ S.Array(
-  ExperimentStatsValidationFailure,
-) as any as S.Schema<ExperimentStatsBaseValidatedValidationFailuresList>;
+export const ExperimentStatsBaseValidatedValidationFailuresList =
+  PathsFilterIncludeEventTypesList as any as S.Schema<ExperimentStatsBaseValidatedValidationFailuresList>;
 
 export interface ExperimentStatsBaseValidated {
   covariate_sum?: number | null;
@@ -10065,9 +10063,8 @@ export const AttributionMode = S.String;
 export type MarketingAnalyticsAttributionQueryResponseModelsList = Array<
   AttributionMode | (string & {})
 >;
-export const MarketingAnalyticsAttributionQueryResponseModelsList = /*@__PURE__*/ S.Array(
-  AttributionMode,
-) as any as S.Schema<MarketingAnalyticsAttributionQueryResponseModelsList>;
+export const MarketingAnalyticsAttributionQueryResponseModelsList =
+  PathsFilterIncludeEventTypesList as any as S.Schema<MarketingAnalyticsAttributionQueryResponseModelsList>;
 
 export interface MarketingAnalyticsAttributionModelCell {
   /** conversions / visitors. Null when the row has no visitors. */
@@ -12391,9 +12388,8 @@ export const SessionAttributionGroupBy = S.String;
 export type SessionAttributionExplorerQueryGroupByList = Array<
   SessionAttributionGroupBy | (string & {})
 >;
-export const SessionAttributionExplorerQueryGroupByList = /*@__PURE__*/ S.Array(
-  SessionAttributionGroupBy,
-) as any as S.Schema<SessionAttributionExplorerQueryGroupByList>;
+export const SessionAttributionExplorerQueryGroupByList =
+  PathsFilterIncludeEventTypesList as any as S.Schema<SessionAttributionExplorerQueryGroupByList>;
 
 export type SessionAttributionExplorerQueryResponseColumnsList = Array<unknown>;
 export const SessionAttributionExplorerQueryResponseColumnsList =
@@ -13743,9 +13739,8 @@ export type LogSeverityLevel = "trace" | "debug" | "info" | "warn" | "error" | "
 export const LogSeverityLevel = S.String;
 
 export type LogsQuerySeverityLevelsList = Array<LogSeverityLevel | (string & {})>;
-export const LogsQuerySeverityLevelsList = /*@__PURE__*/ S.Array(
-  LogSeverityLevel,
-) as any as S.Schema<LogsQuerySeverityLevelsList>;
+export const LogsQuerySeverityLevelsList =
+  PathsFilterIncludeEventTypesList as any as S.Schema<LogsQuerySeverityLevelsList>;
 
 export type LogsSparklineBreakdownBy = "severity" | "service";
 export const LogsSparklineBreakdownBy = S.String;
@@ -14169,9 +14164,8 @@ export type MetricsReducer = "last" | "mean" | "min" | "max" | "sum" | "delta";
 export const MetricsReducer = S.String;
 
 export type MetricsDisplaySettingsLegendCalcsList = Array<MetricsReducer | (string & {})>;
-export const MetricsDisplaySettingsLegendCalcsList = /*@__PURE__*/ S.Array(
-  MetricsReducer,
-) as any as S.Schema<MetricsDisplaySettingsLegendCalcsList>;
+export const MetricsDisplaySettingsLegendCalcsList =
+  PathsFilterIncludeEventTypesList as any as S.Schema<MetricsDisplaySettingsLegendCalcsList>;
 
 export type MetricsNullMode = "gap" | "zero" | "connect";
 export const MetricsNullMode = S.String;
@@ -20834,9 +20828,8 @@ export const HedgehogActorAccessoryOption = S.String;
 export type MinimalHedgehogConfigAccessoriesList = Array<
   HedgehogActorAccessoryOption | (string & {})
 >;
-export const MinimalHedgehogConfigAccessoriesList = /*@__PURE__*/ S.Array(
-  HedgehogActorAccessoryOption,
-) as any as S.Schema<MinimalHedgehogConfigAccessoriesList>;
+export const MinimalHedgehogConfigAccessoriesList =
+  PathsFilterIncludeEventTypesList as any as S.Schema<MinimalHedgehogConfigAccessoriesList>;
 
 export type HedgehogActorColorOption =
   | "green"
@@ -23441,9 +23434,8 @@ export const TaxonomicFilterGroupType = S.String;
 export type DataTableNodeShowPropertyFilterCase1List = Array<
   TaxonomicFilterGroupType | (string & {})
 >;
-export const DataTableNodeShowPropertyFilterCase1List = /*@__PURE__*/ S.Array(
-  TaxonomicFilterGroupType,
-) as any as S.Schema<DataTableNodeShowPropertyFilterCase1List>;
+export const DataTableNodeShowPropertyFilterCase1List =
+  PathsFilterIncludeEventTypesList as any as S.Schema<DataTableNodeShowPropertyFilterCase1List>;
 
 /** Include a property filter above the table */
 export type DataTableNodeShowPropertyFilter = boolean | DataTableNodeShowPropertyFilterCase1List;

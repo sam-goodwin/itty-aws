@@ -1169,7 +1169,7 @@ export type AnomalyDetectorType = "SINGLE_METRIC" | "METRIC_MATH" | (string & {}
 export const AnomalyDetectorType = S.String;
 
 export type AnomalyDetectorTypes = AnomalyDetectorType[];
-export const AnomalyDetectorTypes = /*@__PURE__*/ S.Array(AnomalyDetectorType);
+export const AnomalyDetectorTypes = AlarmTypes as any as S.Schema<AnomalyDetectorTypes>;
 export interface DescribeAnomalyDetectorsInput {
   AnomalyDetectorIds?: string[];
   NextToken?: string;
@@ -1718,7 +1718,7 @@ export const GetMetricDataOutput = /*@__PURE__*/ S.suspend(() =>
   }).pipe(ns),
 ).annotate({ identifier: "GetMetricDataOutput" }) as any as S.Schema<GetMetricDataOutput>;
 export type Statistics = Statistic[];
-export const Statistics = /*@__PURE__*/ S.Array(Statistic);
+export const Statistics = AlarmTypes as any as S.Schema<Statistics>;
 export type ExtendedStatistics = string[];
 export const ExtendedStatistics = MetricNameList as any as S.Schema<ExtendedStatistics>;
 export interface GetMetricStatisticsInput {
@@ -1967,7 +1967,7 @@ export interface GetResourceMetricsConfigurationOutput {
 export const GetResourceMetricsConfigurationOutput =
   CreateResourceMetricsConfigurationOutput as any as S.Schema<GetResourceMetricsConfigurationOutput>;
 export type AlarmMuteRuleStatuses = AlarmMuteRuleStatus[];
-export const AlarmMuteRuleStatuses = /*@__PURE__*/ S.Array(AlarmMuteRuleStatus);
+export const AlarmMuteRuleStatuses = AlarmTypes as any as S.Schema<AlarmMuteRuleStatuses>;
 export interface ListAlarmMuteRulesInput {
   AlarmName?: string;
   Statuses?: AlarmMuteRuleStatus[];

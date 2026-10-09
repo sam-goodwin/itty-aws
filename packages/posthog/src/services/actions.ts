@@ -203,14 +203,7 @@ export interface DatePropertyFilter {
   /** Date comparison operator. * `is_date_exact` - is_date_exact * `is_date_before` - is_date_before * `is_date_after` - is_date_after */
   operator?: DateOperatorEnum | (string & {});
 }
-export const DatePropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    type: S.optional(PropertyFilterTypeEnum),
-    value: S.optional(S.String),
-    operator: S.optional(DateOperatorEnum),
-  }),
-).annotate({ identifier: "DatePropertyFilter" }) as any as S.Schema<DatePropertyFilter>;
+export const DatePropertyFilter = StringPropertyFilter as any as S.Schema<DatePropertyFilter>;
 
 /** * `is_set` - is_set * `is_not_set` - is_not_set */
 export type ExistenceOperatorEnum = "is_set" | "is_not_set";

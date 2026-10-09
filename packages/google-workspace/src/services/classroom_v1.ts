@@ -3019,9 +3019,8 @@ export const ListCoursesAnnouncementsAnnouncementStatesEnum = S.String;
 export type ListCoursesAnnouncementsAnnouncementStatesEnumList = Array<
   ListCoursesAnnouncementsAnnouncementStatesEnum | (string & {})
 >;
-export const ListCoursesAnnouncementsAnnouncementStatesEnumList = /*@__PURE__*/ S.Array(
-  ListCoursesAnnouncementsAnnouncementStatesEnum,
-) as any as S.Schema<ListCoursesAnnouncementsAnnouncementStatesEnumList>;
+export const ListCoursesAnnouncementsAnnouncementStatesEnumList =
+  ListCoursesCourseStatesEnumList as any as S.Schema<ListCoursesAnnouncementsAnnouncementStatesEnumList>;
 
 export interface ListCoursesAnnouncementsRequest {
   /** Maximum number of items to return. Zero or unspecified indicates that the server may assign a maximum. The server may return fewer than the specified number of results. */
@@ -3137,9 +3136,8 @@ export const ListCoursesCourseWorkCourseWorkStatesEnum = S.String;
 export type ListCoursesCourseWorkCourseWorkStatesEnumList = Array<
   ListCoursesCourseWorkCourseWorkStatesEnum | (string & {})
 >;
-export const ListCoursesCourseWorkCourseWorkStatesEnumList = /*@__PURE__*/ S.Array(
-  ListCoursesCourseWorkCourseWorkStatesEnum,
-) as any as S.Schema<ListCoursesCourseWorkCourseWorkStatesEnumList>;
+export const ListCoursesCourseWorkCourseWorkStatesEnumList =
+  ListCoursesCourseStatesEnumList as any as S.Schema<ListCoursesCourseWorkCourseWorkStatesEnumList>;
 
 export interface ListCoursesCourseWorkRequest {
   /** Restriction on the work status to return. Only courseWork that matches is returned. If unspecified, items with a work status of `PUBLISHED` is returned. */
@@ -3228,9 +3226,8 @@ export const ListCoursesCourseWorkMaterialsCourseWorkMaterialStatesEnum = S.Stri
 export type ListCoursesCourseWorkMaterialsCourseWorkMaterialStatesEnumList = Array<
   ListCoursesCourseWorkMaterialsCourseWorkMaterialStatesEnum | (string & {})
 >;
-export const ListCoursesCourseWorkMaterialsCourseWorkMaterialStatesEnumList = /*@__PURE__*/ S.Array(
-  ListCoursesCourseWorkMaterialsCourseWorkMaterialStatesEnum,
-) as any as S.Schema<ListCoursesCourseWorkMaterialsCourseWorkMaterialStatesEnumList>;
+export const ListCoursesCourseWorkMaterialsCourseWorkMaterialStatesEnumList =
+  ListCoursesCourseStatesEnumList as any as S.Schema<ListCoursesCourseWorkMaterialsCourseWorkMaterialStatesEnumList>;
 
 export interface ListCoursesCourseWorkMaterialsRequest {
   /** Maximum number of items to return. Zero or unspecified indicates that the server may assign a maximum. The server may return fewer than the specified number of results. */
@@ -3383,9 +3380,8 @@ export const ListCoursesCourseWorkStudentSubmissionsStatesEnum = S.String;
 export type ListCoursesCourseWorkStudentSubmissionsStatesEnumList = Array<
   ListCoursesCourseWorkStudentSubmissionsStatesEnum | (string & {})
 >;
-export const ListCoursesCourseWorkStudentSubmissionsStatesEnumList = /*@__PURE__*/ S.Array(
-  ListCoursesCourseWorkStudentSubmissionsStatesEnum,
-) as any as S.Schema<ListCoursesCourseWorkStudentSubmissionsStatesEnumList>;
+export const ListCoursesCourseWorkStudentSubmissionsStatesEnumList =
+  ListCoursesCourseStatesEnumList as any as S.Schema<ListCoursesCourseWorkStudentSubmissionsStatesEnumList>;
 
 export interface ListCoursesCourseWorkStudentSubmissionsRequest {
   /** Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. */
@@ -3735,9 +3731,8 @@ export const ListUserProfilesGuardianInvitationsStatesEnum = S.String;
 export type ListUserProfilesGuardianInvitationsStatesEnumList = Array<
   ListUserProfilesGuardianInvitationsStatesEnum | (string & {})
 >;
-export const ListUserProfilesGuardianInvitationsStatesEnumList = /*@__PURE__*/ S.Array(
-  ListUserProfilesGuardianInvitationsStatesEnum,
-) as any as S.Schema<ListUserProfilesGuardianInvitationsStatesEnumList>;
+export const ListUserProfilesGuardianInvitationsStatesEnumList =
+  ListCoursesCourseStatesEnumList as any as S.Schema<ListUserProfilesGuardianInvitationsStatesEnumList>;
 
 export interface ListUserProfilesGuardianInvitationsRequest {
   /** If specified, only results with the specified `state` values are returned. Otherwise, results with a `state` of `PENDING` are returned. */

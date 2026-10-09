@@ -142,9 +142,8 @@ export const DatasetCapabilitiesValueIngestItem = S.String;
 export type DatasetCapabilitiesValueIngestList = Array<
   DatasetCapabilitiesValueIngestItem | (string & {})
 >;
-export const DatasetCapabilitiesValueIngestList = /*@__PURE__*/ S.Array(
-  DatasetCapabilitiesValueIngestItem,
-) as any as S.Schema<DatasetCapabilitiesValueIngestList>;
+export const DatasetCapabilitiesValueIngestList =
+  DatasetCapabilitiesValueDataList as any as S.Schema<DatasetCapabilitiesValueIngestList>;
 
 export type DatasetCapabilitiesValueQueryItem = "read";
 export const DatasetCapabilitiesValueQueryItem = S.String;
@@ -153,9 +152,8 @@ export const DatasetCapabilitiesValueQueryItem = S.String;
 export type DatasetCapabilitiesValueQueryList = Array<
   DatasetCapabilitiesValueQueryItem | (string & {})
 >;
-export const DatasetCapabilitiesValueQueryList = /*@__PURE__*/ S.Array(
-  DatasetCapabilitiesValueQueryItem,
-) as any as S.Schema<DatasetCapabilitiesValueQueryList>;
+export const DatasetCapabilitiesValueQueryList =
+  DatasetCapabilitiesValueDataList as any as S.Schema<DatasetCapabilitiesValueQueryList>;
 
 export type DatasetCapabilitiesValueShareItem = "create" | "read" | "delete";
 export const DatasetCapabilitiesValueShareItem = S.String;
@@ -164,9 +162,8 @@ export const DatasetCapabilitiesValueShareItem = S.String;
 export type DatasetCapabilitiesValueShareList = Array<
   DatasetCapabilitiesValueShareItem | (string & {})
 >;
-export const DatasetCapabilitiesValueShareList = /*@__PURE__*/ S.Array(
-  DatasetCapabilitiesValueShareItem,
-) as any as S.Schema<DatasetCapabilitiesValueShareList>;
+export const DatasetCapabilitiesValueShareList =
+  DatasetCapabilitiesValueDataList as any as S.Schema<DatasetCapabilitiesValueShareList>;
 
 export type DatasetCapabilitiesValueStarredQueriesItem = "create" | "read" | "update" | "delete";
 export const DatasetCapabilitiesValueStarredQueriesItem = S.String;
@@ -175,9 +172,8 @@ export const DatasetCapabilitiesValueStarredQueriesItem = S.String;
 export type DatasetCapabilitiesValueStarredQueriesList = Array<
   DatasetCapabilitiesValueStarredQueriesItem | (string & {})
 >;
-export const DatasetCapabilitiesValueStarredQueriesList = /*@__PURE__*/ S.Array(
-  DatasetCapabilitiesValueStarredQueriesItem,
-) as any as S.Schema<DatasetCapabilitiesValueStarredQueriesList>;
+export const DatasetCapabilitiesValueStarredQueriesList =
+  DatasetCapabilitiesValueDataList as any as S.Schema<DatasetCapabilitiesValueStarredQueriesList>;
 
 export type DatasetCapabilitiesValueTrimItem = "update";
 export const DatasetCapabilitiesValueTrimItem = S.String;
@@ -186,9 +182,8 @@ export const DatasetCapabilitiesValueTrimItem = S.String;
 export type DatasetCapabilitiesValueTrimList = Array<
   DatasetCapabilitiesValueTrimItem | (string & {})
 >;
-export const DatasetCapabilitiesValueTrimList = /*@__PURE__*/ S.Array(
-  DatasetCapabilitiesValueTrimItem,
-) as any as S.Schema<DatasetCapabilitiesValueTrimList>;
+export const DatasetCapabilitiesValueTrimList =
+  DatasetCapabilitiesValueDataList as any as S.Schema<DatasetCapabilitiesValueTrimList>;
 
 export type DatasetCapabilitiesValueVacuumItem = "update";
 export const DatasetCapabilitiesValueVacuumItem = S.String;
@@ -197,9 +192,8 @@ export const DatasetCapabilitiesValueVacuumItem = S.String;
 export type DatasetCapabilitiesValueVacuumList = Array<
   DatasetCapabilitiesValueVacuumItem | (string & {})
 >;
-export const DatasetCapabilitiesValueVacuumList = /*@__PURE__*/ S.Array(
-  DatasetCapabilitiesValueVacuumItem,
-) as any as S.Schema<DatasetCapabilitiesValueVacuumList>;
+export const DatasetCapabilitiesValueVacuumList =
+  DatasetCapabilitiesValueDataList as any as S.Schema<DatasetCapabilitiesValueVacuumList>;
 
 export type DatasetCapabilitiesValueVirtualFieldsItem = "create" | "read" | "update" | "delete";
 export const DatasetCapabilitiesValueVirtualFieldsItem = S.String;
@@ -208,9 +202,8 @@ export const DatasetCapabilitiesValueVirtualFieldsItem = S.String;
 export type DatasetCapabilitiesValueVirtualFieldsList = Array<
   DatasetCapabilitiesValueVirtualFieldsItem | (string & {})
 >;
-export const DatasetCapabilitiesValueVirtualFieldsList = /*@__PURE__*/ S.Array(
-  DatasetCapabilitiesValueVirtualFieldsItem,
-) as any as S.Schema<DatasetCapabilitiesValueVirtualFieldsList>;
+export const DatasetCapabilitiesValueVirtualFieldsList =
+  DatasetCapabilitiesValueDataList as any as S.Schema<DatasetCapabilitiesValueVirtualFieldsList>;
 
 export interface DatasetCapabilitiesValue {
   /** Data Management capability */
@@ -254,72 +247,64 @@ export const OrgCapabilitiesAnnotationsItem = S.String;
 
 /** Annotations capability */
 export type OrgCapabilitiesAnnotationsList = Array<OrgCapabilitiesAnnotationsItem | (string & {})>;
-export const OrgCapabilitiesAnnotationsList = /*@__PURE__*/ S.Array(
-  OrgCapabilitiesAnnotationsItem,
-) as any as S.Schema<OrgCapabilitiesAnnotationsList>;
+export const OrgCapabilitiesAnnotationsList =
+  DatasetCapabilitiesValueDataList as any as S.Schema<OrgCapabilitiesAnnotationsList>;
 
 export type OrgCapabilitiesApiTokensItem = "create" | "read" | "update" | "delete";
 export const OrgCapabilitiesApiTokensItem = S.String;
 
 /** API tokens capability */
 export type OrgCapabilitiesApiTokensList = Array<OrgCapabilitiesApiTokensItem | (string & {})>;
-export const OrgCapabilitiesApiTokensList = /*@__PURE__*/ S.Array(
-  OrgCapabilitiesApiTokensItem,
-) as any as S.Schema<OrgCapabilitiesApiTokensList>;
+export const OrgCapabilitiesApiTokensList =
+  DatasetCapabilitiesValueDataList as any as S.Schema<OrgCapabilitiesApiTokensList>;
 
 export type OrgCapabilitiesAuditLogItem = "read";
 export const OrgCapabilitiesAuditLogItem = S.String;
 
 /** Audit Log capability */
 export type OrgCapabilitiesAuditLogList = Array<OrgCapabilitiesAuditLogItem | (string & {})>;
-export const OrgCapabilitiesAuditLogList = /*@__PURE__*/ S.Array(
-  OrgCapabilitiesAuditLogItem,
-) as any as S.Schema<OrgCapabilitiesAuditLogList>;
+export const OrgCapabilitiesAuditLogList =
+  DatasetCapabilitiesValueDataList as any as S.Schema<OrgCapabilitiesAuditLogList>;
 
 export type OrgCapabilitiesBillingItem = "read" | "update";
 export const OrgCapabilitiesBillingItem = S.String;
 
 /** Billing capability */
 export type OrgCapabilitiesBillingList = Array<OrgCapabilitiesBillingItem | (string & {})>;
-export const OrgCapabilitiesBillingList = /*@__PURE__*/ S.Array(
-  OrgCapabilitiesBillingItem,
-) as any as S.Schema<OrgCapabilitiesBillingList>;
+export const OrgCapabilitiesBillingList =
+  DatasetCapabilitiesValueDataList as any as S.Schema<OrgCapabilitiesBillingList>;
 
 export type OrgCapabilitiesDashboardsItem = "create" | "read" | "update" | "delete";
 export const OrgCapabilitiesDashboardsItem = S.String;
 
 /** Dashboards capability */
 export type OrgCapabilitiesDashboardsList = Array<OrgCapabilitiesDashboardsItem | (string & {})>;
-export const OrgCapabilitiesDashboardsList = /*@__PURE__*/ S.Array(
-  OrgCapabilitiesDashboardsItem,
-) as any as S.Schema<OrgCapabilitiesDashboardsList>;
+export const OrgCapabilitiesDashboardsList =
+  DatasetCapabilitiesValueDataList as any as S.Schema<OrgCapabilitiesDashboardsList>;
 
 export type OrgCapabilitiesDatasetsItem = "create" | "read" | "update" | "delete";
 export const OrgCapabilitiesDatasetsItem = S.String;
 
 /** Datasets capability */
 export type OrgCapabilitiesDatasetsList = Array<OrgCapabilitiesDatasetsItem | (string & {})>;
-export const OrgCapabilitiesDatasetsList = /*@__PURE__*/ S.Array(
-  OrgCapabilitiesDatasetsItem,
-) as any as S.Schema<OrgCapabilitiesDatasetsList>;
+export const OrgCapabilitiesDatasetsList =
+  DatasetCapabilitiesValueDataList as any as S.Schema<OrgCapabilitiesDatasetsList>;
 
 export type OrgCapabilitiesEndpointsItem = "create" | "read" | "update" | "delete";
 export const OrgCapabilitiesEndpointsItem = S.String;
 
 /** Endpoints capability */
 export type OrgCapabilitiesEndpointsList = Array<OrgCapabilitiesEndpointsItem | (string & {})>;
-export const OrgCapabilitiesEndpointsList = /*@__PURE__*/ S.Array(
-  OrgCapabilitiesEndpointsItem,
-) as any as S.Schema<OrgCapabilitiesEndpointsList>;
+export const OrgCapabilitiesEndpointsList =
+  DatasetCapabilitiesValueDataList as any as S.Schema<OrgCapabilitiesEndpointsList>;
 
 export type OrgCapabilitiesFlowsItem = "create" | "read" | "update" | "delete";
 export const OrgCapabilitiesFlowsItem = S.String;
 
 /** Flows capability */
 export type OrgCapabilitiesFlowsList = Array<OrgCapabilitiesFlowsItem | (string & {})>;
-export const OrgCapabilitiesFlowsList = /*@__PURE__*/ S.Array(
-  OrgCapabilitiesFlowsItem,
-) as any as S.Schema<OrgCapabilitiesFlowsList>;
+export const OrgCapabilitiesFlowsList =
+  DatasetCapabilitiesValueDataList as any as S.Schema<OrgCapabilitiesFlowsList>;
 
 export type OrgCapabilitiesIntegrationsItem = "create" | "read" | "update" | "delete";
 export const OrgCapabilitiesIntegrationsItem = S.String;
@@ -328,36 +313,32 @@ export const OrgCapabilitiesIntegrationsItem = S.String;
 export type OrgCapabilitiesIntegrationsList = Array<
   OrgCapabilitiesIntegrationsItem | (string & {})
 >;
-export const OrgCapabilitiesIntegrationsList = /*@__PURE__*/ S.Array(
-  OrgCapabilitiesIntegrationsItem,
-) as any as S.Schema<OrgCapabilitiesIntegrationsList>;
+export const OrgCapabilitiesIntegrationsList =
+  DatasetCapabilitiesValueDataList as any as S.Schema<OrgCapabilitiesIntegrationsList>;
 
 export type OrgCapabilitiesMonitorsItem = "create" | "read" | "update" | "delete";
 export const OrgCapabilitiesMonitorsItem = S.String;
 
 /** Monitors capability */
 export type OrgCapabilitiesMonitorsList = Array<OrgCapabilitiesMonitorsItem | (string & {})>;
-export const OrgCapabilitiesMonitorsList = /*@__PURE__*/ S.Array(
-  OrgCapabilitiesMonitorsItem,
-) as any as S.Schema<OrgCapabilitiesMonitorsList>;
+export const OrgCapabilitiesMonitorsList =
+  DatasetCapabilitiesValueDataList as any as S.Schema<OrgCapabilitiesMonitorsList>;
 
 export type OrgCapabilitiesNotifiersItem = "create" | "read" | "update" | "delete";
 export const OrgCapabilitiesNotifiersItem = S.String;
 
 /** Notifiers capability */
 export type OrgCapabilitiesNotifiersList = Array<OrgCapabilitiesNotifiersItem | (string & {})>;
-export const OrgCapabilitiesNotifiersList = /*@__PURE__*/ S.Array(
-  OrgCapabilitiesNotifiersItem,
-) as any as S.Schema<OrgCapabilitiesNotifiersList>;
+export const OrgCapabilitiesNotifiersList =
+  DatasetCapabilitiesValueDataList as any as S.Schema<OrgCapabilitiesNotifiersList>;
 
 export type OrgCapabilitiesRbacItem = "create" | "read" | "update" | "delete";
 export const OrgCapabilitiesRbacItem = S.String;
 
 /** Access control capability */
 export type OrgCapabilitiesRbacList = Array<OrgCapabilitiesRbacItem | (string & {})>;
-export const OrgCapabilitiesRbacList = /*@__PURE__*/ S.Array(
-  OrgCapabilitiesRbacItem,
-) as any as S.Schema<OrgCapabilitiesRbacList>;
+export const OrgCapabilitiesRbacList =
+  DatasetCapabilitiesValueDataList as any as S.Schema<OrgCapabilitiesRbacList>;
 
 export type OrgCapabilitiesSharedAccessKeysItem = "read" | "update";
 export const OrgCapabilitiesSharedAccessKeysItem = S.String;
@@ -366,27 +347,24 @@ export const OrgCapabilitiesSharedAccessKeysItem = S.String;
 export type OrgCapabilitiesSharedAccessKeysList = Array<
   OrgCapabilitiesSharedAccessKeysItem | (string & {})
 >;
-export const OrgCapabilitiesSharedAccessKeysList = /*@__PURE__*/ S.Array(
-  OrgCapabilitiesSharedAccessKeysItem,
-) as any as S.Schema<OrgCapabilitiesSharedAccessKeysList>;
+export const OrgCapabilitiesSharedAccessKeysList =
+  DatasetCapabilitiesValueDataList as any as S.Schema<OrgCapabilitiesSharedAccessKeysList>;
 
 export type OrgCapabilitiesUsersItem = "create" | "read" | "update" | "delete";
 export const OrgCapabilitiesUsersItem = S.String;
 
 /** Users capability */
 export type OrgCapabilitiesUsersList = Array<OrgCapabilitiesUsersItem | (string & {})>;
-export const OrgCapabilitiesUsersList = /*@__PURE__*/ S.Array(
-  OrgCapabilitiesUsersItem,
-) as any as S.Schema<OrgCapabilitiesUsersList>;
+export const OrgCapabilitiesUsersList =
+  DatasetCapabilitiesValueDataList as any as S.Schema<OrgCapabilitiesUsersList>;
 
 export type OrgCapabilitiesViewsItem = "create" | "read" | "update" | "delete";
 export const OrgCapabilitiesViewsItem = S.String;
 
 /** Views capability */
 export type OrgCapabilitiesViewsList = Array<OrgCapabilitiesViewsItem | (string & {})>;
-export const OrgCapabilitiesViewsList = /*@__PURE__*/ S.Array(
-  OrgCapabilitiesViewsItem,
-) as any as S.Schema<OrgCapabilitiesViewsList>;
+export const OrgCapabilitiesViewsList =
+  DatasetCapabilitiesValueDataList as any as S.Schema<OrgCapabilitiesViewsList>;
 
 export interface OrgCapabilities {
   /** Annotations capability */
@@ -445,18 +423,16 @@ export const ViewCapabilitiesValueQueryItem = S.String;
 
 /** Query capability */
 export type ViewCapabilitiesValueQueryList = Array<ViewCapabilitiesValueQueryItem | (string & {})>;
-export const ViewCapabilitiesValueQueryList = /*@__PURE__*/ S.Array(
-  ViewCapabilitiesValueQueryItem,
-) as any as S.Schema<ViewCapabilitiesValueQueryList>;
+export const ViewCapabilitiesValueQueryList =
+  DatasetCapabilitiesValueDataList as any as S.Schema<ViewCapabilitiesValueQueryList>;
 
 export type ViewCapabilitiesValueShareItem = "create" | "read" | "delete";
 export const ViewCapabilitiesValueShareItem = S.String;
 
 /** Sharing view capability */
 export type ViewCapabilitiesValueShareList = Array<ViewCapabilitiesValueShareItem | (string & {})>;
-export const ViewCapabilitiesValueShareList = /*@__PURE__*/ S.Array(
-  ViewCapabilitiesValueShareItem,
-) as any as S.Schema<ViewCapabilitiesValueShareList>;
+export const ViewCapabilitiesValueShareList =
+  DatasetCapabilitiesValueDataList as any as S.Schema<ViewCapabilitiesValueShareList>;
 
 export interface ViewCapabilitiesValue {
   /** Query capability */
@@ -791,14 +767,7 @@ export interface ScatterChart {
   name?: string;
   query: SimpleChartQuery;
 }
-export const ScatterChart = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: ScatterChartType,
-    name: S.optional(S.String),
-    query: SimpleChartQuery,
-  }),
-).annotate({ identifier: "ScatterChart" }) as any as S.Schema<ScatterChart>;
+export const ScatterChart = PieChart as any as S.Schema<ScatterChart>;
 
 export type TableChartType = "Table";
 export const TableChartType = S.String;
@@ -810,15 +779,7 @@ export interface TableChart {
   query: SimpleChartQuery;
   tableSettings?: TableSettings;
 }
-export const TableChart = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: TableChartType,
-    name: S.optional(S.String),
-    query: SimpleChartQuery,
-    tableSettings: S.optional(TableSettings),
-  }),
-).annotate({ identifier: "TableChart" }) as any as S.Schema<TableChart>;
+export const TableChart = LogStreamChart as any as S.Schema<TableChart>;
 
 export type TopKChartType = "TopK";
 export const TopKChartType = S.String;
@@ -829,14 +790,7 @@ export interface TopKChart {
   name?: string;
   query: SimpleChartQuery;
 }
-export const TopKChart = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: TopKChartType,
-    name: S.optional(S.String),
-    query: SimpleChartQuery,
-  }),
-).annotate({ identifier: "TopKChart" }) as any as S.Schema<TopKChart>;
+export const TopKChart = PieChart as any as S.Schema<TopKChart>;
 
 export type StatisticChartType = "Statistic";
 export const StatisticChartType = S.String;
@@ -2092,9 +2046,8 @@ export const RoleDatasetCapabilitiesValueDataItem = S.String;
 export type RoleDatasetCapabilitiesValueDataList = Array<
   RoleDatasetCapabilitiesValueDataItem | (string & {})
 >;
-export const RoleDatasetCapabilitiesValueDataList = /*@__PURE__*/ S.Array(
-  RoleDatasetCapabilitiesValueDataItem,
-) as any as S.Schema<RoleDatasetCapabilitiesValueDataList>;
+export const RoleDatasetCapabilitiesValueDataList =
+  DatasetCapabilitiesValueDataList as any as S.Schema<RoleDatasetCapabilitiesValueDataList>;
 
 export type RoleDatasetCapabilitiesValueIngestItem = "create";
 export const RoleDatasetCapabilitiesValueIngestItem = S.String;
@@ -2103,9 +2056,8 @@ export const RoleDatasetCapabilitiesValueIngestItem = S.String;
 export type RoleDatasetCapabilitiesValueIngestList = Array<
   RoleDatasetCapabilitiesValueIngestItem | (string & {})
 >;
-export const RoleDatasetCapabilitiesValueIngestList = /*@__PURE__*/ S.Array(
-  RoleDatasetCapabilitiesValueIngestItem,
-) as any as S.Schema<RoleDatasetCapabilitiesValueIngestList>;
+export const RoleDatasetCapabilitiesValueIngestList =
+  DatasetCapabilitiesValueDataList as any as S.Schema<RoleDatasetCapabilitiesValueIngestList>;
 
 export type RoleDatasetCapabilitiesValueQueryItem = "read";
 export const RoleDatasetCapabilitiesValueQueryItem = S.String;
@@ -2114,9 +2066,8 @@ export const RoleDatasetCapabilitiesValueQueryItem = S.String;
 export type RoleDatasetCapabilitiesValueQueryList = Array<
   RoleDatasetCapabilitiesValueQueryItem | (string & {})
 >;
-export const RoleDatasetCapabilitiesValueQueryList = /*@__PURE__*/ S.Array(
-  RoleDatasetCapabilitiesValueQueryItem,
-) as any as S.Schema<RoleDatasetCapabilitiesValueQueryList>;
+export const RoleDatasetCapabilitiesValueQueryList =
+  DatasetCapabilitiesValueDataList as any as S.Schema<RoleDatasetCapabilitiesValueQueryList>;
 
 export type RoleDatasetCapabilitiesValueShareItem = "create" | "read" | "delete";
 export const RoleDatasetCapabilitiesValueShareItem = S.String;
@@ -2125,9 +2076,8 @@ export const RoleDatasetCapabilitiesValueShareItem = S.String;
 export type RoleDatasetCapabilitiesValueShareList = Array<
   RoleDatasetCapabilitiesValueShareItem | (string & {})
 >;
-export const RoleDatasetCapabilitiesValueShareList = /*@__PURE__*/ S.Array(
-  RoleDatasetCapabilitiesValueShareItem,
-) as any as S.Schema<RoleDatasetCapabilitiesValueShareList>;
+export const RoleDatasetCapabilitiesValueShareList =
+  DatasetCapabilitiesValueDataList as any as S.Schema<RoleDatasetCapabilitiesValueShareList>;
 
 export type RoleDatasetCapabilitiesValueStarredQueriesItem =
   | "create"
@@ -2140,9 +2090,8 @@ export const RoleDatasetCapabilitiesValueStarredQueriesItem = S.String;
 export type RoleDatasetCapabilitiesValueStarredQueriesList = Array<
   RoleDatasetCapabilitiesValueStarredQueriesItem | (string & {})
 >;
-export const RoleDatasetCapabilitiesValueStarredQueriesList = /*@__PURE__*/ S.Array(
-  RoleDatasetCapabilitiesValueStarredQueriesItem,
-) as any as S.Schema<RoleDatasetCapabilitiesValueStarredQueriesList>;
+export const RoleDatasetCapabilitiesValueStarredQueriesList =
+  DatasetCapabilitiesValueDataList as any as S.Schema<RoleDatasetCapabilitiesValueStarredQueriesList>;
 
 export type RoleDatasetCapabilitiesValueTrimItem = "update";
 export const RoleDatasetCapabilitiesValueTrimItem = S.String;
@@ -2151,9 +2100,8 @@ export const RoleDatasetCapabilitiesValueTrimItem = S.String;
 export type RoleDatasetCapabilitiesValueTrimList = Array<
   RoleDatasetCapabilitiesValueTrimItem | (string & {})
 >;
-export const RoleDatasetCapabilitiesValueTrimList = /*@__PURE__*/ S.Array(
-  RoleDatasetCapabilitiesValueTrimItem,
-) as any as S.Schema<RoleDatasetCapabilitiesValueTrimList>;
+export const RoleDatasetCapabilitiesValueTrimList =
+  DatasetCapabilitiesValueDataList as any as S.Schema<RoleDatasetCapabilitiesValueTrimList>;
 
 export type RoleDatasetCapabilitiesValueVacuumItem = "update";
 export const RoleDatasetCapabilitiesValueVacuumItem = S.String;
@@ -2162,9 +2110,8 @@ export const RoleDatasetCapabilitiesValueVacuumItem = S.String;
 export type RoleDatasetCapabilitiesValueVacuumList = Array<
   RoleDatasetCapabilitiesValueVacuumItem | (string & {})
 >;
-export const RoleDatasetCapabilitiesValueVacuumList = /*@__PURE__*/ S.Array(
-  RoleDatasetCapabilitiesValueVacuumItem,
-) as any as S.Schema<RoleDatasetCapabilitiesValueVacuumList>;
+export const RoleDatasetCapabilitiesValueVacuumList =
+  DatasetCapabilitiesValueDataList as any as S.Schema<RoleDatasetCapabilitiesValueVacuumList>;
 
 export type RoleDatasetCapabilitiesValueVirtualFieldsItem = "create" | "read" | "update" | "delete";
 export const RoleDatasetCapabilitiesValueVirtualFieldsItem = S.String;
@@ -2173,9 +2120,8 @@ export const RoleDatasetCapabilitiesValueVirtualFieldsItem = S.String;
 export type RoleDatasetCapabilitiesValueVirtualFieldsList = Array<
   RoleDatasetCapabilitiesValueVirtualFieldsItem | (string & {})
 >;
-export const RoleDatasetCapabilitiesValueVirtualFieldsList = /*@__PURE__*/ S.Array(
-  RoleDatasetCapabilitiesValueVirtualFieldsItem,
-) as any as S.Schema<RoleDatasetCapabilitiesValueVirtualFieldsList>;
+export const RoleDatasetCapabilitiesValueVirtualFieldsList =
+  DatasetCapabilitiesValueDataList as any as S.Schema<RoleDatasetCapabilitiesValueVirtualFieldsList>;
 
 export interface RoleDatasetCapabilitiesValue {
   /** Controls data management operations like deletion */
@@ -2229,9 +2175,8 @@ export const RoleOrgCapabilitiesAnnotationsItem = S.String;
 export type RoleOrgCapabilitiesAnnotationsList = Array<
   RoleOrgCapabilitiesAnnotationsItem | (string & {})
 >;
-export const RoleOrgCapabilitiesAnnotationsList = /*@__PURE__*/ S.Array(
-  RoleOrgCapabilitiesAnnotationsItem,
-) as any as S.Schema<RoleOrgCapabilitiesAnnotationsList>;
+export const RoleOrgCapabilitiesAnnotationsList =
+  DatasetCapabilitiesValueDataList as any as S.Schema<RoleOrgCapabilitiesAnnotationsList>;
 
 export type RoleOrgCapabilitiesApiTokensItem = "create" | "read" | "update" | "delete";
 export const RoleOrgCapabilitiesApiTokensItem = S.String;
@@ -2240,9 +2185,8 @@ export const RoleOrgCapabilitiesApiTokensItem = S.String;
 export type RoleOrgCapabilitiesApiTokensList = Array<
   RoleOrgCapabilitiesApiTokensItem | (string & {})
 >;
-export const RoleOrgCapabilitiesApiTokensList = /*@__PURE__*/ S.Array(
-  RoleOrgCapabilitiesApiTokensItem,
-) as any as S.Schema<RoleOrgCapabilitiesApiTokensList>;
+export const RoleOrgCapabilitiesApiTokensList =
+  DatasetCapabilitiesValueDataList as any as S.Schema<RoleOrgCapabilitiesApiTokensList>;
 
 export type RoleOrgCapabilitiesAuditLogItem = "read";
 export const RoleOrgCapabilitiesAuditLogItem = S.String;
@@ -2251,18 +2195,16 @@ export const RoleOrgCapabilitiesAuditLogItem = S.String;
 export type RoleOrgCapabilitiesAuditLogList = Array<
   RoleOrgCapabilitiesAuditLogItem | (string & {})
 >;
-export const RoleOrgCapabilitiesAuditLogList = /*@__PURE__*/ S.Array(
-  RoleOrgCapabilitiesAuditLogItem,
-) as any as S.Schema<RoleOrgCapabilitiesAuditLogList>;
+export const RoleOrgCapabilitiesAuditLogList =
+  DatasetCapabilitiesValueDataList as any as S.Schema<RoleOrgCapabilitiesAuditLogList>;
 
 export type RoleOrgCapabilitiesBillingItem = "read" | "update";
 export const RoleOrgCapabilitiesBillingItem = S.String;
 
 /** Controls access to billing information and settings */
 export type RoleOrgCapabilitiesBillingList = Array<RoleOrgCapabilitiesBillingItem | (string & {})>;
-export const RoleOrgCapabilitiesBillingList = /*@__PURE__*/ S.Array(
-  RoleOrgCapabilitiesBillingItem,
-) as any as S.Schema<RoleOrgCapabilitiesBillingList>;
+export const RoleOrgCapabilitiesBillingList =
+  DatasetCapabilitiesValueDataList as any as S.Schema<RoleOrgCapabilitiesBillingList>;
 
 export type RoleOrgCapabilitiesDashboardsItem = "create" | "read" | "update" | "delete";
 export const RoleOrgCapabilitiesDashboardsItem = S.String;
@@ -2271,9 +2213,8 @@ export const RoleOrgCapabilitiesDashboardsItem = S.String;
 export type RoleOrgCapabilitiesDashboardsList = Array<
   RoleOrgCapabilitiesDashboardsItem | (string & {})
 >;
-export const RoleOrgCapabilitiesDashboardsList = /*@__PURE__*/ S.Array(
-  RoleOrgCapabilitiesDashboardsItem,
-) as any as S.Schema<RoleOrgCapabilitiesDashboardsList>;
+export const RoleOrgCapabilitiesDashboardsList =
+  DatasetCapabilitiesValueDataList as any as S.Schema<RoleOrgCapabilitiesDashboardsList>;
 
 export type RoleOrgCapabilitiesDatasetsItem = "create" | "read" | "update" | "delete";
 export const RoleOrgCapabilitiesDatasetsItem = S.String;
@@ -2282,9 +2223,8 @@ export const RoleOrgCapabilitiesDatasetsItem = S.String;
 export type RoleOrgCapabilitiesDatasetsList = Array<
   RoleOrgCapabilitiesDatasetsItem | (string & {})
 >;
-export const RoleOrgCapabilitiesDatasetsList = /*@__PURE__*/ S.Array(
-  RoleOrgCapabilitiesDatasetsItem,
-) as any as S.Schema<RoleOrgCapabilitiesDatasetsList>;
+export const RoleOrgCapabilitiesDatasetsList =
+  DatasetCapabilitiesValueDataList as any as S.Schema<RoleOrgCapabilitiesDatasetsList>;
 
 export type RoleOrgCapabilitiesEndpointsItem = "create" | "read" | "update" | "delete";
 export const RoleOrgCapabilitiesEndpointsItem = S.String;
@@ -2293,18 +2233,16 @@ export const RoleOrgCapabilitiesEndpointsItem = S.String;
 export type RoleOrgCapabilitiesEndpointsList = Array<
   RoleOrgCapabilitiesEndpointsItem | (string & {})
 >;
-export const RoleOrgCapabilitiesEndpointsList = /*@__PURE__*/ S.Array(
-  RoleOrgCapabilitiesEndpointsItem,
-) as any as S.Schema<RoleOrgCapabilitiesEndpointsList>;
+export const RoleOrgCapabilitiesEndpointsList =
+  DatasetCapabilitiesValueDataList as any as S.Schema<RoleOrgCapabilitiesEndpointsList>;
 
 export type RoleOrgCapabilitiesFlowsItem = "create" | "read" | "update" | "delete";
 export const RoleOrgCapabilitiesFlowsItem = S.String;
 
 /** Controls the management of data flows and pipelines */
 export type RoleOrgCapabilitiesFlowsList = Array<RoleOrgCapabilitiesFlowsItem | (string & {})>;
-export const RoleOrgCapabilitiesFlowsList = /*@__PURE__*/ S.Array(
-  RoleOrgCapabilitiesFlowsItem,
-) as any as S.Schema<RoleOrgCapabilitiesFlowsList>;
+export const RoleOrgCapabilitiesFlowsList =
+  DatasetCapabilitiesValueDataList as any as S.Schema<RoleOrgCapabilitiesFlowsList>;
 
 export type RoleOrgCapabilitiesIntegrationsItem = "create" | "read" | "update" | "delete";
 export const RoleOrgCapabilitiesIntegrationsItem = S.String;
@@ -2313,9 +2251,8 @@ export const RoleOrgCapabilitiesIntegrationsItem = S.String;
 export type RoleOrgCapabilitiesIntegrationsList = Array<
   RoleOrgCapabilitiesIntegrationsItem | (string & {})
 >;
-export const RoleOrgCapabilitiesIntegrationsList = /*@__PURE__*/ S.Array(
-  RoleOrgCapabilitiesIntegrationsItem,
-) as any as S.Schema<RoleOrgCapabilitiesIntegrationsList>;
+export const RoleOrgCapabilitiesIntegrationsList =
+  DatasetCapabilitiesValueDataList as any as S.Schema<RoleOrgCapabilitiesIntegrationsList>;
 
 export type RoleOrgCapabilitiesMonitorsItem = "create" | "read" | "update" | "delete";
 export const RoleOrgCapabilitiesMonitorsItem = S.String;
@@ -2324,9 +2261,8 @@ export const RoleOrgCapabilitiesMonitorsItem = S.String;
 export type RoleOrgCapabilitiesMonitorsList = Array<
   RoleOrgCapabilitiesMonitorsItem | (string & {})
 >;
-export const RoleOrgCapabilitiesMonitorsList = /*@__PURE__*/ S.Array(
-  RoleOrgCapabilitiesMonitorsItem,
-) as any as S.Schema<RoleOrgCapabilitiesMonitorsList>;
+export const RoleOrgCapabilitiesMonitorsList =
+  DatasetCapabilitiesValueDataList as any as S.Schema<RoleOrgCapabilitiesMonitorsList>;
 
 export type RoleOrgCapabilitiesNotifiersItem = "create" | "read" | "update" | "delete";
 export const RoleOrgCapabilitiesNotifiersItem = S.String;
@@ -2335,18 +2271,16 @@ export const RoleOrgCapabilitiesNotifiersItem = S.String;
 export type RoleOrgCapabilitiesNotifiersList = Array<
   RoleOrgCapabilitiesNotifiersItem | (string & {})
 >;
-export const RoleOrgCapabilitiesNotifiersList = /*@__PURE__*/ S.Array(
-  RoleOrgCapabilitiesNotifiersItem,
-) as any as S.Schema<RoleOrgCapabilitiesNotifiersList>;
+export const RoleOrgCapabilitiesNotifiersList =
+  DatasetCapabilitiesValueDataList as any as S.Schema<RoleOrgCapabilitiesNotifiersList>;
 
 export type RoleOrgCapabilitiesRbacItem = "create" | "read" | "update" | "delete";
 export const RoleOrgCapabilitiesRbacItem = S.String;
 
 /** Controls access to role-based access control settings */
 export type RoleOrgCapabilitiesRbacList = Array<RoleOrgCapabilitiesRbacItem | (string & {})>;
-export const RoleOrgCapabilitiesRbacList = /*@__PURE__*/ S.Array(
-  RoleOrgCapabilitiesRbacItem,
-) as any as S.Schema<RoleOrgCapabilitiesRbacList>;
+export const RoleOrgCapabilitiesRbacList =
+  DatasetCapabilitiesValueDataList as any as S.Schema<RoleOrgCapabilitiesRbacList>;
 
 export type RoleOrgCapabilitiesSharedAccessKeysItem = "read" | "update";
 export const RoleOrgCapabilitiesSharedAccessKeysItem = S.String;
@@ -2355,27 +2289,24 @@ export const RoleOrgCapabilitiesSharedAccessKeysItem = S.String;
 export type RoleOrgCapabilitiesSharedAccessKeysList = Array<
   RoleOrgCapabilitiesSharedAccessKeysItem | (string & {})
 >;
-export const RoleOrgCapabilitiesSharedAccessKeysList = /*@__PURE__*/ S.Array(
-  RoleOrgCapabilitiesSharedAccessKeysItem,
-) as any as S.Schema<RoleOrgCapabilitiesSharedAccessKeysList>;
+export const RoleOrgCapabilitiesSharedAccessKeysList =
+  DatasetCapabilitiesValueDataList as any as S.Schema<RoleOrgCapabilitiesSharedAccessKeysList>;
 
 export type RoleOrgCapabilitiesUsersItem = "create" | "read" | "update" | "delete";
 export const RoleOrgCapabilitiesUsersItem = S.String;
 
 /** Controls user management within the organization */
 export type RoleOrgCapabilitiesUsersList = Array<RoleOrgCapabilitiesUsersItem | (string & {})>;
-export const RoleOrgCapabilitiesUsersList = /*@__PURE__*/ S.Array(
-  RoleOrgCapabilitiesUsersItem,
-) as any as S.Schema<RoleOrgCapabilitiesUsersList>;
+export const RoleOrgCapabilitiesUsersList =
+  DatasetCapabilitiesValueDataList as any as S.Schema<RoleOrgCapabilitiesUsersList>;
 
 export type RoleOrgCapabilitiesViewsItem = "create" | "read" | "update" | "delete";
 export const RoleOrgCapabilitiesViewsItem = S.String;
 
 /** Controls the management of data views */
 export type RoleOrgCapabilitiesViewsList = Array<RoleOrgCapabilitiesViewsItem | (string & {})>;
-export const RoleOrgCapabilitiesViewsList = /*@__PURE__*/ S.Array(
-  RoleOrgCapabilitiesViewsItem,
-) as any as S.Schema<RoleOrgCapabilitiesViewsList>;
+export const RoleOrgCapabilitiesViewsList =
+  DatasetCapabilitiesValueDataList as any as S.Schema<RoleOrgCapabilitiesViewsList>;
 
 /** Defines organization-wide permissions and capabilities */
 export interface RoleOrgCapabilities {
@@ -2410,25 +2341,7 @@ export interface RoleOrgCapabilities {
   /** Controls the management of data views */
   views?: RoleOrgCapabilitiesViewsList;
 }
-export const RoleOrgCapabilities = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    annotations: S.optional(RoleOrgCapabilitiesAnnotationsList),
-    apiTokens: S.optional(RoleOrgCapabilitiesApiTokensList),
-    auditLog: S.optional(RoleOrgCapabilitiesAuditLogList),
-    billing: S.optional(RoleOrgCapabilitiesBillingList),
-    dashboards: S.optional(RoleOrgCapabilitiesDashboardsList),
-    datasets: S.optional(RoleOrgCapabilitiesDatasetsList),
-    endpoints: S.optional(RoleOrgCapabilitiesEndpointsList),
-    flows: S.optional(RoleOrgCapabilitiesFlowsList),
-    integrations: S.optional(RoleOrgCapabilitiesIntegrationsList),
-    monitors: S.optional(RoleOrgCapabilitiesMonitorsList),
-    notifiers: S.optional(RoleOrgCapabilitiesNotifiersList),
-    rbac: S.optional(RoleOrgCapabilitiesRbacList),
-    sharedAccessKeys: S.optional(RoleOrgCapabilitiesSharedAccessKeysList),
-    users: S.optional(RoleOrgCapabilitiesUsersList),
-    views: S.optional(RoleOrgCapabilitiesViewsList),
-  }),
-).annotate({ identifier: "RoleOrgCapabilities" }) as any as S.Schema<RoleOrgCapabilities>;
+export const RoleOrgCapabilities = OrgCapabilities as any as S.Schema<RoleOrgCapabilities>;
 
 export type RoleViewCapabilitiesValueQueryItem = "read";
 export const RoleViewCapabilitiesValueQueryItem = S.String;
@@ -2437,9 +2350,8 @@ export const RoleViewCapabilitiesValueQueryItem = S.String;
 export type RoleViewCapabilitiesValueQueryList = Array<
   RoleViewCapabilitiesValueQueryItem | (string & {})
 >;
-export const RoleViewCapabilitiesValueQueryList = /*@__PURE__*/ S.Array(
-  RoleViewCapabilitiesValueQueryItem,
-) as any as S.Schema<RoleViewCapabilitiesValueQueryList>;
+export const RoleViewCapabilitiesValueQueryList =
+  DatasetCapabilitiesValueDataList as any as S.Schema<RoleViewCapabilitiesValueQueryList>;
 
 export type RoleViewCapabilitiesValueShareItem = "create" | "read" | "delete";
 export const RoleViewCapabilitiesValueShareItem = S.String;
@@ -2448,9 +2360,8 @@ export const RoleViewCapabilitiesValueShareItem = S.String;
 export type RoleViewCapabilitiesValueShareList = Array<
   RoleViewCapabilitiesValueShareItem | (string & {})
 >;
-export const RoleViewCapabilitiesValueShareList = /*@__PURE__*/ S.Array(
-  RoleViewCapabilitiesValueShareItem,
-) as any as S.Schema<RoleViewCapabilitiesValueShareList>;
+export const RoleViewCapabilitiesValueShareList =
+  DatasetCapabilitiesValueDataList as any as S.Schema<RoleViewCapabilitiesValueShareList>;
 
 export interface RoleViewCapabilitiesValue {
   /** Controls the ability to query and read data from views */

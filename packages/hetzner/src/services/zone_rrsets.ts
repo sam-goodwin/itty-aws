@@ -499,9 +499,8 @@ export type ListZoneRrsetsRequestSortItem =
 export const ListZoneRrsetsRequestSortItem = S.String;
 
 export type ListZoneRrsetsRequestSortList = Array<ListZoneRrsetsRequestSortItem | (string & {})>;
-export const ListZoneRrsetsRequestSortList = /*@__PURE__*/ S.Array(
-  ListZoneRrsetsRequestSortItem,
-) as any as S.Schema<ListZoneRrsetsRequestSortList>;
+export const ListZoneRrsetsRequestSortList =
+  ListZoneRrsetsRequestTypeList as any as S.Schema<ListZoneRrsetsRequestSortList>;
 
 export interface ListZoneRrsetsRequest {
   /** ID or Name of the Zone. */

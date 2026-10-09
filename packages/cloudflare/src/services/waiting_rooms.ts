@@ -602,9 +602,8 @@ export const CreateResponseEnabledOriginCommandsItem = S.String;
 
 export type CreateResponseEnabledOriginCommandsList =
   Array<CreateResponseEnabledOriginCommandsItem>;
-export const CreateResponseEnabledOriginCommandsList = /*@__PURE__*/ S.Array(
-  CreateResponseEnabledOriginCommandsItem,
-) as any as S.Schema<CreateResponseEnabledOriginCommandsList>;
+export const CreateResponseEnabledOriginCommandsList =
+  CreateRequestEnabledOriginCommandsList as any as S.Schema<CreateResponseEnabledOriginCommandsList>;
 
 export type CreateResponseQueueingMethod = "fifo" | "random" | "passthrough" | "reject";
 export const CreateResponseQueueingMethod = S.String;
@@ -796,22 +795,12 @@ export interface RulesDeleteResultItem {
   /** The version of the rule. */
   version?: string | null;
 }
-export const RulesDeleteResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    action: S.optional(S.NullOr(RulesDeleteResultItemAction)),
-    description: S.optional(S.NullOr(S.String)),
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    expression: S.optional(S.NullOr(S.String)),
-    lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
-    version: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({ identifier: "RulesDeleteResultItem" }) as any as S.Schema<RulesDeleteResultItem>;
+export const RulesDeleteResultItem =
+  RulesCreateResultItem as any as S.Schema<RulesDeleteResultItem>;
 
 export type RulesDeleteResultList = Array<RulesDeleteResultItem>;
-export const RulesDeleteResultList = /*@__PURE__*/ S.Array(
-  RulesDeleteResultItem,
-) as any as S.Schema<RulesDeleteResultList>;
+export const RulesDeleteResultList =
+  RulesCreateResultList as any as S.Schema<RulesDeleteResultList>;
 
 export interface DeleteRuleResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
@@ -819,12 +808,7 @@ export interface DeleteRuleResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const DeleteRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: RulesDeleteResultList.pipe(T.EnvelopePayload()),
-    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "DeleteRuleResponse" }) as any as S.Schema<DeleteRuleResponse>;
+export const DeleteRuleResponse = CreateRuleResponse as any as S.Schema<DeleteRuleResponse>;
 
 export interface DeleteWaitingRoomRequest {
   /** Identifier. */
@@ -926,32 +910,7 @@ export interface GetEventResponse {
   /** If set, the event will override the waiting room's `turnstile_mode` property while it is active. If null, the event will inherit it. */
   turnstileMode?: EventsGetResponseTurnstileMode | null;
 }
-export const GetEventResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-    customPageHtml: S.optional(S.NullOr(S.String).pipe(T.Body("custom_page_html"))),
-    description: S.optional(S.NullOr(S.String)),
-    disableSessionRenewal: S.optional(S.NullOr(S.Boolean).pipe(T.Body("disable_session_renewal"))),
-    eventEndTime: S.optional(S.NullOr(S.String).pipe(T.Body("event_end_time"))),
-    eventStartTime: S.optional(S.NullOr(S.String).pipe(T.Body("event_start_time"))),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-    name: S.optional(S.NullOr(S.String)),
-    newUsersPerMinute: S.optional(S.NullOr(S.Number).pipe(T.Body("new_users_per_minute"))),
-    prequeueStartTime: S.optional(S.NullOr(S.String).pipe(T.Body("prequeue_start_time"))),
-    queueingMethod: S.optional(S.NullOr(S.String).pipe(T.Body("queueing_method"))),
-    sessionDuration: S.optional(S.NullOr(S.Number).pipe(T.Body("session_duration"))),
-    shuffleAtEventStart: S.optional(S.NullOr(S.Boolean).pipe(T.Body("shuffle_at_event_start"))),
-    suspended: S.optional(S.NullOr(S.Boolean)),
-    totalActiveUsers: S.optional(S.NullOr(S.Number).pipe(T.Body("total_active_users"))),
-    turnstileAction: S.optional(
-      S.NullOr(EventsGetResponseTurnstileAction).pipe(T.Body("turnstile_action")),
-    ),
-    turnstileMode: S.optional(
-      S.NullOr(EventsGetResponseTurnstileMode).pipe(T.Body("turnstile_mode")),
-    ),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "GetEventResponse" }) as any as S.Schema<GetEventResponse>;
+export const GetEventResponse = CreateEventResponse as any as S.Schema<GetEventResponse>;
 
 export interface GetEventDetailRequest {
   /** Identifier. */
@@ -1060,22 +1019,10 @@ export interface RulesGetResultItem {
   /** The version of the rule. */
   version?: string | null;
 }
-export const RulesGetResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    action: S.optional(S.NullOr(RulesGetResultItemAction)),
-    description: S.optional(S.NullOr(S.String)),
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    expression: S.optional(S.NullOr(S.String)),
-    lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
-    version: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({ identifier: "RulesGetResultItem" }) as any as S.Schema<RulesGetResultItem>;
+export const RulesGetResultItem = RulesCreateResultItem as any as S.Schema<RulesGetResultItem>;
 
 export type RulesGetResultList = Array<RulesGetResultItem>;
-export const RulesGetResultList = /*@__PURE__*/ S.Array(
-  RulesGetResultItem,
-) as any as S.Schema<RulesGetResultList>;
+export const RulesGetResultList = RulesCreateResultList as any as S.Schema<RulesGetResultList>;
 
 export interface GetRuleResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
@@ -1083,12 +1030,7 @@ export interface GetRuleResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const GetRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: RulesGetResultList.pipe(T.EnvelopePayload()),
-    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "GetRuleResponse" }) as any as S.Schema<GetRuleResponse>;
+export const GetRuleResponse = CreateRuleResponse as any as S.Schema<GetRuleResponse>;
 
 export interface GetSettingRequest {
   /** Identifier. */
@@ -1197,14 +1139,8 @@ export interface GetResponseCookieAttributes {
   /** Configures the Secure attribute on the waiting room cookie. Value `always` indicates that the Secure attribute will be set in the Set-Cookie header, `never` indicates that the Secure attribute will not be set, and `auto` will set the Secure attribute depending if **Always Use HTTPS** is enabled. */
   secure?: GetResponseCookieAttributesSecure | null;
 }
-export const GetResponseCookieAttributes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    samesite: S.optional(S.NullOr(GetResponseCookieAttributesSamesite)),
-    secure: S.optional(S.NullOr(GetResponseCookieAttributesSecure)),
-  }),
-).annotate({
-  identifier: "GetResponseCookieAttributes",
-}) as any as S.Schema<GetResponseCookieAttributes>;
+export const GetResponseCookieAttributes =
+  CreateResponseCookieAttributes as any as S.Schema<GetResponseCookieAttributes>;
 
 export type GetResponseDefaultTemplateLanguage =
   | "en-US"
@@ -1252,9 +1188,8 @@ export type GetResponseEnabledOriginCommandsItem = "revoke";
 export const GetResponseEnabledOriginCommandsItem = S.String;
 
 export type GetResponseEnabledOriginCommandsList = Array<GetResponseEnabledOriginCommandsItem>;
-export const GetResponseEnabledOriginCommandsList = /*@__PURE__*/ S.Array(
-  GetResponseEnabledOriginCommandsItem,
-) as any as S.Schema<GetResponseEnabledOriginCommandsList>;
+export const GetResponseEnabledOriginCommandsList =
+  CreateRequestEnabledOriginCommandsList as any as S.Schema<GetResponseEnabledOriginCommandsList>;
 
 export type GetResponseQueueingMethod = "fifo" | "random" | "passthrough" | "reject";
 export const GetResponseQueueingMethod = S.String;
@@ -1524,14 +1459,8 @@ export interface ListResultItemCookieAttributes {
   /** Configures the Secure attribute on the waiting room cookie. Value `always` indicates that the Secure attribute will be set in the Set-Cookie header, `never` indicates that the Secure attribute will not be set, and `auto` will set the Secure attribute depending if **Always Use HTTPS** is enabled. */
   secure?: ListResultItemCookieAttributesSecure | null;
 }
-export const ListResultItemCookieAttributes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    samesite: S.optional(S.NullOr(ListResultItemCookieAttributesSamesite)),
-    secure: S.optional(S.NullOr(ListResultItemCookieAttributesSecure)),
-  }),
-).annotate({
-  identifier: "ListResultItemCookieAttributes",
-}) as any as S.Schema<ListResultItemCookieAttributes>;
+export const ListResultItemCookieAttributes =
+  CreateResponseCookieAttributes as any as S.Schema<ListResultItemCookieAttributes>;
 
 export type ListResultItemDefaultTemplateLanguage =
   | "en-US"
@@ -1580,9 +1509,8 @@ export const ListResultItemEnabledOriginCommandsItem = S.String;
 
 export type ListResultItemEnabledOriginCommandsList =
   Array<ListResultItemEnabledOriginCommandsItem>;
-export const ListResultItemEnabledOriginCommandsList = /*@__PURE__*/ S.Array(
-  ListResultItemEnabledOriginCommandsItem,
-) as any as S.Schema<ListResultItemEnabledOriginCommandsList>;
+export const ListResultItemEnabledOriginCommandsList =
+  CreateRequestEnabledOriginCommandsList as any as S.Schema<ListResultItemEnabledOriginCommandsList>;
 
 export type ListResultItemQueueingMethod = "fifo" | "random" | "passthrough" | "reject";
 export const ListResultItemQueueingMethod = S.String;
@@ -1859,32 +1787,7 @@ export interface PatchEventResponse {
   /** If set, the event will override the waiting room's `turnstile_mode` property while it is active. If null, the event will inherit it. */
   turnstileMode?: EventsEditResponseTurnstileMode | null;
 }
-export const PatchEventResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-    customPageHtml: S.optional(S.NullOr(S.String).pipe(T.Body("custom_page_html"))),
-    description: S.optional(S.NullOr(S.String)),
-    disableSessionRenewal: S.optional(S.NullOr(S.Boolean).pipe(T.Body("disable_session_renewal"))),
-    eventEndTime: S.optional(S.NullOr(S.String).pipe(T.Body("event_end_time"))),
-    eventStartTime: S.optional(S.NullOr(S.String).pipe(T.Body("event_start_time"))),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-    name: S.optional(S.NullOr(S.String)),
-    newUsersPerMinute: S.optional(S.NullOr(S.Number).pipe(T.Body("new_users_per_minute"))),
-    prequeueStartTime: S.optional(S.NullOr(S.String).pipe(T.Body("prequeue_start_time"))),
-    queueingMethod: S.optional(S.NullOr(S.String).pipe(T.Body("queueing_method"))),
-    sessionDuration: S.optional(S.NullOr(S.Number).pipe(T.Body("session_duration"))),
-    shuffleAtEventStart: S.optional(S.NullOr(S.Boolean).pipe(T.Body("shuffle_at_event_start"))),
-    suspended: S.optional(S.NullOr(S.Boolean)),
-    totalActiveUsers: S.optional(S.NullOr(S.Number).pipe(T.Body("total_active_users"))),
-    turnstileAction: S.optional(
-      S.NullOr(EventsEditResponseTurnstileAction).pipe(T.Body("turnstile_action")),
-    ),
-    turnstileMode: S.optional(
-      S.NullOr(EventsEditResponseTurnstileMode).pipe(T.Body("turnstile_mode")),
-    ),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "PatchEventResponse" }) as any as S.Schema<PatchEventResponse>;
+export const PatchEventResponse = CreateEventResponse as any as S.Schema<PatchEventResponse>;
 
 export type RulesEditRequestAction = "bypass_waiting_room";
 export const RulesEditRequestAction = S.String;
@@ -1989,22 +1892,10 @@ export interface RulesEditResultItem {
   /** The version of the rule. */
   version?: string | null;
 }
-export const RulesEditResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    action: S.optional(S.NullOr(RulesEditResultItemAction)),
-    description: S.optional(S.NullOr(S.String)),
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    expression: S.optional(S.NullOr(S.String)),
-    lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
-    version: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({ identifier: "RulesEditResultItem" }) as any as S.Schema<RulesEditResultItem>;
+export const RulesEditResultItem = RulesCreateResultItem as any as S.Schema<RulesEditResultItem>;
 
 export type RulesEditResultList = Array<RulesEditResultItem>;
-export const RulesEditResultList = /*@__PURE__*/ S.Array(
-  RulesEditResultItem,
-) as any as S.Schema<RulesEditResultList>;
+export const RulesEditResultList = RulesCreateResultList as any as S.Schema<RulesEditResultList>;
 
 export interface PatchRuleResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
@@ -2012,12 +1903,7 @@ export interface PatchRuleResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const PatchRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: RulesEditResultList.pipe(T.EnvelopePayload()),
-    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "PatchRuleResponse" }) as any as S.Schema<PatchRuleResponse>;
+export const PatchRuleResponse = CreateRuleResponse as any as S.Schema<PatchRuleResponse>;
 
 export interface PatchSettingRequest {
   /** Identifier. */
@@ -2060,14 +1946,8 @@ export interface EditRequestCookieAttributes {
   /** Configures the Secure attribute on the waiting room cookie. Value `always` indicates that the Secure attribute will be set in the Set-Cookie header, `never` indicates that the Secure attribute will not be set, and `auto` will set the Secure attribute depending if **Always Use HTTPS** is enabled. */
   secure?: EditRequestCookieAttributesSecure | (string & {});
 }
-export const EditRequestCookieAttributes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    samesite: S.optional(EditRequestCookieAttributesSamesite),
-    secure: S.optional(EditRequestCookieAttributesSecure),
-  }),
-).annotate({
-  identifier: "EditRequestCookieAttributes",
-}) as any as S.Schema<EditRequestCookieAttributes>;
+export const EditRequestCookieAttributes =
+  CreateRequestCookieAttributes as any as S.Schema<EditRequestCookieAttributes>;
 
 export type EditRequestDefaultTemplateLanguage =
   | "en-US"
@@ -2117,9 +1997,8 @@ export const EditRequestEnabledOriginCommandsItem = S.String;
 export type EditRequestEnabledOriginCommandsList = Array<
   EditRequestEnabledOriginCommandsItem | (string & {})
 >;
-export const EditRequestEnabledOriginCommandsList = /*@__PURE__*/ S.Array(
-  EditRequestEnabledOriginCommandsItem,
-) as any as S.Schema<EditRequestEnabledOriginCommandsList>;
+export const EditRequestEnabledOriginCommandsList =
+  CreateRequestEnabledOriginCommandsList as any as S.Schema<EditRequestEnabledOriginCommandsList>;
 
 export type EditRequestQueueingMethod = "fifo" | "random" | "passthrough" | "reject";
 export const EditRequestQueueingMethod = S.String;
@@ -2245,14 +2124,8 @@ export interface EditResponseCookieAttributes {
   /** Configures the Secure attribute on the waiting room cookie. Value `always` indicates that the Secure attribute will be set in the Set-Cookie header, `never` indicates that the Secure attribute will not be set, and `auto` will set the Secure attribute depending if **Always Use HTTPS** is enabled. */
   secure?: EditResponseCookieAttributesSecure | null;
 }
-export const EditResponseCookieAttributes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    samesite: S.optional(S.NullOr(EditResponseCookieAttributesSamesite)),
-    secure: S.optional(S.NullOr(EditResponseCookieAttributesSecure)),
-  }),
-).annotate({
-  identifier: "EditResponseCookieAttributes",
-}) as any as S.Schema<EditResponseCookieAttributes>;
+export const EditResponseCookieAttributes =
+  CreateResponseCookieAttributes as any as S.Schema<EditResponseCookieAttributes>;
 
 export type EditResponseDefaultTemplateLanguage =
   | "en-US"
@@ -2300,9 +2173,8 @@ export type EditResponseEnabledOriginCommandsItem = "revoke";
 export const EditResponseEnabledOriginCommandsItem = S.String;
 
 export type EditResponseEnabledOriginCommandsList = Array<EditResponseEnabledOriginCommandsItem>;
-export const EditResponseEnabledOriginCommandsList = /*@__PURE__*/ S.Array(
-  EditResponseEnabledOriginCommandsItem,
-) as any as S.Schema<EditResponseEnabledOriginCommandsList>;
+export const EditResponseEnabledOriginCommandsList =
+  CreateRequestEnabledOriginCommandsList as any as S.Schema<EditResponseEnabledOriginCommandsList>;
 
 export type EditResponseQueueingMethod = "fifo" | "random" | "passthrough" | "reject";
 export const EditResponseQueueingMethod = S.String;
@@ -2592,32 +2464,7 @@ export interface UpdateEventResponse {
   /** If set, the event will override the waiting room's `turnstile_mode` property while it is active. If null, the event will inherit it. */
   turnstileMode?: EventsUpdateResponseTurnstileMode | null;
 }
-export const UpdateEventResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-    customPageHtml: S.optional(S.NullOr(S.String).pipe(T.Body("custom_page_html"))),
-    description: S.optional(S.NullOr(S.String)),
-    disableSessionRenewal: S.optional(S.NullOr(S.Boolean).pipe(T.Body("disable_session_renewal"))),
-    eventEndTime: S.optional(S.NullOr(S.String).pipe(T.Body("event_end_time"))),
-    eventStartTime: S.optional(S.NullOr(S.String).pipe(T.Body("event_start_time"))),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-    name: S.optional(S.NullOr(S.String)),
-    newUsersPerMinute: S.optional(S.NullOr(S.Number).pipe(T.Body("new_users_per_minute"))),
-    prequeueStartTime: S.optional(S.NullOr(S.String).pipe(T.Body("prequeue_start_time"))),
-    queueingMethod: S.optional(S.NullOr(S.String).pipe(T.Body("queueing_method"))),
-    sessionDuration: S.optional(S.NullOr(S.Number).pipe(T.Body("session_duration"))),
-    shuffleAtEventStart: S.optional(S.NullOr(S.Boolean).pipe(T.Body("shuffle_at_event_start"))),
-    suspended: S.optional(S.NullOr(S.Boolean)),
-    totalActiveUsers: S.optional(S.NullOr(S.Number).pipe(T.Body("total_active_users"))),
-    turnstileAction: S.optional(
-      S.NullOr(EventsUpdateResponseTurnstileAction).pipe(T.Body("turnstile_action")),
-    ),
-    turnstileMode: S.optional(
-      S.NullOr(EventsUpdateResponseTurnstileMode).pipe(T.Body("turnstile_mode")),
-    ),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "UpdateEventResponse" }) as any as S.Schema<UpdateEventResponse>;
+export const UpdateEventResponse = CreateEventResponse as any as S.Schema<UpdateEventResponse>;
 
 export type RulesUpdateRequestRulesItemAction = "bypass_waiting_room";
 export const RulesUpdateRequestRulesItemAction = S.String;
@@ -2688,22 +2535,12 @@ export interface RulesUpdateResultItem {
   /** The version of the rule. */
   version?: string | null;
 }
-export const RulesUpdateResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    action: S.optional(S.NullOr(RulesUpdateResultItemAction)),
-    description: S.optional(S.NullOr(S.String)),
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    expression: S.optional(S.NullOr(S.String)),
-    lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
-    version: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({ identifier: "RulesUpdateResultItem" }) as any as S.Schema<RulesUpdateResultItem>;
+export const RulesUpdateResultItem =
+  RulesCreateResultItem as any as S.Schema<RulesUpdateResultItem>;
 
 export type RulesUpdateResultList = Array<RulesUpdateResultItem>;
-export const RulesUpdateResultList = /*@__PURE__*/ S.Array(
-  RulesUpdateResultItem,
-) as any as S.Schema<RulesUpdateResultList>;
+export const RulesUpdateResultList =
+  RulesCreateResultList as any as S.Schema<RulesUpdateResultList>;
 
 export interface UpdateRuleResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
@@ -2711,12 +2548,7 @@ export interface UpdateRuleResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const UpdateRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: RulesUpdateResultList.pipe(T.EnvelopePayload()),
-    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "UpdateRuleResponse" }) as any as S.Schema<UpdateRuleResponse>;
+export const UpdateRuleResponse = CreateRuleResponse as any as S.Schema<UpdateRuleResponse>;
 
 export type UpdateRequestAdditionalRoutesItem = CreateRequestAdditionalRoutesItem;
 export const UpdateRequestAdditionalRoutesItem = CreateRequestAdditionalRoutesItem;
@@ -2737,14 +2569,8 @@ export interface UpdateRequestCookieAttributes {
   /** Configures the Secure attribute on the waiting room cookie. Value `always` indicates that the Secure attribute will be set in the Set-Cookie header, `never` indicates that the Secure attribute will not be set, and `auto` will set the Secure attribute depending if **Always Use HTTPS** is enabled. */
   secure?: UpdateRequestCookieAttributesSecure | (string & {});
 }
-export const UpdateRequestCookieAttributes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    samesite: S.optional(UpdateRequestCookieAttributesSamesite),
-    secure: S.optional(UpdateRequestCookieAttributesSecure),
-  }),
-).annotate({
-  identifier: "UpdateRequestCookieAttributes",
-}) as any as S.Schema<UpdateRequestCookieAttributes>;
+export const UpdateRequestCookieAttributes =
+  CreateRequestCookieAttributes as any as S.Schema<UpdateRequestCookieAttributes>;
 
 export type UpdateRequestDefaultTemplateLanguage =
   | "en-US"
@@ -2794,9 +2620,8 @@ export const UpdateRequestEnabledOriginCommandsItem = S.String;
 export type UpdateRequestEnabledOriginCommandsList = Array<
   UpdateRequestEnabledOriginCommandsItem | (string & {})
 >;
-export const UpdateRequestEnabledOriginCommandsList = /*@__PURE__*/ S.Array(
-  UpdateRequestEnabledOriginCommandsItem,
-) as any as S.Schema<UpdateRequestEnabledOriginCommandsList>;
+export const UpdateRequestEnabledOriginCommandsList =
+  CreateRequestEnabledOriginCommandsList as any as S.Schema<UpdateRequestEnabledOriginCommandsList>;
 
 export type UpdateRequestQueueingMethod = "fifo" | "random" | "passthrough" | "reject";
 export const UpdateRequestQueueingMethod = S.String;
@@ -2920,14 +2745,8 @@ export interface UpdateResponseCookieAttributes {
   /** Configures the Secure attribute on the waiting room cookie. Value `always` indicates that the Secure attribute will be set in the Set-Cookie header, `never` indicates that the Secure attribute will not be set, and `auto` will set the Secure attribute depending if **Always Use HTTPS** is enabled. */
   secure?: UpdateResponseCookieAttributesSecure | null;
 }
-export const UpdateResponseCookieAttributes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    samesite: S.optional(S.NullOr(UpdateResponseCookieAttributesSamesite)),
-    secure: S.optional(S.NullOr(UpdateResponseCookieAttributesSecure)),
-  }),
-).annotate({
-  identifier: "UpdateResponseCookieAttributes",
-}) as any as S.Schema<UpdateResponseCookieAttributes>;
+export const UpdateResponseCookieAttributes =
+  CreateResponseCookieAttributes as any as S.Schema<UpdateResponseCookieAttributes>;
 
 export type UpdateResponseDefaultTemplateLanguage =
   | "en-US"
@@ -2976,9 +2795,8 @@ export const UpdateResponseEnabledOriginCommandsItem = S.String;
 
 export type UpdateResponseEnabledOriginCommandsList =
   Array<UpdateResponseEnabledOriginCommandsItem>;
-export const UpdateResponseEnabledOriginCommandsList = /*@__PURE__*/ S.Array(
-  UpdateResponseEnabledOriginCommandsItem,
-) as any as S.Schema<UpdateResponseEnabledOriginCommandsList>;
+export const UpdateResponseEnabledOriginCommandsList =
+  CreateRequestEnabledOriginCommandsList as any as S.Schema<UpdateResponseEnabledOriginCommandsList>;
 
 export type UpdateResponseQueueingMethod = "fifo" | "random" | "passthrough" | "reject";
 export const UpdateResponseQueueingMethod = S.String;

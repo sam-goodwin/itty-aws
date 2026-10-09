@@ -1200,16 +1200,8 @@ export interface AddLabelsRequestBodyCase2Item {
   /** The confidence level for this label choice. */
   confidence?: AddLabelsRequestBodyCase2ItemConfidence | (string & {});
 }
-export const AddLabelsRequestBodyCase2Item = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    rationale: S.optional(S.String),
-    suggest: S.optional(S.Boolean),
-    confidence: S.optional(AddLabelsRequestBodyCase2ItemConfidence),
-  }),
-).annotate({
-  identifier: "AddLabelsRequestBodyCase2Item",
-}) as any as S.Schema<AddLabelsRequestBodyCase2Item>;
+export const AddLabelsRequestBodyCase2Item =
+  AddLabelsRequestBodyCase0LabelsItemCase1 as any as S.Schema<AddLabelsRequestBodyCase2Item>;
 
 export type AddLabelsRequestBodyCase2List = Array<AddLabelsRequestBodyCase2Item>;
 export const AddLabelsRequestBodyCase2List = /*@__PURE__*/ S.Array(
@@ -1741,26 +1733,7 @@ export interface Milestone {
   closed_at: string | null;
   due_on: string | null;
 }
-export const Milestone = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.String,
-    html_url: S.String,
-    labels_url: S.String,
-    id: S.Number,
-    node_id: S.String,
-    number: S.Number,
-    state: MilestoneState,
-    title: S.String,
-    description: S.NullOr(S.String),
-    creator: S.NullOr(NullableSimpleUser),
-    open_issues: S.Number,
-    closed_issues: S.Number,
-    created_at: S.String,
-    updated_at: S.String,
-    closed_at: S.NullOr(S.String),
-    due_on: S.NullOr(S.String),
-  }),
-).annotate({ identifier: "Milestone" }) as any as S.Schema<Milestone>;
+export const Milestone = NullableMilestone as any as S.Schema<Milestone>;
 
 export interface DeleteCommentRequest {
   /** The account owner of the repository. The name is not case sensitive. */

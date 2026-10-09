@@ -421,9 +421,8 @@ export const CustomTemplateBase = S.String;
 export interface CustomTemplateResponse {
   templateType?: CustomTemplateBase;
 }
-export const CustomTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ templateType: S.optional(CustomTemplateBase) }),
-).annotate({ identifier: "CustomTemplateResponse" }) as any as S.Schema<CustomTemplateResponse>;
+export const CustomTemplateResponse =
+  ManagedTemplateResponse as any as S.Schema<CustomTemplateResponse>;
 export type NoteTemplateSettingsResponse =
   | { managedTemplate: ManagedTemplateResponse; customTemplate?: never }
   | { managedTemplate?: never; customTemplate: CustomTemplateResponse };

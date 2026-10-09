@@ -166,9 +166,8 @@ export const EnvironmentDetailsLocationSpoofingRiskVerdictItemEnum = S.String;
 
 export type EnvironmentDetailsLocationSpoofingRiskVerdictItemEnumList =
   Array<EnvironmentDetailsLocationSpoofingRiskVerdictItemEnum>;
-export const EnvironmentDetailsLocationSpoofingRiskVerdictItemEnumList = /*@__PURE__*/ S.Array(
-  EnvironmentDetailsLocationSpoofingRiskVerdictItemEnum,
-) as any as S.Schema<EnvironmentDetailsLocationSpoofingRiskVerdictItemEnumList>;
+export const EnvironmentDetailsLocationSpoofingRiskVerdictItemEnumList =
+  AppAccessRiskVerdictAppsDetectedItemEnumList as any as S.Schema<EnvironmentDetailsLocationSpoofingRiskVerdictItemEnumList>;
 
 /** Contains information about the environment Play Integrity API runs in, e.g. Play Protect verdict. */
 export interface EnvironmentDetails {
@@ -251,9 +250,8 @@ export const DeviceIntegrityDeviceRecognitionVerdictItemEnum = S.String;
 
 export type DeviceIntegrityDeviceRecognitionVerdictItemEnumList =
   Array<DeviceIntegrityDeviceRecognitionVerdictItemEnum>;
-export const DeviceIntegrityDeviceRecognitionVerdictItemEnumList = /*@__PURE__*/ S.Array(
-  DeviceIntegrityDeviceRecognitionVerdictItemEnum,
-) as any as S.Schema<DeviceIntegrityDeviceRecognitionVerdictItemEnumList>;
+export const DeviceIntegrityDeviceRecognitionVerdictItemEnumList =
+  AppAccessRiskVerdictAppsDetectedItemEnumList as any as S.Schema<DeviceIntegrityDeviceRecognitionVerdictItemEnumList>;
 
 /** Contains the recall bits write dates. */
 export interface WriteDates {
@@ -324,9 +322,8 @@ export const DeviceIntegrityLegacyDeviceRecognitionVerdictItemEnum = S.String;
 
 export type DeviceIntegrityLegacyDeviceRecognitionVerdictItemEnumList =
   Array<DeviceIntegrityLegacyDeviceRecognitionVerdictItemEnum>;
-export const DeviceIntegrityLegacyDeviceRecognitionVerdictItemEnumList = /*@__PURE__*/ S.Array(
-  DeviceIntegrityLegacyDeviceRecognitionVerdictItemEnum,
-) as any as S.Schema<DeviceIntegrityLegacyDeviceRecognitionVerdictItemEnumList>;
+export const DeviceIntegrityLegacyDeviceRecognitionVerdictItemEnumList =
+  AppAccessRiskVerdictAppsDetectedItemEnumList as any as S.Schema<DeviceIntegrityLegacyDeviceRecognitionVerdictItemEnumList>;
 
 export type RecentDeviceActivityDeviceActivityLevelEnum =
   | "DEVICE_ACTIVITY_LEVEL_UNSPECIFIED"
@@ -516,9 +513,8 @@ export const PcDeviceIntegrityDeviceRecognitionVerdictItemEnum = S.String;
 
 export type PcDeviceIntegrityDeviceRecognitionVerdictItemEnumList =
   Array<PcDeviceIntegrityDeviceRecognitionVerdictItemEnum>;
-export const PcDeviceIntegrityDeviceRecognitionVerdictItemEnumList = /*@__PURE__*/ S.Array(
-  PcDeviceIntegrityDeviceRecognitionVerdictItemEnum,
-) as any as S.Schema<PcDeviceIntegrityDeviceRecognitionVerdictItemEnumList>;
+export const PcDeviceIntegrityDeviceRecognitionVerdictItemEnumList =
+  AppAccessRiskVerdictAppsDetectedItemEnumList as any as S.Schema<PcDeviceIntegrityDeviceRecognitionVerdictItemEnumList>;
 
 /** Contains the device attestation information. */
 export interface PcDeviceIntegrity {

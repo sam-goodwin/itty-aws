@@ -2155,9 +2155,8 @@ export const VmssExtensionSetupOrder = S.String;
 
 /** Indicates the setup order for the extension. */
 export type VMSSExtensionPropertiesSetupOrderList = Array<VmssExtensionSetupOrder>;
-export const VMSSExtensionPropertiesSetupOrderList = /*@__PURE__*/ S.Array(
-  VmssExtensionSetupOrder,
-) as any as S.Schema<VMSSExtensionPropertiesSetupOrderList>;
+export const VMSSExtensionPropertiesSetupOrderList =
+  ManagedClusterPropertiesAddonFeaturesList as any as S.Schema<VMSSExtensionPropertiesSetupOrderList>;
 
 /** Describes the properties of a Virtual Machine Scale Set Extension. */
 export interface VMSSExtensionProperties {
@@ -2322,9 +2321,8 @@ export const VmSetupAction = S.String;
 
 /** Specifies the actions to be performed on the vms before bootstrapping the service fabric runtime. */
 export type NodeTypePropertiesVmSetupActionsList = Array<VmSetupAction>;
-export const NodeTypePropertiesVmSetupActionsList = /*@__PURE__*/ S.Array(
-  VmSetupAction,
-) as any as S.Schema<NodeTypePropertiesVmSetupActionsList>;
+export const NodeTypePropertiesVmSetupActionsList =
+  ManagedClusterPropertiesAddonFeaturesList as any as S.Schema<NodeTypePropertiesVmSetupActionsList>;
 
 /** Specifies the security type of the nodeType. Only Standard and TrustedLaunch are currently supported */
 export type SecurityType = "TrustedLaunch" | "Standard" | "ConfidentialVM";
@@ -2980,11 +2978,7 @@ export const ServiceScalingTriggerKind = S.String;
 export interface ScalingTrigger {
   kind: ServiceScalingTriggerKind | (string & {});
 }
-export const ScalingTrigger = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: ServiceScalingTriggerKind,
-  }),
-).annotate({ identifier: "ScalingTrigger" }) as any as S.Schema<ScalingTrigger>;
+export const ScalingTrigger = ScalingMechanism as any as S.Schema<ScalingTrigger>;
 
 /** Specifies a metric to load balance a service during runtime. */
 export interface ScalingPolicy {

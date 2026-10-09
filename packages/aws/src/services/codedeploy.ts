@@ -841,15 +841,9 @@ export interface TagFilter {
   Value?: string;
   Type?: TagFilterType;
 }
-export const TagFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Key: S.optional(S.String),
-    Value: S.optional(S.String),
-    Type: S.optional(TagFilterType),
-  }),
-).annotate({ identifier: "TagFilter" }) as any as S.Schema<TagFilter>;
+export const TagFilter = EC2TagFilter as any as S.Schema<TagFilter>;
 export type TagFilterList = TagFilter[];
-export const TagFilterList = /*@__PURE__*/ S.Array(TagFilter);
+export const TagFilterList = EC2TagFilterList as any as S.Schema<TagFilterList>;
 export type AutoScalingGroupName = string;
 export type AutoScalingGroupHook = string;
 export interface AutoScalingGroup {
@@ -928,7 +922,8 @@ export type AutoRollbackEvent =
 export const AutoRollbackEvent = S.String;
 
 export type AutoRollbackEventsList = AutoRollbackEvent[];
-export const AutoRollbackEventsList = /*@__PURE__*/ S.Array(AutoRollbackEvent);
+export const AutoRollbackEventsList =
+  TriggerEventTypeList as any as S.Schema<AutoRollbackEventsList>;
 export interface AutoRollbackConfiguration {
   enabled?: boolean;
   events?: AutoRollbackEvent[];
@@ -1099,7 +1094,7 @@ export const EC2TagSet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ec2TagSetList: S.optional(EC2TagSetList) }),
 ).annotate({ identifier: "EC2TagSet" }) as any as S.Schema<EC2TagSet>;
 export type OnPremisesTagSetList = TagFilter[][];
-export const OnPremisesTagSetList = /*@__PURE__*/ S.Array(TagFilterList);
+export const OnPremisesTagSetList = EC2TagSetList as any as S.Schema<OnPremisesTagSetList>;
 export interface OnPremisesTagSet {
   onPremisesTagSetList?: TagFilter[][];
 }
@@ -2327,9 +2322,9 @@ export const ListDeploymentGroupsOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDeploymentGroupsOutput",
 }) as any as S.Schema<ListDeploymentGroupsOutput>;
 export type InstanceStatusList = InstanceStatus[];
-export const InstanceStatusList = /*@__PURE__*/ S.Array(InstanceStatus);
+export const InstanceStatusList = TriggerEventTypeList as any as S.Schema<InstanceStatusList>;
 export type InstanceTypeList = InstanceType[];
-export const InstanceTypeList = /*@__PURE__*/ S.Array(InstanceType);
+export const InstanceTypeList = TriggerEventTypeList as any as S.Schema<InstanceTypeList>;
 export interface ListDeploymentInstancesInput {
   deploymentId: string;
   nextToken?: string;
@@ -2356,7 +2351,7 @@ export const ListDeploymentInstancesOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDeploymentInstancesOutput",
 }) as any as S.Schema<ListDeploymentInstancesOutput>;
 export type DeploymentStatusList = DeploymentStatus[];
-export const DeploymentStatusList = /*@__PURE__*/ S.Array(DeploymentStatus);
+export const DeploymentStatusList = TriggerEventTypeList as any as S.Schema<DeploymentStatusList>;
 export interface TimeRange {
   start?: Date;
   end?: Date;

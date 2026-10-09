@@ -235,22 +235,7 @@ export interface ApproveRollingReleaseStageResponseRollingReleaseCurrentDeployme
   url: string;
 }
 export const ApproveRollingReleaseStageResponseRollingReleaseCurrentDeployment =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdAt: S.Number,
-      id: S.String,
-      name: S.String,
-      readyState: ApproveRollingReleaseStageResponseRollingReleaseCurrentDeploymentReadyState,
-      readyStateAt: S.optional(S.Number),
-      source: S.optional(ApproveRollingReleaseStageResponseRollingReleaseCurrentDeploymentSource),
-      target: S.optional(
-        S.NullOr(ApproveRollingReleaseStageResponseRollingReleaseCurrentDeploymentTarget),
-      ),
-      url: S.String,
-    }),
-  ).annotate({
-    identifier: "ApproveRollingReleaseStageResponseRollingReleaseCurrentDeployment",
-  }) as any as S.Schema<ApproveRollingReleaseStageResponseRollingReleaseCurrentDeployment>;
+  ApproveRollingReleaseStageResponseRollingReleaseCanaryDeployment as any as S.Schema<ApproveRollingReleaseStageResponseRollingReleaseCurrentDeployment>;
 
 /** The next stage to be activated, null if not in ACTIVE state */
 export type ApproveRollingReleaseStageResponseRollingReleaseNextStage =
@@ -492,22 +477,7 @@ export interface CompleteRollingReleaseResponseRollingReleaseCurrentDeployment {
   url: string;
 }
 export const CompleteRollingReleaseResponseRollingReleaseCurrentDeployment =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdAt: S.Number,
-      id: S.String,
-      name: S.String,
-      readyState: CompleteRollingReleaseResponseRollingReleaseCurrentDeploymentReadyState,
-      readyStateAt: S.optional(S.Number),
-      source: S.optional(CompleteRollingReleaseResponseRollingReleaseCurrentDeploymentSource),
-      target: S.optional(
-        S.NullOr(CompleteRollingReleaseResponseRollingReleaseCurrentDeploymentTarget),
-      ),
-      url: S.String,
-    }),
-  ).annotate({
-    identifier: "CompleteRollingReleaseResponseRollingReleaseCurrentDeployment",
-  }) as any as S.Schema<CompleteRollingReleaseResponseRollingReleaseCurrentDeployment>;
+  ApproveRollingReleaseStageResponseRollingReleaseCanaryDeployment as any as S.Schema<CompleteRollingReleaseResponseRollingReleaseCurrentDeployment>;
 
 /** The next stage to be activated, null if not in ACTIVE state */
 export type CompleteRollingReleaseResponseRollingReleaseNextStage =
@@ -1250,21 +1220,8 @@ export interface StartRollingReleaseResponseRollingReleaseCanaryDeployment {
   /** A string with the unique URL of the deployment */
   url: string;
 }
-export const StartRollingReleaseResponseRollingReleaseCanaryDeployment = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      createdAt: S.Number,
-      id: S.String,
-      name: S.String,
-      readyState: StartRollingReleaseResponseRollingReleaseCanaryDeploymentReadyState,
-      readyStateAt: S.optional(S.Number),
-      source: S.optional(StartRollingReleaseResponseRollingReleaseCanaryDeploymentSource),
-      target: S.optional(S.NullOr(StartRollingReleaseResponseRollingReleaseCanaryDeploymentTarget)),
-      url: S.String,
-    }),
-).annotate({
-  identifier: "StartRollingReleaseResponseRollingReleaseCanaryDeployment",
-}) as any as S.Schema<StartRollingReleaseResponseRollingReleaseCanaryDeployment>;
+export const StartRollingReleaseResponseRollingReleaseCanaryDeployment =
+  GetRollingReleaseResponseRollingReleaseCurrentDeployment as any as S.Schema<StartRollingReleaseResponseRollingReleaseCanaryDeployment>;
 
 /** The state of the deployment depending on the process of deploying, or if it is ready or in an error state */
 export type StartRollingReleaseResponseRollingReleaseCurrentDeploymentReadyState =
@@ -1315,23 +1272,8 @@ export interface StartRollingReleaseResponseRollingReleaseCurrentDeployment {
   /** A string with the unique URL of the deployment */
   url: string;
 }
-export const StartRollingReleaseResponseRollingReleaseCurrentDeployment = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      createdAt: S.Number,
-      id: S.String,
-      name: S.String,
-      readyState: StartRollingReleaseResponseRollingReleaseCurrentDeploymentReadyState,
-      readyStateAt: S.optional(S.Number),
-      source: S.optional(StartRollingReleaseResponseRollingReleaseCurrentDeploymentSource),
-      target: S.optional(
-        S.NullOr(StartRollingReleaseResponseRollingReleaseCurrentDeploymentTarget),
-      ),
-      url: S.String,
-    }),
-).annotate({
-  identifier: "StartRollingReleaseResponseRollingReleaseCurrentDeployment",
-}) as any as S.Schema<StartRollingReleaseResponseRollingReleaseCurrentDeployment>;
+export const StartRollingReleaseResponseRollingReleaseCurrentDeployment =
+  CompleteRollingReleaseResponseRollingReleaseCanaryDeployment as any as S.Schema<StartRollingReleaseResponseRollingReleaseCurrentDeployment>;
 
 /** The next stage to be activated, null if not in ACTIVE state */
 export type StartRollingReleaseResponseRollingReleaseNextStage =

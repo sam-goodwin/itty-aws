@@ -1326,11 +1326,7 @@ export interface SchemaMode {
   /** Required. The mode type of a schema registry (READWRITE by default) or of a subject (unset by default, which means use the global schema registry setting). */
   mode?: SchemaModeModeEnum;
 }
-export const SchemaMode = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: S.optional(SchemaModeModeEnum),
-  }),
-).annotate({ identifier: "SchemaMode" }) as any as S.Schema<SchemaMode>;
+export const SchemaMode = RebalanceConfig as any as S.Schema<SchemaMode>;
 
 export interface DeleteProjectsLocationsSchemaRegistriesContextsSubjectsRequest {
   /** Optional. If true, the subject and all associated metadata including the schema ID will be deleted permanently. Otherwise, only the subject is soft-deleted. The default is false. Soft-deleted subjects can still be searched in ListSubjects API call with deleted=true query parameter. A soft-delete of a subject must be performed before a hard-delete. */
@@ -3106,11 +3102,7 @@ export interface UpdateSchemaModeRequest {
   /** Required. The mode type. */
   mode?: UpdateSchemaModeRequestModeEnum | (string & {});
 }
-export const UpdateSchemaModeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: S.optional(UpdateSchemaModeRequestModeEnum),
-  }),
-).annotate({ identifier: "UpdateSchemaModeRequest" }) as any as S.Schema<UpdateSchemaModeRequest>;
+export const UpdateSchemaModeRequest = RebalanceConfig as any as S.Schema<UpdateSchemaModeRequest>;
 
 export interface UpdateProjectsLocationsSchemaRegistriesContextsModeRequest {
   /** Required. The resource name of the mode. The format is * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/mode/{subject}: mode for a schema registry, or * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/mode/{subject}: mode for a specific subject in a specific context */

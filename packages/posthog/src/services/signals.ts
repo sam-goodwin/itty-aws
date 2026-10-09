@@ -8658,14 +8658,8 @@ export interface SignalReportDeletionStatus {
   /** Report being deleted. */
   report_id: string;
 }
-export const SignalReportDeletionStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: SignalReportDeletionStatusStatusEnum,
-    report_id: S.String,
-  }),
-).annotate({
-  identifier: "SignalReportDeletionStatus",
-}) as any as S.Schema<SignalReportDeletionStatus>;
+export const SignalReportDeletionStatus =
+  SignalReportReingestionStatus as any as S.Schema<SignalReportDeletionStatus>;
 
 export interface SignalsReportsPrCiStatusesRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */

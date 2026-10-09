@@ -1017,16 +1017,8 @@ export interface PaypalWalletRequestShipping {
   /** The portable international postal address. Maps to [AddressValidationMetadata](https://github.com/googlei18n/libaddressinput/wiki/AddressValidationMetadata) and HTML 5.1 [Autofilling form controls: the autocomplete attribute](https://www.w3.org/TR/html51/sec-forms.html#autofilling-form-controls-the-autocomplete-attribute). */
   address?: DefinitionsPaymentSourceCardBillingAddress;
 }
-export const PaypalWalletRequestShipping = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(PaypalWalletResponseShippingName),
-    phone_number: S.optional(PaypalWalletResponseShippingPhoneNumber),
-    type: S.optional(PaypalWalletRequestShippingType),
-    address: S.optional(DefinitionsPaymentSourceCardBillingAddress),
-  }),
-).annotate({
-  identifier: "PaypalWalletRequestShipping",
-}) as any as S.Schema<PaypalWalletRequestShipping>;
+export const PaypalWalletRequestShipping =
+  PaypalWalletResponseShipping as any as S.Schema<PaypalWalletRequestShipping>;
 
 /** The usage type associated with a digital wallet payment token. */
 export type PaypalWalletRequestUsageType = "MERCHANT" | "PLATFORM";
@@ -1245,14 +1237,7 @@ export interface VenmoRequestShipping {
   /** The portable international postal address. Maps to [AddressValidationMetadata](https://github.com/googlei18n/libaddressinput/wiki/AddressValidationMetadata) and HTML 5.1 [Autofilling form controls: the autocomplete attribute](https://www.w3.org/TR/html51/sec-forms.html#autofilling-form-controls-the-autocomplete-attribute). */
   address?: DefinitionsPaymentSourceCardBillingAddress;
 }
-export const VenmoRequestShipping = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(PaypalWalletResponseShippingName),
-    phone_number: S.optional(PaypalWalletResponseShippingPhoneNumber),
-    type: S.optional(VenmoRequestShippingType),
-    address: S.optional(DefinitionsPaymentSourceCardBillingAddress),
-  }),
-).annotate({ identifier: "VenmoRequestShipping" }) as any as S.Schema<VenmoRequestShipping>;
+export const VenmoRequestShipping = VenmoResponseShipping as any as S.Schema<VenmoRequestShipping>;
 
 /** The usage type associated with a digital wallet payment token. */
 export type VenmoRequestUsageType = "MERCHANT" | "PLATFORM";

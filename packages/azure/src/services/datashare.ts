@@ -946,18 +946,8 @@ export interface CreateSynchronizationSettingsResponse {
   /** Kind-specific synchronization setting properties (polymorphic on `kind`), e.g. `{ recurrenceInterval, synchronizationTime }` for `ScheduleBased`. */
   properties?: unknown;
 }
-export const CreateSynchronizationSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    type: S.optional(S.String),
-    kind: CreateSynchronizationSettingsResponseKind,
-    properties: S.optional(S.Unknown),
-  }),
-).annotate({
-  identifier: "CreateSynchronizationSettingsResponse",
-}) as any as S.Schema<CreateSynchronizationSettingsResponse>;
+export const CreateSynchronizationSettingsResponse =
+  CreateDataSetMappingResponse as any as S.Schema<CreateSynchronizationSettingsResponse>;
 
 /** Kind of synchronization on trigger. */
 export type CreateTriggerRequestKind = "ScheduleBased";
@@ -1016,16 +1006,8 @@ export interface CreateTriggerResponse {
   /** Kind-specific trigger properties (polymorphic on `kind`), e.g. `{ recurrenceInterval, synchronizationTime, synchronizationMode }` for `ScheduleBased`. */
   properties?: unknown;
 }
-export const CreateTriggerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    type: S.optional(S.String),
-    kind: CreateTriggerResponseKind,
-    properties: S.optional(S.Unknown),
-  }),
-).annotate({ identifier: "CreateTriggerResponse" }) as any as S.Schema<CreateTriggerResponse>;
+export const CreateTriggerResponse =
+  CreateDataSetResponse as any as S.Schema<CreateTriggerResponse>;
 
 export interface DeleteAccountRequest {
   /** The subscription identifier */
@@ -1539,16 +1521,7 @@ export interface GetDataSetResponse {
   /** Kind-specific data set properties (polymorphic on `kind`), e.g. `{ containerName, resourceGroup, storageAccountName, subscriptionId }` for `Container`. */
   properties?: unknown;
 }
-export const GetDataSetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    type: S.optional(S.String),
-    kind: GetDataSetResponseKind,
-    properties: S.optional(S.Unknown),
-  }),
-).annotate({ identifier: "GetDataSetResponse" }) as any as S.Schema<GetDataSetResponse>;
+export const GetDataSetResponse = CreateDataSetResponse as any as S.Schema<GetDataSetResponse>;
 
 export interface GetDataSetMappingRequest {
   /** The subscription identifier */
@@ -1609,18 +1582,8 @@ export interface GetDataSetMappingResponse {
   /** Kind-specific data set mapping properties (polymorphic on `kind`), e.g. `{ dataSetId, containerName, resourceGroup, storageAccountName, subscriptionId }` for `Container`. */
   properties?: unknown;
 }
-export const GetDataSetMappingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    type: S.optional(S.String),
-    kind: GetDataSetMappingResponseKind,
-    properties: S.optional(S.Unknown),
-  }),
-).annotate({
-  identifier: "GetDataSetMappingResponse",
-}) as any as S.Schema<GetDataSetMappingResponse>;
+export const GetDataSetMappingResponse =
+  CreateDataSetMappingResponse as any as S.Schema<GetDataSetMappingResponse>;
 
 export interface GetInvitationRequest {
   /** The subscription identifier */
@@ -1901,18 +1864,8 @@ export interface GetSynchronizationSettingsResponse {
   /** Kind-specific synchronization setting properties (polymorphic on `kind`), e.g. `{ recurrenceInterval, synchronizationTime }` for `ScheduleBased`. */
   properties?: unknown;
 }
-export const GetSynchronizationSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    type: S.optional(S.String),
-    kind: GetSynchronizationSettingsResponseKind,
-    properties: S.optional(S.Unknown),
-  }),
-).annotate({
-  identifier: "GetSynchronizationSettingsResponse",
-}) as any as S.Schema<GetSynchronizationSettingsResponse>;
+export const GetSynchronizationSettingsResponse =
+  CreateDataSetMappingResponse as any as S.Schema<GetSynchronizationSettingsResponse>;
 
 export interface GetTriggerRequest {
   /** The subscription identifier */
@@ -1961,16 +1914,7 @@ export interface GetTriggerResponse {
   /** Kind-specific trigger properties (polymorphic on `kind`), e.g. `{ recurrenceInterval, synchronizationTime, synchronizationMode }` for `ScheduleBased`. */
   properties?: unknown;
 }
-export const GetTriggerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    type: S.optional(S.String),
-    kind: GetTriggerResponseKind,
-    properties: S.optional(S.Unknown),
-  }),
-).annotate({ identifier: "GetTriggerResponse" }) as any as S.Schema<GetTriggerResponse>;
+export const GetTriggerResponse = CreateDataSetResponse as any as S.Schema<GetTriggerResponse>;
 
 export interface ListAccountByResourceGroupRequest {
   /** The subscription identifier */
@@ -2409,21 +2353,12 @@ export interface DataSetMapping {
   /** Kind of data set mapping. */
   kind: DataSetMappingKind;
 }
-export const DataSetMapping = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    type: S.optional(S.String),
-    kind: DataSetMappingKind,
-  }),
-).annotate({ identifier: "DataSetMapping" }) as any as S.Schema<DataSetMapping>;
+export const DataSetMapping = DataSet as any as S.Schema<DataSetMapping>;
 
 /** Collection of items of type DataTransferObjects. */
 export type DataSetMappingListValueList = Array<DataSetMapping>;
-export const DataSetMappingListValueList = /*@__PURE__*/ S.Array(
-  DataSetMapping,
-) as any as S.Schema<DataSetMappingListValueList>;
+export const DataSetMappingListValueList =
+  DataSetListValueList as any as S.Schema<DataSetMappingListValueList>;
 
 /** List response for get DataSetMappings */
 export interface DataSetMappingList {
@@ -2432,12 +2367,7 @@ export interface DataSetMappingList {
   /** Collection of items of type DataTransferObjects. */
   value: DataSetMappingListValueList;
 }
-export const DataSetMappingList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextLink: S.optional(S.String),
-    value: DataSetMappingListValueList,
-  }),
-).annotate({ identifier: "DataSetMappingList" }) as any as S.Schema<DataSetMappingList>;
+export const DataSetMappingList = DataSetList as any as S.Schema<DataSetMappingList>;
 
 export interface ListInvitationByShareRequest {
   /** The subscription identifier */
@@ -3416,21 +3346,12 @@ export interface SynchronizationSetting {
   /** Kind of synchronization setting. */
   kind: SynchronizationSettingKind;
 }
-export const SynchronizationSetting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    type: S.optional(S.String),
-    kind: SynchronizationSettingKind,
-  }),
-).annotate({ identifier: "SynchronizationSetting" }) as any as S.Schema<SynchronizationSetting>;
+export const SynchronizationSetting = DataSet as any as S.Schema<SynchronizationSetting>;
 
 /** Collection of items of type DataTransferObjects. */
 export type SynchronizationSettingListValueList = Array<SynchronizationSetting>;
-export const SynchronizationSettingListValueList = /*@__PURE__*/ S.Array(
-  SynchronizationSetting,
-) as any as S.Schema<SynchronizationSettingListValueList>;
+export const SynchronizationSettingListValueList =
+  DataSetListValueList as any as S.Schema<SynchronizationSettingListValueList>;
 
 /** List response for get Synchronization settings */
 export interface SynchronizationSettingList {
@@ -3496,21 +3417,11 @@ export interface Trigger {
   /** Kind of synchronization on trigger. */
   kind: TriggerKind;
 }
-export const Trigger = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    type: S.optional(S.String),
-    kind: TriggerKind,
-  }),
-).annotate({ identifier: "Trigger" }) as any as S.Schema<Trigger>;
+export const Trigger = DataSet as any as S.Schema<Trigger>;
 
 /** Collection of items of type DataTransferObjects. */
 export type TriggerListValueList = Array<Trigger>;
-export const TriggerListValueList = /*@__PURE__*/ S.Array(
-  Trigger,
-) as any as S.Schema<TriggerListValueList>;
+export const TriggerListValueList = DataSetListValueList as any as S.Schema<TriggerListValueList>;
 
 /** List response for get triggers */
 export interface TriggerList {
@@ -3519,12 +3430,7 @@ export interface TriggerList {
   /** Collection of items of type DataTransferObjects. */
   value: TriggerListValueList;
 }
-export const TriggerList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextLink: S.optional(S.String),
-    value: TriggerListValueList,
-  }),
-).annotate({ identifier: "TriggerList" }) as any as S.Schema<TriggerList>;
+export const TriggerList = DataSetList as any as S.Schema<TriggerList>;
 
 /** Provider share subscription properties */
 export interface ProviderShareSubscriptionPropertiesInput {

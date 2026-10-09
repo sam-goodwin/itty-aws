@@ -292,9 +292,8 @@ export type WebhookEventsItem =
 export const WebhookEventsItem = S.String;
 
 export type WebhookEventsList = Array<WebhookEventsItem>;
-export const WebhookEventsList = /*@__PURE__*/ S.Array(
-  WebhookEventsItem,
-) as any as S.Schema<WebhookEventsList>;
+export const WebhookEventsList =
+  CreateWebhookRequestEventsList as any as S.Schema<WebhookEventsList>;
 
 /** The subset of subscribed event types that support sending test payloads, in dot form. */
 export type WebhookTestableEventsItem =
@@ -404,9 +403,8 @@ export type WebhookTestableEventsItem =
 export const WebhookTestableEventsItem = S.String;
 
 export type WebhookTestableEventsList = Array<WebhookTestableEventsItem>;
-export const WebhookTestableEventsList = /*@__PURE__*/ S.Array(
-  WebhookTestableEventsItem,
-) as any as S.Schema<WebhookTestableEventsList>;
+export const WebhookTestableEventsList =
+  CreateWebhookRequestEventsList as any as S.Schema<WebhookTestableEventsList>;
 
 export interface Webhook {
   /** The API version used to format payloads sent to this webhook endpoint. */
@@ -830,9 +828,8 @@ export type WebhookListItemEventsItem =
 export const WebhookListItemEventsItem = S.String;
 
 export type WebhookListItemEventsList = Array<WebhookListItemEventsItem>;
-export const WebhookListItemEventsList = /*@__PURE__*/ S.Array(
-  WebhookListItemEventsItem,
-) as any as S.Schema<WebhookListItemEventsList>;
+export const WebhookListItemEventsList =
+  CreateWebhookRequestEventsList as any as S.Schema<WebhookListItemEventsList>;
 
 export interface WebhookListItem {
   /** The API version used to format payloads sent to this webhook endpoint. */
@@ -1110,9 +1107,8 @@ export const UpdateWebhookRequestEventsItem = S.String;
 
 /** The events to send the webhook for, in dot form (for example `payment.succeeded`). */
 export type UpdateWebhookRequestEventsList = Array<UpdateWebhookRequestEventsItem | (string & {})>;
-export const UpdateWebhookRequestEventsList = /*@__PURE__*/ S.Array(
-  UpdateWebhookRequestEventsItem,
-) as any as S.Schema<UpdateWebhookRequestEventsList>;
+export const UpdateWebhookRequestEventsList =
+  CreateWebhookRequestEventsList as any as S.Schema<UpdateWebhookRequestEventsList>;
 
 export interface UpdateWebhookRequest {
   /** Webhook ID, prefixed `hook_`. */

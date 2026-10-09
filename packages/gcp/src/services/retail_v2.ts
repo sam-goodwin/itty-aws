@@ -446,13 +446,8 @@ export interface GoogleCloudRetailV2SearchRequestDynamicFacetSpec {
   /** Mode of the DynamicFacet feature. Defaults to Mode.DISABLED if it's unset. */
   mode?: GoogleCloudRetailV2SearchRequestDynamicFacetSpecModeEnum | (string & {});
 }
-export const GoogleCloudRetailV2SearchRequestDynamicFacetSpec = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: S.optional(GoogleCloudRetailV2SearchRequestDynamicFacetSpecModeEnum),
-  }),
-).annotate({
-  identifier: "GoogleCloudRetailV2SearchRequestDynamicFacetSpec",
-}) as any as S.Schema<GoogleCloudRetailV2SearchRequestDynamicFacetSpec>;
+export const GoogleCloudRetailV2SearchRequestDynamicFacetSpec =
+  GoogleCloudRetailV2SearchRequestPersonalizationSpec as any as S.Schema<GoogleCloudRetailV2SearchRequestDynamicFacetSpec>;
 
 /** Configures metadata that is used to generate serving time results (e.g. search results or recommendation predictions). */
 export interface GoogleCloudRetailV2ServingConfig {
@@ -1779,9 +1774,8 @@ export const GoogleCloudRetailV2ControlSearchSolutionUseCaseItemEnum = S.String;
 export type GoogleCloudRetailV2ControlSearchSolutionUseCaseItemEnumList = Array<
   GoogleCloudRetailV2ControlSearchSolutionUseCaseItemEnum | (string & {})
 >;
-export const GoogleCloudRetailV2ControlSearchSolutionUseCaseItemEnumList = /*@__PURE__*/ S.Array(
-  GoogleCloudRetailV2ControlSearchSolutionUseCaseItemEnum,
-) as any as S.Schema<GoogleCloudRetailV2ControlSearchSolutionUseCaseItemEnumList>;
+export const GoogleCloudRetailV2ControlSearchSolutionUseCaseItemEnumList =
+  GoogleCloudRetailV2ServingConfigSolutionTypesItemEnumList as any as S.Schema<GoogleCloudRetailV2ControlSearchSolutionUseCaseItemEnumList>;
 
 export type GoogleCloudRetailV2ControlSolutionTypesItemEnum =
   | "SOLUTION_TYPE_UNSPECIFIED"
@@ -1792,9 +1786,8 @@ export const GoogleCloudRetailV2ControlSolutionTypesItemEnum = S.String;
 export type GoogleCloudRetailV2ControlSolutionTypesItemEnumList = Array<
   GoogleCloudRetailV2ControlSolutionTypesItemEnum | (string & {})
 >;
-export const GoogleCloudRetailV2ControlSolutionTypesItemEnumList = /*@__PURE__*/ S.Array(
-  GoogleCloudRetailV2ControlSolutionTypesItemEnum,
-) as any as S.Schema<GoogleCloudRetailV2ControlSolutionTypesItemEnumList>;
+export const GoogleCloudRetailV2ControlSolutionTypesItemEnumList =
+  GoogleCloudRetailV2ServingConfigSolutionTypesItemEnumList as any as S.Schema<GoogleCloudRetailV2ControlSolutionTypesItemEnumList>;
 
 /** Pins one or more specified products to a specific position in the results. * Rule Condition: Must specify non-empty Condition.query_terms (for search only) or Condition.page_categories (for browse only), but can't specify both. * Action Input: mapping of `[pin_position, product_id]` pairs (pin position uses 1-based indexing). * Action Result: Will pin products with matching ids to the position specified in the final result order. Example: Suppose the query is `shoes`, the Condition.query_terms is `shoes` and the pin_map has `{1, "pid1"}`, then product with `pid1` will be pinned to the top position in the final results. If multiple PinActions are matched to a single request the actions will be processed from most to least recently updated. Pins to positions larger than the max allowed page size of 120 are not allowed. */
 export interface GoogleCloudRetailV2RulePinAction {
@@ -4342,13 +4335,8 @@ export interface GoogleCloudRetailV2SearchRequestSpellCorrectionSpec {
   /** The mode under which spell correction should take effect to replace the original search query. Default to Mode.AUTO. */
   mode?: GoogleCloudRetailV2SearchRequestSpellCorrectionSpecModeEnum | (string & {});
 }
-export const GoogleCloudRetailV2SearchRequestSpellCorrectionSpec = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: S.optional(GoogleCloudRetailV2SearchRequestSpellCorrectionSpecModeEnum),
-  }),
-).annotate({
-  identifier: "GoogleCloudRetailV2SearchRequestSpellCorrectionSpec",
-}) as any as S.Schema<GoogleCloudRetailV2SearchRequestSpellCorrectionSpec>;
+export const GoogleCloudRetailV2SearchRequestSpellCorrectionSpec =
+  GoogleCloudRetailV2SearchRequestPersonalizationSpec as any as S.Schema<GoogleCloudRetailV2SearchRequestSpellCorrectionSpec>;
 
 export type GoogleCloudRetailV2ProductAttributeValueList =
   Array<GoogleCloudRetailV2ProductAttributeValue>;

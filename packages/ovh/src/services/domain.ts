@@ -2619,9 +2619,8 @@ export const DomainConfigurationRulesContextEnum = S.String;
 /** The context on which the constraint applies */
 export type DomainConfigurationRulesConstraintContextsList =
   Array<DomainConfigurationRulesContextEnum>;
-export const DomainConfigurationRulesConstraintContextsList = /*@__PURE__*/ S.Array(
-  DomainConfigurationRulesContextEnum,
-) as any as S.Schema<DomainConfigurationRulesConstraintContextsList>;
+export const DomainConfigurationRulesConstraintContextsList =
+  DomainConfigurationsCustomFieldsIsForList as any as S.Schema<DomainConfigurationRulesConstraintContextsList>;
 
 /** Operator use in configuration rule to check content of a field */
 export type DomainConfigurationRulesOperatorEnum =
@@ -4227,9 +4226,8 @@ export const DomainOptinFieldsEnum = S.String;
 
 /** Fields to display publicly on the Whois */
 export type DomainConfigurationsOptinFieldsList = Array<DomainOptinFieldsEnum | (string & {})>;
-export const DomainConfigurationsOptinFieldsList = /*@__PURE__*/ S.Array(
-  DomainOptinFieldsEnum,
-) as any as S.Schema<DomainConfigurationsOptinFieldsList>;
+export const DomainConfigurationsOptinFieldsList =
+  DomainConfigurationsCustomFieldsIsForList as any as S.Schema<DomainConfigurationsOptinFieldsList>;
 
 /** Configuration of the optin fields for contacts related to a domain name */
 export interface DomainConfigurationsOptin {
@@ -4309,9 +4307,8 @@ export const DomainExtensionsCategoryTypeEnum = S.String;
 export type ListDomainExtensionByCategoryRequestCategoryTypeList = Array<
   DomainExtensionsCategoryTypeEnum | (string & {})
 >;
-export const ListDomainExtensionByCategoryRequestCategoryTypeList = /*@__PURE__*/ S.Array(
-  DomainExtensionsCategoryTypeEnum,
-) as any as S.Schema<ListDomainExtensionByCategoryRequestCategoryTypeList>;
+export const ListDomainExtensionByCategoryRequestCategoryTypeList =
+  DomainConfigurationsCustomFieldsIsForList as any as S.Schema<ListDomainExtensionByCategoryRequestCategoryTypeList>;
 
 export interface ListDomainExtensionByCategoryRequest {
   /** Filter by category types */
@@ -4550,9 +4547,8 @@ export const ListDomainOptionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListDomainOptionRequest" }) as any as S.Schema<ListDomainOptionRequest>;
 
 export type ListDomainOptionResponseBodyList = Array<DomainDomainOptionEnum>;
-export const ListDomainOptionResponseBodyList = /*@__PURE__*/ S.Array(
-  DomainDomainOptionEnum,
-) as any as S.Schema<ListDomainOptionResponseBodyList>;
+export const ListDomainOptionResponseBodyList =
+  DomainConfigurationsCustomFieldsIsForList as any as S.Schema<ListDomainOptionResponseBodyList>;
 
 export type ListDomainOptionResponse = ListDomainOptionResponseBodyList;
 export const ListDomainOptionResponse = /*@__PURE__*/ S.suspend(() =>
@@ -4575,9 +4571,8 @@ export const ListDomainRuleEmailsObfuscationRequest = /*@__PURE__*/ S.suspend(()
 
 export type ListDomainRuleEmailsObfuscationResponseBodyList =
   Array<DomainConfigurationsContactTypeEnum>;
-export const ListDomainRuleEmailsObfuscationResponseBodyList = /*@__PURE__*/ S.Array(
-  DomainConfigurationsContactTypeEnum,
-) as any as S.Schema<ListDomainRuleEmailsObfuscationResponseBodyList>;
+export const ListDomainRuleEmailsObfuscationResponseBodyList =
+  DomainConfigurationsCustomFieldsIsForList as any as S.Schema<ListDomainRuleEmailsObfuscationResponseBodyList>;
 
 export type ListDomainRuleEmailsObfuscationResponse =
   ListDomainRuleEmailsObfuscationResponseBodyList;

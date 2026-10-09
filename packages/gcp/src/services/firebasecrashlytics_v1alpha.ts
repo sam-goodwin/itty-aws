@@ -904,9 +904,8 @@ export const GetProjectsAppsReportsFilter_device_formFactorsEnum = S.String;
 export type GetProjectsAppsReportsFilter_device_formFactorsEnumList = Array<
   GetProjectsAppsReportsFilter_device_formFactorsEnum | (string & {})
 >;
-export const GetProjectsAppsReportsFilter_device_formFactorsEnumList = /*@__PURE__*/ S.Array(
-  GetProjectsAppsReportsFilter_device_formFactorsEnum,
-) as any as S.Schema<GetProjectsAppsReportsFilter_device_formFactorsEnumList>;
+export const GetProjectsAppsReportsFilter_device_formFactorsEnumList =
+  GetProjectsAppsReportsFilter_issue_statesEnumList as any as S.Schema<GetProjectsAppsReportsFilter_device_formFactorsEnumList>;
 
 export type GetProjectsAppsReportsFilter_issue_stateEnum =
   | "STATE_UNSPECIFIED"
@@ -931,9 +930,8 @@ export const GetProjectsAppsReportsFilter_issue_errorTypesEnum = S.String;
 export type GetProjectsAppsReportsFilter_issue_errorTypesEnumList = Array<
   GetProjectsAppsReportsFilter_issue_errorTypesEnum | (string & {})
 >;
-export const GetProjectsAppsReportsFilter_issue_errorTypesEnumList = /*@__PURE__*/ S.Array(
-  GetProjectsAppsReportsFilter_issue_errorTypesEnum,
-) as any as S.Schema<GetProjectsAppsReportsFilter_issue_errorTypesEnumList>;
+export const GetProjectsAppsReportsFilter_issue_errorTypesEnumList =
+  GetProjectsAppsReportsFilter_issue_statesEnumList as any as S.Schema<GetProjectsAppsReportsFilter_issue_errorTypesEnumList>;
 
 export type GetProjectsAppsReportsFilter_issue_signalsEnum =
   | "SIGNAL_UNSPECIFIED"
@@ -946,9 +944,8 @@ export const GetProjectsAppsReportsFilter_issue_signalsEnum = S.String;
 export type GetProjectsAppsReportsFilter_issue_signalsEnumList = Array<
   GetProjectsAppsReportsFilter_issue_signalsEnum | (string & {})
 >;
-export const GetProjectsAppsReportsFilter_issue_signalsEnumList = /*@__PURE__*/ S.Array(
-  GetProjectsAppsReportsFilter_issue_signalsEnum,
-) as any as S.Schema<GetProjectsAppsReportsFilter_issue_signalsEnumList>;
+export const GetProjectsAppsReportsFilter_issue_signalsEnumList =
+  GetProjectsAppsReportsFilter_issue_statesEnumList as any as S.Schema<GetProjectsAppsReportsFilter_issue_signalsEnumList>;
 
 export type GetProjectsAppsReportsGranularityEnum =
   | "TIME_GRANULARITY_UNSPECIFIED"
@@ -1166,9 +1163,8 @@ export const ListProjectsAppsEventsFilter_issue_statesEnum = S.String;
 export type ListProjectsAppsEventsFilter_issue_statesEnumList = Array<
   ListProjectsAppsEventsFilter_issue_statesEnum | (string & {})
 >;
-export const ListProjectsAppsEventsFilter_issue_statesEnumList = /*@__PURE__*/ S.Array(
-  ListProjectsAppsEventsFilter_issue_statesEnum,
-) as any as S.Schema<ListProjectsAppsEventsFilter_issue_statesEnumList>;
+export const ListProjectsAppsEventsFilter_issue_statesEnumList =
+  GetProjectsAppsReportsFilter_issue_statesEnumList as any as S.Schema<ListProjectsAppsEventsFilter_issue_statesEnumList>;
 
 export type ListProjectsAppsEventsFilter_issue_signalsEnum =
   | "SIGNAL_UNSPECIFIED"
@@ -1181,9 +1177,8 @@ export const ListProjectsAppsEventsFilter_issue_signalsEnum = S.String;
 export type ListProjectsAppsEventsFilter_issue_signalsEnumList = Array<
   ListProjectsAppsEventsFilter_issue_signalsEnum | (string & {})
 >;
-export const ListProjectsAppsEventsFilter_issue_signalsEnumList = /*@__PURE__*/ S.Array(
-  ListProjectsAppsEventsFilter_issue_signalsEnum,
-) as any as S.Schema<ListProjectsAppsEventsFilter_issue_signalsEnumList>;
+export const ListProjectsAppsEventsFilter_issue_signalsEnumList =
+  GetProjectsAppsReportsFilter_issue_statesEnumList as any as S.Schema<ListProjectsAppsEventsFilter_issue_signalsEnumList>;
 
 export type ListProjectsAppsEventsFilter_issue_stateEnum =
   | "STATE_UNSPECIFIED"
@@ -1202,9 +1197,8 @@ export const ListProjectsAppsEventsFilter_issue_errorTypesEnum = S.String;
 export type ListProjectsAppsEventsFilter_issue_errorTypesEnumList = Array<
   ListProjectsAppsEventsFilter_issue_errorTypesEnum | (string & {})
 >;
-export const ListProjectsAppsEventsFilter_issue_errorTypesEnumList = /*@__PURE__*/ S.Array(
-  ListProjectsAppsEventsFilter_issue_errorTypesEnum,
-) as any as S.Schema<ListProjectsAppsEventsFilter_issue_errorTypesEnumList>;
+export const ListProjectsAppsEventsFilter_issue_errorTypesEnumList =
+  GetProjectsAppsReportsFilter_issue_statesEnumList as any as S.Schema<ListProjectsAppsEventsFilter_issue_errorTypesEnumList>;
 
 export type ListProjectsAppsEventsFilter_device_formFactorsEnum =
   | "FORM_FACTOR_UNSPECIFIED"
@@ -1218,9 +1212,8 @@ export const ListProjectsAppsEventsFilter_device_formFactorsEnum = S.String;
 export type ListProjectsAppsEventsFilter_device_formFactorsEnumList = Array<
   ListProjectsAppsEventsFilter_device_formFactorsEnum | (string & {})
 >;
-export const ListProjectsAppsEventsFilter_device_formFactorsEnumList = /*@__PURE__*/ S.Array(
-  ListProjectsAppsEventsFilter_device_formFactorsEnum,
-) as any as S.Schema<ListProjectsAppsEventsFilter_device_formFactorsEnumList>;
+export const ListProjectsAppsEventsFilter_device_formFactorsEnumList =
+  GetProjectsAppsReportsFilter_issue_statesEnumList as any as S.Schema<ListProjectsAppsEventsFilter_device_formFactorsEnumList>;
 
 export interface ListProjectsAppsEventsRequest {
   /** Optional. Filters events by custom keys (https://firebase.google.com/docs/crashlytics/customize-crash-reports#add-keys). Supported forms: * Equality: `custom_keys.level = "vip"` or `custom_keys.level:"vip"` * Presence: `custom_keys.level:*` * OR across values of one key: `custom_keys.level = "vip" OR custom_keys.level = "enterprise"` * AND across different keys: `custom_keys.level = "vip" AND custom_keys.region = "us"` Keys are case-sensitive. Keys and values containing spaces must be double-quoted, for example `custom_keys."app state" = "background"`. OR across different keys, repeating a key within an AND, NOT, and comparators other than `=` and `:` are rejected with INVALID_ARGUMENT. Wildcards are not supported in values; use `custom_keys.:*` to match events that set a key to any value. This filter expression applies in addition to the `filter` field above. The syntax is a subset of AIP-160 (https://google.aip.dev/160). */

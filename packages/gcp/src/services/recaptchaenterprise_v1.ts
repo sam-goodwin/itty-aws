@@ -761,22 +761,12 @@ export interface GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccoun
     | (string & {});
 }
 export const GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReason =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      reason: S.optional(
-        GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReasonReasonEnum,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReason",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReason>;
+  GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReason as any as S.Schema<GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReason>;
 
 export type GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReasonList =
   Array<GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReason>;
 export const GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReasonList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReason,
-  ) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReasonList>;
+  GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReasonList as any as S.Schema<GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReasonList>;
 
 /** Account takeover risk assessment. */
 export interface GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTakeoverVerdict {
@@ -814,9 +804,7 @@ export type GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentLabelsItemE
   GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentLabelsItemEnum | (string & {})
 >;
 export const GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentLabelsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentLabelsItemEnum,
-  ) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentLabelsItemEnumList>;
+  GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequestReasonsItemEnumList as any as S.Schema<GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentLabelsItemEnumList>;
 
 /** Account defense risk assessment. */
 export interface GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment {
@@ -935,9 +923,7 @@ export type GoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignalsCardLabelsIte
   GoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignalsCardLabelsItemEnum | (string & {})
 >;
 export const GoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignalsCardLabelsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignalsCardLabelsItemEnum,
-  ) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignalsCardLabelsItemEnumList>;
+  GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequestReasonsItemEnumList as any as S.Schema<GoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignalsCardLabelsItemEnumList>;
 
 /** Signals describing the payment card used in this transaction. */
 export interface GoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignals {
@@ -1019,9 +1005,7 @@ export type GoogleCloudRecaptchaenterpriseV1RiskAnalysisReasonsItemEnumList = Ar
   GoogleCloudRecaptchaenterpriseV1RiskAnalysisReasonsItemEnum | (string & {})
 >;
 export const GoogleCloudRecaptchaenterpriseV1RiskAnalysisReasonsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudRecaptchaenterpriseV1RiskAnalysisReasonsItemEnum,
-  ) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1RiskAnalysisReasonsItemEnumList>;
+  GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequestReasonsItemEnumList as any as S.Schema<GoogleCloudRecaptchaenterpriseV1RiskAnalysisReasonsItemEnumList>;
 
 export type GoogleCloudRecaptchaenterpriseV1RiskAnalysisChallengeEnum =
   | "CHALLENGE_UNSPECIFIED"
@@ -1071,9 +1055,7 @@ export type GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdictReasonsItemEnumLi
   GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdictReasonsItemEnum | (string & {})
 >;
 export const GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdictReasonsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdictReasonsItemEnum,
-  ) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdictReasonsItemEnumList>;
+  GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequestReasonsItemEnumList as any as S.Schema<GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdictReasonsItemEnumList>;
 
 /** Information about SMS toll fraud. */
 export interface GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdict {
@@ -1303,22 +1285,12 @@ export interface GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskRe
     | (string & {});
 }
 export const GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReason =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      reason: S.optional(
-        GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReasonReasonEnum,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReason",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReason>;
+  GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReason as any as S.Schema<GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReason>;
 
 export type GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReasonList =
   Array<GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReason>;
 export const GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReasonList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReason,
-  ) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReasonList>;
+  GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReasonList as any as S.Schema<GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReasonList>;
 
 /** Information about behavioral trust of the transaction. */
 export interface GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavioralTrustVerdict {

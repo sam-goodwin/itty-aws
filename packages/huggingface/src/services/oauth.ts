@@ -281,9 +281,8 @@ export const PostUserInfoResponseOrgsItemSecurityRestrictionsItem = S.String;
 /** Current security restrictions for accessing data in this organization with current authentication method */
 export type PostUserInfoResponseOrgsItemSecurityRestrictionsList =
   Array<PostUserInfoResponseOrgsItemSecurityRestrictionsItem>;
-export const PostUserInfoResponseOrgsItemSecurityRestrictionsList = /*@__PURE__*/ S.Array(
-  PostUserInfoResponseOrgsItemSecurityRestrictionsItem,
-) as any as S.Schema<PostUserInfoResponseOrgsItemSecurityRestrictionsList>;
+export const PostUserInfoResponseOrgsItemSecurityRestrictionsList =
+  GetUserInfoResponseOrgsItemSecurityRestrictionsList as any as S.Schema<PostUserInfoResponseOrgsItemSecurityRestrictionsList>;
 
 export type PostUserInfoResponseOrgsItemResourceGroupsItemRole =
   | "admin"
@@ -298,21 +297,13 @@ export interface PostUserInfoResponseOrgsItemResourceGroupsItem {
   name: string;
   role: PostUserInfoResponseOrgsItemResourceGroupsItemRole;
 }
-export const PostUserInfoResponseOrgsItemResourceGroupsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sub: S.String,
-    name: S.String,
-    role: PostUserInfoResponseOrgsItemResourceGroupsItemRole,
-  }),
-).annotate({
-  identifier: "PostUserInfoResponseOrgsItemResourceGroupsItem",
-}) as any as S.Schema<PostUserInfoResponseOrgsItemResourceGroupsItem>;
+export const PostUserInfoResponseOrgsItemResourceGroupsItem =
+  GetUserInfoResponseOrgsItemResourceGroupsItem as any as S.Schema<PostUserInfoResponseOrgsItemResourceGroupsItem>;
 
 export type PostUserInfoResponseOrgsItemResourceGroupsList =
   Array<PostUserInfoResponseOrgsItemResourceGroupsItem>;
-export const PostUserInfoResponseOrgsItemResourceGroupsList = /*@__PURE__*/ S.Array(
-  PostUserInfoResponseOrgsItemResourceGroupsItem,
-) as any as S.Schema<PostUserInfoResponseOrgsItemResourceGroupsList>;
+export const PostUserInfoResponseOrgsItemResourceGroupsList =
+  GetUserInfoResponseOrgsItemResourceGroupsList as any as S.Schema<PostUserInfoResponseOrgsItemResourceGroupsList>;
 
 export interface PostUserInfoResponseOrgsItem {
   /** ID of the organization */
@@ -331,27 +322,12 @@ export interface PostUserInfoResponseOrgsItem {
   securityRestrictions?: PostUserInfoResponseOrgsItemSecurityRestrictionsList;
   resourceGroups?: PostUserInfoResponseOrgsItemResourceGroupsList;
 }
-export const PostUserInfoResponseOrgsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sub: S.String,
-    name: S.String,
-    picture: S.String,
-    preferred_username: S.String,
-    plan: S.optional(PostUserInfoResponseOrgsItemPlan),
-    canPay: S.optional(S.Boolean),
-    billingMode: S.optional(PostUserInfoResponseOrgsItemBillingMode),
-    roleInOrg: S.optional(PostUserInfoResponseOrgsItemRoleInOrg),
-    securityRestrictions: S.optional(PostUserInfoResponseOrgsItemSecurityRestrictionsList),
-    resourceGroups: S.optional(PostUserInfoResponseOrgsItemResourceGroupsList),
-  }),
-).annotate({
-  identifier: "PostUserInfoResponseOrgsItem",
-}) as any as S.Schema<PostUserInfoResponseOrgsItem>;
+export const PostUserInfoResponseOrgsItem =
+  GetUserInfoResponseOrgsItem as any as S.Schema<PostUserInfoResponseOrgsItem>;
 
 export type PostUserInfoResponseOrgsList = Array<PostUserInfoResponseOrgsItem>;
-export const PostUserInfoResponseOrgsList = /*@__PURE__*/ S.Array(
-  PostUserInfoResponseOrgsItem,
-) as any as S.Schema<PostUserInfoResponseOrgsList>;
+export const PostUserInfoResponseOrgsList =
+  GetUserInfoResponseOrgsList as any as S.Schema<PostUserInfoResponseOrgsList>;
 
 export interface PostUserInfoResponse {
   /** ID of the user */
@@ -450,9 +426,8 @@ export type RegisterOAuthAppResponseGrantTypesItem =
 export const RegisterOAuthAppResponseGrantTypesItem = S.String;
 
 export type RegisterOAuthAppResponseGrantTypesList = Array<RegisterOAuthAppResponseGrantTypesItem>;
-export const RegisterOAuthAppResponseGrantTypesList = /*@__PURE__*/ S.Array(
-  RegisterOAuthAppResponseGrantTypesItem,
-) as any as S.Schema<RegisterOAuthAppResponseGrantTypesList>;
+export const RegisterOAuthAppResponseGrantTypesList =
+  GetUserInfoResponseOrgsItemSecurityRestrictionsList as any as S.Schema<RegisterOAuthAppResponseGrantTypesList>;
 
 export type RegisterOAuthAppResponseContactsList = Array<string>;
 export const RegisterOAuthAppResponseContactsList =

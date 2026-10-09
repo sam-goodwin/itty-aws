@@ -354,9 +354,7 @@ export const SmbVersion = S.String;
 export interface SmbMountOptions {
   Version?: SmbVersion;
 }
-export const SmbMountOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Version: S.optional(SmbVersion) }),
-).annotate({ identifier: "SmbMountOptions" }) as any as S.Schema<SmbMountOptions>;
+export const SmbMountOptions = NfsMountOptions as any as S.Schema<SmbMountOptions>;
 export type SmbPassword = string | redacted.Redacted<string>;
 export type SmbUser = string;
 export interface ManagedSecretConfig {
@@ -1899,11 +1897,9 @@ export interface TaskFilter {
   Values: string[];
   Operator: Operator;
 }
-export const TaskFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: TaskFilterName, Values: FilterValues, Operator: Operator }),
-).annotate({ identifier: "TaskFilter" }) as any as S.Schema<TaskFilter>;
+export const TaskFilter = LocationFilter as any as S.Schema<TaskFilter>;
 export type TaskFilters = TaskFilter[];
-export const TaskFilters = /*@__PURE__*/ S.Array(TaskFilter);
+export const TaskFilters = LocationFilters as any as S.Schema<TaskFilters>;
 export interface ListTasksRequest {
   MaxResults?: number;
   NextToken?: string;

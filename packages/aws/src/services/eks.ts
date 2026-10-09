@@ -1599,21 +1599,13 @@ export interface ClusterIssue {
   message?: string;
   resourceIds?: string[];
 }
-export const ClusterIssue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(ClusterIssueCode),
-    message: S.optional(S.String),
-    resourceIds: S.optional(StringList),
-  }),
-).annotate({ identifier: "ClusterIssue" }) as any as S.Schema<ClusterIssue>;
+export const ClusterIssue = AddonIssue as any as S.Schema<ClusterIssue>;
 export type ClusterIssueList = ClusterIssue[];
-export const ClusterIssueList = /*@__PURE__*/ S.Array(ClusterIssue);
+export const ClusterIssueList = AddonIssueList as any as S.Schema<ClusterIssueList>;
 export interface ClusterHealth {
   issues?: ClusterIssue[];
 }
-export const ClusterHealth = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ issues: S.optional(ClusterIssueList) }),
-).annotate({ identifier: "ClusterHealth" }) as any as S.Schema<ClusterHealth>;
+export const ClusterHealth = AddonHealth as any as S.Schema<ClusterHealth>;
 export interface ControlPlanePlacementResponse {
   groupName?: string;
   spreadLevel?: SpreadLevel;
@@ -1928,21 +1920,13 @@ export interface FargateProfileIssue {
   message?: string;
   resourceIds?: string[];
 }
-export const FargateProfileIssue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(FargateProfileIssueCode),
-    message: S.optional(S.String),
-    resourceIds: S.optional(StringList),
-  }),
-).annotate({ identifier: "FargateProfileIssue" }) as any as S.Schema<FargateProfileIssue>;
+export const FargateProfileIssue = AddonIssue as any as S.Schema<FargateProfileIssue>;
 export type FargateProfileIssueList = FargateProfileIssue[];
-export const FargateProfileIssueList = /*@__PURE__*/ S.Array(FargateProfileIssue);
+export const FargateProfileIssueList = AddonIssueList as any as S.Schema<FargateProfileIssueList>;
 export interface FargateProfileHealth {
   issues?: FargateProfileIssue[];
 }
-export const FargateProfileHealth = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ issues: S.optional(FargateProfileIssueList) }),
-).annotate({ identifier: "FargateProfileHealth" }) as any as S.Schema<FargateProfileHealth>;
+export const FargateProfileHealth = AddonHealth as any as S.Schema<FargateProfileHealth>;
 export interface FargateProfile {
   fargateProfileName?: string;
   fargateProfileArn?: string;
@@ -2266,21 +2250,13 @@ export interface Issue {
   message?: string;
   resourceIds?: string[];
 }
-export const Issue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(NodegroupIssueCode),
-    message: S.optional(S.String),
-    resourceIds: S.optional(StringList),
-  }),
-).annotate({ identifier: "Issue" }) as any as S.Schema<Issue>;
+export const Issue = AddonIssue as any as S.Schema<Issue>;
 export type IssueList = Issue[];
-export const IssueList = /*@__PURE__*/ S.Array(Issue);
+export const IssueList = AddonIssueList as any as S.Schema<IssueList>;
 export interface NodegroupHealth {
   issues?: Issue[];
 }
-export const NodegroupHealth = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ issues: S.optional(IssueList) }),
-).annotate({ identifier: "NodegroupHealth" }) as any as S.Schema<NodegroupHealth>;
+export const NodegroupHealth = AddonHealth as any as S.Schema<NodegroupHealth>;
 export interface Nodegroup {
   nodegroupName?: string;
   nodegroupArn?: string;
@@ -3416,9 +3392,7 @@ export interface InsightStatus {
   status?: InsightStatusValue;
   reason?: string;
 }
-export const InsightStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ status: S.optional(InsightStatusValue), reason: S.optional(S.String) }),
-).annotate({ identifier: "InsightStatus" }) as any as S.Schema<InsightStatus>;
+export const InsightStatus = Cancellation as any as S.Schema<InsightStatus>;
 export type AdditionalInfoMap = { [key: string]: string | undefined };
 export const AdditionalInfoMap = RequiredClaimsMap as any as S.Schema<AdditionalInfoMap>;
 export interface InsightResourceDetail {
@@ -4086,9 +4060,9 @@ export const ListIdentityProviderConfigsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListIdentityProviderConfigsResponse",
 }) as any as S.Schema<ListIdentityProviderConfigsResponse>;
 export type CategoryList = Category[];
-export const CategoryList = /*@__PURE__*/ S.Array(Category);
+export const CategoryList = LogTypes as any as S.Schema<CategoryList>;
 export type InsightStatusValueList = InsightStatusValue[];
-export const InsightStatusValueList = /*@__PURE__*/ S.Array(InsightStatusValue);
+export const InsightStatusValueList = LogTypes as any as S.Schema<InsightStatusValueList>;
 export interface InsightsFilter {
   categories?: Category[];
   kubernetesVersions?: string[];

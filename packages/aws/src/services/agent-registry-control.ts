@@ -922,11 +922,10 @@ export interface RegistryRecordFilter {
   name: RegistryRecordFilterName;
   values: string[];
 }
-export const RegistryRecordFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: RegistryRecordFilterName, values: FilterValues }),
-).annotate({ identifier: "RegistryRecordFilter" }) as any as S.Schema<RegistryRecordFilter>;
+export const RegistryRecordFilter = RegistryFilter as any as S.Schema<RegistryRecordFilter>;
 export type RegistryRecordFilterList = RegistryRecordFilter[];
-export const RegistryRecordFilterList = /*@__PURE__*/ S.Array(RegistryRecordFilter);
+export const RegistryRecordFilterList =
+  RegistryFilterList as any as S.Schema<RegistryRecordFilterList>;
 export interface ListRegistryRecordsRequest {
   registryId: string;
   maxResults?: number;

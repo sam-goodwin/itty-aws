@@ -1180,14 +1180,8 @@ export interface OutboundCrossClusterSearchConnectionStatus {
   StatusCode?: OutboundCrossClusterSearchConnectionStatusCode;
   Message?: string;
 }
-export const OutboundCrossClusterSearchConnectionStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StatusCode: S.optional(OutboundCrossClusterSearchConnectionStatusCode),
-    Message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OutboundCrossClusterSearchConnectionStatus",
-}) as any as S.Schema<OutboundCrossClusterSearchConnectionStatus>;
+export const OutboundCrossClusterSearchConnectionStatus =
+  InboundCrossClusterSearchConnectionStatus as any as S.Schema<OutboundCrossClusterSearchConnectionStatus>;
 export interface CreateOutboundCrossClusterSearchConnectionResponse {
   SourceDomainInfo?: DomainInformation;
   DestinationDomainInfo?: DomainInformation;
@@ -1925,9 +1919,7 @@ export interface EngineModeStatus {
   Options: DomainEngineMode;
   Status: OptionStatus;
 }
-export const EngineModeStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Options: DomainEngineMode, Status: OptionStatus }),
-).annotate({ identifier: "EngineModeStatus" }) as any as S.Schema<EngineModeStatus>;
+export const EngineModeStatus = UseCaseStatus as any as S.Schema<EngineModeStatus>;
 export interface ElasticsearchDomainConfig {
   ElasticsearchVersion?: ElasticsearchVersionStatus;
   ElasticsearchClusterConfig?: ElasticsearchClusterConfigStatus;

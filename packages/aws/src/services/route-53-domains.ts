@@ -1047,7 +1047,7 @@ export const ListDomainsResponse = /*@__PURE__*/ S.suspend(() =>
 export type OperationStatusList = OperationStatus[];
 export const OperationStatusList = /*@__PURE__*/ S.Array(OperationStatus);
 export type OperationTypeList = OperationType[];
-export const OperationTypeList = /*@__PURE__*/ S.Array(OperationType);
+export const OperationTypeList = OperationStatusList as any as S.Schema<OperationTypeList>;
 export type ListOperationsSortAttributeName = "SubmittedDate" | (string & {});
 export const ListOperationsSortAttributeName = S.String;
 

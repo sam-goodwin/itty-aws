@@ -1065,16 +1065,8 @@ export interface EditTransformationsC2paResponse {
   /** Current value of the zone setting. */
   value?: EditTransformationsC2paResponseValue | null;
 }
-export const EditTransformationsC2paResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(EditTransformationsC2paResponseId)),
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-    value: S.optional(S.NullOr(EditTransformationsC2paResponseValue)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "EditTransformationsC2paResponse",
-}) as any as S.Schema<EditTransformationsC2paResponse>;
+export const EditTransformationsC2paResponse =
+  EditTransformationsAllowedOriginResponse as any as S.Schema<EditTransformationsC2paResponse>;
 
 export interface GetCtAlertingRequest {
   /** Identifier. */
@@ -1185,14 +1177,7 @@ export interface GetNelResponse {
   /** The NEL configuration value. */
   value: EditNelRequestValue;
 }
-export const GetNelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: GetNelResponseId,
-    editable: S.Boolean,
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
-    value: EditNelRequestValue,
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "GetNelResponse" }) as any as S.Schema<GetNelResponse>;
+export const GetNelResponse = EditNelResponse as any as S.Schema<GetNelResponse>;
 
 export interface GetObservabilityTracingRuleRequest {
   /** Specify the zone ID. */
@@ -1224,38 +1209,21 @@ export interface GetObservabilityTracingRuleResponseRulesItem {
   /** A Rules language expression that selects requests. */
   expression: string;
 }
-export const GetObservabilityTracingRuleResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: GetObservabilityTracingRuleResponseRulesItemAction,
-    actionParameters: DeleteObservabilityTracingRuleResponseRulesItemActionParameters.pipe(
-      T.Body("action_parameters"),
-    ),
-    description: S.String,
-    enabled: S.Boolean,
-    expression: S.String,
-  }),
-).annotate({
-  identifier: "GetObservabilityTracingRuleResponseRulesItem",
-}) as any as S.Schema<GetObservabilityTracingRuleResponseRulesItem>;
+export const GetObservabilityTracingRuleResponseRulesItem =
+  DeleteObservabilityTracingRuleResponseRulesItem as any as S.Schema<GetObservabilityTracingRuleResponseRulesItem>;
 
 export type GetObservabilityTracingRuleResponseRulesList =
   Array<GetObservabilityTracingRuleResponseRulesItem>;
-export const GetObservabilityTracingRuleResponseRulesList = /*@__PURE__*/ S.Array(
-  GetObservabilityTracingRuleResponseRulesItem,
-) as any as S.Schema<GetObservabilityTracingRuleResponseRulesList>;
+export const GetObservabilityTracingRuleResponseRulesList =
+  DeleteObservabilityTracingRuleResponseRulesList as any as S.Schema<GetObservabilityTracingRuleResponseRulesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetObservabilityTracingRuleResponse {
   /** Trace rules in evaluation order. */
   rules: GetObservabilityTracingRuleResponseRulesList;
 }
-export const GetObservabilityTracingRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rules: GetObservabilityTracingRuleResponseRulesList,
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "GetObservabilityTracingRuleResponse",
-}) as any as S.Schema<GetObservabilityTracingRuleResponse>;
+export const GetObservabilityTracingRuleResponse =
+  DeleteObservabilityTracingRuleResponse as any as S.Schema<GetObservabilityTracingRuleResponse>;
 
 export interface GetObservabilityTracingSettingsRequest {
   /** Specify the zone ID. */
@@ -1579,16 +1547,8 @@ export interface SettingsGetResultAlwaysOnline {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsGetResultAlwaysOnline = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsGetResultAlwaysOnlineId,
-    value: SettingsGetResultAlwaysOnlineValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsGetResultAlwaysOnline",
-}) as any as S.Schema<SettingsGetResultAlwaysOnline>;
+export const SettingsGetResultAlwaysOnline =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsGetResultAlwaysOnline>;
 
 export type SettingsGetResultZonesAlwaysUseHTTPS2Id = "always_use_https";
 export const SettingsGetResultZonesAlwaysUseHTTPS2Id = S.String;
@@ -1606,16 +1566,8 @@ export interface SettingsGetResultZonesAlwaysUseHTTPS2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsGetResultZonesAlwaysUseHTTPS2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsGetResultZonesAlwaysUseHTTPS2Id,
-    value: SettingsGetResultZonesAlwaysUseHTTPS2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsGetResultZonesAlwaysUseHTTPS2",
-}) as any as S.Schema<SettingsGetResultZonesAlwaysUseHTTPS2>;
+export const SettingsGetResultZonesAlwaysUseHTTPS2 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsGetResultZonesAlwaysUseHTTPS2>;
 
 export type SettingsGetResultZonesAutomaticHTTPSRewrites2Id = "automatic_https_rewrites";
 export const SettingsGetResultZonesAutomaticHTTPSRewrites2Id = S.String;
@@ -1633,16 +1585,8 @@ export interface SettingsGetResultZonesAutomaticHTTPSRewrites2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsGetResultZonesAutomaticHTTPSRewrites2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsGetResultZonesAutomaticHTTPSRewrites2Id,
-    value: SettingsGetResultZonesAutomaticHTTPSRewrites2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsGetResultZonesAutomaticHTTPSRewrites2",
-}) as any as S.Schema<SettingsGetResultZonesAutomaticHTTPSRewrites2>;
+export const SettingsGetResultZonesAutomaticHTTPSRewrites2 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsGetResultZonesAutomaticHTTPSRewrites2>;
 
 export type SettingsGetResultBrotliId = "brotli";
 export const SettingsGetResultBrotliId = S.String;
@@ -1660,14 +1604,8 @@ export interface SettingsGetResultBrotli {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsGetResultBrotli = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsGetResultBrotliId,
-    value: SettingsGetResultBrotliValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({ identifier: "SettingsGetResultBrotli" }) as any as S.Schema<SettingsGetResultBrotli>;
+export const SettingsGetResultBrotli =
+  SettingsGetResultZeroRTT as any as S.Schema<SettingsGetResultBrotli>;
 
 export type SettingsGetResultZonesBrowserCacheTTL2Id = "browser_cache_ttl";
 export const SettingsGetResultZonesBrowserCacheTTL2Id = S.String;
@@ -1709,16 +1647,8 @@ export interface SettingsGetResultZonesBrowserCheck2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsGetResultZonesBrowserCheck2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsGetResultZonesBrowserCheck2Id,
-    value: SettingsGetResultZonesBrowserCheck2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsGetResultZonesBrowserCheck2",
-}) as any as S.Schema<SettingsGetResultZonesBrowserCheck2>;
+export const SettingsGetResultZonesBrowserCheck2 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsGetResultZonesBrowserCheck2>;
 
 export type SettingsGetResultZonesCacheLevel2Id = "cache_level";
 export const SettingsGetResultZonesCacheLevel2Id = S.String;
@@ -1736,16 +1666,8 @@ export interface SettingsGetResultZonesCacheLevel2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsGetResultZonesCacheLevel2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsGetResultZonesCacheLevel2Id,
-    value: SettingsGetResultZonesCacheLevel2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsGetResultZonesCacheLevel2",
-}) as any as S.Schema<SettingsGetResultZonesCacheLevel2>;
+export const SettingsGetResultZonesCacheLevel2 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsGetResultZonesCacheLevel2>;
 
 export type SettingsGetResultChallengeTTLId = "challenge_ttl";
 export const SettingsGetResultChallengeTTLId = S.String;
@@ -1804,16 +1726,8 @@ export interface SettingsGetResultZonesChinaNetworkEnabled {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsGetResultZonesChinaNetworkEnabled = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsGetResultZonesChinaNetworkEnabledId,
-    value: SettingsGetResultZonesChinaNetworkEnabledValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsGetResultZonesChinaNetworkEnabled",
-}) as any as S.Schema<SettingsGetResultZonesChinaNetworkEnabled>;
+export const SettingsGetResultZonesChinaNetworkEnabled =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsGetResultZonesChinaNetworkEnabled>;
 
 export type SettingsGetResultZonesContentConverterId = "content_converter";
 export const SettingsGetResultZonesContentConverterId = S.String;
@@ -1831,16 +1745,8 @@ export interface SettingsGetResultZonesContentConverter {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsGetResultZonesContentConverter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsGetResultZonesContentConverterId,
-    value: SettingsGetResultZonesContentConverterValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsGetResultZonesContentConverter",
-}) as any as S.Schema<SettingsGetResultZonesContentConverter>;
+export const SettingsGetResultZonesContentConverter =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsGetResultZonesContentConverter>;
 
 export type SettingsGetResultCiphersId = "ciphers";
 export const SettingsGetResultCiphersId = S.String;
@@ -1884,16 +1790,8 @@ export interface SettingsGetResultZonesCNAMEFlattening {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsGetResultZonesCNAMEFlattening = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsGetResultZonesCNAMEFlatteningId,
-    value: SettingsGetResultZonesCNAMEFlatteningValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsGetResultZonesCNAMEFlattening",
-}) as any as S.Schema<SettingsGetResultZonesCNAMEFlattening>;
+export const SettingsGetResultZonesCNAMEFlattening =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsGetResultZonesCNAMEFlattening>;
 
 export type SettingsGetResultDevelopmentModeId = "development_mode";
 export const SettingsGetResultDevelopmentModeId = S.String;
@@ -1941,16 +1839,8 @@ export interface SettingsGetResultEarlyHints {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsGetResultEarlyHints = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsGetResultEarlyHintsId,
-    value: SettingsGetResultEarlyHintsValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsGetResultEarlyHints",
-}) as any as S.Schema<SettingsGetResultEarlyHints>;
+export const SettingsGetResultEarlyHints =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsGetResultEarlyHints>;
 
 export type SettingsGetResultZonesEdgeCacheTTL2Id = "edge_cache_ttl";
 export const SettingsGetResultZonesEdgeCacheTTL2Id = S.String;
@@ -1989,16 +1879,8 @@ export interface SettingsGetResultZonesEdgeCacheTTL2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsGetResultZonesEdgeCacheTTL2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsGetResultZonesEdgeCacheTTL2Id,
-    value: SettingsGetResultZonesEdgeCacheTTL2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsGetResultZonesEdgeCacheTTL2",
-}) as any as S.Schema<SettingsGetResultZonesEdgeCacheTTL2>;
+export const SettingsGetResultZonesEdgeCacheTTL2 =
+  SettingsGetResultChallengeTTL as any as S.Schema<SettingsGetResultZonesEdgeCacheTTL2>;
 
 export type SettingsGetResultZonesEmailObfuscation2Id = "email_obfuscation";
 export const SettingsGetResultZonesEmailObfuscation2Id = S.String;
@@ -2016,16 +1898,8 @@ export interface SettingsGetResultZonesEmailObfuscation2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsGetResultZonesEmailObfuscation2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsGetResultZonesEmailObfuscation2Id,
-    value: SettingsGetResultZonesEmailObfuscation2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsGetResultZonesEmailObfuscation2",
-}) as any as S.Schema<SettingsGetResultZonesEmailObfuscation2>;
+export const SettingsGetResultZonesEmailObfuscation2 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsGetResultZonesEmailObfuscation2>;
 
 export type SettingsGetResultH2PrioritizationId = "h2_prioritization";
 export const SettingsGetResultH2PrioritizationId = S.String;
@@ -2043,16 +1917,8 @@ export interface SettingsGetResultH2Prioritization {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsGetResultH2Prioritization = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsGetResultH2PrioritizationId,
-    value: SettingsGetResultH2PrioritizationValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsGetResultH2Prioritization",
-}) as any as S.Schema<SettingsGetResultH2Prioritization>;
+export const SettingsGetResultH2Prioritization =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsGetResultH2Prioritization>;
 
 export type SettingsGetResultHotlinkProtectionId = "hotlink_protection";
 export const SettingsGetResultHotlinkProtectionId = S.String;
@@ -2070,16 +1936,8 @@ export interface SettingsGetResultHotlinkProtection {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsGetResultHotlinkProtection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsGetResultHotlinkProtectionId,
-    value: SettingsGetResultHotlinkProtectionValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsGetResultHotlinkProtection",
-}) as any as S.Schema<SettingsGetResultHotlinkProtection>;
+export const SettingsGetResultHotlinkProtection =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsGetResultHotlinkProtection>;
 
 export type SettingsGetResultHTTP2Id = "http2";
 export const SettingsGetResultHTTP2Id = S.String;
@@ -2097,14 +1955,8 @@ export interface SettingsGetResultHTTP2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsGetResultHTTP2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsGetResultHTTP2Id,
-    value: SettingsGetResultHTTP2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({ identifier: "SettingsGetResultHTTP2" }) as any as S.Schema<SettingsGetResultHTTP2>;
+export const SettingsGetResultHTTP2 =
+  SettingsGetResultZeroRTT as any as S.Schema<SettingsGetResultHTTP2>;
 
 export type SettingsGetResultHTTP3Id = "http3";
 export const SettingsGetResultHTTP3Id = S.String;
@@ -2122,14 +1974,8 @@ export interface SettingsGetResultHTTP3 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsGetResultHTTP3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsGetResultHTTP3Id,
-    value: SettingsGetResultHTTP3Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({ identifier: "SettingsGetResultHTTP3" }) as any as S.Schema<SettingsGetResultHTTP3>;
+export const SettingsGetResultHTTP3 =
+  SettingsGetResultZeroRTT as any as S.Schema<SettingsGetResultHTTP3>;
 
 export type SettingsGetResultImageResizingId = "image_resizing";
 export const SettingsGetResultImageResizingId = S.String;
@@ -2147,16 +1993,8 @@ export interface SettingsGetResultImageResizing {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsGetResultImageResizing = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsGetResultImageResizingId,
-    value: SettingsGetResultImageResizingValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsGetResultImageResizing",
-}) as any as S.Schema<SettingsGetResultImageResizing>;
+export const SettingsGetResultImageResizing =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsGetResultImageResizing>;
 
 export type SettingsGetResultZonesIPGeolocation2Id = "ip_geolocation";
 export const SettingsGetResultZonesIPGeolocation2Id = S.String;
@@ -2174,16 +2012,8 @@ export interface SettingsGetResultZonesIPGeolocation2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsGetResultZonesIPGeolocation2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsGetResultZonesIPGeolocation2Id,
-    value: SettingsGetResultZonesIPGeolocation2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsGetResultZonesIPGeolocation2",
-}) as any as S.Schema<SettingsGetResultZonesIPGeolocation2>;
+export const SettingsGetResultZonesIPGeolocation2 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsGetResultZonesIPGeolocation2>;
 
 export type SettingsGetResultIPV6Id = "ipv6";
 export const SettingsGetResultIPV6Id = S.String;
@@ -2201,14 +2031,8 @@ export interface SettingsGetResultIPV6 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsGetResultIPV6 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsGetResultIPV6Id,
-    value: SettingsGetResultIPV6Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({ identifier: "SettingsGetResultIPV6" }) as any as S.Schema<SettingsGetResultIPV6>;
+export const SettingsGetResultIPV6 =
+  SettingsGetResultZeroRTT as any as S.Schema<SettingsGetResultIPV6>;
 
 export type SettingsGetResultZonesMaxUploadId = "max_upload";
 export const SettingsGetResultZonesMaxUploadId = S.String;
@@ -2252,16 +2076,8 @@ export interface SettingsGetResultZonesMaxUpload {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsGetResultZonesMaxUpload = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsGetResultZonesMaxUploadId,
-    value: SettingsGetResultZonesMaxUploadValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsGetResultZonesMaxUpload",
-}) as any as S.Schema<SettingsGetResultZonesMaxUpload>;
+export const SettingsGetResultZonesMaxUpload =
+  SettingsGetResultChallengeTTL as any as S.Schema<SettingsGetResultZonesMaxUpload>;
 
 export type SettingsGetResultMinTLSVersionId = "min_tls_version";
 export const SettingsGetResultMinTLSVersionId = S.String;
@@ -2279,16 +2095,8 @@ export interface SettingsGetResultMinTLSVersion {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsGetResultMinTLSVersion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsGetResultMinTLSVersionId,
-    value: SettingsGetResultMinTLSVersionValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsGetResultMinTLSVersion",
-}) as any as S.Schema<SettingsGetResultMinTLSVersion>;
+export const SettingsGetResultMinTLSVersion =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsGetResultMinTLSVersion>;
 
 export type SettingsGetResultZonesMirage2Id = "mirage";
 export const SettingsGetResultZonesMirage2Id = S.String;
@@ -2306,16 +2114,8 @@ export interface SettingsGetResultZonesMirage2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsGetResultZonesMirage2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsGetResultZonesMirage2Id,
-    value: SettingsGetResultZonesMirage2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsGetResultZonesMirage2",
-}) as any as S.Schema<SettingsGetResultZonesMirage2>;
+export const SettingsGetResultZonesMirage2 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsGetResultZonesMirage2>;
 
 export type SettingsGetResultNELId = "nel";
 export const SettingsGetResultNELId = S.String;
@@ -2366,16 +2166,8 @@ export interface SettingsGetResultZonesOpportunisticEncryption2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsGetResultZonesOpportunisticEncryption2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsGetResultZonesOpportunisticEncryption2Id,
-    value: SettingsGetResultZonesOpportunisticEncryption2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsGetResultZonesOpportunisticEncryption2",
-}) as any as S.Schema<SettingsGetResultZonesOpportunisticEncryption2>;
+export const SettingsGetResultZonesOpportunisticEncryption2 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsGetResultZonesOpportunisticEncryption2>;
 
 export type SettingsGetResultOpportunisticOnionId = "opportunistic_onion";
 export const SettingsGetResultOpportunisticOnionId = S.String;
@@ -2393,16 +2185,8 @@ export interface SettingsGetResultOpportunisticOnion {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsGetResultOpportunisticOnion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsGetResultOpportunisticOnionId,
-    value: SettingsGetResultOpportunisticOnionValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsGetResultOpportunisticOnion",
-}) as any as S.Schema<SettingsGetResultOpportunisticOnion>;
+export const SettingsGetResultOpportunisticOnion =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsGetResultOpportunisticOnion>;
 
 export type SettingsGetResultOrangeToOrangeId = "orange_to_orange";
 export const SettingsGetResultOrangeToOrangeId = S.String;
@@ -2420,16 +2204,8 @@ export interface SettingsGetResultOrangeToOrange {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsGetResultOrangeToOrange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsGetResultOrangeToOrangeId,
-    value: SettingsGetResultOrangeToOrangeValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsGetResultOrangeToOrange",
-}) as any as S.Schema<SettingsGetResultOrangeToOrange>;
+export const SettingsGetResultOrangeToOrange =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsGetResultOrangeToOrange>;
 
 export type SettingsGetResultZonesOriginErrorPagePassThru2Id = "origin_error_page_pass_thru";
 export const SettingsGetResultZonesOriginErrorPagePassThru2Id = S.String;
@@ -2447,16 +2223,8 @@ export interface SettingsGetResultZonesOriginErrorPagePassThru2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsGetResultZonesOriginErrorPagePassThru2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsGetResultZonesOriginErrorPagePassThru2Id,
-    value: SettingsGetResultZonesOriginErrorPagePassThru2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsGetResultZonesOriginErrorPagePassThru2",
-}) as any as S.Schema<SettingsGetResultZonesOriginErrorPagePassThru2>;
+export const SettingsGetResultZonesOriginErrorPagePassThru2 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsGetResultZonesOriginErrorPagePassThru2>;
 
 export type SettingsGetResultZonesCacheRulesOriginH2MaxStreamsId = "origin_h2_max_streams";
 export const SettingsGetResultZonesCacheRulesOriginH2MaxStreamsId = S.String;
@@ -2519,16 +2287,8 @@ export interface SettingsGetResultZonesPolish2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsGetResultZonesPolish2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsGetResultZonesPolish2Id,
-    value: SettingsGetResultZonesPolish2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsGetResultZonesPolish2",
-}) as any as S.Schema<SettingsGetResultZonesPolish2>;
+export const SettingsGetResultZonesPolish2 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsGetResultZonesPolish2>;
 
 export type SettingsGetResultPrefetchPreloadId = "prefetch_preload";
 export const SettingsGetResultPrefetchPreloadId = S.String;
@@ -2546,16 +2306,8 @@ export interface SettingsGetResultPrefetchPreload {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsGetResultPrefetchPreload = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsGetResultPrefetchPreloadId,
-    value: SettingsGetResultPrefetchPreloadValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsGetResultPrefetchPreload",
-}) as any as S.Schema<SettingsGetResultPrefetchPreload>;
+export const SettingsGetResultPrefetchPreload =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsGetResultPrefetchPreload>;
 
 export type SettingsGetResultZonesPreRenderId = "pre_render";
 export const SettingsGetResultZonesPreRenderId = S.String;
@@ -2573,16 +2325,8 @@ export interface SettingsGetResultZonesPreRender {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsGetResultZonesPreRender = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsGetResultZonesPreRenderId,
-    value: SettingsGetResultZonesPreRenderValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsGetResultZonesPreRender",
-}) as any as S.Schema<SettingsGetResultZonesPreRender>;
+export const SettingsGetResultZonesPreRender =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsGetResultZonesPreRender>;
 
 export type SettingsGetResultZonesPrivacyPassId = "privacy_pass";
 export const SettingsGetResultZonesPrivacyPassId = S.String;
@@ -2600,16 +2344,8 @@ export interface SettingsGetResultZonesPrivacyPass {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsGetResultZonesPrivacyPass = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsGetResultZonesPrivacyPassId,
-    value: SettingsGetResultZonesPrivacyPassValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsGetResultZonesPrivacyPass",
-}) as any as S.Schema<SettingsGetResultZonesPrivacyPass>;
+export const SettingsGetResultZonesPrivacyPass =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsGetResultZonesPrivacyPass>;
 
 export type SettingsGetResultProxyReadTimeoutId = "proxy_read_timeout";
 export const SettingsGetResultProxyReadTimeoutId = S.String;
@@ -2624,16 +2360,8 @@ export interface SettingsGetResultProxyReadTimeout {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsGetResultProxyReadTimeout = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsGetResultProxyReadTimeoutId,
-    value: S.Number,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsGetResultProxyReadTimeout",
-}) as any as S.Schema<SettingsGetResultProxyReadTimeout>;
+export const SettingsGetResultProxyReadTimeout =
+  SettingsGetResultZonesBrowserCacheTTL2 as any as S.Schema<SettingsGetResultProxyReadTimeout>;
 
 export type SettingsGetResultPseudoIPV4Id = "pseudo_ipv4";
 export const SettingsGetResultPseudoIPV4Id = S.String;
@@ -2651,16 +2379,8 @@ export interface SettingsGetResultPseudoIPV4 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsGetResultPseudoIPV4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsGetResultPseudoIPV4Id,
-    value: SettingsGetResultPseudoIPV4Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsGetResultPseudoIPV4",
-}) as any as S.Schema<SettingsGetResultPseudoIPV4>;
+export const SettingsGetResultPseudoIPV4 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsGetResultPseudoIPV4>;
 
 export type SettingsGetResultZonesRedirectsForAITrainingId = "redirects_for_ai_training";
 export const SettingsGetResultZonesRedirectsForAITrainingId = S.String;
@@ -2678,16 +2398,8 @@ export interface SettingsGetResultZonesRedirectsForAITraining {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsGetResultZonesRedirectsForAITraining = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsGetResultZonesRedirectsForAITrainingId,
-    value: SettingsGetResultZonesRedirectsForAITrainingValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsGetResultZonesRedirectsForAITraining",
-}) as any as S.Schema<SettingsGetResultZonesRedirectsForAITraining>;
+export const SettingsGetResultZonesRedirectsForAITraining =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsGetResultZonesRedirectsForAITraining>;
 
 export type SettingsGetResultZonesReplaceInsecureJSId = "replace_insecure_js";
 export const SettingsGetResultZonesReplaceInsecureJSId = S.String;
@@ -2705,16 +2417,8 @@ export interface SettingsGetResultZonesReplaceInsecureJS {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsGetResultZonesReplaceInsecureJS = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsGetResultZonesReplaceInsecureJSId,
-    value: SettingsGetResultZonesReplaceInsecureJSValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsGetResultZonesReplaceInsecureJS",
-}) as any as S.Schema<SettingsGetResultZonesReplaceInsecureJS>;
+export const SettingsGetResultZonesReplaceInsecureJS =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsGetResultZonesReplaceInsecureJS>;
 
 export type SettingsGetResultZonesResponseBuffering2Id = "response_buffering";
 export const SettingsGetResultZonesResponseBuffering2Id = S.String;
@@ -2732,16 +2436,8 @@ export interface SettingsGetResultZonesResponseBuffering2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsGetResultZonesResponseBuffering2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsGetResultZonesResponseBuffering2Id,
-    value: SettingsGetResultZonesResponseBuffering2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsGetResultZonesResponseBuffering2",
-}) as any as S.Schema<SettingsGetResultZonesResponseBuffering2>;
+export const SettingsGetResultZonesResponseBuffering2 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsGetResultZonesResponseBuffering2>;
 
 export type SettingsGetResultZonesRocketLoader2Id = "rocket_loader";
 export const SettingsGetResultZonesRocketLoader2Id = S.String;
@@ -2759,16 +2455,8 @@ export interface SettingsGetResultZonesRocketLoader2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsGetResultZonesRocketLoader2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsGetResultZonesRocketLoader2Id,
-    value: SettingsGetResultZonesRocketLoader2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsGetResultZonesRocketLoader2",
-}) as any as S.Schema<SettingsGetResultZonesRocketLoader2>;
+export const SettingsGetResultZonesRocketLoader2 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsGetResultZonesRocketLoader2>;
 
 export type SettingsGetResultZonesSchemasAutomaticPlatformOptimizationId =
   "automatic_platform_optimization";
@@ -2847,16 +2535,8 @@ export interface SettingsGetResultZonesSearchForAgents {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsGetResultZonesSearchForAgents = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsGetResultZonesSearchForAgentsId,
-    value: SettingsGetResultZonesSearchForAgentsValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsGetResultZonesSearchForAgents",
-}) as any as S.Schema<SettingsGetResultZonesSearchForAgents>;
+export const SettingsGetResultZonesSearchForAgents =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsGetResultZonesSearchForAgents>;
 
 export type SettingsGetResultSecurityHeadersId = "security_header";
 export const SettingsGetResultSecurityHeadersId = S.String;
@@ -2945,16 +2625,8 @@ export interface SettingsGetResultZonesSecurityLevel2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsGetResultZonesSecurityLevel2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsGetResultZonesSecurityLevel2Id,
-    value: SettingsGetResultZonesSecurityLevel2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsGetResultZonesSecurityLevel2",
-}) as any as S.Schema<SettingsGetResultZonesSecurityLevel2>;
+export const SettingsGetResultZonesSecurityLevel2 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsGetResultZonesSecurityLevel2>;
 
 export type SettingsGetResultServerSideExcludesId = "server_side_exclude";
 export const SettingsGetResultServerSideExcludesId = S.String;
@@ -2972,16 +2644,8 @@ export interface SettingsGetResultServerSideExcludes {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsGetResultServerSideExcludes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsGetResultServerSideExcludesId,
-    value: SettingsGetResultServerSideExcludesValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsGetResultServerSideExcludes",
-}) as any as S.Schema<SettingsGetResultServerSideExcludes>;
+export const SettingsGetResultServerSideExcludes =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsGetResultServerSideExcludes>;
 
 export type SettingsGetResultZonesSha1SupportId = "sha1_support";
 export const SettingsGetResultZonesSha1SupportId = S.String;
@@ -2999,16 +2663,8 @@ export interface SettingsGetResultZonesSha1Support {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsGetResultZonesSha1Support = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsGetResultZonesSha1SupportId,
-    value: SettingsGetResultZonesSha1SupportValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsGetResultZonesSha1Support",
-}) as any as S.Schema<SettingsGetResultZonesSha1Support>;
+export const SettingsGetResultZonesSha1Support =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsGetResultZonesSha1Support>;
 
 export type SettingsGetResultZonesSortQueryStringForCache2Id = "sort_query_string_for_cache";
 export const SettingsGetResultZonesSortQueryStringForCache2Id = S.String;
@@ -3026,16 +2682,8 @@ export interface SettingsGetResultZonesSortQueryStringForCache2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsGetResultZonesSortQueryStringForCache2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsGetResultZonesSortQueryStringForCache2Id,
-    value: SettingsGetResultZonesSortQueryStringForCache2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsGetResultZonesSortQueryStringForCache2",
-}) as any as S.Schema<SettingsGetResultZonesSortQueryStringForCache2>;
+export const SettingsGetResultZonesSortQueryStringForCache2 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsGetResultZonesSortQueryStringForCache2>;
 
 export type SettingsGetResultZonesSSL2Id = "ssl";
 export const SettingsGetResultZonesSSL2Id = S.String;
@@ -3053,16 +2701,8 @@ export interface SettingsGetResultZonesSSL2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsGetResultZonesSSL2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsGetResultZonesSSL2Id,
-    value: SettingsGetResultZonesSSL2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsGetResultZonesSSL2",
-}) as any as S.Schema<SettingsGetResultZonesSSL2>;
+export const SettingsGetResultZonesSSL2 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsGetResultZonesSSL2>;
 
 export type SettingsGetResultSSLRecommenderId = "ssl_recommender";
 export const SettingsGetResultSSLRecommenderId = S.String;
@@ -3098,16 +2738,8 @@ export interface SettingsGetResultZonesTLS12Only {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsGetResultZonesTLS12Only = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsGetResultZonesTLS12OnlyId,
-    value: SettingsGetResultZonesTLS12OnlyValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsGetResultZonesTLS12Only",
-}) as any as S.Schema<SettingsGetResultZonesTLS12Only>;
+export const SettingsGetResultZonesTLS12Only =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsGetResultZonesTLS12Only>;
 
 export type SettingsGetResultTLS13Id = "tls_1_3";
 export const SettingsGetResultTLS13Id = S.String;
@@ -3125,14 +2757,8 @@ export interface SettingsGetResultTLS13 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsGetResultTLS13 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsGetResultTLS13Id,
-    value: SettingsGetResultTLS13Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({ identifier: "SettingsGetResultTLS13" }) as any as S.Schema<SettingsGetResultTLS13>;
+export const SettingsGetResultTLS13 =
+  SettingsGetResultZeroRTT as any as S.Schema<SettingsGetResultTLS13>;
 
 export type SettingsGetResultTLSClientAuthId = "tls_client_auth";
 export const SettingsGetResultTLSClientAuthId = S.String;
@@ -3150,16 +2776,8 @@ export interface SettingsGetResultTLSClientAuth {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsGetResultTLSClientAuth = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsGetResultTLSClientAuthId,
-    value: SettingsGetResultTLSClientAuthValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsGetResultTLSClientAuth",
-}) as any as S.Schema<SettingsGetResultTLSClientAuth>;
+export const SettingsGetResultTLSClientAuth =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsGetResultTLSClientAuth>;
 
 export type SettingsGetResultZonesTransformationsId = "transformations";
 export const SettingsGetResultZonesTransformationsId = S.String;
@@ -3177,16 +2795,8 @@ export interface SettingsGetResultZonesTransformations {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsGetResultZonesTransformations = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsGetResultZonesTransformationsId,
-    value: SettingsGetResultZonesTransformationsValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsGetResultZonesTransformations",
-}) as any as S.Schema<SettingsGetResultZonesTransformations>;
+export const SettingsGetResultZonesTransformations =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsGetResultZonesTransformations>;
 
 export type SettingsGetResultZonesTransformationsAllowedOriginsId =
   "transformations_allowed_origins";
@@ -3229,16 +2839,8 @@ export interface SettingsGetResultZonesTrueClientIPHeader2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsGetResultZonesTrueClientIPHeader2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsGetResultZonesTrueClientIPHeader2Id,
-    value: SettingsGetResultZonesTrueClientIPHeader2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsGetResultZonesTrueClientIPHeader2",
-}) as any as S.Schema<SettingsGetResultZonesTrueClientIPHeader2>;
+export const SettingsGetResultZonesTrueClientIPHeader2 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsGetResultZonesTrueClientIPHeader2>;
 
 export type SettingsGetResultZonesWAF2Id = "waf";
 export const SettingsGetResultZonesWAF2Id = S.String;
@@ -3256,16 +2858,8 @@ export interface SettingsGetResultZonesWAF2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsGetResultZonesWAF2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsGetResultZonesWAF2Id,
-    value: SettingsGetResultZonesWAF2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsGetResultZonesWAF2",
-}) as any as S.Schema<SettingsGetResultZonesWAF2>;
+export const SettingsGetResultZonesWAF2 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsGetResultZonesWAF2>;
 
 export type SettingsGetResultZonesWebmcpEnabledId = "webmcp_enabled";
 export const SettingsGetResultZonesWebmcpEnabledId = S.String;
@@ -3283,16 +2877,8 @@ export interface SettingsGetResultZonesWebmcpEnabled {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsGetResultZonesWebmcpEnabled = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsGetResultZonesWebmcpEnabledId,
-    value: SettingsGetResultZonesWebmcpEnabledValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsGetResultZonesWebmcpEnabled",
-}) as any as S.Schema<SettingsGetResultZonesWebmcpEnabled>;
+export const SettingsGetResultZonesWebmcpEnabled =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsGetResultZonesWebmcpEnabled>;
 
 export type SettingsGetResultZonesWebmcpPacksId = "webmcp_packs";
 export const SettingsGetResultZonesWebmcpPacksId = S.String;
@@ -3307,16 +2893,8 @@ export interface SettingsGetResultZonesWebmcpPacks {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsGetResultZonesWebmcpPacks = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsGetResultZonesWebmcpPacksId,
-    value: S.String,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsGetResultZonesWebmcpPacks",
-}) as any as S.Schema<SettingsGetResultZonesWebmcpPacks>;
+export const SettingsGetResultZonesWebmcpPacks =
+  SettingsGetResultZonesTransformationsAllowedOrigins as any as S.Schema<SettingsGetResultZonesWebmcpPacks>;
 
 export type SettingsGetResultWebPId = "webp";
 export const SettingsGetResultWebPId = S.String;
@@ -3334,14 +2912,8 @@ export interface SettingsGetResultWebP {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsGetResultWebP = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsGetResultWebPId,
-    value: SettingsGetResultWebPValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({ identifier: "SettingsGetResultWebP" }) as any as S.Schema<SettingsGetResultWebP>;
+export const SettingsGetResultWebP =
+  SettingsGetResultZeroRTT as any as S.Schema<SettingsGetResultWebP>;
 
 export type SettingsGetResultWebsocketId = "websockets";
 export const SettingsGetResultWebsocketId = S.String;
@@ -3359,16 +2931,8 @@ export interface SettingsGetResultWebsocket {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsGetResultWebsocket = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsGetResultWebsocketId,
-    value: SettingsGetResultWebsocketValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsGetResultWebsocket",
-}) as any as S.Schema<SettingsGetResultWebsocket>;
+export const SettingsGetResultWebsocket =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsGetResultWebsocket>;
 
 export type SettingsGetResult =
   | SettingsGetResultZeroRTT
@@ -3732,16 +3296,8 @@ export interface GetTransformationsAllowedOriginResponse {
   /** Comma-separated list of allowed origin domains for image and video transformations. Use "*" to allow all origins (default). */
   value?: GetTransformationsAllowedOriginResponseValue | null;
 }
-export const GetTransformationsAllowedOriginResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(GetTransformationsAllowedOriginResponseId)),
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-    value: S.optional(S.NullOr(GetTransformationsAllowedOriginResponseValue)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "GetTransformationsAllowedOriginResponse",
-}) as any as S.Schema<GetTransformationsAllowedOriginResponse>;
+export const GetTransformationsAllowedOriginResponse =
+  EditTransformationsAllowedOriginResponse as any as S.Schema<GetTransformationsAllowedOriginResponse>;
 
 export interface GetTransformationsC2paRequest {
   /** Identifier. */
@@ -3776,16 +3332,8 @@ export interface GetTransformationsC2paResponse {
   /** Current value of the zone setting. */
   value?: GetTransformationsC2paResponseValue | null;
 }
-export const GetTransformationsC2paResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(GetTransformationsC2paResponseId)),
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-    value: S.optional(S.NullOr(GetTransformationsC2paResponseValue)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "GetTransformationsC2paResponse",
-}) as any as S.Schema<GetTransformationsC2paResponse>;
+export const GetTransformationsC2paResponse =
+  EditTransformationsAllowedOriginResponse as any as S.Schema<GetTransformationsC2paResponse>;
 
 export interface GetZoneRequest {
   /** Identifier */
@@ -4168,16 +3716,8 @@ export interface ListSettingsResultItemZeroRTT {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const ListSettingsResultItemZeroRTT = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: ListSettingsResultItemZeroRTTId,
-    value: ListSettingsResultItemZeroRTTValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "ListSettingsResultItemZeroRTT",
-}) as any as S.Schema<ListSettingsResultItemZeroRTT>;
+export const ListSettingsResultItemZeroRTT =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<ListSettingsResultItemZeroRTT>;
 
 export type ListSettingsResultItemAdvancedDDoSId = "advanced_ddos";
 export const ListSettingsResultItemAdvancedDDoSId = S.String;
@@ -4195,16 +3735,8 @@ export interface ListSettingsResultItemAdvancedDDoS {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const ListSettingsResultItemAdvancedDDoS = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: ListSettingsResultItemAdvancedDDoSId,
-    value: ListSettingsResultItemAdvancedDDoSValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "ListSettingsResultItemAdvancedDDoS",
-}) as any as S.Schema<ListSettingsResultItemAdvancedDDoS>;
+export const ListSettingsResultItemAdvancedDDoS =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<ListSettingsResultItemAdvancedDDoS>;
 
 export type ListSettingsResultItemZonesCacheRulesAegisId = "aegis";
 export const ListSettingsResultItemZonesCacheRulesAegisId = S.String;
@@ -4222,15 +3754,8 @@ export interface ListSettingsResultItemZonesCacheRulesAegis {
   /** Value of the zone setting. */
   value?: SettingsGetResultZonesCacheRulesAegisValue | null;
 }
-export const ListSettingsResultItemZonesCacheRulesAegis = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: ListSettingsResultItemZonesCacheRulesAegisId,
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-    value: S.optional(S.NullOr(SettingsGetResultZonesCacheRulesAegisValue)),
-  }),
-).annotate({
-  identifier: "ListSettingsResultItemZonesCacheRulesAegis",
-}) as any as S.Schema<ListSettingsResultItemZonesCacheRulesAegis>;
+export const ListSettingsResultItemZonesCacheRulesAegis =
+  SettingsGetResultZonesCacheRulesAegis as any as S.Schema<ListSettingsResultItemZonesCacheRulesAegis>;
 
 export type ListSettingsResultItemAlwaysOnlineId = "always_online";
 export const ListSettingsResultItemAlwaysOnlineId = S.String;
@@ -4248,16 +3773,8 @@ export interface ListSettingsResultItemAlwaysOnline {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const ListSettingsResultItemAlwaysOnline = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: ListSettingsResultItemAlwaysOnlineId,
-    value: ListSettingsResultItemAlwaysOnlineValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "ListSettingsResultItemAlwaysOnline",
-}) as any as S.Schema<ListSettingsResultItemAlwaysOnline>;
+export const ListSettingsResultItemAlwaysOnline =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<ListSettingsResultItemAlwaysOnline>;
 
 export type ListSettingsResultItemZonesAlwaysUseHTTPS2Id = "always_use_https";
 export const ListSettingsResultItemZonesAlwaysUseHTTPS2Id = S.String;
@@ -4275,16 +3792,8 @@ export interface ListSettingsResultItemZonesAlwaysUseHTTPS2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const ListSettingsResultItemZonesAlwaysUseHTTPS2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: ListSettingsResultItemZonesAlwaysUseHTTPS2Id,
-    value: ListSettingsResultItemZonesAlwaysUseHTTPS2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "ListSettingsResultItemZonesAlwaysUseHTTPS2",
-}) as any as S.Schema<ListSettingsResultItemZonesAlwaysUseHTTPS2>;
+export const ListSettingsResultItemZonesAlwaysUseHTTPS2 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<ListSettingsResultItemZonesAlwaysUseHTTPS2>;
 
 export type ListSettingsResultItemZonesAutomaticHTTPSRewrites2Id = "automatic_https_rewrites";
 export const ListSettingsResultItemZonesAutomaticHTTPSRewrites2Id = S.String;
@@ -4302,16 +3811,8 @@ export interface ListSettingsResultItemZonesAutomaticHTTPSRewrites2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const ListSettingsResultItemZonesAutomaticHTTPSRewrites2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: ListSettingsResultItemZonesAutomaticHTTPSRewrites2Id,
-    value: ListSettingsResultItemZonesAutomaticHTTPSRewrites2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "ListSettingsResultItemZonesAutomaticHTTPSRewrites2",
-}) as any as S.Schema<ListSettingsResultItemZonesAutomaticHTTPSRewrites2>;
+export const ListSettingsResultItemZonesAutomaticHTTPSRewrites2 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<ListSettingsResultItemZonesAutomaticHTTPSRewrites2>;
 
 export type ListSettingsResultItemBrotliId = "brotli";
 export const ListSettingsResultItemBrotliId = S.String;
@@ -4329,16 +3830,8 @@ export interface ListSettingsResultItemBrotli {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const ListSettingsResultItemBrotli = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: ListSettingsResultItemBrotliId,
-    value: ListSettingsResultItemBrotliValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "ListSettingsResultItemBrotli",
-}) as any as S.Schema<ListSettingsResultItemBrotli>;
+export const ListSettingsResultItemBrotli =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<ListSettingsResultItemBrotli>;
 
 export type ListSettingsResultItemZonesBrowserCacheTTL2Id = "browser_cache_ttl";
 export const ListSettingsResultItemZonesBrowserCacheTTL2Id = S.String;
@@ -4353,16 +3846,8 @@ export interface ListSettingsResultItemZonesBrowserCacheTTL2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const ListSettingsResultItemZonesBrowserCacheTTL2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: ListSettingsResultItemZonesBrowserCacheTTL2Id,
-    value: S.Number,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "ListSettingsResultItemZonesBrowserCacheTTL2",
-}) as any as S.Schema<ListSettingsResultItemZonesBrowserCacheTTL2>;
+export const ListSettingsResultItemZonesBrowserCacheTTL2 =
+  SettingsGetResultZonesBrowserCacheTTL2 as any as S.Schema<ListSettingsResultItemZonesBrowserCacheTTL2>;
 
 export type ListSettingsResultItemZonesBrowserCheck2Id = "browser_check";
 export const ListSettingsResultItemZonesBrowserCheck2Id = S.String;
@@ -4380,16 +3865,8 @@ export interface ListSettingsResultItemZonesBrowserCheck2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const ListSettingsResultItemZonesBrowserCheck2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: ListSettingsResultItemZonesBrowserCheck2Id,
-    value: ListSettingsResultItemZonesBrowserCheck2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "ListSettingsResultItemZonesBrowserCheck2",
-}) as any as S.Schema<ListSettingsResultItemZonesBrowserCheck2>;
+export const ListSettingsResultItemZonesBrowserCheck2 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<ListSettingsResultItemZonesBrowserCheck2>;
 
 export type ListSettingsResultItemZonesCacheLevel2Id = "cache_level";
 export const ListSettingsResultItemZonesCacheLevel2Id = S.String;
@@ -4407,16 +3884,8 @@ export interface ListSettingsResultItemZonesCacheLevel2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const ListSettingsResultItemZonesCacheLevel2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: ListSettingsResultItemZonesCacheLevel2Id,
-    value: ListSettingsResultItemZonesCacheLevel2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "ListSettingsResultItemZonesCacheLevel2",
-}) as any as S.Schema<ListSettingsResultItemZonesCacheLevel2>;
+export const ListSettingsResultItemZonesCacheLevel2 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<ListSettingsResultItemZonesCacheLevel2>;
 
 export type ListSettingsResultItemChallengeTTLId = "challenge_ttl";
 export const ListSettingsResultItemChallengeTTLId = S.String;
@@ -4448,16 +3917,8 @@ export interface ListSettingsResultItemChallengeTTL {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const ListSettingsResultItemChallengeTTL = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: ListSettingsResultItemChallengeTTLId,
-    value: ListSettingsResultItemChallengeTTLValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "ListSettingsResultItemChallengeTTL",
-}) as any as S.Schema<ListSettingsResultItemChallengeTTL>;
+export const ListSettingsResultItemChallengeTTL =
+  SettingsGetResultChallengeTTL as any as S.Schema<ListSettingsResultItemChallengeTTL>;
 
 export type ListSettingsResultItemCiphersId = "ciphers";
 export const ListSettingsResultItemCiphersId = S.String;
@@ -4503,16 +3964,8 @@ export interface ListSettingsResultItemZonesContentConverter {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const ListSettingsResultItemZonesContentConverter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: ListSettingsResultItemZonesContentConverterId,
-    value: ListSettingsResultItemZonesContentConverterValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "ListSettingsResultItemZonesContentConverter",
-}) as any as S.Schema<ListSettingsResultItemZonesContentConverter>;
+export const ListSettingsResultItemZonesContentConverter =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<ListSettingsResultItemZonesContentConverter>;
 
 export type ListSettingsResultItemZonesCNAMEFlatteningId = "cname_flattening";
 export const ListSettingsResultItemZonesCNAMEFlatteningId = S.String;
@@ -4530,16 +3983,8 @@ export interface ListSettingsResultItemZonesCNAMEFlattening {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const ListSettingsResultItemZonesCNAMEFlattening = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: ListSettingsResultItemZonesCNAMEFlatteningId,
-    value: ListSettingsResultItemZonesCNAMEFlatteningValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "ListSettingsResultItemZonesCNAMEFlattening",
-}) as any as S.Schema<ListSettingsResultItemZonesCNAMEFlattening>;
+export const ListSettingsResultItemZonesCNAMEFlattening =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<ListSettingsResultItemZonesCNAMEFlattening>;
 
 export type ListSettingsResultItemDevelopmentModeId = "development_mode";
 export const ListSettingsResultItemDevelopmentModeId = S.String;
@@ -4559,17 +4004,8 @@ export interface ListSettingsResultItemDevelopmentMode {
   /** Value of the zone setting. Notes: The interval (in seconds) from when development mode expires (positive integer) or last expired (negative integer) for the domain. If development mode has never been enabled, this value is false. */
   timeRemaining?: number | null;
 }
-export const ListSettingsResultItemDevelopmentMode = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: ListSettingsResultItemDevelopmentModeId,
-    value: ListSettingsResultItemDevelopmentModeValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-    timeRemaining: S.optional(S.NullOr(S.Number).pipe(T.Body("time_remaining"))),
-  }),
-).annotate({
-  identifier: "ListSettingsResultItemDevelopmentMode",
-}) as any as S.Schema<ListSettingsResultItemDevelopmentMode>;
+export const ListSettingsResultItemDevelopmentMode =
+  SettingsGetResultDevelopmentMode as any as S.Schema<ListSettingsResultItemDevelopmentMode>;
 
 export type ListSettingsResultItemEarlyHintsId = "early_hints";
 export const ListSettingsResultItemEarlyHintsId = S.String;
@@ -4587,16 +4023,8 @@ export interface ListSettingsResultItemEarlyHints {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const ListSettingsResultItemEarlyHints = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: ListSettingsResultItemEarlyHintsId,
-    value: ListSettingsResultItemEarlyHintsValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "ListSettingsResultItemEarlyHints",
-}) as any as S.Schema<ListSettingsResultItemEarlyHints>;
+export const ListSettingsResultItemEarlyHints =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<ListSettingsResultItemEarlyHints>;
 
 export type ListSettingsResultItemZonesEdgeCacheTTL2Id = "edge_cache_ttl";
 export const ListSettingsResultItemZonesEdgeCacheTTL2Id = S.String;
@@ -4635,16 +4063,8 @@ export interface ListSettingsResultItemZonesEdgeCacheTTL2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const ListSettingsResultItemZonesEdgeCacheTTL2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: ListSettingsResultItemZonesEdgeCacheTTL2Id,
-    value: ListSettingsResultItemZonesEdgeCacheTTL2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "ListSettingsResultItemZonesEdgeCacheTTL2",
-}) as any as S.Schema<ListSettingsResultItemZonesEdgeCacheTTL2>;
+export const ListSettingsResultItemZonesEdgeCacheTTL2 =
+  SettingsGetResultChallengeTTL as any as S.Schema<ListSettingsResultItemZonesEdgeCacheTTL2>;
 
 export type ListSettingsResultItemZonesEmailObfuscation2Id = "email_obfuscation";
 export const ListSettingsResultItemZonesEmailObfuscation2Id = S.String;
@@ -4662,16 +4082,8 @@ export interface ListSettingsResultItemZonesEmailObfuscation2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const ListSettingsResultItemZonesEmailObfuscation2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: ListSettingsResultItemZonesEmailObfuscation2Id,
-    value: ListSettingsResultItemZonesEmailObfuscation2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "ListSettingsResultItemZonesEmailObfuscation2",
-}) as any as S.Schema<ListSettingsResultItemZonesEmailObfuscation2>;
+export const ListSettingsResultItemZonesEmailObfuscation2 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<ListSettingsResultItemZonesEmailObfuscation2>;
 
 export type ListSettingsResultItemH2PrioritizationId = "h2_prioritization";
 export const ListSettingsResultItemH2PrioritizationId = S.String;
@@ -4689,16 +4101,8 @@ export interface ListSettingsResultItemH2Prioritization {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const ListSettingsResultItemH2Prioritization = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: ListSettingsResultItemH2PrioritizationId,
-    value: ListSettingsResultItemH2PrioritizationValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "ListSettingsResultItemH2Prioritization",
-}) as any as S.Schema<ListSettingsResultItemH2Prioritization>;
+export const ListSettingsResultItemH2Prioritization =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<ListSettingsResultItemH2Prioritization>;
 
 export type ListSettingsResultItemHotlinkProtectionId = "hotlink_protection";
 export const ListSettingsResultItemHotlinkProtectionId = S.String;
@@ -4716,16 +4120,8 @@ export interface ListSettingsResultItemHotlinkProtection {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const ListSettingsResultItemHotlinkProtection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: ListSettingsResultItemHotlinkProtectionId,
-    value: ListSettingsResultItemHotlinkProtectionValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "ListSettingsResultItemHotlinkProtection",
-}) as any as S.Schema<ListSettingsResultItemHotlinkProtection>;
+export const ListSettingsResultItemHotlinkProtection =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<ListSettingsResultItemHotlinkProtection>;
 
 export type ListSettingsResultItemHTTP2Id = "http2";
 export const ListSettingsResultItemHTTP2Id = S.String;
@@ -4743,16 +4139,8 @@ export interface ListSettingsResultItemHTTP2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const ListSettingsResultItemHTTP2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: ListSettingsResultItemHTTP2Id,
-    value: ListSettingsResultItemHTTP2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "ListSettingsResultItemHTTP2",
-}) as any as S.Schema<ListSettingsResultItemHTTP2>;
+export const ListSettingsResultItemHTTP2 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<ListSettingsResultItemHTTP2>;
 
 export type ListSettingsResultItemHTTP3Id = "http3";
 export const ListSettingsResultItemHTTP3Id = S.String;
@@ -4770,16 +4158,8 @@ export interface ListSettingsResultItemHTTP3 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const ListSettingsResultItemHTTP3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: ListSettingsResultItemHTTP3Id,
-    value: ListSettingsResultItemHTTP3Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "ListSettingsResultItemHTTP3",
-}) as any as S.Schema<ListSettingsResultItemHTTP3>;
+export const ListSettingsResultItemHTTP3 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<ListSettingsResultItemHTTP3>;
 
 export type ListSettingsResultItemImageResizingId = "image_resizing";
 export const ListSettingsResultItemImageResizingId = S.String;
@@ -4797,16 +4177,8 @@ export interface ListSettingsResultItemImageResizing {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const ListSettingsResultItemImageResizing = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: ListSettingsResultItemImageResizingId,
-    value: ListSettingsResultItemImageResizingValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "ListSettingsResultItemImageResizing",
-}) as any as S.Schema<ListSettingsResultItemImageResizing>;
+export const ListSettingsResultItemImageResizing =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<ListSettingsResultItemImageResizing>;
 
 export type ListSettingsResultItemZonesIPGeolocation2Id = "ip_geolocation";
 export const ListSettingsResultItemZonesIPGeolocation2Id = S.String;
@@ -4824,16 +4196,8 @@ export interface ListSettingsResultItemZonesIPGeolocation2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const ListSettingsResultItemZonesIPGeolocation2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: ListSettingsResultItemZonesIPGeolocation2Id,
-    value: ListSettingsResultItemZonesIPGeolocation2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "ListSettingsResultItemZonesIPGeolocation2",
-}) as any as S.Schema<ListSettingsResultItemZonesIPGeolocation2>;
+export const ListSettingsResultItemZonesIPGeolocation2 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<ListSettingsResultItemZonesIPGeolocation2>;
 
 export type ListSettingsResultItemIPV6Id = "ipv6";
 export const ListSettingsResultItemIPV6Id = S.String;
@@ -4851,16 +4215,8 @@ export interface ListSettingsResultItemIPV6 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const ListSettingsResultItemIPV6 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: ListSettingsResultItemIPV6Id,
-    value: ListSettingsResultItemIPV6Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "ListSettingsResultItemIPV6",
-}) as any as S.Schema<ListSettingsResultItemIPV6>;
+export const ListSettingsResultItemIPV6 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<ListSettingsResultItemIPV6>;
 
 export type ListSettingsResultItemZonesMaxUploadId = "max_upload";
 export const ListSettingsResultItemZonesMaxUploadId = S.String;
@@ -4904,16 +4260,8 @@ export interface ListSettingsResultItemZonesMaxUpload {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const ListSettingsResultItemZonesMaxUpload = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: ListSettingsResultItemZonesMaxUploadId,
-    value: ListSettingsResultItemZonesMaxUploadValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "ListSettingsResultItemZonesMaxUpload",
-}) as any as S.Schema<ListSettingsResultItemZonesMaxUpload>;
+export const ListSettingsResultItemZonesMaxUpload =
+  SettingsGetResultChallengeTTL as any as S.Schema<ListSettingsResultItemZonesMaxUpload>;
 
 export type ListSettingsResultItemMinTLSVersionId = "min_tls_version";
 export const ListSettingsResultItemMinTLSVersionId = S.String;
@@ -4931,16 +4279,8 @@ export interface ListSettingsResultItemMinTLSVersion {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const ListSettingsResultItemMinTLSVersion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: ListSettingsResultItemMinTLSVersionId,
-    value: ListSettingsResultItemMinTLSVersionValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "ListSettingsResultItemMinTLSVersion",
-}) as any as S.Schema<ListSettingsResultItemMinTLSVersion>;
+export const ListSettingsResultItemMinTLSVersion =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<ListSettingsResultItemMinTLSVersion>;
 
 export type ListSettingsResultItemZonesMirage2Id = "mirage";
 export const ListSettingsResultItemZonesMirage2Id = S.String;
@@ -4958,16 +4298,8 @@ export interface ListSettingsResultItemZonesMirage2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const ListSettingsResultItemZonesMirage2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: ListSettingsResultItemZonesMirage2Id,
-    value: ListSettingsResultItemZonesMirage2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "ListSettingsResultItemZonesMirage2",
-}) as any as S.Schema<ListSettingsResultItemZonesMirage2>;
+export const ListSettingsResultItemZonesMirage2 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<ListSettingsResultItemZonesMirage2>;
 
 export type ListSettingsResultItemNELId = "nel";
 export const ListSettingsResultItemNELId = S.String;
@@ -5012,16 +4344,8 @@ export interface ListSettingsResultItemZonesOpportunisticEncryption2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const ListSettingsResultItemZonesOpportunisticEncryption2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: ListSettingsResultItemZonesOpportunisticEncryption2Id,
-    value: ListSettingsResultItemZonesOpportunisticEncryption2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "ListSettingsResultItemZonesOpportunisticEncryption2",
-}) as any as S.Schema<ListSettingsResultItemZonesOpportunisticEncryption2>;
+export const ListSettingsResultItemZonesOpportunisticEncryption2 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<ListSettingsResultItemZonesOpportunisticEncryption2>;
 
 export type ListSettingsResultItemOpportunisticOnionId = "opportunistic_onion";
 export const ListSettingsResultItemOpportunisticOnionId = S.String;
@@ -5039,16 +4363,8 @@ export interface ListSettingsResultItemOpportunisticOnion {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const ListSettingsResultItemOpportunisticOnion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: ListSettingsResultItemOpportunisticOnionId,
-    value: ListSettingsResultItemOpportunisticOnionValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "ListSettingsResultItemOpportunisticOnion",
-}) as any as S.Schema<ListSettingsResultItemOpportunisticOnion>;
+export const ListSettingsResultItemOpportunisticOnion =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<ListSettingsResultItemOpportunisticOnion>;
 
 export type ListSettingsResultItemOrangeToOrangeId = "orange_to_orange";
 export const ListSettingsResultItemOrangeToOrangeId = S.String;
@@ -5066,16 +4382,8 @@ export interface ListSettingsResultItemOrangeToOrange {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const ListSettingsResultItemOrangeToOrange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: ListSettingsResultItemOrangeToOrangeId,
-    value: ListSettingsResultItemOrangeToOrangeValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "ListSettingsResultItemOrangeToOrange",
-}) as any as S.Schema<ListSettingsResultItemOrangeToOrange>;
+export const ListSettingsResultItemOrangeToOrange =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<ListSettingsResultItemOrangeToOrange>;
 
 export type ListSettingsResultItemZonesOriginErrorPagePassThru2Id = "origin_error_page_pass_thru";
 export const ListSettingsResultItemZonesOriginErrorPagePassThru2Id = S.String;
@@ -5093,16 +4401,8 @@ export interface ListSettingsResultItemZonesOriginErrorPagePassThru2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const ListSettingsResultItemZonesOriginErrorPagePassThru2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: ListSettingsResultItemZonesOriginErrorPagePassThru2Id,
-    value: ListSettingsResultItemZonesOriginErrorPagePassThru2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "ListSettingsResultItemZonesOriginErrorPagePassThru2",
-}) as any as S.Schema<ListSettingsResultItemZonesOriginErrorPagePassThru2>;
+export const ListSettingsResultItemZonesOriginErrorPagePassThru2 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<ListSettingsResultItemZonesOriginErrorPagePassThru2>;
 
 export type ListSettingsResultItemZonesCacheRulesOriginH2MaxStreamsId = "origin_h2_max_streams";
 export const ListSettingsResultItemZonesCacheRulesOriginH2MaxStreamsId = S.String;
@@ -5115,15 +4415,8 @@ export interface ListSettingsResultItemZonesCacheRulesOriginH2MaxStreams {
   /** Value of the Origin H2 Max Streams Setting. */
   value?: number | null;
 }
-export const ListSettingsResultItemZonesCacheRulesOriginH2MaxStreams = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: ListSettingsResultItemZonesCacheRulesOriginH2MaxStreamsId,
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-    value: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "ListSettingsResultItemZonesCacheRulesOriginH2MaxStreams",
-}) as any as S.Schema<ListSettingsResultItemZonesCacheRulesOriginH2MaxStreams>;
+export const ListSettingsResultItemZonesCacheRulesOriginH2MaxStreams =
+  SettingsGetResultZonesCacheRulesOriginH2MaxStreams as any as S.Schema<ListSettingsResultItemZonesCacheRulesOriginH2MaxStreams>;
 
 export type ListSettingsResultItemZonesCacheRulesOriginMaxHTTPVersionId = "origin_max_http_version";
 export const ListSettingsResultItemZonesCacheRulesOriginMaxHTTPVersionId = S.String;
@@ -5166,16 +4459,8 @@ export interface ListSettingsResultItemZonesPolish2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const ListSettingsResultItemZonesPolish2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: ListSettingsResultItemZonesPolish2Id,
-    value: ListSettingsResultItemZonesPolish2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "ListSettingsResultItemZonesPolish2",
-}) as any as S.Schema<ListSettingsResultItemZonesPolish2>;
+export const ListSettingsResultItemZonesPolish2 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<ListSettingsResultItemZonesPolish2>;
 
 export type ListSettingsResultItemPrefetchPreloadId = "prefetch_preload";
 export const ListSettingsResultItemPrefetchPreloadId = S.String;
@@ -5193,16 +4478,8 @@ export interface ListSettingsResultItemPrefetchPreload {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const ListSettingsResultItemPrefetchPreload = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: ListSettingsResultItemPrefetchPreloadId,
-    value: ListSettingsResultItemPrefetchPreloadValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "ListSettingsResultItemPrefetchPreload",
-}) as any as S.Schema<ListSettingsResultItemPrefetchPreload>;
+export const ListSettingsResultItemPrefetchPreload =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<ListSettingsResultItemPrefetchPreload>;
 
 export type ListSettingsResultItemZonesPreRenderId = "pre_render";
 export const ListSettingsResultItemZonesPreRenderId = S.String;
@@ -5220,16 +4497,8 @@ export interface ListSettingsResultItemZonesPreRender {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const ListSettingsResultItemZonesPreRender = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: ListSettingsResultItemZonesPreRenderId,
-    value: ListSettingsResultItemZonesPreRenderValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "ListSettingsResultItemZonesPreRender",
-}) as any as S.Schema<ListSettingsResultItemZonesPreRender>;
+export const ListSettingsResultItemZonesPreRender =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<ListSettingsResultItemZonesPreRender>;
 
 export type ListSettingsResultItemZonesPrivacyPassId = "privacy_pass";
 export const ListSettingsResultItemZonesPrivacyPassId = S.String;
@@ -5247,16 +4516,8 @@ export interface ListSettingsResultItemZonesPrivacyPass {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const ListSettingsResultItemZonesPrivacyPass = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: ListSettingsResultItemZonesPrivacyPassId,
-    value: ListSettingsResultItemZonesPrivacyPassValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "ListSettingsResultItemZonesPrivacyPass",
-}) as any as S.Schema<ListSettingsResultItemZonesPrivacyPass>;
+export const ListSettingsResultItemZonesPrivacyPass =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<ListSettingsResultItemZonesPrivacyPass>;
 
 export type ListSettingsResultItemProxyReadTimeoutId = "proxy_read_timeout";
 export const ListSettingsResultItemProxyReadTimeoutId = S.String;
@@ -5271,16 +4532,8 @@ export interface ListSettingsResultItemProxyReadTimeout {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const ListSettingsResultItemProxyReadTimeout = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: ListSettingsResultItemProxyReadTimeoutId,
-    value: S.Number,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "ListSettingsResultItemProxyReadTimeout",
-}) as any as S.Schema<ListSettingsResultItemProxyReadTimeout>;
+export const ListSettingsResultItemProxyReadTimeout =
+  SettingsGetResultZonesBrowserCacheTTL2 as any as S.Schema<ListSettingsResultItemProxyReadTimeout>;
 
 export type ListSettingsResultItemPseudoIPV4Id = "pseudo_ipv4";
 export const ListSettingsResultItemPseudoIPV4Id = S.String;
@@ -5298,16 +4551,8 @@ export interface ListSettingsResultItemPseudoIPV4 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const ListSettingsResultItemPseudoIPV4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: ListSettingsResultItemPseudoIPV4Id,
-    value: ListSettingsResultItemPseudoIPV4Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "ListSettingsResultItemPseudoIPV4",
-}) as any as S.Schema<ListSettingsResultItemPseudoIPV4>;
+export const ListSettingsResultItemPseudoIPV4 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<ListSettingsResultItemPseudoIPV4>;
 
 export type ListSettingsResultItemZonesRedirectsForAITrainingId = "redirects_for_ai_training";
 export const ListSettingsResultItemZonesRedirectsForAITrainingId = S.String;
@@ -5325,16 +4570,8 @@ export interface ListSettingsResultItemZonesRedirectsForAITraining {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const ListSettingsResultItemZonesRedirectsForAITraining = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: ListSettingsResultItemZonesRedirectsForAITrainingId,
-    value: ListSettingsResultItemZonesRedirectsForAITrainingValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "ListSettingsResultItemZonesRedirectsForAITraining",
-}) as any as S.Schema<ListSettingsResultItemZonesRedirectsForAITraining>;
+export const ListSettingsResultItemZonesRedirectsForAITraining =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<ListSettingsResultItemZonesRedirectsForAITraining>;
 
 export type ListSettingsResultItemZonesReplaceInsecureJSId = "replace_insecure_js";
 export const ListSettingsResultItemZonesReplaceInsecureJSId = S.String;
@@ -5352,16 +4589,8 @@ export interface ListSettingsResultItemZonesReplaceInsecureJS {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const ListSettingsResultItemZonesReplaceInsecureJS = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: ListSettingsResultItemZonesReplaceInsecureJSId,
-    value: ListSettingsResultItemZonesReplaceInsecureJSValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "ListSettingsResultItemZonesReplaceInsecureJS",
-}) as any as S.Schema<ListSettingsResultItemZonesReplaceInsecureJS>;
+export const ListSettingsResultItemZonesReplaceInsecureJS =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<ListSettingsResultItemZonesReplaceInsecureJS>;
 
 export type ListSettingsResultItemZonesResponseBuffering2Id = "response_buffering";
 export const ListSettingsResultItemZonesResponseBuffering2Id = S.String;
@@ -5379,16 +4608,8 @@ export interface ListSettingsResultItemZonesResponseBuffering2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const ListSettingsResultItemZonesResponseBuffering2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: ListSettingsResultItemZonesResponseBuffering2Id,
-    value: ListSettingsResultItemZonesResponseBuffering2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "ListSettingsResultItemZonesResponseBuffering2",
-}) as any as S.Schema<ListSettingsResultItemZonesResponseBuffering2>;
+export const ListSettingsResultItemZonesResponseBuffering2 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<ListSettingsResultItemZonesResponseBuffering2>;
 
 export type ListSettingsResultItemZonesRocketLoader2Id = "rocket_loader";
 export const ListSettingsResultItemZonesRocketLoader2Id = S.String;
@@ -5406,16 +4627,8 @@ export interface ListSettingsResultItemZonesRocketLoader2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const ListSettingsResultItemZonesRocketLoader2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: ListSettingsResultItemZonesRocketLoader2Id,
-    value: ListSettingsResultItemZonesRocketLoader2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "ListSettingsResultItemZonesRocketLoader2",
-}) as any as S.Schema<ListSettingsResultItemZonesRocketLoader2>;
+export const ListSettingsResultItemZonesRocketLoader2 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<ListSettingsResultItemZonesRocketLoader2>;
 
 export type ListSettingsResultItemZonesSchemasAutomaticPlatformOptimizationId =
   "automatic_platform_optimization";
@@ -5481,16 +4694,8 @@ export interface ListSettingsResultItemZonesSearchForAgents {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const ListSettingsResultItemZonesSearchForAgents = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: ListSettingsResultItemZonesSearchForAgentsId,
-    value: ListSettingsResultItemZonesSearchForAgentsValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "ListSettingsResultItemZonesSearchForAgents",
-}) as any as S.Schema<ListSettingsResultItemZonesSearchForAgents>;
+export const ListSettingsResultItemZonesSearchForAgents =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<ListSettingsResultItemZonesSearchForAgents>;
 
 export type ListSettingsResultItemSecurityHeadersId = "security_header";
 export const ListSettingsResultItemSecurityHeadersId = S.String;
@@ -5513,16 +4718,8 @@ export interface ListSettingsResultItemSecurityHeaders {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const ListSettingsResultItemSecurityHeaders = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: ListSettingsResultItemSecurityHeadersId,
-    value: SettingsGetResultSecurityHeadersValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "ListSettingsResultItemSecurityHeaders",
-}) as any as S.Schema<ListSettingsResultItemSecurityHeaders>;
+export const ListSettingsResultItemSecurityHeaders =
+  SettingsGetResultSecurityHeaders as any as S.Schema<ListSettingsResultItemSecurityHeaders>;
 
 export type ListSettingsResultItemZonesSecurityLevel2Id = "security_level";
 export const ListSettingsResultItemZonesSecurityLevel2Id = S.String;
@@ -5546,16 +4743,8 @@ export interface ListSettingsResultItemZonesSecurityLevel2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const ListSettingsResultItemZonesSecurityLevel2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: ListSettingsResultItemZonesSecurityLevel2Id,
-    value: ListSettingsResultItemZonesSecurityLevel2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "ListSettingsResultItemZonesSecurityLevel2",
-}) as any as S.Schema<ListSettingsResultItemZonesSecurityLevel2>;
+export const ListSettingsResultItemZonesSecurityLevel2 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<ListSettingsResultItemZonesSecurityLevel2>;
 
 export type ListSettingsResultItemServerSideExcludesId = "server_side_exclude";
 export const ListSettingsResultItemServerSideExcludesId = S.String;
@@ -5573,16 +4762,8 @@ export interface ListSettingsResultItemServerSideExcludes {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const ListSettingsResultItemServerSideExcludes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: ListSettingsResultItemServerSideExcludesId,
-    value: ListSettingsResultItemServerSideExcludesValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "ListSettingsResultItemServerSideExcludes",
-}) as any as S.Schema<ListSettingsResultItemServerSideExcludes>;
+export const ListSettingsResultItemServerSideExcludes =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<ListSettingsResultItemServerSideExcludes>;
 
 export type ListSettingsResultItemZonesSha1SupportId = "sha1_support";
 export const ListSettingsResultItemZonesSha1SupportId = S.String;
@@ -5600,16 +4781,8 @@ export interface ListSettingsResultItemZonesSha1Support {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const ListSettingsResultItemZonesSha1Support = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: ListSettingsResultItemZonesSha1SupportId,
-    value: ListSettingsResultItemZonesSha1SupportValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "ListSettingsResultItemZonesSha1Support",
-}) as any as S.Schema<ListSettingsResultItemZonesSha1Support>;
+export const ListSettingsResultItemZonesSha1Support =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<ListSettingsResultItemZonesSha1Support>;
 
 export type ListSettingsResultItemZonesSortQueryStringForCache2Id = "sort_query_string_for_cache";
 export const ListSettingsResultItemZonesSortQueryStringForCache2Id = S.String;
@@ -5627,16 +4800,8 @@ export interface ListSettingsResultItemZonesSortQueryStringForCache2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const ListSettingsResultItemZonesSortQueryStringForCache2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: ListSettingsResultItemZonesSortQueryStringForCache2Id,
-    value: ListSettingsResultItemZonesSortQueryStringForCache2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "ListSettingsResultItemZonesSortQueryStringForCache2",
-}) as any as S.Schema<ListSettingsResultItemZonesSortQueryStringForCache2>;
+export const ListSettingsResultItemZonesSortQueryStringForCache2 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<ListSettingsResultItemZonesSortQueryStringForCache2>;
 
 export type ListSettingsResultItemZonesSSL2Id = "ssl";
 export const ListSettingsResultItemZonesSSL2Id = S.String;
@@ -5654,16 +4819,8 @@ export interface ListSettingsResultItemZonesSSL2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const ListSettingsResultItemZonesSSL2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: ListSettingsResultItemZonesSSL2Id,
-    value: ListSettingsResultItemZonesSSL2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "ListSettingsResultItemZonesSSL2",
-}) as any as S.Schema<ListSettingsResultItemZonesSSL2>;
+export const ListSettingsResultItemZonesSSL2 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<ListSettingsResultItemZonesSSL2>;
 
 export type ListSettingsResultItemSSLRecommenderId = "ssl_recommender";
 export const ListSettingsResultItemSSLRecommenderId = S.String;
@@ -5674,14 +4831,8 @@ export interface ListSettingsResultItemSSLRecommender {
   /** ssl-recommender enrollment setting. */
   enabled?: boolean | null;
 }
-export const ListSettingsResultItemSSLRecommender = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(ListSettingsResultItemSSLRecommenderId)),
-    enabled: S.optional(S.NullOr(S.Boolean)),
-  }),
-).annotate({
-  identifier: "ListSettingsResultItemSSLRecommender",
-}) as any as S.Schema<ListSettingsResultItemSSLRecommender>;
+export const ListSettingsResultItemSSLRecommender =
+  SettingsGetResultSSLRecommender as any as S.Schema<ListSettingsResultItemSSLRecommender>;
 
 export type ListSettingsResultItemZonesTLS12OnlyId = "tls_1_2_only";
 export const ListSettingsResultItemZonesTLS12OnlyId = S.String;
@@ -5699,16 +4850,8 @@ export interface ListSettingsResultItemZonesTLS12Only {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const ListSettingsResultItemZonesTLS12Only = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: ListSettingsResultItemZonesTLS12OnlyId,
-    value: ListSettingsResultItemZonesTLS12OnlyValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "ListSettingsResultItemZonesTLS12Only",
-}) as any as S.Schema<ListSettingsResultItemZonesTLS12Only>;
+export const ListSettingsResultItemZonesTLS12Only =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<ListSettingsResultItemZonesTLS12Only>;
 
 export type ListSettingsResultItemTLS13Id = "tls_1_3";
 export const ListSettingsResultItemTLS13Id = S.String;
@@ -5726,16 +4869,8 @@ export interface ListSettingsResultItemTLS13 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const ListSettingsResultItemTLS13 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: ListSettingsResultItemTLS13Id,
-    value: ListSettingsResultItemTLS13Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "ListSettingsResultItemTLS13",
-}) as any as S.Schema<ListSettingsResultItemTLS13>;
+export const ListSettingsResultItemTLS13 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<ListSettingsResultItemTLS13>;
 
 export type ListSettingsResultItemTLSClientAuthId = "tls_client_auth";
 export const ListSettingsResultItemTLSClientAuthId = S.String;
@@ -5753,16 +4888,8 @@ export interface ListSettingsResultItemTLSClientAuth {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const ListSettingsResultItemTLSClientAuth = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: ListSettingsResultItemTLSClientAuthId,
-    value: ListSettingsResultItemTLSClientAuthValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "ListSettingsResultItemTLSClientAuth",
-}) as any as S.Schema<ListSettingsResultItemTLSClientAuth>;
+export const ListSettingsResultItemTLSClientAuth =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<ListSettingsResultItemTLSClientAuth>;
 
 export type ListSettingsResultItemZonesTransformationsId = "transformations";
 export const ListSettingsResultItemZonesTransformationsId = S.String;
@@ -5780,16 +4907,8 @@ export interface ListSettingsResultItemZonesTransformations {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const ListSettingsResultItemZonesTransformations = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: ListSettingsResultItemZonesTransformationsId,
-    value: ListSettingsResultItemZonesTransformationsValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "ListSettingsResultItemZonesTransformations",
-}) as any as S.Schema<ListSettingsResultItemZonesTransformations>;
+export const ListSettingsResultItemZonesTransformations =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<ListSettingsResultItemZonesTransformations>;
 
 export type ListSettingsResultItemZonesTransformationsAllowedOriginsId =
   "transformations_allowed_origins";
@@ -5833,16 +4952,8 @@ export interface ListSettingsResultItemZonesTrueClientIPHeader2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const ListSettingsResultItemZonesTrueClientIPHeader2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: ListSettingsResultItemZonesTrueClientIPHeader2Id,
-    value: ListSettingsResultItemZonesTrueClientIPHeader2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "ListSettingsResultItemZonesTrueClientIPHeader2",
-}) as any as S.Schema<ListSettingsResultItemZonesTrueClientIPHeader2>;
+export const ListSettingsResultItemZonesTrueClientIPHeader2 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<ListSettingsResultItemZonesTrueClientIPHeader2>;
 
 export type ListSettingsResultItemZonesWAF2Id = "waf";
 export const ListSettingsResultItemZonesWAF2Id = S.String;
@@ -5860,16 +4971,8 @@ export interface ListSettingsResultItemZonesWAF2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const ListSettingsResultItemZonesWAF2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: ListSettingsResultItemZonesWAF2Id,
-    value: ListSettingsResultItemZonesWAF2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "ListSettingsResultItemZonesWAF2",
-}) as any as S.Schema<ListSettingsResultItemZonesWAF2>;
+export const ListSettingsResultItemZonesWAF2 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<ListSettingsResultItemZonesWAF2>;
 
 export type ListSettingsResultItemZonesWebmcpEnabledId = "webmcp_enabled";
 export const ListSettingsResultItemZonesWebmcpEnabledId = S.String;
@@ -5887,16 +4990,8 @@ export interface ListSettingsResultItemZonesWebmcpEnabled {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const ListSettingsResultItemZonesWebmcpEnabled = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: ListSettingsResultItemZonesWebmcpEnabledId,
-    value: ListSettingsResultItemZonesWebmcpEnabledValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "ListSettingsResultItemZonesWebmcpEnabled",
-}) as any as S.Schema<ListSettingsResultItemZonesWebmcpEnabled>;
+export const ListSettingsResultItemZonesWebmcpEnabled =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<ListSettingsResultItemZonesWebmcpEnabled>;
 
 export type ListSettingsResultItemZonesWebmcpPacksId = "webmcp_packs";
 export const ListSettingsResultItemZonesWebmcpPacksId = S.String;
@@ -5911,16 +5006,8 @@ export interface ListSettingsResultItemZonesWebmcpPacks {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const ListSettingsResultItemZonesWebmcpPacks = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: ListSettingsResultItemZonesWebmcpPacksId,
-    value: S.String,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "ListSettingsResultItemZonesWebmcpPacks",
-}) as any as S.Schema<ListSettingsResultItemZonesWebmcpPacks>;
+export const ListSettingsResultItemZonesWebmcpPacks =
+  SettingsGetResultZonesTransformationsAllowedOrigins as any as S.Schema<ListSettingsResultItemZonesWebmcpPacks>;
 
 export type ListSettingsResultItemWebPId = "webp";
 export const ListSettingsResultItemWebPId = S.String;
@@ -5938,16 +5025,8 @@ export interface ListSettingsResultItemWebP {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const ListSettingsResultItemWebP = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: ListSettingsResultItemWebPId,
-    value: ListSettingsResultItemWebPValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "ListSettingsResultItemWebP",
-}) as any as S.Schema<ListSettingsResultItemWebP>;
+export const ListSettingsResultItemWebP =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<ListSettingsResultItemWebP>;
 
 export type ListSettingsResultItemWebsocketId = "websockets";
 export const ListSettingsResultItemWebsocketId = S.String;
@@ -5965,16 +5044,8 @@ export interface ListSettingsResultItemWebsocket {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const ListSettingsResultItemWebsocket = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: ListSettingsResultItemWebsocketId,
-    value: ListSettingsResultItemWebsocketValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "ListSettingsResultItemWebsocket",
-}) as any as S.Schema<ListSettingsResultItemWebsocket>;
+export const ListSettingsResultItemWebsocket =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<ListSettingsResultItemWebsocket>;
 
 export type ListSettingsResultItem =
   | ListSettingsResultItemZeroRTT
@@ -6545,16 +5616,8 @@ export interface SettingsEditResultZeroRTT {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsEditResultZeroRTT = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsEditResultZeroRTTId,
-    value: SettingsEditResultZeroRTTValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsEditResultZeroRTT",
-}) as any as S.Schema<SettingsEditResultZeroRTT>;
+export const SettingsEditResultZeroRTT =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsEditResultZeroRTT>;
 
 export type SettingsEditResultAdvancedDDoSId = "advanced_ddos";
 export const SettingsEditResultAdvancedDDoSId = S.String;
@@ -6572,16 +5635,8 @@ export interface SettingsEditResultAdvancedDDoS {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsEditResultAdvancedDDoS = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsEditResultAdvancedDDoSId,
-    value: SettingsEditResultAdvancedDDoSValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsEditResultAdvancedDDoS",
-}) as any as S.Schema<SettingsEditResultAdvancedDDoS>;
+export const SettingsEditResultAdvancedDDoS =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsEditResultAdvancedDDoS>;
 
 export type SettingsEditResultZonesCacheRulesAegisId = "aegis";
 export const SettingsEditResultZonesCacheRulesAegisId = S.String;
@@ -6599,15 +5654,8 @@ export interface SettingsEditResultZonesCacheRulesAegis {
   /** Value of the zone setting. */
   value?: SettingsGetResultZonesCacheRulesAegisValue | null;
 }
-export const SettingsEditResultZonesCacheRulesAegis = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsEditResultZonesCacheRulesAegisId,
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-    value: S.optional(S.NullOr(SettingsGetResultZonesCacheRulesAegisValue)),
-  }),
-).annotate({
-  identifier: "SettingsEditResultZonesCacheRulesAegis",
-}) as any as S.Schema<SettingsEditResultZonesCacheRulesAegis>;
+export const SettingsEditResultZonesCacheRulesAegis =
+  SettingsGetResultZonesCacheRulesAegis as any as S.Schema<SettingsEditResultZonesCacheRulesAegis>;
 
 export type SettingsEditResultAlwaysOnlineId = "always_online";
 export const SettingsEditResultAlwaysOnlineId = S.String;
@@ -6625,16 +5673,8 @@ export interface SettingsEditResultAlwaysOnline {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsEditResultAlwaysOnline = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsEditResultAlwaysOnlineId,
-    value: SettingsEditResultAlwaysOnlineValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsEditResultAlwaysOnline",
-}) as any as S.Schema<SettingsEditResultAlwaysOnline>;
+export const SettingsEditResultAlwaysOnline =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsEditResultAlwaysOnline>;
 
 export type SettingsEditResultZonesAlwaysUseHTTPS2Id = "always_use_https";
 export const SettingsEditResultZonesAlwaysUseHTTPS2Id = S.String;
@@ -6652,16 +5692,8 @@ export interface SettingsEditResultZonesAlwaysUseHTTPS2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsEditResultZonesAlwaysUseHTTPS2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsEditResultZonesAlwaysUseHTTPS2Id,
-    value: SettingsEditResultZonesAlwaysUseHTTPS2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsEditResultZonesAlwaysUseHTTPS2",
-}) as any as S.Schema<SettingsEditResultZonesAlwaysUseHTTPS2>;
+export const SettingsEditResultZonesAlwaysUseHTTPS2 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsEditResultZonesAlwaysUseHTTPS2>;
 
 export type SettingsEditResultZonesAutomaticHTTPSRewrites2Id = "automatic_https_rewrites";
 export const SettingsEditResultZonesAutomaticHTTPSRewrites2Id = S.String;
@@ -6679,16 +5711,8 @@ export interface SettingsEditResultZonesAutomaticHTTPSRewrites2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsEditResultZonesAutomaticHTTPSRewrites2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsEditResultZonesAutomaticHTTPSRewrites2Id,
-    value: SettingsEditResultZonesAutomaticHTTPSRewrites2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsEditResultZonesAutomaticHTTPSRewrites2",
-}) as any as S.Schema<SettingsEditResultZonesAutomaticHTTPSRewrites2>;
+export const SettingsEditResultZonesAutomaticHTTPSRewrites2 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsEditResultZonesAutomaticHTTPSRewrites2>;
 
 export type SettingsEditResultBrotliId = "brotli";
 export const SettingsEditResultBrotliId = S.String;
@@ -6706,14 +5730,8 @@ export interface SettingsEditResultBrotli {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsEditResultBrotli = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsEditResultBrotliId,
-    value: SettingsEditResultBrotliValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({ identifier: "SettingsEditResultBrotli" }) as any as S.Schema<SettingsEditResultBrotli>;
+export const SettingsEditResultBrotli =
+  SettingsGetResultZeroRTT as any as S.Schema<SettingsEditResultBrotli>;
 
 export type SettingsEditResultZonesBrowserCacheTTL2Id = "browser_cache_ttl";
 export const SettingsEditResultZonesBrowserCacheTTL2Id = S.String;
@@ -6728,16 +5746,8 @@ export interface SettingsEditResultZonesBrowserCacheTTL2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsEditResultZonesBrowserCacheTTL2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsEditResultZonesBrowserCacheTTL2Id,
-    value: S.Number,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsEditResultZonesBrowserCacheTTL2",
-}) as any as S.Schema<SettingsEditResultZonesBrowserCacheTTL2>;
+export const SettingsEditResultZonesBrowserCacheTTL2 =
+  SettingsGetResultZonesBrowserCacheTTL2 as any as S.Schema<SettingsEditResultZonesBrowserCacheTTL2>;
 
 export type SettingsEditResultZonesBrowserCheck2Id = "browser_check";
 export const SettingsEditResultZonesBrowserCheck2Id = S.String;
@@ -6755,16 +5765,8 @@ export interface SettingsEditResultZonesBrowserCheck2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsEditResultZonesBrowserCheck2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsEditResultZonesBrowserCheck2Id,
-    value: SettingsEditResultZonesBrowserCheck2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsEditResultZonesBrowserCheck2",
-}) as any as S.Schema<SettingsEditResultZonesBrowserCheck2>;
+export const SettingsEditResultZonesBrowserCheck2 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsEditResultZonesBrowserCheck2>;
 
 export type SettingsEditResultZonesCacheLevel2Id = "cache_level";
 export const SettingsEditResultZonesCacheLevel2Id = S.String;
@@ -6782,16 +5784,8 @@ export interface SettingsEditResultZonesCacheLevel2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsEditResultZonesCacheLevel2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsEditResultZonesCacheLevel2Id,
-    value: SettingsEditResultZonesCacheLevel2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsEditResultZonesCacheLevel2",
-}) as any as S.Schema<SettingsEditResultZonesCacheLevel2>;
+export const SettingsEditResultZonesCacheLevel2 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsEditResultZonesCacheLevel2>;
 
 export type SettingsEditResultChallengeTTLId = "challenge_ttl";
 export const SettingsEditResultChallengeTTLId = S.String;
@@ -6823,16 +5817,8 @@ export interface SettingsEditResultChallengeTTL {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsEditResultChallengeTTL = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsEditResultChallengeTTLId,
-    value: SettingsEditResultChallengeTTLValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsEditResultChallengeTTL",
-}) as any as S.Schema<SettingsEditResultChallengeTTL>;
+export const SettingsEditResultChallengeTTL =
+  SettingsGetResultChallengeTTL as any as S.Schema<SettingsEditResultChallengeTTL>;
 
 export type SettingsEditResultZonesChinaNetworkEnabledId = "china_network_enabled";
 export const SettingsEditResultZonesChinaNetworkEnabledId = S.String;
@@ -6850,16 +5836,8 @@ export interface SettingsEditResultZonesChinaNetworkEnabled {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsEditResultZonesChinaNetworkEnabled = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsEditResultZonesChinaNetworkEnabledId,
-    value: SettingsEditResultZonesChinaNetworkEnabledValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsEditResultZonesChinaNetworkEnabled",
-}) as any as S.Schema<SettingsEditResultZonesChinaNetworkEnabled>;
+export const SettingsEditResultZonesChinaNetworkEnabled =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsEditResultZonesChinaNetworkEnabled>;
 
 export type SettingsEditResultZonesContentConverterId = "content_converter";
 export const SettingsEditResultZonesContentConverterId = S.String;
@@ -6877,16 +5855,8 @@ export interface SettingsEditResultZonesContentConverter {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsEditResultZonesContentConverter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsEditResultZonesContentConverterId,
-    value: SettingsEditResultZonesContentConverterValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsEditResultZonesContentConverter",
-}) as any as S.Schema<SettingsEditResultZonesContentConverter>;
+export const SettingsEditResultZonesContentConverter =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsEditResultZonesContentConverter>;
 
 export type SettingsEditResultCiphersId = "ciphers";
 export const SettingsEditResultCiphersId = S.String;
@@ -6932,16 +5902,8 @@ export interface SettingsEditResultZonesCNAMEFlattening {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsEditResultZonesCNAMEFlattening = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsEditResultZonesCNAMEFlatteningId,
-    value: SettingsEditResultZonesCNAMEFlatteningValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsEditResultZonesCNAMEFlattening",
-}) as any as S.Schema<SettingsEditResultZonesCNAMEFlattening>;
+export const SettingsEditResultZonesCNAMEFlattening =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsEditResultZonesCNAMEFlattening>;
 
 export type SettingsEditResultDevelopmentModeId = "development_mode";
 export const SettingsEditResultDevelopmentModeId = S.String;
@@ -6961,17 +5923,8 @@ export interface SettingsEditResultDevelopmentMode {
   /** Value of the zone setting. Notes: The interval (in seconds) from when development mode expires (positive integer) or last expired (negative integer) for the domain. If development mode has never been enabled, this value is false. */
   timeRemaining?: number | null;
 }
-export const SettingsEditResultDevelopmentMode = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsEditResultDevelopmentModeId,
-    value: SettingsEditResultDevelopmentModeValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-    timeRemaining: S.optional(S.NullOr(S.Number).pipe(T.Body("time_remaining"))),
-  }),
-).annotate({
-  identifier: "SettingsEditResultDevelopmentMode",
-}) as any as S.Schema<SettingsEditResultDevelopmentMode>;
+export const SettingsEditResultDevelopmentMode =
+  SettingsGetResultDevelopmentMode as any as S.Schema<SettingsEditResultDevelopmentMode>;
 
 export type SettingsEditResultEarlyHintsId = "early_hints";
 export const SettingsEditResultEarlyHintsId = S.String;
@@ -6989,16 +5942,8 @@ export interface SettingsEditResultEarlyHints {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsEditResultEarlyHints = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsEditResultEarlyHintsId,
-    value: SettingsEditResultEarlyHintsValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsEditResultEarlyHints",
-}) as any as S.Schema<SettingsEditResultEarlyHints>;
+export const SettingsEditResultEarlyHints =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsEditResultEarlyHints>;
 
 export type SettingsEditResultZonesEdgeCacheTTL2Id = "edge_cache_ttl";
 export const SettingsEditResultZonesEdgeCacheTTL2Id = S.String;
@@ -7037,16 +5982,8 @@ export interface SettingsEditResultZonesEdgeCacheTTL2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsEditResultZonesEdgeCacheTTL2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsEditResultZonesEdgeCacheTTL2Id,
-    value: SettingsEditResultZonesEdgeCacheTTL2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsEditResultZonesEdgeCacheTTL2",
-}) as any as S.Schema<SettingsEditResultZonesEdgeCacheTTL2>;
+export const SettingsEditResultZonesEdgeCacheTTL2 =
+  SettingsGetResultChallengeTTL as any as S.Schema<SettingsEditResultZonesEdgeCacheTTL2>;
 
 export type SettingsEditResultZonesEmailObfuscation2Id = "email_obfuscation";
 export const SettingsEditResultZonesEmailObfuscation2Id = S.String;
@@ -7064,16 +6001,8 @@ export interface SettingsEditResultZonesEmailObfuscation2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsEditResultZonesEmailObfuscation2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsEditResultZonesEmailObfuscation2Id,
-    value: SettingsEditResultZonesEmailObfuscation2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsEditResultZonesEmailObfuscation2",
-}) as any as S.Schema<SettingsEditResultZonesEmailObfuscation2>;
+export const SettingsEditResultZonesEmailObfuscation2 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsEditResultZonesEmailObfuscation2>;
 
 export type SettingsEditResultH2PrioritizationId = "h2_prioritization";
 export const SettingsEditResultH2PrioritizationId = S.String;
@@ -7091,16 +6020,8 @@ export interface SettingsEditResultH2Prioritization {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsEditResultH2Prioritization = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsEditResultH2PrioritizationId,
-    value: SettingsEditResultH2PrioritizationValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsEditResultH2Prioritization",
-}) as any as S.Schema<SettingsEditResultH2Prioritization>;
+export const SettingsEditResultH2Prioritization =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsEditResultH2Prioritization>;
 
 export type SettingsEditResultHotlinkProtectionId = "hotlink_protection";
 export const SettingsEditResultHotlinkProtectionId = S.String;
@@ -7118,16 +6039,8 @@ export interface SettingsEditResultHotlinkProtection {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsEditResultHotlinkProtection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsEditResultHotlinkProtectionId,
-    value: SettingsEditResultHotlinkProtectionValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsEditResultHotlinkProtection",
-}) as any as S.Schema<SettingsEditResultHotlinkProtection>;
+export const SettingsEditResultHotlinkProtection =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsEditResultHotlinkProtection>;
 
 export type SettingsEditResultHTTP2Id = "http2";
 export const SettingsEditResultHTTP2Id = S.String;
@@ -7145,14 +6058,8 @@ export interface SettingsEditResultHTTP2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsEditResultHTTP2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsEditResultHTTP2Id,
-    value: SettingsEditResultHTTP2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({ identifier: "SettingsEditResultHTTP2" }) as any as S.Schema<SettingsEditResultHTTP2>;
+export const SettingsEditResultHTTP2 =
+  SettingsGetResultZeroRTT as any as S.Schema<SettingsEditResultHTTP2>;
 
 export type SettingsEditResultHTTP3Id = "http3";
 export const SettingsEditResultHTTP3Id = S.String;
@@ -7170,14 +6077,8 @@ export interface SettingsEditResultHTTP3 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsEditResultHTTP3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsEditResultHTTP3Id,
-    value: SettingsEditResultHTTP3Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({ identifier: "SettingsEditResultHTTP3" }) as any as S.Schema<SettingsEditResultHTTP3>;
+export const SettingsEditResultHTTP3 =
+  SettingsGetResultZeroRTT as any as S.Schema<SettingsEditResultHTTP3>;
 
 export type SettingsEditResultImageResizingId = "image_resizing";
 export const SettingsEditResultImageResizingId = S.String;
@@ -7195,16 +6096,8 @@ export interface SettingsEditResultImageResizing {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsEditResultImageResizing = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsEditResultImageResizingId,
-    value: SettingsEditResultImageResizingValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsEditResultImageResizing",
-}) as any as S.Schema<SettingsEditResultImageResizing>;
+export const SettingsEditResultImageResizing =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsEditResultImageResizing>;
 
 export type SettingsEditResultZonesIPGeolocation2Id = "ip_geolocation";
 export const SettingsEditResultZonesIPGeolocation2Id = S.String;
@@ -7222,16 +6115,8 @@ export interface SettingsEditResultZonesIPGeolocation2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsEditResultZonesIPGeolocation2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsEditResultZonesIPGeolocation2Id,
-    value: SettingsEditResultZonesIPGeolocation2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsEditResultZonesIPGeolocation2",
-}) as any as S.Schema<SettingsEditResultZonesIPGeolocation2>;
+export const SettingsEditResultZonesIPGeolocation2 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsEditResultZonesIPGeolocation2>;
 
 export type SettingsEditResultIPV6Id = "ipv6";
 export const SettingsEditResultIPV6Id = S.String;
@@ -7249,14 +6134,8 @@ export interface SettingsEditResultIPV6 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsEditResultIPV6 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsEditResultIPV6Id,
-    value: SettingsEditResultIPV6Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({ identifier: "SettingsEditResultIPV6" }) as any as S.Schema<SettingsEditResultIPV6>;
+export const SettingsEditResultIPV6 =
+  SettingsGetResultZeroRTT as any as S.Schema<SettingsEditResultIPV6>;
 
 export type SettingsEditResultZonesMaxUploadId = "max_upload";
 export const SettingsEditResultZonesMaxUploadId = S.String;
@@ -7300,16 +6179,8 @@ export interface SettingsEditResultZonesMaxUpload {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsEditResultZonesMaxUpload = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsEditResultZonesMaxUploadId,
-    value: SettingsEditResultZonesMaxUploadValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsEditResultZonesMaxUpload",
-}) as any as S.Schema<SettingsEditResultZonesMaxUpload>;
+export const SettingsEditResultZonesMaxUpload =
+  SettingsGetResultChallengeTTL as any as S.Schema<SettingsEditResultZonesMaxUpload>;
 
 export type SettingsEditResultMinTLSVersionId = "min_tls_version";
 export const SettingsEditResultMinTLSVersionId = S.String;
@@ -7327,16 +6198,8 @@ export interface SettingsEditResultMinTLSVersion {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsEditResultMinTLSVersion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsEditResultMinTLSVersionId,
-    value: SettingsEditResultMinTLSVersionValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsEditResultMinTLSVersion",
-}) as any as S.Schema<SettingsEditResultMinTLSVersion>;
+export const SettingsEditResultMinTLSVersion =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsEditResultMinTLSVersion>;
 
 export type SettingsEditResultZonesMirage2Id = "mirage";
 export const SettingsEditResultZonesMirage2Id = S.String;
@@ -7354,16 +6217,8 @@ export interface SettingsEditResultZonesMirage2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsEditResultZonesMirage2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsEditResultZonesMirage2Id,
-    value: SettingsEditResultZonesMirage2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsEditResultZonesMirage2",
-}) as any as S.Schema<SettingsEditResultZonesMirage2>;
+export const SettingsEditResultZonesMirage2 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsEditResultZonesMirage2>;
 
 export type SettingsEditResultNELId = "nel";
 export const SettingsEditResultNELId = S.String;
@@ -7381,14 +6236,7 @@ export interface SettingsEditResultNEL {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsEditResultNEL = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsEditResultNELId,
-    value: SettingsGetResultNELValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({ identifier: "SettingsEditResultNEL" }) as any as S.Schema<SettingsEditResultNEL>;
+export const SettingsEditResultNEL = SettingsGetResultNEL as any as S.Schema<SettingsEditResultNEL>;
 
 export type SettingsEditResultZonesOpportunisticEncryption2Id = "opportunistic_encryption";
 export const SettingsEditResultZonesOpportunisticEncryption2Id = S.String;
@@ -7406,16 +6254,8 @@ export interface SettingsEditResultZonesOpportunisticEncryption2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsEditResultZonesOpportunisticEncryption2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsEditResultZonesOpportunisticEncryption2Id,
-    value: SettingsEditResultZonesOpportunisticEncryption2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsEditResultZonesOpportunisticEncryption2",
-}) as any as S.Schema<SettingsEditResultZonesOpportunisticEncryption2>;
+export const SettingsEditResultZonesOpportunisticEncryption2 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsEditResultZonesOpportunisticEncryption2>;
 
 export type SettingsEditResultOpportunisticOnionId = "opportunistic_onion";
 export const SettingsEditResultOpportunisticOnionId = S.String;
@@ -7433,16 +6273,8 @@ export interface SettingsEditResultOpportunisticOnion {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsEditResultOpportunisticOnion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsEditResultOpportunisticOnionId,
-    value: SettingsEditResultOpportunisticOnionValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsEditResultOpportunisticOnion",
-}) as any as S.Schema<SettingsEditResultOpportunisticOnion>;
+export const SettingsEditResultOpportunisticOnion =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsEditResultOpportunisticOnion>;
 
 export type SettingsEditResultOrangeToOrangeId = "orange_to_orange";
 export const SettingsEditResultOrangeToOrangeId = S.String;
@@ -7460,16 +6292,8 @@ export interface SettingsEditResultOrangeToOrange {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsEditResultOrangeToOrange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsEditResultOrangeToOrangeId,
-    value: SettingsEditResultOrangeToOrangeValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsEditResultOrangeToOrange",
-}) as any as S.Schema<SettingsEditResultOrangeToOrange>;
+export const SettingsEditResultOrangeToOrange =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsEditResultOrangeToOrange>;
 
 export type SettingsEditResultZonesOriginErrorPagePassThru2Id = "origin_error_page_pass_thru";
 export const SettingsEditResultZonesOriginErrorPagePassThru2Id = S.String;
@@ -7487,16 +6311,8 @@ export interface SettingsEditResultZonesOriginErrorPagePassThru2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsEditResultZonesOriginErrorPagePassThru2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsEditResultZonesOriginErrorPagePassThru2Id,
-    value: SettingsEditResultZonesOriginErrorPagePassThru2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsEditResultZonesOriginErrorPagePassThru2",
-}) as any as S.Schema<SettingsEditResultZonesOriginErrorPagePassThru2>;
+export const SettingsEditResultZonesOriginErrorPagePassThru2 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsEditResultZonesOriginErrorPagePassThru2>;
 
 export type SettingsEditResultZonesCacheRulesOriginH2MaxStreamsId = "origin_h2_max_streams";
 export const SettingsEditResultZonesCacheRulesOriginH2MaxStreamsId = S.String;
@@ -7509,15 +6325,8 @@ export interface SettingsEditResultZonesCacheRulesOriginH2MaxStreams {
   /** Value of the Origin H2 Max Streams Setting. */
   value?: number | null;
 }
-export const SettingsEditResultZonesCacheRulesOriginH2MaxStreams = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsEditResultZonesCacheRulesOriginH2MaxStreamsId,
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-    value: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "SettingsEditResultZonesCacheRulesOriginH2MaxStreams",
-}) as any as S.Schema<SettingsEditResultZonesCacheRulesOriginH2MaxStreams>;
+export const SettingsEditResultZonesCacheRulesOriginH2MaxStreams =
+  SettingsGetResultZonesCacheRulesOriginH2MaxStreams as any as S.Schema<SettingsEditResultZonesCacheRulesOriginH2MaxStreams>;
 
 export type SettingsEditResultZonesCacheRulesOriginMaxHTTPVersionId = "origin_max_http_version";
 export const SettingsEditResultZonesCacheRulesOriginMaxHTTPVersionId = S.String;
@@ -7533,15 +6342,8 @@ export interface SettingsEditResultZonesCacheRulesOriginMaxHTTPVersion {
   /** Value of the Origin Max HTTP Version Setting. */
   value?: SettingsEditResultZonesCacheRulesOriginMaxHTTPVersionValue | null;
 }
-export const SettingsEditResultZonesCacheRulesOriginMaxHTTPVersion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsEditResultZonesCacheRulesOriginMaxHTTPVersionId,
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-    value: S.optional(S.NullOr(SettingsEditResultZonesCacheRulesOriginMaxHTTPVersionValue)),
-  }),
-).annotate({
-  identifier: "SettingsEditResultZonesCacheRulesOriginMaxHTTPVersion",
-}) as any as S.Schema<SettingsEditResultZonesCacheRulesOriginMaxHTTPVersion>;
+export const SettingsEditResultZonesCacheRulesOriginMaxHTTPVersion =
+  SettingsGetResultZonesCacheRulesOriginMaxHTTPVersion as any as S.Schema<SettingsEditResultZonesCacheRulesOriginMaxHTTPVersion>;
 
 export type SettingsEditResultZonesPolish2Id = "polish";
 export const SettingsEditResultZonesPolish2Id = S.String;
@@ -7559,16 +6361,8 @@ export interface SettingsEditResultZonesPolish2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsEditResultZonesPolish2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsEditResultZonesPolish2Id,
-    value: SettingsEditResultZonesPolish2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsEditResultZonesPolish2",
-}) as any as S.Schema<SettingsEditResultZonesPolish2>;
+export const SettingsEditResultZonesPolish2 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsEditResultZonesPolish2>;
 
 export type SettingsEditResultPrefetchPreloadId = "prefetch_preload";
 export const SettingsEditResultPrefetchPreloadId = S.String;
@@ -7586,16 +6380,8 @@ export interface SettingsEditResultPrefetchPreload {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsEditResultPrefetchPreload = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsEditResultPrefetchPreloadId,
-    value: SettingsEditResultPrefetchPreloadValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsEditResultPrefetchPreload",
-}) as any as S.Schema<SettingsEditResultPrefetchPreload>;
+export const SettingsEditResultPrefetchPreload =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsEditResultPrefetchPreload>;
 
 export type SettingsEditResultZonesPreRenderId = "pre_render";
 export const SettingsEditResultZonesPreRenderId = S.String;
@@ -7613,16 +6399,8 @@ export interface SettingsEditResultZonesPreRender {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsEditResultZonesPreRender = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsEditResultZonesPreRenderId,
-    value: SettingsEditResultZonesPreRenderValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsEditResultZonesPreRender",
-}) as any as S.Schema<SettingsEditResultZonesPreRender>;
+export const SettingsEditResultZonesPreRender =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsEditResultZonesPreRender>;
 
 export type SettingsEditResultZonesPrivacyPassId = "privacy_pass";
 export const SettingsEditResultZonesPrivacyPassId = S.String;
@@ -7640,16 +6418,8 @@ export interface SettingsEditResultZonesPrivacyPass {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsEditResultZonesPrivacyPass = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsEditResultZonesPrivacyPassId,
-    value: SettingsEditResultZonesPrivacyPassValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsEditResultZonesPrivacyPass",
-}) as any as S.Schema<SettingsEditResultZonesPrivacyPass>;
+export const SettingsEditResultZonesPrivacyPass =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsEditResultZonesPrivacyPass>;
 
 export type SettingsEditResultProxyReadTimeoutId = "proxy_read_timeout";
 export const SettingsEditResultProxyReadTimeoutId = S.String;
@@ -7664,16 +6434,8 @@ export interface SettingsEditResultProxyReadTimeout {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsEditResultProxyReadTimeout = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsEditResultProxyReadTimeoutId,
-    value: S.Number,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsEditResultProxyReadTimeout",
-}) as any as S.Schema<SettingsEditResultProxyReadTimeout>;
+export const SettingsEditResultProxyReadTimeout =
+  SettingsGetResultZonesBrowserCacheTTL2 as any as S.Schema<SettingsEditResultProxyReadTimeout>;
 
 export type SettingsEditResultPseudoIPV4Id = "pseudo_ipv4";
 export const SettingsEditResultPseudoIPV4Id = S.String;
@@ -7691,16 +6453,8 @@ export interface SettingsEditResultPseudoIPV4 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsEditResultPseudoIPV4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsEditResultPseudoIPV4Id,
-    value: SettingsEditResultPseudoIPV4Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsEditResultPseudoIPV4",
-}) as any as S.Schema<SettingsEditResultPseudoIPV4>;
+export const SettingsEditResultPseudoIPV4 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsEditResultPseudoIPV4>;
 
 export type SettingsEditResultZonesRedirectsForAITrainingId = "redirects_for_ai_training";
 export const SettingsEditResultZonesRedirectsForAITrainingId = S.String;
@@ -7718,16 +6472,8 @@ export interface SettingsEditResultZonesRedirectsForAITraining {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsEditResultZonesRedirectsForAITraining = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsEditResultZonesRedirectsForAITrainingId,
-    value: SettingsEditResultZonesRedirectsForAITrainingValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsEditResultZonesRedirectsForAITraining",
-}) as any as S.Schema<SettingsEditResultZonesRedirectsForAITraining>;
+export const SettingsEditResultZonesRedirectsForAITraining =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsEditResultZonesRedirectsForAITraining>;
 
 export type SettingsEditResultZonesReplaceInsecureJSId = "replace_insecure_js";
 export const SettingsEditResultZonesReplaceInsecureJSId = S.String;
@@ -7745,16 +6491,8 @@ export interface SettingsEditResultZonesReplaceInsecureJS {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsEditResultZonesReplaceInsecureJS = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsEditResultZonesReplaceInsecureJSId,
-    value: SettingsEditResultZonesReplaceInsecureJSValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsEditResultZonesReplaceInsecureJS",
-}) as any as S.Schema<SettingsEditResultZonesReplaceInsecureJS>;
+export const SettingsEditResultZonesReplaceInsecureJS =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsEditResultZonesReplaceInsecureJS>;
 
 export type SettingsEditResultZonesResponseBuffering2Id = "response_buffering";
 export const SettingsEditResultZonesResponseBuffering2Id = S.String;
@@ -7772,16 +6510,8 @@ export interface SettingsEditResultZonesResponseBuffering2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsEditResultZonesResponseBuffering2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsEditResultZonesResponseBuffering2Id,
-    value: SettingsEditResultZonesResponseBuffering2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsEditResultZonesResponseBuffering2",
-}) as any as S.Schema<SettingsEditResultZonesResponseBuffering2>;
+export const SettingsEditResultZonesResponseBuffering2 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsEditResultZonesResponseBuffering2>;
 
 export type SettingsEditResultZonesRocketLoader2Id = "rocket_loader";
 export const SettingsEditResultZonesRocketLoader2Id = S.String;
@@ -7799,16 +6529,8 @@ export interface SettingsEditResultZonesRocketLoader2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsEditResultZonesRocketLoader2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsEditResultZonesRocketLoader2Id,
-    value: SettingsEditResultZonesRocketLoader2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsEditResultZonesRocketLoader2",
-}) as any as S.Schema<SettingsEditResultZonesRocketLoader2>;
+export const SettingsEditResultZonesRocketLoader2 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsEditResultZonesRocketLoader2>;
 
 export type SettingsEditResultZonesSchemasAutomaticPlatformOptimizationId =
   "automatic_platform_optimization";
@@ -7874,16 +6596,8 @@ export interface SettingsEditResultZonesSearchForAgents {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsEditResultZonesSearchForAgents = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsEditResultZonesSearchForAgentsId,
-    value: SettingsEditResultZonesSearchForAgentsValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsEditResultZonesSearchForAgents",
-}) as any as S.Schema<SettingsEditResultZonesSearchForAgents>;
+export const SettingsEditResultZonesSearchForAgents =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsEditResultZonesSearchForAgents>;
 
 export type SettingsEditResultSecurityHeadersId = "security_header";
 export const SettingsEditResultSecurityHeadersId = S.String;
@@ -7906,16 +6620,8 @@ export interface SettingsEditResultSecurityHeaders {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsEditResultSecurityHeaders = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsEditResultSecurityHeadersId,
-    value: SettingsGetResultSecurityHeadersValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsEditResultSecurityHeaders",
-}) as any as S.Schema<SettingsEditResultSecurityHeaders>;
+export const SettingsEditResultSecurityHeaders =
+  SettingsGetResultSecurityHeaders as any as S.Schema<SettingsEditResultSecurityHeaders>;
 
 export type SettingsEditResultZonesSecurityLevel2Id = "security_level";
 export const SettingsEditResultZonesSecurityLevel2Id = S.String;
@@ -7939,16 +6645,8 @@ export interface SettingsEditResultZonesSecurityLevel2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsEditResultZonesSecurityLevel2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsEditResultZonesSecurityLevel2Id,
-    value: SettingsEditResultZonesSecurityLevel2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsEditResultZonesSecurityLevel2",
-}) as any as S.Schema<SettingsEditResultZonesSecurityLevel2>;
+export const SettingsEditResultZonesSecurityLevel2 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsEditResultZonesSecurityLevel2>;
 
 export type SettingsEditResultServerSideExcludesId = "server_side_exclude";
 export const SettingsEditResultServerSideExcludesId = S.String;
@@ -7966,16 +6664,8 @@ export interface SettingsEditResultServerSideExcludes {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsEditResultServerSideExcludes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsEditResultServerSideExcludesId,
-    value: SettingsEditResultServerSideExcludesValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsEditResultServerSideExcludes",
-}) as any as S.Schema<SettingsEditResultServerSideExcludes>;
+export const SettingsEditResultServerSideExcludes =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsEditResultServerSideExcludes>;
 
 export type SettingsEditResultZonesSha1SupportId = "sha1_support";
 export const SettingsEditResultZonesSha1SupportId = S.String;
@@ -7993,16 +6683,8 @@ export interface SettingsEditResultZonesSha1Support {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsEditResultZonesSha1Support = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsEditResultZonesSha1SupportId,
-    value: SettingsEditResultZonesSha1SupportValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsEditResultZonesSha1Support",
-}) as any as S.Schema<SettingsEditResultZonesSha1Support>;
+export const SettingsEditResultZonesSha1Support =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsEditResultZonesSha1Support>;
 
 export type SettingsEditResultZonesSortQueryStringForCache2Id = "sort_query_string_for_cache";
 export const SettingsEditResultZonesSortQueryStringForCache2Id = S.String;
@@ -8020,16 +6702,8 @@ export interface SettingsEditResultZonesSortQueryStringForCache2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsEditResultZonesSortQueryStringForCache2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsEditResultZonesSortQueryStringForCache2Id,
-    value: SettingsEditResultZonesSortQueryStringForCache2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsEditResultZonesSortQueryStringForCache2",
-}) as any as S.Schema<SettingsEditResultZonesSortQueryStringForCache2>;
+export const SettingsEditResultZonesSortQueryStringForCache2 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsEditResultZonesSortQueryStringForCache2>;
 
 export type SettingsEditResultZonesSSL2Id = "ssl";
 export const SettingsEditResultZonesSSL2Id = S.String;
@@ -8047,16 +6721,8 @@ export interface SettingsEditResultZonesSSL2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsEditResultZonesSSL2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsEditResultZonesSSL2Id,
-    value: SettingsEditResultZonesSSL2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsEditResultZonesSSL2",
-}) as any as S.Schema<SettingsEditResultZonesSSL2>;
+export const SettingsEditResultZonesSSL2 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsEditResultZonesSSL2>;
 
 export type SettingsEditResultSSLRecommenderId = "ssl_recommender";
 export const SettingsEditResultSSLRecommenderId = S.String;
@@ -8067,14 +6733,8 @@ export interface SettingsEditResultSSLRecommender {
   /** ssl-recommender enrollment setting. */
   enabled?: boolean | null;
 }
-export const SettingsEditResultSSLRecommender = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(SettingsEditResultSSLRecommenderId)),
-    enabled: S.optional(S.NullOr(S.Boolean)),
-  }),
-).annotate({
-  identifier: "SettingsEditResultSSLRecommender",
-}) as any as S.Schema<SettingsEditResultSSLRecommender>;
+export const SettingsEditResultSSLRecommender =
+  SettingsGetResultSSLRecommender as any as S.Schema<SettingsEditResultSSLRecommender>;
 
 export type SettingsEditResultZonesTLS12OnlyId = "tls_1_2_only";
 export const SettingsEditResultZonesTLS12OnlyId = S.String;
@@ -8092,16 +6752,8 @@ export interface SettingsEditResultZonesTLS12Only {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsEditResultZonesTLS12Only = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsEditResultZonesTLS12OnlyId,
-    value: SettingsEditResultZonesTLS12OnlyValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsEditResultZonesTLS12Only",
-}) as any as S.Schema<SettingsEditResultZonesTLS12Only>;
+export const SettingsEditResultZonesTLS12Only =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsEditResultZonesTLS12Only>;
 
 export type SettingsEditResultTLS13Id = "tls_1_3";
 export const SettingsEditResultTLS13Id = S.String;
@@ -8119,14 +6771,8 @@ export interface SettingsEditResultTLS13 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsEditResultTLS13 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsEditResultTLS13Id,
-    value: SettingsEditResultTLS13Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({ identifier: "SettingsEditResultTLS13" }) as any as S.Schema<SettingsEditResultTLS13>;
+export const SettingsEditResultTLS13 =
+  SettingsGetResultZeroRTT as any as S.Schema<SettingsEditResultTLS13>;
 
 export type SettingsEditResultTLSClientAuthId = "tls_client_auth";
 export const SettingsEditResultTLSClientAuthId = S.String;
@@ -8144,16 +6790,8 @@ export interface SettingsEditResultTLSClientAuth {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsEditResultTLSClientAuth = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsEditResultTLSClientAuthId,
-    value: SettingsEditResultTLSClientAuthValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsEditResultTLSClientAuth",
-}) as any as S.Schema<SettingsEditResultTLSClientAuth>;
+export const SettingsEditResultTLSClientAuth =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsEditResultTLSClientAuth>;
 
 export type SettingsEditResultZonesTransformationsId = "transformations";
 export const SettingsEditResultZonesTransformationsId = S.String;
@@ -8171,16 +6809,8 @@ export interface SettingsEditResultZonesTransformations {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsEditResultZonesTransformations = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsEditResultZonesTransformationsId,
-    value: SettingsEditResultZonesTransformationsValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsEditResultZonesTransformations",
-}) as any as S.Schema<SettingsEditResultZonesTransformations>;
+export const SettingsEditResultZonesTransformations =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsEditResultZonesTransformations>;
 
 export type SettingsEditResultZonesTransformationsAllowedOriginsId =
   "transformations_allowed_origins";
@@ -8196,16 +6826,8 @@ export interface SettingsEditResultZonesTransformationsAllowedOrigins {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsEditResultZonesTransformationsAllowedOrigins = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsEditResultZonesTransformationsAllowedOriginsId,
-    value: S.String,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsEditResultZonesTransformationsAllowedOrigins",
-}) as any as S.Schema<SettingsEditResultZonesTransformationsAllowedOrigins>;
+export const SettingsEditResultZonesTransformationsAllowedOrigins =
+  SettingsGetResultZonesTransformationsAllowedOrigins as any as S.Schema<SettingsEditResultZonesTransformationsAllowedOrigins>;
 
 export type SettingsEditResultZonesTrueClientIPHeader2Id = "true_client_ip_header";
 export const SettingsEditResultZonesTrueClientIPHeader2Id = S.String;
@@ -8223,16 +6845,8 @@ export interface SettingsEditResultZonesTrueClientIPHeader2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsEditResultZonesTrueClientIPHeader2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsEditResultZonesTrueClientIPHeader2Id,
-    value: SettingsEditResultZonesTrueClientIPHeader2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsEditResultZonesTrueClientIPHeader2",
-}) as any as S.Schema<SettingsEditResultZonesTrueClientIPHeader2>;
+export const SettingsEditResultZonesTrueClientIPHeader2 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsEditResultZonesTrueClientIPHeader2>;
 
 export type SettingsEditResultZonesWAF2Id = "waf";
 export const SettingsEditResultZonesWAF2Id = S.String;
@@ -8250,16 +6864,8 @@ export interface SettingsEditResultZonesWAF2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsEditResultZonesWAF2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsEditResultZonesWAF2Id,
-    value: SettingsEditResultZonesWAF2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsEditResultZonesWAF2",
-}) as any as S.Schema<SettingsEditResultZonesWAF2>;
+export const SettingsEditResultZonesWAF2 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsEditResultZonesWAF2>;
 
 export type SettingsEditResultZonesWebmcpEnabledId = "webmcp_enabled";
 export const SettingsEditResultZonesWebmcpEnabledId = S.String;
@@ -8277,16 +6883,8 @@ export interface SettingsEditResultZonesWebmcpEnabled {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsEditResultZonesWebmcpEnabled = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsEditResultZonesWebmcpEnabledId,
-    value: SettingsEditResultZonesWebmcpEnabledValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsEditResultZonesWebmcpEnabled",
-}) as any as S.Schema<SettingsEditResultZonesWebmcpEnabled>;
+export const SettingsEditResultZonesWebmcpEnabled =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsEditResultZonesWebmcpEnabled>;
 
 export type SettingsEditResultZonesWebmcpPacksId = "webmcp_packs";
 export const SettingsEditResultZonesWebmcpPacksId = S.String;
@@ -8301,16 +6899,8 @@ export interface SettingsEditResultZonesWebmcpPacks {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsEditResultZonesWebmcpPacks = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsEditResultZonesWebmcpPacksId,
-    value: S.String,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsEditResultZonesWebmcpPacks",
-}) as any as S.Schema<SettingsEditResultZonesWebmcpPacks>;
+export const SettingsEditResultZonesWebmcpPacks =
+  SettingsGetResultZonesTransformationsAllowedOrigins as any as S.Schema<SettingsEditResultZonesWebmcpPacks>;
 
 export type SettingsEditResultWebPId = "webp";
 export const SettingsEditResultWebPId = S.String;
@@ -8328,14 +6918,8 @@ export interface SettingsEditResultWebP {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsEditResultWebP = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsEditResultWebPId,
-    value: SettingsEditResultWebPValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({ identifier: "SettingsEditResultWebP" }) as any as S.Schema<SettingsEditResultWebP>;
+export const SettingsEditResultWebP =
+  SettingsGetResultZeroRTT as any as S.Schema<SettingsEditResultWebP>;
 
 export type SettingsEditResultWebsocketId = "websockets";
 export const SettingsEditResultWebsocketId = S.String;
@@ -8353,16 +6937,8 @@ export interface SettingsEditResultWebsocket {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsEditResultWebsocket = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsEditResultWebsocketId,
-    value: SettingsEditResultWebsocketValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsEditResultWebsocket",
-}) as any as S.Schema<SettingsEditResultWebsocket>;
+export const SettingsEditResultWebsocket =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsEditResultWebsocket>;
 
 export type SettingsEditResult =
   | SettingsEditResultZeroRTT
@@ -8854,16 +7430,8 @@ export interface SettingsBulkEditRequestBodyItemAdvancedDDoS {
   /** last time this setting was modified. */
   modifiedOn?: string;
 }
-export const SettingsBulkEditRequestBodyItemAdvancedDDoS = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditRequestBodyItemAdvancedDDoSId,
-    value: SettingsBulkEditRequestBodyItemAdvancedDDoSValue,
-    editable: S.optional(S.Boolean),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditRequestBodyItemAdvancedDDoS",
-}) as any as S.Schema<SettingsBulkEditRequestBodyItemAdvancedDDoS>;
+export const SettingsBulkEditRequestBodyItemAdvancedDDoS =
+  SettingsBulkEditRequestBodyItemZeroRTT as any as S.Schema<SettingsBulkEditRequestBodyItemAdvancedDDoS>;
 
 export type SettingsBulkEditRequestBodyItemZonesCacheRulesAegisId = "aegis";
 export const SettingsBulkEditRequestBodyItemZonesCacheRulesAegisId = S.String;
@@ -8918,16 +7486,8 @@ export interface SettingsBulkEditRequestBodyItemAlwaysOnline {
   /** last time this setting was modified. */
   modifiedOn?: string;
 }
-export const SettingsBulkEditRequestBodyItemAlwaysOnline = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditRequestBodyItemAlwaysOnlineId,
-    value: SettingsBulkEditRequestBodyItemAlwaysOnlineValue,
-    editable: S.optional(S.Boolean),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditRequestBodyItemAlwaysOnline",
-}) as any as S.Schema<SettingsBulkEditRequestBodyItemAlwaysOnline>;
+export const SettingsBulkEditRequestBodyItemAlwaysOnline =
+  SettingsBulkEditRequestBodyItemZeroRTT as any as S.Schema<SettingsBulkEditRequestBodyItemAlwaysOnline>;
 
 export type SettingsBulkEditRequestBodyItemZonesAlwaysUseHTTPS2Id = "always_use_https";
 export const SettingsBulkEditRequestBodyItemZonesAlwaysUseHTTPS2Id = S.String;
@@ -8945,16 +7505,8 @@ export interface SettingsBulkEditRequestBodyItemZonesAlwaysUseHTTPS2 {
   /** last time this setting was modified. */
   modifiedOn?: string;
 }
-export const SettingsBulkEditRequestBodyItemZonesAlwaysUseHTTPS2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditRequestBodyItemZonesAlwaysUseHTTPS2Id,
-    value: SettingsBulkEditRequestBodyItemZonesAlwaysUseHTTPS2Value,
-    editable: S.optional(S.Boolean),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditRequestBodyItemZonesAlwaysUseHTTPS2",
-}) as any as S.Schema<SettingsBulkEditRequestBodyItemZonesAlwaysUseHTTPS2>;
+export const SettingsBulkEditRequestBodyItemZonesAlwaysUseHTTPS2 =
+  SettingsBulkEditRequestBodyItemZeroRTT as any as S.Schema<SettingsBulkEditRequestBodyItemZonesAlwaysUseHTTPS2>;
 
 export type SettingsBulkEditRequestBodyItemZonesAutomaticHTTPSRewrites2Id =
   "automatic_https_rewrites";
@@ -9001,16 +7553,8 @@ export interface SettingsBulkEditRequestBodyItemBrotli {
   /** last time this setting was modified. */
   modifiedOn?: string;
 }
-export const SettingsBulkEditRequestBodyItemBrotli = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditRequestBodyItemBrotliId,
-    value: SettingsBulkEditRequestBodyItemBrotliValue,
-    editable: S.optional(S.Boolean),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditRequestBodyItemBrotli",
-}) as any as S.Schema<SettingsBulkEditRequestBodyItemBrotli>;
+export const SettingsBulkEditRequestBodyItemBrotli =
+  SettingsBulkEditRequestBodyItemZeroRTT as any as S.Schema<SettingsBulkEditRequestBodyItemBrotli>;
 
 export type SettingsBulkEditRequestBodyItemZonesBrowserCacheTTL2Id = "browser_cache_ttl";
 export const SettingsBulkEditRequestBodyItemZonesBrowserCacheTTL2Id = S.String;
@@ -9052,16 +7596,8 @@ export interface SettingsBulkEditRequestBodyItemZonesBrowserCheck2 {
   /** last time this setting was modified. */
   modifiedOn?: string;
 }
-export const SettingsBulkEditRequestBodyItemZonesBrowserCheck2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditRequestBodyItemZonesBrowserCheck2Id,
-    value: SettingsBulkEditRequestBodyItemZonesBrowserCheck2Value,
-    editable: S.optional(S.Boolean),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditRequestBodyItemZonesBrowserCheck2",
-}) as any as S.Schema<SettingsBulkEditRequestBodyItemZonesBrowserCheck2>;
+export const SettingsBulkEditRequestBodyItemZonesBrowserCheck2 =
+  SettingsBulkEditRequestBodyItemZeroRTT as any as S.Schema<SettingsBulkEditRequestBodyItemZonesBrowserCheck2>;
 
 export type SettingsBulkEditRequestBodyItemZonesCacheLevel2Id = "cache_level";
 export const SettingsBulkEditRequestBodyItemZonesCacheLevel2Id = S.String;
@@ -9082,16 +7618,8 @@ export interface SettingsBulkEditRequestBodyItemZonesCacheLevel2 {
   /** last time this setting was modified. */
   modifiedOn?: string;
 }
-export const SettingsBulkEditRequestBodyItemZonesCacheLevel2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditRequestBodyItemZonesCacheLevel2Id,
-    value: SettingsBulkEditRequestBodyItemZonesCacheLevel2Value,
-    editable: S.optional(S.Boolean),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditRequestBodyItemZonesCacheLevel2",
-}) as any as S.Schema<SettingsBulkEditRequestBodyItemZonesCacheLevel2>;
+export const SettingsBulkEditRequestBodyItemZonesCacheLevel2 =
+  SettingsBulkEditRequestBodyItemZeroRTT as any as S.Schema<SettingsBulkEditRequestBodyItemZonesCacheLevel2>;
 
 export type SettingsBulkEditRequestBodyItemChallengeTTLId = "challenge_ttl";
 export const SettingsBulkEditRequestBodyItemChallengeTTLId = S.String;
@@ -9150,16 +7678,8 @@ export interface SettingsBulkEditRequestBodyItemZonesChinaNetworkEnabled {
   /** last time this setting was modified. */
   modifiedOn?: string;
 }
-export const SettingsBulkEditRequestBodyItemZonesChinaNetworkEnabled = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditRequestBodyItemZonesChinaNetworkEnabledId,
-    value: SettingsBulkEditRequestBodyItemZonesChinaNetworkEnabledValue,
-    editable: S.optional(S.Boolean),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditRequestBodyItemZonesChinaNetworkEnabled",
-}) as any as S.Schema<SettingsBulkEditRequestBodyItemZonesChinaNetworkEnabled>;
+export const SettingsBulkEditRequestBodyItemZonesChinaNetworkEnabled =
+  SettingsBulkEditRequestBodyItemZeroRTT as any as S.Schema<SettingsBulkEditRequestBodyItemZonesChinaNetworkEnabled>;
 
 export type SettingsBulkEditRequestBodyItemZonesContentConverterId = "content_converter";
 export const SettingsBulkEditRequestBodyItemZonesContentConverterId = S.String;
@@ -9177,16 +7697,8 @@ export interface SettingsBulkEditRequestBodyItemZonesContentConverter {
   /** last time this setting was modified. */
   modifiedOn?: string;
 }
-export const SettingsBulkEditRequestBodyItemZonesContentConverter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditRequestBodyItemZonesContentConverterId,
-    value: SettingsBulkEditRequestBodyItemZonesContentConverterValue,
-    editable: S.optional(S.Boolean),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditRequestBodyItemZonesContentConverter",
-}) as any as S.Schema<SettingsBulkEditRequestBodyItemZonesContentConverter>;
+export const SettingsBulkEditRequestBodyItemZonesContentConverter =
+  SettingsBulkEditRequestBodyItemZeroRTT as any as S.Schema<SettingsBulkEditRequestBodyItemZonesContentConverter>;
 
 export type SettingsBulkEditRequestBodyItemCiphersId = "ciphers";
 export const SettingsBulkEditRequestBodyItemCiphersId = S.String;
@@ -9234,16 +7746,8 @@ export interface SettingsBulkEditRequestBodyItemZonesCNAMEFlattening {
   /** last time this setting was modified. */
   modifiedOn?: string;
 }
-export const SettingsBulkEditRequestBodyItemZonesCNAMEFlattening = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditRequestBodyItemZonesCNAMEFlatteningId,
-    value: SettingsBulkEditRequestBodyItemZonesCNAMEFlatteningValue,
-    editable: S.optional(S.Boolean),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditRequestBodyItemZonesCNAMEFlattening",
-}) as any as S.Schema<SettingsBulkEditRequestBodyItemZonesCNAMEFlattening>;
+export const SettingsBulkEditRequestBodyItemZonesCNAMEFlattening =
+  SettingsBulkEditRequestBodyItemZeroRTT as any as S.Schema<SettingsBulkEditRequestBodyItemZonesCNAMEFlattening>;
 
 export type SettingsBulkEditRequestBodyItemDevelopmentModeId = "development_mode";
 export const SettingsBulkEditRequestBodyItemDevelopmentModeId = S.String;
@@ -9291,16 +7795,8 @@ export interface SettingsBulkEditRequestBodyItemEarlyHints {
   /** last time this setting was modified. */
   modifiedOn?: string;
 }
-export const SettingsBulkEditRequestBodyItemEarlyHints = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditRequestBodyItemEarlyHintsId,
-    value: SettingsBulkEditRequestBodyItemEarlyHintsValue,
-    editable: S.optional(S.Boolean),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditRequestBodyItemEarlyHints",
-}) as any as S.Schema<SettingsBulkEditRequestBodyItemEarlyHints>;
+export const SettingsBulkEditRequestBodyItemEarlyHints =
+  SettingsBulkEditRequestBodyItemZeroRTT as any as S.Schema<SettingsBulkEditRequestBodyItemEarlyHints>;
 
 export type SettingsBulkEditRequestBodyItemZonesEdgeCacheTTL2Id = "edge_cache_ttl";
 export const SettingsBulkEditRequestBodyItemZonesEdgeCacheTTL2Id = S.String;
@@ -9339,16 +7835,8 @@ export interface SettingsBulkEditRequestBodyItemZonesEdgeCacheTTL2 {
   /** last time this setting was modified. */
   modifiedOn?: string;
 }
-export const SettingsBulkEditRequestBodyItemZonesEdgeCacheTTL2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditRequestBodyItemZonesEdgeCacheTTL2Id,
-    value: SettingsBulkEditRequestBodyItemZonesEdgeCacheTTL2Value,
-    editable: S.optional(S.Boolean),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditRequestBodyItemZonesEdgeCacheTTL2",
-}) as any as S.Schema<SettingsBulkEditRequestBodyItemZonesEdgeCacheTTL2>;
+export const SettingsBulkEditRequestBodyItemZonesEdgeCacheTTL2 =
+  SettingsBulkEditRequestBodyItemChallengeTTL as any as S.Schema<SettingsBulkEditRequestBodyItemZonesEdgeCacheTTL2>;
 
 export type SettingsBulkEditRequestBodyItemZonesEmailObfuscation2Id = "email_obfuscation";
 export const SettingsBulkEditRequestBodyItemZonesEmailObfuscation2Id = S.String;
@@ -9366,16 +7854,8 @@ export interface SettingsBulkEditRequestBodyItemZonesEmailObfuscation2 {
   /** last time this setting was modified. */
   modifiedOn?: string;
 }
-export const SettingsBulkEditRequestBodyItemZonesEmailObfuscation2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditRequestBodyItemZonesEmailObfuscation2Id,
-    value: SettingsBulkEditRequestBodyItemZonesEmailObfuscation2Value,
-    editable: S.optional(S.Boolean),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditRequestBodyItemZonesEmailObfuscation2",
-}) as any as S.Schema<SettingsBulkEditRequestBodyItemZonesEmailObfuscation2>;
+export const SettingsBulkEditRequestBodyItemZonesEmailObfuscation2 =
+  SettingsBulkEditRequestBodyItemZeroRTT as any as S.Schema<SettingsBulkEditRequestBodyItemZonesEmailObfuscation2>;
 
 export type SettingsBulkEditRequestBodyItemH2PrioritizationId = "h2_prioritization";
 export const SettingsBulkEditRequestBodyItemH2PrioritizationId = S.String;
@@ -9393,16 +7873,8 @@ export interface SettingsBulkEditRequestBodyItemH2Prioritization {
   /** last time this setting was modified. */
   modifiedOn?: string;
 }
-export const SettingsBulkEditRequestBodyItemH2Prioritization = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditRequestBodyItemH2PrioritizationId,
-    value: SettingsBulkEditRequestBodyItemH2PrioritizationValue,
-    editable: S.optional(S.Boolean),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditRequestBodyItemH2Prioritization",
-}) as any as S.Schema<SettingsBulkEditRequestBodyItemH2Prioritization>;
+export const SettingsBulkEditRequestBodyItemH2Prioritization =
+  SettingsBulkEditRequestBodyItemZeroRTT as any as S.Schema<SettingsBulkEditRequestBodyItemH2Prioritization>;
 
 export type SettingsBulkEditRequestBodyItemHotlinkProtectionId = "hotlink_protection";
 export const SettingsBulkEditRequestBodyItemHotlinkProtectionId = S.String;
@@ -9420,16 +7892,8 @@ export interface SettingsBulkEditRequestBodyItemHotlinkProtection {
   /** last time this setting was modified. */
   modifiedOn?: string;
 }
-export const SettingsBulkEditRequestBodyItemHotlinkProtection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditRequestBodyItemHotlinkProtectionId,
-    value: SettingsBulkEditRequestBodyItemHotlinkProtectionValue,
-    editable: S.optional(S.Boolean),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditRequestBodyItemHotlinkProtection",
-}) as any as S.Schema<SettingsBulkEditRequestBodyItemHotlinkProtection>;
+export const SettingsBulkEditRequestBodyItemHotlinkProtection =
+  SettingsBulkEditRequestBodyItemZeroRTT as any as S.Schema<SettingsBulkEditRequestBodyItemHotlinkProtection>;
 
 export type SettingsBulkEditRequestBodyItemHTTP2Id = "http2";
 export const SettingsBulkEditRequestBodyItemHTTP2Id = S.String;
@@ -9447,16 +7911,8 @@ export interface SettingsBulkEditRequestBodyItemHTTP2 {
   /** last time this setting was modified. */
   modifiedOn?: string;
 }
-export const SettingsBulkEditRequestBodyItemHTTP2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditRequestBodyItemHTTP2Id,
-    value: SettingsBulkEditRequestBodyItemHTTP2Value,
-    editable: S.optional(S.Boolean),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditRequestBodyItemHTTP2",
-}) as any as S.Schema<SettingsBulkEditRequestBodyItemHTTP2>;
+export const SettingsBulkEditRequestBodyItemHTTP2 =
+  SettingsBulkEditRequestBodyItemZeroRTT as any as S.Schema<SettingsBulkEditRequestBodyItemHTTP2>;
 
 export type SettingsBulkEditRequestBodyItemHTTP3Id = "http3";
 export const SettingsBulkEditRequestBodyItemHTTP3Id = S.String;
@@ -9474,16 +7930,8 @@ export interface SettingsBulkEditRequestBodyItemHTTP3 {
   /** last time this setting was modified. */
   modifiedOn?: string;
 }
-export const SettingsBulkEditRequestBodyItemHTTP3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditRequestBodyItemHTTP3Id,
-    value: SettingsBulkEditRequestBodyItemHTTP3Value,
-    editable: S.optional(S.Boolean),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditRequestBodyItemHTTP3",
-}) as any as S.Schema<SettingsBulkEditRequestBodyItemHTTP3>;
+export const SettingsBulkEditRequestBodyItemHTTP3 =
+  SettingsBulkEditRequestBodyItemZeroRTT as any as S.Schema<SettingsBulkEditRequestBodyItemHTTP3>;
 
 export type SettingsBulkEditRequestBodyItemZonesIPGeolocation2Id = "ip_geolocation";
 export const SettingsBulkEditRequestBodyItemZonesIPGeolocation2Id = S.String;
@@ -9501,16 +7949,8 @@ export interface SettingsBulkEditRequestBodyItemZonesIPGeolocation2 {
   /** last time this setting was modified. */
   modifiedOn?: string;
 }
-export const SettingsBulkEditRequestBodyItemZonesIPGeolocation2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditRequestBodyItemZonesIPGeolocation2Id,
-    value: SettingsBulkEditRequestBodyItemZonesIPGeolocation2Value,
-    editable: S.optional(S.Boolean),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditRequestBodyItemZonesIPGeolocation2",
-}) as any as S.Schema<SettingsBulkEditRequestBodyItemZonesIPGeolocation2>;
+export const SettingsBulkEditRequestBodyItemZonesIPGeolocation2 =
+  SettingsBulkEditRequestBodyItemZeroRTT as any as S.Schema<SettingsBulkEditRequestBodyItemZonesIPGeolocation2>;
 
 export type SettingsBulkEditRequestBodyItemIPV6Id = "ipv6";
 export const SettingsBulkEditRequestBodyItemIPV6Id = S.String;
@@ -9528,16 +7968,8 @@ export interface SettingsBulkEditRequestBodyItemIPV6 {
   /** last time this setting was modified. */
   modifiedOn?: string;
 }
-export const SettingsBulkEditRequestBodyItemIPV6 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditRequestBodyItemIPV6Id,
-    value: SettingsBulkEditRequestBodyItemIPV6Value,
-    editable: S.optional(S.Boolean),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditRequestBodyItemIPV6",
-}) as any as S.Schema<SettingsBulkEditRequestBodyItemIPV6>;
+export const SettingsBulkEditRequestBodyItemIPV6 =
+  SettingsBulkEditRequestBodyItemZeroRTT as any as S.Schema<SettingsBulkEditRequestBodyItemIPV6>;
 
 export type SettingsBulkEditRequestBodyItemZonesMaxUploadId = "max_upload";
 export const SettingsBulkEditRequestBodyItemZonesMaxUploadId = S.String;
@@ -9581,16 +8013,8 @@ export interface SettingsBulkEditRequestBodyItemZonesMaxUpload {
   /** last time this setting was modified. */
   modifiedOn?: string;
 }
-export const SettingsBulkEditRequestBodyItemZonesMaxUpload = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditRequestBodyItemZonesMaxUploadId,
-    value: SettingsBulkEditRequestBodyItemZonesMaxUploadValue,
-    editable: S.optional(S.Boolean),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditRequestBodyItemZonesMaxUpload",
-}) as any as S.Schema<SettingsBulkEditRequestBodyItemZonesMaxUpload>;
+export const SettingsBulkEditRequestBodyItemZonesMaxUpload =
+  SettingsBulkEditRequestBodyItemChallengeTTL as any as S.Schema<SettingsBulkEditRequestBodyItemZonesMaxUpload>;
 
 export type SettingsBulkEditRequestBodyItemMinTLSVersionId = "min_tls_version";
 export const SettingsBulkEditRequestBodyItemMinTLSVersionId = S.String;
@@ -9608,16 +8032,8 @@ export interface SettingsBulkEditRequestBodyItemMinTLSVersion {
   /** last time this setting was modified. */
   modifiedOn?: string;
 }
-export const SettingsBulkEditRequestBodyItemMinTLSVersion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditRequestBodyItemMinTLSVersionId,
-    value: SettingsBulkEditRequestBodyItemMinTLSVersionValue,
-    editable: S.optional(S.Boolean),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditRequestBodyItemMinTLSVersion",
-}) as any as S.Schema<SettingsBulkEditRequestBodyItemMinTLSVersion>;
+export const SettingsBulkEditRequestBodyItemMinTLSVersion =
+  SettingsBulkEditRequestBodyItemZeroRTT as any as S.Schema<SettingsBulkEditRequestBodyItemMinTLSVersion>;
 
 export type SettingsBulkEditRequestBodyItemZonesMirage2Id = "mirage";
 export const SettingsBulkEditRequestBodyItemZonesMirage2Id = S.String;
@@ -9635,16 +8051,8 @@ export interface SettingsBulkEditRequestBodyItemZonesMirage2 {
   /** last time this setting was modified. */
   modifiedOn?: string;
 }
-export const SettingsBulkEditRequestBodyItemZonesMirage2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditRequestBodyItemZonesMirage2Id,
-    value: SettingsBulkEditRequestBodyItemZonesMirage2Value,
-    editable: S.optional(S.Boolean),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditRequestBodyItemZonesMirage2",
-}) as any as S.Schema<SettingsBulkEditRequestBodyItemZonesMirage2>;
+export const SettingsBulkEditRequestBodyItemZonesMirage2 =
+  SettingsBulkEditRequestBodyItemZeroRTT as any as S.Schema<SettingsBulkEditRequestBodyItemZonesMirage2>;
 
 export type SettingsBulkEditRequestBodyItemNELId = "nel";
 export const SettingsBulkEditRequestBodyItemNELId = S.String;
@@ -9698,17 +8106,8 @@ export interface SettingsBulkEditRequestBodyItemZonesOpportunisticEncryption2 {
   /** last time this setting was modified. */
   modifiedOn?: string;
 }
-export const SettingsBulkEditRequestBodyItemZonesOpportunisticEncryption2 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: SettingsBulkEditRequestBodyItemZonesOpportunisticEncryption2Id,
-      value: SettingsBulkEditRequestBodyItemZonesOpportunisticEncryption2Value,
-      editable: S.optional(S.Boolean),
-      modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    }),
-).annotate({
-  identifier: "SettingsBulkEditRequestBodyItemZonesOpportunisticEncryption2",
-}) as any as S.Schema<SettingsBulkEditRequestBodyItemZonesOpportunisticEncryption2>;
+export const SettingsBulkEditRequestBodyItemZonesOpportunisticEncryption2 =
+  SettingsBulkEditRequestBodyItemZonesAutomaticHTTPSRewrites2 as any as S.Schema<SettingsBulkEditRequestBodyItemZonesOpportunisticEncryption2>;
 
 export type SettingsBulkEditRequestBodyItemOpportunisticOnionId = "opportunistic_onion";
 export const SettingsBulkEditRequestBodyItemOpportunisticOnionId = S.String;
@@ -9726,16 +8125,8 @@ export interface SettingsBulkEditRequestBodyItemOpportunisticOnion {
   /** last time this setting was modified. */
   modifiedOn?: string;
 }
-export const SettingsBulkEditRequestBodyItemOpportunisticOnion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditRequestBodyItemOpportunisticOnionId,
-    value: SettingsBulkEditRequestBodyItemOpportunisticOnionValue,
-    editable: S.optional(S.Boolean),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditRequestBodyItemOpportunisticOnion",
-}) as any as S.Schema<SettingsBulkEditRequestBodyItemOpportunisticOnion>;
+export const SettingsBulkEditRequestBodyItemOpportunisticOnion =
+  SettingsBulkEditRequestBodyItemZeroRTT as any as S.Schema<SettingsBulkEditRequestBodyItemOpportunisticOnion>;
 
 export type SettingsBulkEditRequestBodyItemOrangeToOrangeId = "orange_to_orange";
 export const SettingsBulkEditRequestBodyItemOrangeToOrangeId = S.String;
@@ -9753,16 +8144,8 @@ export interface SettingsBulkEditRequestBodyItemOrangeToOrange {
   /** last time this setting was modified. */
   modifiedOn?: string;
 }
-export const SettingsBulkEditRequestBodyItemOrangeToOrange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditRequestBodyItemOrangeToOrangeId,
-    value: SettingsBulkEditRequestBodyItemOrangeToOrangeValue,
-    editable: S.optional(S.Boolean),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditRequestBodyItemOrangeToOrange",
-}) as any as S.Schema<SettingsBulkEditRequestBodyItemOrangeToOrange>;
+export const SettingsBulkEditRequestBodyItemOrangeToOrange =
+  SettingsBulkEditRequestBodyItemZeroRTT as any as S.Schema<SettingsBulkEditRequestBodyItemOrangeToOrange>;
 
 export type SettingsBulkEditRequestBodyItemZonesOriginErrorPagePassThru2Id =
   "origin_error_page_pass_thru";
@@ -9781,17 +8164,8 @@ export interface SettingsBulkEditRequestBodyItemZonesOriginErrorPagePassThru2 {
   /** last time this setting was modified. */
   modifiedOn?: string;
 }
-export const SettingsBulkEditRequestBodyItemZonesOriginErrorPagePassThru2 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: SettingsBulkEditRequestBodyItemZonesOriginErrorPagePassThru2Id,
-      value: SettingsBulkEditRequestBodyItemZonesOriginErrorPagePassThru2Value,
-      editable: S.optional(S.Boolean),
-      modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    }),
-).annotate({
-  identifier: "SettingsBulkEditRequestBodyItemZonesOriginErrorPagePassThru2",
-}) as any as S.Schema<SettingsBulkEditRequestBodyItemZonesOriginErrorPagePassThru2>;
+export const SettingsBulkEditRequestBodyItemZonesOriginErrorPagePassThru2 =
+  SettingsBulkEditRequestBodyItemZonesAutomaticHTTPSRewrites2 as any as S.Schema<SettingsBulkEditRequestBodyItemZonesOriginErrorPagePassThru2>;
 
 export type SettingsBulkEditRequestBodyItemZonesCacheRulesOriginH2MaxStreamsId =
   "origin_h2_max_streams";
@@ -9858,16 +8232,8 @@ export interface SettingsBulkEditRequestBodyItemZonesPolish2 {
   /** last time this setting was modified. */
   modifiedOn?: string;
 }
-export const SettingsBulkEditRequestBodyItemZonesPolish2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditRequestBodyItemZonesPolish2Id,
-    value: SettingsBulkEditRequestBodyItemZonesPolish2Value,
-    editable: S.optional(S.Boolean),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditRequestBodyItemZonesPolish2",
-}) as any as S.Schema<SettingsBulkEditRequestBodyItemZonesPolish2>;
+export const SettingsBulkEditRequestBodyItemZonesPolish2 =
+  SettingsBulkEditRequestBodyItemZeroRTT as any as S.Schema<SettingsBulkEditRequestBodyItemZonesPolish2>;
 
 export type SettingsBulkEditRequestBodyItemPrefetchPreloadId = "prefetch_preload";
 export const SettingsBulkEditRequestBodyItemPrefetchPreloadId = S.String;
@@ -9885,16 +8251,8 @@ export interface SettingsBulkEditRequestBodyItemPrefetchPreload {
   /** last time this setting was modified. */
   modifiedOn?: string;
 }
-export const SettingsBulkEditRequestBodyItemPrefetchPreload = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditRequestBodyItemPrefetchPreloadId,
-    value: SettingsBulkEditRequestBodyItemPrefetchPreloadValue,
-    editable: S.optional(S.Boolean),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditRequestBodyItemPrefetchPreload",
-}) as any as S.Schema<SettingsBulkEditRequestBodyItemPrefetchPreload>;
+export const SettingsBulkEditRequestBodyItemPrefetchPreload =
+  SettingsBulkEditRequestBodyItemZeroRTT as any as S.Schema<SettingsBulkEditRequestBodyItemPrefetchPreload>;
 
 export type SettingsBulkEditRequestBodyItemZonesPreRenderId = "pre_render";
 export const SettingsBulkEditRequestBodyItemZonesPreRenderId = S.String;
@@ -9912,16 +8270,8 @@ export interface SettingsBulkEditRequestBodyItemZonesPreRender {
   /** last time this setting was modified. */
   modifiedOn?: string;
 }
-export const SettingsBulkEditRequestBodyItemZonesPreRender = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditRequestBodyItemZonesPreRenderId,
-    value: SettingsBulkEditRequestBodyItemZonesPreRenderValue,
-    editable: S.optional(S.Boolean),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditRequestBodyItemZonesPreRender",
-}) as any as S.Schema<SettingsBulkEditRequestBodyItemZonesPreRender>;
+export const SettingsBulkEditRequestBodyItemZonesPreRender =
+  SettingsBulkEditRequestBodyItemZeroRTT as any as S.Schema<SettingsBulkEditRequestBodyItemZonesPreRender>;
 
 export type SettingsBulkEditRequestBodyItemZonesPrivacyPassId = "privacy_pass";
 export const SettingsBulkEditRequestBodyItemZonesPrivacyPassId = S.String;
@@ -9939,16 +8289,8 @@ export interface SettingsBulkEditRequestBodyItemZonesPrivacyPass {
   /** last time this setting was modified. */
   modifiedOn?: string;
 }
-export const SettingsBulkEditRequestBodyItemZonesPrivacyPass = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditRequestBodyItemZonesPrivacyPassId,
-    value: SettingsBulkEditRequestBodyItemZonesPrivacyPassValue,
-    editable: S.optional(S.Boolean),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditRequestBodyItemZonesPrivacyPass",
-}) as any as S.Schema<SettingsBulkEditRequestBodyItemZonesPrivacyPass>;
+export const SettingsBulkEditRequestBodyItemZonesPrivacyPass =
+  SettingsBulkEditRequestBodyItemZeroRTT as any as S.Schema<SettingsBulkEditRequestBodyItemZonesPrivacyPass>;
 
 export type SettingsBulkEditRequestBodyItemProxyReadTimeoutId = "proxy_read_timeout";
 export const SettingsBulkEditRequestBodyItemProxyReadTimeoutId = S.String;
@@ -9963,16 +8305,8 @@ export interface SettingsBulkEditRequestBodyItemProxyReadTimeout {
   /** last time this setting was modified. */
   modifiedOn?: string;
 }
-export const SettingsBulkEditRequestBodyItemProxyReadTimeout = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditRequestBodyItemProxyReadTimeoutId,
-    value: S.Number,
-    editable: S.optional(S.Boolean),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditRequestBodyItemProxyReadTimeout",
-}) as any as S.Schema<SettingsBulkEditRequestBodyItemProxyReadTimeout>;
+export const SettingsBulkEditRequestBodyItemProxyReadTimeout =
+  SettingsBulkEditRequestBodyItemZonesBrowserCacheTTL2 as any as S.Schema<SettingsBulkEditRequestBodyItemProxyReadTimeout>;
 
 export type SettingsBulkEditRequestBodyItemPseudoIPV4Id = "pseudo_ipv4";
 export const SettingsBulkEditRequestBodyItemPseudoIPV4Id = S.String;
@@ -9993,16 +8327,8 @@ export interface SettingsBulkEditRequestBodyItemPseudoIPV4 {
   /** last time this setting was modified. */
   modifiedOn?: string;
 }
-export const SettingsBulkEditRequestBodyItemPseudoIPV4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditRequestBodyItemPseudoIPV4Id,
-    value: SettingsBulkEditRequestBodyItemPseudoIPV4Value,
-    editable: S.optional(S.Boolean),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditRequestBodyItemPseudoIPV4",
-}) as any as S.Schema<SettingsBulkEditRequestBodyItemPseudoIPV4>;
+export const SettingsBulkEditRequestBodyItemPseudoIPV4 =
+  SettingsBulkEditRequestBodyItemZeroRTT as any as S.Schema<SettingsBulkEditRequestBodyItemPseudoIPV4>;
 
 export type SettingsBulkEditRequestBodyItemZonesRedirectsForAITrainingId =
   "redirects_for_ai_training";
@@ -10021,17 +8347,8 @@ export interface SettingsBulkEditRequestBodyItemZonesRedirectsForAITraining {
   /** last time this setting was modified. */
   modifiedOn?: string;
 }
-export const SettingsBulkEditRequestBodyItemZonesRedirectsForAITraining = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: SettingsBulkEditRequestBodyItemZonesRedirectsForAITrainingId,
-      value: SettingsBulkEditRequestBodyItemZonesRedirectsForAITrainingValue,
-      editable: S.optional(S.Boolean),
-      modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    }),
-).annotate({
-  identifier: "SettingsBulkEditRequestBodyItemZonesRedirectsForAITraining",
-}) as any as S.Schema<SettingsBulkEditRequestBodyItemZonesRedirectsForAITraining>;
+export const SettingsBulkEditRequestBodyItemZonesRedirectsForAITraining =
+  SettingsBulkEditRequestBodyItemZonesAutomaticHTTPSRewrites2 as any as S.Schema<SettingsBulkEditRequestBodyItemZonesRedirectsForAITraining>;
 
 export type SettingsBulkEditRequestBodyItemZonesReplaceInsecureJSId = "replace_insecure_js";
 export const SettingsBulkEditRequestBodyItemZonesReplaceInsecureJSId = S.String;
@@ -10049,16 +8366,8 @@ export interface SettingsBulkEditRequestBodyItemZonesReplaceInsecureJS {
   /** last time this setting was modified. */
   modifiedOn?: string;
 }
-export const SettingsBulkEditRequestBodyItemZonesReplaceInsecureJS = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditRequestBodyItemZonesReplaceInsecureJSId,
-    value: SettingsBulkEditRequestBodyItemZonesReplaceInsecureJSValue,
-    editable: S.optional(S.Boolean),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditRequestBodyItemZonesReplaceInsecureJS",
-}) as any as S.Schema<SettingsBulkEditRequestBodyItemZonesReplaceInsecureJS>;
+export const SettingsBulkEditRequestBodyItemZonesReplaceInsecureJS =
+  SettingsBulkEditRequestBodyItemZeroRTT as any as S.Schema<SettingsBulkEditRequestBodyItemZonesReplaceInsecureJS>;
 
 export type SettingsBulkEditRequestBodyItemZonesResponseBuffering2Id = "response_buffering";
 export const SettingsBulkEditRequestBodyItemZonesResponseBuffering2Id = S.String;
@@ -10076,16 +8385,8 @@ export interface SettingsBulkEditRequestBodyItemZonesResponseBuffering2 {
   /** last time this setting was modified. */
   modifiedOn?: string;
 }
-export const SettingsBulkEditRequestBodyItemZonesResponseBuffering2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditRequestBodyItemZonesResponseBuffering2Id,
-    value: SettingsBulkEditRequestBodyItemZonesResponseBuffering2Value,
-    editable: S.optional(S.Boolean),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditRequestBodyItemZonesResponseBuffering2",
-}) as any as S.Schema<SettingsBulkEditRequestBodyItemZonesResponseBuffering2>;
+export const SettingsBulkEditRequestBodyItemZonesResponseBuffering2 =
+  SettingsBulkEditRequestBodyItemZeroRTT as any as S.Schema<SettingsBulkEditRequestBodyItemZonesResponseBuffering2>;
 
 export type SettingsBulkEditRequestBodyItemZonesRocketLoader2Id = "rocket_loader";
 export const SettingsBulkEditRequestBodyItemZonesRocketLoader2Id = S.String;
@@ -10103,16 +8404,8 @@ export interface SettingsBulkEditRequestBodyItemZonesRocketLoader2 {
   /** last time this setting was modified. */
   modifiedOn?: string;
 }
-export const SettingsBulkEditRequestBodyItemZonesRocketLoader2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditRequestBodyItemZonesRocketLoader2Id,
-    value: SettingsBulkEditRequestBodyItemZonesRocketLoader2Value,
-    editable: S.optional(S.Boolean),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditRequestBodyItemZonesRocketLoader2",
-}) as any as S.Schema<SettingsBulkEditRequestBodyItemZonesRocketLoader2>;
+export const SettingsBulkEditRequestBodyItemZonesRocketLoader2 =
+  SettingsBulkEditRequestBodyItemZeroRTT as any as S.Schema<SettingsBulkEditRequestBodyItemZonesRocketLoader2>;
 
 export type SettingsBulkEditRequestBodyItemZonesSchemasAutomaticPlatformOptimizationId =
   "automatic_platform_optimization";
@@ -10190,16 +8483,8 @@ export interface SettingsBulkEditRequestBodyItemZonesSearchForAgents {
   /** last time this setting was modified. */
   modifiedOn?: string;
 }
-export const SettingsBulkEditRequestBodyItemZonesSearchForAgents = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditRequestBodyItemZonesSearchForAgentsId,
-    value: SettingsBulkEditRequestBodyItemZonesSearchForAgentsValue,
-    editable: S.optional(S.Boolean),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditRequestBodyItemZonesSearchForAgents",
-}) as any as S.Schema<SettingsBulkEditRequestBodyItemZonesSearchForAgents>;
+export const SettingsBulkEditRequestBodyItemZonesSearchForAgents =
+  SettingsBulkEditRequestBodyItemZeroRTT as any as S.Schema<SettingsBulkEditRequestBodyItemZonesSearchForAgents>;
 
 export type SettingsBulkEditRequestBodyItemSecurityHeadersId = "security_header";
 export const SettingsBulkEditRequestBodyItemSecurityHeadersId = S.String;
@@ -10288,16 +8573,8 @@ export interface SettingsBulkEditRequestBodyItemZonesSecurityLevel2 {
   /** last time this setting was modified. */
   modifiedOn?: string;
 }
-export const SettingsBulkEditRequestBodyItemZonesSecurityLevel2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditRequestBodyItemZonesSecurityLevel2Id,
-    value: SettingsBulkEditRequestBodyItemZonesSecurityLevel2Value,
-    editable: S.optional(S.Boolean),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditRequestBodyItemZonesSecurityLevel2",
-}) as any as S.Schema<SettingsBulkEditRequestBodyItemZonesSecurityLevel2>;
+export const SettingsBulkEditRequestBodyItemZonesSecurityLevel2 =
+  SettingsBulkEditRequestBodyItemZeroRTT as any as S.Schema<SettingsBulkEditRequestBodyItemZonesSecurityLevel2>;
 
 export type SettingsBulkEditRequestBodyItemServerSideExcludesId = "server_side_exclude";
 export const SettingsBulkEditRequestBodyItemServerSideExcludesId = S.String;
@@ -10315,16 +8592,8 @@ export interface SettingsBulkEditRequestBodyItemServerSideExcludes {
   /** last time this setting was modified. */
   modifiedOn?: string;
 }
-export const SettingsBulkEditRequestBodyItemServerSideExcludes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditRequestBodyItemServerSideExcludesId,
-    value: SettingsBulkEditRequestBodyItemServerSideExcludesValue,
-    editable: S.optional(S.Boolean),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditRequestBodyItemServerSideExcludes",
-}) as any as S.Schema<SettingsBulkEditRequestBodyItemServerSideExcludes>;
+export const SettingsBulkEditRequestBodyItemServerSideExcludes =
+  SettingsBulkEditRequestBodyItemZeroRTT as any as S.Schema<SettingsBulkEditRequestBodyItemServerSideExcludes>;
 
 export type SettingsBulkEditRequestBodyItemZonesSha1SupportId = "sha1_support";
 export const SettingsBulkEditRequestBodyItemZonesSha1SupportId = S.String;
@@ -10342,16 +8611,8 @@ export interface SettingsBulkEditRequestBodyItemZonesSha1Support {
   /** last time this setting was modified. */
   modifiedOn?: string;
 }
-export const SettingsBulkEditRequestBodyItemZonesSha1Support = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditRequestBodyItemZonesSha1SupportId,
-    value: SettingsBulkEditRequestBodyItemZonesSha1SupportValue,
-    editable: S.optional(S.Boolean),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditRequestBodyItemZonesSha1Support",
-}) as any as S.Schema<SettingsBulkEditRequestBodyItemZonesSha1Support>;
+export const SettingsBulkEditRequestBodyItemZonesSha1Support =
+  SettingsBulkEditRequestBodyItemZeroRTT as any as S.Schema<SettingsBulkEditRequestBodyItemZonesSha1Support>;
 
 export type SettingsBulkEditRequestBodyItemZonesSortQueryStringForCache2Id =
   "sort_query_string_for_cache";
@@ -10370,17 +8631,8 @@ export interface SettingsBulkEditRequestBodyItemZonesSortQueryStringForCache2 {
   /** last time this setting was modified. */
   modifiedOn?: string;
 }
-export const SettingsBulkEditRequestBodyItemZonesSortQueryStringForCache2 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: SettingsBulkEditRequestBodyItemZonesSortQueryStringForCache2Id,
-      value: SettingsBulkEditRequestBodyItemZonesSortQueryStringForCache2Value,
-      editable: S.optional(S.Boolean),
-      modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    }),
-).annotate({
-  identifier: "SettingsBulkEditRequestBodyItemZonesSortQueryStringForCache2",
-}) as any as S.Schema<SettingsBulkEditRequestBodyItemZonesSortQueryStringForCache2>;
+export const SettingsBulkEditRequestBodyItemZonesSortQueryStringForCache2 =
+  SettingsBulkEditRequestBodyItemZonesAutomaticHTTPSRewrites2 as any as S.Schema<SettingsBulkEditRequestBodyItemZonesSortQueryStringForCache2>;
 
 export type SettingsBulkEditRequestBodyItemZonesSSL2Id = "ssl";
 export const SettingsBulkEditRequestBodyItemZonesSSL2Id = S.String;
@@ -10398,16 +8650,8 @@ export interface SettingsBulkEditRequestBodyItemZonesSSL2 {
   /** last time this setting was modified. */
   modifiedOn?: string;
 }
-export const SettingsBulkEditRequestBodyItemZonesSSL2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditRequestBodyItemZonesSSL2Id,
-    value: SettingsBulkEditRequestBodyItemZonesSSL2Value,
-    editable: S.optional(S.Boolean),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditRequestBodyItemZonesSSL2",
-}) as any as S.Schema<SettingsBulkEditRequestBodyItemZonesSSL2>;
+export const SettingsBulkEditRequestBodyItemZonesSSL2 =
+  SettingsBulkEditRequestBodyItemZeroRTT as any as S.Schema<SettingsBulkEditRequestBodyItemZonesSSL2>;
 
 export type SettingsBulkEditRequestBodyItemSSLRecommenderId = "ssl_recommender";
 export const SettingsBulkEditRequestBodyItemSSLRecommenderId = S.String;
@@ -10443,16 +8687,8 @@ export interface SettingsBulkEditRequestBodyItemZonesTLS12Only {
   /** last time this setting was modified. */
   modifiedOn?: string;
 }
-export const SettingsBulkEditRequestBodyItemZonesTLS12Only = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditRequestBodyItemZonesTLS12OnlyId,
-    value: SettingsBulkEditRequestBodyItemZonesTLS12OnlyValue,
-    editable: S.optional(S.Boolean),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditRequestBodyItemZonesTLS12Only",
-}) as any as S.Schema<SettingsBulkEditRequestBodyItemZonesTLS12Only>;
+export const SettingsBulkEditRequestBodyItemZonesTLS12Only =
+  SettingsBulkEditRequestBodyItemZeroRTT as any as S.Schema<SettingsBulkEditRequestBodyItemZonesTLS12Only>;
 
 export type SettingsBulkEditRequestBodyItemTLS13Id = "tls_1_3";
 export const SettingsBulkEditRequestBodyItemTLS13Id = S.String;
@@ -10470,16 +8706,8 @@ export interface SettingsBulkEditRequestBodyItemTLS13 {
   /** last time this setting was modified. */
   modifiedOn?: string;
 }
-export const SettingsBulkEditRequestBodyItemTLS13 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditRequestBodyItemTLS13Id,
-    value: SettingsBulkEditRequestBodyItemTLS13Value,
-    editable: S.optional(S.Boolean),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditRequestBodyItemTLS13",
-}) as any as S.Schema<SettingsBulkEditRequestBodyItemTLS13>;
+export const SettingsBulkEditRequestBodyItemTLS13 =
+  SettingsBulkEditRequestBodyItemZeroRTT as any as S.Schema<SettingsBulkEditRequestBodyItemTLS13>;
 
 export type SettingsBulkEditRequestBodyItemTLSClientAuthId = "tls_client_auth";
 export const SettingsBulkEditRequestBodyItemTLSClientAuthId = S.String;
@@ -10497,16 +8725,8 @@ export interface SettingsBulkEditRequestBodyItemTLSClientAuth {
   /** last time this setting was modified. */
   modifiedOn?: string;
 }
-export const SettingsBulkEditRequestBodyItemTLSClientAuth = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditRequestBodyItemTLSClientAuthId,
-    value: SettingsBulkEditRequestBodyItemTLSClientAuthValue,
-    editable: S.optional(S.Boolean),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditRequestBodyItemTLSClientAuth",
-}) as any as S.Schema<SettingsBulkEditRequestBodyItemTLSClientAuth>;
+export const SettingsBulkEditRequestBodyItemTLSClientAuth =
+  SettingsBulkEditRequestBodyItemZeroRTT as any as S.Schema<SettingsBulkEditRequestBodyItemTLSClientAuth>;
 
 export type SettingsBulkEditRequestBodyItemZonesTrueClientIPHeader2Id = "true_client_ip_header";
 export const SettingsBulkEditRequestBodyItemZonesTrueClientIPHeader2Id = S.String;
@@ -10524,16 +8744,8 @@ export interface SettingsBulkEditRequestBodyItemZonesTrueClientIPHeader2 {
   /** last time this setting was modified. */
   modifiedOn?: string;
 }
-export const SettingsBulkEditRequestBodyItemZonesTrueClientIPHeader2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditRequestBodyItemZonesTrueClientIPHeader2Id,
-    value: SettingsBulkEditRequestBodyItemZonesTrueClientIPHeader2Value,
-    editable: S.optional(S.Boolean),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditRequestBodyItemZonesTrueClientIPHeader2",
-}) as any as S.Schema<SettingsBulkEditRequestBodyItemZonesTrueClientIPHeader2>;
+export const SettingsBulkEditRequestBodyItemZonesTrueClientIPHeader2 =
+  SettingsBulkEditRequestBodyItemZeroRTT as any as S.Schema<SettingsBulkEditRequestBodyItemZonesTrueClientIPHeader2>;
 
 export type SettingsBulkEditRequestBodyItemZonesWAF2Id = "waf";
 export const SettingsBulkEditRequestBodyItemZonesWAF2Id = S.String;
@@ -10551,16 +8763,8 @@ export interface SettingsBulkEditRequestBodyItemZonesWAF2 {
   /** last time this setting was modified. */
   modifiedOn?: string;
 }
-export const SettingsBulkEditRequestBodyItemZonesWAF2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditRequestBodyItemZonesWAF2Id,
-    value: SettingsBulkEditRequestBodyItemZonesWAF2Value,
-    editable: S.optional(S.Boolean),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditRequestBodyItemZonesWAF2",
-}) as any as S.Schema<SettingsBulkEditRequestBodyItemZonesWAF2>;
+export const SettingsBulkEditRequestBodyItemZonesWAF2 =
+  SettingsBulkEditRequestBodyItemZeroRTT as any as S.Schema<SettingsBulkEditRequestBodyItemZonesWAF2>;
 
 export type SettingsBulkEditRequestBodyItemZonesWebmcpEnabledId = "webmcp_enabled";
 export const SettingsBulkEditRequestBodyItemZonesWebmcpEnabledId = S.String;
@@ -10578,16 +8782,8 @@ export interface SettingsBulkEditRequestBodyItemZonesWebmcpEnabled {
   /** last time this setting was modified. */
   modifiedOn?: string;
 }
-export const SettingsBulkEditRequestBodyItemZonesWebmcpEnabled = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditRequestBodyItemZonesWebmcpEnabledId,
-    value: SettingsBulkEditRequestBodyItemZonesWebmcpEnabledValue,
-    editable: S.optional(S.Boolean),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditRequestBodyItemZonesWebmcpEnabled",
-}) as any as S.Schema<SettingsBulkEditRequestBodyItemZonesWebmcpEnabled>;
+export const SettingsBulkEditRequestBodyItemZonesWebmcpEnabled =
+  SettingsBulkEditRequestBodyItemZeroRTT as any as S.Schema<SettingsBulkEditRequestBodyItemZonesWebmcpEnabled>;
 
 export type SettingsBulkEditRequestBodyItemZonesWebmcpPacksId = "webmcp_packs";
 export const SettingsBulkEditRequestBodyItemZonesWebmcpPacksId = S.String;
@@ -10629,16 +8825,8 @@ export interface SettingsBulkEditRequestBodyItemWebP {
   /** last time this setting was modified. */
   modifiedOn?: string;
 }
-export const SettingsBulkEditRequestBodyItemWebP = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditRequestBodyItemWebPId,
-    value: SettingsBulkEditRequestBodyItemWebPValue,
-    editable: S.optional(S.Boolean),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditRequestBodyItemWebP",
-}) as any as S.Schema<SettingsBulkEditRequestBodyItemWebP>;
+export const SettingsBulkEditRequestBodyItemWebP =
+  SettingsBulkEditRequestBodyItemZeroRTT as any as S.Schema<SettingsBulkEditRequestBodyItemWebP>;
 
 export type SettingsBulkEditRequestBodyItemWebsocketId = "websockets";
 export const SettingsBulkEditRequestBodyItemWebsocketId = S.String;
@@ -10656,16 +8844,8 @@ export interface SettingsBulkEditRequestBodyItemWebsocket {
   /** last time this setting was modified. */
   modifiedOn?: string;
 }
-export const SettingsBulkEditRequestBodyItemWebsocket = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditRequestBodyItemWebsocketId,
-    value: SettingsBulkEditRequestBodyItemWebsocketValue,
-    editable: S.optional(S.Boolean),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditRequestBodyItemWebsocket",
-}) as any as S.Schema<SettingsBulkEditRequestBodyItemWebsocket>;
+export const SettingsBulkEditRequestBodyItemWebsocket =
+  SettingsBulkEditRequestBodyItemZeroRTT as any as S.Schema<SettingsBulkEditRequestBodyItemWebsocket>;
 
 export type SettingsBulkEditRequestBodyItem =
   | SettingsBulkEditRequestBodyItemZeroRTT
@@ -10904,16 +9084,8 @@ export interface SettingsBulkEditResultItemZeroRTT {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsBulkEditResultItemZeroRTT = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditResultItemZeroRTTId,
-    value: SettingsBulkEditResultItemZeroRTTValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditResultItemZeroRTT",
-}) as any as S.Schema<SettingsBulkEditResultItemZeroRTT>;
+export const SettingsBulkEditResultItemZeroRTT =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsBulkEditResultItemZeroRTT>;
 
 export type SettingsBulkEditResultItemAdvancedDDoSId = "advanced_ddos";
 export const SettingsBulkEditResultItemAdvancedDDoSId = S.String;
@@ -10931,16 +9103,8 @@ export interface SettingsBulkEditResultItemAdvancedDDoS {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsBulkEditResultItemAdvancedDDoS = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditResultItemAdvancedDDoSId,
-    value: SettingsBulkEditResultItemAdvancedDDoSValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditResultItemAdvancedDDoS",
-}) as any as S.Schema<SettingsBulkEditResultItemAdvancedDDoS>;
+export const SettingsBulkEditResultItemAdvancedDDoS =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsBulkEditResultItemAdvancedDDoS>;
 
 export type SettingsBulkEditResultItemZonesCacheRulesAegisId = "aegis";
 export const SettingsBulkEditResultItemZonesCacheRulesAegisId = S.String;
@@ -10958,15 +9122,8 @@ export interface SettingsBulkEditResultItemZonesCacheRulesAegis {
   /** Value of the zone setting. */
   value?: SettingsGetResultZonesCacheRulesAegisValue | null;
 }
-export const SettingsBulkEditResultItemZonesCacheRulesAegis = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditResultItemZonesCacheRulesAegisId,
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-    value: S.optional(S.NullOr(SettingsGetResultZonesCacheRulesAegisValue)),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditResultItemZonesCacheRulesAegis",
-}) as any as S.Schema<SettingsBulkEditResultItemZonesCacheRulesAegis>;
+export const SettingsBulkEditResultItemZonesCacheRulesAegis =
+  SettingsGetResultZonesCacheRulesAegis as any as S.Schema<SettingsBulkEditResultItemZonesCacheRulesAegis>;
 
 export type SettingsBulkEditResultItemAlwaysOnlineId = "always_online";
 export const SettingsBulkEditResultItemAlwaysOnlineId = S.String;
@@ -10984,16 +9141,8 @@ export interface SettingsBulkEditResultItemAlwaysOnline {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsBulkEditResultItemAlwaysOnline = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditResultItemAlwaysOnlineId,
-    value: SettingsBulkEditResultItemAlwaysOnlineValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditResultItemAlwaysOnline",
-}) as any as S.Schema<SettingsBulkEditResultItemAlwaysOnline>;
+export const SettingsBulkEditResultItemAlwaysOnline =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsBulkEditResultItemAlwaysOnline>;
 
 export type SettingsBulkEditResultItemZonesAlwaysUseHTTPS2Id = "always_use_https";
 export const SettingsBulkEditResultItemZonesAlwaysUseHTTPS2Id = S.String;
@@ -11011,16 +9160,8 @@ export interface SettingsBulkEditResultItemZonesAlwaysUseHTTPS2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsBulkEditResultItemZonesAlwaysUseHTTPS2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditResultItemZonesAlwaysUseHTTPS2Id,
-    value: SettingsBulkEditResultItemZonesAlwaysUseHTTPS2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditResultItemZonesAlwaysUseHTTPS2",
-}) as any as S.Schema<SettingsBulkEditResultItemZonesAlwaysUseHTTPS2>;
+export const SettingsBulkEditResultItemZonesAlwaysUseHTTPS2 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsBulkEditResultItemZonesAlwaysUseHTTPS2>;
 
 export type SettingsBulkEditResultItemZonesAutomaticHTTPSRewrites2Id = "automatic_https_rewrites";
 export const SettingsBulkEditResultItemZonesAutomaticHTTPSRewrites2Id = S.String;
@@ -11038,16 +9179,8 @@ export interface SettingsBulkEditResultItemZonesAutomaticHTTPSRewrites2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsBulkEditResultItemZonesAutomaticHTTPSRewrites2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditResultItemZonesAutomaticHTTPSRewrites2Id,
-    value: SettingsBulkEditResultItemZonesAutomaticHTTPSRewrites2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditResultItemZonesAutomaticHTTPSRewrites2",
-}) as any as S.Schema<SettingsBulkEditResultItemZonesAutomaticHTTPSRewrites2>;
+export const SettingsBulkEditResultItemZonesAutomaticHTTPSRewrites2 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsBulkEditResultItemZonesAutomaticHTTPSRewrites2>;
 
 export type SettingsBulkEditResultItemBrotliId = "brotli";
 export const SettingsBulkEditResultItemBrotliId = S.String;
@@ -11065,16 +9198,8 @@ export interface SettingsBulkEditResultItemBrotli {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsBulkEditResultItemBrotli = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditResultItemBrotliId,
-    value: SettingsBulkEditResultItemBrotliValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditResultItemBrotli",
-}) as any as S.Schema<SettingsBulkEditResultItemBrotli>;
+export const SettingsBulkEditResultItemBrotli =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsBulkEditResultItemBrotli>;
 
 export type SettingsBulkEditResultItemZonesBrowserCacheTTL2Id = "browser_cache_ttl";
 export const SettingsBulkEditResultItemZonesBrowserCacheTTL2Id = S.String;
@@ -11089,16 +9214,8 @@ export interface SettingsBulkEditResultItemZonesBrowserCacheTTL2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsBulkEditResultItemZonesBrowserCacheTTL2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditResultItemZonesBrowserCacheTTL2Id,
-    value: S.Number,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditResultItemZonesBrowserCacheTTL2",
-}) as any as S.Schema<SettingsBulkEditResultItemZonesBrowserCacheTTL2>;
+export const SettingsBulkEditResultItemZonesBrowserCacheTTL2 =
+  SettingsGetResultZonesBrowserCacheTTL2 as any as S.Schema<SettingsBulkEditResultItemZonesBrowserCacheTTL2>;
 
 export type SettingsBulkEditResultItemZonesBrowserCheck2Id = "browser_check";
 export const SettingsBulkEditResultItemZonesBrowserCheck2Id = S.String;
@@ -11116,16 +9233,8 @@ export interface SettingsBulkEditResultItemZonesBrowserCheck2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsBulkEditResultItemZonesBrowserCheck2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditResultItemZonesBrowserCheck2Id,
-    value: SettingsBulkEditResultItemZonesBrowserCheck2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditResultItemZonesBrowserCheck2",
-}) as any as S.Schema<SettingsBulkEditResultItemZonesBrowserCheck2>;
+export const SettingsBulkEditResultItemZonesBrowserCheck2 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsBulkEditResultItemZonesBrowserCheck2>;
 
 export type SettingsBulkEditResultItemZonesCacheLevel2Id = "cache_level";
 export const SettingsBulkEditResultItemZonesCacheLevel2Id = S.String;
@@ -11143,16 +9252,8 @@ export interface SettingsBulkEditResultItemZonesCacheLevel2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsBulkEditResultItemZonesCacheLevel2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditResultItemZonesCacheLevel2Id,
-    value: SettingsBulkEditResultItemZonesCacheLevel2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditResultItemZonesCacheLevel2",
-}) as any as S.Schema<SettingsBulkEditResultItemZonesCacheLevel2>;
+export const SettingsBulkEditResultItemZonesCacheLevel2 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsBulkEditResultItemZonesCacheLevel2>;
 
 export type SettingsBulkEditResultItemChallengeTTLId = "challenge_ttl";
 export const SettingsBulkEditResultItemChallengeTTLId = S.String;
@@ -11184,16 +9285,8 @@ export interface SettingsBulkEditResultItemChallengeTTL {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsBulkEditResultItemChallengeTTL = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditResultItemChallengeTTLId,
-    value: SettingsBulkEditResultItemChallengeTTLValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditResultItemChallengeTTL",
-}) as any as S.Schema<SettingsBulkEditResultItemChallengeTTL>;
+export const SettingsBulkEditResultItemChallengeTTL =
+  SettingsGetResultChallengeTTL as any as S.Schema<SettingsBulkEditResultItemChallengeTTL>;
 
 export type SettingsBulkEditResultItemCiphersId = "ciphers";
 export const SettingsBulkEditResultItemCiphersId = S.String;
@@ -11239,16 +9332,8 @@ export interface SettingsBulkEditResultItemZonesContentConverter {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsBulkEditResultItemZonesContentConverter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditResultItemZonesContentConverterId,
-    value: SettingsBulkEditResultItemZonesContentConverterValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditResultItemZonesContentConverter",
-}) as any as S.Schema<SettingsBulkEditResultItemZonesContentConverter>;
+export const SettingsBulkEditResultItemZonesContentConverter =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsBulkEditResultItemZonesContentConverter>;
 
 export type SettingsBulkEditResultItemZonesCNAMEFlatteningId = "cname_flattening";
 export const SettingsBulkEditResultItemZonesCNAMEFlatteningId = S.String;
@@ -11266,16 +9351,8 @@ export interface SettingsBulkEditResultItemZonesCNAMEFlattening {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsBulkEditResultItemZonesCNAMEFlattening = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditResultItemZonesCNAMEFlatteningId,
-    value: SettingsBulkEditResultItemZonesCNAMEFlatteningValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditResultItemZonesCNAMEFlattening",
-}) as any as S.Schema<SettingsBulkEditResultItemZonesCNAMEFlattening>;
+export const SettingsBulkEditResultItemZonesCNAMEFlattening =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsBulkEditResultItemZonesCNAMEFlattening>;
 
 export type SettingsBulkEditResultItemDevelopmentModeId = "development_mode";
 export const SettingsBulkEditResultItemDevelopmentModeId = S.String;
@@ -11295,17 +9372,8 @@ export interface SettingsBulkEditResultItemDevelopmentMode {
   /** Value of the zone setting. Notes: The interval (in seconds) from when development mode expires (positive integer) or last expired (negative integer) for the domain. If development mode has never been enabled, this value is false. */
   timeRemaining?: number | null;
 }
-export const SettingsBulkEditResultItemDevelopmentMode = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditResultItemDevelopmentModeId,
-    value: SettingsBulkEditResultItemDevelopmentModeValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-    timeRemaining: S.optional(S.NullOr(S.Number).pipe(T.Body("time_remaining"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditResultItemDevelopmentMode",
-}) as any as S.Schema<SettingsBulkEditResultItemDevelopmentMode>;
+export const SettingsBulkEditResultItemDevelopmentMode =
+  SettingsGetResultDevelopmentMode as any as S.Schema<SettingsBulkEditResultItemDevelopmentMode>;
 
 export type SettingsBulkEditResultItemEarlyHintsId = "early_hints";
 export const SettingsBulkEditResultItemEarlyHintsId = S.String;
@@ -11323,16 +9391,8 @@ export interface SettingsBulkEditResultItemEarlyHints {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsBulkEditResultItemEarlyHints = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditResultItemEarlyHintsId,
-    value: SettingsBulkEditResultItemEarlyHintsValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditResultItemEarlyHints",
-}) as any as S.Schema<SettingsBulkEditResultItemEarlyHints>;
+export const SettingsBulkEditResultItemEarlyHints =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsBulkEditResultItemEarlyHints>;
 
 export type SettingsBulkEditResultItemZonesEdgeCacheTTL2Id = "edge_cache_ttl";
 export const SettingsBulkEditResultItemZonesEdgeCacheTTL2Id = S.String;
@@ -11371,16 +9431,8 @@ export interface SettingsBulkEditResultItemZonesEdgeCacheTTL2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsBulkEditResultItemZonesEdgeCacheTTL2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditResultItemZonesEdgeCacheTTL2Id,
-    value: SettingsBulkEditResultItemZonesEdgeCacheTTL2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditResultItemZonesEdgeCacheTTL2",
-}) as any as S.Schema<SettingsBulkEditResultItemZonesEdgeCacheTTL2>;
+export const SettingsBulkEditResultItemZonesEdgeCacheTTL2 =
+  SettingsGetResultChallengeTTL as any as S.Schema<SettingsBulkEditResultItemZonesEdgeCacheTTL2>;
 
 export type SettingsBulkEditResultItemZonesEmailObfuscation2Id = "email_obfuscation";
 export const SettingsBulkEditResultItemZonesEmailObfuscation2Id = S.String;
@@ -11398,16 +9450,8 @@ export interface SettingsBulkEditResultItemZonesEmailObfuscation2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsBulkEditResultItemZonesEmailObfuscation2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditResultItemZonesEmailObfuscation2Id,
-    value: SettingsBulkEditResultItemZonesEmailObfuscation2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditResultItemZonesEmailObfuscation2",
-}) as any as S.Schema<SettingsBulkEditResultItemZonesEmailObfuscation2>;
+export const SettingsBulkEditResultItemZonesEmailObfuscation2 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsBulkEditResultItemZonesEmailObfuscation2>;
 
 export type SettingsBulkEditResultItemH2PrioritizationId = "h2_prioritization";
 export const SettingsBulkEditResultItemH2PrioritizationId = S.String;
@@ -11425,16 +9469,8 @@ export interface SettingsBulkEditResultItemH2Prioritization {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsBulkEditResultItemH2Prioritization = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditResultItemH2PrioritizationId,
-    value: SettingsBulkEditResultItemH2PrioritizationValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditResultItemH2Prioritization",
-}) as any as S.Schema<SettingsBulkEditResultItemH2Prioritization>;
+export const SettingsBulkEditResultItemH2Prioritization =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsBulkEditResultItemH2Prioritization>;
 
 export type SettingsBulkEditResultItemHotlinkProtectionId = "hotlink_protection";
 export const SettingsBulkEditResultItemHotlinkProtectionId = S.String;
@@ -11452,16 +9488,8 @@ export interface SettingsBulkEditResultItemHotlinkProtection {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsBulkEditResultItemHotlinkProtection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditResultItemHotlinkProtectionId,
-    value: SettingsBulkEditResultItemHotlinkProtectionValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditResultItemHotlinkProtection",
-}) as any as S.Schema<SettingsBulkEditResultItemHotlinkProtection>;
+export const SettingsBulkEditResultItemHotlinkProtection =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsBulkEditResultItemHotlinkProtection>;
 
 export type SettingsBulkEditResultItemHTTP2Id = "http2";
 export const SettingsBulkEditResultItemHTTP2Id = S.String;
@@ -11479,16 +9507,8 @@ export interface SettingsBulkEditResultItemHTTP2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsBulkEditResultItemHTTP2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditResultItemHTTP2Id,
-    value: SettingsBulkEditResultItemHTTP2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditResultItemHTTP2",
-}) as any as S.Schema<SettingsBulkEditResultItemHTTP2>;
+export const SettingsBulkEditResultItemHTTP2 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsBulkEditResultItemHTTP2>;
 
 export type SettingsBulkEditResultItemHTTP3Id = "http3";
 export const SettingsBulkEditResultItemHTTP3Id = S.String;
@@ -11506,16 +9526,8 @@ export interface SettingsBulkEditResultItemHTTP3 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsBulkEditResultItemHTTP3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditResultItemHTTP3Id,
-    value: SettingsBulkEditResultItemHTTP3Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditResultItemHTTP3",
-}) as any as S.Schema<SettingsBulkEditResultItemHTTP3>;
+export const SettingsBulkEditResultItemHTTP3 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsBulkEditResultItemHTTP3>;
 
 export type SettingsBulkEditResultItemImageResizingId = "image_resizing";
 export const SettingsBulkEditResultItemImageResizingId = S.String;
@@ -11533,16 +9545,8 @@ export interface SettingsBulkEditResultItemImageResizing {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsBulkEditResultItemImageResizing = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditResultItemImageResizingId,
-    value: SettingsBulkEditResultItemImageResizingValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditResultItemImageResizing",
-}) as any as S.Schema<SettingsBulkEditResultItemImageResizing>;
+export const SettingsBulkEditResultItemImageResizing =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsBulkEditResultItemImageResizing>;
 
 export type SettingsBulkEditResultItemZonesIPGeolocation2Id = "ip_geolocation";
 export const SettingsBulkEditResultItemZonesIPGeolocation2Id = S.String;
@@ -11560,16 +9564,8 @@ export interface SettingsBulkEditResultItemZonesIPGeolocation2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsBulkEditResultItemZonesIPGeolocation2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditResultItemZonesIPGeolocation2Id,
-    value: SettingsBulkEditResultItemZonesIPGeolocation2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditResultItemZonesIPGeolocation2",
-}) as any as S.Schema<SettingsBulkEditResultItemZonesIPGeolocation2>;
+export const SettingsBulkEditResultItemZonesIPGeolocation2 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsBulkEditResultItemZonesIPGeolocation2>;
 
 export type SettingsBulkEditResultItemIPV6Id = "ipv6";
 export const SettingsBulkEditResultItemIPV6Id = S.String;
@@ -11587,16 +9583,8 @@ export interface SettingsBulkEditResultItemIPV6 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsBulkEditResultItemIPV6 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditResultItemIPV6Id,
-    value: SettingsBulkEditResultItemIPV6Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditResultItemIPV6",
-}) as any as S.Schema<SettingsBulkEditResultItemIPV6>;
+export const SettingsBulkEditResultItemIPV6 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsBulkEditResultItemIPV6>;
 
 export type SettingsBulkEditResultItemZonesMaxUploadId = "max_upload";
 export const SettingsBulkEditResultItemZonesMaxUploadId = S.String;
@@ -11640,16 +9628,8 @@ export interface SettingsBulkEditResultItemZonesMaxUpload {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsBulkEditResultItemZonesMaxUpload = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditResultItemZonesMaxUploadId,
-    value: SettingsBulkEditResultItemZonesMaxUploadValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditResultItemZonesMaxUpload",
-}) as any as S.Schema<SettingsBulkEditResultItemZonesMaxUpload>;
+export const SettingsBulkEditResultItemZonesMaxUpload =
+  SettingsGetResultChallengeTTL as any as S.Schema<SettingsBulkEditResultItemZonesMaxUpload>;
 
 export type SettingsBulkEditResultItemMinTLSVersionId = "min_tls_version";
 export const SettingsBulkEditResultItemMinTLSVersionId = S.String;
@@ -11667,16 +9647,8 @@ export interface SettingsBulkEditResultItemMinTLSVersion {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsBulkEditResultItemMinTLSVersion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditResultItemMinTLSVersionId,
-    value: SettingsBulkEditResultItemMinTLSVersionValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditResultItemMinTLSVersion",
-}) as any as S.Schema<SettingsBulkEditResultItemMinTLSVersion>;
+export const SettingsBulkEditResultItemMinTLSVersion =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsBulkEditResultItemMinTLSVersion>;
 
 export type SettingsBulkEditResultItemZonesMirage2Id = "mirage";
 export const SettingsBulkEditResultItemZonesMirage2Id = S.String;
@@ -11694,16 +9666,8 @@ export interface SettingsBulkEditResultItemZonesMirage2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsBulkEditResultItemZonesMirage2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditResultItemZonesMirage2Id,
-    value: SettingsBulkEditResultItemZonesMirage2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditResultItemZonesMirage2",
-}) as any as S.Schema<SettingsBulkEditResultItemZonesMirage2>;
+export const SettingsBulkEditResultItemZonesMirage2 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsBulkEditResultItemZonesMirage2>;
 
 export type SettingsBulkEditResultItemNELId = "nel";
 export const SettingsBulkEditResultItemNELId = S.String;
@@ -11721,16 +9685,8 @@ export interface SettingsBulkEditResultItemNEL {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsBulkEditResultItemNEL = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditResultItemNELId,
-    value: SettingsGetResultNELValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditResultItemNEL",
-}) as any as S.Schema<SettingsBulkEditResultItemNEL>;
+export const SettingsBulkEditResultItemNEL =
+  ListSettingsResultItemNEL as any as S.Schema<SettingsBulkEditResultItemNEL>;
 
 export type SettingsBulkEditResultItemZonesOpportunisticEncryption2Id = "opportunistic_encryption";
 export const SettingsBulkEditResultItemZonesOpportunisticEncryption2Id = S.String;
@@ -11748,16 +9704,8 @@ export interface SettingsBulkEditResultItemZonesOpportunisticEncryption2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsBulkEditResultItemZonesOpportunisticEncryption2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditResultItemZonesOpportunisticEncryption2Id,
-    value: SettingsBulkEditResultItemZonesOpportunisticEncryption2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditResultItemZonesOpportunisticEncryption2",
-}) as any as S.Schema<SettingsBulkEditResultItemZonesOpportunisticEncryption2>;
+export const SettingsBulkEditResultItemZonesOpportunisticEncryption2 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsBulkEditResultItemZonesOpportunisticEncryption2>;
 
 export type SettingsBulkEditResultItemOpportunisticOnionId = "opportunistic_onion";
 export const SettingsBulkEditResultItemOpportunisticOnionId = S.String;
@@ -11775,16 +9723,8 @@ export interface SettingsBulkEditResultItemOpportunisticOnion {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsBulkEditResultItemOpportunisticOnion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditResultItemOpportunisticOnionId,
-    value: SettingsBulkEditResultItemOpportunisticOnionValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditResultItemOpportunisticOnion",
-}) as any as S.Schema<SettingsBulkEditResultItemOpportunisticOnion>;
+export const SettingsBulkEditResultItemOpportunisticOnion =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsBulkEditResultItemOpportunisticOnion>;
 
 export type SettingsBulkEditResultItemOrangeToOrangeId = "orange_to_orange";
 export const SettingsBulkEditResultItemOrangeToOrangeId = S.String;
@@ -11802,16 +9742,8 @@ export interface SettingsBulkEditResultItemOrangeToOrange {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsBulkEditResultItemOrangeToOrange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditResultItemOrangeToOrangeId,
-    value: SettingsBulkEditResultItemOrangeToOrangeValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditResultItemOrangeToOrange",
-}) as any as S.Schema<SettingsBulkEditResultItemOrangeToOrange>;
+export const SettingsBulkEditResultItemOrangeToOrange =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsBulkEditResultItemOrangeToOrange>;
 
 export type SettingsBulkEditResultItemZonesOriginErrorPagePassThru2Id =
   "origin_error_page_pass_thru";
@@ -11830,16 +9762,8 @@ export interface SettingsBulkEditResultItemZonesOriginErrorPagePassThru2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsBulkEditResultItemZonesOriginErrorPagePassThru2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditResultItemZonesOriginErrorPagePassThru2Id,
-    value: SettingsBulkEditResultItemZonesOriginErrorPagePassThru2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditResultItemZonesOriginErrorPagePassThru2",
-}) as any as S.Schema<SettingsBulkEditResultItemZonesOriginErrorPagePassThru2>;
+export const SettingsBulkEditResultItemZonesOriginErrorPagePassThru2 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsBulkEditResultItemZonesOriginErrorPagePassThru2>;
 
 export type SettingsBulkEditResultItemZonesCacheRulesOriginH2MaxStreamsId = "origin_h2_max_streams";
 export const SettingsBulkEditResultItemZonesCacheRulesOriginH2MaxStreamsId = S.String;
@@ -11907,16 +9831,8 @@ export interface SettingsBulkEditResultItemZonesPolish2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsBulkEditResultItemZonesPolish2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditResultItemZonesPolish2Id,
-    value: SettingsBulkEditResultItemZonesPolish2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditResultItemZonesPolish2",
-}) as any as S.Schema<SettingsBulkEditResultItemZonesPolish2>;
+export const SettingsBulkEditResultItemZonesPolish2 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsBulkEditResultItemZonesPolish2>;
 
 export type SettingsBulkEditResultItemPrefetchPreloadId = "prefetch_preload";
 export const SettingsBulkEditResultItemPrefetchPreloadId = S.String;
@@ -11934,16 +9850,8 @@ export interface SettingsBulkEditResultItemPrefetchPreload {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsBulkEditResultItemPrefetchPreload = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditResultItemPrefetchPreloadId,
-    value: SettingsBulkEditResultItemPrefetchPreloadValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditResultItemPrefetchPreload",
-}) as any as S.Schema<SettingsBulkEditResultItemPrefetchPreload>;
+export const SettingsBulkEditResultItemPrefetchPreload =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsBulkEditResultItemPrefetchPreload>;
 
 export type SettingsBulkEditResultItemZonesPreRenderId = "pre_render";
 export const SettingsBulkEditResultItemZonesPreRenderId = S.String;
@@ -11961,16 +9869,8 @@ export interface SettingsBulkEditResultItemZonesPreRender {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsBulkEditResultItemZonesPreRender = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditResultItemZonesPreRenderId,
-    value: SettingsBulkEditResultItemZonesPreRenderValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditResultItemZonesPreRender",
-}) as any as S.Schema<SettingsBulkEditResultItemZonesPreRender>;
+export const SettingsBulkEditResultItemZonesPreRender =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsBulkEditResultItemZonesPreRender>;
 
 export type SettingsBulkEditResultItemZonesPrivacyPassId = "privacy_pass";
 export const SettingsBulkEditResultItemZonesPrivacyPassId = S.String;
@@ -11988,16 +9888,8 @@ export interface SettingsBulkEditResultItemZonesPrivacyPass {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsBulkEditResultItemZonesPrivacyPass = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditResultItemZonesPrivacyPassId,
-    value: SettingsBulkEditResultItemZonesPrivacyPassValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditResultItemZonesPrivacyPass",
-}) as any as S.Schema<SettingsBulkEditResultItemZonesPrivacyPass>;
+export const SettingsBulkEditResultItemZonesPrivacyPass =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsBulkEditResultItemZonesPrivacyPass>;
 
 export type SettingsBulkEditResultItemProxyReadTimeoutId = "proxy_read_timeout";
 export const SettingsBulkEditResultItemProxyReadTimeoutId = S.String;
@@ -12012,16 +9904,8 @@ export interface SettingsBulkEditResultItemProxyReadTimeout {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsBulkEditResultItemProxyReadTimeout = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditResultItemProxyReadTimeoutId,
-    value: S.Number,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditResultItemProxyReadTimeout",
-}) as any as S.Schema<SettingsBulkEditResultItemProxyReadTimeout>;
+export const SettingsBulkEditResultItemProxyReadTimeout =
+  SettingsGetResultZonesBrowserCacheTTL2 as any as S.Schema<SettingsBulkEditResultItemProxyReadTimeout>;
 
 export type SettingsBulkEditResultItemPseudoIPV4Id = "pseudo_ipv4";
 export const SettingsBulkEditResultItemPseudoIPV4Id = S.String;
@@ -12039,16 +9923,8 @@ export interface SettingsBulkEditResultItemPseudoIPV4 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsBulkEditResultItemPseudoIPV4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditResultItemPseudoIPV4Id,
-    value: SettingsBulkEditResultItemPseudoIPV4Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditResultItemPseudoIPV4",
-}) as any as S.Schema<SettingsBulkEditResultItemPseudoIPV4>;
+export const SettingsBulkEditResultItemPseudoIPV4 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsBulkEditResultItemPseudoIPV4>;
 
 export type SettingsBulkEditResultItemZonesRedirectsForAITrainingId = "redirects_for_ai_training";
 export const SettingsBulkEditResultItemZonesRedirectsForAITrainingId = S.String;
@@ -12066,16 +9942,8 @@ export interface SettingsBulkEditResultItemZonesRedirectsForAITraining {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsBulkEditResultItemZonesRedirectsForAITraining = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditResultItemZonesRedirectsForAITrainingId,
-    value: SettingsBulkEditResultItemZonesRedirectsForAITrainingValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditResultItemZonesRedirectsForAITraining",
-}) as any as S.Schema<SettingsBulkEditResultItemZonesRedirectsForAITraining>;
+export const SettingsBulkEditResultItemZonesRedirectsForAITraining =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsBulkEditResultItemZonesRedirectsForAITraining>;
 
 export type SettingsBulkEditResultItemZonesReplaceInsecureJSId = "replace_insecure_js";
 export const SettingsBulkEditResultItemZonesReplaceInsecureJSId = S.String;
@@ -12093,16 +9961,8 @@ export interface SettingsBulkEditResultItemZonesReplaceInsecureJS {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsBulkEditResultItemZonesReplaceInsecureJS = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditResultItemZonesReplaceInsecureJSId,
-    value: SettingsBulkEditResultItemZonesReplaceInsecureJSValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditResultItemZonesReplaceInsecureJS",
-}) as any as S.Schema<SettingsBulkEditResultItemZonesReplaceInsecureJS>;
+export const SettingsBulkEditResultItemZonesReplaceInsecureJS =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsBulkEditResultItemZonesReplaceInsecureJS>;
 
 export type SettingsBulkEditResultItemZonesResponseBuffering2Id = "response_buffering";
 export const SettingsBulkEditResultItemZonesResponseBuffering2Id = S.String;
@@ -12120,16 +9980,8 @@ export interface SettingsBulkEditResultItemZonesResponseBuffering2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsBulkEditResultItemZonesResponseBuffering2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditResultItemZonesResponseBuffering2Id,
-    value: SettingsBulkEditResultItemZonesResponseBuffering2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditResultItemZonesResponseBuffering2",
-}) as any as S.Schema<SettingsBulkEditResultItemZonesResponseBuffering2>;
+export const SettingsBulkEditResultItemZonesResponseBuffering2 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsBulkEditResultItemZonesResponseBuffering2>;
 
 export type SettingsBulkEditResultItemZonesRocketLoader2Id = "rocket_loader";
 export const SettingsBulkEditResultItemZonesRocketLoader2Id = S.String;
@@ -12147,16 +9999,8 @@ export interface SettingsBulkEditResultItemZonesRocketLoader2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsBulkEditResultItemZonesRocketLoader2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditResultItemZonesRocketLoader2Id,
-    value: SettingsBulkEditResultItemZonesRocketLoader2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditResultItemZonesRocketLoader2",
-}) as any as S.Schema<SettingsBulkEditResultItemZonesRocketLoader2>;
+export const SettingsBulkEditResultItemZonesRocketLoader2 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsBulkEditResultItemZonesRocketLoader2>;
 
 export type SettingsBulkEditResultItemZonesSchemasAutomaticPlatformOptimizationId =
   "automatic_platform_optimization";
@@ -12222,16 +10066,8 @@ export interface SettingsBulkEditResultItemZonesSearchForAgents {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsBulkEditResultItemZonesSearchForAgents = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditResultItemZonesSearchForAgentsId,
-    value: SettingsBulkEditResultItemZonesSearchForAgentsValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditResultItemZonesSearchForAgents",
-}) as any as S.Schema<SettingsBulkEditResultItemZonesSearchForAgents>;
+export const SettingsBulkEditResultItemZonesSearchForAgents =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsBulkEditResultItemZonesSearchForAgents>;
 
 export type SettingsBulkEditResultItemSecurityHeadersId = "security_header";
 export const SettingsBulkEditResultItemSecurityHeadersId = S.String;
@@ -12254,16 +10090,8 @@ export interface SettingsBulkEditResultItemSecurityHeaders {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsBulkEditResultItemSecurityHeaders = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditResultItemSecurityHeadersId,
-    value: SettingsGetResultSecurityHeadersValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditResultItemSecurityHeaders",
-}) as any as S.Schema<SettingsBulkEditResultItemSecurityHeaders>;
+export const SettingsBulkEditResultItemSecurityHeaders =
+  SettingsGetResultSecurityHeaders as any as S.Schema<SettingsBulkEditResultItemSecurityHeaders>;
 
 export type SettingsBulkEditResultItemZonesSecurityLevel2Id = "security_level";
 export const SettingsBulkEditResultItemZonesSecurityLevel2Id = S.String;
@@ -12287,16 +10115,8 @@ export interface SettingsBulkEditResultItemZonesSecurityLevel2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsBulkEditResultItemZonesSecurityLevel2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditResultItemZonesSecurityLevel2Id,
-    value: SettingsBulkEditResultItemZonesSecurityLevel2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditResultItemZonesSecurityLevel2",
-}) as any as S.Schema<SettingsBulkEditResultItemZonesSecurityLevel2>;
+export const SettingsBulkEditResultItemZonesSecurityLevel2 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsBulkEditResultItemZonesSecurityLevel2>;
 
 export type SettingsBulkEditResultItemServerSideExcludesId = "server_side_exclude";
 export const SettingsBulkEditResultItemServerSideExcludesId = S.String;
@@ -12314,16 +10134,8 @@ export interface SettingsBulkEditResultItemServerSideExcludes {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsBulkEditResultItemServerSideExcludes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditResultItemServerSideExcludesId,
-    value: SettingsBulkEditResultItemServerSideExcludesValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditResultItemServerSideExcludes",
-}) as any as S.Schema<SettingsBulkEditResultItemServerSideExcludes>;
+export const SettingsBulkEditResultItemServerSideExcludes =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsBulkEditResultItemServerSideExcludes>;
 
 export type SettingsBulkEditResultItemZonesSha1SupportId = "sha1_support";
 export const SettingsBulkEditResultItemZonesSha1SupportId = S.String;
@@ -12341,16 +10153,8 @@ export interface SettingsBulkEditResultItemZonesSha1Support {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsBulkEditResultItemZonesSha1Support = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditResultItemZonesSha1SupportId,
-    value: SettingsBulkEditResultItemZonesSha1SupportValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditResultItemZonesSha1Support",
-}) as any as S.Schema<SettingsBulkEditResultItemZonesSha1Support>;
+export const SettingsBulkEditResultItemZonesSha1Support =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsBulkEditResultItemZonesSha1Support>;
 
 export type SettingsBulkEditResultItemZonesSortQueryStringForCache2Id =
   "sort_query_string_for_cache";
@@ -12369,16 +10173,8 @@ export interface SettingsBulkEditResultItemZonesSortQueryStringForCache2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsBulkEditResultItemZonesSortQueryStringForCache2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditResultItemZonesSortQueryStringForCache2Id,
-    value: SettingsBulkEditResultItemZonesSortQueryStringForCache2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditResultItemZonesSortQueryStringForCache2",
-}) as any as S.Schema<SettingsBulkEditResultItemZonesSortQueryStringForCache2>;
+export const SettingsBulkEditResultItemZonesSortQueryStringForCache2 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsBulkEditResultItemZonesSortQueryStringForCache2>;
 
 export type SettingsBulkEditResultItemZonesSSL2Id = "ssl";
 export const SettingsBulkEditResultItemZonesSSL2Id = S.String;
@@ -12396,16 +10192,8 @@ export interface SettingsBulkEditResultItemZonesSSL2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsBulkEditResultItemZonesSSL2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditResultItemZonesSSL2Id,
-    value: SettingsBulkEditResultItemZonesSSL2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditResultItemZonesSSL2",
-}) as any as S.Schema<SettingsBulkEditResultItemZonesSSL2>;
+export const SettingsBulkEditResultItemZonesSSL2 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsBulkEditResultItemZonesSSL2>;
 
 export type SettingsBulkEditResultItemSSLRecommenderId = "ssl_recommender";
 export const SettingsBulkEditResultItemSSLRecommenderId = S.String;
@@ -12416,14 +10204,8 @@ export interface SettingsBulkEditResultItemSSLRecommender {
   /** ssl-recommender enrollment setting. */
   enabled?: boolean | null;
 }
-export const SettingsBulkEditResultItemSSLRecommender = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(SettingsBulkEditResultItemSSLRecommenderId)),
-    enabled: S.optional(S.NullOr(S.Boolean)),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditResultItemSSLRecommender",
-}) as any as S.Schema<SettingsBulkEditResultItemSSLRecommender>;
+export const SettingsBulkEditResultItemSSLRecommender =
+  SettingsGetResultSSLRecommender as any as S.Schema<SettingsBulkEditResultItemSSLRecommender>;
 
 export type SettingsBulkEditResultItemZonesTLS12OnlyId = "tls_1_2_only";
 export const SettingsBulkEditResultItemZonesTLS12OnlyId = S.String;
@@ -12441,16 +10223,8 @@ export interface SettingsBulkEditResultItemZonesTLS12Only {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsBulkEditResultItemZonesTLS12Only = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditResultItemZonesTLS12OnlyId,
-    value: SettingsBulkEditResultItemZonesTLS12OnlyValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditResultItemZonesTLS12Only",
-}) as any as S.Schema<SettingsBulkEditResultItemZonesTLS12Only>;
+export const SettingsBulkEditResultItemZonesTLS12Only =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsBulkEditResultItemZonesTLS12Only>;
 
 export type SettingsBulkEditResultItemTLS13Id = "tls_1_3";
 export const SettingsBulkEditResultItemTLS13Id = S.String;
@@ -12468,16 +10242,8 @@ export interface SettingsBulkEditResultItemTLS13 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsBulkEditResultItemTLS13 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditResultItemTLS13Id,
-    value: SettingsBulkEditResultItemTLS13Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditResultItemTLS13",
-}) as any as S.Schema<SettingsBulkEditResultItemTLS13>;
+export const SettingsBulkEditResultItemTLS13 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsBulkEditResultItemTLS13>;
 
 export type SettingsBulkEditResultItemTLSClientAuthId = "tls_client_auth";
 export const SettingsBulkEditResultItemTLSClientAuthId = S.String;
@@ -12495,16 +10261,8 @@ export interface SettingsBulkEditResultItemTLSClientAuth {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsBulkEditResultItemTLSClientAuth = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditResultItemTLSClientAuthId,
-    value: SettingsBulkEditResultItemTLSClientAuthValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditResultItemTLSClientAuth",
-}) as any as S.Schema<SettingsBulkEditResultItemTLSClientAuth>;
+export const SettingsBulkEditResultItemTLSClientAuth =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsBulkEditResultItemTLSClientAuth>;
 
 export type SettingsBulkEditResultItemZonesTransformationsId = "transformations";
 export const SettingsBulkEditResultItemZonesTransformationsId = S.String;
@@ -12522,16 +10280,8 @@ export interface SettingsBulkEditResultItemZonesTransformations {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsBulkEditResultItemZonesTransformations = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditResultItemZonesTransformationsId,
-    value: SettingsBulkEditResultItemZonesTransformationsValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditResultItemZonesTransformations",
-}) as any as S.Schema<SettingsBulkEditResultItemZonesTransformations>;
+export const SettingsBulkEditResultItemZonesTransformations =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsBulkEditResultItemZonesTransformations>;
 
 export type SettingsBulkEditResultItemZonesTransformationsAllowedOriginsId =
   "transformations_allowed_origins";
@@ -12547,17 +10297,8 @@ export interface SettingsBulkEditResultItemZonesTransformationsAllowedOrigins {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsBulkEditResultItemZonesTransformationsAllowedOrigins = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: SettingsBulkEditResultItemZonesTransformationsAllowedOriginsId,
-      value: S.String,
-      editable: S.optional(S.NullOr(S.Boolean)),
-      modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-    }),
-).annotate({
-  identifier: "SettingsBulkEditResultItemZonesTransformationsAllowedOrigins",
-}) as any as S.Schema<SettingsBulkEditResultItemZonesTransformationsAllowedOrigins>;
+export const SettingsBulkEditResultItemZonesTransformationsAllowedOrigins =
+  ListSettingsResultItemZonesTransformationsAllowedOrigins as any as S.Schema<SettingsBulkEditResultItemZonesTransformationsAllowedOrigins>;
 
 export type SettingsBulkEditResultItemZonesTrueClientIPHeader2Id = "true_client_ip_header";
 export const SettingsBulkEditResultItemZonesTrueClientIPHeader2Id = S.String;
@@ -12575,16 +10316,8 @@ export interface SettingsBulkEditResultItemZonesTrueClientIPHeader2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsBulkEditResultItemZonesTrueClientIPHeader2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditResultItemZonesTrueClientIPHeader2Id,
-    value: SettingsBulkEditResultItemZonesTrueClientIPHeader2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditResultItemZonesTrueClientIPHeader2",
-}) as any as S.Schema<SettingsBulkEditResultItemZonesTrueClientIPHeader2>;
+export const SettingsBulkEditResultItemZonesTrueClientIPHeader2 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsBulkEditResultItemZonesTrueClientIPHeader2>;
 
 export type SettingsBulkEditResultItemZonesWAF2Id = "waf";
 export const SettingsBulkEditResultItemZonesWAF2Id = S.String;
@@ -12602,16 +10335,8 @@ export interface SettingsBulkEditResultItemZonesWAF2 {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsBulkEditResultItemZonesWAF2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditResultItemZonesWAF2Id,
-    value: SettingsBulkEditResultItemZonesWAF2Value,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditResultItemZonesWAF2",
-}) as any as S.Schema<SettingsBulkEditResultItemZonesWAF2>;
+export const SettingsBulkEditResultItemZonesWAF2 =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsBulkEditResultItemZonesWAF2>;
 
 export type SettingsBulkEditResultItemZonesWebmcpEnabledId = "webmcp_enabled";
 export const SettingsBulkEditResultItemZonesWebmcpEnabledId = S.String;
@@ -12629,16 +10354,8 @@ export interface SettingsBulkEditResultItemZonesWebmcpEnabled {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsBulkEditResultItemZonesWebmcpEnabled = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditResultItemZonesWebmcpEnabledId,
-    value: SettingsBulkEditResultItemZonesWebmcpEnabledValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditResultItemZonesWebmcpEnabled",
-}) as any as S.Schema<SettingsBulkEditResultItemZonesWebmcpEnabled>;
+export const SettingsBulkEditResultItemZonesWebmcpEnabled =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsBulkEditResultItemZonesWebmcpEnabled>;
 
 export type SettingsBulkEditResultItemZonesWebmcpPacksId = "webmcp_packs";
 export const SettingsBulkEditResultItemZonesWebmcpPacksId = S.String;
@@ -12653,16 +10370,8 @@ export interface SettingsBulkEditResultItemZonesWebmcpPacks {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsBulkEditResultItemZonesWebmcpPacks = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditResultItemZonesWebmcpPacksId,
-    value: S.String,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditResultItemZonesWebmcpPacks",
-}) as any as S.Schema<SettingsBulkEditResultItemZonesWebmcpPacks>;
+export const SettingsBulkEditResultItemZonesWebmcpPacks =
+  SettingsGetResultZonesTransformationsAllowedOrigins as any as S.Schema<SettingsBulkEditResultItemZonesWebmcpPacks>;
 
 export type SettingsBulkEditResultItemWebPId = "webp";
 export const SettingsBulkEditResultItemWebPId = S.String;
@@ -12680,16 +10389,8 @@ export interface SettingsBulkEditResultItemWebP {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsBulkEditResultItemWebP = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditResultItemWebPId,
-    value: SettingsBulkEditResultItemWebPValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditResultItemWebP",
-}) as any as S.Schema<SettingsBulkEditResultItemWebP>;
+export const SettingsBulkEditResultItemWebP =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsBulkEditResultItemWebP>;
 
 export type SettingsBulkEditResultItemWebsocketId = "websockets";
 export const SettingsBulkEditResultItemWebsocketId = S.String;
@@ -12707,16 +10408,8 @@ export interface SettingsBulkEditResultItemWebsocket {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const SettingsBulkEditResultItemWebsocket = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SettingsBulkEditResultItemWebsocketId,
-    value: SettingsBulkEditResultItemWebsocketValue,
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "SettingsBulkEditResultItemWebsocket",
-}) as any as S.Schema<SettingsBulkEditResultItemWebsocket>;
+export const SettingsBulkEditResultItemWebsocket =
+  SettingsGetResultAdvancedDDoS as any as S.Schema<SettingsBulkEditResultItemWebsocket>;
 
 export type SettingsBulkEditResultItem =
   | SettingsBulkEditResultItemZeroRTT
@@ -13026,25 +10719,13 @@ export interface UpdateObservabilityTracingRuleRequestRulesItem {
   /** A Rules language expression that selects requests. */
   expression: string;
 }
-export const UpdateObservabilityTracingRuleRequestRulesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: UpdateObservabilityTracingRuleRequestRulesItemAction,
-    actionParameters: DeleteObservabilityTracingRuleResponseRulesItemActionParameters.pipe(
-      T.Body("action_parameters"),
-    ),
-    description: S.String,
-    enabled: S.Boolean,
-    expression: S.String,
-  }),
-).annotate({
-  identifier: "UpdateObservabilityTracingRuleRequestRulesItem",
-}) as any as S.Schema<UpdateObservabilityTracingRuleRequestRulesItem>;
+export const UpdateObservabilityTracingRuleRequestRulesItem =
+  DeleteObservabilityTracingRuleResponseRulesItem as any as S.Schema<UpdateObservabilityTracingRuleRequestRulesItem>;
 
 export type UpdateObservabilityTracingRuleRequestRulesList =
   Array<UpdateObservabilityTracingRuleRequestRulesItem>;
-export const UpdateObservabilityTracingRuleRequestRulesList = /*@__PURE__*/ S.Array(
-  UpdateObservabilityTracingRuleRequestRulesItem,
-) as any as S.Schema<UpdateObservabilityTracingRuleRequestRulesList>;
+export const UpdateObservabilityTracingRuleRequestRulesList =
+  DeleteObservabilityTracingRuleResponseRulesList as any as S.Schema<UpdateObservabilityTracingRuleRequestRulesList>;
 
 export interface UpdateObservabilityTracingRuleRequest {
   /** Specify the zone ID. */
@@ -13079,38 +10760,21 @@ export interface UpdateObservabilityTracingRuleResponseRulesItem {
   /** A Rules language expression that selects requests. */
   expression: string;
 }
-export const UpdateObservabilityTracingRuleResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: UpdateObservabilityTracingRuleResponseRulesItemAction,
-    actionParameters: DeleteObservabilityTracingRuleResponseRulesItemActionParameters.pipe(
-      T.Body("action_parameters"),
-    ),
-    description: S.String,
-    enabled: S.Boolean,
-    expression: S.String,
-  }),
-).annotate({
-  identifier: "UpdateObservabilityTracingRuleResponseRulesItem",
-}) as any as S.Schema<UpdateObservabilityTracingRuleResponseRulesItem>;
+export const UpdateObservabilityTracingRuleResponseRulesItem =
+  DeleteObservabilityTracingRuleResponseRulesItem as any as S.Schema<UpdateObservabilityTracingRuleResponseRulesItem>;
 
 export type UpdateObservabilityTracingRuleResponseRulesList =
   Array<UpdateObservabilityTracingRuleResponseRulesItem>;
-export const UpdateObservabilityTracingRuleResponseRulesList = /*@__PURE__*/ S.Array(
-  UpdateObservabilityTracingRuleResponseRulesItem,
-) as any as S.Schema<UpdateObservabilityTracingRuleResponseRulesList>;
+export const UpdateObservabilityTracingRuleResponseRulesList =
+  DeleteObservabilityTracingRuleResponseRulesList as any as S.Schema<UpdateObservabilityTracingRuleResponseRulesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateObservabilityTracingRuleResponse {
   /** Trace rules in evaluation order. */
   rules: UpdateObservabilityTracingRuleResponseRulesList;
 }
-export const UpdateObservabilityTracingRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rules: UpdateObservabilityTracingRuleResponseRulesList,
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "UpdateObservabilityTracingRuleResponse",
-}) as any as S.Schema<UpdateObservabilityTracingRuleResponse>;
+export const UpdateObservabilityTracingRuleResponse =
+  DeleteObservabilityTracingRuleResponse as any as S.Schema<UpdateObservabilityTracingRuleResponse>;
 
 export type UpdateObservabilityTracingSettingsRequestDestinationsList = Array<string>;
 export const UpdateObservabilityTracingSettingsRequestDestinationsList =

@@ -2237,9 +2237,8 @@ export type WatchEventsEventTypesEnum =
 export const WatchEventsEventTypesEnum = S.String;
 
 export type WatchEventsEventTypesEnumList = Array<WatchEventsEventTypesEnum | (string & {})>;
-export const WatchEventsEventTypesEnumList = /*@__PURE__*/ S.Array(
-  WatchEventsEventTypesEnum,
-) as any as S.Schema<WatchEventsEventTypesEnumList>;
+export const WatchEventsEventTypesEnumList =
+  ListEventsEventTypesEnumList as any as S.Schema<WatchEventsEventTypesEnumList>;
 
 export interface WatchEventsRequest {
   /** Whether to include deleted events (with status equals "cancelled") in the result. Cancelled instances of recurring events (but not the underlying recurring event) will still be included if showDeleted and singleEvents are both False. If showDeleted and singleEvents are both True, only single instances of deleted events (but not the underlying recurring events) are returned. Optional. The default is False. */

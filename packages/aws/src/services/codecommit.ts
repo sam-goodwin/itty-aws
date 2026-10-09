@@ -1138,13 +1138,7 @@ export interface ObjectTypes {
   destination?: ObjectTypeEnum;
   base?: ObjectTypeEnum;
 }
-export const ObjectTypes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    source: S.optional(ObjectTypeEnum),
-    destination: S.optional(ObjectTypeEnum),
-    base: S.optional(ObjectTypeEnum),
-  }),
-).annotate({ identifier: "ObjectTypes" }) as any as S.Schema<ObjectTypes>;
+export const ObjectTypes = FileModes as any as S.Schema<ObjectTypes>;
 export type NumberOfConflicts = number;
 export type CapitalBoolean = boolean;
 export interface IsBinaryFile {
@@ -3048,7 +3042,8 @@ export type RepositoryTriggerEventEnum =
 export const RepositoryTriggerEventEnum = S.String;
 
 export type RepositoryTriggerEventList = RepositoryTriggerEventEnum[];
-export const RepositoryTriggerEventList = /*@__PURE__*/ S.Array(RepositoryTriggerEventEnum);
+export const RepositoryTriggerEventList =
+  MergeOptions as any as S.Schema<RepositoryTriggerEventList>;
 export interface RepositoryTrigger {
   name: string;
   destinationArn: string;

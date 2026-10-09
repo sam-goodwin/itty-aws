@@ -449,7 +449,7 @@ export const EncryptionAlgorithmOptions = /*@__PURE__*/ S.suspend(() =>
   identifier: "EncryptionAlgorithmOptions",
 }) as any as S.Schema<EncryptionAlgorithmOptions>;
 export type HashAlgorithms = HashAlgorithm[];
-export const HashAlgorithms = /*@__PURE__*/ S.Array(HashAlgorithm);
+export const HashAlgorithms = EncryptionAlgorithms as any as S.Schema<HashAlgorithms>;
 export interface HashAlgorithmOptions {
   allowedValues: HashAlgorithm[];
   defaultValue: HashAlgorithm;
@@ -468,7 +468,7 @@ export const SigningConfiguration = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SigningConfiguration" }) as any as S.Schema<SigningConfiguration>;
 export type ImageFormats = ImageFormat[];
-export const ImageFormats = /*@__PURE__*/ S.Array(ImageFormat);
+export const ImageFormats = EncryptionAlgorithms as any as S.Schema<ImageFormats>;
 export interface SigningImageFormat {
   supportedFormats: ImageFormat[];
   defaultFormat: ImageFormat;
@@ -772,7 +772,7 @@ export const ListSigningPlatformsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListSigningPlatformsResponse",
 }) as any as S.Schema<ListSigningPlatformsResponse>;
 export type Statuses = SigningProfileStatus[];
-export const Statuses = /*@__PURE__*/ S.Array(SigningProfileStatus);
+export const Statuses = EncryptionAlgorithms as any as S.Schema<Statuses>;
 export interface ListSigningProfilesRequest {
   includeCanceled?: boolean;
   maxResults?: number;

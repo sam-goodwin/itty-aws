@@ -299,9 +299,8 @@ export type PostureCategoriesItemEnum = "CATEGORY_UNSPECIFIED" | "AI" | "AWS" | 
 export const PostureCategoriesItemEnum = S.String;
 
 export type PostureCategoriesItemEnumList = Array<PostureCategoriesItemEnum | (string & {})>;
-export const PostureCategoriesItemEnumList = /*@__PURE__*/ S.Array(
-  PostureCategoriesItemEnum,
-) as any as S.Schema<PostureCategoriesItemEnumList>;
+export const PostureCategoriesItemEnumList =
+  PostureDeploymentCategoriesItemEnumList as any as S.Schema<PostureCategoriesItemEnumList>;
 
 export type PostureStateEnum = "STATE_UNSPECIFIED" | "DEPRECATED" | "DRAFT" | "ACTIVE";
 export const PostureStateEnum = S.String;
@@ -973,9 +972,8 @@ export type PostureTemplateCategoriesItemEnum =
 export const PostureTemplateCategoriesItemEnum = S.String;
 
 export type PostureTemplateCategoriesItemEnumList = Array<PostureTemplateCategoriesItemEnum>;
-export const PostureTemplateCategoriesItemEnumList = /*@__PURE__*/ S.Array(
-  PostureTemplateCategoriesItemEnum,
-) as any as S.Schema<PostureTemplateCategoriesItemEnumList>;
+export const PostureTemplateCategoriesItemEnumList =
+  PostureDeploymentCategoriesItemEnumList as any as S.Schema<PostureTemplateCategoriesItemEnumList>;
 
 export type PostureTemplateStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "DEPRECATED";
 export const PostureTemplateStateEnum = S.String;

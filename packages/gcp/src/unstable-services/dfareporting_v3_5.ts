@@ -378,9 +378,8 @@ export const CreativeAssetMetadataDetectedFeaturesItemEnum = S.String;
 export type CreativeAssetMetadataDetectedFeaturesItemEnumList = Array<
   CreativeAssetMetadataDetectedFeaturesItemEnum | (string & {})
 >;
-export const CreativeAssetMetadataDetectedFeaturesItemEnumList = /*@__PURE__*/ S.Array(
-  CreativeAssetMetadataDetectedFeaturesItemEnum,
-) as any as S.Schema<CreativeAssetMetadataDetectedFeaturesItemEnumList>;
+export const CreativeAssetMetadataDetectedFeaturesItemEnumList =
+  CreativeAssetMetadataWarnedValidationRulesItemEnumList as any as S.Schema<CreativeAssetMetadataDetectedFeaturesItemEnumList>;
 
 export type CreativeAssetIdTypeEnum = "IMAGE" | "FLASH" | "VIDEO" | "HTML" | "HTML_IMAGE" | "AUDIO";
 export const CreativeAssetIdTypeEnum = S.String;

@@ -4072,9 +4072,8 @@ export const GetHostingWebOfferCapabilitiesRequest = /*@__PURE__*/ S.suspend(() 
 /** Database software available on this platform */
 export type HostingWebDatabaseCreationDatabaseCapabilitiesEnginesList =
   Array<HostingWebDatabaseDatabaseTypeEnum>;
-export const HostingWebDatabaseCreationDatabaseCapabilitiesEnginesList = /*@__PURE__*/ S.Array(
-  HostingWebDatabaseDatabaseTypeEnum,
-) as any as S.Schema<HostingWebDatabaseCreationDatabaseCapabilitiesEnginesList>;
+export const HostingWebDatabaseCreationDatabaseCapabilitiesEnginesList =
+  HostingWebModuleListLanguageList as any as S.Schema<HostingWebDatabaseCreationDatabaseCapabilitiesEnginesList>;
 
 /** Database Isolation enum */
 export type HostingWebDatabaseDatabaseIsolationEnum = "dedicated" | "local" | "shared";
@@ -4168,9 +4167,8 @@ export const HostingWebNodejsVersionAvailableEnum = S.String;
 
 /** NodeJS versions */
 export type HostingWebCronLanguageAvailableNodejsList = Array<HostingWebNodejsVersionAvailableEnum>;
-export const HostingWebCronLanguageAvailableNodejsList = /*@__PURE__*/ S.Array(
-  HostingWebNodejsVersionAvailableEnum,
-) as any as S.Schema<HostingWebCronLanguageAvailableNodejsList>;
+export const HostingWebCronLanguageAvailableNodejsList =
+  HostingWebModuleListLanguageList as any as S.Schema<HostingWebCronLanguageAvailableNodejsList>;
 
 /** Different PHP versions available */
 export type HostingWebPhpVersionAvailableEnum =
@@ -4189,9 +4187,8 @@ export const HostingWebPhpVersionAvailableEnum = S.String;
 
 /** Php versions */
 export type HostingWebCronLanguageAvailablePhpList = Array<HostingWebPhpVersionAvailableEnum>;
-export const HostingWebCronLanguageAvailablePhpList = /*@__PURE__*/ S.Array(
-  HostingWebPhpVersionAvailableEnum,
-) as any as S.Schema<HostingWebCronLanguageAvailablePhpList>;
+export const HostingWebCronLanguageAvailablePhpList =
+  HostingWebModuleListLanguageList as any as S.Schema<HostingWebCronLanguageAvailablePhpList>;
 
 /** Different Python versions available */
 export type HostingWebPythonVersionAvailableEnum = "python-2" | "python-3";
@@ -4199,9 +4196,8 @@ export const HostingWebPythonVersionAvailableEnum = S.String;
 
 /** Python versions */
 export type HostingWebCronLanguageAvailablePythonList = Array<HostingWebPythonVersionAvailableEnum>;
-export const HostingWebCronLanguageAvailablePythonList = /*@__PURE__*/ S.Array(
-  HostingWebPythonVersionAvailableEnum,
-) as any as S.Schema<HostingWebCronLanguageAvailablePythonList>;
+export const HostingWebCronLanguageAvailablePythonList =
+  HostingWebModuleListLanguageList as any as S.Schema<HostingWebCronLanguageAvailablePythonList>;
 
 /** Different Ruby versions available */
 export type HostingWebRubyVersionAvailableEnum = "ruby-2.6";
@@ -4209,9 +4205,8 @@ export const HostingWebRubyVersionAvailableEnum = S.String;
 
 /** Ruby versions */
 export type HostingWebCronLanguageAvailableRubyList = Array<HostingWebRubyVersionAvailableEnum>;
-export const HostingWebCronLanguageAvailableRubyList = /*@__PURE__*/ S.Array(
-  HostingWebRubyVersionAvailableEnum,
-) as any as S.Schema<HostingWebCronLanguageAvailableRubyList>;
+export const HostingWebCronLanguageAvailableRubyList =
+  HostingWebModuleListLanguageList as any as S.Schema<HostingWebCronLanguageAvailableRubyList>;
 
 /** Language available for cron script */
 export interface HostingWebCronLanguageAvailable {
@@ -5099,9 +5094,8 @@ export const HostingWebConfigurationVersionEnum = S.String;
 
 export type ListHostingWebAvailableConfigurationsResponseBodyList =
   Array<HostingWebConfigurationVersionEnum>;
-export const ListHostingWebAvailableConfigurationsResponseBodyList = /*@__PURE__*/ S.Array(
-  HostingWebConfigurationVersionEnum,
-) as any as S.Schema<ListHostingWebAvailableConfigurationsResponseBodyList>;
+export const ListHostingWebAvailableConfigurationsResponseBodyList =
+  HostingWebModuleListLanguageList as any as S.Schema<ListHostingWebAvailableConfigurationsResponseBodyList>;
 
 export type ListHostingWebAvailableConfigurationsResponse =
   ListHostingWebAvailableConfigurationsResponseBodyList;
@@ -5124,16 +5118,12 @@ export const ListHostingWebAvailableOfferRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListHostingWebAvailableOfferRequest>;
 
 export type ListHostingWebAvailableOfferResponseBodyList = Array<HostingWebOfferEnum>;
-export const ListHostingWebAvailableOfferResponseBodyList = /*@__PURE__*/ S.Array(
-  HostingWebOfferEnum,
-) as any as S.Schema<ListHostingWebAvailableOfferResponseBodyList>;
+export const ListHostingWebAvailableOfferResponseBodyList =
+  HostingWebModuleListLanguageList as any as S.Schema<ListHostingWebAvailableOfferResponseBodyList>;
 
 export type ListHostingWebAvailableOfferResponse = ListHostingWebAvailableOfferResponseBodyList;
-export const ListHostingWebAvailableOfferResponse = /*@__PURE__*/ S.suspend(() =>
-  ListHostingWebAvailableOfferResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListHostingWebAvailableOfferResponse",
-}) as any as S.Schema<ListHostingWebAvailableOfferResponse>;
+export const ListHostingWebAvailableOfferResponse =
+  ListHostingWebAvailableConfigurationsResponse as any as S.Schema<ListHostingWebAvailableOfferResponse>;
 
 export interface ListHostingWebBoostHistoryRequest {
   /** Service name */
@@ -5403,17 +5393,13 @@ export const ListHostingWebCronAvailableLanguageRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ListHostingWebCronAvailableLanguageRequest>;
 
 export type ListHostingWebCronAvailableLanguageResponseBodyList = Array<HostingWebLanguagesEnum>;
-export const ListHostingWebCronAvailableLanguageResponseBodyList = /*@__PURE__*/ S.Array(
-  HostingWebLanguagesEnum,
-) as any as S.Schema<ListHostingWebCronAvailableLanguageResponseBodyList>;
+export const ListHostingWebCronAvailableLanguageResponseBodyList =
+  HostingWebModuleListLanguageList as any as S.Schema<ListHostingWebCronAvailableLanguageResponseBodyList>;
 
 export type ListHostingWebCronAvailableLanguageResponse =
   ListHostingWebCronAvailableLanguageResponseBodyList;
-export const ListHostingWebCronAvailableLanguageResponse = /*@__PURE__*/ S.suspend(() =>
-  ListHostingWebCronAvailableLanguageResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListHostingWebCronAvailableLanguageResponse",
-}) as any as S.Schema<ListHostingWebCronAvailableLanguageResponse>;
+export const ListHostingWebCronAvailableLanguageResponse =
+  ListHostingWebAvailableConfigurationsResponse as any as S.Schema<ListHostingWebCronAvailableLanguageResponse>;
 
 export interface ListHostingWebDatabaseRequest {
   /** The internal name of your hosting */
@@ -5500,9 +5486,8 @@ export const ListHostingWebDatabaseAvailableVersionRequest = /*@__PURE__*/ S.sus
 
 /** Database available version */
 export type HostingWebDatabaseAvailableVersionStructListList = Array<HostingWebDatabaseVersionEnum>;
-export const HostingWebDatabaseAvailableVersionStructListList = /*@__PURE__*/ S.Array(
-  HostingWebDatabaseVersionEnum,
-) as any as S.Schema<HostingWebDatabaseAvailableVersionStructListList>;
+export const HostingWebDatabaseAvailableVersionStructListList =
+  HostingWebModuleListLanguageList as any as S.Schema<HostingWebDatabaseAvailableVersionStructListList>;
 
 /** Database Available and Default version */
 export interface HostingWebDatabaseAvailableVersionStruct {
@@ -6563,17 +6548,13 @@ export const ListHostingWebRuntimeAvailableTypesRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ListHostingWebRuntimeAvailableTypesRequest>;
 
 export type ListHostingWebRuntimeAvailableTypesResponseBodyList = Array<HostingWebRuntimeTypeEnum>;
-export const ListHostingWebRuntimeAvailableTypesResponseBodyList = /*@__PURE__*/ S.Array(
-  HostingWebRuntimeTypeEnum,
-) as any as S.Schema<ListHostingWebRuntimeAvailableTypesResponseBodyList>;
+export const ListHostingWebRuntimeAvailableTypesResponseBodyList =
+  HostingWebModuleListLanguageList as any as S.Schema<ListHostingWebRuntimeAvailableTypesResponseBodyList>;
 
 export type ListHostingWebRuntimeAvailableTypesResponse =
   ListHostingWebRuntimeAvailableTypesResponseBodyList;
-export const ListHostingWebRuntimeAvailableTypesResponse = /*@__PURE__*/ S.suspend(() =>
-  ListHostingWebRuntimeAvailableTypesResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListHostingWebRuntimeAvailableTypesResponse",
-}) as any as S.Schema<ListHostingWebRuntimeAvailableTypesResponse>;
+export const ListHostingWebRuntimeAvailableTypesResponse =
+  ListHostingWebAvailableConfigurationsResponse as any as S.Schema<ListHostingWebRuntimeAvailableTypesResponse>;
 
 /** Types of statistics available for the web hosting */
 export type HostingWebStatisticsTypeEnum =
@@ -6670,16 +6651,12 @@ export const ListHostingWebVcsSupportedRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListHostingWebVcsSupportedRequest>;
 
 export type ListHostingWebVcsSupportedResponseBodyList = Array<HostingWebSupportedVcsEnum>;
-export const ListHostingWebVcsSupportedResponseBodyList = /*@__PURE__*/ S.Array(
-  HostingWebSupportedVcsEnum,
-) as any as S.Schema<ListHostingWebVcsSupportedResponseBodyList>;
+export const ListHostingWebVcsSupportedResponseBodyList =
+  HostingWebModuleListLanguageList as any as S.Schema<ListHostingWebVcsSupportedResponseBodyList>;
 
 export type ListHostingWebVcsSupportedResponse = ListHostingWebVcsSupportedResponseBodyList;
-export const ListHostingWebVcsSupportedResponse = /*@__PURE__*/ S.suspend(() =>
-  ListHostingWebVcsSupportedResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListHostingWebVcsSupportedResponse",
-}) as any as S.Schema<ListHostingWebVcsSupportedResponse>;
+export const ListHostingWebVcsSupportedResponse =
+  ListHostingWebAvailableConfigurationsResponse as any as S.Schema<ListHostingWebVcsSupportedResponse>;
 
 export interface ListHostingWebWebsiteRequest {
   /** Service name */

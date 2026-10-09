@@ -594,7 +594,7 @@ export const HandshakeStatusList = /*@__PURE__*/ S.Array(HandshakeStatus);
 export type AssociatedResourceIdentifierList = string[];
 export const AssociatedResourceIdentifierList = /*@__PURE__*/ S.Array(S.String);
 export type ServicePeriodTypeList = ServicePeriodType[];
-export const ServicePeriodTypeList = /*@__PURE__*/ S.Array(ServicePeriodType);
+export const ServicePeriodTypeList = HandshakeStatusList as any as S.Schema<ServicePeriodTypeList>;
 export interface StartServicePeriodTypeFilters {
   servicePeriodTypes?: ServicePeriodType[];
 }
@@ -609,7 +609,7 @@ export interface RevokeServicePeriodTypeFilters {
 export const RevokeServicePeriodTypeFilters =
   StartServicePeriodTypeFilters as any as S.Schema<RevokeServicePeriodTypeFilters>;
 export type ProgramList = Program[];
-export const ProgramList = /*@__PURE__*/ S.Array(Program);
+export const ProgramList = HandshakeStatusList as any as S.Schema<ProgramList>;
 export interface ProgramManagementAccountTypeFilters {
   programs?: Program[];
 }
@@ -663,11 +663,8 @@ export interface RevokeServicePeriodTypeSort {
   sortOrder: SortOrder;
   sortBy: RevokeServicePeriodTypeSortName;
 }
-export const RevokeServicePeriodTypeSort = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ sortOrder: SortOrder, sortBy: RevokeServicePeriodTypeSortName }),
-).annotate({
-  identifier: "RevokeServicePeriodTypeSort",
-}) as any as S.Schema<RevokeServicePeriodTypeSort>;
+export const RevokeServicePeriodTypeSort =
+  StartServicePeriodTypeSort as any as S.Schema<RevokeServicePeriodTypeSort>;
 export type ProgramManagementAccountTypeSortName = "UpdatedAt" | (string & {});
 export const ProgramManagementAccountTypeSortName = S.String;
 
@@ -675,11 +672,8 @@ export interface ProgramManagementAccountTypeSort {
   sortOrder: SortOrder;
   sortBy: ProgramManagementAccountTypeSortName;
 }
-export const ProgramManagementAccountTypeSort = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ sortOrder: SortOrder, sortBy: ProgramManagementAccountTypeSortName }),
-).annotate({
-  identifier: "ProgramManagementAccountTypeSort",
-}) as any as S.Schema<ProgramManagementAccountTypeSort>;
+export const ProgramManagementAccountTypeSort =
+  StartServicePeriodTypeSort as any as S.Schema<ProgramManagementAccountTypeSort>;
 export type ListChannelHandshakesTypeSort =
   | {
       startServicePeriodTypeSort: StartServicePeriodTypeSort;
@@ -854,11 +848,8 @@ export interface ListProgramManagementAccountsSortBase {
   sortOrder: SortOrder;
   sortBy: ListProgramManagementAccountsSortName;
 }
-export const ListProgramManagementAccountsSortBase = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ sortOrder: SortOrder, sortBy: ListProgramManagementAccountsSortName }),
-).annotate({
-  identifier: "ListProgramManagementAccountsSortBase",
-}) as any as S.Schema<ListProgramManagementAccountsSortBase>;
+export const ListProgramManagementAccountsSortBase =
+  StartServicePeriodTypeSort as any as S.Schema<ListProgramManagementAccountsSortBase>;
 export interface ListProgramManagementAccountsRequest {
   catalog: string;
   maxResults?: number;
@@ -939,7 +930,7 @@ export const ListProgramManagementAccountsResponse = /*@__PURE__*/ S.suspend(() 
   identifier: "ListProgramManagementAccountsResponse",
 }) as any as S.Schema<ListProgramManagementAccountsResponse>;
 export type AssociationTypeList = AssociationType[];
-export const AssociationTypeList = /*@__PURE__*/ S.Array(AssociationType);
+export const AssociationTypeList = HandshakeStatusList as any as S.Schema<AssociationTypeList>;
 export type RelationshipDisplayNameList = string[];
 export const RelationshipDisplayNameList =
   AssociatedResourceIdentifierList as any as S.Schema<RelationshipDisplayNameList>;
@@ -953,11 +944,8 @@ export interface ListRelationshipsSortBase {
   sortOrder: SortOrder;
   sortBy: ListRelationshipsSortName;
 }
-export const ListRelationshipsSortBase = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ sortOrder: SortOrder, sortBy: ListRelationshipsSortName }),
-).annotate({
-  identifier: "ListRelationshipsSortBase",
-}) as any as S.Schema<ListRelationshipsSortBase>;
+export const ListRelationshipsSortBase =
+  StartServicePeriodTypeSort as any as S.Schema<ListRelationshipsSortBase>;
 export interface ListRelationshipsRequest {
   catalog: string;
   maxResults?: number;

@@ -427,9 +427,8 @@ export const AccessSettingsIdentitySourcesItemEnum = S.String;
 export type AccessSettingsIdentitySourcesItemEnumList = Array<
   AccessSettingsIdentitySourcesItemEnum | (string & {})
 >;
-export const AccessSettingsIdentitySourcesItemEnumList = /*@__PURE__*/ S.Array(
-  AccessSettingsIdentitySourcesItemEnum,
-) as any as S.Schema<AccessSettingsIdentitySourcesItemEnumList>;
+export const AccessSettingsIdentitySourcesItemEnumList =
+  AttributePropagationSettingsOutputCredentialsItemEnumList as any as S.Schema<AccessSettingsIdentitySourcesItemEnumList>;
 
 /** An internal name for an IAM policy, based on the resource to which the policy applies. Not to be confused with a resource's external full resource name. For more information on this distinction, see go/iam-full-resource-names. */
 export interface PolicyName {

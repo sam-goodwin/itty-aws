@@ -2387,14 +2387,8 @@ export interface NetworkServiceDesignGroupPropertiesFormat {
   /** The network service design group description. */
   description?: string;
 }
-export const NetworkServiceDesignGroupPropertiesFormat = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    provisioningState: S.optional(NetworkServiceDesignGroupPropertiesFormatProvisioningState),
-    description: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "NetworkServiceDesignGroupPropertiesFormat",
-}) as any as S.Schema<NetworkServiceDesignGroupPropertiesFormat>;
+export const NetworkServiceDesignGroupPropertiesFormat =
+  NetworkFunctionDefinitionGroupPropertiesFormat as any as S.Schema<NetworkServiceDesignGroupPropertiesFormat>;
 
 export interface GetNetworkServiceDesignGroupResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -6184,13 +6178,8 @@ export interface NetworkFunctionDefinitionVersionUpdateState {
   /** The network function definition version state. Only the 'Active' and 'Deprecated' states are allowed for updates. Other states are used for internal state transitioning. */
   versionState?: VersionState;
 }
-export const NetworkFunctionDefinitionVersionUpdateState = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    versionState: S.optional(VersionState),
-  }),
-).annotate({
-  identifier: "NetworkFunctionDefinitionVersionUpdateState",
-}) as any as S.Schema<NetworkFunctionDefinitionVersionUpdateState>;
+export const NetworkFunctionDefinitionVersionUpdateState =
+  ConfigurationGroupSchemaVersionUpdateState as any as S.Schema<NetworkFunctionDefinitionVersionUpdateState>;
 
 /** Resource tags. */
 export type UpdateNetworkFunctionTagsRequestTagsMap = { [key: string]: string | undefined };
@@ -6421,13 +6410,8 @@ export interface NetworkServiceDesignVersionUpdateState {
   /** The network service design version state. */
   versionState?: NSDVersionState;
 }
-export const NetworkServiceDesignVersionUpdateState = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    versionState: S.optional(NSDVersionState),
-  }),
-).annotate({
-  identifier: "NetworkServiceDesignVersionUpdateState",
-}) as any as S.Schema<NetworkServiceDesignVersionUpdateState>;
+export const NetworkServiceDesignVersionUpdateState =
+  ConfigurationGroupSchemaVersionUpdateState as any as S.Schema<NetworkServiceDesignVersionUpdateState>;
 
 /** The artifact update state properties. */
 export interface ArtifactChangeStateProperties {

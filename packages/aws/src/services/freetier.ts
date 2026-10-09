@@ -329,7 +329,7 @@ export const GetFreeTierUsageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ freeTierUsages: FreeTierUsages, nextToken: S.optional(S.String) }),
 ).annotate({ identifier: "GetFreeTierUsageResponse" }) as any as S.Schema<GetFreeTierUsageResponse>;
 export type FilterActivityStatuses = ActivityStatus[];
-export const FilterActivityStatuses = /*@__PURE__*/ S.Array(ActivityStatus);
+export const FilterActivityStatuses = MatchOptions as any as S.Schema<FilterActivityStatuses>;
 export interface ListAccountActivitiesRequest {
   filterActivityStatuses?: ActivityStatus[];
   nextToken?: string;

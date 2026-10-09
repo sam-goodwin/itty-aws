@@ -591,9 +591,8 @@ export const GetDisputeSummaryRequestStatusItem = S.String;
 export type GetDisputeSummaryRequestStatusList = Array<
   GetDisputeSummaryRequestStatusItem | (string & {})
 >;
-export const GetDisputeSummaryRequestStatusList = /*@__PURE__*/ S.Array(
-  GetDisputeSummaryRequestStatusItem,
-) as any as S.Schema<GetDisputeSummaryRequestStatusList>;
+export const GetDisputeSummaryRequestStatusList =
+  GetDisputeSummaryRequestGroupsList as any as S.Schema<GetDisputeSummaryRequestStatusList>;
 
 export interface GetDisputeSummaryRequest {
   /** Which breakdowns to return, keyed by these names under `groups`. Repeat the parameter to ask for several; omit it for all of them. */
@@ -702,9 +701,8 @@ export type ListDisputesRequestStatusItem =
 export const ListDisputesRequestStatusItem = S.String;
 
 export type ListDisputesRequestStatusList = Array<ListDisputesRequestStatusItem | (string & {})>;
-export const ListDisputesRequestStatusList = /*@__PURE__*/ S.Array(
-  ListDisputesRequestStatusItem,
-) as any as S.Schema<ListDisputesRequestStatusList>;
+export const ListDisputesRequestStatusList =
+  GetDisputeSummaryRequestGroupsList as any as S.Schema<ListDisputesRequestStatusList>;
 
 export interface ListDisputesRequest {
   /** Only disputes filed against this account (`biz_` tag). Omit it to cover every account you can read. */
@@ -1732,23 +1730,14 @@ export interface UploadDisputeEvidenceRequestDocumentsItem {
   /** The ID of a file already stored on Whop, prefixed `file_`. */
   id?: string;
 }
-export const UploadDisputeEvidenceRequestDocumentsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    direct_upload_id: S.optional(S.String),
-    document_type: UploadDisputeEvidenceRequestDocumentsItemDocumentType,
-    file: S.optional(S.String),
-    id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UploadDisputeEvidenceRequestDocumentsItem",
-}) as any as S.Schema<UploadDisputeEvidenceRequestDocumentsItem>;
+export const UploadDisputeEvidenceRequestDocumentsItem =
+  UpdateDisputeRequestEvidenceDocumentsItem as any as S.Schema<UploadDisputeEvidenceRequestDocumentsItem>;
 
 /** The full set of evidence documents the dispute should carry, beyond the four fixed evidence slots. Replaces all previously uploaded documents. Upload files through `POST /files` and reference them by `id`, or send the files as multipart file parts to upload and attach in one call. Policy documents (`return_policy`, `shipping_policy`, `cancellation_policy`, `terms_of_service`) default from the account's own documents; uploading one here replaces the account copy for this dispute, and a `cancellation_policy` or `return_policy` upload also takes precedence over the matching fixed evidence slot. */
 export type UploadDisputeEvidenceRequestDocumentsList =
   Array<UploadDisputeEvidenceRequestDocumentsItem>;
-export const UploadDisputeEvidenceRequestDocumentsList = /*@__PURE__*/ S.Array(
-  UploadDisputeEvidenceRequestDocumentsItem,
-) as any as S.Schema<UploadDisputeEvidenceRequestDocumentsList>;
+export const UploadDisputeEvidenceRequestDocumentsList =
+  UpdateDisputeRequestEvidenceDocumentsList as any as S.Schema<UploadDisputeEvidenceRequestDocumentsList>;
 
 export interface UploadDisputeEvidenceRequest {
   /** The dispute ID (`dspt_` tag). */

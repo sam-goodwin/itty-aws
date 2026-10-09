@@ -1244,11 +1244,11 @@ export interface SigningRepositoryFilter {
   filter: string;
   filterType: SigningRepositoryFilterType;
 }
-export const SigningRepositoryFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ filter: S.String, filterType: SigningRepositoryFilterType }),
-).annotate({ identifier: "SigningRepositoryFilter" }) as any as S.Schema<SigningRepositoryFilter>;
+export const SigningRepositoryFilter =
+  ScanningRepositoryFilter as any as S.Schema<SigningRepositoryFilter>;
 export type SigningRepositoryFilterList = SigningRepositoryFilter[];
-export const SigningRepositoryFilterList = /*@__PURE__*/ S.Array(SigningRepositoryFilter);
+export const SigningRepositoryFilterList =
+  ScanningRepositoryFilterList as any as S.Schema<SigningRepositoryFilterList>;
 export interface SigningRule {
   signingProfileArn: string;
   repositoryFilters?: SigningRepositoryFilter[];
@@ -1947,11 +1947,10 @@ export interface RepositoryFilter {
   filter: string;
   filterType: RepositoryFilterType;
 }
-export const RepositoryFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ filter: S.String, filterType: RepositoryFilterType }),
-).annotate({ identifier: "RepositoryFilter" }) as any as S.Schema<RepositoryFilter>;
+export const RepositoryFilter = ScanningRepositoryFilter as any as S.Schema<RepositoryFilter>;
 export type RepositoryFilterList = RepositoryFilter[];
-export const RepositoryFilterList = /*@__PURE__*/ S.Array(RepositoryFilter);
+export const RepositoryFilterList =
+  ScanningRepositoryFilterList as any as S.Schema<RepositoryFilterList>;
 export interface ReplicationRule {
   destinations: ReplicationDestination[];
   repositoryFilters?: RepositoryFilter[];

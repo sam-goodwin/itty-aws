@@ -552,15 +552,8 @@ export interface CheckServiceNameAvailabilityResponse {
   /** The localized reason why the name is not available, if nameAvailable is false */
   message?: string;
 }
-export const CheckServiceNameAvailabilityResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nameAvailable: S.optional(S.Boolean),
-    reason: S.optional(CheckServiceNameAvailabilityResponseReason),
-    message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CheckServiceNameAvailabilityResponse",
-}) as any as S.Schema<CheckServiceNameAvailabilityResponse>;
+export const CheckServiceNameAvailabilityResponse =
+  CheckServiceChildrenNameAvailabilityResponse as any as S.Schema<CheckServiceNameAvailabilityResponse>;
 
 export interface CheckServiceStatusRequest {
   /** Subscription ID that identifies an Azure subscription. */
@@ -1882,22 +1875,8 @@ export interface DatabaseMigrationPropertiesSqlVmInput {
   /** Offline configuration. */
   offlineConfiguration?: OfflineConfiguration;
 }
-export const DatabaseMigrationPropertiesSqlVmInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: DatabaseMigrationPropertiesSqlVmInputKind,
-    scope: S.optional(S.String),
-    migrationService: S.optional(S.String),
-    migrationOperationId: S.optional(S.String),
-    provisioningError: S.optional(S.String),
-    sourceSqlConnection: S.optional(SqlConnectionInformation),
-    sourceDatabaseName: S.optional(S.String),
-    targetDatabaseCollation: S.optional(S.String),
-    backupConfiguration: S.optional(BackupConfigurationInput),
-    offlineConfiguration: S.optional(OfflineConfiguration),
-  }),
-).annotate({
-  identifier: "DatabaseMigrationPropertiesSqlVmInput",
-}) as any as S.Schema<DatabaseMigrationPropertiesSqlVmInput>;
+export const DatabaseMigrationPropertiesSqlVmInput =
+  DatabaseMigrationPropertiesSqlMiInput as any as S.Schema<DatabaseMigrationPropertiesSqlVmInput>;
 
 export interface DatabaseMigrationsSqlVmCreateOrUpdateRequest {
   /** Subscription ID that identifies an Azure subscription. */
@@ -1980,29 +1959,8 @@ export interface DatabaseMigrationPropertiesSqlVm {
   /** Offline configuration. */
   offlineConfiguration?: OfflineConfiguration;
 }
-export const DatabaseMigrationPropertiesSqlVm = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: DatabaseMigrationPropertiesSqlVmKind,
-    scope: S.optional(S.String),
-    provisioningState: S.optional(DatabaseMigrationPropertiesSqlVmProvisioningState),
-    migrationStatus: S.optional(S.String),
-    startedOn: S.optional(S.String),
-    endedOn: S.optional(S.String),
-    migrationService: S.optional(S.String),
-    migrationOperationId: S.optional(S.String),
-    migrationFailureError: S.optional(ErrorInfo),
-    provisioningError: S.optional(S.String),
-    sourceSqlConnection: S.optional(SqlConnectionInformation),
-    sourceDatabaseName: S.optional(S.String),
-    sourceServerName: S.optional(S.String),
-    targetDatabaseCollation: S.optional(S.String),
-    migrationStatusDetails: S.optional(MigrationStatusDetails),
-    backupConfiguration: S.optional(BackupConfiguration),
-    offlineConfiguration: S.optional(OfflineConfiguration),
-  }),
-).annotate({
-  identifier: "DatabaseMigrationPropertiesSqlVm",
-}) as any as S.Schema<DatabaseMigrationPropertiesSqlVm>;
+export const DatabaseMigrationPropertiesSqlVm =
+  DatabaseMigrationPropertiesSqlMi as any as S.Schema<DatabaseMigrationPropertiesSqlVm>;
 
 export interface DatabaseMigrationsSqlVmCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2015,17 +1973,8 @@ export interface DatabaseMigrationsSqlVmCreateOrUpdateResponse {
   systemData?: SystemData;
   properties?: DatabaseMigrationPropertiesSqlVm;
 }
-export const DatabaseMigrationsSqlVmCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DatabaseMigrationPropertiesSqlVm),
-  }),
-).annotate({
-  identifier: "DatabaseMigrationsSqlVmCreateOrUpdateResponse",
-}) as any as S.Schema<DatabaseMigrationsSqlVmCreateOrUpdateResponse>;
+export const DatabaseMigrationsSqlVmCreateOrUpdateResponse =
+  DatabaseMigrationsSqlMiCreateOrUpdateResponse as any as S.Schema<DatabaseMigrationsSqlVmCreateOrUpdateResponse>;
 
 export interface DatabaseMigrationsSqlVmCutoverRequest {
   /** Subscription ID that identifies an Azure subscription. */

@@ -466,12 +466,7 @@ export interface UnitArea {
   /** The area value. */
   value?: number;
 }
-export const UnitArea = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    unit: S.optional(UnitAreaUnitEnum),
-    value: S.optional(S.Number),
-  }),
-).annotate({ identifier: "UnitArea" }) as any as S.Schema<UnitArea>;
+export const UnitArea = EnergyConsumption as any as S.Schema<UnitArea>;
 
 export type ProductInstallmentCreditTypeEnum = "CREDIT_TYPE_UNSPECIFIED" | "FINANCE" | "LEASE";
 export const ProductInstallmentCreditTypeEnum = S.String;
@@ -486,12 +481,7 @@ export interface Mileage {
   /** The distance value. */
   value?: string;
 }
-export const Mileage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    unit: S.optional(MileageUnitEnum),
-    value: S.optional(S.String),
-  }),
-).annotate({ identifier: "Mileage" }) as any as S.Schema<Mileage>;
+export const Mileage = Co2Emissions as any as S.Schema<Mileage>;
 
 /** A message that represents installment. */
 export interface ProductInstallment {
@@ -621,9 +611,8 @@ export const ProductAttributesUtilitiesIncludedItemEnum = S.String;
 export type ProductAttributesUtilitiesIncludedItemEnumList = Array<
   ProductAttributesUtilitiesIncludedItemEnum | (string & {})
 >;
-export const ProductAttributesUtilitiesIncludedItemEnumList = /*@__PURE__*/ S.Array(
-  ProductAttributesUtilitiesIncludedItemEnum,
-) as any as S.Schema<ProductAttributesUtilitiesIncludedItemEnumList>;
+export const ProductAttributesUtilitiesIncludedItemEnumList =
+  ProductAttributesIncludedDestinationsItemEnumList as any as S.Schema<ProductAttributesUtilitiesIncludedItemEnumList>;
 
 export type ProductAttributesEnergyEfficiencyClassEnum =
   | "ENERGY_EFFICIENCY_CLASS_UNSPECIFIED"
@@ -654,9 +643,8 @@ export type ReturnsMethodsItemEnum =
 export const ReturnsMethodsItemEnum = S.String;
 
 export type ReturnsMethodsItemEnumList = Array<ReturnsMethodsItemEnum | (string & {})>;
-export const ReturnsMethodsItemEnumList = /*@__PURE__*/ S.Array(
-  ReturnsMethodsItemEnum,
-) as any as S.Schema<ReturnsMethodsItemEnumList>;
+export const ReturnsMethodsItemEnumList =
+  ProductAttributesIncludedDestinationsItemEnumList as any as S.Schema<ReturnsMethodsItemEnumList>;
 
 export type ReturnsItemConditionsItemEnum =
   | "ITEM_CONDITION_UNSPECIFIED"
@@ -669,9 +657,8 @@ export const ReturnsItemConditionsItemEnum = S.String;
 export type ReturnsItemConditionsItemEnumList = Array<
   ReturnsItemConditionsItemEnum | (string & {})
 >;
-export const ReturnsItemConditionsItemEnumList = /*@__PURE__*/ S.Array(
-  ReturnsItemConditionsItemEnum,
-) as any as S.Schema<ReturnsItemConditionsItemEnumList>;
+export const ReturnsItemConditionsItemEnumList =
+  ProductAttributesIncludedDestinationsItemEnumList as any as S.Schema<ReturnsItemConditionsItemEnumList>;
 
 export type ReturnsWindowTypeEnum =
   | "RETURN_WINDOW_TYPE_UNSPECIFIED"
@@ -688,9 +675,8 @@ export type ReturnsOutcomesItemEnum =
 export const ReturnsOutcomesItemEnum = S.String;
 
 export type ReturnsOutcomesItemEnumList = Array<ReturnsOutcomesItemEnum | (string & {})>;
-export const ReturnsOutcomesItemEnumList = /*@__PURE__*/ S.Array(
-  ReturnsOutcomesItemEnum,
-) as any as S.Schema<ReturnsOutcomesItemEnumList>;
+export const ReturnsOutcomesItemEnumList =
+  ProductAttributesIncludedDestinationsItemEnumList as any as S.Schema<ReturnsOutcomesItemEnumList>;
 
 /** The returns of the product. */
 export interface Returns {
@@ -749,9 +735,8 @@ export const ProductAttributesSizeTypesItemEnum = S.String;
 export type ProductAttributesSizeTypesItemEnumList = Array<
   ProductAttributesSizeTypesItemEnum | (string & {})
 >;
-export const ProductAttributesSizeTypesItemEnumList = /*@__PURE__*/ S.Array(
-  ProductAttributesSizeTypesItemEnum,
-) as any as S.Schema<ProductAttributesSizeTypesItemEnumList>;
+export const ProductAttributesSizeTypesItemEnumList =
+  ProductAttributesIncludedDestinationsItemEnumList as any as S.Schema<ProductAttributesSizeTypesItemEnumList>;
 
 /** A message that represents loyalty program. For more information on loyalty programs, see [Overview of loyalty programs](/merchant/api/guides/loyalty/loyalty-programs). */
 export interface LoyaltyProgram {
@@ -1252,9 +1237,8 @@ export const ProductAttributesAmenityFeatureItemEnum = S.String;
 export type ProductAttributesAmenityFeatureItemEnumList = Array<
   ProductAttributesAmenityFeatureItemEnum | (string & {})
 >;
-export const ProductAttributesAmenityFeatureItemEnumList = /*@__PURE__*/ S.Array(
-  ProductAttributesAmenityFeatureItemEnum,
-) as any as S.Schema<ProductAttributesAmenityFeatureItemEnumList>;
+export const ProductAttributesAmenityFeatureItemEnumList =
+  ProductAttributesIncludedDestinationsItemEnumList as any as S.Schema<ProductAttributesAmenityFeatureItemEnumList>;
 
 export type PetPolicyPetTypesItemEnum =
   | "PET_TYPE_UNSPECIFIED"
@@ -1264,9 +1248,8 @@ export type PetPolicyPetTypesItemEnum =
 export const PetPolicyPetTypesItemEnum = S.String;
 
 export type PetPolicyPetTypesItemEnumList = Array<PetPolicyPetTypesItemEnum | (string & {})>;
-export const PetPolicyPetTypesItemEnumList = /*@__PURE__*/ S.Array(
-  PetPolicyPetTypesItemEnum,
-) as any as S.Schema<PetPolicyPetTypesItemEnumList>;
+export const PetPolicyPetTypesItemEnumList =
+  ProductAttributesIncludedDestinationsItemEnumList as any as S.Schema<PetPolicyPetTypesItemEnumList>;
 
 /** The pet policy of the property. */
 export interface PetPolicy {
@@ -1489,9 +1472,8 @@ export const ProductAttributesExcludedDestinationsItemEnum = S.String;
 export type ProductAttributesExcludedDestinationsItemEnumList = Array<
   ProductAttributesExcludedDestinationsItemEnum | (string & {})
 >;
-export const ProductAttributesExcludedDestinationsItemEnumList = /*@__PURE__*/ S.Array(
-  ProductAttributesExcludedDestinationsItemEnum,
-) as any as S.Schema<ProductAttributesExcludedDestinationsItemEnumList>;
+export const ProductAttributesExcludedDestinationsItemEnumList =
+  ProductAttributesIncludedDestinationsItemEnumList as any as S.Schema<ProductAttributesExcludedDestinationsItemEnumList>;
 
 export type ProductAttributesSpecialtyHousingTypeEnum =
   | "SPECIALTY_HOUSING_TYPE_UNSPECIFIED"

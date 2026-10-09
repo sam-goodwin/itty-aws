@@ -2414,7 +2414,7 @@ export type PlatformDifference =
 export const PlatformDifference = S.String;
 
 export type PlatformDifferences = PlatformDifference[];
-export const PlatformDifferences = /*@__PURE__*/ S.Array(PlatformDifference);
+export const PlatformDifferences = MatchOptions as any as S.Schema<PlatformDifferences>;
 export interface TargetInstance {
   EstimatedMonthlyCost?: string;
   EstimatedMonthlySavings?: string;
@@ -2475,7 +2475,7 @@ export type FindingReasonCode =
 export const FindingReasonCode = S.String;
 
 export type FindingReasonCodes = FindingReasonCode[];
-export const FindingReasonCodes = /*@__PURE__*/ S.Array(FindingReasonCode);
+export const FindingReasonCodes = MatchOptions as any as S.Schema<FindingReasonCodes>;
 export interface RightsizingRecommendation {
   AccountId?: string;
   CurrentInstance?: CurrentInstance;
@@ -2928,7 +2928,7 @@ export type SavingsPlansDataType =
 export const SavingsPlansDataType = S.String;
 
 export type SavingsPlansDataTypes = SavingsPlansDataType[];
-export const SavingsPlansDataTypes = /*@__PURE__*/ S.Array(SavingsPlansDataType);
+export const SavingsPlansDataTypes = MatchOptions as any as S.Schema<SavingsPlansDataTypes>;
 export interface GetSavingsPlansUtilizationDetailsRequest {
   TimePeriod: DateInterval;
   Filter?: Expression;

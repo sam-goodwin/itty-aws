@@ -2919,9 +2919,8 @@ export const MailV1WebhooksWebhookCreatedResourceEventsItem = S.String;
 /** Events that trigger this webhook */
 export type MailV1WebhooksWebhookCreatedResourceEventsList =
   Array<MailV1WebhooksWebhookCreatedResourceEventsItem>;
-export const MailV1WebhooksWebhookCreatedResourceEventsList = /*@__PURE__*/ S.Array(
-  MailV1WebhooksWebhookCreatedResourceEventsItem,
-) as any as S.Schema<MailV1WebhooksWebhookCreatedResourceEventsList>;
+export const MailV1WebhooksWebhookCreatedResourceEventsList =
+  CreateMailWebhookV1RequestEventsList as any as S.Schema<MailV1WebhooksWebhookCreatedResourceEventsList>;
 
 /** Current status of the webhook */
 export type MailV1WebhooksWebhookCreatedResourceStatus = "active" | "disabled" | "paused";
@@ -4627,9 +4626,8 @@ export const DomainsChangeWHOISProfileForDomainV1RequestChangeForItem = S.String
 export type DomainsChangeWHOISProfileForDomainV1RequestChangeForList = Array<
   DomainsChangeWHOISProfileForDomainV1RequestChangeForItem | (string & {})
 >;
-export const DomainsChangeWHOISProfileForDomainV1RequestChangeForList = /*@__PURE__*/ S.Array(
-  DomainsChangeWHOISProfileForDomainV1RequestChangeForItem,
-) as any as S.Schema<DomainsChangeWHOISProfileForDomainV1RequestChangeForList>;
+export const DomainsChangeWHOISProfileForDomainV1RequestChangeForList =
+  CreateMailWebhookV1RequestEventsList as any as S.Schema<DomainsChangeWHOISProfileForDomainV1RequestChangeForList>;
 
 export interface DomainsChangeWHOISProfileForDomainV1Request {
   /** WHOIS profile ID to assign to the domain */
@@ -5179,19 +5177,12 @@ export interface EditHorizonWebsiteV1RequestMessageItem {
   /** Detailed description of the changes to apply to the website. Include which sections, features, content or design should change and how. The specification should be detailed and comprehensive, covering all requested changes. */
   text: string;
 }
-export const EditHorizonWebsiteV1RequestMessageItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: EditHorizonWebsiteV1RequestMessageItemType,
-    text: S.String,
-  }),
-).annotate({
-  identifier: "EditHorizonWebsiteV1RequestMessageItem",
-}) as any as S.Schema<EditHorizonWebsiteV1RequestMessageItem>;
+export const EditHorizonWebsiteV1RequestMessageItem =
+  CreateHorizonWebsiteV1RequestMessageItem as any as S.Schema<EditHorizonWebsiteV1RequestMessageItem>;
 
 export type EditHorizonWebsiteV1RequestMessageList = Array<EditHorizonWebsiteV1RequestMessageItem>;
-export const EditHorizonWebsiteV1RequestMessageList = /*@__PURE__*/ S.Array(
-  EditHorizonWebsiteV1RequestMessageItem,
-) as any as S.Schema<EditHorizonWebsiteV1RequestMessageList>;
+export const EditHorizonWebsiteV1RequestMessageList =
+  CreateHorizonWebsiteV1RequestMessageList as any as S.Schema<EditHorizonWebsiteV1RequestMessageList>;
 
 export interface EditHorizonWebsiteV1Request {
   /** The website ID */
@@ -6973,13 +6964,8 @@ export interface WordPressV1MemcachedMemcachedStatusResource {
   /** Current Memcached object cache status for the WordPress installation */
   status?: WordPressV1MemcachedMemcachedStatusResourceStatus;
 }
-export const WordPressV1MemcachedMemcachedStatusResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(WordPressV1MemcachedMemcachedStatusResourceStatus),
-  }),
-).annotate({
-  identifier: "WordPressV1MemcachedMemcachedStatusResource",
-}) as any as S.Schema<WordPressV1MemcachedMemcachedStatusResource>;
+export const WordPressV1MemcachedMemcachedStatusResource =
+  WordPressV1MaintenanceMaintenanceStatusResource as any as S.Schema<WordPressV1MemcachedMemcachedStatusResource>;
 
 export interface GetHostingNodeJsBuildDetailsV1Request {
   username: string;
@@ -7292,9 +7278,8 @@ export const GetHostingNodeJsRuntimeLogsV1RequestLevelsItem = S.String;
 export type GetHostingNodeJsRuntimeLogsV1RequestLevelsList = Array<
   GetHostingNodeJsRuntimeLogsV1RequestLevelsItem | (string & {})
 >;
-export const GetHostingNodeJsRuntimeLogsV1RequestLevelsList = /*@__PURE__*/ S.Array(
-  GetHostingNodeJsRuntimeLogsV1RequestLevelsItem,
-) as any as S.Schema<GetHostingNodeJsRuntimeLogsV1RequestLevelsList>;
+export const GetHostingNodeJsRuntimeLogsV1RequestLevelsList =
+  CreateMailWebhookV1RequestEventsList as any as S.Schema<GetHostingNodeJsRuntimeLogsV1RequestLevelsList>;
 
 export interface GetHostingNodeJsRuntimeLogsV1Request {
   username: string;
@@ -7836,9 +7821,8 @@ export const MailV1WebhooksWebhookResourceEventsItem = S.String;
 /** Events that trigger this webhook */
 export type MailV1WebhooksWebhookResourceEventsList =
   Array<MailV1WebhooksWebhookResourceEventsItem>;
-export const MailV1WebhooksWebhookResourceEventsList = /*@__PURE__*/ S.Array(
-  MailV1WebhooksWebhookResourceEventsItem,
-) as any as S.Schema<MailV1WebhooksWebhookResourceEventsList>;
+export const MailV1WebhooksWebhookResourceEventsList =
+  CreateMailWebhookV1RequestEventsList as any as S.Schema<MailV1WebhooksWebhookResourceEventsList>;
 
 /** Current status of the webhook */
 export type MailV1WebhooksWebhookResourceStatus = "active" | "disabled" | "paused";
@@ -9869,9 +9853,8 @@ export const HostingListWebsiteFilesAndDirectoriesV1RequestFileTypesItem = S.Str
 export type HostingListWebsiteFilesAndDirectoriesV1RequestFileTypesList = Array<
   HostingListWebsiteFilesAndDirectoriesV1RequestFileTypesItem | (string & {})
 >;
-export const HostingListWebsiteFilesAndDirectoriesV1RequestFileTypesList = /*@__PURE__*/ S.Array(
-  HostingListWebsiteFilesAndDirectoriesV1RequestFileTypesItem,
-) as any as S.Schema<HostingListWebsiteFilesAndDirectoriesV1RequestFileTypesList>;
+export const HostingListWebsiteFilesAndDirectoriesV1RequestFileTypesList =
+  CreateMailWebhookV1RequestEventsList as any as S.Schema<HostingListWebsiteFilesAndDirectoriesV1RequestFileTypesList>;
 
 export interface HostingListWebsiteFilesAndDirectoriesV1Request {
   username: string;
@@ -10388,9 +10371,8 @@ export const ListAgencyHostingAgencyPlanWebsitesV1RequestStatesItem = S.String;
 export type ListAgencyHostingAgencyPlanWebsitesV1RequestStatesList = Array<
   ListAgencyHostingAgencyPlanWebsitesV1RequestStatesItem | (string & {})
 >;
-export const ListAgencyHostingAgencyPlanWebsitesV1RequestStatesList = /*@__PURE__*/ S.Array(
-  ListAgencyHostingAgencyPlanWebsitesV1RequestStatesItem,
-) as any as S.Schema<ListAgencyHostingAgencyPlanWebsitesV1RequestStatesList>;
+export const ListAgencyHostingAgencyPlanWebsitesV1RequestStatesList =
+  CreateMailWebhookV1RequestEventsList as any as S.Schema<ListAgencyHostingAgencyPlanWebsitesV1RequestStatesList>;
 
 export type ListAgencyHostingAgencyPlanWebsitesV1RequestWebsiteTypesItem =
   | "wordpress"
@@ -10403,9 +10385,8 @@ export const ListAgencyHostingAgencyPlanWebsitesV1RequestWebsiteTypesItem = S.St
 export type ListAgencyHostingAgencyPlanWebsitesV1RequestWebsiteTypesList = Array<
   ListAgencyHostingAgencyPlanWebsitesV1RequestWebsiteTypesItem | (string & {})
 >;
-export const ListAgencyHostingAgencyPlanWebsitesV1RequestWebsiteTypesList = /*@__PURE__*/ S.Array(
-  ListAgencyHostingAgencyPlanWebsitesV1RequestWebsiteTypesItem,
-) as any as S.Schema<ListAgencyHostingAgencyPlanWebsitesV1RequestWebsiteTypesList>;
+export const ListAgencyHostingAgencyPlanWebsitesV1RequestWebsiteTypesList =
+  CreateMailWebhookV1RequestEventsList as any as S.Schema<ListAgencyHostingAgencyPlanWebsitesV1RequestWebsiteTypesList>;
 
 export interface ListAgencyHostingAgencyPlanWebsitesV1Request {
   /** Page number */
@@ -11435,9 +11416,8 @@ export const ListEcommerceProductsV1RequestStatusItem = S.String;
 export type ListEcommerceProductsV1RequestStatusList = Array<
   ListEcommerceProductsV1RequestStatusItem | (string & {})
 >;
-export const ListEcommerceProductsV1RequestStatusList = /*@__PURE__*/ S.Array(
-  ListEcommerceProductsV1RequestStatusItem,
-) as any as S.Schema<ListEcommerceProductsV1RequestStatusList>;
+export const ListEcommerceProductsV1RequestStatusList =
+  CreateMailWebhookV1RequestEventsList as any as S.Schema<ListEcommerceProductsV1RequestStatusList>;
 
 export type ListEcommerceProductsV1RequestIncludeItem = "variants" | "media";
 export const ListEcommerceProductsV1RequestIncludeItem = S.String;
@@ -11445,9 +11425,8 @@ export const ListEcommerceProductsV1RequestIncludeItem = S.String;
 export type ListEcommerceProductsV1RequestIncludeList = Array<
   ListEcommerceProductsV1RequestIncludeItem | (string & {})
 >;
-export const ListEcommerceProductsV1RequestIncludeList = /*@__PURE__*/ S.Array(
-  ListEcommerceProductsV1RequestIncludeItem,
-) as any as S.Schema<ListEcommerceProductsV1RequestIncludeList>;
+export const ListEcommerceProductsV1RequestIncludeList =
+  CreateMailWebhookV1RequestEventsList as any as S.Schema<ListEcommerceProductsV1RequestIncludeList>;
 
 export interface ListEcommerceProductsV1Request {
   /** The ID of the store to list products for. */
@@ -11741,19 +11720,7 @@ export interface EcommerceV1SalesChannelSalesChannelListResourceSalesChannelsIte
   domain?: string | null;
 }
 export const EcommerceV1SalesChannelSalesChannelListResourceSalesChannelsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      type: S.optional(EcommerceV1SalesChannelSalesChannelListResourceSalesChannelsItemType),
-      is_primary: S.optional(S.Boolean),
-      is_active: S.optional(S.Boolean),
-      external_id: S.optional(S.NullOr(S.String)),
-      name: S.optional(S.NullOr(S.String)),
-      domain: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "EcommerceV1SalesChannelSalesChannelListResourceSalesChannelsItem",
-  }) as any as S.Schema<EcommerceV1SalesChannelSalesChannelListResourceSalesChannelsItem>;
+  EcommerceV1SalesChannelSalesChannelCreationResourceSalesChannel as any as S.Schema<EcommerceV1SalesChannelSalesChannelListResourceSalesChannelsItem>;
 
 /** The store's active sales channels. */
 export type EcommerceV1SalesChannelSalesChannelListResourceSalesChannelsList =
@@ -11786,9 +11753,8 @@ export const ListEcommerceStoreOrdersV1RequestStatusItem = S.String;
 export type ListEcommerceStoreOrdersV1RequestStatusList = Array<
   ListEcommerceStoreOrdersV1RequestStatusItem | (string & {})
 >;
-export const ListEcommerceStoreOrdersV1RequestStatusList = /*@__PURE__*/ S.Array(
-  ListEcommerceStoreOrdersV1RequestStatusItem,
-) as any as S.Schema<ListEcommerceStoreOrdersV1RequestStatusList>;
+export const ListEcommerceStoreOrdersV1RequestStatusList =
+  CreateMailWebhookV1RequestEventsList as any as S.Schema<ListEcommerceStoreOrdersV1RequestStatusList>;
 
 export type ListEcommerceStoreOrdersV1RequestPaymentStatusItem =
   | "not_paid"
@@ -11804,9 +11770,8 @@ export const ListEcommerceStoreOrdersV1RequestPaymentStatusItem = S.String;
 export type ListEcommerceStoreOrdersV1RequestPaymentStatusList = Array<
   ListEcommerceStoreOrdersV1RequestPaymentStatusItem | (string & {})
 >;
-export const ListEcommerceStoreOrdersV1RequestPaymentStatusList = /*@__PURE__*/ S.Array(
-  ListEcommerceStoreOrdersV1RequestPaymentStatusItem,
-) as any as S.Schema<ListEcommerceStoreOrdersV1RequestPaymentStatusList>;
+export const ListEcommerceStoreOrdersV1RequestPaymentStatusList =
+  CreateMailWebhookV1RequestEventsList as any as S.Schema<ListEcommerceStoreOrdersV1RequestPaymentStatusList>;
 
 export type ListEcommerceStoreOrdersV1RequestFulfillmentStatusItem =
   | "not_fulfilled"
@@ -11823,9 +11788,8 @@ export const ListEcommerceStoreOrdersV1RequestFulfillmentStatusItem = S.String;
 export type ListEcommerceStoreOrdersV1RequestFulfillmentStatusList = Array<
   ListEcommerceStoreOrdersV1RequestFulfillmentStatusItem | (string & {})
 >;
-export const ListEcommerceStoreOrdersV1RequestFulfillmentStatusList = /*@__PURE__*/ S.Array(
-  ListEcommerceStoreOrdersV1RequestFulfillmentStatusItem,
-) as any as S.Schema<ListEcommerceStoreOrdersV1RequestFulfillmentStatusList>;
+export const ListEcommerceStoreOrdersV1RequestFulfillmentStatusList =
+  CreateMailWebhookV1RequestEventsList as any as S.Schema<ListEcommerceStoreOrdersV1RequestFulfillmentStatusList>;
 
 export interface ListEcommerceStoreOrdersV1Request {
   /** The ID of the store to list orders for. */
@@ -12671,9 +12635,8 @@ export const ListHostingNodeJSBuildsV1RequestStatesItem = S.String;
 export type ListHostingNodeJSBuildsV1RequestStatesList = Array<
   ListHostingNodeJSBuildsV1RequestStatesItem | (string & {})
 >;
-export const ListHostingNodeJSBuildsV1RequestStatesList = /*@__PURE__*/ S.Array(
-  ListHostingNodeJSBuildsV1RequestStatesItem,
-) as any as S.Schema<ListHostingNodeJSBuildsV1RequestStatesList>;
+export const ListHostingNodeJSBuildsV1RequestStatesList =
+  CreateMailWebhookV1RequestEventsList as any as S.Schema<ListHostingNodeJSBuildsV1RequestStatesList>;
 
 export interface ListHostingNodeJSBuildsV1Request {
   username: string;
@@ -12782,9 +12745,8 @@ export const ListHostingNodeJsVulnerabilitiesV1RequestSeveritiesItem = S.String;
 export type ListHostingNodeJsVulnerabilitiesV1RequestSeveritiesList = Array<
   ListHostingNodeJsVulnerabilitiesV1RequestSeveritiesItem | (string & {})
 >;
-export const ListHostingNodeJsVulnerabilitiesV1RequestSeveritiesList = /*@__PURE__*/ S.Array(
-  ListHostingNodeJsVulnerabilitiesV1RequestSeveritiesItem,
-) as any as S.Schema<ListHostingNodeJsVulnerabilitiesV1RequestSeveritiesList>;
+export const ListHostingNodeJsVulnerabilitiesV1RequestSeveritiesList =
+  CreateMailWebhookV1RequestEventsList as any as S.Schema<ListHostingNodeJsVulnerabilitiesV1RequestSeveritiesList>;
 
 export interface ListHostingNodeJsVulnerabilitiesV1Request {
   username: string;
@@ -12895,9 +12857,8 @@ export const ListHostingOrdersV1RequestStatusesItem = S.String;
 export type ListHostingOrdersV1RequestStatusesList = Array<
   ListHostingOrdersV1RequestStatusesItem | (string & {})
 >;
-export const ListHostingOrdersV1RequestStatusesList = /*@__PURE__*/ S.Array(
-  ListHostingOrdersV1RequestStatusesItem,
-) as any as S.Schema<ListHostingOrdersV1RequestStatusesList>;
+export const ListHostingOrdersV1RequestStatusesList =
+  CreateMailWebhookV1RequestEventsList as any as S.Schema<ListHostingOrdersV1RequestStatusesList>;
 
 export type ListHostingOrdersV1RequestOrderIdsList = Array<number>;
 export const ListHostingOrdersV1RequestOrderIdsList =
@@ -13389,9 +13350,8 @@ export const ListHostingWebsitesV1RequestWebsiteTypesItem = S.String;
 export type ListHostingWebsitesV1RequestWebsiteTypesList = Array<
   ListHostingWebsitesV1RequestWebsiteTypesItem | (string & {})
 >;
-export const ListHostingWebsitesV1RequestWebsiteTypesList = /*@__PURE__*/ S.Array(
-  ListHostingWebsitesV1RequestWebsiteTypesItem,
-) as any as S.Schema<ListHostingWebsitesV1RequestWebsiteTypesList>;
+export const ListHostingWebsitesV1RequestWebsiteTypesList =
+  CreateMailWebhookV1RequestEventsList as any as S.Schema<ListHostingWebsitesV1RequestWebsiteTypesList>;
 
 export interface ListHostingWebsitesV1Request {
   /** Page number */
@@ -16021,9 +15981,8 @@ export const MailV1WebhooksWebhookSecretResourceEventsItem = S.String;
 /** Events that trigger this webhook */
 export type MailV1WebhooksWebhookSecretResourceEventsList =
   Array<MailV1WebhooksWebhookSecretResourceEventsItem>;
-export const MailV1WebhooksWebhookSecretResourceEventsList = /*@__PURE__*/ S.Array(
-  MailV1WebhooksWebhookSecretResourceEventsItem,
-) as any as S.Schema<MailV1WebhooksWebhookSecretResourceEventsList>;
+export const MailV1WebhooksWebhookSecretResourceEventsList =
+  CreateMailWebhookV1RequestEventsList as any as S.Schema<MailV1WebhooksWebhookSecretResourceEventsList>;
 
 /** Current status of the webhook */
 export type MailV1WebhooksWebhookSecretResourceStatus = "active" | "disabled" | "paused";
@@ -16048,22 +16007,8 @@ export interface MailV1WebhooksWebhookSecretResource {
   created_at?: string;
   updated_at?: string;
 }
-export const MailV1WebhooksWebhookSecretResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    mailbox: S.optional(MailV1WebhooksWebhookMailboxResource),
-    name: S.optional(S.String),
-    description: S.optional(S.NullOr(S.String)),
-    events: S.optional(MailV1WebhooksWebhookSecretResourceEventsList),
-    status: S.optional(MailV1WebhooksWebhookSecretResourceStatus),
-    url: S.optional(S.String),
-    secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    created_at: S.optional(S.String),
-    updated_at: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "MailV1WebhooksWebhookSecretResource",
-}) as any as S.Schema<MailV1WebhooksWebhookSecretResource>;
+export const MailV1WebhooksWebhookSecretResource =
+  MailV1WebhooksWebhookCreatedResource as any as S.Schema<MailV1WebhooksWebhookSecretResource>;
 
 export interface RemoveReachAContactFromATagV1Request {
   /** Profile uuid parameter */
@@ -17714,30 +17659,13 @@ export interface EcommerceV1SalesChannelSalesChannelUpdateResourceSalesChannel {
   domain?: string | null;
 }
 export const EcommerceV1SalesChannelSalesChannelUpdateResourceSalesChannel =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      type: S.optional(EcommerceV1SalesChannelSalesChannelUpdateResourceSalesChannelType),
-      is_primary: S.optional(S.Boolean),
-      is_active: S.optional(S.Boolean),
-      external_id: S.optional(S.NullOr(S.String)),
-      name: S.optional(S.NullOr(S.String)),
-      domain: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "EcommerceV1SalesChannelSalesChannelUpdateResourceSalesChannel",
-  }) as any as S.Schema<EcommerceV1SalesChannelSalesChannelUpdateResourceSalesChannel>;
+  EcommerceV1SalesChannelSalesChannelCreationResourceSalesChannel as any as S.Schema<EcommerceV1SalesChannelSalesChannelUpdateResourceSalesChannel>;
 
 export interface EcommerceV1SalesChannelSalesChannelUpdateResource {
   sales_channel?: EcommerceV1SalesChannelSalesChannelUpdateResourceSalesChannel;
 }
-export const EcommerceV1SalesChannelSalesChannelUpdateResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sales_channel: S.optional(EcommerceV1SalesChannelSalesChannelUpdateResourceSalesChannel),
-  }),
-).annotate({
-  identifier: "EcommerceV1SalesChannelSalesChannelUpdateResource",
-}) as any as S.Schema<EcommerceV1SalesChannelSalesChannelUpdateResource>;
+export const EcommerceV1SalesChannelSalesChannelUpdateResource =
+  EcommerceV1SalesChannelSalesChannelCreationResource as any as S.Schema<EcommerceV1SalesChannelSalesChannelUpdateResource>;
 
 export interface UpdateHostingGitAutoDeploymentSettingsV1Request {
   username: string;
@@ -18092,9 +18020,8 @@ export const UpdateMailWebhookV1RequestEventsItem = S.String;
 export type UpdateMailWebhookV1RequestEventsList = Array<
   UpdateMailWebhookV1RequestEventsItem | (string & {})
 >;
-export const UpdateMailWebhookV1RequestEventsList = /*@__PURE__*/ S.Array(
-  UpdateMailWebhookV1RequestEventsItem,
-) as any as S.Schema<UpdateMailWebhookV1RequestEventsList>;
+export const UpdateMailWebhookV1RequestEventsList =
+  CreateMailWebhookV1RequestEventsList as any as S.Schema<UpdateMailWebhookV1RequestEventsList>;
 
 /** New status for the webhook */
 export type UpdateMailWebhookV1RequestStatus = "active" | "disabled" | "paused";
@@ -18315,22 +18242,14 @@ export interface UpdateReachAProfileSegmentV1RequestConditionsItem {
   /** Always a string, including for numeric and date comparisons */
   value: string;
 }
-export const UpdateReachAProfileSegmentV1RequestConditionsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attribute: S.String,
-    operator: UpdateReachAProfileSegmentV1RequestConditionsItemOperator,
-    value: S.String,
-  }),
-).annotate({
-  identifier: "UpdateReachAProfileSegmentV1RequestConditionsItem",
-}) as any as S.Schema<UpdateReachAProfileSegmentV1RequestConditionsItem>;
+export const UpdateReachAProfileSegmentV1RequestConditionsItem =
+  CreateReachAProfileSegmentV1RequestConditionsItem as any as S.Schema<UpdateReachAProfileSegmentV1RequestConditionsItem>;
 
 /** Replaces the existing conditions entirely. Omit to keep the current ones. */
 export type UpdateReachAProfileSegmentV1RequestConditionsList =
   Array<UpdateReachAProfileSegmentV1RequestConditionsItem>;
-export const UpdateReachAProfileSegmentV1RequestConditionsList = /*@__PURE__*/ S.Array(
-  UpdateReachAProfileSegmentV1RequestConditionsItem,
-) as any as S.Schema<UpdateReachAProfileSegmentV1RequestConditionsList>;
+export const UpdateReachAProfileSegmentV1RequestConditionsList =
+  CreateReachAProfileSegmentV1RequestConditionsList as any as S.Schema<UpdateReachAProfileSegmentV1RequestConditionsList>;
 
 /** How to combine multiple conditions. Required when conditions are given. */
 export type UpdateReachAProfileSegmentV1RequestLogic = "AND" | "OR";

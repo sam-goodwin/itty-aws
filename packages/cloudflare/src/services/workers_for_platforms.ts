@@ -383,15 +383,7 @@ export interface DispatchNamespacesScriptsSecretsBulkUpdateResultValueSecretText
   type: DispatchNamespacesScriptsSecretsBulkUpdateResultValueSecretTextType;
 }
 export const DispatchNamespacesScriptsSecretsBulkUpdateResultValueSecretText =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      text: S.String,
-      type: DispatchNamespacesScriptsSecretsBulkUpdateResultValueSecretTextType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSecretsBulkUpdateResultValueSecretText",
-  }) as any as S.Schema<DispatchNamespacesScriptsSecretsBulkUpdateResultValueSecretText>;
+  DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValueSecretText as any as S.Schema<DispatchNamespacesScriptsSecretsBulkUpdateResultValueSecretText>;
 
 export type DispatchNamespacesScriptsSecretsBulkUpdateResultValueSecretKeyFormat =
   | "raw"
@@ -417,9 +409,7 @@ export const DispatchNamespacesScriptsSecretsBulkUpdateResultValueSecretKeyUsage
 export type DispatchNamespacesScriptsSecretsBulkUpdateResultValueSecretKeyUsagesList =
   Array<DispatchNamespacesScriptsSecretsBulkUpdateResultValueSecretKeyUsagesItem>;
 export const DispatchNamespacesScriptsSecretsBulkUpdateResultValueSecretKeyUsagesList =
-  /*@__PURE__*/ S.Array(
-    DispatchNamespacesScriptsSecretsBulkUpdateResultValueSecretKeyUsagesItem,
-  ) as any as S.Schema<DispatchNamespacesScriptsSecretsBulkUpdateResultValueSecretKeyUsagesList>;
+  DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValueSecretKeyUsagesList as any as S.Schema<DispatchNamespacesScriptsSecretsBulkUpdateResultValueSecretKeyUsagesList>;
 
 export interface DispatchNamespacesScriptsSecretsBulkUpdateResultValueSecretKey {
   /** Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
@@ -1866,15 +1856,8 @@ export interface DispatchNamespacesScriptsBindingsGetResultItemArtifacts {
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsBindingsGetResultItemArtifactsType;
 }
-export const DispatchNamespacesScriptsBindingsGetResultItemArtifacts = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    namespace: S.String,
-    type: DispatchNamespacesScriptsBindingsGetResultItemArtifactsType,
-  }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsBindingsGetResultItemArtifacts",
-}) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemArtifacts>;
+export const DispatchNamespacesScriptsBindingsGetResultItemArtifacts =
+  DispatchNamespacesScriptsBindingsGetResultItemMessaging as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemArtifacts>;
 
 export type DispatchNamespacesScriptsBindingsGetResultItemAssetsType = "assets";
 export const DispatchNamespacesScriptsBindingsGetResultItemAssetsType = S.String;
@@ -1885,14 +1868,8 @@ export interface DispatchNamespacesScriptsBindingsGetResultItemAssets {
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsBindingsGetResultItemAssetsType;
 }
-export const DispatchNamespacesScriptsBindingsGetResultItemAssets = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    type: DispatchNamespacesScriptsBindingsGetResultItemAssetsType,
-  }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsBindingsGetResultItemAssets",
-}) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemAssets>;
+export const DispatchNamespacesScriptsBindingsGetResultItemAssets =
+  DispatchNamespacesScriptsBindingsGetResultItemAI as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemAssets>;
 
 export type DispatchNamespacesScriptsBindingsGetResultItemBrowserType = "browser";
 export const DispatchNamespacesScriptsBindingsGetResultItemBrowserType = S.String;
@@ -1903,14 +1880,8 @@ export interface DispatchNamespacesScriptsBindingsGetResultItemBrowser {
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsBindingsGetResultItemBrowserType;
 }
-export const DispatchNamespacesScriptsBindingsGetResultItemBrowser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    type: DispatchNamespacesScriptsBindingsGetResultItemBrowserType,
-  }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsBindingsGetResultItemBrowser",
-}) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemBrowser>;
+export const DispatchNamespacesScriptsBindingsGetResultItemBrowser =
+  DispatchNamespacesScriptsBindingsGetResultItemAI as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemBrowser>;
 
 export type DispatchNamespacesScriptsBindingsGetResultItemD1Type = "d1";
 export const DispatchNamespacesScriptsBindingsGetResultItemD1Type = S.String;
@@ -2134,14 +2105,8 @@ export interface DispatchNamespacesScriptsBindingsGetResultItemImages {
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsBindingsGetResultItemImagesType;
 }
-export const DispatchNamespacesScriptsBindingsGetResultItemImages = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    type: DispatchNamespacesScriptsBindingsGetResultItemImagesType,
-  }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsBindingsGetResultItemImages",
-}) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemImages>;
+export const DispatchNamespacesScriptsBindingsGetResultItemImages =
+  DispatchNamespacesScriptsBindingsGetResultItemAI as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemImages>;
 
 export type DispatchNamespacesScriptsBindingsGetResultItemJsonType = "json";
 export const DispatchNamespacesScriptsBindingsGetResultItemJsonType = S.String;
@@ -2195,14 +2160,8 @@ export interface DispatchNamespacesScriptsBindingsGetResultItemMedia {
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsBindingsGetResultItemMediaType;
 }
-export const DispatchNamespacesScriptsBindingsGetResultItemMedia = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    type: DispatchNamespacesScriptsBindingsGetResultItemMediaType,
-  }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsBindingsGetResultItemMedia",
-}) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemMedia>;
+export const DispatchNamespacesScriptsBindingsGetResultItemMedia =
+  DispatchNamespacesScriptsBindingsGetResultItemAI as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemMedia>;
 
 export type DispatchNamespacesScriptsBindingsGetResultItemMTLSCertificateType = "mtls_certificate";
 export const DispatchNamespacesScriptsBindingsGetResultItemMTLSCertificateType = S.String;
@@ -2491,15 +2450,8 @@ export interface DispatchNamespacesScriptsBindingsGetResultItemTextBlob {
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsBindingsGetResultItemTextBlobType;
 }
-export const DispatchNamespacesScriptsBindingsGetResultItemTextBlob = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    part: S.String,
-    type: DispatchNamespacesScriptsBindingsGetResultItemTextBlobType,
-  }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsBindingsGetResultItemTextBlob",
-}) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemTextBlob>;
+export const DispatchNamespacesScriptsBindingsGetResultItemTextBlob =
+  DispatchNamespacesScriptsBindingsGetResultItemDataBlob as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemTextBlob>;
 
 export type DispatchNamespacesScriptsBindingsGetResultItemVectorizeType = "vectorize";
 export const DispatchNamespacesScriptsBindingsGetResultItemVectorizeType = S.String;
@@ -2612,9 +2564,7 @@ export const DispatchNamespacesScriptsBindingsGetResultItemSecretKeyUsagesItem =
 export type DispatchNamespacesScriptsBindingsGetResultItemSecretKeyUsagesList =
   Array<DispatchNamespacesScriptsBindingsGetResultItemSecretKeyUsagesItem>;
 export const DispatchNamespacesScriptsBindingsGetResultItemSecretKeyUsagesList =
-  /*@__PURE__*/ S.Array(
-    DispatchNamespacesScriptsBindingsGetResultItemSecretKeyUsagesItem,
-  ) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemSecretKeyUsagesList>;
+  DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValueSecretKeyUsagesList as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemSecretKeyUsagesList>;
 
 export interface DispatchNamespacesScriptsBindingsGetResultItemSecretKey {
   /** Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
@@ -2989,15 +2939,8 @@ export interface DispatchNamespacesScriptsSecretsGetResultSecretText {
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSecretsGetResultSecretTextType;
 }
-export const DispatchNamespacesScriptsSecretsGetResultSecretText = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    text: S.String,
-    type: DispatchNamespacesScriptsSecretsGetResultSecretTextType,
-  }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsSecretsGetResultSecretText",
-}) as any as S.Schema<DispatchNamespacesScriptsSecretsGetResultSecretText>;
+export const DispatchNamespacesScriptsSecretsGetResultSecretText =
+  DispatchNamespacesScriptsBindingsGetResultItemPlainText as any as S.Schema<DispatchNamespacesScriptsSecretsGetResultSecretText>;
 
 export type DispatchNamespacesScriptsSecretsGetResultSecretKeyFormat =
   | "raw"
@@ -3163,15 +3106,7 @@ export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemAISearc
   type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemAISearchNamespaceType;
 }
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemAISearchNamespace =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      namespace: S.String,
-      type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemAISearchNamespaceType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsGetResponseBindingsItemAISearchNamespace",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemAISearchNamespace>;
+  DispatchNamespacesScriptsBindingsGetResultItemAISearchNamespace as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemAISearchNamespace>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemMessagingType = "messaging";
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemMessagingType = S.String;
@@ -3185,15 +3120,7 @@ export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemMessagi
   type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemMessagingType;
 }
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemMessaging =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      namespace: S.String,
-      type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemMessagingType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsGetResponseBindingsItemMessaging",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemMessaging>;
+  DispatchNamespacesScriptsBindingsGetResultItemAISearchNamespace as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemMessaging>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemAnalyticsEngineType =
   "analytics_engine";
@@ -3208,15 +3135,7 @@ export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemAnalyti
   type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemAnalyticsEngineType;
 }
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemAnalyticsEngine =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dataset: S.String,
-      name: S.String,
-      type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemAnalyticsEngineType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsGetResponseBindingsItemAnalyticsEngine",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemAnalyticsEngine>;
+  DispatchNamespacesScriptsBindingsGetResultItemAnalyticsEngine as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemAnalyticsEngine>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemArtifactsType = "artifacts";
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemArtifactsType = S.String;
@@ -3230,15 +3149,7 @@ export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemArtifac
   type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemArtifactsType;
 }
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemArtifacts =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      namespace: S.String,
-      type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemArtifactsType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsGetResponseBindingsItemArtifacts",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemArtifacts>;
+  DispatchNamespacesScriptsBindingsGetResultItemAISearchNamespace as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemArtifacts>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemAssetsType = "assets";
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemAssetsType = S.String;
@@ -3250,14 +3161,7 @@ export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemAssets 
   type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemAssetsType;
 }
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemAssets =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemAssetsType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsGetResponseBindingsItemAssets",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemAssets>;
+  DispatchNamespacesScriptsBindingsGetResultItemVersionMetadata as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemAssets>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemBrowserType = "browser";
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemBrowserType = S.String;
@@ -3269,14 +3173,7 @@ export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemBrowser
   type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemBrowserType;
 }
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemBrowser =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemBrowserType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsGetResponseBindingsItemBrowser",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemBrowser>;
+  DispatchNamespacesScriptsBindingsGetResultItemVersionMetadata as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemBrowser>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemD1Type = "d1";
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemD1Type = S.String;
@@ -3413,19 +3310,7 @@ export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemDurable
   scriptName?: string | null;
 }
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemDurableObjectNamespace =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemDurableObjectNamespaceType,
-      className: S.optional(S.NullOr(S.String).pipe(T.Body("class_name"))),
-      dispatchNamespace: S.optional(S.NullOr(S.String).pipe(T.Body("dispatch_namespace"))),
-      environment: S.optional(S.NullOr(S.String)),
-      namespaceId: S.optional(S.NullOr(S.String).pipe(T.Body("namespace_id"))),
-      scriptName: S.optional(S.NullOr(S.String).pipe(T.Body("script_name"))),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsGetResponseBindingsItemDurableObjectNamespace",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemDurableObjectNamespace>;
+  DispatchNamespacesScriptsBindingsGetResultItemDurableObjectNamespace as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemDurableObjectNamespace>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemHyperdriveType = "hyperdrive";
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemHyperdriveType = S.String;
@@ -3484,14 +3369,7 @@ export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemImages 
   type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemImagesType;
 }
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemImages =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemImagesType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsGetResponseBindingsItemImages",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemImages>;
+  DispatchNamespacesScriptsBindingsGetResultItemVersionMetadata as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemImages>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemJsonType = "json";
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemJsonType = S.String;
@@ -3548,14 +3426,7 @@ export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemMedia {
   type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemMediaType;
 }
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemMedia =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemMediaType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsGetResponseBindingsItemMedia",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemMedia>;
+  DispatchNamespacesScriptsBindingsGetResultItemVersionMetadata as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemMedia>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemMTLSCertificateType =
   "mtls_certificate";
@@ -3570,15 +3441,7 @@ export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemMTLSCer
   type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemMTLSCertificateType;
 }
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemMTLSCertificate =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      certificateId: S.String.pipe(T.Body("certificate_id")),
-      name: S.String,
-      type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemMTLSCertificateType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsGetResponseBindingsItemMTLSCertificate",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemMTLSCertificate>;
+  DispatchNamespacesScriptsBindingsGetResultItemMTLSCertificate as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemMTLSCertificate>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemPlainTextType = "plain_text";
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemPlainTextType = S.String;
@@ -3592,15 +3455,7 @@ export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemPlainTe
   type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemPlainTextType;
 }
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemPlainText =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      text: S.String,
-      type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemPlainTextType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsGetResponseBindingsItemPlainText",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemPlainText>;
+  DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValueSecretText as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemPlainText>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemPipelinesType = "pipelines";
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemPipelinesType = S.String;
@@ -3745,15 +3600,7 @@ export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretT
   type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretTextType;
 }
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretText =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      text: S.String,
-      type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretTextType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretText",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretText>;
+  DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValueSecretText as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretText>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemSendEmailType = "send_email";
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemSendEmailType = S.String;
@@ -3841,15 +3688,7 @@ export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemTextBlo
   type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemTextBlobType;
 }
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemTextBlob =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      part: S.String,
-      type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemTextBlobType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsGetResponseBindingsItemTextBlob",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemTextBlob>;
+  DispatchNamespacesScriptsSettingsGetResponseBindingsItemDataBlob as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemTextBlob>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemVectorizeType = "vectorize";
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemVectorizeType = S.String;
@@ -3884,14 +3723,7 @@ export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemVersion
   type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemVersionMetadataType;
 }
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemVersionMetadata =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemVersionMetadataType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsGetResponseBindingsItemVersionMetadata",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemVersionMetadata>;
+  DispatchNamespacesScriptsBindingsGetResultItemVersionMetadata as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemVersionMetadata>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretsStoreSecretType =
   "secrets_store_secret";
@@ -3909,16 +3741,7 @@ export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecrets
   type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretsStoreSecretType;
 }
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretsStoreSecret =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      secretName: S.String.pipe(T.Body("secret_name")),
-      storeId: S.String.pipe(T.Body("store_id")),
-      type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretsStoreSecretType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretsStoreSecret",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretsStoreSecret>;
+  DispatchNamespacesScriptsBindingsGetResultItemSecretsStoreSecret as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretsStoreSecret>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemFlagshipType = "flagship";
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemFlagshipType = S.String;
@@ -3966,9 +3789,7 @@ export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretKeyUs
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretKeyUsagesList =
   Array<DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretKeyUsagesItem>;
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretKeyUsagesList =
-  /*@__PURE__*/ S.Array(
-    DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretKeyUsagesItem,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretKeyUsagesList>;
+  DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValueSecretKeyUsagesList as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretKeyUsagesList>;
 
 export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretKey {
   /** Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
@@ -3987,19 +3808,7 @@ export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretK
   keyJwk?: unknown | null;
 }
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretKey =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      algorithm: S.Unknown,
-      format: DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretKeyFormat,
-      name: S.String,
-      type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretKeyType,
-      usages: DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretKeyUsagesList,
-      keyBase64: S.optional(S.NullOr(S.String).pipe(T.Body("key_base64"))),
-      keyJwk: S.optional(S.NullOr(S.Unknown).pipe(T.Body("key_jwk"))),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretKey",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretKey>;
+  DispatchNamespacesScriptsSecretsBulkUpdateResultValueSecretKey as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretKey>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemWorkflowType = "workflow";
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemWorkflowType = S.String;
@@ -4041,15 +3850,7 @@ export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemWasmMod
   type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemWasmModuleType;
 }
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemWasmModule =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      part: S.String,
-      type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemWasmModuleType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsGetResponseBindingsItemWasmModule",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemWasmModule>;
+  DispatchNamespacesScriptsSettingsGetResponseBindingsItemDataBlob as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemWasmModule>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemVPCServiceType = "vpc_service";
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemVPCServiceType = S.String;
@@ -4359,16 +4160,7 @@ export interface DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkers
   type: DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectDeletedExportType;
 }
 export const DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectDeletedExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state:
-        DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectDeletedExportState,
-      type: DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectDeletedExportType,
-    }),
-  ).annotate({
-    identifier:
-      "DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectDeletedExport",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectDeletedExport>;
+  DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectDeletedExport as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectDeletedExport>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectRenamedExportState =
   "renamed";
@@ -4389,17 +4181,7 @@ export interface DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkers
   type: DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectRenamedExportType;
 }
 export const DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectRenamedExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      renamedTo: S.String.pipe(T.Body("renamed_to")),
-      state:
-        DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectRenamedExportState,
-      type: DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectRenamedExportType,
-    }),
-  ).annotate({
-    identifier:
-      "DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectRenamedExport",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectRenamedExport>;
+  DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectRenamedExport as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectRenamedExport>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectTransferredExportState =
   "transferred";
@@ -4420,17 +4202,7 @@ export interface DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkers
   type: DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectTransferredExportType;
 }
 export const DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectTransferredExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state:
-        DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectTransferredExportState,
-      transferredTo: S.String.pipe(T.Body("transferred_to")),
-      type: DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectTransferredExportType,
-    }),
-  ).annotate({
-    identifier:
-      "DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectTransferredExport",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectTransferredExport>;
+  DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectTransferredExport as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectTransferredExport>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectExpectingTransferExportState =
   "expecting-transfer";
@@ -4461,20 +4233,7 @@ export interface DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkers
   container?: string | null;
 }
 export const DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectExpectingTransferExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state:
-        DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectExpectingTransferExportState,
-      storage:
-        DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectExpectingTransferExportStorage,
-      transferFrom: S.String.pipe(T.Body("transfer_from")),
-      type: DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectExpectingTransferExportType,
-      container: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier:
-      "DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectExpectingTransferExport",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectExpectingTransferExport>;
+  DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectExpectingTransferExport as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectExpectingTransferExport>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseExportsValue =
   | DispatchNamespacesScriptsSettingsGetResponseExportsValueWorker
@@ -5527,16 +5286,8 @@ export interface DispatchNamespacesScriptsSecretsListResultItemSecretText {
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSecretsListResultItemSecretTextType;
 }
-export const DispatchNamespacesScriptsSecretsListResultItemSecretText = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      text: S.String,
-      type: DispatchNamespacesScriptsSecretsListResultItemSecretTextType,
-    }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsSecretsListResultItemSecretText",
-}) as any as S.Schema<DispatchNamespacesScriptsSecretsListResultItemSecretText>;
+export const DispatchNamespacesScriptsSecretsListResultItemSecretText =
+  DispatchNamespacesScriptsBindingsGetResultItemSecretText as any as S.Schema<DispatchNamespacesScriptsSecretsListResultItemSecretText>;
 
 export type DispatchNamespacesScriptsSecretsListResultItemSecretKeyFormat =
   | "raw"
@@ -5562,9 +5313,7 @@ export const DispatchNamespacesScriptsSecretsListResultItemSecretKeyUsagesItem =
 export type DispatchNamespacesScriptsSecretsListResultItemSecretKeyUsagesList =
   Array<DispatchNamespacesScriptsSecretsListResultItemSecretKeyUsagesItem>;
 export const DispatchNamespacesScriptsSecretsListResultItemSecretKeyUsagesList =
-  /*@__PURE__*/ S.Array(
-    DispatchNamespacesScriptsSecretsListResultItemSecretKeyUsagesItem,
-  ) as any as S.Schema<DispatchNamespacesScriptsSecretsListResultItemSecretKeyUsagesList>;
+  DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValueSecretKeyUsagesList as any as S.Schema<DispatchNamespacesScriptsSecretsListResultItemSecretKeyUsagesList>;
 
 export interface DispatchNamespacesScriptsSecretsListResultItemSecretKey {
   /** Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
@@ -5582,19 +5331,8 @@ export interface DispatchNamespacesScriptsSecretsListResultItemSecretKey {
   /** Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk". */
   keyJwk?: unknown | null;
 }
-export const DispatchNamespacesScriptsSecretsListResultItemSecretKey = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    algorithm: S.Unknown,
-    format: DispatchNamespacesScriptsSecretsListResultItemSecretKeyFormat,
-    name: S.String,
-    type: DispatchNamespacesScriptsSecretsListResultItemSecretKeyType,
-    usages: DispatchNamespacesScriptsSecretsListResultItemSecretKeyUsagesList,
-    keyBase64: S.optional(S.NullOr(S.String).pipe(T.Body("key_base64"))),
-    keyJwk: S.optional(S.NullOr(S.Unknown).pipe(T.Body("key_jwk"))),
-  }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsSecretsListResultItemSecretKey",
-}) as any as S.Schema<DispatchNamespacesScriptsSecretsListResultItemSecretKey>;
+export const DispatchNamespacesScriptsSecretsListResultItemSecretKey =
+  DispatchNamespacesScriptsBindingsGetResultItemSecretKey as any as S.Schema<DispatchNamespacesScriptsSecretsListResultItemSecretKey>;
 
 export type DispatchNamespacesScriptsSecretsListResultItem =
   | DispatchNamespacesScriptsSecretsListResultItemSecretText
@@ -5685,14 +5423,7 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsIte
   type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemAIType;
 }
 export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemAI =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemAIType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemAI",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemAI>;
+  DispatchNamespacesScriptsBindingsGetResultItemVersionMetadata as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemAI>;
 
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemAISearchType =
   "ai_search";
@@ -5735,15 +5466,7 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsIte
   type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemAISearchNamespaceType;
 }
 export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemAISearchNamespace =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      namespace: S.String,
-      type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemAISearchNamespaceType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemAISearchNamespace",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemAISearchNamespace>;
+  DispatchNamespacesScriptsBindingsGetResultItemAISearchNamespace as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemAISearchNamespace>;
 
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemMessagingType =
   "messaging";
@@ -5759,15 +5482,7 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsIte
   type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemMessagingType;
 }
 export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemMessaging =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      namespace: S.String,
-      type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemMessagingType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemMessaging",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemMessaging>;
+  DispatchNamespacesScriptsBindingsGetResultItemAISearchNamespace as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemMessaging>;
 
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemAnalyticsEngineType =
   "analytics_engine";
@@ -5783,15 +5498,7 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsIte
   type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemAnalyticsEngineType;
 }
 export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemAnalyticsEngine =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dataset: S.String,
-      name: S.String,
-      type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemAnalyticsEngineType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemAnalyticsEngine",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemAnalyticsEngine>;
+  DispatchNamespacesScriptsBindingsGetResultItemAnalyticsEngine as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemAnalyticsEngine>;
 
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemArtifactsType =
   "artifacts";
@@ -5807,15 +5514,7 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsIte
   type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemArtifactsType;
 }
 export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemArtifacts =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      namespace: S.String,
-      type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemArtifactsType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemArtifacts",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemArtifacts>;
+  DispatchNamespacesScriptsBindingsGetResultItemAISearchNamespace as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemArtifacts>;
 
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemAssetsType = "assets";
 export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemAssetsType = S.String;
@@ -5827,14 +5526,7 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsIte
   type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemAssetsType;
 }
 export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemAssets =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemAssetsType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemAssets",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemAssets>;
+  DispatchNamespacesScriptsBindingsGetResultItemVersionMetadata as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemAssets>;
 
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemBrowserType = "browser";
 export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemBrowserType = S.String;
@@ -5846,14 +5538,7 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsIte
   type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemBrowserType;
 }
 export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemBrowser =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemBrowserType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemBrowser",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemBrowser>;
+  DispatchNamespacesScriptsBindingsGetResultItemVersionMetadata as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemBrowser>;
 
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemD1Type = "d1";
 export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemD1Type = S.String;
@@ -5894,15 +5579,7 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsIte
   type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemDataBlobType;
 }
 export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemDataBlob =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      part: S.String,
-      type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemDataBlobType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemDataBlob",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemDataBlob>;
+  DispatchNamespacesScriptsSettingsGetResponseBindingsItemDataBlob as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemDataBlob>;
 
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemDispatchNamespaceType =
   "dispatch_namespace";
@@ -6035,15 +5712,7 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsIte
   type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemHyperdriveType;
 }
 export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemHyperdrive =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      name: S.String,
-      type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemHyperdriveType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemHyperdrive",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemHyperdrive>;
+  DispatchNamespacesScriptsSettingsGetResponseBindingsItemHyperdrive as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemHyperdrive>;
 
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemInheritType = "inherit";
 export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemInheritType = S.String;
@@ -6080,14 +5749,7 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsIte
   type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemImagesType;
 }
 export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemImages =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemImagesType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemImages",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemImages>;
+  DispatchNamespacesScriptsBindingsGetResultItemVersionMetadata as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemImages>;
 
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemJsonType = "json";
 export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemJsonType = S.String;
@@ -6125,15 +5787,7 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsIte
   type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemKVNamespaceType;
 }
 export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemKVNamespace =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      namespaceId: S.String.pipe(T.Body("namespace_id")),
-      type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemKVNamespaceType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemKVNamespace",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemKVNamespace>;
+  DispatchNamespacesScriptsSettingsGetResponseBindingsItemKVNamespace as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemKVNamespace>;
 
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemMediaType = "media";
 export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemMediaType = S.String;
@@ -6145,14 +5799,7 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsIte
   type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemMediaType;
 }
 export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemMedia =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemMediaType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemMedia",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemMedia>;
+  DispatchNamespacesScriptsBindingsGetResultItemVersionMetadata as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemMedia>;
 
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemMTLSCertificateType =
   "mtls_certificate";
@@ -6168,15 +5815,7 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsIte
   type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemMTLSCertificateType;
 }
 export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemMTLSCertificate =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      certificateId: S.String.pipe(T.Body("certificate_id")),
-      name: S.String,
-      type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemMTLSCertificateType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemMTLSCertificate",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemMTLSCertificate>;
+  DispatchNamespacesScriptsBindingsGetResultItemMTLSCertificate as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemMTLSCertificate>;
 
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemPlainTextType =
   "plain_text";
@@ -6192,15 +5831,7 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsIte
   type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemPlainTextType;
 }
 export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemPlainText =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      text: S.String,
-      type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemPlainTextType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemPlainText",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemPlainText>;
+  DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValueSecretText as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemPlainText>;
 
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemPipelinesType =
   "pipelines";
@@ -6216,15 +5847,7 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsIte
   type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemPipelinesType;
 }
 export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemPipelines =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      pipeline: S.String,
-      type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemPipelinesType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemPipelines",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemPipelines>;
+  DispatchNamespacesScriptsSettingsGetResponseBindingsItemPipelines as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemPipelines>;
 
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemK2Type = "k2";
 export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemK2Type = S.String;
@@ -6260,15 +5883,7 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsIte
   type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemQueueType;
 }
 export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemQueue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      queueName: S.String.pipe(T.Body("queue_name")),
-      type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemQueueType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemQueue",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemQueue>;
+  DispatchNamespacesScriptsSettingsGetResponseBindingsItemQueue as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemQueue>;
 
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemRatelimitSimple {
   /** The limit (requests per period). */
@@ -6369,15 +5984,7 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsIte
   type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSecretTextType;
 }
 export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSecretText =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      text: S.String,
-      type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSecretTextType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSecretText",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSecretText>;
+  DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValueSecretText as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSecretText>;
 
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSendEmailType =
   "send_email";
@@ -6469,15 +6076,7 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsIte
   type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemTextBlobType;
 }
 export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemTextBlob =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      part: S.String,
-      type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemTextBlobType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemTextBlob",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemTextBlob>;
+  DispatchNamespacesScriptsSettingsGetResponseBindingsItemDataBlob as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemTextBlob>;
 
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemVectorizeType =
   "vectorize";
@@ -6493,15 +6092,7 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsIte
   type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemVectorizeType;
 }
 export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemVectorize =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      indexName: S.String.pipe(T.Body("index_name")),
-      name: S.String,
-      type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemVectorizeType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemVectorize",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemVectorize>;
+  DispatchNamespacesScriptsSettingsGetResponseBindingsItemVectorize as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemVectorize>;
 
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemVersionMetadataType =
   "version_metadata";
@@ -6515,14 +6106,7 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsIte
   type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemVersionMetadataType;
 }
 export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemVersionMetadata =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemVersionMetadataType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemVersionMetadata",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemVersionMetadata>;
+  DispatchNamespacesScriptsBindingsGetResultItemVersionMetadata as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemVersionMetadata>;
 
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSecretsStoreSecretType =
   "secrets_store_secret";
@@ -6566,15 +6150,7 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsIte
   type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemFlagshipType;
 }
 export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemFlagship =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      appId: S.String.pipe(T.Body("app_id")),
-      name: S.String,
-      type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemFlagshipType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemFlagship",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemFlagship>;
+  DispatchNamespacesScriptsSettingsGetResponseBindingsItemFlagship as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemFlagship>;
 
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSecretKeyFormat =
   | "raw"
@@ -6607,9 +6183,7 @@ export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSecr
     | (string & {})
   >;
 export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSecretKeyUsagesList =
-  /*@__PURE__*/ S.Array(
-    DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSecretKeyUsagesItem,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSecretKeyUsagesList>;
+  DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValueSecretKeyUsagesList as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSecretKeyUsagesList>;
 
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSecretKey {
   /** Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
@@ -6630,19 +6204,7 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsIte
   keyJwk?: unknown;
 }
 export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSecretKey =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      algorithm: S.Unknown,
-      format: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSecretKeyFormat,
-      name: S.String,
-      type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSecretKeyType,
-      usages: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSecretKeyUsagesList,
-      keyBase64: S.optional(S.String.pipe(T.Body("key_base64"))),
-      keyJwk: S.optional(S.Unknown.pipe(T.Body("key_jwk"))),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSecretKey",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSecretKey>;
+  DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValueSecretKey as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSecretKey>;
 
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemWorkflowType =
   "workflow";
@@ -6688,15 +6250,7 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsIte
   type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemWasmModuleType;
 }
 export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemWasmModule =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      part: S.String,
-      type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemWasmModuleType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemWasmModule",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemWasmModule>;
+  DispatchNamespacesScriptsSettingsGetResponseBindingsItemDataBlob as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemWasmModule>;
 
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemVPCServiceType =
   "vpc_service";
@@ -6712,15 +6266,7 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsIte
   type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemVPCServiceType;
 }
 export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemVPCService =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      serviceId: S.String.pipe(T.Body("service_id")),
-      type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemVPCServiceType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemVPCService",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemVPCService>;
+  DispatchNamespacesScriptsSettingsGetResponseBindingsItemVPCService as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemVPCService>;
 
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemVPCNetworkType =
   "vpc_network";
@@ -7028,16 +6574,7 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValu
   type: DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectDeletedExportType;
 }
 export const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectDeletedExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state:
-        DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectDeletedExportState,
-      type: DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectDeletedExportType,
-    }),
-  ).annotate({
-    identifier:
-      "DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectDeletedExport",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectDeletedExport>;
+  DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectDeletedExport as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectDeletedExport>;
 
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectRenamedExportState =
   "renamed";
@@ -7058,17 +6595,7 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValu
   type: DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectRenamedExportType;
 }
 export const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectRenamedExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      renamedTo: S.String.pipe(T.Body("renamed_to")),
-      state:
-        DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectRenamedExportState,
-      type: DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectRenamedExportType,
-    }),
-  ).annotate({
-    identifier:
-      "DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectRenamedExport",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectRenamedExport>;
+  DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectRenamedExport as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectRenamedExport>;
 
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectTransferredExportState =
   "transferred";
@@ -7089,17 +6616,7 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValu
   type: DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectTransferredExportType;
 }
 export const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectTransferredExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state:
-        DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectTransferredExportState,
-      transferredTo: S.String.pipe(T.Body("transferred_to")),
-      type: DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectTransferredExportType,
-    }),
-  ).annotate({
-    identifier:
-      "DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectTransferredExport",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectTransferredExport>;
+  DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectTransferredExport as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectTransferredExport>;
 
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectExpectingTransferExportState =
   "expecting-transfer";
@@ -8122,15 +7639,8 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemAI {
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemAIType;
 }
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemAI = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemAIType,
-    }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsSettingsEditResponseBindingsItemAI",
-}) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemAI>;
+export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemAI =
+  DispatchNamespacesScriptsSettingsGetResponseBindingsItemAI as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemAI>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemAISearchType = "ai_search";
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemAISearchType = S.String;
@@ -8146,16 +7656,7 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemAISear
   namespace?: string | null;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemAISearch =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      instanceName: S.String.pipe(T.Body("instance_name")),
-      name: S.String,
-      type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemAISearchType,
-      namespace: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditResponseBindingsItemAISearch",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemAISearch>;
+  DispatchNamespacesScriptsSettingsGetResponseBindingsItemAISearch as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemAISearch>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemAISearchNamespaceType =
   "ai_search_namespace";
@@ -8171,15 +7672,7 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemAISear
   type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemAISearchNamespaceType;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemAISearchNamespace =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      namespace: S.String,
-      type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemAISearchNamespaceType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditResponseBindingsItemAISearchNamespace",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemAISearchNamespace>;
+  DispatchNamespacesScriptsBindingsGetResultItemAISearchNamespace as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemAISearchNamespace>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemMessagingType = "messaging";
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemMessagingType = S.String;
@@ -8193,15 +7686,7 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemMessag
   type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemMessagingType;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemMessaging =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      namespace: S.String,
-      type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemMessagingType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditResponseBindingsItemMessaging",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemMessaging>;
+  DispatchNamespacesScriptsBindingsGetResultItemAISearchNamespace as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemMessaging>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemAnalyticsEngineType =
   "analytics_engine";
@@ -8217,15 +7702,7 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemAnalyt
   type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemAnalyticsEngineType;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemAnalyticsEngine =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dataset: S.String,
-      name: S.String,
-      type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemAnalyticsEngineType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditResponseBindingsItemAnalyticsEngine",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemAnalyticsEngine>;
+  DispatchNamespacesScriptsBindingsGetResultItemAnalyticsEngine as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemAnalyticsEngine>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemArtifactsType = "artifacts";
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemArtifactsType = S.String;
@@ -8239,15 +7716,7 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemArtifa
   type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemArtifactsType;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemArtifacts =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      namespace: S.String,
-      type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemArtifactsType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditResponseBindingsItemArtifacts",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemArtifacts>;
+  DispatchNamespacesScriptsBindingsGetResultItemAISearchNamespace as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemArtifacts>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemAssetsType = "assets";
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemAssetsType = S.String;
@@ -8259,14 +7728,7 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemAssets
   type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemAssetsType;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemAssets =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemAssetsType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditResponseBindingsItemAssets",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemAssets>;
+  DispatchNamespacesScriptsBindingsGetResultItemVersionMetadata as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemAssets>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemBrowserType = "browser";
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemBrowserType = S.String;
@@ -8278,14 +7740,7 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemBrowse
   type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemBrowserType;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemBrowser =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemBrowserType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditResponseBindingsItemBrowser",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemBrowser>;
+  DispatchNamespacesScriptsBindingsGetResultItemVersionMetadata as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemBrowser>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemD1Type = "d1";
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemD1Type = S.String;
@@ -8300,17 +7755,8 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemD1 {
   /** This property has been renamed to `database_id`. */
   id?: string | null;
 }
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemD1 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      databaseId: S.String.pipe(T.Body("database_id")),
-      name: S.String,
-      type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemD1Type,
-      id: S.optional(S.NullOr(S.String)),
-    }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsSettingsEditResponseBindingsItemD1",
-}) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemD1>;
+export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemD1 =
+  DispatchNamespacesScriptsSettingsGetResponseBindingsItemD1 as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemD1>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemDataBlobType = "data_blob";
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemDataBlobType = S.String;
@@ -8324,15 +7770,7 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemDataBl
   type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemDataBlobType;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemDataBlob =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      part: S.String,
-      type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemDataBlobType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditResponseBindingsItemDataBlob",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemDataBlob>;
+  DispatchNamespacesScriptsSettingsGetResponseBindingsItemDataBlob as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemDataBlob>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemDispatchNamespaceType =
   "dispatch_namespace";
@@ -8425,19 +7863,7 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemDurabl
   scriptName?: string | null;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemDurableObjectNamespace =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemDurableObjectNamespaceType,
-      className: S.optional(S.NullOr(S.String).pipe(T.Body("class_name"))),
-      dispatchNamespace: S.optional(S.NullOr(S.String).pipe(T.Body("dispatch_namespace"))),
-      environment: S.optional(S.NullOr(S.String)),
-      namespaceId: S.optional(S.NullOr(S.String).pipe(T.Body("namespace_id"))),
-      scriptName: S.optional(S.NullOr(S.String).pipe(T.Body("script_name"))),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditResponseBindingsItemDurableObjectNamespace",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemDurableObjectNamespace>;
+  DispatchNamespacesScriptsBindingsGetResultItemDurableObjectNamespace as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemDurableObjectNamespace>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemHyperdriveType = "hyperdrive";
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemHyperdriveType = S.String;
@@ -8451,15 +7877,7 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemHyperd
   type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemHyperdriveType;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemHyperdrive =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      name: S.String,
-      type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemHyperdriveType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditResponseBindingsItemHyperdrive",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemHyperdrive>;
+  DispatchNamespacesScriptsSettingsGetResponseBindingsItemHyperdrive as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemHyperdrive>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemInheritType = "inherit";
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemInheritType = S.String;
@@ -8475,16 +7893,7 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemInheri
   versionId?: string | null;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemInherit =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemInheritType,
-      oldName: S.optional(S.NullOr(S.String).pipe(T.Body("old_name"))),
-      versionId: S.optional(S.NullOr(S.String).pipe(T.Body("version_id"))),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditResponseBindingsItemInherit",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemInherit>;
+  DispatchNamespacesScriptsSettingsGetResponseBindingsItemInherit as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemInherit>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemImagesType = "images";
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemImagesType = S.String;
@@ -8496,14 +7905,7 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemImages
   type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemImagesType;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemImages =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemImagesType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditResponseBindingsItemImages",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemImages>;
+  DispatchNamespacesScriptsBindingsGetResultItemVersionMetadata as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemImages>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemJsonType = "json";
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemJsonType = S.String;
@@ -8517,15 +7919,7 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemJson {
   type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemJsonType;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemJson =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      json: S.Unknown,
-      name: S.String,
-      type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemJsonType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditResponseBindingsItemJson",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemJson>;
+  DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemJson as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemJson>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemKVNamespaceType =
   "kv_namespace";
@@ -8540,15 +7934,7 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemKVName
   type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemKVNamespaceType;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemKVNamespace =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      namespaceId: S.String.pipe(T.Body("namespace_id")),
-      type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemKVNamespaceType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditResponseBindingsItemKVNamespace",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemKVNamespace>;
+  DispatchNamespacesScriptsSettingsGetResponseBindingsItemKVNamespace as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemKVNamespace>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemMediaType = "media";
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemMediaType = S.String;
@@ -8560,14 +7946,7 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemMedia 
   type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemMediaType;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemMedia =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemMediaType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditResponseBindingsItemMedia",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemMedia>;
+  DispatchNamespacesScriptsBindingsGetResultItemVersionMetadata as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemMedia>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemMTLSCertificateType =
   "mtls_certificate";
@@ -8583,15 +7962,7 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemMTLSCe
   type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemMTLSCertificateType;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemMTLSCertificate =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      certificateId: S.String.pipe(T.Body("certificate_id")),
-      name: S.String,
-      type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemMTLSCertificateType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditResponseBindingsItemMTLSCertificate",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemMTLSCertificate>;
+  DispatchNamespacesScriptsBindingsGetResultItemMTLSCertificate as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemMTLSCertificate>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemPlainTextType = "plain_text";
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemPlainTextType = S.String;
@@ -8605,15 +7976,7 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemPlainT
   type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemPlainTextType;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemPlainText =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      text: S.String,
-      type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemPlainTextType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditResponseBindingsItemPlainText",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemPlainText>;
+  DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValueSecretText as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemPlainText>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemPipelinesType = "pipelines";
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemPipelinesType = S.String;
@@ -8627,15 +7990,7 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemPipeli
   type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemPipelinesType;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemPipelines =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      pipeline: S.String,
-      type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemPipelinesType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditResponseBindingsItemPipelines",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemPipelines>;
+  DispatchNamespacesScriptsSettingsGetResponseBindingsItemPipelines as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemPipelines>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemK2Type = "k2";
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemK2Type = S.String;
@@ -8648,16 +8003,8 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemK2 {
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemK2Type;
 }
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemK2 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      stream: S.String,
-      type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemK2Type,
-    }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsSettingsEditResponseBindingsItemK2",
-}) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemK2>;
+export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemK2 =
+  DispatchNamespacesScriptsSettingsGetResponseBindingsItemK2 as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemK2>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemQueueType = "queue";
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemQueueType = S.String;
@@ -8671,15 +8018,7 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemQueue 
   type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemQueueType;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemQueue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      queueName: S.String.pipe(T.Body("queue_name")),
-      type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemQueueType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditResponseBindingsItemQueue",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemQueue>;
+  DispatchNamespacesScriptsSettingsGetResponseBindingsItemQueue as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemQueue>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemRatelimitSimple =
   DispatchNamespacesScriptsBindingsGetResultItemRatelimitSimple;
@@ -8700,16 +8039,7 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemRateli
   type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemRatelimitType;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemRatelimit =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      namespaceId: S.String.pipe(T.Body("namespace_id")),
-      simple: DispatchNamespacesScriptsBindingsGetResultItemRatelimitSimple,
-      type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemRatelimitType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditResponseBindingsItemRatelimit",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemRatelimit>;
+  DispatchNamespacesScriptsSettingsGetResponseBindingsItemRatelimit as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemRatelimit>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemR2BucketType = "r2_bucket";
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemR2BucketType = S.String;
@@ -8733,18 +8063,7 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemR2Buck
   jurisdiction?: DispatchNamespacesScriptsSettingsEditResponseBindingsItemR2BucketJurisdiction | null;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemR2Bucket =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      bucketName: S.String.pipe(T.Body("bucket_name")),
-      name: S.String,
-      type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemR2BucketType,
-      jurisdiction: S.optional(
-        S.NullOr(DispatchNamespacesScriptsSettingsEditResponseBindingsItemR2BucketJurisdiction),
-      ),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditResponseBindingsItemR2Bucket",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemR2Bucket>;
+  DispatchNamespacesScriptsSettingsGetResponseBindingsItemR2Bucket as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemR2Bucket>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretTextType = "secret_text";
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretTextType = S.String;
@@ -8758,15 +8077,7 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecret
   type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretTextType;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretText =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      text: S.String,
-      type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretTextType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretText",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretText>;
+  DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValueSecretText as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretText>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemSendEmailType = "send_email";
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemSendEmailType = S.String;
@@ -8830,17 +8141,7 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemServic
   environment?: string | null;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemService =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      service: S.String,
-      type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemServiceType,
-      entrypoint: S.optional(S.NullOr(S.String)),
-      environment: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditResponseBindingsItemService",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemService>;
+  DispatchNamespacesScriptsSettingsGetResponseBindingsItemService as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemService>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemTextBlobType = "text_blob";
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemTextBlobType = S.String;
@@ -8854,15 +8155,7 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemTextBl
   type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemTextBlobType;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemTextBlob =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      part: S.String,
-      type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemTextBlobType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditResponseBindingsItemTextBlob",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemTextBlob>;
+  DispatchNamespacesScriptsSettingsGetResponseBindingsItemDataBlob as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemTextBlob>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemVectorizeType = "vectorize";
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemVectorizeType = S.String;
@@ -8876,15 +8169,7 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemVector
   type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemVectorizeType;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemVectorize =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      indexName: S.String.pipe(T.Body("index_name")),
-      name: S.String,
-      type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemVectorizeType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditResponseBindingsItemVectorize",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemVectorize>;
+  DispatchNamespacesScriptsSettingsGetResponseBindingsItemVectorize as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemVectorize>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemVersionMetadataType =
   "version_metadata";
@@ -8898,14 +8183,7 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemVersio
   type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemVersionMetadataType;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemVersionMetadata =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemVersionMetadataType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditResponseBindingsItemVersionMetadata",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemVersionMetadata>;
+  DispatchNamespacesScriptsBindingsGetResultItemVersionMetadata as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemVersionMetadata>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretsStoreSecretType =
   "secrets_store_secret";
@@ -8923,16 +8201,7 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecret
   type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretsStoreSecretType;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretsStoreSecret =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      secretName: S.String.pipe(T.Body("secret_name")),
-      storeId: S.String.pipe(T.Body("store_id")),
-      type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretsStoreSecretType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretsStoreSecret",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretsStoreSecret>;
+  DispatchNamespacesScriptsBindingsGetResultItemSecretsStoreSecret as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretsStoreSecret>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemFlagshipType = "flagship";
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemFlagshipType = S.String;
@@ -8946,15 +8215,7 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemFlagsh
   type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemFlagshipType;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemFlagship =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      appId: S.String.pipe(T.Body("app_id")),
-      name: S.String,
-      type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemFlagshipType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditResponseBindingsItemFlagship",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemFlagship>;
+  DispatchNamespacesScriptsSettingsGetResponseBindingsItemFlagship as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemFlagship>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretKeyFormat =
   | "raw"
@@ -8981,9 +8242,7 @@ export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretKeyU
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretKeyUsagesList =
   Array<DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretKeyUsagesItem>;
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretKeyUsagesList =
-  /*@__PURE__*/ S.Array(
-    DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretKeyUsagesItem,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretKeyUsagesList>;
+  DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValueSecretKeyUsagesList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretKeyUsagesList>;
 
 export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretKey {
   /** Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
@@ -9002,19 +8261,7 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecret
   keyJwk?: unknown | null;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretKey =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      algorithm: S.Unknown,
-      format: DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretKeyFormat,
-      name: S.String,
-      type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretKeyType,
-      usages: DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretKeyUsagesList,
-      keyBase64: S.optional(S.NullOr(S.String).pipe(T.Body("key_base64"))),
-      keyJwk: S.optional(S.NullOr(S.Unknown).pipe(T.Body("key_jwk"))),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretKey",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretKey>;
+  DispatchNamespacesScriptsSecretsBulkUpdateResultValueSecretKey as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretKey>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemWorkflowType = "workflow";
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemWorkflowType = S.String;
@@ -9032,17 +8279,7 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemWorkfl
   scriptName?: string | null;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemWorkflow =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemWorkflowType,
-      workflowName: S.String.pipe(T.Body("workflow_name")),
-      className: S.optional(S.NullOr(S.String).pipe(T.Body("class_name"))),
-      scriptName: S.optional(S.NullOr(S.String).pipe(T.Body("script_name"))),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditResponseBindingsItemWorkflow",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemWorkflow>;
+  DispatchNamespacesScriptsSettingsGetResponseBindingsItemWorkflow as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemWorkflow>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemWasmModuleType = "wasm_module";
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemWasmModuleType = S.String;
@@ -9056,15 +8293,7 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemWasmMo
   type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemWasmModuleType;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemWasmModule =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      part: S.String,
-      type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemWasmModuleType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditResponseBindingsItemWasmModule",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemWasmModule>;
+  DispatchNamespacesScriptsSettingsGetResponseBindingsItemDataBlob as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemWasmModule>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemVPCServiceType = "vpc_service";
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemVPCServiceType = S.String;
@@ -9078,15 +8307,7 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemVPCSer
   type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemVPCServiceType;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemVPCService =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      serviceId: S.String.pipe(T.Body("service_id")),
-      type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemVPCServiceType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditResponseBindingsItemVPCService",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemVPCService>;
+  DispatchNamespacesScriptsSettingsGetResponseBindingsItemVPCService as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemVPCService>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemVPCNetworkType = "vpc_network";
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemVPCNetworkType = S.String;
@@ -9108,19 +8329,7 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemVPCNet
   tunnelId?: string | null;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemVPCNetwork =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemVPCNetworkType,
-      identity: S.optional(
-        S.NullOr(DispatchNamespacesScriptsSettingsEditResponseBindingsItemVPCNetworkIdentity),
-      ),
-      networkId: S.optional(S.NullOr(S.String).pipe(T.Body("network_id"))),
-      tunnelId: S.optional(S.NullOr(S.String).pipe(T.Body("tunnel_id"))),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditResponseBindingsItemVPCNetwork",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemVPCNetwork>;
+  DispatchNamespacesScriptsSettingsGetResponseBindingsItemVPCNetwork as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemVPCNetwork>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItem =
   | DispatchNamespacesScriptsSettingsEditResponseBindingsItemAI
@@ -9299,19 +8508,7 @@ export interface DispatchNamespacesScriptsSettingsEditResponseExportsValueWorker
   state?: DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkerState | null;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseExportsValueWorker =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkerType,
-      cache: S.optional(
-        S.NullOr(DispatchNamespacesScriptsGetResponseScriptExportsValueWorkerCache),
-      ),
-      state: S.optional(
-        S.NullOr(DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkerState),
-      ),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditResponseExportsValueWorker",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseExportsValueWorker>;
+  DispatchNamespacesScriptsSettingsGetResponseExportsValueWorker as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseExportsValueWorker>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectExportStorage =
   | "sqlite"
@@ -9340,22 +8537,7 @@ export interface DispatchNamespacesScriptsSettingsEditResponseExportsValueWorker
   state?: DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectExportState | null;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storage:
-        DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectExportStorage,
-      type: DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectExportType,
-      container: S.optional(S.NullOr(S.String)),
-      state: S.optional(
-        S.NullOr(
-          DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectExportState,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectExport",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectExport>;
+  DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectExport as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectExport>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectDeletedExportState =
   "deleted";
@@ -9374,16 +8556,7 @@ export interface DispatchNamespacesScriptsSettingsEditResponseExportsValueWorker
   type: DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectDeletedExportType;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectDeletedExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state:
-        DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectDeletedExportState,
-      type: DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectDeletedExportType,
-    }),
-  ).annotate({
-    identifier:
-      "DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectDeletedExport",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectDeletedExport>;
+  DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectDeletedExport as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectDeletedExport>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectRenamedExportState =
   "renamed";
@@ -9404,17 +8577,7 @@ export interface DispatchNamespacesScriptsSettingsEditResponseExportsValueWorker
   type: DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectRenamedExportType;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectRenamedExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      renamedTo: S.String.pipe(T.Body("renamed_to")),
-      state:
-        DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectRenamedExportState,
-      type: DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectRenamedExportType,
-    }),
-  ).annotate({
-    identifier:
-      "DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectRenamedExport",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectRenamedExport>;
+  DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectRenamedExport as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectRenamedExport>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectTransferredExportState =
   "transferred";
@@ -9435,17 +8598,7 @@ export interface DispatchNamespacesScriptsSettingsEditResponseExportsValueWorker
   type: DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectTransferredExportType;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectTransferredExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state:
-        DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectTransferredExportState,
-      transferredTo: S.String.pipe(T.Body("transferred_to")),
-      type: DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectTransferredExportType,
-    }),
-  ).annotate({
-    identifier:
-      "DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectTransferredExport",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectTransferredExport>;
+  DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectTransferredExport as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectTransferredExport>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectExpectingTransferExportState =
   "expecting-transfer";
@@ -9476,20 +8629,7 @@ export interface DispatchNamespacesScriptsSettingsEditResponseExportsValueWorker
   container?: string | null;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectExpectingTransferExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state:
-        DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectExpectingTransferExportState,
-      storage:
-        DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectExpectingTransferExportStorage,
-      transferFrom: S.String.pipe(T.Body("transfer_from")),
-      type: DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectExpectingTransferExportType,
-      container: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier:
-      "DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectExpectingTransferExport",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectExpectingTransferExport>;
+  DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectExpectingTransferExport as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectExpectingTransferExport>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseExportsValue =
   | DispatchNamespacesScriptsSettingsEditResponseExportsValueWorker
@@ -9645,22 +8785,12 @@ export interface DispatchNamespacesScriptsSettingsEditResponseExportsReconciliat
   to: string;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationTransferredItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      class: S.String,
-      phase: DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationTransferredItemPhase,
-      to: S.String,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationTransferredItem",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationTransferredItem>;
+  DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTransferredItem as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationTransferredItem>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationTransferredList =
   Array<DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationTransferredItem>;
 export const DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationTransferredList =
-  /*@__PURE__*/ S.Array(
-    DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationTransferredItem,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationTransferredList>;
+  DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTransferredList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationTransferredList>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationUpdatedList =
   Array<string>;
@@ -9715,24 +8845,12 @@ export interface DispatchNamespacesScriptsSettingsEditResponseExportsReconciliat
   namespaceId?: string | null;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationWarningsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      class: S.String,
-      message: S.String,
-      scenario:
-        DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationWarningsItemScenario,
-      namespaceId: S.optional(S.NullOr(S.String).pipe(T.Body("namespace_id"))),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationWarningsItem",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationWarningsItem>;
+  DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationWarningsItem as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationWarningsItem>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationWarningsList =
   Array<DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationWarningsItem>;
 export const DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationWarningsList =
-  /*@__PURE__*/ S.Array(
-    DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationWarningsItem,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationWarningsList>;
+  DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationWarningsList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationWarningsList>;
 
 export interface DispatchNamespacesScriptsSettingsEditResponseExportsReconciliation {
   /** Class names for which a new namespace was provisioned. */
@@ -10025,14 +9143,8 @@ export interface DispatchNamespacesScriptsSettingsEditResponsePlacementMode {
   /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
   mode: DispatchNamespacesScriptsSettingsEditResponsePlacementModeMode;
 }
-export const DispatchNamespacesScriptsSettingsEditResponsePlacementMode = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      mode: DispatchNamespacesScriptsSettingsEditResponsePlacementModeMode,
-    }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsSettingsEditResponsePlacementMode",
-}) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponsePlacementMode>;
+export const DispatchNamespacesScriptsSettingsEditResponsePlacementMode =
+  DispatchNamespacesScriptsSettingsGetResponsePlacementMode as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponsePlacementMode>;
 
 export type DispatchNamespacesScriptsSettingsEditResponsePlacementRegion =
   DispatchNamespacesScriptsSettingsGetResponsePlacementRegion;
@@ -10058,15 +9170,8 @@ export interface DispatchNamespacesScriptsSettingsEditResponsePlacementCase4 {
   /** Cloud region for targeted placement in format 'provider:region'. */
   region: string;
 }
-export const DispatchNamespacesScriptsSettingsEditResponsePlacementCase4 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      mode: DispatchNamespacesScriptsSettingsEditResponsePlacementCase4Mode,
-      region: S.String,
-    }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsSettingsEditResponsePlacementCase4",
-}) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponsePlacementCase4>;
+export const DispatchNamespacesScriptsSettingsEditResponsePlacementCase4 =
+  DispatchNamespacesScriptsSettingsGetResponsePlacementCase4 as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponsePlacementCase4>;
 
 export type DispatchNamespacesScriptsSettingsEditResponsePlacementCase5Mode = "targeted";
 export const DispatchNamespacesScriptsSettingsEditResponsePlacementCase5Mode = S.String;
@@ -10077,15 +9182,8 @@ export interface DispatchNamespacesScriptsSettingsEditResponsePlacementCase5 {
   /** Targeted placement mode. */
   mode: DispatchNamespacesScriptsSettingsEditResponsePlacementCase5Mode;
 }
-export const DispatchNamespacesScriptsSettingsEditResponsePlacementCase5 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      hostname: S.String,
-      mode: DispatchNamespacesScriptsSettingsEditResponsePlacementCase5Mode,
-    }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsSettingsEditResponsePlacementCase5",
-}) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponsePlacementCase5>;
+export const DispatchNamespacesScriptsSettingsEditResponsePlacementCase5 =
+  DispatchNamespacesScriptsSettingsGetResponsePlacementCase5 as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponsePlacementCase5>;
 
 export type DispatchNamespacesScriptsSettingsEditResponsePlacementCase6Mode = "targeted";
 export const DispatchNamespacesScriptsSettingsEditResponsePlacementCase6Mode = S.String;
@@ -10096,15 +9194,8 @@ export interface DispatchNamespacesScriptsSettingsEditResponsePlacementCase6 {
   /** Targeted placement mode. */
   mode: DispatchNamespacesScriptsSettingsEditResponsePlacementCase6Mode;
 }
-export const DispatchNamespacesScriptsSettingsEditResponsePlacementCase6 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      host: S.String,
-      mode: DispatchNamespacesScriptsSettingsEditResponsePlacementCase6Mode,
-    }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsSettingsEditResponsePlacementCase6",
-}) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponsePlacementCase6>;
+export const DispatchNamespacesScriptsSettingsEditResponsePlacementCase6 =
+  DispatchNamespacesScriptsSettingsGetResponsePlacementCase6 as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponsePlacementCase6>;
 
 export type DispatchNamespacesScriptsSettingsEditResponsePlacementCase7Mode = "targeted";
 export const DispatchNamespacesScriptsSettingsEditResponsePlacementCase7Mode = S.String;
@@ -10356,14 +9447,8 @@ export interface PutDispatchNamespaceScriptBindingAi {
   name: string;
   type: PutDispatchNamespaceScriptBindingAiType;
 }
-export const PutDispatchNamespaceScriptBindingAi = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    type: PutDispatchNamespaceScriptBindingAiType,
-  }),
-).annotate({
-  identifier: "PutDispatchNamespaceScriptBindingAi",
-}) as any as S.Schema<PutDispatchNamespaceScriptBindingAi>;
+export const PutDispatchNamespaceScriptBindingAi =
+  DispatchNamespacesScriptsBindingsGetResultItemAI as any as S.Schema<PutDispatchNamespaceScriptBindingAi>;
 
 export type PutDispatchNamespaceScriptBindingAiSearchType = "ai_search";
 export const PutDispatchNamespaceScriptBindingAiSearchType = S.String;
@@ -10393,15 +9478,8 @@ export interface PutDispatchNamespaceScriptBindingAiSearchNamespace {
   namespace: string;
   type: PutDispatchNamespaceScriptBindingAiSearchNamespaceType;
 }
-export const PutDispatchNamespaceScriptBindingAiSearchNamespace = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    namespace: S.String,
-    type: PutDispatchNamespaceScriptBindingAiSearchNamespaceType,
-  }),
-).annotate({
-  identifier: "PutDispatchNamespaceScriptBindingAiSearchNamespace",
-}) as any as S.Schema<PutDispatchNamespaceScriptBindingAiSearchNamespace>;
+export const PutDispatchNamespaceScriptBindingAiSearchNamespace =
+  DispatchNamespacesScriptsBindingsGetResultItemMessaging as any as S.Schema<PutDispatchNamespaceScriptBindingAiSearchNamespace>;
 
 export type PutDispatchNamespaceScriptBindingAnalyticsEngineType = "analytics_engine";
 export const PutDispatchNamespaceScriptBindingAnalyticsEngineType = S.String;
@@ -10428,14 +9506,8 @@ export interface PutDispatchNamespaceScriptBindingAssets {
   name: string;
   type: PutDispatchNamespaceScriptBindingAssetsType;
 }
-export const PutDispatchNamespaceScriptBindingAssets = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    type: PutDispatchNamespaceScriptBindingAssetsType,
-  }),
-).annotate({
-  identifier: "PutDispatchNamespaceScriptBindingAssets",
-}) as any as S.Schema<PutDispatchNamespaceScriptBindingAssets>;
+export const PutDispatchNamespaceScriptBindingAssets =
+  DispatchNamespacesScriptsBindingsGetResultItemAI as any as S.Schema<PutDispatchNamespaceScriptBindingAssets>;
 
 export type PutDispatchNamespaceScriptBindingBrowserType = "browser";
 export const PutDispatchNamespaceScriptBindingBrowserType = S.String;
@@ -10444,14 +9516,8 @@ export interface PutDispatchNamespaceScriptBindingBrowser {
   name: string;
   type: PutDispatchNamespaceScriptBindingBrowserType;
 }
-export const PutDispatchNamespaceScriptBindingBrowser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    type: PutDispatchNamespaceScriptBindingBrowserType,
-  }),
-).annotate({
-  identifier: "PutDispatchNamespaceScriptBindingBrowser",
-}) as any as S.Schema<PutDispatchNamespaceScriptBindingBrowser>;
+export const PutDispatchNamespaceScriptBindingBrowser =
+  DispatchNamespacesScriptsBindingsGetResultItemAI as any as S.Schema<PutDispatchNamespaceScriptBindingBrowser>;
 
 export type PutDispatchNamespaceScriptBindingD1Type = "d1";
 export const PutDispatchNamespaceScriptBindingD1Type = S.String;
@@ -10481,15 +9547,8 @@ export interface PutDispatchNamespaceScriptBindingDataBlob {
   part: string;
   type: PutDispatchNamespaceScriptBindingDataBlobType;
 }
-export const PutDispatchNamespaceScriptBindingDataBlob = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    part: S.String,
-    type: PutDispatchNamespaceScriptBindingDataBlobType,
-  }),
-).annotate({
-  identifier: "PutDispatchNamespaceScriptBindingDataBlob",
-}) as any as S.Schema<PutDispatchNamespaceScriptBindingDataBlob>;
+export const PutDispatchNamespaceScriptBindingDataBlob =
+  DispatchNamespacesScriptsBindingsGetResultItemDataBlob as any as S.Schema<PutDispatchNamespaceScriptBindingDataBlob>;
 
 export interface PutDispatchNamespaceScriptBindingDispatchNamespaceOutboundParam {
   name: string;
@@ -10624,14 +9683,8 @@ export interface PutDispatchNamespaceScriptBindingImages {
   name: string;
   type: PutDispatchNamespaceScriptBindingImagesType;
 }
-export const PutDispatchNamespaceScriptBindingImages = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    type: PutDispatchNamespaceScriptBindingImagesType,
-  }),
-).annotate({
-  identifier: "PutDispatchNamespaceScriptBindingImages",
-}) as any as S.Schema<PutDispatchNamespaceScriptBindingImages>;
+export const PutDispatchNamespaceScriptBindingImages =
+  DispatchNamespacesScriptsBindingsGetResultItemAI as any as S.Schema<PutDispatchNamespaceScriptBindingImages>;
 
 export type PutDispatchNamespaceScriptBindingJsonType = "json";
 export const PutDispatchNamespaceScriptBindingJsonType = S.String;
@@ -10641,15 +9694,8 @@ export interface PutDispatchNamespaceScriptBindingJson {
   name: string;
   type: PutDispatchNamespaceScriptBindingJsonType;
 }
-export const PutDispatchNamespaceScriptBindingJson = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    json: S.Unknown,
-    name: S.String,
-    type: PutDispatchNamespaceScriptBindingJsonType,
-  }),
-).annotate({
-  identifier: "PutDispatchNamespaceScriptBindingJson",
-}) as any as S.Schema<PutDispatchNamespaceScriptBindingJson>;
+export const PutDispatchNamespaceScriptBindingJson =
+  DispatchNamespacesScriptsBindingsGetResultItemJson as any as S.Schema<PutDispatchNamespaceScriptBindingJson>;
 
 export type PutDispatchNamespaceScriptBindingKvNamespaceType = "kv_namespace";
 export const PutDispatchNamespaceScriptBindingKvNamespaceType = S.String;
@@ -10676,14 +9722,8 @@ export interface PutDispatchNamespaceScriptBindingMedia {
   name: string;
   type: PutDispatchNamespaceScriptBindingMediaType;
 }
-export const PutDispatchNamespaceScriptBindingMedia = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    type: PutDispatchNamespaceScriptBindingMediaType,
-  }),
-).annotate({
-  identifier: "PutDispatchNamespaceScriptBindingMedia",
-}) as any as S.Schema<PutDispatchNamespaceScriptBindingMedia>;
+export const PutDispatchNamespaceScriptBindingMedia =
+  DispatchNamespacesScriptsBindingsGetResultItemAI as any as S.Schema<PutDispatchNamespaceScriptBindingMedia>;
 
 export type PutDispatchNamespaceScriptBindingMtlsCertificateType = "mtls_certificate";
 export const PutDispatchNamespaceScriptBindingMtlsCertificateType = S.String;
@@ -10711,15 +9751,8 @@ export interface PutDispatchNamespaceScriptBindingPlainText {
   text: string;
   type: PutDispatchNamespaceScriptBindingPlainTextType;
 }
-export const PutDispatchNamespaceScriptBindingPlainText = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    text: S.String,
-    type: PutDispatchNamespaceScriptBindingPlainTextType,
-  }),
-).annotate({
-  identifier: "PutDispatchNamespaceScriptBindingPlainText",
-}) as any as S.Schema<PutDispatchNamespaceScriptBindingPlainText>;
+export const PutDispatchNamespaceScriptBindingPlainText =
+  DispatchNamespacesScriptsBindingsGetResultItemPlainText as any as S.Schema<PutDispatchNamespaceScriptBindingPlainText>;
 
 export type PutDispatchNamespaceScriptBindingPipelinesType = "pipelines";
 export const PutDispatchNamespaceScriptBindingPipelinesType = S.String;
@@ -10729,15 +9762,8 @@ export interface PutDispatchNamespaceScriptBindingPipelines {
   pipeline: string;
   type: PutDispatchNamespaceScriptBindingPipelinesType;
 }
-export const PutDispatchNamespaceScriptBindingPipelines = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    pipeline: S.String,
-    type: PutDispatchNamespaceScriptBindingPipelinesType,
-  }),
-).annotate({
-  identifier: "PutDispatchNamespaceScriptBindingPipelines",
-}) as any as S.Schema<PutDispatchNamespaceScriptBindingPipelines>;
+export const PutDispatchNamespaceScriptBindingPipelines =
+  DispatchNamespacesScriptsBindingsGetResultItemPipelines as any as S.Schema<PutDispatchNamespaceScriptBindingPipelines>;
 
 export type PutDispatchNamespaceScriptBindingQueueType = "queue";
 export const PutDispatchNamespaceScriptBindingQueueType = S.String;
@@ -10747,15 +9773,8 @@ export interface PutDispatchNamespaceScriptBindingQueue {
   queueName: string;
   type: PutDispatchNamespaceScriptBindingQueueType;
 }
-export const PutDispatchNamespaceScriptBindingQueue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    queueName: S.String.pipe(T.Body("queue_name")),
-    type: PutDispatchNamespaceScriptBindingQueueType,
-  }),
-).annotate({
-  identifier: "PutDispatchNamespaceScriptBindingQueue",
-}) as any as S.Schema<PutDispatchNamespaceScriptBindingQueue>;
+export const PutDispatchNamespaceScriptBindingQueue =
+  DispatchNamespacesScriptsBindingsGetResultItemQueue as any as S.Schema<PutDispatchNamespaceScriptBindingQueue>;
 
 export interface PutDispatchNamespaceScriptBindingRatelimitSimple {
   limit: number;
@@ -10826,15 +9845,8 @@ export interface PutDispatchNamespaceScriptBindingSecretText {
   text: string;
   type: PutDispatchNamespaceScriptBindingSecretTextType;
 }
-export const PutDispatchNamespaceScriptBindingSecretText = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    text: S.String,
-    type: PutDispatchNamespaceScriptBindingSecretTextType,
-  }),
-).annotate({
-  identifier: "PutDispatchNamespaceScriptBindingSecretText",
-}) as any as S.Schema<PutDispatchNamespaceScriptBindingSecretText>;
+export const PutDispatchNamespaceScriptBindingSecretText =
+  DispatchNamespacesScriptsBindingsGetResultItemPlainText as any as S.Schema<PutDispatchNamespaceScriptBindingSecretText>;
 
 export type PutDispatchNamespaceScriptBindingSendEmailType = "send_email";
 export const PutDispatchNamespaceScriptBindingSendEmailType = S.String;
@@ -10892,15 +9904,8 @@ export interface PutDispatchNamespaceScriptBindingTextBlob {
   part: string;
   type: PutDispatchNamespaceScriptBindingTextBlobType;
 }
-export const PutDispatchNamespaceScriptBindingTextBlob = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    part: S.String,
-    type: PutDispatchNamespaceScriptBindingTextBlobType,
-  }),
-).annotate({
-  identifier: "PutDispatchNamespaceScriptBindingTextBlob",
-}) as any as S.Schema<PutDispatchNamespaceScriptBindingTextBlob>;
+export const PutDispatchNamespaceScriptBindingTextBlob =
+  DispatchNamespacesScriptsBindingsGetResultItemDataBlob as any as S.Schema<PutDispatchNamespaceScriptBindingTextBlob>;
 
 export type PutDispatchNamespaceScriptBindingVectorizeType = "vectorize";
 export const PutDispatchNamespaceScriptBindingVectorizeType = S.String;
@@ -10910,15 +9915,8 @@ export interface PutDispatchNamespaceScriptBindingVectorize {
   name: string;
   type: PutDispatchNamespaceScriptBindingVectorizeType;
 }
-export const PutDispatchNamespaceScriptBindingVectorize = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    indexName: S.String.pipe(T.Body("index_name")),
-    name: S.String,
-    type: PutDispatchNamespaceScriptBindingVectorizeType,
-  }),
-).annotate({
-  identifier: "PutDispatchNamespaceScriptBindingVectorize",
-}) as any as S.Schema<PutDispatchNamespaceScriptBindingVectorize>;
+export const PutDispatchNamespaceScriptBindingVectorize =
+  DispatchNamespacesScriptsBindingsGetResultItemVectorize as any as S.Schema<PutDispatchNamespaceScriptBindingVectorize>;
 
 export type PutDispatchNamespaceScriptBindingVersionMetadataType = "version_metadata";
 export const PutDispatchNamespaceScriptBindingVersionMetadataType = S.String;
@@ -10927,14 +9925,8 @@ export interface PutDispatchNamespaceScriptBindingVersionMetadata {
   name: string;
   type: PutDispatchNamespaceScriptBindingVersionMetadataType;
 }
-export const PutDispatchNamespaceScriptBindingVersionMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    type: PutDispatchNamespaceScriptBindingVersionMetadataType,
-  }),
-).annotate({
-  identifier: "PutDispatchNamespaceScriptBindingVersionMetadata",
-}) as any as S.Schema<PutDispatchNamespaceScriptBindingVersionMetadata>;
+export const PutDispatchNamespaceScriptBindingVersionMetadata =
+  DispatchNamespacesScriptsBindingsGetResultItemAI as any as S.Schema<PutDispatchNamespaceScriptBindingVersionMetadata>;
 
 export type PutDispatchNamespaceScriptBindingSecretsStoreSecretType = "secrets_store_secret";
 export const PutDispatchNamespaceScriptBindingSecretsStoreSecretType = S.String;
@@ -10964,15 +9956,8 @@ export interface PutDispatchNamespaceScriptBindingFlagship {
   name: string;
   type: PutDispatchNamespaceScriptBindingFlagshipType;
 }
-export const PutDispatchNamespaceScriptBindingFlagship = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    appId: S.String.pipe(T.Body("app_id")),
-    name: S.String,
-    type: PutDispatchNamespaceScriptBindingFlagshipType,
-  }),
-).annotate({
-  identifier: "PutDispatchNamespaceScriptBindingFlagship",
-}) as any as S.Schema<PutDispatchNamespaceScriptBindingFlagship>;
+export const PutDispatchNamespaceScriptBindingFlagship =
+  DispatchNamespacesScriptsBindingsGetResultItemFlagship as any as S.Schema<PutDispatchNamespaceScriptBindingFlagship>;
 
 export type PutDispatchNamespaceScriptBindingSecretKeyFormat = "raw" | "pkcs8" | "spki" | "jwk";
 export const PutDispatchNamespaceScriptBindingSecretKeyFormat = S.String;
@@ -10991,9 +9976,8 @@ export const PutDispatchNamespaceScriptBindingSecretKeyUsage = S.String;
 export type PutDispatchNamespaceScriptBindingSecretKeyUsagesList = Array<
   PutDispatchNamespaceScriptBindingSecretKeyUsage | (string & {})
 >;
-export const PutDispatchNamespaceScriptBindingSecretKeyUsagesList = /*@__PURE__*/ S.Array(
-  PutDispatchNamespaceScriptBindingSecretKeyUsage,
-) as any as S.Schema<PutDispatchNamespaceScriptBindingSecretKeyUsagesList>;
+export const PutDispatchNamespaceScriptBindingSecretKeyUsagesList =
+  DispatchNamespacesScriptsSecretsGetResultSecretKeyUsagesList as any as S.Schema<PutDispatchNamespaceScriptBindingSecretKeyUsagesList>;
 
 export type PutDispatchNamespaceScriptBindingSecretKeyType = "secret_key";
 export const PutDispatchNamespaceScriptBindingSecretKeyType = S.String;
@@ -11051,15 +10035,8 @@ export interface PutDispatchNamespaceScriptBindingWasmModule {
   part: string;
   type: PutDispatchNamespaceScriptBindingWasmModuleType;
 }
-export const PutDispatchNamespaceScriptBindingWasmModule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    part: S.String,
-    type: PutDispatchNamespaceScriptBindingWasmModuleType,
-  }),
-).annotate({
-  identifier: "PutDispatchNamespaceScriptBindingWasmModule",
-}) as any as S.Schema<PutDispatchNamespaceScriptBindingWasmModule>;
+export const PutDispatchNamespaceScriptBindingWasmModule =
+  DispatchNamespacesScriptsBindingsGetResultItemDataBlob as any as S.Schema<PutDispatchNamespaceScriptBindingWasmModule>;
 
 export type PutDispatchNamespaceScriptBindingVpcServiceType = "vpc_service";
 export const PutDispatchNamespaceScriptBindingVpcServiceType = S.String;
@@ -11106,14 +10083,8 @@ export interface PutDispatchNamespaceScriptBindingWorkerLoader {
   name: string;
   type: PutDispatchNamespaceScriptBindingWorkerLoaderType;
 }
-export const PutDispatchNamespaceScriptBindingWorkerLoader = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    type: PutDispatchNamespaceScriptBindingWorkerLoaderType,
-  }),
-).annotate({
-  identifier: "PutDispatchNamespaceScriptBindingWorkerLoader",
-}) as any as S.Schema<PutDispatchNamespaceScriptBindingWorkerLoader>;
+export const PutDispatchNamespaceScriptBindingWorkerLoader =
+  DispatchNamespacesScriptsBindingsGetResultItemAI as any as S.Schema<PutDispatchNamespaceScriptBindingWorkerLoader>;
 
 export type PutDispatchNamespaceScriptBindingArtifactsType = "artifacts";
 export const PutDispatchNamespaceScriptBindingArtifactsType = S.String;
@@ -11123,15 +10094,8 @@ export interface PutDispatchNamespaceScriptBindingArtifacts {
   namespace: string;
   type: PutDispatchNamespaceScriptBindingArtifactsType;
 }
-export const PutDispatchNamespaceScriptBindingArtifacts = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    namespace: S.String,
-    type: PutDispatchNamespaceScriptBindingArtifactsType,
-  }),
-).annotate({
-  identifier: "PutDispatchNamespaceScriptBindingArtifacts",
-}) as any as S.Schema<PutDispatchNamespaceScriptBindingArtifacts>;
+export const PutDispatchNamespaceScriptBindingArtifacts =
+  DispatchNamespacesScriptsBindingsGetResultItemMessaging as any as S.Schema<PutDispatchNamespaceScriptBindingArtifacts>;
 
 export type PutDispatchNamespaceScriptBindingStreamType = "stream";
 export const PutDispatchNamespaceScriptBindingStreamType = S.String;
@@ -11140,14 +10104,8 @@ export interface PutDispatchNamespaceScriptBindingStream {
   name: string;
   type: PutDispatchNamespaceScriptBindingStreamType;
 }
-export const PutDispatchNamespaceScriptBindingStream = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    type: PutDispatchNamespaceScriptBindingStreamType,
-  }),
-).annotate({
-  identifier: "PutDispatchNamespaceScriptBindingStream",
-}) as any as S.Schema<PutDispatchNamespaceScriptBindingStream>;
+export const PutDispatchNamespaceScriptBindingStream =
+  DispatchNamespacesScriptsBindingsGetResultItemAI as any as S.Schema<PutDispatchNamespaceScriptBindingStream>;
 
 export type PutDispatchNamespaceScriptBindingK2Type = "k2";
 export const PutDispatchNamespaceScriptBindingK2Type = S.String;
@@ -11158,15 +10116,8 @@ export interface PutDispatchNamespaceScriptBindingK2 {
   stream: string;
   type: PutDispatchNamespaceScriptBindingK2Type;
 }
-export const PutDispatchNamespaceScriptBindingK2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    stream: S.String,
-    type: PutDispatchNamespaceScriptBindingK2Type,
-  }),
-).annotate({
-  identifier: "PutDispatchNamespaceScriptBindingK2",
-}) as any as S.Schema<PutDispatchNamespaceScriptBindingK2>;
+export const PutDispatchNamespaceScriptBindingK2 =
+  DispatchNamespacesScriptsBindingsGetResultItemK2 as any as S.Schema<PutDispatchNamespaceScriptBindingK2>;
 
 export type PutDispatchNamespaceScriptBinding =
   | PutDispatchNamespaceScriptBindingAi
@@ -12054,16 +11005,7 @@ export interface DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurab
   type: DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectDeletedExportType;
 }
 export const DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectDeletedExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state:
-        DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectDeletedExportState,
-      type: DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectDeletedExportType,
-    }),
-  ).annotate({
-    identifier:
-      "DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectDeletedExport",
-  }) as any as S.Schema<DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectDeletedExport>;
+  DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectDeletedExport as any as S.Schema<DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectDeletedExport>;
 
 export type DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectRenamedExportState =
   "renamed";
@@ -12084,17 +11026,7 @@ export interface DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurab
   type: DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectRenamedExportType;
 }
 export const DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectRenamedExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      renamedTo: S.String.pipe(T.Body("renamed_to")),
-      state:
-        DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectRenamedExportState,
-      type: DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectRenamedExportType,
-    }),
-  ).annotate({
-    identifier:
-      "DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectRenamedExport",
-  }) as any as S.Schema<DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectRenamedExport>;
+  DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectRenamedExport as any as S.Schema<DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectRenamedExport>;
 
 export type DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectTransferredExportState =
   "transferred";
@@ -12115,17 +11047,7 @@ export interface DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurab
   type: DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectTransferredExportType;
 }
 export const DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectTransferredExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state:
-        DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectTransferredExportState,
-      transferredTo: S.String.pipe(T.Body("transferred_to")),
-      type: DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectTransferredExportType,
-    }),
-  ).annotate({
-    identifier:
-      "DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectTransferredExport",
-  }) as any as S.Schema<DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectTransferredExport>;
+  DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectTransferredExport as any as S.Schema<DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectTransferredExport>;
 
 export type DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectExpectingTransferExportState =
   "expecting-transfer";
@@ -12156,20 +11078,7 @@ export interface DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurab
   container?: string | null;
 }
 export const DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectExpectingTransferExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state:
-        DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectExpectingTransferExportState,
-      storage:
-        DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectExpectingTransferExportStorage,
-      transferFrom: S.String.pipe(T.Body("transfer_from")),
-      type: DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectExpectingTransferExportType,
-      container: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier:
-      "DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectExpectingTransferExport",
-  }) as any as S.Schema<DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectExpectingTransferExport>;
+  DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectExpectingTransferExport as any as S.Schema<DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectExpectingTransferExport>;
 
 export type DispatchNamespacesScriptsUpdateResponseExportsValue =
   | DispatchNamespacesScriptsUpdateResponseExportsValueWorker
@@ -12798,19 +11707,7 @@ export interface DispatchNamespacesScriptsContentUpdateResponseExportsValueWorke
   state?: DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkerState | null;
 }
 export const DispatchNamespacesScriptsContentUpdateResponseExportsValueWorker =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkerType,
-      cache: S.optional(
-        S.NullOr(DispatchNamespacesScriptsGetResponseScriptExportsValueWorkerCache),
-      ),
-      state: S.optional(
-        S.NullOr(DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkerState),
-      ),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsContentUpdateResponseExportsValueWorker",
-  }) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseExportsValueWorker>;
+  DispatchNamespacesScriptsSettingsGetResponseExportsValueWorker as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseExportsValueWorker>;
 
 export type DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectExportStorage =
   | "sqlite"
@@ -12839,22 +11736,7 @@ export interface DispatchNamespacesScriptsContentUpdateResponseExportsValueWorke
   state?: DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectExportState | null;
 }
 export const DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storage:
-        DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectExportStorage,
-      type: DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectExportType,
-      container: S.optional(S.NullOr(S.String)),
-      state: S.optional(
-        S.NullOr(
-          DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectExportState,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectExport",
-  }) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectExport>;
+  DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectExport as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectExport>;
 
 export type DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectDeletedExportState =
   "deleted";
@@ -12873,16 +11755,7 @@ export interface DispatchNamespacesScriptsContentUpdateResponseExportsValueWorke
   type: DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectDeletedExportType;
 }
 export const DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectDeletedExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state:
-        DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectDeletedExportState,
-      type: DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectDeletedExportType,
-    }),
-  ).annotate({
-    identifier:
-      "DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectDeletedExport",
-  }) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectDeletedExport>;
+  DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectDeletedExport as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectDeletedExport>;
 
 export type DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectRenamedExportState =
   "renamed";
@@ -12903,17 +11776,7 @@ export interface DispatchNamespacesScriptsContentUpdateResponseExportsValueWorke
   type: DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectRenamedExportType;
 }
 export const DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectRenamedExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      renamedTo: S.String.pipe(T.Body("renamed_to")),
-      state:
-        DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectRenamedExportState,
-      type: DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectRenamedExportType,
-    }),
-  ).annotate({
-    identifier:
-      "DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectRenamedExport",
-  }) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectRenamedExport>;
+  DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectRenamedExport as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectRenamedExport>;
 
 export type DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectTransferredExportState =
   "transferred";
@@ -12934,17 +11797,7 @@ export interface DispatchNamespacesScriptsContentUpdateResponseExportsValueWorke
   type: DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectTransferredExportType;
 }
 export const DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectTransferredExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state:
-        DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectTransferredExportState,
-      transferredTo: S.String.pipe(T.Body("transferred_to")),
-      type: DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectTransferredExportType,
-    }),
-  ).annotate({
-    identifier:
-      "DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectTransferredExport",
-  }) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectTransferredExport>;
+  DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectTransferredExport as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectTransferredExport>;
 
 export type DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectExpectingTransferExportState =
   "expecting-transfer";
@@ -12975,20 +11828,7 @@ export interface DispatchNamespacesScriptsContentUpdateResponseExportsValueWorke
   container?: string | null;
 }
 export const DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectExpectingTransferExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state:
-        DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectExpectingTransferExportState,
-      storage:
-        DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectExpectingTransferExportStorage,
-      transferFrom: S.String.pipe(T.Body("transfer_from")),
-      type: DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectExpectingTransferExportType,
-      container: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier:
-      "DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectExpectingTransferExport",
-  }) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectExpectingTransferExport>;
+  DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectExpectingTransferExport as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectExpectingTransferExport>;
 
 export type DispatchNamespacesScriptsContentUpdateResponseExportsValue =
   | DispatchNamespacesScriptsContentUpdateResponseExportsValueWorker
@@ -13602,9 +12442,8 @@ export const DispatchNamespacesScriptsSecretsUpdateRequestUsagesItem = S.String;
 export type DispatchNamespacesScriptsSecretsUpdateRequestUsagesList = Array<
   DispatchNamespacesScriptsSecretsUpdateRequestUsagesItem | (string & {})
 >;
-export const DispatchNamespacesScriptsSecretsUpdateRequestUsagesList = /*@__PURE__*/ S.Array(
-  DispatchNamespacesScriptsSecretsUpdateRequestUsagesItem,
-) as any as S.Schema<DispatchNamespacesScriptsSecretsUpdateRequestUsagesList>;
+export const DispatchNamespacesScriptsSecretsUpdateRequestUsagesList =
+  DispatchNamespacesScriptsSecretsGetResultSecretKeyUsagesList as any as S.Schema<DispatchNamespacesScriptsSecretsUpdateRequestUsagesList>;
 
 export interface PutDispatchNamespaceScriptSecretRequest {
   /** Identifier. */
@@ -13667,15 +12506,8 @@ export interface DispatchNamespacesScriptsSecretsUpdateResultSecretText {
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSecretsUpdateResultSecretTextType;
 }
-export const DispatchNamespacesScriptsSecretsUpdateResultSecretText = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    text: S.String,
-    type: DispatchNamespacesScriptsSecretsUpdateResultSecretTextType,
-  }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsSecretsUpdateResultSecretText",
-}) as any as S.Schema<DispatchNamespacesScriptsSecretsUpdateResultSecretText>;
+export const DispatchNamespacesScriptsSecretsUpdateResultSecretText =
+  DispatchNamespacesScriptsBindingsGetResultItemPlainText as any as S.Schema<DispatchNamespacesScriptsSecretsUpdateResultSecretText>;
 
 export type DispatchNamespacesScriptsSecretsUpdateResultSecretKeyFormat =
   | "raw"
@@ -13701,9 +12533,7 @@ export const DispatchNamespacesScriptsSecretsUpdateResultSecretKeyUsagesItem = S
 export type DispatchNamespacesScriptsSecretsUpdateResultSecretKeyUsagesList =
   Array<DispatchNamespacesScriptsSecretsUpdateResultSecretKeyUsagesItem>;
 export const DispatchNamespacesScriptsSecretsUpdateResultSecretKeyUsagesList =
-  /*@__PURE__*/ S.Array(
-    DispatchNamespacesScriptsSecretsUpdateResultSecretKeyUsagesItem,
-  ) as any as S.Schema<DispatchNamespacesScriptsSecretsUpdateResultSecretKeyUsagesList>;
+  DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValueSecretKeyUsagesList as any as S.Schema<DispatchNamespacesScriptsSecretsUpdateResultSecretKeyUsagesList>;
 
 export interface DispatchNamespacesScriptsSecretsUpdateResultSecretKey {
   /** Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
@@ -13721,19 +12551,8 @@ export interface DispatchNamespacesScriptsSecretsUpdateResultSecretKey {
   /** Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk". */
   keyJwk?: unknown | null;
 }
-export const DispatchNamespacesScriptsSecretsUpdateResultSecretKey = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    algorithm: S.Unknown,
-    format: DispatchNamespacesScriptsSecretsUpdateResultSecretKeyFormat,
-    name: S.String,
-    type: DispatchNamespacesScriptsSecretsUpdateResultSecretKeyType,
-    usages: DispatchNamespacesScriptsSecretsUpdateResultSecretKeyUsagesList,
-    keyBase64: S.optional(S.NullOr(S.String).pipe(T.Body("key_base64"))),
-    keyJwk: S.optional(S.NullOr(S.Unknown).pipe(T.Body("key_jwk"))),
-  }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsSecretsUpdateResultSecretKey",
-}) as any as S.Schema<DispatchNamespacesScriptsSecretsUpdateResultSecretKey>;
+export const DispatchNamespacesScriptsSecretsUpdateResultSecretKey =
+  DispatchNamespacesScriptsBindingsGetResultItemSecretKey as any as S.Schema<DispatchNamespacesScriptsSecretsUpdateResultSecretKey>;
 
 export type DispatchNamespacesScriptsSecretsUpdateResult =
   | DispatchNamespacesScriptsSecretsUpdateResultSecretText

@@ -440,16 +440,11 @@ export interface GuardrailPiiEntityFilter {
   action: GuardrailSensitiveInformationPolicyAction;
   detected?: boolean;
 }
-export const GuardrailPiiEntityFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    match: S.String,
-    type: GuardrailPiiEntityType,
-    action: GuardrailSensitiveInformationPolicyAction,
-    detected: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "GuardrailPiiEntityFilter" }) as any as S.Schema<GuardrailPiiEntityFilter>;
+export const GuardrailPiiEntityFilter =
+  GuardrailManagedWord as any as S.Schema<GuardrailPiiEntityFilter>;
 export type GuardrailPiiEntityFilterList = GuardrailPiiEntityFilter[];
-export const GuardrailPiiEntityFilterList = /*@__PURE__*/ S.Array(GuardrailPiiEntityFilter);
+export const GuardrailPiiEntityFilterList =
+  GuardrailManagedWordList as any as S.Schema<GuardrailPiiEntityFilterList>;
 export interface GuardrailRegexFilter {
   name?: string;
   match?: string;
@@ -843,7 +838,8 @@ export type GuardrailOrigin =
 export const GuardrailOrigin = S.String;
 
 export type GuardrailOriginList = GuardrailOrigin[];
-export const GuardrailOriginList = /*@__PURE__*/ S.Array(GuardrailOrigin);
+export const GuardrailOriginList =
+  GuardrailContentQualifierList as any as S.Schema<GuardrailOriginList>;
 export type GuardrailOwnership = "SELF" | "CROSS_ACCOUNT" | (string & {});
 export const GuardrailOwnership = S.String;
 
@@ -2570,24 +2566,17 @@ export const GuardrailChecksPromptAttackCategory = S.String;
 export interface GuardrailChecksPromptAttackCategoryConfig {
   category: GuardrailChecksPromptAttackCategory;
 }
-export const GuardrailChecksPromptAttackCategoryConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ category: GuardrailChecksPromptAttackCategory }),
-).annotate({
-  identifier: "GuardrailChecksPromptAttackCategoryConfig",
-}) as any as S.Schema<GuardrailChecksPromptAttackCategoryConfig>;
+export const GuardrailChecksPromptAttackCategoryConfig =
+  GuardrailChecksContentFilterCategoryConfig as any as S.Schema<GuardrailChecksPromptAttackCategoryConfig>;
 export type GuardrailChecksPromptAttackCategoryConfigList =
   GuardrailChecksPromptAttackCategoryConfig[];
-export const GuardrailChecksPromptAttackCategoryConfigList = /*@__PURE__*/ S.Array(
-  GuardrailChecksPromptAttackCategoryConfig,
-);
+export const GuardrailChecksPromptAttackCategoryConfigList =
+  GuardrailChecksContentFilterCategoryConfigList as any as S.Schema<GuardrailChecksPromptAttackCategoryConfigList>;
 export interface GuardrailChecksPromptAttackConfig {
   categories: GuardrailChecksPromptAttackCategoryConfig[];
 }
-export const GuardrailChecksPromptAttackConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ categories: GuardrailChecksPromptAttackCategoryConfigList }),
-).annotate({
-  identifier: "GuardrailChecksPromptAttackConfig",
-}) as any as S.Schema<GuardrailChecksPromptAttackConfig>;
+export const GuardrailChecksPromptAttackConfig =
+  GuardrailChecksContentFilterConfig as any as S.Schema<GuardrailChecksPromptAttackConfig>;
 export type GuardrailChecksSensitiveInformationEntityType =
   | "ADDRESS"
   | "AGE"
@@ -2699,23 +2688,16 @@ export interface GuardrailChecksPromptAttackResultEntry {
   category: GuardrailChecksPromptAttackCategory;
   severityScore: number;
 }
-export const GuardrailChecksPromptAttackResultEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ category: GuardrailChecksPromptAttackCategory, severityScore: S.Number }),
-).annotate({
-  identifier: "GuardrailChecksPromptAttackResultEntry",
-}) as any as S.Schema<GuardrailChecksPromptAttackResultEntry>;
+export const GuardrailChecksPromptAttackResultEntry =
+  GuardrailChecksContentFilterResultEntry as any as S.Schema<GuardrailChecksPromptAttackResultEntry>;
 export type GuardrailChecksPromptAttackResultList = GuardrailChecksPromptAttackResultEntry[];
-export const GuardrailChecksPromptAttackResultList = /*@__PURE__*/ S.Array(
-  GuardrailChecksPromptAttackResultEntry,
-);
+export const GuardrailChecksPromptAttackResultList =
+  GuardrailChecksContentFilterResultList as any as S.Schema<GuardrailChecksPromptAttackResultList>;
 export interface GuardrailChecksPromptAttackResult {
   results: GuardrailChecksPromptAttackResultEntry[];
 }
-export const GuardrailChecksPromptAttackResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ results: GuardrailChecksPromptAttackResultList }),
-).annotate({
-  identifier: "GuardrailChecksPromptAttackResult",
-}) as any as S.Schema<GuardrailChecksPromptAttackResult>;
+export const GuardrailChecksPromptAttackResult =
+  GuardrailChecksContentFilterResult as any as S.Schema<GuardrailChecksPromptAttackResult>;
 export interface GuardrailChecksSensitiveInformationResultEntry {
   type: GuardrailChecksSensitiveInformationEntityType;
   confidenceScore: number;

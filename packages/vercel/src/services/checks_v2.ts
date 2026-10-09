@@ -627,17 +627,8 @@ export interface CreateProjectCheckResponseSourceCase0 {
   kind: CreateProjectCheckResponseSourceCase0Kind;
   resourceId?: string;
 }
-export const CreateProjectCheckResponseSourceCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    externalResourceId: S.optional(S.String),
-    integrationConfigurationId: S.String,
-    integrationId: S.String,
-    kind: CreateProjectCheckResponseSourceCase0Kind,
-    resourceId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateProjectCheckResponseSourceCase0",
-}) as any as S.Schema<CreateProjectCheckResponseSourceCase0>;
+export const CreateProjectCheckResponseSourceCase0 =
+  CreateDeploymentCheckRunResponseBodyCase0SourceCase0 as any as S.Schema<CreateProjectCheckResponseSourceCase0>;
 
 export type CreateProjectCheckResponseSourceCase1Kind = "webhook";
 export const CreateProjectCheckResponseSourceCase1Kind = S.String;
@@ -646,14 +637,8 @@ export interface CreateProjectCheckResponseSourceCase1 {
   kind: CreateProjectCheckResponseSourceCase1Kind;
   webhookId?: string;
 }
-export const CreateProjectCheckResponseSourceCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: CreateProjectCheckResponseSourceCase1Kind,
-    webhookId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateProjectCheckResponseSourceCase1",
-}) as any as S.Schema<CreateProjectCheckResponseSourceCase1>;
+export const CreateProjectCheckResponseSourceCase1 =
+  CreateDeploymentCheckRunResponseBodyCase0SourceCase1 as any as S.Schema<CreateProjectCheckResponseSourceCase1>;
 
 export type CreateProjectCheckResponseSourceCase2Kind = "git-provider";
 export const CreateProjectCheckResponseSourceCase2Kind = S.String;
@@ -666,15 +651,8 @@ export interface CreateProjectCheckResponseSourceCase2 {
   kind: CreateProjectCheckResponseSourceCase2Kind;
   provider: CreateProjectCheckResponseSourceCase2Provider;
 }
-export const CreateProjectCheckResponseSourceCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    externalCheckName: S.String,
-    kind: CreateProjectCheckResponseSourceCase2Kind,
-    provider: CreateProjectCheckResponseSourceCase2Provider,
-  }),
-).annotate({
-  identifier: "CreateProjectCheckResponseSourceCase2",
-}) as any as S.Schema<CreateProjectCheckResponseSourceCase2>;
+export const CreateProjectCheckResponseSourceCase2 =
+  CreateDeploymentCheckRunResponseBodyCase0SourceCase2 as any as S.Schema<CreateProjectCheckResponseSourceCase2>;
 
 export type CreateProjectCheckResponseSource =
   | CreateProjectCheckResponseSourceCase0
@@ -845,17 +823,8 @@ export interface GetDeploymentCheckRunResponseBodyCase0SourceCase0 {
   kind: GetDeploymentCheckRunResponseBodyCase0SourceCase0Kind;
   resourceId?: string;
 }
-export const GetDeploymentCheckRunResponseBodyCase0SourceCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    externalResourceId: S.optional(S.String),
-    integrationConfigurationId: S.String,
-    integrationId: S.String,
-    kind: GetDeploymentCheckRunResponseBodyCase0SourceCase0Kind,
-    resourceId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetDeploymentCheckRunResponseBodyCase0SourceCase0",
-}) as any as S.Schema<GetDeploymentCheckRunResponseBodyCase0SourceCase0>;
+export const GetDeploymentCheckRunResponseBodyCase0SourceCase0 =
+  CreateDeploymentCheckRunResponseBodyCase0SourceCase0 as any as S.Schema<GetDeploymentCheckRunResponseBodyCase0SourceCase0>;
 
 export type GetDeploymentCheckRunResponseBodyCase0SourceCase1Kind = "webhook";
 export const GetDeploymentCheckRunResponseBodyCase0SourceCase1Kind = S.String;
@@ -864,14 +833,8 @@ export interface GetDeploymentCheckRunResponseBodyCase0SourceCase1 {
   kind: GetDeploymentCheckRunResponseBodyCase0SourceCase1Kind;
   webhookId?: string;
 }
-export const GetDeploymentCheckRunResponseBodyCase0SourceCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: GetDeploymentCheckRunResponseBodyCase0SourceCase1Kind,
-    webhookId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetDeploymentCheckRunResponseBodyCase0SourceCase1",
-}) as any as S.Schema<GetDeploymentCheckRunResponseBodyCase0SourceCase1>;
+export const GetDeploymentCheckRunResponseBodyCase0SourceCase1 =
+  CreateDeploymentCheckRunResponseBodyCase0SourceCase1 as any as S.Schema<GetDeploymentCheckRunResponseBodyCase0SourceCase1>;
 
 export type GetDeploymentCheckRunResponseBodyCase0SourceCase2Kind = "git-provider";
 export const GetDeploymentCheckRunResponseBodyCase0SourceCase2Kind = S.String;
@@ -887,15 +850,8 @@ export interface GetDeploymentCheckRunResponseBodyCase0SourceCase2 {
   kind: GetDeploymentCheckRunResponseBodyCase0SourceCase2Kind;
   provider: GetDeploymentCheckRunResponseBodyCase0SourceCase2Provider;
 }
-export const GetDeploymentCheckRunResponseBodyCase0SourceCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    externalCheckName: S.String,
-    kind: GetDeploymentCheckRunResponseBodyCase0SourceCase2Kind,
-    provider: GetDeploymentCheckRunResponseBodyCase0SourceCase2Provider,
-  }),
-).annotate({
-  identifier: "GetDeploymentCheckRunResponseBodyCase0SourceCase2",
-}) as any as S.Schema<GetDeploymentCheckRunResponseBodyCase0SourceCase2>;
+export const GetDeploymentCheckRunResponseBodyCase0SourceCase2 =
+  CreateDeploymentCheckRunResponseBodyCase0SourceCase2 as any as S.Schema<GetDeploymentCheckRunResponseBodyCase0SourceCase2>;
 
 export type GetDeploymentCheckRunResponseBodyCase0SourceCase3Origin = "api" | "platform";
 export const GetDeploymentCheckRunResponseBodyCase0SourceCase3Origin = S.String;
@@ -908,14 +864,8 @@ export interface GetDeploymentCheckRunResponseBodyCase0SourceCase3 {
   origin?: GetDeploymentCheckRunResponseBodyCase0SourceCase3Origin;
   subKind?: GetDeploymentCheckRunResponseBodyCase0SourceCase3SubKind;
 }
-export const GetDeploymentCheckRunResponseBodyCase0SourceCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    origin: S.optional(GetDeploymentCheckRunResponseBodyCase0SourceCase3Origin),
-    subKind: S.optional(GetDeploymentCheckRunResponseBodyCase0SourceCase3SubKind),
-  }),
-).annotate({
-  identifier: "GetDeploymentCheckRunResponseBodyCase0SourceCase3",
-}) as any as S.Schema<GetDeploymentCheckRunResponseBodyCase0SourceCase3>;
+export const GetDeploymentCheckRunResponseBodyCase0SourceCase3 =
+  CreateDeploymentCheckRunResponseBodyCase0SourceCase3 as any as S.Schema<GetDeploymentCheckRunResponseBodyCase0SourceCase3>;
 
 export type GetDeploymentCheckRunResponseBodyCase0SourceCase4Origin = "api";
 export const GetDeploymentCheckRunResponseBodyCase0SourceCase4Origin = S.String;
@@ -927,13 +877,7 @@ export interface GetDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase0
   kind: GetDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase0Kind;
 }
 export const GetDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      kind: GetDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase0Kind,
-    }),
-  ).annotate({
-    identifier: "GetDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase0",
-  }) as any as S.Schema<GetDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase0>;
+  CreateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase0 as any as S.Schema<GetDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase0>;
 
 export type GetDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase1Kind = "job";
 export const GetDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase1Kind = S.String;
@@ -943,14 +887,7 @@ export interface GetDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase1
   kind: GetDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase1Kind;
 }
 export const GetDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      job: S.String,
-      kind: GetDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase1Kind,
-    }),
-  ).annotate({
-    identifier: "GetDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase1",
-  }) as any as S.Schema<GetDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase1>;
+  CreateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase1 as any as S.Schema<GetDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase1>;
 
 export type GetDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2FiltersList =
   Array<string>;
@@ -1128,17 +1065,8 @@ export interface GetDeploymentCheckRunResponseBodyCase1SourceCase0 {
   origin: GetDeploymentCheckRunResponseBodyCase1SourceCase0Origin;
   subKind: GetDeploymentCheckRunResponseBodyCase1SourceCase0SubKind;
 }
-export const GetDeploymentCheckRunResponseBodyCase1SourceCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    invocationAttempt: S.optional(S.Number),
-    invocationId: S.String,
-    jobDefinitionId: S.String,
-    origin: GetDeploymentCheckRunResponseBodyCase1SourceCase0Origin,
-    subKind: GetDeploymentCheckRunResponseBodyCase1SourceCase0SubKind,
-  }),
-).annotate({
-  identifier: "GetDeploymentCheckRunResponseBodyCase1SourceCase0",
-}) as any as S.Schema<GetDeploymentCheckRunResponseBodyCase1SourceCase0>;
+export const GetDeploymentCheckRunResponseBodyCase1SourceCase0 =
+  CreateDeploymentCheckRunResponseBodyCase1SourceCase0 as any as S.Schema<GetDeploymentCheckRunResponseBodyCase1SourceCase0>;
 
 export type GetDeploymentCheckRunResponseBodyCase1SourceCase1Origin = "platform";
 export const GetDeploymentCheckRunResponseBodyCase1SourceCase1Origin = S.String;
@@ -1151,14 +1079,8 @@ export interface GetDeploymentCheckRunResponseBodyCase1SourceCase1 {
   origin: GetDeploymentCheckRunResponseBodyCase1SourceCase1Origin;
   subKind: GetDeploymentCheckRunResponseBodyCase1SourceCase1SubKind;
 }
-export const GetDeploymentCheckRunResponseBodyCase1SourceCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    origin: GetDeploymentCheckRunResponseBodyCase1SourceCase1Origin,
-    subKind: GetDeploymentCheckRunResponseBodyCase1SourceCase1SubKind,
-  }),
-).annotate({
-  identifier: "GetDeploymentCheckRunResponseBodyCase1SourceCase1",
-}) as any as S.Schema<GetDeploymentCheckRunResponseBodyCase1SourceCase1>;
+export const GetDeploymentCheckRunResponseBodyCase1SourceCase1 =
+  CreateDeploymentCheckRunResponseBodyCase1SourceCase1 as any as S.Schema<GetDeploymentCheckRunResponseBodyCase1SourceCase1>;
 
 export type GetDeploymentCheckRunResponseBodyCase1Source =
   | GetDeploymentCheckRunResponseBodyCase1SourceCase0
@@ -1273,17 +1195,8 @@ export interface GetProjectCheckResponseSourceCase0 {
   kind: GetProjectCheckResponseSourceCase0Kind;
   resourceId?: string;
 }
-export const GetProjectCheckResponseSourceCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    externalResourceId: S.optional(S.String),
-    integrationConfigurationId: S.String,
-    integrationId: S.String,
-    kind: GetProjectCheckResponseSourceCase0Kind,
-    resourceId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetProjectCheckResponseSourceCase0",
-}) as any as S.Schema<GetProjectCheckResponseSourceCase0>;
+export const GetProjectCheckResponseSourceCase0 =
+  CreateDeploymentCheckRunResponseBodyCase0SourceCase0 as any as S.Schema<GetProjectCheckResponseSourceCase0>;
 
 export type GetProjectCheckResponseSourceCase1Kind = "webhook";
 export const GetProjectCheckResponseSourceCase1Kind = S.String;
@@ -1292,14 +1205,8 @@ export interface GetProjectCheckResponseSourceCase1 {
   kind: GetProjectCheckResponseSourceCase1Kind;
   webhookId?: string;
 }
-export const GetProjectCheckResponseSourceCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: GetProjectCheckResponseSourceCase1Kind,
-    webhookId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetProjectCheckResponseSourceCase1",
-}) as any as S.Schema<GetProjectCheckResponseSourceCase1>;
+export const GetProjectCheckResponseSourceCase1 =
+  CreateDeploymentCheckRunResponseBodyCase0SourceCase1 as any as S.Schema<GetProjectCheckResponseSourceCase1>;
 
 export type GetProjectCheckResponseSourceCase2Kind = "git-provider";
 export const GetProjectCheckResponseSourceCase2Kind = S.String;
@@ -1312,15 +1219,8 @@ export interface GetProjectCheckResponseSourceCase2 {
   kind: GetProjectCheckResponseSourceCase2Kind;
   provider: GetProjectCheckResponseSourceCase2Provider;
 }
-export const GetProjectCheckResponseSourceCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    externalCheckName: S.String,
-    kind: GetProjectCheckResponseSourceCase2Kind,
-    provider: GetProjectCheckResponseSourceCase2Provider,
-  }),
-).annotate({
-  identifier: "GetProjectCheckResponseSourceCase2",
-}) as any as S.Schema<GetProjectCheckResponseSourceCase2>;
+export const GetProjectCheckResponseSourceCase2 =
+  CreateDeploymentCheckRunResponseBodyCase0SourceCase2 as any as S.Schema<GetProjectCheckResponseSourceCase2>;
 
 export type GetProjectCheckResponseSource =
   | GetProjectCheckResponseSourceCase0
@@ -1450,17 +1350,8 @@ export interface ListCheckRunsResponseRunsItemCase0SourceCase0 {
   kind: ListCheckRunsResponseRunsItemCase0SourceCase0Kind;
   resourceId?: string;
 }
-export const ListCheckRunsResponseRunsItemCase0SourceCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    externalResourceId: S.optional(S.String),
-    integrationConfigurationId: S.String,
-    integrationId: S.String,
-    kind: ListCheckRunsResponseRunsItemCase0SourceCase0Kind,
-    resourceId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListCheckRunsResponseRunsItemCase0SourceCase0",
-}) as any as S.Schema<ListCheckRunsResponseRunsItemCase0SourceCase0>;
+export const ListCheckRunsResponseRunsItemCase0SourceCase0 =
+  CreateDeploymentCheckRunResponseBodyCase0SourceCase0 as any as S.Schema<ListCheckRunsResponseRunsItemCase0SourceCase0>;
 
 export type ListCheckRunsResponseRunsItemCase0SourceCase1Kind = "webhook";
 export const ListCheckRunsResponseRunsItemCase0SourceCase1Kind = S.String;
@@ -1469,14 +1360,8 @@ export interface ListCheckRunsResponseRunsItemCase0SourceCase1 {
   kind: ListCheckRunsResponseRunsItemCase0SourceCase1Kind;
   webhookId?: string;
 }
-export const ListCheckRunsResponseRunsItemCase0SourceCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: ListCheckRunsResponseRunsItemCase0SourceCase1Kind,
-    webhookId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListCheckRunsResponseRunsItemCase0SourceCase1",
-}) as any as S.Schema<ListCheckRunsResponseRunsItemCase0SourceCase1>;
+export const ListCheckRunsResponseRunsItemCase0SourceCase1 =
+  CreateDeploymentCheckRunResponseBodyCase0SourceCase1 as any as S.Schema<ListCheckRunsResponseRunsItemCase0SourceCase1>;
 
 export type ListCheckRunsResponseRunsItemCase0SourceCase2Kind = "git-provider";
 export const ListCheckRunsResponseRunsItemCase0SourceCase2Kind = S.String;
@@ -1492,15 +1377,8 @@ export interface ListCheckRunsResponseRunsItemCase0SourceCase2 {
   kind: ListCheckRunsResponseRunsItemCase0SourceCase2Kind;
   provider: ListCheckRunsResponseRunsItemCase0SourceCase2Provider;
 }
-export const ListCheckRunsResponseRunsItemCase0SourceCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    externalCheckName: S.String,
-    kind: ListCheckRunsResponseRunsItemCase0SourceCase2Kind,
-    provider: ListCheckRunsResponseRunsItemCase0SourceCase2Provider,
-  }),
-).annotate({
-  identifier: "ListCheckRunsResponseRunsItemCase0SourceCase2",
-}) as any as S.Schema<ListCheckRunsResponseRunsItemCase0SourceCase2>;
+export const ListCheckRunsResponseRunsItemCase0SourceCase2 =
+  CreateDeploymentCheckRunResponseBodyCase0SourceCase2 as any as S.Schema<ListCheckRunsResponseRunsItemCase0SourceCase2>;
 
 export type ListCheckRunsResponseRunsItemCase0SourceCase3Origin = "api" | "platform";
 export const ListCheckRunsResponseRunsItemCase0SourceCase3Origin = S.String;
@@ -1513,14 +1391,8 @@ export interface ListCheckRunsResponseRunsItemCase0SourceCase3 {
   origin?: ListCheckRunsResponseRunsItemCase0SourceCase3Origin;
   subKind?: ListCheckRunsResponseRunsItemCase0SourceCase3SubKind;
 }
-export const ListCheckRunsResponseRunsItemCase0SourceCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    origin: S.optional(ListCheckRunsResponseRunsItemCase0SourceCase3Origin),
-    subKind: S.optional(ListCheckRunsResponseRunsItemCase0SourceCase3SubKind),
-  }),
-).annotate({
-  identifier: "ListCheckRunsResponseRunsItemCase0SourceCase3",
-}) as any as S.Schema<ListCheckRunsResponseRunsItemCase0SourceCase3>;
+export const ListCheckRunsResponseRunsItemCase0SourceCase3 =
+  CreateDeploymentCheckRunResponseBodyCase0SourceCase3 as any as S.Schema<ListCheckRunsResponseRunsItemCase0SourceCase3>;
 
 export type ListCheckRunsResponseRunsItemCase0SourceCase4Origin = "api";
 export const ListCheckRunsResponseRunsItemCase0SourceCase4Origin = S.String;
@@ -1727,17 +1599,8 @@ export interface ListCheckRunsResponseRunsItemCase1SourceCase0 {
   origin: ListCheckRunsResponseRunsItemCase1SourceCase0Origin;
   subKind: ListCheckRunsResponseRunsItemCase1SourceCase0SubKind;
 }
-export const ListCheckRunsResponseRunsItemCase1SourceCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    invocationAttempt: S.optional(S.Number),
-    invocationId: S.String,
-    jobDefinitionId: S.String,
-    origin: ListCheckRunsResponseRunsItemCase1SourceCase0Origin,
-    subKind: ListCheckRunsResponseRunsItemCase1SourceCase0SubKind,
-  }),
-).annotate({
-  identifier: "ListCheckRunsResponseRunsItemCase1SourceCase0",
-}) as any as S.Schema<ListCheckRunsResponseRunsItemCase1SourceCase0>;
+export const ListCheckRunsResponseRunsItemCase1SourceCase0 =
+  CreateDeploymentCheckRunResponseBodyCase1SourceCase0 as any as S.Schema<ListCheckRunsResponseRunsItemCase1SourceCase0>;
 
 export type ListCheckRunsResponseRunsItemCase1SourceCase1Origin = "platform";
 export const ListCheckRunsResponseRunsItemCase1SourceCase1Origin = S.String;
@@ -1750,14 +1613,8 @@ export interface ListCheckRunsResponseRunsItemCase1SourceCase1 {
   origin: ListCheckRunsResponseRunsItemCase1SourceCase1Origin;
   subKind: ListCheckRunsResponseRunsItemCase1SourceCase1SubKind;
 }
-export const ListCheckRunsResponseRunsItemCase1SourceCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    origin: ListCheckRunsResponseRunsItemCase1SourceCase1Origin,
-    subKind: ListCheckRunsResponseRunsItemCase1SourceCase1SubKind,
-  }),
-).annotate({
-  identifier: "ListCheckRunsResponseRunsItemCase1SourceCase1",
-}) as any as S.Schema<ListCheckRunsResponseRunsItemCase1SourceCase1>;
+export const ListCheckRunsResponseRunsItemCase1SourceCase1 =
+  CreateDeploymentCheckRunResponseBodyCase1SourceCase1 as any as S.Schema<ListCheckRunsResponseRunsItemCase1SourceCase1>;
 
 export type ListCheckRunsResponseRunsItemCase1Source =
   | ListCheckRunsResponseRunsItemCase1SourceCase0
@@ -1906,17 +1763,8 @@ export interface ListDeploymentCheckRunsResponseRunsItemCase0SourceCase0 {
   kind: ListDeploymentCheckRunsResponseRunsItemCase0SourceCase0Kind;
   resourceId?: string;
 }
-export const ListDeploymentCheckRunsResponseRunsItemCase0SourceCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    externalResourceId: S.optional(S.String),
-    integrationConfigurationId: S.String,
-    integrationId: S.String,
-    kind: ListDeploymentCheckRunsResponseRunsItemCase0SourceCase0Kind,
-    resourceId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListDeploymentCheckRunsResponseRunsItemCase0SourceCase0",
-}) as any as S.Schema<ListDeploymentCheckRunsResponseRunsItemCase0SourceCase0>;
+export const ListDeploymentCheckRunsResponseRunsItemCase0SourceCase0 =
+  CreateDeploymentCheckRunResponseBodyCase0SourceCase0 as any as S.Schema<ListDeploymentCheckRunsResponseRunsItemCase0SourceCase0>;
 
 export type ListDeploymentCheckRunsResponseRunsItemCase0SourceCase1Kind = "webhook";
 export const ListDeploymentCheckRunsResponseRunsItemCase0SourceCase1Kind = S.String;
@@ -1925,14 +1773,8 @@ export interface ListDeploymentCheckRunsResponseRunsItemCase0SourceCase1 {
   kind: ListDeploymentCheckRunsResponseRunsItemCase0SourceCase1Kind;
   webhookId?: string;
 }
-export const ListDeploymentCheckRunsResponseRunsItemCase0SourceCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: ListDeploymentCheckRunsResponseRunsItemCase0SourceCase1Kind,
-    webhookId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListDeploymentCheckRunsResponseRunsItemCase0SourceCase1",
-}) as any as S.Schema<ListDeploymentCheckRunsResponseRunsItemCase0SourceCase1>;
+export const ListDeploymentCheckRunsResponseRunsItemCase0SourceCase1 =
+  CreateDeploymentCheckRunResponseBodyCase0SourceCase1 as any as S.Schema<ListDeploymentCheckRunsResponseRunsItemCase0SourceCase1>;
 
 export type ListDeploymentCheckRunsResponseRunsItemCase0SourceCase2Kind = "git-provider";
 export const ListDeploymentCheckRunsResponseRunsItemCase0SourceCase2Kind = S.String;
@@ -1948,15 +1790,8 @@ export interface ListDeploymentCheckRunsResponseRunsItemCase0SourceCase2 {
   kind: ListDeploymentCheckRunsResponseRunsItemCase0SourceCase2Kind;
   provider: ListDeploymentCheckRunsResponseRunsItemCase0SourceCase2Provider;
 }
-export const ListDeploymentCheckRunsResponseRunsItemCase0SourceCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    externalCheckName: S.String,
-    kind: ListDeploymentCheckRunsResponseRunsItemCase0SourceCase2Kind,
-    provider: ListDeploymentCheckRunsResponseRunsItemCase0SourceCase2Provider,
-  }),
-).annotate({
-  identifier: "ListDeploymentCheckRunsResponseRunsItemCase0SourceCase2",
-}) as any as S.Schema<ListDeploymentCheckRunsResponseRunsItemCase0SourceCase2>;
+export const ListDeploymentCheckRunsResponseRunsItemCase0SourceCase2 =
+  CreateDeploymentCheckRunResponseBodyCase0SourceCase2 as any as S.Schema<ListDeploymentCheckRunsResponseRunsItemCase0SourceCase2>;
 
 export type ListDeploymentCheckRunsResponseRunsItemCase0SourceCase3Origin = "api" | "platform";
 export const ListDeploymentCheckRunsResponseRunsItemCase0SourceCase3Origin = S.String;
@@ -1969,14 +1804,8 @@ export interface ListDeploymentCheckRunsResponseRunsItemCase0SourceCase3 {
   origin?: ListDeploymentCheckRunsResponseRunsItemCase0SourceCase3Origin;
   subKind?: ListDeploymentCheckRunsResponseRunsItemCase0SourceCase3SubKind;
 }
-export const ListDeploymentCheckRunsResponseRunsItemCase0SourceCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    origin: S.optional(ListDeploymentCheckRunsResponseRunsItemCase0SourceCase3Origin),
-    subKind: S.optional(ListDeploymentCheckRunsResponseRunsItemCase0SourceCase3SubKind),
-  }),
-).annotate({
-  identifier: "ListDeploymentCheckRunsResponseRunsItemCase0SourceCase3",
-}) as any as S.Schema<ListDeploymentCheckRunsResponseRunsItemCase0SourceCase3>;
+export const ListDeploymentCheckRunsResponseRunsItemCase0SourceCase3 =
+  CreateDeploymentCheckRunResponseBodyCase0SourceCase3 as any as S.Schema<ListDeploymentCheckRunsResponseRunsItemCase0SourceCase3>;
 
 export type ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4Origin = "api";
 export const ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4Origin = S.String;
@@ -1989,13 +1818,7 @@ export interface ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4Selectio
   kind: ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4SelectionCase0Kind;
 }
 export const ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4SelectionCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      kind: ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4SelectionCase0Kind,
-    }),
-  ).annotate({
-    identifier: "ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4SelectionCase0",
-  }) as any as S.Schema<ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4SelectionCase0>;
+  CreateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase0 as any as S.Schema<ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4SelectionCase0>;
 
 export type ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4SelectionCase1Kind = "job";
 export const ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4SelectionCase1Kind = S.String;
@@ -2005,14 +1828,7 @@ export interface ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4Selectio
   kind: ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4SelectionCase1Kind;
 }
 export const ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4SelectionCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      job: S.String,
-      kind: ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4SelectionCase1Kind,
-    }),
-  ).annotate({
-    identifier: "ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4SelectionCase1",
-  }) as any as S.Schema<ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4SelectionCase1>;
+  CreateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase1 as any as S.Schema<ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4SelectionCase1>;
 
 export type ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4SelectionCase2FiltersList =
   Array<string>;
@@ -2190,17 +2006,8 @@ export interface ListDeploymentCheckRunsResponseRunsItemCase1SourceCase0 {
   origin: ListDeploymentCheckRunsResponseRunsItemCase1SourceCase0Origin;
   subKind: ListDeploymentCheckRunsResponseRunsItemCase1SourceCase0SubKind;
 }
-export const ListDeploymentCheckRunsResponseRunsItemCase1SourceCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    invocationAttempt: S.optional(S.Number),
-    invocationId: S.String,
-    jobDefinitionId: S.String,
-    origin: ListDeploymentCheckRunsResponseRunsItemCase1SourceCase0Origin,
-    subKind: ListDeploymentCheckRunsResponseRunsItemCase1SourceCase0SubKind,
-  }),
-).annotate({
-  identifier: "ListDeploymentCheckRunsResponseRunsItemCase1SourceCase0",
-}) as any as S.Schema<ListDeploymentCheckRunsResponseRunsItemCase1SourceCase0>;
+export const ListDeploymentCheckRunsResponseRunsItemCase1SourceCase0 =
+  CreateDeploymentCheckRunResponseBodyCase1SourceCase0 as any as S.Schema<ListDeploymentCheckRunsResponseRunsItemCase1SourceCase0>;
 
 export type ListDeploymentCheckRunsResponseRunsItemCase1SourceCase1Origin = "platform";
 export const ListDeploymentCheckRunsResponseRunsItemCase1SourceCase1Origin = S.String;
@@ -2213,14 +2020,8 @@ export interface ListDeploymentCheckRunsResponseRunsItemCase1SourceCase1 {
   origin: ListDeploymentCheckRunsResponseRunsItemCase1SourceCase1Origin;
   subKind: ListDeploymentCheckRunsResponseRunsItemCase1SourceCase1SubKind;
 }
-export const ListDeploymentCheckRunsResponseRunsItemCase1SourceCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    origin: ListDeploymentCheckRunsResponseRunsItemCase1SourceCase1Origin,
-    subKind: ListDeploymentCheckRunsResponseRunsItemCase1SourceCase1SubKind,
-  }),
-).annotate({
-  identifier: "ListDeploymentCheckRunsResponseRunsItemCase1SourceCase1",
-}) as any as S.Schema<ListDeploymentCheckRunsResponseRunsItemCase1SourceCase1>;
+export const ListDeploymentCheckRunsResponseRunsItemCase1SourceCase1 =
+  CreateDeploymentCheckRunResponseBodyCase1SourceCase1 as any as S.Schema<ListDeploymentCheckRunsResponseRunsItemCase1SourceCase1>;
 
 export type ListDeploymentCheckRunsResponseRunsItemCase1Source =
   | ListDeploymentCheckRunsResponseRunsItemCase1SourceCase0
@@ -2354,17 +2155,8 @@ export interface ListProjectChecksResponseChecksItemSourceCase0 {
   kind: ListProjectChecksResponseChecksItemSourceCase0Kind;
   resourceId?: string;
 }
-export const ListProjectChecksResponseChecksItemSourceCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    externalResourceId: S.optional(S.String),
-    integrationConfigurationId: S.String,
-    integrationId: S.String,
-    kind: ListProjectChecksResponseChecksItemSourceCase0Kind,
-    resourceId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListProjectChecksResponseChecksItemSourceCase0",
-}) as any as S.Schema<ListProjectChecksResponseChecksItemSourceCase0>;
+export const ListProjectChecksResponseChecksItemSourceCase0 =
+  CreateDeploymentCheckRunResponseBodyCase0SourceCase0 as any as S.Schema<ListProjectChecksResponseChecksItemSourceCase0>;
 
 export type ListProjectChecksResponseChecksItemSourceCase1Kind = "webhook";
 export const ListProjectChecksResponseChecksItemSourceCase1Kind = S.String;
@@ -2373,14 +2165,8 @@ export interface ListProjectChecksResponseChecksItemSourceCase1 {
   kind: ListProjectChecksResponseChecksItemSourceCase1Kind;
   webhookId?: string;
 }
-export const ListProjectChecksResponseChecksItemSourceCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: ListProjectChecksResponseChecksItemSourceCase1Kind,
-    webhookId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListProjectChecksResponseChecksItemSourceCase1",
-}) as any as S.Schema<ListProjectChecksResponseChecksItemSourceCase1>;
+export const ListProjectChecksResponseChecksItemSourceCase1 =
+  CreateDeploymentCheckRunResponseBodyCase0SourceCase1 as any as S.Schema<ListProjectChecksResponseChecksItemSourceCase1>;
 
 export type ListProjectChecksResponseChecksItemSourceCase2Kind = "git-provider";
 export const ListProjectChecksResponseChecksItemSourceCase2Kind = S.String;
@@ -2396,15 +2182,8 @@ export interface ListProjectChecksResponseChecksItemSourceCase2 {
   kind: ListProjectChecksResponseChecksItemSourceCase2Kind;
   provider: ListProjectChecksResponseChecksItemSourceCase2Provider;
 }
-export const ListProjectChecksResponseChecksItemSourceCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    externalCheckName: S.String,
-    kind: ListProjectChecksResponseChecksItemSourceCase2Kind,
-    provider: ListProjectChecksResponseChecksItemSourceCase2Provider,
-  }),
-).annotate({
-  identifier: "ListProjectChecksResponseChecksItemSourceCase2",
-}) as any as S.Schema<ListProjectChecksResponseChecksItemSourceCase2>;
+export const ListProjectChecksResponseChecksItemSourceCase2 =
+  CreateDeploymentCheckRunResponseBodyCase0SourceCase2 as any as S.Schema<ListProjectChecksResponseChecksItemSourceCase2>;
 
 export type ListProjectChecksResponseChecksItemSource =
   | ListProjectChecksResponseChecksItemSourceCase0
@@ -2586,17 +2365,8 @@ export interface UpdateDeploymentCheckRunResponseBodyCase0SourceCase0 {
   kind: UpdateDeploymentCheckRunResponseBodyCase0SourceCase0Kind;
   resourceId?: string;
 }
-export const UpdateDeploymentCheckRunResponseBodyCase0SourceCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    externalResourceId: S.optional(S.String),
-    integrationConfigurationId: S.String,
-    integrationId: S.String,
-    kind: UpdateDeploymentCheckRunResponseBodyCase0SourceCase0Kind,
-    resourceId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateDeploymentCheckRunResponseBodyCase0SourceCase0",
-}) as any as S.Schema<UpdateDeploymentCheckRunResponseBodyCase0SourceCase0>;
+export const UpdateDeploymentCheckRunResponseBodyCase0SourceCase0 =
+  CreateDeploymentCheckRunResponseBodyCase0SourceCase0 as any as S.Schema<UpdateDeploymentCheckRunResponseBodyCase0SourceCase0>;
 
 export type UpdateDeploymentCheckRunResponseBodyCase0SourceCase1Kind = "webhook";
 export const UpdateDeploymentCheckRunResponseBodyCase0SourceCase1Kind = S.String;
@@ -2605,14 +2375,8 @@ export interface UpdateDeploymentCheckRunResponseBodyCase0SourceCase1 {
   kind: UpdateDeploymentCheckRunResponseBodyCase0SourceCase1Kind;
   webhookId?: string;
 }
-export const UpdateDeploymentCheckRunResponseBodyCase0SourceCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: UpdateDeploymentCheckRunResponseBodyCase0SourceCase1Kind,
-    webhookId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateDeploymentCheckRunResponseBodyCase0SourceCase1",
-}) as any as S.Schema<UpdateDeploymentCheckRunResponseBodyCase0SourceCase1>;
+export const UpdateDeploymentCheckRunResponseBodyCase0SourceCase1 =
+  CreateDeploymentCheckRunResponseBodyCase0SourceCase1 as any as S.Schema<UpdateDeploymentCheckRunResponseBodyCase0SourceCase1>;
 
 export type UpdateDeploymentCheckRunResponseBodyCase0SourceCase2Kind = "git-provider";
 export const UpdateDeploymentCheckRunResponseBodyCase0SourceCase2Kind = S.String;
@@ -2628,15 +2392,8 @@ export interface UpdateDeploymentCheckRunResponseBodyCase0SourceCase2 {
   kind: UpdateDeploymentCheckRunResponseBodyCase0SourceCase2Kind;
   provider: UpdateDeploymentCheckRunResponseBodyCase0SourceCase2Provider;
 }
-export const UpdateDeploymentCheckRunResponseBodyCase0SourceCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    externalCheckName: S.String,
-    kind: UpdateDeploymentCheckRunResponseBodyCase0SourceCase2Kind,
-    provider: UpdateDeploymentCheckRunResponseBodyCase0SourceCase2Provider,
-  }),
-).annotate({
-  identifier: "UpdateDeploymentCheckRunResponseBodyCase0SourceCase2",
-}) as any as S.Schema<UpdateDeploymentCheckRunResponseBodyCase0SourceCase2>;
+export const UpdateDeploymentCheckRunResponseBodyCase0SourceCase2 =
+  CreateDeploymentCheckRunResponseBodyCase0SourceCase2 as any as S.Schema<UpdateDeploymentCheckRunResponseBodyCase0SourceCase2>;
 
 export type UpdateDeploymentCheckRunResponseBodyCase0SourceCase3Origin = "api" | "platform";
 export const UpdateDeploymentCheckRunResponseBodyCase0SourceCase3Origin = S.String;
@@ -2649,14 +2406,8 @@ export interface UpdateDeploymentCheckRunResponseBodyCase0SourceCase3 {
   origin?: UpdateDeploymentCheckRunResponseBodyCase0SourceCase3Origin;
   subKind?: UpdateDeploymentCheckRunResponseBodyCase0SourceCase3SubKind;
 }
-export const UpdateDeploymentCheckRunResponseBodyCase0SourceCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    origin: S.optional(UpdateDeploymentCheckRunResponseBodyCase0SourceCase3Origin),
-    subKind: S.optional(UpdateDeploymentCheckRunResponseBodyCase0SourceCase3SubKind),
-  }),
-).annotate({
-  identifier: "UpdateDeploymentCheckRunResponseBodyCase0SourceCase3",
-}) as any as S.Schema<UpdateDeploymentCheckRunResponseBodyCase0SourceCase3>;
+export const UpdateDeploymentCheckRunResponseBodyCase0SourceCase3 =
+  CreateDeploymentCheckRunResponseBodyCase0SourceCase3 as any as S.Schema<UpdateDeploymentCheckRunResponseBodyCase0SourceCase3>;
 
 export type UpdateDeploymentCheckRunResponseBodyCase0SourceCase4Origin = "api";
 export const UpdateDeploymentCheckRunResponseBodyCase0SourceCase4Origin = S.String;
@@ -2668,13 +2419,7 @@ export interface UpdateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCa
   kind: UpdateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase0Kind;
 }
 export const UpdateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      kind: UpdateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase0Kind,
-    }),
-  ).annotate({
-    identifier: "UpdateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase0",
-  }) as any as S.Schema<UpdateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase0>;
+  CreateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase0 as any as S.Schema<UpdateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase0>;
 
 export type UpdateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase1Kind = "job";
 export const UpdateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase1Kind = S.String;
@@ -2684,14 +2429,7 @@ export interface UpdateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCa
   kind: UpdateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase1Kind;
 }
 export const UpdateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      job: S.String,
-      kind: UpdateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase1Kind,
-    }),
-  ).annotate({
-    identifier: "UpdateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase1",
-  }) as any as S.Schema<UpdateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase1>;
+  CreateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase1 as any as S.Schema<UpdateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase1>;
 
 export type UpdateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2FiltersList =
   Array<string>;
@@ -2869,17 +2607,8 @@ export interface UpdateDeploymentCheckRunResponseBodyCase1SourceCase0 {
   origin: UpdateDeploymentCheckRunResponseBodyCase1SourceCase0Origin;
   subKind: UpdateDeploymentCheckRunResponseBodyCase1SourceCase0SubKind;
 }
-export const UpdateDeploymentCheckRunResponseBodyCase1SourceCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    invocationAttempt: S.optional(S.Number),
-    invocationId: S.String,
-    jobDefinitionId: S.String,
-    origin: UpdateDeploymentCheckRunResponseBodyCase1SourceCase0Origin,
-    subKind: UpdateDeploymentCheckRunResponseBodyCase1SourceCase0SubKind,
-  }),
-).annotate({
-  identifier: "UpdateDeploymentCheckRunResponseBodyCase1SourceCase0",
-}) as any as S.Schema<UpdateDeploymentCheckRunResponseBodyCase1SourceCase0>;
+export const UpdateDeploymentCheckRunResponseBodyCase1SourceCase0 =
+  CreateDeploymentCheckRunResponseBodyCase1SourceCase0 as any as S.Schema<UpdateDeploymentCheckRunResponseBodyCase1SourceCase0>;
 
 export type UpdateDeploymentCheckRunResponseBodyCase1SourceCase1Origin = "platform";
 export const UpdateDeploymentCheckRunResponseBodyCase1SourceCase1Origin = S.String;
@@ -2892,14 +2621,8 @@ export interface UpdateDeploymentCheckRunResponseBodyCase1SourceCase1 {
   origin: UpdateDeploymentCheckRunResponseBodyCase1SourceCase1Origin;
   subKind: UpdateDeploymentCheckRunResponseBodyCase1SourceCase1SubKind;
 }
-export const UpdateDeploymentCheckRunResponseBodyCase1SourceCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    origin: UpdateDeploymentCheckRunResponseBodyCase1SourceCase1Origin,
-    subKind: UpdateDeploymentCheckRunResponseBodyCase1SourceCase1SubKind,
-  }),
-).annotate({
-  identifier: "UpdateDeploymentCheckRunResponseBodyCase1SourceCase1",
-}) as any as S.Schema<UpdateDeploymentCheckRunResponseBodyCase1SourceCase1>;
+export const UpdateDeploymentCheckRunResponseBodyCase1SourceCase1 =
+  CreateDeploymentCheckRunResponseBodyCase1SourceCase1 as any as S.Schema<UpdateDeploymentCheckRunResponseBodyCase1SourceCase1>;
 
 export type UpdateDeploymentCheckRunResponseBodyCase1Source =
   | UpdateDeploymentCheckRunResponseBodyCase1SourceCase0
@@ -3042,17 +2765,8 @@ export interface UpdateProjectCheckResponseSourceCase0 {
   kind: UpdateProjectCheckResponseSourceCase0Kind;
   resourceId?: string;
 }
-export const UpdateProjectCheckResponseSourceCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    externalResourceId: S.optional(S.String),
-    integrationConfigurationId: S.String,
-    integrationId: S.String,
-    kind: UpdateProjectCheckResponseSourceCase0Kind,
-    resourceId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateProjectCheckResponseSourceCase0",
-}) as any as S.Schema<UpdateProjectCheckResponseSourceCase0>;
+export const UpdateProjectCheckResponseSourceCase0 =
+  CreateDeploymentCheckRunResponseBodyCase0SourceCase0 as any as S.Schema<UpdateProjectCheckResponseSourceCase0>;
 
 export type UpdateProjectCheckResponseSourceCase1Kind = "webhook";
 export const UpdateProjectCheckResponseSourceCase1Kind = S.String;
@@ -3061,14 +2775,8 @@ export interface UpdateProjectCheckResponseSourceCase1 {
   kind: UpdateProjectCheckResponseSourceCase1Kind;
   webhookId?: string;
 }
-export const UpdateProjectCheckResponseSourceCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: UpdateProjectCheckResponseSourceCase1Kind,
-    webhookId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateProjectCheckResponseSourceCase1",
-}) as any as S.Schema<UpdateProjectCheckResponseSourceCase1>;
+export const UpdateProjectCheckResponseSourceCase1 =
+  CreateDeploymentCheckRunResponseBodyCase0SourceCase1 as any as S.Schema<UpdateProjectCheckResponseSourceCase1>;
 
 export type UpdateProjectCheckResponseSourceCase2Kind = "git-provider";
 export const UpdateProjectCheckResponseSourceCase2Kind = S.String;
@@ -3081,15 +2789,8 @@ export interface UpdateProjectCheckResponseSourceCase2 {
   kind: UpdateProjectCheckResponseSourceCase2Kind;
   provider: UpdateProjectCheckResponseSourceCase2Provider;
 }
-export const UpdateProjectCheckResponseSourceCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    externalCheckName: S.String,
-    kind: UpdateProjectCheckResponseSourceCase2Kind,
-    provider: UpdateProjectCheckResponseSourceCase2Provider,
-  }),
-).annotate({
-  identifier: "UpdateProjectCheckResponseSourceCase2",
-}) as any as S.Schema<UpdateProjectCheckResponseSourceCase2>;
+export const UpdateProjectCheckResponseSourceCase2 =
+  CreateDeploymentCheckRunResponseBodyCase0SourceCase2 as any as S.Schema<UpdateProjectCheckResponseSourceCase2>;
 
 export type UpdateProjectCheckResponseSource =
   | UpdateProjectCheckResponseSourceCase0

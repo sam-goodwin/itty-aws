@@ -816,14 +816,8 @@ export interface FhirServicesCreateOrUpdateRequestIdentity {
   type: FhirServicesCreateOrUpdateRequestIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput;
 }
-export const FhirServicesCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: FhirServicesCreateOrUpdateRequestIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
-  }),
-).annotate({
-  identifier: "FhirServicesCreateOrUpdateRequestIdentity",
-}) as any as S.Schema<FhirServicesCreateOrUpdateRequestIdentity>;
+export const FhirServicesCreateOrUpdateRequestIdentity =
+  DicomServicesCreateOrUpdateRequestIdentity as any as S.Schema<FhirServicesCreateOrUpdateRequestIdentity>;
 
 /** The kind of the service. */
 export type FhirServicesCreateOrUpdateRequestKind = "fhir-Stu3" | "fhir-R4";
@@ -1176,16 +1170,8 @@ export interface FhirServicesCreateOrUpdateResponseIdentity {
   tenantId?: string;
   userAssignedIdentities?: UserAssignedIdentities;
 }
-export const FhirServicesCreateOrUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: FhirServicesCreateOrUpdateResponseIdentityType,
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "FhirServicesCreateOrUpdateResponseIdentity",
-}) as any as S.Schema<FhirServicesCreateOrUpdateResponseIdentity>;
+export const FhirServicesCreateOrUpdateResponseIdentity =
+  DicomServicesCreateOrUpdateResponseIdentity as any as S.Schema<FhirServicesCreateOrUpdateResponseIdentity>;
 
 /** The kind of the service. */
 export type FhirServicesCreateOrUpdateResponseKind = "fhir-Stu3" | "fhir-R4";
@@ -1335,16 +1321,8 @@ export interface GetDicomServiceResponseIdentity {
   tenantId?: string;
   userAssignedIdentities?: UserAssignedIdentities;
 }
-export const GetDicomServiceResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: GetDicomServiceResponseIdentityType,
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "GetDicomServiceResponseIdentity",
-}) as any as S.Schema<GetDicomServiceResponseIdentity>;
+export const GetDicomServiceResponseIdentity =
+  DicomServicesCreateOrUpdateResponseIdentity as any as S.Schema<GetDicomServiceResponseIdentity>;
 
 export interface GetDicomServiceResponse {
   /** Resource tags. */
@@ -1429,16 +1407,8 @@ export interface GetFhirServiceResponseIdentity {
   tenantId?: string;
   userAssignedIdentities?: UserAssignedIdentities;
 }
-export const GetFhirServiceResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: GetFhirServiceResponseIdentityType,
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "GetFhirServiceResponseIdentity",
-}) as any as S.Schema<GetFhirServiceResponseIdentity>;
+export const GetFhirServiceResponseIdentity =
+  DicomServicesCreateOrUpdateResponseIdentity as any as S.Schema<GetFhirServiceResponseIdentity>;
 
 /** The kind of the service. */
 export type GetFhirServiceResponseKind = "fhir-Stu3" | "fhir-R4";
@@ -1530,16 +1500,8 @@ export interface GetIotConnectorResponseIdentity {
   tenantId?: string;
   userAssignedIdentities?: UserAssignedIdentities;
 }
-export const GetIotConnectorResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: GetIotConnectorResponseIdentityType,
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "GetIotConnectorResponseIdentity",
-}) as any as S.Schema<GetIotConnectorResponseIdentity>;
+export const GetIotConnectorResponseIdentity =
+  DicomServicesCreateOrUpdateResponseIdentity as any as S.Schema<GetIotConnectorResponseIdentity>;
 
 /** Event Hub ingestion endpoint configuration */
 export interface IotEventHubIngestionEndpointConfiguration {
@@ -2405,20 +2367,8 @@ export interface GetWorkspacePrivateEndpointConnectionResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetWorkspacePrivateEndpointConnectionResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetWorkspacePrivateEndpointConnectionResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      GetWorkspacePrivateEndpointConnectionResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetWorkspacePrivateEndpointConnectionResponseSystemData",
-}) as any as S.Schema<GetWorkspacePrivateEndpointConnectionResponseSystemData>;
+export const GetWorkspacePrivateEndpointConnectionResponseSystemData =
+  GetPrivateEndpointConnectionResponseSystemData as any as S.Schema<GetWorkspacePrivateEndpointConnectionResponseSystemData>;
 
 export interface GetWorkspacePrivateEndpointConnectionResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2432,17 +2382,8 @@ export interface GetWorkspacePrivateEndpointConnectionResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetWorkspacePrivateEndpointConnectionResponseSystemData;
 }
-export const GetWorkspacePrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(PrivateEndpointConnectionProperties),
-    systemData: S.optional(GetWorkspacePrivateEndpointConnectionResponseSystemData),
-  }),
-).annotate({
-  identifier: "GetWorkspacePrivateEndpointConnectionResponse",
-}) as any as S.Schema<GetWorkspacePrivateEndpointConnectionResponse>;
+export const GetWorkspacePrivateEndpointConnectionResponse =
+  GetPrivateEndpointConnectionResponse as any as S.Schema<GetWorkspacePrivateEndpointConnectionResponse>;
 
 export interface GetWorkspacePrivateLinkResourceRequest {
   /** The ID of the target subscription. */
@@ -2503,20 +2444,8 @@ export interface GetWorkspacePrivateLinkResourceResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetWorkspacePrivateLinkResourceResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetWorkspacePrivateLinkResourceResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      GetWorkspacePrivateLinkResourceResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetWorkspacePrivateLinkResourceResponseSystemData",
-}) as any as S.Schema<GetWorkspacePrivateLinkResourceResponseSystemData>;
+export const GetWorkspacePrivateLinkResourceResponseSystemData =
+  GetPrivateEndpointConnectionResponseSystemData as any as S.Schema<GetWorkspacePrivateLinkResourceResponseSystemData>;
 
 export interface GetWorkspacePrivateLinkResourceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2639,14 +2568,8 @@ export interface IotConnectorsCreateOrUpdateRequestIdentity {
   type: IotConnectorsCreateOrUpdateRequestIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput;
 }
-export const IotConnectorsCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: IotConnectorsCreateOrUpdateRequestIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
-  }),
-).annotate({
-  identifier: "IotConnectorsCreateOrUpdateRequestIdentity",
-}) as any as S.Schema<IotConnectorsCreateOrUpdateRequestIdentity>;
+export const IotConnectorsCreateOrUpdateRequestIdentity =
+  DicomServicesCreateOrUpdateRequestIdentity as any as S.Schema<IotConnectorsCreateOrUpdateRequestIdentity>;
 
 /** IoT Connector properties. */
 export interface IotConnectorPropertiesInput {
@@ -2730,16 +2653,8 @@ export interface IotConnectorsCreateOrUpdateResponseIdentity {
   tenantId?: string;
   userAssignedIdentities?: UserAssignedIdentities;
 }
-export const IotConnectorsCreateOrUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: IotConnectorsCreateOrUpdateResponseIdentityType,
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "IotConnectorsCreateOrUpdateResponseIdentity",
-}) as any as S.Schema<IotConnectorsCreateOrUpdateResponseIdentity>;
+export const IotConnectorsCreateOrUpdateResponseIdentity =
+  DicomServicesCreateOrUpdateResponseIdentity as any as S.Schema<IotConnectorsCreateOrUpdateResponseIdentity>;
 
 export interface IotConnectorsCreateOrUpdateResponse {
   /** Resource tags. */
@@ -3016,14 +2931,7 @@ export interface FhirServiceIdentity {
   tenantId?: string;
   userAssignedIdentities?: UserAssignedIdentities;
 }
-export const FhirServiceIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: FhirServiceIdentityType,
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({ identifier: "FhirServiceIdentity" }) as any as S.Schema<FhirServiceIdentity>;
+export const FhirServiceIdentity = DicomServiceIdentity as any as S.Schema<FhirServiceIdentity>;
 
 /** The kind of the service. */
 export type FhirServiceKind = "fhir-Stu3" | "fhir-R4";
@@ -3135,14 +3043,7 @@ export interface IotConnectorIdentity {
   tenantId?: string;
   userAssignedIdentities?: UserAssignedIdentities;
 }
-export const IotConnectorIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: IotConnectorIdentityType,
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({ identifier: "IotConnectorIdentity" }) as any as S.Schema<IotConnectorIdentity>;
+export const IotConnectorIdentity = DicomServiceIdentity as any as S.Schema<IotConnectorIdentity>;
 
 /** IoT Connector definition. */
 export interface IotConnector {
@@ -3480,20 +3381,8 @@ export interface PrivateEndpointConnectionDescriptionSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const PrivateEndpointConnectionDescriptionSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(PrivateEndpointConnectionDescriptionSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      PrivateEndpointConnectionDescriptionSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PrivateEndpointConnectionDescriptionSystemData",
-}) as any as S.Schema<PrivateEndpointConnectionDescriptionSystemData>;
+export const PrivateEndpointConnectionDescriptionSystemData =
+  GetPrivateEndpointConnectionResponseSystemData as any as S.Schema<PrivateEndpointConnectionDescriptionSystemData>;
 
 /** The Private Endpoint Connection resource. */
 export interface PrivateEndpointConnectionDescription {
@@ -3508,17 +3397,8 @@ export interface PrivateEndpointConnectionDescription {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: PrivateEndpointConnectionDescriptionSystemData;
 }
-export const PrivateEndpointConnectionDescription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(PrivateEndpointConnectionProperties),
-    systemData: S.optional(PrivateEndpointConnectionDescriptionSystemData),
-  }),
-).annotate({
-  identifier: "PrivateEndpointConnectionDescription",
-}) as any as S.Schema<PrivateEndpointConnectionDescription>;
+export const PrivateEndpointConnectionDescription =
+  GetPrivateEndpointConnectionResponse as any as S.Schema<PrivateEndpointConnectionDescription>;
 
 /** Array of private endpoint connections */
 export type PrivateEndpointConnectionListResultDescriptionValueList =
@@ -3596,18 +3476,8 @@ export interface PrivateLinkResourceDescriptionSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const PrivateLinkResourceDescriptionSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(PrivateLinkResourceDescriptionSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(PrivateLinkResourceDescriptionSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PrivateLinkResourceDescriptionSystemData",
-}) as any as S.Schema<PrivateLinkResourceDescriptionSystemData>;
+export const PrivateLinkResourceDescriptionSystemData =
+  GetPrivateLinkResourceResponseSystemData as any as S.Schema<PrivateLinkResourceDescriptionSystemData>;
 
 /** The Private Endpoint Connection resource. */
 export interface PrivateLinkResourceDescription {
@@ -3622,17 +3492,8 @@ export interface PrivateLinkResourceDescription {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: PrivateLinkResourceDescriptionSystemData;
 }
-export const PrivateLinkResourceDescription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(PrivateLinkResourceProperties),
-    systemData: S.optional(PrivateLinkResourceDescriptionSystemData),
-  }),
-).annotate({
-  identifier: "PrivateLinkResourceDescription",
-}) as any as S.Schema<PrivateLinkResourceDescription>;
+export const PrivateLinkResourceDescription =
+  GetPrivateLinkResourceResponse as any as S.Schema<PrivateLinkResourceDescription>;
 
 /** Array of private link resources */
 export type PrivateLinkResourceListResultDescriptionValueList =
@@ -3698,15 +3559,8 @@ export interface ServicesDescriptionIdentity {
   /** Type of identity being specified, currently SystemAssigned and None are allowed. */
   type?: ServicesDescriptionIdentityType;
 }
-export const ServicesDescriptionIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: S.optional(ServicesDescriptionIdentityType),
-  }),
-).annotate({
-  identifier: "ServicesDescriptionIdentity",
-}) as any as S.Schema<ServicesDescriptionIdentity>;
+export const ServicesDescriptionIdentity =
+  GetServiceResponseIdentity as any as S.Schema<ServicesDescriptionIdentity>;
 
 /** The description of the service. */
 export interface ServicesDescription {
@@ -4238,15 +4092,8 @@ export interface ServicesCreateOrUpdateResponseIdentity {
   /** Type of identity being specified, currently SystemAssigned and None are allowed. */
   type?: ServicesCreateOrUpdateResponseIdentityType;
 }
-export const ServicesCreateOrUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: S.optional(ServicesCreateOrUpdateResponseIdentityType),
-  }),
-).annotate({
-  identifier: "ServicesCreateOrUpdateResponseIdentity",
-}) as any as S.Schema<ServicesCreateOrUpdateResponseIdentity>;
+export const ServicesCreateOrUpdateResponseIdentity =
+  GetServiceResponseIdentity as any as S.Schema<ServicesCreateOrUpdateResponseIdentity>;
 
 export interface ServicesCreateOrUpdateResponse {
   /** The resource identifier. */
@@ -4306,14 +4153,8 @@ export interface UpdateDicomServiceRequestIdentity {
   type: UpdateDicomServiceRequestIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput;
 }
-export const UpdateDicomServiceRequestIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: UpdateDicomServiceRequestIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
-  }),
-).annotate({
-  identifier: "UpdateDicomServiceRequestIdentity",
-}) as any as S.Schema<UpdateDicomServiceRequestIdentity>;
+export const UpdateDicomServiceRequestIdentity =
+  DicomServicesCreateOrUpdateRequestIdentity as any as S.Schema<UpdateDicomServiceRequestIdentity>;
 
 export interface UpdateDicomServiceRequest {
   /** The ID of the target subscription. */
@@ -4372,16 +4213,8 @@ export interface UpdateDicomServiceResponseIdentity {
   tenantId?: string;
   userAssignedIdentities?: UserAssignedIdentities;
 }
-export const UpdateDicomServiceResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: UpdateDicomServiceResponseIdentityType,
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "UpdateDicomServiceResponseIdentity",
-}) as any as S.Schema<UpdateDicomServiceResponseIdentity>;
+export const UpdateDicomServiceResponseIdentity =
+  DicomServicesCreateOrUpdateResponseIdentity as any as S.Schema<UpdateDicomServiceResponseIdentity>;
 
 export interface UpdateDicomServiceResponse {
   /** Resource tags. */
@@ -4438,14 +4271,8 @@ export interface UpdateFhirServiceRequestIdentity {
   type: UpdateFhirServiceRequestIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput;
 }
-export const UpdateFhirServiceRequestIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: UpdateFhirServiceRequestIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
-  }),
-).annotate({
-  identifier: "UpdateFhirServiceRequestIdentity",
-}) as any as S.Schema<UpdateFhirServiceRequestIdentity>;
+export const UpdateFhirServiceRequestIdentity =
+  DicomServicesCreateOrUpdateRequestIdentity as any as S.Schema<UpdateFhirServiceRequestIdentity>;
 
 export interface UpdateFhirServiceRequest {
   /** The ID of the target subscription. */
@@ -4502,16 +4329,8 @@ export interface UpdateFhirServiceResponseIdentity {
   tenantId?: string;
   userAssignedIdentities?: UserAssignedIdentities;
 }
-export const UpdateFhirServiceResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: UpdateFhirServiceResponseIdentityType,
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "UpdateFhirServiceResponseIdentity",
-}) as any as S.Schema<UpdateFhirServiceResponseIdentity>;
+export const UpdateFhirServiceResponseIdentity =
+  DicomServicesCreateOrUpdateResponseIdentity as any as S.Schema<UpdateFhirServiceResponseIdentity>;
 
 /** The kind of the service. */
 export type UpdateFhirServiceResponseKind = "fhir-Stu3" | "fhir-R4";
@@ -4575,14 +4394,8 @@ export interface UpdateIotConnectorRequestIdentity {
   type: UpdateIotConnectorRequestIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput;
 }
-export const UpdateIotConnectorRequestIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: UpdateIotConnectorRequestIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
-  }),
-).annotate({
-  identifier: "UpdateIotConnectorRequestIdentity",
-}) as any as S.Schema<UpdateIotConnectorRequestIdentity>;
+export const UpdateIotConnectorRequestIdentity =
+  DicomServicesCreateOrUpdateRequestIdentity as any as S.Schema<UpdateIotConnectorRequestIdentity>;
 
 export interface UpdateIotConnectorRequest {
   /** The ID of the target subscription. */
@@ -4641,16 +4454,8 @@ export interface UpdateIotConnectorResponseIdentity {
   tenantId?: string;
   userAssignedIdentities?: UserAssignedIdentities;
 }
-export const UpdateIotConnectorResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: UpdateIotConnectorResponseIdentityType,
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "UpdateIotConnectorResponseIdentity",
-}) as any as S.Schema<UpdateIotConnectorResponseIdentity>;
+export const UpdateIotConnectorResponseIdentity =
+  DicomServicesCreateOrUpdateResponseIdentity as any as S.Schema<UpdateIotConnectorResponseIdentity>;
 
 export interface UpdateIotConnectorResponse {
   /** Resource tags. */
@@ -4761,15 +4566,8 @@ export interface UpdateServiceResponseIdentity {
   /** Type of identity being specified, currently SystemAssigned and None are allowed. */
   type?: UpdateServiceResponseIdentityType;
 }
-export const UpdateServiceResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: S.optional(UpdateServiceResponseIdentityType),
-  }),
-).annotate({
-  identifier: "UpdateServiceResponseIdentity",
-}) as any as S.Schema<UpdateServiceResponseIdentity>;
+export const UpdateServiceResponseIdentity =
+  GetServiceResponseIdentity as any as S.Schema<UpdateServiceResponseIdentity>;
 
 export interface UpdateServiceResponse {
   /** The resource identifier. */

@@ -781,11 +781,9 @@ export const MonthName = S.String;
 export interface Month {
   name?: MonthName;
 }
-export const Month = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.optional(MonthName) }),
-).annotate({ identifier: "Month" }) as any as S.Schema<Month>;
+export const Month = DayOfWeek as any as S.Schema<Month>;
 export type Months = Month[];
-export const Months = /*@__PURE__*/ S.Array(Month);
+export const Months = DaysOfWeek as any as S.Schema<Months>;
 export type PatchingModeType = "ROLLING" | "NONROLLING" | (string & {});
 export const PatchingModeType = S.String;
 

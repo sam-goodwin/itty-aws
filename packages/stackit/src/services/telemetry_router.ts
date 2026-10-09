@@ -620,16 +620,8 @@ export interface AccessTokenBaseResponse {
   id: string;
   status: AccessTokenBaseResponseStatus;
 }
-export const AccessTokenBaseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    creatorId: S.String,
-    description: S.optional(S.String),
-    displayName: S.String,
-    expirationTime: S.optional(S.NullOr(S.String)),
-    id: S.String,
-    status: AccessTokenBaseResponseStatus,
-  }),
-).annotate({ identifier: "AccessTokenBaseResponse" }) as any as S.Schema<AccessTokenBaseResponse>;
+export const AccessTokenBaseResponse =
+  GetAccessTokenResponse2 as any as S.Schema<AccessTokenBaseResponse>;
 
 export type ListAccessTokensResponseAccessTokensList = Array<AccessTokenBaseResponse>;
 export const ListAccessTokensResponseAccessTokensList = /*@__PURE__*/ S.Array(

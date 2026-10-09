@@ -292,16 +292,7 @@ export interface S3CompatibleMount {
   /** Prefix within the bucket (optional) */
   bucketPrefix?: string;
 }
-export const S3CompatibleMount = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S3CompatibleMountType,
-    bucketName: S.String,
-    bucketEndpoint: S.String,
-    accessKeyId: S.String.pipe(T.SensitiveValue({})),
-    secretAccessKey: S.String.pipe(T.SensitiveValue({})),
-    bucketPrefix: S.optional(S.String),
-  }),
-).annotate({ identifier: "S3CompatibleMount" }) as any as S.Schema<S3CompatibleMount>;
+export const S3CompatibleMount = R2Mount as any as S.Schema<S3CompatibleMount>;
 
 /** Mount type identifier */
 export type AzureBlobMountType = "azure-blob";

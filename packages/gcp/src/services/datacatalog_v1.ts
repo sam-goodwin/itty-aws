@@ -2214,9 +2214,7 @@ export type GoogleCloudDatacatalogV1SerializedTaxonomyActivatedPolicyTypesItemEn
   GoogleCloudDatacatalogV1SerializedTaxonomyActivatedPolicyTypesItemEnum | (string & {})
 >;
 export const GoogleCloudDatacatalogV1SerializedTaxonomyActivatedPolicyTypesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudDatacatalogV1SerializedTaxonomyActivatedPolicyTypesItemEnum,
-  ) as any as S.Schema<GoogleCloudDatacatalogV1SerializedTaxonomyActivatedPolicyTypesItemEnumList>;
+  GoogleCloudDatacatalogV1TaxonomyActivatedPolicyTypesItemEnumList as any as S.Schema<GoogleCloudDatacatalogV1SerializedTaxonomyActivatedPolicyTypesItemEnumList>;
 
 /** A nested protocol buffer that represents a policy tag and all its descendants. */
 export interface GoogleCloudDatacatalogV1SerializedPolicyTag {

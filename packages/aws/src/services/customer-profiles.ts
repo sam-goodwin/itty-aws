@@ -2074,9 +2074,7 @@ export interface AttributeDimension {
   DimensionType: AttributeDimensionType;
   Values: string[];
 }
-export const AttributeDimension = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DimensionType: AttributeDimensionType, Values: Values }),
-).annotate({ identifier: "AttributeDimension" }) as any as S.Schema<AttributeDimension>;
+export const AttributeDimension = ProfileDimension as any as S.Schema<AttributeDimension>;
 export type CustomAttributes = { [key: string]: AttributeDimension | undefined };
 export const CustomAttributes = /*@__PURE__*/ S.Record(
   S.String,
@@ -2924,7 +2922,7 @@ export type StandardIdentifier =
 export const StandardIdentifier = S.String;
 
 export type StandardIdentifierList = StandardIdentifier[];
-export const StandardIdentifierList = /*@__PURE__*/ S.Array(StandardIdentifier);
+export const StandardIdentifierList = ProfileTypeValues as any as S.Schema<StandardIdentifierList>;
 export type FieldNameList = string[];
 export const FieldNameList = RequestValueList as any as S.Schema<FieldNameList>;
 export interface ObjectTypeKey {

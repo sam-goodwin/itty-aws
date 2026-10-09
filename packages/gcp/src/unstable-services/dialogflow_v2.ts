@@ -3853,9 +3853,7 @@ export type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfi
     | (string & {})
   >;
 export const GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSectionsSectionTypesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSectionsSectionTypesItemEnum,
-  ) as any as S.Schema<GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSectionsSectionTypesItemEnumList>;
+  GoogleCloudDialogflowV2IntentDefaultResponsePlatformsItemEnumList as any as S.Schema<GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSectionsSectionTypesItemEnumList>;
 
 export interface GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSections {
   sectionTypes?: GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSectionsSectionTypesItemEnumList;
@@ -4271,13 +4269,8 @@ export const GoogleCloudDialogflowV2FulfillmentFeatureTypeEnum = S.String;
 export interface GoogleCloudDialogflowV2FulfillmentFeature {
   type?: GoogleCloudDialogflowV2FulfillmentFeatureTypeEnum | (string & {});
 }
-export const GoogleCloudDialogflowV2FulfillmentFeature = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(GoogleCloudDialogflowV2FulfillmentFeatureTypeEnum),
-  }),
-).annotate({
-  identifier: "GoogleCloudDialogflowV2FulfillmentFeature",
-}) as any as S.Schema<GoogleCloudDialogflowV2FulfillmentFeature>;
+export const GoogleCloudDialogflowV2FulfillmentFeature =
+  GoogleCloudDialogflowV2SuggestionFeature as any as S.Schema<GoogleCloudDialogflowV2FulfillmentFeature>;
 
 export type GoogleCloudDialogflowV2FulfillmentFeatureList =
   Array<GoogleCloudDialogflowV2FulfillmentFeature>;
@@ -4701,15 +4694,8 @@ export interface GoogleCloudDialogflowV2SmartReplyModelMetadata {
     | GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypeEnum
     | (string & {});
 }
-export const GoogleCloudDialogflowV2SmartReplyModelMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    trainingModelType: S.optional(
-      GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypeEnum,
-    ),
-  }),
-).annotate({
-  identifier: "GoogleCloudDialogflowV2SmartReplyModelMetadata",
-}) as any as S.Schema<GoogleCloudDialogflowV2SmartReplyModelMetadata>;
+export const GoogleCloudDialogflowV2SmartReplyModelMetadata =
+  GoogleCloudDialogflowV2ArticleSuggestionModelMetadata as any as S.Schema<GoogleCloudDialogflowV2SmartReplyModelMetadata>;
 
 export type GoogleCloudDialogflowV2ConversationModelStateEnum =
   | "STATE_UNSPECIFIED"
@@ -7727,9 +7713,7 @@ export type GoogleCloudDialogflowV2GenerateSuggestionsRequestTriggerEventsItemEn
   GoogleCloudDialogflowV2GenerateSuggestionsRequestTriggerEventsItemEnum | (string & {})
 >;
 export const GoogleCloudDialogflowV2GenerateSuggestionsRequestTriggerEventsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudDialogflowV2GenerateSuggestionsRequestTriggerEventsItemEnum,
-  ) as any as S.Schema<GoogleCloudDialogflowV2GenerateSuggestionsRequestTriggerEventsItemEnumList>;
+  GoogleCloudDialogflowV2IntentDefaultResponsePlatformsItemEnumList as any as S.Schema<GoogleCloudDialogflowV2GenerateSuggestionsRequestTriggerEventsItemEnumList>;
 
 export interface GoogleCloudDialogflowV2GenerateSuggestionsRequest {
   latestMessage?: string;
@@ -7801,9 +7785,7 @@ export type GoogleCloudDialogflowV2GenerateStatelessSuggestionRequestTriggerEven
     GoogleCloudDialogflowV2GenerateStatelessSuggestionRequestTriggerEventsItemEnum | (string & {})
   >;
 export const GoogleCloudDialogflowV2GenerateStatelessSuggestionRequestTriggerEventsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudDialogflowV2GenerateStatelessSuggestionRequestTriggerEventsItemEnum,
-  ) as any as S.Schema<GoogleCloudDialogflowV2GenerateStatelessSuggestionRequestTriggerEventsItemEnumList>;
+  GoogleCloudDialogflowV2IntentDefaultResponsePlatformsItemEnumList as any as S.Schema<GoogleCloudDialogflowV2GenerateStatelessSuggestionRequestTriggerEventsItemEnumList>;
 
 export interface GoogleCloudDialogflowV2GenerateStatelessSuggestionRequest {
   contextReferences?: GoogleCloudDialogflowV2ConversationContextReferenceMap;
@@ -8950,9 +8932,7 @@ export type GoogleCloudDialogflowV2ImportDocumentTemplateKnowledgeTypesItemEnumL
   GoogleCloudDialogflowV2ImportDocumentTemplateKnowledgeTypesItemEnum | (string & {})
 >;
 export const GoogleCloudDialogflowV2ImportDocumentTemplateKnowledgeTypesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudDialogflowV2ImportDocumentTemplateKnowledgeTypesItemEnum,
-  ) as any as S.Schema<GoogleCloudDialogflowV2ImportDocumentTemplateKnowledgeTypesItemEnumList>;
+  GoogleCloudDialogflowV2IntentDefaultResponsePlatformsItemEnumList as any as S.Schema<GoogleCloudDialogflowV2ImportDocumentTemplateKnowledgeTypesItemEnumList>;
 
 export interface GoogleCloudDialogflowV2ImportDocumentTemplate {
   mimeType?: string;

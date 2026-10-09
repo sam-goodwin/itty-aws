@@ -2026,7 +2026,7 @@ export const DescribeConnectorRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DescribeConnectorRequest" }) as any as S.Schema<DescribeConnectorRequest>;
 export type ConnectorTypeList = ConnectorType[];
-export const ConnectorTypeList = /*@__PURE__*/ S.Array(ConnectorType);
+export const ConnectorTypeList = PathPrefixHierarchy as any as S.Schema<ConnectorTypeList>;
 export type ScheduleFrequencyType =
   | "BYMINUTE"
   | "HOURLY"
@@ -2038,9 +2038,10 @@ export type ScheduleFrequencyType =
 export const ScheduleFrequencyType = S.String;
 
 export type SchedulingFrequencyTypeList = ScheduleFrequencyType[];
-export const SchedulingFrequencyTypeList = /*@__PURE__*/ S.Array(ScheduleFrequencyType);
+export const SchedulingFrequencyTypeList =
+  PathPrefixHierarchy as any as S.Schema<SchedulingFrequencyTypeList>;
 export type TriggerTypeList = TriggerType[];
-export const TriggerTypeList = /*@__PURE__*/ S.Array(TriggerType);
+export const TriggerTypeList = PathPrefixHierarchy as any as S.Schema<TriggerTypeList>;
 export interface AmplitudeMetadata {}
 export const AmplitudeMetadata =
   DeleteConnectorProfileResponse as any as S.Schema<AmplitudeMetadata>;
@@ -2065,9 +2066,11 @@ export const RedshiftMetadata = DeleteConnectorProfileResponse as any as S.Schem
 export interface S3Metadata {}
 export const S3Metadata = DeleteConnectorProfileResponse as any as S.Schema<S3Metadata>;
 export type SalesforceDataTransferApiList = SalesforceDataTransferApi[];
-export const SalesforceDataTransferApiList = /*@__PURE__*/ S.Array(SalesforceDataTransferApi);
+export const SalesforceDataTransferApiList =
+  PathPrefixHierarchy as any as S.Schema<SalesforceDataTransferApiList>;
 export type OAuth2GrantTypeSupportedList = OAuth2GrantType[];
-export const OAuth2GrantTypeSupportedList = /*@__PURE__*/ S.Array(OAuth2GrantType);
+export const OAuth2GrantTypeSupportedList =
+  PathPrefixHierarchy as any as S.Schema<OAuth2GrantTypeSupportedList>;
 export interface SalesforceMetadata {
   oAuthScopes?: string[];
   dataTransferApis?: SalesforceDataTransferApi[];
@@ -2337,9 +2340,10 @@ export type Operators =
 export const Operators = S.String;
 
 export type SupportedOperatorList = Operators[];
-export const SupportedOperatorList = /*@__PURE__*/ S.Array(Operators);
+export const SupportedOperatorList = PathPrefixHierarchy as any as S.Schema<SupportedOperatorList>;
 export type SupportedWriteOperationList = WriteOperationType[];
-export const SupportedWriteOperationList = /*@__PURE__*/ S.Array(WriteOperationType);
+export const SupportedWriteOperationList =
+  PathPrefixHierarchy as any as S.Schema<SupportedWriteOperationList>;
 export type ConnectorProvisioningType = "LAMBDA" | (string & {});
 export const ConnectorProvisioningType = S.String;
 
@@ -2365,7 +2369,8 @@ export type SupportedDataTransferType = "RECORD" | "FILE" | (string & {});
 export const SupportedDataTransferType = S.String;
 
 export type SupportedDataTransferTypeList = SupportedDataTransferType[];
-export const SupportedDataTransferTypeList = /*@__PURE__*/ S.Array(SupportedDataTransferType);
+export const SupportedDataTransferTypeList =
+  PathPrefixHierarchy as any as S.Schema<SupportedDataTransferTypeList>;
 export type SupportedDataTransferApis = DataTransferApi[];
 export const SupportedDataTransferApis = /*@__PURE__*/ S.Array(DataTransferApi);
 export interface ConnectorConfiguration {
@@ -2466,7 +2471,7 @@ export const DescribeConnectorEntityRequest = /*@__PURE__*/ S.suspend(() =>
 export type Identifier = string;
 export type FieldType = string;
 export type FilterOperatorList = Operator[];
-export const FilterOperatorList = /*@__PURE__*/ S.Array(Operator);
+export const FilterOperatorList = PathPrefixHierarchy as any as S.Schema<FilterOperatorList>;
 export type Value = string;
 export type SupportedValueList = string[];
 export const SupportedValueList = ExecutionIds as any as S.Schema<SupportedValueList>;

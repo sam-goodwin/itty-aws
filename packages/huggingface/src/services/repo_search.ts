@@ -504,9 +504,8 @@ export const QuickSearchPostRequestOrgsFilterCase0Item = S.String;
 export type QuickSearchPostRequestOrgsFilterCase0List = Array<
   QuickSearchPostRequestOrgsFilterCase0Item | (string & {})
 >;
-export const QuickSearchPostRequestOrgsFilterCase0List = /*@__PURE__*/ S.Array(
-  QuickSearchPostRequestOrgsFilterCase0Item,
-) as any as S.Schema<QuickSearchPostRequestOrgsFilterCase0List>;
+export const QuickSearchPostRequestOrgsFilterCase0List =
+  QuickSearchPostRequestTypeCase0List as any as S.Schema<QuickSearchPostRequestOrgsFilterCase0List>;
 
 export type QuickSearchPostRequestOrgsFilterCase1List = Array<string>;
 export const QuickSearchPostRequestOrgsFilterCase1List =
@@ -529,9 +528,8 @@ export const QuickSearchPostRequestReposFilterCase0Item = S.String;
 export type QuickSearchPostRequestReposFilterCase0List = Array<
   QuickSearchPostRequestReposFilterCase0Item | (string & {})
 >;
-export const QuickSearchPostRequestReposFilterCase0List = /*@__PURE__*/ S.Array(
-  QuickSearchPostRequestReposFilterCase0Item,
-) as any as S.Schema<QuickSearchPostRequestReposFilterCase0List>;
+export const QuickSearchPostRequestReposFilterCase0List =
+  QuickSearchPostRequestTypeCase0List as any as S.Schema<QuickSearchPostRequestReposFilterCase0List>;
 
 export type QuickSearchPostRequestReposFilterCase1List = Array<string>;
 export const QuickSearchPostRequestReposFilterCase1List =
@@ -606,9 +604,8 @@ export const QuickSearchPostRequestPipelinesCase0Item = S.String;
 export type QuickSearchPostRequestPipelinesCase0List = Array<
   QuickSearchPostRequestPipelinesCase0Item | (string & {})
 >;
-export const QuickSearchPostRequestPipelinesCase0List = /*@__PURE__*/ S.Array(
-  QuickSearchPostRequestPipelinesCase0Item,
-) as any as S.Schema<QuickSearchPostRequestPipelinesCase0List>;
+export const QuickSearchPostRequestPipelinesCase0List =
+  QuickSearchPostRequestTypeCase0List as any as S.Schema<QuickSearchPostRequestPipelinesCase0List>;
 
 export type QuickSearchPostRequestPipelinesCase1Case1List = Array<string>;
 export const QuickSearchPostRequestPipelinesCase1Case1List =
@@ -938,9 +935,8 @@ export const SearchFullTextRequestTypeCase1Item = S.String;
 export type SearchFullTextRequestTypeCase1List = Array<
   SearchFullTextRequestTypeCase1Item | (string & {})
 >;
-export const SearchFullTextRequestTypeCase1List = /*@__PURE__*/ S.Array(
-  SearchFullTextRequestTypeCase1Item,
-) as any as S.Schema<SearchFullTextRequestTypeCase1List>;
+export const SearchFullTextRequestTypeCase1List =
+  QuickSearchPostRequestTypeCase0List as any as S.Schema<SearchFullTextRequestTypeCase1List>;
 
 export type SearchFullTextRequestType =
   | SearchFullTextRequestTypeCase0
@@ -1441,9 +1437,8 @@ export const SearchQuickRequestTypeCase0Item = S.String;
 export type SearchQuickRequestTypeCase0List = Array<
   SearchQuickRequestTypeCase0Item | (string & {})
 >;
-export const SearchQuickRequestTypeCase0List = /*@__PURE__*/ S.Array(
-  SearchQuickRequestTypeCase0Item,
-) as any as S.Schema<SearchQuickRequestTypeCase0List>;
+export const SearchQuickRequestTypeCase0List =
+  QuickSearchPostRequestTypeCase0List as any as S.Schema<SearchQuickRequestTypeCase0List>;
 
 export type SearchQuickRequestTypeCase1List = Array<string>;
 export const SearchQuickRequestTypeCase1List =
@@ -1460,9 +1455,8 @@ export const SearchQuickRequestOrgsFilterCase0Item = S.String;
 export type SearchQuickRequestOrgsFilterCase0List = Array<
   SearchQuickRequestOrgsFilterCase0Item | (string & {})
 >;
-export const SearchQuickRequestOrgsFilterCase0List = /*@__PURE__*/ S.Array(
-  SearchQuickRequestOrgsFilterCase0Item,
-) as any as S.Schema<SearchQuickRequestOrgsFilterCase0List>;
+export const SearchQuickRequestOrgsFilterCase0List =
+  QuickSearchPostRequestTypeCase0List as any as S.Schema<SearchQuickRequestOrgsFilterCase0List>;
 
 export type SearchQuickRequestOrgsFilterCase1List = Array<string>;
 export const SearchQuickRequestOrgsFilterCase1List =
@@ -1485,9 +1479,8 @@ export const SearchQuickRequestReposFilterCase0Item = S.String;
 export type SearchQuickRequestReposFilterCase0List = Array<
   SearchQuickRequestReposFilterCase0Item | (string & {})
 >;
-export const SearchQuickRequestReposFilterCase0List = /*@__PURE__*/ S.Array(
-  SearchQuickRequestReposFilterCase0Item,
-) as any as S.Schema<SearchQuickRequestReposFilterCase0List>;
+export const SearchQuickRequestReposFilterCase0List =
+  QuickSearchPostRequestTypeCase0List as any as S.Schema<SearchQuickRequestReposFilterCase0List>;
 
 export type SearchQuickRequestReposFilterCase1List = Array<string>;
 export const SearchQuickRequestReposFilterCase1List =
@@ -1562,9 +1555,8 @@ export const SearchQuickRequestPipelinesCase0Item = S.String;
 export type SearchQuickRequestPipelinesCase0List = Array<
   SearchQuickRequestPipelinesCase0Item | (string & {})
 >;
-export const SearchQuickRequestPipelinesCase0List = /*@__PURE__*/ S.Array(
-  SearchQuickRequestPipelinesCase0Item,
-) as any as S.Schema<SearchQuickRequestPipelinesCase0List>;
+export const SearchQuickRequestPipelinesCase0List =
+  QuickSearchPostRequestTypeCase0List as any as S.Schema<SearchQuickRequestPipelinesCase0List>;
 
 export type SearchQuickRequestPipelinesCase1Case1List = Array<string>;
 export const SearchQuickRequestPipelinesCase1Case1List =

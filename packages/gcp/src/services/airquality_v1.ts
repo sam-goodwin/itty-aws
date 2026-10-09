@@ -342,9 +342,8 @@ export const LookupForecastRequestExtraComputationsItemEnum = S.String;
 export type LookupForecastRequestExtraComputationsItemEnumList = Array<
   LookupForecastRequestExtraComputationsItemEnum | (string & {})
 >;
-export const LookupForecastRequestExtraComputationsItemEnumList = /*@__PURE__*/ S.Array(
-  LookupForecastRequestExtraComputationsItemEnum,
-) as any as S.Schema<LookupForecastRequestExtraComputationsItemEnumList>;
+export const LookupForecastRequestExtraComputationsItemEnumList =
+  LookupCurrentConditionsRequestExtraComputationsItemEnumList as any as S.Schema<LookupForecastRequestExtraComputationsItemEnumList>;
 
 export type LookupForecastRequestUaqiColorPaletteEnum =
   | "COLOR_PALETTE_UNSPECIFIED"
@@ -542,9 +541,8 @@ export const LookupHistoryRequestExtraComputationsItemEnum = S.String;
 export type LookupHistoryRequestExtraComputationsItemEnumList = Array<
   LookupHistoryRequestExtraComputationsItemEnum | (string & {})
 >;
-export const LookupHistoryRequestExtraComputationsItemEnumList = /*@__PURE__*/ S.Array(
-  LookupHistoryRequestExtraComputationsItemEnum,
-) as any as S.Schema<LookupHistoryRequestExtraComputationsItemEnumList>;
+export const LookupHistoryRequestExtraComputationsItemEnumList =
+  LookupCurrentConditionsRequestExtraComputationsItemEnumList as any as S.Schema<LookupHistoryRequestExtraComputationsItemEnumList>;
 
 export type LookupHistoryRequestUaqiColorPaletteEnum =
   | "COLOR_PALETTE_UNSPECIFIED"

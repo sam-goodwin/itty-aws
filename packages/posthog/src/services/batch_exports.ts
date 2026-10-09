@@ -2363,16 +2363,8 @@ export interface FileDownloadSessionsRequest {
   data_interval_start: string;
   data_interval_end: string;
 }
-export const FileDownloadSessionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    file: FileDownloadDestinationFileConfig,
-    model: FileDownloadSessionsRequestModelEnum,
-    data_interval_start: S.String,
-    data_interval_end: S.String,
-  }),
-).annotate({
-  identifier: "FileDownloadSessionsRequest",
-}) as any as S.Schema<FileDownloadSessionsRequest>;
+export const FileDownloadSessionsRequest =
+  FileDownloadPersonsRequest as any as S.Schema<FileDownloadSessionsRequest>;
 
 /** Typed configuration for the hogql model. */
 export interface FileDownloadHogQLRequest {

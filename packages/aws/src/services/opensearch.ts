@@ -1973,9 +1973,8 @@ export interface OutboundConnectionStatus {
   StatusCode?: OutboundConnectionStatusCode;
   Message?: string;
 }
-export const OutboundConnectionStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ StatusCode: S.optional(OutboundConnectionStatusCode), Message: S.optional(S.String) }),
-).annotate({ identifier: "OutboundConnectionStatus" }) as any as S.Schema<OutboundConnectionStatus>;
+export const OutboundConnectionStatus =
+  InboundConnectionStatus as any as S.Schema<OutboundConnectionStatus>;
 export interface CreateOutboundConnectionResponse {
   LocalDomainInfo?: DomainInformationContainer;
   RemoteDomainInfo?: DomainInformationContainer;
@@ -3002,16 +3001,12 @@ export interface UseCaseStatus {
   Options: DomainUseCase;
   Status: OptionStatus;
 }
-export const UseCaseStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Options: DomainUseCase, Status: OptionStatus }),
-).annotate({ identifier: "UseCaseStatus" }) as any as S.Schema<UseCaseStatus>;
+export const UseCaseStatus = IPAddressTypeStatus as any as S.Schema<UseCaseStatus>;
 export interface EngineModeStatus {
   Options: EngineMode;
   Status: OptionStatus;
 }
-export const EngineModeStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Options: EngineMode, Status: OptionStatus }),
-).annotate({ identifier: "EngineModeStatus" }) as any as S.Schema<EngineModeStatus>;
+export const EngineModeStatus = IPAddressTypeStatus as any as S.Schema<EngineModeStatus>;
 export interface DomainConfig {
   EngineVersion?: VersionStatus;
   ClusterConfig?: ClusterConfigStatus;

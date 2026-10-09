@@ -2232,9 +2232,8 @@ export const ListEventTypeReplacedByItem = S.String;
 
 /** Event type names that supersede this deprecated event type. */
 export type ListEventTypeReplacedByList = Array<ListEventTypeReplacedByItem>;
-export const ListEventTypeReplacedByList = /*@__PURE__*/ S.Array(
-  ListEventTypeReplacedByItem,
-) as any as S.Schema<ListEventTypeReplacedByList>;
+export const ListEventTypeReplacedByList =
+  ListEventTypeCategoriesList as any as S.Schema<ListEventTypeReplacedByList>;
 
 /** A user-facing event type. */
 export interface ListEventType {
@@ -2345,9 +2344,8 @@ export const UserEventCategoriesItem = S.String;
 
 /** The categories that group this event with related event types. An event can belong to multiple categories (e.g. a firewall event is both Firewall and Security). The first entry is the "primary" category. Use the `/events/types` endpoint to discover the full list of categories. */
 export type UserEventCategoriesList = Array<UserEventCategoriesItem>;
-export const UserEventCategoriesList = /*@__PURE__*/ S.Array(
-  UserEventCategoriesItem,
-) as any as S.Schema<UserEventCategoriesList>;
+export const UserEventCategoriesList =
+  ListEventTypeCategoriesList as any as S.Schema<UserEventCategoriesList>;
 
 /** The type of entity. */
 export type UserEventEntitiesItemType =
@@ -3453,9 +3451,8 @@ export const UserEventPayloadCase40ChangedFieldsItem = S.String;
 
 export type UserEventPayloadCase40ChangedFieldsList =
   Array<UserEventPayloadCase40ChangedFieldsItem>;
-export const UserEventPayloadCase40ChangedFieldsList = /*@__PURE__*/ S.Array(
-  UserEventPayloadCase40ChangedFieldsItem,
-) as any as S.Schema<UserEventPayloadCase40ChangedFieldsList>;
+export const UserEventPayloadCase40ChangedFieldsList =
+  ListEventTypeCategoriesList as any as S.Schema<UserEventPayloadCase40ChangedFieldsList>;
 
 export type UserEventPayloadCase40VirtualModelConfig = UserEventPayloadCase39VirtualModelConfig;
 export const UserEventPayloadCase40VirtualModelConfig = UserEventPayloadCase39VirtualModelConfig;
@@ -4014,17 +4011,15 @@ export type UserEventPayloadCase59PermissionsItem =
 export const UserEventPayloadCase59PermissionsItem = S.String;
 
 export type UserEventPayloadCase59PermissionsList = Array<UserEventPayloadCase59PermissionsItem>;
-export const UserEventPayloadCase59PermissionsList = /*@__PURE__*/ S.Array(
-  UserEventPayloadCase59PermissionsItem,
-) as any as S.Schema<UserEventPayloadCase59PermissionsList>;
+export const UserEventPayloadCase59PermissionsList =
+  ListEventTypeCategoriesList as any as S.Schema<UserEventPayloadCase59PermissionsList>;
 
 export type UserEventPayloadCase59ScopesItem = "email" | "offline_access" | "openid" | "profile";
 export const UserEventPayloadCase59ScopesItem = S.String;
 
 export type UserEventPayloadCase59ScopesList = Array<UserEventPayloadCase59ScopesItem>;
-export const UserEventPayloadCase59ScopesList = /*@__PURE__*/ S.Array(
-  UserEventPayloadCase59ScopesItem,
-) as any as S.Schema<UserEventPayloadCase59ScopesList>;
+export const UserEventPayloadCase59ScopesList =
+  ListEventTypeCategoriesList as any as S.Schema<UserEventPayloadCase59ScopesList>;
 
 /** The payload of the event, if requested. */
 export interface UserEventPayloadCase59 {
@@ -4129,9 +4124,8 @@ export const UserEventPayloadCase61NextPermissionsItem = S.String;
 
 export type UserEventPayloadCase61NextPermissionsList =
   Array<UserEventPayloadCase61NextPermissionsItem>;
-export const UserEventPayloadCase61NextPermissionsList = /*@__PURE__*/ S.Array(
-  UserEventPayloadCase61NextPermissionsItem,
-) as any as S.Schema<UserEventPayloadCase61NextPermissionsList>;
+export const UserEventPayloadCase61NextPermissionsList =
+  ListEventTypeCategoriesList as any as S.Schema<UserEventPayloadCase61NextPermissionsList>;
 
 export type UserEventPayloadCase61NextScopesItem =
   | "email"
@@ -4141,9 +4135,8 @@ export type UserEventPayloadCase61NextScopesItem =
 export const UserEventPayloadCase61NextScopesItem = S.String;
 
 export type UserEventPayloadCase61NextScopesList = Array<UserEventPayloadCase61NextScopesItem>;
-export const UserEventPayloadCase61NextScopesList = /*@__PURE__*/ S.Array(
-  UserEventPayloadCase61NextScopesItem,
-) as any as S.Schema<UserEventPayloadCase61NextScopesList>;
+export const UserEventPayloadCase61NextScopesList =
+  ListEventTypeCategoriesList as any as S.Schema<UserEventPayloadCase61NextScopesList>;
 
 /** The payload of the event, if requested. */
 export interface UserEventPayloadCase61 {
@@ -4234,9 +4227,8 @@ export const UserEventPayloadCase62AfterPermissionsItem = S.String;
 
 export type UserEventPayloadCase62AfterPermissionsList =
   Array<UserEventPayloadCase62AfterPermissionsItem>;
-export const UserEventPayloadCase62AfterPermissionsList = /*@__PURE__*/ S.Array(
-  UserEventPayloadCase62AfterPermissionsItem,
-) as any as S.Schema<UserEventPayloadCase62AfterPermissionsList>;
+export const UserEventPayloadCase62AfterPermissionsList =
+  ListEventTypeCategoriesList as any as S.Schema<UserEventPayloadCase62AfterPermissionsList>;
 
 export type UserEventPayloadCase62AfterResourcesProjectIdsItemsType = "string";
 export const UserEventPayloadCase62AfterResourcesProjectIdsItemsType = S.String;
@@ -4369,9 +4361,8 @@ export const UserEventPayloadCase62BeforePermissionsItem = S.String;
 
 export type UserEventPayloadCase62BeforePermissionsList =
   Array<UserEventPayloadCase62BeforePermissionsItem>;
-export const UserEventPayloadCase62BeforePermissionsList = /*@__PURE__*/ S.Array(
-  UserEventPayloadCase62BeforePermissionsItem,
-) as any as S.Schema<UserEventPayloadCase62BeforePermissionsList>;
+export const UserEventPayloadCase62BeforePermissionsList =
+  ListEventTypeCategoriesList as any as S.Schema<UserEventPayloadCase62BeforePermissionsList>;
 
 export type UserEventPayloadCase62BeforeResourcesProjectIdsItemsType = "string";
 export const UserEventPayloadCase62BeforeResourcesProjectIdsItemsType = S.String;
@@ -4379,13 +4370,8 @@ export const UserEventPayloadCase62BeforeResourcesProjectIdsItemsType = S.String
 export interface UserEventPayloadCase62BeforeResourcesProjectIdsItems {
   type: UserEventPayloadCase62BeforeResourcesProjectIdsItemsType;
 }
-export const UserEventPayloadCase62BeforeResourcesProjectIdsItems = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: UserEventPayloadCase62BeforeResourcesProjectIdsItemsType,
-  }),
-).annotate({
-  identifier: "UserEventPayloadCase62BeforeResourcesProjectIdsItems",
-}) as any as S.Schema<UserEventPayloadCase62BeforeResourcesProjectIdsItems>;
+export const UserEventPayloadCase62BeforeResourcesProjectIdsItems =
+  UserEventPayloadCase62AfterResourcesProjectIdsItems as any as S.Schema<UserEventPayloadCase62BeforeResourcesProjectIdsItems>;
 
 export type UserEventPayloadCase62BeforeResourcesProjectIdsType = "list";
 export const UserEventPayloadCase62BeforeResourcesProjectIdsType = S.String;
@@ -4396,40 +4382,22 @@ export interface UserEventPayloadCase62BeforeResourcesProjectIds {
   required: boolean;
   type: UserEventPayloadCase62BeforeResourcesProjectIdsType;
 }
-export const UserEventPayloadCase62BeforeResourcesProjectIds = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    items: UserEventPayloadCase62BeforeResourcesProjectIdsItems,
-    required: S.Boolean,
-    type: UserEventPayloadCase62BeforeResourcesProjectIdsType,
-  }),
-).annotate({
-  identifier: "UserEventPayloadCase62BeforeResourcesProjectIds",
-}) as any as S.Schema<UserEventPayloadCase62BeforeResourcesProjectIds>;
+export const UserEventPayloadCase62BeforeResourcesProjectIds =
+  UserEventPayloadCase62AfterResourcesProjectIds as any as S.Schema<UserEventPayloadCase62BeforeResourcesProjectIds>;
 
 export interface UserEventPayloadCase62BeforeResources {
   /** Specific project IDs or all projects on the team (`['*']`). */
   projectIds: UserEventPayloadCase62BeforeResourcesProjectIds;
 }
-export const UserEventPayloadCase62BeforeResources = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    projectIds: UserEventPayloadCase62BeforeResourcesProjectIds,
-  }),
-).annotate({
-  identifier: "UserEventPayloadCase62BeforeResources",
-}) as any as S.Schema<UserEventPayloadCase62BeforeResources>;
+export const UserEventPayloadCase62BeforeResources =
+  UserEventPayloadCase62AfterResources as any as S.Schema<UserEventPayloadCase62BeforeResources>;
 
 export interface UserEventPayloadCase62Before {
   permissions?: UserEventPayloadCase62BeforePermissionsList;
   resources?: UserEventPayloadCase62BeforeResources;
 }
-export const UserEventPayloadCase62Before = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(UserEventPayloadCase62BeforePermissionsList),
-    resources: S.optional(UserEventPayloadCase62BeforeResources),
-  }),
-).annotate({
-  identifier: "UserEventPayloadCase62Before",
-}) as any as S.Schema<UserEventPayloadCase62Before>;
+export const UserEventPayloadCase62Before =
+  UserEventPayloadCase62After as any as S.Schema<UserEventPayloadCase62Before>;
 
 /** The payload of the event, if requested. */
 export interface UserEventPayloadCase62 {
@@ -4521,9 +4489,8 @@ export type UserEventPayloadCase63PermissionsItem =
 export const UserEventPayloadCase63PermissionsItem = S.String;
 
 export type UserEventPayloadCase63PermissionsList = Array<UserEventPayloadCase63PermissionsItem>;
-export const UserEventPayloadCase63PermissionsList = /*@__PURE__*/ S.Array(
-  UserEventPayloadCase63PermissionsItem,
-) as any as S.Schema<UserEventPayloadCase63PermissionsList>;
+export const UserEventPayloadCase63PermissionsList =
+  ListEventTypeCategoriesList as any as S.Schema<UserEventPayloadCase63PermissionsList>;
 
 export type UserEventPayloadCase63ResourcesProjectIdsItemsType = "string";
 export const UserEventPayloadCase63ResourcesProjectIdsItemsType = S.String;
@@ -4531,13 +4498,8 @@ export const UserEventPayloadCase63ResourcesProjectIdsItemsType = S.String;
 export interface UserEventPayloadCase63ResourcesProjectIdsItems {
   type: UserEventPayloadCase63ResourcesProjectIdsItemsType;
 }
-export const UserEventPayloadCase63ResourcesProjectIdsItems = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: UserEventPayloadCase63ResourcesProjectIdsItemsType,
-  }),
-).annotate({
-  identifier: "UserEventPayloadCase63ResourcesProjectIdsItems",
-}) as any as S.Schema<UserEventPayloadCase63ResourcesProjectIdsItems>;
+export const UserEventPayloadCase63ResourcesProjectIdsItems =
+  UserEventPayloadCase62AfterResourcesProjectIdsItems as any as S.Schema<UserEventPayloadCase63ResourcesProjectIdsItems>;
 
 export type UserEventPayloadCase63ResourcesProjectIdsType = "list";
 export const UserEventPayloadCase63ResourcesProjectIdsType = S.String;
@@ -4548,27 +4510,15 @@ export interface UserEventPayloadCase63ResourcesProjectIds {
   required: boolean;
   type: UserEventPayloadCase63ResourcesProjectIdsType;
 }
-export const UserEventPayloadCase63ResourcesProjectIds = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    items: UserEventPayloadCase63ResourcesProjectIdsItems,
-    required: S.Boolean,
-    type: UserEventPayloadCase63ResourcesProjectIdsType,
-  }),
-).annotate({
-  identifier: "UserEventPayloadCase63ResourcesProjectIds",
-}) as any as S.Schema<UserEventPayloadCase63ResourcesProjectIds>;
+export const UserEventPayloadCase63ResourcesProjectIds =
+  UserEventPayloadCase62AfterResourcesProjectIds as any as S.Schema<UserEventPayloadCase63ResourcesProjectIds>;
 
 export interface UserEventPayloadCase63Resources {
   /** Specific project IDs or all projects on the team (`['*']`). */
   projectIds: UserEventPayloadCase63ResourcesProjectIds;
 }
-export const UserEventPayloadCase63Resources = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    projectIds: UserEventPayloadCase63ResourcesProjectIds,
-  }),
-).annotate({
-  identifier: "UserEventPayloadCase63Resources",
-}) as any as S.Schema<UserEventPayloadCase63Resources>;
+export const UserEventPayloadCase63Resources =
+  UserEventPayloadCase62AfterResources as any as S.Schema<UserEventPayloadCase63Resources>;
 
 /** The payload of the event, if requested. */
 export interface UserEventPayloadCase63 {
@@ -4736,9 +4686,8 @@ export const UserEventPayloadCase72ChangedFieldsItem = S.String;
 
 export type UserEventPayloadCase72ChangedFieldsList =
   Array<UserEventPayloadCase72ChangedFieldsItem>;
-export const UserEventPayloadCase72ChangedFieldsList = /*@__PURE__*/ S.Array(
-  UserEventPayloadCase72ChangedFieldsItem,
-) as any as S.Schema<UserEventPayloadCase72ChangedFieldsList>;
+export const UserEventPayloadCase72ChangedFieldsList =
+  ListEventTypeCategoriesList as any as S.Schema<UserEventPayloadCase72ChangedFieldsList>;
 
 /** The payload of the event, if requested. */
 export interface UserEventPayloadCase72 {
@@ -5425,13 +5374,8 @@ export const UserEventPayloadCase108PasswordProtectionDeploymentType = S.String;
 export interface UserEventPayloadCase108PasswordProtection {
   deploymentType: UserEventPayloadCase108PasswordProtectionDeploymentType;
 }
-export const UserEventPayloadCase108PasswordProtection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deploymentType: UserEventPayloadCase108PasswordProtectionDeploymentType,
-  }),
-).annotate({
-  identifier: "UserEventPayloadCase108PasswordProtection",
-}) as any as S.Schema<UserEventPayloadCase108PasswordProtection>;
+export const UserEventPayloadCase108PasswordProtection =
+  UserEventPayloadCase108OldPasswordProtection as any as S.Schema<UserEventPayloadCase108PasswordProtection>;
 
 export type UserEventPayloadCase108Scope = "team";
 export const UserEventPayloadCase108Scope = S.String;
@@ -5762,9 +5706,8 @@ export const UserEventPayloadCase114JobCase0GitHashtagVercelItem = S.String;
 /** Since February 2022 All the hashtag-vercel tags found in the commit message triggering the deploy. For example, #VERCEL_DO_SOMETHING */
 export type UserEventPayloadCase114JobCase0GitHashtagVercelList =
   Array<UserEventPayloadCase114JobCase0GitHashtagVercelItem>;
-export const UserEventPayloadCase114JobCase0GitHashtagVercelList = /*@__PURE__*/ S.Array(
-  UserEventPayloadCase114JobCase0GitHashtagVercelItem,
-) as any as S.Schema<UserEventPayloadCase114JobCase0GitHashtagVercelList>;
+export const UserEventPayloadCase114JobCase0GitHashtagVercelList =
+  ListEventTypeCategoriesList as any as S.Schema<UserEventPayloadCase114JobCase0GitHashtagVercelList>;
 
 export interface UserEventPayloadCase114JobCase0HeadInfo {
   owner: string;
@@ -6027,9 +5970,8 @@ export const UserEventPayloadCase114JobCase2GitHashtagVercelItem = S.String;
 /** Since February 2022 All the hashtag-vercel tags found in the commit message triggering the deploy. For example, #VERCEL_DO_SOMETHING */
 export type UserEventPayloadCase114JobCase2GitHashtagVercelList =
   Array<UserEventPayloadCase114JobCase2GitHashtagVercelItem>;
-export const UserEventPayloadCase114JobCase2GitHashtagVercelList = /*@__PURE__*/ S.Array(
-  UserEventPayloadCase114JobCase2GitHashtagVercelItem,
-) as any as S.Schema<UserEventPayloadCase114JobCase2GitHashtagVercelList>;
+export const UserEventPayloadCase114JobCase2GitHashtagVercelList =
+  ListEventTypeCategoriesList as any as S.Schema<UserEventPayloadCase114JobCase2GitHashtagVercelList>;
 
 /** Information about the head commit/branch for a GitHub repository */
 export interface UserEventPayloadCase114JobCase2HeadInfo {
@@ -6077,14 +6019,8 @@ export interface UserEventPayloadCase114JobCase2NsnbSideEffect {
   action: UserEventPayloadCase114JobCase2NsnbSideEffectAction;
   gitUserLogin: string;
 }
-export const UserEventPayloadCase114JobCase2NsnbSideEffect = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: UserEventPayloadCase114JobCase2NsnbSideEffectAction,
-    gitUserLogin: S.String,
-  }),
-).annotate({
-  identifier: "UserEventPayloadCase114JobCase2NsnbSideEffect",
-}) as any as S.Schema<UserEventPayloadCase114JobCase2NsnbSideEffect>;
+export const UserEventPayloadCase114JobCase2NsnbSideEffect =
+  UserEventPayloadCase114JobCase0NsnbSideEffect as any as S.Schema<UserEventPayloadCase114JobCase2NsnbSideEffect>;
 
 export type UserEventPayloadCase114JobCase2Provider =
   | "github"
@@ -6258,9 +6194,8 @@ export const UserEventPayloadCase114JobCase3GitHashtagVercelItem = S.String;
 /** Since February 2022 All the hashtag-vercel tags found in the commit message triggering the deploy. For example, #VERCEL_DO_SOMETHING */
 export type UserEventPayloadCase114JobCase3GitHashtagVercelList =
   Array<UserEventPayloadCase114JobCase3GitHashtagVercelItem>;
-export const UserEventPayloadCase114JobCase3GitHashtagVercelList = /*@__PURE__*/ S.Array(
-  UserEventPayloadCase114JobCase3GitHashtagVercelItem,
-) as any as S.Schema<UserEventPayloadCase114JobCase3GitHashtagVercelList>;
+export const UserEventPayloadCase114JobCase3GitHashtagVercelList =
+  ListEventTypeCategoriesList as any as S.Schema<UserEventPayloadCase114JobCase3GitHashtagVercelList>;
 
 /** Information about the head commit/branch for a GitHub repository */
 export type UserEventPayloadCase114JobCase3HeadInfo = UserEventPayloadCase114JobCase2HeadInfo;
@@ -6292,14 +6227,8 @@ export interface UserEventPayloadCase114JobCase3NsnbSideEffect {
   action: UserEventPayloadCase114JobCase3NsnbSideEffectAction;
   gitUserLogin: string;
 }
-export const UserEventPayloadCase114JobCase3NsnbSideEffect = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: UserEventPayloadCase114JobCase3NsnbSideEffectAction,
-    gitUserLogin: S.String,
-  }),
-).annotate({
-  identifier: "UserEventPayloadCase114JobCase3NsnbSideEffect",
-}) as any as S.Schema<UserEventPayloadCase114JobCase3NsnbSideEffect>;
+export const UserEventPayloadCase114JobCase3NsnbSideEffect =
+  UserEventPayloadCase114JobCase0NsnbSideEffect as any as S.Schema<UserEventPayloadCase114JobCase3NsnbSideEffect>;
 
 export type UserEventPayloadCase114JobCase3Provider =
   | "github"
@@ -6548,9 +6477,8 @@ export const UserEventPayloadCase114JobCase5GitHashtagVercelItem = S.String;
 /** Since February 2022 All the hashtag-vercel tags found in the commit message triggering the deploy. For example, #VERCEL_DO_SOMETHING */
 export type UserEventPayloadCase114JobCase5GitHashtagVercelList =
   Array<UserEventPayloadCase114JobCase5GitHashtagVercelItem>;
-export const UserEventPayloadCase114JobCase5GitHashtagVercelList = /*@__PURE__*/ S.Array(
-  UserEventPayloadCase114JobCase5GitHashtagVercelItem,
-) as any as S.Schema<UserEventPayloadCase114JobCase5GitHashtagVercelList>;
+export const UserEventPayloadCase114JobCase5GitHashtagVercelList =
+  ListEventTypeCategoriesList as any as S.Schema<UserEventPayloadCase114JobCase5GitHashtagVercelList>;
 
 export interface UserEventPayloadCase114JobCase5HeadInfoProject {
   defaultBranch?: string | null;
@@ -6615,14 +6543,8 @@ export interface UserEventPayloadCase114JobCase5NsnbSideEffect {
   action: UserEventPayloadCase114JobCase5NsnbSideEffectAction;
   gitUserLogin: string;
 }
-export const UserEventPayloadCase114JobCase5NsnbSideEffect = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: UserEventPayloadCase114JobCase5NsnbSideEffectAction,
-    gitUserLogin: S.String,
-  }),
-).annotate({
-  identifier: "UserEventPayloadCase114JobCase5NsnbSideEffect",
-}) as any as S.Schema<UserEventPayloadCase114JobCase5NsnbSideEffect>;
+export const UserEventPayloadCase114JobCase5NsnbSideEffect =
+  UserEventPayloadCase114JobCase0NsnbSideEffect as any as S.Schema<UserEventPayloadCase114JobCase5NsnbSideEffect>;
 
 export type UserEventPayloadCase114JobCase5Project = UserEventPayloadCase114JobCase5HeadInfoProject;
 export const UserEventPayloadCase114JobCase5Project =
@@ -6831,9 +6753,8 @@ export const UserEventPayloadCase114JobCase7GitHashtagVercelItem = S.String;
 /** Since February 2022 All the hashtag-vercel tags found in the commit message triggering the deploy. For example, #VERCEL_DO_SOMETHING */
 export type UserEventPayloadCase114JobCase7GitHashtagVercelList =
   Array<UserEventPayloadCase114JobCase7GitHashtagVercelItem>;
-export const UserEventPayloadCase114JobCase7GitHashtagVercelList = /*@__PURE__*/ S.Array(
-  UserEventPayloadCase114JobCase7GitHashtagVercelItem,
-) as any as S.Schema<UserEventPayloadCase114JobCase7GitHashtagVercelList>;
+export const UserEventPayloadCase114JobCase7GitHashtagVercelList =
+  ListEventTypeCategoriesList as any as S.Schema<UserEventPayloadCase114JobCase7GitHashtagVercelList>;
 
 export interface UserEventPayloadCase114JobCase7HeadInfoCommitMetadataAuthor {
   date: string;
@@ -6917,14 +6838,8 @@ export interface UserEventPayloadCase114JobCase7NsnbSideEffect {
   action: UserEventPayloadCase114JobCase7NsnbSideEffectAction;
   gitUserLogin: string;
 }
-export const UserEventPayloadCase114JobCase7NsnbSideEffect = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: UserEventPayloadCase114JobCase7NsnbSideEffectAction,
-    gitUserLogin: S.String,
-  }),
-).annotate({
-  identifier: "UserEventPayloadCase114JobCase7NsnbSideEffect",
-}) as any as S.Schema<UserEventPayloadCase114JobCase7NsnbSideEffect>;
+export const UserEventPayloadCase114JobCase7NsnbSideEffect =
+  UserEventPayloadCase114JobCase0NsnbSideEffect as any as S.Schema<UserEventPayloadCase114JobCase7NsnbSideEffect>;
 
 export type UserEventPayloadCase114JobCase7Provider = "vercel";
 export const UserEventPayloadCase114JobCase7Provider = S.String;
@@ -7062,9 +6977,8 @@ export const UserEventPayloadCase114JobCase8GitHashtagVercelItem = S.String;
 /** Since February 2022 All the hashtag-vercel tags found in the commit message triggering the deploy. For example, #VERCEL_DO_SOMETHING */
 export type UserEventPayloadCase114JobCase8GitHashtagVercelList =
   Array<UserEventPayloadCase114JobCase8GitHashtagVercelItem>;
-export const UserEventPayloadCase114JobCase8GitHashtagVercelList = /*@__PURE__*/ S.Array(
-  UserEventPayloadCase114JobCase8GitHashtagVercelItem,
-) as any as S.Schema<UserEventPayloadCase114JobCase8GitHashtagVercelList>;
+export const UserEventPayloadCase114JobCase8GitHashtagVercelList =
+  ListEventTypeCategoriesList as any as S.Schema<UserEventPayloadCase114JobCase8GitHashtagVercelList>;
 
 /** Cursor Origin */
 export interface UserEventPayloadCase114JobCase8HeadInfo {
@@ -7118,14 +7032,8 @@ export interface UserEventPayloadCase114JobCase8NsnbSideEffect {
   action: UserEventPayloadCase114JobCase8NsnbSideEffectAction;
   gitUserLogin: string;
 }
-export const UserEventPayloadCase114JobCase8NsnbSideEffect = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: UserEventPayloadCase114JobCase8NsnbSideEffectAction,
-    gitUserLogin: S.String,
-  }),
-).annotate({
-  identifier: "UserEventPayloadCase114JobCase8NsnbSideEffect",
-}) as any as S.Schema<UserEventPayloadCase114JobCase8NsnbSideEffect>;
+export const UserEventPayloadCase114JobCase8NsnbSideEffect =
+  UserEventPayloadCase114JobCase0NsnbSideEffect as any as S.Schema<UserEventPayloadCase114JobCase8NsnbSideEffect>;
 
 export type UserEventPayloadCase114JobCase8Provider = "cursor-origin";
 export const UserEventPayloadCase114JobCase8Provider = S.String;
@@ -8035,16 +7943,8 @@ export interface UserEventPayloadCase154ToAccount {
   type: UserEventPayloadCase154ToAccountType;
   username?: string;
 }
-export const UserEventPayloadCase154ToAccount = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    slug: S.optional(S.String),
-    type: UserEventPayloadCase154ToAccountType,
-    username: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UserEventPayloadCase154ToAccount",
-}) as any as S.Schema<UserEventPayloadCase154ToAccount>;
+export const UserEventPayloadCase154ToAccount =
+  UserEventPayloadCase154FromAccount as any as S.Schema<UserEventPayloadCase154ToAccount>;
 
 /** The payload of the event, if requested. */
 export interface UserEventPayloadCase154 {
@@ -8365,9 +8265,8 @@ export const UserEventPayloadCase164TargetItem = S.String;
 
 /** environments this env variable targets */
 export type UserEventPayloadCase164TargetList = Array<UserEventPayloadCase164TargetItem>;
-export const UserEventPayloadCase164TargetList = /*@__PURE__*/ S.Array(
-  UserEventPayloadCase164TargetItem,
-) as any as S.Schema<UserEventPayloadCase164TargetList>;
+export const UserEventPayloadCase164TargetList =
+  ListEventTypeCategoriesList as any as S.Schema<UserEventPayloadCase164TargetList>;
 
 /** The type of this cosmos doc instance, if blank, assume secret. */
 export type UserEventPayloadCase164Type = "encrypted" | "plain" | "sensitive" | "system";
@@ -8452,9 +8351,8 @@ export type UserEventPayloadCase165TargetItem = "development" | "preview" | "pro
 export const UserEventPayloadCase165TargetItem = S.String;
 
 export type UserEventPayloadCase165TargetList = Array<UserEventPayloadCase165TargetItem>;
-export const UserEventPayloadCase165TargetList = /*@__PURE__*/ S.Array(
-  UserEventPayloadCase165TargetItem,
-) as any as S.Schema<UserEventPayloadCase165TargetList>;
+export const UserEventPayloadCase165TargetList =
+  ListEventTypeCategoriesList as any as S.Schema<UserEventPayloadCase165TargetList>;
 
 /** The payload of the event, if requested. */
 export interface UserEventPayloadCase165 {
@@ -8545,9 +8443,8 @@ export const UserEventPayloadCase166NewEnvVarTargetItem = S.String;
 /** environments this env variable targets */
 export type UserEventPayloadCase166NewEnvVarTargetList =
   Array<UserEventPayloadCase166NewEnvVarTargetItem>;
-export const UserEventPayloadCase166NewEnvVarTargetList = /*@__PURE__*/ S.Array(
-  UserEventPayloadCase166NewEnvVarTargetItem,
-) as any as S.Schema<UserEventPayloadCase166NewEnvVarTargetList>;
+export const UserEventPayloadCase166NewEnvVarTargetList =
+  ListEventTypeCategoriesList as any as S.Schema<UserEventPayloadCase166NewEnvVarTargetList>;
 
 /** The type of this cosmos doc instance, if blank, assume secret. */
 export type UserEventPayloadCase166NewEnvVarType = "encrypted" | "plain" | "sensitive" | "system";
@@ -8637,18 +8534,8 @@ export interface UserEventPayloadCase166OldEnvVarLastEditedByPrincipalCase0 {
   type: UserEventPayloadCase166OldEnvVarLastEditedByPrincipalCase0Type;
   username: string;
 }
-export const UserEventPayloadCase166OldEnvVarLastEditedByPrincipalCase0 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      avatar: S.optional(S.String),
-      id: S.String,
-      name: S.optional(S.NullOr(S.String)),
-      type: UserEventPayloadCase166OldEnvVarLastEditedByPrincipalCase0Type,
-      username: S.String,
-    }),
-).annotate({
-  identifier: "UserEventPayloadCase166OldEnvVarLastEditedByPrincipalCase0",
-}) as any as S.Schema<UserEventPayloadCase166OldEnvVarLastEditedByPrincipalCase0>;
+export const UserEventPayloadCase166OldEnvVarLastEditedByPrincipalCase0 =
+  UserEventPayloadCase166NewEnvVarLastEditedByPrincipalCase0 as any as S.Schema<UserEventPayloadCase166OldEnvVarLastEditedByPrincipalCase0>;
 
 export type UserEventPayloadCase166OldEnvVarLastEditedByPrincipalCase1Type = "app";
 export const UserEventPayloadCase166OldEnvVarLastEditedByPrincipalCase1Type = S.String;
@@ -8660,17 +8547,8 @@ export interface UserEventPayloadCase166OldEnvVarLastEditedByPrincipalCase1 {
   name: string;
   type: UserEventPayloadCase166OldEnvVarLastEditedByPrincipalCase1Type;
 }
-export const UserEventPayloadCase166OldEnvVarLastEditedByPrincipalCase1 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      avatar: S.optional(S.String),
-      id: S.String,
-      name: S.String,
-      type: UserEventPayloadCase166OldEnvVarLastEditedByPrincipalCase1Type,
-    }),
-).annotate({
-  identifier: "UserEventPayloadCase166OldEnvVarLastEditedByPrincipalCase1",
-}) as any as S.Schema<UserEventPayloadCase166OldEnvVarLastEditedByPrincipalCase1>;
+export const UserEventPayloadCase166OldEnvVarLastEditedByPrincipalCase1 =
+  UserEventPayloadCase166NewEnvVarLastEditedByPrincipalCase1 as any as S.Schema<UserEventPayloadCase166OldEnvVarLastEditedByPrincipalCase1>;
 
 export type UserEventPayloadCase166OldEnvVarLastEditedByPrincipal =
   | UserEventPayloadCase166OldEnvVarLastEditedByPrincipalCase0
@@ -8690,9 +8568,8 @@ export const UserEventPayloadCase166OldEnvVarTargetItem = S.String;
 /** environments this env variable targets */
 export type UserEventPayloadCase166OldEnvVarTargetList =
   Array<UserEventPayloadCase166OldEnvVarTargetItem>;
-export const UserEventPayloadCase166OldEnvVarTargetList = /*@__PURE__*/ S.Array(
-  UserEventPayloadCase166OldEnvVarTargetItem,
-) as any as S.Schema<UserEventPayloadCase166OldEnvVarTargetList>;
+export const UserEventPayloadCase166OldEnvVarTargetList =
+  ListEventTypeCategoriesList as any as S.Schema<UserEventPayloadCase166OldEnvVarTargetList>;
 
 /** The type of this cosmos doc instance, if blank, assume secret. */
 export type UserEventPayloadCase166OldEnvVarType = "encrypted" | "plain" | "sensitive" | "system";
@@ -8797,9 +8674,8 @@ export const UserEventPayloadCase166UpdateDiffNewTargetItem = S.String;
 
 export type UserEventPayloadCase166UpdateDiffNewTargetList =
   Array<UserEventPayloadCase166UpdateDiffNewTargetItem>;
-export const UserEventPayloadCase166UpdateDiffNewTargetList = /*@__PURE__*/ S.Array(
-  UserEventPayloadCase166UpdateDiffNewTargetItem,
-) as any as S.Schema<UserEventPayloadCase166UpdateDiffNewTargetList>;
+export const UserEventPayloadCase166UpdateDiffNewTargetList =
+  ListEventTypeCategoriesList as any as S.Schema<UserEventPayloadCase166UpdateDiffNewTargetList>;
 
 export type UserEventPayloadCase166UpdateDiffOldCustomEnvironmentIdsList = Array<string>;
 export const UserEventPayloadCase166UpdateDiffOldCustomEnvironmentIdsList =
@@ -8823,9 +8699,8 @@ export const UserEventPayloadCase166UpdateDiffOldTargetItem = S.String;
 
 export type UserEventPayloadCase166UpdateDiffOldTargetList =
   Array<UserEventPayloadCase166UpdateDiffOldTargetItem>;
-export const UserEventPayloadCase166UpdateDiffOldTargetList = /*@__PURE__*/ S.Array(
-  UserEventPayloadCase166UpdateDiffOldTargetItem,
-) as any as S.Schema<UserEventPayloadCase166UpdateDiffOldTargetList>;
+export const UserEventPayloadCase166UpdateDiffOldTargetList =
+  ListEventTypeCategoriesList as any as S.Schema<UserEventPayloadCase166UpdateDiffOldTargetList>;
 
 export interface UserEventPayloadCase166UpdateDiff {
   changedValue: boolean;
@@ -9848,17 +9723,8 @@ export interface UserEventPayloadCase204FactorsCase1ItemCase0 {
   teamId?: string;
   username?: string;
 }
-export const UserEventPayloadCase204FactorsCase1ItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    legacy: S.optional(S.Boolean),
-    origin: UserEventPayloadCase204FactorsCase1ItemCase0Origin,
-    ssoType: S.optional(S.String),
-    teamId: S.optional(S.String),
-    username: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UserEventPayloadCase204FactorsCase1ItemCase0",
-}) as any as S.Schema<UserEventPayloadCase204FactorsCase1ItemCase0>;
+export const UserEventPayloadCase204FactorsCase1ItemCase0 =
+  UserEventPayloadCase204FactorsCase0Item as any as S.Schema<UserEventPayloadCase204FactorsCase1ItemCase0>;
 
 export type UserEventPayloadCase204FactorsCase1ItemCase1Origin =
   | "recovery-code"
@@ -10435,9 +10301,8 @@ export const UserEventPayloadCase217NextOrganizationPermissionsItem = S.String;
 
 export type UserEventPayloadCase217NextOrganizationPermissionsList =
   Array<UserEventPayloadCase217NextOrganizationPermissionsItem>;
-export const UserEventPayloadCase217NextOrganizationPermissionsList = /*@__PURE__*/ S.Array(
-  UserEventPayloadCase217NextOrganizationPermissionsItem,
-) as any as S.Schema<UserEventPayloadCase217NextOrganizationPermissionsList>;
+export const UserEventPayloadCase217NextOrganizationPermissionsList =
+  ListEventTypeCategoriesList as any as S.Schema<UserEventPayloadCase217NextOrganizationPermissionsList>;
 
 export type UserEventPayloadCase217NextTeamRolesItem =
   | "BILLING"
@@ -10452,9 +10317,8 @@ export const UserEventPayloadCase217NextTeamRolesItem = S.String;
 
 export type UserEventPayloadCase217NextTeamRolesList =
   Array<UserEventPayloadCase217NextTeamRolesItem>;
-export const UserEventPayloadCase217NextTeamRolesList = /*@__PURE__*/ S.Array(
-  UserEventPayloadCase217NextTeamRolesItem,
-) as any as S.Schema<UserEventPayloadCase217NextTeamRolesList>;
+export const UserEventPayloadCase217NextTeamRolesList =
+  ListEventTypeCategoriesList as any as S.Schema<UserEventPayloadCase217NextTeamRolesList>;
 
 export type UserEventPayloadCase217NextTeamsValueTeamRolesItem =
   | "BILLING"
@@ -10469,9 +10333,8 @@ export const UserEventPayloadCase217NextTeamsValueTeamRolesItem = S.String;
 
 export type UserEventPayloadCase217NextTeamsValueTeamRolesList =
   Array<UserEventPayloadCase217NextTeamsValueTeamRolesItem>;
-export const UserEventPayloadCase217NextTeamsValueTeamRolesList = /*@__PURE__*/ S.Array(
-  UserEventPayloadCase217NextTeamsValueTeamRolesItem,
-) as any as S.Schema<UserEventPayloadCase217NextTeamsValueTeamRolesList>;
+export const UserEventPayloadCase217NextTeamsValueTeamRolesList =
+  ListEventTypeCategoriesList as any as S.Schema<UserEventPayloadCase217NextTeamsValueTeamRolesList>;
 
 export interface UserEventPayloadCase217NextTeamsValue {
   teamRoles: UserEventPayloadCase217NextTeamsValueTeamRolesList;
@@ -10818,24 +10681,8 @@ export interface UserEventPayloadCase230Previous {
   newResourceBlockingPolicy: UserEventPayloadCase230PreviousNewResourceBlockingPolicy;
   omitScriptNonce?: boolean;
 }
-export const UserEventPayloadCase230Previous = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allowUnsafeScriptSrcKeywords: S.Boolean,
-    computedConnectSrc: S.optional(S.String),
-    computedConnectSrcPreview: S.optional(S.String),
-    computedScriptSrc: S.optional(S.String),
-    computedScriptSrcPreview: S.optional(S.String),
-    connectSrcNotificationsEnabled: S.optional(S.Boolean),
-    enabled: S.Boolean,
-    enforcementScope: S.optional(UserEventPayloadCase230PreviousEnforcementScope),
-    enforcePercentage: S.Number,
-    mode: S.String,
-    newResourceBlockingPolicy: UserEventPayloadCase230PreviousNewResourceBlockingPolicy,
-    omitScriptNonce: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "UserEventPayloadCase230Previous",
-}) as any as S.Schema<UserEventPayloadCase230Previous>;
+export const UserEventPayloadCase230Previous =
+  UserEventPayloadCase230Next as any as S.Schema<UserEventPayloadCase230Previous>;
 
 /** The payload of the event, if requested. */
 export interface UserEventPayloadCase230 {
@@ -10978,13 +10825,8 @@ export interface UserEventPayloadCase237 {
   resourceUrl: string;
   type: UserEventPayloadCase237Type;
 }
-export const UserEventPayloadCase237 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    projectId: S.String,
-    resourceUrl: S.String,
-    type: UserEventPayloadCase237Type,
-  }),
-).annotate({ identifier: "UserEventPayloadCase237" }) as any as S.Schema<UserEventPayloadCase237>;
+export const UserEventPayloadCase237 =
+  UserEventPayloadCase235 as any as S.Schema<UserEventPayloadCase237>;
 
 export type UserEventPayloadCase238Kind = "connectSrc" | "script";
 export const UserEventPayloadCase238Kind = S.String;
@@ -11111,25 +10953,14 @@ export interface UserEventPayloadCase242PreviousPassport {
   connectorId: string;
   deploymentType: UserEventPayloadCase242PreviousPassportDeploymentType;
 }
-export const UserEventPayloadCase242PreviousPassport = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    connectorId: S.String,
-    deploymentType: UserEventPayloadCase242PreviousPassportDeploymentType,
-  }),
-).annotate({
-  identifier: "UserEventPayloadCase242PreviousPassport",
-}) as any as S.Schema<UserEventPayloadCase242PreviousPassport>;
+export const UserEventPayloadCase242PreviousPassport =
+  UserEventPayloadCase242NextPassport as any as S.Schema<UserEventPayloadCase242PreviousPassport>;
 
 export interface UserEventPayloadCase242Previous {
   passport?: UserEventPayloadCase242PreviousPassport | null;
 }
-export const UserEventPayloadCase242Previous = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    passport: S.optional(S.NullOr(UserEventPayloadCase242PreviousPassport)),
-  }),
-).annotate({
-  identifier: "UserEventPayloadCase242Previous",
-}) as any as S.Schema<UserEventPayloadCase242Previous>;
+export const UserEventPayloadCase242Previous =
+  UserEventPayloadCase242Next as any as S.Schema<UserEventPayloadCase242Previous>;
 
 /** The payload of the event, if requested. */
 export interface UserEventPayloadCase242 {
@@ -11158,25 +10989,14 @@ export interface UserEventPayloadCase243NextPassport {
   connectorId: string;
   deploymentType: UserEventPayloadCase243NextPassportDeploymentType;
 }
-export const UserEventPayloadCase243NextPassport = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    connectorId: S.String,
-    deploymentType: UserEventPayloadCase243NextPassportDeploymentType,
-  }),
-).annotate({
-  identifier: "UserEventPayloadCase243NextPassport",
-}) as any as S.Schema<UserEventPayloadCase243NextPassport>;
+export const UserEventPayloadCase243NextPassport =
+  UserEventPayloadCase242NextPassport as any as S.Schema<UserEventPayloadCase243NextPassport>;
 
 export interface UserEventPayloadCase243Next {
   passport?: UserEventPayloadCase243NextPassport | null;
 }
-export const UserEventPayloadCase243Next = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    passport: S.optional(S.NullOr(UserEventPayloadCase243NextPassport)),
-  }),
-).annotate({
-  identifier: "UserEventPayloadCase243Next",
-}) as any as S.Schema<UserEventPayloadCase243Next>;
+export const UserEventPayloadCase243Next =
+  UserEventPayloadCase242Next as any as S.Schema<UserEventPayloadCase243Next>;
 
 export type UserEventPayloadCase243PreviousPassportDeploymentType =
   | "all"
@@ -11189,25 +11009,14 @@ export interface UserEventPayloadCase243PreviousPassport {
   connectorId: string;
   deploymentType: UserEventPayloadCase243PreviousPassportDeploymentType;
 }
-export const UserEventPayloadCase243PreviousPassport = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    connectorId: S.String,
-    deploymentType: UserEventPayloadCase243PreviousPassportDeploymentType,
-  }),
-).annotate({
-  identifier: "UserEventPayloadCase243PreviousPassport",
-}) as any as S.Schema<UserEventPayloadCase243PreviousPassport>;
+export const UserEventPayloadCase243PreviousPassport =
+  UserEventPayloadCase242NextPassport as any as S.Schema<UserEventPayloadCase243PreviousPassport>;
 
 export interface UserEventPayloadCase243Previous {
   passport?: UserEventPayloadCase243PreviousPassport | null;
 }
-export const UserEventPayloadCase243Previous = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    passport: S.optional(S.NullOr(UserEventPayloadCase243PreviousPassport)),
-  }),
-).annotate({
-  identifier: "UserEventPayloadCase243Previous",
-}) as any as S.Schema<UserEventPayloadCase243Previous>;
+export const UserEventPayloadCase243Previous =
+  UserEventPayloadCase242Next as any as S.Schema<UserEventPayloadCase243Previous>;
 
 /** The payload of the event, if requested. */
 export interface UserEventPayloadCase243 {
@@ -12275,25 +12084,14 @@ export interface UserEventPayloadCase275PreviousBranchMatcher {
   /** The type of matching to perform */
   type: UserEventPayloadCase275PreviousBranchMatcherType;
 }
-export const UserEventPayloadCase275PreviousBranchMatcher = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pattern: S.String,
-    type: UserEventPayloadCase275PreviousBranchMatcherType,
-  }),
-).annotate({
-  identifier: "UserEventPayloadCase275PreviousBranchMatcher",
-}) as any as S.Schema<UserEventPayloadCase275PreviousBranchMatcher>;
+export const UserEventPayloadCase275PreviousBranchMatcher =
+  UserEventPayloadCase275NextBranchMatcher as any as S.Schema<UserEventPayloadCase275PreviousBranchMatcher>;
 
 export interface UserEventPayloadCase275Previous {
   branchMatcher?: UserEventPayloadCase275PreviousBranchMatcher;
 }
-export const UserEventPayloadCase275Previous = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    branchMatcher: S.optional(UserEventPayloadCase275PreviousBranchMatcher),
-  }),
-).annotate({
-  identifier: "UserEventPayloadCase275Previous",
-}) as any as S.Schema<UserEventPayloadCase275Previous>;
+export const UserEventPayloadCase275Previous =
+  UserEventPayloadCase275Next as any as S.Schema<UserEventPayloadCase275Previous>;
 
 /** The payload of the event, if requested. */
 export interface UserEventPayloadCase275 {
@@ -12611,15 +12409,8 @@ export interface UserEventPayloadCase286Previous {
   gitRepoId: string;
   gitRepositoryName: string;
 }
-export const UserEventPayloadCase286Previous = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gitProvider: UserEventPayloadCase286PreviousGitProvider,
-    gitRepoId: S.String,
-    gitRepositoryName: S.String,
-  }),
-).annotate({
-  identifier: "UserEventPayloadCase286Previous",
-}) as any as S.Schema<UserEventPayloadCase286Previous>;
+export const UserEventPayloadCase286Previous =
+  UserEventPayloadCase286Next as any as S.Schema<UserEventPayloadCase286Previous>;
 
 /** The payload of the event, if requested. */
 export interface UserEventPayloadCase286 {
@@ -13099,16 +12890,8 @@ export interface UserEventPayloadCase307RemovedMembership {
   uid: string;
   username?: string;
 }
-export const UserEventPayloadCase307RemovedMembership = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdAt: S.Number,
-    role: UserEventPayloadCase307RemovedMembershipRole,
-    uid: S.String,
-    username: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UserEventPayloadCase307RemovedMembership",
-}) as any as S.Schema<UserEventPayloadCase307RemovedMembership>;
+export const UserEventPayloadCase307RemovedMembership =
+  UserEventPayloadCase305ProjectMembership as any as S.Schema<UserEventPayloadCase307RemovedMembership>;
 
 /** The payload of the event, if requested. */
 export interface UserEventPayloadCase307 {
@@ -13330,13 +13113,8 @@ export const UserEventPayloadCase315OldPasswordProtectionCase0DeploymentType = S
 export interface UserEventPayloadCase315OldPasswordProtectionCase0 {
   deploymentType: UserEventPayloadCase315OldPasswordProtectionCase0DeploymentType;
 }
-export const UserEventPayloadCase315OldPasswordProtectionCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deploymentType: UserEventPayloadCase315OldPasswordProtectionCase0DeploymentType,
-  }),
-).annotate({
-  identifier: "UserEventPayloadCase315OldPasswordProtectionCase0",
-}) as any as S.Schema<UserEventPayloadCase315OldPasswordProtectionCase0>;
+export const UserEventPayloadCase315OldPasswordProtectionCase0 =
+  UserEventPayloadCase108OldPasswordProtection as any as S.Schema<UserEventPayloadCase315OldPasswordProtectionCase0>;
 
 export type UserEventPayloadCase315OldPasswordProtectionCase1 =
   | "all"
@@ -13361,13 +13139,8 @@ export const UserEventPayloadCase315PasswordProtectionCase0DeploymentType = S.St
 export interface UserEventPayloadCase315PasswordProtectionCase0 {
   deploymentType: UserEventPayloadCase315PasswordProtectionCase0DeploymentType;
 }
-export const UserEventPayloadCase315PasswordProtectionCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deploymentType: UserEventPayloadCase315PasswordProtectionCase0DeploymentType,
-  }),
-).annotate({
-  identifier: "UserEventPayloadCase315PasswordProtectionCase0",
-}) as any as S.Schema<UserEventPayloadCase315PasswordProtectionCase0>;
+export const UserEventPayloadCase315PasswordProtectionCase0 =
+  UserEventPayloadCase108OldPasswordProtection as any as S.Schema<UserEventPayloadCase315PasswordProtectionCase0>;
 
 export type UserEventPayloadCase315PasswordProtectionCase1 =
   | "all"
@@ -13917,21 +13690,8 @@ export interface UserEventPayloadCase336OldSsoProtectionCase0 {
   cve55182MigrationAppliedFrom?: UserEventPayloadCase336OldSsoProtectionCase0Cve55182MigrationAppliedFrom | null;
   deploymentType: UserEventPayloadCase336OldSsoProtectionCase0DeploymentType;
 }
-export const UserEventPayloadCase336OldSsoProtectionCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    april2026SecurityIncidentMigrationAppliedFrom: S.optional(
-      S.NullOr(
-        UserEventPayloadCase336OldSsoProtectionCase0April2026SecurityIncidentMigrationAppliedFrom,
-      ),
-    ),
-    cve55182MigrationAppliedFrom: S.optional(
-      S.NullOr(UserEventPayloadCase336OldSsoProtectionCase0Cve55182MigrationAppliedFrom),
-    ),
-    deploymentType: UserEventPayloadCase336OldSsoProtectionCase0DeploymentType,
-  }),
-).annotate({
-  identifier: "UserEventPayloadCase336OldSsoProtectionCase0",
-}) as any as S.Schema<UserEventPayloadCase336OldSsoProtectionCase0>;
+export const UserEventPayloadCase336OldSsoProtectionCase0 =
+  UserEventPayloadCase109OldSsoProtection as any as S.Schema<UserEventPayloadCase336OldSsoProtectionCase0>;
 
 export type UserEventPayloadCase336OldSsoProtectionCase1 =
   | "all"
@@ -13973,21 +13733,8 @@ export interface UserEventPayloadCase336SsoProtectionCase0 {
   cve55182MigrationAppliedFrom?: UserEventPayloadCase336SsoProtectionCase0Cve55182MigrationAppliedFrom | null;
   deploymentType: UserEventPayloadCase336SsoProtectionCase0DeploymentType;
 }
-export const UserEventPayloadCase336SsoProtectionCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    april2026SecurityIncidentMigrationAppliedFrom: S.optional(
-      S.NullOr(
-        UserEventPayloadCase336SsoProtectionCase0April2026SecurityIncidentMigrationAppliedFrom,
-      ),
-    ),
-    cve55182MigrationAppliedFrom: S.optional(
-      S.NullOr(UserEventPayloadCase336SsoProtectionCase0Cve55182MigrationAppliedFrom),
-    ),
-    deploymentType: UserEventPayloadCase336SsoProtectionCase0DeploymentType,
-  }),
-).annotate({
-  identifier: "UserEventPayloadCase336SsoProtectionCase0",
-}) as any as S.Schema<UserEventPayloadCase336SsoProtectionCase0>;
+export const UserEventPayloadCase336SsoProtectionCase0 =
+  UserEventPayloadCase109OldSsoProtection as any as S.Schema<UserEventPayloadCase336SsoProtectionCase0>;
 
 export type UserEventPayloadCase336SsoProtectionCase1 =
   | "all"
@@ -14204,13 +13951,8 @@ export interface UserEventPayloadCase340 {
   projectName?: string;
   reasonCode?: UserEventPayloadCase340ReasonCode;
 }
-export const UserEventPayloadCase340 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    projectId: S.String,
-    projectName: S.optional(S.String),
-    reasonCode: S.optional(UserEventPayloadCase340ReasonCode),
-  }),
-).annotate({ identifier: "UserEventPayloadCase340" }) as any as S.Schema<UserEventPayloadCase340>;
+export const UserEventPayloadCase340 =
+  UserEventPayloadCase318 as any as S.Schema<UserEventPayloadCase340>;
 
 export interface UserEventPayloadCase341PrevProjectWebAnalytics {
   canceledAt?: number;
@@ -14513,22 +14255,12 @@ export interface UserEventPayloadCase357FactorsItem {
   teamId?: string;
   username?: string;
 }
-export const UserEventPayloadCase357FactorsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    legacy: S.optional(S.Boolean),
-    origin: UserEventPayloadCase357FactorsItemOrigin,
-    ssoType: S.optional(S.String),
-    teamId: S.optional(S.String),
-    username: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UserEventPayloadCase357FactorsItem",
-}) as any as S.Schema<UserEventPayloadCase357FactorsItem>;
+export const UserEventPayloadCase357FactorsItem =
+  UserEventPayloadCase204FactorsCase0Item as any as S.Schema<UserEventPayloadCase357FactorsItem>;
 
 export type UserEventPayloadCase357FactorsList = Array<UserEventPayloadCase357FactorsItem>;
-export const UserEventPayloadCase357FactorsList = /*@__PURE__*/ S.Array(
-  UserEventPayloadCase357FactorsItem,
-) as any as S.Schema<UserEventPayloadCase357FactorsList>;
+export const UserEventPayloadCase357FactorsList =
+  UserEventPayloadCase204FactorsCase0List as any as S.Schema<UserEventPayloadCase357FactorsList>;
 
 export type UserEventPayloadCase357GeolocationCityNames =
   UserEventPayloadCase204GeolocationCityNames;
@@ -15256,15 +14988,8 @@ export interface UserEventPayloadCase369Store {
   name?: string;
   type: UserEventPayloadCase369StoreType;
 }
-export const UserEventPayloadCase369Store = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.optional(S.String),
-    type: UserEventPayloadCase369StoreType,
-  }),
-).annotate({
-  identifier: "UserEventPayloadCase369Store",
-}) as any as S.Schema<UserEventPayloadCase369Store>;
+export const UserEventPayloadCase369Store =
+  UserEventPayloadCase368Store as any as S.Schema<UserEventPayloadCase369Store>;
 
 /** The payload of the event, if requested. */
 export interface UserEventPayloadCase369 {
@@ -15295,15 +15020,8 @@ export interface UserEventPayloadCase370Store {
   name?: string;
   type: UserEventPayloadCase370StoreType;
 }
-export const UserEventPayloadCase370Store = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.optional(S.String),
-    type: UserEventPayloadCase370StoreType,
-  }),
-).annotate({
-  identifier: "UserEventPayloadCase370Store",
-}) as any as S.Schema<UserEventPayloadCase370Store>;
+export const UserEventPayloadCase370Store =
+  UserEventPayloadCase368Store as any as S.Schema<UserEventPayloadCase370Store>;
 
 /** The payload of the event, if requested. */
 export interface UserEventPayloadCase370 {
@@ -16168,9 +15886,8 @@ export const UserEventPayloadCase398PreviousTeamPermissionsItem = S.String;
 
 export type UserEventPayloadCase398PreviousTeamPermissionsList =
   Array<UserEventPayloadCase398PreviousTeamPermissionsItem>;
-export const UserEventPayloadCase398PreviousTeamPermissionsList = /*@__PURE__*/ S.Array(
-  UserEventPayloadCase398PreviousTeamPermissionsItem,
-) as any as S.Schema<UserEventPayloadCase398PreviousTeamPermissionsList>;
+export const UserEventPayloadCase398PreviousTeamPermissionsList =
+  ListEventTypeCategoriesList as any as S.Schema<UserEventPayloadCase398PreviousTeamPermissionsList>;
 
 export type UserEventPayloadCase398PreviousTeamRolesItem =
   | "BILLING"
@@ -16185,9 +15902,8 @@ export const UserEventPayloadCase398PreviousTeamRolesItem = S.String;
 
 export type UserEventPayloadCase398PreviousTeamRolesList =
   Array<UserEventPayloadCase398PreviousTeamRolesItem>;
-export const UserEventPayloadCase398PreviousTeamRolesList = /*@__PURE__*/ S.Array(
-  UserEventPayloadCase398PreviousTeamRolesItem,
-) as any as S.Schema<UserEventPayloadCase398PreviousTeamRolesList>;
+export const UserEventPayloadCase398PreviousTeamRolesList =
+  ListEventTypeCategoriesList as any as S.Schema<UserEventPayloadCase398PreviousTeamRolesList>;
 
 export type UserEventPayloadCase398TeamPermissionsItem =
   | "AiGatewayBudgetManager"
@@ -16213,9 +15929,8 @@ export const UserEventPayloadCase398TeamPermissionsItem = S.String;
 
 export type UserEventPayloadCase398TeamPermissionsList =
   Array<UserEventPayloadCase398TeamPermissionsItem>;
-export const UserEventPayloadCase398TeamPermissionsList = /*@__PURE__*/ S.Array(
-  UserEventPayloadCase398TeamPermissionsItem,
-) as any as S.Schema<UserEventPayloadCase398TeamPermissionsList>;
+export const UserEventPayloadCase398TeamPermissionsList =
+  ListEventTypeCategoriesList as any as S.Schema<UserEventPayloadCase398TeamPermissionsList>;
 
 export type UserEventPayloadCase398TeamRolesItem =
   | "BILLING"
@@ -16229,9 +15944,8 @@ export type UserEventPayloadCase398TeamRolesItem =
 export const UserEventPayloadCase398TeamRolesItem = S.String;
 
 export type UserEventPayloadCase398TeamRolesList = Array<UserEventPayloadCase398TeamRolesItem>;
-export const UserEventPayloadCase398TeamRolesList = /*@__PURE__*/ S.Array(
-  UserEventPayloadCase398TeamRolesItem,
-) as any as S.Schema<UserEventPayloadCase398TeamRolesList>;
+export const UserEventPayloadCase398TeamRolesList =
+  ListEventTypeCategoriesList as any as S.Schema<UserEventPayloadCase398TeamRolesList>;
 
 export type UserEventPayloadCase398UpdatedUser = UserEventPayloadCase160DeletedUser;
 export const UserEventPayloadCase398UpdatedUser = UserEventPayloadCase160DeletedUser;
@@ -16535,9 +16249,8 @@ export const UserEventPayloadCase415NextValueCase1TeamPermissionsItem = S.String
 
 export type UserEventPayloadCase415NextValueCase1TeamPermissionsList =
   Array<UserEventPayloadCase415NextValueCase1TeamPermissionsItem>;
-export const UserEventPayloadCase415NextValueCase1TeamPermissionsList = /*@__PURE__*/ S.Array(
-  UserEventPayloadCase415NextValueCase1TeamPermissionsItem,
-) as any as S.Schema<UserEventPayloadCase415NextValueCase1TeamPermissionsList>;
+export const UserEventPayloadCase415NextValueCase1TeamPermissionsList =
+  ListEventTypeCategoriesList as any as S.Schema<UserEventPayloadCase415NextValueCase1TeamPermissionsList>;
 
 export type UserEventPayloadCase415NextValueCase1TeamRolesItem =
   | "BILLING"
@@ -16552,9 +16265,8 @@ export const UserEventPayloadCase415NextValueCase1TeamRolesItem = S.String;
 
 export type UserEventPayloadCase415NextValueCase1TeamRolesList =
   Array<UserEventPayloadCase415NextValueCase1TeamRolesItem>;
-export const UserEventPayloadCase415NextValueCase1TeamRolesList = /*@__PURE__*/ S.Array(
-  UserEventPayloadCase415NextValueCase1TeamRolesItem,
-) as any as S.Schema<UserEventPayloadCase415NextValueCase1TeamRolesList>;
+export const UserEventPayloadCase415NextValueCase1TeamRolesList =
+  ListEventTypeCategoriesList as any as S.Schema<UserEventPayloadCase415NextValueCase1TeamRolesList>;
 
 export interface UserEventPayloadCase415NextValueCase1 {
   teamPermissions?: UserEventPayloadCase415NextValueCase1TeamPermissionsList;
@@ -16622,9 +16334,8 @@ export const UserEventPayloadCase415PreviousValueCase1TeamPermissionsItem = S.St
 
 export type UserEventPayloadCase415PreviousValueCase1TeamPermissionsList =
   Array<UserEventPayloadCase415PreviousValueCase1TeamPermissionsItem>;
-export const UserEventPayloadCase415PreviousValueCase1TeamPermissionsList = /*@__PURE__*/ S.Array(
-  UserEventPayloadCase415PreviousValueCase1TeamPermissionsItem,
-) as any as S.Schema<UserEventPayloadCase415PreviousValueCase1TeamPermissionsList>;
+export const UserEventPayloadCase415PreviousValueCase1TeamPermissionsList =
+  ListEventTypeCategoriesList as any as S.Schema<UserEventPayloadCase415PreviousValueCase1TeamPermissionsList>;
 
 export type UserEventPayloadCase415PreviousValueCase1TeamRolesItem =
   | "BILLING"
@@ -16639,22 +16350,15 @@ export const UserEventPayloadCase415PreviousValueCase1TeamRolesItem = S.String;
 
 export type UserEventPayloadCase415PreviousValueCase1TeamRolesList =
   Array<UserEventPayloadCase415PreviousValueCase1TeamRolesItem>;
-export const UserEventPayloadCase415PreviousValueCase1TeamRolesList = /*@__PURE__*/ S.Array(
-  UserEventPayloadCase415PreviousValueCase1TeamRolesItem,
-) as any as S.Schema<UserEventPayloadCase415PreviousValueCase1TeamRolesList>;
+export const UserEventPayloadCase415PreviousValueCase1TeamRolesList =
+  ListEventTypeCategoriesList as any as S.Schema<UserEventPayloadCase415PreviousValueCase1TeamRolesList>;
 
 export interface UserEventPayloadCase415PreviousValueCase1 {
   teamPermissions?: UserEventPayloadCase415PreviousValueCase1TeamPermissionsList;
   teamRoles: UserEventPayloadCase415PreviousValueCase1TeamRolesList;
 }
-export const UserEventPayloadCase415PreviousValueCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    teamPermissions: S.optional(UserEventPayloadCase415PreviousValueCase1TeamPermissionsList),
-    teamRoles: UserEventPayloadCase415PreviousValueCase1TeamRolesList,
-  }),
-).annotate({
-  identifier: "UserEventPayloadCase415PreviousValueCase1",
-}) as any as S.Schema<UserEventPayloadCase415PreviousValueCase1>;
+export const UserEventPayloadCase415PreviousValueCase1 =
+  UserEventPayloadCase415NextValueCase1 as any as S.Schema<UserEventPayloadCase415PreviousValueCase1>;
 
 export type UserEventPayloadCase415PreviousValueCase2 =
   | "BILLING"
@@ -17055,9 +16759,8 @@ export const UserEventPayloadCase438AllowedMethodsItem = S.String;
 
 export type UserEventPayloadCase438AllowedMethodsList =
   Array<UserEventPayloadCase438AllowedMethodsItem>;
-export const UserEventPayloadCase438AllowedMethodsList = /*@__PURE__*/ S.Array(
-  UserEventPayloadCase438AllowedMethodsItem,
-) as any as S.Schema<UserEventPayloadCase438AllowedMethodsList>;
+export const UserEventPayloadCase438AllowedMethodsList =
+  ListEventTypeCategoriesList as any as S.Schema<UserEventPayloadCase438AllowedMethodsList>;
 
 /** The payload of the event, if requested. */
 export interface UserEventPayloadCase438 {
@@ -19657,16 +19360,8 @@ export interface UserEventViaItemCase0 {
   uid: string;
   username: string;
 }
-export const UserEventViaItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    avatar: S.String,
-    email: S.String,
-    slug: S.optional(S.String),
-    type: S.optional(UserEventViaItemCase0Type),
-    uid: S.String,
-    username: S.String,
-  }),
-).annotate({ identifier: "UserEventViaItemCase0" }) as any as S.Schema<UserEventViaItemCase0>;
+export const UserEventViaItemCase0 =
+  UserEventPrincipalCase0 as any as S.Schema<UserEventViaItemCase0>;
 
 export type UserEventViaItemCase1Type = "app";
 export const UserEventViaItemCase1Type = S.String;
@@ -19680,14 +19375,8 @@ export interface UserEventViaItemCase1 {
   name: string;
   type: UserEventViaItemCase1Type;
 }
-export const UserEventViaItemCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientId: S.String,
-    id: S.optional(S.String),
-    name: S.String,
-    type: UserEventViaItemCase1Type,
-  }),
-).annotate({ identifier: "UserEventViaItemCase1" }) as any as S.Schema<UserEventViaItemCase1>;
+export const UserEventViaItemCase1 =
+  UserEventPrincipalCase1 as any as S.Schema<UserEventViaItemCase1>;
 
 export type UserEventViaItemCase2Type = "external";
 export const UserEventViaItemCase2Type = S.String;
@@ -19699,14 +19388,8 @@ export interface UserEventViaItemCase2 {
   name: string;
   type: UserEventViaItemCase2Type;
 }
-export const UserEventViaItemCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    email: S.optional(S.String),
-    id: S.String,
-    name: S.String,
-    type: UserEventViaItemCase2Type,
-  }),
-).annotate({ identifier: "UserEventViaItemCase2" }) as any as S.Schema<UserEventViaItemCase2>;
+export const UserEventViaItemCase2 =
+  UserEventPrincipalCase2 as any as S.Schema<UserEventViaItemCase2>;
 
 export type UserEventViaItemCase3Type = "system";
 export const UserEventViaItemCase3Type = S.String;
@@ -19715,11 +19398,8 @@ export const UserEventViaItemCase3Type = S.String;
 export interface UserEventViaItemCase3 {
   type: UserEventViaItemCase3Type;
 }
-export const UserEventViaItemCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: UserEventViaItemCase3Type,
-  }),
-).annotate({ identifier: "UserEventViaItemCase3" }) as any as S.Schema<UserEventViaItemCase3>;
+export const UserEventViaItemCase3 =
+  UserEventPrincipalCase3 as any as S.Schema<UserEventViaItemCase3>;
 
 export type UserEventViaItem =
   | UserEventViaItemCase0

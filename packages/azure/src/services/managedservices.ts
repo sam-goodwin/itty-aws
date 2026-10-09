@@ -681,18 +681,8 @@ export interface RegistrationDefinitionSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const RegistrationDefinitionSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(RegistrationDefinitionSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(RegistrationDefinitionSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RegistrationDefinitionSystemData",
-}) as any as S.Schema<RegistrationDefinitionSystemData>;
+export const RegistrationDefinitionSystemData =
+  RegistrationAssignmentSystemData as any as S.Schema<RegistrationDefinitionSystemData>;
 
 /** The registration definition. */
 export interface RegistrationDefinition {

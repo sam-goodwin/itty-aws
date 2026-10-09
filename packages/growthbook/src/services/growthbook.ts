@@ -2002,21 +2002,11 @@ export interface AutoRunArtifactsItem {
   detail: string | null;
   dateCreated: string;
 }
-export const AutoRunArtifactsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: AutoRunArtifactsItemKind,
-    id: S.String,
-    label: S.String,
-    by: AutoRunArtifactsItemBy,
-    detail: S.NullOr(S.String),
-    dateCreated: S.String,
-  }),
-).annotate({ identifier: "AutoRunArtifactsItem" }) as any as S.Schema<AutoRunArtifactsItem>;
+export const AutoRunArtifactsItem = Artifacts as any as S.Schema<AutoRunArtifactsItem>;
 
 export type AutoRunArtifactsList = Array<AutoRunArtifactsItem>;
-export const AutoRunArtifactsList = /*@__PURE__*/ S.Array(
-  AutoRunArtifactsItem,
-) as any as S.Schema<AutoRunArtifactsList>;
+export const AutoRunArtifactsList =
+  AppendAutoRunArtifactResponseArtifactsList as any as S.Schema<AutoRunArtifactsList>;
 
 export type AutoRunChecksItem = Checks;
 export const AutoRunChecksItem = Checks;
@@ -2865,15 +2855,7 @@ export interface CreateBulkImportFactRequestFactMetricsItemDataLowerCappingSetti
   ignoreZeros?: boolean;
 }
 export const CreateBulkImportFactRequestFactMetricsItemDataLowerCappingSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: CreateBulkImportFactRequestFactMetricsItemDataLowerCappingSettingsType,
-      value: S.optional(S.Number),
-      ignoreZeros: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "CreateBulkImportFactRequestFactMetricsItemDataLowerCappingSettings",
-  }) as any as S.Schema<CreateBulkImportFactRequestFactMetricsItemDataLowerCappingSettings>;
+  CreateBulkImportFactRequestFactMetricsItemDataCappingSettings as any as S.Schema<CreateBulkImportFactRequestFactMetricsItemDataLowerCappingSettings>;
 
 export type CreateBulkImportFactRequestFactMetricsItemDataWindowSettingsType =
   | "none"
@@ -4226,21 +4208,12 @@ export interface ConstantRevisionReview {
   stale?: boolean;
   dateCreated: string;
 }
-export const ConstantRevisionReview = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    userId: S.String,
-    decision: ConstantRevisionReviewDecision,
-    comment: S.optional(S.String),
-    stale: S.optional(S.Boolean),
-    dateCreated: S.String,
-  }),
-).annotate({ identifier: "ConstantRevisionReview" }) as any as S.Schema<ConstantRevisionReview>;
+export const ConstantRevisionReview =
+  ConfigRevisionReview as any as S.Schema<ConstantRevisionReview>;
 
 export type ConstantRevisionReviewsList = Array<ConstantRevisionReview>;
-export const ConstantRevisionReviewsList = /*@__PURE__*/ S.Array(
-  ConstantRevisionReview,
-) as any as S.Schema<ConstantRevisionReviewsList>;
+export const ConstantRevisionReviewsList =
+  ConfigRevisionReviewsList as any as S.Schema<ConstantRevisionReviewsList>;
 
 export type ConstantRevisionActivityLogEntryAction =
   | "created"
@@ -4532,10 +4505,8 @@ export type CreateConstantRevisionRebaseRequestConflictResolutionsMap = {
     | (string & {})
     | undefined;
 };
-export const CreateConstantRevisionRebaseRequestConflictResolutionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  CreateConstantRevisionRebaseRequestConflictResolutionsValue,
-) as any as S.Schema<CreateConstantRevisionRebaseRequestConflictResolutionsMap>;
+export const CreateConstantRevisionRebaseRequestConflictResolutionsMap =
+  CreateConfigRevisionRebaseRequestConflictResolutionsMap as any as S.Schema<CreateConstantRevisionRebaseRequestConflictResolutionsMap>;
 
 export interface CreateConstantRevisionRebaseRequest {
   key: string;
@@ -5354,9 +5325,8 @@ export type CustomFieldSectionsItem = "feature" | "experiment" | "attribute";
 export const CustomFieldSectionsItem = S.String;
 
 export type CustomFieldSectionsList = Array<CustomFieldSectionsItem>;
-export const CustomFieldSectionsList = /*@__PURE__*/ S.Array(
-  CustomFieldSectionsItem,
-) as any as S.Schema<CustomFieldSectionsList>;
+export const CustomFieldSectionsList =
+  CreateCustomFieldRequestSectionsList as any as S.Schema<CustomFieldSectionsList>;
 
 export interface CustomField {
   id: string;
@@ -5803,9 +5773,8 @@ export const CreateDashboardV2RequestBlocksItemCase2ColumnsFilterItem = S.String
 export type CreateDashboardV2RequestBlocksItemCase2ColumnsFilterList = Array<
   CreateDashboardV2RequestBlocksItemCase2ColumnsFilterItem | (string & {})
 >;
-export const CreateDashboardV2RequestBlocksItemCase2ColumnsFilterList = /*@__PURE__*/ S.Array(
-  CreateDashboardV2RequestBlocksItemCase2ColumnsFilterItem,
-) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase2ColumnsFilterList>;
+export const CreateDashboardV2RequestBlocksItemCase2ColumnsFilterList =
+  CreateCustomFieldRequestSectionsList as any as S.Schema<CreateDashboardV2RequestBlocksItemCase2ColumnsFilterList>;
 
 export type CreateDashboardV2RequestBlocksItemCase2SliceTagsFilterList = Array<string>;
 export const CreateDashboardV2RequestBlocksItemCase2SliceTagsFilterList =
@@ -5908,19 +5877,8 @@ export interface CreateDashboardV2RequestBlocksItemCase3StartDateRange {
   startDate?: string | null;
   endDate?: string | null;
 }
-export const CreateDashboardV2RequestBlocksItemCase3StartDateRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    predefined: CreateDashboardV2RequestBlocksItemCase3StartDateRangePredefined,
-    lookbackValue: S.optional(S.NullOr(S.Number)),
-    lookbackUnit: S.optional(
-      S.NullOr(CreateDashboardV2RequestBlocksItemCase3StartDateRangeLookbackUnit),
-    ),
-    startDate: S.optional(S.NullOr(S.String)),
-    endDate: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "CreateDashboardV2RequestBlocksItemCase3StartDateRange",
-}) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase3StartDateRange>;
+export const CreateDashboardV2RequestBlocksItemCase3StartDateRange =
+  CreateDashboardV2RequestComparisonPreviousTimeFrame as any as S.Schema<CreateDashboardV2RequestBlocksItemCase3StartDateRange>;
 
 export type CreateDashboardV2RequestBlocksItemCase3EndDateRangePredefined =
   | "today"
@@ -5951,19 +5909,8 @@ export interface CreateDashboardV2RequestBlocksItemCase3EndDateRange {
   startDate?: string | null;
   endDate?: string | null;
 }
-export const CreateDashboardV2RequestBlocksItemCase3EndDateRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    predefined: CreateDashboardV2RequestBlocksItemCase3EndDateRangePredefined,
-    lookbackValue: S.optional(S.NullOr(S.Number)),
-    lookbackUnit: S.optional(
-      S.NullOr(CreateDashboardV2RequestBlocksItemCase3EndDateRangeLookbackUnit),
-    ),
-    startDate: S.optional(S.NullOr(S.String)),
-    endDate: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "CreateDashboardV2RequestBlocksItemCase3EndDateRange",
-}) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase3EndDateRange>;
+export const CreateDashboardV2RequestBlocksItemCase3EndDateRange =
+  CreateDashboardV2RequestComparisonPreviousTimeFrame as any as S.Schema<CreateDashboardV2RequestBlocksItemCase3EndDateRange>;
 
 export interface CreateDashboardV2RequestBlocksItemCase3ColumnsItem {
   id: string;
@@ -6071,19 +6018,8 @@ export interface CreateDashboardV2RequestBlocksItemCase4DateRange {
   startDate?: string | null;
   endDate?: string | null;
 }
-export const CreateDashboardV2RequestBlocksItemCase4DateRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    predefined: CreateDashboardV2RequestBlocksItemCase4DateRangePredefined,
-    lookbackValue: S.optional(S.NullOr(S.Number)),
-    lookbackUnit: S.optional(
-      S.NullOr(CreateDashboardV2RequestBlocksItemCase4DateRangeLookbackUnit),
-    ),
-    startDate: S.optional(S.NullOr(S.String)),
-    endDate: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "CreateDashboardV2RequestBlocksItemCase4DateRange",
-}) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase4DateRange>;
+export const CreateDashboardV2RequestBlocksItemCase4DateRange =
+  CreateDashboardV2RequestComparisonPreviousTimeFrame as any as S.Schema<CreateDashboardV2RequestBlocksItemCase4DateRange>;
 
 export type CreateDashboardV2RequestBlocksItemCase4ProjectsList = Array<string>;
 export const CreateDashboardV2RequestBlocksItemCase4ProjectsList =
@@ -6232,19 +6168,8 @@ export interface CreateDashboardV2RequestBlocksItemCase5DateRange {
   startDate?: string | null;
   endDate?: string | null;
 }
-export const CreateDashboardV2RequestBlocksItemCase5DateRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    predefined: CreateDashboardV2RequestBlocksItemCase5DateRangePredefined,
-    lookbackValue: S.optional(S.NullOr(S.Number)),
-    lookbackUnit: S.optional(
-      S.NullOr(CreateDashboardV2RequestBlocksItemCase5DateRangeLookbackUnit),
-    ),
-    startDate: S.optional(S.NullOr(S.String)),
-    endDate: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "CreateDashboardV2RequestBlocksItemCase5DateRange",
-}) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase5DateRange>;
+export const CreateDashboardV2RequestBlocksItemCase5DateRange =
+  CreateDashboardV2RequestComparisonPreviousTimeFrame as any as S.Schema<CreateDashboardV2RequestBlocksItemCase5DateRange>;
 
 export type CreateDashboardV2RequestBlocksItemCase5ProjectsList = Array<string>;
 export const CreateDashboardV2RequestBlocksItemCase5ProjectsList =
@@ -6292,36 +6217,15 @@ export interface CreateDashboardV2RequestBlocksItemCase5ComparisonPreviousTimeFr
   endDate?: string | null;
 }
 export const CreateDashboardV2RequestBlocksItemCase5ComparisonPreviousTimeFrame =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      predefined: CreateDashboardV2RequestBlocksItemCase5ComparisonPreviousTimeFramePredefined,
-      lookbackValue: S.optional(S.NullOr(S.Number)),
-      lookbackUnit: S.optional(
-        S.NullOr(CreateDashboardV2RequestBlocksItemCase5ComparisonPreviousTimeFrameLookbackUnit),
-      ),
-      startDate: S.optional(S.NullOr(S.String)),
-      endDate: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "CreateDashboardV2RequestBlocksItemCase5ComparisonPreviousTimeFrame",
-  }) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase5ComparisonPreviousTimeFrame>;
+  CreateDashboardV2RequestBlocksItemCase4ComparisonPreviousTimeFrame as any as S.Schema<CreateDashboardV2RequestBlocksItemCase5ComparisonPreviousTimeFrame>;
 
 export interface CreateDashboardV2RequestBlocksItemCase5Comparison {
   enabled: boolean;
   mode?: CreateDashboardV2RequestBlocksItemCase5ComparisonMode | (string & {});
   previousTimeFrame?: CreateDashboardV2RequestBlocksItemCase5ComparisonPreviousTimeFrame;
 }
-export const CreateDashboardV2RequestBlocksItemCase5Comparison = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    mode: S.optional(CreateDashboardV2RequestBlocksItemCase5ComparisonMode),
-    previousTimeFrame: S.optional(
-      CreateDashboardV2RequestBlocksItemCase5ComparisonPreviousTimeFrame,
-    ),
-  }),
-).annotate({
-  identifier: "CreateDashboardV2RequestBlocksItemCase5Comparison",
-}) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase5Comparison>;
+export const CreateDashboardV2RequestBlocksItemCase5Comparison =
+  CreateDashboardV2RequestBlocksItemCase4Comparison as any as S.Schema<CreateDashboardV2RequestBlocksItemCase5Comparison>;
 
 export type CreateDashboardV2RequestBlocksItemCase5GlobalControlSettings =
   CreateDashboardV2RequestBlocksItemCase3GlobalControlSettings;
@@ -6393,19 +6297,8 @@ export interface CreateDashboardV2RequestBlocksItemCase6DateRange {
   startDate?: string | null;
   endDate?: string | null;
 }
-export const CreateDashboardV2RequestBlocksItemCase6DateRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    predefined: CreateDashboardV2RequestBlocksItemCase6DateRangePredefined,
-    lookbackValue: S.optional(S.NullOr(S.Number)),
-    lookbackUnit: S.optional(
-      S.NullOr(CreateDashboardV2RequestBlocksItemCase6DateRangeLookbackUnit),
-    ),
-    startDate: S.optional(S.NullOr(S.String)),
-    endDate: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "CreateDashboardV2RequestBlocksItemCase6DateRange",
-}) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase6DateRange>;
+export const CreateDashboardV2RequestBlocksItemCase6DateRange =
+  CreateDashboardV2RequestComparisonPreviousTimeFrame as any as S.Schema<CreateDashboardV2RequestBlocksItemCase6DateRange>;
 
 export type CreateDashboardV2RequestBlocksItemCase6ProjectsList = Array<string>;
 export const CreateDashboardV2RequestBlocksItemCase6ProjectsList =
@@ -6453,36 +6346,15 @@ export interface CreateDashboardV2RequestBlocksItemCase6ComparisonPreviousTimeFr
   endDate?: string | null;
 }
 export const CreateDashboardV2RequestBlocksItemCase6ComparisonPreviousTimeFrame =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      predefined: CreateDashboardV2RequestBlocksItemCase6ComparisonPreviousTimeFramePredefined,
-      lookbackValue: S.optional(S.NullOr(S.Number)),
-      lookbackUnit: S.optional(
-        S.NullOr(CreateDashboardV2RequestBlocksItemCase6ComparisonPreviousTimeFrameLookbackUnit),
-      ),
-      startDate: S.optional(S.NullOr(S.String)),
-      endDate: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "CreateDashboardV2RequestBlocksItemCase6ComparisonPreviousTimeFrame",
-  }) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase6ComparisonPreviousTimeFrame>;
+  CreateDashboardV2RequestBlocksItemCase4ComparisonPreviousTimeFrame as any as S.Schema<CreateDashboardV2RequestBlocksItemCase6ComparisonPreviousTimeFrame>;
 
 export interface CreateDashboardV2RequestBlocksItemCase6Comparison {
   enabled: boolean;
   mode?: CreateDashboardV2RequestBlocksItemCase6ComparisonMode | (string & {});
   previousTimeFrame?: CreateDashboardV2RequestBlocksItemCase6ComparisonPreviousTimeFrame;
 }
-export const CreateDashboardV2RequestBlocksItemCase6Comparison = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    mode: S.optional(CreateDashboardV2RequestBlocksItemCase6ComparisonMode),
-    previousTimeFrame: S.optional(
-      CreateDashboardV2RequestBlocksItemCase6ComparisonPreviousTimeFrame,
-    ),
-  }),
-).annotate({
-  identifier: "CreateDashboardV2RequestBlocksItemCase6Comparison",
-}) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase6Comparison>;
+export const CreateDashboardV2RequestBlocksItemCase6Comparison =
+  CreateDashboardV2RequestBlocksItemCase4Comparison as any as S.Schema<CreateDashboardV2RequestBlocksItemCase6Comparison>;
 
 export type CreateDashboardV2RequestBlocksItemCase6GlobalControlSettings =
   CreateDashboardV2RequestBlocksItemCase3GlobalControlSettings;
@@ -6564,9 +6436,8 @@ export const CreateDashboardV2RequestBlocksItemCase7ColumnsFilterItem = S.String
 export type CreateDashboardV2RequestBlocksItemCase7ColumnsFilterList = Array<
   CreateDashboardV2RequestBlocksItemCase7ColumnsFilterItem | (string & {})
 >;
-export const CreateDashboardV2RequestBlocksItemCase7ColumnsFilterList = /*@__PURE__*/ S.Array(
-  CreateDashboardV2RequestBlocksItemCase7ColumnsFilterItem,
-) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase7ColumnsFilterList>;
+export const CreateDashboardV2RequestBlocksItemCase7ColumnsFilterList =
+  CreateCustomFieldRequestSectionsList as any as S.Schema<CreateDashboardV2RequestBlocksItemCase7ColumnsFilterList>;
 
 export type CreateDashboardV2RequestBlocksItemCase7MetricTagFilterList = Array<string>;
 export const CreateDashboardV2RequestBlocksItemCase7MetricTagFilterList =
@@ -6817,36 +6688,15 @@ export interface CreateDashboardV2RequestBlocksItemCase11ComparisonPreviousTimeF
   endDate?: string | null;
 }
 export const CreateDashboardV2RequestBlocksItemCase11ComparisonPreviousTimeFrame =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      predefined: CreateDashboardV2RequestBlocksItemCase11ComparisonPreviousTimeFramePredefined,
-      lookbackValue: S.optional(S.NullOr(S.Number)),
-      lookbackUnit: S.optional(
-        S.NullOr(CreateDashboardV2RequestBlocksItemCase11ComparisonPreviousTimeFrameLookbackUnit),
-      ),
-      startDate: S.optional(S.NullOr(S.String)),
-      endDate: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "CreateDashboardV2RequestBlocksItemCase11ComparisonPreviousTimeFrame",
-  }) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase11ComparisonPreviousTimeFrame>;
+  CreateDashboardV2RequestBlocksItemCase4ComparisonPreviousTimeFrame as any as S.Schema<CreateDashboardV2RequestBlocksItemCase11ComparisonPreviousTimeFrame>;
 
 export interface CreateDashboardV2RequestBlocksItemCase11Comparison {
   enabled: boolean;
   mode?: CreateDashboardV2RequestBlocksItemCase11ComparisonMode | (string & {});
   previousTimeFrame?: CreateDashboardV2RequestBlocksItemCase11ComparisonPreviousTimeFrame;
 }
-export const CreateDashboardV2RequestBlocksItemCase11Comparison = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    mode: S.optional(CreateDashboardV2RequestBlocksItemCase11ComparisonMode),
-    previousTimeFrame: S.optional(
-      CreateDashboardV2RequestBlocksItemCase11ComparisonPreviousTimeFrame,
-    ),
-  }),
-).annotate({
-  identifier: "CreateDashboardV2RequestBlocksItemCase11Comparison",
-}) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase11Comparison>;
+export const CreateDashboardV2RequestBlocksItemCase11Comparison =
+  CreateDashboardV2RequestBlocksItemCase4Comparison as any as S.Schema<CreateDashboardV2RequestBlocksItemCase11Comparison>;
 
 export type CreateDashboardV2RequestBlocksItemCase11AnalysisSettingsPopulationType =
   | "metric"
@@ -6978,36 +6828,15 @@ export interface CreateDashboardV2RequestBlocksItemCase12ComparisonPreviousTimeF
   endDate?: string | null;
 }
 export const CreateDashboardV2RequestBlocksItemCase12ComparisonPreviousTimeFrame =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      predefined: CreateDashboardV2RequestBlocksItemCase12ComparisonPreviousTimeFramePredefined,
-      lookbackValue: S.optional(S.NullOr(S.Number)),
-      lookbackUnit: S.optional(
-        S.NullOr(CreateDashboardV2RequestBlocksItemCase12ComparisonPreviousTimeFrameLookbackUnit),
-      ),
-      startDate: S.optional(S.NullOr(S.String)),
-      endDate: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "CreateDashboardV2RequestBlocksItemCase12ComparisonPreviousTimeFrame",
-  }) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase12ComparisonPreviousTimeFrame>;
+  CreateDashboardV2RequestBlocksItemCase4ComparisonPreviousTimeFrame as any as S.Schema<CreateDashboardV2RequestBlocksItemCase12ComparisonPreviousTimeFrame>;
 
 export interface CreateDashboardV2RequestBlocksItemCase12Comparison {
   enabled: boolean;
   mode?: CreateDashboardV2RequestBlocksItemCase12ComparisonMode | (string & {});
   previousTimeFrame?: CreateDashboardV2RequestBlocksItemCase12ComparisonPreviousTimeFrame;
 }
-export const CreateDashboardV2RequestBlocksItemCase12Comparison = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    mode: S.optional(CreateDashboardV2RequestBlocksItemCase12ComparisonMode),
-    previousTimeFrame: S.optional(
-      CreateDashboardV2RequestBlocksItemCase12ComparisonPreviousTimeFrame,
-    ),
-  }),
-).annotate({
-  identifier: "CreateDashboardV2RequestBlocksItemCase12Comparison",
-}) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase12Comparison>;
+export const CreateDashboardV2RequestBlocksItemCase12Comparison =
+  CreateDashboardV2RequestBlocksItemCase4Comparison as any as S.Schema<CreateDashboardV2RequestBlocksItemCase12Comparison>;
 
 export interface CreateDashboardV2RequestBlocksItemCase12GlobalControlSettings {
   dateRange?: boolean;
@@ -7239,19 +7068,8 @@ export interface CreateDashboardV2RequestBlocksItemCase12ConfigDateRange {
   startDate?: string | null;
   endDate?: string | null;
 }
-export const CreateDashboardV2RequestBlocksItemCase12ConfigDateRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    predefined: CreateDashboardV2RequestBlocksItemCase12ConfigDateRangePredefined,
-    lookbackValue: S.optional(S.NullOr(S.Number)),
-    lookbackUnit: S.optional(
-      S.NullOr(CreateDashboardV2RequestBlocksItemCase12ConfigDateRangeLookbackUnit),
-    ),
-    startDate: S.optional(S.NullOr(S.String)),
-    endDate: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "CreateDashboardV2RequestBlocksItemCase12ConfigDateRange",
-}) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase12ConfigDateRange>;
+export const CreateDashboardV2RequestBlocksItemCase12ConfigDateRange =
+  CreateDashboardV2RequestComparisonPreviousTimeFrame as any as S.Schema<CreateDashboardV2RequestBlocksItemCase12ConfigDateRange>;
 
 export type CreateDashboardV2RequestBlocksItemCase12ConfigShowAs = "total" | "per_unit";
 export const CreateDashboardV2RequestBlocksItemCase12ConfigShowAs = S.String;
@@ -7476,36 +7294,15 @@ export interface CreateDashboardV2RequestBlocksItemCase13ComparisonPreviousTimeF
   endDate?: string | null;
 }
 export const CreateDashboardV2RequestBlocksItemCase13ComparisonPreviousTimeFrame =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      predefined: CreateDashboardV2RequestBlocksItemCase13ComparisonPreviousTimeFramePredefined,
-      lookbackValue: S.optional(S.NullOr(S.Number)),
-      lookbackUnit: S.optional(
-        S.NullOr(CreateDashboardV2RequestBlocksItemCase13ComparisonPreviousTimeFrameLookbackUnit),
-      ),
-      startDate: S.optional(S.NullOr(S.String)),
-      endDate: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "CreateDashboardV2RequestBlocksItemCase13ComparisonPreviousTimeFrame",
-  }) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase13ComparisonPreviousTimeFrame>;
+  CreateDashboardV2RequestBlocksItemCase4ComparisonPreviousTimeFrame as any as S.Schema<CreateDashboardV2RequestBlocksItemCase13ComparisonPreviousTimeFrame>;
 
 export interface CreateDashboardV2RequestBlocksItemCase13Comparison {
   enabled: boolean;
   mode?: CreateDashboardV2RequestBlocksItemCase13ComparisonMode | (string & {});
   previousTimeFrame?: CreateDashboardV2RequestBlocksItemCase13ComparisonPreviousTimeFrame;
 }
-export const CreateDashboardV2RequestBlocksItemCase13Comparison = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    mode: S.optional(CreateDashboardV2RequestBlocksItemCase13ComparisonMode),
-    previousTimeFrame: S.optional(
-      CreateDashboardV2RequestBlocksItemCase13ComparisonPreviousTimeFrame,
-    ),
-  }),
-).annotate({
-  identifier: "CreateDashboardV2RequestBlocksItemCase13Comparison",
-}) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase13Comparison>;
+export const CreateDashboardV2RequestBlocksItemCase13Comparison =
+  CreateDashboardV2RequestBlocksItemCase4Comparison as any as S.Schema<CreateDashboardV2RequestBlocksItemCase13Comparison>;
 
 export type CreateDashboardV2RequestBlocksItemCase13GlobalControlSettings =
   CreateDashboardV2RequestBlocksItemCase12GlobalControlSettings;
@@ -7530,16 +7327,7 @@ export interface CreateDashboardV2RequestBlocksItemCase13ConfigDimensionsItemCas
     | (string & {});
 }
 export const CreateDashboardV2RequestBlocksItemCase13ConfigDimensionsItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dimensionType: S.String,
-      column: S.NullOr(S.String),
-      dateGranularity:
-        CreateDashboardV2RequestBlocksItemCase13ConfigDimensionsItemCase0DateGranularity,
-    }),
-  ).annotate({
-    identifier: "CreateDashboardV2RequestBlocksItemCase13ConfigDimensionsItemCase0",
-  }) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase13ConfigDimensionsItemCase0>;
+  CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase0 as any as S.Schema<CreateDashboardV2RequestBlocksItemCase13ConfigDimensionsItemCase0>;
 
 export type CreateDashboardV2RequestBlocksItemCase13ConfigDimensionsItemCase1 =
   CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase1;
@@ -7711,19 +7499,8 @@ export interface CreateDashboardV2RequestBlocksItemCase13ConfigDateRange {
   startDate?: string | null;
   endDate?: string | null;
 }
-export const CreateDashboardV2RequestBlocksItemCase13ConfigDateRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    predefined: CreateDashboardV2RequestBlocksItemCase13ConfigDateRangePredefined,
-    lookbackValue: S.optional(S.NullOr(S.Number)),
-    lookbackUnit: S.optional(
-      S.NullOr(CreateDashboardV2RequestBlocksItemCase13ConfigDateRangeLookbackUnit),
-    ),
-    startDate: S.optional(S.NullOr(S.String)),
-    endDate: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "CreateDashboardV2RequestBlocksItemCase13ConfigDateRange",
-}) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase13ConfigDateRange>;
+export const CreateDashboardV2RequestBlocksItemCase13ConfigDateRange =
+  CreateDashboardV2RequestComparisonPreviousTimeFrame as any as S.Schema<CreateDashboardV2RequestBlocksItemCase13ConfigDateRange>;
 
 export type CreateDashboardV2RequestBlocksItemCase13ConfigShowAs = "total" | "per_unit";
 export const CreateDashboardV2RequestBlocksItemCase13ConfigShowAs = S.String;
@@ -7949,36 +7726,15 @@ export interface CreateDashboardV2RequestBlocksItemCase14ComparisonPreviousTimeF
   endDate?: string | null;
 }
 export const CreateDashboardV2RequestBlocksItemCase14ComparisonPreviousTimeFrame =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      predefined: CreateDashboardV2RequestBlocksItemCase14ComparisonPreviousTimeFramePredefined,
-      lookbackValue: S.optional(S.NullOr(S.Number)),
-      lookbackUnit: S.optional(
-        S.NullOr(CreateDashboardV2RequestBlocksItemCase14ComparisonPreviousTimeFrameLookbackUnit),
-      ),
-      startDate: S.optional(S.NullOr(S.String)),
-      endDate: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "CreateDashboardV2RequestBlocksItemCase14ComparisonPreviousTimeFrame",
-  }) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase14ComparisonPreviousTimeFrame>;
+  CreateDashboardV2RequestBlocksItemCase4ComparisonPreviousTimeFrame as any as S.Schema<CreateDashboardV2RequestBlocksItemCase14ComparisonPreviousTimeFrame>;
 
 export interface CreateDashboardV2RequestBlocksItemCase14Comparison {
   enabled: boolean;
   mode?: CreateDashboardV2RequestBlocksItemCase14ComparisonMode | (string & {});
   previousTimeFrame?: CreateDashboardV2RequestBlocksItemCase14ComparisonPreviousTimeFrame;
 }
-export const CreateDashboardV2RequestBlocksItemCase14Comparison = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    mode: S.optional(CreateDashboardV2RequestBlocksItemCase14ComparisonMode),
-    previousTimeFrame: S.optional(
-      CreateDashboardV2RequestBlocksItemCase14ComparisonPreviousTimeFrame,
-    ),
-  }),
-).annotate({
-  identifier: "CreateDashboardV2RequestBlocksItemCase14Comparison",
-}) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase14Comparison>;
+export const CreateDashboardV2RequestBlocksItemCase14Comparison =
+  CreateDashboardV2RequestBlocksItemCase4Comparison as any as S.Schema<CreateDashboardV2RequestBlocksItemCase14Comparison>;
 
 export type CreateDashboardV2RequestBlocksItemCase14GlobalControlSettings =
   CreateDashboardV2RequestBlocksItemCase12GlobalControlSettings;
@@ -8003,16 +7759,7 @@ export interface CreateDashboardV2RequestBlocksItemCase14ConfigDimensionsItemCas
     | (string & {});
 }
 export const CreateDashboardV2RequestBlocksItemCase14ConfigDimensionsItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dimensionType: S.String,
-      column: S.NullOr(S.String),
-      dateGranularity:
-        CreateDashboardV2RequestBlocksItemCase14ConfigDimensionsItemCase0DateGranularity,
-    }),
-  ).annotate({
-    identifier: "CreateDashboardV2RequestBlocksItemCase14ConfigDimensionsItemCase0",
-  }) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase14ConfigDimensionsItemCase0>;
+  CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase0 as any as S.Schema<CreateDashboardV2RequestBlocksItemCase14ConfigDimensionsItemCase0>;
 
 export type CreateDashboardV2RequestBlocksItemCase14ConfigDimensionsItemCase1 =
   CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase1;
@@ -8184,19 +7931,8 @@ export interface CreateDashboardV2RequestBlocksItemCase14ConfigDateRange {
   startDate?: string | null;
   endDate?: string | null;
 }
-export const CreateDashboardV2RequestBlocksItemCase14ConfigDateRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    predefined: CreateDashboardV2RequestBlocksItemCase14ConfigDateRangePredefined,
-    lookbackValue: S.optional(S.NullOr(S.Number)),
-    lookbackUnit: S.optional(
-      S.NullOr(CreateDashboardV2RequestBlocksItemCase14ConfigDateRangeLookbackUnit),
-    ),
-    startDate: S.optional(S.NullOr(S.String)),
-    endDate: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "CreateDashboardV2RequestBlocksItemCase14ConfigDateRange",
-}) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase14ConfigDateRange>;
+export const CreateDashboardV2RequestBlocksItemCase14ConfigDateRange =
+  CreateDashboardV2RequestComparisonPreviousTimeFrame as any as S.Schema<CreateDashboardV2RequestBlocksItemCase14ConfigDateRange>;
 
 export type CreateDashboardV2RequestBlocksItemCase14ConfigShowAs = "total" | "per_unit";
 export const CreateDashboardV2RequestBlocksItemCase14ConfigShowAs = S.String;
@@ -8448,36 +8184,15 @@ export interface CreateDashboardV2RequestBlocksItemCase15ComparisonPreviousTimeF
   endDate?: string | null;
 }
 export const CreateDashboardV2RequestBlocksItemCase15ComparisonPreviousTimeFrame =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      predefined: CreateDashboardV2RequestBlocksItemCase15ComparisonPreviousTimeFramePredefined,
-      lookbackValue: S.optional(S.NullOr(S.Number)),
-      lookbackUnit: S.optional(
-        S.NullOr(CreateDashboardV2RequestBlocksItemCase15ComparisonPreviousTimeFrameLookbackUnit),
-      ),
-      startDate: S.optional(S.NullOr(S.String)),
-      endDate: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "CreateDashboardV2RequestBlocksItemCase15ComparisonPreviousTimeFrame",
-  }) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase15ComparisonPreviousTimeFrame>;
+  CreateDashboardV2RequestBlocksItemCase4ComparisonPreviousTimeFrame as any as S.Schema<CreateDashboardV2RequestBlocksItemCase15ComparisonPreviousTimeFrame>;
 
 export interface CreateDashboardV2RequestBlocksItemCase15Comparison {
   enabled: boolean;
   mode?: CreateDashboardV2RequestBlocksItemCase15ComparisonMode | (string & {});
   previousTimeFrame?: CreateDashboardV2RequestBlocksItemCase15ComparisonPreviousTimeFrame;
 }
-export const CreateDashboardV2RequestBlocksItemCase15Comparison = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    mode: S.optional(CreateDashboardV2RequestBlocksItemCase15ComparisonMode),
-    previousTimeFrame: S.optional(
-      CreateDashboardV2RequestBlocksItemCase15ComparisonPreviousTimeFrame,
-    ),
-  }),
-).annotate({
-  identifier: "CreateDashboardV2RequestBlocksItemCase15Comparison",
-}) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase15Comparison>;
+export const CreateDashboardV2RequestBlocksItemCase15Comparison =
+  CreateDashboardV2RequestBlocksItemCase4Comparison as any as S.Schema<CreateDashboardV2RequestBlocksItemCase15Comparison>;
 
 export type CreateDashboardV2RequestBlocksItemCase15GlobalControlSettings =
   CreateDashboardV2RequestBlocksItemCase12GlobalControlSettings;
@@ -8502,16 +8217,7 @@ export interface CreateDashboardV2RequestBlocksItemCase15ConfigDimensionsItemCas
     | (string & {});
 }
 export const CreateDashboardV2RequestBlocksItemCase15ConfigDimensionsItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dimensionType: S.String,
-      column: S.NullOr(S.String),
-      dateGranularity:
-        CreateDashboardV2RequestBlocksItemCase15ConfigDimensionsItemCase0DateGranularity,
-    }),
-  ).annotate({
-    identifier: "CreateDashboardV2RequestBlocksItemCase15ConfigDimensionsItemCase0",
-  }) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase15ConfigDimensionsItemCase0>;
+  CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase0 as any as S.Schema<CreateDashboardV2RequestBlocksItemCase15ConfigDimensionsItemCase0>;
 
 export type CreateDashboardV2RequestBlocksItemCase15ConfigDimensionsItemCase1 =
   CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase1;
@@ -8683,19 +8389,8 @@ export interface CreateDashboardV2RequestBlocksItemCase15ConfigDateRange {
   startDate?: string | null;
   endDate?: string | null;
 }
-export const CreateDashboardV2RequestBlocksItemCase15ConfigDateRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    predefined: CreateDashboardV2RequestBlocksItemCase15ConfigDateRangePredefined,
-    lookbackValue: S.optional(S.NullOr(S.Number)),
-    lookbackUnit: S.optional(
-      S.NullOr(CreateDashboardV2RequestBlocksItemCase15ConfigDateRangeLookbackUnit),
-    ),
-    startDate: S.optional(S.NullOr(S.String)),
-    endDate: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "CreateDashboardV2RequestBlocksItemCase15ConfigDateRange",
-}) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase15ConfigDateRange>;
+export const CreateDashboardV2RequestBlocksItemCase15ConfigDateRange =
+  CreateDashboardV2RequestComparisonPreviousTimeFrame as any as S.Schema<CreateDashboardV2RequestBlocksItemCase15ConfigDateRange>;
 
 export type CreateDashboardV2RequestBlocksItemCase15ConfigShowAs = "total" | "per_unit";
 export const CreateDashboardV2RequestBlocksItemCase15ConfigShowAs = S.String;
@@ -8945,36 +8640,15 @@ export interface CreateDashboardV2RequestBlocksItemCase16ComparisonPreviousTimeF
   endDate?: string | null;
 }
 export const CreateDashboardV2RequestBlocksItemCase16ComparisonPreviousTimeFrame =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      predefined: CreateDashboardV2RequestBlocksItemCase16ComparisonPreviousTimeFramePredefined,
-      lookbackValue: S.optional(S.NullOr(S.Number)),
-      lookbackUnit: S.optional(
-        S.NullOr(CreateDashboardV2RequestBlocksItemCase16ComparisonPreviousTimeFrameLookbackUnit),
-      ),
-      startDate: S.optional(S.NullOr(S.String)),
-      endDate: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "CreateDashboardV2RequestBlocksItemCase16ComparisonPreviousTimeFrame",
-  }) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase16ComparisonPreviousTimeFrame>;
+  CreateDashboardV2RequestBlocksItemCase4ComparisonPreviousTimeFrame as any as S.Schema<CreateDashboardV2RequestBlocksItemCase16ComparisonPreviousTimeFrame>;
 
 export interface CreateDashboardV2RequestBlocksItemCase16Comparison {
   enabled: boolean;
   mode?: CreateDashboardV2RequestBlocksItemCase16ComparisonMode | (string & {});
   previousTimeFrame?: CreateDashboardV2RequestBlocksItemCase16ComparisonPreviousTimeFrame;
 }
-export const CreateDashboardV2RequestBlocksItemCase16Comparison = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    mode: S.optional(CreateDashboardV2RequestBlocksItemCase16ComparisonMode),
-    previousTimeFrame: S.optional(
-      CreateDashboardV2RequestBlocksItemCase16ComparisonPreviousTimeFrame,
-    ),
-  }),
-).annotate({
-  identifier: "CreateDashboardV2RequestBlocksItemCase16Comparison",
-}) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase16Comparison>;
+export const CreateDashboardV2RequestBlocksItemCase16Comparison =
+  CreateDashboardV2RequestBlocksItemCase4Comparison as any as S.Schema<CreateDashboardV2RequestBlocksItemCase16Comparison>;
 
 export type CreateDashboardV2RequestBlocksItemCase16GlobalControlSettings =
   CreateDashboardV2RequestBlocksItemCase12GlobalControlSettings;
@@ -8999,16 +8673,7 @@ export interface CreateDashboardV2RequestBlocksItemCase16ConfigDimensionsItemCas
     | (string & {});
 }
 export const CreateDashboardV2RequestBlocksItemCase16ConfigDimensionsItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dimensionType: S.String,
-      column: S.NullOr(S.String),
-      dateGranularity:
-        CreateDashboardV2RequestBlocksItemCase16ConfigDimensionsItemCase0DateGranularity,
-    }),
-  ).annotate({
-    identifier: "CreateDashboardV2RequestBlocksItemCase16ConfigDimensionsItemCase0",
-  }) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase16ConfigDimensionsItemCase0>;
+  CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase0 as any as S.Schema<CreateDashboardV2RequestBlocksItemCase16ConfigDimensionsItemCase0>;
 
 export type CreateDashboardV2RequestBlocksItemCase16ConfigDimensionsItemCase1 =
   CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase1;
@@ -9180,19 +8845,8 @@ export interface CreateDashboardV2RequestBlocksItemCase16ConfigDateRange {
   startDate?: string | null;
   endDate?: string | null;
 }
-export const CreateDashboardV2RequestBlocksItemCase16ConfigDateRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    predefined: CreateDashboardV2RequestBlocksItemCase16ConfigDateRangePredefined,
-    lookbackValue: S.optional(S.NullOr(S.Number)),
-    lookbackUnit: S.optional(
-      S.NullOr(CreateDashboardV2RequestBlocksItemCase16ConfigDateRangeLookbackUnit),
-    ),
-    startDate: S.optional(S.NullOr(S.String)),
-    endDate: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "CreateDashboardV2RequestBlocksItemCase16ConfigDateRange",
-}) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase16ConfigDateRange>;
+export const CreateDashboardV2RequestBlocksItemCase16ConfigDateRange =
+  CreateDashboardV2RequestComparisonPreviousTimeFrame as any as S.Schema<CreateDashboardV2RequestBlocksItemCase16ConfigDateRange>;
 
 export type CreateDashboardV2RequestBlocksItemCase16ConfigShowAs = "total" | "per_unit";
 export const CreateDashboardV2RequestBlocksItemCase16ConfigShowAs = S.String;
@@ -9217,10 +8871,7 @@ export type CreateDashboardV2RequestBlocksItemCase16ConfigDatasetColumnTypesMap 
     | undefined;
 };
 export const CreateDashboardV2RequestBlocksItemCase16ConfigDatasetColumnTypesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    CreateDashboardV2RequestBlocksItemCase16ConfigDatasetColumnTypesValue,
-  ) as any as S.Schema<CreateDashboardV2RequestBlocksItemCase16ConfigDatasetColumnTypesMap>;
+  CreateDashboardV2RequestBlocksItemCase14ConfigDatasetColumnTypesMap as any as S.Schema<CreateDashboardV2RequestBlocksItemCase16ConfigDatasetColumnTypesMap>;
 
 export type CreateDashboardV2RequestBlocksItemCase16ConfigDatasetValuesItemRowFiltersItemOperator =
   | "="
@@ -9506,17 +9157,8 @@ export interface DashboardGlobalControlsDateRange {
   startDate?: string | null;
   endDate?: string | null;
 }
-export const DashboardGlobalControlsDateRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    predefined: DashboardGlobalControlsDateRangePredefined,
-    lookbackValue: S.optional(S.NullOr(S.Number)),
-    lookbackUnit: S.optional(S.NullOr(DashboardGlobalControlsDateRangeLookbackUnit)),
-    startDate: S.optional(S.NullOr(S.String)),
-    endDate: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "DashboardGlobalControlsDateRange",
-}) as any as S.Schema<DashboardGlobalControlsDateRange>;
+export const DashboardGlobalControlsDateRange =
+  CreateDashboardV2RequestGlobalControlsDateRange as any as S.Schema<DashboardGlobalControlsDateRange>;
 
 export type DashboardGlobalControlsDateGranularity =
   | "auto"
@@ -9576,17 +9218,8 @@ export interface DashboardComparisonPreviousTimeFrame {
   startDate?: string | null;
   endDate?: string | null;
 }
-export const DashboardComparisonPreviousTimeFrame = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    predefined: DashboardComparisonPreviousTimeFramePredefined,
-    lookbackValue: S.optional(S.NullOr(S.Number)),
-    lookbackUnit: S.optional(S.NullOr(DashboardComparisonPreviousTimeFrameLookbackUnit)),
-    startDate: S.optional(S.NullOr(S.String)),
-    endDate: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "DashboardComparisonPreviousTimeFrame",
-}) as any as S.Schema<DashboardComparisonPreviousTimeFrame>;
+export const DashboardComparisonPreviousTimeFrame =
+  CreateDashboardV2RequestGlobalControlsDateRange as any as S.Schema<DashboardComparisonPreviousTimeFrame>;
 
 export interface DashboardComparison {
   enabled: boolean;
@@ -9659,34 +9292,16 @@ export interface DashboardBlocksItemCase0ComparisonPreviousTimeFrame {
   startDate?: string | null;
   endDate?: string | null;
 }
-export const DashboardBlocksItemCase0ComparisonPreviousTimeFrame = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    predefined: DashboardBlocksItemCase0ComparisonPreviousTimeFramePredefined,
-    lookbackValue: S.optional(S.NullOr(S.Number)),
-    lookbackUnit: S.optional(
-      S.NullOr(DashboardBlocksItemCase0ComparisonPreviousTimeFrameLookbackUnit),
-    ),
-    startDate: S.optional(S.NullOr(S.String)),
-    endDate: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "DashboardBlocksItemCase0ComparisonPreviousTimeFrame",
-}) as any as S.Schema<DashboardBlocksItemCase0ComparisonPreviousTimeFrame>;
+export const DashboardBlocksItemCase0ComparisonPreviousTimeFrame =
+  CreateDashboardV2RequestComparisonPreviousTimeFrame as any as S.Schema<DashboardBlocksItemCase0ComparisonPreviousTimeFrame>;
 
 export interface DashboardBlocksItemCase0Comparison {
   enabled: boolean;
   mode?: DashboardBlocksItemCase0ComparisonMode;
   previousTimeFrame?: DashboardBlocksItemCase0ComparisonPreviousTimeFrame;
 }
-export const DashboardBlocksItemCase0Comparison = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    mode: S.optional(DashboardBlocksItemCase0ComparisonMode),
-    previousTimeFrame: S.optional(DashboardBlocksItemCase0ComparisonPreviousTimeFrame),
-  }),
-).annotate({
-  identifier: "DashboardBlocksItemCase0Comparison",
-}) as any as S.Schema<DashboardBlocksItemCase0Comparison>;
+export const DashboardBlocksItemCase0Comparison =
+  CreateDashboardV2RequestComparison as any as S.Schema<DashboardBlocksItemCase0Comparison>;
 
 export type DashboardBlocksItemCase0AnalysisSettingsPopulationType =
   | "metric"
@@ -9864,9 +9479,8 @@ export const DashboardBlocksItemCase3ColumnsFilterItem = S.String;
 
 export type DashboardBlocksItemCase3ColumnsFilterList =
   Array<DashboardBlocksItemCase3ColumnsFilterItem>;
-export const DashboardBlocksItemCase3ColumnsFilterList = /*@__PURE__*/ S.Array(
-  DashboardBlocksItemCase3ColumnsFilterItem,
-) as any as S.Schema<DashboardBlocksItemCase3ColumnsFilterList>;
+export const DashboardBlocksItemCase3ColumnsFilterList =
+  CreateCustomFieldRequestSectionsList as any as S.Schema<DashboardBlocksItemCase3ColumnsFilterList>;
 
 export type DashboardBlocksItemCase3SliceTagsFilterList = Array<string>;
 export const DashboardBlocksItemCase3SliceTagsFilterList =
@@ -9957,17 +9571,8 @@ export interface DashboardBlocksItemCase4StartDateRange {
   startDate?: string | null;
   endDate?: string | null;
 }
-export const DashboardBlocksItemCase4StartDateRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    predefined: DashboardBlocksItemCase4StartDateRangePredefined,
-    lookbackValue: S.optional(S.NullOr(S.Number)),
-    lookbackUnit: S.optional(S.NullOr(DashboardBlocksItemCase4StartDateRangeLookbackUnit)),
-    startDate: S.optional(S.NullOr(S.String)),
-    endDate: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "DashboardBlocksItemCase4StartDateRange",
-}) as any as S.Schema<DashboardBlocksItemCase4StartDateRange>;
+export const DashboardBlocksItemCase4StartDateRange =
+  CreateDashboardV2RequestGlobalControlsDateRange as any as S.Schema<DashboardBlocksItemCase4StartDateRange>;
 
 export type DashboardBlocksItemCase4EndDateRangePredefined =
   | "today"
@@ -9991,17 +9596,8 @@ export interface DashboardBlocksItemCase4EndDateRange {
   startDate?: string | null;
   endDate?: string | null;
 }
-export const DashboardBlocksItemCase4EndDateRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    predefined: DashboardBlocksItemCase4EndDateRangePredefined,
-    lookbackValue: S.optional(S.NullOr(S.Number)),
-    lookbackUnit: S.optional(S.NullOr(DashboardBlocksItemCase4EndDateRangeLookbackUnit)),
-    startDate: S.optional(S.NullOr(S.String)),
-    endDate: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "DashboardBlocksItemCase4EndDateRange",
-}) as any as S.Schema<DashboardBlocksItemCase4EndDateRange>;
+export const DashboardBlocksItemCase4EndDateRange =
+  CreateDashboardV2RequestGlobalControlsDateRange as any as S.Schema<DashboardBlocksItemCase4EndDateRange>;
 
 export type DashboardBlocksItemCase4ColumnsItem =
   CreateDashboardV2RequestBlocksItemCase3ColumnsItem;
@@ -10084,17 +9680,8 @@ export interface DashboardBlocksItemCase5DateRange {
   startDate?: string | null;
   endDate?: string | null;
 }
-export const DashboardBlocksItemCase5DateRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    predefined: DashboardBlocksItemCase5DateRangePredefined,
-    lookbackValue: S.optional(S.NullOr(S.Number)),
-    lookbackUnit: S.optional(S.NullOr(DashboardBlocksItemCase5DateRangeLookbackUnit)),
-    startDate: S.optional(S.NullOr(S.String)),
-    endDate: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "DashboardBlocksItemCase5DateRange",
-}) as any as S.Schema<DashboardBlocksItemCase5DateRange>;
+export const DashboardBlocksItemCase5DateRange =
+  CreateDashboardV2RequestGlobalControlsDateRange as any as S.Schema<DashboardBlocksItemCase5DateRange>;
 
 export type DashboardBlocksItemCase5ProjectsList = Array<string>;
 export const DashboardBlocksItemCase5ProjectsList =
@@ -10134,34 +9721,16 @@ export interface DashboardBlocksItemCase5ComparisonPreviousTimeFrame {
   startDate?: string | null;
   endDate?: string | null;
 }
-export const DashboardBlocksItemCase5ComparisonPreviousTimeFrame = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    predefined: DashboardBlocksItemCase5ComparisonPreviousTimeFramePredefined,
-    lookbackValue: S.optional(S.NullOr(S.Number)),
-    lookbackUnit: S.optional(
-      S.NullOr(DashboardBlocksItemCase5ComparisonPreviousTimeFrameLookbackUnit),
-    ),
-    startDate: S.optional(S.NullOr(S.String)),
-    endDate: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "DashboardBlocksItemCase5ComparisonPreviousTimeFrame",
-}) as any as S.Schema<DashboardBlocksItemCase5ComparisonPreviousTimeFrame>;
+export const DashboardBlocksItemCase5ComparisonPreviousTimeFrame =
+  CreateDashboardV2RequestComparisonPreviousTimeFrame as any as S.Schema<DashboardBlocksItemCase5ComparisonPreviousTimeFrame>;
 
 export interface DashboardBlocksItemCase5Comparison {
   enabled: boolean;
   mode?: DashboardBlocksItemCase5ComparisonMode;
   previousTimeFrame?: DashboardBlocksItemCase5ComparisonPreviousTimeFrame;
 }
-export const DashboardBlocksItemCase5Comparison = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    mode: S.optional(DashboardBlocksItemCase5ComparisonMode),
-    previousTimeFrame: S.optional(DashboardBlocksItemCase5ComparisonPreviousTimeFrame),
-  }),
-).annotate({
-  identifier: "DashboardBlocksItemCase5Comparison",
-}) as any as S.Schema<DashboardBlocksItemCase5Comparison>;
+export const DashboardBlocksItemCase5Comparison =
+  CreateDashboardV2RequestComparison as any as S.Schema<DashboardBlocksItemCase5Comparison>;
 
 export type DashboardBlocksItemCase5GlobalControlSettings =
   CreateDashboardV2RequestBlocksItemCase3GlobalControlSettings;
@@ -10228,17 +9797,8 @@ export interface DashboardBlocksItemCase6DateRange {
   startDate?: string | null;
   endDate?: string | null;
 }
-export const DashboardBlocksItemCase6DateRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    predefined: DashboardBlocksItemCase6DateRangePredefined,
-    lookbackValue: S.optional(S.NullOr(S.Number)),
-    lookbackUnit: S.optional(S.NullOr(DashboardBlocksItemCase6DateRangeLookbackUnit)),
-    startDate: S.optional(S.NullOr(S.String)),
-    endDate: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "DashboardBlocksItemCase6DateRange",
-}) as any as S.Schema<DashboardBlocksItemCase6DateRange>;
+export const DashboardBlocksItemCase6DateRange =
+  CreateDashboardV2RequestGlobalControlsDateRange as any as S.Schema<DashboardBlocksItemCase6DateRange>;
 
 export type DashboardBlocksItemCase6ProjectsList = Array<string>;
 export const DashboardBlocksItemCase6ProjectsList =
@@ -10278,34 +9838,16 @@ export interface DashboardBlocksItemCase6ComparisonPreviousTimeFrame {
   startDate?: string | null;
   endDate?: string | null;
 }
-export const DashboardBlocksItemCase6ComparisonPreviousTimeFrame = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    predefined: DashboardBlocksItemCase6ComparisonPreviousTimeFramePredefined,
-    lookbackValue: S.optional(S.NullOr(S.Number)),
-    lookbackUnit: S.optional(
-      S.NullOr(DashboardBlocksItemCase6ComparisonPreviousTimeFrameLookbackUnit),
-    ),
-    startDate: S.optional(S.NullOr(S.String)),
-    endDate: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "DashboardBlocksItemCase6ComparisonPreviousTimeFrame",
-}) as any as S.Schema<DashboardBlocksItemCase6ComparisonPreviousTimeFrame>;
+export const DashboardBlocksItemCase6ComparisonPreviousTimeFrame =
+  CreateDashboardV2RequestComparisonPreviousTimeFrame as any as S.Schema<DashboardBlocksItemCase6ComparisonPreviousTimeFrame>;
 
 export interface DashboardBlocksItemCase6Comparison {
   enabled: boolean;
   mode?: DashboardBlocksItemCase6ComparisonMode;
   previousTimeFrame?: DashboardBlocksItemCase6ComparisonPreviousTimeFrame;
 }
-export const DashboardBlocksItemCase6Comparison = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    mode: S.optional(DashboardBlocksItemCase6ComparisonMode),
-    previousTimeFrame: S.optional(DashboardBlocksItemCase6ComparisonPreviousTimeFrame),
-  }),
-).annotate({
-  identifier: "DashboardBlocksItemCase6Comparison",
-}) as any as S.Schema<DashboardBlocksItemCase6Comparison>;
+export const DashboardBlocksItemCase6Comparison =
+  CreateDashboardV2RequestComparison as any as S.Schema<DashboardBlocksItemCase6Comparison>;
 
 export type DashboardBlocksItemCase6GlobalControlSettings =
   CreateDashboardV2RequestBlocksItemCase3GlobalControlSettings;
@@ -10372,17 +9914,8 @@ export interface DashboardBlocksItemCase7DateRange {
   startDate?: string | null;
   endDate?: string | null;
 }
-export const DashboardBlocksItemCase7DateRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    predefined: DashboardBlocksItemCase7DateRangePredefined,
-    lookbackValue: S.optional(S.NullOr(S.Number)),
-    lookbackUnit: S.optional(S.NullOr(DashboardBlocksItemCase7DateRangeLookbackUnit)),
-    startDate: S.optional(S.NullOr(S.String)),
-    endDate: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "DashboardBlocksItemCase7DateRange",
-}) as any as S.Schema<DashboardBlocksItemCase7DateRange>;
+export const DashboardBlocksItemCase7DateRange =
+  CreateDashboardV2RequestGlobalControlsDateRange as any as S.Schema<DashboardBlocksItemCase7DateRange>;
 
 export type DashboardBlocksItemCase7ProjectsList = Array<string>;
 export const DashboardBlocksItemCase7ProjectsList =
@@ -10422,34 +9955,16 @@ export interface DashboardBlocksItemCase7ComparisonPreviousTimeFrame {
   startDate?: string | null;
   endDate?: string | null;
 }
-export const DashboardBlocksItemCase7ComparisonPreviousTimeFrame = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    predefined: DashboardBlocksItemCase7ComparisonPreviousTimeFramePredefined,
-    lookbackValue: S.optional(S.NullOr(S.Number)),
-    lookbackUnit: S.optional(
-      S.NullOr(DashboardBlocksItemCase7ComparisonPreviousTimeFrameLookbackUnit),
-    ),
-    startDate: S.optional(S.NullOr(S.String)),
-    endDate: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "DashboardBlocksItemCase7ComparisonPreviousTimeFrame",
-}) as any as S.Schema<DashboardBlocksItemCase7ComparisonPreviousTimeFrame>;
+export const DashboardBlocksItemCase7ComparisonPreviousTimeFrame =
+  CreateDashboardV2RequestComparisonPreviousTimeFrame as any as S.Schema<DashboardBlocksItemCase7ComparisonPreviousTimeFrame>;
 
 export interface DashboardBlocksItemCase7Comparison {
   enabled: boolean;
   mode?: DashboardBlocksItemCase7ComparisonMode;
   previousTimeFrame?: DashboardBlocksItemCase7ComparisonPreviousTimeFrame;
 }
-export const DashboardBlocksItemCase7Comparison = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    mode: S.optional(DashboardBlocksItemCase7ComparisonMode),
-    previousTimeFrame: S.optional(DashboardBlocksItemCase7ComparisonPreviousTimeFrame),
-  }),
-).annotate({
-  identifier: "DashboardBlocksItemCase7Comparison",
-}) as any as S.Schema<DashboardBlocksItemCase7Comparison>;
+export const DashboardBlocksItemCase7Comparison =
+  CreateDashboardV2RequestComparison as any as S.Schema<DashboardBlocksItemCase7Comparison>;
 
 export type DashboardBlocksItemCase7GlobalControlSettings =
   CreateDashboardV2RequestBlocksItemCase3GlobalControlSettings;
@@ -10529,9 +10044,8 @@ export const DashboardBlocksItemCase8ColumnsFilterItem = S.String;
 
 export type DashboardBlocksItemCase8ColumnsFilterList =
   Array<DashboardBlocksItemCase8ColumnsFilterItem>;
-export const DashboardBlocksItemCase8ColumnsFilterList = /*@__PURE__*/ S.Array(
-  DashboardBlocksItemCase8ColumnsFilterItem,
-) as any as S.Schema<DashboardBlocksItemCase8ColumnsFilterList>;
+export const DashboardBlocksItemCase8ColumnsFilterList =
+  CreateCustomFieldRequestSectionsList as any as S.Schema<DashboardBlocksItemCase8ColumnsFilterList>;
 
 export type DashboardBlocksItemCase8MetricTagFilterList = Array<string>;
 export const DashboardBlocksItemCase8MetricTagFilterList =
@@ -10766,34 +10280,16 @@ export interface DashboardBlocksItemCase12ComparisonPreviousTimeFrame {
   startDate?: string | null;
   endDate?: string | null;
 }
-export const DashboardBlocksItemCase12ComparisonPreviousTimeFrame = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    predefined: DashboardBlocksItemCase12ComparisonPreviousTimeFramePredefined,
-    lookbackValue: S.optional(S.NullOr(S.Number)),
-    lookbackUnit: S.optional(
-      S.NullOr(DashboardBlocksItemCase12ComparisonPreviousTimeFrameLookbackUnit),
-    ),
-    startDate: S.optional(S.NullOr(S.String)),
-    endDate: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "DashboardBlocksItemCase12ComparisonPreviousTimeFrame",
-}) as any as S.Schema<DashboardBlocksItemCase12ComparisonPreviousTimeFrame>;
+export const DashboardBlocksItemCase12ComparisonPreviousTimeFrame =
+  CreateDashboardV2RequestComparisonPreviousTimeFrame as any as S.Schema<DashboardBlocksItemCase12ComparisonPreviousTimeFrame>;
 
 export interface DashboardBlocksItemCase12Comparison {
   enabled: boolean;
   mode?: DashboardBlocksItemCase12ComparisonMode;
   previousTimeFrame?: DashboardBlocksItemCase12ComparisonPreviousTimeFrame;
 }
-export const DashboardBlocksItemCase12Comparison = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    mode: S.optional(DashboardBlocksItemCase12ComparisonMode),
-    previousTimeFrame: S.optional(DashboardBlocksItemCase12ComparisonPreviousTimeFrame),
-  }),
-).annotate({
-  identifier: "DashboardBlocksItemCase12Comparison",
-}) as any as S.Schema<DashboardBlocksItemCase12Comparison>;
+export const DashboardBlocksItemCase12Comparison =
+  CreateDashboardV2RequestComparison as any as S.Schema<DashboardBlocksItemCase12Comparison>;
 
 export type DashboardBlocksItemCase12GlobalControlSettings =
   CreateDashboardV2RequestBlocksItemCase12GlobalControlSettings;
@@ -10990,17 +10486,8 @@ export interface DashboardBlocksItemCase12ConfigDateRange {
   startDate?: string | null;
   endDate?: string | null;
 }
-export const DashboardBlocksItemCase12ConfigDateRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    predefined: DashboardBlocksItemCase12ConfigDateRangePredefined,
-    lookbackValue: S.optional(S.NullOr(S.Number)),
-    lookbackUnit: S.optional(S.NullOr(DashboardBlocksItemCase12ConfigDateRangeLookbackUnit)),
-    startDate: S.optional(S.NullOr(S.String)),
-    endDate: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "DashboardBlocksItemCase12ConfigDateRange",
-}) as any as S.Schema<DashboardBlocksItemCase12ConfigDateRange>;
+export const DashboardBlocksItemCase12ConfigDateRange =
+  CreateDashboardV2RequestGlobalControlsDateRange as any as S.Schema<DashboardBlocksItemCase12ConfigDateRange>;
 
 export type DashboardBlocksItemCase12ConfigShowAs = "total" | "per_unit";
 export const DashboardBlocksItemCase12ConfigShowAs = S.String;
@@ -11202,34 +10689,16 @@ export interface DashboardBlocksItemCase13ComparisonPreviousTimeFrame {
   startDate?: string | null;
   endDate?: string | null;
 }
-export const DashboardBlocksItemCase13ComparisonPreviousTimeFrame = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    predefined: DashboardBlocksItemCase13ComparisonPreviousTimeFramePredefined,
-    lookbackValue: S.optional(S.NullOr(S.Number)),
-    lookbackUnit: S.optional(
-      S.NullOr(DashboardBlocksItemCase13ComparisonPreviousTimeFrameLookbackUnit),
-    ),
-    startDate: S.optional(S.NullOr(S.String)),
-    endDate: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "DashboardBlocksItemCase13ComparisonPreviousTimeFrame",
-}) as any as S.Schema<DashboardBlocksItemCase13ComparisonPreviousTimeFrame>;
+export const DashboardBlocksItemCase13ComparisonPreviousTimeFrame =
+  CreateDashboardV2RequestComparisonPreviousTimeFrame as any as S.Schema<DashboardBlocksItemCase13ComparisonPreviousTimeFrame>;
 
 export interface DashboardBlocksItemCase13Comparison {
   enabled: boolean;
   mode?: DashboardBlocksItemCase13ComparisonMode;
   previousTimeFrame?: DashboardBlocksItemCase13ComparisonPreviousTimeFrame;
 }
-export const DashboardBlocksItemCase13Comparison = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    mode: S.optional(DashboardBlocksItemCase13ComparisonMode),
-    previousTimeFrame: S.optional(DashboardBlocksItemCase13ComparisonPreviousTimeFrame),
-  }),
-).annotate({
-  identifier: "DashboardBlocksItemCase13Comparison",
-}) as any as S.Schema<DashboardBlocksItemCase13Comparison>;
+export const DashboardBlocksItemCase13Comparison =
+  CreateDashboardV2RequestComparison as any as S.Schema<DashboardBlocksItemCase13Comparison>;
 
 export type DashboardBlocksItemCase13GlobalControlSettings =
   CreateDashboardV2RequestBlocksItemCase12GlobalControlSettings;
@@ -11250,15 +10719,8 @@ export interface DashboardBlocksItemCase13ConfigDimensionsItemCase0 {
   column: string | null;
   dateGranularity: DashboardBlocksItemCase13ConfigDimensionsItemCase0DateGranularity;
 }
-export const DashboardBlocksItemCase13ConfigDimensionsItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dimensionType: S.String,
-    column: S.NullOr(S.String),
-    dateGranularity: DashboardBlocksItemCase13ConfigDimensionsItemCase0DateGranularity,
-  }),
-).annotate({
-  identifier: "DashboardBlocksItemCase13ConfigDimensionsItemCase0",
-}) as any as S.Schema<DashboardBlocksItemCase13ConfigDimensionsItemCase0>;
+export const DashboardBlocksItemCase13ConfigDimensionsItemCase0 =
+  DashboardBlocksItemCase12ConfigDimensionsItemCase0 as any as S.Schema<DashboardBlocksItemCase13ConfigDimensionsItemCase0>;
 
 export type DashboardBlocksItemCase13ConfigDimensionsItemCase1 =
   CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase1;
@@ -11419,17 +10881,8 @@ export interface DashboardBlocksItemCase13ConfigDateRange {
   startDate?: string | null;
   endDate?: string | null;
 }
-export const DashboardBlocksItemCase13ConfigDateRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    predefined: DashboardBlocksItemCase13ConfigDateRangePredefined,
-    lookbackValue: S.optional(S.NullOr(S.Number)),
-    lookbackUnit: S.optional(S.NullOr(DashboardBlocksItemCase13ConfigDateRangeLookbackUnit)),
-    startDate: S.optional(S.NullOr(S.String)),
-    endDate: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "DashboardBlocksItemCase13ConfigDateRange",
-}) as any as S.Schema<DashboardBlocksItemCase13ConfigDateRange>;
+export const DashboardBlocksItemCase13ConfigDateRange =
+  CreateDashboardV2RequestGlobalControlsDateRange as any as S.Schema<DashboardBlocksItemCase13ConfigDateRange>;
 
 export type DashboardBlocksItemCase13ConfigShowAs = "total" | "per_unit";
 export const DashboardBlocksItemCase13ConfigShowAs = S.String;
@@ -11639,34 +11092,16 @@ export interface DashboardBlocksItemCase14ComparisonPreviousTimeFrame {
   startDate?: string | null;
   endDate?: string | null;
 }
-export const DashboardBlocksItemCase14ComparisonPreviousTimeFrame = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    predefined: DashboardBlocksItemCase14ComparisonPreviousTimeFramePredefined,
-    lookbackValue: S.optional(S.NullOr(S.Number)),
-    lookbackUnit: S.optional(
-      S.NullOr(DashboardBlocksItemCase14ComparisonPreviousTimeFrameLookbackUnit),
-    ),
-    startDate: S.optional(S.NullOr(S.String)),
-    endDate: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "DashboardBlocksItemCase14ComparisonPreviousTimeFrame",
-}) as any as S.Schema<DashboardBlocksItemCase14ComparisonPreviousTimeFrame>;
+export const DashboardBlocksItemCase14ComparisonPreviousTimeFrame =
+  CreateDashboardV2RequestComparisonPreviousTimeFrame as any as S.Schema<DashboardBlocksItemCase14ComparisonPreviousTimeFrame>;
 
 export interface DashboardBlocksItemCase14Comparison {
   enabled: boolean;
   mode?: DashboardBlocksItemCase14ComparisonMode;
   previousTimeFrame?: DashboardBlocksItemCase14ComparisonPreviousTimeFrame;
 }
-export const DashboardBlocksItemCase14Comparison = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    mode: S.optional(DashboardBlocksItemCase14ComparisonMode),
-    previousTimeFrame: S.optional(DashboardBlocksItemCase14ComparisonPreviousTimeFrame),
-  }),
-).annotate({
-  identifier: "DashboardBlocksItemCase14Comparison",
-}) as any as S.Schema<DashboardBlocksItemCase14Comparison>;
+export const DashboardBlocksItemCase14Comparison =
+  CreateDashboardV2RequestComparison as any as S.Schema<DashboardBlocksItemCase14Comparison>;
 
 export type DashboardBlocksItemCase14GlobalControlSettings =
   CreateDashboardV2RequestBlocksItemCase12GlobalControlSettings;
@@ -11687,15 +11122,8 @@ export interface DashboardBlocksItemCase14ConfigDimensionsItemCase0 {
   column: string | null;
   dateGranularity: DashboardBlocksItemCase14ConfigDimensionsItemCase0DateGranularity;
 }
-export const DashboardBlocksItemCase14ConfigDimensionsItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dimensionType: S.String,
-    column: S.NullOr(S.String),
-    dateGranularity: DashboardBlocksItemCase14ConfigDimensionsItemCase0DateGranularity,
-  }),
-).annotate({
-  identifier: "DashboardBlocksItemCase14ConfigDimensionsItemCase0",
-}) as any as S.Schema<DashboardBlocksItemCase14ConfigDimensionsItemCase0>;
+export const DashboardBlocksItemCase14ConfigDimensionsItemCase0 =
+  DashboardBlocksItemCase12ConfigDimensionsItemCase0 as any as S.Schema<DashboardBlocksItemCase14ConfigDimensionsItemCase0>;
 
 export type DashboardBlocksItemCase14ConfigDimensionsItemCase1 =
   CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase1;
@@ -11856,17 +11284,8 @@ export interface DashboardBlocksItemCase14ConfigDateRange {
   startDate?: string | null;
   endDate?: string | null;
 }
-export const DashboardBlocksItemCase14ConfigDateRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    predefined: DashboardBlocksItemCase14ConfigDateRangePredefined,
-    lookbackValue: S.optional(S.NullOr(S.Number)),
-    lookbackUnit: S.optional(S.NullOr(DashboardBlocksItemCase14ConfigDateRangeLookbackUnit)),
-    startDate: S.optional(S.NullOr(S.String)),
-    endDate: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "DashboardBlocksItemCase14ConfigDateRange",
-}) as any as S.Schema<DashboardBlocksItemCase14ConfigDateRange>;
+export const DashboardBlocksItemCase14ConfigDateRange =
+  CreateDashboardV2RequestGlobalControlsDateRange as any as S.Schema<DashboardBlocksItemCase14ConfigDateRange>;
 
 export type DashboardBlocksItemCase14ConfigShowAs = "total" | "per_unit";
 export const DashboardBlocksItemCase14ConfigShowAs = S.String;
@@ -11887,10 +11306,8 @@ export const DashboardBlocksItemCase14ConfigDatasetColumnTypesValue = S.String;
 export type DashboardBlocksItemCase14ConfigDatasetColumnTypesMap = {
   [key: string]: DashboardBlocksItemCase14ConfigDatasetColumnTypesValue | undefined;
 };
-export const DashboardBlocksItemCase14ConfigDatasetColumnTypesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  DashboardBlocksItemCase14ConfigDatasetColumnTypesValue,
-) as any as S.Schema<DashboardBlocksItemCase14ConfigDatasetColumnTypesMap>;
+export const DashboardBlocksItemCase14ConfigDatasetColumnTypesMap =
+  CreateConfigRevisionRebaseRequestConflictResolutionsMap as any as S.Schema<DashboardBlocksItemCase14ConfigDatasetColumnTypesMap>;
 
 export type DashboardBlocksItemCase14ConfigDatasetValuesItemRowFiltersItemOperator =
   | "="
@@ -12098,34 +11515,16 @@ export interface DashboardBlocksItemCase15ComparisonPreviousTimeFrame {
   startDate?: string | null;
   endDate?: string | null;
 }
-export const DashboardBlocksItemCase15ComparisonPreviousTimeFrame = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    predefined: DashboardBlocksItemCase15ComparisonPreviousTimeFramePredefined,
-    lookbackValue: S.optional(S.NullOr(S.Number)),
-    lookbackUnit: S.optional(
-      S.NullOr(DashboardBlocksItemCase15ComparisonPreviousTimeFrameLookbackUnit),
-    ),
-    startDate: S.optional(S.NullOr(S.String)),
-    endDate: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "DashboardBlocksItemCase15ComparisonPreviousTimeFrame",
-}) as any as S.Schema<DashboardBlocksItemCase15ComparisonPreviousTimeFrame>;
+export const DashboardBlocksItemCase15ComparisonPreviousTimeFrame =
+  CreateDashboardV2RequestComparisonPreviousTimeFrame as any as S.Schema<DashboardBlocksItemCase15ComparisonPreviousTimeFrame>;
 
 export interface DashboardBlocksItemCase15Comparison {
   enabled: boolean;
   mode?: DashboardBlocksItemCase15ComparisonMode;
   previousTimeFrame?: DashboardBlocksItemCase15ComparisonPreviousTimeFrame;
 }
-export const DashboardBlocksItemCase15Comparison = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    mode: S.optional(DashboardBlocksItemCase15ComparisonMode),
-    previousTimeFrame: S.optional(DashboardBlocksItemCase15ComparisonPreviousTimeFrame),
-  }),
-).annotate({
-  identifier: "DashboardBlocksItemCase15Comparison",
-}) as any as S.Schema<DashboardBlocksItemCase15Comparison>;
+export const DashboardBlocksItemCase15Comparison =
+  CreateDashboardV2RequestComparison as any as S.Schema<DashboardBlocksItemCase15Comparison>;
 
 export type DashboardBlocksItemCase15GlobalControlSettings =
   CreateDashboardV2RequestBlocksItemCase12GlobalControlSettings;
@@ -12146,15 +11545,8 @@ export interface DashboardBlocksItemCase15ConfigDimensionsItemCase0 {
   column: string | null;
   dateGranularity: DashboardBlocksItemCase15ConfigDimensionsItemCase0DateGranularity;
 }
-export const DashboardBlocksItemCase15ConfigDimensionsItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dimensionType: S.String,
-    column: S.NullOr(S.String),
-    dateGranularity: DashboardBlocksItemCase15ConfigDimensionsItemCase0DateGranularity,
-  }),
-).annotate({
-  identifier: "DashboardBlocksItemCase15ConfigDimensionsItemCase0",
-}) as any as S.Schema<DashboardBlocksItemCase15ConfigDimensionsItemCase0>;
+export const DashboardBlocksItemCase15ConfigDimensionsItemCase0 =
+  DashboardBlocksItemCase12ConfigDimensionsItemCase0 as any as S.Schema<DashboardBlocksItemCase15ConfigDimensionsItemCase0>;
 
 export type DashboardBlocksItemCase15ConfigDimensionsItemCase1 =
   CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase1;
@@ -12315,17 +11707,8 @@ export interface DashboardBlocksItemCase15ConfigDateRange {
   startDate?: string | null;
   endDate?: string | null;
 }
-export const DashboardBlocksItemCase15ConfigDateRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    predefined: DashboardBlocksItemCase15ConfigDateRangePredefined,
-    lookbackValue: S.optional(S.NullOr(S.Number)),
-    lookbackUnit: S.optional(S.NullOr(DashboardBlocksItemCase15ConfigDateRangeLookbackUnit)),
-    startDate: S.optional(S.NullOr(S.String)),
-    endDate: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "DashboardBlocksItemCase15ConfigDateRange",
-}) as any as S.Schema<DashboardBlocksItemCase15ConfigDateRange>;
+export const DashboardBlocksItemCase15ConfigDateRange =
+  CreateDashboardV2RequestGlobalControlsDateRange as any as S.Schema<DashboardBlocksItemCase15ConfigDateRange>;
 
 export type DashboardBlocksItemCase15ConfigShowAs = "total" | "per_unit";
 export const DashboardBlocksItemCase15ConfigShowAs = S.String;
@@ -12346,10 +11729,8 @@ export const DashboardBlocksItemCase15ConfigDatasetColumnTypesValue = S.String;
 export type DashboardBlocksItemCase15ConfigDatasetColumnTypesMap = {
   [key: string]: DashboardBlocksItemCase15ConfigDatasetColumnTypesValue | undefined;
 };
-export const DashboardBlocksItemCase15ConfigDatasetColumnTypesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  DashboardBlocksItemCase15ConfigDatasetColumnTypesValue,
-) as any as S.Schema<DashboardBlocksItemCase15ConfigDatasetColumnTypesMap>;
+export const DashboardBlocksItemCase15ConfigDatasetColumnTypesMap =
+  CreateConfigRevisionRebaseRequestConflictResolutionsMap as any as S.Schema<DashboardBlocksItemCase15ConfigDatasetColumnTypesMap>;
 
 export type DashboardBlocksItemCase15ConfigDatasetValuesItemRowFiltersItemOperator =
   | "="
@@ -12561,34 +11942,16 @@ export interface DashboardBlocksItemCase16ComparisonPreviousTimeFrame {
   startDate?: string | null;
   endDate?: string | null;
 }
-export const DashboardBlocksItemCase16ComparisonPreviousTimeFrame = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    predefined: DashboardBlocksItemCase16ComparisonPreviousTimeFramePredefined,
-    lookbackValue: S.optional(S.NullOr(S.Number)),
-    lookbackUnit: S.optional(
-      S.NullOr(DashboardBlocksItemCase16ComparisonPreviousTimeFrameLookbackUnit),
-    ),
-    startDate: S.optional(S.NullOr(S.String)),
-    endDate: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "DashboardBlocksItemCase16ComparisonPreviousTimeFrame",
-}) as any as S.Schema<DashboardBlocksItemCase16ComparisonPreviousTimeFrame>;
+export const DashboardBlocksItemCase16ComparisonPreviousTimeFrame =
+  CreateDashboardV2RequestComparisonPreviousTimeFrame as any as S.Schema<DashboardBlocksItemCase16ComparisonPreviousTimeFrame>;
 
 export interface DashboardBlocksItemCase16Comparison {
   enabled: boolean;
   mode?: DashboardBlocksItemCase16ComparisonMode;
   previousTimeFrame?: DashboardBlocksItemCase16ComparisonPreviousTimeFrame;
 }
-export const DashboardBlocksItemCase16Comparison = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    mode: S.optional(DashboardBlocksItemCase16ComparisonMode),
-    previousTimeFrame: S.optional(DashboardBlocksItemCase16ComparisonPreviousTimeFrame),
-  }),
-).annotate({
-  identifier: "DashboardBlocksItemCase16Comparison",
-}) as any as S.Schema<DashboardBlocksItemCase16Comparison>;
+export const DashboardBlocksItemCase16Comparison =
+  CreateDashboardV2RequestComparison as any as S.Schema<DashboardBlocksItemCase16Comparison>;
 
 export type DashboardBlocksItemCase16GlobalControlSettings =
   CreateDashboardV2RequestBlocksItemCase12GlobalControlSettings;
@@ -12609,15 +11972,8 @@ export interface DashboardBlocksItemCase16ConfigDimensionsItemCase0 {
   column: string | null;
   dateGranularity: DashboardBlocksItemCase16ConfigDimensionsItemCase0DateGranularity;
 }
-export const DashboardBlocksItemCase16ConfigDimensionsItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dimensionType: S.String,
-    column: S.NullOr(S.String),
-    dateGranularity: DashboardBlocksItemCase16ConfigDimensionsItemCase0DateGranularity,
-  }),
-).annotate({
-  identifier: "DashboardBlocksItemCase16ConfigDimensionsItemCase0",
-}) as any as S.Schema<DashboardBlocksItemCase16ConfigDimensionsItemCase0>;
+export const DashboardBlocksItemCase16ConfigDimensionsItemCase0 =
+  DashboardBlocksItemCase12ConfigDimensionsItemCase0 as any as S.Schema<DashboardBlocksItemCase16ConfigDimensionsItemCase0>;
 
 export type DashboardBlocksItemCase16ConfigDimensionsItemCase1 =
   CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase1;
@@ -12778,17 +12134,8 @@ export interface DashboardBlocksItemCase16ConfigDateRange {
   startDate?: string | null;
   endDate?: string | null;
 }
-export const DashboardBlocksItemCase16ConfigDateRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    predefined: DashboardBlocksItemCase16ConfigDateRangePredefined,
-    lookbackValue: S.optional(S.NullOr(S.Number)),
-    lookbackUnit: S.optional(S.NullOr(DashboardBlocksItemCase16ConfigDateRangeLookbackUnit)),
-    startDate: S.optional(S.NullOr(S.String)),
-    endDate: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "DashboardBlocksItemCase16ConfigDateRange",
-}) as any as S.Schema<DashboardBlocksItemCase16ConfigDateRange>;
+export const DashboardBlocksItemCase16ConfigDateRange =
+  CreateDashboardV2RequestGlobalControlsDateRange as any as S.Schema<DashboardBlocksItemCase16ConfigDateRange>;
 
 export type DashboardBlocksItemCase16ConfigShowAs = "total" | "per_unit";
 export const DashboardBlocksItemCase16ConfigShowAs = S.String;
@@ -12861,14 +12208,7 @@ export interface DashboardBlocksItemCase16ConfigDatasetStepsItemConversionWindow
   value: number;
 }
 export const DashboardBlocksItemCase16ConfigDatasetStepsItemConversionWindow =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      unit: DashboardBlocksItemCase16ConfigDatasetStepsItemConversionWindowUnit,
-      value: S.Number,
-    }),
-  ).annotate({
-    identifier: "DashboardBlocksItemCase16ConfigDatasetStepsItemConversionWindow",
-  }) as any as S.Schema<DashboardBlocksItemCase16ConfigDatasetStepsItemConversionWindow>;
+  CreateDashboardV2RequestBlocksItemCase15ConfigDatasetStepsItemConversionWindow as any as S.Schema<DashboardBlocksItemCase16ConfigDatasetStepsItemConversionWindow>;
 
 export interface DashboardBlocksItemCase16ConfigDatasetStepsItem {
   name: string;
@@ -14073,29 +13413,13 @@ export interface ExperimentMetricOverrideEntry {
   regressionAdjustmentEnabled?: boolean;
   regressionAdjustmentDays?: number;
 }
-export const ExperimentMetricOverrideEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    windowType: S.optional(ExperimentMetricOverrideEntryWindowType),
-    windowHours: S.optional(S.Number),
-    delayHours: S.optional(S.Number),
-    properPriorOverride: S.optional(S.Boolean),
-    properPriorEnabled: S.optional(S.Boolean),
-    properPriorMean: S.optional(S.Number),
-    properPriorStdDev: S.optional(S.Number),
-    regressionAdjustmentOverride: S.optional(S.Boolean),
-    regressionAdjustmentEnabled: S.optional(S.Boolean),
-    regressionAdjustmentDays: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ExperimentMetricOverrideEntry",
-}) as any as S.Schema<ExperimentMetricOverrideEntry>;
+export const ExperimentMetricOverrideEntry =
+  CreateExperimentRequestMetricOverridesItem as any as S.Schema<ExperimentMetricOverrideEntry>;
 
 /** Per-metric analysis overrides; also reflected in goals/secondaryMetrics/guardrails overrides when applicable. On create/update, this replaces the entire stored array (it does not patch individual entries). */
 export type ExperimentAnalysisSettingsMetricOverridesList = Array<ExperimentMetricOverrideEntry>;
-export const ExperimentAnalysisSettingsMetricOverridesList = /*@__PURE__*/ S.Array(
-  ExperimentMetricOverrideEntry,
-) as any as S.Schema<ExperimentAnalysisSettingsMetricOverridesList>;
+export const ExperimentAnalysisSettingsMetricOverridesList =
+  CreateExperimentRequestMetricOverridesList as any as S.Schema<ExperimentAnalysisSettingsMetricOverridesList>;
 
 export type ExperimentMetricOverridesWindow = "conversion" | "lookback" | "";
 export const ExperimentMetricOverridesWindow = S.String;
@@ -14301,14 +13625,8 @@ export interface ExperimentStatusUpdateScheduleStopAfter {
   value: number;
   unit: ExperimentStatusUpdateScheduleStopAfterUnit;
 }
-export const ExperimentStatusUpdateScheduleStopAfter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.Number,
-    unit: ExperimentStatusUpdateScheduleStopAfterUnit,
-  }),
-).annotate({
-  identifier: "ExperimentStatusUpdateScheduleStopAfter",
-}) as any as S.Schema<ExperimentStatusUpdateScheduleStopAfter>;
+export const ExperimentStatusUpdateScheduleStopAfter =
+  CreateExperimentRequestStatusUpdateScheduleStopAfter as any as S.Schema<ExperimentStatusUpdateScheduleStopAfter>;
 
 /** Scheduled start/end for an experiment. All fields optional; the end may be an absolute `stopAt` or a deferred relative `stopAfter`, but not both. */
 export interface ExperimentStatusUpdateSchedule {
@@ -14321,16 +13639,8 @@ export interface ExperimentStatusUpdateSchedule {
   /** End-of-experiment automation applied at the scheduled end. Required whenever a `stopAt` or `stopAfter` is set (any mode, including `notify`). */
   scheduledStopPlan?: ScheduledStopPlan;
 }
-export const ExperimentStatusUpdateSchedule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    startAt: S.optional(S.String),
-    stopAt: S.optional(S.String),
-    stopAfter: S.optional(ExperimentStatusUpdateScheduleStopAfter),
-    scheduledStopPlan: S.optional(ScheduledStopPlan),
-  }),
-).annotate({
-  identifier: "ExperimentStatusUpdateSchedule",
-}) as any as S.Schema<ExperimentStatusUpdateSchedule>;
+export const ExperimentStatusUpdateSchedule =
+  CreateExperimentRequestStatusUpdateSchedule as any as S.Schema<ExperimentStatusUpdateSchedule>;
 
 export type ExperimentNextScheduledStatusUpdateType = "start" | "stop";
 export const ExperimentNextScheduledStatusUpdateType = S.String;
@@ -14760,14 +14070,8 @@ export interface ExperimentWithEnhancedStatusNextScheduledStatusUpdate {
   type: ExperimentWithEnhancedStatusNextScheduledStatusUpdateType;
   date: string;
 }
-export const ExperimentWithEnhancedStatusNextScheduledStatusUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ExperimentWithEnhancedStatusNextScheduledStatusUpdateType,
-    date: S.String,
-  }),
-).annotate({
-  identifier: "ExperimentWithEnhancedStatusNextScheduledStatusUpdate",
-}) as any as S.Schema<ExperimentWithEnhancedStatusNextScheduledStatusUpdate>;
+export const ExperimentWithEnhancedStatusNextScheduledStatusUpdate =
+  ExperimentNextScheduledStatusUpdate as any as S.Schema<ExperimentWithEnhancedStatusNextScheduledStatusUpdate>;
 
 export type ExperimentWithEnhancedStatusEnhancedStatusStatus =
   | "Running"
@@ -15673,22 +14977,15 @@ export const FactTableColumnJsonFieldsValueDatatype = S.String;
 export interface FactTableColumnJsonFieldsValue {
   datatype?: FactTableColumnJsonFieldsValueDatatype;
 }
-export const FactTableColumnJsonFieldsValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    datatype: S.optional(FactTableColumnJsonFieldsValueDatatype),
-  }),
-).annotate({
-  identifier: "FactTableColumnJsonFieldsValue",
-}) as any as S.Schema<FactTableColumnJsonFieldsValue>;
+export const FactTableColumnJsonFieldsValue =
+  FactTableColumnInputJsonFieldsValue as any as S.Schema<FactTableColumnJsonFieldsValue>;
 
 /** For JSON columns, defines the structure of nested fields */
 export type FactTableColumnJsonFieldsMap = {
   [key: string]: FactTableColumnJsonFieldsValue | undefined;
 };
-export const FactTableColumnJsonFieldsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  FactTableColumnJsonFieldsValue,
-) as any as S.Schema<FactTableColumnJsonFieldsMap>;
+export const FactTableColumnJsonFieldsMap =
+  FactTableColumnInputJsonFieldsMap as any as S.Schema<FactTableColumnJsonFieldsMap>;
 
 /** Value -> additional column to prompt for when a metric filters this column to that value, e.g. {"Page View": "path", "Modal Open": "properties.modalType"}. Requires alwaysInlineFilter. */
 export type FactTableColumnConditionalInlineFiltersMap = { [key: string]: string | undefined };
@@ -16243,14 +15540,8 @@ export interface HoldoutNextScheduledStatusUpdate {
   type: HoldoutNextScheduledStatusUpdateType;
   date: string;
 }
-export const HoldoutNextScheduledStatusUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: HoldoutNextScheduledStatusUpdateType,
-    date: S.String,
-  }),
-).annotate({
-  identifier: "HoldoutNextScheduledStatusUpdate",
-}) as any as S.Schema<HoldoutNextScheduledStatusUpdate>;
+export const HoldoutNextScheduledStatusUpdate =
+  ExperimentNextScheduledStatusUpdate as any as S.Schema<HoldoutNextScheduledStatusUpdate>;
 
 export interface Holdout {
   id: string;
@@ -17206,13 +16497,8 @@ export const CreateRampScheduleRequestLockdownConfigMode = S.String;
 export interface CreateRampScheduleRequestLockdownConfig {
   mode: CreateRampScheduleRequestLockdownConfigMode | (string & {});
 }
-export const CreateRampScheduleRequestLockdownConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: CreateRampScheduleRequestLockdownConfigMode,
-  }),
-).annotate({
-  identifier: "CreateRampScheduleRequestLockdownConfig",
-}) as any as S.Schema<CreateRampScheduleRequestLockdownConfig>;
+export const CreateRampScheduleRequestLockdownConfig =
+  RampScheduleLockdownConfig as any as S.Schema<CreateRampScheduleRequestLockdownConfig>;
 
 export type CreateRampScheduleRequestExperimentHealthAction = "rollback" | "hold" | "warn";
 export const CreateRampScheduleRequestExperimentHealthAction = S.String;
@@ -17547,13 +16833,8 @@ export const CreateRampScheduleTemplateRequestLockdownConfigMode = S.String;
 export interface CreateRampScheduleTemplateRequestLockdownConfig {
   mode: CreateRampScheduleTemplateRequestLockdownConfigMode | (string & {});
 }
-export const CreateRampScheduleTemplateRequestLockdownConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: CreateRampScheduleTemplateRequestLockdownConfigMode,
-  }),
-).annotate({
-  identifier: "CreateRampScheduleTemplateRequestLockdownConfig",
-}) as any as S.Schema<CreateRampScheduleTemplateRequestLockdownConfig>;
+export const CreateRampScheduleTemplateRequestLockdownConfig =
+  RampScheduleLockdownConfig as any as S.Schema<CreateRampScheduleTemplateRequestLockdownConfig>;
 
 export interface CreateRampScheduleTemplateRequest {
   name: string;
@@ -17838,13 +17119,8 @@ export const RampScheduleTemplateLockdownConfigMode = S.String;
 export interface RampScheduleTemplateLockdownConfig {
   mode: RampScheduleTemplateLockdownConfigMode;
 }
-export const RampScheduleTemplateLockdownConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: RampScheduleTemplateLockdownConfigMode,
-  }),
-).annotate({
-  identifier: "RampScheduleTemplateLockdownConfig",
-}) as any as S.Schema<RampScheduleTemplateLockdownConfig>;
+export const RampScheduleTemplateLockdownConfig =
+  RampScheduleLockdownConfig as any as S.Schema<RampScheduleTemplateLockdownConfig>;
 
 export interface RampScheduleTemplate {
   id: string;
@@ -18417,32 +17693,14 @@ export interface ReportAnalysisSettingsMetricOverridesItem {
   regressionAdjustmentEnabled?: boolean;
   regressionAdjustmentDays?: number;
 }
-export const ReportAnalysisSettingsMetricOverridesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    windowType: S.optional(ReportAnalysisSettingsMetricOverridesItemWindowType),
-    windowHours: S.optional(S.Number),
-    delayHours: S.optional(S.Number),
-    winRisk: S.optional(S.Number),
-    loseRisk: S.optional(S.Number),
-    properPriorOverride: S.optional(S.Boolean),
-    properPriorEnabled: S.optional(S.Boolean),
-    properPriorMean: S.optional(S.Number),
-    properPriorStdDev: S.optional(S.Number),
-    regressionAdjustmentOverride: S.optional(S.Boolean),
-    regressionAdjustmentEnabled: S.optional(S.Boolean),
-    regressionAdjustmentDays: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ReportAnalysisSettingsMetricOverridesItem",
-}) as any as S.Schema<ReportAnalysisSettingsMetricOverridesItem>;
+export const ReportAnalysisSettingsMetricOverridesItem =
+  CreateReportRequestMetricOverridesItem as any as S.Schema<ReportAnalysisSettingsMetricOverridesItem>;
 
 /** Per-metric window, risk, and regression-adjustment overrides */
 export type ReportAnalysisSettingsMetricOverridesList =
   Array<ReportAnalysisSettingsMetricOverridesItem>;
-export const ReportAnalysisSettingsMetricOverridesList = /*@__PURE__*/ S.Array(
-  ReportAnalysisSettingsMetricOverridesItem,
-) as any as S.Schema<ReportAnalysisSettingsMetricOverridesList>;
+export const ReportAnalysisSettingsMetricOverridesList =
+  CreateReportRequestMetricOverridesList as any as S.Schema<ReportAnalysisSettingsMetricOverridesList>;
 
 export type ReportAnalysisSettingsCustomMetricSlicesItemSlicesItemLevelsList = Array<string>;
 export const ReportAnalysisSettingsCustomMetricSlicesItemSlicesItemLevelsList =
@@ -18498,15 +17756,8 @@ export interface ReportAnalysisSettingsLookbackOverrideCase1 {
   value: number;
   valueUnit: ReportAnalysisSettingsLookbackOverrideCase1ValueUnit;
 }
-export const ReportAnalysisSettingsLookbackOverrideCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    value: S.Number,
-    valueUnit: ReportAnalysisSettingsLookbackOverrideCase1ValueUnit,
-  }),
-).annotate({
-  identifier: "ReportAnalysisSettingsLookbackOverrideCase1",
-}) as any as S.Schema<ReportAnalysisSettingsLookbackOverrideCase1>;
+export const ReportAnalysisSettingsLookbackOverrideCase1 =
+  CreateReportRequestLookbackOverrideCase1 as any as S.Schema<ReportAnalysisSettingsLookbackOverrideCase1>;
 
 /** Lookback window used when `attributionModel` is `lookbackOverride` */
 export type ReportAnalysisSettingsLookbackOverride =
@@ -19023,21 +18274,12 @@ export interface SavedGroupRevisionReview {
   stale?: boolean;
   dateCreated: string;
 }
-export const SavedGroupRevisionReview = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    userId: S.String,
-    decision: SavedGroupRevisionReviewDecision,
-    comment: S.optional(S.String),
-    stale: S.optional(S.Boolean),
-    dateCreated: S.String,
-  }),
-).annotate({ identifier: "SavedGroupRevisionReview" }) as any as S.Schema<SavedGroupRevisionReview>;
+export const SavedGroupRevisionReview =
+  ConfigRevisionReview as any as S.Schema<SavedGroupRevisionReview>;
 
 export type SavedGroupRevisionReviewsList = Array<SavedGroupRevisionReview>;
-export const SavedGroupRevisionReviewsList = /*@__PURE__*/ S.Array(
-  SavedGroupRevisionReview,
-) as any as S.Schema<SavedGroupRevisionReviewsList>;
+export const SavedGroupRevisionReviewsList =
+  ConfigRevisionReviewsList as any as S.Schema<SavedGroupRevisionReviewsList>;
 
 export type SavedGroupRevisionActivityLogEntryAction =
   | "created"
@@ -19142,15 +18384,8 @@ export interface SavedGroupRevisionResolution {
   userId: string;
   dateCreated: string;
 }
-export const SavedGroupRevisionResolution = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: SavedGroupRevisionResolutionAction,
-    userId: S.String,
-    dateCreated: S.String,
-  }),
-).annotate({
-  identifier: "SavedGroupRevisionResolution",
-}) as any as S.Schema<SavedGroupRevisionResolution>;
+export const SavedGroupRevisionResolution =
+  ConstantRevisionResolution as any as S.Schema<SavedGroupRevisionResolution>;
 
 export type SavedGroupRevisionProposedChangesItemCase0 =
   ConfigRevisionActivityLogEntryProposedChangesSnapshotItemCase0;
@@ -19400,10 +18635,8 @@ export type CreateSavedGroupRevisionRebaseRequestConflictResolutionsMap = {
     | (string & {})
     | undefined;
 };
-export const CreateSavedGroupRevisionRebaseRequestConflictResolutionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  CreateSavedGroupRevisionRebaseRequestConflictResolutionsValue,
-) as any as S.Schema<CreateSavedGroupRevisionRebaseRequestConflictResolutionsMap>;
+export const CreateSavedGroupRevisionRebaseRequestConflictResolutionsMap =
+  CreateConfigRevisionRebaseRequestConflictResolutionsMap as any as S.Schema<CreateSavedGroupRevisionRebaseRequestConflictResolutionsMap>;
 
 export type CreateSavedGroupRevisionRebaseRequestCustomValuesValueList = Array<unknown>;
 export const CreateSavedGroupRevisionRebaseRequestCustomValuesValueList =
@@ -21426,13 +20659,8 @@ export const FeatureRevisionV2RampActionsItemCase0LockdownConfigMode = S.String;
 export interface FeatureRevisionV2RampActionsItemCase0LockdownConfig {
   mode: FeatureRevisionV2RampActionsItemCase0LockdownConfigMode;
 }
-export const FeatureRevisionV2RampActionsItemCase0LockdownConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: FeatureRevisionV2RampActionsItemCase0LockdownConfigMode,
-  }),
-).annotate({
-  identifier: "FeatureRevisionV2RampActionsItemCase0LockdownConfig",
-}) as any as S.Schema<FeatureRevisionV2RampActionsItemCase0LockdownConfig>;
+export const FeatureRevisionV2RampActionsItemCase0LockdownConfig =
+  RampScheduleLockdownConfig as any as S.Schema<FeatureRevisionV2RampActionsItemCase0LockdownConfig>;
 
 export interface FeatureRevisionV2RampActionsItemCase0 {
   mode: string;
@@ -21911,13 +21139,8 @@ export const FeatureRevisionV2RampActionsItemCase1LockdownConfigMode = S.String;
 export interface FeatureRevisionV2RampActionsItemCase1LockdownConfig {
   mode: FeatureRevisionV2RampActionsItemCase1LockdownConfigMode;
 }
-export const FeatureRevisionV2RampActionsItemCase1LockdownConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: FeatureRevisionV2RampActionsItemCase1LockdownConfigMode,
-  }),
-).annotate({
-  identifier: "FeatureRevisionV2RampActionsItemCase1LockdownConfig",
-}) as any as S.Schema<FeatureRevisionV2RampActionsItemCase1LockdownConfig>;
+export const FeatureRevisionV2RampActionsItemCase1LockdownConfig =
+  RampScheduleLockdownConfig as any as S.Schema<FeatureRevisionV2RampActionsItemCase1LockdownConfig>;
 
 export interface FeatureRevisionV2RampActionsItemCase1 {
   name?: string;
@@ -24934,15 +24157,8 @@ export interface FactMetricLowerCappingSettings {
   /** If true and capping is `percentile`, zeros will be ignored when calculating the percentile. */
   ignoreZeros?: boolean;
 }
-export const FactMetricLowerCappingSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: FactMetricLowerCappingSettingsType,
-    value: S.optional(S.Number),
-    ignoreZeros: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "FactMetricLowerCappingSettings",
-}) as any as S.Schema<FactMetricLowerCappingSettings>;
+export const FactMetricLowerCappingSettings =
+  FactMetricCappingSettings as any as S.Schema<FactMetricLowerCappingSettings>;
 
 export type FactMetricWindowSettingsType = "none" | "conversion" | "lookback";
 export const FactMetricWindowSettingsType = S.String;
@@ -25413,14 +24629,7 @@ export interface LogUser {
   name?: string;
   email?: string;
 }
-export const LogUser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: LogUserType,
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    email: S.optional(S.String),
-  }),
-).annotate({ identifier: "LogUser" }) as any as S.Schema<LogUser>;
+export const LogUser = EventUser as any as S.Schema<LogUser>;
 
 export interface Log {
   /** Log entry ID. Use a `Comment` entry's id with the PUT/DELETE log endpoints to edit or delete an owned comment. Absent on legacy entries stored inline on the revision. */
@@ -26238,15 +25447,8 @@ export interface MetricBehaviorCappingSettings {
   /** If true and capping is `percentile`, zeros will be ignored when calculating the percentile. */
   ignoreZeros?: boolean;
 }
-export const MetricBehaviorCappingSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: MetricBehaviorCappingSettingsType,
-    value: S.optional(S.Number),
-    ignoreZeros: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "MetricBehaviorCappingSettings",
-}) as any as S.Schema<MetricBehaviorCappingSettings>;
+export const MetricBehaviorCappingSettings =
+  FactMetricCappingSettings as any as S.Schema<MetricBehaviorCappingSettings>;
 
 export type MetricBehaviorCapping = "absolute" | "percentile";
 export const MetricBehaviorCapping = S.String;
@@ -26985,15 +26187,8 @@ export interface AnalyticsExplorationConfigCase0DimensionsItemCase0 {
   column: string | null;
   dateGranularity: AnalyticsExplorationConfigCase0DimensionsItemCase0DateGranularity;
 }
-export const AnalyticsExplorationConfigCase0DimensionsItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dimensionType: S.String,
-    column: S.NullOr(S.String),
-    dateGranularity: AnalyticsExplorationConfigCase0DimensionsItemCase0DateGranularity,
-  }),
-).annotate({
-  identifier: "AnalyticsExplorationConfigCase0DimensionsItemCase0",
-}) as any as S.Schema<AnalyticsExplorationConfigCase0DimensionsItemCase0>;
+export const AnalyticsExplorationConfigCase0DimensionsItemCase0 =
+  DashboardBlocksItemCase12ConfigDimensionsItemCase0 as any as S.Schema<AnalyticsExplorationConfigCase0DimensionsItemCase0>;
 
 export type AnalyticsExplorationConfigCase0DimensionsItemCase1 =
   CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase1;
@@ -27154,17 +26349,8 @@ export interface AnalyticsExplorationConfigCase0DateRange {
   startDate?: string | null;
   endDate?: string | null;
 }
-export const AnalyticsExplorationConfigCase0DateRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    predefined: AnalyticsExplorationConfigCase0DateRangePredefined,
-    lookbackValue: S.optional(S.NullOr(S.Number)),
-    lookbackUnit: S.optional(S.NullOr(AnalyticsExplorationConfigCase0DateRangeLookbackUnit)),
-    startDate: S.optional(S.NullOr(S.String)),
-    endDate: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "AnalyticsExplorationConfigCase0DateRange",
-}) as any as S.Schema<AnalyticsExplorationConfigCase0DateRange>;
+export const AnalyticsExplorationConfigCase0DateRange =
+  CreateDashboardV2RequestGlobalControlsDateRange as any as S.Schema<AnalyticsExplorationConfigCase0DateRange>;
 
 export type AnalyticsExplorationConfigCase0ShowAs = "total" | "per_unit";
 export const AnalyticsExplorationConfigCase0ShowAs = S.String;
@@ -27306,15 +26492,8 @@ export interface AnalyticsExplorationConfigCase1DimensionsItemCase0 {
   column: string | null;
   dateGranularity: AnalyticsExplorationConfigCase1DimensionsItemCase0DateGranularity;
 }
-export const AnalyticsExplorationConfigCase1DimensionsItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dimensionType: S.String,
-    column: S.NullOr(S.String),
-    dateGranularity: AnalyticsExplorationConfigCase1DimensionsItemCase0DateGranularity,
-  }),
-).annotate({
-  identifier: "AnalyticsExplorationConfigCase1DimensionsItemCase0",
-}) as any as S.Schema<AnalyticsExplorationConfigCase1DimensionsItemCase0>;
+export const AnalyticsExplorationConfigCase1DimensionsItemCase0 =
+  DashboardBlocksItemCase12ConfigDimensionsItemCase0 as any as S.Schema<AnalyticsExplorationConfigCase1DimensionsItemCase0>;
 
 export type AnalyticsExplorationConfigCase1DimensionsItemCase1 =
   CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase1;
@@ -27475,17 +26654,8 @@ export interface AnalyticsExplorationConfigCase1DateRange {
   startDate?: string | null;
   endDate?: string | null;
 }
-export const AnalyticsExplorationConfigCase1DateRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    predefined: AnalyticsExplorationConfigCase1DateRangePredefined,
-    lookbackValue: S.optional(S.NullOr(S.Number)),
-    lookbackUnit: S.optional(S.NullOr(AnalyticsExplorationConfigCase1DateRangeLookbackUnit)),
-    startDate: S.optional(S.NullOr(S.String)),
-    endDate: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "AnalyticsExplorationConfigCase1DateRange",
-}) as any as S.Schema<AnalyticsExplorationConfigCase1DateRange>;
+export const AnalyticsExplorationConfigCase1DateRange =
+  CreateDashboardV2RequestGlobalControlsDateRange as any as S.Schema<AnalyticsExplorationConfigCase1DateRange>;
 
 export type AnalyticsExplorationConfigCase1ShowAs = "total" | "per_unit";
 export const AnalyticsExplorationConfigCase1ShowAs = S.String;
@@ -27635,15 +26805,8 @@ export interface AnalyticsExplorationConfigCase2DimensionsItemCase0 {
   column: string | null;
   dateGranularity: AnalyticsExplorationConfigCase2DimensionsItemCase0DateGranularity;
 }
-export const AnalyticsExplorationConfigCase2DimensionsItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dimensionType: S.String,
-    column: S.NullOr(S.String),
-    dateGranularity: AnalyticsExplorationConfigCase2DimensionsItemCase0DateGranularity,
-  }),
-).annotate({
-  identifier: "AnalyticsExplorationConfigCase2DimensionsItemCase0",
-}) as any as S.Schema<AnalyticsExplorationConfigCase2DimensionsItemCase0>;
+export const AnalyticsExplorationConfigCase2DimensionsItemCase0 =
+  DashboardBlocksItemCase12ConfigDimensionsItemCase0 as any as S.Schema<AnalyticsExplorationConfigCase2DimensionsItemCase0>;
 
 export type AnalyticsExplorationConfigCase2DimensionsItemCase1 =
   CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase1;
@@ -27804,17 +26967,8 @@ export interface AnalyticsExplorationConfigCase2DateRange {
   startDate?: string | null;
   endDate?: string | null;
 }
-export const AnalyticsExplorationConfigCase2DateRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    predefined: AnalyticsExplorationConfigCase2DateRangePredefined,
-    lookbackValue: S.optional(S.NullOr(S.Number)),
-    lookbackUnit: S.optional(S.NullOr(AnalyticsExplorationConfigCase2DateRangeLookbackUnit)),
-    startDate: S.optional(S.NullOr(S.String)),
-    endDate: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "AnalyticsExplorationConfigCase2DateRange",
-}) as any as S.Schema<AnalyticsExplorationConfigCase2DateRange>;
+export const AnalyticsExplorationConfigCase2DateRange =
+  CreateDashboardV2RequestGlobalControlsDateRange as any as S.Schema<AnalyticsExplorationConfigCase2DateRange>;
 
 export type AnalyticsExplorationConfigCase2ShowAs = "total" | "per_unit";
 export const AnalyticsExplorationConfigCase2ShowAs = S.String;
@@ -27835,10 +26989,8 @@ export const AnalyticsExplorationConfigCase2DatasetColumnTypesValue = S.String;
 export type AnalyticsExplorationConfigCase2DatasetColumnTypesMap = {
   [key: string]: AnalyticsExplorationConfigCase2DatasetColumnTypesValue | undefined;
 };
-export const AnalyticsExplorationConfigCase2DatasetColumnTypesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  AnalyticsExplorationConfigCase2DatasetColumnTypesValue,
-) as any as S.Schema<AnalyticsExplorationConfigCase2DatasetColumnTypesMap>;
+export const AnalyticsExplorationConfigCase2DatasetColumnTypesMap =
+  CreateConfigRevisionRebaseRequestConflictResolutionsMap as any as S.Schema<AnalyticsExplorationConfigCase2DatasetColumnTypesMap>;
 
 export type AnalyticsExplorationConfigCase2DatasetValuesItemRowFiltersItemOperator =
   | "="
@@ -27986,15 +27138,8 @@ export interface AnalyticsExplorationConfigCase3DimensionsItemCase0 {
   column: string | null;
   dateGranularity: AnalyticsExplorationConfigCase3DimensionsItemCase0DateGranularity;
 }
-export const AnalyticsExplorationConfigCase3DimensionsItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dimensionType: S.String,
-    column: S.NullOr(S.String),
-    dateGranularity: AnalyticsExplorationConfigCase3DimensionsItemCase0DateGranularity,
-  }),
-).annotate({
-  identifier: "AnalyticsExplorationConfigCase3DimensionsItemCase0",
-}) as any as S.Schema<AnalyticsExplorationConfigCase3DimensionsItemCase0>;
+export const AnalyticsExplorationConfigCase3DimensionsItemCase0 =
+  DashboardBlocksItemCase12ConfigDimensionsItemCase0 as any as S.Schema<AnalyticsExplorationConfigCase3DimensionsItemCase0>;
 
 export type AnalyticsExplorationConfigCase3DimensionsItemCase1 =
   CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase1;
@@ -28155,17 +27300,8 @@ export interface AnalyticsExplorationConfigCase3DateRange {
   startDate?: string | null;
   endDate?: string | null;
 }
-export const AnalyticsExplorationConfigCase3DateRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    predefined: AnalyticsExplorationConfigCase3DateRangePredefined,
-    lookbackValue: S.optional(S.NullOr(S.Number)),
-    lookbackUnit: S.optional(S.NullOr(AnalyticsExplorationConfigCase3DateRangeLookbackUnit)),
-    startDate: S.optional(S.NullOr(S.String)),
-    endDate: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "AnalyticsExplorationConfigCase3DateRange",
-}) as any as S.Schema<AnalyticsExplorationConfigCase3DateRange>;
+export const AnalyticsExplorationConfigCase3DateRange =
+  CreateDashboardV2RequestGlobalControlsDateRange as any as S.Schema<AnalyticsExplorationConfigCase3DateRange>;
 
 export type AnalyticsExplorationConfigCase3ShowAs = "total" | "per_unit";
 export const AnalyticsExplorationConfigCase3ShowAs = S.String;
@@ -28186,10 +27322,8 @@ export const AnalyticsExplorationConfigCase3DatasetColumnTypesValue = S.String;
 export type AnalyticsExplorationConfigCase3DatasetColumnTypesMap = {
   [key: string]: AnalyticsExplorationConfigCase3DatasetColumnTypesValue | undefined;
 };
-export const AnalyticsExplorationConfigCase3DatasetColumnTypesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  AnalyticsExplorationConfigCase3DatasetColumnTypesValue,
-) as any as S.Schema<AnalyticsExplorationConfigCase3DatasetColumnTypesMap>;
+export const AnalyticsExplorationConfigCase3DatasetColumnTypesMap =
+  CreateConfigRevisionRebaseRequestConflictResolutionsMap as any as S.Schema<AnalyticsExplorationConfigCase3DatasetColumnTypesMap>;
 
 export type AnalyticsExplorationConfigCase3DatasetValuesItemRowFiltersItemOperator =
   | "="
@@ -28341,15 +27475,8 @@ export interface AnalyticsExplorationConfigCase4DimensionsItemCase0 {
   column: string | null;
   dateGranularity: AnalyticsExplorationConfigCase4DimensionsItemCase0DateGranularity;
 }
-export const AnalyticsExplorationConfigCase4DimensionsItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dimensionType: S.String,
-    column: S.NullOr(S.String),
-    dateGranularity: AnalyticsExplorationConfigCase4DimensionsItemCase0DateGranularity,
-  }),
-).annotate({
-  identifier: "AnalyticsExplorationConfigCase4DimensionsItemCase0",
-}) as any as S.Schema<AnalyticsExplorationConfigCase4DimensionsItemCase0>;
+export const AnalyticsExplorationConfigCase4DimensionsItemCase0 =
+  DashboardBlocksItemCase12ConfigDimensionsItemCase0 as any as S.Schema<AnalyticsExplorationConfigCase4DimensionsItemCase0>;
 
 export type AnalyticsExplorationConfigCase4DimensionsItemCase1 =
   CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase1;
@@ -28510,17 +27637,8 @@ export interface AnalyticsExplorationConfigCase4DateRange {
   startDate?: string | null;
   endDate?: string | null;
 }
-export const AnalyticsExplorationConfigCase4DateRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    predefined: AnalyticsExplorationConfigCase4DateRangePredefined,
-    lookbackValue: S.optional(S.NullOr(S.Number)),
-    lookbackUnit: S.optional(S.NullOr(AnalyticsExplorationConfigCase4DateRangeLookbackUnit)),
-    startDate: S.optional(S.NullOr(S.String)),
-    endDate: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "AnalyticsExplorationConfigCase4DateRange",
-}) as any as S.Schema<AnalyticsExplorationConfigCase4DateRange>;
+export const AnalyticsExplorationConfigCase4DateRange =
+  CreateDashboardV2RequestGlobalControlsDateRange as any as S.Schema<AnalyticsExplorationConfigCase4DateRange>;
 
 export type AnalyticsExplorationConfigCase4ShowAs = "total" | "per_unit";
 export const AnalyticsExplorationConfigCase4ShowAs = S.String;
@@ -28593,14 +27711,7 @@ export interface AnalyticsExplorationConfigCase4DatasetStepsItemConversionWindow
   value: number;
 }
 export const AnalyticsExplorationConfigCase4DatasetStepsItemConversionWindow =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      unit: AnalyticsExplorationConfigCase4DatasetStepsItemConversionWindowUnit,
-      value: S.Number,
-    }),
-  ).annotate({
-    identifier: "AnalyticsExplorationConfigCase4DatasetStepsItemConversionWindow",
-  }) as any as S.Schema<AnalyticsExplorationConfigCase4DatasetStepsItemConversionWindow>;
+  CreateDashboardV2RequestBlocksItemCase15ConfigDatasetStepsItemConversionWindow as any as S.Schema<AnalyticsExplorationConfigCase4DatasetStepsItemConversionWindow>;
 
 export interface AnalyticsExplorationConfigCase4DatasetStepsItem {
   name: string;
@@ -28691,15 +27802,8 @@ export interface AnalyticsExplorationConfigCase5DimensionsItemCase0 {
   column: string | null;
   dateGranularity: AnalyticsExplorationConfigCase5DimensionsItemCase0DateGranularity;
 }
-export const AnalyticsExplorationConfigCase5DimensionsItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dimensionType: S.String,
-    column: S.NullOr(S.String),
-    dateGranularity: AnalyticsExplorationConfigCase5DimensionsItemCase0DateGranularity,
-  }),
-).annotate({
-  identifier: "AnalyticsExplorationConfigCase5DimensionsItemCase0",
-}) as any as S.Schema<AnalyticsExplorationConfigCase5DimensionsItemCase0>;
+export const AnalyticsExplorationConfigCase5DimensionsItemCase0 =
+  DashboardBlocksItemCase12ConfigDimensionsItemCase0 as any as S.Schema<AnalyticsExplorationConfigCase5DimensionsItemCase0>;
 
 export type AnalyticsExplorationConfigCase5DimensionsItemCase1 =
   CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase1;
@@ -28860,17 +27964,8 @@ export interface AnalyticsExplorationConfigCase5DateRange {
   startDate?: string | null;
   endDate?: string | null;
 }
-export const AnalyticsExplorationConfigCase5DateRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    predefined: AnalyticsExplorationConfigCase5DateRangePredefined,
-    lookbackValue: S.optional(S.NullOr(S.Number)),
-    lookbackUnit: S.optional(S.NullOr(AnalyticsExplorationConfigCase5DateRangeLookbackUnit)),
-    startDate: S.optional(S.NullOr(S.String)),
-    endDate: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "AnalyticsExplorationConfigCase5DateRange",
-}) as any as S.Schema<AnalyticsExplorationConfigCase5DateRange>;
+export const AnalyticsExplorationConfigCase5DateRange =
+  CreateDashboardV2RequestGlobalControlsDateRange as any as S.Schema<AnalyticsExplorationConfigCase5DateRange>;
 
 export type AnalyticsExplorationConfigCase5ShowAs = "total" | "per_unit";
 export const AnalyticsExplorationConfigCase5ShowAs = S.String;
@@ -29239,9 +28334,8 @@ export const HealthSummarySignalsItem = S.String;
 
 /** All active health signals, not just the top-priority one. Useful for surfacing multiple concurrent issues (e.g. SRM + guardrail failing simultaneously). `healthy` is the sole entry when no issues are detected. */
 export type HealthSummarySignalsList = Array<HealthSummarySignalsItem>;
-export const HealthSummarySignalsList = /*@__PURE__*/ S.Array(
-  HealthSummarySignalsItem,
-) as any as S.Schema<HealthSummarySignalsList>;
+export const HealthSummarySignalsList =
+  CreateCustomFieldRequestSectionsList as any as S.Schema<HealthSummarySignalsList>;
 
 /** Per-variation user counts. Index 0 = baseline arm (users continuing to see the existing behavior -- either the configured control value on a v1 safe rollout, or users passed through to subsequent rules / feature default on a v2 monitored ramp). Index 1 = treatment arm (users exposed to the new rollout value). */
 export type HealthSummaryTrafficVariationUnitsList = Array<number>;
@@ -31159,9 +30253,8 @@ export const ListExperimentsRequestResultItem = S.String;
 export type ListExperimentsRequestResultList = Array<
   ListExperimentsRequestResultItem | (string & {})
 >;
-export const ListExperimentsRequestResultList = /*@__PURE__*/ S.Array(
-  ListExperimentsRequestResultItem,
-) as any as S.Schema<ListExperimentsRequestResultList>;
+export const ListExperimentsRequestResultList =
+  CreateCustomFieldRequestSectionsList as any as S.Schema<ListExperimentsRequestResultList>;
 
 export type ListExperimentsRequestImplementationTypeItem = "feature" | "visualChange" | "redirect";
 export const ListExperimentsRequestImplementationTypeItem = S.String;
@@ -31170,9 +30263,8 @@ export const ListExperimentsRequestImplementationTypeItem = S.String;
 export type ListExperimentsRequestImplementationTypeList = Array<
   ListExperimentsRequestImplementationTypeItem | (string & {})
 >;
-export const ListExperimentsRequestImplementationTypeList = /*@__PURE__*/ S.Array(
-  ListExperimentsRequestImplementationTypeItem,
-) as any as S.Schema<ListExperimentsRequestImplementationTypeList>;
+export const ListExperimentsRequestImplementationTypeList =
+  CreateCustomFieldRequestSectionsList as any as S.Schema<ListExperimentsRequestImplementationTypeList>;
 
 /** Filter by archived status. Set to `true` to return only archived experiments, `false` to exclude them. If omitted, both archived and non-archived experiments are returned. */
 export type ListExperimentsRequestArchived = string | boolean;
@@ -32665,15 +31757,8 @@ export interface PostDataSourceExplorationRequestDimensionsItemCase0 {
     | PostDataSourceExplorationRequestDimensionsItemCase0DateGranularity
     | (string & {});
 }
-export const PostDataSourceExplorationRequestDimensionsItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dimensionType: S.String,
-    column: S.NullOr(S.String),
-    dateGranularity: PostDataSourceExplorationRequestDimensionsItemCase0DateGranularity,
-  }),
-).annotate({
-  identifier: "PostDataSourceExplorationRequestDimensionsItemCase0",
-}) as any as S.Schema<PostDataSourceExplorationRequestDimensionsItemCase0>;
+export const PostDataSourceExplorationRequestDimensionsItemCase0 =
+  DashboardBlocksItemCase12ConfigDimensionsItemCase0 as any as S.Schema<PostDataSourceExplorationRequestDimensionsItemCase0>;
 
 export type PostDataSourceExplorationRequestDimensionsItemCase1 =
   CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase1;
@@ -32836,17 +31921,8 @@ export interface PostDataSourceExplorationRequestDateRange {
   startDate?: string | null;
   endDate?: string | null;
 }
-export const PostDataSourceExplorationRequestDateRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    predefined: PostDataSourceExplorationRequestDateRangePredefined,
-    lookbackValue: S.optional(S.NullOr(S.Number)),
-    lookbackUnit: S.optional(S.NullOr(PostDataSourceExplorationRequestDateRangeLookbackUnit)),
-    startDate: S.optional(S.NullOr(S.String)),
-    endDate: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "PostDataSourceExplorationRequestDateRange",
-}) as any as S.Schema<PostDataSourceExplorationRequestDateRange>;
+export const PostDataSourceExplorationRequestDateRange =
+  CreateDashboardV2RequestGlobalControlsDateRange as any as S.Schema<PostDataSourceExplorationRequestDateRange>;
 
 export type PostDataSourceExplorationRequestShowAs = "total" | "per_unit";
 export const PostDataSourceExplorationRequestShowAs = S.String;
@@ -32870,10 +31946,8 @@ export type PostDataSourceExplorationRequestDatasetColumnTypesMap = {
     | (string & {})
     | undefined;
 };
-export const PostDataSourceExplorationRequestDatasetColumnTypesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  PostDataSourceExplorationRequestDatasetColumnTypesValue,
-) as any as S.Schema<PostDataSourceExplorationRequestDatasetColumnTypesMap>;
+export const PostDataSourceExplorationRequestDatasetColumnTypesMap =
+  CreateConfigRevisionRebaseRequestConflictResolutionsMap as any as S.Schema<PostDataSourceExplorationRequestDatasetColumnTypesMap>;
 
 export type PostDataSourceExplorationRequestDatasetValuesItemRowFiltersItemOperator =
   | "="
@@ -33179,16 +32253,7 @@ export interface PostDataSourceExplorationResponseExplorationConfigDimensionsIte
   dateGranularity: PostDataSourceExplorationResponseExplorationConfigDimensionsItemCase0DateGranularity;
 }
 export const PostDataSourceExplorationResponseExplorationConfigDimensionsItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dimensionType: S.String,
-      column: S.NullOr(S.String),
-      dateGranularity:
-        PostDataSourceExplorationResponseExplorationConfigDimensionsItemCase0DateGranularity,
-    }),
-  ).annotate({
-    identifier: "PostDataSourceExplorationResponseExplorationConfigDimensionsItemCase0",
-  }) as any as S.Schema<PostDataSourceExplorationResponseExplorationConfigDimensionsItemCase0>;
+  CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase0 as any as S.Schema<PostDataSourceExplorationResponseExplorationConfigDimensionsItemCase0>;
 
 export type PostDataSourceExplorationResponseExplorationConfigDimensionsItemCase1 =
   CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase1;
@@ -33393,10 +32458,7 @@ export type PostDataSourceExplorationResponseExplorationConfigDatasetColumnTypes
     | undefined;
 };
 export const PostDataSourceExplorationResponseExplorationConfigDatasetColumnTypesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    PostDataSourceExplorationResponseExplorationConfigDatasetColumnTypesValue,
-  ) as any as S.Schema<PostDataSourceExplorationResponseExplorationConfigDatasetColumnTypesMap>;
+  CreateDashboardV2RequestBlocksItemCase14ConfigDatasetColumnTypesMap as any as S.Schema<PostDataSourceExplorationResponseExplorationConfigDatasetColumnTypesMap>;
 
 export type PostDataSourceExplorationResponseExplorationConfigDatasetValuesItemRowFiltersItemOperator =
   | "="
@@ -33837,16 +32899,8 @@ export interface PostFactMetricRequestQuantileSettings {
   /** Optional override for the source-column name used to recover per-row event counts when numerator.aggregation is 'kll merge'. Defaults to '<numerator.column>_n_events'. Only valid for event-quantile metrics with a 'kll merge' numerator. */
   quantileEventCountColumn?: string;
 }
-export const PostFactMetricRequestQuantileSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: PostFactMetricRequestQuantileSettingsType,
-    ignoreZeros: S.Boolean,
-    quantile: S.Number,
-    quantileEventCountColumn: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PostFactMetricRequestQuantileSettings",
-}) as any as S.Schema<PostFactMetricRequestQuantileSettings>;
+export const PostFactMetricRequestQuantileSettings =
+  FactMetricQuantileSettings as any as S.Schema<PostFactMetricRequestQuantileSettings>;
 
 export type PostFactMetricRequestFunnelSettingsStepsItemRowFiltersItemOperator =
   | "="
@@ -33991,15 +33045,8 @@ export interface PostFactMetricRequestCappingSettings {
   /** If true and capping is `percentile`, zeros will be ignored when calculating the percentile. */
   ignoreZeros?: boolean;
 }
-export const PostFactMetricRequestCappingSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: PostFactMetricRequestCappingSettingsType,
-    value: S.optional(S.Number),
-    ignoreZeros: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "PostFactMetricRequestCappingSettings",
-}) as any as S.Schema<PostFactMetricRequestCappingSettings>;
+export const PostFactMetricRequestCappingSettings =
+  FactMetricCappingSettings as any as S.Schema<PostFactMetricRequestCappingSettings>;
 
 export type PostFactMetricRequestLowerCappingSettingsType = "none" | "absolute" | "percentile";
 export const PostFactMetricRequestLowerCappingSettingsType = S.String;
@@ -34012,15 +33059,8 @@ export interface PostFactMetricRequestLowerCappingSettings {
   /** If true and capping is `percentile`, zeros will be ignored when calculating the percentile. */
   ignoreZeros?: boolean;
 }
-export const PostFactMetricRequestLowerCappingSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: PostFactMetricRequestLowerCappingSettingsType,
-    value: S.optional(S.Number),
-    ignoreZeros: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "PostFactMetricRequestLowerCappingSettings",
-}) as any as S.Schema<PostFactMetricRequestLowerCappingSettings>;
+export const PostFactMetricRequestLowerCappingSettings =
+  FactMetricCappingSettings as any as S.Schema<PostFactMetricRequestLowerCappingSettings>;
 
 export type PostFactMetricRequestWindowSettingsType = "none" | "conversion" | "lookback";
 export const PostFactMetricRequestWindowSettingsType = S.String;
@@ -34272,15 +33312,8 @@ export interface PostFactTableExplorationRequestDimensionsItemCase0 {
     | PostFactTableExplorationRequestDimensionsItemCase0DateGranularity
     | (string & {});
 }
-export const PostFactTableExplorationRequestDimensionsItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dimensionType: S.String,
-    column: S.NullOr(S.String),
-    dateGranularity: PostFactTableExplorationRequestDimensionsItemCase0DateGranularity,
-  }),
-).annotate({
-  identifier: "PostFactTableExplorationRequestDimensionsItemCase0",
-}) as any as S.Schema<PostFactTableExplorationRequestDimensionsItemCase0>;
+export const PostFactTableExplorationRequestDimensionsItemCase0 =
+  DashboardBlocksItemCase12ConfigDimensionsItemCase0 as any as S.Schema<PostFactTableExplorationRequestDimensionsItemCase0>;
 
 export type PostFactTableExplorationRequestDimensionsItemCase1 =
   CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase1;
@@ -34443,17 +33476,8 @@ export interface PostFactTableExplorationRequestDateRange {
   startDate?: string | null;
   endDate?: string | null;
 }
-export const PostFactTableExplorationRequestDateRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    predefined: PostFactTableExplorationRequestDateRangePredefined,
-    lookbackValue: S.optional(S.NullOr(S.Number)),
-    lookbackUnit: S.optional(S.NullOr(PostFactTableExplorationRequestDateRangeLookbackUnit)),
-    startDate: S.optional(S.NullOr(S.String)),
-    endDate: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "PostFactTableExplorationRequestDateRange",
-}) as any as S.Schema<PostFactTableExplorationRequestDateRange>;
+export const PostFactTableExplorationRequestDateRange =
+  CreateDashboardV2RequestGlobalControlsDateRange as any as S.Schema<PostFactTableExplorationRequestDateRange>;
 
 export type PostFactTableExplorationRequestShowAs = "total" | "per_unit";
 export const PostFactTableExplorationRequestShowAs = S.String;
@@ -34666,17 +33690,7 @@ export interface PostFactTableExplorationResponseExplorationResultRowsItemJourne
   count: number;
 }
 export const PostFactTableExplorationResponseExplorationResultRowsItemJourneyCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      kind: S.String,
-      direction: PostFactTableExplorationResponseExplorationResultRowsItemJourneyCase1Direction,
-      stepIndex: S.Number,
-      value: S.String,
-      count: S.Number,
-    }),
-  ).annotate({
-    identifier: "PostFactTableExplorationResponseExplorationResultRowsItemJourneyCase1",
-  }) as any as S.Schema<PostFactTableExplorationResponseExplorationResultRowsItemJourneyCase1>;
+  PostDataSourceExplorationResponseExplorationResultRowsItemJourneyCase1 as any as S.Schema<PostFactTableExplorationResponseExplorationResultRowsItemJourneyCase1>;
 
 export type PostFactTableExplorationResponseExplorationResultRowsItemJourney =
   | PostFactTableExplorationResponseExplorationResultRowsItemJourneyCase0
@@ -34750,16 +33764,7 @@ export interface PostFactTableExplorationResponseExplorationConfigDimensionsItem
   dateGranularity: PostFactTableExplorationResponseExplorationConfigDimensionsItemCase0DateGranularity;
 }
 export const PostFactTableExplorationResponseExplorationConfigDimensionsItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dimensionType: S.String,
-      column: S.NullOr(S.String),
-      dateGranularity:
-        PostFactTableExplorationResponseExplorationConfigDimensionsItemCase0DateGranularity,
-    }),
-  ).annotate({
-    identifier: "PostFactTableExplorationResponseExplorationConfigDimensionsItemCase0",
-  }) as any as S.Schema<PostFactTableExplorationResponseExplorationConfigDimensionsItemCase0>;
+  CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase0 as any as S.Schema<PostFactTableExplorationResponseExplorationConfigDimensionsItemCase0>;
 
 export type PostFactTableExplorationResponseExplorationConfigDimensionsItemCase1 =
   CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase1;
@@ -34927,20 +33932,8 @@ export interface PostFactTableExplorationResponseExplorationConfigDateRange {
   startDate?: string | null;
   endDate?: string | null;
 }
-export const PostFactTableExplorationResponseExplorationConfigDateRange = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      predefined: PostFactTableExplorationResponseExplorationConfigDateRangePredefined,
-      lookbackValue: S.optional(S.NullOr(S.Number)),
-      lookbackUnit: S.optional(
-        S.NullOr(PostFactTableExplorationResponseExplorationConfigDateRangeLookbackUnit),
-      ),
-      startDate: S.optional(S.NullOr(S.String)),
-      endDate: S.optional(S.NullOr(S.String)),
-    }),
-).annotate({
-  identifier: "PostFactTableExplorationResponseExplorationConfigDateRange",
-}) as any as S.Schema<PostFactTableExplorationResponseExplorationConfigDateRange>;
+export const PostFactTableExplorationResponseExplorationConfigDateRange =
+  PostDataSourceExplorationResponseExplorationConfigDateRange as any as S.Schema<PostFactTableExplorationResponseExplorationConfigDateRange>;
 
 export type PostFactTableExplorationResponseExplorationConfigShowAs = "total" | "per_unit";
 export const PostFactTableExplorationResponseExplorationConfigShowAs = S.String;
@@ -35226,10 +34219,7 @@ export type PostFeatureRevisionRebasePreviewV2RequestConflictResolutionsMap = {
     | undefined;
 };
 export const PostFeatureRevisionRebasePreviewV2RequestConflictResolutionsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    PostFeatureRevisionRebasePreviewV2RequestConflictResolutionsValue,
-  ) as any as S.Schema<PostFeatureRevisionRebasePreviewV2RequestConflictResolutionsMap>;
+  CreateDashboardV2RequestBlocksItemCase14ConfigDatasetColumnTypesMap as any as S.Schema<PostFeatureRevisionRebasePreviewV2RequestConflictResolutionsMap>;
 
 export interface PostFeatureRevisionRebasePreviewV2Request {
   id: string;
@@ -35354,10 +34344,8 @@ export type PostFeatureRevisionRebaseV2RequestConflictResolutionsMap = {
     | (string & {})
     | undefined;
 };
-export const PostFeatureRevisionRebaseV2RequestConflictResolutionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  PostFeatureRevisionRebaseV2RequestConflictResolutionsValue,
-) as any as S.Schema<PostFeatureRevisionRebaseV2RequestConflictResolutionsMap>;
+export const PostFeatureRevisionRebaseV2RequestConflictResolutionsMap =
+  CreateConfigRevisionRebaseRequestConflictResolutionsMap as any as S.Schema<PostFeatureRevisionRebaseV2RequestConflictResolutionsMap>;
 
 export interface PostFeatureRevisionRebaseV2Request {
   id: string;
@@ -37476,15 +36464,8 @@ export interface PostFunnelExplorationRequestDimensionsItemCase0 {
   column: string | null;
   dateGranularity: PostFunnelExplorationRequestDimensionsItemCase0DateGranularity | (string & {});
 }
-export const PostFunnelExplorationRequestDimensionsItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dimensionType: S.String,
-    column: S.NullOr(S.String),
-    dateGranularity: PostFunnelExplorationRequestDimensionsItemCase0DateGranularity,
-  }),
-).annotate({
-  identifier: "PostFunnelExplorationRequestDimensionsItemCase0",
-}) as any as S.Schema<PostFunnelExplorationRequestDimensionsItemCase0>;
+export const PostFunnelExplorationRequestDimensionsItemCase0 =
+  DashboardBlocksItemCase12ConfigDimensionsItemCase0 as any as S.Schema<PostFunnelExplorationRequestDimensionsItemCase0>;
 
 export type PostFunnelExplorationRequestDimensionsItemCase1 =
   CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase1;
@@ -37643,17 +36624,8 @@ export interface PostFunnelExplorationRequestDateRange {
   startDate?: string | null;
   endDate?: string | null;
 }
-export const PostFunnelExplorationRequestDateRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    predefined: PostFunnelExplorationRequestDateRangePredefined,
-    lookbackValue: S.optional(S.NullOr(S.Number)),
-    lookbackUnit: S.optional(S.NullOr(PostFunnelExplorationRequestDateRangeLookbackUnit)),
-    startDate: S.optional(S.NullOr(S.String)),
-    endDate: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "PostFunnelExplorationRequestDateRange",
-}) as any as S.Schema<PostFunnelExplorationRequestDateRange>;
+export const PostFunnelExplorationRequestDateRange =
+  CreateDashboardV2RequestGlobalControlsDateRange as any as S.Schema<PostFunnelExplorationRequestDateRange>;
 
 export type PostFunnelExplorationRequestShowAs = "total" | "per_unit";
 export const PostFunnelExplorationRequestShowAs = S.String;
@@ -37725,15 +36697,8 @@ export interface PostFunnelExplorationRequestDatasetStepsItemConversionWindow {
   unit: PostFunnelExplorationRequestDatasetStepsItemConversionWindowUnit | (string & {});
   value: number;
 }
-export const PostFunnelExplorationRequestDatasetStepsItemConversionWindow = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      unit: PostFunnelExplorationRequestDatasetStepsItemConversionWindowUnit,
-      value: S.Number,
-    }),
-).annotate({
-  identifier: "PostFunnelExplorationRequestDatasetStepsItemConversionWindow",
-}) as any as S.Schema<PostFunnelExplorationRequestDatasetStepsItemConversionWindow>;
+export const PostFunnelExplorationRequestDatasetStepsItemConversionWindow =
+  PostFactMetricRequestFunnelSettingsStepsItemConversionWindow as any as S.Schema<PostFunnelExplorationRequestDatasetStepsItemConversionWindow>;
 
 export interface PostFunnelExplorationRequestDatasetStepsItem {
   name: string;
@@ -37883,17 +36848,7 @@ export interface PostFunnelExplorationResponseExplorationResultRowsItemJourneyCa
   count: number;
 }
 export const PostFunnelExplorationResponseExplorationResultRowsItemJourneyCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      kind: S.String,
-      direction: PostFunnelExplorationResponseExplorationResultRowsItemJourneyCase1Direction,
-      stepIndex: S.Number,
-      value: S.String,
-      count: S.Number,
-    }),
-  ).annotate({
-    identifier: "PostFunnelExplorationResponseExplorationResultRowsItemJourneyCase1",
-  }) as any as S.Schema<PostFunnelExplorationResponseExplorationResultRowsItemJourneyCase1>;
+  PostDataSourceExplorationResponseExplorationResultRowsItemJourneyCase1 as any as S.Schema<PostFunnelExplorationResponseExplorationResultRowsItemJourneyCase1>;
 
 export type PostFunnelExplorationResponseExplorationResultRowsItemJourney =
   | PostFunnelExplorationResponseExplorationResultRowsItemJourneyCase0
@@ -37966,16 +36921,7 @@ export interface PostFunnelExplorationResponseExplorationConfigDimensionsItemCas
   dateGranularity: PostFunnelExplorationResponseExplorationConfigDimensionsItemCase0DateGranularity;
 }
 export const PostFunnelExplorationResponseExplorationConfigDimensionsItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dimensionType: S.String,
-      column: S.NullOr(S.String),
-      dateGranularity:
-        PostFunnelExplorationResponseExplorationConfigDimensionsItemCase0DateGranularity,
-    }),
-  ).annotate({
-    identifier: "PostFunnelExplorationResponseExplorationConfigDimensionsItemCase0",
-  }) as any as S.Schema<PostFunnelExplorationResponseExplorationConfigDimensionsItemCase0>;
+  CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase0 as any as S.Schema<PostFunnelExplorationResponseExplorationConfigDimensionsItemCase0>;
 
 export type PostFunnelExplorationResponseExplorationConfigDimensionsItemCase1 =
   CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase1;
@@ -38142,19 +37088,8 @@ export interface PostFunnelExplorationResponseExplorationConfigDateRange {
   startDate?: string | null;
   endDate?: string | null;
 }
-export const PostFunnelExplorationResponseExplorationConfigDateRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    predefined: PostFunnelExplorationResponseExplorationConfigDateRangePredefined,
-    lookbackValue: S.optional(S.NullOr(S.Number)),
-    lookbackUnit: S.optional(
-      S.NullOr(PostFunnelExplorationResponseExplorationConfigDateRangeLookbackUnit),
-    ),
-    startDate: S.optional(S.NullOr(S.String)),
-    endDate: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "PostFunnelExplorationResponseExplorationConfigDateRange",
-}) as any as S.Schema<PostFunnelExplorationResponseExplorationConfigDateRange>;
+export const PostFunnelExplorationResponseExplorationConfigDateRange =
+  CreateDashboardV2RequestComparisonPreviousTimeFrame as any as S.Schema<PostFunnelExplorationResponseExplorationConfigDateRange>;
 
 export type PostFunnelExplorationResponseExplorationConfigShowAs = "total" | "per_unit";
 export const PostFunnelExplorationResponseExplorationConfigShowAs = S.String;
@@ -38234,14 +37169,7 @@ export interface PostFunnelExplorationResponseExplorationConfigDatasetStepsItemC
   value: number;
 }
 export const PostFunnelExplorationResponseExplorationConfigDatasetStepsItemConversionWindow =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      unit: PostFunnelExplorationResponseExplorationConfigDatasetStepsItemConversionWindowUnit,
-      value: S.Number,
-    }),
-  ).annotate({
-    identifier: "PostFunnelExplorationResponseExplorationConfigDatasetStepsItemConversionWindow",
-  }) as any as S.Schema<PostFunnelExplorationResponseExplorationConfigDatasetStepsItemConversionWindow>;
+  CreateDashboardV2RequestBlocksItemCase15ConfigDatasetStepsItemConversionWindow as any as S.Schema<PostFunnelExplorationResponseExplorationConfigDatasetStepsItemConversionWindow>;
 
 export interface PostFunnelExplorationResponseExplorationConfigDatasetStepsItem {
   name: string;
@@ -38385,15 +37313,8 @@ export interface PostJourneyExplorationRequestDimensionsItemCase0 {
   column: string | null;
   dateGranularity: PostJourneyExplorationRequestDimensionsItemCase0DateGranularity | (string & {});
 }
-export const PostJourneyExplorationRequestDimensionsItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dimensionType: S.String,
-    column: S.NullOr(S.String),
-    dateGranularity: PostJourneyExplorationRequestDimensionsItemCase0DateGranularity,
-  }),
-).annotate({
-  identifier: "PostJourneyExplorationRequestDimensionsItemCase0",
-}) as any as S.Schema<PostJourneyExplorationRequestDimensionsItemCase0>;
+export const PostJourneyExplorationRequestDimensionsItemCase0 =
+  DashboardBlocksItemCase12ConfigDimensionsItemCase0 as any as S.Schema<PostJourneyExplorationRequestDimensionsItemCase0>;
 
 export type PostJourneyExplorationRequestDimensionsItemCase1 =
   CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase1;
@@ -38552,17 +37473,8 @@ export interface PostJourneyExplorationRequestDateRange {
   startDate?: string | null;
   endDate?: string | null;
 }
-export const PostJourneyExplorationRequestDateRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    predefined: PostJourneyExplorationRequestDateRangePredefined,
-    lookbackValue: S.optional(S.NullOr(S.Number)),
-    lookbackUnit: S.optional(S.NullOr(PostJourneyExplorationRequestDateRangeLookbackUnit)),
-    startDate: S.optional(S.NullOr(S.String)),
-    endDate: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "PostJourneyExplorationRequestDateRange",
-}) as any as S.Schema<PostJourneyExplorationRequestDateRange>;
+export const PostJourneyExplorationRequestDateRange =
+  CreateDashboardV2RequestGlobalControlsDateRange as any as S.Schema<PostJourneyExplorationRequestDateRange>;
 
 export type PostJourneyExplorationRequestShowAs = "total" | "per_unit";
 export const PostJourneyExplorationRequestShowAs = S.String;
@@ -38794,17 +37706,7 @@ export interface PostJourneyExplorationResponseExplorationResultRowsItemJourneyC
   count: number;
 }
 export const PostJourneyExplorationResponseExplorationResultRowsItemJourneyCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      kind: S.String,
-      direction: PostJourneyExplorationResponseExplorationResultRowsItemJourneyCase1Direction,
-      stepIndex: S.Number,
-      value: S.String,
-      count: S.Number,
-    }),
-  ).annotate({
-    identifier: "PostJourneyExplorationResponseExplorationResultRowsItemJourneyCase1",
-  }) as any as S.Schema<PostJourneyExplorationResponseExplorationResultRowsItemJourneyCase1>;
+  PostDataSourceExplorationResponseExplorationResultRowsItemJourneyCase1 as any as S.Schema<PostJourneyExplorationResponseExplorationResultRowsItemJourneyCase1>;
 
 export type PostJourneyExplorationResponseExplorationResultRowsItemJourney =
   | PostJourneyExplorationResponseExplorationResultRowsItemJourneyCase0
@@ -38877,16 +37779,7 @@ export interface PostJourneyExplorationResponseExplorationConfigDimensionsItemCa
   dateGranularity: PostJourneyExplorationResponseExplorationConfigDimensionsItemCase0DateGranularity;
 }
 export const PostJourneyExplorationResponseExplorationConfigDimensionsItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dimensionType: S.String,
-      column: S.NullOr(S.String),
-      dateGranularity:
-        PostJourneyExplorationResponseExplorationConfigDimensionsItemCase0DateGranularity,
-    }),
-  ).annotate({
-    identifier: "PostJourneyExplorationResponseExplorationConfigDimensionsItemCase0",
-  }) as any as S.Schema<PostJourneyExplorationResponseExplorationConfigDimensionsItemCase0>;
+  CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase0 as any as S.Schema<PostJourneyExplorationResponseExplorationConfigDimensionsItemCase0>;
 
 export type PostJourneyExplorationResponseExplorationConfigDimensionsItemCase1 =
   CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase1;
@@ -39053,20 +37946,8 @@ export interface PostJourneyExplorationResponseExplorationConfigDateRange {
   startDate?: string | null;
   endDate?: string | null;
 }
-export const PostJourneyExplorationResponseExplorationConfigDateRange = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      predefined: PostJourneyExplorationResponseExplorationConfigDateRangePredefined,
-      lookbackValue: S.optional(S.NullOr(S.Number)),
-      lookbackUnit: S.optional(
-        S.NullOr(PostJourneyExplorationResponseExplorationConfigDateRangeLookbackUnit),
-      ),
-      startDate: S.optional(S.NullOr(S.String)),
-      endDate: S.optional(S.NullOr(S.String)),
-    }),
-).annotate({
-  identifier: "PostJourneyExplorationResponseExplorationConfigDateRange",
-}) as any as S.Schema<PostJourneyExplorationResponseExplorationConfigDateRange>;
+export const PostJourneyExplorationResponseExplorationConfigDateRange =
+  PostDataSourceExplorationResponseExplorationConfigDateRange as any as S.Schema<PostJourneyExplorationResponseExplorationConfigDateRange>;
 
 export type PostJourneyExplorationResponseExplorationConfigShowAs = "total" | "per_unit";
 export const PostJourneyExplorationResponseExplorationConfigShowAs = S.String;
@@ -39364,18 +38245,8 @@ export interface PostMetricRequestBehaviorWindowSettings {
   windowValue?: number;
   windowUnit?: PostMetricRequestBehaviorWindowSettingsWindowUnit | (string & {});
 }
-export const PostMetricRequestBehaviorWindowSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: PostMetricRequestBehaviorWindowSettingsType,
-    delayHours: S.optional(S.Number),
-    delayValue: S.optional(S.Number),
-    delayUnit: S.optional(PostMetricRequestBehaviorWindowSettingsDelayUnit),
-    windowValue: S.optional(S.Number),
-    windowUnit: S.optional(PostMetricRequestBehaviorWindowSettingsWindowUnit),
-  }),
-).annotate({
-  identifier: "PostMetricRequestBehaviorWindowSettings",
-}) as any as S.Schema<PostMetricRequestBehaviorWindowSettings>;
+export const PostMetricRequestBehaviorWindowSettings =
+  PostFactMetricRequestWindowSettings as any as S.Schema<PostMetricRequestBehaviorWindowSettings>;
 
 /** Controls the bayesian prior for the metric. If omitted, organization defaults will be used. */
 export type PostMetricRequestBehaviorPriorSettings =
@@ -39586,15 +38457,8 @@ export interface PostMetricExplorationRequestDimensionsItemCase0 {
   column: string | null;
   dateGranularity: PostMetricExplorationRequestDimensionsItemCase0DateGranularity | (string & {});
 }
-export const PostMetricExplorationRequestDimensionsItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dimensionType: S.String,
-    column: S.NullOr(S.String),
-    dateGranularity: PostMetricExplorationRequestDimensionsItemCase0DateGranularity,
-  }),
-).annotate({
-  identifier: "PostMetricExplorationRequestDimensionsItemCase0",
-}) as any as S.Schema<PostMetricExplorationRequestDimensionsItemCase0>;
+export const PostMetricExplorationRequestDimensionsItemCase0 =
+  DashboardBlocksItemCase12ConfigDimensionsItemCase0 as any as S.Schema<PostMetricExplorationRequestDimensionsItemCase0>;
 
 export type PostMetricExplorationRequestDimensionsItemCase1 =
   CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase1;
@@ -39753,17 +38617,8 @@ export interface PostMetricExplorationRequestDateRange {
   startDate?: string | null;
   endDate?: string | null;
 }
-export const PostMetricExplorationRequestDateRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    predefined: PostMetricExplorationRequestDateRangePredefined,
-    lookbackValue: S.optional(S.NullOr(S.Number)),
-    lookbackUnit: S.optional(S.NullOr(PostMetricExplorationRequestDateRangeLookbackUnit)),
-    startDate: S.optional(S.NullOr(S.String)),
-    endDate: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "PostMetricExplorationRequestDateRange",
-}) as any as S.Schema<PostMetricExplorationRequestDateRange>;
+export const PostMetricExplorationRequestDateRange =
+  CreateDashboardV2RequestGlobalControlsDateRange as any as S.Schema<PostMetricExplorationRequestDateRange>;
 
 export type PostMetricExplorationRequestShowAs = "total" | "per_unit";
 export const PostMetricExplorationRequestShowAs = S.String;
@@ -39963,17 +38818,7 @@ export interface PostMetricExplorationResponseExplorationResultRowsItemJourneyCa
   count: number;
 }
 export const PostMetricExplorationResponseExplorationResultRowsItemJourneyCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      kind: S.String,
-      direction: PostMetricExplorationResponseExplorationResultRowsItemJourneyCase1Direction,
-      stepIndex: S.Number,
-      value: S.String,
-      count: S.Number,
-    }),
-  ).annotate({
-    identifier: "PostMetricExplorationResponseExplorationResultRowsItemJourneyCase1",
-  }) as any as S.Schema<PostMetricExplorationResponseExplorationResultRowsItemJourneyCase1>;
+  PostDataSourceExplorationResponseExplorationResultRowsItemJourneyCase1 as any as S.Schema<PostMetricExplorationResponseExplorationResultRowsItemJourneyCase1>;
 
 export type PostMetricExplorationResponseExplorationResultRowsItemJourney =
   | PostMetricExplorationResponseExplorationResultRowsItemJourneyCase0
@@ -40046,16 +38891,7 @@ export interface PostMetricExplorationResponseExplorationConfigDimensionsItemCas
   dateGranularity: PostMetricExplorationResponseExplorationConfigDimensionsItemCase0DateGranularity;
 }
 export const PostMetricExplorationResponseExplorationConfigDimensionsItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dimensionType: S.String,
-      column: S.NullOr(S.String),
-      dateGranularity:
-        PostMetricExplorationResponseExplorationConfigDimensionsItemCase0DateGranularity,
-    }),
-  ).annotate({
-    identifier: "PostMetricExplorationResponseExplorationConfigDimensionsItemCase0",
-  }) as any as S.Schema<PostMetricExplorationResponseExplorationConfigDimensionsItemCase0>;
+  CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase0 as any as S.Schema<PostMetricExplorationResponseExplorationConfigDimensionsItemCase0>;
 
 export type PostMetricExplorationResponseExplorationConfigDimensionsItemCase1 =
   CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase1;
@@ -40222,19 +39058,8 @@ export interface PostMetricExplorationResponseExplorationConfigDateRange {
   startDate?: string | null;
   endDate?: string | null;
 }
-export const PostMetricExplorationResponseExplorationConfigDateRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    predefined: PostMetricExplorationResponseExplorationConfigDateRangePredefined,
-    lookbackValue: S.optional(S.NullOr(S.Number)),
-    lookbackUnit: S.optional(
-      S.NullOr(PostMetricExplorationResponseExplorationConfigDateRangeLookbackUnit),
-    ),
-    startDate: S.optional(S.NullOr(S.String)),
-    endDate: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "PostMetricExplorationResponseExplorationConfigDateRange",
-}) as any as S.Schema<PostMetricExplorationResponseExplorationConfigDateRange>;
+export const PostMetricExplorationResponseExplorationConfigDateRange =
+  CreateDashboardV2RequestComparisonPreviousTimeFrame as any as S.Schema<PostMetricExplorationResponseExplorationConfigDateRange>;
 
 export type PostMetricExplorationResponseExplorationConfigShowAs = "total" | "per_unit";
 export const PostMetricExplorationResponseExplorationConfigShowAs = S.String;
@@ -40435,15 +39260,8 @@ export interface PostSqlExplorationRequestDimensionsItemCase0 {
   column: string | null;
   dateGranularity: PostSqlExplorationRequestDimensionsItemCase0DateGranularity | (string & {});
 }
-export const PostSqlExplorationRequestDimensionsItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dimensionType: S.String,
-    column: S.NullOr(S.String),
-    dateGranularity: PostSqlExplorationRequestDimensionsItemCase0DateGranularity,
-  }),
-).annotate({
-  identifier: "PostSqlExplorationRequestDimensionsItemCase0",
-}) as any as S.Schema<PostSqlExplorationRequestDimensionsItemCase0>;
+export const PostSqlExplorationRequestDimensionsItemCase0 =
+  DashboardBlocksItemCase12ConfigDimensionsItemCase0 as any as S.Schema<PostSqlExplorationRequestDimensionsItemCase0>;
 
 export type PostSqlExplorationRequestDimensionsItemCase1 =
   CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase1;
@@ -40600,17 +39418,8 @@ export interface PostSqlExplorationRequestDateRange {
   startDate?: string | null;
   endDate?: string | null;
 }
-export const PostSqlExplorationRequestDateRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    predefined: PostSqlExplorationRequestDateRangePredefined,
-    lookbackValue: S.optional(S.NullOr(S.Number)),
-    lookbackUnit: S.optional(S.NullOr(PostSqlExplorationRequestDateRangeLookbackUnit)),
-    startDate: S.optional(S.NullOr(S.String)),
-    endDate: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "PostSqlExplorationRequestDateRange",
-}) as any as S.Schema<PostSqlExplorationRequestDateRange>;
+export const PostSqlExplorationRequestDateRange =
+  CreateDashboardV2RequestGlobalControlsDateRange as any as S.Schema<PostSqlExplorationRequestDateRange>;
 
 export type PostSqlExplorationRequestShowAs = "total" | "per_unit";
 export const PostSqlExplorationRequestShowAs = S.String;
@@ -40631,10 +39440,8 @@ export const PostSqlExplorationRequestDatasetColumnTypesValue = S.String;
 export type PostSqlExplorationRequestDatasetColumnTypesMap = {
   [key: string]: PostSqlExplorationRequestDatasetColumnTypesValue | (string & {}) | undefined;
 };
-export const PostSqlExplorationRequestDatasetColumnTypesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  PostSqlExplorationRequestDatasetColumnTypesValue,
-) as any as S.Schema<PostSqlExplorationRequestDatasetColumnTypesMap>;
+export const PostSqlExplorationRequestDatasetColumnTypesMap =
+  CreateConfigRevisionRebaseRequestConflictResolutionsMap as any as S.Schema<PostSqlExplorationRequestDatasetColumnTypesMap>;
 
 export type PostSqlExplorationRequestDatasetValuesItemRowFiltersItemOperator =
   | "="
@@ -40841,17 +39648,7 @@ export interface PostSqlExplorationResponseExplorationResultRowsItemJourneyCase1
   count: number;
 }
 export const PostSqlExplorationResponseExplorationResultRowsItemJourneyCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      kind: S.String,
-      direction: PostSqlExplorationResponseExplorationResultRowsItemJourneyCase1Direction,
-      stepIndex: S.Number,
-      value: S.String,
-      count: S.Number,
-    }),
-  ).annotate({
-    identifier: "PostSqlExplorationResponseExplorationResultRowsItemJourneyCase1",
-  }) as any as S.Schema<PostSqlExplorationResponseExplorationResultRowsItemJourneyCase1>;
+  PostDataSourceExplorationResponseExplorationResultRowsItemJourneyCase1 as any as S.Schema<PostSqlExplorationResponseExplorationResultRowsItemJourneyCase1>;
 
 export type PostSqlExplorationResponseExplorationResultRowsItemJourney =
   | PostSqlExplorationResponseExplorationResultRowsItemJourneyCase0
@@ -40924,16 +39721,7 @@ export interface PostSqlExplorationResponseExplorationConfigDimensionsItemCase0 
   dateGranularity: PostSqlExplorationResponseExplorationConfigDimensionsItemCase0DateGranularity;
 }
 export const PostSqlExplorationResponseExplorationConfigDimensionsItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dimensionType: S.String,
-      column: S.NullOr(S.String),
-      dateGranularity:
-        PostSqlExplorationResponseExplorationConfigDimensionsItemCase0DateGranularity,
-    }),
-  ).annotate({
-    identifier: "PostSqlExplorationResponseExplorationConfigDimensionsItemCase0",
-  }) as any as S.Schema<PostSqlExplorationResponseExplorationConfigDimensionsItemCase0>;
+  CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase0 as any as S.Schema<PostSqlExplorationResponseExplorationConfigDimensionsItemCase0>;
 
 export type PostSqlExplorationResponseExplorationConfigDimensionsItemCase1 =
   CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase1;
@@ -41099,19 +39887,8 @@ export interface PostSqlExplorationResponseExplorationConfigDateRange {
   startDate?: string | null;
   endDate?: string | null;
 }
-export const PostSqlExplorationResponseExplorationConfigDateRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    predefined: PostSqlExplorationResponseExplorationConfigDateRangePredefined,
-    lookbackValue: S.optional(S.NullOr(S.Number)),
-    lookbackUnit: S.optional(
-      S.NullOr(PostSqlExplorationResponseExplorationConfigDateRangeLookbackUnit),
-    ),
-    startDate: S.optional(S.NullOr(S.String)),
-    endDate: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "PostSqlExplorationResponseExplorationConfigDateRange",
-}) as any as S.Schema<PostSqlExplorationResponseExplorationConfigDateRange>;
+export const PostSqlExplorationResponseExplorationConfigDateRange =
+  CreateDashboardV2RequestComparisonPreviousTimeFrame as any as S.Schema<PostSqlExplorationResponseExplorationConfigDateRange>;
 
 export type PostSqlExplorationResponseExplorationConfigShowAs = "total" | "per_unit";
 export const PostSqlExplorationResponseExplorationConfigShowAs = S.String;
@@ -41133,10 +39910,7 @@ export type PostSqlExplorationResponseExplorationConfigDatasetColumnTypesMap = {
   [key: string]: PostSqlExplorationResponseExplorationConfigDatasetColumnTypesValue | undefined;
 };
 export const PostSqlExplorationResponseExplorationConfigDatasetColumnTypesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    PostSqlExplorationResponseExplorationConfigDatasetColumnTypesValue,
-  ) as any as S.Schema<PostSqlExplorationResponseExplorationConfigDatasetColumnTypesMap>;
+  CreateDashboardV2RequestBlocksItemCase14ConfigDatasetColumnTypesMap as any as S.Schema<PostSqlExplorationResponseExplorationConfigDatasetColumnTypesMap>;
 
 export type PostSqlExplorationResponseExplorationConfigDatasetValuesItemRowFiltersItemOperator =
   | "="
@@ -41394,24 +40168,13 @@ export interface PostVisualChangeRequestDomMutationsItem {
   parentSelector?: string;
   insertBeforeSelector?: string;
 }
-export const PostVisualChangeRequestDomMutationsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    selector: S.String,
-    action: PostVisualChangeRequestDomMutationsItemAction,
-    attribute: S.String,
-    value: S.optional(S.String),
-    parentSelector: S.optional(S.String),
-    insertBeforeSelector: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PostVisualChangeRequestDomMutationsItem",
-}) as any as S.Schema<PostVisualChangeRequestDomMutationsItem>;
+export const PostVisualChangeRequestDomMutationsItem =
+  VisualChangesetVisualChangesItemDomMutationsItem as any as S.Schema<PostVisualChangeRequestDomMutationsItem>;
 
 export type PostVisualChangeRequestDomMutationsList =
   Array<PostVisualChangeRequestDomMutationsItem>;
-export const PostVisualChangeRequestDomMutationsList = /*@__PURE__*/ S.Array(
-  PostVisualChangeRequestDomMutationsItem,
-) as any as S.Schema<PostVisualChangeRequestDomMutationsList>;
+export const PostVisualChangeRequestDomMutationsList =
+  VisualChangesetVisualChangesItemDomMutationsList as any as S.Schema<PostVisualChangeRequestDomMutationsList>;
 
 export interface PostVisualChangeRequest {
   /** The id of the requested resource */
@@ -41455,22 +40218,14 @@ export interface PostVisualChangesetsRequestUrlPatternsItem {
   type: PostVisualChangesetsRequestUrlPatternsItemType | (string & {});
   pattern: string;
 }
-export const PostVisualChangesetsRequestUrlPatternsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    include: S.optional(S.Boolean),
-    type: PostVisualChangesetsRequestUrlPatternsItemType,
-    pattern: S.String,
-  }),
-).annotate({
-  identifier: "PostVisualChangesetsRequestUrlPatternsItem",
-}) as any as S.Schema<PostVisualChangesetsRequestUrlPatternsItem>;
+export const PostVisualChangesetsRequestUrlPatternsItem =
+  VisualChangesetUrlPatternsItem as any as S.Schema<PostVisualChangesetsRequestUrlPatternsItem>;
 
 /** URL patterns that determine which pages this visual changeset applies to */
 export type PostVisualChangesetsRequestUrlPatternsList =
   Array<PostVisualChangesetsRequestUrlPatternsItem>;
-export const PostVisualChangesetsRequestUrlPatternsList = /*@__PURE__*/ S.Array(
-  PostVisualChangesetsRequestUrlPatternsItem,
-) as any as S.Schema<PostVisualChangesetsRequestUrlPatternsList>;
+export const PostVisualChangesetsRequestUrlPatternsList =
+  VisualChangesetUrlPatternsList as any as S.Schema<PostVisualChangesetsRequestUrlPatternsList>;
 
 export interface PostVisualChangesetsRequest {
   /** The id of the requested resource */
@@ -42317,14 +41072,8 @@ export interface PutExperimentScheduleRequestStopAfter {
   value: number;
   unit: PutExperimentScheduleRequestStopAfterUnit | (string & {});
 }
-export const PutExperimentScheduleRequestStopAfter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.Number,
-    unit: PutExperimentScheduleRequestStopAfterUnit,
-  }),
-).annotate({
-  identifier: "PutExperimentScheduleRequestStopAfter",
-}) as any as S.Schema<PutExperimentScheduleRequestStopAfter>;
+export const PutExperimentScheduleRequestStopAfter =
+  CreateExperimentRequestStatusUpdateScheduleStopAfter as any as S.Schema<PutExperimentScheduleRequestStopAfter>;
 
 export interface PutExperimentScheduleRequest {
   /** The id of the requested resource */
@@ -43995,14 +42744,8 @@ export const PutFeatureRevisionRuleV2RequestRampScheduleLockdownConfigMode = S.S
 export interface PutFeatureRevisionRuleV2RequestRampScheduleLockdownConfig {
   mode: PutFeatureRevisionRuleV2RequestRampScheduleLockdownConfigMode | (string & {});
 }
-export const PutFeatureRevisionRuleV2RequestRampScheduleLockdownConfig = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      mode: PutFeatureRevisionRuleV2RequestRampScheduleLockdownConfigMode,
-    }),
-).annotate({
-  identifier: "PutFeatureRevisionRuleV2RequestRampScheduleLockdownConfig",
-}) as any as S.Schema<PutFeatureRevisionRuleV2RequestRampScheduleLockdownConfig>;
+export const PutFeatureRevisionRuleV2RequestRampScheduleLockdownConfig =
+  PutFeatureRevisionRuleRampScheduleV2RequestLockdownConfig as any as S.Schema<PutFeatureRevisionRuleV2RequestRampScheduleLockdownConfig>;
 
 /** Multi-step ramp schedule for force/rollout rules. Not supported for experiment-ref or safe-rollout rules. Mutually exclusive with `schedule`. */
 export interface PutFeatureRevisionRuleV2RequestRampSchedule {
@@ -44124,15 +42867,8 @@ export interface PutMetricRequestBehaviorCappingSettings {
   /** If true and capping is `percentile`, zeros will be ignored when calculating the percentile. */
   ignoreZeros?: boolean;
 }
-export const PutMetricRequestBehaviorCappingSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.NullOr(PutMetricRequestBehaviorCappingSettingsType),
-    value: S.optional(S.Number),
-    ignoreZeros: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "PutMetricRequestBehaviorCappingSettings",
-}) as any as S.Schema<PutMetricRequestBehaviorCappingSettings>;
+export const PutMetricRequestBehaviorCappingSettings =
+  PostMetricRequestBehaviorCappingSettings as any as S.Schema<PutMetricRequestBehaviorCappingSettings>;
 
 export type PutMetricRequestBehaviorCapping = "absolute" | "percentile";
 export const PutMetricRequestBehaviorCapping = S.String;
@@ -44167,18 +42903,8 @@ export interface PutMetricRequestBehaviorWindowSettings {
   windowValue?: number;
   windowUnit?: PutMetricRequestBehaviorWindowSettingsWindowUnit | (string & {});
 }
-export const PutMetricRequestBehaviorWindowSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: PutMetricRequestBehaviorWindowSettingsType,
-    delayHours: S.optional(S.Number),
-    delayValue: S.optional(S.Number),
-    delayUnit: S.optional(PutMetricRequestBehaviorWindowSettingsDelayUnit),
-    windowValue: S.optional(S.Number),
-    windowUnit: S.optional(PutMetricRequestBehaviorWindowSettingsWindowUnit),
-  }),
-).annotate({
-  identifier: "PutMetricRequestBehaviorWindowSettings",
-}) as any as S.Schema<PutMetricRequestBehaviorWindowSettings>;
+export const PutMetricRequestBehaviorWindowSettings =
+  PostFactMetricRequestWindowSettings as any as S.Schema<PutMetricRequestBehaviorWindowSettings>;
 
 /** Controls the bayesian prior for the metric. If omitted, organization defaults will be used. */
 export type PutMetricRequestBehaviorPriorSettings =
@@ -44548,32 +43274,14 @@ export interface PutReportSettingsRequestMetricOverridesItem {
   regressionAdjustmentEnabled?: boolean;
   regressionAdjustmentDays?: number;
 }
-export const PutReportSettingsRequestMetricOverridesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    windowType: S.optional(PutReportSettingsRequestMetricOverridesItemWindowType),
-    windowHours: S.optional(S.Number),
-    delayHours: S.optional(S.Number),
-    winRisk: S.optional(S.Number),
-    loseRisk: S.optional(S.Number),
-    properPriorOverride: S.optional(S.Boolean),
-    properPriorEnabled: S.optional(S.Boolean),
-    properPriorMean: S.optional(S.Number),
-    properPriorStdDev: S.optional(S.Number),
-    regressionAdjustmentOverride: S.optional(S.Boolean),
-    regressionAdjustmentEnabled: S.optional(S.Boolean),
-    regressionAdjustmentDays: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "PutReportSettingsRequestMetricOverridesItem",
-}) as any as S.Schema<PutReportSettingsRequestMetricOverridesItem>;
+export const PutReportSettingsRequestMetricOverridesItem =
+  CreateReportRequestMetricOverridesItem as any as S.Schema<PutReportSettingsRequestMetricOverridesItem>;
 
 /** Per-metric window, risk, and regression-adjustment overrides */
 export type PutReportSettingsRequestMetricOverridesList =
   Array<PutReportSettingsRequestMetricOverridesItem>;
-export const PutReportSettingsRequestMetricOverridesList = /*@__PURE__*/ S.Array(
-  PutReportSettingsRequestMetricOverridesItem,
-) as any as S.Schema<PutReportSettingsRequestMetricOverridesList>;
+export const PutReportSettingsRequestMetricOverridesList =
+  CreateReportRequestMetricOverridesList as any as S.Schema<PutReportSettingsRequestMetricOverridesList>;
 
 export type PutReportSettingsRequestCustomMetricSlicesItemSlicesItemLevelsList = Array<string>;
 export const PutReportSettingsRequestCustomMetricSlicesItemSlicesItemLevelsList =
@@ -44631,15 +43339,8 @@ export interface PutReportSettingsRequestLookbackOverrideCase1 {
   value: number;
   valueUnit: PutReportSettingsRequestLookbackOverrideCase1ValueUnit | (string & {});
 }
-export const PutReportSettingsRequestLookbackOverrideCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    value: S.Number,
-    valueUnit: PutReportSettingsRequestLookbackOverrideCase1ValueUnit,
-  }),
-).annotate({
-  identifier: "PutReportSettingsRequestLookbackOverrideCase1",
-}) as any as S.Schema<PutReportSettingsRequestLookbackOverrideCase1>;
+export const PutReportSettingsRequestLookbackOverrideCase1 =
+  CreateReportRequestLookbackOverrideCase1 as any as S.Schema<PutReportSettingsRequestLookbackOverrideCase1>;
 
 /** Lookback window when `attributionModel` is `lookbackOverride` */
 export type PutReportSettingsRequestLookbackOverride =
@@ -44985,23 +43686,12 @@ export interface PutVisualChangeRequestDomMutationsItem {
   parentSelector?: string;
   insertBeforeSelector?: string;
 }
-export const PutVisualChangeRequestDomMutationsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    selector: S.String,
-    action: PutVisualChangeRequestDomMutationsItemAction,
-    attribute: S.String,
-    value: S.optional(S.String),
-    parentSelector: S.optional(S.String),
-    insertBeforeSelector: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PutVisualChangeRequestDomMutationsItem",
-}) as any as S.Schema<PutVisualChangeRequestDomMutationsItem>;
+export const PutVisualChangeRequestDomMutationsItem =
+  VisualChangesetVisualChangesItemDomMutationsItem as any as S.Schema<PutVisualChangeRequestDomMutationsItem>;
 
 export type PutVisualChangeRequestDomMutationsList = Array<PutVisualChangeRequestDomMutationsItem>;
-export const PutVisualChangeRequestDomMutationsList = /*@__PURE__*/ S.Array(
-  PutVisualChangeRequestDomMutationsItem,
-) as any as S.Schema<PutVisualChangeRequestDomMutationsList>;
+export const PutVisualChangeRequestDomMutationsList =
+  VisualChangesetVisualChangesItemDomMutationsList as any as S.Schema<PutVisualChangeRequestDomMutationsList>;
 
 export interface PutVisualChangeRequest {
   /** The id of the requested resource */
@@ -45052,22 +43742,14 @@ export interface PutVisualChangesetRequestUrlPatternsItem {
   type: PutVisualChangesetRequestUrlPatternsItemType | (string & {});
   pattern: string;
 }
-export const PutVisualChangesetRequestUrlPatternsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    include: S.optional(S.Boolean),
-    type: PutVisualChangesetRequestUrlPatternsItemType,
-    pattern: S.String,
-  }),
-).annotate({
-  identifier: "PutVisualChangesetRequestUrlPatternsItem",
-}) as any as S.Schema<PutVisualChangesetRequestUrlPatternsItem>;
+export const PutVisualChangesetRequestUrlPatternsItem =
+  VisualChangesetUrlPatternsItem as any as S.Schema<PutVisualChangesetRequestUrlPatternsItem>;
 
 /** URL patterns that determine which pages this visual changeset applies to */
 export type PutVisualChangesetRequestUrlPatternsList =
   Array<PutVisualChangesetRequestUrlPatternsItem>;
-export const PutVisualChangesetRequestUrlPatternsList = /*@__PURE__*/ S.Array(
-  PutVisualChangesetRequestUrlPatternsItem,
-) as any as S.Schema<PutVisualChangesetRequestUrlPatternsList>;
+export const PutVisualChangesetRequestUrlPatternsList =
+  VisualChangesetUrlPatternsList as any as S.Schema<PutVisualChangesetRequestUrlPatternsList>;
 
 export type PutVisualChangesetRequestVisualChangesItemDomMutationsItemAction =
   | "append"
@@ -45433,10 +44115,8 @@ export const RunSqlQueryRequestTableMetadataColumnTypesValue = S.String;
 export type RunSqlQueryRequestTableMetadataColumnTypesMap = {
   [key: string]: RunSqlQueryRequestTableMetadataColumnTypesValue | (string & {}) | undefined;
 };
-export const RunSqlQueryRequestTableMetadataColumnTypesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  RunSqlQueryRequestTableMetadataColumnTypesValue,
-) as any as S.Schema<RunSqlQueryRequestTableMetadataColumnTypesMap>;
+export const RunSqlQueryRequestTableMetadataColumnTypesMap =
+  CreateConfigRevisionRebaseRequestConflictResolutionsMap as any as S.Schema<RunSqlQueryRequestTableMetadataColumnTypesMap>;
 
 /** Table metadata from earlier discovery steps. When provided, the response includes an explorationUrl for viewing results in the product analytics explorer. */
 export interface RunSqlQueryRequestTableMetadata {
@@ -45857,23 +44537,12 @@ export interface Targets {
   /** Feature revision version that activates this ramp; cleared once published */
   activatingRevisionVersion?: number | null;
 }
-export const Targets = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    entityType: TargetsEntityType,
-    entityId: S.String,
-    ruleId: S.optional(S.NullOr(S.String)),
-    environment: S.optional(S.NullOr(S.String)),
-    status: TargetsStatus,
-    activatingRevisionVersion: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({ identifier: "Targets" }) as any as S.Schema<Targets>;
+export const Targets = RampScheduleTargetsItem as any as S.Schema<Targets>;
 
 /** Controlled entity references */
 export type SetAutoUpdateRampScheduleResponseTargetsList = Array<Targets>;
-export const SetAutoUpdateRampScheduleResponseTargetsList = /*@__PURE__*/ S.Array(
-  Targets,
-) as any as S.Schema<SetAutoUpdateRampScheduleResponseTargetsList>;
+export const SetAutoUpdateRampScheduleResponseTargetsList =
+  RampScheduleTargetsList as any as S.Schema<SetAutoUpdateRampScheduleResponseTargetsList>;
 
 export type StartActionsPatchSavedGroupsItemMatch = "all" | "none" | "any";
 export const StartActionsPatchSavedGroupsItemMatch = S.String;
@@ -46306,19 +44975,8 @@ export interface SetAutoUpdateRampScheduleResponseMonitoringStatus {
   /** Whether the step at currentStepIndex has monitoring enabled */
   currentStepMonitored: boolean;
 }
-export const SetAutoUpdateRampScheduleResponseMonitoringStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    safeRolloutId: S.optional(S.NullOr(S.String)),
-    monitoringMode: SetAutoUpdateRampScheduleResponseMonitoringStatusMonitoringMode,
-    autoUpdate: S.Boolean,
-    effectiveAutoUpdate: S.Boolean,
-    blockedReason: S.optional(S.NullOr(S.String)),
-    nextSnapshotAt: S.optional(S.NullOr(S.String)),
-    currentStepMonitored: S.Boolean,
-  }),
-).annotate({
-  identifier: "SetAutoUpdateRampScheduleResponseMonitoringStatus",
-}) as any as S.Schema<SetAutoUpdateRampScheduleResponseMonitoringStatus>;
+export const SetAutoUpdateRampScheduleResponseMonitoringStatus =
+  RampScheduleMonitoringStatus as any as S.Schema<SetAutoUpdateRampScheduleResponseMonitoringStatus>;
 
 export interface SetAutoUpdateRampScheduleResponse {
   /** Unique identifier (rs_ prefix) */
@@ -46565,16 +45223,8 @@ export interface SetMonitoringModeRampScheduleResponseStepApproval {
   /** Surface through which the approval was granted. */
   context: SetMonitoringModeRampScheduleResponseStepApprovalContext;
 }
-export const SetMonitoringModeRampScheduleResponseStepApproval = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    stepIndex: S.Number,
-    approvedAt: S.String,
-    approvedBy: S.String,
-    context: SetMonitoringModeRampScheduleResponseStepApprovalContext,
-  }),
-).annotate({
-  identifier: "SetMonitoringModeRampScheduleResponseStepApproval",
-}) as any as S.Schema<SetMonitoringModeRampScheduleResponseStepApproval>;
+export const SetMonitoringModeRampScheduleResponseStepApproval =
+  SetAutoUpdateRampScheduleResponseStepApproval as any as S.Schema<SetMonitoringModeRampScheduleResponseStepApproval>;
 
 /** User-selected monitoring mode. `auto` schedules snapshots automatically; `manual` requires clicking Update. */
 export type SetMonitoringModeRampScheduleResponseMonitoringStatusMonitoringMode = "auto" | "manual";
@@ -46595,19 +45245,8 @@ export interface SetMonitoringModeRampScheduleResponseMonitoringStatus {
   /** Whether the step at currentStepIndex has monitoring enabled */
   currentStepMonitored: boolean;
 }
-export const SetMonitoringModeRampScheduleResponseMonitoringStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    safeRolloutId: S.optional(S.NullOr(S.String)),
-    monitoringMode: SetMonitoringModeRampScheduleResponseMonitoringStatusMonitoringMode,
-    autoUpdate: S.Boolean,
-    effectiveAutoUpdate: S.Boolean,
-    blockedReason: S.optional(S.NullOr(S.String)),
-    nextSnapshotAt: S.optional(S.NullOr(S.String)),
-    currentStepMonitored: S.Boolean,
-  }),
-).annotate({
-  identifier: "SetMonitoringModeRampScheduleResponseMonitoringStatus",
-}) as any as S.Schema<SetMonitoringModeRampScheduleResponseMonitoringStatus>;
+export const SetMonitoringModeRampScheduleResponseMonitoringStatus =
+  RampScheduleMonitoringStatus as any as S.Schema<SetMonitoringModeRampScheduleResponseMonitoringStatus>;
 
 export interface SetMonitoringModeRampScheduleResponse {
   /** Unique identifier (rs_ prefix) */
@@ -47750,9 +46389,8 @@ export const UpdateCustomFieldRequestSectionsItem = S.String;
 export type UpdateCustomFieldRequestSectionsList = Array<
   UpdateCustomFieldRequestSectionsItem | (string & {})
 >;
-export const UpdateCustomFieldRequestSectionsList = /*@__PURE__*/ S.Array(
-  UpdateCustomFieldRequestSectionsItem,
-) as any as S.Schema<UpdateCustomFieldRequestSectionsList>;
+export const UpdateCustomFieldRequestSectionsList =
+  CreateCustomFieldRequestSectionsList as any as S.Schema<UpdateCustomFieldRequestSectionsList>;
 
 export interface UpdateCustomFieldRequest {
   id: string;
@@ -47895,17 +46533,8 @@ export interface UpdateDashboardRequestGlobalControlsDateRange {
   startDate?: string | null;
   endDate?: string | null;
 }
-export const UpdateDashboardRequestGlobalControlsDateRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    predefined: UpdateDashboardRequestGlobalControlsDateRangePredefined,
-    lookbackValue: S.optional(S.NullOr(S.Number)),
-    lookbackUnit: S.optional(S.NullOr(UpdateDashboardRequestGlobalControlsDateRangeLookbackUnit)),
-    startDate: S.optional(S.NullOr(S.String)),
-    endDate: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "UpdateDashboardRequestGlobalControlsDateRange",
-}) as any as S.Schema<UpdateDashboardRequestGlobalControlsDateRange>;
+export const UpdateDashboardRequestGlobalControlsDateRange =
+  CreateDashboardV2RequestGlobalControlsDateRange as any as S.Schema<UpdateDashboardRequestGlobalControlsDateRange>;
 
 export type UpdateDashboardRequestGlobalControlsDateGranularity =
   | "auto"
@@ -47974,19 +46603,8 @@ export interface UpdateDashboardRequestComparisonPreviousTimeFrame {
   startDate?: string | null;
   endDate?: string | null;
 }
-export const UpdateDashboardRequestComparisonPreviousTimeFrame = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    predefined: UpdateDashboardRequestComparisonPreviousTimeFramePredefined,
-    lookbackValue: S.optional(S.NullOr(S.Number)),
-    lookbackUnit: S.optional(
-      S.NullOr(UpdateDashboardRequestComparisonPreviousTimeFrameLookbackUnit),
-    ),
-    startDate: S.optional(S.NullOr(S.String)),
-    endDate: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "UpdateDashboardRequestComparisonPreviousTimeFrame",
-}) as any as S.Schema<UpdateDashboardRequestComparisonPreviousTimeFrame>;
+export const UpdateDashboardRequestComparisonPreviousTimeFrame =
+  CreateDashboardV2RequestComparisonPreviousTimeFrame as any as S.Schema<UpdateDashboardRequestComparisonPreviousTimeFrame>;
 
 /** Dashboard-wide compare-to-previous-period. Takes precedence over any per-block comparison. */
 export interface UpdateDashboardRequestComparison {
@@ -47994,15 +46612,8 @@ export interface UpdateDashboardRequestComparison {
   mode?: UpdateDashboardRequestComparisonMode | (string & {});
   previousTimeFrame?: UpdateDashboardRequestComparisonPreviousTimeFrame;
 }
-export const UpdateDashboardRequestComparison = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    mode: S.optional(UpdateDashboardRequestComparisonMode),
-    previousTimeFrame: S.optional(UpdateDashboardRequestComparisonPreviousTimeFrame),
-  }),
-).annotate({
-  identifier: "UpdateDashboardRequestComparison",
-}) as any as S.Schema<UpdateDashboardRequestComparison>;
+export const UpdateDashboardRequestComparison =
+  CreateDashboardV2RequestComparison as any as S.Schema<UpdateDashboardRequestComparison>;
 
 export interface UpdateDashboardRequestBlocksItemCase0 {
   id: string;
@@ -48117,9 +46728,8 @@ export const UpdateDashboardRequestBlocksItemCase1Case2ColumnsFilterItem = S.Str
 export type UpdateDashboardRequestBlocksItemCase1Case2ColumnsFilterList = Array<
   UpdateDashboardRequestBlocksItemCase1Case2ColumnsFilterItem | (string & {})
 >;
-export const UpdateDashboardRequestBlocksItemCase1Case2ColumnsFilterList = /*@__PURE__*/ S.Array(
-  UpdateDashboardRequestBlocksItemCase1Case2ColumnsFilterItem,
-) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case2ColumnsFilterList>;
+export const UpdateDashboardRequestBlocksItemCase1Case2ColumnsFilterList =
+  CreateCustomFieldRequestSectionsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case2ColumnsFilterList>;
 
 export type UpdateDashboardRequestBlocksItemCase1Case2SliceTagsFilterList = Array<string>;
 export const UpdateDashboardRequestBlocksItemCase1Case2SliceTagsFilterList =
@@ -48228,20 +46838,8 @@ export interface UpdateDashboardRequestBlocksItemCase1Case3StartDateRange {
   startDate?: string | null;
   endDate?: string | null;
 }
-export const UpdateDashboardRequestBlocksItemCase1Case3StartDateRange = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      predefined: UpdateDashboardRequestBlocksItemCase1Case3StartDateRangePredefined,
-      lookbackValue: S.optional(S.NullOr(S.Number)),
-      lookbackUnit: S.optional(
-        S.NullOr(UpdateDashboardRequestBlocksItemCase1Case3StartDateRangeLookbackUnit),
-      ),
-      startDate: S.optional(S.NullOr(S.String)),
-      endDate: S.optional(S.NullOr(S.String)),
-    }),
-).annotate({
-  identifier: "UpdateDashboardRequestBlocksItemCase1Case3StartDateRange",
-}) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case3StartDateRange>;
+export const UpdateDashboardRequestBlocksItemCase1Case3StartDateRange =
+  PostDataSourceExplorationResponseExplorationConfigDateRange as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case3StartDateRange>;
 
 export type UpdateDashboardRequestBlocksItemCase1Case3EndDateRangePredefined =
   | "today"
@@ -48272,19 +46870,8 @@ export interface UpdateDashboardRequestBlocksItemCase1Case3EndDateRange {
   startDate?: string | null;
   endDate?: string | null;
 }
-export const UpdateDashboardRequestBlocksItemCase1Case3EndDateRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    predefined: UpdateDashboardRequestBlocksItemCase1Case3EndDateRangePredefined,
-    lookbackValue: S.optional(S.NullOr(S.Number)),
-    lookbackUnit: S.optional(
-      S.NullOr(UpdateDashboardRequestBlocksItemCase1Case3EndDateRangeLookbackUnit),
-    ),
-    startDate: S.optional(S.NullOr(S.String)),
-    endDate: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "UpdateDashboardRequestBlocksItemCase1Case3EndDateRange",
-}) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case3EndDateRange>;
+export const UpdateDashboardRequestBlocksItemCase1Case3EndDateRange =
+  CreateDashboardV2RequestComparisonPreviousTimeFrame as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case3EndDateRange>;
 
 export type UpdateDashboardRequestBlocksItemCase1Case3ColumnsItem =
   CreateDashboardV2RequestBlocksItemCase3ColumnsItem;
@@ -48378,19 +46965,8 @@ export interface UpdateDashboardRequestBlocksItemCase1Case4DateRange {
   startDate?: string | null;
   endDate?: string | null;
 }
-export const UpdateDashboardRequestBlocksItemCase1Case4DateRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    predefined: UpdateDashboardRequestBlocksItemCase1Case4DateRangePredefined,
-    lookbackValue: S.optional(S.NullOr(S.Number)),
-    lookbackUnit: S.optional(
-      S.NullOr(UpdateDashboardRequestBlocksItemCase1Case4DateRangeLookbackUnit),
-    ),
-    startDate: S.optional(S.NullOr(S.String)),
-    endDate: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "UpdateDashboardRequestBlocksItemCase1Case4DateRange",
-}) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case4DateRange>;
+export const UpdateDashboardRequestBlocksItemCase1Case4DateRange =
+  CreateDashboardV2RequestComparisonPreviousTimeFrame as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case4DateRange>;
 
 export type UpdateDashboardRequestBlocksItemCase1Case4ProjectsList = Array<string>;
 export const UpdateDashboardRequestBlocksItemCase1Case4ProjectsList =
@@ -48438,36 +47014,15 @@ export interface UpdateDashboardRequestBlocksItemCase1Case4ComparisonPreviousTim
   endDate?: string | null;
 }
 export const UpdateDashboardRequestBlocksItemCase1Case4ComparisonPreviousTimeFrame =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      predefined: UpdateDashboardRequestBlocksItemCase1Case4ComparisonPreviousTimeFramePredefined,
-      lookbackValue: S.optional(S.NullOr(S.Number)),
-      lookbackUnit: S.optional(
-        S.NullOr(UpdateDashboardRequestBlocksItemCase1Case4ComparisonPreviousTimeFrameLookbackUnit),
-      ),
-      startDate: S.optional(S.NullOr(S.String)),
-      endDate: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "UpdateDashboardRequestBlocksItemCase1Case4ComparisonPreviousTimeFrame",
-  }) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case4ComparisonPreviousTimeFrame>;
+  CreateDashboardV2RequestBlocksItemCase4ComparisonPreviousTimeFrame as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case4ComparisonPreviousTimeFrame>;
 
 export interface UpdateDashboardRequestBlocksItemCase1Case4Comparison {
   enabled: boolean;
   mode?: UpdateDashboardRequestBlocksItemCase1Case4ComparisonMode | (string & {});
   previousTimeFrame?: UpdateDashboardRequestBlocksItemCase1Case4ComparisonPreviousTimeFrame;
 }
-export const UpdateDashboardRequestBlocksItemCase1Case4Comparison = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    mode: S.optional(UpdateDashboardRequestBlocksItemCase1Case4ComparisonMode),
-    previousTimeFrame: S.optional(
-      UpdateDashboardRequestBlocksItemCase1Case4ComparisonPreviousTimeFrame,
-    ),
-  }),
-).annotate({
-  identifier: "UpdateDashboardRequestBlocksItemCase1Case4Comparison",
-}) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case4Comparison>;
+export const UpdateDashboardRequestBlocksItemCase1Case4Comparison =
+  CreateDashboardV2RequestBlocksItemCase4Comparison as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case4Comparison>;
 
 export type UpdateDashboardRequestBlocksItemCase1Case4GlobalControlSettings =
   CreateDashboardV2RequestBlocksItemCase3GlobalControlSettings;
@@ -48545,19 +47100,8 @@ export interface UpdateDashboardRequestBlocksItemCase1Case5DateRange {
   startDate?: string | null;
   endDate?: string | null;
 }
-export const UpdateDashboardRequestBlocksItemCase1Case5DateRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    predefined: UpdateDashboardRequestBlocksItemCase1Case5DateRangePredefined,
-    lookbackValue: S.optional(S.NullOr(S.Number)),
-    lookbackUnit: S.optional(
-      S.NullOr(UpdateDashboardRequestBlocksItemCase1Case5DateRangeLookbackUnit),
-    ),
-    startDate: S.optional(S.NullOr(S.String)),
-    endDate: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "UpdateDashboardRequestBlocksItemCase1Case5DateRange",
-}) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case5DateRange>;
+export const UpdateDashboardRequestBlocksItemCase1Case5DateRange =
+  CreateDashboardV2RequestComparisonPreviousTimeFrame as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case5DateRange>;
 
 export type UpdateDashboardRequestBlocksItemCase1Case5ProjectsList = Array<string>;
 export const UpdateDashboardRequestBlocksItemCase1Case5ProjectsList =
@@ -48605,36 +47149,15 @@ export interface UpdateDashboardRequestBlocksItemCase1Case5ComparisonPreviousTim
   endDate?: string | null;
 }
 export const UpdateDashboardRequestBlocksItemCase1Case5ComparisonPreviousTimeFrame =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      predefined: UpdateDashboardRequestBlocksItemCase1Case5ComparisonPreviousTimeFramePredefined,
-      lookbackValue: S.optional(S.NullOr(S.Number)),
-      lookbackUnit: S.optional(
-        S.NullOr(UpdateDashboardRequestBlocksItemCase1Case5ComparisonPreviousTimeFrameLookbackUnit),
-      ),
-      startDate: S.optional(S.NullOr(S.String)),
-      endDate: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "UpdateDashboardRequestBlocksItemCase1Case5ComparisonPreviousTimeFrame",
-  }) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case5ComparisonPreviousTimeFrame>;
+  CreateDashboardV2RequestBlocksItemCase4ComparisonPreviousTimeFrame as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case5ComparisonPreviousTimeFrame>;
 
 export interface UpdateDashboardRequestBlocksItemCase1Case5Comparison {
   enabled: boolean;
   mode?: UpdateDashboardRequestBlocksItemCase1Case5ComparisonMode | (string & {});
   previousTimeFrame?: UpdateDashboardRequestBlocksItemCase1Case5ComparisonPreviousTimeFrame;
 }
-export const UpdateDashboardRequestBlocksItemCase1Case5Comparison = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    mode: S.optional(UpdateDashboardRequestBlocksItemCase1Case5ComparisonMode),
-    previousTimeFrame: S.optional(
-      UpdateDashboardRequestBlocksItemCase1Case5ComparisonPreviousTimeFrame,
-    ),
-  }),
-).annotate({
-  identifier: "UpdateDashboardRequestBlocksItemCase1Case5Comparison",
-}) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case5Comparison>;
+export const UpdateDashboardRequestBlocksItemCase1Case5Comparison =
+  CreateDashboardV2RequestBlocksItemCase4Comparison as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case5Comparison>;
 
 export type UpdateDashboardRequestBlocksItemCase1Case5GlobalControlSettings =
   CreateDashboardV2RequestBlocksItemCase3GlobalControlSettings;
@@ -48712,19 +47235,8 @@ export interface UpdateDashboardRequestBlocksItemCase1Case6DateRange {
   startDate?: string | null;
   endDate?: string | null;
 }
-export const UpdateDashboardRequestBlocksItemCase1Case6DateRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    predefined: UpdateDashboardRequestBlocksItemCase1Case6DateRangePredefined,
-    lookbackValue: S.optional(S.NullOr(S.Number)),
-    lookbackUnit: S.optional(
-      S.NullOr(UpdateDashboardRequestBlocksItemCase1Case6DateRangeLookbackUnit),
-    ),
-    startDate: S.optional(S.NullOr(S.String)),
-    endDate: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "UpdateDashboardRequestBlocksItemCase1Case6DateRange",
-}) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case6DateRange>;
+export const UpdateDashboardRequestBlocksItemCase1Case6DateRange =
+  CreateDashboardV2RequestComparisonPreviousTimeFrame as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case6DateRange>;
 
 export type UpdateDashboardRequestBlocksItemCase1Case6ProjectsList = Array<string>;
 export const UpdateDashboardRequestBlocksItemCase1Case6ProjectsList =
@@ -48772,36 +47284,15 @@ export interface UpdateDashboardRequestBlocksItemCase1Case6ComparisonPreviousTim
   endDate?: string | null;
 }
 export const UpdateDashboardRequestBlocksItemCase1Case6ComparisonPreviousTimeFrame =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      predefined: UpdateDashboardRequestBlocksItemCase1Case6ComparisonPreviousTimeFramePredefined,
-      lookbackValue: S.optional(S.NullOr(S.Number)),
-      lookbackUnit: S.optional(
-        S.NullOr(UpdateDashboardRequestBlocksItemCase1Case6ComparisonPreviousTimeFrameLookbackUnit),
-      ),
-      startDate: S.optional(S.NullOr(S.String)),
-      endDate: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "UpdateDashboardRequestBlocksItemCase1Case6ComparisonPreviousTimeFrame",
-  }) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case6ComparisonPreviousTimeFrame>;
+  CreateDashboardV2RequestBlocksItemCase4ComparisonPreviousTimeFrame as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case6ComparisonPreviousTimeFrame>;
 
 export interface UpdateDashboardRequestBlocksItemCase1Case6Comparison {
   enabled: boolean;
   mode?: UpdateDashboardRequestBlocksItemCase1Case6ComparisonMode | (string & {});
   previousTimeFrame?: UpdateDashboardRequestBlocksItemCase1Case6ComparisonPreviousTimeFrame;
 }
-export const UpdateDashboardRequestBlocksItemCase1Case6Comparison = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    mode: S.optional(UpdateDashboardRequestBlocksItemCase1Case6ComparisonMode),
-    previousTimeFrame: S.optional(
-      UpdateDashboardRequestBlocksItemCase1Case6ComparisonPreviousTimeFrame,
-    ),
-  }),
-).annotate({
-  identifier: "UpdateDashboardRequestBlocksItemCase1Case6Comparison",
-}) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case6Comparison>;
+export const UpdateDashboardRequestBlocksItemCase1Case6Comparison =
+  CreateDashboardV2RequestBlocksItemCase4Comparison as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case6Comparison>;
 
 export type UpdateDashboardRequestBlocksItemCase1Case6GlobalControlSettings =
   CreateDashboardV2RequestBlocksItemCase3GlobalControlSettings;
@@ -48889,9 +47380,8 @@ export const UpdateDashboardRequestBlocksItemCase1Case7ColumnsFilterItem = S.Str
 export type UpdateDashboardRequestBlocksItemCase1Case7ColumnsFilterList = Array<
   UpdateDashboardRequestBlocksItemCase1Case7ColumnsFilterItem | (string & {})
 >;
-export const UpdateDashboardRequestBlocksItemCase1Case7ColumnsFilterList = /*@__PURE__*/ S.Array(
-  UpdateDashboardRequestBlocksItemCase1Case7ColumnsFilterItem,
-) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case7ColumnsFilterList>;
+export const UpdateDashboardRequestBlocksItemCase1Case7ColumnsFilterList =
+  CreateCustomFieldRequestSectionsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case7ColumnsFilterList>;
 
 export type UpdateDashboardRequestBlocksItemCase1Case7MetricTagFilterList = Array<string>;
 export const UpdateDashboardRequestBlocksItemCase1Case7MetricTagFilterList =
@@ -49335,38 +47825,15 @@ export interface UpdateDashboardRequestBlocksItemCase1Case12ComparisonPreviousTi
   endDate?: string | null;
 }
 export const UpdateDashboardRequestBlocksItemCase1Case12ComparisonPreviousTimeFrame =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      predefined: UpdateDashboardRequestBlocksItemCase1Case12ComparisonPreviousTimeFramePredefined,
-      lookbackValue: S.optional(S.NullOr(S.Number)),
-      lookbackUnit: S.optional(
-        S.NullOr(
-          UpdateDashboardRequestBlocksItemCase1Case12ComparisonPreviousTimeFrameLookbackUnit,
-        ),
-      ),
-      startDate: S.optional(S.NullOr(S.String)),
-      endDate: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "UpdateDashboardRequestBlocksItemCase1Case12ComparisonPreviousTimeFrame",
-  }) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case12ComparisonPreviousTimeFrame>;
+  UpdateDashboardRequestBlocksItemCase1Case11ComparisonPreviousTimeFrame as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case12ComparisonPreviousTimeFrame>;
 
 export interface UpdateDashboardRequestBlocksItemCase1Case12Comparison {
   enabled: boolean;
   mode?: UpdateDashboardRequestBlocksItemCase1Case12ComparisonMode | (string & {});
   previousTimeFrame?: UpdateDashboardRequestBlocksItemCase1Case12ComparisonPreviousTimeFrame;
 }
-export const UpdateDashboardRequestBlocksItemCase1Case12Comparison = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    mode: S.optional(UpdateDashboardRequestBlocksItemCase1Case12ComparisonMode),
-    previousTimeFrame: S.optional(
-      UpdateDashboardRequestBlocksItemCase1Case12ComparisonPreviousTimeFrame,
-    ),
-  }),
-).annotate({
-  identifier: "UpdateDashboardRequestBlocksItemCase1Case12Comparison",
-}) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case12Comparison>;
+export const UpdateDashboardRequestBlocksItemCase1Case12Comparison =
+  UpdateDashboardRequestBlocksItemCase1Case11Comparison as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case12Comparison>;
 
 export type UpdateDashboardRequestBlocksItemCase1Case12GlobalControlSettings =
   CreateDashboardV2RequestBlocksItemCase12GlobalControlSettings;
@@ -49391,16 +47858,7 @@ export interface UpdateDashboardRequestBlocksItemCase1Case12ConfigDimensionsItem
     | (string & {});
 }
 export const UpdateDashboardRequestBlocksItemCase1Case12ConfigDimensionsItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dimensionType: S.String,
-      column: S.NullOr(S.String),
-      dateGranularity:
-        UpdateDashboardRequestBlocksItemCase1Case12ConfigDimensionsItemCase0DateGranularity,
-    }),
-  ).annotate({
-    identifier: "UpdateDashboardRequestBlocksItemCase1Case12ConfigDimensionsItemCase0",
-  }) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case12ConfigDimensionsItemCase0>;
+  CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase0 as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case12ConfigDimensionsItemCase0>;
 
 export type UpdateDashboardRequestBlocksItemCase1Case12ConfigDimensionsItemCase1 =
   CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase1;
@@ -49573,20 +48031,8 @@ export interface UpdateDashboardRequestBlocksItemCase1Case12ConfigDateRange {
   startDate?: string | null;
   endDate?: string | null;
 }
-export const UpdateDashboardRequestBlocksItemCase1Case12ConfigDateRange = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      predefined: UpdateDashboardRequestBlocksItemCase1Case12ConfigDateRangePredefined,
-      lookbackValue: S.optional(S.NullOr(S.Number)),
-      lookbackUnit: S.optional(
-        S.NullOr(UpdateDashboardRequestBlocksItemCase1Case12ConfigDateRangeLookbackUnit),
-      ),
-      startDate: S.optional(S.NullOr(S.String)),
-      endDate: S.optional(S.NullOr(S.String)),
-    }),
-).annotate({
-  identifier: "UpdateDashboardRequestBlocksItemCase1Case12ConfigDateRange",
-}) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case12ConfigDateRange>;
+export const UpdateDashboardRequestBlocksItemCase1Case12ConfigDateRange =
+  PostDataSourceExplorationResponseExplorationConfigDateRange as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case12ConfigDateRange>;
 
 export type UpdateDashboardRequestBlocksItemCase1Case12ConfigShowAs = "total" | "per_unit";
 export const UpdateDashboardRequestBlocksItemCase1Case12ConfigShowAs = S.String;
@@ -49809,38 +48255,15 @@ export interface UpdateDashboardRequestBlocksItemCase1Case13ComparisonPreviousTi
   endDate?: string | null;
 }
 export const UpdateDashboardRequestBlocksItemCase1Case13ComparisonPreviousTimeFrame =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      predefined: UpdateDashboardRequestBlocksItemCase1Case13ComparisonPreviousTimeFramePredefined,
-      lookbackValue: S.optional(S.NullOr(S.Number)),
-      lookbackUnit: S.optional(
-        S.NullOr(
-          UpdateDashboardRequestBlocksItemCase1Case13ComparisonPreviousTimeFrameLookbackUnit,
-        ),
-      ),
-      startDate: S.optional(S.NullOr(S.String)),
-      endDate: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "UpdateDashboardRequestBlocksItemCase1Case13ComparisonPreviousTimeFrame",
-  }) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case13ComparisonPreviousTimeFrame>;
+  UpdateDashboardRequestBlocksItemCase1Case11ComparisonPreviousTimeFrame as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case13ComparisonPreviousTimeFrame>;
 
 export interface UpdateDashboardRequestBlocksItemCase1Case13Comparison {
   enabled: boolean;
   mode?: UpdateDashboardRequestBlocksItemCase1Case13ComparisonMode | (string & {});
   previousTimeFrame?: UpdateDashboardRequestBlocksItemCase1Case13ComparisonPreviousTimeFrame;
 }
-export const UpdateDashboardRequestBlocksItemCase1Case13Comparison = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    mode: S.optional(UpdateDashboardRequestBlocksItemCase1Case13ComparisonMode),
-    previousTimeFrame: S.optional(
-      UpdateDashboardRequestBlocksItemCase1Case13ComparisonPreviousTimeFrame,
-    ),
-  }),
-).annotate({
-  identifier: "UpdateDashboardRequestBlocksItemCase1Case13Comparison",
-}) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case13Comparison>;
+export const UpdateDashboardRequestBlocksItemCase1Case13Comparison =
+  UpdateDashboardRequestBlocksItemCase1Case11Comparison as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case13Comparison>;
 
 export type UpdateDashboardRequestBlocksItemCase1Case13GlobalControlSettings =
   CreateDashboardV2RequestBlocksItemCase12GlobalControlSettings;
@@ -49865,16 +48288,7 @@ export interface UpdateDashboardRequestBlocksItemCase1Case13ConfigDimensionsItem
     | (string & {});
 }
 export const UpdateDashboardRequestBlocksItemCase1Case13ConfigDimensionsItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dimensionType: S.String,
-      column: S.NullOr(S.String),
-      dateGranularity:
-        UpdateDashboardRequestBlocksItemCase1Case13ConfigDimensionsItemCase0DateGranularity,
-    }),
-  ).annotate({
-    identifier: "UpdateDashboardRequestBlocksItemCase1Case13ConfigDimensionsItemCase0",
-  }) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case13ConfigDimensionsItemCase0>;
+  CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase0 as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case13ConfigDimensionsItemCase0>;
 
 export type UpdateDashboardRequestBlocksItemCase1Case13ConfigDimensionsItemCase1 =
   CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase1;
@@ -50047,20 +48461,8 @@ export interface UpdateDashboardRequestBlocksItemCase1Case13ConfigDateRange {
   startDate?: string | null;
   endDate?: string | null;
 }
-export const UpdateDashboardRequestBlocksItemCase1Case13ConfigDateRange = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      predefined: UpdateDashboardRequestBlocksItemCase1Case13ConfigDateRangePredefined,
-      lookbackValue: S.optional(S.NullOr(S.Number)),
-      lookbackUnit: S.optional(
-        S.NullOr(UpdateDashboardRequestBlocksItemCase1Case13ConfigDateRangeLookbackUnit),
-      ),
-      startDate: S.optional(S.NullOr(S.String)),
-      endDate: S.optional(S.NullOr(S.String)),
-    }),
-).annotate({
-  identifier: "UpdateDashboardRequestBlocksItemCase1Case13ConfigDateRange",
-}) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case13ConfigDateRange>;
+export const UpdateDashboardRequestBlocksItemCase1Case13ConfigDateRange =
+  PostDataSourceExplorationResponseExplorationConfigDateRange as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case13ConfigDateRange>;
 
 export type UpdateDashboardRequestBlocksItemCase1Case13ConfigShowAs = "total" | "per_unit";
 export const UpdateDashboardRequestBlocksItemCase1Case13ConfigShowAs = S.String;
@@ -50293,38 +48695,15 @@ export interface UpdateDashboardRequestBlocksItemCase1Case14ComparisonPreviousTi
   endDate?: string | null;
 }
 export const UpdateDashboardRequestBlocksItemCase1Case14ComparisonPreviousTimeFrame =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      predefined: UpdateDashboardRequestBlocksItemCase1Case14ComparisonPreviousTimeFramePredefined,
-      lookbackValue: S.optional(S.NullOr(S.Number)),
-      lookbackUnit: S.optional(
-        S.NullOr(
-          UpdateDashboardRequestBlocksItemCase1Case14ComparisonPreviousTimeFrameLookbackUnit,
-        ),
-      ),
-      startDate: S.optional(S.NullOr(S.String)),
-      endDate: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "UpdateDashboardRequestBlocksItemCase1Case14ComparisonPreviousTimeFrame",
-  }) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case14ComparisonPreviousTimeFrame>;
+  UpdateDashboardRequestBlocksItemCase1Case11ComparisonPreviousTimeFrame as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case14ComparisonPreviousTimeFrame>;
 
 export interface UpdateDashboardRequestBlocksItemCase1Case14Comparison {
   enabled: boolean;
   mode?: UpdateDashboardRequestBlocksItemCase1Case14ComparisonMode | (string & {});
   previousTimeFrame?: UpdateDashboardRequestBlocksItemCase1Case14ComparisonPreviousTimeFrame;
 }
-export const UpdateDashboardRequestBlocksItemCase1Case14Comparison = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    mode: S.optional(UpdateDashboardRequestBlocksItemCase1Case14ComparisonMode),
-    previousTimeFrame: S.optional(
-      UpdateDashboardRequestBlocksItemCase1Case14ComparisonPreviousTimeFrame,
-    ),
-  }),
-).annotate({
-  identifier: "UpdateDashboardRequestBlocksItemCase1Case14Comparison",
-}) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case14Comparison>;
+export const UpdateDashboardRequestBlocksItemCase1Case14Comparison =
+  UpdateDashboardRequestBlocksItemCase1Case11Comparison as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case14Comparison>;
 
 export type UpdateDashboardRequestBlocksItemCase1Case14GlobalControlSettings =
   CreateDashboardV2RequestBlocksItemCase12GlobalControlSettings;
@@ -50349,16 +48728,7 @@ export interface UpdateDashboardRequestBlocksItemCase1Case14ConfigDimensionsItem
     | (string & {});
 }
 export const UpdateDashboardRequestBlocksItemCase1Case14ConfigDimensionsItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dimensionType: S.String,
-      column: S.NullOr(S.String),
-      dateGranularity:
-        UpdateDashboardRequestBlocksItemCase1Case14ConfigDimensionsItemCase0DateGranularity,
-    }),
-  ).annotate({
-    identifier: "UpdateDashboardRequestBlocksItemCase1Case14ConfigDimensionsItemCase0",
-  }) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case14ConfigDimensionsItemCase0>;
+  CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase0 as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case14ConfigDimensionsItemCase0>;
 
 export type UpdateDashboardRequestBlocksItemCase1Case14ConfigDimensionsItemCase1 =
   CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase1;
@@ -50531,20 +48901,8 @@ export interface UpdateDashboardRequestBlocksItemCase1Case14ConfigDateRange {
   startDate?: string | null;
   endDate?: string | null;
 }
-export const UpdateDashboardRequestBlocksItemCase1Case14ConfigDateRange = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      predefined: UpdateDashboardRequestBlocksItemCase1Case14ConfigDateRangePredefined,
-      lookbackValue: S.optional(S.NullOr(S.Number)),
-      lookbackUnit: S.optional(
-        S.NullOr(UpdateDashboardRequestBlocksItemCase1Case14ConfigDateRangeLookbackUnit),
-      ),
-      startDate: S.optional(S.NullOr(S.String)),
-      endDate: S.optional(S.NullOr(S.String)),
-    }),
-).annotate({
-  identifier: "UpdateDashboardRequestBlocksItemCase1Case14ConfigDateRange",
-}) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case14ConfigDateRange>;
+export const UpdateDashboardRequestBlocksItemCase1Case14ConfigDateRange =
+  PostDataSourceExplorationResponseExplorationConfigDateRange as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case14ConfigDateRange>;
 
 export type UpdateDashboardRequestBlocksItemCase1Case14ConfigShowAs = "total" | "per_unit";
 export const UpdateDashboardRequestBlocksItemCase1Case14ConfigShowAs = S.String;
@@ -50569,10 +48927,7 @@ export type UpdateDashboardRequestBlocksItemCase1Case14ConfigDatasetColumnTypesM
     | undefined;
 };
 export const UpdateDashboardRequestBlocksItemCase1Case14ConfigDatasetColumnTypesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    UpdateDashboardRequestBlocksItemCase1Case14ConfigDatasetColumnTypesValue,
-  ) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case14ConfigDatasetColumnTypesMap>;
+  CreateDashboardV2RequestBlocksItemCase14ConfigDatasetColumnTypesMap as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case14ConfigDatasetColumnTypesMap>;
 
 export type UpdateDashboardRequestBlocksItemCase1Case14ConfigDatasetValuesItemRowFiltersItemOperator =
   | "="
@@ -50803,38 +49158,15 @@ export interface UpdateDashboardRequestBlocksItemCase1Case15ComparisonPreviousTi
   endDate?: string | null;
 }
 export const UpdateDashboardRequestBlocksItemCase1Case15ComparisonPreviousTimeFrame =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      predefined: UpdateDashboardRequestBlocksItemCase1Case15ComparisonPreviousTimeFramePredefined,
-      lookbackValue: S.optional(S.NullOr(S.Number)),
-      lookbackUnit: S.optional(
-        S.NullOr(
-          UpdateDashboardRequestBlocksItemCase1Case15ComparisonPreviousTimeFrameLookbackUnit,
-        ),
-      ),
-      startDate: S.optional(S.NullOr(S.String)),
-      endDate: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "UpdateDashboardRequestBlocksItemCase1Case15ComparisonPreviousTimeFrame",
-  }) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case15ComparisonPreviousTimeFrame>;
+  UpdateDashboardRequestBlocksItemCase1Case11ComparisonPreviousTimeFrame as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case15ComparisonPreviousTimeFrame>;
 
 export interface UpdateDashboardRequestBlocksItemCase1Case15Comparison {
   enabled: boolean;
   mode?: UpdateDashboardRequestBlocksItemCase1Case15ComparisonMode | (string & {});
   previousTimeFrame?: UpdateDashboardRequestBlocksItemCase1Case15ComparisonPreviousTimeFrame;
 }
-export const UpdateDashboardRequestBlocksItemCase1Case15Comparison = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    mode: S.optional(UpdateDashboardRequestBlocksItemCase1Case15ComparisonMode),
-    previousTimeFrame: S.optional(
-      UpdateDashboardRequestBlocksItemCase1Case15ComparisonPreviousTimeFrame,
-    ),
-  }),
-).annotate({
-  identifier: "UpdateDashboardRequestBlocksItemCase1Case15Comparison",
-}) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case15Comparison>;
+export const UpdateDashboardRequestBlocksItemCase1Case15Comparison =
+  UpdateDashboardRequestBlocksItemCase1Case11Comparison as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case15Comparison>;
 
 export type UpdateDashboardRequestBlocksItemCase1Case15GlobalControlSettings =
   CreateDashboardV2RequestBlocksItemCase12GlobalControlSettings;
@@ -50859,16 +49191,7 @@ export interface UpdateDashboardRequestBlocksItemCase1Case15ConfigDimensionsItem
     | (string & {});
 }
 export const UpdateDashboardRequestBlocksItemCase1Case15ConfigDimensionsItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dimensionType: S.String,
-      column: S.NullOr(S.String),
-      dateGranularity:
-        UpdateDashboardRequestBlocksItemCase1Case15ConfigDimensionsItemCase0DateGranularity,
-    }),
-  ).annotate({
-    identifier: "UpdateDashboardRequestBlocksItemCase1Case15ConfigDimensionsItemCase0",
-  }) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case15ConfigDimensionsItemCase0>;
+  CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase0 as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case15ConfigDimensionsItemCase0>;
 
 export type UpdateDashboardRequestBlocksItemCase1Case15ConfigDimensionsItemCase1 =
   CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase1;
@@ -51041,20 +49364,8 @@ export interface UpdateDashboardRequestBlocksItemCase1Case15ConfigDateRange {
   startDate?: string | null;
   endDate?: string | null;
 }
-export const UpdateDashboardRequestBlocksItemCase1Case15ConfigDateRange = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      predefined: UpdateDashboardRequestBlocksItemCase1Case15ConfigDateRangePredefined,
-      lookbackValue: S.optional(S.NullOr(S.Number)),
-      lookbackUnit: S.optional(
-        S.NullOr(UpdateDashboardRequestBlocksItemCase1Case15ConfigDateRangeLookbackUnit),
-      ),
-      startDate: S.optional(S.NullOr(S.String)),
-      endDate: S.optional(S.NullOr(S.String)),
-    }),
-).annotate({
-  identifier: "UpdateDashboardRequestBlocksItemCase1Case15ConfigDateRange",
-}) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case15ConfigDateRange>;
+export const UpdateDashboardRequestBlocksItemCase1Case15ConfigDateRange =
+  PostDataSourceExplorationResponseExplorationConfigDateRange as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case15ConfigDateRange>;
 
 export type UpdateDashboardRequestBlocksItemCase1Case15ConfigShowAs = "total" | "per_unit";
 export const UpdateDashboardRequestBlocksItemCase1Case15ConfigShowAs = S.String;
@@ -51138,14 +49449,7 @@ export interface UpdateDashboardRequestBlocksItemCase1Case15ConfigDatasetStepsIt
   value: number;
 }
 export const UpdateDashboardRequestBlocksItemCase1Case15ConfigDatasetStepsItemConversionWindow =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      unit: UpdateDashboardRequestBlocksItemCase1Case15ConfigDatasetStepsItemConversionWindowUnit,
-      value: S.Number,
-    }),
-  ).annotate({
-    identifier: "UpdateDashboardRequestBlocksItemCase1Case15ConfigDatasetStepsItemConversionWindow",
-  }) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case15ConfigDatasetStepsItemConversionWindow>;
+  CreateDashboardV2RequestBlocksItemCase15ConfigDatasetStepsItemConversionWindow as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case15ConfigDatasetStepsItemConversionWindow>;
 
 export interface UpdateDashboardRequestBlocksItemCase1Case15ConfigDatasetStepsItem {
   name: string;
@@ -51314,38 +49618,15 @@ export interface UpdateDashboardRequestBlocksItemCase1Case16ComparisonPreviousTi
   endDate?: string | null;
 }
 export const UpdateDashboardRequestBlocksItemCase1Case16ComparisonPreviousTimeFrame =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      predefined: UpdateDashboardRequestBlocksItemCase1Case16ComparisonPreviousTimeFramePredefined,
-      lookbackValue: S.optional(S.NullOr(S.Number)),
-      lookbackUnit: S.optional(
-        S.NullOr(
-          UpdateDashboardRequestBlocksItemCase1Case16ComparisonPreviousTimeFrameLookbackUnit,
-        ),
-      ),
-      startDate: S.optional(S.NullOr(S.String)),
-      endDate: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "UpdateDashboardRequestBlocksItemCase1Case16ComparisonPreviousTimeFrame",
-  }) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case16ComparisonPreviousTimeFrame>;
+  UpdateDashboardRequestBlocksItemCase1Case11ComparisonPreviousTimeFrame as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case16ComparisonPreviousTimeFrame>;
 
 export interface UpdateDashboardRequestBlocksItemCase1Case16Comparison {
   enabled: boolean;
   mode?: UpdateDashboardRequestBlocksItemCase1Case16ComparisonMode | (string & {});
   previousTimeFrame?: UpdateDashboardRequestBlocksItemCase1Case16ComparisonPreviousTimeFrame;
 }
-export const UpdateDashboardRequestBlocksItemCase1Case16Comparison = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    mode: S.optional(UpdateDashboardRequestBlocksItemCase1Case16ComparisonMode),
-    previousTimeFrame: S.optional(
-      UpdateDashboardRequestBlocksItemCase1Case16ComparisonPreviousTimeFrame,
-    ),
-  }),
-).annotate({
-  identifier: "UpdateDashboardRequestBlocksItemCase1Case16Comparison",
-}) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case16Comparison>;
+export const UpdateDashboardRequestBlocksItemCase1Case16Comparison =
+  UpdateDashboardRequestBlocksItemCase1Case11Comparison as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case16Comparison>;
 
 export type UpdateDashboardRequestBlocksItemCase1Case16GlobalControlSettings =
   CreateDashboardV2RequestBlocksItemCase12GlobalControlSettings;
@@ -51370,16 +49651,7 @@ export interface UpdateDashboardRequestBlocksItemCase1Case16ConfigDimensionsItem
     | (string & {});
 }
 export const UpdateDashboardRequestBlocksItemCase1Case16ConfigDimensionsItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dimensionType: S.String,
-      column: S.NullOr(S.String),
-      dateGranularity:
-        UpdateDashboardRequestBlocksItemCase1Case16ConfigDimensionsItemCase0DateGranularity,
-    }),
-  ).annotate({
-    identifier: "UpdateDashboardRequestBlocksItemCase1Case16ConfigDimensionsItemCase0",
-  }) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case16ConfigDimensionsItemCase0>;
+  CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase0 as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case16ConfigDimensionsItemCase0>;
 
 export type UpdateDashboardRequestBlocksItemCase1Case16ConfigDimensionsItemCase1 =
   CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase1;
@@ -51552,20 +49824,8 @@ export interface UpdateDashboardRequestBlocksItemCase1Case16ConfigDateRange {
   startDate?: string | null;
   endDate?: string | null;
 }
-export const UpdateDashboardRequestBlocksItemCase1Case16ConfigDateRange = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      predefined: UpdateDashboardRequestBlocksItemCase1Case16ConfigDateRangePredefined,
-      lookbackValue: S.optional(S.NullOr(S.Number)),
-      lookbackUnit: S.optional(
-        S.NullOr(UpdateDashboardRequestBlocksItemCase1Case16ConfigDateRangeLookbackUnit),
-      ),
-      startDate: S.optional(S.NullOr(S.String)),
-      endDate: S.optional(S.NullOr(S.String)),
-    }),
-).annotate({
-  identifier: "UpdateDashboardRequestBlocksItemCase1Case16ConfigDateRange",
-}) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case16ConfigDateRange>;
+export const UpdateDashboardRequestBlocksItemCase1Case16ConfigDateRange =
+  PostDataSourceExplorationResponseExplorationConfigDateRange as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case16ConfigDateRange>;
 
 export type UpdateDashboardRequestBlocksItemCase1Case16ConfigShowAs = "total" | "per_unit";
 export const UpdateDashboardRequestBlocksItemCase1Case16ConfigShowAs = S.String;
@@ -51590,10 +49850,7 @@ export type UpdateDashboardRequestBlocksItemCase1Case16ConfigDatasetColumnTypesM
     | undefined;
 };
 export const UpdateDashboardRequestBlocksItemCase1Case16ConfigDatasetColumnTypesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    UpdateDashboardRequestBlocksItemCase1Case16ConfigDatasetColumnTypesValue,
-  ) as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case16ConfigDatasetColumnTypesMap>;
+  CreateDashboardV2RequestBlocksItemCase14ConfigDatasetColumnTypesMap as any as S.Schema<UpdateDashboardRequestBlocksItemCase1Case16ConfigDatasetColumnTypesMap>;
 
 export type UpdateDashboardRequestBlocksItemCase1Case16ConfigDatasetValuesItemRowFiltersItemOperator =
   | "="
@@ -51868,9 +50125,8 @@ export const UpdateDashboardRequestBlocksItemCase2Case2ColumnsFilterItem = S.Str
 export type UpdateDashboardRequestBlocksItemCase2Case2ColumnsFilterList = Array<
   UpdateDashboardRequestBlocksItemCase2Case2ColumnsFilterItem | (string & {})
 >;
-export const UpdateDashboardRequestBlocksItemCase2Case2ColumnsFilterList = /*@__PURE__*/ S.Array(
-  UpdateDashboardRequestBlocksItemCase2Case2ColumnsFilterItem,
-) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case2ColumnsFilterList>;
+export const UpdateDashboardRequestBlocksItemCase2Case2ColumnsFilterList =
+  CreateCustomFieldRequestSectionsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case2ColumnsFilterList>;
 
 export type UpdateDashboardRequestBlocksItemCase2Case2SliceTagsFilterList = Array<string>;
 export const UpdateDashboardRequestBlocksItemCase2Case2SliceTagsFilterList =
@@ -51973,20 +50229,8 @@ export interface UpdateDashboardRequestBlocksItemCase2Case3StartDateRange {
   startDate?: string | null;
   endDate?: string | null;
 }
-export const UpdateDashboardRequestBlocksItemCase2Case3StartDateRange = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      predefined: UpdateDashboardRequestBlocksItemCase2Case3StartDateRangePredefined,
-      lookbackValue: S.optional(S.NullOr(S.Number)),
-      lookbackUnit: S.optional(
-        S.NullOr(UpdateDashboardRequestBlocksItemCase2Case3StartDateRangeLookbackUnit),
-      ),
-      startDate: S.optional(S.NullOr(S.String)),
-      endDate: S.optional(S.NullOr(S.String)),
-    }),
-).annotate({
-  identifier: "UpdateDashboardRequestBlocksItemCase2Case3StartDateRange",
-}) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case3StartDateRange>;
+export const UpdateDashboardRequestBlocksItemCase2Case3StartDateRange =
+  PostDataSourceExplorationResponseExplorationConfigDateRange as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case3StartDateRange>;
 
 export type UpdateDashboardRequestBlocksItemCase2Case3EndDateRangePredefined =
   | "today"
@@ -52017,19 +50261,8 @@ export interface UpdateDashboardRequestBlocksItemCase2Case3EndDateRange {
   startDate?: string | null;
   endDate?: string | null;
 }
-export const UpdateDashboardRequestBlocksItemCase2Case3EndDateRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    predefined: UpdateDashboardRequestBlocksItemCase2Case3EndDateRangePredefined,
-    lookbackValue: S.optional(S.NullOr(S.Number)),
-    lookbackUnit: S.optional(
-      S.NullOr(UpdateDashboardRequestBlocksItemCase2Case3EndDateRangeLookbackUnit),
-    ),
-    startDate: S.optional(S.NullOr(S.String)),
-    endDate: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "UpdateDashboardRequestBlocksItemCase2Case3EndDateRange",
-}) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case3EndDateRange>;
+export const UpdateDashboardRequestBlocksItemCase2Case3EndDateRange =
+  CreateDashboardV2RequestComparisonPreviousTimeFrame as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case3EndDateRange>;
 
 export type UpdateDashboardRequestBlocksItemCase2Case3ColumnsItem =
   CreateDashboardV2RequestBlocksItemCase3ColumnsItem;
@@ -52117,19 +50350,8 @@ export interface UpdateDashboardRequestBlocksItemCase2Case4DateRange {
   startDate?: string | null;
   endDate?: string | null;
 }
-export const UpdateDashboardRequestBlocksItemCase2Case4DateRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    predefined: UpdateDashboardRequestBlocksItemCase2Case4DateRangePredefined,
-    lookbackValue: S.optional(S.NullOr(S.Number)),
-    lookbackUnit: S.optional(
-      S.NullOr(UpdateDashboardRequestBlocksItemCase2Case4DateRangeLookbackUnit),
-    ),
-    startDate: S.optional(S.NullOr(S.String)),
-    endDate: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "UpdateDashboardRequestBlocksItemCase2Case4DateRange",
-}) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case4DateRange>;
+export const UpdateDashboardRequestBlocksItemCase2Case4DateRange =
+  CreateDashboardV2RequestComparisonPreviousTimeFrame as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case4DateRange>;
 
 export type UpdateDashboardRequestBlocksItemCase2Case4ProjectsList = Array<string>;
 export const UpdateDashboardRequestBlocksItemCase2Case4ProjectsList =
@@ -52177,36 +50399,15 @@ export interface UpdateDashboardRequestBlocksItemCase2Case4ComparisonPreviousTim
   endDate?: string | null;
 }
 export const UpdateDashboardRequestBlocksItemCase2Case4ComparisonPreviousTimeFrame =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      predefined: UpdateDashboardRequestBlocksItemCase2Case4ComparisonPreviousTimeFramePredefined,
-      lookbackValue: S.optional(S.NullOr(S.Number)),
-      lookbackUnit: S.optional(
-        S.NullOr(UpdateDashboardRequestBlocksItemCase2Case4ComparisonPreviousTimeFrameLookbackUnit),
-      ),
-      startDate: S.optional(S.NullOr(S.String)),
-      endDate: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "UpdateDashboardRequestBlocksItemCase2Case4ComparisonPreviousTimeFrame",
-  }) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case4ComparisonPreviousTimeFrame>;
+  CreateDashboardV2RequestBlocksItemCase4ComparisonPreviousTimeFrame as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case4ComparisonPreviousTimeFrame>;
 
 export interface UpdateDashboardRequestBlocksItemCase2Case4Comparison {
   enabled: boolean;
   mode?: UpdateDashboardRequestBlocksItemCase2Case4ComparisonMode | (string & {});
   previousTimeFrame?: UpdateDashboardRequestBlocksItemCase2Case4ComparisonPreviousTimeFrame;
 }
-export const UpdateDashboardRequestBlocksItemCase2Case4Comparison = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    mode: S.optional(UpdateDashboardRequestBlocksItemCase2Case4ComparisonMode),
-    previousTimeFrame: S.optional(
-      UpdateDashboardRequestBlocksItemCase2Case4ComparisonPreviousTimeFrame,
-    ),
-  }),
-).annotate({
-  identifier: "UpdateDashboardRequestBlocksItemCase2Case4Comparison",
-}) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case4Comparison>;
+export const UpdateDashboardRequestBlocksItemCase2Case4Comparison =
+  CreateDashboardV2RequestBlocksItemCase4Comparison as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case4Comparison>;
 
 export type UpdateDashboardRequestBlocksItemCase2Case4GlobalControlSettings =
   CreateDashboardV2RequestBlocksItemCase3GlobalControlSettings;
@@ -52278,19 +50479,8 @@ export interface UpdateDashboardRequestBlocksItemCase2Case5DateRange {
   startDate?: string | null;
   endDate?: string | null;
 }
-export const UpdateDashboardRequestBlocksItemCase2Case5DateRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    predefined: UpdateDashboardRequestBlocksItemCase2Case5DateRangePredefined,
-    lookbackValue: S.optional(S.NullOr(S.Number)),
-    lookbackUnit: S.optional(
-      S.NullOr(UpdateDashboardRequestBlocksItemCase2Case5DateRangeLookbackUnit),
-    ),
-    startDate: S.optional(S.NullOr(S.String)),
-    endDate: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "UpdateDashboardRequestBlocksItemCase2Case5DateRange",
-}) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case5DateRange>;
+export const UpdateDashboardRequestBlocksItemCase2Case5DateRange =
+  CreateDashboardV2RequestComparisonPreviousTimeFrame as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case5DateRange>;
 
 export type UpdateDashboardRequestBlocksItemCase2Case5ProjectsList = Array<string>;
 export const UpdateDashboardRequestBlocksItemCase2Case5ProjectsList =
@@ -52338,36 +50528,15 @@ export interface UpdateDashboardRequestBlocksItemCase2Case5ComparisonPreviousTim
   endDate?: string | null;
 }
 export const UpdateDashboardRequestBlocksItemCase2Case5ComparisonPreviousTimeFrame =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      predefined: UpdateDashboardRequestBlocksItemCase2Case5ComparisonPreviousTimeFramePredefined,
-      lookbackValue: S.optional(S.NullOr(S.Number)),
-      lookbackUnit: S.optional(
-        S.NullOr(UpdateDashboardRequestBlocksItemCase2Case5ComparisonPreviousTimeFrameLookbackUnit),
-      ),
-      startDate: S.optional(S.NullOr(S.String)),
-      endDate: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "UpdateDashboardRequestBlocksItemCase2Case5ComparisonPreviousTimeFrame",
-  }) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case5ComparisonPreviousTimeFrame>;
+  CreateDashboardV2RequestBlocksItemCase4ComparisonPreviousTimeFrame as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case5ComparisonPreviousTimeFrame>;
 
 export interface UpdateDashboardRequestBlocksItemCase2Case5Comparison {
   enabled: boolean;
   mode?: UpdateDashboardRequestBlocksItemCase2Case5ComparisonMode | (string & {});
   previousTimeFrame?: UpdateDashboardRequestBlocksItemCase2Case5ComparisonPreviousTimeFrame;
 }
-export const UpdateDashboardRequestBlocksItemCase2Case5Comparison = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    mode: S.optional(UpdateDashboardRequestBlocksItemCase2Case5ComparisonMode),
-    previousTimeFrame: S.optional(
-      UpdateDashboardRequestBlocksItemCase2Case5ComparisonPreviousTimeFrame,
-    ),
-  }),
-).annotate({
-  identifier: "UpdateDashboardRequestBlocksItemCase2Case5Comparison",
-}) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case5Comparison>;
+export const UpdateDashboardRequestBlocksItemCase2Case5Comparison =
+  CreateDashboardV2RequestBlocksItemCase4Comparison as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case5Comparison>;
 
 export type UpdateDashboardRequestBlocksItemCase2Case5GlobalControlSettings =
   CreateDashboardV2RequestBlocksItemCase3GlobalControlSettings;
@@ -52439,19 +50608,8 @@ export interface UpdateDashboardRequestBlocksItemCase2Case6DateRange {
   startDate?: string | null;
   endDate?: string | null;
 }
-export const UpdateDashboardRequestBlocksItemCase2Case6DateRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    predefined: UpdateDashboardRequestBlocksItemCase2Case6DateRangePredefined,
-    lookbackValue: S.optional(S.NullOr(S.Number)),
-    lookbackUnit: S.optional(
-      S.NullOr(UpdateDashboardRequestBlocksItemCase2Case6DateRangeLookbackUnit),
-    ),
-    startDate: S.optional(S.NullOr(S.String)),
-    endDate: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "UpdateDashboardRequestBlocksItemCase2Case6DateRange",
-}) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case6DateRange>;
+export const UpdateDashboardRequestBlocksItemCase2Case6DateRange =
+  CreateDashboardV2RequestComparisonPreviousTimeFrame as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case6DateRange>;
 
 export type UpdateDashboardRequestBlocksItemCase2Case6ProjectsList = Array<string>;
 export const UpdateDashboardRequestBlocksItemCase2Case6ProjectsList =
@@ -52499,36 +50657,15 @@ export interface UpdateDashboardRequestBlocksItemCase2Case6ComparisonPreviousTim
   endDate?: string | null;
 }
 export const UpdateDashboardRequestBlocksItemCase2Case6ComparisonPreviousTimeFrame =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      predefined: UpdateDashboardRequestBlocksItemCase2Case6ComparisonPreviousTimeFramePredefined,
-      lookbackValue: S.optional(S.NullOr(S.Number)),
-      lookbackUnit: S.optional(
-        S.NullOr(UpdateDashboardRequestBlocksItemCase2Case6ComparisonPreviousTimeFrameLookbackUnit),
-      ),
-      startDate: S.optional(S.NullOr(S.String)),
-      endDate: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "UpdateDashboardRequestBlocksItemCase2Case6ComparisonPreviousTimeFrame",
-  }) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case6ComparisonPreviousTimeFrame>;
+  CreateDashboardV2RequestBlocksItemCase4ComparisonPreviousTimeFrame as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case6ComparisonPreviousTimeFrame>;
 
 export interface UpdateDashboardRequestBlocksItemCase2Case6Comparison {
   enabled: boolean;
   mode?: UpdateDashboardRequestBlocksItemCase2Case6ComparisonMode | (string & {});
   previousTimeFrame?: UpdateDashboardRequestBlocksItemCase2Case6ComparisonPreviousTimeFrame;
 }
-export const UpdateDashboardRequestBlocksItemCase2Case6Comparison = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    mode: S.optional(UpdateDashboardRequestBlocksItemCase2Case6ComparisonMode),
-    previousTimeFrame: S.optional(
-      UpdateDashboardRequestBlocksItemCase2Case6ComparisonPreviousTimeFrame,
-    ),
-  }),
-).annotate({
-  identifier: "UpdateDashboardRequestBlocksItemCase2Case6Comparison",
-}) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case6Comparison>;
+export const UpdateDashboardRequestBlocksItemCase2Case6Comparison =
+  CreateDashboardV2RequestBlocksItemCase4Comparison as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case6Comparison>;
 
 export type UpdateDashboardRequestBlocksItemCase2Case6GlobalControlSettings =
   CreateDashboardV2RequestBlocksItemCase3GlobalControlSettings;
@@ -52610,9 +50747,8 @@ export const UpdateDashboardRequestBlocksItemCase2Case7ColumnsFilterItem = S.Str
 export type UpdateDashboardRequestBlocksItemCase2Case7ColumnsFilterList = Array<
   UpdateDashboardRequestBlocksItemCase2Case7ColumnsFilterItem | (string & {})
 >;
-export const UpdateDashboardRequestBlocksItemCase2Case7ColumnsFilterList = /*@__PURE__*/ S.Array(
-  UpdateDashboardRequestBlocksItemCase2Case7ColumnsFilterItem,
-) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case7ColumnsFilterList>;
+export const UpdateDashboardRequestBlocksItemCase2Case7ColumnsFilterList =
+  CreateCustomFieldRequestSectionsList as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case7ColumnsFilterList>;
 
 export type UpdateDashboardRequestBlocksItemCase2Case7MetricTagFilterList = Array<string>;
 export const UpdateDashboardRequestBlocksItemCase2Case7MetricTagFilterList =
@@ -52829,38 +50965,15 @@ export interface UpdateDashboardRequestBlocksItemCase2Case11ComparisonPreviousTi
   endDate?: string | null;
 }
 export const UpdateDashboardRequestBlocksItemCase2Case11ComparisonPreviousTimeFrame =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      predefined: UpdateDashboardRequestBlocksItemCase2Case11ComparisonPreviousTimeFramePredefined,
-      lookbackValue: S.optional(S.NullOr(S.Number)),
-      lookbackUnit: S.optional(
-        S.NullOr(
-          UpdateDashboardRequestBlocksItemCase2Case11ComparisonPreviousTimeFrameLookbackUnit,
-        ),
-      ),
-      startDate: S.optional(S.NullOr(S.String)),
-      endDate: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "UpdateDashboardRequestBlocksItemCase2Case11ComparisonPreviousTimeFrame",
-  }) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case11ComparisonPreviousTimeFrame>;
+  UpdateDashboardRequestBlocksItemCase1Case11ComparisonPreviousTimeFrame as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case11ComparisonPreviousTimeFrame>;
 
 export interface UpdateDashboardRequestBlocksItemCase2Case11Comparison {
   enabled: boolean;
   mode?: UpdateDashboardRequestBlocksItemCase2Case11ComparisonMode | (string & {});
   previousTimeFrame?: UpdateDashboardRequestBlocksItemCase2Case11ComparisonPreviousTimeFrame;
 }
-export const UpdateDashboardRequestBlocksItemCase2Case11Comparison = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    mode: S.optional(UpdateDashboardRequestBlocksItemCase2Case11ComparisonMode),
-    previousTimeFrame: S.optional(
-      UpdateDashboardRequestBlocksItemCase2Case11ComparisonPreviousTimeFrame,
-    ),
-  }),
-).annotate({
-  identifier: "UpdateDashboardRequestBlocksItemCase2Case11Comparison",
-}) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case11Comparison>;
+export const UpdateDashboardRequestBlocksItemCase2Case11Comparison =
+  UpdateDashboardRequestBlocksItemCase1Case11Comparison as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case11Comparison>;
 
 export type UpdateDashboardRequestBlocksItemCase2Case11AnalysisSettingsPopulationType =
   | "metric"
@@ -52992,38 +51105,15 @@ export interface UpdateDashboardRequestBlocksItemCase2Case12ComparisonPreviousTi
   endDate?: string | null;
 }
 export const UpdateDashboardRequestBlocksItemCase2Case12ComparisonPreviousTimeFrame =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      predefined: UpdateDashboardRequestBlocksItemCase2Case12ComparisonPreviousTimeFramePredefined,
-      lookbackValue: S.optional(S.NullOr(S.Number)),
-      lookbackUnit: S.optional(
-        S.NullOr(
-          UpdateDashboardRequestBlocksItemCase2Case12ComparisonPreviousTimeFrameLookbackUnit,
-        ),
-      ),
-      startDate: S.optional(S.NullOr(S.String)),
-      endDate: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "UpdateDashboardRequestBlocksItemCase2Case12ComparisonPreviousTimeFrame",
-  }) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case12ComparisonPreviousTimeFrame>;
+  UpdateDashboardRequestBlocksItemCase1Case11ComparisonPreviousTimeFrame as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case12ComparisonPreviousTimeFrame>;
 
 export interface UpdateDashboardRequestBlocksItemCase2Case12Comparison {
   enabled: boolean;
   mode?: UpdateDashboardRequestBlocksItemCase2Case12ComparisonMode | (string & {});
   previousTimeFrame?: UpdateDashboardRequestBlocksItemCase2Case12ComparisonPreviousTimeFrame;
 }
-export const UpdateDashboardRequestBlocksItemCase2Case12Comparison = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    mode: S.optional(UpdateDashboardRequestBlocksItemCase2Case12ComparisonMode),
-    previousTimeFrame: S.optional(
-      UpdateDashboardRequestBlocksItemCase2Case12ComparisonPreviousTimeFrame,
-    ),
-  }),
-).annotate({
-  identifier: "UpdateDashboardRequestBlocksItemCase2Case12Comparison",
-}) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case12Comparison>;
+export const UpdateDashboardRequestBlocksItemCase2Case12Comparison =
+  UpdateDashboardRequestBlocksItemCase1Case11Comparison as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case12Comparison>;
 
 export type UpdateDashboardRequestBlocksItemCase2Case12GlobalControlSettings =
   CreateDashboardV2RequestBlocksItemCase12GlobalControlSettings;
@@ -53048,16 +51138,7 @@ export interface UpdateDashboardRequestBlocksItemCase2Case12ConfigDimensionsItem
     | (string & {});
 }
 export const UpdateDashboardRequestBlocksItemCase2Case12ConfigDimensionsItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dimensionType: S.String,
-      column: S.NullOr(S.String),
-      dateGranularity:
-        UpdateDashboardRequestBlocksItemCase2Case12ConfigDimensionsItemCase0DateGranularity,
-    }),
-  ).annotate({
-    identifier: "UpdateDashboardRequestBlocksItemCase2Case12ConfigDimensionsItemCase0",
-  }) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case12ConfigDimensionsItemCase0>;
+  CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase0 as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case12ConfigDimensionsItemCase0>;
 
 export type UpdateDashboardRequestBlocksItemCase2Case12ConfigDimensionsItemCase1 =
   CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase1;
@@ -53230,20 +51311,8 @@ export interface UpdateDashboardRequestBlocksItemCase2Case12ConfigDateRange {
   startDate?: string | null;
   endDate?: string | null;
 }
-export const UpdateDashboardRequestBlocksItemCase2Case12ConfigDateRange = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      predefined: UpdateDashboardRequestBlocksItemCase2Case12ConfigDateRangePredefined,
-      lookbackValue: S.optional(S.NullOr(S.Number)),
-      lookbackUnit: S.optional(
-        S.NullOr(UpdateDashboardRequestBlocksItemCase2Case12ConfigDateRangeLookbackUnit),
-      ),
-      startDate: S.optional(S.NullOr(S.String)),
-      endDate: S.optional(S.NullOr(S.String)),
-    }),
-).annotate({
-  identifier: "UpdateDashboardRequestBlocksItemCase2Case12ConfigDateRange",
-}) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case12ConfigDateRange>;
+export const UpdateDashboardRequestBlocksItemCase2Case12ConfigDateRange =
+  PostDataSourceExplorationResponseExplorationConfigDateRange as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case12ConfigDateRange>;
 
 export type UpdateDashboardRequestBlocksItemCase2Case12ConfigShowAs = "total" | "per_unit";
 export const UpdateDashboardRequestBlocksItemCase2Case12ConfigShowAs = S.String;
@@ -53460,38 +51529,15 @@ export interface UpdateDashboardRequestBlocksItemCase2Case13ComparisonPreviousTi
   endDate?: string | null;
 }
 export const UpdateDashboardRequestBlocksItemCase2Case13ComparisonPreviousTimeFrame =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      predefined: UpdateDashboardRequestBlocksItemCase2Case13ComparisonPreviousTimeFramePredefined,
-      lookbackValue: S.optional(S.NullOr(S.Number)),
-      lookbackUnit: S.optional(
-        S.NullOr(
-          UpdateDashboardRequestBlocksItemCase2Case13ComparisonPreviousTimeFrameLookbackUnit,
-        ),
-      ),
-      startDate: S.optional(S.NullOr(S.String)),
-      endDate: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "UpdateDashboardRequestBlocksItemCase2Case13ComparisonPreviousTimeFrame",
-  }) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case13ComparisonPreviousTimeFrame>;
+  UpdateDashboardRequestBlocksItemCase1Case11ComparisonPreviousTimeFrame as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case13ComparisonPreviousTimeFrame>;
 
 export interface UpdateDashboardRequestBlocksItemCase2Case13Comparison {
   enabled: boolean;
   mode?: UpdateDashboardRequestBlocksItemCase2Case13ComparisonMode | (string & {});
   previousTimeFrame?: UpdateDashboardRequestBlocksItemCase2Case13ComparisonPreviousTimeFrame;
 }
-export const UpdateDashboardRequestBlocksItemCase2Case13Comparison = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    mode: S.optional(UpdateDashboardRequestBlocksItemCase2Case13ComparisonMode),
-    previousTimeFrame: S.optional(
-      UpdateDashboardRequestBlocksItemCase2Case13ComparisonPreviousTimeFrame,
-    ),
-  }),
-).annotate({
-  identifier: "UpdateDashboardRequestBlocksItemCase2Case13Comparison",
-}) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case13Comparison>;
+export const UpdateDashboardRequestBlocksItemCase2Case13Comparison =
+  UpdateDashboardRequestBlocksItemCase1Case11Comparison as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case13Comparison>;
 
 export type UpdateDashboardRequestBlocksItemCase2Case13GlobalControlSettings =
   CreateDashboardV2RequestBlocksItemCase12GlobalControlSettings;
@@ -53516,16 +51562,7 @@ export interface UpdateDashboardRequestBlocksItemCase2Case13ConfigDimensionsItem
     | (string & {});
 }
 export const UpdateDashboardRequestBlocksItemCase2Case13ConfigDimensionsItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dimensionType: S.String,
-      column: S.NullOr(S.String),
-      dateGranularity:
-        UpdateDashboardRequestBlocksItemCase2Case13ConfigDimensionsItemCase0DateGranularity,
-    }),
-  ).annotate({
-    identifier: "UpdateDashboardRequestBlocksItemCase2Case13ConfigDimensionsItemCase0",
-  }) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case13ConfigDimensionsItemCase0>;
+  CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase0 as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case13ConfigDimensionsItemCase0>;
 
 export type UpdateDashboardRequestBlocksItemCase2Case13ConfigDimensionsItemCase1 =
   CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase1;
@@ -53698,20 +51735,8 @@ export interface UpdateDashboardRequestBlocksItemCase2Case13ConfigDateRange {
   startDate?: string | null;
   endDate?: string | null;
 }
-export const UpdateDashboardRequestBlocksItemCase2Case13ConfigDateRange = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      predefined: UpdateDashboardRequestBlocksItemCase2Case13ConfigDateRangePredefined,
-      lookbackValue: S.optional(S.NullOr(S.Number)),
-      lookbackUnit: S.optional(
-        S.NullOr(UpdateDashboardRequestBlocksItemCase2Case13ConfigDateRangeLookbackUnit),
-      ),
-      startDate: S.optional(S.NullOr(S.String)),
-      endDate: S.optional(S.NullOr(S.String)),
-    }),
-).annotate({
-  identifier: "UpdateDashboardRequestBlocksItemCase2Case13ConfigDateRange",
-}) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case13ConfigDateRange>;
+export const UpdateDashboardRequestBlocksItemCase2Case13ConfigDateRange =
+  PostDataSourceExplorationResponseExplorationConfigDateRange as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case13ConfigDateRange>;
 
 export type UpdateDashboardRequestBlocksItemCase2Case13ConfigShowAs = "total" | "per_unit";
 export const UpdateDashboardRequestBlocksItemCase2Case13ConfigShowAs = S.String;
@@ -53938,38 +51963,15 @@ export interface UpdateDashboardRequestBlocksItemCase2Case14ComparisonPreviousTi
   endDate?: string | null;
 }
 export const UpdateDashboardRequestBlocksItemCase2Case14ComparisonPreviousTimeFrame =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      predefined: UpdateDashboardRequestBlocksItemCase2Case14ComparisonPreviousTimeFramePredefined,
-      lookbackValue: S.optional(S.NullOr(S.Number)),
-      lookbackUnit: S.optional(
-        S.NullOr(
-          UpdateDashboardRequestBlocksItemCase2Case14ComparisonPreviousTimeFrameLookbackUnit,
-        ),
-      ),
-      startDate: S.optional(S.NullOr(S.String)),
-      endDate: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "UpdateDashboardRequestBlocksItemCase2Case14ComparisonPreviousTimeFrame",
-  }) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case14ComparisonPreviousTimeFrame>;
+  UpdateDashboardRequestBlocksItemCase1Case11ComparisonPreviousTimeFrame as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case14ComparisonPreviousTimeFrame>;
 
 export interface UpdateDashboardRequestBlocksItemCase2Case14Comparison {
   enabled: boolean;
   mode?: UpdateDashboardRequestBlocksItemCase2Case14ComparisonMode | (string & {});
   previousTimeFrame?: UpdateDashboardRequestBlocksItemCase2Case14ComparisonPreviousTimeFrame;
 }
-export const UpdateDashboardRequestBlocksItemCase2Case14Comparison = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    mode: S.optional(UpdateDashboardRequestBlocksItemCase2Case14ComparisonMode),
-    previousTimeFrame: S.optional(
-      UpdateDashboardRequestBlocksItemCase2Case14ComparisonPreviousTimeFrame,
-    ),
-  }),
-).annotate({
-  identifier: "UpdateDashboardRequestBlocksItemCase2Case14Comparison",
-}) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case14Comparison>;
+export const UpdateDashboardRequestBlocksItemCase2Case14Comparison =
+  UpdateDashboardRequestBlocksItemCase1Case11Comparison as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case14Comparison>;
 
 export type UpdateDashboardRequestBlocksItemCase2Case14GlobalControlSettings =
   CreateDashboardV2RequestBlocksItemCase12GlobalControlSettings;
@@ -53994,16 +51996,7 @@ export interface UpdateDashboardRequestBlocksItemCase2Case14ConfigDimensionsItem
     | (string & {});
 }
 export const UpdateDashboardRequestBlocksItemCase2Case14ConfigDimensionsItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dimensionType: S.String,
-      column: S.NullOr(S.String),
-      dateGranularity:
-        UpdateDashboardRequestBlocksItemCase2Case14ConfigDimensionsItemCase0DateGranularity,
-    }),
-  ).annotate({
-    identifier: "UpdateDashboardRequestBlocksItemCase2Case14ConfigDimensionsItemCase0",
-  }) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case14ConfigDimensionsItemCase0>;
+  CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase0 as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case14ConfigDimensionsItemCase0>;
 
 export type UpdateDashboardRequestBlocksItemCase2Case14ConfigDimensionsItemCase1 =
   CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase1;
@@ -54176,20 +52169,8 @@ export interface UpdateDashboardRequestBlocksItemCase2Case14ConfigDateRange {
   startDate?: string | null;
   endDate?: string | null;
 }
-export const UpdateDashboardRequestBlocksItemCase2Case14ConfigDateRange = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      predefined: UpdateDashboardRequestBlocksItemCase2Case14ConfigDateRangePredefined,
-      lookbackValue: S.optional(S.NullOr(S.Number)),
-      lookbackUnit: S.optional(
-        S.NullOr(UpdateDashboardRequestBlocksItemCase2Case14ConfigDateRangeLookbackUnit),
-      ),
-      startDate: S.optional(S.NullOr(S.String)),
-      endDate: S.optional(S.NullOr(S.String)),
-    }),
-).annotate({
-  identifier: "UpdateDashboardRequestBlocksItemCase2Case14ConfigDateRange",
-}) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case14ConfigDateRange>;
+export const UpdateDashboardRequestBlocksItemCase2Case14ConfigDateRange =
+  PostDataSourceExplorationResponseExplorationConfigDateRange as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case14ConfigDateRange>;
 
 export type UpdateDashboardRequestBlocksItemCase2Case14ConfigShowAs = "total" | "per_unit";
 export const UpdateDashboardRequestBlocksItemCase2Case14ConfigShowAs = S.String;
@@ -54214,10 +52195,7 @@ export type UpdateDashboardRequestBlocksItemCase2Case14ConfigDatasetColumnTypesM
     | undefined;
 };
 export const UpdateDashboardRequestBlocksItemCase2Case14ConfigDatasetColumnTypesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    UpdateDashboardRequestBlocksItemCase2Case14ConfigDatasetColumnTypesValue,
-  ) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case14ConfigDatasetColumnTypesMap>;
+  CreateDashboardV2RequestBlocksItemCase14ConfigDatasetColumnTypesMap as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case14ConfigDatasetColumnTypesMap>;
 
 export type UpdateDashboardRequestBlocksItemCase2Case14ConfigDatasetValuesItemRowFiltersItemOperator =
   | "="
@@ -54442,38 +52420,15 @@ export interface UpdateDashboardRequestBlocksItemCase2Case15ComparisonPreviousTi
   endDate?: string | null;
 }
 export const UpdateDashboardRequestBlocksItemCase2Case15ComparisonPreviousTimeFrame =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      predefined: UpdateDashboardRequestBlocksItemCase2Case15ComparisonPreviousTimeFramePredefined,
-      lookbackValue: S.optional(S.NullOr(S.Number)),
-      lookbackUnit: S.optional(
-        S.NullOr(
-          UpdateDashboardRequestBlocksItemCase2Case15ComparisonPreviousTimeFrameLookbackUnit,
-        ),
-      ),
-      startDate: S.optional(S.NullOr(S.String)),
-      endDate: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "UpdateDashboardRequestBlocksItemCase2Case15ComparisonPreviousTimeFrame",
-  }) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case15ComparisonPreviousTimeFrame>;
+  UpdateDashboardRequestBlocksItemCase1Case11ComparisonPreviousTimeFrame as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case15ComparisonPreviousTimeFrame>;
 
 export interface UpdateDashboardRequestBlocksItemCase2Case15Comparison {
   enabled: boolean;
   mode?: UpdateDashboardRequestBlocksItemCase2Case15ComparisonMode | (string & {});
   previousTimeFrame?: UpdateDashboardRequestBlocksItemCase2Case15ComparisonPreviousTimeFrame;
 }
-export const UpdateDashboardRequestBlocksItemCase2Case15Comparison = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    mode: S.optional(UpdateDashboardRequestBlocksItemCase2Case15ComparisonMode),
-    previousTimeFrame: S.optional(
-      UpdateDashboardRequestBlocksItemCase2Case15ComparisonPreviousTimeFrame,
-    ),
-  }),
-).annotate({
-  identifier: "UpdateDashboardRequestBlocksItemCase2Case15Comparison",
-}) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case15Comparison>;
+export const UpdateDashboardRequestBlocksItemCase2Case15Comparison =
+  UpdateDashboardRequestBlocksItemCase1Case11Comparison as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case15Comparison>;
 
 export type UpdateDashboardRequestBlocksItemCase2Case15GlobalControlSettings =
   CreateDashboardV2RequestBlocksItemCase12GlobalControlSettings;
@@ -54498,16 +52453,7 @@ export interface UpdateDashboardRequestBlocksItemCase2Case15ConfigDimensionsItem
     | (string & {});
 }
 export const UpdateDashboardRequestBlocksItemCase2Case15ConfigDimensionsItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dimensionType: S.String,
-      column: S.NullOr(S.String),
-      dateGranularity:
-        UpdateDashboardRequestBlocksItemCase2Case15ConfigDimensionsItemCase0DateGranularity,
-    }),
-  ).annotate({
-    identifier: "UpdateDashboardRequestBlocksItemCase2Case15ConfigDimensionsItemCase0",
-  }) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case15ConfigDimensionsItemCase0>;
+  CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase0 as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case15ConfigDimensionsItemCase0>;
 
 export type UpdateDashboardRequestBlocksItemCase2Case15ConfigDimensionsItemCase1 =
   CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase1;
@@ -54680,20 +52626,8 @@ export interface UpdateDashboardRequestBlocksItemCase2Case15ConfigDateRange {
   startDate?: string | null;
   endDate?: string | null;
 }
-export const UpdateDashboardRequestBlocksItemCase2Case15ConfigDateRange = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      predefined: UpdateDashboardRequestBlocksItemCase2Case15ConfigDateRangePredefined,
-      lookbackValue: S.optional(S.NullOr(S.Number)),
-      lookbackUnit: S.optional(
-        S.NullOr(UpdateDashboardRequestBlocksItemCase2Case15ConfigDateRangeLookbackUnit),
-      ),
-      startDate: S.optional(S.NullOr(S.String)),
-      endDate: S.optional(S.NullOr(S.String)),
-    }),
-).annotate({
-  identifier: "UpdateDashboardRequestBlocksItemCase2Case15ConfigDateRange",
-}) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case15ConfigDateRange>;
+export const UpdateDashboardRequestBlocksItemCase2Case15ConfigDateRange =
+  PostDataSourceExplorationResponseExplorationConfigDateRange as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case15ConfigDateRange>;
 
 export type UpdateDashboardRequestBlocksItemCase2Case15ConfigShowAs = "total" | "per_unit";
 export const UpdateDashboardRequestBlocksItemCase2Case15ConfigShowAs = S.String;
@@ -54777,14 +52711,7 @@ export interface UpdateDashboardRequestBlocksItemCase2Case15ConfigDatasetStepsIt
   value: number;
 }
 export const UpdateDashboardRequestBlocksItemCase2Case15ConfigDatasetStepsItemConversionWindow =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      unit: UpdateDashboardRequestBlocksItemCase2Case15ConfigDatasetStepsItemConversionWindowUnit,
-      value: S.Number,
-    }),
-  ).annotate({
-    identifier: "UpdateDashboardRequestBlocksItemCase2Case15ConfigDatasetStepsItemConversionWindow",
-  }) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case15ConfigDatasetStepsItemConversionWindow>;
+  CreateDashboardV2RequestBlocksItemCase15ConfigDatasetStepsItemConversionWindow as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case15ConfigDatasetStepsItemConversionWindow>;
 
 export interface UpdateDashboardRequestBlocksItemCase2Case15ConfigDatasetStepsItem {
   name: string;
@@ -54947,38 +52874,15 @@ export interface UpdateDashboardRequestBlocksItemCase2Case16ComparisonPreviousTi
   endDate?: string | null;
 }
 export const UpdateDashboardRequestBlocksItemCase2Case16ComparisonPreviousTimeFrame =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      predefined: UpdateDashboardRequestBlocksItemCase2Case16ComparisonPreviousTimeFramePredefined,
-      lookbackValue: S.optional(S.NullOr(S.Number)),
-      lookbackUnit: S.optional(
-        S.NullOr(
-          UpdateDashboardRequestBlocksItemCase2Case16ComparisonPreviousTimeFrameLookbackUnit,
-        ),
-      ),
-      startDate: S.optional(S.NullOr(S.String)),
-      endDate: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "UpdateDashboardRequestBlocksItemCase2Case16ComparisonPreviousTimeFrame",
-  }) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case16ComparisonPreviousTimeFrame>;
+  UpdateDashboardRequestBlocksItemCase1Case11ComparisonPreviousTimeFrame as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case16ComparisonPreviousTimeFrame>;
 
 export interface UpdateDashboardRequestBlocksItemCase2Case16Comparison {
   enabled: boolean;
   mode?: UpdateDashboardRequestBlocksItemCase2Case16ComparisonMode | (string & {});
   previousTimeFrame?: UpdateDashboardRequestBlocksItemCase2Case16ComparisonPreviousTimeFrame;
 }
-export const UpdateDashboardRequestBlocksItemCase2Case16Comparison = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    mode: S.optional(UpdateDashboardRequestBlocksItemCase2Case16ComparisonMode),
-    previousTimeFrame: S.optional(
-      UpdateDashboardRequestBlocksItemCase2Case16ComparisonPreviousTimeFrame,
-    ),
-  }),
-).annotate({
-  identifier: "UpdateDashboardRequestBlocksItemCase2Case16Comparison",
-}) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case16Comparison>;
+export const UpdateDashboardRequestBlocksItemCase2Case16Comparison =
+  UpdateDashboardRequestBlocksItemCase1Case11Comparison as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case16Comparison>;
 
 export type UpdateDashboardRequestBlocksItemCase2Case16GlobalControlSettings =
   CreateDashboardV2RequestBlocksItemCase12GlobalControlSettings;
@@ -55003,16 +52907,7 @@ export interface UpdateDashboardRequestBlocksItemCase2Case16ConfigDimensionsItem
     | (string & {});
 }
 export const UpdateDashboardRequestBlocksItemCase2Case16ConfigDimensionsItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dimensionType: S.String,
-      column: S.NullOr(S.String),
-      dateGranularity:
-        UpdateDashboardRequestBlocksItemCase2Case16ConfigDimensionsItemCase0DateGranularity,
-    }),
-  ).annotate({
-    identifier: "UpdateDashboardRequestBlocksItemCase2Case16ConfigDimensionsItemCase0",
-  }) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case16ConfigDimensionsItemCase0>;
+  CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase0 as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case16ConfigDimensionsItemCase0>;
 
 export type UpdateDashboardRequestBlocksItemCase2Case16ConfigDimensionsItemCase1 =
   CreateDashboardV2RequestBlocksItemCase12ConfigDimensionsItemCase1;
@@ -55185,20 +53080,8 @@ export interface UpdateDashboardRequestBlocksItemCase2Case16ConfigDateRange {
   startDate?: string | null;
   endDate?: string | null;
 }
-export const UpdateDashboardRequestBlocksItemCase2Case16ConfigDateRange = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      predefined: UpdateDashboardRequestBlocksItemCase2Case16ConfigDateRangePredefined,
-      lookbackValue: S.optional(S.NullOr(S.Number)),
-      lookbackUnit: S.optional(
-        S.NullOr(UpdateDashboardRequestBlocksItemCase2Case16ConfigDateRangeLookbackUnit),
-      ),
-      startDate: S.optional(S.NullOr(S.String)),
-      endDate: S.optional(S.NullOr(S.String)),
-    }),
-).annotate({
-  identifier: "UpdateDashboardRequestBlocksItemCase2Case16ConfigDateRange",
-}) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case16ConfigDateRange>;
+export const UpdateDashboardRequestBlocksItemCase2Case16ConfigDateRange =
+  PostDataSourceExplorationResponseExplorationConfigDateRange as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case16ConfigDateRange>;
 
 export type UpdateDashboardRequestBlocksItemCase2Case16ConfigShowAs = "total" | "per_unit";
 export const UpdateDashboardRequestBlocksItemCase2Case16ConfigShowAs = S.String;
@@ -55223,10 +53106,7 @@ export type UpdateDashboardRequestBlocksItemCase2Case16ConfigDatasetColumnTypesM
     | undefined;
 };
 export const UpdateDashboardRequestBlocksItemCase2Case16ConfigDatasetColumnTypesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    UpdateDashboardRequestBlocksItemCase2Case16ConfigDatasetColumnTypesValue,
-  ) as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case16ConfigDatasetColumnTypesMap>;
+  CreateDashboardV2RequestBlocksItemCase14ConfigDatasetColumnTypesMap as any as S.Schema<UpdateDashboardRequestBlocksItemCase2Case16ConfigDatasetColumnTypesMap>;
 
 export type UpdateDashboardRequestBlocksItemCase2Case16ConfigDatasetValuesItemRowFiltersItemOperator =
   | "="
@@ -55836,30 +53716,14 @@ export interface UpdateExperimentRequestMetricOverridesItem {
   regressionAdjustmentEnabled?: boolean;
   regressionAdjustmentDays?: number;
 }
-export const UpdateExperimentRequestMetricOverridesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    windowType: S.optional(UpdateExperimentRequestMetricOverridesItemWindowType),
-    windowHours: S.optional(S.Number),
-    delayHours: S.optional(S.Number),
-    properPriorOverride: S.optional(S.Boolean),
-    properPriorEnabled: S.optional(S.Boolean),
-    properPriorMean: S.optional(S.Number),
-    properPriorStdDev: S.optional(S.Number),
-    regressionAdjustmentOverride: S.optional(S.Boolean),
-    regressionAdjustmentEnabled: S.optional(S.Boolean),
-    regressionAdjustmentDays: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "UpdateExperimentRequestMetricOverridesItem",
-}) as any as S.Schema<UpdateExperimentRequestMetricOverridesItem>;
+export const UpdateExperimentRequestMetricOverridesItem =
+  CreateExperimentRequestMetricOverridesItem as any as S.Schema<UpdateExperimentRequestMetricOverridesItem>;
 
 /** Per-metric analysis overrides for this experiment. Replaces the entire stored array (does not patch individual entries). */
 export type UpdateExperimentRequestMetricOverridesList =
   Array<UpdateExperimentRequestMetricOverridesItem>;
-export const UpdateExperimentRequestMetricOverridesList = /*@__PURE__*/ S.Array(
-  UpdateExperimentRequestMetricOverridesItem,
-) as any as S.Schema<UpdateExperimentRequestMetricOverridesList>;
+export const UpdateExperimentRequestMetricOverridesList =
+  CreateExperimentRequestMetricOverridesList as any as S.Schema<UpdateExperimentRequestMetricOverridesList>;
 
 export type UpdateExperimentRequestCustomFieldsMap = { [key: string]: string | undefined };
 export const UpdateExperimentRequestCustomFieldsMap =
@@ -55901,14 +53765,8 @@ export interface UpdateExperimentRequestStatusUpdateScheduleStopAfter {
   value: number;
   unit: UpdateExperimentRequestStatusUpdateScheduleStopAfterUnit | (string & {});
 }
-export const UpdateExperimentRequestStatusUpdateScheduleStopAfter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.Number,
-    unit: UpdateExperimentRequestStatusUpdateScheduleStopAfterUnit,
-  }),
-).annotate({
-  identifier: "UpdateExperimentRequestStatusUpdateScheduleStopAfter",
-}) as any as S.Schema<UpdateExperimentRequestStatusUpdateScheduleStopAfter>;
+export const UpdateExperimentRequestStatusUpdateScheduleStopAfter =
+  CreateExperimentRequestStatusUpdateScheduleStopAfter as any as S.Schema<UpdateExperimentRequestStatusUpdateScheduleStopAfter>;
 
 /** Scheduled start/end. Set to `null` to remove. Provide any of `startAt`, `stopAt`, or `stopAfter` (a deferred relative end resolved at start). End-of-experiment automation is set via the nested `scheduledStopPlan`, which is required whenever a `stopAt` or `stopAfter` is set. */
 export interface UpdateExperimentRequestStatusUpdateSchedule {
@@ -55921,16 +53779,8 @@ export interface UpdateExperimentRequestStatusUpdateSchedule {
   /** End-of-experiment automation applied at the scheduled end. Required whenever a `stopAt` or `stopAfter` is set (any mode, including `notify`). */
   scheduledStopPlan?: ScheduledStopPlan;
 }
-export const UpdateExperimentRequestStatusUpdateSchedule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    startAt: S.optional(S.String),
-    stopAt: S.optional(S.String),
-    stopAfter: S.optional(UpdateExperimentRequestStatusUpdateScheduleStopAfter),
-    scheduledStopPlan: S.optional(ScheduledStopPlan),
-  }),
-).annotate({
-  identifier: "UpdateExperimentRequestStatusUpdateSchedule",
-}) as any as S.Schema<UpdateExperimentRequestStatusUpdateSchedule>;
+export const UpdateExperimentRequestStatusUpdateSchedule =
+  CreateExperimentRequestStatusUpdateSchedule as any as S.Schema<UpdateExperimentRequestStatusUpdateSchedule>;
 
 export type UpdateExperimentRequestPrecomputedUnitDimensionIdsList = Array<string>;
 export const UpdateExperimentRequestPrecomputedUnitDimensionIdsList =
@@ -56529,16 +54379,8 @@ export interface UpdateFactMetricRequestQuantileSettings {
   /** Optional override for the source-column name used to recover per-row event counts when numerator.aggregation is 'kll merge'. Defaults to '<numerator.column>_n_events'. Only valid for event-quantile metrics with a 'kll merge' numerator. */
   quantileEventCountColumn?: string;
 }
-export const UpdateFactMetricRequestQuantileSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: UpdateFactMetricRequestQuantileSettingsType,
-    ignoreZeros: S.Boolean,
-    quantile: S.Number,
-    quantileEventCountColumn: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateFactMetricRequestQuantileSettings",
-}) as any as S.Schema<UpdateFactMetricRequestQuantileSettings>;
+export const UpdateFactMetricRequestQuantileSettings =
+  FactMetricQuantileSettings as any as S.Schema<UpdateFactMetricRequestQuantileSettings>;
 
 export type UpdateFactMetricRequestFunnelSettingsStepsItemRowFiltersItemOperator =
   | "="
@@ -56608,14 +54450,7 @@ export interface UpdateFactMetricRequestFunnelSettingsStepsItemConversionWindow 
   value: number;
 }
 export const UpdateFactMetricRequestFunnelSettingsStepsItemConversionWindow =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      unit: UpdateFactMetricRequestFunnelSettingsStepsItemConversionWindowUnit,
-      value: S.Number,
-    }),
-  ).annotate({
-    identifier: "UpdateFactMetricRequestFunnelSettingsStepsItemConversionWindow",
-  }) as any as S.Schema<UpdateFactMetricRequestFunnelSettingsStepsItemConversionWindow>;
+  CreateDashboardV2RequestBlocksItemCase15ConfigDatasetStepsItemConversionWindow as any as S.Schema<UpdateFactMetricRequestFunnelSettingsStepsItemConversionWindow>;
 
 export interface UpdateFactMetricRequestFunnelSettingsStepsItem {
   /** Display name for the funnel step */
@@ -56683,15 +54518,8 @@ export interface UpdateFactMetricRequestCappingSettings {
   /** If true and capping is `percentile`, zeros will be ignored when calculating the percentile. */
   ignoreZeros?: boolean;
 }
-export const UpdateFactMetricRequestCappingSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: UpdateFactMetricRequestCappingSettingsType,
-    value: S.optional(S.Number),
-    ignoreZeros: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "UpdateFactMetricRequestCappingSettings",
-}) as any as S.Schema<UpdateFactMetricRequestCappingSettings>;
+export const UpdateFactMetricRequestCappingSettings =
+  FactMetricCappingSettings as any as S.Schema<UpdateFactMetricRequestCappingSettings>;
 
 export type UpdateFactMetricRequestLowerCappingSettingsType = "none" | "absolute" | "percentile";
 export const UpdateFactMetricRequestLowerCappingSettingsType = S.String;
@@ -56704,15 +54532,8 @@ export interface UpdateFactMetricRequestLowerCappingSettings {
   /** If true and capping is `percentile`, zeros will be ignored when calculating the percentile. */
   ignoreZeros?: boolean;
 }
-export const UpdateFactMetricRequestLowerCappingSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: UpdateFactMetricRequestLowerCappingSettingsType,
-    value: S.optional(S.Number),
-    ignoreZeros: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "UpdateFactMetricRequestLowerCappingSettings",
-}) as any as S.Schema<UpdateFactMetricRequestLowerCappingSettings>;
+export const UpdateFactMetricRequestLowerCappingSettings =
+  FactMetricCappingSettings as any as S.Schema<UpdateFactMetricRequestLowerCappingSettings>;
 
 export type UpdateFactMetricRequestWindowSettingsType = "none" | "conversion" | "lookback";
 export const UpdateFactMetricRequestWindowSettingsType = S.String;
@@ -56742,18 +54563,8 @@ export interface UpdateFactMetricRequestWindowSettings {
   /** Default `hours`. */
   windowUnit?: UpdateFactMetricRequestWindowSettingsWindowUnit | (string & {});
 }
-export const UpdateFactMetricRequestWindowSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: UpdateFactMetricRequestWindowSettingsType,
-    delayHours: S.optional(S.Number),
-    delayValue: S.optional(S.Number),
-    delayUnit: S.optional(UpdateFactMetricRequestWindowSettingsDelayUnit),
-    windowValue: S.optional(S.Number),
-    windowUnit: S.optional(UpdateFactMetricRequestWindowSettingsWindowUnit),
-  }),
-).annotate({
-  identifier: "UpdateFactMetricRequestWindowSettings",
-}) as any as S.Schema<UpdateFactMetricRequestWindowSettings>;
+export const UpdateFactMetricRequestWindowSettings =
+  PostFactMetricRequestWindowSettings as any as S.Schema<UpdateFactMetricRequestWindowSettings>;
 
 /** Controls the bayesian prior for the metric. If omitted, organization defaults will be used. */
 export type UpdateFactMetricRequestPriorSettings =
@@ -58673,13 +56484,8 @@ export const UpdateRampScheduleRequestLockdownConfigMode = S.String;
 export interface UpdateRampScheduleRequestLockdownConfig {
   mode: UpdateRampScheduleRequestLockdownConfigMode | (string & {});
 }
-export const UpdateRampScheduleRequestLockdownConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: UpdateRampScheduleRequestLockdownConfigMode,
-  }),
-).annotate({
-  identifier: "UpdateRampScheduleRequestLockdownConfig",
-}) as any as S.Schema<UpdateRampScheduleRequestLockdownConfig>;
+export const UpdateRampScheduleRequestLockdownConfig =
+  RampScheduleLockdownConfig as any as S.Schema<UpdateRampScheduleRequestLockdownConfig>;
 
 export interface UpdateRampScheduleRequest {
   id: string;
@@ -58858,16 +56664,8 @@ export interface UpdateRampScheduleLockdownResponseStepApproval {
   /** Surface through which the approval was granted. */
   context: UpdateRampScheduleLockdownResponseStepApprovalContext;
 }
-export const UpdateRampScheduleLockdownResponseStepApproval = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    stepIndex: S.Number,
-    approvedAt: S.String,
-    approvedBy: S.String,
-    context: UpdateRampScheduleLockdownResponseStepApprovalContext,
-  }),
-).annotate({
-  identifier: "UpdateRampScheduleLockdownResponseStepApproval",
-}) as any as S.Schema<UpdateRampScheduleLockdownResponseStepApproval>;
+export const UpdateRampScheduleLockdownResponseStepApproval =
+  SetAutoUpdateRampScheduleResponseStepApproval as any as S.Schema<UpdateRampScheduleLockdownResponseStepApproval>;
 
 /** User-selected monitoring mode. `auto` schedules snapshots automatically; `manual` requires clicking Update. */
 export type UpdateRampScheduleLockdownResponseMonitoringStatusMonitoringMode = "auto" | "manual";
@@ -58888,19 +56686,8 @@ export interface UpdateRampScheduleLockdownResponseMonitoringStatus {
   /** Whether the step at currentStepIndex has monitoring enabled */
   currentStepMonitored: boolean;
 }
-export const UpdateRampScheduleLockdownResponseMonitoringStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    safeRolloutId: S.optional(S.NullOr(S.String)),
-    monitoringMode: UpdateRampScheduleLockdownResponseMonitoringStatusMonitoringMode,
-    autoUpdate: S.Boolean,
-    effectiveAutoUpdate: S.Boolean,
-    blockedReason: S.optional(S.NullOr(S.String)),
-    nextSnapshotAt: S.optional(S.NullOr(S.String)),
-    currentStepMonitored: S.Boolean,
-  }),
-).annotate({
-  identifier: "UpdateRampScheduleLockdownResponseMonitoringStatus",
-}) as any as S.Schema<UpdateRampScheduleLockdownResponseMonitoringStatus>;
+export const UpdateRampScheduleLockdownResponseMonitoringStatus =
+  RampScheduleMonitoringStatus as any as S.Schema<UpdateRampScheduleLockdownResponseMonitoringStatus>;
 
 export interface UpdateRampScheduleLockdownResponse {
   /** Unique identifier (rs_ prefix) */
@@ -59191,16 +56978,8 @@ export interface UpdateRampScheduleMonitoringResponseStepApproval {
   /** Surface through which the approval was granted. */
   context: UpdateRampScheduleMonitoringResponseStepApprovalContext;
 }
-export const UpdateRampScheduleMonitoringResponseStepApproval = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    stepIndex: S.Number,
-    approvedAt: S.String,
-    approvedBy: S.String,
-    context: UpdateRampScheduleMonitoringResponseStepApprovalContext,
-  }),
-).annotate({
-  identifier: "UpdateRampScheduleMonitoringResponseStepApproval",
-}) as any as S.Schema<UpdateRampScheduleMonitoringResponseStepApproval>;
+export const UpdateRampScheduleMonitoringResponseStepApproval =
+  SetAutoUpdateRampScheduleResponseStepApproval as any as S.Schema<UpdateRampScheduleMonitoringResponseStepApproval>;
 
 /** User-selected monitoring mode. `auto` schedules snapshots automatically; `manual` requires clicking Update. */
 export type UpdateRampScheduleMonitoringResponseMonitoringStatusMonitoringMode = "auto" | "manual";
@@ -59221,19 +57000,8 @@ export interface UpdateRampScheduleMonitoringResponseMonitoringStatus {
   /** Whether the step at currentStepIndex has monitoring enabled */
   currentStepMonitored: boolean;
 }
-export const UpdateRampScheduleMonitoringResponseMonitoringStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    safeRolloutId: S.optional(S.NullOr(S.String)),
-    monitoringMode: UpdateRampScheduleMonitoringResponseMonitoringStatusMonitoringMode,
-    autoUpdate: S.Boolean,
-    effectiveAutoUpdate: S.Boolean,
-    blockedReason: S.optional(S.NullOr(S.String)),
-    nextSnapshotAt: S.optional(S.NullOr(S.String)),
-    currentStepMonitored: S.Boolean,
-  }),
-).annotate({
-  identifier: "UpdateRampScheduleMonitoringResponseMonitoringStatus",
-}) as any as S.Schema<UpdateRampScheduleMonitoringResponseMonitoringStatus>;
+export const UpdateRampScheduleMonitoringResponseMonitoringStatus =
+  RampScheduleMonitoringStatus as any as S.Schema<UpdateRampScheduleMonitoringResponseMonitoringStatus>;
 
 export interface UpdateRampScheduleMonitoringResponse {
   /** Unique identifier (rs_ prefix) */
@@ -59668,13 +57436,8 @@ export const UpdateRampScheduleTemplateRequestLockdownConfigMode = S.String;
 export interface UpdateRampScheduleTemplateRequestLockdownConfig {
   mode: UpdateRampScheduleTemplateRequestLockdownConfigMode | (string & {});
 }
-export const UpdateRampScheduleTemplateRequestLockdownConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: UpdateRampScheduleTemplateRequestLockdownConfigMode,
-  }),
-).annotate({
-  identifier: "UpdateRampScheduleTemplateRequestLockdownConfig",
-}) as any as S.Schema<UpdateRampScheduleTemplateRequestLockdownConfig>;
+export const UpdateRampScheduleTemplateRequestLockdownConfig =
+  RampScheduleLockdownConfig as any as S.Schema<UpdateRampScheduleTemplateRequestLockdownConfig>;
 
 export interface UpdateRampScheduleTemplateRequest {
   id: string;
@@ -59973,12 +57736,7 @@ export interface DriftDocsItem {
   key: string;
   change: DriftDocsItemChange;
 }
-export const DriftDocsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.String,
-    change: DriftDocsItemChange,
-  }),
-).annotate({ identifier: "DriftDocsItem" }) as any as S.Schema<DriftDocsItem>;
+export const DriftDocsItem = DriftContractItem as any as S.Schema<DriftDocsItem>;
 
 /** Description-only changes (no effect on validation). */
 export type DriftDocsList = Array<DriftDocsItem>;

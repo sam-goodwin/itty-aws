@@ -1218,9 +1218,8 @@ export const ListLoadBalancerActionsRequestStatusItem = S.String;
 export type ListLoadBalancerActionsRequestStatusList = Array<
   ListLoadBalancerActionsRequestStatusItem | (string & {})
 >;
-export const ListLoadBalancerActionsRequestStatusList = /*@__PURE__*/ S.Array(
-  ListLoadBalancerActionsRequestStatusItem,
-) as any as S.Schema<ListLoadBalancerActionsRequestStatusList>;
+export const ListLoadBalancerActionsRequestStatusList =
+  ListLoadBalancerActionsRequestSortList as any as S.Schema<ListLoadBalancerActionsRequestStatusList>;
 
 export interface ListLoadBalancerActionsRequest {
   /** ID of the Load Balancer. */
@@ -1384,9 +1383,8 @@ export const ListLoadBalancersActionsRequestSortItem = S.String;
 export type ListLoadBalancersActionsRequestSortList = Array<
   ListLoadBalancersActionsRequestSortItem | (string & {})
 >;
-export const ListLoadBalancersActionsRequestSortList = /*@__PURE__*/ S.Array(
-  ListLoadBalancersActionsRequestSortItem,
-) as any as S.Schema<ListLoadBalancersActionsRequestSortList>;
+export const ListLoadBalancersActionsRequestSortList =
+  ListLoadBalancerActionsRequestSortList as any as S.Schema<ListLoadBalancersActionsRequestSortList>;
 
 /** Status of the Action. */
 export type ListLoadBalancersActionsRequestStatusItem = "running" | "success" | "error";
@@ -1395,9 +1393,8 @@ export const ListLoadBalancersActionsRequestStatusItem = S.String;
 export type ListLoadBalancersActionsRequestStatusList = Array<
   ListLoadBalancersActionsRequestStatusItem | (string & {})
 >;
-export const ListLoadBalancersActionsRequestStatusList = /*@__PURE__*/ S.Array(
-  ListLoadBalancersActionsRequestStatusItem,
-) as any as S.Schema<ListLoadBalancersActionsRequestStatusList>;
+export const ListLoadBalancersActionsRequestStatusList =
+  ListLoadBalancerActionsRequestSortList as any as S.Schema<ListLoadBalancersActionsRequestStatusList>;
 
 export interface ListLoadBalancersActionsRequest {
   /** Filter the actions by ID. May be used multiple times. The response will only contain actions matching the specified IDs. */

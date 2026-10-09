@@ -379,7 +379,7 @@ export type PoiCategory =
 export const PoiCategory = S.String;
 
 export type PoiCategoryList = PoiCategory[];
-export const PoiCategoryList = /*@__PURE__*/ S.Array(PoiCategory);
+export const PoiCategoryList = TravelModeList as any as S.Schema<PoiCategoryList>;
 export interface GetStyleDescriptorRequest {
   Style: MapStyle;
   ColorScheme?: ColorScheme;
@@ -444,7 +444,8 @@ export type TileAdditionalFeature =
 export const TileAdditionalFeature = S.String;
 
 export type TileAdditionalFeatureList = TileAdditionalFeature[];
-export const TileAdditionalFeatureList = /*@__PURE__*/ S.Array(TileAdditionalFeature);
+export const TileAdditionalFeatureList =
+  TravelModeList as any as S.Schema<TileAdditionalFeatureList>;
 export type Tileset = string;
 export type SensitiveString = string | redacted.Redacted<string>;
 export interface GetTileRequest {

@@ -796,7 +796,8 @@ export type MessageSystemAttributeName =
 export const MessageSystemAttributeName = S.String;
 
 export type MessageSystemAttributeList = MessageSystemAttributeName[];
-export const MessageSystemAttributeList = /*@__PURE__*/ S.Array(MessageSystemAttributeName);
+export const MessageSystemAttributeList =
+  AttributeNameList as any as S.Schema<MessageSystemAttributeList>;
 export type MessageAttributeName = string;
 export type MessageAttributeNameList = string[];
 export const MessageAttributeNameList =
@@ -833,10 +834,8 @@ export const ReceiveMessageRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "ReceiveMessageRequest" }) as any as S.Schema<ReceiveMessageRequest>;
 export type MessageSystemAttributeMap = { [key in MessageSystemAttributeName]?: string };
-export const MessageSystemAttributeMap = /*@__PURE__*/ S.Record(
-  /*@__PURE__*/ MessageSystemAttributeName.pipe(/*@__PURE__*/ T.XmlName("Name")),
-  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Value")).pipe(S.optional),
-);
+export const MessageSystemAttributeMap =
+  QueueAttributeMap as any as S.Schema<MessageSystemAttributeMap>;
 export type Binary = Uint8Array;
 export type StringList = string[];
 export const StringList = /*@__PURE__*/ S.Array(

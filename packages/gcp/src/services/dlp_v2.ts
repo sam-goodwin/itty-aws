@@ -2472,9 +2472,8 @@ export const GooglePrivacyDlpV2InspectConfigContentOptionsItemEnum = S.String;
 export type GooglePrivacyDlpV2InspectConfigContentOptionsItemEnumList = Array<
   GooglePrivacyDlpV2InspectConfigContentOptionsItemEnum | (string & {})
 >;
-export const GooglePrivacyDlpV2InspectConfigContentOptionsItemEnumList = /*@__PURE__*/ S.Array(
-  GooglePrivacyDlpV2InspectConfigContentOptionsItemEnum,
-) as any as S.Schema<GooglePrivacyDlpV2InspectConfigContentOptionsItemEnumList>;
+export const GooglePrivacyDlpV2InspectConfigContentOptionsItemEnumList =
+  GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemEnumList as any as S.Schema<GooglePrivacyDlpV2InspectConfigContentOptionsItemEnumList>;
 
 /** Message for detecting output from deidentification transformations such as [`CryptoReplaceFfxFpeConfig`](https://docs.cloud.google.com/sensitive-data-protection/docs/reference/rest/v2/organizations.deidentifyTemplates#cryptoreplaceffxfpeconfig). These types of transformations are those that perform pseudonymization, thereby producing a "surrogate" as output. This should be used in conjunction with a field on the transformation such as `surrogate_info_type`. This CustomInfoType does not support the use of `detection_rules`. */
 export type GooglePrivacyDlpV2SurrogateType = GooglePrivacyDlpV2ActivateJobTriggerRequest;
@@ -2804,9 +2803,8 @@ export const GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemEnum = S.String;
 export type GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemEnumList = Array<
   GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemEnum | (string & {})
 >;
-export const GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemEnumList = /*@__PURE__*/ S.Array(
-  GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemEnum,
-) as any as S.Schema<GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemEnumList>;
+export const GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemEnumList =
+  GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemEnumList as any as S.Schema<GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemEnumList>;
 
 /** Message representing a set of files in a Cloud Storage bucket. Regular expressions are used to allow fine-grained control over which files in the bucket to include. Included files are those that match at least one item in `include_regex` and do not match any items in `exclude_regex`. Note that a file that matches items from both lists will _not_ be included. For a match to occur, the entire file path (i.e., everything in the url after the bucket name) must match the regular expression. For example, given the input `{bucket_name: "mybucket", include_regex: ["directory1/.*"], exclude_regex: ["directory1/excluded.*"]}`: * `gs://mybucket/directory1/myfile` will be included * `gs://mybucket/directory1/directory2/myfile` will be included (`.*` matches across `/`) * `gs://mybucket/directory0/directory1/myfile` will _not_ be included (the full path doesn't match any items in `include_regex`) * `gs://mybucket/directory1/excludedfile` will _not_ be included (the path matches an item in `exclude_regex`) If `include_regex` is left empty, it will match all files by default (this is equivalent to setting `include_regex: [".*"]`). Some other common use cases: * `{bucket_name: "mybucket", exclude_regex: [".*\.pdf"]}` will include all files in `mybucket` except for .pdf files * `{bucket_name: "mybucket", include_regex: ["directory/[^/]+"]}` will include all files directly under `gs://mybucket/directory/`, without matching across `/` */
 export interface GooglePrivacyDlpV2CloudStorageRegexFileSet {
@@ -3712,9 +3710,8 @@ export const GooglePrivacyDlpV2BigQueryTableTypesTypesItemEnum = S.String;
 export type GooglePrivacyDlpV2BigQueryTableTypesTypesItemEnumList = Array<
   GooglePrivacyDlpV2BigQueryTableTypesTypesItemEnum | (string & {})
 >;
-export const GooglePrivacyDlpV2BigQueryTableTypesTypesItemEnumList = /*@__PURE__*/ S.Array(
-  GooglePrivacyDlpV2BigQueryTableTypesTypesItemEnum,
-) as any as S.Schema<GooglePrivacyDlpV2BigQueryTableTypesTypesItemEnumList>;
+export const GooglePrivacyDlpV2BigQueryTableTypesTypesItemEnumList =
+  GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemEnumList as any as S.Schema<GooglePrivacyDlpV2BigQueryTableTypesTypesItemEnumList>;
 
 /** The types of BigQuery tables supported by Cloud DLP. */
 export interface GooglePrivacyDlpV2BigQueryTableTypes {
@@ -3767,9 +3764,7 @@ export type GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemEnumList = A
   GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemEnum | (string & {})
 >;
 export const GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemEnum,
-  ) as any as S.Schema<GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemEnumList>;
+  GooglePrivacyDlpV2TagResourcesProfileGenerationsToTagItemEnumList as any as S.Schema<GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemEnumList>;
 
 /** The cadence at which to update data profiles when a table is modified. */
 export interface GooglePrivacyDlpV2DiscoveryTableModifiedCadence {
@@ -3811,9 +3806,7 @@ export type GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemEnumList = 
   GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemEnum | (string & {})
 >;
 export const GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemEnum,
-  ) as any as S.Schema<GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemEnumList>;
+  GooglePrivacyDlpV2TagResourcesProfileGenerationsToTagItemEnumList as any as S.Schema<GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemEnumList>;
 
 /** The cadence at which to update data profiles when a schema is modified. */
 export interface GooglePrivacyDlpV2DiscoverySchemaModifiedCadence {
@@ -3822,14 +3815,8 @@ export interface GooglePrivacyDlpV2DiscoverySchemaModifiedCadence {
   /** The type of events to consider when deciding if the table's schema has been modified and should have the profile updated. Defaults to NEW_COLUMNS. */
   types?: GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemEnumList;
 }
-export const GooglePrivacyDlpV2DiscoverySchemaModifiedCadence = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    frequency: S.optional(GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyEnum),
-    types: S.optional(GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemEnumList),
-  }),
-).annotate({
-  identifier: "GooglePrivacyDlpV2DiscoverySchemaModifiedCadence",
-}) as any as S.Schema<GooglePrivacyDlpV2DiscoverySchemaModifiedCadence>;
+export const GooglePrivacyDlpV2DiscoverySchemaModifiedCadence =
+  GooglePrivacyDlpV2DiscoveryTableModifiedCadence as any as S.Schema<GooglePrivacyDlpV2DiscoverySchemaModifiedCadence>;
 
 export type GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadenceFrequencyEnum =
   | "UPDATE_FREQUENCY_UNSPECIFIED"
@@ -4176,9 +4163,7 @@ export type GooglePrivacyDlpV2AmazonS3BucketConditionsBucketTypesItemEnumList = 
   GooglePrivacyDlpV2AmazonS3BucketConditionsBucketTypesItemEnum | (string & {})
 >;
 export const GooglePrivacyDlpV2AmazonS3BucketConditionsBucketTypesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GooglePrivacyDlpV2AmazonS3BucketConditionsBucketTypesItemEnum,
-  ) as any as S.Schema<GooglePrivacyDlpV2AmazonS3BucketConditionsBucketTypesItemEnumList>;
+  GooglePrivacyDlpV2TagResourcesProfileGenerationsToTagItemEnumList as any as S.Schema<GooglePrivacyDlpV2AmazonS3BucketConditionsBucketTypesItemEnumList>;
 
 export type GooglePrivacyDlpV2AmazonS3BucketConditionsObjectStorageClassesItemEnum =
   | "UNSPECIFIED"
@@ -4193,9 +4178,7 @@ export type GooglePrivacyDlpV2AmazonS3BucketConditionsObjectStorageClassesItemEn
   GooglePrivacyDlpV2AmazonS3BucketConditionsObjectStorageClassesItemEnum | (string & {})
 >;
 export const GooglePrivacyDlpV2AmazonS3BucketConditionsObjectStorageClassesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GooglePrivacyDlpV2AmazonS3BucketConditionsObjectStorageClassesItemEnum,
-  ) as any as S.Schema<GooglePrivacyDlpV2AmazonS3BucketConditionsObjectStorageClassesItemEnumList>;
+  GooglePrivacyDlpV2TagResourcesProfileGenerationsToTagItemEnumList as any as S.Schema<GooglePrivacyDlpV2AmazonS3BucketConditionsObjectStorageClassesItemEnumList>;
 
 /** Amazon S3 bucket conditions. */
 export interface GooglePrivacyDlpV2AmazonS3BucketConditions {
@@ -4278,9 +4261,8 @@ export const GooglePrivacyDlpV2SchemaModifiedCadenceTypesItemEnum = S.String;
 export type GooglePrivacyDlpV2SchemaModifiedCadenceTypesItemEnumList = Array<
   GooglePrivacyDlpV2SchemaModifiedCadenceTypesItemEnum | (string & {})
 >;
-export const GooglePrivacyDlpV2SchemaModifiedCadenceTypesItemEnumList = /*@__PURE__*/ S.Array(
-  GooglePrivacyDlpV2SchemaModifiedCadenceTypesItemEnum,
-) as any as S.Schema<GooglePrivacyDlpV2SchemaModifiedCadenceTypesItemEnumList>;
+export const GooglePrivacyDlpV2SchemaModifiedCadenceTypesItemEnumList =
+  GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemEnumList as any as S.Schema<GooglePrivacyDlpV2SchemaModifiedCadenceTypesItemEnumList>;
 
 export type GooglePrivacyDlpV2SchemaModifiedCadenceFrequencyEnum =
   | "UPDATE_FREQUENCY_UNSPECIFIED"
@@ -4449,9 +4431,7 @@ export type GooglePrivacyDlpV2DiscoveryCloudSqlConditionsDatabaseEnginesItemEnum
   GooglePrivacyDlpV2DiscoveryCloudSqlConditionsDatabaseEnginesItemEnum | (string & {})
 >;
 export const GooglePrivacyDlpV2DiscoveryCloudSqlConditionsDatabaseEnginesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GooglePrivacyDlpV2DiscoveryCloudSqlConditionsDatabaseEnginesItemEnum,
-  ) as any as S.Schema<GooglePrivacyDlpV2DiscoveryCloudSqlConditionsDatabaseEnginesItemEnumList>;
+  GooglePrivacyDlpV2TagResourcesProfileGenerationsToTagItemEnumList as any as S.Schema<GooglePrivacyDlpV2DiscoveryCloudSqlConditionsDatabaseEnginesItemEnumList>;
 
 export type GooglePrivacyDlpV2DiscoveryCloudSqlConditionsTypesItemEnum =
   | "DATABASE_RESOURCE_TYPE_UNSPECIFIED"
@@ -4462,9 +4442,8 @@ export const GooglePrivacyDlpV2DiscoveryCloudSqlConditionsTypesItemEnum = S.Stri
 export type GooglePrivacyDlpV2DiscoveryCloudSqlConditionsTypesItemEnumList = Array<
   GooglePrivacyDlpV2DiscoveryCloudSqlConditionsTypesItemEnum | (string & {})
 >;
-export const GooglePrivacyDlpV2DiscoveryCloudSqlConditionsTypesItemEnumList = /*@__PURE__*/ S.Array(
-  GooglePrivacyDlpV2DiscoveryCloudSqlConditionsTypesItemEnum,
-) as any as S.Schema<GooglePrivacyDlpV2DiscoveryCloudSqlConditionsTypesItemEnumList>;
+export const GooglePrivacyDlpV2DiscoveryCloudSqlConditionsTypesItemEnumList =
+  GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemEnumList as any as S.Schema<GooglePrivacyDlpV2DiscoveryCloudSqlConditionsTypesItemEnumList>;
 
 /** Requirements that must be true before a table is profiled for the first time. */
 export interface GooglePrivacyDlpV2DiscoveryCloudSqlConditions {
@@ -4683,9 +4662,7 @@ export type GooglePrivacyDlpV2DiscoveryCloudStorageConditionsIncludedBucketAttri
     | (string & {})
   >;
 export const GooglePrivacyDlpV2DiscoveryCloudStorageConditionsIncludedBucketAttributesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GooglePrivacyDlpV2DiscoveryCloudStorageConditionsIncludedBucketAttributesItemEnum,
-  ) as any as S.Schema<GooglePrivacyDlpV2DiscoveryCloudStorageConditionsIncludedBucketAttributesItemEnumList>;
+  GooglePrivacyDlpV2TagResourcesProfileGenerationsToTagItemEnumList as any as S.Schema<GooglePrivacyDlpV2DiscoveryCloudStorageConditionsIncludedBucketAttributesItemEnumList>;
 
 export type GooglePrivacyDlpV2DiscoveryCloudStorageConditionsIncludedObjectAttributesItemEnum =
   | "CLOUD_STORAGE_OBJECT_ATTRIBUTE_UNSPECIFIED"
@@ -4706,9 +4683,7 @@ export type GooglePrivacyDlpV2DiscoveryCloudStorageConditionsIncludedObjectAttri
     | (string & {})
   >;
 export const GooglePrivacyDlpV2DiscoveryCloudStorageConditionsIncludedObjectAttributesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GooglePrivacyDlpV2DiscoveryCloudStorageConditionsIncludedObjectAttributesItemEnum,
-  ) as any as S.Schema<GooglePrivacyDlpV2DiscoveryCloudStorageConditionsIncludedObjectAttributesItemEnumList>;
+  GooglePrivacyDlpV2TagResourcesProfileGenerationsToTagItemEnumList as any as S.Schema<GooglePrivacyDlpV2DiscoveryCloudStorageConditionsIncludedObjectAttributesItemEnumList>;
 
 /** Requirements that must be true before a Cloud Storage bucket or object is scanned in discovery for the first time. There is an AND relationship between the top-level attributes. */
 export interface GooglePrivacyDlpV2DiscoveryCloudStorageConditions {
@@ -4804,19 +4779,8 @@ export interface GooglePrivacyDlpV2DiscoveryVertexDatasetGenerationCadence {
   /** Governs when to update data profiles when the inspection rules defined by the `InspectTemplate` change. If not set, changing the template will not cause a data profile to be updated. */
   inspectTemplateModifiedCadence?: GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence;
 }
-export const GooglePrivacyDlpV2DiscoveryVertexDatasetGenerationCadence = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      refreshFrequency: S.optional(
-        GooglePrivacyDlpV2DiscoveryVertexDatasetGenerationCadenceRefreshFrequencyEnum,
-      ),
-      inspectTemplateModifiedCadence: S.optional(
-        GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence,
-      ),
-    }),
-).annotate({
-  identifier: "GooglePrivacyDlpV2DiscoveryVertexDatasetGenerationCadence",
-}) as any as S.Schema<GooglePrivacyDlpV2DiscoveryVertexDatasetGenerationCadence>;
+export const GooglePrivacyDlpV2DiscoveryVertexDatasetGenerationCadence =
+  GooglePrivacyDlpV2DiscoveryCloudStorageGenerationCadence as any as S.Schema<GooglePrivacyDlpV2DiscoveryVertexDatasetGenerationCadence>;
 
 /** A pattern to match against one or more dataset resources. */
 export interface GooglePrivacyDlpV2VertexDatasetRegex {
@@ -6794,13 +6758,8 @@ export interface GooglePrivacyDlpV2DataRiskLevel {
   /** The score applied to the resource. */
   score?: GooglePrivacyDlpV2DataRiskLevelScoreEnum;
 }
-export const GooglePrivacyDlpV2DataRiskLevel = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    score: S.optional(GooglePrivacyDlpV2DataRiskLevelScoreEnum),
-  }),
-).annotate({
-  identifier: "GooglePrivacyDlpV2DataRiskLevel",
-}) as any as S.Schema<GooglePrivacyDlpV2DataRiskLevel>;
+export const GooglePrivacyDlpV2DataRiskLevel =
+  GooglePrivacyDlpV2SensitivityScore as any as S.Schema<GooglePrivacyDlpV2DataRiskLevel>;
 
 /** Infotype details for other infoTypes found within a column. */
 export interface GooglePrivacyDlpV2OtherInfoTypeSummary {
@@ -7024,9 +6983,8 @@ export const GooglePrivacyDlpV2DomainSignalsItemEnum = S.String;
 
 export type GooglePrivacyDlpV2DomainSignalsItemEnumList =
   Array<GooglePrivacyDlpV2DomainSignalsItemEnum>;
-export const GooglePrivacyDlpV2DomainSignalsItemEnumList = /*@__PURE__*/ S.Array(
-  GooglePrivacyDlpV2DomainSignalsItemEnum,
-) as any as S.Schema<GooglePrivacyDlpV2DomainSignalsItemEnumList>;
+export const GooglePrivacyDlpV2DomainSignalsItemEnumList =
+  GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemEnumList as any as S.Schema<GooglePrivacyDlpV2DomainSignalsItemEnumList>;
 
 export type GooglePrivacyDlpV2DomainCategoryEnum = "CATEGORY_UNSPECIFIED" | "AI" | "CODE";
 export const GooglePrivacyDlpV2DomainCategoryEnum = S.String;
@@ -8504,9 +8462,8 @@ export const GooglePrivacyDlpV2InfoTypeDescriptionSupportedByItemEnum = S.String
 
 export type GooglePrivacyDlpV2InfoTypeDescriptionSupportedByItemEnumList =
   Array<GooglePrivacyDlpV2InfoTypeDescriptionSupportedByItemEnum>;
-export const GooglePrivacyDlpV2InfoTypeDescriptionSupportedByItemEnumList = /*@__PURE__*/ S.Array(
-  GooglePrivacyDlpV2InfoTypeDescriptionSupportedByItemEnum,
-) as any as S.Schema<GooglePrivacyDlpV2InfoTypeDescriptionSupportedByItemEnumList>;
+export const GooglePrivacyDlpV2InfoTypeDescriptionSupportedByItemEnumList =
+  GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemEnumList as any as S.Schema<GooglePrivacyDlpV2InfoTypeDescriptionSupportedByItemEnumList>;
 
 /** Details about each available version for an infotype. */
 export interface GooglePrivacyDlpV2VersionDescription {

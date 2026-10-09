@@ -267,9 +267,7 @@ export type GoogleAdsSearchads360V23Common__HouseholdIncomeDimensionIncomeRanges
     GoogleAdsSearchads360V23Common__HouseholdIncomeDimensionIncomeRangesItemEnum | (string & {})
   >;
 export const GoogleAdsSearchads360V23Common__HouseholdIncomeDimensionIncomeRangesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Common__HouseholdIncomeDimensionIncomeRangesItemEnum,
-  ) as any as S.Schema<GoogleAdsSearchads360V23Common__HouseholdIncomeDimensionIncomeRangesItemEnumList>;
+  GoogleAdsSearchads360V23Common__GenderDimensionGendersItemEnumList as any as S.Schema<GoogleAdsSearchads360V23Common__HouseholdIncomeDimensionIncomeRangesItemEnumList>;
 
 /** Dimension specifying users by their household income. */
 export interface GoogleAdsSearchads360V23Common__HouseholdIncomeDimension {
@@ -304,9 +302,7 @@ export type GoogleAdsSearchads360V23Common__ParentalStatusDimensionParentalStatu
     GoogleAdsSearchads360V23Common__ParentalStatusDimensionParentalStatusesItemEnum | (string & {})
   >;
 export const GoogleAdsSearchads360V23Common__ParentalStatusDimensionParentalStatusesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Common__ParentalStatusDimensionParentalStatusesItemEnum,
-  ) as any as S.Schema<GoogleAdsSearchads360V23Common__ParentalStatusDimensionParentalStatusesItemEnumList>;
+  GoogleAdsSearchads360V23Common__GenderDimensionGendersItemEnumList as any as S.Schema<GoogleAdsSearchads360V23Common__ParentalStatusDimensionParentalStatusesItemEnumList>;
 
 /** Dimension specifying users by their parental status. */
 export interface GoogleAdsSearchads360V23Common__ParentalStatusDimension {
@@ -607,9 +603,7 @@ export type GoogleAdsSearchads360V23Resources__CampaignPrimaryStatusReasonsItemE
   GoogleAdsSearchads360V23Resources__CampaignPrimaryStatusReasonsItemEnum | (string & {})
 >;
 export const GoogleAdsSearchads360V23Resources__CampaignPrimaryStatusReasonsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Resources__CampaignPrimaryStatusReasonsItemEnum,
-  ) as any as S.Schema<GoogleAdsSearchads360V23Resources__CampaignPrimaryStatusReasonsItemEnumList>;
+  GoogleAdsSearchads360V23Common__GenderDimensionGendersItemEnumList as any as S.Schema<GoogleAdsSearchads360V23Resources__CampaignPrimaryStatusReasonsItemEnumList>;
 
 /** Manual bidding strategy that allows advertiser to set the bid per advertiser-specified action. */
 export type GoogleAdsSearchads360V23Common__ManualCpa = GoogleAdsSearchads360V23Common__TargetCpm;
@@ -1218,9 +1212,7 @@ export type GoogleAdsSearchads360V23Resources__CampaignFeedTypesItemEnumList = A
   GoogleAdsSearchads360V23Resources__CampaignFeedTypesItemEnum | (string & {})
 >;
 export const GoogleAdsSearchads360V23Resources__CampaignFeedTypesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Resources__CampaignFeedTypesItemEnum,
-  ) as any as S.Schema<GoogleAdsSearchads360V23Resources__CampaignFeedTypesItemEnumList>;
+  GoogleAdsSearchads360V23Common__GenderDimensionGendersItemEnumList as any as S.Schema<GoogleAdsSearchads360V23Resources__CampaignFeedTypesItemEnumList>;
 
 export type GoogleAdsSearchads360V23Common__TargetRestrictionTargetingDimensionEnum =
   | "UNSPECIFIED"
@@ -1367,9 +1359,7 @@ export type GoogleAdsSearchads360V23Resources_Campaign_OptimizationGoalSettingOp
     | (string & {})
   >;
 export const GoogleAdsSearchads360V23Resources_Campaign_OptimizationGoalSettingOptimizationGoalTypesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Resources_Campaign_OptimizationGoalSettingOptimizationGoalTypesItemEnum,
-  ) as any as S.Schema<GoogleAdsSearchads360V23Resources_Campaign_OptimizationGoalSettingOptimizationGoalTypesItemEnumList>;
+  GoogleAdsSearchads360V23Common__GenderDimensionGendersItemEnumList as any as S.Schema<GoogleAdsSearchads360V23Resources_Campaign_OptimizationGoalSettingOptimizationGoalTypesItemEnumList>;
 
 /** Optimization goal setting for this campaign, which includes a set of optimization goal types. */
 export interface GoogleAdsSearchads360V23Resources_Campaign_OptimizationGoalSetting {
@@ -1452,9 +1442,7 @@ export type GoogleAdsSearchads360V23Resources__CampaignExcludedParentAssetSetTyp
     GoogleAdsSearchads360V23Resources__CampaignExcludedParentAssetSetTypesItemEnum | (string & {})
   >;
 export const GoogleAdsSearchads360V23Resources__CampaignExcludedParentAssetSetTypesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Resources__CampaignExcludedParentAssetSetTypesItemEnum,
-  ) as any as S.Schema<GoogleAdsSearchads360V23Resources__CampaignExcludedParentAssetSetTypesItemEnumList>;
+  GoogleAdsSearchads360V23Common__GenderDimensionGendersItemEnumList as any as S.Schema<GoogleAdsSearchads360V23Resources__CampaignExcludedParentAssetSetTypesItemEnumList>;
 
 /** A mapping that can be used by custom parameter tags in a `tracking_url_template`, `final_urls`, or `mobile_final_urls`. */
 export interface GoogleAdsSearchads360V23Common__CustomParameter {
@@ -1659,9 +1647,7 @@ export type GoogleAdsSearchads360V23Resources__CampaignExcludedParentAssetFieldT
     GoogleAdsSearchads360V23Resources__CampaignExcludedParentAssetFieldTypesItemEnum | (string & {})
   >;
 export const GoogleAdsSearchads360V23Resources__CampaignExcludedParentAssetFieldTypesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Resources__CampaignExcludedParentAssetFieldTypesItemEnum,
-  ) as any as S.Schema<GoogleAdsSearchads360V23Resources__CampaignExcludedParentAssetFieldTypesItemEnumList>;
+  GoogleAdsSearchads360V23Common__GenderDimensionGendersItemEnumList as any as S.Schema<GoogleAdsSearchads360V23Resources__CampaignExcludedParentAssetFieldTypesItemEnumList>;
 
 /** Settings for the audience targeting. */
 export interface GoogleAdsSearchads360V23Resources_Campaign_AudienceSetting {
@@ -2371,9 +2357,7 @@ export type GoogleAdsSearchads360V23Common__AssetDisapprovedOfflineEvaluationErr
     | (string & {})
   >;
 export const GoogleAdsSearchads360V23Common__AssetDisapprovedOfflineEvaluationErrorReasonsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Common__AssetDisapprovedOfflineEvaluationErrorReasonsItemEnum,
-  ) as any as S.Schema<GoogleAdsSearchads360V23Common__AssetDisapprovedOfflineEvaluationErrorReasonsItemEnumList>;
+  GoogleAdsSearchads360V23Common__GenderDimensionGendersItemEnumList as any as S.Schema<GoogleAdsSearchads360V23Common__AssetDisapprovedOfflineEvaluationErrorReasonsItemEnumList>;
 
 /** Details related to AssetLinkPrimaryStatusReasonPB.ASSET_DISAPPROVED */
 export interface GoogleAdsSearchads360V23Common__AssetDisapproved {
@@ -2480,9 +2464,7 @@ export type GoogleAdsSearchads360V23Resources__CampaignAssetPrimaryStatusReasons
     GoogleAdsSearchads360V23Resources__CampaignAssetPrimaryStatusReasonsItemEnum | (string & {})
   >;
 export const GoogleAdsSearchads360V23Resources__CampaignAssetPrimaryStatusReasonsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Resources__CampaignAssetPrimaryStatusReasonsItemEnum,
-  ) as any as S.Schema<GoogleAdsSearchads360V23Resources__CampaignAssetPrimaryStatusReasonsItemEnumList>;
+  GoogleAdsSearchads360V23Common__GenderDimensionGendersItemEnumList as any as S.Schema<GoogleAdsSearchads360V23Resources__CampaignAssetPrimaryStatusReasonsItemEnumList>;
 
 /** A link between a Campaign and an Asset. */
 export interface GoogleAdsSearchads360V23Resources__CampaignAsset {
@@ -3028,9 +3010,7 @@ export type GoogleAdsSearchads360V23Common_PolicyTopicEvidence_DestinationMismat
     | (string & {})
   >;
 export const GoogleAdsSearchads360V23Common_PolicyTopicEvidence_DestinationMismatchUrlTypesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Common_PolicyTopicEvidence_DestinationMismatchUrlTypesItemEnum,
-  ) as any as S.Schema<GoogleAdsSearchads360V23Common_PolicyTopicEvidence_DestinationMismatchUrlTypesItemEnumList>;
+  GoogleAdsSearchads360V23Common__GenderDimensionGendersItemEnumList as any as S.Schema<GoogleAdsSearchads360V23Common_PolicyTopicEvidence_DestinationMismatchUrlTypesItemEnumList>;
 
 /** Evidence of mismatches between the URLs of a resource. */
 export interface GoogleAdsSearchads360V23Common_PolicyTopicEvidence_DestinationMismatch {
@@ -5606,9 +5586,7 @@ export type GoogleAdsSearchads360V23Resources__AdGroupCriterionPrimaryStatusReas
     GoogleAdsSearchads360V23Resources__AdGroupCriterionPrimaryStatusReasonsItemEnum | (string & {})
   >;
 export const GoogleAdsSearchads360V23Resources__AdGroupCriterionPrimaryStatusReasonsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Resources__AdGroupCriterionPrimaryStatusReasonsItemEnum,
-  ) as any as S.Schema<GoogleAdsSearchads360V23Resources__AdGroupCriterionPrimaryStatusReasonsItemEnumList>;
+  GoogleAdsSearchads360V23Common__GenderDimensionGendersItemEnumList as any as S.Schema<GoogleAdsSearchads360V23Resources__AdGroupCriterionPrimaryStatusReasonsItemEnumList>;
 
 /** A criterion for targeting a shared set of rules for item groups in Vertical Ads (e.g., for hotel ads). */
 export interface GoogleAdsSearchads360V23Common__VerticalAdsItemGroupRuleListInfo {
@@ -5641,13 +5619,8 @@ export interface GoogleAdsSearchads360V23Common__IncomeRangeInfo {
   /** Type of the income range. */
   type?: GoogleAdsSearchads360V23Common__IncomeRangeInfoTypeEnum | (string & {});
 }
-export const GoogleAdsSearchads360V23Common__IncomeRangeInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(GoogleAdsSearchads360V23Common__IncomeRangeInfoTypeEnum),
-  }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V23Common__IncomeRangeInfo",
-}) as any as S.Schema<GoogleAdsSearchads360V23Common__IncomeRangeInfo>;
+export const GoogleAdsSearchads360V23Common__IncomeRangeInfo =
+  GoogleAdsSearchads360V23Common__InteractionTypeInfo as any as S.Schema<GoogleAdsSearchads360V23Common__IncomeRangeInfo>;
 
 /** A placement criterion. This can be used to modify bids for sites when targeting the content network. */
 export interface GoogleAdsSearchads360V23Common__PlacementInfo {
@@ -5707,13 +5680,8 @@ export interface GoogleAdsSearchads360V23Common__GenderInfo {
   /** Type of the gender. */
   type?: GoogleAdsSearchads360V23Common__GenderInfoTypeEnum | (string & {});
 }
-export const GoogleAdsSearchads360V23Common__GenderInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(GoogleAdsSearchads360V23Common__GenderInfoTypeEnum),
-  }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V23Common__GenderInfo",
-}) as any as S.Schema<GoogleAdsSearchads360V23Common__GenderInfo>;
+export const GoogleAdsSearchads360V23Common__GenderInfo =
+  GoogleAdsSearchads360V23Common__InteractionTypeInfo as any as S.Schema<GoogleAdsSearchads360V23Common__GenderInfo>;
 
 /** A custom affinity criterion. A criterion of this type is only targetable. */
 export interface GoogleAdsSearchads360V23Common__CustomAffinityInfo {
@@ -6383,13 +6351,8 @@ export interface GoogleAdsSearchads360V23Common__AgeRangeInfo {
   /** Type of the age range. */
   type?: GoogleAdsSearchads360V23Common__AgeRangeInfoTypeEnum | (string & {});
 }
-export const GoogleAdsSearchads360V23Common__AgeRangeInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(GoogleAdsSearchads360V23Common__AgeRangeInfoTypeEnum),
-  }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V23Common__AgeRangeInfo",
-}) as any as S.Schema<GoogleAdsSearchads360V23Common__AgeRangeInfo>;
+export const GoogleAdsSearchads360V23Common__AgeRangeInfo =
+  GoogleAdsSearchads360V23Common__InteractionTypeInfo as any as S.Schema<GoogleAdsSearchads360V23Common__AgeRangeInfo>;
 
 export type GoogleAdsSearchads360V23Resources__AdGroupCriterionTypeEnum =
   | "UNSPECIFIED"
@@ -6508,13 +6471,8 @@ export interface GoogleAdsSearchads360V23Common__AppPaymentModelInfo {
   /** Type of the app payment model. */
   type?: GoogleAdsSearchads360V23Common__AppPaymentModelInfoTypeEnum | (string & {});
 }
-export const GoogleAdsSearchads360V23Common__AppPaymentModelInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(GoogleAdsSearchads360V23Common__AppPaymentModelInfoTypeEnum),
-  }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V23Common__AppPaymentModelInfo",
-}) as any as S.Schema<GoogleAdsSearchads360V23Common__AppPaymentModelInfo>;
+export const GoogleAdsSearchads360V23Common__AppPaymentModelInfo =
+  GoogleAdsSearchads360V23Common__InteractionTypeInfo as any as S.Schema<GoogleAdsSearchads360V23Common__AppPaymentModelInfo>;
 
 /** A custom audience criterion. */
 export interface GoogleAdsSearchads360V23Common__CustomAudienceInfo {
@@ -6567,13 +6525,8 @@ export interface GoogleAdsSearchads360V23Common__ParentalStatusInfo {
   /** Type of the parental status. */
   type?: GoogleAdsSearchads360V23Common__ParentalStatusInfoTypeEnum | (string & {});
 }
-export const GoogleAdsSearchads360V23Common__ParentalStatusInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(GoogleAdsSearchads360V23Common__ParentalStatusInfoTypeEnum),
-  }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V23Common__ParentalStatusInfo",
-}) as any as S.Schema<GoogleAdsSearchads360V23Common__ParentalStatusInfo>;
+export const GoogleAdsSearchads360V23Common__ParentalStatusInfo =
+  GoogleAdsSearchads360V23Common__InteractionTypeInfo as any as S.Schema<GoogleAdsSearchads360V23Common__ParentalStatusInfo>;
 
 /** A YouTube Channel criterion. */
 export interface GoogleAdsSearchads360V23Common__YouTubeChannelInfo {
@@ -7452,9 +7405,7 @@ export type GoogleAdsSearchads360V23Resources__CustomerPayPerConversionEligibili
     | (string & {})
   >;
 export const GoogleAdsSearchads360V23Resources__CustomerPayPerConversionEligibilityFailureReasonsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Resources__CustomerPayPerConversionEligibilityFailureReasonsItemEnum,
-  ) as any as S.Schema<GoogleAdsSearchads360V23Resources__CustomerPayPerConversionEligibilityFailureReasonsItemEnumList>;
+  GoogleAdsSearchads360V23Common__GenderDimensionGendersItemEnumList as any as S.Schema<GoogleAdsSearchads360V23Resources__CustomerPayPerConversionEligibilityFailureReasonsItemEnumList>;
 
 /** A customer. */
 export interface GoogleAdsSearchads360V23Resources__Customer {
@@ -7998,9 +7949,7 @@ export type GoogleAdsSearchads360V23Resources__CustomerAssetPrimaryStatusReasons
     GoogleAdsSearchads360V23Resources__CustomerAssetPrimaryStatusReasonsItemEnum | (string & {})
   >;
 export const GoogleAdsSearchads360V23Resources__CustomerAssetPrimaryStatusReasonsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Resources__CustomerAssetPrimaryStatusReasonsItemEnum,
-  ) as any as S.Schema<GoogleAdsSearchads360V23Resources__CustomerAssetPrimaryStatusReasonsItemEnumList>;
+  GoogleAdsSearchads360V23Common__GenderDimensionGendersItemEnumList as any as S.Schema<GoogleAdsSearchads360V23Resources__CustomerAssetPrimaryStatusReasonsItemEnumList>;
 
 export type GoogleAdsSearchads360V23Resources__CustomerAssetFieldTypeEnum =
   | "UNSPECIFIED"
@@ -8686,9 +8635,7 @@ export type GoogleAdsSearchads360V23Resources__AssetGroupAssetPrimaryStatusReaso
     GoogleAdsSearchads360V23Resources__AssetGroupAssetPrimaryStatusReasonsItemEnum | (string & {})
   >;
 export const GoogleAdsSearchads360V23Resources__AssetGroupAssetPrimaryStatusReasonsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Resources__AssetGroupAssetPrimaryStatusReasonsItemEnum,
-  ) as any as S.Schema<GoogleAdsSearchads360V23Resources__AssetGroupAssetPrimaryStatusReasonsItemEnumList>;
+  GoogleAdsSearchads360V23Common__GenderDimensionGendersItemEnumList as any as S.Schema<GoogleAdsSearchads360V23Resources__AssetGroupAssetPrimaryStatusReasonsItemEnumList>;
 
 export type GoogleAdsSearchads360V23Resources__AssetGroupAssetStatusEnum =
   | "UNSPECIFIED"
@@ -8913,13 +8860,8 @@ export interface GoogleAdsSearchads360V23Common__DeviceInfo {
   /** Type of the device. */
   type?: GoogleAdsSearchads360V23Common__DeviceInfoTypeEnum | (string & {});
 }
-export const GoogleAdsSearchads360V23Common__DeviceInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(GoogleAdsSearchads360V23Common__DeviceInfoTypeEnum),
-  }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V23Common__DeviceInfo",
-}) as any as S.Schema<GoogleAdsSearchads360V23Common__DeviceInfo>;
+export const GoogleAdsSearchads360V23Common__DeviceInfo =
+  GoogleAdsSearchads360V23Common__InteractionTypeInfo as any as S.Schema<GoogleAdsSearchads360V23Common__DeviceInfo>;
 
 export type GoogleAdsSearchads360V23Common__HotelCheckInDayInfoDayOfWeekEnum =
   | "UNSPECIFIED"
@@ -9099,9 +9041,7 @@ export type GoogleAdsSearchads360V23Resources__AdGroupAdPrimaryStatusReasonsItem
   GoogleAdsSearchads360V23Resources__AdGroupAdPrimaryStatusReasonsItemEnum | (string & {})
 >;
 export const GoogleAdsSearchads360V23Resources__AdGroupAdPrimaryStatusReasonsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Resources__AdGroupAdPrimaryStatusReasonsItemEnum,
-  ) as any as S.Schema<GoogleAdsSearchads360V23Resources__AdGroupAdPrimaryStatusReasonsItemEnumList>;
+  GoogleAdsSearchads360V23Common__GenderDimensionGendersItemEnumList as any as S.Schema<GoogleAdsSearchads360V23Resources__AdGroupAdPrimaryStatusReasonsItemEnumList>;
 
 export type GoogleAdsSearchads360V23Resources__AdGroupAdAssetAutomationSettingAssetAutomationStatusEnum =
   | "UNSPECIFIED"
@@ -9140,25 +9080,12 @@ export interface GoogleAdsSearchads360V23Resources__AdGroupAdAssetAutomationSett
     | (string & {});
 }
 export const GoogleAdsSearchads360V23Resources__AdGroupAdAssetAutomationSetting =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      assetAutomationStatus: S.optional(
-        GoogleAdsSearchads360V23Resources__AdGroupAdAssetAutomationSettingAssetAutomationStatusEnum,
-      ),
-      assetAutomationType: S.optional(
-        GoogleAdsSearchads360V23Resources__AdGroupAdAssetAutomationSettingAssetAutomationTypeEnum,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleAdsSearchads360V23Resources__AdGroupAdAssetAutomationSetting",
-  }) as any as S.Schema<GoogleAdsSearchads360V23Resources__AdGroupAdAssetAutomationSetting>;
+  GoogleAdsSearchads360V23Resources_Campaign_AssetAutomationSetting as any as S.Schema<GoogleAdsSearchads360V23Resources__AdGroupAdAssetAutomationSetting>;
 
 export type GoogleAdsSearchads360V23Resources__AdGroupAdAssetAutomationSettingList =
   Array<GoogleAdsSearchads360V23Resources__AdGroupAdAssetAutomationSetting>;
 export const GoogleAdsSearchads360V23Resources__AdGroupAdAssetAutomationSettingList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Resources__AdGroupAdAssetAutomationSetting,
-  ) as any as S.Schema<GoogleAdsSearchads360V23Resources__AdGroupAdAssetAutomationSettingList>;
+  GoogleAdsSearchads360V23Resources_Campaign_AssetAutomationSettingList as any as S.Schema<GoogleAdsSearchads360V23Resources__AdGroupAdAssetAutomationSettingList>;
 
 export type GoogleAdsSearchads360V23Resources__AdGroupAdAdStrengthEnum =
   | "UNSPECIFIED"
@@ -9403,17 +9330,8 @@ export interface GoogleAdsSearchads360V23Common__AdAssetPolicySummary {
     | GoogleAdsSearchads360V23Common__AdAssetPolicySummaryApprovalStatusEnum
     | (string & {});
 }
-export const GoogleAdsSearchads360V23Common__AdAssetPolicySummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyTopicEntries: S.optional(GoogleAdsSearchads360V23Common__PolicyTopicEntryList),
-    reviewStatus: S.optional(GoogleAdsSearchads360V23Common__AdAssetPolicySummaryReviewStatusEnum),
-    approvalStatus: S.optional(
-      GoogleAdsSearchads360V23Common__AdAssetPolicySummaryApprovalStatusEnum,
-    ),
-  }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V23Common__AdAssetPolicySummary",
-}) as any as S.Schema<GoogleAdsSearchads360V23Common__AdAssetPolicySummary>;
+export const GoogleAdsSearchads360V23Common__AdAssetPolicySummary =
+  GoogleAdsSearchads360V23Resources__AssetPolicySummary as any as S.Schema<GoogleAdsSearchads360V23Common__AdAssetPolicySummary>;
 
 /** A text asset used inside an ad. */
 export interface GoogleAdsSearchads360V23Common__AdTextAsset {
@@ -10662,9 +10580,7 @@ export type GoogleAdsSearchads360V23Resources__AssetGroupPrimaryStatusReasonsIte
   GoogleAdsSearchads360V23Resources__AssetGroupPrimaryStatusReasonsItemEnum | (string & {})
 >;
 export const GoogleAdsSearchads360V23Resources__AssetGroupPrimaryStatusReasonsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Resources__AssetGroupPrimaryStatusReasonsItemEnum,
-  ) as any as S.Schema<GoogleAdsSearchads360V23Resources__AssetGroupPrimaryStatusReasonsItemEnumList>;
+  GoogleAdsSearchads360V23Common__GenderDimensionGendersItemEnumList as any as S.Schema<GoogleAdsSearchads360V23Resources__AssetGroupPrimaryStatusReasonsItemEnumList>;
 
 export type GoogleAdsSearchads360V23Resources__AdStrengthActionItemActionItemTypeEnum =
   | "UNSPECIFIED"
@@ -11868,13 +11784,8 @@ export interface GoogleAdsSearchads360V23Common__ContentLabelInfo {
   /** Content label type, required for CREATE operations. */
   type?: GoogleAdsSearchads360V23Common__ContentLabelInfoTypeEnum | (string & {});
 }
-export const GoogleAdsSearchads360V23Common__ContentLabelInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(GoogleAdsSearchads360V23Common__ContentLabelInfoTypeEnum),
-  }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V23Common__ContentLabelInfo",
-}) as any as S.Schema<GoogleAdsSearchads360V23Common__ContentLabelInfo>;
+export const GoogleAdsSearchads360V23Common__ContentLabelInfo =
+  GoogleAdsSearchads360V23Common__InteractionTypeInfo as any as S.Schema<GoogleAdsSearchads360V23Common__ContentLabelInfo>;
 
 export type GoogleAdsSearchads360V23Resources__CustomerNegativeCriterionTypeEnum =
   | "UNSPECIFIED"
@@ -12033,9 +11944,7 @@ export type GoogleAdsSearchads360V23Resources__BiddingDataExclusionDevicesItemEn
   GoogleAdsSearchads360V23Resources__BiddingDataExclusionDevicesItemEnum | (string & {})
 >;
 export const GoogleAdsSearchads360V23Resources__BiddingDataExclusionDevicesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Resources__BiddingDataExclusionDevicesItemEnum,
-  ) as any as S.Schema<GoogleAdsSearchads360V23Resources__BiddingDataExclusionDevicesItemEnumList>;
+  GoogleAdsSearchads360V23Common__GenderDimensionGendersItemEnumList as any as S.Schema<GoogleAdsSearchads360V23Resources__BiddingDataExclusionDevicesItemEnumList>;
 
 export type GoogleAdsSearchads360V23Resources__BiddingDataExclusionAdvertisingChannelTypesItemEnum =
   | "UNSPECIFIED"
@@ -12062,9 +11971,7 @@ export type GoogleAdsSearchads360V23Resources__BiddingDataExclusionAdvertisingCh
     | (string & {})
   >;
 export const GoogleAdsSearchads360V23Resources__BiddingDataExclusionAdvertisingChannelTypesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Resources__BiddingDataExclusionAdvertisingChannelTypesItemEnum,
-  ) as any as S.Schema<GoogleAdsSearchads360V23Resources__BiddingDataExclusionAdvertisingChannelTypesItemEnumList>;
+  GoogleAdsSearchads360V23Common__GenderDimensionGendersItemEnumList as any as S.Schema<GoogleAdsSearchads360V23Resources__BiddingDataExclusionAdvertisingChannelTypesItemEnumList>;
 
 export type GoogleAdsSearchads360V23Resources__BiddingDataExclusionStatusEnum =
   | "UNSPECIFIED"
@@ -12249,9 +12156,7 @@ export type GoogleAdsSearchads360V23Resources__ConversionValueRuleSetConversionA
     | (string & {})
   >;
 export const GoogleAdsSearchads360V23Resources__ConversionValueRuleSetConversionActionCategoriesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Resources__ConversionValueRuleSetConversionActionCategoriesItemEnum,
-  ) as any as S.Schema<GoogleAdsSearchads360V23Resources__ConversionValueRuleSetConversionActionCategoriesItemEnumList>;
+  GoogleAdsSearchads360V23Common__GenderDimensionGendersItemEnumList as any as S.Schema<GoogleAdsSearchads360V23Resources__ConversionValueRuleSetConversionActionCategoriesItemEnumList>;
 
 export type GoogleAdsSearchads360V23Resources__ConversionValueRuleSetDimensionsItemEnum =
   | "UNSPECIFIED"
@@ -12267,9 +12172,7 @@ export type GoogleAdsSearchads360V23Resources__ConversionValueRuleSetDimensionsI
   GoogleAdsSearchads360V23Resources__ConversionValueRuleSetDimensionsItemEnum | (string & {})
 >;
 export const GoogleAdsSearchads360V23Resources__ConversionValueRuleSetDimensionsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Resources__ConversionValueRuleSetDimensionsItemEnum,
-  ) as any as S.Schema<GoogleAdsSearchads360V23Resources__ConversionValueRuleSetDimensionsItemEnumList>;
+  GoogleAdsSearchads360V23Common__GenderDimensionGendersItemEnumList as any as S.Schema<GoogleAdsSearchads360V23Resources__ConversionValueRuleSetDimensionsItemEnumList>;
 
 export type GoogleAdsSearchads360V23Resources__ConversionValueRuleSetAttachmentTypeEnum =
   | "UNSPECIFIED"
@@ -12957,9 +12860,7 @@ export type GoogleAdsSearchads360V23Resources__AdGroupAssetPrimaryStatusReasonsI
   GoogleAdsSearchads360V23Resources__AdGroupAssetPrimaryStatusReasonsItemEnum | (string & {})
 >;
 export const GoogleAdsSearchads360V23Resources__AdGroupAssetPrimaryStatusReasonsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Resources__AdGroupAssetPrimaryStatusReasonsItemEnum,
-  ) as any as S.Schema<GoogleAdsSearchads360V23Resources__AdGroupAssetPrimaryStatusReasonsItemEnumList>;
+  GoogleAdsSearchads360V23Common__GenderDimensionGendersItemEnumList as any as S.Schema<GoogleAdsSearchads360V23Resources__AdGroupAssetPrimaryStatusReasonsItemEnumList>;
 
 export type GoogleAdsSearchads360V23Resources__AdGroupAssetPrimaryStatusEnum =
   | "UNSPECIFIED"
@@ -13139,9 +13040,7 @@ export type GoogleAdsSearchads360V23Resources__AdGroupExcludedParentAssetSetType
     GoogleAdsSearchads360V23Resources__AdGroupExcludedParentAssetSetTypesItemEnum | (string & {})
   >;
 export const GoogleAdsSearchads360V23Resources__AdGroupExcludedParentAssetSetTypesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Resources__AdGroupExcludedParentAssetSetTypesItemEnum,
-  ) as any as S.Schema<GoogleAdsSearchads360V23Resources__AdGroupExcludedParentAssetSetTypesItemEnumList>;
+  GoogleAdsSearchads360V23Common__GenderDimensionGendersItemEnumList as any as S.Schema<GoogleAdsSearchads360V23Resources__AdGroupExcludedParentAssetSetTypesItemEnumList>;
 
 /** Vertical ads setting feature to enable/disable ad group format controls in search campaigns. */
 export interface GoogleAdsSearchads360V23Resources_AdGroup_VerticalAdsFormatSetting {
@@ -13243,9 +13142,7 @@ export type GoogleAdsSearchads360V23Resources__AdGroupExcludedParentAssetFieldTy
     GoogleAdsSearchads360V23Resources__AdGroupExcludedParentAssetFieldTypesItemEnum | (string & {})
   >;
 export const GoogleAdsSearchads360V23Resources__AdGroupExcludedParentAssetFieldTypesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Resources__AdGroupExcludedParentAssetFieldTypesItemEnum,
-  ) as any as S.Schema<GoogleAdsSearchads360V23Resources__AdGroupExcludedParentAssetFieldTypesItemEnumList>;
+  GoogleAdsSearchads360V23Common__GenderDimensionGendersItemEnumList as any as S.Schema<GoogleAdsSearchads360V23Resources__AdGroupExcludedParentAssetFieldTypesItemEnumList>;
 
 export type GoogleAdsSearchads360V23Resources__AdGroupTypeEnum =
   | "UNSPECIFIED"
@@ -13320,9 +13217,7 @@ export type GoogleAdsSearchads360V23Resources__AdGroupPrimaryStatusReasonsItemEn
   GoogleAdsSearchads360V23Resources__AdGroupPrimaryStatusReasonsItemEnum | (string & {})
 >;
 export const GoogleAdsSearchads360V23Resources__AdGroupPrimaryStatusReasonsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Resources__AdGroupPrimaryStatusReasonsItemEnum,
-  ) as any as S.Schema<GoogleAdsSearchads360V23Resources__AdGroupPrimaryStatusReasonsItemEnumList>;
+  GoogleAdsSearchads360V23Common__GenderDimensionGendersItemEnumList as any as S.Schema<GoogleAdsSearchads360V23Resources__AdGroupPrimaryStatusReasonsItemEnumList>;
 
 export type GoogleAdsSearchads360V23Resources__AdGroupEffectiveTargetRoasSourceEnum =
   | "UNSPECIFIED"
@@ -13790,9 +13685,7 @@ export type GoogleAdsSearchads360V23Resources_ConversionValueRule_ValueRuleDevic
     | (string & {})
   >;
 export const GoogleAdsSearchads360V23Resources_ConversionValueRule_ValueRuleDeviceConditionDeviceTypesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Resources_ConversionValueRule_ValueRuleDeviceConditionDeviceTypesItemEnum,
-  ) as any as S.Schema<GoogleAdsSearchads360V23Resources_ConversionValueRule_ValueRuleDeviceConditionDeviceTypesItemEnumList>;
+  GoogleAdsSearchads360V23Common__GenderDimensionGendersItemEnumList as any as S.Schema<GoogleAdsSearchads360V23Resources_ConversionValueRule_ValueRuleDeviceConditionDeviceTypesItemEnumList>;
 
 /** Condition on Device dimension. */
 export interface GoogleAdsSearchads360V23Resources_ConversionValueRule_ValueRuleDeviceCondition {
@@ -14609,9 +14502,7 @@ export type GoogleAdsSearchads360V23Resources__BiddingSeasonalityAdjustmentDevic
     GoogleAdsSearchads360V23Resources__BiddingSeasonalityAdjustmentDevicesItemEnum | (string & {})
   >;
 export const GoogleAdsSearchads360V23Resources__BiddingSeasonalityAdjustmentDevicesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Resources__BiddingSeasonalityAdjustmentDevicesItemEnum,
-  ) as any as S.Schema<GoogleAdsSearchads360V23Resources__BiddingSeasonalityAdjustmentDevicesItemEnumList>;
+  GoogleAdsSearchads360V23Common__GenderDimensionGendersItemEnumList as any as S.Schema<GoogleAdsSearchads360V23Resources__BiddingSeasonalityAdjustmentDevicesItemEnumList>;
 
 export type GoogleAdsSearchads360V23Resources__BiddingSeasonalityAdjustmentStatusEnum =
   | "UNSPECIFIED"
@@ -14645,9 +14536,7 @@ export type GoogleAdsSearchads360V23Resources__BiddingSeasonalityAdjustmentAdver
     | (string & {})
   >;
 export const GoogleAdsSearchads360V23Resources__BiddingSeasonalityAdjustmentAdvertisingChannelTypesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Resources__BiddingSeasonalityAdjustmentAdvertisingChannelTypesItemEnum,
-  ) as any as S.Schema<GoogleAdsSearchads360V23Resources__BiddingSeasonalityAdjustmentAdvertisingChannelTypesItemEnumList>;
+  GoogleAdsSearchads360V23Common__GenderDimensionGendersItemEnumList as any as S.Schema<GoogleAdsSearchads360V23Resources__BiddingSeasonalityAdjustmentAdvertisingChannelTypesItemEnumList>;
 
 /** Represents a bidding seasonality adjustment. Cannot be used in manager accounts. See "About seasonality adjustments" at https://support.google.com/google-ads/answer/10369906. */
 export interface GoogleAdsSearchads360V23Resources__BiddingSeasonalityAdjustment {
@@ -19741,9 +19630,8 @@ export const GoogleAdsSearchads360V23Common__IncomeRangeInfoList = /*@__PURE__*/
 
 export type GoogleAdsSearchads360V23Common__AgeRangeInfoList =
   Array<GoogleAdsSearchads360V23Common__AgeRangeInfo>;
-export const GoogleAdsSearchads360V23Common__AgeRangeInfoList = /*@__PURE__*/ S.Array(
-  GoogleAdsSearchads360V23Common__AgeRangeInfo,
-) as any as S.Schema<GoogleAdsSearchads360V23Common__AgeRangeInfoList>;
+export const GoogleAdsSearchads360V23Common__AgeRangeInfoList =
+  GoogleAdsSearchads360V23Common__IncomeRangeInfoList as any as S.Schema<GoogleAdsSearchads360V23Common__AgeRangeInfoList>;
 
 export type GoogleAdsSearchads360V23Common__AudienceInsightsLineupList =
   Array<GoogleAdsSearchads360V23Common__AudienceInsightsLineup>;
@@ -19818,9 +19706,7 @@ export type GoogleAdsSearchads360V23Services__GenerateAudienceCompositionInsight
     | (string & {})
   >;
 export const GoogleAdsSearchads360V23Services__GenerateAudienceCompositionInsightsRequestDimensionsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Services__GenerateAudienceCompositionInsightsRequestDimensionsItemEnum,
-  ) as any as S.Schema<GoogleAdsSearchads360V23Services__GenerateAudienceCompositionInsightsRequestDimensionsItemEnumList>;
+  GoogleAdsSearchads360V23Common__GenderDimensionGendersItemEnumList as any as S.Schema<GoogleAdsSearchads360V23Services__GenerateAudienceCompositionInsightsRequestDimensionsItemEnumList>;
 
 export type GoogleAdsSearchads360V23Common__AdditionalApplicationInfoApplicationInstanceEnum =
   | "UNSPECIFIED"
@@ -20022,9 +19908,7 @@ export const GoogleAdsSearchads360V23Common__KnowledgeGraphAttributeMetadataEnti
 export type GoogleAdsSearchads360V23Common__KnowledgeGraphAttributeMetadataEntityCapabilitiesItemEnumList =
   Array<GoogleAdsSearchads360V23Common__KnowledgeGraphAttributeMetadataEntityCapabilitiesItemEnum>;
 export const GoogleAdsSearchads360V23Common__KnowledgeGraphAttributeMetadataEntityCapabilitiesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Common__KnowledgeGraphAttributeMetadataEntityCapabilitiesItemEnum,
-  ) as any as S.Schema<GoogleAdsSearchads360V23Common__KnowledgeGraphAttributeMetadataEntityCapabilitiesItemEnumList>;
+  GoogleAdsSearchads360V23Common__GenderDimensionGendersItemEnumList as any as S.Schema<GoogleAdsSearchads360V23Common__KnowledgeGraphAttributeMetadataEntityCapabilitiesItemEnumList>;
 
 /** Metadata associated with a Knowledge Graph Entity attribute. */
 export interface GoogleAdsSearchads360V23Common__KnowledgeGraphAttributeMetadata {
@@ -20058,9 +19942,7 @@ export const GoogleAdsSearchads360V23Common__YouTubeVideoAttributeMetadataVideoP
 export type GoogleAdsSearchads360V23Common__YouTubeVideoAttributeMetadataVideoPropertiesItemEnumList =
   Array<GoogleAdsSearchads360V23Common__YouTubeVideoAttributeMetadataVideoPropertiesItemEnum>;
 export const GoogleAdsSearchads360V23Common__YouTubeVideoAttributeMetadataVideoPropertiesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Common__YouTubeVideoAttributeMetadataVideoPropertiesItemEnum,
-  ) as any as S.Schema<GoogleAdsSearchads360V23Common__YouTubeVideoAttributeMetadataVideoPropertiesItemEnumList>;
+  GoogleAdsSearchads360V23Common__GenderDimensionGendersItemEnumList as any as S.Schema<GoogleAdsSearchads360V23Common__YouTubeVideoAttributeMetadataVideoPropertiesItemEnumList>;
 
 /** Metadata for a YouTube video attribute. */
 export interface GoogleAdsSearchads360V23Common__YouTubeVideoAttributeMetadata {
@@ -20396,9 +20278,7 @@ export type GoogleAdsSearchads360V23Services__AudienceInsightsDimensionsDimensio
     GoogleAdsSearchads360V23Services__AudienceInsightsDimensionsDimensionsItemEnum | (string & {})
   >;
 export const GoogleAdsSearchads360V23Services__AudienceInsightsDimensionsDimensionsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Services__AudienceInsightsDimensionsDimensionsItemEnum,
-  ) as any as S.Schema<GoogleAdsSearchads360V23Services__AudienceInsightsDimensionsDimensionsItemEnumList>;
+  GoogleAdsSearchads360V23Common__GenderDimensionGendersItemEnumList as any as S.Schema<GoogleAdsSearchads360V23Services__AudienceInsightsDimensionsDimensionsItemEnumList>;
 
 /** A collection of dimensions to be used for generating insights. */
 export interface GoogleAdsSearchads360V23Services__AudienceInsightsDimensions {
@@ -20539,9 +20419,7 @@ export type GoogleAdsSearchads360V23Services__GenerateAudienceOverlapInsightsReq
     | (string & {})
   >;
 export const GoogleAdsSearchads360V23Services__GenerateAudienceOverlapInsightsRequestDimensionsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Services__GenerateAudienceOverlapInsightsRequestDimensionsItemEnum,
-  ) as any as S.Schema<GoogleAdsSearchads360V23Services__GenerateAudienceOverlapInsightsRequestDimensionsItemEnumList>;
+  GoogleAdsSearchads360V23Common__GenderDimensionGendersItemEnumList as any as S.Schema<GoogleAdsSearchads360V23Services__GenerateAudienceOverlapInsightsRequestDimensionsItemEnumList>;
 
 /** Request message for AudienceInsightsService.GenerateAudienceOverlapInsights. */
 export interface GoogleAdsSearchads360V23Services__GenerateAudienceOverlapInsightsRequest {
@@ -20725,9 +20603,7 @@ export type GoogleAdsSearchads360V23Services_ProductFilter_MarketingObjectiveLis
     | (string & {})
   >;
 export const GoogleAdsSearchads360V23Services_ProductFilter_MarketingObjectiveListMarketingObjectivesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Services_ProductFilter_MarketingObjectiveListMarketingObjectivesItemEnum,
-  ) as any as S.Schema<GoogleAdsSearchads360V23Services_ProductFilter_MarketingObjectiveListMarketingObjectivesItemEnumList>;
+  GoogleAdsSearchads360V23Common__GenderDimensionGendersItemEnumList as any as S.Schema<GoogleAdsSearchads360V23Services_ProductFilter_MarketingObjectiveListMarketingObjectivesItemEnumList>;
 
 /** The list of marketing objectives to generate benchmarks metrics for. */
 export interface GoogleAdsSearchads360V23Services_ProductFilter_MarketingObjectiveList {
@@ -20959,9 +20835,7 @@ export type GoogleAdsSearchads360V23Services__SurfaceTargetingSurfacesItemEnumLi
   GoogleAdsSearchads360V23Services__SurfaceTargetingSurfacesItemEnum | (string & {})
 >;
 export const GoogleAdsSearchads360V23Services__SurfaceTargetingSurfacesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Services__SurfaceTargetingSurfacesItemEnum,
-  ) as any as S.Schema<GoogleAdsSearchads360V23Services__SurfaceTargetingSurfacesItemEnumList>;
+  GoogleAdsSearchads360V23Common__GenderDimensionGendersItemEnumList as any as S.Schema<GoogleAdsSearchads360V23Services__SurfaceTargetingSurfacesItemEnumList>;
 
 /** Container for surfaces for a product. Surfaces refer to the available types of ad inventories such as In-Feed, In-Stream, and Shorts. */
 export interface GoogleAdsSearchads360V23Services__SurfaceTargeting {
@@ -21109,9 +20983,7 @@ export type GoogleAdsSearchads360V23Services__GenerateRecommendationsRequestReco
     | (string & {})
   >;
 export const GoogleAdsSearchads360V23Services__GenerateRecommendationsRequestRecommendationTypesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Services__GenerateRecommendationsRequestRecommendationTypesItemEnum,
-  ) as any as S.Schema<GoogleAdsSearchads360V23Services__GenerateRecommendationsRequestRecommendationTypesItemEnumList>;
+  GoogleAdsSearchads360V23Common__GenderDimensionGendersItemEnumList as any as S.Schema<GoogleAdsSearchads360V23Services__GenerateRecommendationsRequestRecommendationTypesItemEnumList>;
 
 export type GoogleAdsSearchads360V23Services__GenerateRecommendationsRequestAdvertisingChannelTypeEnum =
   | "UNSPECIFIED"
@@ -23191,9 +23063,7 @@ export type GoogleAdsSearchads360V23Common__KeywordPlanAggregateMetricsAggregate
     | (string & {})
   >;
 export const GoogleAdsSearchads360V23Common__KeywordPlanAggregateMetricsAggregateMetricTypesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Common__KeywordPlanAggregateMetricsAggregateMetricTypesItemEnum,
-  ) as any as S.Schema<GoogleAdsSearchads360V23Common__KeywordPlanAggregateMetricsAggregateMetricTypesItemEnumList>;
+  GoogleAdsSearchads360V23Common__GenderDimensionGendersItemEnumList as any as S.Schema<GoogleAdsSearchads360V23Common__KeywordPlanAggregateMetricsAggregateMetricTypesItemEnumList>;
 
 /** The aggregate metrics specification of the request. */
 export interface GoogleAdsSearchads360V23Common__KeywordPlanAggregateMetrics {
@@ -23514,9 +23384,7 @@ export type GoogleAdsSearchads360V23Services__GenerateKeywordIdeasRequestKeyword
     | (string & {})
   >;
 export const GoogleAdsSearchads360V23Services__GenerateKeywordIdeasRequestKeywordAnnotationItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Services__GenerateKeywordIdeasRequestKeywordAnnotationItemEnum,
-  ) as any as S.Schema<GoogleAdsSearchads360V23Services__GenerateKeywordIdeasRequestKeywordAnnotationItemEnumList>;
+  GoogleAdsSearchads360V23Common__GenderDimensionGendersItemEnumList as any as S.Schema<GoogleAdsSearchads360V23Services__GenerateKeywordIdeasRequestKeywordAnnotationItemEnumList>;
 
 export type GoogleAdsSearchads360V23Services__GenerateKeywordIdeasRequestKeywordPlanNetworkEnum =
   | "UNSPECIFIED"
@@ -23790,15 +23658,13 @@ export const GoogleAdsSearchads360V23Services__TargetingNetworkEnum = S.String;
 
 export type GoogleAdsSearchads360V23Common__DeviceInfoList =
   Array<GoogleAdsSearchads360V23Common__DeviceInfo>;
-export const GoogleAdsSearchads360V23Common__DeviceInfoList = /*@__PURE__*/ S.Array(
-  GoogleAdsSearchads360V23Common__DeviceInfo,
-) as any as S.Schema<GoogleAdsSearchads360V23Common__DeviceInfoList>;
+export const GoogleAdsSearchads360V23Common__DeviceInfoList =
+  GoogleAdsSearchads360V23Common__IncomeRangeInfoList as any as S.Schema<GoogleAdsSearchads360V23Common__DeviceInfoList>;
 
 export type GoogleAdsSearchads360V23Common__GenderInfoList =
   Array<GoogleAdsSearchads360V23Common__GenderInfo>;
-export const GoogleAdsSearchads360V23Common__GenderInfoList = /*@__PURE__*/ S.Array(
-  GoogleAdsSearchads360V23Common__GenderInfo,
-) as any as S.Schema<GoogleAdsSearchads360V23Common__GenderInfoList>;
+export const GoogleAdsSearchads360V23Common__GenderInfoList =
+  GoogleAdsSearchads360V23Common__IncomeRangeInfoList as any as S.Schema<GoogleAdsSearchads360V23Common__GenderInfoList>;
 
 /** The targeting for which traffic metrics will be reported. */
 export interface GoogleAdsSearchads360V23Services__Targeting {
@@ -25279,9 +25145,7 @@ export type GoogleAdsSearchads360V23Services__ListBenchmarksSourcesRequestBenchm
     | (string & {})
   >;
 export const GoogleAdsSearchads360V23Services__ListBenchmarksSourcesRequestBenchmarksSourcesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Services__ListBenchmarksSourcesRequestBenchmarksSourcesItemEnum,
-  ) as any as S.Schema<GoogleAdsSearchads360V23Services__ListBenchmarksSourcesRequestBenchmarksSourcesItemEnumList>;
+  GoogleAdsSearchads360V23Common__GenderDimensionGendersItemEnumList as any as S.Schema<GoogleAdsSearchads360V23Services__ListBenchmarksSourcesRequestBenchmarksSourcesItemEnumList>;
 
 /** Request message for BenchmarksService.ListBenchmarksSources. */
 export interface GoogleAdsSearchads360V23Services__ListBenchmarksSourcesRequest {
@@ -26216,9 +26080,7 @@ export const GoogleAdsSearchads360V23Services__PlannableTargetingAgeRangesItemEn
 export type GoogleAdsSearchads360V23Services__PlannableTargetingAgeRangesItemEnumList =
   Array<GoogleAdsSearchads360V23Services__PlannableTargetingAgeRangesItemEnum>;
 export const GoogleAdsSearchads360V23Services__PlannableTargetingAgeRangesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Services__PlannableTargetingAgeRangesItemEnum,
-  ) as any as S.Schema<GoogleAdsSearchads360V23Services__PlannableTargetingAgeRangesItemEnumList>;
+  GoogleAdsSearchads360V23Common__GenderDimensionGendersItemEnumList as any as S.Schema<GoogleAdsSearchads360V23Services__PlannableTargetingAgeRangesItemEnumList>;
 
 /** A Plannable YouTube Select Lineup for product targeting. */
 export interface GoogleAdsSearchads360V23Services__YouTubeSelectLineUp {
@@ -26253,9 +26115,7 @@ export const GoogleAdsSearchads360V23Services__PlannableTargetingNetworksItemEnu
 export type GoogleAdsSearchads360V23Services__PlannableTargetingNetworksItemEnumList =
   Array<GoogleAdsSearchads360V23Services__PlannableTargetingNetworksItemEnum>;
 export const GoogleAdsSearchads360V23Services__PlannableTargetingNetworksItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Services__PlannableTargetingNetworksItemEnum,
-  ) as any as S.Schema<GoogleAdsSearchads360V23Services__PlannableTargetingNetworksItemEnumList>;
+  GoogleAdsSearchads360V23Common__GenderDimensionGendersItemEnumList as any as S.Schema<GoogleAdsSearchads360V23Services__PlannableTargetingNetworksItemEnumList>;
 
 export type GoogleAdsSearchads360V23Services__SurfaceTargetingList =
   Array<GoogleAdsSearchads360V23Services__SurfaceTargeting>;
@@ -26368,9 +26228,7 @@ export type GoogleAdsSearchads360V23Services__ListPlannableUserInterestsRequestU
     | (string & {})
   >;
 export const GoogleAdsSearchads360V23Services__ListPlannableUserInterestsRequestUserInterestTaxonomyTypesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Services__ListPlannableUserInterestsRequestUserInterestTaxonomyTypesItemEnum,
-  ) as any as S.Schema<GoogleAdsSearchads360V23Services__ListPlannableUserInterestsRequestUserInterestTaxonomyTypesItemEnumList>;
+  GoogleAdsSearchads360V23Common__GenderDimensionGendersItemEnumList as any as S.Schema<GoogleAdsSearchads360V23Services__ListPlannableUserInterestsRequestUserInterestTaxonomyTypesItemEnumList>;
 
 /** Request message for ReachPlanService.ListPlannableUserInterests. */
 export interface GoogleAdsSearchads360V23Services__ListPlannableUserInterestsRequest {
@@ -36271,9 +36129,7 @@ export type GoogleAdsSearchads360V23Services__ListAudienceInsightsAttributesRequ
     | (string & {})
   >;
 export const GoogleAdsSearchads360V23Services__ListAudienceInsightsAttributesRequestDimensionsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Services__ListAudienceInsightsAttributesRequestDimensionsItemEnum,
-  ) as any as S.Schema<GoogleAdsSearchads360V23Services__ListAudienceInsightsAttributesRequestDimensionsItemEnumList>;
+  GoogleAdsSearchads360V23Common__GenderDimensionGendersItemEnumList as any as S.Schema<GoogleAdsSearchads360V23Services__ListAudienceInsightsAttributesRequestDimensionsItemEnumList>;
 
 /** Request message for AudienceInsightsService.ListAudienceInsightsAttributes. */
 export interface GoogleAdsSearchads360V23Services__ListAudienceInsightsAttributesRequest {
@@ -39066,9 +38922,7 @@ export const GoogleAdsSearchads360V23Common__CriterionCategoryChannelAvailabilit
 export type GoogleAdsSearchads360V23Common__CriterionCategoryChannelAvailabilityAdvertisingChannelSubTypeItemEnumList =
   Array<GoogleAdsSearchads360V23Common__CriterionCategoryChannelAvailabilityAdvertisingChannelSubTypeItemEnum>;
 export const GoogleAdsSearchads360V23Common__CriterionCategoryChannelAvailabilityAdvertisingChannelSubTypeItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Common__CriterionCategoryChannelAvailabilityAdvertisingChannelSubTypeItemEnum,
-  ) as any as S.Schema<GoogleAdsSearchads360V23Common__CriterionCategoryChannelAvailabilityAdvertisingChannelSubTypeItemEnumList>;
+  GoogleAdsSearchads360V23Common__GenderDimensionGendersItemEnumList as any as S.Schema<GoogleAdsSearchads360V23Common__CriterionCategoryChannelAvailabilityAdvertisingChannelSubTypeItemEnumList>;
 
 /** Information of advertising channel type and subtypes a category is available in. */
 export interface GoogleAdsSearchads360V23Common__CriterionCategoryChannelAvailability {
@@ -41224,9 +41078,7 @@ export const GoogleAdsSearchads360V23Common__MetricsInteractionEventTypesItemEnu
 export type GoogleAdsSearchads360V23Common__MetricsInteractionEventTypesItemEnumList =
   Array<GoogleAdsSearchads360V23Common__MetricsInteractionEventTypesItemEnum>;
 export const GoogleAdsSearchads360V23Common__MetricsInteractionEventTypesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Common__MetricsInteractionEventTypesItemEnum,
-  ) as any as S.Schema<GoogleAdsSearchads360V23Common__MetricsInteractionEventTypesItemEnumList>;
+  GoogleAdsSearchads360V23Common__GenderDimensionGendersItemEnumList as any as S.Schema<GoogleAdsSearchads360V23Common__MetricsInteractionEventTypesItemEnumList>;
 
 export type GoogleAdsSearchads360V23Common__MetricsHistoricalLandingPageQualityScoreEnum =
   | "UNSPECIFIED"

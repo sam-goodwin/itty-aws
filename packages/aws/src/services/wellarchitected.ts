@@ -816,7 +816,7 @@ export type DefinitionType = "WORKLOAD_METADATA" | "APP_REGISTRY" | (string & {}
 export const DefinitionType = S.String;
 
 export type WorkloadResourceDefinition = DefinitionType[];
-export const WorkloadResourceDefinition = /*@__PURE__*/ S.Array(DefinitionType);
+export const WorkloadResourceDefinition = Pillars as any as S.Schema<WorkloadResourceDefinition>;
 export interface WorkloadDiscoveryConfig {
   TrustedAdvisorIntegrationStatus?: TrustedAdvisorIntegrationStatus;
   WorkloadResourceDefinition?: DefinitionType[];
@@ -1530,7 +1530,7 @@ export type RecommendationSource =
 export const RecommendationSource = S.String;
 
 export type RecommendationSourceList = RecommendationSource[];
-export const RecommendationSourceList = /*@__PURE__*/ S.Array(RecommendationSource);
+export const RecommendationSourceList = Pillars as any as S.Schema<RecommendationSourceList>;
 export interface RecommendationGoal {
   title: string;
 }
@@ -3487,10 +3487,7 @@ export const ListCheckSummariesInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListCheckSummariesInput" }) as any as S.Schema<ListCheckSummariesInput>;
 export type CheckStatusCount = number;
 export type AccountSummary = { [key in CheckStatus]?: number };
-export const AccountSummary = /*@__PURE__*/ S.Record(
-  CheckStatus,
-  /*@__PURE__*/ S.Number.pipe(S.optional),
-);
+export const AccountSummary = QuestionCounts as any as S.Schema<AccountSummary>;
 export interface CheckSummary {
   Id?: string;
   Name?: string;
@@ -4455,7 +4452,7 @@ export const PutAgentRecommendationFeedbackResponse = /*@__PURE__*/ S.suspend(()
   identifier: "PutAgentRecommendationFeedbackResponse",
 }) as any as S.Schema<PutAgentRecommendationFeedbackResponse>;
 export type RecommendationTypes = RecommendationType[];
-export const RecommendationTypes = /*@__PURE__*/ S.Array(RecommendationType);
+export const RecommendationTypes = Pillars as any as S.Schema<RecommendationTypes>;
 export interface StartAgentRecommendationGenerationRequest {
   profileArn: string;
   types: RecommendationType[];

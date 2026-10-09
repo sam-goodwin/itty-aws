@@ -361,13 +361,7 @@ export interface MultiRegionTargets {
   rpoInMinutes?: number;
   disasterRecoveryApproach?: MultiRegionDisasterRecoveryApproach;
 }
-export const MultiRegionTargets = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rtoInMinutes: S.optional(S.Number),
-    rpoInMinutes: S.optional(S.Number),
-    disasterRecoveryApproach: S.optional(MultiRegionDisasterRecoveryApproach),
-  }),
-).annotate({ identifier: "MultiRegionTargets" }) as any as S.Schema<MultiRegionTargets>;
+export const MultiRegionTargets = MultiAzTargets as any as S.Schema<MultiRegionTargets>;
 export interface DataRecoveryTargets {
   timeBetweenBackupsInMinutes?: number;
 }
@@ -2185,7 +2179,7 @@ export type PolicyEventType =
 export const PolicyEventType = S.String;
 
 export type PolicyEventTypeList = PolicyEventType[];
-export const PolicyEventTypeList = /*@__PURE__*/ S.Array(PolicyEventType);
+export const PolicyEventTypeList = AssessmentStatusList as any as S.Schema<PolicyEventTypeList>;
 export interface ListPolicyEventsRequest {
   policyArn: string;
   eventTypes?: PolicyEventType[];
@@ -2505,7 +2499,7 @@ export type ServiceEventType =
 export const ServiceEventType = S.String;
 
 export type ServiceEventTypeList = ServiceEventType[];
-export const ServiceEventTypeList = /*@__PURE__*/ S.Array(ServiceEventType);
+export const ServiceEventTypeList = AssessmentStatusList as any as S.Schema<ServiceEventTypeList>;
 export interface ListServiceEventsRequest {
   serviceArn: string;
   eventTypes?: ServiceEventType[];
@@ -3373,7 +3367,7 @@ export type SystemEventType =
 export const SystemEventType = S.String;
 
 export type SystemEventTypeList = SystemEventType[];
-export const SystemEventTypeList = /*@__PURE__*/ S.Array(SystemEventType);
+export const SystemEventTypeList = AssessmentStatusList as any as S.Schema<SystemEventTypeList>;
 export interface ListSystemEventsRequest {
   systemArn: string;
   eventTypes?: SystemEventType[];

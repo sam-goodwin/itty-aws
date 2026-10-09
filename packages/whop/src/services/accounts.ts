@@ -625,9 +625,8 @@ export const AccountPaymentControlsRestrictedPaymentMethodsItem = S.String;
 
 export type AccountPaymentControlsRestrictedPaymentMethodsList =
   Array<AccountPaymentControlsRestrictedPaymentMethodsItem>;
-export const AccountPaymentControlsRestrictedPaymentMethodsList = /*@__PURE__*/ S.Array(
-  AccountPaymentControlsRestrictedPaymentMethodsItem,
-) as any as S.Schema<AccountPaymentControlsRestrictedPaymentMethodsList>;
+export const AccountPaymentControlsRestrictedPaymentMethodsList =
+  AccountHomePreferencesList as any as S.Schema<AccountPaymentControlsRestrictedPaymentMethodsList>;
 
 /** Why pending funds without a settlement date aren't moving yet. `kyc_incomplete` and `pending_information_request` are things the merchant can act on. `withdrawals_disabled` means Whop has blocked withdrawals, so these funds cannot become available. `null` when there's no reason to show -- still clearing, or held for a reason that isn't named here. */
 export type AccountPaymentControlsUndatedPendingReason =
@@ -1817,9 +1816,8 @@ export const FormCompanyRequestFoundersItemRolesItem = S.String;
 export type FormCompanyRequestFoundersItemRolesList = Array<
   FormCompanyRequestFoundersItemRolesItem | (string & {})
 >;
-export const FormCompanyRequestFoundersItemRolesList = /*@__PURE__*/ S.Array(
-  FormCompanyRequestFoundersItemRolesItem,
-) as any as S.Schema<FormCompanyRequestFoundersItemRolesList>;
+export const FormCompanyRequestFoundersItemRolesList =
+  AccountHomePreferencesList as any as S.Schema<FormCompanyRequestFoundersItemRolesList>;
 
 export interface FormCompanyRequestFoundersItem {
   /** Founder's personal address. */
@@ -2492,20 +2490,8 @@ export interface GetAccountPreferencesResponseAdsPaymentMethodsPrimary {
   /** The funding source kind: a Whop balance or a saved card. */
   type: GetAccountPreferencesResponseAdsPaymentMethodsPrimaryType;
 }
-export const GetAccountPreferencesResponseAdsPaymentMethodsPrimary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    card_brand: S.optional(S.NullOr(S.String)),
-    exp_month: S.optional(S.NullOr(S.Number)),
-    exp_year: S.optional(S.NullOr(S.Number)),
-    icon_url: S.optional(S.NullOr(S.String)),
-    id: S.String,
-    last4: S.optional(S.NullOr(S.String)),
-    title: S.optional(S.NullOr(S.String)),
-    type: GetAccountPreferencesResponseAdsPaymentMethodsPrimaryType,
-  }),
-).annotate({
-  identifier: "GetAccountPreferencesResponseAdsPaymentMethodsPrimary",
-}) as any as S.Schema<GetAccountPreferencesResponseAdsPaymentMethodsPrimary>;
+export const GetAccountPreferencesResponseAdsPaymentMethodsPrimary =
+  GetAccountPreferencesResponseAdsPaymentMethodsBackup as any as S.Schema<GetAccountPreferencesResponseAdsPaymentMethodsPrimary>;
 
 /** How the account pays for Whop Ads spend. `primary` is charged first; `backup` covers the charge when the primary fails. `null` until ads billing has been configured. */
 export interface GetAccountPreferencesResponseAdsPaymentMethods {
@@ -2962,9 +2948,8 @@ export const UpdateAccountRequestHomePreferencesItem = S.String;
 export type UpdateAccountRequestHomePreferencesList = Array<
   UpdateAccountRequestHomePreferencesItem | (string & {})
 >;
-export const UpdateAccountRequestHomePreferencesList = /*@__PURE__*/ S.Array(
-  UpdateAccountRequestHomePreferencesItem,
-) as any as S.Schema<UpdateAccountRequestHomePreferencesList>;
+export const UpdateAccountRequestHomePreferencesList =
+  AccountHomePreferencesList as any as S.Schema<UpdateAccountRequestHomePreferencesList>;
 
 /** Account logo, used as the profile picture when creating a Whop-managed Facebook page. Image files up to 5 MB. Pass a JSON object containing an `id` from [Create File](/api-reference/files/create-file). */
 export type UpdateAccountRequestLogo = UpdateAccountRequestBannerImage;
@@ -3129,9 +3114,8 @@ export const UpdateAccountRequestTaxCollectionEnabledStatesItem = S.String;
 export type UpdateAccountRequestTaxCollectionEnabledStatesList = Array<
   UpdateAccountRequestTaxCollectionEnabledStatesItem | (string & {})
 >;
-export const UpdateAccountRequestTaxCollectionEnabledStatesList = /*@__PURE__*/ S.Array(
-  UpdateAccountRequestTaxCollectionEnabledStatesItem,
-) as any as S.Schema<UpdateAccountRequestTaxCollectionEnabledStatesList>;
+export const UpdateAccountRequestTaxCollectionEnabledStatesList =
+  AccountHomePreferencesList as any as S.Schema<UpdateAccountRequestTaxCollectionEnabledStatesList>;
 
 /** Tax ID type, for example `eu_vat`, `gb_vat`, or `us_ein`. */
 export type UpdateAccountRequestTaxIdentifiersItemTaxIdType =
@@ -4436,14 +4420,8 @@ export interface UpdateAccountPreferencesRequestAdsPaymentMethodsPrimary {
   /** The funding source kind. */
   type: UpdateAccountPreferencesRequestAdsPaymentMethodsPrimaryType | (string & {});
 }
-export const UpdateAccountPreferencesRequestAdsPaymentMethodsPrimary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    type: UpdateAccountPreferencesRequestAdsPaymentMethodsPrimaryType,
-  }),
-).annotate({
-  identifier: "UpdateAccountPreferencesRequestAdsPaymentMethodsPrimary",
-}) as any as S.Schema<UpdateAccountPreferencesRequestAdsPaymentMethodsPrimary>;
+export const UpdateAccountPreferencesRequestAdsPaymentMethodsPrimary =
+  UpdateAccountPreferencesRequestAdsPaymentMethodsBackup as any as S.Schema<UpdateAccountPreferencesRequestAdsPaymentMethodsPrimary>;
 
 /** How the account pays for Whop Ads spend. Requires `primary`; `backup` is optional and covers the charge when the primary fails. Requires the `ad_campaign:create` scope on your API key. Configuring a `card` requires a user token; account API keys can configure only `platform_balance` sources. */
 export interface UpdateAccountPreferencesRequestAdsPaymentMethods {
@@ -4558,16 +4536,8 @@ export interface UpdateAccountPreferencesResponseAdsAgreement {
   /** Where the account's ads services agreement stands. */
   status: UpdateAccountPreferencesResponseAdsAgreementStatus;
 }
-export const UpdateAccountPreferencesResponseAdsAgreement = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accepted_at: S.NullOr(S.String),
-    agreement_version: S.NullOr(S.String),
-    printed_name: S.NullOr(S.String),
-    status: UpdateAccountPreferencesResponseAdsAgreementStatus,
-  }),
-).annotate({
-  identifier: "UpdateAccountPreferencesResponseAdsAgreement",
-}) as any as S.Schema<UpdateAccountPreferencesResponseAdsAgreement>;
+export const UpdateAccountPreferencesResponseAdsAgreement =
+  GetAccountPreferencesResponseAdsAgreement as any as S.Schema<UpdateAccountPreferencesResponseAdsAgreement>;
 
 /** Countries every approved application of this type covers, as ISO 3166-1 alpha-2 codes. Ads targeting only these countries are exempt from the category's restrictions. */
 export type UpdateAccountPreferencesResponseAdsCertificationsItemApprovedCountriesList =
@@ -4668,20 +4638,8 @@ export interface UpdateAccountPreferencesResponseAdsPaymentMethodsBackup {
   /** The funding source kind: a Whop balance or a saved card. */
   type: UpdateAccountPreferencesResponseAdsPaymentMethodsBackupType;
 }
-export const UpdateAccountPreferencesResponseAdsPaymentMethodsBackup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    card_brand: S.optional(S.NullOr(S.String)),
-    exp_month: S.optional(S.NullOr(S.Number)),
-    exp_year: S.optional(S.NullOr(S.Number)),
-    icon_url: S.optional(S.NullOr(S.String)),
-    id: S.String,
-    last4: S.optional(S.NullOr(S.String)),
-    title: S.optional(S.NullOr(S.String)),
-    type: UpdateAccountPreferencesResponseAdsPaymentMethodsBackupType,
-  }),
-).annotate({
-  identifier: "UpdateAccountPreferencesResponseAdsPaymentMethodsBackup",
-}) as any as S.Schema<UpdateAccountPreferencesResponseAdsPaymentMethodsBackup>;
+export const UpdateAccountPreferencesResponseAdsPaymentMethodsBackup =
+  GetAccountPreferencesResponseAdsPaymentMethodsBackup as any as S.Schema<UpdateAccountPreferencesResponseAdsPaymentMethodsBackup>;
 
 /** The funding source kind: a Whop balance or a saved card. */
 export type UpdateAccountPreferencesResponseAdsPaymentMethodsPrimaryType =

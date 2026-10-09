@@ -853,17 +853,8 @@ export interface CheckNameAvailabilityWithLocationResponse {
   /** Type of resource. It can be 'Microsoft.DBforPostgreSQL/flexibleServers' or 'Microsoft.DBforPostgreSQL/flexibleServers/virtualendpoints'. */
   type?: string;
 }
-export const CheckNameAvailabilityWithLocationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nameAvailable: S.optional(S.Boolean),
-    reason: S.optional(CheckNameAvailabilityWithLocationResponseReason),
-    message: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CheckNameAvailabilityWithLocationResponse",
-}) as any as S.Schema<CheckNameAvailabilityWithLocationResponse>;
+export const CheckNameAvailabilityWithLocationResponse =
+  CheckNameAvailabilityGloballyResponse as any as S.Schema<CheckNameAvailabilityWithLocationResponse>;
 
 export interface CreateBackupsAutomaticAndOnDemandRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5600,13 +5591,7 @@ export interface AuthConfigForPatch {
   /** Identifier of the tenant of the delegated resource. */
   tenantId?: string;
 }
-export const AuthConfigForPatch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    activeDirectoryAuth: S.optional(MicrosoftEntraAuth),
-    passwordAuth: S.optional(PasswordBasedAuth),
-    tenantId: S.optional(S.String),
-  }),
-).annotate({ identifier: "AuthConfigForPatch" }) as any as S.Schema<AuthConfigForPatch>;
+export const AuthConfigForPatch = AuthConfig as any as S.Schema<AuthConfigForPatch>;
 
 /** Update mode of an existing server. */
 export type CreateModeForPatch = "Default" | "Update";

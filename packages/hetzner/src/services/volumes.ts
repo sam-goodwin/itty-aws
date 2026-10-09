@@ -400,9 +400,8 @@ export type ListVolumesRequestSortItem =
 export const ListVolumesRequestSortItem = S.String;
 
 export type ListVolumesRequestSortList = Array<ListVolumesRequestSortItem | (string & {})>;
-export const ListVolumesRequestSortList = /*@__PURE__*/ S.Array(
-  ListVolumesRequestSortItem,
-) as any as S.Schema<ListVolumesRequestSortList>;
+export const ListVolumesRequestSortList =
+  ListVolumesRequestStatusList as any as S.Schema<ListVolumesRequestSortList>;
 
 export interface ListVolumesRequest {
   /** Filter resources by status. May be used multiple times. The response will only contain the resources with the specified status. */

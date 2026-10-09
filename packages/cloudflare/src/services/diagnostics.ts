@@ -399,16 +399,8 @@ export interface GetEndpointHealthcheckResponse {
   /** Optional name associated with this check */
   name?: string | null;
 }
-export const GetEndpointHealthcheckResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    checkType: EndpointHealthchecksGetResponseCheckType.pipe(T.Body("check_type")),
-    endpoint: S.String,
-    id: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "GetEndpointHealthcheckResponse",
-}) as any as S.Schema<GetEndpointHealthcheckResponse>;
+export const GetEndpointHealthcheckResponse =
+  CreateEndpointHealthcheckResponse as any as S.Schema<GetEndpointHealthcheckResponse>;
 
 export interface ListEndpointHealthchecksRequest {
   /** Identifier */
@@ -516,16 +508,8 @@ export interface UpdateEndpointHealthcheckResponse {
   /** Optional name associated with this check */
   name?: string | null;
 }
-export const UpdateEndpointHealthcheckResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    checkType: EndpointHealthchecksUpdateResponseCheckType.pipe(T.Body("check_type")),
-    endpoint: S.String,
-    id: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "UpdateEndpointHealthcheckResponse",
-}) as any as S.Schema<UpdateEndpointHealthcheckResponse>;
+export const UpdateEndpointHealthcheckResponse =
+  CreateEndpointHealthcheckResponse as any as S.Schema<UpdateEndpointHealthcheckResponse>;
 
 export type CreateEndpointHealthcheckError =
   | InvalidHealthcheckEndpoint

@@ -2274,11 +2274,8 @@ export interface DiagnosticProperties {
   /** The status of the last operation. */
   provisioningState?: ProvisioningState;
 }
-export const DiagnosticProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    provisioningState: S.optional(ProvisioningState),
-  }),
-).annotate({ identifier: "DiagnosticProperties" }) as any as S.Schema<DiagnosticProperties>;
+export const DiagnosticProperties =
+  ConfigurationProperties as any as S.Schema<DiagnosticProperties>;
 
 export interface DiagnosticsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */

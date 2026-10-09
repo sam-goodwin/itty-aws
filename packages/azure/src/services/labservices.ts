@@ -791,18 +791,8 @@ export interface GetLabPlanResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetLabPlanResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetLabPlanResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetLabPlanResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetLabPlanResponseSystemData",
-}) as any as S.Schema<GetLabPlanResponseSystemData>;
+export const GetLabPlanResponseSystemData =
+  GetImageResponseSystemData as any as S.Schema<GetLabPlanResponseSystemData>;
 
 /** Connection profile for how users connect to lab virtual machines. */
 export interface LabPlanPropertiesDefaultConnectionProfile {
@@ -1175,18 +1165,8 @@ export interface GetScheduleResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetScheduleResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetScheduleResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetScheduleResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetScheduleResponseSystemData",
-}) as any as S.Schema<GetScheduleResponseSystemData>;
+export const GetScheduleResponseSystemData =
+  GetImageResponseSystemData as any as S.Schema<GetScheduleResponseSystemData>;
 
 /** Schedule recurrence frequencies. */
 export type RecurrenceFrequency = "Daily" | "Weekly";
@@ -1351,18 +1331,8 @@ export interface GetUserResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetUserResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetUserResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetUserResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetUserResponseSystemData",
-}) as any as S.Schema<GetUserResponseSystemData>;
+export const GetUserResponseSystemData =
+  GetImageResponseSystemData as any as S.Schema<GetUserResponseSystemData>;
 
 /** Resource provisioning state. */
 export type UserPropertiesProvisioningState =
@@ -1500,18 +1470,8 @@ export interface GetVirtualMachineResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetVirtualMachineResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetVirtualMachineResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetVirtualMachineResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetVirtualMachineResponseSystemData",
-}) as any as S.Schema<GetVirtualMachineResponseSystemData>;
+export const GetVirtualMachineResponseSystemData =
+  GetImageResponseSystemData as any as S.Schema<GetVirtualMachineResponseSystemData>;
 
 /** Resource provisioning state. */
 export type VirtualMachinePropertiesProvisioningState =
@@ -1745,18 +1705,8 @@ export interface ImagesCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const ImagesCreateOrUpdateResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(ImagesCreateOrUpdateResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(ImagesCreateOrUpdateResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ImagesCreateOrUpdateResponseSystemData",
-}) as any as S.Schema<ImagesCreateOrUpdateResponseSystemData>;
+export const ImagesCreateOrUpdateResponseSystemData =
+  GetImageResponseSystemData as any as S.Schema<ImagesCreateOrUpdateResponseSystemData>;
 
 export interface ImagesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1909,18 +1859,8 @@ export interface LabPlansCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const LabPlansCreateOrUpdateResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(LabPlansCreateOrUpdateResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(LabPlansCreateOrUpdateResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LabPlansCreateOrUpdateResponseSystemData",
-}) as any as S.Schema<LabPlansCreateOrUpdateResponseSystemData>;
+export const LabPlansCreateOrUpdateResponseSystemData =
+  GetImageResponseSystemData as any as S.Schema<LabPlansCreateOrUpdateResponseSystemData>;
 
 /** The identity type. */
 export type LabPlansCreateOrUpdateResponseIdentityType = "SystemAssigned";
@@ -1935,15 +1875,8 @@ export interface LabPlansCreateOrUpdateResponseIdentity {
   /** The identity type. */
   type?: LabPlansCreateOrUpdateResponseIdentityType;
 }
-export const LabPlansCreateOrUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: S.optional(LabPlansCreateOrUpdateResponseIdentityType),
-  }),
-).annotate({
-  identifier: "LabPlansCreateOrUpdateResponseIdentity",
-}) as any as S.Schema<LabPlansCreateOrUpdateResponseIdentity>;
+export const LabPlansCreateOrUpdateResponseIdentity =
+  GetLabPlanResponseIdentity as any as S.Schema<LabPlansCreateOrUpdateResponseIdentity>;
 
 export interface LabPlansCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2265,18 +2198,8 @@ export interface LabsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const LabsCreateOrUpdateResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(LabsCreateOrUpdateResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(LabsCreateOrUpdateResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LabsCreateOrUpdateResponseSystemData",
-}) as any as S.Schema<LabsCreateOrUpdateResponseSystemData>;
+export const LabsCreateOrUpdateResponseSystemData =
+  GetImageResponseSystemData as any as S.Schema<LabsCreateOrUpdateResponseSystemData>;
 
 export interface LabsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2359,16 +2282,7 @@ export interface ImageSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const ImageSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(ImageSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(ImageSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({ identifier: "ImageSystemData" }) as any as S.Schema<ImageSystemData>;
+export const ImageSystemData = GetLabResponseSystemData as any as S.Schema<ImageSystemData>;
 
 /** Lab services virtual machine image */
 export interface Image {
@@ -2462,16 +2376,7 @@ export interface LabSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const LabSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(LabSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(LabSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({ identifier: "LabSystemData" }) as any as S.Schema<LabSystemData>;
+export const LabSystemData = GetLabResponseSystemData as any as S.Schema<LabSystemData>;
 
 /** The lab resource. */
 export interface Lab {
@@ -2595,16 +2500,7 @@ export interface LabPlanSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const LabPlanSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(LabPlanSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(LabPlanSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({ identifier: "LabPlanSystemData" }) as any as S.Schema<LabPlanSystemData>;
+export const LabPlanSystemData = GetLabResponseSystemData as any as S.Schema<LabPlanSystemData>;
 
 /** The identity type. */
 export type LabPlanIdentityType = "SystemAssigned";
@@ -2836,16 +2732,7 @@ export interface ScheduleSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const ScheduleSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(ScheduleSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(ScheduleSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({ identifier: "ScheduleSystemData" }) as any as S.Schema<ScheduleSystemData>;
+export const ScheduleSystemData = GetLabResponseSystemData as any as S.Schema<ScheduleSystemData>;
 
 /** Schedule for automatically turning virtual machines in a lab on and off at specified times. */
 export interface Schedule {
@@ -3226,16 +3113,7 @@ export interface UserSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UserSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(UserSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(UserSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({ identifier: "UserSystemData" }) as any as S.Schema<UserSystemData>;
+export const UserSystemData = GetLabResponseSystemData as any as S.Schema<UserSystemData>;
 
 /** User of a lab that can register for and use virtual machines within the lab. */
 export interface User {
@@ -3339,16 +3217,8 @@ export interface VirtualMachineSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const VirtualMachineSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(VirtualMachineSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(VirtualMachineSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({ identifier: "VirtualMachineSystemData" }) as any as S.Schema<VirtualMachineSystemData>;
+export const VirtualMachineSystemData =
+  GetLabResponseSystemData as any as S.Schema<VirtualMachineSystemData>;
 
 /** A lab virtual machine resource. */
 export interface VirtualMachine {
@@ -3554,18 +3424,8 @@ export interface SchedulesCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SchedulesCreateOrUpdateResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(SchedulesCreateOrUpdateResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(SchedulesCreateOrUpdateResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SchedulesCreateOrUpdateResponseSystemData",
-}) as any as S.Schema<SchedulesCreateOrUpdateResponseSystemData>;
+export const SchedulesCreateOrUpdateResponseSystemData =
+  GetImageResponseSystemData as any as S.Schema<SchedulesCreateOrUpdateResponseSystemData>;
 
 export interface SchedulesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -3756,18 +3616,8 @@ export interface UpdateImageResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdateImageResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(UpdateImageResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(UpdateImageResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateImageResponseSystemData",
-}) as any as S.Schema<UpdateImageResponseSystemData>;
+export const UpdateImageResponseSystemData =
+  GetImageResponseSystemData as any as S.Schema<UpdateImageResponseSystemData>;
 
 export interface UpdateImageResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -3781,15 +3631,7 @@ export interface UpdateImageResponse {
   /** Image resource properties */
   properties: ImageProperties;
 }
-export const UpdateImageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(UpdateImageResponseSystemData),
-    properties: ImageProperties,
-  }),
-).annotate({ identifier: "UpdateImageResponse" }) as any as S.Schema<UpdateImageResponse>;
+export const UpdateImageResponse = GetImageResponse as any as S.Schema<UpdateImageResponse>;
 
 /** Resource tags. */
 export type UpdateLabRequestTagsList = Array<string>;
@@ -3903,18 +3745,8 @@ export interface UpdateLabResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdateLabResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(UpdateLabResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(UpdateLabResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateLabResponseSystemData",
-}) as any as S.Schema<UpdateLabResponseSystemData>;
+export const UpdateLabResponseSystemData =
+  GetImageResponseSystemData as any as S.Schema<UpdateLabResponseSystemData>;
 
 export interface UpdateLabResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -4004,13 +3836,8 @@ export interface UpdateLabPlanRequestIdentity {
   /** The identity type. */
   type?: UpdateLabPlanRequestIdentityType | (string & {});
 }
-export const UpdateLabPlanRequestIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(UpdateLabPlanRequestIdentityType),
-  }),
-).annotate({
-  identifier: "UpdateLabPlanRequestIdentity",
-}) as any as S.Schema<UpdateLabPlanRequestIdentity>;
+export const UpdateLabPlanRequestIdentity =
+  LabPlansCreateOrUpdateRequestIdentity as any as S.Schema<UpdateLabPlanRequestIdentity>;
 
 export interface UpdateLabPlanRequest {
   /** The ID of the target subscription. */
@@ -4080,18 +3907,8 @@ export interface UpdateLabPlanResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdateLabPlanResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(UpdateLabPlanResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(UpdateLabPlanResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateLabPlanResponseSystemData",
-}) as any as S.Schema<UpdateLabPlanResponseSystemData>;
+export const UpdateLabPlanResponseSystemData =
+  GetImageResponseSystemData as any as S.Schema<UpdateLabPlanResponseSystemData>;
 
 /** The identity type. */
 export type UpdateLabPlanResponseIdentityType = "SystemAssigned";
@@ -4106,15 +3923,8 @@ export interface UpdateLabPlanResponseIdentity {
   /** The identity type. */
   type?: UpdateLabPlanResponseIdentityType;
 }
-export const UpdateLabPlanResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: S.optional(UpdateLabPlanResponseIdentityType),
-  }),
-).annotate({
-  identifier: "UpdateLabPlanResponseIdentity",
-}) as any as S.Schema<UpdateLabPlanResponseIdentity>;
+export const UpdateLabPlanResponseIdentity =
+  GetLabPlanResponseIdentity as any as S.Schema<UpdateLabPlanResponseIdentity>;
 
 export interface UpdateLabPlanResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -4230,18 +4040,8 @@ export interface UpdateScheduleResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdateScheduleResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(UpdateScheduleResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(UpdateScheduleResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateScheduleResponseSystemData",
-}) as any as S.Schema<UpdateScheduleResponseSystemData>;
+export const UpdateScheduleResponseSystemData =
+  GetImageResponseSystemData as any as S.Schema<UpdateScheduleResponseSystemData>;
 
 export interface UpdateScheduleResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -4255,15 +4055,8 @@ export interface UpdateScheduleResponse {
   /** Schedule resource properties */
   properties: ScheduleProperties;
 }
-export const UpdateScheduleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(UpdateScheduleResponseSystemData),
-    properties: ScheduleProperties,
-  }),
-).annotate({ identifier: "UpdateScheduleResponse" }) as any as S.Schema<UpdateScheduleResponse>;
+export const UpdateScheduleResponse =
+  GetScheduleResponse as any as S.Schema<UpdateScheduleResponse>;
 
 /** User resource properties used for updates. */
 export interface UserUpdateProperties {
@@ -4336,18 +4129,8 @@ export interface UpdateUserResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdateUserResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(UpdateUserResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(UpdateUserResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateUserResponseSystemData",
-}) as any as S.Schema<UpdateUserResponseSystemData>;
+export const UpdateUserResponseSystemData =
+  GetImageResponseSystemData as any as S.Schema<UpdateUserResponseSystemData>;
 
 export interface UpdateUserResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -4361,15 +4144,7 @@ export interface UpdateUserResponse {
   /** User resource properties */
   properties: UserProperties;
 }
-export const UpdateUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(UpdateUserResponseSystemData),
-    properties: UserProperties,
-  }),
-).annotate({ identifier: "UpdateUserResponse" }) as any as S.Schema<UpdateUserResponse>;
+export const UpdateUserResponse = GetUserResponse as any as S.Schema<UpdateUserResponse>;
 
 /** Resource provisioning state. */
 export type UserPropertiesInputProvisioningState =
@@ -4467,18 +4242,8 @@ export interface UsersCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UsersCreateOrUpdateResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(UsersCreateOrUpdateResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(UsersCreateOrUpdateResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UsersCreateOrUpdateResponseSystemData",
-}) as any as S.Schema<UsersCreateOrUpdateResponseSystemData>;
+export const UsersCreateOrUpdateResponseSystemData =
+  GetImageResponseSystemData as any as S.Schema<UsersCreateOrUpdateResponseSystemData>;
 
 export interface UsersCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */

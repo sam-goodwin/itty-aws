@@ -1680,15 +1680,8 @@ export interface UpdateDatabaseRequestParent {
   /** Always `true` */
   workspace?: boolean;
 }
-export const UpdateDatabaseRequestParent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: UpdateDatabaseRequestParentType,
-    page_id: S.optional(S.String),
-    workspace: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "UpdateDatabaseRequestParent",
-}) as any as S.Schema<UpdateDatabaseRequestParent>;
+export const UpdateDatabaseRequestParent =
+  CreateDatabaseRequestParent as any as S.Schema<UpdateDatabaseRequestParent>;
 
 /** The updated title of the database, if any. If not provided, the title will not be updated. */
 export type UpdateDatabaseRequestTitleList = Array<RichTextItemRequest>;

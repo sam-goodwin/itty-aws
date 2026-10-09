@@ -743,22 +743,14 @@ export interface GetVerificationResponseRequiredDocumentsItem {
   /** `pending_upload` until the document has been relayed for review; `submitted` afterwards. */
   status?: GetVerificationResponseRequiredDocumentsItemStatus;
 }
-export const GetVerificationResponseRequiredDocumentsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    document: S.optional(S.String),
-    rejection_reason: S.optional(S.NullOr(S.String)),
-    status: S.optional(GetVerificationResponseRequiredDocumentsItemStatus),
-  }),
-).annotate({
-  identifier: "GetVerificationResponseRequiredDocumentsItem",
-}) as any as S.Schema<GetVerificationResponseRequiredDocumentsItem>;
+export const GetVerificationResponseRequiredDocumentsItem =
+  CreateVerificationResponseRequiredDocumentsItem as any as S.Schema<GetVerificationResponseRequiredDocumentsItem>;
 
 /** Documents for a document-upload verification and their progress. Present only on verifications created by sending `documents`. `pending_upload` documents were not accepted yet -- send the full set again with another Create Verification call. */
 export type GetVerificationResponseRequiredDocumentsList =
   Array<GetVerificationResponseRequiredDocumentsItem>;
-export const GetVerificationResponseRequiredDocumentsList = /*@__PURE__*/ S.Array(
-  GetVerificationResponseRequiredDocumentsItem,
-) as any as S.Schema<GetVerificationResponseRequiredDocumentsList>;
+export const GetVerificationResponseRequiredDocumentsList =
+  CreateVerificationResponseRequiredDocumentsList as any as S.Schema<GetVerificationResponseRequiredDocumentsList>;
 
 /** Current verification state. `not_started` before any session exists; `pending` while a session needs the user's input; `processing` while the provider's automated checks run on a fresh submission; `action_required` when `requested_information` needs answers; `manual_review` while information already sent is under review -- an audit answer, or a document the payout provider holds -- nothing to submit, usually done within 3 business days; `approved` on success; `rejected` on failure. Call Create Verification again to start a new session. */
 export type GetVerificationResponseStatus =
@@ -1002,22 +994,14 @@ export interface ListVerificationsResponseDataItemRequiredDocumentsItem {
   /** `pending_upload` until the document has been relayed for review; `submitted` afterwards. */
   status?: ListVerificationsResponseDataItemRequiredDocumentsItemStatus;
 }
-export const ListVerificationsResponseDataItemRequiredDocumentsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    document: S.optional(S.String),
-    rejection_reason: S.optional(S.NullOr(S.String)),
-    status: S.optional(ListVerificationsResponseDataItemRequiredDocumentsItemStatus),
-  }),
-).annotate({
-  identifier: "ListVerificationsResponseDataItemRequiredDocumentsItem",
-}) as any as S.Schema<ListVerificationsResponseDataItemRequiredDocumentsItem>;
+export const ListVerificationsResponseDataItemRequiredDocumentsItem =
+  CreateVerificationResponseRequiredDocumentsItem as any as S.Schema<ListVerificationsResponseDataItemRequiredDocumentsItem>;
 
 /** Documents for a document-upload verification and their progress. Present only on verifications created by sending `documents`. `pending_upload` documents were not accepted yet -- send the full set again with another Create Verification call. */
 export type ListVerificationsResponseDataItemRequiredDocumentsList =
   Array<ListVerificationsResponseDataItemRequiredDocumentsItem>;
-export const ListVerificationsResponseDataItemRequiredDocumentsList = /*@__PURE__*/ S.Array(
-  ListVerificationsResponseDataItemRequiredDocumentsItem,
-) as any as S.Schema<ListVerificationsResponseDataItemRequiredDocumentsList>;
+export const ListVerificationsResponseDataItemRequiredDocumentsList =
+  CreateVerificationResponseRequiredDocumentsList as any as S.Schema<ListVerificationsResponseDataItemRequiredDocumentsList>;
 
 /** Current verification state. `not_started` before any session exists; `pending` while a session needs the user's input; `processing` while the provider's automated checks run on a fresh submission; `action_required` when `requested_information` needs answers; `manual_review` while information already sent is under review -- an audit answer, or a document the payout provider holds -- nothing to submit, usually done within 3 business days; `approved` on success; `rejected` on failure. Call Create Verification again to start a new session. */
 export type ListVerificationsResponseDataItemStatus =
@@ -1521,22 +1505,14 @@ export interface UpdateVerificationResponseRequiredDocumentsItem {
   /** `pending_upload` until the document has been relayed for review; `submitted` afterwards. */
   status?: UpdateVerificationResponseRequiredDocumentsItemStatus;
 }
-export const UpdateVerificationResponseRequiredDocumentsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    document: S.optional(S.String),
-    rejection_reason: S.optional(S.NullOr(S.String)),
-    status: S.optional(UpdateVerificationResponseRequiredDocumentsItemStatus),
-  }),
-).annotate({
-  identifier: "UpdateVerificationResponseRequiredDocumentsItem",
-}) as any as S.Schema<UpdateVerificationResponseRequiredDocumentsItem>;
+export const UpdateVerificationResponseRequiredDocumentsItem =
+  CreateVerificationResponseRequiredDocumentsItem as any as S.Schema<UpdateVerificationResponseRequiredDocumentsItem>;
 
 /** Documents for a document-upload verification and their progress. Present only on verifications created by sending `documents`. `pending_upload` documents were not accepted yet -- send the full set again with another Create Verification call. */
 export type UpdateVerificationResponseRequiredDocumentsList =
   Array<UpdateVerificationResponseRequiredDocumentsItem>;
-export const UpdateVerificationResponseRequiredDocumentsList = /*@__PURE__*/ S.Array(
-  UpdateVerificationResponseRequiredDocumentsItem,
-) as any as S.Schema<UpdateVerificationResponseRequiredDocumentsList>;
+export const UpdateVerificationResponseRequiredDocumentsList =
+  CreateVerificationResponseRequiredDocumentsList as any as S.Schema<UpdateVerificationResponseRequiredDocumentsList>;
 
 /** Current verification state. `not_started` before any session exists; `pending` while a session needs the user's input; `processing` while the provider's automated checks run on a fresh submission; `action_required` when `requested_information` needs answers; `manual_review` while information already sent is under review -- an audit answer, or a document the payout provider holds -- nothing to submit, usually done within 3 business days; `approved` on success; `rejected` on failure. Call Create Verification again to start a new session. */
 export type UpdateVerificationResponseStatus =

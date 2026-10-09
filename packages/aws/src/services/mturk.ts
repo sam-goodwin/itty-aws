@@ -965,7 +965,7 @@ export type ReviewPolicyLevel = "Assignment" | "HIT" | (string & {});
 export const ReviewPolicyLevel = S.String;
 
 export type ReviewPolicyLevelList = ReviewPolicyLevel[];
-export const ReviewPolicyLevelList = /*@__PURE__*/ S.Array(ReviewPolicyLevel);
+export const ReviewPolicyLevelList = AssignmentStatusList as any as S.Schema<ReviewPolicyLevelList>;
 export interface ListReviewPolicyResultsForHITRequest {
   HITId: string;
   PolicyLevels?: ReviewPolicyLevel[];
@@ -1227,7 +1227,7 @@ export type EventType =
 export const EventType = S.String;
 
 export type EventTypeList = EventType[];
-export const EventTypeList = /*@__PURE__*/ S.Array(EventType);
+export const EventTypeList = AssignmentStatusList as any as S.Schema<EventTypeList>;
 export interface NotificationSpecification {
   Destination: string;
   Transport: NotificationTransport;

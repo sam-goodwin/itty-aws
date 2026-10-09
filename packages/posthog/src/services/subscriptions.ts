@@ -306,9 +306,8 @@ export const SubscriptionOutputByweekdayItem = S.String;
 
 /** Days of week for daily or weekly subscriptions: monday, tuesday, wednesday, thursday, friday, saturday, sunday. */
 export type SubscriptionOutputByweekdayList = Array<SubscriptionOutputByweekdayItem>;
-export const SubscriptionOutputByweekdayList = /*@__PURE__*/ S.Array(
-  SubscriptionOutputByweekdayItem,
-) as any as S.Schema<SubscriptionOutputByweekdayList>;
+export const SubscriptionOutputByweekdayList =
+  CreateSubscriptionRequestByweekdayList as any as S.Schema<SubscriptionOutputByweekdayList>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
 export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
@@ -879,9 +878,8 @@ export const UpdateSubscriptionRequestByweekdayItem = S.String;
 export type UpdateSubscriptionRequestByweekdayList = Array<
   UpdateSubscriptionRequestByweekdayItem | (string & {})
 >;
-export const UpdateSubscriptionRequestByweekdayList = /*@__PURE__*/ S.Array(
-  UpdateSubscriptionRequestByweekdayItem,
-) as any as S.Schema<UpdateSubscriptionRequestByweekdayList>;
+export const UpdateSubscriptionRequestByweekdayList =
+  CreateSubscriptionRequestByweekdayList as any as S.Schema<UpdateSubscriptionRequestByweekdayList>;
 
 export interface UpdateSubscriptionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1015,9 +1013,8 @@ export const UpdateSubscriptionsPartialRequestByweekdayItem = S.String;
 export type UpdateSubscriptionsPartialRequestByweekdayList = Array<
   UpdateSubscriptionsPartialRequestByweekdayItem | (string & {})
 >;
-export const UpdateSubscriptionsPartialRequestByweekdayList = /*@__PURE__*/ S.Array(
-  UpdateSubscriptionsPartialRequestByweekdayItem,
-) as any as S.Schema<UpdateSubscriptionsPartialRequestByweekdayList>;
+export const UpdateSubscriptionsPartialRequestByweekdayList =
+  CreateSubscriptionRequestByweekdayList as any as S.Schema<UpdateSubscriptionsPartialRequestByweekdayList>;
 
 export interface UpdateSubscriptionsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */

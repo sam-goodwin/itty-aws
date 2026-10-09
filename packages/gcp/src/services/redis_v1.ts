@@ -2844,14 +2844,8 @@ export interface RescheduleMaintenanceRequest {
   /** Required. If reschedule type is SPECIFIC_TIME, must set up schedule_time as well. */
   rescheduleType?: RescheduleMaintenanceRequestRescheduleTypeEnum | (string & {});
 }
-export const RescheduleMaintenanceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scheduleTime: S.optional(S.String),
-    rescheduleType: S.optional(RescheduleMaintenanceRequestRescheduleTypeEnum),
-  }),
-).annotate({
-  identifier: "RescheduleMaintenanceRequest",
-}) as any as S.Schema<RescheduleMaintenanceRequest>;
+export const RescheduleMaintenanceRequest =
+  RescheduleClusterMaintenanceRequest as any as S.Schema<RescheduleMaintenanceRequest>;
 
 export interface RescheduleMaintenanceProjectsLocationsInstancesRequest {
   /** Required. Redis instance resource name using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` where `location_id` refers to a GCP region. */

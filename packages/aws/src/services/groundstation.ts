@@ -156,9 +156,7 @@ export interface FrequencyBandwidth {
   value: number;
   units: BandwidthUnits;
 }
-export const FrequencyBandwidth = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ value: S.Number, units: BandwidthUnits }),
-).annotate({ identifier: "FrequencyBandwidth" }) as any as S.Schema<FrequencyBandwidth>;
+export const FrequencyBandwidth = Frequency as any as S.Schema<FrequencyBandwidth>;
 export type Polarization = "RIGHT_HAND" | "LEFT_HAND" | "NONE" | (string & {});
 export const Polarization = S.String;
 
@@ -235,9 +233,7 @@ export interface Eirp {
   value: number;
   units: EirpUnits;
 }
-export const Eirp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ value: S.Number, units: EirpUnits }),
-).annotate({ identifier: "Eirp" }) as any as S.Schema<Eirp>;
+export const Eirp = Frequency as any as S.Schema<Eirp>;
 export interface AntennaUplinkConfig {
   transmitDisabled?: boolean;
   spectrumConfig: UplinkSpectrumConfig;
@@ -1154,7 +1150,8 @@ export type VersionFailureReasonCode =
 export const VersionFailureReasonCode = S.String;
 
 export type VersionFailureReasonCodes = VersionFailureReasonCode[];
-export const VersionFailureReasonCodes = /*@__PURE__*/ S.Array(VersionFailureReasonCode);
+export const VersionFailureReasonCodes =
+  CapabilityHealthReasonList as any as S.Schema<VersionFailureReasonCodes>;
 export interface ContactVersion {
   versionId?: number;
   created?: Date;
@@ -1742,7 +1739,7 @@ export const ListConfigsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ nextToken: S.optional(S.String), configList: S.optional(ConfigList) }),
 ).annotate({ identifier: "ListConfigsResponse" }) as any as S.Schema<ListConfigsResponse>;
 export type StatusList = ContactStatus[];
-export const StatusList = /*@__PURE__*/ S.Array(ContactStatus);
+export const StatusList = CapabilityHealthReasonList as any as S.Schema<StatusList>;
 export interface AzElEphemerisFilter {
   id: string;
 }
@@ -1902,7 +1899,8 @@ export const ListDataflowEndpointGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDataflowEndpointGroupsResponse",
 }) as any as S.Schema<ListDataflowEndpointGroupsResponse>;
 export type EphemerisStatusList = EphemerisStatus[];
-export const EphemerisStatusList = /*@__PURE__*/ S.Array(EphemerisStatus);
+export const EphemerisStatusList =
+  CapabilityHealthReasonList as any as S.Schema<EphemerisStatusList>;
 export interface ListEphemeridesRequest {
   satelliteId?: string;
   ephemerisType?: EphemerisType;
@@ -1958,7 +1956,8 @@ export type ReservationType = "MAINTENANCE" | "CONTACT" | (string & {});
 export const ReservationType = S.String;
 
 export type ReservationTypeFilterList = ReservationType[];
-export const ReservationTypeFilterList = /*@__PURE__*/ S.Array(ReservationType);
+export const ReservationTypeFilterList =
+  CapabilityHealthReasonList as any as S.Schema<ReservationTypeFilterList>;
 export interface ListGroundStationReservationsRequest {
   groundStationId: string;
   startTime: Date;

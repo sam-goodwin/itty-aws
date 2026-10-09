@@ -1006,18 +1006,8 @@ export interface GetConfigurationStoreResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetConfigurationStoreResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetConfigurationStoreResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetConfigurationStoreResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetConfigurationStoreResponseSystemData",
-}) as any as S.Schema<GetConfigurationStoreResponseSystemData>;
+export const GetConfigurationStoreResponseSystemData =
+  CreateConfigurationStoreResponseSystemData as any as S.Schema<GetConfigurationStoreResponseSystemData>;
 
 export interface GetConfigurationStoreResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1504,18 +1494,8 @@ export interface ConfigurationStoreSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const ConfigurationStoreSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(ConfigurationStoreSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(ConfigurationStoreSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ConfigurationStoreSystemData",
-}) as any as S.Schema<ConfigurationStoreSystemData>;
+export const ConfigurationStoreSystemData =
+  CreateConfigurationStoreResponseSystemData as any as S.Schema<ConfigurationStoreSystemData>;
 
 /** The configuration store along with all resource properties. The Configuration Store will have all information to begin utilizing it. */
 export interface ConfigurationStore {
@@ -2323,18 +2303,8 @@ export interface UpdateConfigurationStoreResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdateConfigurationStoreResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(UpdateConfigurationStoreResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(UpdateConfigurationStoreResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateConfigurationStoreResponseSystemData",
-}) as any as S.Schema<UpdateConfigurationStoreResponseSystemData>;
+export const UpdateConfigurationStoreResponseSystemData =
+  CreateConfigurationStoreResponseSystemData as any as S.Schema<UpdateConfigurationStoreResponseSystemData>;
 
 export interface UpdateConfigurationStoreResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */

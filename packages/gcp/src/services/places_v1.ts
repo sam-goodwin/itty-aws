@@ -817,9 +817,8 @@ export const GoogleMapsPlacesV1PlaceNavigationPointUsagesItemEnum = S.String;
 
 export type GoogleMapsPlacesV1PlaceNavigationPointUsagesItemEnumList =
   Array<GoogleMapsPlacesV1PlaceNavigationPointUsagesItemEnum>;
-export const GoogleMapsPlacesV1PlaceNavigationPointUsagesItemEnumList = /*@__PURE__*/ S.Array(
-  GoogleMapsPlacesV1PlaceNavigationPointUsagesItemEnum,
-) as any as S.Schema<GoogleMapsPlacesV1PlaceNavigationPointUsagesItemEnumList>;
+export const GoogleMapsPlacesV1PlaceNavigationPointUsagesItemEnumList =
+  GoogleMapsPlacesV1PlaceNavigationPointTravelModesItemEnumList as any as S.Schema<GoogleMapsPlacesV1PlaceNavigationPointUsagesItemEnumList>;
 
 /** A navigation point is a location next to a road where navigation can end. */
 export interface GoogleMapsPlacesV1PlaceNavigationPoint {
@@ -901,9 +900,8 @@ export const GoogleMapsPlacesV1PlaceEntranceTagsItemEnum = S.String;
 
 export type GoogleMapsPlacesV1PlaceEntranceTagsItemEnumList =
   Array<GoogleMapsPlacesV1PlaceEntranceTagsItemEnum>;
-export const GoogleMapsPlacesV1PlaceEntranceTagsItemEnumList = /*@__PURE__*/ S.Array(
-  GoogleMapsPlacesV1PlaceEntranceTagsItemEnum,
-) as any as S.Schema<GoogleMapsPlacesV1PlaceEntranceTagsItemEnumList>;
+export const GoogleMapsPlacesV1PlaceEntranceTagsItemEnumList =
+  GoogleMapsPlacesV1PlaceNavigationPointTravelModesItemEnumList as any as S.Schema<GoogleMapsPlacesV1PlaceEntranceTagsItemEnumList>;
 
 /** An entrance is a single latitude/longitude coordinate pair that defines the location of an entry and exit point for a place. */
 export interface GoogleMapsPlacesV1PlaceEntrance {
@@ -2172,9 +2170,8 @@ export const GoogleMapsPlacesV1SearchTextRequestPriceLevelsItemEnum = S.String;
 export type GoogleMapsPlacesV1SearchTextRequestPriceLevelsItemEnumList = Array<
   GoogleMapsPlacesV1SearchTextRequestPriceLevelsItemEnum | (string & {})
 >;
-export const GoogleMapsPlacesV1SearchTextRequestPriceLevelsItemEnumList = /*@__PURE__*/ S.Array(
-  GoogleMapsPlacesV1SearchTextRequestPriceLevelsItemEnum,
-) as any as S.Schema<GoogleMapsPlacesV1SearchTextRequestPriceLevelsItemEnumList>;
+export const GoogleMapsPlacesV1SearchTextRequestPriceLevelsItemEnumList =
+  GoogleMapsPlacesV1PlaceNavigationPointTravelModesItemEnumList as any as S.Schema<GoogleMapsPlacesV1SearchTextRequestPriceLevelsItemEnumList>;
 
 /** Request proto for SearchText. */
 export interface GoogleMapsPlacesV1SearchTextRequest {

@@ -357,9 +357,8 @@ export const ListVolumeActionsRequestStatusItem = S.String;
 export type ListVolumeActionsRequestStatusList = Array<
   ListVolumeActionsRequestStatusItem | (string & {})
 >;
-export const ListVolumeActionsRequestStatusList = /*@__PURE__*/ S.Array(
-  ListVolumeActionsRequestStatusItem,
-) as any as S.Schema<ListVolumeActionsRequestStatusList>;
+export const ListVolumeActionsRequestStatusList =
+  ListVolumeActionsRequestSortList as any as S.Schema<ListVolumeActionsRequestStatusList>;
 
 export interface ListVolumeActionsRequest {
   /** ID of the Volume. */
@@ -519,9 +518,8 @@ export const ListVolumesActionsRequestSortItem = S.String;
 export type ListVolumesActionsRequestSortList = Array<
   ListVolumesActionsRequestSortItem | (string & {})
 >;
-export const ListVolumesActionsRequestSortList = /*@__PURE__*/ S.Array(
-  ListVolumesActionsRequestSortItem,
-) as any as S.Schema<ListVolumesActionsRequestSortList>;
+export const ListVolumesActionsRequestSortList =
+  ListVolumeActionsRequestSortList as any as S.Schema<ListVolumesActionsRequestSortList>;
 
 /** Status of the Action. */
 export type ListVolumesActionsRequestStatusItem = "running" | "success" | "error";
@@ -530,9 +528,8 @@ export const ListVolumesActionsRequestStatusItem = S.String;
 export type ListVolumesActionsRequestStatusList = Array<
   ListVolumesActionsRequestStatusItem | (string & {})
 >;
-export const ListVolumesActionsRequestStatusList = /*@__PURE__*/ S.Array(
-  ListVolumesActionsRequestStatusItem,
-) as any as S.Schema<ListVolumesActionsRequestStatusList>;
+export const ListVolumesActionsRequestStatusList =
+  ListVolumeActionsRequestSortList as any as S.Schema<ListVolumesActionsRequestStatusList>;
 
 export interface ListVolumesActionsRequest {
   /** Filter the actions by ID. May be used multiple times. The response will only contain actions matching the specified IDs. */

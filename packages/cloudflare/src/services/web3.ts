@@ -292,18 +292,7 @@ export interface GetHostnameResponse {
   /** Specify the target gateway of the hostname. */
   target?: HostnamesGetResponseTarget | null;
 }
-export const GetHostnameResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-    description: S.optional(S.NullOr(S.String)),
-    dnslink: S.optional(S.NullOr(S.String)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-    name: S.optional(S.NullOr(S.String)),
-    status: S.optional(S.NullOr(HostnamesGetResponseStatus)),
-    target: S.optional(S.NullOr(HostnamesGetResponseTarget)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "GetHostnameResponse" }) as any as S.Schema<GetHostnameResponse>;
+export const GetHostnameResponse = CreateHostnameResponse as any as S.Schema<GetHostnameResponse>;
 
 export interface GetHostnameIpfsUniversalPathContentListRequest {
   /** Specify the identifier of the hostname. */
@@ -386,18 +375,8 @@ export interface GetHostnameIpfsUniversalPathContentListEntryResponse {
   /** Specify the type of content list entry to block. */
   type?: HostnamesIpfsUniversalPathsContentListsEntriesGetResponseType | null;
 }
-export const GetHostnameIpfsUniversalPathContentListEntryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    content: S.optional(S.NullOr(S.String)),
-    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-    description: S.optional(S.NullOr(S.String)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-    type: S.optional(S.NullOr(HostnamesIpfsUniversalPathsContentListsEntriesGetResponseType)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "GetHostnameIpfsUniversalPathContentListEntryResponse",
-}) as any as S.Schema<GetHostnameIpfsUniversalPathContentListEntryResponse>;
+export const GetHostnameIpfsUniversalPathContentListEntryResponse =
+  CreateHostnameIpfsUniversalPathContentListEntryResponse as any as S.Schema<GetHostnameIpfsUniversalPathContentListEntryResponse>;
 
 export interface ListHostnameIpfsUniversalPathContentListEntriesRequest {
   /** Specify the identifier of the hostname. */
@@ -588,18 +567,8 @@ export interface PatchHostnameResponse {
   /** Specify the target gateway of the hostname. */
   target?: HostnamesEditResponseTarget | null;
 }
-export const PatchHostnameResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-    description: S.optional(S.NullOr(S.String)),
-    dnslink: S.optional(S.NullOr(S.String)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-    name: S.optional(S.NullOr(S.String)),
-    status: S.optional(S.NullOr(HostnamesEditResponseStatus)),
-    target: S.optional(S.NullOr(HostnamesEditResponseTarget)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "PatchHostnameResponse" }) as any as S.Schema<PatchHostnameResponse>;
+export const PatchHostnameResponse =
+  CreateHostnameResponse as any as S.Schema<PatchHostnameResponse>;
 
 export type HostnamesIpfsUniversalPathsContentListsUpdateRequestAction = "block";
 export const HostnamesIpfsUniversalPathsContentListsUpdateRequestAction = S.String;
@@ -679,13 +648,8 @@ export interface PutHostnameIpfsUniversalPathContentListResponse {
   /** Behavior of the content list. */
   action?: HostnamesIpfsUniversalPathsContentListsUpdateResponseAction | null;
 }
-export const PutHostnameIpfsUniversalPathContentListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.optional(S.NullOr(HostnamesIpfsUniversalPathsContentListsUpdateResponseAction)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "PutHostnameIpfsUniversalPathContentListResponse",
-}) as any as S.Schema<PutHostnameIpfsUniversalPathContentListResponse>;
+export const PutHostnameIpfsUniversalPathContentListResponse =
+  GetHostnameIpfsUniversalPathContentListResponse as any as S.Schema<PutHostnameIpfsUniversalPathContentListResponse>;
 
 export type HostnamesIpfsUniversalPathsContentListsEntriesUpdateRequestType =
   | "cid"
@@ -745,18 +709,8 @@ export interface UpdateHostnameIpfsUniversalPathContentListEntryResponse {
   /** Specify the type of content list entry to block. */
   type?: HostnamesIpfsUniversalPathsContentListsEntriesUpdateResponseType | null;
 }
-export const UpdateHostnameIpfsUniversalPathContentListEntryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    content: S.optional(S.NullOr(S.String)),
-    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-    description: S.optional(S.NullOr(S.String)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-    type: S.optional(S.NullOr(HostnamesIpfsUniversalPathsContentListsEntriesUpdateResponseType)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "UpdateHostnameIpfsUniversalPathContentListEntryResponse",
-}) as any as S.Schema<UpdateHostnameIpfsUniversalPathContentListEntryResponse>;
+export const UpdateHostnameIpfsUniversalPathContentListEntryResponse =
+  CreateHostnameIpfsUniversalPathContentListEntryResponse as any as S.Schema<UpdateHostnameIpfsUniversalPathContentListEntryResponse>;
 
 export type CreateHostnameError = Web3HostnameNotEntitled | Forbidden | CloudflareOpError;
 /** Create Web3 Hostname */

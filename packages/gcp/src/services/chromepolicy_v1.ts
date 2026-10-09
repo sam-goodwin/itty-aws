@@ -585,9 +585,7 @@ export const GoogleChromePolicyVersionsV1PolicySchemaSupportedPlatformsItemEnum 
 export type GoogleChromePolicyVersionsV1PolicySchemaSupportedPlatformsItemEnumList =
   Array<GoogleChromePolicyVersionsV1PolicySchemaSupportedPlatformsItemEnum>;
 export const GoogleChromePolicyVersionsV1PolicySchemaSupportedPlatformsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleChromePolicyVersionsV1PolicySchemaSupportedPlatformsItemEnum,
-  ) as any as S.Schema<GoogleChromePolicyVersionsV1PolicySchemaSupportedPlatformsItemEnumList>;
+  GoogleChromePolicyVersionsV1PolicySchemaValidTargetResourcesItemEnumList as any as S.Schema<GoogleChromePolicyVersionsV1PolicySchemaSupportedPlatformsItemEnumList>;
 
 export type GoogleChromePolicyVersionsV1PolicyApiLifecyclePolicyApiLifecycleStageEnum =
   | "API_UNSPECIFIED"
@@ -868,9 +866,7 @@ export const GoogleChromePolicyVersionsV1UploadedFileConstraintsSupportedContent
 export type GoogleChromePolicyVersionsV1UploadedFileConstraintsSupportedContentTypesItemEnumList =
   Array<GoogleChromePolicyVersionsV1UploadedFileConstraintsSupportedContentTypesItemEnum>;
 export const GoogleChromePolicyVersionsV1UploadedFileConstraintsSupportedContentTypesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleChromePolicyVersionsV1UploadedFileConstraintsSupportedContentTypesItemEnum,
-  ) as any as S.Schema<GoogleChromePolicyVersionsV1UploadedFileConstraintsSupportedContentTypesItemEnumList>;
+  GoogleChromePolicyVersionsV1PolicySchemaValidTargetResourcesItemEnumList as any as S.Schema<GoogleChromePolicyVersionsV1UploadedFileConstraintsSupportedContentTypesItemEnumList>;
 
 /** Constraints on the uploaded file of a file policy. */
 export interface GoogleChromePolicyVersionsV1UploadedFileConstraints {

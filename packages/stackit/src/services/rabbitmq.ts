@@ -198,9 +198,8 @@ export type InstanceParametersPluginsItem =
 export const InstanceParametersPluginsItem = S.String;
 
 export type InstanceParametersPluginsList = Array<InstanceParametersPluginsItem | (string & {})>;
-export const InstanceParametersPluginsList = /*@__PURE__*/ S.Array(
-  InstanceParametersPluginsItem,
-) as any as S.Schema<InstanceParametersPluginsList>;
+export const InstanceParametersPluginsList =
+  CredentialsParametersRolesList as any as S.Schema<InstanceParametersPluginsList>;
 
 /** This property is deprecated and will be removed in a future release. */
 export type InstanceParametersRolesList = Array<string>;
@@ -223,9 +222,8 @@ export const InstanceParametersTlsProtocolsItem = S.String;
 export type InstanceParametersTlsProtocolsList = Array<
   InstanceParametersTlsProtocolsItem | (string & {})
 >;
-export const InstanceParametersTlsProtocolsList = /*@__PURE__*/ S.Array(
-  InstanceParametersTlsProtocolsItem,
-) as any as S.Schema<InstanceParametersTlsProtocolsList>;
+export const InstanceParametersTlsProtocolsList =
+  CredentialsParametersRolesList as any as S.Schema<InstanceParametersTlsProtocolsList>;
 
 export interface InstanceParameters {
   /** The unit is milliseconds. */

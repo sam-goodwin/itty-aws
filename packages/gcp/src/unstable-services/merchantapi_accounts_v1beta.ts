@@ -407,12 +407,7 @@ export interface About {
   /** Required. The about page URI. */
   uri?: string;
 }
-export const About = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: S.optional(AboutStateEnum),
-    uri: S.optional(S.String),
-  }),
-).annotate({ identifier: "About" }) as any as S.Schema<About>;
+export const About = OnDisplayToOrder as any as S.Schema<About>;
 
 export type OmnichannelSettingLsfTypeEnum =
   | "LSF_TYPE_UNSPECIFIED"
@@ -436,12 +431,7 @@ export interface InStock {
   /** Output only. The state of the in-stock serving. */
   state?: InStockStateEnum | (string & {});
 }
-export const InStock = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uri: S.optional(S.String),
-    state: S.optional(InStockStateEnum),
-  }),
-).annotate({ identifier: "InStock" }) as any as S.Schema<InStock>;
+export const InStock = Pickup as any as S.Schema<InStock>;
 
 export type InventoryVerificationContactStateEnum =
   | "STATE_UNSPECIFIED"
@@ -670,9 +660,8 @@ export const OnlineReturnPolicyReturnMethodsItemEnum = S.String;
 export type OnlineReturnPolicyReturnMethodsItemEnumList = Array<
   OnlineReturnPolicyReturnMethodsItemEnum | (string & {})
 >;
-export const OnlineReturnPolicyReturnMethodsItemEnumList = /*@__PURE__*/ S.Array(
-  OnlineReturnPolicyReturnMethodsItemEnum,
-) as any as S.Schema<OnlineReturnPolicyReturnMethodsItemEnumList>;
+export const OnlineReturnPolicyReturnMethodsItemEnumList =
+  OnlineReturnPolicyItemConditionsItemEnumList as any as S.Schema<OnlineReturnPolicyReturnMethodsItemEnumList>;
 
 export type ReturnShippingFeeTypeEnum = "TYPE_UNSPECIFIED" | "FIXED" | "CUSTOMER_PAYING_ACTUAL_FEE";
 export const ReturnShippingFeeTypeEnum = S.String;
@@ -792,9 +781,8 @@ export const CheckoutSettingsEligibleDestinationsItemEnum = S.String;
 export type CheckoutSettingsEligibleDestinationsItemEnumList = Array<
   CheckoutSettingsEligibleDestinationsItemEnum | (string & {})
 >;
-export const CheckoutSettingsEligibleDestinationsItemEnumList = /*@__PURE__*/ S.Array(
-  CheckoutSettingsEligibleDestinationsItemEnum,
-) as any as S.Schema<CheckoutSettingsEligibleDestinationsItemEnumList>;
+export const CheckoutSettingsEligibleDestinationsItemEnumList =
+  OnlineReturnPolicyItemConditionsItemEnumList as any as S.Schema<CheckoutSettingsEligibleDestinationsItemEnumList>;
 
 export type CheckoutSettingsEffectiveReviewStateEnum =
   | "CHECKOUT_REVIEW_STATE_UNSPECIFIED"
@@ -1028,9 +1016,8 @@ export type UserAccessRightsItemEnum =
 export const UserAccessRightsItemEnum = S.String;
 
 export type UserAccessRightsItemEnumList = Array<UserAccessRightsItemEnum | (string & {})>;
-export const UserAccessRightsItemEnumList = /*@__PURE__*/ S.Array(
-  UserAccessRightsItemEnum,
-) as any as S.Schema<UserAccessRightsItemEnumList>;
+export const UserAccessRightsItemEnumList =
+  OnlineReturnPolicyItemConditionsItemEnumList as any as S.Schema<UserAccessRightsItemEnumList>;
 
 export type UserStateEnum = "STATE_UNSPECIFIED" | "PENDING" | "VERIFIED";
 export const UserStateEnum = S.String;
@@ -2339,9 +2326,8 @@ export const BusinessDayConfigBusinessDaysItemEnum = S.String;
 export type BusinessDayConfigBusinessDaysItemEnumList = Array<
   BusinessDayConfigBusinessDaysItemEnum | (string & {})
 >;
-export const BusinessDayConfigBusinessDaysItemEnumList = /*@__PURE__*/ S.Array(
-  BusinessDayConfigBusinessDaysItemEnum,
-) as any as S.Schema<BusinessDayConfigBusinessDaysItemEnumList>;
+export const BusinessDayConfigBusinessDaysItemEnumList =
+  OnlineReturnPolicyItemConditionsItemEnumList as any as S.Schema<BusinessDayConfigBusinessDaysItemEnumList>;
 
 /** Business days of the warehouse. */
 export interface BusinessDayConfig {

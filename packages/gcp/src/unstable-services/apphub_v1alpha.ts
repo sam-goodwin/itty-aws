@@ -341,11 +341,7 @@ export interface RegistrationType {
   /** Output only. The registration type of a service. */
   type?: RegistrationTypeTypeEnum | (string & {});
 }
-export const RegistrationType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(RegistrationTypeTypeEnum),
-  }),
-).annotate({ identifier: "RegistrationType" }) as any as S.Schema<RegistrationType>;
+export const RegistrationType = Scope as any as S.Schema<RegistrationType>;
 
 /** The identity associated with a service or workload. */
 export interface Identity {
@@ -383,11 +379,7 @@ export interface FunctionalType {
   /** Output only. The functional type of a service or workload. */
   type?: FunctionalTypeTypeEnum | (string & {});
 }
-export const FunctionalType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(FunctionalTypeTypeEnum),
-  }),
-).annotate({ identifier: "FunctionalType" }) as any as S.Schema<FunctionalType>;
+export const FunctionalType = Scope as any as S.Schema<FunctionalType>;
 
 /** Properties of an underlying cloud resource that can comprise a Service. */
 export interface ServiceProperties {

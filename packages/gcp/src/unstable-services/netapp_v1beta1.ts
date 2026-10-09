@@ -1147,9 +1147,8 @@ export type VolumeSmbSettingsItemEnum =
 export const VolumeSmbSettingsItemEnum = S.String;
 
 export type VolumeSmbSettingsItemEnumList = Array<VolumeSmbSettingsItemEnum | (string & {})>;
-export const VolumeSmbSettingsItemEnumList = /*@__PURE__*/ S.Array(
-  VolumeSmbSettingsItemEnum,
-) as any as S.Schema<VolumeSmbSettingsItemEnumList>;
+export const VolumeSmbSettingsItemEnumList =
+  VolumeProtocolsItemEnumList as any as S.Schema<VolumeSmbSettingsItemEnumList>;
 
 /** Pre-populate cache volume with data from the origin volume. */
 export interface CachePrePopulate {
@@ -1410,9 +1409,8 @@ export const VolumeRestrictedActionsItemEnum = S.String;
 export type VolumeRestrictedActionsItemEnumList = Array<
   VolumeRestrictedActionsItemEnum | (string & {})
 >;
-export const VolumeRestrictedActionsItemEnumList = /*@__PURE__*/ S.Array(
-  VolumeRestrictedActionsItemEnum,
-) as any as S.Schema<VolumeRestrictedActionsItemEnumList>;
+export const VolumeRestrictedActionsItemEnumList =
+  VolumeProtocolsItemEnumList as any as S.Schema<VolumeRestrictedActionsItemEnumList>;
 
 export type BlockDeviceOsTypeEnum = "OS_TYPE_UNSPECIFIED" | "LINUX" | "WINDOWS" | "ESXI";
 export const BlockDeviceOsTypeEnum = S.String;

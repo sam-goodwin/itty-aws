@@ -2227,9 +2227,7 @@ export type DeleteAccountsContainersWorkspacesBuilt_in_variablesTypeEnumList = A
   DeleteAccountsContainersWorkspacesBuilt_in_variablesTypeEnum | (string & {})
 >;
 export const DeleteAccountsContainersWorkspacesBuilt_in_variablesTypeEnumList =
-  /*@__PURE__*/ S.Array(
-    DeleteAccountsContainersWorkspacesBuilt_in_variablesTypeEnum,
-  ) as any as S.Schema<DeleteAccountsContainersWorkspacesBuilt_in_variablesTypeEnumList>;
+  CreateAccountsContainersWorkspacesBuilt_in_variablesTypeEnumList as any as S.Schema<DeleteAccountsContainersWorkspacesBuilt_in_variablesTypeEnumList>;
 
 export interface DeleteAccountsContainersWorkspacesBuilt_in_variablesRequest {
   /** GTM BuiltInVariable's API relative path. */

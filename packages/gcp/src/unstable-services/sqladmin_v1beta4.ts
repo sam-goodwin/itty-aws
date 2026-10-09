@@ -2363,9 +2363,8 @@ export const DatabaseInstanceSuspensionReasonItemEnum = S.String;
 export type DatabaseInstanceSuspensionReasonItemEnumList = Array<
   DatabaseInstanceSuspensionReasonItemEnum | (string & {})
 >;
-export const DatabaseInstanceSuspensionReasonItemEnumList = /*@__PURE__*/ S.Array(
-  DatabaseInstanceSuspensionReasonItemEnum,
-) as any as S.Schema<DatabaseInstanceSuspensionReasonItemEnumList>;
+export const DatabaseInstanceSuspensionReasonItemEnumList =
+  ConnectSettingsMdxProtocolSupportItemEnumList as any as S.Schema<DatabaseInstanceSuspensionReasonItemEnumList>;
 
 /** A primary instance and disaster recovery (DR) replica pair. A DR replica is a cross-region replica that you designate for failover in the event that the primary instance has regional failure. Applicable to MySQL and PostgreSQL. */
 export interface ReplicationCluster {
@@ -5186,9 +5185,8 @@ export type FlagAppliesToItemEnum =
 export const FlagAppliesToItemEnum = S.String;
 
 export type FlagAppliesToItemEnumList = Array<FlagAppliesToItemEnum>;
-export const FlagAppliesToItemEnumList = /*@__PURE__*/ S.Array(
-  FlagAppliesToItemEnum,
-) as any as S.Schema<FlagAppliesToItemEnumList>;
+export const FlagAppliesToItemEnumList =
+  ConnectSettingsMdxProtocolSupportItemEnumList as any as S.Schema<FlagAppliesToItemEnumList>;
 
 /** A flag resource. */
 export interface Flag {

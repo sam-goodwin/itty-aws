@@ -539,11 +539,9 @@ export interface ICD10CMTrait {
   Name?: ICD10CMTraitName;
   Score?: number;
 }
-export const ICD10CMTrait = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.optional(ICD10CMTraitName), Score: S.optional(S.Number) }),
-).annotate({ identifier: "ICD10CMTrait" }) as any as S.Schema<ICD10CMTrait>;
+export const ICD10CMTrait = Trait as any as S.Schema<ICD10CMTrait>;
 export type ICD10CMTraitList = ICD10CMTrait[];
-export const ICD10CMTraitList = /*@__PURE__*/ S.Array(ICD10CMTrait);
+export const ICD10CMTraitList = TraitList as any as S.Schema<ICD10CMTraitList>;
 export type ICD10CMRelationshipType = "OVERLAP" | "SYSTEM_ORGAN_SITE" | "QUALITY" | (string & {});
 export const ICD10CMRelationshipType = S.String;
 
@@ -661,11 +659,9 @@ export interface RxNormTrait {
   Name?: RxNormTraitName;
   Score?: number;
 }
-export const RxNormTrait = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.optional(RxNormTraitName), Score: S.optional(S.Number) }),
-).annotate({ identifier: "RxNormTrait" }) as any as S.Schema<RxNormTrait>;
+export const RxNormTrait = Trait as any as S.Schema<RxNormTrait>;
 export type RxNormTraitList = RxNormTrait[];
-export const RxNormTraitList = /*@__PURE__*/ S.Array(RxNormTrait);
+export const RxNormTraitList = TraitList as any as S.Schema<RxNormTraitList>;
 export interface RxNormAttribute {
   Type?: RxNormAttributeType;
   Score?: number;
@@ -799,11 +795,9 @@ export interface SNOMEDCTTrait {
   Name?: SNOMEDCTTraitName;
   Score?: number;
 }
-export const SNOMEDCTTrait = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.optional(SNOMEDCTTraitName), Score: S.optional(S.Number) }),
-).annotate({ identifier: "SNOMEDCTTrait" }) as any as S.Schema<SNOMEDCTTrait>;
+export const SNOMEDCTTrait = Trait as any as S.Schema<SNOMEDCTTrait>;
 export type SNOMEDCTTraitList = SNOMEDCTTrait[];
-export const SNOMEDCTTraitList = /*@__PURE__*/ S.Array(SNOMEDCTTrait);
+export const SNOMEDCTTraitList = TraitList as any as S.Schema<SNOMEDCTTraitList>;
 export interface SNOMEDCTConcept {
   Description?: string;
   Code?: string;

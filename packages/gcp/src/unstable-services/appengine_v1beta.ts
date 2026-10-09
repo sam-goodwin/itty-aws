@@ -1223,9 +1223,8 @@ export const VersionAppEngineBundledServicesItemEnum = S.String;
 export type VersionAppEngineBundledServicesItemEnumList = Array<
   VersionAppEngineBundledServicesItemEnum | (string & {})
 >;
-export const VersionAppEngineBundledServicesItemEnumList = /*@__PURE__*/ S.Array(
-  VersionAppEngineBundledServicesItemEnum,
-) as any as S.Schema<VersionAppEngineBundledServicesItemEnumList>;
+export const VersionAppEngineBundledServicesItemEnumList =
+  VersionInboundServicesItemEnumList as any as S.Schema<VersionAppEngineBundledServicesItemEnumList>;
 
 export type ErrorHandlerErrorCodeEnum =
   | "ERROR_CODE_UNSPECIFIED"

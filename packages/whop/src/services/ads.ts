@@ -1442,22 +1442,13 @@ export interface UpdateAdRequestCreativesItem {
   /** ISO 639 code of the language this image or video is shown for, such as `es`. Required on every entry of an ad with `translations`, where the ad's own creative uses `translations.source_language`. Another language's creative is the same type as the ad's own, with no format. Leave it out on an ad without translations. */
   language?: string;
 }
-export const UpdateAdRequestCreativesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    crop: S.optional(CreateAdRequestCreativesItemCrop),
-    format: S.optional(UpdateAdRequestCreativesItemFormat),
-    id: S.optional(S.String),
-    language: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateAdRequestCreativesItem",
-}) as any as S.Schema<UpdateAdRequestCreativesItem>;
+export const UpdateAdRequestCreativesItem =
+  CreateAdRequestCreativesItem as any as S.Schema<UpdateAdRequestCreativesItem>;
 
 /** The ad's creative assets. Each entry is an uploaded file id with an optional format; omit format for the original asset. Replaces a live ad's creative on the platform. Entries with no format replace it with a carousel's ordered cards -- 2-10 of them on Meta, while TikTok runs even a single image as a one-card carousel. */
 export type UpdateAdRequestCreativesList = Array<UpdateAdRequestCreativesItem>;
-export const UpdateAdRequestCreativesList = /*@__PURE__*/ S.Array(
-  UpdateAdRequestCreativesItem,
-) as any as S.Schema<UpdateAdRequestCreativesList>;
+export const UpdateAdRequestCreativesList =
+  CreateAdRequestCreativesList as any as S.Schema<UpdateAdRequestCreativesList>;
 
 export type UpdateAdRequestDescriptionsItem = CreateAdRequestDescriptionsItem;
 export const UpdateAdRequestDescriptionsItem = CreateAdRequestDescriptionsItem;
@@ -1488,19 +1479,8 @@ export interface UpdateAdRequestLeadFormCompletion {
   phone_number?: string;
   url?: string;
 }
-export const UpdateAdRequestLeadFormCompletion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    button_text: S.optional(S.String),
-    button_type: S.optional(UpdateAdRequestLeadFormCompletionButtonType),
-    description: S.optional(S.String),
-    file_url: S.optional(S.String),
-    headline: S.optional(S.String),
-    phone_number: S.optional(S.String),
-    url: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateAdRequestLeadFormCompletion",
-}) as any as S.Schema<UpdateAdRequestLeadFormCompletion>;
+export const UpdateAdRequestLeadFormCompletion =
+  CreateAdRequestLeadFormCompletion as any as S.Schema<UpdateAdRequestLeadFormCompletion>;
 
 export type UpdateAdRequestLeadFormDisclaimerCheckboxesItem =
   CreateAdRequestLeadFormDisclaimerCheckboxesItem;
@@ -1550,36 +1530,21 @@ export interface UpdateAdRequestLeadFormQuestionsItemOptionsItemLogic {
   target_end_page_index?: number;
   target_question_index?: number;
 }
-export const UpdateAdRequestLeadFormQuestionsItemOptionsItemLogic = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.optional(UpdateAdRequestLeadFormQuestionsItemOptionsItemLogicAction),
-    target_end_page_index: S.optional(S.Number),
-    target_question_index: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "UpdateAdRequestLeadFormQuestionsItemOptionsItemLogic",
-}) as any as S.Schema<UpdateAdRequestLeadFormQuestionsItemOptionsItemLogic>;
+export const UpdateAdRequestLeadFormQuestionsItemOptionsItemLogic =
+  CreateAdRequestLeadFormQuestionsItemOptionsItemLogic as any as S.Schema<UpdateAdRequestLeadFormQuestionsItemOptionsItemLogic>;
 
 export interface UpdateAdRequestLeadFormQuestionsItemOptionsItem {
   key?: string;
   logic?: UpdateAdRequestLeadFormQuestionsItemOptionsItemLogic;
   value?: string;
 }
-export const UpdateAdRequestLeadFormQuestionsItemOptionsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    logic: S.optional(UpdateAdRequestLeadFormQuestionsItemOptionsItemLogic),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateAdRequestLeadFormQuestionsItemOptionsItem",
-}) as any as S.Schema<UpdateAdRequestLeadFormQuestionsItemOptionsItem>;
+export const UpdateAdRequestLeadFormQuestionsItemOptionsItem =
+  CreateAdRequestLeadFormQuestionsItemOptionsItem as any as S.Schema<UpdateAdRequestLeadFormQuestionsItemOptionsItem>;
 
 export type UpdateAdRequestLeadFormQuestionsItemOptionsList =
   Array<UpdateAdRequestLeadFormQuestionsItemOptionsItem>;
-export const UpdateAdRequestLeadFormQuestionsItemOptionsList = /*@__PURE__*/ S.Array(
-  UpdateAdRequestLeadFormQuestionsItemOptionsItem,
-) as any as S.Schema<UpdateAdRequestLeadFormQuestionsItemOptionsList>;
+export const UpdateAdRequestLeadFormQuestionsItemOptionsList =
+  CreateAdRequestLeadFormQuestionsItemOptionsList as any as S.Schema<UpdateAdRequestLeadFormQuestionsItemOptionsList>;
 
 export type UpdateAdRequestLeadFormQuestionsItemType =
   | "email"
@@ -1611,22 +1576,13 @@ export interface UpdateAdRequestLeadFormQuestionsItem {
   options?: UpdateAdRequestLeadFormQuestionsItemOptionsList;
   type?: UpdateAdRequestLeadFormQuestionsItemType | (string & {});
 }
-export const UpdateAdRequestLeadFormQuestionsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    format: S.optional(UpdateAdRequestLeadFormQuestionsItemFormat),
-    label: S.optional(S.String),
-    options: S.optional(UpdateAdRequestLeadFormQuestionsItemOptionsList),
-    type: S.optional(UpdateAdRequestLeadFormQuestionsItemType),
-  }),
-).annotate({
-  identifier: "UpdateAdRequestLeadFormQuestionsItem",
-}) as any as S.Schema<UpdateAdRequestLeadFormQuestionsItem>;
+export const UpdateAdRequestLeadFormQuestionsItem =
+  CreateAdRequestLeadFormQuestionsItem as any as S.Schema<UpdateAdRequestLeadFormQuestionsItem>;
 
 /** The questions on the form. Standard prefill types need only a type; a custom question needs a label and a format (plus options for multiple_choice). Options carry an optional key and answer-routing logic. */
 export type UpdateAdRequestLeadFormQuestionsList = Array<UpdateAdRequestLeadFormQuestionsItem>;
-export const UpdateAdRequestLeadFormQuestionsList = /*@__PURE__*/ S.Array(
-  UpdateAdRequestLeadFormQuestionsItem,
-) as any as S.Schema<UpdateAdRequestLeadFormQuestionsList>;
+export const UpdateAdRequestLeadFormQuestionsList =
+  CreateAdRequestLeadFormQuestionsList as any as S.Schema<UpdateAdRequestLeadFormQuestionsList>;
 
 /** Instant lead form for the ad. Only allowed when the ad group's conversion_location is an instant-form destination (instant_forms, instant_forms_and_messenger, website_and_instant_forms). Mutually exclusive with lead_form_id. */
 export interface UpdateAdRequestLeadForm {

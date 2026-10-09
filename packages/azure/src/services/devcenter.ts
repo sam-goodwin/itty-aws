@@ -1781,15 +1781,8 @@ export interface ExecuteCheckScopedNameAvailabilityResponse {
   /** Detailed reason why the given name is available. */
   message?: string;
 }
-export const ExecuteCheckScopedNameAvailabilityResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nameAvailable: S.optional(S.Boolean),
-    reason: S.optional(ExecuteCheckScopedNameAvailabilityResponseReason),
-    message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ExecuteCheckScopedNameAvailabilityResponse",
-}) as any as S.Schema<ExecuteCheckScopedNameAvailabilityResponse>;
+export const ExecuteCheckScopedNameAvailabilityResponse =
+  ExecuteCheckNameAvailabilityResponse as any as S.Schema<ExecuteCheckScopedNameAvailabilityResponse>;
 
 /** Properties of a gallery. */
 export interface GalleryPropertiesInput {
@@ -3611,14 +3604,8 @@ export interface StopOnNoConnectConfiguration {
   /** The specified time in minutes to wait before stopping a Dev Box if no connection is made. */
   gracePeriodMinutes?: number;
 }
-export const StopOnNoConnectConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(StopOnNoConnectEnableStatus),
-    gracePeriodMinutes: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "StopOnNoConnectConfiguration",
-}) as any as S.Schema<StopOnNoConnectConfiguration>;
+export const StopOnNoConnectConfiguration =
+  StopOnDisconnectConfiguration as any as S.Schema<StopOnNoConnectConfiguration>;
 
 /** SingleSignOn (SSO) enable or disable status. Indicates whether Dev Boxes in the Pool will have SSO enabled or disabled. */
 export type SingleSignOnStatus = "Disabled" | "Enabled";

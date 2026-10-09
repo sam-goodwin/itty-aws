@@ -159,7 +159,7 @@ export type EmissionsType =
 export const EmissionsType = S.String;
 
 export type EmissionsTypeList = EmissionsType[];
-export const EmissionsTypeList = /*@__PURE__*/ S.Array(EmissionsType);
+export const EmissionsTypeList = DimensionList as any as S.Schema<EmissionsTypeList>;
 export type TimeGranularity =
   | "YEARLY_CALENDAR"
   | "YEARLY_FISCAL"
@@ -304,7 +304,7 @@ export type WaterAllocationType = "TOTAL_WATER_WITHDRAWALS" | (string & {});
 export const WaterAllocationType = S.String;
 
 export type WaterAllocationTypeList = WaterAllocationType[];
-export const WaterAllocationTypeList = /*@__PURE__*/ S.Array(WaterAllocationType);
+export const WaterAllocationTypeList = DimensionList as any as S.Schema<WaterAllocationTypeList>;
 export interface GetEstimatedWaterAllocationRequest {
   TimePeriod: TimePeriod;
   GroupBy?: Dimension[];
@@ -343,14 +343,9 @@ export interface WaterAllocation {
   Value: number;
   Unit: WaterAllocationUnit;
 }
-export const WaterAllocation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Value: S.Number, Unit: WaterAllocationUnit }),
-).annotate({ identifier: "WaterAllocation" }) as any as S.Schema<WaterAllocation>;
+export const WaterAllocation = Emissions as any as S.Schema<WaterAllocation>;
 export type WaterAllocationMap = { [key in WaterAllocationType]?: WaterAllocation };
-export const WaterAllocationMap = /*@__PURE__*/ S.Record(
-  WaterAllocationType,
-  /*@__PURE__*/ WaterAllocation.pipe(S.optional),
-);
+export const WaterAllocationMap = EmissionsMap as any as S.Schema<WaterAllocationMap>;
 export interface EstimatedWaterAllocation {
   TimePeriod: TimePeriod;
   DimensionsValues: { [key: string]: string | undefined };

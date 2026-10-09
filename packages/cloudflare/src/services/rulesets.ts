@@ -910,15 +910,7 @@ export interface RulesCreateRequestBodySetCacheControlRuleActionParametersImmuta
   cloudflareOnly?: boolean;
 }
 export const RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableRemoveDirective",
-  }) as any as S.Schema<RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableRemoveDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableRemoveDirective>;
 
 export type RulesCreateRequestBodySetCacheControlRuleActionParametersImmutable =
   | RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableSetDirective
@@ -974,15 +966,7 @@ export interface RulesCreateRequestBodySetCacheControlRuleActionParametersMaxAge
   cloudflareOnly?: boolean;
 }
 export const RulesCreateRequestBodySetCacheControlRuleActionParametersMaxAgeRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesCreateRequestBodySetCacheControlRuleActionParametersMaxAgeRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "RulesCreateRequestBodySetCacheControlRuleActionParametersMaxAgeRemoveDirective",
-  }) as any as S.Schema<RulesCreateRequestBodySetCacheControlRuleActionParametersMaxAgeRemoveDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesCreateRequestBodySetCacheControlRuleActionParametersMaxAgeRemoveDirective>;
 
 export type RulesCreateRequestBodySetCacheControlRuleActionParametersMaxAge =
   | RulesCreateRequestBodySetCacheControlRuleActionParametersMaxAgeSetDirective
@@ -1036,16 +1020,7 @@ export interface RulesCreateRequestBodySetCacheControlRuleActionParametersMustRe
   cloudflareOnly?: boolean;
 }
 export const RulesCreateRequestBodySetCacheControlRuleActionParametersMustRevalidateRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesCreateRequestBodySetCacheControlRuleActionParametersMustRevalidateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesCreateRequestBodySetCacheControlRuleActionParametersMustRevalidateRemoveDirective",
-  }) as any as S.Schema<RulesCreateRequestBodySetCacheControlRuleActionParametersMustRevalidateRemoveDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersMustRevalidateSetDirective as any as S.Schema<RulesCreateRequestBodySetCacheControlRuleActionParametersMustRevalidateRemoveDirective>;
 
 export type RulesCreateRequestBodySetCacheControlRuleActionParametersMustRevalidate =
   | RulesCreateRequestBodySetCacheControlRuleActionParametersMustRevalidateSetDirective
@@ -1073,16 +1048,7 @@ export interface RulesCreateRequestBodySetCacheControlRuleActionParametersMustUn
   cloudflareOnly?: boolean;
 }
 export const RulesCreateRequestBodySetCacheControlRuleActionParametersMustUnderstandSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesCreateRequestBodySetCacheControlRuleActionParametersMustUnderstandSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesCreateRequestBodySetCacheControlRuleActionParametersMustUnderstandSetDirective",
-  }) as any as S.Schema<RulesCreateRequestBodySetCacheControlRuleActionParametersMustUnderstandSetDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersMustRevalidateSetDirective as any as S.Schema<RulesCreateRequestBodySetCacheControlRuleActionParametersMustUnderstandSetDirective>;
 
 export type RulesCreateRequestBodySetCacheControlRuleActionParametersMustUnderstandRemoveDirectiveOperation =
   | "set"
@@ -1099,16 +1065,7 @@ export interface RulesCreateRequestBodySetCacheControlRuleActionParametersMustUn
   cloudflareOnly?: boolean;
 }
 export const RulesCreateRequestBodySetCacheControlRuleActionParametersMustUnderstandRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesCreateRequestBodySetCacheControlRuleActionParametersMustUnderstandRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesCreateRequestBodySetCacheControlRuleActionParametersMustUnderstandRemoveDirective",
-  }) as any as S.Schema<RulesCreateRequestBodySetCacheControlRuleActionParametersMustUnderstandRemoveDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersMustRevalidateSetDirective as any as S.Schema<RulesCreateRequestBodySetCacheControlRuleActionParametersMustUnderstandRemoveDirective>;
 
 export type RulesCreateRequestBodySetCacheControlRuleActionParametersMustUnderstand =
   | RulesCreateRequestBodySetCacheControlRuleActionParametersMustUnderstandSetDirective
@@ -1171,15 +1128,7 @@ export interface RulesCreateRequestBodySetCacheControlRuleActionParametersNoCach
   cloudflareOnly?: boolean;
 }
 export const RulesCreateRequestBodySetCacheControlRuleActionParametersNoCacheRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesCreateRequestBodySetCacheControlRuleActionParametersNoCacheRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "RulesCreateRequestBodySetCacheControlRuleActionParametersNoCacheRemoveDirective",
-  }) as any as S.Schema<RulesCreateRequestBodySetCacheControlRuleActionParametersNoCacheRemoveDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesCreateRequestBodySetCacheControlRuleActionParametersNoCacheRemoveDirective>;
 
 export type RulesCreateRequestBodySetCacheControlRuleActionParametersNoCache =
   | RulesCreateRequestBodySetCacheControlRuleActionParametersNoCacheSetDirective
@@ -1207,15 +1156,7 @@ export interface RulesCreateRequestBodySetCacheControlRuleActionParametersNoStor
   cloudflareOnly?: boolean;
 }
 export const RulesCreateRequestBodySetCacheControlRuleActionParametersNoStoreSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesCreateRequestBodySetCacheControlRuleActionParametersNoStoreSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "RulesCreateRequestBodySetCacheControlRuleActionParametersNoStoreSetDirective",
-  }) as any as S.Schema<RulesCreateRequestBodySetCacheControlRuleActionParametersNoStoreSetDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesCreateRequestBodySetCacheControlRuleActionParametersNoStoreSetDirective>;
 
 export type RulesCreateRequestBodySetCacheControlRuleActionParametersNoStoreRemoveDirectiveOperation =
   | "set"
@@ -1232,15 +1173,7 @@ export interface RulesCreateRequestBodySetCacheControlRuleActionParametersNoStor
   cloudflareOnly?: boolean;
 }
 export const RulesCreateRequestBodySetCacheControlRuleActionParametersNoStoreRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesCreateRequestBodySetCacheControlRuleActionParametersNoStoreRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "RulesCreateRequestBodySetCacheControlRuleActionParametersNoStoreRemoveDirective",
-  }) as any as S.Schema<RulesCreateRequestBodySetCacheControlRuleActionParametersNoStoreRemoveDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesCreateRequestBodySetCacheControlRuleActionParametersNoStoreRemoveDirective>;
 
 export type RulesCreateRequestBodySetCacheControlRuleActionParametersNoStore =
   | RulesCreateRequestBodySetCacheControlRuleActionParametersNoStoreSetDirective
@@ -1268,15 +1201,7 @@ export interface RulesCreateRequestBodySetCacheControlRuleActionParametersNoTran
   cloudflareOnly?: boolean;
 }
 export const RulesCreateRequestBodySetCacheControlRuleActionParametersNoTransformSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesCreateRequestBodySetCacheControlRuleActionParametersNoTransformSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "RulesCreateRequestBodySetCacheControlRuleActionParametersNoTransformSetDirective",
-  }) as any as S.Schema<RulesCreateRequestBodySetCacheControlRuleActionParametersNoTransformSetDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesCreateRequestBodySetCacheControlRuleActionParametersNoTransformSetDirective>;
 
 export type RulesCreateRequestBodySetCacheControlRuleActionParametersNoTransformRemoveDirectiveOperation =
   | "set"
@@ -1293,16 +1218,7 @@ export interface RulesCreateRequestBodySetCacheControlRuleActionParametersNoTran
   cloudflareOnly?: boolean;
 }
 export const RulesCreateRequestBodySetCacheControlRuleActionParametersNoTransformRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesCreateRequestBodySetCacheControlRuleActionParametersNoTransformRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesCreateRequestBodySetCacheControlRuleActionParametersNoTransformRemoveDirective",
-  }) as any as S.Schema<RulesCreateRequestBodySetCacheControlRuleActionParametersNoTransformRemoveDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersMustRevalidateSetDirective as any as S.Schema<RulesCreateRequestBodySetCacheControlRuleActionParametersNoTransformRemoveDirective>;
 
 export type RulesCreateRequestBodySetCacheControlRuleActionParametersNoTransform =
   | RulesCreateRequestBodySetCacheControlRuleActionParametersNoTransformSetDirective
@@ -1365,15 +1281,7 @@ export interface RulesCreateRequestBodySetCacheControlRuleActionParametersPrivat
   cloudflareOnly?: boolean;
 }
 export const RulesCreateRequestBodySetCacheControlRuleActionParametersPrivateRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesCreateRequestBodySetCacheControlRuleActionParametersPrivateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "RulesCreateRequestBodySetCacheControlRuleActionParametersPrivateRemoveDirective",
-  }) as any as S.Schema<RulesCreateRequestBodySetCacheControlRuleActionParametersPrivateRemoveDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesCreateRequestBodySetCacheControlRuleActionParametersPrivateRemoveDirective>;
 
 export type RulesCreateRequestBodySetCacheControlRuleActionParametersPrivate =
   | RulesCreateRequestBodySetCacheControlRuleActionParametersPrivateSetDirective
@@ -1401,16 +1309,7 @@ export interface RulesCreateRequestBodySetCacheControlRuleActionParametersProxyR
   cloudflareOnly?: boolean;
 }
 export const RulesCreateRequestBodySetCacheControlRuleActionParametersProxyRevalidateSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesCreateRequestBodySetCacheControlRuleActionParametersProxyRevalidateSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesCreateRequestBodySetCacheControlRuleActionParametersProxyRevalidateSetDirective",
-  }) as any as S.Schema<RulesCreateRequestBodySetCacheControlRuleActionParametersProxyRevalidateSetDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersMustRevalidateSetDirective as any as S.Schema<RulesCreateRequestBodySetCacheControlRuleActionParametersProxyRevalidateSetDirective>;
 
 export type RulesCreateRequestBodySetCacheControlRuleActionParametersProxyRevalidateRemoveDirectiveOperation =
   | "set"
@@ -1427,16 +1326,7 @@ export interface RulesCreateRequestBodySetCacheControlRuleActionParametersProxyR
   cloudflareOnly?: boolean;
 }
 export const RulesCreateRequestBodySetCacheControlRuleActionParametersProxyRevalidateRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesCreateRequestBodySetCacheControlRuleActionParametersProxyRevalidateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesCreateRequestBodySetCacheControlRuleActionParametersProxyRevalidateRemoveDirective",
-  }) as any as S.Schema<RulesCreateRequestBodySetCacheControlRuleActionParametersProxyRevalidateRemoveDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersMustRevalidateSetDirective as any as S.Schema<RulesCreateRequestBodySetCacheControlRuleActionParametersProxyRevalidateRemoveDirective>;
 
 export type RulesCreateRequestBodySetCacheControlRuleActionParametersProxyRevalidate =
   | RulesCreateRequestBodySetCacheControlRuleActionParametersProxyRevalidateSetDirective
@@ -1464,15 +1354,7 @@ export interface RulesCreateRequestBodySetCacheControlRuleActionParametersPublic
   cloudflareOnly?: boolean;
 }
 export const RulesCreateRequestBodySetCacheControlRuleActionParametersPublicSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesCreateRequestBodySetCacheControlRuleActionParametersPublicSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "RulesCreateRequestBodySetCacheControlRuleActionParametersPublicSetDirective",
-  }) as any as S.Schema<RulesCreateRequestBodySetCacheControlRuleActionParametersPublicSetDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesCreateRequestBodySetCacheControlRuleActionParametersPublicSetDirective>;
 
 export type RulesCreateRequestBodySetCacheControlRuleActionParametersPublicRemoveDirectiveOperation =
   | "set"
@@ -1489,15 +1371,7 @@ export interface RulesCreateRequestBodySetCacheControlRuleActionParametersPublic
   cloudflareOnly?: boolean;
 }
 export const RulesCreateRequestBodySetCacheControlRuleActionParametersPublicRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesCreateRequestBodySetCacheControlRuleActionParametersPublicRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "RulesCreateRequestBodySetCacheControlRuleActionParametersPublicRemoveDirective",
-  }) as any as S.Schema<RulesCreateRequestBodySetCacheControlRuleActionParametersPublicRemoveDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesCreateRequestBodySetCacheControlRuleActionParametersPublicRemoveDirective>;
 
 export type RulesCreateRequestBodySetCacheControlRuleActionParametersPublic =
   | RulesCreateRequestBodySetCacheControlRuleActionParametersPublicSetDirective
@@ -1527,16 +1401,7 @@ export interface RulesCreateRequestBodySetCacheControlRuleActionParametersSMaxag
   cloudflareOnly?: boolean;
 }
 export const RulesCreateRequestBodySetCacheControlRuleActionParametersSMaxageSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesCreateRequestBodySetCacheControlRuleActionParametersSMaxageSetDirectiveOperation,
-      value: S.Number,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "RulesCreateRequestBodySetCacheControlRuleActionParametersSMaxageSetDirective",
-  }) as any as S.Schema<RulesCreateRequestBodySetCacheControlRuleActionParametersSMaxageSetDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersMaxAgeSetDirective as any as S.Schema<RulesCreateRequestBodySetCacheControlRuleActionParametersSMaxageSetDirective>;
 
 export type RulesCreateRequestBodySetCacheControlRuleActionParametersSMaxageRemoveDirectiveOperation =
   | "set"
@@ -1553,15 +1418,7 @@ export interface RulesCreateRequestBodySetCacheControlRuleActionParametersSMaxag
   cloudflareOnly?: boolean;
 }
 export const RulesCreateRequestBodySetCacheControlRuleActionParametersSMaxageRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesCreateRequestBodySetCacheControlRuleActionParametersSMaxageRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "RulesCreateRequestBodySetCacheControlRuleActionParametersSMaxageRemoveDirective",
-  }) as any as S.Schema<RulesCreateRequestBodySetCacheControlRuleActionParametersSMaxageRemoveDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesCreateRequestBodySetCacheControlRuleActionParametersSMaxageRemoveDirective>;
 
 export type RulesCreateRequestBodySetCacheControlRuleActionParametersSMaxage =
   | RulesCreateRequestBodySetCacheControlRuleActionParametersSMaxageSetDirective
@@ -1591,16 +1448,7 @@ export interface RulesCreateRequestBodySetCacheControlRuleActionParametersStaleI
   cloudflareOnly?: boolean;
 }
 export const RulesCreateRequestBodySetCacheControlRuleActionParametersStaleIfErrorSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesCreateRequestBodySetCacheControlRuleActionParametersStaleIfErrorSetDirectiveOperation,
-      value: S.Number,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "RulesCreateRequestBodySetCacheControlRuleActionParametersStaleIfErrorSetDirective",
-  }) as any as S.Schema<RulesCreateRequestBodySetCacheControlRuleActionParametersStaleIfErrorSetDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersMaxAgeSetDirective as any as S.Schema<RulesCreateRequestBodySetCacheControlRuleActionParametersStaleIfErrorSetDirective>;
 
 export type RulesCreateRequestBodySetCacheControlRuleActionParametersStaleIfErrorRemoveDirectiveOperation =
   | "set"
@@ -1617,16 +1465,7 @@ export interface RulesCreateRequestBodySetCacheControlRuleActionParametersStaleI
   cloudflareOnly?: boolean;
 }
 export const RulesCreateRequestBodySetCacheControlRuleActionParametersStaleIfErrorRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesCreateRequestBodySetCacheControlRuleActionParametersStaleIfErrorRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesCreateRequestBodySetCacheControlRuleActionParametersStaleIfErrorRemoveDirective",
-  }) as any as S.Schema<RulesCreateRequestBodySetCacheControlRuleActionParametersStaleIfErrorRemoveDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersMustRevalidateSetDirective as any as S.Schema<RulesCreateRequestBodySetCacheControlRuleActionParametersStaleIfErrorRemoveDirective>;
 
 export type RulesCreateRequestBodySetCacheControlRuleActionParametersStaleIfError =
   | RulesCreateRequestBodySetCacheControlRuleActionParametersStaleIfErrorSetDirective
@@ -1683,16 +1522,7 @@ export interface RulesCreateRequestBodySetCacheControlRuleActionParametersStaleW
   cloudflareOnly?: boolean;
 }
 export const RulesCreateRequestBodySetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesCreateRequestBodySetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesCreateRequestBodySetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirective",
-  }) as any as S.Schema<RulesCreateRequestBodySetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersMustRevalidateSetDirective as any as S.Schema<RulesCreateRequestBodySetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirective>;
 
 export type RulesCreateRequestBodySetCacheControlRuleActionParametersStaleWhileRevalidate =
   | RulesCreateRequestBodySetCacheControlRuleActionParametersStaleWhileRevalidateSetDirective
@@ -2039,15 +1869,7 @@ export interface RulesCreateRequestBodySetCacheTagsRuleActionParametersRemoveCac
     | (string & {});
 }
 export const RulesCreateRequestBodySetCacheTagsRuleActionParametersRemoveCacheTagsExpression =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      operation:
-        RulesCreateRequestBodySetCacheTagsRuleActionParametersRemoveCacheTagsExpressionOperation,
-    }),
-  ).annotate({
-    identifier: "RulesCreateRequestBodySetCacheTagsRuleActionParametersRemoveCacheTagsExpression",
-  }) as any as S.Schema<RulesCreateRequestBodySetCacheTagsRuleActionParametersRemoveCacheTagsExpression>;
+  RulesCreateRequestBodySetCacheTagsRuleActionParametersAddCacheTagsExpression as any as S.Schema<RulesCreateRequestBodySetCacheTagsRuleActionParametersRemoveCacheTagsExpression>;
 
 export type RulesCreateRequestBodySetCacheTagsRuleActionParametersSetCacheTagsValuesOperation =
   | "add"
@@ -2095,15 +1917,7 @@ export interface RulesCreateRequestBodySetCacheTagsRuleActionParametersSetCacheT
     | (string & {});
 }
 export const RulesCreateRequestBodySetCacheTagsRuleActionParametersSetCacheTagsExpression =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      operation:
-        RulesCreateRequestBodySetCacheTagsRuleActionParametersSetCacheTagsExpressionOperation,
-    }),
-  ).annotate({
-    identifier: "RulesCreateRequestBodySetCacheTagsRuleActionParametersSetCacheTagsExpression",
-  }) as any as S.Schema<RulesCreateRequestBodySetCacheTagsRuleActionParametersSetCacheTagsExpression>;
+  RulesCreateRequestBodySetCacheTagsRuleActionParametersAddCacheTagsExpression as any as S.Schema<RulesCreateRequestBodySetCacheTagsRuleActionParametersSetCacheTagsExpression>;
 
 export type RulesCreateRequestBodySetCacheTagsRuleActionParameters =
   | RulesCreateRequestBodySetCacheTagsRuleActionParametersAddCacheTagsValues
@@ -4245,16 +4059,7 @@ export interface RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHea
   value: string;
 }
 export const RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeader =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeaderOperation,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeader",
-  }) as any as S.Schema<RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeader>;
+  RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader as any as S.Schema<RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeader>;
 
 export type RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeaderOperation =
   "set";
@@ -4268,16 +4073,7 @@ export interface RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHea
   operation: RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeaderOperation;
 }
 export const RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeader =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      operation:
-        RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeaderOperation,
-    }),
-  ).annotate({
-    identifier:
-      "RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeader",
-  }) as any as S.Schema<RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeader>;
+  RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader as any as S.Schema<RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeader>;
 
 export type RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueRemoveHeaderOperation =
   "remove";
@@ -4953,16 +4749,7 @@ export interface RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParam
   cloudflareOnly?: boolean | null;
 }
 export const RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableRemoveDirective",
-  }) as any as S.Schema<RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableRemoveDirective>;
 
 export type RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutable =
   | RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective
@@ -5015,16 +4802,7 @@ export interface RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParam
   cloudflareOnly?: boolean | null;
 }
 export const RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeRemoveDirective",
-  }) as any as S.Schema<RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeRemoveDirective>;
 
 export type RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAge =
   | RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective
@@ -5050,16 +4828,7 @@ export interface RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParam
   cloudflareOnly?: boolean | null;
 }
 export const RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateSetDirective",
-  }) as any as S.Schema<RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateSetDirective>;
 
 export type RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateRemoveDirectiveOperation =
   | "set"
@@ -5074,16 +4843,7 @@ export interface RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParam
   cloudflareOnly?: boolean | null;
 }
 export const RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateRemoveDirective",
-  }) as any as S.Schema<RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateRemoveDirective>;
 
 export type RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidate =
   | RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateSetDirective
@@ -5109,16 +4869,7 @@ export interface RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParam
   cloudflareOnly?: boolean | null;
 }
 export const RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandSetDirective",
-  }) as any as S.Schema<RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandSetDirective>;
 
 export type RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandRemoveDirectiveOperation =
   | "set"
@@ -5133,16 +4884,7 @@ export interface RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParam
   cloudflareOnly?: boolean | null;
 }
 export const RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandRemoveDirective",
-  }) as any as S.Schema<RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandRemoveDirective>;
 
 export type RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstand =
   | RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandSetDirective
@@ -5204,16 +4946,7 @@ export interface RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParam
   cloudflareOnly?: boolean | null;
 }
 export const RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoCacheRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoCacheRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoCacheRemoveDirective",
-  }) as any as S.Schema<RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoCacheRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoCacheRemoveDirective>;
 
 export type RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoCache =
   | RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoCacheSetDirective
@@ -5239,16 +4972,7 @@ export interface RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParam
   cloudflareOnly?: boolean | null;
 }
 export const RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreSetDirective",
-  }) as any as S.Schema<RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreSetDirective>;
 
 export type RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreRemoveDirectiveOperation =
   | "set"
@@ -5263,16 +4987,7 @@ export interface RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParam
   cloudflareOnly?: boolean | null;
 }
 export const RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreRemoveDirective",
-  }) as any as S.Schema<RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreRemoveDirective>;
 
 export type RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoStore =
   | RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreSetDirective
@@ -5298,16 +5013,7 @@ export interface RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParam
   cloudflareOnly?: boolean | null;
 }
 export const RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformSetDirective",
-  }) as any as S.Schema<RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformSetDirective>;
 
 export type RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformRemoveDirectiveOperation =
   | "set"
@@ -5322,16 +5028,7 @@ export interface RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParam
   cloudflareOnly?: boolean | null;
 }
 export const RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformRemoveDirective",
-  }) as any as S.Schema<RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformRemoveDirective>;
 
 export type RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransform =
   | RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformSetDirective
@@ -5393,16 +5090,7 @@ export interface RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParam
   cloudflareOnly?: boolean | null;
 }
 export const RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersPrivateRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersPrivateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersPrivateRemoveDirective",
-  }) as any as S.Schema<RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersPrivateRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersPrivateRemoveDirective>;
 
 export type RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersPrivate =
   | RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersPrivateSetDirective
@@ -5428,16 +5116,7 @@ export interface RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParam
   cloudflareOnly?: boolean | null;
 }
 export const RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateSetDirective",
-  }) as any as S.Schema<RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateSetDirective>;
 
 export type RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateRemoveDirectiveOperation =
   | "set"
@@ -5452,16 +5131,7 @@ export interface RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParam
   cloudflareOnly?: boolean | null;
 }
 export const RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateRemoveDirective",
-  }) as any as S.Schema<RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateRemoveDirective>;
 
 export type RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidate =
   | RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateSetDirective
@@ -5487,16 +5157,7 @@ export interface RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParam
   cloudflareOnly?: boolean | null;
 }
 export const RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersPublicSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersPublicSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersPublicSetDirective",
-  }) as any as S.Schema<RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersPublicSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersPublicSetDirective>;
 
 export type RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersPublicRemoveDirectiveOperation =
   | "set"
@@ -5511,16 +5172,7 @@ export interface RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParam
   cloudflareOnly?: boolean | null;
 }
 export const RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersPublicRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersPublicRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersPublicRemoveDirective",
-  }) as any as S.Schema<RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersPublicRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersPublicRemoveDirective>;
 
 export type RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersPublic =
   | RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersPublicSetDirective
@@ -5548,17 +5200,7 @@ export interface RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParam
   cloudflareOnly?: boolean | null;
 }
 export const RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageSetDirectiveOperation,
-      value: S.Number,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageSetDirective",
-  }) as any as S.Schema<RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective as any as S.Schema<RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageSetDirective>;
 
 export type RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageRemoveDirectiveOperation =
   | "set"
@@ -5573,16 +5215,7 @@ export interface RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParam
   cloudflareOnly?: boolean | null;
 }
 export const RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageRemoveDirective",
-  }) as any as S.Schema<RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageRemoveDirective>;
 
 export type RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxage =
   | RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageSetDirective
@@ -5610,17 +5243,7 @@ export interface RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParam
   cloudflareOnly?: boolean | null;
 }
 export const RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorSetDirectiveOperation,
-      value: S.Number,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorSetDirective",
-  }) as any as S.Schema<RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective as any as S.Schema<RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorSetDirective>;
 
 export type RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorRemoveDirectiveOperation =
   | "set"
@@ -5635,16 +5258,7 @@ export interface RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParam
   cloudflareOnly?: boolean | null;
 }
 export const RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorRemoveDirective",
-  }) as any as S.Schema<RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorRemoveDirective>;
 
 export type RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfError =
   | RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorSetDirective
@@ -5672,17 +5286,7 @@ export interface RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParam
   cloudflareOnly?: boolean | null;
 }
 export const RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateSetDirectiveOperation,
-      value: S.Number,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateSetDirective",
-  }) as any as S.Schema<RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective as any as S.Schema<RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateSetDirective>;
 
 export type RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirectiveOperation =
   | "set"
@@ -5697,16 +5301,7 @@ export interface RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParam
   cloudflareOnly?: boolean | null;
 }
 export const RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirective",
-  }) as any as S.Schema<RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirective>;
 
 export type RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidate =
   | RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateSetDirective
@@ -6696,16 +6291,7 @@ export interface RulesCreateResultRulesetRulesItemSetCacheTagsRuleActionParamete
   operation: RulesCreateResultRulesetRulesItemSetCacheTagsRuleActionParametersAddCacheTagsExpressionOperation;
 }
 export const RulesCreateResultRulesetRulesItemSetCacheTagsRuleActionParametersAddCacheTagsExpression =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      operation:
-        RulesCreateResultRulesetRulesItemSetCacheTagsRuleActionParametersAddCacheTagsExpressionOperation,
-    }),
-  ).annotate({
-    identifier:
-      "RulesCreateResultRulesetRulesItemSetCacheTagsRuleActionParametersAddCacheTagsExpression",
-  }) as any as S.Schema<RulesCreateResultRulesetRulesItemSetCacheTagsRuleActionParametersAddCacheTagsExpression>;
+  RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader as any as S.Schema<RulesCreateResultRulesetRulesItemSetCacheTagsRuleActionParametersAddCacheTagsExpression>;
 
 export type RulesCreateResultRulesetRulesItemSetCacheTagsRuleActionParametersRemoveCacheTagsValuesOperation =
   | "add"
@@ -6752,16 +6338,7 @@ export interface RulesCreateResultRulesetRulesItemSetCacheTagsRuleActionParamete
   operation: RulesCreateResultRulesetRulesItemSetCacheTagsRuleActionParametersRemoveCacheTagsExpressionOperation;
 }
 export const RulesCreateResultRulesetRulesItemSetCacheTagsRuleActionParametersRemoveCacheTagsExpression =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      operation:
-        RulesCreateResultRulesetRulesItemSetCacheTagsRuleActionParametersRemoveCacheTagsExpressionOperation,
-    }),
-  ).annotate({
-    identifier:
-      "RulesCreateResultRulesetRulesItemSetCacheTagsRuleActionParametersRemoveCacheTagsExpression",
-  }) as any as S.Schema<RulesCreateResultRulesetRulesItemSetCacheTagsRuleActionParametersRemoveCacheTagsExpression>;
+  RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader as any as S.Schema<RulesCreateResultRulesetRulesItemSetCacheTagsRuleActionParametersRemoveCacheTagsExpression>;
 
 export type RulesCreateResultRulesetRulesItemSetCacheTagsRuleActionParametersSetCacheTagsValuesOperation =
   | "add"
@@ -6808,16 +6385,7 @@ export interface RulesCreateResultRulesetRulesItemSetCacheTagsRuleActionParamete
   operation: RulesCreateResultRulesetRulesItemSetCacheTagsRuleActionParametersSetCacheTagsExpressionOperation;
 }
 export const RulesCreateResultRulesetRulesItemSetCacheTagsRuleActionParametersSetCacheTagsExpression =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      operation:
-        RulesCreateResultRulesetRulesItemSetCacheTagsRuleActionParametersSetCacheTagsExpressionOperation,
-    }),
-  ).annotate({
-    identifier:
-      "RulesCreateResultRulesetRulesItemSetCacheTagsRuleActionParametersSetCacheTagsExpression",
-  }) as any as S.Schema<RulesCreateResultRulesetRulesItemSetCacheTagsRuleActionParametersSetCacheTagsExpression>;
+  RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader as any as S.Schema<RulesCreateResultRulesetRulesItemSetCacheTagsRuleActionParametersSetCacheTagsExpression>;
 
 export type RulesCreateResultRulesetRulesItemSetCacheTagsRuleActionParameters =
   | RulesCreateResultRulesetRulesItemSetCacheTagsRuleActionParametersAddCacheTagsValues
@@ -7255,9 +6823,7 @@ export const RulesCreateResultRulesetRulesItemSkipRuleActionParametersProductsIt
 export type RulesCreateResultRulesetRulesItemSkipRuleActionParametersProductsList =
   Array<RulesCreateResultRulesetRulesItemSkipRuleActionParametersProductsItem>;
 export const RulesCreateResultRulesetRulesItemSkipRuleActionParametersProductsList =
-  /*@__PURE__*/ S.Array(
-    RulesCreateResultRulesetRulesItemSkipRuleActionParametersProductsItem,
-  ) as any as S.Schema<RulesCreateResultRulesetRulesItemSkipRuleActionParametersProductsList>;
+  RulesCreateResultRulesetRulesItemSkipRuleActionParametersPhasesList as any as S.Schema<RulesCreateResultRulesetRulesItemSkipRuleActionParametersProductsList>;
 
 export type RulesCreateResultRulesetRulesItemSkipRuleActionParametersRulesValueList = Array<string>;
 export const RulesCreateResultRulesetRulesItemSkipRuleActionParametersRulesValueList =
@@ -9395,15 +8961,7 @@ export interface CreateRequestRulesItemRewriteRuleActionParametersHeadersValueAd
   operation: CreateRequestRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeaderOperation;
 }
 export const CreateRequestRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      operation:
-        CreateRequestRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeaderOperation,
-    }),
-  ).annotate({
-    identifier: "CreateRequestRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader",
-  }) as any as S.Schema<CreateRequestRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader>;
+  RulesCreateRequestBodySetCacheTagsRuleActionParametersAddCacheTagsExpression as any as S.Schema<CreateRequestRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader>;
 
 export type CreateRequestRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeaderOperation =
   "set";
@@ -9417,15 +8975,7 @@ export interface CreateRequestRulesItemRewriteRuleActionParametersHeadersValueSe
   value: string;
 }
 export const CreateRequestRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeader =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        CreateRequestRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeaderOperation,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "CreateRequestRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeader",
-  }) as any as S.Schema<CreateRequestRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeader>;
+  CreateRequestRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader as any as S.Schema<CreateRequestRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeader>;
 
 export type CreateRequestRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeaderOperation =
   "set";
@@ -9439,15 +8989,7 @@ export interface CreateRequestRulesItemRewriteRuleActionParametersHeadersValueSe
   operation: CreateRequestRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeaderOperation;
 }
 export const CreateRequestRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeader =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      operation:
-        CreateRequestRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeaderOperation,
-    }),
-  ).annotate({
-    identifier: "CreateRequestRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeader",
-  }) as any as S.Schema<CreateRequestRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeader>;
+  RulesCreateRequestBodySetCacheTagsRuleActionParametersAddCacheTagsExpression as any as S.Schema<CreateRequestRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeader>;
 
 export type CreateRequestRulesItemRewriteRuleActionParametersHeadersValueRemoveHeaderOperation =
   "remove";
@@ -10053,15 +9595,7 @@ export interface CreateRequestRulesItemSetCacheControlActionParametersImmutableS
   cloudflareOnly?: boolean;
 }
 export const CreateRequestRulesItemSetCacheControlActionParametersImmutableSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        CreateRequestRulesItemSetCacheControlActionParametersImmutableSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "CreateRequestRulesItemSetCacheControlActionParametersImmutableSetDirective",
-  }) as any as S.Schema<CreateRequestRulesItemSetCacheControlActionParametersImmutableSetDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<CreateRequestRulesItemSetCacheControlActionParametersImmutableSetDirective>;
 
 export type CreateRequestRulesItemSetCacheControlActionParametersImmutableRemoveDirectiveOperation =
   | "set"
@@ -10078,15 +9612,7 @@ export interface CreateRequestRulesItemSetCacheControlActionParametersImmutableR
   cloudflareOnly?: boolean;
 }
 export const CreateRequestRulesItemSetCacheControlActionParametersImmutableRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        CreateRequestRulesItemSetCacheControlActionParametersImmutableRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "CreateRequestRulesItemSetCacheControlActionParametersImmutableRemoveDirective",
-  }) as any as S.Schema<CreateRequestRulesItemSetCacheControlActionParametersImmutableRemoveDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<CreateRequestRulesItemSetCacheControlActionParametersImmutableRemoveDirective>;
 
 export type CreateRequestRulesItemSetCacheControlActionParametersImmutable =
   | CreateRequestRulesItemSetCacheControlActionParametersImmutableSetDirective
@@ -10141,15 +9667,7 @@ export interface CreateRequestRulesItemSetCacheControlActionParametersMaxAgeRemo
   cloudflareOnly?: boolean;
 }
 export const CreateRequestRulesItemSetCacheControlActionParametersMaxAgeRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        CreateRequestRulesItemSetCacheControlActionParametersMaxAgeRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "CreateRequestRulesItemSetCacheControlActionParametersMaxAgeRemoveDirective",
-  }) as any as S.Schema<CreateRequestRulesItemSetCacheControlActionParametersMaxAgeRemoveDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<CreateRequestRulesItemSetCacheControlActionParametersMaxAgeRemoveDirective>;
 
 export type CreateRequestRulesItemSetCacheControlActionParametersMaxAge =
   | CreateRequestRulesItemSetCacheControlActionParametersMaxAgeSetDirective
@@ -10177,15 +9695,7 @@ export interface CreateRequestRulesItemSetCacheControlActionParametersMustRevali
   cloudflareOnly?: boolean;
 }
 export const CreateRequestRulesItemSetCacheControlActionParametersMustRevalidateSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        CreateRequestRulesItemSetCacheControlActionParametersMustRevalidateSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "CreateRequestRulesItemSetCacheControlActionParametersMustRevalidateSetDirective",
-  }) as any as S.Schema<CreateRequestRulesItemSetCacheControlActionParametersMustRevalidateSetDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<CreateRequestRulesItemSetCacheControlActionParametersMustRevalidateSetDirective>;
 
 export type CreateRequestRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirectiveOperation =
   | "set"
@@ -10202,16 +9712,7 @@ export interface CreateRequestRulesItemSetCacheControlActionParametersMustRevali
   cloudflareOnly?: boolean;
 }
 export const CreateRequestRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        CreateRequestRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "CreateRequestRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirective",
-  }) as any as S.Schema<CreateRequestRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersMustRevalidateSetDirective as any as S.Schema<CreateRequestRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirective>;
 
 export type CreateRequestRulesItemSetCacheControlActionParametersMustRevalidate =
   | CreateRequestRulesItemSetCacheControlActionParametersMustRevalidateSetDirective
@@ -10239,15 +9740,7 @@ export interface CreateRequestRulesItemSetCacheControlActionParametersMustUnders
   cloudflareOnly?: boolean;
 }
 export const CreateRequestRulesItemSetCacheControlActionParametersMustUnderstandSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        CreateRequestRulesItemSetCacheControlActionParametersMustUnderstandSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "CreateRequestRulesItemSetCacheControlActionParametersMustUnderstandSetDirective",
-  }) as any as S.Schema<CreateRequestRulesItemSetCacheControlActionParametersMustUnderstandSetDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<CreateRequestRulesItemSetCacheControlActionParametersMustUnderstandSetDirective>;
 
 export type CreateRequestRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirectiveOperation =
   | "set"
@@ -10264,16 +9757,7 @@ export interface CreateRequestRulesItemSetCacheControlActionParametersMustUnders
   cloudflareOnly?: boolean;
 }
 export const CreateRequestRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        CreateRequestRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "CreateRequestRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirective",
-  }) as any as S.Schema<CreateRequestRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersMustRevalidateSetDirective as any as S.Schema<CreateRequestRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirective>;
 
 export type CreateRequestRulesItemSetCacheControlActionParametersMustUnderstand =
   | CreateRequestRulesItemSetCacheControlActionParametersMustUnderstandSetDirective
@@ -10335,15 +9819,7 @@ export interface CreateRequestRulesItemSetCacheControlActionParametersNoCacheRem
   cloudflareOnly?: boolean;
 }
 export const CreateRequestRulesItemSetCacheControlActionParametersNoCacheRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        CreateRequestRulesItemSetCacheControlActionParametersNoCacheRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "CreateRequestRulesItemSetCacheControlActionParametersNoCacheRemoveDirective",
-  }) as any as S.Schema<CreateRequestRulesItemSetCacheControlActionParametersNoCacheRemoveDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<CreateRequestRulesItemSetCacheControlActionParametersNoCacheRemoveDirective>;
 
 export type CreateRequestRulesItemSetCacheControlActionParametersNoCache =
   | CreateRequestRulesItemSetCacheControlActionParametersNoCacheSetDirective
@@ -10395,15 +9871,7 @@ export interface CreateRequestRulesItemSetCacheControlActionParametersNoStoreRem
   cloudflareOnly?: boolean;
 }
 export const CreateRequestRulesItemSetCacheControlActionParametersNoStoreRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        CreateRequestRulesItemSetCacheControlActionParametersNoStoreRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "CreateRequestRulesItemSetCacheControlActionParametersNoStoreRemoveDirective",
-  }) as any as S.Schema<CreateRequestRulesItemSetCacheControlActionParametersNoStoreRemoveDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<CreateRequestRulesItemSetCacheControlActionParametersNoStoreRemoveDirective>;
 
 export type CreateRequestRulesItemSetCacheControlActionParametersNoStore =
   | CreateRequestRulesItemSetCacheControlActionParametersNoStoreSetDirective
@@ -10431,15 +9899,7 @@ export interface CreateRequestRulesItemSetCacheControlActionParametersNoTransfor
   cloudflareOnly?: boolean;
 }
 export const CreateRequestRulesItemSetCacheControlActionParametersNoTransformSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        CreateRequestRulesItemSetCacheControlActionParametersNoTransformSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "CreateRequestRulesItemSetCacheControlActionParametersNoTransformSetDirective",
-  }) as any as S.Schema<CreateRequestRulesItemSetCacheControlActionParametersNoTransformSetDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<CreateRequestRulesItemSetCacheControlActionParametersNoTransformSetDirective>;
 
 export type CreateRequestRulesItemSetCacheControlActionParametersNoTransformRemoveDirectiveOperation =
   | "set"
@@ -10456,15 +9916,7 @@ export interface CreateRequestRulesItemSetCacheControlActionParametersNoTransfor
   cloudflareOnly?: boolean;
 }
 export const CreateRequestRulesItemSetCacheControlActionParametersNoTransformRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        CreateRequestRulesItemSetCacheControlActionParametersNoTransformRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "CreateRequestRulesItemSetCacheControlActionParametersNoTransformRemoveDirective",
-  }) as any as S.Schema<CreateRequestRulesItemSetCacheControlActionParametersNoTransformRemoveDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<CreateRequestRulesItemSetCacheControlActionParametersNoTransformRemoveDirective>;
 
 export type CreateRequestRulesItemSetCacheControlActionParametersNoTransform =
   | CreateRequestRulesItemSetCacheControlActionParametersNoTransformSetDirective
@@ -10526,15 +9978,7 @@ export interface CreateRequestRulesItemSetCacheControlActionParametersPrivateRem
   cloudflareOnly?: boolean;
 }
 export const CreateRequestRulesItemSetCacheControlActionParametersPrivateRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        CreateRequestRulesItemSetCacheControlActionParametersPrivateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "CreateRequestRulesItemSetCacheControlActionParametersPrivateRemoveDirective",
-  }) as any as S.Schema<CreateRequestRulesItemSetCacheControlActionParametersPrivateRemoveDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<CreateRequestRulesItemSetCacheControlActionParametersPrivateRemoveDirective>;
 
 export type CreateRequestRulesItemSetCacheControlActionParametersPrivate =
   | CreateRequestRulesItemSetCacheControlActionParametersPrivateSetDirective
@@ -10562,15 +10006,7 @@ export interface CreateRequestRulesItemSetCacheControlActionParametersProxyReval
   cloudflareOnly?: boolean;
 }
 export const CreateRequestRulesItemSetCacheControlActionParametersProxyRevalidateSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        CreateRequestRulesItemSetCacheControlActionParametersProxyRevalidateSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "CreateRequestRulesItemSetCacheControlActionParametersProxyRevalidateSetDirective",
-  }) as any as S.Schema<CreateRequestRulesItemSetCacheControlActionParametersProxyRevalidateSetDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<CreateRequestRulesItemSetCacheControlActionParametersProxyRevalidateSetDirective>;
 
 export type CreateRequestRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirectiveOperation =
   | "set"
@@ -10587,16 +10023,7 @@ export interface CreateRequestRulesItemSetCacheControlActionParametersProxyReval
   cloudflareOnly?: boolean;
 }
 export const CreateRequestRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        CreateRequestRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "CreateRequestRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirective",
-  }) as any as S.Schema<CreateRequestRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersMustRevalidateSetDirective as any as S.Schema<CreateRequestRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirective>;
 
 export type CreateRequestRulesItemSetCacheControlActionParametersProxyRevalidate =
   | CreateRequestRulesItemSetCacheControlActionParametersProxyRevalidateSetDirective
@@ -10624,14 +10051,7 @@ export interface CreateRequestRulesItemSetCacheControlActionParametersPublicSetD
   cloudflareOnly?: boolean;
 }
 export const CreateRequestRulesItemSetCacheControlActionParametersPublicSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation: CreateRequestRulesItemSetCacheControlActionParametersPublicSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "CreateRequestRulesItemSetCacheControlActionParametersPublicSetDirective",
-  }) as any as S.Schema<CreateRequestRulesItemSetCacheControlActionParametersPublicSetDirective>;
+  CreateRequestRulesItemSetCacheControlActionParametersNoStoreSetDirective as any as S.Schema<CreateRequestRulesItemSetCacheControlActionParametersPublicSetDirective>;
 
 export type CreateRequestRulesItemSetCacheControlActionParametersPublicRemoveDirectiveOperation =
   | "set"
@@ -10648,15 +10068,7 @@ export interface CreateRequestRulesItemSetCacheControlActionParametersPublicRemo
   cloudflareOnly?: boolean;
 }
 export const CreateRequestRulesItemSetCacheControlActionParametersPublicRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        CreateRequestRulesItemSetCacheControlActionParametersPublicRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "CreateRequestRulesItemSetCacheControlActionParametersPublicRemoveDirective",
-  }) as any as S.Schema<CreateRequestRulesItemSetCacheControlActionParametersPublicRemoveDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<CreateRequestRulesItemSetCacheControlActionParametersPublicRemoveDirective>;
 
 export type CreateRequestRulesItemSetCacheControlActionParametersPublic =
   | CreateRequestRulesItemSetCacheControlActionParametersPublicSetDirective
@@ -10686,15 +10098,7 @@ export interface CreateRequestRulesItemSetCacheControlActionParametersSMaxageSet
   cloudflareOnly?: boolean;
 }
 export const CreateRequestRulesItemSetCacheControlActionParametersSMaxageSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation: CreateRequestRulesItemSetCacheControlActionParametersSMaxageSetDirectiveOperation,
-      value: S.Number,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "CreateRequestRulesItemSetCacheControlActionParametersSMaxageSetDirective",
-  }) as any as S.Schema<CreateRequestRulesItemSetCacheControlActionParametersSMaxageSetDirective>;
+  CreateRequestRulesItemSetCacheControlActionParametersMaxAgeSetDirective as any as S.Schema<CreateRequestRulesItemSetCacheControlActionParametersSMaxageSetDirective>;
 
 export type CreateRequestRulesItemSetCacheControlActionParametersSMaxageRemoveDirectiveOperation =
   | "set"
@@ -10711,15 +10115,7 @@ export interface CreateRequestRulesItemSetCacheControlActionParametersSMaxageRem
   cloudflareOnly?: boolean;
 }
 export const CreateRequestRulesItemSetCacheControlActionParametersSMaxageRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        CreateRequestRulesItemSetCacheControlActionParametersSMaxageRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "CreateRequestRulesItemSetCacheControlActionParametersSMaxageRemoveDirective",
-  }) as any as S.Schema<CreateRequestRulesItemSetCacheControlActionParametersSMaxageRemoveDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<CreateRequestRulesItemSetCacheControlActionParametersSMaxageRemoveDirective>;
 
 export type CreateRequestRulesItemSetCacheControlActionParametersSMaxage =
   | CreateRequestRulesItemSetCacheControlActionParametersSMaxageSetDirective
@@ -10749,16 +10145,7 @@ export interface CreateRequestRulesItemSetCacheControlActionParametersStaleIfErr
   cloudflareOnly?: boolean;
 }
 export const CreateRequestRulesItemSetCacheControlActionParametersStaleIfErrorSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        CreateRequestRulesItemSetCacheControlActionParametersStaleIfErrorSetDirectiveOperation,
-      value: S.Number,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "CreateRequestRulesItemSetCacheControlActionParametersStaleIfErrorSetDirective",
-  }) as any as S.Schema<CreateRequestRulesItemSetCacheControlActionParametersStaleIfErrorSetDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersMaxAgeSetDirective as any as S.Schema<CreateRequestRulesItemSetCacheControlActionParametersStaleIfErrorSetDirective>;
 
 export type CreateRequestRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirectiveOperation =
   | "set"
@@ -10775,15 +10162,7 @@ export interface CreateRequestRulesItemSetCacheControlActionParametersStaleIfErr
   cloudflareOnly?: boolean;
 }
 export const CreateRequestRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        CreateRequestRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "CreateRequestRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirective",
-  }) as any as S.Schema<CreateRequestRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<CreateRequestRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirective>;
 
 export type CreateRequestRulesItemSetCacheControlActionParametersStaleIfError =
   | CreateRequestRulesItemSetCacheControlActionParametersStaleIfErrorSetDirective
@@ -10813,17 +10192,7 @@ export interface CreateRequestRulesItemSetCacheControlActionParametersStaleWhile
   cloudflareOnly?: boolean;
 }
 export const CreateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidateSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        CreateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidateSetDirectiveOperation,
-      value: S.Number,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "CreateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidateSetDirective",
-  }) as any as S.Schema<CreateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidateSetDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersStaleWhileRevalidateSetDirective as any as S.Schema<CreateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidateSetDirective>;
 
 export type CreateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirectiveOperation =
   | "set"
@@ -10840,16 +10209,7 @@ export interface CreateRequestRulesItemSetCacheControlActionParametersStaleWhile
   cloudflareOnly?: boolean;
 }
 export const CreateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        CreateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "CreateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirective",
-  }) as any as S.Schema<CreateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersMustRevalidateSetDirective as any as S.Schema<CreateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirective>;
 
 export type CreateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidate =
   | CreateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidateSetDirective
@@ -11803,15 +11163,7 @@ export interface CreateRequestRulesItemSetCacheTagsActionParametersRemoveCacheTa
     | (string & {});
 }
 export const CreateRequestRulesItemSetCacheTagsActionParametersRemoveCacheTagsExpression =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      operation:
-        CreateRequestRulesItemSetCacheTagsActionParametersRemoveCacheTagsExpressionOperation,
-    }),
-  ).annotate({
-    identifier: "CreateRequestRulesItemSetCacheTagsActionParametersRemoveCacheTagsExpression",
-  }) as any as S.Schema<CreateRequestRulesItemSetCacheTagsActionParametersRemoveCacheTagsExpression>;
+  RulesCreateRequestBodySetCacheTagsRuleActionParametersAddCacheTagsExpression as any as S.Schema<CreateRequestRulesItemSetCacheTagsActionParametersRemoveCacheTagsExpression>;
 
 export type CreateRequestRulesItemSetCacheTagsActionParametersSetCacheTagsValuesOperation =
   | "add"
@@ -11859,14 +11211,7 @@ export interface CreateRequestRulesItemSetCacheTagsActionParametersSetCacheTagsE
     | (string & {});
 }
 export const CreateRequestRulesItemSetCacheTagsActionParametersSetCacheTagsExpression =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      operation: CreateRequestRulesItemSetCacheTagsActionParametersSetCacheTagsExpressionOperation,
-    }),
-  ).annotate({
-    identifier: "CreateRequestRulesItemSetCacheTagsActionParametersSetCacheTagsExpression",
-  }) as any as S.Schema<CreateRequestRulesItemSetCacheTagsActionParametersSetCacheTagsExpression>;
+  CreateRequestRulesItemSetCacheTagsActionParametersAddCacheTagsExpression as any as S.Schema<CreateRequestRulesItemSetCacheTagsActionParametersSetCacheTagsExpression>;
 
 export type CreateRequestRulesItemSetCacheTagsActionParameters =
   | CreateRequestRulesItemSetCacheTagsActionParametersAddCacheTagsValues
@@ -12270,9 +11615,8 @@ export const CreateRequestRulesItemSkipRuleActionParametersProductsItem = S.Stri
 export type CreateRequestRulesItemSkipRuleActionParametersProductsList = Array<
   CreateRequestRulesItemSkipRuleActionParametersProductsItem | (string & {})
 >;
-export const CreateRequestRulesItemSkipRuleActionParametersProductsList = /*@__PURE__*/ S.Array(
-  CreateRequestRulesItemSkipRuleActionParametersProductsItem,
-) as any as S.Schema<CreateRequestRulesItemSkipRuleActionParametersProductsList>;
+export const CreateRequestRulesItemSkipRuleActionParametersProductsList =
+  CreateRequestRulesItemSkipRuleActionParametersPhasesList as any as S.Schema<CreateRequestRulesItemSkipRuleActionParametersProductsList>;
 
 export type CreateRequestRulesItemSkipRuleActionParametersRulesValueList = Array<string>;
 export const CreateRequestRulesItemSkipRuleActionParametersRulesValueList =
@@ -13394,28 +12738,12 @@ export interface CreateResultRulesetRulesItemExecuteRuleActionParametersOverride
   sensitivityLevel?: CreateResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesItemSensitivityLevel | null;
 }
 export const CreateResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      action: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      scoreThreshold: S.optional(S.NullOr(S.Number).pipe(T.Body("score_threshold"))),
-      sensitivityLevel: S.optional(
-        S.NullOr(
-          CreateResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesItemSensitivityLevel,
-        ).pipe(T.Body("sensitivity_level")),
-      ),
-    }),
-  ).annotate({
-    identifier: "CreateResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesItem",
-  }) as any as S.Schema<CreateResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesItem>;
+  RulesCreateResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesItem as any as S.Schema<CreateResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesItem>;
 
 export type CreateResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesList =
   Array<CreateResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesItem>;
 export const CreateResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesList =
-  /*@__PURE__*/ S.Array(
-    CreateResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesItem,
-  ) as any as S.Schema<CreateResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesList>;
+  RulesCreateResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesList as any as S.Schema<CreateResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesList>;
 
 export type CreateResultRulesetRulesItemExecuteRuleActionParametersOverridesSensitivityLevel =
   | "default"
@@ -14277,16 +13605,7 @@ export interface CreateResultRulesetRulesItemRewriteRuleActionParametersHeadersV
   value: string;
 }
 export const CreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        CreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeaderOperation,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "CreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader",
-  }) as any as S.Schema<CreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader>;
+  RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader as any as S.Schema<CreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader>;
 
 export type CreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeaderOperation =
   "add";
@@ -14300,16 +13619,7 @@ export interface CreateResultRulesetRulesItemRewriteRuleActionParametersHeadersV
   operation: CreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeaderOperation;
 }
 export const CreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      operation:
-        CreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeaderOperation,
-    }),
-  ).annotate({
-    identifier:
-      "CreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader",
-  }) as any as S.Schema<CreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader>;
+  RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader as any as S.Schema<CreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader>;
 
 export type CreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeaderOperation =
   "set";
@@ -14323,16 +13633,7 @@ export interface CreateResultRulesetRulesItemRewriteRuleActionParametersHeadersV
   value: string;
 }
 export const CreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeader =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        CreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeaderOperation,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "CreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeader",
-  }) as any as S.Schema<CreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeader>;
+  RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader as any as S.Schema<CreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeader>;
 
 export type CreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeaderOperation =
   "set";
@@ -14346,16 +13647,7 @@ export interface CreateResultRulesetRulesItemRewriteRuleActionParametersHeadersV
   operation: CreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeaderOperation;
 }
 export const CreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeader =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      operation:
-        CreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeaderOperation,
-    }),
-  ).annotate({
-    identifier:
-      "CreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeader",
-  }) as any as S.Schema<CreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeader>;
+  RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader as any as S.Schema<CreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeader>;
 
 export type CreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueRemoveHeaderOperation =
   "remove";
@@ -14926,16 +14218,7 @@ export interface CreateResultRulesetRulesItemSetCacheControlRuleActionParameters
   cloudflareOnly?: boolean | null;
 }
 export const CreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        CreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "CreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective",
-  }) as any as S.Schema<CreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<CreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective>;
 
 export type CreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableRemoveDirectiveOperation =
   | "set"
@@ -14950,16 +14233,7 @@ export interface CreateResultRulesetRulesItemSetCacheControlRuleActionParameters
   cloudflareOnly?: boolean | null;
 }
 export const CreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        CreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "CreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableRemoveDirective",
-  }) as any as S.Schema<CreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<CreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableRemoveDirective>;
 
 export type CreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutable =
   | CreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective
@@ -15011,16 +14285,7 @@ export interface CreateResultRulesetRulesItemSetCacheControlRuleActionParameters
   cloudflareOnly?: boolean | null;
 }
 export const CreateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        CreateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "CreateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeRemoveDirective",
-  }) as any as S.Schema<CreateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<CreateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeRemoveDirective>;
 
 export type CreateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAge =
   | CreateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective
@@ -15046,16 +14311,7 @@ export interface CreateResultRulesetRulesItemSetCacheControlRuleActionParameters
   cloudflareOnly?: boolean | null;
 }
 export const CreateResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        CreateResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "CreateResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateSetDirective",
-  }) as any as S.Schema<CreateResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<CreateResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateSetDirective>;
 
 export type CreateResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateRemoveDirectiveOperation =
   | "set"
@@ -15070,16 +14326,7 @@ export interface CreateResultRulesetRulesItemSetCacheControlRuleActionParameters
   cloudflareOnly?: boolean | null;
 }
 export const CreateResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        CreateResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "CreateResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateRemoveDirective",
-  }) as any as S.Schema<CreateResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<CreateResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateRemoveDirective>;
 
 export type CreateResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidate =
   | CreateResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateSetDirective
@@ -15105,16 +14352,7 @@ export interface CreateResultRulesetRulesItemSetCacheControlRuleActionParameters
   cloudflareOnly?: boolean | null;
 }
 export const CreateResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        CreateResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "CreateResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandSetDirective",
-  }) as any as S.Schema<CreateResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<CreateResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandSetDirective>;
 
 export type CreateResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandRemoveDirectiveOperation =
   | "set"
@@ -15129,16 +14367,7 @@ export interface CreateResultRulesetRulesItemSetCacheControlRuleActionParameters
   cloudflareOnly?: boolean | null;
 }
 export const CreateResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        CreateResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "CreateResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandRemoveDirective",
-  }) as any as S.Schema<CreateResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<CreateResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandRemoveDirective>;
 
 export type CreateResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstand =
   | CreateResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandSetDirective
@@ -15200,16 +14429,7 @@ export interface CreateResultRulesetRulesItemSetCacheControlRuleActionParameters
   cloudflareOnly?: boolean | null;
 }
 export const CreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoCacheRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        CreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoCacheRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "CreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoCacheRemoveDirective",
-  }) as any as S.Schema<CreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoCacheRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<CreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoCacheRemoveDirective>;
 
 export type CreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoCache =
   | CreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoCacheSetDirective
@@ -15235,16 +14455,7 @@ export interface CreateResultRulesetRulesItemSetCacheControlRuleActionParameters
   cloudflareOnly?: boolean | null;
 }
 export const CreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        CreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "CreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreSetDirective",
-  }) as any as S.Schema<CreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<CreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreSetDirective>;
 
 export type CreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreRemoveDirectiveOperation =
   | "set"
@@ -15259,16 +14470,7 @@ export interface CreateResultRulesetRulesItemSetCacheControlRuleActionParameters
   cloudflareOnly?: boolean | null;
 }
 export const CreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        CreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "CreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreRemoveDirective",
-  }) as any as S.Schema<CreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<CreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreRemoveDirective>;
 
 export type CreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoStore =
   | CreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreSetDirective
@@ -15294,16 +14496,7 @@ export interface CreateResultRulesetRulesItemSetCacheControlRuleActionParameters
   cloudflareOnly?: boolean | null;
 }
 export const CreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        CreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "CreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformSetDirective",
-  }) as any as S.Schema<CreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<CreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformSetDirective>;
 
 export type CreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformRemoveDirectiveOperation =
   | "set"
@@ -15318,16 +14511,7 @@ export interface CreateResultRulesetRulesItemSetCacheControlRuleActionParameters
   cloudflareOnly?: boolean | null;
 }
 export const CreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        CreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "CreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformRemoveDirective",
-  }) as any as S.Schema<CreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<CreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformRemoveDirective>;
 
 export type CreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransform =
   | CreateResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformSetDirective
@@ -15389,16 +14573,7 @@ export interface CreateResultRulesetRulesItemSetCacheControlRuleActionParameters
   cloudflareOnly?: boolean | null;
 }
 export const CreateResultRulesetRulesItemSetCacheControlRuleActionParametersPrivateRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        CreateResultRulesetRulesItemSetCacheControlRuleActionParametersPrivateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "CreateResultRulesetRulesItemSetCacheControlRuleActionParametersPrivateRemoveDirective",
-  }) as any as S.Schema<CreateResultRulesetRulesItemSetCacheControlRuleActionParametersPrivateRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<CreateResultRulesetRulesItemSetCacheControlRuleActionParametersPrivateRemoveDirective>;
 
 export type CreateResultRulesetRulesItemSetCacheControlRuleActionParametersPrivate =
   | CreateResultRulesetRulesItemSetCacheControlRuleActionParametersPrivateSetDirective
@@ -15424,16 +14599,7 @@ export interface CreateResultRulesetRulesItemSetCacheControlRuleActionParameters
   cloudflareOnly?: boolean | null;
 }
 export const CreateResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        CreateResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "CreateResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateSetDirective",
-  }) as any as S.Schema<CreateResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<CreateResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateSetDirective>;
 
 export type CreateResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateRemoveDirectiveOperation =
   | "set"
@@ -15448,16 +14614,7 @@ export interface CreateResultRulesetRulesItemSetCacheControlRuleActionParameters
   cloudflareOnly?: boolean | null;
 }
 export const CreateResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        CreateResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "CreateResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateRemoveDirective",
-  }) as any as S.Schema<CreateResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<CreateResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateRemoveDirective>;
 
 export type CreateResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidate =
   | CreateResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateSetDirective
@@ -15506,16 +14663,7 @@ export interface CreateResultRulesetRulesItemSetCacheControlRuleActionParameters
   cloudflareOnly?: boolean | null;
 }
 export const CreateResultRulesetRulesItemSetCacheControlRuleActionParametersPublicRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        CreateResultRulesetRulesItemSetCacheControlRuleActionParametersPublicRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "CreateResultRulesetRulesItemSetCacheControlRuleActionParametersPublicRemoveDirective",
-  }) as any as S.Schema<CreateResultRulesetRulesItemSetCacheControlRuleActionParametersPublicRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<CreateResultRulesetRulesItemSetCacheControlRuleActionParametersPublicRemoveDirective>;
 
 export type CreateResultRulesetRulesItemSetCacheControlRuleActionParametersPublic =
   | CreateResultRulesetRulesItemSetCacheControlRuleActionParametersPublicSetDirective
@@ -15543,17 +14691,7 @@ export interface CreateResultRulesetRulesItemSetCacheControlRuleActionParameters
   cloudflareOnly?: boolean | null;
 }
 export const CreateResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        CreateResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageSetDirectiveOperation,
-      value: S.Number,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "CreateResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageSetDirective",
-  }) as any as S.Schema<CreateResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective as any as S.Schema<CreateResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageSetDirective>;
 
 export type CreateResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageRemoveDirectiveOperation =
   | "set"
@@ -15568,16 +14706,7 @@ export interface CreateResultRulesetRulesItemSetCacheControlRuleActionParameters
   cloudflareOnly?: boolean | null;
 }
 export const CreateResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        CreateResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "CreateResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageRemoveDirective",
-  }) as any as S.Schema<CreateResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<CreateResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageRemoveDirective>;
 
 export type CreateResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxage =
   | CreateResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageSetDirective
@@ -15605,17 +14734,7 @@ export interface CreateResultRulesetRulesItemSetCacheControlRuleActionParameters
   cloudflareOnly?: boolean | null;
 }
 export const CreateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        CreateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorSetDirectiveOperation,
-      value: S.Number,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "CreateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorSetDirective",
-  }) as any as S.Schema<CreateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective as any as S.Schema<CreateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorSetDirective>;
 
 export type CreateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorRemoveDirectiveOperation =
   | "set"
@@ -15630,16 +14749,7 @@ export interface CreateResultRulesetRulesItemSetCacheControlRuleActionParameters
   cloudflareOnly?: boolean | null;
 }
 export const CreateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        CreateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "CreateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorRemoveDirective",
-  }) as any as S.Schema<CreateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<CreateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorRemoveDirective>;
 
 export type CreateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfError =
   | CreateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorSetDirective
@@ -15667,17 +14777,7 @@ export interface CreateResultRulesetRulesItemSetCacheControlRuleActionParameters
   cloudflareOnly?: boolean | null;
 }
 export const CreateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        CreateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateSetDirectiveOperation,
-      value: S.Number,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "CreateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateSetDirective",
-  }) as any as S.Schema<CreateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective as any as S.Schema<CreateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateSetDirective>;
 
 export type CreateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirectiveOperation =
   | "set"
@@ -15692,16 +14792,7 @@ export interface CreateResultRulesetRulesItemSetCacheControlRuleActionParameters
   cloudflareOnly?: boolean | null;
 }
 export const CreateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        CreateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "CreateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirective",
-  }) as any as S.Schema<CreateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<CreateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirective>;
 
 export type CreateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidate =
   | CreateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateSetDirective
@@ -15927,14 +15018,7 @@ export interface CreateResultRulesetRulesItemSetCacheSettingsRuleActionParameter
   default?: number | null;
 }
 export const CreateResultRulesetRulesItemSetCacheSettingsRuleActionParametersBrowserTtl =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      mode: CreateResultRulesetRulesItemSetCacheSettingsRuleActionParametersBrowserTtlMode,
-      default: S.optional(S.NullOr(S.Number)),
-    }),
-  ).annotate({
-    identifier: "CreateResultRulesetRulesItemSetCacheSettingsRuleActionParametersBrowserTtl",
-  }) as any as S.Schema<CreateResultRulesetRulesItemSetCacheSettingsRuleActionParametersBrowserTtl>;
+  RulesCreateResultRulesetRulesItemSetCacheSettingsRuleActionParametersBrowserTtl as any as S.Schema<CreateResultRulesetRulesItemSetCacheSettingsRuleActionParametersBrowserTtl>;
 
 export type CreateResultRulesetRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieCheckPresenceList =
   Array<string>;
@@ -16173,14 +15257,7 @@ export interface CreateResultRulesetRulesItemSetCacheSettingsRuleActionParameter
   mode: CreateResultRulesetRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequestsMode;
 }
 export const CreateResultRulesetRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequests =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      mode: CreateResultRulesetRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequestsMode,
-    }),
-  ).annotate({
-    identifier:
-      "CreateResultRulesetRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequests",
-  }) as any as S.Schema<CreateResultRulesetRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequests>;
+  RulesCreateResultRulesetRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequests as any as S.Schema<CreateResultRulesetRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequests>;
 
 export type CreateResultRulesetRulesItemSetCacheSettingsRuleActionParametersServeStale =
   RulesCreateResultRulesetRulesItemSetCacheSettingsRuleActionParametersServeStale;
@@ -16204,13 +15281,7 @@ export interface CreateResultRulesetRulesItemSetCacheSettingsRuleActionParameter
   action: CreateResultRulesetRulesItemSetCacheSettingsRuleActionParametersVaryDefaultAction;
 }
 export const CreateResultRulesetRulesItemSetCacheSettingsRuleActionParametersVaryDefault =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      action: CreateResultRulesetRulesItemSetCacheSettingsRuleActionParametersVaryDefaultAction,
-    }),
-  ).annotate({
-    identifier: "CreateResultRulesetRulesItemSetCacheSettingsRuleActionParametersVaryDefault",
-  }) as any as S.Schema<CreateResultRulesetRulesItemSetCacheSettingsRuleActionParametersVaryDefault>;
+  CreateRequestRulesItemSetCacheSettingsRuleActionParametersVaryDefault as any as S.Schema<CreateResultRulesetRulesItemSetCacheSettingsRuleActionParametersVaryDefault>;
 
 export type CreateResultRulesetRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueAction =
   | "bypass"
@@ -16524,16 +15595,7 @@ export interface CreateResultRulesetRulesItemSetCacheTagsRuleActionParametersAdd
   operation: CreateResultRulesetRulesItemSetCacheTagsRuleActionParametersAddCacheTagsExpressionOperation;
 }
 export const CreateResultRulesetRulesItemSetCacheTagsRuleActionParametersAddCacheTagsExpression =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      operation:
-        CreateResultRulesetRulesItemSetCacheTagsRuleActionParametersAddCacheTagsExpressionOperation,
-    }),
-  ).annotate({
-    identifier:
-      "CreateResultRulesetRulesItemSetCacheTagsRuleActionParametersAddCacheTagsExpression",
-  }) as any as S.Schema<CreateResultRulesetRulesItemSetCacheTagsRuleActionParametersAddCacheTagsExpression>;
+  RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader as any as S.Schema<CreateResultRulesetRulesItemSetCacheTagsRuleActionParametersAddCacheTagsExpression>;
 
 export type CreateResultRulesetRulesItemSetCacheTagsRuleActionParametersRemoveCacheTagsValuesOperation =
   | "add"
@@ -16579,16 +15641,7 @@ export interface CreateResultRulesetRulesItemSetCacheTagsRuleActionParametersRem
   operation: CreateResultRulesetRulesItemSetCacheTagsRuleActionParametersRemoveCacheTagsExpressionOperation;
 }
 export const CreateResultRulesetRulesItemSetCacheTagsRuleActionParametersRemoveCacheTagsExpression =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      operation:
-        CreateResultRulesetRulesItemSetCacheTagsRuleActionParametersRemoveCacheTagsExpressionOperation,
-    }),
-  ).annotate({
-    identifier:
-      "CreateResultRulesetRulesItemSetCacheTagsRuleActionParametersRemoveCacheTagsExpression",
-  }) as any as S.Schema<CreateResultRulesetRulesItemSetCacheTagsRuleActionParametersRemoveCacheTagsExpression>;
+  RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader as any as S.Schema<CreateResultRulesetRulesItemSetCacheTagsRuleActionParametersRemoveCacheTagsExpression>;
 
 export type CreateResultRulesetRulesItemSetCacheTagsRuleActionParametersSetCacheTagsValuesOperation =
   | "add"
@@ -16634,16 +15687,7 @@ export interface CreateResultRulesetRulesItemSetCacheTagsRuleActionParametersSet
   operation: CreateResultRulesetRulesItemSetCacheTagsRuleActionParametersSetCacheTagsExpressionOperation;
 }
 export const CreateResultRulesetRulesItemSetCacheTagsRuleActionParametersSetCacheTagsExpression =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      operation:
-        CreateResultRulesetRulesItemSetCacheTagsRuleActionParametersSetCacheTagsExpressionOperation,
-    }),
-  ).annotate({
-    identifier:
-      "CreateResultRulesetRulesItemSetCacheTagsRuleActionParametersSetCacheTagsExpression",
-  }) as any as S.Schema<CreateResultRulesetRulesItemSetCacheTagsRuleActionParametersSetCacheTagsExpression>;
+  RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader as any as S.Schema<CreateResultRulesetRulesItemSetCacheTagsRuleActionParametersSetCacheTagsExpression>;
 
 export type CreateResultRulesetRulesItemSetCacheTagsRuleActionParameters =
   | CreateResultRulesetRulesItemSetCacheTagsRuleActionParametersAddCacheTagsValues
@@ -17047,9 +16091,8 @@ export const CreateResultRulesetRulesItemSkipRuleActionParametersPhasesItem = S.
 
 export type CreateResultRulesetRulesItemSkipRuleActionParametersPhasesList =
   Array<CreateResultRulesetRulesItemSkipRuleActionParametersPhasesItem>;
-export const CreateResultRulesetRulesItemSkipRuleActionParametersPhasesList = /*@__PURE__*/ S.Array(
-  CreateResultRulesetRulesItemSkipRuleActionParametersPhasesItem,
-) as any as S.Schema<CreateResultRulesetRulesItemSkipRuleActionParametersPhasesList>;
+export const CreateResultRulesetRulesItemSkipRuleActionParametersPhasesList =
+  CreateRequestRulesItemSkipRuleActionParametersPhasesList as any as S.Schema<CreateResultRulesetRulesItemSkipRuleActionParametersPhasesList>;
 
 export type CreateResultRulesetRulesItemSkipRuleActionParametersProductsItem =
   | "bic"
@@ -17064,9 +16107,7 @@ export const CreateResultRulesetRulesItemSkipRuleActionParametersProductsItem = 
 export type CreateResultRulesetRulesItemSkipRuleActionParametersProductsList =
   Array<CreateResultRulesetRulesItemSkipRuleActionParametersProductsItem>;
 export const CreateResultRulesetRulesItemSkipRuleActionParametersProductsList =
-  /*@__PURE__*/ S.Array(
-    CreateResultRulesetRulesItemSkipRuleActionParametersProductsItem,
-  ) as any as S.Schema<CreateResultRulesetRulesItemSkipRuleActionParametersProductsList>;
+  RulesCreateResultRulesetRulesItemSkipRuleActionParametersPhasesList as any as S.Schema<CreateResultRulesetRulesItemSkipRuleActionParametersProductsList>;
 
 export type CreateResultRulesetRulesItemSkipRuleActionParametersRulesValueList = Array<string>;
 export const CreateResultRulesetRulesItemSkipRuleActionParametersRulesValueList =
@@ -18026,39 +17067,19 @@ export interface RulesDeleteResultRulesetRulesItemResponseCompressionRuleActionP
   name?: RulesDeleteResultRulesetRulesItemResponseCompressionRuleActionParametersAlgorithmsItemName | null;
 }
 export const RulesDeleteResultRulesetRulesItemResponseCompressionRuleActionParametersAlgorithmsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(
-        S.NullOr(
-          RulesDeleteResultRulesetRulesItemResponseCompressionRuleActionParametersAlgorithmsItemName,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "RulesDeleteResultRulesetRulesItemResponseCompressionRuleActionParametersAlgorithmsItem",
-  }) as any as S.Schema<RulesDeleteResultRulesetRulesItemResponseCompressionRuleActionParametersAlgorithmsItem>;
+  RulesCreateResultRulesetRulesItemResponseCompressionRuleActionParametersAlgorithmsItem as any as S.Schema<RulesDeleteResultRulesetRulesItemResponseCompressionRuleActionParametersAlgorithmsItem>;
 
 export type RulesDeleteResultRulesetRulesItemResponseCompressionRuleActionParametersAlgorithmsList =
   Array<RulesDeleteResultRulesetRulesItemResponseCompressionRuleActionParametersAlgorithmsItem>;
 export const RulesDeleteResultRulesetRulesItemResponseCompressionRuleActionParametersAlgorithmsList =
-  /*@__PURE__*/ S.Array(
-    RulesDeleteResultRulesetRulesItemResponseCompressionRuleActionParametersAlgorithmsItem,
-  ) as any as S.Schema<RulesDeleteResultRulesetRulesItemResponseCompressionRuleActionParametersAlgorithmsList>;
+  RulesCreateResultRulesetRulesItemResponseCompressionRuleActionParametersAlgorithmsList as any as S.Schema<RulesDeleteResultRulesetRulesItemResponseCompressionRuleActionParametersAlgorithmsList>;
 
 export interface RulesDeleteResultRulesetRulesItemResponseCompressionRuleActionParameters {
   /** Custom order for compression algorithms. */
   algorithms: RulesDeleteResultRulesetRulesItemResponseCompressionRuleActionParametersAlgorithmsList;
 }
 export const RulesDeleteResultRulesetRulesItemResponseCompressionRuleActionParameters =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      algorithms:
-        RulesDeleteResultRulesetRulesItemResponseCompressionRuleActionParametersAlgorithmsList,
-    }),
-  ).annotate({
-    identifier: "RulesDeleteResultRulesetRulesItemResponseCompressionRuleActionParameters",
-  }) as any as S.Schema<RulesDeleteResultRulesetRulesItemResponseCompressionRuleActionParameters>;
+  RulesCreateResultRulesetRulesItemResponseCompressionRuleActionParameters as any as S.Schema<RulesDeleteResultRulesetRulesItemResponseCompressionRuleActionParameters>;
 
 export type RulesDeleteResultRulesetRulesItemResponseCompressionRuleCategoriesList = Array<string>;
 export const RulesDeleteResultRulesetRulesItemResponseCompressionRuleCategoriesList =
@@ -18275,28 +17296,12 @@ export interface RulesDeleteResultRulesetRulesItemExecuteRuleActionParametersOve
   sensitivityLevel?: RulesDeleteResultRulesetRulesItemExecuteRuleActionParametersOverridesCategoriesItemSensitivityLevel | null;
 }
 export const RulesDeleteResultRulesetRulesItemExecuteRuleActionParametersOverridesCategoriesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      category: S.String,
-      action: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      sensitivityLevel: S.optional(
-        S.NullOr(
-          RulesDeleteResultRulesetRulesItemExecuteRuleActionParametersOverridesCategoriesItemSensitivityLevel,
-        ).pipe(T.Body("sensitivity_level")),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "RulesDeleteResultRulesetRulesItemExecuteRuleActionParametersOverridesCategoriesItem",
-  }) as any as S.Schema<RulesDeleteResultRulesetRulesItemExecuteRuleActionParametersOverridesCategoriesItem>;
+  RulesCreateResultRulesetRulesItemExecuteRuleActionParametersOverridesCategoriesItem as any as S.Schema<RulesDeleteResultRulesetRulesItemExecuteRuleActionParametersOverridesCategoriesItem>;
 
 export type RulesDeleteResultRulesetRulesItemExecuteRuleActionParametersOverridesCategoriesList =
   Array<RulesDeleteResultRulesetRulesItemExecuteRuleActionParametersOverridesCategoriesItem>;
 export const RulesDeleteResultRulesetRulesItemExecuteRuleActionParametersOverridesCategoriesList =
-  /*@__PURE__*/ S.Array(
-    RulesDeleteResultRulesetRulesItemExecuteRuleActionParametersOverridesCategoriesItem,
-  ) as any as S.Schema<RulesDeleteResultRulesetRulesItemExecuteRuleActionParametersOverridesCategoriesList>;
+  RulesCreateResultRulesetRulesItemExecuteRuleActionParametersOverridesCategoriesList as any as S.Schema<RulesDeleteResultRulesetRulesItemExecuteRuleActionParametersOverridesCategoriesList>;
 
 export type RulesDeleteResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesItemSensitivityLevel =
   | "default"
@@ -18319,28 +17324,12 @@ export interface RulesDeleteResultRulesetRulesItemExecuteRuleActionParametersOve
   sensitivityLevel?: RulesDeleteResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesItemSensitivityLevel | null;
 }
 export const RulesDeleteResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      action: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      scoreThreshold: S.optional(S.NullOr(S.Number).pipe(T.Body("score_threshold"))),
-      sensitivityLevel: S.optional(
-        S.NullOr(
-          RulesDeleteResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesItemSensitivityLevel,
-        ).pipe(T.Body("sensitivity_level")),
-      ),
-    }),
-  ).annotate({
-    identifier: "RulesDeleteResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesItem",
-  }) as any as S.Schema<RulesDeleteResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesItem>;
+  RulesCreateResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesItem as any as S.Schema<RulesDeleteResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesItem>;
 
 export type RulesDeleteResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesList =
   Array<RulesDeleteResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesItem>;
 export const RulesDeleteResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesList =
-  /*@__PURE__*/ S.Array(
-    RulesDeleteResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesItem,
-  ) as any as S.Schema<RulesDeleteResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesList>;
+  RulesCreateResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesList as any as S.Schema<RulesDeleteResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesList>;
 
 export type RulesDeleteResultRulesetRulesItemExecuteRuleActionParametersOverridesSensitivityLevel =
   | "default"
@@ -18363,27 +17352,7 @@ export interface RulesDeleteResultRulesetRulesItemExecuteRuleActionParametersOve
   sensitivityLevel?: RulesDeleteResultRulesetRulesItemExecuteRuleActionParametersOverridesSensitivityLevel | null;
 }
 export const RulesDeleteResultRulesetRulesItemExecuteRuleActionParametersOverrides =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      action: S.optional(S.NullOr(S.String)),
-      categories: S.optional(
-        S.NullOr(
-          RulesDeleteResultRulesetRulesItemExecuteRuleActionParametersOverridesCategoriesList,
-        ),
-      ),
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      rules: S.optional(
-        S.NullOr(RulesDeleteResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesList),
-      ),
-      sensitivityLevel: S.optional(
-        S.NullOr(
-          RulesDeleteResultRulesetRulesItemExecuteRuleActionParametersOverridesSensitivityLevel,
-        ).pipe(T.Body("sensitivity_level")),
-      ),
-    }),
-  ).annotate({
-    identifier: "RulesDeleteResultRulesetRulesItemExecuteRuleActionParametersOverrides",
-  }) as any as S.Schema<RulesDeleteResultRulesetRulesItemExecuteRuleActionParametersOverrides>;
+  RulesCreateResultRulesetRulesItemExecuteRuleActionParametersOverrides as any as S.Schema<RulesDeleteResultRulesetRulesItemExecuteRuleActionParametersOverrides>;
 
 export interface RulesDeleteResultRulesetRulesItemExecuteRuleActionParameters {
   /** The ID of the ruleset to execute. */
@@ -18393,22 +17362,8 @@ export interface RulesDeleteResultRulesetRulesItemExecuteRuleActionParameters {
   /** A set of overrides to apply to the target ruleset. */
   overrides?: RulesDeleteResultRulesetRulesItemExecuteRuleActionParametersOverrides | null;
 }
-export const RulesDeleteResultRulesetRulesItemExecuteRuleActionParameters = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      matchedData: S.optional(
-        S.NullOr(RulesCreateResultRulesetRulesItemExecuteRuleActionParametersMatchedData).pipe(
-          T.Body("matched_data"),
-        ),
-      ),
-      overrides: S.optional(
-        S.NullOr(RulesDeleteResultRulesetRulesItemExecuteRuleActionParametersOverrides),
-      ),
-    }),
-).annotate({
-  identifier: "RulesDeleteResultRulesetRulesItemExecuteRuleActionParameters",
-}) as any as S.Schema<RulesDeleteResultRulesetRulesItemExecuteRuleActionParameters>;
+export const RulesDeleteResultRulesetRulesItemExecuteRuleActionParameters =
+  RulesCreateResultRulesetRulesItemExecuteRuleActionParameters as any as S.Schema<RulesDeleteResultRulesetRulesItemExecuteRuleActionParameters>;
 
 export type RulesDeleteResultRulesetRulesItemExecuteRuleCategoriesList = Array<string>;
 export const RulesDeleteResultRulesetRulesItemExecuteRuleCategoriesList =
@@ -19070,22 +18025,7 @@ export interface RulesDeleteResultRulesetRulesItemRedirectRuleActionParametersFr
   statusCode?: RulesDeleteResultRulesetRulesItemRedirectRuleActionParametersFromValueStatusCode | null;
 }
 export const RulesDeleteResultRulesetRulesItemRedirectRuleActionParametersFromValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      targetUrl:
-        RulesCreateResultRulesetRulesItemRedirectRuleActionParametersFromValueTargetUrl.pipe(
-          T.Body("target_url"),
-        ),
-      preserveQueryString: S.optional(S.NullOr(S.Boolean).pipe(T.Body("preserve_query_string"))),
-      statusCode: S.optional(
-        S.NullOr(
-          RulesDeleteResultRulesetRulesItemRedirectRuleActionParametersFromValueStatusCode,
-        ).pipe(T.Body("status_code")),
-      ),
-    }),
-  ).annotate({
-    identifier: "RulesDeleteResultRulesetRulesItemRedirectRuleActionParametersFromValue",
-  }) as any as S.Schema<RulesDeleteResultRulesetRulesItemRedirectRuleActionParametersFromValue>;
+  RulesCreateResultRulesetRulesItemRedirectRuleActionParametersFromValue as any as S.Schema<RulesDeleteResultRulesetRulesItemRedirectRuleActionParametersFromValue>;
 
 export interface RulesDeleteResultRulesetRulesItemRedirectRuleActionParameters {
   /** A redirect based on a bulk list lookup. */
@@ -19094,22 +18034,7 @@ export interface RulesDeleteResultRulesetRulesItemRedirectRuleActionParameters {
   fromValue?: RulesDeleteResultRulesetRulesItemRedirectRuleActionParametersFromValue | null;
 }
 export const RulesDeleteResultRulesetRulesItemRedirectRuleActionParameters =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      fromList: S.optional(
-        S.NullOr(RulesCreateResultRulesetRulesItemRedirectRuleActionParametersFromList).pipe(
-          T.Body("from_list"),
-        ),
-      ),
-      fromValue: S.optional(
-        S.NullOr(RulesDeleteResultRulesetRulesItemRedirectRuleActionParametersFromValue).pipe(
-          T.Body("from_value"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "RulesDeleteResultRulesetRulesItemRedirectRuleActionParameters",
-  }) as any as S.Schema<RulesDeleteResultRulesetRulesItemRedirectRuleActionParameters>;
+  RulesCreateResultRulesetRulesItemRedirectRuleActionParameters as any as S.Schema<RulesDeleteResultRulesetRulesItemRedirectRuleActionParameters>;
 
 export type RulesDeleteResultRulesetRulesItemRedirectRuleCategoriesList = Array<string>;
 export const RulesDeleteResultRulesetRulesItemRedirectRuleCategoriesList =
@@ -19217,16 +18142,7 @@ export interface RulesDeleteResultRulesetRulesItemRewriteRuleActionParametersHea
   value: string;
 }
 export const RulesDeleteResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesDeleteResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeaderOperation,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "RulesDeleteResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader",
-  }) as any as S.Schema<RulesDeleteResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader>;
+  RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader as any as S.Schema<RulesDeleteResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader>;
 
 export type RulesDeleteResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeaderOperation =
   "add";
@@ -19240,16 +18156,7 @@ export interface RulesDeleteResultRulesetRulesItemRewriteRuleActionParametersHea
   operation: RulesDeleteResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeaderOperation;
 }
 export const RulesDeleteResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      operation:
-        RulesDeleteResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeaderOperation,
-    }),
-  ).annotate({
-    identifier:
-      "RulesDeleteResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader",
-  }) as any as S.Schema<RulesDeleteResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader>;
+  RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader as any as S.Schema<RulesDeleteResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader>;
 
 export type RulesDeleteResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeaderOperation =
   "set";
@@ -19263,16 +18170,7 @@ export interface RulesDeleteResultRulesetRulesItemRewriteRuleActionParametersHea
   value: string;
 }
 export const RulesDeleteResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeader =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesDeleteResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeaderOperation,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "RulesDeleteResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeader",
-  }) as any as S.Schema<RulesDeleteResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeader>;
+  RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader as any as S.Schema<RulesDeleteResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeader>;
 
 export type RulesDeleteResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeaderOperation =
   "set";
@@ -19286,16 +18184,7 @@ export interface RulesDeleteResultRulesetRulesItemRewriteRuleActionParametersHea
   operation: RulesDeleteResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeaderOperation;
 }
 export const RulesDeleteResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeader =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      operation:
-        RulesDeleteResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeaderOperation,
-    }),
-  ).annotate({
-    identifier:
-      "RulesDeleteResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeader",
-  }) as any as S.Schema<RulesDeleteResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeader>;
+  RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader as any as S.Schema<RulesDeleteResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeader>;
 
 export type RulesDeleteResultRulesetRulesItemRewriteRuleActionParametersHeadersValueRemoveHeaderOperation =
   "remove";
@@ -19307,15 +18196,7 @@ export interface RulesDeleteResultRulesetRulesItemRewriteRuleActionParametersHea
   operation: RulesDeleteResultRulesetRulesItemRewriteRuleActionParametersHeadersValueRemoveHeaderOperation;
 }
 export const RulesDeleteResultRulesetRulesItemRewriteRuleActionParametersHeadersValueRemoveHeader =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesDeleteResultRulesetRulesItemRewriteRuleActionParametersHeadersValueRemoveHeaderOperation,
-    }),
-  ).annotate({
-    identifier:
-      "RulesDeleteResultRulesetRulesItemRewriteRuleActionParametersHeadersValueRemoveHeader",
-  }) as any as S.Schema<RulesDeleteResultRulesetRulesItemRewriteRuleActionParametersHeadersValueRemoveHeader>;
+  RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueRemoveHeader as any as S.Schema<RulesDeleteResultRulesetRulesItemRewriteRuleActionParametersHeadersValueRemoveHeader>;
 
 export type RulesDeleteResultRulesetRulesItemRewriteRuleActionParametersHeadersValue =
   | RulesDeleteResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader
@@ -19710,20 +18591,7 @@ export interface RulesDeleteResultRulesetRulesItemServeErrorRuleActionParameters
   statusCode?: number | null;
 }
 export const RulesDeleteResultRulesetRulesItemServeErrorRuleActionParametersActionParametersContent =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      content: S.String,
-      contentType: S.optional(
-        S.NullOr(
-          RulesDeleteResultRulesetRulesItemServeErrorRuleActionParametersActionParametersContentContentType,
-        ).pipe(T.Body("content_type")),
-      ),
-      statusCode: S.optional(S.NullOr(S.Number).pipe(T.Body("status_code"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesDeleteResultRulesetRulesItemServeErrorRuleActionParametersActionParametersContent",
-  }) as any as S.Schema<RulesDeleteResultRulesetRulesItemServeErrorRuleActionParametersActionParametersContent>;
+  RulesCreateResultRulesetRulesItemServeErrorRuleActionParametersActionParametersContent as any as S.Schema<RulesDeleteResultRulesetRulesItemServeErrorRuleActionParametersActionParametersContent>;
 
 export type RulesDeleteResultRulesetRulesItemServeErrorRuleActionParametersActionParametersAssetContentType =
   | "application/json"
@@ -19742,20 +18610,7 @@ export interface RulesDeleteResultRulesetRulesItemServeErrorRuleActionParameters
   statusCode?: number | null;
 }
 export const RulesDeleteResultRulesetRulesItemServeErrorRuleActionParametersActionParametersAsset =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      assetName: S.String.pipe(T.Body("asset_name")),
-      contentType: S.optional(
-        S.NullOr(
-          RulesDeleteResultRulesetRulesItemServeErrorRuleActionParametersActionParametersAssetContentType,
-        ).pipe(T.Body("content_type")),
-      ),
-      statusCode: S.optional(S.NullOr(S.Number).pipe(T.Body("status_code"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesDeleteResultRulesetRulesItemServeErrorRuleActionParametersActionParametersAsset",
-  }) as any as S.Schema<RulesDeleteResultRulesetRulesItemServeErrorRuleActionParametersActionParametersAsset>;
+  RulesCreateResultRulesetRulesItemServeErrorRuleActionParametersActionParametersAsset as any as S.Schema<RulesDeleteResultRulesetRulesItemServeErrorRuleActionParametersActionParametersAsset>;
 
 export type RulesDeleteResultRulesetRulesItemServeErrorRuleActionParameters =
   | RulesDeleteResultRulesetRulesItemServeErrorRuleActionParametersActionParametersContent
@@ -19874,16 +18729,7 @@ export interface RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParam
   cloudflareOnly?: boolean | null;
 }
 export const RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective",
-  }) as any as S.Schema<RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective>;
 
 export type RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableRemoveDirectiveOperation =
   | "set"
@@ -19898,16 +18744,7 @@ export interface RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParam
   cloudflareOnly?: boolean | null;
 }
 export const RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableRemoveDirective",
-  }) as any as S.Schema<RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableRemoveDirective>;
 
 export type RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersImmutable =
   | RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective
@@ -19935,17 +18772,7 @@ export interface RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParam
   cloudflareOnly?: boolean | null;
 }
 export const RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirectiveOperation,
-      value: S.Number,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective",
-  }) as any as S.Schema<RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective as any as S.Schema<RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective>;
 
 export type RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeRemoveDirectiveOperation =
   | "set"
@@ -19960,16 +18787,7 @@ export interface RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParam
   cloudflareOnly?: boolean | null;
 }
 export const RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeRemoveDirective",
-  }) as any as S.Schema<RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeRemoveDirective>;
 
 export type RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAge =
   | RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective
@@ -19995,16 +18813,7 @@ export interface RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParam
   cloudflareOnly?: boolean | null;
 }
 export const RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateSetDirective",
-  }) as any as S.Schema<RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateSetDirective>;
 
 export type RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateRemoveDirectiveOperation =
   | "set"
@@ -20019,16 +18828,7 @@ export interface RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParam
   cloudflareOnly?: boolean | null;
 }
 export const RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateRemoveDirective",
-  }) as any as S.Schema<RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateRemoveDirective>;
 
 export type RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidate =
   | RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateSetDirective
@@ -20054,16 +18854,7 @@ export interface RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParam
   cloudflareOnly?: boolean | null;
 }
 export const RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandSetDirective",
-  }) as any as S.Schema<RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandSetDirective>;
 
 export type RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandRemoveDirectiveOperation =
   | "set"
@@ -20078,16 +18869,7 @@ export interface RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParam
   cloudflareOnly?: boolean | null;
 }
 export const RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandRemoveDirective",
-  }) as any as S.Schema<RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandRemoveDirective>;
 
 export type RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstand =
   | RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandSetDirective
@@ -20149,16 +18931,7 @@ export interface RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParam
   cloudflareOnly?: boolean | null;
 }
 export const RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersNoCacheRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersNoCacheRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersNoCacheRemoveDirective",
-  }) as any as S.Schema<RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersNoCacheRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersNoCacheRemoveDirective>;
 
 export type RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersNoCache =
   | RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersNoCacheSetDirective
@@ -20184,16 +18957,7 @@ export interface RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParam
   cloudflareOnly?: boolean | null;
 }
 export const RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreSetDirective",
-  }) as any as S.Schema<RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreSetDirective>;
 
 export type RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreRemoveDirectiveOperation =
   | "set"
@@ -20208,16 +18972,7 @@ export interface RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParam
   cloudflareOnly?: boolean | null;
 }
 export const RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreRemoveDirective",
-  }) as any as S.Schema<RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreRemoveDirective>;
 
 export type RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersNoStore =
   | RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreSetDirective
@@ -20243,16 +18998,7 @@ export interface RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParam
   cloudflareOnly?: boolean | null;
 }
 export const RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformSetDirective",
-  }) as any as S.Schema<RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformSetDirective>;
 
 export type RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformRemoveDirectiveOperation =
   | "set"
@@ -20267,16 +19013,7 @@ export interface RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParam
   cloudflareOnly?: boolean | null;
 }
 export const RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformRemoveDirective",
-  }) as any as S.Schema<RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformRemoveDirective>;
 
 export type RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransform =
   | RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformSetDirective
@@ -20338,16 +19075,7 @@ export interface RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParam
   cloudflareOnly?: boolean | null;
 }
 export const RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersPrivateRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersPrivateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersPrivateRemoveDirective",
-  }) as any as S.Schema<RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersPrivateRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersPrivateRemoveDirective>;
 
 export type RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersPrivate =
   | RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersPrivateSetDirective
@@ -20373,16 +19101,7 @@ export interface RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParam
   cloudflareOnly?: boolean | null;
 }
 export const RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateSetDirective",
-  }) as any as S.Schema<RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateSetDirective>;
 
 export type RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateRemoveDirectiveOperation =
   | "set"
@@ -20397,16 +19116,7 @@ export interface RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParam
   cloudflareOnly?: boolean | null;
 }
 export const RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateRemoveDirective",
-  }) as any as S.Schema<RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateRemoveDirective>;
 
 export type RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidate =
   | RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateSetDirective
@@ -20432,16 +19142,7 @@ export interface RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParam
   cloudflareOnly?: boolean | null;
 }
 export const RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersPublicSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersPublicSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersPublicSetDirective",
-  }) as any as S.Schema<RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersPublicSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersPublicSetDirective>;
 
 export type RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersPublicRemoveDirectiveOperation =
   | "set"
@@ -20456,16 +19157,7 @@ export interface RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParam
   cloudflareOnly?: boolean | null;
 }
 export const RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersPublicRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersPublicRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersPublicRemoveDirective",
-  }) as any as S.Schema<RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersPublicRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersPublicRemoveDirective>;
 
 export type RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersPublic =
   | RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersPublicSetDirective
@@ -20493,17 +19185,7 @@ export interface RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParam
   cloudflareOnly?: boolean | null;
 }
 export const RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageSetDirectiveOperation,
-      value: S.Number,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageSetDirective",
-  }) as any as S.Schema<RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective as any as S.Schema<RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageSetDirective>;
 
 export type RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageRemoveDirectiveOperation =
   | "set"
@@ -20518,16 +19200,7 @@ export interface RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParam
   cloudflareOnly?: boolean | null;
 }
 export const RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageRemoveDirective",
-  }) as any as S.Schema<RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageRemoveDirective>;
 
 export type RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxage =
   | RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageSetDirective
@@ -20555,17 +19228,7 @@ export interface RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParam
   cloudflareOnly?: boolean | null;
 }
 export const RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorSetDirectiveOperation,
-      value: S.Number,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorSetDirective",
-  }) as any as S.Schema<RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective as any as S.Schema<RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorSetDirective>;
 
 export type RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorRemoveDirectiveOperation =
   | "set"
@@ -20580,16 +19243,7 @@ export interface RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParam
   cloudflareOnly?: boolean | null;
 }
 export const RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorRemoveDirective",
-  }) as any as S.Schema<RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorRemoveDirective>;
 
 export type RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfError =
   | RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorSetDirective
@@ -20617,17 +19271,7 @@ export interface RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParam
   cloudflareOnly?: boolean | null;
 }
 export const RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateSetDirectiveOperation,
-      value: S.Number,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateSetDirective",
-  }) as any as S.Schema<RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective as any as S.Schema<RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateSetDirective>;
 
 export type RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirectiveOperation =
   | "set"
@@ -20642,16 +19286,7 @@ export interface RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParam
   cloudflareOnly?: boolean | null;
 }
 export const RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirective",
-  }) as any as S.Schema<RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirective>;
 
 export type RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidate =
   | RulesDeleteResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateSetDirective
@@ -20879,14 +19514,7 @@ export interface RulesDeleteResultRulesetRulesItemSetCacheSettingsRuleActionPara
   default?: number | null;
 }
 export const RulesDeleteResultRulesetRulesItemSetCacheSettingsRuleActionParametersBrowserTtl =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      mode: RulesDeleteResultRulesetRulesItemSetCacheSettingsRuleActionParametersBrowserTtlMode,
-      default: S.optional(S.NullOr(S.Number)),
-    }),
-  ).annotate({
-    identifier: "RulesDeleteResultRulesetRulesItemSetCacheSettingsRuleActionParametersBrowserTtl",
-  }) as any as S.Schema<RulesDeleteResultRulesetRulesItemSetCacheSettingsRuleActionParametersBrowserTtl>;
+  RulesCreateResultRulesetRulesItemSetCacheSettingsRuleActionParametersBrowserTtl as any as S.Schema<RulesDeleteResultRulesetRulesItemSetCacheSettingsRuleActionParametersBrowserTtl>;
 
 export type RulesDeleteResultRulesetRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieCheckPresenceList =
   Array<string>;
@@ -21081,14 +19709,7 @@ export interface RulesDeleteResultRulesetRulesItemSetCacheSettingsRuleActionPara
   mode: RulesDeleteResultRulesetRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequestsMode;
 }
 export const RulesDeleteResultRulesetRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequests =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      mode: RulesDeleteResultRulesetRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequestsMode,
-    }),
-  ).annotate({
-    identifier:
-      "RulesDeleteResultRulesetRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequests",
-  }) as any as S.Schema<RulesDeleteResultRulesetRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequests>;
+  RulesCreateResultRulesetRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequests as any as S.Schema<RulesDeleteResultRulesetRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequests>;
 
 export type RulesDeleteResultRulesetRulesItemSetCacheSettingsRuleActionParametersServeStale =
   RulesCreateResultRulesetRulesItemSetCacheSettingsRuleActionParametersServeStale;
@@ -21112,14 +19733,7 @@ export interface RulesDeleteResultRulesetRulesItemSetCacheSettingsRuleActionPara
   action: RulesDeleteResultRulesetRulesItemSetCacheSettingsRuleActionParametersVaryDefaultAction;
 }
 export const RulesDeleteResultRulesetRulesItemSetCacheSettingsRuleActionParametersVaryDefault =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      action:
-        RulesDeleteResultRulesetRulesItemSetCacheSettingsRuleActionParametersVaryDefaultAction,
-    }),
-  ).annotate({
-    identifier: "RulesDeleteResultRulesetRulesItemSetCacheSettingsRuleActionParametersVaryDefault",
-  }) as any as S.Schema<RulesDeleteResultRulesetRulesItemSetCacheSettingsRuleActionParametersVaryDefault>;
+  RulesCreateResultRulesetRulesItemSetCacheSettingsRuleActionParametersVaryDefault as any as S.Schema<RulesDeleteResultRulesetRulesItemSetCacheSettingsRuleActionParametersVaryDefault>;
 
 export type RulesDeleteResultRulesetRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueAction =
   | "bypass"
@@ -21437,16 +20051,7 @@ export interface RulesDeleteResultRulesetRulesItemSetCacheTagsRuleActionParamete
   operation: RulesDeleteResultRulesetRulesItemSetCacheTagsRuleActionParametersAddCacheTagsExpressionOperation;
 }
 export const RulesDeleteResultRulesetRulesItemSetCacheTagsRuleActionParametersAddCacheTagsExpression =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      operation:
-        RulesDeleteResultRulesetRulesItemSetCacheTagsRuleActionParametersAddCacheTagsExpressionOperation,
-    }),
-  ).annotate({
-    identifier:
-      "RulesDeleteResultRulesetRulesItemSetCacheTagsRuleActionParametersAddCacheTagsExpression",
-  }) as any as S.Schema<RulesDeleteResultRulesetRulesItemSetCacheTagsRuleActionParametersAddCacheTagsExpression>;
+  RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader as any as S.Schema<RulesDeleteResultRulesetRulesItemSetCacheTagsRuleActionParametersAddCacheTagsExpression>;
 
 export type RulesDeleteResultRulesetRulesItemSetCacheTagsRuleActionParametersRemoveCacheTagsValuesOperation =
   | "add"
@@ -21493,16 +20098,7 @@ export interface RulesDeleteResultRulesetRulesItemSetCacheTagsRuleActionParamete
   operation: RulesDeleteResultRulesetRulesItemSetCacheTagsRuleActionParametersRemoveCacheTagsExpressionOperation;
 }
 export const RulesDeleteResultRulesetRulesItemSetCacheTagsRuleActionParametersRemoveCacheTagsExpression =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      operation:
-        RulesDeleteResultRulesetRulesItemSetCacheTagsRuleActionParametersRemoveCacheTagsExpressionOperation,
-    }),
-  ).annotate({
-    identifier:
-      "RulesDeleteResultRulesetRulesItemSetCacheTagsRuleActionParametersRemoveCacheTagsExpression",
-  }) as any as S.Schema<RulesDeleteResultRulesetRulesItemSetCacheTagsRuleActionParametersRemoveCacheTagsExpression>;
+  RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader as any as S.Schema<RulesDeleteResultRulesetRulesItemSetCacheTagsRuleActionParametersRemoveCacheTagsExpression>;
 
 export type RulesDeleteResultRulesetRulesItemSetCacheTagsRuleActionParametersSetCacheTagsValuesOperation =
   | "add"
@@ -21549,16 +20145,7 @@ export interface RulesDeleteResultRulesetRulesItemSetCacheTagsRuleActionParamete
   operation: RulesDeleteResultRulesetRulesItemSetCacheTagsRuleActionParametersSetCacheTagsExpressionOperation;
 }
 export const RulesDeleteResultRulesetRulesItemSetCacheTagsRuleActionParametersSetCacheTagsExpression =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      operation:
-        RulesDeleteResultRulesetRulesItemSetCacheTagsRuleActionParametersSetCacheTagsExpressionOperation,
-    }),
-  ).annotate({
-    identifier:
-      "RulesDeleteResultRulesetRulesItemSetCacheTagsRuleActionParametersSetCacheTagsExpression",
-  }) as any as S.Schema<RulesDeleteResultRulesetRulesItemSetCacheTagsRuleActionParametersSetCacheTagsExpression>;
+  RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader as any as S.Schema<RulesDeleteResultRulesetRulesItemSetCacheTagsRuleActionParametersSetCacheTagsExpression>;
 
 export type RulesDeleteResultRulesetRulesItemSetCacheTagsRuleActionParameters =
   | RulesDeleteResultRulesetRulesItemSetCacheTagsRuleActionParametersAddCacheTagsValues
@@ -21965,9 +20552,7 @@ export const RulesDeleteResultRulesetRulesItemSkipRuleActionParametersPhasesItem
 export type RulesDeleteResultRulesetRulesItemSkipRuleActionParametersPhasesList =
   Array<RulesDeleteResultRulesetRulesItemSkipRuleActionParametersPhasesItem>;
 export const RulesDeleteResultRulesetRulesItemSkipRuleActionParametersPhasesList =
-  /*@__PURE__*/ S.Array(
-    RulesDeleteResultRulesetRulesItemSkipRuleActionParametersPhasesItem,
-  ) as any as S.Schema<RulesDeleteResultRulesetRulesItemSkipRuleActionParametersPhasesList>;
+  RulesCreateResultRulesetRulesItemSkipRuleActionParametersPhasesList as any as S.Schema<RulesDeleteResultRulesetRulesItemSkipRuleActionParametersPhasesList>;
 
 export type RulesDeleteResultRulesetRulesItemSkipRuleActionParametersProductsItem =
   | "bic"
@@ -21982,9 +20567,7 @@ export const RulesDeleteResultRulesetRulesItemSkipRuleActionParametersProductsIt
 export type RulesDeleteResultRulesetRulesItemSkipRuleActionParametersProductsList =
   Array<RulesDeleteResultRulesetRulesItemSkipRuleActionParametersProductsItem>;
 export const RulesDeleteResultRulesetRulesItemSkipRuleActionParametersProductsList =
-  /*@__PURE__*/ S.Array(
-    RulesDeleteResultRulesetRulesItemSkipRuleActionParametersProductsItem,
-  ) as any as S.Schema<RulesDeleteResultRulesetRulesItemSkipRuleActionParametersProductsList>;
+  RulesCreateResultRulesetRulesItemSkipRuleActionParametersPhasesList as any as S.Schema<RulesDeleteResultRulesetRulesItemSkipRuleActionParametersProductsList>;
 
 export type RulesDeleteResultRulesetRulesItemSkipRuleActionParametersRulesValueList = Array<string>;
 export const RulesDeleteResultRulesetRulesItemSkipRuleActionParametersRulesValueList =
@@ -23061,37 +21644,19 @@ export interface PhasesGetResponseRulesItemResponseCompressionRuleActionParamete
   name?: PhasesGetResponseRulesItemResponseCompressionRuleActionParametersAlgorithmsItemName | null;
 }
 export const PhasesGetResponseRulesItemResponseCompressionRuleActionParametersAlgorithmsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(
-        S.NullOr(
-          PhasesGetResponseRulesItemResponseCompressionRuleActionParametersAlgorithmsItemName,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "PhasesGetResponseRulesItemResponseCompressionRuleActionParametersAlgorithmsItem",
-  }) as any as S.Schema<PhasesGetResponseRulesItemResponseCompressionRuleActionParametersAlgorithmsItem>;
+  CreateResultRulesetRulesItemResponseCompressionRuleActionParametersAlgorithmsItem as any as S.Schema<PhasesGetResponseRulesItemResponseCompressionRuleActionParametersAlgorithmsItem>;
 
 export type PhasesGetResponseRulesItemResponseCompressionRuleActionParametersAlgorithmsList =
   Array<PhasesGetResponseRulesItemResponseCompressionRuleActionParametersAlgorithmsItem>;
 export const PhasesGetResponseRulesItemResponseCompressionRuleActionParametersAlgorithmsList =
-  /*@__PURE__*/ S.Array(
-    PhasesGetResponseRulesItemResponseCompressionRuleActionParametersAlgorithmsItem,
-  ) as any as S.Schema<PhasesGetResponseRulesItemResponseCompressionRuleActionParametersAlgorithmsList>;
+  CreateResultRulesetRulesItemResponseCompressionRuleActionParametersAlgorithmsList as any as S.Schema<PhasesGetResponseRulesItemResponseCompressionRuleActionParametersAlgorithmsList>;
 
 export interface PhasesGetResponseRulesItemResponseCompressionRuleActionParameters {
   /** Custom order for compression algorithms. */
   algorithms: PhasesGetResponseRulesItemResponseCompressionRuleActionParametersAlgorithmsList;
 }
 export const PhasesGetResponseRulesItemResponseCompressionRuleActionParameters =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      algorithms: PhasesGetResponseRulesItemResponseCompressionRuleActionParametersAlgorithmsList,
-    }),
-  ).annotate({
-    identifier: "PhasesGetResponseRulesItemResponseCompressionRuleActionParameters",
-  }) as any as S.Schema<PhasesGetResponseRulesItemResponseCompressionRuleActionParameters>;
+  CreateResultRulesetRulesItemResponseCompressionRuleActionParameters as any as S.Schema<PhasesGetResponseRulesItemResponseCompressionRuleActionParameters>;
 
 export type PhasesGetResponseRulesItemResponseCompressionRuleCategoriesList = Array<string>;
 export const PhasesGetResponseRulesItemResponseCompressionRuleCategoriesList =
@@ -23302,27 +21867,12 @@ export interface PhasesGetResponseRulesItemExecuteRuleActionParametersOverridesC
   sensitivityLevel?: PhasesGetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItemSensitivityLevel | null;
 }
 export const PhasesGetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      category: S.String,
-      action: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      sensitivityLevel: S.optional(
-        S.NullOr(
-          PhasesGetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItemSensitivityLevel,
-        ).pipe(T.Body("sensitivity_level")),
-      ),
-    }),
-  ).annotate({
-    identifier: "PhasesGetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItem",
-  }) as any as S.Schema<PhasesGetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItem>;
+  CreateResultRulesetRulesItemExecuteRuleActionParametersOverridesCategoriesItem as any as S.Schema<PhasesGetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItem>;
 
 export type PhasesGetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesList =
   Array<PhasesGetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItem>;
 export const PhasesGetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesList =
-  /*@__PURE__*/ S.Array(
-    PhasesGetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItem,
-  ) as any as S.Schema<PhasesGetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesList>;
+  CreateResultRulesetRulesItemExecuteRuleActionParametersOverridesCategoriesList as any as S.Schema<PhasesGetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesList>;
 
 export type PhasesGetResponseRulesItemExecuteRuleActionParametersOverridesRulesItemSensitivityLevel =
   | "default"
@@ -23345,28 +21895,12 @@ export interface PhasesGetResponseRulesItemExecuteRuleActionParametersOverridesR
   sensitivityLevel?: PhasesGetResponseRulesItemExecuteRuleActionParametersOverridesRulesItemSensitivityLevel | null;
 }
 export const PhasesGetResponseRulesItemExecuteRuleActionParametersOverridesRulesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      action: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      scoreThreshold: S.optional(S.NullOr(S.Number).pipe(T.Body("score_threshold"))),
-      sensitivityLevel: S.optional(
-        S.NullOr(
-          PhasesGetResponseRulesItemExecuteRuleActionParametersOverridesRulesItemSensitivityLevel,
-        ).pipe(T.Body("sensitivity_level")),
-      ),
-    }),
-  ).annotate({
-    identifier: "PhasesGetResponseRulesItemExecuteRuleActionParametersOverridesRulesItem",
-  }) as any as S.Schema<PhasesGetResponseRulesItemExecuteRuleActionParametersOverridesRulesItem>;
+  RulesCreateResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesItem as any as S.Schema<PhasesGetResponseRulesItemExecuteRuleActionParametersOverridesRulesItem>;
 
 export type PhasesGetResponseRulesItemExecuteRuleActionParametersOverridesRulesList =
   Array<PhasesGetResponseRulesItemExecuteRuleActionParametersOverridesRulesItem>;
 export const PhasesGetResponseRulesItemExecuteRuleActionParametersOverridesRulesList =
-  /*@__PURE__*/ S.Array(
-    PhasesGetResponseRulesItemExecuteRuleActionParametersOverridesRulesItem,
-  ) as any as S.Schema<PhasesGetResponseRulesItemExecuteRuleActionParametersOverridesRulesList>;
+  RulesCreateResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesList as any as S.Schema<PhasesGetResponseRulesItemExecuteRuleActionParametersOverridesRulesList>;
 
 export type PhasesGetResponseRulesItemExecuteRuleActionParametersOverridesSensitivityLevel =
   | "default"
@@ -23389,25 +21923,7 @@ export interface PhasesGetResponseRulesItemExecuteRuleActionParametersOverrides 
   sensitivityLevel?: PhasesGetResponseRulesItemExecuteRuleActionParametersOverridesSensitivityLevel | null;
 }
 export const PhasesGetResponseRulesItemExecuteRuleActionParametersOverrides =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      action: S.optional(S.NullOr(S.String)),
-      categories: S.optional(
-        S.NullOr(PhasesGetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesList),
-      ),
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      rules: S.optional(
-        S.NullOr(PhasesGetResponseRulesItemExecuteRuleActionParametersOverridesRulesList),
-      ),
-      sensitivityLevel: S.optional(
-        S.NullOr(
-          PhasesGetResponseRulesItemExecuteRuleActionParametersOverridesSensitivityLevel,
-        ).pipe(T.Body("sensitivity_level")),
-      ),
-    }),
-  ).annotate({
-    identifier: "PhasesGetResponseRulesItemExecuteRuleActionParametersOverrides",
-  }) as any as S.Schema<PhasesGetResponseRulesItemExecuteRuleActionParametersOverrides>;
+  CreateResultRulesetRulesItemExecuteRuleActionParametersOverrides as any as S.Schema<PhasesGetResponseRulesItemExecuteRuleActionParametersOverrides>;
 
 export interface PhasesGetResponseRulesItemExecuteRuleActionParameters {
   /** The ID of the ruleset to execute. */
@@ -24122,22 +22638,7 @@ export interface PhasesGetResponseRulesItemRedirectRuleActionParametersFromValue
   statusCode?: PhasesGetResponseRulesItemRedirectRuleActionParametersFromValueStatusCode | null;
 }
 export const PhasesGetResponseRulesItemRedirectRuleActionParametersFromValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      targetUrl:
-        RulesCreateResultRulesetRulesItemRedirectRuleActionParametersFromValueTargetUrl.pipe(
-          T.Body("target_url"),
-        ),
-      preserveQueryString: S.optional(S.NullOr(S.Boolean).pipe(T.Body("preserve_query_string"))),
-      statusCode: S.optional(
-        S.NullOr(PhasesGetResponseRulesItemRedirectRuleActionParametersFromValueStatusCode).pipe(
-          T.Body("status_code"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "PhasesGetResponseRulesItemRedirectRuleActionParametersFromValue",
-  }) as any as S.Schema<PhasesGetResponseRulesItemRedirectRuleActionParametersFromValue>;
+  CreateResultRulesetRulesItemRedirectRuleActionParametersFromValue as any as S.Schema<PhasesGetResponseRulesItemRedirectRuleActionParametersFromValue>;
 
 export interface PhasesGetResponseRulesItemRedirectRuleActionParameters {
   /** A redirect based on a bulk list lookup. */
@@ -24267,15 +22768,7 @@ export interface PhasesGetResponseRulesItemRewriteRuleActionParametersHeadersVal
   value: string;
 }
 export const PhasesGetResponseRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesGetResponseRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeaderOperation,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "PhasesGetResponseRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader",
-  }) as any as S.Schema<PhasesGetResponseRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader>;
+  CreateRequestRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader as any as S.Schema<PhasesGetResponseRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader>;
 
 export type PhasesGetResponseRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeaderOperation =
   "add";
@@ -24289,15 +22782,7 @@ export interface PhasesGetResponseRulesItemRewriteRuleActionParametersHeadersVal
   operation: PhasesGetResponseRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeaderOperation;
 }
 export const PhasesGetResponseRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      operation:
-        PhasesGetResponseRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeaderOperation,
-    }),
-  ).annotate({
-    identifier: "PhasesGetResponseRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader",
-  }) as any as S.Schema<PhasesGetResponseRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader>;
+  RulesCreateRequestBodySetCacheTagsRuleActionParametersAddCacheTagsExpression as any as S.Schema<PhasesGetResponseRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader>;
 
 export type PhasesGetResponseRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeaderOperation =
   "set";
@@ -24311,15 +22796,7 @@ export interface PhasesGetResponseRulesItemRewriteRuleActionParametersHeadersVal
   value: string;
 }
 export const PhasesGetResponseRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeader =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesGetResponseRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeaderOperation,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "PhasesGetResponseRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeader",
-  }) as any as S.Schema<PhasesGetResponseRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeader>;
+  CreateRequestRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader as any as S.Schema<PhasesGetResponseRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeader>;
 
 export type PhasesGetResponseRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeaderOperation =
   "set";
@@ -24333,15 +22810,7 @@ export interface PhasesGetResponseRulesItemRewriteRuleActionParametersHeadersVal
   operation: PhasesGetResponseRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeaderOperation;
 }
 export const PhasesGetResponseRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeader =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      operation:
-        PhasesGetResponseRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeaderOperation,
-    }),
-  ).annotate({
-    identifier: "PhasesGetResponseRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeader",
-  }) as any as S.Schema<PhasesGetResponseRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeader>;
+  RulesCreateRequestBodySetCacheTagsRuleActionParametersAddCacheTagsExpression as any as S.Schema<PhasesGetResponseRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeader>;
 
 export type PhasesGetResponseRulesItemRewriteRuleActionParametersHeadersValueRemoveHeaderOperation =
   "remove";
@@ -24353,14 +22822,7 @@ export interface PhasesGetResponseRulesItemRewriteRuleActionParametersHeadersVal
   operation: PhasesGetResponseRulesItemRewriteRuleActionParametersHeadersValueRemoveHeaderOperation;
 }
 export const PhasesGetResponseRulesItemRewriteRuleActionParametersHeadersValueRemoveHeader =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesGetResponseRulesItemRewriteRuleActionParametersHeadersValueRemoveHeaderOperation,
-    }),
-  ).annotate({
-    identifier: "PhasesGetResponseRulesItemRewriteRuleActionParametersHeadersValueRemoveHeader",
-  }) as any as S.Schema<PhasesGetResponseRulesItemRewriteRuleActionParametersHeadersValueRemoveHeader>;
+  CreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueRemoveHeader as any as S.Schema<PhasesGetResponseRulesItemRewriteRuleActionParametersHeadersValueRemoveHeader>;
 
 export type PhasesGetResponseRulesItemRewriteRuleActionParametersHeadersValue =
   | PhasesGetResponseRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader
@@ -24749,19 +23211,7 @@ export interface PhasesGetResponseRulesItemServeErrorRuleActionParametersActionP
   statusCode?: number | null;
 }
 export const PhasesGetResponseRulesItemServeErrorRuleActionParametersActionParametersContent =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      content: S.String,
-      contentType: S.optional(
-        S.NullOr(
-          PhasesGetResponseRulesItemServeErrorRuleActionParametersActionParametersContentContentType,
-        ).pipe(T.Body("content_type")),
-      ),
-      statusCode: S.optional(S.NullOr(S.Number).pipe(T.Body("status_code"))),
-    }),
-  ).annotate({
-    identifier: "PhasesGetResponseRulesItemServeErrorRuleActionParametersActionParametersContent",
-  }) as any as S.Schema<PhasesGetResponseRulesItemServeErrorRuleActionParametersActionParametersContent>;
+  CreateResultRulesetRulesItemServeErrorRuleActionParametersActionParametersContent as any as S.Schema<PhasesGetResponseRulesItemServeErrorRuleActionParametersActionParametersContent>;
 
 export type PhasesGetResponseRulesItemServeErrorRuleActionParametersActionParametersAssetContentType =
   | "application/json"
@@ -24780,19 +23230,7 @@ export interface PhasesGetResponseRulesItemServeErrorRuleActionParametersActionP
   statusCode?: number | null;
 }
 export const PhasesGetResponseRulesItemServeErrorRuleActionParametersActionParametersAsset =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      assetName: S.String.pipe(T.Body("asset_name")),
-      contentType: S.optional(
-        S.NullOr(
-          PhasesGetResponseRulesItemServeErrorRuleActionParametersActionParametersAssetContentType,
-        ).pipe(T.Body("content_type")),
-      ),
-      statusCode: S.optional(S.NullOr(S.Number).pipe(T.Body("status_code"))),
-    }),
-  ).annotate({
-    identifier: "PhasesGetResponseRulesItemServeErrorRuleActionParametersActionParametersAsset",
-  }) as any as S.Schema<PhasesGetResponseRulesItemServeErrorRuleActionParametersActionParametersAsset>;
+  CreateResultRulesetRulesItemServeErrorRuleActionParametersActionParametersAsset as any as S.Schema<PhasesGetResponseRulesItemServeErrorRuleActionParametersActionParametersAsset>;
 
 export type PhasesGetResponseRulesItemServeErrorRuleActionParameters =
   | PhasesGetResponseRulesItemServeErrorRuleActionParametersActionParametersContent
@@ -24910,16 +23348,7 @@ export interface PhasesGetResponseRulesItemSetCacheControlRuleActionParametersIm
   cloudflareOnly?: boolean | null;
 }
 export const PhasesGetResponseRulesItemSetCacheControlRuleActionParametersImmutableSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesGetResponseRulesItemSetCacheControlRuleActionParametersImmutableSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesGetResponseRulesItemSetCacheControlRuleActionParametersImmutableSetDirective",
-  }) as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlRuleActionParametersImmutableSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlRuleActionParametersImmutableSetDirective>;
 
 export type PhasesGetResponseRulesItemSetCacheControlRuleActionParametersImmutableRemoveDirectiveOperation =
   | "set"
@@ -24934,16 +23363,7 @@ export interface PhasesGetResponseRulesItemSetCacheControlRuleActionParametersIm
   cloudflareOnly?: boolean | null;
 }
 export const PhasesGetResponseRulesItemSetCacheControlRuleActionParametersImmutableRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesGetResponseRulesItemSetCacheControlRuleActionParametersImmutableRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesGetResponseRulesItemSetCacheControlRuleActionParametersImmutableRemoveDirective",
-  }) as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlRuleActionParametersImmutableRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlRuleActionParametersImmutableRemoveDirective>;
 
 export type PhasesGetResponseRulesItemSetCacheControlRuleActionParametersImmutable =
   | PhasesGetResponseRulesItemSetCacheControlRuleActionParametersImmutableSetDirective
@@ -24971,16 +23391,7 @@ export interface PhasesGetResponseRulesItemSetCacheControlRuleActionParametersMa
   cloudflareOnly?: boolean | null;
 }
 export const PhasesGetResponseRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesGetResponseRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirectiveOperation,
-      value: S.Number,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "PhasesGetResponseRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective",
-  }) as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective>;
+  CreateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective>;
 
 export type PhasesGetResponseRulesItemSetCacheControlRuleActionParametersMaxAgeRemoveDirectiveOperation =
   | "set"
@@ -24995,16 +23406,7 @@ export interface PhasesGetResponseRulesItemSetCacheControlRuleActionParametersMa
   cloudflareOnly?: boolean | null;
 }
 export const PhasesGetResponseRulesItemSetCacheControlRuleActionParametersMaxAgeRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesGetResponseRulesItemSetCacheControlRuleActionParametersMaxAgeRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesGetResponseRulesItemSetCacheControlRuleActionParametersMaxAgeRemoveDirective",
-  }) as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlRuleActionParametersMaxAgeRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlRuleActionParametersMaxAgeRemoveDirective>;
 
 export type PhasesGetResponseRulesItemSetCacheControlRuleActionParametersMaxAge =
   | PhasesGetResponseRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective
@@ -25030,16 +23432,7 @@ export interface PhasesGetResponseRulesItemSetCacheControlRuleActionParametersMu
   cloudflareOnly?: boolean | null;
 }
 export const PhasesGetResponseRulesItemSetCacheControlRuleActionParametersMustRevalidateSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesGetResponseRulesItemSetCacheControlRuleActionParametersMustRevalidateSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesGetResponseRulesItemSetCacheControlRuleActionParametersMustRevalidateSetDirective",
-  }) as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlRuleActionParametersMustRevalidateSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlRuleActionParametersMustRevalidateSetDirective>;
 
 export type PhasesGetResponseRulesItemSetCacheControlRuleActionParametersMustRevalidateRemoveDirectiveOperation =
   | "set"
@@ -25054,16 +23447,7 @@ export interface PhasesGetResponseRulesItemSetCacheControlRuleActionParametersMu
   cloudflareOnly?: boolean | null;
 }
 export const PhasesGetResponseRulesItemSetCacheControlRuleActionParametersMustRevalidateRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesGetResponseRulesItemSetCacheControlRuleActionParametersMustRevalidateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesGetResponseRulesItemSetCacheControlRuleActionParametersMustRevalidateRemoveDirective",
-  }) as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlRuleActionParametersMustRevalidateRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlRuleActionParametersMustRevalidateRemoveDirective>;
 
 export type PhasesGetResponseRulesItemSetCacheControlRuleActionParametersMustRevalidate =
   | PhasesGetResponseRulesItemSetCacheControlRuleActionParametersMustRevalidateSetDirective
@@ -25089,16 +23473,7 @@ export interface PhasesGetResponseRulesItemSetCacheControlRuleActionParametersMu
   cloudflareOnly?: boolean | null;
 }
 export const PhasesGetResponseRulesItemSetCacheControlRuleActionParametersMustUnderstandSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesGetResponseRulesItemSetCacheControlRuleActionParametersMustUnderstandSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesGetResponseRulesItemSetCacheControlRuleActionParametersMustUnderstandSetDirective",
-  }) as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlRuleActionParametersMustUnderstandSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlRuleActionParametersMustUnderstandSetDirective>;
 
 export type PhasesGetResponseRulesItemSetCacheControlRuleActionParametersMustUnderstandRemoveDirectiveOperation =
   | "set"
@@ -25113,16 +23488,7 @@ export interface PhasesGetResponseRulesItemSetCacheControlRuleActionParametersMu
   cloudflareOnly?: boolean | null;
 }
 export const PhasesGetResponseRulesItemSetCacheControlRuleActionParametersMustUnderstandRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesGetResponseRulesItemSetCacheControlRuleActionParametersMustUnderstandRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesGetResponseRulesItemSetCacheControlRuleActionParametersMustUnderstandRemoveDirective",
-  }) as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlRuleActionParametersMustUnderstandRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlRuleActionParametersMustUnderstandRemoveDirective>;
 
 export type PhasesGetResponseRulesItemSetCacheControlRuleActionParametersMustUnderstand =
   | PhasesGetResponseRulesItemSetCacheControlRuleActionParametersMustUnderstandSetDirective
@@ -25183,16 +23549,7 @@ export interface PhasesGetResponseRulesItemSetCacheControlRuleActionParametersNo
   cloudflareOnly?: boolean | null;
 }
 export const PhasesGetResponseRulesItemSetCacheControlRuleActionParametersNoCacheRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesGetResponseRulesItemSetCacheControlRuleActionParametersNoCacheRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesGetResponseRulesItemSetCacheControlRuleActionParametersNoCacheRemoveDirective",
-  }) as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlRuleActionParametersNoCacheRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlRuleActionParametersNoCacheRemoveDirective>;
 
 export type PhasesGetResponseRulesItemSetCacheControlRuleActionParametersNoCache =
   | PhasesGetResponseRulesItemSetCacheControlRuleActionParametersNoCacheSetDirective
@@ -25218,15 +23575,7 @@ export interface PhasesGetResponseRulesItemSetCacheControlRuleActionParametersNo
   cloudflareOnly?: boolean | null;
 }
 export const PhasesGetResponseRulesItemSetCacheControlRuleActionParametersNoStoreSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesGetResponseRulesItemSetCacheControlRuleActionParametersNoStoreSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "PhasesGetResponseRulesItemSetCacheControlRuleActionParametersNoStoreSetDirective",
-  }) as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlRuleActionParametersNoStoreSetDirective>;
+  CreateResultRulesetRulesItemSetCacheControlRuleActionParametersPublicSetDirective as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlRuleActionParametersNoStoreSetDirective>;
 
 export type PhasesGetResponseRulesItemSetCacheControlRuleActionParametersNoStoreRemoveDirectiveOperation =
   | "set"
@@ -25241,16 +23590,7 @@ export interface PhasesGetResponseRulesItemSetCacheControlRuleActionParametersNo
   cloudflareOnly?: boolean | null;
 }
 export const PhasesGetResponseRulesItemSetCacheControlRuleActionParametersNoStoreRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesGetResponseRulesItemSetCacheControlRuleActionParametersNoStoreRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesGetResponseRulesItemSetCacheControlRuleActionParametersNoStoreRemoveDirective",
-  }) as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlRuleActionParametersNoStoreRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlRuleActionParametersNoStoreRemoveDirective>;
 
 export type PhasesGetResponseRulesItemSetCacheControlRuleActionParametersNoStore =
   | PhasesGetResponseRulesItemSetCacheControlRuleActionParametersNoStoreSetDirective
@@ -25276,16 +23616,7 @@ export interface PhasesGetResponseRulesItemSetCacheControlRuleActionParametersNo
   cloudflareOnly?: boolean | null;
 }
 export const PhasesGetResponseRulesItemSetCacheControlRuleActionParametersNoTransformSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesGetResponseRulesItemSetCacheControlRuleActionParametersNoTransformSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesGetResponseRulesItemSetCacheControlRuleActionParametersNoTransformSetDirective",
-  }) as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlRuleActionParametersNoTransformSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlRuleActionParametersNoTransformSetDirective>;
 
 export type PhasesGetResponseRulesItemSetCacheControlRuleActionParametersNoTransformRemoveDirectiveOperation =
   | "set"
@@ -25300,16 +23631,7 @@ export interface PhasesGetResponseRulesItemSetCacheControlRuleActionParametersNo
   cloudflareOnly?: boolean | null;
 }
 export const PhasesGetResponseRulesItemSetCacheControlRuleActionParametersNoTransformRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesGetResponseRulesItemSetCacheControlRuleActionParametersNoTransformRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesGetResponseRulesItemSetCacheControlRuleActionParametersNoTransformRemoveDirective",
-  }) as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlRuleActionParametersNoTransformRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlRuleActionParametersNoTransformRemoveDirective>;
 
 export type PhasesGetResponseRulesItemSetCacheControlRuleActionParametersNoTransform =
   | PhasesGetResponseRulesItemSetCacheControlRuleActionParametersNoTransformSetDirective
@@ -25370,16 +23692,7 @@ export interface PhasesGetResponseRulesItemSetCacheControlRuleActionParametersPr
   cloudflareOnly?: boolean | null;
 }
 export const PhasesGetResponseRulesItemSetCacheControlRuleActionParametersPrivateRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesGetResponseRulesItemSetCacheControlRuleActionParametersPrivateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesGetResponseRulesItemSetCacheControlRuleActionParametersPrivateRemoveDirective",
-  }) as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlRuleActionParametersPrivateRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlRuleActionParametersPrivateRemoveDirective>;
 
 export type PhasesGetResponseRulesItemSetCacheControlRuleActionParametersPrivate =
   | PhasesGetResponseRulesItemSetCacheControlRuleActionParametersPrivateSetDirective
@@ -25405,16 +23718,7 @@ export interface PhasesGetResponseRulesItemSetCacheControlRuleActionParametersPr
   cloudflareOnly?: boolean | null;
 }
 export const PhasesGetResponseRulesItemSetCacheControlRuleActionParametersProxyRevalidateSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesGetResponseRulesItemSetCacheControlRuleActionParametersProxyRevalidateSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesGetResponseRulesItemSetCacheControlRuleActionParametersProxyRevalidateSetDirective",
-  }) as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlRuleActionParametersProxyRevalidateSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlRuleActionParametersProxyRevalidateSetDirective>;
 
 export type PhasesGetResponseRulesItemSetCacheControlRuleActionParametersProxyRevalidateRemoveDirectiveOperation =
   | "set"
@@ -25429,16 +23733,7 @@ export interface PhasesGetResponseRulesItemSetCacheControlRuleActionParametersPr
   cloudflareOnly?: boolean | null;
 }
 export const PhasesGetResponseRulesItemSetCacheControlRuleActionParametersProxyRevalidateRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesGetResponseRulesItemSetCacheControlRuleActionParametersProxyRevalidateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesGetResponseRulesItemSetCacheControlRuleActionParametersProxyRevalidateRemoveDirective",
-  }) as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlRuleActionParametersProxyRevalidateRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlRuleActionParametersProxyRevalidateRemoveDirective>;
 
 export type PhasesGetResponseRulesItemSetCacheControlRuleActionParametersProxyRevalidate =
   | PhasesGetResponseRulesItemSetCacheControlRuleActionParametersProxyRevalidateSetDirective
@@ -25464,15 +23759,7 @@ export interface PhasesGetResponseRulesItemSetCacheControlRuleActionParametersPu
   cloudflareOnly?: boolean | null;
 }
 export const PhasesGetResponseRulesItemSetCacheControlRuleActionParametersPublicSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesGetResponseRulesItemSetCacheControlRuleActionParametersPublicSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "PhasesGetResponseRulesItemSetCacheControlRuleActionParametersPublicSetDirective",
-  }) as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlRuleActionParametersPublicSetDirective>;
+  CreateResultRulesetRulesItemSetCacheControlRuleActionParametersPublicSetDirective as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlRuleActionParametersPublicSetDirective>;
 
 export type PhasesGetResponseRulesItemSetCacheControlRuleActionParametersPublicRemoveDirectiveOperation =
   | "set"
@@ -25487,16 +23774,7 @@ export interface PhasesGetResponseRulesItemSetCacheControlRuleActionParametersPu
   cloudflareOnly?: boolean | null;
 }
 export const PhasesGetResponseRulesItemSetCacheControlRuleActionParametersPublicRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesGetResponseRulesItemSetCacheControlRuleActionParametersPublicRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesGetResponseRulesItemSetCacheControlRuleActionParametersPublicRemoveDirective",
-  }) as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlRuleActionParametersPublicRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlRuleActionParametersPublicRemoveDirective>;
 
 export type PhasesGetResponseRulesItemSetCacheControlRuleActionParametersPublic =
   | PhasesGetResponseRulesItemSetCacheControlRuleActionParametersPublicSetDirective
@@ -25524,16 +23802,7 @@ export interface PhasesGetResponseRulesItemSetCacheControlRuleActionParametersSM
   cloudflareOnly?: boolean | null;
 }
 export const PhasesGetResponseRulesItemSetCacheControlRuleActionParametersSMaxageSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesGetResponseRulesItemSetCacheControlRuleActionParametersSMaxageSetDirectiveOperation,
-      value: S.Number,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "PhasesGetResponseRulesItemSetCacheControlRuleActionParametersSMaxageSetDirective",
-  }) as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlRuleActionParametersSMaxageSetDirective>;
+  CreateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlRuleActionParametersSMaxageSetDirective>;
 
 export type PhasesGetResponseRulesItemSetCacheControlRuleActionParametersSMaxageRemoveDirectiveOperation =
   | "set"
@@ -25548,16 +23817,7 @@ export interface PhasesGetResponseRulesItemSetCacheControlRuleActionParametersSM
   cloudflareOnly?: boolean | null;
 }
 export const PhasesGetResponseRulesItemSetCacheControlRuleActionParametersSMaxageRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesGetResponseRulesItemSetCacheControlRuleActionParametersSMaxageRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesGetResponseRulesItemSetCacheControlRuleActionParametersSMaxageRemoveDirective",
-  }) as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlRuleActionParametersSMaxageRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlRuleActionParametersSMaxageRemoveDirective>;
 
 export type PhasesGetResponseRulesItemSetCacheControlRuleActionParametersSMaxage =
   | PhasesGetResponseRulesItemSetCacheControlRuleActionParametersSMaxageSetDirective
@@ -25585,17 +23845,7 @@ export interface PhasesGetResponseRulesItemSetCacheControlRuleActionParametersSt
   cloudflareOnly?: boolean | null;
 }
 export const PhasesGetResponseRulesItemSetCacheControlRuleActionParametersStaleIfErrorSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesGetResponseRulesItemSetCacheControlRuleActionParametersStaleIfErrorSetDirectiveOperation,
-      value: S.Number,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesGetResponseRulesItemSetCacheControlRuleActionParametersStaleIfErrorSetDirective",
-  }) as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlRuleActionParametersStaleIfErrorSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlRuleActionParametersStaleIfErrorSetDirective>;
 
 export type PhasesGetResponseRulesItemSetCacheControlRuleActionParametersStaleIfErrorRemoveDirectiveOperation =
   | "set"
@@ -25610,16 +23860,7 @@ export interface PhasesGetResponseRulesItemSetCacheControlRuleActionParametersSt
   cloudflareOnly?: boolean | null;
 }
 export const PhasesGetResponseRulesItemSetCacheControlRuleActionParametersStaleIfErrorRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesGetResponseRulesItemSetCacheControlRuleActionParametersStaleIfErrorRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesGetResponseRulesItemSetCacheControlRuleActionParametersStaleIfErrorRemoveDirective",
-  }) as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlRuleActionParametersStaleIfErrorRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlRuleActionParametersStaleIfErrorRemoveDirective>;
 
 export type PhasesGetResponseRulesItemSetCacheControlRuleActionParametersStaleIfError =
   | PhasesGetResponseRulesItemSetCacheControlRuleActionParametersStaleIfErrorSetDirective
@@ -25647,17 +23888,7 @@ export interface PhasesGetResponseRulesItemSetCacheControlRuleActionParametersSt
   cloudflareOnly?: boolean | null;
 }
 export const PhasesGetResponseRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesGetResponseRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateSetDirectiveOperation,
-      value: S.Number,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesGetResponseRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateSetDirective",
-  }) as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateSetDirective>;
 
 export type PhasesGetResponseRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirectiveOperation =
   | "set"
@@ -25672,16 +23903,7 @@ export interface PhasesGetResponseRulesItemSetCacheControlRuleActionParametersSt
   cloudflareOnly?: boolean | null;
 }
 export const PhasesGetResponseRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesGetResponseRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesGetResponseRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirective",
-  }) as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirective>;
 
 export type PhasesGetResponseRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidate =
   | PhasesGetResponseRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateSetDirective
@@ -25907,14 +24129,7 @@ export interface PhasesGetResponseRulesItemSetCacheSettingsRuleActionParametersB
   default?: number | null;
 }
 export const PhasesGetResponseRulesItemSetCacheSettingsRuleActionParametersBrowserTtl =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      mode: PhasesGetResponseRulesItemSetCacheSettingsRuleActionParametersBrowserTtlMode,
-      default: S.optional(S.NullOr(S.Number)),
-    }),
-  ).annotate({
-    identifier: "PhasesGetResponseRulesItemSetCacheSettingsRuleActionParametersBrowserTtl",
-  }) as any as S.Schema<PhasesGetResponseRulesItemSetCacheSettingsRuleActionParametersBrowserTtl>;
+  RulesCreateResultRulesetRulesItemSetCacheSettingsRuleActionParametersBrowserTtl as any as S.Schema<PhasesGetResponseRulesItemSetCacheSettingsRuleActionParametersBrowserTtl>;
 
 export type PhasesGetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieCheckPresenceList =
   Array<string>;
@@ -26108,13 +24323,7 @@ export interface PhasesGetResponseRulesItemSetCacheSettingsRuleActionParametersO
   mode: PhasesGetResponseRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequestsMode;
 }
 export const PhasesGetResponseRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequests =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      mode: PhasesGetResponseRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequestsMode,
-    }),
-  ).annotate({
-    identifier: "PhasesGetResponseRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequests",
-  }) as any as S.Schema<PhasesGetResponseRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequests>;
+  CreateRequestRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequests as any as S.Schema<PhasesGetResponseRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequests>;
 
 export type PhasesGetResponseRulesItemSetCacheSettingsRuleActionParametersServeStale =
   RulesCreateResultRulesetRulesItemSetCacheSettingsRuleActionParametersServeStale;
@@ -26138,13 +24347,7 @@ export interface PhasesGetResponseRulesItemSetCacheSettingsRuleActionParametersV
   action: PhasesGetResponseRulesItemSetCacheSettingsRuleActionParametersVaryDefaultAction;
 }
 export const PhasesGetResponseRulesItemSetCacheSettingsRuleActionParametersVaryDefault =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      action: PhasesGetResponseRulesItemSetCacheSettingsRuleActionParametersVaryDefaultAction,
-    }),
-  ).annotate({
-    identifier: "PhasesGetResponseRulesItemSetCacheSettingsRuleActionParametersVaryDefault",
-  }) as any as S.Schema<PhasesGetResponseRulesItemSetCacheSettingsRuleActionParametersVaryDefault>;
+  CreateRequestRulesItemSetCacheSettingsRuleActionParametersVaryDefault as any as S.Schema<PhasesGetResponseRulesItemSetCacheSettingsRuleActionParametersVaryDefault>;
 
 export type PhasesGetResponseRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueAction =
   | "bypass"
@@ -26455,15 +24658,7 @@ export interface PhasesGetResponseRulesItemSetCacheTagsRuleActionParametersAddCa
   operation: PhasesGetResponseRulesItemSetCacheTagsRuleActionParametersAddCacheTagsExpressionOperation;
 }
 export const PhasesGetResponseRulesItemSetCacheTagsRuleActionParametersAddCacheTagsExpression =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      operation:
-        PhasesGetResponseRulesItemSetCacheTagsRuleActionParametersAddCacheTagsExpressionOperation,
-    }),
-  ).annotate({
-    identifier: "PhasesGetResponseRulesItemSetCacheTagsRuleActionParametersAddCacheTagsExpression",
-  }) as any as S.Schema<PhasesGetResponseRulesItemSetCacheTagsRuleActionParametersAddCacheTagsExpression>;
+  RulesCreateRequestBodySetCacheTagsRuleActionParametersAddCacheTagsExpression as any as S.Schema<PhasesGetResponseRulesItemSetCacheTagsRuleActionParametersAddCacheTagsExpression>;
 
 export type PhasesGetResponseRulesItemSetCacheTagsRuleActionParametersRemoveCacheTagsValuesOperation =
   | "add"
@@ -26509,16 +24704,7 @@ export interface PhasesGetResponseRulesItemSetCacheTagsRuleActionParametersRemov
   operation: PhasesGetResponseRulesItemSetCacheTagsRuleActionParametersRemoveCacheTagsExpressionOperation;
 }
 export const PhasesGetResponseRulesItemSetCacheTagsRuleActionParametersRemoveCacheTagsExpression =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      operation:
-        PhasesGetResponseRulesItemSetCacheTagsRuleActionParametersRemoveCacheTagsExpressionOperation,
-    }),
-  ).annotate({
-    identifier:
-      "PhasesGetResponseRulesItemSetCacheTagsRuleActionParametersRemoveCacheTagsExpression",
-  }) as any as S.Schema<PhasesGetResponseRulesItemSetCacheTagsRuleActionParametersRemoveCacheTagsExpression>;
+  RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader as any as S.Schema<PhasesGetResponseRulesItemSetCacheTagsRuleActionParametersRemoveCacheTagsExpression>;
 
 export type PhasesGetResponseRulesItemSetCacheTagsRuleActionParametersSetCacheTagsValuesOperation =
   | "add"
@@ -26564,15 +24750,7 @@ export interface PhasesGetResponseRulesItemSetCacheTagsRuleActionParametersSetCa
   operation: PhasesGetResponseRulesItemSetCacheTagsRuleActionParametersSetCacheTagsExpressionOperation;
 }
 export const PhasesGetResponseRulesItemSetCacheTagsRuleActionParametersSetCacheTagsExpression =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      operation:
-        PhasesGetResponseRulesItemSetCacheTagsRuleActionParametersSetCacheTagsExpressionOperation,
-    }),
-  ).annotate({
-    identifier: "PhasesGetResponseRulesItemSetCacheTagsRuleActionParametersSetCacheTagsExpression",
-  }) as any as S.Schema<PhasesGetResponseRulesItemSetCacheTagsRuleActionParametersSetCacheTagsExpression>;
+  RulesCreateRequestBodySetCacheTagsRuleActionParametersAddCacheTagsExpression as any as S.Schema<PhasesGetResponseRulesItemSetCacheTagsRuleActionParametersSetCacheTagsExpression>;
 
 export type PhasesGetResponseRulesItemSetCacheTagsRuleActionParameters =
   | PhasesGetResponseRulesItemSetCacheTagsRuleActionParametersAddCacheTagsValues
@@ -26970,9 +25148,8 @@ export const PhasesGetResponseRulesItemSkipRuleActionParametersPhasesItem = S.St
 
 export type PhasesGetResponseRulesItemSkipRuleActionParametersPhasesList =
   Array<PhasesGetResponseRulesItemSkipRuleActionParametersPhasesItem>;
-export const PhasesGetResponseRulesItemSkipRuleActionParametersPhasesList = /*@__PURE__*/ S.Array(
-  PhasesGetResponseRulesItemSkipRuleActionParametersPhasesItem,
-) as any as S.Schema<PhasesGetResponseRulesItemSkipRuleActionParametersPhasesList>;
+export const PhasesGetResponseRulesItemSkipRuleActionParametersPhasesList =
+  CreateRequestRulesItemSkipRuleActionParametersPhasesList as any as S.Schema<PhasesGetResponseRulesItemSkipRuleActionParametersPhasesList>;
 
 export type PhasesGetResponseRulesItemSkipRuleActionParametersProductsItem =
   | "bic"
@@ -26986,9 +25163,8 @@ export const PhasesGetResponseRulesItemSkipRuleActionParametersProductsItem = S.
 
 export type PhasesGetResponseRulesItemSkipRuleActionParametersProductsList =
   Array<PhasesGetResponseRulesItemSkipRuleActionParametersProductsItem>;
-export const PhasesGetResponseRulesItemSkipRuleActionParametersProductsList = /*@__PURE__*/ S.Array(
-  PhasesGetResponseRulesItemSkipRuleActionParametersProductsItem,
-) as any as S.Schema<PhasesGetResponseRulesItemSkipRuleActionParametersProductsList>;
+export const PhasesGetResponseRulesItemSkipRuleActionParametersProductsList =
+  CreateRequestRulesItemSkipRuleActionParametersPhasesList as any as S.Schema<PhasesGetResponseRulesItemSkipRuleActionParametersProductsList>;
 
 export type PhasesGetResponseRulesItemSkipRuleActionParametersRulesValueList = Array<string>;
 export const PhasesGetResponseRulesItemSkipRuleActionParametersRulesValueList =
@@ -27928,39 +26104,19 @@ export interface PhasesVersionsGetResponseRulesItemResponseCompressionRuleAction
   name?: PhasesVersionsGetResponseRulesItemResponseCompressionRuleActionParametersAlgorithmsItemName | null;
 }
 export const PhasesVersionsGetResponseRulesItemResponseCompressionRuleActionParametersAlgorithmsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(
-        S.NullOr(
-          PhasesVersionsGetResponseRulesItemResponseCompressionRuleActionParametersAlgorithmsItemName,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesVersionsGetResponseRulesItemResponseCompressionRuleActionParametersAlgorithmsItem",
-  }) as any as S.Schema<PhasesVersionsGetResponseRulesItemResponseCompressionRuleActionParametersAlgorithmsItem>;
+  RulesCreateResultRulesetRulesItemResponseCompressionRuleActionParametersAlgorithmsItem as any as S.Schema<PhasesVersionsGetResponseRulesItemResponseCompressionRuleActionParametersAlgorithmsItem>;
 
 export type PhasesVersionsGetResponseRulesItemResponseCompressionRuleActionParametersAlgorithmsList =
   Array<PhasesVersionsGetResponseRulesItemResponseCompressionRuleActionParametersAlgorithmsItem>;
 export const PhasesVersionsGetResponseRulesItemResponseCompressionRuleActionParametersAlgorithmsList =
-  /*@__PURE__*/ S.Array(
-    PhasesVersionsGetResponseRulesItemResponseCompressionRuleActionParametersAlgorithmsItem,
-  ) as any as S.Schema<PhasesVersionsGetResponseRulesItemResponseCompressionRuleActionParametersAlgorithmsList>;
+  RulesCreateResultRulesetRulesItemResponseCompressionRuleActionParametersAlgorithmsList as any as S.Schema<PhasesVersionsGetResponseRulesItemResponseCompressionRuleActionParametersAlgorithmsList>;
 
 export interface PhasesVersionsGetResponseRulesItemResponseCompressionRuleActionParameters {
   /** Custom order for compression algorithms. */
   algorithms: PhasesVersionsGetResponseRulesItemResponseCompressionRuleActionParametersAlgorithmsList;
 }
 export const PhasesVersionsGetResponseRulesItemResponseCompressionRuleActionParameters =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      algorithms:
-        PhasesVersionsGetResponseRulesItemResponseCompressionRuleActionParametersAlgorithmsList,
-    }),
-  ).annotate({
-    identifier: "PhasesVersionsGetResponseRulesItemResponseCompressionRuleActionParameters",
-  }) as any as S.Schema<PhasesVersionsGetResponseRulesItemResponseCompressionRuleActionParameters>;
+  RulesCreateResultRulesetRulesItemResponseCompressionRuleActionParameters as any as S.Schema<PhasesVersionsGetResponseRulesItemResponseCompressionRuleActionParameters>;
 
 export type PhasesVersionsGetResponseRulesItemResponseCompressionRuleCategoriesList = Array<string>;
 export const PhasesVersionsGetResponseRulesItemResponseCompressionRuleCategoriesList =
@@ -28177,28 +26333,12 @@ export interface PhasesVersionsGetResponseRulesItemExecuteRuleActionParametersOv
   sensitivityLevel?: PhasesVersionsGetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItemSensitivityLevel | null;
 }
 export const PhasesVersionsGetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      category: S.String,
-      action: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      sensitivityLevel: S.optional(
-        S.NullOr(
-          PhasesVersionsGetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItemSensitivityLevel,
-        ).pipe(T.Body("sensitivity_level")),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesVersionsGetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItem",
-  }) as any as S.Schema<PhasesVersionsGetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItem>;
+  RulesCreateResultRulesetRulesItemExecuteRuleActionParametersOverridesCategoriesItem as any as S.Schema<PhasesVersionsGetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItem>;
 
 export type PhasesVersionsGetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesList =
   Array<PhasesVersionsGetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItem>;
 export const PhasesVersionsGetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesList =
-  /*@__PURE__*/ S.Array(
-    PhasesVersionsGetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItem,
-  ) as any as S.Schema<PhasesVersionsGetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesList>;
+  RulesCreateResultRulesetRulesItemExecuteRuleActionParametersOverridesCategoriesList as any as S.Schema<PhasesVersionsGetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesList>;
 
 export type PhasesVersionsGetResponseRulesItemExecuteRuleActionParametersOverridesRulesItemSensitivityLevel =
   | "default"
@@ -28221,28 +26361,12 @@ export interface PhasesVersionsGetResponseRulesItemExecuteRuleActionParametersOv
   sensitivityLevel?: PhasesVersionsGetResponseRulesItemExecuteRuleActionParametersOverridesRulesItemSensitivityLevel | null;
 }
 export const PhasesVersionsGetResponseRulesItemExecuteRuleActionParametersOverridesRulesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      action: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      scoreThreshold: S.optional(S.NullOr(S.Number).pipe(T.Body("score_threshold"))),
-      sensitivityLevel: S.optional(
-        S.NullOr(
-          PhasesVersionsGetResponseRulesItemExecuteRuleActionParametersOverridesRulesItemSensitivityLevel,
-        ).pipe(T.Body("sensitivity_level")),
-      ),
-    }),
-  ).annotate({
-    identifier: "PhasesVersionsGetResponseRulesItemExecuteRuleActionParametersOverridesRulesItem",
-  }) as any as S.Schema<PhasesVersionsGetResponseRulesItemExecuteRuleActionParametersOverridesRulesItem>;
+  RulesCreateResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesItem as any as S.Schema<PhasesVersionsGetResponseRulesItemExecuteRuleActionParametersOverridesRulesItem>;
 
 export type PhasesVersionsGetResponseRulesItemExecuteRuleActionParametersOverridesRulesList =
   Array<PhasesVersionsGetResponseRulesItemExecuteRuleActionParametersOverridesRulesItem>;
 export const PhasesVersionsGetResponseRulesItemExecuteRuleActionParametersOverridesRulesList =
-  /*@__PURE__*/ S.Array(
-    PhasesVersionsGetResponseRulesItemExecuteRuleActionParametersOverridesRulesItem,
-  ) as any as S.Schema<PhasesVersionsGetResponseRulesItemExecuteRuleActionParametersOverridesRulesList>;
+  RulesCreateResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesList as any as S.Schema<PhasesVersionsGetResponseRulesItemExecuteRuleActionParametersOverridesRulesList>;
 
 export type PhasesVersionsGetResponseRulesItemExecuteRuleActionParametersOverridesSensitivityLevel =
   | "default"
@@ -28265,27 +26389,7 @@ export interface PhasesVersionsGetResponseRulesItemExecuteRuleActionParametersOv
   sensitivityLevel?: PhasesVersionsGetResponseRulesItemExecuteRuleActionParametersOverridesSensitivityLevel | null;
 }
 export const PhasesVersionsGetResponseRulesItemExecuteRuleActionParametersOverrides =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      action: S.optional(S.NullOr(S.String)),
-      categories: S.optional(
-        S.NullOr(
-          PhasesVersionsGetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesList,
-        ),
-      ),
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      rules: S.optional(
-        S.NullOr(PhasesVersionsGetResponseRulesItemExecuteRuleActionParametersOverridesRulesList),
-      ),
-      sensitivityLevel: S.optional(
-        S.NullOr(
-          PhasesVersionsGetResponseRulesItemExecuteRuleActionParametersOverridesSensitivityLevel,
-        ).pipe(T.Body("sensitivity_level")),
-      ),
-    }),
-  ).annotate({
-    identifier: "PhasesVersionsGetResponseRulesItemExecuteRuleActionParametersOverrides",
-  }) as any as S.Schema<PhasesVersionsGetResponseRulesItemExecuteRuleActionParametersOverrides>;
+  RulesCreateResultRulesetRulesItemExecuteRuleActionParametersOverrides as any as S.Schema<PhasesVersionsGetResponseRulesItemExecuteRuleActionParametersOverrides>;
 
 export interface PhasesVersionsGetResponseRulesItemExecuteRuleActionParameters {
   /** The ID of the ruleset to execute. */
@@ -28977,22 +27081,7 @@ export interface PhasesVersionsGetResponseRulesItemRedirectRuleActionParametersF
   statusCode?: PhasesVersionsGetResponseRulesItemRedirectRuleActionParametersFromValueStatusCode | null;
 }
 export const PhasesVersionsGetResponseRulesItemRedirectRuleActionParametersFromValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      targetUrl:
-        RulesCreateResultRulesetRulesItemRedirectRuleActionParametersFromValueTargetUrl.pipe(
-          T.Body("target_url"),
-        ),
-      preserveQueryString: S.optional(S.NullOr(S.Boolean).pipe(T.Body("preserve_query_string"))),
-      statusCode: S.optional(
-        S.NullOr(
-          PhasesVersionsGetResponseRulesItemRedirectRuleActionParametersFromValueStatusCode,
-        ).pipe(T.Body("status_code")),
-      ),
-    }),
-  ).annotate({
-    identifier: "PhasesVersionsGetResponseRulesItemRedirectRuleActionParametersFromValue",
-  }) as any as S.Schema<PhasesVersionsGetResponseRulesItemRedirectRuleActionParametersFromValue>;
+  RulesCreateResultRulesetRulesItemRedirectRuleActionParametersFromValue as any as S.Schema<PhasesVersionsGetResponseRulesItemRedirectRuleActionParametersFromValue>;
 
 export interface PhasesVersionsGetResponseRulesItemRedirectRuleActionParameters {
   /** A redirect based on a bulk list lookup. */
@@ -29001,22 +27090,7 @@ export interface PhasesVersionsGetResponseRulesItemRedirectRuleActionParameters 
   fromValue?: PhasesVersionsGetResponseRulesItemRedirectRuleActionParametersFromValue | null;
 }
 export const PhasesVersionsGetResponseRulesItemRedirectRuleActionParameters =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      fromList: S.optional(
-        S.NullOr(RulesCreateResultRulesetRulesItemRedirectRuleActionParametersFromList).pipe(
-          T.Body("from_list"),
-        ),
-      ),
-      fromValue: S.optional(
-        S.NullOr(PhasesVersionsGetResponseRulesItemRedirectRuleActionParametersFromValue).pipe(
-          T.Body("from_value"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "PhasesVersionsGetResponseRulesItemRedirectRuleActionParameters",
-  }) as any as S.Schema<PhasesVersionsGetResponseRulesItemRedirectRuleActionParameters>;
+  RulesCreateResultRulesetRulesItemRedirectRuleActionParameters as any as S.Schema<PhasesVersionsGetResponseRulesItemRedirectRuleActionParameters>;
 
 export type PhasesVersionsGetResponseRulesItemRedirectRuleCategoriesList = Array<string>;
 export const PhasesVersionsGetResponseRulesItemRedirectRuleCategoriesList =
@@ -29124,16 +27198,7 @@ export interface PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersHe
   value: string;
 }
 export const PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeaderOperation,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader",
-  }) as any as S.Schema<PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader>;
+  RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader as any as S.Schema<PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader>;
 
 export type PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeaderOperation =
   "add";
@@ -29147,16 +27212,7 @@ export interface PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersHe
   operation: PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeaderOperation;
 }
 export const PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      operation:
-        PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeaderOperation,
-    }),
-  ).annotate({
-    identifier:
-      "PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader",
-  }) as any as S.Schema<PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader>;
+  RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader as any as S.Schema<PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader>;
 
 export type PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeaderOperation =
   "set";
@@ -29170,16 +27226,7 @@ export interface PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersHe
   value: string;
 }
 export const PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeader =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeaderOperation,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeader",
-  }) as any as S.Schema<PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeader>;
+  RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader as any as S.Schema<PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeader>;
 
 export type PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeaderOperation =
   "set";
@@ -29193,16 +27240,7 @@ export interface PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersHe
   operation: PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeaderOperation;
 }
 export const PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeader =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      operation:
-        PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeaderOperation,
-    }),
-  ).annotate({
-    identifier:
-      "PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeader",
-  }) as any as S.Schema<PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeader>;
+  RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader as any as S.Schema<PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeader>;
 
 export type PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValueRemoveHeaderOperation =
   "remove";
@@ -29214,15 +27252,7 @@ export interface PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersHe
   operation: PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValueRemoveHeaderOperation;
 }
 export const PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValueRemoveHeader =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValueRemoveHeaderOperation,
-    }),
-  ).annotate({
-    identifier:
-      "PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValueRemoveHeader",
-  }) as any as S.Schema<PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValueRemoveHeader>;
+  RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueRemoveHeader as any as S.Schema<PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValueRemoveHeader>;
 
 export type PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValue =
   | PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader
@@ -29617,20 +27647,7 @@ export interface PhasesVersionsGetResponseRulesItemServeErrorRuleActionParameter
   statusCode?: number | null;
 }
 export const PhasesVersionsGetResponseRulesItemServeErrorRuleActionParametersActionParametersContent =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      content: S.String,
-      contentType: S.optional(
-        S.NullOr(
-          PhasesVersionsGetResponseRulesItemServeErrorRuleActionParametersActionParametersContentContentType,
-        ).pipe(T.Body("content_type")),
-      ),
-      statusCode: S.optional(S.NullOr(S.Number).pipe(T.Body("status_code"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesVersionsGetResponseRulesItemServeErrorRuleActionParametersActionParametersContent",
-  }) as any as S.Schema<PhasesVersionsGetResponseRulesItemServeErrorRuleActionParametersActionParametersContent>;
+  RulesCreateResultRulesetRulesItemServeErrorRuleActionParametersActionParametersContent as any as S.Schema<PhasesVersionsGetResponseRulesItemServeErrorRuleActionParametersActionParametersContent>;
 
 export type PhasesVersionsGetResponseRulesItemServeErrorRuleActionParametersActionParametersAssetContentType =
   | "application/json"
@@ -29649,20 +27666,7 @@ export interface PhasesVersionsGetResponseRulesItemServeErrorRuleActionParameter
   statusCode?: number | null;
 }
 export const PhasesVersionsGetResponseRulesItemServeErrorRuleActionParametersActionParametersAsset =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      assetName: S.String.pipe(T.Body("asset_name")),
-      contentType: S.optional(
-        S.NullOr(
-          PhasesVersionsGetResponseRulesItemServeErrorRuleActionParametersActionParametersAssetContentType,
-        ).pipe(T.Body("content_type")),
-      ),
-      statusCode: S.optional(S.NullOr(S.Number).pipe(T.Body("status_code"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesVersionsGetResponseRulesItemServeErrorRuleActionParametersActionParametersAsset",
-  }) as any as S.Schema<PhasesVersionsGetResponseRulesItemServeErrorRuleActionParametersActionParametersAsset>;
+  RulesCreateResultRulesetRulesItemServeErrorRuleActionParametersActionParametersAsset as any as S.Schema<PhasesVersionsGetResponseRulesItemServeErrorRuleActionParametersActionParametersAsset>;
 
 export type PhasesVersionsGetResponseRulesItemServeErrorRuleActionParameters =
   | PhasesVersionsGetResponseRulesItemServeErrorRuleActionParametersActionParametersContent
@@ -29783,16 +27787,7 @@ export interface PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionPara
   cloudflareOnly?: boolean | null;
 }
 export const PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersImmutableSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersImmutableSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersImmutableSetDirective",
-  }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersImmutableSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersImmutableSetDirective>;
 
 export type PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersImmutableRemoveDirectiveOperation =
   | "set"
@@ -29807,16 +27802,7 @@ export interface PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionPara
   cloudflareOnly?: boolean | null;
 }
 export const PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersImmutableRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersImmutableRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersImmutableRemoveDirective",
-  }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersImmutableRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersImmutableRemoveDirective>;
 
 export type PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersImmutable =
   | PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersImmutableSetDirective
@@ -29844,17 +27830,7 @@ export interface PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionPara
   cloudflareOnly?: boolean | null;
 }
 export const PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirectiveOperation,
-      value: S.Number,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective",
-  }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective>;
 
 export type PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersMaxAgeRemoveDirectiveOperation =
   | "set"
@@ -29869,16 +27845,7 @@ export interface PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionPara
   cloudflareOnly?: boolean | null;
 }
 export const PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersMaxAgeRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersMaxAgeRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersMaxAgeRemoveDirective",
-  }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersMaxAgeRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersMaxAgeRemoveDirective>;
 
 export type PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersMaxAge =
   | PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective
@@ -29904,16 +27871,7 @@ export interface PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionPara
   cloudflareOnly?: boolean | null;
 }
 export const PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersMustRevalidateSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersMustRevalidateSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersMustRevalidateSetDirective",
-  }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersMustRevalidateSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersMustRevalidateSetDirective>;
 
 export type PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersMustRevalidateRemoveDirectiveOperation =
   | "set"
@@ -29928,16 +27886,7 @@ export interface PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionPara
   cloudflareOnly?: boolean | null;
 }
 export const PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersMustRevalidateRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersMustRevalidateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersMustRevalidateRemoveDirective",
-  }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersMustRevalidateRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersMustRevalidateRemoveDirective>;
 
 export type PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersMustRevalidate =
   | PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersMustRevalidateSetDirective
@@ -29963,16 +27912,7 @@ export interface PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionPara
   cloudflareOnly?: boolean | null;
 }
 export const PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersMustUnderstandSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersMustUnderstandSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersMustUnderstandSetDirective",
-  }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersMustUnderstandSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersMustUnderstandSetDirective>;
 
 export type PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersMustUnderstandRemoveDirectiveOperation =
   | "set"
@@ -29987,16 +27927,7 @@ export interface PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionPara
   cloudflareOnly?: boolean | null;
 }
 export const PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersMustUnderstandRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersMustUnderstandRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersMustUnderstandRemoveDirective",
-  }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersMustUnderstandRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersMustUnderstandRemoveDirective>;
 
 export type PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersMustUnderstand =
   | PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersMustUnderstandSetDirective
@@ -30058,16 +27989,7 @@ export interface PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionPara
   cloudflareOnly?: boolean | null;
 }
 export const PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoCacheRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoCacheRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoCacheRemoveDirective",
-  }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoCacheRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoCacheRemoveDirective>;
 
 export type PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoCache =
   | PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoCacheSetDirective
@@ -30093,16 +28015,7 @@ export interface PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionPara
   cloudflareOnly?: boolean | null;
 }
 export const PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoStoreSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoStoreSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoStoreSetDirective",
-  }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoStoreSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoStoreSetDirective>;
 
 export type PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoStoreRemoveDirectiveOperation =
   | "set"
@@ -30117,16 +28030,7 @@ export interface PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionPara
   cloudflareOnly?: boolean | null;
 }
 export const PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoStoreRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoStoreRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoStoreRemoveDirective",
-  }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoStoreRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoStoreRemoveDirective>;
 
 export type PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoStore =
   | PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoStoreSetDirective
@@ -30152,16 +28056,7 @@ export interface PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionPara
   cloudflareOnly?: boolean | null;
 }
 export const PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoTransformSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoTransformSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoTransformSetDirective",
-  }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoTransformSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoTransformSetDirective>;
 
 export type PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoTransformRemoveDirectiveOperation =
   | "set"
@@ -30176,16 +28071,7 @@ export interface PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionPara
   cloudflareOnly?: boolean | null;
 }
 export const PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoTransformRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoTransformRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoTransformRemoveDirective",
-  }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoTransformRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoTransformRemoveDirective>;
 
 export type PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoTransform =
   | PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoTransformSetDirective
@@ -30247,16 +28133,7 @@ export interface PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionPara
   cloudflareOnly?: boolean | null;
 }
 export const PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersPrivateRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersPrivateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersPrivateRemoveDirective",
-  }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersPrivateRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersPrivateRemoveDirective>;
 
 export type PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersPrivate =
   | PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersPrivateSetDirective
@@ -30282,16 +28159,7 @@ export interface PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionPara
   cloudflareOnly?: boolean | null;
 }
 export const PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersProxyRevalidateSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersProxyRevalidateSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersProxyRevalidateSetDirective",
-  }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersProxyRevalidateSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersProxyRevalidateSetDirective>;
 
 export type PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersProxyRevalidateRemoveDirectiveOperation =
   | "set"
@@ -30306,16 +28174,7 @@ export interface PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionPara
   cloudflareOnly?: boolean | null;
 }
 export const PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersProxyRevalidateRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersProxyRevalidateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersProxyRevalidateRemoveDirective",
-  }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersProxyRevalidateRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersProxyRevalidateRemoveDirective>;
 
 export type PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersProxyRevalidate =
   | PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersProxyRevalidateSetDirective
@@ -30341,16 +28200,7 @@ export interface PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionPara
   cloudflareOnly?: boolean | null;
 }
 export const PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersPublicSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersPublicSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersPublicSetDirective",
-  }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersPublicSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersPublicSetDirective>;
 
 export type PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersPublicRemoveDirectiveOperation =
   | "set"
@@ -30365,16 +28215,7 @@ export interface PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionPara
   cloudflareOnly?: boolean | null;
 }
 export const PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersPublicRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersPublicRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersPublicRemoveDirective",
-  }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersPublicRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersPublicRemoveDirective>;
 
 export type PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersPublic =
   | PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersPublicSetDirective
@@ -30402,17 +28243,7 @@ export interface PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionPara
   cloudflareOnly?: boolean | null;
 }
 export const PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersSMaxageSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersSMaxageSetDirectiveOperation,
-      value: S.Number,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersSMaxageSetDirective",
-  }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersSMaxageSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersSMaxageSetDirective>;
 
 export type PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersSMaxageRemoveDirectiveOperation =
   | "set"
@@ -30427,16 +28258,7 @@ export interface PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionPara
   cloudflareOnly?: boolean | null;
 }
 export const PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersSMaxageRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersSMaxageRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersSMaxageRemoveDirective",
-  }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersSMaxageRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersSMaxageRemoveDirective>;
 
 export type PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersSMaxage =
   | PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersSMaxageSetDirective
@@ -30464,17 +28286,7 @@ export interface PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionPara
   cloudflareOnly?: boolean | null;
 }
 export const PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersStaleIfErrorSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersStaleIfErrorSetDirectiveOperation,
-      value: S.Number,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersStaleIfErrorSetDirective",
-  }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersStaleIfErrorSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersStaleIfErrorSetDirective>;
 
 export type PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersStaleIfErrorRemoveDirectiveOperation =
   | "set"
@@ -30489,16 +28301,7 @@ export interface PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionPara
   cloudflareOnly?: boolean | null;
 }
 export const PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersStaleIfErrorRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersStaleIfErrorRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersStaleIfErrorRemoveDirective",
-  }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersStaleIfErrorRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersStaleIfErrorRemoveDirective>;
 
 export type PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersStaleIfError =
   | PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersStaleIfErrorSetDirective
@@ -30526,17 +28329,7 @@ export interface PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionPara
   cloudflareOnly?: boolean | null;
 }
 export const PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateSetDirectiveOperation,
-      value: S.Number,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateSetDirective",
-  }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateSetDirective>;
 
 export type PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirectiveOperation =
   | "set"
@@ -30551,16 +28344,7 @@ export interface PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionPara
   cloudflareOnly?: boolean | null;
 }
 export const PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirective",
-  }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirective>;
 
 export type PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidate =
   | PhasesVersionsGetResponseRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateSetDirective
@@ -30788,14 +28572,7 @@ export interface PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleActionPar
   default?: number | null;
 }
 export const PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersBrowserTtl =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      mode: PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersBrowserTtlMode,
-      default: S.optional(S.NullOr(S.Number)),
-    }),
-  ).annotate({
-    identifier: "PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersBrowserTtl",
-  }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersBrowserTtl>;
+  RulesCreateResultRulesetRulesItemSetCacheSettingsRuleActionParametersBrowserTtl as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersBrowserTtl>;
 
 export type PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieCheckPresenceList =
   Array<string>;
@@ -30990,14 +28767,7 @@ export interface PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleActionPar
   mode: PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequestsMode;
 }
 export const PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequests =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      mode: PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequestsMode,
-    }),
-  ).annotate({
-    identifier:
-      "PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequests",
-  }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequests>;
+  RulesCreateResultRulesetRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequests as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequests>;
 
 export type PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersServeStale =
   RulesCreateResultRulesetRulesItemSetCacheSettingsRuleActionParametersServeStale;
@@ -31021,14 +28791,7 @@ export interface PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleActionPar
   action: PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersVaryDefaultAction;
 }
 export const PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersVaryDefault =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      action:
-        PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersVaryDefaultAction,
-    }),
-  ).annotate({
-    identifier: "PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersVaryDefault",
-  }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersVaryDefault>;
+  RulesCreateResultRulesetRulesItemSetCacheSettingsRuleActionParametersVaryDefault as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersVaryDefault>;
 
 export type PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueAction =
   | "bypass"
@@ -31348,16 +29111,7 @@ export interface PhasesVersionsGetResponseRulesItemSetCacheTagsRuleActionParamet
   operation: PhasesVersionsGetResponseRulesItemSetCacheTagsRuleActionParametersAddCacheTagsExpressionOperation;
 }
 export const PhasesVersionsGetResponseRulesItemSetCacheTagsRuleActionParametersAddCacheTagsExpression =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      operation:
-        PhasesVersionsGetResponseRulesItemSetCacheTagsRuleActionParametersAddCacheTagsExpressionOperation,
-    }),
-  ).annotate({
-    identifier:
-      "PhasesVersionsGetResponseRulesItemSetCacheTagsRuleActionParametersAddCacheTagsExpression",
-  }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheTagsRuleActionParametersAddCacheTagsExpression>;
+  RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheTagsRuleActionParametersAddCacheTagsExpression>;
 
 export type PhasesVersionsGetResponseRulesItemSetCacheTagsRuleActionParametersRemoveCacheTagsValuesOperation =
   | "add"
@@ -31404,16 +29158,7 @@ export interface PhasesVersionsGetResponseRulesItemSetCacheTagsRuleActionParamet
   operation: PhasesVersionsGetResponseRulesItemSetCacheTagsRuleActionParametersRemoveCacheTagsExpressionOperation;
 }
 export const PhasesVersionsGetResponseRulesItemSetCacheTagsRuleActionParametersRemoveCacheTagsExpression =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      operation:
-        PhasesVersionsGetResponseRulesItemSetCacheTagsRuleActionParametersRemoveCacheTagsExpressionOperation,
-    }),
-  ).annotate({
-    identifier:
-      "PhasesVersionsGetResponseRulesItemSetCacheTagsRuleActionParametersRemoveCacheTagsExpression",
-  }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheTagsRuleActionParametersRemoveCacheTagsExpression>;
+  RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheTagsRuleActionParametersRemoveCacheTagsExpression>;
 
 export type PhasesVersionsGetResponseRulesItemSetCacheTagsRuleActionParametersSetCacheTagsValuesOperation =
   | "add"
@@ -31460,16 +29205,7 @@ export interface PhasesVersionsGetResponseRulesItemSetCacheTagsRuleActionParamet
   operation: PhasesVersionsGetResponseRulesItemSetCacheTagsRuleActionParametersSetCacheTagsExpressionOperation;
 }
 export const PhasesVersionsGetResponseRulesItemSetCacheTagsRuleActionParametersSetCacheTagsExpression =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      operation:
-        PhasesVersionsGetResponseRulesItemSetCacheTagsRuleActionParametersSetCacheTagsExpressionOperation,
-    }),
-  ).annotate({
-    identifier:
-      "PhasesVersionsGetResponseRulesItemSetCacheTagsRuleActionParametersSetCacheTagsExpression",
-  }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheTagsRuleActionParametersSetCacheTagsExpression>;
+  RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheTagsRuleActionParametersSetCacheTagsExpression>;
 
 export type PhasesVersionsGetResponseRulesItemSetCacheTagsRuleActionParameters =
   | PhasesVersionsGetResponseRulesItemSetCacheTagsRuleActionParametersAddCacheTagsValues
@@ -31879,9 +29615,7 @@ export const PhasesVersionsGetResponseRulesItemSkipRuleActionParametersPhasesIte
 export type PhasesVersionsGetResponseRulesItemSkipRuleActionParametersPhasesList =
   Array<PhasesVersionsGetResponseRulesItemSkipRuleActionParametersPhasesItem>;
 export const PhasesVersionsGetResponseRulesItemSkipRuleActionParametersPhasesList =
-  /*@__PURE__*/ S.Array(
-    PhasesVersionsGetResponseRulesItemSkipRuleActionParametersPhasesItem,
-  ) as any as S.Schema<PhasesVersionsGetResponseRulesItemSkipRuleActionParametersPhasesList>;
+  RulesCreateResultRulesetRulesItemSkipRuleActionParametersPhasesList as any as S.Schema<PhasesVersionsGetResponseRulesItemSkipRuleActionParametersPhasesList>;
 
 export type PhasesVersionsGetResponseRulesItemSkipRuleActionParametersProductsItem =
   | "bic"
@@ -31896,9 +29630,7 @@ export const PhasesVersionsGetResponseRulesItemSkipRuleActionParametersProductsI
 export type PhasesVersionsGetResponseRulesItemSkipRuleActionParametersProductsList =
   Array<PhasesVersionsGetResponseRulesItemSkipRuleActionParametersProductsItem>;
 export const PhasesVersionsGetResponseRulesItemSkipRuleActionParametersProductsList =
-  /*@__PURE__*/ S.Array(
-    PhasesVersionsGetResponseRulesItemSkipRuleActionParametersProductsItem,
-  ) as any as S.Schema<PhasesVersionsGetResponseRulesItemSkipRuleActionParametersProductsList>;
+  RulesCreateResultRulesetRulesItemSkipRuleActionParametersPhasesList as any as S.Schema<PhasesVersionsGetResponseRulesItemSkipRuleActionParametersProductsList>;
 
 export type PhasesVersionsGetResponseRulesItemSkipRuleActionParametersRulesValueList =
   Array<string>;
@@ -33086,27 +30818,12 @@ export interface GetResponseRulesItemExecuteRuleActionParametersOverridesCategor
   sensitivityLevel?: GetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItemSensitivityLevel | null;
 }
 export const GetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      category: S.String,
-      action: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      sensitivityLevel: S.optional(
-        S.NullOr(
-          GetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItemSensitivityLevel,
-        ).pipe(T.Body("sensitivity_level")),
-      ),
-    }),
-  ).annotate({
-    identifier: "GetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItem",
-  }) as any as S.Schema<GetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItem>;
+  CreateResultRulesetRulesItemExecuteRuleActionParametersOverridesCategoriesItem as any as S.Schema<GetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItem>;
 
 export type GetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesList =
   Array<GetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItem>;
 export const GetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesList =
-  /*@__PURE__*/ S.Array(
-    GetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItem,
-  ) as any as S.Schema<GetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesList>;
+  CreateResultRulesetRulesItemExecuteRuleActionParametersOverridesCategoriesList as any as S.Schema<GetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesList>;
 
 export type GetResponseRulesItemExecuteRuleActionParametersOverridesRulesItemSensitivityLevel =
   | "default"
@@ -33129,28 +30846,12 @@ export interface GetResponseRulesItemExecuteRuleActionParametersOverridesRulesIt
   sensitivityLevel?: GetResponseRulesItemExecuteRuleActionParametersOverridesRulesItemSensitivityLevel | null;
 }
 export const GetResponseRulesItemExecuteRuleActionParametersOverridesRulesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      action: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      scoreThreshold: S.optional(S.NullOr(S.Number).pipe(T.Body("score_threshold"))),
-      sensitivityLevel: S.optional(
-        S.NullOr(
-          GetResponseRulesItemExecuteRuleActionParametersOverridesRulesItemSensitivityLevel,
-        ).pipe(T.Body("sensitivity_level")),
-      ),
-    }),
-  ).annotate({
-    identifier: "GetResponseRulesItemExecuteRuleActionParametersOverridesRulesItem",
-  }) as any as S.Schema<GetResponseRulesItemExecuteRuleActionParametersOverridesRulesItem>;
+  RulesCreateResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesItem as any as S.Schema<GetResponseRulesItemExecuteRuleActionParametersOverridesRulesItem>;
 
 export type GetResponseRulesItemExecuteRuleActionParametersOverridesRulesList =
   Array<GetResponseRulesItemExecuteRuleActionParametersOverridesRulesItem>;
 export const GetResponseRulesItemExecuteRuleActionParametersOverridesRulesList =
-  /*@__PURE__*/ S.Array(
-    GetResponseRulesItemExecuteRuleActionParametersOverridesRulesItem,
-  ) as any as S.Schema<GetResponseRulesItemExecuteRuleActionParametersOverridesRulesList>;
+  RulesCreateResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesList as any as S.Schema<GetResponseRulesItemExecuteRuleActionParametersOverridesRulesList>;
 
 export type GetResponseRulesItemExecuteRuleActionParametersOverridesSensitivityLevel =
   | "default"
@@ -34024,15 +31725,7 @@ export interface GetResponseRulesItemRewriteRuleActionParametersHeadersValueAddS
   value: string;
 }
 export const GetResponseRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        GetResponseRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeaderOperation,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "GetResponseRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader",
-  }) as any as S.Schema<GetResponseRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader>;
+  CreateRequestRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader as any as S.Schema<GetResponseRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader>;
 
 export type GetResponseRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeaderOperation =
   "add";
@@ -34046,15 +31739,7 @@ export interface GetResponseRulesItemRewriteRuleActionParametersHeadersValueAddD
   operation: GetResponseRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeaderOperation;
 }
 export const GetResponseRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      operation:
-        GetResponseRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeaderOperation,
-    }),
-  ).annotate({
-    identifier: "GetResponseRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader",
-  }) as any as S.Schema<GetResponseRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader>;
+  RulesCreateRequestBodySetCacheTagsRuleActionParametersAddCacheTagsExpression as any as S.Schema<GetResponseRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader>;
 
 export type GetResponseRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeaderOperation =
   "set";
@@ -34068,15 +31753,7 @@ export interface GetResponseRulesItemRewriteRuleActionParametersHeadersValueSetS
   value: string;
 }
 export const GetResponseRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeader =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        GetResponseRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeaderOperation,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "GetResponseRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeader",
-  }) as any as S.Schema<GetResponseRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeader>;
+  CreateRequestRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader as any as S.Schema<GetResponseRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeader>;
 
 export type GetResponseRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeaderOperation =
   "set";
@@ -34090,15 +31767,7 @@ export interface GetResponseRulesItemRewriteRuleActionParametersHeadersValueSetD
   operation: GetResponseRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeaderOperation;
 }
 export const GetResponseRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeader =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      operation:
-        GetResponseRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeaderOperation,
-    }),
-  ).annotate({
-    identifier: "GetResponseRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeader",
-  }) as any as S.Schema<GetResponseRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeader>;
+  RulesCreateRequestBodySetCacheTagsRuleActionParametersAddCacheTagsExpression as any as S.Schema<GetResponseRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeader>;
 
 export type GetResponseRulesItemRewriteRuleActionParametersHeadersValueRemoveHeaderOperation =
   "remove";
@@ -34110,13 +31779,7 @@ export interface GetResponseRulesItemRewriteRuleActionParametersHeadersValueRemo
   operation: GetResponseRulesItemRewriteRuleActionParametersHeadersValueRemoveHeaderOperation;
 }
 export const GetResponseRulesItemRewriteRuleActionParametersHeadersValueRemoveHeader =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation: GetResponseRulesItemRewriteRuleActionParametersHeadersValueRemoveHeaderOperation,
-    }),
-  ).annotate({
-    identifier: "GetResponseRulesItemRewriteRuleActionParametersHeadersValueRemoveHeader",
-  }) as any as S.Schema<GetResponseRulesItemRewriteRuleActionParametersHeadersValueRemoveHeader>;
+  CreateRequestRulesItemRewriteRuleActionParametersHeadersValueRemoveHeader as any as S.Schema<GetResponseRulesItemRewriteRuleActionParametersHeadersValueRemoveHeader>;
 
 export type GetResponseRulesItemRewriteRuleActionParametersHeadersValue =
   | GetResponseRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader
@@ -34501,19 +32164,7 @@ export interface GetResponseRulesItemServeErrorRuleActionParametersActionParamet
   statusCode?: number | null;
 }
 export const GetResponseRulesItemServeErrorRuleActionParametersActionParametersContent =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      content: S.String,
-      contentType: S.optional(
-        S.NullOr(
-          GetResponseRulesItemServeErrorRuleActionParametersActionParametersContentContentType,
-        ).pipe(T.Body("content_type")),
-      ),
-      statusCode: S.optional(S.NullOr(S.Number).pipe(T.Body("status_code"))),
-    }),
-  ).annotate({
-    identifier: "GetResponseRulesItemServeErrorRuleActionParametersActionParametersContent",
-  }) as any as S.Schema<GetResponseRulesItemServeErrorRuleActionParametersActionParametersContent>;
+  CreateResultRulesetRulesItemServeErrorRuleActionParametersActionParametersContent as any as S.Schema<GetResponseRulesItemServeErrorRuleActionParametersActionParametersContent>;
 
 export type GetResponseRulesItemServeErrorRuleActionParametersActionParametersAssetContentType =
   | "application/json"
@@ -34532,19 +32183,7 @@ export interface GetResponseRulesItemServeErrorRuleActionParametersActionParamet
   statusCode?: number | null;
 }
 export const GetResponseRulesItemServeErrorRuleActionParametersActionParametersAsset =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      assetName: S.String.pipe(T.Body("asset_name")),
-      contentType: S.optional(
-        S.NullOr(
-          GetResponseRulesItemServeErrorRuleActionParametersActionParametersAssetContentType,
-        ).pipe(T.Body("content_type")),
-      ),
-      statusCode: S.optional(S.NullOr(S.Number).pipe(T.Body("status_code"))),
-    }),
-  ).annotate({
-    identifier: "GetResponseRulesItemServeErrorRuleActionParametersActionParametersAsset",
-  }) as any as S.Schema<GetResponseRulesItemServeErrorRuleActionParametersActionParametersAsset>;
+  CreateResultRulesetRulesItemServeErrorRuleActionParametersActionParametersAsset as any as S.Schema<GetResponseRulesItemServeErrorRuleActionParametersActionParametersAsset>;
 
 export type GetResponseRulesItemServeErrorRuleActionParameters =
   | GetResponseRulesItemServeErrorRuleActionParametersActionParametersContent
@@ -34661,15 +32300,7 @@ export interface GetResponseRulesItemSetCacheControlRuleActionParametersImmutabl
   cloudflareOnly?: boolean | null;
 }
 export const GetResponseRulesItemSetCacheControlRuleActionParametersImmutableSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        GetResponseRulesItemSetCacheControlRuleActionParametersImmutableSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "GetResponseRulesItemSetCacheControlRuleActionParametersImmutableSetDirective",
-  }) as any as S.Schema<GetResponseRulesItemSetCacheControlRuleActionParametersImmutableSetDirective>;
+  CreateResultRulesetRulesItemSetCacheControlRuleActionParametersPublicSetDirective as any as S.Schema<GetResponseRulesItemSetCacheControlRuleActionParametersImmutableSetDirective>;
 
 export type GetResponseRulesItemSetCacheControlRuleActionParametersImmutableRemoveDirectiveOperation =
   | "set"
@@ -34684,15 +32315,7 @@ export interface GetResponseRulesItemSetCacheControlRuleActionParametersImmutabl
   cloudflareOnly?: boolean | null;
 }
 export const GetResponseRulesItemSetCacheControlRuleActionParametersImmutableRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        GetResponseRulesItemSetCacheControlRuleActionParametersImmutableRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "GetResponseRulesItemSetCacheControlRuleActionParametersImmutableRemoveDirective",
-  }) as any as S.Schema<GetResponseRulesItemSetCacheControlRuleActionParametersImmutableRemoveDirective>;
+  CreateResultRulesetRulesItemSetCacheControlRuleActionParametersPublicSetDirective as any as S.Schema<GetResponseRulesItemSetCacheControlRuleActionParametersImmutableRemoveDirective>;
 
 export type GetResponseRulesItemSetCacheControlRuleActionParametersImmutable =
   | GetResponseRulesItemSetCacheControlRuleActionParametersImmutableSetDirective
@@ -34743,15 +32366,7 @@ export interface GetResponseRulesItemSetCacheControlRuleActionParametersMaxAgeRe
   cloudflareOnly?: boolean | null;
 }
 export const GetResponseRulesItemSetCacheControlRuleActionParametersMaxAgeRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        GetResponseRulesItemSetCacheControlRuleActionParametersMaxAgeRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "GetResponseRulesItemSetCacheControlRuleActionParametersMaxAgeRemoveDirective",
-  }) as any as S.Schema<GetResponseRulesItemSetCacheControlRuleActionParametersMaxAgeRemoveDirective>;
+  CreateResultRulesetRulesItemSetCacheControlRuleActionParametersPublicSetDirective as any as S.Schema<GetResponseRulesItemSetCacheControlRuleActionParametersMaxAgeRemoveDirective>;
 
 export type GetResponseRulesItemSetCacheControlRuleActionParametersMaxAge =
   | GetResponseRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective
@@ -34777,15 +32392,7 @@ export interface GetResponseRulesItemSetCacheControlRuleActionParametersMustReva
   cloudflareOnly?: boolean | null;
 }
 export const GetResponseRulesItemSetCacheControlRuleActionParametersMustRevalidateSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        GetResponseRulesItemSetCacheControlRuleActionParametersMustRevalidateSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "GetResponseRulesItemSetCacheControlRuleActionParametersMustRevalidateSetDirective",
-  }) as any as S.Schema<GetResponseRulesItemSetCacheControlRuleActionParametersMustRevalidateSetDirective>;
+  CreateResultRulesetRulesItemSetCacheControlRuleActionParametersPublicSetDirective as any as S.Schema<GetResponseRulesItemSetCacheControlRuleActionParametersMustRevalidateSetDirective>;
 
 export type GetResponseRulesItemSetCacheControlRuleActionParametersMustRevalidateRemoveDirectiveOperation =
   | "set"
@@ -34800,16 +32407,7 @@ export interface GetResponseRulesItemSetCacheControlRuleActionParametersMustReva
   cloudflareOnly?: boolean | null;
 }
 export const GetResponseRulesItemSetCacheControlRuleActionParametersMustRevalidateRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        GetResponseRulesItemSetCacheControlRuleActionParametersMustRevalidateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "GetResponseRulesItemSetCacheControlRuleActionParametersMustRevalidateRemoveDirective",
-  }) as any as S.Schema<GetResponseRulesItemSetCacheControlRuleActionParametersMustRevalidateRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<GetResponseRulesItemSetCacheControlRuleActionParametersMustRevalidateRemoveDirective>;
 
 export type GetResponseRulesItemSetCacheControlRuleActionParametersMustRevalidate =
   | GetResponseRulesItemSetCacheControlRuleActionParametersMustRevalidateSetDirective
@@ -34835,15 +32433,7 @@ export interface GetResponseRulesItemSetCacheControlRuleActionParametersMustUnde
   cloudflareOnly?: boolean | null;
 }
 export const GetResponseRulesItemSetCacheControlRuleActionParametersMustUnderstandSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        GetResponseRulesItemSetCacheControlRuleActionParametersMustUnderstandSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "GetResponseRulesItemSetCacheControlRuleActionParametersMustUnderstandSetDirective",
-  }) as any as S.Schema<GetResponseRulesItemSetCacheControlRuleActionParametersMustUnderstandSetDirective>;
+  CreateResultRulesetRulesItemSetCacheControlRuleActionParametersPublicSetDirective as any as S.Schema<GetResponseRulesItemSetCacheControlRuleActionParametersMustUnderstandSetDirective>;
 
 export type GetResponseRulesItemSetCacheControlRuleActionParametersMustUnderstandRemoveDirectiveOperation =
   | "set"
@@ -34858,16 +32448,7 @@ export interface GetResponseRulesItemSetCacheControlRuleActionParametersMustUnde
   cloudflareOnly?: boolean | null;
 }
 export const GetResponseRulesItemSetCacheControlRuleActionParametersMustUnderstandRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        GetResponseRulesItemSetCacheControlRuleActionParametersMustUnderstandRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "GetResponseRulesItemSetCacheControlRuleActionParametersMustUnderstandRemoveDirective",
-  }) as any as S.Schema<GetResponseRulesItemSetCacheControlRuleActionParametersMustUnderstandRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<GetResponseRulesItemSetCacheControlRuleActionParametersMustUnderstandRemoveDirective>;
 
 export type GetResponseRulesItemSetCacheControlRuleActionParametersMustUnderstand =
   | GetResponseRulesItemSetCacheControlRuleActionParametersMustUnderstandSetDirective
@@ -34928,15 +32509,7 @@ export interface GetResponseRulesItemSetCacheControlRuleActionParametersNoCacheR
   cloudflareOnly?: boolean | null;
 }
 export const GetResponseRulesItemSetCacheControlRuleActionParametersNoCacheRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        GetResponseRulesItemSetCacheControlRuleActionParametersNoCacheRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "GetResponseRulesItemSetCacheControlRuleActionParametersNoCacheRemoveDirective",
-  }) as any as S.Schema<GetResponseRulesItemSetCacheControlRuleActionParametersNoCacheRemoveDirective>;
+  CreateResultRulesetRulesItemSetCacheControlRuleActionParametersPublicSetDirective as any as S.Schema<GetResponseRulesItemSetCacheControlRuleActionParametersNoCacheRemoveDirective>;
 
 export type GetResponseRulesItemSetCacheControlRuleActionParametersNoCache =
   | GetResponseRulesItemSetCacheControlRuleActionParametersNoCacheSetDirective
@@ -34962,15 +32535,7 @@ export interface GetResponseRulesItemSetCacheControlRuleActionParametersNoStoreS
   cloudflareOnly?: boolean | null;
 }
 export const GetResponseRulesItemSetCacheControlRuleActionParametersNoStoreSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        GetResponseRulesItemSetCacheControlRuleActionParametersNoStoreSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "GetResponseRulesItemSetCacheControlRuleActionParametersNoStoreSetDirective",
-  }) as any as S.Schema<GetResponseRulesItemSetCacheControlRuleActionParametersNoStoreSetDirective>;
+  CreateResultRulesetRulesItemSetCacheControlRuleActionParametersPublicSetDirective as any as S.Schema<GetResponseRulesItemSetCacheControlRuleActionParametersNoStoreSetDirective>;
 
 export type GetResponseRulesItemSetCacheControlRuleActionParametersNoStoreRemoveDirectiveOperation =
   | "set"
@@ -34985,15 +32550,7 @@ export interface GetResponseRulesItemSetCacheControlRuleActionParametersNoStoreR
   cloudflareOnly?: boolean | null;
 }
 export const GetResponseRulesItemSetCacheControlRuleActionParametersNoStoreRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        GetResponseRulesItemSetCacheControlRuleActionParametersNoStoreRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "GetResponseRulesItemSetCacheControlRuleActionParametersNoStoreRemoveDirective",
-  }) as any as S.Schema<GetResponseRulesItemSetCacheControlRuleActionParametersNoStoreRemoveDirective>;
+  CreateResultRulesetRulesItemSetCacheControlRuleActionParametersPublicSetDirective as any as S.Schema<GetResponseRulesItemSetCacheControlRuleActionParametersNoStoreRemoveDirective>;
 
 export type GetResponseRulesItemSetCacheControlRuleActionParametersNoStore =
   | GetResponseRulesItemSetCacheControlRuleActionParametersNoStoreSetDirective
@@ -35019,15 +32576,7 @@ export interface GetResponseRulesItemSetCacheControlRuleActionParametersNoTransf
   cloudflareOnly?: boolean | null;
 }
 export const GetResponseRulesItemSetCacheControlRuleActionParametersNoTransformSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        GetResponseRulesItemSetCacheControlRuleActionParametersNoTransformSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "GetResponseRulesItemSetCacheControlRuleActionParametersNoTransformSetDirective",
-  }) as any as S.Schema<GetResponseRulesItemSetCacheControlRuleActionParametersNoTransformSetDirective>;
+  CreateResultRulesetRulesItemSetCacheControlRuleActionParametersPublicSetDirective as any as S.Schema<GetResponseRulesItemSetCacheControlRuleActionParametersNoTransformSetDirective>;
 
 export type GetResponseRulesItemSetCacheControlRuleActionParametersNoTransformRemoveDirectiveOperation =
   | "set"
@@ -35042,15 +32591,7 @@ export interface GetResponseRulesItemSetCacheControlRuleActionParametersNoTransf
   cloudflareOnly?: boolean | null;
 }
 export const GetResponseRulesItemSetCacheControlRuleActionParametersNoTransformRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        GetResponseRulesItemSetCacheControlRuleActionParametersNoTransformRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "GetResponseRulesItemSetCacheControlRuleActionParametersNoTransformRemoveDirective",
-  }) as any as S.Schema<GetResponseRulesItemSetCacheControlRuleActionParametersNoTransformRemoveDirective>;
+  CreateResultRulesetRulesItemSetCacheControlRuleActionParametersPublicSetDirective as any as S.Schema<GetResponseRulesItemSetCacheControlRuleActionParametersNoTransformRemoveDirective>;
 
 export type GetResponseRulesItemSetCacheControlRuleActionParametersNoTransform =
   | GetResponseRulesItemSetCacheControlRuleActionParametersNoTransformSetDirective
@@ -35111,15 +32652,7 @@ export interface GetResponseRulesItemSetCacheControlRuleActionParametersPrivateR
   cloudflareOnly?: boolean | null;
 }
 export const GetResponseRulesItemSetCacheControlRuleActionParametersPrivateRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        GetResponseRulesItemSetCacheControlRuleActionParametersPrivateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "GetResponseRulesItemSetCacheControlRuleActionParametersPrivateRemoveDirective",
-  }) as any as S.Schema<GetResponseRulesItemSetCacheControlRuleActionParametersPrivateRemoveDirective>;
+  CreateResultRulesetRulesItemSetCacheControlRuleActionParametersPublicSetDirective as any as S.Schema<GetResponseRulesItemSetCacheControlRuleActionParametersPrivateRemoveDirective>;
 
 export type GetResponseRulesItemSetCacheControlRuleActionParametersPrivate =
   | GetResponseRulesItemSetCacheControlRuleActionParametersPrivateSetDirective
@@ -35145,16 +32678,7 @@ export interface GetResponseRulesItemSetCacheControlRuleActionParametersProxyRev
   cloudflareOnly?: boolean | null;
 }
 export const GetResponseRulesItemSetCacheControlRuleActionParametersProxyRevalidateSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        GetResponseRulesItemSetCacheControlRuleActionParametersProxyRevalidateSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "GetResponseRulesItemSetCacheControlRuleActionParametersProxyRevalidateSetDirective",
-  }) as any as S.Schema<GetResponseRulesItemSetCacheControlRuleActionParametersProxyRevalidateSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<GetResponseRulesItemSetCacheControlRuleActionParametersProxyRevalidateSetDirective>;
 
 export type GetResponseRulesItemSetCacheControlRuleActionParametersProxyRevalidateRemoveDirectiveOperation =
   | "set"
@@ -35169,16 +32693,7 @@ export interface GetResponseRulesItemSetCacheControlRuleActionParametersProxyRev
   cloudflareOnly?: boolean | null;
 }
 export const GetResponseRulesItemSetCacheControlRuleActionParametersProxyRevalidateRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        GetResponseRulesItemSetCacheControlRuleActionParametersProxyRevalidateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "GetResponseRulesItemSetCacheControlRuleActionParametersProxyRevalidateRemoveDirective",
-  }) as any as S.Schema<GetResponseRulesItemSetCacheControlRuleActionParametersProxyRevalidateRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<GetResponseRulesItemSetCacheControlRuleActionParametersProxyRevalidateRemoveDirective>;
 
 export type GetResponseRulesItemSetCacheControlRuleActionParametersProxyRevalidate =
   | GetResponseRulesItemSetCacheControlRuleActionParametersProxyRevalidateSetDirective
@@ -35226,15 +32741,7 @@ export interface GetResponseRulesItemSetCacheControlRuleActionParametersPublicRe
   cloudflareOnly?: boolean | null;
 }
 export const GetResponseRulesItemSetCacheControlRuleActionParametersPublicRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        GetResponseRulesItemSetCacheControlRuleActionParametersPublicRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "GetResponseRulesItemSetCacheControlRuleActionParametersPublicRemoveDirective",
-  }) as any as S.Schema<GetResponseRulesItemSetCacheControlRuleActionParametersPublicRemoveDirective>;
+  CreateResultRulesetRulesItemSetCacheControlRuleActionParametersPublicSetDirective as any as S.Schema<GetResponseRulesItemSetCacheControlRuleActionParametersPublicRemoveDirective>;
 
 export type GetResponseRulesItemSetCacheControlRuleActionParametersPublic =
   | GetResponseRulesItemSetCacheControlRuleActionParametersPublicSetDirective
@@ -35262,16 +32769,7 @@ export interface GetResponseRulesItemSetCacheControlRuleActionParametersSMaxageS
   cloudflareOnly?: boolean | null;
 }
 export const GetResponseRulesItemSetCacheControlRuleActionParametersSMaxageSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        GetResponseRulesItemSetCacheControlRuleActionParametersSMaxageSetDirectiveOperation,
-      value: S.Number,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "GetResponseRulesItemSetCacheControlRuleActionParametersSMaxageSetDirective",
-  }) as any as S.Schema<GetResponseRulesItemSetCacheControlRuleActionParametersSMaxageSetDirective>;
+  CreateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective as any as S.Schema<GetResponseRulesItemSetCacheControlRuleActionParametersSMaxageSetDirective>;
 
 export type GetResponseRulesItemSetCacheControlRuleActionParametersSMaxageRemoveDirectiveOperation =
   | "set"
@@ -35286,15 +32784,7 @@ export interface GetResponseRulesItemSetCacheControlRuleActionParametersSMaxageR
   cloudflareOnly?: boolean | null;
 }
 export const GetResponseRulesItemSetCacheControlRuleActionParametersSMaxageRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        GetResponseRulesItemSetCacheControlRuleActionParametersSMaxageRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "GetResponseRulesItemSetCacheControlRuleActionParametersSMaxageRemoveDirective",
-  }) as any as S.Schema<GetResponseRulesItemSetCacheControlRuleActionParametersSMaxageRemoveDirective>;
+  CreateResultRulesetRulesItemSetCacheControlRuleActionParametersPublicSetDirective as any as S.Schema<GetResponseRulesItemSetCacheControlRuleActionParametersSMaxageRemoveDirective>;
 
 export type GetResponseRulesItemSetCacheControlRuleActionParametersSMaxage =
   | GetResponseRulesItemSetCacheControlRuleActionParametersSMaxageSetDirective
@@ -35322,16 +32812,7 @@ export interface GetResponseRulesItemSetCacheControlRuleActionParametersStaleIfE
   cloudflareOnly?: boolean | null;
 }
 export const GetResponseRulesItemSetCacheControlRuleActionParametersStaleIfErrorSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        GetResponseRulesItemSetCacheControlRuleActionParametersStaleIfErrorSetDirectiveOperation,
-      value: S.Number,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "GetResponseRulesItemSetCacheControlRuleActionParametersStaleIfErrorSetDirective",
-  }) as any as S.Schema<GetResponseRulesItemSetCacheControlRuleActionParametersStaleIfErrorSetDirective>;
+  CreateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective as any as S.Schema<GetResponseRulesItemSetCacheControlRuleActionParametersStaleIfErrorSetDirective>;
 
 export type GetResponseRulesItemSetCacheControlRuleActionParametersStaleIfErrorRemoveDirectiveOperation =
   | "set"
@@ -35346,16 +32827,7 @@ export interface GetResponseRulesItemSetCacheControlRuleActionParametersStaleIfE
   cloudflareOnly?: boolean | null;
 }
 export const GetResponseRulesItemSetCacheControlRuleActionParametersStaleIfErrorRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        GetResponseRulesItemSetCacheControlRuleActionParametersStaleIfErrorRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "GetResponseRulesItemSetCacheControlRuleActionParametersStaleIfErrorRemoveDirective",
-  }) as any as S.Schema<GetResponseRulesItemSetCacheControlRuleActionParametersStaleIfErrorRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<GetResponseRulesItemSetCacheControlRuleActionParametersStaleIfErrorRemoveDirective>;
 
 export type GetResponseRulesItemSetCacheControlRuleActionParametersStaleIfError =
   | GetResponseRulesItemSetCacheControlRuleActionParametersStaleIfErrorSetDirective
@@ -35383,17 +32855,7 @@ export interface GetResponseRulesItemSetCacheControlRuleActionParametersStaleWhi
   cloudflareOnly?: boolean | null;
 }
 export const GetResponseRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        GetResponseRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateSetDirectiveOperation,
-      value: S.Number,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "GetResponseRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateSetDirective",
-  }) as any as S.Schema<GetResponseRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective as any as S.Schema<GetResponseRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateSetDirective>;
 
 export type GetResponseRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirectiveOperation =
   | "set"
@@ -35408,16 +32870,7 @@ export interface GetResponseRulesItemSetCacheControlRuleActionParametersStaleWhi
   cloudflareOnly?: boolean | null;
 }
 export const GetResponseRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        GetResponseRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "GetResponseRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirective",
-  }) as any as S.Schema<GetResponseRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<GetResponseRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirective>;
 
 export type GetResponseRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidate =
   | GetResponseRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateSetDirective
@@ -35636,14 +33089,7 @@ export interface GetResponseRulesItemSetCacheSettingsRuleActionParametersBrowser
   default?: number | null;
 }
 export const GetResponseRulesItemSetCacheSettingsRuleActionParametersBrowserTtl =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      mode: GetResponseRulesItemSetCacheSettingsRuleActionParametersBrowserTtlMode,
-      default: S.optional(S.NullOr(S.Number)),
-    }),
-  ).annotate({
-    identifier: "GetResponseRulesItemSetCacheSettingsRuleActionParametersBrowserTtl",
-  }) as any as S.Schema<GetResponseRulesItemSetCacheSettingsRuleActionParametersBrowserTtl>;
+  RulesCreateResultRulesetRulesItemSetCacheSettingsRuleActionParametersBrowserTtl as any as S.Schema<GetResponseRulesItemSetCacheSettingsRuleActionParametersBrowserTtl>;
 
 export type GetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieCheckPresenceList =
   Array<string>;
@@ -35914,13 +33360,7 @@ export interface GetResponseRulesItemSetCacheSettingsRuleActionParametersOriginR
   mode: GetResponseRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequestsMode;
 }
 export const GetResponseRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequests =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      mode: GetResponseRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequestsMode,
-    }),
-  ).annotate({
-    identifier: "GetResponseRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequests",
-  }) as any as S.Schema<GetResponseRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequests>;
+  CreateRequestRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequests as any as S.Schema<GetResponseRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequests>;
 
 export type GetResponseRulesItemSetCacheSettingsRuleActionParametersServeStale =
   RulesCreateResultRulesetRulesItemSetCacheSettingsRuleActionParametersServeStale;
@@ -35943,13 +33383,7 @@ export interface GetResponseRulesItemSetCacheSettingsRuleActionParametersVaryDef
   action: GetResponseRulesItemSetCacheSettingsRuleActionParametersVaryDefaultAction;
 }
 export const GetResponseRulesItemSetCacheSettingsRuleActionParametersVaryDefault =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      action: GetResponseRulesItemSetCacheSettingsRuleActionParametersVaryDefaultAction,
-    }),
-  ).annotate({
-    identifier: "GetResponseRulesItemSetCacheSettingsRuleActionParametersVaryDefault",
-  }) as any as S.Schema<GetResponseRulesItemSetCacheSettingsRuleActionParametersVaryDefault>;
+  CreateRequestRulesItemSetCacheSettingsRuleActionParametersVaryDefault as any as S.Schema<GetResponseRulesItemSetCacheSettingsRuleActionParametersVaryDefault>;
 
 export type GetResponseRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueAction =
   | "bypass"
@@ -36255,15 +33689,7 @@ export interface GetResponseRulesItemSetCacheTagsRuleActionParametersAddCacheTag
   operation: GetResponseRulesItemSetCacheTagsRuleActionParametersAddCacheTagsExpressionOperation;
 }
 export const GetResponseRulesItemSetCacheTagsRuleActionParametersAddCacheTagsExpression =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      operation:
-        GetResponseRulesItemSetCacheTagsRuleActionParametersAddCacheTagsExpressionOperation,
-    }),
-  ).annotate({
-    identifier: "GetResponseRulesItemSetCacheTagsRuleActionParametersAddCacheTagsExpression",
-  }) as any as S.Schema<GetResponseRulesItemSetCacheTagsRuleActionParametersAddCacheTagsExpression>;
+  RulesCreateRequestBodySetCacheTagsRuleActionParametersAddCacheTagsExpression as any as S.Schema<GetResponseRulesItemSetCacheTagsRuleActionParametersAddCacheTagsExpression>;
 
 export type GetResponseRulesItemSetCacheTagsRuleActionParametersRemoveCacheTagsValuesOperation =
   | "add"
@@ -36307,15 +33733,7 @@ export interface GetResponseRulesItemSetCacheTagsRuleActionParametersRemoveCache
   operation: GetResponseRulesItemSetCacheTagsRuleActionParametersRemoveCacheTagsExpressionOperation;
 }
 export const GetResponseRulesItemSetCacheTagsRuleActionParametersRemoveCacheTagsExpression =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      operation:
-        GetResponseRulesItemSetCacheTagsRuleActionParametersRemoveCacheTagsExpressionOperation,
-    }),
-  ).annotate({
-    identifier: "GetResponseRulesItemSetCacheTagsRuleActionParametersRemoveCacheTagsExpression",
-  }) as any as S.Schema<GetResponseRulesItemSetCacheTagsRuleActionParametersRemoveCacheTagsExpression>;
+  RulesCreateRequestBodySetCacheTagsRuleActionParametersAddCacheTagsExpression as any as S.Schema<GetResponseRulesItemSetCacheTagsRuleActionParametersRemoveCacheTagsExpression>;
 
 export type GetResponseRulesItemSetCacheTagsRuleActionParametersSetCacheTagsValuesOperation =
   | "add"
@@ -36359,15 +33777,7 @@ export interface GetResponseRulesItemSetCacheTagsRuleActionParametersSetCacheTag
   operation: GetResponseRulesItemSetCacheTagsRuleActionParametersSetCacheTagsExpressionOperation;
 }
 export const GetResponseRulesItemSetCacheTagsRuleActionParametersSetCacheTagsExpression =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      operation:
-        GetResponseRulesItemSetCacheTagsRuleActionParametersSetCacheTagsExpressionOperation,
-    }),
-  ).annotate({
-    identifier: "GetResponseRulesItemSetCacheTagsRuleActionParametersSetCacheTagsExpression",
-  }) as any as S.Schema<GetResponseRulesItemSetCacheTagsRuleActionParametersSetCacheTagsExpression>;
+  RulesCreateRequestBodySetCacheTagsRuleActionParametersAddCacheTagsExpression as any as S.Schema<GetResponseRulesItemSetCacheTagsRuleActionParametersSetCacheTagsExpression>;
 
 export type GetResponseRulesItemSetCacheTagsRuleActionParameters =
   | GetResponseRulesItemSetCacheTagsRuleActionParametersAddCacheTagsValues
@@ -36760,9 +34170,8 @@ export const GetResponseRulesItemSkipRuleActionParametersPhasesItem = S.String;
 
 export type GetResponseRulesItemSkipRuleActionParametersPhasesList =
   Array<GetResponseRulesItemSkipRuleActionParametersPhasesItem>;
-export const GetResponseRulesItemSkipRuleActionParametersPhasesList = /*@__PURE__*/ S.Array(
-  GetResponseRulesItemSkipRuleActionParametersPhasesItem,
-) as any as S.Schema<GetResponseRulesItemSkipRuleActionParametersPhasesList>;
+export const GetResponseRulesItemSkipRuleActionParametersPhasesList =
+  CreateRequestRulesItemSkipRuleActionParametersPhasesList as any as S.Schema<GetResponseRulesItemSkipRuleActionParametersPhasesList>;
 
 export type GetResponseRulesItemSkipRuleActionParametersProductsItem =
   | "bic"
@@ -36776,9 +34185,8 @@ export const GetResponseRulesItemSkipRuleActionParametersProductsItem = S.String
 
 export type GetResponseRulesItemSkipRuleActionParametersProductsList =
   Array<GetResponseRulesItemSkipRuleActionParametersProductsItem>;
-export const GetResponseRulesItemSkipRuleActionParametersProductsList = /*@__PURE__*/ S.Array(
-  GetResponseRulesItemSkipRuleActionParametersProductsItem,
-) as any as S.Schema<GetResponseRulesItemSkipRuleActionParametersProductsList>;
+export const GetResponseRulesItemSkipRuleActionParametersProductsList =
+  CreateRequestRulesItemSkipRuleActionParametersPhasesList as any as S.Schema<GetResponseRulesItemSkipRuleActionParametersProductsList>;
 
 export type GetResponseRulesItemSkipRuleActionParametersRulesValueList = Array<string>;
 export const GetResponseRulesItemSkipRuleActionParametersRulesValueList =
@@ -37707,37 +35115,19 @@ export interface VersionsGetResponseRulesItemResponseCompressionRuleActionParame
   name?: VersionsGetResponseRulesItemResponseCompressionRuleActionParametersAlgorithmsItemName | null;
 }
 export const VersionsGetResponseRulesItemResponseCompressionRuleActionParametersAlgorithmsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(
-        S.NullOr(
-          VersionsGetResponseRulesItemResponseCompressionRuleActionParametersAlgorithmsItemName,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "VersionsGetResponseRulesItemResponseCompressionRuleActionParametersAlgorithmsItem",
-  }) as any as S.Schema<VersionsGetResponseRulesItemResponseCompressionRuleActionParametersAlgorithmsItem>;
+  CreateResultRulesetRulesItemResponseCompressionRuleActionParametersAlgorithmsItem as any as S.Schema<VersionsGetResponseRulesItemResponseCompressionRuleActionParametersAlgorithmsItem>;
 
 export type VersionsGetResponseRulesItemResponseCompressionRuleActionParametersAlgorithmsList =
   Array<VersionsGetResponseRulesItemResponseCompressionRuleActionParametersAlgorithmsItem>;
 export const VersionsGetResponseRulesItemResponseCompressionRuleActionParametersAlgorithmsList =
-  /*@__PURE__*/ S.Array(
-    VersionsGetResponseRulesItemResponseCompressionRuleActionParametersAlgorithmsItem,
-  ) as any as S.Schema<VersionsGetResponseRulesItemResponseCompressionRuleActionParametersAlgorithmsList>;
+  CreateResultRulesetRulesItemResponseCompressionRuleActionParametersAlgorithmsList as any as S.Schema<VersionsGetResponseRulesItemResponseCompressionRuleActionParametersAlgorithmsList>;
 
 export interface VersionsGetResponseRulesItemResponseCompressionRuleActionParameters {
   /** Custom order for compression algorithms. */
   algorithms: VersionsGetResponseRulesItemResponseCompressionRuleActionParametersAlgorithmsList;
 }
 export const VersionsGetResponseRulesItemResponseCompressionRuleActionParameters =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      algorithms: VersionsGetResponseRulesItemResponseCompressionRuleActionParametersAlgorithmsList,
-    }),
-  ).annotate({
-    identifier: "VersionsGetResponseRulesItemResponseCompressionRuleActionParameters",
-  }) as any as S.Schema<VersionsGetResponseRulesItemResponseCompressionRuleActionParameters>;
+  CreateResultRulesetRulesItemResponseCompressionRuleActionParameters as any as S.Schema<VersionsGetResponseRulesItemResponseCompressionRuleActionParameters>;
 
 export type VersionsGetResponseRulesItemResponseCompressionRuleCategoriesList = Array<string>;
 export const VersionsGetResponseRulesItemResponseCompressionRuleCategoriesList =
@@ -37948,27 +35338,12 @@ export interface VersionsGetResponseRulesItemExecuteRuleActionParametersOverride
   sensitivityLevel?: VersionsGetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItemSensitivityLevel | null;
 }
 export const VersionsGetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      category: S.String,
-      action: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      sensitivityLevel: S.optional(
-        S.NullOr(
-          VersionsGetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItemSensitivityLevel,
-        ).pipe(T.Body("sensitivity_level")),
-      ),
-    }),
-  ).annotate({
-    identifier: "VersionsGetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItem",
-  }) as any as S.Schema<VersionsGetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItem>;
+  CreateResultRulesetRulesItemExecuteRuleActionParametersOverridesCategoriesItem as any as S.Schema<VersionsGetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItem>;
 
 export type VersionsGetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesList =
   Array<VersionsGetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItem>;
 export const VersionsGetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesList =
-  /*@__PURE__*/ S.Array(
-    VersionsGetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesItem,
-  ) as any as S.Schema<VersionsGetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesList>;
+  CreateResultRulesetRulesItemExecuteRuleActionParametersOverridesCategoriesList as any as S.Schema<VersionsGetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesList>;
 
 export type VersionsGetResponseRulesItemExecuteRuleActionParametersOverridesRulesItemSensitivityLevel =
   | "default"
@@ -37991,28 +35366,12 @@ export interface VersionsGetResponseRulesItemExecuteRuleActionParametersOverride
   sensitivityLevel?: VersionsGetResponseRulesItemExecuteRuleActionParametersOverridesRulesItemSensitivityLevel | null;
 }
 export const VersionsGetResponseRulesItemExecuteRuleActionParametersOverridesRulesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      action: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      scoreThreshold: S.optional(S.NullOr(S.Number).pipe(T.Body("score_threshold"))),
-      sensitivityLevel: S.optional(
-        S.NullOr(
-          VersionsGetResponseRulesItemExecuteRuleActionParametersOverridesRulesItemSensitivityLevel,
-        ).pipe(T.Body("sensitivity_level")),
-      ),
-    }),
-  ).annotate({
-    identifier: "VersionsGetResponseRulesItemExecuteRuleActionParametersOverridesRulesItem",
-  }) as any as S.Schema<VersionsGetResponseRulesItemExecuteRuleActionParametersOverridesRulesItem>;
+  RulesCreateResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesItem as any as S.Schema<VersionsGetResponseRulesItemExecuteRuleActionParametersOverridesRulesItem>;
 
 export type VersionsGetResponseRulesItemExecuteRuleActionParametersOverridesRulesList =
   Array<VersionsGetResponseRulesItemExecuteRuleActionParametersOverridesRulesItem>;
 export const VersionsGetResponseRulesItemExecuteRuleActionParametersOverridesRulesList =
-  /*@__PURE__*/ S.Array(
-    VersionsGetResponseRulesItemExecuteRuleActionParametersOverridesRulesItem,
-  ) as any as S.Schema<VersionsGetResponseRulesItemExecuteRuleActionParametersOverridesRulesList>;
+  RulesCreateResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesList as any as S.Schema<VersionsGetResponseRulesItemExecuteRuleActionParametersOverridesRulesList>;
 
 export type VersionsGetResponseRulesItemExecuteRuleActionParametersOverridesSensitivityLevel =
   | "default"
@@ -38035,25 +35394,7 @@ export interface VersionsGetResponseRulesItemExecuteRuleActionParametersOverride
   sensitivityLevel?: VersionsGetResponseRulesItemExecuteRuleActionParametersOverridesSensitivityLevel | null;
 }
 export const VersionsGetResponseRulesItemExecuteRuleActionParametersOverrides =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      action: S.optional(S.NullOr(S.String)),
-      categories: S.optional(
-        S.NullOr(VersionsGetResponseRulesItemExecuteRuleActionParametersOverridesCategoriesList),
-      ),
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      rules: S.optional(
-        S.NullOr(VersionsGetResponseRulesItemExecuteRuleActionParametersOverridesRulesList),
-      ),
-      sensitivityLevel: S.optional(
-        S.NullOr(
-          VersionsGetResponseRulesItemExecuteRuleActionParametersOverridesSensitivityLevel,
-        ).pipe(T.Body("sensitivity_level")),
-      ),
-    }),
-  ).annotate({
-    identifier: "VersionsGetResponseRulesItemExecuteRuleActionParametersOverrides",
-  }) as any as S.Schema<VersionsGetResponseRulesItemExecuteRuleActionParametersOverrides>;
+  CreateResultRulesetRulesItemExecuteRuleActionParametersOverrides as any as S.Schema<VersionsGetResponseRulesItemExecuteRuleActionParametersOverrides>;
 
 export interface VersionsGetResponseRulesItemExecuteRuleActionParameters {
   /** The ID of the ruleset to execute. */
@@ -38063,21 +35404,8 @@ export interface VersionsGetResponseRulesItemExecuteRuleActionParameters {
   /** A set of overrides to apply to the target ruleset. */
   overrides?: VersionsGetResponseRulesItemExecuteRuleActionParametersOverrides | null;
 }
-export const VersionsGetResponseRulesItemExecuteRuleActionParameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    matchedData: S.optional(
-      S.NullOr(RulesCreateResultRulesetRulesItemExecuteRuleActionParametersMatchedData).pipe(
-        T.Body("matched_data"),
-      ),
-    ),
-    overrides: S.optional(
-      S.NullOr(VersionsGetResponseRulesItemExecuteRuleActionParametersOverrides),
-    ),
-  }),
-).annotate({
-  identifier: "VersionsGetResponseRulesItemExecuteRuleActionParameters",
-}) as any as S.Schema<VersionsGetResponseRulesItemExecuteRuleActionParameters>;
+export const VersionsGetResponseRulesItemExecuteRuleActionParameters =
+  CreateResultRulesetRulesItemExecuteRuleActionParameters as any as S.Schema<VersionsGetResponseRulesItemExecuteRuleActionParameters>;
 
 export type VersionsGetResponseRulesItemExecuteRuleCategoriesList = Array<string>;
 export const VersionsGetResponseRulesItemExecuteRuleCategoriesList =
@@ -38728,22 +36056,7 @@ export interface VersionsGetResponseRulesItemRedirectRuleActionParametersFromVal
   statusCode?: VersionsGetResponseRulesItemRedirectRuleActionParametersFromValueStatusCode | null;
 }
 export const VersionsGetResponseRulesItemRedirectRuleActionParametersFromValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      targetUrl:
-        RulesCreateResultRulesetRulesItemRedirectRuleActionParametersFromValueTargetUrl.pipe(
-          T.Body("target_url"),
-        ),
-      preserveQueryString: S.optional(S.NullOr(S.Boolean).pipe(T.Body("preserve_query_string"))),
-      statusCode: S.optional(
-        S.NullOr(VersionsGetResponseRulesItemRedirectRuleActionParametersFromValueStatusCode).pipe(
-          T.Body("status_code"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "VersionsGetResponseRulesItemRedirectRuleActionParametersFromValue",
-  }) as any as S.Schema<VersionsGetResponseRulesItemRedirectRuleActionParametersFromValue>;
+  CreateResultRulesetRulesItemRedirectRuleActionParametersFromValue as any as S.Schema<VersionsGetResponseRulesItemRedirectRuleActionParametersFromValue>;
 
 export interface VersionsGetResponseRulesItemRedirectRuleActionParameters {
   /** A redirect based on a bulk list lookup. */
@@ -38751,23 +36064,8 @@ export interface VersionsGetResponseRulesItemRedirectRuleActionParameters {
   /** A redirect based on the request properties. */
   fromValue?: VersionsGetResponseRulesItemRedirectRuleActionParametersFromValue | null;
 }
-export const VersionsGetResponseRulesItemRedirectRuleActionParameters = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      fromList: S.optional(
-        S.NullOr(RulesCreateResultRulesetRulesItemRedirectRuleActionParametersFromList).pipe(
-          T.Body("from_list"),
-        ),
-      ),
-      fromValue: S.optional(
-        S.NullOr(VersionsGetResponseRulesItemRedirectRuleActionParametersFromValue).pipe(
-          T.Body("from_value"),
-        ),
-      ),
-    }),
-).annotate({
-  identifier: "VersionsGetResponseRulesItemRedirectRuleActionParameters",
-}) as any as S.Schema<VersionsGetResponseRulesItemRedirectRuleActionParameters>;
+export const VersionsGetResponseRulesItemRedirectRuleActionParameters =
+  CreateResultRulesetRulesItemRedirectRuleActionParameters as any as S.Schema<VersionsGetResponseRulesItemRedirectRuleActionParameters>;
 
 export type VersionsGetResponseRulesItemRedirectRuleCategoriesList = Array<string>;
 export const VersionsGetResponseRulesItemRedirectRuleCategoriesList =
@@ -38874,16 +36172,7 @@ export interface VersionsGetResponseRulesItemRewriteRuleActionParametersHeadersV
   value: string;
 }
 export const VersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        VersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeaderOperation,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "VersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader",
-  }) as any as S.Schema<VersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader>;
+  RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader as any as S.Schema<VersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader>;
 
 export type VersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeaderOperation =
   "add";
@@ -38897,16 +36186,7 @@ export interface VersionsGetResponseRulesItemRewriteRuleActionParametersHeadersV
   operation: VersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeaderOperation;
 }
 export const VersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      operation:
-        VersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeaderOperation,
-    }),
-  ).annotate({
-    identifier:
-      "VersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader",
-  }) as any as S.Schema<VersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader>;
+  RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader as any as S.Schema<VersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader>;
 
 export type VersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeaderOperation =
   "set";
@@ -38920,16 +36200,7 @@ export interface VersionsGetResponseRulesItemRewriteRuleActionParametersHeadersV
   value: string;
 }
 export const VersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeader =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        VersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeaderOperation,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "VersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeader",
-  }) as any as S.Schema<VersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeader>;
+  RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader as any as S.Schema<VersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeader>;
 
 export type VersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeaderOperation =
   "set";
@@ -38943,16 +36214,7 @@ export interface VersionsGetResponseRulesItemRewriteRuleActionParametersHeadersV
   operation: VersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeaderOperation;
 }
 export const VersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeader =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      operation:
-        VersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeaderOperation,
-    }),
-  ).annotate({
-    identifier:
-      "VersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeader",
-  }) as any as S.Schema<VersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeader>;
+  RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader as any as S.Schema<VersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeader>;
 
 export type VersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValueRemoveHeaderOperation =
   "remove";
@@ -38964,14 +36226,7 @@ export interface VersionsGetResponseRulesItemRewriteRuleActionParametersHeadersV
   operation: VersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValueRemoveHeaderOperation;
 }
 export const VersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValueRemoveHeader =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        VersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValueRemoveHeaderOperation,
-    }),
-  ).annotate({
-    identifier: "VersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValueRemoveHeader",
-  }) as any as S.Schema<VersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValueRemoveHeader>;
+  CreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueRemoveHeader as any as S.Schema<VersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValueRemoveHeader>;
 
 export type VersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValue =
   | VersionsGetResponseRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader
@@ -39362,19 +36617,7 @@ export interface VersionsGetResponseRulesItemServeErrorRuleActionParametersActio
   statusCode?: number | null;
 }
 export const VersionsGetResponseRulesItemServeErrorRuleActionParametersActionParametersContent =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      content: S.String,
-      contentType: S.optional(
-        S.NullOr(
-          VersionsGetResponseRulesItemServeErrorRuleActionParametersActionParametersContentContentType,
-        ).pipe(T.Body("content_type")),
-      ),
-      statusCode: S.optional(S.NullOr(S.Number).pipe(T.Body("status_code"))),
-    }),
-  ).annotate({
-    identifier: "VersionsGetResponseRulesItemServeErrorRuleActionParametersActionParametersContent",
-  }) as any as S.Schema<VersionsGetResponseRulesItemServeErrorRuleActionParametersActionParametersContent>;
+  CreateResultRulesetRulesItemServeErrorRuleActionParametersActionParametersContent as any as S.Schema<VersionsGetResponseRulesItemServeErrorRuleActionParametersActionParametersContent>;
 
 export type VersionsGetResponseRulesItemServeErrorRuleActionParametersActionParametersAssetContentType =
   | "application/json"
@@ -39393,19 +36636,7 @@ export interface VersionsGetResponseRulesItemServeErrorRuleActionParametersActio
   statusCode?: number | null;
 }
 export const VersionsGetResponseRulesItemServeErrorRuleActionParametersActionParametersAsset =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      assetName: S.String.pipe(T.Body("asset_name")),
-      contentType: S.optional(
-        S.NullOr(
-          VersionsGetResponseRulesItemServeErrorRuleActionParametersActionParametersAssetContentType,
-        ).pipe(T.Body("content_type")),
-      ),
-      statusCode: S.optional(S.NullOr(S.Number).pipe(T.Body("status_code"))),
-    }),
-  ).annotate({
-    identifier: "VersionsGetResponseRulesItemServeErrorRuleActionParametersActionParametersAsset",
-  }) as any as S.Schema<VersionsGetResponseRulesItemServeErrorRuleActionParametersActionParametersAsset>;
+  CreateResultRulesetRulesItemServeErrorRuleActionParametersActionParametersAsset as any as S.Schema<VersionsGetResponseRulesItemServeErrorRuleActionParametersActionParametersAsset>;
 
 export type VersionsGetResponseRulesItemServeErrorRuleActionParameters =
   | VersionsGetResponseRulesItemServeErrorRuleActionParametersActionParametersContent
@@ -39523,16 +36754,7 @@ export interface VersionsGetResponseRulesItemSetCacheControlRuleActionParameters
   cloudflareOnly?: boolean | null;
 }
 export const VersionsGetResponseRulesItemSetCacheControlRuleActionParametersImmutableSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        VersionsGetResponseRulesItemSetCacheControlRuleActionParametersImmutableSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "VersionsGetResponseRulesItemSetCacheControlRuleActionParametersImmutableSetDirective",
-  }) as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlRuleActionParametersImmutableSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlRuleActionParametersImmutableSetDirective>;
 
 export type VersionsGetResponseRulesItemSetCacheControlRuleActionParametersImmutableRemoveDirectiveOperation =
   | "set"
@@ -39547,16 +36769,7 @@ export interface VersionsGetResponseRulesItemSetCacheControlRuleActionParameters
   cloudflareOnly?: boolean | null;
 }
 export const VersionsGetResponseRulesItemSetCacheControlRuleActionParametersImmutableRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        VersionsGetResponseRulesItemSetCacheControlRuleActionParametersImmutableRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "VersionsGetResponseRulesItemSetCacheControlRuleActionParametersImmutableRemoveDirective",
-  }) as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlRuleActionParametersImmutableRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlRuleActionParametersImmutableRemoveDirective>;
 
 export type VersionsGetResponseRulesItemSetCacheControlRuleActionParametersImmutable =
   | VersionsGetResponseRulesItemSetCacheControlRuleActionParametersImmutableSetDirective
@@ -39584,16 +36797,7 @@ export interface VersionsGetResponseRulesItemSetCacheControlRuleActionParameters
   cloudflareOnly?: boolean | null;
 }
 export const VersionsGetResponseRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        VersionsGetResponseRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirectiveOperation,
-      value: S.Number,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "VersionsGetResponseRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective",
-  }) as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective>;
+  CreateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective>;
 
 export type VersionsGetResponseRulesItemSetCacheControlRuleActionParametersMaxAgeRemoveDirectiveOperation =
   | "set"
@@ -39608,16 +36812,7 @@ export interface VersionsGetResponseRulesItemSetCacheControlRuleActionParameters
   cloudflareOnly?: boolean | null;
 }
 export const VersionsGetResponseRulesItemSetCacheControlRuleActionParametersMaxAgeRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        VersionsGetResponseRulesItemSetCacheControlRuleActionParametersMaxAgeRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "VersionsGetResponseRulesItemSetCacheControlRuleActionParametersMaxAgeRemoveDirective",
-  }) as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlRuleActionParametersMaxAgeRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlRuleActionParametersMaxAgeRemoveDirective>;
 
 export type VersionsGetResponseRulesItemSetCacheControlRuleActionParametersMaxAge =
   | VersionsGetResponseRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective
@@ -39643,16 +36838,7 @@ export interface VersionsGetResponseRulesItemSetCacheControlRuleActionParameters
   cloudflareOnly?: boolean | null;
 }
 export const VersionsGetResponseRulesItemSetCacheControlRuleActionParametersMustRevalidateSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        VersionsGetResponseRulesItemSetCacheControlRuleActionParametersMustRevalidateSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "VersionsGetResponseRulesItemSetCacheControlRuleActionParametersMustRevalidateSetDirective",
-  }) as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlRuleActionParametersMustRevalidateSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlRuleActionParametersMustRevalidateSetDirective>;
 
 export type VersionsGetResponseRulesItemSetCacheControlRuleActionParametersMustRevalidateRemoveDirectiveOperation =
   | "set"
@@ -39667,16 +36853,7 @@ export interface VersionsGetResponseRulesItemSetCacheControlRuleActionParameters
   cloudflareOnly?: boolean | null;
 }
 export const VersionsGetResponseRulesItemSetCacheControlRuleActionParametersMustRevalidateRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        VersionsGetResponseRulesItemSetCacheControlRuleActionParametersMustRevalidateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "VersionsGetResponseRulesItemSetCacheControlRuleActionParametersMustRevalidateRemoveDirective",
-  }) as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlRuleActionParametersMustRevalidateRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlRuleActionParametersMustRevalidateRemoveDirective>;
 
 export type VersionsGetResponseRulesItemSetCacheControlRuleActionParametersMustRevalidate =
   | VersionsGetResponseRulesItemSetCacheControlRuleActionParametersMustRevalidateSetDirective
@@ -39702,16 +36879,7 @@ export interface VersionsGetResponseRulesItemSetCacheControlRuleActionParameters
   cloudflareOnly?: boolean | null;
 }
 export const VersionsGetResponseRulesItemSetCacheControlRuleActionParametersMustUnderstandSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        VersionsGetResponseRulesItemSetCacheControlRuleActionParametersMustUnderstandSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "VersionsGetResponseRulesItemSetCacheControlRuleActionParametersMustUnderstandSetDirective",
-  }) as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlRuleActionParametersMustUnderstandSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlRuleActionParametersMustUnderstandSetDirective>;
 
 export type VersionsGetResponseRulesItemSetCacheControlRuleActionParametersMustUnderstandRemoveDirectiveOperation =
   | "set"
@@ -39726,16 +36894,7 @@ export interface VersionsGetResponseRulesItemSetCacheControlRuleActionParameters
   cloudflareOnly?: boolean | null;
 }
 export const VersionsGetResponseRulesItemSetCacheControlRuleActionParametersMustUnderstandRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        VersionsGetResponseRulesItemSetCacheControlRuleActionParametersMustUnderstandRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "VersionsGetResponseRulesItemSetCacheControlRuleActionParametersMustUnderstandRemoveDirective",
-  }) as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlRuleActionParametersMustUnderstandRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlRuleActionParametersMustUnderstandRemoveDirective>;
 
 export type VersionsGetResponseRulesItemSetCacheControlRuleActionParametersMustUnderstand =
   | VersionsGetResponseRulesItemSetCacheControlRuleActionParametersMustUnderstandSetDirective
@@ -39797,16 +36956,7 @@ export interface VersionsGetResponseRulesItemSetCacheControlRuleActionParameters
   cloudflareOnly?: boolean | null;
 }
 export const VersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoCacheRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        VersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoCacheRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "VersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoCacheRemoveDirective",
-  }) as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoCacheRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoCacheRemoveDirective>;
 
 export type VersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoCache =
   | VersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoCacheSetDirective
@@ -39832,16 +36982,7 @@ export interface VersionsGetResponseRulesItemSetCacheControlRuleActionParameters
   cloudflareOnly?: boolean | null;
 }
 export const VersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoStoreSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        VersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoStoreSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "VersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoStoreSetDirective",
-  }) as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoStoreSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoStoreSetDirective>;
 
 export type VersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoStoreRemoveDirectiveOperation =
   | "set"
@@ -39856,16 +36997,7 @@ export interface VersionsGetResponseRulesItemSetCacheControlRuleActionParameters
   cloudflareOnly?: boolean | null;
 }
 export const VersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoStoreRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        VersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoStoreRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "VersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoStoreRemoveDirective",
-  }) as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoStoreRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoStoreRemoveDirective>;
 
 export type VersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoStore =
   | VersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoStoreSetDirective
@@ -39891,16 +37023,7 @@ export interface VersionsGetResponseRulesItemSetCacheControlRuleActionParameters
   cloudflareOnly?: boolean | null;
 }
 export const VersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoTransformSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        VersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoTransformSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "VersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoTransformSetDirective",
-  }) as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoTransformSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoTransformSetDirective>;
 
 export type VersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoTransformRemoveDirectiveOperation =
   | "set"
@@ -39915,16 +37038,7 @@ export interface VersionsGetResponseRulesItemSetCacheControlRuleActionParameters
   cloudflareOnly?: boolean | null;
 }
 export const VersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoTransformRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        VersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoTransformRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "VersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoTransformRemoveDirective",
-  }) as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoTransformRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoTransformRemoveDirective>;
 
 export type VersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoTransform =
   | VersionsGetResponseRulesItemSetCacheControlRuleActionParametersNoTransformSetDirective
@@ -39986,16 +37100,7 @@ export interface VersionsGetResponseRulesItemSetCacheControlRuleActionParameters
   cloudflareOnly?: boolean | null;
 }
 export const VersionsGetResponseRulesItemSetCacheControlRuleActionParametersPrivateRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        VersionsGetResponseRulesItemSetCacheControlRuleActionParametersPrivateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "VersionsGetResponseRulesItemSetCacheControlRuleActionParametersPrivateRemoveDirective",
-  }) as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlRuleActionParametersPrivateRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlRuleActionParametersPrivateRemoveDirective>;
 
 export type VersionsGetResponseRulesItemSetCacheControlRuleActionParametersPrivate =
   | VersionsGetResponseRulesItemSetCacheControlRuleActionParametersPrivateSetDirective
@@ -40021,16 +37126,7 @@ export interface VersionsGetResponseRulesItemSetCacheControlRuleActionParameters
   cloudflareOnly?: boolean | null;
 }
 export const VersionsGetResponseRulesItemSetCacheControlRuleActionParametersProxyRevalidateSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        VersionsGetResponseRulesItemSetCacheControlRuleActionParametersProxyRevalidateSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "VersionsGetResponseRulesItemSetCacheControlRuleActionParametersProxyRevalidateSetDirective",
-  }) as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlRuleActionParametersProxyRevalidateSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlRuleActionParametersProxyRevalidateSetDirective>;
 
 export type VersionsGetResponseRulesItemSetCacheControlRuleActionParametersProxyRevalidateRemoveDirectiveOperation =
   | "set"
@@ -40045,16 +37141,7 @@ export interface VersionsGetResponseRulesItemSetCacheControlRuleActionParameters
   cloudflareOnly?: boolean | null;
 }
 export const VersionsGetResponseRulesItemSetCacheControlRuleActionParametersProxyRevalidateRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        VersionsGetResponseRulesItemSetCacheControlRuleActionParametersProxyRevalidateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "VersionsGetResponseRulesItemSetCacheControlRuleActionParametersProxyRevalidateRemoveDirective",
-  }) as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlRuleActionParametersProxyRevalidateRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlRuleActionParametersProxyRevalidateRemoveDirective>;
 
 export type VersionsGetResponseRulesItemSetCacheControlRuleActionParametersProxyRevalidate =
   | VersionsGetResponseRulesItemSetCacheControlRuleActionParametersProxyRevalidateSetDirective
@@ -40080,15 +37167,7 @@ export interface VersionsGetResponseRulesItemSetCacheControlRuleActionParameters
   cloudflareOnly?: boolean | null;
 }
 export const VersionsGetResponseRulesItemSetCacheControlRuleActionParametersPublicSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        VersionsGetResponseRulesItemSetCacheControlRuleActionParametersPublicSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "VersionsGetResponseRulesItemSetCacheControlRuleActionParametersPublicSetDirective",
-  }) as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlRuleActionParametersPublicSetDirective>;
+  CreateResultRulesetRulesItemSetCacheControlRuleActionParametersPublicSetDirective as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlRuleActionParametersPublicSetDirective>;
 
 export type VersionsGetResponseRulesItemSetCacheControlRuleActionParametersPublicRemoveDirectiveOperation =
   | "set"
@@ -40103,16 +37182,7 @@ export interface VersionsGetResponseRulesItemSetCacheControlRuleActionParameters
   cloudflareOnly?: boolean | null;
 }
 export const VersionsGetResponseRulesItemSetCacheControlRuleActionParametersPublicRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        VersionsGetResponseRulesItemSetCacheControlRuleActionParametersPublicRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "VersionsGetResponseRulesItemSetCacheControlRuleActionParametersPublicRemoveDirective",
-  }) as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlRuleActionParametersPublicRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlRuleActionParametersPublicRemoveDirective>;
 
 export type VersionsGetResponseRulesItemSetCacheControlRuleActionParametersPublic =
   | VersionsGetResponseRulesItemSetCacheControlRuleActionParametersPublicSetDirective
@@ -40140,17 +37210,7 @@ export interface VersionsGetResponseRulesItemSetCacheControlRuleActionParameters
   cloudflareOnly?: boolean | null;
 }
 export const VersionsGetResponseRulesItemSetCacheControlRuleActionParametersSMaxageSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        VersionsGetResponseRulesItemSetCacheControlRuleActionParametersSMaxageSetDirectiveOperation,
-      value: S.Number,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "VersionsGetResponseRulesItemSetCacheControlRuleActionParametersSMaxageSetDirective",
-  }) as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlRuleActionParametersSMaxageSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlRuleActionParametersSMaxageSetDirective>;
 
 export type VersionsGetResponseRulesItemSetCacheControlRuleActionParametersSMaxageRemoveDirectiveOperation =
   | "set"
@@ -40165,16 +37225,7 @@ export interface VersionsGetResponseRulesItemSetCacheControlRuleActionParameters
   cloudflareOnly?: boolean | null;
 }
 export const VersionsGetResponseRulesItemSetCacheControlRuleActionParametersSMaxageRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        VersionsGetResponseRulesItemSetCacheControlRuleActionParametersSMaxageRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "VersionsGetResponseRulesItemSetCacheControlRuleActionParametersSMaxageRemoveDirective",
-  }) as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlRuleActionParametersSMaxageRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlRuleActionParametersSMaxageRemoveDirective>;
 
 export type VersionsGetResponseRulesItemSetCacheControlRuleActionParametersSMaxage =
   | VersionsGetResponseRulesItemSetCacheControlRuleActionParametersSMaxageSetDirective
@@ -40202,17 +37253,7 @@ export interface VersionsGetResponseRulesItemSetCacheControlRuleActionParameters
   cloudflareOnly?: boolean | null;
 }
 export const VersionsGetResponseRulesItemSetCacheControlRuleActionParametersStaleIfErrorSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        VersionsGetResponseRulesItemSetCacheControlRuleActionParametersStaleIfErrorSetDirectiveOperation,
-      value: S.Number,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "VersionsGetResponseRulesItemSetCacheControlRuleActionParametersStaleIfErrorSetDirective",
-  }) as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlRuleActionParametersStaleIfErrorSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlRuleActionParametersStaleIfErrorSetDirective>;
 
 export type VersionsGetResponseRulesItemSetCacheControlRuleActionParametersStaleIfErrorRemoveDirectiveOperation =
   | "set"
@@ -40227,16 +37268,7 @@ export interface VersionsGetResponseRulesItemSetCacheControlRuleActionParameters
   cloudflareOnly?: boolean | null;
 }
 export const VersionsGetResponseRulesItemSetCacheControlRuleActionParametersStaleIfErrorRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        VersionsGetResponseRulesItemSetCacheControlRuleActionParametersStaleIfErrorRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "VersionsGetResponseRulesItemSetCacheControlRuleActionParametersStaleIfErrorRemoveDirective",
-  }) as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlRuleActionParametersStaleIfErrorRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlRuleActionParametersStaleIfErrorRemoveDirective>;
 
 export type VersionsGetResponseRulesItemSetCacheControlRuleActionParametersStaleIfError =
   | VersionsGetResponseRulesItemSetCacheControlRuleActionParametersStaleIfErrorSetDirective
@@ -40264,17 +37296,7 @@ export interface VersionsGetResponseRulesItemSetCacheControlRuleActionParameters
   cloudflareOnly?: boolean | null;
 }
 export const VersionsGetResponseRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        VersionsGetResponseRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateSetDirectiveOperation,
-      value: S.Number,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "VersionsGetResponseRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateSetDirective",
-  }) as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateSetDirective>;
 
 export type VersionsGetResponseRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirectiveOperation =
   | "set"
@@ -40289,16 +37311,7 @@ export interface VersionsGetResponseRulesItemSetCacheControlRuleActionParameters
   cloudflareOnly?: boolean | null;
 }
 export const VersionsGetResponseRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        VersionsGetResponseRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "VersionsGetResponseRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirective",
-  }) as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirective>;
 
 export type VersionsGetResponseRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidate =
   | VersionsGetResponseRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateSetDirective
@@ -40524,14 +37537,7 @@ export interface VersionsGetResponseRulesItemSetCacheSettingsRuleActionParameter
   default?: number | null;
 }
 export const VersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersBrowserTtl =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      mode: VersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersBrowserTtlMode,
-      default: S.optional(S.NullOr(S.Number)),
-    }),
-  ).annotate({
-    identifier: "VersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersBrowserTtl",
-  }) as any as S.Schema<VersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersBrowserTtl>;
+  RulesCreateResultRulesetRulesItemSetCacheSettingsRuleActionParametersBrowserTtl as any as S.Schema<VersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersBrowserTtl>;
 
 export type VersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieCheckPresenceList =
   Array<string>;
@@ -40725,14 +37731,7 @@ export interface VersionsGetResponseRulesItemSetCacheSettingsRuleActionParameter
   mode: VersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequestsMode;
 }
 export const VersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequests =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      mode: VersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequestsMode,
-    }),
-  ).annotate({
-    identifier:
-      "VersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequests",
-  }) as any as S.Schema<VersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequests>;
+  RulesCreateResultRulesetRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequests as any as S.Schema<VersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequests>;
 
 export type VersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersServeStale =
   RulesCreateResultRulesetRulesItemSetCacheSettingsRuleActionParametersServeStale;
@@ -40756,13 +37755,7 @@ export interface VersionsGetResponseRulesItemSetCacheSettingsRuleActionParameter
   action: VersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersVaryDefaultAction;
 }
 export const VersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersVaryDefault =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      action: VersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersVaryDefaultAction,
-    }),
-  ).annotate({
-    identifier: "VersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersVaryDefault",
-  }) as any as S.Schema<VersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersVaryDefault>;
+  CreateRequestRulesItemSetCacheSettingsRuleActionParametersVaryDefault as any as S.Schema<VersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersVaryDefault>;
 
 export type VersionsGetResponseRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueAction =
   | "bypass"
@@ -41076,16 +38069,7 @@ export interface VersionsGetResponseRulesItemSetCacheTagsRuleActionParametersAdd
   operation: VersionsGetResponseRulesItemSetCacheTagsRuleActionParametersAddCacheTagsExpressionOperation;
 }
 export const VersionsGetResponseRulesItemSetCacheTagsRuleActionParametersAddCacheTagsExpression =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      operation:
-        VersionsGetResponseRulesItemSetCacheTagsRuleActionParametersAddCacheTagsExpressionOperation,
-    }),
-  ).annotate({
-    identifier:
-      "VersionsGetResponseRulesItemSetCacheTagsRuleActionParametersAddCacheTagsExpression",
-  }) as any as S.Schema<VersionsGetResponseRulesItemSetCacheTagsRuleActionParametersAddCacheTagsExpression>;
+  RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader as any as S.Schema<VersionsGetResponseRulesItemSetCacheTagsRuleActionParametersAddCacheTagsExpression>;
 
 export type VersionsGetResponseRulesItemSetCacheTagsRuleActionParametersRemoveCacheTagsValuesOperation =
   | "add"
@@ -41131,16 +38115,7 @@ export interface VersionsGetResponseRulesItemSetCacheTagsRuleActionParametersRem
   operation: VersionsGetResponseRulesItemSetCacheTagsRuleActionParametersRemoveCacheTagsExpressionOperation;
 }
 export const VersionsGetResponseRulesItemSetCacheTagsRuleActionParametersRemoveCacheTagsExpression =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      operation:
-        VersionsGetResponseRulesItemSetCacheTagsRuleActionParametersRemoveCacheTagsExpressionOperation,
-    }),
-  ).annotate({
-    identifier:
-      "VersionsGetResponseRulesItemSetCacheTagsRuleActionParametersRemoveCacheTagsExpression",
-  }) as any as S.Schema<VersionsGetResponseRulesItemSetCacheTagsRuleActionParametersRemoveCacheTagsExpression>;
+  RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader as any as S.Schema<VersionsGetResponseRulesItemSetCacheTagsRuleActionParametersRemoveCacheTagsExpression>;
 
 export type VersionsGetResponseRulesItemSetCacheTagsRuleActionParametersSetCacheTagsValuesOperation =
   | "add"
@@ -41186,16 +38161,7 @@ export interface VersionsGetResponseRulesItemSetCacheTagsRuleActionParametersSet
   operation: VersionsGetResponseRulesItemSetCacheTagsRuleActionParametersSetCacheTagsExpressionOperation;
 }
 export const VersionsGetResponseRulesItemSetCacheTagsRuleActionParametersSetCacheTagsExpression =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      operation:
-        VersionsGetResponseRulesItemSetCacheTagsRuleActionParametersSetCacheTagsExpressionOperation,
-    }),
-  ).annotate({
-    identifier:
-      "VersionsGetResponseRulesItemSetCacheTagsRuleActionParametersSetCacheTagsExpression",
-  }) as any as S.Schema<VersionsGetResponseRulesItemSetCacheTagsRuleActionParametersSetCacheTagsExpression>;
+  RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader as any as S.Schema<VersionsGetResponseRulesItemSetCacheTagsRuleActionParametersSetCacheTagsExpression>;
 
 export type VersionsGetResponseRulesItemSetCacheTagsRuleActionParameters =
   | VersionsGetResponseRulesItemSetCacheTagsRuleActionParametersAddCacheTagsValues
@@ -41599,9 +38565,8 @@ export const VersionsGetResponseRulesItemSkipRuleActionParametersPhasesItem = S.
 
 export type VersionsGetResponseRulesItemSkipRuleActionParametersPhasesList =
   Array<VersionsGetResponseRulesItemSkipRuleActionParametersPhasesItem>;
-export const VersionsGetResponseRulesItemSkipRuleActionParametersPhasesList = /*@__PURE__*/ S.Array(
-  VersionsGetResponseRulesItemSkipRuleActionParametersPhasesItem,
-) as any as S.Schema<VersionsGetResponseRulesItemSkipRuleActionParametersPhasesList>;
+export const VersionsGetResponseRulesItemSkipRuleActionParametersPhasesList =
+  CreateRequestRulesItemSkipRuleActionParametersPhasesList as any as S.Schema<VersionsGetResponseRulesItemSkipRuleActionParametersPhasesList>;
 
 export type VersionsGetResponseRulesItemSkipRuleActionParametersProductsItem =
   | "bic"
@@ -41616,9 +38581,7 @@ export const VersionsGetResponseRulesItemSkipRuleActionParametersProductsItem = 
 export type VersionsGetResponseRulesItemSkipRuleActionParametersProductsList =
   Array<VersionsGetResponseRulesItemSkipRuleActionParametersProductsItem>;
 export const VersionsGetResponseRulesItemSkipRuleActionParametersProductsList =
-  /*@__PURE__*/ S.Array(
-    VersionsGetResponseRulesItemSkipRuleActionParametersProductsItem,
-  ) as any as S.Schema<VersionsGetResponseRulesItemSkipRuleActionParametersProductsList>;
+  RulesCreateResultRulesetRulesItemSkipRuleActionParametersPhasesList as any as S.Schema<VersionsGetResponseRulesItemSkipRuleActionParametersProductsList>;
 
 export type VersionsGetResponseRulesItemSkipRuleActionParametersRulesValueList = Array<string>;
 export const VersionsGetResponseRulesItemSkipRuleActionParametersRulesValueList =
@@ -42602,22 +39565,10 @@ export interface VersionsListResultItem {
   /** An informative description of the ruleset. */
   description?: string | null;
 }
-export const VersionsListResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    kind: VersionsListResultItemKind,
-    lastUpdated: S.String.pipe(T.Body("last_updated")),
-    name: S.String,
-    phase: VersionsListResultItemPhase,
-    version: S.String,
-    description: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({ identifier: "VersionsListResultItem" }) as any as S.Schema<VersionsListResultItem>;
+export const VersionsListResultItem = ListResultItem as any as S.Schema<VersionsListResultItem>;
 
 export type VersionsListResultList = Array<VersionsListResultItem>;
-export const VersionsListResultList = /*@__PURE__*/ S.Array(
-  VersionsListResultItem,
-) as any as S.Schema<VersionsListResultList>;
+export const VersionsListResultList = ListResultList as any as S.Schema<VersionsListResultList>;
 
 export interface ListVersionsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
@@ -42625,12 +39576,7 @@ export interface ListVersionsResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListVersionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: VersionsListResultList.pipe(T.EnvelopePayload()),
-    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "ListVersionsResponse" }) as any as S.Schema<ListVersionsResponse>;
+export const ListVersionsResponse = ListRulesetsResponse as any as S.Schema<ListVersionsResponse>;
 
 export interface ListVersionsForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
@@ -43350,15 +40296,7 @@ export interface RulesEditRequestBodySetCacheControlRuleActionParametersImmutabl
   cloudflareOnly?: boolean;
 }
 export const RulesEditRequestBodySetCacheControlRuleActionParametersImmutableSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesEditRequestBodySetCacheControlRuleActionParametersImmutableSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "RulesEditRequestBodySetCacheControlRuleActionParametersImmutableSetDirective",
-  }) as any as S.Schema<RulesEditRequestBodySetCacheControlRuleActionParametersImmutableSetDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesEditRequestBodySetCacheControlRuleActionParametersImmutableSetDirective>;
 
 export type RulesEditRequestBodySetCacheControlRuleActionParametersImmutableRemoveDirectiveOperation =
   | "set"
@@ -43375,15 +40313,7 @@ export interface RulesEditRequestBodySetCacheControlRuleActionParametersImmutabl
   cloudflareOnly?: boolean;
 }
 export const RulesEditRequestBodySetCacheControlRuleActionParametersImmutableRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesEditRequestBodySetCacheControlRuleActionParametersImmutableRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "RulesEditRequestBodySetCacheControlRuleActionParametersImmutableRemoveDirective",
-  }) as any as S.Schema<RulesEditRequestBodySetCacheControlRuleActionParametersImmutableRemoveDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesEditRequestBodySetCacheControlRuleActionParametersImmutableRemoveDirective>;
 
 export type RulesEditRequestBodySetCacheControlRuleActionParametersImmutable =
   | RulesEditRequestBodySetCacheControlRuleActionParametersImmutableSetDirective
@@ -43413,15 +40343,7 @@ export interface RulesEditRequestBodySetCacheControlRuleActionParametersMaxAgeSe
   cloudflareOnly?: boolean;
 }
 export const RulesEditRequestBodySetCacheControlRuleActionParametersMaxAgeSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation: RulesEditRequestBodySetCacheControlRuleActionParametersMaxAgeSetDirectiveOperation,
-      value: S.Number,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "RulesEditRequestBodySetCacheControlRuleActionParametersMaxAgeSetDirective",
-  }) as any as S.Schema<RulesEditRequestBodySetCacheControlRuleActionParametersMaxAgeSetDirective>;
+  CreateRequestRulesItemSetCacheControlActionParametersMaxAgeSetDirective as any as S.Schema<RulesEditRequestBodySetCacheControlRuleActionParametersMaxAgeSetDirective>;
 
 export type RulesEditRequestBodySetCacheControlRuleActionParametersMaxAgeRemoveDirectiveOperation =
   | "set"
@@ -43438,15 +40360,7 @@ export interface RulesEditRequestBodySetCacheControlRuleActionParametersMaxAgeRe
   cloudflareOnly?: boolean;
 }
 export const RulesEditRequestBodySetCacheControlRuleActionParametersMaxAgeRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesEditRequestBodySetCacheControlRuleActionParametersMaxAgeRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "RulesEditRequestBodySetCacheControlRuleActionParametersMaxAgeRemoveDirective",
-  }) as any as S.Schema<RulesEditRequestBodySetCacheControlRuleActionParametersMaxAgeRemoveDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesEditRequestBodySetCacheControlRuleActionParametersMaxAgeRemoveDirective>;
 
 export type RulesEditRequestBodySetCacheControlRuleActionParametersMaxAge =
   | RulesEditRequestBodySetCacheControlRuleActionParametersMaxAgeSetDirective
@@ -43474,15 +40388,7 @@ export interface RulesEditRequestBodySetCacheControlRuleActionParametersMustReva
   cloudflareOnly?: boolean;
 }
 export const RulesEditRequestBodySetCacheControlRuleActionParametersMustRevalidateSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesEditRequestBodySetCacheControlRuleActionParametersMustRevalidateSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "RulesEditRequestBodySetCacheControlRuleActionParametersMustRevalidateSetDirective",
-  }) as any as S.Schema<RulesEditRequestBodySetCacheControlRuleActionParametersMustRevalidateSetDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesEditRequestBodySetCacheControlRuleActionParametersMustRevalidateSetDirective>;
 
 export type RulesEditRequestBodySetCacheControlRuleActionParametersMustRevalidateRemoveDirectiveOperation =
   | "set"
@@ -43499,16 +40405,7 @@ export interface RulesEditRequestBodySetCacheControlRuleActionParametersMustReva
   cloudflareOnly?: boolean;
 }
 export const RulesEditRequestBodySetCacheControlRuleActionParametersMustRevalidateRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesEditRequestBodySetCacheControlRuleActionParametersMustRevalidateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesEditRequestBodySetCacheControlRuleActionParametersMustRevalidateRemoveDirective",
-  }) as any as S.Schema<RulesEditRequestBodySetCacheControlRuleActionParametersMustRevalidateRemoveDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersMustRevalidateSetDirective as any as S.Schema<RulesEditRequestBodySetCacheControlRuleActionParametersMustRevalidateRemoveDirective>;
 
 export type RulesEditRequestBodySetCacheControlRuleActionParametersMustRevalidate =
   | RulesEditRequestBodySetCacheControlRuleActionParametersMustRevalidateSetDirective
@@ -43536,15 +40433,7 @@ export interface RulesEditRequestBodySetCacheControlRuleActionParametersMustUnde
   cloudflareOnly?: boolean;
 }
 export const RulesEditRequestBodySetCacheControlRuleActionParametersMustUnderstandSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesEditRequestBodySetCacheControlRuleActionParametersMustUnderstandSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "RulesEditRequestBodySetCacheControlRuleActionParametersMustUnderstandSetDirective",
-  }) as any as S.Schema<RulesEditRequestBodySetCacheControlRuleActionParametersMustUnderstandSetDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesEditRequestBodySetCacheControlRuleActionParametersMustUnderstandSetDirective>;
 
 export type RulesEditRequestBodySetCacheControlRuleActionParametersMustUnderstandRemoveDirectiveOperation =
   | "set"
@@ -43561,16 +40450,7 @@ export interface RulesEditRequestBodySetCacheControlRuleActionParametersMustUnde
   cloudflareOnly?: boolean;
 }
 export const RulesEditRequestBodySetCacheControlRuleActionParametersMustUnderstandRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesEditRequestBodySetCacheControlRuleActionParametersMustUnderstandRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesEditRequestBodySetCacheControlRuleActionParametersMustUnderstandRemoveDirective",
-  }) as any as S.Schema<RulesEditRequestBodySetCacheControlRuleActionParametersMustUnderstandRemoveDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersMustRevalidateSetDirective as any as S.Schema<RulesEditRequestBodySetCacheControlRuleActionParametersMustUnderstandRemoveDirective>;
 
 export type RulesEditRequestBodySetCacheControlRuleActionParametersMustUnderstand =
   | RulesEditRequestBodySetCacheControlRuleActionParametersMustUnderstandSetDirective
@@ -43633,15 +40513,7 @@ export interface RulesEditRequestBodySetCacheControlRuleActionParametersNoCacheR
   cloudflareOnly?: boolean;
 }
 export const RulesEditRequestBodySetCacheControlRuleActionParametersNoCacheRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesEditRequestBodySetCacheControlRuleActionParametersNoCacheRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "RulesEditRequestBodySetCacheControlRuleActionParametersNoCacheRemoveDirective",
-  }) as any as S.Schema<RulesEditRequestBodySetCacheControlRuleActionParametersNoCacheRemoveDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesEditRequestBodySetCacheControlRuleActionParametersNoCacheRemoveDirective>;
 
 export type RulesEditRequestBodySetCacheControlRuleActionParametersNoCache =
   | RulesEditRequestBodySetCacheControlRuleActionParametersNoCacheSetDirective
@@ -43669,15 +40541,7 @@ export interface RulesEditRequestBodySetCacheControlRuleActionParametersNoStoreS
   cloudflareOnly?: boolean;
 }
 export const RulesEditRequestBodySetCacheControlRuleActionParametersNoStoreSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesEditRequestBodySetCacheControlRuleActionParametersNoStoreSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "RulesEditRequestBodySetCacheControlRuleActionParametersNoStoreSetDirective",
-  }) as any as S.Schema<RulesEditRequestBodySetCacheControlRuleActionParametersNoStoreSetDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesEditRequestBodySetCacheControlRuleActionParametersNoStoreSetDirective>;
 
 export type RulesEditRequestBodySetCacheControlRuleActionParametersNoStoreRemoveDirectiveOperation =
   | "set"
@@ -43694,15 +40558,7 @@ export interface RulesEditRequestBodySetCacheControlRuleActionParametersNoStoreR
   cloudflareOnly?: boolean;
 }
 export const RulesEditRequestBodySetCacheControlRuleActionParametersNoStoreRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesEditRequestBodySetCacheControlRuleActionParametersNoStoreRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "RulesEditRequestBodySetCacheControlRuleActionParametersNoStoreRemoveDirective",
-  }) as any as S.Schema<RulesEditRequestBodySetCacheControlRuleActionParametersNoStoreRemoveDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesEditRequestBodySetCacheControlRuleActionParametersNoStoreRemoveDirective>;
 
 export type RulesEditRequestBodySetCacheControlRuleActionParametersNoStore =
   | RulesEditRequestBodySetCacheControlRuleActionParametersNoStoreSetDirective
@@ -43730,15 +40586,7 @@ export interface RulesEditRequestBodySetCacheControlRuleActionParametersNoTransf
   cloudflareOnly?: boolean;
 }
 export const RulesEditRequestBodySetCacheControlRuleActionParametersNoTransformSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesEditRequestBodySetCacheControlRuleActionParametersNoTransformSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "RulesEditRequestBodySetCacheControlRuleActionParametersNoTransformSetDirective",
-  }) as any as S.Schema<RulesEditRequestBodySetCacheControlRuleActionParametersNoTransformSetDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesEditRequestBodySetCacheControlRuleActionParametersNoTransformSetDirective>;
 
 export type RulesEditRequestBodySetCacheControlRuleActionParametersNoTransformRemoveDirectiveOperation =
   | "set"
@@ -43755,15 +40603,7 @@ export interface RulesEditRequestBodySetCacheControlRuleActionParametersNoTransf
   cloudflareOnly?: boolean;
 }
 export const RulesEditRequestBodySetCacheControlRuleActionParametersNoTransformRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesEditRequestBodySetCacheControlRuleActionParametersNoTransformRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "RulesEditRequestBodySetCacheControlRuleActionParametersNoTransformRemoveDirective",
-  }) as any as S.Schema<RulesEditRequestBodySetCacheControlRuleActionParametersNoTransformRemoveDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesEditRequestBodySetCacheControlRuleActionParametersNoTransformRemoveDirective>;
 
 export type RulesEditRequestBodySetCacheControlRuleActionParametersNoTransform =
   | RulesEditRequestBodySetCacheControlRuleActionParametersNoTransformSetDirective
@@ -43826,15 +40666,7 @@ export interface RulesEditRequestBodySetCacheControlRuleActionParametersPrivateR
   cloudflareOnly?: boolean;
 }
 export const RulesEditRequestBodySetCacheControlRuleActionParametersPrivateRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesEditRequestBodySetCacheControlRuleActionParametersPrivateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "RulesEditRequestBodySetCacheControlRuleActionParametersPrivateRemoveDirective",
-  }) as any as S.Schema<RulesEditRequestBodySetCacheControlRuleActionParametersPrivateRemoveDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesEditRequestBodySetCacheControlRuleActionParametersPrivateRemoveDirective>;
 
 export type RulesEditRequestBodySetCacheControlRuleActionParametersPrivate =
   | RulesEditRequestBodySetCacheControlRuleActionParametersPrivateSetDirective
@@ -43862,16 +40694,7 @@ export interface RulesEditRequestBodySetCacheControlRuleActionParametersProxyRev
   cloudflareOnly?: boolean;
 }
 export const RulesEditRequestBodySetCacheControlRuleActionParametersProxyRevalidateSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesEditRequestBodySetCacheControlRuleActionParametersProxyRevalidateSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesEditRequestBodySetCacheControlRuleActionParametersProxyRevalidateSetDirective",
-  }) as any as S.Schema<RulesEditRequestBodySetCacheControlRuleActionParametersProxyRevalidateSetDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersMustRevalidateSetDirective as any as S.Schema<RulesEditRequestBodySetCacheControlRuleActionParametersProxyRevalidateSetDirective>;
 
 export type RulesEditRequestBodySetCacheControlRuleActionParametersProxyRevalidateRemoveDirectiveOperation =
   | "set"
@@ -43888,16 +40711,7 @@ export interface RulesEditRequestBodySetCacheControlRuleActionParametersProxyRev
   cloudflareOnly?: boolean;
 }
 export const RulesEditRequestBodySetCacheControlRuleActionParametersProxyRevalidateRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesEditRequestBodySetCacheControlRuleActionParametersProxyRevalidateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesEditRequestBodySetCacheControlRuleActionParametersProxyRevalidateRemoveDirective",
-  }) as any as S.Schema<RulesEditRequestBodySetCacheControlRuleActionParametersProxyRevalidateRemoveDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersMustRevalidateSetDirective as any as S.Schema<RulesEditRequestBodySetCacheControlRuleActionParametersProxyRevalidateRemoveDirective>;
 
 export type RulesEditRequestBodySetCacheControlRuleActionParametersProxyRevalidate =
   | RulesEditRequestBodySetCacheControlRuleActionParametersProxyRevalidateSetDirective
@@ -43925,14 +40739,7 @@ export interface RulesEditRequestBodySetCacheControlRuleActionParametersPublicSe
   cloudflareOnly?: boolean;
 }
 export const RulesEditRequestBodySetCacheControlRuleActionParametersPublicSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation: RulesEditRequestBodySetCacheControlRuleActionParametersPublicSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "RulesEditRequestBodySetCacheControlRuleActionParametersPublicSetDirective",
-  }) as any as S.Schema<RulesEditRequestBodySetCacheControlRuleActionParametersPublicSetDirective>;
+  CreateRequestRulesItemSetCacheControlActionParametersNoStoreSetDirective as any as S.Schema<RulesEditRequestBodySetCacheControlRuleActionParametersPublicSetDirective>;
 
 export type RulesEditRequestBodySetCacheControlRuleActionParametersPublicRemoveDirectiveOperation =
   | "set"
@@ -43949,15 +40756,7 @@ export interface RulesEditRequestBodySetCacheControlRuleActionParametersPublicRe
   cloudflareOnly?: boolean;
 }
 export const RulesEditRequestBodySetCacheControlRuleActionParametersPublicRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesEditRequestBodySetCacheControlRuleActionParametersPublicRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "RulesEditRequestBodySetCacheControlRuleActionParametersPublicRemoveDirective",
-  }) as any as S.Schema<RulesEditRequestBodySetCacheControlRuleActionParametersPublicRemoveDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesEditRequestBodySetCacheControlRuleActionParametersPublicRemoveDirective>;
 
 export type RulesEditRequestBodySetCacheControlRuleActionParametersPublic =
   | RulesEditRequestBodySetCacheControlRuleActionParametersPublicSetDirective
@@ -43987,16 +40786,7 @@ export interface RulesEditRequestBodySetCacheControlRuleActionParametersSMaxageS
   cloudflareOnly?: boolean;
 }
 export const RulesEditRequestBodySetCacheControlRuleActionParametersSMaxageSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesEditRequestBodySetCacheControlRuleActionParametersSMaxageSetDirectiveOperation,
-      value: S.Number,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "RulesEditRequestBodySetCacheControlRuleActionParametersSMaxageSetDirective",
-  }) as any as S.Schema<RulesEditRequestBodySetCacheControlRuleActionParametersSMaxageSetDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersMaxAgeSetDirective as any as S.Schema<RulesEditRequestBodySetCacheControlRuleActionParametersSMaxageSetDirective>;
 
 export type RulesEditRequestBodySetCacheControlRuleActionParametersSMaxageRemoveDirectiveOperation =
   | "set"
@@ -44013,15 +40803,7 @@ export interface RulesEditRequestBodySetCacheControlRuleActionParametersSMaxageR
   cloudflareOnly?: boolean;
 }
 export const RulesEditRequestBodySetCacheControlRuleActionParametersSMaxageRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesEditRequestBodySetCacheControlRuleActionParametersSMaxageRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "RulesEditRequestBodySetCacheControlRuleActionParametersSMaxageRemoveDirective",
-  }) as any as S.Schema<RulesEditRequestBodySetCacheControlRuleActionParametersSMaxageRemoveDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesEditRequestBodySetCacheControlRuleActionParametersSMaxageRemoveDirective>;
 
 export type RulesEditRequestBodySetCacheControlRuleActionParametersSMaxage =
   | RulesEditRequestBodySetCacheControlRuleActionParametersSMaxageSetDirective
@@ -44051,16 +40833,7 @@ export interface RulesEditRequestBodySetCacheControlRuleActionParametersStaleIfE
   cloudflareOnly?: boolean;
 }
 export const RulesEditRequestBodySetCacheControlRuleActionParametersStaleIfErrorSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesEditRequestBodySetCacheControlRuleActionParametersStaleIfErrorSetDirectiveOperation,
-      value: S.Number,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "RulesEditRequestBodySetCacheControlRuleActionParametersStaleIfErrorSetDirective",
-  }) as any as S.Schema<RulesEditRequestBodySetCacheControlRuleActionParametersStaleIfErrorSetDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersMaxAgeSetDirective as any as S.Schema<RulesEditRequestBodySetCacheControlRuleActionParametersStaleIfErrorSetDirective>;
 
 export type RulesEditRequestBodySetCacheControlRuleActionParametersStaleIfErrorRemoveDirectiveOperation =
   | "set"
@@ -44077,16 +40850,7 @@ export interface RulesEditRequestBodySetCacheControlRuleActionParametersStaleIfE
   cloudflareOnly?: boolean;
 }
 export const RulesEditRequestBodySetCacheControlRuleActionParametersStaleIfErrorRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesEditRequestBodySetCacheControlRuleActionParametersStaleIfErrorRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesEditRequestBodySetCacheControlRuleActionParametersStaleIfErrorRemoveDirective",
-  }) as any as S.Schema<RulesEditRequestBodySetCacheControlRuleActionParametersStaleIfErrorRemoveDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersMustRevalidateSetDirective as any as S.Schema<RulesEditRequestBodySetCacheControlRuleActionParametersStaleIfErrorRemoveDirective>;
 
 export type RulesEditRequestBodySetCacheControlRuleActionParametersStaleIfError =
   | RulesEditRequestBodySetCacheControlRuleActionParametersStaleIfErrorSetDirective
@@ -44116,17 +40880,7 @@ export interface RulesEditRequestBodySetCacheControlRuleActionParametersStaleWhi
   cloudflareOnly?: boolean;
 }
 export const RulesEditRequestBodySetCacheControlRuleActionParametersStaleWhileRevalidateSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesEditRequestBodySetCacheControlRuleActionParametersStaleWhileRevalidateSetDirectiveOperation,
-      value: S.Number,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesEditRequestBodySetCacheControlRuleActionParametersStaleWhileRevalidateSetDirective",
-  }) as any as S.Schema<RulesEditRequestBodySetCacheControlRuleActionParametersStaleWhileRevalidateSetDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersStaleWhileRevalidateSetDirective as any as S.Schema<RulesEditRequestBodySetCacheControlRuleActionParametersStaleWhileRevalidateSetDirective>;
 
 export type RulesEditRequestBodySetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirectiveOperation =
   | "set"
@@ -44143,16 +40897,7 @@ export interface RulesEditRequestBodySetCacheControlRuleActionParametersStaleWhi
   cloudflareOnly?: boolean;
 }
 export const RulesEditRequestBodySetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesEditRequestBodySetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesEditRequestBodySetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirective",
-  }) as any as S.Schema<RulesEditRequestBodySetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersMustRevalidateSetDirective as any as S.Schema<RulesEditRequestBodySetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirective>;
 
 export type RulesEditRequestBodySetCacheControlRuleActionParametersStaleWhileRevalidate =
   | RulesEditRequestBodySetCacheControlRuleActionParametersStaleWhileRevalidateSetDirective
@@ -44441,15 +41186,7 @@ export interface RulesEditRequestBodySetCacheTagsRuleActionParametersAddCacheTag
     | (string & {});
 }
 export const RulesEditRequestBodySetCacheTagsRuleActionParametersAddCacheTagsExpression =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      operation:
-        RulesEditRequestBodySetCacheTagsRuleActionParametersAddCacheTagsExpressionOperation,
-    }),
-  ).annotate({
-    identifier: "RulesEditRequestBodySetCacheTagsRuleActionParametersAddCacheTagsExpression",
-  }) as any as S.Schema<RulesEditRequestBodySetCacheTagsRuleActionParametersAddCacheTagsExpression>;
+  RulesCreateRequestBodySetCacheTagsRuleActionParametersAddCacheTagsExpression as any as S.Schema<RulesEditRequestBodySetCacheTagsRuleActionParametersAddCacheTagsExpression>;
 
 export type RulesEditRequestBodySetCacheTagsRuleActionParametersRemoveCacheTagsValuesOperation =
   | "add"
@@ -44497,15 +41234,7 @@ export interface RulesEditRequestBodySetCacheTagsRuleActionParametersRemoveCache
     | (string & {});
 }
 export const RulesEditRequestBodySetCacheTagsRuleActionParametersRemoveCacheTagsExpression =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      operation:
-        RulesEditRequestBodySetCacheTagsRuleActionParametersRemoveCacheTagsExpressionOperation,
-    }),
-  ).annotate({
-    identifier: "RulesEditRequestBodySetCacheTagsRuleActionParametersRemoveCacheTagsExpression",
-  }) as any as S.Schema<RulesEditRequestBodySetCacheTagsRuleActionParametersRemoveCacheTagsExpression>;
+  RulesCreateRequestBodySetCacheTagsRuleActionParametersAddCacheTagsExpression as any as S.Schema<RulesEditRequestBodySetCacheTagsRuleActionParametersRemoveCacheTagsExpression>;
 
 export type RulesEditRequestBodySetCacheTagsRuleActionParametersSetCacheTagsValuesOperation =
   | "add"
@@ -44553,15 +41282,7 @@ export interface RulesEditRequestBodySetCacheTagsRuleActionParametersSetCacheTag
     | (string & {});
 }
 export const RulesEditRequestBodySetCacheTagsRuleActionParametersSetCacheTagsExpression =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      operation:
-        RulesEditRequestBodySetCacheTagsRuleActionParametersSetCacheTagsExpressionOperation,
-    }),
-  ).annotate({
-    identifier: "RulesEditRequestBodySetCacheTagsRuleActionParametersSetCacheTagsExpression",
-  }) as any as S.Schema<RulesEditRequestBodySetCacheTagsRuleActionParametersSetCacheTagsExpression>;
+  RulesCreateRequestBodySetCacheTagsRuleActionParametersAddCacheTagsExpression as any as S.Schema<RulesEditRequestBodySetCacheTagsRuleActionParametersSetCacheTagsExpression>;
 
 export type RulesEditRequestBodySetCacheTagsRuleActionParameters =
   | RulesEditRequestBodySetCacheTagsRuleActionParametersAddCacheTagsValues
@@ -45276,39 +41997,19 @@ export interface RulesEditResultRulesetRulesItemResponseCompressionRuleActionPar
   name?: RulesEditResultRulesetRulesItemResponseCompressionRuleActionParametersAlgorithmsItemName | null;
 }
 export const RulesEditResultRulesetRulesItemResponseCompressionRuleActionParametersAlgorithmsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(
-        S.NullOr(
-          RulesEditResultRulesetRulesItemResponseCompressionRuleActionParametersAlgorithmsItemName,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "RulesEditResultRulesetRulesItemResponseCompressionRuleActionParametersAlgorithmsItem",
-  }) as any as S.Schema<RulesEditResultRulesetRulesItemResponseCompressionRuleActionParametersAlgorithmsItem>;
+  RulesCreateResultRulesetRulesItemResponseCompressionRuleActionParametersAlgorithmsItem as any as S.Schema<RulesEditResultRulesetRulesItemResponseCompressionRuleActionParametersAlgorithmsItem>;
 
 export type RulesEditResultRulesetRulesItemResponseCompressionRuleActionParametersAlgorithmsList =
   Array<RulesEditResultRulesetRulesItemResponseCompressionRuleActionParametersAlgorithmsItem>;
 export const RulesEditResultRulesetRulesItemResponseCompressionRuleActionParametersAlgorithmsList =
-  /*@__PURE__*/ S.Array(
-    RulesEditResultRulesetRulesItemResponseCompressionRuleActionParametersAlgorithmsItem,
-  ) as any as S.Schema<RulesEditResultRulesetRulesItemResponseCompressionRuleActionParametersAlgorithmsList>;
+  RulesCreateResultRulesetRulesItemResponseCompressionRuleActionParametersAlgorithmsList as any as S.Schema<RulesEditResultRulesetRulesItemResponseCompressionRuleActionParametersAlgorithmsList>;
 
 export interface RulesEditResultRulesetRulesItemResponseCompressionRuleActionParameters {
   /** Custom order for compression algorithms. */
   algorithms: RulesEditResultRulesetRulesItemResponseCompressionRuleActionParametersAlgorithmsList;
 }
 export const RulesEditResultRulesetRulesItemResponseCompressionRuleActionParameters =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      algorithms:
-        RulesEditResultRulesetRulesItemResponseCompressionRuleActionParametersAlgorithmsList,
-    }),
-  ).annotate({
-    identifier: "RulesEditResultRulesetRulesItemResponseCompressionRuleActionParameters",
-  }) as any as S.Schema<RulesEditResultRulesetRulesItemResponseCompressionRuleActionParameters>;
+  RulesCreateResultRulesetRulesItemResponseCompressionRuleActionParameters as any as S.Schema<RulesEditResultRulesetRulesItemResponseCompressionRuleActionParameters>;
 
 export type RulesEditResultRulesetRulesItemResponseCompressionRuleCategoriesList = Array<string>;
 export const RulesEditResultRulesetRulesItemResponseCompressionRuleCategoriesList =
@@ -45522,27 +42223,12 @@ export interface RulesEditResultRulesetRulesItemExecuteRuleActionParametersOverr
   sensitivityLevel?: RulesEditResultRulesetRulesItemExecuteRuleActionParametersOverridesCategoriesItemSensitivityLevel | null;
 }
 export const RulesEditResultRulesetRulesItemExecuteRuleActionParametersOverridesCategoriesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      category: S.String,
-      action: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      sensitivityLevel: S.optional(
-        S.NullOr(
-          RulesEditResultRulesetRulesItemExecuteRuleActionParametersOverridesCategoriesItemSensitivityLevel,
-        ).pipe(T.Body("sensitivity_level")),
-      ),
-    }),
-  ).annotate({
-    identifier: "RulesEditResultRulesetRulesItemExecuteRuleActionParametersOverridesCategoriesItem",
-  }) as any as S.Schema<RulesEditResultRulesetRulesItemExecuteRuleActionParametersOverridesCategoriesItem>;
+  CreateResultRulesetRulesItemExecuteRuleActionParametersOverridesCategoriesItem as any as S.Schema<RulesEditResultRulesetRulesItemExecuteRuleActionParametersOverridesCategoriesItem>;
 
 export type RulesEditResultRulesetRulesItemExecuteRuleActionParametersOverridesCategoriesList =
   Array<RulesEditResultRulesetRulesItemExecuteRuleActionParametersOverridesCategoriesItem>;
 export const RulesEditResultRulesetRulesItemExecuteRuleActionParametersOverridesCategoriesList =
-  /*@__PURE__*/ S.Array(
-    RulesEditResultRulesetRulesItemExecuteRuleActionParametersOverridesCategoriesItem,
-  ) as any as S.Schema<RulesEditResultRulesetRulesItemExecuteRuleActionParametersOverridesCategoriesList>;
+  CreateResultRulesetRulesItemExecuteRuleActionParametersOverridesCategoriesList as any as S.Schema<RulesEditResultRulesetRulesItemExecuteRuleActionParametersOverridesCategoriesList>;
 
 export type RulesEditResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesItemSensitivityLevel =
   | "default"
@@ -45565,28 +42251,12 @@ export interface RulesEditResultRulesetRulesItemExecuteRuleActionParametersOverr
   sensitivityLevel?: RulesEditResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesItemSensitivityLevel | null;
 }
 export const RulesEditResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      action: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      scoreThreshold: S.optional(S.NullOr(S.Number).pipe(T.Body("score_threshold"))),
-      sensitivityLevel: S.optional(
-        S.NullOr(
-          RulesEditResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesItemSensitivityLevel,
-        ).pipe(T.Body("sensitivity_level")),
-      ),
-    }),
-  ).annotate({
-    identifier: "RulesEditResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesItem",
-  }) as any as S.Schema<RulesEditResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesItem>;
+  RulesCreateResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesItem as any as S.Schema<RulesEditResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesItem>;
 
 export type RulesEditResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesList =
   Array<RulesEditResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesItem>;
 export const RulesEditResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesList =
-  /*@__PURE__*/ S.Array(
-    RulesEditResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesItem,
-  ) as any as S.Schema<RulesEditResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesList>;
+  RulesCreateResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesList as any as S.Schema<RulesEditResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesList>;
 
 export type RulesEditResultRulesetRulesItemExecuteRuleActionParametersOverridesSensitivityLevel =
   | "default"
@@ -45609,25 +42279,7 @@ export interface RulesEditResultRulesetRulesItemExecuteRuleActionParametersOverr
   sensitivityLevel?: RulesEditResultRulesetRulesItemExecuteRuleActionParametersOverridesSensitivityLevel | null;
 }
 export const RulesEditResultRulesetRulesItemExecuteRuleActionParametersOverrides =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      action: S.optional(S.NullOr(S.String)),
-      categories: S.optional(
-        S.NullOr(RulesEditResultRulesetRulesItemExecuteRuleActionParametersOverridesCategoriesList),
-      ),
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      rules: S.optional(
-        S.NullOr(RulesEditResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesList),
-      ),
-      sensitivityLevel: S.optional(
-        S.NullOr(
-          RulesEditResultRulesetRulesItemExecuteRuleActionParametersOverridesSensitivityLevel,
-        ).pipe(T.Body("sensitivity_level")),
-      ),
-    }),
-  ).annotate({
-    identifier: "RulesEditResultRulesetRulesItemExecuteRuleActionParametersOverrides",
-  }) as any as S.Schema<RulesEditResultRulesetRulesItemExecuteRuleActionParametersOverrides>;
+  CreateResultRulesetRulesItemExecuteRuleActionParametersOverrides as any as S.Schema<RulesEditResultRulesetRulesItemExecuteRuleActionParametersOverrides>;
 
 export interface RulesEditResultRulesetRulesItemExecuteRuleActionParameters {
   /** The ID of the ruleset to execute. */
@@ -46311,22 +42963,7 @@ export interface RulesEditResultRulesetRulesItemRedirectRuleActionParametersFrom
   statusCode?: RulesEditResultRulesetRulesItemRedirectRuleActionParametersFromValueStatusCode | null;
 }
 export const RulesEditResultRulesetRulesItemRedirectRuleActionParametersFromValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      targetUrl:
-        RulesCreateResultRulesetRulesItemRedirectRuleActionParametersFromValueTargetUrl.pipe(
-          T.Body("target_url"),
-        ),
-      preserveQueryString: S.optional(S.NullOr(S.Boolean).pipe(T.Body("preserve_query_string"))),
-      statusCode: S.optional(
-        S.NullOr(
-          RulesEditResultRulesetRulesItemRedirectRuleActionParametersFromValueStatusCode,
-        ).pipe(T.Body("status_code")),
-      ),
-    }),
-  ).annotate({
-    identifier: "RulesEditResultRulesetRulesItemRedirectRuleActionParametersFromValue",
-  }) as any as S.Schema<RulesEditResultRulesetRulesItemRedirectRuleActionParametersFromValue>;
+  RulesCreateResultRulesetRulesItemRedirectRuleActionParametersFromValue as any as S.Schema<RulesEditResultRulesetRulesItemRedirectRuleActionParametersFromValue>;
 
 export interface RulesEditResultRulesetRulesItemRedirectRuleActionParameters {
   /** A redirect based on a bulk list lookup. */
@@ -46457,16 +43094,7 @@ export interface RulesEditResultRulesetRulesItemRewriteRuleActionParametersHeade
   value: string;
 }
 export const RulesEditResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesEditResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeaderOperation,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "RulesEditResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader",
-  }) as any as S.Schema<RulesEditResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader>;
+  RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader as any as S.Schema<RulesEditResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader>;
 
 export type RulesEditResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeaderOperation =
   "add";
@@ -46480,16 +43108,7 @@ export interface RulesEditResultRulesetRulesItemRewriteRuleActionParametersHeade
   operation: RulesEditResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeaderOperation;
 }
 export const RulesEditResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      operation:
-        RulesEditResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeaderOperation,
-    }),
-  ).annotate({
-    identifier:
-      "RulesEditResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader",
-  }) as any as S.Schema<RulesEditResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader>;
+  RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader as any as S.Schema<RulesEditResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader>;
 
 export type RulesEditResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeaderOperation =
   "set";
@@ -46503,16 +43122,7 @@ export interface RulesEditResultRulesetRulesItemRewriteRuleActionParametersHeade
   value: string;
 }
 export const RulesEditResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeader =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesEditResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeaderOperation,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "RulesEditResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeader",
-  }) as any as S.Schema<RulesEditResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeader>;
+  RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader as any as S.Schema<RulesEditResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeader>;
 
 export type RulesEditResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeaderOperation =
   "set";
@@ -46526,16 +43136,7 @@ export interface RulesEditResultRulesetRulesItemRewriteRuleActionParametersHeade
   operation: RulesEditResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeaderOperation;
 }
 export const RulesEditResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeader =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      operation:
-        RulesEditResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeaderOperation,
-    }),
-  ).annotate({
-    identifier:
-      "RulesEditResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeader",
-  }) as any as S.Schema<RulesEditResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeader>;
+  RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader as any as S.Schema<RulesEditResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeader>;
 
 export type RulesEditResultRulesetRulesItemRewriteRuleActionParametersHeadersValueRemoveHeaderOperation =
   "remove";
@@ -46547,15 +43148,7 @@ export interface RulesEditResultRulesetRulesItemRewriteRuleActionParametersHeade
   operation: RulesEditResultRulesetRulesItemRewriteRuleActionParametersHeadersValueRemoveHeaderOperation;
 }
 export const RulesEditResultRulesetRulesItemRewriteRuleActionParametersHeadersValueRemoveHeader =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesEditResultRulesetRulesItemRewriteRuleActionParametersHeadersValueRemoveHeaderOperation,
-    }),
-  ).annotate({
-    identifier:
-      "RulesEditResultRulesetRulesItemRewriteRuleActionParametersHeadersValueRemoveHeader",
-  }) as any as S.Schema<RulesEditResultRulesetRulesItemRewriteRuleActionParametersHeadersValueRemoveHeader>;
+  RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueRemoveHeader as any as S.Schema<RulesEditResultRulesetRulesItemRewriteRuleActionParametersHeadersValueRemoveHeader>;
 
 export type RulesEditResultRulesetRulesItemRewriteRuleActionParametersHeadersValue =
   | RulesEditResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader
@@ -46947,20 +43540,7 @@ export interface RulesEditResultRulesetRulesItemServeErrorRuleActionParametersAc
   statusCode?: number | null;
 }
 export const RulesEditResultRulesetRulesItemServeErrorRuleActionParametersActionParametersContent =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      content: S.String,
-      contentType: S.optional(
-        S.NullOr(
-          RulesEditResultRulesetRulesItemServeErrorRuleActionParametersActionParametersContentContentType,
-        ).pipe(T.Body("content_type")),
-      ),
-      statusCode: S.optional(S.NullOr(S.Number).pipe(T.Body("status_code"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesEditResultRulesetRulesItemServeErrorRuleActionParametersActionParametersContent",
-  }) as any as S.Schema<RulesEditResultRulesetRulesItemServeErrorRuleActionParametersActionParametersContent>;
+  RulesCreateResultRulesetRulesItemServeErrorRuleActionParametersActionParametersContent as any as S.Schema<RulesEditResultRulesetRulesItemServeErrorRuleActionParametersActionParametersContent>;
 
 export type RulesEditResultRulesetRulesItemServeErrorRuleActionParametersActionParametersAssetContentType =
   | "application/json"
@@ -46979,20 +43559,7 @@ export interface RulesEditResultRulesetRulesItemServeErrorRuleActionParametersAc
   statusCode?: number | null;
 }
 export const RulesEditResultRulesetRulesItemServeErrorRuleActionParametersActionParametersAsset =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      assetName: S.String.pipe(T.Body("asset_name")),
-      contentType: S.optional(
-        S.NullOr(
-          RulesEditResultRulesetRulesItemServeErrorRuleActionParametersActionParametersAssetContentType,
-        ).pipe(T.Body("content_type")),
-      ),
-      statusCode: S.optional(S.NullOr(S.Number).pipe(T.Body("status_code"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesEditResultRulesetRulesItemServeErrorRuleActionParametersActionParametersAsset",
-  }) as any as S.Schema<RulesEditResultRulesetRulesItemServeErrorRuleActionParametersActionParametersAsset>;
+  RulesCreateResultRulesetRulesItemServeErrorRuleActionParametersActionParametersAsset as any as S.Schema<RulesEditResultRulesetRulesItemServeErrorRuleActionParametersActionParametersAsset>;
 
 export type RulesEditResultRulesetRulesItemServeErrorRuleActionParameters =
   | RulesEditResultRulesetRulesItemServeErrorRuleActionParametersActionParametersContent
@@ -47111,16 +43678,7 @@ export interface RulesEditResultRulesetRulesItemSetCacheControlRuleActionParamet
   cloudflareOnly?: boolean | null;
 }
 export const RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective",
-  }) as any as S.Schema<RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective>;
 
 export type RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableRemoveDirectiveOperation =
   | "set"
@@ -47135,16 +43693,7 @@ export interface RulesEditResultRulesetRulesItemSetCacheControlRuleActionParamet
   cloudflareOnly?: boolean | null;
 }
 export const RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableRemoveDirective",
-  }) as any as S.Schema<RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableRemoveDirective>;
 
 export type RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersImmutable =
   | RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective
@@ -47172,17 +43721,7 @@ export interface RulesEditResultRulesetRulesItemSetCacheControlRuleActionParamet
   cloudflareOnly?: boolean | null;
 }
 export const RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirectiveOperation,
-      value: S.Number,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective",
-  }) as any as S.Schema<RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective as any as S.Schema<RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective>;
 
 export type RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeRemoveDirectiveOperation =
   | "set"
@@ -47197,16 +43736,7 @@ export interface RulesEditResultRulesetRulesItemSetCacheControlRuleActionParamet
   cloudflareOnly?: boolean | null;
 }
 export const RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeRemoveDirective",
-  }) as any as S.Schema<RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeRemoveDirective>;
 
 export type RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAge =
   | RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective
@@ -47232,16 +43762,7 @@ export interface RulesEditResultRulesetRulesItemSetCacheControlRuleActionParamet
   cloudflareOnly?: boolean | null;
 }
 export const RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateSetDirective",
-  }) as any as S.Schema<RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateSetDirective>;
 
 export type RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateRemoveDirectiveOperation =
   | "set"
@@ -47256,16 +43777,7 @@ export interface RulesEditResultRulesetRulesItemSetCacheControlRuleActionParamet
   cloudflareOnly?: boolean | null;
 }
 export const RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateRemoveDirective",
-  }) as any as S.Schema<RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateRemoveDirective>;
 
 export type RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidate =
   | RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateSetDirective
@@ -47291,16 +43803,7 @@ export interface RulesEditResultRulesetRulesItemSetCacheControlRuleActionParamet
   cloudflareOnly?: boolean | null;
 }
 export const RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandSetDirective",
-  }) as any as S.Schema<RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandSetDirective>;
 
 export type RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandRemoveDirectiveOperation =
   | "set"
@@ -47315,16 +43818,7 @@ export interface RulesEditResultRulesetRulesItemSetCacheControlRuleActionParamet
   cloudflareOnly?: boolean | null;
 }
 export const RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandRemoveDirective",
-  }) as any as S.Schema<RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandRemoveDirective>;
 
 export type RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstand =
   | RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandSetDirective
@@ -47386,16 +43880,7 @@ export interface RulesEditResultRulesetRulesItemSetCacheControlRuleActionParamet
   cloudflareOnly?: boolean | null;
 }
 export const RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersNoCacheRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersNoCacheRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersNoCacheRemoveDirective",
-  }) as any as S.Schema<RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersNoCacheRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersNoCacheRemoveDirective>;
 
 export type RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersNoCache =
   | RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersNoCacheSetDirective
@@ -47421,16 +43906,7 @@ export interface RulesEditResultRulesetRulesItemSetCacheControlRuleActionParamet
   cloudflareOnly?: boolean | null;
 }
 export const RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreSetDirective",
-  }) as any as S.Schema<RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreSetDirective>;
 
 export type RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreRemoveDirectiveOperation =
   | "set"
@@ -47445,16 +43921,7 @@ export interface RulesEditResultRulesetRulesItemSetCacheControlRuleActionParamet
   cloudflareOnly?: boolean | null;
 }
 export const RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreRemoveDirective",
-  }) as any as S.Schema<RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreRemoveDirective>;
 
 export type RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersNoStore =
   | RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreSetDirective
@@ -47480,16 +43947,7 @@ export interface RulesEditResultRulesetRulesItemSetCacheControlRuleActionParamet
   cloudflareOnly?: boolean | null;
 }
 export const RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformSetDirective",
-  }) as any as S.Schema<RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformSetDirective>;
 
 export type RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformRemoveDirectiveOperation =
   | "set"
@@ -47504,16 +43962,7 @@ export interface RulesEditResultRulesetRulesItemSetCacheControlRuleActionParamet
   cloudflareOnly?: boolean | null;
 }
 export const RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformRemoveDirective",
-  }) as any as S.Schema<RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformRemoveDirective>;
 
 export type RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransform =
   | RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformSetDirective
@@ -47575,16 +44024,7 @@ export interface RulesEditResultRulesetRulesItemSetCacheControlRuleActionParamet
   cloudflareOnly?: boolean | null;
 }
 export const RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersPrivateRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersPrivateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersPrivateRemoveDirective",
-  }) as any as S.Schema<RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersPrivateRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersPrivateRemoveDirective>;
 
 export type RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersPrivate =
   | RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersPrivateSetDirective
@@ -47610,16 +44050,7 @@ export interface RulesEditResultRulesetRulesItemSetCacheControlRuleActionParamet
   cloudflareOnly?: boolean | null;
 }
 export const RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateSetDirective",
-  }) as any as S.Schema<RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateSetDirective>;
 
 export type RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateRemoveDirectiveOperation =
   | "set"
@@ -47634,16 +44065,7 @@ export interface RulesEditResultRulesetRulesItemSetCacheControlRuleActionParamet
   cloudflareOnly?: boolean | null;
 }
 export const RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateRemoveDirective",
-  }) as any as S.Schema<RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateRemoveDirective>;
 
 export type RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidate =
   | RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateSetDirective
@@ -47669,16 +44091,7 @@ export interface RulesEditResultRulesetRulesItemSetCacheControlRuleActionParamet
   cloudflareOnly?: boolean | null;
 }
 export const RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersPublicSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersPublicSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersPublicSetDirective",
-  }) as any as S.Schema<RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersPublicSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersPublicSetDirective>;
 
 export type RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersPublicRemoveDirectiveOperation =
   | "set"
@@ -47693,16 +44106,7 @@ export interface RulesEditResultRulesetRulesItemSetCacheControlRuleActionParamet
   cloudflareOnly?: boolean | null;
 }
 export const RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersPublicRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersPublicRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersPublicRemoveDirective",
-  }) as any as S.Schema<RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersPublicRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersPublicRemoveDirective>;
 
 export type RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersPublic =
   | RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersPublicSetDirective
@@ -47730,17 +44134,7 @@ export interface RulesEditResultRulesetRulesItemSetCacheControlRuleActionParamet
   cloudflareOnly?: boolean | null;
 }
 export const RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageSetDirectiveOperation,
-      value: S.Number,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageSetDirective",
-  }) as any as S.Schema<RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective as any as S.Schema<RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageSetDirective>;
 
 export type RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageRemoveDirectiveOperation =
   | "set"
@@ -47755,16 +44149,7 @@ export interface RulesEditResultRulesetRulesItemSetCacheControlRuleActionParamet
   cloudflareOnly?: boolean | null;
 }
 export const RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageRemoveDirective",
-  }) as any as S.Schema<RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageRemoveDirective>;
 
 export type RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxage =
   | RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageSetDirective
@@ -47792,17 +44177,7 @@ export interface RulesEditResultRulesetRulesItemSetCacheControlRuleActionParamet
   cloudflareOnly?: boolean | null;
 }
 export const RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorSetDirectiveOperation,
-      value: S.Number,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorSetDirective",
-  }) as any as S.Schema<RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective as any as S.Schema<RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorSetDirective>;
 
 export type RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorRemoveDirectiveOperation =
   | "set"
@@ -47817,16 +44192,7 @@ export interface RulesEditResultRulesetRulesItemSetCacheControlRuleActionParamet
   cloudflareOnly?: boolean | null;
 }
 export const RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorRemoveDirective",
-  }) as any as S.Schema<RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorRemoveDirective>;
 
 export type RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfError =
   | RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorSetDirective
@@ -47854,17 +44220,7 @@ export interface RulesEditResultRulesetRulesItemSetCacheControlRuleActionParamet
   cloudflareOnly?: boolean | null;
 }
 export const RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateSetDirectiveOperation,
-      value: S.Number,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateSetDirective",
-  }) as any as S.Schema<RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective as any as S.Schema<RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateSetDirective>;
 
 export type RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirectiveOperation =
   | "set"
@@ -47879,16 +44235,7 @@ export interface RulesEditResultRulesetRulesItemSetCacheControlRuleActionParamet
   cloudflareOnly?: boolean | null;
 }
 export const RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirective",
-  }) as any as S.Schema<RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirective>;
 
 export type RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidate =
   | RulesEditResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateSetDirective
@@ -48116,14 +44463,7 @@ export interface RulesEditResultRulesetRulesItemSetCacheSettingsRuleActionParame
   default?: number | null;
 }
 export const RulesEditResultRulesetRulesItemSetCacheSettingsRuleActionParametersBrowserTtl =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      mode: RulesEditResultRulesetRulesItemSetCacheSettingsRuleActionParametersBrowserTtlMode,
-      default: S.optional(S.NullOr(S.Number)),
-    }),
-  ).annotate({
-    identifier: "RulesEditResultRulesetRulesItemSetCacheSettingsRuleActionParametersBrowserTtl",
-  }) as any as S.Schema<RulesEditResultRulesetRulesItemSetCacheSettingsRuleActionParametersBrowserTtl>;
+  RulesCreateResultRulesetRulesItemSetCacheSettingsRuleActionParametersBrowserTtl as any as S.Schema<RulesEditResultRulesetRulesItemSetCacheSettingsRuleActionParametersBrowserTtl>;
 
 export type RulesEditResultRulesetRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieCheckPresenceList =
   Array<string>;
@@ -48318,14 +44658,7 @@ export interface RulesEditResultRulesetRulesItemSetCacheSettingsRuleActionParame
   mode: RulesEditResultRulesetRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequestsMode;
 }
 export const RulesEditResultRulesetRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequests =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      mode: RulesEditResultRulesetRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequestsMode,
-    }),
-  ).annotate({
-    identifier:
-      "RulesEditResultRulesetRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequests",
-  }) as any as S.Schema<RulesEditResultRulesetRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequests>;
+  RulesCreateResultRulesetRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequests as any as S.Schema<RulesEditResultRulesetRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequests>;
 
 export type RulesEditResultRulesetRulesItemSetCacheSettingsRuleActionParametersServeStale =
   RulesCreateResultRulesetRulesItemSetCacheSettingsRuleActionParametersServeStale;
@@ -48349,13 +44682,7 @@ export interface RulesEditResultRulesetRulesItemSetCacheSettingsRuleActionParame
   action: RulesEditResultRulesetRulesItemSetCacheSettingsRuleActionParametersVaryDefaultAction;
 }
 export const RulesEditResultRulesetRulesItemSetCacheSettingsRuleActionParametersVaryDefault =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      action: RulesEditResultRulesetRulesItemSetCacheSettingsRuleActionParametersVaryDefaultAction,
-    }),
-  ).annotate({
-    identifier: "RulesEditResultRulesetRulesItemSetCacheSettingsRuleActionParametersVaryDefault",
-  }) as any as S.Schema<RulesEditResultRulesetRulesItemSetCacheSettingsRuleActionParametersVaryDefault>;
+  CreateRequestRulesItemSetCacheSettingsRuleActionParametersVaryDefault as any as S.Schema<RulesEditResultRulesetRulesItemSetCacheSettingsRuleActionParametersVaryDefault>;
 
 export type RulesEditResultRulesetRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueAction =
   | "bypass"
@@ -48670,16 +44997,7 @@ export interface RulesEditResultRulesetRulesItemSetCacheTagsRuleActionParameters
   operation: RulesEditResultRulesetRulesItemSetCacheTagsRuleActionParametersAddCacheTagsExpressionOperation;
 }
 export const RulesEditResultRulesetRulesItemSetCacheTagsRuleActionParametersAddCacheTagsExpression =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      operation:
-        RulesEditResultRulesetRulesItemSetCacheTagsRuleActionParametersAddCacheTagsExpressionOperation,
-    }),
-  ).annotate({
-    identifier:
-      "RulesEditResultRulesetRulesItemSetCacheTagsRuleActionParametersAddCacheTagsExpression",
-  }) as any as S.Schema<RulesEditResultRulesetRulesItemSetCacheTagsRuleActionParametersAddCacheTagsExpression>;
+  RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader as any as S.Schema<RulesEditResultRulesetRulesItemSetCacheTagsRuleActionParametersAddCacheTagsExpression>;
 
 export type RulesEditResultRulesetRulesItemSetCacheTagsRuleActionParametersRemoveCacheTagsValuesOperation =
   | "add"
@@ -48726,16 +45044,7 @@ export interface RulesEditResultRulesetRulesItemSetCacheTagsRuleActionParameters
   operation: RulesEditResultRulesetRulesItemSetCacheTagsRuleActionParametersRemoveCacheTagsExpressionOperation;
 }
 export const RulesEditResultRulesetRulesItemSetCacheTagsRuleActionParametersRemoveCacheTagsExpression =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      operation:
-        RulesEditResultRulesetRulesItemSetCacheTagsRuleActionParametersRemoveCacheTagsExpressionOperation,
-    }),
-  ).annotate({
-    identifier:
-      "RulesEditResultRulesetRulesItemSetCacheTagsRuleActionParametersRemoveCacheTagsExpression",
-  }) as any as S.Schema<RulesEditResultRulesetRulesItemSetCacheTagsRuleActionParametersRemoveCacheTagsExpression>;
+  RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader as any as S.Schema<RulesEditResultRulesetRulesItemSetCacheTagsRuleActionParametersRemoveCacheTagsExpression>;
 
 export type RulesEditResultRulesetRulesItemSetCacheTagsRuleActionParametersSetCacheTagsValuesOperation =
   | "add"
@@ -48781,16 +45090,7 @@ export interface RulesEditResultRulesetRulesItemSetCacheTagsRuleActionParameters
   operation: RulesEditResultRulesetRulesItemSetCacheTagsRuleActionParametersSetCacheTagsExpressionOperation;
 }
 export const RulesEditResultRulesetRulesItemSetCacheTagsRuleActionParametersSetCacheTagsExpression =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      operation:
-        RulesEditResultRulesetRulesItemSetCacheTagsRuleActionParametersSetCacheTagsExpressionOperation,
-    }),
-  ).annotate({
-    identifier:
-      "RulesEditResultRulesetRulesItemSetCacheTagsRuleActionParametersSetCacheTagsExpression",
-  }) as any as S.Schema<RulesEditResultRulesetRulesItemSetCacheTagsRuleActionParametersSetCacheTagsExpression>;
+  RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader as any as S.Schema<RulesEditResultRulesetRulesItemSetCacheTagsRuleActionParametersSetCacheTagsExpression>;
 
 export type RulesEditResultRulesetRulesItemSetCacheTagsRuleActionParameters =
   | RulesEditResultRulesetRulesItemSetCacheTagsRuleActionParametersAddCacheTagsValues
@@ -49195,9 +45495,7 @@ export const RulesEditResultRulesetRulesItemSkipRuleActionParametersPhasesItem =
 export type RulesEditResultRulesetRulesItemSkipRuleActionParametersPhasesList =
   Array<RulesEditResultRulesetRulesItemSkipRuleActionParametersPhasesItem>;
 export const RulesEditResultRulesetRulesItemSkipRuleActionParametersPhasesList =
-  /*@__PURE__*/ S.Array(
-    RulesEditResultRulesetRulesItemSkipRuleActionParametersPhasesItem,
-  ) as any as S.Schema<RulesEditResultRulesetRulesItemSkipRuleActionParametersPhasesList>;
+  RulesCreateResultRulesetRulesItemSkipRuleActionParametersPhasesList as any as S.Schema<RulesEditResultRulesetRulesItemSkipRuleActionParametersPhasesList>;
 
 export type RulesEditResultRulesetRulesItemSkipRuleActionParametersProductsItem =
   | "bic"
@@ -49212,9 +45510,7 @@ export const RulesEditResultRulesetRulesItemSkipRuleActionParametersProductsItem
 export type RulesEditResultRulesetRulesItemSkipRuleActionParametersProductsList =
   Array<RulesEditResultRulesetRulesItemSkipRuleActionParametersProductsItem>;
 export const RulesEditResultRulesetRulesItemSkipRuleActionParametersProductsList =
-  /*@__PURE__*/ S.Array(
-    RulesEditResultRulesetRulesItemSkipRuleActionParametersProductsItem,
-  ) as any as S.Schema<RulesEditResultRulesetRulesItemSkipRuleActionParametersProductsList>;
+  RulesCreateResultRulesetRulesItemSkipRuleActionParametersPhasesList as any as S.Schema<RulesEditResultRulesetRulesItemSkipRuleActionParametersProductsList>;
 
 export type RulesEditResultRulesetRulesItemSkipRuleActionParametersRulesValueList = Array<string>;
 export const RulesEditResultRulesetRulesItemSkipRuleActionParametersRulesValueList =
@@ -50106,22 +46402,12 @@ export interface PhasesUpdateRequestRulesItemCompressResponseRuleActionParameter
     | (string & {});
 }
 export const PhasesUpdateRequestRulesItemCompressResponseRuleActionParametersAlgorithmsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(
-        PhasesUpdateRequestRulesItemCompressResponseRuleActionParametersAlgorithmsItemName,
-      ),
-    }),
-  ).annotate({
-    identifier: "PhasesUpdateRequestRulesItemCompressResponseRuleActionParametersAlgorithmsItem",
-  }) as any as S.Schema<PhasesUpdateRequestRulesItemCompressResponseRuleActionParametersAlgorithmsItem>;
+  CreateRequestRulesItemCompressResponseRuleActionParametersAlgorithmsItem as any as S.Schema<PhasesUpdateRequestRulesItemCompressResponseRuleActionParametersAlgorithmsItem>;
 
 export type PhasesUpdateRequestRulesItemCompressResponseRuleActionParametersAlgorithmsList =
   Array<PhasesUpdateRequestRulesItemCompressResponseRuleActionParametersAlgorithmsItem>;
 export const PhasesUpdateRequestRulesItemCompressResponseRuleActionParametersAlgorithmsList =
-  /*@__PURE__*/ S.Array(
-    PhasesUpdateRequestRulesItemCompressResponseRuleActionParametersAlgorithmsItem,
-  ) as any as S.Schema<PhasesUpdateRequestRulesItemCompressResponseRuleActionParametersAlgorithmsList>;
+  CreateRequestRulesItemCompressResponseRuleActionParametersAlgorithmsList as any as S.Schema<PhasesUpdateRequestRulesItemCompressResponseRuleActionParametersAlgorithmsList>;
 
 export interface PhasesUpdateRequestRulesItemCompressResponseRuleActionParameters {
   /** Custom order for compression algorithms. */
@@ -50343,27 +46629,12 @@ export interface PhasesUpdateRequestRulesItemExecuteRuleActionParametersOverride
     | (string & {});
 }
 export const PhasesUpdateRequestRulesItemExecuteRuleActionParametersOverridesCategoriesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      category: S.String,
-      action: S.optional(S.String),
-      enabled: S.optional(S.Boolean),
-      sensitivityLevel: S.optional(
-        PhasesUpdateRequestRulesItemExecuteRuleActionParametersOverridesCategoriesItemSensitivityLevel.pipe(
-          T.Body("sensitivity_level"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "PhasesUpdateRequestRulesItemExecuteRuleActionParametersOverridesCategoriesItem",
-  }) as any as S.Schema<PhasesUpdateRequestRulesItemExecuteRuleActionParametersOverridesCategoriesItem>;
+  CreateRequestRulesItemExecuteRuleActionParametersOverridesCategoriesItem as any as S.Schema<PhasesUpdateRequestRulesItemExecuteRuleActionParametersOverridesCategoriesItem>;
 
 export type PhasesUpdateRequestRulesItemExecuteRuleActionParametersOverridesCategoriesList =
   Array<PhasesUpdateRequestRulesItemExecuteRuleActionParametersOverridesCategoriesItem>;
 export const PhasesUpdateRequestRulesItemExecuteRuleActionParametersOverridesCategoriesList =
-  /*@__PURE__*/ S.Array(
-    PhasesUpdateRequestRulesItemExecuteRuleActionParametersOverridesCategoriesItem,
-  ) as any as S.Schema<PhasesUpdateRequestRulesItemExecuteRuleActionParametersOverridesCategoriesList>;
+  CreateRequestRulesItemExecuteRuleActionParametersOverridesCategoriesList as any as S.Schema<PhasesUpdateRequestRulesItemExecuteRuleActionParametersOverridesCategoriesList>;
 
 export type PhasesUpdateRequestRulesItemExecuteRuleActionParametersOverridesRulesItemSensitivityLevel =
   | "default"
@@ -50388,28 +46659,12 @@ export interface PhasesUpdateRequestRulesItemExecuteRuleActionParametersOverride
     | (string & {});
 }
 export const PhasesUpdateRequestRulesItemExecuteRuleActionParametersOverridesRulesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      action: S.optional(S.String),
-      enabled: S.optional(S.Boolean),
-      scoreThreshold: S.optional(S.Number.pipe(T.Body("score_threshold"))),
-      sensitivityLevel: S.optional(
-        PhasesUpdateRequestRulesItemExecuteRuleActionParametersOverridesRulesItemSensitivityLevel.pipe(
-          T.Body("sensitivity_level"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "PhasesUpdateRequestRulesItemExecuteRuleActionParametersOverridesRulesItem",
-  }) as any as S.Schema<PhasesUpdateRequestRulesItemExecuteRuleActionParametersOverridesRulesItem>;
+  CreateRequestRulesItemExecuteRuleActionParametersOverridesRulesItem as any as S.Schema<PhasesUpdateRequestRulesItemExecuteRuleActionParametersOverridesRulesItem>;
 
 export type PhasesUpdateRequestRulesItemExecuteRuleActionParametersOverridesRulesList =
   Array<PhasesUpdateRequestRulesItemExecuteRuleActionParametersOverridesRulesItem>;
 export const PhasesUpdateRequestRulesItemExecuteRuleActionParametersOverridesRulesList =
-  /*@__PURE__*/ S.Array(
-    PhasesUpdateRequestRulesItemExecuteRuleActionParametersOverridesRulesItem,
-  ) as any as S.Schema<PhasesUpdateRequestRulesItemExecuteRuleActionParametersOverridesRulesList>;
+  CreateRequestRulesItemExecuteRuleActionParametersOverridesRulesList as any as S.Schema<PhasesUpdateRequestRulesItemExecuteRuleActionParametersOverridesRulesList>;
 
 export type PhasesUpdateRequestRulesItemExecuteRuleActionParametersOverridesSensitivityLevel =
   | "default"
@@ -51290,16 +47545,7 @@ export interface PhasesUpdateRequestRulesItemRewriteRuleActionParametersHeadersV
   value: string;
 }
 export const PhasesUpdateRequestRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesUpdateRequestRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeaderOperation,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "PhasesUpdateRequestRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader",
-  }) as any as S.Schema<PhasesUpdateRequestRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader>;
+  RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader as any as S.Schema<PhasesUpdateRequestRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader>;
 
 export type PhasesUpdateRequestRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeaderOperation =
   "add";
@@ -51313,16 +47559,7 @@ export interface PhasesUpdateRequestRulesItemRewriteRuleActionParametersHeadersV
   operation: PhasesUpdateRequestRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeaderOperation;
 }
 export const PhasesUpdateRequestRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      operation:
-        PhasesUpdateRequestRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeaderOperation,
-    }),
-  ).annotate({
-    identifier:
-      "PhasesUpdateRequestRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader",
-  }) as any as S.Schema<PhasesUpdateRequestRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader>;
+  RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader as any as S.Schema<PhasesUpdateRequestRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader>;
 
 export type PhasesUpdateRequestRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeaderOperation =
   "set";
@@ -51336,16 +47573,7 @@ export interface PhasesUpdateRequestRulesItemRewriteRuleActionParametersHeadersV
   value: string;
 }
 export const PhasesUpdateRequestRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeader =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesUpdateRequestRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeaderOperation,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "PhasesUpdateRequestRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeader",
-  }) as any as S.Schema<PhasesUpdateRequestRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeader>;
+  RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader as any as S.Schema<PhasesUpdateRequestRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeader>;
 
 export type PhasesUpdateRequestRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeaderOperation =
   "set";
@@ -51359,16 +47587,7 @@ export interface PhasesUpdateRequestRulesItemRewriteRuleActionParametersHeadersV
   operation: PhasesUpdateRequestRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeaderOperation;
 }
 export const PhasesUpdateRequestRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeader =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      operation:
-        PhasesUpdateRequestRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeaderOperation,
-    }),
-  ).annotate({
-    identifier:
-      "PhasesUpdateRequestRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeader",
-  }) as any as S.Schema<PhasesUpdateRequestRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeader>;
+  RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader as any as S.Schema<PhasesUpdateRequestRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeader>;
 
 export type PhasesUpdateRequestRulesItemRewriteRuleActionParametersHeadersValueRemoveHeaderOperation =
   "remove";
@@ -51380,14 +47599,7 @@ export interface PhasesUpdateRequestRulesItemRewriteRuleActionParametersHeadersV
   operation: PhasesUpdateRequestRulesItemRewriteRuleActionParametersHeadersValueRemoveHeaderOperation;
 }
 export const PhasesUpdateRequestRulesItemRewriteRuleActionParametersHeadersValueRemoveHeader =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesUpdateRequestRulesItemRewriteRuleActionParametersHeadersValueRemoveHeaderOperation,
-    }),
-  ).annotate({
-    identifier: "PhasesUpdateRequestRulesItemRewriteRuleActionParametersHeadersValueRemoveHeader",
-  }) as any as S.Schema<PhasesUpdateRequestRulesItemRewriteRuleActionParametersHeadersValueRemoveHeader>;
+  CreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueRemoveHeader as any as S.Schema<PhasesUpdateRequestRulesItemRewriteRuleActionParametersHeadersValueRemoveHeader>;
 
 export type PhasesUpdateRequestRulesItemRewriteRuleActionParametersHeadersValue =
   | PhasesUpdateRequestRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader
@@ -51769,19 +47981,7 @@ export interface PhasesUpdateRequestRulesItemServeErrorRuleActionParametersActio
   statusCode?: number;
 }
 export const PhasesUpdateRequestRulesItemServeErrorRuleActionParametersActionParametersContent =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      content: S.String,
-      contentType: S.optional(
-        PhasesUpdateRequestRulesItemServeErrorRuleActionParametersActionParametersContentContentType.pipe(
-          T.Body("content_type"),
-        ),
-      ),
-      statusCode: S.optional(S.Number.pipe(T.Body("status_code"))),
-    }),
-  ).annotate({
-    identifier: "PhasesUpdateRequestRulesItemServeErrorRuleActionParametersActionParametersContent",
-  }) as any as S.Schema<PhasesUpdateRequestRulesItemServeErrorRuleActionParametersActionParametersContent>;
+  CreateRequestRulesItemServeErrorRuleActionParametersActionParametersContent as any as S.Schema<PhasesUpdateRequestRulesItemServeErrorRuleActionParametersActionParametersContent>;
 
 export type PhasesUpdateRequestRulesItemServeErrorRuleActionParametersActionParametersAssetContentType =
   | "application/json"
@@ -51802,19 +48002,7 @@ export interface PhasesUpdateRequestRulesItemServeErrorRuleActionParametersActio
   statusCode?: number;
 }
 export const PhasesUpdateRequestRulesItemServeErrorRuleActionParametersActionParametersAsset =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      assetName: S.String.pipe(T.Body("asset_name")),
-      contentType: S.optional(
-        PhasesUpdateRequestRulesItemServeErrorRuleActionParametersActionParametersAssetContentType.pipe(
-          T.Body("content_type"),
-        ),
-      ),
-      statusCode: S.optional(S.Number.pipe(T.Body("status_code"))),
-    }),
-  ).annotate({
-    identifier: "PhasesUpdateRequestRulesItemServeErrorRuleActionParametersActionParametersAsset",
-  }) as any as S.Schema<PhasesUpdateRequestRulesItemServeErrorRuleActionParametersActionParametersAsset>;
+  CreateRequestRulesItemServeErrorRuleActionParametersActionParametersAsset as any as S.Schema<PhasesUpdateRequestRulesItemServeErrorRuleActionParametersActionParametersAsset>;
 
 export type PhasesUpdateRequestRulesItemServeErrorRuleActionParameters =
   | PhasesUpdateRequestRulesItemServeErrorRuleActionParametersActionParametersContent
@@ -51931,15 +48119,7 @@ export interface PhasesUpdateRequestRulesItemSetCacheControlActionParametersImmu
   cloudflareOnly?: boolean;
 }
 export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersImmutableSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesUpdateRequestRulesItemSetCacheControlActionParametersImmutableSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "PhasesUpdateRequestRulesItemSetCacheControlActionParametersImmutableSetDirective",
-  }) as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheControlActionParametersImmutableSetDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheControlActionParametersImmutableSetDirective>;
 
 export type PhasesUpdateRequestRulesItemSetCacheControlActionParametersImmutableRemoveDirectiveOperation =
   | "set"
@@ -51956,16 +48136,7 @@ export interface PhasesUpdateRequestRulesItemSetCacheControlActionParametersImmu
   cloudflareOnly?: boolean;
 }
 export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersImmutableRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesUpdateRequestRulesItemSetCacheControlActionParametersImmutableRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesUpdateRequestRulesItemSetCacheControlActionParametersImmutableRemoveDirective",
-  }) as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheControlActionParametersImmutableRemoveDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersMustRevalidateSetDirective as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheControlActionParametersImmutableRemoveDirective>;
 
 export type PhasesUpdateRequestRulesItemSetCacheControlActionParametersImmutable =
   | PhasesUpdateRequestRulesItemSetCacheControlActionParametersImmutableSetDirective
@@ -51995,16 +48166,7 @@ export interface PhasesUpdateRequestRulesItemSetCacheControlActionParametersMaxA
   cloudflareOnly?: boolean;
 }
 export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersMaxAgeSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesUpdateRequestRulesItemSetCacheControlActionParametersMaxAgeSetDirectiveOperation,
-      value: S.Number,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "PhasesUpdateRequestRulesItemSetCacheControlActionParametersMaxAgeSetDirective",
-  }) as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheControlActionParametersMaxAgeSetDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersMaxAgeSetDirective as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheControlActionParametersMaxAgeSetDirective>;
 
 export type PhasesUpdateRequestRulesItemSetCacheControlActionParametersMaxAgeRemoveDirectiveOperation =
   | "set"
@@ -52021,15 +48183,7 @@ export interface PhasesUpdateRequestRulesItemSetCacheControlActionParametersMaxA
   cloudflareOnly?: boolean;
 }
 export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersMaxAgeRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesUpdateRequestRulesItemSetCacheControlActionParametersMaxAgeRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "PhasesUpdateRequestRulesItemSetCacheControlActionParametersMaxAgeRemoveDirective",
-  }) as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheControlActionParametersMaxAgeRemoveDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheControlActionParametersMaxAgeRemoveDirective>;
 
 export type PhasesUpdateRequestRulesItemSetCacheControlActionParametersMaxAge =
   | PhasesUpdateRequestRulesItemSetCacheControlActionParametersMaxAgeSetDirective
@@ -52057,16 +48211,7 @@ export interface PhasesUpdateRequestRulesItemSetCacheControlActionParametersMust
   cloudflareOnly?: boolean;
 }
 export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersMustRevalidateSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesUpdateRequestRulesItemSetCacheControlActionParametersMustRevalidateSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesUpdateRequestRulesItemSetCacheControlActionParametersMustRevalidateSetDirective",
-  }) as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheControlActionParametersMustRevalidateSetDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersMustRevalidateSetDirective as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheControlActionParametersMustRevalidateSetDirective>;
 
 export type PhasesUpdateRequestRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirectiveOperation =
   | "set"
@@ -52083,16 +48228,7 @@ export interface PhasesUpdateRequestRulesItemSetCacheControlActionParametersMust
   cloudflareOnly?: boolean;
 }
 export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesUpdateRequestRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesUpdateRequestRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirective",
-  }) as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersMustRevalidateSetDirective as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirective>;
 
 export type PhasesUpdateRequestRulesItemSetCacheControlActionParametersMustRevalidate =
   | PhasesUpdateRequestRulesItemSetCacheControlActionParametersMustRevalidateSetDirective
@@ -52120,16 +48256,7 @@ export interface PhasesUpdateRequestRulesItemSetCacheControlActionParametersMust
   cloudflareOnly?: boolean;
 }
 export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersMustUnderstandSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesUpdateRequestRulesItemSetCacheControlActionParametersMustUnderstandSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesUpdateRequestRulesItemSetCacheControlActionParametersMustUnderstandSetDirective",
-  }) as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheControlActionParametersMustUnderstandSetDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersMustRevalidateSetDirective as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheControlActionParametersMustUnderstandSetDirective>;
 
 export type PhasesUpdateRequestRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirectiveOperation =
   | "set"
@@ -52146,16 +48273,7 @@ export interface PhasesUpdateRequestRulesItemSetCacheControlActionParametersMust
   cloudflareOnly?: boolean;
 }
 export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesUpdateRequestRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesUpdateRequestRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirective",
-  }) as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersMustRevalidateSetDirective as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirective>;
 
 export type PhasesUpdateRequestRulesItemSetCacheControlActionParametersMustUnderstand =
   | PhasesUpdateRequestRulesItemSetCacheControlActionParametersMustUnderstandSetDirective
@@ -52218,15 +48336,7 @@ export interface PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoCa
   cloudflareOnly?: boolean;
 }
 export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoCacheRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoCacheRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoCacheRemoveDirective",
-  }) as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoCacheRemoveDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoCacheRemoveDirective>;
 
 export type PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoCache =
   | PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoCacheSetDirective
@@ -52254,15 +48364,7 @@ export interface PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoSt
   cloudflareOnly?: boolean;
 }
 export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoStoreSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoStoreSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoStoreSetDirective",
-  }) as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoStoreSetDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoStoreSetDirective>;
 
 export type PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoStoreRemoveDirectiveOperation =
   | "set"
@@ -52279,15 +48381,7 @@ export interface PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoSt
   cloudflareOnly?: boolean;
 }
 export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoStoreRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoStoreRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoStoreRemoveDirective",
-  }) as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoStoreRemoveDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoStoreRemoveDirective>;
 
 export type PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoStore =
   | PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoStoreSetDirective
@@ -52315,16 +48409,7 @@ export interface PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoTr
   cloudflareOnly?: boolean;
 }
 export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoTransformSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoTransformSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoTransformSetDirective",
-  }) as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoTransformSetDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersMustRevalidateSetDirective as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoTransformSetDirective>;
 
 export type PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoTransformRemoveDirectiveOperation =
   | "set"
@@ -52341,16 +48426,7 @@ export interface PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoTr
   cloudflareOnly?: boolean;
 }
 export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoTransformRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoTransformRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoTransformRemoveDirective",
-  }) as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoTransformRemoveDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersMustRevalidateSetDirective as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoTransformRemoveDirective>;
 
 export type PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoTransform =
   | PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoTransformSetDirective
@@ -52413,15 +48489,7 @@ export interface PhasesUpdateRequestRulesItemSetCacheControlActionParametersPriv
   cloudflareOnly?: boolean;
 }
 export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersPrivateRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesUpdateRequestRulesItemSetCacheControlActionParametersPrivateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "PhasesUpdateRequestRulesItemSetCacheControlActionParametersPrivateRemoveDirective",
-  }) as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheControlActionParametersPrivateRemoveDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheControlActionParametersPrivateRemoveDirective>;
 
 export type PhasesUpdateRequestRulesItemSetCacheControlActionParametersPrivate =
   | PhasesUpdateRequestRulesItemSetCacheControlActionParametersPrivateSetDirective
@@ -52449,16 +48517,7 @@ export interface PhasesUpdateRequestRulesItemSetCacheControlActionParametersProx
   cloudflareOnly?: boolean;
 }
 export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersProxyRevalidateSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesUpdateRequestRulesItemSetCacheControlActionParametersProxyRevalidateSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesUpdateRequestRulesItemSetCacheControlActionParametersProxyRevalidateSetDirective",
-  }) as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheControlActionParametersProxyRevalidateSetDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersMustRevalidateSetDirective as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheControlActionParametersProxyRevalidateSetDirective>;
 
 export type PhasesUpdateRequestRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirectiveOperation =
   | "set"
@@ -52475,16 +48534,7 @@ export interface PhasesUpdateRequestRulesItemSetCacheControlActionParametersProx
   cloudflareOnly?: boolean;
 }
 export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesUpdateRequestRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesUpdateRequestRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirective",
-  }) as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersMustRevalidateSetDirective as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirective>;
 
 export type PhasesUpdateRequestRulesItemSetCacheControlActionParametersProxyRevalidate =
   | PhasesUpdateRequestRulesItemSetCacheControlActionParametersProxyRevalidateSetDirective
@@ -52512,15 +48562,7 @@ export interface PhasesUpdateRequestRulesItemSetCacheControlActionParametersPubl
   cloudflareOnly?: boolean;
 }
 export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersPublicSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesUpdateRequestRulesItemSetCacheControlActionParametersPublicSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "PhasesUpdateRequestRulesItemSetCacheControlActionParametersPublicSetDirective",
-  }) as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheControlActionParametersPublicSetDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheControlActionParametersPublicSetDirective>;
 
 export type PhasesUpdateRequestRulesItemSetCacheControlActionParametersPublicRemoveDirectiveOperation =
   | "set"
@@ -52537,15 +48579,7 @@ export interface PhasesUpdateRequestRulesItemSetCacheControlActionParametersPubl
   cloudflareOnly?: boolean;
 }
 export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersPublicRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesUpdateRequestRulesItemSetCacheControlActionParametersPublicRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "PhasesUpdateRequestRulesItemSetCacheControlActionParametersPublicRemoveDirective",
-  }) as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheControlActionParametersPublicRemoveDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheControlActionParametersPublicRemoveDirective>;
 
 export type PhasesUpdateRequestRulesItemSetCacheControlActionParametersPublic =
   | PhasesUpdateRequestRulesItemSetCacheControlActionParametersPublicSetDirective
@@ -52575,16 +48609,7 @@ export interface PhasesUpdateRequestRulesItemSetCacheControlActionParametersSMax
   cloudflareOnly?: boolean;
 }
 export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersSMaxageSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesUpdateRequestRulesItemSetCacheControlActionParametersSMaxageSetDirectiveOperation,
-      value: S.Number,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "PhasesUpdateRequestRulesItemSetCacheControlActionParametersSMaxageSetDirective",
-  }) as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheControlActionParametersSMaxageSetDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersMaxAgeSetDirective as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheControlActionParametersSMaxageSetDirective>;
 
 export type PhasesUpdateRequestRulesItemSetCacheControlActionParametersSMaxageRemoveDirectiveOperation =
   | "set"
@@ -52601,15 +48626,7 @@ export interface PhasesUpdateRequestRulesItemSetCacheControlActionParametersSMax
   cloudflareOnly?: boolean;
 }
 export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersSMaxageRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesUpdateRequestRulesItemSetCacheControlActionParametersSMaxageRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "PhasesUpdateRequestRulesItemSetCacheControlActionParametersSMaxageRemoveDirective",
-  }) as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheControlActionParametersSMaxageRemoveDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheControlActionParametersSMaxageRemoveDirective>;
 
 export type PhasesUpdateRequestRulesItemSetCacheControlActionParametersSMaxage =
   | PhasesUpdateRequestRulesItemSetCacheControlActionParametersSMaxageSetDirective
@@ -52639,17 +48656,7 @@ export interface PhasesUpdateRequestRulesItemSetCacheControlActionParametersStal
   cloudflareOnly?: boolean;
 }
 export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersStaleIfErrorSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesUpdateRequestRulesItemSetCacheControlActionParametersStaleIfErrorSetDirectiveOperation,
-      value: S.Number,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesUpdateRequestRulesItemSetCacheControlActionParametersStaleIfErrorSetDirective",
-  }) as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheControlActionParametersStaleIfErrorSetDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersStaleWhileRevalidateSetDirective as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheControlActionParametersStaleIfErrorSetDirective>;
 
 export type PhasesUpdateRequestRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirectiveOperation =
   | "set"
@@ -52666,16 +48673,7 @@ export interface PhasesUpdateRequestRulesItemSetCacheControlActionParametersStal
   cloudflareOnly?: boolean;
 }
 export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesUpdateRequestRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesUpdateRequestRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirective",
-  }) as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersMustRevalidateSetDirective as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirective>;
 
 export type PhasesUpdateRequestRulesItemSetCacheControlActionParametersStaleIfError =
   | PhasesUpdateRequestRulesItemSetCacheControlActionParametersStaleIfErrorSetDirective
@@ -52705,17 +48703,7 @@ export interface PhasesUpdateRequestRulesItemSetCacheControlActionParametersStal
   cloudflareOnly?: boolean;
 }
 export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidateSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesUpdateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidateSetDirectiveOperation,
-      value: S.Number,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesUpdateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidateSetDirective",
-  }) as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidateSetDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersStaleWhileRevalidateSetDirective as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidateSetDirective>;
 
 export type PhasesUpdateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirectiveOperation =
   | "set"
@@ -52732,16 +48720,7 @@ export interface PhasesUpdateRequestRulesItemSetCacheControlActionParametersStal
   cloudflareOnly?: boolean;
 }
 export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesUpdateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesUpdateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirective",
-  }) as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersMustRevalidateSetDirective as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirective>;
 
 export type PhasesUpdateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidate =
   | PhasesUpdateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidateSetDirective
@@ -52946,14 +48925,7 @@ export interface PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParameter
   default?: number;
 }
 export const PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersBrowserTtl =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      mode: PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersBrowserTtlMode,
-      default: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersBrowserTtl",
-  }) as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersBrowserTtl>;
+  CreateRequestRulesItemSetCacheSettingsRuleActionParametersBrowserTtl as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersBrowserTtl>;
 
 export type PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieCheckPresenceList =
   Array<string>;
@@ -53216,14 +49188,7 @@ export interface PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParameter
     | (string & {});
 }
 export const PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequests =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      mode: PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequestsMode,
-    }),
-  ).annotate({
-    identifier:
-      "PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequests",
-  }) as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequests>;
+  RulesCreateResultRulesetRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequests as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequests>;
 
 export type PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersServeStale =
   CreateRequestRulesItemSetCacheSettingsRuleActionParametersServeStale;
@@ -53249,13 +49214,7 @@ export interface PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParameter
     | (string & {});
 }
 export const PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersVaryDefault =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      action: PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersVaryDefaultAction,
-    }),
-  ).annotate({
-    identifier: "PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersVaryDefault",
-  }) as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersVaryDefault>;
+  CreateRequestRulesItemSetCacheSettingsRuleActionParametersVaryDefault as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersVaryDefault>;
 
 export type PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueAction =
   | "bypass"
@@ -53565,15 +49524,7 @@ export interface PhasesUpdateRequestRulesItemSetCacheTagsActionParametersAddCach
     | (string & {});
 }
 export const PhasesUpdateRequestRulesItemSetCacheTagsActionParametersAddCacheTagsExpression =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      operation:
-        PhasesUpdateRequestRulesItemSetCacheTagsActionParametersAddCacheTagsExpressionOperation,
-    }),
-  ).annotate({
-    identifier: "PhasesUpdateRequestRulesItemSetCacheTagsActionParametersAddCacheTagsExpression",
-  }) as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheTagsActionParametersAddCacheTagsExpression>;
+  RulesCreateRequestBodySetCacheTagsRuleActionParametersAddCacheTagsExpression as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheTagsActionParametersAddCacheTagsExpression>;
 
 export type PhasesUpdateRequestRulesItemSetCacheTagsActionParametersRemoveCacheTagsValuesOperation =
   | "add"
@@ -53623,15 +49574,7 @@ export interface PhasesUpdateRequestRulesItemSetCacheTagsActionParametersRemoveC
     | (string & {});
 }
 export const PhasesUpdateRequestRulesItemSetCacheTagsActionParametersRemoveCacheTagsExpression =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      operation:
-        PhasesUpdateRequestRulesItemSetCacheTagsActionParametersRemoveCacheTagsExpressionOperation,
-    }),
-  ).annotate({
-    identifier: "PhasesUpdateRequestRulesItemSetCacheTagsActionParametersRemoveCacheTagsExpression",
-  }) as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheTagsActionParametersRemoveCacheTagsExpression>;
+  RulesCreateRequestBodySetCacheTagsRuleActionParametersAddCacheTagsExpression as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheTagsActionParametersRemoveCacheTagsExpression>;
 
 export type PhasesUpdateRequestRulesItemSetCacheTagsActionParametersSetCacheTagsValuesOperation =
   | "add"
@@ -53680,15 +49623,7 @@ export interface PhasesUpdateRequestRulesItemSetCacheTagsActionParametersSetCach
     | (string & {});
 }
 export const PhasesUpdateRequestRulesItemSetCacheTagsActionParametersSetCacheTagsExpression =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      operation:
-        PhasesUpdateRequestRulesItemSetCacheTagsActionParametersSetCacheTagsExpressionOperation,
-    }),
-  ).annotate({
-    identifier: "PhasesUpdateRequestRulesItemSetCacheTagsActionParametersSetCacheTagsExpression",
-  }) as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheTagsActionParametersSetCacheTagsExpression>;
+  RulesCreateRequestBodySetCacheTagsRuleActionParametersAddCacheTagsExpression as any as S.Schema<PhasesUpdateRequestRulesItemSetCacheTagsActionParametersSetCacheTagsExpression>;
 
 export type PhasesUpdateRequestRulesItemSetCacheTagsActionParameters =
   | PhasesUpdateRequestRulesItemSetCacheTagsActionParametersAddCacheTagsValues
@@ -54071,9 +50006,8 @@ export const PhasesUpdateRequestRulesItemSkipRuleActionParametersPhasesItem = S.
 export type PhasesUpdateRequestRulesItemSkipRuleActionParametersPhasesList = Array<
   PhasesUpdateRequestRulesItemSkipRuleActionParametersPhasesItem | (string & {})
 >;
-export const PhasesUpdateRequestRulesItemSkipRuleActionParametersPhasesList = /*@__PURE__*/ S.Array(
-  PhasesUpdateRequestRulesItemSkipRuleActionParametersPhasesItem,
-) as any as S.Schema<PhasesUpdateRequestRulesItemSkipRuleActionParametersPhasesList>;
+export const PhasesUpdateRequestRulesItemSkipRuleActionParametersPhasesList =
+  CreateRequestRulesItemSkipRuleActionParametersPhasesList as any as S.Schema<PhasesUpdateRequestRulesItemSkipRuleActionParametersPhasesList>;
 
 export type PhasesUpdateRequestRulesItemSkipRuleActionParametersProductsItem =
   | "bic"
@@ -54089,9 +50023,7 @@ export type PhasesUpdateRequestRulesItemSkipRuleActionParametersProductsList = A
   PhasesUpdateRequestRulesItemSkipRuleActionParametersProductsItem | (string & {})
 >;
 export const PhasesUpdateRequestRulesItemSkipRuleActionParametersProductsList =
-  /*@__PURE__*/ S.Array(
-    PhasesUpdateRequestRulesItemSkipRuleActionParametersProductsItem,
-  ) as any as S.Schema<PhasesUpdateRequestRulesItemSkipRuleActionParametersProductsList>;
+  RulesCreateResultRulesetRulesItemSkipRuleActionParametersPhasesList as any as S.Schema<PhasesUpdateRequestRulesItemSkipRuleActionParametersProductsList>;
 
 export type PhasesUpdateRequestRulesItemSkipRuleActionParametersRulesValueList = Array<string>;
 export const PhasesUpdateRequestRulesItemSkipRuleActionParametersRulesValueList =
@@ -54946,39 +50878,19 @@ export interface PhasesUpdateResultRulesetRulesItemResponseCompressionRuleAction
   name?: PhasesUpdateResultRulesetRulesItemResponseCompressionRuleActionParametersAlgorithmsItemName | null;
 }
 export const PhasesUpdateResultRulesetRulesItemResponseCompressionRuleActionParametersAlgorithmsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(
-        S.NullOr(
-          PhasesUpdateResultRulesetRulesItemResponseCompressionRuleActionParametersAlgorithmsItemName,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesUpdateResultRulesetRulesItemResponseCompressionRuleActionParametersAlgorithmsItem",
-  }) as any as S.Schema<PhasesUpdateResultRulesetRulesItemResponseCompressionRuleActionParametersAlgorithmsItem>;
+  RulesCreateResultRulesetRulesItemResponseCompressionRuleActionParametersAlgorithmsItem as any as S.Schema<PhasesUpdateResultRulesetRulesItemResponseCompressionRuleActionParametersAlgorithmsItem>;
 
 export type PhasesUpdateResultRulesetRulesItemResponseCompressionRuleActionParametersAlgorithmsList =
   Array<PhasesUpdateResultRulesetRulesItemResponseCompressionRuleActionParametersAlgorithmsItem>;
 export const PhasesUpdateResultRulesetRulesItemResponseCompressionRuleActionParametersAlgorithmsList =
-  /*@__PURE__*/ S.Array(
-    PhasesUpdateResultRulesetRulesItemResponseCompressionRuleActionParametersAlgorithmsItem,
-  ) as any as S.Schema<PhasesUpdateResultRulesetRulesItemResponseCompressionRuleActionParametersAlgorithmsList>;
+  RulesCreateResultRulesetRulesItemResponseCompressionRuleActionParametersAlgorithmsList as any as S.Schema<PhasesUpdateResultRulesetRulesItemResponseCompressionRuleActionParametersAlgorithmsList>;
 
 export interface PhasesUpdateResultRulesetRulesItemResponseCompressionRuleActionParameters {
   /** Custom order for compression algorithms. */
   algorithms: PhasesUpdateResultRulesetRulesItemResponseCompressionRuleActionParametersAlgorithmsList;
 }
 export const PhasesUpdateResultRulesetRulesItemResponseCompressionRuleActionParameters =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      algorithms:
-        PhasesUpdateResultRulesetRulesItemResponseCompressionRuleActionParametersAlgorithmsList,
-    }),
-  ).annotate({
-    identifier: "PhasesUpdateResultRulesetRulesItemResponseCompressionRuleActionParameters",
-  }) as any as S.Schema<PhasesUpdateResultRulesetRulesItemResponseCompressionRuleActionParameters>;
+  RulesCreateResultRulesetRulesItemResponseCompressionRuleActionParameters as any as S.Schema<PhasesUpdateResultRulesetRulesItemResponseCompressionRuleActionParameters>;
 
 export type PhasesUpdateResultRulesetRulesItemResponseCompressionRuleCategoriesList = Array<string>;
 export const PhasesUpdateResultRulesetRulesItemResponseCompressionRuleCategoriesList =
@@ -55195,28 +51107,12 @@ export interface PhasesUpdateResultRulesetRulesItemExecuteRuleActionParametersOv
   sensitivityLevel?: PhasesUpdateResultRulesetRulesItemExecuteRuleActionParametersOverridesCategoriesItemSensitivityLevel | null;
 }
 export const PhasesUpdateResultRulesetRulesItemExecuteRuleActionParametersOverridesCategoriesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      category: S.String,
-      action: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      sensitivityLevel: S.optional(
-        S.NullOr(
-          PhasesUpdateResultRulesetRulesItemExecuteRuleActionParametersOverridesCategoriesItemSensitivityLevel,
-        ).pipe(T.Body("sensitivity_level")),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesUpdateResultRulesetRulesItemExecuteRuleActionParametersOverridesCategoriesItem",
-  }) as any as S.Schema<PhasesUpdateResultRulesetRulesItemExecuteRuleActionParametersOverridesCategoriesItem>;
+  RulesCreateResultRulesetRulesItemExecuteRuleActionParametersOverridesCategoriesItem as any as S.Schema<PhasesUpdateResultRulesetRulesItemExecuteRuleActionParametersOverridesCategoriesItem>;
 
 export type PhasesUpdateResultRulesetRulesItemExecuteRuleActionParametersOverridesCategoriesList =
   Array<PhasesUpdateResultRulesetRulesItemExecuteRuleActionParametersOverridesCategoriesItem>;
 export const PhasesUpdateResultRulesetRulesItemExecuteRuleActionParametersOverridesCategoriesList =
-  /*@__PURE__*/ S.Array(
-    PhasesUpdateResultRulesetRulesItemExecuteRuleActionParametersOverridesCategoriesItem,
-  ) as any as S.Schema<PhasesUpdateResultRulesetRulesItemExecuteRuleActionParametersOverridesCategoriesList>;
+  RulesCreateResultRulesetRulesItemExecuteRuleActionParametersOverridesCategoriesList as any as S.Schema<PhasesUpdateResultRulesetRulesItemExecuteRuleActionParametersOverridesCategoriesList>;
 
 export type PhasesUpdateResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesItemSensitivityLevel =
   | "default"
@@ -55239,28 +51135,12 @@ export interface PhasesUpdateResultRulesetRulesItemExecuteRuleActionParametersOv
   sensitivityLevel?: PhasesUpdateResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesItemSensitivityLevel | null;
 }
 export const PhasesUpdateResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      action: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      scoreThreshold: S.optional(S.NullOr(S.Number).pipe(T.Body("score_threshold"))),
-      sensitivityLevel: S.optional(
-        S.NullOr(
-          PhasesUpdateResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesItemSensitivityLevel,
-        ).pipe(T.Body("sensitivity_level")),
-      ),
-    }),
-  ).annotate({
-    identifier: "PhasesUpdateResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesItem",
-  }) as any as S.Schema<PhasesUpdateResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesItem>;
+  RulesCreateResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesItem as any as S.Schema<PhasesUpdateResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesItem>;
 
 export type PhasesUpdateResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesList =
   Array<PhasesUpdateResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesItem>;
 export const PhasesUpdateResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesList =
-  /*@__PURE__*/ S.Array(
-    PhasesUpdateResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesItem,
-  ) as any as S.Schema<PhasesUpdateResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesList>;
+  RulesCreateResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesList as any as S.Schema<PhasesUpdateResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesList>;
 
 export type PhasesUpdateResultRulesetRulesItemExecuteRuleActionParametersOverridesSensitivityLevel =
   | "default"
@@ -55283,27 +51163,7 @@ export interface PhasesUpdateResultRulesetRulesItemExecuteRuleActionParametersOv
   sensitivityLevel?: PhasesUpdateResultRulesetRulesItemExecuteRuleActionParametersOverridesSensitivityLevel | null;
 }
 export const PhasesUpdateResultRulesetRulesItemExecuteRuleActionParametersOverrides =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      action: S.optional(S.NullOr(S.String)),
-      categories: S.optional(
-        S.NullOr(
-          PhasesUpdateResultRulesetRulesItemExecuteRuleActionParametersOverridesCategoriesList,
-        ),
-      ),
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      rules: S.optional(
-        S.NullOr(PhasesUpdateResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesList),
-      ),
-      sensitivityLevel: S.optional(
-        S.NullOr(
-          PhasesUpdateResultRulesetRulesItemExecuteRuleActionParametersOverridesSensitivityLevel,
-        ).pipe(T.Body("sensitivity_level")),
-      ),
-    }),
-  ).annotate({
-    identifier: "PhasesUpdateResultRulesetRulesItemExecuteRuleActionParametersOverrides",
-  }) as any as S.Schema<PhasesUpdateResultRulesetRulesItemExecuteRuleActionParametersOverrides>;
+  RulesCreateResultRulesetRulesItemExecuteRuleActionParametersOverrides as any as S.Schema<PhasesUpdateResultRulesetRulesItemExecuteRuleActionParametersOverrides>;
 
 export interface PhasesUpdateResultRulesetRulesItemExecuteRuleActionParameters {
   /** The ID of the ruleset to execute. */
@@ -55314,21 +51174,7 @@ export interface PhasesUpdateResultRulesetRulesItemExecuteRuleActionParameters {
   overrides?: PhasesUpdateResultRulesetRulesItemExecuteRuleActionParametersOverrides | null;
 }
 export const PhasesUpdateResultRulesetRulesItemExecuteRuleActionParameters =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      matchedData: S.optional(
-        S.NullOr(RulesCreateResultRulesetRulesItemExecuteRuleActionParametersMatchedData).pipe(
-          T.Body("matched_data"),
-        ),
-      ),
-      overrides: S.optional(
-        S.NullOr(PhasesUpdateResultRulesetRulesItemExecuteRuleActionParametersOverrides),
-      ),
-    }),
-  ).annotate({
-    identifier: "PhasesUpdateResultRulesetRulesItemExecuteRuleActionParameters",
-  }) as any as S.Schema<PhasesUpdateResultRulesetRulesItemExecuteRuleActionParameters>;
+  PhasesVersionsGetResponseRulesItemExecuteRuleActionParameters as any as S.Schema<PhasesUpdateResultRulesetRulesItemExecuteRuleActionParameters>;
 
 export type PhasesUpdateResultRulesetRulesItemExecuteRuleCategoriesList = Array<string>;
 export const PhasesUpdateResultRulesetRulesItemExecuteRuleCategoriesList =
@@ -55995,22 +51841,7 @@ export interface PhasesUpdateResultRulesetRulesItemRedirectRuleActionParametersF
   statusCode?: PhasesUpdateResultRulesetRulesItemRedirectRuleActionParametersFromValueStatusCode | null;
 }
 export const PhasesUpdateResultRulesetRulesItemRedirectRuleActionParametersFromValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      targetUrl:
-        RulesCreateResultRulesetRulesItemRedirectRuleActionParametersFromValueTargetUrl.pipe(
-          T.Body("target_url"),
-        ),
-      preserveQueryString: S.optional(S.NullOr(S.Boolean).pipe(T.Body("preserve_query_string"))),
-      statusCode: S.optional(
-        S.NullOr(
-          PhasesUpdateResultRulesetRulesItemRedirectRuleActionParametersFromValueStatusCode,
-        ).pipe(T.Body("status_code")),
-      ),
-    }),
-  ).annotate({
-    identifier: "PhasesUpdateResultRulesetRulesItemRedirectRuleActionParametersFromValue",
-  }) as any as S.Schema<PhasesUpdateResultRulesetRulesItemRedirectRuleActionParametersFromValue>;
+  RulesCreateResultRulesetRulesItemRedirectRuleActionParametersFromValue as any as S.Schema<PhasesUpdateResultRulesetRulesItemRedirectRuleActionParametersFromValue>;
 
 export interface PhasesUpdateResultRulesetRulesItemRedirectRuleActionParameters {
   /** A redirect based on a bulk list lookup. */
@@ -56019,22 +51850,7 @@ export interface PhasesUpdateResultRulesetRulesItemRedirectRuleActionParameters 
   fromValue?: PhasesUpdateResultRulesetRulesItemRedirectRuleActionParametersFromValue | null;
 }
 export const PhasesUpdateResultRulesetRulesItemRedirectRuleActionParameters =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      fromList: S.optional(
-        S.NullOr(RulesCreateResultRulesetRulesItemRedirectRuleActionParametersFromList).pipe(
-          T.Body("from_list"),
-        ),
-      ),
-      fromValue: S.optional(
-        S.NullOr(PhasesUpdateResultRulesetRulesItemRedirectRuleActionParametersFromValue).pipe(
-          T.Body("from_value"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "PhasesUpdateResultRulesetRulesItemRedirectRuleActionParameters",
-  }) as any as S.Schema<PhasesUpdateResultRulesetRulesItemRedirectRuleActionParameters>;
+  RulesCreateResultRulesetRulesItemRedirectRuleActionParameters as any as S.Schema<PhasesUpdateResultRulesetRulesItemRedirectRuleActionParameters>;
 
 export type PhasesUpdateResultRulesetRulesItemRedirectRuleCategoriesList = Array<string>;
 export const PhasesUpdateResultRulesetRulesItemRedirectRuleCategoriesList =
@@ -56142,16 +51958,7 @@ export interface PhasesUpdateResultRulesetRulesItemRewriteRuleActionParametersHe
   value: string;
 }
 export const PhasesUpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesUpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeaderOperation,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "PhasesUpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader",
-  }) as any as S.Schema<PhasesUpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader>;
+  RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader as any as S.Schema<PhasesUpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader>;
 
 export type PhasesUpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeaderOperation =
   "add";
@@ -56165,16 +51972,7 @@ export interface PhasesUpdateResultRulesetRulesItemRewriteRuleActionParametersHe
   operation: PhasesUpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeaderOperation;
 }
 export const PhasesUpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      operation:
-        PhasesUpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeaderOperation,
-    }),
-  ).annotate({
-    identifier:
-      "PhasesUpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader",
-  }) as any as S.Schema<PhasesUpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader>;
+  RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader as any as S.Schema<PhasesUpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader>;
 
 export type PhasesUpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeaderOperation =
   "set";
@@ -56188,16 +51986,7 @@ export interface PhasesUpdateResultRulesetRulesItemRewriteRuleActionParametersHe
   value: string;
 }
 export const PhasesUpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeader =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesUpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeaderOperation,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "PhasesUpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeader",
-  }) as any as S.Schema<PhasesUpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeader>;
+  RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader as any as S.Schema<PhasesUpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeader>;
 
 export type PhasesUpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeaderOperation =
   "set";
@@ -56211,16 +52000,7 @@ export interface PhasesUpdateResultRulesetRulesItemRewriteRuleActionParametersHe
   operation: PhasesUpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeaderOperation;
 }
 export const PhasesUpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeader =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      operation:
-        PhasesUpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeaderOperation,
-    }),
-  ).annotate({
-    identifier:
-      "PhasesUpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeader",
-  }) as any as S.Schema<PhasesUpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeader>;
+  RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader as any as S.Schema<PhasesUpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeader>;
 
 export type PhasesUpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueRemoveHeaderOperation =
   "remove";
@@ -56232,15 +52012,7 @@ export interface PhasesUpdateResultRulesetRulesItemRewriteRuleActionParametersHe
   operation: PhasesUpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueRemoveHeaderOperation;
 }
 export const PhasesUpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueRemoveHeader =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesUpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueRemoveHeaderOperation,
-    }),
-  ).annotate({
-    identifier:
-      "PhasesUpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueRemoveHeader",
-  }) as any as S.Schema<PhasesUpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueRemoveHeader>;
+  RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueRemoveHeader as any as S.Schema<PhasesUpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueRemoveHeader>;
 
 export type PhasesUpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValue =
   | PhasesUpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader
@@ -56635,20 +52407,7 @@ export interface PhasesUpdateResultRulesetRulesItemServeErrorRuleActionParameter
   statusCode?: number | null;
 }
 export const PhasesUpdateResultRulesetRulesItemServeErrorRuleActionParametersActionParametersContent =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      content: S.String,
-      contentType: S.optional(
-        S.NullOr(
-          PhasesUpdateResultRulesetRulesItemServeErrorRuleActionParametersActionParametersContentContentType,
-        ).pipe(T.Body("content_type")),
-      ),
-      statusCode: S.optional(S.NullOr(S.Number).pipe(T.Body("status_code"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesUpdateResultRulesetRulesItemServeErrorRuleActionParametersActionParametersContent",
-  }) as any as S.Schema<PhasesUpdateResultRulesetRulesItemServeErrorRuleActionParametersActionParametersContent>;
+  RulesCreateResultRulesetRulesItemServeErrorRuleActionParametersActionParametersContent as any as S.Schema<PhasesUpdateResultRulesetRulesItemServeErrorRuleActionParametersActionParametersContent>;
 
 export type PhasesUpdateResultRulesetRulesItemServeErrorRuleActionParametersActionParametersAssetContentType =
   | "application/json"
@@ -56667,20 +52426,7 @@ export interface PhasesUpdateResultRulesetRulesItemServeErrorRuleActionParameter
   statusCode?: number | null;
 }
 export const PhasesUpdateResultRulesetRulesItemServeErrorRuleActionParametersActionParametersAsset =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      assetName: S.String.pipe(T.Body("asset_name")),
-      contentType: S.optional(
-        S.NullOr(
-          PhasesUpdateResultRulesetRulesItemServeErrorRuleActionParametersActionParametersAssetContentType,
-        ).pipe(T.Body("content_type")),
-      ),
-      statusCode: S.optional(S.NullOr(S.Number).pipe(T.Body("status_code"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesUpdateResultRulesetRulesItemServeErrorRuleActionParametersActionParametersAsset",
-  }) as any as S.Schema<PhasesUpdateResultRulesetRulesItemServeErrorRuleActionParametersActionParametersAsset>;
+  RulesCreateResultRulesetRulesItemServeErrorRuleActionParametersActionParametersAsset as any as S.Schema<PhasesUpdateResultRulesetRulesItemServeErrorRuleActionParametersActionParametersAsset>;
 
 export type PhasesUpdateResultRulesetRulesItemServeErrorRuleActionParameters =
   | PhasesUpdateResultRulesetRulesItemServeErrorRuleActionParametersActionParametersContent
@@ -56801,16 +52547,7 @@ export interface PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionPara
   cloudflareOnly?: boolean | null;
 }
 export const PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective",
-  }) as any as S.Schema<PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective>;
 
 export type PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableRemoveDirectiveOperation =
   | "set"
@@ -56825,16 +52562,7 @@ export interface PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionPara
   cloudflareOnly?: boolean | null;
 }
 export const PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableRemoveDirective",
-  }) as any as S.Schema<PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableRemoveDirective>;
 
 export type PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutable =
   | PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective
@@ -56862,17 +52590,7 @@ export interface PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionPara
   cloudflareOnly?: boolean | null;
 }
 export const PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirectiveOperation,
-      value: S.Number,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective",
-  }) as any as S.Schema<PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective as any as S.Schema<PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective>;
 
 export type PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeRemoveDirectiveOperation =
   | "set"
@@ -56887,16 +52605,7 @@ export interface PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionPara
   cloudflareOnly?: boolean | null;
 }
 export const PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeRemoveDirective",
-  }) as any as S.Schema<PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeRemoveDirective>;
 
 export type PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAge =
   | PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective
@@ -56922,16 +52631,7 @@ export interface PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionPara
   cloudflareOnly?: boolean | null;
 }
 export const PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateSetDirective",
-  }) as any as S.Schema<PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateSetDirective>;
 
 export type PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateRemoveDirectiveOperation =
   | "set"
@@ -56946,16 +52646,7 @@ export interface PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionPara
   cloudflareOnly?: boolean | null;
 }
 export const PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateRemoveDirective",
-  }) as any as S.Schema<PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateRemoveDirective>;
 
 export type PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidate =
   | PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateSetDirective
@@ -56981,16 +52672,7 @@ export interface PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionPara
   cloudflareOnly?: boolean | null;
 }
 export const PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandSetDirective",
-  }) as any as S.Schema<PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandSetDirective>;
 
 export type PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandRemoveDirectiveOperation =
   | "set"
@@ -57005,16 +52687,7 @@ export interface PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionPara
   cloudflareOnly?: boolean | null;
 }
 export const PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandRemoveDirective",
-  }) as any as S.Schema<PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandRemoveDirective>;
 
 export type PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstand =
   | PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandSetDirective
@@ -57076,16 +52749,7 @@ export interface PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionPara
   cloudflareOnly?: boolean | null;
 }
 export const PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoCacheRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoCacheRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoCacheRemoveDirective",
-  }) as any as S.Schema<PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoCacheRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoCacheRemoveDirective>;
 
 export type PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoCache =
   | PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoCacheSetDirective
@@ -57111,16 +52775,7 @@ export interface PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionPara
   cloudflareOnly?: boolean | null;
 }
 export const PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreSetDirective",
-  }) as any as S.Schema<PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreSetDirective>;
 
 export type PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreRemoveDirectiveOperation =
   | "set"
@@ -57135,16 +52790,7 @@ export interface PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionPara
   cloudflareOnly?: boolean | null;
 }
 export const PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreRemoveDirective",
-  }) as any as S.Schema<PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreRemoveDirective>;
 
 export type PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoStore =
   | PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreSetDirective
@@ -57170,16 +52816,7 @@ export interface PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionPara
   cloudflareOnly?: boolean | null;
 }
 export const PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformSetDirective",
-  }) as any as S.Schema<PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformSetDirective>;
 
 export type PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformRemoveDirectiveOperation =
   | "set"
@@ -57194,16 +52831,7 @@ export interface PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionPara
   cloudflareOnly?: boolean | null;
 }
 export const PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformRemoveDirective",
-  }) as any as S.Schema<PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformRemoveDirective>;
 
 export type PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransform =
   | PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformSetDirective
@@ -57265,16 +52893,7 @@ export interface PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionPara
   cloudflareOnly?: boolean | null;
 }
 export const PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersPrivateRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersPrivateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersPrivateRemoveDirective",
-  }) as any as S.Schema<PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersPrivateRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersPrivateRemoveDirective>;
 
 export type PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersPrivate =
   | PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersPrivateSetDirective
@@ -57300,16 +52919,7 @@ export interface PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionPara
   cloudflareOnly?: boolean | null;
 }
 export const PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateSetDirective",
-  }) as any as S.Schema<PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateSetDirective>;
 
 export type PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateRemoveDirectiveOperation =
   | "set"
@@ -57324,16 +52934,7 @@ export interface PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionPara
   cloudflareOnly?: boolean | null;
 }
 export const PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateRemoveDirective",
-  }) as any as S.Schema<PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateRemoveDirective>;
 
 export type PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidate =
   | PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateSetDirective
@@ -57359,16 +52960,7 @@ export interface PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionPara
   cloudflareOnly?: boolean | null;
 }
 export const PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersPublicSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersPublicSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersPublicSetDirective",
-  }) as any as S.Schema<PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersPublicSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersPublicSetDirective>;
 
 export type PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersPublicRemoveDirectiveOperation =
   | "set"
@@ -57383,16 +52975,7 @@ export interface PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionPara
   cloudflareOnly?: boolean | null;
 }
 export const PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersPublicRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersPublicRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersPublicRemoveDirective",
-  }) as any as S.Schema<PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersPublicRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersPublicRemoveDirective>;
 
 export type PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersPublic =
   | PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersPublicSetDirective
@@ -57420,17 +53003,7 @@ export interface PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionPara
   cloudflareOnly?: boolean | null;
 }
 export const PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageSetDirectiveOperation,
-      value: S.Number,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageSetDirective",
-  }) as any as S.Schema<PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective as any as S.Schema<PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageSetDirective>;
 
 export type PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageRemoveDirectiveOperation =
   | "set"
@@ -57445,16 +53018,7 @@ export interface PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionPara
   cloudflareOnly?: boolean | null;
 }
 export const PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageRemoveDirective",
-  }) as any as S.Schema<PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageRemoveDirective>;
 
 export type PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxage =
   | PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageSetDirective
@@ -57482,17 +53046,7 @@ export interface PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionPara
   cloudflareOnly?: boolean | null;
 }
 export const PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorSetDirectiveOperation,
-      value: S.Number,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorSetDirective",
-  }) as any as S.Schema<PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective as any as S.Schema<PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorSetDirective>;
 
 export type PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorRemoveDirectiveOperation =
   | "set"
@@ -57507,16 +53061,7 @@ export interface PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionPara
   cloudflareOnly?: boolean | null;
 }
 export const PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorRemoveDirective",
-  }) as any as S.Schema<PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorRemoveDirective>;
 
 export type PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfError =
   | PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorSetDirective
@@ -57544,17 +53089,7 @@ export interface PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionPara
   cloudflareOnly?: boolean | null;
 }
 export const PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateSetDirectiveOperation,
-      value: S.Number,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateSetDirective",
-  }) as any as S.Schema<PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective as any as S.Schema<PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateSetDirective>;
 
 export type PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirectiveOperation =
   | "set"
@@ -57569,16 +53104,7 @@ export interface PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionPara
   cloudflareOnly?: boolean | null;
 }
 export const PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirective",
-  }) as any as S.Schema<PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirective>;
 
 export type PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidate =
   | PhasesUpdateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateSetDirective
@@ -57806,14 +53332,7 @@ export interface PhasesUpdateResultRulesetRulesItemSetCacheSettingsRuleActionPar
   default?: number | null;
 }
 export const PhasesUpdateResultRulesetRulesItemSetCacheSettingsRuleActionParametersBrowserTtl =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      mode: PhasesUpdateResultRulesetRulesItemSetCacheSettingsRuleActionParametersBrowserTtlMode,
-      default: S.optional(S.NullOr(S.Number)),
-    }),
-  ).annotate({
-    identifier: "PhasesUpdateResultRulesetRulesItemSetCacheSettingsRuleActionParametersBrowserTtl",
-  }) as any as S.Schema<PhasesUpdateResultRulesetRulesItemSetCacheSettingsRuleActionParametersBrowserTtl>;
+  RulesCreateResultRulesetRulesItemSetCacheSettingsRuleActionParametersBrowserTtl as any as S.Schema<PhasesUpdateResultRulesetRulesItemSetCacheSettingsRuleActionParametersBrowserTtl>;
 
 export type PhasesUpdateResultRulesetRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieCheckPresenceList =
   Array<string>;
@@ -58008,14 +53527,7 @@ export interface PhasesUpdateResultRulesetRulesItemSetCacheSettingsRuleActionPar
   mode: PhasesUpdateResultRulesetRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequestsMode;
 }
 export const PhasesUpdateResultRulesetRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequests =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      mode: PhasesUpdateResultRulesetRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequestsMode,
-    }),
-  ).annotate({
-    identifier:
-      "PhasesUpdateResultRulesetRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequests",
-  }) as any as S.Schema<PhasesUpdateResultRulesetRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequests>;
+  RulesCreateResultRulesetRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequests as any as S.Schema<PhasesUpdateResultRulesetRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequests>;
 
 export type PhasesUpdateResultRulesetRulesItemSetCacheSettingsRuleActionParametersServeStale =
   RulesCreateResultRulesetRulesItemSetCacheSettingsRuleActionParametersServeStale;
@@ -58039,14 +53551,7 @@ export interface PhasesUpdateResultRulesetRulesItemSetCacheSettingsRuleActionPar
   action: PhasesUpdateResultRulesetRulesItemSetCacheSettingsRuleActionParametersVaryDefaultAction;
 }
 export const PhasesUpdateResultRulesetRulesItemSetCacheSettingsRuleActionParametersVaryDefault =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      action:
-        PhasesUpdateResultRulesetRulesItemSetCacheSettingsRuleActionParametersVaryDefaultAction,
-    }),
-  ).annotate({
-    identifier: "PhasesUpdateResultRulesetRulesItemSetCacheSettingsRuleActionParametersVaryDefault",
-  }) as any as S.Schema<PhasesUpdateResultRulesetRulesItemSetCacheSettingsRuleActionParametersVaryDefault>;
+  RulesCreateResultRulesetRulesItemSetCacheSettingsRuleActionParametersVaryDefault as any as S.Schema<PhasesUpdateResultRulesetRulesItemSetCacheSettingsRuleActionParametersVaryDefault>;
 
 export type PhasesUpdateResultRulesetRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueAction =
   | "bypass"
@@ -58366,16 +53871,7 @@ export interface PhasesUpdateResultRulesetRulesItemSetCacheTagsRuleActionParamet
   operation: PhasesUpdateResultRulesetRulesItemSetCacheTagsRuleActionParametersAddCacheTagsExpressionOperation;
 }
 export const PhasesUpdateResultRulesetRulesItemSetCacheTagsRuleActionParametersAddCacheTagsExpression =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      operation:
-        PhasesUpdateResultRulesetRulesItemSetCacheTagsRuleActionParametersAddCacheTagsExpressionOperation,
-    }),
-  ).annotate({
-    identifier:
-      "PhasesUpdateResultRulesetRulesItemSetCacheTagsRuleActionParametersAddCacheTagsExpression",
-  }) as any as S.Schema<PhasesUpdateResultRulesetRulesItemSetCacheTagsRuleActionParametersAddCacheTagsExpression>;
+  RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader as any as S.Schema<PhasesUpdateResultRulesetRulesItemSetCacheTagsRuleActionParametersAddCacheTagsExpression>;
 
 export type PhasesUpdateResultRulesetRulesItemSetCacheTagsRuleActionParametersRemoveCacheTagsValuesOperation =
   | "add"
@@ -58422,16 +53918,7 @@ export interface PhasesUpdateResultRulesetRulesItemSetCacheTagsRuleActionParamet
   operation: PhasesUpdateResultRulesetRulesItemSetCacheTagsRuleActionParametersRemoveCacheTagsExpressionOperation;
 }
 export const PhasesUpdateResultRulesetRulesItemSetCacheTagsRuleActionParametersRemoveCacheTagsExpression =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      operation:
-        PhasesUpdateResultRulesetRulesItemSetCacheTagsRuleActionParametersRemoveCacheTagsExpressionOperation,
-    }),
-  ).annotate({
-    identifier:
-      "PhasesUpdateResultRulesetRulesItemSetCacheTagsRuleActionParametersRemoveCacheTagsExpression",
-  }) as any as S.Schema<PhasesUpdateResultRulesetRulesItemSetCacheTagsRuleActionParametersRemoveCacheTagsExpression>;
+  RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader as any as S.Schema<PhasesUpdateResultRulesetRulesItemSetCacheTagsRuleActionParametersRemoveCacheTagsExpression>;
 
 export type PhasesUpdateResultRulesetRulesItemSetCacheTagsRuleActionParametersSetCacheTagsValuesOperation =
   | "add"
@@ -58478,16 +53965,7 @@ export interface PhasesUpdateResultRulesetRulesItemSetCacheTagsRuleActionParamet
   operation: PhasesUpdateResultRulesetRulesItemSetCacheTagsRuleActionParametersSetCacheTagsExpressionOperation;
 }
 export const PhasesUpdateResultRulesetRulesItemSetCacheTagsRuleActionParametersSetCacheTagsExpression =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      operation:
-        PhasesUpdateResultRulesetRulesItemSetCacheTagsRuleActionParametersSetCacheTagsExpressionOperation,
-    }),
-  ).annotate({
-    identifier:
-      "PhasesUpdateResultRulesetRulesItemSetCacheTagsRuleActionParametersSetCacheTagsExpression",
-  }) as any as S.Schema<PhasesUpdateResultRulesetRulesItemSetCacheTagsRuleActionParametersSetCacheTagsExpression>;
+  RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader as any as S.Schema<PhasesUpdateResultRulesetRulesItemSetCacheTagsRuleActionParametersSetCacheTagsExpression>;
 
 export type PhasesUpdateResultRulesetRulesItemSetCacheTagsRuleActionParameters =
   | PhasesUpdateResultRulesetRulesItemSetCacheTagsRuleActionParametersAddCacheTagsValues
@@ -58897,9 +54375,7 @@ export const PhasesUpdateResultRulesetRulesItemSkipRuleActionParametersPhasesIte
 export type PhasesUpdateResultRulesetRulesItemSkipRuleActionParametersPhasesList =
   Array<PhasesUpdateResultRulesetRulesItemSkipRuleActionParametersPhasesItem>;
 export const PhasesUpdateResultRulesetRulesItemSkipRuleActionParametersPhasesList =
-  /*@__PURE__*/ S.Array(
-    PhasesUpdateResultRulesetRulesItemSkipRuleActionParametersPhasesItem,
-  ) as any as S.Schema<PhasesUpdateResultRulesetRulesItemSkipRuleActionParametersPhasesList>;
+  RulesCreateResultRulesetRulesItemSkipRuleActionParametersPhasesList as any as S.Schema<PhasesUpdateResultRulesetRulesItemSkipRuleActionParametersPhasesList>;
 
 export type PhasesUpdateResultRulesetRulesItemSkipRuleActionParametersProductsItem =
   | "bic"
@@ -58914,9 +54390,7 @@ export const PhasesUpdateResultRulesetRulesItemSkipRuleActionParametersProductsI
 export type PhasesUpdateResultRulesetRulesItemSkipRuleActionParametersProductsList =
   Array<PhasesUpdateResultRulesetRulesItemSkipRuleActionParametersProductsItem>;
 export const PhasesUpdateResultRulesetRulesItemSkipRuleActionParametersProductsList =
-  /*@__PURE__*/ S.Array(
-    PhasesUpdateResultRulesetRulesItemSkipRuleActionParametersProductsItem,
-  ) as any as S.Schema<PhasesUpdateResultRulesetRulesItemSkipRuleActionParametersProductsList>;
+  RulesCreateResultRulesetRulesItemSkipRuleActionParametersPhasesList as any as S.Schema<PhasesUpdateResultRulesetRulesItemSkipRuleActionParametersProductsList>;
 
 export type PhasesUpdateResultRulesetRulesItemSkipRuleActionParametersRulesValueList =
   Array<string>;
@@ -59849,35 +55323,19 @@ export interface UpdateRequestRulesItemCompressResponseRuleActionParametersAlgor
     | (string & {});
 }
 export const UpdateRequestRulesItemCompressResponseRuleActionParametersAlgorithmsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(
-        UpdateRequestRulesItemCompressResponseRuleActionParametersAlgorithmsItemName,
-      ),
-    }),
-  ).annotate({
-    identifier: "UpdateRequestRulesItemCompressResponseRuleActionParametersAlgorithmsItem",
-  }) as any as S.Schema<UpdateRequestRulesItemCompressResponseRuleActionParametersAlgorithmsItem>;
+  CreateRequestRulesItemCompressResponseRuleActionParametersAlgorithmsItem as any as S.Schema<UpdateRequestRulesItemCompressResponseRuleActionParametersAlgorithmsItem>;
 
 export type UpdateRequestRulesItemCompressResponseRuleActionParametersAlgorithmsList =
   Array<UpdateRequestRulesItemCompressResponseRuleActionParametersAlgorithmsItem>;
 export const UpdateRequestRulesItemCompressResponseRuleActionParametersAlgorithmsList =
-  /*@__PURE__*/ S.Array(
-    UpdateRequestRulesItemCompressResponseRuleActionParametersAlgorithmsItem,
-  ) as any as S.Schema<UpdateRequestRulesItemCompressResponseRuleActionParametersAlgorithmsList>;
+  CreateRequestRulesItemCompressResponseRuleActionParametersAlgorithmsList as any as S.Schema<UpdateRequestRulesItemCompressResponseRuleActionParametersAlgorithmsList>;
 
 export interface UpdateRequestRulesItemCompressResponseRuleActionParameters {
   /** Custom order for compression algorithms. */
   algorithms: UpdateRequestRulesItemCompressResponseRuleActionParametersAlgorithmsList;
 }
-export const UpdateRequestRulesItemCompressResponseRuleActionParameters = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      algorithms: UpdateRequestRulesItemCompressResponseRuleActionParametersAlgorithmsList,
-    }),
-).annotate({
-  identifier: "UpdateRequestRulesItemCompressResponseRuleActionParameters",
-}) as any as S.Schema<UpdateRequestRulesItemCompressResponseRuleActionParameters>;
+export const UpdateRequestRulesItemCompressResponseRuleActionParameters =
+  CreateRequestRulesItemCompressResponseRuleActionParameters as any as S.Schema<UpdateRequestRulesItemCompressResponseRuleActionParameters>;
 
 export type UpdateRequestRulesItemCompressResponseRuleCategoriesList = Array<string>;
 export const UpdateRequestRulesItemCompressResponseRuleCategoriesList =
@@ -60083,27 +55541,12 @@ export interface UpdateRequestRulesItemExecuteRuleActionParametersOverridesCateg
     | (string & {});
 }
 export const UpdateRequestRulesItemExecuteRuleActionParametersOverridesCategoriesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      category: S.String,
-      action: S.optional(S.String),
-      enabled: S.optional(S.Boolean),
-      sensitivityLevel: S.optional(
-        UpdateRequestRulesItemExecuteRuleActionParametersOverridesCategoriesItemSensitivityLevel.pipe(
-          T.Body("sensitivity_level"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "UpdateRequestRulesItemExecuteRuleActionParametersOverridesCategoriesItem",
-  }) as any as S.Schema<UpdateRequestRulesItemExecuteRuleActionParametersOverridesCategoriesItem>;
+  CreateRequestRulesItemExecuteRuleActionParametersOverridesCategoriesItem as any as S.Schema<UpdateRequestRulesItemExecuteRuleActionParametersOverridesCategoriesItem>;
 
 export type UpdateRequestRulesItemExecuteRuleActionParametersOverridesCategoriesList =
   Array<UpdateRequestRulesItemExecuteRuleActionParametersOverridesCategoriesItem>;
 export const UpdateRequestRulesItemExecuteRuleActionParametersOverridesCategoriesList =
-  /*@__PURE__*/ S.Array(
-    UpdateRequestRulesItemExecuteRuleActionParametersOverridesCategoriesItem,
-  ) as any as S.Schema<UpdateRequestRulesItemExecuteRuleActionParametersOverridesCategoriesList>;
+  CreateRequestRulesItemExecuteRuleActionParametersOverridesCategoriesList as any as S.Schema<UpdateRequestRulesItemExecuteRuleActionParametersOverridesCategoriesList>;
 
 export type UpdateRequestRulesItemExecuteRuleActionParametersOverridesRulesItemSensitivityLevel =
   | "default"
@@ -60128,28 +55571,12 @@ export interface UpdateRequestRulesItemExecuteRuleActionParametersOverridesRules
     | (string & {});
 }
 export const UpdateRequestRulesItemExecuteRuleActionParametersOverridesRulesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      action: S.optional(S.String),
-      enabled: S.optional(S.Boolean),
-      scoreThreshold: S.optional(S.Number.pipe(T.Body("score_threshold"))),
-      sensitivityLevel: S.optional(
-        UpdateRequestRulesItemExecuteRuleActionParametersOverridesRulesItemSensitivityLevel.pipe(
-          T.Body("sensitivity_level"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "UpdateRequestRulesItemExecuteRuleActionParametersOverridesRulesItem",
-  }) as any as S.Schema<UpdateRequestRulesItemExecuteRuleActionParametersOverridesRulesItem>;
+  CreateRequestRulesItemExecuteRuleActionParametersOverridesRulesItem as any as S.Schema<UpdateRequestRulesItemExecuteRuleActionParametersOverridesRulesItem>;
 
 export type UpdateRequestRulesItemExecuteRuleActionParametersOverridesRulesList =
   Array<UpdateRequestRulesItemExecuteRuleActionParametersOverridesRulesItem>;
 export const UpdateRequestRulesItemExecuteRuleActionParametersOverridesRulesList =
-  /*@__PURE__*/ S.Array(
-    UpdateRequestRulesItemExecuteRuleActionParametersOverridesRulesItem,
-  ) as any as S.Schema<UpdateRequestRulesItemExecuteRuleActionParametersOverridesRulesList>;
+  CreateRequestRulesItemExecuteRuleActionParametersOverridesRulesList as any as S.Schema<UpdateRequestRulesItemExecuteRuleActionParametersOverridesRulesList>;
 
 export type UpdateRequestRulesItemExecuteRuleActionParametersOverridesSensitivityLevel =
   | "default"
@@ -60172,24 +55599,8 @@ export interface UpdateRequestRulesItemExecuteRuleActionParametersOverrides {
     | UpdateRequestRulesItemExecuteRuleActionParametersOverridesSensitivityLevel
     | (string & {});
 }
-export const UpdateRequestRulesItemExecuteRuleActionParametersOverrides = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      action: S.optional(S.String),
-      categories: S.optional(
-        UpdateRequestRulesItemExecuteRuleActionParametersOverridesCategoriesList,
-      ),
-      enabled: S.optional(S.Boolean),
-      rules: S.optional(UpdateRequestRulesItemExecuteRuleActionParametersOverridesRulesList),
-      sensitivityLevel: S.optional(
-        UpdateRequestRulesItemExecuteRuleActionParametersOverridesSensitivityLevel.pipe(
-          T.Body("sensitivity_level"),
-        ),
-      ),
-    }),
-).annotate({
-  identifier: "UpdateRequestRulesItemExecuteRuleActionParametersOverrides",
-}) as any as S.Schema<UpdateRequestRulesItemExecuteRuleActionParametersOverrides>;
+export const UpdateRequestRulesItemExecuteRuleActionParametersOverrides =
+  CreateRequestRulesItemExecuteRuleActionParametersOverrides as any as S.Schema<UpdateRequestRulesItemExecuteRuleActionParametersOverrides>;
 
 export interface UpdateRequestRulesItemExecuteRuleActionParameters {
   /** The ID of the ruleset to execute. */
@@ -60199,19 +55610,8 @@ export interface UpdateRequestRulesItemExecuteRuleActionParameters {
   /** A set of overrides to apply to the target ruleset. */
   overrides?: UpdateRequestRulesItemExecuteRuleActionParametersOverrides;
 }
-export const UpdateRequestRulesItemExecuteRuleActionParameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    matchedData: S.optional(
-      RulesCreateResultRulesetRulesItemExecuteRuleActionParametersMatchedData.pipe(
-        T.Body("matched_data"),
-      ),
-    ),
-    overrides: S.optional(UpdateRequestRulesItemExecuteRuleActionParametersOverrides),
-  }),
-).annotate({
-  identifier: "UpdateRequestRulesItemExecuteRuleActionParameters",
-}) as any as S.Schema<UpdateRequestRulesItemExecuteRuleActionParameters>;
+export const UpdateRequestRulesItemExecuteRuleActionParameters =
+  CreateRequestRulesItemExecuteRuleActionParameters as any as S.Schema<UpdateRequestRulesItemExecuteRuleActionParameters>;
 
 export type UpdateRequestRulesItemExecuteRuleCategoriesList = Array<string>;
 export const UpdateRequestRulesItemExecuteRuleCategoriesList =
@@ -60833,22 +56233,8 @@ export interface UpdateRequestRulesItemRedirectRuleActionParametersFromValue {
     | UpdateRequestRulesItemRedirectRuleActionParametersFromValueStatusCode
     | (number & {});
 }
-export const UpdateRequestRulesItemRedirectRuleActionParametersFromValue = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      targetUrl: CreateRequestRulesItemRedirectRuleActionParametersFromValueTargetUrl.pipe(
-        T.Body("target_url"),
-      ),
-      preserveQueryString: S.optional(S.Boolean.pipe(T.Body("preserve_query_string"))),
-      statusCode: S.optional(
-        UpdateRequestRulesItemRedirectRuleActionParametersFromValueStatusCode.pipe(
-          T.Body("status_code"),
-        ),
-      ),
-    }),
-).annotate({
-  identifier: "UpdateRequestRulesItemRedirectRuleActionParametersFromValue",
-}) as any as S.Schema<UpdateRequestRulesItemRedirectRuleActionParametersFromValue>;
+export const UpdateRequestRulesItemRedirectRuleActionParametersFromValue =
+  CreateRequestRulesItemRedirectRuleActionParametersFromValue as any as S.Schema<UpdateRequestRulesItemRedirectRuleActionParametersFromValue>;
 
 export interface UpdateRequestRulesItemRedirectRuleActionParameters {
   /** A redirect based on a bulk list lookup. */
@@ -60856,20 +56242,8 @@ export interface UpdateRequestRulesItemRedirectRuleActionParameters {
   /** A redirect based on the request properties. */
   fromValue?: UpdateRequestRulesItemRedirectRuleActionParametersFromValue;
 }
-export const UpdateRequestRulesItemRedirectRuleActionParameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fromList: S.optional(
-      RulesCreateResultRulesetRulesItemRedirectRuleActionParametersFromList.pipe(
-        T.Body("from_list"),
-      ),
-    ),
-    fromValue: S.optional(
-      UpdateRequestRulesItemRedirectRuleActionParametersFromValue.pipe(T.Body("from_value")),
-    ),
-  }),
-).annotate({
-  identifier: "UpdateRequestRulesItemRedirectRuleActionParameters",
-}) as any as S.Schema<UpdateRequestRulesItemRedirectRuleActionParameters>;
+export const UpdateRequestRulesItemRedirectRuleActionParameters =
+  CreateRequestRulesItemRedirectRuleActionParameters as any as S.Schema<UpdateRequestRulesItemRedirectRuleActionParameters>;
 
 export type UpdateRequestRulesItemRedirectRuleCategoriesList = Array<string>;
 export const UpdateRequestRulesItemRedirectRuleCategoriesList =
@@ -60971,15 +56345,7 @@ export interface UpdateRequestRulesItemRewriteRuleActionParametersHeadersValueAd
   value: string;
 }
 export const UpdateRequestRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        UpdateRequestRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeaderOperation,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "UpdateRequestRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader",
-  }) as any as S.Schema<UpdateRequestRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader>;
+  CreateRequestRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader as any as S.Schema<UpdateRequestRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader>;
 
 export type UpdateRequestRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeaderOperation =
   "add";
@@ -60993,15 +56359,7 @@ export interface UpdateRequestRulesItemRewriteRuleActionParametersHeadersValueAd
   operation: UpdateRequestRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeaderOperation;
 }
 export const UpdateRequestRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      operation:
-        UpdateRequestRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeaderOperation,
-    }),
-  ).annotate({
-    identifier: "UpdateRequestRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader",
-  }) as any as S.Schema<UpdateRequestRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader>;
+  RulesCreateRequestBodySetCacheTagsRuleActionParametersAddCacheTagsExpression as any as S.Schema<UpdateRequestRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader>;
 
 export type UpdateRequestRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeaderOperation =
   "set";
@@ -61015,15 +56373,7 @@ export interface UpdateRequestRulesItemRewriteRuleActionParametersHeadersValueSe
   value: string;
 }
 export const UpdateRequestRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeader =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        UpdateRequestRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeaderOperation,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "UpdateRequestRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeader",
-  }) as any as S.Schema<UpdateRequestRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeader>;
+  CreateRequestRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader as any as S.Schema<UpdateRequestRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeader>;
 
 export type UpdateRequestRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeaderOperation =
   "set";
@@ -61037,15 +56387,7 @@ export interface UpdateRequestRulesItemRewriteRuleActionParametersHeadersValueSe
   operation: UpdateRequestRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeaderOperation;
 }
 export const UpdateRequestRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeader =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      operation:
-        UpdateRequestRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeaderOperation,
-    }),
-  ).annotate({
-    identifier: "UpdateRequestRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeader",
-  }) as any as S.Schema<UpdateRequestRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeader>;
+  RulesCreateRequestBodySetCacheTagsRuleActionParametersAddCacheTagsExpression as any as S.Schema<UpdateRequestRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeader>;
 
 export type UpdateRequestRulesItemRewriteRuleActionParametersHeadersValueRemoveHeaderOperation =
   "remove";
@@ -61057,13 +56399,7 @@ export interface UpdateRequestRulesItemRewriteRuleActionParametersHeadersValueRe
   operation: UpdateRequestRulesItemRewriteRuleActionParametersHeadersValueRemoveHeaderOperation;
 }
 export const UpdateRequestRulesItemRewriteRuleActionParametersHeadersValueRemoveHeader =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation: UpdateRequestRulesItemRewriteRuleActionParametersHeadersValueRemoveHeaderOperation,
-    }),
-  ).annotate({
-    identifier: "UpdateRequestRulesItemRewriteRuleActionParametersHeadersValueRemoveHeader",
-  }) as any as S.Schema<UpdateRequestRulesItemRewriteRuleActionParametersHeadersValueRemoveHeader>;
+  CreateRequestRulesItemRewriteRuleActionParametersHeadersValueRemoveHeader as any as S.Schema<UpdateRequestRulesItemRewriteRuleActionParametersHeadersValueRemoveHeader>;
 
 export type UpdateRequestRulesItemRewriteRuleActionParametersHeadersValue =
   | UpdateRequestRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader
@@ -61437,19 +56773,7 @@ export interface UpdateRequestRulesItemServeErrorRuleActionParametersActionParam
   statusCode?: number;
 }
 export const UpdateRequestRulesItemServeErrorRuleActionParametersActionParametersContent =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      content: S.String,
-      contentType: S.optional(
-        UpdateRequestRulesItemServeErrorRuleActionParametersActionParametersContentContentType.pipe(
-          T.Body("content_type"),
-        ),
-      ),
-      statusCode: S.optional(S.Number.pipe(T.Body("status_code"))),
-    }),
-  ).annotate({
-    identifier: "UpdateRequestRulesItemServeErrorRuleActionParametersActionParametersContent",
-  }) as any as S.Schema<UpdateRequestRulesItemServeErrorRuleActionParametersActionParametersContent>;
+  CreateRequestRulesItemServeErrorRuleActionParametersActionParametersContent as any as S.Schema<UpdateRequestRulesItemServeErrorRuleActionParametersActionParametersContent>;
 
 export type UpdateRequestRulesItemServeErrorRuleActionParametersActionParametersAssetContentType =
   | "application/json"
@@ -61470,19 +56794,7 @@ export interface UpdateRequestRulesItemServeErrorRuleActionParametersActionParam
   statusCode?: number;
 }
 export const UpdateRequestRulesItemServeErrorRuleActionParametersActionParametersAsset =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      assetName: S.String.pipe(T.Body("asset_name")),
-      contentType: S.optional(
-        UpdateRequestRulesItemServeErrorRuleActionParametersActionParametersAssetContentType.pipe(
-          T.Body("content_type"),
-        ),
-      ),
-      statusCode: S.optional(S.Number.pipe(T.Body("status_code"))),
-    }),
-  ).annotate({
-    identifier: "UpdateRequestRulesItemServeErrorRuleActionParametersActionParametersAsset",
-  }) as any as S.Schema<UpdateRequestRulesItemServeErrorRuleActionParametersActionParametersAsset>;
+  CreateRequestRulesItemServeErrorRuleActionParametersActionParametersAsset as any as S.Schema<UpdateRequestRulesItemServeErrorRuleActionParametersActionParametersAsset>;
 
 export type UpdateRequestRulesItemServeErrorRuleActionParameters =
   | UpdateRequestRulesItemServeErrorRuleActionParametersActionParametersContent
@@ -61598,15 +56910,7 @@ export interface UpdateRequestRulesItemSetCacheControlActionParametersImmutableS
   cloudflareOnly?: boolean;
 }
 export const UpdateRequestRulesItemSetCacheControlActionParametersImmutableSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        UpdateRequestRulesItemSetCacheControlActionParametersImmutableSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "UpdateRequestRulesItemSetCacheControlActionParametersImmutableSetDirective",
-  }) as any as S.Schema<UpdateRequestRulesItemSetCacheControlActionParametersImmutableSetDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<UpdateRequestRulesItemSetCacheControlActionParametersImmutableSetDirective>;
 
 export type UpdateRequestRulesItemSetCacheControlActionParametersImmutableRemoveDirectiveOperation =
   | "set"
@@ -61623,15 +56927,7 @@ export interface UpdateRequestRulesItemSetCacheControlActionParametersImmutableR
   cloudflareOnly?: boolean;
 }
 export const UpdateRequestRulesItemSetCacheControlActionParametersImmutableRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        UpdateRequestRulesItemSetCacheControlActionParametersImmutableRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "UpdateRequestRulesItemSetCacheControlActionParametersImmutableRemoveDirective",
-  }) as any as S.Schema<UpdateRequestRulesItemSetCacheControlActionParametersImmutableRemoveDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<UpdateRequestRulesItemSetCacheControlActionParametersImmutableRemoveDirective>;
 
 export type UpdateRequestRulesItemSetCacheControlActionParametersImmutable =
   | UpdateRequestRulesItemSetCacheControlActionParametersImmutableSetDirective
@@ -61661,15 +56957,7 @@ export interface UpdateRequestRulesItemSetCacheControlActionParametersMaxAgeSetD
   cloudflareOnly?: boolean;
 }
 export const UpdateRequestRulesItemSetCacheControlActionParametersMaxAgeSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation: UpdateRequestRulesItemSetCacheControlActionParametersMaxAgeSetDirectiveOperation,
-      value: S.Number,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "UpdateRequestRulesItemSetCacheControlActionParametersMaxAgeSetDirective",
-  }) as any as S.Schema<UpdateRequestRulesItemSetCacheControlActionParametersMaxAgeSetDirective>;
+  CreateRequestRulesItemSetCacheControlActionParametersMaxAgeSetDirective as any as S.Schema<UpdateRequestRulesItemSetCacheControlActionParametersMaxAgeSetDirective>;
 
 export type UpdateRequestRulesItemSetCacheControlActionParametersMaxAgeRemoveDirectiveOperation =
   | "set"
@@ -61686,15 +56974,7 @@ export interface UpdateRequestRulesItemSetCacheControlActionParametersMaxAgeRemo
   cloudflareOnly?: boolean;
 }
 export const UpdateRequestRulesItemSetCacheControlActionParametersMaxAgeRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        UpdateRequestRulesItemSetCacheControlActionParametersMaxAgeRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "UpdateRequestRulesItemSetCacheControlActionParametersMaxAgeRemoveDirective",
-  }) as any as S.Schema<UpdateRequestRulesItemSetCacheControlActionParametersMaxAgeRemoveDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<UpdateRequestRulesItemSetCacheControlActionParametersMaxAgeRemoveDirective>;
 
 export type UpdateRequestRulesItemSetCacheControlActionParametersMaxAge =
   | UpdateRequestRulesItemSetCacheControlActionParametersMaxAgeSetDirective
@@ -61722,15 +57002,7 @@ export interface UpdateRequestRulesItemSetCacheControlActionParametersMustRevali
   cloudflareOnly?: boolean;
 }
 export const UpdateRequestRulesItemSetCacheControlActionParametersMustRevalidateSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        UpdateRequestRulesItemSetCacheControlActionParametersMustRevalidateSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "UpdateRequestRulesItemSetCacheControlActionParametersMustRevalidateSetDirective",
-  }) as any as S.Schema<UpdateRequestRulesItemSetCacheControlActionParametersMustRevalidateSetDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<UpdateRequestRulesItemSetCacheControlActionParametersMustRevalidateSetDirective>;
 
 export type UpdateRequestRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirectiveOperation =
   | "set"
@@ -61747,16 +57019,7 @@ export interface UpdateRequestRulesItemSetCacheControlActionParametersMustRevali
   cloudflareOnly?: boolean;
 }
 export const UpdateRequestRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        UpdateRequestRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "UpdateRequestRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirective",
-  }) as any as S.Schema<UpdateRequestRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersMustRevalidateSetDirective as any as S.Schema<UpdateRequestRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirective>;
 
 export type UpdateRequestRulesItemSetCacheControlActionParametersMustRevalidate =
   | UpdateRequestRulesItemSetCacheControlActionParametersMustRevalidateSetDirective
@@ -61784,15 +57047,7 @@ export interface UpdateRequestRulesItemSetCacheControlActionParametersMustUnders
   cloudflareOnly?: boolean;
 }
 export const UpdateRequestRulesItemSetCacheControlActionParametersMustUnderstandSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        UpdateRequestRulesItemSetCacheControlActionParametersMustUnderstandSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "UpdateRequestRulesItemSetCacheControlActionParametersMustUnderstandSetDirective",
-  }) as any as S.Schema<UpdateRequestRulesItemSetCacheControlActionParametersMustUnderstandSetDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<UpdateRequestRulesItemSetCacheControlActionParametersMustUnderstandSetDirective>;
 
 export type UpdateRequestRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirectiveOperation =
   | "set"
@@ -61809,16 +57064,7 @@ export interface UpdateRequestRulesItemSetCacheControlActionParametersMustUnders
   cloudflareOnly?: boolean;
 }
 export const UpdateRequestRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        UpdateRequestRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "UpdateRequestRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirective",
-  }) as any as S.Schema<UpdateRequestRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersMustRevalidateSetDirective as any as S.Schema<UpdateRequestRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirective>;
 
 export type UpdateRequestRulesItemSetCacheControlActionParametersMustUnderstand =
   | UpdateRequestRulesItemSetCacheControlActionParametersMustUnderstandSetDirective
@@ -61880,15 +57126,7 @@ export interface UpdateRequestRulesItemSetCacheControlActionParametersNoCacheRem
   cloudflareOnly?: boolean;
 }
 export const UpdateRequestRulesItemSetCacheControlActionParametersNoCacheRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        UpdateRequestRulesItemSetCacheControlActionParametersNoCacheRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "UpdateRequestRulesItemSetCacheControlActionParametersNoCacheRemoveDirective",
-  }) as any as S.Schema<UpdateRequestRulesItemSetCacheControlActionParametersNoCacheRemoveDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<UpdateRequestRulesItemSetCacheControlActionParametersNoCacheRemoveDirective>;
 
 export type UpdateRequestRulesItemSetCacheControlActionParametersNoCache =
   | UpdateRequestRulesItemSetCacheControlActionParametersNoCacheSetDirective
@@ -61916,14 +57154,7 @@ export interface UpdateRequestRulesItemSetCacheControlActionParametersNoStoreSet
   cloudflareOnly?: boolean;
 }
 export const UpdateRequestRulesItemSetCacheControlActionParametersNoStoreSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation: UpdateRequestRulesItemSetCacheControlActionParametersNoStoreSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "UpdateRequestRulesItemSetCacheControlActionParametersNoStoreSetDirective",
-  }) as any as S.Schema<UpdateRequestRulesItemSetCacheControlActionParametersNoStoreSetDirective>;
+  CreateRequestRulesItemSetCacheControlActionParametersNoStoreSetDirective as any as S.Schema<UpdateRequestRulesItemSetCacheControlActionParametersNoStoreSetDirective>;
 
 export type UpdateRequestRulesItemSetCacheControlActionParametersNoStoreRemoveDirectiveOperation =
   | "set"
@@ -61940,15 +57171,7 @@ export interface UpdateRequestRulesItemSetCacheControlActionParametersNoStoreRem
   cloudflareOnly?: boolean;
 }
 export const UpdateRequestRulesItemSetCacheControlActionParametersNoStoreRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        UpdateRequestRulesItemSetCacheControlActionParametersNoStoreRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "UpdateRequestRulesItemSetCacheControlActionParametersNoStoreRemoveDirective",
-  }) as any as S.Schema<UpdateRequestRulesItemSetCacheControlActionParametersNoStoreRemoveDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<UpdateRequestRulesItemSetCacheControlActionParametersNoStoreRemoveDirective>;
 
 export type UpdateRequestRulesItemSetCacheControlActionParametersNoStore =
   | UpdateRequestRulesItemSetCacheControlActionParametersNoStoreSetDirective
@@ -61976,15 +57199,7 @@ export interface UpdateRequestRulesItemSetCacheControlActionParametersNoTransfor
   cloudflareOnly?: boolean;
 }
 export const UpdateRequestRulesItemSetCacheControlActionParametersNoTransformSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        UpdateRequestRulesItemSetCacheControlActionParametersNoTransformSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "UpdateRequestRulesItemSetCacheControlActionParametersNoTransformSetDirective",
-  }) as any as S.Schema<UpdateRequestRulesItemSetCacheControlActionParametersNoTransformSetDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<UpdateRequestRulesItemSetCacheControlActionParametersNoTransformSetDirective>;
 
 export type UpdateRequestRulesItemSetCacheControlActionParametersNoTransformRemoveDirectiveOperation =
   | "set"
@@ -62001,15 +57216,7 @@ export interface UpdateRequestRulesItemSetCacheControlActionParametersNoTransfor
   cloudflareOnly?: boolean;
 }
 export const UpdateRequestRulesItemSetCacheControlActionParametersNoTransformRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        UpdateRequestRulesItemSetCacheControlActionParametersNoTransformRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "UpdateRequestRulesItemSetCacheControlActionParametersNoTransformRemoveDirective",
-  }) as any as S.Schema<UpdateRequestRulesItemSetCacheControlActionParametersNoTransformRemoveDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<UpdateRequestRulesItemSetCacheControlActionParametersNoTransformRemoveDirective>;
 
 export type UpdateRequestRulesItemSetCacheControlActionParametersNoTransform =
   | UpdateRequestRulesItemSetCacheControlActionParametersNoTransformSetDirective
@@ -62071,15 +57278,7 @@ export interface UpdateRequestRulesItemSetCacheControlActionParametersPrivateRem
   cloudflareOnly?: boolean;
 }
 export const UpdateRequestRulesItemSetCacheControlActionParametersPrivateRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        UpdateRequestRulesItemSetCacheControlActionParametersPrivateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "UpdateRequestRulesItemSetCacheControlActionParametersPrivateRemoveDirective",
-  }) as any as S.Schema<UpdateRequestRulesItemSetCacheControlActionParametersPrivateRemoveDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<UpdateRequestRulesItemSetCacheControlActionParametersPrivateRemoveDirective>;
 
 export type UpdateRequestRulesItemSetCacheControlActionParametersPrivate =
   | UpdateRequestRulesItemSetCacheControlActionParametersPrivateSetDirective
@@ -62107,15 +57306,7 @@ export interface UpdateRequestRulesItemSetCacheControlActionParametersProxyReval
   cloudflareOnly?: boolean;
 }
 export const UpdateRequestRulesItemSetCacheControlActionParametersProxyRevalidateSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        UpdateRequestRulesItemSetCacheControlActionParametersProxyRevalidateSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "UpdateRequestRulesItemSetCacheControlActionParametersProxyRevalidateSetDirective",
-  }) as any as S.Schema<UpdateRequestRulesItemSetCacheControlActionParametersProxyRevalidateSetDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<UpdateRequestRulesItemSetCacheControlActionParametersProxyRevalidateSetDirective>;
 
 export type UpdateRequestRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirectiveOperation =
   | "set"
@@ -62132,16 +57323,7 @@ export interface UpdateRequestRulesItemSetCacheControlActionParametersProxyReval
   cloudflareOnly?: boolean;
 }
 export const UpdateRequestRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        UpdateRequestRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "UpdateRequestRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirective",
-  }) as any as S.Schema<UpdateRequestRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersMustRevalidateSetDirective as any as S.Schema<UpdateRequestRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirective>;
 
 export type UpdateRequestRulesItemSetCacheControlActionParametersProxyRevalidate =
   | UpdateRequestRulesItemSetCacheControlActionParametersProxyRevalidateSetDirective
@@ -62169,14 +57351,7 @@ export interface UpdateRequestRulesItemSetCacheControlActionParametersPublicSetD
   cloudflareOnly?: boolean;
 }
 export const UpdateRequestRulesItemSetCacheControlActionParametersPublicSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation: UpdateRequestRulesItemSetCacheControlActionParametersPublicSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "UpdateRequestRulesItemSetCacheControlActionParametersPublicSetDirective",
-  }) as any as S.Schema<UpdateRequestRulesItemSetCacheControlActionParametersPublicSetDirective>;
+  CreateRequestRulesItemSetCacheControlActionParametersNoStoreSetDirective as any as S.Schema<UpdateRequestRulesItemSetCacheControlActionParametersPublicSetDirective>;
 
 export type UpdateRequestRulesItemSetCacheControlActionParametersPublicRemoveDirectiveOperation =
   | "set"
@@ -62193,15 +57368,7 @@ export interface UpdateRequestRulesItemSetCacheControlActionParametersPublicRemo
   cloudflareOnly?: boolean;
 }
 export const UpdateRequestRulesItemSetCacheControlActionParametersPublicRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        UpdateRequestRulesItemSetCacheControlActionParametersPublicRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "UpdateRequestRulesItemSetCacheControlActionParametersPublicRemoveDirective",
-  }) as any as S.Schema<UpdateRequestRulesItemSetCacheControlActionParametersPublicRemoveDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<UpdateRequestRulesItemSetCacheControlActionParametersPublicRemoveDirective>;
 
 export type UpdateRequestRulesItemSetCacheControlActionParametersPublic =
   | UpdateRequestRulesItemSetCacheControlActionParametersPublicSetDirective
@@ -62231,15 +57398,7 @@ export interface UpdateRequestRulesItemSetCacheControlActionParametersSMaxageSet
   cloudflareOnly?: boolean;
 }
 export const UpdateRequestRulesItemSetCacheControlActionParametersSMaxageSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation: UpdateRequestRulesItemSetCacheControlActionParametersSMaxageSetDirectiveOperation,
-      value: S.Number,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "UpdateRequestRulesItemSetCacheControlActionParametersSMaxageSetDirective",
-  }) as any as S.Schema<UpdateRequestRulesItemSetCacheControlActionParametersSMaxageSetDirective>;
+  CreateRequestRulesItemSetCacheControlActionParametersMaxAgeSetDirective as any as S.Schema<UpdateRequestRulesItemSetCacheControlActionParametersSMaxageSetDirective>;
 
 export type UpdateRequestRulesItemSetCacheControlActionParametersSMaxageRemoveDirectiveOperation =
   | "set"
@@ -62256,15 +57415,7 @@ export interface UpdateRequestRulesItemSetCacheControlActionParametersSMaxageRem
   cloudflareOnly?: boolean;
 }
 export const UpdateRequestRulesItemSetCacheControlActionParametersSMaxageRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        UpdateRequestRulesItemSetCacheControlActionParametersSMaxageRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "UpdateRequestRulesItemSetCacheControlActionParametersSMaxageRemoveDirective",
-  }) as any as S.Schema<UpdateRequestRulesItemSetCacheControlActionParametersSMaxageRemoveDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<UpdateRequestRulesItemSetCacheControlActionParametersSMaxageRemoveDirective>;
 
 export type UpdateRequestRulesItemSetCacheControlActionParametersSMaxage =
   | UpdateRequestRulesItemSetCacheControlActionParametersSMaxageSetDirective
@@ -62294,16 +57445,7 @@ export interface UpdateRequestRulesItemSetCacheControlActionParametersStaleIfErr
   cloudflareOnly?: boolean;
 }
 export const UpdateRequestRulesItemSetCacheControlActionParametersStaleIfErrorSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        UpdateRequestRulesItemSetCacheControlActionParametersStaleIfErrorSetDirectiveOperation,
-      value: S.Number,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "UpdateRequestRulesItemSetCacheControlActionParametersStaleIfErrorSetDirective",
-  }) as any as S.Schema<UpdateRequestRulesItemSetCacheControlActionParametersStaleIfErrorSetDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersMaxAgeSetDirective as any as S.Schema<UpdateRequestRulesItemSetCacheControlActionParametersStaleIfErrorSetDirective>;
 
 export type UpdateRequestRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirectiveOperation =
   | "set"
@@ -62320,15 +57462,7 @@ export interface UpdateRequestRulesItemSetCacheControlActionParametersStaleIfErr
   cloudflareOnly?: boolean;
 }
 export const UpdateRequestRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        UpdateRequestRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "UpdateRequestRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirective",
-  }) as any as S.Schema<UpdateRequestRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<UpdateRequestRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirective>;
 
 export type UpdateRequestRulesItemSetCacheControlActionParametersStaleIfError =
   | UpdateRequestRulesItemSetCacheControlActionParametersStaleIfErrorSetDirective
@@ -62358,17 +57492,7 @@ export interface UpdateRequestRulesItemSetCacheControlActionParametersStaleWhile
   cloudflareOnly?: boolean;
 }
 export const UpdateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidateSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        UpdateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidateSetDirectiveOperation,
-      value: S.Number,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "UpdateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidateSetDirective",
-  }) as any as S.Schema<UpdateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidateSetDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersStaleWhileRevalidateSetDirective as any as S.Schema<UpdateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidateSetDirective>;
 
 export type UpdateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirectiveOperation =
   | "set"
@@ -62385,16 +57509,7 @@ export interface UpdateRequestRulesItemSetCacheControlActionParametersStaleWhile
   cloudflareOnly?: boolean;
 }
 export const UpdateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        UpdateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "UpdateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirective",
-  }) as any as S.Schema<UpdateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirective>;
+  RulesCreateRequestBodySetCacheControlRuleActionParametersMustRevalidateSetDirective as any as S.Schema<UpdateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirective>;
 
 export type UpdateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidate =
   | UpdateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidateSetDirective
@@ -62593,14 +57708,7 @@ export interface UpdateRequestRulesItemSetCacheSettingsRuleActionParametersBrows
   default?: number;
 }
 export const UpdateRequestRulesItemSetCacheSettingsRuleActionParametersBrowserTtl =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      mode: UpdateRequestRulesItemSetCacheSettingsRuleActionParametersBrowserTtlMode,
-      default: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "UpdateRequestRulesItemSetCacheSettingsRuleActionParametersBrowserTtl",
-  }) as any as S.Schema<UpdateRequestRulesItemSetCacheSettingsRuleActionParametersBrowserTtl>;
+  CreateRequestRulesItemSetCacheSettingsRuleActionParametersBrowserTtl as any as S.Schema<UpdateRequestRulesItemSetCacheSettingsRuleActionParametersBrowserTtl>;
 
 export type UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieCheckPresenceList =
   Array<string>;
@@ -62796,13 +57904,7 @@ export interface UpdateRequestRulesItemSetCacheSettingsRuleActionParametersOrigi
     | (string & {});
 }
 export const UpdateRequestRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequests =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      mode: UpdateRequestRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequestsMode,
-    }),
-  ).annotate({
-    identifier: "UpdateRequestRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequests",
-  }) as any as S.Schema<UpdateRequestRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequests>;
+  CreateRequestRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequests as any as S.Schema<UpdateRequestRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequests>;
 
 export type UpdateRequestRulesItemSetCacheSettingsRuleActionParametersServeStale =
   CreateRequestRulesItemSetCacheSettingsRuleActionParametersServeStale;
@@ -62827,13 +57929,7 @@ export interface UpdateRequestRulesItemSetCacheSettingsRuleActionParametersVaryD
     | (string & {});
 }
 export const UpdateRequestRulesItemSetCacheSettingsRuleActionParametersVaryDefault =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      action: UpdateRequestRulesItemSetCacheSettingsRuleActionParametersVaryDefaultAction,
-    }),
-  ).annotate({
-    identifier: "UpdateRequestRulesItemSetCacheSettingsRuleActionParametersVaryDefault",
-  }) as any as S.Schema<UpdateRequestRulesItemSetCacheSettingsRuleActionParametersVaryDefault>;
+  CreateRequestRulesItemSetCacheSettingsRuleActionParametersVaryDefault as any as S.Schema<UpdateRequestRulesItemSetCacheSettingsRuleActionParametersVaryDefault>;
 
 export type UpdateRequestRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueAction =
   | "bypass"
@@ -63132,14 +58228,7 @@ export interface UpdateRequestRulesItemSetCacheTagsActionParametersAddCacheTagsE
     | (string & {});
 }
 export const UpdateRequestRulesItemSetCacheTagsActionParametersAddCacheTagsExpression =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      operation: UpdateRequestRulesItemSetCacheTagsActionParametersAddCacheTagsExpressionOperation,
-    }),
-  ).annotate({
-    identifier: "UpdateRequestRulesItemSetCacheTagsActionParametersAddCacheTagsExpression",
-  }) as any as S.Schema<UpdateRequestRulesItemSetCacheTagsActionParametersAddCacheTagsExpression>;
+  CreateRequestRulesItemSetCacheTagsActionParametersAddCacheTagsExpression as any as S.Schema<UpdateRequestRulesItemSetCacheTagsActionParametersAddCacheTagsExpression>;
 
 export type UpdateRequestRulesItemSetCacheTagsActionParametersRemoveCacheTagsValuesOperation =
   | "add"
@@ -63187,15 +58276,7 @@ export interface UpdateRequestRulesItemSetCacheTagsActionParametersRemoveCacheTa
     | (string & {});
 }
 export const UpdateRequestRulesItemSetCacheTagsActionParametersRemoveCacheTagsExpression =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      operation:
-        UpdateRequestRulesItemSetCacheTagsActionParametersRemoveCacheTagsExpressionOperation,
-    }),
-  ).annotate({
-    identifier: "UpdateRequestRulesItemSetCacheTagsActionParametersRemoveCacheTagsExpression",
-  }) as any as S.Schema<UpdateRequestRulesItemSetCacheTagsActionParametersRemoveCacheTagsExpression>;
+  RulesCreateRequestBodySetCacheTagsRuleActionParametersAddCacheTagsExpression as any as S.Schema<UpdateRequestRulesItemSetCacheTagsActionParametersRemoveCacheTagsExpression>;
 
 export type UpdateRequestRulesItemSetCacheTagsActionParametersSetCacheTagsValuesOperation =
   | "add"
@@ -63243,14 +58324,7 @@ export interface UpdateRequestRulesItemSetCacheTagsActionParametersSetCacheTagsE
     | (string & {});
 }
 export const UpdateRequestRulesItemSetCacheTagsActionParametersSetCacheTagsExpression =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      operation: UpdateRequestRulesItemSetCacheTagsActionParametersSetCacheTagsExpressionOperation,
-    }),
-  ).annotate({
-    identifier: "UpdateRequestRulesItemSetCacheTagsActionParametersSetCacheTagsExpression",
-  }) as any as S.Schema<UpdateRequestRulesItemSetCacheTagsActionParametersSetCacheTagsExpression>;
+  CreateRequestRulesItemSetCacheTagsActionParametersAddCacheTagsExpression as any as S.Schema<UpdateRequestRulesItemSetCacheTagsActionParametersSetCacheTagsExpression>;
 
 export type UpdateRequestRulesItemSetCacheTagsActionParameters =
   | UpdateRequestRulesItemSetCacheTagsActionParametersAddCacheTagsValues
@@ -63623,9 +58697,8 @@ export const UpdateRequestRulesItemSkipRuleActionParametersPhasesItem = S.String
 export type UpdateRequestRulesItemSkipRuleActionParametersPhasesList = Array<
   UpdateRequestRulesItemSkipRuleActionParametersPhasesItem | (string & {})
 >;
-export const UpdateRequestRulesItemSkipRuleActionParametersPhasesList = /*@__PURE__*/ S.Array(
-  UpdateRequestRulesItemSkipRuleActionParametersPhasesItem,
-) as any as S.Schema<UpdateRequestRulesItemSkipRuleActionParametersPhasesList>;
+export const UpdateRequestRulesItemSkipRuleActionParametersPhasesList =
+  CreateRequestRulesItemSkipRuleActionParametersPhasesList as any as S.Schema<UpdateRequestRulesItemSkipRuleActionParametersPhasesList>;
 
 export type UpdateRequestRulesItemSkipRuleActionParametersProductsItem =
   | "bic"
@@ -63640,9 +58713,8 @@ export const UpdateRequestRulesItemSkipRuleActionParametersProductsItem = S.Stri
 export type UpdateRequestRulesItemSkipRuleActionParametersProductsList = Array<
   UpdateRequestRulesItemSkipRuleActionParametersProductsItem | (string & {})
 >;
-export const UpdateRequestRulesItemSkipRuleActionParametersProductsList = /*@__PURE__*/ S.Array(
-  UpdateRequestRulesItemSkipRuleActionParametersProductsItem,
-) as any as S.Schema<UpdateRequestRulesItemSkipRuleActionParametersProductsList>;
+export const UpdateRequestRulesItemSkipRuleActionParametersProductsList =
+  CreateRequestRulesItemSkipRuleActionParametersPhasesList as any as S.Schema<UpdateRequestRulesItemSkipRuleActionParametersProductsList>;
 
 export type UpdateRequestRulesItemSkipRuleActionParametersRulesValueList = Array<string>;
 export const UpdateRequestRulesItemSkipRuleActionParametersRulesValueList =
@@ -64481,37 +59553,19 @@ export interface UpdateResultRulesetRulesItemResponseCompressionRuleActionParame
   name?: UpdateResultRulesetRulesItemResponseCompressionRuleActionParametersAlgorithmsItemName | null;
 }
 export const UpdateResultRulesetRulesItemResponseCompressionRuleActionParametersAlgorithmsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(
-        S.NullOr(
-          UpdateResultRulesetRulesItemResponseCompressionRuleActionParametersAlgorithmsItemName,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "UpdateResultRulesetRulesItemResponseCompressionRuleActionParametersAlgorithmsItem",
-  }) as any as S.Schema<UpdateResultRulesetRulesItemResponseCompressionRuleActionParametersAlgorithmsItem>;
+  CreateResultRulesetRulesItemResponseCompressionRuleActionParametersAlgorithmsItem as any as S.Schema<UpdateResultRulesetRulesItemResponseCompressionRuleActionParametersAlgorithmsItem>;
 
 export type UpdateResultRulesetRulesItemResponseCompressionRuleActionParametersAlgorithmsList =
   Array<UpdateResultRulesetRulesItemResponseCompressionRuleActionParametersAlgorithmsItem>;
 export const UpdateResultRulesetRulesItemResponseCompressionRuleActionParametersAlgorithmsList =
-  /*@__PURE__*/ S.Array(
-    UpdateResultRulesetRulesItemResponseCompressionRuleActionParametersAlgorithmsItem,
-  ) as any as S.Schema<UpdateResultRulesetRulesItemResponseCompressionRuleActionParametersAlgorithmsList>;
+  CreateResultRulesetRulesItemResponseCompressionRuleActionParametersAlgorithmsList as any as S.Schema<UpdateResultRulesetRulesItemResponseCompressionRuleActionParametersAlgorithmsList>;
 
 export interface UpdateResultRulesetRulesItemResponseCompressionRuleActionParameters {
   /** Custom order for compression algorithms. */
   algorithms: UpdateResultRulesetRulesItemResponseCompressionRuleActionParametersAlgorithmsList;
 }
 export const UpdateResultRulesetRulesItemResponseCompressionRuleActionParameters =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      algorithms: UpdateResultRulesetRulesItemResponseCompressionRuleActionParametersAlgorithmsList,
-    }),
-  ).annotate({
-    identifier: "UpdateResultRulesetRulesItemResponseCompressionRuleActionParameters",
-  }) as any as S.Schema<UpdateResultRulesetRulesItemResponseCompressionRuleActionParameters>;
+  CreateResultRulesetRulesItemResponseCompressionRuleActionParameters as any as S.Schema<UpdateResultRulesetRulesItemResponseCompressionRuleActionParameters>;
 
 export type UpdateResultRulesetRulesItemResponseCompressionRuleCategoriesList = Array<string>;
 export const UpdateResultRulesetRulesItemResponseCompressionRuleCategoriesList =
@@ -64722,27 +59776,12 @@ export interface UpdateResultRulesetRulesItemExecuteRuleActionParametersOverride
   sensitivityLevel?: UpdateResultRulesetRulesItemExecuteRuleActionParametersOverridesCategoriesItemSensitivityLevel | null;
 }
 export const UpdateResultRulesetRulesItemExecuteRuleActionParametersOverridesCategoriesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      category: S.String,
-      action: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      sensitivityLevel: S.optional(
-        S.NullOr(
-          UpdateResultRulesetRulesItemExecuteRuleActionParametersOverridesCategoriesItemSensitivityLevel,
-        ).pipe(T.Body("sensitivity_level")),
-      ),
-    }),
-  ).annotate({
-    identifier: "UpdateResultRulesetRulesItemExecuteRuleActionParametersOverridesCategoriesItem",
-  }) as any as S.Schema<UpdateResultRulesetRulesItemExecuteRuleActionParametersOverridesCategoriesItem>;
+  CreateResultRulesetRulesItemExecuteRuleActionParametersOverridesCategoriesItem as any as S.Schema<UpdateResultRulesetRulesItemExecuteRuleActionParametersOverridesCategoriesItem>;
 
 export type UpdateResultRulesetRulesItemExecuteRuleActionParametersOverridesCategoriesList =
   Array<UpdateResultRulesetRulesItemExecuteRuleActionParametersOverridesCategoriesItem>;
 export const UpdateResultRulesetRulesItemExecuteRuleActionParametersOverridesCategoriesList =
-  /*@__PURE__*/ S.Array(
-    UpdateResultRulesetRulesItemExecuteRuleActionParametersOverridesCategoriesItem,
-  ) as any as S.Schema<UpdateResultRulesetRulesItemExecuteRuleActionParametersOverridesCategoriesList>;
+  CreateResultRulesetRulesItemExecuteRuleActionParametersOverridesCategoriesList as any as S.Schema<UpdateResultRulesetRulesItemExecuteRuleActionParametersOverridesCategoriesList>;
 
 export type UpdateResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesItemSensitivityLevel =
   | "default"
@@ -64765,28 +59804,12 @@ export interface UpdateResultRulesetRulesItemExecuteRuleActionParametersOverride
   sensitivityLevel?: UpdateResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesItemSensitivityLevel | null;
 }
 export const UpdateResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      action: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      scoreThreshold: S.optional(S.NullOr(S.Number).pipe(T.Body("score_threshold"))),
-      sensitivityLevel: S.optional(
-        S.NullOr(
-          UpdateResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesItemSensitivityLevel,
-        ).pipe(T.Body("sensitivity_level")),
-      ),
-    }),
-  ).annotate({
-    identifier: "UpdateResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesItem",
-  }) as any as S.Schema<UpdateResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesItem>;
+  RulesCreateResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesItem as any as S.Schema<UpdateResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesItem>;
 
 export type UpdateResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesList =
   Array<UpdateResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesItem>;
 export const UpdateResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesList =
-  /*@__PURE__*/ S.Array(
-    UpdateResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesItem,
-  ) as any as S.Schema<UpdateResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesList>;
+  RulesCreateResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesList as any as S.Schema<UpdateResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesList>;
 
 export type UpdateResultRulesetRulesItemExecuteRuleActionParametersOverridesSensitivityLevel =
   | "default"
@@ -64809,25 +59832,7 @@ export interface UpdateResultRulesetRulesItemExecuteRuleActionParametersOverride
   sensitivityLevel?: UpdateResultRulesetRulesItemExecuteRuleActionParametersOverridesSensitivityLevel | null;
 }
 export const UpdateResultRulesetRulesItemExecuteRuleActionParametersOverrides =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      action: S.optional(S.NullOr(S.String)),
-      categories: S.optional(
-        S.NullOr(UpdateResultRulesetRulesItemExecuteRuleActionParametersOverridesCategoriesList),
-      ),
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      rules: S.optional(
-        S.NullOr(UpdateResultRulesetRulesItemExecuteRuleActionParametersOverridesRulesList),
-      ),
-      sensitivityLevel: S.optional(
-        S.NullOr(
-          UpdateResultRulesetRulesItemExecuteRuleActionParametersOverridesSensitivityLevel,
-        ).pipe(T.Body("sensitivity_level")),
-      ),
-    }),
-  ).annotate({
-    identifier: "UpdateResultRulesetRulesItemExecuteRuleActionParametersOverrides",
-  }) as any as S.Schema<UpdateResultRulesetRulesItemExecuteRuleActionParametersOverrides>;
+  CreateResultRulesetRulesItemExecuteRuleActionParametersOverrides as any as S.Schema<UpdateResultRulesetRulesItemExecuteRuleActionParametersOverrides>;
 
 export interface UpdateResultRulesetRulesItemExecuteRuleActionParameters {
   /** The ID of the ruleset to execute. */
@@ -64837,21 +59842,8 @@ export interface UpdateResultRulesetRulesItemExecuteRuleActionParameters {
   /** A set of overrides to apply to the target ruleset. */
   overrides?: UpdateResultRulesetRulesItemExecuteRuleActionParametersOverrides | null;
 }
-export const UpdateResultRulesetRulesItemExecuteRuleActionParameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    matchedData: S.optional(
-      S.NullOr(RulesCreateResultRulesetRulesItemExecuteRuleActionParametersMatchedData).pipe(
-        T.Body("matched_data"),
-      ),
-    ),
-    overrides: S.optional(
-      S.NullOr(UpdateResultRulesetRulesItemExecuteRuleActionParametersOverrides),
-    ),
-  }),
-).annotate({
-  identifier: "UpdateResultRulesetRulesItemExecuteRuleActionParameters",
-}) as any as S.Schema<UpdateResultRulesetRulesItemExecuteRuleActionParameters>;
+export const UpdateResultRulesetRulesItemExecuteRuleActionParameters =
+  CreateResultRulesetRulesItemExecuteRuleActionParameters as any as S.Schema<UpdateResultRulesetRulesItemExecuteRuleActionParameters>;
 
 export type UpdateResultRulesetRulesItemExecuteRuleCategoriesList = Array<string>;
 export const UpdateResultRulesetRulesItemExecuteRuleCategoriesList =
@@ -65502,22 +60494,7 @@ export interface UpdateResultRulesetRulesItemRedirectRuleActionParametersFromVal
   statusCode?: UpdateResultRulesetRulesItemRedirectRuleActionParametersFromValueStatusCode | null;
 }
 export const UpdateResultRulesetRulesItemRedirectRuleActionParametersFromValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      targetUrl:
-        RulesCreateResultRulesetRulesItemRedirectRuleActionParametersFromValueTargetUrl.pipe(
-          T.Body("target_url"),
-        ),
-      preserveQueryString: S.optional(S.NullOr(S.Boolean).pipe(T.Body("preserve_query_string"))),
-      statusCode: S.optional(
-        S.NullOr(UpdateResultRulesetRulesItemRedirectRuleActionParametersFromValueStatusCode).pipe(
-          T.Body("status_code"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "UpdateResultRulesetRulesItemRedirectRuleActionParametersFromValue",
-  }) as any as S.Schema<UpdateResultRulesetRulesItemRedirectRuleActionParametersFromValue>;
+  CreateResultRulesetRulesItemRedirectRuleActionParametersFromValue as any as S.Schema<UpdateResultRulesetRulesItemRedirectRuleActionParametersFromValue>;
 
 export interface UpdateResultRulesetRulesItemRedirectRuleActionParameters {
   /** A redirect based on a bulk list lookup. */
@@ -65525,23 +60502,8 @@ export interface UpdateResultRulesetRulesItemRedirectRuleActionParameters {
   /** A redirect based on the request properties. */
   fromValue?: UpdateResultRulesetRulesItemRedirectRuleActionParametersFromValue | null;
 }
-export const UpdateResultRulesetRulesItemRedirectRuleActionParameters = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      fromList: S.optional(
-        S.NullOr(RulesCreateResultRulesetRulesItemRedirectRuleActionParametersFromList).pipe(
-          T.Body("from_list"),
-        ),
-      ),
-      fromValue: S.optional(
-        S.NullOr(UpdateResultRulesetRulesItemRedirectRuleActionParametersFromValue).pipe(
-          T.Body("from_value"),
-        ),
-      ),
-    }),
-).annotate({
-  identifier: "UpdateResultRulesetRulesItemRedirectRuleActionParameters",
-}) as any as S.Schema<UpdateResultRulesetRulesItemRedirectRuleActionParameters>;
+export const UpdateResultRulesetRulesItemRedirectRuleActionParameters =
+  CreateResultRulesetRulesItemRedirectRuleActionParameters as any as S.Schema<UpdateResultRulesetRulesItemRedirectRuleActionParameters>;
 
 export type UpdateResultRulesetRulesItemRedirectRuleCategoriesList = Array<string>;
 export const UpdateResultRulesetRulesItemRedirectRuleCategoriesList =
@@ -65648,16 +60610,7 @@ export interface UpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersV
   value: string;
 }
 export const UpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        UpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeaderOperation,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "UpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader",
-  }) as any as S.Schema<UpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader>;
+  RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader as any as S.Schema<UpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader>;
 
 export type UpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeaderOperation =
   "add";
@@ -65671,16 +60624,7 @@ export interface UpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersV
   operation: UpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeaderOperation;
 }
 export const UpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      operation:
-        UpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeaderOperation,
-    }),
-  ).annotate({
-    identifier:
-      "UpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader",
-  }) as any as S.Schema<UpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader>;
+  RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader as any as S.Schema<UpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader>;
 
 export type UpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeaderOperation =
   "set";
@@ -65694,16 +60638,7 @@ export interface UpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersV
   value: string;
 }
 export const UpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeader =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        UpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeaderOperation,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "UpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeader",
-  }) as any as S.Schema<UpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeader>;
+  RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader as any as S.Schema<UpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetStaticHeader>;
 
 export type UpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeaderOperation =
   "set";
@@ -65717,16 +60652,7 @@ export interface UpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersV
   operation: UpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeaderOperation;
 }
 export const UpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeader =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      operation:
-        UpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeaderOperation,
-    }),
-  ).annotate({
-    identifier:
-      "UpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeader",
-  }) as any as S.Schema<UpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeader>;
+  RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader as any as S.Schema<UpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueSetDynamicHeader>;
 
 export type UpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueRemoveHeaderOperation =
   "remove";
@@ -65738,14 +60664,7 @@ export interface UpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersV
   operation: UpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueRemoveHeaderOperation;
 }
 export const UpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueRemoveHeader =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        UpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueRemoveHeaderOperation,
-    }),
-  ).annotate({
-    identifier: "UpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueRemoveHeader",
-  }) as any as S.Schema<UpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueRemoveHeader>;
+  CreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueRemoveHeader as any as S.Schema<UpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueRemoveHeader>;
 
 export type UpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValue =
   | UpdateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddStaticHeader
@@ -66136,19 +61055,7 @@ export interface UpdateResultRulesetRulesItemServeErrorRuleActionParametersActio
   statusCode?: number | null;
 }
 export const UpdateResultRulesetRulesItemServeErrorRuleActionParametersActionParametersContent =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      content: S.String,
-      contentType: S.optional(
-        S.NullOr(
-          UpdateResultRulesetRulesItemServeErrorRuleActionParametersActionParametersContentContentType,
-        ).pipe(T.Body("content_type")),
-      ),
-      statusCode: S.optional(S.NullOr(S.Number).pipe(T.Body("status_code"))),
-    }),
-  ).annotate({
-    identifier: "UpdateResultRulesetRulesItemServeErrorRuleActionParametersActionParametersContent",
-  }) as any as S.Schema<UpdateResultRulesetRulesItemServeErrorRuleActionParametersActionParametersContent>;
+  CreateResultRulesetRulesItemServeErrorRuleActionParametersActionParametersContent as any as S.Schema<UpdateResultRulesetRulesItemServeErrorRuleActionParametersActionParametersContent>;
 
 export type UpdateResultRulesetRulesItemServeErrorRuleActionParametersActionParametersAssetContentType =
   | "application/json"
@@ -66167,19 +61074,7 @@ export interface UpdateResultRulesetRulesItemServeErrorRuleActionParametersActio
   statusCode?: number | null;
 }
 export const UpdateResultRulesetRulesItemServeErrorRuleActionParametersActionParametersAsset =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      assetName: S.String.pipe(T.Body("asset_name")),
-      contentType: S.optional(
-        S.NullOr(
-          UpdateResultRulesetRulesItemServeErrorRuleActionParametersActionParametersAssetContentType,
-        ).pipe(T.Body("content_type")),
-      ),
-      statusCode: S.optional(S.NullOr(S.Number).pipe(T.Body("status_code"))),
-    }),
-  ).annotate({
-    identifier: "UpdateResultRulesetRulesItemServeErrorRuleActionParametersActionParametersAsset",
-  }) as any as S.Schema<UpdateResultRulesetRulesItemServeErrorRuleActionParametersActionParametersAsset>;
+  CreateResultRulesetRulesItemServeErrorRuleActionParametersActionParametersAsset as any as S.Schema<UpdateResultRulesetRulesItemServeErrorRuleActionParametersActionParametersAsset>;
 
 export type UpdateResultRulesetRulesItemServeErrorRuleActionParameters =
   | UpdateResultRulesetRulesItemServeErrorRuleActionParametersActionParametersContent
@@ -66297,16 +61192,7 @@ export interface UpdateResultRulesetRulesItemSetCacheControlRuleActionParameters
   cloudflareOnly?: boolean | null;
 }
 export const UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective",
-  }) as any as S.Schema<UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective>;
 
 export type UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableRemoveDirectiveOperation =
   | "set"
@@ -66321,16 +61207,7 @@ export interface UpdateResultRulesetRulesItemSetCacheControlRuleActionParameters
   cloudflareOnly?: boolean | null;
 }
 export const UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableRemoveDirective",
-  }) as any as S.Schema<UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableRemoveDirective>;
 
 export type UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutable =
   | UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective
@@ -66358,16 +61235,7 @@ export interface UpdateResultRulesetRulesItemSetCacheControlRuleActionParameters
   cloudflareOnly?: boolean | null;
 }
 export const UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirectiveOperation,
-      value: S.Number,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective",
-  }) as any as S.Schema<UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective>;
+  CreateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective as any as S.Schema<UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective>;
 
 export type UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeRemoveDirectiveOperation =
   | "set"
@@ -66382,16 +61250,7 @@ export interface UpdateResultRulesetRulesItemSetCacheControlRuleActionParameters
   cloudflareOnly?: boolean | null;
 }
 export const UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeRemoveDirective",
-  }) as any as S.Schema<UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeRemoveDirective>;
 
 export type UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAge =
   | UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective
@@ -66417,16 +61276,7 @@ export interface UpdateResultRulesetRulesItemSetCacheControlRuleActionParameters
   cloudflareOnly?: boolean | null;
 }
 export const UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateSetDirective",
-  }) as any as S.Schema<UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateSetDirective>;
 
 export type UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateRemoveDirectiveOperation =
   | "set"
@@ -66441,16 +61291,7 @@ export interface UpdateResultRulesetRulesItemSetCacheControlRuleActionParameters
   cloudflareOnly?: boolean | null;
 }
 export const UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateRemoveDirective",
-  }) as any as S.Schema<UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateRemoveDirective>;
 
 export type UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidate =
   | UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMustRevalidateSetDirective
@@ -66476,16 +61317,7 @@ export interface UpdateResultRulesetRulesItemSetCacheControlRuleActionParameters
   cloudflareOnly?: boolean | null;
 }
 export const UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandSetDirective",
-  }) as any as S.Schema<UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandSetDirective>;
 
 export type UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandRemoveDirectiveOperation =
   | "set"
@@ -66500,16 +61332,7 @@ export interface UpdateResultRulesetRulesItemSetCacheControlRuleActionParameters
   cloudflareOnly?: boolean | null;
 }
 export const UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandRemoveDirective",
-  }) as any as S.Schema<UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandRemoveDirective>;
 
 export type UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstand =
   | UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersMustUnderstandSetDirective
@@ -66571,16 +61394,7 @@ export interface UpdateResultRulesetRulesItemSetCacheControlRuleActionParameters
   cloudflareOnly?: boolean | null;
 }
 export const UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoCacheRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoCacheRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoCacheRemoveDirective",
-  }) as any as S.Schema<UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoCacheRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoCacheRemoveDirective>;
 
 export type UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoCache =
   | UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoCacheSetDirective
@@ -66606,16 +61420,7 @@ export interface UpdateResultRulesetRulesItemSetCacheControlRuleActionParameters
   cloudflareOnly?: boolean | null;
 }
 export const UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreSetDirective",
-  }) as any as S.Schema<UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreSetDirective>;
 
 export type UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreRemoveDirectiveOperation =
   | "set"
@@ -66630,16 +61435,7 @@ export interface UpdateResultRulesetRulesItemSetCacheControlRuleActionParameters
   cloudflareOnly?: boolean | null;
 }
 export const UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreRemoveDirective",
-  }) as any as S.Schema<UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreRemoveDirective>;
 
 export type UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoStore =
   | UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoStoreSetDirective
@@ -66665,16 +61461,7 @@ export interface UpdateResultRulesetRulesItemSetCacheControlRuleActionParameters
   cloudflareOnly?: boolean | null;
 }
 export const UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformSetDirective",
-  }) as any as S.Schema<UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformSetDirective>;
 
 export type UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformRemoveDirectiveOperation =
   | "set"
@@ -66689,16 +61476,7 @@ export interface UpdateResultRulesetRulesItemSetCacheControlRuleActionParameters
   cloudflareOnly?: boolean | null;
 }
 export const UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformRemoveDirective",
-  }) as any as S.Schema<UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformRemoveDirective>;
 
 export type UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransform =
   | UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersNoTransformSetDirective
@@ -66760,16 +61538,7 @@ export interface UpdateResultRulesetRulesItemSetCacheControlRuleActionParameters
   cloudflareOnly?: boolean | null;
 }
 export const UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersPrivateRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersPrivateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersPrivateRemoveDirective",
-  }) as any as S.Schema<UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersPrivateRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersPrivateRemoveDirective>;
 
 export type UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersPrivate =
   | UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersPrivateSetDirective
@@ -66795,16 +61564,7 @@ export interface UpdateResultRulesetRulesItemSetCacheControlRuleActionParameters
   cloudflareOnly?: boolean | null;
 }
 export const UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateSetDirective",
-  }) as any as S.Schema<UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateSetDirective>;
 
 export type UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateRemoveDirectiveOperation =
   | "set"
@@ -66819,16 +61579,7 @@ export interface UpdateResultRulesetRulesItemSetCacheControlRuleActionParameters
   cloudflareOnly?: boolean | null;
 }
 export const UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateRemoveDirective",
-  }) as any as S.Schema<UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateRemoveDirective>;
 
 export type UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidate =
   | UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersProxyRevalidateSetDirective
@@ -66854,15 +61605,7 @@ export interface UpdateResultRulesetRulesItemSetCacheControlRuleActionParameters
   cloudflareOnly?: boolean | null;
 }
 export const UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersPublicSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersPublicSetDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier: "UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersPublicSetDirective",
-  }) as any as S.Schema<UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersPublicSetDirective>;
+  CreateResultRulesetRulesItemSetCacheControlRuleActionParametersPublicSetDirective as any as S.Schema<UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersPublicSetDirective>;
 
 export type UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersPublicRemoveDirectiveOperation =
   | "set"
@@ -66877,16 +61620,7 @@ export interface UpdateResultRulesetRulesItemSetCacheControlRuleActionParameters
   cloudflareOnly?: boolean | null;
 }
 export const UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersPublicRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersPublicRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersPublicRemoveDirective",
-  }) as any as S.Schema<UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersPublicRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersPublicRemoveDirective>;
 
 export type UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersPublic =
   | UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersPublicSetDirective
@@ -66914,17 +61648,7 @@ export interface UpdateResultRulesetRulesItemSetCacheControlRuleActionParameters
   cloudflareOnly?: boolean | null;
 }
 export const UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageSetDirectiveOperation,
-      value: S.Number,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageSetDirective",
-  }) as any as S.Schema<UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective as any as S.Schema<UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageSetDirective>;
 
 export type UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageRemoveDirectiveOperation =
   | "set"
@@ -66939,16 +61663,7 @@ export interface UpdateResultRulesetRulesItemSetCacheControlRuleActionParameters
   cloudflareOnly?: boolean | null;
 }
 export const UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageRemoveDirective",
-  }) as any as S.Schema<UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageRemoveDirective>;
 
 export type UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxage =
   | UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersSMaxageSetDirective
@@ -66976,17 +61691,7 @@ export interface UpdateResultRulesetRulesItemSetCacheControlRuleActionParameters
   cloudflareOnly?: boolean | null;
 }
 export const UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorSetDirectiveOperation,
-      value: S.Number,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorSetDirective",
-  }) as any as S.Schema<UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective as any as S.Schema<UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorSetDirective>;
 
 export type UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorRemoveDirectiveOperation =
   | "set"
@@ -67001,16 +61706,7 @@ export interface UpdateResultRulesetRulesItemSetCacheControlRuleActionParameters
   cloudflareOnly?: boolean | null;
 }
 export const UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorRemoveDirective",
-  }) as any as S.Schema<UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorRemoveDirective>;
 
 export type UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfError =
   | UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleIfErrorSetDirective
@@ -67038,17 +61734,7 @@ export interface UpdateResultRulesetRulesItemSetCacheControlRuleActionParameters
   cloudflareOnly?: boolean | null;
 }
 export const UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateSetDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateSetDirectiveOperation,
-      value: S.Number,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateSetDirective",
-  }) as any as S.Schema<UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateSetDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersMaxAgeSetDirective as any as S.Schema<UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateSetDirective>;
 
 export type UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirectiveOperation =
   | "set"
@@ -67063,16 +61749,7 @@ export interface UpdateResultRulesetRulesItemSetCacheControlRuleActionParameters
   cloudflareOnly?: boolean | null;
 }
 export const UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirective =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operation:
-        UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only"))),
-    }),
-  ).annotate({
-    identifier:
-      "UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirective",
-  }) as any as S.Schema<UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirective>;
+  RulesCreateResultRulesetRulesItemSetCacheControlRuleActionParametersImmutableSetDirective as any as S.Schema<UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirective>;
 
 export type UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidate =
   | UpdateResultRulesetRulesItemSetCacheControlRuleActionParametersStaleWhileRevalidateSetDirective
@@ -67298,14 +61975,7 @@ export interface UpdateResultRulesetRulesItemSetCacheSettingsRuleActionParameter
   default?: number | null;
 }
 export const UpdateResultRulesetRulesItemSetCacheSettingsRuleActionParametersBrowserTtl =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      mode: UpdateResultRulesetRulesItemSetCacheSettingsRuleActionParametersBrowserTtlMode,
-      default: S.optional(S.NullOr(S.Number)),
-    }),
-  ).annotate({
-    identifier: "UpdateResultRulesetRulesItemSetCacheSettingsRuleActionParametersBrowserTtl",
-  }) as any as S.Schema<UpdateResultRulesetRulesItemSetCacheSettingsRuleActionParametersBrowserTtl>;
+  RulesCreateResultRulesetRulesItemSetCacheSettingsRuleActionParametersBrowserTtl as any as S.Schema<UpdateResultRulesetRulesItemSetCacheSettingsRuleActionParametersBrowserTtl>;
 
 export type UpdateResultRulesetRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieCheckPresenceList =
   Array<string>;
@@ -67499,14 +62169,7 @@ export interface UpdateResultRulesetRulesItemSetCacheSettingsRuleActionParameter
   mode: UpdateResultRulesetRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequestsMode;
 }
 export const UpdateResultRulesetRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequests =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      mode: UpdateResultRulesetRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequestsMode,
-    }),
-  ).annotate({
-    identifier:
-      "UpdateResultRulesetRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequests",
-  }) as any as S.Schema<UpdateResultRulesetRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequests>;
+  RulesCreateResultRulesetRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequests as any as S.Schema<UpdateResultRulesetRulesItemSetCacheSettingsRuleActionParametersOriginRangeRequests>;
 
 export type UpdateResultRulesetRulesItemSetCacheSettingsRuleActionParametersServeStale =
   RulesCreateResultRulesetRulesItemSetCacheSettingsRuleActionParametersServeStale;
@@ -67530,13 +62193,7 @@ export interface UpdateResultRulesetRulesItemSetCacheSettingsRuleActionParameter
   action: UpdateResultRulesetRulesItemSetCacheSettingsRuleActionParametersVaryDefaultAction;
 }
 export const UpdateResultRulesetRulesItemSetCacheSettingsRuleActionParametersVaryDefault =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      action: UpdateResultRulesetRulesItemSetCacheSettingsRuleActionParametersVaryDefaultAction,
-    }),
-  ).annotate({
-    identifier: "UpdateResultRulesetRulesItemSetCacheSettingsRuleActionParametersVaryDefault",
-  }) as any as S.Schema<UpdateResultRulesetRulesItemSetCacheSettingsRuleActionParametersVaryDefault>;
+  CreateRequestRulesItemSetCacheSettingsRuleActionParametersVaryDefault as any as S.Schema<UpdateResultRulesetRulesItemSetCacheSettingsRuleActionParametersVaryDefault>;
 
 export type UpdateResultRulesetRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueAction =
   | "bypass"
@@ -67850,16 +62507,7 @@ export interface UpdateResultRulesetRulesItemSetCacheTagsRuleActionParametersAdd
   operation: UpdateResultRulesetRulesItemSetCacheTagsRuleActionParametersAddCacheTagsExpressionOperation;
 }
 export const UpdateResultRulesetRulesItemSetCacheTagsRuleActionParametersAddCacheTagsExpression =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      operation:
-        UpdateResultRulesetRulesItemSetCacheTagsRuleActionParametersAddCacheTagsExpressionOperation,
-    }),
-  ).annotate({
-    identifier:
-      "UpdateResultRulesetRulesItemSetCacheTagsRuleActionParametersAddCacheTagsExpression",
-  }) as any as S.Schema<UpdateResultRulesetRulesItemSetCacheTagsRuleActionParametersAddCacheTagsExpression>;
+  RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader as any as S.Schema<UpdateResultRulesetRulesItemSetCacheTagsRuleActionParametersAddCacheTagsExpression>;
 
 export type UpdateResultRulesetRulesItemSetCacheTagsRuleActionParametersRemoveCacheTagsValuesOperation =
   | "add"
@@ -67905,16 +62553,7 @@ export interface UpdateResultRulesetRulesItemSetCacheTagsRuleActionParametersRem
   operation: UpdateResultRulesetRulesItemSetCacheTagsRuleActionParametersRemoveCacheTagsExpressionOperation;
 }
 export const UpdateResultRulesetRulesItemSetCacheTagsRuleActionParametersRemoveCacheTagsExpression =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      operation:
-        UpdateResultRulesetRulesItemSetCacheTagsRuleActionParametersRemoveCacheTagsExpressionOperation,
-    }),
-  ).annotate({
-    identifier:
-      "UpdateResultRulesetRulesItemSetCacheTagsRuleActionParametersRemoveCacheTagsExpression",
-  }) as any as S.Schema<UpdateResultRulesetRulesItemSetCacheTagsRuleActionParametersRemoveCacheTagsExpression>;
+  RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader as any as S.Schema<UpdateResultRulesetRulesItemSetCacheTagsRuleActionParametersRemoveCacheTagsExpression>;
 
 export type UpdateResultRulesetRulesItemSetCacheTagsRuleActionParametersSetCacheTagsValuesOperation =
   | "add"
@@ -67960,16 +62599,7 @@ export interface UpdateResultRulesetRulesItemSetCacheTagsRuleActionParametersSet
   operation: UpdateResultRulesetRulesItemSetCacheTagsRuleActionParametersSetCacheTagsExpressionOperation;
 }
 export const UpdateResultRulesetRulesItemSetCacheTagsRuleActionParametersSetCacheTagsExpression =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expression: S.String,
-      operation:
-        UpdateResultRulesetRulesItemSetCacheTagsRuleActionParametersSetCacheTagsExpressionOperation,
-    }),
-  ).annotate({
-    identifier:
-      "UpdateResultRulesetRulesItemSetCacheTagsRuleActionParametersSetCacheTagsExpression",
-  }) as any as S.Schema<UpdateResultRulesetRulesItemSetCacheTagsRuleActionParametersSetCacheTagsExpression>;
+  RulesCreateResultRulesetRulesItemRewriteRuleActionParametersHeadersValueAddDynamicHeader as any as S.Schema<UpdateResultRulesetRulesItemSetCacheTagsRuleActionParametersSetCacheTagsExpression>;
 
 export type UpdateResultRulesetRulesItemSetCacheTagsRuleActionParameters =
   | UpdateResultRulesetRulesItemSetCacheTagsRuleActionParametersAddCacheTagsValues
@@ -68373,9 +63003,8 @@ export const UpdateResultRulesetRulesItemSkipRuleActionParametersPhasesItem = S.
 
 export type UpdateResultRulesetRulesItemSkipRuleActionParametersPhasesList =
   Array<UpdateResultRulesetRulesItemSkipRuleActionParametersPhasesItem>;
-export const UpdateResultRulesetRulesItemSkipRuleActionParametersPhasesList = /*@__PURE__*/ S.Array(
-  UpdateResultRulesetRulesItemSkipRuleActionParametersPhasesItem,
-) as any as S.Schema<UpdateResultRulesetRulesItemSkipRuleActionParametersPhasesList>;
+export const UpdateResultRulesetRulesItemSkipRuleActionParametersPhasesList =
+  CreateRequestRulesItemSkipRuleActionParametersPhasesList as any as S.Schema<UpdateResultRulesetRulesItemSkipRuleActionParametersPhasesList>;
 
 export type UpdateResultRulesetRulesItemSkipRuleActionParametersProductsItem =
   | "bic"
@@ -68390,9 +63019,7 @@ export const UpdateResultRulesetRulesItemSkipRuleActionParametersProductsItem = 
 export type UpdateResultRulesetRulesItemSkipRuleActionParametersProductsList =
   Array<UpdateResultRulesetRulesItemSkipRuleActionParametersProductsItem>;
 export const UpdateResultRulesetRulesItemSkipRuleActionParametersProductsList =
-  /*@__PURE__*/ S.Array(
-    UpdateResultRulesetRulesItemSkipRuleActionParametersProductsItem,
-  ) as any as S.Schema<UpdateResultRulesetRulesItemSkipRuleActionParametersProductsList>;
+  RulesCreateResultRulesetRulesItemSkipRuleActionParametersPhasesList as any as S.Schema<UpdateResultRulesetRulesItemSkipRuleActionParametersProductsList>;
 
 export type UpdateResultRulesetRulesItemSkipRuleActionParametersRulesValueList = Array<string>;
 export const UpdateResultRulesetRulesItemSkipRuleActionParametersRulesValueList =

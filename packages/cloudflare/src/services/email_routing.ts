@@ -483,20 +483,12 @@ export interface RulesCreateResponseMatchersItem {
   /** Value for matcher. */
   value?: string | null;
 }
-export const RulesCreateResponseMatchersItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: RulesCreateResponseMatchersItemType,
-    field: S.optional(S.NullOr(RulesCreateResponseMatchersItemField)),
-    value: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "RulesCreateResponseMatchersItem",
-}) as any as S.Schema<RulesCreateResponseMatchersItem>;
+export const RulesCreateResponseMatchersItem =
+  AccountRulesListResultItemMatchersItem as any as S.Schema<RulesCreateResponseMatchersItem>;
 
 export type RulesCreateResponseMatchersList = Array<RulesCreateResponseMatchersItem>;
-export const RulesCreateResponseMatchersList = /*@__PURE__*/ S.Array(
-  RulesCreateResponseMatchersItem,
-) as any as S.Schema<RulesCreateResponseMatchersList>;
+export const RulesCreateResponseMatchersList =
+  AccountRulesListResultItemMatchersList as any as S.Schema<RulesCreateResponseMatchersList>;
 
 export type RulesCreateResponseSource = "api" | "wrangler";
 export const RulesCreateResponseSource = S.String;
@@ -613,19 +605,7 @@ export interface DnsDeleteResponse {
   /** Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier) */
   tag?: string | null;
 }
-export const DnsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    enabled: S.Boolean,
-    name: S.String,
-    created: S.optional(S.NullOr(S.String)),
-    modified: S.optional(S.NullOr(S.String)),
-    skipWizard: S.optional(S.NullOr(S.Boolean).pipe(T.Body("skip_wizard"))),
-    status: S.optional(S.NullOr(DnsDeleteResponseStatus)),
-    supportSubaddress: S.optional(S.NullOr(S.Boolean).pipe(T.Body("support_subaddress"))),
-    tag: S.optional(S.NullOr(S.String)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "DnsDeleteResponse" }) as any as S.Schema<DnsDeleteResponse>;
+export const DnsDeleteResponse = CreateDnsResponse as any as S.Schema<DnsDeleteResponse>;
 
 export interface DeleteRuleRequest {
   /** Identifier. */
@@ -689,20 +669,12 @@ export interface RulesDeleteResponseMatchersItem {
   /** Value for matcher. */
   value?: string | null;
 }
-export const RulesDeleteResponseMatchersItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: RulesDeleteResponseMatchersItemType,
-    field: S.optional(S.NullOr(RulesDeleteResponseMatchersItemField)),
-    value: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "RulesDeleteResponseMatchersItem",
-}) as any as S.Schema<RulesDeleteResponseMatchersItem>;
+export const RulesDeleteResponseMatchersItem =
+  AccountRulesListResultItemMatchersItem as any as S.Schema<RulesDeleteResponseMatchersItem>;
 
 export type RulesDeleteResponseMatchersList = Array<RulesDeleteResponseMatchersItem>;
-export const RulesDeleteResponseMatchersList = /*@__PURE__*/ S.Array(
-  RulesDeleteResponseMatchersItem,
-) as any as S.Schema<RulesDeleteResponseMatchersList>;
+export const RulesDeleteResponseMatchersList =
+  AccountRulesListResultItemMatchersList as any as S.Schema<RulesDeleteResponseMatchersList>;
 
 export type RulesDeleteResponseSource = "api" | "wrangler";
 export const RulesDeleteResponseSource = S.String;
@@ -848,19 +820,7 @@ export interface EditResponse {
   /** Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier) */
   tag?: string | null;
 }
-export const EditResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    enabled: S.Boolean,
-    name: S.String,
-    created: S.optional(S.NullOr(S.String)),
-    modified: S.optional(S.NullOr(S.String)),
-    skipWizard: S.optional(S.NullOr(S.Boolean).pipe(T.Body("skip_wizard"))),
-    status: S.optional(S.NullOr(EditResponseStatus)),
-    supportSubaddress: S.optional(S.NullOr(S.Boolean).pipe(T.Body("support_subaddress"))),
-    tag: S.optional(S.NullOr(S.String)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "EditResponse" }) as any as S.Schema<EditResponse>;
+export const EditResponse = CreateDnsResponse as any as S.Schema<EditResponse>;
 
 export type EditAddressRequestStatus = "unverified" | "verified";
 export const EditAddressRequestStatus = S.String;
@@ -949,21 +909,8 @@ export interface EnableEmailRoutingResponse {
   /** Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier) */
   tag?: string | null;
 }
-export const EnableEmailRoutingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    enabled: S.Boolean,
-    name: S.String,
-    created: S.optional(S.NullOr(S.String)),
-    modified: S.optional(S.NullOr(S.String)),
-    skipWizard: S.optional(S.NullOr(S.Boolean).pipe(T.Body("skip_wizard"))),
-    status: S.optional(S.NullOr(EnableResponseStatus)),
-    supportSubaddress: S.optional(S.NullOr(S.Boolean).pipe(T.Body("support_subaddress"))),
-    tag: S.optional(S.NullOr(S.String)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "EnableEmailRoutingResponse",
-}) as any as S.Schema<EnableEmailRoutingResponse>;
+export const EnableEmailRoutingResponse =
+  DisableEmailRoutingResponse as any as S.Schema<EnableEmailRoutingResponse>;
 
 export interface GetAddressRequest {
   /** Identifier. */
@@ -1112,19 +1059,8 @@ export interface GetEmailRoutingResponse {
   /** Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier) */
   tag?: string | null;
 }
-export const GetEmailRoutingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    enabled: S.Boolean,
-    name: S.String,
-    created: S.optional(S.NullOr(S.String)),
-    modified: S.optional(S.NullOr(S.String)),
-    skipWizard: S.optional(S.NullOr(S.Boolean).pipe(T.Body("skip_wizard"))),
-    status: S.optional(S.NullOr(GetResponseStatus)),
-    supportSubaddress: S.optional(S.NullOr(S.Boolean).pipe(T.Body("support_subaddress"))),
-    tag: S.optional(S.NullOr(S.String)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "GetEmailRoutingResponse" }) as any as S.Schema<GetEmailRoutingResponse>;
+export const GetEmailRoutingResponse =
+  CreateDnsResponse as any as S.Schema<GetEmailRoutingResponse>;
 
 export interface GetRuleRequest {
   /** Identifier. */
@@ -1188,20 +1124,12 @@ export interface RulesGetResponseMatchersItem {
   /** Value for matcher. */
   value?: string | null;
 }
-export const RulesGetResponseMatchersItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: RulesGetResponseMatchersItemType,
-    field: S.optional(S.NullOr(RulesGetResponseMatchersItemField)),
-    value: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "RulesGetResponseMatchersItem",
-}) as any as S.Schema<RulesGetResponseMatchersItem>;
+export const RulesGetResponseMatchersItem =
+  AccountRulesListResultItemMatchersItem as any as S.Schema<RulesGetResponseMatchersItem>;
 
 export type RulesGetResponseMatchersList = Array<RulesGetResponseMatchersItem>;
-export const RulesGetResponseMatchersList = /*@__PURE__*/ S.Array(
-  RulesGetResponseMatchersItem,
-) as any as S.Schema<RulesGetResponseMatchersList>;
+export const RulesGetResponseMatchersList =
+  AccountRulesListResultItemMatchersList as any as S.Schema<RulesGetResponseMatchersList>;
 
 export type RulesGetResponseSource = "api" | "wrangler";
 export const RulesGetResponseSource = S.String;
@@ -1484,19 +1412,7 @@ export interface PatchDnsResponse {
   /** Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier) */
   tag?: string | null;
 }
-export const PatchDnsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    enabled: S.Boolean,
-    name: S.String,
-    created: S.optional(S.NullOr(S.String)),
-    modified: S.optional(S.NullOr(S.String)),
-    skipWizard: S.optional(S.NullOr(S.Boolean).pipe(T.Body("skip_wizard"))),
-    status: S.optional(S.NullOr(DnsEditResponseStatus)),
-    supportSubaddress: S.optional(S.NullOr(S.Boolean).pipe(T.Body("support_subaddress"))),
-    tag: S.optional(S.NullOr(S.String)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "PatchDnsResponse" }) as any as S.Schema<PatchDnsResponse>;
+export const PatchDnsResponse = CreateDnsResponse as any as S.Schema<PatchDnsResponse>;
 
 export type RulesCatchAllsUpdateRequestActionsItemType = "drop" | "forward" | "worker";
 export const RulesCatchAllsUpdateRequestActionsItemType = S.String;
@@ -1532,19 +1448,13 @@ export interface RulesCatchAllsUpdateRequestMatchersItem {
   /** Type of matcher. Default is 'all'. */
   type: RulesCatchAllsUpdateRequestMatchersItemType | (string & {});
 }
-export const RulesCatchAllsUpdateRequestMatchersItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: RulesCatchAllsUpdateRequestMatchersItemType,
-  }),
-).annotate({
-  identifier: "RulesCatchAllsUpdateRequestMatchersItem",
-}) as any as S.Schema<RulesCatchAllsUpdateRequestMatchersItem>;
+export const RulesCatchAllsUpdateRequestMatchersItem =
+  RulesCatchAllsGetResponseMatchersItem as any as S.Schema<RulesCatchAllsUpdateRequestMatchersItem>;
 
 export type RulesCatchAllsUpdateRequestMatchersList =
   Array<RulesCatchAllsUpdateRequestMatchersItem>;
-export const RulesCatchAllsUpdateRequestMatchersList = /*@__PURE__*/ S.Array(
-  RulesCatchAllsUpdateRequestMatchersItem,
-) as any as S.Schema<RulesCatchAllsUpdateRequestMatchersList>;
+export const RulesCatchAllsUpdateRequestMatchersList =
+  RulesCatchAllsGetResponseMatchersList as any as S.Schema<RulesCatchAllsUpdateRequestMatchersList>;
 
 export type RulesCatchAllsUpdateRequestSource = "api" | "wrangler";
 export const RulesCatchAllsUpdateRequestSource = S.String;
@@ -1616,19 +1526,13 @@ export interface RulesCatchAllsUpdateResponseMatchersItem {
   /** Type of matcher. Default is 'all'. */
   type: RulesCatchAllsUpdateResponseMatchersItemType;
 }
-export const RulesCatchAllsUpdateResponseMatchersItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: RulesCatchAllsUpdateResponseMatchersItemType,
-  }),
-).annotate({
-  identifier: "RulesCatchAllsUpdateResponseMatchersItem",
-}) as any as S.Schema<RulesCatchAllsUpdateResponseMatchersItem>;
+export const RulesCatchAllsUpdateResponseMatchersItem =
+  RulesCatchAllsGetResponseMatchersItem as any as S.Schema<RulesCatchAllsUpdateResponseMatchersItem>;
 
 export type RulesCatchAllsUpdateResponseMatchersList =
   Array<RulesCatchAllsUpdateResponseMatchersItem>;
-export const RulesCatchAllsUpdateResponseMatchersList = /*@__PURE__*/ S.Array(
-  RulesCatchAllsUpdateResponseMatchersItem,
-) as any as S.Schema<RulesCatchAllsUpdateResponseMatchersList>;
+export const RulesCatchAllsUpdateResponseMatchersList =
+  RulesCatchAllsGetResponseMatchersList as any as S.Schema<RulesCatchAllsUpdateResponseMatchersList>;
 
 export type RulesCatchAllsUpdateResponseSource = "api" | "wrangler";
 export const RulesCatchAllsUpdateResponseSource = S.String;
@@ -1726,20 +1630,12 @@ export interface RulesListResultItemMatchersItem {
   /** Value for matcher. */
   value?: string | null;
 }
-export const RulesListResultItemMatchersItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: RulesListResultItemMatchersItemType,
-    field: S.optional(S.NullOr(RulesListResultItemMatchersItemField)),
-    value: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "RulesListResultItemMatchersItem",
-}) as any as S.Schema<RulesListResultItemMatchersItem>;
+export const RulesListResultItemMatchersItem =
+  AccountRulesListResultItemMatchersItem as any as S.Schema<RulesListResultItemMatchersItem>;
 
 export type RulesListResultItemMatchersList = Array<RulesListResultItemMatchersItem>;
-export const RulesListResultItemMatchersList = /*@__PURE__*/ S.Array(
-  RulesListResultItemMatchersItem,
-) as any as S.Schema<RulesListResultItemMatchersList>;
+export const RulesListResultItemMatchersList =
+  AccountRulesListResultItemMatchersList as any as S.Schema<RulesListResultItemMatchersList>;
 
 export type RulesListResultItemSource = "api" | "wrangler";
 export const RulesListResultItemSource = S.String;
@@ -1856,19 +1752,7 @@ export interface UnlockResponse {
   /** Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier) */
   tag?: string | null;
 }
-export const UnlockResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    enabled: S.Boolean,
-    name: S.String,
-    created: S.optional(S.NullOr(S.String)),
-    modified: S.optional(S.NullOr(S.String)),
-    skipWizard: S.optional(S.NullOr(S.Boolean).pipe(T.Body("skip_wizard"))),
-    status: S.optional(S.NullOr(UnlockResponseStatus)),
-    supportSubaddress: S.optional(S.NullOr(S.Boolean).pipe(T.Body("support_subaddress"))),
-    tag: S.optional(S.NullOr(S.String)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "UnlockResponse" }) as any as S.Schema<UnlockResponse>;
+export const UnlockResponse = CreateDnsResponse as any as S.Schema<UnlockResponse>;
 
 export interface UpdateRequest {
   /** Identifier. */
@@ -1920,19 +1804,7 @@ export interface UpdateResponse {
   /** Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier) */
   tag?: string | null;
 }
-export const UpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    enabled: S.Boolean,
-    name: S.String,
-    created: S.optional(S.NullOr(S.String)),
-    modified: S.optional(S.NullOr(S.String)),
-    skipWizard: S.optional(S.NullOr(S.Boolean).pipe(T.Body("skip_wizard"))),
-    status: S.optional(S.NullOr(UpdateResponseStatus)),
-    supportSubaddress: S.optional(S.NullOr(S.Boolean).pipe(T.Body("support_subaddress"))),
-    tag: S.optional(S.NullOr(S.String)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "UpdateResponse" }) as any as S.Schema<UpdateResponse>;
+export const UpdateResponse = CreateDnsResponse as any as S.Schema<UpdateResponse>;
 
 export type RulesUpdateRequestActionsItemType = "drop" | "forward" | "worker";
 export const RulesUpdateRequestActionsItemType = S.String;
@@ -1975,20 +1847,12 @@ export interface RulesUpdateRequestMatchersItem {
   /** Value for matcher. */
   value?: string;
 }
-export const RulesUpdateRequestMatchersItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: RulesUpdateRequestMatchersItemType,
-    field: S.optional(RulesUpdateRequestMatchersItemField),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RulesUpdateRequestMatchersItem",
-}) as any as S.Schema<RulesUpdateRequestMatchersItem>;
+export const RulesUpdateRequestMatchersItem =
+  RulesCreateRequestMatchersItem as any as S.Schema<RulesUpdateRequestMatchersItem>;
 
 export type RulesUpdateRequestMatchersList = Array<RulesUpdateRequestMatchersItem>;
-export const RulesUpdateRequestMatchersList = /*@__PURE__*/ S.Array(
-  RulesUpdateRequestMatchersItem,
-) as any as S.Schema<RulesUpdateRequestMatchersList>;
+export const RulesUpdateRequestMatchersList =
+  RulesCreateRequestMatchersList as any as S.Schema<RulesUpdateRequestMatchersList>;
 
 export type RulesUpdateRequestSource = "api" | "wrangler";
 export const RulesUpdateRequestSource = S.String;
@@ -2076,20 +1940,12 @@ export interface RulesUpdateResponseMatchersItem {
   /** Value for matcher. */
   value?: string | null;
 }
-export const RulesUpdateResponseMatchersItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: RulesUpdateResponseMatchersItemType,
-    field: S.optional(S.NullOr(RulesUpdateResponseMatchersItemField)),
-    value: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "RulesUpdateResponseMatchersItem",
-}) as any as S.Schema<RulesUpdateResponseMatchersItem>;
+export const RulesUpdateResponseMatchersItem =
+  AccountRulesListResultItemMatchersItem as any as S.Schema<RulesUpdateResponseMatchersItem>;
 
 export type RulesUpdateResponseMatchersList = Array<RulesUpdateResponseMatchersItem>;
-export const RulesUpdateResponseMatchersList = /*@__PURE__*/ S.Array(
-  RulesUpdateResponseMatchersItem,
-) as any as S.Schema<RulesUpdateResponseMatchersList>;
+export const RulesUpdateResponseMatchersList =
+  AccountRulesListResultItemMatchersList as any as S.Schema<RulesUpdateResponseMatchersList>;
 
 export type RulesUpdateResponseSource = "api" | "wrangler";
 export const RulesUpdateResponseSource = S.String;

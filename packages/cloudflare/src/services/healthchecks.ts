@@ -220,9 +220,8 @@ export type CreateResponseCheckRegionsItem =
 export const CreateResponseCheckRegionsItem = S.String;
 
 export type CreateResponseCheckRegionsList = Array<CreateResponseCheckRegionsItem>;
-export const CreateResponseCheckRegionsList = /*@__PURE__*/ S.Array(
-  CreateResponseCheckRegionsItem,
-) as any as S.Schema<CreateResponseCheckRegionsList>;
+export const CreateResponseCheckRegionsList =
+  CreateRequestCheckRegionsList as any as S.Schema<CreateResponseCheckRegionsList>;
 
 export type CreateResponseHttpConfigExpectedCodesList = Array<string>;
 export const CreateResponseHttpConfigExpectedCodesList =
@@ -377,9 +376,8 @@ export const PreviewsCreateRequestCheckRegionsItem = S.String;
 export type PreviewsCreateRequestCheckRegionsList = Array<
   PreviewsCreateRequestCheckRegionsItem | (string & {})
 >;
-export const PreviewsCreateRequestCheckRegionsList = /*@__PURE__*/ S.Array(
-  PreviewsCreateRequestCheckRegionsItem,
-) as any as S.Schema<PreviewsCreateRequestCheckRegionsList>;
+export const PreviewsCreateRequestCheckRegionsList =
+  CreateRequestCheckRegionsList as any as S.Schema<PreviewsCreateRequestCheckRegionsList>;
 
 export type PreviewsCreateRequestHttpConfigExpectedCodesList = Array<string>;
 export const PreviewsCreateRequestHttpConfigExpectedCodesList =
@@ -520,9 +518,8 @@ export type PreviewsCreateResponseCheckRegionsItem =
 export const PreviewsCreateResponseCheckRegionsItem = S.String;
 
 export type PreviewsCreateResponseCheckRegionsList = Array<PreviewsCreateResponseCheckRegionsItem>;
-export const PreviewsCreateResponseCheckRegionsList = /*@__PURE__*/ S.Array(
-  PreviewsCreateResponseCheckRegionsItem,
-) as any as S.Schema<PreviewsCreateResponseCheckRegionsList>;
+export const PreviewsCreateResponseCheckRegionsList =
+  CreateRequestCheckRegionsList as any as S.Schema<PreviewsCreateResponseCheckRegionsList>;
 
 export type PreviewsCreateResponseHttpConfigExpectedCodesList = Array<string>;
 export const PreviewsCreateResponseHttpConfigExpectedCodesList =
@@ -760,9 +757,8 @@ export type GetResponseCheckRegionsItem =
 export const GetResponseCheckRegionsItem = S.String;
 
 export type GetResponseCheckRegionsList = Array<GetResponseCheckRegionsItem>;
-export const GetResponseCheckRegionsList = /*@__PURE__*/ S.Array(
-  GetResponseCheckRegionsItem,
-) as any as S.Schema<GetResponseCheckRegionsList>;
+export const GetResponseCheckRegionsList =
+  CreateRequestCheckRegionsList as any as S.Schema<GetResponseCheckRegionsList>;
 
 export type GetResponseHttpConfigExpectedCodesList = Array<string>;
 export const GetResponseHttpConfigExpectedCodesList =
@@ -826,12 +822,8 @@ export interface GetResponseTcpConfig {
   /** Port number to connect to for the health check. Defaults to 80. */
   port?: number | null;
 }
-export const GetResponseTcpConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    method: S.optional(S.NullOr(GetResponseTcpConfigMethod)),
-    port: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({ identifier: "GetResponseTcpConfig" }) as any as S.Schema<GetResponseTcpConfig>;
+export const GetResponseTcpConfig =
+  CreateResponseTcpConfig as any as S.Schema<GetResponseTcpConfig>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetHealthcheckResponse {
@@ -932,9 +924,8 @@ export type PreviewsGetResponseCheckRegionsItem =
 export const PreviewsGetResponseCheckRegionsItem = S.String;
 
 export type PreviewsGetResponseCheckRegionsList = Array<PreviewsGetResponseCheckRegionsItem>;
-export const PreviewsGetResponseCheckRegionsList = /*@__PURE__*/ S.Array(
-  PreviewsGetResponseCheckRegionsItem,
-) as any as S.Schema<PreviewsGetResponseCheckRegionsList>;
+export const PreviewsGetResponseCheckRegionsList =
+  CreateRequestCheckRegionsList as any as S.Schema<PreviewsGetResponseCheckRegionsList>;
 
 export type PreviewsGetResponseHttpConfigExpectedCodesList = Array<string>;
 export const PreviewsGetResponseHttpConfigExpectedCodesList =
@@ -1000,14 +991,8 @@ export interface PreviewsGetResponseTcpConfig {
   /** Port number to connect to for the health check. Defaults to 80. */
   port?: number | null;
 }
-export const PreviewsGetResponseTcpConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    method: S.optional(S.NullOr(PreviewsGetResponseTcpConfigMethod)),
-    port: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "PreviewsGetResponseTcpConfig",
-}) as any as S.Schema<PreviewsGetResponseTcpConfig>;
+export const PreviewsGetResponseTcpConfig =
+  PreviewsCreateResponseTcpConfig as any as S.Schema<PreviewsGetResponseTcpConfig>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetPreviewResponse {
@@ -1107,9 +1092,8 @@ export type ListResultItemCheckRegionsItem =
 export const ListResultItemCheckRegionsItem = S.String;
 
 export type ListResultItemCheckRegionsList = Array<ListResultItemCheckRegionsItem>;
-export const ListResultItemCheckRegionsList = /*@__PURE__*/ S.Array(
-  ListResultItemCheckRegionsItem,
-) as any as S.Schema<ListResultItemCheckRegionsList>;
+export const ListResultItemCheckRegionsList =
+  CreateRequestCheckRegionsList as any as S.Schema<ListResultItemCheckRegionsList>;
 
 export type ListResultItemHttpConfigExpectedCodesList = Array<string>;
 export const ListResultItemHttpConfigExpectedCodesList =
@@ -1173,12 +1157,8 @@ export interface ListResultItemTcpConfig {
   /** Port number to connect to for the health check. Defaults to 80. */
   port?: number | null;
 }
-export const ListResultItemTcpConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    method: S.optional(S.NullOr(ListResultItemTcpConfigMethod)),
-    port: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({ identifier: "ListResultItemTcpConfig" }) as any as S.Schema<ListResultItemTcpConfig>;
+export const ListResultItemTcpConfig =
+  CreateResponseTcpConfig as any as S.Schema<ListResultItemTcpConfig>;
 
 export interface ListResultItem {
   /** Identifier */
@@ -1277,9 +1257,8 @@ export type EditRequestCheckRegionsItem =
 export const EditRequestCheckRegionsItem = S.String;
 
 export type EditRequestCheckRegionsList = Array<EditRequestCheckRegionsItem | (string & {})>;
-export const EditRequestCheckRegionsList = /*@__PURE__*/ S.Array(
-  EditRequestCheckRegionsItem,
-) as any as S.Schema<EditRequestCheckRegionsList>;
+export const EditRequestCheckRegionsList =
+  CreateRequestCheckRegionsList as any as S.Schema<EditRequestCheckRegionsList>;
 
 export type EditRequestHttpConfigExpectedCodesList = Array<string>;
 export const EditRequestHttpConfigExpectedCodesList =
@@ -1340,12 +1319,7 @@ export interface EditRequestTcpConfig {
   /** Port number to connect to for the health check. Defaults to 80. */
   port?: number;
 }
-export const EditRequestTcpConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    method: S.optional(EditRequestTcpConfigMethod),
-    port: S.optional(S.Number),
-  }),
-).annotate({ identifier: "EditRequestTcpConfig" }) as any as S.Schema<EditRequestTcpConfig>;
+export const EditRequestTcpConfig = CreateRequestTcpConfig as any as S.Schema<EditRequestTcpConfig>;
 
 export interface PatchHealthcheckRequest {
   /** Identifier */
@@ -1421,9 +1395,8 @@ export type EditResponseCheckRegionsItem =
 export const EditResponseCheckRegionsItem = S.String;
 
 export type EditResponseCheckRegionsList = Array<EditResponseCheckRegionsItem>;
-export const EditResponseCheckRegionsList = /*@__PURE__*/ S.Array(
-  EditResponseCheckRegionsItem,
-) as any as S.Schema<EditResponseCheckRegionsList>;
+export const EditResponseCheckRegionsList =
+  CreateRequestCheckRegionsList as any as S.Schema<EditResponseCheckRegionsList>;
 
 export type EditResponseHttpConfigExpectedCodesList = Array<string>;
 export const EditResponseHttpConfigExpectedCodesList =
@@ -1487,12 +1460,8 @@ export interface EditResponseTcpConfig {
   /** Port number to connect to for the health check. Defaults to 80. */
   port?: number | null;
 }
-export const EditResponseTcpConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    method: S.optional(S.NullOr(EditResponseTcpConfigMethod)),
-    port: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({ identifier: "EditResponseTcpConfig" }) as any as S.Schema<EditResponseTcpConfig>;
+export const EditResponseTcpConfig =
+  CreateResponseTcpConfig as any as S.Schema<EditResponseTcpConfig>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchHealthcheckResponse {
@@ -1572,9 +1541,8 @@ export type UpdateRequestCheckRegionsItem =
 export const UpdateRequestCheckRegionsItem = S.String;
 
 export type UpdateRequestCheckRegionsList = Array<UpdateRequestCheckRegionsItem | (string & {})>;
-export const UpdateRequestCheckRegionsList = /*@__PURE__*/ S.Array(
-  UpdateRequestCheckRegionsItem,
-) as any as S.Schema<UpdateRequestCheckRegionsList>;
+export const UpdateRequestCheckRegionsList =
+  CreateRequestCheckRegionsList as any as S.Schema<UpdateRequestCheckRegionsList>;
 
 export type UpdateRequestHttpConfigExpectedCodesList = Array<string>;
 export const UpdateRequestHttpConfigExpectedCodesList =
@@ -1635,12 +1603,8 @@ export interface UpdateRequestTcpConfig {
   /** Port number to connect to for the health check. Defaults to 80. */
   port?: number;
 }
-export const UpdateRequestTcpConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    method: S.optional(UpdateRequestTcpConfigMethod),
-    port: S.optional(S.Number),
-  }),
-).annotate({ identifier: "UpdateRequestTcpConfig" }) as any as S.Schema<UpdateRequestTcpConfig>;
+export const UpdateRequestTcpConfig =
+  CreateRequestTcpConfig as any as S.Schema<UpdateRequestTcpConfig>;
 
 export interface UpdateHealthcheckRequest {
   /** Identifier */
@@ -1716,9 +1680,8 @@ export type UpdateResponseCheckRegionsItem =
 export const UpdateResponseCheckRegionsItem = S.String;
 
 export type UpdateResponseCheckRegionsList = Array<UpdateResponseCheckRegionsItem>;
-export const UpdateResponseCheckRegionsList = /*@__PURE__*/ S.Array(
-  UpdateResponseCheckRegionsItem,
-) as any as S.Schema<UpdateResponseCheckRegionsList>;
+export const UpdateResponseCheckRegionsList =
+  CreateRequestCheckRegionsList as any as S.Schema<UpdateResponseCheckRegionsList>;
 
 export type UpdateResponseHttpConfigExpectedCodesList = Array<string>;
 export const UpdateResponseHttpConfigExpectedCodesList =
@@ -1782,12 +1745,8 @@ export interface UpdateResponseTcpConfig {
   /** Port number to connect to for the health check. Defaults to 80. */
   port?: number | null;
 }
-export const UpdateResponseTcpConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    method: S.optional(S.NullOr(UpdateResponseTcpConfigMethod)),
-    port: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({ identifier: "UpdateResponseTcpConfig" }) as any as S.Schema<UpdateResponseTcpConfig>;
+export const UpdateResponseTcpConfig =
+  CreateResponseTcpConfig as any as S.Schema<UpdateResponseTcpConfig>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateHealthcheckResponse {

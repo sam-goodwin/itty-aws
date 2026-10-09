@@ -65,9 +65,8 @@ export const FindClosestBuildingInsightsAdditionalInsightsEnum = S.String;
 export type FindClosestBuildingInsightsAdditionalInsightsEnumList = Array<
   FindClosestBuildingInsightsAdditionalInsightsEnum | (string & {})
 >;
-export const FindClosestBuildingInsightsAdditionalInsightsEnumList = /*@__PURE__*/ S.Array(
-  FindClosestBuildingInsightsAdditionalInsightsEnum,
-) as any as S.Schema<FindClosestBuildingInsightsAdditionalInsightsEnumList>;
+export const FindClosestBuildingInsightsAdditionalInsightsEnumList =
+  FindClosestBuildingInsightsExperimentsEnumList as any as S.Schema<FindClosestBuildingInsightsAdditionalInsightsEnumList>;
 
 export interface FindClosestBuildingInsightsRequest {
   /** Optional. The minimum quality level allowed in the results. No result with lower quality than this will be returned. Not specifying this is equivalent to restricting to HIGH quality only. */
@@ -620,9 +619,8 @@ export type GetDataLayersExperimentsEnum =
 export const GetDataLayersExperimentsEnum = S.String;
 
 export type GetDataLayersExperimentsEnumList = Array<GetDataLayersExperimentsEnum | (string & {})>;
-export const GetDataLayersExperimentsEnumList = /*@__PURE__*/ S.Array(
-  GetDataLayersExperimentsEnum,
-) as any as S.Schema<GetDataLayersExperimentsEnumList>;
+export const GetDataLayersExperimentsEnumList =
+  FindClosestBuildingInsightsExperimentsEnumList as any as S.Schema<GetDataLayersExperimentsEnumList>;
 
 export type GetDataLayersRequiredQualityEnum =
   | "IMAGERY_QUALITY_UNSPECIFIED"

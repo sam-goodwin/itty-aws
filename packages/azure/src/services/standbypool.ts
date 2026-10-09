@@ -702,21 +702,14 @@ export interface PoolVirtualMachineStateCount {
   /** The count of pooled virtual machines in the given state. */
   count: number;
 }
-export const PoolVirtualMachineStateCount = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: PoolVirtualMachineState,
-    count: S.Number,
-  }),
-).annotate({
-  identifier: "PoolVirtualMachineStateCount",
-}) as any as S.Schema<PoolVirtualMachineStateCount>;
+export const PoolVirtualMachineStateCount =
+  PoolContainerGroupStateCount as any as S.Schema<PoolVirtualMachineStateCount>;
 
 /** The count of pooled virtual machines in each state for the given zone. */
 export type VirtualMachineInstanceCountSummaryInstanceCountsByStateList =
   Array<PoolVirtualMachineStateCount>;
-export const VirtualMachineInstanceCountSummaryInstanceCountsByStateList = /*@__PURE__*/ S.Array(
-  PoolVirtualMachineStateCount,
-) as any as S.Schema<VirtualMachineInstanceCountSummaryInstanceCountsByStateList>;
+export const VirtualMachineInstanceCountSummaryInstanceCountsByStateList =
+  ContainerGroupInstanceCountSummaryInstanceCountsByStateList as any as S.Schema<VirtualMachineInstanceCountSummaryInstanceCountsByStateList>;
 
 /** Contains the counts of VMs in each power state in a given zone, fault domain, as known by the StandbyPool resource provider. Note: any resources in the Running state may still be installing extensions / not fully provisioned. */
 export interface VirtualMachineInstanceCountSummary {
@@ -725,22 +718,14 @@ export interface VirtualMachineInstanceCountSummary {
   /** The count of pooled virtual machines in each state for the given zone. */
   instanceCountsByState: VirtualMachineInstanceCountSummaryInstanceCountsByStateList;
 }
-export const VirtualMachineInstanceCountSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zone: S.optional(S.Number),
-    instanceCountsByState: VirtualMachineInstanceCountSummaryInstanceCountsByStateList,
-  }),
-).annotate({
-  identifier: "VirtualMachineInstanceCountSummary",
-}) as any as S.Schema<VirtualMachineInstanceCountSummary>;
+export const VirtualMachineInstanceCountSummary =
+  ContainerGroupInstanceCountSummary as any as S.Schema<VirtualMachineInstanceCountSummary>;
 
 /** A list containing the counts of virtual machines in each possible power state for each zone if enabled, as known by the StandbyPool resource provider. If zones are not enabled on the attached VMSS, the list will contain a single entry without zone values. Note: any resources in the Running state may still be installing extensions / not fully provisioned. */
 export type StandbyVirtualMachinePoolRuntimeViewResourcePropertiesInstanceCountSummaryList =
   Array<VirtualMachineInstanceCountSummary>;
 export const StandbyVirtualMachinePoolRuntimeViewResourcePropertiesInstanceCountSummaryList =
-  /*@__PURE__*/ S.Array(
-    VirtualMachineInstanceCountSummary,
-  ) as any as S.Schema<StandbyVirtualMachinePoolRuntimeViewResourcePropertiesInstanceCountSummaryList>;
+  StandbyContainerGroupPoolRuntimeViewResourcePropertiesInstanceCountSummaryList as any as S.Schema<StandbyVirtualMachinePoolRuntimeViewResourcePropertiesInstanceCountSummaryList>;
 
 /** Displays the predicted count of instances to be requested from the standby pool. */
 export type StandbyVirtualMachinePoolForecastValuesInstancesRequestedCountList = Array<number>;

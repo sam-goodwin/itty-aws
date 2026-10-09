@@ -497,9 +497,7 @@ export const GoogleCloudWebriskV1SearchHashesResponseThreatHashThreatTypesItemEn
 export type GoogleCloudWebriskV1SearchHashesResponseThreatHashThreatTypesItemEnumList =
   Array<GoogleCloudWebriskV1SearchHashesResponseThreatHashThreatTypesItemEnum>;
 export const GoogleCloudWebriskV1SearchHashesResponseThreatHashThreatTypesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudWebriskV1SearchHashesResponseThreatHashThreatTypesItemEnum,
-  ) as any as S.Schema<GoogleCloudWebriskV1SearchHashesResponseThreatHashThreatTypesItemEnumList>;
+  ComputeDiffThreatListsConstraints_supportedCompressionsEnumList as any as S.Schema<GoogleCloudWebriskV1SearchHashesResponseThreatHashThreatTypesItemEnumList>;
 
 /** Contains threat information on a matching hash. */
 export interface GoogleCloudWebriskV1SearchHashesResponseThreatHash {
@@ -552,9 +550,8 @@ export type SearchUrisThreatTypesEnum =
 export const SearchUrisThreatTypesEnum = S.String;
 
 export type SearchUrisThreatTypesEnumList = Array<SearchUrisThreatTypesEnum | (string & {})>;
-export const SearchUrisThreatTypesEnumList = /*@__PURE__*/ S.Array(
-  SearchUrisThreatTypesEnum,
-) as any as S.Schema<SearchUrisThreatTypesEnumList>;
+export const SearchUrisThreatTypesEnumList =
+  SearchHashesThreatTypesEnumList as any as S.Schema<SearchUrisThreatTypesEnumList>;
 
 export interface SearchUrisRequest {
   /** Required. The ThreatLists to search in. Multiple ThreatLists may be specified. */
@@ -582,9 +579,7 @@ export const GoogleCloudWebriskV1SearchUrisResponseThreatUriThreatTypesItemEnum 
 export type GoogleCloudWebriskV1SearchUrisResponseThreatUriThreatTypesItemEnumList =
   Array<GoogleCloudWebriskV1SearchUrisResponseThreatUriThreatTypesItemEnum>;
 export const GoogleCloudWebriskV1SearchUrisResponseThreatUriThreatTypesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudWebriskV1SearchUrisResponseThreatUriThreatTypesItemEnum,
-  ) as any as S.Schema<GoogleCloudWebriskV1SearchUrisResponseThreatUriThreatTypesItemEnumList>;
+  ComputeDiffThreatListsConstraints_supportedCompressionsEnumList as any as S.Schema<GoogleCloudWebriskV1SearchUrisResponseThreatUriThreatTypesItemEnumList>;
 
 /** Contains threat information on a matching uri. */
 export interface GoogleCloudWebriskV1SearchUrisResponseThreatUri {

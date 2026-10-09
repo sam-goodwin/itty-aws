@@ -846,9 +846,8 @@ export const ActiveMetricRestrictionRestrictedMetricTypesItemEnum = S.String;
 
 export type ActiveMetricRestrictionRestrictedMetricTypesItemEnumList =
   Array<ActiveMetricRestrictionRestrictedMetricTypesItemEnum>;
-export const ActiveMetricRestrictionRestrictedMetricTypesItemEnumList = /*@__PURE__*/ S.Array(
-  ActiveMetricRestrictionRestrictedMetricTypesItemEnum,
-) as any as S.Schema<ActiveMetricRestrictionRestrictedMetricTypesItemEnumList>;
+export const ActiveMetricRestrictionRestrictedMetricTypesItemEnumList =
+  PivotMetricAggregationsItemEnumList as any as S.Schema<ActiveMetricRestrictionRestrictedMetricTypesItemEnumList>;
 
 /** A metric actively restricted in creating the report. */
 export interface ActiveMetricRestriction {
@@ -1013,9 +1012,8 @@ export const RunReportRequestMetricAggregationsItemEnum = S.String;
 export type RunReportRequestMetricAggregationsItemEnumList = Array<
   RunReportRequestMetricAggregationsItemEnum | (string & {})
 >;
-export const RunReportRequestMetricAggregationsItemEnumList = /*@__PURE__*/ S.Array(
-  RunReportRequestMetricAggregationsItemEnum,
-) as any as S.Schema<RunReportRequestMetricAggregationsItemEnumList>;
+export const RunReportRequestMetricAggregationsItemEnumList =
+  PivotMetricAggregationsItemEnumList as any as S.Schema<RunReportRequestMetricAggregationsItemEnumList>;
 
 /** The request to generate a report. */
 export interface RunReportRequest {
@@ -1239,9 +1237,8 @@ export type MetricMetadataBlockedReasonsItemEnum =
 export const MetricMetadataBlockedReasonsItemEnum = S.String;
 
 export type MetricMetadataBlockedReasonsItemEnumList = Array<MetricMetadataBlockedReasonsItemEnum>;
-export const MetricMetadataBlockedReasonsItemEnumList = /*@__PURE__*/ S.Array(
-  MetricMetadataBlockedReasonsItemEnum,
-) as any as S.Schema<MetricMetadataBlockedReasonsItemEnumList>;
+export const MetricMetadataBlockedReasonsItemEnumList =
+  PivotMetricAggregationsItemEnumList as any as S.Schema<MetricMetadataBlockedReasonsItemEnumList>;
 
 /** Explains a metric. */
 export interface MetricMetadata {
@@ -1735,9 +1732,8 @@ export const RunRealtimeReportRequestMetricAggregationsItemEnum = S.String;
 export type RunRealtimeReportRequestMetricAggregationsItemEnumList = Array<
   RunRealtimeReportRequestMetricAggregationsItemEnum | (string & {})
 >;
-export const RunRealtimeReportRequestMetricAggregationsItemEnumList = /*@__PURE__*/ S.Array(
-  RunRealtimeReportRequestMetricAggregationsItemEnum,
-) as any as S.Schema<RunRealtimeReportRequestMetricAggregationsItemEnumList>;
+export const RunRealtimeReportRequestMetricAggregationsItemEnumList =
+  PivotMetricAggregationsItemEnumList as any as S.Schema<RunRealtimeReportRequestMetricAggregationsItemEnumList>;
 
 /** A contiguous set of minutes: `startMinutesAgo`, `startMinutesAgo + 1`, ..., `endMinutesAgo`. Requests are allowed up to 2 minute ranges. */
 export interface MinuteRange {

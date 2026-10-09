@@ -1522,7 +1522,7 @@ export type PermissionType =
 export const PermissionType = S.String;
 
 export type PermissionTypeList = PermissionType[];
-export const PermissionTypeList = /*@__PURE__*/ S.Array(PermissionType);
+export const PermissionTypeList = PermissionList as any as S.Schema<PermissionTypeList>;
 export interface GetTemporaryGluePartitionCredentialsRequest {
   TableArn: string;
   Partition: PartitionValueList;

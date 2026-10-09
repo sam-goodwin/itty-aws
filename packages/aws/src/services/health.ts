@@ -460,7 +460,8 @@ export type EventActionability =
 export const EventActionability = S.String;
 
 export type EventActionabilityList = EventActionability[];
-export const EventActionabilityList = /*@__PURE__*/ S.Array(EventActionability);
+export const EventActionabilityList =
+  EntityStatusCodeList as any as S.Schema<EventActionabilityList>;
 export type EventType2 = string;
 export type EventTypeList2 = string[];
 export const EventTypeList2 = AffectedAccountsList as any as S.Schema<EventTypeList2>;
@@ -482,17 +483,18 @@ export type EventTypeCategory =
 export const EventTypeCategory = S.String;
 
 export type EventTypeCategoryList2 = EventTypeCategory[];
-export const EventTypeCategoryList2 = /*@__PURE__*/ S.Array(EventTypeCategory);
+export const EventTypeCategoryList2 =
+  EntityStatusCodeList as any as S.Schema<EventTypeCategoryList2>;
 export type EventStatusCode = "open" | "closed" | "upcoming" | (string & {});
 export const EventStatusCode = S.String;
 
 export type EventStatusCodeList = EventStatusCode[];
-export const EventStatusCodeList = /*@__PURE__*/ S.Array(EventStatusCode);
+export const EventStatusCodeList = EntityStatusCodeList as any as S.Schema<EventStatusCodeList>;
 export type EventPersona = "OPERATIONS" | "SECURITY" | "BILLING" | (string & {});
 export const EventPersona = S.String;
 
 export type EventPersonaList = EventPersona[];
-export const EventPersonaList = /*@__PURE__*/ S.Array(EventPersona);
+export const EventPersonaList = EntityStatusCodeList as any as S.Schema<EventPersonaList>;
 export interface EventFilter {
   actionabilities?: EventActionability[];
   eventArns?: string[];
@@ -844,12 +846,13 @@ export type EventTypeActionability =
 export const EventTypeActionability = S.String;
 
 export type EventTypeActionabilityList = EventTypeActionability[];
-export const EventTypeActionabilityList = /*@__PURE__*/ S.Array(EventTypeActionability);
+export const EventTypeActionabilityList =
+  EntityStatusCodeList as any as S.Schema<EventTypeActionabilityList>;
 export type EventTypePersona = "OPERATIONS" | "SECURITY" | "BILLING" | (string & {});
 export const EventTypePersona = S.String;
 
 export type EventTypePersonaList = EventTypePersona[];
-export const EventTypePersonaList = /*@__PURE__*/ S.Array(EventTypePersona);
+export const EventTypePersonaList = EntityStatusCodeList as any as S.Schema<EventTypePersonaList>;
 export interface EventTypeFilter {
   eventTypeCodes?: string[];
   services?: string[];

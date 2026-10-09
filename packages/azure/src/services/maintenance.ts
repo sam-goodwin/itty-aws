@@ -641,22 +641,7 @@ export interface ConfigurationAssignmentsForResourceGroupCreateOrUpdateResponseS
   lastModifiedAt?: string;
 }
 export const ConfigurationAssignmentsForResourceGroupCreateOrUpdateResponseSystemData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        ConfigurationAssignmentsForResourceGroupCreateOrUpdateResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        ConfigurationAssignmentsForResourceGroupCreateOrUpdateResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ConfigurationAssignmentsForResourceGroupCreateOrUpdateResponseSystemData",
-  }) as any as S.Schema<ConfigurationAssignmentsForResourceGroupCreateOrUpdateResponseSystemData>;
+  ConfigurationAssignmentsCreateOrUpdateParentResponseSystemData as any as S.Schema<ConfigurationAssignmentsForResourceGroupCreateOrUpdateResponseSystemData>;
 
 export interface ConfigurationAssignmentsForResourceGroupCreateOrUpdateResponse {
   /** Fully qualified identifier of the resource */
@@ -751,22 +736,7 @@ export interface ConfigurationAssignmentsForSubscriptionsCreateOrUpdateResponseS
   lastModifiedAt?: string;
 }
 export const ConfigurationAssignmentsForSubscriptionsCreateOrUpdateResponseSystemData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        ConfigurationAssignmentsForSubscriptionsCreateOrUpdateResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        ConfigurationAssignmentsForSubscriptionsCreateOrUpdateResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ConfigurationAssignmentsForSubscriptionsCreateOrUpdateResponseSystemData",
-  }) as any as S.Schema<ConfigurationAssignmentsForSubscriptionsCreateOrUpdateResponseSystemData>;
+  ConfigurationAssignmentsCreateOrUpdateParentResponseSystemData as any as S.Schema<ConfigurationAssignmentsForSubscriptionsCreateOrUpdateResponseSystemData>;
 
 export interface ConfigurationAssignmentsForSubscriptionsCreateOrUpdateResponse {
   /** Fully qualified identifier of the resource */
@@ -783,20 +753,7 @@ export interface ConfigurationAssignmentsForSubscriptionsCreateOrUpdateResponse 
   properties?: ConfigurationAssignmentProperties;
 }
 export const ConfigurationAssignmentsForSubscriptionsCreateOrUpdateResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(
-        ConfigurationAssignmentsForSubscriptionsCreateOrUpdateResponseSystemData,
-      ),
-      location: S.optional(S.String),
-      properties: S.optional(ConfigurationAssignmentProperties),
-    }),
-  ).annotate({
-    identifier: "ConfigurationAssignmentsForSubscriptionsCreateOrUpdateResponse",
-  }) as any as S.Schema<ConfigurationAssignmentsForSubscriptionsCreateOrUpdateResponse>;
+  ConfigurationAssignmentsForResourceGroupCreateOrUpdateResponse as any as S.Schema<ConfigurationAssignmentsForSubscriptionsCreateOrUpdateResponse>;
 
 export interface DeleteConfigurationAssignmentRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -863,20 +820,8 @@ export interface DeleteConfigurationAssignmentResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const DeleteConfigurationAssignmentResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(DeleteConfigurationAssignmentResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      DeleteConfigurationAssignmentResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeleteConfigurationAssignmentResponseSystemData",
-}) as any as S.Schema<DeleteConfigurationAssignmentResponseSystemData>;
+export const DeleteConfigurationAssignmentResponseSystemData =
+  ApplyUpdatesCreateOrUpdateParentResponseSystemData as any as S.Schema<DeleteConfigurationAssignmentResponseSystemData>;
 
 export interface DeleteConfigurationAssignmentResponse {
   /** Fully qualified identifier of the resource */
@@ -976,20 +921,8 @@ export interface DeleteConfigurationAssignmentParentResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const DeleteConfigurationAssignmentParentResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(DeleteConfigurationAssignmentParentResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      DeleteConfigurationAssignmentParentResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeleteConfigurationAssignmentParentResponseSystemData",
-}) as any as S.Schema<DeleteConfigurationAssignmentParentResponseSystemData>;
+export const DeleteConfigurationAssignmentParentResponseSystemData =
+  ApplyUpdatesCreateOrUpdateParentResponseSystemData as any as S.Schema<DeleteConfigurationAssignmentParentResponseSystemData>;
 
 export interface DeleteConfigurationAssignmentParentResponse {
   /** Fully qualified identifier of the resource */
@@ -1005,18 +938,8 @@ export interface DeleteConfigurationAssignmentParentResponse {
   /** Properties of the configuration assignment */
   properties?: ConfigurationAssignmentProperties;
 }
-export const DeleteConfigurationAssignmentParentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(DeleteConfigurationAssignmentParentResponseSystemData),
-    location: S.optional(S.String),
-    properties: S.optional(ConfigurationAssignmentProperties),
-  }),
-).annotate({
-  identifier: "DeleteConfigurationAssignmentParentResponse",
-}) as any as S.Schema<DeleteConfigurationAssignmentParentResponse>;
+export const DeleteConfigurationAssignmentParentResponse =
+  DeleteConfigurationAssignmentResponse as any as S.Schema<DeleteConfigurationAssignmentParentResponse>;
 
 export interface DeleteConfigurationAssignmentsForResourceGroupRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -1077,22 +1000,7 @@ export interface DeleteConfigurationAssignmentsForResourceGroupResponseSystemDat
   lastModifiedAt?: string;
 }
 export const DeleteConfigurationAssignmentsForResourceGroupResponseSystemData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        DeleteConfigurationAssignmentsForResourceGroupResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        DeleteConfigurationAssignmentsForResourceGroupResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "DeleteConfigurationAssignmentsForResourceGroupResponseSystemData",
-  }) as any as S.Schema<DeleteConfigurationAssignmentsForResourceGroupResponseSystemData>;
+  ConfigurationAssignmentsCreateOrUpdateParentResponseSystemData as any as S.Schema<DeleteConfigurationAssignmentsForResourceGroupResponseSystemData>;
 
 export interface DeleteConfigurationAssignmentsForResourceGroupResponse {
   /** Fully qualified identifier of the resource */
@@ -1108,18 +1016,8 @@ export interface DeleteConfigurationAssignmentsForResourceGroupResponse {
   /** Properties of the configuration assignment */
   properties?: ConfigurationAssignmentProperties;
 }
-export const DeleteConfigurationAssignmentsForResourceGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(DeleteConfigurationAssignmentsForResourceGroupResponseSystemData),
-    location: S.optional(S.String),
-    properties: S.optional(ConfigurationAssignmentProperties),
-  }),
-).annotate({
-  identifier: "DeleteConfigurationAssignmentsForResourceGroupResponse",
-}) as any as S.Schema<DeleteConfigurationAssignmentsForResourceGroupResponse>;
+export const DeleteConfigurationAssignmentsForResourceGroupResponse =
+  ConfigurationAssignmentsCreateOrUpdateParentResponse as any as S.Schema<DeleteConfigurationAssignmentsForResourceGroupResponse>;
 
 export interface DeleteConfigurationAssignmentsForSubscriptionRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -1177,22 +1075,7 @@ export interface DeleteConfigurationAssignmentsForSubscriptionResponseSystemData
   lastModifiedAt?: string;
 }
 export const DeleteConfigurationAssignmentsForSubscriptionResponseSystemData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        DeleteConfigurationAssignmentsForSubscriptionResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        DeleteConfigurationAssignmentsForSubscriptionResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "DeleteConfigurationAssignmentsForSubscriptionResponseSystemData",
-  }) as any as S.Schema<DeleteConfigurationAssignmentsForSubscriptionResponseSystemData>;
+  ConfigurationAssignmentsCreateOrUpdateParentResponseSystemData as any as S.Schema<DeleteConfigurationAssignmentsForSubscriptionResponseSystemData>;
 
 export interface DeleteConfigurationAssignmentsForSubscriptionResponse {
   /** Fully qualified identifier of the resource */
@@ -1208,18 +1091,8 @@ export interface DeleteConfigurationAssignmentsForSubscriptionResponse {
   /** Properties of the configuration assignment */
   properties?: ConfigurationAssignmentProperties;
 }
-export const DeleteConfigurationAssignmentsForSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(DeleteConfigurationAssignmentsForSubscriptionResponseSystemData),
-    location: S.optional(S.String),
-    properties: S.optional(ConfigurationAssignmentProperties),
-  }),
-).annotate({
-  identifier: "DeleteConfigurationAssignmentsForSubscriptionResponse",
-}) as any as S.Schema<DeleteConfigurationAssignmentsForSubscriptionResponse>;
+export const DeleteConfigurationAssignmentsForSubscriptionResponse =
+  ConfigurationAssignmentsCreateOrUpdateParentResponse as any as S.Schema<DeleteConfigurationAssignmentsForSubscriptionResponse>;
 
 export interface DeleteMaintenanceConfigurationRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -1277,20 +1150,8 @@ export interface DeleteMaintenanceConfigurationResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const DeleteMaintenanceConfigurationResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(DeleteMaintenanceConfigurationResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      DeleteMaintenanceConfigurationResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeleteMaintenanceConfigurationResponseSystemData",
-}) as any as S.Schema<DeleteMaintenanceConfigurationResponseSystemData>;
+export const DeleteMaintenanceConfigurationResponseSystemData =
+  ApplyUpdatesCreateOrUpdateParentResponseSystemData as any as S.Schema<DeleteMaintenanceConfigurationResponseSystemData>;
 
 /** Gets or sets tags of the resource */
 export type DeleteMaintenanceConfigurationResponseTagsMap = { [key: string]: string | undefined };
@@ -1553,18 +1414,8 @@ export interface GetApplyUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetApplyUpdateResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetApplyUpdateResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetApplyUpdateResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetApplyUpdateResponseSystemData",
-}) as any as S.Schema<GetApplyUpdateResponseSystemData>;
+export const GetApplyUpdateResponseSystemData =
+  ApplyUpdatesCreateOrUpdateResponseSystemData as any as S.Schema<GetApplyUpdateResponseSystemData>;
 
 export interface GetApplyUpdateResponse {
   /** Fully qualified identifier of the resource */
@@ -1659,18 +1510,8 @@ export interface GetApplyUpdateParentResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetApplyUpdateParentResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetApplyUpdateParentResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetApplyUpdateParentResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetApplyUpdateParentResponseSystemData",
-}) as any as S.Schema<GetApplyUpdateParentResponseSystemData>;
+export const GetApplyUpdateParentResponseSystemData =
+  ApplyUpdatesCreateOrUpdateResponseSystemData as any as S.Schema<GetApplyUpdateParentResponseSystemData>;
 
 export interface GetApplyUpdateParentResponse {
   /** Fully qualified identifier of the resource */
@@ -1684,17 +1525,8 @@ export interface GetApplyUpdateParentResponse {
   /** Properties of the apply update */
   properties?: ApplyUpdateProperties;
 }
-export const GetApplyUpdateParentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(GetApplyUpdateParentResponseSystemData),
-    properties: S.optional(ApplyUpdateProperties),
-  }),
-).annotate({
-  identifier: "GetApplyUpdateParentResponse",
-}) as any as S.Schema<GetApplyUpdateParentResponse>;
+export const GetApplyUpdateParentResponse =
+  ApplyUpdatesCreateOrUpdateResponse as any as S.Schema<GetApplyUpdateParentResponse>;
 
 export interface GetConfigurationAssignmentRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -1761,18 +1593,8 @@ export interface GetConfigurationAssignmentResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetConfigurationAssignmentResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetConfigurationAssignmentResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetConfigurationAssignmentResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetConfigurationAssignmentResponseSystemData",
-}) as any as S.Schema<GetConfigurationAssignmentResponseSystemData>;
+export const GetConfigurationAssignmentResponseSystemData =
+  ApplyUpdatesCreateOrUpdateResponseSystemData as any as S.Schema<GetConfigurationAssignmentResponseSystemData>;
 
 export interface GetConfigurationAssignmentResponse {
   /** Fully qualified identifier of the resource */
@@ -1872,20 +1694,8 @@ export interface GetConfigurationAssignmentParentResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetConfigurationAssignmentParentResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetConfigurationAssignmentParentResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      GetConfigurationAssignmentParentResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetConfigurationAssignmentParentResponseSystemData",
-}) as any as S.Schema<GetConfigurationAssignmentParentResponseSystemData>;
+export const GetConfigurationAssignmentParentResponseSystemData =
+  ApplyUpdatesCreateOrUpdateParentResponseSystemData as any as S.Schema<GetConfigurationAssignmentParentResponseSystemData>;
 
 export interface GetConfigurationAssignmentParentResponse {
   /** Fully qualified identifier of the resource */
@@ -1901,18 +1711,8 @@ export interface GetConfigurationAssignmentParentResponse {
   /** Properties of the configuration assignment */
   properties?: ConfigurationAssignmentProperties;
 }
-export const GetConfigurationAssignmentParentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(GetConfigurationAssignmentParentResponseSystemData),
-    location: S.optional(S.String),
-    properties: S.optional(ConfigurationAssignmentProperties),
-  }),
-).annotate({
-  identifier: "GetConfigurationAssignmentParentResponse",
-}) as any as S.Schema<GetConfigurationAssignmentParentResponse>;
+export const GetConfigurationAssignmentParentResponse =
+  DeleteConfigurationAssignmentResponse as any as S.Schema<GetConfigurationAssignmentParentResponse>;
 
 export interface GetConfigurationAssignmentsForResourceGroupRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -1972,22 +1772,7 @@ export interface GetConfigurationAssignmentsForResourceGroupResponseSystemData {
   lastModifiedAt?: string;
 }
 export const GetConfigurationAssignmentsForResourceGroupResponseSystemData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        GetConfigurationAssignmentsForResourceGroupResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        GetConfigurationAssignmentsForResourceGroupResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GetConfigurationAssignmentsForResourceGroupResponseSystemData",
-  }) as any as S.Schema<GetConfigurationAssignmentsForResourceGroupResponseSystemData>;
+  ConfigurationAssignmentsCreateOrUpdateParentResponseSystemData as any as S.Schema<GetConfigurationAssignmentsForResourceGroupResponseSystemData>;
 
 export interface GetConfigurationAssignmentsForResourceGroupResponse {
   /** Fully qualified identifier of the resource */
@@ -2003,18 +1788,8 @@ export interface GetConfigurationAssignmentsForResourceGroupResponse {
   /** Properties of the configuration assignment */
   properties?: ConfigurationAssignmentProperties;
 }
-export const GetConfigurationAssignmentsForResourceGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(GetConfigurationAssignmentsForResourceGroupResponseSystemData),
-    location: S.optional(S.String),
-    properties: S.optional(ConfigurationAssignmentProperties),
-  }),
-).annotate({
-  identifier: "GetConfigurationAssignmentsForResourceGroupResponse",
-}) as any as S.Schema<GetConfigurationAssignmentsForResourceGroupResponse>;
+export const GetConfigurationAssignmentsForResourceGroupResponse =
+  ConfigurationAssignmentsCreateOrUpdateParentResponse as any as S.Schema<GetConfigurationAssignmentsForResourceGroupResponse>;
 
 export interface GetConfigurationAssignmentsForSubscriptionRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -2070,23 +1845,8 @@ export interface GetConfigurationAssignmentsForSubscriptionResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetConfigurationAssignmentsForSubscriptionResponseSystemData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        GetConfigurationAssignmentsForSubscriptionResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        GetConfigurationAssignmentsForSubscriptionResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GetConfigurationAssignmentsForSubscriptionResponseSystemData",
-}) as any as S.Schema<GetConfigurationAssignmentsForSubscriptionResponseSystemData>;
+export const GetConfigurationAssignmentsForSubscriptionResponseSystemData =
+  ConfigurationAssignmentsCreateOrUpdateResponseSystemData as any as S.Schema<GetConfigurationAssignmentsForSubscriptionResponseSystemData>;
 
 export interface GetConfigurationAssignmentsForSubscriptionResponse {
   /** Fully qualified identifier of the resource */
@@ -2102,18 +1862,8 @@ export interface GetConfigurationAssignmentsForSubscriptionResponse {
   /** Properties of the configuration assignment */
   properties?: ConfigurationAssignmentProperties;
 }
-export const GetConfigurationAssignmentsForSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(GetConfigurationAssignmentsForSubscriptionResponseSystemData),
-    location: S.optional(S.String),
-    properties: S.optional(ConfigurationAssignmentProperties),
-  }),
-).annotate({
-  identifier: "GetConfigurationAssignmentsForSubscriptionResponse",
-}) as any as S.Schema<GetConfigurationAssignmentsForSubscriptionResponse>;
+export const GetConfigurationAssignmentsForSubscriptionResponse =
+  ConfigurationAssignmentsCreateOrUpdateResponse as any as S.Schema<GetConfigurationAssignmentsForSubscriptionResponse>;
 
 export interface GetMaintenanceConfigurationRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -2171,18 +1921,8 @@ export interface GetMaintenanceConfigurationResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetMaintenanceConfigurationResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetMaintenanceConfigurationResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetMaintenanceConfigurationResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetMaintenanceConfigurationResponseSystemData",
-}) as any as S.Schema<GetMaintenanceConfigurationResponseSystemData>;
+export const GetMaintenanceConfigurationResponseSystemData =
+  ApplyUpdatesCreateOrUpdateResponseSystemData as any as S.Schema<GetMaintenanceConfigurationResponseSystemData>;
 
 /** Gets or sets tags of the resource */
 export type GetMaintenanceConfigurationResponseTagsMap = { [key: string]: string | undefined };
@@ -2272,20 +2012,8 @@ export interface GetPublicMaintenanceConfigurationResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetPublicMaintenanceConfigurationResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetPublicMaintenanceConfigurationResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      GetPublicMaintenanceConfigurationResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetPublicMaintenanceConfigurationResponseSystemData",
-}) as any as S.Schema<GetPublicMaintenanceConfigurationResponseSystemData>;
+export const GetPublicMaintenanceConfigurationResponseSystemData =
+  ApplyUpdatesCreateOrUpdateParentResponseSystemData as any as S.Schema<GetPublicMaintenanceConfigurationResponseSystemData>;
 
 /** Gets or sets tags of the resource */
 export type GetPublicMaintenanceConfigurationResponseTagsMap = {
@@ -2392,18 +2120,8 @@ export interface ConfigurationAssignmentSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const ConfigurationAssignmentSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(ConfigurationAssignmentSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(ConfigurationAssignmentSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ConfigurationAssignmentSystemData",
-}) as any as S.Schema<ConfigurationAssignmentSystemData>;
+export const ConfigurationAssignmentSystemData =
+  ApplyUpdatesCreateOrUpdateResponseSystemData as any as S.Schema<ConfigurationAssignmentSystemData>;
 
 /** Configuration Assignment */
 export interface ConfigurationAssignment {
@@ -2550,18 +2268,8 @@ export interface MaintenanceConfigurationSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const MaintenanceConfigurationSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(MaintenanceConfigurationSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(MaintenanceConfigurationSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "MaintenanceConfigurationSystemData",
-}) as any as S.Schema<MaintenanceConfigurationSystemData>;
+export const MaintenanceConfigurationSystemData =
+  ApplyUpdatesCreateOrUpdateResponseSystemData as any as S.Schema<MaintenanceConfigurationSystemData>;
 
 /** Gets or sets tags of the resource */
 export type MaintenanceConfigurationTagsMap = { [key: string]: string | undefined };
@@ -2938,23 +2646,8 @@ export interface MaintenanceConfigurationsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const MaintenanceConfigurationsCreateOrUpdateResponseSystemData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        MaintenanceConfigurationsCreateOrUpdateResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        MaintenanceConfigurationsCreateOrUpdateResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "MaintenanceConfigurationsCreateOrUpdateResponseSystemData",
-}) as any as S.Schema<MaintenanceConfigurationsCreateOrUpdateResponseSystemData>;
+export const MaintenanceConfigurationsCreateOrUpdateResponseSystemData =
+  ConfigurationAssignmentsCreateOrUpdateResponseSystemData as any as S.Schema<MaintenanceConfigurationsCreateOrUpdateResponseSystemData>;
 
 /** Gets or sets tags of the resource */
 export type MaintenanceConfigurationsCreateOrUpdateResponseTagsMap = {
@@ -3058,22 +2751,7 @@ export interface UpdateConfigurationAssignmentsForResourceGroupResponseSystemDat
   lastModifiedAt?: string;
 }
 export const UpdateConfigurationAssignmentsForResourceGroupResponseSystemData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        UpdateConfigurationAssignmentsForResourceGroupResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        UpdateConfigurationAssignmentsForResourceGroupResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "UpdateConfigurationAssignmentsForResourceGroupResponseSystemData",
-  }) as any as S.Schema<UpdateConfigurationAssignmentsForResourceGroupResponseSystemData>;
+  ConfigurationAssignmentsCreateOrUpdateParentResponseSystemData as any as S.Schema<UpdateConfigurationAssignmentsForResourceGroupResponseSystemData>;
 
 export interface UpdateConfigurationAssignmentsForResourceGroupResponse {
   /** Fully qualified identifier of the resource */
@@ -3089,18 +2767,8 @@ export interface UpdateConfigurationAssignmentsForResourceGroupResponse {
   /** Properties of the configuration assignment */
   properties?: ConfigurationAssignmentProperties;
 }
-export const UpdateConfigurationAssignmentsForResourceGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(UpdateConfigurationAssignmentsForResourceGroupResponseSystemData),
-    location: S.optional(S.String),
-    properties: S.optional(ConfigurationAssignmentProperties),
-  }),
-).annotate({
-  identifier: "UpdateConfigurationAssignmentsForResourceGroupResponse",
-}) as any as S.Schema<UpdateConfigurationAssignmentsForResourceGroupResponse>;
+export const UpdateConfigurationAssignmentsForResourceGroupResponse =
+  ConfigurationAssignmentsCreateOrUpdateParentResponse as any as S.Schema<UpdateConfigurationAssignmentsForResourceGroupResponse>;
 
 export interface UpdateConfigurationAssignmentsForSubscriptionRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -3164,22 +2832,7 @@ export interface UpdateConfigurationAssignmentsForSubscriptionResponseSystemData
   lastModifiedAt?: string;
 }
 export const UpdateConfigurationAssignmentsForSubscriptionResponseSystemData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        UpdateConfigurationAssignmentsForSubscriptionResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        UpdateConfigurationAssignmentsForSubscriptionResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "UpdateConfigurationAssignmentsForSubscriptionResponseSystemData",
-  }) as any as S.Schema<UpdateConfigurationAssignmentsForSubscriptionResponseSystemData>;
+  ConfigurationAssignmentsCreateOrUpdateParentResponseSystemData as any as S.Schema<UpdateConfigurationAssignmentsForSubscriptionResponseSystemData>;
 
 export interface UpdateConfigurationAssignmentsForSubscriptionResponse {
   /** Fully qualified identifier of the resource */
@@ -3195,18 +2848,8 @@ export interface UpdateConfigurationAssignmentsForSubscriptionResponse {
   /** Properties of the configuration assignment */
   properties?: ConfigurationAssignmentProperties;
 }
-export const UpdateConfigurationAssignmentsForSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(UpdateConfigurationAssignmentsForSubscriptionResponseSystemData),
-    location: S.optional(S.String),
-    properties: S.optional(ConfigurationAssignmentProperties),
-  }),
-).annotate({
-  identifier: "UpdateConfigurationAssignmentsForSubscriptionResponse",
-}) as any as S.Schema<UpdateConfigurationAssignmentsForSubscriptionResponse>;
+export const UpdateConfigurationAssignmentsForSubscriptionResponse =
+  ConfigurationAssignmentsCreateOrUpdateParentResponse as any as S.Schema<UpdateConfigurationAssignmentsForSubscriptionResponse>;
 
 /** Gets or sets tags of the resource */
 export type UpdateMaintenanceConfigurationRequestTagsMap = { [key: string]: string | undefined };
@@ -3278,20 +2921,8 @@ export interface UpdateMaintenanceConfigurationResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdateMaintenanceConfigurationResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(UpdateMaintenanceConfigurationResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      UpdateMaintenanceConfigurationResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateMaintenanceConfigurationResponseSystemData",
-}) as any as S.Schema<UpdateMaintenanceConfigurationResponseSystemData>;
+export const UpdateMaintenanceConfigurationResponseSystemData =
+  ApplyUpdatesCreateOrUpdateParentResponseSystemData as any as S.Schema<UpdateMaintenanceConfigurationResponseSystemData>;
 
 /** Gets or sets tags of the resource */
 export type UpdateMaintenanceConfigurationResponseTagsMap = { [key: string]: string | undefined };

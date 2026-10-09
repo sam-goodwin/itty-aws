@@ -585,9 +585,8 @@ export type GrantedCredentialScope =
 export const GrantedCredentialScope = S.String;
 
 export type CreateCredentialResponseScopesList = Array<GrantedCredentialScope>;
-export const CreateCredentialResponseScopesList = /*@__PURE__*/ S.Array(
-  GrantedCredentialScope,
-) as any as S.Codec<CreateCredentialResponseScopesList>;
+export const CreateCredentialResponseScopesList =
+  CreateCredentialRequestScopesList as any as S.Schema<CreateCredentialResponseScopesList>;
 
 export interface CreateCredentialResponse {
   /** Opaque credential id (e.g. nak_live_<32hex>). */
@@ -4648,9 +4647,8 @@ export const NeonAuthWebhookConfigEnabledEventsItem = S.String;
 
 /** Event types that trigger this webhook. Covers user lifecycle, email/OTP delivery, organization invitations, and phone verification events; see the enum for exact values. */
 export type NeonAuthWebhookConfigEnabledEventsList = Array<NeonAuthWebhookConfigEnabledEventsItem>;
-export const NeonAuthWebhookConfigEnabledEventsList = /*@__PURE__*/ S.Array(
-  NeonAuthWebhookConfigEnabledEventsItem,
-) as any as S.Codec<NeonAuthWebhookConfigEnabledEventsList>;
+export const NeonAuthWebhookConfigEnabledEventsList =
+  CreateCredentialRequestScopesList as any as S.Schema<NeonAuthWebhookConfigEnabledEventsList>;
 
 export interface NeonAuthWebhookConfig {
   /** Whether the webhook is active. */
@@ -4947,9 +4945,8 @@ export const AdvisorIssueFacing = S.String;
 
 /** Categories this issue belongs to */
 export type AdvisorIssueCategoriesList = Array<AdvisorCategory>;
-export const AdvisorIssueCategoriesList = /*@__PURE__*/ S.Array(
-  AdvisorCategory,
-) as any as S.Codec<AdvisorIssueCategoriesList>;
+export const AdvisorIssueCategoriesList =
+  CreateCredentialRequestScopesList as any as S.Schema<AdvisorIssueCategoriesList>;
 
 /** Additional context-specific metadata */
 export type AdvisorIssueMetadataMap = { [key: string]: unknown | undefined };
@@ -6998,9 +6995,8 @@ export type ApplicationType = "vercel" | "github" | "datadog" | "opentelemetry";
 export const ApplicationType = S.String;
 
 export type ListProjectsResponseApplicationsValueList = Array<ApplicationType>;
-export const ListProjectsResponseApplicationsValueList = /*@__PURE__*/ S.Array(
-  ApplicationType,
-) as any as S.Codec<ListProjectsResponseApplicationsValueList>;
+export const ListProjectsResponseApplicationsValueList =
+  CreateCredentialRequestScopesList as any as S.Schema<ListProjectsResponseApplicationsValueList>;
 
 /** Map of project IDs to their installed applications. Each key is a project ID; each value is an array of application types (for example, `vercel`, `github`). */
 export type ListProjectsResponseApplicationsMap = {
@@ -8546,9 +8542,8 @@ export const UpdateNeonAuthWebhookConfigRequestEnabledEventsItem = S.String;
 export type UpdateNeonAuthWebhookConfigRequestEnabledEventsList = Array<
   UpdateNeonAuthWebhookConfigRequestEnabledEventsItem | (string & {})
 >;
-export const UpdateNeonAuthWebhookConfigRequestEnabledEventsList = /*@__PURE__*/ S.Array(
-  UpdateNeonAuthWebhookConfigRequestEnabledEventsItem,
-) as any as S.Codec<UpdateNeonAuthWebhookConfigRequestEnabledEventsList>;
+export const UpdateNeonAuthWebhookConfigRequestEnabledEventsList =
+  CreateCredentialRequestScopesList as any as S.Schema<UpdateNeonAuthWebhookConfigRequestEnabledEventsList>;
 
 export interface UpdateNeonAuthWebhookConfigRequest {
   /** The Neon project ID */

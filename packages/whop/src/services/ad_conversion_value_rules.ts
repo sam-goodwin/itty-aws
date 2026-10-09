@@ -468,21 +468,14 @@ export interface UpdateAdConversionValueRuleRequestEventsItem {
   custom_name?: string | null;
   event_name: UpdateAdConversionValueRuleRequestEventsItemEventName | (string & {});
 }
-export const UpdateAdConversionValueRuleRequestEventsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    custom_name: S.optional(S.NullOr(S.String)),
-    event_name: UpdateAdConversionValueRuleRequestEventsItemEventName,
-  }),
-).annotate({
-  identifier: "UpdateAdConversionValueRuleRequestEventsItem",
-}) as any as S.Schema<UpdateAdConversionValueRuleRequestEventsItem>;
+export const UpdateAdConversionValueRuleRequestEventsItem =
+  CreateAdConversionValueRuleRequestEventsItem as any as S.Schema<UpdateAdConversionValueRuleRequestEventsItem>;
 
 /** Events adjusted on every selected target. Every platform must support every selected event. */
 export type UpdateAdConversionValueRuleRequestEventsList =
   Array<UpdateAdConversionValueRuleRequestEventsItem>;
-export const UpdateAdConversionValueRuleRequestEventsList = /*@__PURE__*/ S.Array(
-  UpdateAdConversionValueRuleRequestEventsItem,
-) as any as S.Schema<UpdateAdConversionValueRuleRequestEventsList>;
+export const UpdateAdConversionValueRuleRequestEventsList =
+  CreateAdConversionValueRuleRequestEventsList as any as S.Schema<UpdateAdConversionValueRuleRequestEventsList>;
 
 export type UpdateAdConversionValueRuleRequestFixedValue =
   CreateAdConversionValueRuleRequestFixedValue;
@@ -514,22 +507,14 @@ export interface UpdateAdConversionValueRuleRequestTargetsItem {
   resource_id?: string | null;
   scope: UpdateAdConversionValueRuleRequestTargetsItemScope | (string & {});
 }
-export const UpdateAdConversionValueRuleRequestTargetsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    platform: UpdateAdConversionValueRuleRequestTargetsItemPlatform,
-    resource_id: S.optional(S.NullOr(S.String)),
-    scope: UpdateAdConversionValueRuleRequestTargetsItemScope,
-  }),
-).annotate({
-  identifier: "UpdateAdConversionValueRuleRequestTargetsItem",
-}) as any as S.Schema<UpdateAdConversionValueRuleRequestTargetsItem>;
+export const UpdateAdConversionValueRuleRequestTargetsItem =
+  CreateAdConversionValueRuleRequestTargetsItem as any as S.Schema<UpdateAdConversionValueRuleRequestTargetsItem>;
 
 /** Targets sharing one scope. Every selected event applies to every target. At most 500 target and event combinations. */
 export type UpdateAdConversionValueRuleRequestTargetsList =
   Array<UpdateAdConversionValueRuleRequestTargetsItem>;
-export const UpdateAdConversionValueRuleRequestTargetsList = /*@__PURE__*/ S.Array(
-  UpdateAdConversionValueRuleRequestTargetsItem,
-) as any as S.Schema<UpdateAdConversionValueRuleRequestTargetsList>;
+export const UpdateAdConversionValueRuleRequestTargetsList =
+  CreateAdConversionValueRuleRequestTargetsList as any as S.Schema<UpdateAdConversionValueRuleRequestTargetsList>;
 
 export interface UpdateAdConversionValueRuleRequest {
   /** Conversion value rule ID. */

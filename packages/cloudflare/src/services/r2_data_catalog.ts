@@ -884,15 +884,7 @@ export interface ListResponseWarehousesItemMaintenanceConfigSnapshotExpiration {
   state: ListResponseWarehousesItemMaintenanceConfigSnapshotExpirationState;
 }
 export const ListResponseWarehousesItemMaintenanceConfigSnapshotExpiration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      maxSnapshotAge: S.String.pipe(T.Body("max_snapshot_age")),
-      minSnapshotsToKeep: S.Number.pipe(T.Body("min_snapshots_to_keep")),
-      state: ListResponseWarehousesItemMaintenanceConfigSnapshotExpirationState,
-    }),
-  ).annotate({
-    identifier: "ListResponseWarehousesItemMaintenanceConfigSnapshotExpiration",
-  }) as any as S.Schema<ListResponseWarehousesItemMaintenanceConfigSnapshotExpiration>;
+  MaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpiration as any as S.Schema<ListResponseWarehousesItemMaintenanceConfigSnapshotExpiration>;
 
 export interface ListResponseWarehousesItemMaintenanceConfig {
   /** Configures compaction for catalog maintenance. */
@@ -1052,16 +1044,8 @@ export interface MaintenanceConfigsUpdateResponseCompaction {
   /** Sets the target file size for compaction in megabytes. Defaults to "128". */
   targetSizeMb: MaintenanceConfigsUpdateResponseCompactionTargetSizeMb;
 }
-export const MaintenanceConfigsUpdateResponseCompaction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: MaintenanceConfigsUpdateResponseCompactionState,
-    targetSizeMb: MaintenanceConfigsUpdateResponseCompactionTargetSizeMb.pipe(
-      T.Body("target_size_mb"),
-    ),
-  }),
-).annotate({
-  identifier: "MaintenanceConfigsUpdateResponseCompaction",
-}) as any as S.Schema<MaintenanceConfigsUpdateResponseCompaction>;
+export const MaintenanceConfigsUpdateResponseCompaction =
+  ListResponseWarehousesItemMaintenanceConfigCompaction as any as S.Schema<MaintenanceConfigsUpdateResponseCompaction>;
 
 export type MaintenanceConfigsUpdateResponseSnapshotExpirationState = "enabled" | "disabled";
 export const MaintenanceConfigsUpdateResponseSnapshotExpirationState = S.String;
@@ -1074,15 +1058,8 @@ export interface MaintenanceConfigsUpdateResponseSnapshotExpiration {
   /** Specifies the state of maintenance operations. */
   state: MaintenanceConfigsUpdateResponseSnapshotExpirationState;
 }
-export const MaintenanceConfigsUpdateResponseSnapshotExpiration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxSnapshotAge: S.String.pipe(T.Body("max_snapshot_age")),
-    minSnapshotsToKeep: S.Number.pipe(T.Body("min_snapshots_to_keep")),
-    state: MaintenanceConfigsUpdateResponseSnapshotExpirationState,
-  }),
-).annotate({
-  identifier: "MaintenanceConfigsUpdateResponseSnapshotExpiration",
-}) as any as S.Schema<MaintenanceConfigsUpdateResponseSnapshotExpiration>;
+export const MaintenanceConfigsUpdateResponseSnapshotExpiration =
+  GetResponseMaintenanceConfigSnapshotExpiration as any as S.Schema<MaintenanceConfigsUpdateResponseSnapshotExpiration>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateMaintenanceConfigResponse {
@@ -1249,16 +1226,7 @@ export interface NamespacesTablesMaintenanceConfigsUpdateResponseSnapshotExpirat
   nextEligibleAt?: string | null;
 }
 export const NamespacesTablesMaintenanceConfigsUpdateResponseSnapshotExpiration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      maxSnapshotAge: S.String.pipe(T.Body("max_snapshot_age")),
-      minSnapshotsToKeep: S.Number.pipe(T.Body("min_snapshots_to_keep")),
-      state: NamespacesTablesMaintenanceConfigsUpdateResponseSnapshotExpirationState,
-      nextEligibleAt: S.optional(S.NullOr(S.String).pipe(T.Body("next_eligible_at"))),
-    }),
-  ).annotate({
-    identifier: "NamespacesTablesMaintenanceConfigsUpdateResponseSnapshotExpiration",
-  }) as any as S.Schema<NamespacesTablesMaintenanceConfigsUpdateResponseSnapshotExpiration>;
+  NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpiration as any as S.Schema<NamespacesTablesMaintenanceConfigsUpdateResponseSnapshotExpiration>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateNamespaceTableMaintenanceConfigResponse {

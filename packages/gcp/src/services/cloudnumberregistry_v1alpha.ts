@@ -1907,9 +1907,8 @@ export const SearchIpResourcesRequestSearchResourceTypesItemEnum = S.String;
 export type SearchIpResourcesRequestSearchResourceTypesItemEnumList = Array<
   SearchIpResourcesRequestSearchResourceTypesItemEnum | (string & {})
 >;
-export const SearchIpResourcesRequestSearchResourceTypesItemEnumList = /*@__PURE__*/ S.Array(
-  SearchIpResourcesRequestSearchResourceTypesItemEnum,
-) as any as S.Schema<SearchIpResourcesRequestSearchResourceTypesItemEnumList>;
+export const SearchIpResourcesRequestSearchResourceTypesItemEnumList =
+  IpamAdminScopeEnabledAddonPlatformsItemEnumList as any as S.Schema<SearchIpResourcesRequestSearchResourceTypesItemEnumList>;
 
 /** Request message for the CloudNumberRegistry.SearchIpResources method. */
 export interface SearchIpResourcesRequest {

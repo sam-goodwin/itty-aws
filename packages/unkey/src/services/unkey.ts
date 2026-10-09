@@ -1952,9 +1952,8 @@ export const DeploymentAction = S.String;
 
 /** Lifecycle operations you are allowed to call on this deployment right now. Empty when none apply (e.g. while building or in a terminal state). */
 export type DeploymentAvailableActionsList = Array<DeploymentAction>;
-export const DeploymentAvailableActionsList = /*@__PURE__*/ S.Array(
-  DeploymentAction,
-) as any as S.Schema<DeploymentAvailableActionsList>;
+export const DeploymentAvailableActionsList =
+  MethodMatchMethodsList as any as S.Schema<DeploymentAvailableActionsList>;
 
 /** Regions this deployment is configured to run in. Empty while the deployment has no scheduled regions yet. */
 export type DeploymentRegionsList = Array<string>;
@@ -2858,9 +2857,8 @@ export const V2AppsListAppsResponseBody = /*@__PURE__*/ S.suspend(() =>
 
 /** Restrict results to deployments in any of the given lifecycle statuses. Omit to return deployments in every status. */
 export type ListDeploymentsRequestStatusList = Array<DeploymentStatus | (string & {})>;
-export const ListDeploymentsRequestStatusList = /*@__PURE__*/ S.Array(
-  DeploymentStatus,
-) as any as S.Schema<ListDeploymentsRequestStatusList>;
+export const ListDeploymentsRequestStatusList =
+  MethodMatchMethodsList as any as S.Schema<ListDeploymentsRequestStatusList>;
 
 export interface ListDeploymentsRequest {
   /** Restrict results to a single project, identified by its ID or slug. Required when filtering by `app` or `environment`. */
@@ -3578,9 +3576,8 @@ export const PortalCreateSessionRequestScopesItem = S.String;
 export type PortalCreateSessionRequestScopesList = Array<
   PortalCreateSessionRequestScopesItem | (string & {})
 >;
-export const PortalCreateSessionRequestScopesList = /*@__PURE__*/ S.Array(
-  PortalCreateSessionRequestScopesItem,
-) as any as S.Schema<PortalCreateSessionRequestScopesList>;
+export const PortalCreateSessionRequestScopesList =
+  MethodMatchMethodsList as any as S.Schema<PortalCreateSessionRequestScopesList>;
 
 export interface PortalCreateSessionRequest {
   portal: string;
@@ -4609,13 +4606,7 @@ export interface UpdateKeyCreditsRefill {
   /** Day of the month for monthly refills (1-31). Only required when interval is 'monthly'. For days beyond the month's length, refill occurs on the last day of the month. */
   refillDay?: number;
 }
-export const UpdateKeyCreditsRefill = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    interval: UpdateKeyCreditsRefillInterval,
-    amount: S.Number,
-    refillDay: S.optional(S.Number),
-  }),
-).annotate({ identifier: "UpdateKeyCreditsRefill" }) as any as S.Schema<UpdateKeyCreditsRefill>;
+export const UpdateKeyCreditsRefill = KeyCreditsRefill as any as S.Schema<UpdateKeyCreditsRefill>;
 
 /** Credit configuration and remaining balance for this key. */
 export interface UpdateKeyCreditsData {

@@ -196,9 +196,8 @@ export const BulkReportCustomReportItemGroupingsItem = S.String;
 export type BulkReportCustomReportItemGroupingsList = Array<
   BulkReportCustomReportItemGroupingsItem | (string & {})
 >;
-export const BulkReportCustomReportItemGroupingsList = /*@__PURE__*/ S.Array(
-  BulkReportCustomReportItemGroupingsItem,
-) as any as S.Schema<BulkReportCustomReportItemGroupingsList>;
+export const BulkReportCustomReportItemGroupingsList =
+  BulkReportCustomReportItemColumnsList as any as S.Schema<BulkReportCustomReportItemGroupingsList>;
 
 /** Payment method to filter by. */
 export type BulkReportCustomReportItemPaymentMethod = "check" | "direct_deposit";
@@ -1572,29 +1571,12 @@ export interface CreateCompanyContractorPaymentGroupsPreviewRequestContractorPay
   wage?: string;
 }
 export const CreateCompanyContractorPaymentGroupsPreviewRequestContractorPaymentsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      bonus: S.optional(S.String),
-      contractor_uuid: S.optional(S.String),
-      hours: S.optional(S.String),
-      invoice_number: S.optional(S.String),
-      memo: S.optional(S.String),
-      payment_method: S.optional(
-        CreateCompanyContractorPaymentGroupsPreviewRequestContractorPaymentsItemPaymentMethod,
-      ),
-      reimbursement: S.optional(S.String),
-      wage: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "CreateCompanyContractorPaymentGroupsPreviewRequestContractorPaymentsItem",
-  }) as any as S.Schema<CreateCompanyContractorPaymentGroupsPreviewRequestContractorPaymentsItem>;
+  CreateCompanyContractorPaymentGroupRequestContractorPaymentsItem as any as S.Schema<CreateCompanyContractorPaymentGroupsPreviewRequestContractorPaymentsItem>;
 
 export type CreateCompanyContractorPaymentGroupsPreviewRequestContractorPaymentsList =
   Array<CreateCompanyContractorPaymentGroupsPreviewRequestContractorPaymentsItem>;
 export const CreateCompanyContractorPaymentGroupsPreviewRequestContractorPaymentsList =
-  /*@__PURE__*/ S.Array(
-    CreateCompanyContractorPaymentGroupsPreviewRequestContractorPaymentsItem,
-  ) as any as S.Schema<CreateCompanyContractorPaymentGroupsPreviewRequestContractorPaymentsList>;
+  CreateCompanyContractorPaymentGroupRequestContractorPaymentsList as any as S.Schema<CreateCompanyContractorPaymentGroupsPreviewRequestContractorPaymentsList>;
 
 export interface CreateCompanyContractorPaymentGroupsPreviewRequest {
   /** The UUID of the company */
@@ -3554,9 +3536,8 @@ export const CreateCompanyReportRequestColumnsItem = S.String;
 export type CreateCompanyReportRequestColumnsList = Array<
   CreateCompanyReportRequestColumnsItem | (string & {})
 >;
-export const CreateCompanyReportRequestColumnsList = /*@__PURE__*/ S.Array(
-  CreateCompanyReportRequestColumnsItem,
-) as any as S.Schema<CreateCompanyReportRequestColumnsList>;
+export const CreateCompanyReportRequestColumnsList =
+  BulkReportCustomReportItemColumnsList as any as S.Schema<CreateCompanyReportRequestColumnsList>;
 
 /** Which payroll date `start_date` and `end_date` filter against. */
 export type CreateCompanyReportRequestDateFilterType =
@@ -3610,9 +3591,8 @@ export const CreateCompanyReportRequestGroupingsItem = S.String;
 export type CreateCompanyReportRequestGroupingsList = Array<
   CreateCompanyReportRequestGroupingsItem | (string & {})
 >;
-export const CreateCompanyReportRequestGroupingsList = /*@__PURE__*/ S.Array(
-  CreateCompanyReportRequestGroupingsItem,
-) as any as S.Schema<CreateCompanyReportRequestGroupingsList>;
+export const CreateCompanyReportRequestGroupingsList =
+  BulkReportCustomReportItemColumnsList as any as S.Schema<CreateCompanyReportRequestGroupingsList>;
 
 /** Payment method to filter by */
 export type CreateCompanyReportRequestPaymentMethod = "check" | "direct_deposit";
@@ -6144,14 +6124,7 @@ export interface PayrollDigest {
   /** The unique identifier of the payroll digest batch. */
   uuid: string;
 }
-export const PayrollDigest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    batch_action: PayrollDigestBatchAction,
-    idempotency_key: S.String,
-    status: PayrollDigestStatus,
-    uuid: S.String,
-  }),
-).annotate({ identifier: "PayrollDigest" }) as any as S.Schema<PayrollDigest>;
+export const PayrollDigest = PayrollBatch as any as S.Schema<PayrollDigest>;
 
 /** The type of check stock being printed. Check the "Types of check stock" section in this [link](https://support.gusto.com/article/999877761000000/Pay-your-team-by-check) for more info on check types */
 export type CreatePayrollGeneratedDocumentsPrintablePayrollCheckRequestPrintingFormat =
@@ -6545,9 +6518,8 @@ export const CreateWebhookSubscriptionRequestSubscriptionTypesItem = S.String;
 export type CreateWebhookSubscriptionRequestSubscriptionTypesList = Array<
   CreateWebhookSubscriptionRequestSubscriptionTypesItem | (string & {})
 >;
-export const CreateWebhookSubscriptionRequestSubscriptionTypesList = /*@__PURE__*/ S.Array(
-  CreateWebhookSubscriptionRequestSubscriptionTypesItem,
-) as any as S.Schema<CreateWebhookSubscriptionRequestSubscriptionTypesList>;
+export const CreateWebhookSubscriptionRequestSubscriptionTypesList =
+  BulkReportCustomReportItemColumnsList as any as S.Schema<CreateWebhookSubscriptionRequestSubscriptionTypesList>;
 
 export interface CreateWebhookSubscriptionRequest {
   /** The types of events to subscribe to. */
@@ -6591,9 +6563,8 @@ export const WebhookSubscriptionSubscriptionTypesItem = S.String;
 /** Receive updates for these types. */
 export type WebhookSubscriptionSubscriptionTypesList =
   Array<WebhookSubscriptionSubscriptionTypesItem>;
-export const WebhookSubscriptionSubscriptionTypesList = /*@__PURE__*/ S.Array(
-  WebhookSubscriptionSubscriptionTypesItem,
-) as any as S.Schema<WebhookSubscriptionSubscriptionTypesList>;
+export const WebhookSubscriptionSubscriptionTypesList =
+  BulkReportCustomReportItemColumnsList as any as S.Schema<WebhookSubscriptionSubscriptionTypesList>;
 
 /** The representation of webhook subscription. */
 export interface WebhookSubscription {
@@ -9034,9 +9005,8 @@ export const GetCompanyContractorsRequestIncludeItem = S.String;
 export type GetCompanyContractorsRequestIncludeList = Array<
   GetCompanyContractorsRequestIncludeItem | (string & {})
 >;
-export const GetCompanyContractorsRequestIncludeList = /*@__PURE__*/ S.Array(
-  GetCompanyContractorsRequestIncludeItem,
-) as any as S.Schema<GetCompanyContractorsRequestIncludeList>;
+export const GetCompanyContractorsRequestIncludeList =
+  BulkReportCustomReportItemColumnsList as any as S.Schema<GetCompanyContractorsRequestIncludeList>;
 
 export interface GetCompanyContractorsRequest {
   /** The UUID of the company */
@@ -9300,9 +9270,8 @@ export const GetCompanyEmployeesRequestIncludeItem = S.String;
 export type GetCompanyEmployeesRequestIncludeList = Array<
   GetCompanyEmployeesRequestIncludeItem | (string & {})
 >;
-export const GetCompanyEmployeesRequestIncludeList = /*@__PURE__*/ S.Array(
-  GetCompanyEmployeesRequestIncludeItem,
-) as any as S.Schema<GetCompanyEmployeesRequestIncludeList>;
+export const GetCompanyEmployeesRequestIncludeList =
+  BulkReportCustomReportItemColumnsList as any as S.Schema<GetCompanyEmployeesRequestIncludeList>;
 
 export type GetCompanyEmployeesRequestUuidsList = Array<string>;
 export const GetCompanyEmployeesRequestUuidsList =
@@ -9480,16 +9449,8 @@ export interface ShowEmployeesItemMemberPortalInvitationStatus {
   /** The date and time when the welcome email was sent. */
   welcome_email_sent_at?: string | null;
 }
-export const ShowEmployeesItemMemberPortalInvitationStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    last_password_resent_at: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
-    status: S.optional(ShowEmployeesItemMemberPortalInvitationStatusStatus),
-    token_expired: S.optional(S.NullOr(S.Boolean)),
-    welcome_email_sent_at: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "ShowEmployeesItemMemberPortalInvitationStatus",
-}) as any as S.Schema<ShowEmployeesItemMemberPortalInvitationStatus>;
+export const ShowEmployeesItemMemberPortalInvitationStatus =
+  ContractorMemberPortalInvitationStatus as any as S.Schema<ShowEmployeesItemMemberPortalInvitationStatus>;
 
 /** Configuration for an employee onboarding documents during onboarding */
 export interface ShowEmployeesItemOnboardingDocumentsConfig {
@@ -10209,9 +10170,8 @@ export const CompanyOnboardingStatusOnboardingStepsItemRequirementsItem = S.Stri
 /** A list of onboarding steps that are required to be completed in order to proceed with the current onboarding step. */
 export type CompanyOnboardingStatusOnboardingStepsItemRequirementsList =
   Array<CompanyOnboardingStatusOnboardingStepsItemRequirementsItem>;
-export const CompanyOnboardingStatusOnboardingStepsItemRequirementsList = /*@__PURE__*/ S.Array(
-  CompanyOnboardingStatusOnboardingStepsItemRequirementsItem,
-) as any as S.Schema<CompanyOnboardingStatusOnboardingStepsItemRequirementsList>;
+export const CompanyOnboardingStatusOnboardingStepsItemRequirementsList =
+  BulkReportCustomReportItemColumnsList as any as S.Schema<CompanyOnboardingStatusOnboardingStepsItemRequirementsList>;
 
 export interface CompanyOnboardingStatusOnboardingStepsItem {
   /** The boolean flag indicating whether the step is completed or not. */
@@ -10485,9 +10445,8 @@ export const GetCompanyPayrollRequestIncludeItem = S.String;
 export type GetCompanyPayrollRequestIncludeList = Array<
   GetCompanyPayrollRequestIncludeItem | (string & {})
 >;
-export const GetCompanyPayrollRequestIncludeList = /*@__PURE__*/ S.Array(
-  GetCompanyPayrollRequestIncludeItem,
-) as any as S.Schema<GetCompanyPayrollRequestIncludeList>;
+export const GetCompanyPayrollRequestIncludeList =
+  BulkReportCustomReportItemColumnsList as any as S.Schema<GetCompanyPayrollRequestIncludeList>;
 
 export interface GetCompanyPayrollRequest {
   /** The UUID of the company */
@@ -10565,19 +10524,7 @@ export interface PayrollShowEmployeeCompensationsItemCustomWithholdingsFederal {
   override_type?: PayrollShowEmployeeCompensationsItemCustomWithholdingsFederalOverrideType;
 }
 export const PayrollShowEmployeeCompensationsItemCustomWithholdingsFederal =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      amount: S.optional(S.String),
-      amount_type: S.optional(
-        PayrollShowEmployeeCompensationsItemCustomWithholdingsFederalAmountType,
-      ),
-      override_type: S.optional(
-        PayrollShowEmployeeCompensationsItemCustomWithholdingsFederalOverrideType,
-      ),
-    }),
-  ).annotate({
-    identifier: "PayrollShowEmployeeCompensationsItemCustomWithholdingsFederal",
-  }) as any as S.Schema<PayrollShowEmployeeCompensationsItemCustomWithholdingsFederal>;
+  PayrollUnprocessedEmployeeCompensationsTypeCustomWithholdingsFederal as any as S.Schema<PayrollShowEmployeeCompensationsItemCustomWithholdingsFederal>;
 
 /** How to interpret the amount. */
 export type PayrollShowEmployeeCompensationsItemCustomWithholdingsStateItemAmountType =
@@ -10601,28 +10548,13 @@ export interface PayrollShowEmployeeCompensationsItemCustomWithholdingsStateItem
   override_type?: PayrollShowEmployeeCompensationsItemCustomWithholdingsStateItemOverrideType;
 }
 export const PayrollShowEmployeeCompensationsItemCustomWithholdingsStateItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      amount: S.optional(S.String),
-      amount_type: S.optional(
-        PayrollShowEmployeeCompensationsItemCustomWithholdingsStateItemAmountType,
-      ),
-      employee_state_field_uuid: S.optional(S.String),
-      override_type: S.optional(
-        PayrollShowEmployeeCompensationsItemCustomWithholdingsStateItemOverrideType,
-      ),
-    }),
-  ).annotate({
-    identifier: "PayrollShowEmployeeCompensationsItemCustomWithholdingsStateItem",
-  }) as any as S.Schema<PayrollShowEmployeeCompensationsItemCustomWithholdingsStateItem>;
+  PayrollUnprocessedEmployeeCompensationsTypeCustomWithholdingsStateItem as any as S.Schema<PayrollShowEmployeeCompensationsItemCustomWithholdingsStateItem>;
 
 /** State one-time custom withholding overrides applied to this payroll, one entry per state field. */
 export type PayrollShowEmployeeCompensationsItemCustomWithholdingsStateList =
   Array<PayrollShowEmployeeCompensationsItemCustomWithholdingsStateItem>;
 export const PayrollShowEmployeeCompensationsItemCustomWithholdingsStateList =
-  /*@__PURE__*/ S.Array(
-    PayrollShowEmployeeCompensationsItemCustomWithholdingsStateItem,
-  ) as any as S.Schema<PayrollShowEmployeeCompensationsItemCustomWithholdingsStateList>;
+  PayrollUnprocessedEmployeeCompensationsTypeCustomWithholdingsStateList as any as S.Schema<PayrollShowEmployeeCompensationsItemCustomWithholdingsStateList>;
 
 /** The one-time custom withholding overrides applied to this payroll for this employee. `federal` is null when no federal one-time override is set; `state` is an empty array when no state one-time overrides are set. */
 export interface PayrollShowEmployeeCompensationsItemCustomWithholdings {
@@ -11150,9 +11082,8 @@ export const GetCompanyPayrollsRequestProcessingStatusesItem = S.String;
 export type GetCompanyPayrollsRequestProcessingStatusesList = Array<
   GetCompanyPayrollsRequestProcessingStatusesItem | (string & {})
 >;
-export const GetCompanyPayrollsRequestProcessingStatusesList = /*@__PURE__*/ S.Array(
-  GetCompanyPayrollsRequestProcessingStatusesItem,
-) as any as S.Schema<GetCompanyPayrollsRequestProcessingStatusesList>;
+export const GetCompanyPayrollsRequestProcessingStatusesList =
+  BulkReportCustomReportItemColumnsList as any as S.Schema<GetCompanyPayrollsRequestProcessingStatusesList>;
 
 export type GetCompanyPayrollsRequestPayrollTypesItem = "regular" | "off_cycle" | "external";
 export const GetCompanyPayrollsRequestPayrollTypesItem = S.String;
@@ -11160,9 +11091,8 @@ export const GetCompanyPayrollsRequestPayrollTypesItem = S.String;
 export type GetCompanyPayrollsRequestPayrollTypesList = Array<
   GetCompanyPayrollsRequestPayrollTypesItem | (string & {})
 >;
-export const GetCompanyPayrollsRequestPayrollTypesList = /*@__PURE__*/ S.Array(
-  GetCompanyPayrollsRequestPayrollTypesItem,
-) as any as S.Schema<GetCompanyPayrollsRequestPayrollTypesList>;
+export const GetCompanyPayrollsRequestPayrollTypesList =
+  BulkReportCustomReportItemColumnsList as any as S.Schema<GetCompanyPayrollsRequestPayrollTypesList>;
 
 export type GetCompanyPayrollsRequestIncludeItem =
   | "taxes"
@@ -11175,9 +11105,8 @@ export const GetCompanyPayrollsRequestIncludeItem = S.String;
 export type GetCompanyPayrollsRequestIncludeList = Array<
   GetCompanyPayrollsRequestIncludeItem | (string & {})
 >;
-export const GetCompanyPayrollsRequestIncludeList = /*@__PURE__*/ S.Array(
-  GetCompanyPayrollsRequestIncludeItem,
-) as any as S.Schema<GetCompanyPayrollsRequestIncludeList>;
+export const GetCompanyPayrollsRequestIncludeList =
+  BulkReportCustomReportItemColumnsList as any as S.Schema<GetCompanyPayrollsRequestIncludeList>;
 
 export type GetCompanyPayrollsRequestDateFilterBy = "check_date";
 export const GetCompanyPayrollsRequestDateFilterBy = S.String;
@@ -12252,9 +12181,8 @@ export const GetContractorRequestIncludeItem = S.String;
 export type GetContractorRequestIncludeList = Array<
   GetContractorRequestIncludeItem | (string & {})
 >;
-export const GetContractorRequestIncludeList = /*@__PURE__*/ S.Array(
-  GetContractorRequestIncludeItem,
-) as any as S.Schema<GetContractorRequestIncludeList>;
+export const GetContractorRequestIncludeList =
+  BulkReportCustomReportItemColumnsList as any as S.Schema<GetContractorRequestIncludeList>;
 
 export interface GetContractorRequest {
   /** The UUID of the contractor */
@@ -13951,9 +13879,8 @@ export type GetEmployeesRequestIncludeItem =
 export const GetEmployeesRequestIncludeItem = S.String;
 
 export type GetEmployeesRequestIncludeList = Array<GetEmployeesRequestIncludeItem | (string & {})>;
-export const GetEmployeesRequestIncludeList = /*@__PURE__*/ S.Array(
-  GetEmployeesRequestIncludeItem,
-) as any as S.Schema<GetEmployeesRequestIncludeList>;
+export const GetEmployeesRequestIncludeList =
+  BulkReportCustomReportItemColumnsList as any as S.Schema<GetEmployeesRequestIncludeList>;
 
 export interface GetEmployeesRequest {
   /** The UUID of the employee */
@@ -14016,16 +13943,8 @@ export interface EmployeeMemberPortalInvitationStatus {
   /** The date and time when the welcome email was sent. */
   welcome_email_sent_at?: string | null;
 }
-export const EmployeeMemberPortalInvitationStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    last_password_resent_at: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
-    status: S.optional(EmployeeMemberPortalInvitationStatusStatus),
-    token_expired: S.optional(S.NullOr(S.Boolean)),
-    welcome_email_sent_at: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "EmployeeMemberPortalInvitationStatus",
-}) as any as S.Schema<EmployeeMemberPortalInvitationStatus>;
+export const EmployeeMemberPortalInvitationStatus =
+  ContractorMemberPortalInvitationStatus as any as S.Schema<EmployeeMemberPortalInvitationStatus>;
 
 /** Configuration for an employee onboarding documents during onboarding */
 export type EmployeeOnboardingDocumentsConfig = ShowEmployeesItemOnboardingDocumentsConfig;
@@ -19132,24 +19051,14 @@ export interface PayrollEmployeeCompensationsTypeDeductionsItem {
   /** The UUID of the deduction. Only present for unprocessed payrolls. */
   uuid?: string;
 }
-export const PayrollEmployeeCompensationsTypeDeductionsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    amount: S.optional(S.Number),
-    amount_type: S.optional(PayrollEmployeeCompensationsTypeDeductionsItemAmountType),
-    name: S.optional(S.String),
-    updatable_via_payroll: S.optional(S.Boolean),
-    uuid: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PayrollEmployeeCompensationsTypeDeductionsItem",
-}) as any as S.Schema<PayrollEmployeeCompensationsTypeDeductionsItem>;
+export const PayrollEmployeeCompensationsTypeDeductionsItem =
+  PayrollShowEmployeeCompensationsItemDeductionsItem as any as S.Schema<PayrollEmployeeCompensationsTypeDeductionsItem>;
 
 /** An array of deductions for the employee. This field is included by default for regular payrolls in version `v2025-06-15` and later. */
 export type PayrollEmployeeCompensationsTypeDeductionsList =
   Array<PayrollEmployeeCompensationsTypeDeductionsItem>;
-export const PayrollEmployeeCompensationsTypeDeductionsList = /*@__PURE__*/ S.Array(
-  PayrollEmployeeCompensationsTypeDeductionsItem,
-) as any as S.Schema<PayrollEmployeeCompensationsTypeDeductionsList>;
+export const PayrollEmployeeCompensationsTypeDeductionsList =
+  PayrollShowEmployeeCompensationsItemDeductionsList as any as S.Schema<PayrollEmployeeCompensationsTypeDeductionsList>;
 
 export interface PayrollEmployeeCompensationsType {
   /** The employee's check amount (as a string-formatted decimal, e.g. "1234.56"), equal to net_pay + reimbursements. This value is only available for processed payrolls. */
@@ -19299,19 +19208,7 @@ export interface PutCompanyPayrollsRequestEmployeeCompensationsItemCustomWithhol
     | (string & {});
 }
 export const PutCompanyPayrollsRequestEmployeeCompensationsItemCustomWithholdingsFederal =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      amount: S.optional(S.String),
-      amount_type: S.optional(
-        PutCompanyPayrollsRequestEmployeeCompensationsItemCustomWithholdingsFederalAmountType,
-      ),
-      override_type: S.optional(
-        PutCompanyPayrollsRequestEmployeeCompensationsItemCustomWithholdingsFederalOverrideType,
-      ),
-    }),
-  ).annotate({
-    identifier: "PutCompanyPayrollsRequestEmployeeCompensationsItemCustomWithholdingsFederal",
-  }) as any as S.Schema<PutCompanyPayrollsRequestEmployeeCompensationsItemCustomWithholdingsFederal>;
+  PayrollUnprocessedEmployeeCompensationsTypeCustomWithholdingsFederal as any as S.Schema<PutCompanyPayrollsRequestEmployeeCompensationsItemCustomWithholdingsFederal>;
 
 /** How to interpret the amount. */
 export type PutCompanyPayrollsRequestEmployeeCompensationsItemCustomWithholdingsStateItemAmountType =
@@ -19341,28 +19238,13 @@ export interface PutCompanyPayrollsRequestEmployeeCompensationsItemCustomWithhol
     | (string & {});
 }
 export const PutCompanyPayrollsRequestEmployeeCompensationsItemCustomWithholdingsStateItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      amount: S.optional(S.String),
-      amount_type: S.optional(
-        PutCompanyPayrollsRequestEmployeeCompensationsItemCustomWithholdingsStateItemAmountType,
-      ),
-      employee_state_field_uuid: S.optional(S.String),
-      override_type: S.optional(
-        PutCompanyPayrollsRequestEmployeeCompensationsItemCustomWithholdingsStateItemOverrideType,
-      ),
-    }),
-  ).annotate({
-    identifier: "PutCompanyPayrollsRequestEmployeeCompensationsItemCustomWithholdingsStateItem",
-  }) as any as S.Schema<PutCompanyPayrollsRequestEmployeeCompensationsItemCustomWithholdingsStateItem>;
+  PayrollUnprocessedEmployeeCompensationsTypeCustomWithholdingsStateItem as any as S.Schema<PutCompanyPayrollsRequestEmployeeCompensationsItemCustomWithholdingsStateItem>;
 
 /** State one-time custom withholding overrides, one entry per state field. */
 export type PutCompanyPayrollsRequestEmployeeCompensationsItemCustomWithholdingsStateList =
   Array<PutCompanyPayrollsRequestEmployeeCompensationsItemCustomWithholdingsStateItem>;
 export const PutCompanyPayrollsRequestEmployeeCompensationsItemCustomWithholdingsStateList =
-  /*@__PURE__*/ S.Array(
-    PutCompanyPayrollsRequestEmployeeCompensationsItemCustomWithholdingsStateItem,
-  ) as any as S.Schema<PutCompanyPayrollsRequestEmployeeCompensationsItemCustomWithholdingsStateList>;
+  PayrollUnprocessedEmployeeCompensationsTypeCustomWithholdingsStateList as any as S.Schema<PutCompanyPayrollsRequestEmployeeCompensationsItemCustomWithholdingsStateList>;
 
 /** Optional per-payroll one-time custom withholdings for federal and/or state income tax. When provided, the supplied override takes precedence over any persistent withholding schedule for this run. This field is in limited release; if your application does not have access, requests including it are silently ignored. */
 export interface PutCompanyPayrollsRequestEmployeeCompensationsItemCustomWithholdings {
@@ -22236,23 +22118,14 @@ export interface PutV1SalaryEstimatesIdRequestOccupationsItem {
   /** Percentage of time spent in this occupation (as decimal, e.g., 0.5 = 50%) */
   time_percentage: string;
 }
-export const PutV1SalaryEstimatesIdRequestOccupationsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.String,
-    experience_level: PutV1SalaryEstimatesIdRequestOccupationsItemExperienceLevel,
-    primary: S.optional(S.Boolean),
-    time_percentage: S.String,
-  }),
-).annotate({
-  identifier: "PutV1SalaryEstimatesIdRequestOccupationsItem",
-}) as any as S.Schema<PutV1SalaryEstimatesIdRequestOccupationsItem>;
+export const PutV1SalaryEstimatesIdRequestOccupationsItem =
+  CreateEmployeeSalaryEstimateRequestOccupationsItem as any as S.Schema<PutV1SalaryEstimatesIdRequestOccupationsItem>;
 
 /** Array of occupations. Time percentages must sum to 100%. */
 export type PutV1SalaryEstimatesIdRequestOccupationsList =
   Array<PutV1SalaryEstimatesIdRequestOccupationsItem>;
-export const PutV1SalaryEstimatesIdRequestOccupationsList = /*@__PURE__*/ S.Array(
-  PutV1SalaryEstimatesIdRequestOccupationsItem,
-) as any as S.Schema<PutV1SalaryEstimatesIdRequestOccupationsList>;
+export const PutV1SalaryEstimatesIdRequestOccupationsList =
+  CreateEmployeeSalaryEstimateRequestOccupationsList as any as S.Schema<PutV1SalaryEstimatesIdRequestOccupationsList>;
 
 export interface PutV1SalaryEstimatesIdRequest {
   /** The UUID of the salary estimate */
@@ -22397,9 +22270,8 @@ export const PutWebhookSubscriptionUuidRequestSubscriptionTypesItem = S.String;
 export type PutWebhookSubscriptionUuidRequestSubscriptionTypesList = Array<
   PutWebhookSubscriptionUuidRequestSubscriptionTypesItem | (string & {})
 >;
-export const PutWebhookSubscriptionUuidRequestSubscriptionTypesList = /*@__PURE__*/ S.Array(
-  PutWebhookSubscriptionUuidRequestSubscriptionTypesItem,
-) as any as S.Schema<PutWebhookSubscriptionUuidRequestSubscriptionTypesList>;
+export const PutWebhookSubscriptionUuidRequestSubscriptionTypesList =
+  BulkReportCustomReportItemColumnsList as any as S.Schema<PutWebhookSubscriptionUuidRequestSubscriptionTypesList>;
 
 export interface PutWebhookSubscriptionUuidRequest {
   /** The webhook subscription UUID. */

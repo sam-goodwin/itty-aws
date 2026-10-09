@@ -1477,9 +1477,7 @@ export type GoogleCloudDiscoveryengineV1AssistAnswerAssistSkippedReasonsItemEnum
   GoogleCloudDiscoveryengineV1AssistAnswerAssistSkippedReasonsItemEnum | (string & {})
 >;
 export const GoogleCloudDiscoveryengineV1AssistAnswerAssistSkippedReasonsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudDiscoveryengineV1AssistAnswerAssistSkippedReasonsItemEnum,
-  ) as any as S.Schema<GoogleCloudDiscoveryengineV1AssistAnswerAssistSkippedReasonsItemEnumList>;
+  GoogleCloudDiscoveryengineV1AnswerQueryRequestQueryUnderstandingSpecQueryClassificationSpecTypesItemEnumList as any as S.Schema<GoogleCloudDiscoveryengineV1AssistAnswerAssistSkippedReasonsItemEnumList>;
 
 /** AssistAnswer resource, main part of AssistResponse. */
 export interface GoogleCloudDiscoveryengineV1AssistAnswer {
@@ -2061,9 +2059,7 @@ export type GoogleCloudDiscoveryengineV1AnswerAnswerSkippedReasonsItemEnumList =
   GoogleCloudDiscoveryengineV1AnswerAnswerSkippedReasonsItemEnum | (string & {})
 >;
 export const GoogleCloudDiscoveryengineV1AnswerAnswerSkippedReasonsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudDiscoveryengineV1AnswerAnswerSkippedReasonsItemEnum,
-  ) as any as S.Schema<GoogleCloudDiscoveryengineV1AnswerAnswerSkippedReasonsItemEnumList>;
+  GoogleCloudDiscoveryengineV1AnswerQueryRequestQueryUnderstandingSpecQueryClassificationSpecTypesItemEnumList as any as S.Schema<GoogleCloudDiscoveryengineV1AnswerAnswerSkippedReasonsItemEnumList>;
 
 /** Defines an answer. */
 export interface GoogleCloudDiscoveryengineV1Answer {
@@ -3435,9 +3431,7 @@ export type GoogleCloudDiscoveryengineV1AdvancedCompleteQueryRequestSuggestionTy
     GoogleCloudDiscoveryengineV1AdvancedCompleteQueryRequestSuggestionTypesItemEnum | (string & {})
   >;
 export const GoogleCloudDiscoveryengineV1AdvancedCompleteQueryRequestSuggestionTypesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudDiscoveryengineV1AdvancedCompleteQueryRequestSuggestionTypesItemEnum,
-  ) as any as S.Schema<GoogleCloudDiscoveryengineV1AdvancedCompleteQueryRequestSuggestionTypesItemEnumList>;
+  GoogleCloudDiscoveryengineV1AnswerQueryRequestQueryUnderstandingSpecQueryClassificationSpecTypesItemEnumList as any as S.Schema<GoogleCloudDiscoveryengineV1AdvancedCompleteQueryRequestSuggestionTypesItemEnumList>;
 
 /** An object that represents a latitude/longitude pair. This is expressed as a pair of doubles to represent degrees latitude and degrees longitude. Unless specified otherwise, this object must conform to the WGS84 standard. Values must be within normalized ranges. */
 export interface GoogleTypeLatLng {
@@ -4254,9 +4248,7 @@ export type GoogleCloudDiscoveryengineV1SearchResponseSummarySummarySkippedReaso
     GoogleCloudDiscoveryengineV1SearchResponseSummarySummarySkippedReasonsItemEnum | (string & {})
   >;
 export const GoogleCloudDiscoveryengineV1SearchResponseSummarySummarySkippedReasonsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudDiscoveryengineV1SearchResponseSummarySummarySkippedReasonsItemEnum,
-  ) as any as S.Schema<GoogleCloudDiscoveryengineV1SearchResponseSummarySummarySkippedReasonsItemEnumList>;
+  GoogleCloudDiscoveryengineV1AnswerQueryRequestQueryUnderstandingSpecQueryClassificationSpecTypesItemEnumList as any as S.Schema<GoogleCloudDiscoveryengineV1SearchResponseSummarySummarySkippedReasonsItemEnumList>;
 
 /** Summary of the top N search results specified by the summary spec. */
 export interface GoogleCloudDiscoveryengineV1SearchResponseSummary {
@@ -4517,9 +4509,7 @@ export const GoogleCloudDiscoveryengineV1SearchResponseSearchResultRetrievalSign
 export type GoogleCloudDiscoveryengineV1SearchResponseSearchResultRetrievalSignalsRetrievalSourcesItemEnumList =
   Array<GoogleCloudDiscoveryengineV1SearchResponseSearchResultRetrievalSignalsRetrievalSourcesItemEnum>;
 export const GoogleCloudDiscoveryengineV1SearchResponseSearchResultRetrievalSignalsRetrievalSourcesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudDiscoveryengineV1SearchResponseSearchResultRetrievalSignalsRetrievalSourcesItemEnum,
-  ) as any as S.Schema<GoogleCloudDiscoveryengineV1SearchResponseSearchResultRetrievalSignalsRetrievalSourcesItemEnumList>;
+  GoogleCloudDiscoveryengineV1AnswerQueryRequestQueryUnderstandingSpecQueryClassificationSpecTypesItemEnumList as any as S.Schema<GoogleCloudDiscoveryengineV1SearchResponseSearchResultRetrievalSignalsRetrievalSourcesItemEnumList>;
 
 /** Contains a set of signals used by the relevance filter. */
 export interface GoogleCloudDiscoveryengineV1SearchResponseSearchResultRetrievalSignals {
@@ -5853,9 +5843,8 @@ export const GoogleCloudDiscoveryengineV1ControlUseCasesItemEnum = S.String;
 export type GoogleCloudDiscoveryengineV1ControlUseCasesItemEnumList = Array<
   GoogleCloudDiscoveryengineV1ControlUseCasesItemEnum | (string & {})
 >;
-export const GoogleCloudDiscoveryengineV1ControlUseCasesItemEnumList = /*@__PURE__*/ S.Array(
-  GoogleCloudDiscoveryengineV1ControlUseCasesItemEnum,
-) as any as S.Schema<GoogleCloudDiscoveryengineV1ControlUseCasesItemEnumList>;
+export const GoogleCloudDiscoveryengineV1ControlUseCasesItemEnumList =
+  GoogleCloudDiscoveryengineV1DataStoreSolutionTypesItemEnumList as any as S.Schema<GoogleCloudDiscoveryengineV1ControlUseCasesItemEnumList>;
 
 /** Defines a conditioned behavior to employ during serving. Must be attached to a ServingConfig to be considered at serving time. Permitted actions dependent on `SolutionType`. */
 export interface GoogleCloudDiscoveryengineV1Control {
@@ -6567,10 +6556,8 @@ export const GoogleCloudDiscoveryengineV1EngineFeaturesValueEnum = S.String;
 export type GoogleCloudDiscoveryengineV1EngineFeaturesValueEnumMap = {
   [key: string]: GoogleCloudDiscoveryengineV1EngineFeaturesValueEnum | (string & {}) | undefined;
 };
-export const GoogleCloudDiscoveryengineV1EngineFeaturesValueEnumMap = /*@__PURE__*/ S.Record(
-  S.String,
-  GoogleCloudDiscoveryengineV1EngineFeaturesValueEnum,
-) as any as S.Schema<GoogleCloudDiscoveryengineV1EngineFeaturesValueEnumMap>;
+export const GoogleCloudDiscoveryengineV1EngineFeaturesValueEnumMap =
+  GoogleCloudDiscoveryengineV1EngineModelConfigsValueEnumMap as any as S.Schema<GoogleCloudDiscoveryengineV1EngineFeaturesValueEnumMap>;
 
 /** Configurations for generating a Dialogflow agent. Note that these configurations are one-time consumed by and passed to Dialogflow service. It means they cannot be retrieved using EngineService.GetEngine or EngineService.ListEngines API after engine creation. */
 export interface GoogleCloudDiscoveryengineV1EngineChatEngineConfigAgentCreationConfig {
@@ -6654,9 +6641,7 @@ export type GoogleCloudDiscoveryengineV1EngineSearchEngineConfigSearchAddOnsItem
   GoogleCloudDiscoveryengineV1EngineSearchEngineConfigSearchAddOnsItemEnum | (string & {})
 >;
 export const GoogleCloudDiscoveryengineV1EngineSearchEngineConfigSearchAddOnsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudDiscoveryengineV1EngineSearchEngineConfigSearchAddOnsItemEnum,
-  ) as any as S.Schema<GoogleCloudDiscoveryengineV1EngineSearchEngineConfigSearchAddOnsItemEnumList>;
+  GoogleCloudDiscoveryengineV1AnswerQueryRequestQueryUnderstandingSpecQueryClassificationSpecTypesItemEnumList as any as S.Schema<GoogleCloudDiscoveryengineV1EngineSearchEngineConfigSearchAddOnsItemEnumList>;
 
 export type GoogleCloudDiscoveryengineV1EngineSearchEngineConfigSearchTierEnum =
   | "SEARCH_TIER_UNSPECIFIED"
@@ -9173,9 +9158,7 @@ export type GoogleCloudDiscoveryengineV1DataConnectorConnectorModesItemEnumList 
   GoogleCloudDiscoveryengineV1DataConnectorConnectorModesItemEnum | (string & {})
 >;
 export const GoogleCloudDiscoveryengineV1DataConnectorConnectorModesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudDiscoveryengineV1DataConnectorConnectorModesItemEnum,
-  ) as any as S.Schema<GoogleCloudDiscoveryengineV1DataConnectorConnectorModesItemEnumList>;
+  GoogleCloudDiscoveryengineV1AnswerQueryRequestQueryUnderstandingSpecQueryClassificationSpecTypesItemEnumList as any as S.Schema<GoogleCloudDiscoveryengineV1DataConnectorConnectorModesItemEnumList>;
 
 /** Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/time-zones). */
 export interface GoogleTypeTimeZone {
@@ -9286,9 +9269,7 @@ export type GoogleCloudDiscoveryengineV1DataConnectorBlockingReasonsItemEnumList
   GoogleCloudDiscoveryengineV1DataConnectorBlockingReasonsItemEnum | (string & {})
 >;
 export const GoogleCloudDiscoveryengineV1DataConnectorBlockingReasonsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudDiscoveryengineV1DataConnectorBlockingReasonsItemEnum,
-  ) as any as S.Schema<GoogleCloudDiscoveryengineV1DataConnectorBlockingReasonsItemEnumList>;
+  GoogleCloudDiscoveryengineV1AnswerQueryRequestQueryUnderstandingSpecQueryClassificationSpecTypesItemEnumList as any as S.Schema<GoogleCloudDiscoveryengineV1DataConnectorBlockingReasonsItemEnumList>;
 
 export type GoogleCloudDiscoveryengineV1DataConnectorRealtimeSyncConfigStreamingErrorStreamingErrorReasonEnum =
   | "STREAMING_ERROR_REASON_UNSPECIFIED"
@@ -9369,9 +9350,7 @@ export type GoogleCloudDiscoveryengineV1BAPConfigSupportedConnectorModesItemEnum
   GoogleCloudDiscoveryengineV1BAPConfigSupportedConnectorModesItemEnum | (string & {})
 >;
 export const GoogleCloudDiscoveryengineV1BAPConfigSupportedConnectorModesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudDiscoveryengineV1BAPConfigSupportedConnectorModesItemEnum,
-  ) as any as S.Schema<GoogleCloudDiscoveryengineV1BAPConfigSupportedConnectorModesItemEnumList>;
+  GoogleCloudDiscoveryengineV1AnswerQueryRequestQueryUnderstandingSpecQueryClassificationSpecTypesItemEnumList as any as S.Schema<GoogleCloudDiscoveryengineV1BAPConfigSupportedConnectorModesItemEnumList>;
 
 /** Customer-facing view of the admin-curated toolspec for a BAP connection. Holds the (simplified) per-tool definitions surfaced to and editable by the admin in the Discovery Engine UI. Mirrors the shape of the backend `google.cloud.connectorexecution.v1.ToolspecOverride` message, but is intentionally kept as a separate public type so the Discovery Engine API surface can evolve independently of the fed-API surface (AIP-215). Handlers convert between the two via helpers in //cloud/ml/discoveryengine/external_service/v1main/data_connector_service/lib:bap_custom_tool_util. */
 export interface GoogleCloudDiscoveryengineV1BAPConfigToolspecOverride {
@@ -10539,9 +10518,7 @@ export type GoogleCloudDiscoveryengineV1WidgetConfigUIComponentFieldDeviceVisibi
     GoogleCloudDiscoveryengineV1WidgetConfigUIComponentFieldDeviceVisibilityItemEnum | (string & {})
   >;
 export const GoogleCloudDiscoveryengineV1WidgetConfigUIComponentFieldDeviceVisibilityItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudDiscoveryengineV1WidgetConfigUIComponentFieldDeviceVisibilityItemEnum,
-  ) as any as S.Schema<GoogleCloudDiscoveryengineV1WidgetConfigUIComponentFieldDeviceVisibilityItemEnumList>;
+  GoogleCloudDiscoveryengineV1AnswerQueryRequestQueryUnderstandingSpecQueryClassificationSpecTypesItemEnumList as any as S.Schema<GoogleCloudDiscoveryengineV1WidgetConfigUIComponentFieldDeviceVisibilityItemEnumList>;
 
 /** Facet field that maps to a UI Component. */
 export interface GoogleCloudDiscoveryengineV1WidgetConfigUIComponentField {
@@ -10804,10 +10781,7 @@ export type GoogleCloudDiscoveryengineV1WidgetConfigUiSettingsFeaturesValueEnumM
     | undefined;
 };
 export const GoogleCloudDiscoveryengineV1WidgetConfigUiSettingsFeaturesValueEnumMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    GoogleCloudDiscoveryengineV1WidgetConfigUiSettingsFeaturesValueEnum,
-  ) as any as S.Schema<GoogleCloudDiscoveryengineV1WidgetConfigUiSettingsFeaturesValueEnumMap>;
+  GoogleCloudDiscoveryengineV1WidgetConfigUiSettingsModelConfigsValueEnumMap as any as S.Schema<GoogleCloudDiscoveryengineV1WidgetConfigUiSettingsFeaturesValueEnumMap>;
 
 export type GoogleCloudDiscoveryengineV1WidgetConfigUiSettingsInteractionTypeEnum =
   | "INTERACTION_TYPE_UNSPECIFIED"
@@ -12886,9 +12860,8 @@ export const GoogleCloudDiscoveryengineV1FeedbackReasonsItemEnum = S.String;
 export type GoogleCloudDiscoveryengineV1FeedbackReasonsItemEnumList = Array<
   GoogleCloudDiscoveryengineV1FeedbackReasonsItemEnum | (string & {})
 >;
-export const GoogleCloudDiscoveryengineV1FeedbackReasonsItemEnumList = /*@__PURE__*/ S.Array(
-  GoogleCloudDiscoveryengineV1FeedbackReasonsItemEnum,
-) as any as S.Schema<GoogleCloudDiscoveryengineV1FeedbackReasonsItemEnumList>;
+export const GoogleCloudDiscoveryengineV1FeedbackReasonsItemEnumList =
+  GoogleCloudDiscoveryengineV1DataStoreSolutionTypesItemEnumList as any as S.Schema<GoogleCloudDiscoveryengineV1FeedbackReasonsItemEnumList>;
 
 /** The conversation information such as the question index and session name. */
 export interface GoogleCloudDiscoveryengineV1FeedbackConversationInfo {

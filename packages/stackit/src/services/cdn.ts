@@ -689,12 +689,7 @@ export interface OtlpLogSink {
   /** Defines the type of the log sink. */
   type: OtlpLogSinkType;
 }
-export const OtlpLogSink = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pushUrl: S.String,
-    type: OtlpLogSinkType,
-  }),
-).annotate({ identifier: "OtlpLogSink" }) as any as S.Schema<OtlpLogSink>;
+export const OtlpLogSink = LokiLogSink as any as S.Schema<OtlpLogSink>;
 
 export type ConfigLogSink = LokiLogSink | OtlpLogSink;
 export const ConfigLogSink = /*@__PURE__*/ S.Unknown as any as S.Schema<ConfigLogSink>;
@@ -846,9 +841,8 @@ export const WafStatusRuleBlockReasonDirectlyDefined =
 
 /** A list containing all WAF Types which can use this Rule. You must patch you WAF to one of these WAF Types to make use of this rule. Rules show up with this state if they would have been enabled or logOnly otherwise. */
 export type WafStatusRuleBlockReasonInvalidWafTypeAllowedWafTypesList = Array<WafType>;
-export const WafStatusRuleBlockReasonInvalidWafTypeAllowedWafTypesList = /*@__PURE__*/ S.Array(
-  WafType,
-) as any as S.Schema<WafStatusRuleBlockReasonInvalidWafTypeAllowedWafTypesList>;
+export const WafStatusRuleBlockReasonInvalidWafTypeAllowedWafTypesList =
+  CreateDistributionRequestRegionsList as any as S.Schema<WafStatusRuleBlockReasonInvalidWafTypeAllowedWafTypesList>;
 
 export interface WafStatusRuleBlockReasonInvalidWafType {
   /** A list containing all WAF Types which can use this Rule. You must patch you WAF to one of these WAF Types to make use of this rule. Rules show up with this state if they would have been enabled or logOnly otherwise. */
@@ -1444,9 +1438,8 @@ export type GetLogsSearchFiltersResponseCacheItem = "HIT" | "MISS";
 export const GetLogsSearchFiltersResponseCacheItem = S.String;
 
 export type GetLogsSearchFiltersResponseCacheList = Array<GetLogsSearchFiltersResponseCacheItem>;
-export const GetLogsSearchFiltersResponseCacheList = /*@__PURE__*/ S.Array(
-  GetLogsSearchFiltersResponseCacheItem,
-) as any as S.Schema<GetLogsSearchFiltersResponseCacheList>;
+export const GetLogsSearchFiltersResponseCacheList =
+  CreateDistributionRequestRegionsList as any as S.Schema<GetLogsSearchFiltersResponseCacheList>;
 
 /** A datacenter. The `id` defines the key needed to filter against the logs endpoint, while the `displayName` defines a human-readable Name. */
 export interface GetLogsSearchFiltersResponseDatacenterBlockItem {

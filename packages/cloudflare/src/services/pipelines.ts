@@ -541,14 +541,7 @@ export interface CreateResponseSourceItemCloudflarePipelinesWorkersPipelinesBind
   type: string;
 }
 export const CreateResponseSourceItemCloudflarePipelinesWorkersPipelinesBindingSource =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      format: CreateResponseSourceItemCloudflarePipelinesWorkersPipelinesBindingSourceFormat,
-      type: S.String,
-    }),
-  ).annotate({
-    identifier: "CreateResponseSourceItemCloudflarePipelinesWorkersPipelinesBindingSource",
-  }) as any as S.Schema<CreateResponseSourceItemCloudflarePipelinesWorkersPipelinesBindingSource>;
+  CreateRequestSourceItemCloudflarePipelinesWorkersPipelinesBindingSource as any as S.Schema<CreateResponseSourceItemCloudflarePipelinesWorkersPipelinesBindingSource>;
 
 export type CreateResponseSourceItem =
   | CreateResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSource
@@ -867,17 +860,8 @@ export interface SinksCreateRequestSchemaFieldsItemInt64 {
   required?: boolean;
   sqlName?: string;
 }
-export const SinksCreateRequestSchemaFieldsItemInt64 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: SinksCreateRequestSchemaFieldsItemInt64Type,
-    metadataKey: S.optional(S.String.pipe(T.Body("metadata_key"))),
-    name: S.optional(S.String),
-    required: S.optional(S.Boolean),
-    sqlName: S.optional(S.String.pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "SinksCreateRequestSchemaFieldsItemInt64",
-}) as any as S.Schema<SinksCreateRequestSchemaFieldsItemInt64>;
+export const SinksCreateRequestSchemaFieldsItemInt64 =
+  SinksCreateRequestSchemaFieldsItemInt32 as any as S.Schema<SinksCreateRequestSchemaFieldsItemInt64>;
 
 export type SinksCreateRequestSchemaFieldsItemFloat32Type = "float32";
 export const SinksCreateRequestSchemaFieldsItemFloat32Type = S.String;
@@ -889,17 +873,8 @@ export interface SinksCreateRequestSchemaFieldsItemFloat32 {
   required?: boolean;
   sqlName?: string;
 }
-export const SinksCreateRequestSchemaFieldsItemFloat32 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: SinksCreateRequestSchemaFieldsItemFloat32Type,
-    metadataKey: S.optional(S.String.pipe(T.Body("metadata_key"))),
-    name: S.optional(S.String),
-    required: S.optional(S.Boolean),
-    sqlName: S.optional(S.String.pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "SinksCreateRequestSchemaFieldsItemFloat32",
-}) as any as S.Schema<SinksCreateRequestSchemaFieldsItemFloat32>;
+export const SinksCreateRequestSchemaFieldsItemFloat32 =
+  SinksCreateRequestSchemaFieldsItemInt32 as any as S.Schema<SinksCreateRequestSchemaFieldsItemFloat32>;
 
 export type SinksCreateRequestSchemaFieldsItemFloat64Type = "float64";
 export const SinksCreateRequestSchemaFieldsItemFloat64Type = S.String;
@@ -911,17 +886,8 @@ export interface SinksCreateRequestSchemaFieldsItemFloat64 {
   required?: boolean;
   sqlName?: string;
 }
-export const SinksCreateRequestSchemaFieldsItemFloat64 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: SinksCreateRequestSchemaFieldsItemFloat64Type,
-    metadataKey: S.optional(S.String.pipe(T.Body("metadata_key"))),
-    name: S.optional(S.String),
-    required: S.optional(S.Boolean),
-    sqlName: S.optional(S.String.pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "SinksCreateRequestSchemaFieldsItemFloat64",
-}) as any as S.Schema<SinksCreateRequestSchemaFieldsItemFloat64>;
+export const SinksCreateRequestSchemaFieldsItemFloat64 =
+  SinksCreateRequestSchemaFieldsItemInt32 as any as S.Schema<SinksCreateRequestSchemaFieldsItemFloat64>;
 
 export type SinksCreateRequestSchemaFieldsItemBoolType = "bool";
 export const SinksCreateRequestSchemaFieldsItemBoolType = S.String;
@@ -933,17 +899,8 @@ export interface SinksCreateRequestSchemaFieldsItemBool {
   required?: boolean;
   sqlName?: string;
 }
-export const SinksCreateRequestSchemaFieldsItemBool = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: SinksCreateRequestSchemaFieldsItemBoolType,
-    metadataKey: S.optional(S.String.pipe(T.Body("metadata_key"))),
-    name: S.optional(S.String),
-    required: S.optional(S.Boolean),
-    sqlName: S.optional(S.String.pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "SinksCreateRequestSchemaFieldsItemBool",
-}) as any as S.Schema<SinksCreateRequestSchemaFieldsItemBool>;
+export const SinksCreateRequestSchemaFieldsItemBool =
+  SinksCreateRequestSchemaFieldsItemInt32 as any as S.Schema<SinksCreateRequestSchemaFieldsItemBool>;
 
 export type SinksCreateRequestSchemaFieldsItemStringType = "string";
 export const SinksCreateRequestSchemaFieldsItemStringType = S.String;
@@ -955,17 +912,8 @@ export interface SinksCreateRequestSchemaFieldsItemString {
   required?: boolean;
   sqlName?: string;
 }
-export const SinksCreateRequestSchemaFieldsItemString = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: SinksCreateRequestSchemaFieldsItemStringType,
-    metadataKey: S.optional(S.String.pipe(T.Body("metadata_key"))),
-    name: S.optional(S.String),
-    required: S.optional(S.Boolean),
-    sqlName: S.optional(S.String.pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "SinksCreateRequestSchemaFieldsItemString",
-}) as any as S.Schema<SinksCreateRequestSchemaFieldsItemString>;
+export const SinksCreateRequestSchemaFieldsItemString =
+  SinksCreateRequestSchemaFieldsItemInt32 as any as S.Schema<SinksCreateRequestSchemaFieldsItemString>;
 
 export type SinksCreateRequestSchemaFieldsItemBinaryType = "binary";
 export const SinksCreateRequestSchemaFieldsItemBinaryType = S.String;
@@ -977,17 +925,8 @@ export interface SinksCreateRequestSchemaFieldsItemBinary {
   required?: boolean;
   sqlName?: string;
 }
-export const SinksCreateRequestSchemaFieldsItemBinary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: SinksCreateRequestSchemaFieldsItemBinaryType,
-    metadataKey: S.optional(S.String.pipe(T.Body("metadata_key"))),
-    name: S.optional(S.String),
-    required: S.optional(S.Boolean),
-    sqlName: S.optional(S.String.pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "SinksCreateRequestSchemaFieldsItemBinary",
-}) as any as S.Schema<SinksCreateRequestSchemaFieldsItemBinary>;
+export const SinksCreateRequestSchemaFieldsItemBinary =
+  SinksCreateRequestSchemaFieldsItemInt32 as any as S.Schema<SinksCreateRequestSchemaFieldsItemBinary>;
 
 export type SinksCreateRequestSchemaFieldsItemTimestampType = "timestamp";
 export const SinksCreateRequestSchemaFieldsItemTimestampType = S.String;
@@ -1030,17 +969,8 @@ export interface SinksCreateRequestSchemaFieldsItemJson {
   required?: boolean;
   sqlName?: string;
 }
-export const SinksCreateRequestSchemaFieldsItemJson = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: SinksCreateRequestSchemaFieldsItemJsonType,
-    metadataKey: S.optional(S.String.pipe(T.Body("metadata_key"))),
-    name: S.optional(S.String),
-    required: S.optional(S.Boolean),
-    sqlName: S.optional(S.String.pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "SinksCreateRequestSchemaFieldsItemJson",
-}) as any as S.Schema<SinksCreateRequestSchemaFieldsItemJson>;
+export const SinksCreateRequestSchemaFieldsItemJson =
+  SinksCreateRequestSchemaFieldsItemInt32 as any as S.Schema<SinksCreateRequestSchemaFieldsItemJson>;
 
 export type SinksCreateRequestSchemaFieldsItemStructType = "struct";
 export const SinksCreateRequestSchemaFieldsItemStructType = S.String;
@@ -1052,17 +982,8 @@ export interface SinksCreateRequestSchemaFieldsItemStruct {
   required?: boolean;
   sqlName?: string;
 }
-export const SinksCreateRequestSchemaFieldsItemStruct = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: SinksCreateRequestSchemaFieldsItemStructType,
-    metadataKey: S.optional(S.String.pipe(T.Body("metadata_key"))),
-    name: S.optional(S.String),
-    required: S.optional(S.Boolean),
-    sqlName: S.optional(S.String.pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "SinksCreateRequestSchemaFieldsItemStruct",
-}) as any as S.Schema<SinksCreateRequestSchemaFieldsItemStruct>;
+export const SinksCreateRequestSchemaFieldsItemStruct =
+  SinksCreateRequestSchemaFieldsItemInt32 as any as S.Schema<SinksCreateRequestSchemaFieldsItemStruct>;
 
 export type SinksCreateRequestSchemaFieldsItemListType = "list";
 export const SinksCreateRequestSchemaFieldsItemListType = S.String;
@@ -1074,17 +995,8 @@ export interface SinksCreateRequestSchemaFieldsItemList {
   required?: boolean;
   sqlName?: string;
 }
-export const SinksCreateRequestSchemaFieldsItemList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: SinksCreateRequestSchemaFieldsItemListType,
-    metadataKey: S.optional(S.String.pipe(T.Body("metadata_key"))),
-    name: S.optional(S.String),
-    required: S.optional(S.Boolean),
-    sqlName: S.optional(S.String.pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "SinksCreateRequestSchemaFieldsItemList",
-}) as any as S.Schema<SinksCreateRequestSchemaFieldsItemList>;
+export const SinksCreateRequestSchemaFieldsItemList =
+  SinksCreateRequestSchemaFieldsItemInt32 as any as S.Schema<SinksCreateRequestSchemaFieldsItemList>;
 
 export type SinksCreateRequestSchemaFieldsItem =
   | SinksCreateRequestSchemaFieldsItemInt32
@@ -1448,17 +1360,8 @@ export interface SinksCreateResponseSchemaFieldsItemInt64 {
   required?: boolean | null;
   sqlName?: string | null;
 }
-export const SinksCreateResponseSchemaFieldsItemInt64 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: SinksCreateResponseSchemaFieldsItemInt64Type,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "SinksCreateResponseSchemaFieldsItemInt64",
-}) as any as S.Schema<SinksCreateResponseSchemaFieldsItemInt64>;
+export const SinksCreateResponseSchemaFieldsItemInt64 =
+  SinksCreateResponseSchemaFieldsItemInt32 as any as S.Schema<SinksCreateResponseSchemaFieldsItemInt64>;
 
 export type SinksCreateResponseSchemaFieldsItemFloat32Type = "float32";
 export const SinksCreateResponseSchemaFieldsItemFloat32Type = S.String;
@@ -1470,17 +1373,8 @@ export interface SinksCreateResponseSchemaFieldsItemFloat32 {
   required?: boolean | null;
   sqlName?: string | null;
 }
-export const SinksCreateResponseSchemaFieldsItemFloat32 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: SinksCreateResponseSchemaFieldsItemFloat32Type,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "SinksCreateResponseSchemaFieldsItemFloat32",
-}) as any as S.Schema<SinksCreateResponseSchemaFieldsItemFloat32>;
+export const SinksCreateResponseSchemaFieldsItemFloat32 =
+  SinksCreateResponseSchemaFieldsItemInt32 as any as S.Schema<SinksCreateResponseSchemaFieldsItemFloat32>;
 
 export type SinksCreateResponseSchemaFieldsItemFloat64Type = "float64";
 export const SinksCreateResponseSchemaFieldsItemFloat64Type = S.String;
@@ -1492,17 +1386,8 @@ export interface SinksCreateResponseSchemaFieldsItemFloat64 {
   required?: boolean | null;
   sqlName?: string | null;
 }
-export const SinksCreateResponseSchemaFieldsItemFloat64 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: SinksCreateResponseSchemaFieldsItemFloat64Type,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "SinksCreateResponseSchemaFieldsItemFloat64",
-}) as any as S.Schema<SinksCreateResponseSchemaFieldsItemFloat64>;
+export const SinksCreateResponseSchemaFieldsItemFloat64 =
+  SinksCreateResponseSchemaFieldsItemInt32 as any as S.Schema<SinksCreateResponseSchemaFieldsItemFloat64>;
 
 export type SinksCreateResponseSchemaFieldsItemBoolType = "bool";
 export const SinksCreateResponseSchemaFieldsItemBoolType = S.String;
@@ -1514,17 +1399,8 @@ export interface SinksCreateResponseSchemaFieldsItemBool {
   required?: boolean | null;
   sqlName?: string | null;
 }
-export const SinksCreateResponseSchemaFieldsItemBool = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: SinksCreateResponseSchemaFieldsItemBoolType,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "SinksCreateResponseSchemaFieldsItemBool",
-}) as any as S.Schema<SinksCreateResponseSchemaFieldsItemBool>;
+export const SinksCreateResponseSchemaFieldsItemBool =
+  SinksCreateResponseSchemaFieldsItemInt32 as any as S.Schema<SinksCreateResponseSchemaFieldsItemBool>;
 
 export type SinksCreateResponseSchemaFieldsItemStringType = "string";
 export const SinksCreateResponseSchemaFieldsItemStringType = S.String;
@@ -1536,17 +1412,8 @@ export interface SinksCreateResponseSchemaFieldsItemString {
   required?: boolean | null;
   sqlName?: string | null;
 }
-export const SinksCreateResponseSchemaFieldsItemString = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: SinksCreateResponseSchemaFieldsItemStringType,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "SinksCreateResponseSchemaFieldsItemString",
-}) as any as S.Schema<SinksCreateResponseSchemaFieldsItemString>;
+export const SinksCreateResponseSchemaFieldsItemString =
+  SinksCreateResponseSchemaFieldsItemInt32 as any as S.Schema<SinksCreateResponseSchemaFieldsItemString>;
 
 export type SinksCreateResponseSchemaFieldsItemBinaryType = "binary";
 export const SinksCreateResponseSchemaFieldsItemBinaryType = S.String;
@@ -1558,17 +1425,8 @@ export interface SinksCreateResponseSchemaFieldsItemBinary {
   required?: boolean | null;
   sqlName?: string | null;
 }
-export const SinksCreateResponseSchemaFieldsItemBinary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: SinksCreateResponseSchemaFieldsItemBinaryType,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "SinksCreateResponseSchemaFieldsItemBinary",
-}) as any as S.Schema<SinksCreateResponseSchemaFieldsItemBinary>;
+export const SinksCreateResponseSchemaFieldsItemBinary =
+  SinksCreateResponseSchemaFieldsItemInt32 as any as S.Schema<SinksCreateResponseSchemaFieldsItemBinary>;
 
 export type SinksCreateResponseSchemaFieldsItemTimestampType = "timestamp";
 export const SinksCreateResponseSchemaFieldsItemTimestampType = S.String;
@@ -1611,17 +1469,8 @@ export interface SinksCreateResponseSchemaFieldsItemJson {
   required?: boolean | null;
   sqlName?: string | null;
 }
-export const SinksCreateResponseSchemaFieldsItemJson = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: SinksCreateResponseSchemaFieldsItemJsonType,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "SinksCreateResponseSchemaFieldsItemJson",
-}) as any as S.Schema<SinksCreateResponseSchemaFieldsItemJson>;
+export const SinksCreateResponseSchemaFieldsItemJson =
+  SinksCreateResponseSchemaFieldsItemInt32 as any as S.Schema<SinksCreateResponseSchemaFieldsItemJson>;
 
 export type SinksCreateResponseSchemaFieldsItemStructType = "struct";
 export const SinksCreateResponseSchemaFieldsItemStructType = S.String;
@@ -1633,17 +1482,8 @@ export interface SinksCreateResponseSchemaFieldsItemStruct {
   required?: boolean | null;
   sqlName?: string | null;
 }
-export const SinksCreateResponseSchemaFieldsItemStruct = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: SinksCreateResponseSchemaFieldsItemStructType,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "SinksCreateResponseSchemaFieldsItemStruct",
-}) as any as S.Schema<SinksCreateResponseSchemaFieldsItemStruct>;
+export const SinksCreateResponseSchemaFieldsItemStruct =
+  SinksCreateResponseSchemaFieldsItemInt32 as any as S.Schema<SinksCreateResponseSchemaFieldsItemStruct>;
 
 export type SinksCreateResponseSchemaFieldsItemListType = "list";
 export const SinksCreateResponseSchemaFieldsItemListType = S.String;
@@ -1655,17 +1495,8 @@ export interface SinksCreateResponseSchemaFieldsItemList {
   required?: boolean | null;
   sqlName?: string | null;
 }
-export const SinksCreateResponseSchemaFieldsItemList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: SinksCreateResponseSchemaFieldsItemListType,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "SinksCreateResponseSchemaFieldsItemList",
-}) as any as S.Schema<SinksCreateResponseSchemaFieldsItemList>;
+export const SinksCreateResponseSchemaFieldsItemList =
+  SinksCreateResponseSchemaFieldsItemInt32 as any as S.Schema<SinksCreateResponseSchemaFieldsItemList>;
 
 export type SinksCreateResponseSchemaFieldsItem =
   | SinksCreateResponseSchemaFieldsItemInt32
@@ -1807,15 +1638,8 @@ export interface StreamsCreateRequestFormatParquet {
   compression?: StreamsCreateRequestFormatParquetCompression | (string & {});
   rowGroupBytes?: number;
 }
-export const StreamsCreateRequestFormatParquet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: StreamsCreateRequestFormatParquetType,
-    compression: S.optional(StreamsCreateRequestFormatParquetCompression),
-    rowGroupBytes: S.optional(S.Number.pipe(T.Body("row_group_bytes"))),
-  }),
-).annotate({
-  identifier: "StreamsCreateRequestFormatParquet",
-}) as any as S.Schema<StreamsCreateRequestFormatParquet>;
+export const StreamsCreateRequestFormatParquet =
+  SinksCreateRequestFormatParquet as any as S.Schema<StreamsCreateRequestFormatParquet>;
 
 export type StreamsCreateRequestFormat =
   | StreamsCreateRequestFormatJson
@@ -1872,17 +1696,8 @@ export interface StreamsCreateRequestSchemaFieldsItemInt32 {
   required?: boolean;
   sqlName?: string;
 }
-export const StreamsCreateRequestSchemaFieldsItemInt32 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: StreamsCreateRequestSchemaFieldsItemInt32Type,
-    metadataKey: S.optional(S.String.pipe(T.Body("metadata_key"))),
-    name: S.optional(S.String),
-    required: S.optional(S.Boolean),
-    sqlName: S.optional(S.String.pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "StreamsCreateRequestSchemaFieldsItemInt32",
-}) as any as S.Schema<StreamsCreateRequestSchemaFieldsItemInt32>;
+export const StreamsCreateRequestSchemaFieldsItemInt32 =
+  SinksCreateRequestSchemaFieldsItemInt32 as any as S.Schema<StreamsCreateRequestSchemaFieldsItemInt32>;
 
 export type StreamsCreateRequestSchemaFieldsItemInt64Type = "int64";
 export const StreamsCreateRequestSchemaFieldsItemInt64Type = S.String;
@@ -1894,17 +1709,8 @@ export interface StreamsCreateRequestSchemaFieldsItemInt64 {
   required?: boolean;
   sqlName?: string;
 }
-export const StreamsCreateRequestSchemaFieldsItemInt64 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: StreamsCreateRequestSchemaFieldsItemInt64Type,
-    metadataKey: S.optional(S.String.pipe(T.Body("metadata_key"))),
-    name: S.optional(S.String),
-    required: S.optional(S.Boolean),
-    sqlName: S.optional(S.String.pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "StreamsCreateRequestSchemaFieldsItemInt64",
-}) as any as S.Schema<StreamsCreateRequestSchemaFieldsItemInt64>;
+export const StreamsCreateRequestSchemaFieldsItemInt64 =
+  SinksCreateRequestSchemaFieldsItemInt32 as any as S.Schema<StreamsCreateRequestSchemaFieldsItemInt64>;
 
 export type StreamsCreateRequestSchemaFieldsItemFloat32Type = "float32";
 export const StreamsCreateRequestSchemaFieldsItemFloat32Type = S.String;
@@ -1916,17 +1722,8 @@ export interface StreamsCreateRequestSchemaFieldsItemFloat32 {
   required?: boolean;
   sqlName?: string;
 }
-export const StreamsCreateRequestSchemaFieldsItemFloat32 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: StreamsCreateRequestSchemaFieldsItemFloat32Type,
-    metadataKey: S.optional(S.String.pipe(T.Body("metadata_key"))),
-    name: S.optional(S.String),
-    required: S.optional(S.Boolean),
-    sqlName: S.optional(S.String.pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "StreamsCreateRequestSchemaFieldsItemFloat32",
-}) as any as S.Schema<StreamsCreateRequestSchemaFieldsItemFloat32>;
+export const StreamsCreateRequestSchemaFieldsItemFloat32 =
+  SinksCreateRequestSchemaFieldsItemInt32 as any as S.Schema<StreamsCreateRequestSchemaFieldsItemFloat32>;
 
 export type StreamsCreateRequestSchemaFieldsItemFloat64Type = "float64";
 export const StreamsCreateRequestSchemaFieldsItemFloat64Type = S.String;
@@ -1938,17 +1735,8 @@ export interface StreamsCreateRequestSchemaFieldsItemFloat64 {
   required?: boolean;
   sqlName?: string;
 }
-export const StreamsCreateRequestSchemaFieldsItemFloat64 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: StreamsCreateRequestSchemaFieldsItemFloat64Type,
-    metadataKey: S.optional(S.String.pipe(T.Body("metadata_key"))),
-    name: S.optional(S.String),
-    required: S.optional(S.Boolean),
-    sqlName: S.optional(S.String.pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "StreamsCreateRequestSchemaFieldsItemFloat64",
-}) as any as S.Schema<StreamsCreateRequestSchemaFieldsItemFloat64>;
+export const StreamsCreateRequestSchemaFieldsItemFloat64 =
+  SinksCreateRequestSchemaFieldsItemInt32 as any as S.Schema<StreamsCreateRequestSchemaFieldsItemFloat64>;
 
 export type StreamsCreateRequestSchemaFieldsItemBoolType = "bool";
 export const StreamsCreateRequestSchemaFieldsItemBoolType = S.String;
@@ -1960,17 +1748,8 @@ export interface StreamsCreateRequestSchemaFieldsItemBool {
   required?: boolean;
   sqlName?: string;
 }
-export const StreamsCreateRequestSchemaFieldsItemBool = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: StreamsCreateRequestSchemaFieldsItemBoolType,
-    metadataKey: S.optional(S.String.pipe(T.Body("metadata_key"))),
-    name: S.optional(S.String),
-    required: S.optional(S.Boolean),
-    sqlName: S.optional(S.String.pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "StreamsCreateRequestSchemaFieldsItemBool",
-}) as any as S.Schema<StreamsCreateRequestSchemaFieldsItemBool>;
+export const StreamsCreateRequestSchemaFieldsItemBool =
+  SinksCreateRequestSchemaFieldsItemInt32 as any as S.Schema<StreamsCreateRequestSchemaFieldsItemBool>;
 
 export type StreamsCreateRequestSchemaFieldsItemStringType = "string";
 export const StreamsCreateRequestSchemaFieldsItemStringType = S.String;
@@ -1982,17 +1761,8 @@ export interface StreamsCreateRequestSchemaFieldsItemString {
   required?: boolean;
   sqlName?: string;
 }
-export const StreamsCreateRequestSchemaFieldsItemString = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: StreamsCreateRequestSchemaFieldsItemStringType,
-    metadataKey: S.optional(S.String.pipe(T.Body("metadata_key"))),
-    name: S.optional(S.String),
-    required: S.optional(S.Boolean),
-    sqlName: S.optional(S.String.pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "StreamsCreateRequestSchemaFieldsItemString",
-}) as any as S.Schema<StreamsCreateRequestSchemaFieldsItemString>;
+export const StreamsCreateRequestSchemaFieldsItemString =
+  SinksCreateRequestSchemaFieldsItemInt32 as any as S.Schema<StreamsCreateRequestSchemaFieldsItemString>;
 
 export type StreamsCreateRequestSchemaFieldsItemBinaryType = "binary";
 export const StreamsCreateRequestSchemaFieldsItemBinaryType = S.String;
@@ -2004,17 +1774,8 @@ export interface StreamsCreateRequestSchemaFieldsItemBinary {
   required?: boolean;
   sqlName?: string;
 }
-export const StreamsCreateRequestSchemaFieldsItemBinary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: StreamsCreateRequestSchemaFieldsItemBinaryType,
-    metadataKey: S.optional(S.String.pipe(T.Body("metadata_key"))),
-    name: S.optional(S.String),
-    required: S.optional(S.Boolean),
-    sqlName: S.optional(S.String.pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "StreamsCreateRequestSchemaFieldsItemBinary",
-}) as any as S.Schema<StreamsCreateRequestSchemaFieldsItemBinary>;
+export const StreamsCreateRequestSchemaFieldsItemBinary =
+  SinksCreateRequestSchemaFieldsItemInt32 as any as S.Schema<StreamsCreateRequestSchemaFieldsItemBinary>;
 
 export type StreamsCreateRequestSchemaFieldsItemTimestampType = "timestamp";
 export const StreamsCreateRequestSchemaFieldsItemTimestampType = S.String;
@@ -2034,18 +1795,8 @@ export interface StreamsCreateRequestSchemaFieldsItemTimestamp {
   sqlName?: string;
   unit?: StreamsCreateRequestSchemaFieldsItemTimestampUnit | (string & {});
 }
-export const StreamsCreateRequestSchemaFieldsItemTimestamp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: StreamsCreateRequestSchemaFieldsItemTimestampType,
-    metadataKey: S.optional(S.String.pipe(T.Body("metadata_key"))),
-    name: S.optional(S.String),
-    required: S.optional(S.Boolean),
-    sqlName: S.optional(S.String.pipe(T.Body("sql_name"))),
-    unit: S.optional(StreamsCreateRequestSchemaFieldsItemTimestampUnit),
-  }),
-).annotate({
-  identifier: "StreamsCreateRequestSchemaFieldsItemTimestamp",
-}) as any as S.Schema<StreamsCreateRequestSchemaFieldsItemTimestamp>;
+export const StreamsCreateRequestSchemaFieldsItemTimestamp =
+  SinksCreateRequestSchemaFieldsItemTimestamp as any as S.Schema<StreamsCreateRequestSchemaFieldsItemTimestamp>;
 
 export type StreamsCreateRequestSchemaFieldsItemJsonType = "json";
 export const StreamsCreateRequestSchemaFieldsItemJsonType = S.String;
@@ -2057,17 +1808,8 @@ export interface StreamsCreateRequestSchemaFieldsItemJson {
   required?: boolean;
   sqlName?: string;
 }
-export const StreamsCreateRequestSchemaFieldsItemJson = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: StreamsCreateRequestSchemaFieldsItemJsonType,
-    metadataKey: S.optional(S.String.pipe(T.Body("metadata_key"))),
-    name: S.optional(S.String),
-    required: S.optional(S.Boolean),
-    sqlName: S.optional(S.String.pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "StreamsCreateRequestSchemaFieldsItemJson",
-}) as any as S.Schema<StreamsCreateRequestSchemaFieldsItemJson>;
+export const StreamsCreateRequestSchemaFieldsItemJson =
+  SinksCreateRequestSchemaFieldsItemInt32 as any as S.Schema<StreamsCreateRequestSchemaFieldsItemJson>;
 
 export type StreamsCreateRequestSchemaFieldsItemStructType = "struct";
 export const StreamsCreateRequestSchemaFieldsItemStructType = S.String;
@@ -2079,17 +1821,8 @@ export interface StreamsCreateRequestSchemaFieldsItemStruct {
   required?: boolean;
   sqlName?: string;
 }
-export const StreamsCreateRequestSchemaFieldsItemStruct = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: StreamsCreateRequestSchemaFieldsItemStructType,
-    metadataKey: S.optional(S.String.pipe(T.Body("metadata_key"))),
-    name: S.optional(S.String),
-    required: S.optional(S.Boolean),
-    sqlName: S.optional(S.String.pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "StreamsCreateRequestSchemaFieldsItemStruct",
-}) as any as S.Schema<StreamsCreateRequestSchemaFieldsItemStruct>;
+export const StreamsCreateRequestSchemaFieldsItemStruct =
+  SinksCreateRequestSchemaFieldsItemInt32 as any as S.Schema<StreamsCreateRequestSchemaFieldsItemStruct>;
 
 export type StreamsCreateRequestSchemaFieldsItemListType = "list";
 export const StreamsCreateRequestSchemaFieldsItemListType = S.String;
@@ -2101,17 +1834,8 @@ export interface StreamsCreateRequestSchemaFieldsItemList {
   required?: boolean;
   sqlName?: string;
 }
-export const StreamsCreateRequestSchemaFieldsItemList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: StreamsCreateRequestSchemaFieldsItemListType,
-    metadataKey: S.optional(S.String.pipe(T.Body("metadata_key"))),
-    name: S.optional(S.String),
-    required: S.optional(S.Boolean),
-    sqlName: S.optional(S.String.pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "StreamsCreateRequestSchemaFieldsItemList",
-}) as any as S.Schema<StreamsCreateRequestSchemaFieldsItemList>;
+export const StreamsCreateRequestSchemaFieldsItemList =
+  SinksCreateRequestSchemaFieldsItemInt32 as any as S.Schema<StreamsCreateRequestSchemaFieldsItemList>;
 
 export type StreamsCreateRequestSchemaFieldsItem =
   | StreamsCreateRequestSchemaFieldsItemInt32
@@ -2296,15 +2020,8 @@ export interface StreamsCreateResponseFormatParquet {
   compression?: StreamsCreateResponseFormatParquetCompression | null;
   rowGroupBytes?: number | null;
 }
-export const StreamsCreateResponseFormatParquet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: StreamsCreateResponseFormatParquetType,
-    compression: S.optional(S.NullOr(StreamsCreateResponseFormatParquetCompression)),
-    rowGroupBytes: S.optional(S.NullOr(S.Number).pipe(T.Body("row_group_bytes"))),
-  }),
-).annotate({
-  identifier: "StreamsCreateResponseFormatParquet",
-}) as any as S.Schema<StreamsCreateResponseFormatParquet>;
+export const StreamsCreateResponseFormatParquet =
+  SinksCreateResponseFormatParquet as any as S.Schema<StreamsCreateResponseFormatParquet>;
 
 export type StreamsCreateResponseFormat =
   | StreamsCreateResponseFormatJson
@@ -2329,17 +2046,8 @@ export interface StreamsCreateResponseSchemaFieldsItemInt32 {
   required?: boolean | null;
   sqlName?: string | null;
 }
-export const StreamsCreateResponseSchemaFieldsItemInt32 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: StreamsCreateResponseSchemaFieldsItemInt32Type,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "StreamsCreateResponseSchemaFieldsItemInt32",
-}) as any as S.Schema<StreamsCreateResponseSchemaFieldsItemInt32>;
+export const StreamsCreateResponseSchemaFieldsItemInt32 =
+  SinksCreateResponseSchemaFieldsItemInt32 as any as S.Schema<StreamsCreateResponseSchemaFieldsItemInt32>;
 
 export type StreamsCreateResponseSchemaFieldsItemInt64Type = "int64";
 export const StreamsCreateResponseSchemaFieldsItemInt64Type = S.String;
@@ -2351,17 +2059,8 @@ export interface StreamsCreateResponseSchemaFieldsItemInt64 {
   required?: boolean | null;
   sqlName?: string | null;
 }
-export const StreamsCreateResponseSchemaFieldsItemInt64 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: StreamsCreateResponseSchemaFieldsItemInt64Type,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "StreamsCreateResponseSchemaFieldsItemInt64",
-}) as any as S.Schema<StreamsCreateResponseSchemaFieldsItemInt64>;
+export const StreamsCreateResponseSchemaFieldsItemInt64 =
+  SinksCreateResponseSchemaFieldsItemInt32 as any as S.Schema<StreamsCreateResponseSchemaFieldsItemInt64>;
 
 export type StreamsCreateResponseSchemaFieldsItemFloat32Type = "float32";
 export const StreamsCreateResponseSchemaFieldsItemFloat32Type = S.String;
@@ -2373,17 +2072,8 @@ export interface StreamsCreateResponseSchemaFieldsItemFloat32 {
   required?: boolean | null;
   sqlName?: string | null;
 }
-export const StreamsCreateResponseSchemaFieldsItemFloat32 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: StreamsCreateResponseSchemaFieldsItemFloat32Type,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "StreamsCreateResponseSchemaFieldsItemFloat32",
-}) as any as S.Schema<StreamsCreateResponseSchemaFieldsItemFloat32>;
+export const StreamsCreateResponseSchemaFieldsItemFloat32 =
+  SinksCreateResponseSchemaFieldsItemInt32 as any as S.Schema<StreamsCreateResponseSchemaFieldsItemFloat32>;
 
 export type StreamsCreateResponseSchemaFieldsItemFloat64Type = "float64";
 export const StreamsCreateResponseSchemaFieldsItemFloat64Type = S.String;
@@ -2395,17 +2085,8 @@ export interface StreamsCreateResponseSchemaFieldsItemFloat64 {
   required?: boolean | null;
   sqlName?: string | null;
 }
-export const StreamsCreateResponseSchemaFieldsItemFloat64 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: StreamsCreateResponseSchemaFieldsItemFloat64Type,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "StreamsCreateResponseSchemaFieldsItemFloat64",
-}) as any as S.Schema<StreamsCreateResponseSchemaFieldsItemFloat64>;
+export const StreamsCreateResponseSchemaFieldsItemFloat64 =
+  SinksCreateResponseSchemaFieldsItemInt32 as any as S.Schema<StreamsCreateResponseSchemaFieldsItemFloat64>;
 
 export type StreamsCreateResponseSchemaFieldsItemBoolType = "bool";
 export const StreamsCreateResponseSchemaFieldsItemBoolType = S.String;
@@ -2417,17 +2098,8 @@ export interface StreamsCreateResponseSchemaFieldsItemBool {
   required?: boolean | null;
   sqlName?: string | null;
 }
-export const StreamsCreateResponseSchemaFieldsItemBool = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: StreamsCreateResponseSchemaFieldsItemBoolType,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "StreamsCreateResponseSchemaFieldsItemBool",
-}) as any as S.Schema<StreamsCreateResponseSchemaFieldsItemBool>;
+export const StreamsCreateResponseSchemaFieldsItemBool =
+  SinksCreateResponseSchemaFieldsItemInt32 as any as S.Schema<StreamsCreateResponseSchemaFieldsItemBool>;
 
 export type StreamsCreateResponseSchemaFieldsItemStringType = "string";
 export const StreamsCreateResponseSchemaFieldsItemStringType = S.String;
@@ -2439,17 +2111,8 @@ export interface StreamsCreateResponseSchemaFieldsItemString {
   required?: boolean | null;
   sqlName?: string | null;
 }
-export const StreamsCreateResponseSchemaFieldsItemString = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: StreamsCreateResponseSchemaFieldsItemStringType,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "StreamsCreateResponseSchemaFieldsItemString",
-}) as any as S.Schema<StreamsCreateResponseSchemaFieldsItemString>;
+export const StreamsCreateResponseSchemaFieldsItemString =
+  SinksCreateResponseSchemaFieldsItemInt32 as any as S.Schema<StreamsCreateResponseSchemaFieldsItemString>;
 
 export type StreamsCreateResponseSchemaFieldsItemBinaryType = "binary";
 export const StreamsCreateResponseSchemaFieldsItemBinaryType = S.String;
@@ -2461,17 +2124,8 @@ export interface StreamsCreateResponseSchemaFieldsItemBinary {
   required?: boolean | null;
   sqlName?: string | null;
 }
-export const StreamsCreateResponseSchemaFieldsItemBinary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: StreamsCreateResponseSchemaFieldsItemBinaryType,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "StreamsCreateResponseSchemaFieldsItemBinary",
-}) as any as S.Schema<StreamsCreateResponseSchemaFieldsItemBinary>;
+export const StreamsCreateResponseSchemaFieldsItemBinary =
+  SinksCreateResponseSchemaFieldsItemInt32 as any as S.Schema<StreamsCreateResponseSchemaFieldsItemBinary>;
 
 export type StreamsCreateResponseSchemaFieldsItemTimestampType = "timestamp";
 export const StreamsCreateResponseSchemaFieldsItemTimestampType = S.String;
@@ -2491,18 +2145,8 @@ export interface StreamsCreateResponseSchemaFieldsItemTimestamp {
   sqlName?: string | null;
   unit?: StreamsCreateResponseSchemaFieldsItemTimestampUnit | null;
 }
-export const StreamsCreateResponseSchemaFieldsItemTimestamp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: StreamsCreateResponseSchemaFieldsItemTimestampType,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-    unit: S.optional(S.NullOr(StreamsCreateResponseSchemaFieldsItemTimestampUnit)),
-  }),
-).annotate({
-  identifier: "StreamsCreateResponseSchemaFieldsItemTimestamp",
-}) as any as S.Schema<StreamsCreateResponseSchemaFieldsItemTimestamp>;
+export const StreamsCreateResponseSchemaFieldsItemTimestamp =
+  SinksCreateResponseSchemaFieldsItemTimestamp as any as S.Schema<StreamsCreateResponseSchemaFieldsItemTimestamp>;
 
 export type StreamsCreateResponseSchemaFieldsItemJsonType = "json";
 export const StreamsCreateResponseSchemaFieldsItemJsonType = S.String;
@@ -2514,17 +2158,8 @@ export interface StreamsCreateResponseSchemaFieldsItemJson {
   required?: boolean | null;
   sqlName?: string | null;
 }
-export const StreamsCreateResponseSchemaFieldsItemJson = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: StreamsCreateResponseSchemaFieldsItemJsonType,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "StreamsCreateResponseSchemaFieldsItemJson",
-}) as any as S.Schema<StreamsCreateResponseSchemaFieldsItemJson>;
+export const StreamsCreateResponseSchemaFieldsItemJson =
+  SinksCreateResponseSchemaFieldsItemInt32 as any as S.Schema<StreamsCreateResponseSchemaFieldsItemJson>;
 
 export type StreamsCreateResponseSchemaFieldsItemStructType = "struct";
 export const StreamsCreateResponseSchemaFieldsItemStructType = S.String;
@@ -2536,17 +2171,8 @@ export interface StreamsCreateResponseSchemaFieldsItemStruct {
   required?: boolean | null;
   sqlName?: string | null;
 }
-export const StreamsCreateResponseSchemaFieldsItemStruct = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: StreamsCreateResponseSchemaFieldsItemStructType,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "StreamsCreateResponseSchemaFieldsItemStruct",
-}) as any as S.Schema<StreamsCreateResponseSchemaFieldsItemStruct>;
+export const StreamsCreateResponseSchemaFieldsItemStruct =
+  SinksCreateResponseSchemaFieldsItemInt32 as any as S.Schema<StreamsCreateResponseSchemaFieldsItemStruct>;
 
 export type StreamsCreateResponseSchemaFieldsItemListType = "list";
 export const StreamsCreateResponseSchemaFieldsItemListType = S.String;
@@ -2558,17 +2184,8 @@ export interface StreamsCreateResponseSchemaFieldsItemList {
   required?: boolean | null;
   sqlName?: string | null;
 }
-export const StreamsCreateResponseSchemaFieldsItemList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: StreamsCreateResponseSchemaFieldsItemListType,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "StreamsCreateResponseSchemaFieldsItemList",
-}) as any as S.Schema<StreamsCreateResponseSchemaFieldsItemList>;
+export const StreamsCreateResponseSchemaFieldsItemList =
+  SinksCreateResponseSchemaFieldsItemInt32 as any as S.Schema<StreamsCreateResponseSchemaFieldsItemList>;
 
 export type StreamsCreateResponseSchemaFieldsItem =
   | StreamsCreateResponseSchemaFieldsItemInt32
@@ -2840,13 +2457,8 @@ export interface GetResponseDestinationCompression {
   /** Specifies the desired compression algorithm and format. */
   type: GetResponseDestinationCompressionType;
 }
-export const GetResponseDestinationCompression = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: GetResponseDestinationCompressionType,
-  }),
-).annotate({
-  identifier: "GetResponseDestinationCompression",
-}) as any as S.Schema<GetResponseDestinationCompression>;
+export const GetResponseDestinationCompression =
+  CreateResponseDestinationCompression as any as S.Schema<GetResponseDestinationCompression>;
 
 export type GetResponseDestinationFormat = "json";
 export const GetResponseDestinationFormat = S.String;
@@ -2930,14 +2542,7 @@ export interface GetResponseSourceItemCloudflarePipelinesWorkersPipelinesBinding
   type: string;
 }
 export const GetResponseSourceItemCloudflarePipelinesWorkersPipelinesBindingSource =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      format: GetResponseSourceItemCloudflarePipelinesWorkersPipelinesBindingSourceFormat,
-      type: S.String,
-    }),
-  ).annotate({
-    identifier: "GetResponseSourceItemCloudflarePipelinesWorkersPipelinesBindingSource",
-  }) as any as S.Schema<GetResponseSourceItemCloudflarePipelinesWorkersPipelinesBindingSource>;
+  CreateRequestSourceItemCloudflarePipelinesWorkersPipelinesBindingSource as any as S.Schema<GetResponseSourceItemCloudflarePipelinesWorkersPipelinesBindingSource>;
 
 export type GetResponseSourceItem =
   | GetResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSource
@@ -3018,17 +2623,7 @@ export interface SinksGetResponseConfigCloudflarePipelinesR2TablePublicFileNamin
   suffix?: string | null;
 }
 export const SinksGetResponseConfigCloudflarePipelinesR2TablePublicFileNaming =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      prefix: S.optional(S.NullOr(S.String)),
-      strategy: S.optional(
-        S.NullOr(SinksGetResponseConfigCloudflarePipelinesR2TablePublicFileNamingStrategy),
-      ),
-      suffix: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "SinksGetResponseConfigCloudflarePipelinesR2TablePublicFileNaming",
-  }) as any as S.Schema<SinksGetResponseConfigCloudflarePipelinesR2TablePublicFileNaming>;
+  SinksCreateResponseConfigCloudflarePipelinesR2TableFileNaming as any as S.Schema<SinksGetResponseConfigCloudflarePipelinesR2TablePublicFileNaming>;
 
 export type SinksGetResponseConfigCloudflarePipelinesR2TablePublicPartitioning =
   SinksCreateResponseConfigCloudflarePipelinesR2TablePartitioning;
@@ -3144,21 +2739,8 @@ export interface SinksGetResponseFormatJson {
   timestampFormat?: SinksGetResponseFormatJsonTimestampFormat | null;
   unstructured?: boolean | null;
 }
-export const SinksGetResponseFormatJson = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: SinksGetResponseFormatJsonType,
-    compression: S.optional(S.NullOr(SinksGetResponseFormatJsonCompression)),
-    decimalEncoding: S.optional(
-      S.NullOr(SinksGetResponseFormatJsonDecimalEncoding).pipe(T.Body("decimal_encoding")),
-    ),
-    timestampFormat: S.optional(
-      S.NullOr(SinksGetResponseFormatJsonTimestampFormat).pipe(T.Body("timestamp_format")),
-    ),
-    unstructured: S.optional(S.NullOr(S.Boolean)),
-  }),
-).annotate({
-  identifier: "SinksGetResponseFormatJson",
-}) as any as S.Schema<SinksGetResponseFormatJson>;
+export const SinksGetResponseFormatJson =
+  SinksCreateResponseFormatJson as any as S.Schema<SinksGetResponseFormatJson>;
 
 export type SinksGetResponseFormatParquetType = "parquet";
 export const SinksGetResponseFormatParquetType = S.String;
@@ -3176,15 +2758,8 @@ export interface SinksGetResponseFormatParquet {
   compression?: SinksGetResponseFormatParquetCompression | null;
   rowGroupBytes?: number | null;
 }
-export const SinksGetResponseFormatParquet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: SinksGetResponseFormatParquetType,
-    compression: S.optional(S.NullOr(SinksGetResponseFormatParquetCompression)),
-    rowGroupBytes: S.optional(S.NullOr(S.Number).pipe(T.Body("row_group_bytes"))),
-  }),
-).annotate({
-  identifier: "SinksGetResponseFormatParquet",
-}) as any as S.Schema<SinksGetResponseFormatParquet>;
+export const SinksGetResponseFormatParquet =
+  SinksCreateResponseFormatParquet as any as S.Schema<SinksGetResponseFormatParquet>;
 
 export type SinksGetResponseFormat = SinksGetResponseFormatJson | SinksGetResponseFormatParquet;
 export const SinksGetResponseFormat = /*@__PURE__*/ S.Unknown.pipe(
@@ -3207,17 +2782,8 @@ export interface SinksGetResponseSchemaFieldsItemInt32 {
   required?: boolean | null;
   sqlName?: string | null;
 }
-export const SinksGetResponseSchemaFieldsItemInt32 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: SinksGetResponseSchemaFieldsItemInt32Type,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "SinksGetResponseSchemaFieldsItemInt32",
-}) as any as S.Schema<SinksGetResponseSchemaFieldsItemInt32>;
+export const SinksGetResponseSchemaFieldsItemInt32 =
+  SinksCreateResponseSchemaFieldsItemInt32 as any as S.Schema<SinksGetResponseSchemaFieldsItemInt32>;
 
 export type SinksGetResponseSchemaFieldsItemInt64Type = "int64";
 export const SinksGetResponseSchemaFieldsItemInt64Type = S.String;
@@ -3229,17 +2795,8 @@ export interface SinksGetResponseSchemaFieldsItemInt64 {
   required?: boolean | null;
   sqlName?: string | null;
 }
-export const SinksGetResponseSchemaFieldsItemInt64 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: SinksGetResponseSchemaFieldsItemInt64Type,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "SinksGetResponseSchemaFieldsItemInt64",
-}) as any as S.Schema<SinksGetResponseSchemaFieldsItemInt64>;
+export const SinksGetResponseSchemaFieldsItemInt64 =
+  SinksCreateResponseSchemaFieldsItemInt32 as any as S.Schema<SinksGetResponseSchemaFieldsItemInt64>;
 
 export type SinksGetResponseSchemaFieldsItemFloat32Type = "float32";
 export const SinksGetResponseSchemaFieldsItemFloat32Type = S.String;
@@ -3251,17 +2808,8 @@ export interface SinksGetResponseSchemaFieldsItemFloat32 {
   required?: boolean | null;
   sqlName?: string | null;
 }
-export const SinksGetResponseSchemaFieldsItemFloat32 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: SinksGetResponseSchemaFieldsItemFloat32Type,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "SinksGetResponseSchemaFieldsItemFloat32",
-}) as any as S.Schema<SinksGetResponseSchemaFieldsItemFloat32>;
+export const SinksGetResponseSchemaFieldsItemFloat32 =
+  SinksCreateResponseSchemaFieldsItemInt32 as any as S.Schema<SinksGetResponseSchemaFieldsItemFloat32>;
 
 export type SinksGetResponseSchemaFieldsItemFloat64Type = "float64";
 export const SinksGetResponseSchemaFieldsItemFloat64Type = S.String;
@@ -3273,17 +2821,8 @@ export interface SinksGetResponseSchemaFieldsItemFloat64 {
   required?: boolean | null;
   sqlName?: string | null;
 }
-export const SinksGetResponseSchemaFieldsItemFloat64 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: SinksGetResponseSchemaFieldsItemFloat64Type,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "SinksGetResponseSchemaFieldsItemFloat64",
-}) as any as S.Schema<SinksGetResponseSchemaFieldsItemFloat64>;
+export const SinksGetResponseSchemaFieldsItemFloat64 =
+  SinksCreateResponseSchemaFieldsItemInt32 as any as S.Schema<SinksGetResponseSchemaFieldsItemFloat64>;
 
 export type SinksGetResponseSchemaFieldsItemBoolType = "bool";
 export const SinksGetResponseSchemaFieldsItemBoolType = S.String;
@@ -3295,17 +2834,8 @@ export interface SinksGetResponseSchemaFieldsItemBool {
   required?: boolean | null;
   sqlName?: string | null;
 }
-export const SinksGetResponseSchemaFieldsItemBool = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: SinksGetResponseSchemaFieldsItemBoolType,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "SinksGetResponseSchemaFieldsItemBool",
-}) as any as S.Schema<SinksGetResponseSchemaFieldsItemBool>;
+export const SinksGetResponseSchemaFieldsItemBool =
+  SinksCreateResponseSchemaFieldsItemInt32 as any as S.Schema<SinksGetResponseSchemaFieldsItemBool>;
 
 export type SinksGetResponseSchemaFieldsItemStringType = "string";
 export const SinksGetResponseSchemaFieldsItemStringType = S.String;
@@ -3317,17 +2847,8 @@ export interface SinksGetResponseSchemaFieldsItemString {
   required?: boolean | null;
   sqlName?: string | null;
 }
-export const SinksGetResponseSchemaFieldsItemString = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: SinksGetResponseSchemaFieldsItemStringType,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "SinksGetResponseSchemaFieldsItemString",
-}) as any as S.Schema<SinksGetResponseSchemaFieldsItemString>;
+export const SinksGetResponseSchemaFieldsItemString =
+  SinksCreateResponseSchemaFieldsItemInt32 as any as S.Schema<SinksGetResponseSchemaFieldsItemString>;
 
 export type SinksGetResponseSchemaFieldsItemBinaryType = "binary";
 export const SinksGetResponseSchemaFieldsItemBinaryType = S.String;
@@ -3339,17 +2860,8 @@ export interface SinksGetResponseSchemaFieldsItemBinary {
   required?: boolean | null;
   sqlName?: string | null;
 }
-export const SinksGetResponseSchemaFieldsItemBinary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: SinksGetResponseSchemaFieldsItemBinaryType,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "SinksGetResponseSchemaFieldsItemBinary",
-}) as any as S.Schema<SinksGetResponseSchemaFieldsItemBinary>;
+export const SinksGetResponseSchemaFieldsItemBinary =
+  SinksCreateResponseSchemaFieldsItemInt32 as any as S.Schema<SinksGetResponseSchemaFieldsItemBinary>;
 
 export type SinksGetResponseSchemaFieldsItemTimestampType = "timestamp";
 export const SinksGetResponseSchemaFieldsItemTimestampType = S.String;
@@ -3369,18 +2881,8 @@ export interface SinksGetResponseSchemaFieldsItemTimestamp {
   sqlName?: string | null;
   unit?: SinksGetResponseSchemaFieldsItemTimestampUnit | null;
 }
-export const SinksGetResponseSchemaFieldsItemTimestamp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: SinksGetResponseSchemaFieldsItemTimestampType,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-    unit: S.optional(S.NullOr(SinksGetResponseSchemaFieldsItemTimestampUnit)),
-  }),
-).annotate({
-  identifier: "SinksGetResponseSchemaFieldsItemTimestamp",
-}) as any as S.Schema<SinksGetResponseSchemaFieldsItemTimestamp>;
+export const SinksGetResponseSchemaFieldsItemTimestamp =
+  SinksCreateResponseSchemaFieldsItemTimestamp as any as S.Schema<SinksGetResponseSchemaFieldsItemTimestamp>;
 
 export type SinksGetResponseSchemaFieldsItemJsonType = "json";
 export const SinksGetResponseSchemaFieldsItemJsonType = S.String;
@@ -3392,17 +2894,8 @@ export interface SinksGetResponseSchemaFieldsItemJson {
   required?: boolean | null;
   sqlName?: string | null;
 }
-export const SinksGetResponseSchemaFieldsItemJson = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: SinksGetResponseSchemaFieldsItemJsonType,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "SinksGetResponseSchemaFieldsItemJson",
-}) as any as S.Schema<SinksGetResponseSchemaFieldsItemJson>;
+export const SinksGetResponseSchemaFieldsItemJson =
+  SinksCreateResponseSchemaFieldsItemInt32 as any as S.Schema<SinksGetResponseSchemaFieldsItemJson>;
 
 export type SinksGetResponseSchemaFieldsItemStructType = "struct";
 export const SinksGetResponseSchemaFieldsItemStructType = S.String;
@@ -3414,17 +2907,8 @@ export interface SinksGetResponseSchemaFieldsItemStruct {
   required?: boolean | null;
   sqlName?: string | null;
 }
-export const SinksGetResponseSchemaFieldsItemStruct = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: SinksGetResponseSchemaFieldsItemStructType,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "SinksGetResponseSchemaFieldsItemStruct",
-}) as any as S.Schema<SinksGetResponseSchemaFieldsItemStruct>;
+export const SinksGetResponseSchemaFieldsItemStruct =
+  SinksCreateResponseSchemaFieldsItemInt32 as any as S.Schema<SinksGetResponseSchemaFieldsItemStruct>;
 
 export type SinksGetResponseSchemaFieldsItemListType = "list";
 export const SinksGetResponseSchemaFieldsItemListType = S.String;
@@ -3436,17 +2920,8 @@ export interface SinksGetResponseSchemaFieldsItemList {
   required?: boolean | null;
   sqlName?: string | null;
 }
-export const SinksGetResponseSchemaFieldsItemList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: SinksGetResponseSchemaFieldsItemListType,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "SinksGetResponseSchemaFieldsItemList",
-}) as any as S.Schema<SinksGetResponseSchemaFieldsItemList>;
+export const SinksGetResponseSchemaFieldsItemList =
+  SinksCreateResponseSchemaFieldsItemInt32 as any as S.Schema<SinksGetResponseSchemaFieldsItemList>;
 
 export type SinksGetResponseSchemaFieldsItem =
   | SinksGetResponseSchemaFieldsItemInt32
@@ -3605,20 +3080,8 @@ export interface StreamsGetResponseFormatJson {
   timestampFormat?: StreamsGetResponseFormatJsonTimestampFormat | null;
   unstructured?: boolean | null;
 }
-export const StreamsGetResponseFormatJson = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: StreamsGetResponseFormatJsonType,
-    decimalEncoding: S.optional(
-      S.NullOr(StreamsGetResponseFormatJsonDecimalEncoding).pipe(T.Body("decimal_encoding")),
-    ),
-    timestampFormat: S.optional(
-      S.NullOr(StreamsGetResponseFormatJsonTimestampFormat).pipe(T.Body("timestamp_format")),
-    ),
-    unstructured: S.optional(S.NullOr(S.Boolean)),
-  }),
-).annotate({
-  identifier: "StreamsGetResponseFormatJson",
-}) as any as S.Schema<StreamsGetResponseFormatJson>;
+export const StreamsGetResponseFormatJson =
+  StreamsCreateResponseFormatJson as any as S.Schema<StreamsGetResponseFormatJson>;
 
 export type StreamsGetResponseFormatParquetType = "parquet";
 export const StreamsGetResponseFormatParquetType = S.String;
@@ -3636,15 +3099,8 @@ export interface StreamsGetResponseFormatParquet {
   compression?: StreamsGetResponseFormatParquetCompression | null;
   rowGroupBytes?: number | null;
 }
-export const StreamsGetResponseFormatParquet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: StreamsGetResponseFormatParquetType,
-    compression: S.optional(S.NullOr(StreamsGetResponseFormatParquetCompression)),
-    rowGroupBytes: S.optional(S.NullOr(S.Number).pipe(T.Body("row_group_bytes"))),
-  }),
-).annotate({
-  identifier: "StreamsGetResponseFormatParquet",
-}) as any as S.Schema<StreamsGetResponseFormatParquet>;
+export const StreamsGetResponseFormatParquet =
+  SinksCreateResponseFormatParquet as any as S.Schema<StreamsGetResponseFormatParquet>;
 
 export type StreamsGetResponseFormat =
   | StreamsGetResponseFormatJson
@@ -3669,17 +3125,8 @@ export interface StreamsGetResponseSchemaFieldsItemInt32 {
   required?: boolean | null;
   sqlName?: string | null;
 }
-export const StreamsGetResponseSchemaFieldsItemInt32 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: StreamsGetResponseSchemaFieldsItemInt32Type,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "StreamsGetResponseSchemaFieldsItemInt32",
-}) as any as S.Schema<StreamsGetResponseSchemaFieldsItemInt32>;
+export const StreamsGetResponseSchemaFieldsItemInt32 =
+  SinksCreateResponseSchemaFieldsItemInt32 as any as S.Schema<StreamsGetResponseSchemaFieldsItemInt32>;
 
 export type StreamsGetResponseSchemaFieldsItemInt64Type = "int64";
 export const StreamsGetResponseSchemaFieldsItemInt64Type = S.String;
@@ -3691,17 +3138,8 @@ export interface StreamsGetResponseSchemaFieldsItemInt64 {
   required?: boolean | null;
   sqlName?: string | null;
 }
-export const StreamsGetResponseSchemaFieldsItemInt64 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: StreamsGetResponseSchemaFieldsItemInt64Type,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "StreamsGetResponseSchemaFieldsItemInt64",
-}) as any as S.Schema<StreamsGetResponseSchemaFieldsItemInt64>;
+export const StreamsGetResponseSchemaFieldsItemInt64 =
+  SinksCreateResponseSchemaFieldsItemInt32 as any as S.Schema<StreamsGetResponseSchemaFieldsItemInt64>;
 
 export type StreamsGetResponseSchemaFieldsItemFloat32Type = "float32";
 export const StreamsGetResponseSchemaFieldsItemFloat32Type = S.String;
@@ -3713,17 +3151,8 @@ export interface StreamsGetResponseSchemaFieldsItemFloat32 {
   required?: boolean | null;
   sqlName?: string | null;
 }
-export const StreamsGetResponseSchemaFieldsItemFloat32 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: StreamsGetResponseSchemaFieldsItemFloat32Type,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "StreamsGetResponseSchemaFieldsItemFloat32",
-}) as any as S.Schema<StreamsGetResponseSchemaFieldsItemFloat32>;
+export const StreamsGetResponseSchemaFieldsItemFloat32 =
+  SinksCreateResponseSchemaFieldsItemInt32 as any as S.Schema<StreamsGetResponseSchemaFieldsItemFloat32>;
 
 export type StreamsGetResponseSchemaFieldsItemFloat64Type = "float64";
 export const StreamsGetResponseSchemaFieldsItemFloat64Type = S.String;
@@ -3735,17 +3164,8 @@ export interface StreamsGetResponseSchemaFieldsItemFloat64 {
   required?: boolean | null;
   sqlName?: string | null;
 }
-export const StreamsGetResponseSchemaFieldsItemFloat64 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: StreamsGetResponseSchemaFieldsItemFloat64Type,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "StreamsGetResponseSchemaFieldsItemFloat64",
-}) as any as S.Schema<StreamsGetResponseSchemaFieldsItemFloat64>;
+export const StreamsGetResponseSchemaFieldsItemFloat64 =
+  SinksCreateResponseSchemaFieldsItemInt32 as any as S.Schema<StreamsGetResponseSchemaFieldsItemFloat64>;
 
 export type StreamsGetResponseSchemaFieldsItemBoolType = "bool";
 export const StreamsGetResponseSchemaFieldsItemBoolType = S.String;
@@ -3757,17 +3177,8 @@ export interface StreamsGetResponseSchemaFieldsItemBool {
   required?: boolean | null;
   sqlName?: string | null;
 }
-export const StreamsGetResponseSchemaFieldsItemBool = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: StreamsGetResponseSchemaFieldsItemBoolType,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "StreamsGetResponseSchemaFieldsItemBool",
-}) as any as S.Schema<StreamsGetResponseSchemaFieldsItemBool>;
+export const StreamsGetResponseSchemaFieldsItemBool =
+  SinksCreateResponseSchemaFieldsItemInt32 as any as S.Schema<StreamsGetResponseSchemaFieldsItemBool>;
 
 export type StreamsGetResponseSchemaFieldsItemStringType = "string";
 export const StreamsGetResponseSchemaFieldsItemStringType = S.String;
@@ -3779,17 +3190,8 @@ export interface StreamsGetResponseSchemaFieldsItemString {
   required?: boolean | null;
   sqlName?: string | null;
 }
-export const StreamsGetResponseSchemaFieldsItemString = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: StreamsGetResponseSchemaFieldsItemStringType,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "StreamsGetResponseSchemaFieldsItemString",
-}) as any as S.Schema<StreamsGetResponseSchemaFieldsItemString>;
+export const StreamsGetResponseSchemaFieldsItemString =
+  SinksCreateResponseSchemaFieldsItemInt32 as any as S.Schema<StreamsGetResponseSchemaFieldsItemString>;
 
 export type StreamsGetResponseSchemaFieldsItemBinaryType = "binary";
 export const StreamsGetResponseSchemaFieldsItemBinaryType = S.String;
@@ -3801,17 +3203,8 @@ export interface StreamsGetResponseSchemaFieldsItemBinary {
   required?: boolean | null;
   sqlName?: string | null;
 }
-export const StreamsGetResponseSchemaFieldsItemBinary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: StreamsGetResponseSchemaFieldsItemBinaryType,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "StreamsGetResponseSchemaFieldsItemBinary",
-}) as any as S.Schema<StreamsGetResponseSchemaFieldsItemBinary>;
+export const StreamsGetResponseSchemaFieldsItemBinary =
+  SinksCreateResponseSchemaFieldsItemInt32 as any as S.Schema<StreamsGetResponseSchemaFieldsItemBinary>;
 
 export type StreamsGetResponseSchemaFieldsItemTimestampType = "timestamp";
 export const StreamsGetResponseSchemaFieldsItemTimestampType = S.String;
@@ -3831,18 +3224,8 @@ export interface StreamsGetResponseSchemaFieldsItemTimestamp {
   sqlName?: string | null;
   unit?: StreamsGetResponseSchemaFieldsItemTimestampUnit | null;
 }
-export const StreamsGetResponseSchemaFieldsItemTimestamp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: StreamsGetResponseSchemaFieldsItemTimestampType,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-    unit: S.optional(S.NullOr(StreamsGetResponseSchemaFieldsItemTimestampUnit)),
-  }),
-).annotate({
-  identifier: "StreamsGetResponseSchemaFieldsItemTimestamp",
-}) as any as S.Schema<StreamsGetResponseSchemaFieldsItemTimestamp>;
+export const StreamsGetResponseSchemaFieldsItemTimestamp =
+  SinksCreateResponseSchemaFieldsItemTimestamp as any as S.Schema<StreamsGetResponseSchemaFieldsItemTimestamp>;
 
 export type StreamsGetResponseSchemaFieldsItemJsonType = "json";
 export const StreamsGetResponseSchemaFieldsItemJsonType = S.String;
@@ -3854,17 +3237,8 @@ export interface StreamsGetResponseSchemaFieldsItemJson {
   required?: boolean | null;
   sqlName?: string | null;
 }
-export const StreamsGetResponseSchemaFieldsItemJson = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: StreamsGetResponseSchemaFieldsItemJsonType,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "StreamsGetResponseSchemaFieldsItemJson",
-}) as any as S.Schema<StreamsGetResponseSchemaFieldsItemJson>;
+export const StreamsGetResponseSchemaFieldsItemJson =
+  SinksCreateResponseSchemaFieldsItemInt32 as any as S.Schema<StreamsGetResponseSchemaFieldsItemJson>;
 
 export type StreamsGetResponseSchemaFieldsItemStructType = "struct";
 export const StreamsGetResponseSchemaFieldsItemStructType = S.String;
@@ -3876,17 +3250,8 @@ export interface StreamsGetResponseSchemaFieldsItemStruct {
   required?: boolean | null;
   sqlName?: string | null;
 }
-export const StreamsGetResponseSchemaFieldsItemStruct = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: StreamsGetResponseSchemaFieldsItemStructType,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "StreamsGetResponseSchemaFieldsItemStruct",
-}) as any as S.Schema<StreamsGetResponseSchemaFieldsItemStruct>;
+export const StreamsGetResponseSchemaFieldsItemStruct =
+  SinksCreateResponseSchemaFieldsItemInt32 as any as S.Schema<StreamsGetResponseSchemaFieldsItemStruct>;
 
 export type StreamsGetResponseSchemaFieldsItemListType = "list";
 export const StreamsGetResponseSchemaFieldsItemListType = S.String;
@@ -3898,17 +3263,8 @@ export interface StreamsGetResponseSchemaFieldsItemList {
   required?: boolean | null;
   sqlName?: string | null;
 }
-export const StreamsGetResponseSchemaFieldsItemList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: StreamsGetResponseSchemaFieldsItemListType,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "StreamsGetResponseSchemaFieldsItemList",
-}) as any as S.Schema<StreamsGetResponseSchemaFieldsItemList>;
+export const StreamsGetResponseSchemaFieldsItemList =
+  SinksCreateResponseSchemaFieldsItemInt32 as any as S.Schema<StreamsGetResponseSchemaFieldsItemList>;
 
 export type StreamsGetResponseSchemaFieldsItem =
   | StreamsGetResponseSchemaFieldsItemInt32
@@ -4118,13 +3474,8 @@ export interface ListResponseResultsItemDestinationCompression {
   /** Specifies the desired compression algorithm and format. */
   type: ListResponseResultsItemDestinationCompressionType;
 }
-export const ListResponseResultsItemDestinationCompression = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ListResponseResultsItemDestinationCompressionType,
-  }),
-).annotate({
-  identifier: "ListResponseResultsItemDestinationCompression",
-}) as any as S.Schema<ListResponseResultsItemDestinationCompression>;
+export const ListResponseResultsItemDestinationCompression =
+  CreateResponseDestinationCompression as any as S.Schema<ListResponseResultsItemDestinationCompression>;
 
 export type ListResponseResultsItemDestinationFormat = "json";
 export const ListResponseResultsItemDestinationFormat = S.String;
@@ -4144,17 +3495,8 @@ export interface ListResponseResultsItemDestination {
   /** Specifies the type of destination. */
   type: ListResponseResultsItemDestinationType;
 }
-export const ListResponseResultsItemDestination = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    batch: CreateResponseDestinationBatch,
-    compression: ListResponseResultsItemDestinationCompression,
-    format: ListResponseResultsItemDestinationFormat,
-    path: CreateResponseDestinationPath,
-    type: ListResponseResultsItemDestinationType,
-  }),
-).annotate({
-  identifier: "ListResponseResultsItemDestination",
-}) as any as S.Schema<ListResponseResultsItemDestination>;
+export const ListResponseResultsItemDestination =
+  CreateResponseDestination as any as S.Schema<ListResponseResultsItemDestination>;
 
 export type ListResponseResultsItemSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceFormat =
   "json";
@@ -4325,17 +3667,7 @@ export interface SinksListResultItemConfigCloudflarePipelinesR2TablePublicFileNa
   suffix?: string | null;
 }
 export const SinksListResultItemConfigCloudflarePipelinesR2TablePublicFileNaming =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      prefix: S.optional(S.NullOr(S.String)),
-      strategy: S.optional(
-        S.NullOr(SinksListResultItemConfigCloudflarePipelinesR2TablePublicFileNamingStrategy),
-      ),
-      suffix: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "SinksListResultItemConfigCloudflarePipelinesR2TablePublicFileNaming",
-  }) as any as S.Schema<SinksListResultItemConfigCloudflarePipelinesR2TablePublicFileNaming>;
+  SinksCreateResponseConfigCloudflarePipelinesR2TableFileNaming as any as S.Schema<SinksListResultItemConfigCloudflarePipelinesR2TablePublicFileNaming>;
 
 export type SinksListResultItemConfigCloudflarePipelinesR2TablePublicPartitioning =
   SinksCreateResponseConfigCloudflarePipelinesR2TablePartitioning;
@@ -4428,21 +3760,8 @@ export interface SinksListResultItemFormatJson {
   timestampFormat?: SinksListResultItemFormatJsonTimestampFormat | null;
   unstructured?: boolean | null;
 }
-export const SinksListResultItemFormatJson = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: SinksListResultItemFormatJsonType,
-    compression: S.optional(S.NullOr(SinksListResultItemFormatJsonCompression)),
-    decimalEncoding: S.optional(
-      S.NullOr(SinksListResultItemFormatJsonDecimalEncoding).pipe(T.Body("decimal_encoding")),
-    ),
-    timestampFormat: S.optional(
-      S.NullOr(SinksListResultItemFormatJsonTimestampFormat).pipe(T.Body("timestamp_format")),
-    ),
-    unstructured: S.optional(S.NullOr(S.Boolean)),
-  }),
-).annotate({
-  identifier: "SinksListResultItemFormatJson",
-}) as any as S.Schema<SinksListResultItemFormatJson>;
+export const SinksListResultItemFormatJson =
+  SinksCreateResponseFormatJson as any as S.Schema<SinksListResultItemFormatJson>;
 
 export type SinksListResultItemFormatParquetType = "parquet";
 export const SinksListResultItemFormatParquetType = S.String;
@@ -4460,15 +3779,8 @@ export interface SinksListResultItemFormatParquet {
   compression?: SinksListResultItemFormatParquetCompression | null;
   rowGroupBytes?: number | null;
 }
-export const SinksListResultItemFormatParquet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: SinksListResultItemFormatParquetType,
-    compression: S.optional(S.NullOr(SinksListResultItemFormatParquetCompression)),
-    rowGroupBytes: S.optional(S.NullOr(S.Number).pipe(T.Body("row_group_bytes"))),
-  }),
-).annotate({
-  identifier: "SinksListResultItemFormatParquet",
-}) as any as S.Schema<SinksListResultItemFormatParquet>;
+export const SinksListResultItemFormatParquet =
+  SinksCreateResponseFormatParquet as any as S.Schema<SinksListResultItemFormatParquet>;
 
 export type SinksListResultItemFormat =
   | SinksListResultItemFormatJson
@@ -4493,17 +3805,8 @@ export interface SinksListResultItemSchemaFieldsItemInt32 {
   required?: boolean | null;
   sqlName?: string | null;
 }
-export const SinksListResultItemSchemaFieldsItemInt32 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: SinksListResultItemSchemaFieldsItemInt32Type,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "SinksListResultItemSchemaFieldsItemInt32",
-}) as any as S.Schema<SinksListResultItemSchemaFieldsItemInt32>;
+export const SinksListResultItemSchemaFieldsItemInt32 =
+  SinksCreateResponseSchemaFieldsItemInt32 as any as S.Schema<SinksListResultItemSchemaFieldsItemInt32>;
 
 export type SinksListResultItemSchemaFieldsItemInt64Type = "int64";
 export const SinksListResultItemSchemaFieldsItemInt64Type = S.String;
@@ -4515,17 +3818,8 @@ export interface SinksListResultItemSchemaFieldsItemInt64 {
   required?: boolean | null;
   sqlName?: string | null;
 }
-export const SinksListResultItemSchemaFieldsItemInt64 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: SinksListResultItemSchemaFieldsItemInt64Type,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "SinksListResultItemSchemaFieldsItemInt64",
-}) as any as S.Schema<SinksListResultItemSchemaFieldsItemInt64>;
+export const SinksListResultItemSchemaFieldsItemInt64 =
+  SinksCreateResponseSchemaFieldsItemInt32 as any as S.Schema<SinksListResultItemSchemaFieldsItemInt64>;
 
 export type SinksListResultItemSchemaFieldsItemFloat32Type = "float32";
 export const SinksListResultItemSchemaFieldsItemFloat32Type = S.String;
@@ -4537,17 +3831,8 @@ export interface SinksListResultItemSchemaFieldsItemFloat32 {
   required?: boolean | null;
   sqlName?: string | null;
 }
-export const SinksListResultItemSchemaFieldsItemFloat32 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: SinksListResultItemSchemaFieldsItemFloat32Type,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "SinksListResultItemSchemaFieldsItemFloat32",
-}) as any as S.Schema<SinksListResultItemSchemaFieldsItemFloat32>;
+export const SinksListResultItemSchemaFieldsItemFloat32 =
+  SinksCreateResponseSchemaFieldsItemInt32 as any as S.Schema<SinksListResultItemSchemaFieldsItemFloat32>;
 
 export type SinksListResultItemSchemaFieldsItemFloat64Type = "float64";
 export const SinksListResultItemSchemaFieldsItemFloat64Type = S.String;
@@ -4559,17 +3844,8 @@ export interface SinksListResultItemSchemaFieldsItemFloat64 {
   required?: boolean | null;
   sqlName?: string | null;
 }
-export const SinksListResultItemSchemaFieldsItemFloat64 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: SinksListResultItemSchemaFieldsItemFloat64Type,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "SinksListResultItemSchemaFieldsItemFloat64",
-}) as any as S.Schema<SinksListResultItemSchemaFieldsItemFloat64>;
+export const SinksListResultItemSchemaFieldsItemFloat64 =
+  SinksCreateResponseSchemaFieldsItemInt32 as any as S.Schema<SinksListResultItemSchemaFieldsItemFloat64>;
 
 export type SinksListResultItemSchemaFieldsItemBoolType = "bool";
 export const SinksListResultItemSchemaFieldsItemBoolType = S.String;
@@ -4581,17 +3857,8 @@ export interface SinksListResultItemSchemaFieldsItemBool {
   required?: boolean | null;
   sqlName?: string | null;
 }
-export const SinksListResultItemSchemaFieldsItemBool = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: SinksListResultItemSchemaFieldsItemBoolType,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "SinksListResultItemSchemaFieldsItemBool",
-}) as any as S.Schema<SinksListResultItemSchemaFieldsItemBool>;
+export const SinksListResultItemSchemaFieldsItemBool =
+  SinksCreateResponseSchemaFieldsItemInt32 as any as S.Schema<SinksListResultItemSchemaFieldsItemBool>;
 
 export type SinksListResultItemSchemaFieldsItemStringType = "string";
 export const SinksListResultItemSchemaFieldsItemStringType = S.String;
@@ -4603,17 +3870,8 @@ export interface SinksListResultItemSchemaFieldsItemString {
   required?: boolean | null;
   sqlName?: string | null;
 }
-export const SinksListResultItemSchemaFieldsItemString = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: SinksListResultItemSchemaFieldsItemStringType,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "SinksListResultItemSchemaFieldsItemString",
-}) as any as S.Schema<SinksListResultItemSchemaFieldsItemString>;
+export const SinksListResultItemSchemaFieldsItemString =
+  SinksCreateResponseSchemaFieldsItemInt32 as any as S.Schema<SinksListResultItemSchemaFieldsItemString>;
 
 export type SinksListResultItemSchemaFieldsItemBinaryType = "binary";
 export const SinksListResultItemSchemaFieldsItemBinaryType = S.String;
@@ -4625,17 +3883,8 @@ export interface SinksListResultItemSchemaFieldsItemBinary {
   required?: boolean | null;
   sqlName?: string | null;
 }
-export const SinksListResultItemSchemaFieldsItemBinary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: SinksListResultItemSchemaFieldsItemBinaryType,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "SinksListResultItemSchemaFieldsItemBinary",
-}) as any as S.Schema<SinksListResultItemSchemaFieldsItemBinary>;
+export const SinksListResultItemSchemaFieldsItemBinary =
+  SinksCreateResponseSchemaFieldsItemInt32 as any as S.Schema<SinksListResultItemSchemaFieldsItemBinary>;
 
 export type SinksListResultItemSchemaFieldsItemTimestampType = "timestamp";
 export const SinksListResultItemSchemaFieldsItemTimestampType = S.String;
@@ -4655,18 +3904,8 @@ export interface SinksListResultItemSchemaFieldsItemTimestamp {
   sqlName?: string | null;
   unit?: SinksListResultItemSchemaFieldsItemTimestampUnit | null;
 }
-export const SinksListResultItemSchemaFieldsItemTimestamp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: SinksListResultItemSchemaFieldsItemTimestampType,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-    unit: S.optional(S.NullOr(SinksListResultItemSchemaFieldsItemTimestampUnit)),
-  }),
-).annotate({
-  identifier: "SinksListResultItemSchemaFieldsItemTimestamp",
-}) as any as S.Schema<SinksListResultItemSchemaFieldsItemTimestamp>;
+export const SinksListResultItemSchemaFieldsItemTimestamp =
+  SinksCreateResponseSchemaFieldsItemTimestamp as any as S.Schema<SinksListResultItemSchemaFieldsItemTimestamp>;
 
 export type SinksListResultItemSchemaFieldsItemJsonType = "json";
 export const SinksListResultItemSchemaFieldsItemJsonType = S.String;
@@ -4678,17 +3917,8 @@ export interface SinksListResultItemSchemaFieldsItemJson {
   required?: boolean | null;
   sqlName?: string | null;
 }
-export const SinksListResultItemSchemaFieldsItemJson = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: SinksListResultItemSchemaFieldsItemJsonType,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "SinksListResultItemSchemaFieldsItemJson",
-}) as any as S.Schema<SinksListResultItemSchemaFieldsItemJson>;
+export const SinksListResultItemSchemaFieldsItemJson =
+  SinksCreateResponseSchemaFieldsItemInt32 as any as S.Schema<SinksListResultItemSchemaFieldsItemJson>;
 
 export type SinksListResultItemSchemaFieldsItemStructType = "struct";
 export const SinksListResultItemSchemaFieldsItemStructType = S.String;
@@ -4700,17 +3930,8 @@ export interface SinksListResultItemSchemaFieldsItemStruct {
   required?: boolean | null;
   sqlName?: string | null;
 }
-export const SinksListResultItemSchemaFieldsItemStruct = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: SinksListResultItemSchemaFieldsItemStructType,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "SinksListResultItemSchemaFieldsItemStruct",
-}) as any as S.Schema<SinksListResultItemSchemaFieldsItemStruct>;
+export const SinksListResultItemSchemaFieldsItemStruct =
+  SinksCreateResponseSchemaFieldsItemInt32 as any as S.Schema<SinksListResultItemSchemaFieldsItemStruct>;
 
 export type SinksListResultItemSchemaFieldsItemListType = "list";
 export const SinksListResultItemSchemaFieldsItemListType = S.String;
@@ -4722,17 +3943,8 @@ export interface SinksListResultItemSchemaFieldsItemList {
   required?: boolean | null;
   sqlName?: string | null;
 }
-export const SinksListResultItemSchemaFieldsItemList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: SinksListResultItemSchemaFieldsItemListType,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "SinksListResultItemSchemaFieldsItemList",
-}) as any as S.Schema<SinksListResultItemSchemaFieldsItemList>;
+export const SinksListResultItemSchemaFieldsItemList =
+  SinksCreateResponseSchemaFieldsItemInt32 as any as S.Schema<SinksListResultItemSchemaFieldsItemList>;
 
 export type SinksListResultItemSchemaFieldsItem =
   | SinksListResultItemSchemaFieldsItemInt32
@@ -4906,20 +4118,8 @@ export interface StreamsListResultItemFormatJson {
   timestampFormat?: StreamsListResultItemFormatJsonTimestampFormat | null;
   unstructured?: boolean | null;
 }
-export const StreamsListResultItemFormatJson = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: StreamsListResultItemFormatJsonType,
-    decimalEncoding: S.optional(
-      S.NullOr(StreamsListResultItemFormatJsonDecimalEncoding).pipe(T.Body("decimal_encoding")),
-    ),
-    timestampFormat: S.optional(
-      S.NullOr(StreamsListResultItemFormatJsonTimestampFormat).pipe(T.Body("timestamp_format")),
-    ),
-    unstructured: S.optional(S.NullOr(S.Boolean)),
-  }),
-).annotate({
-  identifier: "StreamsListResultItemFormatJson",
-}) as any as S.Schema<StreamsListResultItemFormatJson>;
+export const StreamsListResultItemFormatJson =
+  StreamsCreateResponseFormatJson as any as S.Schema<StreamsListResultItemFormatJson>;
 
 export type StreamsListResultItemFormatParquetType = "parquet";
 export const StreamsListResultItemFormatParquetType = S.String;
@@ -4937,15 +4137,8 @@ export interface StreamsListResultItemFormatParquet {
   compression?: StreamsListResultItemFormatParquetCompression | null;
   rowGroupBytes?: number | null;
 }
-export const StreamsListResultItemFormatParquet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: StreamsListResultItemFormatParquetType,
-    compression: S.optional(S.NullOr(StreamsListResultItemFormatParquetCompression)),
-    rowGroupBytes: S.optional(S.NullOr(S.Number).pipe(T.Body("row_group_bytes"))),
-  }),
-).annotate({
-  identifier: "StreamsListResultItemFormatParquet",
-}) as any as S.Schema<StreamsListResultItemFormatParquet>;
+export const StreamsListResultItemFormatParquet =
+  SinksCreateResponseFormatParquet as any as S.Schema<StreamsListResultItemFormatParquet>;
 
 export type StreamsListResultItemFormat =
   | StreamsListResultItemFormatJson
@@ -4970,17 +4163,8 @@ export interface StreamsListResultItemSchemaFieldsItemInt32 {
   required?: boolean | null;
   sqlName?: string | null;
 }
-export const StreamsListResultItemSchemaFieldsItemInt32 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: StreamsListResultItemSchemaFieldsItemInt32Type,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "StreamsListResultItemSchemaFieldsItemInt32",
-}) as any as S.Schema<StreamsListResultItemSchemaFieldsItemInt32>;
+export const StreamsListResultItemSchemaFieldsItemInt32 =
+  SinksCreateResponseSchemaFieldsItemInt32 as any as S.Schema<StreamsListResultItemSchemaFieldsItemInt32>;
 
 export type StreamsListResultItemSchemaFieldsItemInt64Type = "int64";
 export const StreamsListResultItemSchemaFieldsItemInt64Type = S.String;
@@ -4992,17 +4176,8 @@ export interface StreamsListResultItemSchemaFieldsItemInt64 {
   required?: boolean | null;
   sqlName?: string | null;
 }
-export const StreamsListResultItemSchemaFieldsItemInt64 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: StreamsListResultItemSchemaFieldsItemInt64Type,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "StreamsListResultItemSchemaFieldsItemInt64",
-}) as any as S.Schema<StreamsListResultItemSchemaFieldsItemInt64>;
+export const StreamsListResultItemSchemaFieldsItemInt64 =
+  SinksCreateResponseSchemaFieldsItemInt32 as any as S.Schema<StreamsListResultItemSchemaFieldsItemInt64>;
 
 export type StreamsListResultItemSchemaFieldsItemFloat32Type = "float32";
 export const StreamsListResultItemSchemaFieldsItemFloat32Type = S.String;
@@ -5014,17 +4189,8 @@ export interface StreamsListResultItemSchemaFieldsItemFloat32 {
   required?: boolean | null;
   sqlName?: string | null;
 }
-export const StreamsListResultItemSchemaFieldsItemFloat32 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: StreamsListResultItemSchemaFieldsItemFloat32Type,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "StreamsListResultItemSchemaFieldsItemFloat32",
-}) as any as S.Schema<StreamsListResultItemSchemaFieldsItemFloat32>;
+export const StreamsListResultItemSchemaFieldsItemFloat32 =
+  SinksCreateResponseSchemaFieldsItemInt32 as any as S.Schema<StreamsListResultItemSchemaFieldsItemFloat32>;
 
 export type StreamsListResultItemSchemaFieldsItemFloat64Type = "float64";
 export const StreamsListResultItemSchemaFieldsItemFloat64Type = S.String;
@@ -5036,17 +4202,8 @@ export interface StreamsListResultItemSchemaFieldsItemFloat64 {
   required?: boolean | null;
   sqlName?: string | null;
 }
-export const StreamsListResultItemSchemaFieldsItemFloat64 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: StreamsListResultItemSchemaFieldsItemFloat64Type,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "StreamsListResultItemSchemaFieldsItemFloat64",
-}) as any as S.Schema<StreamsListResultItemSchemaFieldsItemFloat64>;
+export const StreamsListResultItemSchemaFieldsItemFloat64 =
+  SinksCreateResponseSchemaFieldsItemInt32 as any as S.Schema<StreamsListResultItemSchemaFieldsItemFloat64>;
 
 export type StreamsListResultItemSchemaFieldsItemBoolType = "bool";
 export const StreamsListResultItemSchemaFieldsItemBoolType = S.String;
@@ -5058,17 +4215,8 @@ export interface StreamsListResultItemSchemaFieldsItemBool {
   required?: boolean | null;
   sqlName?: string | null;
 }
-export const StreamsListResultItemSchemaFieldsItemBool = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: StreamsListResultItemSchemaFieldsItemBoolType,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "StreamsListResultItemSchemaFieldsItemBool",
-}) as any as S.Schema<StreamsListResultItemSchemaFieldsItemBool>;
+export const StreamsListResultItemSchemaFieldsItemBool =
+  SinksCreateResponseSchemaFieldsItemInt32 as any as S.Schema<StreamsListResultItemSchemaFieldsItemBool>;
 
 export type StreamsListResultItemSchemaFieldsItemStringType = "string";
 export const StreamsListResultItemSchemaFieldsItemStringType = S.String;
@@ -5080,17 +4228,8 @@ export interface StreamsListResultItemSchemaFieldsItemString {
   required?: boolean | null;
   sqlName?: string | null;
 }
-export const StreamsListResultItemSchemaFieldsItemString = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: StreamsListResultItemSchemaFieldsItemStringType,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "StreamsListResultItemSchemaFieldsItemString",
-}) as any as S.Schema<StreamsListResultItemSchemaFieldsItemString>;
+export const StreamsListResultItemSchemaFieldsItemString =
+  SinksCreateResponseSchemaFieldsItemInt32 as any as S.Schema<StreamsListResultItemSchemaFieldsItemString>;
 
 export type StreamsListResultItemSchemaFieldsItemBinaryType = "binary";
 export const StreamsListResultItemSchemaFieldsItemBinaryType = S.String;
@@ -5102,17 +4241,8 @@ export interface StreamsListResultItemSchemaFieldsItemBinary {
   required?: boolean | null;
   sqlName?: string | null;
 }
-export const StreamsListResultItemSchemaFieldsItemBinary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: StreamsListResultItemSchemaFieldsItemBinaryType,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "StreamsListResultItemSchemaFieldsItemBinary",
-}) as any as S.Schema<StreamsListResultItemSchemaFieldsItemBinary>;
+export const StreamsListResultItemSchemaFieldsItemBinary =
+  SinksCreateResponseSchemaFieldsItemInt32 as any as S.Schema<StreamsListResultItemSchemaFieldsItemBinary>;
 
 export type StreamsListResultItemSchemaFieldsItemTimestampType = "timestamp";
 export const StreamsListResultItemSchemaFieldsItemTimestampType = S.String;
@@ -5132,18 +4262,8 @@ export interface StreamsListResultItemSchemaFieldsItemTimestamp {
   sqlName?: string | null;
   unit?: StreamsListResultItemSchemaFieldsItemTimestampUnit | null;
 }
-export const StreamsListResultItemSchemaFieldsItemTimestamp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: StreamsListResultItemSchemaFieldsItemTimestampType,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-    unit: S.optional(S.NullOr(StreamsListResultItemSchemaFieldsItemTimestampUnit)),
-  }),
-).annotate({
-  identifier: "StreamsListResultItemSchemaFieldsItemTimestamp",
-}) as any as S.Schema<StreamsListResultItemSchemaFieldsItemTimestamp>;
+export const StreamsListResultItemSchemaFieldsItemTimestamp =
+  SinksCreateResponseSchemaFieldsItemTimestamp as any as S.Schema<StreamsListResultItemSchemaFieldsItemTimestamp>;
 
 export type StreamsListResultItemSchemaFieldsItemJsonType = "json";
 export const StreamsListResultItemSchemaFieldsItemJsonType = S.String;
@@ -5155,17 +4275,8 @@ export interface StreamsListResultItemSchemaFieldsItemJson {
   required?: boolean | null;
   sqlName?: string | null;
 }
-export const StreamsListResultItemSchemaFieldsItemJson = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: StreamsListResultItemSchemaFieldsItemJsonType,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "StreamsListResultItemSchemaFieldsItemJson",
-}) as any as S.Schema<StreamsListResultItemSchemaFieldsItemJson>;
+export const StreamsListResultItemSchemaFieldsItemJson =
+  SinksCreateResponseSchemaFieldsItemInt32 as any as S.Schema<StreamsListResultItemSchemaFieldsItemJson>;
 
 export type StreamsListResultItemSchemaFieldsItemStructType = "struct";
 export const StreamsListResultItemSchemaFieldsItemStructType = S.String;
@@ -5177,17 +4288,8 @@ export interface StreamsListResultItemSchemaFieldsItemStruct {
   required?: boolean | null;
   sqlName?: string | null;
 }
-export const StreamsListResultItemSchemaFieldsItemStruct = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: StreamsListResultItemSchemaFieldsItemStructType,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "StreamsListResultItemSchemaFieldsItemStruct",
-}) as any as S.Schema<StreamsListResultItemSchemaFieldsItemStruct>;
+export const StreamsListResultItemSchemaFieldsItemStruct =
+  SinksCreateResponseSchemaFieldsItemInt32 as any as S.Schema<StreamsListResultItemSchemaFieldsItemStruct>;
 
 export type StreamsListResultItemSchemaFieldsItemListType = "list";
 export const StreamsListResultItemSchemaFieldsItemListType = S.String;
@@ -5199,17 +4301,8 @@ export interface StreamsListResultItemSchemaFieldsItemList {
   required?: boolean | null;
   sqlName?: string | null;
 }
-export const StreamsListResultItemSchemaFieldsItemList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: StreamsListResultItemSchemaFieldsItemListType,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "StreamsListResultItemSchemaFieldsItemList",
-}) as any as S.Schema<StreamsListResultItemSchemaFieldsItemList>;
+export const StreamsListResultItemSchemaFieldsItemList =
+  SinksCreateResponseSchemaFieldsItemInt32 as any as S.Schema<StreamsListResultItemSchemaFieldsItemList>;
 
 export type StreamsListResultItemSchemaFieldsItem =
   | StreamsListResultItemSchemaFieldsItemInt32
@@ -5476,20 +4569,8 @@ export interface StreamsUpdateResponseFormatJson {
   timestampFormat?: StreamsUpdateResponseFormatJsonTimestampFormat | null;
   unstructured?: boolean | null;
 }
-export const StreamsUpdateResponseFormatJson = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: StreamsUpdateResponseFormatJsonType,
-    decimalEncoding: S.optional(
-      S.NullOr(StreamsUpdateResponseFormatJsonDecimalEncoding).pipe(T.Body("decimal_encoding")),
-    ),
-    timestampFormat: S.optional(
-      S.NullOr(StreamsUpdateResponseFormatJsonTimestampFormat).pipe(T.Body("timestamp_format")),
-    ),
-    unstructured: S.optional(S.NullOr(S.Boolean)),
-  }),
-).annotate({
-  identifier: "StreamsUpdateResponseFormatJson",
-}) as any as S.Schema<StreamsUpdateResponseFormatJson>;
+export const StreamsUpdateResponseFormatJson =
+  StreamsCreateResponseFormatJson as any as S.Schema<StreamsUpdateResponseFormatJson>;
 
 export type StreamsUpdateResponseFormatParquetType = "parquet";
 export const StreamsUpdateResponseFormatParquetType = S.String;
@@ -5507,15 +4588,8 @@ export interface StreamsUpdateResponseFormatParquet {
   compression?: StreamsUpdateResponseFormatParquetCompression | null;
   rowGroupBytes?: number | null;
 }
-export const StreamsUpdateResponseFormatParquet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: StreamsUpdateResponseFormatParquetType,
-    compression: S.optional(S.NullOr(StreamsUpdateResponseFormatParquetCompression)),
-    rowGroupBytes: S.optional(S.NullOr(S.Number).pipe(T.Body("row_group_bytes"))),
-  }),
-).annotate({
-  identifier: "StreamsUpdateResponseFormatParquet",
-}) as any as S.Schema<StreamsUpdateResponseFormatParquet>;
+export const StreamsUpdateResponseFormatParquet =
+  SinksCreateResponseFormatParquet as any as S.Schema<StreamsUpdateResponseFormatParquet>;
 
 export type StreamsUpdateResponseFormat =
   | StreamsUpdateResponseFormatJson
@@ -5540,17 +4614,8 @@ export interface StreamsUpdateResponseSchemaFieldsItemInt32 {
   required?: boolean | null;
   sqlName?: string | null;
 }
-export const StreamsUpdateResponseSchemaFieldsItemInt32 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: StreamsUpdateResponseSchemaFieldsItemInt32Type,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "StreamsUpdateResponseSchemaFieldsItemInt32",
-}) as any as S.Schema<StreamsUpdateResponseSchemaFieldsItemInt32>;
+export const StreamsUpdateResponseSchemaFieldsItemInt32 =
+  SinksCreateResponseSchemaFieldsItemInt32 as any as S.Schema<StreamsUpdateResponseSchemaFieldsItemInt32>;
 
 export type StreamsUpdateResponseSchemaFieldsItemInt64Type = "int64";
 export const StreamsUpdateResponseSchemaFieldsItemInt64Type = S.String;
@@ -5562,17 +4627,8 @@ export interface StreamsUpdateResponseSchemaFieldsItemInt64 {
   required?: boolean | null;
   sqlName?: string | null;
 }
-export const StreamsUpdateResponseSchemaFieldsItemInt64 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: StreamsUpdateResponseSchemaFieldsItemInt64Type,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "StreamsUpdateResponseSchemaFieldsItemInt64",
-}) as any as S.Schema<StreamsUpdateResponseSchemaFieldsItemInt64>;
+export const StreamsUpdateResponseSchemaFieldsItemInt64 =
+  SinksCreateResponseSchemaFieldsItemInt32 as any as S.Schema<StreamsUpdateResponseSchemaFieldsItemInt64>;
 
 export type StreamsUpdateResponseSchemaFieldsItemFloat32Type = "float32";
 export const StreamsUpdateResponseSchemaFieldsItemFloat32Type = S.String;
@@ -5584,17 +4640,8 @@ export interface StreamsUpdateResponseSchemaFieldsItemFloat32 {
   required?: boolean | null;
   sqlName?: string | null;
 }
-export const StreamsUpdateResponseSchemaFieldsItemFloat32 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: StreamsUpdateResponseSchemaFieldsItemFloat32Type,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "StreamsUpdateResponseSchemaFieldsItemFloat32",
-}) as any as S.Schema<StreamsUpdateResponseSchemaFieldsItemFloat32>;
+export const StreamsUpdateResponseSchemaFieldsItemFloat32 =
+  SinksCreateResponseSchemaFieldsItemInt32 as any as S.Schema<StreamsUpdateResponseSchemaFieldsItemFloat32>;
 
 export type StreamsUpdateResponseSchemaFieldsItemFloat64Type = "float64";
 export const StreamsUpdateResponseSchemaFieldsItemFloat64Type = S.String;
@@ -5606,17 +4653,8 @@ export interface StreamsUpdateResponseSchemaFieldsItemFloat64 {
   required?: boolean | null;
   sqlName?: string | null;
 }
-export const StreamsUpdateResponseSchemaFieldsItemFloat64 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: StreamsUpdateResponseSchemaFieldsItemFloat64Type,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "StreamsUpdateResponseSchemaFieldsItemFloat64",
-}) as any as S.Schema<StreamsUpdateResponseSchemaFieldsItemFloat64>;
+export const StreamsUpdateResponseSchemaFieldsItemFloat64 =
+  SinksCreateResponseSchemaFieldsItemInt32 as any as S.Schema<StreamsUpdateResponseSchemaFieldsItemFloat64>;
 
 export type StreamsUpdateResponseSchemaFieldsItemBoolType = "bool";
 export const StreamsUpdateResponseSchemaFieldsItemBoolType = S.String;
@@ -5628,17 +4666,8 @@ export interface StreamsUpdateResponseSchemaFieldsItemBool {
   required?: boolean | null;
   sqlName?: string | null;
 }
-export const StreamsUpdateResponseSchemaFieldsItemBool = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: StreamsUpdateResponseSchemaFieldsItemBoolType,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "StreamsUpdateResponseSchemaFieldsItemBool",
-}) as any as S.Schema<StreamsUpdateResponseSchemaFieldsItemBool>;
+export const StreamsUpdateResponseSchemaFieldsItemBool =
+  SinksCreateResponseSchemaFieldsItemInt32 as any as S.Schema<StreamsUpdateResponseSchemaFieldsItemBool>;
 
 export type StreamsUpdateResponseSchemaFieldsItemStringType = "string";
 export const StreamsUpdateResponseSchemaFieldsItemStringType = S.String;
@@ -5650,17 +4679,8 @@ export interface StreamsUpdateResponseSchemaFieldsItemString {
   required?: boolean | null;
   sqlName?: string | null;
 }
-export const StreamsUpdateResponseSchemaFieldsItemString = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: StreamsUpdateResponseSchemaFieldsItemStringType,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "StreamsUpdateResponseSchemaFieldsItemString",
-}) as any as S.Schema<StreamsUpdateResponseSchemaFieldsItemString>;
+export const StreamsUpdateResponseSchemaFieldsItemString =
+  SinksCreateResponseSchemaFieldsItemInt32 as any as S.Schema<StreamsUpdateResponseSchemaFieldsItemString>;
 
 export type StreamsUpdateResponseSchemaFieldsItemBinaryType = "binary";
 export const StreamsUpdateResponseSchemaFieldsItemBinaryType = S.String;
@@ -5672,17 +4692,8 @@ export interface StreamsUpdateResponseSchemaFieldsItemBinary {
   required?: boolean | null;
   sqlName?: string | null;
 }
-export const StreamsUpdateResponseSchemaFieldsItemBinary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: StreamsUpdateResponseSchemaFieldsItemBinaryType,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "StreamsUpdateResponseSchemaFieldsItemBinary",
-}) as any as S.Schema<StreamsUpdateResponseSchemaFieldsItemBinary>;
+export const StreamsUpdateResponseSchemaFieldsItemBinary =
+  SinksCreateResponseSchemaFieldsItemInt32 as any as S.Schema<StreamsUpdateResponseSchemaFieldsItemBinary>;
 
 export type StreamsUpdateResponseSchemaFieldsItemTimestampType = "timestamp";
 export const StreamsUpdateResponseSchemaFieldsItemTimestampType = S.String;
@@ -5702,18 +4713,8 @@ export interface StreamsUpdateResponseSchemaFieldsItemTimestamp {
   sqlName?: string | null;
   unit?: StreamsUpdateResponseSchemaFieldsItemTimestampUnit | null;
 }
-export const StreamsUpdateResponseSchemaFieldsItemTimestamp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: StreamsUpdateResponseSchemaFieldsItemTimestampType,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-    unit: S.optional(S.NullOr(StreamsUpdateResponseSchemaFieldsItemTimestampUnit)),
-  }),
-).annotate({
-  identifier: "StreamsUpdateResponseSchemaFieldsItemTimestamp",
-}) as any as S.Schema<StreamsUpdateResponseSchemaFieldsItemTimestamp>;
+export const StreamsUpdateResponseSchemaFieldsItemTimestamp =
+  SinksCreateResponseSchemaFieldsItemTimestamp as any as S.Schema<StreamsUpdateResponseSchemaFieldsItemTimestamp>;
 
 export type StreamsUpdateResponseSchemaFieldsItemJsonType = "json";
 export const StreamsUpdateResponseSchemaFieldsItemJsonType = S.String;
@@ -5725,17 +4726,8 @@ export interface StreamsUpdateResponseSchemaFieldsItemJson {
   required?: boolean | null;
   sqlName?: string | null;
 }
-export const StreamsUpdateResponseSchemaFieldsItemJson = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: StreamsUpdateResponseSchemaFieldsItemJsonType,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "StreamsUpdateResponseSchemaFieldsItemJson",
-}) as any as S.Schema<StreamsUpdateResponseSchemaFieldsItemJson>;
+export const StreamsUpdateResponseSchemaFieldsItemJson =
+  SinksCreateResponseSchemaFieldsItemInt32 as any as S.Schema<StreamsUpdateResponseSchemaFieldsItemJson>;
 
 export type StreamsUpdateResponseSchemaFieldsItemStructType = "struct";
 export const StreamsUpdateResponseSchemaFieldsItemStructType = S.String;
@@ -5747,17 +4739,8 @@ export interface StreamsUpdateResponseSchemaFieldsItemStruct {
   required?: boolean | null;
   sqlName?: string | null;
 }
-export const StreamsUpdateResponseSchemaFieldsItemStruct = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: StreamsUpdateResponseSchemaFieldsItemStructType,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "StreamsUpdateResponseSchemaFieldsItemStruct",
-}) as any as S.Schema<StreamsUpdateResponseSchemaFieldsItemStruct>;
+export const StreamsUpdateResponseSchemaFieldsItemStruct =
+  SinksCreateResponseSchemaFieldsItemInt32 as any as S.Schema<StreamsUpdateResponseSchemaFieldsItemStruct>;
 
 export type StreamsUpdateResponseSchemaFieldsItemListType = "list";
 export const StreamsUpdateResponseSchemaFieldsItemListType = S.String;
@@ -5769,17 +4752,8 @@ export interface StreamsUpdateResponseSchemaFieldsItemList {
   required?: boolean | null;
   sqlName?: string | null;
 }
-export const StreamsUpdateResponseSchemaFieldsItemList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: StreamsUpdateResponseSchemaFieldsItemListType,
-    metadataKey: S.optional(S.NullOr(S.String).pipe(T.Body("metadata_key"))),
-    name: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    sqlName: S.optional(S.NullOr(S.String).pipe(T.Body("sql_name"))),
-  }),
-).annotate({
-  identifier: "StreamsUpdateResponseSchemaFieldsItemList",
-}) as any as S.Schema<StreamsUpdateResponseSchemaFieldsItemList>;
+export const StreamsUpdateResponseSchemaFieldsItemList =
+  SinksCreateResponseSchemaFieldsItemInt32 as any as S.Schema<StreamsUpdateResponseSchemaFieldsItemList>;
 
 export type StreamsUpdateResponseSchemaFieldsItem =
   | StreamsUpdateResponseSchemaFieldsItemInt32
@@ -5921,13 +4895,8 @@ export interface UpdateRequestDestinationCompression {
   /** Specifies the desired compression algorithm and format. */
   type?: UpdateRequestDestinationCompressionType | (string & {});
 }
-export const UpdateRequestDestinationCompression = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(UpdateRequestDestinationCompressionType),
-  }),
-).annotate({
-  identifier: "UpdateRequestDestinationCompression",
-}) as any as S.Schema<UpdateRequestDestinationCompression>;
+export const UpdateRequestDestinationCompression =
+  CreateRequestDestinationCompression as any as S.Schema<UpdateRequestDestinationCompression>;
 
 export type UpdateRequestDestinationFormat = "json";
 export const UpdateRequestDestinationFormat = S.String;
@@ -6007,14 +4976,7 @@ export interface UpdateRequestSourceItemCloudflarePipelinesWorkersPipelinesBindi
   type: string;
 }
 export const UpdateRequestSourceItemCloudflarePipelinesWorkersPipelinesBindingSource =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      format: UpdateRequestSourceItemCloudflarePipelinesWorkersPipelinesBindingSourceFormat,
-      type: S.String,
-    }),
-  ).annotate({
-    identifier: "UpdateRequestSourceItemCloudflarePipelinesWorkersPipelinesBindingSource",
-  }) as any as S.Schema<UpdateRequestSourceItemCloudflarePipelinesWorkersPipelinesBindingSource>;
+  CreateRequestSourceItemCloudflarePipelinesWorkersPipelinesBindingSource as any as S.Schema<UpdateRequestSourceItemCloudflarePipelinesWorkersPipelinesBindingSource>;
 
 export type UpdateRequestSourceItem =
   | UpdateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSource
@@ -6065,13 +5027,8 @@ export interface UpdateResponseDestinationCompression {
   /** Specifies the desired compression algorithm and format. */
   type: UpdateResponseDestinationCompressionType;
 }
-export const UpdateResponseDestinationCompression = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: UpdateResponseDestinationCompressionType,
-  }),
-).annotate({
-  identifier: "UpdateResponseDestinationCompression",
-}) as any as S.Schema<UpdateResponseDestinationCompression>;
+export const UpdateResponseDestinationCompression =
+  CreateResponseDestinationCompression as any as S.Schema<UpdateResponseDestinationCompression>;
 
 export type UpdateResponseDestinationFormat = "json";
 export const UpdateResponseDestinationFormat = S.String;
@@ -6091,17 +5048,8 @@ export interface UpdateResponseDestination {
   /** Specifies the type of destination. */
   type: UpdateResponseDestinationType;
 }
-export const UpdateResponseDestination = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    batch: CreateResponseDestinationBatch,
-    compression: UpdateResponseDestinationCompression,
-    format: UpdateResponseDestinationFormat,
-    path: CreateResponseDestinationPath,
-    type: UpdateResponseDestinationType,
-  }),
-).annotate({
-  identifier: "UpdateResponseDestination",
-}) as any as S.Schema<UpdateResponseDestination>;
+export const UpdateResponseDestination =
+  CreateResponseDestination as any as S.Schema<UpdateResponseDestination>;
 
 export type UpdateResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceFormat = "json";
 export const UpdateResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceFormat = S.String;
@@ -6150,14 +5098,7 @@ export interface UpdateResponseSourceItemCloudflarePipelinesWorkersPipelinesBind
   type: string;
 }
 export const UpdateResponseSourceItemCloudflarePipelinesWorkersPipelinesBindingSource =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      format: UpdateResponseSourceItemCloudflarePipelinesWorkersPipelinesBindingSourceFormat,
-      type: S.String,
-    }),
-  ).annotate({
-    identifier: "UpdateResponseSourceItemCloudflarePipelinesWorkersPipelinesBindingSource",
-  }) as any as S.Schema<UpdateResponseSourceItemCloudflarePipelinesWorkersPipelinesBindingSource>;
+  CreateRequestSourceItemCloudflarePipelinesWorkersPipelinesBindingSource as any as S.Schema<UpdateResponseSourceItemCloudflarePipelinesWorkersPipelinesBindingSource>;
 
 export type UpdateResponseSourceItem =
   | UpdateResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSource

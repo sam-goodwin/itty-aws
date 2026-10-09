@@ -261,11 +261,7 @@ export interface DriveFolder {
   /** The type of Drive folder. */
   type?: DriveFolderTypeEnum;
 }
-export const DriveFolder = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(DriveFolderTypeEnum),
-  }),
-).annotate({ identifier: "DriveFolder" }) as any as S.Schema<DriveFolder>;
+export const DriveFolder = SystemEvent as any as S.Schema<DriveFolder>;
 
 /** A Drive item which is a file. */
 export type DriveFile = Legacy;
@@ -283,11 +279,7 @@ export interface Folder {
   /** This field is deprecated; please see `DriveFolder.type` instead. */
   type?: FolderTypeEnum;
 }
-export const Folder = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(FolderTypeEnum),
-  }),
-).annotate({ identifier: "Folder" }) as any as S.Schema<Folder>;
+export const Folder = SystemEvent as any as S.Schema<Folder>;
 
 /** A lightweight reference to a Drive item, such as a file or folder. */
 export interface DriveItemReference {
@@ -382,11 +374,7 @@ export interface ApplicationReference {
   /** The reference type corresponding to this event. */
   type?: ApplicationReferenceTypeEnum;
 }
-export const ApplicationReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(ApplicationReferenceTypeEnum),
-  }),
-).annotate({ identifier: "ApplicationReference" }) as any as S.Schema<ApplicationReference>;
+export const ApplicationReference = SystemEvent as any as S.Schema<ApplicationReference>;
 
 /** Wrapper for User Field value. */
 export interface SingleUser {
@@ -660,11 +648,7 @@ export interface Suggestion {
   /** The sub-type of this event. */
   subtype?: SuggestionSubtypeEnum;
 }
-export const Suggestion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subtype: S.optional(SuggestionSubtypeEnum),
-  }),
-).annotate({ identifier: "Suggestion" }) as any as S.Schema<Suggestion>;
+export const Suggestion = Post as any as S.Schema<Suggestion>;
 
 export type AssignmentSubtypeEnum =
   | "SUBTYPE_UNSPECIFIED"
@@ -733,11 +717,7 @@ export interface Delete {
   /** The type of delete action taken. */
   type?: DeleteTypeEnum;
 }
-export const Delete = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(DeleteTypeEnum),
-  }),
-).annotate({ identifier: "Delete" }) as any as S.Schema<Delete>;
+export const Delete = SystemEvent as any as S.Schema<Delete>;
 
 /** Information about a group. */
 export interface Group {
@@ -833,11 +813,7 @@ export interface DataLeakPreventionChange {
   /** The type of Data Leak Prevention (DLP) change. */
   type?: DataLeakPreventionChangeTypeEnum;
 }
-export const DataLeakPreventionChange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(DataLeakPreventionChangeTypeEnum),
-  }),
-).annotate({ identifier: "DataLeakPreventionChange" }) as any as S.Schema<DataLeakPreventionChange>;
+export const DataLeakPreventionChange = SystemEvent as any as S.Schema<DataLeakPreventionChange>;
 
 export type RestrictionChangeNewRestrictionEnum =
   | "RESTRICTION_UNSPECIFIED"
@@ -894,11 +870,7 @@ export interface Restore {
   /** The type of restore action taken. */
   type?: RestoreTypeEnum;
 }
-export const Restore = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(RestoreTypeEnum),
-  }),
-).annotate({ identifier: "Restore" }) as any as S.Schema<Restore>;
+export const Restore = SystemEvent as any as S.Schema<Restore>;
 
 /** Data describing the type and additional information of an action. */
 export interface ActionDetail {

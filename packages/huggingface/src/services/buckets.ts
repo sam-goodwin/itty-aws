@@ -397,19 +397,12 @@ export interface GetBucketDetailsResponseCdnRegionsItem {
   provider: GetBucketDetailsResponseCdnRegionsItemProvider;
   region: GetBucketDetailsResponseCdnRegionsItemRegion;
 }
-export const GetBucketDetailsResponseCdnRegionsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    provider: GetBucketDetailsResponseCdnRegionsItemProvider,
-    region: GetBucketDetailsResponseCdnRegionsItemRegion,
-  }),
-).annotate({
-  identifier: "GetBucketDetailsResponseCdnRegionsItem",
-}) as any as S.Schema<GetBucketDetailsResponseCdnRegionsItem>;
+export const GetBucketDetailsResponseCdnRegionsItem =
+  CreateBucketRequestCdnItem as any as S.Schema<GetBucketDetailsResponseCdnRegionsItem>;
 
 export type GetBucketDetailsResponseCdnRegionsList = Array<GetBucketDetailsResponseCdnRegionsItem>;
-export const GetBucketDetailsResponseCdnRegionsList = /*@__PURE__*/ S.Array(
-  GetBucketDetailsResponseCdnRegionsItem,
-) as any as S.Schema<GetBucketDetailsResponseCdnRegionsList>;
+export const GetBucketDetailsResponseCdnRegionsList =
+  CreateBucketRequestCdnList as any as S.Schema<GetBucketDetailsResponseCdnRegionsList>;
 
 export interface GetBucketDetailsResponseResourceGroup {
   /** A hex string of 24 characters representing an ObjectId. */
@@ -642,20 +635,13 @@ export interface ListNamespaceBucketsResponseBodyItemCdnRegionsItem {
   provider: ListNamespaceBucketsResponseBodyItemCdnRegionsItemProvider;
   region: ListNamespaceBucketsResponseBodyItemCdnRegionsItemRegion;
 }
-export const ListNamespaceBucketsResponseBodyItemCdnRegionsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    provider: ListNamespaceBucketsResponseBodyItemCdnRegionsItemProvider,
-    region: ListNamespaceBucketsResponseBodyItemCdnRegionsItemRegion,
-  }),
-).annotate({
-  identifier: "ListNamespaceBucketsResponseBodyItemCdnRegionsItem",
-}) as any as S.Schema<ListNamespaceBucketsResponseBodyItemCdnRegionsItem>;
+export const ListNamespaceBucketsResponseBodyItemCdnRegionsItem =
+  CreateBucketRequestCdnItem as any as S.Schema<ListNamespaceBucketsResponseBodyItemCdnRegionsItem>;
 
 export type ListNamespaceBucketsResponseBodyItemCdnRegionsList =
   Array<ListNamespaceBucketsResponseBodyItemCdnRegionsItem>;
-export const ListNamespaceBucketsResponseBodyItemCdnRegionsList = /*@__PURE__*/ S.Array(
-  ListNamespaceBucketsResponseBodyItemCdnRegionsItem,
-) as any as S.Schema<ListNamespaceBucketsResponseBodyItemCdnRegionsList>;
+export const ListNamespaceBucketsResponseBodyItemCdnRegionsList =
+  CreateBucketRequestCdnList as any as S.Schema<ListNamespaceBucketsResponseBodyItemCdnRegionsList>;
 
 export type ListNamespaceBucketsResponseBodyItemResourceGroup =
   GetBucketDetailsResponseResourceGroup;
@@ -752,30 +738,15 @@ export interface ListPathsInfoResponseBodyItem {
   uploadedAt: string;
   contentType?: string;
 }
-export const ListPathsInfoResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ListPathsInfoResponseBodyItemType,
-    path: S.String,
-    size: S.optional(S.Number),
-    xetHash: S.optional(S.String),
-    mtime: S.optional(S.String),
-    mtimeNanos: S.optional(S.Number),
-    uploadedAt: S.String,
-    contentType: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListPathsInfoResponseBodyItem",
-}) as any as S.Schema<ListPathsInfoResponseBodyItem>;
+export const ListPathsInfoResponseBodyItem =
+  ListFilesResponseBodyItem as any as S.Schema<ListPathsInfoResponseBodyItem>;
 
 export type ListPathsInfoResponseBodyList = Array<ListPathsInfoResponseBodyItem>;
-export const ListPathsInfoResponseBodyList = /*@__PURE__*/ S.Array(
-  ListPathsInfoResponseBodyItem,
-) as any as S.Schema<ListPathsInfoResponseBodyList>;
+export const ListPathsInfoResponseBodyList =
+  ListFilesResponseBodyList as any as S.Schema<ListPathsInfoResponseBodyList>;
 
 export type ListPathsInfoResponse = ListPathsInfoResponseBodyList;
-export const ListPathsInfoResponse = /*@__PURE__*/ S.suspend(() =>
-  ListPathsInfoResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ListPathsInfoResponse" }) as any as S.Schema<ListPathsInfoResponse>;
+export const ListPathsInfoResponse = ListFilesResponse as any as S.Schema<ListPathsInfoResponse>;
 
 export type UpdateBucketSettingsRequestCdnRegionsItemProvider = "gcp" | "aws";
 export const UpdateBucketSettingsRequestCdnRegionsItemProvider = S.String;
@@ -787,20 +758,13 @@ export interface UpdateBucketSettingsRequestCdnRegionsItem {
   provider: UpdateBucketSettingsRequestCdnRegionsItemProvider | (string & {});
   region: UpdateBucketSettingsRequestCdnRegionsItemRegion | (string & {});
 }
-export const UpdateBucketSettingsRequestCdnRegionsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    provider: UpdateBucketSettingsRequestCdnRegionsItemProvider,
-    region: UpdateBucketSettingsRequestCdnRegionsItemRegion,
-  }),
-).annotate({
-  identifier: "UpdateBucketSettingsRequestCdnRegionsItem",
-}) as any as S.Schema<UpdateBucketSettingsRequestCdnRegionsItem>;
+export const UpdateBucketSettingsRequestCdnRegionsItem =
+  CreateBucketRequestCdnItem as any as S.Schema<UpdateBucketSettingsRequestCdnRegionsItem>;
 
 export type UpdateBucketSettingsRequestCdnRegionsList =
   Array<UpdateBucketSettingsRequestCdnRegionsItem>;
-export const UpdateBucketSettingsRequestCdnRegionsList = /*@__PURE__*/ S.Array(
-  UpdateBucketSettingsRequestCdnRegionsItem,
-) as any as S.Schema<UpdateBucketSettingsRequestCdnRegionsList>;
+export const UpdateBucketSettingsRequestCdnRegionsList =
+  CreateBucketRequestCdnList as any as S.Schema<UpdateBucketSettingsRequestCdnRegionsList>;
 
 export interface UpdateBucketSettingsRequest {
   namespace: string;
@@ -829,20 +793,13 @@ export interface UpdateBucketSettingsResponseCdnRegionsItem {
   provider: UpdateBucketSettingsResponseCdnRegionsItemProvider;
   region: UpdateBucketSettingsResponseCdnRegionsItemRegion;
 }
-export const UpdateBucketSettingsResponseCdnRegionsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    provider: UpdateBucketSettingsResponseCdnRegionsItemProvider,
-    region: UpdateBucketSettingsResponseCdnRegionsItemRegion,
-  }),
-).annotate({
-  identifier: "UpdateBucketSettingsResponseCdnRegionsItem",
-}) as any as S.Schema<UpdateBucketSettingsResponseCdnRegionsItem>;
+export const UpdateBucketSettingsResponseCdnRegionsItem =
+  CreateBucketRequestCdnItem as any as S.Schema<UpdateBucketSettingsResponseCdnRegionsItem>;
 
 export type UpdateBucketSettingsResponseCdnRegionsList =
   Array<UpdateBucketSettingsResponseCdnRegionsItem>;
-export const UpdateBucketSettingsResponseCdnRegionsList = /*@__PURE__*/ S.Array(
-  UpdateBucketSettingsResponseCdnRegionsItem,
-) as any as S.Schema<UpdateBucketSettingsResponseCdnRegionsList>;
+export const UpdateBucketSettingsResponseCdnRegionsList =
+  CreateBucketRequestCdnList as any as S.Schema<UpdateBucketSettingsResponseCdnRegionsList>;
 
 export interface UpdateBucketSettingsResponse {
   private?: boolean;

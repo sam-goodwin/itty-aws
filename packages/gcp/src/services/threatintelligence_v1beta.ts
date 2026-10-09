@@ -216,9 +216,8 @@ export const VulnerabilityMatchExploitationVectorsItemEnum = S.String;
 
 export type VulnerabilityMatchExploitationVectorsItemEnumList =
   Array<VulnerabilityMatchExploitationVectorsItemEnum>;
-export const VulnerabilityMatchExploitationVectorsItemEnumList = /*@__PURE__*/ S.Array(
-  VulnerabilityMatchExploitationVectorsItemEnum,
-) as any as S.Schema<VulnerabilityMatchExploitationVectorsItemEnumList>;
+export const VulnerabilityMatchExploitationVectorsItemEnumList =
+  AlertTagsItemEnumList as any as S.Schema<VulnerabilityMatchExploitationVectorsItemEnumList>;
 
 export type VulnerabilityMatchExploitationConsequencesItemEnum =
   | "EXPLOITATION_CONSEQUENCE_UNSPECIFIED"
@@ -238,9 +237,8 @@ export const VulnerabilityMatchExploitationConsequencesItemEnum = S.String;
 
 export type VulnerabilityMatchExploitationConsequencesItemEnumList =
   Array<VulnerabilityMatchExploitationConsequencesItemEnum>;
-export const VulnerabilityMatchExploitationConsequencesItemEnumList = /*@__PURE__*/ S.Array(
-  VulnerabilityMatchExploitationConsequencesItemEnum,
-) as any as S.Schema<VulnerabilityMatchExploitationConsequencesItemEnumList>;
+export const VulnerabilityMatchExploitationConsequencesItemEnumList =
+  AlertTagsItemEnumList as any as S.Schema<VulnerabilityMatchExploitationConsequencesItemEnumList>;
 
 /** Contains details about a product fix. */
 export interface ProductFix {

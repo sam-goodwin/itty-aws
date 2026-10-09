@@ -770,17 +770,13 @@ export type SaaSProductVisibilityString =
 export const SaaSProductVisibilityString = S.String;
 
 export type SaaSProductVisibilityFilterValueList = SaaSProductVisibilityString[];
-export const SaaSProductVisibilityFilterValueList = /*@__PURE__*/ S.Array(
-  SaaSProductVisibilityString,
-);
+export const SaaSProductVisibilityFilterValueList =
+  DataProductVisibilityFilterValueList as any as S.Schema<SaaSProductVisibilityFilterValueList>;
 export interface SaaSProductVisibilityFilter {
   ValueList?: SaaSProductVisibilityString[];
 }
-export const SaaSProductVisibilityFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ValueList: S.optional(SaaSProductVisibilityFilterValueList) }),
-).annotate({
-  identifier: "SaaSProductVisibilityFilter",
-}) as any as S.Schema<SaaSProductVisibilityFilter>;
+export const SaaSProductVisibilityFilter =
+  DataProductVisibilityFilter as any as S.Schema<SaaSProductVisibilityFilter>;
 export interface SaaSProductLastModifiedDateFilterDateRange {
   AfterValue?: string;
   BeforeValue?: string;
@@ -846,17 +842,13 @@ export type AmiProductVisibilityString =
 export const AmiProductVisibilityString = S.String;
 
 export type AmiProductVisibilityFilterValueList = AmiProductVisibilityString[];
-export const AmiProductVisibilityFilterValueList = /*@__PURE__*/ S.Array(
-  AmiProductVisibilityString,
-);
+export const AmiProductVisibilityFilterValueList =
+  DataProductVisibilityFilterValueList as any as S.Schema<AmiProductVisibilityFilterValueList>;
 export interface AmiProductVisibilityFilter {
   ValueList?: AmiProductVisibilityString[];
 }
-export const AmiProductVisibilityFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ValueList: S.optional(AmiProductVisibilityFilterValueList) }),
-).annotate({
-  identifier: "AmiProductVisibilityFilter",
-}) as any as S.Schema<AmiProductVisibilityFilter>;
+export const AmiProductVisibilityFilter =
+  DataProductVisibilityFilter as any as S.Schema<AmiProductVisibilityFilter>;
 export interface AmiProductFilters {
   EntityId?: AmiProductEntityIdFilter;
   LastModifiedDate?: AmiProductLastModifiedDateFilter;
@@ -955,13 +947,12 @@ export type OfferTargetingString =
 export const OfferTargetingString = S.String;
 
 export type OfferTargetingFilterValueList = OfferTargetingString[];
-export const OfferTargetingFilterValueList = /*@__PURE__*/ S.Array(OfferTargetingString);
+export const OfferTargetingFilterValueList =
+  OfferStateFilterValueList as any as S.Schema<OfferTargetingFilterValueList>;
 export interface OfferTargetingFilter {
   ValueList?: OfferTargetingString[];
 }
-export const OfferTargetingFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ValueList: S.optional(OfferTargetingFilterValueList) }),
-).annotate({ identifier: "OfferTargetingFilter" }) as any as S.Schema<OfferTargetingFilter>;
+export const OfferTargetingFilter = OfferStateFilter as any as S.Schema<OfferTargetingFilter>;
 export interface OfferLastModifiedDateFilterDateRange {
   AfterValue?: string;
   BeforeValue?: string;
@@ -993,32 +984,24 @@ export type OfferTargetAgreementIntentString = "Renew" | (string & {});
 export const OfferTargetAgreementIntentString = S.String;
 
 export type OfferTargetAgreementIntentFilterValueList = OfferTargetAgreementIntentString[];
-export const OfferTargetAgreementIntentFilterValueList = /*@__PURE__*/ S.Array(
-  OfferTargetAgreementIntentString,
-);
+export const OfferTargetAgreementIntentFilterValueList =
+  DataProductVisibilityFilterValueList as any as S.Schema<OfferTargetAgreementIntentFilterValueList>;
 export interface OfferTargetAgreementIntentFilter {
   ValueList?: OfferTargetAgreementIntentString[];
 }
-export const OfferTargetAgreementIntentFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ValueList: S.optional(OfferTargetAgreementIntentFilterValueList) }),
-).annotate({
-  identifier: "OfferTargetAgreementIntentFilter",
-}) as any as S.Schema<OfferTargetAgreementIntentFilter>;
+export const OfferTargetAgreementIntentFilter =
+  DataProductVisibilityFilter as any as S.Schema<OfferTargetAgreementIntentFilter>;
 export type OfferCreatedBySourceString = "Seller" | "AwsMarketplace" | (string & {});
 export const OfferCreatedBySourceString = S.String;
 
 export type OfferCreatedBySourceFilterValueList = OfferCreatedBySourceString[];
-export const OfferCreatedBySourceFilterValueList = /*@__PURE__*/ S.Array(
-  OfferCreatedBySourceString,
-);
+export const OfferCreatedBySourceFilterValueList =
+  DataProductVisibilityFilterValueList as any as S.Schema<OfferCreatedBySourceFilterValueList>;
 export interface OfferCreatedBySourceFilter {
   ValueList?: OfferCreatedBySourceString[];
 }
-export const OfferCreatedBySourceFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ValueList: S.optional(OfferCreatedBySourceFilterValueList) }),
-).annotate({
-  identifier: "OfferCreatedBySourceFilter",
-}) as any as S.Schema<OfferCreatedBySourceFilter>;
+export const OfferCreatedBySourceFilter =
+  DataProductVisibilityFilter as any as S.Schema<OfferCreatedBySourceFilter>;
 export interface OfferFilters {
   EntityId?: OfferEntityIdFilter;
   Name?: OfferNameFilter;
@@ -1098,17 +1081,13 @@ export type ContainerProductVisibilityString =
 export const ContainerProductVisibilityString = S.String;
 
 export type ContainerProductVisibilityFilterValueList = ContainerProductVisibilityString[];
-export const ContainerProductVisibilityFilterValueList = /*@__PURE__*/ S.Array(
-  ContainerProductVisibilityString,
-);
+export const ContainerProductVisibilityFilterValueList =
+  DataProductVisibilityFilterValueList as any as S.Schema<ContainerProductVisibilityFilterValueList>;
 export interface ContainerProductVisibilityFilter {
   ValueList?: ContainerProductVisibilityString[];
 }
-export const ContainerProductVisibilityFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ValueList: S.optional(ContainerProductVisibilityFilterValueList) }),
-).annotate({
-  identifier: "ContainerProductVisibilityFilter",
-}) as any as S.Schema<ContainerProductVisibilityFilter>;
+export const ContainerProductVisibilityFilter =
+  DataProductVisibilityFilter as any as S.Schema<ContainerProductVisibilityFilter>;
 export interface ContainerProductFilters {
   EntityId?: ContainerProductEntityIdFilter;
   LastModifiedDate?: ContainerProductLastModifiedDateFilter;
@@ -1262,17 +1241,13 @@ export type ResaleAuthorizationStatusString = "Draft" | "Active" | "Restricted" 
 export const ResaleAuthorizationStatusString = S.String;
 
 export type ResaleAuthorizationStatusFilterValueList = ResaleAuthorizationStatusString[];
-export const ResaleAuthorizationStatusFilterValueList = /*@__PURE__*/ S.Array(
-  ResaleAuthorizationStatusString,
-);
+export const ResaleAuthorizationStatusFilterValueList =
+  DataProductVisibilityFilterValueList as any as S.Schema<ResaleAuthorizationStatusFilterValueList>;
 export interface ResaleAuthorizationStatusFilter {
   ValueList?: ResaleAuthorizationStatusString[];
 }
-export const ResaleAuthorizationStatusFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ValueList: S.optional(ResaleAuthorizationStatusFilterValueList) }),
-).annotate({
-  identifier: "ResaleAuthorizationStatusFilter",
-}) as any as S.Schema<ResaleAuthorizationStatusFilter>;
+export const ResaleAuthorizationStatusFilter =
+  DataProductVisibilityFilter as any as S.Schema<ResaleAuthorizationStatusFilter>;
 export type ResaleAuthorizationOfferExtendedStatusString = string;
 export type ResaleAuthorizationOfferExtendedStatusFilterValueList = string[];
 export const ResaleAuthorizationOfferExtendedStatusFilterValueList =
@@ -1304,17 +1279,13 @@ export const ResaleAuthorizationResellerRoleString = S.String;
 
 export type ResaleAuthorizationResellerRoleFilterValueList =
   ResaleAuthorizationResellerRoleString[];
-export const ResaleAuthorizationResellerRoleFilterValueList = /*@__PURE__*/ S.Array(
-  ResaleAuthorizationResellerRoleString,
-);
+export const ResaleAuthorizationResellerRoleFilterValueList =
+  DataProductVisibilityFilterValueList as any as S.Schema<ResaleAuthorizationResellerRoleFilterValueList>;
 export interface ResaleAuthorizationResellerRoleFilter {
   ValueList?: ResaleAuthorizationResellerRoleString[];
 }
-export const ResaleAuthorizationResellerRoleFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ValueList: S.optional(ResaleAuthorizationResellerRoleFilterValueList) }),
-).annotate({
-  identifier: "ResaleAuthorizationResellerRoleFilter",
-}) as any as S.Schema<ResaleAuthorizationResellerRoleFilter>;
+export const ResaleAuthorizationResellerRoleFilter =
+  DataProductVisibilityFilter as any as S.Schema<ResaleAuthorizationResellerRoleFilter>;
 export type ResaleAuthorizationSourceAuthorizationString = string;
 export type ResaleAuthorizationSourceAuthorizationFilterValueList = string[];
 export const ResaleAuthorizationSourceAuthorizationFilterValueList =
@@ -1413,17 +1384,13 @@ export const MachineLearningProductVisibilityString = S.String;
 
 export type MachineLearningProductVisibilityFilterValueList =
   MachineLearningProductVisibilityString[];
-export const MachineLearningProductVisibilityFilterValueList = /*@__PURE__*/ S.Array(
-  MachineLearningProductVisibilityString,
-);
+export const MachineLearningProductVisibilityFilterValueList =
+  DataProductVisibilityFilterValueList as any as S.Schema<MachineLearningProductVisibilityFilterValueList>;
 export interface MachineLearningProductVisibilityFilter {
   ValueList?: MachineLearningProductVisibilityString[];
 }
-export const MachineLearningProductVisibilityFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ValueList: S.optional(MachineLearningProductVisibilityFilterValueList) }),
-).annotate({
-  identifier: "MachineLearningProductVisibilityFilter",
-}) as any as S.Schema<MachineLearningProductVisibilityFilter>;
+export const MachineLearningProductVisibilityFilter =
+  DataProductVisibilityFilter as any as S.Schema<MachineLearningProductVisibilityFilter>;
 export interface MachineLearningProductFilters {
   EntityId?: MachineLearningProductEntityIdFilter;
   LastModifiedDate?: MachineLearningProductLastModifiedDateFilter;
@@ -1461,13 +1428,12 @@ export type OfferSetStateString = "Draft" | "Released" | (string & {});
 export const OfferSetStateString = S.String;
 
 export type OfferSetStateFilterValueList = OfferSetStateString[];
-export const OfferSetStateFilterValueList = /*@__PURE__*/ S.Array(OfferSetStateString);
+export const OfferSetStateFilterValueList =
+  OfferStateFilterValueList as any as S.Schema<OfferSetStateFilterValueList>;
 export interface OfferSetStateFilter {
   ValueList?: OfferSetStateString[];
 }
-export const OfferSetStateFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ValueList: S.optional(OfferSetStateFilterValueList) }),
-).annotate({ identifier: "OfferSetStateFilter" }) as any as S.Schema<OfferSetStateFilter>;
+export const OfferSetStateFilter = OfferStateFilter as any as S.Schema<OfferSetStateFilter>;
 export interface OfferSetReleaseDateFilterDateRange {
   AfterValue?: string;
   BeforeValue?: string;
@@ -1647,9 +1613,7 @@ export interface SaaSProductSort {
   SortBy?: SaaSProductSortBy;
   SortOrder?: SortOrder;
 }
-export const SaaSProductSort = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SortBy: S.optional(SaaSProductSortBy), SortOrder: S.optional(SortOrder) }),
-).annotate({ identifier: "SaaSProductSort" }) as any as S.Schema<SaaSProductSort>;
+export const SaaSProductSort = DataProductSort as any as S.Schema<SaaSProductSort>;
 export type AmiProductSortBy =
   | "EntityId"
   | "LastModifiedDate"
@@ -1662,9 +1626,7 @@ export interface AmiProductSort {
   SortBy?: AmiProductSortBy;
   SortOrder?: SortOrder;
 }
-export const AmiProductSort = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SortBy: S.optional(AmiProductSortBy), SortOrder: S.optional(SortOrder) }),
-).annotate({ identifier: "AmiProductSort" }) as any as S.Schema<AmiProductSort>;
+export const AmiProductSort = DataProductSort as any as S.Schema<AmiProductSort>;
 export type OfferSortBy =
   | "EntityId"
   | "Name"
@@ -1687,9 +1649,7 @@ export interface OfferSort {
   SortBy?: OfferSortBy;
   SortOrder?: SortOrder;
 }
-export const OfferSort = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SortBy: S.optional(OfferSortBy), SortOrder: S.optional(SortOrder) }),
-).annotate({ identifier: "OfferSort" }) as any as S.Schema<OfferSort>;
+export const OfferSort = DataProductSort as any as S.Schema<OfferSort>;
 export type ContainerProductSortBy =
   | "EntityId"
   | "LastModifiedDate"
@@ -1703,9 +1663,7 @@ export interface ContainerProductSort {
   SortBy?: ContainerProductSortBy;
   SortOrder?: SortOrder;
 }
-export const ContainerProductSort = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SortBy: S.optional(ContainerProductSortBy), SortOrder: S.optional(SortOrder) }),
-).annotate({ identifier: "ContainerProductSort" }) as any as S.Schema<ContainerProductSort>;
+export const ContainerProductSort = DataProductSort as any as S.Schema<ContainerProductSort>;
 export type ResaleAuthorizationSortBy =
   | "EntityId"
   | "Name"
@@ -1730,9 +1688,7 @@ export interface ResaleAuthorizationSort {
   SortBy?: ResaleAuthorizationSortBy;
   SortOrder?: SortOrder;
 }
-export const ResaleAuthorizationSort = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SortBy: S.optional(ResaleAuthorizationSortBy), SortOrder: S.optional(SortOrder) }),
-).annotate({ identifier: "ResaleAuthorizationSort" }) as any as S.Schema<ResaleAuthorizationSort>;
+export const ResaleAuthorizationSort = DataProductSort as any as S.Schema<ResaleAuthorizationSort>;
 export type MachineLearningProductSortBy =
   | "EntityId"
   | "LastModifiedDate"
@@ -1764,9 +1720,7 @@ export interface OfferSetSort {
   SortBy?: OfferSetSortBy;
   SortOrder?: SortOrder;
 }
-export const OfferSetSort = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SortBy: S.optional(OfferSetSortBy), SortOrder: S.optional(SortOrder) }),
-).annotate({ identifier: "OfferSetSort" }) as any as S.Schema<OfferSetSort>;
+export const OfferSetSort = DataProductSort as any as S.Schema<OfferSetSort>;
 export type EntityTypeSort =
   | {
       DataProductSort: DataProductSort;
@@ -1898,32 +1852,18 @@ export interface ContainerProductSummary {
   ProductTitle?: string;
   Visibility?: ContainerProductVisibilityString;
 }
-export const ContainerProductSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ProductTitle: S.optional(S.String),
-    Visibility: S.optional(ContainerProductVisibilityString),
-  }),
-).annotate({ identifier: "ContainerProductSummary" }) as any as S.Schema<ContainerProductSummary>;
+export const ContainerProductSummary =
+  AmiProductSummary as any as S.Schema<ContainerProductSummary>;
 export interface DataProductSummary {
   ProductTitle?: string;
   Visibility?: DataProductVisibilityString;
 }
-export const DataProductSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ProductTitle: S.optional(S.String),
-    Visibility: S.optional(DataProductVisibilityString),
-  }),
-).annotate({ identifier: "DataProductSummary" }) as any as S.Schema<DataProductSummary>;
+export const DataProductSummary = AmiProductSummary as any as S.Schema<DataProductSummary>;
 export interface SaaSProductSummary {
   ProductTitle?: string;
   Visibility?: SaaSProductVisibilityString;
 }
-export const SaaSProductSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ProductTitle: S.optional(S.String),
-    Visibility: S.optional(SaaSProductVisibilityString),
-  }),
-).annotate({ identifier: "SaaSProductSummary" }) as any as S.Schema<SaaSProductSummary>;
+export const SaaSProductSummary = AmiProductSummary as any as S.Schema<SaaSProductSummary>;
 export type OfferBuyerAccountsString = string;
 export type OfferBuyerAccountsList = string[];
 export const OfferBuyerAccountsList = ValueList as any as S.Schema<OfferBuyerAccountsList>;

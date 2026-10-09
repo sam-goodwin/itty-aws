@@ -320,31 +320,12 @@ export interface GetRecordsResponseBodyCase2RecordsItem {
   updatedAt: number | null;
   value: string;
 }
-export const GetRecordsResponseBodyCase2RecordsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    comment: S.optional(S.String),
-    created: S.NullOr(S.Number),
-    createdAt: S.NullOr(S.Number),
-    creator: S.String,
-    id: S.String,
-    mxPriority: S.optional(S.Number),
-    name: S.String,
-    priority: S.optional(S.Number),
-    slug: S.String,
-    ttl: S.optional(S.Number),
-    type: GetRecordsResponseBodyCase2RecordsItemType,
-    updated: S.NullOr(S.Number),
-    updatedAt: S.NullOr(S.Number),
-    value: S.String,
-  }),
-).annotate({
-  identifier: "GetRecordsResponseBodyCase2RecordsItem",
-}) as any as S.Schema<GetRecordsResponseBodyCase2RecordsItem>;
+export const GetRecordsResponseBodyCase2RecordsItem =
+  GetRecordsResponseBodyCase1RecordsItem as any as S.Schema<GetRecordsResponseBodyCase2RecordsItem>;
 
 export type GetRecordsResponseBodyCase2RecordsList = Array<GetRecordsResponseBodyCase2RecordsItem>;
-export const GetRecordsResponseBodyCase2RecordsList = /*@__PURE__*/ S.Array(
-  GetRecordsResponseBodyCase2RecordsItem,
-) as any as S.Schema<GetRecordsResponseBodyCase2RecordsList>;
+export const GetRecordsResponseBodyCase2RecordsList =
+  GetRecordsResponseBodyCase1RecordsList as any as S.Schema<GetRecordsResponseBodyCase2RecordsList>;
 
 /** Successful response retrieving a list of paginated DNS records. */
 export interface GetRecordsResponseBodyCase2 {
@@ -529,20 +510,8 @@ export interface UpdateRecordResponse {
   type: UpdateRecordResponseType;
   value: string;
 }
-export const UpdateRecordResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    comment: S.optional(S.String),
-    createdAt: S.optional(S.NullOr(S.Number)),
-    creator: S.String,
-    domain: S.String,
-    id: S.String,
-    name: S.String,
-    recordType: UpdateRecordResponseRecordType,
-    ttl: S.optional(S.Number),
-    type: UpdateRecordResponseType,
-    value: S.String,
-  }),
-).annotate({ identifier: "UpdateRecordResponse" }) as any as S.Schema<UpdateRecordResponse>;
+export const UpdateRecordResponse =
+  GetDomainsRecordResponse as any as S.Schema<UpdateRecordResponse>;
 
 export type CreateRecordError =
   | BadRequest

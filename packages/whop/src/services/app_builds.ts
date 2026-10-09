@@ -138,9 +138,8 @@ export type AppBuildSupportedAppViewTypesItem =
 export const AppBuildSupportedAppViewTypesItem = S.String;
 
 export type AppBuildSupportedAppViewTypesList = Array<AppBuildSupportedAppViewTypesItem>;
-export const AppBuildSupportedAppViewTypesList = /*@__PURE__*/ S.Array(
-  AppBuildSupportedAppViewTypesItem,
-) as any as S.Schema<AppBuildSupportedAppViewTypesList>;
+export const AppBuildSupportedAppViewTypesList =
+  CreateAppBuildRequestSupportedAppViewTypesList as any as S.Schema<AppBuildSupportedAppViewTypesList>;
 
 export interface AppBuild {
   /** Client-generated checksum of the build file, used to verify file integrity. */

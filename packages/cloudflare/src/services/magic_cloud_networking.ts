@@ -1334,43 +1334,14 @@ export interface OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenI
   title: string;
 }
 export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
 
 export interface OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
 }
 export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
 
 export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
@@ -1545,43 +1516,14 @@ export interface OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisible
   title: string;
 }
 export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview>;
 
 export interface OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview;
 }
 export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem>;
 
 export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
@@ -1666,43 +1608,14 @@ export interface OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisible
   title: string;
 }
 export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
 
 export interface OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
 }
 export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
 
 export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
@@ -2134,25 +2047,14 @@ export interface OnRampsCreateResponseStatusLifecycleErrorsValue {
   meta?: CatalogSyncsCreateResponseErrorsValueMeta | null;
   source?: CatalogSyncsCreateResponseErrorsValueSource | null;
 }
-export const OnRampsCreateResponseStatusLifecycleErrorsValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: OnRampsCreateResponseStatusLifecycleErrorsValueCode,
-    message: S.String,
-    documentationUrl: S.optional(S.NullOr(S.String).pipe(T.Body("documentation_url"))),
-    meta: S.optional(S.NullOr(CatalogSyncsCreateResponseErrorsValueMeta)),
-    source: S.optional(S.NullOr(CatalogSyncsCreateResponseErrorsValueSource)),
-  }),
-).annotate({
-  identifier: "OnRampsCreateResponseStatusLifecycleErrorsValue",
-}) as any as S.Schema<OnRampsCreateResponseStatusLifecycleErrorsValue>;
+export const OnRampsCreateResponseStatusLifecycleErrorsValue =
+  CatalogSyncsCreateResponseErrorsValue as any as S.Schema<OnRampsCreateResponseStatusLifecycleErrorsValue>;
 
 export type OnRampsCreateResponseStatusLifecycleErrorsMap = {
   [key: string]: OnRampsCreateResponseStatusLifecycleErrorsValue | undefined;
 };
-export const OnRampsCreateResponseStatusLifecycleErrorsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  OnRampsCreateResponseStatusLifecycleErrorsValue,
-) as any as S.Schema<OnRampsCreateResponseStatusLifecycleErrorsMap>;
+export const OnRampsCreateResponseStatusLifecycleErrorsMap =
+  CatalogSyncsCreateResponseErrorsMap as any as S.Schema<OnRampsCreateResponseStatusLifecycleErrorsMap>;
 
 export interface OnRampsCreateResponseStatus {
   applyProgress: OnRampsCreateResponseStatusApplyProgress;
@@ -2368,43 +2270,14 @@ export interface OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemVa
   title: string;
 }
 export const OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview>;
 
 export interface OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview;
 }
 export const OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem>;
 
 export type OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
@@ -2489,43 +2362,14 @@ export interface OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemVa
   title: string;
 }
 export const OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
 
 export interface OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
 }
 export const OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
 
 export type OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
@@ -2698,43 +2542,14 @@ export interface OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemV
   title: string;
 }
 export const OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview>;
 
 export interface OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview;
 }
 export const OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem>;
 
 export type OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
@@ -2819,43 +2634,14 @@ export interface OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemV
   title: string;
 }
 export const OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
 
 export interface OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
 }
 export const OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
 
 export type OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
@@ -2973,23 +2759,13 @@ export interface OnRampsCreateResponseVpcsByIdValueManagedByItem {
   clientType: OnRampsCreateResponseVpcsByIdValueManagedByItemClientType;
   name: string;
 }
-export const OnRampsCreateResponseVpcsByIdValueManagedByItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    clientType: OnRampsCreateResponseVpcsByIdValueManagedByItemClientType.pipe(
-      T.Body("client_type"),
-    ),
-    name: S.String,
-  }),
-).annotate({
-  identifier: "OnRampsCreateResponseVpcsByIdValueManagedByItem",
-}) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueManagedByItem>;
+export const OnRampsCreateResponseVpcsByIdValueManagedByItem =
+  CloudIntegrationsCreateResponseStatusInUseByItem as any as S.Schema<OnRampsCreateResponseVpcsByIdValueManagedByItem>;
 
 export type OnRampsCreateResponseVpcsByIdValueManagedByList =
   Array<OnRampsCreateResponseVpcsByIdValueManagedByItem>;
-export const OnRampsCreateResponseVpcsByIdValueManagedByList = /*@__PURE__*/ S.Array(
-  OnRampsCreateResponseVpcsByIdValueManagedByItem,
-) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueManagedByList>;
+export const OnRampsCreateResponseVpcsByIdValueManagedByList =
+  CloudIntegrationsCreateResponseStatusInUseByList as any as S.Schema<OnRampsCreateResponseVpcsByIdValueManagedByList>;
 
 export interface OnRampsCreateResponseVpcsByIdValue {
   id: string;
@@ -3633,25 +3409,14 @@ export interface CatalogSyncsGetResponseErrorsValue {
   meta?: CatalogSyncsCreateResponseErrorsValueMeta | null;
   source?: CatalogSyncsCreateResponseErrorsValueSource | null;
 }
-export const CatalogSyncsGetResponseErrorsValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: CatalogSyncsGetResponseErrorsValueCode,
-    message: S.String,
-    documentationUrl: S.optional(S.NullOr(S.String).pipe(T.Body("documentation_url"))),
-    meta: S.optional(S.NullOr(CatalogSyncsCreateResponseErrorsValueMeta)),
-    source: S.optional(S.NullOr(CatalogSyncsCreateResponseErrorsValueSource)),
-  }),
-).annotate({
-  identifier: "CatalogSyncsGetResponseErrorsValue",
-}) as any as S.Schema<CatalogSyncsGetResponseErrorsValue>;
+export const CatalogSyncsGetResponseErrorsValue =
+  CatalogSyncsCreateResponseErrorsValue as any as S.Schema<CatalogSyncsGetResponseErrorsValue>;
 
 export type CatalogSyncsGetResponseErrorsMap = {
   [key: string]: CatalogSyncsGetResponseErrorsValue | undefined;
 };
-export const CatalogSyncsGetResponseErrorsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  CatalogSyncsGetResponseErrorsValue,
-) as any as S.Schema<CatalogSyncsGetResponseErrorsMap>;
+export const CatalogSyncsGetResponseErrorsMap =
+  CatalogSyncsCreateResponseErrorsMap as any as S.Schema<CatalogSyncsGetResponseErrorsMap>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetCatalogSyncResponse {
@@ -4281,43 +4046,14 @@ export interface OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItem
   title: string;
 }
 export const OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview>;
 
 export interface OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview;
 }
 export const OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem>;
 
 export type OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
@@ -4402,43 +4138,14 @@ export interface OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItem
   title: string;
 }
 export const OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
 
 export interface OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
 }
 export const OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
 
 export type OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
@@ -4613,43 +4320,14 @@ export interface OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleIte
   title: string;
 }
 export const OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview>;
 
 export interface OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview;
 }
 export const OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem>;
 
 export type OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
@@ -4734,43 +4412,14 @@ export interface OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleIte
   title: string;
 }
 export const OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
 
 export interface OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
 }
 export const OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
 
 export type OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
@@ -4895,23 +4544,13 @@ export interface OnRampsGetResponsePostApplyResourcesValueManagedByItem {
   clientType: OnRampsGetResponsePostApplyResourcesValueManagedByItemClientType;
   name: string;
 }
-export const OnRampsGetResponsePostApplyResourcesValueManagedByItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    clientType: OnRampsGetResponsePostApplyResourcesValueManagedByItemClientType.pipe(
-      T.Body("client_type"),
-    ),
-    name: S.String,
-  }),
-).annotate({
-  identifier: "OnRampsGetResponsePostApplyResourcesValueManagedByItem",
-}) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueManagedByItem>;
+export const OnRampsGetResponsePostApplyResourcesValueManagedByItem =
+  CloudIntegrationsCreateResponseStatusInUseByItem as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueManagedByItem>;
 
 export type OnRampsGetResponsePostApplyResourcesValueManagedByList =
   Array<OnRampsGetResponsePostApplyResourcesValueManagedByItem>;
-export const OnRampsGetResponsePostApplyResourcesValueManagedByList = /*@__PURE__*/ S.Array(
-  OnRampsGetResponsePostApplyResourcesValueManagedByItem,
-) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueManagedByList>;
+export const OnRampsGetResponsePostApplyResourcesValueManagedByList =
+  CloudIntegrationsCreateResponseStatusInUseByList as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueManagedByList>;
 
 export interface OnRampsGetResponsePostApplyResourcesValue {
   id: string;
@@ -5186,25 +4825,14 @@ export interface OnRampsGetResponseStatusLifecycleErrorsValue {
   meta?: CatalogSyncsCreateResponseErrorsValueMeta | null;
   source?: CatalogSyncsCreateResponseErrorsValueSource | null;
 }
-export const OnRampsGetResponseStatusLifecycleErrorsValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: OnRampsGetResponseStatusLifecycleErrorsValueCode,
-    message: S.String,
-    documentationUrl: S.optional(S.NullOr(S.String).pipe(T.Body("documentation_url"))),
-    meta: S.optional(S.NullOr(CatalogSyncsCreateResponseErrorsValueMeta)),
-    source: S.optional(S.NullOr(CatalogSyncsCreateResponseErrorsValueSource)),
-  }),
-).annotate({
-  identifier: "OnRampsGetResponseStatusLifecycleErrorsValue",
-}) as any as S.Schema<OnRampsGetResponseStatusLifecycleErrorsValue>;
+export const OnRampsGetResponseStatusLifecycleErrorsValue =
+  CatalogSyncsCreateResponseErrorsValue as any as S.Schema<OnRampsGetResponseStatusLifecycleErrorsValue>;
 
 export type OnRampsGetResponseStatusLifecycleErrorsMap = {
   [key: string]: OnRampsGetResponseStatusLifecycleErrorsValue | undefined;
 };
-export const OnRampsGetResponseStatusLifecycleErrorsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  OnRampsGetResponseStatusLifecycleErrorsValue,
-) as any as S.Schema<OnRampsGetResponseStatusLifecycleErrorsMap>;
+export const OnRampsGetResponseStatusLifecycleErrorsMap =
+  CatalogSyncsCreateResponseErrorsMap as any as S.Schema<OnRampsGetResponseStatusLifecycleErrorsMap>;
 
 export interface OnRampsGetResponseStatus {
   applyProgress: OnRampsCreateResponseStatusApplyProgress;
@@ -5418,43 +5046,14 @@ export interface OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValue
   title: string;
 }
 export const OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview>;
 
 export interface OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview;
 }
 export const OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem>;
 
 export type OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
@@ -5539,43 +5138,14 @@ export interface OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValue
   title: string;
 }
 export const OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
 
 export interface OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
 }
 export const OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
 
 export type OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
@@ -5746,43 +5316,14 @@ export interface OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValu
   title: string;
 }
 export const OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview>;
 
 export interface OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview;
 }
 export const OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem>;
 
 export type OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
@@ -5867,43 +5408,14 @@ export interface OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValu
   title: string;
 }
 export const OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
 
 export interface OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
 }
 export const OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
 
 export type OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
@@ -6019,21 +5531,13 @@ export interface OnRampsGetResponseVpcsByIdValueManagedByItem {
   clientType: OnRampsGetResponseVpcsByIdValueManagedByItemClientType;
   name: string;
 }
-export const OnRampsGetResponseVpcsByIdValueManagedByItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    clientType: OnRampsGetResponseVpcsByIdValueManagedByItemClientType.pipe(T.Body("client_type")),
-    name: S.String,
-  }),
-).annotate({
-  identifier: "OnRampsGetResponseVpcsByIdValueManagedByItem",
-}) as any as S.Schema<OnRampsGetResponseVpcsByIdValueManagedByItem>;
+export const OnRampsGetResponseVpcsByIdValueManagedByItem =
+  CloudIntegrationsGetResponseStatusInUseByItem as any as S.Schema<OnRampsGetResponseVpcsByIdValueManagedByItem>;
 
 export type OnRampsGetResponseVpcsByIdValueManagedByList =
   Array<OnRampsGetResponseVpcsByIdValueManagedByItem>;
-export const OnRampsGetResponseVpcsByIdValueManagedByList = /*@__PURE__*/ S.Array(
-  OnRampsGetResponseVpcsByIdValueManagedByItem,
-) as any as S.Schema<OnRampsGetResponseVpcsByIdValueManagedByList>;
+export const OnRampsGetResponseVpcsByIdValueManagedByList =
+  CloudIntegrationsGetResponseStatusInUseByList as any as S.Schema<OnRampsGetResponseVpcsByIdValueManagedByList>;
 
 export interface OnRampsGetResponseVpcsByIdValue {
   id: string;
@@ -6407,25 +5911,7 @@ export interface ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnResource
   title: string;
 }
 export const ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview>;
 
 export interface ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnResourcePreviewItem {
   itemType: string;
@@ -6527,43 +6013,14 @@ export interface ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItem
   title: string;
 }
 export const ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
 
 export interface ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
 }
 export const ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
-  }) as any as S.Schema<ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
 
 export type ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItem =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
@@ -6732,42 +6189,14 @@ export interface ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnResourc
   title: string;
 }
 export const ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview>;
 
 export interface ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview;
 }
 export const ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier: "ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnResourcePreviewItem",
-  }) as any as S.Schema<ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnResourcePreviewItem>;
+  ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnResourcePreviewItem>;
 
 export type ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
@@ -6852,43 +6281,14 @@ export interface ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListIte
   title: string;
 }
 export const ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
 
 export interface ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
 }
 export const ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
-  }) as any as S.Schema<ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
 
 export type ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItem =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
@@ -6997,20 +6397,12 @@ export interface ResourcesGetResponseManagedByItem {
   clientType: ResourcesGetResponseManagedByItemClientType;
   name: string;
 }
-export const ResourcesGetResponseManagedByItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    clientType: ResourcesGetResponseManagedByItemClientType.pipe(T.Body("client_type")),
-    name: S.String,
-  }),
-).annotate({
-  identifier: "ResourcesGetResponseManagedByItem",
-}) as any as S.Schema<ResourcesGetResponseManagedByItem>;
+export const ResourcesGetResponseManagedByItem =
+  CloudIntegrationsGetResponseStatusInUseByItem as any as S.Schema<ResourcesGetResponseManagedByItem>;
 
 export type ResourcesGetResponseManagedByList = Array<ResourcesGetResponseManagedByItem>;
-export const ResourcesGetResponseManagedByList = /*@__PURE__*/ S.Array(
-  ResourcesGetResponseManagedByItem,
-) as any as S.Schema<ResourcesGetResponseManagedByList>;
+export const ResourcesGetResponseManagedByList =
+  CloudIntegrationsGetResponseStatusInUseByList as any as S.Schema<ResourcesGetResponseManagedByList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetResourceResponse {
@@ -7426,25 +6818,14 @@ export interface CatalogSyncsListResultItemErrorsValue {
   meta?: CatalogSyncsCreateResponseErrorsValueMeta | null;
   source?: CatalogSyncsCreateResponseErrorsValueSource | null;
 }
-export const CatalogSyncsListResultItemErrorsValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: CatalogSyncsListResultItemErrorsValueCode,
-    message: S.String,
-    documentationUrl: S.optional(S.NullOr(S.String).pipe(T.Body("documentation_url"))),
-    meta: S.optional(S.NullOr(CatalogSyncsCreateResponseErrorsValueMeta)),
-    source: S.optional(S.NullOr(CatalogSyncsCreateResponseErrorsValueSource)),
-  }),
-).annotate({
-  identifier: "CatalogSyncsListResultItemErrorsValue",
-}) as any as S.Schema<CatalogSyncsListResultItemErrorsValue>;
+export const CatalogSyncsListResultItemErrorsValue =
+  CatalogSyncsCreateResponseErrorsValue as any as S.Schema<CatalogSyncsListResultItemErrorsValue>;
 
 export type CatalogSyncsListResultItemErrorsMap = {
   [key: string]: CatalogSyncsListResultItemErrorsValue | undefined;
 };
-export const CatalogSyncsListResultItemErrorsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  CatalogSyncsListResultItemErrorsValue,
-) as any as S.Schema<CatalogSyncsListResultItemErrorsMap>;
+export const CatalogSyncsListResultItemErrorsMap =
+  CatalogSyncsCreateResponseErrorsMap as any as S.Schema<CatalogSyncsListResultItemErrorsMap>;
 
 export interface CatalogSyncsListResultItem {
   id: string;
@@ -7583,23 +6964,13 @@ export interface CloudIntegrationsListResultItemStatusInUseByItem {
   clientType: CloudIntegrationsListResultItemStatusInUseByItemClientType;
   name: string;
 }
-export const CloudIntegrationsListResultItemStatusInUseByItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    clientType: CloudIntegrationsListResultItemStatusInUseByItemClientType.pipe(
-      T.Body("client_type"),
-    ),
-    name: S.String,
-  }),
-).annotate({
-  identifier: "CloudIntegrationsListResultItemStatusInUseByItem",
-}) as any as S.Schema<CloudIntegrationsListResultItemStatusInUseByItem>;
+export const CloudIntegrationsListResultItemStatusInUseByItem =
+  CloudIntegrationsCreateResponseStatusInUseByItem as any as S.Schema<CloudIntegrationsListResultItemStatusInUseByItem>;
 
 export type CloudIntegrationsListResultItemStatusInUseByList =
   Array<CloudIntegrationsListResultItemStatusInUseByItem>;
-export const CloudIntegrationsListResultItemStatusInUseByList = /*@__PURE__*/ S.Array(
-  CloudIntegrationsListResultItemStatusInUseByItem,
-) as any as S.Schema<CloudIntegrationsListResultItemStatusInUseByList>;
+export const CloudIntegrationsListResultItemStatusInUseByList =
+  CloudIntegrationsCreateResponseStatusInUseByList as any as S.Schema<CloudIntegrationsListResultItemStatusInUseByList>;
 
 export interface CloudIntegrationsListResultItemStatus {
   discoveryProgress: CloudIntegrationsCreateResponseStatusDiscoveryProgress;
@@ -7894,22 +7265,8 @@ export interface OnRampsListResultItemPlannedResourcesItemResource {
   resourceType: OnRampsListResultItemPlannedResourcesItemResourceResourceType;
   title: string;
 }
-export const OnRampsListResultItemPlannedResourcesItemResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    cloudType: OnRampsListResultItemPlannedResourcesItemResourceCloudType.pipe(
-      T.Body("cloud_type"),
-    ),
-    detail: S.String,
-    name: S.String,
-    resourceType: OnRampsListResultItemPlannedResourcesItemResourceResourceType.pipe(
-      T.Body("resource_type"),
-    ),
-    title: S.String,
-  }),
-).annotate({
-  identifier: "OnRampsListResultItemPlannedResourcesItemResource",
-}) as any as S.Schema<OnRampsListResultItemPlannedResourcesItemResource>;
+export const OnRampsListResultItemPlannedResourcesItemResource =
+  OnRampsCreateResponsePlannedResourcesItemResource as any as S.Schema<OnRampsListResultItemPlannedResourcesItemResource>;
 
 export interface OnRampsListResultItemPlannedResourcesItem {
   diff: OnRampsCreateResponsePlannedResourcesItemDiff;
@@ -8144,43 +7501,14 @@ export interface OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenI
   title: string;
 }
 export const OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview>;
 
 export interface OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview;
 }
 export const OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem>;
 
 export type OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
@@ -8265,43 +7593,14 @@ export interface OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenI
   title: string;
 }
 export const OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
 
 export interface OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
 }
 export const OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
 
 export type OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
@@ -8476,43 +7775,14 @@ export interface OnRampsListResultItemPostApplyResourcesValueSectionsItemVisible
   title: string;
 }
 export const OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview>;
 
 export interface OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview;
 }
 export const OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem>;
 
 export type OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
@@ -8597,43 +7867,14 @@ export interface OnRampsListResultItemPostApplyResourcesValueSectionsItemVisible
   title: string;
 }
 export const OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
 
 export interface OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
 }
 export const OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
 
 export type OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
@@ -8759,24 +8000,13 @@ export interface OnRampsListResultItemPostApplyResourcesValueManagedByItem {
   clientType: OnRampsListResultItemPostApplyResourcesValueManagedByItemClientType;
   name: string;
 }
-export const OnRampsListResultItemPostApplyResourcesValueManagedByItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      clientType: OnRampsListResultItemPostApplyResourcesValueManagedByItemClientType.pipe(
-        T.Body("client_type"),
-      ),
-      name: S.String,
-    }),
-).annotate({
-  identifier: "OnRampsListResultItemPostApplyResourcesValueManagedByItem",
-}) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueManagedByItem>;
+export const OnRampsListResultItemPostApplyResourcesValueManagedByItem =
+  OnRampsCreateResponsePostApplyResourcesValueManagedByItem as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueManagedByItem>;
 
 export type OnRampsListResultItemPostApplyResourcesValueManagedByList =
   Array<OnRampsListResultItemPostApplyResourcesValueManagedByItem>;
-export const OnRampsListResultItemPostApplyResourcesValueManagedByList = /*@__PURE__*/ S.Array(
-  OnRampsListResultItemPostApplyResourcesValueManagedByItem,
-) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueManagedByList>;
+export const OnRampsListResultItemPostApplyResourcesValueManagedByList =
+  OnRampsCreateResponsePostApplyResourcesValueManagedByList as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueManagedByList>;
 
 export interface OnRampsListResultItemPostApplyResourcesValue {
   id: string;
@@ -9053,25 +8283,14 @@ export interface OnRampsListResultItemStatusLifecycleErrorsValue {
   meta?: CatalogSyncsCreateResponseErrorsValueMeta | null;
   source?: CatalogSyncsCreateResponseErrorsValueSource | null;
 }
-export const OnRampsListResultItemStatusLifecycleErrorsValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: OnRampsListResultItemStatusLifecycleErrorsValueCode,
-    message: S.String,
-    documentationUrl: S.optional(S.NullOr(S.String).pipe(T.Body("documentation_url"))),
-    meta: S.optional(S.NullOr(CatalogSyncsCreateResponseErrorsValueMeta)),
-    source: S.optional(S.NullOr(CatalogSyncsCreateResponseErrorsValueSource)),
-  }),
-).annotate({
-  identifier: "OnRampsListResultItemStatusLifecycleErrorsValue",
-}) as any as S.Schema<OnRampsListResultItemStatusLifecycleErrorsValue>;
+export const OnRampsListResultItemStatusLifecycleErrorsValue =
+  CatalogSyncsCreateResponseErrorsValue as any as S.Schema<OnRampsListResultItemStatusLifecycleErrorsValue>;
 
 export type OnRampsListResultItemStatusLifecycleErrorsMap = {
   [key: string]: OnRampsListResultItemStatusLifecycleErrorsValue | undefined;
 };
-export const OnRampsListResultItemStatusLifecycleErrorsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  OnRampsListResultItemStatusLifecycleErrorsValue,
-) as any as S.Schema<OnRampsListResultItemStatusLifecycleErrorsMap>;
+export const OnRampsListResultItemStatusLifecycleErrorsMap =
+  CatalogSyncsCreateResponseErrorsMap as any as S.Schema<OnRampsListResultItemStatusLifecycleErrorsMap>;
 
 export interface OnRampsListResultItemStatus {
   applyProgress: OnRampsCreateResponseStatusApplyProgress;
@@ -9287,43 +8506,14 @@ export interface OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemVa
   title: string;
 }
 export const OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview>;
 
 export interface OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview;
 }
 export const OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem>;
 
 export type OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
@@ -9408,43 +8598,14 @@ export interface OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemVa
   title: string;
 }
 export const OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
 
 export interface OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
 }
 export const OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
 
 export type OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
@@ -9617,43 +8778,14 @@ export interface OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemV
   title: string;
 }
 export const OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview>;
 
 export interface OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview;
 }
 export const OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem>;
 
 export type OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
@@ -9738,43 +8870,14 @@ export interface OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemV
   title: string;
 }
 export const OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
 
 export interface OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
 }
 export const OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
 
 export type OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
@@ -9892,23 +8995,13 @@ export interface OnRampsListResultItemVpcsByIdValueManagedByItem {
   clientType: OnRampsListResultItemVpcsByIdValueManagedByItemClientType;
   name: string;
 }
-export const OnRampsListResultItemVpcsByIdValueManagedByItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    clientType: OnRampsListResultItemVpcsByIdValueManagedByItemClientType.pipe(
-      T.Body("client_type"),
-    ),
-    name: S.String,
-  }),
-).annotate({
-  identifier: "OnRampsListResultItemVpcsByIdValueManagedByItem",
-}) as any as S.Schema<OnRampsListResultItemVpcsByIdValueManagedByItem>;
+export const OnRampsListResultItemVpcsByIdValueManagedByItem =
+  CloudIntegrationsCreateResponseStatusInUseByItem as any as S.Schema<OnRampsListResultItemVpcsByIdValueManagedByItem>;
 
 export type OnRampsListResultItemVpcsByIdValueManagedByList =
   Array<OnRampsListResultItemVpcsByIdValueManagedByItem>;
-export const OnRampsListResultItemVpcsByIdValueManagedByList = /*@__PURE__*/ S.Array(
-  OnRampsListResultItemVpcsByIdValueManagedByItem,
-) as any as S.Schema<OnRampsListResultItemVpcsByIdValueManagedByList>;
+export const OnRampsListResultItemVpcsByIdValueManagedByList =
+  CloudIntegrationsCreateResponseStatusInUseByList as any as S.Schema<OnRampsListResultItemVpcsByIdValueManagedByList>;
 
 export interface OnRampsListResultItemVpcsByIdValue {
   id: string;
@@ -10156,9 +9249,8 @@ export const ResourcesListRequestResourceType = S.String;
 export type ResourcesListRequestResourceTypeList = Array<
   ResourcesListRequestResourceType | (string & {})
 >;
-export const ResourcesListRequestResourceTypeList = /*@__PURE__*/ S.Array(
-  ResourcesListRequestResourceType,
-) as any as S.Schema<ResourcesListRequestResourceTypeList>;
+export const ResourcesListRequestResourceTypeList =
+  ResourcesExportRequestResourceTypeList as any as S.Schema<ResourcesListRequestResourceTypeList>;
 
 export type ResourcesListRequestSearchList = Array<string>;
 export const ResourcesListRequestSearchList =
@@ -10391,42 +9483,14 @@ export interface ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnResou
   title: string;
 }
 export const ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview>;
 
 export interface ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview;
 }
 export const ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier: "ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnResourcePreviewItem",
-  }) as any as S.Schema<ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnResourcePreviewItem>;
+  ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnResourcePreviewItem>;
 
 export type ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
@@ -10511,43 +9575,14 @@ export interface ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListI
   title: string;
 }
 export const ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
 
 export interface ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
 }
 export const ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
-  }) as any as S.Schema<ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
 
 export type ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItem =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
@@ -10716,42 +9751,14 @@ export interface ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnReso
   title: string;
 }
 export const ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview>;
 
 export interface ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview;
 }
 export const ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier: "ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnResourcePreviewItem",
-  }) as any as S.Schema<ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnResourcePreviewItem>;
+  ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnResourcePreviewItem>;
 
 export type ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
@@ -10836,43 +9843,14 @@ export interface ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnList
   title: string;
 }
 export const ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
 
 export interface ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
 }
 export const ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
-  }) as any as S.Schema<ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
 
 export type ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItem =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
@@ -10982,20 +9960,12 @@ export interface ResourcesListResultItemManagedByItem {
   clientType: ResourcesListResultItemManagedByItemClientType;
   name: string;
 }
-export const ResourcesListResultItemManagedByItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    clientType: ResourcesListResultItemManagedByItemClientType.pipe(T.Body("client_type")),
-    name: S.String,
-  }),
-).annotate({
-  identifier: "ResourcesListResultItemManagedByItem",
-}) as any as S.Schema<ResourcesListResultItemManagedByItem>;
+export const ResourcesListResultItemManagedByItem =
+  CloudIntegrationsGetResponseStatusInUseByItem as any as S.Schema<ResourcesListResultItemManagedByItem>;
 
 export type ResourcesListResultItemManagedByList = Array<ResourcesListResultItemManagedByItem>;
-export const ResourcesListResultItemManagedByList = /*@__PURE__*/ S.Array(
-  ResourcesListResultItemManagedByItem,
-) as any as S.Schema<ResourcesListResultItemManagedByList>;
+export const ResourcesListResultItemManagedByList =
+  CloudIntegrationsGetResponseStatusInUseByList as any as S.Schema<ResourcesListResultItemManagedByList>;
 
 export interface ResourcesListResultItem {
   id: string;
@@ -11278,25 +10248,14 @@ export interface CatalogSyncsEditResponseErrorsValue {
   meta?: CatalogSyncsCreateResponseErrorsValueMeta | null;
   source?: CatalogSyncsCreateResponseErrorsValueSource | null;
 }
-export const CatalogSyncsEditResponseErrorsValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: CatalogSyncsEditResponseErrorsValueCode,
-    message: S.String,
-    documentationUrl: S.optional(S.NullOr(S.String).pipe(T.Body("documentation_url"))),
-    meta: S.optional(S.NullOr(CatalogSyncsCreateResponseErrorsValueMeta)),
-    source: S.optional(S.NullOr(CatalogSyncsCreateResponseErrorsValueSource)),
-  }),
-).annotate({
-  identifier: "CatalogSyncsEditResponseErrorsValue",
-}) as any as S.Schema<CatalogSyncsEditResponseErrorsValue>;
+export const CatalogSyncsEditResponseErrorsValue =
+  CatalogSyncsCreateResponseErrorsValue as any as S.Schema<CatalogSyncsEditResponseErrorsValue>;
 
 export type CatalogSyncsEditResponseErrorsMap = {
   [key: string]: CatalogSyncsEditResponseErrorsValue | undefined;
 };
-export const CatalogSyncsEditResponseErrorsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  CatalogSyncsEditResponseErrorsValue,
-) as any as S.Schema<CatalogSyncsEditResponseErrorsMap>;
+export const CatalogSyncsEditResponseErrorsMap =
+  CatalogSyncsCreateResponseErrorsMap as any as S.Schema<CatalogSyncsEditResponseErrorsMap>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchCatalogSyncResponse {
@@ -11313,26 +10272,8 @@ export interface PatchCatalogSyncResponse {
   lastAttemptedUpdateAt?: string | null;
   lastSuccessfulUpdateAt?: string | null;
 }
-export const PatchCatalogSyncResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    description: S.String,
-    destinationId: S.String.pipe(T.Body("destination_id")),
-    destinationType: CatalogSyncsEditResponseDestinationType.pipe(T.Body("destination_type")),
-    lastUserUpdateAt: S.String.pipe(T.Body("last_user_update_at")),
-    name: S.String,
-    policy: S.String,
-    updateMode: CatalogSyncsEditResponseUpdateMode.pipe(T.Body("update_mode")),
-    errors: S.optional(S.NullOr(CatalogSyncsEditResponseErrorsMap)),
-    includesDiscoveriesUntil: S.optional(
-      S.NullOr(S.String).pipe(T.Body("includes_discoveries_until")),
-    ),
-    lastAttemptedUpdateAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_attempted_update_at"))),
-    lastSuccessfulUpdateAt: S.optional(
-      S.NullOr(S.String).pipe(T.Body("last_successful_update_at")),
-    ),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "PatchCatalogSyncResponse" }) as any as S.Schema<PatchCatalogSyncResponse>;
+export const PatchCatalogSyncResponse =
+  GetCatalogSyncResponse as any as S.Schema<PatchCatalogSyncResponse>;
 
 export interface PatchCloudIntegrationRequest {
   accountId: string;
@@ -11429,23 +10370,13 @@ export interface CloudIntegrationsEditResponseStatusInUseByItem {
   clientType: CloudIntegrationsEditResponseStatusInUseByItemClientType;
   name: string;
 }
-export const CloudIntegrationsEditResponseStatusInUseByItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    clientType: CloudIntegrationsEditResponseStatusInUseByItemClientType.pipe(
-      T.Body("client_type"),
-    ),
-    name: S.String,
-  }),
-).annotate({
-  identifier: "CloudIntegrationsEditResponseStatusInUseByItem",
-}) as any as S.Schema<CloudIntegrationsEditResponseStatusInUseByItem>;
+export const CloudIntegrationsEditResponseStatusInUseByItem =
+  CloudIntegrationsCreateResponseStatusInUseByItem as any as S.Schema<CloudIntegrationsEditResponseStatusInUseByItem>;
 
 export type CloudIntegrationsEditResponseStatusInUseByList =
   Array<CloudIntegrationsEditResponseStatusInUseByItem>;
-export const CloudIntegrationsEditResponseStatusInUseByList = /*@__PURE__*/ S.Array(
-  CloudIntegrationsEditResponseStatusInUseByItem,
-) as any as S.Schema<CloudIntegrationsEditResponseStatusInUseByList>;
+export const CloudIntegrationsEditResponseStatusInUseByList =
+  CloudIntegrationsCreateResponseStatusInUseByList as any as S.Schema<CloudIntegrationsEditResponseStatusInUseByList>;
 
 export interface CloudIntegrationsEditResponseStatus {
   discoveryProgress: CloudIntegrationsCreateResponseStatusDiscoveryProgress;
@@ -11711,20 +10642,8 @@ export interface OnRampsEditResponsePlannedResourcesItemResource {
   resourceType: OnRampsEditResponsePlannedResourcesItemResourceResourceType;
   title: string;
 }
-export const OnRampsEditResponsePlannedResourcesItemResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    cloudType: OnRampsEditResponsePlannedResourcesItemResourceCloudType.pipe(T.Body("cloud_type")),
-    detail: S.String,
-    name: S.String,
-    resourceType: OnRampsEditResponsePlannedResourcesItemResourceResourceType.pipe(
-      T.Body("resource_type"),
-    ),
-    title: S.String,
-  }),
-).annotate({
-  identifier: "OnRampsEditResponsePlannedResourcesItemResource",
-}) as any as S.Schema<OnRampsEditResponsePlannedResourcesItemResource>;
+export const OnRampsEditResponsePlannedResourcesItemResource =
+  OnRampsGetResponsePlannedResourcesItemResource as any as S.Schema<OnRampsEditResponsePlannedResourcesItemResource>;
 
 export interface OnRampsEditResponsePlannedResourcesItem {
   diff: OnRampsCreateResponsePlannedResourcesItemDiff;
@@ -11959,43 +10878,14 @@ export interface OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenIte
   title: string;
 }
 export const OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview>;
 
 export interface OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview;
 }
 export const OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem>;
 
 export type OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
@@ -12080,43 +10970,14 @@ export interface OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenIte
   title: string;
 }
 export const OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
 
 export interface OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
 }
 export const OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
 
 export type OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
@@ -12291,43 +11152,14 @@ export interface OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleIt
   title: string;
 }
 export const OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview>;
 
 export interface OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview;
 }
 export const OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem>;
 
 export type OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
@@ -12412,43 +11244,14 @@ export interface OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleIt
   title: string;
 }
 export const OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
 
 export interface OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
 }
 export const OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
 
 export type OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
@@ -12573,23 +11376,13 @@ export interface OnRampsEditResponsePostApplyResourcesValueManagedByItem {
   clientType: OnRampsEditResponsePostApplyResourcesValueManagedByItemClientType;
   name: string;
 }
-export const OnRampsEditResponsePostApplyResourcesValueManagedByItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    clientType: OnRampsEditResponsePostApplyResourcesValueManagedByItemClientType.pipe(
-      T.Body("client_type"),
-    ),
-    name: S.String,
-  }),
-).annotate({
-  identifier: "OnRampsEditResponsePostApplyResourcesValueManagedByItem",
-}) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueManagedByItem>;
+export const OnRampsEditResponsePostApplyResourcesValueManagedByItem =
+  CloudIntegrationsCreateResponseStatusInUseByItem as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueManagedByItem>;
 
 export type OnRampsEditResponsePostApplyResourcesValueManagedByList =
   Array<OnRampsEditResponsePostApplyResourcesValueManagedByItem>;
-export const OnRampsEditResponsePostApplyResourcesValueManagedByList = /*@__PURE__*/ S.Array(
-  OnRampsEditResponsePostApplyResourcesValueManagedByItem,
-) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueManagedByList>;
+export const OnRampsEditResponsePostApplyResourcesValueManagedByList =
+  CloudIntegrationsCreateResponseStatusInUseByList as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueManagedByList>;
 
 export interface OnRampsEditResponsePostApplyResourcesValue {
   id: string;
@@ -12864,25 +11657,14 @@ export interface OnRampsEditResponseStatusLifecycleErrorsValue {
   meta?: CatalogSyncsCreateResponseErrorsValueMeta | null;
   source?: CatalogSyncsCreateResponseErrorsValueSource | null;
 }
-export const OnRampsEditResponseStatusLifecycleErrorsValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: OnRampsEditResponseStatusLifecycleErrorsValueCode,
-    message: S.String,
-    documentationUrl: S.optional(S.NullOr(S.String).pipe(T.Body("documentation_url"))),
-    meta: S.optional(S.NullOr(CatalogSyncsCreateResponseErrorsValueMeta)),
-    source: S.optional(S.NullOr(CatalogSyncsCreateResponseErrorsValueSource)),
-  }),
-).annotate({
-  identifier: "OnRampsEditResponseStatusLifecycleErrorsValue",
-}) as any as S.Schema<OnRampsEditResponseStatusLifecycleErrorsValue>;
+export const OnRampsEditResponseStatusLifecycleErrorsValue =
+  CatalogSyncsCreateResponseErrorsValue as any as S.Schema<OnRampsEditResponseStatusLifecycleErrorsValue>;
 
 export type OnRampsEditResponseStatusLifecycleErrorsMap = {
   [key: string]: OnRampsEditResponseStatusLifecycleErrorsValue | undefined;
 };
-export const OnRampsEditResponseStatusLifecycleErrorsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  OnRampsEditResponseStatusLifecycleErrorsValue,
-) as any as S.Schema<OnRampsEditResponseStatusLifecycleErrorsMap>;
+export const OnRampsEditResponseStatusLifecycleErrorsMap =
+  CatalogSyncsCreateResponseErrorsMap as any as S.Schema<OnRampsEditResponseStatusLifecycleErrorsMap>;
 
 export interface OnRampsEditResponseStatus {
   applyProgress: OnRampsCreateResponseStatusApplyProgress;
@@ -13098,43 +11880,14 @@ export interface OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValu
   title: string;
 }
 export const OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview>;
 
 export interface OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview;
 }
 export const OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem>;
 
 export type OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
@@ -13219,43 +11972,14 @@ export interface OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValu
   title: string;
 }
 export const OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
 
 export interface OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
 }
 export const OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
 
 export type OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
@@ -13426,43 +12150,14 @@ export interface OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemVal
   title: string;
 }
 export const OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview>;
 
 export interface OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview;
 }
 export const OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem>;
 
 export type OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
@@ -13547,43 +12242,14 @@ export interface OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemVal
   title: string;
 }
 export const OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
 
 export interface OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
 }
 export const OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
 
 export type OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
@@ -13701,21 +12367,13 @@ export interface OnRampsEditResponseVpcsByIdValueManagedByItem {
   clientType: OnRampsEditResponseVpcsByIdValueManagedByItemClientType;
   name: string;
 }
-export const OnRampsEditResponseVpcsByIdValueManagedByItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    clientType: OnRampsEditResponseVpcsByIdValueManagedByItemClientType.pipe(T.Body("client_type")),
-    name: S.String,
-  }),
-).annotate({
-  identifier: "OnRampsEditResponseVpcsByIdValueManagedByItem",
-}) as any as S.Schema<OnRampsEditResponseVpcsByIdValueManagedByItem>;
+export const OnRampsEditResponseVpcsByIdValueManagedByItem =
+  CloudIntegrationsGetResponseStatusInUseByItem as any as S.Schema<OnRampsEditResponseVpcsByIdValueManagedByItem>;
 
 export type OnRampsEditResponseVpcsByIdValueManagedByList =
   Array<OnRampsEditResponseVpcsByIdValueManagedByItem>;
-export const OnRampsEditResponseVpcsByIdValueManagedByList = /*@__PURE__*/ S.Array(
-  OnRampsEditResponseVpcsByIdValueManagedByItem,
-) as any as S.Schema<OnRampsEditResponseVpcsByIdValueManagedByList>;
+export const OnRampsEditResponseVpcsByIdValueManagedByList =
+  CloudIntegrationsGetResponseStatusInUseByList as any as S.Schema<OnRampsEditResponseVpcsByIdValueManagedByList>;
 
 export interface OnRampsEditResponseVpcsByIdValue {
   id: string;
@@ -14235,25 +12893,14 @@ export interface CatalogSyncsUpdateResponseErrorsValue {
   meta?: CatalogSyncsCreateResponseErrorsValueMeta | null;
   source?: CatalogSyncsCreateResponseErrorsValueSource | null;
 }
-export const CatalogSyncsUpdateResponseErrorsValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: CatalogSyncsUpdateResponseErrorsValueCode,
-    message: S.String,
-    documentationUrl: S.optional(S.NullOr(S.String).pipe(T.Body("documentation_url"))),
-    meta: S.optional(S.NullOr(CatalogSyncsCreateResponseErrorsValueMeta)),
-    source: S.optional(S.NullOr(CatalogSyncsCreateResponseErrorsValueSource)),
-  }),
-).annotate({
-  identifier: "CatalogSyncsUpdateResponseErrorsValue",
-}) as any as S.Schema<CatalogSyncsUpdateResponseErrorsValue>;
+export const CatalogSyncsUpdateResponseErrorsValue =
+  CatalogSyncsCreateResponseErrorsValue as any as S.Schema<CatalogSyncsUpdateResponseErrorsValue>;
 
 export type CatalogSyncsUpdateResponseErrorsMap = {
   [key: string]: CatalogSyncsUpdateResponseErrorsValue | undefined;
 };
-export const CatalogSyncsUpdateResponseErrorsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  CatalogSyncsUpdateResponseErrorsValue,
-) as any as S.Schema<CatalogSyncsUpdateResponseErrorsMap>;
+export const CatalogSyncsUpdateResponseErrorsMap =
+  CatalogSyncsCreateResponseErrorsMap as any as S.Schema<CatalogSyncsUpdateResponseErrorsMap>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateCatalogSyncResponse {
@@ -14270,28 +12917,8 @@ export interface UpdateCatalogSyncResponse {
   lastAttemptedUpdateAt?: string | null;
   lastSuccessfulUpdateAt?: string | null;
 }
-export const UpdateCatalogSyncResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    description: S.String,
-    destinationId: S.String.pipe(T.Body("destination_id")),
-    destinationType: CatalogSyncsUpdateResponseDestinationType.pipe(T.Body("destination_type")),
-    lastUserUpdateAt: S.String.pipe(T.Body("last_user_update_at")),
-    name: S.String,
-    policy: S.String,
-    updateMode: CatalogSyncsUpdateResponseUpdateMode.pipe(T.Body("update_mode")),
-    errors: S.optional(S.NullOr(CatalogSyncsUpdateResponseErrorsMap)),
-    includesDiscoveriesUntil: S.optional(
-      S.NullOr(S.String).pipe(T.Body("includes_discoveries_until")),
-    ),
-    lastAttemptedUpdateAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_attempted_update_at"))),
-    lastSuccessfulUpdateAt: S.optional(
-      S.NullOr(S.String).pipe(T.Body("last_successful_update_at")),
-    ),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "UpdateCatalogSyncResponse",
-}) as any as S.Schema<UpdateCatalogSyncResponse>;
+export const UpdateCatalogSyncResponse =
+  CreateCatalogSyncResponse as any as S.Schema<UpdateCatalogSyncResponse>;
 
 export interface UpdateCloudIntegrationRequest {
   accountId: string;
@@ -14388,23 +13015,13 @@ export interface CloudIntegrationsUpdateResponseStatusInUseByItem {
   clientType: CloudIntegrationsUpdateResponseStatusInUseByItemClientType;
   name: string;
 }
-export const CloudIntegrationsUpdateResponseStatusInUseByItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    clientType: CloudIntegrationsUpdateResponseStatusInUseByItemClientType.pipe(
-      T.Body("client_type"),
-    ),
-    name: S.String,
-  }),
-).annotate({
-  identifier: "CloudIntegrationsUpdateResponseStatusInUseByItem",
-}) as any as S.Schema<CloudIntegrationsUpdateResponseStatusInUseByItem>;
+export const CloudIntegrationsUpdateResponseStatusInUseByItem =
+  CloudIntegrationsCreateResponseStatusInUseByItem as any as S.Schema<CloudIntegrationsUpdateResponseStatusInUseByItem>;
 
 export type CloudIntegrationsUpdateResponseStatusInUseByList =
   Array<CloudIntegrationsUpdateResponseStatusInUseByItem>;
-export const CloudIntegrationsUpdateResponseStatusInUseByList = /*@__PURE__*/ S.Array(
-  CloudIntegrationsUpdateResponseStatusInUseByItem,
-) as any as S.Schema<CloudIntegrationsUpdateResponseStatusInUseByList>;
+export const CloudIntegrationsUpdateResponseStatusInUseByList =
+  CloudIntegrationsCreateResponseStatusInUseByList as any as S.Schema<CloudIntegrationsUpdateResponseStatusInUseByList>;
 
 export interface CloudIntegrationsUpdateResponseStatus {
   discoveryProgress: CloudIntegrationsCreateResponseStatusDiscoveryProgress;
@@ -14670,22 +13287,8 @@ export interface OnRampsUpdateResponsePlannedResourcesItemResource {
   resourceType: OnRampsUpdateResponsePlannedResourcesItemResourceResourceType;
   title: string;
 }
-export const OnRampsUpdateResponsePlannedResourcesItemResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    cloudType: OnRampsUpdateResponsePlannedResourcesItemResourceCloudType.pipe(
-      T.Body("cloud_type"),
-    ),
-    detail: S.String,
-    name: S.String,
-    resourceType: OnRampsUpdateResponsePlannedResourcesItemResourceResourceType.pipe(
-      T.Body("resource_type"),
-    ),
-    title: S.String,
-  }),
-).annotate({
-  identifier: "OnRampsUpdateResponsePlannedResourcesItemResource",
-}) as any as S.Schema<OnRampsUpdateResponsePlannedResourcesItemResource>;
+export const OnRampsUpdateResponsePlannedResourcesItemResource =
+  OnRampsCreateResponsePlannedResourcesItemResource as any as S.Schema<OnRampsUpdateResponsePlannedResourcesItemResource>;
 
 export interface OnRampsUpdateResponsePlannedResourcesItem {
   diff: OnRampsCreateResponsePlannedResourcesItemDiff;
@@ -14920,43 +13523,14 @@ export interface OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenI
   title: string;
 }
 export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview>;
 
 export interface OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview;
 }
 export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem>;
 
 export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
@@ -15041,43 +13615,14 @@ export interface OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenI
   title: string;
 }
 export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
 
 export interface OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
 }
 export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
 
 export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
@@ -15252,43 +13797,14 @@ export interface OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisible
   title: string;
 }
 export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview>;
 
 export interface OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview;
 }
 export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem>;
 
 export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
@@ -15373,43 +13889,14 @@ export interface OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisible
   title: string;
 }
 export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
 
 export interface OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
 }
 export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
 
 export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
@@ -15535,24 +14022,13 @@ export interface OnRampsUpdateResponsePostApplyResourcesValueManagedByItem {
   clientType: OnRampsUpdateResponsePostApplyResourcesValueManagedByItemClientType;
   name: string;
 }
-export const OnRampsUpdateResponsePostApplyResourcesValueManagedByItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      clientType: OnRampsUpdateResponsePostApplyResourcesValueManagedByItemClientType.pipe(
-        T.Body("client_type"),
-      ),
-      name: S.String,
-    }),
-).annotate({
-  identifier: "OnRampsUpdateResponsePostApplyResourcesValueManagedByItem",
-}) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueManagedByItem>;
+export const OnRampsUpdateResponsePostApplyResourcesValueManagedByItem =
+  OnRampsCreateResponsePostApplyResourcesValueManagedByItem as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueManagedByItem>;
 
 export type OnRampsUpdateResponsePostApplyResourcesValueManagedByList =
   Array<OnRampsUpdateResponsePostApplyResourcesValueManagedByItem>;
-export const OnRampsUpdateResponsePostApplyResourcesValueManagedByList = /*@__PURE__*/ S.Array(
-  OnRampsUpdateResponsePostApplyResourcesValueManagedByItem,
-) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueManagedByList>;
+export const OnRampsUpdateResponsePostApplyResourcesValueManagedByList =
+  OnRampsCreateResponsePostApplyResourcesValueManagedByList as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueManagedByList>;
 
 export interface OnRampsUpdateResponsePostApplyResourcesValue {
   id: string;
@@ -15829,25 +14305,14 @@ export interface OnRampsUpdateResponseStatusLifecycleErrorsValue {
   meta?: CatalogSyncsCreateResponseErrorsValueMeta | null;
   source?: CatalogSyncsCreateResponseErrorsValueSource | null;
 }
-export const OnRampsUpdateResponseStatusLifecycleErrorsValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: OnRampsUpdateResponseStatusLifecycleErrorsValueCode,
-    message: S.String,
-    documentationUrl: S.optional(S.NullOr(S.String).pipe(T.Body("documentation_url"))),
-    meta: S.optional(S.NullOr(CatalogSyncsCreateResponseErrorsValueMeta)),
-    source: S.optional(S.NullOr(CatalogSyncsCreateResponseErrorsValueSource)),
-  }),
-).annotate({
-  identifier: "OnRampsUpdateResponseStatusLifecycleErrorsValue",
-}) as any as S.Schema<OnRampsUpdateResponseStatusLifecycleErrorsValue>;
+export const OnRampsUpdateResponseStatusLifecycleErrorsValue =
+  CatalogSyncsCreateResponseErrorsValue as any as S.Schema<OnRampsUpdateResponseStatusLifecycleErrorsValue>;
 
 export type OnRampsUpdateResponseStatusLifecycleErrorsMap = {
   [key: string]: OnRampsUpdateResponseStatusLifecycleErrorsValue | undefined;
 };
-export const OnRampsUpdateResponseStatusLifecycleErrorsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  OnRampsUpdateResponseStatusLifecycleErrorsValue,
-) as any as S.Schema<OnRampsUpdateResponseStatusLifecycleErrorsMap>;
+export const OnRampsUpdateResponseStatusLifecycleErrorsMap =
+  CatalogSyncsCreateResponseErrorsMap as any as S.Schema<OnRampsUpdateResponseStatusLifecycleErrorsMap>;
 
 export interface OnRampsUpdateResponseStatus {
   applyProgress: OnRampsCreateResponseStatusApplyProgress;
@@ -16063,43 +14528,14 @@ export interface OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemVa
   title: string;
 }
 export const OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview>;
 
 export interface OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview;
 }
 export const OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem>;
 
 export type OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
@@ -16184,43 +14620,14 @@ export interface OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemVa
   title: string;
 }
 export const OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
 
 export interface OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
 }
 export const OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
 
 export type OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
@@ -16393,43 +14800,14 @@ export interface OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemV
   title: string;
 }
 export const OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview>;
 
 export interface OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview;
 }
 export const OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem>;
 
 export type OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
@@ -16514,43 +14892,14 @@ export interface OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemV
   title: string;
 }
 export const OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
 
 export interface OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
 }
 export const OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
+  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
 
 export type OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
@@ -16668,23 +15017,13 @@ export interface OnRampsUpdateResponseVpcsByIdValueManagedByItem {
   clientType: OnRampsUpdateResponseVpcsByIdValueManagedByItemClientType;
   name: string;
 }
-export const OnRampsUpdateResponseVpcsByIdValueManagedByItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    clientType: OnRampsUpdateResponseVpcsByIdValueManagedByItemClientType.pipe(
-      T.Body("client_type"),
-    ),
-    name: S.String,
-  }),
-).annotate({
-  identifier: "OnRampsUpdateResponseVpcsByIdValueManagedByItem",
-}) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueManagedByItem>;
+export const OnRampsUpdateResponseVpcsByIdValueManagedByItem =
+  CloudIntegrationsCreateResponseStatusInUseByItem as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueManagedByItem>;
 
 export type OnRampsUpdateResponseVpcsByIdValueManagedByList =
   Array<OnRampsUpdateResponseVpcsByIdValueManagedByItem>;
-export const OnRampsUpdateResponseVpcsByIdValueManagedByList = /*@__PURE__*/ S.Array(
-  OnRampsUpdateResponseVpcsByIdValueManagedByItem,
-) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueManagedByList>;
+export const OnRampsUpdateResponseVpcsByIdValueManagedByList =
+  CloudIntegrationsCreateResponseStatusInUseByList as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueManagedByList>;
 
 export interface OnRampsUpdateResponseVpcsByIdValue {
   id: string;

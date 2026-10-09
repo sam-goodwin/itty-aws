@@ -778,9 +778,8 @@ export const AuthenticationMode = S.String;
 
 /** Allowed authentication modes for data access on the cluster. */
 export type AuthConfigPropertiesAllowedModesList = Array<AuthenticationMode | (string & {})>;
-export const AuthConfigPropertiesAllowedModesList = /*@__PURE__*/ S.Array(
-  AuthenticationMode,
-) as any as S.Schema<AuthConfigPropertiesAllowedModesList>;
+export const AuthConfigPropertiesAllowedModesList =
+  MongoClusterPropertiesPreviewFeaturesList as any as S.Schema<AuthConfigPropertiesAllowedModesList>;
 
 /** The authentication configuration for the Mongo cluster. */
 export interface AuthConfigProperties {

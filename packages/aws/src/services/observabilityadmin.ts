@@ -690,7 +690,7 @@ export type LogType =
 export const LogType = S.String;
 
 export type LogTypes = LogType[];
-export const LogTypes = /*@__PURE__*/ S.Array(LogType);
+export const LogTypes = TelemetrySourceTypes as any as S.Schema<LogTypes>;
 export interface LogDeliveryParameters {
   LogTypes?: LogType[];
 }
@@ -1422,7 +1422,7 @@ export const ListDatasetIntegrationsOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDatasetIntegrationsOutput>;
 export type ResourceIdentifierPrefix = string;
 export type ResourceTypes = ResourceType[];
-export const ResourceTypes = /*@__PURE__*/ S.Array(ResourceType);
+export const ResourceTypes = TelemetrySourceTypes as any as S.Schema<ResourceTypes>;
 export type TelemetryState = "Enabled" | "Disabled" | "NotApplicable" | (string & {});
 export const TelemetryState = S.String;
 

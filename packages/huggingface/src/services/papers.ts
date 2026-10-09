@@ -689,9 +689,7 @@ export const GetPaperResponseLinkedDatasetsItemDatasetsServerInfoFormatsItem = S
 export type GetPaperResponseLinkedDatasetsItemDatasetsServerInfoFormatsList =
   Array<GetPaperResponseLinkedDatasetsItemDatasetsServerInfoFormatsItem>;
 export const GetPaperResponseLinkedDatasetsItemDatasetsServerInfoFormatsList =
-  /*@__PURE__*/ S.Array(
-    GetPaperResponseLinkedDatasetsItemDatasetsServerInfoFormatsItem,
-  ) as any as S.Schema<GetPaperResponseLinkedDatasetsItemDatasetsServerInfoFormatsList>;
+  GetPaperResponseLinkedDatasetsItemDatasetsServerInfoLibrariesList as any as S.Schema<GetPaperResponseLinkedDatasetsItemDatasetsServerInfoFormatsList>;
 
 export type GetPaperResponseLinkedDatasetsItemDatasetsServerInfoModalitiesItem =
   | "3d"
@@ -708,9 +706,7 @@ export const GetPaperResponseLinkedDatasetsItemDatasetsServerInfoModalitiesItem 
 export type GetPaperResponseLinkedDatasetsItemDatasetsServerInfoModalitiesList =
   Array<GetPaperResponseLinkedDatasetsItemDatasetsServerInfoModalitiesItem>;
 export const GetPaperResponseLinkedDatasetsItemDatasetsServerInfoModalitiesList =
-  /*@__PURE__*/ S.Array(
-    GetPaperResponseLinkedDatasetsItemDatasetsServerInfoModalitiesItem,
-  ) as any as S.Schema<GetPaperResponseLinkedDatasetsItemDatasetsServerInfoModalitiesList>;
+  GetPaperResponseLinkedDatasetsItemDatasetsServerInfoLibrariesList as any as S.Schema<GetPaperResponseLinkedDatasetsItemDatasetsServerInfoModalitiesList>;
 
 export interface GetPaperResponseLinkedDatasetsItemDatasetsServerInfo {
   viewer: GetPaperResponseLinkedDatasetsItemDatasetsServerInfoViewer;
@@ -1025,23 +1021,8 @@ export interface GetPaperResponseCommentsItemDataLatestAuthorCase0 {
   plan?: GetPaperResponseCommentsItemDataLatestAuthorCase0Plan;
   isUserFollowing?: boolean;
 }
-export const GetPaperResponseCommentsItemDataLatestAuthorCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    _id: S.String,
-    avatarUrl: S.String,
-    fullname: S.String,
-    name: S.String,
-    isHf: S.Boolean,
-    isHfAdmin: S.Boolean,
-    isMod: S.Boolean,
-    followerCount: S.optional(S.Number),
-    type: S.String,
-    plan: S.optional(GetPaperResponseCommentsItemDataLatestAuthorCase0Plan),
-    isUserFollowing: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "GetPaperResponseCommentsItemDataLatestAuthorCase0",
-}) as any as S.Schema<GetPaperResponseCommentsItemDataLatestAuthorCase0>;
+export const GetPaperResponseCommentsItemDataLatestAuthorCase0 =
+  GetPaperResponseLinkedModelsItemAuthorDataCase0 as any as S.Schema<GetPaperResponseCommentsItemDataLatestAuthorCase0>;
 
 export type GetPaperResponseCommentsItemDataLatestAuthorCase1PrimaryOrgPlan =
   | "team"
@@ -1071,24 +1052,8 @@ export interface GetPaperResponseCommentsItemDataLatestAuthorCase1PrimaryOrg {
   userRole?: GetPaperResponseCommentsItemDataLatestAuthorCase1PrimaryOrgUserRole;
   numUsers?: number;
 }
-export const GetPaperResponseCommentsItemDataLatestAuthorCase1PrimaryOrg = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      avatarUrl: S.String,
-      fullname: S.String,
-      name: S.String,
-      type: S.String,
-      isHf: S.Boolean,
-      isFollowing: S.optional(S.Boolean),
-      plan: S.optional(GetPaperResponseCommentsItemDataLatestAuthorCase1PrimaryOrgPlan),
-      details: S.optional(S.String),
-      hasPrivateMembersList: S.optional(S.Boolean),
-      userRole: S.optional(GetPaperResponseCommentsItemDataLatestAuthorCase1PrimaryOrgUserRole),
-      numUsers: S.optional(S.Number),
-    }),
-).annotate({
-  identifier: "GetPaperResponseCommentsItemDataLatestAuthorCase1PrimaryOrg",
-}) as any as S.Schema<GetPaperResponseCommentsItemDataLatestAuthorCase1PrimaryOrg>;
+export const GetPaperResponseCommentsItemDataLatestAuthorCase1PrimaryOrg =
+  GetPaperResponseLinkedModelsItemAuthorDataCase1PrimaryOrg as any as S.Schema<GetPaperResponseCommentsItemDataLatestAuthorCase1PrimaryOrg>;
 
 export interface GetPaperResponseCommentsItemDataLatestAuthorCase1 {
   /** A hex string of 24 characters representing an ObjectId. */
@@ -1105,24 +1070,8 @@ export interface GetPaperResponseCommentsItemDataLatestAuthorCase1 {
   isUserFollowing?: boolean;
   primaryOrg?: GetPaperResponseCommentsItemDataLatestAuthorCase1PrimaryOrg;
 }
-export const GetPaperResponseCommentsItemDataLatestAuthorCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    _id: S.String,
-    avatarUrl: S.String,
-    fullname: S.String,
-    name: S.String,
-    isHf: S.Boolean,
-    isHfAdmin: S.Boolean,
-    isMod: S.Boolean,
-    followerCount: S.optional(S.Number),
-    type: S.String,
-    isPro: S.Boolean,
-    isUserFollowing: S.optional(S.Boolean),
-    primaryOrg: S.optional(GetPaperResponseCommentsItemDataLatestAuthorCase1PrimaryOrg),
-  }),
-).annotate({
-  identifier: "GetPaperResponseCommentsItemDataLatestAuthorCase1",
-}) as any as S.Schema<GetPaperResponseCommentsItemDataLatestAuthorCase1>;
+export const GetPaperResponseCommentsItemDataLatestAuthorCase1 =
+  GetPaperResponseLinkedModelsItemAuthorDataCase1 as any as S.Schema<GetPaperResponseCommentsItemDataLatestAuthorCase1>;
 
 export type GetPaperResponseCommentsItemDataLatestAuthor =
   | GetPaperResponseCommentsItemDataLatestAuthorCase0

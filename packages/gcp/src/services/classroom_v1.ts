@@ -3021,9 +3021,8 @@ export const ListCoursesAnnouncementsAnnouncementStatesEnum = S.String;
 export type ListCoursesAnnouncementsAnnouncementStatesEnumList = Array<
   ListCoursesAnnouncementsAnnouncementStatesEnum | (string & {})
 >;
-export const ListCoursesAnnouncementsAnnouncementStatesEnumList = /*@__PURE__*/ S.Array(
-  ListCoursesAnnouncementsAnnouncementStatesEnum,
-) as any as S.Schema<ListCoursesAnnouncementsAnnouncementStatesEnumList>;
+export const ListCoursesAnnouncementsAnnouncementStatesEnumList =
+  ListCoursesCourseStatesEnumList as any as S.Schema<ListCoursesAnnouncementsAnnouncementStatesEnumList>;
 
 export interface ListCoursesAnnouncementsRequest {
   /** Optional sort ordering for results. A comma-separated list of fields with an optional sort direction keyword. Supported field is `updateTime`. Supported direction keywords are `asc` and `desc`. If not specified, `updateTime desc` is the default behavior. Examples: `updateTime asc`, `updateTime` */
@@ -3139,9 +3138,8 @@ export const ListCoursesCourseWorkCourseWorkStatesEnum = S.String;
 export type ListCoursesCourseWorkCourseWorkStatesEnumList = Array<
   ListCoursesCourseWorkCourseWorkStatesEnum | (string & {})
 >;
-export const ListCoursesCourseWorkCourseWorkStatesEnumList = /*@__PURE__*/ S.Array(
-  ListCoursesCourseWorkCourseWorkStatesEnum,
-) as any as S.Schema<ListCoursesCourseWorkCourseWorkStatesEnumList>;
+export const ListCoursesCourseWorkCourseWorkStatesEnumList =
+  ListCoursesCourseStatesEnumList as any as S.Schema<ListCoursesCourseWorkCourseWorkStatesEnumList>;
 
 export interface ListCoursesCourseWorkRequest {
   /** Maximum number of items to return. Zero or unspecified indicates that the server may assign a maximum. The server may return fewer than the specified number of results. */
@@ -3230,9 +3228,8 @@ export const ListCoursesCourseWorkMaterialsCourseWorkMaterialStatesEnum = S.Stri
 export type ListCoursesCourseWorkMaterialsCourseWorkMaterialStatesEnumList = Array<
   ListCoursesCourseWorkMaterialsCourseWorkMaterialStatesEnum | (string & {})
 >;
-export const ListCoursesCourseWorkMaterialsCourseWorkMaterialStatesEnumList = /*@__PURE__*/ S.Array(
-  ListCoursesCourseWorkMaterialsCourseWorkMaterialStatesEnum,
-) as any as S.Schema<ListCoursesCourseWorkMaterialsCourseWorkMaterialStatesEnumList>;
+export const ListCoursesCourseWorkMaterialsCourseWorkMaterialStatesEnumList =
+  ListCoursesCourseStatesEnumList as any as S.Schema<ListCoursesCourseWorkMaterialsCourseWorkMaterialStatesEnumList>;
 
 export interface ListCoursesCourseWorkMaterialsRequest {
   /** Optional filtering for course work material with at least one Drive material whose ID matches the provided string. If `material_link` is also specified, course work material must have materials matching both filters. */
@@ -3379,9 +3376,8 @@ export const ListCoursesCourseWorkStudentSubmissionsStatesEnum = S.String;
 export type ListCoursesCourseWorkStudentSubmissionsStatesEnumList = Array<
   ListCoursesCourseWorkStudentSubmissionsStatesEnum | (string & {})
 >;
-export const ListCoursesCourseWorkStudentSubmissionsStatesEnumList = /*@__PURE__*/ S.Array(
-  ListCoursesCourseWorkStudentSubmissionsStatesEnum,
-) as any as S.Schema<ListCoursesCourseWorkStudentSubmissionsStatesEnumList>;
+export const ListCoursesCourseWorkStudentSubmissionsStatesEnumList =
+  ListCoursesCourseStatesEnumList as any as S.Schema<ListCoursesCourseWorkStudentSubmissionsStatesEnumList>;
 
 export type ListCoursesCourseWorkStudentSubmissionsLateEnum =
   | "LATE_VALUES_UNSPECIFIED"
@@ -3737,9 +3733,8 @@ export const ListUserProfilesGuardianInvitationsStatesEnum = S.String;
 export type ListUserProfilesGuardianInvitationsStatesEnumList = Array<
   ListUserProfilesGuardianInvitationsStatesEnum | (string & {})
 >;
-export const ListUserProfilesGuardianInvitationsStatesEnumList = /*@__PURE__*/ S.Array(
-  ListUserProfilesGuardianInvitationsStatesEnum,
-) as any as S.Schema<ListUserProfilesGuardianInvitationsStatesEnumList>;
+export const ListUserProfilesGuardianInvitationsStatesEnumList =
+  ListCoursesCourseStatesEnumList as any as S.Schema<ListUserProfilesGuardianInvitationsStatesEnumList>;
 
 export interface ListUserProfilesGuardianInvitationsRequest {
   /** The ID of the student whose guardian invitations are to be returned. The identifier can be one of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user * the string literal `"-"`, indicating that results should be returned for all students that the requesting user is permitted to view guardian invitations. */

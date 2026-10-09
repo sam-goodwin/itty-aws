@@ -292,18 +292,8 @@ export interface GetMarketplaceAgreementResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetMarketplaceAgreementResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetMarketplaceAgreementResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetMarketplaceAgreementResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetMarketplaceAgreementResponseSystemData",
-}) as any as S.Schema<GetMarketplaceAgreementResponseSystemData>;
+export const GetMarketplaceAgreementResponseSystemData =
+  CreateMarketplaceAgreementResponseSystemData as any as S.Schema<GetMarketplaceAgreementResponseSystemData>;
 
 export interface GetMarketplaceAgreementResponse {
   /** Resource ID. */
@@ -317,17 +307,8 @@ export interface GetMarketplaceAgreementResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetMarketplaceAgreementResponseSystemData;
 }
-export const GetMarketplaceAgreementResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(AgreementProperties),
-    systemData: S.optional(GetMarketplaceAgreementResponseSystemData),
-  }),
-).annotate({
-  identifier: "GetMarketplaceAgreementResponse",
-}) as any as S.Schema<GetMarketplaceAgreementResponse>;
+export const GetMarketplaceAgreementResponse =
+  CreateMarketplaceAgreementResponse as any as S.Schema<GetMarketplaceAgreementResponse>;
 
 export interface GetMarketplaceAgreementAgreementRequest {
   /** The subscription ID that identifies an Azure subscription. */

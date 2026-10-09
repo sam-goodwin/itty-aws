@@ -1691,14 +1691,8 @@ export interface PlaywrightWorkspaceUpdateProperties {
   /** Enables the workspace to use local authentication through service access tokens for operations. */
   localAuth?: EnablementStatus | (string & {});
 }
-export const PlaywrightWorkspaceUpdateProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    regionalAffinity: S.optional(EnablementStatus),
-    localAuth: S.optional(EnablementStatus),
-  }),
-).annotate({
-  identifier: "PlaywrightWorkspaceUpdateProperties",
-}) as any as S.Schema<PlaywrightWorkspaceUpdateProperties>;
+export const PlaywrightWorkspaceUpdateProperties =
+  PlaywrightWorkspacePropertiesInput as any as S.Schema<PlaywrightWorkspaceUpdateProperties>;
 
 export interface UpdatePlaywrightWorkspaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */

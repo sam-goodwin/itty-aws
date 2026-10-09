@@ -129,16 +129,8 @@ export interface ListIsosResponseIsosItem {
   /** CPU architecture compatible with the ISO. Null indicates no restriction on the architecture (wildcard). */
   architecture: ListIsosResponseIsosItemArchitecture | null;
 }
-export const ListIsosResponseIsosItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    name: S.NullOr(S.String),
-    description: S.String,
-    type: S.NullOr(ListIsosResponseIsosItemType),
-    deprecation: S.NullOr(GetIsoResponseIsoDeprecation),
-    architecture: S.NullOr(ListIsosResponseIsosItemArchitecture),
-  }),
-).annotate({ identifier: "ListIsosResponseIsosItem" }) as any as S.Schema<ListIsosResponseIsosItem>;
+export const ListIsosResponseIsosItem =
+  GetIsoResponseIso as any as S.Schema<ListIsosResponseIsosItem>;
 
 export type ListIsosResponseIsosList = Array<ListIsosResponseIsosItem>;
 export const ListIsosResponseIsosList = /*@__PURE__*/ S.Array(

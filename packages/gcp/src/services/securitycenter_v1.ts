@@ -1206,9 +1206,8 @@ export const MitreAttackAdditionalTechniquesItemEnum = S.String;
 export type MitreAttackAdditionalTechniquesItemEnumList = Array<
   MitreAttackAdditionalTechniquesItemEnum | (string & {})
 >;
-export const MitreAttackAdditionalTechniquesItemEnumList = /*@__PURE__*/ S.Array(
-  MitreAttackAdditionalTechniquesItemEnum,
-) as any as S.Schema<MitreAttackAdditionalTechniquesItemEnumList>;
+export const MitreAttackAdditionalTechniquesItemEnumList =
+  MitreAttackPrimaryTechniquesItemEnumList as any as S.Schema<MitreAttackAdditionalTechniquesItemEnumList>;
 
 export type MitreAttackAdditionalTacticsItemEnum =
   | "TACTIC_UNSPECIFIED"
@@ -1231,9 +1230,8 @@ export const MitreAttackAdditionalTacticsItemEnum = S.String;
 export type MitreAttackAdditionalTacticsItemEnumList = Array<
   MitreAttackAdditionalTacticsItemEnum | (string & {})
 >;
-export const MitreAttackAdditionalTacticsItemEnumList = /*@__PURE__*/ S.Array(
-  MitreAttackAdditionalTacticsItemEnum,
-) as any as S.Schema<MitreAttackAdditionalTacticsItemEnumList>;
+export const MitreAttackAdditionalTacticsItemEnumList =
+  MitreAttackPrimaryTechniquesItemEnumList as any as S.Schema<MitreAttackAdditionalTacticsItemEnumList>;
 
 export interface MitreAttack {
   version?: string;
@@ -1813,9 +1811,8 @@ export type FrameworkCategoryItemEnum =
 export const FrameworkCategoryItemEnum = S.String;
 
 export type FrameworkCategoryItemEnumList = Array<FrameworkCategoryItemEnum | (string & {})>;
-export const FrameworkCategoryItemEnumList = /*@__PURE__*/ S.Array(
-  FrameworkCategoryItemEnum,
-) as any as S.Schema<FrameworkCategoryItemEnumList>;
+export const FrameworkCategoryItemEnumList =
+  MitreAttackPrimaryTechniquesItemEnumList as any as S.Schema<FrameworkCategoryItemEnumList>;
 
 export interface Framework {
   name?: string;
@@ -5464,13 +5461,7 @@ export interface GoogleCloudSecuritycenterV1ResourceApplicationAttributesCritica
   type?: GoogleCloudSecuritycenterV1ResourceApplicationAttributesCriticalityTypeEnum;
 }
 export const GoogleCloudSecuritycenterV1ResourceApplicationAttributesCriticality =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.optional(GoogleCloudSecuritycenterV1ResourceApplicationAttributesCriticalityTypeEnum),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudSecuritycenterV1ResourceApplicationAttributesCriticality",
-  }) as any as S.Schema<GoogleCloudSecuritycenterV1ResourceApplicationAttributesCriticality>;
+  GoogleCloudSecuritycenterV1ResourceApplicationAttributesEnvironment as any as S.Schema<GoogleCloudSecuritycenterV1ResourceApplicationAttributesCriticality>;
 
 export interface GoogleCloudSecuritycenterV1ResourceApplicationAttributes {
   environment?: GoogleCloudSecuritycenterV1ResourceApplicationAttributesEnvironment;

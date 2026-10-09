@@ -522,9 +522,8 @@ export const TicketPriorityEnum = S.String;
 
 /** Ticket priorities to include. Empty or omitted means all priorities. */
 export type TicketViewFiltersPriorityList = Array<TicketPriorityEnum | (string & {})>;
-export const TicketViewFiltersPriorityList = /*@__PURE__*/ S.Array(
-  TicketPriorityEnum,
-) as any as S.Schema<TicketViewFiltersPriorityList>;
+export const TicketViewFiltersPriorityList =
+  TicketViewFiltersStatusList as any as S.Schema<TicketViewFiltersPriorityList>;
 
 /** * `widget` - widget * `email` - email * `slack` - slack * `teams` - teams * `github` - github * `all` - all */
 export type TicketChannelFilterEnum = "widget" | "email" | "slack" | "teams" | "github" | "all";
@@ -551,9 +550,8 @@ export const AiTriageResultEnum = S.String;
 
 /** AI triage outcomes to include. 'in_progress' matches tickets still being triaged. Valid values: persisted, suggested, escalated_with_findings, escalated_with_best, escalated_no_reply, skipped_unactionable, blocked_unsafe, blocked_unsafe_reply, clarified, suggested_clarification, in_progress. */
 export type TicketViewFiltersAiTriageResultList = Array<AiTriageResultEnum | (string & {})>;
-export const TicketViewFiltersAiTriageResultList = /*@__PURE__*/ S.Array(
-  AiTriageResultEnum,
-) as any as S.Schema<TicketViewFiltersAiTriageResultList>;
+export const TicketViewFiltersAiTriageResultList =
+  TicketViewFiltersStatusList as any as S.Schema<TicketViewFiltersAiTriageResultList>;
 
 export type TicketViewFiltersAssigneeItemCase0 = "me" | "unassigned";
 export const TicketViewFiltersAssigneeItemCase0 = S.String;

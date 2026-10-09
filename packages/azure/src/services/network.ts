@@ -4130,9 +4130,8 @@ export const ApplicationGatewaySslPolicyCipherSuitesItem = S.String;
 export type ApplicationGatewaySslPolicyCipherSuitesList = Array<
   ApplicationGatewaySslPolicyCipherSuitesItem | (string & {})
 >;
-export const ApplicationGatewaySslPolicyCipherSuitesList = /*@__PURE__*/ S.Array(
-  ApplicationGatewaySslPolicyCipherSuitesItem,
-) as any as S.Schema<ApplicationGatewaySslPolicyCipherSuitesList>;
+export const ApplicationGatewaySslPolicyCipherSuitesList =
+  ApplicationGatewaySslPolicyDisabledSslProtocolsList as any as S.Schema<ApplicationGatewaySslPolicyCipherSuitesList>;
 
 /** Ssl protocol enums. */
 export type ApplicationGatewaySslPolicyMinProtocolVersion =
@@ -9441,20 +9440,8 @@ export interface AuthenticationPoliciesCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const AuthenticationPoliciesCreateOrUpdateResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(AuthenticationPoliciesCreateOrUpdateResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      AuthenticationPoliciesCreateOrUpdateResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AuthenticationPoliciesCreateOrUpdateResponseSystemData",
-}) as any as S.Schema<AuthenticationPoliciesCreateOrUpdateResponseSystemData>;
+export const AuthenticationPoliciesCreateOrUpdateResponseSystemData =
+  AdminRuleCollectionsCreateOrUpdateResponseSystemData as any as S.Schema<AuthenticationPoliciesCreateOrUpdateResponseSystemData>;
 
 export interface AuthenticationPoliciesCreateOrUpdateResponse {
   /** Resource ID. */
@@ -9669,11 +9656,8 @@ export interface AzureFirewallNatRCAction {
   /** The action type of a NAT rule collection. */
   type?: AzureFirewallNatRCActionType | (string & {});
 }
-export const AzureFirewallNatRCAction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(AzureFirewallNatRCActionType),
-  }),
-).annotate({ identifier: "AzureFirewallNatRCAction" }) as any as S.Schema<AzureFirewallNatRCAction>;
+export const AzureFirewallNatRCAction =
+  AzureFirewallRCAction as any as S.Schema<AzureFirewallNatRCAction>;
 
 /** List of source IP addresses for this rule. */
 export type AzureFirewallNatRuleSourceAddressesList = Array<string>;
@@ -9698,9 +9682,8 @@ export const AzureFirewallNatRuleProtocolsItem = S.String;
 export type AzureFirewallNatRuleProtocolsList = Array<
   AzureFirewallNatRuleProtocolsItem | (string & {})
 >;
-export const AzureFirewallNatRuleProtocolsList = /*@__PURE__*/ S.Array(
-  AzureFirewallNatRuleProtocolsItem,
-) as any as S.Schema<AzureFirewallNatRuleProtocolsList>;
+export const AzureFirewallNatRuleProtocolsList =
+  ApplicationGatewaySslPolicyDisabledSslProtocolsList as any as S.Schema<AzureFirewallNatRuleProtocolsList>;
 
 /** List of source IpGroups for this rule. */
 export type AzureFirewallNatRuleSourceIpGroupsList = Array<string>;
@@ -9817,9 +9800,8 @@ export const AzureFirewallNetworkRuleProtocolsItem = S.String;
 export type AzureFirewallNetworkRuleProtocolsList = Array<
   AzureFirewallNetworkRuleProtocolsItem | (string & {})
 >;
-export const AzureFirewallNetworkRuleProtocolsList = /*@__PURE__*/ S.Array(
-  AzureFirewallNetworkRuleProtocolsItem,
-) as any as S.Schema<AzureFirewallNetworkRuleProtocolsList>;
+export const AzureFirewallNetworkRuleProtocolsList =
+  ApplicationGatewaySslPolicyDisabledSslProtocolsList as any as S.Schema<AzureFirewallNetworkRuleProtocolsList>;
 
 /** List of source IP addresses for this rule. */
 export type AzureFirewallNetworkRuleSourceAddressesList = Array<string>;
@@ -10114,12 +10096,7 @@ export interface AzureFirewallSku {
   /** Tier of an Azure Firewall. */
   tier?: AzureFirewallSkuTier | (string & {});
 }
-export const AzureFirewallSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(AzureFirewallSkuName),
-    tier: S.optional(AzureFirewallSkuTier),
-  }),
-).annotate({ identifier: "AzureFirewallSku" }) as any as S.Schema<AzureFirewallSku>;
+export const AzureFirewallSku = PublicIPAddressSku as any as S.Schema<AzureFirewallSku>;
 
 /** The additional properties used to further config this azure firewall. */
 export type AzureFirewallPropertiesFormatInputAdditionalPropertiesMap = {
@@ -12255,18 +12232,8 @@ export interface CommitsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const CommitsCreateOrUpdateResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(CommitsCreateOrUpdateResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(CommitsCreateOrUpdateResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CommitsCreateOrUpdateResponseSystemData",
-}) as any as S.Schema<CommitsCreateOrUpdateResponseSystemData>;
+export const CommitsCreateOrUpdateResponseSystemData =
+  AdminRulesCreateOrUpdateResponseSystemData as any as S.Schema<CommitsCreateOrUpdateResponseSystemData>;
 
 export interface CommitsCreateOrUpdateResponse {
   /** Resource ID. */
@@ -13908,18 +13875,8 @@ export interface CreateIpamPoolResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const CreateIpamPoolResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(CreateIpamPoolResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(CreateIpamPoolResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateIpamPoolResponseSystemData",
-}) as any as S.Schema<CreateIpamPoolResponseSystemData>;
+export const CreateIpamPoolResponseSystemData =
+  AdminRulesCreateOrUpdateResponseSystemData as any as S.Schema<CreateIpamPoolResponseSystemData>;
 
 /** Resource tags. */
 export type CreateIpamPoolResponseTagsMap = { [key: string]: string | undefined };
@@ -13932,9 +13889,8 @@ export const IpamPoolPropertiesIpAddressTypeItem = S.String;
 
 /** List of IP address type for the IpamPool. */
 export type IpamPoolPropertiesIpAddressTypeList = Array<IpamPoolPropertiesIpAddressTypeItem>;
-export const IpamPoolPropertiesIpAddressTypeList = /*@__PURE__*/ S.Array(
-  IpamPoolPropertiesIpAddressTypeItem,
-) as any as S.Schema<IpamPoolPropertiesIpAddressTypeList>;
+export const IpamPoolPropertiesIpAddressTypeList =
+  ApplicationGatewaySslPolicyDisabledSslProtocolsList as any as S.Schema<IpamPoolPropertiesIpAddressTypeList>;
 
 /** List of IP address prefixes of the resource. */
 export type IpamPoolPropertiesAddressPrefixesList = Array<string>;
@@ -14064,9 +14020,8 @@ export const ConnectionAnalyzerPropertiesInputDiagnosticOperationsItem = S.Strin
 export type ConnectionAnalyzerPropertiesInputDiagnosticOperationsList = Array<
   ConnectionAnalyzerPropertiesInputDiagnosticOperationsItem | (string & {})
 >;
-export const ConnectionAnalyzerPropertiesInputDiagnosticOperationsList = /*@__PURE__*/ S.Array(
-  ConnectionAnalyzerPropertiesInputDiagnosticOperationsItem,
-) as any as S.Schema<ConnectionAnalyzerPropertiesInputDiagnosticOperationsList>;
+export const ConnectionAnalyzerPropertiesInputDiagnosticOperationsList =
+  ApplicationGatewaySslPolicyDisabledSslProtocolsList as any as S.Schema<ConnectionAnalyzerPropertiesInputDiagnosticOperationsList>;
 
 /** Network protocol. */
 export type ProtocolSettingsProtocol = "Tcp" | "Http" | "Https" | "Icmp";
@@ -14291,18 +14246,8 @@ export interface ConnectionAnalyzerSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const ConnectionAnalyzerSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(ConnectionAnalyzerSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(ConnectionAnalyzerSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ConnectionAnalyzerSystemData",
-}) as any as S.Schema<ConnectionAnalyzerSystemData>;
+export const ConnectionAnalyzerSystemData =
+  AdminRulesCreateOrUpdateResponseSystemData as any as S.Schema<ConnectionAnalyzerSystemData>;
 
 /** The type of diagnostic operation to run on a connection analyzer. */
 export type ConnectionAnalyzerPropertiesDiagnosticOperationsItem =
@@ -14316,9 +14261,8 @@ export const ConnectionAnalyzerPropertiesDiagnosticOperationsItem = S.String;
 /** List of diagnostic operations to run. */
 export type ConnectionAnalyzerPropertiesDiagnosticOperationsList =
   Array<ConnectionAnalyzerPropertiesDiagnosticOperationsItem>;
-export const ConnectionAnalyzerPropertiesDiagnosticOperationsList = /*@__PURE__*/ S.Array(
-  ConnectionAnalyzerPropertiesDiagnosticOperationsItem,
-) as any as S.Schema<ConnectionAnalyzerPropertiesDiagnosticOperationsList>;
+export const ConnectionAnalyzerPropertiesDiagnosticOperationsList =
+  ApplicationGatewaySslPolicyDisabledSslProtocolsList as any as S.Schema<ConnectionAnalyzerPropertiesDiagnosticOperationsList>;
 
 /** Provisioning states of a resource. */
 export type ConnectionAnalyzerPropertiesProvisioningState =
@@ -14694,9 +14638,8 @@ export type IPTrafficProtocolsItem = "Any" | "TCP" | "UDP" | "ICMP";
 export const IPTrafficProtocolsItem = S.String;
 
 export type IPTrafficProtocolsList = Array<IPTrafficProtocolsItem | (string & {})>;
-export const IPTrafficProtocolsList = /*@__PURE__*/ S.Array(
-  IPTrafficProtocolsItem,
-) as any as S.Schema<IPTrafficProtocolsList>;
+export const IPTrafficProtocolsList =
+  ApplicationGatewaySslPolicyDisabledSslProtocolsList as any as S.Schema<IPTrafficProtocolsList>;
 
 /** IP traffic information. */
 export interface IPTraffic {
@@ -14809,20 +14752,8 @@ export interface CreateReachabilityAnalysisIntentResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const CreateReachabilityAnalysisIntentResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(CreateReachabilityAnalysisIntentResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      CreateReachabilityAnalysisIntentResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateReachabilityAnalysisIntentResponseSystemData",
-}) as any as S.Schema<CreateReachabilityAnalysisIntentResponseSystemData>;
+export const CreateReachabilityAnalysisIntentResponseSystemData =
+  AdminRuleCollectionsCreateOrUpdateResponseSystemData as any as S.Schema<CreateReachabilityAnalysisIntentResponseSystemData>;
 
 export interface CreateReachabilityAnalysisIntentResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -14941,20 +14872,8 @@ export interface CreateReachabilityAnalysisRunResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const CreateReachabilityAnalysisRunResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(CreateReachabilityAnalysisRunResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      CreateReachabilityAnalysisRunResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateReachabilityAnalysisRunResponseSystemData",
-}) as any as S.Schema<CreateReachabilityAnalysisRunResponseSystemData>;
+export const CreateReachabilityAnalysisRunResponseSystemData =
+  AdminRuleCollectionsCreateOrUpdateResponseSystemData as any as S.Schema<CreateReachabilityAnalysisRunResponseSystemData>;
 
 /** Intent information. */
 export interface IntentContent {
@@ -15132,18 +15051,8 @@ export interface CreateStaticCidrResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const CreateStaticCidrResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(CreateStaticCidrResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(CreateStaticCidrResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateStaticCidrResponseSystemData",
-}) as any as S.Schema<CreateStaticCidrResponseSystemData>;
+export const CreateStaticCidrResponseSystemData =
+  AdminRulesCreateOrUpdateResponseSystemData as any as S.Schema<CreateStaticCidrResponseSystemData>;
 
 /** List of IP address prefixes of the resource. */
 export type StaticCidrPropertiesAddressPrefixesList = Array<string>;
@@ -15302,18 +15211,8 @@ export interface CreateVerifierWorkspaceResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const CreateVerifierWorkspaceResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(CreateVerifierWorkspaceResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(CreateVerifierWorkspaceResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateVerifierWorkspaceResponseSystemData",
-}) as any as S.Schema<CreateVerifierWorkspaceResponseSystemData>;
+export const CreateVerifierWorkspaceResponseSystemData =
+  AdminRulesCreateOrUpdateResponseSystemData as any as S.Schema<CreateVerifierWorkspaceResponseSystemData>;
 
 /** Resource tags. */
 export type CreateVerifierWorkspaceResponseTagsMap = { [key: string]: string | undefined };
@@ -16035,13 +15934,8 @@ export interface DdosProtectionPlanPropertiesFormatInput {
   /** Provisioning states of a resource. */
   provisioningState?: DdosProtectionPlanPropertiesFormatInputProvisioningState | (string & {});
 }
-export const DdosProtectionPlanPropertiesFormatInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    provisioningState: S.optional(DdosProtectionPlanPropertiesFormatInputProvisioningState),
-  }),
-).annotate({
-  identifier: "DdosProtectionPlanPropertiesFormatInput",
-}) as any as S.Schema<DdosProtectionPlanPropertiesFormatInput>;
+export const DdosProtectionPlanPropertiesFormatInput =
+  ApplicationSecurityGroupPropertiesFormatInput as any as S.Schema<DdosProtectionPlanPropertiesFormatInput>;
 
 export interface DdosProtectionPlansCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -21258,11 +21152,7 @@ export interface NatGatewaySku {
   /** Name of Nat Gateway SKU. */
   name?: NatGatewaySkuName | (string & {});
 }
-export const NatGatewaySku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(NatGatewaySkuName),
-  }),
-).annotate({ identifier: "NatGatewaySku" }) as any as S.Schema<NatGatewaySku>;
+export const NatGatewaySku = Sku as any as S.Schema<NatGatewaySku>;
 
 /** A list of availability zones denoting the zone in which Nat Gateway should be deployed. */
 export type NatGatewayZonesList = Array<string>;
@@ -23145,13 +23035,8 @@ export interface NetworkVirtualApplianceExecuteMigrationProperties {
   /** The type of migration workflow performed on a Network Virtual Appliance. */
   migrationType: NetworkVirtualApplianceExecuteMigrationPropertiesMigrationType | (string & {});
 }
-export const NetworkVirtualApplianceExecuteMigrationProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    migrationType: NetworkVirtualApplianceExecuteMigrationPropertiesMigrationType,
-  }),
-).annotate({
-  identifier: "NetworkVirtualApplianceExecuteMigrationProperties",
-}) as any as S.Schema<NetworkVirtualApplianceExecuteMigrationProperties>;
+export const NetworkVirtualApplianceExecuteMigrationProperties =
+  NetworkVirtualApplianceCommitMigrationProperties as any as S.Schema<NetworkVirtualApplianceExecuteMigrationProperties>;
 
 export interface ExecuteNetworkVirtualApplianceMigrationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -28840,18 +28725,8 @@ export interface GetAdminRuleResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetAdminRuleResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetAdminRuleResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetAdminRuleResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetAdminRuleResponseSystemData",
-}) as any as S.Schema<GetAdminRuleResponseSystemData>;
+export const GetAdminRuleResponseSystemData =
+  AdminRulesCreateOrUpdateResponseSystemData as any as S.Schema<GetAdminRuleResponseSystemData>;
 
 /** Whether the rule is custom or default. */
 export type GetAdminRuleResponseKind = "Custom" | "Default";
@@ -28946,18 +28821,8 @@ export interface GetAdminRuleCollectionResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetAdminRuleCollectionResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetAdminRuleCollectionResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetAdminRuleCollectionResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetAdminRuleCollectionResponseSystemData",
-}) as any as S.Schema<GetAdminRuleCollectionResponseSystemData>;
+export const GetAdminRuleCollectionResponseSystemData =
+  AdminRulesCreateOrUpdateResponseSystemData as any as S.Schema<GetAdminRuleCollectionResponseSystemData>;
 
 export interface GetAdminRuleCollectionResponse {
   /** Resource ID. */
@@ -29273,9 +29138,8 @@ export const ApplicationGatewayFirewallManifestRuleSetTiersItem = S.String;
 /** Tier of an application gateway that support the rule set. */
 export type ApplicationGatewayFirewallManifestRuleSetTiersList =
   Array<ApplicationGatewayFirewallManifestRuleSetTiersItem>;
-export const ApplicationGatewayFirewallManifestRuleSetTiersList = /*@__PURE__*/ S.Array(
-  ApplicationGatewayFirewallManifestRuleSetTiersItem,
-) as any as S.Schema<ApplicationGatewayFirewallManifestRuleSetTiersList>;
+export const ApplicationGatewayFirewallManifestRuleSetTiersList =
+  ApplicationGatewaySslPolicyDisabledSslProtocolsList as any as S.Schema<ApplicationGatewayFirewallManifestRuleSetTiersList>;
 
 /** The string representation of the web application firewall rule state. */
 export type ApplicationGatewayFirewallRuleState = "Enabled" | "Disabled";
@@ -29626,18 +29490,8 @@ export interface GetAuthenticationPolicyResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetAuthenticationPolicyResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetAuthenticationPolicyResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetAuthenticationPolicyResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetAuthenticationPolicyResponseSystemData",
-}) as any as S.Schema<GetAuthenticationPolicyResponseSystemData>;
+export const GetAuthenticationPolicyResponseSystemData =
+  AdminRulesCreateOrUpdateResponseSystemData as any as S.Schema<GetAuthenticationPolicyResponseSystemData>;
 
 export interface GetAuthenticationPolicyResponse {
   /** Resource ID. */
@@ -30006,18 +29860,8 @@ export interface GetCommitResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetCommitResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetCommitResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetCommitResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetCommitResponseSystemData",
-}) as any as S.Schema<GetCommitResponseSystemData>;
+export const GetCommitResponseSystemData =
+  AdminRulesCreateOrUpdateResponseSystemData as any as S.Schema<GetCommitResponseSystemData>;
 
 export interface GetCommitResponse {
   /** Resource ID. */
@@ -30241,20 +30085,8 @@ export interface GetConnectivityConfigurationResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetConnectivityConfigurationResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetConnectivityConfigurationResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      GetConnectivityConfigurationResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetConnectivityConfigurationResponseSystemData",
-}) as any as S.Schema<GetConnectivityConfigurationResponseSystemData>;
+export const GetConnectivityConfigurationResponseSystemData =
+  AdminRuleCollectionsCreateOrUpdateResponseSystemData as any as S.Schema<GetConnectivityConfigurationResponseSystemData>;
 
 export interface GetConnectivityConfigurationResponse {
   /** Resource ID. */
@@ -35903,18 +35735,8 @@ export interface GetIpamPoolResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetIpamPoolResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetIpamPoolResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetIpamPoolResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetIpamPoolResponseSystemData",
-}) as any as S.Schema<GetIpamPoolResponseSystemData>;
+export const GetIpamPoolResponseSystemData =
+  AdminRulesCreateOrUpdateResponseSystemData as any as S.Schema<GetIpamPoolResponseSystemData>;
 
 /** Resource tags. */
 export type GetIpamPoolResponseTagsMap = { [key: string]: string | undefined };
@@ -36785,12 +36607,7 @@ export interface LoadBalancerSku {
   /** Tier of a load balancer SKU. */
   tier?: LoadBalancerSkuTier | (string & {});
 }
-export const LoadBalancerSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(LoadBalancerSkuName),
-    tier: S.optional(LoadBalancerSkuTier),
-  }),
-).annotate({ identifier: "LoadBalancerSku" }) as any as S.Schema<LoadBalancerSku>;
+export const LoadBalancerSku = PublicIPAddressSku as any as S.Schema<LoadBalancerSku>;
 
 export interface GetLoadBalancerResponse {
   /** Resource ID. */
@@ -37374,23 +37191,8 @@ export interface GetManagementGroupNetworkManagerConnectionResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetManagementGroupNetworkManagerConnectionResponseSystemData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        GetManagementGroupNetworkManagerConnectionResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        GetManagementGroupNetworkManagerConnectionResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GetManagementGroupNetworkManagerConnectionResponseSystemData",
-}) as any as S.Schema<GetManagementGroupNetworkManagerConnectionResponseSystemData>;
+export const GetManagementGroupNetworkManagerConnectionResponseSystemData =
+  ConnectivityConfigurationsCreateOrUpdateResponseSystemData as any as S.Schema<GetManagementGroupNetworkManagerConnectionResponseSystemData>;
 
 export interface GetManagementGroupNetworkManagerConnectionResponse {
   /** Resource ID. */
@@ -37721,18 +37523,8 @@ export interface GetNetworkGroupResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetNetworkGroupResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetNetworkGroupResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetNetworkGroupResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetNetworkGroupResponseSystemData",
-}) as any as S.Schema<GetNetworkGroupResponseSystemData>;
+export const GetNetworkGroupResponseSystemData =
+  AdminRulesCreateOrUpdateResponseSystemData as any as S.Schema<GetNetworkGroupResponseSystemData>;
 
 export interface GetNetworkGroupResponse {
   /** Resource ID. */
@@ -38211,9 +38003,8 @@ export const NetworkManagerPropertiesNetworkManagerScopeAccessesItem = S.String;
 /** Scope Access. */
 export type NetworkManagerPropertiesNetworkManagerScopeAccessesList =
   Array<NetworkManagerPropertiesNetworkManagerScopeAccessesItem>;
-export const NetworkManagerPropertiesNetworkManagerScopeAccessesList = /*@__PURE__*/ S.Array(
-  NetworkManagerPropertiesNetworkManagerScopeAccessesItem,
-) as any as S.Schema<NetworkManagerPropertiesNetworkManagerScopeAccessesList>;
+export const NetworkManagerPropertiesNetworkManagerScopeAccessesList =
+  ApplicationGatewaySslPolicyDisabledSslProtocolsList as any as S.Schema<NetworkManagerPropertiesNetworkManagerScopeAccessesList>;
 
 /** Provisioning states of a resource. */
 export type NetworkManagerPropertiesProvisioningState =
@@ -38281,18 +38072,8 @@ export interface GetNetworkManagerResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetNetworkManagerResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetNetworkManagerResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetNetworkManagerResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetNetworkManagerResponseSystemData",
-}) as any as S.Schema<GetNetworkManagerResponseSystemData>;
+export const GetNetworkManagerResponseSystemData =
+  AdminRulesCreateOrUpdateResponseSystemData as any as S.Schema<GetNetworkManagerResponseSystemData>;
 
 export interface GetNetworkManagerResponse {
   /** Resource ID. */
@@ -38428,20 +38209,8 @@ export interface GetNetworkManagerRoutingConfigurationResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetNetworkManagerRoutingConfigurationResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetNetworkManagerRoutingConfigurationResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      GetNetworkManagerRoutingConfigurationResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetNetworkManagerRoutingConfigurationResponseSystemData",
-}) as any as S.Schema<GetNetworkManagerRoutingConfigurationResponseSystemData>;
+export const GetNetworkManagerRoutingConfigurationResponseSystemData =
+  AdminRuleCollectionsCreateOrUpdateResponseSystemData as any as S.Schema<GetNetworkManagerRoutingConfigurationResponseSystemData>;
 
 export interface GetNetworkManagerRoutingConfigurationResponse {
   /** Resource ID. */
@@ -38897,18 +38666,8 @@ export interface GetNetworkSecurityPerimeterResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetNetworkSecurityPerimeterResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetNetworkSecurityPerimeterResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetNetworkSecurityPerimeterResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetNetworkSecurityPerimeterResponseSystemData",
-}) as any as S.Schema<GetNetworkSecurityPerimeterResponseSystemData>;
+export const GetNetworkSecurityPerimeterResponseSystemData =
+  AdminRulesCreateOrUpdateResponseSystemData as any as S.Schema<GetNetworkSecurityPerimeterResponseSystemData>;
 
 /** Resource tags. */
 export type GetNetworkSecurityPerimeterResponseTagsMap = { [key: string]: string | undefined };
@@ -39033,20 +38792,8 @@ export interface GetNetworkSecurityPerimeterAccessRuleResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetNetworkSecurityPerimeterAccessRuleResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetNetworkSecurityPerimeterAccessRuleResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      GetNetworkSecurityPerimeterAccessRuleResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetNetworkSecurityPerimeterAccessRuleResponseSystemData",
-}) as any as S.Schema<GetNetworkSecurityPerimeterAccessRuleResponseSystemData>;
+export const GetNetworkSecurityPerimeterAccessRuleResponseSystemData =
+  AdminRuleCollectionsCreateOrUpdateResponseSystemData as any as S.Schema<GetNetworkSecurityPerimeterAccessRuleResponseSystemData>;
 
 /** The current provisioning state. */
 export type NspAccessRulePropertiesProvisioningState =
@@ -39239,23 +38986,8 @@ export interface GetNetworkSecurityPerimeterAssociationResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetNetworkSecurityPerimeterAssociationResponseSystemData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        GetNetworkSecurityPerimeterAssociationResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        GetNetworkSecurityPerimeterAssociationResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GetNetworkSecurityPerimeterAssociationResponseSystemData",
-}) as any as S.Schema<GetNetworkSecurityPerimeterAssociationResponseSystemData>;
+export const GetNetworkSecurityPerimeterAssociationResponseSystemData =
+  ConnectivityConfigurationsCreateOrUpdateResponseSystemData as any as S.Schema<GetNetworkSecurityPerimeterAssociationResponseSystemData>;
 
 /** The current provisioning state. */
 export type NspAssociationPropertiesProvisioningState =
@@ -39390,20 +39122,8 @@ export interface GetNetworkSecurityPerimeterLinkResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetNetworkSecurityPerimeterLinkResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetNetworkSecurityPerimeterLinkResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      GetNetworkSecurityPerimeterLinkResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetNetworkSecurityPerimeterLinkResponseSystemData",
-}) as any as S.Schema<GetNetworkSecurityPerimeterLinkResponseSystemData>;
+export const GetNetworkSecurityPerimeterLinkResponseSystemData =
+  AdminRuleCollectionsCreateOrUpdateResponseSystemData as any as S.Schema<GetNetworkSecurityPerimeterLinkResponseSystemData>;
 
 /** The current provisioning state of NSP Link/LinkReference. */
 export type NspLinkPropertiesProvisioningState =
@@ -39562,23 +39282,8 @@ export interface GetNetworkSecurityPerimeterLinkReferenceResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetNetworkSecurityPerimeterLinkReferenceResponseSystemData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        GetNetworkSecurityPerimeterLinkReferenceResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        GetNetworkSecurityPerimeterLinkReferenceResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GetNetworkSecurityPerimeterLinkReferenceResponseSystemData",
-}) as any as S.Schema<GetNetworkSecurityPerimeterLinkReferenceResponseSystemData>;
+export const GetNetworkSecurityPerimeterLinkReferenceResponseSystemData =
+  ConnectivityConfigurationsCreateOrUpdateResponseSystemData as any as S.Schema<GetNetworkSecurityPerimeterLinkReferenceResponseSystemData>;
 
 /** The current provisioning state of NSP Link/LinkReference. */
 export type NspLinkReferencePropertiesProvisioningState =
@@ -40021,20 +39726,8 @@ export interface GetNetworkSecurityPerimeterProfileResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetNetworkSecurityPerimeterProfileResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetNetworkSecurityPerimeterProfileResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      GetNetworkSecurityPerimeterProfileResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetNetworkSecurityPerimeterProfileResponseSystemData",
-}) as any as S.Schema<GetNetworkSecurityPerimeterProfileResponseSystemData>;
+export const GetNetworkSecurityPerimeterProfileResponseSystemData =
+  AdminRuleCollectionsCreateOrUpdateResponseSystemData as any as S.Schema<GetNetworkSecurityPerimeterProfileResponseSystemData>;
 
 /** Properties of NSP profile. */
 export interface NspProfileProperties {
@@ -40423,9 +40116,8 @@ export const NvaInterfaceConfigurationsPropertiesTypeItem = S.String;
 export type NvaInterfaceConfigurationsPropertiesTypeList = Array<
   NvaInterfaceConfigurationsPropertiesTypeItem | (string & {})
 >;
-export const NvaInterfaceConfigurationsPropertiesTypeList = /*@__PURE__*/ S.Array(
-  NvaInterfaceConfigurationsPropertiesTypeItem,
-) as any as S.Schema<NvaInterfaceConfigurationsPropertiesTypeList>;
+export const NvaInterfaceConfigurationsPropertiesTypeList =
+  ApplicationGatewaySslPolicyDisabledSslProtocolsList as any as S.Schema<NvaInterfaceConfigurationsPropertiesTypeList>;
 
 /** Specifies input parameters required NVA in VNet interface configuration. */
 export interface NvaInterfaceConfigurationsProperties {
@@ -40461,9 +40153,8 @@ export const NetworkVirtualAppliancePropertiesFormatAddressFamilyItem = S.String
 /** The address families to deploy the NVA in. ["IPv4", "IPv6"] deploys a dual-stack NVA (the vHub/VNet must also be dual-stack). ["IPv4"], an empty array, or omitting the field deploys an IPv4-only NVA. The value "IPv6" may only appear in combination with "IPv4"; standalone ["IPv6"] is reserved for future use and is rejected by the service today. */
 export type NetworkVirtualAppliancePropertiesFormatAddressFamilyList =
   Array<NetworkVirtualAppliancePropertiesFormatAddressFamilyItem>;
-export const NetworkVirtualAppliancePropertiesFormatAddressFamilyList = /*@__PURE__*/ S.Array(
-  NetworkVirtualAppliancePropertiesFormatAddressFamilyItem,
-) as any as S.Schema<NetworkVirtualAppliancePropertiesFormatAddressFamilyList>;
+export const NetworkVirtualAppliancePropertiesFormatAddressFamilyList =
+  ApplicationGatewaySslPolicyDisabledSslProtocolsList as any as S.Schema<NetworkVirtualAppliancePropertiesFormatAddressFamilyList>;
 
 /** The type of migration workflow performed on a Network Virtual Appliance. */
 export type NetworkVirtualApplianceMigrationStatusMigrationType =
@@ -40825,13 +40516,8 @@ export interface NetworkWatcherPropertiesFormat {
   /** Provisioning states of a resource. */
   provisioningState?: NetworkWatcherPropertiesFormatProvisioningState | (string & {});
 }
-export const NetworkWatcherPropertiesFormat = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    provisioningState: S.optional(NetworkWatcherPropertiesFormatProvisioningState),
-  }),
-).annotate({
-  identifier: "NetworkWatcherPropertiesFormat",
-}) as any as S.Schema<NetworkWatcherPropertiesFormat>;
+export const NetworkWatcherPropertiesFormat =
+  ApplicationSecurityGroupPropertiesFormatInput as any as S.Schema<NetworkWatcherPropertiesFormat>;
 
 export interface GetNetworkWatcherResponse {
   /** Resource ID. */
@@ -42481,9 +42167,8 @@ export const PacketCaptureQueryStatusResultPacketCaptureErrorItem = S.String;
 /** List of errors of packet capture session. */
 export type PacketCaptureQueryStatusResultPacketCaptureErrorList =
   Array<PacketCaptureQueryStatusResultPacketCaptureErrorItem>;
-export const PacketCaptureQueryStatusResultPacketCaptureErrorList = /*@__PURE__*/ S.Array(
-  PacketCaptureQueryStatusResultPacketCaptureErrorItem,
-) as any as S.Schema<PacketCaptureQueryStatusResultPacketCaptureErrorList>;
+export const PacketCaptureQueryStatusResultPacketCaptureErrorList =
+  ApplicationGatewaySslPolicyDisabledSslProtocolsList as any as S.Schema<PacketCaptureQueryStatusResultPacketCaptureErrorList>;
 
 /** Status of packet capture session. */
 export interface PacketCaptureQueryStatusResult {
@@ -43208,12 +42893,7 @@ export interface PublicIPPrefixSku {
   /** Tier of a public IP prefix SKU. */
   tier?: PublicIPPrefixSkuTier | (string & {});
 }
-export const PublicIPPrefixSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(PublicIPPrefixSkuName),
-    tier: S.optional(PublicIPPrefixSkuTier),
-  }),
-).annotate({ identifier: "PublicIPPrefixSku" }) as any as S.Schema<PublicIPPrefixSku>;
+export const PublicIPPrefixSku = PublicIPAddressSku as any as S.Schema<PublicIPPrefixSku>;
 
 /** A list of availability zones denoting the IP allocated for the resource needs to come from. */
 export type GetPublicIPPrefixResponseZonesList = Array<string>;
@@ -43321,20 +43001,8 @@ export interface GetReachabilityAnalysisIntentResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetReachabilityAnalysisIntentResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetReachabilityAnalysisIntentResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      GetReachabilityAnalysisIntentResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetReachabilityAnalysisIntentResponseSystemData",
-}) as any as S.Schema<GetReachabilityAnalysisIntentResponseSystemData>;
+export const GetReachabilityAnalysisIntentResponseSystemData =
+  AdminRuleCollectionsCreateOrUpdateResponseSystemData as any as S.Schema<GetReachabilityAnalysisIntentResponseSystemData>;
 
 export interface GetReachabilityAnalysisIntentResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -43348,17 +43016,8 @@ export interface GetReachabilityAnalysisIntentResponse {
   /** Represents the Reachability Analysis Intent properties. */
   properties: ReachabilityAnalysisIntentProperties;
 }
-export const GetReachabilityAnalysisIntentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(GetReachabilityAnalysisIntentResponseSystemData),
-    properties: ReachabilityAnalysisIntentProperties,
-  }),
-).annotate({
-  identifier: "GetReachabilityAnalysisIntentResponse",
-}) as any as S.Schema<GetReachabilityAnalysisIntentResponse>;
+export const GetReachabilityAnalysisIntentResponse =
+  CreateReachabilityAnalysisIntentResponse as any as S.Schema<GetReachabilityAnalysisIntentResponse>;
 
 export interface GetReachabilityAnalysisRunRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -43422,18 +43081,8 @@ export interface GetReachabilityAnalysisRunResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetReachabilityAnalysisRunResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetReachabilityAnalysisRunResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetReachabilityAnalysisRunResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetReachabilityAnalysisRunResponseSystemData",
-}) as any as S.Schema<GetReachabilityAnalysisRunResponseSystemData>;
+export const GetReachabilityAnalysisRunResponseSystemData =
+  AdminRulesCreateOrUpdateResponseSystemData as any as S.Schema<GetReachabilityAnalysisRunResponseSystemData>;
 
 export interface GetReachabilityAnalysisRunResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -44246,18 +43895,8 @@ export interface GetRoutingRuleResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetRoutingRuleResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetRoutingRuleResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetRoutingRuleResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetRoutingRuleResponseSystemData",
-}) as any as S.Schema<GetRoutingRuleResponseSystemData>;
+export const GetRoutingRuleResponseSystemData =
+  AdminRulesCreateOrUpdateResponseSystemData as any as S.Schema<GetRoutingRuleResponseSystemData>;
 
 export interface GetRoutingRuleResponse {
   /** Resource ID. */
@@ -44397,18 +44036,8 @@ export interface GetRoutingRuleCollectionResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetRoutingRuleCollectionResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetRoutingRuleCollectionResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetRoutingRuleCollectionResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetRoutingRuleCollectionResponseSystemData",
-}) as any as S.Schema<GetRoutingRuleCollectionResponseSystemData>;
+export const GetRoutingRuleCollectionResponseSystemData =
+  AdminRulesCreateOrUpdateResponseSystemData as any as S.Schema<GetRoutingRuleCollectionResponseSystemData>;
 
 export interface GetRoutingRuleCollectionResponse {
   /** Resource ID. */
@@ -44527,18 +44156,8 @@ export interface GetScopeConnectionResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetScopeConnectionResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetScopeConnectionResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetScopeConnectionResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetScopeConnectionResponseSystemData",
-}) as any as S.Schema<GetScopeConnectionResponseSystemData>;
+export const GetScopeConnectionResponseSystemData =
+  AdminRulesCreateOrUpdateResponseSystemData as any as S.Schema<GetScopeConnectionResponseSystemData>;
 
 export interface GetScopeConnectionResponse {
   /** Resource ID. */
@@ -44607,9 +44226,7 @@ export const SecurityAdminConfigurationPropertiesFormatApplyOnNetworkIntentPolic
 export type SecurityAdminConfigurationPropertiesFormatApplyOnNetworkIntentPolicyBasedServicesList =
   Array<SecurityAdminConfigurationPropertiesFormatApplyOnNetworkIntentPolicyBasedServicesItem>;
 export const SecurityAdminConfigurationPropertiesFormatApplyOnNetworkIntentPolicyBasedServicesList =
-  /*@__PURE__*/ S.Array(
-    SecurityAdminConfigurationPropertiesFormatApplyOnNetworkIntentPolicyBasedServicesItem,
-  ) as any as S.Schema<SecurityAdminConfigurationPropertiesFormatApplyOnNetworkIntentPolicyBasedServicesList>;
+  ApplicationGatewaySslPredefinedPolicyPropertiesFormatCipherSuitesList as any as S.Schema<SecurityAdminConfigurationPropertiesFormatApplyOnNetworkIntentPolicyBasedServicesList>;
 
 /** Option indicating the update behavior of a resource's address prefixes referenced within a network manager configuration. */
 export type SecurityAdminConfigurationPropertiesFormatNetworkGroupAddressSpaceAggregationOption =
@@ -44688,20 +44305,8 @@ export interface GetSecurityAdminConfigurationResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetSecurityAdminConfigurationResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetSecurityAdminConfigurationResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      GetSecurityAdminConfigurationResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetSecurityAdminConfigurationResponseSystemData",
-}) as any as S.Schema<GetSecurityAdminConfigurationResponseSystemData>;
+export const GetSecurityAdminConfigurationResponseSystemData =
+  AdminRuleCollectionsCreateOrUpdateResponseSystemData as any as S.Schema<GetSecurityAdminConfigurationResponseSystemData>;
 
 export interface GetSecurityAdminConfigurationResponse {
   /** Resource ID. */
@@ -44973,20 +44578,8 @@ export interface GetSecurityUserConfigurationResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetSecurityUserConfigurationResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetSecurityUserConfigurationResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      GetSecurityUserConfigurationResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetSecurityUserConfigurationResponseSystemData",
-}) as any as S.Schema<GetSecurityUserConfigurationResponseSystemData>;
+export const GetSecurityUserConfigurationResponseSystemData =
+  AdminRuleCollectionsCreateOrUpdateResponseSystemData as any as S.Schema<GetSecurityUserConfigurationResponseSystemData>;
 
 export interface GetSecurityUserConfigurationResponse {
   /** Resource ID. */
@@ -45161,18 +44754,8 @@ export interface GetSecurityUserRuleResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetSecurityUserRuleResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetSecurityUserRuleResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetSecurityUserRuleResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetSecurityUserRuleResponseSystemData",
-}) as any as S.Schema<GetSecurityUserRuleResponseSystemData>;
+export const GetSecurityUserRuleResponseSystemData =
+  AdminRulesCreateOrUpdateResponseSystemData as any as S.Schema<GetSecurityUserRuleResponseSystemData>;
 
 export interface GetSecurityUserRuleResponse {
   /** Resource ID. */
@@ -45305,20 +44888,8 @@ export interface GetSecurityUserRuleCollectionResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetSecurityUserRuleCollectionResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetSecurityUserRuleCollectionResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      GetSecurityUserRuleCollectionResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetSecurityUserRuleCollectionResponseSystemData",
-}) as any as S.Schema<GetSecurityUserRuleCollectionResponseSystemData>;
+export const GetSecurityUserRuleCollectionResponseSystemData =
+  AdminRuleCollectionsCreateOrUpdateResponseSystemData as any as S.Schema<GetSecurityUserRuleCollectionResponseSystemData>;
 
 export interface GetSecurityUserRuleCollectionResponse {
   /** Resource ID. */
@@ -47564,18 +47135,8 @@ export interface GetServiceGatewayResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetServiceGatewayResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetServiceGatewayResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetServiceGatewayResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetServiceGatewayResponseSystemData",
-}) as any as S.Schema<GetServiceGatewayResponseSystemData>;
+export const GetServiceGatewayResponseSystemData =
+  AdminRulesCreateOrUpdateResponseSystemData as any as S.Schema<GetServiceGatewayResponseSystemData>;
 
 /** Resource tags. */
 export type GetServiceGatewayResponseTagsMap = { [key: string]: string | undefined };
@@ -50067,12 +49628,7 @@ export interface ServiceGatewaySku {
   /** Tier of a service gateway SKU. */
   tier?: ServiceGatewaySkuTier | (string & {});
 }
-export const ServiceGatewaySku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(ServiceGatewaySkuName),
-    tier: S.optional(ServiceGatewaySkuTier),
-  }),
-).annotate({ identifier: "ServiceGatewaySku" }) as any as S.Schema<ServiceGatewaySku>;
+export const ServiceGatewaySku = PublicIPAddressSku as any as S.Schema<ServiceGatewaySku>;
 
 /** A list of availability zones denoting the zone in which service gateway should be deployed. - The zone values must be provided as strings representing numeric identifiers like "1", "2", "3" etc. */
 export type GetServiceGatewayResponseZonesList = Array<string>;
@@ -50371,18 +49927,8 @@ export interface GetStaticCidrResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetStaticCidrResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetStaticCidrResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetStaticCidrResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetStaticCidrResponseSystemData",
-}) as any as S.Schema<GetStaticCidrResponseSystemData>;
+export const GetStaticCidrResponseSystemData =
+  AdminRulesCreateOrUpdateResponseSystemData as any as S.Schema<GetStaticCidrResponseSystemData>;
 
 export interface GetStaticCidrResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -50396,15 +49942,8 @@ export interface GetStaticCidrResponse {
   /** Properties of static CIDR resource. */
   properties?: StaticCidrProperties;
 }
-export const GetStaticCidrResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(GetStaticCidrResponseSystemData),
-    properties: S.optional(StaticCidrProperties),
-  }),
-).annotate({ identifier: "GetStaticCidrResponse" }) as any as S.Schema<GetStaticCidrResponse>;
+export const GetStaticCidrResponse =
+  CreateStaticCidrResponse as any as S.Schema<GetStaticCidrResponse>;
 
 export interface GetStaticMemberRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -50493,18 +50032,8 @@ export interface GetStaticMemberResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetStaticMemberResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetStaticMemberResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetStaticMemberResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetStaticMemberResponseSystemData",
-}) as any as S.Schema<GetStaticMemberResponseSystemData>;
+export const GetStaticMemberResponseSystemData =
+  AdminRulesCreateOrUpdateResponseSystemData as any as S.Schema<GetStaticMemberResponseSystemData>;
 
 export interface GetStaticMemberResponse {
   /** Resource ID. */
@@ -50665,23 +50194,8 @@ export interface GetSubscriptionNetworkManagerConnectionResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetSubscriptionNetworkManagerConnectionResponseSystemData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        GetSubscriptionNetworkManagerConnectionResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        GetSubscriptionNetworkManagerConnectionResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GetSubscriptionNetworkManagerConnectionResponseSystemData",
-}) as any as S.Schema<GetSubscriptionNetworkManagerConnectionResponseSystemData>;
+export const GetSubscriptionNetworkManagerConnectionResponseSystemData =
+  ConnectivityConfigurationsCreateOrUpdateResponseSystemData as any as S.Schema<GetSubscriptionNetworkManagerConnectionResponseSystemData>;
 
 export interface GetSubscriptionNetworkManagerConnectionResponse {
   /** Resource ID. */
@@ -50697,18 +50211,8 @@ export interface GetSubscriptionNetworkManagerConnectionResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetSubscriptionNetworkManagerConnectionResponseSystemData;
 }
-export const GetSubscriptionNetworkManagerConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    etag: S.optional(S.String),
-    properties: S.optional(NetworkManagerConnectionProperties),
-    systemData: S.optional(GetSubscriptionNetworkManagerConnectionResponseSystemData),
-  }),
-).annotate({
-  identifier: "GetSubscriptionNetworkManagerConnectionResponse",
-}) as any as S.Schema<GetSubscriptionNetworkManagerConnectionResponse>;
+export const GetSubscriptionNetworkManagerConnectionResponse =
+  GetManagementGroupNetworkManagerConnectionResponse as any as S.Schema<GetSubscriptionNetworkManagerConnectionResponse>;
 
 export interface GetVerifierWorkspaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -50769,18 +50273,8 @@ export interface GetVerifierWorkspaceResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetVerifierWorkspaceResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetVerifierWorkspaceResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetVerifierWorkspaceResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetVerifierWorkspaceResponseSystemData",
-}) as any as S.Schema<GetVerifierWorkspaceResponseSystemData>;
+export const GetVerifierWorkspaceResponseSystemData =
+  AdminRulesCreateOrUpdateResponseSystemData as any as S.Schema<GetVerifierWorkspaceResponseSystemData>;
 
 /** Resource tags. */
 export type GetVerifierWorkspaceResponseTagsMap = { [key: string]: string | undefined };
@@ -56842,9 +56336,8 @@ export const VpnClientConfigurationVpnClientProtocolsItem = S.String;
 /** VpnClientProtocols for Virtual network gateway. */
 export type VpnClientConfigurationVpnClientProtocolsList =
   Array<VpnClientConfigurationVpnClientProtocolsItem>;
-export const VpnClientConfigurationVpnClientProtocolsList = /*@__PURE__*/ S.Array(
-  VpnClientConfigurationVpnClientProtocolsItem,
-) as any as S.Schema<VpnClientConfigurationVpnClientProtocolsList>;
+export const VpnClientConfigurationVpnClientProtocolsList =
+  ApplicationGatewaySslPolicyDisabledSslProtocolsList as any as S.Schema<VpnClientConfigurationVpnClientProtocolsList>;
 
 /** VPN authentication types enabled for the virtual network gateway. */
 export type VpnClientConfigurationVpnAuthenticationTypesItem = "Certificate" | "Radius" | "AAD";
@@ -56853,9 +56346,8 @@ export const VpnClientConfigurationVpnAuthenticationTypesItem = S.String;
 /** VPN authentication types for the virtual network gateway.. */
 export type VpnClientConfigurationVpnAuthenticationTypesList =
   Array<VpnClientConfigurationVpnAuthenticationTypesItem>;
-export const VpnClientConfigurationVpnAuthenticationTypesList = /*@__PURE__*/ S.Array(
-  VpnClientConfigurationVpnAuthenticationTypesItem,
-) as any as S.Schema<VpnClientConfigurationVpnAuthenticationTypesList>;
+export const VpnClientConfigurationVpnAuthenticationTypesList =
+  ApplicationGatewaySslPolicyDisabledSslProtocolsList as any as S.Schema<VpnClientConfigurationVpnAuthenticationTypesList>;
 
 /** The IPSec encryption algorithm (IKE phase 1). */
 export type IpsecPolicyIpsecEncryption =
@@ -57158,22 +56650,14 @@ export interface VirtualNetworkGatewayPolicyGroupMember {
   /** The value of Attribute used for this VirtualNetworkGatewayPolicyGroupMember. */
   attributeValue?: string;
 }
-export const VirtualNetworkGatewayPolicyGroupMember = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    attributeType: S.optional(VirtualNetworkGatewayPolicyGroupMemberAttributeType),
-    attributeValue: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "VirtualNetworkGatewayPolicyGroupMember",
-}) as any as S.Schema<VirtualNetworkGatewayPolicyGroupMember>;
+export const VirtualNetworkGatewayPolicyGroupMember =
+  VpnServerConfigurationPolicyGroupMember as any as S.Schema<VirtualNetworkGatewayPolicyGroupMember>;
 
 /** Multiple PolicyMembers for VirtualNetworkGatewayPolicyGroup. */
 export type VirtualNetworkGatewayPolicyGroupPropertiesPolicyMembersList =
   Array<VirtualNetworkGatewayPolicyGroupMember>;
-export const VirtualNetworkGatewayPolicyGroupPropertiesPolicyMembersList = /*@__PURE__*/ S.Array(
-  VirtualNetworkGatewayPolicyGroupMember,
-) as any as S.Schema<VirtualNetworkGatewayPolicyGroupPropertiesPolicyMembersList>;
+export const VirtualNetworkGatewayPolicyGroupPropertiesPolicyMembersList =
+  VpnServerConfigurationPolicyGroupPropertiesPolicyMembersList as any as S.Schema<VirtualNetworkGatewayPolicyGroupPropertiesPolicyMembersList>;
 
 /** Reference to another subresource. */
 export type VirtualNetworkGatewayPolicyGroupPropertiesVngClientConnectionConfigurationsItem =
@@ -59023,18 +58507,7 @@ export interface VpnClientIPsecParameters {
   /** The Pfs Groups used in IKE Phase 2 for new child SA. */
   pfsGroup: VpnClientIPsecParametersPfsGroup;
 }
-export const VpnClientIPsecParameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    saLifeTimeSeconds: S.Number,
-    saDataSizeKilobytes: S.Number,
-    ipsecEncryption: VpnClientIPsecParametersIpsecEncryption,
-    ipsecIntegrity: VpnClientIPsecParametersIpsecIntegrity,
-    ikeEncryption: VpnClientIPsecParametersIkeEncryption,
-    ikeIntegrity: VpnClientIPsecParametersIkeIntegrity,
-    dhGroup: VpnClientIPsecParametersDhGroup,
-    pfsGroup: VpnClientIPsecParametersPfsGroup,
-  }),
-).annotate({ identifier: "VpnClientIPsecParameters" }) as any as S.Schema<VpnClientIPsecParameters>;
+export const VpnClientIPsecParameters = IpsecPolicy as any as S.Schema<VpnClientIPsecParameters>;
 
 export interface GetVirtualNetworkGatewayVpnProfilePackageUrlRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -61896,27 +61369,14 @@ export interface VpnSiteLinkConnectionPropertiesIpsecPoliciesItem {
   /** The Pfs Groups used in IKE Phase 2 for new child SA. */
   pfsGroup: VpnSiteLinkConnectionPropertiesIpsecPoliciesItemPfsGroup;
 }
-export const VpnSiteLinkConnectionPropertiesIpsecPoliciesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    saLifeTimeSeconds: S.Number,
-    saDataSizeKilobytes: S.Number,
-    ipsecEncryption: VpnSiteLinkConnectionPropertiesIpsecPoliciesItemIpsecEncryption,
-    ipsecIntegrity: VpnSiteLinkConnectionPropertiesIpsecPoliciesItemIpsecIntegrity,
-    ikeEncryption: VpnSiteLinkConnectionPropertiesIpsecPoliciesItemIkeEncryption,
-    ikeIntegrity: VpnSiteLinkConnectionPropertiesIpsecPoliciesItemIkeIntegrity,
-    dhGroup: VpnSiteLinkConnectionPropertiesIpsecPoliciesItemDhGroup,
-    pfsGroup: VpnSiteLinkConnectionPropertiesIpsecPoliciesItemPfsGroup,
-  }),
-).annotate({
-  identifier: "VpnSiteLinkConnectionPropertiesIpsecPoliciesItem",
-}) as any as S.Schema<VpnSiteLinkConnectionPropertiesIpsecPoliciesItem>;
+export const VpnSiteLinkConnectionPropertiesIpsecPoliciesItem =
+  VpnConnectionPropertiesIpsecPoliciesItem as any as S.Schema<VpnSiteLinkConnectionPropertiesIpsecPoliciesItem>;
 
 /** The IPSec Policies to be considered by this connection. */
 export type VpnSiteLinkConnectionPropertiesIpsecPoliciesList =
   Array<VpnSiteLinkConnectionPropertiesIpsecPoliciesItem>;
-export const VpnSiteLinkConnectionPropertiesIpsecPoliciesList = /*@__PURE__*/ S.Array(
-  VpnSiteLinkConnectionPropertiesIpsecPoliciesItem,
-) as any as S.Schema<VpnSiteLinkConnectionPropertiesIpsecPoliciesList>;
+export const VpnSiteLinkConnectionPropertiesIpsecPoliciesList =
+  VpnConnectionPropertiesIpsecPoliciesList as any as S.Schema<VpnSiteLinkConnectionPropertiesIpsecPoliciesList>;
 
 /** Provisioning states of a resource. */
 export type VpnSiteLinkConnectionPropertiesProvisioningState =
@@ -62552,9 +62012,8 @@ export const VpnServerConfigurationPropertiesVpnProtocolsItem = S.String;
 /** VPN protocols for the VpnServerConfiguration. */
 export type VpnServerConfigurationPropertiesVpnProtocolsList =
   Array<VpnServerConfigurationPropertiesVpnProtocolsItem>;
-export const VpnServerConfigurationPropertiesVpnProtocolsList = /*@__PURE__*/ S.Array(
-  VpnServerConfigurationPropertiesVpnProtocolsItem,
-) as any as S.Schema<VpnServerConfigurationPropertiesVpnProtocolsList>;
+export const VpnServerConfigurationPropertiesVpnProtocolsList =
+  ApplicationGatewaySslPolicyDisabledSslProtocolsList as any as S.Schema<VpnServerConfigurationPropertiesVpnProtocolsList>;
 
 /** VPN authentication types enabled for the virtual network gateway. */
 export type VpnServerConfigurationPropertiesVpnAuthenticationTypesItem =
@@ -62566,9 +62025,8 @@ export const VpnServerConfigurationPropertiesVpnAuthenticationTypesItem = S.Stri
 /** VPN authentication types for the VpnServerConfiguration. */
 export type VpnServerConfigurationPropertiesVpnAuthenticationTypesList =
   Array<VpnServerConfigurationPropertiesVpnAuthenticationTypesItem>;
-export const VpnServerConfigurationPropertiesVpnAuthenticationTypesList = /*@__PURE__*/ S.Array(
-  VpnServerConfigurationPropertiesVpnAuthenticationTypesItem,
-) as any as S.Schema<VpnServerConfigurationPropertiesVpnAuthenticationTypesList>;
+export const VpnServerConfigurationPropertiesVpnAuthenticationTypesList =
+  ApplicationGatewaySslPolicyDisabledSslProtocolsList as any as S.Schema<VpnServerConfigurationPropertiesVpnAuthenticationTypesList>;
 
 /** Properties of VPN client root certificate of VpnServerConfiguration. */
 export interface VpnServerConfigVpnClientRootCertificate {
@@ -63542,9 +63000,8 @@ export const MatchConditionTransformsItem = S.String;
 
 /** List of transforms. */
 export type MatchConditionTransformsList = Array<MatchConditionTransformsItem | (string & {})>;
-export const MatchConditionTransformsList = /*@__PURE__*/ S.Array(
-  MatchConditionTransformsItem,
-) as any as S.Schema<MatchConditionTransformsList>;
+export const MatchConditionTransformsList =
+  ApplicationGatewaySslPolicyDisabledSslProtocolsList as any as S.Schema<MatchConditionTransformsList>;
 
 /** Define match conditions. */
 export interface MatchCondition {
@@ -67004,18 +66461,8 @@ export interface AdminRuleCollectionSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const AdminRuleCollectionSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(AdminRuleCollectionSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(AdminRuleCollectionSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AdminRuleCollectionSystemData",
-}) as any as S.Schema<AdminRuleCollectionSystemData>;
+export const AdminRuleCollectionSystemData =
+  AdminRulesCreateOrUpdateResponseSystemData as any as S.Schema<AdminRuleCollectionSystemData>;
 
 /** Defines the admin rule collection. */
 export interface AdminRuleCollection {
@@ -67406,9 +66853,7 @@ export const ApplicationGatewayAvailableSslOptionsPropertiesFormatAvailableCiphe
 export type ApplicationGatewayAvailableSslOptionsPropertiesFormatAvailableCipherSuitesList =
   Array<ApplicationGatewayAvailableSslOptionsPropertiesFormatAvailableCipherSuitesItem>;
 export const ApplicationGatewayAvailableSslOptionsPropertiesFormatAvailableCipherSuitesList =
-  /*@__PURE__*/ S.Array(
-    ApplicationGatewayAvailableSslOptionsPropertiesFormatAvailableCipherSuitesItem,
-  ) as any as S.Schema<ApplicationGatewayAvailableSslOptionsPropertiesFormatAvailableCipherSuitesList>;
+  ApplicationGatewaySslPredefinedPolicyPropertiesFormatCipherSuitesList as any as S.Schema<ApplicationGatewayAvailableSslOptionsPropertiesFormatAvailableCipherSuitesList>;
 
 /** Ssl protocol enums. */
 export type ApplicationGatewayAvailableSslOptionsPropertiesFormatAvailableProtocolsItem =
@@ -67422,9 +66867,7 @@ export const ApplicationGatewayAvailableSslOptionsPropertiesFormatAvailableProto
 export type ApplicationGatewayAvailableSslOptionsPropertiesFormatAvailableProtocolsList =
   Array<ApplicationGatewayAvailableSslOptionsPropertiesFormatAvailableProtocolsItem>;
 export const ApplicationGatewayAvailableSslOptionsPropertiesFormatAvailableProtocolsList =
-  /*@__PURE__*/ S.Array(
-    ApplicationGatewayAvailableSslOptionsPropertiesFormatAvailableProtocolsItem,
-  ) as any as S.Schema<ApplicationGatewayAvailableSslOptionsPropertiesFormatAvailableProtocolsList>;
+  ApplicationGatewaySslPredefinedPolicyPropertiesFormatCipherSuitesList as any as S.Schema<ApplicationGatewayAvailableSslOptionsPropertiesFormatAvailableProtocolsList>;
 
 /** Properties of ApplicationGatewayAvailableSslOptions. */
 export interface ApplicationGatewayAvailableSslOptionsPropertiesFormat {
@@ -67588,9 +67031,8 @@ export const ApplicationGatewayFirewallRuleSetPropertiesFormatTiersItem = S.Stri
 /** Tier of an application gateway that support the rule set. */
 export type ApplicationGatewayFirewallRuleSetPropertiesFormatTiersList =
   Array<ApplicationGatewayFirewallRuleSetPropertiesFormatTiersItem>;
-export const ApplicationGatewayFirewallRuleSetPropertiesFormatTiersList = /*@__PURE__*/ S.Array(
-  ApplicationGatewayFirewallRuleSetPropertiesFormatTiersItem,
-) as any as S.Schema<ApplicationGatewayFirewallRuleSetPropertiesFormatTiersList>;
+export const ApplicationGatewayFirewallRuleSetPropertiesFormatTiersList =
+  ApplicationGatewaySslPolicyDisabledSslProtocolsList as any as S.Schema<ApplicationGatewayFirewallRuleSetPropertiesFormatTiersList>;
 
 /** Properties of the web application firewall rule set. */
 export interface ApplicationGatewayFirewallRuleSetPropertiesFormat {
@@ -67985,18 +67427,8 @@ export interface AuthenticationPolicySystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const AuthenticationPolicySystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(AuthenticationPolicySystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(AuthenticationPolicySystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AuthenticationPolicySystemData",
-}) as any as S.Schema<AuthenticationPolicySystemData>;
+export const AuthenticationPolicySystemData =
+  AdminRulesCreateOrUpdateResponseSystemData as any as S.Schema<AuthenticationPolicySystemData>;
 
 /** Authentication policy resource for identity integration. */
 export interface AuthenticationPolicy {
@@ -68966,16 +68398,7 @@ export interface CommitSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const CommitSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(CommitSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(CommitSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({ identifier: "CommitSystemData" }) as any as S.Schema<CommitSystemData>;
+export const CommitSystemData = BaseAdminRuleSystemData as any as S.Schema<CommitSystemData>;
 
 /** The commit resource */
 export interface Commit {
@@ -69284,18 +68707,8 @@ export interface ConnectivityConfigurationSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const ConnectivityConfigurationSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(ConnectivityConfigurationSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(ConnectivityConfigurationSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ConnectivityConfigurationSystemData",
-}) as any as S.Schema<ConnectivityConfigurationSystemData>;
+export const ConnectivityConfigurationSystemData =
+  AdminRulesCreateOrUpdateResponseSystemData as any as S.Schema<ConnectivityConfigurationSystemData>;
 
 /** The network manager connectivity configuration resource */
 export interface ConnectivityConfiguration {
@@ -72691,16 +72104,7 @@ export interface IpamPoolSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const IpamPoolSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(IpamPoolSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(IpamPoolSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({ identifier: "IpamPoolSystemData" }) as any as S.Schema<IpamPoolSystemData>;
+export const IpamPoolSystemData = BaseAdminRuleSystemData as any as S.Schema<IpamPoolSystemData>;
 
 /** Resource tags. */
 export type IpamPoolTagsMap = { [key: string]: string | undefined };
@@ -73395,18 +72799,8 @@ export interface NetworkManagerConnectionSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const NetworkManagerConnectionSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(NetworkManagerConnectionSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(NetworkManagerConnectionSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "NetworkManagerConnectionSystemData",
-}) as any as S.Schema<NetworkManagerConnectionSystemData>;
+export const NetworkManagerConnectionSystemData =
+  AdminRulesCreateOrUpdateResponseSystemData as any as S.Schema<NetworkManagerConnectionSystemData>;
 
 /** The Network Manager Connection resource */
 export interface NetworkManagerConnection {
@@ -73619,16 +73013,8 @@ export interface NetworkGroupSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const NetworkGroupSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(NetworkGroupSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(NetworkGroupSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({ identifier: "NetworkGroupSystemData" }) as any as S.Schema<NetworkGroupSystemData>;
+export const NetworkGroupSystemData =
+  BaseAdminRuleSystemData as any as S.Schema<NetworkGroupSystemData>;
 
 /** The network group resource */
 export interface NetworkGroup {
@@ -74393,16 +73779,8 @@ export interface NetworkManagerSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const NetworkManagerSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(NetworkManagerSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(NetworkManagerSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({ identifier: "NetworkManagerSystemData" }) as any as S.Schema<NetworkManagerSystemData>;
+export const NetworkManagerSystemData =
+  BaseAdminRuleSystemData as any as S.Schema<NetworkManagerSystemData>;
 
 /** The Managed Network resource */
 export interface NetworkManager {
@@ -74473,9 +73851,8 @@ export const ListNetworkManagerDeploymentStatusRequestDeploymentTypesItem = S.St
 export type ListNetworkManagerDeploymentStatusRequestDeploymentTypesList = Array<
   ListNetworkManagerDeploymentStatusRequestDeploymentTypesItem | (string & {})
 >;
-export const ListNetworkManagerDeploymentStatusRequestDeploymentTypesList = /*@__PURE__*/ S.Array(
-  ListNetworkManagerDeploymentStatusRequestDeploymentTypesItem,
-) as any as S.Schema<ListNetworkManagerDeploymentStatusRequestDeploymentTypesList>;
+export const ListNetworkManagerDeploymentStatusRequestDeploymentTypesList =
+  ApplicationGatewaySslPolicyDisabledSslProtocolsList as any as S.Schema<ListNetworkManagerDeploymentStatusRequestDeploymentTypesList>;
 
 export interface ListNetworkManagerDeploymentStatusRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -74830,18 +74207,8 @@ export interface NetworkManagerRoutingConfigurationSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const NetworkManagerRoutingConfigurationSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(NetworkManagerRoutingConfigurationSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(NetworkManagerRoutingConfigurationSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "NetworkManagerRoutingConfigurationSystemData",
-}) as any as S.Schema<NetworkManagerRoutingConfigurationSystemData>;
+export const NetworkManagerRoutingConfigurationSystemData =
+  AdminRulesCreateOrUpdateResponseSystemData as any as S.Schema<NetworkManagerRoutingConfigurationSystemData>;
 
 /** Defines the routing configuration */
 export interface NetworkManagerRoutingConfiguration {
@@ -75145,16 +74512,8 @@ export interface NspAccessRuleSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const NspAccessRuleSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(NspAccessRuleSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(NspAccessRuleSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({ identifier: "NspAccessRuleSystemData" }) as any as S.Schema<NspAccessRuleSystemData>;
+export const NspAccessRuleSystemData =
+  BaseAdminRuleSystemData as any as S.Schema<NspAccessRuleSystemData>;
 
 /** The NSP access rule resource */
 export interface NspAccessRule {
@@ -75377,16 +74736,8 @@ export interface NspAssociationSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const NspAssociationSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(NspAssociationSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(NspAssociationSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({ identifier: "NspAssociationSystemData" }) as any as S.Schema<NspAssociationSystemData>;
+export const NspAssociationSystemData =
+  BaseAdminRuleSystemData as any as S.Schema<NspAssociationSystemData>;
 
 /** The NSP resource association resource */
 export interface NspAssociation {
@@ -75489,18 +74840,8 @@ export interface NetworkSecurityPerimeterSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const NetworkSecurityPerimeterSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(NetworkSecurityPerimeterSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(NetworkSecurityPerimeterSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "NetworkSecurityPerimeterSystemData",
-}) as any as S.Schema<NetworkSecurityPerimeterSystemData>;
+export const NetworkSecurityPerimeterSystemData =
+  AdminRulesCreateOrUpdateResponseSystemData as any as S.Schema<NetworkSecurityPerimeterSystemData>;
 
 /** Resource tags. */
 export type NetworkSecurityPerimeterTagsMap = { [key: string]: string | undefined };
@@ -75620,18 +74961,8 @@ export interface NspLinkReferenceSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const NspLinkReferenceSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(NspLinkReferenceSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(NspLinkReferenceSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "NspLinkReferenceSystemData",
-}) as any as S.Schema<NspLinkReferenceSystemData>;
+export const NspLinkReferenceSystemData =
+  AdminRulesCreateOrUpdateResponseSystemData as any as S.Schema<NspLinkReferenceSystemData>;
 
 /** The network security perimeter linkReference resource */
 export interface NspLinkReference {
@@ -75736,16 +75067,7 @@ export interface NspLinkSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const NspLinkSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(NspLinkSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(NspLinkSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({ identifier: "NspLinkSystemData" }) as any as S.Schema<NspLinkSystemData>;
+export const NspLinkSystemData = BaseAdminRuleSystemData as any as S.Schema<NspLinkSystemData>;
 
 /** The network security perimeter link resource */
 export interface NspLink {
@@ -75847,18 +75169,8 @@ export interface NspLoggingConfigurationSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const NspLoggingConfigurationSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(NspLoggingConfigurationSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(NspLoggingConfigurationSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "NspLoggingConfigurationSystemData",
-}) as any as S.Schema<NspLoggingConfigurationSystemData>;
+export const NspLoggingConfigurationSystemData =
+  AdminRulesCreateOrUpdateResponseSystemData as any as S.Schema<NspLoggingConfigurationSystemData>;
 
 /** The NSP logging configuration */
 export interface NspLoggingConfiguration {
@@ -75963,16 +75275,8 @@ export interface NspProfileSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const NspProfileSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(NspProfileSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(NspProfileSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({ identifier: "NspProfileSystemData" }) as any as S.Schema<NspProfileSystemData>;
+export const NspProfileSystemData =
+  BaseAdminRuleSystemData as any as S.Schema<NspProfileSystemData>;
 
 /** The network security perimeter profile resource */
 export interface NspProfile {
@@ -77588,18 +76892,8 @@ export interface ReachabilityAnalysisIntentSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const ReachabilityAnalysisIntentSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(ReachabilityAnalysisIntentSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(ReachabilityAnalysisIntentSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ReachabilityAnalysisIntentSystemData",
-}) as any as S.Schema<ReachabilityAnalysisIntentSystemData>;
+export const ReachabilityAnalysisIntentSystemData =
+  AdminRulesCreateOrUpdateResponseSystemData as any as S.Schema<ReachabilityAnalysisIntentSystemData>;
 
 /** Configuration information or intent on which to do the analysis on. */
 export interface ReachabilityAnalysisIntent {
@@ -77722,18 +77016,8 @@ export interface ReachabilityAnalysisRunSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const ReachabilityAnalysisRunSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(ReachabilityAnalysisRunSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(ReachabilityAnalysisRunSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ReachabilityAnalysisRunSystemData",
-}) as any as S.Schema<ReachabilityAnalysisRunSystemData>;
+export const ReachabilityAnalysisRunSystemData =
+  AdminRulesCreateOrUpdateResponseSystemData as any as S.Schema<ReachabilityAnalysisRunSystemData>;
 
 /** Configuration information for analysis run. */
 export interface ReachabilityAnalysisRun {
@@ -78238,18 +77522,8 @@ export interface RoutingRuleCollectionSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const RoutingRuleCollectionSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(RoutingRuleCollectionSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(RoutingRuleCollectionSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RoutingRuleCollectionSystemData",
-}) as any as S.Schema<RoutingRuleCollectionSystemData>;
+export const RoutingRuleCollectionSystemData =
+  AdminRulesCreateOrUpdateResponseSystemData as any as S.Schema<RoutingRuleCollectionSystemData>;
 
 /** Defines the routing rule collection. */
 export interface RoutingRuleCollection {
@@ -78361,16 +77635,8 @@ export interface RoutingRuleSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const RoutingRuleSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(RoutingRuleSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(RoutingRuleSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({ identifier: "RoutingRuleSystemData" }) as any as S.Schema<RoutingRuleSystemData>;
+export const RoutingRuleSystemData =
+  BaseAdminRuleSystemData as any as S.Schema<RoutingRuleSystemData>;
 
 /** Network routing rule. */
 export interface RoutingRule {
@@ -78480,18 +77746,8 @@ export interface ScopeConnectionSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const ScopeConnectionSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(ScopeConnectionSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(ScopeConnectionSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ScopeConnectionSystemData",
-}) as any as S.Schema<ScopeConnectionSystemData>;
+export const ScopeConnectionSystemData =
+  AdminRulesCreateOrUpdateResponseSystemData as any as S.Schema<ScopeConnectionSystemData>;
 
 /** The Scope Connections resource */
 export interface ScopeConnection {
@@ -78603,18 +77859,8 @@ export interface SecurityAdminConfigurationSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SecurityAdminConfigurationSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(SecurityAdminConfigurationSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(SecurityAdminConfigurationSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SecurityAdminConfigurationSystemData",
-}) as any as S.Schema<SecurityAdminConfigurationSystemData>;
+export const SecurityAdminConfigurationSystemData =
+  AdminRulesCreateOrUpdateResponseSystemData as any as S.Schema<SecurityAdminConfigurationSystemData>;
 
 /** Defines the security admin configuration */
 export interface SecurityAdminConfiguration {
@@ -78848,18 +78094,8 @@ export interface SecurityUserConfigurationSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SecurityUserConfigurationSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(SecurityUserConfigurationSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(SecurityUserConfigurationSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SecurityUserConfigurationSystemData",
-}) as any as S.Schema<SecurityUserConfigurationSystemData>;
+export const SecurityUserConfigurationSystemData =
+  AdminRulesCreateOrUpdateResponseSystemData as any as S.Schema<SecurityUserConfigurationSystemData>;
 
 /** Defines the security user configuration */
 export interface SecurityUserConfiguration {
@@ -78976,18 +78212,8 @@ export interface SecurityUserRuleCollectionSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SecurityUserRuleCollectionSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(SecurityUserRuleCollectionSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(SecurityUserRuleCollectionSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SecurityUserRuleCollectionSystemData",
-}) as any as S.Schema<SecurityUserRuleCollectionSystemData>;
+export const SecurityUserRuleCollectionSystemData =
+  AdminRulesCreateOrUpdateResponseSystemData as any as S.Schema<SecurityUserRuleCollectionSystemData>;
 
 /** Defines the security user rule collection. */
 export interface SecurityUserRuleCollection {
@@ -79107,18 +78333,8 @@ export interface SecurityUserRuleSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SecurityUserRuleSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(SecurityUserRuleSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(SecurityUserRuleSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SecurityUserRuleSystemData",
-}) as any as S.Schema<SecurityUserRuleSystemData>;
+export const SecurityUserRuleSystemData =
+  AdminRulesCreateOrUpdateResponseSystemData as any as S.Schema<SecurityUserRuleSystemData>;
 
 /** Network security user rule. */
 export interface SecurityUserRule {
@@ -79416,16 +78632,8 @@ export interface ServiceGatewaySystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const ServiceGatewaySystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(ServiceGatewaySystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(ServiceGatewaySystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({ identifier: "ServiceGatewaySystemData" }) as any as S.Schema<ServiceGatewaySystemData>;
+export const ServiceGatewaySystemData =
+  BaseAdminRuleSystemData as any as S.Schema<ServiceGatewaySystemData>;
 
 /** Resource tags. */
 export type ServiceGatewayTagsMap = { [key: string]: string | undefined };
@@ -79739,16 +78947,8 @@ export interface StaticCidrSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const StaticCidrSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(StaticCidrSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(StaticCidrSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({ identifier: "StaticCidrSystemData" }) as any as S.Schema<StaticCidrSystemData>;
+export const StaticCidrSystemData =
+  BaseAdminRuleSystemData as any as S.Schema<StaticCidrSystemData>;
 
 /** Instance of StaticCidr resource. */
 export interface StaticCidr {
@@ -79856,16 +79056,8 @@ export interface StaticMemberSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const StaticMemberSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(StaticMemberSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(StaticMemberSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({ identifier: "StaticMemberSystemData" }) as any as S.Schema<StaticMemberSystemData>;
+export const StaticMemberSystemData =
+  BaseAdminRuleSystemData as any as S.Schema<StaticMemberSystemData>;
 
 /** StaticMember Item. */
 export interface StaticMember {
@@ -80174,18 +79366,8 @@ export interface VerifierWorkspaceSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const VerifierWorkspaceSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(VerifierWorkspaceSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(VerifierWorkspaceSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "VerifierWorkspaceSystemData",
-}) as any as S.Schema<VerifierWorkspaceSystemData>;
+export const VerifierWorkspaceSystemData =
+  AdminRulesCreateOrUpdateResponseSystemData as any as S.Schema<VerifierWorkspaceSystemData>;
 
 /** Resource tags. */
 export type VerifierWorkspaceTagsMap = { [key: string]: string | undefined };
@@ -83492,22 +82674,7 @@ export interface ManagementGroupNetworkManagerConnectionsCreateOrUpdateResponseS
   lastModifiedAt?: string;
 }
 export const ManagementGroupNetworkManagerConnectionsCreateOrUpdateResponseSystemData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        ManagementGroupNetworkManagerConnectionsCreateOrUpdateResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        ManagementGroupNetworkManagerConnectionsCreateOrUpdateResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ManagementGroupNetworkManagerConnectionsCreateOrUpdateResponseSystemData",
-  }) as any as S.Schema<ManagementGroupNetworkManagerConnectionsCreateOrUpdateResponseSystemData>;
+  GetNetworkSecurityPerimeterLoggingConfigurationResponseSystemData as any as S.Schema<ManagementGroupNetworkManagerConnectionsCreateOrUpdateResponseSystemData>;
 
 export interface ManagementGroupNetworkManagerConnectionsCreateOrUpdateResponse {
   /** Resource ID. */
@@ -84002,18 +83169,8 @@ export interface NetworkGroupsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const NetworkGroupsCreateOrUpdateResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(NetworkGroupsCreateOrUpdateResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(NetworkGroupsCreateOrUpdateResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "NetworkGroupsCreateOrUpdateResponseSystemData",
-}) as any as S.Schema<NetworkGroupsCreateOrUpdateResponseSystemData>;
+export const NetworkGroupsCreateOrUpdateResponseSystemData =
+  AdminRulesCreateOrUpdateResponseSystemData as any as S.Schema<NetworkGroupsCreateOrUpdateResponseSystemData>;
 
 export interface NetworkGroupsCreateOrUpdateResponse {
   /** Resource ID. */
@@ -84849,22 +84006,7 @@ export interface NetworkManagerRoutingConfigurationsCreateOrUpdateResponseSystem
   lastModifiedAt?: string;
 }
 export const NetworkManagerRoutingConfigurationsCreateOrUpdateResponseSystemData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        NetworkManagerRoutingConfigurationsCreateOrUpdateResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        NetworkManagerRoutingConfigurationsCreateOrUpdateResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "NetworkManagerRoutingConfigurationsCreateOrUpdateResponseSystemData",
-  }) as any as S.Schema<NetworkManagerRoutingConfigurationsCreateOrUpdateResponseSystemData>;
+  GetNetworkSecurityPerimeterLoggingConfigurationResponseSystemData as any as S.Schema<NetworkManagerRoutingConfigurationsCreateOrUpdateResponseSystemData>;
 
 export interface NetworkManagerRoutingConfigurationsCreateOrUpdateResponse {
   /** Resource ID. */
@@ -84939,9 +84081,8 @@ export const NetworkManagerPropertiesInputNetworkManagerScopeAccessesItem = S.St
 export type NetworkManagerPropertiesInputNetworkManagerScopeAccessesList = Array<
   NetworkManagerPropertiesInputNetworkManagerScopeAccessesItem | (string & {})
 >;
-export const NetworkManagerPropertiesInputNetworkManagerScopeAccessesList = /*@__PURE__*/ S.Array(
-  NetworkManagerPropertiesInputNetworkManagerScopeAccessesItem,
-) as any as S.Schema<NetworkManagerPropertiesInputNetworkManagerScopeAccessesList>;
+export const NetworkManagerPropertiesInputNetworkManagerScopeAccessesList =
+  ApplicationGatewaySslPolicyDisabledSslProtocolsList as any as S.Schema<NetworkManagerPropertiesInputNetworkManagerScopeAccessesList>;
 
 /** Provisioning states of a resource. */
 export type NetworkManagerPropertiesInputProvisioningState =
@@ -85050,20 +84191,8 @@ export interface NetworkManagersCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const NetworkManagersCreateOrUpdateResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(NetworkManagersCreateOrUpdateResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      NetworkManagersCreateOrUpdateResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "NetworkManagersCreateOrUpdateResponseSystemData",
-}) as any as S.Schema<NetworkManagersCreateOrUpdateResponseSystemData>;
+export const NetworkManagersCreateOrUpdateResponseSystemData =
+  AdminRuleCollectionsCreateOrUpdateResponseSystemData as any as S.Schema<NetworkManagersCreateOrUpdateResponseSystemData>;
 
 export interface NetworkManagersCreateOrUpdateResponse {
   /** Resource ID. */
@@ -85542,22 +84671,7 @@ export interface NetworkSecurityPerimeterAccessRulesCreateOrUpdateResponseSystem
   lastModifiedAt?: string;
 }
 export const NetworkSecurityPerimeterAccessRulesCreateOrUpdateResponseSystemData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        NetworkSecurityPerimeterAccessRulesCreateOrUpdateResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        NetworkSecurityPerimeterAccessRulesCreateOrUpdateResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "NetworkSecurityPerimeterAccessRulesCreateOrUpdateResponseSystemData",
-  }) as any as S.Schema<NetworkSecurityPerimeterAccessRulesCreateOrUpdateResponseSystemData>;
+  GetNetworkSecurityPerimeterLoggingConfigurationResponseSystemData as any as S.Schema<NetworkSecurityPerimeterAccessRulesCreateOrUpdateResponseSystemData>;
 
 export interface NetworkSecurityPerimeterAccessRulesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -85737,22 +84851,7 @@ export interface NetworkSecurityPerimeterAssociationsCreateOrUpdateResponseSyste
   lastModifiedAt?: string;
 }
 export const NetworkSecurityPerimeterAssociationsCreateOrUpdateResponseSystemData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        NetworkSecurityPerimeterAssociationsCreateOrUpdateResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        NetworkSecurityPerimeterAssociationsCreateOrUpdateResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "NetworkSecurityPerimeterAssociationsCreateOrUpdateResponseSystemData",
-  }) as any as S.Schema<NetworkSecurityPerimeterAssociationsCreateOrUpdateResponseSystemData>;
+  GetNetworkSecurityPerimeterLoggingConfigurationResponseSystemData as any as S.Schema<NetworkSecurityPerimeterAssociationsCreateOrUpdateResponseSystemData>;
 
 export interface NetworkSecurityPerimeterAssociationsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -85926,22 +85025,7 @@ export interface NetworkSecurityPerimeterLinksCreateOrUpdateResponseSystemData {
   lastModifiedAt?: string;
 }
 export const NetworkSecurityPerimeterLinksCreateOrUpdateResponseSystemData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        NetworkSecurityPerimeterLinksCreateOrUpdateResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        NetworkSecurityPerimeterLinksCreateOrUpdateResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "NetworkSecurityPerimeterLinksCreateOrUpdateResponseSystemData",
-  }) as any as S.Schema<NetworkSecurityPerimeterLinksCreateOrUpdateResponseSystemData>;
+  GetNetworkSecurityPerimeterLoggingConfigurationResponseSystemData as any as S.Schema<NetworkSecurityPerimeterLinksCreateOrUpdateResponseSystemData>;
 
 export interface NetworkSecurityPerimeterLinksCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -86033,22 +85117,7 @@ export interface NetworkSecurityPerimeterLoggingConfigurationsCreateOrUpdateResp
   lastModifiedAt?: string;
 }
 export const NetworkSecurityPerimeterLoggingConfigurationsCreateOrUpdateResponseSystemData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        NetworkSecurityPerimeterLoggingConfigurationsCreateOrUpdateResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        NetworkSecurityPerimeterLoggingConfigurationsCreateOrUpdateResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "NetworkSecurityPerimeterLoggingConfigurationsCreateOrUpdateResponseSystemData",
-  }) as any as S.Schema<NetworkSecurityPerimeterLoggingConfigurationsCreateOrUpdateResponseSystemData>;
+  GetNetworkSecurityPerimeterLoggingConfigurationResponseSystemData as any as S.Schema<NetworkSecurityPerimeterLoggingConfigurationsCreateOrUpdateResponseSystemData>;
 
 export interface NetworkSecurityPerimeterLoggingConfigurationsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -86146,22 +85215,7 @@ export interface NetworkSecurityPerimeterProfilesCreateOrUpdateResponseSystemDat
   lastModifiedAt?: string;
 }
 export const NetworkSecurityPerimeterProfilesCreateOrUpdateResponseSystemData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        NetworkSecurityPerimeterProfilesCreateOrUpdateResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        NetworkSecurityPerimeterProfilesCreateOrUpdateResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "NetworkSecurityPerimeterProfilesCreateOrUpdateResponseSystemData",
-  }) as any as S.Schema<NetworkSecurityPerimeterProfilesCreateOrUpdateResponseSystemData>;
+  GetNetworkSecurityPerimeterLoggingConfigurationResponseSystemData as any as S.Schema<NetworkSecurityPerimeterProfilesCreateOrUpdateResponseSystemData>;
 
 export interface NetworkSecurityPerimeterProfilesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -86209,13 +85263,8 @@ export interface NetworkSecurityPerimeterPropertiesInput {
   /** The current provisioning state. */
   provisioningState?: NetworkSecurityPerimeterPropertiesInputProvisioningState | (string & {});
 }
-export const NetworkSecurityPerimeterPropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    provisioningState: S.optional(NetworkSecurityPerimeterPropertiesInputProvisioningState),
-  }),
-).annotate({
-  identifier: "NetworkSecurityPerimeterPropertiesInput",
-}) as any as S.Schema<NetworkSecurityPerimeterPropertiesInput>;
+export const NetworkSecurityPerimeterPropertiesInput =
+  ApplicationSecurityGroupPropertiesFormatInput as any as S.Schema<NetworkSecurityPerimeterPropertiesInput>;
 
 export interface NetworkSecurityPerimetersCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -86282,23 +85331,8 @@ export interface NetworkSecurityPerimetersCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const NetworkSecurityPerimetersCreateOrUpdateResponseSystemData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        NetworkSecurityPerimetersCreateOrUpdateResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        NetworkSecurityPerimetersCreateOrUpdateResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "NetworkSecurityPerimetersCreateOrUpdateResponseSystemData",
-}) as any as S.Schema<NetworkSecurityPerimetersCreateOrUpdateResponseSystemData>;
+export const NetworkSecurityPerimetersCreateOrUpdateResponseSystemData =
+  ConnectivityConfigurationsCreateOrUpdateResponseSystemData as any as S.Schema<NetworkSecurityPerimetersCreateOrUpdateResponseSystemData>;
 
 /** Resource tags. */
 export type NetworkSecurityPerimetersCreateOrUpdateResponseTagsMap = {
@@ -86509,9 +85543,8 @@ export const NetworkVirtualAppliancePropertiesFormatInputAddressFamilyItem = S.S
 export type NetworkVirtualAppliancePropertiesFormatInputAddressFamilyList = Array<
   NetworkVirtualAppliancePropertiesFormatInputAddressFamilyItem | (string & {})
 >;
-export const NetworkVirtualAppliancePropertiesFormatInputAddressFamilyList = /*@__PURE__*/ S.Array(
-  NetworkVirtualAppliancePropertiesFormatInputAddressFamilyItem,
-) as any as S.Schema<NetworkVirtualAppliancePropertiesFormatInputAddressFamilyList>;
+export const NetworkVirtualAppliancePropertiesFormatInputAddressFamilyList =
+  ApplicationGatewaySslPolicyDisabledSslProtocolsList as any as S.Schema<NetworkVirtualAppliancePropertiesFormatInputAddressFamilyList>;
 
 /** Network Virtual Appliance definition. */
 export interface NetworkVirtualAppliancePropertiesFormatInput {
@@ -87339,18 +86372,8 @@ export interface PatchNetworkManagerResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const PatchNetworkManagerResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(PatchNetworkManagerResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(PatchNetworkManagerResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PatchNetworkManagerResponseSystemData",
-}) as any as S.Schema<PatchNetworkManagerResponseSystemData>;
+export const PatchNetworkManagerResponseSystemData =
+  AdminRulesCreateOrUpdateResponseSystemData as any as S.Schema<PatchNetworkManagerResponseSystemData>;
 
 export interface PatchNetworkManagerResponse {
   /** Resource ID. */
@@ -87449,20 +86472,8 @@ export interface PatchNetworkSecurityPerimeterResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const PatchNetworkSecurityPerimeterResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(PatchNetworkSecurityPerimeterResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      PatchNetworkSecurityPerimeterResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PatchNetworkSecurityPerimeterResponseSystemData",
-}) as any as S.Schema<PatchNetworkSecurityPerimeterResponseSystemData>;
+export const PatchNetworkSecurityPerimeterResponseSystemData =
+  AdminRuleCollectionsCreateOrUpdateResponseSystemData as any as S.Schema<PatchNetworkSecurityPerimeterResponseSystemData>;
 
 /** Resource tags. */
 export type PatchNetworkSecurityPerimeterResponseTagsMap = { [key: string]: string | undefined };
@@ -89497,20 +88508,8 @@ export interface RoutingRuleCollectionsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const RoutingRuleCollectionsCreateOrUpdateResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(RoutingRuleCollectionsCreateOrUpdateResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      RoutingRuleCollectionsCreateOrUpdateResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RoutingRuleCollectionsCreateOrUpdateResponseSystemData",
-}) as any as S.Schema<RoutingRuleCollectionsCreateOrUpdateResponseSystemData>;
+export const RoutingRuleCollectionsCreateOrUpdateResponseSystemData =
+  AdminRuleCollectionsCreateOrUpdateResponseSystemData as any as S.Schema<RoutingRuleCollectionsCreateOrUpdateResponseSystemData>;
 
 export interface RoutingRuleCollectionsCreateOrUpdateResponse {
   /** Resource ID. */
@@ -89639,18 +88638,8 @@ export interface RoutingRulesCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const RoutingRulesCreateOrUpdateResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(RoutingRulesCreateOrUpdateResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(RoutingRulesCreateOrUpdateResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RoutingRulesCreateOrUpdateResponseSystemData",
-}) as any as S.Schema<RoutingRulesCreateOrUpdateResponseSystemData>;
+export const RoutingRulesCreateOrUpdateResponseSystemData =
+  AdminRulesCreateOrUpdateResponseSystemData as any as S.Schema<RoutingRulesCreateOrUpdateResponseSystemData>;
 
 export interface RoutingRulesCreateOrUpdateResponse {
   /** Resource ID. */
@@ -89741,20 +88730,8 @@ export interface ScopeConnectionsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const ScopeConnectionsCreateOrUpdateResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(ScopeConnectionsCreateOrUpdateResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      ScopeConnectionsCreateOrUpdateResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ScopeConnectionsCreateOrUpdateResponseSystemData",
-}) as any as S.Schema<ScopeConnectionsCreateOrUpdateResponseSystemData>;
+export const ScopeConnectionsCreateOrUpdateResponseSystemData =
+  AdminRuleCollectionsCreateOrUpdateResponseSystemData as any as S.Schema<ScopeConnectionsCreateOrUpdateResponseSystemData>;
 
 export interface ScopeConnectionsCreateOrUpdateResponse {
   /** Resource ID. */
@@ -89798,9 +88775,7 @@ export type SecurityAdminConfigurationPropertiesFormatInputApplyOnNetworkIntentP
     | (string & {})
   >;
 export const SecurityAdminConfigurationPropertiesFormatInputApplyOnNetworkIntentPolicyBasedServicesList =
-  /*@__PURE__*/ S.Array(
-    SecurityAdminConfigurationPropertiesFormatInputApplyOnNetworkIntentPolicyBasedServicesItem,
-  ) as any as S.Schema<SecurityAdminConfigurationPropertiesFormatInputApplyOnNetworkIntentPolicyBasedServicesList>;
+  ApplicationGatewaySslPredefinedPolicyPropertiesFormatCipherSuitesList as any as S.Schema<SecurityAdminConfigurationPropertiesFormatInputApplyOnNetworkIntentPolicyBasedServicesList>;
 
 /** Option indicating the update behavior of a resource's address prefixes referenced within a network manager configuration. */
 export type SecurityAdminConfigurationPropertiesFormatInputNetworkGroupAddressSpaceAggregationOption =
@@ -89912,23 +88887,8 @@ export interface SecurityAdminConfigurationsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SecurityAdminConfigurationsCreateOrUpdateResponseSystemData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        SecurityAdminConfigurationsCreateOrUpdateResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        SecurityAdminConfigurationsCreateOrUpdateResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "SecurityAdminConfigurationsCreateOrUpdateResponseSystemData",
-}) as any as S.Schema<SecurityAdminConfigurationsCreateOrUpdateResponseSystemData>;
+export const SecurityAdminConfigurationsCreateOrUpdateResponseSystemData =
+  ConnectivityConfigurationsCreateOrUpdateResponseSystemData as any as S.Schema<SecurityAdminConfigurationsCreateOrUpdateResponseSystemData>;
 
 export interface SecurityAdminConfigurationsCreateOrUpdateResponse {
   /** Resource ID. */
@@ -90098,14 +89058,8 @@ export interface SecurityUserConfigurationPropertiesFormatInput {
     | SecurityUserConfigurationPropertiesFormatInputProvisioningState
     | (string & {});
 }
-export const SecurityUserConfigurationPropertiesFormatInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    provisioningState: S.optional(SecurityUserConfigurationPropertiesFormatInputProvisioningState),
-  }),
-).annotate({
-  identifier: "SecurityUserConfigurationPropertiesFormatInput",
-}) as any as S.Schema<SecurityUserConfigurationPropertiesFormatInput>;
+export const SecurityUserConfigurationPropertiesFormatInput =
+  VerifierWorkspaceProperties as any as S.Schema<SecurityUserConfigurationPropertiesFormatInput>;
 
 export interface SecurityUserConfigurationsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -90170,23 +89124,8 @@ export interface SecurityUserConfigurationsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SecurityUserConfigurationsCreateOrUpdateResponseSystemData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        SecurityUserConfigurationsCreateOrUpdateResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        SecurityUserConfigurationsCreateOrUpdateResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "SecurityUserConfigurationsCreateOrUpdateResponseSystemData",
-}) as any as S.Schema<SecurityUserConfigurationsCreateOrUpdateResponseSystemData>;
+export const SecurityUserConfigurationsCreateOrUpdateResponseSystemData =
+  ConnectivityConfigurationsCreateOrUpdateResponseSystemData as any as S.Schema<SecurityUserConfigurationsCreateOrUpdateResponseSystemData>;
 
 export interface SecurityUserConfigurationsCreateOrUpdateResponse {
   /** Resource ID. */
@@ -90318,23 +89257,8 @@ export interface SecurityUserRuleCollectionsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SecurityUserRuleCollectionsCreateOrUpdateResponseSystemData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        SecurityUserRuleCollectionsCreateOrUpdateResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        SecurityUserRuleCollectionsCreateOrUpdateResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "SecurityUserRuleCollectionsCreateOrUpdateResponseSystemData",
-}) as any as S.Schema<SecurityUserRuleCollectionsCreateOrUpdateResponseSystemData>;
+export const SecurityUserRuleCollectionsCreateOrUpdateResponseSystemData =
+  ConnectivityConfigurationsCreateOrUpdateResponseSystemData as any as S.Schema<SecurityUserRuleCollectionsCreateOrUpdateResponseSystemData>;
 
 export interface SecurityUserRuleCollectionsCreateOrUpdateResponse {
   /** Resource ID. */
@@ -90511,20 +89435,8 @@ export interface SecurityUserRulesCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SecurityUserRulesCreateOrUpdateResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(SecurityUserRulesCreateOrUpdateResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      SecurityUserRulesCreateOrUpdateResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SecurityUserRulesCreateOrUpdateResponseSystemData",
-}) as any as S.Schema<SecurityUserRulesCreateOrUpdateResponseSystemData>;
+export const SecurityUserRulesCreateOrUpdateResponseSystemData =
+  AdminRuleCollectionsCreateOrUpdateResponseSystemData as any as S.Schema<SecurityUserRulesCreateOrUpdateResponseSystemData>;
 
 export interface SecurityUserRulesCreateOrUpdateResponse {
   /** Resource ID. */
@@ -91317,20 +90229,8 @@ export interface ServiceGatewaysCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const ServiceGatewaysCreateOrUpdateResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(ServiceGatewaysCreateOrUpdateResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      ServiceGatewaysCreateOrUpdateResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ServiceGatewaysCreateOrUpdateResponseSystemData",
-}) as any as S.Schema<ServiceGatewaysCreateOrUpdateResponseSystemData>;
+export const ServiceGatewaysCreateOrUpdateResponseSystemData =
+  AdminRuleCollectionsCreateOrUpdateResponseSystemData as any as S.Schema<ServiceGatewaysCreateOrUpdateResponseSystemData>;
 
 /** Resource tags. */
 export type ServiceGatewaysCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
@@ -91964,18 +90864,8 @@ export interface StaticMembersCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const StaticMembersCreateOrUpdateResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(StaticMembersCreateOrUpdateResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(StaticMembersCreateOrUpdateResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "StaticMembersCreateOrUpdateResponseSystemData",
-}) as any as S.Schema<StaticMembersCreateOrUpdateResponseSystemData>;
+export const StaticMembersCreateOrUpdateResponseSystemData =
+  AdminRulesCreateOrUpdateResponseSystemData as any as S.Schema<StaticMembersCreateOrUpdateResponseSystemData>;
 
 export interface StaticMembersCreateOrUpdateResponse {
   /** Resource ID. */
@@ -92603,22 +91493,7 @@ export interface SubscriptionNetworkManagerConnectionsCreateOrUpdateResponseSyst
   lastModifiedAt?: string;
 }
 export const SubscriptionNetworkManagerConnectionsCreateOrUpdateResponseSystemData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        SubscriptionNetworkManagerConnectionsCreateOrUpdateResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        SubscriptionNetworkManagerConnectionsCreateOrUpdateResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "SubscriptionNetworkManagerConnectionsCreateOrUpdateResponseSystemData",
-  }) as any as S.Schema<SubscriptionNetworkManagerConnectionsCreateOrUpdateResponseSystemData>;
+  GetNetworkSecurityPerimeterLoggingConfigurationResponseSystemData as any as S.Schema<SubscriptionNetworkManagerConnectionsCreateOrUpdateResponseSystemData>;
 
 export interface SubscriptionNetworkManagerConnectionsCreateOrUpdateResponse {
   /** Resource ID. */
@@ -93502,18 +92377,8 @@ export interface UpdateAuthenticationPolicyResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdateAuthenticationPolicyResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(UpdateAuthenticationPolicyResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(UpdateAuthenticationPolicyResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateAuthenticationPolicyResponseSystemData",
-}) as any as S.Schema<UpdateAuthenticationPolicyResponseSystemData>;
+export const UpdateAuthenticationPolicyResponseSystemData =
+  AdminRulesCreateOrUpdateResponseSystemData as any as S.Schema<UpdateAuthenticationPolicyResponseSystemData>;
 
 export interface UpdateAuthenticationPolicyResponse {
   /** Resource ID. */
@@ -94790,18 +93655,8 @@ export interface UpdateIpamPoolResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdateIpamPoolResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(UpdateIpamPoolResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(UpdateIpamPoolResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateIpamPoolResponseSystemData",
-}) as any as S.Schema<UpdateIpamPoolResponseSystemData>;
+export const UpdateIpamPoolResponseSystemData =
+  AdminRulesCreateOrUpdateResponseSystemData as any as S.Schema<UpdateIpamPoolResponseSystemData>;
 
 /** Resource tags. */
 export type UpdateIpamPoolResponseTagsMap = { [key: string]: string | undefined };
@@ -96193,18 +95048,8 @@ export interface UpdateServiceGatewayTagsResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdateServiceGatewayTagsResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(UpdateServiceGatewayTagsResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(UpdateServiceGatewayTagsResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateServiceGatewayTagsResponseSystemData",
-}) as any as S.Schema<UpdateServiceGatewayTagsResponseSystemData>;
+export const UpdateServiceGatewayTagsResponseSystemData =
+  AdminRulesCreateOrUpdateResponseSystemData as any as S.Schema<UpdateServiceGatewayTagsResponseSystemData>;
 
 /** Resource tags. */
 export type UpdateServiceGatewayTagsResponseTagsMap = { [key: string]: string | undefined };
@@ -96337,18 +95182,8 @@ export interface UpdateVerifierWorkspaceResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdateVerifierWorkspaceResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(UpdateVerifierWorkspaceResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(UpdateVerifierWorkspaceResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateVerifierWorkspaceResponseSystemData",
-}) as any as S.Schema<UpdateVerifierWorkspaceResponseSystemData>;
+export const UpdateVerifierWorkspaceResponseSystemData =
+  AdminRulesCreateOrUpdateResponseSystemData as any as S.Schema<UpdateVerifierWorkspaceResponseSystemData>;
 
 /** Resource tags. */
 export type UpdateVerifierWorkspaceResponseTagsMap = { [key: string]: string | undefined };
@@ -98537,9 +97372,8 @@ export const VpnClientConfigurationInputVpnClientProtocolsItem = S.String;
 export type VpnClientConfigurationInputVpnClientProtocolsList = Array<
   VpnClientConfigurationInputVpnClientProtocolsItem | (string & {})
 >;
-export const VpnClientConfigurationInputVpnClientProtocolsList = /*@__PURE__*/ S.Array(
-  VpnClientConfigurationInputVpnClientProtocolsItem,
-) as any as S.Schema<VpnClientConfigurationInputVpnClientProtocolsList>;
+export const VpnClientConfigurationInputVpnClientProtocolsList =
+  ApplicationGatewaySslPolicyDisabledSslProtocolsList as any as S.Schema<VpnClientConfigurationInputVpnClientProtocolsList>;
 
 /** VPN authentication types enabled for the virtual network gateway. */
 export type VpnClientConfigurationInputVpnAuthenticationTypesItem =
@@ -98552,9 +97386,8 @@ export const VpnClientConfigurationInputVpnAuthenticationTypesItem = S.String;
 export type VpnClientConfigurationInputVpnAuthenticationTypesList = Array<
   VpnClientConfigurationInputVpnAuthenticationTypesItem | (string & {})
 >;
-export const VpnClientConfigurationInputVpnAuthenticationTypesList = /*@__PURE__*/ S.Array(
-  VpnClientConfigurationInputVpnAuthenticationTypesItem,
-) as any as S.Schema<VpnClientConfigurationInputVpnAuthenticationTypesList>;
+export const VpnClientConfigurationInputVpnAuthenticationTypesList =
+  ApplicationGatewaySslPolicyDisabledSslProtocolsList as any as S.Schema<VpnClientConfigurationInputVpnAuthenticationTypesList>;
 
 /** VpnClientIpsecPolicies for virtual network gateway P2S client. */
 export type VpnClientConfigurationInputVpnClientIpsecPoliciesList = Array<IpsecPolicy>;
@@ -98716,9 +97549,7 @@ export const VpnClientConfigurationInput = /*@__PURE__*/ S.suspend(() =>
 export type VirtualNetworkGatewayPolicyGroupPropertiesInputPolicyMembersList =
   Array<VirtualNetworkGatewayPolicyGroupMember>;
 export const VirtualNetworkGatewayPolicyGroupPropertiesInputPolicyMembersList =
-  /*@__PURE__*/ S.Array(
-    VirtualNetworkGatewayPolicyGroupMember,
-  ) as any as S.Schema<VirtualNetworkGatewayPolicyGroupPropertiesInputPolicyMembersList>;
+  VpnServerConfigurationPolicyGroupPropertiesInputPolicyMembersList as any as S.Schema<VirtualNetworkGatewayPolicyGroupPropertiesInputPolicyMembersList>;
 
 /** Provisioning states of a resource. */
 export type VirtualNetworkGatewayPolicyGroupPropertiesInputProvisioningState =
@@ -100901,27 +99732,14 @@ export interface VpnConnectionPropertiesInputIpsecPoliciesItem {
   /** The Pfs Groups used in IKE Phase 2 for new child SA. */
   pfsGroup: VpnConnectionPropertiesInputIpsecPoliciesItemPfsGroup | (string & {});
 }
-export const VpnConnectionPropertiesInputIpsecPoliciesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    saLifeTimeSeconds: S.Number,
-    saDataSizeKilobytes: S.Number,
-    ipsecEncryption: VpnConnectionPropertiesInputIpsecPoliciesItemIpsecEncryption,
-    ipsecIntegrity: VpnConnectionPropertiesInputIpsecPoliciesItemIpsecIntegrity,
-    ikeEncryption: VpnConnectionPropertiesInputIpsecPoliciesItemIkeEncryption,
-    ikeIntegrity: VpnConnectionPropertiesInputIpsecPoliciesItemIkeIntegrity,
-    dhGroup: VpnConnectionPropertiesInputIpsecPoliciesItemDhGroup,
-    pfsGroup: VpnConnectionPropertiesInputIpsecPoliciesItemPfsGroup,
-  }),
-).annotate({
-  identifier: "VpnConnectionPropertiesInputIpsecPoliciesItem",
-}) as any as S.Schema<VpnConnectionPropertiesInputIpsecPoliciesItem>;
+export const VpnConnectionPropertiesInputIpsecPoliciesItem =
+  VpnConnectionPropertiesIpsecPoliciesItem as any as S.Schema<VpnConnectionPropertiesInputIpsecPoliciesItem>;
 
 /** The IPSec Policies to be considered by this connection. */
 export type VpnConnectionPropertiesInputIpsecPoliciesList =
   Array<VpnConnectionPropertiesInputIpsecPoliciesItem>;
-export const VpnConnectionPropertiesInputIpsecPoliciesList = /*@__PURE__*/ S.Array(
-  VpnConnectionPropertiesInputIpsecPoliciesItem,
-) as any as S.Schema<VpnConnectionPropertiesInputIpsecPoliciesList>;
+export const VpnConnectionPropertiesInputIpsecPoliciesList =
+  VpnConnectionPropertiesIpsecPoliciesList as any as S.Schema<VpnConnectionPropertiesInputIpsecPoliciesList>;
 
 /** A collection of local address spaces in CIDR format. */
 export type VpnConnectionPropertiesInputTrafficSelectorPoliciesItemLocalAddressRangesList =
@@ -101099,27 +99917,14 @@ export interface VpnSiteLinkConnectionPropertiesInputIpsecPoliciesItem {
   /** The Pfs Groups used in IKE Phase 2 for new child SA. */
   pfsGroup: VpnSiteLinkConnectionPropertiesInputIpsecPoliciesItemPfsGroup | (string & {});
 }
-export const VpnSiteLinkConnectionPropertiesInputIpsecPoliciesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    saLifeTimeSeconds: S.Number,
-    saDataSizeKilobytes: S.Number,
-    ipsecEncryption: VpnSiteLinkConnectionPropertiesInputIpsecPoliciesItemIpsecEncryption,
-    ipsecIntegrity: VpnSiteLinkConnectionPropertiesInputIpsecPoliciesItemIpsecIntegrity,
-    ikeEncryption: VpnSiteLinkConnectionPropertiesInputIpsecPoliciesItemIkeEncryption,
-    ikeIntegrity: VpnSiteLinkConnectionPropertiesInputIpsecPoliciesItemIkeIntegrity,
-    dhGroup: VpnSiteLinkConnectionPropertiesInputIpsecPoliciesItemDhGroup,
-    pfsGroup: VpnSiteLinkConnectionPropertiesInputIpsecPoliciesItemPfsGroup,
-  }),
-).annotate({
-  identifier: "VpnSiteLinkConnectionPropertiesInputIpsecPoliciesItem",
-}) as any as S.Schema<VpnSiteLinkConnectionPropertiesInputIpsecPoliciesItem>;
+export const VpnSiteLinkConnectionPropertiesInputIpsecPoliciesItem =
+  VpnConnectionPropertiesIpsecPoliciesItem as any as S.Schema<VpnSiteLinkConnectionPropertiesInputIpsecPoliciesItem>;
 
 /** The IPSec Policies to be considered by this connection. */
 export type VpnSiteLinkConnectionPropertiesInputIpsecPoliciesList =
   Array<VpnSiteLinkConnectionPropertiesInputIpsecPoliciesItem>;
-export const VpnSiteLinkConnectionPropertiesInputIpsecPoliciesList = /*@__PURE__*/ S.Array(
-  VpnSiteLinkConnectionPropertiesInputIpsecPoliciesItem,
-) as any as S.Schema<VpnSiteLinkConnectionPropertiesInputIpsecPoliciesList>;
+export const VpnSiteLinkConnectionPropertiesInputIpsecPoliciesList =
+  VpnConnectionPropertiesIpsecPoliciesList as any as S.Schema<VpnSiteLinkConnectionPropertiesInputIpsecPoliciesList>;
 
 /** Provisioning states of a resource. */
 export type VpnSiteLinkConnectionPropertiesInputProvisioningState =
@@ -101624,9 +100429,8 @@ export const VpnServerConfigurationPropertiesInputVpnProtocolsItem = S.String;
 export type VpnServerConfigurationPropertiesInputVpnProtocolsList = Array<
   VpnServerConfigurationPropertiesInputVpnProtocolsItem | (string & {})
 >;
-export const VpnServerConfigurationPropertiesInputVpnProtocolsList = /*@__PURE__*/ S.Array(
-  VpnServerConfigurationPropertiesInputVpnProtocolsItem,
-) as any as S.Schema<VpnServerConfigurationPropertiesInputVpnProtocolsList>;
+export const VpnServerConfigurationPropertiesInputVpnProtocolsList =
+  ApplicationGatewaySslPolicyDisabledSslProtocolsList as any as S.Schema<VpnServerConfigurationPropertiesInputVpnProtocolsList>;
 
 /** VPN authentication types enabled for the virtual network gateway. */
 export type VpnServerConfigurationPropertiesInputVpnAuthenticationTypesItem =
@@ -101640,9 +100444,7 @@ export type VpnServerConfigurationPropertiesInputVpnAuthenticationTypesList = Ar
   VpnServerConfigurationPropertiesInputVpnAuthenticationTypesItem | (string & {})
 >;
 export const VpnServerConfigurationPropertiesInputVpnAuthenticationTypesList =
-  /*@__PURE__*/ S.Array(
-    VpnServerConfigurationPropertiesInputVpnAuthenticationTypesItem,
-  ) as any as S.Schema<VpnServerConfigurationPropertiesInputVpnAuthenticationTypesList>;
+  ApplicationGatewaySslPredefinedPolicyPropertiesFormatCipherSuitesList as any as S.Schema<VpnServerConfigurationPropertiesInputVpnAuthenticationTypesList>;
 
 /** VPN client root certificate of VpnServerConfiguration. */
 export type VpnServerConfigurationPropertiesInputVpnClientRootCertificatesList =

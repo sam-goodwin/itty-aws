@@ -179,22 +179,13 @@ export interface ZonePrimaryPrimaryNameserversItem {
   /** [Transaction signature (TSIG)](https://en.wikipedia.org/wiki/TSIG) algorithm used to generate the TSIG key. */
   tsig_algorithm?: ZonePrimaryPrimaryNameserversItemTsigAlgorithm;
 }
-export const ZonePrimaryPrimaryNameserversItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    address: S.String,
-    port: S.optional(S.Number),
-    tsig_key: S.optional(S.String),
-    tsig_algorithm: S.optional(ZonePrimaryPrimaryNameserversItemTsigAlgorithm),
-  }),
-).annotate({
-  identifier: "ZonePrimaryPrimaryNameserversItem",
-}) as any as S.Schema<ZonePrimaryPrimaryNameserversItem>;
+export const ZonePrimaryPrimaryNameserversItem =
+  CreateZoneRequestPrimaryNameserversItem as any as S.Schema<ZonePrimaryPrimaryNameserversItem>;
 
 /** Primary nameservers of the [Zone](#tag/zones). Only set if [Zone](#tag/zones) is in [secondary mode](#tag/zones/zone-modes), otherwise empty. */
 export type ZonePrimaryPrimaryNameserversList = Array<ZonePrimaryPrimaryNameserversItem>;
-export const ZonePrimaryPrimaryNameserversList = /*@__PURE__*/ S.Array(
-  ZonePrimaryPrimaryNameserversItem,
-) as any as S.Schema<ZonePrimaryPrimaryNameserversList>;
+export const ZonePrimaryPrimaryNameserversList =
+  CreateZoneRequestPrimaryNameserversList as any as S.Schema<ZonePrimaryPrimaryNameserversList>;
 
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type ZonePrimaryLabelsMap = { [key: string]: string | undefined };
@@ -326,22 +317,13 @@ export interface ZoneSecondaryPrimaryNameserversItem {
   /** [Transaction signature (TSIG)](https://en.wikipedia.org/wiki/TSIG) algorithm used to generate the TSIG key. */
   tsig_algorithm?: ZoneSecondaryPrimaryNameserversItemTsigAlgorithm;
 }
-export const ZoneSecondaryPrimaryNameserversItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    address: S.String,
-    port: S.optional(S.Number),
-    tsig_key: S.optional(S.String),
-    tsig_algorithm: S.optional(ZoneSecondaryPrimaryNameserversItemTsigAlgorithm),
-  }),
-).annotate({
-  identifier: "ZoneSecondaryPrimaryNameserversItem",
-}) as any as S.Schema<ZoneSecondaryPrimaryNameserversItem>;
+export const ZoneSecondaryPrimaryNameserversItem =
+  CreateZoneRequestPrimaryNameserversItem as any as S.Schema<ZoneSecondaryPrimaryNameserversItem>;
 
 /** Primary nameservers of the [Zone](#tag/zones). Only set if [Zone](#tag/zones) is in [secondary mode](#tag/zones/zone-modes), otherwise empty. */
 export type ZoneSecondaryPrimaryNameserversList = Array<ZoneSecondaryPrimaryNameserversItem>;
-export const ZoneSecondaryPrimaryNameserversList = /*@__PURE__*/ S.Array(
-  ZoneSecondaryPrimaryNameserversItem,
-) as any as S.Schema<ZoneSecondaryPrimaryNameserversList>;
+export const ZoneSecondaryPrimaryNameserversList =
+  CreateZoneRequestPrimaryNameserversList as any as S.Schema<ZoneSecondaryPrimaryNameserversList>;
 
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type ZoneSecondaryLabelsMap = { [key: string]: string | undefined };

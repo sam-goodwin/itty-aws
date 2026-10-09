@@ -157,9 +157,8 @@ export const PackageVideoTargetingIncludedPositionTypesItemEnum = S.String;
 export type PackageVideoTargetingIncludedPositionTypesItemEnumList = Array<
   PackageVideoTargetingIncludedPositionTypesItemEnum | (string & {})
 >;
-export const PackageVideoTargetingIncludedPositionTypesItemEnumList = /*@__PURE__*/ S.Array(
-  PackageVideoTargetingIncludedPositionTypesItemEnum,
-) as any as S.Schema<PackageVideoTargetingIncludedPositionTypesItemEnumList>;
+export const PackageVideoTargetingIncludedPositionTypesItemEnumList =
+  PackageTargetingIncludedOpenMeasurementTypesItemEnumList as any as S.Schema<PackageVideoTargetingIncludedPositionTypesItemEnumList>;
 
 export type PackageVideoTargetingIncludedContentDeliveryMethodEnum =
   | "CONTENT_DELIVERY_METHOD_UNSPECIFIED"
@@ -184,9 +183,8 @@ export const VideoPlcmtTargetingVideoPlcmtTypesItemEnum = S.String;
 export type VideoPlcmtTargetingVideoPlcmtTypesItemEnumList = Array<
   VideoPlcmtTargetingVideoPlcmtTypesItemEnum | (string & {})
 >;
-export const VideoPlcmtTargetingVideoPlcmtTypesItemEnumList = /*@__PURE__*/ S.Array(
-  VideoPlcmtTargetingVideoPlcmtTypesItemEnum,
-) as any as S.Schema<VideoPlcmtTargetingVideoPlcmtTypesItemEnumList>;
+export const VideoPlcmtTargetingVideoPlcmtTypesItemEnumList =
+  PackageTargetingIncludedOpenMeasurementTypesItemEnumList as any as S.Schema<VideoPlcmtTargetingVideoPlcmtTypesItemEnumList>;
 
 /** Defines targeting criteria based on the video placement type, often corresponding to the IAB OpenRTB 'plcmt' field. */
 export interface VideoPlcmtTargeting {
@@ -215,9 +213,8 @@ export const PackageVideoTargetingIncludedMimeTypesItemEnum = S.String;
 export type PackageVideoTargetingIncludedMimeTypesItemEnumList = Array<
   PackageVideoTargetingIncludedMimeTypesItemEnum | (string & {})
 >;
-export const PackageVideoTargetingIncludedMimeTypesItemEnumList = /*@__PURE__*/ S.Array(
-  PackageVideoTargetingIncludedMimeTypesItemEnum,
-) as any as S.Schema<PackageVideoTargetingIncludedMimeTypesItemEnumList>;
+export const PackageVideoTargetingIncludedMimeTypesItemEnumList =
+  PackageTargetingIncludedOpenMeasurementTypesItemEnumList as any as S.Schema<PackageVideoTargetingIncludedMimeTypesItemEnumList>;
 
 export type PackageVideoTargetingIncludedPlaybackMethodsItemEnum =
   | "PLAYBACK_METHOD_UNSPECIFIED"
@@ -229,9 +226,8 @@ export const PackageVideoTargetingIncludedPlaybackMethodsItemEnum = S.String;
 export type PackageVideoTargetingIncludedPlaybackMethodsItemEnumList = Array<
   PackageVideoTargetingIncludedPlaybackMethodsItemEnum | (string & {})
 >;
-export const PackageVideoTargetingIncludedPlaybackMethodsItemEnumList = /*@__PURE__*/ S.Array(
-  PackageVideoTargetingIncludedPlaybackMethodsItemEnum,
-) as any as S.Schema<PackageVideoTargetingIncludedPlaybackMethodsItemEnumList>;
+export const PackageVideoTargetingIncludedPlaybackMethodsItemEnumList =
+  PackageTargetingIncludedOpenMeasurementTypesItemEnumList as any as S.Schema<PackageVideoTargetingIncludedPlaybackMethodsItemEnumList>;
 
 /** Video specific targeting criteria. */
 export interface PackageVideoTargeting {
@@ -349,9 +345,8 @@ export const PackageTargetingIncludedAuthorizedSellerStatusesItemEnum = S.String
 export type PackageTargetingIncludedAuthorizedSellerStatusesItemEnumList = Array<
   PackageTargetingIncludedAuthorizedSellerStatusesItemEnum | (string & {})
 >;
-export const PackageTargetingIncludedAuthorizedSellerStatusesItemEnumList = /*@__PURE__*/ S.Array(
-  PackageTargetingIncludedAuthorizedSellerStatusesItemEnum,
-) as any as S.Schema<PackageTargetingIncludedAuthorizedSellerStatusesItemEnumList>;
+export const PackageTargetingIncludedAuthorizedSellerStatusesItemEnumList =
+  PackageTargetingIncludedOpenMeasurementTypesItemEnumList as any as S.Schema<PackageTargetingIncludedAuthorizedSellerStatusesItemEnumList>;
 
 export type PackageTargetingIncludedAcceleratedMobilePageTypeEnum =
   | "ACCELERATED_MOBILE_PAGE_TYPE_UNSPECIFIED"
@@ -369,9 +364,8 @@ export const PackageTargetingIncludedRestrictedCategoriesItemEnum = S.String;
 export type PackageTargetingIncludedRestrictedCategoriesItemEnumList = Array<
   PackageTargetingIncludedRestrictedCategoriesItemEnum | (string & {})
 >;
-export const PackageTargetingIncludedRestrictedCategoriesItemEnumList = /*@__PURE__*/ S.Array(
-  PackageTargetingIncludedRestrictedCategoriesItemEnum,
-) as any as S.Schema<PackageTargetingIncludedRestrictedCategoriesItemEnumList>;
+export const PackageTargetingIncludedRestrictedCategoriesItemEnumList =
+  PackageTargetingIncludedOpenMeasurementTypesItemEnumList as any as S.Schema<PackageTargetingIncludedRestrictedCategoriesItemEnumList>;
 
 export type PackageTargetingIncludedNativeInventoryTypesItemEnum =
   | "NATIVE_INVENTORY_TYPE_UNSPECIFIED"
@@ -382,9 +376,8 @@ export const PackageTargetingIncludedNativeInventoryTypesItemEnum = S.String;
 export type PackageTargetingIncludedNativeInventoryTypesItemEnumList = Array<
   PackageTargetingIncludedNativeInventoryTypesItemEnum | (string & {})
 >;
-export const PackageTargetingIncludedNativeInventoryTypesItemEnumList = /*@__PURE__*/ S.Array(
-  PackageTargetingIncludedNativeInventoryTypesItemEnum,
-) as any as S.Schema<PackageTargetingIncludedNativeInventoryTypesItemEnumList>;
+export const PackageTargetingIncludedNativeInventoryTypesItemEnumList =
+  PackageTargetingIncludedOpenMeasurementTypesItemEnumList as any as S.Schema<PackageTargetingIncludedNativeInventoryTypesItemEnumList>;
 
 export type PackageTargetingIncludedRewardedTypeEnum =
   | "REWARDED_TYPE_UNSPECIFIED"
@@ -410,9 +403,8 @@ export const PackageTargetingIncludedDeviceTypesItemEnum = S.String;
 export type PackageTargetingIncludedDeviceTypesItemEnumList = Array<
   PackageTargetingIncludedDeviceTypesItemEnum | (string & {})
 >;
-export const PackageTargetingIncludedDeviceTypesItemEnumList = /*@__PURE__*/ S.Array(
-  PackageTargetingIncludedDeviceTypesItemEnum,
-) as any as S.Schema<PackageTargetingIncludedDeviceTypesItemEnumList>;
+export const PackageTargetingIncludedDeviceTypesItemEnumList =
+  PackageTargetingIncludedOpenMeasurementTypesItemEnumList as any as S.Schema<PackageTargetingIncludedDeviceTypesItemEnumList>;
 
 /** Represents targeting about where the ads can appear, for example, certain sites or mobile applications. Different placement targeting types will be logically OR'ed. */
 export interface PackagePlacementTargeting {
@@ -813,9 +805,8 @@ export const ReportDefinitionDimensionsItemEnum = S.String;
 export type ReportDefinitionDimensionsItemEnumList = Array<
   ReportDefinitionDimensionsItemEnum | (string & {})
 >;
-export const ReportDefinitionDimensionsItemEnumList = /*@__PURE__*/ S.Array(
-  ReportDefinitionDimensionsItemEnum,
-) as any as S.Schema<ReportDefinitionDimensionsItemEnumList>;
+export const ReportDefinitionDimensionsItemEnumList =
+  PackageTargetingIncludedOpenMeasurementTypesItemEnumList as any as S.Schema<ReportDefinitionDimensionsItemEnumList>;
 
 export type ReportDefinitionMetricsItemEnum =
   | "METRIC_UNSPECIFIED"
@@ -837,9 +828,8 @@ export const ReportDefinitionMetricsItemEnum = S.String;
 export type ReportDefinitionMetricsItemEnumList = Array<
   ReportDefinitionMetricsItemEnum | (string & {})
 >;
-export const ReportDefinitionMetricsItemEnumList = /*@__PURE__*/ S.Array(
-  ReportDefinitionMetricsItemEnum,
-) as any as S.Schema<ReportDefinitionMetricsItemEnumList>;
+export const ReportDefinitionMetricsItemEnumList =
+  PackageTargetingIncludedOpenMeasurementTypesItemEnumList as any as S.Schema<ReportDefinitionMetricsItemEnumList>;
 
 export type DateRangeRelativeEnum =
   | "RELATIVE_DATE_RANGE_UNSPECIFIED"

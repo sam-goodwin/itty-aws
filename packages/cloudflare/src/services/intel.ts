@@ -1809,9 +1809,8 @@ export const AttackSurfaceReportIssuesListRequestSource = S.String;
 export type AttackSurfaceReportIssuesListRequestSourceList = Array<
   AttackSurfaceReportIssuesListRequestSource | (string & {})
 >;
-export const AttackSurfaceReportIssuesListRequestSourceList = /*@__PURE__*/ S.Array(
-  AttackSurfaceReportIssuesListRequestSource,
-) as any as S.Schema<AttackSurfaceReportIssuesListRequestSourceList>;
+export const AttackSurfaceReportIssuesListRequestSourceList =
+  AttackSurfaceReportIssuesClassRequestSourceList as any as S.Schema<AttackSurfaceReportIssuesListRequestSourceList>;
 
 export type AttackSurfaceReportIssuesListRequestSubjectList = Array<string>;
 export const AttackSurfaceReportIssuesListRequestSubjectList =
@@ -2368,9 +2367,8 @@ export const AttackSurfaceReportIssuesSeverityRequestSource = S.String;
 export type AttackSurfaceReportIssuesSeverityRequestSourceList = Array<
   AttackSurfaceReportIssuesSeverityRequestSource | (string & {})
 >;
-export const AttackSurfaceReportIssuesSeverityRequestSourceList = /*@__PURE__*/ S.Array(
-  AttackSurfaceReportIssuesSeverityRequestSource,
-) as any as S.Schema<AttackSurfaceReportIssuesSeverityRequestSourceList>;
+export const AttackSurfaceReportIssuesSeverityRequestSourceList =
+  AttackSurfaceReportIssuesClassRequestSourceList as any as S.Schema<AttackSurfaceReportIssuesSeverityRequestSourceList>;
 
 export type AttackSurfaceReportIssuesSeverityRequestSubjectList = Array<string>;
 export const AttackSurfaceReportIssuesSeverityRequestSubjectList =
@@ -2488,9 +2486,8 @@ export const AttackSurfaceReportIssuesTypeRequestSource = S.String;
 export type AttackSurfaceReportIssuesTypeRequestSourceList = Array<
   AttackSurfaceReportIssuesTypeRequestSource | (string & {})
 >;
-export const AttackSurfaceReportIssuesTypeRequestSourceList = /*@__PURE__*/ S.Array(
-  AttackSurfaceReportIssuesTypeRequestSource,
-) as any as S.Schema<AttackSurfaceReportIssuesTypeRequestSourceList>;
+export const AttackSurfaceReportIssuesTypeRequestSourceList =
+  AttackSurfaceReportIssuesClassRequestSourceList as any as S.Schema<AttackSurfaceReportIssuesTypeRequestSourceList>;
 
 export type AttackSurfaceReportIssuesTypeRequestSubjectList = Array<string>;
 export const AttackSurfaceReportIssuesTypeRequestSubjectList =

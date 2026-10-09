@@ -739,9 +739,8 @@ export const AzureVmFamily = S.String;
 export type MachineAssessmentPropertiesInputAzureVmFamiliesList = Array<
   AzureVmFamily | (string & {})
 >;
-export const MachineAssessmentPropertiesInputAzureVmFamiliesList = /*@__PURE__*/ S.Array(
-  AzureVmFamily,
-) as any as S.Schema<MachineAssessmentPropertiesInputAzureVmFamiliesList>;
+export const MachineAssessmentPropertiesInputAzureVmFamiliesList =
+  MachineAssessmentPropertiesInputAzureDiskTypesList as any as S.Schema<MachineAssessmentPropertiesInputAzureVmFamiliesList>;
 
 /** Details on the total up-time for the VM. */
 export interface VmUptime {
@@ -1195,9 +1194,8 @@ export const AzureAvsNodeType = S.String;
 
 /** AVS node types. */
 export type AvsAssessmentPropertiesInputNodeTypesList = Array<AzureAvsNodeType | (string & {})>;
-export const AvsAssessmentPropertiesInputNodeTypesList = /*@__PURE__*/ S.Array(
-  AzureAvsNodeType,
-) as any as S.Schema<AvsAssessmentPropertiesInputNodeTypesList>;
+export const AvsAssessmentPropertiesInputNodeTypesList =
+  MachineAssessmentPropertiesInputAzureDiskTypesList as any as S.Schema<AvsAssessmentPropertiesInputNodeTypesList>;
 
 /** Different External storage skus. */
 export type ExternalStorageType = "Unknown" | "None" | "AnfStandard" | "AnfPremium" | "AnfUltra";
@@ -1207,9 +1205,8 @@ export const ExternalStorageType = S.String;
 export type AvsAssessmentPropertiesInputExternalStorageTypesList = Array<
   ExternalStorageType | (string & {})
 >;
-export const AvsAssessmentPropertiesInputExternalStorageTypesList = /*@__PURE__*/ S.Array(
-  ExternalStorageType,
-) as any as S.Schema<AvsAssessmentPropertiesInputExternalStorageTypesList>;
+export const AvsAssessmentPropertiesInputExternalStorageTypesList =
+  MachineAssessmentPropertiesInputAzureDiskTypesList as any as S.Schema<AvsAssessmentPropertiesInputExternalStorageTypesList>;
 
 /** Scenarios with which Avs Assessments can be created. */
 export type AvsAssessmentScenario = "Unknown" | "NewAvsSddc" | "AvsSddcExpansion";
@@ -1406,9 +1403,8 @@ export const AvsAssessmentPropertiesAssessmentErrorSummaryMap =
 
 /** List of Failures to tolerate and RAID levels in a common property. */
 export type AvsAssessmentPropertiesFailuresToTolerateAndRaidLevelListList = Array<FttAndRaidLevel>;
-export const AvsAssessmentPropertiesFailuresToTolerateAndRaidLevelListList = /*@__PURE__*/ S.Array(
-  FttAndRaidLevel,
-) as any as S.Schema<AvsAssessmentPropertiesFailuresToTolerateAndRaidLevelListList>;
+export const AvsAssessmentPropertiesFailuresToTolerateAndRaidLevelListList =
+  MachineAssessmentPropertiesInputAzureDiskTypesList as any as S.Schema<AvsAssessmentPropertiesFailuresToTolerateAndRaidLevelListList>;
 
 /** AVS node types. */
 export type AvsAssessmentPropertiesNodeTypesList = Array<AzureAvsNodeType>;
@@ -1740,9 +1736,8 @@ export const CreateAvsAssessmentsOperationResponse = /*@__PURE__*/ S.suspend(() 
 export type GroupPropertiesInputSupportedAssessmentTypesList = Array<
   AssessmentType | (string & {})
 >;
-export const GroupPropertiesInputSupportedAssessmentTypesList = /*@__PURE__*/ S.Array(
-  AssessmentType,
-) as any as S.Schema<GroupPropertiesInputSupportedAssessmentTypesList>;
+export const GroupPropertiesInputSupportedAssessmentTypesList =
+  MachineAssessmentPropertiesInputAzureDiskTypesList as any as S.Schema<GroupPropertiesInputSupportedAssessmentTypesList>;
 
 /** Properties of group resource. */
 export interface GroupPropertiesInput {
@@ -2824,15 +2819,8 @@ export interface PrivateLinkServiceConnectionState_3 {
   /** actions required */
   actionsRequired?: string;
 }
-export const PrivateLinkServiceConnectionState_3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(PrivateLinkServiceConnectionStateStatus_2),
-    description: S.optional(S.String),
-    actionsRequired: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PrivateLinkServiceConnectionState_3",
-}) as any as S.Schema<PrivateLinkServiceConnectionState_3>;
+export const PrivateLinkServiceConnectionState_3 =
+  PrivateLinkServiceConnectionState as any as S.Schema<PrivateLinkServiceConnectionState_3>;
 
 /** PrivateEndpointConnectionProperties V2 */
 export interface PrivateEndpointConnectionPropertiesV2 {
@@ -3140,15 +3128,8 @@ export interface PrivateLinkServiceConnectionState_2 {
   /** Action required. */
   actionsRequired?: string;
 }
-export const PrivateLinkServiceConnectionState_2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(PrivateLinkServiceConnectionStateStatus),
-    description: S.optional(S.String),
-    actionsRequired: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PrivateLinkServiceConnectionState_2",
-}) as any as S.Schema<PrivateLinkServiceConnectionState_2>;
+export const PrivateLinkServiceConnectionState_2 =
+  PrivateLinkServiceConnectionState as any as S.Schema<PrivateLinkServiceConnectionState_2>;
 
 /** Defines Private link service proxy. */
 export interface PrivateLinkServiceProxy {
@@ -4936,17 +4917,8 @@ export interface WebAppCollectorPropertiesBaseWithAgent {
   /** Timestamp when collector was last updated. */
   updatedTimestamp?: string;
 }
-export const WebAppCollectorPropertiesBaseWithAgent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    provisioningState: S.optional(ProvisioningState2),
-    agentProperties: S.optional(CollectorAgentPropertiesBase),
-    discoverySiteId: S.optional(S.String),
-    createdTimestamp: S.optional(S.String),
-    updatedTimestamp: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WebAppCollectorPropertiesBaseWithAgent",
-}) as any as S.Schema<WebAppCollectorPropertiesBaseWithAgent>;
+export const WebAppCollectorPropertiesBaseWithAgent =
+  CollectorPropertiesBaseWithAgent as any as S.Schema<WebAppCollectorPropertiesBaseWithAgent>;
 
 export interface CreateWebAppCollectorOperationResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4960,17 +4932,8 @@ export interface CreateWebAppCollectorOperationResponse {
   /** The resource-specific properties for this resource. */
   properties?: WebAppCollectorPropertiesBaseWithAgent;
 }
-export const CreateWebAppCollectorOperationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(WebAppCollectorPropertiesBaseWithAgent),
-  }),
-).annotate({
-  identifier: "CreateWebAppCollectorOperationResponse",
-}) as any as S.Schema<CreateWebAppCollectorOperationResponse>;
+export const CreateWebAppCollectorOperationResponse =
+  CreateHypervCollectorsOperationResponse as any as S.Schema<CreateWebAppCollectorOperationResponse>;
 
 /** Discovery site data source properties class. */
 export type DiscoverySiteDataSourceProperties = SqlDiscoverySiteDataSourceProperties;
@@ -10794,9 +10757,8 @@ export const AssessmentOptionsPropertiesSavingsPlanSupportedLocationsList =
 
 /** List of Azure locations that support Premium SSD V2 disks for assessments. */
 export type AssessmentOptionsPropertiesPremiumV2DiskSupportedLocationsList = Array<AzureLocation>;
-export const AssessmentOptionsPropertiesPremiumV2DiskSupportedLocationsList = /*@__PURE__*/ S.Array(
-  AzureLocation,
-) as any as S.Schema<AssessmentOptionsPropertiesPremiumV2DiskSupportedLocationsList>;
+export const AssessmentOptionsPropertiesPremiumV2DiskSupportedLocationsList =
+  MachineAssessmentPropertiesInputAzureDiskTypesList as any as S.Schema<AssessmentOptionsPropertiesPremiumV2DiskSupportedLocationsList>;
 
 /** Assessment options properties. */
 export interface AssessmentOptionsProperties {
@@ -11420,25 +11382,19 @@ export const AvsAssessmentOptionsPropertiesReservedInstanceAvsNodesList =
 export type AvsAssessmentOptionsPropertiesReservedInstanceSupportedLocationsList =
   Array<AzureLocation>;
 export const AvsAssessmentOptionsPropertiesReservedInstanceSupportedLocationsList =
-  /*@__PURE__*/ S.Array(
-    AzureLocation,
-  ) as any as S.Schema<AvsAssessmentOptionsPropertiesReservedInstanceSupportedLocationsList>;
+  AvsAssessmentPropertiesInputFailuresToTolerateAndRaidLevelListList as any as S.Schema<AvsAssessmentOptionsPropertiesReservedInstanceSupportedLocationsList>;
 
 /** List of supported currencies for reserved instances. */
 export type AvsAssessmentOptionsPropertiesReservedInstanceSupportedCurrenciesList =
   Array<AzureCurrency>;
 export const AvsAssessmentOptionsPropertiesReservedInstanceSupportedCurrenciesList =
-  /*@__PURE__*/ S.Array(
-    AzureCurrency,
-  ) as any as S.Schema<AvsAssessmentOptionsPropertiesReservedInstanceSupportedCurrenciesList>;
+  AvsAssessmentPropertiesInputFailuresToTolerateAndRaidLevelListList as any as S.Schema<AvsAssessmentOptionsPropertiesReservedInstanceSupportedCurrenciesList>;
 
 /** List of supported Azure offer codes for reserved instances. */
 export type AvsAssessmentOptionsPropertiesReservedInstanceSupportedOffersList =
   Array<AzureOfferCode>;
 export const AvsAssessmentOptionsPropertiesReservedInstanceSupportedOffersList =
-  /*@__PURE__*/ S.Array(
-    AzureOfferCode,
-  ) as any as S.Schema<AvsAssessmentOptionsPropertiesReservedInstanceSupportedOffersList>;
+  AvsAssessmentPropertiesInputFailuresToTolerateAndRaidLevelListList as any as S.Schema<AvsAssessmentOptionsPropertiesReservedInstanceSupportedOffersList>;
 
 /** AVS Assessment options properties. */
 export interface AvsAssessmentOptionsProperties {
@@ -15743,18 +15699,8 @@ export interface PrivateEndpointConnectionSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const PrivateEndpointConnectionSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(PrivateEndpointConnectionSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(PrivateEndpointConnectionSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PrivateEndpointConnectionSystemData",
-}) as any as S.Schema<PrivateEndpointConnectionSystemData>;
+export const PrivateEndpointConnectionSystemData =
+  PrivateEndpointConnectionProxySystemData as any as S.Schema<PrivateEndpointConnectionSystemData>;
 
 /** REST model used to encapsulate the user visible state of a PrivateEndpoint. */
 export interface PrivateEndpointConnection_2 {
@@ -16999,9 +16945,8 @@ export const SqlAssessmentOptionsPropertiesReservedInstanceSupportedLocationsFor
 
 /** Gets or sets the list of Azure Offers supporting Saving Plans. */
 export type SqlAssessmentOptionsPropertiesSavingsPlanSupportedOffersList = Array<AzureOfferCode>;
-export const SqlAssessmentOptionsPropertiesSavingsPlanSupportedOffersList = /*@__PURE__*/ S.Array(
-  AzureOfferCode,
-) as any as S.Schema<SqlAssessmentOptionsPropertiesSavingsPlanSupportedOffersList>;
+export const SqlAssessmentOptionsPropertiesSavingsPlanSupportedOffersList =
+  MachineAssessmentPropertiesInputAzureDiskTypesList as any as S.Schema<SqlAssessmentOptionsPropertiesSavingsPlanSupportedOffersList>;
 
 /** Gets or sets the target location. */
 export type SqlPaaSTargetOptionsTargetLocationsList = Array<AzureLocation>;
@@ -17039,9 +16984,8 @@ export const SqlAssessmentOptionsPropertiesSqlSkusList = /*@__PURE__*/ S.Array(
 
 /** Gets or sets the Reserved Instance SQL target types. */
 export type SqlAssessmentOptionsPropertiesReservedInstanceSqlTargetsList = Array<TargetType>;
-export const SqlAssessmentOptionsPropertiesReservedInstanceSqlTargetsList = /*@__PURE__*/ S.Array(
-  TargetType,
-) as any as S.Schema<SqlAssessmentOptionsPropertiesReservedInstanceSqlTargetsList>;
+export const SqlAssessmentOptionsPropertiesReservedInstanceSqlTargetsList =
+  MachineAssessmentPropertiesInputAzureDiskTypesList as any as S.Schema<SqlAssessmentOptionsPropertiesReservedInstanceSqlTargetsList>;
 
 /** Gets or sets the list of Azure locations supporting Reserved Instances. */
 export type SqlAssessmentOptionsPropertiesReservedInstanceSupportedLocationsList =
@@ -19347,9 +19291,7 @@ export const WebAppAssessmentOptionsPropertiesReservedInstanceSupportedOffersLis
 export type WebAppAssessmentOptionsPropertiesReservedInstanceSupportedWebAppTiersList =
   Array<AzureWebAppTier>;
 export const WebAppAssessmentOptionsPropertiesReservedInstanceSupportedWebAppTiersList =
-  /*@__PURE__*/ S.Array(
-    AzureWebAppTier,
-  ) as any as S.Schema<WebAppAssessmentOptionsPropertiesReservedInstanceSupportedWebAppTiersList>;
+  AvsAssessmentPropertiesInputFailuresToTolerateAndRaidLevelListList as any as S.Schema<WebAppAssessmentOptionsPropertiesReservedInstanceSupportedWebAppTiersList>;
 
 /** Gets or sets the list of Azure Offers supporting Saving Plans. */
 export type WebAppAssessmentOptionsPropertiesSavingsPlanSupportedWebAppTiersList =
@@ -23118,9 +23060,8 @@ export const SiteHealthSummaryFabricLayoutUpdateSourcesItem = S.String;
 /** Gets or sets sources of the exception. */
 export type SiteHealthSummaryFabricLayoutUpdateSourcesList =
   Array<SiteHealthSummaryFabricLayoutUpdateSourcesItem>;
-export const SiteHealthSummaryFabricLayoutUpdateSourcesList = /*@__PURE__*/ S.Array(
-  SiteHealthSummaryFabricLayoutUpdateSourcesItem,
-) as any as S.Schema<SiteHealthSummaryFabricLayoutUpdateSourcesList>;
+export const SiteHealthSummaryFabricLayoutUpdateSourcesList =
+  MachineAssessmentPropertiesInputAzureDiskTypesList as any as S.Schema<SiteHealthSummaryFabricLayoutUpdateSourcesList>;
 
 /** The properties of ServerSiteResource. */
 export interface SiteHealthSummary {
@@ -24513,9 +24454,8 @@ export const MigrateProjectPropertiesRegisteredToolsItem = S.String;
 /** Register tools inside project. */
 export type MigrateProjectPropertiesRegisteredToolsList =
   Array<MigrateProjectPropertiesRegisteredToolsItem>;
-export const MigrateProjectPropertiesRegisteredToolsList = /*@__PURE__*/ S.Array(
-  MigrateProjectPropertiesRegisteredToolsItem,
-) as any as S.Schema<MigrateProjectPropertiesRegisteredToolsList>;
+export const MigrateProjectPropertiesRegisteredToolsList =
+  MachineAssessmentPropertiesInputAzureDiskTypesList as any as S.Schema<MigrateProjectPropertiesRegisteredToolsList>;
 
 /** Refresh summary state. */
 export type ProjectSummaryRefreshSummaryState = "Started" | "InProgress" | "Completed" | "Failed";
@@ -24634,16 +24574,7 @@ export interface MigrateProjectSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const MigrateProjectSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(MigrateProjectSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(MigrateProjectSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({ identifier: "MigrateProjectSystemData" }) as any as S.Schema<MigrateProjectSystemData>;
+export const MigrateProjectSystemData = SystemData as any as S.Schema<MigrateProjectSystemData>;
 
 /** Migrate project. */
 export interface MigrateProject {
@@ -26749,21 +26680,12 @@ export interface WebAppCollector {
   /** The resource-specific properties for this resource. */
   properties?: WebAppCollectorPropertiesBaseWithAgent;
 }
-export const WebAppCollector = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(WebAppCollectorPropertiesBaseWithAgent),
-  }),
-).annotate({ identifier: "WebAppCollector" }) as any as S.Schema<WebAppCollector>;
+export const WebAppCollector = HypervCollector as any as S.Schema<WebAppCollector>;
 
 /** The WebAppCollector items on this page */
 export type WebAppCollectorListResultValueList = Array<WebAppCollector>;
-export const WebAppCollectorListResultValueList = /*@__PURE__*/ S.Array(
-  WebAppCollector,
-) as any as S.Schema<WebAppCollectorListResultValueList>;
+export const WebAppCollectorListResultValueList =
+  HypervCollectorListResultValueList as any as S.Schema<WebAppCollectorListResultValueList>;
 
 /** The response of a WebAppCollector list operation. */
 export interface WebAppCollectorListResult {
@@ -26772,14 +26694,8 @@ export interface WebAppCollectorListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const WebAppCollectorListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: WebAppCollectorListResultValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WebAppCollectorListResult",
-}) as any as S.Schema<WebAppCollectorListResult>;
+export const WebAppCollectorListResult =
+  HypervCollectorListResult as any as S.Schema<WebAppCollectorListResult>;
 
 export interface ListWebAppDiscoverySiteDataSourcesControllerByWebAppSiteRequest {
   /** The ID of the target subscription. */
@@ -27723,13 +27639,8 @@ export interface PrivateEndpointConnectionPropertiesInput {
   /** Gets the properties of the object. */
   privateLinkServiceConnectionState?: PrivateLinkServiceConnectionState_2;
 }
-export const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    privateLinkServiceConnectionState: S.optional(PrivateLinkServiceConnectionState_2),
-  }),
-).annotate({
-  identifier: "PrivateEndpointConnectionPropertiesInput",
-}) as any as S.Schema<PrivateEndpointConnectionPropertiesInput>;
+export const PrivateEndpointConnectionPropertiesInput =
+  PrivateEndpointConnectionPropertiesV2Input as any as S.Schema<PrivateEndpointConnectionPropertiesInput>;
 
 export interface PutPrivateEndpointConnectionControllerPrivateEndpointConnectionRequest {
   /** The ID of the target subscription. */

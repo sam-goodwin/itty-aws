@@ -2111,9 +2111,7 @@ export interface ImageScanState {
   status?: ImageScanStatus;
   reason?: string;
 }
-export const ImageScanState = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ status: S.optional(ImageScanStatus), reason: S.optional(S.String) }),
-).annotate({ identifier: "ImageScanState" }) as any as S.Schema<ImageScanState>;
+export const ImageScanState = ComponentState as any as S.Schema<ImageScanState>;
 export type DateTimeTimestamp = Date;
 export interface Image {
   arn?: string;
@@ -2371,9 +2369,7 @@ export interface LifecycleExecutionState {
   status?: LifecycleExecutionStatus;
   reason?: string;
 }
-export const LifecycleExecutionState = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ status: S.optional(LifecycleExecutionStatus), reason: S.optional(S.String) }),
-).annotate({ identifier: "LifecycleExecutionState" }) as any as S.Schema<LifecycleExecutionState>;
+export const LifecycleExecutionState = ComponentState as any as S.Schema<LifecycleExecutionState>;
 export interface LifecycleExecution {
   lifecycleExecutionId?: string;
   lifecyclePolicyArn?: string;
@@ -2497,9 +2493,7 @@ export interface WorkflowState {
   status?: WorkflowStatus;
   reason?: string;
 }
-export const WorkflowState = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ status: S.optional(WorkflowStatus), reason: S.optional(S.String) }),
-).annotate({ identifier: "WorkflowState" }) as any as S.Schema<WorkflowState>;
+export const WorkflowState = ComponentState as any as S.Schema<WorkflowState>;
 export type WorkflowData = string;
 export type WorkflowParameterType = string;
 export type WorkflowParameterDescription = string;

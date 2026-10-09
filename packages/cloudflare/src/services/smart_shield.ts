@@ -84,17 +84,8 @@ export interface ClearCacheReserveClearResponse {
   /** Last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const ClearCacheReserveClearResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Unknown,
-    startTs: S.String.pipe(T.Body("start_ts")),
-    state: ClearCacheReserveClearResponseState,
-    endTs: S.optional(S.NullOr(S.String).pipe(T.Body("end_ts"))),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "ClearCacheReserveClearResponse",
-}) as any as S.Schema<ClearCacheReserveClearResponse>;
+export const ClearCacheReserveClearResponse =
+  CacheReserveClearStatusResponse as any as S.Schema<ClearCacheReserveClearResponse>;
 
 export type CreateHealthCheckRequestCheckRegionsItem =
   | "WNAM"
@@ -263,9 +254,8 @@ export const CreateHealthCheckResponseCheckRegionsItem = S.String;
 
 export type CreateHealthCheckResponseCheckRegionsList =
   Array<CreateHealthCheckResponseCheckRegionsItem>;
-export const CreateHealthCheckResponseCheckRegionsList = /*@__PURE__*/ S.Array(
-  CreateHealthCheckResponseCheckRegionsItem,
-) as any as S.Schema<CreateHealthCheckResponseCheckRegionsList>;
+export const CreateHealthCheckResponseCheckRegionsList =
+  CreateHealthCheckRequestCheckRegionsList as any as S.Schema<CreateHealthCheckResponseCheckRegionsList>;
 
 export type CreateHealthCheckResponseHttpConfigExpectedCodesList = Array<string>;
 export const CreateHealthCheckResponseHttpConfigExpectedCodesList =
@@ -458,9 +448,8 @@ export const EditHealthCheckRequestCheckRegionsItem = S.String;
 export type EditHealthCheckRequestCheckRegionsList = Array<
   EditHealthCheckRequestCheckRegionsItem | (string & {})
 >;
-export const EditHealthCheckRequestCheckRegionsList = /*@__PURE__*/ S.Array(
-  EditHealthCheckRequestCheckRegionsItem,
-) as any as S.Schema<EditHealthCheckRequestCheckRegionsList>;
+export const EditHealthCheckRequestCheckRegionsList =
+  CreateHealthCheckRequestCheckRegionsList as any as S.Schema<EditHealthCheckRequestCheckRegionsList>;
 
 export type EditHealthCheckRequestHttpConfigExpectedCodesList = Array<string>;
 export const EditHealthCheckRequestHttpConfigExpectedCodesList =
@@ -523,14 +512,8 @@ export interface EditHealthCheckRequestTcpConfig {
   /** Port number to connect to for the health check. Defaults to 80. */
   port?: number;
 }
-export const EditHealthCheckRequestTcpConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    method: S.optional(EditHealthCheckRequestTcpConfigMethod),
-    port: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "EditHealthCheckRequestTcpConfig",
-}) as any as S.Schema<EditHealthCheckRequestTcpConfig>;
+export const EditHealthCheckRequestTcpConfig =
+  CreateHealthCheckRequestTcpConfig as any as S.Schema<EditHealthCheckRequestTcpConfig>;
 
 export interface EditHealthCheckRequest {
   /** Identifier. */
@@ -609,9 +592,8 @@ export const EditHealthCheckResponseCheckRegionsItem = S.String;
 
 export type EditHealthCheckResponseCheckRegionsList =
   Array<EditHealthCheckResponseCheckRegionsItem>;
-export const EditHealthCheckResponseCheckRegionsList = /*@__PURE__*/ S.Array(
-  EditHealthCheckResponseCheckRegionsItem,
-) as any as S.Schema<EditHealthCheckResponseCheckRegionsList>;
+export const EditHealthCheckResponseCheckRegionsList =
+  CreateHealthCheckRequestCheckRegionsList as any as S.Schema<EditHealthCheckResponseCheckRegionsList>;
 
 export type EditHealthCheckResponseHttpConfigExpectedCodesList = Array<string>;
 export const EditHealthCheckResponseHttpConfigExpectedCodesList =
@@ -677,14 +659,8 @@ export interface EditHealthCheckResponseTcpConfig {
   /** Port number to connect to for the health check. Defaults to 80. */
   port?: number | null;
 }
-export const EditHealthCheckResponseTcpConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    method: S.optional(S.NullOr(EditHealthCheckResponseTcpConfigMethod)),
-    port: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "EditHealthCheckResponseTcpConfig",
-}) as any as S.Schema<EditHealthCheckResponseTcpConfig>;
+export const EditHealthCheckResponseTcpConfig =
+  CreateHealthCheckResponseTcpConfig as any as S.Schema<EditHealthCheckResponseTcpConfig>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface EditHealthCheckResponse {
@@ -809,13 +785,8 @@ export interface GetResponseSmartRouting {
   /** Specifies the enablement value of Argo Smart Routing. */
   value?: GetResponseSmartRoutingValue | null;
 }
-export const GetResponseSmartRouting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    editable: S.optional(S.NullOr(S.Boolean)),
-    value: S.optional(S.NullOr(GetResponseSmartRoutingValue)),
-  }),
-).annotate({ identifier: "GetResponseSmartRouting" }) as any as S.Schema<GetResponseSmartRouting>;
+export const GetResponseSmartRouting =
+  GetResponseCacheReserve as any as S.Schema<GetResponseSmartRouting>;
 
 export type GetResponseSmartTieredCacheValue = "on" | "off";
 export const GetResponseSmartTieredCacheValue = S.String;
@@ -897,9 +868,8 @@ export type GetHealthCheckResponseCheckRegionsItem =
 export const GetHealthCheckResponseCheckRegionsItem = S.String;
 
 export type GetHealthCheckResponseCheckRegionsList = Array<GetHealthCheckResponseCheckRegionsItem>;
-export const GetHealthCheckResponseCheckRegionsList = /*@__PURE__*/ S.Array(
-  GetHealthCheckResponseCheckRegionsItem,
-) as any as S.Schema<GetHealthCheckResponseCheckRegionsList>;
+export const GetHealthCheckResponseCheckRegionsList =
+  CreateHealthCheckRequestCheckRegionsList as any as S.Schema<GetHealthCheckResponseCheckRegionsList>;
 
 export type GetHealthCheckResponseHttpConfigExpectedCodesList = Array<string>;
 export const GetHealthCheckResponseHttpConfigExpectedCodesList =
@@ -965,14 +935,8 @@ export interface GetHealthCheckResponseTcpConfig {
   /** Port number to connect to for the health check. Defaults to 80. */
   port?: number | null;
 }
-export const GetHealthCheckResponseTcpConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    method: S.optional(S.NullOr(GetHealthCheckResponseTcpConfigMethod)),
-    port: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "GetHealthCheckResponseTcpConfig",
-}) as any as S.Schema<GetHealthCheckResponseTcpConfig>;
+export const GetHealthCheckResponseTcpConfig =
+  CreateHealthCheckResponseTcpConfig as any as S.Schema<GetHealthCheckResponseTcpConfig>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetHealthCheckResponse {
@@ -1071,9 +1035,8 @@ export const ListHealthChecksResultItemCheckRegionsItem = S.String;
 
 export type ListHealthChecksResultItemCheckRegionsList =
   Array<ListHealthChecksResultItemCheckRegionsItem>;
-export const ListHealthChecksResultItemCheckRegionsList = /*@__PURE__*/ S.Array(
-  ListHealthChecksResultItemCheckRegionsItem,
-) as any as S.Schema<ListHealthChecksResultItemCheckRegionsList>;
+export const ListHealthChecksResultItemCheckRegionsList =
+  CreateHealthCheckRequestCheckRegionsList as any as S.Schema<ListHealthChecksResultItemCheckRegionsList>;
 
 export type ListHealthChecksResultItemHttpConfigExpectedCodesList = Array<string>;
 export const ListHealthChecksResultItemHttpConfigExpectedCodesList =
@@ -1141,14 +1104,8 @@ export interface ListHealthChecksResultItemTcpConfig {
   /** Port number to connect to for the health check. Defaults to 80. */
   port?: number | null;
 }
-export const ListHealthChecksResultItemTcpConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    method: S.optional(S.NullOr(ListHealthChecksResultItemTcpConfigMethod)),
-    port: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "ListHealthChecksResultItemTcpConfig",
-}) as any as S.Schema<ListHealthChecksResultItemTcpConfig>;
+export const ListHealthChecksResultItemTcpConfig =
+  CreateHealthCheckResponseTcpConfig as any as S.Schema<ListHealthChecksResultItemTcpConfig>;
 
 export interface ListHealthChecksResultItem {
   /** Identifier. */
@@ -1247,13 +1204,8 @@ export interface UpdateRequestRegionalTieredCache {
   /** Specifies the enablement value of Regional Tiered Cache. */
   value?: UpdateRequestRegionalTieredCacheValue | (string & {});
 }
-export const UpdateRequestRegionalTieredCache = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(UpdateRequestRegionalTieredCacheValue),
-  }),
-).annotate({
-  identifier: "UpdateRequestRegionalTieredCache",
-}) as any as S.Schema<UpdateRequestRegionalTieredCache>;
+export const UpdateRequestRegionalTieredCache =
+  UpdateRequestCacheReserve as any as S.Schema<UpdateRequestRegionalTieredCache>;
 
 export type UpdateRequestSmartRoutingValue = "on" | "off";
 export const UpdateRequestSmartRoutingValue = S.String;
@@ -1262,13 +1214,8 @@ export interface UpdateRequestSmartRouting {
   /** Specifies the enablement value of Smart Routing. */
   value?: UpdateRequestSmartRoutingValue | (string & {});
 }
-export const UpdateRequestSmartRouting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(UpdateRequestSmartRoutingValue),
-  }),
-).annotate({
-  identifier: "UpdateRequestSmartRouting",
-}) as any as S.Schema<UpdateRequestSmartRouting>;
+export const UpdateRequestSmartRouting =
+  UpdateRequestCacheReserve as any as S.Schema<UpdateRequestSmartRouting>;
 
 export type UpdateRequestSmartTieredCacheValue = "on" | "off";
 export const UpdateRequestSmartTieredCacheValue = S.String;
@@ -1277,13 +1224,8 @@ export interface UpdateRequestSmartTieredCache {
   /** Specifies the enablement value of Smart Tiered Cache. */
   value?: UpdateRequestSmartTieredCacheValue | (string & {});
 }
-export const UpdateRequestSmartTieredCache = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(UpdateRequestSmartTieredCacheValue),
-  }),
-).annotate({
-  identifier: "UpdateRequestSmartTieredCache",
-}) as any as S.Schema<UpdateRequestSmartTieredCache>;
+export const UpdateRequestSmartTieredCache =
+  UpdateRequestCacheReserve as any as S.Schema<UpdateRequestSmartTieredCache>;
 
 export interface UpdateRequest {
   /** Identifier. */
@@ -1318,16 +1260,8 @@ export interface UpdateResponseSmartTieredCache {
   /** Specifies the enablement value of Tiered Cache. */
   value?: UpdateResponseSmartTieredCacheValue | null;
 }
-export const UpdateResponseSmartTieredCache = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-    value: S.optional(S.NullOr(UpdateResponseSmartTieredCacheValue)),
-  }),
-).annotate({
-  identifier: "UpdateResponseSmartTieredCache",
-}) as any as S.Schema<UpdateResponseSmartTieredCache>;
+export const UpdateResponseSmartTieredCache =
+  GetResponseSmartTieredCache as any as S.Schema<UpdateResponseSmartTieredCache>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateResponse {
@@ -1402,9 +1336,8 @@ export const UpdateHealthCheckRequestResultCheckRegionsItem = S.String;
 export type UpdateHealthCheckRequestResultCheckRegionsList = Array<
   UpdateHealthCheckRequestResultCheckRegionsItem | (string & {})
 >;
-export const UpdateHealthCheckRequestResultCheckRegionsList = /*@__PURE__*/ S.Array(
-  UpdateHealthCheckRequestResultCheckRegionsItem,
-) as any as S.Schema<UpdateHealthCheckRequestResultCheckRegionsList>;
+export const UpdateHealthCheckRequestResultCheckRegionsList =
+  CreateHealthCheckRequestCheckRegionsList as any as S.Schema<UpdateHealthCheckRequestResultCheckRegionsList>;
 
 export type UpdateHealthCheckRequestResultHttpConfigExpectedCodesList = Array<string>;
 export const UpdateHealthCheckRequestResultHttpConfigExpectedCodesList =
@@ -1474,14 +1407,8 @@ export interface UpdateHealthCheckRequestResultTcpConfig {
   /** Port number to connect to for the health check. Defaults to 80. */
   port?: number;
 }
-export const UpdateHealthCheckRequestResultTcpConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    method: S.optional(UpdateHealthCheckRequestResultTcpConfigMethod),
-    port: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "UpdateHealthCheckRequestResultTcpConfig",
-}) as any as S.Schema<UpdateHealthCheckRequestResultTcpConfig>;
+export const UpdateHealthCheckRequestResultTcpConfig =
+  CreateHealthCheckRequestTcpConfig as any as S.Schema<UpdateHealthCheckRequestResultTcpConfig>;
 
 export interface UpdateHealthCheckRequestResult {
   /** Identifier. */
@@ -1593,9 +1520,8 @@ export const UpdateHealthCheckResponseCheckRegionsItem = S.String;
 
 export type UpdateHealthCheckResponseCheckRegionsList =
   Array<UpdateHealthCheckResponseCheckRegionsItem>;
-export const UpdateHealthCheckResponseCheckRegionsList = /*@__PURE__*/ S.Array(
-  UpdateHealthCheckResponseCheckRegionsItem,
-) as any as S.Schema<UpdateHealthCheckResponseCheckRegionsList>;
+export const UpdateHealthCheckResponseCheckRegionsList =
+  CreateHealthCheckRequestCheckRegionsList as any as S.Schema<UpdateHealthCheckResponseCheckRegionsList>;
 
 export type UpdateHealthCheckResponseHttpConfigExpectedCodesList = Array<string>;
 export const UpdateHealthCheckResponseHttpConfigExpectedCodesList =
@@ -1661,14 +1587,8 @@ export interface UpdateHealthCheckResponseTcpConfig {
   /** Port number to connect to for the health check. Defaults to 80. */
   port?: number | null;
 }
-export const UpdateHealthCheckResponseTcpConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    method: S.optional(S.NullOr(UpdateHealthCheckResponseTcpConfigMethod)),
-    port: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "UpdateHealthCheckResponseTcpConfig",
-}) as any as S.Schema<UpdateHealthCheckResponseTcpConfig>;
+export const UpdateHealthCheckResponseTcpConfig =
+  CreateHealthCheckResponseTcpConfig as any as S.Schema<UpdateHealthCheckResponseTcpConfig>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateHealthCheckResponse {

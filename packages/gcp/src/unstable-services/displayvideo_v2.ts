@@ -1084,9 +1084,7 @@ export type DoubleVerifyBrandSafetyCategoriesAvoidedMediumSeverityCategoriesItem
   DoubleVerifyBrandSafetyCategoriesAvoidedMediumSeverityCategoriesItemEnum | (string & {})
 >;
 export const DoubleVerifyBrandSafetyCategoriesAvoidedMediumSeverityCategoriesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    DoubleVerifyBrandSafetyCategoriesAvoidedMediumSeverityCategoriesItemEnum,
-  ) as any as S.Schema<DoubleVerifyBrandSafetyCategoriesAvoidedMediumSeverityCategoriesItemEnumList>;
+  DoubleVerifyBrandSafetyCategoriesAvoidedHighSeverityCategoriesItemEnumList as any as S.Schema<DoubleVerifyBrandSafetyCategoriesAvoidedMediumSeverityCategoriesItemEnumList>;
 
 /** Settings for brand safety controls. */
 export interface DoubleVerifyBrandSafetyCategories {
@@ -1361,9 +1359,8 @@ export const AdlooxExcludedAdlooxCategoriesItemEnum = S.String;
 export type AdlooxExcludedAdlooxCategoriesItemEnumList = Array<
   AdlooxExcludedAdlooxCategoriesItemEnum | (string & {})
 >;
-export const AdlooxExcludedAdlooxCategoriesItemEnumList = /*@__PURE__*/ S.Array(
-  AdlooxExcludedAdlooxCategoriesItemEnum,
-) as any as S.Schema<AdlooxExcludedAdlooxCategoriesItemEnumList>;
+export const AdlooxExcludedAdlooxCategoriesItemEnumList =
+  DoubleVerifyAvoidedAgeRatingsItemEnumList as any as S.Schema<AdlooxExcludedAdlooxCategoriesItemEnumList>;
 
 /** Details of Scope3 (previously known as Adloox) brand safety settings. */
 export interface Adloox {
@@ -3055,9 +3052,8 @@ export const LineItemWarningMessagesItemEnum = S.String;
 export type LineItemWarningMessagesItemEnumList = Array<
   LineItemWarningMessagesItemEnum | (string & {})
 >;
-export const LineItemWarningMessagesItemEnumList = /*@__PURE__*/ S.Array(
-  LineItemWarningMessagesItemEnum,
-) as any as S.Schema<LineItemWarningMessagesItemEnumList>;
+export const LineItemWarningMessagesItemEnumList =
+  DoubleVerifyAvoidedAgeRatingsItemEnumList as any as S.Schema<LineItemWarningMessagesItemEnumList>;
 
 export type LineItemContainsEuPoliticalAdsEnum =
   | "EU_POLITICAL_ADVERTISING_STATUS_UNKNOWN"
@@ -5090,9 +5086,8 @@ export const CreativeCreativeAttributesItemEnum = S.String;
 export type CreativeCreativeAttributesItemEnumList = Array<
   CreativeCreativeAttributesItemEnum | (string & {})
 >;
-export const CreativeCreativeAttributesItemEnumList = /*@__PURE__*/ S.Array(
-  CreativeCreativeAttributesItemEnum,
-) as any as S.Schema<CreativeCreativeAttributesItemEnumList>;
+export const CreativeCreativeAttributesItemEnumList =
+  DoubleVerifyAvoidedAgeRatingsItemEnumList as any as S.Schema<CreativeCreativeAttributesItemEnumList>;
 
 export type ObaIconPositionEnum =
   | "OBA_ICON_POSITION_UNSPECIFIED"
@@ -6495,9 +6490,8 @@ export const ParentEntityFilterFileTypeItemEnum = S.String;
 export type ParentEntityFilterFileTypeItemEnumList = Array<
   ParentEntityFilterFileTypeItemEnum | (string & {})
 >;
-export const ParentEntityFilterFileTypeItemEnumList = /*@__PURE__*/ S.Array(
-  ParentEntityFilterFileTypeItemEnum,
-) as any as S.Schema<ParentEntityFilterFileTypeItemEnumList>;
+export const ParentEntityFilterFileTypeItemEnumList =
+  DoubleVerifyAvoidedAgeRatingsItemEnumList as any as S.Schema<ParentEntityFilterFileTypeItemEnumList>;
 
 export type ParentEntityFilterFilterTypeEnum =
   | "FILTER_TYPE_UNSPECIFIED"
@@ -9564,13 +9558,8 @@ export interface VideoPlayerSizeTargetingOptionDetails {
   /** Output only. The video player size. */
   videoPlayerSize?: VideoPlayerSizeTargetingOptionDetailsVideoPlayerSizeEnum;
 }
-export const VideoPlayerSizeTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    videoPlayerSize: S.optional(VideoPlayerSizeTargetingOptionDetailsVideoPlayerSizeEnum),
-  }),
-).annotate({
-  identifier: "VideoPlayerSizeTargetingOptionDetails",
-}) as any as S.Schema<VideoPlayerSizeTargetingOptionDetails>;
+export const VideoPlayerSizeTargetingOptionDetails =
+  VideoPlayerSizeAssignedTargetingOptionDetails as any as S.Schema<VideoPlayerSizeTargetingOptionDetails>;
 
 export type AgeRangeTargetingOptionDetailsAgeRangeEnum =
   | "AGE_RANGE_UNSPECIFIED"
@@ -9598,13 +9587,8 @@ export interface AgeRangeTargetingOptionDetails {
   /** Output only. The age range of an audience. */
   ageRange?: AgeRangeTargetingOptionDetailsAgeRangeEnum;
 }
-export const AgeRangeTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ageRange: S.optional(AgeRangeTargetingOptionDetailsAgeRangeEnum),
-  }),
-).annotate({
-  identifier: "AgeRangeTargetingOptionDetails",
-}) as any as S.Schema<AgeRangeTargetingOptionDetails>;
+export const AgeRangeTargetingOptionDetails =
+  AgeRangeAssignedTargetingOptionDetails as any as S.Schema<AgeRangeTargetingOptionDetails>;
 
 /** Represents a targetable operating system. This will be populated in the operating_system_details field of a TargetingOption when targeting_type is `TARGETING_TYPE_OPERATING_SYSTEM`. */
 export interface OperatingSystemTargetingOptionDetails {
@@ -9635,13 +9619,8 @@ export interface HouseholdIncomeTargetingOptionDetails {
   /** Output only. The household income of an audience. */
   householdIncome?: HouseholdIncomeTargetingOptionDetailsHouseholdIncomeEnum;
 }
-export const HouseholdIncomeTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    householdIncome: S.optional(HouseholdIncomeTargetingOptionDetailsHouseholdIncomeEnum),
-  }),
-).annotate({
-  identifier: "HouseholdIncomeTargetingOptionDetails",
-}) as any as S.Schema<HouseholdIncomeTargetingOptionDetails>;
+export const HouseholdIncomeTargetingOptionDetails =
+  HouseholdIncomeAssignedTargetingOptionDetails as any as S.Schema<HouseholdIncomeTargetingOptionDetails>;
 
 export type AuthorizedSellerStatusTargetingOptionDetailsAuthorizedSellerStatusEnum =
   | "AUTHORIZED_SELLER_STATUS_UNSPECIFIED"
@@ -9676,13 +9655,8 @@ export interface ParentalStatusTargetingOptionDetails {
   /** Output only. The parental status of an audience. */
   parentalStatus?: ParentalStatusTargetingOptionDetailsParentalStatusEnum;
 }
-export const ParentalStatusTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parentalStatus: S.optional(ParentalStatusTargetingOptionDetailsParentalStatusEnum),
-  }),
-).annotate({
-  identifier: "ParentalStatusTargetingOptionDetails",
-}) as any as S.Schema<ParentalStatusTargetingOptionDetails>;
+export const ParentalStatusTargetingOptionDetails =
+  ParentalStatusAssignedTargetingOptionDetails as any as S.Schema<ParentalStatusTargetingOptionDetails>;
 
 /** Represents a targetable content genre. This will be populated in the content_genre_details field when targeting_type is `TARGETING_TYPE_CONTENT_GENRE`. */
 export interface ContentGenreTargetingOptionDetails {
@@ -9820,13 +9794,8 @@ export interface ExchangeTargetingOptionDetails {
   /** Output only. The type of exchange. */
   exchange?: ExchangeTargetingOptionDetailsExchangeEnum;
 }
-export const ExchangeTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    exchange: S.optional(ExchangeTargetingOptionDetailsExchangeEnum),
-  }),
-).annotate({
-  identifier: "ExchangeTargetingOptionDetails",
-}) as any as S.Schema<ExchangeTargetingOptionDetails>;
+export const ExchangeTargetingOptionDetails =
+  ExchangeAssignedTargetingOptionDetails as any as S.Schema<ExchangeTargetingOptionDetails>;
 
 export type OmidTargetingOptionDetailsOmidEnum = "OMID_UNSPECIFIED" | "OMID_FOR_MOBILE_DISPLAY_ADS";
 export const OmidTargetingOptionDetailsOmidEnum = S.String;
@@ -9836,13 +9805,8 @@ export interface OmidTargetingOptionDetails {
   /** Output only. The type of Open Measurement enabled inventory. */
   omid?: OmidTargetingOptionDetailsOmidEnum;
 }
-export const OmidTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    omid: S.optional(OmidTargetingOptionDetailsOmidEnum),
-  }),
-).annotate({
-  identifier: "OmidTargetingOptionDetails",
-}) as any as S.Schema<OmidTargetingOptionDetails>;
+export const OmidTargetingOptionDetails =
+  OmidAssignedTargetingOptionDetails as any as S.Schema<OmidTargetingOptionDetails>;
 
 export type CarrierAndIspTargetingOptionDetailsTypeEnum =
   | "CARRIER_AND_ISP_TYPE_UNSPECIFIED"
@@ -9892,13 +9856,8 @@ export interface ViewabilityTargetingOptionDetails {
   /** Output only. The predicted viewability percentage. */
   viewability?: ViewabilityTargetingOptionDetailsViewabilityEnum;
 }
-export const ViewabilityTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    viewability: S.optional(ViewabilityTargetingOptionDetailsViewabilityEnum),
-  }),
-).annotate({
-  identifier: "ViewabilityTargetingOptionDetails",
-}) as any as S.Schema<ViewabilityTargetingOptionDetails>;
+export const ViewabilityTargetingOptionDetails =
+  ViewabilityAssignedTargetingOptionDetails as any as S.Schema<ViewabilityTargetingOptionDetails>;
 
 export type GeoRegionTargetingOptionDetailsGeoRegionTypeEnum =
   | "GEO_REGION_TYPE_UNKNOWN"
@@ -10090,13 +10049,8 @@ export interface GenderTargetingOptionDetails {
   /** Output only. The gender of an audience. */
   gender?: GenderTargetingOptionDetailsGenderEnum;
 }
-export const GenderTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gender: S.optional(GenderTargetingOptionDetailsGenderEnum),
-  }),
-).annotate({
-  identifier: "GenderTargetingOptionDetails",
-}) as any as S.Schema<GenderTargetingOptionDetails>;
+export const GenderTargetingOptionDetails =
+  GenderAssignedTargetingOptionDetails as any as S.Schema<GenderTargetingOptionDetails>;
 
 export type SensitiveCategoryTargetingOptionDetailsSensitiveCategoryEnum =
   | "SENSITIVE_CATEGORY_UNSPECIFIED"
@@ -10146,13 +10100,8 @@ export interface EnvironmentTargetingOptionDetails {
   /** Output only. The serving environment. */
   environment?: EnvironmentTargetingOptionDetailsEnvironmentEnum;
 }
-export const EnvironmentTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    environment: S.optional(EnvironmentTargetingOptionDetailsEnvironmentEnum),
-  }),
-).annotate({
-  identifier: "EnvironmentTargetingOptionDetails",
-}) as any as S.Schema<EnvironmentTargetingOptionDetails>;
+export const EnvironmentTargetingOptionDetails =
+  EnvironmentAssignedTargetingOptionDetails as any as S.Schema<EnvironmentTargetingOptionDetails>;
 
 export type UserRewardedContentTargetingOptionDetailsUserRewardedContentEnum =
   | "USER_REWARDED_CONTENT_UNSPECIFIED"

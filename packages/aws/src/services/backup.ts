@@ -1667,10 +1667,8 @@ export type CopyJobState =
 export const CopyJobState = S.String;
 
 export type CopyJobChildJobsInState = { [key in CopyJobState]?: number };
-export const CopyJobChildJobsInState = /*@__PURE__*/ S.Record(
-  CopyJobState,
-  /*@__PURE__*/ S.Number.pipe(S.optional),
-);
+export const CopyJobChildJobsInState =
+  BackupJobChildJobsInState as any as S.Schema<CopyJobChildJobsInState>;
 export interface CopyJob {
   AccountId?: string;
   CopyJobId?: string;
@@ -2690,7 +2688,7 @@ export type BackupVaultEvent =
 export const BackupVaultEvent = S.String;
 
 export type BackupVaultEvents = BackupVaultEvent[];
-export const BackupVaultEvents = /*@__PURE__*/ S.Array(BackupVaultEvent);
+export const BackupVaultEvents = ScanFindings as any as S.Schema<BackupVaultEvents>;
 export interface GetBackupVaultNotificationsOutput {
   BackupVaultName?: string;
   BackupVaultArn?: string;
@@ -3785,20 +3783,9 @@ export interface CopyJobSummary {
   StartTime?: Date;
   EndTime?: Date;
 }
-export const CopyJobSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Region: S.optional(S.String),
-    AccountId: S.optional(S.String),
-    State: S.optional(CopyJobStatus),
-    ResourceType: S.optional(S.String),
-    MessageCategory: S.optional(S.String),
-    Count: S.optional(S.Number),
-    StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "CopyJobSummary" }) as any as S.Schema<CopyJobSummary>;
+export const CopyJobSummary = BackupJobSummary as any as S.Schema<CopyJobSummary>;
 export type CopyJobSummaryList = CopyJobSummary[];
-export const CopyJobSummaryList = /*@__PURE__*/ S.Array(CopyJobSummary);
+export const CopyJobSummaryList = BackupJobSummaryList as any as S.Schema<CopyJobSummaryList>;
 export interface ListCopyJobSummariesOutput {
   CopyJobSummaries?: CopyJobSummary[];
   AggregationPeriod?: string;

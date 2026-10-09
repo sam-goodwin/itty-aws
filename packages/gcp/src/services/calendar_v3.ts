@@ -2230,9 +2230,8 @@ export type WatchEventsEventTypesEnum =
 export const WatchEventsEventTypesEnum = S.String;
 
 export type WatchEventsEventTypesEnumList = Array<WatchEventsEventTypesEnum | (string & {})>;
-export const WatchEventsEventTypesEnumList = /*@__PURE__*/ S.Array(
-  WatchEventsEventTypesEnum,
-) as any as S.Schema<WatchEventsEventTypesEnumList>;
+export const WatchEventsEventTypesEnumList =
+  ListEventsEventTypesEnumList as any as S.Schema<WatchEventsEventTypesEnumList>;
 
 export type WatchEventsOrderByEnum = "startTime" | "updated";
 export const WatchEventsOrderByEnum = S.String;

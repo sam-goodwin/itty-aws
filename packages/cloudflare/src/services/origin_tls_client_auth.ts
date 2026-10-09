@@ -370,20 +370,8 @@ export interface DeleteHostnameCertificateResponse {
   /** The time when the certificate was uploaded. */
   uploadedOn?: string | null;
 }
-export const DeleteHostnameCertificateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    certificate: S.optional(S.NullOr(S.String)),
-    expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
-    issuer: S.optional(S.NullOr(S.String)),
-    serialNumber: S.optional(S.NullOr(S.String).pipe(T.Body("serial_number"))),
-    signature: S.optional(S.NullOr(S.String)),
-    status: S.optional(S.NullOr(HostnameCertificatesDeleteResponseStatus)),
-    uploadedOn: S.optional(S.NullOr(S.String).pipe(T.Body("uploaded_on"))),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "DeleteHostnameCertificateResponse",
-}) as any as S.Schema<DeleteHostnameCertificateResponse>;
+export const DeleteHostnameCertificateResponse =
+  CreateHostnameCertificateResponse as any as S.Schema<DeleteHostnameCertificateResponse>;
 
 export interface DeleteOriginTlsClientAuthRequest {
   /** Identifier. */
@@ -602,20 +590,8 @@ export interface GetHostnameCertificateResponse {
   /** The time when the certificate was uploaded. */
   uploadedOn?: string | null;
 }
-export const GetHostnameCertificateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    certificate: S.optional(S.NullOr(S.String)),
-    expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
-    issuer: S.optional(S.NullOr(S.String)),
-    serialNumber: S.optional(S.NullOr(S.String).pipe(T.Body("serial_number"))),
-    signature: S.optional(S.NullOr(S.String)),
-    status: S.optional(S.NullOr(HostnameCertificatesGetResponseStatus)),
-    uploadedOn: S.optional(S.NullOr(S.String).pipe(T.Body("uploaded_on"))),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "GetHostnameCertificateResponse",
-}) as any as S.Schema<GetHostnameCertificateResponse>;
+export const GetHostnameCertificateResponse =
+  CreateHostnameCertificateResponse as any as S.Schema<GetHostnameCertificateResponse>;
 
 export interface GetOriginTlsClientAuthRequest {
   /** Identifier. */

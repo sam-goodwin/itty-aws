@@ -1081,9 +1081,8 @@ export const MaintenanceWindowDaysOfWeekItemEnum = S.String;
 export type MaintenanceWindowDaysOfWeekItemEnumList = Array<
   MaintenanceWindowDaysOfWeekItemEnum | (string & {})
 >;
-export const MaintenanceWindowDaysOfWeekItemEnumList = /*@__PURE__*/ S.Array(
-  MaintenanceWindowDaysOfWeekItemEnum,
-) as any as S.Schema<MaintenanceWindowDaysOfWeekItemEnumList>;
+export const MaintenanceWindowDaysOfWeekItemEnumList =
+  MaintenanceWindowMonthsItemEnumList as any as S.Schema<MaintenanceWindowDaysOfWeekItemEnumList>;
 
 /** Maintenance window as defined by Oracle. https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/datatypes/MaintenanceWindow */
 export interface MaintenanceWindow {
@@ -2267,9 +2266,7 @@ export type ExascaleDbStorageVaultPropertiesAttachedShapeAttributesItemEnumList 
   ExascaleDbStorageVaultPropertiesAttachedShapeAttributesItemEnum | (string & {})
 >;
 export const ExascaleDbStorageVaultPropertiesAttachedShapeAttributesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    ExascaleDbStorageVaultPropertiesAttachedShapeAttributesItemEnum,
-  ) as any as S.Schema<ExascaleDbStorageVaultPropertiesAttachedShapeAttributesItemEnumList>;
+  ExascaleDbStorageVaultPropertiesAvailableShapeAttributesItemEnumList as any as S.Schema<ExascaleDbStorageVaultPropertiesAttachedShapeAttributesItemEnumList>;
 
 /** The storage details of the ExascaleDbStorageVault. */
 export interface ExascaleDbStorageDetails {

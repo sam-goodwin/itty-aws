@@ -218,40 +218,25 @@ export interface GetSessionResponseRequiredActionsItemOptionsItem {
   id: GetSessionResponseRequiredActionsItemOptionsItemId;
   label: string;
 }
-export const GetSessionResponseRequiredActionsItemOptionsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: GetSessionResponseRequiredActionsItemOptionsItemId,
-    label: S.String,
-  }),
-).annotate({
-  identifier: "GetSessionResponseRequiredActionsItemOptionsItem",
-}) as any as S.Schema<GetSessionResponseRequiredActionsItemOptionsItem>;
+export const GetSessionResponseRequiredActionsItemOptionsItem =
+  CancelSessionResponseRequiredActionsItemOptionsItem as any as S.Schema<GetSessionResponseRequiredActionsItemOptionsItem>;
 
 export type GetSessionResponseRequiredActionsItemOptionsList =
   Array<GetSessionResponseRequiredActionsItemOptionsItem>;
-export const GetSessionResponseRequiredActionsItemOptionsList = /*@__PURE__*/ S.Array(
-  GetSessionResponseRequiredActionsItemOptionsItem,
-) as any as S.Schema<GetSessionResponseRequiredActionsItemOptionsList>;
+export const GetSessionResponseRequiredActionsItemOptionsList =
+  CancelSessionResponseRequiredActionsItemOptionsList as any as S.Schema<GetSessionResponseRequiredActionsItemOptionsList>;
 
 export interface GetSessionResponseRequiredActionsItem {
   action_id: string;
   title: string;
   options: GetSessionResponseRequiredActionsItemOptionsList;
 }
-export const GetSessionResponseRequiredActionsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action_id: S.String,
-    title: S.String,
-    options: GetSessionResponseRequiredActionsItemOptionsList,
-  }),
-).annotate({
-  identifier: "GetSessionResponseRequiredActionsItem",
-}) as any as S.Schema<GetSessionResponseRequiredActionsItem>;
+export const GetSessionResponseRequiredActionsItem =
+  CancelSessionResponseRequiredActionsItem as any as S.Schema<GetSessionResponseRequiredActionsItem>;
 
 export type GetSessionResponseRequiredActionsList = Array<GetSessionResponseRequiredActionsItem>;
-export const GetSessionResponseRequiredActionsList = /*@__PURE__*/ S.Array(
-  GetSessionResponseRequiredActionsItem,
-) as any as S.Schema<GetSessionResponseRequiredActionsList>;
+export const GetSessionResponseRequiredActionsList =
+  CancelSessionResponseRequiredActionsList as any as S.Schema<GetSessionResponseRequiredActionsList>;
 
 export type GetSessionResponseError = CancelSessionResponseError;
 export const GetSessionResponseError = CancelSessionResponseError;
@@ -479,14 +464,8 @@ export interface QuerySessionEventsRequestFilterCase4AndItemCase0 {
   property: QuerySessionEventsRequestFilterCase4AndItemCase0Property;
   string: QuerySessionEventsRequestFilterCase0String;
 }
-export const QuerySessionEventsRequestFilterCase4AndItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    property: QuerySessionEventsRequestFilterCase4AndItemCase0Property,
-    string: QuerySessionEventsRequestFilterCase0String,
-  }),
-).annotate({
-  identifier: "QuerySessionEventsRequestFilterCase4AndItemCase0",
-}) as any as S.Schema<QuerySessionEventsRequestFilterCase4AndItemCase0>;
+export const QuerySessionEventsRequestFilterCase4AndItemCase0 =
+  QuerySessionEventsRequestFilterCase0 as any as S.Schema<QuerySessionEventsRequestFilterCase4AndItemCase0>;
 
 export type QuerySessionEventsRequestFilterCase4AndItemCase1Property = "type";
 export const QuerySessionEventsRequestFilterCase4AndItemCase1Property = S.String;
@@ -556,14 +535,8 @@ export interface QuerySessionEventsRequestFilterCase4AndItemCase2 {
   property: QuerySessionEventsRequestFilterCase4AndItemCase2Property;
   number: QuerySessionEventsRequestFilterCase2Number;
 }
-export const QuerySessionEventsRequestFilterCase4AndItemCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    property: QuerySessionEventsRequestFilterCase4AndItemCase2Property,
-    number: QuerySessionEventsRequestFilterCase2Number,
-  }),
-).annotate({
-  identifier: "QuerySessionEventsRequestFilterCase4AndItemCase2",
-}) as any as S.Schema<QuerySessionEventsRequestFilterCase4AndItemCase2>;
+export const QuerySessionEventsRequestFilterCase4AndItemCase2 =
+  QuerySessionEventsRequestFilterCase2 as any as S.Schema<QuerySessionEventsRequestFilterCase4AndItemCase2>;
 
 export type QuerySessionEventsRequestFilterCase4AndItemCase3Property = "created_at";
 export const QuerySessionEventsRequestFilterCase4AndItemCase3Property = S.String;
@@ -577,14 +550,8 @@ export interface QuerySessionEventsRequestFilterCase4AndItemCase3 {
   property: QuerySessionEventsRequestFilterCase4AndItemCase3Property;
   timestamp: QuerySessionEventsRequestFilterCase3Timestamp;
 }
-export const QuerySessionEventsRequestFilterCase4AndItemCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    property: QuerySessionEventsRequestFilterCase4AndItemCase3Property,
-    timestamp: QuerySessionEventsRequestFilterCase3Timestamp,
-  }),
-).annotate({
-  identifier: "QuerySessionEventsRequestFilterCase4AndItemCase3",
-}) as any as S.Schema<QuerySessionEventsRequestFilterCase4AndItemCase3>;
+export const QuerySessionEventsRequestFilterCase4AndItemCase3 =
+  QuerySessionEventsRequestFilterCase3 as any as S.Schema<QuerySessionEventsRequestFilterCase4AndItemCase3>;
 
 export type QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase0Property = "id";
 export const QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase0Property = S.String;
@@ -633,9 +600,7 @@ export type QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase1EventTyp
   QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase1EventTypeInItem | (string & {})
 >;
 export const QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase1EventTypeInList =
-  /*@__PURE__*/ S.Array(
-    QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase1EventTypeInItem,
-  ) as any as S.Schema<QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase1EventTypeInList>;
+  QuerySessionEventsRequestFilterCase4AndItemCase1EventTypeInList as any as S.Schema<QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase1EventTypeInList>;
 
 export interface QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase1EventType {
   equals?:
@@ -767,9 +732,7 @@ export type QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase4AndItemC
     | (string & {})
   >;
 export const QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase4AndItemCase1EventTypeInList =
-  /*@__PURE__*/ S.Array(
-    QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase4AndItemCase1EventTypeInItem,
-  ) as any as S.Schema<QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase4AndItemCase1EventTypeInList>;
+  QuerySessionEventsRequestFilterCase4AndItemCase1EventTypeInList as any as S.Schema<QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase4AndItemCase1EventTypeInList>;
 
 export interface QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase4AndItemCase1EventType {
   equals?:
@@ -894,14 +857,7 @@ export interface QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase5OrI
   string: QuerySessionEventsRequestFilterCase0String;
 }
 export const QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase5OrItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      property: QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase5OrItemCase0Property,
-      string: QuerySessionEventsRequestFilterCase0String,
-    }),
-  ).annotate({
-    identifier: "QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase5OrItemCase0",
-  }) as any as S.Schema<QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase5OrItemCase0>;
+  QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase4AndItemCase0 as any as S.Schema<QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase5OrItemCase0>;
 
 export type QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase5OrItemCase1Property =
   "type";
@@ -934,9 +890,7 @@ export type QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase5OrItemCa
     | (string & {})
   >;
 export const QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase5OrItemCase1EventTypeInList =
-  /*@__PURE__*/ S.Array(
-    QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase5OrItemCase1EventTypeInItem,
-  ) as any as S.Schema<QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase5OrItemCase1EventTypeInList>;
+  QuerySessionEventsRequestFilterCase4AndItemCase1EventTypeInList as any as S.Schema<QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase5OrItemCase1EventTypeInList>;
 
 export interface QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase5OrItemCase1EventType {
   equals?:
@@ -945,32 +899,14 @@ export interface QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase5OrI
   in?: QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase5OrItemCase1EventTypeInList;
 }
 export const QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase5OrItemCase1EventType =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      equals: S.optional(
-        QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase5OrItemCase1EventTypeEquals,
-      ),
-      in: S.optional(
-        QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase5OrItemCase1EventTypeInList,
-      ),
-    }),
-  ).annotate({
-    identifier: "QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase5OrItemCase1EventType",
-  }) as any as S.Schema<QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase5OrItemCase1EventType>;
+  QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase4AndItemCase1EventType as any as S.Schema<QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase5OrItemCase1EventType>;
 
 export interface QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase5OrItemCase1 {
   property: QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase5OrItemCase1Property;
   event_type: QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase5OrItemCase1EventType;
 }
 export const QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase5OrItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      property: QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase5OrItemCase1Property,
-      event_type: QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase5OrItemCase1EventType,
-    }),
-  ).annotate({
-    identifier: "QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase5OrItemCase1",
-  }) as any as S.Schema<QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase5OrItemCase1>;
+  QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase4AndItemCase1 as any as S.Schema<QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase5OrItemCase1>;
 
 export type QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase5OrItemCase2Property =
   "sequence";
@@ -987,14 +923,7 @@ export interface QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase5OrI
   number: QuerySessionEventsRequestFilterCase2Number;
 }
 export const QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase5OrItemCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      property: QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase5OrItemCase2Property,
-      number: QuerySessionEventsRequestFilterCase2Number,
-    }),
-  ).annotate({
-    identifier: "QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase5OrItemCase2",
-  }) as any as S.Schema<QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase5OrItemCase2>;
+  QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase4AndItemCase2 as any as S.Schema<QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase5OrItemCase2>;
 
 export type QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase5OrItemCase3Property =
   "created_at";
@@ -1011,14 +940,7 @@ export interface QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase5OrI
   timestamp: QuerySessionEventsRequestFilterCase3Timestamp;
 }
 export const QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase5OrItemCase3 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      property: QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase5OrItemCase3Property,
-      timestamp: QuerySessionEventsRequestFilterCase3Timestamp,
-    }),
-  ).annotate({
-    identifier: "QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase5OrItemCase3",
-  }) as any as S.Schema<QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase5OrItemCase3>;
+  QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase4AndItemCase3 as any as S.Schema<QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase5OrItemCase3>;
 
 export type QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase5OrItem =
   | QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase5OrItemCase0
@@ -1086,15 +1008,8 @@ export interface QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase0 {
   property: QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase0Property;
   string: QuerySessionEventsRequestFilterCase0String;
 }
-export const QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase0 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      property: QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase0Property,
-      string: QuerySessionEventsRequestFilterCase0String,
-    }),
-).annotate({
-  identifier: "QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase0",
-}) as any as S.Schema<QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase0>;
+export const QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase0 =
+  QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase0 as any as S.Schema<QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase0>;
 
 export type QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase1Property = "type";
 export const QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase1Property = S.String;
@@ -1121,9 +1036,7 @@ export type QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase1EventType
   QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase1EventTypeInItem | (string & {})
 >;
 export const QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase1EventTypeInList =
-  /*@__PURE__*/ S.Array(
-    QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase1EventTypeInItem,
-  ) as any as S.Schema<QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase1EventTypeInList>;
+  QuerySessionEventsRequestFilterCase4AndItemCase1EventTypeInList as any as S.Schema<QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase1EventTypeInList>;
 
 export interface QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase1EventType {
   equals?:
@@ -1132,30 +1045,14 @@ export interface QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase1Even
   in?: QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase1EventTypeInList;
 }
 export const QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase1EventType =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      equals: S.optional(
-        QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase1EventTypeEquals,
-      ),
-      in: S.optional(QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase1EventTypeInList),
-    }),
-  ).annotate({
-    identifier: "QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase1EventType",
-  }) as any as S.Schema<QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase1EventType>;
+  QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase1EventType as any as S.Schema<QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase1EventType>;
 
 export interface QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase1 {
   property: QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase1Property;
   event_type: QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase1EventType;
 }
-export const QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase1 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      property: QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase1Property,
-      event_type: QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase1EventType,
-    }),
-).annotate({
-  identifier: "QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase1",
-}) as any as S.Schema<QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase1>;
+export const QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase1 =
+  QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase1 as any as S.Schema<QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase1>;
 
 export type QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase2Property = "sequence";
 export const QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase2Property = S.String;
@@ -1169,15 +1066,8 @@ export interface QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase2 {
   property: QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase2Property;
   number: QuerySessionEventsRequestFilterCase2Number;
 }
-export const QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase2 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      property: QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase2Property,
-      number: QuerySessionEventsRequestFilterCase2Number,
-    }),
-).annotate({
-  identifier: "QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase2",
-}) as any as S.Schema<QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase2>;
+export const QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase2 =
+  QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase2 as any as S.Schema<QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase2>;
 
 export type QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase3Property = "created_at";
 export const QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase3Property = S.String;
@@ -1191,15 +1081,8 @@ export interface QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase3 {
   property: QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase3Property;
   timestamp: QuerySessionEventsRequestFilterCase3Timestamp;
 }
-export const QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase3 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      property: QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase3Property,
-      timestamp: QuerySessionEventsRequestFilterCase3Timestamp,
-    }),
-).annotate({
-  identifier: "QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase3",
-}) as any as S.Schema<QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase3>;
+export const QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase3 =
+  QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase3 as any as S.Schema<QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase3>;
 
 export type QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase4AndItemCase0Property = "id";
 export const QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase4AndItemCase0Property =
@@ -1215,14 +1098,7 @@ export interface QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase4AndI
   string: QuerySessionEventsRequestFilterCase0String;
 }
 export const QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase4AndItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      property: QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase4AndItemCase0Property,
-      string: QuerySessionEventsRequestFilterCase0String,
-    }),
-  ).annotate({
-    identifier: "QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase4AndItemCase0",
-  }) as any as S.Schema<QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase4AndItemCase0>;
+  QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase4AndItemCase0 as any as S.Schema<QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase4AndItemCase0>;
 
 export type QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase4AndItemCase1Property =
   "type";
@@ -1255,9 +1131,7 @@ export type QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase4AndItemCa
     | (string & {})
   >;
 export const QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase4AndItemCase1EventTypeInList =
-  /*@__PURE__*/ S.Array(
-    QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase4AndItemCase1EventTypeInItem,
-  ) as any as S.Schema<QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase4AndItemCase1EventTypeInList>;
+  QuerySessionEventsRequestFilterCase4AndItemCase1EventTypeInList as any as S.Schema<QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase4AndItemCase1EventTypeInList>;
 
 export interface QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase4AndItemCase1EventType {
   equals?:
@@ -1266,32 +1140,14 @@ export interface QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase4AndI
   in?: QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase4AndItemCase1EventTypeInList;
 }
 export const QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase4AndItemCase1EventType =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      equals: S.optional(
-        QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase4AndItemCase1EventTypeEquals,
-      ),
-      in: S.optional(
-        QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase4AndItemCase1EventTypeInList,
-      ),
-    }),
-  ).annotate({
-    identifier: "QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase4AndItemCase1EventType",
-  }) as any as S.Schema<QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase4AndItemCase1EventType>;
+  QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase4AndItemCase1EventType as any as S.Schema<QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase4AndItemCase1EventType>;
 
 export interface QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase4AndItemCase1 {
   property: QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase4AndItemCase1Property;
   event_type: QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase4AndItemCase1EventType;
 }
 export const QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase4AndItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      property: QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase4AndItemCase1Property,
-      event_type: QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase4AndItemCase1EventType,
-    }),
-  ).annotate({
-    identifier: "QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase4AndItemCase1",
-  }) as any as S.Schema<QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase4AndItemCase1>;
+  QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase4AndItemCase1 as any as S.Schema<QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase4AndItemCase1>;
 
 export type QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase4AndItemCase2Property =
   "sequence";
@@ -1308,14 +1164,7 @@ export interface QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase4AndI
   number: QuerySessionEventsRequestFilterCase2Number;
 }
 export const QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase4AndItemCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      property: QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase4AndItemCase2Property,
-      number: QuerySessionEventsRequestFilterCase2Number,
-    }),
-  ).annotate({
-    identifier: "QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase4AndItemCase2",
-  }) as any as S.Schema<QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase4AndItemCase2>;
+  QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase4AndItemCase2 as any as S.Schema<QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase4AndItemCase2>;
 
 export type QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase4AndItemCase3Property =
   "created_at";
@@ -1332,14 +1181,7 @@ export interface QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase4AndI
   timestamp: QuerySessionEventsRequestFilterCase3Timestamp;
 }
 export const QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase4AndItemCase3 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      property: QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase4AndItemCase3Property,
-      timestamp: QuerySessionEventsRequestFilterCase3Timestamp,
-    }),
-  ).annotate({
-    identifier: "QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase4AndItemCase3",
-  }) as any as S.Schema<QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase4AndItemCase3>;
+  QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase4AndItemCase3 as any as S.Schema<QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase4AndItemCase3>;
 
 export type QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase4AndItem =
   | QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase4AndItemCase0
@@ -1382,14 +1224,7 @@ export interface QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase5OrIt
   string: QuerySessionEventsRequestFilterCase0String;
 }
 export const QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase5OrItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      property: QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase5OrItemCase0Property,
-      string: QuerySessionEventsRequestFilterCase0String,
-    }),
-  ).annotate({
-    identifier: "QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase5OrItemCase0",
-  }) as any as S.Schema<QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase5OrItemCase0>;
+  QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase4AndItemCase0 as any as S.Schema<QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase5OrItemCase0>;
 
 export type QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase5OrItemCase1Property = "type";
 export const QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase5OrItemCase1Property =
@@ -1421,9 +1256,7 @@ export type QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase5OrItemCas
     | (string & {})
   >;
 export const QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase5OrItemCase1EventTypeInList =
-  /*@__PURE__*/ S.Array(
-    QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase5OrItemCase1EventTypeInItem,
-  ) as any as S.Schema<QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase5OrItemCase1EventTypeInList>;
+  QuerySessionEventsRequestFilterCase4AndItemCase1EventTypeInList as any as S.Schema<QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase5OrItemCase1EventTypeInList>;
 
 export interface QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase5OrItemCase1EventType {
   equals?:
@@ -1432,32 +1265,14 @@ export interface QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase5OrIt
   in?: QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase5OrItemCase1EventTypeInList;
 }
 export const QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase5OrItemCase1EventType =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      equals: S.optional(
-        QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase5OrItemCase1EventTypeEquals,
-      ),
-      in: S.optional(
-        QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase5OrItemCase1EventTypeInList,
-      ),
-    }),
-  ).annotate({
-    identifier: "QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase5OrItemCase1EventType",
-  }) as any as S.Schema<QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase5OrItemCase1EventType>;
+  QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase4AndItemCase1EventType as any as S.Schema<QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase5OrItemCase1EventType>;
 
 export interface QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase5OrItemCase1 {
   property: QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase5OrItemCase1Property;
   event_type: QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase5OrItemCase1EventType;
 }
 export const QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase5OrItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      property: QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase5OrItemCase1Property,
-      event_type: QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase5OrItemCase1EventType,
-    }),
-  ).annotate({
-    identifier: "QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase5OrItemCase1",
-  }) as any as S.Schema<QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase5OrItemCase1>;
+  QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase4AndItemCase1 as any as S.Schema<QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase5OrItemCase1>;
 
 export type QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase5OrItemCase2Property =
   "sequence";
@@ -1474,14 +1289,7 @@ export interface QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase5OrIt
   number: QuerySessionEventsRequestFilterCase2Number;
 }
 export const QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase5OrItemCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      property: QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase5OrItemCase2Property,
-      number: QuerySessionEventsRequestFilterCase2Number,
-    }),
-  ).annotate({
-    identifier: "QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase5OrItemCase2",
-  }) as any as S.Schema<QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase5OrItemCase2>;
+  QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase4AndItemCase2 as any as S.Schema<QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase5OrItemCase2>;
 
 export type QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase5OrItemCase3Property =
   "created_at";
@@ -1498,14 +1306,7 @@ export interface QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase5OrIt
   timestamp: QuerySessionEventsRequestFilterCase3Timestamp;
 }
 export const QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase5OrItemCase3 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      property: QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase5OrItemCase3Property,
-      timestamp: QuerySessionEventsRequestFilterCase3Timestamp,
-    }),
-  ).annotate({
-    identifier: "QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase5OrItemCase3",
-  }) as any as S.Schema<QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase5OrItemCase3>;
+  QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase4AndItemCase3 as any as S.Schema<QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase5OrItemCase3>;
 
 export type QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase5OrItem =
   | QuerySessionEventsRequestFilterCase4AndItemCase5OrItemCase5OrItemCase0
@@ -1600,14 +1401,8 @@ export interface QuerySessionEventsRequestFilterCase5OrItemCase0 {
   property: QuerySessionEventsRequestFilterCase5OrItemCase0Property;
   string: QuerySessionEventsRequestFilterCase0String;
 }
-export const QuerySessionEventsRequestFilterCase5OrItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    property: QuerySessionEventsRequestFilterCase5OrItemCase0Property,
-    string: QuerySessionEventsRequestFilterCase0String,
-  }),
-).annotate({
-  identifier: "QuerySessionEventsRequestFilterCase5OrItemCase0",
-}) as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase0>;
+export const QuerySessionEventsRequestFilterCase5OrItemCase0 =
+  QuerySessionEventsRequestFilterCase0 as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase0>;
 
 export type QuerySessionEventsRequestFilterCase5OrItemCase1Property = "type";
 export const QuerySessionEventsRequestFilterCase5OrItemCase1Property = S.String;
@@ -1633,9 +1428,8 @@ export const QuerySessionEventsRequestFilterCase5OrItemCase1EventTypeInItem = S.
 export type QuerySessionEventsRequestFilterCase5OrItemCase1EventTypeInList = Array<
   QuerySessionEventsRequestFilterCase5OrItemCase1EventTypeInItem | (string & {})
 >;
-export const QuerySessionEventsRequestFilterCase5OrItemCase1EventTypeInList = /*@__PURE__*/ S.Array(
-  QuerySessionEventsRequestFilterCase5OrItemCase1EventTypeInItem,
-) as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase1EventTypeInList>;
+export const QuerySessionEventsRequestFilterCase5OrItemCase1EventTypeInList =
+  QuerySessionEventsRequestFilterCase1EventTypeInList as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase1EventTypeInList>;
 
 export interface QuerySessionEventsRequestFilterCase5OrItemCase1EventType {
   equals?: QuerySessionEventsRequestFilterCase5OrItemCase1EventTypeEquals | (string & {});
@@ -1676,14 +1470,8 @@ export interface QuerySessionEventsRequestFilterCase5OrItemCase2 {
   property: QuerySessionEventsRequestFilterCase5OrItemCase2Property;
   number: QuerySessionEventsRequestFilterCase2Number;
 }
-export const QuerySessionEventsRequestFilterCase5OrItemCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    property: QuerySessionEventsRequestFilterCase5OrItemCase2Property,
-    number: QuerySessionEventsRequestFilterCase2Number,
-  }),
-).annotate({
-  identifier: "QuerySessionEventsRequestFilterCase5OrItemCase2",
-}) as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase2>;
+export const QuerySessionEventsRequestFilterCase5OrItemCase2 =
+  QuerySessionEventsRequestFilterCase2 as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase2>;
 
 export type QuerySessionEventsRequestFilterCase5OrItemCase3Property = "created_at";
 export const QuerySessionEventsRequestFilterCase5OrItemCase3Property = S.String;
@@ -1697,14 +1485,8 @@ export interface QuerySessionEventsRequestFilterCase5OrItemCase3 {
   property: QuerySessionEventsRequestFilterCase5OrItemCase3Property;
   timestamp: QuerySessionEventsRequestFilterCase3Timestamp;
 }
-export const QuerySessionEventsRequestFilterCase5OrItemCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    property: QuerySessionEventsRequestFilterCase5OrItemCase3Property,
-    timestamp: QuerySessionEventsRequestFilterCase3Timestamp,
-  }),
-).annotate({
-  identifier: "QuerySessionEventsRequestFilterCase5OrItemCase3",
-}) as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase3>;
+export const QuerySessionEventsRequestFilterCase5OrItemCase3 =
+  QuerySessionEventsRequestFilterCase3 as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase3>;
 
 export type QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase0Property = "id";
 export const QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase0Property = S.String;
@@ -1718,15 +1500,8 @@ export interface QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase0 {
   property: QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase0Property;
   string: QuerySessionEventsRequestFilterCase0String;
 }
-export const QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase0 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      property: QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase0Property,
-      string: QuerySessionEventsRequestFilterCase0String,
-    }),
-).annotate({
-  identifier: "QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase0",
-}) as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase0>;
+export const QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase0 =
+  QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase0 as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase0>;
 
 export type QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase1Property = "type";
 export const QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase1Property = S.String;
@@ -1753,9 +1528,7 @@ export type QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase1EventType
   QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase1EventTypeInItem | (string & {})
 >;
 export const QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase1EventTypeInList =
-  /*@__PURE__*/ S.Array(
-    QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase1EventTypeInItem,
-  ) as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase1EventTypeInList>;
+  QuerySessionEventsRequestFilterCase4AndItemCase1EventTypeInList as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase1EventTypeInList>;
 
 export interface QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase1EventType {
   equals?:
@@ -1764,30 +1537,14 @@ export interface QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase1Even
   in?: QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase1EventTypeInList;
 }
 export const QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase1EventType =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      equals: S.optional(
-        QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase1EventTypeEquals,
-      ),
-      in: S.optional(QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase1EventTypeInList),
-    }),
-  ).annotate({
-    identifier: "QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase1EventType",
-  }) as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase1EventType>;
+  QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase1EventType as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase1EventType>;
 
 export interface QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase1 {
   property: QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase1Property;
   event_type: QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase1EventType;
 }
-export const QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase1 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      property: QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase1Property,
-      event_type: QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase1EventType,
-    }),
-).annotate({
-  identifier: "QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase1",
-}) as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase1>;
+export const QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase1 =
+  QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase1 as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase1>;
 
 export type QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase2Property = "sequence";
 export const QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase2Property = S.String;
@@ -1801,15 +1558,8 @@ export interface QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase2 {
   property: QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase2Property;
   number: QuerySessionEventsRequestFilterCase2Number;
 }
-export const QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase2 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      property: QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase2Property,
-      number: QuerySessionEventsRequestFilterCase2Number,
-    }),
-).annotate({
-  identifier: "QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase2",
-}) as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase2>;
+export const QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase2 =
+  QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase2 as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase2>;
 
 export type QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase3Property = "created_at";
 export const QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase3Property = S.String;
@@ -1823,15 +1573,8 @@ export interface QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase3 {
   property: QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase3Property;
   timestamp: QuerySessionEventsRequestFilterCase3Timestamp;
 }
-export const QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase3 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      property: QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase3Property,
-      timestamp: QuerySessionEventsRequestFilterCase3Timestamp,
-    }),
-).annotate({
-  identifier: "QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase3",
-}) as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase3>;
+export const QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase3 =
+  QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase3 as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase3>;
 
 export type QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase4AndItemCase0Property = "id";
 export const QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase4AndItemCase0Property =
@@ -1847,14 +1590,7 @@ export interface QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase4AndI
   string: QuerySessionEventsRequestFilterCase0String;
 }
 export const QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase4AndItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      property: QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase4AndItemCase0Property,
-      string: QuerySessionEventsRequestFilterCase0String,
-    }),
-  ).annotate({
-    identifier: "QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase4AndItemCase0",
-  }) as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase4AndItemCase0>;
+  QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase4AndItemCase0 as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase4AndItemCase0>;
 
 export type QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase4AndItemCase1Property =
   "type";
@@ -1887,9 +1623,7 @@ export type QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase4AndItemCa
     | (string & {})
   >;
 export const QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase4AndItemCase1EventTypeInList =
-  /*@__PURE__*/ S.Array(
-    QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase4AndItemCase1EventTypeInItem,
-  ) as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase4AndItemCase1EventTypeInList>;
+  QuerySessionEventsRequestFilterCase4AndItemCase1EventTypeInList as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase4AndItemCase1EventTypeInList>;
 
 export interface QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase4AndItemCase1EventType {
   equals?:
@@ -1898,32 +1632,14 @@ export interface QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase4AndI
   in?: QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase4AndItemCase1EventTypeInList;
 }
 export const QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase4AndItemCase1EventType =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      equals: S.optional(
-        QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase4AndItemCase1EventTypeEquals,
-      ),
-      in: S.optional(
-        QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase4AndItemCase1EventTypeInList,
-      ),
-    }),
-  ).annotate({
-    identifier: "QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase4AndItemCase1EventType",
-  }) as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase4AndItemCase1EventType>;
+  QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase4AndItemCase1EventType as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase4AndItemCase1EventType>;
 
 export interface QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase4AndItemCase1 {
   property: QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase4AndItemCase1Property;
   event_type: QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase4AndItemCase1EventType;
 }
 export const QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase4AndItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      property: QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase4AndItemCase1Property,
-      event_type: QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase4AndItemCase1EventType,
-    }),
-  ).annotate({
-    identifier: "QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase4AndItemCase1",
-  }) as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase4AndItemCase1>;
+  QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase4AndItemCase1 as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase4AndItemCase1>;
 
 export type QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase4AndItemCase2Property =
   "sequence";
@@ -1940,14 +1656,7 @@ export interface QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase4AndI
   number: QuerySessionEventsRequestFilterCase2Number;
 }
 export const QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase4AndItemCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      property: QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase4AndItemCase2Property,
-      number: QuerySessionEventsRequestFilterCase2Number,
-    }),
-  ).annotate({
-    identifier: "QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase4AndItemCase2",
-  }) as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase4AndItemCase2>;
+  QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase4AndItemCase2 as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase4AndItemCase2>;
 
 export type QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase4AndItemCase3Property =
   "created_at";
@@ -1964,14 +1673,7 @@ export interface QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase4AndI
   timestamp: QuerySessionEventsRequestFilterCase3Timestamp;
 }
 export const QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase4AndItemCase3 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      property: QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase4AndItemCase3Property,
-      timestamp: QuerySessionEventsRequestFilterCase3Timestamp,
-    }),
-  ).annotate({
-    identifier: "QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase4AndItemCase3",
-  }) as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase4AndItemCase3>;
+  QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase4AndItemCase3 as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase4AndItemCase3>;
 
 export type QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase4AndItem =
   | QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase4AndItemCase0
@@ -2014,14 +1716,7 @@ export interface QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase5OrIt
   string: QuerySessionEventsRequestFilterCase0String;
 }
 export const QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase5OrItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      property: QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase5OrItemCase0Property,
-      string: QuerySessionEventsRequestFilterCase0String,
-    }),
-  ).annotate({
-    identifier: "QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase5OrItemCase0",
-  }) as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase5OrItemCase0>;
+  QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase4AndItemCase0 as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase5OrItemCase0>;
 
 export type QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase5OrItemCase1Property = "type";
 export const QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase5OrItemCase1Property =
@@ -2053,9 +1748,7 @@ export type QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase5OrItemCas
     | (string & {})
   >;
 export const QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase5OrItemCase1EventTypeInList =
-  /*@__PURE__*/ S.Array(
-    QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase5OrItemCase1EventTypeInItem,
-  ) as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase5OrItemCase1EventTypeInList>;
+  QuerySessionEventsRequestFilterCase4AndItemCase1EventTypeInList as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase5OrItemCase1EventTypeInList>;
 
 export interface QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase5OrItemCase1EventType {
   equals?:
@@ -2064,32 +1757,14 @@ export interface QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase5OrIt
   in?: QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase5OrItemCase1EventTypeInList;
 }
 export const QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase5OrItemCase1EventType =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      equals: S.optional(
-        QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase5OrItemCase1EventTypeEquals,
-      ),
-      in: S.optional(
-        QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase5OrItemCase1EventTypeInList,
-      ),
-    }),
-  ).annotate({
-    identifier: "QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase5OrItemCase1EventType",
-  }) as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase5OrItemCase1EventType>;
+  QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase4AndItemCase1EventType as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase5OrItemCase1EventType>;
 
 export interface QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase5OrItemCase1 {
   property: QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase5OrItemCase1Property;
   event_type: QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase5OrItemCase1EventType;
 }
 export const QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase5OrItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      property: QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase5OrItemCase1Property,
-      event_type: QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase5OrItemCase1EventType,
-    }),
-  ).annotate({
-    identifier: "QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase5OrItemCase1",
-  }) as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase5OrItemCase1>;
+  QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase4AndItemCase1 as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase5OrItemCase1>;
 
 export type QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase5OrItemCase2Property =
   "sequence";
@@ -2106,14 +1781,7 @@ export interface QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase5OrIt
   number: QuerySessionEventsRequestFilterCase2Number;
 }
 export const QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase5OrItemCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      property: QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase5OrItemCase2Property,
-      number: QuerySessionEventsRequestFilterCase2Number,
-    }),
-  ).annotate({
-    identifier: "QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase5OrItemCase2",
-  }) as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase5OrItemCase2>;
+  QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase4AndItemCase2 as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase5OrItemCase2>;
 
 export type QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase5OrItemCase3Property =
   "created_at";
@@ -2130,14 +1798,7 @@ export interface QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase5OrIt
   timestamp: QuerySessionEventsRequestFilterCase3Timestamp;
 }
 export const QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase5OrItemCase3 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      property: QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase5OrItemCase3Property,
-      timestamp: QuerySessionEventsRequestFilterCase3Timestamp,
-    }),
-  ).annotate({
-    identifier: "QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase5OrItemCase3",
-  }) as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase5OrItemCase3>;
+  QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase4AndItemCase3 as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase5OrItemCase3>;
 
 export type QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase5OrItem =
   | QuerySessionEventsRequestFilterCase5OrItemCase4AndItemCase5OrItemCase0
@@ -2205,15 +1866,8 @@ export interface QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase0 {
   property: QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase0Property;
   string: QuerySessionEventsRequestFilterCase0String;
 }
-export const QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase0 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      property: QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase0Property,
-      string: QuerySessionEventsRequestFilterCase0String,
-    }),
-).annotate({
-  identifier: "QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase0",
-}) as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase0>;
+export const QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase0 =
+  QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase0 as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase0>;
 
 export type QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase1Property = "type";
 export const QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase1Property = S.String;
@@ -2240,9 +1894,7 @@ export type QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase1EventTypeI
   QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase1EventTypeInItem | (string & {})
 >;
 export const QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase1EventTypeInList =
-  /*@__PURE__*/ S.Array(
-    QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase1EventTypeInItem,
-  ) as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase1EventTypeInList>;
+  QuerySessionEventsRequestFilterCase4AndItemCase1EventTypeInList as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase1EventTypeInList>;
 
 export interface QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase1EventType {
   equals?:
@@ -2286,15 +1938,8 @@ export interface QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase2 {
   property: QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase2Property;
   number: QuerySessionEventsRequestFilterCase2Number;
 }
-export const QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase2 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      property: QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase2Property,
-      number: QuerySessionEventsRequestFilterCase2Number,
-    }),
-).annotate({
-  identifier: "QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase2",
-}) as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase2>;
+export const QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase2 =
+  QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase2 as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase2>;
 
 export type QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase3Property = "created_at";
 export const QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase3Property = S.String;
@@ -2308,15 +1953,8 @@ export interface QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase3 {
   property: QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase3Property;
   timestamp: QuerySessionEventsRequestFilterCase3Timestamp;
 }
-export const QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase3 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      property: QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase3Property,
-      timestamp: QuerySessionEventsRequestFilterCase3Timestamp,
-    }),
-).annotate({
-  identifier: "QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase3",
-}) as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase3>;
+export const QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase3 =
+  QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase3 as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase3>;
 
 export type QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase4AndItemCase0Property = "id";
 export const QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase4AndItemCase0Property =
@@ -2332,14 +1970,7 @@ export interface QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase4AndIt
   string: QuerySessionEventsRequestFilterCase0String;
 }
 export const QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase4AndItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      property: QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase4AndItemCase0Property,
-      string: QuerySessionEventsRequestFilterCase0String,
-    }),
-  ).annotate({
-    identifier: "QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase4AndItemCase0",
-  }) as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase4AndItemCase0>;
+  QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase4AndItemCase0 as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase4AndItemCase0>;
 
 export type QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase4AndItemCase1Property = "type";
 export const QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase4AndItemCase1Property =
@@ -2371,9 +2002,7 @@ export type QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase4AndItemCas
     | (string & {})
   >;
 export const QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase4AndItemCase1EventTypeInList =
-  /*@__PURE__*/ S.Array(
-    QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase4AndItemCase1EventTypeInItem,
-  ) as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase4AndItemCase1EventTypeInList>;
+  QuerySessionEventsRequestFilterCase4AndItemCase1EventTypeInList as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase4AndItemCase1EventTypeInList>;
 
 export interface QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase4AndItemCase1EventType {
   equals?:
@@ -2382,32 +2011,14 @@ export interface QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase4AndIt
   in?: QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase4AndItemCase1EventTypeInList;
 }
 export const QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase4AndItemCase1EventType =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      equals: S.optional(
-        QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase4AndItemCase1EventTypeEquals,
-      ),
-      in: S.optional(
-        QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase4AndItemCase1EventTypeInList,
-      ),
-    }),
-  ).annotate({
-    identifier: "QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase4AndItemCase1EventType",
-  }) as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase4AndItemCase1EventType>;
+  QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase4AndItemCase1EventType as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase4AndItemCase1EventType>;
 
 export interface QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase4AndItemCase1 {
   property: QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase4AndItemCase1Property;
   event_type: QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase4AndItemCase1EventType;
 }
 export const QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase4AndItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      property: QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase4AndItemCase1Property,
-      event_type: QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase4AndItemCase1EventType,
-    }),
-  ).annotate({
-    identifier: "QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase4AndItemCase1",
-  }) as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase4AndItemCase1>;
+  QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase4AndItemCase1 as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase4AndItemCase1>;
 
 export type QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase4AndItemCase2Property =
   "sequence";
@@ -2424,14 +2035,7 @@ export interface QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase4AndIt
   number: QuerySessionEventsRequestFilterCase2Number;
 }
 export const QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase4AndItemCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      property: QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase4AndItemCase2Property,
-      number: QuerySessionEventsRequestFilterCase2Number,
-    }),
-  ).annotate({
-    identifier: "QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase4AndItemCase2",
-  }) as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase4AndItemCase2>;
+  QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase4AndItemCase2 as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase4AndItemCase2>;
 
 export type QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase4AndItemCase3Property =
   "created_at";
@@ -2448,14 +2052,7 @@ export interface QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase4AndIt
   timestamp: QuerySessionEventsRequestFilterCase3Timestamp;
 }
 export const QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase4AndItemCase3 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      property: QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase4AndItemCase3Property,
-      timestamp: QuerySessionEventsRequestFilterCase3Timestamp,
-    }),
-  ).annotate({
-    identifier: "QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase4AndItemCase3",
-  }) as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase4AndItemCase3>;
+  QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase4AndItemCase3 as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase4AndItemCase3>;
 
 export type QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase4AndItem =
   | QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase4AndItemCase0
@@ -2498,14 +2095,7 @@ export interface QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase5OrIte
   string: QuerySessionEventsRequestFilterCase0String;
 }
 export const QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase5OrItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      property: QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase5OrItemCase0Property,
-      string: QuerySessionEventsRequestFilterCase0String,
-    }),
-  ).annotate({
-    identifier: "QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase5OrItemCase0",
-  }) as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase5OrItemCase0>;
+  QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase4AndItemCase0 as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase5OrItemCase0>;
 
 export type QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase5OrItemCase1Property = "type";
 export const QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase5OrItemCase1Property =
@@ -2537,9 +2127,7 @@ export type QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase5OrItemCase
     | (string & {})
   >;
 export const QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase5OrItemCase1EventTypeInList =
-  /*@__PURE__*/ S.Array(
-    QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase5OrItemCase1EventTypeInItem,
-  ) as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase5OrItemCase1EventTypeInList>;
+  QuerySessionEventsRequestFilterCase4AndItemCase1EventTypeInList as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase5OrItemCase1EventTypeInList>;
 
 export interface QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase5OrItemCase1EventType {
   equals?:
@@ -2548,32 +2136,14 @@ export interface QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase5OrIte
   in?: QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase5OrItemCase1EventTypeInList;
 }
 export const QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase5OrItemCase1EventType =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      equals: S.optional(
-        QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase5OrItemCase1EventTypeEquals,
-      ),
-      in: S.optional(
-        QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase5OrItemCase1EventTypeInList,
-      ),
-    }),
-  ).annotate({
-    identifier: "QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase5OrItemCase1EventType",
-  }) as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase5OrItemCase1EventType>;
+  QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase4AndItemCase1EventType as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase5OrItemCase1EventType>;
 
 export interface QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase5OrItemCase1 {
   property: QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase5OrItemCase1Property;
   event_type: QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase5OrItemCase1EventType;
 }
 export const QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase5OrItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      property: QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase5OrItemCase1Property,
-      event_type: QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase5OrItemCase1EventType,
-    }),
-  ).annotate({
-    identifier: "QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase5OrItemCase1",
-  }) as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase5OrItemCase1>;
+  QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase4AndItemCase1 as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase5OrItemCase1>;
 
 export type QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase5OrItemCase2Property =
   "sequence";
@@ -2590,14 +2160,7 @@ export interface QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase5OrIte
   number: QuerySessionEventsRequestFilterCase2Number;
 }
 export const QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase5OrItemCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      property: QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase5OrItemCase2Property,
-      number: QuerySessionEventsRequestFilterCase2Number,
-    }),
-  ).annotate({
-    identifier: "QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase5OrItemCase2",
-  }) as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase5OrItemCase2>;
+  QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase4AndItemCase2 as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase5OrItemCase2>;
 
 export type QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase5OrItemCase3Property =
   "created_at";
@@ -2614,14 +2177,7 @@ export interface QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase5OrIte
   timestamp: QuerySessionEventsRequestFilterCase3Timestamp;
 }
 export const QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase5OrItemCase3 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      property: QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase5OrItemCase3Property,
-      timestamp: QuerySessionEventsRequestFilterCase3Timestamp,
-    }),
-  ).annotate({
-    identifier: "QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase5OrItemCase3",
-  }) as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase5OrItemCase3>;
+  QuerySessionEventsRequestFilterCase4AndItemCase4AndItemCase4AndItemCase3 as any as S.Schema<QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase5OrItemCase3>;
 
 export type QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase5OrItem =
   | QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase5OrItemCase0
@@ -2824,14 +2380,8 @@ export interface QuerySessionEventsResponseResultsItemCase0CreatedBy {
   /** One of: `user`, `bot` */
   type: QuerySessionEventsResponseResultsItemCase0CreatedByType;
 }
-export const QuerySessionEventsResponseResultsItemCase0CreatedBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: QuerySessionEventsResponseResultsItemCase0CreatedByType,
-  }),
-).annotate({
-  identifier: "QuerySessionEventsResponseResultsItemCase0CreatedBy",
-}) as any as S.Schema<QuerySessionEventsResponseResultsItemCase0CreatedBy>;
+export const QuerySessionEventsResponseResultsItemCase0CreatedBy =
+  GetSessionResponseCreatedBy as any as S.Schema<QuerySessionEventsResponseResultsItemCase0CreatedBy>;
 
 export type QuerySessionEventsResponseResultsItemCase0MetadataMap = {
   [key: string]: string | undefined;
@@ -2901,14 +2451,8 @@ export interface QuerySessionEventsResponseResultsItemCase1CreatedBy {
   /** One of: `user`, `bot` */
   type: QuerySessionEventsResponseResultsItemCase1CreatedByType;
 }
-export const QuerySessionEventsResponseResultsItemCase1CreatedBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: QuerySessionEventsResponseResultsItemCase1CreatedByType,
-  }),
-).annotate({
-  identifier: "QuerySessionEventsResponseResultsItemCase1CreatedBy",
-}) as any as S.Schema<QuerySessionEventsResponseResultsItemCase1CreatedBy>;
+export const QuerySessionEventsResponseResultsItemCase1CreatedBy =
+  GetSessionResponseCreatedBy as any as S.Schema<QuerySessionEventsResponseResultsItemCase1CreatedBy>;
 
 export interface QuerySessionEventsResponseResultsItemCase1Metadata {
   model: string;
@@ -3211,14 +2755,8 @@ export interface QuerySessionsRequestFilterCase1 {
   /** An exact string comparison. */
   string: QuerySessionsRequestFilterCase0String;
 }
-export const QuerySessionsRequestFilterCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    property: QuerySessionsRequestFilterCase1Property,
-    string: QuerySessionsRequestFilterCase0String,
-  }),
-).annotate({
-  identifier: "QuerySessionsRequestFilterCase1",
-}) as any as S.Schema<QuerySessionsRequestFilterCase1>;
+export const QuerySessionsRequestFilterCase1 =
+  QuerySessionsRequestFilterCase0 as any as S.Schema<QuerySessionsRequestFilterCase1>;
 
 /** Filter sessions by status. */
 export type QuerySessionsRequestFilterCase2Property = "status";
@@ -3249,9 +2787,8 @@ export const QuerySessionsRequestFilterCase2StatusInItem = S.String;
 export type QuerySessionsRequestFilterCase2StatusInList = Array<
   QuerySessionsRequestFilterCase2StatusInItem | (string & {})
 >;
-export const QuerySessionsRequestFilterCase2StatusInList = /*@__PURE__*/ S.Array(
-  QuerySessionsRequestFilterCase2StatusInItem,
-) as any as S.Schema<QuerySessionsRequestFilterCase2StatusInList>;
+export const QuerySessionsRequestFilterCase2StatusInList =
+  QuerySessionEventsRequestFilterCase1EventTypeInList as any as S.Schema<QuerySessionsRequestFilterCase2StatusInList>;
 
 /** A session status comparison. */
 export interface QuerySessionsRequestFilterCase2Status {
@@ -3260,14 +2797,8 @@ export interface QuerySessionsRequestFilterCase2Status {
   /** Return sessions with any of these statuses. */
   in?: QuerySessionsRequestFilterCase2StatusInList;
 }
-export const QuerySessionsRequestFilterCase2Status = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    equals: S.optional(QuerySessionsRequestFilterCase2StatusEquals),
-    in: S.optional(QuerySessionsRequestFilterCase2StatusInList),
-  }),
-).annotate({
-  identifier: "QuerySessionsRequestFilterCase2Status",
-}) as any as S.Schema<QuerySessionsRequestFilterCase2Status>;
+export const QuerySessionsRequestFilterCase2Status =
+  QuerySessionEventsRequestFilterCase1EventType as any as S.Schema<QuerySessionsRequestFilterCase2Status>;
 
 export interface QuerySessionsRequestFilterCase2 {
   /** Filter sessions by status. */
@@ -3341,14 +2872,8 @@ export interface QuerySessionsRequestFilterCase4AndItemCase0 {
   /** An exact string comparison. */
   string: QuerySessionsRequestFilterCase0String;
 }
-export const QuerySessionsRequestFilterCase4AndItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    property: QuerySessionsRequestFilterCase4AndItemCase0Property,
-    string: QuerySessionsRequestFilterCase0String,
-  }),
-).annotate({
-  identifier: "QuerySessionsRequestFilterCase4AndItemCase0",
-}) as any as S.Schema<QuerySessionsRequestFilterCase4AndItemCase0>;
+export const QuerySessionsRequestFilterCase4AndItemCase0 =
+  QuerySessionsRequestFilterCase0 as any as S.Schema<QuerySessionsRequestFilterCase4AndItemCase0>;
 
 /** Filter sessions by agent_id. */
 export type QuerySessionsRequestFilterCase4AndItemCase1Property = "agent_id";
@@ -3366,14 +2891,8 @@ export interface QuerySessionsRequestFilterCase4AndItemCase1 {
   /** An exact string comparison. */
   string: QuerySessionsRequestFilterCase0String;
 }
-export const QuerySessionsRequestFilterCase4AndItemCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    property: QuerySessionsRequestFilterCase4AndItemCase1Property,
-    string: QuerySessionsRequestFilterCase0String,
-  }),
-).annotate({
-  identifier: "QuerySessionsRequestFilterCase4AndItemCase1",
-}) as any as S.Schema<QuerySessionsRequestFilterCase4AndItemCase1>;
+export const QuerySessionsRequestFilterCase4AndItemCase1 =
+  QuerySessionsRequestFilterCase0 as any as S.Schema<QuerySessionsRequestFilterCase4AndItemCase1>;
 
 /** Filter sessions by status. */
 export type QuerySessionsRequestFilterCase4AndItemCase2Property = "status";
@@ -3404,9 +2923,8 @@ export const QuerySessionsRequestFilterCase4AndItemCase2StatusInItem = S.String;
 export type QuerySessionsRequestFilterCase4AndItemCase2StatusInList = Array<
   QuerySessionsRequestFilterCase4AndItemCase2StatusInItem | (string & {})
 >;
-export const QuerySessionsRequestFilterCase4AndItemCase2StatusInList = /*@__PURE__*/ S.Array(
-  QuerySessionsRequestFilterCase4AndItemCase2StatusInItem,
-) as any as S.Schema<QuerySessionsRequestFilterCase4AndItemCase2StatusInList>;
+export const QuerySessionsRequestFilterCase4AndItemCase2StatusInList =
+  QuerySessionEventsRequestFilterCase1EventTypeInList as any as S.Schema<QuerySessionsRequestFilterCase4AndItemCase2StatusInList>;
 
 /** A session status comparison. */
 export interface QuerySessionsRequestFilterCase4AndItemCase2Status {
@@ -3415,14 +2933,8 @@ export interface QuerySessionsRequestFilterCase4AndItemCase2Status {
   /** Return sessions with any of these statuses. */
   in?: QuerySessionsRequestFilterCase4AndItemCase2StatusInList;
 }
-export const QuerySessionsRequestFilterCase4AndItemCase2Status = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    equals: S.optional(QuerySessionsRequestFilterCase4AndItemCase2StatusEquals),
-    in: S.optional(QuerySessionsRequestFilterCase4AndItemCase2StatusInList),
-  }),
-).annotate({
-  identifier: "QuerySessionsRequestFilterCase4AndItemCase2Status",
-}) as any as S.Schema<QuerySessionsRequestFilterCase4AndItemCase2Status>;
+export const QuerySessionsRequestFilterCase4AndItemCase2Status =
+  QuerySessionEventsRequestFilterCase1EventType as any as S.Schema<QuerySessionsRequestFilterCase4AndItemCase2Status>;
 
 export interface QuerySessionsRequestFilterCase4AndItemCase2 {
   /** Filter sessions by status. */
@@ -3430,14 +2942,8 @@ export interface QuerySessionsRequestFilterCase4AndItemCase2 {
   /** A session status comparison. */
   status: QuerySessionsRequestFilterCase4AndItemCase2Status;
 }
-export const QuerySessionsRequestFilterCase4AndItemCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    property: QuerySessionsRequestFilterCase4AndItemCase2Property,
-    status: QuerySessionsRequestFilterCase4AndItemCase2Status,
-  }),
-).annotate({
-  identifier: "QuerySessionsRequestFilterCase4AndItemCase2",
-}) as any as S.Schema<QuerySessionsRequestFilterCase4AndItemCase2>;
+export const QuerySessionsRequestFilterCase4AndItemCase2 =
+  QuerySessionsRequestFilterCase2 as any as S.Schema<QuerySessionsRequestFilterCase4AndItemCase2>;
 
 /** The session timestamp to compare. */
 export type QuerySessionsRequestFilterCase4AndItemCase3Property = "created_at" | "updated_at";
@@ -3455,14 +2961,8 @@ export interface QuerySessionsRequestFilterCase4AndItemCase3 {
   /** A timestamp range. */
   timestamp: QuerySessionsRequestFilterCase3Timestamp;
 }
-export const QuerySessionsRequestFilterCase4AndItemCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    property: QuerySessionsRequestFilterCase4AndItemCase3Property,
-    timestamp: QuerySessionsRequestFilterCase3Timestamp,
-  }),
-).annotate({
-  identifier: "QuerySessionsRequestFilterCase4AndItemCase3",
-}) as any as S.Schema<QuerySessionsRequestFilterCase4AndItemCase3>;
+export const QuerySessionsRequestFilterCase4AndItemCase3 =
+  QuerySessionsRequestFilterCase3 as any as S.Schema<QuerySessionsRequestFilterCase4AndItemCase3>;
 
 /** Filter sessions by id. */
 export type QuerySessionsRequestFilterCase4AndItemCase4AndItemCase0Property = "id";
@@ -3480,14 +2980,8 @@ export interface QuerySessionsRequestFilterCase4AndItemCase4AndItemCase0 {
   /** An exact string comparison. */
   string: QuerySessionsRequestFilterCase0String;
 }
-export const QuerySessionsRequestFilterCase4AndItemCase4AndItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    property: QuerySessionsRequestFilterCase4AndItemCase4AndItemCase0Property,
-    string: QuerySessionsRequestFilterCase0String,
-  }),
-).annotate({
-  identifier: "QuerySessionsRequestFilterCase4AndItemCase4AndItemCase0",
-}) as any as S.Schema<QuerySessionsRequestFilterCase4AndItemCase4AndItemCase0>;
+export const QuerySessionsRequestFilterCase4AndItemCase4AndItemCase0 =
+  QuerySessionsRequestFilterCase0 as any as S.Schema<QuerySessionsRequestFilterCase4AndItemCase4AndItemCase0>;
 
 /** Filter sessions by agent_id. */
 export type QuerySessionsRequestFilterCase4AndItemCase4AndItemCase1Property = "agent_id";
@@ -3505,14 +2999,8 @@ export interface QuerySessionsRequestFilterCase4AndItemCase4AndItemCase1 {
   /** An exact string comparison. */
   string: QuerySessionsRequestFilterCase0String;
 }
-export const QuerySessionsRequestFilterCase4AndItemCase4AndItemCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    property: QuerySessionsRequestFilterCase4AndItemCase4AndItemCase1Property,
-    string: QuerySessionsRequestFilterCase0String,
-  }),
-).annotate({
-  identifier: "QuerySessionsRequestFilterCase4AndItemCase4AndItemCase1",
-}) as any as S.Schema<QuerySessionsRequestFilterCase4AndItemCase4AndItemCase1>;
+export const QuerySessionsRequestFilterCase4AndItemCase4AndItemCase1 =
+  QuerySessionsRequestFilterCase0 as any as S.Schema<QuerySessionsRequestFilterCase4AndItemCase4AndItemCase1>;
 
 /** Filter sessions by status. */
 export type QuerySessionsRequestFilterCase4AndItemCase4AndItemCase2Property = "status";
@@ -3544,9 +3032,7 @@ export type QuerySessionsRequestFilterCase4AndItemCase4AndItemCase2StatusInList 
   QuerySessionsRequestFilterCase4AndItemCase4AndItemCase2StatusInItem | (string & {})
 >;
 export const QuerySessionsRequestFilterCase4AndItemCase4AndItemCase2StatusInList =
-  /*@__PURE__*/ S.Array(
-    QuerySessionsRequestFilterCase4AndItemCase4AndItemCase2StatusInItem,
-  ) as any as S.Schema<QuerySessionsRequestFilterCase4AndItemCase4AndItemCase2StatusInList>;
+  QuerySessionEventsRequestFilterCase4AndItemCase1EventTypeInList as any as S.Schema<QuerySessionsRequestFilterCase4AndItemCase4AndItemCase2StatusInList>;
 
 /** A session status comparison. */
 export interface QuerySessionsRequestFilterCase4AndItemCase4AndItemCase2Status {
@@ -3556,14 +3042,7 @@ export interface QuerySessionsRequestFilterCase4AndItemCase4AndItemCase2Status {
   in?: QuerySessionsRequestFilterCase4AndItemCase4AndItemCase2StatusInList;
 }
 export const QuerySessionsRequestFilterCase4AndItemCase4AndItemCase2Status =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      equals: S.optional(QuerySessionsRequestFilterCase4AndItemCase4AndItemCase2StatusEquals),
-      in: S.optional(QuerySessionsRequestFilterCase4AndItemCase4AndItemCase2StatusInList),
-    }),
-  ).annotate({
-    identifier: "QuerySessionsRequestFilterCase4AndItemCase4AndItemCase2Status",
-  }) as any as S.Schema<QuerySessionsRequestFilterCase4AndItemCase4AndItemCase2Status>;
+  QuerySessionEventsRequestFilterCase5OrItemCase5OrItemCase1EventType as any as S.Schema<QuerySessionsRequestFilterCase4AndItemCase4AndItemCase2Status>;
 
 export interface QuerySessionsRequestFilterCase4AndItemCase4AndItemCase2 {
   /** Filter sessions by status. */
@@ -3598,14 +3077,8 @@ export interface QuerySessionsRequestFilterCase4AndItemCase4AndItemCase3 {
   /** A timestamp range. */
   timestamp: QuerySessionsRequestFilterCase3Timestamp;
 }
-export const QuerySessionsRequestFilterCase4AndItemCase4AndItemCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    property: QuerySessionsRequestFilterCase4AndItemCase4AndItemCase3Property,
-    timestamp: QuerySessionsRequestFilterCase3Timestamp,
-  }),
-).annotate({
-  identifier: "QuerySessionsRequestFilterCase4AndItemCase4AndItemCase3",
-}) as any as S.Schema<QuerySessionsRequestFilterCase4AndItemCase4AndItemCase3>;
+export const QuerySessionsRequestFilterCase4AndItemCase4AndItemCase3 =
+  QuerySessionsRequestFilterCase3 as any as S.Schema<QuerySessionsRequestFilterCase4AndItemCase4AndItemCase3>;
 
 export type QuerySessionsRequestFilterCase4AndItemCase4AndItem =
   | QuerySessionsRequestFilterCase4AndItemCase4AndItemCase0
@@ -3650,14 +3123,8 @@ export interface QuerySessionsRequestFilterCase4AndItemCase5OrItemCase0 {
   /** An exact string comparison. */
   string: QuerySessionsRequestFilterCase0String;
 }
-export const QuerySessionsRequestFilterCase4AndItemCase5OrItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    property: QuerySessionsRequestFilterCase4AndItemCase5OrItemCase0Property,
-    string: QuerySessionsRequestFilterCase0String,
-  }),
-).annotate({
-  identifier: "QuerySessionsRequestFilterCase4AndItemCase5OrItemCase0",
-}) as any as S.Schema<QuerySessionsRequestFilterCase4AndItemCase5OrItemCase0>;
+export const QuerySessionsRequestFilterCase4AndItemCase5OrItemCase0 =
+  QuerySessionsRequestFilterCase0 as any as S.Schema<QuerySessionsRequestFilterCase4AndItemCase5OrItemCase0>;
 
 /** Filter sessions by agent_id. */
 export type QuerySessionsRequestFilterCase4AndItemCase5OrItemCase1Property = "agent_id";
@@ -3675,14 +3142,8 @@ export interface QuerySessionsRequestFilterCase4AndItemCase5OrItemCase1 {
   /** An exact string comparison. */
   string: QuerySessionsRequestFilterCase0String;
 }
-export const QuerySessionsRequestFilterCase4AndItemCase5OrItemCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    property: QuerySessionsRequestFilterCase4AndItemCase5OrItemCase1Property,
-    string: QuerySessionsRequestFilterCase0String,
-  }),
-).annotate({
-  identifier: "QuerySessionsRequestFilterCase4AndItemCase5OrItemCase1",
-}) as any as S.Schema<QuerySessionsRequestFilterCase4AndItemCase5OrItemCase1>;
+export const QuerySessionsRequestFilterCase4AndItemCase5OrItemCase1 =
+  QuerySessionsRequestFilterCase0 as any as S.Schema<QuerySessionsRequestFilterCase4AndItemCase5OrItemCase1>;
 
 /** Filter sessions by status. */
 export type QuerySessionsRequestFilterCase4AndItemCase5OrItemCase2Property = "status";
@@ -3714,9 +3175,7 @@ export type QuerySessionsRequestFilterCase4AndItemCase5OrItemCase2StatusInList =
   QuerySessionsRequestFilterCase4AndItemCase5OrItemCase2StatusInItem | (string & {})
 >;
 export const QuerySessionsRequestFilterCase4AndItemCase5OrItemCase2StatusInList =
-  /*@__PURE__*/ S.Array(
-    QuerySessionsRequestFilterCase4AndItemCase5OrItemCase2StatusInItem,
-  ) as any as S.Schema<QuerySessionsRequestFilterCase4AndItemCase5OrItemCase2StatusInList>;
+  QuerySessionEventsRequestFilterCase4AndItemCase1EventTypeInList as any as S.Schema<QuerySessionsRequestFilterCase4AndItemCase5OrItemCase2StatusInList>;
 
 /** A session status comparison. */
 export interface QuerySessionsRequestFilterCase4AndItemCase5OrItemCase2Status {
@@ -3725,15 +3184,8 @@ export interface QuerySessionsRequestFilterCase4AndItemCase5OrItemCase2Status {
   /** Return sessions with any of these statuses. */
   in?: QuerySessionsRequestFilterCase4AndItemCase5OrItemCase2StatusInList;
 }
-export const QuerySessionsRequestFilterCase4AndItemCase5OrItemCase2Status = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      equals: S.optional(QuerySessionsRequestFilterCase4AndItemCase5OrItemCase2StatusEquals),
-      in: S.optional(QuerySessionsRequestFilterCase4AndItemCase5OrItemCase2StatusInList),
-    }),
-).annotate({
-  identifier: "QuerySessionsRequestFilterCase4AndItemCase5OrItemCase2Status",
-}) as any as S.Schema<QuerySessionsRequestFilterCase4AndItemCase5OrItemCase2Status>;
+export const QuerySessionsRequestFilterCase4AndItemCase5OrItemCase2Status =
+  QuerySessionEventsRequestFilterCase4AndItemCase1EventType as any as S.Schema<QuerySessionsRequestFilterCase4AndItemCase5OrItemCase2Status>;
 
 export interface QuerySessionsRequestFilterCase4AndItemCase5OrItemCase2 {
   /** Filter sessions by status. */
@@ -3768,14 +3220,8 @@ export interface QuerySessionsRequestFilterCase4AndItemCase5OrItemCase3 {
   /** A timestamp range. */
   timestamp: QuerySessionsRequestFilterCase3Timestamp;
 }
-export const QuerySessionsRequestFilterCase4AndItemCase5OrItemCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    property: QuerySessionsRequestFilterCase4AndItemCase5OrItemCase3Property,
-    timestamp: QuerySessionsRequestFilterCase3Timestamp,
-  }),
-).annotate({
-  identifier: "QuerySessionsRequestFilterCase4AndItemCase5OrItemCase3",
-}) as any as S.Schema<QuerySessionsRequestFilterCase4AndItemCase5OrItemCase3>;
+export const QuerySessionsRequestFilterCase4AndItemCase5OrItemCase3 =
+  QuerySessionsRequestFilterCase3 as any as S.Schema<QuerySessionsRequestFilterCase4AndItemCase5OrItemCase3>;
 
 export type QuerySessionsRequestFilterCase4AndItemCase5OrItem =
   | QuerySessionsRequestFilterCase4AndItemCase5OrItemCase0
@@ -3848,14 +3294,8 @@ export interface QuerySessionsRequestFilterCase5OrItemCase0 {
   /** An exact string comparison. */
   string: QuerySessionsRequestFilterCase0String;
 }
-export const QuerySessionsRequestFilterCase5OrItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    property: QuerySessionsRequestFilterCase5OrItemCase0Property,
-    string: QuerySessionsRequestFilterCase0String,
-  }),
-).annotate({
-  identifier: "QuerySessionsRequestFilterCase5OrItemCase0",
-}) as any as S.Schema<QuerySessionsRequestFilterCase5OrItemCase0>;
+export const QuerySessionsRequestFilterCase5OrItemCase0 =
+  QuerySessionsRequestFilterCase0 as any as S.Schema<QuerySessionsRequestFilterCase5OrItemCase0>;
 
 /** Filter sessions by agent_id. */
 export type QuerySessionsRequestFilterCase5OrItemCase1Property = "agent_id";
@@ -3873,14 +3313,8 @@ export interface QuerySessionsRequestFilterCase5OrItemCase1 {
   /** An exact string comparison. */
   string: QuerySessionsRequestFilterCase0String;
 }
-export const QuerySessionsRequestFilterCase5OrItemCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    property: QuerySessionsRequestFilterCase5OrItemCase1Property,
-    string: QuerySessionsRequestFilterCase0String,
-  }),
-).annotate({
-  identifier: "QuerySessionsRequestFilterCase5OrItemCase1",
-}) as any as S.Schema<QuerySessionsRequestFilterCase5OrItemCase1>;
+export const QuerySessionsRequestFilterCase5OrItemCase1 =
+  QuerySessionsRequestFilterCase0 as any as S.Schema<QuerySessionsRequestFilterCase5OrItemCase1>;
 
 /** Filter sessions by status. */
 export type QuerySessionsRequestFilterCase5OrItemCase2Property = "status";
@@ -3911,9 +3345,8 @@ export const QuerySessionsRequestFilterCase5OrItemCase2StatusInItem = S.String;
 export type QuerySessionsRequestFilterCase5OrItemCase2StatusInList = Array<
   QuerySessionsRequestFilterCase5OrItemCase2StatusInItem | (string & {})
 >;
-export const QuerySessionsRequestFilterCase5OrItemCase2StatusInList = /*@__PURE__*/ S.Array(
-  QuerySessionsRequestFilterCase5OrItemCase2StatusInItem,
-) as any as S.Schema<QuerySessionsRequestFilterCase5OrItemCase2StatusInList>;
+export const QuerySessionsRequestFilterCase5OrItemCase2StatusInList =
+  QuerySessionEventsRequestFilterCase1EventTypeInList as any as S.Schema<QuerySessionsRequestFilterCase5OrItemCase2StatusInList>;
 
 /** A session status comparison. */
 export interface QuerySessionsRequestFilterCase5OrItemCase2Status {
@@ -3922,14 +3355,8 @@ export interface QuerySessionsRequestFilterCase5OrItemCase2Status {
   /** Return sessions with any of these statuses. */
   in?: QuerySessionsRequestFilterCase5OrItemCase2StatusInList;
 }
-export const QuerySessionsRequestFilterCase5OrItemCase2Status = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    equals: S.optional(QuerySessionsRequestFilterCase5OrItemCase2StatusEquals),
-    in: S.optional(QuerySessionsRequestFilterCase5OrItemCase2StatusInList),
-  }),
-).annotate({
-  identifier: "QuerySessionsRequestFilterCase5OrItemCase2Status",
-}) as any as S.Schema<QuerySessionsRequestFilterCase5OrItemCase2Status>;
+export const QuerySessionsRequestFilterCase5OrItemCase2Status =
+  QuerySessionEventsRequestFilterCase1EventType as any as S.Schema<QuerySessionsRequestFilterCase5OrItemCase2Status>;
 
 export interface QuerySessionsRequestFilterCase5OrItemCase2 {
   /** Filter sessions by status. */
@@ -3937,14 +3364,8 @@ export interface QuerySessionsRequestFilterCase5OrItemCase2 {
   /** A session status comparison. */
   status: QuerySessionsRequestFilterCase5OrItemCase2Status;
 }
-export const QuerySessionsRequestFilterCase5OrItemCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    property: QuerySessionsRequestFilterCase5OrItemCase2Property,
-    status: QuerySessionsRequestFilterCase5OrItemCase2Status,
-  }),
-).annotate({
-  identifier: "QuerySessionsRequestFilterCase5OrItemCase2",
-}) as any as S.Schema<QuerySessionsRequestFilterCase5OrItemCase2>;
+export const QuerySessionsRequestFilterCase5OrItemCase2 =
+  QuerySessionsRequestFilterCase2 as any as S.Schema<QuerySessionsRequestFilterCase5OrItemCase2>;
 
 /** The session timestamp to compare. */
 export type QuerySessionsRequestFilterCase5OrItemCase3Property = "created_at" | "updated_at";
@@ -3962,14 +3383,8 @@ export interface QuerySessionsRequestFilterCase5OrItemCase3 {
   /** A timestamp range. */
   timestamp: QuerySessionsRequestFilterCase3Timestamp;
 }
-export const QuerySessionsRequestFilterCase5OrItemCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    property: QuerySessionsRequestFilterCase5OrItemCase3Property,
-    timestamp: QuerySessionsRequestFilterCase3Timestamp,
-  }),
-).annotate({
-  identifier: "QuerySessionsRequestFilterCase5OrItemCase3",
-}) as any as S.Schema<QuerySessionsRequestFilterCase5OrItemCase3>;
+export const QuerySessionsRequestFilterCase5OrItemCase3 =
+  QuerySessionsRequestFilterCase3 as any as S.Schema<QuerySessionsRequestFilterCase5OrItemCase3>;
 
 /** Filter sessions by id. */
 export type QuerySessionsRequestFilterCase5OrItemCase4AndItemCase0Property = "id";
@@ -3987,14 +3402,8 @@ export interface QuerySessionsRequestFilterCase5OrItemCase4AndItemCase0 {
   /** An exact string comparison. */
   string: QuerySessionsRequestFilterCase0String;
 }
-export const QuerySessionsRequestFilterCase5OrItemCase4AndItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    property: QuerySessionsRequestFilterCase5OrItemCase4AndItemCase0Property,
-    string: QuerySessionsRequestFilterCase0String,
-  }),
-).annotate({
-  identifier: "QuerySessionsRequestFilterCase5OrItemCase4AndItemCase0",
-}) as any as S.Schema<QuerySessionsRequestFilterCase5OrItemCase4AndItemCase0>;
+export const QuerySessionsRequestFilterCase5OrItemCase4AndItemCase0 =
+  QuerySessionsRequestFilterCase0 as any as S.Schema<QuerySessionsRequestFilterCase5OrItemCase4AndItemCase0>;
 
 /** Filter sessions by agent_id. */
 export type QuerySessionsRequestFilterCase5OrItemCase4AndItemCase1Property = "agent_id";
@@ -4012,14 +3421,8 @@ export interface QuerySessionsRequestFilterCase5OrItemCase4AndItemCase1 {
   /** An exact string comparison. */
   string: QuerySessionsRequestFilterCase0String;
 }
-export const QuerySessionsRequestFilterCase5OrItemCase4AndItemCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    property: QuerySessionsRequestFilterCase5OrItemCase4AndItemCase1Property,
-    string: QuerySessionsRequestFilterCase0String,
-  }),
-).annotate({
-  identifier: "QuerySessionsRequestFilterCase5OrItemCase4AndItemCase1",
-}) as any as S.Schema<QuerySessionsRequestFilterCase5OrItemCase4AndItemCase1>;
+export const QuerySessionsRequestFilterCase5OrItemCase4AndItemCase1 =
+  QuerySessionsRequestFilterCase0 as any as S.Schema<QuerySessionsRequestFilterCase5OrItemCase4AndItemCase1>;
 
 /** Filter sessions by status. */
 export type QuerySessionsRequestFilterCase5OrItemCase4AndItemCase2Property = "status";
@@ -4051,9 +3454,7 @@ export type QuerySessionsRequestFilterCase5OrItemCase4AndItemCase2StatusInList =
   QuerySessionsRequestFilterCase5OrItemCase4AndItemCase2StatusInItem | (string & {})
 >;
 export const QuerySessionsRequestFilterCase5OrItemCase4AndItemCase2StatusInList =
-  /*@__PURE__*/ S.Array(
-    QuerySessionsRequestFilterCase5OrItemCase4AndItemCase2StatusInItem,
-  ) as any as S.Schema<QuerySessionsRequestFilterCase5OrItemCase4AndItemCase2StatusInList>;
+  QuerySessionEventsRequestFilterCase4AndItemCase1EventTypeInList as any as S.Schema<QuerySessionsRequestFilterCase5OrItemCase4AndItemCase2StatusInList>;
 
 /** A session status comparison. */
 export interface QuerySessionsRequestFilterCase5OrItemCase4AndItemCase2Status {
@@ -4062,15 +3463,8 @@ export interface QuerySessionsRequestFilterCase5OrItemCase4AndItemCase2Status {
   /** Return sessions with any of these statuses. */
   in?: QuerySessionsRequestFilterCase5OrItemCase4AndItemCase2StatusInList;
 }
-export const QuerySessionsRequestFilterCase5OrItemCase4AndItemCase2Status = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      equals: S.optional(QuerySessionsRequestFilterCase5OrItemCase4AndItemCase2StatusEquals),
-      in: S.optional(QuerySessionsRequestFilterCase5OrItemCase4AndItemCase2StatusInList),
-    }),
-).annotate({
-  identifier: "QuerySessionsRequestFilterCase5OrItemCase4AndItemCase2Status",
-}) as any as S.Schema<QuerySessionsRequestFilterCase5OrItemCase4AndItemCase2Status>;
+export const QuerySessionsRequestFilterCase5OrItemCase4AndItemCase2Status =
+  QuerySessionEventsRequestFilterCase4AndItemCase1EventType as any as S.Schema<QuerySessionsRequestFilterCase5OrItemCase4AndItemCase2Status>;
 
 export interface QuerySessionsRequestFilterCase5OrItemCase4AndItemCase2 {
   /** Filter sessions by status. */
@@ -4078,14 +3472,8 @@ export interface QuerySessionsRequestFilterCase5OrItemCase4AndItemCase2 {
   /** A session status comparison. */
   status: QuerySessionsRequestFilterCase5OrItemCase4AndItemCase2Status;
 }
-export const QuerySessionsRequestFilterCase5OrItemCase4AndItemCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    property: QuerySessionsRequestFilterCase5OrItemCase4AndItemCase2Property,
-    status: QuerySessionsRequestFilterCase5OrItemCase4AndItemCase2Status,
-  }),
-).annotate({
-  identifier: "QuerySessionsRequestFilterCase5OrItemCase4AndItemCase2",
-}) as any as S.Schema<QuerySessionsRequestFilterCase5OrItemCase4AndItemCase2>;
+export const QuerySessionsRequestFilterCase5OrItemCase4AndItemCase2 =
+  QuerySessionsRequestFilterCase4AndItemCase5OrItemCase2 as any as S.Schema<QuerySessionsRequestFilterCase5OrItemCase4AndItemCase2>;
 
 /** The session timestamp to compare. */
 export type QuerySessionsRequestFilterCase5OrItemCase4AndItemCase3Property =
@@ -4105,14 +3493,8 @@ export interface QuerySessionsRequestFilterCase5OrItemCase4AndItemCase3 {
   /** A timestamp range. */
   timestamp: QuerySessionsRequestFilterCase3Timestamp;
 }
-export const QuerySessionsRequestFilterCase5OrItemCase4AndItemCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    property: QuerySessionsRequestFilterCase5OrItemCase4AndItemCase3Property,
-    timestamp: QuerySessionsRequestFilterCase3Timestamp,
-  }),
-).annotate({
-  identifier: "QuerySessionsRequestFilterCase5OrItemCase4AndItemCase3",
-}) as any as S.Schema<QuerySessionsRequestFilterCase5OrItemCase4AndItemCase3>;
+export const QuerySessionsRequestFilterCase5OrItemCase4AndItemCase3 =
+  QuerySessionsRequestFilterCase3 as any as S.Schema<QuerySessionsRequestFilterCase5OrItemCase4AndItemCase3>;
 
 export type QuerySessionsRequestFilterCase5OrItemCase4AndItem =
   | QuerySessionsRequestFilterCase5OrItemCase4AndItemCase0
@@ -4157,14 +3539,8 @@ export interface QuerySessionsRequestFilterCase5OrItemCase5OrItemCase0 {
   /** An exact string comparison. */
   string: QuerySessionsRequestFilterCase0String;
 }
-export const QuerySessionsRequestFilterCase5OrItemCase5OrItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    property: QuerySessionsRequestFilterCase5OrItemCase5OrItemCase0Property,
-    string: QuerySessionsRequestFilterCase0String,
-  }),
-).annotate({
-  identifier: "QuerySessionsRequestFilterCase5OrItemCase5OrItemCase0",
-}) as any as S.Schema<QuerySessionsRequestFilterCase5OrItemCase5OrItemCase0>;
+export const QuerySessionsRequestFilterCase5OrItemCase5OrItemCase0 =
+  QuerySessionsRequestFilterCase0 as any as S.Schema<QuerySessionsRequestFilterCase5OrItemCase5OrItemCase0>;
 
 /** Filter sessions by agent_id. */
 export type QuerySessionsRequestFilterCase5OrItemCase5OrItemCase1Property = "agent_id";
@@ -4182,14 +3558,8 @@ export interface QuerySessionsRequestFilterCase5OrItemCase5OrItemCase1 {
   /** An exact string comparison. */
   string: QuerySessionsRequestFilterCase0String;
 }
-export const QuerySessionsRequestFilterCase5OrItemCase5OrItemCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    property: QuerySessionsRequestFilterCase5OrItemCase5OrItemCase1Property,
-    string: QuerySessionsRequestFilterCase0String,
-  }),
-).annotate({
-  identifier: "QuerySessionsRequestFilterCase5OrItemCase5OrItemCase1",
-}) as any as S.Schema<QuerySessionsRequestFilterCase5OrItemCase5OrItemCase1>;
+export const QuerySessionsRequestFilterCase5OrItemCase5OrItemCase1 =
+  QuerySessionsRequestFilterCase0 as any as S.Schema<QuerySessionsRequestFilterCase5OrItemCase5OrItemCase1>;
 
 /** Filter sessions by status. */
 export type QuerySessionsRequestFilterCase5OrItemCase5OrItemCase2Property = "status";
@@ -4221,9 +3591,7 @@ export type QuerySessionsRequestFilterCase5OrItemCase5OrItemCase2StatusInList = 
   QuerySessionsRequestFilterCase5OrItemCase5OrItemCase2StatusInItem | (string & {})
 >;
 export const QuerySessionsRequestFilterCase5OrItemCase5OrItemCase2StatusInList =
-  /*@__PURE__*/ S.Array(
-    QuerySessionsRequestFilterCase5OrItemCase5OrItemCase2StatusInItem,
-  ) as any as S.Schema<QuerySessionsRequestFilterCase5OrItemCase5OrItemCase2StatusInList>;
+  QuerySessionEventsRequestFilterCase4AndItemCase1EventTypeInList as any as S.Schema<QuerySessionsRequestFilterCase5OrItemCase5OrItemCase2StatusInList>;
 
 /** A session status comparison. */
 export interface QuerySessionsRequestFilterCase5OrItemCase5OrItemCase2Status {
@@ -4232,15 +3600,8 @@ export interface QuerySessionsRequestFilterCase5OrItemCase5OrItemCase2Status {
   /** Return sessions with any of these statuses. */
   in?: QuerySessionsRequestFilterCase5OrItemCase5OrItemCase2StatusInList;
 }
-export const QuerySessionsRequestFilterCase5OrItemCase5OrItemCase2Status = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      equals: S.optional(QuerySessionsRequestFilterCase5OrItemCase5OrItemCase2StatusEquals),
-      in: S.optional(QuerySessionsRequestFilterCase5OrItemCase5OrItemCase2StatusInList),
-    }),
-).annotate({
-  identifier: "QuerySessionsRequestFilterCase5OrItemCase5OrItemCase2Status",
-}) as any as S.Schema<QuerySessionsRequestFilterCase5OrItemCase5OrItemCase2Status>;
+export const QuerySessionsRequestFilterCase5OrItemCase5OrItemCase2Status =
+  QuerySessionEventsRequestFilterCase4AndItemCase1EventType as any as S.Schema<QuerySessionsRequestFilterCase5OrItemCase5OrItemCase2Status>;
 
 export interface QuerySessionsRequestFilterCase5OrItemCase5OrItemCase2 {
   /** Filter sessions by status. */
@@ -4248,14 +3609,8 @@ export interface QuerySessionsRequestFilterCase5OrItemCase5OrItemCase2 {
   /** A session status comparison. */
   status: QuerySessionsRequestFilterCase5OrItemCase5OrItemCase2Status;
 }
-export const QuerySessionsRequestFilterCase5OrItemCase5OrItemCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    property: QuerySessionsRequestFilterCase5OrItemCase5OrItemCase2Property,
-    status: QuerySessionsRequestFilterCase5OrItemCase5OrItemCase2Status,
-  }),
-).annotate({
-  identifier: "QuerySessionsRequestFilterCase5OrItemCase5OrItemCase2",
-}) as any as S.Schema<QuerySessionsRequestFilterCase5OrItemCase5OrItemCase2>;
+export const QuerySessionsRequestFilterCase5OrItemCase5OrItemCase2 =
+  QuerySessionsRequestFilterCase4AndItemCase5OrItemCase2 as any as S.Schema<QuerySessionsRequestFilterCase5OrItemCase5OrItemCase2>;
 
 /** The session timestamp to compare. */
 export type QuerySessionsRequestFilterCase5OrItemCase5OrItemCase3Property =
@@ -4275,14 +3630,8 @@ export interface QuerySessionsRequestFilterCase5OrItemCase5OrItemCase3 {
   /** A timestamp range. */
   timestamp: QuerySessionsRequestFilterCase3Timestamp;
 }
-export const QuerySessionsRequestFilterCase5OrItemCase5OrItemCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    property: QuerySessionsRequestFilterCase5OrItemCase5OrItemCase3Property,
-    timestamp: QuerySessionsRequestFilterCase3Timestamp,
-  }),
-).annotate({
-  identifier: "QuerySessionsRequestFilterCase5OrItemCase5OrItemCase3",
-}) as any as S.Schema<QuerySessionsRequestFilterCase5OrItemCase5OrItemCase3>;
+export const QuerySessionsRequestFilterCase5OrItemCase5OrItemCase3 =
+  QuerySessionsRequestFilterCase3 as any as S.Schema<QuerySessionsRequestFilterCase5OrItemCase5OrItemCase3>;
 
 export type QuerySessionsRequestFilterCase5OrItemCase5OrItem =
   | QuerySessionsRequestFilterCase5OrItemCase5OrItemCase0
@@ -4364,20 +3713,13 @@ export interface QuerySessionsRequestSortsItem {
   /** One of: `ascending`, `descending` */
   direction: QuerySessionsRequestSortsItemDirection | (string & {});
 }
-export const QuerySessionsRequestSortsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    property: QuerySessionsRequestSortsItemProperty,
-    direction: QuerySessionsRequestSortsItemDirection,
-  }),
-).annotate({
-  identifier: "QuerySessionsRequestSortsItem",
-}) as any as S.Schema<QuerySessionsRequestSortsItem>;
+export const QuerySessionsRequestSortsItem =
+  QuerySessionEventsRequestSortsItem as any as S.Schema<QuerySessionsRequestSortsItem>;
 
 /** Ordered sort precedence. Defaults to updated_at descending. */
 export type QuerySessionsRequestSortsList = Array<QuerySessionsRequestSortsItem>;
-export const QuerySessionsRequestSortsList = /*@__PURE__*/ S.Array(
-  QuerySessionsRequestSortsItem,
-) as any as S.Schema<QuerySessionsRequestSortsList>;
+export const QuerySessionsRequestSortsList =
+  QuerySessionEventsRequestSortsList as any as S.Schema<QuerySessionsRequestSortsList>;
 
 export interface QuerySessionsRequest {
   /** A case-insensitive substring search over session titles. */
@@ -4421,14 +3763,8 @@ export interface QuerySessionsResponseResultsItemCreatedBy {
   /** One of: `user`, `bot` */
   type: QuerySessionsResponseResultsItemCreatedByType;
 }
-export const QuerySessionsResponseResultsItemCreatedBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: QuerySessionsResponseResultsItemCreatedByType,
-  }),
-).annotate({
-  identifier: "QuerySessionsResponseResultsItemCreatedBy",
-}) as any as S.Schema<QuerySessionsResponseResultsItemCreatedBy>;
+export const QuerySessionsResponseResultsItemCreatedBy =
+  GetSessionResponseCreatedBy as any as S.Schema<QuerySessionsResponseResultsItemCreatedBy>;
 
 export type QuerySessionsResponseResultsItemAgentVersion = GetSessionResponseAgentVersion;
 export const QuerySessionsResponseResultsItemAgentVersion = GetSessionResponseAgentVersion;
@@ -4464,14 +3800,7 @@ export interface QuerySessionsResponseResultsItemRequiredActionsItemOptionsItem 
   label: string;
 }
 export const QuerySessionsResponseResultsItemRequiredActionsItemOptionsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: QuerySessionsResponseResultsItemRequiredActionsItemOptionsItemId,
-      label: S.String,
-    }),
-  ).annotate({
-    identifier: "QuerySessionsResponseResultsItemRequiredActionsItemOptionsItem",
-  }) as any as S.Schema<QuerySessionsResponseResultsItemRequiredActionsItemOptionsItem>;
+  QuerySessionEventsResponseResultsItemCase5RequiredActionsItemOptionsItem as any as S.Schema<QuerySessionsResponseResultsItemRequiredActionsItemOptionsItem>;
 
 export type QuerySessionsResponseResultsItemRequiredActionsItemOptionsList =
   Array<QuerySessionsResponseResultsItemRequiredActionsItemOptionsItem>;
@@ -4759,41 +4088,26 @@ export interface UpdateSessionResponseRequiredActionsItemOptionsItem {
   id: UpdateSessionResponseRequiredActionsItemOptionsItemId;
   label: string;
 }
-export const UpdateSessionResponseRequiredActionsItemOptionsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: UpdateSessionResponseRequiredActionsItemOptionsItemId,
-    label: S.String,
-  }),
-).annotate({
-  identifier: "UpdateSessionResponseRequiredActionsItemOptionsItem",
-}) as any as S.Schema<UpdateSessionResponseRequiredActionsItemOptionsItem>;
+export const UpdateSessionResponseRequiredActionsItemOptionsItem =
+  CancelSessionResponseRequiredActionsItemOptionsItem as any as S.Schema<UpdateSessionResponseRequiredActionsItemOptionsItem>;
 
 export type UpdateSessionResponseRequiredActionsItemOptionsList =
   Array<UpdateSessionResponseRequiredActionsItemOptionsItem>;
-export const UpdateSessionResponseRequiredActionsItemOptionsList = /*@__PURE__*/ S.Array(
-  UpdateSessionResponseRequiredActionsItemOptionsItem,
-) as any as S.Schema<UpdateSessionResponseRequiredActionsItemOptionsList>;
+export const UpdateSessionResponseRequiredActionsItemOptionsList =
+  CancelSessionResponseRequiredActionsItemOptionsList as any as S.Schema<UpdateSessionResponseRequiredActionsItemOptionsList>;
 
 export interface UpdateSessionResponseRequiredActionsItem {
   action_id: string;
   title: string;
   options: UpdateSessionResponseRequiredActionsItemOptionsList;
 }
-export const UpdateSessionResponseRequiredActionsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action_id: S.String,
-    title: S.String,
-    options: UpdateSessionResponseRequiredActionsItemOptionsList,
-  }),
-).annotate({
-  identifier: "UpdateSessionResponseRequiredActionsItem",
-}) as any as S.Schema<UpdateSessionResponseRequiredActionsItem>;
+export const UpdateSessionResponseRequiredActionsItem =
+  CancelSessionResponseRequiredActionsItem as any as S.Schema<UpdateSessionResponseRequiredActionsItem>;
 
 export type UpdateSessionResponseRequiredActionsList =
   Array<UpdateSessionResponseRequiredActionsItem>;
-export const UpdateSessionResponseRequiredActionsList = /*@__PURE__*/ S.Array(
-  UpdateSessionResponseRequiredActionsItem,
-) as any as S.Schema<UpdateSessionResponseRequiredActionsList>;
+export const UpdateSessionResponseRequiredActionsList =
+  CancelSessionResponseRequiredActionsList as any as S.Schema<UpdateSessionResponseRequiredActionsList>;
 
 export type UpdateSessionResponseError = CancelSessionResponseError;
 export const UpdateSessionResponseError = CancelSessionResponseError;
@@ -4811,19 +4125,8 @@ export interface UpdateSessionResponse {
   required_actions?: UpdateSessionResponseRequiredActionsList;
   error?: CancelSessionResponseError;
 }
-export const UpdateSessionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    object: S.String,
-    id: S.String,
-    agent_id: S.String,
-    title: S.String,
-    status: UpdateSessionResponseStatus,
-    created_at: S.String,
-    updated_at: S.String,
-    required_actions: S.optional(UpdateSessionResponseRequiredActionsList),
-    error: S.optional(CancelSessionResponseError),
-  }),
-).annotate({ identifier: "UpdateSessionResponse" }) as any as S.Schema<UpdateSessionResponse>;
+export const UpdateSessionResponse =
+  CancelSessionResponse as any as S.Schema<UpdateSessionResponse>;
 
 export type CancelSessionError = NotionOpError;
 /** Cancel a session */

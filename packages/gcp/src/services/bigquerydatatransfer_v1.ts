@@ -1562,9 +1562,8 @@ export const ListProjectsTransferConfigsRunsStatesEnum = S.String;
 export type ListProjectsTransferConfigsRunsStatesEnumList = Array<
   ListProjectsTransferConfigsRunsStatesEnum | (string & {})
 >;
-export const ListProjectsTransferConfigsRunsStatesEnumList = /*@__PURE__*/ S.Array(
-  ListProjectsTransferConfigsRunsStatesEnum,
-) as any as S.Schema<ListProjectsTransferConfigsRunsStatesEnumList>;
+export const ListProjectsTransferConfigsRunsStatesEnumList =
+  ListProjectsLocationsTransferConfigsRunsStatesEnumList as any as S.Schema<ListProjectsTransferConfigsRunsStatesEnumList>;
 
 export type ListProjectsTransferConfigsRunsRunAttemptEnum = "RUN_ATTEMPT_UNSPECIFIED" | "LATEST";
 export const ListProjectsTransferConfigsRunsRunAttemptEnum = S.String;
@@ -1610,9 +1609,7 @@ export type ListProjectsTransferConfigsRunsTransferLogsMessageTypesEnumList = Ar
   ListProjectsTransferConfigsRunsTransferLogsMessageTypesEnum | (string & {})
 >;
 export const ListProjectsTransferConfigsRunsTransferLogsMessageTypesEnumList =
-  /*@__PURE__*/ S.Array(
-    ListProjectsTransferConfigsRunsTransferLogsMessageTypesEnum,
-  ) as any as S.Schema<ListProjectsTransferConfigsRunsTransferLogsMessageTypesEnumList>;
+  ListProjectsLocationsTransferConfigsRunsTransferLogsMessageTypesEnumList as any as S.Schema<ListProjectsTransferConfigsRunsTransferLogsMessageTypesEnumList>;
 
 export interface ListProjectsTransferConfigsRunsTransferLogsRequest {
   /** Page size. The default page size is the maximum value of 1000 results. */

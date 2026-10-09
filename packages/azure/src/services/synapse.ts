@@ -12124,19 +12124,7 @@ export interface WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateRespons
   actualState?: WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateResponsePropertiesGrantSqlControlToManagedIdentityActualState;
 }
 export const WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateResponsePropertiesGrantSqlControlToManagedIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      desiredState: S.optional(
-        WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateResponsePropertiesGrantSqlControlToManagedIdentityDesiredState,
-      ),
-      actualState: S.optional(
-        WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateResponsePropertiesGrantSqlControlToManagedIdentityActualState,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateResponsePropertiesGrantSqlControlToManagedIdentity",
-  }) as any as S.Schema<WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateResponsePropertiesGrantSqlControlToManagedIdentity>;
+  GetWorkspaceManagedIdentitySqlControlSettingsResponsePropertiesGrantSqlControlToManagedIdentity as any as S.Schema<WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateResponsePropertiesGrantSqlControlToManagedIdentity>;
 
 /** Sql Control Settings for workspace managed identity */
 export interface WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateResponseProperties {
@@ -12144,15 +12132,7 @@ export interface WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateRespons
   grantSqlControlToManagedIdentity?: WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateResponsePropertiesGrantSqlControlToManagedIdentity;
 }
 export const WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateResponseProperties =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      grantSqlControlToManagedIdentity: S.optional(
-        WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateResponsePropertiesGrantSqlControlToManagedIdentity,
-      ),
-    }),
-  ).annotate({
-    identifier: "WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateResponseProperties",
-  }) as any as S.Schema<WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateResponseProperties>;
+  GetWorkspaceManagedIdentitySqlControlSettingsResponseProperties as any as S.Schema<WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateResponseProperties>;
 
 export interface WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */

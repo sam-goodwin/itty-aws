@@ -251,12 +251,8 @@ export interface GetCardResponseLimit {
   /** The window the limit amount applies to. `per_transaction` caps each individual authorization and is what a limit set with `transaction_limit` reports. */
   frequency: GetCardResponseLimitFrequency;
 }
-export const GetCardResponseLimit = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    amount: S.Number,
-    frequency: GetCardResponseLimitFrequency,
-  }),
-).annotate({ identifier: "GetCardResponseLimit" }) as any as S.Schema<GetCardResponseLimit>;
+export const GetCardResponseLimit =
+  CreateCardResponseLimit as any as S.Schema<GetCardResponseLimit>;
 
 export type GetCardResponseObject = "card";
 export const GetCardResponseObject = S.String;
@@ -304,25 +300,7 @@ export interface GetCardResponse {
   /** Cardholder user ID, prefixed `user_`, when assigned. */
   user_id: string | null;
 }
-export const GetCardResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    billing: S.NullOr(CreateCardResponseBilling),
-    canceled_at: S.NullOr(S.String),
-    created_at: S.NullOr(S.String),
-    expiration_month: S.NullOr(S.String),
-    expiration_year: S.NullOr(S.String),
-    id: S.String,
-    last4: S.NullOr(S.String),
-    limit: S.NullOr(GetCardResponseLimit),
-    name: S.NullOr(S.String),
-    object: GetCardResponseObject,
-    secrets: S.optional(S.NullOr(CreateCardResponseSecrets)),
-    spent_last_month: S.NullOr(S.Number),
-    status: S.NullOr(GetCardResponseStatus),
-    type: S.NullOr(GetCardResponseType),
-    user_id: S.NullOr(S.String),
-  }),
-).annotate({ identifier: "GetCardResponse" }) as any as S.Schema<GetCardResponse>;
+export const GetCardResponse = CreateCardResponse as any as S.Schema<GetCardResponse>;
 
 export interface GetCardTransactionRequest {
   /** The card transaction ID, prefixed `citx_`. */
@@ -757,12 +735,8 @@ export interface UpdateCardResponseLimit {
   /** The window the limit amount applies to. `per_transaction` caps each individual authorization and is what a limit set with `transaction_limit` reports. */
   frequency: UpdateCardResponseLimitFrequency;
 }
-export const UpdateCardResponseLimit = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    amount: S.Number,
-    frequency: UpdateCardResponseLimitFrequency,
-  }),
-).annotate({ identifier: "UpdateCardResponseLimit" }) as any as S.Schema<UpdateCardResponseLimit>;
+export const UpdateCardResponseLimit =
+  CreateCardResponseLimit as any as S.Schema<UpdateCardResponseLimit>;
 
 export type UpdateCardResponseObject = "card";
 export const UpdateCardResponseObject = S.String;
@@ -810,25 +784,7 @@ export interface UpdateCardResponse {
   /** Cardholder user ID, prefixed `user_`, when assigned. */
   user_id: string | null;
 }
-export const UpdateCardResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    billing: S.NullOr(CreateCardResponseBilling),
-    canceled_at: S.NullOr(S.String),
-    created_at: S.NullOr(S.String),
-    expiration_month: S.NullOr(S.String),
-    expiration_year: S.NullOr(S.String),
-    id: S.String,
-    last4: S.NullOr(S.String),
-    limit: S.NullOr(UpdateCardResponseLimit),
-    name: S.NullOr(S.String),
-    object: UpdateCardResponseObject,
-    secrets: S.optional(S.NullOr(CreateCardResponseSecrets)),
-    spent_last_month: S.NullOr(S.Number),
-    status: S.NullOr(UpdateCardResponseStatus),
-    type: S.NullOr(UpdateCardResponseType),
-    user_id: S.NullOr(S.String),
-  }),
-).annotate({ identifier: "UpdateCardResponse" }) as any as S.Schema<UpdateCardResponse>;
+export const UpdateCardResponse = CreateCardResponse as any as S.Schema<UpdateCardResponse>;
 
 export type CreateCardError = BadRequest | Forbidden | NotFound | Conflict | WhopOpError;
 /** Create Card Issue a virtual card, or apply for card issuing. An account with no application files one here and gets back a `202`; call again to issue the card once it is approved. */

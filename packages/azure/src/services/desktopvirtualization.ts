@@ -1115,9 +1115,8 @@ export const ScalingPlanPersonalSchedulePropertiesDaysOfWeekItem = S.String;
 export type ScalingPlanPersonalSchedulePropertiesDaysOfWeekList = Array<
   ScalingPlanPersonalSchedulePropertiesDaysOfWeekItem | (string & {})
 >;
-export const ScalingPlanPersonalSchedulePropertiesDaysOfWeekList = /*@__PURE__*/ S.Array(
-  ScalingPlanPersonalSchedulePropertiesDaysOfWeekItem,
-) as any as S.Schema<ScalingPlanPersonalSchedulePropertiesDaysOfWeekList>;
+export const ScalingPlanPersonalSchedulePropertiesDaysOfWeekList =
+  ScalingScheduleDaysOfWeekList as any as S.Schema<ScalingPlanPersonalSchedulePropertiesDaysOfWeekList>;
 
 /** The desired startup behavior during the ramp up period for personal vms in the hostpool. */
 export type ScalingPlanPersonalSchedulePropertiesRampUpAutoStartHosts =
@@ -1368,9 +1367,8 @@ export const ScalingPlanPooledSchedulePropertiesDaysOfWeekItem = S.String;
 export type ScalingPlanPooledSchedulePropertiesDaysOfWeekList = Array<
   ScalingPlanPooledSchedulePropertiesDaysOfWeekItem | (string & {})
 >;
-export const ScalingPlanPooledSchedulePropertiesDaysOfWeekList = /*@__PURE__*/ S.Array(
-  ScalingPlanPooledSchedulePropertiesDaysOfWeekItem,
-) as any as S.Schema<ScalingPlanPooledSchedulePropertiesDaysOfWeekList>;
+export const ScalingPlanPooledSchedulePropertiesDaysOfWeekList =
+  ScalingScheduleDaysOfWeekList as any as S.Schema<ScalingPlanPooledSchedulePropertiesDaysOfWeekList>;
 
 /** Load balancing algorithm for ramp up period. */
 export type ScalingPlanPooledSchedulePropertiesRampUpLoadBalancingAlgorithm =
@@ -6102,21 +6100,14 @@ export interface MaintenanceWindowPatchProperties {
   /** Day of the week. */
   dayOfWeek?: MaintenanceWindowPatchPropertiesDayOfWeek | (string & {});
 }
-export const MaintenanceWindowPatchProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hour: S.optional(S.Number),
-    dayOfWeek: S.optional(MaintenanceWindowPatchPropertiesDayOfWeek),
-  }),
-).annotate({
-  identifier: "MaintenanceWindowPatchProperties",
-}) as any as S.Schema<MaintenanceWindowPatchProperties>;
+export const MaintenanceWindowPatchProperties =
+  MaintenanceWindowProperties as any as S.Schema<MaintenanceWindowPatchProperties>;
 
 /** List of maintenance windows. Maintenance windows are 2 hours long. */
 export type AgentUpdatePatchPropertiesMaintenanceWindowsList =
   Array<MaintenanceWindowPatchProperties>;
-export const AgentUpdatePatchPropertiesMaintenanceWindowsList = /*@__PURE__*/ S.Array(
-  MaintenanceWindowPatchProperties,
-) as any as S.Schema<AgentUpdatePatchPropertiesMaintenanceWindowsList>;
+export const AgentUpdatePatchPropertiesMaintenanceWindowsList =
+  AgentUpdatePropertiesMaintenanceWindowsList as any as S.Schema<AgentUpdatePatchPropertiesMaintenanceWindowsList>;
 
 /** The session host configuration for updating agent, monitoring agent, and stack component. */
 export interface AgentUpdatePatchProperties {

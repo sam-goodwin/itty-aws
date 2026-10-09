@@ -670,9 +670,8 @@ export const VideoTargetingTargetedPositionTypesItemEnum = S.String;
 export type VideoTargetingTargetedPositionTypesItemEnumList = Array<
   VideoTargetingTargetedPositionTypesItemEnum | (string & {})
 >;
-export const VideoTargetingTargetedPositionTypesItemEnumList = /*@__PURE__*/ S.Array(
-  VideoTargetingTargetedPositionTypesItemEnum,
-) as any as S.Schema<VideoTargetingTargetedPositionTypesItemEnumList>;
+export const VideoTargetingTargetedPositionTypesItemEnumList =
+  CreativeSizeAllowedFormatsItemEnumList as any as S.Schema<VideoTargetingTargetedPositionTypesItemEnumList>;
 
 export type VideoTargetingExcludedPositionTypesItemEnum =
   | "POSITION_TYPE_UNSPECIFIED"
@@ -684,9 +683,8 @@ export const VideoTargetingExcludedPositionTypesItemEnum = S.String;
 export type VideoTargetingExcludedPositionTypesItemEnumList = Array<
   VideoTargetingExcludedPositionTypesItemEnum | (string & {})
 >;
-export const VideoTargetingExcludedPositionTypesItemEnumList = /*@__PURE__*/ S.Array(
-  VideoTargetingExcludedPositionTypesItemEnum,
-) as any as S.Schema<VideoTargetingExcludedPositionTypesItemEnumList>;
+export const VideoTargetingExcludedPositionTypesItemEnumList =
+  CreativeSizeAllowedFormatsItemEnumList as any as S.Schema<VideoTargetingExcludedPositionTypesItemEnumList>;
 
 /** Represents targeting information about video. */
 export interface VideoTargeting {
@@ -1461,9 +1459,8 @@ export const AuctionContextAuctionTypesItemEnum = S.String;
 export type AuctionContextAuctionTypesItemEnumList = Array<
   AuctionContextAuctionTypesItemEnum | (string & {})
 >;
-export const AuctionContextAuctionTypesItemEnumList = /*@__PURE__*/ S.Array(
-  AuctionContextAuctionTypesItemEnum,
-) as any as S.Schema<AuctionContextAuctionTypesItemEnumList>;
+export const AuctionContextAuctionTypesItemEnumList =
+  CreativeSizeAllowedFormatsItemEnumList as any as S.Schema<AuctionContextAuctionTypesItemEnumList>;
 
 /** Output only. The auction type the restriction applies to. */
 export interface AuctionContext {
@@ -1494,9 +1491,8 @@ export type AppContextAppTypesItemEnum = "NATIVE" | "WEB";
 export const AppContextAppTypesItemEnum = S.String;
 
 export type AppContextAppTypesItemEnumList = Array<AppContextAppTypesItemEnum | (string & {})>;
-export const AppContextAppTypesItemEnumList = /*@__PURE__*/ S.Array(
-  AppContextAppTypesItemEnum,
-) as any as S.Schema<AppContextAppTypesItemEnumList>;
+export const AppContextAppTypesItemEnumList =
+  CreativeSizeAllowedFormatsItemEnumList as any as S.Schema<AppContextAppTypesItemEnumList>;
 
 /** Output only. The app type the restriction applies to for mobile device. */
 export interface AppContext {
@@ -1515,9 +1511,8 @@ export const PlatformContextPlatformsItemEnum = S.String;
 export type PlatformContextPlatformsItemEnumList = Array<
   PlatformContextPlatformsItemEnum | (string & {})
 >;
-export const PlatformContextPlatformsItemEnumList = /*@__PURE__*/ S.Array(
-  PlatformContextPlatformsItemEnum,
-) as any as S.Schema<PlatformContextPlatformsItemEnumList>;
+export const PlatformContextPlatformsItemEnumList =
+  CreativeSizeAllowedFormatsItemEnumList as any as S.Schema<PlatformContextPlatformsItemEnumList>;
 
 /** Output only. The type of platform the restriction applies to. */
 export interface PlatformContext {
@@ -1536,9 +1531,8 @@ export const SecurityContextSecuritiesItemEnum = S.String;
 export type SecurityContextSecuritiesItemEnumList = Array<
   SecurityContextSecuritiesItemEnum | (string & {})
 >;
-export const SecurityContextSecuritiesItemEnumList = /*@__PURE__*/ S.Array(
-  SecurityContextSecuritiesItemEnum,
-) as any as S.Schema<SecurityContextSecuritiesItemEnumList>;
+export const SecurityContextSecuritiesItemEnumList =
+  CreativeSizeAllowedFormatsItemEnumList as any as S.Schema<SecurityContextSecuritiesItemEnumList>;
 
 /** Output only. A security context. */
 export interface SecurityContext {
@@ -1719,9 +1713,8 @@ export type CreativeAttributesItemEnum =
 export const CreativeAttributesItemEnum = S.String;
 
 export type CreativeAttributesItemEnumList = Array<CreativeAttributesItemEnum | (string & {})>;
-export const CreativeAttributesItemEnumList = /*@__PURE__*/ S.Array(
-  CreativeAttributesItemEnum,
-) as any as S.Schema<CreativeAttributesItemEnumList>;
+export const CreativeAttributesItemEnumList =
+  CreativeSizeAllowedFormatsItemEnumList as any as S.Schema<CreativeAttributesItemEnumList>;
 
 export type DisapprovalReasonEnum =
   | "LENGTH_OF_IMAGE_ANIMATION"
@@ -1881,9 +1874,8 @@ export const CreativeRestrictedCategoriesItemEnum = S.String;
 export type CreativeRestrictedCategoriesItemEnumList = Array<
   CreativeRestrictedCategoriesItemEnum | (string & {})
 >;
-export const CreativeRestrictedCategoriesItemEnumList = /*@__PURE__*/ S.Array(
-  CreativeRestrictedCategoriesItemEnum,
-) as any as S.Schema<CreativeRestrictedCategoriesItemEnumList>;
+export const CreativeRestrictedCategoriesItemEnumList =
+  CreativeSizeAllowedFormatsItemEnumList as any as S.Schema<CreativeRestrictedCategoriesItemEnumList>;
 
 /** A creative and its classification data. */
 export interface Creative {
@@ -2086,9 +2078,8 @@ export const FilterSetBreakdownDimensionsItemEnum = S.String;
 export type FilterSetBreakdownDimensionsItemEnumList = Array<
   FilterSetBreakdownDimensionsItemEnum | (string & {})
 >;
-export const FilterSetBreakdownDimensionsItemEnumList = /*@__PURE__*/ S.Array(
-  FilterSetBreakdownDimensionsItemEnum,
-) as any as S.Schema<FilterSetBreakdownDimensionsItemEnumList>;
+export const FilterSetBreakdownDimensionsItemEnumList =
+  CreativeSizeAllowedFormatsItemEnumList as any as S.Schema<FilterSetBreakdownDimensionsItemEnumList>;
 
 export type FilterSetFormatsItemEnum =
   | "FORMAT_UNSPECIFIED"
@@ -2099,17 +2090,15 @@ export type FilterSetFormatsItemEnum =
 export const FilterSetFormatsItemEnum = S.String;
 
 export type FilterSetFormatsItemEnumList = Array<FilterSetFormatsItemEnum | (string & {})>;
-export const FilterSetFormatsItemEnumList = /*@__PURE__*/ S.Array(
-  FilterSetFormatsItemEnum,
-) as any as S.Schema<FilterSetFormatsItemEnumList>;
+export const FilterSetFormatsItemEnumList =
+  CreativeSizeAllowedFormatsItemEnumList as any as S.Schema<FilterSetFormatsItemEnumList>;
 
 export type FilterSetPlatformsItemEnum = "PLATFORM_UNSPECIFIED" | "DESKTOP" | "TABLET" | "MOBILE";
 export const FilterSetPlatformsItemEnum = S.String;
 
 export type FilterSetPlatformsItemEnumList = Array<FilterSetPlatformsItemEnum | (string & {})>;
-export const FilterSetPlatformsItemEnumList = /*@__PURE__*/ S.Array(
-  FilterSetPlatformsItemEnum,
-) as any as S.Schema<FilterSetPlatformsItemEnumList>;
+export const FilterSetPlatformsItemEnumList =
+  CreativeSizeAllowedFormatsItemEnumList as any as S.Schema<FilterSetPlatformsItemEnumList>;
 
 export type FilterSetFormatEnum =
   | "FORMAT_UNSPECIFIED"

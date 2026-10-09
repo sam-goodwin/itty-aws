@@ -5726,14 +5726,8 @@ export interface SqlServerInstanceBpaColumn {
   /** The type of the result column. */
   type?: SqlServerInstanceBpaColumnType;
 }
-export const SqlServerInstanceBpaColumn = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    type: S.optional(SqlServerInstanceBpaColumnType),
-  }),
-).annotate({
-  identifier: "SqlServerInstanceBpaColumn",
-}) as any as S.Schema<SqlServerInstanceBpaColumn>;
+export const SqlServerInstanceBpaColumn =
+  CreatePostgresInstanceRequestExtendedLocation as any as S.Schema<SqlServerInstanceBpaColumn>;
 
 /** The SQL best practices assessment response columns. */
 export type GetSqlServerInstanceBestPracticesAssessmentResponseColumnsList =
@@ -6025,21 +6019,14 @@ export interface SqlServerInstanceTelemetryColumn {
   /** The type of the telemetry column. */
   type?: SqlServerInstanceTelemetryColumnType;
 }
-export const SqlServerInstanceTelemetryColumn = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    type: S.optional(SqlServerInstanceTelemetryColumnType),
-  }),
-).annotate({
-  identifier: "SqlServerInstanceTelemetryColumn",
-}) as any as S.Schema<SqlServerInstanceTelemetryColumn>;
+export const SqlServerInstanceTelemetryColumn =
+  CreatePostgresInstanceRequestExtendedLocation as any as S.Schema<SqlServerInstanceTelemetryColumn>;
 
 /** The columns of the result telemetry table for the SQL Server instance. */
 export type GetSqlServerInstanceTelemetryResponseColumnsList =
   Array<SqlServerInstanceTelemetryColumn>;
-export const GetSqlServerInstanceTelemetryResponseColumnsList = /*@__PURE__*/ S.Array(
-  SqlServerInstanceTelemetryColumn,
-) as any as S.Schema<GetSqlServerInstanceTelemetryResponseColumnsList>;
+export const GetSqlServerInstanceTelemetryResponseColumnsList =
+  GetSqlServerInstanceBestPracticesAssessmentResponseColumnsList as any as S.Schema<GetSqlServerInstanceTelemetryResponseColumnsList>;
 
 /** An array of values representing a telemetry row for the SQL Server instance. */
 export type SqlServerInstanceTelemetryRow = Array<string>;

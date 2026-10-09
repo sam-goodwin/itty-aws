@@ -650,9 +650,7 @@ export type GoogleSecuritySafebrowsingV4ThreatInfoPlatformTypesItemEnumList = Ar
   GoogleSecuritySafebrowsingV4ThreatInfoPlatformTypesItemEnum | (string & {})
 >;
 export const GoogleSecuritySafebrowsingV4ThreatInfoPlatformTypesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleSecuritySafebrowsingV4ThreatInfoPlatformTypesItemEnum,
-  ) as any as S.Schema<GoogleSecuritySafebrowsingV4ThreatInfoPlatformTypesItemEnumList>;
+  GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraintsSupportedCompressionsItemEnumList as any as S.Schema<GoogleSecuritySafebrowsingV4ThreatInfoPlatformTypesItemEnumList>;
 
 export type GoogleSecuritySafebrowsingV4ThreatInfoThreatEntryTypesItemEnum =
   | "THREAT_ENTRY_TYPE_UNSPECIFIED"
@@ -668,9 +666,7 @@ export type GoogleSecuritySafebrowsingV4ThreatInfoThreatEntryTypesItemEnumList =
   GoogleSecuritySafebrowsingV4ThreatInfoThreatEntryTypesItemEnum | (string & {})
 >;
 export const GoogleSecuritySafebrowsingV4ThreatInfoThreatEntryTypesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleSecuritySafebrowsingV4ThreatInfoThreatEntryTypesItemEnum,
-  ) as any as S.Schema<GoogleSecuritySafebrowsingV4ThreatInfoThreatEntryTypesItemEnumList>;
+  GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraintsSupportedCompressionsItemEnumList as any as S.Schema<GoogleSecuritySafebrowsingV4ThreatInfoThreatEntryTypesItemEnumList>;
 
 export type GoogleSecuritySafebrowsingV4ThreatEntryList =
   Array<GoogleSecuritySafebrowsingV4ThreatEntry>;

@@ -500,9 +500,8 @@ export const CivicinfoSchemaV2ContestLevelItemEnum = S.String;
 
 export type CivicinfoSchemaV2ContestLevelItemEnumList =
   Array<CivicinfoSchemaV2ContestLevelItemEnum>;
-export const CivicinfoSchemaV2ContestLevelItemEnumList = /*@__PURE__*/ S.Array(
-  CivicinfoSchemaV2ContestLevelItemEnum,
-) as any as S.Schema<CivicinfoSchemaV2ContestLevelItemEnumList>;
+export const CivicinfoSchemaV2ContestLevelItemEnumList =
+  CivicinfoSchemaV2ContestRolesItemEnumList as any as S.Schema<CivicinfoSchemaV2ContestLevelItemEnumList>;
 
 export type CivicinfoSchemaV2ElectoralDistrictScopeEnum =
   | "statewide"

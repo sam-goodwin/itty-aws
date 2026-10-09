@@ -3149,9 +3149,8 @@ export const LookupAppsConfigRequestRichLinkPreviewTypesItem = S.String;
 export type LookupAppsConfigRequestRichLinkPreviewTypesList = Array<
   LookupAppsConfigRequestRichLinkPreviewTypesItem | (string & {})
 >;
-export const LookupAppsConfigRequestRichLinkPreviewTypesList = /*@__PURE__*/ S.Array(
-  LookupAppsConfigRequestRichLinkPreviewTypesItem,
-) as any as S.Schema<LookupAppsConfigRequestRichLinkPreviewTypesList>;
+export const LookupAppsConfigRequestRichLinkPreviewTypesList =
+  CreateBarrierRequestRestrictedSubjectsList as any as S.Schema<LookupAppsConfigRequestRichLinkPreviewTypesList>;
 
 export interface LookupAppsConfigRequest {
   /** An array of app IDs to get app configs for */
@@ -4740,9 +4739,8 @@ export const UpdateBarrierRequestRestrictedSubjectsItem = S.String;
 export type UpdateBarrierRequestRestrictedSubjectsList = Array<
   UpdateBarrierRequestRestrictedSubjectsItem | (string & {})
 >;
-export const UpdateBarrierRequestRestrictedSubjectsList = /*@__PURE__*/ S.Array(
-  UpdateBarrierRequestRestrictedSubjectsItem,
-) as any as S.Schema<UpdateBarrierRequestRestrictedSubjectsList>;
+export const UpdateBarrierRequestRestrictedSubjectsList =
+  CreateBarrierRequestRestrictedSubjectsList as any as S.Schema<UpdateBarrierRequestRestrictedSubjectsList>;
 
 export interface UpdateBarrierRequest {
   /** The ID of the barrier you're trying to modify */
@@ -4875,19 +4873,12 @@ export interface UploadUsersResponseInvalidUsersItem {
   user_id: string;
   reason: UploadUsersResponseInvalidUsersItemReason;
 }
-export const UploadUsersResponseInvalidUsersItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    user_id: S.String,
-    reason: UploadUsersResponseInvalidUsersItemReason,
-  }),
-).annotate({
-  identifier: "UploadUsersResponseInvalidUsersItem",
-}) as any as S.Schema<UploadUsersResponseInvalidUsersItem>;
+export const UploadUsersResponseInvalidUsersItem =
+  AddUsersResponseInvalidUsersItem as any as S.Schema<UploadUsersResponseInvalidUsersItem>;
 
 export type UploadUsersResponseInvalidUsersList = Array<UploadUsersResponseInvalidUsersItem>;
-export const UploadUsersResponseInvalidUsersList = /*@__PURE__*/ S.Array(
-  UploadUsersResponseInvalidUsersItem,
-) as any as S.Schema<UploadUsersResponseInvalidUsersList>;
+export const UploadUsersResponseInvalidUsersList =
+  AddUsersResponseInvalidUsersList as any as S.Schema<UploadUsersResponseInvalidUsersList>;
 
 export interface UploadUsersResponse {
   /** Always `true` (a failed call raises a typed error instead). */

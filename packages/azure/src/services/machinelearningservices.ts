@@ -4409,9 +4409,8 @@ export const EmailNotificationEnableType = S.String;
 
 /** Send email notification to user on specified notification type */
 export type NotificationSettingEmailOnList = Array<EmailNotificationEnableType | (string & {})>;
-export const NotificationSettingEmailOnList = /*@__PURE__*/ S.Array(
-  EmailNotificationEnableType,
-) as any as S.Schema<NotificationSettingEmailOnList>;
+export const NotificationSettingEmailOnList =
+  FeaturesetVersionsBackfillRequestDataAvailabilityStatusList as any as S.Schema<NotificationSettingEmailOnList>;
 
 /** This is the email recipient list which has a limitation of 499 characters in total concat with comma separator */
 export type NotificationSettingEmailsList = Array<string>;
@@ -4496,9 +4495,8 @@ export const WeekDay = S.String;
 
 /** List of days for the schedule. */
 export type RecurrenceScheduleWeekDaysList = Array<WeekDay | (string & {})>;
-export const RecurrenceScheduleWeekDaysList = /*@__PURE__*/ S.Array(
-  WeekDay,
-) as any as S.Schema<RecurrenceScheduleWeekDaysList>;
+export const RecurrenceScheduleWeekDaysList =
+  FeaturesetVersionsBackfillRequestDataAvailabilityStatusList as any as S.Schema<RecurrenceScheduleWeekDaysList>;
 
 export interface RecurrenceSchedule {
   /** [Required] List of hours for the schedule. */

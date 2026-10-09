@@ -1000,7 +1000,7 @@ export type RuleSetCategory = "SAST" | "IAC" | "SCA" | (string & {});
 export const RuleSetCategory = S.String;
 
 export type RuleSetCategories = RuleSetCategory[];
-export const RuleSetCategories = /*@__PURE__*/ S.Array(RuleSetCategory);
+export const RuleSetCategories = DaysList as any as S.Schema<RuleSetCategories>;
 export interface CodeSecurityScanConfiguration {
   periodicScanConfiguration?: PeriodicScanConfiguration;
   continuousIntegrationScanConfiguration?: ContinuousIntegrationScanConfiguration;
@@ -1824,11 +1824,11 @@ export interface CisSecurityLevelFilter {
   comparison: CisSecurityLevelComparison;
   value: CisSecurityLevel;
 }
-export const CisSecurityLevelFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ comparison: CisSecurityLevelComparison, value: CisSecurityLevel }),
-).annotate({ identifier: "CisSecurityLevelFilter" }) as any as S.Schema<CisSecurityLevelFilter>;
+export const CisSecurityLevelFilter =
+  CisFindingStatusFilter as any as S.Schema<CisSecurityLevelFilter>;
 export type CisSecurityLevelFilterList = CisSecurityLevelFilter[];
-export const CisSecurityLevelFilterList = /*@__PURE__*/ S.Array(CisSecurityLevelFilter);
+export const CisSecurityLevelFilterList =
+  CisFindingStatusFilterList as any as S.Schema<CisSecurityLevelFilterList>;
 export type CisFindingArnFilterList = CisStringFilter[];
 export const CisFindingArnFilterList =
   CheckIdFilterList as any as S.Schema<CisFindingArnFilterList>;
@@ -2686,11 +2686,11 @@ export interface CisResultStatusFilter {
   comparison: CisResultStatusComparison;
   value: CisResultStatus;
 }
-export const CisResultStatusFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ comparison: CisResultStatusComparison, value: CisResultStatus }),
-).annotate({ identifier: "CisResultStatusFilter" }) as any as S.Schema<CisResultStatusFilter>;
+export const CisResultStatusFilter =
+  CisFindingStatusFilter as any as S.Schema<CisResultStatusFilter>;
 export type CisResultStatusFilterList = CisResultStatusFilter[];
-export const CisResultStatusFilterList = /*@__PURE__*/ S.Array(CisResultStatusFilter);
+export const CisResultStatusFilterList =
+  CisFindingStatusFilterList as any as S.Schema<CisResultStatusFilterList>;
 export type ResourceIdFilterList = CisStringFilter[];
 export const ResourceIdFilterList = CheckIdFilterList as any as S.Schema<ResourceIdFilterList>;
 export type CisTargetStatusComparison = "EQUALS" | (string & {});
@@ -2703,11 +2703,11 @@ export interface CisTargetStatusFilter {
   comparison: CisTargetStatusComparison;
   value: CisTargetStatus;
 }
-export const CisTargetStatusFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ comparison: CisTargetStatusComparison, value: CisTargetStatus }),
-).annotate({ identifier: "CisTargetStatusFilter" }) as any as S.Schema<CisTargetStatusFilter>;
+export const CisTargetStatusFilter =
+  CisFindingStatusFilter as any as S.Schema<CisTargetStatusFilter>;
 export type TargetStatusFilterList = CisTargetStatusFilter[];
-export const TargetStatusFilterList = /*@__PURE__*/ S.Array(CisTargetStatusFilter);
+export const TargetStatusFilterList =
+  CisFindingStatusFilterList as any as S.Schema<TargetStatusFilterList>;
 export type CisTargetStatusReason =
   | "SCAN_IN_PROGRESS"
   | "UNSUPPORTED_OS"
@@ -2839,11 +2839,10 @@ export interface CisScanStatusFilter {
   comparison: CisScanStatusComparison;
   value: CisScanStatus;
 }
-export const CisScanStatusFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ comparison: CisScanStatusComparison, value: CisScanStatus }),
-).annotate({ identifier: "CisScanStatusFilter" }) as any as S.Schema<CisScanStatusFilter>;
+export const CisScanStatusFilter = CisFindingStatusFilter as any as S.Schema<CisScanStatusFilter>;
 export type CisScanStatusFilterList = CisScanStatusFilter[];
-export const CisScanStatusFilterList = /*@__PURE__*/ S.Array(CisScanStatusFilter);
+export const CisScanStatusFilterList =
+  CisFindingStatusFilterList as any as S.Schema<CisScanStatusFilterList>;
 export interface CisDateFilter {
   earliestScanStartTime?: Date;
   latestScanStartTime?: Date;
@@ -3126,11 +3125,9 @@ export interface ConnectorArnFilter {
   comparison: ConnectorArnComparison;
   value: string;
 }
-export const ConnectorArnFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ comparison: ConnectorArnComparison, value: S.String }),
-).annotate({ identifier: "ConnectorArnFilter" }) as any as S.Schema<ConnectorArnFilter>;
+export const ConnectorArnFilter = CisStringFilter as any as S.Schema<ConnectorArnFilter>;
 export type ConnectorArnFilterList = ConnectorArnFilter[];
-export const ConnectorArnFilterList = /*@__PURE__*/ S.Array(ConnectorArnFilter);
+export const ConnectorArnFilterList = CheckIdFilterList as any as S.Schema<ConnectorArnFilterList>;
 export type AwsConfigConnectorArnComparison = "EQUALS" | (string & {});
 export const AwsConfigConnectorArnComparison = S.String;
 
@@ -3155,11 +3152,10 @@ export interface ConnectorTypeFilter {
   comparison: ConnectorTypeComparison;
   value: ConnectorType;
 }
-export const ConnectorTypeFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ comparison: ConnectorTypeComparison, value: ConnectorType }),
-).annotate({ identifier: "ConnectorTypeFilter" }) as any as S.Schema<ConnectorTypeFilter>;
+export const ConnectorTypeFilter = CisFindingStatusFilter as any as S.Schema<ConnectorTypeFilter>;
 export type ConnectorTypeFilterList = ConnectorTypeFilter[];
-export const ConnectorTypeFilterList = /*@__PURE__*/ S.Array(ConnectorTypeFilter);
+export const ConnectorTypeFilterList =
+  CisFindingStatusFilterList as any as S.Schema<ConnectorTypeFilterList>;
 export type ProviderComparison = "EQUALS" | (string & {});
 export const ProviderComparison = S.String;
 
@@ -3167,11 +3163,9 @@ export interface ProviderFilter {
   comparison: ProviderComparison;
   value: ConnectorCloudProvider;
 }
-export const ProviderFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ comparison: ProviderComparison, value: ConnectorCloudProvider }),
-).annotate({ identifier: "ProviderFilter" }) as any as S.Schema<ProviderFilter>;
+export const ProviderFilter = CisFindingStatusFilter as any as S.Schema<ProviderFilter>;
 export type ProviderFilterList = ProviderFilter[];
-export const ProviderFilterList = /*@__PURE__*/ S.Array(ProviderFilter);
+export const ProviderFilterList = CisFindingStatusFilterList as any as S.Schema<ProviderFilterList>;
 export interface ConnectorFilterCriteria {
   connectorArns?: ConnectorArnFilter[];
   accounts?: StringFilter[];

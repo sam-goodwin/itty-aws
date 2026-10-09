@@ -165,12 +165,7 @@ export interface DestinationCIDRv6 {
   /** An CIDRv6 string. */
   value: string;
 }
-export const DestinationCIDRv6 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: DestinationCIDRv6Type,
-    value: S.String,
-  }),
-).annotate({ identifier: "DestinationCIDRv6" }) as any as S.Schema<DestinationCIDRv6>;
+export const DestinationCIDRv6 = DestinationCIDRv4 as any as S.Schema<DestinationCIDRv6>;
 
 export type RouteInputDestination = DestinationCIDRv4 | DestinationCIDRv6;
 export const RouteInputDestination =
@@ -185,12 +180,7 @@ export interface NexthopIPv4 {
   /** An IPv4 address. */
   value: string;
 }
-export const NexthopIPv4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: NexthopIPv4Type,
-    value: S.String,
-  }),
-).annotate({ identifier: "NexthopIPv4" }) as any as S.Schema<NexthopIPv4>;
+export const NexthopIPv4 = DestinationCIDRv4 as any as S.Schema<NexthopIPv4>;
 
 export type NexthopIPv6Type = "ipv6";
 export const NexthopIPv6Type = S.String;
@@ -201,12 +191,7 @@ export interface NexthopIPv6 {
   /** An IPv6 address. */
   value: string;
 }
-export const NexthopIPv6 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: NexthopIPv6Type,
-    value: S.String,
-  }),
-).annotate({ identifier: "NexthopIPv6" }) as any as S.Schema<NexthopIPv6>;
+export const NexthopIPv6 = DestinationCIDRv4 as any as S.Schema<NexthopIPv6>;
 
 export type NexthopInternetType = "internet";
 export const NexthopInternetType = S.String;
@@ -228,11 +213,7 @@ export const NexthopBlackholeType = S.String;
 export interface NexthopBlackhole {
   type: NexthopBlackholeType;
 }
-export const NexthopBlackhole = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: NexthopBlackholeType,
-  }),
-).annotate({ identifier: "NexthopBlackhole" }) as any as S.Schema<NexthopBlackhole>;
+export const NexthopBlackhole = NexthopInternet as any as S.Schema<NexthopBlackhole>;
 
 export type RouteInputNexthop = NexthopIPv4 | NexthopIPv6 | NexthopInternet | NexthopBlackhole;
 export const RouteInputNexthop = /*@__PURE__*/ S.Unknown as any as S.Schema<RouteInputNexthop>;

@@ -844,19 +844,7 @@ export interface GoogleCloudPolicytroubleshooterIamV3DenyRuleExplanationAnnotate
   membership?: GoogleCloudPolicytroubleshooterIamV3DenyRuleExplanationAnnotatedDenyPrincipalMatchingMembershipEnum;
 }
 export const GoogleCloudPolicytroubleshooterIamV3DenyRuleExplanationAnnotatedDenyPrincipalMatching =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      relevance: S.optional(
-        GoogleCloudPolicytroubleshooterIamV3DenyRuleExplanationAnnotatedDenyPrincipalMatchingRelevanceEnum,
-      ),
-      membership: S.optional(
-        GoogleCloudPolicytroubleshooterIamV3DenyRuleExplanationAnnotatedDenyPrincipalMatchingMembershipEnum,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudPolicytroubleshooterIamV3DenyRuleExplanationAnnotatedDenyPrincipalMatching",
-  }) as any as S.Schema<GoogleCloudPolicytroubleshooterIamV3DenyRuleExplanationAnnotatedDenyPrincipalMatching>;
+  GoogleCloudPolicytroubleshooterIamV3AllowBindingExplanationAnnotatedAllowMembership as any as S.Schema<GoogleCloudPolicytroubleshooterIamV3DenyRuleExplanationAnnotatedDenyPrincipalMatching>;
 
 export type GoogleCloudPolicytroubleshooterIamV3DenyRuleExplanationAnnotatedDenyPrincipalMatchingMap =
   {
@@ -865,10 +853,7 @@ export type GoogleCloudPolicytroubleshooterIamV3DenyRuleExplanationAnnotatedDeny
       | undefined;
   };
 export const GoogleCloudPolicytroubleshooterIamV3DenyRuleExplanationAnnotatedDenyPrincipalMatchingMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    GoogleCloudPolicytroubleshooterIamV3DenyRuleExplanationAnnotatedDenyPrincipalMatching,
-  ) as any as S.Schema<GoogleCloudPolicytroubleshooterIamV3DenyRuleExplanationAnnotatedDenyPrincipalMatchingMap>;
+  GoogleCloudPolicytroubleshooterIamV3AllowBindingExplanationAnnotatedAllowMembershipMap as any as S.Schema<GoogleCloudPolicytroubleshooterIamV3DenyRuleExplanationAnnotatedDenyPrincipalMatchingMap>;
 
 export type GoogleCloudPolicytroubleshooterIamV3DenyRuleExplanationRelevanceEnum =
   | "HEURISTIC_RELEVANCE_UNSPECIFIED"

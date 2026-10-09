@@ -3737,14 +3737,8 @@ export interface CreateConversationRequestFrom {
   /** The identifier for the contact which is given by Intercom. */
   id: string;
 }
-export const CreateConversationRequestFrom = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: CreateConversationRequestFromType,
-    id: S.String,
-  }),
-).annotate({
-  identifier: "CreateConversationRequestFrom",
-}) as any as S.Schema<CreateConversationRequestFrom>;
+export const CreateConversationRequestFrom =
+  BulkContentActionsRequestContentIdsItem as any as S.Schema<CreateConversationRequestFrom>;
 
 /** A list of image URLs that will be added as attachments. You can include up to 10 URLs. */
 export type CreateConversationRequestAttachmentUrlsList = Array<string>;
@@ -4998,9 +4992,8 @@ export const CreateDataConnectorRequestAudiencesItem = S.String;
 export type CreateDataConnectorRequestAudiencesList = Array<
   CreateDataConnectorRequestAudiencesItem | (string & {})
 >;
-export const CreateDataConnectorRequestAudiencesList = /*@__PURE__*/ S.Array(
-  CreateDataConnectorRequestAudiencesItem,
-) as any as S.Schema<CreateDataConnectorRequestAudiencesList>;
+export const CreateDataConnectorRequestAudiencesList =
+  SubscriptionTypeContentTypesList as any as S.Schema<CreateDataConnectorRequestAudiencesList>;
 
 export interface CreateDataConnectorRequestHeadersItem {
   /** The header name. */
@@ -5149,9 +5142,8 @@ export const DataConnectorDetailAudiencesItem = S.String;
 
 /** The audience types this connector targets. */
 export type DataConnectorDetailAudiencesList = Array<DataConnectorDetailAudiencesItem>;
-export const DataConnectorDetailAudiencesList = /*@__PURE__*/ S.Array(
-  DataConnectorDetailAudiencesItem,
-) as any as S.Schema<DataConnectorDetailAudiencesList>;
+export const DataConnectorDetailAudiencesList =
+  SubscriptionTypeContentTypesList as any as S.Schema<DataConnectorDetailAudiencesList>;
 
 /** How the connector executes. */
 export type DataConnectorDetailExecutionType = "server_side" | "client_side";
@@ -6829,13 +6821,8 @@ export interface DeletedCollectionObject {
   /** Whether the collection was deleted successfully or not. */
   deleted?: boolean;
 }
-export const DeletedCollectionObject = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    object: S.optional(DeletedCollectionObjectObject),
-    deleted: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "DeletedCollectionObject" }) as any as S.Schema<DeletedCollectionObject>;
+export const DeletedCollectionObject =
+  DeletedArticleObject as any as S.Schema<DeletedCollectionObject>;
 
 export interface DeleteCompanyRequest {
   /** The unique identifier for the company which is given by Intercom */
@@ -6860,13 +6847,7 @@ export interface DeletedCompanyObject {
   /** Whether the company was deleted successfully or not. */
   deleted?: boolean;
 }
-export const DeletedCompanyObject = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    object: S.optional(DeletedCompanyObjectObject),
-    deleted: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "DeletedCompanyObject" }) as any as S.Schema<DeletedCompanyObject>;
+export const DeletedCompanyObject = DeletedArticleObject as any as S.Schema<DeletedCompanyObject>;
 
 export interface DeleteContactRequest {
   /** contact_id */
@@ -6961,13 +6942,7 @@ export interface ConversationDeleted {
   /** Whether the conversation is deleted or not. */
   deleted?: boolean;
 }
-export const ConversationDeleted = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    object: S.optional(ConversationDeletedObject),
-    deleted: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "ConversationDeleted" }) as any as S.Schema<ConversationDeleted>;
+export const ConversationDeleted = DeletedArticleObject as any as S.Schema<ConversationDeleted>;
 
 export interface DeleteConversationAttributeRequest {
   /** The conversation attribute id */
@@ -7158,15 +7133,8 @@ export interface DeletedHelpCenterRedirectObject {
   /** Whether the redirect was deleted successfully or not. */
   deleted?: boolean;
 }
-export const DeletedHelpCenterRedirectObject = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    object: S.optional(DeletedHelpCenterRedirectObjectObject),
-    deleted: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "DeletedHelpCenterRedirectObject",
-}) as any as S.Schema<DeletedHelpCenterRedirectObject>;
+export const DeletedHelpCenterRedirectObject =
+  DeletedDataConnectorObject as any as S.Schema<DeletedHelpCenterRedirectObject>;
 
 export interface DeleteInternalArticleRequest {
   /** The unique identifier for the internal article which is given by Intercom. */
@@ -7193,15 +7161,8 @@ export interface DeletedInternalArticleObject {
   /** Whether the internal article was deleted successfully or not. */
   deleted?: boolean;
 }
-export const DeletedInternalArticleObject = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    object: S.optional(DeletedInternalArticleObjectObject),
-    deleted: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "DeletedInternalArticleObject",
-}) as any as S.Schema<DeletedInternalArticleObject>;
+export const DeletedInternalArticleObject =
+  DeletedDataConnectorObject as any as S.Schema<DeletedInternalArticleObject>;
 
 export interface DeleteNewsItemRequest {
   /** The unique identifier for the news item which is given by Intercom. */
@@ -7226,13 +7187,7 @@ export interface DeletedObject {
   /** Whether the news item was deleted successfully or not. */
   deleted?: boolean;
 }
-export const DeletedObject = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    object: S.optional(DeletedObjectObject),
-    deleted: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "DeletedObject" }) as any as S.Schema<DeletedObject>;
+export const DeletedObject = DeletedArticleObject as any as S.Schema<DeletedObject>;
 
 export interface DeleteOfficeHoursExceptionRequest {
   /** The unique identifier for the office hours schedule. */
@@ -7326,13 +7281,7 @@ export interface TicketDeleted {
   /** Whether the ticket is deleted or not. */
   deleted?: boolean;
 }
-export const TicketDeleted = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    object: S.optional(TicketDeletedObject),
-    deleted: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "TicketDeleted" }) as any as S.Schema<TicketDeleted>;
+export const TicketDeleted = DeletedArticleObject as any as S.Schema<TicketDeleted>;
 
 export interface DetachContactFromACompanyRequest {
   /** The unique identifier for the contact which is given by Intercom */
@@ -10395,9 +10344,8 @@ export const MacroAvailableOnItem = S.String;
 
 /** Where the macro is available for use. */
 export type MacroAvailableOnList = Array<MacroAvailableOnItem>;
-export const MacroAvailableOnList = /*@__PURE__*/ S.Array(
-  MacroAvailableOnItem,
-) as any as S.Schema<MacroAvailableOnList>;
+export const MacroAvailableOnList =
+  SubscriptionTypeContentTypesList as any as S.Schema<MacroAvailableOnList>;
 
 /** A macro is a pre-defined response template (saved reply) that can be used to quickly reply to conversations. */
 export interface Macro {
@@ -15284,17 +15232,7 @@ export interface ReplyToFinResponse {
   /** Optional. A URL to subscribe to Server-Sent Events (SSE) for this conversation, if SSE is enabled. The access token is a JWT with a 3-minute TTL. The token is revoked when Fin sets the conversation to awaiting_user_reply or complete status. When CSAT is enabled and a survey will follow the resolution, `complete` revocation is deferred until the `csat_requested` event is delivered or the token expires. */
   sse_subscription_url?: string;
 }
-export const ReplyToFinResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    conversation_id: S.optional(S.String),
-    intercom_conversation_id: S.optional(S.String),
-    user_id: S.optional(S.String),
-    status: S.optional(ReplyToFinResponseStatus),
-    created_at_ms: S.optional(S.String),
-    errors: S.optional(FinAgentAttributeErrors),
-    sse_subscription_url: S.optional(S.String),
-  }),
-).annotate({ identifier: "ReplyToFinResponse" }) as any as S.Schema<ReplyToFinResponse>;
+export const ReplyToFinResponse = AskFinResponse as any as S.Schema<ReplyToFinResponse>;
 
 /** A hash of conversation attributes. Limit to 10 attributes. */
 export type RunFinProcedureRequestConversationMetadataAttributesMap = {
@@ -15622,21 +15560,14 @@ export interface ArticleSearchHighlightsHighlightedSummaryItemItem {
   /** The text of the title. */
   text?: string;
 }
-export const ArticleSearchHighlightsHighlightedSummaryItemItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(ArticleSearchHighlightsHighlightedSummaryItemItemType),
-    text: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ArticleSearchHighlightsHighlightedSummaryItemItem",
-}) as any as S.Schema<ArticleSearchHighlightsHighlightedSummaryItemItem>;
+export const ArticleSearchHighlightsHighlightedSummaryItemItem =
+  ArticleSearchHighlightsHighlightedTitleItem as any as S.Schema<ArticleSearchHighlightsHighlightedSummaryItemItem>;
 
 /** An array containing the highlighted summary text split into chunks of plain and highlighted text. */
 export type ArticleSearchHighlightsHighlightedSummaryItemList =
   Array<ArticleSearchHighlightsHighlightedSummaryItemItem>;
-export const ArticleSearchHighlightsHighlightedSummaryItemList = /*@__PURE__*/ S.Array(
-  ArticleSearchHighlightsHighlightedSummaryItemItem,
-) as any as S.Schema<ArticleSearchHighlightsHighlightedSummaryItemList>;
+export const ArticleSearchHighlightsHighlightedSummaryItemList =
+  ArticleSearchHighlightsHighlightedTitleList as any as S.Schema<ArticleSearchHighlightsHighlightedSummaryItemList>;
 
 /** An Article description and body text highlighted. */
 export type ArticleSearchHighlightsHighlightedSummaryList =
@@ -15838,9 +15769,8 @@ export type SearchContentRequestStatesItem = "published" | "draft";
 export const SearchContentRequestStatesItem = S.String;
 
 export type SearchContentRequestStatesList = Array<SearchContentRequestStatesItem | (string & {})>;
-export const SearchContentRequestStatesList = /*@__PURE__*/ S.Array(
-  SearchContentRequestStatesItem,
-) as any as S.Schema<SearchContentRequestStatesList>;
+export const SearchContentRequestStatesList =
+  SubscriptionTypeContentTypesList as any as S.Schema<SearchContentRequestStatesList>;
 
 export type SearchContentRequestLocalesList = Array<string>;
 export const SearchContentRequestLocalesList =
@@ -15875,9 +15805,8 @@ export const SearchContentRequestContentTypesItem = S.String;
 export type SearchContentRequestContentTypesList = Array<
   SearchContentRequestContentTypesItem | (string & {})
 >;
-export const SearchContentRequestContentTypesList = /*@__PURE__*/ S.Array(
-  SearchContentRequestContentTypesItem,
-) as any as S.Schema<SearchContentRequestContentTypesList>;
+export const SearchContentRequestContentTypesList =
+  SubscriptionTypeContentTypesList as any as S.Schema<SearchContentRequestContentTypesList>;
 
 export type SearchContentRequestCopilotState = "on" | "off";
 export const SearchContentRequestCopilotState = S.String;
@@ -16559,14 +16488,8 @@ export interface UnarchiveContactResponse {
   /** Whether the contact is archived or not. */
   archived?: boolean;
 }
-export const UnarchiveContactResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(UnarchiveContactResponseType),
-    id: S.optional(S.String),
-    external_id: S.optional(S.NullOr(S.String)),
-    archived: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "UnarchiveContactResponse" }) as any as S.Schema<UnarchiveContactResponse>;
+export const UnarchiveContactResponse =
+  ArchiveContactResponse as any as S.Schema<UnarchiveContactResponse>;
 
 export interface UnlinkConversationFromTicketRequest {
   /** The unique identifier for the tracker ticket which is given by Intercom. */
@@ -17139,14 +17062,8 @@ export interface UpdateConversationAttributeRequestReference {
   /** The ID of the related custom object type. */
   object_type_id?: string;
 }
-export const UpdateConversationAttributeRequestReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: UpdateConversationAttributeRequestReferenceType,
-    object_type_id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateConversationAttributeRequestReference",
-}) as any as S.Schema<UpdateConversationAttributeRequestReference>;
+export const UpdateConversationAttributeRequestReference =
+  CreateConversationAttributeRelationshipRequestReference as any as S.Schema<UpdateConversationAttributeRequestReference>;
 
 export interface UpdateConversationAttributeRequest {
   /** The conversation attribute id */
@@ -17242,9 +17159,8 @@ export const UpdateDataConnectorRequestAudiencesItem = S.String;
 export type UpdateDataConnectorRequestAudiencesList = Array<
   UpdateDataConnectorRequestAudiencesItem | (string & {})
 >;
-export const UpdateDataConnectorRequestAudiencesList = /*@__PURE__*/ S.Array(
-  UpdateDataConnectorRequestAudiencesItem,
-) as any as S.Schema<UpdateDataConnectorRequestAudiencesList>;
+export const UpdateDataConnectorRequestAudiencesList =
+  SubscriptionTypeContentTypesList as any as S.Schema<UpdateDataConnectorRequestAudiencesList>;
 
 export type UpdateDataConnectorRequestHeadersItem = CreateDataConnectorRequestHeadersItem;
 export const UpdateDataConnectorRequestHeadersItem = CreateDataConnectorRequestHeadersItem;
@@ -17274,24 +17190,14 @@ export interface UpdateDataConnectorRequestDataInputsItem {
   /** The default value for this input, if any. */
   default_value?: string;
 }
-export const UpdateDataConnectorRequestDataInputsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    type: S.optional(UpdateDataConnectorRequestDataInputsItemType),
-    description: S.optional(S.String),
-    required: S.optional(S.Boolean),
-    default_value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateDataConnectorRequestDataInputsItem",
-}) as any as S.Schema<UpdateDataConnectorRequestDataInputsItem>;
+export const UpdateDataConnectorRequestDataInputsItem =
+  CreateDataConnectorRequestDataInputsItem as any as S.Schema<UpdateDataConnectorRequestDataInputsItem>;
 
 /** The input parameters accepted by this data connector. Replaces all existing inputs. */
 export type UpdateDataConnectorRequestDataInputsList =
   Array<UpdateDataConnectorRequestDataInputsItem>;
-export const UpdateDataConnectorRequestDataInputsList = /*@__PURE__*/ S.Array(
-  UpdateDataConnectorRequestDataInputsItem,
-) as any as S.Schema<UpdateDataConnectorRequestDataInputsList>;
+export const UpdateDataConnectorRequestDataInputsList =
+  CreateDataConnectorRequestDataInputsList as any as S.Schema<UpdateDataConnectorRequestDataInputsList>;
 
 /** IDs of authentication tokens to attach to this data connector. An empty array removes all tokens. */
 export type UpdateDataConnectorRequestTokenIdsList = Array<string>;

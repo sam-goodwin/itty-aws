@@ -923,9 +923,8 @@ export const WildfireSubmissionRuleCustomFileTypesFileTypesItemEnum = S.String;
 export type WildfireSubmissionRuleCustomFileTypesFileTypesItemEnumList = Array<
   WildfireSubmissionRuleCustomFileTypesFileTypesItemEnum | (string & {})
 >;
-export const WildfireSubmissionRuleCustomFileTypesFileTypesItemEnumList = /*@__PURE__*/ S.Array(
-  WildfireSubmissionRuleCustomFileTypesFileTypesItemEnum,
-) as any as S.Schema<WildfireSubmissionRuleCustomFileTypesFileTypesItemEnumList>;
+export const WildfireSubmissionRuleCustomFileTypesFileTypesItemEnumList =
+  AddressGroupPurposeItemEnumList as any as S.Schema<WildfireSubmissionRuleCustomFileTypesFileTypesItemEnumList>;
 
 /** The options to submit a custom list of file types for scan. */
 export interface WildfireSubmissionRuleCustomFileTypes {
@@ -1126,17 +1125,11 @@ export interface WildfireOverride {
   /** Required. Threat action override. For some threat types, only a subset of actions applies. */
   action?: WildfireOverrideActionEnum | (string & {});
 }
-export const WildfireOverride = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    protocol: S.optional(WildfireOverrideProtocolEnum),
-    action: S.optional(WildfireOverrideActionEnum),
-  }),
-).annotate({ identifier: "WildfireOverride" }) as any as S.Schema<WildfireOverride>;
+export const WildfireOverride = WildfireInlineMlOverride as any as S.Schema<WildfireOverride>;
 
 export type WildfireOverrideList = Array<WildfireOverride>;
-export const WildfireOverrideList = /*@__PURE__*/ S.Array(
-  WildfireOverride,
-) as any as S.Schema<WildfireOverrideList>;
+export const WildfireOverrideList =
+  WildfireInlineMlOverrideList as any as S.Schema<WildfireOverrideList>;
 
 /** WildfireAnalysisProfile defines Palo Alto Networks WildFire behavior. */
 export interface WildfireAnalysisProfile {
@@ -1246,17 +1239,11 @@ export interface AntivirusOverride {
   /** Required. Threat action override. For some threat types, only a subset of actions applies. */
   action?: AntivirusOverrideActionEnum | (string & {});
 }
-export const AntivirusOverride = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    protocol: S.optional(AntivirusOverrideProtocolEnum),
-    action: S.optional(AntivirusOverrideActionEnum),
-  }),
-).annotate({ identifier: "AntivirusOverride" }) as any as S.Schema<AntivirusOverride>;
+export const AntivirusOverride = WildfireInlineMlOverride as any as S.Schema<AntivirusOverride>;
 
 export type AntivirusOverrideList = Array<AntivirusOverride>;
-export const AntivirusOverrideList = /*@__PURE__*/ S.Array(
-  AntivirusOverride,
-) as any as S.Schema<AntivirusOverrideList>;
+export const AntivirusOverrideList =
+  WildfireInlineMlOverrideList as any as S.Schema<AntivirusOverrideList>;
 
 export type SeverityOverrideSeverityEnum =
   | "SEVERITY_UNSPECIFIED"

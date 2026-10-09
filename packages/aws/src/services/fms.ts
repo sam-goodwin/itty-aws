@@ -1564,7 +1564,8 @@ export type EntryViolationReason =
 export const EntryViolationReason = S.String;
 
 export type EntryViolationReasons = EntryViolationReason[];
-export const EntryViolationReasons = /*@__PURE__*/ S.Array(EntryViolationReason);
+export const EntryViolationReasons =
+  SecurityServiceTypeList as any as S.Schema<EntryViolationReasons>;
 export interface EntryViolation {
   ExpectedEntry?: EntryDescription;
   ExpectedEvaluationOrder?: string;

@@ -644,9 +644,8 @@ export const WeeklyScheduleDaysOfWeekItemEnum = S.String;
 export type WeeklyScheduleDaysOfWeekItemEnumList = Array<
   WeeklyScheduleDaysOfWeekItemEnum | (string & {})
 >;
-export const WeeklyScheduleDaysOfWeekItemEnumList = /*@__PURE__*/ S.Array(
-  WeeklyScheduleDaysOfWeekItemEnum,
-) as any as S.Schema<WeeklyScheduleDaysOfWeekItemEnumList>;
+export const WeeklyScheduleDaysOfWeekItemEnumList =
+  ContinuousBackupInfoScheduleItemEnumList as any as S.Schema<WeeklyScheduleDaysOfWeekItemEnumList>;
 
 /** A weekly schedule starts a backup at prescribed start times within a day, for the specified days of the week. The weekly schedule message is flexible and can be used to create many types of schedules. For example, to have a daily backup that starts at 22:00, configure the `start_times` field to have one element "22:00" and the `days_of_week` field to have all seven days of the week. */
 export interface WeeklySchedule {
@@ -2990,9 +2989,8 @@ export const SupportedDatabaseFlagSupportedDbVersionsItemEnum = S.String;
 
 export type SupportedDatabaseFlagSupportedDbVersionsItemEnumList =
   Array<SupportedDatabaseFlagSupportedDbVersionsItemEnum>;
-export const SupportedDatabaseFlagSupportedDbVersionsItemEnumList = /*@__PURE__*/ S.Array(
-  SupportedDatabaseFlagSupportedDbVersionsItemEnum,
-) as any as S.Schema<SupportedDatabaseFlagSupportedDbVersionsItemEnumList>;
+export const SupportedDatabaseFlagSupportedDbVersionsItemEnumList =
+  ContinuousBackupInfoScheduleItemEnumList as any as S.Schema<SupportedDatabaseFlagSupportedDbVersionsItemEnumList>;
 
 export type SupportedDatabaseFlagValueTypeEnum =
   | "VALUE_TYPE_UNSPECIFIED"

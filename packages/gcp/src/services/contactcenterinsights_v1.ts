@@ -5203,9 +5203,7 @@ export type GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadataDatasetVal
     | (string & {})
   >;
 export const GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadataDatasetValidationWarningsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadataDatasetValidationWarningsItemEnum,
-  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadataDatasetValidationWarningsItemEnumList>;
+  GoogleCloudContactcenterinsightsV1ConversationCorrelationInfoCorrelationTypesItemEnumList as any as S.Schema<GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadataDatasetValidationWarningsItemEnumList>;
 
 /** Metadata about the tuning operation for the question. Will only be set if a scorecard containing this question has been tuned. */
 export interface GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata {
@@ -8876,9 +8874,7 @@ export type ListProjectsLocationsQaScorecardsRevisionsQaScorecardSourcesEnumList
   ListProjectsLocationsQaScorecardsRevisionsQaScorecardSourcesEnum | (string & {})
 >;
 export const ListProjectsLocationsQaScorecardsRevisionsQaScorecardSourcesEnumList =
-  /*@__PURE__*/ S.Array(
-    ListProjectsLocationsQaScorecardsRevisionsQaScorecardSourcesEnum,
-  ) as any as S.Schema<ListProjectsLocationsQaScorecardsRevisionsQaScorecardSourcesEnumList>;
+  GoogleCloudContactcenterinsightsV1ConversationCorrelationInfoCorrelationTypesItemEnumList as any as S.Schema<ListProjectsLocationsQaScorecardsRevisionsQaScorecardSourcesEnumList>;
 
 export interface ListProjectsLocationsQaScorecardsRevisionsRequest {
   /** Optional. The source of scorecards are based on how those Scorecards were created, e.g., a customer-defined scorecard, a predefined scorecard, etc. This field is used to retrieve Scorecards Revisions from Scorecards of one or more sources. */

@@ -585,21 +585,14 @@ export interface CreateForUserRequestResourcesAttributesItem {
   /** Metadata specific to the resource type. */
   metadata?: CreateForOrgRequestResourcesAttributesItemMetadata;
 }
-export const CreateForUserRequestResourcesAttributesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resource_type: S.optional(CreateForUserRequestResourcesAttributesItemResourceType),
-    metadata: S.optional(CreateForOrgRequestResourcesAttributesItemMetadata),
-  }),
-).annotate({
-  identifier: "CreateForUserRequestResourcesAttributesItem",
-}) as any as S.Schema<CreateForUserRequestResourcesAttributesItem>;
+export const CreateForUserRequestResourcesAttributesItem =
+  CreateForOrgRequestResourcesAttributesItem as any as S.Schema<CreateForUserRequestResourcesAttributesItem>;
 
 /** Resources to attach to the space. */
 export type CreateForUserRequestResourcesAttributesList =
   Array<CreateForUserRequestResourcesAttributesItem>;
-export const CreateForUserRequestResourcesAttributesList = /*@__PURE__*/ S.Array(
-  CreateForUserRequestResourcesAttributesItem,
-) as any as S.Schema<CreateForUserRequestResourcesAttributesList>;
+export const CreateForUserRequestResourcesAttributesList =
+  CreateForOrgRequestResourcesAttributesList as any as S.Schema<CreateForUserRequestResourcesAttributesList>;
 
 export interface CreateForUserRequest {
   /** The handle for the GitHub user account. */
@@ -1309,21 +1302,14 @@ export interface UpdateForOrgRequestResourcesAttributesItem {
   /** Metadata specific to the resource type. */
   metadata?: CreateForOrgRequestResourcesAttributesItemMetadata;
 }
-export const UpdateForOrgRequestResourcesAttributesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resource_type: S.optional(UpdateForOrgRequestResourcesAttributesItemResourceType),
-    metadata: S.optional(CreateForOrgRequestResourcesAttributesItemMetadata),
-  }),
-).annotate({
-  identifier: "UpdateForOrgRequestResourcesAttributesItem",
-}) as any as S.Schema<UpdateForOrgRequestResourcesAttributesItem>;
+export const UpdateForOrgRequestResourcesAttributesItem =
+  CreateForOrgRequestResourcesAttributesItem as any as S.Schema<UpdateForOrgRequestResourcesAttributesItem>;
 
 /** Resources to attach to the space. */
 export type UpdateForOrgRequestResourcesAttributesList =
   Array<UpdateForOrgRequestResourcesAttributesItem>;
-export const UpdateForOrgRequestResourcesAttributesList = /*@__PURE__*/ S.Array(
-  UpdateForOrgRequestResourcesAttributesItem,
-) as any as S.Schema<UpdateForOrgRequestResourcesAttributesList>;
+export const UpdateForOrgRequestResourcesAttributesList =
+  CreateForOrgRequestResourcesAttributesList as any as S.Schema<UpdateForOrgRequestResourcesAttributesList>;
 
 export interface UpdateForOrgRequest {
   /** The organization name. The name is not case sensitive. */
@@ -1380,21 +1366,14 @@ export interface UpdateForUserRequestResourcesAttributesItem {
   /** Metadata specific to the resource type. */
   metadata?: CreateForOrgRequestResourcesAttributesItemMetadata;
 }
-export const UpdateForUserRequestResourcesAttributesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resource_type: S.optional(UpdateForUserRequestResourcesAttributesItemResourceType),
-    metadata: S.optional(CreateForOrgRequestResourcesAttributesItemMetadata),
-  }),
-).annotate({
-  identifier: "UpdateForUserRequestResourcesAttributesItem",
-}) as any as S.Schema<UpdateForUserRequestResourcesAttributesItem>;
+export const UpdateForUserRequestResourcesAttributesItem =
+  CreateForOrgRequestResourcesAttributesItem as any as S.Schema<UpdateForUserRequestResourcesAttributesItem>;
 
 /** Resources to attach to the space. */
 export type UpdateForUserRequestResourcesAttributesList =
   Array<UpdateForUserRequestResourcesAttributesItem>;
-export const UpdateForUserRequestResourcesAttributesList = /*@__PURE__*/ S.Array(
-  UpdateForUserRequestResourcesAttributesItem,
-) as any as S.Schema<UpdateForUserRequestResourcesAttributesList>;
+export const UpdateForUserRequestResourcesAttributesList =
+  CreateForOrgRequestResourcesAttributesList as any as S.Schema<UpdateForUserRequestResourcesAttributesList>;
 
 export interface UpdateForUserRequest {
   /** The handle for the GitHub user account. */

@@ -200,9 +200,8 @@ export const BranchMetricsRequestAggregationsItem = S.String;
 export type BranchMetricsRequestAggregationsList = Array<
   BranchMetricsRequestAggregationsItem | (string & {})
 >;
-export const BranchMetricsRequestAggregationsList = /*@__PURE__*/ S.Array(
-  BranchMetricsRequestAggregationsItem,
-) as any as S.Schema<BranchMetricsRequestAggregationsList>;
+export const BranchMetricsRequestAggregationsList =
+  BranchMetricsRequestMetricsList as any as S.Schema<BranchMetricsRequestAggregationsList>;
 
 export interface BranchMetricsRequest {
   organizationID: string;

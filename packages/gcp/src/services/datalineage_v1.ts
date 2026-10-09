@@ -1446,13 +1446,8 @@ export interface GoogleCloudDatacatalogLineageV1LinkDependencyInfo {
   /** The type of dependency. */
   dependencyType?: GoogleCloudDatacatalogLineageV1LinkDependencyInfoDependencyTypeEnum;
 }
-export const GoogleCloudDatacatalogLineageV1LinkDependencyInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dependencyType: S.optional(GoogleCloudDatacatalogLineageV1LinkDependencyInfoDependencyTypeEnum),
-  }),
-).annotate({
-  identifier: "GoogleCloudDatacatalogLineageV1LinkDependencyInfo",
-}) as any as S.Schema<GoogleCloudDatacatalogLineageV1LinkDependencyInfo>;
+export const GoogleCloudDatacatalogLineageV1LinkDependencyInfo =
+  GoogleCloudDatacatalogLineageV1DependencyInfo as any as S.Schema<GoogleCloudDatacatalogLineageV1LinkDependencyInfo>;
 
 export type GoogleCloudDatacatalogLineageV1LinkDependencyInfoList =
   Array<GoogleCloudDatacatalogLineageV1LinkDependencyInfo>;

@@ -3407,18 +3407,8 @@ export interface CreateServiceRequestRollbackConfig {
   /** The order of operations when rolling back a task. Either the old task is shut down before the new task is started, or the new task is started before the old task is shut down. */
   Order?: CreateServiceRequestRollbackConfigOrder | (string & {});
 }
-export const CreateServiceRequestRollbackConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Parallelism: S.optional(S.Number),
-    Delay: S.optional(S.Number),
-    FailureAction: S.optional(CreateServiceRequestRollbackConfigFailureAction),
-    Monitor: S.optional(S.Number),
-    MaxFailureRatio: S.optional(S.Number),
-    Order: S.optional(CreateServiceRequestRollbackConfigOrder),
-  }),
-).annotate({
-  identifier: "CreateServiceRequestRollbackConfig",
-}) as any as S.Schema<CreateServiceRequestRollbackConfig>;
+export const CreateServiceRequestRollbackConfig =
+  CreateServiceRequestUpdateConfig as any as S.Schema<CreateServiceRequestRollbackConfig>;
 
 /** Specifies which networks the service should attach to. Deprecated: This field is deprecated since v1.44. The Networks field in TaskSpec should be used instead. */
 export type CreateServiceRequestNetworksList = Array<NetworkAttachmentConfig>;
@@ -6247,18 +6237,8 @@ export interface ServiceSpecRollbackConfig {
   /** The order of operations when rolling back a task. Either the old task is shut down before the new task is started, or the new task is started before the old task is shut down. */
   Order?: ServiceSpecRollbackConfigOrder;
 }
-export const ServiceSpecRollbackConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Parallelism: S.optional(S.Number),
-    Delay: S.optional(S.Number),
-    FailureAction: S.optional(ServiceSpecRollbackConfigFailureAction),
-    Monitor: S.optional(S.Number),
-    MaxFailureRatio: S.optional(S.Number),
-    Order: S.optional(ServiceSpecRollbackConfigOrder),
-  }),
-).annotate({
-  identifier: "ServiceSpecRollbackConfig",
-}) as any as S.Schema<ServiceSpecRollbackConfig>;
+export const ServiceSpecRollbackConfig =
+  CreateServiceRequestUpdateConfig as any as S.Schema<ServiceSpecRollbackConfig>;
 
 /** Specifies which networks the service should attach to. Deprecated: This field is deprecated since v1.44. The Networks field in TaskSpec should be used instead. */
 export type ServiceSpecNetworksList = Array<NetworkAttachmentConfig>;
@@ -8729,18 +8709,8 @@ export interface UpdateServiceRequestUpdateConfig {
   /** The order of operations when rolling out an updated task. Either the old task is shut down before the new task is started, or the new task is started before the old task is shut down. */
   Order?: UpdateServiceRequestUpdateConfigOrder | (string & {});
 }
-export const UpdateServiceRequestUpdateConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Parallelism: S.optional(S.Number),
-    Delay: S.optional(S.Number),
-    FailureAction: S.optional(UpdateServiceRequestUpdateConfigFailureAction),
-    Monitor: S.optional(S.Number),
-    MaxFailureRatio: S.optional(S.Number),
-    Order: S.optional(UpdateServiceRequestUpdateConfigOrder),
-  }),
-).annotate({
-  identifier: "UpdateServiceRequestUpdateConfig",
-}) as any as S.Schema<UpdateServiceRequestUpdateConfig>;
+export const UpdateServiceRequestUpdateConfig =
+  CreateServiceRequestUpdateConfig as any as S.Schema<UpdateServiceRequestUpdateConfig>;
 
 /** Action to take if an rolled back task fails to run, or stops running during the rollback. */
 export type UpdateServiceRequestRollbackConfigFailureAction = "continue" | "pause";
@@ -8765,18 +8735,8 @@ export interface UpdateServiceRequestRollbackConfig {
   /** The order of operations when rolling back a task. Either the old task is shut down before the new task is started, or the new task is started before the old task is shut down. */
   Order?: UpdateServiceRequestRollbackConfigOrder | (string & {});
 }
-export const UpdateServiceRequestRollbackConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Parallelism: S.optional(S.Number),
-    Delay: S.optional(S.Number),
-    FailureAction: S.optional(UpdateServiceRequestRollbackConfigFailureAction),
-    Monitor: S.optional(S.Number),
-    MaxFailureRatio: S.optional(S.Number),
-    Order: S.optional(UpdateServiceRequestRollbackConfigOrder),
-  }),
-).annotate({
-  identifier: "UpdateServiceRequestRollbackConfig",
-}) as any as S.Schema<UpdateServiceRequestRollbackConfig>;
+export const UpdateServiceRequestRollbackConfig =
+  CreateServiceRequestUpdateConfig as any as S.Schema<UpdateServiceRequestRollbackConfig>;
 
 /** Specifies which networks the service should attach to. Deprecated: This field is deprecated since v1.44. The Networks field in TaskSpec should be used instead. */
 export type UpdateServiceRequestNetworksList = Array<NetworkAttachmentConfig>;

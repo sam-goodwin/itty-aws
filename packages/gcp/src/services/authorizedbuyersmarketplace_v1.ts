@@ -637,9 +637,8 @@ export const VideoTargetingTargetedPositionTypesItemEnum = S.String;
 export type VideoTargetingTargetedPositionTypesItemEnumList = Array<
   VideoTargetingTargetedPositionTypesItemEnum | (string & {})
 >;
-export const VideoTargetingTargetedPositionTypesItemEnumList = /*@__PURE__*/ S.Array(
-  VideoTargetingTargetedPositionTypesItemEnum,
-) as any as S.Schema<VideoTargetingTargetedPositionTypesItemEnumList>;
+export const VideoTargetingTargetedPositionTypesItemEnumList =
+  VideoTargetingExcludedPositionTypesItemEnumList as any as S.Schema<VideoTargetingTargetedPositionTypesItemEnumList>;
 
 /** Represents targeting information about video. */
 export interface VideoTargeting {
@@ -679,9 +678,8 @@ export const InventoryTypeTargetingInventoryTypesItemEnum = S.String;
 export type InventoryTypeTargetingInventoryTypesItemEnumList = Array<
   InventoryTypeTargetingInventoryTypesItemEnum | (string & {})
 >;
-export const InventoryTypeTargetingInventoryTypesItemEnumList = /*@__PURE__*/ S.Array(
-  InventoryTypeTargetingInventoryTypesItemEnum,
-) as any as S.Schema<InventoryTypeTargetingInventoryTypesItemEnumList>;
+export const InventoryTypeTargetingInventoryTypesItemEnumList =
+  VideoTargetingExcludedPositionTypesItemEnumList as any as S.Schema<InventoryTypeTargetingInventoryTypesItemEnumList>;
 
 /** Targeting of the inventory types a bid request can originate from. */
 export interface InventoryTypeTargeting {

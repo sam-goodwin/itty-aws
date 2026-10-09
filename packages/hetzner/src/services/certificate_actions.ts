@@ -139,9 +139,8 @@ export const ListCertificateActionsRequestStatusItem = S.String;
 export type ListCertificateActionsRequestStatusList = Array<
   ListCertificateActionsRequestStatusItem | (string & {})
 >;
-export const ListCertificateActionsRequestStatusList = /*@__PURE__*/ S.Array(
-  ListCertificateActionsRequestStatusItem,
-) as any as S.Schema<ListCertificateActionsRequestStatusList>;
+export const ListCertificateActionsRequestStatusList =
+  ListCertificateActionsRequestSortList as any as S.Schema<ListCertificateActionsRequestStatusList>;
 
 export interface ListCertificateActionsRequest {
   /** ID of the Certificate. */
@@ -306,9 +305,8 @@ export const ListCertificatesActionsRequestSortItem = S.String;
 export type ListCertificatesActionsRequestSortList = Array<
   ListCertificatesActionsRequestSortItem | (string & {})
 >;
-export const ListCertificatesActionsRequestSortList = /*@__PURE__*/ S.Array(
-  ListCertificatesActionsRequestSortItem,
-) as any as S.Schema<ListCertificatesActionsRequestSortList>;
+export const ListCertificatesActionsRequestSortList =
+  ListCertificateActionsRequestSortList as any as S.Schema<ListCertificatesActionsRequestSortList>;
 
 /** Status of the Action. */
 export type ListCertificatesActionsRequestStatusItem = "running" | "success" | "error";
@@ -317,9 +315,8 @@ export const ListCertificatesActionsRequestStatusItem = S.String;
 export type ListCertificatesActionsRequestStatusList = Array<
   ListCertificatesActionsRequestStatusItem | (string & {})
 >;
-export const ListCertificatesActionsRequestStatusList = /*@__PURE__*/ S.Array(
-  ListCertificatesActionsRequestStatusItem,
-) as any as S.Schema<ListCertificatesActionsRequestStatusList>;
+export const ListCertificatesActionsRequestStatusList =
+  ListCertificateActionsRequestSortList as any as S.Schema<ListCertificatesActionsRequestStatusList>;
 
 export interface ListCertificatesActionsRequest {
   /** Filter the actions by ID. May be used multiple times. The response will only contain actions matching the specified IDs. */

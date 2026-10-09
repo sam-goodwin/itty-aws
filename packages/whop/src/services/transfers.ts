@@ -205,16 +205,8 @@ export interface CreateTransferResponseBodyCase0OriginCase0 {
   title?: string | null;
   typename: CreateTransferResponseBodyCase0OriginCase0Typename;
 }
-export const CreateTransferResponseBodyCase0OriginCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    route: S.optional(S.NullOr(S.String)),
-    title: S.optional(S.NullOr(S.String)),
-    typename: CreateTransferResponseBodyCase0OriginCase0Typename,
-  }),
-).annotate({
-  identifier: "CreateTransferResponseBodyCase0OriginCase0",
-}) as any as S.Schema<CreateTransferResponseBodyCase0OriginCase0>;
+export const CreateTransferResponseBodyCase0OriginCase0 =
+  CreateTransferResponseBodyCase0DestinationCase0 as any as S.Schema<CreateTransferResponseBodyCase0OriginCase0>;
 
 export type CreateTransferResponseBodyCase0OriginCase1Typename = "User";
 export const CreateTransferResponseBodyCase0OriginCase1Typename = S.String;
@@ -228,16 +220,8 @@ export interface CreateTransferResponseBodyCase0OriginCase1 {
   /** User's username. */
   username?: string;
 }
-export const CreateTransferResponseBodyCase0OriginCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.optional(S.NullOr(S.String)),
-    typename: CreateTransferResponseBodyCase0OriginCase1Typename,
-    username: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateTransferResponseBodyCase0OriginCase1",
-}) as any as S.Schema<CreateTransferResponseBodyCase0OriginCase1>;
+export const CreateTransferResponseBodyCase0OriginCase1 =
+  CreateTransferResponseBodyCase0DestinationCase1 as any as S.Schema<CreateTransferResponseBodyCase0OriginCase1>;
 
 /** Account or user sending funds. */
 export type CreateTransferResponseBodyCase0Origin =
@@ -436,16 +420,8 @@ export interface GetTransferResponseDestinationCase0 {
   title?: string | null;
   typename: GetTransferResponseDestinationCase0Typename;
 }
-export const GetTransferResponseDestinationCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    route: S.optional(S.NullOr(S.String)),
-    title: S.optional(S.NullOr(S.String)),
-    typename: GetTransferResponseDestinationCase0Typename,
-  }),
-).annotate({
-  identifier: "GetTransferResponseDestinationCase0",
-}) as any as S.Schema<GetTransferResponseDestinationCase0>;
+export const GetTransferResponseDestinationCase0 =
+  CreateTransferResponseBodyCase0DestinationCase0 as any as S.Schema<GetTransferResponseDestinationCase0>;
 
 export type GetTransferResponseDestinationCase1Typename = "User";
 export const GetTransferResponseDestinationCase1Typename = S.String;
@@ -459,16 +435,8 @@ export interface GetTransferResponseDestinationCase1 {
   /** User's username. */
   username?: string;
 }
-export const GetTransferResponseDestinationCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.optional(S.NullOr(S.String)),
-    typename: GetTransferResponseDestinationCase1Typename,
-    username: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetTransferResponseDestinationCase1",
-}) as any as S.Schema<GetTransferResponseDestinationCase1>;
+export const GetTransferResponseDestinationCase1 =
+  CreateTransferResponseBodyCase0DestinationCase1 as any as S.Schema<GetTransferResponseDestinationCase1>;
 
 /** Account or user receiving funds. */
 export type GetTransferResponseDestination =
@@ -498,16 +466,8 @@ export interface GetTransferResponseOriginCase0 {
   title?: string | null;
   typename: GetTransferResponseOriginCase0Typename;
 }
-export const GetTransferResponseOriginCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    route: S.optional(S.NullOr(S.String)),
-    title: S.optional(S.NullOr(S.String)),
-    typename: GetTransferResponseOriginCase0Typename,
-  }),
-).annotate({
-  identifier: "GetTransferResponseOriginCase0",
-}) as any as S.Schema<GetTransferResponseOriginCase0>;
+export const GetTransferResponseOriginCase0 =
+  CreateTransferResponseBodyCase0DestinationCase0 as any as S.Schema<GetTransferResponseOriginCase0>;
 
 export type GetTransferResponseOriginCase1Typename = "User";
 export const GetTransferResponseOriginCase1Typename = S.String;
@@ -521,16 +481,8 @@ export interface GetTransferResponseOriginCase1 {
   /** User's username. */
   username?: string;
 }
-export const GetTransferResponseOriginCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.optional(S.NullOr(S.String)),
-    typename: GetTransferResponseOriginCase1Typename,
-    username: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetTransferResponseOriginCase1",
-}) as any as S.Schema<GetTransferResponseOriginCase1>;
+export const GetTransferResponseOriginCase1 =
+  CreateTransferResponseBodyCase0DestinationCase1 as any as S.Schema<GetTransferResponseOriginCase1>;
 
 /** Account or user sending funds. */
 export type GetTransferResponseOrigin =

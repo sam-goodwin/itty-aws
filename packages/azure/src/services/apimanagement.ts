@@ -378,9 +378,8 @@ export const ApiContractPropertiesProtocolsItem = S.String;
 
 /** Describes on which protocols the operations in this API can be invoked. */
 export type ApiContractPropertiesProtocolsList = Array<ApiContractPropertiesProtocolsItem>;
-export const ApiContractPropertiesProtocolsList = /*@__PURE__*/ S.Array(
-  ApiContractPropertiesProtocolsItem,
-) as any as S.Schema<ApiContractPropertiesProtocolsList>;
+export const ApiContractPropertiesProtocolsList =
+  ApiCreateOrUpdatePropertiesInputProtocolsList as any as S.Schema<ApiContractPropertiesProtocolsList>;
 
 /** API Entity Properties */
 export interface ApiContractProperties {
@@ -1971,18 +1970,8 @@ export interface ApiManagementServiceBackupResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const ApiManagementServiceBackupResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(ApiManagementServiceBackupResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(ApiManagementServiceBackupResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ApiManagementServiceBackupResponseSystemData",
-}) as any as S.Schema<ApiManagementServiceBackupResponseSystemData>;
+export const ApiManagementServiceBackupResponseSystemData =
+  ApiGatewayCreateOrUpdateResponseSystemData as any as S.Schema<ApiManagementServiceBackupResponseSystemData>;
 
 /** A list of availability zones denoting where the resource needs to come from. */
 export type ApiManagementServiceBackupResponseZonesList = Array<string>;
@@ -3927,9 +3916,8 @@ export const AuthorizationServerContractPropertiesAuthorizationMethodsItem = S.S
 export type AuthorizationServerContractPropertiesAuthorizationMethodsList = Array<
   AuthorizationServerContractPropertiesAuthorizationMethodsItem | (string & {})
 >;
-export const AuthorizationServerContractPropertiesAuthorizationMethodsList = /*@__PURE__*/ S.Array(
-  AuthorizationServerContractPropertiesAuthorizationMethodsItem,
-) as any as S.Schema<AuthorizationServerContractPropertiesAuthorizationMethodsList>;
+export const AuthorizationServerContractPropertiesAuthorizationMethodsList =
+  ApiCreateOrUpdatePropertiesInputProtocolsList as any as S.Schema<AuthorizationServerContractPropertiesAuthorizationMethodsList>;
 
 export type AuthorizationServerContractPropertiesClientAuthenticationMethodItem = "Basic" | "Body";
 export const AuthorizationServerContractPropertiesClientAuthenticationMethodItem = S.String;
@@ -3939,9 +3927,7 @@ export type AuthorizationServerContractPropertiesClientAuthenticationMethodList 
   AuthorizationServerContractPropertiesClientAuthenticationMethodItem | (string & {})
 >;
 export const AuthorizationServerContractPropertiesClientAuthenticationMethodList =
-  /*@__PURE__*/ S.Array(
-    AuthorizationServerContractPropertiesClientAuthenticationMethodItem,
-  ) as any as S.Schema<AuthorizationServerContractPropertiesClientAuthenticationMethodList>;
+  OpenIdAuthenticationSettingsContractBearerTokenSendingMethodsList as any as S.Schema<AuthorizationServerContractPropertiesClientAuthenticationMethodList>;
 
 /** OAuth acquire token request body parameter (www-url-form-encoded). */
 export interface TokenBodyParameterContract {
@@ -3976,9 +3962,7 @@ export type AuthorizationServerContractPropertiesBearerTokenSendingMethodsList =
   AuthorizationServerContractPropertiesBearerTokenSendingMethodsItem | (string & {})
 >;
 export const AuthorizationServerContractPropertiesBearerTokenSendingMethodsList =
-  /*@__PURE__*/ S.Array(
-    AuthorizationServerContractPropertiesBearerTokenSendingMethodsItem,
-  ) as any as S.Schema<AuthorizationServerContractPropertiesBearerTokenSendingMethodsList>;
+  OpenIdAuthenticationSettingsContractBearerTokenSendingMethodsList as any as S.Schema<AuthorizationServerContractPropertiesBearerTokenSendingMethodsList>;
 
 export type AuthorizationServerContractPropertiesGrantTypesItem =
   | "authorizationCode"
@@ -3991,9 +3975,8 @@ export const AuthorizationServerContractPropertiesGrantTypesItem = S.String;
 export type AuthorizationServerContractPropertiesGrantTypesList = Array<
   AuthorizationServerContractPropertiesGrantTypesItem | (string & {})
 >;
-export const AuthorizationServerContractPropertiesGrantTypesList = /*@__PURE__*/ S.Array(
-  AuthorizationServerContractPropertiesGrantTypesItem,
-) as any as S.Schema<AuthorizationServerContractPropertiesGrantTypesList>;
+export const AuthorizationServerContractPropertiesGrantTypesList =
+  ApiCreateOrUpdatePropertiesInputProtocolsList as any as S.Schema<AuthorizationServerContractPropertiesGrantTypesList>;
 
 /** External OAuth authorization server settings Properties. */
 export interface AuthorizationServerContractProperties {
@@ -9575,18 +9558,8 @@ export interface GetApiGatewayResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetApiGatewayResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetApiGatewayResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetApiGatewayResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetApiGatewayResponseSystemData",
-}) as any as S.Schema<GetApiGatewayResponseSystemData>;
+export const GetApiGatewayResponseSystemData =
+  ApiGatewayCreateOrUpdateResponseSystemData as any as S.Schema<GetApiGatewayResponseSystemData>;
 
 export interface GetApiGatewayResponse {
   /** Resource ID. */
@@ -9871,18 +9844,8 @@ export interface GetApiManagementServiceResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetApiManagementServiceResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetApiManagementServiceResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetApiManagementServiceResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetApiManagementServiceResponseSystemData",
-}) as any as S.Schema<GetApiManagementServiceResponseSystemData>;
+export const GetApiManagementServiceResponseSystemData =
+  ApiGatewayCreateOrUpdateResponseSystemData as any as S.Schema<GetApiManagementServiceResponseSystemData>;
 
 /** A list of availability zones denoting where the resource needs to come from. */
 export type GetApiManagementServiceResponseZonesList = Array<string>;
@@ -15893,9 +15856,8 @@ export const ApiTagResourceContractPropertiesProtocolsItem = S.String;
 /** Describes on which protocols the operations in this API can be invoked. */
 export type ApiTagResourceContractPropertiesProtocolsList =
   Array<ApiTagResourceContractPropertiesProtocolsItem>;
-export const ApiTagResourceContractPropertiesProtocolsList = /*@__PURE__*/ S.Array(
-  ApiTagResourceContractPropertiesProtocolsItem,
-) as any as S.Schema<ApiTagResourceContractPropertiesProtocolsList>;
+export const ApiTagResourceContractPropertiesProtocolsList =
+  ApiCreateOrUpdatePropertiesInputProtocolsList as any as S.Schema<ApiTagResourceContractPropertiesProtocolsList>;
 
 /** API contract properties for the Tag Resources. */
 export interface ApiTagResourceContractProperties {
@@ -16208,18 +16170,8 @@ export interface ApiManagementGatewayResourceSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const ApiManagementGatewayResourceSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(ApiManagementGatewayResourceSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(ApiManagementGatewayResourceSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ApiManagementGatewayResourceSystemData",
-}) as any as S.Schema<ApiManagementGatewayResourceSystemData>;
+export const ApiManagementGatewayResourceSystemData =
+  ApiGatewayCreateOrUpdateResponseSystemData as any as S.Schema<ApiManagementGatewayResourceSystemData>;
 
 /** A single API Management gateway resource in List or Get response. */
 export interface ApiManagementGatewayResource {
@@ -16843,18 +16795,8 @@ export interface ApiManagementServiceResourceSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const ApiManagementServiceResourceSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(ApiManagementServiceResourceSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(ApiManagementServiceResourceSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ApiManagementServiceResourceSystemData",
-}) as any as S.Schema<ApiManagementServiceResourceSystemData>;
+export const ApiManagementServiceResourceSystemData =
+  ApiGatewayCreateOrUpdateResponseSystemData as any as S.Schema<ApiManagementServiceResourceSystemData>;
 
 /** A list of availability zones denoting where the resource needs to come from. */
 export type ApiManagementServiceResourceZonesList = Array<string>;
@@ -16990,11 +16932,7 @@ export interface ResourceSku {
   /** Name of the Sku. */
   name?: ResourceSkuName;
 }
-export const ResourceSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(ResourceSkuName),
-  }),
-).annotate({ identifier: "ResourceSku" }) as any as S.Schema<ResourceSku>;
+export const ResourceSku = GatewaySku as any as S.Schema<ResourceSku>;
 
 /** The scale type applicable to the sku. */
 export type ResourceSkuCapacityScaleType = "automatic" | "manual" | "none";
@@ -17011,14 +16949,7 @@ export interface ResourceSkuCapacity {
   /** The scale type applicable to the sku. */
   scaleType?: ResourceSkuCapacityScaleType;
 }
-export const ResourceSkuCapacity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    minimum: S.optional(S.Number),
-    maximum: S.optional(S.Number),
-    default: S.optional(S.Number),
-    scaleType: S.optional(ResourceSkuCapacityScaleType),
-  }),
-).annotate({ identifier: "ResourceSkuCapacity" }) as any as S.Schema<ResourceSkuCapacity>;
+export const ResourceSkuCapacity = GatewaySkuCapacity as any as S.Schema<ResourceSkuCapacity>;
 
 /** Describes an available API Management service SKU. */
 export interface ResourceSkuResult {
@@ -17029,19 +16960,12 @@ export interface ResourceSkuResult {
   /** Specifies the number of API Management units. */
   capacity?: ResourceSkuCapacity;
 }
-export const ResourceSkuResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceType: S.optional(S.String),
-    sku: S.optional(ResourceSku),
-    capacity: S.optional(ResourceSkuCapacity),
-  }),
-).annotate({ identifier: "ResourceSkuResult" }) as any as S.Schema<ResourceSkuResult>;
+export const ResourceSkuResult = GatewayResourceSkuResult as any as S.Schema<ResourceSkuResult>;
 
 /** The list of skus available for the service. */
 export type ResourceSkuResultsValueList = Array<ResourceSkuResult>;
-export const ResourceSkuResultsValueList = /*@__PURE__*/ S.Array(
-  ResourceSkuResult,
-) as any as S.Schema<ResourceSkuResultsValueList>;
+export const ResourceSkuResultsValueList =
+  GatewayResourceSkuResultsValueList as any as S.Schema<ResourceSkuResultsValueList>;
 
 /** The API Management service SKUs operation response. */
 export interface ResourceSkuResults {
@@ -17091,14 +17015,8 @@ export interface ApiManagementSkuCapacity {
   /** The scale type applicable to the sku. */
   scaleType?: ApiManagementSkuCapacityScaleType;
 }
-export const ApiManagementSkuCapacity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    minimum: S.optional(S.Number),
-    maximum: S.optional(S.Number),
-    default: S.optional(S.Number),
-    scaleType: S.optional(ApiManagementSkuCapacityScaleType),
-  }),
-).annotate({ identifier: "ApiManagementSkuCapacity" }) as any as S.Schema<ApiManagementSkuCapacity>;
+export const ApiManagementSkuCapacity =
+  GatewaySkuCapacity as any as S.Schema<ApiManagementSkuCapacity>;
 
 /** The set of locations that the SKU is available. */
 export type ApiManagementSkuLocationsList = Array<string>;
@@ -19279,9 +19197,8 @@ export const ListGatewayDebugCredentialsRequestPurposesItem = S.String;
 export type ListGatewayDebugCredentialsRequestPurposesList = Array<
   ListGatewayDebugCredentialsRequestPurposesItem | (string & {})
 >;
-export const ListGatewayDebugCredentialsRequestPurposesList = /*@__PURE__*/ S.Array(
-  ListGatewayDebugCredentialsRequestPurposesItem,
-) as any as S.Schema<ListGatewayDebugCredentialsRequestPurposesList>;
+export const ListGatewayDebugCredentialsRequestPurposesList =
+  ApiCreateOrUpdatePropertiesInputProtocolsList as any as S.Schema<ListGatewayDebugCredentialsRequestPurposesList>;
 
 export interface ListGatewayDebugCredentialsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -25709,20 +25626,8 @@ export interface MigrateApiManagementServiceToStv2ResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const MigrateApiManagementServiceToStv2ResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(MigrateApiManagementServiceToStv2ResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      MigrateApiManagementServiceToStv2ResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "MigrateApiManagementServiceToStv2ResponseSystemData",
-}) as any as S.Schema<MigrateApiManagementServiceToStv2ResponseSystemData>;
+export const MigrateApiManagementServiceToStv2ResponseSystemData =
+  ApiManagementServiceCreateOrUpdateResponseSystemData as any as S.Schema<MigrateApiManagementServiceToStv2ResponseSystemData>;
 
 /** A list of availability zones denoting where the resource needs to come from. */
 export type MigrateApiManagementServiceToStv2ResponseZonesList = Array<string>;
@@ -27701,18 +27606,8 @@ export interface RestoreApiManagementServiceResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const RestoreApiManagementServiceResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(RestoreApiManagementServiceResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(RestoreApiManagementServiceResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RestoreApiManagementServiceResponseSystemData",
-}) as any as S.Schema<RestoreApiManagementServiceResponseSystemData>;
+export const RestoreApiManagementServiceResponseSystemData =
+  ApiGatewayCreateOrUpdateResponseSystemData as any as S.Schema<RestoreApiManagementServiceResponseSystemData>;
 
 /** A list of availability zones denoting where the resource needs to come from. */
 export type RestoreApiManagementServiceResponseZonesList = Array<string>;
@@ -28150,9 +28045,8 @@ export const ApiContractUpdatePropertiesInputProtocolsItem = S.String;
 export type ApiContractUpdatePropertiesInputProtocolsList = Array<
   ApiContractUpdatePropertiesInputProtocolsItem | (string & {})
 >;
-export const ApiContractUpdatePropertiesInputProtocolsList = /*@__PURE__*/ S.Array(
-  ApiContractUpdatePropertiesInputProtocolsItem,
-) as any as S.Schema<ApiContractUpdatePropertiesInputProtocolsList>;
+export const ApiContractUpdatePropertiesInputProtocolsList =
+  ApiCreateOrUpdatePropertiesInputProtocolsList as any as S.Schema<ApiContractUpdatePropertiesInputProtocolsList>;
 
 /** API update contract properties. */
 export interface ApiContractUpdatePropertiesInput {
@@ -28329,16 +28223,8 @@ export interface ApiManagementGatewayUpdatePropertiesInput {
   /** The type of VPN in which API Management gateway needs to be configured in. */
   virtualNetworkType?: ApiManagementGatewayUpdatePropertiesInputVirtualNetworkType | (string & {});
 }
-export const ApiManagementGatewayUpdatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    frontend: S.optional(FrontendConfigurationInput),
-    backend: S.optional(BackendConfiguration),
-    configurationApi: S.optional(FrontendConfigurationInput),
-    virtualNetworkType: S.optional(ApiManagementGatewayUpdatePropertiesInputVirtualNetworkType),
-  }),
-).annotate({
-  identifier: "ApiManagementGatewayUpdatePropertiesInput",
-}) as any as S.Schema<ApiManagementGatewayUpdatePropertiesInput>;
+export const ApiManagementGatewayUpdatePropertiesInput =
+  ApiManagementGatewayPropertiesInput as any as S.Schema<ApiManagementGatewayUpdatePropertiesInput>;
 
 /** Name of the Sku. */
 export type ApiManagementGatewaySkuPropertiesForPatchName =
@@ -28431,18 +28317,8 @@ export interface UpdateApiGatewayResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdateApiGatewayResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(UpdateApiGatewayResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(UpdateApiGatewayResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateApiGatewayResponseSystemData",
-}) as any as S.Schema<UpdateApiGatewayResponseSystemData>;
+export const UpdateApiGatewayResponseSystemData =
+  ApiGatewayCreateOrUpdateResponseSystemData as any as S.Schema<UpdateApiGatewayResponseSystemData>;
 
 export interface UpdateApiGatewayResponse {
   /** Resource ID. */
@@ -28792,18 +28668,8 @@ export interface UpdateApiManagementServiceResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdateApiManagementServiceResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(UpdateApiManagementServiceResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(UpdateApiManagementServiceResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateApiManagementServiceResponseSystemData",
-}) as any as S.Schema<UpdateApiManagementServiceResponseSystemData>;
+export const UpdateApiManagementServiceResponseSystemData =
+  ApiGatewayCreateOrUpdateResponseSystemData as any as S.Schema<UpdateApiManagementServiceResponseSystemData>;
 
 /** A list of availability zones denoting where the resource needs to come from. */
 export type UpdateApiManagementServiceResponseZonesList = Array<string>;
@@ -29121,9 +28987,7 @@ export type AuthorizationServerUpdateContractPropertiesAuthorizationMethodsList 
   AuthorizationServerUpdateContractPropertiesAuthorizationMethodsItem | (string & {})
 >;
 export const AuthorizationServerUpdateContractPropertiesAuthorizationMethodsList =
-  /*@__PURE__*/ S.Array(
-    AuthorizationServerUpdateContractPropertiesAuthorizationMethodsItem,
-  ) as any as S.Schema<AuthorizationServerUpdateContractPropertiesAuthorizationMethodsList>;
+  OpenIdAuthenticationSettingsContractBearerTokenSendingMethodsList as any as S.Schema<AuthorizationServerUpdateContractPropertiesAuthorizationMethodsList>;
 
 export type AuthorizationServerUpdateContractPropertiesClientAuthenticationMethodItem =
   | "Basic"
@@ -29135,9 +28999,7 @@ export type AuthorizationServerUpdateContractPropertiesClientAuthenticationMetho
   AuthorizationServerUpdateContractPropertiesClientAuthenticationMethodItem | (string & {})
 >;
 export const AuthorizationServerUpdateContractPropertiesClientAuthenticationMethodList =
-  /*@__PURE__*/ S.Array(
-    AuthorizationServerUpdateContractPropertiesClientAuthenticationMethodItem,
-  ) as any as S.Schema<AuthorizationServerUpdateContractPropertiesClientAuthenticationMethodList>;
+  OpenIdAuthenticationSettingsContractBearerTokenSendingMethodsList as any as S.Schema<AuthorizationServerUpdateContractPropertiesClientAuthenticationMethodList>;
 
 /** Additional parameters required by the token endpoint of this authorization server represented as an array of JSON objects with name and value string properties, i.e. {"name" : "name value", "value": "a value"}. */
 export type AuthorizationServerUpdateContractPropertiesTokenBodyParametersList =
@@ -29157,9 +29019,7 @@ export type AuthorizationServerUpdateContractPropertiesBearerTokenSendingMethods
   AuthorizationServerUpdateContractPropertiesBearerTokenSendingMethodsItem | (string & {})
 >;
 export const AuthorizationServerUpdateContractPropertiesBearerTokenSendingMethodsList =
-  /*@__PURE__*/ S.Array(
-    AuthorizationServerUpdateContractPropertiesBearerTokenSendingMethodsItem,
-  ) as any as S.Schema<AuthorizationServerUpdateContractPropertiesBearerTokenSendingMethodsList>;
+  OpenIdAuthenticationSettingsContractBearerTokenSendingMethodsList as any as S.Schema<AuthorizationServerUpdateContractPropertiesBearerTokenSendingMethodsList>;
 
 export type AuthorizationServerUpdateContractPropertiesGrantTypesItem =
   | "authorizationCode"
@@ -29172,9 +29032,8 @@ export const AuthorizationServerUpdateContractPropertiesGrantTypesItem = S.Strin
 export type AuthorizationServerUpdateContractPropertiesGrantTypesList = Array<
   AuthorizationServerUpdateContractPropertiesGrantTypesItem | (string & {})
 >;
-export const AuthorizationServerUpdateContractPropertiesGrantTypesList = /*@__PURE__*/ S.Array(
-  AuthorizationServerUpdateContractPropertiesGrantTypesItem,
-) as any as S.Schema<AuthorizationServerUpdateContractPropertiesGrantTypesList>;
+export const AuthorizationServerUpdateContractPropertiesGrantTypesList =
+  ApiCreateOrUpdatePropertiesInputProtocolsList as any as S.Schema<AuthorizationServerUpdateContractPropertiesGrantTypesList>;
 
 /** External OAuth authorization server Update settings contract. */
 export interface AuthorizationServerUpdateContractProperties {

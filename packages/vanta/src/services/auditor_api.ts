@@ -91,13 +91,7 @@ export interface ResourceOwnerCase1 {
   id: string;
   type: ResourceOwnerCase1Type;
 }
-export const ResourceOwnerCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.String,
-    id: S.String,
-    type: ResourceOwnerCase1Type,
-  }),
-).annotate({ identifier: "ResourceOwnerCase1" }) as any as S.Schema<ResourceOwnerCase1>;
+export const ResourceOwnerCase1 = ResourceOwnerCase0 as any as S.Schema<ResourceOwnerCase1>;
 
 /** Represents either a user or a team owning a resource. */
 export type ResourceOwner = ResourceOwnerCase0 | ResourceOwnerCase1;
@@ -2675,9 +2669,8 @@ export const AuditRiskCia = S.String;
 
 /** CIA triad categories, or empty array if not categorized. */
 export type AuditRiskCiaCategoriesList = Array<AuditRiskCia>;
-export const AuditRiskCiaCategoriesList = /*@__PURE__*/ S.Array(
-  AuditRiskCia,
-) as any as S.Schema<AuditRiskCiaCategoriesList>;
+export const AuditRiskCiaCategoriesList =
+  AuditSoc2DeliverableTscsList as any as S.Schema<AuditRiskCiaCategoriesList>;
 
 /** IDs of controls linked to this risk scenario, or empty array if none. Full Audit View only - omitted in Controlled Audit View. */
 export type AuditRiskLinkedControlIdsList = Array<string>;
@@ -2886,9 +2879,8 @@ export const ApiCodeChangeSource = S.String;
 export type ListCodeChangesRequestSourcesMatchesAnyList = Array<
   ApiCodeChangeSource | (string & {})
 >;
-export const ListCodeChangesRequestSourcesMatchesAnyList = /*@__PURE__*/ S.Array(
-  ApiCodeChangeSource,
-) as any as S.Schema<ListCodeChangesRequestSourcesMatchesAnyList>;
+export const ListCodeChangesRequestSourcesMatchesAnyList =
+  AuditSoc2DeliverableTscsList as any as S.Schema<ListCodeChangesRequestSourcesMatchesAnyList>;
 
 export interface ListCodeChangesRequest {
   /** The audit ID */
@@ -3395,9 +3387,8 @@ export type AuditIntegrationTag =
 export const AuditIntegrationTag = S.String;
 
 export type ListIntegrationsRequestTagsMatchesAnyList = Array<AuditIntegrationTag | (string & {})>;
-export const ListIntegrationsRequestTagsMatchesAnyList = /*@__PURE__*/ S.Array(
-  AuditIntegrationTag,
-) as any as S.Schema<ListIntegrationsRequestTagsMatchesAnyList>;
+export const ListIntegrationsRequestTagsMatchesAnyList =
+  AuditSoc2DeliverableTscsList as any as S.Schema<ListIntegrationsRequestTagsMatchesAnyList>;
 
 export type AuditIntegrationCategory =
   | "ATS_MERGE_ACCOUNT"
@@ -3427,9 +3418,8 @@ export const AuditIntegrationCategory = S.String;
 export type ListIntegrationsRequestCategoriesMatchesAnyList = Array<
   AuditIntegrationCategory | (string & {})
 >;
-export const ListIntegrationsRequestCategoriesMatchesAnyList = /*@__PURE__*/ S.Array(
-  AuditIntegrationCategory,
-) as any as S.Schema<ListIntegrationsRequestCategoriesMatchesAnyList>;
+export const ListIntegrationsRequestCategoriesMatchesAnyList =
+  AuditSoc2DeliverableTscsList as any as S.Schema<ListIntegrationsRequestCategoriesMatchesAnyList>;
 
 export interface ListIntegrationsRequest {
   /** The audit ID */
@@ -4044,9 +4034,8 @@ export const AuditVendorStatus = S.String;
 export type ListVendorsRequestVendorStatusesMatchesAnyList = Array<
   AuditVendorStatus | (string & {})
 >;
-export const ListVendorsRequestVendorStatusesMatchesAnyList = /*@__PURE__*/ S.Array(
-  AuditVendorStatus,
-) as any as S.Schema<ListVendorsRequestVendorStatusesMatchesAnyList>;
+export const ListVendorsRequestVendorStatusesMatchesAnyList =
+  AuditSoc2DeliverableTscsList as any as S.Schema<ListVendorsRequestVendorStatusesMatchesAnyList>;
 
 export type AuditVendorRiskLevel = "CRITICAL" | "HIGH" | "MEDIUM" | "LOW" | "UNSCORED";
 export const AuditVendorRiskLevel = S.String;
@@ -4054,9 +4043,8 @@ export const AuditVendorRiskLevel = S.String;
 export type ListVendorsRequestInherentRiskMatchesAnyList = Array<
   AuditVendorRiskLevel | (string & {})
 >;
-export const ListVendorsRequestInherentRiskMatchesAnyList = /*@__PURE__*/ S.Array(
-  AuditVendorRiskLevel,
-) as any as S.Schema<ListVendorsRequestInherentRiskMatchesAnyList>;
+export const ListVendorsRequestInherentRiskMatchesAnyList =
+  AuditSoc2DeliverableTscsList as any as S.Schema<ListVendorsRequestInherentRiskMatchesAnyList>;
 
 export type VendorOrderBy = "name" | "inherentRisk";
 export const VendorOrderBy = S.String;

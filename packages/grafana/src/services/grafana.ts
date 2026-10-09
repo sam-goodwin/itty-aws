@@ -3919,9 +3919,8 @@ export type ResourceDependencyDTODependenciesItem =
 export const ResourceDependencyDTODependenciesItem = S.String;
 
 export type ResourceDependencyDTODependenciesList = Array<ResourceDependencyDTODependenciesItem>;
-export const ResourceDependencyDTODependenciesList = /*@__PURE__*/ S.Array(
-  ResourceDependencyDTODependenciesItem,
-) as any as S.Schema<ResourceDependencyDTODependenciesList>;
+export const ResourceDependencyDTODependenciesList =
+  CreateSnapshotRequestResourceTypesList as any as S.Schema<ResourceDependencyDTODependenciesList>;
 
 export type ResourceDependencyDTOResourceType =
   | "DASHBOARD"

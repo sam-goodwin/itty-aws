@@ -1830,9 +1830,8 @@ export const ConnectorsCreateResponseInterruptWindowDaysOfWeekItem = S.String;
 
 export type ConnectorsCreateResponseInterruptWindowDaysOfWeekList =
   Array<ConnectorsCreateResponseInterruptWindowDaysOfWeekItem>;
-export const ConnectorsCreateResponseInterruptWindowDaysOfWeekList = /*@__PURE__*/ S.Array(
-  ConnectorsCreateResponseInterruptWindowDaysOfWeekItem,
-) as any as S.Schema<ConnectorsCreateResponseInterruptWindowDaysOfWeekList>;
+export const ConnectorsCreateResponseInterruptWindowDaysOfWeekList =
+  ConnectorsCreateRequestInterruptWindowDaysOfWeekList as any as S.Schema<ConnectorsCreateResponseInterruptWindowDaysOfWeekList>;
 
 export type ConnectorsCreateResponseInterruptWindowEmbargoDatesList = Array<string>;
 export const ConnectorsCreateResponseInterruptWindowEmbargoDatesList =
@@ -2424,20 +2423,8 @@ export interface IpsecTunnelsCreateResponseBgpStatus {
   customerSpeakerIp?: string | null;
   customerSpeakerPort?: number | null;
 }
-export const IpsecTunnelsCreateResponseBgpStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: IpsecTunnelsCreateResponseBgpStatusState,
-    tcpEstablished: S.Boolean.pipe(T.Body("tcp_established")),
-    updatedAt: S.String.pipe(T.Body("updated_at")),
-    bgpState: S.optional(S.NullOr(S.String).pipe(T.Body("bgp_state"))),
-    cfSpeakerIp: S.optional(S.NullOr(S.String).pipe(T.Body("cf_speaker_ip"))),
-    cfSpeakerPort: S.optional(S.NullOr(S.Number).pipe(T.Body("cf_speaker_port"))),
-    customerSpeakerIp: S.optional(S.NullOr(S.String).pipe(T.Body("customer_speaker_ip"))),
-    customerSpeakerPort: S.optional(S.NullOr(S.Number).pipe(T.Body("customer_speaker_port"))),
-  }),
-).annotate({
-  identifier: "IpsecTunnelsCreateResponseBgpStatus",
-}) as any as S.Schema<IpsecTunnelsCreateResponseBgpStatus>;
+export const IpsecTunnelsCreateResponseBgpStatus =
+  GreTunnelsCreateResponseBgpStatus as any as S.Schema<IpsecTunnelsCreateResponseBgpStatus>;
 
 export type IpsecTunnelsCreateResponseCustomRemoteIdentities =
   IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemCustomRemoteIdentities;
@@ -3121,9 +3108,8 @@ export const SitesAclsCreateRequestProtocolsItem = S.String;
 export type SitesAclsCreateRequestProtocolsList = Array<
   SitesAclsCreateRequestProtocolsItem | (string & {})
 >;
-export const SitesAclsCreateRequestProtocolsList = /*@__PURE__*/ S.Array(
-  SitesAclsCreateRequestProtocolsItem,
-) as any as S.Schema<SitesAclsCreateRequestProtocolsList>;
+export const SitesAclsCreateRequestProtocolsList =
+  ConnectorsCreateRequestInterruptWindowDaysOfWeekList as any as S.Schema<SitesAclsCreateRequestProtocolsList>;
 
 export interface CreateSiteAclRequest {
   /** Identifier */
@@ -3233,9 +3219,8 @@ export type SitesAclsCreateResponseProtocolsItem = "tcp" | "udp" | "icmp";
 export const SitesAclsCreateResponseProtocolsItem = S.String;
 
 export type SitesAclsCreateResponseProtocolsList = Array<SitesAclsCreateResponseProtocolsItem>;
-export const SitesAclsCreateResponseProtocolsList = /*@__PURE__*/ S.Array(
-  SitesAclsCreateResponseProtocolsItem,
-) as any as S.Schema<SitesAclsCreateResponseProtocolsList>;
+export const SitesAclsCreateResponseProtocolsList =
+  ConnectorsCreateRequestInterruptWindowDaysOfWeekList as any as S.Schema<SitesAclsCreateResponseProtocolsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateSiteAclResponse {
@@ -3554,22 +3539,12 @@ export interface SitesLansCreateResultItemStaticAddressingDhcpServerDhcpOptionsI
   value: string;
 }
 export const SitesLansCreateResultItemStaticAddressingDhcpServerDhcpOptionsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      code: S.Number,
-      type: SitesLansCreateResultItemStaticAddressingDhcpServerDhcpOptionsItemType,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "SitesLansCreateResultItemStaticAddressingDhcpServerDhcpOptionsItem",
-  }) as any as S.Schema<SitesLansCreateResultItemStaticAddressingDhcpServerDhcpOptionsItem>;
+  SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsItem as any as S.Schema<SitesLansCreateResultItemStaticAddressingDhcpServerDhcpOptionsItem>;
 
 export type SitesLansCreateResultItemStaticAddressingDhcpServerDhcpOptionsList =
   Array<SitesLansCreateResultItemStaticAddressingDhcpServerDhcpOptionsItem>;
 export const SitesLansCreateResultItemStaticAddressingDhcpServerDhcpOptionsList =
-  /*@__PURE__*/ S.Array(
-    SitesLansCreateResultItemStaticAddressingDhcpServerDhcpOptionsItem,
-  ) as any as S.Schema<SitesLansCreateResultItemStaticAddressingDhcpServerDhcpOptionsList>;
+  SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsList as any as S.Schema<SitesLansCreateResultItemStaticAddressingDhcpServerDhcpOptionsList>;
 
 export type SitesLansCreateResultItemStaticAddressingDhcpServerDnsServersList = Array<string>;
 export const SitesLansCreateResultItemStaticAddressingDhcpServerDnsServersList =
@@ -4249,9 +4224,8 @@ export const ConnectorsDeleteResponseInterruptWindowDaysOfWeekItem = S.String;
 
 export type ConnectorsDeleteResponseInterruptWindowDaysOfWeekList =
   Array<ConnectorsDeleteResponseInterruptWindowDaysOfWeekItem>;
-export const ConnectorsDeleteResponseInterruptWindowDaysOfWeekList = /*@__PURE__*/ S.Array(
-  ConnectorsDeleteResponseInterruptWindowDaysOfWeekItem,
-) as any as S.Schema<ConnectorsDeleteResponseInterruptWindowDaysOfWeekList>;
+export const ConnectorsDeleteResponseInterruptWindowDaysOfWeekList =
+  ConnectorsCreateRequestInterruptWindowDaysOfWeekList as any as S.Schema<ConnectorsDeleteResponseInterruptWindowDaysOfWeekList>;
 
 export type ConnectorsDeleteResponseInterruptWindowEmbargoDatesList = Array<string>;
 export const ConnectorsDeleteResponseInterruptWindowEmbargoDatesList =
@@ -4265,15 +4239,8 @@ export interface ConnectorsDeleteResponseDevice {
   serialNumber?: string | null;
   type?: ConnectorsDeleteResponseDeviceType | null;
 }
-export const ConnectorsDeleteResponseDevice = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    serialNumber: S.optional(S.NullOr(S.String).pipe(T.Body("serial_number"))),
-    type: S.optional(S.NullOr(ConnectorsDeleteResponseDeviceType)),
-  }),
-).annotate({
-  identifier: "ConnectorsDeleteResponseDevice",
-}) as any as S.Schema<ConnectorsDeleteResponseDevice>;
+export const ConnectorsDeleteResponseDevice =
+  ConnectorsCreateResponseDevice as any as S.Schema<ConnectorsDeleteResponseDevice>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteConnectorResponse {
@@ -4386,20 +4353,8 @@ export interface GreTunnelsDeleteResponseDeletedGreTunnelBgpStatus {
   customerSpeakerIp?: string | null;
   customerSpeakerPort?: number | null;
 }
-export const GreTunnelsDeleteResponseDeletedGreTunnelBgpStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: GreTunnelsDeleteResponseDeletedGreTunnelBgpStatusState,
-    tcpEstablished: S.Boolean.pipe(T.Body("tcp_established")),
-    updatedAt: S.String.pipe(T.Body("updated_at")),
-    bgpState: S.optional(S.NullOr(S.String).pipe(T.Body("bgp_state"))),
-    cfSpeakerIp: S.optional(S.NullOr(S.String).pipe(T.Body("cf_speaker_ip"))),
-    cfSpeakerPort: S.optional(S.NullOr(S.Number).pipe(T.Body("cf_speaker_port"))),
-    customerSpeakerIp: S.optional(S.NullOr(S.String).pipe(T.Body("customer_speaker_ip"))),
-    customerSpeakerPort: S.optional(S.NullOr(S.Number).pipe(T.Body("customer_speaker_port"))),
-  }),
-).annotate({
-  identifier: "GreTunnelsDeleteResponseDeletedGreTunnelBgpStatus",
-}) as any as S.Schema<GreTunnelsDeleteResponseDeletedGreTunnelBgpStatus>;
+export const GreTunnelsDeleteResponseDeletedGreTunnelBgpStatus =
+  GreTunnelsCreateResponseBgpStatus as any as S.Schema<GreTunnelsDeleteResponseDeletedGreTunnelBgpStatus>;
 
 export type GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckDirection =
   | "unidirectional"
@@ -4576,20 +4531,8 @@ export interface IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpStatus {
   customerSpeakerIp?: string | null;
   customerSpeakerPort?: number | null;
 }
-export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpStatusState,
-    tcpEstablished: S.Boolean.pipe(T.Body("tcp_established")),
-    updatedAt: S.String.pipe(T.Body("updated_at")),
-    bgpState: S.optional(S.NullOr(S.String).pipe(T.Body("bgp_state"))),
-    cfSpeakerIp: S.optional(S.NullOr(S.String).pipe(T.Body("cf_speaker_ip"))),
-    cfSpeakerPort: S.optional(S.NullOr(S.Number).pipe(T.Body("cf_speaker_port"))),
-    customerSpeakerIp: S.optional(S.NullOr(S.String).pipe(T.Body("customer_speaker_ip"))),
-    customerSpeakerPort: S.optional(S.NullOr(S.Number).pipe(T.Body("customer_speaker_port"))),
-  }),
-).annotate({
-  identifier: "IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpStatus",
-}) as any as S.Schema<IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpStatus>;
+export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpStatus =
+  GreTunnelsCreateResponseBgpStatus as any as S.Schema<IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpStatus>;
 
 export type IpsecTunnelsDeleteResponseDeletedIpsecTunnelCustomRemoteIdentities =
   IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemCustomRemoteIdentities;
@@ -4975,9 +4918,8 @@ export type SitesAclsDeleteResponseProtocolsItem = "tcp" | "udp" | "icmp";
 export const SitesAclsDeleteResponseProtocolsItem = S.String;
 
 export type SitesAclsDeleteResponseProtocolsList = Array<SitesAclsDeleteResponseProtocolsItem>;
-export const SitesAclsDeleteResponseProtocolsList = /*@__PURE__*/ S.Array(
-  SitesAclsDeleteResponseProtocolsItem,
-) as any as S.Schema<SitesAclsDeleteResponseProtocolsList>;
+export const SitesAclsDeleteResponseProtocolsList =
+  ConnectorsCreateRequestInterruptWindowDaysOfWeekList as any as S.Schema<SitesAclsDeleteResponseProtocolsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteSiteAclResponse {
@@ -5075,22 +5017,12 @@ export interface SitesLansDeleteResponseStaticAddressingDhcpServerDhcpOptionsIte
   value: string;
 }
 export const SitesLansDeleteResponseStaticAddressingDhcpServerDhcpOptionsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      code: S.Number,
-      type: SitesLansDeleteResponseStaticAddressingDhcpServerDhcpOptionsItemType,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "SitesLansDeleteResponseStaticAddressingDhcpServerDhcpOptionsItem",
-  }) as any as S.Schema<SitesLansDeleteResponseStaticAddressingDhcpServerDhcpOptionsItem>;
+  SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsItem as any as S.Schema<SitesLansDeleteResponseStaticAddressingDhcpServerDhcpOptionsItem>;
 
 export type SitesLansDeleteResponseStaticAddressingDhcpServerDhcpOptionsList =
   Array<SitesLansDeleteResponseStaticAddressingDhcpServerDhcpOptionsItem>;
 export const SitesLansDeleteResponseStaticAddressingDhcpServerDhcpOptionsList =
-  /*@__PURE__*/ S.Array(
-    SitesLansDeleteResponseStaticAddressingDhcpServerDhcpOptionsItem,
-  ) as any as S.Schema<SitesLansDeleteResponseStaticAddressingDhcpServerDhcpOptionsList>;
+  SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsList as any as S.Schema<SitesLansDeleteResponseStaticAddressingDhcpServerDhcpOptionsList>;
 
 export type SitesLansDeleteResponseStaticAddressingDhcpServerDnsServersList = Array<string>;
 export const SitesLansDeleteResponseStaticAddressingDhcpServerDnsServersList =
@@ -5962,9 +5894,8 @@ export const ConnectorsGetResponseInterruptWindowDaysOfWeekItem = S.String;
 
 export type ConnectorsGetResponseInterruptWindowDaysOfWeekList =
   Array<ConnectorsGetResponseInterruptWindowDaysOfWeekItem>;
-export const ConnectorsGetResponseInterruptWindowDaysOfWeekList = /*@__PURE__*/ S.Array(
-  ConnectorsGetResponseInterruptWindowDaysOfWeekItem,
-) as any as S.Schema<ConnectorsGetResponseInterruptWindowDaysOfWeekList>;
+export const ConnectorsGetResponseInterruptWindowDaysOfWeekList =
+  ConnectorsCreateRequestInterruptWindowDaysOfWeekList as any as S.Schema<ConnectorsGetResponseInterruptWindowDaysOfWeekList>;
 
 export type ConnectorsGetResponseInterruptWindowEmbargoDatesList = Array<string>;
 export const ConnectorsGetResponseInterruptWindowEmbargoDatesList =
@@ -5978,15 +5909,8 @@ export interface ConnectorsGetResponseDevice {
   serialNumber?: string | null;
   type?: ConnectorsGetResponseDeviceType | null;
 }
-export const ConnectorsGetResponseDevice = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    serialNumber: S.optional(S.NullOr(S.String).pipe(T.Body("serial_number"))),
-    type: S.optional(S.NullOr(ConnectorsGetResponseDeviceType)),
-  }),
-).annotate({
-  identifier: "ConnectorsGetResponseDevice",
-}) as any as S.Schema<ConnectorsGetResponseDevice>;
+export const ConnectorsGetResponseDevice =
+  ConnectorsCreateResponseDevice as any as S.Schema<ConnectorsGetResponseDevice>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetConnectorResponse {
@@ -7183,20 +7107,8 @@ export interface GreTunnelsGetResponseGreTunnelBgpStatus {
   customerSpeakerIp?: string | null;
   customerSpeakerPort?: number | null;
 }
-export const GreTunnelsGetResponseGreTunnelBgpStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: GreTunnelsGetResponseGreTunnelBgpStatusState,
-    tcpEstablished: S.Boolean.pipe(T.Body("tcp_established")),
-    updatedAt: S.String.pipe(T.Body("updated_at")),
-    bgpState: S.optional(S.NullOr(S.String).pipe(T.Body("bgp_state"))),
-    cfSpeakerIp: S.optional(S.NullOr(S.String).pipe(T.Body("cf_speaker_ip"))),
-    cfSpeakerPort: S.optional(S.NullOr(S.Number).pipe(T.Body("cf_speaker_port"))),
-    customerSpeakerIp: S.optional(S.NullOr(S.String).pipe(T.Body("customer_speaker_ip"))),
-    customerSpeakerPort: S.optional(S.NullOr(S.Number).pipe(T.Body("customer_speaker_port"))),
-  }),
-).annotate({
-  identifier: "GreTunnelsGetResponseGreTunnelBgpStatus",
-}) as any as S.Schema<GreTunnelsGetResponseGreTunnelBgpStatus>;
+export const GreTunnelsGetResponseGreTunnelBgpStatus =
+  GreTunnelsCreateResponseBgpStatus as any as S.Schema<GreTunnelsGetResponseGreTunnelBgpStatus>;
 
 export type GreTunnelsGetResponseGreTunnelHealthCheckDirection = "unidirectional" | "bidirectional";
 export const GreTunnelsGetResponseGreTunnelHealthCheckDirection = S.String;
@@ -7368,20 +7280,8 @@ export interface IpsecTunnelsGetResponseIpsecTunnelBgpStatus {
   customerSpeakerIp?: string | null;
   customerSpeakerPort?: number | null;
 }
-export const IpsecTunnelsGetResponseIpsecTunnelBgpStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: IpsecTunnelsGetResponseIpsecTunnelBgpStatusState,
-    tcpEstablished: S.Boolean.pipe(T.Body("tcp_established")),
-    updatedAt: S.String.pipe(T.Body("updated_at")),
-    bgpState: S.optional(S.NullOr(S.String).pipe(T.Body("bgp_state"))),
-    cfSpeakerIp: S.optional(S.NullOr(S.String).pipe(T.Body("cf_speaker_ip"))),
-    cfSpeakerPort: S.optional(S.NullOr(S.Number).pipe(T.Body("cf_speaker_port"))),
-    customerSpeakerIp: S.optional(S.NullOr(S.String).pipe(T.Body("customer_speaker_ip"))),
-    customerSpeakerPort: S.optional(S.NullOr(S.Number).pipe(T.Body("customer_speaker_port"))),
-  }),
-).annotate({
-  identifier: "IpsecTunnelsGetResponseIpsecTunnelBgpStatus",
-}) as any as S.Schema<IpsecTunnelsGetResponseIpsecTunnelBgpStatus>;
+export const IpsecTunnelsGetResponseIpsecTunnelBgpStatus =
+  GreTunnelsCreateResponseBgpStatus as any as S.Schema<IpsecTunnelsGetResponseIpsecTunnelBgpStatus>;
 
 export type IpsecTunnelsGetResponseIpsecTunnelCustomRemoteIdentities =
   IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemCustomRemoteIdentities;
@@ -7575,18 +7475,7 @@ export interface PcapsGetResultPCAP {
   /** The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets. */
   type?: PcapsGetResultPCAPType | null;
 }
-export const PcapsGetResultPCAP = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    filterV1: S.optional(S.NullOr(PcapsCreateResultPCAPFilterV1).pipe(T.Body("filter_v1"))),
-    offsetTime: S.optional(S.NullOr(S.String).pipe(T.Body("offset_time"))),
-    status: S.optional(S.NullOr(PcapsGetResultPCAPStatus)),
-    submitted: S.optional(S.NullOr(S.String)),
-    system: S.optional(S.NullOr(PcapsGetResultPCAPSystem)),
-    timeLimit: S.optional(S.NullOr(S.Number).pipe(T.Body("time_limit"))),
-    type: S.optional(S.NullOr(PcapsGetResultPCAPType)),
-  }),
-).annotate({ identifier: "PcapsGetResultPCAP" }) as any as S.Schema<PcapsGetResultPCAP>;
+export const PcapsGetResultPCAP = PcapsCreateResultPCAP as any as S.Schema<PcapsGetResultPCAP>;
 
 export type PcapsGetResultMagicVisibilityPCAPsPCAPsResponseFullFilterV1 =
   PcapsCreateResultPCAPFilterV1;
@@ -7638,25 +7527,8 @@ export interface PcapsGetResultMagicVisibilityPCAPsPCAPsResponseFull {
   /** The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets. */
   type?: PcapsGetResultMagicVisibilityPCAPsPCAPsResponseFullType | null;
 }
-export const PcapsGetResultMagicVisibilityPCAPsPCAPsResponseFull = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    byteLimit: S.optional(S.NullOr(S.Number).pipe(T.Body("byte_limit"))),
-    coloName: S.optional(S.NullOr(S.String).pipe(T.Body("colo_name"))),
-    destinationConf: S.optional(S.NullOr(S.String).pipe(T.Body("destination_conf"))),
-    errorMessage: S.optional(S.NullOr(S.String).pipe(T.Body("error_message"))),
-    filterV1: S.optional(S.NullOr(PcapsCreateResultPCAPFilterV1).pipe(T.Body("filter_v1"))),
-    packetsCaptured: S.optional(S.NullOr(S.Number).pipe(T.Body("packets_captured"))),
-    status: S.optional(S.NullOr(PcapsGetResultMagicVisibilityPCAPsPCAPsResponseFullStatus)),
-    stopRequested: S.optional(S.NullOr(S.String).pipe(T.Body("stop_requested"))),
-    submitted: S.optional(S.NullOr(S.String)),
-    system: S.optional(S.NullOr(PcapsGetResultMagicVisibilityPCAPsPCAPsResponseFullSystem)),
-    timeLimit: S.optional(S.NullOr(S.Number).pipe(T.Body("time_limit"))),
-    type: S.optional(S.NullOr(PcapsGetResultMagicVisibilityPCAPsPCAPsResponseFullType)),
-  }),
-).annotate({
-  identifier: "PcapsGetResultMagicVisibilityPCAPsPCAPsResponseFull",
-}) as any as S.Schema<PcapsGetResultMagicVisibilityPCAPsPCAPsResponseFull>;
+export const PcapsGetResultMagicVisibilityPCAPsPCAPsResponseFull =
+  PcapsCreateResultMagicVisibilityPCAPsPCAPsResponseFull as any as S.Schema<PcapsGetResultMagicVisibilityPCAPsPCAPsResponseFull>;
 
 export type PcapsGetResult =
   | PcapsGetResultPCAP
@@ -7976,9 +7848,8 @@ export type SitesAclsGetResponseProtocolsItem = "tcp" | "udp" | "icmp";
 export const SitesAclsGetResponseProtocolsItem = S.String;
 
 export type SitesAclsGetResponseProtocolsList = Array<SitesAclsGetResponseProtocolsItem>;
-export const SitesAclsGetResponseProtocolsList = /*@__PURE__*/ S.Array(
-  SitesAclsGetResponseProtocolsItem,
-) as any as S.Schema<SitesAclsGetResponseProtocolsList>;
+export const SitesAclsGetResponseProtocolsList =
+  ConnectorsCreateRequestInterruptWindowDaysOfWeekList as any as S.Schema<SitesAclsGetResponseProtocolsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetSiteAclResponse {
@@ -8076,15 +7947,7 @@ export interface SitesLansGetResponseStaticAddressingDhcpServerDhcpOptionsItem {
   value: string;
 }
 export const SitesLansGetResponseStaticAddressingDhcpServerDhcpOptionsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      code: S.Number,
-      type: SitesLansGetResponseStaticAddressingDhcpServerDhcpOptionsItemType,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "SitesLansGetResponseStaticAddressingDhcpServerDhcpOptionsItem",
-  }) as any as S.Schema<SitesLansGetResponseStaticAddressingDhcpServerDhcpOptionsItem>;
+  SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsItem as any as S.Schema<SitesLansGetResponseStaticAddressingDhcpServerDhcpOptionsItem>;
 
 export type SitesLansGetResponseStaticAddressingDhcpServerDhcpOptionsList =
   Array<SitesLansGetResponseStaticAddressingDhcpServerDhcpOptionsItem>;
@@ -8257,23 +8120,7 @@ export interface GetSiteWanResponse {
   /** VLAN ID. Use zero for untagged. */
   vlanTag?: number | null;
 }
-export const GetSiteWanResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    healthCheckRate: S.optional(
-      S.NullOr(SitesWansGetResponseHealthCheckRate).pipe(T.Body("health_check_rate")),
-    ),
-    loadBalanceInnerFlows: S.optional(S.NullOr(S.Boolean).pipe(T.Body("load_balance_inner_flows"))),
-    name: S.optional(S.NullOr(S.String)),
-    physport: S.optional(S.NullOr(S.Number)),
-    priority: S.optional(S.NullOr(S.Number)),
-    siteId: S.optional(S.NullOr(S.String).pipe(T.Body("site_id"))),
-    staticAddressing: S.optional(
-      S.NullOr(SitesWansCreateResultItemStaticAddressing).pipe(T.Body("static_addressing")),
-    ),
-    vlanTag: S.optional(S.NullOr(S.Number).pipe(T.Body("vlan_tag"))),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "GetSiteWanResponse" }) as any as S.Schema<GetSiteWanResponse>;
+export const GetSiteWanResponse = DeleteSiteWanResponse as any as S.Schema<GetSiteWanResponse>;
 
 export interface ListAppsRequest {
   /** Identifier */
@@ -8525,32 +8372,12 @@ export interface Cf1SitesRampsListResultItem {
   mconn?: Cf1SitesRampsCreateResultItemGre | null;
   mplsInterconnect?: Cf1SitesRampsCreateResultItemGre | null;
 }
-export const Cf1SitesRampsListResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdOn: S.String.pipe(T.Body("created_on")),
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
-    name: S.String,
-    type: Cf1SitesRampsListResultItemType,
-    description: S.optional(S.NullOr(S.String)),
-    gre: S.optional(S.NullOr(Cf1SitesRampsCreateResultItemGre)),
-    greInterconnect: S.optional(
-      S.NullOr(Cf1SitesRampsCreateResultItemGre).pipe(T.Body("gre_interconnect")),
-    ),
-    ipsec: S.optional(S.NullOr(Cf1SitesRampsCreateResultItemGre)),
-    mconn: S.optional(S.NullOr(Cf1SitesRampsCreateResultItemGre)),
-    mplsInterconnect: S.optional(
-      S.NullOr(Cf1SitesRampsCreateResultItemGre).pipe(T.Body("mpls_interconnect")),
-    ),
-  }),
-).annotate({
-  identifier: "Cf1SitesRampsListResultItem",
-}) as any as S.Schema<Cf1SitesRampsListResultItem>;
+export const Cf1SitesRampsListResultItem =
+  Cf1SitesRampsCreateResultItem as any as S.Schema<Cf1SitesRampsListResultItem>;
 
 export type Cf1SitesRampsListResultList = Array<Cf1SitesRampsListResultItem>;
-export const Cf1SitesRampsListResultList = /*@__PURE__*/ S.Array(
-  Cf1SitesRampsListResultItem,
-) as any as S.Schema<Cf1SitesRampsListResultList>;
+export const Cf1SitesRampsListResultList =
+  Cf1SitesRampsCreateResultList as any as S.Schema<Cf1SitesRampsListResultList>;
 
 export interface ListCf1SiteRampsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
@@ -8846,13 +8673,8 @@ export interface ConnectorsEventsLatestListResponseItemsItemE {
   /** Event kind */
   k: ConnectorsEventsLatestListResponseItemsItemEK;
 }
-export const ConnectorsEventsLatestListResponseItemsItemE = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    k: ConnectorsEventsLatestListResponseItemsItemEK,
-  }),
-).annotate({
-  identifier: "ConnectorsEventsLatestListResponseItemsItemE",
-}) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemE>;
+export const ConnectorsEventsLatestListResponseItemsItemE =
+  ConnectorsEventsGetResponseE as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemE>;
 
 export interface ConnectorsEventsLatestListResponseItemsItem {
   /** Event kind plus event-specific payload fields. */
@@ -8999,9 +8821,8 @@ export const ConnectorsListResultItemInterruptWindowDaysOfWeekItem = S.String;
 
 export type ConnectorsListResultItemInterruptWindowDaysOfWeekList =
   Array<ConnectorsListResultItemInterruptWindowDaysOfWeekItem>;
-export const ConnectorsListResultItemInterruptWindowDaysOfWeekList = /*@__PURE__*/ S.Array(
-  ConnectorsListResultItemInterruptWindowDaysOfWeekItem,
-) as any as S.Schema<ConnectorsListResultItemInterruptWindowDaysOfWeekList>;
+export const ConnectorsListResultItemInterruptWindowDaysOfWeekList =
+  ConnectorsCreateRequestInterruptWindowDaysOfWeekList as any as S.Schema<ConnectorsListResultItemInterruptWindowDaysOfWeekList>;
 
 export type ConnectorsListResultItemInterruptWindowEmbargoDatesList = Array<string>;
 export const ConnectorsListResultItemInterruptWindowEmbargoDatesList =
@@ -9015,15 +8836,8 @@ export interface ConnectorsListResultItemDevice {
   serialNumber?: string | null;
   type?: ConnectorsListResultItemDeviceType | null;
 }
-export const ConnectorsListResultItemDevice = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    serialNumber: S.optional(S.NullOr(S.String).pipe(T.Body("serial_number"))),
-    type: S.optional(S.NullOr(ConnectorsListResultItemDeviceType)),
-  }),
-).annotate({
-  identifier: "ConnectorsListResultItemDevice",
-}) as any as S.Schema<ConnectorsListResultItemDevice>;
+export const ConnectorsListResultItemDevice =
+  ConnectorsCreateResponseDevice as any as S.Schema<ConnectorsListResultItemDevice>;
 
 export interface ConnectorsListResultItem {
   id: string;
@@ -10005,20 +9819,8 @@ export interface GreTunnelsListResponseGreTunnelsItemBgpStatus {
   customerSpeakerIp?: string | null;
   customerSpeakerPort?: number | null;
 }
-export const GreTunnelsListResponseGreTunnelsItemBgpStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: GreTunnelsListResponseGreTunnelsItemBgpStatusState,
-    tcpEstablished: S.Boolean.pipe(T.Body("tcp_established")),
-    updatedAt: S.String.pipe(T.Body("updated_at")),
-    bgpState: S.optional(S.NullOr(S.String).pipe(T.Body("bgp_state"))),
-    cfSpeakerIp: S.optional(S.NullOr(S.String).pipe(T.Body("cf_speaker_ip"))),
-    cfSpeakerPort: S.optional(S.NullOr(S.Number).pipe(T.Body("cf_speaker_port"))),
-    customerSpeakerIp: S.optional(S.NullOr(S.String).pipe(T.Body("customer_speaker_ip"))),
-    customerSpeakerPort: S.optional(S.NullOr(S.Number).pipe(T.Body("customer_speaker_port"))),
-  }),
-).annotate({
-  identifier: "GreTunnelsListResponseGreTunnelsItemBgpStatus",
-}) as any as S.Schema<GreTunnelsListResponseGreTunnelsItemBgpStatus>;
+export const GreTunnelsListResponseGreTunnelsItemBgpStatus =
+  GreTunnelsCreateResponseBgpStatus as any as S.Schema<GreTunnelsListResponseGreTunnelsItemBgpStatus>;
 
 export type GreTunnelsListResponseGreTunnelsItemHealthCheckDirection =
   | "unidirectional"
@@ -10190,20 +9992,8 @@ export interface IpsecTunnelsListResponseIpsecTunnelsItemBgpStatus {
   customerSpeakerIp?: string | null;
   customerSpeakerPort?: number | null;
 }
-export const IpsecTunnelsListResponseIpsecTunnelsItemBgpStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: IpsecTunnelsListResponseIpsecTunnelsItemBgpStatusState,
-    tcpEstablished: S.Boolean.pipe(T.Body("tcp_established")),
-    updatedAt: S.String.pipe(T.Body("updated_at")),
-    bgpState: S.optional(S.NullOr(S.String).pipe(T.Body("bgp_state"))),
-    cfSpeakerIp: S.optional(S.NullOr(S.String).pipe(T.Body("cf_speaker_ip"))),
-    cfSpeakerPort: S.optional(S.NullOr(S.Number).pipe(T.Body("cf_speaker_port"))),
-    customerSpeakerIp: S.optional(S.NullOr(S.String).pipe(T.Body("customer_speaker_ip"))),
-    customerSpeakerPort: S.optional(S.NullOr(S.Number).pipe(T.Body("customer_speaker_port"))),
-  }),
-).annotate({
-  identifier: "IpsecTunnelsListResponseIpsecTunnelsItemBgpStatus",
-}) as any as S.Schema<IpsecTunnelsListResponseIpsecTunnelsItemBgpStatus>;
+export const IpsecTunnelsListResponseIpsecTunnelsItemBgpStatus =
+  GreTunnelsCreateResponseBgpStatus as any as S.Schema<IpsecTunnelsListResponseIpsecTunnelsItemBgpStatus>;
 
 export type IpsecTunnelsListResponseIpsecTunnelsItemCustomRemoteIdentities =
   IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemCustomRemoteIdentities;
@@ -10399,18 +10189,8 @@ export interface PcapsListResultItemPCAP {
   /** The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets. */
   type?: PcapsListResultItemPCAPType | null;
 }
-export const PcapsListResultItemPCAP = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    filterV1: S.optional(S.NullOr(PcapsCreateResultPCAPFilterV1).pipe(T.Body("filter_v1"))),
-    offsetTime: S.optional(S.NullOr(S.String).pipe(T.Body("offset_time"))),
-    status: S.optional(S.NullOr(PcapsListResultItemPCAPStatus)),
-    submitted: S.optional(S.NullOr(S.String)),
-    system: S.optional(S.NullOr(PcapsListResultItemPCAPSystem)),
-    timeLimit: S.optional(S.NullOr(S.Number).pipe(T.Body("time_limit"))),
-    type: S.optional(S.NullOr(PcapsListResultItemPCAPType)),
-  }),
-).annotate({ identifier: "PcapsListResultItemPCAP" }) as any as S.Schema<PcapsListResultItemPCAP>;
+export const PcapsListResultItemPCAP =
+  PcapsCreateResultPCAP as any as S.Schema<PcapsListResultItemPCAP>;
 
 export type PcapsListResultItemMagicVisibilityPCAPsPCAPsResponseFullFilterV1 =
   PcapsCreateResultPCAPFilterV1;
@@ -10671,9 +10451,8 @@ export type SitesAclsListResultItemProtocolsItem = "tcp" | "udp" | "icmp";
 export const SitesAclsListResultItemProtocolsItem = S.String;
 
 export type SitesAclsListResultItemProtocolsList = Array<SitesAclsListResultItemProtocolsItem>;
-export const SitesAclsListResultItemProtocolsList = /*@__PURE__*/ S.Array(
-  SitesAclsListResultItemProtocolsItem,
-) as any as S.Schema<SitesAclsListResultItemProtocolsList>;
+export const SitesAclsListResultItemProtocolsList =
+  ConnectorsCreateRequestInterruptWindowDaysOfWeekList as any as S.Schema<SitesAclsListResultItemProtocolsList>;
 
 export interface SitesAclsListResultItem {
   /** Identifier */
@@ -10785,22 +10564,12 @@ export interface SitesLansListResultItemStaticAddressingDhcpServerDhcpOptionsIte
   value: string;
 }
 export const SitesLansListResultItemStaticAddressingDhcpServerDhcpOptionsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      code: S.Number,
-      type: SitesLansListResultItemStaticAddressingDhcpServerDhcpOptionsItemType,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "SitesLansListResultItemStaticAddressingDhcpServerDhcpOptionsItem",
-  }) as any as S.Schema<SitesLansListResultItemStaticAddressingDhcpServerDhcpOptionsItem>;
+  SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsItem as any as S.Schema<SitesLansListResultItemStaticAddressingDhcpServerDhcpOptionsItem>;
 
 export type SitesLansListResultItemStaticAddressingDhcpServerDhcpOptionsList =
   Array<SitesLansListResultItemStaticAddressingDhcpServerDhcpOptionsItem>;
 export const SitesLansListResultItemStaticAddressingDhcpServerDhcpOptionsList =
-  /*@__PURE__*/ S.Array(
-    SitesLansListResultItemStaticAddressingDhcpServerDhcpOptionsItem,
-  ) as any as S.Schema<SitesLansListResultItemStaticAddressingDhcpServerDhcpOptionsList>;
+  SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsList as any as S.Schema<SitesLansListResultItemStaticAddressingDhcpServerDhcpOptionsList>;
 
 export type SitesLansListResultItemStaticAddressingDhcpServerDnsServersList = Array<string>;
 export const SitesLansListResultItemStaticAddressingDhcpServerDnsServersList =
@@ -11306,9 +11075,8 @@ export const ConnectorsEditRequestInterruptWindowDaysOfWeekItem = S.String;
 export type ConnectorsEditRequestInterruptWindowDaysOfWeekList = Array<
   ConnectorsEditRequestInterruptWindowDaysOfWeekItem | (string & {})
 >;
-export const ConnectorsEditRequestInterruptWindowDaysOfWeekList = /*@__PURE__*/ S.Array(
-  ConnectorsEditRequestInterruptWindowDaysOfWeekItem,
-) as any as S.Schema<ConnectorsEditRequestInterruptWindowDaysOfWeekList>;
+export const ConnectorsEditRequestInterruptWindowDaysOfWeekList =
+  ConnectorsCreateRequestInterruptWindowDaysOfWeekList as any as S.Schema<ConnectorsEditRequestInterruptWindowDaysOfWeekList>;
 
 export type ConnectorsEditRequestInterruptWindowEmbargoDatesList = Array<string>;
 export const ConnectorsEditRequestInterruptWindowEmbargoDatesList =
@@ -11374,9 +11142,8 @@ export const ConnectorsEditResponseInterruptWindowDaysOfWeekItem = S.String;
 
 export type ConnectorsEditResponseInterruptWindowDaysOfWeekList =
   Array<ConnectorsEditResponseInterruptWindowDaysOfWeekItem>;
-export const ConnectorsEditResponseInterruptWindowDaysOfWeekList = /*@__PURE__*/ S.Array(
-  ConnectorsEditResponseInterruptWindowDaysOfWeekItem,
-) as any as S.Schema<ConnectorsEditResponseInterruptWindowDaysOfWeekList>;
+export const ConnectorsEditResponseInterruptWindowDaysOfWeekList =
+  ConnectorsCreateRequestInterruptWindowDaysOfWeekList as any as S.Schema<ConnectorsEditResponseInterruptWindowDaysOfWeekList>;
 
 export type ConnectorsEditResponseInterruptWindowEmbargoDatesList = Array<string>;
 export const ConnectorsEditResponseInterruptWindowEmbargoDatesList =
@@ -11390,15 +11157,8 @@ export interface ConnectorsEditResponseDevice {
   serialNumber?: string | null;
   type?: ConnectorsEditResponseDeviceType | null;
 }
-export const ConnectorsEditResponseDevice = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    serialNumber: S.optional(S.NullOr(S.String).pipe(T.Body("serial_number"))),
-    type: S.optional(S.NullOr(ConnectorsEditResponseDeviceType)),
-  }),
-).annotate({
-  identifier: "ConnectorsEditResponseDevice",
-}) as any as S.Schema<ConnectorsEditResponseDevice>;
+export const ConnectorsEditResponseDevice =
+  ConnectorsCreateResponseDevice as any as S.Schema<ConnectorsEditResponseDevice>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchConnectorResponse {
@@ -11565,9 +11325,8 @@ export const SitesAclsEditRequestProtocolsItem = S.String;
 export type SitesAclsEditRequestProtocolsList = Array<
   SitesAclsEditRequestProtocolsItem | (string & {})
 >;
-export const SitesAclsEditRequestProtocolsList = /*@__PURE__*/ S.Array(
-  SitesAclsEditRequestProtocolsItem,
-) as any as S.Schema<SitesAclsEditRequestProtocolsList>;
+export const SitesAclsEditRequestProtocolsList =
+  ConnectorsCreateRequestInterruptWindowDaysOfWeekList as any as S.Schema<SitesAclsEditRequestProtocolsList>;
 
 export interface PatchSiteAclRequest {
   /** Identifier */
@@ -11669,9 +11428,8 @@ export type SitesAclsEditResponseProtocolsItem = "tcp" | "udp" | "icmp";
 export const SitesAclsEditResponseProtocolsItem = S.String;
 
 export type SitesAclsEditResponseProtocolsList = Array<SitesAclsEditResponseProtocolsItem>;
-export const SitesAclsEditResponseProtocolsList = /*@__PURE__*/ S.Array(
-  SitesAclsEditResponseProtocolsItem,
-) as any as S.Schema<SitesAclsEditResponseProtocolsList>;
+export const SitesAclsEditResponseProtocolsList =
+  ConnectorsCreateRequestInterruptWindowDaysOfWeekList as any as S.Schema<SitesAclsEditResponseProtocolsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchSiteAclResponse {
@@ -11744,21 +11502,12 @@ export interface SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsItem {
   value: string;
 }
 export const SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      code: S.Number,
-      type: SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsItemType,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsItem",
-  }) as any as S.Schema<SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsItem>;
+  SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsItem as any as S.Schema<SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsItem>;
 
 export type SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsList =
   Array<SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsItem>;
-export const SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsList = /*@__PURE__*/ S.Array(
-  SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsItem,
-) as any as S.Schema<SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsList>;
+export const SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsList =
+  SitesLansGetResponseStaticAddressingDhcpServerDhcpOptionsList as any as S.Schema<SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsList>;
 
 export type SitesLansEditRequestStaticAddressingDhcpServerDnsServersList = Array<string>;
 export const SitesLansEditRequestStaticAddressingDhcpServerDnsServersList =
@@ -11918,21 +11667,12 @@ export interface SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsItem 
   value: string;
 }
 export const SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      code: S.Number,
-      type: SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsItemType,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsItem",
-  }) as any as S.Schema<SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsItem>;
+  SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsItem as any as S.Schema<SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsItem>;
 
 export type SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsList =
   Array<SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsItem>;
-export const SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsList = /*@__PURE__*/ S.Array(
-  SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsItem,
-) as any as S.Schema<SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsList>;
+export const SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsList =
+  SitesLansGetResponseStaticAddressingDhcpServerDhcpOptionsList as any as S.Schema<SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsList>;
 
 export type SitesLansEditResponseStaticAddressingDhcpServerDnsServersList = Array<string>;
 export const SitesLansEditResponseStaticAddressingDhcpServerDnsServersList =
@@ -12124,23 +11864,7 @@ export interface PatchSiteWanResponse {
   /** VLAN ID. Use zero for untagged. */
   vlanTag?: number | null;
 }
-export const PatchSiteWanResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    healthCheckRate: S.optional(
-      S.NullOr(SitesWansEditResponseHealthCheckRate).pipe(T.Body("health_check_rate")),
-    ),
-    loadBalanceInnerFlows: S.optional(S.NullOr(S.Boolean).pipe(T.Body("load_balance_inner_flows"))),
-    name: S.optional(S.NullOr(S.String)),
-    physport: S.optional(S.NullOr(S.Number)),
-    priority: S.optional(S.NullOr(S.Number)),
-    siteId: S.optional(S.NullOr(S.String).pipe(T.Body("site_id"))),
-    staticAddressing: S.optional(
-      S.NullOr(SitesWansCreateResultItemStaticAddressing).pipe(T.Body("static_addressing")),
-    ),
-    vlanTag: S.optional(S.NullOr(S.Number).pipe(T.Body("vlan_tag"))),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "PatchSiteWanResponse" }) as any as S.Schema<PatchSiteWanResponse>;
+export const PatchSiteWanResponse = DeleteSiteWanResponse as any as S.Schema<PatchSiteWanResponse>;
 
 export interface PskGenerateIpsecTunnelRequest {
   /** Identifier */
@@ -12795,9 +12519,8 @@ export const ConnectorsUpdateRequestInterruptWindowDaysOfWeekItem = S.String;
 export type ConnectorsUpdateRequestInterruptWindowDaysOfWeekList = Array<
   ConnectorsUpdateRequestInterruptWindowDaysOfWeekItem | (string & {})
 >;
-export const ConnectorsUpdateRequestInterruptWindowDaysOfWeekList = /*@__PURE__*/ S.Array(
-  ConnectorsUpdateRequestInterruptWindowDaysOfWeekItem,
-) as any as S.Schema<ConnectorsUpdateRequestInterruptWindowDaysOfWeekList>;
+export const ConnectorsUpdateRequestInterruptWindowDaysOfWeekList =
+  ConnectorsCreateRequestInterruptWindowDaysOfWeekList as any as S.Schema<ConnectorsUpdateRequestInterruptWindowDaysOfWeekList>;
 
 export type ConnectorsUpdateRequestInterruptWindowEmbargoDatesList = Array<string>;
 export const ConnectorsUpdateRequestInterruptWindowEmbargoDatesList =
@@ -12863,9 +12586,8 @@ export const ConnectorsUpdateResponseInterruptWindowDaysOfWeekItem = S.String;
 
 export type ConnectorsUpdateResponseInterruptWindowDaysOfWeekList =
   Array<ConnectorsUpdateResponseInterruptWindowDaysOfWeekItem>;
-export const ConnectorsUpdateResponseInterruptWindowDaysOfWeekList = /*@__PURE__*/ S.Array(
-  ConnectorsUpdateResponseInterruptWindowDaysOfWeekItem,
-) as any as S.Schema<ConnectorsUpdateResponseInterruptWindowDaysOfWeekList>;
+export const ConnectorsUpdateResponseInterruptWindowDaysOfWeekList =
+  ConnectorsCreateRequestInterruptWindowDaysOfWeekList as any as S.Schema<ConnectorsUpdateResponseInterruptWindowDaysOfWeekList>;
 
 export type ConnectorsUpdateResponseInterruptWindowEmbargoDatesList = Array<string>;
 export const ConnectorsUpdateResponseInterruptWindowEmbargoDatesList =
@@ -12879,15 +12601,8 @@ export interface ConnectorsUpdateResponseDevice {
   serialNumber?: string | null;
   type?: ConnectorsUpdateResponseDeviceType | null;
 }
-export const ConnectorsUpdateResponseDevice = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    serialNumber: S.optional(S.NullOr(S.String).pipe(T.Body("serial_number"))),
-    type: S.optional(S.NullOr(ConnectorsUpdateResponseDeviceType)),
-  }),
-).annotate({
-  identifier: "ConnectorsUpdateResponseDevice",
-}) as any as S.Schema<ConnectorsUpdateResponseDevice>;
+export const ConnectorsUpdateResponseDevice =
+  ConnectorsCreateResponseDevice as any as S.Schema<ConnectorsUpdateResponseDevice>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateConnectorResponse {
@@ -13061,20 +12776,8 @@ export interface GreTunnelsUpdateResponseModifiedGreTunnelBgpStatus {
   customerSpeakerIp?: string | null;
   customerSpeakerPort?: number | null;
 }
-export const GreTunnelsUpdateResponseModifiedGreTunnelBgpStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: GreTunnelsUpdateResponseModifiedGreTunnelBgpStatusState,
-    tcpEstablished: S.Boolean.pipe(T.Body("tcp_established")),
-    updatedAt: S.String.pipe(T.Body("updated_at")),
-    bgpState: S.optional(S.NullOr(S.String).pipe(T.Body("bgp_state"))),
-    cfSpeakerIp: S.optional(S.NullOr(S.String).pipe(T.Body("cf_speaker_ip"))),
-    cfSpeakerPort: S.optional(S.NullOr(S.Number).pipe(T.Body("cf_speaker_port"))),
-    customerSpeakerIp: S.optional(S.NullOr(S.String).pipe(T.Body("customer_speaker_ip"))),
-    customerSpeakerPort: S.optional(S.NullOr(S.Number).pipe(T.Body("customer_speaker_port"))),
-  }),
-).annotate({
-  identifier: "GreTunnelsUpdateResponseModifiedGreTunnelBgpStatus",
-}) as any as S.Schema<GreTunnelsUpdateResponseModifiedGreTunnelBgpStatus>;
+export const GreTunnelsUpdateResponseModifiedGreTunnelBgpStatus =
+  GreTunnelsCreateResponseBgpStatus as any as S.Schema<GreTunnelsUpdateResponseModifiedGreTunnelBgpStatus>;
 
 export type GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckDirection =
   | "unidirectional"
@@ -13355,20 +13058,8 @@ export interface IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpStatus {
   customerSpeakerIp?: string | null;
   customerSpeakerPort?: number | null;
 }
-export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpStatusState,
-    tcpEstablished: S.Boolean.pipe(T.Body("tcp_established")),
-    updatedAt: S.String.pipe(T.Body("updated_at")),
-    bgpState: S.optional(S.NullOr(S.String).pipe(T.Body("bgp_state"))),
-    cfSpeakerIp: S.optional(S.NullOr(S.String).pipe(T.Body("cf_speaker_ip"))),
-    cfSpeakerPort: S.optional(S.NullOr(S.Number).pipe(T.Body("cf_speaker_port"))),
-    customerSpeakerIp: S.optional(S.NullOr(S.String).pipe(T.Body("customer_speaker_ip"))),
-    customerSpeakerPort: S.optional(S.NullOr(S.Number).pipe(T.Body("customer_speaker_port"))),
-  }),
-).annotate({
-  identifier: "IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpStatus",
-}) as any as S.Schema<IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpStatus>;
+export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpStatus =
+  GreTunnelsCreateResponseBgpStatus as any as S.Schema<IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpStatus>;
 
 export type IpsecTunnelsUpdateResponseModifiedIpsecTunnelCustomRemoteIdentities =
   IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemCustomRemoteIdentities;
@@ -13739,9 +13430,8 @@ export const SitesAclsUpdateRequestProtocolsItem = S.String;
 export type SitesAclsUpdateRequestProtocolsList = Array<
   SitesAclsUpdateRequestProtocolsItem | (string & {})
 >;
-export const SitesAclsUpdateRequestProtocolsList = /*@__PURE__*/ S.Array(
-  SitesAclsUpdateRequestProtocolsItem,
-) as any as S.Schema<SitesAclsUpdateRequestProtocolsList>;
+export const SitesAclsUpdateRequestProtocolsList =
+  ConnectorsCreateRequestInterruptWindowDaysOfWeekList as any as S.Schema<SitesAclsUpdateRequestProtocolsList>;
 
 export interface UpdateSiteAclRequest {
   /** Identifier */
@@ -13843,9 +13533,8 @@ export type SitesAclsUpdateResponseProtocolsItem = "tcp" | "udp" | "icmp";
 export const SitesAclsUpdateResponseProtocolsItem = S.String;
 
 export type SitesAclsUpdateResponseProtocolsList = Array<SitesAclsUpdateResponseProtocolsItem>;
-export const SitesAclsUpdateResponseProtocolsList = /*@__PURE__*/ S.Array(
-  SitesAclsUpdateResponseProtocolsItem,
-) as any as S.Schema<SitesAclsUpdateResponseProtocolsList>;
+export const SitesAclsUpdateResponseProtocolsList =
+  ConnectorsCreateRequestInterruptWindowDaysOfWeekList as any as S.Schema<SitesAclsUpdateResponseProtocolsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateSiteAclResponse {
@@ -13919,22 +13608,12 @@ export interface SitesLansUpdateRequestStaticAddressingDhcpServerDhcpOptionsItem
   value: string;
 }
 export const SitesLansUpdateRequestStaticAddressingDhcpServerDhcpOptionsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      code: S.Number,
-      type: SitesLansUpdateRequestStaticAddressingDhcpServerDhcpOptionsItemType,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "SitesLansUpdateRequestStaticAddressingDhcpServerDhcpOptionsItem",
-  }) as any as S.Schema<SitesLansUpdateRequestStaticAddressingDhcpServerDhcpOptionsItem>;
+  SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsItem as any as S.Schema<SitesLansUpdateRequestStaticAddressingDhcpServerDhcpOptionsItem>;
 
 export type SitesLansUpdateRequestStaticAddressingDhcpServerDhcpOptionsList =
   Array<SitesLansUpdateRequestStaticAddressingDhcpServerDhcpOptionsItem>;
 export const SitesLansUpdateRequestStaticAddressingDhcpServerDhcpOptionsList =
-  /*@__PURE__*/ S.Array(
-    SitesLansUpdateRequestStaticAddressingDhcpServerDhcpOptionsItem,
-  ) as any as S.Schema<SitesLansUpdateRequestStaticAddressingDhcpServerDhcpOptionsList>;
+  SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsList as any as S.Schema<SitesLansUpdateRequestStaticAddressingDhcpServerDhcpOptionsList>;
 
 export type SitesLansUpdateRequestStaticAddressingDhcpServerDnsServersList = Array<string>;
 export const SitesLansUpdateRequestStaticAddressingDhcpServerDnsServersList =
@@ -14098,22 +13777,12 @@ export interface SitesLansUpdateResponseStaticAddressingDhcpServerDhcpOptionsIte
   value: string;
 }
 export const SitesLansUpdateResponseStaticAddressingDhcpServerDhcpOptionsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      code: S.Number,
-      type: SitesLansUpdateResponseStaticAddressingDhcpServerDhcpOptionsItemType,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "SitesLansUpdateResponseStaticAddressingDhcpServerDhcpOptionsItem",
-  }) as any as S.Schema<SitesLansUpdateResponseStaticAddressingDhcpServerDhcpOptionsItem>;
+  SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsItem as any as S.Schema<SitesLansUpdateResponseStaticAddressingDhcpServerDhcpOptionsItem>;
 
 export type SitesLansUpdateResponseStaticAddressingDhcpServerDhcpOptionsList =
   Array<SitesLansUpdateResponseStaticAddressingDhcpServerDhcpOptionsItem>;
 export const SitesLansUpdateResponseStaticAddressingDhcpServerDhcpOptionsList =
-  /*@__PURE__*/ S.Array(
-    SitesLansUpdateResponseStaticAddressingDhcpServerDhcpOptionsItem,
-  ) as any as S.Schema<SitesLansUpdateResponseStaticAddressingDhcpServerDhcpOptionsList>;
+  SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsList as any as S.Schema<SitesLansUpdateResponseStaticAddressingDhcpServerDhcpOptionsList>;
 
 export type SitesLansUpdateResponseStaticAddressingDhcpServerDnsServersList = Array<string>;
 export const SitesLansUpdateResponseStaticAddressingDhcpServerDnsServersList =
@@ -14411,23 +14080,8 @@ export interface UpdateSiteWanResponse {
   /** VLAN ID. Use zero for untagged. */
   vlanTag?: number | null;
 }
-export const UpdateSiteWanResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    healthCheckRate: S.optional(
-      S.NullOr(SitesWansUpdateResponseHealthCheckRate).pipe(T.Body("health_check_rate")),
-    ),
-    loadBalanceInnerFlows: S.optional(S.NullOr(S.Boolean).pipe(T.Body("load_balance_inner_flows"))),
-    name: S.optional(S.NullOr(S.String)),
-    physport: S.optional(S.NullOr(S.Number)),
-    priority: S.optional(S.NullOr(S.Number)),
-    siteId: S.optional(S.NullOr(S.String).pipe(T.Body("site_id"))),
-    staticAddressing: S.optional(
-      S.NullOr(SitesWansCreateResultItemStaticAddressing).pipe(T.Body("static_addressing")),
-    ),
-    vlanTag: S.optional(S.NullOr(S.Number).pipe(T.Body("vlan_tag"))),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "UpdateSiteWanResponse" }) as any as S.Schema<UpdateSiteWanResponse>;
+export const UpdateSiteWanResponse =
+  DeleteSiteWanResponse as any as S.Schema<UpdateSiteWanResponse>;
 
 export interface ValidatePcapOwnershipRequest {
   /** Identifier. */
@@ -14469,18 +14123,8 @@ export interface ValidatePcapOwnershipResponse {
   /** The RFC 3339 timestamp when the bucket was validated. */
   validated?: string | null;
 }
-export const ValidatePcapOwnershipResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    destinationConf: S.String.pipe(T.Body("destination_conf")),
-    filename: S.String,
-    status: PcapsOwnershipValidateResponseStatus,
-    submitted: S.String,
-    validated: S.optional(S.NullOr(S.String)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "ValidatePcapOwnershipResponse",
-}) as any as S.Schema<ValidatePcapOwnershipResponse>;
+export const ValidatePcapOwnershipResponse =
+  CreatePcapOwnershipResponse as any as S.Schema<ValidatePcapOwnershipResponse>;
 
 export type BulkPutCfInterconnectsError = CloudflareOpError;
 /** Updates multiple interconnects associated with an account. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes. */

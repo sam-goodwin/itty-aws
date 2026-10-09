@@ -1091,20 +1091,8 @@ export interface AuthorizeOrderRequestPaymentSourceIdealExperienceContext {
   return_url?: unknown;
   cancel_url?: unknown;
 }
-export const AuthorizeOrderRequestPaymentSourceIdealExperienceContext = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      brand_name: S.optional(S.String),
-      locale: S.optional(S.Unknown),
-      shipping_preference: S.optional(
-        AuthorizeOrderRequestPaymentSourceIdealExperienceContextShippingPreference,
-      ),
-      return_url: S.optional(S.Unknown),
-      cancel_url: S.optional(S.Unknown),
-    }),
-).annotate({
-  identifier: "AuthorizeOrderRequestPaymentSourceIdealExperienceContext",
-}) as any as S.Schema<AuthorizeOrderRequestPaymentSourceIdealExperienceContext>;
+export const AuthorizeOrderRequestPaymentSourceIdealExperienceContext =
+  AuthorizeOrderRequestPaymentSourceGiropayExperienceContext as any as S.Schema<AuthorizeOrderRequestPaymentSourceIdealExperienceContext>;
 
 export interface AuthorizeOrderRequestPaymentSourceIdeal {
   name: unknown;
@@ -1141,35 +1129,16 @@ export interface AuthorizeOrderRequestPaymentSourceMybankExperienceContext {
   return_url?: unknown;
   cancel_url?: unknown;
 }
-export const AuthorizeOrderRequestPaymentSourceMybankExperienceContext = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      brand_name: S.optional(S.String),
-      locale: S.optional(S.Unknown),
-      shipping_preference: S.optional(
-        AuthorizeOrderRequestPaymentSourceMybankExperienceContextShippingPreference,
-      ),
-      return_url: S.optional(S.Unknown),
-      cancel_url: S.optional(S.Unknown),
-    }),
-).annotate({
-  identifier: "AuthorizeOrderRequestPaymentSourceMybankExperienceContext",
-}) as any as S.Schema<AuthorizeOrderRequestPaymentSourceMybankExperienceContext>;
+export const AuthorizeOrderRequestPaymentSourceMybankExperienceContext =
+  AuthorizeOrderRequestPaymentSourceGiropayExperienceContext as any as S.Schema<AuthorizeOrderRequestPaymentSourceMybankExperienceContext>;
 
 export interface AuthorizeOrderRequestPaymentSourceMybank {
   name: unknown;
   country_code: unknown;
   experience_context?: AuthorizeOrderRequestPaymentSourceMybankExperienceContext;
 }
-export const AuthorizeOrderRequestPaymentSourceMybank = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.Unknown,
-    country_code: S.Unknown,
-    experience_context: S.optional(AuthorizeOrderRequestPaymentSourceMybankExperienceContext),
-  }),
-).annotate({
-  identifier: "AuthorizeOrderRequestPaymentSourceMybank",
-}) as any as S.Schema<AuthorizeOrderRequestPaymentSourceMybank>;
+export const AuthorizeOrderRequestPaymentSourceMybank =
+  AuthorizeOrderRequestPaymentSourceGiropay as any as S.Schema<AuthorizeOrderRequestPaymentSourceMybank>;
 
 /** The location from which the shipping address is derived. */
 export type AuthorizeOrderRequestPaymentSourceP24ExperienceContextShippingPreference =
@@ -1189,19 +1158,8 @@ export interface AuthorizeOrderRequestPaymentSourceP24ExperienceContext {
   return_url?: unknown;
   cancel_url?: unknown;
 }
-export const AuthorizeOrderRequestPaymentSourceP24ExperienceContext = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    brand_name: S.optional(S.String),
-    locale: S.optional(S.Unknown),
-    shipping_preference: S.optional(
-      AuthorizeOrderRequestPaymentSourceP24ExperienceContextShippingPreference,
-    ),
-    return_url: S.optional(S.Unknown),
-    cancel_url: S.optional(S.Unknown),
-  }),
-).annotate({
-  identifier: "AuthorizeOrderRequestPaymentSourceP24ExperienceContext",
-}) as any as S.Schema<AuthorizeOrderRequestPaymentSourceP24ExperienceContext>;
+export const AuthorizeOrderRequestPaymentSourceP24ExperienceContext =
+  AuthorizeOrderRequestPaymentSourceEpsExperienceContext as any as S.Schema<AuthorizeOrderRequestPaymentSourceP24ExperienceContext>;
 
 export interface AuthorizeOrderRequestPaymentSourceP24 {
   name: unknown;
@@ -1238,35 +1196,16 @@ export interface AuthorizeOrderRequestPaymentSourceSofortExperienceContext {
   return_url?: unknown;
   cancel_url?: unknown;
 }
-export const AuthorizeOrderRequestPaymentSourceSofortExperienceContext = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      brand_name: S.optional(S.String),
-      locale: S.optional(S.Unknown),
-      shipping_preference: S.optional(
-        AuthorizeOrderRequestPaymentSourceSofortExperienceContextShippingPreference,
-      ),
-      return_url: S.optional(S.Unknown),
-      cancel_url: S.optional(S.Unknown),
-    }),
-).annotate({
-  identifier: "AuthorizeOrderRequestPaymentSourceSofortExperienceContext",
-}) as any as S.Schema<AuthorizeOrderRequestPaymentSourceSofortExperienceContext>;
+export const AuthorizeOrderRequestPaymentSourceSofortExperienceContext =
+  AuthorizeOrderRequestPaymentSourceGiropayExperienceContext as any as S.Schema<AuthorizeOrderRequestPaymentSourceSofortExperienceContext>;
 
 export interface AuthorizeOrderRequestPaymentSourceSofort {
   name: unknown;
   country_code: unknown;
   experience_context?: AuthorizeOrderRequestPaymentSourceSofortExperienceContext;
 }
-export const AuthorizeOrderRequestPaymentSourceSofort = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.Unknown,
-    country_code: S.Unknown,
-    experience_context: S.optional(AuthorizeOrderRequestPaymentSourceSofortExperienceContext),
-  }),
-).annotate({
-  identifier: "AuthorizeOrderRequestPaymentSourceSofort",
-}) as any as S.Schema<AuthorizeOrderRequestPaymentSourceSofort>;
+export const AuthorizeOrderRequestPaymentSourceSofort =
+  AuthorizeOrderRequestPaymentSourceGiropay as any as S.Schema<AuthorizeOrderRequestPaymentSourceSofort>;
 
 /** The location from which the shipping address is derived. */
 export type AuthorizeOrderRequestPaymentSourceTrustlyExperienceContextShippingPreference =
@@ -1287,20 +1226,8 @@ export interface AuthorizeOrderRequestPaymentSourceTrustlyExperienceContext {
   return_url?: unknown;
   cancel_url?: unknown;
 }
-export const AuthorizeOrderRequestPaymentSourceTrustlyExperienceContext = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      brand_name: S.optional(S.String),
-      locale: S.optional(S.Unknown),
-      shipping_preference: S.optional(
-        AuthorizeOrderRequestPaymentSourceTrustlyExperienceContextShippingPreference,
-      ),
-      return_url: S.optional(S.Unknown),
-      cancel_url: S.optional(S.Unknown),
-    }),
-).annotate({
-  identifier: "AuthorizeOrderRequestPaymentSourceTrustlyExperienceContext",
-}) as any as S.Schema<AuthorizeOrderRequestPaymentSourceTrustlyExperienceContext>;
+export const AuthorizeOrderRequestPaymentSourceTrustlyExperienceContext =
+  AuthorizeOrderRequestPaymentSourceGiropayExperienceContext as any as S.Schema<AuthorizeOrderRequestPaymentSourceTrustlyExperienceContext>;
 
 export interface AuthorizeOrderRequestPaymentSourceTrustly {
   name: unknown;
@@ -1761,9 +1688,7 @@ export type VenmoWalletExperienceContextOrderUpdateCallbackConfigCallbackEventsL
   VenmoWalletExperienceContextOrderUpdateCallbackConfigCallbackEventsItem | (string & {})
 >;
 export const VenmoWalletExperienceContextOrderUpdateCallbackConfigCallbackEventsList =
-  /*@__PURE__*/ S.Array(
-    VenmoWalletExperienceContextOrderUpdateCallbackConfigCallbackEventsItem,
-  ) as any as S.Schema<VenmoWalletExperienceContextOrderUpdateCallbackConfigCallbackEventsList>;
+  PaypalWalletExperienceContextInputOrderUpdateCallbackConfigCallbackEventsList as any as S.Schema<VenmoWalletExperienceContextOrderUpdateCallbackConfigCallbackEventsList>;
 
 export interface VenmoWalletExperienceContextOrderUpdateCallbackConfig {
   /** An array of callback events merchant can subscribe to for the corresponding callback url. */
@@ -2405,14 +2330,8 @@ export interface PaypalWalletResponseTaxInfo {
   /** The customer's tax ID type. */
   tax_id_type: PaypalWalletResponseTaxInfoTaxIdType;
 }
-export const PaypalWalletResponseTaxInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tax_id: S.String,
-    tax_id_type: PaypalWalletResponseTaxInfoTaxIdType,
-  }),
-).annotate({
-  identifier: "PaypalWalletResponseTaxInfo",
-}) as any as S.Schema<PaypalWalletResponseTaxInfo>;
+export const PaypalWalletResponseTaxInfo =
+  AuthorizeOrderRequestPaymentSourcePaypalTaxInfo as any as S.Schema<PaypalWalletResponseTaxInfo>;
 
 /** The non-portable additional address details include fine-grain address information for Compliance, Risk, and other scenarios. This isn't portable with common third-party and open source applications. This can include data that is redundant with core fields. For example, `address_portable.address_line_1` is usually a combination of `address_details.street_number`, `street_name`, and `street_type`. */
 export type PaypalWalletResponseAddressAddressDetails =
@@ -4322,14 +4241,8 @@ export interface Level3CardProcessingDataLineItemsItemUpc {
   /** The UPC product code of the item. */
   code: string;
 }
-export const Level3CardProcessingDataLineItemsItemUpc = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: Level3CardProcessingDataLineItemsItemUpcType,
-    code: S.String,
-  }),
-).annotate({
-  identifier: "Level3CardProcessingDataLineItemsItemUpc",
-}) as any as S.Schema<Level3CardProcessingDataLineItemsItemUpc>;
+export const Level3CardProcessingDataLineItemsItemUpc =
+  AuthorizeOrderResponsePurchaseUnitsItemItemsItemUpc as any as S.Schema<Level3CardProcessingDataLineItemsItemUpc>;
 
 export type Level3CardProcessingDataLineItemsItemUnitAmount =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
@@ -4544,9 +4457,7 @@ export const AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSe
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionDisputeCategoriesList =
   Array<AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionDisputeCategoriesItem>;
 export const AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionDisputeCategoriesList =
-  /*@__PURE__*/ S.Array(
-    AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionDisputeCategoriesItem,
-  ) as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionDisputeCategoriesList>;
+  PaypalWalletExperienceContextInputOrderUpdateCallbackConfigCallbackEventsList as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionDisputeCategoriesList>;
 
 export interface AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtection {
   /** Indicates whether the transaction is eligible for seller protection. For information, see [PayPal Seller Protection for Merchants](https://www.paypal.com/us/webapps/mpp/security/seller-protection). */
@@ -5155,15 +5066,7 @@ export interface AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemStat
   reason?: AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatusDetailsReason;
 }
 export const AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatusDetails =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      reason: S.optional(
-        AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatusDetailsReason,
-      ),
-    }),
-  ).annotate({
-    identifier: "AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatusDetails",
-  }) as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatusDetails>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetails as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatusDetails>;
 
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemAmount = AmountWithBreakdown;
 export const AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemAmount =
@@ -5188,9 +5091,7 @@ export const AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerPr
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtectionDisputeCategoriesList =
   Array<AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtectionDisputeCategoriesItem>;
 export const AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtectionDisputeCategoriesList =
-  /*@__PURE__*/ S.Array(
-    AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtectionDisputeCategoriesItem,
-  ) as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtectionDisputeCategoriesList>;
+  PaypalWalletExperienceContextInputOrderUpdateCallbackConfigCallbackEventsList as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtectionDisputeCategoriesList>;
 
 export interface AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtection {
   /** Indicates whether the transaction is eligible for seller protection. For information, see [PayPal Seller Protection for Merchants](https://www.paypal.com/us/webapps/mpp/security/seller-protection). */
@@ -5199,18 +5100,7 @@ export interface AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemSell
   dispute_categories?: AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtectionDisputeCategoriesList;
 }
 export const AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtection =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      status: S.optional(
-        AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtectionStatus,
-      ),
-      dispute_categories: S.optional(
-        AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtectionDisputeCategoriesList,
-      ),
-    }),
-  ).annotate({
-    identifier: "AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtection",
-  }) as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtection>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtection as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtection>;
 
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownGrossAmount =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
@@ -5842,15 +5732,7 @@ export interface AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatu
   reason?: AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetailsReason;
 }
 export const AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetails =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      reason: S.optional(
-        AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetailsReason,
-      ),
-    }),
-  ).annotate({
-    identifier: "AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetails",
-  }) as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetails>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetails as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetails>;
 
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemAmount =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
@@ -6520,14 +6402,8 @@ export interface CaptureOrderRequestPaymentSourcePaypalTaxInfo {
   /** The customer's tax ID type. */
   tax_id_type: CaptureOrderRequestPaymentSourcePaypalTaxInfoTaxIdType | (string & {});
 }
-export const CaptureOrderRequestPaymentSourcePaypalTaxInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tax_id: S.String,
-    tax_id_type: CaptureOrderRequestPaymentSourcePaypalTaxInfoTaxIdType,
-  }),
-).annotate({
-  identifier: "CaptureOrderRequestPaymentSourcePaypalTaxInfo",
-}) as any as S.Schema<CaptureOrderRequestPaymentSourcePaypalTaxInfo>;
+export const CaptureOrderRequestPaymentSourcePaypalTaxInfo =
+  AuthorizeOrderRequestPaymentSourcePaypalTaxInfo as any as S.Schema<CaptureOrderRequestPaymentSourcePaypalTaxInfo>;
 
 /** The non-portable additional address details include fine-grain address information for Compliance, Risk, and other scenarios. This isn't portable with common third-party and open source applications. This can include data that is redundant with core fields. For example, `address_portable.address_line_1` is usually a combination of `address_details.street_number`, `street_name`, and `street_type`. */
 export type CaptureOrderRequestPaymentSourcePaypalAddressAddressDetails =
@@ -6726,35 +6602,16 @@ export interface CaptureOrderRequestPaymentSourceBancontactExperienceContext {
   return_url?: unknown;
   cancel_url?: unknown;
 }
-export const CaptureOrderRequestPaymentSourceBancontactExperienceContext = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      brand_name: S.optional(S.String),
-      locale: S.optional(S.Unknown),
-      shipping_preference: S.optional(
-        CaptureOrderRequestPaymentSourceBancontactExperienceContextShippingPreference,
-      ),
-      return_url: S.optional(S.Unknown),
-      cancel_url: S.optional(S.Unknown),
-    }),
-).annotate({
-  identifier: "CaptureOrderRequestPaymentSourceBancontactExperienceContext",
-}) as any as S.Schema<CaptureOrderRequestPaymentSourceBancontactExperienceContext>;
+export const CaptureOrderRequestPaymentSourceBancontactExperienceContext =
+  AuthorizeOrderRequestPaymentSourceGiropayExperienceContext as any as S.Schema<CaptureOrderRequestPaymentSourceBancontactExperienceContext>;
 
 export interface CaptureOrderRequestPaymentSourceBancontact {
   name: unknown;
   country_code: unknown;
   experience_context?: CaptureOrderRequestPaymentSourceBancontactExperienceContext;
 }
-export const CaptureOrderRequestPaymentSourceBancontact = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.Unknown,
-    country_code: S.Unknown,
-    experience_context: S.optional(CaptureOrderRequestPaymentSourceBancontactExperienceContext),
-  }),
-).annotate({
-  identifier: "CaptureOrderRequestPaymentSourceBancontact",
-}) as any as S.Schema<CaptureOrderRequestPaymentSourceBancontact>;
+export const CaptureOrderRequestPaymentSourceBancontact =
+  AuthorizeOrderRequestPaymentSourceGiropay as any as S.Schema<CaptureOrderRequestPaymentSourceBancontact>;
 
 /** The location from which the shipping address is derived. */
 export type CaptureOrderRequestPaymentSourceBlikExperienceContextShippingPreference =
@@ -6777,21 +6634,8 @@ export interface CaptureOrderRequestPaymentSourceBlikExperienceContext {
   /** The payer's User Agent. For example, Mozilla/5.0 (Macintosh; Intel Mac OS X x.y; rv:42.0). */
   consumer_user_agent?: string;
 }
-export const CaptureOrderRequestPaymentSourceBlikExperienceContext = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    brand_name: S.optional(S.String),
-    locale: S.optional(S.Unknown),
-    shipping_preference: S.optional(
-      CaptureOrderRequestPaymentSourceBlikExperienceContextShippingPreference,
-    ),
-    return_url: S.optional(S.Unknown),
-    cancel_url: S.optional(S.Unknown),
-    consumer_ip: S.optional(S.Unknown),
-    consumer_user_agent: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CaptureOrderRequestPaymentSourceBlikExperienceContext",
-}) as any as S.Schema<CaptureOrderRequestPaymentSourceBlikExperienceContext>;
+export const CaptureOrderRequestPaymentSourceBlikExperienceContext =
+  AuthorizeOrderRequestPaymentSourceBlikExperienceContext as any as S.Schema<CaptureOrderRequestPaymentSourceBlikExperienceContext>;
 
 export type CaptureOrderRequestPaymentSourceBlikLevel0 =
   AuthorizeOrderRequestPaymentSourceBlikLevel0;
@@ -6811,18 +6655,8 @@ export interface CaptureOrderRequestPaymentSourceBlik {
   level_0?: AuthorizeOrderRequestPaymentSourceBlikLevel0;
   one_click?: AuthorizeOrderRequestPaymentSourceBlikOneClick;
 }
-export const CaptureOrderRequestPaymentSourceBlik = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.Unknown,
-    country_code: S.Unknown,
-    email: S.optional(S.Unknown),
-    experience_context: S.optional(CaptureOrderRequestPaymentSourceBlikExperienceContext),
-    level_0: S.optional(AuthorizeOrderRequestPaymentSourceBlikLevel0),
-    one_click: S.optional(AuthorizeOrderRequestPaymentSourceBlikOneClick),
-  }),
-).annotate({
-  identifier: "CaptureOrderRequestPaymentSourceBlik",
-}) as any as S.Schema<CaptureOrderRequestPaymentSourceBlik>;
+export const CaptureOrderRequestPaymentSourceBlik =
+  AuthorizeOrderRequestPaymentSourceBlik as any as S.Schema<CaptureOrderRequestPaymentSourceBlik>;
 
 /** The location from which the shipping address is derived. */
 export type CaptureOrderRequestPaymentSourceEpsExperienceContextShippingPreference =
@@ -6842,34 +6676,16 @@ export interface CaptureOrderRequestPaymentSourceEpsExperienceContext {
   return_url?: unknown;
   cancel_url?: unknown;
 }
-export const CaptureOrderRequestPaymentSourceEpsExperienceContext = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    brand_name: S.optional(S.String),
-    locale: S.optional(S.Unknown),
-    shipping_preference: S.optional(
-      CaptureOrderRequestPaymentSourceEpsExperienceContextShippingPreference,
-    ),
-    return_url: S.optional(S.Unknown),
-    cancel_url: S.optional(S.Unknown),
-  }),
-).annotate({
-  identifier: "CaptureOrderRequestPaymentSourceEpsExperienceContext",
-}) as any as S.Schema<CaptureOrderRequestPaymentSourceEpsExperienceContext>;
+export const CaptureOrderRequestPaymentSourceEpsExperienceContext =
+  AuthorizeOrderRequestPaymentSourceEpsExperienceContext as any as S.Schema<CaptureOrderRequestPaymentSourceEpsExperienceContext>;
 
 export interface CaptureOrderRequestPaymentSourceEps {
   name: unknown;
   country_code: unknown;
   experience_context?: CaptureOrderRequestPaymentSourceEpsExperienceContext;
 }
-export const CaptureOrderRequestPaymentSourceEps = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.Unknown,
-    country_code: S.Unknown,
-    experience_context: S.optional(CaptureOrderRequestPaymentSourceEpsExperienceContext),
-  }),
-).annotate({
-  identifier: "CaptureOrderRequestPaymentSourceEps",
-}) as any as S.Schema<CaptureOrderRequestPaymentSourceEps>;
+export const CaptureOrderRequestPaymentSourceEps =
+  AuthorizeOrderRequestPaymentSourceEps as any as S.Schema<CaptureOrderRequestPaymentSourceEps>;
 
 /** The location from which the shipping address is derived. */
 export type CaptureOrderRequestPaymentSourceGiropayExperienceContextShippingPreference =
@@ -6889,35 +6705,16 @@ export interface CaptureOrderRequestPaymentSourceGiropayExperienceContext {
   return_url?: unknown;
   cancel_url?: unknown;
 }
-export const CaptureOrderRequestPaymentSourceGiropayExperienceContext = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      brand_name: S.optional(S.String),
-      locale: S.optional(S.Unknown),
-      shipping_preference: S.optional(
-        CaptureOrderRequestPaymentSourceGiropayExperienceContextShippingPreference,
-      ),
-      return_url: S.optional(S.Unknown),
-      cancel_url: S.optional(S.Unknown),
-    }),
-).annotate({
-  identifier: "CaptureOrderRequestPaymentSourceGiropayExperienceContext",
-}) as any as S.Schema<CaptureOrderRequestPaymentSourceGiropayExperienceContext>;
+export const CaptureOrderRequestPaymentSourceGiropayExperienceContext =
+  AuthorizeOrderRequestPaymentSourceGiropayExperienceContext as any as S.Schema<CaptureOrderRequestPaymentSourceGiropayExperienceContext>;
 
 export interface CaptureOrderRequestPaymentSourceGiropay {
   name: unknown;
   country_code: unknown;
   experience_context?: CaptureOrderRequestPaymentSourceGiropayExperienceContext;
 }
-export const CaptureOrderRequestPaymentSourceGiropay = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.Unknown,
-    country_code: S.Unknown,
-    experience_context: S.optional(CaptureOrderRequestPaymentSourceGiropayExperienceContext),
-  }),
-).annotate({
-  identifier: "CaptureOrderRequestPaymentSourceGiropay",
-}) as any as S.Schema<CaptureOrderRequestPaymentSourceGiropay>;
+export const CaptureOrderRequestPaymentSourceGiropay =
+  AuthorizeOrderRequestPaymentSourceGiropay as any as S.Schema<CaptureOrderRequestPaymentSourceGiropay>;
 
 /** The location from which the shipping address is derived. */
 export type CaptureOrderRequestPaymentSourceIdealExperienceContextShippingPreference =
@@ -6937,19 +6734,8 @@ export interface CaptureOrderRequestPaymentSourceIdealExperienceContext {
   return_url?: unknown;
   cancel_url?: unknown;
 }
-export const CaptureOrderRequestPaymentSourceIdealExperienceContext = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    brand_name: S.optional(S.String),
-    locale: S.optional(S.Unknown),
-    shipping_preference: S.optional(
-      CaptureOrderRequestPaymentSourceIdealExperienceContextShippingPreference,
-    ),
-    return_url: S.optional(S.Unknown),
-    cancel_url: S.optional(S.Unknown),
-  }),
-).annotate({
-  identifier: "CaptureOrderRequestPaymentSourceIdealExperienceContext",
-}) as any as S.Schema<CaptureOrderRequestPaymentSourceIdealExperienceContext>;
+export const CaptureOrderRequestPaymentSourceIdealExperienceContext =
+  AuthorizeOrderRequestPaymentSourceEpsExperienceContext as any as S.Schema<CaptureOrderRequestPaymentSourceIdealExperienceContext>;
 
 export interface CaptureOrderRequestPaymentSourceIdeal {
   name: unknown;
@@ -6986,34 +6772,16 @@ export interface CaptureOrderRequestPaymentSourceMybankExperienceContext {
   return_url?: unknown;
   cancel_url?: unknown;
 }
-export const CaptureOrderRequestPaymentSourceMybankExperienceContext = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    brand_name: S.optional(S.String),
-    locale: S.optional(S.Unknown),
-    shipping_preference: S.optional(
-      CaptureOrderRequestPaymentSourceMybankExperienceContextShippingPreference,
-    ),
-    return_url: S.optional(S.Unknown),
-    cancel_url: S.optional(S.Unknown),
-  }),
-).annotate({
-  identifier: "CaptureOrderRequestPaymentSourceMybankExperienceContext",
-}) as any as S.Schema<CaptureOrderRequestPaymentSourceMybankExperienceContext>;
+export const CaptureOrderRequestPaymentSourceMybankExperienceContext =
+  AuthorizeOrderRequestPaymentSourceEpsExperienceContext as any as S.Schema<CaptureOrderRequestPaymentSourceMybankExperienceContext>;
 
 export interface CaptureOrderRequestPaymentSourceMybank {
   name: unknown;
   country_code: unknown;
   experience_context?: CaptureOrderRequestPaymentSourceMybankExperienceContext;
 }
-export const CaptureOrderRequestPaymentSourceMybank = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.Unknown,
-    country_code: S.Unknown,
-    experience_context: S.optional(CaptureOrderRequestPaymentSourceMybankExperienceContext),
-  }),
-).annotate({
-  identifier: "CaptureOrderRequestPaymentSourceMybank",
-}) as any as S.Schema<CaptureOrderRequestPaymentSourceMybank>;
+export const CaptureOrderRequestPaymentSourceMybank =
+  AuthorizeOrderRequestPaymentSourceEps as any as S.Schema<CaptureOrderRequestPaymentSourceMybank>;
 
 /** The location from which the shipping address is derived. */
 export type CaptureOrderRequestPaymentSourceP24ExperienceContextShippingPreference =
@@ -7033,19 +6801,8 @@ export interface CaptureOrderRequestPaymentSourceP24ExperienceContext {
   return_url?: unknown;
   cancel_url?: unknown;
 }
-export const CaptureOrderRequestPaymentSourceP24ExperienceContext = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    brand_name: S.optional(S.String),
-    locale: S.optional(S.Unknown),
-    shipping_preference: S.optional(
-      CaptureOrderRequestPaymentSourceP24ExperienceContextShippingPreference,
-    ),
-    return_url: S.optional(S.Unknown),
-    cancel_url: S.optional(S.Unknown),
-  }),
-).annotate({
-  identifier: "CaptureOrderRequestPaymentSourceP24ExperienceContext",
-}) as any as S.Schema<CaptureOrderRequestPaymentSourceP24ExperienceContext>;
+export const CaptureOrderRequestPaymentSourceP24ExperienceContext =
+  AuthorizeOrderRequestPaymentSourceEpsExperienceContext as any as S.Schema<CaptureOrderRequestPaymentSourceP24ExperienceContext>;
 
 export interface CaptureOrderRequestPaymentSourceP24 {
   name: unknown;
@@ -7053,16 +6810,8 @@ export interface CaptureOrderRequestPaymentSourceP24 {
   country_code: unknown;
   experience_context?: CaptureOrderRequestPaymentSourceP24ExperienceContext;
 }
-export const CaptureOrderRequestPaymentSourceP24 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.Unknown,
-    email: S.Unknown,
-    country_code: S.Unknown,
-    experience_context: S.optional(CaptureOrderRequestPaymentSourceP24ExperienceContext),
-  }),
-).annotate({
-  identifier: "CaptureOrderRequestPaymentSourceP24",
-}) as any as S.Schema<CaptureOrderRequestPaymentSourceP24>;
+export const CaptureOrderRequestPaymentSourceP24 =
+  AuthorizeOrderRequestPaymentSourceP24 as any as S.Schema<CaptureOrderRequestPaymentSourceP24>;
 
 /** The location from which the shipping address is derived. */
 export type CaptureOrderRequestPaymentSourceSofortExperienceContextShippingPreference =
@@ -7082,34 +6831,16 @@ export interface CaptureOrderRequestPaymentSourceSofortExperienceContext {
   return_url?: unknown;
   cancel_url?: unknown;
 }
-export const CaptureOrderRequestPaymentSourceSofortExperienceContext = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    brand_name: S.optional(S.String),
-    locale: S.optional(S.Unknown),
-    shipping_preference: S.optional(
-      CaptureOrderRequestPaymentSourceSofortExperienceContextShippingPreference,
-    ),
-    return_url: S.optional(S.Unknown),
-    cancel_url: S.optional(S.Unknown),
-  }),
-).annotate({
-  identifier: "CaptureOrderRequestPaymentSourceSofortExperienceContext",
-}) as any as S.Schema<CaptureOrderRequestPaymentSourceSofortExperienceContext>;
+export const CaptureOrderRequestPaymentSourceSofortExperienceContext =
+  AuthorizeOrderRequestPaymentSourceEpsExperienceContext as any as S.Schema<CaptureOrderRequestPaymentSourceSofortExperienceContext>;
 
 export interface CaptureOrderRequestPaymentSourceSofort {
   name: unknown;
   country_code: unknown;
   experience_context?: CaptureOrderRequestPaymentSourceSofortExperienceContext;
 }
-export const CaptureOrderRequestPaymentSourceSofort = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.Unknown,
-    country_code: S.Unknown,
-    experience_context: S.optional(CaptureOrderRequestPaymentSourceSofortExperienceContext),
-  }),
-).annotate({
-  identifier: "CaptureOrderRequestPaymentSourceSofort",
-}) as any as S.Schema<CaptureOrderRequestPaymentSourceSofort>;
+export const CaptureOrderRequestPaymentSourceSofort =
+  AuthorizeOrderRequestPaymentSourceEps as any as S.Schema<CaptureOrderRequestPaymentSourceSofort>;
 
 /** The location from which the shipping address is derived. */
 export type CaptureOrderRequestPaymentSourceTrustlyExperienceContextShippingPreference =
@@ -7129,20 +6860,8 @@ export interface CaptureOrderRequestPaymentSourceTrustlyExperienceContext {
   return_url?: unknown;
   cancel_url?: unknown;
 }
-export const CaptureOrderRequestPaymentSourceTrustlyExperienceContext = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      brand_name: S.optional(S.String),
-      locale: S.optional(S.Unknown),
-      shipping_preference: S.optional(
-        CaptureOrderRequestPaymentSourceTrustlyExperienceContextShippingPreference,
-      ),
-      return_url: S.optional(S.Unknown),
-      cancel_url: S.optional(S.Unknown),
-    }),
-).annotate({
-  identifier: "CaptureOrderRequestPaymentSourceTrustlyExperienceContext",
-}) as any as S.Schema<CaptureOrderRequestPaymentSourceTrustlyExperienceContext>;
+export const CaptureOrderRequestPaymentSourceTrustlyExperienceContext =
+  AuthorizeOrderRequestPaymentSourceGiropayExperienceContext as any as S.Schema<CaptureOrderRequestPaymentSourceTrustlyExperienceContext>;
 
 export interface CaptureOrderRequestPaymentSourceTrustly {
   name: unknown;
@@ -7150,16 +6869,8 @@ export interface CaptureOrderRequestPaymentSourceTrustly {
   email: unknown;
   experience_context?: CaptureOrderRequestPaymentSourceTrustlyExperienceContext;
 }
-export const CaptureOrderRequestPaymentSourceTrustly = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.Unknown,
-    country_code: S.Unknown,
-    email: S.Unknown,
-    experience_context: S.optional(CaptureOrderRequestPaymentSourceTrustlyExperienceContext),
-  }),
-).annotate({
-  identifier: "CaptureOrderRequestPaymentSourceTrustly",
-}) as any as S.Schema<CaptureOrderRequestPaymentSourceTrustly>;
+export const CaptureOrderRequestPaymentSourceTrustly =
+  AuthorizeOrderRequestPaymentSourceTrustly as any as S.Schema<CaptureOrderRequestPaymentSourceTrustly>;
 
 export type CaptureOrderRequestPaymentSourceApplePayPhoneNumber = CardCustomerPhonePhoneNumber;
 export const CaptureOrderRequestPaymentSourceApplePayPhoneNumber = CardCustomerPhonePhoneNumber;
@@ -7201,16 +6912,7 @@ export interface CaptureOrderRequestPaymentSourceApplePayDecryptedTokenTokenized
     | (string & {});
 }
 export const CaptureOrderRequestPaymentSourceApplePayDecryptedTokenTokenizedCardAttributesVerification =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      method: S.optional(
-        CaptureOrderRequestPaymentSourceApplePayDecryptedTokenTokenizedCardAttributesVerificationMethod,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "CaptureOrderRequestPaymentSourceApplePayDecryptedTokenTokenizedCardAttributesVerification",
-  }) as any as S.Schema<CaptureOrderRequestPaymentSourceApplePayDecryptedTokenTokenizedCardAttributesVerification>;
+  AuthorizeOrderRequestPaymentSourceApplePayDecryptedTokenTokenizedCardAttributesVerification as any as S.Schema<CaptureOrderRequestPaymentSourceApplePayDecryptedTokenTokenizedCardAttributesVerification>;
 
 export interface CaptureOrderRequestPaymentSourceApplePayDecryptedTokenTokenizedCardAttributes {
   customer?: CardCustomer;
@@ -7218,17 +6920,7 @@ export interface CaptureOrderRequestPaymentSourceApplePayDecryptedTokenTokenized
   verification?: CaptureOrderRequestPaymentSourceApplePayDecryptedTokenTokenizedCardAttributesVerification;
 }
 export const CaptureOrderRequestPaymentSourceApplePayDecryptedTokenTokenizedCardAttributes =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      customer: S.optional(CardCustomer),
-      vault: S.optional(CardRequestInputAttributesVault),
-      verification: S.optional(
-        CaptureOrderRequestPaymentSourceApplePayDecryptedTokenTokenizedCardAttributesVerification,
-      ),
-    }),
-  ).annotate({
-    identifier: "CaptureOrderRequestPaymentSourceApplePayDecryptedTokenTokenizedCardAttributes",
-  }) as any as S.Schema<CaptureOrderRequestPaymentSourceApplePayDecryptedTokenTokenizedCardAttributes>;
+  AuthorizeOrderRequestPaymentSourceApplePayDecryptedTokenTokenizedCardAttributes as any as S.Schema<CaptureOrderRequestPaymentSourceApplePayDecryptedTokenTokenizedCardAttributes>;
 
 export interface CaptureOrderRequestPaymentSourceApplePayDecryptedTokenTokenizedCard {
   id?: unknown;
@@ -7246,24 +6938,7 @@ export interface CaptureOrderRequestPaymentSourceApplePayDecryptedTokenTokenized
   attributes?: CaptureOrderRequestPaymentSourceApplePayDecryptedTokenTokenizedCardAttributes;
 }
 export const CaptureOrderRequestPaymentSourceApplePayDecryptedTokenTokenizedCard =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.Unknown),
-      name: S.optional(S.String),
-      number: S.optional(S.String),
-      expiry: S.optional(S.Unknown),
-      security_code: S.optional(S.String),
-      card_type: S.optional(S.Unknown),
-      type: S.optional(S.Unknown),
-      brand: S.optional(S.Unknown),
-      billing_address: S.optional(CardRequestInputBillingAddress),
-      attributes: S.optional(
-        CaptureOrderRequestPaymentSourceApplePayDecryptedTokenTokenizedCardAttributes,
-      ),
-    }),
-  ).annotate({
-    identifier: "CaptureOrderRequestPaymentSourceApplePayDecryptedTokenTokenizedCard",
-  }) as any as S.Schema<CaptureOrderRequestPaymentSourceApplePayDecryptedTokenTokenizedCard>;
+  AuthorizeOrderRequestPaymentSourceApplePayDecryptedTokenTokenizedCard as any as S.Schema<CaptureOrderRequestPaymentSourceApplePayDecryptedTokenTokenizedCard>;
 
 /** Indicates the type of payment data passed, in case of Non China the payment data is 3DSECURE and for China it is EMV. */
 export type CaptureOrderRequestPaymentSourceApplePayDecryptedTokenPaymentDataType =
@@ -7475,31 +7150,15 @@ export interface CaptureOrderRequestPaymentSourceVenmoAttributesVault {
   /** Create multiple payment tokens for the same payer, merchant/platform combination. Use this when the customer has not logged in at merchant/platform. The payment token thus generated, can then also be used to create the customer account at merchant/platform. Use this also when multiple payment tokens are required for the same payer, different customer at merchant/platform. This helps to identify customers distinctly even though they may share the same Venmo account. */
   permit_multiple_payment_tokens?: boolean;
 }
-export const CaptureOrderRequestPaymentSourceVenmoAttributesVault = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    store_in_vault: StoreInVaultInstruction,
-    description: S.optional(S.String),
-    usage_pattern: S.optional(CaptureOrderRequestPaymentSourceVenmoAttributesVaultUsagePattern),
-    usage_type: CaptureOrderRequestPaymentSourceVenmoAttributesVaultUsageType,
-    customer_type: S.optional(CaptureOrderRequestPaymentSourceVenmoAttributesVaultCustomerType),
-    permit_multiple_payment_tokens: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "CaptureOrderRequestPaymentSourceVenmoAttributesVault",
-}) as any as S.Schema<CaptureOrderRequestPaymentSourceVenmoAttributesVault>;
+export const CaptureOrderRequestPaymentSourceVenmoAttributesVault =
+  AuthorizeOrderRequestPaymentSourceVenmoAttributesVault as any as S.Schema<CaptureOrderRequestPaymentSourceVenmoAttributesVault>;
 
 export interface CaptureOrderRequestPaymentSourceVenmoAttributes {
   customer?: Customer;
   vault?: CaptureOrderRequestPaymentSourceVenmoAttributesVault;
 }
-export const CaptureOrderRequestPaymentSourceVenmoAttributes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customer: S.optional(Customer),
-    vault: S.optional(CaptureOrderRequestPaymentSourceVenmoAttributesVault),
-  }),
-).annotate({
-  identifier: "CaptureOrderRequestPaymentSourceVenmoAttributes",
-}) as any as S.Schema<CaptureOrderRequestPaymentSourceVenmoAttributes>;
+export const CaptureOrderRequestPaymentSourceVenmoAttributes =
+  AuthorizeOrderRequestPaymentSourceVenmoAttributes as any as S.Schema<CaptureOrderRequestPaymentSourceVenmoAttributes>;
 
 export interface CaptureOrderRequestPaymentSourceVenmo {
   vault_id?: unknown;
@@ -7507,16 +7166,8 @@ export interface CaptureOrderRequestPaymentSourceVenmo {
   experience_context?: VenmoWalletExperienceContext;
   attributes?: CaptureOrderRequestPaymentSourceVenmoAttributes;
 }
-export const CaptureOrderRequestPaymentSourceVenmo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    vault_id: S.optional(S.Unknown),
-    email_address: S.optional(S.Unknown),
-    experience_context: S.optional(VenmoWalletExperienceContext),
-    attributes: S.optional(CaptureOrderRequestPaymentSourceVenmoAttributes),
-  }),
-).annotate({
-  identifier: "CaptureOrderRequestPaymentSourceVenmo",
-}) as any as S.Schema<CaptureOrderRequestPaymentSourceVenmo>;
+export const CaptureOrderRequestPaymentSourceVenmo =
+  AuthorizeOrderRequestPaymentSourceVenmo as any as S.Schema<CaptureOrderRequestPaymentSourceVenmo>;
 
 export type CaptureOrderRequestPaymentSourceCryptoName =
   AuthorizeOrderRequestPaymentSourceCryptoName;
@@ -7619,14 +7270,8 @@ export interface CaptureOrderResponsePayerTaxInfo {
   /** The customer's tax ID type. */
   tax_id_type: CaptureOrderResponsePayerTaxInfoTaxIdType;
 }
-export const CaptureOrderResponsePayerTaxInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tax_id: S.String,
-    tax_id_type: CaptureOrderResponsePayerTaxInfoTaxIdType,
-  }),
-).annotate({
-  identifier: "CaptureOrderResponsePayerTaxInfo",
-}) as any as S.Schema<CaptureOrderResponsePayerTaxInfo>;
+export const CaptureOrderResponsePayerTaxInfo =
+  AuthorizeOrderRequestPaymentSourcePaypalTaxInfo as any as S.Schema<CaptureOrderResponsePayerTaxInfo>;
 
 /** The non-portable additional address details include fine-grain address information for Compliance, Risk, and other scenarios. This isn't portable with common third-party and open source applications. This can include data that is redundant with core fields. For example, `address_portable.address_line_1` is usually a combination of `address_details.street_number`, `street_name`, and `street_type`. */
 export type CaptureOrderResponsePayerAddressAddressDetails =
@@ -7699,14 +7344,8 @@ export interface CaptureOrderResponsePurchaseUnitsItemItemsItemUpc {
   /** The UPC product code of the item. */
   code: string;
 }
-export const CaptureOrderResponsePurchaseUnitsItemItemsItemUpc = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: CaptureOrderResponsePurchaseUnitsItemItemsItemUpcType,
-    code: S.String,
-  }),
-).annotate({
-  identifier: "CaptureOrderResponsePurchaseUnitsItemItemsItemUpc",
-}) as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemItemsItemUpc>;
+export const CaptureOrderResponsePurchaseUnitsItemItemsItemUpc =
+  AuthorizeOrderResponsePurchaseUnitsItemItemsItemUpc as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemItemsItemUpc>;
 
 export interface CaptureOrderResponsePurchaseUnitsItemItemsItem {
   /** The item name or title. */
@@ -7728,32 +7367,14 @@ export interface CaptureOrderResponsePurchaseUnitsItemItemsItem {
   upc?: CaptureOrderResponsePurchaseUnitsItemItemsItemUpc;
   billing_plan?: OrderBillingPlan;
 }
-export const CaptureOrderResponsePurchaseUnitsItemItemsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    unit_amount: AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-    tax: S.optional(
-      AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-    ),
-    quantity: S.String,
-    description: S.optional(S.String),
-    sku: S.optional(S.String),
-    url: S.optional(S.String),
-    category: S.optional(CaptureOrderResponsePurchaseUnitsItemItemsItemCategory),
-    image_url: S.optional(S.String),
-    upc: S.optional(CaptureOrderResponsePurchaseUnitsItemItemsItemUpc),
-    billing_plan: S.optional(OrderBillingPlan),
-  }),
-).annotate({
-  identifier: "CaptureOrderResponsePurchaseUnitsItemItemsItem",
-}) as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemItemsItem>;
+export const CaptureOrderResponsePurchaseUnitsItemItemsItem =
+  AuthorizeOrderResponsePurchaseUnitsItemItemsItem as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemItemsItem>;
 
 /** An array of items that the customer purchases from the merchant. */
 export type CaptureOrderResponsePurchaseUnitsItemItemsList =
   Array<CaptureOrderResponsePurchaseUnitsItemItemsItem>;
-export const CaptureOrderResponsePurchaseUnitsItemItemsList = /*@__PURE__*/ S.Array(
-  CaptureOrderResponsePurchaseUnitsItemItemsItem,
-) as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemItemsList>;
+export const CaptureOrderResponsePurchaseUnitsItemItemsList =
+  AuthorizeOrderResponsePurchaseUnitsItemItemsList as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemItemsList>;
 
 export type CaptureOrderResponsePurchaseUnitsItemShippingName = CardCustomerName;
 export const CaptureOrderResponsePurchaseUnitsItemShippingName = CardCustomerName;
@@ -7866,15 +7487,7 @@ export interface CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItem
   reason?: CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetailsReason;
 }
 export const CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetails =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      reason: S.optional(
-        CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetailsReason,
-      ),
-    }),
-  ).annotate({
-    identifier: "CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetails",
-  }) as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetails>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetails as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetails>;
 
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemAmount =
   AmountWithBreakdown;
@@ -7900,9 +7513,7 @@ export const CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSell
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionDisputeCategoriesList =
   Array<CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionDisputeCategoriesItem>;
 export const CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionDisputeCategoriesList =
-  /*@__PURE__*/ S.Array(
-    CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionDisputeCategoriesItem,
-  ) as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionDisputeCategoriesList>;
+  PaypalWalletExperienceContextInputOrderUpdateCallbackConfigCallbackEventsList as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionDisputeCategoriesList>;
 
 export interface CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtection {
   /** Indicates whether the transaction is eligible for seller protection. For information, see [PayPal Seller Protection for Merchants](https://www.paypal.com/us/webapps/mpp/security/seller-protection). */
@@ -7911,18 +7522,7 @@ export interface CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItem
   dispute_categories?: CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionDisputeCategoriesList;
 }
 export const CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtection =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      status: S.optional(
-        CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionStatus,
-      ),
-      dispute_categories: S.optional(
-        CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionDisputeCategoriesList,
-      ),
-    }),
-  ).annotate({
-    identifier: "CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtection",
-  }) as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtection>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtection as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtection>;
 
 /** The HTTP method required to make the related call. */
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemMethod =
@@ -8347,24 +7947,7 @@ export interface CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItem
   payment_advice_code?: CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponsePaymentAdviceCode;
 }
 export const CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      avs_code: S.optional(
-        CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponseAvsCode,
-      ),
-      cvv_code: S.optional(
-        CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponseCvvCode,
-      ),
-      response_code: S.optional(
-        CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponseResponseCode,
-      ),
-      payment_advice_code: S.optional(
-        CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponsePaymentAdviceCode,
-      ),
-    }),
-  ).annotate({
-    identifier: "CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponse",
-  }) as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponse>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponse as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponse>;
 
 export interface CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItem {
   /** The status for the authorized payment. */
@@ -8453,15 +8036,7 @@ export interface CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatus
   reason?: CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatusDetailsReason;
 }
 export const CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatusDetails =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      reason: S.optional(
-        CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatusDetailsReason,
-      ),
-    }),
-  ).annotate({
-    identifier: "CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatusDetails",
-  }) as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatusDetails>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetails as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatusDetails>;
 
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemAmount = AmountWithBreakdown;
 export const CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemAmount = AmountWithBreakdown;
@@ -8485,9 +8060,7 @@ export const CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProt
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtectionDisputeCategoriesList =
   Array<CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtectionDisputeCategoriesItem>;
 export const CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtectionDisputeCategoriesList =
-  /*@__PURE__*/ S.Array(
-    CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtectionDisputeCategoriesItem,
-  ) as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtectionDisputeCategoriesList>;
+  PaypalWalletExperienceContextInputOrderUpdateCallbackConfigCallbackEventsList as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtectionDisputeCategoriesList>;
 
 export interface CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtection {
   /** Indicates whether the transaction is eligible for seller protection. For information, see [PayPal Seller Protection for Merchants](https://www.paypal.com/us/webapps/mpp/security/seller-protection). */
@@ -8496,18 +8069,7 @@ export interface CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemSeller
   dispute_categories?: CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtectionDisputeCategoriesList;
 }
 export const CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtection =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      status: S.optional(
-        CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtectionStatus,
-      ),
-      dispute_categories: S.optional(
-        CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtectionDisputeCategoriesList,
-      ),
-    }),
-  ).annotate({
-    identifier: "CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtection",
-  }) as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtection>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtection as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtection>;
 
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownGrossAmount =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
@@ -8991,24 +8553,7 @@ export interface CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemProces
   payment_advice_code?: CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponsePaymentAdviceCode;
 }
 export const CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      avs_code: S.optional(
-        CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponseAvsCode,
-      ),
-      cvv_code: S.optional(
-        CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponseCvvCode,
-      ),
-      response_code: S.optional(
-        CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponseResponseCode,
-      ),
-      payment_advice_code: S.optional(
-        CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponsePaymentAdviceCode,
-      ),
-    }),
-  ).annotate({
-    identifier: "CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponse",
-  }) as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponse>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponse as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponse>;
 
 export interface CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItem {
   /** The status of the captured payment. */
@@ -9088,15 +8633,7 @@ export interface CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatusD
   reason?: CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetailsReason;
 }
 export const CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetails =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      reason: S.optional(
-        CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetailsReason,
-      ),
-    }),
-  ).annotate({
-    identifier: "CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetails",
-  }) as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetails>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetails as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetails>;
 
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemAmount =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
@@ -9714,14 +9251,8 @@ export interface PaymentSourceInputPaypalTaxInfo {
   /** The customer's tax ID type. */
   tax_id_type: PaymentSourceInputPaypalTaxInfoTaxIdType | (string & {});
 }
-export const PaymentSourceInputPaypalTaxInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tax_id: S.String,
-    tax_id_type: PaymentSourceInputPaypalTaxInfoTaxIdType,
-  }),
-).annotate({
-  identifier: "PaymentSourceInputPaypalTaxInfo",
-}) as any as S.Schema<PaymentSourceInputPaypalTaxInfo>;
+export const PaymentSourceInputPaypalTaxInfo =
+  AuthorizeOrderRequestPaymentSourcePaypalTaxInfo as any as S.Schema<PaymentSourceInputPaypalTaxInfo>;
 
 /** The non-portable additional address details include fine-grain address information for Compliance, Risk, and other scenarios. This isn't portable with common third-party and open source applications. This can include data that is redundant with core fields. For example, `address_portable.address_line_1` is usually a combination of `address_details.street_number`, `street_name`, and `street_type`. */
 export type PaymentSourceInputPaypalAddressAddressDetails =
@@ -9911,34 +9442,16 @@ export interface PaymentSourceInputBancontactExperienceContext {
   return_url?: unknown;
   cancel_url?: unknown;
 }
-export const PaymentSourceInputBancontactExperienceContext = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    brand_name: S.optional(S.String),
-    locale: S.optional(S.Unknown),
-    shipping_preference: S.optional(
-      PaymentSourceInputBancontactExperienceContextShippingPreference,
-    ),
-    return_url: S.optional(S.Unknown),
-    cancel_url: S.optional(S.Unknown),
-  }),
-).annotate({
-  identifier: "PaymentSourceInputBancontactExperienceContext",
-}) as any as S.Schema<PaymentSourceInputBancontactExperienceContext>;
+export const PaymentSourceInputBancontactExperienceContext =
+  AuthorizeOrderRequestPaymentSourceEpsExperienceContext as any as S.Schema<PaymentSourceInputBancontactExperienceContext>;
 
 export interface PaymentSourceInputBancontact {
   name: unknown;
   country_code: unknown;
   experience_context?: PaymentSourceInputBancontactExperienceContext;
 }
-export const PaymentSourceInputBancontact = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.Unknown,
-    country_code: S.Unknown,
-    experience_context: S.optional(PaymentSourceInputBancontactExperienceContext),
-  }),
-).annotate({
-  identifier: "PaymentSourceInputBancontact",
-}) as any as S.Schema<PaymentSourceInputBancontact>;
+export const PaymentSourceInputBancontact =
+  AuthorizeOrderRequestPaymentSourceEps as any as S.Schema<PaymentSourceInputBancontact>;
 
 /** The location from which the shipping address is derived. */
 export type PaymentSourceInputBlikExperienceContextShippingPreference =
@@ -10057,17 +9570,8 @@ export interface PaymentSourceInputGiropayExperienceContext {
   return_url?: unknown;
   cancel_url?: unknown;
 }
-export const PaymentSourceInputGiropayExperienceContext = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    brand_name: S.optional(S.String),
-    locale: S.optional(S.Unknown),
-    shipping_preference: S.optional(PaymentSourceInputGiropayExperienceContextShippingPreference),
-    return_url: S.optional(S.Unknown),
-    cancel_url: S.optional(S.Unknown),
-  }),
-).annotate({
-  identifier: "PaymentSourceInputGiropayExperienceContext",
-}) as any as S.Schema<PaymentSourceInputGiropayExperienceContext>;
+export const PaymentSourceInputGiropayExperienceContext =
+  PaymentSourceInputEpsExperienceContext as any as S.Schema<PaymentSourceInputGiropayExperienceContext>;
 
 export interface PaymentSourceInputGiropay {
   name: unknown;
@@ -10100,17 +9604,8 @@ export interface PaymentSourceInputIdealExperienceContext {
   return_url?: unknown;
   cancel_url?: unknown;
 }
-export const PaymentSourceInputIdealExperienceContext = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    brand_name: S.optional(S.String),
-    locale: S.optional(S.Unknown),
-    shipping_preference: S.optional(PaymentSourceInputIdealExperienceContextShippingPreference),
-    return_url: S.optional(S.Unknown),
-    cancel_url: S.optional(S.Unknown),
-  }),
-).annotate({
-  identifier: "PaymentSourceInputIdealExperienceContext",
-}) as any as S.Schema<PaymentSourceInputIdealExperienceContext>;
+export const PaymentSourceInputIdealExperienceContext =
+  PaymentSourceInputEpsExperienceContext as any as S.Schema<PaymentSourceInputIdealExperienceContext>;
 
 export interface PaymentSourceInputIdeal {
   name: unknown;
@@ -10143,30 +9638,16 @@ export interface PaymentSourceInputMybankExperienceContext {
   return_url?: unknown;
   cancel_url?: unknown;
 }
-export const PaymentSourceInputMybankExperienceContext = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    brand_name: S.optional(S.String),
-    locale: S.optional(S.Unknown),
-    shipping_preference: S.optional(PaymentSourceInputMybankExperienceContextShippingPreference),
-    return_url: S.optional(S.Unknown),
-    cancel_url: S.optional(S.Unknown),
-  }),
-).annotate({
-  identifier: "PaymentSourceInputMybankExperienceContext",
-}) as any as S.Schema<PaymentSourceInputMybankExperienceContext>;
+export const PaymentSourceInputMybankExperienceContext =
+  PaymentSourceInputEpsExperienceContext as any as S.Schema<PaymentSourceInputMybankExperienceContext>;
 
 export interface PaymentSourceInputMybank {
   name: unknown;
   country_code: unknown;
   experience_context?: PaymentSourceInputMybankExperienceContext;
 }
-export const PaymentSourceInputMybank = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.Unknown,
-    country_code: S.Unknown,
-    experience_context: S.optional(PaymentSourceInputMybankExperienceContext),
-  }),
-).annotate({ identifier: "PaymentSourceInputMybank" }) as any as S.Schema<PaymentSourceInputMybank>;
+export const PaymentSourceInputMybank =
+  PaymentSourceInputEps as any as S.Schema<PaymentSourceInputMybank>;
 
 /** The location from which the shipping address is derived. */
 export type PaymentSourceInputP24ExperienceContextShippingPreference =
@@ -10184,17 +9665,8 @@ export interface PaymentSourceInputP24ExperienceContext {
   return_url?: unknown;
   cancel_url?: unknown;
 }
-export const PaymentSourceInputP24ExperienceContext = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    brand_name: S.optional(S.String),
-    locale: S.optional(S.Unknown),
-    shipping_preference: S.optional(PaymentSourceInputP24ExperienceContextShippingPreference),
-    return_url: S.optional(S.Unknown),
-    cancel_url: S.optional(S.Unknown),
-  }),
-).annotate({
-  identifier: "PaymentSourceInputP24ExperienceContext",
-}) as any as S.Schema<PaymentSourceInputP24ExperienceContext>;
+export const PaymentSourceInputP24ExperienceContext =
+  PaymentSourceInputEpsExperienceContext as any as S.Schema<PaymentSourceInputP24ExperienceContext>;
 
 export interface PaymentSourceInputP24 {
   name: unknown;
@@ -10227,30 +9699,16 @@ export interface PaymentSourceInputSofortExperienceContext {
   return_url?: unknown;
   cancel_url?: unknown;
 }
-export const PaymentSourceInputSofortExperienceContext = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    brand_name: S.optional(S.String),
-    locale: S.optional(S.Unknown),
-    shipping_preference: S.optional(PaymentSourceInputSofortExperienceContextShippingPreference),
-    return_url: S.optional(S.Unknown),
-    cancel_url: S.optional(S.Unknown),
-  }),
-).annotate({
-  identifier: "PaymentSourceInputSofortExperienceContext",
-}) as any as S.Schema<PaymentSourceInputSofortExperienceContext>;
+export const PaymentSourceInputSofortExperienceContext =
+  PaymentSourceInputEpsExperienceContext as any as S.Schema<PaymentSourceInputSofortExperienceContext>;
 
 export interface PaymentSourceInputSofort {
   name: unknown;
   country_code: unknown;
   experience_context?: PaymentSourceInputSofortExperienceContext;
 }
-export const PaymentSourceInputSofort = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.Unknown,
-    country_code: S.Unknown,
-    experience_context: S.optional(PaymentSourceInputSofortExperienceContext),
-  }),
-).annotate({ identifier: "PaymentSourceInputSofort" }) as any as S.Schema<PaymentSourceInputSofort>;
+export const PaymentSourceInputSofort =
+  PaymentSourceInputEps as any as S.Schema<PaymentSourceInputSofort>;
 
 /** The location from which the shipping address is derived. */
 export type PaymentSourceInputTrustlyExperienceContextShippingPreference =
@@ -10270,17 +9728,8 @@ export interface PaymentSourceInputTrustlyExperienceContext {
   return_url?: unknown;
   cancel_url?: unknown;
 }
-export const PaymentSourceInputTrustlyExperienceContext = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    brand_name: S.optional(S.String),
-    locale: S.optional(S.Unknown),
-    shipping_preference: S.optional(PaymentSourceInputTrustlyExperienceContextShippingPreference),
-    return_url: S.optional(S.Unknown),
-    cancel_url: S.optional(S.Unknown),
-  }),
-).annotate({
-  identifier: "PaymentSourceInputTrustlyExperienceContext",
-}) as any as S.Schema<PaymentSourceInputTrustlyExperienceContext>;
+export const PaymentSourceInputTrustlyExperienceContext =
+  PaymentSourceInputEpsExperienceContext as any as S.Schema<PaymentSourceInputTrustlyExperienceContext>;
 
 export interface PaymentSourceInputTrustly {
   name: unknown;
@@ -10594,31 +10043,15 @@ export interface PaymentSourceInputVenmoAttributesVault {
   /** Create multiple payment tokens for the same payer, merchant/platform combination. Use this when the customer has not logged in at merchant/platform. The payment token thus generated, can then also be used to create the customer account at merchant/platform. Use this also when multiple payment tokens are required for the same payer, different customer at merchant/platform. This helps to identify customers distinctly even though they may share the same Venmo account. */
   permit_multiple_payment_tokens?: boolean;
 }
-export const PaymentSourceInputVenmoAttributesVault = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    store_in_vault: StoreInVaultInstruction,
-    description: S.optional(S.String),
-    usage_pattern: S.optional(PaymentSourceInputVenmoAttributesVaultUsagePattern),
-    usage_type: PaymentSourceInputVenmoAttributesVaultUsageType,
-    customer_type: S.optional(PaymentSourceInputVenmoAttributesVaultCustomerType),
-    permit_multiple_payment_tokens: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "PaymentSourceInputVenmoAttributesVault",
-}) as any as S.Schema<PaymentSourceInputVenmoAttributesVault>;
+export const PaymentSourceInputVenmoAttributesVault =
+  AuthorizeOrderRequestPaymentSourceVenmoAttributesVault as any as S.Schema<PaymentSourceInputVenmoAttributesVault>;
 
 export interface PaymentSourceInputVenmoAttributes {
   customer?: Customer;
   vault?: PaymentSourceInputVenmoAttributesVault;
 }
-export const PaymentSourceInputVenmoAttributes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customer: S.optional(Customer),
-    vault: S.optional(PaymentSourceInputVenmoAttributesVault),
-  }),
-).annotate({
-  identifier: "PaymentSourceInputVenmoAttributes",
-}) as any as S.Schema<PaymentSourceInputVenmoAttributes>;
+export const PaymentSourceInputVenmoAttributes =
+  AuthorizeOrderRequestPaymentSourceVenmoAttributes as any as S.Schema<PaymentSourceInputVenmoAttributes>;
 
 export interface PaymentSourceInputVenmo {
   vault_id?: unknown;
@@ -10757,14 +10190,8 @@ export interface ConfirmOrderResponsePayerTaxInfo {
   /** The customer's tax ID type. */
   tax_id_type: ConfirmOrderResponsePayerTaxInfoTaxIdType;
 }
-export const ConfirmOrderResponsePayerTaxInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tax_id: S.String,
-    tax_id_type: ConfirmOrderResponsePayerTaxInfoTaxIdType,
-  }),
-).annotate({
-  identifier: "ConfirmOrderResponsePayerTaxInfo",
-}) as any as S.Schema<ConfirmOrderResponsePayerTaxInfo>;
+export const ConfirmOrderResponsePayerTaxInfo =
+  AuthorizeOrderRequestPaymentSourcePaypalTaxInfo as any as S.Schema<ConfirmOrderResponsePayerTaxInfo>;
 
 /** The non-portable additional address details include fine-grain address information for Compliance, Risk, and other scenarios. This isn't portable with common third-party and open source applications. This can include data that is redundant with core fields. For example, `address_portable.address_line_1` is usually a combination of `address_details.street_number`, `street_name`, and `street_type`. */
 export type ConfirmOrderResponsePayerAddressAddressDetails =
@@ -10784,19 +10211,8 @@ export interface ConfirmOrderResponsePayer {
   tax_info?: ConfirmOrderResponsePayerTaxInfo;
   address?: CardRequestInputBillingAddress;
 }
-export const ConfirmOrderResponsePayer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    email_address: S.optional(S.Unknown),
-    payer_id: S.optional(S.Unknown),
-    name: S.optional(CardCustomerName),
-    phone: S.optional(CardVaultResponseCustomerPhone),
-    birth_date: S.optional(S.Unknown),
-    tax_info: S.optional(ConfirmOrderResponsePayerTaxInfo),
-    address: S.optional(CardRequestInputBillingAddress),
-  }),
-).annotate({
-  identifier: "ConfirmOrderResponsePayer",
-}) as any as S.Schema<ConfirmOrderResponsePayer>;
+export const ConfirmOrderResponsePayer =
+  CaptureOrderResponsePayer as any as S.Schema<ConfirmOrderResponsePayer>;
 
 export type ConfirmOrderResponsePurchaseUnitsItemPayee =
   PaypalWalletAttributesResponseCobrandedCardsItemPayee;
@@ -10837,14 +10253,8 @@ export interface ConfirmOrderResponsePurchaseUnitsItemItemsItemUpc {
   /** The UPC product code of the item. */
   code: string;
 }
-export const ConfirmOrderResponsePurchaseUnitsItemItemsItemUpc = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ConfirmOrderResponsePurchaseUnitsItemItemsItemUpcType,
-    code: S.String,
-  }),
-).annotate({
-  identifier: "ConfirmOrderResponsePurchaseUnitsItemItemsItemUpc",
-}) as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemItemsItemUpc>;
+export const ConfirmOrderResponsePurchaseUnitsItemItemsItemUpc =
+  AuthorizeOrderResponsePurchaseUnitsItemItemsItemUpc as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemItemsItemUpc>;
 
 export interface ConfirmOrderResponsePurchaseUnitsItemItemsItem {
   /** The item name or title. */
@@ -10866,32 +10276,14 @@ export interface ConfirmOrderResponsePurchaseUnitsItemItemsItem {
   upc?: ConfirmOrderResponsePurchaseUnitsItemItemsItemUpc;
   billing_plan?: OrderBillingPlan;
 }
-export const ConfirmOrderResponsePurchaseUnitsItemItemsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    unit_amount: AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-    tax: S.optional(
-      AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-    ),
-    quantity: S.String,
-    description: S.optional(S.String),
-    sku: S.optional(S.String),
-    url: S.optional(S.String),
-    category: S.optional(ConfirmOrderResponsePurchaseUnitsItemItemsItemCategory),
-    image_url: S.optional(S.String),
-    upc: S.optional(ConfirmOrderResponsePurchaseUnitsItemItemsItemUpc),
-    billing_plan: S.optional(OrderBillingPlan),
-  }),
-).annotate({
-  identifier: "ConfirmOrderResponsePurchaseUnitsItemItemsItem",
-}) as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemItemsItem>;
+export const ConfirmOrderResponsePurchaseUnitsItemItemsItem =
+  AuthorizeOrderResponsePurchaseUnitsItemItemsItem as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemItemsItem>;
 
 /** An array of items that the customer purchases from the merchant. */
 export type ConfirmOrderResponsePurchaseUnitsItemItemsList =
   Array<ConfirmOrderResponsePurchaseUnitsItemItemsItem>;
-export const ConfirmOrderResponsePurchaseUnitsItemItemsList = /*@__PURE__*/ S.Array(
-  ConfirmOrderResponsePurchaseUnitsItemItemsItem,
-) as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemItemsList>;
+export const ConfirmOrderResponsePurchaseUnitsItemItemsList =
+  AuthorizeOrderResponsePurchaseUnitsItemItemsList as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemItemsList>;
 
 export type ConfirmOrderResponsePurchaseUnitsItemShippingName = CardCustomerName;
 export const ConfirmOrderResponsePurchaseUnitsItemShippingName = CardCustomerName;
@@ -11004,15 +10396,7 @@ export interface ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItem
   reason?: ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetailsReason;
 }
 export const ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetails =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      reason: S.optional(
-        ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetailsReason,
-      ),
-    }),
-  ).annotate({
-    identifier: "ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetails",
-  }) as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetails>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetails as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetails>;
 
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemAmount =
   AmountWithBreakdown;
@@ -11038,9 +10422,7 @@ export const ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSell
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionDisputeCategoriesList =
   Array<ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionDisputeCategoriesItem>;
 export const ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionDisputeCategoriesList =
-  /*@__PURE__*/ S.Array(
-    ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionDisputeCategoriesItem,
-  ) as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionDisputeCategoriesList>;
+  PaypalWalletExperienceContextInputOrderUpdateCallbackConfigCallbackEventsList as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionDisputeCategoriesList>;
 
 export interface ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtection {
   /** Indicates whether the transaction is eligible for seller protection. For information, see [PayPal Seller Protection for Merchants](https://www.paypal.com/us/webapps/mpp/security/seller-protection). */
@@ -11049,18 +10431,7 @@ export interface ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItem
   dispute_categories?: ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionDisputeCategoriesList;
 }
 export const ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtection =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      status: S.optional(
-        ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionStatus,
-      ),
-      dispute_categories: S.optional(
-        ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionDisputeCategoriesList,
-      ),
-    }),
-  ).annotate({
-    identifier: "ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtection",
-  }) as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtection>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtection as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtection>;
 
 /** The HTTP method required to make the related call. */
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemMethod =
@@ -11485,24 +10856,7 @@ export interface ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItem
   payment_advice_code?: ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponsePaymentAdviceCode;
 }
 export const ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      avs_code: S.optional(
-        ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponseAvsCode,
-      ),
-      cvv_code: S.optional(
-        ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponseCvvCode,
-      ),
-      response_code: S.optional(
-        ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponseResponseCode,
-      ),
-      payment_advice_code: S.optional(
-        ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponsePaymentAdviceCode,
-      ),
-    }),
-  ).annotate({
-    identifier: "ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponse",
-  }) as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponse>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponse as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponse>;
 
 export interface ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItem {
   /** The status for the authorized payment. */
@@ -11591,15 +10945,7 @@ export interface ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatus
   reason?: ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatusDetailsReason;
 }
 export const ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatusDetails =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      reason: S.optional(
-        ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatusDetailsReason,
-      ),
-    }),
-  ).annotate({
-    identifier: "ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatusDetails",
-  }) as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatusDetails>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetails as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatusDetails>;
 
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemAmount = AmountWithBreakdown;
 export const ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemAmount = AmountWithBreakdown;
@@ -11623,9 +10969,7 @@ export const ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProt
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtectionDisputeCategoriesList =
   Array<ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtectionDisputeCategoriesItem>;
 export const ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtectionDisputeCategoriesList =
-  /*@__PURE__*/ S.Array(
-    ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtectionDisputeCategoriesItem,
-  ) as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtectionDisputeCategoriesList>;
+  PaypalWalletExperienceContextInputOrderUpdateCallbackConfigCallbackEventsList as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtectionDisputeCategoriesList>;
 
 export interface ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtection {
   /** Indicates whether the transaction is eligible for seller protection. For information, see [PayPal Seller Protection for Merchants](https://www.paypal.com/us/webapps/mpp/security/seller-protection). */
@@ -11634,18 +10978,7 @@ export interface ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemSeller
   dispute_categories?: ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtectionDisputeCategoriesList;
 }
 export const ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtection =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      status: S.optional(
-        ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtectionStatus,
-      ),
-      dispute_categories: S.optional(
-        ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtectionDisputeCategoriesList,
-      ),
-    }),
-  ).annotate({
-    identifier: "ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtection",
-  }) as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtection>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtection as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtection>;
 
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownGrossAmount =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
@@ -12129,24 +11462,7 @@ export interface ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemProces
   payment_advice_code?: ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponsePaymentAdviceCode;
 }
 export const ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      avs_code: S.optional(
-        ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponseAvsCode,
-      ),
-      cvv_code: S.optional(
-        ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponseCvvCode,
-      ),
-      response_code: S.optional(
-        ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponseResponseCode,
-      ),
-      payment_advice_code: S.optional(
-        ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponsePaymentAdviceCode,
-      ),
-    }),
-  ).annotate({
-    identifier: "ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponse",
-  }) as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponse>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponse as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponse>;
 
 export interface ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItem {
   /** The status of the captured payment. */
@@ -12226,15 +11542,7 @@ export interface ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatusD
   reason?: ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetailsReason;
 }
 export const ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetails =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      reason: S.optional(
-        ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetailsReason,
-      ),
-    }),
-  ).annotate({
-    identifier: "ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetails",
-  }) as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetails>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetails as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetails>;
 
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemAmount =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
@@ -12852,14 +12160,8 @@ export interface CreateOrderRequestPayerTaxInfo {
   /** The customer's tax ID type. */
   tax_id_type: CreateOrderRequestPayerTaxInfoTaxIdType | (string & {});
 }
-export const CreateOrderRequestPayerTaxInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tax_id: S.String,
-    tax_id_type: CreateOrderRequestPayerTaxInfoTaxIdType,
-  }),
-).annotate({
-  identifier: "CreateOrderRequestPayerTaxInfo",
-}) as any as S.Schema<CreateOrderRequestPayerTaxInfo>;
+export const CreateOrderRequestPayerTaxInfo =
+  AuthorizeOrderRequestPaymentSourcePaypalTaxInfo as any as S.Schema<CreateOrderRequestPayerTaxInfo>;
 
 /** The non-portable additional address details include fine-grain address information for Compliance, Risk, and other scenarios. This isn't portable with common third-party and open source applications. This can include data that is redundant with core fields. For example, `address_portable.address_line_1` is usually a combination of `address_details.street_number`, `street_name`, and `street_type`. */
 export type CreateOrderRequestPayerAddressAddressDetails =
@@ -12933,14 +12235,8 @@ export interface CreateOrderRequestPurchaseUnitsItemItemsItemUpc {
   /** The UPC product code of the item. */
   code: string;
 }
-export const CreateOrderRequestPurchaseUnitsItemItemsItemUpc = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: CreateOrderRequestPurchaseUnitsItemItemsItemUpcType,
-    code: S.String,
-  }),
-).annotate({
-  identifier: "CreateOrderRequestPurchaseUnitsItemItemsItemUpc",
-}) as any as S.Schema<CreateOrderRequestPurchaseUnitsItemItemsItemUpc>;
+export const CreateOrderRequestPurchaseUnitsItemItemsItemUpc =
+  AuthorizeOrderResponsePurchaseUnitsItemItemsItemUpc as any as S.Schema<CreateOrderRequestPurchaseUnitsItemItemsItemUpc>;
 
 export interface CreateOrderRequestPurchaseUnitsItemItemsItem {
   /** The item name or title. <blockquote>This field supports up to 3000 characters, but <strong>any content beyond 127 characters (including spaces) will be truncated. The 127 character limit is reflected in the response</strong> representation of this field</blockquote>. */
@@ -12962,32 +12258,14 @@ export interface CreateOrderRequestPurchaseUnitsItemItemsItem {
   upc?: CreateOrderRequestPurchaseUnitsItemItemsItemUpc;
   billing_plan?: OrderBillingPlan;
 }
-export const CreateOrderRequestPurchaseUnitsItemItemsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    unit_amount: AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-    tax: S.optional(
-      AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-    ),
-    quantity: S.String,
-    description: S.optional(S.String),
-    sku: S.optional(S.String),
-    url: S.optional(S.String),
-    category: S.optional(CreateOrderRequestPurchaseUnitsItemItemsItemCategory),
-    image_url: S.optional(S.String),
-    upc: S.optional(CreateOrderRequestPurchaseUnitsItemItemsItemUpc),
-    billing_plan: S.optional(OrderBillingPlan),
-  }),
-).annotate({
-  identifier: "CreateOrderRequestPurchaseUnitsItemItemsItem",
-}) as any as S.Schema<CreateOrderRequestPurchaseUnitsItemItemsItem>;
+export const CreateOrderRequestPurchaseUnitsItemItemsItem =
+  AuthorizeOrderResponsePurchaseUnitsItemItemsItem as any as S.Schema<CreateOrderRequestPurchaseUnitsItemItemsItem>;
 
 /** An array of items that the customer purchases from the merchant. */
 export type CreateOrderRequestPurchaseUnitsItemItemsList =
   Array<CreateOrderRequestPurchaseUnitsItemItemsItem>;
-export const CreateOrderRequestPurchaseUnitsItemItemsList = /*@__PURE__*/ S.Array(
-  CreateOrderRequestPurchaseUnitsItemItemsItem,
-) as any as S.Schema<CreateOrderRequestPurchaseUnitsItemItemsList>;
+export const CreateOrderRequestPurchaseUnitsItemItemsList =
+  AuthorizeOrderResponsePurchaseUnitsItemItemsList as any as S.Schema<CreateOrderRequestPurchaseUnitsItemItemsList>;
 
 export type CreateOrderRequestPurchaseUnitsItemShippingName = CardCustomerName;
 export const CreateOrderRequestPurchaseUnitsItemShippingName = CardCustomerName;
@@ -13248,14 +12526,8 @@ export interface CreateOrderResponsePayerTaxInfo {
   /** The customer's tax ID type. */
   tax_id_type: CreateOrderResponsePayerTaxInfoTaxIdType;
 }
-export const CreateOrderResponsePayerTaxInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tax_id: S.String,
-    tax_id_type: CreateOrderResponsePayerTaxInfoTaxIdType,
-  }),
-).annotate({
-  identifier: "CreateOrderResponsePayerTaxInfo",
-}) as any as S.Schema<CreateOrderResponsePayerTaxInfo>;
+export const CreateOrderResponsePayerTaxInfo =
+  AuthorizeOrderRequestPaymentSourcePaypalTaxInfo as any as S.Schema<CreateOrderResponsePayerTaxInfo>;
 
 /** The non-portable additional address details include fine-grain address information for Compliance, Risk, and other scenarios. This isn't portable with common third-party and open source applications. This can include data that is redundant with core fields. For example, `address_portable.address_line_1` is usually a combination of `address_details.street_number`, `street_name`, and `street_type`. */
 export type CreateOrderResponsePayerAddressAddressDetails =
@@ -13326,14 +12598,8 @@ export interface CreateOrderResponsePurchaseUnitsItemItemsItemUpc {
   /** The UPC product code of the item. */
   code: string;
 }
-export const CreateOrderResponsePurchaseUnitsItemItemsItemUpc = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: CreateOrderResponsePurchaseUnitsItemItemsItemUpcType,
-    code: S.String,
-  }),
-).annotate({
-  identifier: "CreateOrderResponsePurchaseUnitsItemItemsItemUpc",
-}) as any as S.Schema<CreateOrderResponsePurchaseUnitsItemItemsItemUpc>;
+export const CreateOrderResponsePurchaseUnitsItemItemsItemUpc =
+  AuthorizeOrderResponsePurchaseUnitsItemItemsItemUpc as any as S.Schema<CreateOrderResponsePurchaseUnitsItemItemsItemUpc>;
 
 export interface CreateOrderResponsePurchaseUnitsItemItemsItem {
   /** The item name or title. */
@@ -13355,32 +12621,14 @@ export interface CreateOrderResponsePurchaseUnitsItemItemsItem {
   upc?: CreateOrderResponsePurchaseUnitsItemItemsItemUpc;
   billing_plan?: OrderBillingPlan;
 }
-export const CreateOrderResponsePurchaseUnitsItemItemsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    unit_amount: AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-    tax: S.optional(
-      AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-    ),
-    quantity: S.String,
-    description: S.optional(S.String),
-    sku: S.optional(S.String),
-    url: S.optional(S.String),
-    category: S.optional(CreateOrderResponsePurchaseUnitsItemItemsItemCategory),
-    image_url: S.optional(S.String),
-    upc: S.optional(CreateOrderResponsePurchaseUnitsItemItemsItemUpc),
-    billing_plan: S.optional(OrderBillingPlan),
-  }),
-).annotate({
-  identifier: "CreateOrderResponsePurchaseUnitsItemItemsItem",
-}) as any as S.Schema<CreateOrderResponsePurchaseUnitsItemItemsItem>;
+export const CreateOrderResponsePurchaseUnitsItemItemsItem =
+  AuthorizeOrderResponsePurchaseUnitsItemItemsItem as any as S.Schema<CreateOrderResponsePurchaseUnitsItemItemsItem>;
 
 /** An array of items that the customer purchases from the merchant. */
 export type CreateOrderResponsePurchaseUnitsItemItemsList =
   Array<CreateOrderResponsePurchaseUnitsItemItemsItem>;
-export const CreateOrderResponsePurchaseUnitsItemItemsList = /*@__PURE__*/ S.Array(
-  CreateOrderResponsePurchaseUnitsItemItemsItem,
-) as any as S.Schema<CreateOrderResponsePurchaseUnitsItemItemsList>;
+export const CreateOrderResponsePurchaseUnitsItemItemsList =
+  AuthorizeOrderResponsePurchaseUnitsItemItemsList as any as S.Schema<CreateOrderResponsePurchaseUnitsItemItemsList>;
 
 export type CreateOrderResponsePurchaseUnitsItemShippingName = CardCustomerName;
 export const CreateOrderResponsePurchaseUnitsItemShippingName = CardCustomerName;
@@ -13493,15 +12741,7 @@ export interface CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemS
   reason?: CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetailsReason;
 }
 export const CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetails =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      reason: S.optional(
-        CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetailsReason,
-      ),
-    }),
-  ).annotate({
-    identifier: "CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetails",
-  }) as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetails>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetails as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetails>;
 
 export type CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemAmount =
   AmountWithBreakdown;
@@ -13527,9 +12767,7 @@ export const CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSelle
 export type CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionDisputeCategoriesList =
   Array<CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionDisputeCategoriesItem>;
 export const CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionDisputeCategoriesList =
-  /*@__PURE__*/ S.Array(
-    CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionDisputeCategoriesItem,
-  ) as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionDisputeCategoriesList>;
+  PaypalWalletExperienceContextInputOrderUpdateCallbackConfigCallbackEventsList as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionDisputeCategoriesList>;
 
 export interface CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtection {
   /** Indicates whether the transaction is eligible for seller protection. For information, see [PayPal Seller Protection for Merchants](https://www.paypal.com/us/webapps/mpp/security/seller-protection). */
@@ -13538,18 +12776,7 @@ export interface CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemS
   dispute_categories?: CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionDisputeCategoriesList;
 }
 export const CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtection =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      status: S.optional(
-        CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionStatus,
-      ),
-      dispute_categories: S.optional(
-        CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionDisputeCategoriesList,
-      ),
-    }),
-  ).annotate({
-    identifier: "CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtection",
-  }) as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtection>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtection as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtection>;
 
 /** The HTTP method required to make the related call. */
 export type CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemMethod =
@@ -13974,24 +13201,7 @@ export interface CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemP
   payment_advice_code?: CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponsePaymentAdviceCode;
 }
 export const CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      avs_code: S.optional(
-        CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponseAvsCode,
-      ),
-      cvv_code: S.optional(
-        CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponseCvvCode,
-      ),
-      response_code: S.optional(
-        CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponseResponseCode,
-      ),
-      payment_advice_code: S.optional(
-        CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponsePaymentAdviceCode,
-      ),
-    }),
-  ).annotate({
-    identifier: "CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponse",
-  }) as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponse>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponse as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponse>;
 
 export interface CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItem {
   /** The status for the authorized payment. */
@@ -14078,15 +13288,7 @@ export interface CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatusD
   reason?: CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatusDetailsReason;
 }
 export const CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatusDetails =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      reason: S.optional(
-        CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatusDetailsReason,
-      ),
-    }),
-  ).annotate({
-    identifier: "CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatusDetails",
-  }) as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatusDetails>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetails as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatusDetails>;
 
 export type CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemAmount = AmountWithBreakdown;
 export const CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemAmount = AmountWithBreakdown;
@@ -14110,9 +13312,7 @@ export const CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProte
 export type CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtectionDisputeCategoriesList =
   Array<CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtectionDisputeCategoriesItem>;
 export const CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtectionDisputeCategoriesList =
-  /*@__PURE__*/ S.Array(
-    CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtectionDisputeCategoriesItem,
-  ) as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtectionDisputeCategoriesList>;
+  PaypalWalletExperienceContextInputOrderUpdateCallbackConfigCallbackEventsList as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtectionDisputeCategoriesList>;
 
 export interface CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtection {
   /** Indicates whether the transaction is eligible for seller protection. For information, see [PayPal Seller Protection for Merchants](https://www.paypal.com/us/webapps/mpp/security/seller-protection). */
@@ -14121,18 +13321,7 @@ export interface CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerP
   dispute_categories?: CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtectionDisputeCategoriesList;
 }
 export const CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtection =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      status: S.optional(
-        CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtectionStatus,
-      ),
-      dispute_categories: S.optional(
-        CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtectionDisputeCategoriesList,
-      ),
-    }),
-  ).annotate({
-    identifier: "CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtection",
-  }) as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtection>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtection as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtection>;
 
 export type CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownGrossAmount =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
@@ -14641,24 +13830,7 @@ export interface CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcess
   payment_advice_code?: CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponsePaymentAdviceCode;
 }
 export const CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      avs_code: S.optional(
-        CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponseAvsCode,
-      ),
-      cvv_code: S.optional(
-        CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponseCvvCode,
-      ),
-      response_code: S.optional(
-        CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponseResponseCode,
-      ),
-      payment_advice_code: S.optional(
-        CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponsePaymentAdviceCode,
-      ),
-    }),
-  ).annotate({
-    identifier: "CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponse",
-  }) as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponse>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponse as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponse>;
 
 export interface CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItem {
   /** The status of the captured payment. */
@@ -14738,15 +13910,7 @@ export interface CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatusDe
   reason?: CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetailsReason;
 }
 export const CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetails =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      reason: S.optional(
-        CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetailsReason,
-      ),
-    }),
-  ).annotate({
-    identifier: "CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetails",
-  }) as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetails>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetails as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetails>;
 
 export type CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemAmount =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
@@ -16778,14 +15942,8 @@ export interface CreateOrdersTrackRequestItemsItemUpc {
   /** The UPC product code of the item. */
   code: string;
 }
-export const CreateOrdersTrackRequestItemsItemUpc = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: CreateOrdersTrackRequestItemsItemUpcType,
-    code: S.String,
-  }),
-).annotate({
-  identifier: "CreateOrdersTrackRequestItemsItemUpc",
-}) as any as S.Schema<CreateOrdersTrackRequestItemsItemUpc>;
+export const CreateOrdersTrackRequestItemsItemUpc =
+  AuthorizeOrderResponsePurchaseUnitsItemItemsItemUpc as any as S.Schema<CreateOrdersTrackRequestItemsItemUpc>;
 
 export interface CreateOrdersTrackRequestItemsItem {
   /** The item name or title. */
@@ -16868,14 +16026,8 @@ export interface CreateOrdersTrackResponsePayerTaxInfo {
   /** The customer's tax ID type. */
   tax_id_type: CreateOrdersTrackResponsePayerTaxInfoTaxIdType;
 }
-export const CreateOrdersTrackResponsePayerTaxInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tax_id: S.String,
-    tax_id_type: CreateOrdersTrackResponsePayerTaxInfoTaxIdType,
-  }),
-).annotate({
-  identifier: "CreateOrdersTrackResponsePayerTaxInfo",
-}) as any as S.Schema<CreateOrdersTrackResponsePayerTaxInfo>;
+export const CreateOrdersTrackResponsePayerTaxInfo =
+  AuthorizeOrderRequestPaymentSourcePaypalTaxInfo as any as S.Schema<CreateOrdersTrackResponsePayerTaxInfo>;
 
 /** The non-portable additional address details include fine-grain address information for Compliance, Risk, and other scenarios. This isn't portable with common third-party and open source applications. This can include data that is redundant with core fields. For example, `address_portable.address_line_1` is usually a combination of `address_details.street_number`, `street_name`, and `street_type`. */
 export type CreateOrdersTrackResponsePayerAddressAddressDetails =
@@ -16895,19 +16047,8 @@ export interface CreateOrdersTrackResponsePayer {
   tax_info?: CreateOrdersTrackResponsePayerTaxInfo;
   address?: CardRequestInputBillingAddress;
 }
-export const CreateOrdersTrackResponsePayer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    email_address: S.optional(S.Unknown),
-    payer_id: S.optional(S.Unknown),
-    name: S.optional(CardCustomerName),
-    phone: S.optional(CardVaultResponseCustomerPhone),
-    birth_date: S.optional(S.Unknown),
-    tax_info: S.optional(CreateOrdersTrackResponsePayerTaxInfo),
-    address: S.optional(CardRequestInputBillingAddress),
-  }),
-).annotate({
-  identifier: "CreateOrdersTrackResponsePayer",
-}) as any as S.Schema<CreateOrdersTrackResponsePayer>;
+export const CreateOrdersTrackResponsePayer =
+  CaptureOrderResponsePayer as any as S.Schema<CreateOrdersTrackResponsePayer>;
 
 export type CreateOrdersTrackResponsePurchaseUnitsItemPayee =
   PaypalWalletAttributesResponseCobrandedCardsItemPayee;
@@ -16948,14 +16089,8 @@ export interface CreateOrdersTrackResponsePurchaseUnitsItemItemsItemUpc {
   /** The UPC product code of the item. */
   code: string;
 }
-export const CreateOrdersTrackResponsePurchaseUnitsItemItemsItemUpc = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: CreateOrdersTrackResponsePurchaseUnitsItemItemsItemUpcType,
-    code: S.String,
-  }),
-).annotate({
-  identifier: "CreateOrdersTrackResponsePurchaseUnitsItemItemsItemUpc",
-}) as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemItemsItemUpc>;
+export const CreateOrdersTrackResponsePurchaseUnitsItemItemsItemUpc =
+  AuthorizeOrderResponsePurchaseUnitsItemItemsItemUpc as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemItemsItemUpc>;
 
 export interface CreateOrdersTrackResponsePurchaseUnitsItemItemsItem {
   /** The item name or title. */
@@ -16977,32 +16112,14 @@ export interface CreateOrdersTrackResponsePurchaseUnitsItemItemsItem {
   upc?: CreateOrdersTrackResponsePurchaseUnitsItemItemsItemUpc;
   billing_plan?: OrderBillingPlan;
 }
-export const CreateOrdersTrackResponsePurchaseUnitsItemItemsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    unit_amount: AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-    tax: S.optional(
-      AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-    ),
-    quantity: S.String,
-    description: S.optional(S.String),
-    sku: S.optional(S.String),
-    url: S.optional(S.String),
-    category: S.optional(CreateOrdersTrackResponsePurchaseUnitsItemItemsItemCategory),
-    image_url: S.optional(S.String),
-    upc: S.optional(CreateOrdersTrackResponsePurchaseUnitsItemItemsItemUpc),
-    billing_plan: S.optional(OrderBillingPlan),
-  }),
-).annotate({
-  identifier: "CreateOrdersTrackResponsePurchaseUnitsItemItemsItem",
-}) as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemItemsItem>;
+export const CreateOrdersTrackResponsePurchaseUnitsItemItemsItem =
+  AuthorizeOrderResponsePurchaseUnitsItemItemsItem as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemItemsItem>;
 
 /** An array of items that the customer purchases from the merchant. */
 export type CreateOrdersTrackResponsePurchaseUnitsItemItemsList =
   Array<CreateOrdersTrackResponsePurchaseUnitsItemItemsItem>;
-export const CreateOrdersTrackResponsePurchaseUnitsItemItemsList = /*@__PURE__*/ S.Array(
-  CreateOrdersTrackResponsePurchaseUnitsItemItemsItem,
-) as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemItemsList>;
+export const CreateOrdersTrackResponsePurchaseUnitsItemItemsList =
+  AuthorizeOrderResponsePurchaseUnitsItemItemsList as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemItemsList>;
 
 export type CreateOrdersTrackResponsePurchaseUnitsItemShippingName = CardCustomerName;
 export const CreateOrdersTrackResponsePurchaseUnitsItemShippingName = CardCustomerName;
@@ -17117,15 +16234,7 @@ export interface CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorization
   reason?: CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetailsReason;
 }
 export const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetails =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      reason: S.optional(
-        CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetailsReason,
-      ),
-    }),
-  ).annotate({
-    identifier: "CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetails",
-  }) as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetails>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetails as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetails>;
 
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemAmount =
   AmountWithBreakdown;
@@ -17151,9 +16260,7 @@ export const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsIte
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionDisputeCategoriesList =
   Array<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionDisputeCategoriesItem>;
 export const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionDisputeCategoriesList =
-  /*@__PURE__*/ S.Array(
-    CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionDisputeCategoriesItem,
-  ) as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionDisputeCategoriesList>;
+  PaypalWalletExperienceContextInputOrderUpdateCallbackConfigCallbackEventsList as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionDisputeCategoriesList>;
 
 export interface CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtection {
   /** Indicates whether the transaction is eligible for seller protection. For information, see [PayPal Seller Protection for Merchants](https://www.paypal.com/us/webapps/mpp/security/seller-protection). */
@@ -17599,25 +16706,7 @@ export interface CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorization
   payment_advice_code?: CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponsePaymentAdviceCode;
 }
 export const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      avs_code: S.optional(
-        CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponseAvsCode,
-      ),
-      cvv_code: S.optional(
-        CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponseCvvCode,
-      ),
-      response_code: S.optional(
-        CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponseResponseCode,
-      ),
-      payment_advice_code: S.optional(
-        CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponsePaymentAdviceCode,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponse",
-  }) as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponse>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponse as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponse>;
 
 export interface CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItem {
   /** The status for the authorized payment. */
@@ -17710,15 +16799,7 @@ export interface CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemS
   reason?: CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemStatusDetailsReason;
 }
 export const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemStatusDetails =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      reason: S.optional(
-        CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemStatusDetailsReason,
-      ),
-    }),
-  ).annotate({
-    identifier: "CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemStatusDetails",
-  }) as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemStatusDetails>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetails as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemStatusDetails>;
 
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemAmount =
   AmountWithBreakdown;
@@ -17744,9 +16825,7 @@ export const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemSelle
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtectionDisputeCategoriesList =
   Array<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtectionDisputeCategoriesItem>;
 export const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtectionDisputeCategoriesList =
-  /*@__PURE__*/ S.Array(
-    CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtectionDisputeCategoriesItem,
-  ) as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtectionDisputeCategoriesList>;
+  PaypalWalletExperienceContextInputOrderUpdateCallbackConfigCallbackEventsList as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtectionDisputeCategoriesList>;
 
 export interface CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtection {
   /** Indicates whether the transaction is eligible for seller protection. For information, see [PayPal Seller Protection for Merchants](https://www.paypal.com/us/webapps/mpp/security/seller-protection). */
@@ -17755,18 +16834,7 @@ export interface CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemS
   dispute_categories?: CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtectionDisputeCategoriesList;
 }
 export const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtection =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      status: S.optional(
-        CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtectionStatus,
-      ),
-      dispute_categories: S.optional(
-        CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtectionDisputeCategoriesList,
-      ),
-    }),
-  ).annotate({
-    identifier: "CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtection",
-  }) as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtection>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtection as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtection>;
 
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownGrossAmount =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
@@ -18255,24 +17323,7 @@ export interface CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemP
   payment_advice_code?: CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponsePaymentAdviceCode;
 }
 export const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      avs_code: S.optional(
-        CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponseAvsCode,
-      ),
-      cvv_code: S.optional(
-        CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponseCvvCode,
-      ),
-      response_code: S.optional(
-        CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponseResponseCode,
-      ),
-      payment_advice_code: S.optional(
-        CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponsePaymentAdviceCode,
-      ),
-    }),
-  ).annotate({
-    identifier: "CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponse",
-  }) as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponse>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponse as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponse>;
 
 export interface CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItem {
   /** The status of the captured payment. */
@@ -18354,15 +17405,7 @@ export interface CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemSt
   reason?: CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetailsReason;
 }
 export const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetails =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      reason: S.optional(
-        CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetailsReason,
-      ),
-    }),
-  ).annotate({
-    identifier: "CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetails",
-  }) as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetails>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetails as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetails>;
 
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemAmount =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
@@ -19038,14 +18081,8 @@ export interface GetOrderResponsePayerTaxInfo {
   /** The customer's tax ID type. */
   tax_id_type: GetOrderResponsePayerTaxInfoTaxIdType;
 }
-export const GetOrderResponsePayerTaxInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tax_id: S.String,
-    tax_id_type: GetOrderResponsePayerTaxInfoTaxIdType,
-  }),
-).annotate({
-  identifier: "GetOrderResponsePayerTaxInfo",
-}) as any as S.Schema<GetOrderResponsePayerTaxInfo>;
+export const GetOrderResponsePayerTaxInfo =
+  AuthorizeOrderRequestPaymentSourcePaypalTaxInfo as any as S.Schema<GetOrderResponsePayerTaxInfo>;
 
 /** The non-portable additional address details include fine-grain address information for Compliance, Risk, and other scenarios. This isn't portable with common third-party and open source applications. This can include data that is redundant with core fields. For example, `address_portable.address_line_1` is usually a combination of `address_details.street_number`, `street_name`, and `street_type`. */
 export type GetOrderResponsePayerAddressAddressDetails =
@@ -19065,17 +18102,8 @@ export interface GetOrderResponsePayer {
   tax_info?: GetOrderResponsePayerTaxInfo;
   address?: CardRequestInputBillingAddress;
 }
-export const GetOrderResponsePayer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    email_address: S.optional(S.Unknown),
-    payer_id: S.optional(S.Unknown),
-    name: S.optional(CardCustomerName),
-    phone: S.optional(CardVaultResponseCustomerPhone),
-    birth_date: S.optional(S.Unknown),
-    tax_info: S.optional(GetOrderResponsePayerTaxInfo),
-    address: S.optional(CardRequestInputBillingAddress),
-  }),
-).annotate({ identifier: "GetOrderResponsePayer" }) as any as S.Schema<GetOrderResponsePayer>;
+export const GetOrderResponsePayer =
+  CreateOrderResponsePayer as any as S.Schema<GetOrderResponsePayer>;
 
 export type GetOrderResponsePurchaseUnitsItemPayee =
   PaypalWalletAttributesResponseCobrandedCardsItemPayee;
@@ -19116,14 +18144,8 @@ export interface GetOrderResponsePurchaseUnitsItemItemsItemUpc {
   /** The UPC product code of the item. */
   code: string;
 }
-export const GetOrderResponsePurchaseUnitsItemItemsItemUpc = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: GetOrderResponsePurchaseUnitsItemItemsItemUpcType,
-    code: S.String,
-  }),
-).annotate({
-  identifier: "GetOrderResponsePurchaseUnitsItemItemsItemUpc",
-}) as any as S.Schema<GetOrderResponsePurchaseUnitsItemItemsItemUpc>;
+export const GetOrderResponsePurchaseUnitsItemItemsItemUpc =
+  AuthorizeOrderResponsePurchaseUnitsItemItemsItemUpc as any as S.Schema<GetOrderResponsePurchaseUnitsItemItemsItemUpc>;
 
 export interface GetOrderResponsePurchaseUnitsItemItemsItem {
   /** The item name or title. */
@@ -19145,32 +18167,14 @@ export interface GetOrderResponsePurchaseUnitsItemItemsItem {
   upc?: GetOrderResponsePurchaseUnitsItemItemsItemUpc;
   billing_plan?: OrderBillingPlan;
 }
-export const GetOrderResponsePurchaseUnitsItemItemsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    unit_amount: AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-    tax: S.optional(
-      AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-    ),
-    quantity: S.String,
-    description: S.optional(S.String),
-    sku: S.optional(S.String),
-    url: S.optional(S.String),
-    category: S.optional(GetOrderResponsePurchaseUnitsItemItemsItemCategory),
-    image_url: S.optional(S.String),
-    upc: S.optional(GetOrderResponsePurchaseUnitsItemItemsItemUpc),
-    billing_plan: S.optional(OrderBillingPlan),
-  }),
-).annotate({
-  identifier: "GetOrderResponsePurchaseUnitsItemItemsItem",
-}) as any as S.Schema<GetOrderResponsePurchaseUnitsItemItemsItem>;
+export const GetOrderResponsePurchaseUnitsItemItemsItem =
+  AuthorizeOrderResponsePurchaseUnitsItemItemsItem as any as S.Schema<GetOrderResponsePurchaseUnitsItemItemsItem>;
 
 /** An array of items that the customer purchases from the merchant. */
 export type GetOrderResponsePurchaseUnitsItemItemsList =
   Array<GetOrderResponsePurchaseUnitsItemItemsItem>;
-export const GetOrderResponsePurchaseUnitsItemItemsList = /*@__PURE__*/ S.Array(
-  GetOrderResponsePurchaseUnitsItemItemsItem,
-) as any as S.Schema<GetOrderResponsePurchaseUnitsItemItemsList>;
+export const GetOrderResponsePurchaseUnitsItemItemsList =
+  AuthorizeOrderResponsePurchaseUnitsItemItemsList as any as S.Schema<GetOrderResponsePurchaseUnitsItemItemsList>;
 
 export type GetOrderResponsePurchaseUnitsItemShippingName = CardCustomerName;
 export const GetOrderResponsePurchaseUnitsItemShippingName = CardCustomerName;
@@ -19283,15 +18287,7 @@ export interface GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStat
   reason?: GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetailsReason;
 }
 export const GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetails =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      reason: S.optional(
-        GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetailsReason,
-      ),
-    }),
-  ).annotate({
-    identifier: "GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetails",
-  }) as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetails>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetails as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemStatusDetails>;
 
 export type GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemAmount = AmountWithBreakdown;
 export const GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemAmount =
@@ -19316,9 +18312,7 @@ export const GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerPr
 export type GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionDisputeCategoriesList =
   Array<GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionDisputeCategoriesItem>;
 export const GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionDisputeCategoriesList =
-  /*@__PURE__*/ S.Array(
-    GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionDisputeCategoriesItem,
-  ) as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionDisputeCategoriesList>;
+  PaypalWalletExperienceContextInputOrderUpdateCallbackConfigCallbackEventsList as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionDisputeCategoriesList>;
 
 export interface GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtection {
   /** Indicates whether the transaction is eligible for seller protection. For information, see [PayPal Seller Protection for Merchants](https://www.paypal.com/us/webapps/mpp/security/seller-protection). */
@@ -19327,18 +18321,7 @@ export interface GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSell
   dispute_categories?: GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionDisputeCategoriesList;
 }
 export const GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtection =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      status: S.optional(
-        GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionStatus,
-      ),
-      dispute_categories: S.optional(
-        GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtectionDisputeCategoriesList,
-      ),
-    }),
-  ).annotate({
-    identifier: "GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtection",
-  }) as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtection>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtection as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtection>;
 
 /** The HTTP method required to make the related call. */
 export type GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemMethod =
@@ -19762,24 +18745,7 @@ export interface GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProc
   payment_advice_code?: GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponsePaymentAdviceCode;
 }
 export const GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      avs_code: S.optional(
-        GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponseAvsCode,
-      ),
-      cvv_code: S.optional(
-        GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponseCvvCode,
-      ),
-      response_code: S.optional(
-        GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponseResponseCode,
-      ),
-      payment_advice_code: S.optional(
-        GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponsePaymentAdviceCode,
-      ),
-    }),
-  ).annotate({
-    identifier: "GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponse",
-  }) as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponse>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponse as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemProcessorResponse>;
 
 export interface GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItem {
   /** The status for the authorized payment. */
@@ -19895,9 +18861,7 @@ export const GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtecti
 export type GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtectionDisputeCategoriesList =
   Array<GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtectionDisputeCategoriesItem>;
 export const GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtectionDisputeCategoriesList =
-  /*@__PURE__*/ S.Array(
-    GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtectionDisputeCategoriesItem,
-  ) as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtectionDisputeCategoriesList>;
+  PaypalWalletExperienceContextInputOrderUpdateCallbackConfigCallbackEventsList as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtectionDisputeCategoriesList>;
 
 export interface GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtection {
   /** Indicates whether the transaction is eligible for seller protection. For information, see [PayPal Seller Protection for Merchants](https://www.paypal.com/us/webapps/mpp/security/seller-protection). */
@@ -19906,18 +18870,7 @@ export interface GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProt
   dispute_categories?: GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtectionDisputeCategoriesList;
 }
 export const GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtection =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      status: S.optional(
-        GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtectionStatus,
-      ),
-      dispute_categories: S.optional(
-        GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtectionDisputeCategoriesList,
-      ),
-    }),
-  ).annotate({
-    identifier: "GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtection",
-  }) as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtection>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemSellerProtection as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerProtection>;
 
 export type GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownGrossAmount =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
@@ -20400,24 +19353,7 @@ export interface GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorR
   payment_advice_code?: GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponsePaymentAdviceCode;
 }
 export const GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      avs_code: S.optional(
-        GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponseAvsCode,
-      ),
-      cvv_code: S.optional(
-        GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponseCvvCode,
-      ),
-      response_code: S.optional(
-        GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponseResponseCode,
-      ),
-      payment_advice_code: S.optional(
-        GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponsePaymentAdviceCode,
-      ),
-    }),
-  ).annotate({
-    identifier: "GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponse",
-  }) as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponse>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponse as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemProcessorResponse>;
 
 export interface GetOrderResponsePurchaseUnitsItemPaymentsCapturesItem {
   /** The status of the captured payment. */
@@ -20494,13 +19430,7 @@ export interface GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetai
   reason?: GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetailsReason;
 }
 export const GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetails =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      reason: S.optional(GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetailsReason),
-    }),
-  ).annotate({
-    identifier: "GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetails",
-  }) as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetails>;
+  GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemStatusDetails as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemStatusDetails>;
 
 export type GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemAmount =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
@@ -21229,14 +20159,8 @@ export interface ServerCallbackRequestPurchaseUnitsItemItemsItemUpc {
   /** The UPC product code of the item. */
   code: string;
 }
-export const ServerCallbackRequestPurchaseUnitsItemItemsItemUpc = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ServerCallbackRequestPurchaseUnitsItemItemsItemUpcType,
-    code: S.String,
-  }),
-).annotate({
-  identifier: "ServerCallbackRequestPurchaseUnitsItemItemsItemUpc",
-}) as any as S.Schema<ServerCallbackRequestPurchaseUnitsItemItemsItemUpc>;
+export const ServerCallbackRequestPurchaseUnitsItemItemsItemUpc =
+  AuthorizeOrderResponsePurchaseUnitsItemItemsItemUpc as any as S.Schema<ServerCallbackRequestPurchaseUnitsItemItemsItemUpc>;
 
 export interface ServerCallbackRequestPurchaseUnitsItemItemsItem {
   /** The item name or title. <blockquote>This field supports up to 3000 characters, but <strong>any content beyond 127 characters (including spaces) will be truncated. The 127 character limit is reflected in the response</strong> representation of this field</blockquote>. */
@@ -21258,32 +20182,14 @@ export interface ServerCallbackRequestPurchaseUnitsItemItemsItem {
   upc?: ServerCallbackRequestPurchaseUnitsItemItemsItemUpc;
   billing_plan?: OrderBillingPlan;
 }
-export const ServerCallbackRequestPurchaseUnitsItemItemsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    unit_amount: AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-    tax: S.optional(
-      AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-    ),
-    quantity: S.String,
-    description: S.optional(S.String),
-    sku: S.optional(S.String),
-    url: S.optional(S.String),
-    category: S.optional(ServerCallbackRequestPurchaseUnitsItemItemsItemCategory),
-    image_url: S.optional(S.String),
-    upc: S.optional(ServerCallbackRequestPurchaseUnitsItemItemsItemUpc),
-    billing_plan: S.optional(OrderBillingPlan),
-  }),
-).annotate({
-  identifier: "ServerCallbackRequestPurchaseUnitsItemItemsItem",
-}) as any as S.Schema<ServerCallbackRequestPurchaseUnitsItemItemsItem>;
+export const ServerCallbackRequestPurchaseUnitsItemItemsItem =
+  AuthorizeOrderResponsePurchaseUnitsItemItemsItem as any as S.Schema<ServerCallbackRequestPurchaseUnitsItemItemsItem>;
 
 /** An array of items that the customer purchases from the merchant. */
 export type ServerCallbackRequestPurchaseUnitsItemItemsList =
   Array<ServerCallbackRequestPurchaseUnitsItemItemsItem>;
-export const ServerCallbackRequestPurchaseUnitsItemItemsList = /*@__PURE__*/ S.Array(
-  ServerCallbackRequestPurchaseUnitsItemItemsItem,
-) as any as S.Schema<ServerCallbackRequestPurchaseUnitsItemItemsList>;
+export const ServerCallbackRequestPurchaseUnitsItemItemsList =
+  AuthorizeOrderResponsePurchaseUnitsItemItemsList as any as S.Schema<ServerCallbackRequestPurchaseUnitsItemItemsList>;
 
 export type ServerCallbackRequestPurchaseUnitsItemShippingName = CardCustomerName;
 export const ServerCallbackRequestPurchaseUnitsItemShippingName = CardCustomerName;

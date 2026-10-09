@@ -508,18 +508,8 @@ export interface BillingAccountPoliciesResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const BillingAccountPoliciesResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(BillingAccountPoliciesResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(BillingAccountPoliciesResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BillingAccountPoliciesResponseSystemData",
-}) as any as S.Schema<BillingAccountPoliciesResponseSystemData>;
+export const BillingAccountPoliciesResponseSystemData =
+  SubscriptionAliasResponseSystemData as any as S.Schema<BillingAccountPoliciesResponseSystemData>;
 
 /** Billing account policies information. */
 export interface BillingAccountPoliciesResponse {
@@ -649,18 +639,8 @@ export interface GetTenantPolicyResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetTenantPolicyResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetTenantPolicyResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetTenantPolicyResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetTenantPolicyResponseSystemData",
-}) as any as S.Schema<GetTenantPolicyResponseSystemData>;
+export const GetTenantPolicyResponseSystemData =
+  SubscriptionAliasResponseSystemData as any as S.Schema<GetTenantPolicyResponseSystemData>;
 
 /** Tenant policy Information. */
 export interface GetTenantPolicyResponse {

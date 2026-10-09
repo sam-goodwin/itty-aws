@@ -1571,13 +1571,7 @@ export interface PrivateKeySource {
   /** Sub-location within the private key source. */
   subLocation: string;
 }
-export const PrivateKeySource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: PrivateKeySourceType,
-    location: S.String,
-    subLocation: S.String,
-  }),
-).annotate({ identifier: "PrivateKeySource" }) as any as S.Schema<PrivateKeySource>;
+export const PrivateKeySource = CertificateSource as any as S.Schema<PrivateKeySource>;
 
 /** TLS certificate and private key pair. */
 export interface CertificateWithKey {

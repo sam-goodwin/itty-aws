@@ -2155,15 +2155,8 @@ export interface GetIntegrationsIntegrationMembersResponseMembersItem {
   slug?: string;
   role?: CreateGroupResponseGroupDefaultProjectRole;
 }
-export const GetIntegrationsIntegrationMembersResponseMembersItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(GetIntegrationsIntegrationMembersResponseMembersItemType),
-    slug: S.optional(S.String),
-    role: S.optional(CreateGroupResponseGroupDefaultProjectRole),
-  }),
-).annotate({
-  identifier: "GetIntegrationsIntegrationMembersResponseMembersItem",
-}) as any as S.Schema<GetIntegrationsIntegrationMembersResponseMembersItem>;
+export const GetIntegrationsIntegrationMembersResponseMembersItem =
+  CreateIntegrationsIntegrationMemberResponseMember as any as S.Schema<GetIntegrationsIntegrationMembersResponseMembersItem>;
 
 export type GetIntegrationsIntegrationMembersResponseMembersList =
   Array<GetIntegrationsIntegrationMembersResponseMembersItem>;
@@ -2710,20 +2703,7 @@ export interface GetV3workplacechangeRequestschangeRequestChangeRequestIdRespons
   image?: string;
 }
 export const GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemCreatedBy =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      slug: S.optional(S.String),
-      type: S.optional(
-        GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemCreatedByType,
-      ),
-      name: S.optional(S.String),
-      isActive: S.optional(S.Boolean),
-      image: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemCreatedBy",
-  }) as any as S.Schema<GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemCreatedBy>;
+  GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestCreatedBy as any as S.Schema<GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemCreatedBy>;
 
 /** 0 = masked, 1 = unmasked, 2 = restricted */
 export type GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemUpdatesItemVisType =
@@ -2975,20 +2955,7 @@ export interface GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsun
   image?: string;
 }
 export const GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnitCreatedBy =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      slug: S.optional(S.String),
-      type: S.optional(
-        GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnitCreatedByType,
-      ),
-      name: S.optional(S.String),
-      isActive: S.optional(S.Boolean),
-      image: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnitCreatedBy",
-  }) as any as S.Schema<GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnitCreatedBy>;
+  GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestCreatedBy as any as S.Schema<GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnitCreatedBy>;
 
 /** 0 = masked, 1 = unmasked, 2 = restricted */
 export type GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnitUpdatesItemVisType =
@@ -3013,28 +2980,12 @@ export interface GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsun
   generationSettings?: unknown;
 }
 export const GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnitUpdatesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      value: S.optional(S.String),
-      shouldDelete: S.optional(S.Boolean),
-      visType: S.optional(
-        GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnitUpdatesItemVisType,
-      ),
-      valueType: S.optional(GetSecretResponseValueRawValueType),
-      generationSettings: S.optional(S.Unknown),
-    }),
-  ).annotate({
-    identifier:
-      "GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnitUpdatesItem",
-  }) as any as S.Schema<GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnitUpdatesItem>;
+  GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemUpdatesItem as any as S.Schema<GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnitUpdatesItem>;
 
 export type GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnitUpdatesList =
   Array<GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnitUpdatesItem>;
 export const GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnitUpdatesList =
-  /*@__PURE__*/ S.Array(
-    GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnitUpdatesItem,
-  ) as any as S.Schema<GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnitUpdatesList>;
+  GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemUpdatesList as any as S.Schema<GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnitUpdatesList>;
 
 export interface GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnit {
   id?: string;
@@ -3046,28 +2997,7 @@ export interface GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsun
   updates?: GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnitUpdatesList;
 }
 export const GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnit =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      status: S.optional(
-        GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnitStatus,
-      ),
-      target: S.optional(GetV3workplacechangeRequestsResponseBodyItemUnitsItemTarget),
-      applied: S.optional(
-        GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemApplied,
-      ),
-      createdAt: S.optional(S.String),
-      createdBy: S.optional(
-        GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnitCreatedBy,
-      ),
-      updates: S.optional(
-        GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnitUpdatesList,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnit",
-  }) as any as S.Schema<GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnit>;
+  GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItem as any as S.Schema<GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnit>;
 
 export interface GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponse {
   unit?: GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnit;
@@ -3480,26 +3410,14 @@ export interface GetWorkplaceIntegrationsIntegrationMemberResponseMember {
   slug?: string;
   role?: CreateGroupResponseGroupDefaultProjectRole;
 }
-export const GetWorkplaceIntegrationsIntegrationMemberResponseMember = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(GetWorkplaceIntegrationsIntegrationMemberResponseMemberType),
-    slug: S.optional(S.String),
-    role: S.optional(CreateGroupResponseGroupDefaultProjectRole),
-  }),
-).annotate({
-  identifier: "GetWorkplaceIntegrationsIntegrationMemberResponseMember",
-}) as any as S.Schema<GetWorkplaceIntegrationsIntegrationMemberResponseMember>;
+export const GetWorkplaceIntegrationsIntegrationMemberResponseMember =
+  CreateIntegrationsIntegrationMemberResponseMember as any as S.Schema<GetWorkplaceIntegrationsIntegrationMemberResponseMember>;
 
 export interface GetWorkplaceIntegrationsIntegrationMemberResponse {
   member?: GetWorkplaceIntegrationsIntegrationMemberResponseMember;
 }
-export const GetWorkplaceIntegrationsIntegrationMemberResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    member: S.optional(GetWorkplaceIntegrationsIntegrationMemberResponseMember),
-  }),
-).annotate({
-  identifier: "GetWorkplaceIntegrationsIntegrationMemberResponse",
-}) as any as S.Schema<GetWorkplaceIntegrationsIntegrationMemberResponse>;
+export const GetWorkplaceIntegrationsIntegrationMemberResponse =
+  CreateIntegrationsIntegrationMemberResponse as any as S.Schema<GetWorkplaceIntegrationsIntegrationMemberResponse>;
 
 export type GroupsAddMemberRequestType = "workplace_user";
 export const GroupsAddMemberRequestType = S.String;
@@ -3935,17 +3853,8 @@ export interface ListSecretsResponseSecretsALGOLIA {
   rawVisibility?: ListSecretsResponseSecretsALGOLIARawVisibility;
   computedVisibility?: string;
 }
-export const ListSecretsResponseSecretsALGOLIA = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    raw: S.optional(S.String),
-    computed: S.optional(S.String),
-    note: S.optional(S.String),
-    rawVisibility: S.optional(ListSecretsResponseSecretsALGOLIARawVisibility),
-    computedVisibility: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListSecretsResponseSecretsALGOLIA",
-}) as any as S.Schema<ListSecretsResponseSecretsALGOLIA>;
+export const ListSecretsResponseSecretsALGOLIA =
+  ListSecretsResponseSecretsSTRIPE as any as S.Schema<ListSecretsResponseSecretsALGOLIA>;
 
 export type ListSecretsResponseSecretsDATABASERawVisibility = "unmasked" | "masked" | "restricted";
 export const ListSecretsResponseSecretsDATABASERawVisibility = S.String;
@@ -3957,17 +3866,8 @@ export interface ListSecretsResponseSecretsDATABASE {
   rawVisibility?: ListSecretsResponseSecretsDATABASERawVisibility;
   computedVisibility?: string;
 }
-export const ListSecretsResponseSecretsDATABASE = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    raw: S.optional(S.String),
-    computed: S.optional(S.String),
-    note: S.optional(S.String),
-    rawVisibility: S.optional(ListSecretsResponseSecretsDATABASERawVisibility),
-    computedVisibility: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListSecretsResponseSecretsDATABASE",
-}) as any as S.Schema<ListSecretsResponseSecretsDATABASE>;
+export const ListSecretsResponseSecretsDATABASE =
+  ListSecretsResponseSecretsSTRIPE as any as S.Schema<ListSecretsResponseSecretsDATABASE>;
 
 export type ListSecretsResponseSecretsUSERRawVisibility = "unmasked" | "masked" | "restricted";
 export const ListSecretsResponseSecretsUSERRawVisibility = S.String;
@@ -3979,17 +3879,8 @@ export interface ListSecretsResponseSecretsUSER {
   rawVisibility?: ListSecretsResponseSecretsUSERRawVisibility;
   computedVisibility?: string;
 }
-export const ListSecretsResponseSecretsUSER = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    raw: S.optional(S.String),
-    computed: S.optional(S.String),
-    note: S.optional(S.String),
-    rawVisibility: S.optional(ListSecretsResponseSecretsUSERRawVisibility),
-    computedVisibility: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListSecretsResponseSecretsUSER",
-}) as any as S.Schema<ListSecretsResponseSecretsUSER>;
+export const ListSecretsResponseSecretsUSER =
+  ListSecretsResponseSecretsSTRIPE as any as S.Schema<ListSecretsResponseSecretsUSER>;
 
 export interface ListSecretsResponseSecrets {
   STRIPE?: ListSecretsResponseSecretsSTRIPE;
@@ -4071,13 +3962,8 @@ export const ListWebhooksResponseWebhooksItemAuthenticationType = S.String;
 export interface ListWebhooksResponseWebhooksItemAuthentication {
   type?: ListWebhooksResponseWebhooksItemAuthenticationType;
 }
-export const ListWebhooksResponseWebhooksItemAuthentication = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(ListWebhooksResponseWebhooksItemAuthenticationType),
-  }),
-).annotate({
-  identifier: "ListWebhooksResponseWebhooksItemAuthentication",
-}) as any as S.Schema<ListWebhooksResponseWebhooksItemAuthentication>;
+export const ListWebhooksResponseWebhooksItemAuthentication =
+  GetWebhookResponseWebhookAuthentication as any as S.Schema<ListWebhooksResponseWebhooksItemAuthentication>;
 
 /** The configs the webhook will trigger for */
 export type ListWebhooksResponseWebhooksItemEnabledConfigsList = Array<string>;
@@ -4161,20 +4047,13 @@ export interface PostV3workplacechangeRequestsRequestAssignedItem {
   type: PostV3workplacechangeRequestsRequestAssignedItemType | (string & {});
   slug: string;
 }
-export const PostV3workplacechangeRequestsRequestAssignedItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: PostV3workplacechangeRequestsRequestAssignedItemType,
-    slug: S.String,
-  }),
-).annotate({
-  identifier: "PostV3workplacechangeRequestsRequestAssignedItem",
-}) as any as S.Schema<PostV3workplacechangeRequestsRequestAssignedItem>;
+export const PostV3workplacechangeRequestsRequestAssignedItem =
+  CreateChangeRequestPolicyRequestRulesItemSubjectsItem as any as S.Schema<PostV3workplacechangeRequestsRequestAssignedItem>;
 
 export type PostV3workplacechangeRequestsRequestAssignedList =
   Array<PostV3workplacechangeRequestsRequestAssignedItem>;
-export const PostV3workplacechangeRequestsRequestAssignedList = /*@__PURE__*/ S.Array(
-  PostV3workplacechangeRequestsRequestAssignedItem,
-) as any as S.Schema<PostV3workplacechangeRequestsRequestAssignedList>;
+export const PostV3workplacechangeRequestsRequestAssignedList =
+  CreateChangeRequestPolicyRequestRulesItemSubjectsList as any as S.Schema<PostV3workplacechangeRequestsRequestAssignedList>;
 
 export type PostV3workplacechangeRequestsRequestUnitsItemAction = "create";
 export const PostV3workplacechangeRequestsRequestUnitsItemAction = S.String;
@@ -4453,32 +4332,13 @@ export interface PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsu
   status?: PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdApplyResponseUnitStatus;
 }
 export const PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdApplyResponseUnit =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      status: S.optional(
-        PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdApplyResponseUnitStatus,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdApplyResponseUnit",
-  }) as any as S.Schema<PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdApplyResponseUnit>;
+  DeleteV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewResponseUnit as any as S.Schema<PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdApplyResponseUnit>;
 
 export interface PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdApplyResponse {
   unit?: PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdApplyResponseUnit;
 }
 export const PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdApplyResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      unit: S.optional(
-        PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdApplyResponseUnit,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdApplyResponse",
-  }) as any as S.Schema<PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdApplyResponse>;
+  DeleteV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewResponse as any as S.Schema<PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdApplyResponse>;
 
 export interface PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewRequest {
   change_request_id: string;
@@ -4513,32 +4373,13 @@ export interface PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsu
   status?: PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewResponseUnitStatus;
 }
 export const PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewResponseUnit =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      status: S.optional(
-        PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewResponseUnitStatus,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewResponseUnit",
-  }) as any as S.Schema<PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewResponseUnit>;
+  DeleteV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewResponseUnit as any as S.Schema<PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewResponseUnit>;
 
 export interface PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewResponse {
   unit?: PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewResponseUnit;
 }
 export const PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      unit: S.optional(
-        PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewResponseUnit,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewResponse",
-  }) as any as S.Schema<PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewResponse>;
+  DeleteV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewResponse as any as S.Schema<PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewResponse>;
 
 export type PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdStatusRequestStatus =
   | "draft"
@@ -4585,32 +4426,13 @@ export interface PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsu
   status?: PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdStatusResponseUnitStatus;
 }
 export const PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdStatusResponseUnit =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      status: S.optional(
-        PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdStatusResponseUnitStatus,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdStatusResponseUnit",
-  }) as any as S.Schema<PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdStatusResponseUnit>;
+  DeleteV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewResponseUnit as any as S.Schema<PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdStatusResponseUnit>;
 
 export interface PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdStatusResponse {
   unit?: PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdStatusResponseUnit;
 }
 export const PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdStatusResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      unit: S.optional(
-        PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdStatusResponseUnit,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdStatusResponse",
-  }) as any as S.Schema<PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdStatusResponse>;
+  DeleteV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewResponse as any as S.Schema<PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdStatusResponse>;
 
 export type PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequestMethod =
   "oidc";
@@ -5258,21 +5080,12 @@ export interface PutV3workplacechangeRequestschangeRequestChangeRequestIdRequest
   slug: string;
 }
 export const PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestAssignedItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestAssignedItemType,
-      slug: S.String,
-    }),
-  ).annotate({
-    identifier: "PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestAssignedItem",
-  }) as any as S.Schema<PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestAssignedItem>;
+  PostV3workplacechangeRequestschangeRequestChangeRequestIdRequestAssignedItem as any as S.Schema<PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestAssignedItem>;
 
 export type PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestAssignedList =
   Array<PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestAssignedItem>;
 export const PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestAssignedList =
-  /*@__PURE__*/ S.Array(
-    PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestAssignedItem,
-  ) as any as S.Schema<PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestAssignedList>;
+  PostV3workplacechangeRequestschangeRequestChangeRequestIdRequestAssignedList as any as S.Schema<PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestAssignedList>;
 
 export type PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsItemAction =
   | "create"
@@ -6488,21 +6301,14 @@ export interface UpdateChangeRequestPolicyRequestRulesItemSubjectsItem {
   /** The unique identifier of the subject. */
   slug: string;
 }
-export const UpdateChangeRequestPolicyRequestRulesItemSubjectsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: UpdateChangeRequestPolicyRequestRulesItemSubjectsItemType,
-    slug: S.String,
-  }),
-).annotate({
-  identifier: "UpdateChangeRequestPolicyRequestRulesItemSubjectsItem",
-}) as any as S.Schema<UpdateChangeRequestPolicyRequestRulesItemSubjectsItem>;
+export const UpdateChangeRequestPolicyRequestRulesItemSubjectsItem =
+  CreateChangeRequestPolicyRequestRulesItemSubjectsItem as any as S.Schema<UpdateChangeRequestPolicyRequestRulesItemSubjectsItem>;
 
 /** A list of required reviewers. If specified, only reviews from reviewers in this list will satisfy the policy. Only applies to "RequiredReviewer" rules. */
 export type UpdateChangeRequestPolicyRequestRulesItemSubjectsList =
   Array<UpdateChangeRequestPolicyRequestRulesItemSubjectsItem>;
-export const UpdateChangeRequestPolicyRequestRulesItemSubjectsList = /*@__PURE__*/ S.Array(
-  UpdateChangeRequestPolicyRequestRulesItemSubjectsItem,
-) as any as S.Schema<UpdateChangeRequestPolicyRequestRulesItemSubjectsList>;
+export const UpdateChangeRequestPolicyRequestRulesItemSubjectsList =
+  CreateChangeRequestPolicyRequestRulesItemSubjectsList as any as S.Schema<UpdateChangeRequestPolicyRequestRulesItemSubjectsList>;
 
 export interface UpdateChangeRequestPolicyRequestRulesItem {
   type: UpdateChangeRequestPolicyRequestRulesItemType | (string & {});
@@ -6511,22 +6317,14 @@ export interface UpdateChangeRequestPolicyRequestRulesItem {
   /** A list of required reviewers. If specified, only reviews from reviewers in this list will satisfy the policy. Only applies to "RequiredReviewer" rules. */
   subjects?: UpdateChangeRequestPolicyRequestRulesItemSubjectsList;
 }
-export const UpdateChangeRequestPolicyRequestRulesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: UpdateChangeRequestPolicyRequestRulesItemType,
-    count: S.optional(S.Number),
-    subjects: S.optional(UpdateChangeRequestPolicyRequestRulesItemSubjectsList),
-  }),
-).annotate({
-  identifier: "UpdateChangeRequestPolicyRequestRulesItem",
-}) as any as S.Schema<UpdateChangeRequestPolicyRequestRulesItem>;
+export const UpdateChangeRequestPolicyRequestRulesItem =
+  CreateChangeRequestPolicyRequestRulesItem as any as S.Schema<UpdateChangeRequestPolicyRequestRulesItem>;
 
 /** A list of rules the policy enforces. */
 export type UpdateChangeRequestPolicyRequestRulesList =
   Array<UpdateChangeRequestPolicyRequestRulesItem>;
-export const UpdateChangeRequestPolicyRequestRulesList = /*@__PURE__*/ S.Array(
-  UpdateChangeRequestPolicyRequestRulesItem,
-) as any as S.Schema<UpdateChangeRequestPolicyRequestRulesList>;
+export const UpdateChangeRequestPolicyRequestRulesList =
+  CreateChangeRequestPolicyRequestRulesList as any as S.Schema<UpdateChangeRequestPolicyRequestRulesList>;
 
 /** Describes the which projects, environments, and configs the policy applies to. */
 export type UpdateChangeRequestPolicyRequestTargets = CreateChangeRequestPolicyRequestTargets;
@@ -6733,26 +6531,14 @@ export interface UpdateIntegrationsIntegrationMemberResponseMember {
   slug?: string;
   role?: CreateGroupResponseGroupDefaultProjectRole;
 }
-export const UpdateIntegrationsIntegrationMemberResponseMember = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(UpdateIntegrationsIntegrationMemberResponseMemberType),
-    slug: S.optional(S.String),
-    role: S.optional(CreateGroupResponseGroupDefaultProjectRole),
-  }),
-).annotate({
-  identifier: "UpdateIntegrationsIntegrationMemberResponseMember",
-}) as any as S.Schema<UpdateIntegrationsIntegrationMemberResponseMember>;
+export const UpdateIntegrationsIntegrationMemberResponseMember =
+  CreateIntegrationsIntegrationMemberResponseMember as any as S.Schema<UpdateIntegrationsIntegrationMemberResponseMember>;
 
 export interface UpdateIntegrationsIntegrationMemberResponse {
   member?: UpdateIntegrationsIntegrationMemberResponseMember;
 }
-export const UpdateIntegrationsIntegrationMemberResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    member: S.optional(UpdateIntegrationsIntegrationMemberResponseMember),
-  }),
-).annotate({
-  identifier: "UpdateIntegrationsIntegrationMemberResponse",
-}) as any as S.Schema<UpdateIntegrationsIntegrationMemberResponse>;
+export const UpdateIntegrationsIntegrationMemberResponse =
+  CreateIntegrationsIntegrationMemberResponse as any as S.Schema<UpdateIntegrationsIntegrationMemberResponse>;
 
 export interface UpdateProjectRequest {
   /** Unique identifier for the project object. */
@@ -6816,13 +6602,8 @@ export const UpdateSecretRequestChangeRequestsItemValueTypeType = S.String;
 export interface UpdateSecretRequestChangeRequestsItemValueType {
   type?: UpdateSecretRequestChangeRequestsItemValueTypeType | (string & {});
 }
-export const UpdateSecretRequestChangeRequestsItemValueType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(UpdateSecretRequestChangeRequestsItemValueTypeType),
-  }),
-).annotate({
-  identifier: "UpdateSecretRequestChangeRequestsItemValueType",
-}) as any as S.Schema<UpdateSecretRequestChangeRequestsItemValueType>;
+export const UpdateSecretRequestChangeRequestsItemValueType =
+  GetWebhookResponseWebhookAuthentication as any as S.Schema<UpdateSecretRequestChangeRequestsItemValueType>;
 
 export type UpdateSecretRequestChangeRequestsItemOriginalValueTypeType =
   | "string"
@@ -6845,13 +6626,8 @@ export const UpdateSecretRequestChangeRequestsItemOriginalValueTypeType = S.Stri
 export interface UpdateSecretRequestChangeRequestsItemOriginalValueType {
   type?: UpdateSecretRequestChangeRequestsItemOriginalValueTypeType | (string & {});
 }
-export const UpdateSecretRequestChangeRequestsItemOriginalValueType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(UpdateSecretRequestChangeRequestsItemOriginalValueTypeType),
-  }),
-).annotate({
-  identifier: "UpdateSecretRequestChangeRequestsItemOriginalValueType",
-}) as any as S.Schema<UpdateSecretRequestChangeRequestsItemOriginalValueType>;
+export const UpdateSecretRequestChangeRequestsItemOriginalValueType =
+  GetWebhookResponseWebhookAuthentication as any as S.Schema<UpdateSecretRequestChangeRequestsItemOriginalValueType>;
 
 export interface UpdateSecretRequestChangeRequestsItem {
   /** The name of the secret. */
@@ -7002,16 +6778,8 @@ export interface UpdateWebhookRequestAuthentication {
   /** Used when type = Basic */
   password?: string | Redacted.Redacted<string>;
 }
-export const UpdateWebhookRequestAuthentication = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(UpdateWebhookRequestAuthenticationType),
-    token: S.optional(S.String),
-    username: S.optional(S.String),
-    password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-  }),
-).annotate({
-  identifier: "UpdateWebhookRequestAuthentication",
-}) as any as S.Schema<UpdateWebhookRequestAuthentication>;
+export const UpdateWebhookRequestAuthentication =
+  AddWebhookRequestAuthentication as any as S.Schema<UpdateWebhookRequestAuthentication>;
 
 /** Config slugs that the webhook should be enabled for */
 export type UpdateWebhookRequestEnableConfigsList = Array<string>;

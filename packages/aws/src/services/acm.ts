@@ -1485,15 +1485,17 @@ export const ListCertificateDomainValidationsResponse = /*@__PURE__*/ S.suspend(
   identifier: "ListCertificateDomainValidationsResponse",
 }) as any as S.Schema<ListCertificateDomainValidationsResponse>;
 export type CertificateStatuses = CertificateStatus[];
-export const CertificateStatuses = /*@__PURE__*/ S.Array(CertificateStatus);
+export const CertificateStatuses = PublicKeyAlgorithmList as any as S.Schema<CertificateStatuses>;
 export type CertificateKeyPairOrigins = CertificateKeyPairOrigin[];
-export const CertificateKeyPairOrigins = /*@__PURE__*/ S.Array(CertificateKeyPairOrigin);
+export const CertificateKeyPairOrigins =
+  PublicKeyAlgorithmList as any as S.Schema<CertificateKeyPairOrigins>;
 export type ExtendedKeyUsageFilterList = ExtendedKeyUsageName[];
-export const ExtendedKeyUsageFilterList = /*@__PURE__*/ S.Array(ExtendedKeyUsageName);
+export const ExtendedKeyUsageFilterList =
+  PublicKeyAlgorithmList as any as S.Schema<ExtendedKeyUsageFilterList>;
 export type KeyUsageFilterList = KeyUsageName[];
-export const KeyUsageFilterList = /*@__PURE__*/ S.Array(KeyUsageName);
+export const KeyUsageFilterList = PublicKeyAlgorithmList as any as S.Schema<KeyUsageFilterList>;
 export type KeyAlgorithmList = KeyAlgorithm[];
-export const KeyAlgorithmList = /*@__PURE__*/ S.Array(KeyAlgorithm);
+export const KeyAlgorithmList = PublicKeyAlgorithmList as any as S.Schema<KeyAlgorithmList>;
 export interface Filters {
   extendedKeyUsage?: ExtendedKeyUsageName[];
   keyUsage?: KeyUsageName[];

@@ -205,18 +205,16 @@ export type ListImagesRequestTypeItem = "system" | "app" | "snapshot" | "backup"
 export const ListImagesRequestTypeItem = S.String;
 
 export type ListImagesRequestTypeList = Array<ListImagesRequestTypeItem | (string & {})>;
-export const ListImagesRequestTypeList = /*@__PURE__*/ S.Array(
-  ListImagesRequestTypeItem,
-) as any as S.Schema<ListImagesRequestTypeList>;
+export const ListImagesRequestTypeList =
+  ListImagesRequestSortList as any as S.Schema<ListImagesRequestTypeList>;
 
 /** Status of the Image. */
 export type ListImagesRequestStatusItem = "available" | "creating" | "unavailable";
 export const ListImagesRequestStatusItem = S.String;
 
 export type ListImagesRequestStatusList = Array<ListImagesRequestStatusItem | (string & {})>;
-export const ListImagesRequestStatusList = /*@__PURE__*/ S.Array(
-  ListImagesRequestStatusItem,
-) as any as S.Schema<ListImagesRequestStatusList>;
+export const ListImagesRequestStatusList =
+  ListImagesRequestSortList as any as S.Schema<ListImagesRequestStatusList>;
 
 export type ListImagesRequestBoundToList = Array<string>;
 export const ListImagesRequestBoundToList = /*@__PURE__*/ S.Array(

@@ -137,7 +137,7 @@ export type ResourceLocationValues = "CLOUD" | "OUTPOST" | "LOCAL_ZONE" | (strin
 export const ResourceLocationValues = S.String;
 
 export type ResourceLocationList = ResourceLocationValues[];
-export const ResourceLocationList = /*@__PURE__*/ S.Array(ResourceLocationValues);
+export const ResourceLocationList = ResourceTypeValuesList as any as S.Schema<ResourceLocationList>;
 export interface Tag {
   Key?: string;
   Value?: string;
@@ -167,7 +167,7 @@ export type StageValues = "PRE" | "POST" | (string & {});
 export const StageValues = S.String;
 
 export type StagesList = StageValues[];
-export const StagesList = /*@__PURE__*/ S.Array(StageValues);
+export const StagesList = ResourceTypeValuesList as any as S.Schema<StagesList>;
 export type ExecutionHandlerServiceValues = "AWS_SYSTEMS_MANAGER" | (string & {});
 export const ExecutionHandlerServiceValues = S.String;
 

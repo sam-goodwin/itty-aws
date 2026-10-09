@@ -616,20 +616,8 @@ export interface GetAzureBareMetalStorageInstanceResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetAzureBareMetalStorageInstanceResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetAzureBareMetalStorageInstanceResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      GetAzureBareMetalStorageInstanceResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetAzureBareMetalStorageInstanceResponseSystemData",
-}) as any as S.Schema<GetAzureBareMetalStorageInstanceResponseSystemData>;
+export const GetAzureBareMetalStorageInstanceResponseSystemData =
+  CreateAzureBareMetalStorageInstanceResponseSystemData as any as S.Schema<GetAzureBareMetalStorageInstanceResponseSystemData>;
 
 export interface GetAzureBareMetalStorageInstanceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -719,18 +707,8 @@ export interface AzureBareMetalInstanceSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const AzureBareMetalInstanceSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(AzureBareMetalInstanceSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(AzureBareMetalInstanceSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AzureBareMetalInstanceSystemData",
-}) as any as S.Schema<AzureBareMetalInstanceSystemData>;
+export const AzureBareMetalInstanceSystemData =
+  GetAzureBareMetalInstanceResponseSystemData as any as S.Schema<AzureBareMetalInstanceSystemData>;
 
 /** AzureBareMetal instance info on Azure (ARM properties and AzureBareMetal properties) */
 export interface AzureBareMetalInstance {
@@ -860,18 +838,8 @@ export interface AzureBareMetalStorageInstanceSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const AzureBareMetalStorageInstanceSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(AzureBareMetalStorageInstanceSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(AzureBareMetalStorageInstanceSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AzureBareMetalStorageInstanceSystemData",
-}) as any as S.Schema<AzureBareMetalStorageInstanceSystemData>;
+export const AzureBareMetalStorageInstanceSystemData =
+  GetAzureBareMetalInstanceResponseSystemData as any as S.Schema<AzureBareMetalStorageInstanceSystemData>;
 
 /** AzureBareMetalStorageInstance info on Azure (ARM properties and AzureBareMetalStorage properties) */
 export interface AzureBareMetalStorageInstance {
@@ -1081,20 +1049,8 @@ export interface UpdateAzureBareMetalInstanceResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdateAzureBareMetalInstanceResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(UpdateAzureBareMetalInstanceResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      UpdateAzureBareMetalInstanceResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateAzureBareMetalInstanceResponseSystemData",
-}) as any as S.Schema<UpdateAzureBareMetalInstanceResponseSystemData>;
+export const UpdateAzureBareMetalInstanceResponseSystemData =
+  CreateAzureBareMetalStorageInstanceResponseSystemData as any as S.Schema<UpdateAzureBareMetalInstanceResponseSystemData>;
 
 export interface UpdateAzureBareMetalInstanceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1199,20 +1155,8 @@ export interface UpdateAzureBareMetalStorageInstanceResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdateAzureBareMetalStorageInstanceResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(UpdateAzureBareMetalStorageInstanceResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      UpdateAzureBareMetalStorageInstanceResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateAzureBareMetalStorageInstanceResponseSystemData",
-}) as any as S.Schema<UpdateAzureBareMetalStorageInstanceResponseSystemData>;
+export const UpdateAzureBareMetalStorageInstanceResponseSystemData =
+  CreateAzureBareMetalStorageInstanceResponseSystemData as any as S.Schema<UpdateAzureBareMetalStorageInstanceResponseSystemData>;
 
 export interface UpdateAzureBareMetalStorageInstanceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */

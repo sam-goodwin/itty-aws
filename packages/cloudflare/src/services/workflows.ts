@@ -1516,14 +1516,8 @@ export const VersionsGraphResponseGraphWorkflowNodesItemCase10PayloadTypeType = 
 export interface VersionsGraphResponseGraphWorkflowNodesItemCase10PayloadType {
   type: VersionsGraphResponseGraphWorkflowNodesItemCase10PayloadTypeType;
 }
-export const VersionsGraphResponseGraphWorkflowNodesItemCase10PayloadType = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      type: VersionsGraphResponseGraphWorkflowNodesItemCase10PayloadTypeType,
-    }),
-).annotate({
-  identifier: "VersionsGraphResponseGraphWorkflowNodesItemCase10PayloadType",
-}) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase10PayloadType>;
+export const VersionsGraphResponseGraphWorkflowNodesItemCase10PayloadType =
+  VersionsGraphResponseGraphWorkflowNodesItemCase2PayloadType as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase10PayloadType>;
 
 export type VersionsGraphResponseGraphWorkflowNodesItemCase10PayloadCase1FieldsMap = {
   [key: string]: unknown | undefined;

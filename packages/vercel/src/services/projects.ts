@@ -589,9 +589,8 @@ export const CreateProjectRequestSandboxFailoverRegionsItem = S.String;
 export type CreateProjectRequestSandboxFailoverRegionsList = Array<
   CreateProjectRequestSandboxFailoverRegionsItem | (string & {})
 >;
-export const CreateProjectRequestSandboxFailoverRegionsList = /*@__PURE__*/ S.Array(
-  CreateProjectRequestSandboxFailoverRegionsItem,
-) as any as S.Schema<CreateProjectRequestSandboxFailoverRegionsList>;
+export const CreateProjectRequestSandboxFailoverRegionsList =
+  CreateProjectRequestEnvironmentVariablesItemTargetCase1List as any as S.Schema<CreateProjectRequestSandboxFailoverRegionsList>;
 
 /** Specifies the default region and failover regions for sandboxes created in the project */
 export interface CreateProjectRequestSandbox {
@@ -1334,14 +1333,8 @@ export interface CreateProjectResponseCreatorCase1 {
   app: CreateProjectResponseCreatorCase0ViaCase0App;
   type: CreateProjectResponseCreatorCase1Type;
 }
-export const CreateProjectResponseCreatorCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app: CreateProjectResponseCreatorCase0ViaCase0App,
-    type: CreateProjectResponseCreatorCase1Type,
-  }),
-).annotate({
-  identifier: "CreateProjectResponseCreatorCase1",
-}) as any as S.Schema<CreateProjectResponseCreatorCase1>;
+export const CreateProjectResponseCreatorCase1 =
+  CreateProjectResponseCreatorCase0ViaCase0 as any as S.Schema<CreateProjectResponseCreatorCase1>;
 
 export type CreateProjectResponseCreatorCase2Integration =
   CreateProjectResponseCreatorCase0ViaCase1Integration;
@@ -1355,14 +1348,8 @@ export interface CreateProjectResponseCreatorCase2 {
   integration: CreateProjectResponseCreatorCase0ViaCase1Integration;
   type: CreateProjectResponseCreatorCase2Type;
 }
-export const CreateProjectResponseCreatorCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    integration: CreateProjectResponseCreatorCase0ViaCase1Integration,
-    type: CreateProjectResponseCreatorCase2Type,
-  }),
-).annotate({
-  identifier: "CreateProjectResponseCreatorCase2",
-}) as any as S.Schema<CreateProjectResponseCreatorCase2>;
+export const CreateProjectResponseCreatorCase2 =
+  CreateProjectResponseCreatorCase0ViaCase1 as any as S.Schema<CreateProjectResponseCreatorCase2>;
 
 export type CreateProjectResponseCreatorCase3Type = "system";
 export const CreateProjectResponseCreatorCase3Type = S.String;
@@ -1660,13 +1647,8 @@ export const CreateProjectResponseDefaultResourceConfigBuildQueueConfiguration =
 export interface CreateProjectResponseDefaultResourceConfigBuildQueue {
   configuration?: CreateProjectResponseDefaultResourceConfigBuildQueueConfiguration;
 }
-export const CreateProjectResponseDefaultResourceConfigBuildQueue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    configuration: S.optional(CreateProjectResponseDefaultResourceConfigBuildQueueConfiguration),
-  }),
-).annotate({
-  identifier: "CreateProjectResponseDefaultResourceConfigBuildQueue",
-}) as any as S.Schema<CreateProjectResponseDefaultResourceConfigBuildQueue>;
+export const CreateProjectResponseDefaultResourceConfigBuildQueue =
+  CreateProjectRequestResourceConfigBuildQueue as any as S.Schema<CreateProjectResponseDefaultResourceConfigBuildQueue>;
 
 export type CreateProjectResponseDefaultResourceConfigFunctionDefaultMemoryType =
   | "performance"
@@ -1861,14 +1843,7 @@ export interface CreateProjectResponseDeploymentPolicyGitSourcesItemEnvironments
   type: CreateProjectResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase0Type;
 }
 export const CreateProjectResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      target: CreateProjectResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase0Target,
-      type: CreateProjectResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase0Type,
-    }),
-  ).annotate({
-    identifier: "CreateProjectResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase0",
-  }) as any as S.Schema<CreateProjectResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase0>;
+  CreateProjectResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase0 as any as S.Schema<CreateProjectResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase0>;
 
 export type CreateProjectResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase1Type = "custom";
 export const CreateProjectResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase1Type =
@@ -1879,14 +1854,7 @@ export interface CreateProjectResponseDeploymentPolicyGitSourcesItemEnvironments
   type: CreateProjectResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase1Type;
 }
 export const CreateProjectResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      environmentId: S.String,
-      type: CreateProjectResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase1Type,
-    }),
-  ).annotate({
-    identifier: "CreateProjectResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase1",
-  }) as any as S.Schema<CreateProjectResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase1>;
+  CreateProjectResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase1 as any as S.Schema<CreateProjectResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase1>;
 
 export type CreateProjectResponseDeploymentPolicyGitSourcesItemEnvironmentsItem =
   | CreateProjectResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase0
@@ -2077,14 +2045,8 @@ export interface CreateProjectResponseEnvItemContentHintCase1 {
   storeId: string;
   type: CreateProjectResponseEnvItemContentHintCase1Type;
 }
-export const CreateProjectResponseEnvItemContentHintCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: CreateProjectResponseEnvItemContentHintCase1Type,
-  }),
-).annotate({
-  identifier: "CreateProjectResponseEnvItemContentHintCase1",
-}) as any as S.Schema<CreateProjectResponseEnvItemContentHintCase1>;
+export const CreateProjectResponseEnvItemContentHintCase1 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<CreateProjectResponseEnvItemContentHintCase1>;
 
 export type CreateProjectResponseEnvItemContentHintCase2Type = "redis-rest-api-token";
 export const CreateProjectResponseEnvItemContentHintCase2Type = S.String;
@@ -2093,14 +2055,8 @@ export interface CreateProjectResponseEnvItemContentHintCase2 {
   storeId: string;
   type: CreateProjectResponseEnvItemContentHintCase2Type;
 }
-export const CreateProjectResponseEnvItemContentHintCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: CreateProjectResponseEnvItemContentHintCase2Type,
-  }),
-).annotate({
-  identifier: "CreateProjectResponseEnvItemContentHintCase2",
-}) as any as S.Schema<CreateProjectResponseEnvItemContentHintCase2>;
+export const CreateProjectResponseEnvItemContentHintCase2 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<CreateProjectResponseEnvItemContentHintCase2>;
 
 export type CreateProjectResponseEnvItemContentHintCase3Type = "redis-rest-api-read-only-token";
 export const CreateProjectResponseEnvItemContentHintCase3Type = S.String;
@@ -2109,14 +2065,8 @@ export interface CreateProjectResponseEnvItemContentHintCase3 {
   storeId: string;
   type: CreateProjectResponseEnvItemContentHintCase3Type;
 }
-export const CreateProjectResponseEnvItemContentHintCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: CreateProjectResponseEnvItemContentHintCase3Type,
-  }),
-).annotate({
-  identifier: "CreateProjectResponseEnvItemContentHintCase3",
-}) as any as S.Schema<CreateProjectResponseEnvItemContentHintCase3>;
+export const CreateProjectResponseEnvItemContentHintCase3 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<CreateProjectResponseEnvItemContentHintCase3>;
 
 export type CreateProjectResponseEnvItemContentHintCase4Type = "blob-read-write-token";
 export const CreateProjectResponseEnvItemContentHintCase4Type = S.String;
@@ -2125,14 +2075,8 @@ export interface CreateProjectResponseEnvItemContentHintCase4 {
   storeId: string;
   type: CreateProjectResponseEnvItemContentHintCase4Type;
 }
-export const CreateProjectResponseEnvItemContentHintCase4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: CreateProjectResponseEnvItemContentHintCase4Type,
-  }),
-).annotate({
-  identifier: "CreateProjectResponseEnvItemContentHintCase4",
-}) as any as S.Schema<CreateProjectResponseEnvItemContentHintCase4>;
+export const CreateProjectResponseEnvItemContentHintCase4 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<CreateProjectResponseEnvItemContentHintCase4>;
 
 export type CreateProjectResponseEnvItemContentHintCase5Type = "blob-store-id";
 export const CreateProjectResponseEnvItemContentHintCase5Type = S.String;
@@ -2141,14 +2085,8 @@ export interface CreateProjectResponseEnvItemContentHintCase5 {
   storeId: string;
   type: CreateProjectResponseEnvItemContentHintCase5Type;
 }
-export const CreateProjectResponseEnvItemContentHintCase5 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: CreateProjectResponseEnvItemContentHintCase5Type,
-  }),
-).annotate({
-  identifier: "CreateProjectResponseEnvItemContentHintCase5",
-}) as any as S.Schema<CreateProjectResponseEnvItemContentHintCase5>;
+export const CreateProjectResponseEnvItemContentHintCase5 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<CreateProjectResponseEnvItemContentHintCase5>;
 
 export type CreateProjectResponseEnvItemContentHintCase6Type = "blob-webhook-public-key";
 export const CreateProjectResponseEnvItemContentHintCase6Type = S.String;
@@ -2157,14 +2095,8 @@ export interface CreateProjectResponseEnvItemContentHintCase6 {
   storeId: string;
   type: CreateProjectResponseEnvItemContentHintCase6Type;
 }
-export const CreateProjectResponseEnvItemContentHintCase6 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: CreateProjectResponseEnvItemContentHintCase6Type,
-  }),
-).annotate({
-  identifier: "CreateProjectResponseEnvItemContentHintCase6",
-}) as any as S.Schema<CreateProjectResponseEnvItemContentHintCase6>;
+export const CreateProjectResponseEnvItemContentHintCase6 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<CreateProjectResponseEnvItemContentHintCase6>;
 
 export type CreateProjectResponseEnvItemContentHintCase7Type = "postgres-url";
 export const CreateProjectResponseEnvItemContentHintCase7Type = S.String;
@@ -2173,14 +2105,8 @@ export interface CreateProjectResponseEnvItemContentHintCase7 {
   storeId: string;
   type: CreateProjectResponseEnvItemContentHintCase7Type;
 }
-export const CreateProjectResponseEnvItemContentHintCase7 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: CreateProjectResponseEnvItemContentHintCase7Type,
-  }),
-).annotate({
-  identifier: "CreateProjectResponseEnvItemContentHintCase7",
-}) as any as S.Schema<CreateProjectResponseEnvItemContentHintCase7>;
+export const CreateProjectResponseEnvItemContentHintCase7 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<CreateProjectResponseEnvItemContentHintCase7>;
 
 export type CreateProjectResponseEnvItemContentHintCase8Type = "postgres-url-non-pooling";
 export const CreateProjectResponseEnvItemContentHintCase8Type = S.String;
@@ -2189,14 +2115,8 @@ export interface CreateProjectResponseEnvItemContentHintCase8 {
   storeId: string;
   type: CreateProjectResponseEnvItemContentHintCase8Type;
 }
-export const CreateProjectResponseEnvItemContentHintCase8 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: CreateProjectResponseEnvItemContentHintCase8Type,
-  }),
-).annotate({
-  identifier: "CreateProjectResponseEnvItemContentHintCase8",
-}) as any as S.Schema<CreateProjectResponseEnvItemContentHintCase8>;
+export const CreateProjectResponseEnvItemContentHintCase8 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<CreateProjectResponseEnvItemContentHintCase8>;
 
 export type CreateProjectResponseEnvItemContentHintCase9Type = "postgres-prisma-url";
 export const CreateProjectResponseEnvItemContentHintCase9Type = S.String;
@@ -2205,14 +2125,8 @@ export interface CreateProjectResponseEnvItemContentHintCase9 {
   storeId: string;
   type: CreateProjectResponseEnvItemContentHintCase9Type;
 }
-export const CreateProjectResponseEnvItemContentHintCase9 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: CreateProjectResponseEnvItemContentHintCase9Type,
-  }),
-).annotate({
-  identifier: "CreateProjectResponseEnvItemContentHintCase9",
-}) as any as S.Schema<CreateProjectResponseEnvItemContentHintCase9>;
+export const CreateProjectResponseEnvItemContentHintCase9 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<CreateProjectResponseEnvItemContentHintCase9>;
 
 export type CreateProjectResponseEnvItemContentHintCase10Type = "postgres-user";
 export const CreateProjectResponseEnvItemContentHintCase10Type = S.String;
@@ -2221,14 +2135,8 @@ export interface CreateProjectResponseEnvItemContentHintCase10 {
   storeId: string;
   type: CreateProjectResponseEnvItemContentHintCase10Type;
 }
-export const CreateProjectResponseEnvItemContentHintCase10 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: CreateProjectResponseEnvItemContentHintCase10Type,
-  }),
-).annotate({
-  identifier: "CreateProjectResponseEnvItemContentHintCase10",
-}) as any as S.Schema<CreateProjectResponseEnvItemContentHintCase10>;
+export const CreateProjectResponseEnvItemContentHintCase10 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<CreateProjectResponseEnvItemContentHintCase10>;
 
 export type CreateProjectResponseEnvItemContentHintCase11Type = "postgres-host";
 export const CreateProjectResponseEnvItemContentHintCase11Type = S.String;
@@ -2237,14 +2145,8 @@ export interface CreateProjectResponseEnvItemContentHintCase11 {
   storeId: string;
   type: CreateProjectResponseEnvItemContentHintCase11Type;
 }
-export const CreateProjectResponseEnvItemContentHintCase11 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: CreateProjectResponseEnvItemContentHintCase11Type,
-  }),
-).annotate({
-  identifier: "CreateProjectResponseEnvItemContentHintCase11",
-}) as any as S.Schema<CreateProjectResponseEnvItemContentHintCase11>;
+export const CreateProjectResponseEnvItemContentHintCase11 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<CreateProjectResponseEnvItemContentHintCase11>;
 
 export type CreateProjectResponseEnvItemContentHintCase12Type = "postgres-password";
 export const CreateProjectResponseEnvItemContentHintCase12Type = S.String;
@@ -2253,14 +2155,8 @@ export interface CreateProjectResponseEnvItemContentHintCase12 {
   storeId: string;
   type: CreateProjectResponseEnvItemContentHintCase12Type;
 }
-export const CreateProjectResponseEnvItemContentHintCase12 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: CreateProjectResponseEnvItemContentHintCase12Type,
-  }),
-).annotate({
-  identifier: "CreateProjectResponseEnvItemContentHintCase12",
-}) as any as S.Schema<CreateProjectResponseEnvItemContentHintCase12>;
+export const CreateProjectResponseEnvItemContentHintCase12 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<CreateProjectResponseEnvItemContentHintCase12>;
 
 export type CreateProjectResponseEnvItemContentHintCase13Type = "postgres-database";
 export const CreateProjectResponseEnvItemContentHintCase13Type = S.String;
@@ -2269,14 +2165,8 @@ export interface CreateProjectResponseEnvItemContentHintCase13 {
   storeId: string;
   type: CreateProjectResponseEnvItemContentHintCase13Type;
 }
-export const CreateProjectResponseEnvItemContentHintCase13 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: CreateProjectResponseEnvItemContentHintCase13Type,
-  }),
-).annotate({
-  identifier: "CreateProjectResponseEnvItemContentHintCase13",
-}) as any as S.Schema<CreateProjectResponseEnvItemContentHintCase13>;
+export const CreateProjectResponseEnvItemContentHintCase13 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<CreateProjectResponseEnvItemContentHintCase13>;
 
 export type CreateProjectResponseEnvItemContentHintCase14Type = "postgres-url-no-ssl";
 export const CreateProjectResponseEnvItemContentHintCase14Type = S.String;
@@ -2285,14 +2175,8 @@ export interface CreateProjectResponseEnvItemContentHintCase14 {
   storeId: string;
   type: CreateProjectResponseEnvItemContentHintCase14Type;
 }
-export const CreateProjectResponseEnvItemContentHintCase14 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: CreateProjectResponseEnvItemContentHintCase14Type,
-  }),
-).annotate({
-  identifier: "CreateProjectResponseEnvItemContentHintCase14",
-}) as any as S.Schema<CreateProjectResponseEnvItemContentHintCase14>;
+export const CreateProjectResponseEnvItemContentHintCase14 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<CreateProjectResponseEnvItemContentHintCase14>;
 
 export type CreateProjectResponseEnvItemContentHintCase15Type = "integration-store-secret";
 export const CreateProjectResponseEnvItemContentHintCase15Type = S.String;
@@ -2385,9 +2269,8 @@ export const CreateProjectResponseEnvItemTargetCase0Item = S.String;
 
 export type CreateProjectResponseEnvItemTargetCase0List =
   Array<CreateProjectResponseEnvItemTargetCase0Item>;
-export const CreateProjectResponseEnvItemTargetCase0List = /*@__PURE__*/ S.Array(
-  CreateProjectResponseEnvItemTargetCase0Item,
-) as any as S.Schema<CreateProjectResponseEnvItemTargetCase0List>;
+export const CreateProjectResponseEnvItemTargetCase0List =
+  CreateProjectRequestEnvironmentVariablesItemTargetCase1List as any as S.Schema<CreateProjectResponseEnvItemTargetCase0List>;
 
 export type CreateProjectResponseEnvItemTargetCase1 =
   | "development"
@@ -2933,14 +2816,8 @@ export interface CreateProjectResponseLatestDeploymentsItemBranchMatcher {
   /** The type of matching to perform */
   type: CreateProjectResponseLatestDeploymentsItemBranchMatcherType;
 }
-export const CreateProjectResponseLatestDeploymentsItemBranchMatcher = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pattern: S.String,
-    type: CreateProjectResponseLatestDeploymentsItemBranchMatcherType,
-  }),
-).annotate({
-  identifier: "CreateProjectResponseLatestDeploymentsItemBranchMatcher",
-}) as any as S.Schema<CreateProjectResponseLatestDeploymentsItemBranchMatcher>;
+export const CreateProjectResponseLatestDeploymentsItemBranchMatcher =
+  CreateProjectResponseAliasItemDeploymentBranchMatcher as any as S.Schema<CreateProjectResponseLatestDeploymentsItemBranchMatcher>;
 
 export type CreateProjectResponseLatestDeploymentsItemBuildsItem =
   CreateProjectResponseAliasItemDeploymentBuildsItem;
@@ -3638,14 +3515,8 @@ export interface CreateProjectResponseOidcTokenConfig {
   /** - team: `https://oidc.vercel.com/[team_slug]` - global: `https://oidc.vercel.com` */
   issuerMode?: CreateProjectResponseOidcTokenConfigIssuerMode;
 }
-export const CreateProjectResponseOidcTokenConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-    issuerMode: S.optional(CreateProjectResponseOidcTokenConfigIssuerMode),
-  }),
-).annotate({
-  identifier: "CreateProjectResponseOidcTokenConfig",
-}) as any as S.Schema<CreateProjectResponseOidcTokenConfig>;
+export const CreateProjectResponseOidcTokenConfig =
+  CreateProjectRequestOidcTokenConfig as any as S.Schema<CreateProjectResponseOidcTokenConfig>;
 
 export interface CreateProjectResponseOptionsAllowlistPathsItem {
   value: string;
@@ -3701,9 +3572,8 @@ export const ACLAction = S.String;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type CreateProjectResponsePermissionsAccessGroupList = Array<ACLAction>;
-export const CreateProjectResponsePermissionsAccessGroupList = /*@__PURE__*/ S.Array(
-  ACLAction,
-) as any as S.Schema<CreateProjectResponsePermissionsAccessGroupList>;
+export const CreateProjectResponsePermissionsAccessGroupList =
+  CreateProjectRequestEnvironmentVariablesItemTargetCase1List as any as S.Schema<CreateProjectResponsePermissionsAccessGroupList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type CreateProjectResponsePermissionsAgentList = Array<ACLAction>;
@@ -3728,9 +3598,7 @@ export const CreateProjectResponsePermissionsAiGatewayApiKeyOwnedBySelfList =
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type CreateProjectResponsePermissionsAiGatewayApiKeySpendAttributionList = Array<ACLAction>;
 export const CreateProjectResponsePermissionsAiGatewayApiKeySpendAttributionList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<CreateProjectResponsePermissionsAiGatewayApiKeySpendAttributionList>;
+  CreateProjectResponseDeploymentPolicyDeploymentSourcesItemSourcesList as any as S.Schema<CreateProjectResponsePermissionsAiGatewayApiKeySpendAttributionList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type CreateProjectResponsePermissionsAiGatewayApiKeyZdrExemptionList = Array<ACLAction>;
@@ -6264,15 +6132,7 @@ export interface CreateProjectResponseResourceConfigBuildMachineElasticTransitio
   direction: CreateProjectResponseResourceConfigBuildMachineElasticTransitionDirection;
 }
 export const CreateProjectResponseResourceConfigBuildMachineElasticTransition =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      algorithmVersion: S.String,
-      at: S.Number,
-      direction: CreateProjectResponseResourceConfigBuildMachineElasticTransitionDirection,
-    }),
-  ).annotate({
-    identifier: "CreateProjectResponseResourceConfigBuildMachineElasticTransition",
-  }) as any as S.Schema<CreateProjectResponseResourceConfigBuildMachineElasticTransition>;
+  CreateProjectResponseDefaultResourceConfigBuildMachineElasticTransition as any as S.Schema<CreateProjectResponseResourceConfigBuildMachineElasticTransition>;
 
 export type CreateProjectResponseResourceConfigBuildMachineSelection = "elastic" | "fixed";
 export const CreateProjectResponseResourceConfigBuildMachineSelection = S.String;
@@ -6292,13 +6152,8 @@ export const CreateProjectResponseResourceConfigBuildQueueConfiguration = S.Stri
 export interface CreateProjectResponseResourceConfigBuildQueue {
   configuration?: CreateProjectResponseResourceConfigBuildQueueConfiguration;
 }
-export const CreateProjectResponseResourceConfigBuildQueue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    configuration: S.optional(CreateProjectResponseResourceConfigBuildQueueConfiguration),
-  }),
-).annotate({
-  identifier: "CreateProjectResponseResourceConfigBuildQueue",
-}) as any as S.Schema<CreateProjectResponseResourceConfigBuildQueue>;
+export const CreateProjectResponseResourceConfigBuildQueue =
+  CreateProjectRequestResourceConfigBuildQueue as any as S.Schema<CreateProjectResponseResourceConfigBuildQueue>;
 
 export type CreateProjectResponseResourceConfigFunctionDefaultMemoryType =
   | "performance"
@@ -6533,9 +6388,8 @@ export const CreateProjectResponseSandboxFailoverRegionsItem = S.String;
 
 export type CreateProjectResponseSandboxFailoverRegionsList =
   Array<CreateProjectResponseSandboxFailoverRegionsItem>;
-export const CreateProjectResponseSandboxFailoverRegionsList = /*@__PURE__*/ S.Array(
-  CreateProjectResponseSandboxFailoverRegionsItem,
-) as any as S.Schema<CreateProjectResponseSandboxFailoverRegionsList>;
+export const CreateProjectResponseSandboxFailoverRegionsList =
+  CreateProjectRequestEnvironmentVariablesItemTargetCase1List as any as S.Schema<CreateProjectResponseSandboxFailoverRegionsList>;
 
 export type CreateProjectResponseSandboxRegion =
   | "arn1"
@@ -6612,14 +6466,8 @@ export interface CreateProjectResponseSecurityManagedRulesBotFilter {
   action?: CreateProjectResponseSecurityManagedRulesBotFilterAction;
   active: boolean;
 }
-export const CreateProjectResponseSecurityManagedRulesBotFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.optional(CreateProjectResponseSecurityManagedRulesBotFilterAction),
-    active: S.Boolean,
-  }),
-).annotate({
-  identifier: "CreateProjectResponseSecurityManagedRulesBotFilter",
-}) as any as S.Schema<CreateProjectResponseSecurityManagedRulesBotFilter>;
+export const CreateProjectResponseSecurityManagedRulesBotFilter =
+  CreateProjectResponseSecurityManagedRulesAiBots as any as S.Schema<CreateProjectResponseSecurityManagedRulesBotFilter>;
 
 export type CreateProjectResponseSecurityManagedRulesOwaspAction = "challenge" | "deny" | "log";
 export const CreateProjectResponseSecurityManagedRulesOwaspAction = S.String;
@@ -6628,14 +6476,8 @@ export interface CreateProjectResponseSecurityManagedRulesOwasp {
   action?: CreateProjectResponseSecurityManagedRulesOwaspAction;
   active: boolean;
 }
-export const CreateProjectResponseSecurityManagedRulesOwasp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.optional(CreateProjectResponseSecurityManagedRulesOwaspAction),
-    active: S.Boolean,
-  }),
-).annotate({
-  identifier: "CreateProjectResponseSecurityManagedRulesOwasp",
-}) as any as S.Schema<CreateProjectResponseSecurityManagedRulesOwasp>;
+export const CreateProjectResponseSecurityManagedRulesOwasp =
+  CreateProjectResponseSecurityManagedRulesAiBots as any as S.Schema<CreateProjectResponseSecurityManagedRulesOwasp>;
 
 export type CreateProjectResponseSecurityManagedRulesTrafficSourcesAction =
   | "challenge"
@@ -6647,14 +6489,8 @@ export interface CreateProjectResponseSecurityManagedRulesTrafficSources {
   action?: CreateProjectResponseSecurityManagedRulesTrafficSourcesAction;
   active: boolean;
 }
-export const CreateProjectResponseSecurityManagedRulesTrafficSources = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.optional(CreateProjectResponseSecurityManagedRulesTrafficSourcesAction),
-    active: S.Boolean,
-  }),
-).annotate({
-  identifier: "CreateProjectResponseSecurityManagedRulesTrafficSources",
-}) as any as S.Schema<CreateProjectResponseSecurityManagedRulesTrafficSources>;
+export const CreateProjectResponseSecurityManagedRulesTrafficSources =
+  CreateProjectResponseSecurityManagedRulesAiBots as any as S.Schema<CreateProjectResponseSecurityManagedRulesTrafficSources>;
 
 export type CreateProjectResponseSecurityManagedRulesVercelRulesetAction =
   | "challenge"
@@ -6666,14 +6502,8 @@ export interface CreateProjectResponseSecurityManagedRulesVercelRuleset {
   action?: CreateProjectResponseSecurityManagedRulesVercelRulesetAction;
   active: boolean;
 }
-export const CreateProjectResponseSecurityManagedRulesVercelRuleset = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.optional(CreateProjectResponseSecurityManagedRulesVercelRulesetAction),
-    active: S.Boolean,
-  }),
-).annotate({
-  identifier: "CreateProjectResponseSecurityManagedRulesVercelRuleset",
-}) as any as S.Schema<CreateProjectResponseSecurityManagedRulesVercelRuleset>;
+export const CreateProjectResponseSecurityManagedRulesVercelRuleset =
+  CreateProjectResponseSecurityManagedRulesAiBots as any as S.Schema<CreateProjectResponseSecurityManagedRulesVercelRuleset>;
 
 export interface CreateProjectResponseSecurityManagedRules {
   ai_bots: CreateProjectResponseSecurityManagedRulesAiBots;
@@ -7051,14 +6881,8 @@ export interface CreateProjectResponseTargetsValueBranchMatcher {
   /** The type of matching to perform */
   type: CreateProjectResponseTargetsValueBranchMatcherType;
 }
-export const CreateProjectResponseTargetsValueBranchMatcher = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pattern: S.String,
-    type: CreateProjectResponseTargetsValueBranchMatcherType,
-  }),
-).annotate({
-  identifier: "CreateProjectResponseTargetsValueBranchMatcher",
-}) as any as S.Schema<CreateProjectResponseTargetsValueBranchMatcher>;
+export const CreateProjectResponseTargetsValueBranchMatcher =
+  CreateProjectResponseAliasItemDeploymentBranchMatcher as any as S.Schema<CreateProjectResponseTargetsValueBranchMatcher>;
 
 export type CreateProjectResponseTargetsValueBuildsItem =
   CreateProjectResponseAliasItemDeploymentBuildsItem;
@@ -7347,13 +7171,8 @@ export const CreateProjectResponseTrustedIpsCase1DeploymentType = S.String;
 export interface CreateProjectResponseTrustedIpsCase1 {
   deploymentType: CreateProjectResponseTrustedIpsCase1DeploymentType;
 }
-export const CreateProjectResponseTrustedIpsCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deploymentType: CreateProjectResponseTrustedIpsCase1DeploymentType,
-  }),
-).annotate({
-  identifier: "CreateProjectResponseTrustedIpsCase1",
-}) as any as S.Schema<CreateProjectResponseTrustedIpsCase1>;
+export const CreateProjectResponseTrustedIpsCase1 =
+  CreateProjectRequestSsoProtection as any as S.Schema<CreateProjectResponseTrustedIpsCase1>;
 
 export type CreateProjectResponseTrustedIps =
   | CreateProjectResponseTrustedIpsCase0
@@ -7939,14 +7758,8 @@ export interface CreateProjectEnvResponseCreatedCase0ContentHintCase0 {
   storeId: string;
   type: CreateProjectEnvResponseCreatedCase0ContentHintCase0Type;
 }
-export const CreateProjectEnvResponseCreatedCase0ContentHintCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: CreateProjectEnvResponseCreatedCase0ContentHintCase0Type,
-  }),
-).annotate({
-  identifier: "CreateProjectEnvResponseCreatedCase0ContentHintCase0",
-}) as any as S.Schema<CreateProjectEnvResponseCreatedCase0ContentHintCase0>;
+export const CreateProjectEnvResponseCreatedCase0ContentHintCase0 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<CreateProjectEnvResponseCreatedCase0ContentHintCase0>;
 
 export type CreateProjectEnvResponseCreatedCase0ContentHintCase1Type = "redis-rest-api-url";
 export const CreateProjectEnvResponseCreatedCase0ContentHintCase1Type = S.String;
@@ -7955,14 +7768,8 @@ export interface CreateProjectEnvResponseCreatedCase0ContentHintCase1 {
   storeId: string;
   type: CreateProjectEnvResponseCreatedCase0ContentHintCase1Type;
 }
-export const CreateProjectEnvResponseCreatedCase0ContentHintCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: CreateProjectEnvResponseCreatedCase0ContentHintCase1Type,
-  }),
-).annotate({
-  identifier: "CreateProjectEnvResponseCreatedCase0ContentHintCase1",
-}) as any as S.Schema<CreateProjectEnvResponseCreatedCase0ContentHintCase1>;
+export const CreateProjectEnvResponseCreatedCase0ContentHintCase1 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<CreateProjectEnvResponseCreatedCase0ContentHintCase1>;
 
 export type CreateProjectEnvResponseCreatedCase0ContentHintCase2Type = "redis-rest-api-token";
 export const CreateProjectEnvResponseCreatedCase0ContentHintCase2Type = S.String;
@@ -7971,14 +7778,8 @@ export interface CreateProjectEnvResponseCreatedCase0ContentHintCase2 {
   storeId: string;
   type: CreateProjectEnvResponseCreatedCase0ContentHintCase2Type;
 }
-export const CreateProjectEnvResponseCreatedCase0ContentHintCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: CreateProjectEnvResponseCreatedCase0ContentHintCase2Type,
-  }),
-).annotate({
-  identifier: "CreateProjectEnvResponseCreatedCase0ContentHintCase2",
-}) as any as S.Schema<CreateProjectEnvResponseCreatedCase0ContentHintCase2>;
+export const CreateProjectEnvResponseCreatedCase0ContentHintCase2 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<CreateProjectEnvResponseCreatedCase0ContentHintCase2>;
 
 export type CreateProjectEnvResponseCreatedCase0ContentHintCase3Type =
   "redis-rest-api-read-only-token";
@@ -7988,14 +7789,8 @@ export interface CreateProjectEnvResponseCreatedCase0ContentHintCase3 {
   storeId: string;
   type: CreateProjectEnvResponseCreatedCase0ContentHintCase3Type;
 }
-export const CreateProjectEnvResponseCreatedCase0ContentHintCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: CreateProjectEnvResponseCreatedCase0ContentHintCase3Type,
-  }),
-).annotate({
-  identifier: "CreateProjectEnvResponseCreatedCase0ContentHintCase3",
-}) as any as S.Schema<CreateProjectEnvResponseCreatedCase0ContentHintCase3>;
+export const CreateProjectEnvResponseCreatedCase0ContentHintCase3 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<CreateProjectEnvResponseCreatedCase0ContentHintCase3>;
 
 export type CreateProjectEnvResponseCreatedCase0ContentHintCase4Type = "blob-read-write-token";
 export const CreateProjectEnvResponseCreatedCase0ContentHintCase4Type = S.String;
@@ -8004,14 +7799,8 @@ export interface CreateProjectEnvResponseCreatedCase0ContentHintCase4 {
   storeId: string;
   type: CreateProjectEnvResponseCreatedCase0ContentHintCase4Type;
 }
-export const CreateProjectEnvResponseCreatedCase0ContentHintCase4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: CreateProjectEnvResponseCreatedCase0ContentHintCase4Type,
-  }),
-).annotate({
-  identifier: "CreateProjectEnvResponseCreatedCase0ContentHintCase4",
-}) as any as S.Schema<CreateProjectEnvResponseCreatedCase0ContentHintCase4>;
+export const CreateProjectEnvResponseCreatedCase0ContentHintCase4 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<CreateProjectEnvResponseCreatedCase0ContentHintCase4>;
 
 export type CreateProjectEnvResponseCreatedCase0ContentHintCase5Type = "blob-store-id";
 export const CreateProjectEnvResponseCreatedCase0ContentHintCase5Type = S.String;
@@ -8020,14 +7809,8 @@ export interface CreateProjectEnvResponseCreatedCase0ContentHintCase5 {
   storeId: string;
   type: CreateProjectEnvResponseCreatedCase0ContentHintCase5Type;
 }
-export const CreateProjectEnvResponseCreatedCase0ContentHintCase5 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: CreateProjectEnvResponseCreatedCase0ContentHintCase5Type,
-  }),
-).annotate({
-  identifier: "CreateProjectEnvResponseCreatedCase0ContentHintCase5",
-}) as any as S.Schema<CreateProjectEnvResponseCreatedCase0ContentHintCase5>;
+export const CreateProjectEnvResponseCreatedCase0ContentHintCase5 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<CreateProjectEnvResponseCreatedCase0ContentHintCase5>;
 
 export type CreateProjectEnvResponseCreatedCase0ContentHintCase6Type = "blob-webhook-public-key";
 export const CreateProjectEnvResponseCreatedCase0ContentHintCase6Type = S.String;
@@ -8036,14 +7819,8 @@ export interface CreateProjectEnvResponseCreatedCase0ContentHintCase6 {
   storeId: string;
   type: CreateProjectEnvResponseCreatedCase0ContentHintCase6Type;
 }
-export const CreateProjectEnvResponseCreatedCase0ContentHintCase6 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: CreateProjectEnvResponseCreatedCase0ContentHintCase6Type,
-  }),
-).annotate({
-  identifier: "CreateProjectEnvResponseCreatedCase0ContentHintCase6",
-}) as any as S.Schema<CreateProjectEnvResponseCreatedCase0ContentHintCase6>;
+export const CreateProjectEnvResponseCreatedCase0ContentHintCase6 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<CreateProjectEnvResponseCreatedCase0ContentHintCase6>;
 
 export type CreateProjectEnvResponseCreatedCase0ContentHintCase7Type = "postgres-url";
 export const CreateProjectEnvResponseCreatedCase0ContentHintCase7Type = S.String;
@@ -8052,14 +7829,8 @@ export interface CreateProjectEnvResponseCreatedCase0ContentHintCase7 {
   storeId: string;
   type: CreateProjectEnvResponseCreatedCase0ContentHintCase7Type;
 }
-export const CreateProjectEnvResponseCreatedCase0ContentHintCase7 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: CreateProjectEnvResponseCreatedCase0ContentHintCase7Type,
-  }),
-).annotate({
-  identifier: "CreateProjectEnvResponseCreatedCase0ContentHintCase7",
-}) as any as S.Schema<CreateProjectEnvResponseCreatedCase0ContentHintCase7>;
+export const CreateProjectEnvResponseCreatedCase0ContentHintCase7 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<CreateProjectEnvResponseCreatedCase0ContentHintCase7>;
 
 export type CreateProjectEnvResponseCreatedCase0ContentHintCase8Type = "postgres-url-non-pooling";
 export const CreateProjectEnvResponseCreatedCase0ContentHintCase8Type = S.String;
@@ -8068,14 +7839,8 @@ export interface CreateProjectEnvResponseCreatedCase0ContentHintCase8 {
   storeId: string;
   type: CreateProjectEnvResponseCreatedCase0ContentHintCase8Type;
 }
-export const CreateProjectEnvResponseCreatedCase0ContentHintCase8 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: CreateProjectEnvResponseCreatedCase0ContentHintCase8Type,
-  }),
-).annotate({
-  identifier: "CreateProjectEnvResponseCreatedCase0ContentHintCase8",
-}) as any as S.Schema<CreateProjectEnvResponseCreatedCase0ContentHintCase8>;
+export const CreateProjectEnvResponseCreatedCase0ContentHintCase8 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<CreateProjectEnvResponseCreatedCase0ContentHintCase8>;
 
 export type CreateProjectEnvResponseCreatedCase0ContentHintCase9Type = "postgres-prisma-url";
 export const CreateProjectEnvResponseCreatedCase0ContentHintCase9Type = S.String;
@@ -8084,14 +7849,8 @@ export interface CreateProjectEnvResponseCreatedCase0ContentHintCase9 {
   storeId: string;
   type: CreateProjectEnvResponseCreatedCase0ContentHintCase9Type;
 }
-export const CreateProjectEnvResponseCreatedCase0ContentHintCase9 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: CreateProjectEnvResponseCreatedCase0ContentHintCase9Type,
-  }),
-).annotate({
-  identifier: "CreateProjectEnvResponseCreatedCase0ContentHintCase9",
-}) as any as S.Schema<CreateProjectEnvResponseCreatedCase0ContentHintCase9>;
+export const CreateProjectEnvResponseCreatedCase0ContentHintCase9 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<CreateProjectEnvResponseCreatedCase0ContentHintCase9>;
 
 export type CreateProjectEnvResponseCreatedCase0ContentHintCase10Type = "postgres-user";
 export const CreateProjectEnvResponseCreatedCase0ContentHintCase10Type = S.String;
@@ -8100,14 +7859,8 @@ export interface CreateProjectEnvResponseCreatedCase0ContentHintCase10 {
   storeId: string;
   type: CreateProjectEnvResponseCreatedCase0ContentHintCase10Type;
 }
-export const CreateProjectEnvResponseCreatedCase0ContentHintCase10 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: CreateProjectEnvResponseCreatedCase0ContentHintCase10Type,
-  }),
-).annotate({
-  identifier: "CreateProjectEnvResponseCreatedCase0ContentHintCase10",
-}) as any as S.Schema<CreateProjectEnvResponseCreatedCase0ContentHintCase10>;
+export const CreateProjectEnvResponseCreatedCase0ContentHintCase10 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<CreateProjectEnvResponseCreatedCase0ContentHintCase10>;
 
 export type CreateProjectEnvResponseCreatedCase0ContentHintCase11Type = "postgres-host";
 export const CreateProjectEnvResponseCreatedCase0ContentHintCase11Type = S.String;
@@ -8116,14 +7869,8 @@ export interface CreateProjectEnvResponseCreatedCase0ContentHintCase11 {
   storeId: string;
   type: CreateProjectEnvResponseCreatedCase0ContentHintCase11Type;
 }
-export const CreateProjectEnvResponseCreatedCase0ContentHintCase11 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: CreateProjectEnvResponseCreatedCase0ContentHintCase11Type,
-  }),
-).annotate({
-  identifier: "CreateProjectEnvResponseCreatedCase0ContentHintCase11",
-}) as any as S.Schema<CreateProjectEnvResponseCreatedCase0ContentHintCase11>;
+export const CreateProjectEnvResponseCreatedCase0ContentHintCase11 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<CreateProjectEnvResponseCreatedCase0ContentHintCase11>;
 
 export type CreateProjectEnvResponseCreatedCase0ContentHintCase12Type = "postgres-password";
 export const CreateProjectEnvResponseCreatedCase0ContentHintCase12Type = S.String;
@@ -8132,14 +7879,8 @@ export interface CreateProjectEnvResponseCreatedCase0ContentHintCase12 {
   storeId: string;
   type: CreateProjectEnvResponseCreatedCase0ContentHintCase12Type;
 }
-export const CreateProjectEnvResponseCreatedCase0ContentHintCase12 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: CreateProjectEnvResponseCreatedCase0ContentHintCase12Type,
-  }),
-).annotate({
-  identifier: "CreateProjectEnvResponseCreatedCase0ContentHintCase12",
-}) as any as S.Schema<CreateProjectEnvResponseCreatedCase0ContentHintCase12>;
+export const CreateProjectEnvResponseCreatedCase0ContentHintCase12 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<CreateProjectEnvResponseCreatedCase0ContentHintCase12>;
 
 export type CreateProjectEnvResponseCreatedCase0ContentHintCase13Type = "postgres-database";
 export const CreateProjectEnvResponseCreatedCase0ContentHintCase13Type = S.String;
@@ -8148,14 +7889,8 @@ export interface CreateProjectEnvResponseCreatedCase0ContentHintCase13 {
   storeId: string;
   type: CreateProjectEnvResponseCreatedCase0ContentHintCase13Type;
 }
-export const CreateProjectEnvResponseCreatedCase0ContentHintCase13 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: CreateProjectEnvResponseCreatedCase0ContentHintCase13Type,
-  }),
-).annotate({
-  identifier: "CreateProjectEnvResponseCreatedCase0ContentHintCase13",
-}) as any as S.Schema<CreateProjectEnvResponseCreatedCase0ContentHintCase13>;
+export const CreateProjectEnvResponseCreatedCase0ContentHintCase13 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<CreateProjectEnvResponseCreatedCase0ContentHintCase13>;
 
 export type CreateProjectEnvResponseCreatedCase0ContentHintCase14Type = "postgres-url-no-ssl";
 export const CreateProjectEnvResponseCreatedCase0ContentHintCase14Type = S.String;
@@ -8164,14 +7899,8 @@ export interface CreateProjectEnvResponseCreatedCase0ContentHintCase14 {
   storeId: string;
   type: CreateProjectEnvResponseCreatedCase0ContentHintCase14Type;
 }
-export const CreateProjectEnvResponseCreatedCase0ContentHintCase14 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: CreateProjectEnvResponseCreatedCase0ContentHintCase14Type,
-  }),
-).annotate({
-  identifier: "CreateProjectEnvResponseCreatedCase0ContentHintCase14",
-}) as any as S.Schema<CreateProjectEnvResponseCreatedCase0ContentHintCase14>;
+export const CreateProjectEnvResponseCreatedCase0ContentHintCase14 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<CreateProjectEnvResponseCreatedCase0ContentHintCase14>;
 
 export type CreateProjectEnvResponseCreatedCase0ContentHintCase15Type = "integration-store-secret";
 export const CreateProjectEnvResponseCreatedCase0ContentHintCase15Type = S.String;
@@ -8183,17 +7912,8 @@ export interface CreateProjectEnvResponseCreatedCase0ContentHintCase15 {
   storeId: string;
   type: CreateProjectEnvResponseCreatedCase0ContentHintCase15Type;
 }
-export const CreateProjectEnvResponseCreatedCase0ContentHintCase15 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    integrationConfigurationId: S.String,
-    integrationId: S.String,
-    integrationProductId: S.String,
-    storeId: S.String,
-    type: CreateProjectEnvResponseCreatedCase0ContentHintCase15Type,
-  }),
-).annotate({
-  identifier: "CreateProjectEnvResponseCreatedCase0ContentHintCase15",
-}) as any as S.Schema<CreateProjectEnvResponseCreatedCase0ContentHintCase15>;
+export const CreateProjectEnvResponseCreatedCase0ContentHintCase15 =
+  CreateProjectResponseEnvItemContentHintCase15 as any as S.Schema<CreateProjectEnvResponseCreatedCase0ContentHintCase15>;
 
 export type CreateProjectEnvResponseCreatedCase0ContentHintCase16Type = "flags-connection-string";
 export const CreateProjectEnvResponseCreatedCase0ContentHintCase16Type = S.String;
@@ -8202,14 +7922,8 @@ export interface CreateProjectEnvResponseCreatedCase0ContentHintCase16 {
   projectId: string;
   type: CreateProjectEnvResponseCreatedCase0ContentHintCase16Type;
 }
-export const CreateProjectEnvResponseCreatedCase0ContentHintCase16 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    projectId: S.String,
-    type: CreateProjectEnvResponseCreatedCase0ContentHintCase16Type,
-  }),
-).annotate({
-  identifier: "CreateProjectEnvResponseCreatedCase0ContentHintCase16",
-}) as any as S.Schema<CreateProjectEnvResponseCreatedCase0ContentHintCase16>;
+export const CreateProjectEnvResponseCreatedCase0ContentHintCase16 =
+  CreateProjectResponseEnvItemContentHintCase16 as any as S.Schema<CreateProjectEnvResponseCreatedCase0ContentHintCase16>;
 
 export type CreateProjectEnvResponseCreatedCase0ContentHint =
   | CreateProjectEnvResponseCreatedCase0ContentHintCase0
@@ -8245,14 +7959,8 @@ export interface CreateProjectEnvResponseCreatedCase0InternalContentHint {
   encryptedValue: string;
   type: CreateProjectEnvResponseCreatedCase0InternalContentHintType;
 }
-export const CreateProjectEnvResponseCreatedCase0InternalContentHint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    encryptedValue: S.String,
-    type: CreateProjectEnvResponseCreatedCase0InternalContentHintType,
-  }),
-).annotate({
-  identifier: "CreateProjectEnvResponseCreatedCase0InternalContentHint",
-}) as any as S.Schema<CreateProjectEnvResponseCreatedCase0InternalContentHint>;
+export const CreateProjectEnvResponseCreatedCase0InternalContentHint =
+  CreateProjectResponseEnvItemInternalContentHint as any as S.Schema<CreateProjectEnvResponseCreatedCase0InternalContentHint>;
 
 export type CreateProjectEnvResponseCreatedCase0TargetCase0Item =
   | "production"
@@ -8262,9 +7970,8 @@ export const CreateProjectEnvResponseCreatedCase0TargetCase0Item = S.String;
 
 export type CreateProjectEnvResponseCreatedCase0TargetCase0List =
   Array<CreateProjectEnvResponseCreatedCase0TargetCase0Item>;
-export const CreateProjectEnvResponseCreatedCase0TargetCase0List = /*@__PURE__*/ S.Array(
-  CreateProjectEnvResponseCreatedCase0TargetCase0Item,
-) as any as S.Schema<CreateProjectEnvResponseCreatedCase0TargetCase0List>;
+export const CreateProjectEnvResponseCreatedCase0TargetCase0List =
+  CreateProjectRequestEnvironmentVariablesItemTargetCase1List as any as S.Schema<CreateProjectEnvResponseCreatedCase0TargetCase0List>;
 
 export type CreateProjectEnvResponseCreatedCase0TargetCase1 =
   | "production"
@@ -8375,15 +8082,8 @@ export interface CreateProjectEnvResponseCreatedCase1ItemContentHintCase1 {
   storeId: string;
   type: CreateProjectEnvResponseCreatedCase1ItemContentHintCase1Type;
 }
-export const CreateProjectEnvResponseCreatedCase1ItemContentHintCase1 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      storeId: S.String,
-      type: CreateProjectEnvResponseCreatedCase1ItemContentHintCase1Type,
-    }),
-).annotate({
-  identifier: "CreateProjectEnvResponseCreatedCase1ItemContentHintCase1",
-}) as any as S.Schema<CreateProjectEnvResponseCreatedCase1ItemContentHintCase1>;
+export const CreateProjectEnvResponseCreatedCase1ItemContentHintCase1 =
+  CreateProjectEnvResponseCreatedCase1ItemContentHintCase0 as any as S.Schema<CreateProjectEnvResponseCreatedCase1ItemContentHintCase1>;
 
 export type CreateProjectEnvResponseCreatedCase1ItemContentHintCase2Type = "redis-rest-api-token";
 export const CreateProjectEnvResponseCreatedCase1ItemContentHintCase2Type = S.String;
@@ -8392,15 +8092,8 @@ export interface CreateProjectEnvResponseCreatedCase1ItemContentHintCase2 {
   storeId: string;
   type: CreateProjectEnvResponseCreatedCase1ItemContentHintCase2Type;
 }
-export const CreateProjectEnvResponseCreatedCase1ItemContentHintCase2 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      storeId: S.String,
-      type: CreateProjectEnvResponseCreatedCase1ItemContentHintCase2Type,
-    }),
-).annotate({
-  identifier: "CreateProjectEnvResponseCreatedCase1ItemContentHintCase2",
-}) as any as S.Schema<CreateProjectEnvResponseCreatedCase1ItemContentHintCase2>;
+export const CreateProjectEnvResponseCreatedCase1ItemContentHintCase2 =
+  CreateProjectEnvResponseCreatedCase1ItemContentHintCase0 as any as S.Schema<CreateProjectEnvResponseCreatedCase1ItemContentHintCase2>;
 
 export type CreateProjectEnvResponseCreatedCase1ItemContentHintCase3Type =
   "redis-rest-api-read-only-token";
@@ -8410,15 +8103,8 @@ export interface CreateProjectEnvResponseCreatedCase1ItemContentHintCase3 {
   storeId: string;
   type: CreateProjectEnvResponseCreatedCase1ItemContentHintCase3Type;
 }
-export const CreateProjectEnvResponseCreatedCase1ItemContentHintCase3 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      storeId: S.String,
-      type: CreateProjectEnvResponseCreatedCase1ItemContentHintCase3Type,
-    }),
-).annotate({
-  identifier: "CreateProjectEnvResponseCreatedCase1ItemContentHintCase3",
-}) as any as S.Schema<CreateProjectEnvResponseCreatedCase1ItemContentHintCase3>;
+export const CreateProjectEnvResponseCreatedCase1ItemContentHintCase3 =
+  CreateProjectEnvResponseCreatedCase1ItemContentHintCase0 as any as S.Schema<CreateProjectEnvResponseCreatedCase1ItemContentHintCase3>;
 
 export type CreateProjectEnvResponseCreatedCase1ItemContentHintCase4Type = "blob-read-write-token";
 export const CreateProjectEnvResponseCreatedCase1ItemContentHintCase4Type = S.String;
@@ -8427,15 +8113,8 @@ export interface CreateProjectEnvResponseCreatedCase1ItemContentHintCase4 {
   storeId: string;
   type: CreateProjectEnvResponseCreatedCase1ItemContentHintCase4Type;
 }
-export const CreateProjectEnvResponseCreatedCase1ItemContentHintCase4 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      storeId: S.String,
-      type: CreateProjectEnvResponseCreatedCase1ItemContentHintCase4Type,
-    }),
-).annotate({
-  identifier: "CreateProjectEnvResponseCreatedCase1ItemContentHintCase4",
-}) as any as S.Schema<CreateProjectEnvResponseCreatedCase1ItemContentHintCase4>;
+export const CreateProjectEnvResponseCreatedCase1ItemContentHintCase4 =
+  CreateProjectEnvResponseCreatedCase1ItemContentHintCase0 as any as S.Schema<CreateProjectEnvResponseCreatedCase1ItemContentHintCase4>;
 
 export type CreateProjectEnvResponseCreatedCase1ItemContentHintCase5Type = "blob-store-id";
 export const CreateProjectEnvResponseCreatedCase1ItemContentHintCase5Type = S.String;
@@ -8444,15 +8123,8 @@ export interface CreateProjectEnvResponseCreatedCase1ItemContentHintCase5 {
   storeId: string;
   type: CreateProjectEnvResponseCreatedCase1ItemContentHintCase5Type;
 }
-export const CreateProjectEnvResponseCreatedCase1ItemContentHintCase5 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      storeId: S.String,
-      type: CreateProjectEnvResponseCreatedCase1ItemContentHintCase5Type,
-    }),
-).annotate({
-  identifier: "CreateProjectEnvResponseCreatedCase1ItemContentHintCase5",
-}) as any as S.Schema<CreateProjectEnvResponseCreatedCase1ItemContentHintCase5>;
+export const CreateProjectEnvResponseCreatedCase1ItemContentHintCase5 =
+  CreateProjectEnvResponseCreatedCase1ItemContentHintCase0 as any as S.Schema<CreateProjectEnvResponseCreatedCase1ItemContentHintCase5>;
 
 export type CreateProjectEnvResponseCreatedCase1ItemContentHintCase6Type =
   "blob-webhook-public-key";
@@ -8462,15 +8134,8 @@ export interface CreateProjectEnvResponseCreatedCase1ItemContentHintCase6 {
   storeId: string;
   type: CreateProjectEnvResponseCreatedCase1ItemContentHintCase6Type;
 }
-export const CreateProjectEnvResponseCreatedCase1ItemContentHintCase6 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      storeId: S.String,
-      type: CreateProjectEnvResponseCreatedCase1ItemContentHintCase6Type,
-    }),
-).annotate({
-  identifier: "CreateProjectEnvResponseCreatedCase1ItemContentHintCase6",
-}) as any as S.Schema<CreateProjectEnvResponseCreatedCase1ItemContentHintCase6>;
+export const CreateProjectEnvResponseCreatedCase1ItemContentHintCase6 =
+  CreateProjectEnvResponseCreatedCase1ItemContentHintCase0 as any as S.Schema<CreateProjectEnvResponseCreatedCase1ItemContentHintCase6>;
 
 export type CreateProjectEnvResponseCreatedCase1ItemContentHintCase7Type = "postgres-url";
 export const CreateProjectEnvResponseCreatedCase1ItemContentHintCase7Type = S.String;
@@ -8479,15 +8144,8 @@ export interface CreateProjectEnvResponseCreatedCase1ItemContentHintCase7 {
   storeId: string;
   type: CreateProjectEnvResponseCreatedCase1ItemContentHintCase7Type;
 }
-export const CreateProjectEnvResponseCreatedCase1ItemContentHintCase7 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      storeId: S.String,
-      type: CreateProjectEnvResponseCreatedCase1ItemContentHintCase7Type,
-    }),
-).annotate({
-  identifier: "CreateProjectEnvResponseCreatedCase1ItemContentHintCase7",
-}) as any as S.Schema<CreateProjectEnvResponseCreatedCase1ItemContentHintCase7>;
+export const CreateProjectEnvResponseCreatedCase1ItemContentHintCase7 =
+  CreateProjectEnvResponseCreatedCase1ItemContentHintCase0 as any as S.Schema<CreateProjectEnvResponseCreatedCase1ItemContentHintCase7>;
 
 export type CreateProjectEnvResponseCreatedCase1ItemContentHintCase8Type =
   "postgres-url-non-pooling";
@@ -8497,15 +8155,8 @@ export interface CreateProjectEnvResponseCreatedCase1ItemContentHintCase8 {
   storeId: string;
   type: CreateProjectEnvResponseCreatedCase1ItemContentHintCase8Type;
 }
-export const CreateProjectEnvResponseCreatedCase1ItemContentHintCase8 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      storeId: S.String,
-      type: CreateProjectEnvResponseCreatedCase1ItemContentHintCase8Type,
-    }),
-).annotate({
-  identifier: "CreateProjectEnvResponseCreatedCase1ItemContentHintCase8",
-}) as any as S.Schema<CreateProjectEnvResponseCreatedCase1ItemContentHintCase8>;
+export const CreateProjectEnvResponseCreatedCase1ItemContentHintCase8 =
+  CreateProjectEnvResponseCreatedCase1ItemContentHintCase0 as any as S.Schema<CreateProjectEnvResponseCreatedCase1ItemContentHintCase8>;
 
 export type CreateProjectEnvResponseCreatedCase1ItemContentHintCase9Type = "postgres-prisma-url";
 export const CreateProjectEnvResponseCreatedCase1ItemContentHintCase9Type = S.String;
@@ -8514,15 +8165,8 @@ export interface CreateProjectEnvResponseCreatedCase1ItemContentHintCase9 {
   storeId: string;
   type: CreateProjectEnvResponseCreatedCase1ItemContentHintCase9Type;
 }
-export const CreateProjectEnvResponseCreatedCase1ItemContentHintCase9 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      storeId: S.String,
-      type: CreateProjectEnvResponseCreatedCase1ItemContentHintCase9Type,
-    }),
-).annotate({
-  identifier: "CreateProjectEnvResponseCreatedCase1ItemContentHintCase9",
-}) as any as S.Schema<CreateProjectEnvResponseCreatedCase1ItemContentHintCase9>;
+export const CreateProjectEnvResponseCreatedCase1ItemContentHintCase9 =
+  CreateProjectEnvResponseCreatedCase1ItemContentHintCase0 as any as S.Schema<CreateProjectEnvResponseCreatedCase1ItemContentHintCase9>;
 
 export type CreateProjectEnvResponseCreatedCase1ItemContentHintCase10Type = "postgres-user";
 export const CreateProjectEnvResponseCreatedCase1ItemContentHintCase10Type = S.String;
@@ -8531,15 +8175,8 @@ export interface CreateProjectEnvResponseCreatedCase1ItemContentHintCase10 {
   storeId: string;
   type: CreateProjectEnvResponseCreatedCase1ItemContentHintCase10Type;
 }
-export const CreateProjectEnvResponseCreatedCase1ItemContentHintCase10 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      storeId: S.String,
-      type: CreateProjectEnvResponseCreatedCase1ItemContentHintCase10Type,
-    }),
-).annotate({
-  identifier: "CreateProjectEnvResponseCreatedCase1ItemContentHintCase10",
-}) as any as S.Schema<CreateProjectEnvResponseCreatedCase1ItemContentHintCase10>;
+export const CreateProjectEnvResponseCreatedCase1ItemContentHintCase10 =
+  CreateProjectEnvResponseCreatedCase1ItemContentHintCase0 as any as S.Schema<CreateProjectEnvResponseCreatedCase1ItemContentHintCase10>;
 
 export type CreateProjectEnvResponseCreatedCase1ItemContentHintCase11Type = "postgres-host";
 export const CreateProjectEnvResponseCreatedCase1ItemContentHintCase11Type = S.String;
@@ -8548,15 +8185,8 @@ export interface CreateProjectEnvResponseCreatedCase1ItemContentHintCase11 {
   storeId: string;
   type: CreateProjectEnvResponseCreatedCase1ItemContentHintCase11Type;
 }
-export const CreateProjectEnvResponseCreatedCase1ItemContentHintCase11 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      storeId: S.String,
-      type: CreateProjectEnvResponseCreatedCase1ItemContentHintCase11Type,
-    }),
-).annotate({
-  identifier: "CreateProjectEnvResponseCreatedCase1ItemContentHintCase11",
-}) as any as S.Schema<CreateProjectEnvResponseCreatedCase1ItemContentHintCase11>;
+export const CreateProjectEnvResponseCreatedCase1ItemContentHintCase11 =
+  CreateProjectEnvResponseCreatedCase1ItemContentHintCase0 as any as S.Schema<CreateProjectEnvResponseCreatedCase1ItemContentHintCase11>;
 
 export type CreateProjectEnvResponseCreatedCase1ItemContentHintCase12Type = "postgres-password";
 export const CreateProjectEnvResponseCreatedCase1ItemContentHintCase12Type = S.String;
@@ -8565,15 +8195,8 @@ export interface CreateProjectEnvResponseCreatedCase1ItemContentHintCase12 {
   storeId: string;
   type: CreateProjectEnvResponseCreatedCase1ItemContentHintCase12Type;
 }
-export const CreateProjectEnvResponseCreatedCase1ItemContentHintCase12 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      storeId: S.String,
-      type: CreateProjectEnvResponseCreatedCase1ItemContentHintCase12Type,
-    }),
-).annotate({
-  identifier: "CreateProjectEnvResponseCreatedCase1ItemContentHintCase12",
-}) as any as S.Schema<CreateProjectEnvResponseCreatedCase1ItemContentHintCase12>;
+export const CreateProjectEnvResponseCreatedCase1ItemContentHintCase12 =
+  CreateProjectEnvResponseCreatedCase1ItemContentHintCase0 as any as S.Schema<CreateProjectEnvResponseCreatedCase1ItemContentHintCase12>;
 
 export type CreateProjectEnvResponseCreatedCase1ItemContentHintCase13Type = "postgres-database";
 export const CreateProjectEnvResponseCreatedCase1ItemContentHintCase13Type = S.String;
@@ -8582,15 +8205,8 @@ export interface CreateProjectEnvResponseCreatedCase1ItemContentHintCase13 {
   storeId: string;
   type: CreateProjectEnvResponseCreatedCase1ItemContentHintCase13Type;
 }
-export const CreateProjectEnvResponseCreatedCase1ItemContentHintCase13 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      storeId: S.String,
-      type: CreateProjectEnvResponseCreatedCase1ItemContentHintCase13Type,
-    }),
-).annotate({
-  identifier: "CreateProjectEnvResponseCreatedCase1ItemContentHintCase13",
-}) as any as S.Schema<CreateProjectEnvResponseCreatedCase1ItemContentHintCase13>;
+export const CreateProjectEnvResponseCreatedCase1ItemContentHintCase13 =
+  CreateProjectEnvResponseCreatedCase1ItemContentHintCase0 as any as S.Schema<CreateProjectEnvResponseCreatedCase1ItemContentHintCase13>;
 
 export type CreateProjectEnvResponseCreatedCase1ItemContentHintCase14Type = "postgres-url-no-ssl";
 export const CreateProjectEnvResponseCreatedCase1ItemContentHintCase14Type = S.String;
@@ -8599,15 +8215,8 @@ export interface CreateProjectEnvResponseCreatedCase1ItemContentHintCase14 {
   storeId: string;
   type: CreateProjectEnvResponseCreatedCase1ItemContentHintCase14Type;
 }
-export const CreateProjectEnvResponseCreatedCase1ItemContentHintCase14 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      storeId: S.String,
-      type: CreateProjectEnvResponseCreatedCase1ItemContentHintCase14Type,
-    }),
-).annotate({
-  identifier: "CreateProjectEnvResponseCreatedCase1ItemContentHintCase14",
-}) as any as S.Schema<CreateProjectEnvResponseCreatedCase1ItemContentHintCase14>;
+export const CreateProjectEnvResponseCreatedCase1ItemContentHintCase14 =
+  CreateProjectEnvResponseCreatedCase1ItemContentHintCase0 as any as S.Schema<CreateProjectEnvResponseCreatedCase1ItemContentHintCase14>;
 
 export type CreateProjectEnvResponseCreatedCase1ItemContentHintCase15Type =
   "integration-store-secret";
@@ -8808,9 +8417,8 @@ export const CreateProjectEnvResponseFailedItemErrorTargetCase0Item = S.String;
 
 export type CreateProjectEnvResponseFailedItemErrorTargetCase0List =
   Array<CreateProjectEnvResponseFailedItemErrorTargetCase0Item>;
-export const CreateProjectEnvResponseFailedItemErrorTargetCase0List = /*@__PURE__*/ S.Array(
-  CreateProjectEnvResponseFailedItemErrorTargetCase0Item,
-) as any as S.Schema<CreateProjectEnvResponseFailedItemErrorTargetCase0List>;
+export const CreateProjectEnvResponseFailedItemErrorTargetCase0List =
+  CreateProjectRequestEnvironmentVariablesItemTargetCase1List as any as S.Schema<CreateProjectEnvResponseFailedItemErrorTargetCase0List>;
 
 export type CreateProjectEnvResponseFailedItemErrorTargetCase1 =
   | "production"
@@ -8832,9 +8440,8 @@ export const CreateProjectEnvResponseFailedItemErrorValueCase1Item = S.String;
 
 export type CreateProjectEnvResponseFailedItemErrorValueCase1List =
   Array<CreateProjectEnvResponseFailedItemErrorValueCase1Item>;
-export const CreateProjectEnvResponseFailedItemErrorValueCase1List = /*@__PURE__*/ S.Array(
-  CreateProjectEnvResponseFailedItemErrorValueCase1Item,
-) as any as S.Schema<CreateProjectEnvResponseFailedItemErrorValueCase1List>;
+export const CreateProjectEnvResponseFailedItemErrorValueCase1List =
+  CreateProjectRequestEnvironmentVariablesItemTargetCase1List as any as S.Schema<CreateProjectEnvResponseFailedItemErrorValueCase1List>;
 
 export type CreateProjectEnvResponseFailedItemErrorValue =
   | string
@@ -8995,9 +8602,8 @@ export const EditProjectEnvRequestTargetItem = S.String;
 export type EditProjectEnvRequestTargetList = Array<
   EditProjectEnvRequestTargetItem | (string & {})
 >;
-export const EditProjectEnvRequestTargetList = /*@__PURE__*/ S.Array(
-  EditProjectEnvRequestTargetItem,
-) as any as S.Schema<EditProjectEnvRequestTargetList>;
+export const EditProjectEnvRequestTargetList =
+  CreateProjectRequestEnvironmentVariablesItemTargetCase1List as any as S.Schema<EditProjectEnvRequestTargetList>;
 
 /** The type of environment variable */
 export type EditProjectEnvRequestType = "system" | "encrypted" | "plain" | "sensitive";
@@ -9055,14 +8661,8 @@ export interface EditProjectEnvResponseContentHintCase0 {
   storeId: string;
   type: EditProjectEnvResponseContentHintCase0Type;
 }
-export const EditProjectEnvResponseContentHintCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: EditProjectEnvResponseContentHintCase0Type,
-  }),
-).annotate({
-  identifier: "EditProjectEnvResponseContentHintCase0",
-}) as any as S.Schema<EditProjectEnvResponseContentHintCase0>;
+export const EditProjectEnvResponseContentHintCase0 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<EditProjectEnvResponseContentHintCase0>;
 
 export type EditProjectEnvResponseContentHintCase1Type = "redis-rest-api-url";
 export const EditProjectEnvResponseContentHintCase1Type = S.String;
@@ -9071,14 +8671,8 @@ export interface EditProjectEnvResponseContentHintCase1 {
   storeId: string;
   type: EditProjectEnvResponseContentHintCase1Type;
 }
-export const EditProjectEnvResponseContentHintCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: EditProjectEnvResponseContentHintCase1Type,
-  }),
-).annotate({
-  identifier: "EditProjectEnvResponseContentHintCase1",
-}) as any as S.Schema<EditProjectEnvResponseContentHintCase1>;
+export const EditProjectEnvResponseContentHintCase1 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<EditProjectEnvResponseContentHintCase1>;
 
 export type EditProjectEnvResponseContentHintCase2Type = "redis-rest-api-token";
 export const EditProjectEnvResponseContentHintCase2Type = S.String;
@@ -9087,14 +8681,8 @@ export interface EditProjectEnvResponseContentHintCase2 {
   storeId: string;
   type: EditProjectEnvResponseContentHintCase2Type;
 }
-export const EditProjectEnvResponseContentHintCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: EditProjectEnvResponseContentHintCase2Type,
-  }),
-).annotate({
-  identifier: "EditProjectEnvResponseContentHintCase2",
-}) as any as S.Schema<EditProjectEnvResponseContentHintCase2>;
+export const EditProjectEnvResponseContentHintCase2 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<EditProjectEnvResponseContentHintCase2>;
 
 export type EditProjectEnvResponseContentHintCase3Type = "redis-rest-api-read-only-token";
 export const EditProjectEnvResponseContentHintCase3Type = S.String;
@@ -9103,14 +8691,8 @@ export interface EditProjectEnvResponseContentHintCase3 {
   storeId: string;
   type: EditProjectEnvResponseContentHintCase3Type;
 }
-export const EditProjectEnvResponseContentHintCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: EditProjectEnvResponseContentHintCase3Type,
-  }),
-).annotate({
-  identifier: "EditProjectEnvResponseContentHintCase3",
-}) as any as S.Schema<EditProjectEnvResponseContentHintCase3>;
+export const EditProjectEnvResponseContentHintCase3 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<EditProjectEnvResponseContentHintCase3>;
 
 export type EditProjectEnvResponseContentHintCase4Type = "blob-read-write-token";
 export const EditProjectEnvResponseContentHintCase4Type = S.String;
@@ -9119,14 +8701,8 @@ export interface EditProjectEnvResponseContentHintCase4 {
   storeId: string;
   type: EditProjectEnvResponseContentHintCase4Type;
 }
-export const EditProjectEnvResponseContentHintCase4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: EditProjectEnvResponseContentHintCase4Type,
-  }),
-).annotate({
-  identifier: "EditProjectEnvResponseContentHintCase4",
-}) as any as S.Schema<EditProjectEnvResponseContentHintCase4>;
+export const EditProjectEnvResponseContentHintCase4 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<EditProjectEnvResponseContentHintCase4>;
 
 export type EditProjectEnvResponseContentHintCase5Type = "blob-store-id";
 export const EditProjectEnvResponseContentHintCase5Type = S.String;
@@ -9135,14 +8711,8 @@ export interface EditProjectEnvResponseContentHintCase5 {
   storeId: string;
   type: EditProjectEnvResponseContentHintCase5Type;
 }
-export const EditProjectEnvResponseContentHintCase5 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: EditProjectEnvResponseContentHintCase5Type,
-  }),
-).annotate({
-  identifier: "EditProjectEnvResponseContentHintCase5",
-}) as any as S.Schema<EditProjectEnvResponseContentHintCase5>;
+export const EditProjectEnvResponseContentHintCase5 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<EditProjectEnvResponseContentHintCase5>;
 
 export type EditProjectEnvResponseContentHintCase6Type = "blob-webhook-public-key";
 export const EditProjectEnvResponseContentHintCase6Type = S.String;
@@ -9151,14 +8721,8 @@ export interface EditProjectEnvResponseContentHintCase6 {
   storeId: string;
   type: EditProjectEnvResponseContentHintCase6Type;
 }
-export const EditProjectEnvResponseContentHintCase6 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: EditProjectEnvResponseContentHintCase6Type,
-  }),
-).annotate({
-  identifier: "EditProjectEnvResponseContentHintCase6",
-}) as any as S.Schema<EditProjectEnvResponseContentHintCase6>;
+export const EditProjectEnvResponseContentHintCase6 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<EditProjectEnvResponseContentHintCase6>;
 
 export type EditProjectEnvResponseContentHintCase7Type = "postgres-url";
 export const EditProjectEnvResponseContentHintCase7Type = S.String;
@@ -9167,14 +8731,8 @@ export interface EditProjectEnvResponseContentHintCase7 {
   storeId: string;
   type: EditProjectEnvResponseContentHintCase7Type;
 }
-export const EditProjectEnvResponseContentHintCase7 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: EditProjectEnvResponseContentHintCase7Type,
-  }),
-).annotate({
-  identifier: "EditProjectEnvResponseContentHintCase7",
-}) as any as S.Schema<EditProjectEnvResponseContentHintCase7>;
+export const EditProjectEnvResponseContentHintCase7 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<EditProjectEnvResponseContentHintCase7>;
 
 export type EditProjectEnvResponseContentHintCase8Type = "postgres-url-non-pooling";
 export const EditProjectEnvResponseContentHintCase8Type = S.String;
@@ -9183,14 +8741,8 @@ export interface EditProjectEnvResponseContentHintCase8 {
   storeId: string;
   type: EditProjectEnvResponseContentHintCase8Type;
 }
-export const EditProjectEnvResponseContentHintCase8 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: EditProjectEnvResponseContentHintCase8Type,
-  }),
-).annotate({
-  identifier: "EditProjectEnvResponseContentHintCase8",
-}) as any as S.Schema<EditProjectEnvResponseContentHintCase8>;
+export const EditProjectEnvResponseContentHintCase8 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<EditProjectEnvResponseContentHintCase8>;
 
 export type EditProjectEnvResponseContentHintCase9Type = "postgres-prisma-url";
 export const EditProjectEnvResponseContentHintCase9Type = S.String;
@@ -9199,14 +8751,8 @@ export interface EditProjectEnvResponseContentHintCase9 {
   storeId: string;
   type: EditProjectEnvResponseContentHintCase9Type;
 }
-export const EditProjectEnvResponseContentHintCase9 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: EditProjectEnvResponseContentHintCase9Type,
-  }),
-).annotate({
-  identifier: "EditProjectEnvResponseContentHintCase9",
-}) as any as S.Schema<EditProjectEnvResponseContentHintCase9>;
+export const EditProjectEnvResponseContentHintCase9 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<EditProjectEnvResponseContentHintCase9>;
 
 export type EditProjectEnvResponseContentHintCase10Type = "postgres-user";
 export const EditProjectEnvResponseContentHintCase10Type = S.String;
@@ -9215,14 +8761,8 @@ export interface EditProjectEnvResponseContentHintCase10 {
   storeId: string;
   type: EditProjectEnvResponseContentHintCase10Type;
 }
-export const EditProjectEnvResponseContentHintCase10 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: EditProjectEnvResponseContentHintCase10Type,
-  }),
-).annotate({
-  identifier: "EditProjectEnvResponseContentHintCase10",
-}) as any as S.Schema<EditProjectEnvResponseContentHintCase10>;
+export const EditProjectEnvResponseContentHintCase10 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<EditProjectEnvResponseContentHintCase10>;
 
 export type EditProjectEnvResponseContentHintCase11Type = "postgres-host";
 export const EditProjectEnvResponseContentHintCase11Type = S.String;
@@ -9231,14 +8771,8 @@ export interface EditProjectEnvResponseContentHintCase11 {
   storeId: string;
   type: EditProjectEnvResponseContentHintCase11Type;
 }
-export const EditProjectEnvResponseContentHintCase11 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: EditProjectEnvResponseContentHintCase11Type,
-  }),
-).annotate({
-  identifier: "EditProjectEnvResponseContentHintCase11",
-}) as any as S.Schema<EditProjectEnvResponseContentHintCase11>;
+export const EditProjectEnvResponseContentHintCase11 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<EditProjectEnvResponseContentHintCase11>;
 
 export type EditProjectEnvResponseContentHintCase12Type = "postgres-password";
 export const EditProjectEnvResponseContentHintCase12Type = S.String;
@@ -9247,14 +8781,8 @@ export interface EditProjectEnvResponseContentHintCase12 {
   storeId: string;
   type: EditProjectEnvResponseContentHintCase12Type;
 }
-export const EditProjectEnvResponseContentHintCase12 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: EditProjectEnvResponseContentHintCase12Type,
-  }),
-).annotate({
-  identifier: "EditProjectEnvResponseContentHintCase12",
-}) as any as S.Schema<EditProjectEnvResponseContentHintCase12>;
+export const EditProjectEnvResponseContentHintCase12 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<EditProjectEnvResponseContentHintCase12>;
 
 export type EditProjectEnvResponseContentHintCase13Type = "postgres-database";
 export const EditProjectEnvResponseContentHintCase13Type = S.String;
@@ -9263,14 +8791,8 @@ export interface EditProjectEnvResponseContentHintCase13 {
   storeId: string;
   type: EditProjectEnvResponseContentHintCase13Type;
 }
-export const EditProjectEnvResponseContentHintCase13 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: EditProjectEnvResponseContentHintCase13Type,
-  }),
-).annotate({
-  identifier: "EditProjectEnvResponseContentHintCase13",
-}) as any as S.Schema<EditProjectEnvResponseContentHintCase13>;
+export const EditProjectEnvResponseContentHintCase13 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<EditProjectEnvResponseContentHintCase13>;
 
 export type EditProjectEnvResponseContentHintCase14Type = "postgres-url-no-ssl";
 export const EditProjectEnvResponseContentHintCase14Type = S.String;
@@ -9279,14 +8801,8 @@ export interface EditProjectEnvResponseContentHintCase14 {
   storeId: string;
   type: EditProjectEnvResponseContentHintCase14Type;
 }
-export const EditProjectEnvResponseContentHintCase14 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: EditProjectEnvResponseContentHintCase14Type,
-  }),
-).annotate({
-  identifier: "EditProjectEnvResponseContentHintCase14",
-}) as any as S.Schema<EditProjectEnvResponseContentHintCase14>;
+export const EditProjectEnvResponseContentHintCase14 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<EditProjectEnvResponseContentHintCase14>;
 
 export type EditProjectEnvResponseContentHintCase15Type = "integration-store-secret";
 export const EditProjectEnvResponseContentHintCase15Type = S.String;
@@ -9298,17 +8814,8 @@ export interface EditProjectEnvResponseContentHintCase15 {
   storeId: string;
   type: EditProjectEnvResponseContentHintCase15Type;
 }
-export const EditProjectEnvResponseContentHintCase15 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    integrationConfigurationId: S.String,
-    integrationId: S.String,
-    integrationProductId: S.String,
-    storeId: S.String,
-    type: EditProjectEnvResponseContentHintCase15Type,
-  }),
-).annotate({
-  identifier: "EditProjectEnvResponseContentHintCase15",
-}) as any as S.Schema<EditProjectEnvResponseContentHintCase15>;
+export const EditProjectEnvResponseContentHintCase15 =
+  CreateProjectResponseEnvItemContentHintCase15 as any as S.Schema<EditProjectEnvResponseContentHintCase15>;
 
 export type EditProjectEnvResponseContentHintCase16Type = "flags-connection-string";
 export const EditProjectEnvResponseContentHintCase16Type = S.String;
@@ -9317,14 +8824,8 @@ export interface EditProjectEnvResponseContentHintCase16 {
   projectId: string;
   type: EditProjectEnvResponseContentHintCase16Type;
 }
-export const EditProjectEnvResponseContentHintCase16 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    projectId: S.String,
-    type: EditProjectEnvResponseContentHintCase16Type,
-  }),
-).annotate({
-  identifier: "EditProjectEnvResponseContentHintCase16",
-}) as any as S.Schema<EditProjectEnvResponseContentHintCase16>;
+export const EditProjectEnvResponseContentHintCase16 =
+  CreateProjectResponseEnvItemContentHintCase16 as any as S.Schema<EditProjectEnvResponseContentHintCase16>;
 
 export type EditProjectEnvResponseContentHint =
   | EditProjectEnvResponseContentHintCase0
@@ -9360,14 +8861,8 @@ export interface EditProjectEnvResponseInternalContentHint {
   encryptedValue: string;
   type: EditProjectEnvResponseInternalContentHintType;
 }
-export const EditProjectEnvResponseInternalContentHint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    encryptedValue: S.String,
-    type: EditProjectEnvResponseInternalContentHintType,
-  }),
-).annotate({
-  identifier: "EditProjectEnvResponseInternalContentHint",
-}) as any as S.Schema<EditProjectEnvResponseInternalContentHint>;
+export const EditProjectEnvResponseInternalContentHint =
+  CreateProjectResponseEnvItemInternalContentHint as any as S.Schema<EditProjectEnvResponseInternalContentHint>;
 
 export type EditProjectEnvResponseTargetCase0Item =
   | "development"
@@ -9378,9 +8873,8 @@ export type EditProjectEnvResponseTargetCase0Item =
 export const EditProjectEnvResponseTargetCase0Item = S.String;
 
 export type EditProjectEnvResponseTargetCase0List = Array<EditProjectEnvResponseTargetCase0Item>;
-export const EditProjectEnvResponseTargetCase0List = /*@__PURE__*/ S.Array(
-  EditProjectEnvResponseTargetCase0Item,
-) as any as S.Schema<EditProjectEnvResponseTargetCase0List>;
+export const EditProjectEnvResponseTargetCase0List =
+  CreateProjectRequestEnvironmentVariablesItemTargetCase1List as any as S.Schema<EditProjectEnvResponseTargetCase0List>;
 
 export type EditProjectEnvResponseTargetCase1 =
   | "development"
@@ -9494,14 +8988,8 @@ export interface FilterProjectEnvsResponseBodyCase0ContentHintCase0 {
   storeId: string;
   type: FilterProjectEnvsResponseBodyCase0ContentHintCase0Type;
 }
-export const FilterProjectEnvsResponseBodyCase0ContentHintCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: FilterProjectEnvsResponseBodyCase0ContentHintCase0Type,
-  }),
-).annotate({
-  identifier: "FilterProjectEnvsResponseBodyCase0ContentHintCase0",
-}) as any as S.Schema<FilterProjectEnvsResponseBodyCase0ContentHintCase0>;
+export const FilterProjectEnvsResponseBodyCase0ContentHintCase0 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<FilterProjectEnvsResponseBodyCase0ContentHintCase0>;
 
 export type FilterProjectEnvsResponseBodyCase0ContentHintCase1Type = "redis-rest-api-url";
 export const FilterProjectEnvsResponseBodyCase0ContentHintCase1Type = S.String;
@@ -9510,14 +8998,8 @@ export interface FilterProjectEnvsResponseBodyCase0ContentHintCase1 {
   storeId: string;
   type: FilterProjectEnvsResponseBodyCase0ContentHintCase1Type;
 }
-export const FilterProjectEnvsResponseBodyCase0ContentHintCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: FilterProjectEnvsResponseBodyCase0ContentHintCase1Type,
-  }),
-).annotate({
-  identifier: "FilterProjectEnvsResponseBodyCase0ContentHintCase1",
-}) as any as S.Schema<FilterProjectEnvsResponseBodyCase0ContentHintCase1>;
+export const FilterProjectEnvsResponseBodyCase0ContentHintCase1 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<FilterProjectEnvsResponseBodyCase0ContentHintCase1>;
 
 export type FilterProjectEnvsResponseBodyCase0ContentHintCase2Type = "redis-rest-api-token";
 export const FilterProjectEnvsResponseBodyCase0ContentHintCase2Type = S.String;
@@ -9526,14 +9008,8 @@ export interface FilterProjectEnvsResponseBodyCase0ContentHintCase2 {
   storeId: string;
   type: FilterProjectEnvsResponseBodyCase0ContentHintCase2Type;
 }
-export const FilterProjectEnvsResponseBodyCase0ContentHintCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: FilterProjectEnvsResponseBodyCase0ContentHintCase2Type,
-  }),
-).annotate({
-  identifier: "FilterProjectEnvsResponseBodyCase0ContentHintCase2",
-}) as any as S.Schema<FilterProjectEnvsResponseBodyCase0ContentHintCase2>;
+export const FilterProjectEnvsResponseBodyCase0ContentHintCase2 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<FilterProjectEnvsResponseBodyCase0ContentHintCase2>;
 
 export type FilterProjectEnvsResponseBodyCase0ContentHintCase3Type =
   "redis-rest-api-read-only-token";
@@ -9543,14 +9019,8 @@ export interface FilterProjectEnvsResponseBodyCase0ContentHintCase3 {
   storeId: string;
   type: FilterProjectEnvsResponseBodyCase0ContentHintCase3Type;
 }
-export const FilterProjectEnvsResponseBodyCase0ContentHintCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: FilterProjectEnvsResponseBodyCase0ContentHintCase3Type,
-  }),
-).annotate({
-  identifier: "FilterProjectEnvsResponseBodyCase0ContentHintCase3",
-}) as any as S.Schema<FilterProjectEnvsResponseBodyCase0ContentHintCase3>;
+export const FilterProjectEnvsResponseBodyCase0ContentHintCase3 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<FilterProjectEnvsResponseBodyCase0ContentHintCase3>;
 
 export type FilterProjectEnvsResponseBodyCase0ContentHintCase4Type = "blob-read-write-token";
 export const FilterProjectEnvsResponseBodyCase0ContentHintCase4Type = S.String;
@@ -9559,14 +9029,8 @@ export interface FilterProjectEnvsResponseBodyCase0ContentHintCase4 {
   storeId: string;
   type: FilterProjectEnvsResponseBodyCase0ContentHintCase4Type;
 }
-export const FilterProjectEnvsResponseBodyCase0ContentHintCase4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: FilterProjectEnvsResponseBodyCase0ContentHintCase4Type,
-  }),
-).annotate({
-  identifier: "FilterProjectEnvsResponseBodyCase0ContentHintCase4",
-}) as any as S.Schema<FilterProjectEnvsResponseBodyCase0ContentHintCase4>;
+export const FilterProjectEnvsResponseBodyCase0ContentHintCase4 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<FilterProjectEnvsResponseBodyCase0ContentHintCase4>;
 
 export type FilterProjectEnvsResponseBodyCase0ContentHintCase5Type = "blob-store-id";
 export const FilterProjectEnvsResponseBodyCase0ContentHintCase5Type = S.String;
@@ -9575,14 +9039,8 @@ export interface FilterProjectEnvsResponseBodyCase0ContentHintCase5 {
   storeId: string;
   type: FilterProjectEnvsResponseBodyCase0ContentHintCase5Type;
 }
-export const FilterProjectEnvsResponseBodyCase0ContentHintCase5 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: FilterProjectEnvsResponseBodyCase0ContentHintCase5Type,
-  }),
-).annotate({
-  identifier: "FilterProjectEnvsResponseBodyCase0ContentHintCase5",
-}) as any as S.Schema<FilterProjectEnvsResponseBodyCase0ContentHintCase5>;
+export const FilterProjectEnvsResponseBodyCase0ContentHintCase5 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<FilterProjectEnvsResponseBodyCase0ContentHintCase5>;
 
 export type FilterProjectEnvsResponseBodyCase0ContentHintCase6Type = "blob-webhook-public-key";
 export const FilterProjectEnvsResponseBodyCase0ContentHintCase6Type = S.String;
@@ -9591,14 +9049,8 @@ export interface FilterProjectEnvsResponseBodyCase0ContentHintCase6 {
   storeId: string;
   type: FilterProjectEnvsResponseBodyCase0ContentHintCase6Type;
 }
-export const FilterProjectEnvsResponseBodyCase0ContentHintCase6 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: FilterProjectEnvsResponseBodyCase0ContentHintCase6Type,
-  }),
-).annotate({
-  identifier: "FilterProjectEnvsResponseBodyCase0ContentHintCase6",
-}) as any as S.Schema<FilterProjectEnvsResponseBodyCase0ContentHintCase6>;
+export const FilterProjectEnvsResponseBodyCase0ContentHintCase6 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<FilterProjectEnvsResponseBodyCase0ContentHintCase6>;
 
 export type FilterProjectEnvsResponseBodyCase0ContentHintCase7Type = "postgres-url";
 export const FilterProjectEnvsResponseBodyCase0ContentHintCase7Type = S.String;
@@ -9607,14 +9059,8 @@ export interface FilterProjectEnvsResponseBodyCase0ContentHintCase7 {
   storeId: string;
   type: FilterProjectEnvsResponseBodyCase0ContentHintCase7Type;
 }
-export const FilterProjectEnvsResponseBodyCase0ContentHintCase7 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: FilterProjectEnvsResponseBodyCase0ContentHintCase7Type,
-  }),
-).annotate({
-  identifier: "FilterProjectEnvsResponseBodyCase0ContentHintCase7",
-}) as any as S.Schema<FilterProjectEnvsResponseBodyCase0ContentHintCase7>;
+export const FilterProjectEnvsResponseBodyCase0ContentHintCase7 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<FilterProjectEnvsResponseBodyCase0ContentHintCase7>;
 
 export type FilterProjectEnvsResponseBodyCase0ContentHintCase8Type = "postgres-url-non-pooling";
 export const FilterProjectEnvsResponseBodyCase0ContentHintCase8Type = S.String;
@@ -9623,14 +9069,8 @@ export interface FilterProjectEnvsResponseBodyCase0ContentHintCase8 {
   storeId: string;
   type: FilterProjectEnvsResponseBodyCase0ContentHintCase8Type;
 }
-export const FilterProjectEnvsResponseBodyCase0ContentHintCase8 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: FilterProjectEnvsResponseBodyCase0ContentHintCase8Type,
-  }),
-).annotate({
-  identifier: "FilterProjectEnvsResponseBodyCase0ContentHintCase8",
-}) as any as S.Schema<FilterProjectEnvsResponseBodyCase0ContentHintCase8>;
+export const FilterProjectEnvsResponseBodyCase0ContentHintCase8 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<FilterProjectEnvsResponseBodyCase0ContentHintCase8>;
 
 export type FilterProjectEnvsResponseBodyCase0ContentHintCase9Type = "postgres-prisma-url";
 export const FilterProjectEnvsResponseBodyCase0ContentHintCase9Type = S.String;
@@ -9639,14 +9079,8 @@ export interface FilterProjectEnvsResponseBodyCase0ContentHintCase9 {
   storeId: string;
   type: FilterProjectEnvsResponseBodyCase0ContentHintCase9Type;
 }
-export const FilterProjectEnvsResponseBodyCase0ContentHintCase9 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: FilterProjectEnvsResponseBodyCase0ContentHintCase9Type,
-  }),
-).annotate({
-  identifier: "FilterProjectEnvsResponseBodyCase0ContentHintCase9",
-}) as any as S.Schema<FilterProjectEnvsResponseBodyCase0ContentHintCase9>;
+export const FilterProjectEnvsResponseBodyCase0ContentHintCase9 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<FilterProjectEnvsResponseBodyCase0ContentHintCase9>;
 
 export type FilterProjectEnvsResponseBodyCase0ContentHintCase10Type = "postgres-user";
 export const FilterProjectEnvsResponseBodyCase0ContentHintCase10Type = S.String;
@@ -9655,14 +9089,8 @@ export interface FilterProjectEnvsResponseBodyCase0ContentHintCase10 {
   storeId: string;
   type: FilterProjectEnvsResponseBodyCase0ContentHintCase10Type;
 }
-export const FilterProjectEnvsResponseBodyCase0ContentHintCase10 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: FilterProjectEnvsResponseBodyCase0ContentHintCase10Type,
-  }),
-).annotate({
-  identifier: "FilterProjectEnvsResponseBodyCase0ContentHintCase10",
-}) as any as S.Schema<FilterProjectEnvsResponseBodyCase0ContentHintCase10>;
+export const FilterProjectEnvsResponseBodyCase0ContentHintCase10 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<FilterProjectEnvsResponseBodyCase0ContentHintCase10>;
 
 export type FilterProjectEnvsResponseBodyCase0ContentHintCase11Type = "postgres-host";
 export const FilterProjectEnvsResponseBodyCase0ContentHintCase11Type = S.String;
@@ -9671,14 +9099,8 @@ export interface FilterProjectEnvsResponseBodyCase0ContentHintCase11 {
   storeId: string;
   type: FilterProjectEnvsResponseBodyCase0ContentHintCase11Type;
 }
-export const FilterProjectEnvsResponseBodyCase0ContentHintCase11 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: FilterProjectEnvsResponseBodyCase0ContentHintCase11Type,
-  }),
-).annotate({
-  identifier: "FilterProjectEnvsResponseBodyCase0ContentHintCase11",
-}) as any as S.Schema<FilterProjectEnvsResponseBodyCase0ContentHintCase11>;
+export const FilterProjectEnvsResponseBodyCase0ContentHintCase11 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<FilterProjectEnvsResponseBodyCase0ContentHintCase11>;
 
 export type FilterProjectEnvsResponseBodyCase0ContentHintCase12Type = "postgres-password";
 export const FilterProjectEnvsResponseBodyCase0ContentHintCase12Type = S.String;
@@ -9687,14 +9109,8 @@ export interface FilterProjectEnvsResponseBodyCase0ContentHintCase12 {
   storeId: string;
   type: FilterProjectEnvsResponseBodyCase0ContentHintCase12Type;
 }
-export const FilterProjectEnvsResponseBodyCase0ContentHintCase12 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: FilterProjectEnvsResponseBodyCase0ContentHintCase12Type,
-  }),
-).annotate({
-  identifier: "FilterProjectEnvsResponseBodyCase0ContentHintCase12",
-}) as any as S.Schema<FilterProjectEnvsResponseBodyCase0ContentHintCase12>;
+export const FilterProjectEnvsResponseBodyCase0ContentHintCase12 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<FilterProjectEnvsResponseBodyCase0ContentHintCase12>;
 
 export type FilterProjectEnvsResponseBodyCase0ContentHintCase13Type = "postgres-database";
 export const FilterProjectEnvsResponseBodyCase0ContentHintCase13Type = S.String;
@@ -9703,14 +9119,8 @@ export interface FilterProjectEnvsResponseBodyCase0ContentHintCase13 {
   storeId: string;
   type: FilterProjectEnvsResponseBodyCase0ContentHintCase13Type;
 }
-export const FilterProjectEnvsResponseBodyCase0ContentHintCase13 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: FilterProjectEnvsResponseBodyCase0ContentHintCase13Type,
-  }),
-).annotate({
-  identifier: "FilterProjectEnvsResponseBodyCase0ContentHintCase13",
-}) as any as S.Schema<FilterProjectEnvsResponseBodyCase0ContentHintCase13>;
+export const FilterProjectEnvsResponseBodyCase0ContentHintCase13 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<FilterProjectEnvsResponseBodyCase0ContentHintCase13>;
 
 export type FilterProjectEnvsResponseBodyCase0ContentHintCase14Type = "postgres-url-no-ssl";
 export const FilterProjectEnvsResponseBodyCase0ContentHintCase14Type = S.String;
@@ -9719,14 +9129,8 @@ export interface FilterProjectEnvsResponseBodyCase0ContentHintCase14 {
   storeId: string;
   type: FilterProjectEnvsResponseBodyCase0ContentHintCase14Type;
 }
-export const FilterProjectEnvsResponseBodyCase0ContentHintCase14 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: FilterProjectEnvsResponseBodyCase0ContentHintCase14Type,
-  }),
-).annotate({
-  identifier: "FilterProjectEnvsResponseBodyCase0ContentHintCase14",
-}) as any as S.Schema<FilterProjectEnvsResponseBodyCase0ContentHintCase14>;
+export const FilterProjectEnvsResponseBodyCase0ContentHintCase14 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<FilterProjectEnvsResponseBodyCase0ContentHintCase14>;
 
 export type FilterProjectEnvsResponseBodyCase0ContentHintCase15Type = "integration-store-secret";
 export const FilterProjectEnvsResponseBodyCase0ContentHintCase15Type = S.String;
@@ -9738,17 +9142,8 @@ export interface FilterProjectEnvsResponseBodyCase0ContentHintCase15 {
   storeId: string;
   type: FilterProjectEnvsResponseBodyCase0ContentHintCase15Type;
 }
-export const FilterProjectEnvsResponseBodyCase0ContentHintCase15 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    integrationConfigurationId: S.String,
-    integrationId: S.String,
-    integrationProductId: S.String,
-    storeId: S.String,
-    type: FilterProjectEnvsResponseBodyCase0ContentHintCase15Type,
-  }),
-).annotate({
-  identifier: "FilterProjectEnvsResponseBodyCase0ContentHintCase15",
-}) as any as S.Schema<FilterProjectEnvsResponseBodyCase0ContentHintCase15>;
+export const FilterProjectEnvsResponseBodyCase0ContentHintCase15 =
+  CreateProjectResponseEnvItemContentHintCase15 as any as S.Schema<FilterProjectEnvsResponseBodyCase0ContentHintCase15>;
 
 export type FilterProjectEnvsResponseBodyCase0ContentHintCase16Type = "flags-connection-string";
 export const FilterProjectEnvsResponseBodyCase0ContentHintCase16Type = S.String;
@@ -9757,14 +9152,8 @@ export interface FilterProjectEnvsResponseBodyCase0ContentHintCase16 {
   projectId: string;
   type: FilterProjectEnvsResponseBodyCase0ContentHintCase16Type;
 }
-export const FilterProjectEnvsResponseBodyCase0ContentHintCase16 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    projectId: S.String,
-    type: FilterProjectEnvsResponseBodyCase0ContentHintCase16Type,
-  }),
-).annotate({
-  identifier: "FilterProjectEnvsResponseBodyCase0ContentHintCase16",
-}) as any as S.Schema<FilterProjectEnvsResponseBodyCase0ContentHintCase16>;
+export const FilterProjectEnvsResponseBodyCase0ContentHintCase16 =
+  CreateProjectResponseEnvItemContentHintCase16 as any as S.Schema<FilterProjectEnvsResponseBodyCase0ContentHintCase16>;
 
 export type FilterProjectEnvsResponseBodyCase0ContentHint =
   | FilterProjectEnvsResponseBodyCase0ContentHintCase0
@@ -9798,9 +9187,8 @@ export const FilterProjectEnvsResponseBodyCase0SecurityIssuesItem = S.String;
 
 export type FilterProjectEnvsResponseBodyCase0SecurityIssuesList =
   Array<FilterProjectEnvsResponseBodyCase0SecurityIssuesItem>;
-export const FilterProjectEnvsResponseBodyCase0SecurityIssuesList = /*@__PURE__*/ S.Array(
-  FilterProjectEnvsResponseBodyCase0SecurityIssuesItem,
-) as any as S.Schema<FilterProjectEnvsResponseBodyCase0SecurityIssuesList>;
+export const FilterProjectEnvsResponseBodyCase0SecurityIssuesList =
+  CreateProjectRequestEnvironmentVariablesItemTargetCase1List as any as S.Schema<FilterProjectEnvsResponseBodyCase0SecurityIssuesList>;
 
 export type FilterProjectEnvsResponseBodyCase0TargetCase0Item =
   | "development"
@@ -9812,9 +9200,8 @@ export const FilterProjectEnvsResponseBodyCase0TargetCase0Item = S.String;
 
 export type FilterProjectEnvsResponseBodyCase0TargetCase0List =
   Array<FilterProjectEnvsResponseBodyCase0TargetCase0Item>;
-export const FilterProjectEnvsResponseBodyCase0TargetCase0List = /*@__PURE__*/ S.Array(
-  FilterProjectEnvsResponseBodyCase0TargetCase0Item,
-) as any as S.Schema<FilterProjectEnvsResponseBodyCase0TargetCase0List>;
+export const FilterProjectEnvsResponseBodyCase0TargetCase0List =
+  CreateProjectRequestEnvironmentVariablesItemTargetCase1List as any as S.Schema<FilterProjectEnvsResponseBodyCase0TargetCase0List>;
 
 export type FilterProjectEnvsResponseBodyCase0TargetCase1 =
   | "development"
@@ -9902,15 +9289,8 @@ export interface FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase0 {
   storeId: string;
   type: FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase0Type;
 }
-export const FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase0 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      storeId: S.String,
-      type: FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase0Type,
-    }),
-).annotate({
-  identifier: "FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase0",
-}) as any as S.Schema<FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase0>;
+export const FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase0 =
+  CreateProjectEnvResponseCreatedCase1ItemContentHintCase0 as any as S.Schema<FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase0>;
 
 export type FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase1Type = "redis-rest-api-url";
 export const FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase1Type = S.String;
@@ -9919,15 +9299,8 @@ export interface FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase1 {
   storeId: string;
   type: FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase1Type;
 }
-export const FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase1 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      storeId: S.String,
-      type: FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase1Type,
-    }),
-).annotate({
-  identifier: "FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase1",
-}) as any as S.Schema<FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase1>;
+export const FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase1 =
+  CreateProjectEnvResponseCreatedCase1ItemContentHintCase0 as any as S.Schema<FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase1>;
 
 export type FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase2Type = "redis-rest-api-token";
 export const FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase2Type = S.String;
@@ -9936,15 +9309,8 @@ export interface FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase2 {
   storeId: string;
   type: FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase2Type;
 }
-export const FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase2 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      storeId: S.String,
-      type: FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase2Type,
-    }),
-).annotate({
-  identifier: "FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase2",
-}) as any as S.Schema<FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase2>;
+export const FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase2 =
+  CreateProjectEnvResponseCreatedCase1ItemContentHintCase0 as any as S.Schema<FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase2>;
 
 export type FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase3Type =
   "redis-rest-api-read-only-token";
@@ -9954,15 +9320,8 @@ export interface FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase3 {
   storeId: string;
   type: FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase3Type;
 }
-export const FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase3 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      storeId: S.String,
-      type: FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase3Type,
-    }),
-).annotate({
-  identifier: "FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase3",
-}) as any as S.Schema<FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase3>;
+export const FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase3 =
+  CreateProjectEnvResponseCreatedCase1ItemContentHintCase0 as any as S.Schema<FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase3>;
 
 export type FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase4Type =
   "blob-read-write-token";
@@ -9972,15 +9331,8 @@ export interface FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase4 {
   storeId: string;
   type: FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase4Type;
 }
-export const FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase4 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      storeId: S.String,
-      type: FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase4Type,
-    }),
-).annotate({
-  identifier: "FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase4",
-}) as any as S.Schema<FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase4>;
+export const FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase4 =
+  CreateProjectEnvResponseCreatedCase1ItemContentHintCase0 as any as S.Schema<FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase4>;
 
 export type FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase5Type = "blob-store-id";
 export const FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase5Type = S.String;
@@ -9989,15 +9341,8 @@ export interface FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase5 {
   storeId: string;
   type: FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase5Type;
 }
-export const FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase5 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      storeId: S.String,
-      type: FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase5Type,
-    }),
-).annotate({
-  identifier: "FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase5",
-}) as any as S.Schema<FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase5>;
+export const FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase5 =
+  CreateProjectEnvResponseCreatedCase1ItemContentHintCase0 as any as S.Schema<FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase5>;
 
 export type FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase6Type =
   "blob-webhook-public-key";
@@ -10007,15 +9352,8 @@ export interface FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase6 {
   storeId: string;
   type: FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase6Type;
 }
-export const FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase6 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      storeId: S.String,
-      type: FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase6Type,
-    }),
-).annotate({
-  identifier: "FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase6",
-}) as any as S.Schema<FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase6>;
+export const FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase6 =
+  CreateProjectEnvResponseCreatedCase1ItemContentHintCase0 as any as S.Schema<FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase6>;
 
 export type FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase7Type = "postgres-url";
 export const FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase7Type = S.String;
@@ -10024,15 +9362,8 @@ export interface FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase7 {
   storeId: string;
   type: FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase7Type;
 }
-export const FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase7 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      storeId: S.String,
-      type: FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase7Type,
-    }),
-).annotate({
-  identifier: "FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase7",
-}) as any as S.Schema<FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase7>;
+export const FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase7 =
+  CreateProjectEnvResponseCreatedCase1ItemContentHintCase0 as any as S.Schema<FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase7>;
 
 export type FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase8Type =
   "postgres-url-non-pooling";
@@ -10042,15 +9373,8 @@ export interface FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase8 {
   storeId: string;
   type: FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase8Type;
 }
-export const FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase8 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      storeId: S.String,
-      type: FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase8Type,
-    }),
-).annotate({
-  identifier: "FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase8",
-}) as any as S.Schema<FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase8>;
+export const FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase8 =
+  CreateProjectEnvResponseCreatedCase1ItemContentHintCase0 as any as S.Schema<FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase8>;
 
 export type FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase9Type = "postgres-prisma-url";
 export const FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase9Type = S.String;
@@ -10059,15 +9383,8 @@ export interface FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase9 {
   storeId: string;
   type: FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase9Type;
 }
-export const FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase9 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      storeId: S.String,
-      type: FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase9Type,
-    }),
-).annotate({
-  identifier: "FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase9",
-}) as any as S.Schema<FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase9>;
+export const FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase9 =
+  CreateProjectEnvResponseCreatedCase1ItemContentHintCase0 as any as S.Schema<FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase9>;
 
 export type FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase10Type = "postgres-user";
 export const FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase10Type = S.String;
@@ -10076,15 +9393,8 @@ export interface FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase10 {
   storeId: string;
   type: FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase10Type;
 }
-export const FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase10 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      storeId: S.String,
-      type: FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase10Type,
-    }),
-).annotate({
-  identifier: "FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase10",
-}) as any as S.Schema<FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase10>;
+export const FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase10 =
+  CreateProjectEnvResponseCreatedCase1ItemContentHintCase0 as any as S.Schema<FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase10>;
 
 export type FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase11Type = "postgres-host";
 export const FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase11Type = S.String;
@@ -10093,15 +9403,8 @@ export interface FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase11 {
   storeId: string;
   type: FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase11Type;
 }
-export const FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase11 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      storeId: S.String,
-      type: FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase11Type,
-    }),
-).annotate({
-  identifier: "FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase11",
-}) as any as S.Schema<FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase11>;
+export const FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase11 =
+  CreateProjectEnvResponseCreatedCase1ItemContentHintCase0 as any as S.Schema<FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase11>;
 
 export type FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase12Type = "postgres-password";
 export const FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase12Type = S.String;
@@ -10110,15 +9413,8 @@ export interface FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase12 {
   storeId: string;
   type: FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase12Type;
 }
-export const FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase12 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      storeId: S.String,
-      type: FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase12Type,
-    }),
-).annotate({
-  identifier: "FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase12",
-}) as any as S.Schema<FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase12>;
+export const FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase12 =
+  CreateProjectEnvResponseCreatedCase1ItemContentHintCase0 as any as S.Schema<FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase12>;
 
 export type FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase13Type = "postgres-database";
 export const FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase13Type = S.String;
@@ -10127,15 +9423,8 @@ export interface FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase13 {
   storeId: string;
   type: FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase13Type;
 }
-export const FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase13 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      storeId: S.String,
-      type: FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase13Type,
-    }),
-).annotate({
-  identifier: "FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase13",
-}) as any as S.Schema<FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase13>;
+export const FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase13 =
+  CreateProjectEnvResponseCreatedCase1ItemContentHintCase0 as any as S.Schema<FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase13>;
 
 export type FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase14Type = "postgres-url-no-ssl";
 export const FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase14Type = S.String;
@@ -10144,15 +9433,8 @@ export interface FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase14 {
   storeId: string;
   type: FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase14Type;
 }
-export const FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase14 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      storeId: S.String,
-      type: FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase14Type,
-    }),
-).annotate({
-  identifier: "FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase14",
-}) as any as S.Schema<FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase14>;
+export const FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase14 =
+  CreateProjectEnvResponseCreatedCase1ItemContentHintCase0 as any as S.Schema<FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase14>;
 
 export type FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase15Type =
   "integration-store-secret";
@@ -10165,18 +9447,8 @@ export interface FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase15 {
   storeId: string;
   type: FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase15Type;
 }
-export const FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase15 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      integrationConfigurationId: S.String,
-      integrationId: S.String,
-      integrationProductId: S.String,
-      storeId: S.String,
-      type: FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase15Type,
-    }),
-).annotate({
-  identifier: "FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase15",
-}) as any as S.Schema<FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase15>;
+export const FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase15 =
+  CreateProjectEnvResponseCreatedCase1ItemContentHintCase15 as any as S.Schema<FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase15>;
 
 export type FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase16Type =
   "flags-connection-string";
@@ -10186,15 +9458,8 @@ export interface FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase16 {
   projectId: string;
   type: FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase16Type;
 }
-export const FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase16 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      projectId: S.String,
-      type: FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase16Type,
-    }),
-).annotate({
-  identifier: "FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase16",
-}) as any as S.Schema<FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase16>;
+export const FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase16 =
+  CreateProjectEnvResponseCreatedCase1ItemContentHintCase16 as any as S.Schema<FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase16>;
 
 export type FilterProjectEnvsResponseBodyCase1EnvsItemContentHint =
   | FilterProjectEnvsResponseBodyCase1EnvsItemContentHintCase0
@@ -10228,9 +9493,8 @@ export const FilterProjectEnvsResponseBodyCase1EnvsItemSecurityIssuesItem = S.St
 
 export type FilterProjectEnvsResponseBodyCase1EnvsItemSecurityIssuesList =
   Array<FilterProjectEnvsResponseBodyCase1EnvsItemSecurityIssuesItem>;
-export const FilterProjectEnvsResponseBodyCase1EnvsItemSecurityIssuesList = /*@__PURE__*/ S.Array(
-  FilterProjectEnvsResponseBodyCase1EnvsItemSecurityIssuesItem,
-) as any as S.Schema<FilterProjectEnvsResponseBodyCase1EnvsItemSecurityIssuesList>;
+export const FilterProjectEnvsResponseBodyCase1EnvsItemSecurityIssuesList =
+  CreateProjectRequestEnvironmentVariablesItemTargetCase1List as any as S.Schema<FilterProjectEnvsResponseBodyCase1EnvsItemSecurityIssuesList>;
 
 export type FilterProjectEnvsResponseBodyCase1EnvsItemTargetCase0Item =
   | "development"
@@ -10242,9 +9506,8 @@ export const FilterProjectEnvsResponseBodyCase1EnvsItemTargetCase0Item = S.Strin
 
 export type FilterProjectEnvsResponseBodyCase1EnvsItemTargetCase0List =
   Array<FilterProjectEnvsResponseBodyCase1EnvsItemTargetCase0Item>;
-export const FilterProjectEnvsResponseBodyCase1EnvsItemTargetCase0List = /*@__PURE__*/ S.Array(
-  FilterProjectEnvsResponseBodyCase1EnvsItemTargetCase0Item,
-) as any as S.Schema<FilterProjectEnvsResponseBodyCase1EnvsItemTargetCase0List>;
+export const FilterProjectEnvsResponseBodyCase1EnvsItemTargetCase0List =
+  CreateProjectRequestEnvironmentVariablesItemTargetCase1List as any as S.Schema<FilterProjectEnvsResponseBodyCase1EnvsItemTargetCase0List>;
 
 export type FilterProjectEnvsResponseBodyCase1EnvsItemTargetCase1 =
   | "development"
@@ -10370,15 +9633,8 @@ export interface FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase0 {
   storeId: string;
   type: FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase0Type;
 }
-export const FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase0 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      storeId: S.String,
-      type: FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase0Type,
-    }),
-).annotate({
-  identifier: "FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase0",
-}) as any as S.Schema<FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase0>;
+export const FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase0 =
+  CreateProjectEnvResponseCreatedCase1ItemContentHintCase0 as any as S.Schema<FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase0>;
 
 export type FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase1Type = "redis-rest-api-url";
 export const FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase1Type = S.String;
@@ -10387,15 +9643,8 @@ export interface FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase1 {
   storeId: string;
   type: FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase1Type;
 }
-export const FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase1 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      storeId: S.String,
-      type: FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase1Type,
-    }),
-).annotate({
-  identifier: "FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase1",
-}) as any as S.Schema<FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase1>;
+export const FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase1 =
+  CreateProjectEnvResponseCreatedCase1ItemContentHintCase0 as any as S.Schema<FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase1>;
 
 export type FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase2Type = "redis-rest-api-token";
 export const FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase2Type = S.String;
@@ -10404,15 +9653,8 @@ export interface FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase2 {
   storeId: string;
   type: FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase2Type;
 }
-export const FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase2 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      storeId: S.String,
-      type: FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase2Type,
-    }),
-).annotate({
-  identifier: "FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase2",
-}) as any as S.Schema<FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase2>;
+export const FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase2 =
+  CreateProjectEnvResponseCreatedCase1ItemContentHintCase0 as any as S.Schema<FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase2>;
 
 export type FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase3Type =
   "redis-rest-api-read-only-token";
@@ -10422,15 +9664,8 @@ export interface FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase3 {
   storeId: string;
   type: FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase3Type;
 }
-export const FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase3 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      storeId: S.String,
-      type: FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase3Type,
-    }),
-).annotate({
-  identifier: "FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase3",
-}) as any as S.Schema<FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase3>;
+export const FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase3 =
+  CreateProjectEnvResponseCreatedCase1ItemContentHintCase0 as any as S.Schema<FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase3>;
 
 export type FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase4Type =
   "blob-read-write-token";
@@ -10440,15 +9675,8 @@ export interface FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase4 {
   storeId: string;
   type: FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase4Type;
 }
-export const FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase4 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      storeId: S.String,
-      type: FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase4Type,
-    }),
-).annotate({
-  identifier: "FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase4",
-}) as any as S.Schema<FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase4>;
+export const FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase4 =
+  CreateProjectEnvResponseCreatedCase1ItemContentHintCase0 as any as S.Schema<FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase4>;
 
 export type FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase5Type = "blob-store-id";
 export const FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase5Type = S.String;
@@ -10457,15 +9685,8 @@ export interface FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase5 {
   storeId: string;
   type: FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase5Type;
 }
-export const FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase5 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      storeId: S.String,
-      type: FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase5Type,
-    }),
-).annotate({
-  identifier: "FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase5",
-}) as any as S.Schema<FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase5>;
+export const FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase5 =
+  CreateProjectEnvResponseCreatedCase1ItemContentHintCase0 as any as S.Schema<FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase5>;
 
 export type FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase6Type =
   "blob-webhook-public-key";
@@ -10475,15 +9696,8 @@ export interface FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase6 {
   storeId: string;
   type: FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase6Type;
 }
-export const FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase6 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      storeId: S.String,
-      type: FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase6Type,
-    }),
-).annotate({
-  identifier: "FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase6",
-}) as any as S.Schema<FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase6>;
+export const FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase6 =
+  CreateProjectEnvResponseCreatedCase1ItemContentHintCase0 as any as S.Schema<FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase6>;
 
 export type FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase7Type = "postgres-url";
 export const FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase7Type = S.String;
@@ -10492,15 +9706,8 @@ export interface FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase7 {
   storeId: string;
   type: FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase7Type;
 }
-export const FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase7 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      storeId: S.String,
-      type: FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase7Type,
-    }),
-).annotate({
-  identifier: "FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase7",
-}) as any as S.Schema<FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase7>;
+export const FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase7 =
+  CreateProjectEnvResponseCreatedCase1ItemContentHintCase0 as any as S.Schema<FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase7>;
 
 export type FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase8Type =
   "postgres-url-non-pooling";
@@ -10510,15 +9717,8 @@ export interface FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase8 {
   storeId: string;
   type: FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase8Type;
 }
-export const FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase8 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      storeId: S.String,
-      type: FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase8Type,
-    }),
-).annotate({
-  identifier: "FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase8",
-}) as any as S.Schema<FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase8>;
+export const FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase8 =
+  CreateProjectEnvResponseCreatedCase1ItemContentHintCase0 as any as S.Schema<FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase8>;
 
 export type FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase9Type = "postgres-prisma-url";
 export const FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase9Type = S.String;
@@ -10527,15 +9727,8 @@ export interface FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase9 {
   storeId: string;
   type: FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase9Type;
 }
-export const FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase9 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      storeId: S.String,
-      type: FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase9Type,
-    }),
-).annotate({
-  identifier: "FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase9",
-}) as any as S.Schema<FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase9>;
+export const FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase9 =
+  CreateProjectEnvResponseCreatedCase1ItemContentHintCase0 as any as S.Schema<FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase9>;
 
 export type FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase10Type = "postgres-user";
 export const FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase10Type = S.String;
@@ -10544,15 +9737,8 @@ export interface FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase10 {
   storeId: string;
   type: FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase10Type;
 }
-export const FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase10 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      storeId: S.String,
-      type: FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase10Type,
-    }),
-).annotate({
-  identifier: "FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase10",
-}) as any as S.Schema<FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase10>;
+export const FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase10 =
+  CreateProjectEnvResponseCreatedCase1ItemContentHintCase0 as any as S.Schema<FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase10>;
 
 export type FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase11Type = "postgres-host";
 export const FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase11Type = S.String;
@@ -10561,15 +9747,8 @@ export interface FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase11 {
   storeId: string;
   type: FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase11Type;
 }
-export const FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase11 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      storeId: S.String,
-      type: FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase11Type,
-    }),
-).annotate({
-  identifier: "FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase11",
-}) as any as S.Schema<FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase11>;
+export const FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase11 =
+  CreateProjectEnvResponseCreatedCase1ItemContentHintCase0 as any as S.Schema<FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase11>;
 
 export type FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase12Type = "postgres-password";
 export const FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase12Type = S.String;
@@ -10578,15 +9757,8 @@ export interface FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase12 {
   storeId: string;
   type: FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase12Type;
 }
-export const FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase12 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      storeId: S.String,
-      type: FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase12Type,
-    }),
-).annotate({
-  identifier: "FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase12",
-}) as any as S.Schema<FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase12>;
+export const FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase12 =
+  CreateProjectEnvResponseCreatedCase1ItemContentHintCase0 as any as S.Schema<FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase12>;
 
 export type FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase13Type = "postgres-database";
 export const FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase13Type = S.String;
@@ -10595,15 +9767,8 @@ export interface FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase13 {
   storeId: string;
   type: FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase13Type;
 }
-export const FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase13 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      storeId: S.String,
-      type: FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase13Type,
-    }),
-).annotate({
-  identifier: "FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase13",
-}) as any as S.Schema<FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase13>;
+export const FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase13 =
+  CreateProjectEnvResponseCreatedCase1ItemContentHintCase0 as any as S.Schema<FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase13>;
 
 export type FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase14Type = "postgres-url-no-ssl";
 export const FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase14Type = S.String;
@@ -10612,15 +9777,8 @@ export interface FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase14 {
   storeId: string;
   type: FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase14Type;
 }
-export const FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase14 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      storeId: S.String,
-      type: FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase14Type,
-    }),
-).annotate({
-  identifier: "FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase14",
-}) as any as S.Schema<FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase14>;
+export const FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase14 =
+  CreateProjectEnvResponseCreatedCase1ItemContentHintCase0 as any as S.Schema<FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase14>;
 
 export type FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase15Type =
   "integration-store-secret";
@@ -10633,18 +9791,8 @@ export interface FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase15 {
   storeId: string;
   type: FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase15Type;
 }
-export const FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase15 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      integrationConfigurationId: S.String,
-      integrationId: S.String,
-      integrationProductId: S.String,
-      storeId: S.String,
-      type: FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase15Type,
-    }),
-).annotate({
-  identifier: "FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase15",
-}) as any as S.Schema<FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase15>;
+export const FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase15 =
+  CreateProjectEnvResponseCreatedCase1ItemContentHintCase15 as any as S.Schema<FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase15>;
 
 export type FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase16Type =
   "flags-connection-string";
@@ -10654,15 +9802,8 @@ export interface FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase16 {
   projectId: string;
   type: FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase16Type;
 }
-export const FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase16 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      projectId: S.String,
-      type: FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase16Type,
-    }),
-).annotate({
-  identifier: "FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase16",
-}) as any as S.Schema<FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase16>;
+export const FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase16 =
+  CreateProjectEnvResponseCreatedCase1ItemContentHintCase16 as any as S.Schema<FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase16>;
 
 export type FilterProjectEnvsResponseBodyCase2EnvsItemContentHint =
   | FilterProjectEnvsResponseBodyCase2EnvsItemContentHintCase0
@@ -10696,9 +9837,8 @@ export const FilterProjectEnvsResponseBodyCase2EnvsItemSecurityIssuesItem = S.St
 
 export type FilterProjectEnvsResponseBodyCase2EnvsItemSecurityIssuesList =
   Array<FilterProjectEnvsResponseBodyCase2EnvsItemSecurityIssuesItem>;
-export const FilterProjectEnvsResponseBodyCase2EnvsItemSecurityIssuesList = /*@__PURE__*/ S.Array(
-  FilterProjectEnvsResponseBodyCase2EnvsItemSecurityIssuesItem,
-) as any as S.Schema<FilterProjectEnvsResponseBodyCase2EnvsItemSecurityIssuesList>;
+export const FilterProjectEnvsResponseBodyCase2EnvsItemSecurityIssuesList =
+  CreateProjectRequestEnvironmentVariablesItemTargetCase1List as any as S.Schema<FilterProjectEnvsResponseBodyCase2EnvsItemSecurityIssuesList>;
 
 export type FilterProjectEnvsResponseBodyCase2EnvsItemTargetCase0Item =
   | "development"
@@ -10710,9 +9850,8 @@ export const FilterProjectEnvsResponseBodyCase2EnvsItemTargetCase0Item = S.Strin
 
 export type FilterProjectEnvsResponseBodyCase2EnvsItemTargetCase0List =
   Array<FilterProjectEnvsResponseBodyCase2EnvsItemTargetCase0Item>;
-export const FilterProjectEnvsResponseBodyCase2EnvsItemTargetCase0List = /*@__PURE__*/ S.Array(
-  FilterProjectEnvsResponseBodyCase2EnvsItemTargetCase0Item,
-) as any as S.Schema<FilterProjectEnvsResponseBodyCase2EnvsItemTargetCase0List>;
+export const FilterProjectEnvsResponseBodyCase2EnvsItemTargetCase0List =
+  CreateProjectRequestEnvironmentVariablesItemTargetCase1List as any as S.Schema<FilterProjectEnvsResponseBodyCase2EnvsItemTargetCase0List>;
 
 export type FilterProjectEnvsResponseBodyCase2EnvsItemTargetCase1 =
   | "development"
@@ -10878,14 +10017,8 @@ export interface GetProjectResponseAliasItemDeploymentBranchMatcher {
   /** The type of matching to perform */
   type: GetProjectResponseAliasItemDeploymentBranchMatcherType;
 }
-export const GetProjectResponseAliasItemDeploymentBranchMatcher = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pattern: S.String,
-    type: GetProjectResponseAliasItemDeploymentBranchMatcherType,
-  }),
-).annotate({
-  identifier: "GetProjectResponseAliasItemDeploymentBranchMatcher",
-}) as any as S.Schema<GetProjectResponseAliasItemDeploymentBranchMatcher>;
+export const GetProjectResponseAliasItemDeploymentBranchMatcher =
+  CreateProjectResponseAliasItemDeploymentBranchMatcher as any as S.Schema<GetProjectResponseAliasItemDeploymentBranchMatcher>;
 
 export type GetProjectResponseAliasItemDeploymentBuildsItem =
   CreateProjectResponseAliasItemDeploymentBuildsItem;
@@ -11159,14 +10292,8 @@ export interface GetProjectResponseCreatorCase0ViaCase0 {
   app: CreateProjectResponseCreatorCase0ViaCase0App;
   type: GetProjectResponseCreatorCase0ViaCase0Type;
 }
-export const GetProjectResponseCreatorCase0ViaCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app: CreateProjectResponseCreatorCase0ViaCase0App,
-    type: GetProjectResponseCreatorCase0ViaCase0Type,
-  }),
-).annotate({
-  identifier: "GetProjectResponseCreatorCase0ViaCase0",
-}) as any as S.Schema<GetProjectResponseCreatorCase0ViaCase0>;
+export const GetProjectResponseCreatorCase0ViaCase0 =
+  CreateProjectResponseCreatorCase0ViaCase0 as any as S.Schema<GetProjectResponseCreatorCase0ViaCase0>;
 
 export type GetProjectResponseCreatorCase0ViaCase1Integration =
   CreateProjectResponseCreatorCase0ViaCase1Integration;
@@ -11181,14 +10308,8 @@ export interface GetProjectResponseCreatorCase0ViaCase1 {
   integration: CreateProjectResponseCreatorCase0ViaCase1Integration;
   type: GetProjectResponseCreatorCase0ViaCase1Type;
 }
-export const GetProjectResponseCreatorCase0ViaCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    integration: CreateProjectResponseCreatorCase0ViaCase1Integration,
-    type: GetProjectResponseCreatorCase0ViaCase1Type,
-  }),
-).annotate({
-  identifier: "GetProjectResponseCreatorCase0ViaCase1",
-}) as any as S.Schema<GetProjectResponseCreatorCase0ViaCase1>;
+export const GetProjectResponseCreatorCase0ViaCase1 =
+  CreateProjectResponseCreatorCase0ViaCase1 as any as S.Schema<GetProjectResponseCreatorCase0ViaCase1>;
 
 export type GetProjectResponseCreatorCase0Via =
   | GetProjectResponseCreatorCase0ViaCase0
@@ -11224,14 +10345,8 @@ export interface GetProjectResponseCreatorCase1 {
   app: CreateProjectResponseCreatorCase0ViaCase0App;
   type: GetProjectResponseCreatorCase1Type;
 }
-export const GetProjectResponseCreatorCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app: CreateProjectResponseCreatorCase0ViaCase0App,
-    type: GetProjectResponseCreatorCase1Type,
-  }),
-).annotate({
-  identifier: "GetProjectResponseCreatorCase1",
-}) as any as S.Schema<GetProjectResponseCreatorCase1>;
+export const GetProjectResponseCreatorCase1 =
+  CreateProjectResponseCreatorCase0ViaCase0 as any as S.Schema<GetProjectResponseCreatorCase1>;
 
 export type GetProjectResponseCreatorCase2Integration =
   CreateProjectResponseCreatorCase0ViaCase1Integration;
@@ -11245,14 +10360,8 @@ export interface GetProjectResponseCreatorCase2 {
   integration: CreateProjectResponseCreatorCase0ViaCase1Integration;
   type: GetProjectResponseCreatorCase2Type;
 }
-export const GetProjectResponseCreatorCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    integration: CreateProjectResponseCreatorCase0ViaCase1Integration,
-    type: GetProjectResponseCreatorCase2Type,
-  }),
-).annotate({
-  identifier: "GetProjectResponseCreatorCase2",
-}) as any as S.Schema<GetProjectResponseCreatorCase2>;
+export const GetProjectResponseCreatorCase2 =
+  CreateProjectResponseCreatorCase0ViaCase1 as any as S.Schema<GetProjectResponseCreatorCase2>;
 
 export type GetProjectResponseCreatorCase3Type = "system";
 export const GetProjectResponseCreatorCase3Type = S.String;
@@ -11260,13 +10369,8 @@ export const GetProjectResponseCreatorCase3Type = S.String;
 export interface GetProjectResponseCreatorCase3 {
   type: GetProjectResponseCreatorCase3Type;
 }
-export const GetProjectResponseCreatorCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: GetProjectResponseCreatorCase3Type,
-  }),
-).annotate({
-  identifier: "GetProjectResponseCreatorCase3",
-}) as any as S.Schema<GetProjectResponseCreatorCase3>;
+export const GetProjectResponseCreatorCase3 =
+  CreateProjectResponseCreatorCase3 as any as S.Schema<GetProjectResponseCreatorCase3>;
 
 export type GetProjectResponseCreator =
   | GetProjectResponseCreatorCase0
@@ -11293,23 +10397,12 @@ export interface GetProjectResponseCronsDefinitionsItem {
   /** The origin of this definition. 'api' means created via the API. Undefined means it originated from a deployment (vercel.json). */
   source?: GetProjectResponseCronsDefinitionsItemSource;
 }
-export const GetProjectResponseCronsDefinitionsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    host: S.String,
-    hostInferred: S.optional(S.Boolean),
-    path: S.String,
-    schedule: S.String,
-    source: S.optional(GetProjectResponseCronsDefinitionsItemSource),
-  }),
-).annotate({
-  identifier: "GetProjectResponseCronsDefinitionsItem",
-}) as any as S.Schema<GetProjectResponseCronsDefinitionsItem>;
+export const GetProjectResponseCronsDefinitionsItem =
+  CreateProjectResponseCronsDefinitionsItem as any as S.Schema<GetProjectResponseCronsDefinitionsItem>;
 
 export type GetProjectResponseCronsDefinitionsList = Array<GetProjectResponseCronsDefinitionsItem>;
-export const GetProjectResponseCronsDefinitionsList = /*@__PURE__*/ S.Array(
-  GetProjectResponseCronsDefinitionsItem,
-) as any as S.Schema<GetProjectResponseCronsDefinitionsList>;
+export const GetProjectResponseCronsDefinitionsList =
+  CreateProjectResponseCronsDefinitionsList as any as S.Schema<GetProjectResponseCronsDefinitionsList>;
 
 export interface GetProjectResponseCrons {
   definitions: GetProjectResponseCronsDefinitionsList;
@@ -11345,14 +10438,8 @@ export interface GetProjectResponseCustomEnvironmentsItemBranchMatcher {
   /** The type of matching to perform */
   type: GetProjectResponseCustomEnvironmentsItemBranchMatcherType;
 }
-export const GetProjectResponseCustomEnvironmentsItemBranchMatcher = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pattern: S.String,
-    type: GetProjectResponseCustomEnvironmentsItemBranchMatcherType,
-  }),
-).annotate({
-  identifier: "GetProjectResponseCustomEnvironmentsItemBranchMatcher",
-}) as any as S.Schema<GetProjectResponseCustomEnvironmentsItemBranchMatcher>;
+export const GetProjectResponseCustomEnvironmentsItemBranchMatcher =
+  CreateProjectResponseAliasItemDeploymentBranchMatcher as any as S.Schema<GetProjectResponseCustomEnvironmentsItemBranchMatcher>;
 
 /** List of aliases for the current deployment */
 export type GetProjectResponseCustomEnvironmentsItemCurrentDeploymentAliasesList = Array<string>;
@@ -11498,15 +10585,7 @@ export interface GetProjectResponseDefaultResourceConfigBuildMachineElasticTrans
   direction: GetProjectResponseDefaultResourceConfigBuildMachineElasticTransitionDirection;
 }
 export const GetProjectResponseDefaultResourceConfigBuildMachineElasticTransition =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      algorithmVersion: S.String,
-      at: S.Number,
-      direction: GetProjectResponseDefaultResourceConfigBuildMachineElasticTransitionDirection,
-    }),
-  ).annotate({
-    identifier: "GetProjectResponseDefaultResourceConfigBuildMachineElasticTransition",
-  }) as any as S.Schema<GetProjectResponseDefaultResourceConfigBuildMachineElasticTransition>;
+  CreateProjectResponseDefaultResourceConfigBuildMachineElasticTransition as any as S.Schema<GetProjectResponseDefaultResourceConfigBuildMachineElasticTransition>;
 
 export type GetProjectResponseDefaultResourceConfigBuildMachineSelection = "elastic" | "fixed";
 export const GetProjectResponseDefaultResourceConfigBuildMachineSelection = S.String;
@@ -11526,13 +10605,8 @@ export const GetProjectResponseDefaultResourceConfigBuildQueueConfiguration = S.
 export interface GetProjectResponseDefaultResourceConfigBuildQueue {
   configuration?: GetProjectResponseDefaultResourceConfigBuildQueueConfiguration;
 }
-export const GetProjectResponseDefaultResourceConfigBuildQueue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    configuration: S.optional(GetProjectResponseDefaultResourceConfigBuildQueueConfiguration),
-  }),
-).annotate({
-  identifier: "GetProjectResponseDefaultResourceConfigBuildQueue",
-}) as any as S.Schema<GetProjectResponseDefaultResourceConfigBuildQueue>;
+export const GetProjectResponseDefaultResourceConfigBuildQueue =
+  CreateProjectRequestResourceConfigBuildQueue as any as S.Schema<GetProjectResponseDefaultResourceConfigBuildQueue>;
 
 export type GetProjectResponseDefaultResourceConfigFunctionDefaultMemoryType =
   | "performance"
@@ -11608,14 +10682,7 @@ export interface GetProjectResponseDeploymentPolicyDeploymentSourcesItemEnvironm
   type: GetProjectResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase0Type;
 }
 export const GetProjectResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      target: GetProjectResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase0Target,
-      type: GetProjectResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase0Type,
-    }),
-  ).annotate({
-    identifier: "GetProjectResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase0",
-  }) as any as S.Schema<GetProjectResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase0>;
+  CreateProjectResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase0 as any as S.Schema<GetProjectResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase0>;
 
 export type GetProjectResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase1Type =
   "custom";
@@ -11627,14 +10694,7 @@ export interface GetProjectResponseDeploymentPolicyDeploymentSourcesItemEnvironm
   type: GetProjectResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase1Type;
 }
 export const GetProjectResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      environmentId: S.String,
-      type: GetProjectResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase1Type,
-    }),
-  ).annotate({
-    identifier: "GetProjectResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase1",
-  }) as any as S.Schema<GetProjectResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase1>;
+  CreateProjectResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase1 as any as S.Schema<GetProjectResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase1>;
 
 export type GetProjectResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItem =
   | GetProjectResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase0
@@ -11662,9 +10722,7 @@ export const GetProjectResponseDeploymentPolicyDeploymentSourcesItemSourcesItem 
 export type GetProjectResponseDeploymentPolicyDeploymentSourcesItemSourcesList =
   Array<GetProjectResponseDeploymentPolicyDeploymentSourcesItemSourcesItem>;
 export const GetProjectResponseDeploymentPolicyDeploymentSourcesItemSourcesList =
-  /*@__PURE__*/ S.Array(
-    GetProjectResponseDeploymentPolicyDeploymentSourcesItemSourcesItem,
-  ) as any as S.Schema<GetProjectResponseDeploymentPolicyDeploymentSourcesItemSourcesList>;
+  CreateProjectResponseDeploymentPolicyDeploymentSourcesItemSourcesList as any as S.Schema<GetProjectResponseDeploymentPolicyDeploymentSourcesItemSourcesList>;
 
 /** `enabled: true` with empty `sources` is deny-all. */
 export interface GetProjectResponseDeploymentPolicyDeploymentSourcesItem {
@@ -11701,14 +10759,7 @@ export interface GetProjectResponseDeploymentPolicyGitSourcesItemEnvironmentsIte
   type: GetProjectResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase0Type;
 }
 export const GetProjectResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      target: GetProjectResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase0Target,
-      type: GetProjectResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase0Type,
-    }),
-  ).annotate({
-    identifier: "GetProjectResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase0",
-  }) as any as S.Schema<GetProjectResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase0>;
+  CreateProjectResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase0 as any as S.Schema<GetProjectResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase0>;
 
 export type GetProjectResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase1Type = "custom";
 export const GetProjectResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase1Type = S.String;
@@ -11718,14 +10769,7 @@ export interface GetProjectResponseDeploymentPolicyGitSourcesItemEnvironmentsIte
   type: GetProjectResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase1Type;
 }
 export const GetProjectResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      environmentId: S.String,
-      type: GetProjectResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase1Type,
-    }),
-  ).annotate({
-    identifier: "GetProjectResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase1",
-  }) as any as S.Schema<GetProjectResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase1>;
+  CreateProjectResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase1 as any as S.Schema<GetProjectResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase1>;
 
 export type GetProjectResponseDeploymentPolicyGitSourcesItemEnvironmentsItem =
   | GetProjectResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase0
@@ -11752,15 +10796,7 @@ export interface GetProjectResponseDeploymentPolicyGitSourcesItemSourcesItemCase
   repo?: string;
 }
 export const GetProjectResponseDeploymentPolicyGitSourcesItemSourcesItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      org: S.String,
-      provider: GetProjectResponseDeploymentPolicyGitSourcesItemSourcesItemCase0Provider,
-      repo: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GetProjectResponseDeploymentPolicyGitSourcesItemSourcesItemCase0",
-  }) as any as S.Schema<GetProjectResponseDeploymentPolicyGitSourcesItemSourcesItemCase0>;
+  CreateProjectResponseDeploymentPolicyGitSourcesItemSourcesItemCase0 as any as S.Schema<GetProjectResponseDeploymentPolicyGitSourcesItemSourcesItemCase0>;
 
 export type GetProjectResponseDeploymentPolicyGitSourcesItemSourcesItemCase1Provider = "gitlab";
 export const GetProjectResponseDeploymentPolicyGitSourcesItemSourcesItemCase1Provider = S.String;
@@ -11772,15 +10808,7 @@ export interface GetProjectResponseDeploymentPolicyGitSourcesItemSourcesItemCase
   provider: GetProjectResponseDeploymentPolicyGitSourcesItemSourcesItemCase1Provider;
 }
 export const GetProjectResponseDeploymentPolicyGitSourcesItemSourcesItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      namespace: S.String,
-      project: S.optional(S.String),
-      provider: GetProjectResponseDeploymentPolicyGitSourcesItemSourcesItemCase1Provider,
-    }),
-  ).annotate({
-    identifier: "GetProjectResponseDeploymentPolicyGitSourcesItemSourcesItemCase1",
-  }) as any as S.Schema<GetProjectResponseDeploymentPolicyGitSourcesItemSourcesItemCase1>;
+  CreateProjectResponseDeploymentPolicyGitSourcesItemSourcesItemCase1 as any as S.Schema<GetProjectResponseDeploymentPolicyGitSourcesItemSourcesItemCase1>;
 
 export type GetProjectResponseDeploymentPolicyGitSourcesItemSourcesItem =
   | GetProjectResponseDeploymentPolicyGitSourcesItemSourcesItemCase0
@@ -11896,14 +10924,8 @@ export interface GetProjectResponseEnvItemContentHintCase0 {
   storeId: string;
   type: GetProjectResponseEnvItemContentHintCase0Type;
 }
-export const GetProjectResponseEnvItemContentHintCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: GetProjectResponseEnvItemContentHintCase0Type,
-  }),
-).annotate({
-  identifier: "GetProjectResponseEnvItemContentHintCase0",
-}) as any as S.Schema<GetProjectResponseEnvItemContentHintCase0>;
+export const GetProjectResponseEnvItemContentHintCase0 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<GetProjectResponseEnvItemContentHintCase0>;
 
 export type GetProjectResponseEnvItemContentHintCase1Type = "redis-rest-api-url";
 export const GetProjectResponseEnvItemContentHintCase1Type = S.String;
@@ -11912,14 +10934,8 @@ export interface GetProjectResponseEnvItemContentHintCase1 {
   storeId: string;
   type: GetProjectResponseEnvItemContentHintCase1Type;
 }
-export const GetProjectResponseEnvItemContentHintCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: GetProjectResponseEnvItemContentHintCase1Type,
-  }),
-).annotate({
-  identifier: "GetProjectResponseEnvItemContentHintCase1",
-}) as any as S.Schema<GetProjectResponseEnvItemContentHintCase1>;
+export const GetProjectResponseEnvItemContentHintCase1 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<GetProjectResponseEnvItemContentHintCase1>;
 
 export type GetProjectResponseEnvItemContentHintCase2Type = "redis-rest-api-token";
 export const GetProjectResponseEnvItemContentHintCase2Type = S.String;
@@ -11928,14 +10944,8 @@ export interface GetProjectResponseEnvItemContentHintCase2 {
   storeId: string;
   type: GetProjectResponseEnvItemContentHintCase2Type;
 }
-export const GetProjectResponseEnvItemContentHintCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: GetProjectResponseEnvItemContentHintCase2Type,
-  }),
-).annotate({
-  identifier: "GetProjectResponseEnvItemContentHintCase2",
-}) as any as S.Schema<GetProjectResponseEnvItemContentHintCase2>;
+export const GetProjectResponseEnvItemContentHintCase2 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<GetProjectResponseEnvItemContentHintCase2>;
 
 export type GetProjectResponseEnvItemContentHintCase3Type = "redis-rest-api-read-only-token";
 export const GetProjectResponseEnvItemContentHintCase3Type = S.String;
@@ -11944,14 +10954,8 @@ export interface GetProjectResponseEnvItemContentHintCase3 {
   storeId: string;
   type: GetProjectResponseEnvItemContentHintCase3Type;
 }
-export const GetProjectResponseEnvItemContentHintCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: GetProjectResponseEnvItemContentHintCase3Type,
-  }),
-).annotate({
-  identifier: "GetProjectResponseEnvItemContentHintCase3",
-}) as any as S.Schema<GetProjectResponseEnvItemContentHintCase3>;
+export const GetProjectResponseEnvItemContentHintCase3 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<GetProjectResponseEnvItemContentHintCase3>;
 
 export type GetProjectResponseEnvItemContentHintCase4Type = "blob-read-write-token";
 export const GetProjectResponseEnvItemContentHintCase4Type = S.String;
@@ -11960,14 +10964,8 @@ export interface GetProjectResponseEnvItemContentHintCase4 {
   storeId: string;
   type: GetProjectResponseEnvItemContentHintCase4Type;
 }
-export const GetProjectResponseEnvItemContentHintCase4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: GetProjectResponseEnvItemContentHintCase4Type,
-  }),
-).annotate({
-  identifier: "GetProjectResponseEnvItemContentHintCase4",
-}) as any as S.Schema<GetProjectResponseEnvItemContentHintCase4>;
+export const GetProjectResponseEnvItemContentHintCase4 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<GetProjectResponseEnvItemContentHintCase4>;
 
 export type GetProjectResponseEnvItemContentHintCase5Type = "blob-store-id";
 export const GetProjectResponseEnvItemContentHintCase5Type = S.String;
@@ -11976,14 +10974,8 @@ export interface GetProjectResponseEnvItemContentHintCase5 {
   storeId: string;
   type: GetProjectResponseEnvItemContentHintCase5Type;
 }
-export const GetProjectResponseEnvItemContentHintCase5 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: GetProjectResponseEnvItemContentHintCase5Type,
-  }),
-).annotate({
-  identifier: "GetProjectResponseEnvItemContentHintCase5",
-}) as any as S.Schema<GetProjectResponseEnvItemContentHintCase5>;
+export const GetProjectResponseEnvItemContentHintCase5 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<GetProjectResponseEnvItemContentHintCase5>;
 
 export type GetProjectResponseEnvItemContentHintCase6Type = "blob-webhook-public-key";
 export const GetProjectResponseEnvItemContentHintCase6Type = S.String;
@@ -11992,14 +10984,8 @@ export interface GetProjectResponseEnvItemContentHintCase6 {
   storeId: string;
   type: GetProjectResponseEnvItemContentHintCase6Type;
 }
-export const GetProjectResponseEnvItemContentHintCase6 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: GetProjectResponseEnvItemContentHintCase6Type,
-  }),
-).annotate({
-  identifier: "GetProjectResponseEnvItemContentHintCase6",
-}) as any as S.Schema<GetProjectResponseEnvItemContentHintCase6>;
+export const GetProjectResponseEnvItemContentHintCase6 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<GetProjectResponseEnvItemContentHintCase6>;
 
 export type GetProjectResponseEnvItemContentHintCase7Type = "postgres-url";
 export const GetProjectResponseEnvItemContentHintCase7Type = S.String;
@@ -12008,14 +10994,8 @@ export interface GetProjectResponseEnvItemContentHintCase7 {
   storeId: string;
   type: GetProjectResponseEnvItemContentHintCase7Type;
 }
-export const GetProjectResponseEnvItemContentHintCase7 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: GetProjectResponseEnvItemContentHintCase7Type,
-  }),
-).annotate({
-  identifier: "GetProjectResponseEnvItemContentHintCase7",
-}) as any as S.Schema<GetProjectResponseEnvItemContentHintCase7>;
+export const GetProjectResponseEnvItemContentHintCase7 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<GetProjectResponseEnvItemContentHintCase7>;
 
 export type GetProjectResponseEnvItemContentHintCase8Type = "postgres-url-non-pooling";
 export const GetProjectResponseEnvItemContentHintCase8Type = S.String;
@@ -12024,14 +11004,8 @@ export interface GetProjectResponseEnvItemContentHintCase8 {
   storeId: string;
   type: GetProjectResponseEnvItemContentHintCase8Type;
 }
-export const GetProjectResponseEnvItemContentHintCase8 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: GetProjectResponseEnvItemContentHintCase8Type,
-  }),
-).annotate({
-  identifier: "GetProjectResponseEnvItemContentHintCase8",
-}) as any as S.Schema<GetProjectResponseEnvItemContentHintCase8>;
+export const GetProjectResponseEnvItemContentHintCase8 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<GetProjectResponseEnvItemContentHintCase8>;
 
 export type GetProjectResponseEnvItemContentHintCase9Type = "postgres-prisma-url";
 export const GetProjectResponseEnvItemContentHintCase9Type = S.String;
@@ -12040,14 +11014,8 @@ export interface GetProjectResponseEnvItemContentHintCase9 {
   storeId: string;
   type: GetProjectResponseEnvItemContentHintCase9Type;
 }
-export const GetProjectResponseEnvItemContentHintCase9 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: GetProjectResponseEnvItemContentHintCase9Type,
-  }),
-).annotate({
-  identifier: "GetProjectResponseEnvItemContentHintCase9",
-}) as any as S.Schema<GetProjectResponseEnvItemContentHintCase9>;
+export const GetProjectResponseEnvItemContentHintCase9 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<GetProjectResponseEnvItemContentHintCase9>;
 
 export type GetProjectResponseEnvItemContentHintCase10Type = "postgres-user";
 export const GetProjectResponseEnvItemContentHintCase10Type = S.String;
@@ -12056,14 +11024,8 @@ export interface GetProjectResponseEnvItemContentHintCase10 {
   storeId: string;
   type: GetProjectResponseEnvItemContentHintCase10Type;
 }
-export const GetProjectResponseEnvItemContentHintCase10 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: GetProjectResponseEnvItemContentHintCase10Type,
-  }),
-).annotate({
-  identifier: "GetProjectResponseEnvItemContentHintCase10",
-}) as any as S.Schema<GetProjectResponseEnvItemContentHintCase10>;
+export const GetProjectResponseEnvItemContentHintCase10 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<GetProjectResponseEnvItemContentHintCase10>;
 
 export type GetProjectResponseEnvItemContentHintCase11Type = "postgres-host";
 export const GetProjectResponseEnvItemContentHintCase11Type = S.String;
@@ -12072,14 +11034,8 @@ export interface GetProjectResponseEnvItemContentHintCase11 {
   storeId: string;
   type: GetProjectResponseEnvItemContentHintCase11Type;
 }
-export const GetProjectResponseEnvItemContentHintCase11 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: GetProjectResponseEnvItemContentHintCase11Type,
-  }),
-).annotate({
-  identifier: "GetProjectResponseEnvItemContentHintCase11",
-}) as any as S.Schema<GetProjectResponseEnvItemContentHintCase11>;
+export const GetProjectResponseEnvItemContentHintCase11 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<GetProjectResponseEnvItemContentHintCase11>;
 
 export type GetProjectResponseEnvItemContentHintCase12Type = "postgres-password";
 export const GetProjectResponseEnvItemContentHintCase12Type = S.String;
@@ -12088,14 +11044,8 @@ export interface GetProjectResponseEnvItemContentHintCase12 {
   storeId: string;
   type: GetProjectResponseEnvItemContentHintCase12Type;
 }
-export const GetProjectResponseEnvItemContentHintCase12 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: GetProjectResponseEnvItemContentHintCase12Type,
-  }),
-).annotate({
-  identifier: "GetProjectResponseEnvItemContentHintCase12",
-}) as any as S.Schema<GetProjectResponseEnvItemContentHintCase12>;
+export const GetProjectResponseEnvItemContentHintCase12 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<GetProjectResponseEnvItemContentHintCase12>;
 
 export type GetProjectResponseEnvItemContentHintCase13Type = "postgres-database";
 export const GetProjectResponseEnvItemContentHintCase13Type = S.String;
@@ -12104,14 +11054,8 @@ export interface GetProjectResponseEnvItemContentHintCase13 {
   storeId: string;
   type: GetProjectResponseEnvItemContentHintCase13Type;
 }
-export const GetProjectResponseEnvItemContentHintCase13 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: GetProjectResponseEnvItemContentHintCase13Type,
-  }),
-).annotate({
-  identifier: "GetProjectResponseEnvItemContentHintCase13",
-}) as any as S.Schema<GetProjectResponseEnvItemContentHintCase13>;
+export const GetProjectResponseEnvItemContentHintCase13 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<GetProjectResponseEnvItemContentHintCase13>;
 
 export type GetProjectResponseEnvItemContentHintCase14Type = "postgres-url-no-ssl";
 export const GetProjectResponseEnvItemContentHintCase14Type = S.String;
@@ -12120,14 +11064,8 @@ export interface GetProjectResponseEnvItemContentHintCase14 {
   storeId: string;
   type: GetProjectResponseEnvItemContentHintCase14Type;
 }
-export const GetProjectResponseEnvItemContentHintCase14 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: GetProjectResponseEnvItemContentHintCase14Type,
-  }),
-).annotate({
-  identifier: "GetProjectResponseEnvItemContentHintCase14",
-}) as any as S.Schema<GetProjectResponseEnvItemContentHintCase14>;
+export const GetProjectResponseEnvItemContentHintCase14 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<GetProjectResponseEnvItemContentHintCase14>;
 
 export type GetProjectResponseEnvItemContentHintCase15Type = "integration-store-secret";
 export const GetProjectResponseEnvItemContentHintCase15Type = S.String;
@@ -12139,17 +11077,8 @@ export interface GetProjectResponseEnvItemContentHintCase15 {
   storeId: string;
   type: GetProjectResponseEnvItemContentHintCase15Type;
 }
-export const GetProjectResponseEnvItemContentHintCase15 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    integrationConfigurationId: S.String,
-    integrationId: S.String,
-    integrationProductId: S.String,
-    storeId: S.String,
-    type: GetProjectResponseEnvItemContentHintCase15Type,
-  }),
-).annotate({
-  identifier: "GetProjectResponseEnvItemContentHintCase15",
-}) as any as S.Schema<GetProjectResponseEnvItemContentHintCase15>;
+export const GetProjectResponseEnvItemContentHintCase15 =
+  CreateProjectResponseEnvItemContentHintCase15 as any as S.Schema<GetProjectResponseEnvItemContentHintCase15>;
 
 export type GetProjectResponseEnvItemContentHintCase16Type = "flags-connection-string";
 export const GetProjectResponseEnvItemContentHintCase16Type = S.String;
@@ -12158,14 +11087,8 @@ export interface GetProjectResponseEnvItemContentHintCase16 {
   projectId: string;
   type: GetProjectResponseEnvItemContentHintCase16Type;
 }
-export const GetProjectResponseEnvItemContentHintCase16 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    projectId: S.String,
-    type: GetProjectResponseEnvItemContentHintCase16Type,
-  }),
-).annotate({
-  identifier: "GetProjectResponseEnvItemContentHintCase16",
-}) as any as S.Schema<GetProjectResponseEnvItemContentHintCase16>;
+export const GetProjectResponseEnvItemContentHintCase16 =
+  CreateProjectResponseEnvItemContentHintCase16 as any as S.Schema<GetProjectResponseEnvItemContentHintCase16>;
 
 export type GetProjectResponseEnvItemContentHint =
   | GetProjectResponseEnvItemContentHintCase0
@@ -12201,14 +11124,8 @@ export interface GetProjectResponseEnvItemInternalContentHint {
   encryptedValue: string;
   type: GetProjectResponseEnvItemInternalContentHintType;
 }
-export const GetProjectResponseEnvItemInternalContentHint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    encryptedValue: S.String,
-    type: GetProjectResponseEnvItemInternalContentHintType,
-  }),
-).annotate({
-  identifier: "GetProjectResponseEnvItemInternalContentHint",
-}) as any as S.Schema<GetProjectResponseEnvItemInternalContentHint>;
+export const GetProjectResponseEnvItemInternalContentHint =
+  CreateProjectResponseEnvItemInternalContentHint as any as S.Schema<GetProjectResponseEnvItemInternalContentHint>;
 
 export type GetProjectResponseEnvItemTargetCase0Item =
   | "development"
@@ -12220,9 +11137,8 @@ export const GetProjectResponseEnvItemTargetCase0Item = S.String;
 
 export type GetProjectResponseEnvItemTargetCase0List =
   Array<GetProjectResponseEnvItemTargetCase0Item>;
-export const GetProjectResponseEnvItemTargetCase0List = /*@__PURE__*/ S.Array(
-  GetProjectResponseEnvItemTargetCase0Item,
-) as any as S.Schema<GetProjectResponseEnvItemTargetCase0List>;
+export const GetProjectResponseEnvItemTargetCase0List =
+  CreateProjectRequestEnvironmentVariablesItemTargetCase1List as any as S.Schema<GetProjectResponseEnvItemTargetCase0List>;
 
 export type GetProjectResponseEnvItemTargetCase1 = "production" | "preview" | "development";
 export const GetProjectResponseEnvItemTargetCase1 = S.String;
@@ -12424,19 +11340,8 @@ export interface GetProjectResponseGitProviderOptions {
   /** Whether the project requires commits to be signed & verified before deployments will be created. - `true`: require verified commits for this project (explicit override of the team setting). - `false`: do not require verified commits (explicit override of the team setting). - absent: inherit from `team.requireVerifiedCommits`. */
   requireVerifiedCommits?: boolean;
 }
-export const GetProjectResponseGitProviderOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    consolidatedGitCommitStatus: S.optional(
-      CreateProjectResponseGitProviderOptionsConsolidatedGitCommitStatus,
-    ),
-    createDeployments: GetProjectResponseGitProviderOptionsCreateDeployments,
-    disableRepositoryDispatchEvents: S.optional(S.Boolean),
-    gitCommitStatus: S.optional(S.Boolean),
-    requireVerifiedCommits: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "GetProjectResponseGitProviderOptions",
-}) as any as S.Schema<GetProjectResponseGitProviderOptions>;
+export const GetProjectResponseGitProviderOptions =
+  CreateProjectResponseGitProviderOptions as any as S.Schema<GetProjectResponseGitProviderOptions>;
 
 /** The list of the installation resources connected to the project. */
 export interface GetProjectResponseIntegrationsItemResourcesItem {
@@ -12548,13 +11453,8 @@ export const GetProjectResponseInternalRoutesItemCase1MitigateAction = S.String;
 export interface GetProjectResponseInternalRoutesItemCase1Mitigate {
   action: GetProjectResponseInternalRoutesItemCase1MitigateAction;
 }
-export const GetProjectResponseInternalRoutesItemCase1Mitigate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: GetProjectResponseInternalRoutesItemCase1MitigateAction,
-  }),
-).annotate({
-  identifier: "GetProjectResponseInternalRoutesItemCase1Mitigate",
-}) as any as S.Schema<GetProjectResponseInternalRoutesItemCase1Mitigate>;
+export const GetProjectResponseInternalRoutesItemCase1Mitigate =
+  CreateProjectResponseInternalRoutesItemCase1Mitigate as any as S.Schema<GetProjectResponseInternalRoutesItemCase1Mitigate>;
 
 export interface GetProjectResponseInternalRoutesItemCase1 {
   has: GetProjectResponseInternalRoutesItemCase1HasList;
@@ -12668,18 +11568,8 @@ export interface GetProjectResponseLastAliasRequest {
   toDeploymentId: string;
   type: GetProjectResponseLastAliasRequestType;
 }
-export const GetProjectResponseLastAliasRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fromDeploymentId: S.NullOr(S.String),
-    fromRollingReleaseId: S.optional(S.String),
-    jobStatus: GetProjectResponseLastAliasRequestJobStatus,
-    requestedAt: S.Number,
-    toDeploymentId: S.String,
-    type: GetProjectResponseLastAliasRequestType,
-  }),
-).annotate({
-  identifier: "GetProjectResponseLastAliasRequest",
-}) as any as S.Schema<GetProjectResponseLastAliasRequest>;
+export const GetProjectResponseLastAliasRequest =
+  CreateProjectResponseLastAliasRequest as any as S.Schema<GetProjectResponseLastAliasRequest>;
 
 export type GetProjectResponseLatestDeploymentsItemAliasList = Array<string>;
 export const GetProjectResponseLatestDeploymentsItemAliasList =
@@ -12711,14 +11601,8 @@ export interface GetProjectResponseLatestDeploymentsItemBranchMatcher {
   /** The type of matching to perform */
   type: GetProjectResponseLatestDeploymentsItemBranchMatcherType;
 }
-export const GetProjectResponseLatestDeploymentsItemBranchMatcher = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pattern: S.String,
-    type: GetProjectResponseLatestDeploymentsItemBranchMatcherType,
-  }),
-).annotate({
-  identifier: "GetProjectResponseLatestDeploymentsItemBranchMatcher",
-}) as any as S.Schema<GetProjectResponseLatestDeploymentsItemBranchMatcher>;
+export const GetProjectResponseLatestDeploymentsItemBranchMatcher =
+  CreateProjectResponseAliasItemDeploymentBranchMatcher as any as S.Schema<GetProjectResponseLatestDeploymentsItemBranchMatcher>;
 
 export type GetProjectResponseLatestDeploymentsItemBuildsItem =
   CreateProjectResponseAliasItemDeploymentBuildsItem;
@@ -13347,14 +12231,8 @@ export interface GetProjectResponseOidcTokenConfig {
   /** - team: `https://oidc.vercel.com/[team_slug]` - global: `https://oidc.vercel.com` */
   issuerMode?: GetProjectResponseOidcTokenConfigIssuerMode;
 }
-export const GetProjectResponseOidcTokenConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-    issuerMode: S.optional(GetProjectResponseOidcTokenConfigIssuerMode),
-  }),
-).annotate({
-  identifier: "GetProjectResponseOidcTokenConfig",
-}) as any as S.Schema<GetProjectResponseOidcTokenConfig>;
+export const GetProjectResponseOidcTokenConfig =
+  CreateProjectRequestOidcTokenConfig as any as S.Schema<GetProjectResponseOidcTokenConfig>;
 
 export type GetProjectResponseOptionsAllowlistPathsItem =
   CreateProjectResponseOptionsAllowlistPathsItem;
@@ -13383,14 +12261,8 @@ export interface GetProjectResponsePassport {
   connectorId: string;
   deploymentType: GetProjectResponsePassportDeploymentType;
 }
-export const GetProjectResponsePassport = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    connectorId: S.String,
-    deploymentType: GetProjectResponsePassportDeploymentType,
-  }),
-).annotate({
-  identifier: "GetProjectResponsePassport",
-}) as any as S.Schema<GetProjectResponsePassport>;
+export const GetProjectResponsePassport =
+  CreateProjectResponsePassport as any as S.Schema<GetProjectResponsePassport>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetProjectResponsePermissionsAccessGroupList = Array<ACLAction>;
@@ -15815,17 +14687,8 @@ export interface GetProjectResponseProtectionBypassValueCase0 {
   integrationId: string;
   scope: GetProjectResponseProtectionBypassValueCase0Scope;
 }
-export const GetProjectResponseProtectionBypassValueCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    configurationId: S.String,
-    createdAt: S.Number,
-    createdBy: S.String,
-    integrationId: S.String,
-    scope: GetProjectResponseProtectionBypassValueCase0Scope,
-  }),
-).annotate({
-  identifier: "GetProjectResponseProtectionBypassValueCase0",
-}) as any as S.Schema<GetProjectResponseProtectionBypassValueCase0>;
+export const GetProjectResponseProtectionBypassValueCase0 =
+  CreateProjectResponseProtectionBypassValueCase0 as any as S.Schema<GetProjectResponseProtectionBypassValueCase0>;
 
 export type GetProjectResponseProtectionBypassValueCase1Scope = "automation-bypass";
 export const GetProjectResponseProtectionBypassValueCase1Scope = S.String;
@@ -15839,17 +14702,8 @@ export interface GetProjectResponseProtectionBypassValueCase1 {
   note?: string;
   scope: GetProjectResponseProtectionBypassValueCase1Scope;
 }
-export const GetProjectResponseProtectionBypassValueCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdAt: S.Number,
-    createdBy: S.String,
-    isEnvVar: S.optional(S.Boolean),
-    note: S.optional(S.String),
-    scope: GetProjectResponseProtectionBypassValueCase1Scope,
-  }),
-).annotate({
-  identifier: "GetProjectResponseProtectionBypassValueCase1",
-}) as any as S.Schema<GetProjectResponseProtectionBypassValueCase1>;
+export const GetProjectResponseProtectionBypassValueCase1 =
+  CreateProjectResponseProtectionBypassValueCase1 as any as S.Schema<GetProjectResponseProtectionBypassValueCase1>;
 
 export type GetProjectResponseProtectionBypassValue =
   | GetProjectResponseProtectionBypassValueCase0
@@ -15897,15 +14751,7 @@ export interface GetProjectResponseResourceConfigBuildMachineElasticTransition {
   direction: GetProjectResponseResourceConfigBuildMachineElasticTransitionDirection;
 }
 export const GetProjectResponseResourceConfigBuildMachineElasticTransition =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      algorithmVersion: S.String,
-      at: S.Number,
-      direction: GetProjectResponseResourceConfigBuildMachineElasticTransitionDirection,
-    }),
-  ).annotate({
-    identifier: "GetProjectResponseResourceConfigBuildMachineElasticTransition",
-  }) as any as S.Schema<GetProjectResponseResourceConfigBuildMachineElasticTransition>;
+  CreateProjectResponseDefaultResourceConfigBuildMachineElasticTransition as any as S.Schema<GetProjectResponseResourceConfigBuildMachineElasticTransition>;
 
 export type GetProjectResponseResourceConfigBuildMachineSelection = "elastic" | "fixed";
 export const GetProjectResponseResourceConfigBuildMachineSelection = S.String;
@@ -15925,13 +14771,8 @@ export const GetProjectResponseResourceConfigBuildQueueConfiguration = S.String;
 export interface GetProjectResponseResourceConfigBuildQueue {
   configuration?: GetProjectResponseResourceConfigBuildQueueConfiguration;
 }
-export const GetProjectResponseResourceConfigBuildQueue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    configuration: S.optional(GetProjectResponseResourceConfigBuildQueueConfiguration),
-  }),
-).annotate({
-  identifier: "GetProjectResponseResourceConfigBuildQueue",
-}) as any as S.Schema<GetProjectResponseResourceConfigBuildQueue>;
+export const GetProjectResponseResourceConfigBuildQueue =
+  CreateProjectRequestResourceConfigBuildQueue as any as S.Schema<GetProjectResponseResourceConfigBuildQueue>;
 
 export type GetProjectResponseResourceConfigFunctionDefaultMemoryType =
   | "performance"
@@ -16129,9 +14970,8 @@ export const GetProjectResponseSandboxFailoverRegionsItem = S.String;
 
 export type GetProjectResponseSandboxFailoverRegionsList =
   Array<GetProjectResponseSandboxFailoverRegionsItem>;
-export const GetProjectResponseSandboxFailoverRegionsList = /*@__PURE__*/ S.Array(
-  GetProjectResponseSandboxFailoverRegionsItem,
-) as any as S.Schema<GetProjectResponseSandboxFailoverRegionsList>;
+export const GetProjectResponseSandboxFailoverRegionsList =
+  CreateProjectRequestEnvironmentVariablesItemTargetCase1List as any as S.Schema<GetProjectResponseSandboxFailoverRegionsList>;
 
 export type GetProjectResponseSandboxRegion =
   | "arn1"
@@ -16159,14 +14999,8 @@ export interface GetProjectResponseSandbox {
   failoverRegions?: GetProjectResponseSandboxFailoverRegionsList;
   region?: GetProjectResponseSandboxRegion;
 }
-export const GetProjectResponseSandbox = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    failoverRegions: S.optional(GetProjectResponseSandboxFailoverRegionsList),
-    region: S.optional(GetProjectResponseSandboxRegion),
-  }),
-).annotate({
-  identifier: "GetProjectResponseSandbox",
-}) as any as S.Schema<GetProjectResponseSandbox>;
+export const GetProjectResponseSandbox =
+  CreateProjectResponseSandbox as any as S.Schema<GetProjectResponseSandbox>;
 
 export type GetProjectResponseSecurityFirewallBypassIpsList = Array<string>;
 export const GetProjectResponseSecurityFirewallBypassIpsList =
@@ -16192,14 +15026,8 @@ export interface GetProjectResponseSecurityManagedRulesAiBots {
   action?: GetProjectResponseSecurityManagedRulesAiBotsAction;
   active: boolean;
 }
-export const GetProjectResponseSecurityManagedRulesAiBots = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.optional(GetProjectResponseSecurityManagedRulesAiBotsAction),
-    active: S.Boolean,
-  }),
-).annotate({
-  identifier: "GetProjectResponseSecurityManagedRulesAiBots",
-}) as any as S.Schema<GetProjectResponseSecurityManagedRulesAiBots>;
+export const GetProjectResponseSecurityManagedRulesAiBots =
+  CreateProjectResponseSecurityManagedRulesAiBots as any as S.Schema<GetProjectResponseSecurityManagedRulesAiBots>;
 
 export type GetProjectResponseSecurityManagedRulesBotFilterAction = "challenge" | "deny" | "log";
 export const GetProjectResponseSecurityManagedRulesBotFilterAction = S.String;
@@ -16208,14 +15036,8 @@ export interface GetProjectResponseSecurityManagedRulesBotFilter {
   action?: GetProjectResponseSecurityManagedRulesBotFilterAction;
   active: boolean;
 }
-export const GetProjectResponseSecurityManagedRulesBotFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.optional(GetProjectResponseSecurityManagedRulesBotFilterAction),
-    active: S.Boolean,
-  }),
-).annotate({
-  identifier: "GetProjectResponseSecurityManagedRulesBotFilter",
-}) as any as S.Schema<GetProjectResponseSecurityManagedRulesBotFilter>;
+export const GetProjectResponseSecurityManagedRulesBotFilter =
+  CreateProjectResponseSecurityManagedRulesAiBots as any as S.Schema<GetProjectResponseSecurityManagedRulesBotFilter>;
 
 export type GetProjectResponseSecurityManagedRulesOwaspAction = "challenge" | "deny" | "log";
 export const GetProjectResponseSecurityManagedRulesOwaspAction = S.String;
@@ -16224,14 +15046,8 @@ export interface GetProjectResponseSecurityManagedRulesOwasp {
   action?: GetProjectResponseSecurityManagedRulesOwaspAction;
   active: boolean;
 }
-export const GetProjectResponseSecurityManagedRulesOwasp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.optional(GetProjectResponseSecurityManagedRulesOwaspAction),
-    active: S.Boolean,
-  }),
-).annotate({
-  identifier: "GetProjectResponseSecurityManagedRulesOwasp",
-}) as any as S.Schema<GetProjectResponseSecurityManagedRulesOwasp>;
+export const GetProjectResponseSecurityManagedRulesOwasp =
+  CreateProjectResponseSecurityManagedRulesAiBots as any as S.Schema<GetProjectResponseSecurityManagedRulesOwasp>;
 
 export type GetProjectResponseSecurityManagedRulesTrafficSourcesAction =
   | "challenge"
@@ -16243,14 +15059,8 @@ export interface GetProjectResponseSecurityManagedRulesTrafficSources {
   action?: GetProjectResponseSecurityManagedRulesTrafficSourcesAction;
   active: boolean;
 }
-export const GetProjectResponseSecurityManagedRulesTrafficSources = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.optional(GetProjectResponseSecurityManagedRulesTrafficSourcesAction),
-    active: S.Boolean,
-  }),
-).annotate({
-  identifier: "GetProjectResponseSecurityManagedRulesTrafficSources",
-}) as any as S.Schema<GetProjectResponseSecurityManagedRulesTrafficSources>;
+export const GetProjectResponseSecurityManagedRulesTrafficSources =
+  CreateProjectResponseSecurityManagedRulesAiBots as any as S.Schema<GetProjectResponseSecurityManagedRulesTrafficSources>;
 
 export type GetProjectResponseSecurityManagedRulesVercelRulesetAction =
   | "challenge"
@@ -16262,14 +15072,8 @@ export interface GetProjectResponseSecurityManagedRulesVercelRuleset {
   action?: GetProjectResponseSecurityManagedRulesVercelRulesetAction;
   active: boolean;
 }
-export const GetProjectResponseSecurityManagedRulesVercelRuleset = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.optional(GetProjectResponseSecurityManagedRulesVercelRulesetAction),
-    active: S.Boolean,
-  }),
-).annotate({
-  identifier: "GetProjectResponseSecurityManagedRulesVercelRuleset",
-}) as any as S.Schema<GetProjectResponseSecurityManagedRulesVercelRuleset>;
+export const GetProjectResponseSecurityManagedRulesVercelRuleset =
+  CreateProjectResponseSecurityManagedRulesAiBots as any as S.Schema<GetProjectResponseSecurityManagedRulesVercelRuleset>;
 
 export interface GetProjectResponseSecurityManagedRules {
   ai_bots: GetProjectResponseSecurityManagedRulesAiBots;
@@ -16278,17 +15082,8 @@ export interface GetProjectResponseSecurityManagedRules {
   traffic_sources: GetProjectResponseSecurityManagedRulesTrafficSources;
   vercel_ruleset: GetProjectResponseSecurityManagedRulesVercelRuleset;
 }
-export const GetProjectResponseSecurityManagedRules = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ai_bots: GetProjectResponseSecurityManagedRulesAiBots,
-    bot_filter: GetProjectResponseSecurityManagedRulesBotFilter,
-    owasp: GetProjectResponseSecurityManagedRulesOwasp,
-    traffic_sources: GetProjectResponseSecurityManagedRulesTrafficSources,
-    vercel_ruleset: GetProjectResponseSecurityManagedRulesVercelRuleset,
-  }),
-).annotate({
-  identifier: "GetProjectResponseSecurityManagedRules",
-}) as any as S.Schema<GetProjectResponseSecurityManagedRules>;
+export const GetProjectResponseSecurityManagedRules =
+  CreateProjectResponseSecurityManagedRules as any as S.Schema<GetProjectResponseSecurityManagedRules>;
 
 export type GetProjectResponseSecurityRulesetsValueAction =
   | "allow"
@@ -16503,21 +15298,12 @@ export interface GetProjectResponseServicesItem {
   /** Service kind (Service.type). Omitted for schemas that do not define one. */
   serviceType?: GetProjectResponseServicesItemServiceType;
 }
-export const GetProjectResponseServicesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    framework: S.optional(GetProjectResponseServicesItemFramework),
-    runtime: S.optional(S.String),
-    serviceName: S.String,
-    serviceType: S.optional(GetProjectResponseServicesItemServiceType),
-  }),
-).annotate({
-  identifier: "GetProjectResponseServicesItem",
-}) as any as S.Schema<GetProjectResponseServicesItem>;
+export const GetProjectResponseServicesItem =
+  CreateProjectResponseServicesItem as any as S.Schema<GetProjectResponseServicesItem>;
 
 export type GetProjectResponseServicesList = Array<GetProjectResponseServicesItem>;
-export const GetProjectResponseServicesList = /*@__PURE__*/ S.Array(
-  GetProjectResponseServicesItem,
-) as any as S.Schema<GetProjectResponseServicesList>;
+export const GetProjectResponseServicesList =
+  CreateProjectResponseServicesList as any as S.Schema<GetProjectResponseServicesList>;
 
 export type GetProjectResponseSkewProtectionAllowedDomainsList = Array<string>;
 export const GetProjectResponseSkewProtectionAllowedDomainsList =
@@ -16553,19 +15339,8 @@ export interface GetProjectResponseSsoProtection {
   cve55182MigrationAppliedFrom?: GetProjectResponseSsoProtectionCve55182MigrationAppliedFrom | null;
   deploymentType: GetProjectResponseSsoProtectionDeploymentType;
 }
-export const GetProjectResponseSsoProtection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    april2026SecurityIncidentMigrationAppliedFrom: S.optional(
-      S.NullOr(GetProjectResponseSsoProtectionApril2026SecurityIncidentMigrationAppliedFrom),
-    ),
-    cve55182MigrationAppliedFrom: S.optional(
-      S.NullOr(GetProjectResponseSsoProtectionCve55182MigrationAppliedFrom),
-    ),
-    deploymentType: GetProjectResponseSsoProtectionDeploymentType,
-  }),
-).annotate({
-  identifier: "GetProjectResponseSsoProtection",
-}) as any as S.Schema<GetProjectResponseSsoProtection>;
+export const GetProjectResponseSsoProtection =
+  CreateProjectResponseSsoProtection as any as S.Schema<GetProjectResponseSsoProtection>;
 
 export type GetProjectResponseStaticIpsRegionsList = Array<string>;
 export const GetProjectResponseStaticIpsRegionsList =
@@ -16606,14 +15381,8 @@ export interface GetProjectResponseTargetsValueBranchMatcher {
   /** The type of matching to perform */
   type: GetProjectResponseTargetsValueBranchMatcherType;
 }
-export const GetProjectResponseTargetsValueBranchMatcher = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pattern: S.String,
-    type: GetProjectResponseTargetsValueBranchMatcherType,
-  }),
-).annotate({
-  identifier: "GetProjectResponseTargetsValueBranchMatcher",
-}) as any as S.Schema<GetProjectResponseTargetsValueBranchMatcher>;
+export const GetProjectResponseTargetsValueBranchMatcher =
+  CreateProjectResponseAliasItemDeploymentBranchMatcher as any as S.Schema<GetProjectResponseTargetsValueBranchMatcher>;
 
 export type GetProjectResponseTargetsValueBuildsItem =
   CreateProjectResponseAliasItemDeploymentBuildsItem;
@@ -16813,22 +15582,13 @@ export interface GetProjectResponseTracingSamplingRulesItem {
   rate: number;
   requestPath?: string;
 }
-export const GetProjectResponseTracingSamplingRulesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    destination: S.optional(GetProjectResponseTracingSamplingRulesItemDestination),
-    env: S.optional(GetProjectResponseTracingSamplingRulesItemEnv),
-    rate: S.Number,
-    requestPath: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetProjectResponseTracingSamplingRulesItem",
-}) as any as S.Schema<GetProjectResponseTracingSamplingRulesItem>;
+export const GetProjectResponseTracingSamplingRulesItem =
+  CreateProjectResponseTracingSamplingRulesItem as any as S.Schema<GetProjectResponseTracingSamplingRulesItem>;
 
 export type GetProjectResponseTracingSamplingRulesList =
   Array<GetProjectResponseTracingSamplingRulesItem>;
-export const GetProjectResponseTracingSamplingRulesList = /*@__PURE__*/ S.Array(
-  GetProjectResponseTracingSamplingRulesItem,
-) as any as S.Schema<GetProjectResponseTracingSamplingRulesList>;
+export const GetProjectResponseTracingSamplingRulesList =
+  CreateProjectResponseTracingSamplingRulesList as any as S.Schema<GetProjectResponseTracingSamplingRulesList>;
 
 export interface GetProjectResponseTracing {
   domains?: string;
@@ -16892,13 +15652,8 @@ export const GetProjectResponseTrustedIpsCase1DeploymentType = S.String;
 export interface GetProjectResponseTrustedIpsCase1 {
   deploymentType: GetProjectResponseTrustedIpsCase1DeploymentType;
 }
-export const GetProjectResponseTrustedIpsCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deploymentType: GetProjectResponseTrustedIpsCase1DeploymentType,
-  }),
-).annotate({
-  identifier: "GetProjectResponseTrustedIpsCase1",
-}) as any as S.Schema<GetProjectResponseTrustedIpsCase1>;
+export const GetProjectResponseTrustedIpsCase1 =
+  CreateProjectRequestSsoProtection as any as S.Schema<GetProjectResponseTrustedIpsCase1>;
 
 export type GetProjectResponseTrustedIps =
   | GetProjectResponseTrustedIpsCase0
@@ -17197,17 +15952,8 @@ export interface GetProjectResponseUsageStatus {
   /** Per-project throttle, set explicitly for this project (e.g. via the per-project Flat Rate CDN endpoint). */
   throttled?: boolean;
 }
-export const GetProjectResponseUsageStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bypassThrottleUntil: S.optional(S.Number),
-    exceededAllowanceUntil: S.optional(S.Number),
-    kind: GetProjectResponseUsageStatusKind,
-    teamThrottled: S.optional(S.Boolean),
-    throttled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "GetProjectResponseUsageStatus",
-}) as any as S.Schema<GetProjectResponseUsageStatus>;
+export const GetProjectResponseUsageStatus =
+  CreateProjectResponseUsageStatus as any as S.Schema<GetProjectResponseUsageStatus>;
 
 export type GetProjectResponseWebAnalytics = CreateProjectResponseWebAnalytics;
 export const GetProjectResponseWebAnalytics = CreateProjectResponseWebAnalytics;
@@ -17730,14 +16476,8 @@ export interface GetProjectEnvResponseBodyCase0ContentHintCase0 {
   storeId: string;
   type: GetProjectEnvResponseBodyCase0ContentHintCase0Type;
 }
-export const GetProjectEnvResponseBodyCase0ContentHintCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: GetProjectEnvResponseBodyCase0ContentHintCase0Type,
-  }),
-).annotate({
-  identifier: "GetProjectEnvResponseBodyCase0ContentHintCase0",
-}) as any as S.Schema<GetProjectEnvResponseBodyCase0ContentHintCase0>;
+export const GetProjectEnvResponseBodyCase0ContentHintCase0 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<GetProjectEnvResponseBodyCase0ContentHintCase0>;
 
 export type GetProjectEnvResponseBodyCase0ContentHintCase1Type = "redis-rest-api-url";
 export const GetProjectEnvResponseBodyCase0ContentHintCase1Type = S.String;
@@ -17746,14 +16486,8 @@ export interface GetProjectEnvResponseBodyCase0ContentHintCase1 {
   storeId: string;
   type: GetProjectEnvResponseBodyCase0ContentHintCase1Type;
 }
-export const GetProjectEnvResponseBodyCase0ContentHintCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: GetProjectEnvResponseBodyCase0ContentHintCase1Type,
-  }),
-).annotate({
-  identifier: "GetProjectEnvResponseBodyCase0ContentHintCase1",
-}) as any as S.Schema<GetProjectEnvResponseBodyCase0ContentHintCase1>;
+export const GetProjectEnvResponseBodyCase0ContentHintCase1 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<GetProjectEnvResponseBodyCase0ContentHintCase1>;
 
 export type GetProjectEnvResponseBodyCase0ContentHintCase2Type = "redis-rest-api-token";
 export const GetProjectEnvResponseBodyCase0ContentHintCase2Type = S.String;
@@ -17762,14 +16496,8 @@ export interface GetProjectEnvResponseBodyCase0ContentHintCase2 {
   storeId: string;
   type: GetProjectEnvResponseBodyCase0ContentHintCase2Type;
 }
-export const GetProjectEnvResponseBodyCase0ContentHintCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: GetProjectEnvResponseBodyCase0ContentHintCase2Type,
-  }),
-).annotate({
-  identifier: "GetProjectEnvResponseBodyCase0ContentHintCase2",
-}) as any as S.Schema<GetProjectEnvResponseBodyCase0ContentHintCase2>;
+export const GetProjectEnvResponseBodyCase0ContentHintCase2 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<GetProjectEnvResponseBodyCase0ContentHintCase2>;
 
 export type GetProjectEnvResponseBodyCase0ContentHintCase3Type = "redis-rest-api-read-only-token";
 export const GetProjectEnvResponseBodyCase0ContentHintCase3Type = S.String;
@@ -17778,14 +16506,8 @@ export interface GetProjectEnvResponseBodyCase0ContentHintCase3 {
   storeId: string;
   type: GetProjectEnvResponseBodyCase0ContentHintCase3Type;
 }
-export const GetProjectEnvResponseBodyCase0ContentHintCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: GetProjectEnvResponseBodyCase0ContentHintCase3Type,
-  }),
-).annotate({
-  identifier: "GetProjectEnvResponseBodyCase0ContentHintCase3",
-}) as any as S.Schema<GetProjectEnvResponseBodyCase0ContentHintCase3>;
+export const GetProjectEnvResponseBodyCase0ContentHintCase3 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<GetProjectEnvResponseBodyCase0ContentHintCase3>;
 
 export type GetProjectEnvResponseBodyCase0ContentHintCase4Type = "blob-read-write-token";
 export const GetProjectEnvResponseBodyCase0ContentHintCase4Type = S.String;
@@ -17794,14 +16516,8 @@ export interface GetProjectEnvResponseBodyCase0ContentHintCase4 {
   storeId: string;
   type: GetProjectEnvResponseBodyCase0ContentHintCase4Type;
 }
-export const GetProjectEnvResponseBodyCase0ContentHintCase4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: GetProjectEnvResponseBodyCase0ContentHintCase4Type,
-  }),
-).annotate({
-  identifier: "GetProjectEnvResponseBodyCase0ContentHintCase4",
-}) as any as S.Schema<GetProjectEnvResponseBodyCase0ContentHintCase4>;
+export const GetProjectEnvResponseBodyCase0ContentHintCase4 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<GetProjectEnvResponseBodyCase0ContentHintCase4>;
 
 export type GetProjectEnvResponseBodyCase0ContentHintCase5Type = "blob-store-id";
 export const GetProjectEnvResponseBodyCase0ContentHintCase5Type = S.String;
@@ -17810,14 +16526,8 @@ export interface GetProjectEnvResponseBodyCase0ContentHintCase5 {
   storeId: string;
   type: GetProjectEnvResponseBodyCase0ContentHintCase5Type;
 }
-export const GetProjectEnvResponseBodyCase0ContentHintCase5 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: GetProjectEnvResponseBodyCase0ContentHintCase5Type,
-  }),
-).annotate({
-  identifier: "GetProjectEnvResponseBodyCase0ContentHintCase5",
-}) as any as S.Schema<GetProjectEnvResponseBodyCase0ContentHintCase5>;
+export const GetProjectEnvResponseBodyCase0ContentHintCase5 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<GetProjectEnvResponseBodyCase0ContentHintCase5>;
 
 export type GetProjectEnvResponseBodyCase0ContentHintCase6Type = "blob-webhook-public-key";
 export const GetProjectEnvResponseBodyCase0ContentHintCase6Type = S.String;
@@ -17826,14 +16536,8 @@ export interface GetProjectEnvResponseBodyCase0ContentHintCase6 {
   storeId: string;
   type: GetProjectEnvResponseBodyCase0ContentHintCase6Type;
 }
-export const GetProjectEnvResponseBodyCase0ContentHintCase6 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: GetProjectEnvResponseBodyCase0ContentHintCase6Type,
-  }),
-).annotate({
-  identifier: "GetProjectEnvResponseBodyCase0ContentHintCase6",
-}) as any as S.Schema<GetProjectEnvResponseBodyCase0ContentHintCase6>;
+export const GetProjectEnvResponseBodyCase0ContentHintCase6 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<GetProjectEnvResponseBodyCase0ContentHintCase6>;
 
 export type GetProjectEnvResponseBodyCase0ContentHintCase7Type = "postgres-url";
 export const GetProjectEnvResponseBodyCase0ContentHintCase7Type = S.String;
@@ -17842,14 +16546,8 @@ export interface GetProjectEnvResponseBodyCase0ContentHintCase7 {
   storeId: string;
   type: GetProjectEnvResponseBodyCase0ContentHintCase7Type;
 }
-export const GetProjectEnvResponseBodyCase0ContentHintCase7 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: GetProjectEnvResponseBodyCase0ContentHintCase7Type,
-  }),
-).annotate({
-  identifier: "GetProjectEnvResponseBodyCase0ContentHintCase7",
-}) as any as S.Schema<GetProjectEnvResponseBodyCase0ContentHintCase7>;
+export const GetProjectEnvResponseBodyCase0ContentHintCase7 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<GetProjectEnvResponseBodyCase0ContentHintCase7>;
 
 export type GetProjectEnvResponseBodyCase0ContentHintCase8Type = "postgres-url-non-pooling";
 export const GetProjectEnvResponseBodyCase0ContentHintCase8Type = S.String;
@@ -17858,14 +16556,8 @@ export interface GetProjectEnvResponseBodyCase0ContentHintCase8 {
   storeId: string;
   type: GetProjectEnvResponseBodyCase0ContentHintCase8Type;
 }
-export const GetProjectEnvResponseBodyCase0ContentHintCase8 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: GetProjectEnvResponseBodyCase0ContentHintCase8Type,
-  }),
-).annotate({
-  identifier: "GetProjectEnvResponseBodyCase0ContentHintCase8",
-}) as any as S.Schema<GetProjectEnvResponseBodyCase0ContentHintCase8>;
+export const GetProjectEnvResponseBodyCase0ContentHintCase8 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<GetProjectEnvResponseBodyCase0ContentHintCase8>;
 
 export type GetProjectEnvResponseBodyCase0ContentHintCase9Type = "postgres-prisma-url";
 export const GetProjectEnvResponseBodyCase0ContentHintCase9Type = S.String;
@@ -17874,14 +16566,8 @@ export interface GetProjectEnvResponseBodyCase0ContentHintCase9 {
   storeId: string;
   type: GetProjectEnvResponseBodyCase0ContentHintCase9Type;
 }
-export const GetProjectEnvResponseBodyCase0ContentHintCase9 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: GetProjectEnvResponseBodyCase0ContentHintCase9Type,
-  }),
-).annotate({
-  identifier: "GetProjectEnvResponseBodyCase0ContentHintCase9",
-}) as any as S.Schema<GetProjectEnvResponseBodyCase0ContentHintCase9>;
+export const GetProjectEnvResponseBodyCase0ContentHintCase9 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<GetProjectEnvResponseBodyCase0ContentHintCase9>;
 
 export type GetProjectEnvResponseBodyCase0ContentHintCase10Type = "postgres-user";
 export const GetProjectEnvResponseBodyCase0ContentHintCase10Type = S.String;
@@ -17890,14 +16576,8 @@ export interface GetProjectEnvResponseBodyCase0ContentHintCase10 {
   storeId: string;
   type: GetProjectEnvResponseBodyCase0ContentHintCase10Type;
 }
-export const GetProjectEnvResponseBodyCase0ContentHintCase10 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: GetProjectEnvResponseBodyCase0ContentHintCase10Type,
-  }),
-).annotate({
-  identifier: "GetProjectEnvResponseBodyCase0ContentHintCase10",
-}) as any as S.Schema<GetProjectEnvResponseBodyCase0ContentHintCase10>;
+export const GetProjectEnvResponseBodyCase0ContentHintCase10 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<GetProjectEnvResponseBodyCase0ContentHintCase10>;
 
 export type GetProjectEnvResponseBodyCase0ContentHintCase11Type = "postgres-host";
 export const GetProjectEnvResponseBodyCase0ContentHintCase11Type = S.String;
@@ -17906,14 +16586,8 @@ export interface GetProjectEnvResponseBodyCase0ContentHintCase11 {
   storeId: string;
   type: GetProjectEnvResponseBodyCase0ContentHintCase11Type;
 }
-export const GetProjectEnvResponseBodyCase0ContentHintCase11 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: GetProjectEnvResponseBodyCase0ContentHintCase11Type,
-  }),
-).annotate({
-  identifier: "GetProjectEnvResponseBodyCase0ContentHintCase11",
-}) as any as S.Schema<GetProjectEnvResponseBodyCase0ContentHintCase11>;
+export const GetProjectEnvResponseBodyCase0ContentHintCase11 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<GetProjectEnvResponseBodyCase0ContentHintCase11>;
 
 export type GetProjectEnvResponseBodyCase0ContentHintCase12Type = "postgres-password";
 export const GetProjectEnvResponseBodyCase0ContentHintCase12Type = S.String;
@@ -17922,14 +16596,8 @@ export interface GetProjectEnvResponseBodyCase0ContentHintCase12 {
   storeId: string;
   type: GetProjectEnvResponseBodyCase0ContentHintCase12Type;
 }
-export const GetProjectEnvResponseBodyCase0ContentHintCase12 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: GetProjectEnvResponseBodyCase0ContentHintCase12Type,
-  }),
-).annotate({
-  identifier: "GetProjectEnvResponseBodyCase0ContentHintCase12",
-}) as any as S.Schema<GetProjectEnvResponseBodyCase0ContentHintCase12>;
+export const GetProjectEnvResponseBodyCase0ContentHintCase12 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<GetProjectEnvResponseBodyCase0ContentHintCase12>;
 
 export type GetProjectEnvResponseBodyCase0ContentHintCase13Type = "postgres-database";
 export const GetProjectEnvResponseBodyCase0ContentHintCase13Type = S.String;
@@ -17938,14 +16606,8 @@ export interface GetProjectEnvResponseBodyCase0ContentHintCase13 {
   storeId: string;
   type: GetProjectEnvResponseBodyCase0ContentHintCase13Type;
 }
-export const GetProjectEnvResponseBodyCase0ContentHintCase13 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: GetProjectEnvResponseBodyCase0ContentHintCase13Type,
-  }),
-).annotate({
-  identifier: "GetProjectEnvResponseBodyCase0ContentHintCase13",
-}) as any as S.Schema<GetProjectEnvResponseBodyCase0ContentHintCase13>;
+export const GetProjectEnvResponseBodyCase0ContentHintCase13 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<GetProjectEnvResponseBodyCase0ContentHintCase13>;
 
 export type GetProjectEnvResponseBodyCase0ContentHintCase14Type = "postgres-url-no-ssl";
 export const GetProjectEnvResponseBodyCase0ContentHintCase14Type = S.String;
@@ -17954,14 +16616,8 @@ export interface GetProjectEnvResponseBodyCase0ContentHintCase14 {
   storeId: string;
   type: GetProjectEnvResponseBodyCase0ContentHintCase14Type;
 }
-export const GetProjectEnvResponseBodyCase0ContentHintCase14 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: GetProjectEnvResponseBodyCase0ContentHintCase14Type,
-  }),
-).annotate({
-  identifier: "GetProjectEnvResponseBodyCase0ContentHintCase14",
-}) as any as S.Schema<GetProjectEnvResponseBodyCase0ContentHintCase14>;
+export const GetProjectEnvResponseBodyCase0ContentHintCase14 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<GetProjectEnvResponseBodyCase0ContentHintCase14>;
 
 export type GetProjectEnvResponseBodyCase0ContentHintCase15Type = "integration-store-secret";
 export const GetProjectEnvResponseBodyCase0ContentHintCase15Type = S.String;
@@ -17973,17 +16629,8 @@ export interface GetProjectEnvResponseBodyCase0ContentHintCase15 {
   storeId: string;
   type: GetProjectEnvResponseBodyCase0ContentHintCase15Type;
 }
-export const GetProjectEnvResponseBodyCase0ContentHintCase15 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    integrationConfigurationId: S.String,
-    integrationId: S.String,
-    integrationProductId: S.String,
-    storeId: S.String,
-    type: GetProjectEnvResponseBodyCase0ContentHintCase15Type,
-  }),
-).annotate({
-  identifier: "GetProjectEnvResponseBodyCase0ContentHintCase15",
-}) as any as S.Schema<GetProjectEnvResponseBodyCase0ContentHintCase15>;
+export const GetProjectEnvResponseBodyCase0ContentHintCase15 =
+  CreateProjectResponseEnvItemContentHintCase15 as any as S.Schema<GetProjectEnvResponseBodyCase0ContentHintCase15>;
 
 export type GetProjectEnvResponseBodyCase0ContentHintCase16Type = "flags-connection-string";
 export const GetProjectEnvResponseBodyCase0ContentHintCase16Type = S.String;
@@ -17992,14 +16639,8 @@ export interface GetProjectEnvResponseBodyCase0ContentHintCase16 {
   projectId: string;
   type: GetProjectEnvResponseBodyCase0ContentHintCase16Type;
 }
-export const GetProjectEnvResponseBodyCase0ContentHintCase16 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    projectId: S.String,
-    type: GetProjectEnvResponseBodyCase0ContentHintCase16Type,
-  }),
-).annotate({
-  identifier: "GetProjectEnvResponseBodyCase0ContentHintCase16",
-}) as any as S.Schema<GetProjectEnvResponseBodyCase0ContentHintCase16>;
+export const GetProjectEnvResponseBodyCase0ContentHintCase16 =
+  CreateProjectResponseEnvItemContentHintCase16 as any as S.Schema<GetProjectEnvResponseBodyCase0ContentHintCase16>;
 
 export type GetProjectEnvResponseBodyCase0ContentHint =
   | GetProjectEnvResponseBodyCase0ContentHintCase0
@@ -18036,9 +16677,8 @@ export const GetProjectEnvResponseBodyCase0TargetCase0Item = S.String;
 
 export type GetProjectEnvResponseBodyCase0TargetCase0List =
   Array<GetProjectEnvResponseBodyCase0TargetCase0Item>;
-export const GetProjectEnvResponseBodyCase0TargetCase0List = /*@__PURE__*/ S.Array(
-  GetProjectEnvResponseBodyCase0TargetCase0Item,
-) as any as S.Schema<GetProjectEnvResponseBodyCase0TargetCase0List>;
+export const GetProjectEnvResponseBodyCase0TargetCase0List =
+  CreateProjectRequestEnvironmentVariablesItemTargetCase1List as any as S.Schema<GetProjectEnvResponseBodyCase0TargetCase0List>;
 
 export type GetProjectEnvResponseBodyCase0TargetCase1 = "production" | "preview" | "development";
 export const GetProjectEnvResponseBodyCase0TargetCase1 = S.String;
@@ -18115,14 +16755,8 @@ export interface GetProjectEnvResponseBodyCase1ContentHintCase0 {
   storeId: string;
   type: GetProjectEnvResponseBodyCase1ContentHintCase0Type;
 }
-export const GetProjectEnvResponseBodyCase1ContentHintCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: GetProjectEnvResponseBodyCase1ContentHintCase0Type,
-  }),
-).annotate({
-  identifier: "GetProjectEnvResponseBodyCase1ContentHintCase0",
-}) as any as S.Schema<GetProjectEnvResponseBodyCase1ContentHintCase0>;
+export const GetProjectEnvResponseBodyCase1ContentHintCase0 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<GetProjectEnvResponseBodyCase1ContentHintCase0>;
 
 export type GetProjectEnvResponseBodyCase1ContentHintCase1Type = "redis-rest-api-url";
 export const GetProjectEnvResponseBodyCase1ContentHintCase1Type = S.String;
@@ -18131,14 +16765,8 @@ export interface GetProjectEnvResponseBodyCase1ContentHintCase1 {
   storeId: string;
   type: GetProjectEnvResponseBodyCase1ContentHintCase1Type;
 }
-export const GetProjectEnvResponseBodyCase1ContentHintCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: GetProjectEnvResponseBodyCase1ContentHintCase1Type,
-  }),
-).annotate({
-  identifier: "GetProjectEnvResponseBodyCase1ContentHintCase1",
-}) as any as S.Schema<GetProjectEnvResponseBodyCase1ContentHintCase1>;
+export const GetProjectEnvResponseBodyCase1ContentHintCase1 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<GetProjectEnvResponseBodyCase1ContentHintCase1>;
 
 export type GetProjectEnvResponseBodyCase1ContentHintCase2Type = "redis-rest-api-token";
 export const GetProjectEnvResponseBodyCase1ContentHintCase2Type = S.String;
@@ -18147,14 +16775,8 @@ export interface GetProjectEnvResponseBodyCase1ContentHintCase2 {
   storeId: string;
   type: GetProjectEnvResponseBodyCase1ContentHintCase2Type;
 }
-export const GetProjectEnvResponseBodyCase1ContentHintCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: GetProjectEnvResponseBodyCase1ContentHintCase2Type,
-  }),
-).annotate({
-  identifier: "GetProjectEnvResponseBodyCase1ContentHintCase2",
-}) as any as S.Schema<GetProjectEnvResponseBodyCase1ContentHintCase2>;
+export const GetProjectEnvResponseBodyCase1ContentHintCase2 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<GetProjectEnvResponseBodyCase1ContentHintCase2>;
 
 export type GetProjectEnvResponseBodyCase1ContentHintCase3Type = "redis-rest-api-read-only-token";
 export const GetProjectEnvResponseBodyCase1ContentHintCase3Type = S.String;
@@ -18163,14 +16785,8 @@ export interface GetProjectEnvResponseBodyCase1ContentHintCase3 {
   storeId: string;
   type: GetProjectEnvResponseBodyCase1ContentHintCase3Type;
 }
-export const GetProjectEnvResponseBodyCase1ContentHintCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: GetProjectEnvResponseBodyCase1ContentHintCase3Type,
-  }),
-).annotate({
-  identifier: "GetProjectEnvResponseBodyCase1ContentHintCase3",
-}) as any as S.Schema<GetProjectEnvResponseBodyCase1ContentHintCase3>;
+export const GetProjectEnvResponseBodyCase1ContentHintCase3 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<GetProjectEnvResponseBodyCase1ContentHintCase3>;
 
 export type GetProjectEnvResponseBodyCase1ContentHintCase4Type = "blob-read-write-token";
 export const GetProjectEnvResponseBodyCase1ContentHintCase4Type = S.String;
@@ -18179,14 +16795,8 @@ export interface GetProjectEnvResponseBodyCase1ContentHintCase4 {
   storeId: string;
   type: GetProjectEnvResponseBodyCase1ContentHintCase4Type;
 }
-export const GetProjectEnvResponseBodyCase1ContentHintCase4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: GetProjectEnvResponseBodyCase1ContentHintCase4Type,
-  }),
-).annotate({
-  identifier: "GetProjectEnvResponseBodyCase1ContentHintCase4",
-}) as any as S.Schema<GetProjectEnvResponseBodyCase1ContentHintCase4>;
+export const GetProjectEnvResponseBodyCase1ContentHintCase4 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<GetProjectEnvResponseBodyCase1ContentHintCase4>;
 
 export type GetProjectEnvResponseBodyCase1ContentHintCase5Type = "blob-store-id";
 export const GetProjectEnvResponseBodyCase1ContentHintCase5Type = S.String;
@@ -18195,14 +16805,8 @@ export interface GetProjectEnvResponseBodyCase1ContentHintCase5 {
   storeId: string;
   type: GetProjectEnvResponseBodyCase1ContentHintCase5Type;
 }
-export const GetProjectEnvResponseBodyCase1ContentHintCase5 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: GetProjectEnvResponseBodyCase1ContentHintCase5Type,
-  }),
-).annotate({
-  identifier: "GetProjectEnvResponseBodyCase1ContentHintCase5",
-}) as any as S.Schema<GetProjectEnvResponseBodyCase1ContentHintCase5>;
+export const GetProjectEnvResponseBodyCase1ContentHintCase5 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<GetProjectEnvResponseBodyCase1ContentHintCase5>;
 
 export type GetProjectEnvResponseBodyCase1ContentHintCase6Type = "blob-webhook-public-key";
 export const GetProjectEnvResponseBodyCase1ContentHintCase6Type = S.String;
@@ -18211,14 +16815,8 @@ export interface GetProjectEnvResponseBodyCase1ContentHintCase6 {
   storeId: string;
   type: GetProjectEnvResponseBodyCase1ContentHintCase6Type;
 }
-export const GetProjectEnvResponseBodyCase1ContentHintCase6 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: GetProjectEnvResponseBodyCase1ContentHintCase6Type,
-  }),
-).annotate({
-  identifier: "GetProjectEnvResponseBodyCase1ContentHintCase6",
-}) as any as S.Schema<GetProjectEnvResponseBodyCase1ContentHintCase6>;
+export const GetProjectEnvResponseBodyCase1ContentHintCase6 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<GetProjectEnvResponseBodyCase1ContentHintCase6>;
 
 export type GetProjectEnvResponseBodyCase1ContentHintCase7Type = "postgres-url";
 export const GetProjectEnvResponseBodyCase1ContentHintCase7Type = S.String;
@@ -18227,14 +16825,8 @@ export interface GetProjectEnvResponseBodyCase1ContentHintCase7 {
   storeId: string;
   type: GetProjectEnvResponseBodyCase1ContentHintCase7Type;
 }
-export const GetProjectEnvResponseBodyCase1ContentHintCase7 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: GetProjectEnvResponseBodyCase1ContentHintCase7Type,
-  }),
-).annotate({
-  identifier: "GetProjectEnvResponseBodyCase1ContentHintCase7",
-}) as any as S.Schema<GetProjectEnvResponseBodyCase1ContentHintCase7>;
+export const GetProjectEnvResponseBodyCase1ContentHintCase7 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<GetProjectEnvResponseBodyCase1ContentHintCase7>;
 
 export type GetProjectEnvResponseBodyCase1ContentHintCase8Type = "postgres-url-non-pooling";
 export const GetProjectEnvResponseBodyCase1ContentHintCase8Type = S.String;
@@ -18243,14 +16835,8 @@ export interface GetProjectEnvResponseBodyCase1ContentHintCase8 {
   storeId: string;
   type: GetProjectEnvResponseBodyCase1ContentHintCase8Type;
 }
-export const GetProjectEnvResponseBodyCase1ContentHintCase8 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: GetProjectEnvResponseBodyCase1ContentHintCase8Type,
-  }),
-).annotate({
-  identifier: "GetProjectEnvResponseBodyCase1ContentHintCase8",
-}) as any as S.Schema<GetProjectEnvResponseBodyCase1ContentHintCase8>;
+export const GetProjectEnvResponseBodyCase1ContentHintCase8 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<GetProjectEnvResponseBodyCase1ContentHintCase8>;
 
 export type GetProjectEnvResponseBodyCase1ContentHintCase9Type = "postgres-prisma-url";
 export const GetProjectEnvResponseBodyCase1ContentHintCase9Type = S.String;
@@ -18259,14 +16845,8 @@ export interface GetProjectEnvResponseBodyCase1ContentHintCase9 {
   storeId: string;
   type: GetProjectEnvResponseBodyCase1ContentHintCase9Type;
 }
-export const GetProjectEnvResponseBodyCase1ContentHintCase9 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: GetProjectEnvResponseBodyCase1ContentHintCase9Type,
-  }),
-).annotate({
-  identifier: "GetProjectEnvResponseBodyCase1ContentHintCase9",
-}) as any as S.Schema<GetProjectEnvResponseBodyCase1ContentHintCase9>;
+export const GetProjectEnvResponseBodyCase1ContentHintCase9 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<GetProjectEnvResponseBodyCase1ContentHintCase9>;
 
 export type GetProjectEnvResponseBodyCase1ContentHintCase10Type = "postgres-user";
 export const GetProjectEnvResponseBodyCase1ContentHintCase10Type = S.String;
@@ -18275,14 +16855,8 @@ export interface GetProjectEnvResponseBodyCase1ContentHintCase10 {
   storeId: string;
   type: GetProjectEnvResponseBodyCase1ContentHintCase10Type;
 }
-export const GetProjectEnvResponseBodyCase1ContentHintCase10 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: GetProjectEnvResponseBodyCase1ContentHintCase10Type,
-  }),
-).annotate({
-  identifier: "GetProjectEnvResponseBodyCase1ContentHintCase10",
-}) as any as S.Schema<GetProjectEnvResponseBodyCase1ContentHintCase10>;
+export const GetProjectEnvResponseBodyCase1ContentHintCase10 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<GetProjectEnvResponseBodyCase1ContentHintCase10>;
 
 export type GetProjectEnvResponseBodyCase1ContentHintCase11Type = "postgres-host";
 export const GetProjectEnvResponseBodyCase1ContentHintCase11Type = S.String;
@@ -18291,14 +16865,8 @@ export interface GetProjectEnvResponseBodyCase1ContentHintCase11 {
   storeId: string;
   type: GetProjectEnvResponseBodyCase1ContentHintCase11Type;
 }
-export const GetProjectEnvResponseBodyCase1ContentHintCase11 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: GetProjectEnvResponseBodyCase1ContentHintCase11Type,
-  }),
-).annotate({
-  identifier: "GetProjectEnvResponseBodyCase1ContentHintCase11",
-}) as any as S.Schema<GetProjectEnvResponseBodyCase1ContentHintCase11>;
+export const GetProjectEnvResponseBodyCase1ContentHintCase11 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<GetProjectEnvResponseBodyCase1ContentHintCase11>;
 
 export type GetProjectEnvResponseBodyCase1ContentHintCase12Type = "postgres-password";
 export const GetProjectEnvResponseBodyCase1ContentHintCase12Type = S.String;
@@ -18307,14 +16875,8 @@ export interface GetProjectEnvResponseBodyCase1ContentHintCase12 {
   storeId: string;
   type: GetProjectEnvResponseBodyCase1ContentHintCase12Type;
 }
-export const GetProjectEnvResponseBodyCase1ContentHintCase12 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: GetProjectEnvResponseBodyCase1ContentHintCase12Type,
-  }),
-).annotate({
-  identifier: "GetProjectEnvResponseBodyCase1ContentHintCase12",
-}) as any as S.Schema<GetProjectEnvResponseBodyCase1ContentHintCase12>;
+export const GetProjectEnvResponseBodyCase1ContentHintCase12 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<GetProjectEnvResponseBodyCase1ContentHintCase12>;
 
 export type GetProjectEnvResponseBodyCase1ContentHintCase13Type = "postgres-database";
 export const GetProjectEnvResponseBodyCase1ContentHintCase13Type = S.String;
@@ -18323,14 +16885,8 @@ export interface GetProjectEnvResponseBodyCase1ContentHintCase13 {
   storeId: string;
   type: GetProjectEnvResponseBodyCase1ContentHintCase13Type;
 }
-export const GetProjectEnvResponseBodyCase1ContentHintCase13 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: GetProjectEnvResponseBodyCase1ContentHintCase13Type,
-  }),
-).annotate({
-  identifier: "GetProjectEnvResponseBodyCase1ContentHintCase13",
-}) as any as S.Schema<GetProjectEnvResponseBodyCase1ContentHintCase13>;
+export const GetProjectEnvResponseBodyCase1ContentHintCase13 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<GetProjectEnvResponseBodyCase1ContentHintCase13>;
 
 export type GetProjectEnvResponseBodyCase1ContentHintCase14Type = "postgres-url-no-ssl";
 export const GetProjectEnvResponseBodyCase1ContentHintCase14Type = S.String;
@@ -18339,14 +16895,8 @@ export interface GetProjectEnvResponseBodyCase1ContentHintCase14 {
   storeId: string;
   type: GetProjectEnvResponseBodyCase1ContentHintCase14Type;
 }
-export const GetProjectEnvResponseBodyCase1ContentHintCase14 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: GetProjectEnvResponseBodyCase1ContentHintCase14Type,
-  }),
-).annotate({
-  identifier: "GetProjectEnvResponseBodyCase1ContentHintCase14",
-}) as any as S.Schema<GetProjectEnvResponseBodyCase1ContentHintCase14>;
+export const GetProjectEnvResponseBodyCase1ContentHintCase14 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<GetProjectEnvResponseBodyCase1ContentHintCase14>;
 
 export type GetProjectEnvResponseBodyCase1ContentHintCase15Type = "integration-store-secret";
 export const GetProjectEnvResponseBodyCase1ContentHintCase15Type = S.String;
@@ -18358,17 +16908,8 @@ export interface GetProjectEnvResponseBodyCase1ContentHintCase15 {
   storeId: string;
   type: GetProjectEnvResponseBodyCase1ContentHintCase15Type;
 }
-export const GetProjectEnvResponseBodyCase1ContentHintCase15 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    integrationConfigurationId: S.String,
-    integrationId: S.String,
-    integrationProductId: S.String,
-    storeId: S.String,
-    type: GetProjectEnvResponseBodyCase1ContentHintCase15Type,
-  }),
-).annotate({
-  identifier: "GetProjectEnvResponseBodyCase1ContentHintCase15",
-}) as any as S.Schema<GetProjectEnvResponseBodyCase1ContentHintCase15>;
+export const GetProjectEnvResponseBodyCase1ContentHintCase15 =
+  CreateProjectResponseEnvItemContentHintCase15 as any as S.Schema<GetProjectEnvResponseBodyCase1ContentHintCase15>;
 
 export type GetProjectEnvResponseBodyCase1ContentHintCase16Type = "flags-connection-string";
 export const GetProjectEnvResponseBodyCase1ContentHintCase16Type = S.String;
@@ -18377,14 +16918,8 @@ export interface GetProjectEnvResponseBodyCase1ContentHintCase16 {
   projectId: string;
   type: GetProjectEnvResponseBodyCase1ContentHintCase16Type;
 }
-export const GetProjectEnvResponseBodyCase1ContentHintCase16 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    projectId: S.String,
-    type: GetProjectEnvResponseBodyCase1ContentHintCase16Type,
-  }),
-).annotate({
-  identifier: "GetProjectEnvResponseBodyCase1ContentHintCase16",
-}) as any as S.Schema<GetProjectEnvResponseBodyCase1ContentHintCase16>;
+export const GetProjectEnvResponseBodyCase1ContentHintCase16 =
+  CreateProjectResponseEnvItemContentHintCase16 as any as S.Schema<GetProjectEnvResponseBodyCase1ContentHintCase16>;
 
 export type GetProjectEnvResponseBodyCase1ContentHint =
   | GetProjectEnvResponseBodyCase1ContentHintCase0
@@ -18419,9 +16954,8 @@ export const GetProjectEnvResponseBodyCase1TargetCase0Item = S.String;
 
 export type GetProjectEnvResponseBodyCase1TargetCase0List =
   Array<GetProjectEnvResponseBodyCase1TargetCase0Item>;
-export const GetProjectEnvResponseBodyCase1TargetCase0List = /*@__PURE__*/ S.Array(
-  GetProjectEnvResponseBodyCase1TargetCase0Item,
-) as any as S.Schema<GetProjectEnvResponseBodyCase1TargetCase0List>;
+export const GetProjectEnvResponseBodyCase1TargetCase0List =
+  CreateProjectRequestEnvironmentVariablesItemTargetCase1List as any as S.Schema<GetProjectEnvResponseBodyCase1TargetCase0List>;
 
 export type GetProjectEnvResponseBodyCase1TargetCase1 = "production" | "preview" | "development";
 export const GetProjectEnvResponseBodyCase1TargetCase1 = S.String;
@@ -18500,14 +17034,8 @@ export interface GetProjectEnvResponseBodyCase2ContentHintCase0 {
   storeId: string;
   type: GetProjectEnvResponseBodyCase2ContentHintCase0Type;
 }
-export const GetProjectEnvResponseBodyCase2ContentHintCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: GetProjectEnvResponseBodyCase2ContentHintCase0Type,
-  }),
-).annotate({
-  identifier: "GetProjectEnvResponseBodyCase2ContentHintCase0",
-}) as any as S.Schema<GetProjectEnvResponseBodyCase2ContentHintCase0>;
+export const GetProjectEnvResponseBodyCase2ContentHintCase0 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<GetProjectEnvResponseBodyCase2ContentHintCase0>;
 
 export type GetProjectEnvResponseBodyCase2ContentHintCase1Type = "redis-rest-api-url";
 export const GetProjectEnvResponseBodyCase2ContentHintCase1Type = S.String;
@@ -18516,14 +17044,8 @@ export interface GetProjectEnvResponseBodyCase2ContentHintCase1 {
   storeId: string;
   type: GetProjectEnvResponseBodyCase2ContentHintCase1Type;
 }
-export const GetProjectEnvResponseBodyCase2ContentHintCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: GetProjectEnvResponseBodyCase2ContentHintCase1Type,
-  }),
-).annotate({
-  identifier: "GetProjectEnvResponseBodyCase2ContentHintCase1",
-}) as any as S.Schema<GetProjectEnvResponseBodyCase2ContentHintCase1>;
+export const GetProjectEnvResponseBodyCase2ContentHintCase1 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<GetProjectEnvResponseBodyCase2ContentHintCase1>;
 
 export type GetProjectEnvResponseBodyCase2ContentHintCase2Type = "redis-rest-api-token";
 export const GetProjectEnvResponseBodyCase2ContentHintCase2Type = S.String;
@@ -18532,14 +17054,8 @@ export interface GetProjectEnvResponseBodyCase2ContentHintCase2 {
   storeId: string;
   type: GetProjectEnvResponseBodyCase2ContentHintCase2Type;
 }
-export const GetProjectEnvResponseBodyCase2ContentHintCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: GetProjectEnvResponseBodyCase2ContentHintCase2Type,
-  }),
-).annotate({
-  identifier: "GetProjectEnvResponseBodyCase2ContentHintCase2",
-}) as any as S.Schema<GetProjectEnvResponseBodyCase2ContentHintCase2>;
+export const GetProjectEnvResponseBodyCase2ContentHintCase2 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<GetProjectEnvResponseBodyCase2ContentHintCase2>;
 
 export type GetProjectEnvResponseBodyCase2ContentHintCase3Type = "redis-rest-api-read-only-token";
 export const GetProjectEnvResponseBodyCase2ContentHintCase3Type = S.String;
@@ -18548,14 +17064,8 @@ export interface GetProjectEnvResponseBodyCase2ContentHintCase3 {
   storeId: string;
   type: GetProjectEnvResponseBodyCase2ContentHintCase3Type;
 }
-export const GetProjectEnvResponseBodyCase2ContentHintCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: GetProjectEnvResponseBodyCase2ContentHintCase3Type,
-  }),
-).annotate({
-  identifier: "GetProjectEnvResponseBodyCase2ContentHintCase3",
-}) as any as S.Schema<GetProjectEnvResponseBodyCase2ContentHintCase3>;
+export const GetProjectEnvResponseBodyCase2ContentHintCase3 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<GetProjectEnvResponseBodyCase2ContentHintCase3>;
 
 export type GetProjectEnvResponseBodyCase2ContentHintCase4Type = "blob-read-write-token";
 export const GetProjectEnvResponseBodyCase2ContentHintCase4Type = S.String;
@@ -18564,14 +17074,8 @@ export interface GetProjectEnvResponseBodyCase2ContentHintCase4 {
   storeId: string;
   type: GetProjectEnvResponseBodyCase2ContentHintCase4Type;
 }
-export const GetProjectEnvResponseBodyCase2ContentHintCase4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: GetProjectEnvResponseBodyCase2ContentHintCase4Type,
-  }),
-).annotate({
-  identifier: "GetProjectEnvResponseBodyCase2ContentHintCase4",
-}) as any as S.Schema<GetProjectEnvResponseBodyCase2ContentHintCase4>;
+export const GetProjectEnvResponseBodyCase2ContentHintCase4 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<GetProjectEnvResponseBodyCase2ContentHintCase4>;
 
 export type GetProjectEnvResponseBodyCase2ContentHintCase5Type = "blob-store-id";
 export const GetProjectEnvResponseBodyCase2ContentHintCase5Type = S.String;
@@ -18580,14 +17084,8 @@ export interface GetProjectEnvResponseBodyCase2ContentHintCase5 {
   storeId: string;
   type: GetProjectEnvResponseBodyCase2ContentHintCase5Type;
 }
-export const GetProjectEnvResponseBodyCase2ContentHintCase5 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: GetProjectEnvResponseBodyCase2ContentHintCase5Type,
-  }),
-).annotate({
-  identifier: "GetProjectEnvResponseBodyCase2ContentHintCase5",
-}) as any as S.Schema<GetProjectEnvResponseBodyCase2ContentHintCase5>;
+export const GetProjectEnvResponseBodyCase2ContentHintCase5 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<GetProjectEnvResponseBodyCase2ContentHintCase5>;
 
 export type GetProjectEnvResponseBodyCase2ContentHintCase6Type = "blob-webhook-public-key";
 export const GetProjectEnvResponseBodyCase2ContentHintCase6Type = S.String;
@@ -18596,14 +17094,8 @@ export interface GetProjectEnvResponseBodyCase2ContentHintCase6 {
   storeId: string;
   type: GetProjectEnvResponseBodyCase2ContentHintCase6Type;
 }
-export const GetProjectEnvResponseBodyCase2ContentHintCase6 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: GetProjectEnvResponseBodyCase2ContentHintCase6Type,
-  }),
-).annotate({
-  identifier: "GetProjectEnvResponseBodyCase2ContentHintCase6",
-}) as any as S.Schema<GetProjectEnvResponseBodyCase2ContentHintCase6>;
+export const GetProjectEnvResponseBodyCase2ContentHintCase6 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<GetProjectEnvResponseBodyCase2ContentHintCase6>;
 
 export type GetProjectEnvResponseBodyCase2ContentHintCase7Type = "postgres-url";
 export const GetProjectEnvResponseBodyCase2ContentHintCase7Type = S.String;
@@ -18612,14 +17104,8 @@ export interface GetProjectEnvResponseBodyCase2ContentHintCase7 {
   storeId: string;
   type: GetProjectEnvResponseBodyCase2ContentHintCase7Type;
 }
-export const GetProjectEnvResponseBodyCase2ContentHintCase7 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: GetProjectEnvResponseBodyCase2ContentHintCase7Type,
-  }),
-).annotate({
-  identifier: "GetProjectEnvResponseBodyCase2ContentHintCase7",
-}) as any as S.Schema<GetProjectEnvResponseBodyCase2ContentHintCase7>;
+export const GetProjectEnvResponseBodyCase2ContentHintCase7 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<GetProjectEnvResponseBodyCase2ContentHintCase7>;
 
 export type GetProjectEnvResponseBodyCase2ContentHintCase8Type = "postgres-url-non-pooling";
 export const GetProjectEnvResponseBodyCase2ContentHintCase8Type = S.String;
@@ -18628,14 +17114,8 @@ export interface GetProjectEnvResponseBodyCase2ContentHintCase8 {
   storeId: string;
   type: GetProjectEnvResponseBodyCase2ContentHintCase8Type;
 }
-export const GetProjectEnvResponseBodyCase2ContentHintCase8 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: GetProjectEnvResponseBodyCase2ContentHintCase8Type,
-  }),
-).annotate({
-  identifier: "GetProjectEnvResponseBodyCase2ContentHintCase8",
-}) as any as S.Schema<GetProjectEnvResponseBodyCase2ContentHintCase8>;
+export const GetProjectEnvResponseBodyCase2ContentHintCase8 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<GetProjectEnvResponseBodyCase2ContentHintCase8>;
 
 export type GetProjectEnvResponseBodyCase2ContentHintCase9Type = "postgres-prisma-url";
 export const GetProjectEnvResponseBodyCase2ContentHintCase9Type = S.String;
@@ -18644,14 +17124,8 @@ export interface GetProjectEnvResponseBodyCase2ContentHintCase9 {
   storeId: string;
   type: GetProjectEnvResponseBodyCase2ContentHintCase9Type;
 }
-export const GetProjectEnvResponseBodyCase2ContentHintCase9 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: GetProjectEnvResponseBodyCase2ContentHintCase9Type,
-  }),
-).annotate({
-  identifier: "GetProjectEnvResponseBodyCase2ContentHintCase9",
-}) as any as S.Schema<GetProjectEnvResponseBodyCase2ContentHintCase9>;
+export const GetProjectEnvResponseBodyCase2ContentHintCase9 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<GetProjectEnvResponseBodyCase2ContentHintCase9>;
 
 export type GetProjectEnvResponseBodyCase2ContentHintCase10Type = "postgres-user";
 export const GetProjectEnvResponseBodyCase2ContentHintCase10Type = S.String;
@@ -18660,14 +17134,8 @@ export interface GetProjectEnvResponseBodyCase2ContentHintCase10 {
   storeId: string;
   type: GetProjectEnvResponseBodyCase2ContentHintCase10Type;
 }
-export const GetProjectEnvResponseBodyCase2ContentHintCase10 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: GetProjectEnvResponseBodyCase2ContentHintCase10Type,
-  }),
-).annotate({
-  identifier: "GetProjectEnvResponseBodyCase2ContentHintCase10",
-}) as any as S.Schema<GetProjectEnvResponseBodyCase2ContentHintCase10>;
+export const GetProjectEnvResponseBodyCase2ContentHintCase10 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<GetProjectEnvResponseBodyCase2ContentHintCase10>;
 
 export type GetProjectEnvResponseBodyCase2ContentHintCase11Type = "postgres-host";
 export const GetProjectEnvResponseBodyCase2ContentHintCase11Type = S.String;
@@ -18676,14 +17144,8 @@ export interface GetProjectEnvResponseBodyCase2ContentHintCase11 {
   storeId: string;
   type: GetProjectEnvResponseBodyCase2ContentHintCase11Type;
 }
-export const GetProjectEnvResponseBodyCase2ContentHintCase11 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: GetProjectEnvResponseBodyCase2ContentHintCase11Type,
-  }),
-).annotate({
-  identifier: "GetProjectEnvResponseBodyCase2ContentHintCase11",
-}) as any as S.Schema<GetProjectEnvResponseBodyCase2ContentHintCase11>;
+export const GetProjectEnvResponseBodyCase2ContentHintCase11 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<GetProjectEnvResponseBodyCase2ContentHintCase11>;
 
 export type GetProjectEnvResponseBodyCase2ContentHintCase12Type = "postgres-password";
 export const GetProjectEnvResponseBodyCase2ContentHintCase12Type = S.String;
@@ -18692,14 +17154,8 @@ export interface GetProjectEnvResponseBodyCase2ContentHintCase12 {
   storeId: string;
   type: GetProjectEnvResponseBodyCase2ContentHintCase12Type;
 }
-export const GetProjectEnvResponseBodyCase2ContentHintCase12 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: GetProjectEnvResponseBodyCase2ContentHintCase12Type,
-  }),
-).annotate({
-  identifier: "GetProjectEnvResponseBodyCase2ContentHintCase12",
-}) as any as S.Schema<GetProjectEnvResponseBodyCase2ContentHintCase12>;
+export const GetProjectEnvResponseBodyCase2ContentHintCase12 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<GetProjectEnvResponseBodyCase2ContentHintCase12>;
 
 export type GetProjectEnvResponseBodyCase2ContentHintCase13Type = "postgres-database";
 export const GetProjectEnvResponseBodyCase2ContentHintCase13Type = S.String;
@@ -18708,14 +17164,8 @@ export interface GetProjectEnvResponseBodyCase2ContentHintCase13 {
   storeId: string;
   type: GetProjectEnvResponseBodyCase2ContentHintCase13Type;
 }
-export const GetProjectEnvResponseBodyCase2ContentHintCase13 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: GetProjectEnvResponseBodyCase2ContentHintCase13Type,
-  }),
-).annotate({
-  identifier: "GetProjectEnvResponseBodyCase2ContentHintCase13",
-}) as any as S.Schema<GetProjectEnvResponseBodyCase2ContentHintCase13>;
+export const GetProjectEnvResponseBodyCase2ContentHintCase13 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<GetProjectEnvResponseBodyCase2ContentHintCase13>;
 
 export type GetProjectEnvResponseBodyCase2ContentHintCase14Type = "postgres-url-no-ssl";
 export const GetProjectEnvResponseBodyCase2ContentHintCase14Type = S.String;
@@ -18724,14 +17174,8 @@ export interface GetProjectEnvResponseBodyCase2ContentHintCase14 {
   storeId: string;
   type: GetProjectEnvResponseBodyCase2ContentHintCase14Type;
 }
-export const GetProjectEnvResponseBodyCase2ContentHintCase14 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: GetProjectEnvResponseBodyCase2ContentHintCase14Type,
-  }),
-).annotate({
-  identifier: "GetProjectEnvResponseBodyCase2ContentHintCase14",
-}) as any as S.Schema<GetProjectEnvResponseBodyCase2ContentHintCase14>;
+export const GetProjectEnvResponseBodyCase2ContentHintCase14 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<GetProjectEnvResponseBodyCase2ContentHintCase14>;
 
 export type GetProjectEnvResponseBodyCase2ContentHintCase15Type = "integration-store-secret";
 export const GetProjectEnvResponseBodyCase2ContentHintCase15Type = S.String;
@@ -18743,17 +17187,8 @@ export interface GetProjectEnvResponseBodyCase2ContentHintCase15 {
   storeId: string;
   type: GetProjectEnvResponseBodyCase2ContentHintCase15Type;
 }
-export const GetProjectEnvResponseBodyCase2ContentHintCase15 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    integrationConfigurationId: S.String,
-    integrationId: S.String,
-    integrationProductId: S.String,
-    storeId: S.String,
-    type: GetProjectEnvResponseBodyCase2ContentHintCase15Type,
-  }),
-).annotate({
-  identifier: "GetProjectEnvResponseBodyCase2ContentHintCase15",
-}) as any as S.Schema<GetProjectEnvResponseBodyCase2ContentHintCase15>;
+export const GetProjectEnvResponseBodyCase2ContentHintCase15 =
+  CreateProjectResponseEnvItemContentHintCase15 as any as S.Schema<GetProjectEnvResponseBodyCase2ContentHintCase15>;
 
 export type GetProjectEnvResponseBodyCase2ContentHintCase16Type = "flags-connection-string";
 export const GetProjectEnvResponseBodyCase2ContentHintCase16Type = S.String;
@@ -18762,14 +17197,8 @@ export interface GetProjectEnvResponseBodyCase2ContentHintCase16 {
   projectId: string;
   type: GetProjectEnvResponseBodyCase2ContentHintCase16Type;
 }
-export const GetProjectEnvResponseBodyCase2ContentHintCase16 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    projectId: S.String,
-    type: GetProjectEnvResponseBodyCase2ContentHintCase16Type,
-  }),
-).annotate({
-  identifier: "GetProjectEnvResponseBodyCase2ContentHintCase16",
-}) as any as S.Schema<GetProjectEnvResponseBodyCase2ContentHintCase16>;
+export const GetProjectEnvResponseBodyCase2ContentHintCase16 =
+  CreateProjectResponseEnvItemContentHintCase16 as any as S.Schema<GetProjectEnvResponseBodyCase2ContentHintCase16>;
 
 export type GetProjectEnvResponseBodyCase2ContentHint =
   | GetProjectEnvResponseBodyCase2ContentHintCase0
@@ -18805,14 +17234,8 @@ export interface GetProjectEnvResponseBodyCase2InternalContentHint {
   encryptedValue: string;
   type: GetProjectEnvResponseBodyCase2InternalContentHintType;
 }
-export const GetProjectEnvResponseBodyCase2InternalContentHint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    encryptedValue: S.String,
-    type: GetProjectEnvResponseBodyCase2InternalContentHintType,
-  }),
-).annotate({
-  identifier: "GetProjectEnvResponseBodyCase2InternalContentHint",
-}) as any as S.Schema<GetProjectEnvResponseBodyCase2InternalContentHint>;
+export const GetProjectEnvResponseBodyCase2InternalContentHint =
+  CreateProjectResponseEnvItemInternalContentHint as any as S.Schema<GetProjectEnvResponseBodyCase2InternalContentHint>;
 
 export type GetProjectEnvResponseBodyCase2TargetCase0List = Array<string>;
 export const GetProjectEnvResponseBodyCase2TargetCase0List =
@@ -19285,14 +17708,8 @@ export interface GetProjectsResponseBodyCase0ItemCreatorCase0ViaCase0 {
   app: CreateProjectResponseCreatorCase0ViaCase0App;
   type: GetProjectsResponseBodyCase0ItemCreatorCase0ViaCase0Type;
 }
-export const GetProjectsResponseBodyCase0ItemCreatorCase0ViaCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app: CreateProjectResponseCreatorCase0ViaCase0App,
-    type: GetProjectsResponseBodyCase0ItemCreatorCase0ViaCase0Type,
-  }),
-).annotate({
-  identifier: "GetProjectsResponseBodyCase0ItemCreatorCase0ViaCase0",
-}) as any as S.Schema<GetProjectsResponseBodyCase0ItemCreatorCase0ViaCase0>;
+export const GetProjectsResponseBodyCase0ItemCreatorCase0ViaCase0 =
+  CreateProjectResponseCreatorCase0ViaCase0 as any as S.Schema<GetProjectsResponseBodyCase0ItemCreatorCase0ViaCase0>;
 
 export type GetProjectsResponseBodyCase0ItemCreatorCase0ViaCase1Integration =
   CreateProjectResponseCreatorCase0ViaCase1Integration;
@@ -19307,14 +17724,8 @@ export interface GetProjectsResponseBodyCase0ItemCreatorCase0ViaCase1 {
   integration: CreateProjectResponseCreatorCase0ViaCase1Integration;
   type: GetProjectsResponseBodyCase0ItemCreatorCase0ViaCase1Type;
 }
-export const GetProjectsResponseBodyCase0ItemCreatorCase0ViaCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    integration: CreateProjectResponseCreatorCase0ViaCase1Integration,
-    type: GetProjectsResponseBodyCase0ItemCreatorCase0ViaCase1Type,
-  }),
-).annotate({
-  identifier: "GetProjectsResponseBodyCase0ItemCreatorCase0ViaCase1",
-}) as any as S.Schema<GetProjectsResponseBodyCase0ItemCreatorCase0ViaCase1>;
+export const GetProjectsResponseBodyCase0ItemCreatorCase0ViaCase1 =
+  CreateProjectResponseCreatorCase0ViaCase1 as any as S.Schema<GetProjectsResponseBodyCase0ItemCreatorCase0ViaCase1>;
 
 export type GetProjectsResponseBodyCase0ItemCreatorCase0Via =
   | GetProjectsResponseBodyCase0ItemCreatorCase0ViaCase0
@@ -19354,14 +17765,8 @@ export interface GetProjectsResponseBodyCase0ItemCreatorCase1 {
   app: CreateProjectResponseCreatorCase0ViaCase0App;
   type: GetProjectsResponseBodyCase0ItemCreatorCase1Type;
 }
-export const GetProjectsResponseBodyCase0ItemCreatorCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app: CreateProjectResponseCreatorCase0ViaCase0App,
-    type: GetProjectsResponseBodyCase0ItemCreatorCase1Type,
-  }),
-).annotate({
-  identifier: "GetProjectsResponseBodyCase0ItemCreatorCase1",
-}) as any as S.Schema<GetProjectsResponseBodyCase0ItemCreatorCase1>;
+export const GetProjectsResponseBodyCase0ItemCreatorCase1 =
+  CreateProjectResponseCreatorCase0ViaCase0 as any as S.Schema<GetProjectsResponseBodyCase0ItemCreatorCase1>;
 
 export type GetProjectsResponseBodyCase0ItemCreatorCase2Integration =
   CreateProjectResponseCreatorCase0ViaCase1Integration;
@@ -19375,14 +17780,8 @@ export interface GetProjectsResponseBodyCase0ItemCreatorCase2 {
   integration: CreateProjectResponseCreatorCase0ViaCase1Integration;
   type: GetProjectsResponseBodyCase0ItemCreatorCase2Type;
 }
-export const GetProjectsResponseBodyCase0ItemCreatorCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    integration: CreateProjectResponseCreatorCase0ViaCase1Integration,
-    type: GetProjectsResponseBodyCase0ItemCreatorCase2Type,
-  }),
-).annotate({
-  identifier: "GetProjectsResponseBodyCase0ItemCreatorCase2",
-}) as any as S.Schema<GetProjectsResponseBodyCase0ItemCreatorCase2>;
+export const GetProjectsResponseBodyCase0ItemCreatorCase2 =
+  CreateProjectResponseCreatorCase0ViaCase1 as any as S.Schema<GetProjectsResponseBodyCase0ItemCreatorCase2>;
 
 export type GetProjectsResponseBodyCase0ItemCreatorCase3Type = "system";
 export const GetProjectsResponseBodyCase0ItemCreatorCase3Type = S.String;
@@ -19390,13 +17789,8 @@ export const GetProjectsResponseBodyCase0ItemCreatorCase3Type = S.String;
 export interface GetProjectsResponseBodyCase0ItemCreatorCase3 {
   type: GetProjectsResponseBodyCase0ItemCreatorCase3Type;
 }
-export const GetProjectsResponseBodyCase0ItemCreatorCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: GetProjectsResponseBodyCase0ItemCreatorCase3Type,
-  }),
-).annotate({
-  identifier: "GetProjectsResponseBodyCase0ItemCreatorCase3",
-}) as any as S.Schema<GetProjectsResponseBodyCase0ItemCreatorCase3>;
+export const GetProjectsResponseBodyCase0ItemCreatorCase3 =
+  CreateProjectResponseCreatorCase3 as any as S.Schema<GetProjectsResponseBodyCase0ItemCreatorCase3>;
 
 export type GetProjectsResponseBodyCase0ItemCreator =
   | GetProjectsResponseBodyCase0ItemCreatorCase0
@@ -19419,14 +17813,8 @@ export interface GetProjectsResponseBodyCase0ItemEnvItemContentHintCase0 {
   storeId: string;
   type: GetProjectsResponseBodyCase0ItemEnvItemContentHintCase0Type;
 }
-export const GetProjectsResponseBodyCase0ItemEnvItemContentHintCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: GetProjectsResponseBodyCase0ItemEnvItemContentHintCase0Type,
-  }),
-).annotate({
-  identifier: "GetProjectsResponseBodyCase0ItemEnvItemContentHintCase0",
-}) as any as S.Schema<GetProjectsResponseBodyCase0ItemEnvItemContentHintCase0>;
+export const GetProjectsResponseBodyCase0ItemEnvItemContentHintCase0 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<GetProjectsResponseBodyCase0ItemEnvItemContentHintCase0>;
 
 export type GetProjectsResponseBodyCase0ItemEnvItemContentHintCase1Type = "redis-rest-api-url";
 export const GetProjectsResponseBodyCase0ItemEnvItemContentHintCase1Type = S.String;
@@ -19435,14 +17823,8 @@ export interface GetProjectsResponseBodyCase0ItemEnvItemContentHintCase1 {
   storeId: string;
   type: GetProjectsResponseBodyCase0ItemEnvItemContentHintCase1Type;
 }
-export const GetProjectsResponseBodyCase0ItemEnvItemContentHintCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: GetProjectsResponseBodyCase0ItemEnvItemContentHintCase1Type,
-  }),
-).annotate({
-  identifier: "GetProjectsResponseBodyCase0ItemEnvItemContentHintCase1",
-}) as any as S.Schema<GetProjectsResponseBodyCase0ItemEnvItemContentHintCase1>;
+export const GetProjectsResponseBodyCase0ItemEnvItemContentHintCase1 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<GetProjectsResponseBodyCase0ItemEnvItemContentHintCase1>;
 
 export type GetProjectsResponseBodyCase0ItemEnvItemContentHintCase2Type = "redis-rest-api-token";
 export const GetProjectsResponseBodyCase0ItemEnvItemContentHintCase2Type = S.String;
@@ -19451,14 +17833,8 @@ export interface GetProjectsResponseBodyCase0ItemEnvItemContentHintCase2 {
   storeId: string;
   type: GetProjectsResponseBodyCase0ItemEnvItemContentHintCase2Type;
 }
-export const GetProjectsResponseBodyCase0ItemEnvItemContentHintCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: GetProjectsResponseBodyCase0ItemEnvItemContentHintCase2Type,
-  }),
-).annotate({
-  identifier: "GetProjectsResponseBodyCase0ItemEnvItemContentHintCase2",
-}) as any as S.Schema<GetProjectsResponseBodyCase0ItemEnvItemContentHintCase2>;
+export const GetProjectsResponseBodyCase0ItemEnvItemContentHintCase2 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<GetProjectsResponseBodyCase0ItemEnvItemContentHintCase2>;
 
 export type GetProjectsResponseBodyCase0ItemEnvItemContentHintCase3Type =
   "redis-rest-api-read-only-token";
@@ -19468,14 +17844,8 @@ export interface GetProjectsResponseBodyCase0ItemEnvItemContentHintCase3 {
   storeId: string;
   type: GetProjectsResponseBodyCase0ItemEnvItemContentHintCase3Type;
 }
-export const GetProjectsResponseBodyCase0ItemEnvItemContentHintCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: GetProjectsResponseBodyCase0ItemEnvItemContentHintCase3Type,
-  }),
-).annotate({
-  identifier: "GetProjectsResponseBodyCase0ItemEnvItemContentHintCase3",
-}) as any as S.Schema<GetProjectsResponseBodyCase0ItemEnvItemContentHintCase3>;
+export const GetProjectsResponseBodyCase0ItemEnvItemContentHintCase3 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<GetProjectsResponseBodyCase0ItemEnvItemContentHintCase3>;
 
 export type GetProjectsResponseBodyCase0ItemEnvItemContentHintCase4Type = "blob-read-write-token";
 export const GetProjectsResponseBodyCase0ItemEnvItemContentHintCase4Type = S.String;
@@ -19484,14 +17854,8 @@ export interface GetProjectsResponseBodyCase0ItemEnvItemContentHintCase4 {
   storeId: string;
   type: GetProjectsResponseBodyCase0ItemEnvItemContentHintCase4Type;
 }
-export const GetProjectsResponseBodyCase0ItemEnvItemContentHintCase4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: GetProjectsResponseBodyCase0ItemEnvItemContentHintCase4Type,
-  }),
-).annotate({
-  identifier: "GetProjectsResponseBodyCase0ItemEnvItemContentHintCase4",
-}) as any as S.Schema<GetProjectsResponseBodyCase0ItemEnvItemContentHintCase4>;
+export const GetProjectsResponseBodyCase0ItemEnvItemContentHintCase4 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<GetProjectsResponseBodyCase0ItemEnvItemContentHintCase4>;
 
 export type GetProjectsResponseBodyCase0ItemEnvItemContentHintCase5Type = "blob-store-id";
 export const GetProjectsResponseBodyCase0ItemEnvItemContentHintCase5Type = S.String;
@@ -19500,14 +17864,8 @@ export interface GetProjectsResponseBodyCase0ItemEnvItemContentHintCase5 {
   storeId: string;
   type: GetProjectsResponseBodyCase0ItemEnvItemContentHintCase5Type;
 }
-export const GetProjectsResponseBodyCase0ItemEnvItemContentHintCase5 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: GetProjectsResponseBodyCase0ItemEnvItemContentHintCase5Type,
-  }),
-).annotate({
-  identifier: "GetProjectsResponseBodyCase0ItemEnvItemContentHintCase5",
-}) as any as S.Schema<GetProjectsResponseBodyCase0ItemEnvItemContentHintCase5>;
+export const GetProjectsResponseBodyCase0ItemEnvItemContentHintCase5 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<GetProjectsResponseBodyCase0ItemEnvItemContentHintCase5>;
 
 export type GetProjectsResponseBodyCase0ItemEnvItemContentHintCase6Type = "blob-webhook-public-key";
 export const GetProjectsResponseBodyCase0ItemEnvItemContentHintCase6Type = S.String;
@@ -19516,14 +17874,8 @@ export interface GetProjectsResponseBodyCase0ItemEnvItemContentHintCase6 {
   storeId: string;
   type: GetProjectsResponseBodyCase0ItemEnvItemContentHintCase6Type;
 }
-export const GetProjectsResponseBodyCase0ItemEnvItemContentHintCase6 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: GetProjectsResponseBodyCase0ItemEnvItemContentHintCase6Type,
-  }),
-).annotate({
-  identifier: "GetProjectsResponseBodyCase0ItemEnvItemContentHintCase6",
-}) as any as S.Schema<GetProjectsResponseBodyCase0ItemEnvItemContentHintCase6>;
+export const GetProjectsResponseBodyCase0ItemEnvItemContentHintCase6 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<GetProjectsResponseBodyCase0ItemEnvItemContentHintCase6>;
 
 export type GetProjectsResponseBodyCase0ItemEnvItemContentHintCase7Type = "postgres-url";
 export const GetProjectsResponseBodyCase0ItemEnvItemContentHintCase7Type = S.String;
@@ -19532,14 +17884,8 @@ export interface GetProjectsResponseBodyCase0ItemEnvItemContentHintCase7 {
   storeId: string;
   type: GetProjectsResponseBodyCase0ItemEnvItemContentHintCase7Type;
 }
-export const GetProjectsResponseBodyCase0ItemEnvItemContentHintCase7 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: GetProjectsResponseBodyCase0ItemEnvItemContentHintCase7Type,
-  }),
-).annotate({
-  identifier: "GetProjectsResponseBodyCase0ItemEnvItemContentHintCase7",
-}) as any as S.Schema<GetProjectsResponseBodyCase0ItemEnvItemContentHintCase7>;
+export const GetProjectsResponseBodyCase0ItemEnvItemContentHintCase7 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<GetProjectsResponseBodyCase0ItemEnvItemContentHintCase7>;
 
 export type GetProjectsResponseBodyCase0ItemEnvItemContentHintCase8Type =
   "postgres-url-non-pooling";
@@ -19549,14 +17895,8 @@ export interface GetProjectsResponseBodyCase0ItemEnvItemContentHintCase8 {
   storeId: string;
   type: GetProjectsResponseBodyCase0ItemEnvItemContentHintCase8Type;
 }
-export const GetProjectsResponseBodyCase0ItemEnvItemContentHintCase8 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: GetProjectsResponseBodyCase0ItemEnvItemContentHintCase8Type,
-  }),
-).annotate({
-  identifier: "GetProjectsResponseBodyCase0ItemEnvItemContentHintCase8",
-}) as any as S.Schema<GetProjectsResponseBodyCase0ItemEnvItemContentHintCase8>;
+export const GetProjectsResponseBodyCase0ItemEnvItemContentHintCase8 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<GetProjectsResponseBodyCase0ItemEnvItemContentHintCase8>;
 
 export type GetProjectsResponseBodyCase0ItemEnvItemContentHintCase9Type = "postgres-prisma-url";
 export const GetProjectsResponseBodyCase0ItemEnvItemContentHintCase9Type = S.String;
@@ -19565,14 +17905,8 @@ export interface GetProjectsResponseBodyCase0ItemEnvItemContentHintCase9 {
   storeId: string;
   type: GetProjectsResponseBodyCase0ItemEnvItemContentHintCase9Type;
 }
-export const GetProjectsResponseBodyCase0ItemEnvItemContentHintCase9 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: GetProjectsResponseBodyCase0ItemEnvItemContentHintCase9Type,
-  }),
-).annotate({
-  identifier: "GetProjectsResponseBodyCase0ItemEnvItemContentHintCase9",
-}) as any as S.Schema<GetProjectsResponseBodyCase0ItemEnvItemContentHintCase9>;
+export const GetProjectsResponseBodyCase0ItemEnvItemContentHintCase9 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<GetProjectsResponseBodyCase0ItemEnvItemContentHintCase9>;
 
 export type GetProjectsResponseBodyCase0ItemEnvItemContentHintCase10Type = "postgres-user";
 export const GetProjectsResponseBodyCase0ItemEnvItemContentHintCase10Type = S.String;
@@ -19581,15 +17915,8 @@ export interface GetProjectsResponseBodyCase0ItemEnvItemContentHintCase10 {
   storeId: string;
   type: GetProjectsResponseBodyCase0ItemEnvItemContentHintCase10Type;
 }
-export const GetProjectsResponseBodyCase0ItemEnvItemContentHintCase10 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      storeId: S.String,
-      type: GetProjectsResponseBodyCase0ItemEnvItemContentHintCase10Type,
-    }),
-).annotate({
-  identifier: "GetProjectsResponseBodyCase0ItemEnvItemContentHintCase10",
-}) as any as S.Schema<GetProjectsResponseBodyCase0ItemEnvItemContentHintCase10>;
+export const GetProjectsResponseBodyCase0ItemEnvItemContentHintCase10 =
+  CreateProjectEnvResponseCreatedCase1ItemContentHintCase0 as any as S.Schema<GetProjectsResponseBodyCase0ItemEnvItemContentHintCase10>;
 
 export type GetProjectsResponseBodyCase0ItemEnvItemContentHintCase11Type = "postgres-host";
 export const GetProjectsResponseBodyCase0ItemEnvItemContentHintCase11Type = S.String;
@@ -19598,15 +17925,8 @@ export interface GetProjectsResponseBodyCase0ItemEnvItemContentHintCase11 {
   storeId: string;
   type: GetProjectsResponseBodyCase0ItemEnvItemContentHintCase11Type;
 }
-export const GetProjectsResponseBodyCase0ItemEnvItemContentHintCase11 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      storeId: S.String,
-      type: GetProjectsResponseBodyCase0ItemEnvItemContentHintCase11Type,
-    }),
-).annotate({
-  identifier: "GetProjectsResponseBodyCase0ItemEnvItemContentHintCase11",
-}) as any as S.Schema<GetProjectsResponseBodyCase0ItemEnvItemContentHintCase11>;
+export const GetProjectsResponseBodyCase0ItemEnvItemContentHintCase11 =
+  CreateProjectEnvResponseCreatedCase1ItemContentHintCase0 as any as S.Schema<GetProjectsResponseBodyCase0ItemEnvItemContentHintCase11>;
 
 export type GetProjectsResponseBodyCase0ItemEnvItemContentHintCase12Type = "postgres-password";
 export const GetProjectsResponseBodyCase0ItemEnvItemContentHintCase12Type = S.String;
@@ -19615,15 +17935,8 @@ export interface GetProjectsResponseBodyCase0ItemEnvItemContentHintCase12 {
   storeId: string;
   type: GetProjectsResponseBodyCase0ItemEnvItemContentHintCase12Type;
 }
-export const GetProjectsResponseBodyCase0ItemEnvItemContentHintCase12 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      storeId: S.String,
-      type: GetProjectsResponseBodyCase0ItemEnvItemContentHintCase12Type,
-    }),
-).annotate({
-  identifier: "GetProjectsResponseBodyCase0ItemEnvItemContentHintCase12",
-}) as any as S.Schema<GetProjectsResponseBodyCase0ItemEnvItemContentHintCase12>;
+export const GetProjectsResponseBodyCase0ItemEnvItemContentHintCase12 =
+  CreateProjectEnvResponseCreatedCase1ItemContentHintCase0 as any as S.Schema<GetProjectsResponseBodyCase0ItemEnvItemContentHintCase12>;
 
 export type GetProjectsResponseBodyCase0ItemEnvItemContentHintCase13Type = "postgres-database";
 export const GetProjectsResponseBodyCase0ItemEnvItemContentHintCase13Type = S.String;
@@ -19632,15 +17945,8 @@ export interface GetProjectsResponseBodyCase0ItemEnvItemContentHintCase13 {
   storeId: string;
   type: GetProjectsResponseBodyCase0ItemEnvItemContentHintCase13Type;
 }
-export const GetProjectsResponseBodyCase0ItemEnvItemContentHintCase13 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      storeId: S.String,
-      type: GetProjectsResponseBodyCase0ItemEnvItemContentHintCase13Type,
-    }),
-).annotate({
-  identifier: "GetProjectsResponseBodyCase0ItemEnvItemContentHintCase13",
-}) as any as S.Schema<GetProjectsResponseBodyCase0ItemEnvItemContentHintCase13>;
+export const GetProjectsResponseBodyCase0ItemEnvItemContentHintCase13 =
+  CreateProjectEnvResponseCreatedCase1ItemContentHintCase0 as any as S.Schema<GetProjectsResponseBodyCase0ItemEnvItemContentHintCase13>;
 
 export type GetProjectsResponseBodyCase0ItemEnvItemContentHintCase14Type = "postgres-url-no-ssl";
 export const GetProjectsResponseBodyCase0ItemEnvItemContentHintCase14Type = S.String;
@@ -19649,15 +17955,8 @@ export interface GetProjectsResponseBodyCase0ItemEnvItemContentHintCase14 {
   storeId: string;
   type: GetProjectsResponseBodyCase0ItemEnvItemContentHintCase14Type;
 }
-export const GetProjectsResponseBodyCase0ItemEnvItemContentHintCase14 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      storeId: S.String,
-      type: GetProjectsResponseBodyCase0ItemEnvItemContentHintCase14Type,
-    }),
-).annotate({
-  identifier: "GetProjectsResponseBodyCase0ItemEnvItemContentHintCase14",
-}) as any as S.Schema<GetProjectsResponseBodyCase0ItemEnvItemContentHintCase14>;
+export const GetProjectsResponseBodyCase0ItemEnvItemContentHintCase14 =
+  CreateProjectEnvResponseCreatedCase1ItemContentHintCase0 as any as S.Schema<GetProjectsResponseBodyCase0ItemEnvItemContentHintCase14>;
 
 export type GetProjectsResponseBodyCase0ItemEnvItemContentHintCase15Type =
   "integration-store-secret";
@@ -19670,18 +17969,8 @@ export interface GetProjectsResponseBodyCase0ItemEnvItemContentHintCase15 {
   storeId: string;
   type: GetProjectsResponseBodyCase0ItemEnvItemContentHintCase15Type;
 }
-export const GetProjectsResponseBodyCase0ItemEnvItemContentHintCase15 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      integrationConfigurationId: S.String,
-      integrationId: S.String,
-      integrationProductId: S.String,
-      storeId: S.String,
-      type: GetProjectsResponseBodyCase0ItemEnvItemContentHintCase15Type,
-    }),
-).annotate({
-  identifier: "GetProjectsResponseBodyCase0ItemEnvItemContentHintCase15",
-}) as any as S.Schema<GetProjectsResponseBodyCase0ItemEnvItemContentHintCase15>;
+export const GetProjectsResponseBodyCase0ItemEnvItemContentHintCase15 =
+  CreateProjectEnvResponseCreatedCase1ItemContentHintCase15 as any as S.Schema<GetProjectsResponseBodyCase0ItemEnvItemContentHintCase15>;
 
 export type GetProjectsResponseBodyCase0ItemEnvItemContentHintCase16Type =
   "flags-connection-string";
@@ -19691,15 +17980,8 @@ export interface GetProjectsResponseBodyCase0ItemEnvItemContentHintCase16 {
   projectId: string;
   type: GetProjectsResponseBodyCase0ItemEnvItemContentHintCase16Type;
 }
-export const GetProjectsResponseBodyCase0ItemEnvItemContentHintCase16 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      projectId: S.String,
-      type: GetProjectsResponseBodyCase0ItemEnvItemContentHintCase16Type,
-    }),
-).annotate({
-  identifier: "GetProjectsResponseBodyCase0ItemEnvItemContentHintCase16",
-}) as any as S.Schema<GetProjectsResponseBodyCase0ItemEnvItemContentHintCase16>;
+export const GetProjectsResponseBodyCase0ItemEnvItemContentHintCase16 =
+  CreateProjectEnvResponseCreatedCase1ItemContentHintCase16 as any as S.Schema<GetProjectsResponseBodyCase0ItemEnvItemContentHintCase16>;
 
 export type GetProjectsResponseBodyCase0ItemEnvItemContentHint =
   | GetProjectsResponseBodyCase0ItemEnvItemContentHintCase0
@@ -19735,15 +18017,8 @@ export interface GetProjectsResponseBodyCase0ItemEnvItemInternalContentHint {
   encryptedValue: string;
   type: GetProjectsResponseBodyCase0ItemEnvItemInternalContentHintType;
 }
-export const GetProjectsResponseBodyCase0ItemEnvItemInternalContentHint = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      encryptedValue: S.String,
-      type: GetProjectsResponseBodyCase0ItemEnvItemInternalContentHintType,
-    }),
-).annotate({
-  identifier: "GetProjectsResponseBodyCase0ItemEnvItemInternalContentHint",
-}) as any as S.Schema<GetProjectsResponseBodyCase0ItemEnvItemInternalContentHint>;
+export const GetProjectsResponseBodyCase0ItemEnvItemInternalContentHint =
+  CreateProjectEnvResponseCreatedCase1ItemInternalContentHint as any as S.Schema<GetProjectsResponseBodyCase0ItemEnvItemInternalContentHint>;
 
 export type GetProjectsResponseBodyCase0ItemEnvItemTargetCase0Item =
   | "development"
@@ -19755,9 +18030,8 @@ export const GetProjectsResponseBodyCase0ItemEnvItemTargetCase0Item = S.String;
 
 export type GetProjectsResponseBodyCase0ItemEnvItemTargetCase0List =
   Array<GetProjectsResponseBodyCase0ItemEnvItemTargetCase0Item>;
-export const GetProjectsResponseBodyCase0ItemEnvItemTargetCase0List = /*@__PURE__*/ S.Array(
-  GetProjectsResponseBodyCase0ItemEnvItemTargetCase0Item,
-) as any as S.Schema<GetProjectsResponseBodyCase0ItemEnvItemTargetCase0List>;
+export const GetProjectsResponseBodyCase0ItemEnvItemTargetCase0List =
+  CreateProjectRequestEnvironmentVariablesItemTargetCase1List as any as S.Schema<GetProjectsResponseBodyCase0ItemEnvItemTargetCase0List>;
 
 export type GetProjectsResponseBodyCase0ItemEnvItemTargetCase1 =
   | "development"
@@ -19956,19 +18230,8 @@ export interface GetProjectsResponseBodyCase0ItemGitProviderOptions {
   /** Whether the project requires commits to be signed & verified before deployments will be created. - `true`: require verified commits for this project (explicit override of the team setting). - `false`: do not require verified commits (explicit override of the team setting). - absent: inherit from `team.requireVerifiedCommits`. */
   requireVerifiedCommits?: boolean;
 }
-export const GetProjectsResponseBodyCase0ItemGitProviderOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    consolidatedGitCommitStatus: S.optional(
-      CreateProjectResponseGitProviderOptionsConsolidatedGitCommitStatus,
-    ),
-    createDeployments: GetProjectsResponseBodyCase0ItemGitProviderOptionsCreateDeployments,
-    disableRepositoryDispatchEvents: S.optional(S.Boolean),
-    gitCommitStatus: S.optional(S.Boolean),
-    requireVerifiedCommits: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "GetProjectsResponseBodyCase0ItemGitProviderOptions",
-}) as any as S.Schema<GetProjectsResponseBodyCase0ItemGitProviderOptions>;
+export const GetProjectsResponseBodyCase0ItemGitProviderOptions =
+  CreateProjectResponseGitProviderOptions as any as S.Schema<GetProjectsResponseBodyCase0ItemGitProviderOptions>;
 
 export type GetProjectsResponseBodyCase0ItemInternalRoutesItemCase0 =
   CreateProjectResponseInternalRoutesItemCase0;
@@ -20120,14 +18383,7 @@ export interface GetProjectsResponseBodyCase0ItemLatestDeploymentsItemBranchMatc
   type: GetProjectsResponseBodyCase0ItemLatestDeploymentsItemBranchMatcherType;
 }
 export const GetProjectsResponseBodyCase0ItemLatestDeploymentsItemBranchMatcher =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pattern: S.String,
-      type: GetProjectsResponseBodyCase0ItemLatestDeploymentsItemBranchMatcherType,
-    }),
-  ).annotate({
-    identifier: "GetProjectsResponseBodyCase0ItemLatestDeploymentsItemBranchMatcher",
-  }) as any as S.Schema<GetProjectsResponseBodyCase0ItemLatestDeploymentsItemBranchMatcher>;
+  GetProjectsResponseBodyCase0ItemAliasItemDeploymentBranchMatcher as any as S.Schema<GetProjectsResponseBodyCase0ItemLatestDeploymentsItemBranchMatcher>;
 
 export type GetProjectsResponseBodyCase0ItemLatestDeploymentsItemBuildsItem =
   CreateProjectResponseAliasItemDeploymentBuildsItem;
@@ -20707,14 +18963,8 @@ export interface GetProjectsResponseBodyCase0ItemOidcTokenConfig {
   /** - team: `https://oidc.vercel.com/[team_slug]` - global: `https://oidc.vercel.com` */
   issuerMode?: GetProjectsResponseBodyCase0ItemOidcTokenConfigIssuerMode;
 }
-export const GetProjectsResponseBodyCase0ItemOidcTokenConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-    issuerMode: S.optional(GetProjectsResponseBodyCase0ItemOidcTokenConfigIssuerMode),
-  }),
-).annotate({
-  identifier: "GetProjectsResponseBodyCase0ItemOidcTokenConfig",
-}) as any as S.Schema<GetProjectsResponseBodyCase0ItemOidcTokenConfig>;
+export const GetProjectsResponseBodyCase0ItemOidcTokenConfig =
+  CreateProjectRequestOidcTokenConfig as any as S.Schema<GetProjectsResponseBodyCase0ItemOidcTokenConfig>;
 
 export type GetProjectsResponseBodyCase0ItemPassportDeploymentType =
   | "all"
@@ -20727,14 +18977,8 @@ export interface GetProjectsResponseBodyCase0ItemPassport {
   connectorId: string;
   deploymentType: GetProjectsResponseBodyCase0ItemPassportDeploymentType;
 }
-export const GetProjectsResponseBodyCase0ItemPassport = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    connectorId: S.String,
-    deploymentType: GetProjectsResponseBodyCase0ItemPassportDeploymentType,
-  }),
-).annotate({
-  identifier: "GetProjectsResponseBodyCase0ItemPassport",
-}) as any as S.Schema<GetProjectsResponseBodyCase0ItemPassport>;
+export const GetProjectsResponseBodyCase0ItemPassport =
+  CreateProjectResponsePassport as any as S.Schema<GetProjectsResponseBodyCase0ItemPassport>;
 
 export type GetProjectsResponseBodyCase0ItemResourceConfigBuildMachineElasticReason =
   | "basic-floor"
@@ -21429,15 +19673,8 @@ export interface GetProjectsResponseBodyCase0ItemSecurityManagedRulesOwasp {
   action?: GetProjectsResponseBodyCase0ItemSecurityManagedRulesOwaspAction;
   active: boolean;
 }
-export const GetProjectsResponseBodyCase0ItemSecurityManagedRulesOwasp = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      action: S.optional(GetProjectsResponseBodyCase0ItemSecurityManagedRulesOwaspAction),
-      active: S.Boolean,
-    }),
-).annotate({
-  identifier: "GetProjectsResponseBodyCase0ItemSecurityManagedRulesOwasp",
-}) as any as S.Schema<GetProjectsResponseBodyCase0ItemSecurityManagedRulesOwasp>;
+export const GetProjectsResponseBodyCase0ItemSecurityManagedRulesOwasp =
+  GetProjectsResponseBodyCase0ItemSecurityManagedRulesAiBots as any as S.Schema<GetProjectsResponseBodyCase0ItemSecurityManagedRulesOwasp>;
 
 export type GetProjectsResponseBodyCase0ItemSecurityManagedRulesTrafficSourcesAction =
   | "challenge"
@@ -21450,14 +19687,7 @@ export interface GetProjectsResponseBodyCase0ItemSecurityManagedRulesTrafficSour
   active: boolean;
 }
 export const GetProjectsResponseBodyCase0ItemSecurityManagedRulesTrafficSources =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      action: S.optional(GetProjectsResponseBodyCase0ItemSecurityManagedRulesTrafficSourcesAction),
-      active: S.Boolean,
-    }),
-  ).annotate({
-    identifier: "GetProjectsResponseBodyCase0ItemSecurityManagedRulesTrafficSources",
-  }) as any as S.Schema<GetProjectsResponseBodyCase0ItemSecurityManagedRulesTrafficSources>;
+  GetProjectsResponseBodyCase0ItemSecurityManagedRulesBotFilter as any as S.Schema<GetProjectsResponseBodyCase0ItemSecurityManagedRulesTrafficSources>;
 
 export type GetProjectsResponseBodyCase0ItemSecurityManagedRulesVercelRulesetAction =
   | "challenge"
@@ -21470,14 +19700,7 @@ export interface GetProjectsResponseBodyCase0ItemSecurityManagedRulesVercelRules
   active: boolean;
 }
 export const GetProjectsResponseBodyCase0ItemSecurityManagedRulesVercelRuleset =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      action: S.optional(GetProjectsResponseBodyCase0ItemSecurityManagedRulesVercelRulesetAction),
-      active: S.Boolean,
-    }),
-  ).annotate({
-    identifier: "GetProjectsResponseBodyCase0ItemSecurityManagedRulesVercelRuleset",
-  }) as any as S.Schema<GetProjectsResponseBodyCase0ItemSecurityManagedRulesVercelRuleset>;
+  GetProjectsResponseBodyCase0ItemSecurityManagedRulesBotFilter as any as S.Schema<GetProjectsResponseBodyCase0ItemSecurityManagedRulesVercelRuleset>;
 
 export interface GetProjectsResponseBodyCase0ItemSecurityManagedRules {
   ai_bots: GetProjectsResponseBodyCase0ItemSecurityManagedRulesAiBots;
@@ -21707,15 +19930,8 @@ export interface GetProjectsResponseBodyCase0ItemTargetsValueBranchMatcher {
   /** The type of matching to perform */
   type: GetProjectsResponseBodyCase0ItemTargetsValueBranchMatcherType;
 }
-export const GetProjectsResponseBodyCase0ItemTargetsValueBranchMatcher = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pattern: S.String,
-      type: GetProjectsResponseBodyCase0ItemTargetsValueBranchMatcherType,
-    }),
-).annotate({
-  identifier: "GetProjectsResponseBodyCase0ItemTargetsValueBranchMatcher",
-}) as any as S.Schema<GetProjectsResponseBodyCase0ItemTargetsValueBranchMatcher>;
+export const GetProjectsResponseBodyCase0ItemTargetsValueBranchMatcher =
+  CreateProjectResponseCustomEnvironmentsItemBranchMatcher as any as S.Schema<GetProjectsResponseBodyCase0ItemTargetsValueBranchMatcher>;
 
 export type GetProjectsResponseBodyCase0ItemTargetsValueBuildsItem =
   CreateProjectResponseAliasItemDeploymentBuildsItem;
@@ -22388,14 +20604,7 @@ export interface GetProjectsResponseBodyCase1ProjectsItemAliasItemDeploymentBran
   type: GetProjectsResponseBodyCase1ProjectsItemAliasItemDeploymentBranchMatcherType;
 }
 export const GetProjectsResponseBodyCase1ProjectsItemAliasItemDeploymentBranchMatcher =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pattern: S.String,
-      type: GetProjectsResponseBodyCase1ProjectsItemAliasItemDeploymentBranchMatcherType,
-    }),
-  ).annotate({
-    identifier: "GetProjectsResponseBodyCase1ProjectsItemAliasItemDeploymentBranchMatcher",
-  }) as any as S.Schema<GetProjectsResponseBodyCase1ProjectsItemAliasItemDeploymentBranchMatcher>;
+  GetProjectsResponseBodyCase0ItemAliasItemDeploymentBranchMatcher as any as S.Schema<GetProjectsResponseBodyCase1ProjectsItemAliasItemDeploymentBranchMatcher>;
 
 export type GetProjectsResponseBodyCase1ProjectsItemAliasItemDeploymentBuildsItem =
   CreateProjectResponseAliasItemDeploymentBuildsItem;
@@ -22725,14 +20934,8 @@ export interface GetProjectsResponseBodyCase1ProjectsItemCreatorCase1 {
   app: CreateProjectResponseCreatorCase0ViaCase0App;
   type: GetProjectsResponseBodyCase1ProjectsItemCreatorCase1Type;
 }
-export const GetProjectsResponseBodyCase1ProjectsItemCreatorCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app: CreateProjectResponseCreatorCase0ViaCase0App,
-    type: GetProjectsResponseBodyCase1ProjectsItemCreatorCase1Type,
-  }),
-).annotate({
-  identifier: "GetProjectsResponseBodyCase1ProjectsItemCreatorCase1",
-}) as any as S.Schema<GetProjectsResponseBodyCase1ProjectsItemCreatorCase1>;
+export const GetProjectsResponseBodyCase1ProjectsItemCreatorCase1 =
+  CreateProjectResponseCreatorCase0ViaCase0 as any as S.Schema<GetProjectsResponseBodyCase1ProjectsItemCreatorCase1>;
 
 export type GetProjectsResponseBodyCase1ProjectsItemCreatorCase2Integration =
   CreateProjectResponseCreatorCase0ViaCase1Integration;
@@ -22746,14 +20949,8 @@ export interface GetProjectsResponseBodyCase1ProjectsItemCreatorCase2 {
   integration: CreateProjectResponseCreatorCase0ViaCase1Integration;
   type: GetProjectsResponseBodyCase1ProjectsItemCreatorCase2Type;
 }
-export const GetProjectsResponseBodyCase1ProjectsItemCreatorCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    integration: CreateProjectResponseCreatorCase0ViaCase1Integration,
-    type: GetProjectsResponseBodyCase1ProjectsItemCreatorCase2Type,
-  }),
-).annotate({
-  identifier: "GetProjectsResponseBodyCase1ProjectsItemCreatorCase2",
-}) as any as S.Schema<GetProjectsResponseBodyCase1ProjectsItemCreatorCase2>;
+export const GetProjectsResponseBodyCase1ProjectsItemCreatorCase2 =
+  CreateProjectResponseCreatorCase0ViaCase1 as any as S.Schema<GetProjectsResponseBodyCase1ProjectsItemCreatorCase2>;
 
 export type GetProjectsResponseBodyCase1ProjectsItemCreatorCase3Type = "system";
 export const GetProjectsResponseBodyCase1ProjectsItemCreatorCase3Type = S.String;
@@ -22761,13 +20958,8 @@ export const GetProjectsResponseBodyCase1ProjectsItemCreatorCase3Type = S.String
 export interface GetProjectsResponseBodyCase1ProjectsItemCreatorCase3 {
   type: GetProjectsResponseBodyCase1ProjectsItemCreatorCase3Type;
 }
-export const GetProjectsResponseBodyCase1ProjectsItemCreatorCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: GetProjectsResponseBodyCase1ProjectsItemCreatorCase3Type,
-  }),
-).annotate({
-  identifier: "GetProjectsResponseBodyCase1ProjectsItemCreatorCase3",
-}) as any as S.Schema<GetProjectsResponseBodyCase1ProjectsItemCreatorCase3>;
+export const GetProjectsResponseBodyCase1ProjectsItemCreatorCase3 =
+  CreateProjectResponseCreatorCase3 as any as S.Schema<GetProjectsResponseBodyCase1ProjectsItemCreatorCase3>;
 
 export type GetProjectsResponseBodyCase1ProjectsItemCreator =
   | GetProjectsResponseBodyCase1ProjectsItemCreatorCase0
@@ -22809,14 +21001,7 @@ export interface GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase1
   type: GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase1Type;
 }
 export const GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storeId: S.String,
-      type: GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase1Type,
-    }),
-  ).annotate({
-    identifier: "GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase1",
-  }) as any as S.Schema<GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase1>;
+  GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase0 as any as S.Schema<GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase1>;
 
 export type GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase2Type =
   "redis-rest-api-token";
@@ -22827,14 +21012,7 @@ export interface GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase2
   type: GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase2Type;
 }
 export const GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storeId: S.String,
-      type: GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase2Type,
-    }),
-  ).annotate({
-    identifier: "GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase2",
-  }) as any as S.Schema<GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase2>;
+  GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase0 as any as S.Schema<GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase2>;
 
 export type GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase3Type =
   "redis-rest-api-read-only-token";
@@ -22845,14 +21023,7 @@ export interface GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase3
   type: GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase3Type;
 }
 export const GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase3 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storeId: S.String,
-      type: GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase3Type,
-    }),
-  ).annotate({
-    identifier: "GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase3",
-  }) as any as S.Schema<GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase3>;
+  GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase0 as any as S.Schema<GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase3>;
 
 export type GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase4Type =
   "blob-read-write-token";
@@ -22863,14 +21034,7 @@ export interface GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase4
   type: GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase4Type;
 }
 export const GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase4 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storeId: S.String,
-      type: GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase4Type,
-    }),
-  ).annotate({
-    identifier: "GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase4",
-  }) as any as S.Schema<GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase4>;
+  GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase0 as any as S.Schema<GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase4>;
 
 export type GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase5Type = "blob-store-id";
 export const GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase5Type = S.String;
@@ -22880,14 +21044,7 @@ export interface GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase5
   type: GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase5Type;
 }
 export const GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase5 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storeId: S.String,
-      type: GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase5Type,
-    }),
-  ).annotate({
-    identifier: "GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase5",
-  }) as any as S.Schema<GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase5>;
+  GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase0 as any as S.Schema<GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase5>;
 
 export type GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase6Type =
   "blob-webhook-public-key";
@@ -22898,14 +21055,7 @@ export interface GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase6
   type: GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase6Type;
 }
 export const GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase6 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storeId: S.String,
-      type: GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase6Type,
-    }),
-  ).annotate({
-    identifier: "GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase6",
-  }) as any as S.Schema<GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase6>;
+  GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase0 as any as S.Schema<GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase6>;
 
 export type GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase7Type = "postgres-url";
 export const GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase7Type = S.String;
@@ -22915,14 +21065,7 @@ export interface GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase7
   type: GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase7Type;
 }
 export const GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase7 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storeId: S.String,
-      type: GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase7Type,
-    }),
-  ).annotate({
-    identifier: "GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase7",
-  }) as any as S.Schema<GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase7>;
+  GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase0 as any as S.Schema<GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase7>;
 
 export type GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase8Type =
   "postgres-url-non-pooling";
@@ -22933,14 +21076,7 @@ export interface GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase8
   type: GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase8Type;
 }
 export const GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase8 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storeId: S.String,
-      type: GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase8Type,
-    }),
-  ).annotate({
-    identifier: "GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase8",
-  }) as any as S.Schema<GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase8>;
+  GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase0 as any as S.Schema<GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase8>;
 
 export type GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase9Type =
   "postgres-prisma-url";
@@ -22951,14 +21087,7 @@ export interface GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase9
   type: GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase9Type;
 }
 export const GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase9 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storeId: S.String,
-      type: GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase9Type,
-    }),
-  ).annotate({
-    identifier: "GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase9",
-  }) as any as S.Schema<GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase9>;
+  GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase0 as any as S.Schema<GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase9>;
 
 export type GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase10Type = "postgres-user";
 export const GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase10Type = S.String;
@@ -22968,14 +21097,7 @@ export interface GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase1
   type: GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase10Type;
 }
 export const GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase10 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storeId: S.String,
-      type: GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase10Type,
-    }),
-  ).annotate({
-    identifier: "GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase10",
-  }) as any as S.Schema<GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase10>;
+  GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase0 as any as S.Schema<GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase10>;
 
 export type GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase11Type = "postgres-host";
 export const GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase11Type = S.String;
@@ -22985,14 +21107,7 @@ export interface GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase1
   type: GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase11Type;
 }
 export const GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase11 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storeId: S.String,
-      type: GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase11Type,
-    }),
-  ).annotate({
-    identifier: "GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase11",
-  }) as any as S.Schema<GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase11>;
+  GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase0 as any as S.Schema<GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase11>;
 
 export type GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase12Type =
   "postgres-password";
@@ -23003,14 +21118,7 @@ export interface GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase1
   type: GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase12Type;
 }
 export const GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase12 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storeId: S.String,
-      type: GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase12Type,
-    }),
-  ).annotate({
-    identifier: "GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase12",
-  }) as any as S.Schema<GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase12>;
+  GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase0 as any as S.Schema<GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase12>;
 
 export type GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase13Type =
   "postgres-database";
@@ -23021,14 +21129,7 @@ export interface GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase1
   type: GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase13Type;
 }
 export const GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase13 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storeId: S.String,
-      type: GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase13Type,
-    }),
-  ).annotate({
-    identifier: "GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase13",
-  }) as any as S.Schema<GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase13>;
+  GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase0 as any as S.Schema<GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase13>;
 
 export type GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase14Type =
   "postgres-url-no-ssl";
@@ -23039,14 +21140,7 @@ export interface GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase1
   type: GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase14Type;
 }
 export const GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase14 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storeId: S.String,
-      type: GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase14Type,
-    }),
-  ).annotate({
-    identifier: "GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase14",
-  }) as any as S.Schema<GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase14>;
+  GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase0 as any as S.Schema<GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase14>;
 
 export type GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase15Type =
   "integration-store-secret";
@@ -23144,9 +21238,8 @@ export const GetProjectsResponseBodyCase1ProjectsItemEnvItemTargetCase0Item = S.
 
 export type GetProjectsResponseBodyCase1ProjectsItemEnvItemTargetCase0List =
   Array<GetProjectsResponseBodyCase1ProjectsItemEnvItemTargetCase0Item>;
-export const GetProjectsResponseBodyCase1ProjectsItemEnvItemTargetCase0List = /*@__PURE__*/ S.Array(
-  GetProjectsResponseBodyCase1ProjectsItemEnvItemTargetCase0Item,
-) as any as S.Schema<GetProjectsResponseBodyCase1ProjectsItemEnvItemTargetCase0List>;
+export const GetProjectsResponseBodyCase1ProjectsItemEnvItemTargetCase0List =
+  CreateProjectRequestEnvironmentVariablesItemTargetCase1List as any as S.Schema<GetProjectsResponseBodyCase1ProjectsItemEnvItemTargetCase0List>;
 
 export type GetProjectsResponseBodyCase1ProjectsItemEnvItemTargetCase1 =
   | "development"
@@ -23387,15 +21480,7 @@ export interface GetProjectsResponseBodyCase1ProjectsItemInternalRoutesItemCase1
   value: CreateProjectResponseInternalRoutesItemCase1HasItemCase0Value;
 }
 export const GetProjectsResponseBodyCase1ProjectsItemInternalRoutesItemCase1HasItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: GetProjectsResponseBodyCase1ProjectsItemInternalRoutesItemCase1HasItemCase0Key,
-      type: GetProjectsResponseBodyCase1ProjectsItemInternalRoutesItemCase1HasItemCase0Type,
-      value: CreateProjectResponseInternalRoutesItemCase1HasItemCase0Value,
-    }),
-  ).annotate({
-    identifier: "GetProjectsResponseBodyCase1ProjectsItemInternalRoutesItemCase1HasItemCase0",
-  }) as any as S.Schema<GetProjectsResponseBodyCase1ProjectsItemInternalRoutesItemCase1HasItemCase0>;
+  GetProjectsResponseBodyCase0ItemInternalRoutesItemCase1HasItemCase0 as any as S.Schema<GetProjectsResponseBodyCase1ProjectsItemInternalRoutesItemCase1HasItemCase0>;
 
 export type GetProjectsResponseBodyCase1ProjectsItemInternalRoutesItemCase1HasItemCase1Type =
   "host";
@@ -23412,14 +21497,7 @@ export interface GetProjectsResponseBodyCase1ProjectsItemInternalRoutesItemCase1
   value: CreateProjectResponseInternalRoutesItemCase1HasItemCase0Value;
 }
 export const GetProjectsResponseBodyCase1ProjectsItemInternalRoutesItemCase1HasItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: GetProjectsResponseBodyCase1ProjectsItemInternalRoutesItemCase1HasItemCase1Type,
-      value: CreateProjectResponseInternalRoutesItemCase1HasItemCase0Value,
-    }),
-  ).annotate({
-    identifier: "GetProjectsResponseBodyCase1ProjectsItemInternalRoutesItemCase1HasItemCase1",
-  }) as any as S.Schema<GetProjectsResponseBodyCase1ProjectsItemInternalRoutesItemCase1HasItemCase1>;
+  GetProjectsResponseBodyCase0ItemInternalRoutesItemCase1HasItemCase1 as any as S.Schema<GetProjectsResponseBodyCase1ProjectsItemInternalRoutesItemCase1HasItemCase1>;
 
 export type GetProjectsResponseBodyCase1ProjectsItemInternalRoutesItemCase1HasItem =
   | GetProjectsResponseBodyCase1ProjectsItemInternalRoutesItemCase1HasItemCase0
@@ -23443,13 +21521,7 @@ export interface GetProjectsResponseBodyCase1ProjectsItemInternalRoutesItemCase1
   action: GetProjectsResponseBodyCase1ProjectsItemInternalRoutesItemCase1MitigateAction;
 }
 export const GetProjectsResponseBodyCase1ProjectsItemInternalRoutesItemCase1Mitigate =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      action: GetProjectsResponseBodyCase1ProjectsItemInternalRoutesItemCase1MitigateAction,
-    }),
-  ).annotate({
-    identifier: "GetProjectsResponseBodyCase1ProjectsItemInternalRoutesItemCase1Mitigate",
-  }) as any as S.Schema<GetProjectsResponseBodyCase1ProjectsItemInternalRoutesItemCase1Mitigate>;
+  GetProjectsResponseBodyCase0ItemInternalRoutesItemCase1Mitigate as any as S.Schema<GetProjectsResponseBodyCase1ProjectsItemInternalRoutesItemCase1Mitigate>;
 
 export interface GetProjectsResponseBodyCase1ProjectsItemInternalRoutesItemCase1 {
   has: GetProjectsResponseBodyCase1ProjectsItemInternalRoutesItemCase1HasList;
@@ -23524,14 +21596,7 @@ export interface GetProjectsResponseBodyCase1ProjectsItemLatestDeploymentsItemBr
   type: GetProjectsResponseBodyCase1ProjectsItemLatestDeploymentsItemBranchMatcherType;
 }
 export const GetProjectsResponseBodyCase1ProjectsItemLatestDeploymentsItemBranchMatcher =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pattern: S.String,
-      type: GetProjectsResponseBodyCase1ProjectsItemLatestDeploymentsItemBranchMatcherType,
-    }),
-  ).annotate({
-    identifier: "GetProjectsResponseBodyCase1ProjectsItemLatestDeploymentsItemBranchMatcher",
-  }) as any as S.Schema<GetProjectsResponseBodyCase1ProjectsItemLatestDeploymentsItemBranchMatcher>;
+  GetProjectsResponseBodyCase0ItemAliasItemDeploymentBranchMatcher as any as S.Schema<GetProjectsResponseBodyCase1ProjectsItemLatestDeploymentsItemBranchMatcher>;
 
 export type GetProjectsResponseBodyCase1ProjectsItemLatestDeploymentsItemBuildsItem =
   CreateProjectResponseAliasItemDeploymentBuildsItem;
@@ -24119,14 +22184,8 @@ export interface GetProjectsResponseBodyCase1ProjectsItemOidcTokenConfig {
   /** - team: `https://oidc.vercel.com/[team_slug]` - global: `https://oidc.vercel.com` */
   issuerMode?: GetProjectsResponseBodyCase1ProjectsItemOidcTokenConfigIssuerMode;
 }
-export const GetProjectsResponseBodyCase1ProjectsItemOidcTokenConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-    issuerMode: S.optional(GetProjectsResponseBodyCase1ProjectsItemOidcTokenConfigIssuerMode),
-  }),
-).annotate({
-  identifier: "GetProjectsResponseBodyCase1ProjectsItemOidcTokenConfig",
-}) as any as S.Schema<GetProjectsResponseBodyCase1ProjectsItemOidcTokenConfig>;
+export const GetProjectsResponseBodyCase1ProjectsItemOidcTokenConfig =
+  CreateProjectRequestOidcTokenConfig as any as S.Schema<GetProjectsResponseBodyCase1ProjectsItemOidcTokenConfig>;
 
 export type GetProjectsResponseBodyCase1ProjectsItemPassportDeploymentType =
   | "all"
@@ -24139,14 +22198,8 @@ export interface GetProjectsResponseBodyCase1ProjectsItemPassport {
   connectorId: string;
   deploymentType: GetProjectsResponseBodyCase1ProjectsItemPassportDeploymentType;
 }
-export const GetProjectsResponseBodyCase1ProjectsItemPassport = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    connectorId: S.String,
-    deploymentType: GetProjectsResponseBodyCase1ProjectsItemPassportDeploymentType,
-  }),
-).annotate({
-  identifier: "GetProjectsResponseBodyCase1ProjectsItemPassport",
-}) as any as S.Schema<GetProjectsResponseBodyCase1ProjectsItemPassport>;
+export const GetProjectsResponseBodyCase1ProjectsItemPassport =
+  CreateProjectResponsePassport as any as S.Schema<GetProjectsResponseBodyCase1ProjectsItemPassport>;
 
 export type GetProjectsResponseBodyCase1ProjectsItemResourceConfigBuildMachineElasticReason =
   | "basic-floor"
@@ -24727,23 +22780,12 @@ export interface GetProjectsResponseBodyCase1ProjectsItemSecurityFirewallRoutesI
   type: GetProjectsResponseBodyCase1ProjectsItemSecurityFirewallRoutesItemTransformsItemType;
 }
 export const GetProjectsResponseBodyCase1ProjectsItemSecurityFirewallRoutesItemTransformsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      args: S.String,
-      op: GetProjectsResponseBodyCase1ProjectsItemSecurityFirewallRoutesItemTransformsItemOp,
-      target: GetProjectsResponseBodyCase0ItemSecurityFirewallRoutesItemTransformsItemTarget,
-      type: GetProjectsResponseBodyCase1ProjectsItemSecurityFirewallRoutesItemTransformsItemType,
-    }),
-  ).annotate({
-    identifier: "GetProjectsResponseBodyCase1ProjectsItemSecurityFirewallRoutesItemTransformsItem",
-  }) as any as S.Schema<GetProjectsResponseBodyCase1ProjectsItemSecurityFirewallRoutesItemTransformsItem>;
+  GetProjectsResponseBodyCase0ItemSecurityFirewallRoutesItemTransformsItem as any as S.Schema<GetProjectsResponseBodyCase1ProjectsItemSecurityFirewallRoutesItemTransformsItem>;
 
 export type GetProjectsResponseBodyCase1ProjectsItemSecurityFirewallRoutesItemTransformsList =
   Array<GetProjectsResponseBodyCase1ProjectsItemSecurityFirewallRoutesItemTransformsItem>;
 export const GetProjectsResponseBodyCase1ProjectsItemSecurityFirewallRoutesItemTransformsList =
-  /*@__PURE__*/ S.Array(
-    GetProjectsResponseBodyCase1ProjectsItemSecurityFirewallRoutesItemTransformsItem,
-  ) as any as S.Schema<GetProjectsResponseBodyCase1ProjectsItemSecurityFirewallRoutesItemTransformsList>;
+  GetProjectsResponseBodyCase0ItemSecurityFirewallRoutesItemTransformsList as any as S.Schema<GetProjectsResponseBodyCase1ProjectsItemSecurityFirewallRoutesItemTransformsList>;
 
 export interface GetProjectsResponseBodyCase1ProjectsItemSecurityFirewallRoutesItem {
   dest?: string;
@@ -24812,14 +22854,7 @@ export interface GetProjectsResponseBodyCase1ProjectsItemSecurityManagedRulesAiB
   active: boolean;
 }
 export const GetProjectsResponseBodyCase1ProjectsItemSecurityManagedRulesAiBots =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      action: S.optional(GetProjectsResponseBodyCase1ProjectsItemSecurityManagedRulesAiBotsAction),
-      active: S.Boolean,
-    }),
-  ).annotate({
-    identifier: "GetProjectsResponseBodyCase1ProjectsItemSecurityManagedRulesAiBots",
-  }) as any as S.Schema<GetProjectsResponseBodyCase1ProjectsItemSecurityManagedRulesAiBots>;
+  GetProjectsResponseBodyCase0ItemSecurityManagedRulesBotFilter as any as S.Schema<GetProjectsResponseBodyCase1ProjectsItemSecurityManagedRulesAiBots>;
 
 export type GetProjectsResponseBodyCase1ProjectsItemSecurityManagedRulesBotFilterAction =
   | "challenge"
@@ -24854,14 +22889,7 @@ export interface GetProjectsResponseBodyCase1ProjectsItemSecurityManagedRulesOwa
   active: boolean;
 }
 export const GetProjectsResponseBodyCase1ProjectsItemSecurityManagedRulesOwasp =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      action: S.optional(GetProjectsResponseBodyCase1ProjectsItemSecurityManagedRulesOwaspAction),
-      active: S.Boolean,
-    }),
-  ).annotate({
-    identifier: "GetProjectsResponseBodyCase1ProjectsItemSecurityManagedRulesOwasp",
-  }) as any as S.Schema<GetProjectsResponseBodyCase1ProjectsItemSecurityManagedRulesOwasp>;
+  GetProjectsResponseBodyCase0ItemSecurityManagedRulesBotFilter as any as S.Schema<GetProjectsResponseBodyCase1ProjectsItemSecurityManagedRulesOwasp>;
 
 export type GetProjectsResponseBodyCase1ProjectsItemSecurityManagedRulesTrafficSourcesAction =
   | "challenge"
@@ -24875,16 +22903,7 @@ export interface GetProjectsResponseBodyCase1ProjectsItemSecurityManagedRulesTra
   active: boolean;
 }
 export const GetProjectsResponseBodyCase1ProjectsItemSecurityManagedRulesTrafficSources =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      action: S.optional(
-        GetProjectsResponseBodyCase1ProjectsItemSecurityManagedRulesTrafficSourcesAction,
-      ),
-      active: S.Boolean,
-    }),
-  ).annotate({
-    identifier: "GetProjectsResponseBodyCase1ProjectsItemSecurityManagedRulesTrafficSources",
-  }) as any as S.Schema<GetProjectsResponseBodyCase1ProjectsItemSecurityManagedRulesTrafficSources>;
+  GetProjectsResponseBodyCase1ProjectsItemSecurityManagedRulesBotFilter as any as S.Schema<GetProjectsResponseBodyCase1ProjectsItemSecurityManagedRulesTrafficSources>;
 
 export type GetProjectsResponseBodyCase1ProjectsItemSecurityManagedRulesVercelRulesetAction =
   | "challenge"
@@ -24898,16 +22917,7 @@ export interface GetProjectsResponseBodyCase1ProjectsItemSecurityManagedRulesVer
   active: boolean;
 }
 export const GetProjectsResponseBodyCase1ProjectsItemSecurityManagedRulesVercelRuleset =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      action: S.optional(
-        GetProjectsResponseBodyCase1ProjectsItemSecurityManagedRulesVercelRulesetAction,
-      ),
-      active: S.Boolean,
-    }),
-  ).annotate({
-    identifier: "GetProjectsResponseBodyCase1ProjectsItemSecurityManagedRulesVercelRuleset",
-  }) as any as S.Schema<GetProjectsResponseBodyCase1ProjectsItemSecurityManagedRulesVercelRuleset>;
+  GetProjectsResponseBodyCase1ProjectsItemSecurityManagedRulesBotFilter as any as S.Schema<GetProjectsResponseBodyCase1ProjectsItemSecurityManagedRulesVercelRuleset>;
 
 export interface GetProjectsResponseBodyCase1ProjectsItemSecurityManagedRules {
   ai_bots: GetProjectsResponseBodyCase1ProjectsItemSecurityManagedRulesAiBots;
@@ -25106,21 +23116,8 @@ export interface GetProjectsResponseBodyCase1ProjectsItemSsoProtection {
   cve55182MigrationAppliedFrom?: GetProjectsResponseBodyCase1ProjectsItemSsoProtectionCve55182MigrationAppliedFrom | null;
   deploymentType: GetProjectsResponseBodyCase1ProjectsItemSsoProtectionDeploymentType;
 }
-export const GetProjectsResponseBodyCase1ProjectsItemSsoProtection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    april2026SecurityIncidentMigrationAppliedFrom: S.optional(
-      S.NullOr(
-        GetProjectsResponseBodyCase1ProjectsItemSsoProtectionApril2026SecurityIncidentMigrationAppliedFrom,
-      ),
-    ),
-    cve55182MigrationAppliedFrom: S.optional(
-      S.NullOr(GetProjectsResponseBodyCase1ProjectsItemSsoProtectionCve55182MigrationAppliedFrom),
-    ),
-    deploymentType: GetProjectsResponseBodyCase1ProjectsItemSsoProtectionDeploymentType,
-  }),
-).annotate({
-  identifier: "GetProjectsResponseBodyCase1ProjectsItemSsoProtection",
-}) as any as S.Schema<GetProjectsResponseBodyCase1ProjectsItemSsoProtection>;
+export const GetProjectsResponseBodyCase1ProjectsItemSsoProtection =
+  GetProjectsResponseBodyCase0ItemSsoProtection as any as S.Schema<GetProjectsResponseBodyCase1ProjectsItemSsoProtection>;
 
 export type GetProjectsResponseBodyCase1ProjectsItemTargetsValueAliasList = Array<string>;
 export const GetProjectsResponseBodyCase1ProjectsItemTargetsValueAliasList =
@@ -25154,14 +23151,7 @@ export interface GetProjectsResponseBodyCase1ProjectsItemTargetsValueBranchMatch
   type: GetProjectsResponseBodyCase1ProjectsItemTargetsValueBranchMatcherType;
 }
 export const GetProjectsResponseBodyCase1ProjectsItemTargetsValueBranchMatcher =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pattern: S.String,
-      type: GetProjectsResponseBodyCase1ProjectsItemTargetsValueBranchMatcherType,
-    }),
-  ).annotate({
-    identifier: "GetProjectsResponseBodyCase1ProjectsItemTargetsValueBranchMatcher",
-  }) as any as S.Schema<GetProjectsResponseBodyCase1ProjectsItemTargetsValueBranchMatcher>;
+  GetProjectsResponseBodyCase0ItemAliasItemDeploymentBranchMatcher as any as S.Schema<GetProjectsResponseBodyCase1ProjectsItemTargetsValueBranchMatcher>;
 
 export type GetProjectsResponseBodyCase1ProjectsItemTargetsValueBuildsItem =
   CreateProjectResponseAliasItemDeploymentBuildsItem;
@@ -25864,14 +23854,7 @@ export interface GetProjectsResponseBodyCase2ProjectsItemAliasItemDeploymentBran
   type: GetProjectsResponseBodyCase2ProjectsItemAliasItemDeploymentBranchMatcherType;
 }
 export const GetProjectsResponseBodyCase2ProjectsItemAliasItemDeploymentBranchMatcher =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pattern: S.String,
-      type: GetProjectsResponseBodyCase2ProjectsItemAliasItemDeploymentBranchMatcherType,
-    }),
-  ).annotate({
-    identifier: "GetProjectsResponseBodyCase2ProjectsItemAliasItemDeploymentBranchMatcher",
-  }) as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemAliasItemDeploymentBranchMatcher>;
+  GetProjectsResponseBodyCase0ItemAliasItemDeploymentBranchMatcher as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemAliasItemDeploymentBranchMatcher>;
 
 export type GetProjectsResponseBodyCase2ProjectsItemAliasItemDeploymentBuildsItem =
   CreateProjectResponseAliasItemDeploymentBuildsItem;
@@ -26193,15 +24176,8 @@ export interface GetProjectsResponseBodyCase2ProjectsItemCreatorCase0ViaCase0 {
   app: CreateProjectResponseCreatorCase0ViaCase0App;
   type: GetProjectsResponseBodyCase2ProjectsItemCreatorCase0ViaCase0Type;
 }
-export const GetProjectsResponseBodyCase2ProjectsItemCreatorCase0ViaCase0 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      app: CreateProjectResponseCreatorCase0ViaCase0App,
-      type: GetProjectsResponseBodyCase2ProjectsItemCreatorCase0ViaCase0Type,
-    }),
-).annotate({
-  identifier: "GetProjectsResponseBodyCase2ProjectsItemCreatorCase0ViaCase0",
-}) as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemCreatorCase0ViaCase0>;
+export const GetProjectsResponseBodyCase2ProjectsItemCreatorCase0ViaCase0 =
+  GetProjectsResponseBodyCase1ProjectsItemCreatorCase0ViaCase0 as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemCreatorCase0ViaCase0>;
 
 export type GetProjectsResponseBodyCase2ProjectsItemCreatorCase0ViaCase1Integration =
   CreateProjectResponseCreatorCase0ViaCase1Integration;
@@ -26216,15 +24192,8 @@ export interface GetProjectsResponseBodyCase2ProjectsItemCreatorCase0ViaCase1 {
   integration: CreateProjectResponseCreatorCase0ViaCase1Integration;
   type: GetProjectsResponseBodyCase2ProjectsItemCreatorCase0ViaCase1Type;
 }
-export const GetProjectsResponseBodyCase2ProjectsItemCreatorCase0ViaCase1 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      integration: CreateProjectResponseCreatorCase0ViaCase1Integration,
-      type: GetProjectsResponseBodyCase2ProjectsItemCreatorCase0ViaCase1Type,
-    }),
-).annotate({
-  identifier: "GetProjectsResponseBodyCase2ProjectsItemCreatorCase0ViaCase1",
-}) as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemCreatorCase0ViaCase1>;
+export const GetProjectsResponseBodyCase2ProjectsItemCreatorCase0ViaCase1 =
+  GetProjectsResponseBodyCase1ProjectsItemCreatorCase0ViaCase1 as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemCreatorCase0ViaCase1>;
 
 export type GetProjectsResponseBodyCase2ProjectsItemCreatorCase0Via =
   | GetProjectsResponseBodyCase2ProjectsItemCreatorCase0ViaCase0
@@ -26264,14 +24233,8 @@ export interface GetProjectsResponseBodyCase2ProjectsItemCreatorCase1 {
   app: CreateProjectResponseCreatorCase0ViaCase0App;
   type: GetProjectsResponseBodyCase2ProjectsItemCreatorCase1Type;
 }
-export const GetProjectsResponseBodyCase2ProjectsItemCreatorCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app: CreateProjectResponseCreatorCase0ViaCase0App,
-    type: GetProjectsResponseBodyCase2ProjectsItemCreatorCase1Type,
-  }),
-).annotate({
-  identifier: "GetProjectsResponseBodyCase2ProjectsItemCreatorCase1",
-}) as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemCreatorCase1>;
+export const GetProjectsResponseBodyCase2ProjectsItemCreatorCase1 =
+  CreateProjectResponseCreatorCase0ViaCase0 as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemCreatorCase1>;
 
 export type GetProjectsResponseBodyCase2ProjectsItemCreatorCase2Integration =
   CreateProjectResponseCreatorCase0ViaCase1Integration;
@@ -26285,14 +24248,8 @@ export interface GetProjectsResponseBodyCase2ProjectsItemCreatorCase2 {
   integration: CreateProjectResponseCreatorCase0ViaCase1Integration;
   type: GetProjectsResponseBodyCase2ProjectsItemCreatorCase2Type;
 }
-export const GetProjectsResponseBodyCase2ProjectsItemCreatorCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    integration: CreateProjectResponseCreatorCase0ViaCase1Integration,
-    type: GetProjectsResponseBodyCase2ProjectsItemCreatorCase2Type,
-  }),
-).annotate({
-  identifier: "GetProjectsResponseBodyCase2ProjectsItemCreatorCase2",
-}) as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemCreatorCase2>;
+export const GetProjectsResponseBodyCase2ProjectsItemCreatorCase2 =
+  CreateProjectResponseCreatorCase0ViaCase1 as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemCreatorCase2>;
 
 export type GetProjectsResponseBodyCase2ProjectsItemCreatorCase3Type = "system";
 export const GetProjectsResponseBodyCase2ProjectsItemCreatorCase3Type = S.String;
@@ -26300,13 +24257,8 @@ export const GetProjectsResponseBodyCase2ProjectsItemCreatorCase3Type = S.String
 export interface GetProjectsResponseBodyCase2ProjectsItemCreatorCase3 {
   type: GetProjectsResponseBodyCase2ProjectsItemCreatorCase3Type;
 }
-export const GetProjectsResponseBodyCase2ProjectsItemCreatorCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: GetProjectsResponseBodyCase2ProjectsItemCreatorCase3Type,
-  }),
-).annotate({
-  identifier: "GetProjectsResponseBodyCase2ProjectsItemCreatorCase3",
-}) as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemCreatorCase3>;
+export const GetProjectsResponseBodyCase2ProjectsItemCreatorCase3 =
+  CreateProjectResponseCreatorCase3 as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemCreatorCase3>;
 
 export type GetProjectsResponseBodyCase2ProjectsItemCreator =
   | GetProjectsResponseBodyCase2ProjectsItemCreatorCase0
@@ -26392,14 +24344,7 @@ export interface GetProjectsResponseBodyCase2ProjectsItemCustomEnvironmentsItemB
   type: GetProjectsResponseBodyCase2ProjectsItemCustomEnvironmentsItemBranchMatcherType;
 }
 export const GetProjectsResponseBodyCase2ProjectsItemCustomEnvironmentsItemBranchMatcher =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pattern: S.String,
-      type: GetProjectsResponseBodyCase2ProjectsItemCustomEnvironmentsItemBranchMatcherType,
-    }),
-  ).annotate({
-    identifier: "GetProjectsResponseBodyCase2ProjectsItemCustomEnvironmentsItemBranchMatcher",
-  }) as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemCustomEnvironmentsItemBranchMatcher>;
+  GetProjectsResponseBodyCase0ItemAliasItemDeploymentBranchMatcher as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemCustomEnvironmentsItemBranchMatcher>;
 
 /** List of aliases for the current deployment */
 export type GetProjectsResponseBodyCase2ProjectsItemCustomEnvironmentsItemCurrentDeploymentAliasesList =
@@ -26562,17 +24507,7 @@ export interface GetProjectsResponseBodyCase2ProjectsItemDefaultResourceConfigBu
   direction: GetProjectsResponseBodyCase2ProjectsItemDefaultResourceConfigBuildMachineElasticTransitionDirection;
 }
 export const GetProjectsResponseBodyCase2ProjectsItemDefaultResourceConfigBuildMachineElasticTransition =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      algorithmVersion: S.String,
-      at: S.Number,
-      direction:
-        GetProjectsResponseBodyCase2ProjectsItemDefaultResourceConfigBuildMachineElasticTransitionDirection,
-    }),
-  ).annotate({
-    identifier:
-      "GetProjectsResponseBodyCase2ProjectsItemDefaultResourceConfigBuildMachineElasticTransition",
-  }) as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemDefaultResourceConfigBuildMachineElasticTransition>;
+  GetProjectsResponseBodyCase1ProjectsItemResourceConfigBuildMachineElasticTransition as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemDefaultResourceConfigBuildMachineElasticTransition>;
 
 export type GetProjectsResponseBodyCase2ProjectsItemDefaultResourceConfigBuildMachineSelection =
   | "elastic"
@@ -26598,15 +24533,7 @@ export interface GetProjectsResponseBodyCase2ProjectsItemDefaultResourceConfigBu
   configuration?: GetProjectsResponseBodyCase2ProjectsItemDefaultResourceConfigBuildQueueConfiguration;
 }
 export const GetProjectsResponseBodyCase2ProjectsItemDefaultResourceConfigBuildQueue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      configuration: S.optional(
-        GetProjectsResponseBodyCase2ProjectsItemDefaultResourceConfigBuildQueueConfiguration,
-      ),
-    }),
-  ).annotate({
-    identifier: "GetProjectsResponseBodyCase2ProjectsItemDefaultResourceConfigBuildQueue",
-  }) as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemDefaultResourceConfigBuildQueue>;
+  GetProjectsResponseBodyCase1ProjectsItemResourceConfigBuildQueue as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemDefaultResourceConfigBuildQueue>;
 
 export type GetProjectsResponseBodyCase2ProjectsItemDefaultResourceConfigFunctionDefaultMemoryType =
   | "performance"
@@ -26752,9 +24679,7 @@ export const GetProjectsResponseBodyCase2ProjectsItemDeploymentPolicyDeploymentS
 export type GetProjectsResponseBodyCase2ProjectsItemDeploymentPolicyDeploymentSourcesItemSourcesList =
   Array<GetProjectsResponseBodyCase2ProjectsItemDeploymentPolicyDeploymentSourcesItemSourcesItem>;
 export const GetProjectsResponseBodyCase2ProjectsItemDeploymentPolicyDeploymentSourcesItemSourcesList =
-  /*@__PURE__*/ S.Array(
-    GetProjectsResponseBodyCase2ProjectsItemDeploymentPolicyDeploymentSourcesItemSourcesItem,
-  ) as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemDeploymentPolicyDeploymentSourcesItemSourcesList>;
+  CreateProjectResponseDeploymentPolicyDeploymentSourcesItemSourcesList as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemDeploymentPolicyDeploymentSourcesItemSourcesList>;
 
 /** `enabled: true` with empty `sources` is deny-all. */
 export interface GetProjectsResponseBodyCase2ProjectsItemDeploymentPolicyDeploymentSourcesItem {
@@ -26798,16 +24723,7 @@ export interface GetProjectsResponseBodyCase2ProjectsItemDeploymentPolicyGitSour
   type: GetProjectsResponseBodyCase2ProjectsItemDeploymentPolicyGitSourcesItemEnvironmentsItemCase0Type;
 }
 export const GetProjectsResponseBodyCase2ProjectsItemDeploymentPolicyGitSourcesItemEnvironmentsItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      target:
-        GetProjectsResponseBodyCase2ProjectsItemDeploymentPolicyGitSourcesItemEnvironmentsItemCase0Target,
-      type: GetProjectsResponseBodyCase2ProjectsItemDeploymentPolicyGitSourcesItemEnvironmentsItemCase0Type,
-    }),
-  ).annotate({
-    identifier:
-      "GetProjectsResponseBodyCase2ProjectsItemDeploymentPolicyGitSourcesItemEnvironmentsItemCase0",
-  }) as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemDeploymentPolicyGitSourcesItemEnvironmentsItemCase0>;
+  GetProjectsResponseBodyCase2ProjectsItemDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase0 as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemDeploymentPolicyGitSourcesItemEnvironmentsItemCase0>;
 
 export type GetProjectsResponseBodyCase2ProjectsItemDeploymentPolicyGitSourcesItemEnvironmentsItemCase1Type =
   "custom";
@@ -26819,15 +24735,7 @@ export interface GetProjectsResponseBodyCase2ProjectsItemDeploymentPolicyGitSour
   type: GetProjectsResponseBodyCase2ProjectsItemDeploymentPolicyGitSourcesItemEnvironmentsItemCase1Type;
 }
 export const GetProjectsResponseBodyCase2ProjectsItemDeploymentPolicyGitSourcesItemEnvironmentsItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      environmentId: S.String,
-      type: GetProjectsResponseBodyCase2ProjectsItemDeploymentPolicyGitSourcesItemEnvironmentsItemCase1Type,
-    }),
-  ).annotate({
-    identifier:
-      "GetProjectsResponseBodyCase2ProjectsItemDeploymentPolicyGitSourcesItemEnvironmentsItemCase1",
-  }) as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemDeploymentPolicyGitSourcesItemEnvironmentsItemCase1>;
+  GetProjectsResponseBodyCase2ProjectsItemDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase1 as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemDeploymentPolicyGitSourcesItemEnvironmentsItemCase1>;
 
 export type GetProjectsResponseBodyCase2ProjectsItemDeploymentPolicyGitSourcesItemEnvironmentsItem =
   | GetProjectsResponseBodyCase2ProjectsItemDeploymentPolicyGitSourcesItemEnvironmentsItemCase0
@@ -27024,14 +24932,7 @@ export interface GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase0
   type: GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase0Type;
 }
 export const GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storeId: S.String,
-      type: GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase0Type,
-    }),
-  ).annotate({
-    identifier: "GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase0",
-  }) as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase0>;
+  GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase0 as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase0>;
 
 export type GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase1Type =
   "redis-rest-api-url";
@@ -27042,14 +24943,7 @@ export interface GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase1
   type: GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase1Type;
 }
 export const GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storeId: S.String,
-      type: GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase1Type,
-    }),
-  ).annotate({
-    identifier: "GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase1",
-  }) as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase1>;
+  GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase0 as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase1>;
 
 export type GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase2Type =
   "redis-rest-api-token";
@@ -27060,14 +24954,7 @@ export interface GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase2
   type: GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase2Type;
 }
 export const GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storeId: S.String,
-      type: GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase2Type,
-    }),
-  ).annotate({
-    identifier: "GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase2",
-  }) as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase2>;
+  GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase0 as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase2>;
 
 export type GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase3Type =
   "redis-rest-api-read-only-token";
@@ -27078,14 +24965,7 @@ export interface GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase3
   type: GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase3Type;
 }
 export const GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase3 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storeId: S.String,
-      type: GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase3Type,
-    }),
-  ).annotate({
-    identifier: "GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase3",
-  }) as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase3>;
+  GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase0 as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase3>;
 
 export type GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase4Type =
   "blob-read-write-token";
@@ -27096,14 +24976,7 @@ export interface GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase4
   type: GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase4Type;
 }
 export const GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase4 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storeId: S.String,
-      type: GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase4Type,
-    }),
-  ).annotate({
-    identifier: "GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase4",
-  }) as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase4>;
+  GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase0 as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase4>;
 
 export type GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase5Type = "blob-store-id";
 export const GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase5Type = S.String;
@@ -27113,14 +24986,7 @@ export interface GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase5
   type: GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase5Type;
 }
 export const GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase5 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storeId: S.String,
-      type: GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase5Type,
-    }),
-  ).annotate({
-    identifier: "GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase5",
-  }) as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase5>;
+  GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase0 as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase5>;
 
 export type GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase6Type =
   "blob-webhook-public-key";
@@ -27131,14 +24997,7 @@ export interface GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase6
   type: GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase6Type;
 }
 export const GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase6 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storeId: S.String,
-      type: GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase6Type,
-    }),
-  ).annotate({
-    identifier: "GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase6",
-  }) as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase6>;
+  GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase0 as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase6>;
 
 export type GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase7Type = "postgres-url";
 export const GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase7Type = S.String;
@@ -27148,14 +25007,7 @@ export interface GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase7
   type: GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase7Type;
 }
 export const GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase7 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storeId: S.String,
-      type: GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase7Type,
-    }),
-  ).annotate({
-    identifier: "GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase7",
-  }) as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase7>;
+  GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase0 as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase7>;
 
 export type GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase8Type =
   "postgres-url-non-pooling";
@@ -27166,14 +25018,7 @@ export interface GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase8
   type: GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase8Type;
 }
 export const GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase8 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storeId: S.String,
-      type: GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase8Type,
-    }),
-  ).annotate({
-    identifier: "GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase8",
-  }) as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase8>;
+  GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase0 as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase8>;
 
 export type GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase9Type =
   "postgres-prisma-url";
@@ -27184,14 +25029,7 @@ export interface GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase9
   type: GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase9Type;
 }
 export const GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase9 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storeId: S.String,
-      type: GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase9Type,
-    }),
-  ).annotate({
-    identifier: "GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase9",
-  }) as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase9>;
+  GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase0 as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase9>;
 
 export type GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase10Type = "postgres-user";
 export const GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase10Type = S.String;
@@ -27201,14 +25039,7 @@ export interface GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase1
   type: GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase10Type;
 }
 export const GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase10 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storeId: S.String,
-      type: GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase10Type,
-    }),
-  ).annotate({
-    identifier: "GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase10",
-  }) as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase10>;
+  GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase0 as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase10>;
 
 export type GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase11Type = "postgres-host";
 export const GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase11Type = S.String;
@@ -27218,14 +25049,7 @@ export interface GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase1
   type: GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase11Type;
 }
 export const GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase11 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storeId: S.String,
-      type: GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase11Type,
-    }),
-  ).annotate({
-    identifier: "GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase11",
-  }) as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase11>;
+  GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase0 as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase11>;
 
 export type GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase12Type =
   "postgres-password";
@@ -27236,14 +25060,7 @@ export interface GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase1
   type: GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase12Type;
 }
 export const GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase12 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storeId: S.String,
-      type: GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase12Type,
-    }),
-  ).annotate({
-    identifier: "GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase12",
-  }) as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase12>;
+  GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase0 as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase12>;
 
 export type GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase13Type =
   "postgres-database";
@@ -27254,14 +25071,7 @@ export interface GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase1
   type: GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase13Type;
 }
 export const GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase13 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storeId: S.String,
-      type: GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase13Type,
-    }),
-  ).annotate({
-    identifier: "GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase13",
-  }) as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase13>;
+  GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase0 as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase13>;
 
 export type GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase14Type =
   "postgres-url-no-ssl";
@@ -27272,14 +25082,7 @@ export interface GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase1
   type: GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase14Type;
 }
 export const GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase14 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storeId: S.String,
-      type: GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase14Type,
-    }),
-  ).annotate({
-    identifier: "GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase14",
-  }) as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase14>;
+  GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase0 as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase14>;
 
 export type GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase15Type =
   "integration-store-secret";
@@ -27293,17 +25096,7 @@ export interface GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase1
   type: GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase15Type;
 }
 export const GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase15 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      integrationConfigurationId: S.String,
-      integrationId: S.String,
-      integrationProductId: S.String,
-      storeId: S.String,
-      type: GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase15Type,
-    }),
-  ).annotate({
-    identifier: "GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase15",
-  }) as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase15>;
+  GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase15 as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase15>;
 
 export type GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase16Type =
   "flags-connection-string";
@@ -27314,14 +25107,7 @@ export interface GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase1
   type: GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase16Type;
 }
 export const GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase16 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      projectId: S.String,
-      type: GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase16Type,
-    }),
-  ).annotate({
-    identifier: "GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase16",
-  }) as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase16>;
+  GetProjectsResponseBodyCase1ProjectsItemEnvItemContentHintCase16 as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase16>;
 
 export type GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHint =
   | GetProjectsResponseBodyCase2ProjectsItemEnvItemContentHintCase0
@@ -27358,14 +25144,7 @@ export interface GetProjectsResponseBodyCase2ProjectsItemEnvItemInternalContentH
   type: GetProjectsResponseBodyCase2ProjectsItemEnvItemInternalContentHintType;
 }
 export const GetProjectsResponseBodyCase2ProjectsItemEnvItemInternalContentHint =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      encryptedValue: S.String,
-      type: GetProjectsResponseBodyCase2ProjectsItemEnvItemInternalContentHintType,
-    }),
-  ).annotate({
-    identifier: "GetProjectsResponseBodyCase2ProjectsItemEnvItemInternalContentHint",
-  }) as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemEnvItemInternalContentHint>;
+  GetProjectsResponseBodyCase1ProjectsItemEnvItemInternalContentHint as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemEnvItemInternalContentHint>;
 
 export type GetProjectsResponseBodyCase2ProjectsItemEnvItemTargetCase0Item =
   | "development"
@@ -27377,9 +25156,8 @@ export const GetProjectsResponseBodyCase2ProjectsItemEnvItemTargetCase0Item = S.
 
 export type GetProjectsResponseBodyCase2ProjectsItemEnvItemTargetCase0List =
   Array<GetProjectsResponseBodyCase2ProjectsItemEnvItemTargetCase0Item>;
-export const GetProjectsResponseBodyCase2ProjectsItemEnvItemTargetCase0List = /*@__PURE__*/ S.Array(
-  GetProjectsResponseBodyCase2ProjectsItemEnvItemTargetCase0Item,
-) as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemEnvItemTargetCase0List>;
+export const GetProjectsResponseBodyCase2ProjectsItemEnvItemTargetCase0List =
+  CreateProjectRequestEnvironmentVariablesItemTargetCase1List as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemEnvItemTargetCase0List>;
 
 export type GetProjectsResponseBodyCase2ProjectsItemEnvItemTargetCase1 =
   | "development"
@@ -27597,21 +25375,8 @@ export interface GetProjectsResponseBodyCase2ProjectsItemGitProviderOptions {
   /** Whether the project requires commits to be signed & verified before deployments will be created. - `true`: require verified commits for this project (explicit override of the team setting). - `false`: do not require verified commits (explicit override of the team setting). - absent: inherit from `team.requireVerifiedCommits`. */
   requireVerifiedCommits?: boolean;
 }
-export const GetProjectsResponseBodyCase2ProjectsItemGitProviderOptions = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      consolidatedGitCommitStatus: S.optional(
-        CreateProjectResponseGitProviderOptionsConsolidatedGitCommitStatus,
-      ),
-      createDeployments:
-        GetProjectsResponseBodyCase2ProjectsItemGitProviderOptionsCreateDeployments,
-      disableRepositoryDispatchEvents: S.optional(S.Boolean),
-      gitCommitStatus: S.optional(S.Boolean),
-      requireVerifiedCommits: S.optional(S.Boolean),
-    }),
-).annotate({
-  identifier: "GetProjectsResponseBodyCase2ProjectsItemGitProviderOptions",
-}) as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemGitProviderOptions>;
+export const GetProjectsResponseBodyCase2ProjectsItemGitProviderOptions =
+  GetProjectsResponseBodyCase1ProjectsItemGitProviderOptions as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemGitProviderOptions>;
 
 export type GetProjectsResponseBodyCase2ProjectsItemInternalRoutesItemCase0 =
   CreateProjectResponseInternalRoutesItemCase0;
@@ -27639,15 +25404,7 @@ export interface GetProjectsResponseBodyCase2ProjectsItemInternalRoutesItemCase1
   value: CreateProjectResponseInternalRoutesItemCase1HasItemCase0Value;
 }
 export const GetProjectsResponseBodyCase2ProjectsItemInternalRoutesItemCase1HasItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: GetProjectsResponseBodyCase2ProjectsItemInternalRoutesItemCase1HasItemCase0Key,
-      type: GetProjectsResponseBodyCase2ProjectsItemInternalRoutesItemCase1HasItemCase0Type,
-      value: CreateProjectResponseInternalRoutesItemCase1HasItemCase0Value,
-    }),
-  ).annotate({
-    identifier: "GetProjectsResponseBodyCase2ProjectsItemInternalRoutesItemCase1HasItemCase0",
-  }) as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemInternalRoutesItemCase1HasItemCase0>;
+  GetProjectsResponseBodyCase0ItemInternalRoutesItemCase1HasItemCase0 as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemInternalRoutesItemCase1HasItemCase0>;
 
 export type GetProjectsResponseBodyCase2ProjectsItemInternalRoutesItemCase1HasItemCase1Type =
   "host";
@@ -27664,14 +25421,7 @@ export interface GetProjectsResponseBodyCase2ProjectsItemInternalRoutesItemCase1
   value: CreateProjectResponseInternalRoutesItemCase1HasItemCase0Value;
 }
 export const GetProjectsResponseBodyCase2ProjectsItemInternalRoutesItemCase1HasItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: GetProjectsResponseBodyCase2ProjectsItemInternalRoutesItemCase1HasItemCase1Type,
-      value: CreateProjectResponseInternalRoutesItemCase1HasItemCase0Value,
-    }),
-  ).annotate({
-    identifier: "GetProjectsResponseBodyCase2ProjectsItemInternalRoutesItemCase1HasItemCase1",
-  }) as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemInternalRoutesItemCase1HasItemCase1>;
+  GetProjectsResponseBodyCase0ItemInternalRoutesItemCase1HasItemCase1 as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemInternalRoutesItemCase1HasItemCase1>;
 
 export type GetProjectsResponseBodyCase2ProjectsItemInternalRoutesItemCase1HasItem =
   | GetProjectsResponseBodyCase2ProjectsItemInternalRoutesItemCase1HasItemCase0
@@ -27695,13 +25445,7 @@ export interface GetProjectsResponseBodyCase2ProjectsItemInternalRoutesItemCase1
   action: GetProjectsResponseBodyCase2ProjectsItemInternalRoutesItemCase1MitigateAction;
 }
 export const GetProjectsResponseBodyCase2ProjectsItemInternalRoutesItemCase1Mitigate =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      action: GetProjectsResponseBodyCase2ProjectsItemInternalRoutesItemCase1MitigateAction,
-    }),
-  ).annotate({
-    identifier: "GetProjectsResponseBodyCase2ProjectsItemInternalRoutesItemCase1Mitigate",
-  }) as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemInternalRoutesItemCase1Mitigate>;
+  GetProjectsResponseBodyCase0ItemInternalRoutesItemCase1Mitigate as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemInternalRoutesItemCase1Mitigate>;
 
 export interface GetProjectsResponseBodyCase2ProjectsItemInternalRoutesItemCase1 {
   has: GetProjectsResponseBodyCase2ProjectsItemInternalRoutesItemCase1HasList;
@@ -27893,14 +25637,7 @@ export interface GetProjectsResponseBodyCase2ProjectsItemLatestDeploymentsItemBr
   type: GetProjectsResponseBodyCase2ProjectsItemLatestDeploymentsItemBranchMatcherType;
 }
 export const GetProjectsResponseBodyCase2ProjectsItemLatestDeploymentsItemBranchMatcher =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pattern: S.String,
-      type: GetProjectsResponseBodyCase2ProjectsItemLatestDeploymentsItemBranchMatcherType,
-    }),
-  ).annotate({
-    identifier: "GetProjectsResponseBodyCase2ProjectsItemLatestDeploymentsItemBranchMatcher",
-  }) as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemLatestDeploymentsItemBranchMatcher>;
+  GetProjectsResponseBodyCase0ItemAliasItemDeploymentBranchMatcher as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemLatestDeploymentsItemBranchMatcher>;
 
 export type GetProjectsResponseBodyCase2ProjectsItemLatestDeploymentsItemBuildsItem =
   CreateProjectResponseAliasItemDeploymentBuildsItem;
@@ -28586,14 +26323,8 @@ export interface GetProjectsResponseBodyCase2ProjectsItemOidcTokenConfig {
   /** - team: `https://oidc.vercel.com/[team_slug]` - global: `https://oidc.vercel.com` */
   issuerMode?: GetProjectsResponseBodyCase2ProjectsItemOidcTokenConfigIssuerMode;
 }
-export const GetProjectsResponseBodyCase2ProjectsItemOidcTokenConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-    issuerMode: S.optional(GetProjectsResponseBodyCase2ProjectsItemOidcTokenConfigIssuerMode),
-  }),
-).annotate({
-  identifier: "GetProjectsResponseBodyCase2ProjectsItemOidcTokenConfig",
-}) as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemOidcTokenConfig>;
+export const GetProjectsResponseBodyCase2ProjectsItemOidcTokenConfig =
+  CreateProjectRequestOidcTokenConfig as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemOidcTokenConfig>;
 
 export type GetProjectsResponseBodyCase2ProjectsItemOptionsAllowlistPathsItem =
   CreateProjectResponseOptionsAllowlistPathsItem;
@@ -28630,14 +26361,8 @@ export interface GetProjectsResponseBodyCase2ProjectsItemPassport {
   connectorId: string;
   deploymentType: GetProjectsResponseBodyCase2ProjectsItemPassportDeploymentType;
 }
-export const GetProjectsResponseBodyCase2ProjectsItemPassport = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    connectorId: S.String,
-    deploymentType: GetProjectsResponseBodyCase2ProjectsItemPassportDeploymentType,
-  }),
-).annotate({
-  identifier: "GetProjectsResponseBodyCase2ProjectsItemPassport",
-}) as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemPassport>;
+export const GetProjectsResponseBodyCase2ProjectsItemPassport =
+  CreateProjectResponsePassport as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemPassport>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetProjectsResponseBodyCase2ProjectsItemPermissionsAccessGroupList = Array<ACLAction>;
@@ -31629,17 +29354,7 @@ export interface GetProjectsResponseBodyCase2ProjectsItemResourceConfigBuildMach
   direction: GetProjectsResponseBodyCase2ProjectsItemResourceConfigBuildMachineElasticTransitionDirection;
 }
 export const GetProjectsResponseBodyCase2ProjectsItemResourceConfigBuildMachineElasticTransition =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      algorithmVersion: S.String,
-      at: S.Number,
-      direction:
-        GetProjectsResponseBodyCase2ProjectsItemResourceConfigBuildMachineElasticTransitionDirection,
-    }),
-  ).annotate({
-    identifier:
-      "GetProjectsResponseBodyCase2ProjectsItemResourceConfigBuildMachineElasticTransition",
-  }) as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemResourceConfigBuildMachineElasticTransition>;
+  GetProjectsResponseBodyCase1ProjectsItemResourceConfigBuildMachineElasticTransition as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemResourceConfigBuildMachineElasticTransition>;
 
 export type GetProjectsResponseBodyCase2ProjectsItemResourceConfigBuildMachineSelection =
   | "elastic"
@@ -31663,15 +29378,7 @@ export interface GetProjectsResponseBodyCase2ProjectsItemResourceConfigBuildQueu
   configuration?: GetProjectsResponseBodyCase2ProjectsItemResourceConfigBuildQueueConfiguration;
 }
 export const GetProjectsResponseBodyCase2ProjectsItemResourceConfigBuildQueue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      configuration: S.optional(
-        GetProjectsResponseBodyCase2ProjectsItemResourceConfigBuildQueueConfiguration,
-      ),
-    }),
-  ).annotate({
-    identifier: "GetProjectsResponseBodyCase2ProjectsItemResourceConfigBuildQueue",
-  }) as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemResourceConfigBuildQueue>;
+  GetProjectsResponseBodyCase1ProjectsItemResourceConfigBuildQueue as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemResourceConfigBuildQueue>;
 
 export type GetProjectsResponseBodyCase2ProjectsItemResourceConfigFunctionDefaultMemoryType =
   | "performance"
@@ -31887,9 +29594,7 @@ export const GetProjectsResponseBodyCase2ProjectsItemSandboxFailoverRegionsItem 
 export type GetProjectsResponseBodyCase2ProjectsItemSandboxFailoverRegionsList =
   Array<GetProjectsResponseBodyCase2ProjectsItemSandboxFailoverRegionsItem>;
 export const GetProjectsResponseBodyCase2ProjectsItemSandboxFailoverRegionsList =
-  /*@__PURE__*/ S.Array(
-    GetProjectsResponseBodyCase2ProjectsItemSandboxFailoverRegionsItem,
-  ) as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemSandboxFailoverRegionsList>;
+  CreateProjectResponseDeploymentPolicyDeploymentSourcesItemSourcesList as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemSandboxFailoverRegionsList>;
 
 export type GetProjectsResponseBodyCase2ProjectsItemSandboxRegion =
   | "arn1"
@@ -31954,14 +29659,7 @@ export interface GetProjectsResponseBodyCase2ProjectsItemSecurityManagedRulesAiB
   active: boolean;
 }
 export const GetProjectsResponseBodyCase2ProjectsItemSecurityManagedRulesAiBots =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      action: S.optional(GetProjectsResponseBodyCase2ProjectsItemSecurityManagedRulesAiBotsAction),
-      active: S.Boolean,
-    }),
-  ).annotate({
-    identifier: "GetProjectsResponseBodyCase2ProjectsItemSecurityManagedRulesAiBots",
-  }) as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemSecurityManagedRulesAiBots>;
+  GetProjectsResponseBodyCase0ItemSecurityManagedRulesBotFilter as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemSecurityManagedRulesAiBots>;
 
 export type GetProjectsResponseBodyCase2ProjectsItemSecurityManagedRulesBotFilterAction =
   | "challenge"
@@ -31974,16 +29672,7 @@ export interface GetProjectsResponseBodyCase2ProjectsItemSecurityManagedRulesBot
   active: boolean;
 }
 export const GetProjectsResponseBodyCase2ProjectsItemSecurityManagedRulesBotFilter =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      action: S.optional(
-        GetProjectsResponseBodyCase2ProjectsItemSecurityManagedRulesBotFilterAction,
-      ),
-      active: S.Boolean,
-    }),
-  ).annotate({
-    identifier: "GetProjectsResponseBodyCase2ProjectsItemSecurityManagedRulesBotFilter",
-  }) as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemSecurityManagedRulesBotFilter>;
+  GetProjectsResponseBodyCase1ProjectsItemSecurityManagedRulesBotFilter as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemSecurityManagedRulesBotFilter>;
 
 export type GetProjectsResponseBodyCase2ProjectsItemSecurityManagedRulesOwaspAction =
   | "challenge"
@@ -31996,14 +29685,7 @@ export interface GetProjectsResponseBodyCase2ProjectsItemSecurityManagedRulesOwa
   active: boolean;
 }
 export const GetProjectsResponseBodyCase2ProjectsItemSecurityManagedRulesOwasp =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      action: S.optional(GetProjectsResponseBodyCase2ProjectsItemSecurityManagedRulesOwaspAction),
-      active: S.Boolean,
-    }),
-  ).annotate({
-    identifier: "GetProjectsResponseBodyCase2ProjectsItemSecurityManagedRulesOwasp",
-  }) as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemSecurityManagedRulesOwasp>;
+  GetProjectsResponseBodyCase0ItemSecurityManagedRulesBotFilter as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemSecurityManagedRulesOwasp>;
 
 export type GetProjectsResponseBodyCase2ProjectsItemSecurityManagedRulesTrafficSourcesAction =
   | "challenge"
@@ -32017,16 +29699,7 @@ export interface GetProjectsResponseBodyCase2ProjectsItemSecurityManagedRulesTra
   active: boolean;
 }
 export const GetProjectsResponseBodyCase2ProjectsItemSecurityManagedRulesTrafficSources =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      action: S.optional(
-        GetProjectsResponseBodyCase2ProjectsItemSecurityManagedRulesTrafficSourcesAction,
-      ),
-      active: S.Boolean,
-    }),
-  ).annotate({
-    identifier: "GetProjectsResponseBodyCase2ProjectsItemSecurityManagedRulesTrafficSources",
-  }) as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemSecurityManagedRulesTrafficSources>;
+  GetProjectsResponseBodyCase1ProjectsItemSecurityManagedRulesBotFilter as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemSecurityManagedRulesTrafficSources>;
 
 export type GetProjectsResponseBodyCase2ProjectsItemSecurityManagedRulesVercelRulesetAction =
   | "challenge"
@@ -32040,16 +29713,7 @@ export interface GetProjectsResponseBodyCase2ProjectsItemSecurityManagedRulesVer
   active: boolean;
 }
 export const GetProjectsResponseBodyCase2ProjectsItemSecurityManagedRulesVercelRuleset =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      action: S.optional(
-        GetProjectsResponseBodyCase2ProjectsItemSecurityManagedRulesVercelRulesetAction,
-      ),
-      active: S.Boolean,
-    }),
-  ).annotate({
-    identifier: "GetProjectsResponseBodyCase2ProjectsItemSecurityManagedRulesVercelRuleset",
-  }) as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemSecurityManagedRulesVercelRuleset>;
+  GetProjectsResponseBodyCase1ProjectsItemSecurityManagedRulesBotFilter as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemSecurityManagedRulesVercelRuleset>;
 
 export interface GetProjectsResponseBodyCase2ProjectsItemSecurityManagedRules {
   ai_bots: GetProjectsResponseBodyCase2ProjectsItemSecurityManagedRulesAiBots;
@@ -32058,18 +29722,8 @@ export interface GetProjectsResponseBodyCase2ProjectsItemSecurityManagedRules {
   traffic_sources: GetProjectsResponseBodyCase2ProjectsItemSecurityManagedRulesTrafficSources;
   vercel_ruleset: GetProjectsResponseBodyCase2ProjectsItemSecurityManagedRulesVercelRuleset;
 }
-export const GetProjectsResponseBodyCase2ProjectsItemSecurityManagedRules = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ai_bots: GetProjectsResponseBodyCase2ProjectsItemSecurityManagedRulesAiBots,
-      bot_filter: GetProjectsResponseBodyCase2ProjectsItemSecurityManagedRulesBotFilter,
-      owasp: GetProjectsResponseBodyCase2ProjectsItemSecurityManagedRulesOwasp,
-      traffic_sources: GetProjectsResponseBodyCase2ProjectsItemSecurityManagedRulesTrafficSources,
-      vercel_ruleset: GetProjectsResponseBodyCase2ProjectsItemSecurityManagedRulesVercelRuleset,
-    }),
-).annotate({
-  identifier: "GetProjectsResponseBodyCase2ProjectsItemSecurityManagedRules",
-}) as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemSecurityManagedRules>;
+export const GetProjectsResponseBodyCase2ProjectsItemSecurityManagedRules =
+  GetProjectsResponseBodyCase1ProjectsItemSecurityManagedRules as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemSecurityManagedRules>;
 
 export type GetProjectsResponseBodyCase2ProjectsItemSecurityRulesetsValueAction =
   | "allow"
@@ -32303,22 +29957,13 @@ export interface GetProjectsResponseBodyCase2ProjectsItemServicesItem {
   /** Service kind (Service.type). Omitted for schemas that do not define one. */
   serviceType?: GetProjectsResponseBodyCase2ProjectsItemServicesItemServiceType;
 }
-export const GetProjectsResponseBodyCase2ProjectsItemServicesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    framework: S.optional(GetProjectsResponseBodyCase2ProjectsItemServicesItemFramework),
-    runtime: S.optional(S.String),
-    serviceName: S.String,
-    serviceType: S.optional(GetProjectsResponseBodyCase2ProjectsItemServicesItemServiceType),
-  }),
-).annotate({
-  identifier: "GetProjectsResponseBodyCase2ProjectsItemServicesItem",
-}) as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemServicesItem>;
+export const GetProjectsResponseBodyCase2ProjectsItemServicesItem =
+  CreateProjectResponseServicesItem as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemServicesItem>;
 
 export type GetProjectsResponseBodyCase2ProjectsItemServicesList =
   Array<GetProjectsResponseBodyCase2ProjectsItemServicesItem>;
-export const GetProjectsResponseBodyCase2ProjectsItemServicesList = /*@__PURE__*/ S.Array(
-  GetProjectsResponseBodyCase2ProjectsItemServicesItem,
-) as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemServicesList>;
+export const GetProjectsResponseBodyCase2ProjectsItemServicesList =
+  CreateProjectResponseServicesList as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemServicesList>;
 
 export type GetProjectsResponseBodyCase2ProjectsItemSkewProtectionAllowedDomainsList =
   Array<string>;
@@ -32358,21 +30003,8 @@ export interface GetProjectsResponseBodyCase2ProjectsItemSsoProtection {
   cve55182MigrationAppliedFrom?: GetProjectsResponseBodyCase2ProjectsItemSsoProtectionCve55182MigrationAppliedFrom | null;
   deploymentType: GetProjectsResponseBodyCase2ProjectsItemSsoProtectionDeploymentType;
 }
-export const GetProjectsResponseBodyCase2ProjectsItemSsoProtection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    april2026SecurityIncidentMigrationAppliedFrom: S.optional(
-      S.NullOr(
-        GetProjectsResponseBodyCase2ProjectsItemSsoProtectionApril2026SecurityIncidentMigrationAppliedFrom,
-      ),
-    ),
-    cve55182MigrationAppliedFrom: S.optional(
-      S.NullOr(GetProjectsResponseBodyCase2ProjectsItemSsoProtectionCve55182MigrationAppliedFrom),
-    ),
-    deploymentType: GetProjectsResponseBodyCase2ProjectsItemSsoProtectionDeploymentType,
-  }),
-).annotate({
-  identifier: "GetProjectsResponseBodyCase2ProjectsItemSsoProtection",
-}) as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemSsoProtection>;
+export const GetProjectsResponseBodyCase2ProjectsItemSsoProtection =
+  GetProjectsResponseBodyCase0ItemSsoProtection as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemSsoProtection>;
 
 export type GetProjectsResponseBodyCase2ProjectsItemStaticIpsRegionsList = Array<string>;
 export const GetProjectsResponseBodyCase2ProjectsItemStaticIpsRegionsList =
@@ -32418,14 +30050,7 @@ export interface GetProjectsResponseBodyCase2ProjectsItemTargetsValueBranchMatch
   type: GetProjectsResponseBodyCase2ProjectsItemTargetsValueBranchMatcherType;
 }
 export const GetProjectsResponseBodyCase2ProjectsItemTargetsValueBranchMatcher =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pattern: S.String,
-      type: GetProjectsResponseBodyCase2ProjectsItemTargetsValueBranchMatcherType,
-    }),
-  ).annotate({
-    identifier: "GetProjectsResponseBodyCase2ProjectsItemTargetsValueBranchMatcher",
-  }) as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemTargetsValueBranchMatcher>;
+  GetProjectsResponseBodyCase0ItemAliasItemDeploymentBranchMatcher as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemTargetsValueBranchMatcher>;
 
 export type GetProjectsResponseBodyCase2ProjectsItemTargetsValueBuildsItem =
   CreateProjectResponseAliasItemDeploymentBuildsItem;
@@ -32720,13 +30345,8 @@ export const GetProjectsResponseBodyCase2ProjectsItemTrustedIpsCase1DeploymentTy
 export interface GetProjectsResponseBodyCase2ProjectsItemTrustedIpsCase1 {
   deploymentType: GetProjectsResponseBodyCase2ProjectsItemTrustedIpsCase1DeploymentType;
 }
-export const GetProjectsResponseBodyCase2ProjectsItemTrustedIpsCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deploymentType: GetProjectsResponseBodyCase2ProjectsItemTrustedIpsCase1DeploymentType,
-  }),
-).annotate({
-  identifier: "GetProjectsResponseBodyCase2ProjectsItemTrustedIpsCase1",
-}) as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemTrustedIpsCase1>;
+export const GetProjectsResponseBodyCase2ProjectsItemTrustedIpsCase1 =
+  CreateProjectRequestSsoProtection as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemTrustedIpsCase1>;
 
 export type GetProjectsResponseBodyCase2ProjectsItemTrustedIps =
   | GetProjectsResponseBodyCase2ProjectsItemTrustedIpsCase0
@@ -33070,17 +30690,8 @@ export interface GetProjectsResponseBodyCase2ProjectsItemUsageStatus {
   /** Per-project throttle, set explicitly for this project (e.g. via the per-project Flat Rate CDN endpoint). */
   throttled?: boolean;
 }
-export const GetProjectsResponseBodyCase2ProjectsItemUsageStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bypassThrottleUntil: S.optional(S.Number),
-    exceededAllowanceUntil: S.optional(S.Number),
-    kind: GetProjectsResponseBodyCase2ProjectsItemUsageStatusKind,
-    teamThrottled: S.optional(S.Boolean),
-    throttled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "GetProjectsResponseBodyCase2ProjectsItemUsageStatus",
-}) as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemUsageStatus>;
+export const GetProjectsResponseBodyCase2ProjectsItemUsageStatus =
+  CreateProjectResponseUsageStatus as any as S.Schema<GetProjectsResponseBodyCase2ProjectsItemUsageStatus>;
 
 export type GetProjectsResponseBodyCase2ProjectsItemWebAnalytics =
   CreateProjectResponseWebAnalytics;
@@ -33801,14 +31412,8 @@ export interface RemoveProjectEnvResponseBodyCase0ItemContentHintCase0 {
   storeId: string;
   type: RemoveProjectEnvResponseBodyCase0ItemContentHintCase0Type;
 }
-export const RemoveProjectEnvResponseBodyCase0ItemContentHintCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: RemoveProjectEnvResponseBodyCase0ItemContentHintCase0Type,
-  }),
-).annotate({
-  identifier: "RemoveProjectEnvResponseBodyCase0ItemContentHintCase0",
-}) as any as S.Schema<RemoveProjectEnvResponseBodyCase0ItemContentHintCase0>;
+export const RemoveProjectEnvResponseBodyCase0ItemContentHintCase0 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<RemoveProjectEnvResponseBodyCase0ItemContentHintCase0>;
 
 export type RemoveProjectEnvResponseBodyCase0ItemContentHintCase1Type = "redis-rest-api-url";
 export const RemoveProjectEnvResponseBodyCase0ItemContentHintCase1Type = S.String;
@@ -33817,14 +31422,8 @@ export interface RemoveProjectEnvResponseBodyCase0ItemContentHintCase1 {
   storeId: string;
   type: RemoveProjectEnvResponseBodyCase0ItemContentHintCase1Type;
 }
-export const RemoveProjectEnvResponseBodyCase0ItemContentHintCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: RemoveProjectEnvResponseBodyCase0ItemContentHintCase1Type,
-  }),
-).annotate({
-  identifier: "RemoveProjectEnvResponseBodyCase0ItemContentHintCase1",
-}) as any as S.Schema<RemoveProjectEnvResponseBodyCase0ItemContentHintCase1>;
+export const RemoveProjectEnvResponseBodyCase0ItemContentHintCase1 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<RemoveProjectEnvResponseBodyCase0ItemContentHintCase1>;
 
 export type RemoveProjectEnvResponseBodyCase0ItemContentHintCase2Type = "redis-rest-api-token";
 export const RemoveProjectEnvResponseBodyCase0ItemContentHintCase2Type = S.String;
@@ -33833,14 +31432,8 @@ export interface RemoveProjectEnvResponseBodyCase0ItemContentHintCase2 {
   storeId: string;
   type: RemoveProjectEnvResponseBodyCase0ItemContentHintCase2Type;
 }
-export const RemoveProjectEnvResponseBodyCase0ItemContentHintCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: RemoveProjectEnvResponseBodyCase0ItemContentHintCase2Type,
-  }),
-).annotate({
-  identifier: "RemoveProjectEnvResponseBodyCase0ItemContentHintCase2",
-}) as any as S.Schema<RemoveProjectEnvResponseBodyCase0ItemContentHintCase2>;
+export const RemoveProjectEnvResponseBodyCase0ItemContentHintCase2 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<RemoveProjectEnvResponseBodyCase0ItemContentHintCase2>;
 
 export type RemoveProjectEnvResponseBodyCase0ItemContentHintCase3Type =
   "redis-rest-api-read-only-token";
@@ -33850,14 +31443,8 @@ export interface RemoveProjectEnvResponseBodyCase0ItemContentHintCase3 {
   storeId: string;
   type: RemoveProjectEnvResponseBodyCase0ItemContentHintCase3Type;
 }
-export const RemoveProjectEnvResponseBodyCase0ItemContentHintCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: RemoveProjectEnvResponseBodyCase0ItemContentHintCase3Type,
-  }),
-).annotate({
-  identifier: "RemoveProjectEnvResponseBodyCase0ItemContentHintCase3",
-}) as any as S.Schema<RemoveProjectEnvResponseBodyCase0ItemContentHintCase3>;
+export const RemoveProjectEnvResponseBodyCase0ItemContentHintCase3 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<RemoveProjectEnvResponseBodyCase0ItemContentHintCase3>;
 
 export type RemoveProjectEnvResponseBodyCase0ItemContentHintCase4Type = "blob-read-write-token";
 export const RemoveProjectEnvResponseBodyCase0ItemContentHintCase4Type = S.String;
@@ -33866,14 +31453,8 @@ export interface RemoveProjectEnvResponseBodyCase0ItemContentHintCase4 {
   storeId: string;
   type: RemoveProjectEnvResponseBodyCase0ItemContentHintCase4Type;
 }
-export const RemoveProjectEnvResponseBodyCase0ItemContentHintCase4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: RemoveProjectEnvResponseBodyCase0ItemContentHintCase4Type,
-  }),
-).annotate({
-  identifier: "RemoveProjectEnvResponseBodyCase0ItemContentHintCase4",
-}) as any as S.Schema<RemoveProjectEnvResponseBodyCase0ItemContentHintCase4>;
+export const RemoveProjectEnvResponseBodyCase0ItemContentHintCase4 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<RemoveProjectEnvResponseBodyCase0ItemContentHintCase4>;
 
 export type RemoveProjectEnvResponseBodyCase0ItemContentHintCase5Type = "blob-store-id";
 export const RemoveProjectEnvResponseBodyCase0ItemContentHintCase5Type = S.String;
@@ -33882,14 +31463,8 @@ export interface RemoveProjectEnvResponseBodyCase0ItemContentHintCase5 {
   storeId: string;
   type: RemoveProjectEnvResponseBodyCase0ItemContentHintCase5Type;
 }
-export const RemoveProjectEnvResponseBodyCase0ItemContentHintCase5 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: RemoveProjectEnvResponseBodyCase0ItemContentHintCase5Type,
-  }),
-).annotate({
-  identifier: "RemoveProjectEnvResponseBodyCase0ItemContentHintCase5",
-}) as any as S.Schema<RemoveProjectEnvResponseBodyCase0ItemContentHintCase5>;
+export const RemoveProjectEnvResponseBodyCase0ItemContentHintCase5 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<RemoveProjectEnvResponseBodyCase0ItemContentHintCase5>;
 
 export type RemoveProjectEnvResponseBodyCase0ItemContentHintCase6Type = "blob-webhook-public-key";
 export const RemoveProjectEnvResponseBodyCase0ItemContentHintCase6Type = S.String;
@@ -33898,14 +31473,8 @@ export interface RemoveProjectEnvResponseBodyCase0ItemContentHintCase6 {
   storeId: string;
   type: RemoveProjectEnvResponseBodyCase0ItemContentHintCase6Type;
 }
-export const RemoveProjectEnvResponseBodyCase0ItemContentHintCase6 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: RemoveProjectEnvResponseBodyCase0ItemContentHintCase6Type,
-  }),
-).annotate({
-  identifier: "RemoveProjectEnvResponseBodyCase0ItemContentHintCase6",
-}) as any as S.Schema<RemoveProjectEnvResponseBodyCase0ItemContentHintCase6>;
+export const RemoveProjectEnvResponseBodyCase0ItemContentHintCase6 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<RemoveProjectEnvResponseBodyCase0ItemContentHintCase6>;
 
 export type RemoveProjectEnvResponseBodyCase0ItemContentHintCase7Type = "postgres-url";
 export const RemoveProjectEnvResponseBodyCase0ItemContentHintCase7Type = S.String;
@@ -33914,14 +31483,8 @@ export interface RemoveProjectEnvResponseBodyCase0ItemContentHintCase7 {
   storeId: string;
   type: RemoveProjectEnvResponseBodyCase0ItemContentHintCase7Type;
 }
-export const RemoveProjectEnvResponseBodyCase0ItemContentHintCase7 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: RemoveProjectEnvResponseBodyCase0ItemContentHintCase7Type,
-  }),
-).annotate({
-  identifier: "RemoveProjectEnvResponseBodyCase0ItemContentHintCase7",
-}) as any as S.Schema<RemoveProjectEnvResponseBodyCase0ItemContentHintCase7>;
+export const RemoveProjectEnvResponseBodyCase0ItemContentHintCase7 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<RemoveProjectEnvResponseBodyCase0ItemContentHintCase7>;
 
 export type RemoveProjectEnvResponseBodyCase0ItemContentHintCase8Type = "postgres-url-non-pooling";
 export const RemoveProjectEnvResponseBodyCase0ItemContentHintCase8Type = S.String;
@@ -33930,14 +31493,8 @@ export interface RemoveProjectEnvResponseBodyCase0ItemContentHintCase8 {
   storeId: string;
   type: RemoveProjectEnvResponseBodyCase0ItemContentHintCase8Type;
 }
-export const RemoveProjectEnvResponseBodyCase0ItemContentHintCase8 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: RemoveProjectEnvResponseBodyCase0ItemContentHintCase8Type,
-  }),
-).annotate({
-  identifier: "RemoveProjectEnvResponseBodyCase0ItemContentHintCase8",
-}) as any as S.Schema<RemoveProjectEnvResponseBodyCase0ItemContentHintCase8>;
+export const RemoveProjectEnvResponseBodyCase0ItemContentHintCase8 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<RemoveProjectEnvResponseBodyCase0ItemContentHintCase8>;
 
 export type RemoveProjectEnvResponseBodyCase0ItemContentHintCase9Type = "postgres-prisma-url";
 export const RemoveProjectEnvResponseBodyCase0ItemContentHintCase9Type = S.String;
@@ -33946,14 +31503,8 @@ export interface RemoveProjectEnvResponseBodyCase0ItemContentHintCase9 {
   storeId: string;
   type: RemoveProjectEnvResponseBodyCase0ItemContentHintCase9Type;
 }
-export const RemoveProjectEnvResponseBodyCase0ItemContentHintCase9 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: RemoveProjectEnvResponseBodyCase0ItemContentHintCase9Type,
-  }),
-).annotate({
-  identifier: "RemoveProjectEnvResponseBodyCase0ItemContentHintCase9",
-}) as any as S.Schema<RemoveProjectEnvResponseBodyCase0ItemContentHintCase9>;
+export const RemoveProjectEnvResponseBodyCase0ItemContentHintCase9 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<RemoveProjectEnvResponseBodyCase0ItemContentHintCase9>;
 
 export type RemoveProjectEnvResponseBodyCase0ItemContentHintCase10Type = "postgres-user";
 export const RemoveProjectEnvResponseBodyCase0ItemContentHintCase10Type = S.String;
@@ -33962,14 +31513,8 @@ export interface RemoveProjectEnvResponseBodyCase0ItemContentHintCase10 {
   storeId: string;
   type: RemoveProjectEnvResponseBodyCase0ItemContentHintCase10Type;
 }
-export const RemoveProjectEnvResponseBodyCase0ItemContentHintCase10 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: RemoveProjectEnvResponseBodyCase0ItemContentHintCase10Type,
-  }),
-).annotate({
-  identifier: "RemoveProjectEnvResponseBodyCase0ItemContentHintCase10",
-}) as any as S.Schema<RemoveProjectEnvResponseBodyCase0ItemContentHintCase10>;
+export const RemoveProjectEnvResponseBodyCase0ItemContentHintCase10 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<RemoveProjectEnvResponseBodyCase0ItemContentHintCase10>;
 
 export type RemoveProjectEnvResponseBodyCase0ItemContentHintCase11Type = "postgres-host";
 export const RemoveProjectEnvResponseBodyCase0ItemContentHintCase11Type = S.String;
@@ -33978,14 +31523,8 @@ export interface RemoveProjectEnvResponseBodyCase0ItemContentHintCase11 {
   storeId: string;
   type: RemoveProjectEnvResponseBodyCase0ItemContentHintCase11Type;
 }
-export const RemoveProjectEnvResponseBodyCase0ItemContentHintCase11 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: RemoveProjectEnvResponseBodyCase0ItemContentHintCase11Type,
-  }),
-).annotate({
-  identifier: "RemoveProjectEnvResponseBodyCase0ItemContentHintCase11",
-}) as any as S.Schema<RemoveProjectEnvResponseBodyCase0ItemContentHintCase11>;
+export const RemoveProjectEnvResponseBodyCase0ItemContentHintCase11 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<RemoveProjectEnvResponseBodyCase0ItemContentHintCase11>;
 
 export type RemoveProjectEnvResponseBodyCase0ItemContentHintCase12Type = "postgres-password";
 export const RemoveProjectEnvResponseBodyCase0ItemContentHintCase12Type = S.String;
@@ -33994,14 +31533,8 @@ export interface RemoveProjectEnvResponseBodyCase0ItemContentHintCase12 {
   storeId: string;
   type: RemoveProjectEnvResponseBodyCase0ItemContentHintCase12Type;
 }
-export const RemoveProjectEnvResponseBodyCase0ItemContentHintCase12 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: RemoveProjectEnvResponseBodyCase0ItemContentHintCase12Type,
-  }),
-).annotate({
-  identifier: "RemoveProjectEnvResponseBodyCase0ItemContentHintCase12",
-}) as any as S.Schema<RemoveProjectEnvResponseBodyCase0ItemContentHintCase12>;
+export const RemoveProjectEnvResponseBodyCase0ItemContentHintCase12 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<RemoveProjectEnvResponseBodyCase0ItemContentHintCase12>;
 
 export type RemoveProjectEnvResponseBodyCase0ItemContentHintCase13Type = "postgres-database";
 export const RemoveProjectEnvResponseBodyCase0ItemContentHintCase13Type = S.String;
@@ -34010,14 +31543,8 @@ export interface RemoveProjectEnvResponseBodyCase0ItemContentHintCase13 {
   storeId: string;
   type: RemoveProjectEnvResponseBodyCase0ItemContentHintCase13Type;
 }
-export const RemoveProjectEnvResponseBodyCase0ItemContentHintCase13 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: RemoveProjectEnvResponseBodyCase0ItemContentHintCase13Type,
-  }),
-).annotate({
-  identifier: "RemoveProjectEnvResponseBodyCase0ItemContentHintCase13",
-}) as any as S.Schema<RemoveProjectEnvResponseBodyCase0ItemContentHintCase13>;
+export const RemoveProjectEnvResponseBodyCase0ItemContentHintCase13 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<RemoveProjectEnvResponseBodyCase0ItemContentHintCase13>;
 
 export type RemoveProjectEnvResponseBodyCase0ItemContentHintCase14Type = "postgres-url-no-ssl";
 export const RemoveProjectEnvResponseBodyCase0ItemContentHintCase14Type = S.String;
@@ -34026,14 +31553,8 @@ export interface RemoveProjectEnvResponseBodyCase0ItemContentHintCase14 {
   storeId: string;
   type: RemoveProjectEnvResponseBodyCase0ItemContentHintCase14Type;
 }
-export const RemoveProjectEnvResponseBodyCase0ItemContentHintCase14 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: RemoveProjectEnvResponseBodyCase0ItemContentHintCase14Type,
-  }),
-).annotate({
-  identifier: "RemoveProjectEnvResponseBodyCase0ItemContentHintCase14",
-}) as any as S.Schema<RemoveProjectEnvResponseBodyCase0ItemContentHintCase14>;
+export const RemoveProjectEnvResponseBodyCase0ItemContentHintCase14 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<RemoveProjectEnvResponseBodyCase0ItemContentHintCase14>;
 
 export type RemoveProjectEnvResponseBodyCase0ItemContentHintCase15Type = "integration-store-secret";
 export const RemoveProjectEnvResponseBodyCase0ItemContentHintCase15Type = S.String;
@@ -34045,17 +31566,8 @@ export interface RemoveProjectEnvResponseBodyCase0ItemContentHintCase15 {
   storeId: string;
   type: RemoveProjectEnvResponseBodyCase0ItemContentHintCase15Type;
 }
-export const RemoveProjectEnvResponseBodyCase0ItemContentHintCase15 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    integrationConfigurationId: S.String,
-    integrationId: S.String,
-    integrationProductId: S.String,
-    storeId: S.String,
-    type: RemoveProjectEnvResponseBodyCase0ItemContentHintCase15Type,
-  }),
-).annotate({
-  identifier: "RemoveProjectEnvResponseBodyCase0ItemContentHintCase15",
-}) as any as S.Schema<RemoveProjectEnvResponseBodyCase0ItemContentHintCase15>;
+export const RemoveProjectEnvResponseBodyCase0ItemContentHintCase15 =
+  CreateProjectResponseEnvItemContentHintCase15 as any as S.Schema<RemoveProjectEnvResponseBodyCase0ItemContentHintCase15>;
 
 export type RemoveProjectEnvResponseBodyCase0ItemContentHintCase16Type = "flags-connection-string";
 export const RemoveProjectEnvResponseBodyCase0ItemContentHintCase16Type = S.String;
@@ -34064,14 +31576,8 @@ export interface RemoveProjectEnvResponseBodyCase0ItemContentHintCase16 {
   projectId: string;
   type: RemoveProjectEnvResponseBodyCase0ItemContentHintCase16Type;
 }
-export const RemoveProjectEnvResponseBodyCase0ItemContentHintCase16 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    projectId: S.String,
-    type: RemoveProjectEnvResponseBodyCase0ItemContentHintCase16Type,
-  }),
-).annotate({
-  identifier: "RemoveProjectEnvResponseBodyCase0ItemContentHintCase16",
-}) as any as S.Schema<RemoveProjectEnvResponseBodyCase0ItemContentHintCase16>;
+export const RemoveProjectEnvResponseBodyCase0ItemContentHintCase16 =
+  CreateProjectResponseEnvItemContentHintCase16 as any as S.Schema<RemoveProjectEnvResponseBodyCase0ItemContentHintCase16>;
 
 export type RemoveProjectEnvResponseBodyCase0ItemContentHint =
   | RemoveProjectEnvResponseBodyCase0ItemContentHintCase0
@@ -34107,15 +31613,8 @@ export interface RemoveProjectEnvResponseBodyCase0ItemInternalContentHint {
   encryptedValue: string;
   type: RemoveProjectEnvResponseBodyCase0ItemInternalContentHintType;
 }
-export const RemoveProjectEnvResponseBodyCase0ItemInternalContentHint = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      encryptedValue: S.String,
-      type: RemoveProjectEnvResponseBodyCase0ItemInternalContentHintType,
-    }),
-).annotate({
-  identifier: "RemoveProjectEnvResponseBodyCase0ItemInternalContentHint",
-}) as any as S.Schema<RemoveProjectEnvResponseBodyCase0ItemInternalContentHint>;
+export const RemoveProjectEnvResponseBodyCase0ItemInternalContentHint =
+  CreateProjectEnvResponseCreatedCase1ItemInternalContentHint as any as S.Schema<RemoveProjectEnvResponseBodyCase0ItemInternalContentHint>;
 
 export type RemoveProjectEnvResponseBodyCase0ItemTargetCase0Item =
   | "development"
@@ -34127,9 +31626,8 @@ export const RemoveProjectEnvResponseBodyCase0ItemTargetCase0Item = S.String;
 
 export type RemoveProjectEnvResponseBodyCase0ItemTargetCase0List =
   Array<RemoveProjectEnvResponseBodyCase0ItemTargetCase0Item>;
-export const RemoveProjectEnvResponseBodyCase0ItemTargetCase0List = /*@__PURE__*/ S.Array(
-  RemoveProjectEnvResponseBodyCase0ItemTargetCase0Item,
-) as any as S.Schema<RemoveProjectEnvResponseBodyCase0ItemTargetCase0List>;
+export const RemoveProjectEnvResponseBodyCase0ItemTargetCase0List =
+  CreateProjectRequestEnvironmentVariablesItemTargetCase1List as any as S.Schema<RemoveProjectEnvResponseBodyCase0ItemTargetCase0List>;
 
 export type RemoveProjectEnvResponseBodyCase0ItemTargetCase1 =
   | "production"
@@ -34225,14 +31723,8 @@ export interface RemoveProjectEnvResponseBodyCase1ContentHintCase0 {
   storeId: string;
   type: RemoveProjectEnvResponseBodyCase1ContentHintCase0Type;
 }
-export const RemoveProjectEnvResponseBodyCase1ContentHintCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: RemoveProjectEnvResponseBodyCase1ContentHintCase0Type,
-  }),
-).annotate({
-  identifier: "RemoveProjectEnvResponseBodyCase1ContentHintCase0",
-}) as any as S.Schema<RemoveProjectEnvResponseBodyCase1ContentHintCase0>;
+export const RemoveProjectEnvResponseBodyCase1ContentHintCase0 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<RemoveProjectEnvResponseBodyCase1ContentHintCase0>;
 
 export type RemoveProjectEnvResponseBodyCase1ContentHintCase1Type = "redis-rest-api-url";
 export const RemoveProjectEnvResponseBodyCase1ContentHintCase1Type = S.String;
@@ -34241,14 +31733,8 @@ export interface RemoveProjectEnvResponseBodyCase1ContentHintCase1 {
   storeId: string;
   type: RemoveProjectEnvResponseBodyCase1ContentHintCase1Type;
 }
-export const RemoveProjectEnvResponseBodyCase1ContentHintCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: RemoveProjectEnvResponseBodyCase1ContentHintCase1Type,
-  }),
-).annotate({
-  identifier: "RemoveProjectEnvResponseBodyCase1ContentHintCase1",
-}) as any as S.Schema<RemoveProjectEnvResponseBodyCase1ContentHintCase1>;
+export const RemoveProjectEnvResponseBodyCase1ContentHintCase1 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<RemoveProjectEnvResponseBodyCase1ContentHintCase1>;
 
 export type RemoveProjectEnvResponseBodyCase1ContentHintCase2Type = "redis-rest-api-token";
 export const RemoveProjectEnvResponseBodyCase1ContentHintCase2Type = S.String;
@@ -34257,14 +31743,8 @@ export interface RemoveProjectEnvResponseBodyCase1ContentHintCase2 {
   storeId: string;
   type: RemoveProjectEnvResponseBodyCase1ContentHintCase2Type;
 }
-export const RemoveProjectEnvResponseBodyCase1ContentHintCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: RemoveProjectEnvResponseBodyCase1ContentHintCase2Type,
-  }),
-).annotate({
-  identifier: "RemoveProjectEnvResponseBodyCase1ContentHintCase2",
-}) as any as S.Schema<RemoveProjectEnvResponseBodyCase1ContentHintCase2>;
+export const RemoveProjectEnvResponseBodyCase1ContentHintCase2 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<RemoveProjectEnvResponseBodyCase1ContentHintCase2>;
 
 export type RemoveProjectEnvResponseBodyCase1ContentHintCase3Type =
   "redis-rest-api-read-only-token";
@@ -34274,14 +31754,8 @@ export interface RemoveProjectEnvResponseBodyCase1ContentHintCase3 {
   storeId: string;
   type: RemoveProjectEnvResponseBodyCase1ContentHintCase3Type;
 }
-export const RemoveProjectEnvResponseBodyCase1ContentHintCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: RemoveProjectEnvResponseBodyCase1ContentHintCase3Type,
-  }),
-).annotate({
-  identifier: "RemoveProjectEnvResponseBodyCase1ContentHintCase3",
-}) as any as S.Schema<RemoveProjectEnvResponseBodyCase1ContentHintCase3>;
+export const RemoveProjectEnvResponseBodyCase1ContentHintCase3 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<RemoveProjectEnvResponseBodyCase1ContentHintCase3>;
 
 export type RemoveProjectEnvResponseBodyCase1ContentHintCase4Type = "blob-read-write-token";
 export const RemoveProjectEnvResponseBodyCase1ContentHintCase4Type = S.String;
@@ -34290,14 +31764,8 @@ export interface RemoveProjectEnvResponseBodyCase1ContentHintCase4 {
   storeId: string;
   type: RemoveProjectEnvResponseBodyCase1ContentHintCase4Type;
 }
-export const RemoveProjectEnvResponseBodyCase1ContentHintCase4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: RemoveProjectEnvResponseBodyCase1ContentHintCase4Type,
-  }),
-).annotate({
-  identifier: "RemoveProjectEnvResponseBodyCase1ContentHintCase4",
-}) as any as S.Schema<RemoveProjectEnvResponseBodyCase1ContentHintCase4>;
+export const RemoveProjectEnvResponseBodyCase1ContentHintCase4 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<RemoveProjectEnvResponseBodyCase1ContentHintCase4>;
 
 export type RemoveProjectEnvResponseBodyCase1ContentHintCase5Type = "blob-store-id";
 export const RemoveProjectEnvResponseBodyCase1ContentHintCase5Type = S.String;
@@ -34306,14 +31774,8 @@ export interface RemoveProjectEnvResponseBodyCase1ContentHintCase5 {
   storeId: string;
   type: RemoveProjectEnvResponseBodyCase1ContentHintCase5Type;
 }
-export const RemoveProjectEnvResponseBodyCase1ContentHintCase5 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: RemoveProjectEnvResponseBodyCase1ContentHintCase5Type,
-  }),
-).annotate({
-  identifier: "RemoveProjectEnvResponseBodyCase1ContentHintCase5",
-}) as any as S.Schema<RemoveProjectEnvResponseBodyCase1ContentHintCase5>;
+export const RemoveProjectEnvResponseBodyCase1ContentHintCase5 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<RemoveProjectEnvResponseBodyCase1ContentHintCase5>;
 
 export type RemoveProjectEnvResponseBodyCase1ContentHintCase6Type = "blob-webhook-public-key";
 export const RemoveProjectEnvResponseBodyCase1ContentHintCase6Type = S.String;
@@ -34322,14 +31784,8 @@ export interface RemoveProjectEnvResponseBodyCase1ContentHintCase6 {
   storeId: string;
   type: RemoveProjectEnvResponseBodyCase1ContentHintCase6Type;
 }
-export const RemoveProjectEnvResponseBodyCase1ContentHintCase6 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: RemoveProjectEnvResponseBodyCase1ContentHintCase6Type,
-  }),
-).annotate({
-  identifier: "RemoveProjectEnvResponseBodyCase1ContentHintCase6",
-}) as any as S.Schema<RemoveProjectEnvResponseBodyCase1ContentHintCase6>;
+export const RemoveProjectEnvResponseBodyCase1ContentHintCase6 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<RemoveProjectEnvResponseBodyCase1ContentHintCase6>;
 
 export type RemoveProjectEnvResponseBodyCase1ContentHintCase7Type = "postgres-url";
 export const RemoveProjectEnvResponseBodyCase1ContentHintCase7Type = S.String;
@@ -34338,14 +31794,8 @@ export interface RemoveProjectEnvResponseBodyCase1ContentHintCase7 {
   storeId: string;
   type: RemoveProjectEnvResponseBodyCase1ContentHintCase7Type;
 }
-export const RemoveProjectEnvResponseBodyCase1ContentHintCase7 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: RemoveProjectEnvResponseBodyCase1ContentHintCase7Type,
-  }),
-).annotate({
-  identifier: "RemoveProjectEnvResponseBodyCase1ContentHintCase7",
-}) as any as S.Schema<RemoveProjectEnvResponseBodyCase1ContentHintCase7>;
+export const RemoveProjectEnvResponseBodyCase1ContentHintCase7 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<RemoveProjectEnvResponseBodyCase1ContentHintCase7>;
 
 export type RemoveProjectEnvResponseBodyCase1ContentHintCase8Type = "postgres-url-non-pooling";
 export const RemoveProjectEnvResponseBodyCase1ContentHintCase8Type = S.String;
@@ -34354,14 +31804,8 @@ export interface RemoveProjectEnvResponseBodyCase1ContentHintCase8 {
   storeId: string;
   type: RemoveProjectEnvResponseBodyCase1ContentHintCase8Type;
 }
-export const RemoveProjectEnvResponseBodyCase1ContentHintCase8 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: RemoveProjectEnvResponseBodyCase1ContentHintCase8Type,
-  }),
-).annotate({
-  identifier: "RemoveProjectEnvResponseBodyCase1ContentHintCase8",
-}) as any as S.Schema<RemoveProjectEnvResponseBodyCase1ContentHintCase8>;
+export const RemoveProjectEnvResponseBodyCase1ContentHintCase8 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<RemoveProjectEnvResponseBodyCase1ContentHintCase8>;
 
 export type RemoveProjectEnvResponseBodyCase1ContentHintCase9Type = "postgres-prisma-url";
 export const RemoveProjectEnvResponseBodyCase1ContentHintCase9Type = S.String;
@@ -34370,14 +31814,8 @@ export interface RemoveProjectEnvResponseBodyCase1ContentHintCase9 {
   storeId: string;
   type: RemoveProjectEnvResponseBodyCase1ContentHintCase9Type;
 }
-export const RemoveProjectEnvResponseBodyCase1ContentHintCase9 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: RemoveProjectEnvResponseBodyCase1ContentHintCase9Type,
-  }),
-).annotate({
-  identifier: "RemoveProjectEnvResponseBodyCase1ContentHintCase9",
-}) as any as S.Schema<RemoveProjectEnvResponseBodyCase1ContentHintCase9>;
+export const RemoveProjectEnvResponseBodyCase1ContentHintCase9 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<RemoveProjectEnvResponseBodyCase1ContentHintCase9>;
 
 export type RemoveProjectEnvResponseBodyCase1ContentHintCase10Type = "postgres-user";
 export const RemoveProjectEnvResponseBodyCase1ContentHintCase10Type = S.String;
@@ -34386,14 +31824,8 @@ export interface RemoveProjectEnvResponseBodyCase1ContentHintCase10 {
   storeId: string;
   type: RemoveProjectEnvResponseBodyCase1ContentHintCase10Type;
 }
-export const RemoveProjectEnvResponseBodyCase1ContentHintCase10 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: RemoveProjectEnvResponseBodyCase1ContentHintCase10Type,
-  }),
-).annotate({
-  identifier: "RemoveProjectEnvResponseBodyCase1ContentHintCase10",
-}) as any as S.Schema<RemoveProjectEnvResponseBodyCase1ContentHintCase10>;
+export const RemoveProjectEnvResponseBodyCase1ContentHintCase10 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<RemoveProjectEnvResponseBodyCase1ContentHintCase10>;
 
 export type RemoveProjectEnvResponseBodyCase1ContentHintCase11Type = "postgres-host";
 export const RemoveProjectEnvResponseBodyCase1ContentHintCase11Type = S.String;
@@ -34402,14 +31834,8 @@ export interface RemoveProjectEnvResponseBodyCase1ContentHintCase11 {
   storeId: string;
   type: RemoveProjectEnvResponseBodyCase1ContentHintCase11Type;
 }
-export const RemoveProjectEnvResponseBodyCase1ContentHintCase11 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: RemoveProjectEnvResponseBodyCase1ContentHintCase11Type,
-  }),
-).annotate({
-  identifier: "RemoveProjectEnvResponseBodyCase1ContentHintCase11",
-}) as any as S.Schema<RemoveProjectEnvResponseBodyCase1ContentHintCase11>;
+export const RemoveProjectEnvResponseBodyCase1ContentHintCase11 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<RemoveProjectEnvResponseBodyCase1ContentHintCase11>;
 
 export type RemoveProjectEnvResponseBodyCase1ContentHintCase12Type = "postgres-password";
 export const RemoveProjectEnvResponseBodyCase1ContentHintCase12Type = S.String;
@@ -34418,14 +31844,8 @@ export interface RemoveProjectEnvResponseBodyCase1ContentHintCase12 {
   storeId: string;
   type: RemoveProjectEnvResponseBodyCase1ContentHintCase12Type;
 }
-export const RemoveProjectEnvResponseBodyCase1ContentHintCase12 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: RemoveProjectEnvResponseBodyCase1ContentHintCase12Type,
-  }),
-).annotate({
-  identifier: "RemoveProjectEnvResponseBodyCase1ContentHintCase12",
-}) as any as S.Schema<RemoveProjectEnvResponseBodyCase1ContentHintCase12>;
+export const RemoveProjectEnvResponseBodyCase1ContentHintCase12 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<RemoveProjectEnvResponseBodyCase1ContentHintCase12>;
 
 export type RemoveProjectEnvResponseBodyCase1ContentHintCase13Type = "postgres-database";
 export const RemoveProjectEnvResponseBodyCase1ContentHintCase13Type = S.String;
@@ -34434,14 +31854,8 @@ export interface RemoveProjectEnvResponseBodyCase1ContentHintCase13 {
   storeId: string;
   type: RemoveProjectEnvResponseBodyCase1ContentHintCase13Type;
 }
-export const RemoveProjectEnvResponseBodyCase1ContentHintCase13 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: RemoveProjectEnvResponseBodyCase1ContentHintCase13Type,
-  }),
-).annotate({
-  identifier: "RemoveProjectEnvResponseBodyCase1ContentHintCase13",
-}) as any as S.Schema<RemoveProjectEnvResponseBodyCase1ContentHintCase13>;
+export const RemoveProjectEnvResponseBodyCase1ContentHintCase13 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<RemoveProjectEnvResponseBodyCase1ContentHintCase13>;
 
 export type RemoveProjectEnvResponseBodyCase1ContentHintCase14Type = "postgres-url-no-ssl";
 export const RemoveProjectEnvResponseBodyCase1ContentHintCase14Type = S.String;
@@ -34450,14 +31864,8 @@ export interface RemoveProjectEnvResponseBodyCase1ContentHintCase14 {
   storeId: string;
   type: RemoveProjectEnvResponseBodyCase1ContentHintCase14Type;
 }
-export const RemoveProjectEnvResponseBodyCase1ContentHintCase14 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: RemoveProjectEnvResponseBodyCase1ContentHintCase14Type,
-  }),
-).annotate({
-  identifier: "RemoveProjectEnvResponseBodyCase1ContentHintCase14",
-}) as any as S.Schema<RemoveProjectEnvResponseBodyCase1ContentHintCase14>;
+export const RemoveProjectEnvResponseBodyCase1ContentHintCase14 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<RemoveProjectEnvResponseBodyCase1ContentHintCase14>;
 
 export type RemoveProjectEnvResponseBodyCase1ContentHintCase15Type = "integration-store-secret";
 export const RemoveProjectEnvResponseBodyCase1ContentHintCase15Type = S.String;
@@ -34469,17 +31877,8 @@ export interface RemoveProjectEnvResponseBodyCase1ContentHintCase15 {
   storeId: string;
   type: RemoveProjectEnvResponseBodyCase1ContentHintCase15Type;
 }
-export const RemoveProjectEnvResponseBodyCase1ContentHintCase15 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    integrationConfigurationId: S.String,
-    integrationId: S.String,
-    integrationProductId: S.String,
-    storeId: S.String,
-    type: RemoveProjectEnvResponseBodyCase1ContentHintCase15Type,
-  }),
-).annotate({
-  identifier: "RemoveProjectEnvResponseBodyCase1ContentHintCase15",
-}) as any as S.Schema<RemoveProjectEnvResponseBodyCase1ContentHintCase15>;
+export const RemoveProjectEnvResponseBodyCase1ContentHintCase15 =
+  CreateProjectResponseEnvItemContentHintCase15 as any as S.Schema<RemoveProjectEnvResponseBodyCase1ContentHintCase15>;
 
 export type RemoveProjectEnvResponseBodyCase1ContentHintCase16Type = "flags-connection-string";
 export const RemoveProjectEnvResponseBodyCase1ContentHintCase16Type = S.String;
@@ -34488,14 +31887,8 @@ export interface RemoveProjectEnvResponseBodyCase1ContentHintCase16 {
   projectId: string;
   type: RemoveProjectEnvResponseBodyCase1ContentHintCase16Type;
 }
-export const RemoveProjectEnvResponseBodyCase1ContentHintCase16 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    projectId: S.String,
-    type: RemoveProjectEnvResponseBodyCase1ContentHintCase16Type,
-  }),
-).annotate({
-  identifier: "RemoveProjectEnvResponseBodyCase1ContentHintCase16",
-}) as any as S.Schema<RemoveProjectEnvResponseBodyCase1ContentHintCase16>;
+export const RemoveProjectEnvResponseBodyCase1ContentHintCase16 =
+  CreateProjectResponseEnvItemContentHintCase16 as any as S.Schema<RemoveProjectEnvResponseBodyCase1ContentHintCase16>;
 
 export type RemoveProjectEnvResponseBodyCase1ContentHint =
   | RemoveProjectEnvResponseBodyCase1ContentHintCase0
@@ -34531,14 +31924,8 @@ export interface RemoveProjectEnvResponseBodyCase1InternalContentHint {
   encryptedValue: string;
   type: RemoveProjectEnvResponseBodyCase1InternalContentHintType;
 }
-export const RemoveProjectEnvResponseBodyCase1InternalContentHint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    encryptedValue: S.String,
-    type: RemoveProjectEnvResponseBodyCase1InternalContentHintType,
-  }),
-).annotate({
-  identifier: "RemoveProjectEnvResponseBodyCase1InternalContentHint",
-}) as any as S.Schema<RemoveProjectEnvResponseBodyCase1InternalContentHint>;
+export const RemoveProjectEnvResponseBodyCase1InternalContentHint =
+  CreateProjectResponseEnvItemInternalContentHint as any as S.Schema<RemoveProjectEnvResponseBodyCase1InternalContentHint>;
 
 export type RemoveProjectEnvResponseBodyCase1TargetCase0Item =
   | "development"
@@ -34550,9 +31937,8 @@ export const RemoveProjectEnvResponseBodyCase1TargetCase0Item = S.String;
 
 export type RemoveProjectEnvResponseBodyCase1TargetCase0List =
   Array<RemoveProjectEnvResponseBodyCase1TargetCase0Item>;
-export const RemoveProjectEnvResponseBodyCase1TargetCase0List = /*@__PURE__*/ S.Array(
-  RemoveProjectEnvResponseBodyCase1TargetCase0Item,
-) as any as S.Schema<RemoveProjectEnvResponseBodyCase1TargetCase0List>;
+export const RemoveProjectEnvResponseBodyCase1TargetCase0List =
+  CreateProjectRequestEnvironmentVariablesItemTargetCase1List as any as S.Schema<RemoveProjectEnvResponseBodyCase1TargetCase0List>;
 
 export type RemoveProjectEnvResponseBodyCase1TargetCase1 = "production" | "preview" | "development";
 export const RemoveProjectEnvResponseBodyCase1TargetCase1 = S.String;
@@ -34639,14 +32025,8 @@ export interface RemoveProjectEnvResponseBodyCase2ContentHintCase0 {
   storeId: string;
   type: RemoveProjectEnvResponseBodyCase2ContentHintCase0Type;
 }
-export const RemoveProjectEnvResponseBodyCase2ContentHintCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: RemoveProjectEnvResponseBodyCase2ContentHintCase0Type,
-  }),
-).annotate({
-  identifier: "RemoveProjectEnvResponseBodyCase2ContentHintCase0",
-}) as any as S.Schema<RemoveProjectEnvResponseBodyCase2ContentHintCase0>;
+export const RemoveProjectEnvResponseBodyCase2ContentHintCase0 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<RemoveProjectEnvResponseBodyCase2ContentHintCase0>;
 
 export type RemoveProjectEnvResponseBodyCase2ContentHintCase1Type = "redis-rest-api-url";
 export const RemoveProjectEnvResponseBodyCase2ContentHintCase1Type = S.String;
@@ -34655,14 +32035,8 @@ export interface RemoveProjectEnvResponseBodyCase2ContentHintCase1 {
   storeId: string;
   type: RemoveProjectEnvResponseBodyCase2ContentHintCase1Type;
 }
-export const RemoveProjectEnvResponseBodyCase2ContentHintCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: RemoveProjectEnvResponseBodyCase2ContentHintCase1Type,
-  }),
-).annotate({
-  identifier: "RemoveProjectEnvResponseBodyCase2ContentHintCase1",
-}) as any as S.Schema<RemoveProjectEnvResponseBodyCase2ContentHintCase1>;
+export const RemoveProjectEnvResponseBodyCase2ContentHintCase1 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<RemoveProjectEnvResponseBodyCase2ContentHintCase1>;
 
 export type RemoveProjectEnvResponseBodyCase2ContentHintCase2Type = "redis-rest-api-token";
 export const RemoveProjectEnvResponseBodyCase2ContentHintCase2Type = S.String;
@@ -34671,14 +32045,8 @@ export interface RemoveProjectEnvResponseBodyCase2ContentHintCase2 {
   storeId: string;
   type: RemoveProjectEnvResponseBodyCase2ContentHintCase2Type;
 }
-export const RemoveProjectEnvResponseBodyCase2ContentHintCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: RemoveProjectEnvResponseBodyCase2ContentHintCase2Type,
-  }),
-).annotate({
-  identifier: "RemoveProjectEnvResponseBodyCase2ContentHintCase2",
-}) as any as S.Schema<RemoveProjectEnvResponseBodyCase2ContentHintCase2>;
+export const RemoveProjectEnvResponseBodyCase2ContentHintCase2 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<RemoveProjectEnvResponseBodyCase2ContentHintCase2>;
 
 export type RemoveProjectEnvResponseBodyCase2ContentHintCase3Type =
   "redis-rest-api-read-only-token";
@@ -34688,14 +32056,8 @@ export interface RemoveProjectEnvResponseBodyCase2ContentHintCase3 {
   storeId: string;
   type: RemoveProjectEnvResponseBodyCase2ContentHintCase3Type;
 }
-export const RemoveProjectEnvResponseBodyCase2ContentHintCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: RemoveProjectEnvResponseBodyCase2ContentHintCase3Type,
-  }),
-).annotate({
-  identifier: "RemoveProjectEnvResponseBodyCase2ContentHintCase3",
-}) as any as S.Schema<RemoveProjectEnvResponseBodyCase2ContentHintCase3>;
+export const RemoveProjectEnvResponseBodyCase2ContentHintCase3 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<RemoveProjectEnvResponseBodyCase2ContentHintCase3>;
 
 export type RemoveProjectEnvResponseBodyCase2ContentHintCase4Type = "blob-read-write-token";
 export const RemoveProjectEnvResponseBodyCase2ContentHintCase4Type = S.String;
@@ -34704,14 +32066,8 @@ export interface RemoveProjectEnvResponseBodyCase2ContentHintCase4 {
   storeId: string;
   type: RemoveProjectEnvResponseBodyCase2ContentHintCase4Type;
 }
-export const RemoveProjectEnvResponseBodyCase2ContentHintCase4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: RemoveProjectEnvResponseBodyCase2ContentHintCase4Type,
-  }),
-).annotate({
-  identifier: "RemoveProjectEnvResponseBodyCase2ContentHintCase4",
-}) as any as S.Schema<RemoveProjectEnvResponseBodyCase2ContentHintCase4>;
+export const RemoveProjectEnvResponseBodyCase2ContentHintCase4 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<RemoveProjectEnvResponseBodyCase2ContentHintCase4>;
 
 export type RemoveProjectEnvResponseBodyCase2ContentHintCase5Type = "blob-store-id";
 export const RemoveProjectEnvResponseBodyCase2ContentHintCase5Type = S.String;
@@ -34720,14 +32076,8 @@ export interface RemoveProjectEnvResponseBodyCase2ContentHintCase5 {
   storeId: string;
   type: RemoveProjectEnvResponseBodyCase2ContentHintCase5Type;
 }
-export const RemoveProjectEnvResponseBodyCase2ContentHintCase5 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: RemoveProjectEnvResponseBodyCase2ContentHintCase5Type,
-  }),
-).annotate({
-  identifier: "RemoveProjectEnvResponseBodyCase2ContentHintCase5",
-}) as any as S.Schema<RemoveProjectEnvResponseBodyCase2ContentHintCase5>;
+export const RemoveProjectEnvResponseBodyCase2ContentHintCase5 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<RemoveProjectEnvResponseBodyCase2ContentHintCase5>;
 
 export type RemoveProjectEnvResponseBodyCase2ContentHintCase6Type = "blob-webhook-public-key";
 export const RemoveProjectEnvResponseBodyCase2ContentHintCase6Type = S.String;
@@ -34736,14 +32086,8 @@ export interface RemoveProjectEnvResponseBodyCase2ContentHintCase6 {
   storeId: string;
   type: RemoveProjectEnvResponseBodyCase2ContentHintCase6Type;
 }
-export const RemoveProjectEnvResponseBodyCase2ContentHintCase6 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: RemoveProjectEnvResponseBodyCase2ContentHintCase6Type,
-  }),
-).annotate({
-  identifier: "RemoveProjectEnvResponseBodyCase2ContentHintCase6",
-}) as any as S.Schema<RemoveProjectEnvResponseBodyCase2ContentHintCase6>;
+export const RemoveProjectEnvResponseBodyCase2ContentHintCase6 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<RemoveProjectEnvResponseBodyCase2ContentHintCase6>;
 
 export type RemoveProjectEnvResponseBodyCase2ContentHintCase7Type = "postgres-url";
 export const RemoveProjectEnvResponseBodyCase2ContentHintCase7Type = S.String;
@@ -34752,14 +32096,8 @@ export interface RemoveProjectEnvResponseBodyCase2ContentHintCase7 {
   storeId: string;
   type: RemoveProjectEnvResponseBodyCase2ContentHintCase7Type;
 }
-export const RemoveProjectEnvResponseBodyCase2ContentHintCase7 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: RemoveProjectEnvResponseBodyCase2ContentHintCase7Type,
-  }),
-).annotate({
-  identifier: "RemoveProjectEnvResponseBodyCase2ContentHintCase7",
-}) as any as S.Schema<RemoveProjectEnvResponseBodyCase2ContentHintCase7>;
+export const RemoveProjectEnvResponseBodyCase2ContentHintCase7 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<RemoveProjectEnvResponseBodyCase2ContentHintCase7>;
 
 export type RemoveProjectEnvResponseBodyCase2ContentHintCase8Type = "postgres-url-non-pooling";
 export const RemoveProjectEnvResponseBodyCase2ContentHintCase8Type = S.String;
@@ -34768,14 +32106,8 @@ export interface RemoveProjectEnvResponseBodyCase2ContentHintCase8 {
   storeId: string;
   type: RemoveProjectEnvResponseBodyCase2ContentHintCase8Type;
 }
-export const RemoveProjectEnvResponseBodyCase2ContentHintCase8 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: RemoveProjectEnvResponseBodyCase2ContentHintCase8Type,
-  }),
-).annotate({
-  identifier: "RemoveProjectEnvResponseBodyCase2ContentHintCase8",
-}) as any as S.Schema<RemoveProjectEnvResponseBodyCase2ContentHintCase8>;
+export const RemoveProjectEnvResponseBodyCase2ContentHintCase8 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<RemoveProjectEnvResponseBodyCase2ContentHintCase8>;
 
 export type RemoveProjectEnvResponseBodyCase2ContentHintCase9Type = "postgres-prisma-url";
 export const RemoveProjectEnvResponseBodyCase2ContentHintCase9Type = S.String;
@@ -34784,14 +32116,8 @@ export interface RemoveProjectEnvResponseBodyCase2ContentHintCase9 {
   storeId: string;
   type: RemoveProjectEnvResponseBodyCase2ContentHintCase9Type;
 }
-export const RemoveProjectEnvResponseBodyCase2ContentHintCase9 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: RemoveProjectEnvResponseBodyCase2ContentHintCase9Type,
-  }),
-).annotate({
-  identifier: "RemoveProjectEnvResponseBodyCase2ContentHintCase9",
-}) as any as S.Schema<RemoveProjectEnvResponseBodyCase2ContentHintCase9>;
+export const RemoveProjectEnvResponseBodyCase2ContentHintCase9 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<RemoveProjectEnvResponseBodyCase2ContentHintCase9>;
 
 export type RemoveProjectEnvResponseBodyCase2ContentHintCase10Type = "postgres-user";
 export const RemoveProjectEnvResponseBodyCase2ContentHintCase10Type = S.String;
@@ -34800,14 +32126,8 @@ export interface RemoveProjectEnvResponseBodyCase2ContentHintCase10 {
   storeId: string;
   type: RemoveProjectEnvResponseBodyCase2ContentHintCase10Type;
 }
-export const RemoveProjectEnvResponseBodyCase2ContentHintCase10 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: RemoveProjectEnvResponseBodyCase2ContentHintCase10Type,
-  }),
-).annotate({
-  identifier: "RemoveProjectEnvResponseBodyCase2ContentHintCase10",
-}) as any as S.Schema<RemoveProjectEnvResponseBodyCase2ContentHintCase10>;
+export const RemoveProjectEnvResponseBodyCase2ContentHintCase10 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<RemoveProjectEnvResponseBodyCase2ContentHintCase10>;
 
 export type RemoveProjectEnvResponseBodyCase2ContentHintCase11Type = "postgres-host";
 export const RemoveProjectEnvResponseBodyCase2ContentHintCase11Type = S.String;
@@ -34816,14 +32136,8 @@ export interface RemoveProjectEnvResponseBodyCase2ContentHintCase11 {
   storeId: string;
   type: RemoveProjectEnvResponseBodyCase2ContentHintCase11Type;
 }
-export const RemoveProjectEnvResponseBodyCase2ContentHintCase11 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: RemoveProjectEnvResponseBodyCase2ContentHintCase11Type,
-  }),
-).annotate({
-  identifier: "RemoveProjectEnvResponseBodyCase2ContentHintCase11",
-}) as any as S.Schema<RemoveProjectEnvResponseBodyCase2ContentHintCase11>;
+export const RemoveProjectEnvResponseBodyCase2ContentHintCase11 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<RemoveProjectEnvResponseBodyCase2ContentHintCase11>;
 
 export type RemoveProjectEnvResponseBodyCase2ContentHintCase12Type = "postgres-password";
 export const RemoveProjectEnvResponseBodyCase2ContentHintCase12Type = S.String;
@@ -34832,14 +32146,8 @@ export interface RemoveProjectEnvResponseBodyCase2ContentHintCase12 {
   storeId: string;
   type: RemoveProjectEnvResponseBodyCase2ContentHintCase12Type;
 }
-export const RemoveProjectEnvResponseBodyCase2ContentHintCase12 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: RemoveProjectEnvResponseBodyCase2ContentHintCase12Type,
-  }),
-).annotate({
-  identifier: "RemoveProjectEnvResponseBodyCase2ContentHintCase12",
-}) as any as S.Schema<RemoveProjectEnvResponseBodyCase2ContentHintCase12>;
+export const RemoveProjectEnvResponseBodyCase2ContentHintCase12 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<RemoveProjectEnvResponseBodyCase2ContentHintCase12>;
 
 export type RemoveProjectEnvResponseBodyCase2ContentHintCase13Type = "postgres-database";
 export const RemoveProjectEnvResponseBodyCase2ContentHintCase13Type = S.String;
@@ -34848,14 +32156,8 @@ export interface RemoveProjectEnvResponseBodyCase2ContentHintCase13 {
   storeId: string;
   type: RemoveProjectEnvResponseBodyCase2ContentHintCase13Type;
 }
-export const RemoveProjectEnvResponseBodyCase2ContentHintCase13 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: RemoveProjectEnvResponseBodyCase2ContentHintCase13Type,
-  }),
-).annotate({
-  identifier: "RemoveProjectEnvResponseBodyCase2ContentHintCase13",
-}) as any as S.Schema<RemoveProjectEnvResponseBodyCase2ContentHintCase13>;
+export const RemoveProjectEnvResponseBodyCase2ContentHintCase13 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<RemoveProjectEnvResponseBodyCase2ContentHintCase13>;
 
 export type RemoveProjectEnvResponseBodyCase2ContentHintCase14Type = "postgres-url-no-ssl";
 export const RemoveProjectEnvResponseBodyCase2ContentHintCase14Type = S.String;
@@ -34864,14 +32166,8 @@ export interface RemoveProjectEnvResponseBodyCase2ContentHintCase14 {
   storeId: string;
   type: RemoveProjectEnvResponseBodyCase2ContentHintCase14Type;
 }
-export const RemoveProjectEnvResponseBodyCase2ContentHintCase14 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: RemoveProjectEnvResponseBodyCase2ContentHintCase14Type,
-  }),
-).annotate({
-  identifier: "RemoveProjectEnvResponseBodyCase2ContentHintCase14",
-}) as any as S.Schema<RemoveProjectEnvResponseBodyCase2ContentHintCase14>;
+export const RemoveProjectEnvResponseBodyCase2ContentHintCase14 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<RemoveProjectEnvResponseBodyCase2ContentHintCase14>;
 
 export type RemoveProjectEnvResponseBodyCase2ContentHintCase15Type = "integration-store-secret";
 export const RemoveProjectEnvResponseBodyCase2ContentHintCase15Type = S.String;
@@ -34883,17 +32179,8 @@ export interface RemoveProjectEnvResponseBodyCase2ContentHintCase15 {
   storeId: string;
   type: RemoveProjectEnvResponseBodyCase2ContentHintCase15Type;
 }
-export const RemoveProjectEnvResponseBodyCase2ContentHintCase15 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    integrationConfigurationId: S.String,
-    integrationId: S.String,
-    integrationProductId: S.String,
-    storeId: S.String,
-    type: RemoveProjectEnvResponseBodyCase2ContentHintCase15Type,
-  }),
-).annotate({
-  identifier: "RemoveProjectEnvResponseBodyCase2ContentHintCase15",
-}) as any as S.Schema<RemoveProjectEnvResponseBodyCase2ContentHintCase15>;
+export const RemoveProjectEnvResponseBodyCase2ContentHintCase15 =
+  CreateProjectResponseEnvItemContentHintCase15 as any as S.Schema<RemoveProjectEnvResponseBodyCase2ContentHintCase15>;
 
 export type RemoveProjectEnvResponseBodyCase2ContentHintCase16Type = "flags-connection-string";
 export const RemoveProjectEnvResponseBodyCase2ContentHintCase16Type = S.String;
@@ -34902,14 +32189,8 @@ export interface RemoveProjectEnvResponseBodyCase2ContentHintCase16 {
   projectId: string;
   type: RemoveProjectEnvResponseBodyCase2ContentHintCase16Type;
 }
-export const RemoveProjectEnvResponseBodyCase2ContentHintCase16 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    projectId: S.String,
-    type: RemoveProjectEnvResponseBodyCase2ContentHintCase16Type,
-  }),
-).annotate({
-  identifier: "RemoveProjectEnvResponseBodyCase2ContentHintCase16",
-}) as any as S.Schema<RemoveProjectEnvResponseBodyCase2ContentHintCase16>;
+export const RemoveProjectEnvResponseBodyCase2ContentHintCase16 =
+  CreateProjectResponseEnvItemContentHintCase16 as any as S.Schema<RemoveProjectEnvResponseBodyCase2ContentHintCase16>;
 
 export type RemoveProjectEnvResponseBodyCase2ContentHint =
   | RemoveProjectEnvResponseBodyCase2ContentHintCase0
@@ -34945,14 +32226,8 @@ export interface RemoveProjectEnvResponseBodyCase2InternalContentHint {
   encryptedValue: string;
   type: RemoveProjectEnvResponseBodyCase2InternalContentHintType;
 }
-export const RemoveProjectEnvResponseBodyCase2InternalContentHint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    encryptedValue: S.String,
-    type: RemoveProjectEnvResponseBodyCase2InternalContentHintType,
-  }),
-).annotate({
-  identifier: "RemoveProjectEnvResponseBodyCase2InternalContentHint",
-}) as any as S.Schema<RemoveProjectEnvResponseBodyCase2InternalContentHint>;
+export const RemoveProjectEnvResponseBodyCase2InternalContentHint =
+  CreateProjectResponseEnvItemInternalContentHint as any as S.Schema<RemoveProjectEnvResponseBodyCase2InternalContentHint>;
 
 export type RemoveProjectEnvResponseBodyCase2TargetCase0Item =
   | "development"
@@ -34964,9 +32239,8 @@ export const RemoveProjectEnvResponseBodyCase2TargetCase0Item = S.String;
 
 export type RemoveProjectEnvResponseBodyCase2TargetCase0List =
   Array<RemoveProjectEnvResponseBodyCase2TargetCase0Item>;
-export const RemoveProjectEnvResponseBodyCase2TargetCase0List = /*@__PURE__*/ S.Array(
-  RemoveProjectEnvResponseBodyCase2TargetCase0Item,
-) as any as S.Schema<RemoveProjectEnvResponseBodyCase2TargetCase0List>;
+export const RemoveProjectEnvResponseBodyCase2TargetCase0List =
+  CreateProjectRequestEnvironmentVariablesItemTargetCase1List as any as S.Schema<RemoveProjectEnvResponseBodyCase2TargetCase0List>;
 
 export type RemoveProjectEnvResponseBodyCase2TargetCase1 = "production" | "preview" | "development";
 export const RemoveProjectEnvResponseBodyCase2TargetCase1 = S.String;
@@ -35195,15 +32469,8 @@ export interface UpdateMicrofrontendsResponseAliasItemDeploymentBranchMatcher {
   /** The type of matching to perform */
   type: UpdateMicrofrontendsResponseAliasItemDeploymentBranchMatcherType;
 }
-export const UpdateMicrofrontendsResponseAliasItemDeploymentBranchMatcher = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pattern: S.String,
-      type: UpdateMicrofrontendsResponseAliasItemDeploymentBranchMatcherType,
-    }),
-).annotate({
-  identifier: "UpdateMicrofrontendsResponseAliasItemDeploymentBranchMatcher",
-}) as any as S.Schema<UpdateMicrofrontendsResponseAliasItemDeploymentBranchMatcher>;
+export const UpdateMicrofrontendsResponseAliasItemDeploymentBranchMatcher =
+  CreateProjectResponseCustomEnvironmentsItemBranchMatcher as any as S.Schema<UpdateMicrofrontendsResponseAliasItemDeploymentBranchMatcher>;
 
 export type UpdateMicrofrontendsResponseAliasItemDeploymentBuildsItem =
   CreateProjectResponseAliasItemDeploymentBuildsItem;
@@ -35498,14 +32765,8 @@ export interface UpdateMicrofrontendsResponseCreatorCase0ViaCase0 {
   app: CreateProjectResponseCreatorCase0ViaCase0App;
   type: UpdateMicrofrontendsResponseCreatorCase0ViaCase0Type;
 }
-export const UpdateMicrofrontendsResponseCreatorCase0ViaCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app: CreateProjectResponseCreatorCase0ViaCase0App,
-    type: UpdateMicrofrontendsResponseCreatorCase0ViaCase0Type,
-  }),
-).annotate({
-  identifier: "UpdateMicrofrontendsResponseCreatorCase0ViaCase0",
-}) as any as S.Schema<UpdateMicrofrontendsResponseCreatorCase0ViaCase0>;
+export const UpdateMicrofrontendsResponseCreatorCase0ViaCase0 =
+  CreateProjectResponseCreatorCase0ViaCase0 as any as S.Schema<UpdateMicrofrontendsResponseCreatorCase0ViaCase0>;
 
 export type UpdateMicrofrontendsResponseCreatorCase0ViaCase1Integration =
   CreateProjectResponseCreatorCase0ViaCase1Integration;
@@ -35520,14 +32781,8 @@ export interface UpdateMicrofrontendsResponseCreatorCase0ViaCase1 {
   integration: CreateProjectResponseCreatorCase0ViaCase1Integration;
   type: UpdateMicrofrontendsResponseCreatorCase0ViaCase1Type;
 }
-export const UpdateMicrofrontendsResponseCreatorCase0ViaCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    integration: CreateProjectResponseCreatorCase0ViaCase1Integration,
-    type: UpdateMicrofrontendsResponseCreatorCase0ViaCase1Type,
-  }),
-).annotate({
-  identifier: "UpdateMicrofrontendsResponseCreatorCase0ViaCase1",
-}) as any as S.Schema<UpdateMicrofrontendsResponseCreatorCase0ViaCase1>;
+export const UpdateMicrofrontendsResponseCreatorCase0ViaCase1 =
+  CreateProjectResponseCreatorCase0ViaCase1 as any as S.Schema<UpdateMicrofrontendsResponseCreatorCase0ViaCase1>;
 
 export type UpdateMicrofrontendsResponseCreatorCase0Via =
   | UpdateMicrofrontendsResponseCreatorCase0ViaCase0
@@ -35565,14 +32820,8 @@ export interface UpdateMicrofrontendsResponseCreatorCase1 {
   app: CreateProjectResponseCreatorCase0ViaCase0App;
   type: UpdateMicrofrontendsResponseCreatorCase1Type;
 }
-export const UpdateMicrofrontendsResponseCreatorCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app: CreateProjectResponseCreatorCase0ViaCase0App,
-    type: UpdateMicrofrontendsResponseCreatorCase1Type,
-  }),
-).annotate({
-  identifier: "UpdateMicrofrontendsResponseCreatorCase1",
-}) as any as S.Schema<UpdateMicrofrontendsResponseCreatorCase1>;
+export const UpdateMicrofrontendsResponseCreatorCase1 =
+  CreateProjectResponseCreatorCase0ViaCase0 as any as S.Schema<UpdateMicrofrontendsResponseCreatorCase1>;
 
 export type UpdateMicrofrontendsResponseCreatorCase2Integration =
   CreateProjectResponseCreatorCase0ViaCase1Integration;
@@ -35586,14 +32835,8 @@ export interface UpdateMicrofrontendsResponseCreatorCase2 {
   integration: CreateProjectResponseCreatorCase0ViaCase1Integration;
   type: UpdateMicrofrontendsResponseCreatorCase2Type;
 }
-export const UpdateMicrofrontendsResponseCreatorCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    integration: CreateProjectResponseCreatorCase0ViaCase1Integration,
-    type: UpdateMicrofrontendsResponseCreatorCase2Type,
-  }),
-).annotate({
-  identifier: "UpdateMicrofrontendsResponseCreatorCase2",
-}) as any as S.Schema<UpdateMicrofrontendsResponseCreatorCase2>;
+export const UpdateMicrofrontendsResponseCreatorCase2 =
+  CreateProjectResponseCreatorCase0ViaCase1 as any as S.Schema<UpdateMicrofrontendsResponseCreatorCase2>;
 
 export type UpdateMicrofrontendsResponseCreatorCase3Type = "system";
 export const UpdateMicrofrontendsResponseCreatorCase3Type = S.String;
@@ -35601,13 +32844,8 @@ export const UpdateMicrofrontendsResponseCreatorCase3Type = S.String;
 export interface UpdateMicrofrontendsResponseCreatorCase3 {
   type: UpdateMicrofrontendsResponseCreatorCase3Type;
 }
-export const UpdateMicrofrontendsResponseCreatorCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: UpdateMicrofrontendsResponseCreatorCase3Type,
-  }),
-).annotate({
-  identifier: "UpdateMicrofrontendsResponseCreatorCase3",
-}) as any as S.Schema<UpdateMicrofrontendsResponseCreatorCase3>;
+export const UpdateMicrofrontendsResponseCreatorCase3 =
+  CreateProjectResponseCreatorCase3 as any as S.Schema<UpdateMicrofrontendsResponseCreatorCase3>;
 
 export type UpdateMicrofrontendsResponseCreator =
   | UpdateMicrofrontendsResponseCreatorCase0
@@ -35635,24 +32873,13 @@ export interface UpdateMicrofrontendsResponseCronsDefinitionsItem {
   /** The origin of this definition. 'api' means created via the API. Undefined means it originated from a deployment (vercel.json). */
   source?: UpdateMicrofrontendsResponseCronsDefinitionsItemSource;
 }
-export const UpdateMicrofrontendsResponseCronsDefinitionsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    host: S.String,
-    hostInferred: S.optional(S.Boolean),
-    path: S.String,
-    schedule: S.String,
-    source: S.optional(UpdateMicrofrontendsResponseCronsDefinitionsItemSource),
-  }),
-).annotate({
-  identifier: "UpdateMicrofrontendsResponseCronsDefinitionsItem",
-}) as any as S.Schema<UpdateMicrofrontendsResponseCronsDefinitionsItem>;
+export const UpdateMicrofrontendsResponseCronsDefinitionsItem =
+  CreateProjectResponseCronsDefinitionsItem as any as S.Schema<UpdateMicrofrontendsResponseCronsDefinitionsItem>;
 
 export type UpdateMicrofrontendsResponseCronsDefinitionsList =
   Array<UpdateMicrofrontendsResponseCronsDefinitionsItem>;
-export const UpdateMicrofrontendsResponseCronsDefinitionsList = /*@__PURE__*/ S.Array(
-  UpdateMicrofrontendsResponseCronsDefinitionsItem,
-) as any as S.Schema<UpdateMicrofrontendsResponseCronsDefinitionsList>;
+export const UpdateMicrofrontendsResponseCronsDefinitionsList =
+  CreateProjectResponseCronsDefinitionsList as any as S.Schema<UpdateMicrofrontendsResponseCronsDefinitionsList>;
 
 export interface UpdateMicrofrontendsResponseCrons {
   definitions: UpdateMicrofrontendsResponseCronsDefinitionsList;
@@ -35664,17 +32891,8 @@ export interface UpdateMicrofrontendsResponseCrons {
   enabledAt: number;
   updatedAt: number;
 }
-export const UpdateMicrofrontendsResponseCrons = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    definitions: UpdateMicrofrontendsResponseCronsDefinitionsList,
-    deploymentId: S.NullOr(S.String),
-    disabledAt: S.NullOr(S.Number),
-    enabledAt: S.Number,
-    updatedAt: S.Number,
-  }),
-).annotate({
-  identifier: "UpdateMicrofrontendsResponseCrons",
-}) as any as S.Schema<UpdateMicrofrontendsResponseCrons>;
+export const UpdateMicrofrontendsResponseCrons =
+  CreateProjectResponseCrons as any as S.Schema<UpdateMicrofrontendsResponseCrons>;
 
 /** The type of matching to perform */
 export type UpdateMicrofrontendsResponseCustomEnvironmentsItemBranchMatcherType =
@@ -35691,14 +32909,7 @@ export interface UpdateMicrofrontendsResponseCustomEnvironmentsItemBranchMatcher
   type: UpdateMicrofrontendsResponseCustomEnvironmentsItemBranchMatcherType;
 }
 export const UpdateMicrofrontendsResponseCustomEnvironmentsItemBranchMatcher =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pattern: S.String,
-      type: UpdateMicrofrontendsResponseCustomEnvironmentsItemBranchMatcherType,
-    }),
-  ).annotate({
-    identifier: "UpdateMicrofrontendsResponseCustomEnvironmentsItemBranchMatcher",
-  }) as any as S.Schema<UpdateMicrofrontendsResponseCustomEnvironmentsItemBranchMatcher>;
+  GetProjectsResponseBodyCase0ItemAliasItemDeploymentBranchMatcher as any as S.Schema<UpdateMicrofrontendsResponseCustomEnvironmentsItemBranchMatcher>;
 
 /** List of aliases for the current deployment */
 export type UpdateMicrofrontendsResponseCustomEnvironmentsItemCurrentDeploymentAliasesList =
@@ -35852,16 +33063,7 @@ export interface UpdateMicrofrontendsResponseDefaultResourceConfigBuildMachineEl
   direction: UpdateMicrofrontendsResponseDefaultResourceConfigBuildMachineElasticTransitionDirection;
 }
 export const UpdateMicrofrontendsResponseDefaultResourceConfigBuildMachineElasticTransition =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      algorithmVersion: S.String,
-      at: S.Number,
-      direction:
-        UpdateMicrofrontendsResponseDefaultResourceConfigBuildMachineElasticTransitionDirection,
-    }),
-  ).annotate({
-    identifier: "UpdateMicrofrontendsResponseDefaultResourceConfigBuildMachineElasticTransition",
-  }) as any as S.Schema<UpdateMicrofrontendsResponseDefaultResourceConfigBuildMachineElasticTransition>;
+  GetProjectsResponseBodyCase0ItemResourceConfigBuildMachineElasticTransition as any as S.Schema<UpdateMicrofrontendsResponseDefaultResourceConfigBuildMachineElasticTransition>;
 
 export type UpdateMicrofrontendsResponseDefaultResourceConfigBuildMachineSelection =
   | "elastic"
@@ -35883,16 +33085,8 @@ export const UpdateMicrofrontendsResponseDefaultResourceConfigBuildQueueConfigur
 export interface UpdateMicrofrontendsResponseDefaultResourceConfigBuildQueue {
   configuration?: UpdateMicrofrontendsResponseDefaultResourceConfigBuildQueueConfiguration;
 }
-export const UpdateMicrofrontendsResponseDefaultResourceConfigBuildQueue = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      configuration: S.optional(
-        UpdateMicrofrontendsResponseDefaultResourceConfigBuildQueueConfiguration,
-      ),
-    }),
-).annotate({
-  identifier: "UpdateMicrofrontendsResponseDefaultResourceConfigBuildQueue",
-}) as any as S.Schema<UpdateMicrofrontendsResponseDefaultResourceConfigBuildQueue>;
+export const UpdateMicrofrontendsResponseDefaultResourceConfigBuildQueue =
+  GetProjectsResponseBodyCase0ItemResourceConfigBuildQueue as any as S.Schema<UpdateMicrofrontendsResponseDefaultResourceConfigBuildQueue>;
 
 export type UpdateMicrofrontendsResponseDefaultResourceConfigFunctionDefaultMemoryType =
   | "performance"
@@ -35974,16 +33168,7 @@ export interface UpdateMicrofrontendsResponseDeploymentPolicyDeploymentSourcesIt
   type: UpdateMicrofrontendsResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase0Type;
 }
 export const UpdateMicrofrontendsResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      target:
-        UpdateMicrofrontendsResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase0Target,
-      type: UpdateMicrofrontendsResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase0Type,
-    }),
-  ).annotate({
-    identifier:
-      "UpdateMicrofrontendsResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase0",
-  }) as any as S.Schema<UpdateMicrofrontendsResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase0>;
+  GetProjectsResponseBodyCase2ProjectsItemDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase0 as any as S.Schema<UpdateMicrofrontendsResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase0>;
 
 export type UpdateMicrofrontendsResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase1Type =
   "custom";
@@ -35995,15 +33180,7 @@ export interface UpdateMicrofrontendsResponseDeploymentPolicyDeploymentSourcesIt
   type: UpdateMicrofrontendsResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase1Type;
 }
 export const UpdateMicrofrontendsResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      environmentId: S.String,
-      type: UpdateMicrofrontendsResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase1Type,
-    }),
-  ).annotate({
-    identifier:
-      "UpdateMicrofrontendsResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase1",
-  }) as any as S.Schema<UpdateMicrofrontendsResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase1>;
+  GetProjectsResponseBodyCase2ProjectsItemDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase1 as any as S.Schema<UpdateMicrofrontendsResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase1>;
 
 export type UpdateMicrofrontendsResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItem =
   | UpdateMicrofrontendsResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase0
@@ -36032,9 +33209,7 @@ export const UpdateMicrofrontendsResponseDeploymentPolicyDeploymentSourcesItemSo
 export type UpdateMicrofrontendsResponseDeploymentPolicyDeploymentSourcesItemSourcesList =
   Array<UpdateMicrofrontendsResponseDeploymentPolicyDeploymentSourcesItemSourcesItem>;
 export const UpdateMicrofrontendsResponseDeploymentPolicyDeploymentSourcesItemSourcesList =
-  /*@__PURE__*/ S.Array(
-    UpdateMicrofrontendsResponseDeploymentPolicyDeploymentSourcesItemSourcesItem,
-  ) as any as S.Schema<UpdateMicrofrontendsResponseDeploymentPolicyDeploymentSourcesItemSourcesList>;
+  CreateProjectResponseDeploymentPolicyDeploymentSourcesItemSourcesList as any as S.Schema<UpdateMicrofrontendsResponseDeploymentPolicyDeploymentSourcesItemSourcesList>;
 
 /** `enabled: true` with empty `sources` is deny-all. */
 export interface UpdateMicrofrontendsResponseDeploymentPolicyDeploymentSourcesItem {
@@ -36077,14 +33252,7 @@ export interface UpdateMicrofrontendsResponseDeploymentPolicyGitSourcesItemEnvir
   type: UpdateMicrofrontendsResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase0Type;
 }
 export const UpdateMicrofrontendsResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      target: UpdateMicrofrontendsResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase0Target,
-      type: UpdateMicrofrontendsResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase0Type,
-    }),
-  ).annotate({
-    identifier: "UpdateMicrofrontendsResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase0",
-  }) as any as S.Schema<UpdateMicrofrontendsResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase0>;
+  CreateProjectResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase0 as any as S.Schema<UpdateMicrofrontendsResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase0>;
 
 export type UpdateMicrofrontendsResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase1Type =
   "custom";
@@ -36096,14 +33264,7 @@ export interface UpdateMicrofrontendsResponseDeploymentPolicyGitSourcesItemEnvir
   type: UpdateMicrofrontendsResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase1Type;
 }
 export const UpdateMicrofrontendsResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      environmentId: S.String,
-      type: UpdateMicrofrontendsResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase1Type,
-    }),
-  ).annotate({
-    identifier: "UpdateMicrofrontendsResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase1",
-  }) as any as S.Schema<UpdateMicrofrontendsResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase1>;
+  CreateProjectResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase1 as any as S.Schema<UpdateMicrofrontendsResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase1>;
 
 export type UpdateMicrofrontendsResponseDeploymentPolicyGitSourcesItemEnvironmentsItem =
   | UpdateMicrofrontendsResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase0
@@ -36131,15 +33292,7 @@ export interface UpdateMicrofrontendsResponseDeploymentPolicyGitSourcesItemSourc
   repo?: string;
 }
 export const UpdateMicrofrontendsResponseDeploymentPolicyGitSourcesItemSourcesItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      org: S.String,
-      provider: UpdateMicrofrontendsResponseDeploymentPolicyGitSourcesItemSourcesItemCase0Provider,
-      repo: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "UpdateMicrofrontendsResponseDeploymentPolicyGitSourcesItemSourcesItemCase0",
-  }) as any as S.Schema<UpdateMicrofrontendsResponseDeploymentPolicyGitSourcesItemSourcesItemCase0>;
+  CreateProjectResponseDeploymentPolicyGitSourcesItemSourcesItemCase0 as any as S.Schema<UpdateMicrofrontendsResponseDeploymentPolicyGitSourcesItemSourcesItemCase0>;
 
 export type UpdateMicrofrontendsResponseDeploymentPolicyGitSourcesItemSourcesItemCase1Provider =
   "gitlab";
@@ -36153,15 +33306,7 @@ export interface UpdateMicrofrontendsResponseDeploymentPolicyGitSourcesItemSourc
   provider: UpdateMicrofrontendsResponseDeploymentPolicyGitSourcesItemSourcesItemCase1Provider;
 }
 export const UpdateMicrofrontendsResponseDeploymentPolicyGitSourcesItemSourcesItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      namespace: S.String,
-      project: S.optional(S.String),
-      provider: UpdateMicrofrontendsResponseDeploymentPolicyGitSourcesItemSourcesItemCase1Provider,
-    }),
-  ).annotate({
-    identifier: "UpdateMicrofrontendsResponseDeploymentPolicyGitSourcesItemSourcesItemCase1",
-  }) as any as S.Schema<UpdateMicrofrontendsResponseDeploymentPolicyGitSourcesItemSourcesItemCase1>;
+  CreateProjectResponseDeploymentPolicyGitSourcesItemSourcesItemCase1 as any as S.Schema<UpdateMicrofrontendsResponseDeploymentPolicyGitSourcesItemSourcesItemCase1>;
 
 export type UpdateMicrofrontendsResponseDeploymentPolicyGitSourcesItemSourcesItem =
   | UpdateMicrofrontendsResponseDeploymentPolicyGitSourcesItemSourcesItemCase0
@@ -36284,14 +33429,8 @@ export interface UpdateMicrofrontendsResponseEnvItemContentHintCase0 {
   storeId: string;
   type: UpdateMicrofrontendsResponseEnvItemContentHintCase0Type;
 }
-export const UpdateMicrofrontendsResponseEnvItemContentHintCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: UpdateMicrofrontendsResponseEnvItemContentHintCase0Type,
-  }),
-).annotate({
-  identifier: "UpdateMicrofrontendsResponseEnvItemContentHintCase0",
-}) as any as S.Schema<UpdateMicrofrontendsResponseEnvItemContentHintCase0>;
+export const UpdateMicrofrontendsResponseEnvItemContentHintCase0 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<UpdateMicrofrontendsResponseEnvItemContentHintCase0>;
 
 export type UpdateMicrofrontendsResponseEnvItemContentHintCase1Type = "redis-rest-api-url";
 export const UpdateMicrofrontendsResponseEnvItemContentHintCase1Type = S.String;
@@ -36300,14 +33439,8 @@ export interface UpdateMicrofrontendsResponseEnvItemContentHintCase1 {
   storeId: string;
   type: UpdateMicrofrontendsResponseEnvItemContentHintCase1Type;
 }
-export const UpdateMicrofrontendsResponseEnvItemContentHintCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: UpdateMicrofrontendsResponseEnvItemContentHintCase1Type,
-  }),
-).annotate({
-  identifier: "UpdateMicrofrontendsResponseEnvItemContentHintCase1",
-}) as any as S.Schema<UpdateMicrofrontendsResponseEnvItemContentHintCase1>;
+export const UpdateMicrofrontendsResponseEnvItemContentHintCase1 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<UpdateMicrofrontendsResponseEnvItemContentHintCase1>;
 
 export type UpdateMicrofrontendsResponseEnvItemContentHintCase2Type = "redis-rest-api-token";
 export const UpdateMicrofrontendsResponseEnvItemContentHintCase2Type = S.String;
@@ -36316,14 +33449,8 @@ export interface UpdateMicrofrontendsResponseEnvItemContentHintCase2 {
   storeId: string;
   type: UpdateMicrofrontendsResponseEnvItemContentHintCase2Type;
 }
-export const UpdateMicrofrontendsResponseEnvItemContentHintCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: UpdateMicrofrontendsResponseEnvItemContentHintCase2Type,
-  }),
-).annotate({
-  identifier: "UpdateMicrofrontendsResponseEnvItemContentHintCase2",
-}) as any as S.Schema<UpdateMicrofrontendsResponseEnvItemContentHintCase2>;
+export const UpdateMicrofrontendsResponseEnvItemContentHintCase2 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<UpdateMicrofrontendsResponseEnvItemContentHintCase2>;
 
 export type UpdateMicrofrontendsResponseEnvItemContentHintCase3Type =
   "redis-rest-api-read-only-token";
@@ -36333,14 +33460,8 @@ export interface UpdateMicrofrontendsResponseEnvItemContentHintCase3 {
   storeId: string;
   type: UpdateMicrofrontendsResponseEnvItemContentHintCase3Type;
 }
-export const UpdateMicrofrontendsResponseEnvItemContentHintCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: UpdateMicrofrontendsResponseEnvItemContentHintCase3Type,
-  }),
-).annotate({
-  identifier: "UpdateMicrofrontendsResponseEnvItemContentHintCase3",
-}) as any as S.Schema<UpdateMicrofrontendsResponseEnvItemContentHintCase3>;
+export const UpdateMicrofrontendsResponseEnvItemContentHintCase3 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<UpdateMicrofrontendsResponseEnvItemContentHintCase3>;
 
 export type UpdateMicrofrontendsResponseEnvItemContentHintCase4Type = "blob-read-write-token";
 export const UpdateMicrofrontendsResponseEnvItemContentHintCase4Type = S.String;
@@ -36349,14 +33470,8 @@ export interface UpdateMicrofrontendsResponseEnvItemContentHintCase4 {
   storeId: string;
   type: UpdateMicrofrontendsResponseEnvItemContentHintCase4Type;
 }
-export const UpdateMicrofrontendsResponseEnvItemContentHintCase4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: UpdateMicrofrontendsResponseEnvItemContentHintCase4Type,
-  }),
-).annotate({
-  identifier: "UpdateMicrofrontendsResponseEnvItemContentHintCase4",
-}) as any as S.Schema<UpdateMicrofrontendsResponseEnvItemContentHintCase4>;
+export const UpdateMicrofrontendsResponseEnvItemContentHintCase4 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<UpdateMicrofrontendsResponseEnvItemContentHintCase4>;
 
 export type UpdateMicrofrontendsResponseEnvItemContentHintCase5Type = "blob-store-id";
 export const UpdateMicrofrontendsResponseEnvItemContentHintCase5Type = S.String;
@@ -36365,14 +33480,8 @@ export interface UpdateMicrofrontendsResponseEnvItemContentHintCase5 {
   storeId: string;
   type: UpdateMicrofrontendsResponseEnvItemContentHintCase5Type;
 }
-export const UpdateMicrofrontendsResponseEnvItemContentHintCase5 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: UpdateMicrofrontendsResponseEnvItemContentHintCase5Type,
-  }),
-).annotate({
-  identifier: "UpdateMicrofrontendsResponseEnvItemContentHintCase5",
-}) as any as S.Schema<UpdateMicrofrontendsResponseEnvItemContentHintCase5>;
+export const UpdateMicrofrontendsResponseEnvItemContentHintCase5 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<UpdateMicrofrontendsResponseEnvItemContentHintCase5>;
 
 export type UpdateMicrofrontendsResponseEnvItemContentHintCase6Type = "blob-webhook-public-key";
 export const UpdateMicrofrontendsResponseEnvItemContentHintCase6Type = S.String;
@@ -36381,14 +33490,8 @@ export interface UpdateMicrofrontendsResponseEnvItemContentHintCase6 {
   storeId: string;
   type: UpdateMicrofrontendsResponseEnvItemContentHintCase6Type;
 }
-export const UpdateMicrofrontendsResponseEnvItemContentHintCase6 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: UpdateMicrofrontendsResponseEnvItemContentHintCase6Type,
-  }),
-).annotate({
-  identifier: "UpdateMicrofrontendsResponseEnvItemContentHintCase6",
-}) as any as S.Schema<UpdateMicrofrontendsResponseEnvItemContentHintCase6>;
+export const UpdateMicrofrontendsResponseEnvItemContentHintCase6 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<UpdateMicrofrontendsResponseEnvItemContentHintCase6>;
 
 export type UpdateMicrofrontendsResponseEnvItemContentHintCase7Type = "postgres-url";
 export const UpdateMicrofrontendsResponseEnvItemContentHintCase7Type = S.String;
@@ -36397,14 +33500,8 @@ export interface UpdateMicrofrontendsResponseEnvItemContentHintCase7 {
   storeId: string;
   type: UpdateMicrofrontendsResponseEnvItemContentHintCase7Type;
 }
-export const UpdateMicrofrontendsResponseEnvItemContentHintCase7 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: UpdateMicrofrontendsResponseEnvItemContentHintCase7Type,
-  }),
-).annotate({
-  identifier: "UpdateMicrofrontendsResponseEnvItemContentHintCase7",
-}) as any as S.Schema<UpdateMicrofrontendsResponseEnvItemContentHintCase7>;
+export const UpdateMicrofrontendsResponseEnvItemContentHintCase7 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<UpdateMicrofrontendsResponseEnvItemContentHintCase7>;
 
 export type UpdateMicrofrontendsResponseEnvItemContentHintCase8Type = "postgres-url-non-pooling";
 export const UpdateMicrofrontendsResponseEnvItemContentHintCase8Type = S.String;
@@ -36413,14 +33510,8 @@ export interface UpdateMicrofrontendsResponseEnvItemContentHintCase8 {
   storeId: string;
   type: UpdateMicrofrontendsResponseEnvItemContentHintCase8Type;
 }
-export const UpdateMicrofrontendsResponseEnvItemContentHintCase8 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: UpdateMicrofrontendsResponseEnvItemContentHintCase8Type,
-  }),
-).annotate({
-  identifier: "UpdateMicrofrontendsResponseEnvItemContentHintCase8",
-}) as any as S.Schema<UpdateMicrofrontendsResponseEnvItemContentHintCase8>;
+export const UpdateMicrofrontendsResponseEnvItemContentHintCase8 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<UpdateMicrofrontendsResponseEnvItemContentHintCase8>;
 
 export type UpdateMicrofrontendsResponseEnvItemContentHintCase9Type = "postgres-prisma-url";
 export const UpdateMicrofrontendsResponseEnvItemContentHintCase9Type = S.String;
@@ -36429,14 +33520,8 @@ export interface UpdateMicrofrontendsResponseEnvItemContentHintCase9 {
   storeId: string;
   type: UpdateMicrofrontendsResponseEnvItemContentHintCase9Type;
 }
-export const UpdateMicrofrontendsResponseEnvItemContentHintCase9 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: UpdateMicrofrontendsResponseEnvItemContentHintCase9Type,
-  }),
-).annotate({
-  identifier: "UpdateMicrofrontendsResponseEnvItemContentHintCase9",
-}) as any as S.Schema<UpdateMicrofrontendsResponseEnvItemContentHintCase9>;
+export const UpdateMicrofrontendsResponseEnvItemContentHintCase9 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<UpdateMicrofrontendsResponseEnvItemContentHintCase9>;
 
 export type UpdateMicrofrontendsResponseEnvItemContentHintCase10Type = "postgres-user";
 export const UpdateMicrofrontendsResponseEnvItemContentHintCase10Type = S.String;
@@ -36445,14 +33530,8 @@ export interface UpdateMicrofrontendsResponseEnvItemContentHintCase10 {
   storeId: string;
   type: UpdateMicrofrontendsResponseEnvItemContentHintCase10Type;
 }
-export const UpdateMicrofrontendsResponseEnvItemContentHintCase10 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: UpdateMicrofrontendsResponseEnvItemContentHintCase10Type,
-  }),
-).annotate({
-  identifier: "UpdateMicrofrontendsResponseEnvItemContentHintCase10",
-}) as any as S.Schema<UpdateMicrofrontendsResponseEnvItemContentHintCase10>;
+export const UpdateMicrofrontendsResponseEnvItemContentHintCase10 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<UpdateMicrofrontendsResponseEnvItemContentHintCase10>;
 
 export type UpdateMicrofrontendsResponseEnvItemContentHintCase11Type = "postgres-host";
 export const UpdateMicrofrontendsResponseEnvItemContentHintCase11Type = S.String;
@@ -36461,14 +33540,8 @@ export interface UpdateMicrofrontendsResponseEnvItemContentHintCase11 {
   storeId: string;
   type: UpdateMicrofrontendsResponseEnvItemContentHintCase11Type;
 }
-export const UpdateMicrofrontendsResponseEnvItemContentHintCase11 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: UpdateMicrofrontendsResponseEnvItemContentHintCase11Type,
-  }),
-).annotate({
-  identifier: "UpdateMicrofrontendsResponseEnvItemContentHintCase11",
-}) as any as S.Schema<UpdateMicrofrontendsResponseEnvItemContentHintCase11>;
+export const UpdateMicrofrontendsResponseEnvItemContentHintCase11 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<UpdateMicrofrontendsResponseEnvItemContentHintCase11>;
 
 export type UpdateMicrofrontendsResponseEnvItemContentHintCase12Type = "postgres-password";
 export const UpdateMicrofrontendsResponseEnvItemContentHintCase12Type = S.String;
@@ -36477,14 +33550,8 @@ export interface UpdateMicrofrontendsResponseEnvItemContentHintCase12 {
   storeId: string;
   type: UpdateMicrofrontendsResponseEnvItemContentHintCase12Type;
 }
-export const UpdateMicrofrontendsResponseEnvItemContentHintCase12 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: UpdateMicrofrontendsResponseEnvItemContentHintCase12Type,
-  }),
-).annotate({
-  identifier: "UpdateMicrofrontendsResponseEnvItemContentHintCase12",
-}) as any as S.Schema<UpdateMicrofrontendsResponseEnvItemContentHintCase12>;
+export const UpdateMicrofrontendsResponseEnvItemContentHintCase12 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<UpdateMicrofrontendsResponseEnvItemContentHintCase12>;
 
 export type UpdateMicrofrontendsResponseEnvItemContentHintCase13Type = "postgres-database";
 export const UpdateMicrofrontendsResponseEnvItemContentHintCase13Type = S.String;
@@ -36493,14 +33560,8 @@ export interface UpdateMicrofrontendsResponseEnvItemContentHintCase13 {
   storeId: string;
   type: UpdateMicrofrontendsResponseEnvItemContentHintCase13Type;
 }
-export const UpdateMicrofrontendsResponseEnvItemContentHintCase13 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: UpdateMicrofrontendsResponseEnvItemContentHintCase13Type,
-  }),
-).annotate({
-  identifier: "UpdateMicrofrontendsResponseEnvItemContentHintCase13",
-}) as any as S.Schema<UpdateMicrofrontendsResponseEnvItemContentHintCase13>;
+export const UpdateMicrofrontendsResponseEnvItemContentHintCase13 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<UpdateMicrofrontendsResponseEnvItemContentHintCase13>;
 
 export type UpdateMicrofrontendsResponseEnvItemContentHintCase14Type = "postgres-url-no-ssl";
 export const UpdateMicrofrontendsResponseEnvItemContentHintCase14Type = S.String;
@@ -36509,14 +33570,8 @@ export interface UpdateMicrofrontendsResponseEnvItemContentHintCase14 {
   storeId: string;
   type: UpdateMicrofrontendsResponseEnvItemContentHintCase14Type;
 }
-export const UpdateMicrofrontendsResponseEnvItemContentHintCase14 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: UpdateMicrofrontendsResponseEnvItemContentHintCase14Type,
-  }),
-).annotate({
-  identifier: "UpdateMicrofrontendsResponseEnvItemContentHintCase14",
-}) as any as S.Schema<UpdateMicrofrontendsResponseEnvItemContentHintCase14>;
+export const UpdateMicrofrontendsResponseEnvItemContentHintCase14 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<UpdateMicrofrontendsResponseEnvItemContentHintCase14>;
 
 export type UpdateMicrofrontendsResponseEnvItemContentHintCase15Type = "integration-store-secret";
 export const UpdateMicrofrontendsResponseEnvItemContentHintCase15Type = S.String;
@@ -36528,17 +33583,8 @@ export interface UpdateMicrofrontendsResponseEnvItemContentHintCase15 {
   storeId: string;
   type: UpdateMicrofrontendsResponseEnvItemContentHintCase15Type;
 }
-export const UpdateMicrofrontendsResponseEnvItemContentHintCase15 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    integrationConfigurationId: S.String,
-    integrationId: S.String,
-    integrationProductId: S.String,
-    storeId: S.String,
-    type: UpdateMicrofrontendsResponseEnvItemContentHintCase15Type,
-  }),
-).annotate({
-  identifier: "UpdateMicrofrontendsResponseEnvItemContentHintCase15",
-}) as any as S.Schema<UpdateMicrofrontendsResponseEnvItemContentHintCase15>;
+export const UpdateMicrofrontendsResponseEnvItemContentHintCase15 =
+  CreateProjectResponseEnvItemContentHintCase15 as any as S.Schema<UpdateMicrofrontendsResponseEnvItemContentHintCase15>;
 
 export type UpdateMicrofrontendsResponseEnvItemContentHintCase16Type = "flags-connection-string";
 export const UpdateMicrofrontendsResponseEnvItemContentHintCase16Type = S.String;
@@ -36547,14 +33593,8 @@ export interface UpdateMicrofrontendsResponseEnvItemContentHintCase16 {
   projectId: string;
   type: UpdateMicrofrontendsResponseEnvItemContentHintCase16Type;
 }
-export const UpdateMicrofrontendsResponseEnvItemContentHintCase16 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    projectId: S.String,
-    type: UpdateMicrofrontendsResponseEnvItemContentHintCase16Type,
-  }),
-).annotate({
-  identifier: "UpdateMicrofrontendsResponseEnvItemContentHintCase16",
-}) as any as S.Schema<UpdateMicrofrontendsResponseEnvItemContentHintCase16>;
+export const UpdateMicrofrontendsResponseEnvItemContentHintCase16 =
+  CreateProjectResponseEnvItemContentHintCase16 as any as S.Schema<UpdateMicrofrontendsResponseEnvItemContentHintCase16>;
 
 export type UpdateMicrofrontendsResponseEnvItemContentHint =
   | UpdateMicrofrontendsResponseEnvItemContentHintCase0
@@ -36590,14 +33630,8 @@ export interface UpdateMicrofrontendsResponseEnvItemInternalContentHint {
   encryptedValue: string;
   type: UpdateMicrofrontendsResponseEnvItemInternalContentHintType;
 }
-export const UpdateMicrofrontendsResponseEnvItemInternalContentHint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    encryptedValue: S.String,
-    type: UpdateMicrofrontendsResponseEnvItemInternalContentHintType,
-  }),
-).annotate({
-  identifier: "UpdateMicrofrontendsResponseEnvItemInternalContentHint",
-}) as any as S.Schema<UpdateMicrofrontendsResponseEnvItemInternalContentHint>;
+export const UpdateMicrofrontendsResponseEnvItemInternalContentHint =
+  CreateProjectResponseEnvItemInternalContentHint as any as S.Schema<UpdateMicrofrontendsResponseEnvItemInternalContentHint>;
 
 export type UpdateMicrofrontendsResponseEnvItemTargetCase0Item =
   | "development"
@@ -36609,9 +33643,8 @@ export const UpdateMicrofrontendsResponseEnvItemTargetCase0Item = S.String;
 
 export type UpdateMicrofrontendsResponseEnvItemTargetCase0List =
   Array<UpdateMicrofrontendsResponseEnvItemTargetCase0Item>;
-export const UpdateMicrofrontendsResponseEnvItemTargetCase0List = /*@__PURE__*/ S.Array(
-  UpdateMicrofrontendsResponseEnvItemTargetCase0Item,
-) as any as S.Schema<UpdateMicrofrontendsResponseEnvItemTargetCase0List>;
+export const UpdateMicrofrontendsResponseEnvItemTargetCase0List =
+  CreateProjectRequestEnvironmentVariablesItemTargetCase1List as any as S.Schema<UpdateMicrofrontendsResponseEnvItemTargetCase0List>;
 
 export type UpdateMicrofrontendsResponseEnvItemTargetCase1 =
   | "development"
@@ -36822,19 +33855,8 @@ export interface UpdateMicrofrontendsResponseGitProviderOptions {
   /** Whether the project requires commits to be signed & verified before deployments will be created. - `true`: require verified commits for this project (explicit override of the team setting). - `false`: do not require verified commits (explicit override of the team setting). - absent: inherit from `team.requireVerifiedCommits`. */
   requireVerifiedCommits?: boolean;
 }
-export const UpdateMicrofrontendsResponseGitProviderOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    consolidatedGitCommitStatus: S.optional(
-      CreateProjectResponseGitProviderOptionsConsolidatedGitCommitStatus,
-    ),
-    createDeployments: UpdateMicrofrontendsResponseGitProviderOptionsCreateDeployments,
-    disableRepositoryDispatchEvents: S.optional(S.Boolean),
-    gitCommitStatus: S.optional(S.Boolean),
-    requireVerifiedCommits: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "UpdateMicrofrontendsResponseGitProviderOptions",
-}) as any as S.Schema<UpdateMicrofrontendsResponseGitProviderOptions>;
+export const UpdateMicrofrontendsResponseGitProviderOptions =
+  CreateProjectResponseGitProviderOptions as any as S.Schema<UpdateMicrofrontendsResponseGitProviderOptions>;
 
 export type UpdateMicrofrontendsResponseInternalRoutesItemCase0 =
   CreateProjectResponseInternalRoutesItemCase0;
@@ -36859,15 +33881,7 @@ export interface UpdateMicrofrontendsResponseInternalRoutesItemCase1HasItemCase0
   value: CreateProjectResponseInternalRoutesItemCase1HasItemCase0Value;
 }
 export const UpdateMicrofrontendsResponseInternalRoutesItemCase1HasItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: UpdateMicrofrontendsResponseInternalRoutesItemCase1HasItemCase0Key,
-      type: UpdateMicrofrontendsResponseInternalRoutesItemCase1HasItemCase0Type,
-      value: CreateProjectResponseInternalRoutesItemCase1HasItemCase0Value,
-    }),
-  ).annotate({
-    identifier: "UpdateMicrofrontendsResponseInternalRoutesItemCase1HasItemCase0",
-  }) as any as S.Schema<UpdateMicrofrontendsResponseInternalRoutesItemCase1HasItemCase0>;
+  GetProjectsResponseBodyCase0ItemInternalRoutesItemCase1HasItemCase0 as any as S.Schema<UpdateMicrofrontendsResponseInternalRoutesItemCase1HasItemCase0>;
 
 export type UpdateMicrofrontendsResponseInternalRoutesItemCase1HasItemCase1Type = "host";
 export const UpdateMicrofrontendsResponseInternalRoutesItemCase1HasItemCase1Type = S.String;
@@ -36882,14 +33896,7 @@ export interface UpdateMicrofrontendsResponseInternalRoutesItemCase1HasItemCase1
   value: CreateProjectResponseInternalRoutesItemCase1HasItemCase0Value;
 }
 export const UpdateMicrofrontendsResponseInternalRoutesItemCase1HasItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: UpdateMicrofrontendsResponseInternalRoutesItemCase1HasItemCase1Type,
-      value: CreateProjectResponseInternalRoutesItemCase1HasItemCase0Value,
-    }),
-  ).annotate({
-    identifier: "UpdateMicrofrontendsResponseInternalRoutesItemCase1HasItemCase1",
-  }) as any as S.Schema<UpdateMicrofrontendsResponseInternalRoutesItemCase1HasItemCase1>;
+  GetProjectsResponseBodyCase0ItemInternalRoutesItemCase1HasItemCase1 as any as S.Schema<UpdateMicrofrontendsResponseInternalRoutesItemCase1HasItemCase1>;
 
 export type UpdateMicrofrontendsResponseInternalRoutesItemCase1HasItem =
   | UpdateMicrofrontendsResponseInternalRoutesItemCase1HasItemCase0
@@ -37035,18 +34042,8 @@ export interface UpdateMicrofrontendsResponseLastAliasRequest {
   toDeploymentId: string;
   type: UpdateMicrofrontendsResponseLastAliasRequestType;
 }
-export const UpdateMicrofrontendsResponseLastAliasRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fromDeploymentId: S.NullOr(S.String),
-    fromRollingReleaseId: S.optional(S.String),
-    jobStatus: UpdateMicrofrontendsResponseLastAliasRequestJobStatus,
-    requestedAt: S.Number,
-    toDeploymentId: S.String,
-    type: UpdateMicrofrontendsResponseLastAliasRequestType,
-  }),
-).annotate({
-  identifier: "UpdateMicrofrontendsResponseLastAliasRequest",
-}) as any as S.Schema<UpdateMicrofrontendsResponseLastAliasRequest>;
+export const UpdateMicrofrontendsResponseLastAliasRequest =
+  CreateProjectResponseLastAliasRequest as any as S.Schema<UpdateMicrofrontendsResponseLastAliasRequest>;
 
 export type UpdateMicrofrontendsResponseLatestDeploymentsItemAliasList = Array<string>;
 export const UpdateMicrofrontendsResponseLatestDeploymentsItemAliasList =
@@ -37079,14 +34076,7 @@ export interface UpdateMicrofrontendsResponseLatestDeploymentsItemBranchMatcher 
   type: UpdateMicrofrontendsResponseLatestDeploymentsItemBranchMatcherType;
 }
 export const UpdateMicrofrontendsResponseLatestDeploymentsItemBranchMatcher =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pattern: S.String,
-      type: UpdateMicrofrontendsResponseLatestDeploymentsItemBranchMatcherType,
-    }),
-  ).annotate({
-    identifier: "UpdateMicrofrontendsResponseLatestDeploymentsItemBranchMatcher",
-  }) as any as S.Schema<UpdateMicrofrontendsResponseLatestDeploymentsItemBranchMatcher>;
+  GetProjectsResponseBodyCase0ItemAliasItemDeploymentBranchMatcher as any as S.Schema<UpdateMicrofrontendsResponseLatestDeploymentsItemBranchMatcher>;
 
 export type UpdateMicrofrontendsResponseLatestDeploymentsItemBuildsItem =
   CreateProjectResponseAliasItemDeploymentBuildsItem;
@@ -37723,14 +34713,8 @@ export interface UpdateMicrofrontendsResponseOidcTokenConfig {
   /** - team: `https://oidc.vercel.com/[team_slug]` - global: `https://oidc.vercel.com` */
   issuerMode?: UpdateMicrofrontendsResponseOidcTokenConfigIssuerMode;
 }
-export const UpdateMicrofrontendsResponseOidcTokenConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-    issuerMode: S.optional(UpdateMicrofrontendsResponseOidcTokenConfigIssuerMode),
-  }),
-).annotate({
-  identifier: "UpdateMicrofrontendsResponseOidcTokenConfig",
-}) as any as S.Schema<UpdateMicrofrontendsResponseOidcTokenConfig>;
+export const UpdateMicrofrontendsResponseOidcTokenConfig =
+  CreateProjectRequestOidcTokenConfig as any as S.Schema<UpdateMicrofrontendsResponseOidcTokenConfig>;
 
 export type UpdateMicrofrontendsResponseOptionsAllowlistPathsItem =
   CreateProjectResponseOptionsAllowlistPathsItem;
@@ -37759,14 +34743,8 @@ export interface UpdateMicrofrontendsResponsePassport {
   connectorId: string;
   deploymentType: UpdateMicrofrontendsResponsePassportDeploymentType;
 }
-export const UpdateMicrofrontendsResponsePassport = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    connectorId: S.String,
-    deploymentType: UpdateMicrofrontendsResponsePassportDeploymentType,
-  }),
-).annotate({
-  identifier: "UpdateMicrofrontendsResponsePassport",
-}) as any as S.Schema<UpdateMicrofrontendsResponsePassport>;
+export const UpdateMicrofrontendsResponsePassport =
+  CreateProjectResponsePassport as any as S.Schema<UpdateMicrofrontendsResponsePassport>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type UpdateMicrofrontendsResponsePermissionsAccessGroupList = Array<ACLAction>;
@@ -40326,17 +37304,8 @@ export interface UpdateMicrofrontendsResponseProtectionBypassValueCase0 {
   integrationId: string;
   scope: UpdateMicrofrontendsResponseProtectionBypassValueCase0Scope;
 }
-export const UpdateMicrofrontendsResponseProtectionBypassValueCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    configurationId: S.String,
-    createdAt: S.Number,
-    createdBy: S.String,
-    integrationId: S.String,
-    scope: UpdateMicrofrontendsResponseProtectionBypassValueCase0Scope,
-  }),
-).annotate({
-  identifier: "UpdateMicrofrontendsResponseProtectionBypassValueCase0",
-}) as any as S.Schema<UpdateMicrofrontendsResponseProtectionBypassValueCase0>;
+export const UpdateMicrofrontendsResponseProtectionBypassValueCase0 =
+  CreateProjectResponseProtectionBypassValueCase0 as any as S.Schema<UpdateMicrofrontendsResponseProtectionBypassValueCase0>;
 
 export type UpdateMicrofrontendsResponseProtectionBypassValueCase1Scope = "automation-bypass";
 export const UpdateMicrofrontendsResponseProtectionBypassValueCase1Scope = S.String;
@@ -40350,17 +37319,8 @@ export interface UpdateMicrofrontendsResponseProtectionBypassValueCase1 {
   note?: string;
   scope: UpdateMicrofrontendsResponseProtectionBypassValueCase1Scope;
 }
-export const UpdateMicrofrontendsResponseProtectionBypassValueCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdAt: S.Number,
-    createdBy: S.String,
-    isEnvVar: S.optional(S.Boolean),
-    note: S.optional(S.String),
-    scope: UpdateMicrofrontendsResponseProtectionBypassValueCase1Scope,
-  }),
-).annotate({
-  identifier: "UpdateMicrofrontendsResponseProtectionBypassValueCase1",
-}) as any as S.Schema<UpdateMicrofrontendsResponseProtectionBypassValueCase1>;
+export const UpdateMicrofrontendsResponseProtectionBypassValueCase1 =
+  CreateProjectResponseProtectionBypassValueCase1 as any as S.Schema<UpdateMicrofrontendsResponseProtectionBypassValueCase1>;
 
 export type UpdateMicrofrontendsResponseProtectionBypassValue =
   | UpdateMicrofrontendsResponseProtectionBypassValueCase0
@@ -40409,15 +37369,7 @@ export interface UpdateMicrofrontendsResponseResourceConfigBuildMachineElasticTr
   direction: UpdateMicrofrontendsResponseResourceConfigBuildMachineElasticTransitionDirection;
 }
 export const UpdateMicrofrontendsResponseResourceConfigBuildMachineElasticTransition =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      algorithmVersion: S.String,
-      at: S.Number,
-      direction: UpdateMicrofrontendsResponseResourceConfigBuildMachineElasticTransitionDirection,
-    }),
-  ).annotate({
-    identifier: "UpdateMicrofrontendsResponseResourceConfigBuildMachineElasticTransition",
-  }) as any as S.Schema<UpdateMicrofrontendsResponseResourceConfigBuildMachineElasticTransition>;
+  CreateProjectResponseDefaultResourceConfigBuildMachineElasticTransition as any as S.Schema<UpdateMicrofrontendsResponseResourceConfigBuildMachineElasticTransition>;
 
 export type UpdateMicrofrontendsResponseResourceConfigBuildMachineSelection = "elastic" | "fixed";
 export const UpdateMicrofrontendsResponseResourceConfigBuildMachineSelection = S.String;
@@ -40437,13 +37389,8 @@ export const UpdateMicrofrontendsResponseResourceConfigBuildQueueConfiguration =
 export interface UpdateMicrofrontendsResponseResourceConfigBuildQueue {
   configuration?: UpdateMicrofrontendsResponseResourceConfigBuildQueueConfiguration;
 }
-export const UpdateMicrofrontendsResponseResourceConfigBuildQueue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    configuration: S.optional(UpdateMicrofrontendsResponseResourceConfigBuildQueueConfiguration),
-  }),
-).annotate({
-  identifier: "UpdateMicrofrontendsResponseResourceConfigBuildQueue",
-}) as any as S.Schema<UpdateMicrofrontendsResponseResourceConfigBuildQueue>;
+export const UpdateMicrofrontendsResponseResourceConfigBuildQueue =
+  CreateProjectRequestResourceConfigBuildQueue as any as S.Schema<UpdateMicrofrontendsResponseResourceConfigBuildQueue>;
 
 export type UpdateMicrofrontendsResponseResourceConfigFunctionDefaultMemoryType =
   | "performance"
@@ -40650,9 +37597,8 @@ export const UpdateMicrofrontendsResponseSandboxFailoverRegionsItem = S.String;
 
 export type UpdateMicrofrontendsResponseSandboxFailoverRegionsList =
   Array<UpdateMicrofrontendsResponseSandboxFailoverRegionsItem>;
-export const UpdateMicrofrontendsResponseSandboxFailoverRegionsList = /*@__PURE__*/ S.Array(
-  UpdateMicrofrontendsResponseSandboxFailoverRegionsItem,
-) as any as S.Schema<UpdateMicrofrontendsResponseSandboxFailoverRegionsList>;
+export const UpdateMicrofrontendsResponseSandboxFailoverRegionsList =
+  CreateProjectRequestEnvironmentVariablesItemTargetCase1List as any as S.Schema<UpdateMicrofrontendsResponseSandboxFailoverRegionsList>;
 
 export type UpdateMicrofrontendsResponseSandboxRegion =
   | "arn1"
@@ -40680,14 +37626,8 @@ export interface UpdateMicrofrontendsResponseSandbox {
   failoverRegions?: UpdateMicrofrontendsResponseSandboxFailoverRegionsList;
   region?: UpdateMicrofrontendsResponseSandboxRegion;
 }
-export const UpdateMicrofrontendsResponseSandbox = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    failoverRegions: S.optional(UpdateMicrofrontendsResponseSandboxFailoverRegionsList),
-    region: S.optional(UpdateMicrofrontendsResponseSandboxRegion),
-  }),
-).annotate({
-  identifier: "UpdateMicrofrontendsResponseSandbox",
-}) as any as S.Schema<UpdateMicrofrontendsResponseSandbox>;
+export const UpdateMicrofrontendsResponseSandbox =
+  CreateProjectResponseSandbox as any as S.Schema<UpdateMicrofrontendsResponseSandbox>;
 
 export type UpdateMicrofrontendsResponseSecurityFirewallBypassIpsList = Array<string>;
 export const UpdateMicrofrontendsResponseSecurityFirewallBypassIpsList =
@@ -40716,14 +37656,8 @@ export interface UpdateMicrofrontendsResponseSecurityManagedRulesAiBots {
   action?: UpdateMicrofrontendsResponseSecurityManagedRulesAiBotsAction;
   active: boolean;
 }
-export const UpdateMicrofrontendsResponseSecurityManagedRulesAiBots = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.optional(UpdateMicrofrontendsResponseSecurityManagedRulesAiBotsAction),
-    active: S.Boolean,
-  }),
-).annotate({
-  identifier: "UpdateMicrofrontendsResponseSecurityManagedRulesAiBots",
-}) as any as S.Schema<UpdateMicrofrontendsResponseSecurityManagedRulesAiBots>;
+export const UpdateMicrofrontendsResponseSecurityManagedRulesAiBots =
+  CreateProjectResponseSecurityManagedRulesAiBots as any as S.Schema<UpdateMicrofrontendsResponseSecurityManagedRulesAiBots>;
 
 export type UpdateMicrofrontendsResponseSecurityManagedRulesBotFilterAction =
   | "challenge"
@@ -40735,15 +37669,8 @@ export interface UpdateMicrofrontendsResponseSecurityManagedRulesBotFilter {
   action?: UpdateMicrofrontendsResponseSecurityManagedRulesBotFilterAction;
   active: boolean;
 }
-export const UpdateMicrofrontendsResponseSecurityManagedRulesBotFilter = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      action: S.optional(UpdateMicrofrontendsResponseSecurityManagedRulesBotFilterAction),
-      active: S.Boolean,
-    }),
-).annotate({
-  identifier: "UpdateMicrofrontendsResponseSecurityManagedRulesBotFilter",
-}) as any as S.Schema<UpdateMicrofrontendsResponseSecurityManagedRulesBotFilter>;
+export const UpdateMicrofrontendsResponseSecurityManagedRulesBotFilter =
+  GetProjectsResponseBodyCase0ItemSecurityManagedRulesAiBots as any as S.Schema<UpdateMicrofrontendsResponseSecurityManagedRulesBotFilter>;
 
 export type UpdateMicrofrontendsResponseSecurityManagedRulesOwaspAction =
   | "challenge"
@@ -40755,14 +37682,8 @@ export interface UpdateMicrofrontendsResponseSecurityManagedRulesOwasp {
   action?: UpdateMicrofrontendsResponseSecurityManagedRulesOwaspAction;
   active: boolean;
 }
-export const UpdateMicrofrontendsResponseSecurityManagedRulesOwasp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.optional(UpdateMicrofrontendsResponseSecurityManagedRulesOwaspAction),
-    active: S.Boolean,
-  }),
-).annotate({
-  identifier: "UpdateMicrofrontendsResponseSecurityManagedRulesOwasp",
-}) as any as S.Schema<UpdateMicrofrontendsResponseSecurityManagedRulesOwasp>;
+export const UpdateMicrofrontendsResponseSecurityManagedRulesOwasp =
+  CreateProjectResponseSecurityManagedRulesAiBots as any as S.Schema<UpdateMicrofrontendsResponseSecurityManagedRulesOwasp>;
 
 export type UpdateMicrofrontendsResponseSecurityManagedRulesTrafficSourcesAction =
   | "challenge"
@@ -40775,14 +37696,7 @@ export interface UpdateMicrofrontendsResponseSecurityManagedRulesTrafficSources 
   active: boolean;
 }
 export const UpdateMicrofrontendsResponseSecurityManagedRulesTrafficSources =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      action: S.optional(UpdateMicrofrontendsResponseSecurityManagedRulesTrafficSourcesAction),
-      active: S.Boolean,
-    }),
-  ).annotate({
-    identifier: "UpdateMicrofrontendsResponseSecurityManagedRulesTrafficSources",
-  }) as any as S.Schema<UpdateMicrofrontendsResponseSecurityManagedRulesTrafficSources>;
+  GetProjectsResponseBodyCase0ItemSecurityManagedRulesBotFilter as any as S.Schema<UpdateMicrofrontendsResponseSecurityManagedRulesTrafficSources>;
 
 export type UpdateMicrofrontendsResponseSecurityManagedRulesVercelRulesetAction =
   | "challenge"
@@ -40795,14 +37709,7 @@ export interface UpdateMicrofrontendsResponseSecurityManagedRulesVercelRuleset {
   active: boolean;
 }
 export const UpdateMicrofrontendsResponseSecurityManagedRulesVercelRuleset =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      action: S.optional(UpdateMicrofrontendsResponseSecurityManagedRulesVercelRulesetAction),
-      active: S.Boolean,
-    }),
-  ).annotate({
-    identifier: "UpdateMicrofrontendsResponseSecurityManagedRulesVercelRuleset",
-  }) as any as S.Schema<UpdateMicrofrontendsResponseSecurityManagedRulesVercelRuleset>;
+  GetProjectsResponseBodyCase0ItemSecurityManagedRulesBotFilter as any as S.Schema<UpdateMicrofrontendsResponseSecurityManagedRulesVercelRuleset>;
 
 export interface UpdateMicrofrontendsResponseSecurityManagedRules {
   ai_bots: UpdateMicrofrontendsResponseSecurityManagedRulesAiBots;
@@ -41039,22 +37946,13 @@ export interface UpdateMicrofrontendsResponseServicesItem {
   /** Service kind (Service.type). Omitted for schemas that do not define one. */
   serviceType?: UpdateMicrofrontendsResponseServicesItemServiceType;
 }
-export const UpdateMicrofrontendsResponseServicesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    framework: S.optional(UpdateMicrofrontendsResponseServicesItemFramework),
-    runtime: S.optional(S.String),
-    serviceName: S.String,
-    serviceType: S.optional(UpdateMicrofrontendsResponseServicesItemServiceType),
-  }),
-).annotate({
-  identifier: "UpdateMicrofrontendsResponseServicesItem",
-}) as any as S.Schema<UpdateMicrofrontendsResponseServicesItem>;
+export const UpdateMicrofrontendsResponseServicesItem =
+  CreateProjectResponseServicesItem as any as S.Schema<UpdateMicrofrontendsResponseServicesItem>;
 
 export type UpdateMicrofrontendsResponseServicesList =
   Array<UpdateMicrofrontendsResponseServicesItem>;
-export const UpdateMicrofrontendsResponseServicesList = /*@__PURE__*/ S.Array(
-  UpdateMicrofrontendsResponseServicesItem,
-) as any as S.Schema<UpdateMicrofrontendsResponseServicesList>;
+export const UpdateMicrofrontendsResponseServicesList =
+  CreateProjectResponseServicesList as any as S.Schema<UpdateMicrofrontendsResponseServicesList>;
 
 export type UpdateMicrofrontendsResponseSkewProtectionAllowedDomainsList = Array<string>;
 export const UpdateMicrofrontendsResponseSkewProtectionAllowedDomainsList =
@@ -41090,21 +37988,8 @@ export interface UpdateMicrofrontendsResponseSsoProtection {
   cve55182MigrationAppliedFrom?: UpdateMicrofrontendsResponseSsoProtectionCve55182MigrationAppliedFrom | null;
   deploymentType: UpdateMicrofrontendsResponseSsoProtectionDeploymentType;
 }
-export const UpdateMicrofrontendsResponseSsoProtection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    april2026SecurityIncidentMigrationAppliedFrom: S.optional(
-      S.NullOr(
-        UpdateMicrofrontendsResponseSsoProtectionApril2026SecurityIncidentMigrationAppliedFrom,
-      ),
-    ),
-    cve55182MigrationAppliedFrom: S.optional(
-      S.NullOr(UpdateMicrofrontendsResponseSsoProtectionCve55182MigrationAppliedFrom),
-    ),
-    deploymentType: UpdateMicrofrontendsResponseSsoProtectionDeploymentType,
-  }),
-).annotate({
-  identifier: "UpdateMicrofrontendsResponseSsoProtection",
-}) as any as S.Schema<UpdateMicrofrontendsResponseSsoProtection>;
+export const UpdateMicrofrontendsResponseSsoProtection =
+  GetProjectsResponseBodyCase0ItemSsoProtection as any as S.Schema<UpdateMicrofrontendsResponseSsoProtection>;
 
 export type UpdateMicrofrontendsResponseStaticIpsRegionsList = Array<string>;
 export const UpdateMicrofrontendsResponseStaticIpsRegionsList =
@@ -41148,14 +38033,8 @@ export interface UpdateMicrofrontendsResponseTargetsValueBranchMatcher {
   /** The type of matching to perform */
   type: UpdateMicrofrontendsResponseTargetsValueBranchMatcherType;
 }
-export const UpdateMicrofrontendsResponseTargetsValueBranchMatcher = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pattern: S.String,
-    type: UpdateMicrofrontendsResponseTargetsValueBranchMatcherType,
-  }),
-).annotate({
-  identifier: "UpdateMicrofrontendsResponseTargetsValueBranchMatcher",
-}) as any as S.Schema<UpdateMicrofrontendsResponseTargetsValueBranchMatcher>;
+export const UpdateMicrofrontendsResponseTargetsValueBranchMatcher =
+  CreateProjectResponseAliasItemDeploymentBranchMatcher as any as S.Schema<UpdateMicrofrontendsResponseTargetsValueBranchMatcher>;
 
 export type UpdateMicrofrontendsResponseTargetsValueBuildsItem =
   CreateProjectResponseAliasItemDeploymentBuildsItem;
@@ -41347,22 +38226,13 @@ export interface UpdateMicrofrontendsResponseTracingSamplingRulesItem {
   rate: number;
   requestPath?: string;
 }
-export const UpdateMicrofrontendsResponseTracingSamplingRulesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    destination: S.optional(UpdateMicrofrontendsResponseTracingSamplingRulesItemDestination),
-    env: S.optional(UpdateMicrofrontendsResponseTracingSamplingRulesItemEnv),
-    rate: S.Number,
-    requestPath: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateMicrofrontendsResponseTracingSamplingRulesItem",
-}) as any as S.Schema<UpdateMicrofrontendsResponseTracingSamplingRulesItem>;
+export const UpdateMicrofrontendsResponseTracingSamplingRulesItem =
+  CreateProjectResponseTracingSamplingRulesItem as any as S.Schema<UpdateMicrofrontendsResponseTracingSamplingRulesItem>;
 
 export type UpdateMicrofrontendsResponseTracingSamplingRulesList =
   Array<UpdateMicrofrontendsResponseTracingSamplingRulesItem>;
-export const UpdateMicrofrontendsResponseTracingSamplingRulesList = /*@__PURE__*/ S.Array(
-  UpdateMicrofrontendsResponseTracingSamplingRulesItem,
-) as any as S.Schema<UpdateMicrofrontendsResponseTracingSamplingRulesList>;
+export const UpdateMicrofrontendsResponseTracingSamplingRulesList =
+  CreateProjectResponseTracingSamplingRulesList as any as S.Schema<UpdateMicrofrontendsResponseTracingSamplingRulesList>;
 
 export interface UpdateMicrofrontendsResponseTracing {
   domains?: string;
@@ -41426,13 +38296,8 @@ export const UpdateMicrofrontendsResponseTrustedIpsCase1DeploymentType = S.Strin
 export interface UpdateMicrofrontendsResponseTrustedIpsCase1 {
   deploymentType: UpdateMicrofrontendsResponseTrustedIpsCase1DeploymentType;
 }
-export const UpdateMicrofrontendsResponseTrustedIpsCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deploymentType: UpdateMicrofrontendsResponseTrustedIpsCase1DeploymentType,
-  }),
-).annotate({
-  identifier: "UpdateMicrofrontendsResponseTrustedIpsCase1",
-}) as any as S.Schema<UpdateMicrofrontendsResponseTrustedIpsCase1>;
+export const UpdateMicrofrontendsResponseTrustedIpsCase1 =
+  CreateProjectRequestSsoProtection as any as S.Schema<UpdateMicrofrontendsResponseTrustedIpsCase1>;
 
 export type UpdateMicrofrontendsResponseTrustedIps =
   | UpdateMicrofrontendsResponseTrustedIpsCase0
@@ -41754,17 +38619,8 @@ export interface UpdateMicrofrontendsResponseUsageStatus {
   /** Per-project throttle, set explicitly for this project (e.g. via the per-project Flat Rate CDN endpoint). */
   throttled?: boolean;
 }
-export const UpdateMicrofrontendsResponseUsageStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bypassThrottleUntil: S.optional(S.Number),
-    exceededAllowanceUntil: S.optional(S.Number),
-    kind: UpdateMicrofrontendsResponseUsageStatusKind,
-    teamThrottled: S.optional(S.Boolean),
-    throttled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "UpdateMicrofrontendsResponseUsageStatus",
-}) as any as S.Schema<UpdateMicrofrontendsResponseUsageStatus>;
+export const UpdateMicrofrontendsResponseUsageStatus =
+  CreateProjectResponseUsageStatus as any as S.Schema<UpdateMicrofrontendsResponseUsageStatus>;
 
 export type UpdateMicrofrontendsResponseWebAnalytics = CreateProjectResponseWebAnalytics;
 export const UpdateMicrofrontendsResponseWebAnalytics = CreateProjectResponseWebAnalytics;
@@ -42087,13 +38943,8 @@ export const UpdateProjectRequestResourceConfigBuildQueueConfiguration = S.Strin
 export interface UpdateProjectRequestResourceConfigBuildQueue {
   configuration?: UpdateProjectRequestResourceConfigBuildQueueConfiguration | (string & {});
 }
-export const UpdateProjectRequestResourceConfigBuildQueue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    configuration: S.optional(UpdateProjectRequestResourceConfigBuildQueueConfiguration),
-  }),
-).annotate({
-  identifier: "UpdateProjectRequestResourceConfigBuildQueue",
-}) as any as S.Schema<UpdateProjectRequestResourceConfigBuildQueue>;
+export const UpdateProjectRequestResourceConfigBuildQueue =
+  CreateProjectRequestResourceConfigBuildQueue as any as S.Schema<UpdateProjectRequestResourceConfigBuildQueue>;
 
 /** The regions to deploy Vercel Functions to for this project */
 export type UpdateProjectRequestResourceConfigFunctionDefaultRegionsList = Array<string>;
@@ -42133,15 +38984,7 @@ export interface UpdateProjectRequestResourceConfigBuildMachineElasticTransition
   algorithmVersion: string;
 }
 export const UpdateProjectRequestResourceConfigBuildMachineElasticTransition =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      at: S.Number,
-      direction: UpdateProjectRequestResourceConfigBuildMachineElasticTransitionDirection,
-      algorithmVersion: S.String,
-    }),
-  ).annotate({
-    identifier: "UpdateProjectRequestResourceConfigBuildMachineElasticTransition",
-  }) as any as S.Schema<UpdateProjectRequestResourceConfigBuildMachineElasticTransition>;
+  CreateProjectRequestResourceConfigBuildMachineElasticTransition as any as S.Schema<UpdateProjectRequestResourceConfigBuildMachineElasticTransition>;
 
 /** Specifies resource override configuration for the project */
 export interface UpdateProjectRequestResourceConfig {
@@ -42284,14 +39127,8 @@ export interface UpdateProjectRequestOidcTokenConfig {
   /** team: `https://oidc.vercel.com/[team_slug]` global: `https://oidc.vercel.com` */
   issuerMode?: UpdateProjectRequestOidcTokenConfigIssuerMode | (string & {});
 }
-export const UpdateProjectRequestOidcTokenConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-    issuerMode: S.optional(UpdateProjectRequestOidcTokenConfigIssuerMode),
-  }),
-).annotate({
-  identifier: "UpdateProjectRequestOidcTokenConfig",
-}) as any as S.Schema<UpdateProjectRequestOidcTokenConfig>;
+export const UpdateProjectRequestOidcTokenConfig =
+  CreateProjectRequestOidcTokenConfig as any as S.Schema<UpdateProjectRequestOidcTokenConfig>;
 
 /** Specify if the password will apply to every Deployment Target or just Preview */
 export type UpdateProjectRequestPasswordProtectionDeploymentType =
@@ -42387,9 +39224,8 @@ export const UpdateProjectRequestSandboxFailoverRegionsItem = S.String;
 export type UpdateProjectRequestSandboxFailoverRegionsList = Array<
   UpdateProjectRequestSandboxFailoverRegionsItem | (string & {})
 >;
-export const UpdateProjectRequestSandboxFailoverRegionsList = /*@__PURE__*/ S.Array(
-  UpdateProjectRequestSandboxFailoverRegionsItem,
-) as any as S.Schema<UpdateProjectRequestSandboxFailoverRegionsList>;
+export const UpdateProjectRequestSandboxFailoverRegionsList =
+  CreateProjectRequestEnvironmentVariablesItemTargetCase1List as any as S.Schema<UpdateProjectRequestSandboxFailoverRegionsList>;
 
 /** Specifies the default region and failover regions for sandboxes created in the project */
 export interface UpdateProjectRequestSandbox {
@@ -42398,14 +39234,8 @@ export interface UpdateProjectRequestSandbox {
   /** The regions sandboxes in this project fall back to when they cannot be created in `region`. */
   failoverRegions?: UpdateProjectRequestSandboxFailoverRegionsList;
 }
-export const UpdateProjectRequestSandbox = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    region: S.optional(UpdateProjectRequestSandboxRegion),
-    failoverRegions: S.optional(UpdateProjectRequestSandboxFailoverRegionsList),
-  }),
-).annotate({
-  identifier: "UpdateProjectRequestSandbox",
-}) as any as S.Schema<UpdateProjectRequestSandbox>;
+export const UpdateProjectRequestSandbox =
+  CreateProjectRequestSandbox as any as S.Schema<UpdateProjectRequestSandbox>;
 
 /** Specify if the Vercel Authentication (SSO Protection) will apply to every Deployment Target or just Preview */
 export type UpdateProjectRequestSsoProtectionDeploymentType =
@@ -42420,13 +39250,8 @@ export interface UpdateProjectRequestSsoProtection {
   /** Specify if the Vercel Authentication (SSO Protection) will apply to every Deployment Target or just Preview */
   deploymentType: UpdateProjectRequestSsoProtectionDeploymentType | (string & {});
 }
-export const UpdateProjectRequestSsoProtection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deploymentType: UpdateProjectRequestSsoProtectionDeploymentType,
-  }),
-).annotate({
-  identifier: "UpdateProjectRequestSsoProtection",
-}) as any as S.Schema<UpdateProjectRequestSsoProtection>;
+export const UpdateProjectRequestSsoProtection =
+  CreateProjectRequestSsoProtection as any as S.Schema<UpdateProjectRequestSsoProtection>;
 
 /** Specify if the Trusted IPs will apply to every Deployment Target or just Preview */
 export type UpdateProjectRequestTrustedIpsDeploymentType =
@@ -42811,9 +39636,7 @@ export type UpdateProjectRequestDeploymentPolicyCase0DeploymentSourcesCase0ItemS
   UpdateProjectRequestDeploymentPolicyCase0DeploymentSourcesCase0ItemSourcesItem | (string & {})
 >;
 export const UpdateProjectRequestDeploymentPolicyCase0DeploymentSourcesCase0ItemSourcesList =
-  /*@__PURE__*/ S.Array(
-    UpdateProjectRequestDeploymentPolicyCase0DeploymentSourcesCase0ItemSourcesItem,
-  ) as any as S.Schema<UpdateProjectRequestDeploymentPolicyCase0DeploymentSourcesCase0ItemSourcesList>;
+  CreateProjectResponseDeploymentPolicyDeploymentSourcesItemSourcesList as any as S.Schema<UpdateProjectRequestDeploymentPolicyCase0DeploymentSourcesCase0ItemSourcesList>;
 
 export interface UpdateProjectRequestDeploymentPolicyCase0DeploymentSourcesCase0Item {
   enabled: boolean;
@@ -43132,14 +39955,8 @@ export interface UpdateProjectResponseAliasItemDeploymentBranchMatcher {
   /** The type of matching to perform */
   type: UpdateProjectResponseAliasItemDeploymentBranchMatcherType;
 }
-export const UpdateProjectResponseAliasItemDeploymentBranchMatcher = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pattern: S.String,
-    type: UpdateProjectResponseAliasItemDeploymentBranchMatcherType,
-  }),
-).annotate({
-  identifier: "UpdateProjectResponseAliasItemDeploymentBranchMatcher",
-}) as any as S.Schema<UpdateProjectResponseAliasItemDeploymentBranchMatcher>;
+export const UpdateProjectResponseAliasItemDeploymentBranchMatcher =
+  CreateProjectResponseAliasItemDeploymentBranchMatcher as any as S.Schema<UpdateProjectResponseAliasItemDeploymentBranchMatcher>;
 
 export type UpdateProjectResponseAliasItemDeploymentBuildsItem =
   CreateProjectResponseAliasItemDeploymentBuildsItem;
@@ -43416,14 +40233,8 @@ export interface UpdateProjectResponseCreatorCase0ViaCase0 {
   app: CreateProjectResponseCreatorCase0ViaCase0App;
   type: UpdateProjectResponseCreatorCase0ViaCase0Type;
 }
-export const UpdateProjectResponseCreatorCase0ViaCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app: CreateProjectResponseCreatorCase0ViaCase0App,
-    type: UpdateProjectResponseCreatorCase0ViaCase0Type,
-  }),
-).annotate({
-  identifier: "UpdateProjectResponseCreatorCase0ViaCase0",
-}) as any as S.Schema<UpdateProjectResponseCreatorCase0ViaCase0>;
+export const UpdateProjectResponseCreatorCase0ViaCase0 =
+  CreateProjectResponseCreatorCase0ViaCase0 as any as S.Schema<UpdateProjectResponseCreatorCase0ViaCase0>;
 
 export type UpdateProjectResponseCreatorCase0ViaCase1Integration =
   CreateProjectResponseCreatorCase0ViaCase1Integration;
@@ -43438,14 +40249,8 @@ export interface UpdateProjectResponseCreatorCase0ViaCase1 {
   integration: CreateProjectResponseCreatorCase0ViaCase1Integration;
   type: UpdateProjectResponseCreatorCase0ViaCase1Type;
 }
-export const UpdateProjectResponseCreatorCase0ViaCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    integration: CreateProjectResponseCreatorCase0ViaCase1Integration,
-    type: UpdateProjectResponseCreatorCase0ViaCase1Type,
-  }),
-).annotate({
-  identifier: "UpdateProjectResponseCreatorCase0ViaCase1",
-}) as any as S.Schema<UpdateProjectResponseCreatorCase0ViaCase1>;
+export const UpdateProjectResponseCreatorCase0ViaCase1 =
+  CreateProjectResponseCreatorCase0ViaCase1 as any as S.Schema<UpdateProjectResponseCreatorCase0ViaCase1>;
 
 export type UpdateProjectResponseCreatorCase0Via =
   | UpdateProjectResponseCreatorCase0ViaCase0
@@ -43481,14 +40286,8 @@ export interface UpdateProjectResponseCreatorCase1 {
   app: CreateProjectResponseCreatorCase0ViaCase0App;
   type: UpdateProjectResponseCreatorCase1Type;
 }
-export const UpdateProjectResponseCreatorCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app: CreateProjectResponseCreatorCase0ViaCase0App,
-    type: UpdateProjectResponseCreatorCase1Type,
-  }),
-).annotate({
-  identifier: "UpdateProjectResponseCreatorCase1",
-}) as any as S.Schema<UpdateProjectResponseCreatorCase1>;
+export const UpdateProjectResponseCreatorCase1 =
+  CreateProjectResponseCreatorCase0ViaCase0 as any as S.Schema<UpdateProjectResponseCreatorCase1>;
 
 export type UpdateProjectResponseCreatorCase2Integration =
   CreateProjectResponseCreatorCase0ViaCase1Integration;
@@ -43502,14 +40301,8 @@ export interface UpdateProjectResponseCreatorCase2 {
   integration: CreateProjectResponseCreatorCase0ViaCase1Integration;
   type: UpdateProjectResponseCreatorCase2Type;
 }
-export const UpdateProjectResponseCreatorCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    integration: CreateProjectResponseCreatorCase0ViaCase1Integration,
-    type: UpdateProjectResponseCreatorCase2Type,
-  }),
-).annotate({
-  identifier: "UpdateProjectResponseCreatorCase2",
-}) as any as S.Schema<UpdateProjectResponseCreatorCase2>;
+export const UpdateProjectResponseCreatorCase2 =
+  CreateProjectResponseCreatorCase0ViaCase1 as any as S.Schema<UpdateProjectResponseCreatorCase2>;
 
 export type UpdateProjectResponseCreatorCase3Type = "system";
 export const UpdateProjectResponseCreatorCase3Type = S.String;
@@ -43517,13 +40310,8 @@ export const UpdateProjectResponseCreatorCase3Type = S.String;
 export interface UpdateProjectResponseCreatorCase3 {
   type: UpdateProjectResponseCreatorCase3Type;
 }
-export const UpdateProjectResponseCreatorCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: UpdateProjectResponseCreatorCase3Type,
-  }),
-).annotate({
-  identifier: "UpdateProjectResponseCreatorCase3",
-}) as any as S.Schema<UpdateProjectResponseCreatorCase3>;
+export const UpdateProjectResponseCreatorCase3 =
+  CreateProjectResponseCreatorCase3 as any as S.Schema<UpdateProjectResponseCreatorCase3>;
 
 export type UpdateProjectResponseCreator =
   | UpdateProjectResponseCreatorCase0
@@ -43551,24 +40339,13 @@ export interface UpdateProjectResponseCronsDefinitionsItem {
   /** The origin of this definition. 'api' means created via the API. Undefined means it originated from a deployment (vercel.json). */
   source?: UpdateProjectResponseCronsDefinitionsItemSource;
 }
-export const UpdateProjectResponseCronsDefinitionsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    host: S.String,
-    hostInferred: S.optional(S.Boolean),
-    path: S.String,
-    schedule: S.String,
-    source: S.optional(UpdateProjectResponseCronsDefinitionsItemSource),
-  }),
-).annotate({
-  identifier: "UpdateProjectResponseCronsDefinitionsItem",
-}) as any as S.Schema<UpdateProjectResponseCronsDefinitionsItem>;
+export const UpdateProjectResponseCronsDefinitionsItem =
+  CreateProjectResponseCronsDefinitionsItem as any as S.Schema<UpdateProjectResponseCronsDefinitionsItem>;
 
 export type UpdateProjectResponseCronsDefinitionsList =
   Array<UpdateProjectResponseCronsDefinitionsItem>;
-export const UpdateProjectResponseCronsDefinitionsList = /*@__PURE__*/ S.Array(
-  UpdateProjectResponseCronsDefinitionsItem,
-) as any as S.Schema<UpdateProjectResponseCronsDefinitionsList>;
+export const UpdateProjectResponseCronsDefinitionsList =
+  CreateProjectResponseCronsDefinitionsList as any as S.Schema<UpdateProjectResponseCronsDefinitionsList>;
 
 export interface UpdateProjectResponseCrons {
   definitions: UpdateProjectResponseCronsDefinitionsList;
@@ -43580,17 +40357,8 @@ export interface UpdateProjectResponseCrons {
   enabledAt: number;
   updatedAt: number;
 }
-export const UpdateProjectResponseCrons = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    definitions: UpdateProjectResponseCronsDefinitionsList,
-    deploymentId: S.NullOr(S.String),
-    disabledAt: S.NullOr(S.Number),
-    enabledAt: S.Number,
-    updatedAt: S.Number,
-  }),
-).annotate({
-  identifier: "UpdateProjectResponseCrons",
-}) as any as S.Schema<UpdateProjectResponseCrons>;
+export const UpdateProjectResponseCrons =
+  CreateProjectResponseCrons as any as S.Schema<UpdateProjectResponseCrons>;
 
 /** The type of matching to perform */
 export type UpdateProjectResponseCustomEnvironmentsItemBranchMatcherType =
@@ -43606,15 +40374,8 @@ export interface UpdateProjectResponseCustomEnvironmentsItemBranchMatcher {
   /** The type of matching to perform */
   type: UpdateProjectResponseCustomEnvironmentsItemBranchMatcherType;
 }
-export const UpdateProjectResponseCustomEnvironmentsItemBranchMatcher = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pattern: S.String,
-      type: UpdateProjectResponseCustomEnvironmentsItemBranchMatcherType,
-    }),
-).annotate({
-  identifier: "UpdateProjectResponseCustomEnvironmentsItemBranchMatcher",
-}) as any as S.Schema<UpdateProjectResponseCustomEnvironmentsItemBranchMatcher>;
+export const UpdateProjectResponseCustomEnvironmentsItemBranchMatcher =
+  CreateProjectResponseCustomEnvironmentsItemBranchMatcher as any as S.Schema<UpdateProjectResponseCustomEnvironmentsItemBranchMatcher>;
 
 /** List of aliases for the current deployment */
 export type UpdateProjectResponseCustomEnvironmentsItemCurrentDeploymentAliasesList = Array<string>;
@@ -43765,15 +40526,7 @@ export interface UpdateProjectResponseDefaultResourceConfigBuildMachineElasticTr
   direction: UpdateProjectResponseDefaultResourceConfigBuildMachineElasticTransitionDirection;
 }
 export const UpdateProjectResponseDefaultResourceConfigBuildMachineElasticTransition =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      algorithmVersion: S.String,
-      at: S.Number,
-      direction: UpdateProjectResponseDefaultResourceConfigBuildMachineElasticTransitionDirection,
-    }),
-  ).annotate({
-    identifier: "UpdateProjectResponseDefaultResourceConfigBuildMachineElasticTransition",
-  }) as any as S.Schema<UpdateProjectResponseDefaultResourceConfigBuildMachineElasticTransition>;
+  CreateProjectResponseDefaultResourceConfigBuildMachineElasticTransition as any as S.Schema<UpdateProjectResponseDefaultResourceConfigBuildMachineElasticTransition>;
 
 export type UpdateProjectResponseDefaultResourceConfigBuildMachineSelection = "elastic" | "fixed";
 export const UpdateProjectResponseDefaultResourceConfigBuildMachineSelection = S.String;
@@ -43793,13 +40546,8 @@ export const UpdateProjectResponseDefaultResourceConfigBuildQueueConfiguration =
 export interface UpdateProjectResponseDefaultResourceConfigBuildQueue {
   configuration?: UpdateProjectResponseDefaultResourceConfigBuildQueueConfiguration;
 }
-export const UpdateProjectResponseDefaultResourceConfigBuildQueue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    configuration: S.optional(UpdateProjectResponseDefaultResourceConfigBuildQueueConfiguration),
-  }),
-).annotate({
-  identifier: "UpdateProjectResponseDefaultResourceConfigBuildQueue",
-}) as any as S.Schema<UpdateProjectResponseDefaultResourceConfigBuildQueue>;
+export const UpdateProjectResponseDefaultResourceConfigBuildQueue =
+  CreateProjectRequestResourceConfigBuildQueue as any as S.Schema<UpdateProjectResponseDefaultResourceConfigBuildQueue>;
 
 export type UpdateProjectResponseDefaultResourceConfigFunctionDefaultMemoryType =
   | "performance"
@@ -43877,14 +40625,7 @@ export interface UpdateProjectResponseDeploymentPolicyDeploymentSourcesItemEnvir
   type: UpdateProjectResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase0Type;
 }
 export const UpdateProjectResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      target: UpdateProjectResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase0Target,
-      type: UpdateProjectResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase0Type,
-    }),
-  ).annotate({
-    identifier: "UpdateProjectResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase0",
-  }) as any as S.Schema<UpdateProjectResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase0>;
+  CreateProjectResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase0 as any as S.Schema<UpdateProjectResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase0>;
 
 export type UpdateProjectResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase1Type =
   "custom";
@@ -43896,14 +40637,7 @@ export interface UpdateProjectResponseDeploymentPolicyDeploymentSourcesItemEnvir
   type: UpdateProjectResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase1Type;
 }
 export const UpdateProjectResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      environmentId: S.String,
-      type: UpdateProjectResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase1Type,
-    }),
-  ).annotate({
-    identifier: "UpdateProjectResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase1",
-  }) as any as S.Schema<UpdateProjectResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase1>;
+  CreateProjectResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase1 as any as S.Schema<UpdateProjectResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase1>;
 
 export type UpdateProjectResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItem =
   | UpdateProjectResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase0
@@ -43931,9 +40665,7 @@ export const UpdateProjectResponseDeploymentPolicyDeploymentSourcesItemSourcesIt
 export type UpdateProjectResponseDeploymentPolicyDeploymentSourcesItemSourcesList =
   Array<UpdateProjectResponseDeploymentPolicyDeploymentSourcesItemSourcesItem>;
 export const UpdateProjectResponseDeploymentPolicyDeploymentSourcesItemSourcesList =
-  /*@__PURE__*/ S.Array(
-    UpdateProjectResponseDeploymentPolicyDeploymentSourcesItemSourcesItem,
-  ) as any as S.Schema<UpdateProjectResponseDeploymentPolicyDeploymentSourcesItemSourcesList>;
+  CreateProjectResponseDeploymentPolicyDeploymentSourcesItemSourcesList as any as S.Schema<UpdateProjectResponseDeploymentPolicyDeploymentSourcesItemSourcesList>;
 
 /** `enabled: true` with empty `sources` is deny-all. */
 export interface UpdateProjectResponseDeploymentPolicyDeploymentSourcesItem {
@@ -43973,14 +40705,7 @@ export interface UpdateProjectResponseDeploymentPolicyGitSourcesItemEnvironments
   type: UpdateProjectResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase0Type;
 }
 export const UpdateProjectResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      target: UpdateProjectResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase0Target,
-      type: UpdateProjectResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase0Type,
-    }),
-  ).annotate({
-    identifier: "UpdateProjectResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase0",
-  }) as any as S.Schema<UpdateProjectResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase0>;
+  CreateProjectResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase0 as any as S.Schema<UpdateProjectResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase0>;
 
 export type UpdateProjectResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase1Type = "custom";
 export const UpdateProjectResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase1Type =
@@ -43991,14 +40716,7 @@ export interface UpdateProjectResponseDeploymentPolicyGitSourcesItemEnvironments
   type: UpdateProjectResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase1Type;
 }
 export const UpdateProjectResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      environmentId: S.String,
-      type: UpdateProjectResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase1Type,
-    }),
-  ).annotate({
-    identifier: "UpdateProjectResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase1",
-  }) as any as S.Schema<UpdateProjectResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase1>;
+  CreateProjectResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase1 as any as S.Schema<UpdateProjectResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase1>;
 
 export type UpdateProjectResponseDeploymentPolicyGitSourcesItemEnvironmentsItem =
   | UpdateProjectResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase0
@@ -44025,15 +40743,7 @@ export interface UpdateProjectResponseDeploymentPolicyGitSourcesItemSourcesItemC
   repo?: string;
 }
 export const UpdateProjectResponseDeploymentPolicyGitSourcesItemSourcesItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      org: S.String,
-      provider: UpdateProjectResponseDeploymentPolicyGitSourcesItemSourcesItemCase0Provider,
-      repo: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "UpdateProjectResponseDeploymentPolicyGitSourcesItemSourcesItemCase0",
-  }) as any as S.Schema<UpdateProjectResponseDeploymentPolicyGitSourcesItemSourcesItemCase0>;
+  CreateProjectResponseDeploymentPolicyGitSourcesItemSourcesItemCase0 as any as S.Schema<UpdateProjectResponseDeploymentPolicyGitSourcesItemSourcesItemCase0>;
 
 export type UpdateProjectResponseDeploymentPolicyGitSourcesItemSourcesItemCase1Provider = "gitlab";
 export const UpdateProjectResponseDeploymentPolicyGitSourcesItemSourcesItemCase1Provider = S.String;
@@ -44045,15 +40755,7 @@ export interface UpdateProjectResponseDeploymentPolicyGitSourcesItemSourcesItemC
   provider: UpdateProjectResponseDeploymentPolicyGitSourcesItemSourcesItemCase1Provider;
 }
 export const UpdateProjectResponseDeploymentPolicyGitSourcesItemSourcesItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      namespace: S.String,
-      project: S.optional(S.String),
-      provider: UpdateProjectResponseDeploymentPolicyGitSourcesItemSourcesItemCase1Provider,
-    }),
-  ).annotate({
-    identifier: "UpdateProjectResponseDeploymentPolicyGitSourcesItemSourcesItemCase1",
-  }) as any as S.Schema<UpdateProjectResponseDeploymentPolicyGitSourcesItemSourcesItemCase1>;
+  CreateProjectResponseDeploymentPolicyGitSourcesItemSourcesItemCase1 as any as S.Schema<UpdateProjectResponseDeploymentPolicyGitSourcesItemSourcesItemCase1>;
 
 export type UpdateProjectResponseDeploymentPolicyGitSourcesItemSourcesItem =
   | UpdateProjectResponseDeploymentPolicyGitSourcesItemSourcesItemCase0
@@ -44173,14 +40875,8 @@ export interface UpdateProjectResponseEnvItemContentHintCase0 {
   storeId: string;
   type: UpdateProjectResponseEnvItemContentHintCase0Type;
 }
-export const UpdateProjectResponseEnvItemContentHintCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: UpdateProjectResponseEnvItemContentHintCase0Type,
-  }),
-).annotate({
-  identifier: "UpdateProjectResponseEnvItemContentHintCase0",
-}) as any as S.Schema<UpdateProjectResponseEnvItemContentHintCase0>;
+export const UpdateProjectResponseEnvItemContentHintCase0 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<UpdateProjectResponseEnvItemContentHintCase0>;
 
 export type UpdateProjectResponseEnvItemContentHintCase1Type = "redis-rest-api-url";
 export const UpdateProjectResponseEnvItemContentHintCase1Type = S.String;
@@ -44189,14 +40885,8 @@ export interface UpdateProjectResponseEnvItemContentHintCase1 {
   storeId: string;
   type: UpdateProjectResponseEnvItemContentHintCase1Type;
 }
-export const UpdateProjectResponseEnvItemContentHintCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: UpdateProjectResponseEnvItemContentHintCase1Type,
-  }),
-).annotate({
-  identifier: "UpdateProjectResponseEnvItemContentHintCase1",
-}) as any as S.Schema<UpdateProjectResponseEnvItemContentHintCase1>;
+export const UpdateProjectResponseEnvItemContentHintCase1 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<UpdateProjectResponseEnvItemContentHintCase1>;
 
 export type UpdateProjectResponseEnvItemContentHintCase2Type = "redis-rest-api-token";
 export const UpdateProjectResponseEnvItemContentHintCase2Type = S.String;
@@ -44205,14 +40895,8 @@ export interface UpdateProjectResponseEnvItemContentHintCase2 {
   storeId: string;
   type: UpdateProjectResponseEnvItemContentHintCase2Type;
 }
-export const UpdateProjectResponseEnvItemContentHintCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: UpdateProjectResponseEnvItemContentHintCase2Type,
-  }),
-).annotate({
-  identifier: "UpdateProjectResponseEnvItemContentHintCase2",
-}) as any as S.Schema<UpdateProjectResponseEnvItemContentHintCase2>;
+export const UpdateProjectResponseEnvItemContentHintCase2 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<UpdateProjectResponseEnvItemContentHintCase2>;
 
 export type UpdateProjectResponseEnvItemContentHintCase3Type = "redis-rest-api-read-only-token";
 export const UpdateProjectResponseEnvItemContentHintCase3Type = S.String;
@@ -44221,14 +40905,8 @@ export interface UpdateProjectResponseEnvItemContentHintCase3 {
   storeId: string;
   type: UpdateProjectResponseEnvItemContentHintCase3Type;
 }
-export const UpdateProjectResponseEnvItemContentHintCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: UpdateProjectResponseEnvItemContentHintCase3Type,
-  }),
-).annotate({
-  identifier: "UpdateProjectResponseEnvItemContentHintCase3",
-}) as any as S.Schema<UpdateProjectResponseEnvItemContentHintCase3>;
+export const UpdateProjectResponseEnvItemContentHintCase3 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<UpdateProjectResponseEnvItemContentHintCase3>;
 
 export type UpdateProjectResponseEnvItemContentHintCase4Type = "blob-read-write-token";
 export const UpdateProjectResponseEnvItemContentHintCase4Type = S.String;
@@ -44237,14 +40915,8 @@ export interface UpdateProjectResponseEnvItemContentHintCase4 {
   storeId: string;
   type: UpdateProjectResponseEnvItemContentHintCase4Type;
 }
-export const UpdateProjectResponseEnvItemContentHintCase4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: UpdateProjectResponseEnvItemContentHintCase4Type,
-  }),
-).annotate({
-  identifier: "UpdateProjectResponseEnvItemContentHintCase4",
-}) as any as S.Schema<UpdateProjectResponseEnvItemContentHintCase4>;
+export const UpdateProjectResponseEnvItemContentHintCase4 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<UpdateProjectResponseEnvItemContentHintCase4>;
 
 export type UpdateProjectResponseEnvItemContentHintCase5Type = "blob-store-id";
 export const UpdateProjectResponseEnvItemContentHintCase5Type = S.String;
@@ -44253,14 +40925,8 @@ export interface UpdateProjectResponseEnvItemContentHintCase5 {
   storeId: string;
   type: UpdateProjectResponseEnvItemContentHintCase5Type;
 }
-export const UpdateProjectResponseEnvItemContentHintCase5 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: UpdateProjectResponseEnvItemContentHintCase5Type,
-  }),
-).annotate({
-  identifier: "UpdateProjectResponseEnvItemContentHintCase5",
-}) as any as S.Schema<UpdateProjectResponseEnvItemContentHintCase5>;
+export const UpdateProjectResponseEnvItemContentHintCase5 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<UpdateProjectResponseEnvItemContentHintCase5>;
 
 export type UpdateProjectResponseEnvItemContentHintCase6Type = "blob-webhook-public-key";
 export const UpdateProjectResponseEnvItemContentHintCase6Type = S.String;
@@ -44269,14 +40935,8 @@ export interface UpdateProjectResponseEnvItemContentHintCase6 {
   storeId: string;
   type: UpdateProjectResponseEnvItemContentHintCase6Type;
 }
-export const UpdateProjectResponseEnvItemContentHintCase6 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: UpdateProjectResponseEnvItemContentHintCase6Type,
-  }),
-).annotate({
-  identifier: "UpdateProjectResponseEnvItemContentHintCase6",
-}) as any as S.Schema<UpdateProjectResponseEnvItemContentHintCase6>;
+export const UpdateProjectResponseEnvItemContentHintCase6 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<UpdateProjectResponseEnvItemContentHintCase6>;
 
 export type UpdateProjectResponseEnvItemContentHintCase7Type = "postgres-url";
 export const UpdateProjectResponseEnvItemContentHintCase7Type = S.String;
@@ -44285,14 +40945,8 @@ export interface UpdateProjectResponseEnvItemContentHintCase7 {
   storeId: string;
   type: UpdateProjectResponseEnvItemContentHintCase7Type;
 }
-export const UpdateProjectResponseEnvItemContentHintCase7 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: UpdateProjectResponseEnvItemContentHintCase7Type,
-  }),
-).annotate({
-  identifier: "UpdateProjectResponseEnvItemContentHintCase7",
-}) as any as S.Schema<UpdateProjectResponseEnvItemContentHintCase7>;
+export const UpdateProjectResponseEnvItemContentHintCase7 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<UpdateProjectResponseEnvItemContentHintCase7>;
 
 export type UpdateProjectResponseEnvItemContentHintCase8Type = "postgres-url-non-pooling";
 export const UpdateProjectResponseEnvItemContentHintCase8Type = S.String;
@@ -44301,14 +40955,8 @@ export interface UpdateProjectResponseEnvItemContentHintCase8 {
   storeId: string;
   type: UpdateProjectResponseEnvItemContentHintCase8Type;
 }
-export const UpdateProjectResponseEnvItemContentHintCase8 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: UpdateProjectResponseEnvItemContentHintCase8Type,
-  }),
-).annotate({
-  identifier: "UpdateProjectResponseEnvItemContentHintCase8",
-}) as any as S.Schema<UpdateProjectResponseEnvItemContentHintCase8>;
+export const UpdateProjectResponseEnvItemContentHintCase8 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<UpdateProjectResponseEnvItemContentHintCase8>;
 
 export type UpdateProjectResponseEnvItemContentHintCase9Type = "postgres-prisma-url";
 export const UpdateProjectResponseEnvItemContentHintCase9Type = S.String;
@@ -44317,14 +40965,8 @@ export interface UpdateProjectResponseEnvItemContentHintCase9 {
   storeId: string;
   type: UpdateProjectResponseEnvItemContentHintCase9Type;
 }
-export const UpdateProjectResponseEnvItemContentHintCase9 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: UpdateProjectResponseEnvItemContentHintCase9Type,
-  }),
-).annotate({
-  identifier: "UpdateProjectResponseEnvItemContentHintCase9",
-}) as any as S.Schema<UpdateProjectResponseEnvItemContentHintCase9>;
+export const UpdateProjectResponseEnvItemContentHintCase9 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<UpdateProjectResponseEnvItemContentHintCase9>;
 
 export type UpdateProjectResponseEnvItemContentHintCase10Type = "postgres-user";
 export const UpdateProjectResponseEnvItemContentHintCase10Type = S.String;
@@ -44333,14 +40975,8 @@ export interface UpdateProjectResponseEnvItemContentHintCase10 {
   storeId: string;
   type: UpdateProjectResponseEnvItemContentHintCase10Type;
 }
-export const UpdateProjectResponseEnvItemContentHintCase10 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: UpdateProjectResponseEnvItemContentHintCase10Type,
-  }),
-).annotate({
-  identifier: "UpdateProjectResponseEnvItemContentHintCase10",
-}) as any as S.Schema<UpdateProjectResponseEnvItemContentHintCase10>;
+export const UpdateProjectResponseEnvItemContentHintCase10 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<UpdateProjectResponseEnvItemContentHintCase10>;
 
 export type UpdateProjectResponseEnvItemContentHintCase11Type = "postgres-host";
 export const UpdateProjectResponseEnvItemContentHintCase11Type = S.String;
@@ -44349,14 +40985,8 @@ export interface UpdateProjectResponseEnvItemContentHintCase11 {
   storeId: string;
   type: UpdateProjectResponseEnvItemContentHintCase11Type;
 }
-export const UpdateProjectResponseEnvItemContentHintCase11 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: UpdateProjectResponseEnvItemContentHintCase11Type,
-  }),
-).annotate({
-  identifier: "UpdateProjectResponseEnvItemContentHintCase11",
-}) as any as S.Schema<UpdateProjectResponseEnvItemContentHintCase11>;
+export const UpdateProjectResponseEnvItemContentHintCase11 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<UpdateProjectResponseEnvItemContentHintCase11>;
 
 export type UpdateProjectResponseEnvItemContentHintCase12Type = "postgres-password";
 export const UpdateProjectResponseEnvItemContentHintCase12Type = S.String;
@@ -44365,14 +40995,8 @@ export interface UpdateProjectResponseEnvItemContentHintCase12 {
   storeId: string;
   type: UpdateProjectResponseEnvItemContentHintCase12Type;
 }
-export const UpdateProjectResponseEnvItemContentHintCase12 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: UpdateProjectResponseEnvItemContentHintCase12Type,
-  }),
-).annotate({
-  identifier: "UpdateProjectResponseEnvItemContentHintCase12",
-}) as any as S.Schema<UpdateProjectResponseEnvItemContentHintCase12>;
+export const UpdateProjectResponseEnvItemContentHintCase12 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<UpdateProjectResponseEnvItemContentHintCase12>;
 
 export type UpdateProjectResponseEnvItemContentHintCase13Type = "postgres-database";
 export const UpdateProjectResponseEnvItemContentHintCase13Type = S.String;
@@ -44381,14 +41005,8 @@ export interface UpdateProjectResponseEnvItemContentHintCase13 {
   storeId: string;
   type: UpdateProjectResponseEnvItemContentHintCase13Type;
 }
-export const UpdateProjectResponseEnvItemContentHintCase13 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: UpdateProjectResponseEnvItemContentHintCase13Type,
-  }),
-).annotate({
-  identifier: "UpdateProjectResponseEnvItemContentHintCase13",
-}) as any as S.Schema<UpdateProjectResponseEnvItemContentHintCase13>;
+export const UpdateProjectResponseEnvItemContentHintCase13 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<UpdateProjectResponseEnvItemContentHintCase13>;
 
 export type UpdateProjectResponseEnvItemContentHintCase14Type = "postgres-url-no-ssl";
 export const UpdateProjectResponseEnvItemContentHintCase14Type = S.String;
@@ -44397,14 +41015,8 @@ export interface UpdateProjectResponseEnvItemContentHintCase14 {
   storeId: string;
   type: UpdateProjectResponseEnvItemContentHintCase14Type;
 }
-export const UpdateProjectResponseEnvItemContentHintCase14 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: UpdateProjectResponseEnvItemContentHintCase14Type,
-  }),
-).annotate({
-  identifier: "UpdateProjectResponseEnvItemContentHintCase14",
-}) as any as S.Schema<UpdateProjectResponseEnvItemContentHintCase14>;
+export const UpdateProjectResponseEnvItemContentHintCase14 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<UpdateProjectResponseEnvItemContentHintCase14>;
 
 export type UpdateProjectResponseEnvItemContentHintCase15Type = "integration-store-secret";
 export const UpdateProjectResponseEnvItemContentHintCase15Type = S.String;
@@ -44416,17 +41028,8 @@ export interface UpdateProjectResponseEnvItemContentHintCase15 {
   storeId: string;
   type: UpdateProjectResponseEnvItemContentHintCase15Type;
 }
-export const UpdateProjectResponseEnvItemContentHintCase15 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    integrationConfigurationId: S.String,
-    integrationId: S.String,
-    integrationProductId: S.String,
-    storeId: S.String,
-    type: UpdateProjectResponseEnvItemContentHintCase15Type,
-  }),
-).annotate({
-  identifier: "UpdateProjectResponseEnvItemContentHintCase15",
-}) as any as S.Schema<UpdateProjectResponseEnvItemContentHintCase15>;
+export const UpdateProjectResponseEnvItemContentHintCase15 =
+  CreateProjectResponseEnvItemContentHintCase15 as any as S.Schema<UpdateProjectResponseEnvItemContentHintCase15>;
 
 export type UpdateProjectResponseEnvItemContentHintCase16Type = "flags-connection-string";
 export const UpdateProjectResponseEnvItemContentHintCase16Type = S.String;
@@ -44435,14 +41038,8 @@ export interface UpdateProjectResponseEnvItemContentHintCase16 {
   projectId: string;
   type: UpdateProjectResponseEnvItemContentHintCase16Type;
 }
-export const UpdateProjectResponseEnvItemContentHintCase16 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    projectId: S.String,
-    type: UpdateProjectResponseEnvItemContentHintCase16Type,
-  }),
-).annotate({
-  identifier: "UpdateProjectResponseEnvItemContentHintCase16",
-}) as any as S.Schema<UpdateProjectResponseEnvItemContentHintCase16>;
+export const UpdateProjectResponseEnvItemContentHintCase16 =
+  CreateProjectResponseEnvItemContentHintCase16 as any as S.Schema<UpdateProjectResponseEnvItemContentHintCase16>;
 
 export type UpdateProjectResponseEnvItemContentHint =
   | UpdateProjectResponseEnvItemContentHintCase0
@@ -44478,14 +41075,8 @@ export interface UpdateProjectResponseEnvItemInternalContentHint {
   encryptedValue: string;
   type: UpdateProjectResponseEnvItemInternalContentHintType;
 }
-export const UpdateProjectResponseEnvItemInternalContentHint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    encryptedValue: S.String,
-    type: UpdateProjectResponseEnvItemInternalContentHintType,
-  }),
-).annotate({
-  identifier: "UpdateProjectResponseEnvItemInternalContentHint",
-}) as any as S.Schema<UpdateProjectResponseEnvItemInternalContentHint>;
+export const UpdateProjectResponseEnvItemInternalContentHint =
+  CreateProjectResponseEnvItemInternalContentHint as any as S.Schema<UpdateProjectResponseEnvItemInternalContentHint>;
 
 export type UpdateProjectResponseEnvItemTargetCase0List = Array<string>;
 export const UpdateProjectResponseEnvItemTargetCase0List =
@@ -44691,19 +41282,8 @@ export interface UpdateProjectResponseGitProviderOptions {
   /** Whether the project requires commits to be signed & verified before deployments will be created. - `true`: require verified commits for this project (explicit override of the team setting). - `false`: do not require verified commits (explicit override of the team setting). - absent: inherit from `team.requireVerifiedCommits`. */
   requireVerifiedCommits?: boolean;
 }
-export const UpdateProjectResponseGitProviderOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    consolidatedGitCommitStatus: S.optional(
-      CreateProjectResponseGitProviderOptionsConsolidatedGitCommitStatus,
-    ),
-    createDeployments: UpdateProjectResponseGitProviderOptionsCreateDeployments,
-    disableRepositoryDispatchEvents: S.optional(S.Boolean),
-    gitCommitStatus: S.optional(S.Boolean),
-    requireVerifiedCommits: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "UpdateProjectResponseGitProviderOptions",
-}) as any as S.Schema<UpdateProjectResponseGitProviderOptions>;
+export const UpdateProjectResponseGitProviderOptions =
+  CreateProjectResponseGitProviderOptions as any as S.Schema<UpdateProjectResponseGitProviderOptions>;
 
 export type UpdateProjectResponseInternalRoutesItemCase0 =
   CreateProjectResponseInternalRoutesItemCase0;
@@ -44726,16 +41306,8 @@ export interface UpdateProjectResponseInternalRoutesItemCase1HasItemCase0 {
   type: UpdateProjectResponseInternalRoutesItemCase1HasItemCase0Type;
   value: CreateProjectResponseInternalRoutesItemCase1HasItemCase0Value;
 }
-export const UpdateProjectResponseInternalRoutesItemCase1HasItemCase0 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      key: UpdateProjectResponseInternalRoutesItemCase1HasItemCase0Key,
-      type: UpdateProjectResponseInternalRoutesItemCase1HasItemCase0Type,
-      value: CreateProjectResponseInternalRoutesItemCase1HasItemCase0Value,
-    }),
-).annotate({
-  identifier: "UpdateProjectResponseInternalRoutesItemCase1HasItemCase0",
-}) as any as S.Schema<UpdateProjectResponseInternalRoutesItemCase1HasItemCase0>;
+export const UpdateProjectResponseInternalRoutesItemCase1HasItemCase0 =
+  CreateProjectResponseInternalRoutesItemCase1HasItemCase0 as any as S.Schema<UpdateProjectResponseInternalRoutesItemCase1HasItemCase0>;
 
 export type UpdateProjectResponseInternalRoutesItemCase1HasItemCase1Type = "host";
 export const UpdateProjectResponseInternalRoutesItemCase1HasItemCase1Type = S.String;
@@ -44749,15 +41321,8 @@ export interface UpdateProjectResponseInternalRoutesItemCase1HasItemCase1 {
   type: UpdateProjectResponseInternalRoutesItemCase1HasItemCase1Type;
   value: CreateProjectResponseInternalRoutesItemCase1HasItemCase0Value;
 }
-export const UpdateProjectResponseInternalRoutesItemCase1HasItemCase1 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      type: UpdateProjectResponseInternalRoutesItemCase1HasItemCase1Type,
-      value: CreateProjectResponseInternalRoutesItemCase1HasItemCase0Value,
-    }),
-).annotate({
-  identifier: "UpdateProjectResponseInternalRoutesItemCase1HasItemCase1",
-}) as any as S.Schema<UpdateProjectResponseInternalRoutesItemCase1HasItemCase1>;
+export const UpdateProjectResponseInternalRoutesItemCase1HasItemCase1 =
+  CreateProjectResponseInternalRoutesItemCase1HasItemCase1 as any as S.Schema<UpdateProjectResponseInternalRoutesItemCase1HasItemCase1>;
 
 export type UpdateProjectResponseInternalRoutesItemCase1HasItem =
   | UpdateProjectResponseInternalRoutesItemCase1HasItemCase0
@@ -44777,13 +41342,8 @@ export const UpdateProjectResponseInternalRoutesItemCase1MitigateAction = S.Stri
 export interface UpdateProjectResponseInternalRoutesItemCase1Mitigate {
   action: UpdateProjectResponseInternalRoutesItemCase1MitigateAction;
 }
-export const UpdateProjectResponseInternalRoutesItemCase1Mitigate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: UpdateProjectResponseInternalRoutesItemCase1MitigateAction,
-  }),
-).annotate({
-  identifier: "UpdateProjectResponseInternalRoutesItemCase1Mitigate",
-}) as any as S.Schema<UpdateProjectResponseInternalRoutesItemCase1Mitigate>;
+export const UpdateProjectResponseInternalRoutesItemCase1Mitigate =
+  CreateProjectResponseInternalRoutesItemCase1Mitigate as any as S.Schema<UpdateProjectResponseInternalRoutesItemCase1Mitigate>;
 
 export interface UpdateProjectResponseInternalRoutesItemCase1 {
   has: UpdateProjectResponseInternalRoutesItemCase1HasList;
@@ -44888,18 +41448,8 @@ export interface UpdateProjectResponseLastAliasRequest {
   toDeploymentId: string;
   type: UpdateProjectResponseLastAliasRequestType;
 }
-export const UpdateProjectResponseLastAliasRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fromDeploymentId: S.NullOr(S.String),
-    fromRollingReleaseId: S.optional(S.String),
-    jobStatus: UpdateProjectResponseLastAliasRequestJobStatus,
-    requestedAt: S.Number,
-    toDeploymentId: S.String,
-    type: UpdateProjectResponseLastAliasRequestType,
-  }),
-).annotate({
-  identifier: "UpdateProjectResponseLastAliasRequest",
-}) as any as S.Schema<UpdateProjectResponseLastAliasRequest>;
+export const UpdateProjectResponseLastAliasRequest =
+  CreateProjectResponseLastAliasRequest as any as S.Schema<UpdateProjectResponseLastAliasRequest>;
 
 export type UpdateProjectResponseLatestDeploymentsItemAliasList = Array<string>;
 export const UpdateProjectResponseLatestDeploymentsItemAliasList =
@@ -44931,14 +41481,8 @@ export interface UpdateProjectResponseLatestDeploymentsItemBranchMatcher {
   /** The type of matching to perform */
   type: UpdateProjectResponseLatestDeploymentsItemBranchMatcherType;
 }
-export const UpdateProjectResponseLatestDeploymentsItemBranchMatcher = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pattern: S.String,
-    type: UpdateProjectResponseLatestDeploymentsItemBranchMatcherType,
-  }),
-).annotate({
-  identifier: "UpdateProjectResponseLatestDeploymentsItemBranchMatcher",
-}) as any as S.Schema<UpdateProjectResponseLatestDeploymentsItemBranchMatcher>;
+export const UpdateProjectResponseLatestDeploymentsItemBranchMatcher =
+  CreateProjectResponseAliasItemDeploymentBranchMatcher as any as S.Schema<UpdateProjectResponseLatestDeploymentsItemBranchMatcher>;
 
 export type UpdateProjectResponseLatestDeploymentsItemBuildsItem =
   CreateProjectResponseAliasItemDeploymentBuildsItem;
@@ -45570,14 +42114,8 @@ export interface UpdateProjectResponseOidcTokenConfig {
   /** - team: `https://oidc.vercel.com/[team_slug]` - global: `https://oidc.vercel.com` */
   issuerMode?: UpdateProjectResponseOidcTokenConfigIssuerMode;
 }
-export const UpdateProjectResponseOidcTokenConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-    issuerMode: S.optional(UpdateProjectResponseOidcTokenConfigIssuerMode),
-  }),
-).annotate({
-  identifier: "UpdateProjectResponseOidcTokenConfig",
-}) as any as S.Schema<UpdateProjectResponseOidcTokenConfig>;
+export const UpdateProjectResponseOidcTokenConfig =
+  CreateProjectRequestOidcTokenConfig as any as S.Schema<UpdateProjectResponseOidcTokenConfig>;
 
 export type UpdateProjectResponseOptionsAllowlistPathsItem =
   CreateProjectResponseOptionsAllowlistPathsItem;
@@ -45606,14 +42144,8 @@ export interface UpdateProjectResponsePassport {
   connectorId: string;
   deploymentType: UpdateProjectResponsePassportDeploymentType;
 }
-export const UpdateProjectResponsePassport = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    connectorId: S.String,
-    deploymentType: UpdateProjectResponsePassportDeploymentType,
-  }),
-).annotate({
-  identifier: "UpdateProjectResponsePassport",
-}) as any as S.Schema<UpdateProjectResponsePassport>;
+export const UpdateProjectResponsePassport =
+  CreateProjectResponsePassport as any as S.Schema<UpdateProjectResponsePassport>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type UpdateProjectResponsePermissionsAccessGroupList = Array<ACLAction>;
@@ -47660,17 +44192,8 @@ export interface UpdateProjectResponseProtectionBypassValueCase0 {
   integrationId: string;
   scope: UpdateProjectResponseProtectionBypassValueCase0Scope;
 }
-export const UpdateProjectResponseProtectionBypassValueCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    configurationId: S.String,
-    createdAt: S.Number,
-    createdBy: S.String,
-    integrationId: S.String,
-    scope: UpdateProjectResponseProtectionBypassValueCase0Scope,
-  }),
-).annotate({
-  identifier: "UpdateProjectResponseProtectionBypassValueCase0",
-}) as any as S.Schema<UpdateProjectResponseProtectionBypassValueCase0>;
+export const UpdateProjectResponseProtectionBypassValueCase0 =
+  CreateProjectResponseProtectionBypassValueCase0 as any as S.Schema<UpdateProjectResponseProtectionBypassValueCase0>;
 
 export type UpdateProjectResponseProtectionBypassValueCase1Scope = "automation-bypass";
 export const UpdateProjectResponseProtectionBypassValueCase1Scope = S.String;
@@ -47684,17 +44207,8 @@ export interface UpdateProjectResponseProtectionBypassValueCase1 {
   note?: string;
   scope: UpdateProjectResponseProtectionBypassValueCase1Scope;
 }
-export const UpdateProjectResponseProtectionBypassValueCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdAt: S.Number,
-    createdBy: S.String,
-    isEnvVar: S.optional(S.Boolean),
-    note: S.optional(S.String),
-    scope: UpdateProjectResponseProtectionBypassValueCase1Scope,
-  }),
-).annotate({
-  identifier: "UpdateProjectResponseProtectionBypassValueCase1",
-}) as any as S.Schema<UpdateProjectResponseProtectionBypassValueCase1>;
+export const UpdateProjectResponseProtectionBypassValueCase1 =
+  CreateProjectResponseProtectionBypassValueCase1 as any as S.Schema<UpdateProjectResponseProtectionBypassValueCase1>;
 
 export type UpdateProjectResponseProtectionBypassValue =
   | UpdateProjectResponseProtectionBypassValueCase0
@@ -47742,15 +44256,7 @@ export interface UpdateProjectResponseResourceConfigBuildMachineElasticTransitio
   direction: UpdateProjectResponseResourceConfigBuildMachineElasticTransitionDirection;
 }
 export const UpdateProjectResponseResourceConfigBuildMachineElasticTransition =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      algorithmVersion: S.String,
-      at: S.Number,
-      direction: UpdateProjectResponseResourceConfigBuildMachineElasticTransitionDirection,
-    }),
-  ).annotate({
-    identifier: "UpdateProjectResponseResourceConfigBuildMachineElasticTransition",
-  }) as any as S.Schema<UpdateProjectResponseResourceConfigBuildMachineElasticTransition>;
+  CreateProjectResponseDefaultResourceConfigBuildMachineElasticTransition as any as S.Schema<UpdateProjectResponseResourceConfigBuildMachineElasticTransition>;
 
 export type UpdateProjectResponseResourceConfigBuildMachineSelection = "elastic" | "fixed";
 export const UpdateProjectResponseResourceConfigBuildMachineSelection = S.String;
@@ -47770,13 +44276,8 @@ export const UpdateProjectResponseResourceConfigBuildQueueConfiguration = S.Stri
 export interface UpdateProjectResponseResourceConfigBuildQueue {
   configuration?: UpdateProjectResponseResourceConfigBuildQueueConfiguration;
 }
-export const UpdateProjectResponseResourceConfigBuildQueue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    configuration: S.optional(UpdateProjectResponseResourceConfigBuildQueueConfiguration),
-  }),
-).annotate({
-  identifier: "UpdateProjectResponseResourceConfigBuildQueue",
-}) as any as S.Schema<UpdateProjectResponseResourceConfigBuildQueue>;
+export const UpdateProjectResponseResourceConfigBuildQueue =
+  CreateProjectRequestResourceConfigBuildQueue as any as S.Schema<UpdateProjectResponseResourceConfigBuildQueue>;
 
 export type UpdateProjectResponseResourceConfigFunctionDefaultMemoryType =
   | "performance"
@@ -47974,9 +44475,8 @@ export const UpdateProjectResponseSandboxFailoverRegionsItem = S.String;
 
 export type UpdateProjectResponseSandboxFailoverRegionsList =
   Array<UpdateProjectResponseSandboxFailoverRegionsItem>;
-export const UpdateProjectResponseSandboxFailoverRegionsList = /*@__PURE__*/ S.Array(
-  UpdateProjectResponseSandboxFailoverRegionsItem,
-) as any as S.Schema<UpdateProjectResponseSandboxFailoverRegionsList>;
+export const UpdateProjectResponseSandboxFailoverRegionsList =
+  CreateProjectRequestEnvironmentVariablesItemTargetCase1List as any as S.Schema<UpdateProjectResponseSandboxFailoverRegionsList>;
 
 export type UpdateProjectResponseSandboxRegion =
   | "arn1"
@@ -48004,14 +44504,8 @@ export interface UpdateProjectResponseSandbox {
   failoverRegions?: UpdateProjectResponseSandboxFailoverRegionsList;
   region?: UpdateProjectResponseSandboxRegion;
 }
-export const UpdateProjectResponseSandbox = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    failoverRegions: S.optional(UpdateProjectResponseSandboxFailoverRegionsList),
-    region: S.optional(UpdateProjectResponseSandboxRegion),
-  }),
-).annotate({
-  identifier: "UpdateProjectResponseSandbox",
-}) as any as S.Schema<UpdateProjectResponseSandbox>;
+export const UpdateProjectResponseSandbox =
+  CreateProjectResponseSandbox as any as S.Schema<UpdateProjectResponseSandbox>;
 
 export type UpdateProjectResponseSecurityFirewallBypassIpsList = Array<string>;
 export const UpdateProjectResponseSecurityFirewallBypassIpsList =
@@ -48037,14 +44531,8 @@ export interface UpdateProjectResponseSecurityManagedRulesAiBots {
   action?: UpdateProjectResponseSecurityManagedRulesAiBotsAction;
   active: boolean;
 }
-export const UpdateProjectResponseSecurityManagedRulesAiBots = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.optional(UpdateProjectResponseSecurityManagedRulesAiBotsAction),
-    active: S.Boolean,
-  }),
-).annotate({
-  identifier: "UpdateProjectResponseSecurityManagedRulesAiBots",
-}) as any as S.Schema<UpdateProjectResponseSecurityManagedRulesAiBots>;
+export const UpdateProjectResponseSecurityManagedRulesAiBots =
+  CreateProjectResponseSecurityManagedRulesAiBots as any as S.Schema<UpdateProjectResponseSecurityManagedRulesAiBots>;
 
 export type UpdateProjectResponseSecurityManagedRulesBotFilterAction = "challenge" | "deny" | "log";
 export const UpdateProjectResponseSecurityManagedRulesBotFilterAction = S.String;
@@ -48053,14 +44541,8 @@ export interface UpdateProjectResponseSecurityManagedRulesBotFilter {
   action?: UpdateProjectResponseSecurityManagedRulesBotFilterAction;
   active: boolean;
 }
-export const UpdateProjectResponseSecurityManagedRulesBotFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.optional(UpdateProjectResponseSecurityManagedRulesBotFilterAction),
-    active: S.Boolean,
-  }),
-).annotate({
-  identifier: "UpdateProjectResponseSecurityManagedRulesBotFilter",
-}) as any as S.Schema<UpdateProjectResponseSecurityManagedRulesBotFilter>;
+export const UpdateProjectResponseSecurityManagedRulesBotFilter =
+  CreateProjectResponseSecurityManagedRulesAiBots as any as S.Schema<UpdateProjectResponseSecurityManagedRulesBotFilter>;
 
 export type UpdateProjectResponseSecurityManagedRulesOwaspAction = "challenge" | "deny" | "log";
 export const UpdateProjectResponseSecurityManagedRulesOwaspAction = S.String;
@@ -48069,14 +44551,8 @@ export interface UpdateProjectResponseSecurityManagedRulesOwasp {
   action?: UpdateProjectResponseSecurityManagedRulesOwaspAction;
   active: boolean;
 }
-export const UpdateProjectResponseSecurityManagedRulesOwasp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.optional(UpdateProjectResponseSecurityManagedRulesOwaspAction),
-    active: S.Boolean,
-  }),
-).annotate({
-  identifier: "UpdateProjectResponseSecurityManagedRulesOwasp",
-}) as any as S.Schema<UpdateProjectResponseSecurityManagedRulesOwasp>;
+export const UpdateProjectResponseSecurityManagedRulesOwasp =
+  CreateProjectResponseSecurityManagedRulesAiBots as any as S.Schema<UpdateProjectResponseSecurityManagedRulesOwasp>;
 
 export type UpdateProjectResponseSecurityManagedRulesTrafficSourcesAction =
   | "challenge"
@@ -48088,14 +44564,8 @@ export interface UpdateProjectResponseSecurityManagedRulesTrafficSources {
   action?: UpdateProjectResponseSecurityManagedRulesTrafficSourcesAction;
   active: boolean;
 }
-export const UpdateProjectResponseSecurityManagedRulesTrafficSources = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.optional(UpdateProjectResponseSecurityManagedRulesTrafficSourcesAction),
-    active: S.Boolean,
-  }),
-).annotate({
-  identifier: "UpdateProjectResponseSecurityManagedRulesTrafficSources",
-}) as any as S.Schema<UpdateProjectResponseSecurityManagedRulesTrafficSources>;
+export const UpdateProjectResponseSecurityManagedRulesTrafficSources =
+  CreateProjectResponseSecurityManagedRulesAiBots as any as S.Schema<UpdateProjectResponseSecurityManagedRulesTrafficSources>;
 
 export type UpdateProjectResponseSecurityManagedRulesVercelRulesetAction =
   | "challenge"
@@ -48107,14 +44577,8 @@ export interface UpdateProjectResponseSecurityManagedRulesVercelRuleset {
   action?: UpdateProjectResponseSecurityManagedRulesVercelRulesetAction;
   active: boolean;
 }
-export const UpdateProjectResponseSecurityManagedRulesVercelRuleset = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.optional(UpdateProjectResponseSecurityManagedRulesVercelRulesetAction),
-    active: S.Boolean,
-  }),
-).annotate({
-  identifier: "UpdateProjectResponseSecurityManagedRulesVercelRuleset",
-}) as any as S.Schema<UpdateProjectResponseSecurityManagedRulesVercelRuleset>;
+export const UpdateProjectResponseSecurityManagedRulesVercelRuleset =
+  CreateProjectResponseSecurityManagedRulesAiBots as any as S.Schema<UpdateProjectResponseSecurityManagedRulesVercelRuleset>;
 
 export interface UpdateProjectResponseSecurityManagedRules {
   ai_bots: UpdateProjectResponseSecurityManagedRulesAiBots;
@@ -48123,17 +44587,8 @@ export interface UpdateProjectResponseSecurityManagedRules {
   traffic_sources: UpdateProjectResponseSecurityManagedRulesTrafficSources;
   vercel_ruleset: UpdateProjectResponseSecurityManagedRulesVercelRuleset;
 }
-export const UpdateProjectResponseSecurityManagedRules = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ai_bots: UpdateProjectResponseSecurityManagedRulesAiBots,
-    bot_filter: UpdateProjectResponseSecurityManagedRulesBotFilter,
-    owasp: UpdateProjectResponseSecurityManagedRulesOwasp,
-    traffic_sources: UpdateProjectResponseSecurityManagedRulesTrafficSources,
-    vercel_ruleset: UpdateProjectResponseSecurityManagedRulesVercelRuleset,
-  }),
-).annotate({
-  identifier: "UpdateProjectResponseSecurityManagedRules",
-}) as any as S.Schema<UpdateProjectResponseSecurityManagedRules>;
+export const UpdateProjectResponseSecurityManagedRules =
+  CreateProjectResponseSecurityManagedRules as any as S.Schema<UpdateProjectResponseSecurityManagedRules>;
 
 export type UpdateProjectResponseSecurityRulesetsValueAction =
   | "allow"
@@ -48350,21 +44805,12 @@ export interface UpdateProjectResponseServicesItem {
   /** Service kind (Service.type). Omitted for schemas that do not define one. */
   serviceType?: UpdateProjectResponseServicesItemServiceType;
 }
-export const UpdateProjectResponseServicesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    framework: S.optional(UpdateProjectResponseServicesItemFramework),
-    runtime: S.optional(S.String),
-    serviceName: S.String,
-    serviceType: S.optional(UpdateProjectResponseServicesItemServiceType),
-  }),
-).annotate({
-  identifier: "UpdateProjectResponseServicesItem",
-}) as any as S.Schema<UpdateProjectResponseServicesItem>;
+export const UpdateProjectResponseServicesItem =
+  CreateProjectResponseServicesItem as any as S.Schema<UpdateProjectResponseServicesItem>;
 
 export type UpdateProjectResponseServicesList = Array<UpdateProjectResponseServicesItem>;
-export const UpdateProjectResponseServicesList = /*@__PURE__*/ S.Array(
-  UpdateProjectResponseServicesItem,
-) as any as S.Schema<UpdateProjectResponseServicesList>;
+export const UpdateProjectResponseServicesList =
+  CreateProjectResponseServicesList as any as S.Schema<UpdateProjectResponseServicesList>;
 
 export type UpdateProjectResponseSkewProtectionAllowedDomainsList = Array<string>;
 export const UpdateProjectResponseSkewProtectionAllowedDomainsList =
@@ -48400,19 +44846,8 @@ export interface UpdateProjectResponseSsoProtection {
   cve55182MigrationAppliedFrom?: UpdateProjectResponseSsoProtectionCve55182MigrationAppliedFrom | null;
   deploymentType: UpdateProjectResponseSsoProtectionDeploymentType;
 }
-export const UpdateProjectResponseSsoProtection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    april2026SecurityIncidentMigrationAppliedFrom: S.optional(
-      S.NullOr(UpdateProjectResponseSsoProtectionApril2026SecurityIncidentMigrationAppliedFrom),
-    ),
-    cve55182MigrationAppliedFrom: S.optional(
-      S.NullOr(UpdateProjectResponseSsoProtectionCve55182MigrationAppliedFrom),
-    ),
-    deploymentType: UpdateProjectResponseSsoProtectionDeploymentType,
-  }),
-).annotate({
-  identifier: "UpdateProjectResponseSsoProtection",
-}) as any as S.Schema<UpdateProjectResponseSsoProtection>;
+export const UpdateProjectResponseSsoProtection =
+  CreateProjectResponseSsoProtection as any as S.Schema<UpdateProjectResponseSsoProtection>;
 
 export type UpdateProjectResponseStaticIpsRegionsList = Array<string>;
 export const UpdateProjectResponseStaticIpsRegionsList =
@@ -48456,14 +44891,8 @@ export interface UpdateProjectResponseTargetsValueBranchMatcher {
   /** The type of matching to perform */
   type: UpdateProjectResponseTargetsValueBranchMatcherType;
 }
-export const UpdateProjectResponseTargetsValueBranchMatcher = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pattern: S.String,
-    type: UpdateProjectResponseTargetsValueBranchMatcherType,
-  }),
-).annotate({
-  identifier: "UpdateProjectResponseTargetsValueBranchMatcher",
-}) as any as S.Schema<UpdateProjectResponseTargetsValueBranchMatcher>;
+export const UpdateProjectResponseTargetsValueBranchMatcher =
+  CreateProjectResponseAliasItemDeploymentBranchMatcher as any as S.Schema<UpdateProjectResponseTargetsValueBranchMatcher>;
 
 export type UpdateProjectResponseTargetsValueBuildsItem =
   CreateProjectResponseAliasItemDeploymentBuildsItem;
@@ -48647,22 +45076,13 @@ export interface UpdateProjectResponseTracingSamplingRulesItem {
   rate: number;
   requestPath?: string;
 }
-export const UpdateProjectResponseTracingSamplingRulesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    destination: S.optional(UpdateProjectResponseTracingSamplingRulesItemDestination),
-    env: S.optional(UpdateProjectResponseTracingSamplingRulesItemEnv),
-    rate: S.Number,
-    requestPath: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateProjectResponseTracingSamplingRulesItem",
-}) as any as S.Schema<UpdateProjectResponseTracingSamplingRulesItem>;
+export const UpdateProjectResponseTracingSamplingRulesItem =
+  CreateProjectResponseTracingSamplingRulesItem as any as S.Schema<UpdateProjectResponseTracingSamplingRulesItem>;
 
 export type UpdateProjectResponseTracingSamplingRulesList =
   Array<UpdateProjectResponseTracingSamplingRulesItem>;
-export const UpdateProjectResponseTracingSamplingRulesList = /*@__PURE__*/ S.Array(
-  UpdateProjectResponseTracingSamplingRulesItem,
-) as any as S.Schema<UpdateProjectResponseTracingSamplingRulesList>;
+export const UpdateProjectResponseTracingSamplingRulesList =
+  CreateProjectResponseTracingSamplingRulesList as any as S.Schema<UpdateProjectResponseTracingSamplingRulesList>;
 
 export interface UpdateProjectResponseTracing {
   domains?: string;
@@ -48726,13 +45146,8 @@ export const UpdateProjectResponseTrustedIpsCase1DeploymentType = S.String;
 export interface UpdateProjectResponseTrustedIpsCase1 {
   deploymentType: UpdateProjectResponseTrustedIpsCase1DeploymentType;
 }
-export const UpdateProjectResponseTrustedIpsCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deploymentType: UpdateProjectResponseTrustedIpsCase1DeploymentType,
-  }),
-).annotate({
-  identifier: "UpdateProjectResponseTrustedIpsCase1",
-}) as any as S.Schema<UpdateProjectResponseTrustedIpsCase1>;
+export const UpdateProjectResponseTrustedIpsCase1 =
+  CreateProjectRequestSsoProtection as any as S.Schema<UpdateProjectResponseTrustedIpsCase1>;
 
 export type UpdateProjectResponseTrustedIps =
   | UpdateProjectResponseTrustedIpsCase0
@@ -49044,17 +45459,8 @@ export interface UpdateProjectResponseUsageStatus {
   /** Per-project throttle, set explicitly for this project (e.g. via the per-project Flat Rate CDN endpoint). */
   throttled?: boolean;
 }
-export const UpdateProjectResponseUsageStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bypassThrottleUntil: S.optional(S.Number),
-    exceededAllowanceUntil: S.optional(S.Number),
-    kind: UpdateProjectResponseUsageStatusKind,
-    teamThrottled: S.optional(S.Boolean),
-    throttled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "UpdateProjectResponseUsageStatus",
-}) as any as S.Schema<UpdateProjectResponseUsageStatus>;
+export const UpdateProjectResponseUsageStatus =
+  CreateProjectResponseUsageStatus as any as S.Schema<UpdateProjectResponseUsageStatus>;
 
 export type UpdateProjectResponseWebAnalytics = CreateProjectResponseWebAnalytics;
 export const UpdateProjectResponseWebAnalytics = CreateProjectResponseWebAnalytics;
@@ -49433,17 +45839,7 @@ export interface UpdateProjectProtectionBypassResponseProtectionBypassValueCase0
   scope: UpdateProjectProtectionBypassResponseProtectionBypassValueCase0Scope;
 }
 export const UpdateProjectProtectionBypassResponseProtectionBypassValueCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      configurationId: S.String,
-      createdAt: S.Number,
-      createdBy: S.String,
-      integrationId: S.String,
-      scope: UpdateProjectProtectionBypassResponseProtectionBypassValueCase0Scope,
-    }),
-  ).annotate({
-    identifier: "UpdateProjectProtectionBypassResponseProtectionBypassValueCase0",
-  }) as any as S.Schema<UpdateProjectProtectionBypassResponseProtectionBypassValueCase0>;
+  GetProjectsResponseBodyCase2ProjectsItemProtectionBypassValueCase0 as any as S.Schema<UpdateProjectProtectionBypassResponseProtectionBypassValueCase0>;
 
 export type UpdateProjectProtectionBypassResponseProtectionBypassValueCase1Scope =
   "automation-bypass";
@@ -49459,17 +45855,7 @@ export interface UpdateProjectProtectionBypassResponseProtectionBypassValueCase1
   scope: UpdateProjectProtectionBypassResponseProtectionBypassValueCase1Scope;
 }
 export const UpdateProjectProtectionBypassResponseProtectionBypassValueCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdAt: S.Number,
-      createdBy: S.String,
-      isEnvVar: S.optional(S.Boolean),
-      note: S.optional(S.String),
-      scope: UpdateProjectProtectionBypassResponseProtectionBypassValueCase1Scope,
-    }),
-  ).annotate({
-    identifier: "UpdateProjectProtectionBypassResponseProtectionBypassValueCase1",
-  }) as any as S.Schema<UpdateProjectProtectionBypassResponseProtectionBypassValueCase1>;
+  GetProjectsResponseBodyCase2ProjectsItemProtectionBypassValueCase1 as any as S.Schema<UpdateProjectProtectionBypassResponseProtectionBypassValueCase1>;
 
 export type UpdateProjectProtectionBypassResponseProtectionBypassValue =
   | UpdateProjectProtectionBypassResponseProtectionBypassValueCase0
@@ -49576,15 +45962,8 @@ export interface UploadProjectAvatarResponseAliasItemDeploymentBranchMatcher {
   /** The type of matching to perform */
   type: UploadProjectAvatarResponseAliasItemDeploymentBranchMatcherType;
 }
-export const UploadProjectAvatarResponseAliasItemDeploymentBranchMatcher = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pattern: S.String,
-      type: UploadProjectAvatarResponseAliasItemDeploymentBranchMatcherType,
-    }),
-).annotate({
-  identifier: "UploadProjectAvatarResponseAliasItemDeploymentBranchMatcher",
-}) as any as S.Schema<UploadProjectAvatarResponseAliasItemDeploymentBranchMatcher>;
+export const UploadProjectAvatarResponseAliasItemDeploymentBranchMatcher =
+  CreateProjectResponseCustomEnvironmentsItemBranchMatcher as any as S.Schema<UploadProjectAvatarResponseAliasItemDeploymentBranchMatcher>;
 
 export type UploadProjectAvatarResponseAliasItemDeploymentBuildsItem =
   CreateProjectResponseAliasItemDeploymentBuildsItem;
@@ -49878,14 +46257,8 @@ export interface UploadProjectAvatarResponseCreatorCase0ViaCase0 {
   app: CreateProjectResponseCreatorCase0ViaCase0App;
   type: UploadProjectAvatarResponseCreatorCase0ViaCase0Type;
 }
-export const UploadProjectAvatarResponseCreatorCase0ViaCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app: CreateProjectResponseCreatorCase0ViaCase0App,
-    type: UploadProjectAvatarResponseCreatorCase0ViaCase0Type,
-  }),
-).annotate({
-  identifier: "UploadProjectAvatarResponseCreatorCase0ViaCase0",
-}) as any as S.Schema<UploadProjectAvatarResponseCreatorCase0ViaCase0>;
+export const UploadProjectAvatarResponseCreatorCase0ViaCase0 =
+  CreateProjectResponseCreatorCase0ViaCase0 as any as S.Schema<UploadProjectAvatarResponseCreatorCase0ViaCase0>;
 
 export type UploadProjectAvatarResponseCreatorCase0ViaCase1Integration =
   CreateProjectResponseCreatorCase0ViaCase1Integration;
@@ -49900,14 +46273,8 @@ export interface UploadProjectAvatarResponseCreatorCase0ViaCase1 {
   integration: CreateProjectResponseCreatorCase0ViaCase1Integration;
   type: UploadProjectAvatarResponseCreatorCase0ViaCase1Type;
 }
-export const UploadProjectAvatarResponseCreatorCase0ViaCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    integration: CreateProjectResponseCreatorCase0ViaCase1Integration,
-    type: UploadProjectAvatarResponseCreatorCase0ViaCase1Type,
-  }),
-).annotate({
-  identifier: "UploadProjectAvatarResponseCreatorCase0ViaCase1",
-}) as any as S.Schema<UploadProjectAvatarResponseCreatorCase0ViaCase1>;
+export const UploadProjectAvatarResponseCreatorCase0ViaCase1 =
+  CreateProjectResponseCreatorCase0ViaCase1 as any as S.Schema<UploadProjectAvatarResponseCreatorCase0ViaCase1>;
 
 export type UploadProjectAvatarResponseCreatorCase0Via =
   | UploadProjectAvatarResponseCreatorCase0ViaCase0
@@ -49945,14 +46312,8 @@ export interface UploadProjectAvatarResponseCreatorCase1 {
   app: CreateProjectResponseCreatorCase0ViaCase0App;
   type: UploadProjectAvatarResponseCreatorCase1Type;
 }
-export const UploadProjectAvatarResponseCreatorCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app: CreateProjectResponseCreatorCase0ViaCase0App,
-    type: UploadProjectAvatarResponseCreatorCase1Type,
-  }),
-).annotate({
-  identifier: "UploadProjectAvatarResponseCreatorCase1",
-}) as any as S.Schema<UploadProjectAvatarResponseCreatorCase1>;
+export const UploadProjectAvatarResponseCreatorCase1 =
+  CreateProjectResponseCreatorCase0ViaCase0 as any as S.Schema<UploadProjectAvatarResponseCreatorCase1>;
 
 export type UploadProjectAvatarResponseCreatorCase2Integration =
   CreateProjectResponseCreatorCase0ViaCase1Integration;
@@ -49966,14 +46327,8 @@ export interface UploadProjectAvatarResponseCreatorCase2 {
   integration: CreateProjectResponseCreatorCase0ViaCase1Integration;
   type: UploadProjectAvatarResponseCreatorCase2Type;
 }
-export const UploadProjectAvatarResponseCreatorCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    integration: CreateProjectResponseCreatorCase0ViaCase1Integration,
-    type: UploadProjectAvatarResponseCreatorCase2Type,
-  }),
-).annotate({
-  identifier: "UploadProjectAvatarResponseCreatorCase2",
-}) as any as S.Schema<UploadProjectAvatarResponseCreatorCase2>;
+export const UploadProjectAvatarResponseCreatorCase2 =
+  CreateProjectResponseCreatorCase0ViaCase1 as any as S.Schema<UploadProjectAvatarResponseCreatorCase2>;
 
 export type UploadProjectAvatarResponseCreatorCase3Type = "system";
 export const UploadProjectAvatarResponseCreatorCase3Type = S.String;
@@ -49981,13 +46336,8 @@ export const UploadProjectAvatarResponseCreatorCase3Type = S.String;
 export interface UploadProjectAvatarResponseCreatorCase3 {
   type: UploadProjectAvatarResponseCreatorCase3Type;
 }
-export const UploadProjectAvatarResponseCreatorCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: UploadProjectAvatarResponseCreatorCase3Type,
-  }),
-).annotate({
-  identifier: "UploadProjectAvatarResponseCreatorCase3",
-}) as any as S.Schema<UploadProjectAvatarResponseCreatorCase3>;
+export const UploadProjectAvatarResponseCreatorCase3 =
+  CreateProjectResponseCreatorCase3 as any as S.Schema<UploadProjectAvatarResponseCreatorCase3>;
 
 export type UploadProjectAvatarResponseCreator =
   | UploadProjectAvatarResponseCreatorCase0
@@ -50015,24 +46365,13 @@ export interface UploadProjectAvatarResponseCronsDefinitionsItem {
   /** The origin of this definition. 'api' means created via the API. Undefined means it originated from a deployment (vercel.json). */
   source?: UploadProjectAvatarResponseCronsDefinitionsItemSource;
 }
-export const UploadProjectAvatarResponseCronsDefinitionsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    host: S.String,
-    hostInferred: S.optional(S.Boolean),
-    path: S.String,
-    schedule: S.String,
-    source: S.optional(UploadProjectAvatarResponseCronsDefinitionsItemSource),
-  }),
-).annotate({
-  identifier: "UploadProjectAvatarResponseCronsDefinitionsItem",
-}) as any as S.Schema<UploadProjectAvatarResponseCronsDefinitionsItem>;
+export const UploadProjectAvatarResponseCronsDefinitionsItem =
+  CreateProjectResponseCronsDefinitionsItem as any as S.Schema<UploadProjectAvatarResponseCronsDefinitionsItem>;
 
 export type UploadProjectAvatarResponseCronsDefinitionsList =
   Array<UploadProjectAvatarResponseCronsDefinitionsItem>;
-export const UploadProjectAvatarResponseCronsDefinitionsList = /*@__PURE__*/ S.Array(
-  UploadProjectAvatarResponseCronsDefinitionsItem,
-) as any as S.Schema<UploadProjectAvatarResponseCronsDefinitionsList>;
+export const UploadProjectAvatarResponseCronsDefinitionsList =
+  CreateProjectResponseCronsDefinitionsList as any as S.Schema<UploadProjectAvatarResponseCronsDefinitionsList>;
 
 export interface UploadProjectAvatarResponseCrons {
   definitions: UploadProjectAvatarResponseCronsDefinitionsList;
@@ -50044,17 +46383,8 @@ export interface UploadProjectAvatarResponseCrons {
   enabledAt: number;
   updatedAt: number;
 }
-export const UploadProjectAvatarResponseCrons = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    definitions: UploadProjectAvatarResponseCronsDefinitionsList,
-    deploymentId: S.NullOr(S.String),
-    disabledAt: S.NullOr(S.Number),
-    enabledAt: S.Number,
-    updatedAt: S.Number,
-  }),
-).annotate({
-  identifier: "UploadProjectAvatarResponseCrons",
-}) as any as S.Schema<UploadProjectAvatarResponseCrons>;
+export const UploadProjectAvatarResponseCrons =
+  CreateProjectResponseCrons as any as S.Schema<UploadProjectAvatarResponseCrons>;
 
 /** The type of matching to perform */
 export type UploadProjectAvatarResponseCustomEnvironmentsItemBranchMatcherType =
@@ -50071,14 +46401,7 @@ export interface UploadProjectAvatarResponseCustomEnvironmentsItemBranchMatcher 
   type: UploadProjectAvatarResponseCustomEnvironmentsItemBranchMatcherType;
 }
 export const UploadProjectAvatarResponseCustomEnvironmentsItemBranchMatcher =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pattern: S.String,
-      type: UploadProjectAvatarResponseCustomEnvironmentsItemBranchMatcherType,
-    }),
-  ).annotate({
-    identifier: "UploadProjectAvatarResponseCustomEnvironmentsItemBranchMatcher",
-  }) as any as S.Schema<UploadProjectAvatarResponseCustomEnvironmentsItemBranchMatcher>;
+  GetProjectsResponseBodyCase0ItemAliasItemDeploymentBranchMatcher as any as S.Schema<UploadProjectAvatarResponseCustomEnvironmentsItemBranchMatcher>;
 
 /** List of aliases for the current deployment */
 export type UploadProjectAvatarResponseCustomEnvironmentsItemCurrentDeploymentAliasesList =
@@ -50232,16 +46555,7 @@ export interface UploadProjectAvatarResponseDefaultResourceConfigBuildMachineEla
   direction: UploadProjectAvatarResponseDefaultResourceConfigBuildMachineElasticTransitionDirection;
 }
 export const UploadProjectAvatarResponseDefaultResourceConfigBuildMachineElasticTransition =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      algorithmVersion: S.String,
-      at: S.Number,
-      direction:
-        UploadProjectAvatarResponseDefaultResourceConfigBuildMachineElasticTransitionDirection,
-    }),
-  ).annotate({
-    identifier: "UploadProjectAvatarResponseDefaultResourceConfigBuildMachineElasticTransition",
-  }) as any as S.Schema<UploadProjectAvatarResponseDefaultResourceConfigBuildMachineElasticTransition>;
+  GetProjectsResponseBodyCase0ItemResourceConfigBuildMachineElasticTransition as any as S.Schema<UploadProjectAvatarResponseDefaultResourceConfigBuildMachineElasticTransition>;
 
 export type UploadProjectAvatarResponseDefaultResourceConfigBuildMachineSelection =
   | "elastic"
@@ -50263,16 +46577,8 @@ export const UploadProjectAvatarResponseDefaultResourceConfigBuildQueueConfigura
 export interface UploadProjectAvatarResponseDefaultResourceConfigBuildQueue {
   configuration?: UploadProjectAvatarResponseDefaultResourceConfigBuildQueueConfiguration;
 }
-export const UploadProjectAvatarResponseDefaultResourceConfigBuildQueue = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      configuration: S.optional(
-        UploadProjectAvatarResponseDefaultResourceConfigBuildQueueConfiguration,
-      ),
-    }),
-).annotate({
-  identifier: "UploadProjectAvatarResponseDefaultResourceConfigBuildQueue",
-}) as any as S.Schema<UploadProjectAvatarResponseDefaultResourceConfigBuildQueue>;
+export const UploadProjectAvatarResponseDefaultResourceConfigBuildQueue =
+  GetProjectsResponseBodyCase0ItemResourceConfigBuildQueue as any as S.Schema<UploadProjectAvatarResponseDefaultResourceConfigBuildQueue>;
 
 export type UploadProjectAvatarResponseDefaultResourceConfigFunctionDefaultMemoryType =
   | "performance"
@@ -50354,16 +46660,7 @@ export interface UploadProjectAvatarResponseDeploymentPolicyDeploymentSourcesIte
   type: UploadProjectAvatarResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase0Type;
 }
 export const UploadProjectAvatarResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      target:
-        UploadProjectAvatarResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase0Target,
-      type: UploadProjectAvatarResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase0Type,
-    }),
-  ).annotate({
-    identifier:
-      "UploadProjectAvatarResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase0",
-  }) as any as S.Schema<UploadProjectAvatarResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase0>;
+  GetProjectsResponseBodyCase2ProjectsItemDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase0 as any as S.Schema<UploadProjectAvatarResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase0>;
 
 export type UploadProjectAvatarResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase1Type =
   "custom";
@@ -50375,15 +46672,7 @@ export interface UploadProjectAvatarResponseDeploymentPolicyDeploymentSourcesIte
   type: UploadProjectAvatarResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase1Type;
 }
 export const UploadProjectAvatarResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      environmentId: S.String,
-      type: UploadProjectAvatarResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase1Type,
-    }),
-  ).annotate({
-    identifier:
-      "UploadProjectAvatarResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase1",
-  }) as any as S.Schema<UploadProjectAvatarResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase1>;
+  GetProjectsResponseBodyCase2ProjectsItemDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase1 as any as S.Schema<UploadProjectAvatarResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase1>;
 
 export type UploadProjectAvatarResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItem =
   | UploadProjectAvatarResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase0
@@ -50411,9 +46700,7 @@ export const UploadProjectAvatarResponseDeploymentPolicyDeploymentSourcesItemSou
 export type UploadProjectAvatarResponseDeploymentPolicyDeploymentSourcesItemSourcesList =
   Array<UploadProjectAvatarResponseDeploymentPolicyDeploymentSourcesItemSourcesItem>;
 export const UploadProjectAvatarResponseDeploymentPolicyDeploymentSourcesItemSourcesList =
-  /*@__PURE__*/ S.Array(
-    UploadProjectAvatarResponseDeploymentPolicyDeploymentSourcesItemSourcesItem,
-  ) as any as S.Schema<UploadProjectAvatarResponseDeploymentPolicyDeploymentSourcesItemSourcesList>;
+  CreateProjectResponseDeploymentPolicyDeploymentSourcesItemSourcesList as any as S.Schema<UploadProjectAvatarResponseDeploymentPolicyDeploymentSourcesItemSourcesList>;
 
 /** `enabled: true` with empty `sources` is deny-all. */
 export interface UploadProjectAvatarResponseDeploymentPolicyDeploymentSourcesItem {
@@ -50456,14 +46743,7 @@ export interface UploadProjectAvatarResponseDeploymentPolicyGitSourcesItemEnviro
   type: UploadProjectAvatarResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase0Type;
 }
 export const UploadProjectAvatarResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      target: UploadProjectAvatarResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase0Target,
-      type: UploadProjectAvatarResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase0Type,
-    }),
-  ).annotate({
-    identifier: "UploadProjectAvatarResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase0",
-  }) as any as S.Schema<UploadProjectAvatarResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase0>;
+  CreateProjectResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase0 as any as S.Schema<UploadProjectAvatarResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase0>;
 
 export type UploadProjectAvatarResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase1Type =
   "custom";
@@ -50475,14 +46755,7 @@ export interface UploadProjectAvatarResponseDeploymentPolicyGitSourcesItemEnviro
   type: UploadProjectAvatarResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase1Type;
 }
 export const UploadProjectAvatarResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      environmentId: S.String,
-      type: UploadProjectAvatarResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase1Type,
-    }),
-  ).annotate({
-    identifier: "UploadProjectAvatarResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase1",
-  }) as any as S.Schema<UploadProjectAvatarResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase1>;
+  CreateProjectResponseDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase1 as any as S.Schema<UploadProjectAvatarResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase1>;
 
 export type UploadProjectAvatarResponseDeploymentPolicyGitSourcesItemEnvironmentsItem =
   | UploadProjectAvatarResponseDeploymentPolicyGitSourcesItemEnvironmentsItemCase0
@@ -50510,15 +46783,7 @@ export interface UploadProjectAvatarResponseDeploymentPolicyGitSourcesItemSource
   repo?: string;
 }
 export const UploadProjectAvatarResponseDeploymentPolicyGitSourcesItemSourcesItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      org: S.String,
-      provider: UploadProjectAvatarResponseDeploymentPolicyGitSourcesItemSourcesItemCase0Provider,
-      repo: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "UploadProjectAvatarResponseDeploymentPolicyGitSourcesItemSourcesItemCase0",
-  }) as any as S.Schema<UploadProjectAvatarResponseDeploymentPolicyGitSourcesItemSourcesItemCase0>;
+  CreateProjectResponseDeploymentPolicyGitSourcesItemSourcesItemCase0 as any as S.Schema<UploadProjectAvatarResponseDeploymentPolicyGitSourcesItemSourcesItemCase0>;
 
 export type UploadProjectAvatarResponseDeploymentPolicyGitSourcesItemSourcesItemCase1Provider =
   "gitlab";
@@ -50532,15 +46797,7 @@ export interface UploadProjectAvatarResponseDeploymentPolicyGitSourcesItemSource
   provider: UploadProjectAvatarResponseDeploymentPolicyGitSourcesItemSourcesItemCase1Provider;
 }
 export const UploadProjectAvatarResponseDeploymentPolicyGitSourcesItemSourcesItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      namespace: S.String,
-      project: S.optional(S.String),
-      provider: UploadProjectAvatarResponseDeploymentPolicyGitSourcesItemSourcesItemCase1Provider,
-    }),
-  ).annotate({
-    identifier: "UploadProjectAvatarResponseDeploymentPolicyGitSourcesItemSourcesItemCase1",
-  }) as any as S.Schema<UploadProjectAvatarResponseDeploymentPolicyGitSourcesItemSourcesItemCase1>;
+  CreateProjectResponseDeploymentPolicyGitSourcesItemSourcesItemCase1 as any as S.Schema<UploadProjectAvatarResponseDeploymentPolicyGitSourcesItemSourcesItemCase1>;
 
 export type UploadProjectAvatarResponseDeploymentPolicyGitSourcesItemSourcesItem =
   | UploadProjectAvatarResponseDeploymentPolicyGitSourcesItemSourcesItemCase0
@@ -50663,14 +46920,8 @@ export interface UploadProjectAvatarResponseEnvItemContentHintCase0 {
   storeId: string;
   type: UploadProjectAvatarResponseEnvItemContentHintCase0Type;
 }
-export const UploadProjectAvatarResponseEnvItemContentHintCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: UploadProjectAvatarResponseEnvItemContentHintCase0Type,
-  }),
-).annotate({
-  identifier: "UploadProjectAvatarResponseEnvItemContentHintCase0",
-}) as any as S.Schema<UploadProjectAvatarResponseEnvItemContentHintCase0>;
+export const UploadProjectAvatarResponseEnvItemContentHintCase0 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<UploadProjectAvatarResponseEnvItemContentHintCase0>;
 
 export type UploadProjectAvatarResponseEnvItemContentHintCase1Type = "redis-rest-api-url";
 export const UploadProjectAvatarResponseEnvItemContentHintCase1Type = S.String;
@@ -50679,14 +46930,8 @@ export interface UploadProjectAvatarResponseEnvItemContentHintCase1 {
   storeId: string;
   type: UploadProjectAvatarResponseEnvItemContentHintCase1Type;
 }
-export const UploadProjectAvatarResponseEnvItemContentHintCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: UploadProjectAvatarResponseEnvItemContentHintCase1Type,
-  }),
-).annotate({
-  identifier: "UploadProjectAvatarResponseEnvItemContentHintCase1",
-}) as any as S.Schema<UploadProjectAvatarResponseEnvItemContentHintCase1>;
+export const UploadProjectAvatarResponseEnvItemContentHintCase1 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<UploadProjectAvatarResponseEnvItemContentHintCase1>;
 
 export type UploadProjectAvatarResponseEnvItemContentHintCase2Type = "redis-rest-api-token";
 export const UploadProjectAvatarResponseEnvItemContentHintCase2Type = S.String;
@@ -50695,14 +46940,8 @@ export interface UploadProjectAvatarResponseEnvItemContentHintCase2 {
   storeId: string;
   type: UploadProjectAvatarResponseEnvItemContentHintCase2Type;
 }
-export const UploadProjectAvatarResponseEnvItemContentHintCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: UploadProjectAvatarResponseEnvItemContentHintCase2Type,
-  }),
-).annotate({
-  identifier: "UploadProjectAvatarResponseEnvItemContentHintCase2",
-}) as any as S.Schema<UploadProjectAvatarResponseEnvItemContentHintCase2>;
+export const UploadProjectAvatarResponseEnvItemContentHintCase2 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<UploadProjectAvatarResponseEnvItemContentHintCase2>;
 
 export type UploadProjectAvatarResponseEnvItemContentHintCase3Type =
   "redis-rest-api-read-only-token";
@@ -50712,14 +46951,8 @@ export interface UploadProjectAvatarResponseEnvItemContentHintCase3 {
   storeId: string;
   type: UploadProjectAvatarResponseEnvItemContentHintCase3Type;
 }
-export const UploadProjectAvatarResponseEnvItemContentHintCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: UploadProjectAvatarResponseEnvItemContentHintCase3Type,
-  }),
-).annotate({
-  identifier: "UploadProjectAvatarResponseEnvItemContentHintCase3",
-}) as any as S.Schema<UploadProjectAvatarResponseEnvItemContentHintCase3>;
+export const UploadProjectAvatarResponseEnvItemContentHintCase3 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<UploadProjectAvatarResponseEnvItemContentHintCase3>;
 
 export type UploadProjectAvatarResponseEnvItemContentHintCase4Type = "blob-read-write-token";
 export const UploadProjectAvatarResponseEnvItemContentHintCase4Type = S.String;
@@ -50728,14 +46961,8 @@ export interface UploadProjectAvatarResponseEnvItemContentHintCase4 {
   storeId: string;
   type: UploadProjectAvatarResponseEnvItemContentHintCase4Type;
 }
-export const UploadProjectAvatarResponseEnvItemContentHintCase4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: UploadProjectAvatarResponseEnvItemContentHintCase4Type,
-  }),
-).annotate({
-  identifier: "UploadProjectAvatarResponseEnvItemContentHintCase4",
-}) as any as S.Schema<UploadProjectAvatarResponseEnvItemContentHintCase4>;
+export const UploadProjectAvatarResponseEnvItemContentHintCase4 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<UploadProjectAvatarResponseEnvItemContentHintCase4>;
 
 export type UploadProjectAvatarResponseEnvItemContentHintCase5Type = "blob-store-id";
 export const UploadProjectAvatarResponseEnvItemContentHintCase5Type = S.String;
@@ -50744,14 +46971,8 @@ export interface UploadProjectAvatarResponseEnvItemContentHintCase5 {
   storeId: string;
   type: UploadProjectAvatarResponseEnvItemContentHintCase5Type;
 }
-export const UploadProjectAvatarResponseEnvItemContentHintCase5 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: UploadProjectAvatarResponseEnvItemContentHintCase5Type,
-  }),
-).annotate({
-  identifier: "UploadProjectAvatarResponseEnvItemContentHintCase5",
-}) as any as S.Schema<UploadProjectAvatarResponseEnvItemContentHintCase5>;
+export const UploadProjectAvatarResponseEnvItemContentHintCase5 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<UploadProjectAvatarResponseEnvItemContentHintCase5>;
 
 export type UploadProjectAvatarResponseEnvItemContentHintCase6Type = "blob-webhook-public-key";
 export const UploadProjectAvatarResponseEnvItemContentHintCase6Type = S.String;
@@ -50760,14 +46981,8 @@ export interface UploadProjectAvatarResponseEnvItemContentHintCase6 {
   storeId: string;
   type: UploadProjectAvatarResponseEnvItemContentHintCase6Type;
 }
-export const UploadProjectAvatarResponseEnvItemContentHintCase6 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: UploadProjectAvatarResponseEnvItemContentHintCase6Type,
-  }),
-).annotate({
-  identifier: "UploadProjectAvatarResponseEnvItemContentHintCase6",
-}) as any as S.Schema<UploadProjectAvatarResponseEnvItemContentHintCase6>;
+export const UploadProjectAvatarResponseEnvItemContentHintCase6 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<UploadProjectAvatarResponseEnvItemContentHintCase6>;
 
 export type UploadProjectAvatarResponseEnvItemContentHintCase7Type = "postgres-url";
 export const UploadProjectAvatarResponseEnvItemContentHintCase7Type = S.String;
@@ -50776,14 +46991,8 @@ export interface UploadProjectAvatarResponseEnvItemContentHintCase7 {
   storeId: string;
   type: UploadProjectAvatarResponseEnvItemContentHintCase7Type;
 }
-export const UploadProjectAvatarResponseEnvItemContentHintCase7 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: UploadProjectAvatarResponseEnvItemContentHintCase7Type,
-  }),
-).annotate({
-  identifier: "UploadProjectAvatarResponseEnvItemContentHintCase7",
-}) as any as S.Schema<UploadProjectAvatarResponseEnvItemContentHintCase7>;
+export const UploadProjectAvatarResponseEnvItemContentHintCase7 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<UploadProjectAvatarResponseEnvItemContentHintCase7>;
 
 export type UploadProjectAvatarResponseEnvItemContentHintCase8Type = "postgres-url-non-pooling";
 export const UploadProjectAvatarResponseEnvItemContentHintCase8Type = S.String;
@@ -50792,14 +47001,8 @@ export interface UploadProjectAvatarResponseEnvItemContentHintCase8 {
   storeId: string;
   type: UploadProjectAvatarResponseEnvItemContentHintCase8Type;
 }
-export const UploadProjectAvatarResponseEnvItemContentHintCase8 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: UploadProjectAvatarResponseEnvItemContentHintCase8Type,
-  }),
-).annotate({
-  identifier: "UploadProjectAvatarResponseEnvItemContentHintCase8",
-}) as any as S.Schema<UploadProjectAvatarResponseEnvItemContentHintCase8>;
+export const UploadProjectAvatarResponseEnvItemContentHintCase8 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<UploadProjectAvatarResponseEnvItemContentHintCase8>;
 
 export type UploadProjectAvatarResponseEnvItemContentHintCase9Type = "postgres-prisma-url";
 export const UploadProjectAvatarResponseEnvItemContentHintCase9Type = S.String;
@@ -50808,14 +47011,8 @@ export interface UploadProjectAvatarResponseEnvItemContentHintCase9 {
   storeId: string;
   type: UploadProjectAvatarResponseEnvItemContentHintCase9Type;
 }
-export const UploadProjectAvatarResponseEnvItemContentHintCase9 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: UploadProjectAvatarResponseEnvItemContentHintCase9Type,
-  }),
-).annotate({
-  identifier: "UploadProjectAvatarResponseEnvItemContentHintCase9",
-}) as any as S.Schema<UploadProjectAvatarResponseEnvItemContentHintCase9>;
+export const UploadProjectAvatarResponseEnvItemContentHintCase9 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<UploadProjectAvatarResponseEnvItemContentHintCase9>;
 
 export type UploadProjectAvatarResponseEnvItemContentHintCase10Type = "postgres-user";
 export const UploadProjectAvatarResponseEnvItemContentHintCase10Type = S.String;
@@ -50824,14 +47021,8 @@ export interface UploadProjectAvatarResponseEnvItemContentHintCase10 {
   storeId: string;
   type: UploadProjectAvatarResponseEnvItemContentHintCase10Type;
 }
-export const UploadProjectAvatarResponseEnvItemContentHintCase10 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: UploadProjectAvatarResponseEnvItemContentHintCase10Type,
-  }),
-).annotate({
-  identifier: "UploadProjectAvatarResponseEnvItemContentHintCase10",
-}) as any as S.Schema<UploadProjectAvatarResponseEnvItemContentHintCase10>;
+export const UploadProjectAvatarResponseEnvItemContentHintCase10 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<UploadProjectAvatarResponseEnvItemContentHintCase10>;
 
 export type UploadProjectAvatarResponseEnvItemContentHintCase11Type = "postgres-host";
 export const UploadProjectAvatarResponseEnvItemContentHintCase11Type = S.String;
@@ -50840,14 +47031,8 @@ export interface UploadProjectAvatarResponseEnvItemContentHintCase11 {
   storeId: string;
   type: UploadProjectAvatarResponseEnvItemContentHintCase11Type;
 }
-export const UploadProjectAvatarResponseEnvItemContentHintCase11 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: UploadProjectAvatarResponseEnvItemContentHintCase11Type,
-  }),
-).annotate({
-  identifier: "UploadProjectAvatarResponseEnvItemContentHintCase11",
-}) as any as S.Schema<UploadProjectAvatarResponseEnvItemContentHintCase11>;
+export const UploadProjectAvatarResponseEnvItemContentHintCase11 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<UploadProjectAvatarResponseEnvItemContentHintCase11>;
 
 export type UploadProjectAvatarResponseEnvItemContentHintCase12Type = "postgres-password";
 export const UploadProjectAvatarResponseEnvItemContentHintCase12Type = S.String;
@@ -50856,14 +47041,8 @@ export interface UploadProjectAvatarResponseEnvItemContentHintCase12 {
   storeId: string;
   type: UploadProjectAvatarResponseEnvItemContentHintCase12Type;
 }
-export const UploadProjectAvatarResponseEnvItemContentHintCase12 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: UploadProjectAvatarResponseEnvItemContentHintCase12Type,
-  }),
-).annotate({
-  identifier: "UploadProjectAvatarResponseEnvItemContentHintCase12",
-}) as any as S.Schema<UploadProjectAvatarResponseEnvItemContentHintCase12>;
+export const UploadProjectAvatarResponseEnvItemContentHintCase12 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<UploadProjectAvatarResponseEnvItemContentHintCase12>;
 
 export type UploadProjectAvatarResponseEnvItemContentHintCase13Type = "postgres-database";
 export const UploadProjectAvatarResponseEnvItemContentHintCase13Type = S.String;
@@ -50872,14 +47051,8 @@ export interface UploadProjectAvatarResponseEnvItemContentHintCase13 {
   storeId: string;
   type: UploadProjectAvatarResponseEnvItemContentHintCase13Type;
 }
-export const UploadProjectAvatarResponseEnvItemContentHintCase13 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: UploadProjectAvatarResponseEnvItemContentHintCase13Type,
-  }),
-).annotate({
-  identifier: "UploadProjectAvatarResponseEnvItemContentHintCase13",
-}) as any as S.Schema<UploadProjectAvatarResponseEnvItemContentHintCase13>;
+export const UploadProjectAvatarResponseEnvItemContentHintCase13 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<UploadProjectAvatarResponseEnvItemContentHintCase13>;
 
 export type UploadProjectAvatarResponseEnvItemContentHintCase14Type = "postgres-url-no-ssl";
 export const UploadProjectAvatarResponseEnvItemContentHintCase14Type = S.String;
@@ -50888,14 +47061,8 @@ export interface UploadProjectAvatarResponseEnvItemContentHintCase14 {
   storeId: string;
   type: UploadProjectAvatarResponseEnvItemContentHintCase14Type;
 }
-export const UploadProjectAvatarResponseEnvItemContentHintCase14 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storeId: S.String,
-    type: UploadProjectAvatarResponseEnvItemContentHintCase14Type,
-  }),
-).annotate({
-  identifier: "UploadProjectAvatarResponseEnvItemContentHintCase14",
-}) as any as S.Schema<UploadProjectAvatarResponseEnvItemContentHintCase14>;
+export const UploadProjectAvatarResponseEnvItemContentHintCase14 =
+  CreateProjectResponseEnvItemContentHintCase0 as any as S.Schema<UploadProjectAvatarResponseEnvItemContentHintCase14>;
 
 export type UploadProjectAvatarResponseEnvItemContentHintCase15Type = "integration-store-secret";
 export const UploadProjectAvatarResponseEnvItemContentHintCase15Type = S.String;
@@ -50907,17 +47074,8 @@ export interface UploadProjectAvatarResponseEnvItemContentHintCase15 {
   storeId: string;
   type: UploadProjectAvatarResponseEnvItemContentHintCase15Type;
 }
-export const UploadProjectAvatarResponseEnvItemContentHintCase15 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    integrationConfigurationId: S.String,
-    integrationId: S.String,
-    integrationProductId: S.String,
-    storeId: S.String,
-    type: UploadProjectAvatarResponseEnvItemContentHintCase15Type,
-  }),
-).annotate({
-  identifier: "UploadProjectAvatarResponseEnvItemContentHintCase15",
-}) as any as S.Schema<UploadProjectAvatarResponseEnvItemContentHintCase15>;
+export const UploadProjectAvatarResponseEnvItemContentHintCase15 =
+  CreateProjectResponseEnvItemContentHintCase15 as any as S.Schema<UploadProjectAvatarResponseEnvItemContentHintCase15>;
 
 export type UploadProjectAvatarResponseEnvItemContentHintCase16Type = "flags-connection-string";
 export const UploadProjectAvatarResponseEnvItemContentHintCase16Type = S.String;
@@ -50926,14 +47084,8 @@ export interface UploadProjectAvatarResponseEnvItemContentHintCase16 {
   projectId: string;
   type: UploadProjectAvatarResponseEnvItemContentHintCase16Type;
 }
-export const UploadProjectAvatarResponseEnvItemContentHintCase16 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    projectId: S.String,
-    type: UploadProjectAvatarResponseEnvItemContentHintCase16Type,
-  }),
-).annotate({
-  identifier: "UploadProjectAvatarResponseEnvItemContentHintCase16",
-}) as any as S.Schema<UploadProjectAvatarResponseEnvItemContentHintCase16>;
+export const UploadProjectAvatarResponseEnvItemContentHintCase16 =
+  CreateProjectResponseEnvItemContentHintCase16 as any as S.Schema<UploadProjectAvatarResponseEnvItemContentHintCase16>;
 
 export type UploadProjectAvatarResponseEnvItemContentHint =
   | UploadProjectAvatarResponseEnvItemContentHintCase0
@@ -50969,14 +47121,8 @@ export interface UploadProjectAvatarResponseEnvItemInternalContentHint {
   encryptedValue: string;
   type: UploadProjectAvatarResponseEnvItemInternalContentHintType;
 }
-export const UploadProjectAvatarResponseEnvItemInternalContentHint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    encryptedValue: S.String,
-    type: UploadProjectAvatarResponseEnvItemInternalContentHintType,
-  }),
-).annotate({
-  identifier: "UploadProjectAvatarResponseEnvItemInternalContentHint",
-}) as any as S.Schema<UploadProjectAvatarResponseEnvItemInternalContentHint>;
+export const UploadProjectAvatarResponseEnvItemInternalContentHint =
+  CreateProjectResponseEnvItemInternalContentHint as any as S.Schema<UploadProjectAvatarResponseEnvItemInternalContentHint>;
 
 export type UploadProjectAvatarResponseEnvItemTargetCase0Item =
   | "development"
@@ -50988,9 +47134,8 @@ export const UploadProjectAvatarResponseEnvItemTargetCase0Item = S.String;
 
 export type UploadProjectAvatarResponseEnvItemTargetCase0List =
   Array<UploadProjectAvatarResponseEnvItemTargetCase0Item>;
-export const UploadProjectAvatarResponseEnvItemTargetCase0List = /*@__PURE__*/ S.Array(
-  UploadProjectAvatarResponseEnvItemTargetCase0Item,
-) as any as S.Schema<UploadProjectAvatarResponseEnvItemTargetCase0List>;
+export const UploadProjectAvatarResponseEnvItemTargetCase0List =
+  CreateProjectRequestEnvironmentVariablesItemTargetCase1List as any as S.Schema<UploadProjectAvatarResponseEnvItemTargetCase0List>;
 
 export type UploadProjectAvatarResponseEnvItemTargetCase1 =
   | "development"
@@ -51199,19 +47344,8 @@ export interface UploadProjectAvatarResponseGitProviderOptions {
   /** Whether the project requires commits to be signed & verified before deployments will be created. - `true`: require verified commits for this project (explicit override of the team setting). - `false`: do not require verified commits (explicit override of the team setting). - absent: inherit from `team.requireVerifiedCommits`. */
   requireVerifiedCommits?: boolean;
 }
-export const UploadProjectAvatarResponseGitProviderOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    consolidatedGitCommitStatus: S.optional(
-      CreateProjectResponseGitProviderOptionsConsolidatedGitCommitStatus,
-    ),
-    createDeployments: UploadProjectAvatarResponseGitProviderOptionsCreateDeployments,
-    disableRepositoryDispatchEvents: S.optional(S.Boolean),
-    gitCommitStatus: S.optional(S.Boolean),
-    requireVerifiedCommits: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "UploadProjectAvatarResponseGitProviderOptions",
-}) as any as S.Schema<UploadProjectAvatarResponseGitProviderOptions>;
+export const UploadProjectAvatarResponseGitProviderOptions =
+  CreateProjectResponseGitProviderOptions as any as S.Schema<UploadProjectAvatarResponseGitProviderOptions>;
 
 export type UploadProjectAvatarResponseInternalRoutesItemCase0 =
   CreateProjectResponseInternalRoutesItemCase0;
@@ -51236,15 +47370,7 @@ export interface UploadProjectAvatarResponseInternalRoutesItemCase1HasItemCase0 
   value: CreateProjectResponseInternalRoutesItemCase1HasItemCase0Value;
 }
 export const UploadProjectAvatarResponseInternalRoutesItemCase1HasItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: UploadProjectAvatarResponseInternalRoutesItemCase1HasItemCase0Key,
-      type: UploadProjectAvatarResponseInternalRoutesItemCase1HasItemCase0Type,
-      value: CreateProjectResponseInternalRoutesItemCase1HasItemCase0Value,
-    }),
-  ).annotate({
-    identifier: "UploadProjectAvatarResponseInternalRoutesItemCase1HasItemCase0",
-  }) as any as S.Schema<UploadProjectAvatarResponseInternalRoutesItemCase1HasItemCase0>;
+  GetProjectsResponseBodyCase0ItemInternalRoutesItemCase1HasItemCase0 as any as S.Schema<UploadProjectAvatarResponseInternalRoutesItemCase1HasItemCase0>;
 
 export type UploadProjectAvatarResponseInternalRoutesItemCase1HasItemCase1Type = "host";
 export const UploadProjectAvatarResponseInternalRoutesItemCase1HasItemCase1Type = S.String;
@@ -51259,14 +47385,7 @@ export interface UploadProjectAvatarResponseInternalRoutesItemCase1HasItemCase1 
   value: CreateProjectResponseInternalRoutesItemCase1HasItemCase0Value;
 }
 export const UploadProjectAvatarResponseInternalRoutesItemCase1HasItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: UploadProjectAvatarResponseInternalRoutesItemCase1HasItemCase1Type,
-      value: CreateProjectResponseInternalRoutesItemCase1HasItemCase0Value,
-    }),
-  ).annotate({
-    identifier: "UploadProjectAvatarResponseInternalRoutesItemCase1HasItemCase1",
-  }) as any as S.Schema<UploadProjectAvatarResponseInternalRoutesItemCase1HasItemCase1>;
+  GetProjectsResponseBodyCase0ItemInternalRoutesItemCase1HasItemCase1 as any as S.Schema<UploadProjectAvatarResponseInternalRoutesItemCase1HasItemCase1>;
 
 export type UploadProjectAvatarResponseInternalRoutesItemCase1HasItem =
   | UploadProjectAvatarResponseInternalRoutesItemCase1HasItemCase0
@@ -51286,14 +47405,8 @@ export const UploadProjectAvatarResponseInternalRoutesItemCase1MitigateAction = 
 export interface UploadProjectAvatarResponseInternalRoutesItemCase1Mitigate {
   action: UploadProjectAvatarResponseInternalRoutesItemCase1MitigateAction;
 }
-export const UploadProjectAvatarResponseInternalRoutesItemCase1Mitigate = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      action: UploadProjectAvatarResponseInternalRoutesItemCase1MitigateAction,
-    }),
-).annotate({
-  identifier: "UploadProjectAvatarResponseInternalRoutesItemCase1Mitigate",
-}) as any as S.Schema<UploadProjectAvatarResponseInternalRoutesItemCase1Mitigate>;
+export const UploadProjectAvatarResponseInternalRoutesItemCase1Mitigate =
+  UpdateMicrofrontendsResponseInternalRoutesItemCase1Mitigate as any as S.Schema<UploadProjectAvatarResponseInternalRoutesItemCase1Mitigate>;
 
 export interface UploadProjectAvatarResponseInternalRoutesItemCase1 {
   has: UploadProjectAvatarResponseInternalRoutesItemCase1HasList;
@@ -51398,18 +47511,8 @@ export interface UploadProjectAvatarResponseLastAliasRequest {
   toDeploymentId: string;
   type: UploadProjectAvatarResponseLastAliasRequestType;
 }
-export const UploadProjectAvatarResponseLastAliasRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fromDeploymentId: S.NullOr(S.String),
-    fromRollingReleaseId: S.optional(S.String),
-    jobStatus: UploadProjectAvatarResponseLastAliasRequestJobStatus,
-    requestedAt: S.Number,
-    toDeploymentId: S.String,
-    type: UploadProjectAvatarResponseLastAliasRequestType,
-  }),
-).annotate({
-  identifier: "UploadProjectAvatarResponseLastAliasRequest",
-}) as any as S.Schema<UploadProjectAvatarResponseLastAliasRequest>;
+export const UploadProjectAvatarResponseLastAliasRequest =
+  CreateProjectResponseLastAliasRequest as any as S.Schema<UploadProjectAvatarResponseLastAliasRequest>;
 
 export type UploadProjectAvatarResponseLatestDeploymentsItemAliasList = Array<string>;
 export const UploadProjectAvatarResponseLatestDeploymentsItemAliasList =
@@ -51442,14 +47545,7 @@ export interface UploadProjectAvatarResponseLatestDeploymentsItemBranchMatcher {
   type: UploadProjectAvatarResponseLatestDeploymentsItemBranchMatcherType;
 }
 export const UploadProjectAvatarResponseLatestDeploymentsItemBranchMatcher =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pattern: S.String,
-      type: UploadProjectAvatarResponseLatestDeploymentsItemBranchMatcherType,
-    }),
-  ).annotate({
-    identifier: "UploadProjectAvatarResponseLatestDeploymentsItemBranchMatcher",
-  }) as any as S.Schema<UploadProjectAvatarResponseLatestDeploymentsItemBranchMatcher>;
+  GetProjectsResponseBodyCase0ItemAliasItemDeploymentBranchMatcher as any as S.Schema<UploadProjectAvatarResponseLatestDeploymentsItemBranchMatcher>;
 
 export type UploadProjectAvatarResponseLatestDeploymentsItemBuildsItem =
   CreateProjectResponseAliasItemDeploymentBuildsItem;
@@ -52086,14 +48182,8 @@ export interface UploadProjectAvatarResponseOidcTokenConfig {
   /** - team: `https://oidc.vercel.com/[team_slug]` - global: `https://oidc.vercel.com` */
   issuerMode?: UploadProjectAvatarResponseOidcTokenConfigIssuerMode;
 }
-export const UploadProjectAvatarResponseOidcTokenConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-    issuerMode: S.optional(UploadProjectAvatarResponseOidcTokenConfigIssuerMode),
-  }),
-).annotate({
-  identifier: "UploadProjectAvatarResponseOidcTokenConfig",
-}) as any as S.Schema<UploadProjectAvatarResponseOidcTokenConfig>;
+export const UploadProjectAvatarResponseOidcTokenConfig =
+  CreateProjectRequestOidcTokenConfig as any as S.Schema<UploadProjectAvatarResponseOidcTokenConfig>;
 
 export type UploadProjectAvatarResponseOptionsAllowlistPathsItem =
   CreateProjectResponseOptionsAllowlistPathsItem;
@@ -52122,14 +48212,8 @@ export interface UploadProjectAvatarResponsePassport {
   connectorId: string;
   deploymentType: UploadProjectAvatarResponsePassportDeploymentType;
 }
-export const UploadProjectAvatarResponsePassport = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    connectorId: S.String,
-    deploymentType: UploadProjectAvatarResponsePassportDeploymentType,
-  }),
-).annotate({
-  identifier: "UploadProjectAvatarResponsePassport",
-}) as any as S.Schema<UploadProjectAvatarResponsePassport>;
+export const UploadProjectAvatarResponsePassport =
+  CreateProjectResponsePassport as any as S.Schema<UploadProjectAvatarResponsePassport>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type UploadProjectAvatarResponsePermissionsAccessGroupList = Array<ACLAction>;
@@ -54683,17 +50767,8 @@ export interface UploadProjectAvatarResponseProtectionBypassValueCase0 {
   integrationId: string;
   scope: UploadProjectAvatarResponseProtectionBypassValueCase0Scope;
 }
-export const UploadProjectAvatarResponseProtectionBypassValueCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    configurationId: S.String,
-    createdAt: S.Number,
-    createdBy: S.String,
-    integrationId: S.String,
-    scope: UploadProjectAvatarResponseProtectionBypassValueCase0Scope,
-  }),
-).annotate({
-  identifier: "UploadProjectAvatarResponseProtectionBypassValueCase0",
-}) as any as S.Schema<UploadProjectAvatarResponseProtectionBypassValueCase0>;
+export const UploadProjectAvatarResponseProtectionBypassValueCase0 =
+  CreateProjectResponseProtectionBypassValueCase0 as any as S.Schema<UploadProjectAvatarResponseProtectionBypassValueCase0>;
 
 export type UploadProjectAvatarResponseProtectionBypassValueCase1Scope = "automation-bypass";
 export const UploadProjectAvatarResponseProtectionBypassValueCase1Scope = S.String;
@@ -54707,17 +50782,8 @@ export interface UploadProjectAvatarResponseProtectionBypassValueCase1 {
   note?: string;
   scope: UploadProjectAvatarResponseProtectionBypassValueCase1Scope;
 }
-export const UploadProjectAvatarResponseProtectionBypassValueCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdAt: S.Number,
-    createdBy: S.String,
-    isEnvVar: S.optional(S.Boolean),
-    note: S.optional(S.String),
-    scope: UploadProjectAvatarResponseProtectionBypassValueCase1Scope,
-  }),
-).annotate({
-  identifier: "UploadProjectAvatarResponseProtectionBypassValueCase1",
-}) as any as S.Schema<UploadProjectAvatarResponseProtectionBypassValueCase1>;
+export const UploadProjectAvatarResponseProtectionBypassValueCase1 =
+  CreateProjectResponseProtectionBypassValueCase1 as any as S.Schema<UploadProjectAvatarResponseProtectionBypassValueCase1>;
 
 export type UploadProjectAvatarResponseProtectionBypassValue =
   | UploadProjectAvatarResponseProtectionBypassValueCase0
@@ -54766,15 +50832,7 @@ export interface UploadProjectAvatarResponseResourceConfigBuildMachineElasticTra
   direction: UploadProjectAvatarResponseResourceConfigBuildMachineElasticTransitionDirection;
 }
 export const UploadProjectAvatarResponseResourceConfigBuildMachineElasticTransition =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      algorithmVersion: S.String,
-      at: S.Number,
-      direction: UploadProjectAvatarResponseResourceConfigBuildMachineElasticTransitionDirection,
-    }),
-  ).annotate({
-    identifier: "UploadProjectAvatarResponseResourceConfigBuildMachineElasticTransition",
-  }) as any as S.Schema<UploadProjectAvatarResponseResourceConfigBuildMachineElasticTransition>;
+  CreateProjectResponseDefaultResourceConfigBuildMachineElasticTransition as any as S.Schema<UploadProjectAvatarResponseResourceConfigBuildMachineElasticTransition>;
 
 export type UploadProjectAvatarResponseResourceConfigBuildMachineSelection = "elastic" | "fixed";
 export const UploadProjectAvatarResponseResourceConfigBuildMachineSelection = S.String;
@@ -54794,13 +50852,8 @@ export const UploadProjectAvatarResponseResourceConfigBuildQueueConfiguration = 
 export interface UploadProjectAvatarResponseResourceConfigBuildQueue {
   configuration?: UploadProjectAvatarResponseResourceConfigBuildQueueConfiguration;
 }
-export const UploadProjectAvatarResponseResourceConfigBuildQueue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    configuration: S.optional(UploadProjectAvatarResponseResourceConfigBuildQueueConfiguration),
-  }),
-).annotate({
-  identifier: "UploadProjectAvatarResponseResourceConfigBuildQueue",
-}) as any as S.Schema<UploadProjectAvatarResponseResourceConfigBuildQueue>;
+export const UploadProjectAvatarResponseResourceConfigBuildQueue =
+  CreateProjectRequestResourceConfigBuildQueue as any as S.Schema<UploadProjectAvatarResponseResourceConfigBuildQueue>;
 
 export type UploadProjectAvatarResponseResourceConfigFunctionDefaultMemoryType =
   | "performance"
@@ -55005,9 +51058,8 @@ export const UploadProjectAvatarResponseSandboxFailoverRegionsItem = S.String;
 
 export type UploadProjectAvatarResponseSandboxFailoverRegionsList =
   Array<UploadProjectAvatarResponseSandboxFailoverRegionsItem>;
-export const UploadProjectAvatarResponseSandboxFailoverRegionsList = /*@__PURE__*/ S.Array(
-  UploadProjectAvatarResponseSandboxFailoverRegionsItem,
-) as any as S.Schema<UploadProjectAvatarResponseSandboxFailoverRegionsList>;
+export const UploadProjectAvatarResponseSandboxFailoverRegionsList =
+  CreateProjectRequestEnvironmentVariablesItemTargetCase1List as any as S.Schema<UploadProjectAvatarResponseSandboxFailoverRegionsList>;
 
 export type UploadProjectAvatarResponseSandboxRegion =
   | "arn1"
@@ -55035,14 +51087,8 @@ export interface UploadProjectAvatarResponseSandbox {
   failoverRegions?: UploadProjectAvatarResponseSandboxFailoverRegionsList;
   region?: UploadProjectAvatarResponseSandboxRegion;
 }
-export const UploadProjectAvatarResponseSandbox = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    failoverRegions: S.optional(UploadProjectAvatarResponseSandboxFailoverRegionsList),
-    region: S.optional(UploadProjectAvatarResponseSandboxRegion),
-  }),
-).annotate({
-  identifier: "UploadProjectAvatarResponseSandbox",
-}) as any as S.Schema<UploadProjectAvatarResponseSandbox>;
+export const UploadProjectAvatarResponseSandbox =
+  CreateProjectResponseSandbox as any as S.Schema<UploadProjectAvatarResponseSandbox>;
 
 export type UploadProjectAvatarResponseSecurityFirewallBypassIpsList = Array<string>;
 export const UploadProjectAvatarResponseSecurityFirewallBypassIpsList =
@@ -55071,14 +51117,8 @@ export interface UploadProjectAvatarResponseSecurityManagedRulesAiBots {
   action?: UploadProjectAvatarResponseSecurityManagedRulesAiBotsAction;
   active: boolean;
 }
-export const UploadProjectAvatarResponseSecurityManagedRulesAiBots = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.optional(UploadProjectAvatarResponseSecurityManagedRulesAiBotsAction),
-    active: S.Boolean,
-  }),
-).annotate({
-  identifier: "UploadProjectAvatarResponseSecurityManagedRulesAiBots",
-}) as any as S.Schema<UploadProjectAvatarResponseSecurityManagedRulesAiBots>;
+export const UploadProjectAvatarResponseSecurityManagedRulesAiBots =
+  CreateProjectResponseSecurityManagedRulesAiBots as any as S.Schema<UploadProjectAvatarResponseSecurityManagedRulesAiBots>;
 
 export type UploadProjectAvatarResponseSecurityManagedRulesBotFilterAction =
   | "challenge"
@@ -55090,15 +51130,8 @@ export interface UploadProjectAvatarResponseSecurityManagedRulesBotFilter {
   action?: UploadProjectAvatarResponseSecurityManagedRulesBotFilterAction;
   active: boolean;
 }
-export const UploadProjectAvatarResponseSecurityManagedRulesBotFilter = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      action: S.optional(UploadProjectAvatarResponseSecurityManagedRulesBotFilterAction),
-      active: S.Boolean,
-    }),
-).annotate({
-  identifier: "UploadProjectAvatarResponseSecurityManagedRulesBotFilter",
-}) as any as S.Schema<UploadProjectAvatarResponseSecurityManagedRulesBotFilter>;
+export const UploadProjectAvatarResponseSecurityManagedRulesBotFilter =
+  GetProjectsResponseBodyCase0ItemSecurityManagedRulesAiBots as any as S.Schema<UploadProjectAvatarResponseSecurityManagedRulesBotFilter>;
 
 export type UploadProjectAvatarResponseSecurityManagedRulesOwaspAction =
   | "challenge"
@@ -55110,14 +51143,8 @@ export interface UploadProjectAvatarResponseSecurityManagedRulesOwasp {
   action?: UploadProjectAvatarResponseSecurityManagedRulesOwaspAction;
   active: boolean;
 }
-export const UploadProjectAvatarResponseSecurityManagedRulesOwasp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.optional(UploadProjectAvatarResponseSecurityManagedRulesOwaspAction),
-    active: S.Boolean,
-  }),
-).annotate({
-  identifier: "UploadProjectAvatarResponseSecurityManagedRulesOwasp",
-}) as any as S.Schema<UploadProjectAvatarResponseSecurityManagedRulesOwasp>;
+export const UploadProjectAvatarResponseSecurityManagedRulesOwasp =
+  CreateProjectResponseSecurityManagedRulesAiBots as any as S.Schema<UploadProjectAvatarResponseSecurityManagedRulesOwasp>;
 
 export type UploadProjectAvatarResponseSecurityManagedRulesTrafficSourcesAction =
   | "challenge"
@@ -55130,14 +51157,7 @@ export interface UploadProjectAvatarResponseSecurityManagedRulesTrafficSources {
   active: boolean;
 }
 export const UploadProjectAvatarResponseSecurityManagedRulesTrafficSources =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      action: S.optional(UploadProjectAvatarResponseSecurityManagedRulesTrafficSourcesAction),
-      active: S.Boolean,
-    }),
-  ).annotate({
-    identifier: "UploadProjectAvatarResponseSecurityManagedRulesTrafficSources",
-  }) as any as S.Schema<UploadProjectAvatarResponseSecurityManagedRulesTrafficSources>;
+  GetProjectsResponseBodyCase0ItemSecurityManagedRulesBotFilter as any as S.Schema<UploadProjectAvatarResponseSecurityManagedRulesTrafficSources>;
 
 export type UploadProjectAvatarResponseSecurityManagedRulesVercelRulesetAction =
   | "challenge"
@@ -55149,15 +51169,8 @@ export interface UploadProjectAvatarResponseSecurityManagedRulesVercelRuleset {
   action?: UploadProjectAvatarResponseSecurityManagedRulesVercelRulesetAction;
   active: boolean;
 }
-export const UploadProjectAvatarResponseSecurityManagedRulesVercelRuleset = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      action: S.optional(UploadProjectAvatarResponseSecurityManagedRulesVercelRulesetAction),
-      active: S.Boolean,
-    }),
-).annotate({
-  identifier: "UploadProjectAvatarResponseSecurityManagedRulesVercelRuleset",
-}) as any as S.Schema<UploadProjectAvatarResponseSecurityManagedRulesVercelRuleset>;
+export const UploadProjectAvatarResponseSecurityManagedRulesVercelRuleset =
+  GetProjectsResponseBodyCase0ItemSecurityManagedRulesAiBots as any as S.Schema<UploadProjectAvatarResponseSecurityManagedRulesVercelRuleset>;
 
 export interface UploadProjectAvatarResponseSecurityManagedRules {
   ai_bots: UploadProjectAvatarResponseSecurityManagedRulesAiBots;
@@ -55394,22 +51407,13 @@ export interface UploadProjectAvatarResponseServicesItem {
   /** Service kind (Service.type). Omitted for schemas that do not define one. */
   serviceType?: UploadProjectAvatarResponseServicesItemServiceType;
 }
-export const UploadProjectAvatarResponseServicesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    framework: S.optional(UploadProjectAvatarResponseServicesItemFramework),
-    runtime: S.optional(S.String),
-    serviceName: S.String,
-    serviceType: S.optional(UploadProjectAvatarResponseServicesItemServiceType),
-  }),
-).annotate({
-  identifier: "UploadProjectAvatarResponseServicesItem",
-}) as any as S.Schema<UploadProjectAvatarResponseServicesItem>;
+export const UploadProjectAvatarResponseServicesItem =
+  CreateProjectResponseServicesItem as any as S.Schema<UploadProjectAvatarResponseServicesItem>;
 
 export type UploadProjectAvatarResponseServicesList =
   Array<UploadProjectAvatarResponseServicesItem>;
-export const UploadProjectAvatarResponseServicesList = /*@__PURE__*/ S.Array(
-  UploadProjectAvatarResponseServicesItem,
-) as any as S.Schema<UploadProjectAvatarResponseServicesList>;
+export const UploadProjectAvatarResponseServicesList =
+  CreateProjectResponseServicesList as any as S.Schema<UploadProjectAvatarResponseServicesList>;
 
 export type UploadProjectAvatarResponseSkewProtectionAllowedDomainsList = Array<string>;
 export const UploadProjectAvatarResponseSkewProtectionAllowedDomainsList =
@@ -55445,21 +51449,8 @@ export interface UploadProjectAvatarResponseSsoProtection {
   cve55182MigrationAppliedFrom?: UploadProjectAvatarResponseSsoProtectionCve55182MigrationAppliedFrom | null;
   deploymentType: UploadProjectAvatarResponseSsoProtectionDeploymentType;
 }
-export const UploadProjectAvatarResponseSsoProtection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    april2026SecurityIncidentMigrationAppliedFrom: S.optional(
-      S.NullOr(
-        UploadProjectAvatarResponseSsoProtectionApril2026SecurityIncidentMigrationAppliedFrom,
-      ),
-    ),
-    cve55182MigrationAppliedFrom: S.optional(
-      S.NullOr(UploadProjectAvatarResponseSsoProtectionCve55182MigrationAppliedFrom),
-    ),
-    deploymentType: UploadProjectAvatarResponseSsoProtectionDeploymentType,
-  }),
-).annotate({
-  identifier: "UploadProjectAvatarResponseSsoProtection",
-}) as any as S.Schema<UploadProjectAvatarResponseSsoProtection>;
+export const UploadProjectAvatarResponseSsoProtection =
+  GetProjectsResponseBodyCase0ItemSsoProtection as any as S.Schema<UploadProjectAvatarResponseSsoProtection>;
 
 export type UploadProjectAvatarResponseStaticIpsRegionsList = Array<string>;
 export const UploadProjectAvatarResponseStaticIpsRegionsList =
@@ -55503,14 +51494,8 @@ export interface UploadProjectAvatarResponseTargetsValueBranchMatcher {
   /** The type of matching to perform */
   type: UploadProjectAvatarResponseTargetsValueBranchMatcherType;
 }
-export const UploadProjectAvatarResponseTargetsValueBranchMatcher = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pattern: S.String,
-    type: UploadProjectAvatarResponseTargetsValueBranchMatcherType,
-  }),
-).annotate({
-  identifier: "UploadProjectAvatarResponseTargetsValueBranchMatcher",
-}) as any as S.Schema<UploadProjectAvatarResponseTargetsValueBranchMatcher>;
+export const UploadProjectAvatarResponseTargetsValueBranchMatcher =
+  CreateProjectResponseAliasItemDeploymentBranchMatcher as any as S.Schema<UploadProjectAvatarResponseTargetsValueBranchMatcher>;
 
 export type UploadProjectAvatarResponseTargetsValueBuildsItem =
   CreateProjectResponseAliasItemDeploymentBuildsItem;
@@ -55702,22 +51687,13 @@ export interface UploadProjectAvatarResponseTracingSamplingRulesItem {
   rate: number;
   requestPath?: string;
 }
-export const UploadProjectAvatarResponseTracingSamplingRulesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    destination: S.optional(UploadProjectAvatarResponseTracingSamplingRulesItemDestination),
-    env: S.optional(UploadProjectAvatarResponseTracingSamplingRulesItemEnv),
-    rate: S.Number,
-    requestPath: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UploadProjectAvatarResponseTracingSamplingRulesItem",
-}) as any as S.Schema<UploadProjectAvatarResponseTracingSamplingRulesItem>;
+export const UploadProjectAvatarResponseTracingSamplingRulesItem =
+  CreateProjectResponseTracingSamplingRulesItem as any as S.Schema<UploadProjectAvatarResponseTracingSamplingRulesItem>;
 
 export type UploadProjectAvatarResponseTracingSamplingRulesList =
   Array<UploadProjectAvatarResponseTracingSamplingRulesItem>;
-export const UploadProjectAvatarResponseTracingSamplingRulesList = /*@__PURE__*/ S.Array(
-  UploadProjectAvatarResponseTracingSamplingRulesItem,
-) as any as S.Schema<UploadProjectAvatarResponseTracingSamplingRulesList>;
+export const UploadProjectAvatarResponseTracingSamplingRulesList =
+  CreateProjectResponseTracingSamplingRulesList as any as S.Schema<UploadProjectAvatarResponseTracingSamplingRulesList>;
 
 export interface UploadProjectAvatarResponseTracing {
   domains?: string;
@@ -55781,13 +51757,8 @@ export const UploadProjectAvatarResponseTrustedIpsCase1DeploymentType = S.String
 export interface UploadProjectAvatarResponseTrustedIpsCase1 {
   deploymentType: UploadProjectAvatarResponseTrustedIpsCase1DeploymentType;
 }
-export const UploadProjectAvatarResponseTrustedIpsCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deploymentType: UploadProjectAvatarResponseTrustedIpsCase1DeploymentType,
-  }),
-).annotate({
-  identifier: "UploadProjectAvatarResponseTrustedIpsCase1",
-}) as any as S.Schema<UploadProjectAvatarResponseTrustedIpsCase1>;
+export const UploadProjectAvatarResponseTrustedIpsCase1 =
+  CreateProjectRequestSsoProtection as any as S.Schema<UploadProjectAvatarResponseTrustedIpsCase1>;
 
 export type UploadProjectAvatarResponseTrustedIps =
   | UploadProjectAvatarResponseTrustedIpsCase0
@@ -56109,17 +52080,8 @@ export interface UploadProjectAvatarResponseUsageStatus {
   /** Per-project throttle, set explicitly for this project (e.g. via the per-project Flat Rate CDN endpoint). */
   throttled?: boolean;
 }
-export const UploadProjectAvatarResponseUsageStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bypassThrottleUntil: S.optional(S.Number),
-    exceededAllowanceUntil: S.optional(S.Number),
-    kind: UploadProjectAvatarResponseUsageStatusKind,
-    teamThrottled: S.optional(S.Boolean),
-    throttled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "UploadProjectAvatarResponseUsageStatus",
-}) as any as S.Schema<UploadProjectAvatarResponseUsageStatus>;
+export const UploadProjectAvatarResponseUsageStatus =
+  CreateProjectResponseUsageStatus as any as S.Schema<UploadProjectAvatarResponseUsageStatus>;
 
 export type UploadProjectAvatarResponseWebAnalytics = CreateProjectResponseWebAnalytics;
 export const UploadProjectAvatarResponseWebAnalytics = CreateProjectResponseWebAnalytics;

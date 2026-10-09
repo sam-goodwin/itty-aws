@@ -946,19 +946,9 @@ export interface OperationFilter {
   Values: string[];
   Condition?: FilterCondition;
 }
-export const OperationFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: OperationFilterName,
-    Values: FilterValues,
-    Condition: S.optional(FilterCondition),
-  }),
-).annotate({ identifier: "OperationFilter" }) as any as S.Schema<OperationFilter>;
+export const OperationFilter = NamespaceFilter as any as S.Schema<OperationFilter>;
 export type OperationFilters = OperationFilter[];
-export const OperationFilters = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ OperationFilter.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-    identifier: "OperationFilter",
-  }),
-);
+export const OperationFilters = NamespaceFilters as any as S.Schema<OperationFilters>;
 export interface ListOperationsRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -999,19 +989,9 @@ export interface ServiceFilter {
   Values: string[];
   Condition?: FilterCondition;
 }
-export const ServiceFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: ServiceFilterName,
-    Values: FilterValues,
-    Condition: S.optional(FilterCondition),
-  }),
-).annotate({ identifier: "ServiceFilter" }) as any as S.Schema<ServiceFilter>;
+export const ServiceFilter = NamespaceFilter as any as S.Schema<ServiceFilter>;
 export type ServiceFilters = ServiceFilter[];
-export const ServiceFilters = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ ServiceFilter.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-    identifier: "ServiceFilter",
-  }),
-);
+export const ServiceFilters = NamespaceFilters as any as S.Schema<ServiceFilters>;
 export interface ListServicesRequest {
   NextToken?: string;
   MaxResults?: number;

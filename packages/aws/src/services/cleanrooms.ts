@@ -510,7 +510,8 @@ export type SelectedAnalysisMethod = "DIRECT_QUERY" | "DIRECT_JOB" | (string & {
 export const SelectedAnalysisMethod = S.String;
 
 export type SelectedAnalysisMethods = SelectedAnalysisMethod[];
-export const SelectedAnalysisMethods = /*@__PURE__*/ S.Array(SelectedAnalysisMethod);
+export const SelectedAnalysisMethods =
+  AnalysisRuleTypeList as any as S.Schema<SelectedAnalysisMethods>;
 export type TableDescription = string;
 export type SchemaType = "TABLE" | "ID_MAPPING_TABLE" | "INTERMEDIATE_TABLE" | (string & {});
 export const SchemaType = S.String;
@@ -552,7 +553,8 @@ export type SchemaConfiguration = "DIFFERENTIAL_PRIVACY" | (string & {});
 export const SchemaConfiguration = S.String;
 
 export type SchemaConfigurationList = SchemaConfiguration[];
-export const SchemaConfigurationList = /*@__PURE__*/ S.Array(SchemaConfiguration);
+export const SchemaConfigurationList =
+  AnalysisRuleTypeList as any as S.Schema<SchemaConfigurationList>;
 export type AnalysisType = "DIRECT_ANALYSIS" | "ADDITIONAL_ANALYSIS" | (string & {});
 export const AnalysisType = S.String;
 
@@ -1213,7 +1215,7 @@ export type MemberAbility =
 export const MemberAbility = S.String;
 
 export type MemberAbilities = MemberAbility[];
-export const MemberAbilities = /*@__PURE__*/ S.Array(MemberAbility);
+export const MemberAbilities = AnalysisRuleTypeList as any as S.Schema<MemberAbilities>;
 export type CustomMLMemberAbility =
   | "CAN_RECEIVE_MODEL_OUTPUT"
   | "CAN_RECEIVE_INFERENCE_OUTPUT"
@@ -1221,7 +1223,8 @@ export type CustomMLMemberAbility =
 export const CustomMLMemberAbility = S.String;
 
 export type CustomMLMemberAbilities = CustomMLMemberAbility[];
-export const CustomMLMemberAbilities = /*@__PURE__*/ S.Array(CustomMLMemberAbility);
+export const CustomMLMemberAbilities =
+  AnalysisRuleTypeList as any as S.Schema<CustomMLMemberAbilities>;
 export interface MLMemberAbilities {
   customMLMemberAbilities: CustomMLMemberAbility[];
 }
@@ -1335,7 +1338,8 @@ export type AutoApprovedChangeType =
 export const AutoApprovedChangeType = S.String;
 
 export type AutoApprovedChangeTypeList = AutoApprovedChangeType[];
-export const AutoApprovedChangeTypeList = /*@__PURE__*/ S.Array(AutoApprovedChangeType);
+export const AutoApprovedChangeTypeList =
+  AnalysisRuleTypeList as any as S.Schema<AutoApprovedChangeTypeList>;
 export type SupportedS3Region =
   | "us-west-1"
   | "us-west-2"
@@ -1374,7 +1378,7 @@ export type SupportedS3Region =
 export const SupportedS3Region = S.String;
 
 export type AllowedResultRegions = SupportedS3Region[];
-export const AllowedResultRegions = /*@__PURE__*/ S.Array(SupportedS3Region);
+export const AllowedResultRegions = AnalysisRuleTypeList as any as S.Schema<AllowedResultRegions>;
 export interface CreateCollaborationInput {
   members: MemberSpecification[];
   name: string;
@@ -1554,7 +1558,7 @@ export type ChangeType =
 export const ChangeType = S.String;
 
 export type ChangeTypeList = ChangeType[];
-export const ChangeTypeList = /*@__PURE__*/ S.Array(ChangeType);
+export const ChangeTypeList = AnalysisRuleTypeList as any as S.Schema<ChangeTypeList>;
 export interface Change {
   specificationType: ChangeSpecificationType;
   specification: ChangeSpecification;
@@ -1983,9 +1987,8 @@ export const ConfiguredTableAssociationAnalysisRuleType = S.String;
 
 export type ConfiguredTableAssociationAnalysisRuleTypeList =
   ConfiguredTableAssociationAnalysisRuleType[];
-export const ConfiguredTableAssociationAnalysisRuleTypeList = /*@__PURE__*/ S.Array(
-  ConfiguredTableAssociationAnalysisRuleType,
-);
+export const ConfiguredTableAssociationAnalysisRuleTypeList =
+  ConfiguredTableAnalysisRuleTypeList as any as S.Schema<ConfiguredTableAssociationAnalysisRuleTypeList>;
 export type ChildResourceType = "INTERMEDIATE_TABLE" | (string & {});
 export const ChildResourceType = S.String;
 
@@ -2569,9 +2572,8 @@ export type IntermediateTableAnalysisRuleType = "CUSTOM" | (string & {});
 export const IntermediateTableAnalysisRuleType = S.String;
 
 export type IntermediateTableAnalysisRuleTypeList = IntermediateTableAnalysisRuleType[];
-export const IntermediateTableAnalysisRuleTypeList = /*@__PURE__*/ S.Array(
-  IntermediateTableAnalysisRuleType,
-);
+export const IntermediateTableAnalysisRuleTypeList =
+  ConfiguredTableAnalysisRuleTypeList as any as S.Schema<IntermediateTableAnalysisRuleTypeList>;
 export interface IntermediateTableSchema {
   columns: Column[];
 }

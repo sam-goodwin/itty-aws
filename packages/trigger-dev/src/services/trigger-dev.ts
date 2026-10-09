@@ -2781,9 +2781,8 @@ export const ErrorsFilterStatusItem = S.String;
 
 /** The lifecycle status of the error group */
 export type ErrorsFilterStatusList = Array<ErrorsFilterStatusItem | (string & {})>;
-export const ErrorsFilterStatusList = /*@__PURE__*/ S.Array(
-  ErrorsFilterStatusItem,
-) as any as S.Schema<ErrorsFilterStatusList>;
+export const ErrorsFilterStatusList =
+  BulkActionFilterStatusCase1List as any as S.Schema<ErrorsFilterStatusList>;
 
 export interface ErrorsFilter {
   /** The identifier of the task the error belongs to */
@@ -2979,9 +2978,8 @@ export const ListProjectRunsV1RequestFilterStatusItem = S.String;
 export type ListProjectRunsV1RequestFilterStatusList = Array<
   ListProjectRunsV1RequestFilterStatusItem | (string & {})
 >;
-export const ListProjectRunsV1RequestFilterStatusList = /*@__PURE__*/ S.Array(
-  ListProjectRunsV1RequestFilterStatusItem,
-) as any as S.Schema<ListProjectRunsV1RequestFilterStatusList>;
+export const ListProjectRunsV1RequestFilterStatusList =
+  BulkActionFilterStatusCase1List as any as S.Schema<ListProjectRunsV1RequestFilterStatusList>;
 
 /** The identifier of the task that was run */
 export type ListProjectRunsV1RequestFilterTaskIdentifierList = Array<string>;
@@ -3005,9 +3003,8 @@ export const ListProjectRunsV1RequestFilterEnvItem = S.String;
 export type ListProjectRunsV1RequestFilterEnvList = Array<
   ListProjectRunsV1RequestFilterEnvItem | (string & {})
 >;
-export const ListProjectRunsV1RequestFilterEnvList = /*@__PURE__*/ S.Array(
-  ListProjectRunsV1RequestFilterEnvItem,
-) as any as S.Schema<ListProjectRunsV1RequestFilterEnvList>;
+export const ListProjectRunsV1RequestFilterEnvList =
+  BulkActionFilterStatusCase1List as any as S.Schema<ListProjectRunsV1RequestFilterEnvList>;
 
 export interface ListProjectRunsV1RequestFilter {
   createdAt?: ListProjectRunsV1RequestFilterCreatedAt;
@@ -3248,9 +3245,8 @@ export type CommonRunsFilterStatusItem =
 export const CommonRunsFilterStatusItem = S.String;
 
 export type CommonRunsFilterStatusList = Array<CommonRunsFilterStatusItem | (string & {})>;
-export const CommonRunsFilterStatusList = /*@__PURE__*/ S.Array(
-  CommonRunsFilterStatusItem,
-) as any as S.Schema<CommonRunsFilterStatusList>;
+export const CommonRunsFilterStatusList =
+  BulkActionFilterStatusCase1List as any as S.Schema<CommonRunsFilterStatusList>;
 
 /** The identifier of the task that was run */
 export type CommonRunsFilterTaskIdentifierList = Array<string>;
@@ -3372,9 +3368,8 @@ export const SessionsFilterStatusItem = S.String;
 
 /** The lifecycle status(es) to filter by. */
 export type SessionsFilterStatusList = Array<SessionsFilterStatusItem | (string & {})>;
-export const SessionsFilterStatusList = /*@__PURE__*/ S.Array(
-  SessionsFilterStatusItem,
-) as any as S.Schema<SessionsFilterStatusList>;
+export const SessionsFilterStatusList =
+  BulkActionFilterStatusCase1List as any as S.Schema<SessionsFilterStatusList>;
 
 export interface SessionsFilterCreatedAt {
   /** The start date to filter the sessions by. */
@@ -3769,15 +3764,8 @@ export interface RunRescheduleV1ResponseScheduleGenerator {
   /** The description of the generator in plain english */
   description?: string;
 }
-export const RunRescheduleV1ResponseScheduleGenerator = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(RunRescheduleV1ResponseScheduleGeneratorType),
-    expression: S.optional(S.String),
-    description: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RunRescheduleV1ResponseScheduleGenerator",
-}) as any as S.Schema<RunRescheduleV1ResponseScheduleGenerator>;
+export const RunRescheduleV1ResponseScheduleGenerator =
+  GetRunV1ResponseScheduleGenerator as any as S.Schema<RunRescheduleV1ResponseScheduleGenerator>;
 
 /** The schedule that triggered the run. Will be omitted if the run was not triggered by a schedule */
 export interface RunRescheduleV1ResponseSchedule {
@@ -3819,24 +3807,12 @@ export interface RunRescheduleV1ResponseAttemptsItem {
   startedAt?: string;
   completedAt?: string;
 }
-export const RunRescheduleV1ResponseAttemptsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    status: RunRescheduleV1ResponseAttemptsItemStatus,
-    error: S.optional(SerializedError),
-    createdAt: S.String,
-    updatedAt: S.String,
-    startedAt: S.optional(S.String),
-    completedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RunRescheduleV1ResponseAttemptsItem",
-}) as any as S.Schema<RunRescheduleV1ResponseAttemptsItem>;
+export const RunRescheduleV1ResponseAttemptsItem =
+  GetRunV1ResponseAttemptsItem as any as S.Schema<RunRescheduleV1ResponseAttemptsItem>;
 
 export type RunRescheduleV1ResponseAttemptsList = Array<RunRescheduleV1ResponseAttemptsItem>;
-export const RunRescheduleV1ResponseAttemptsList = /*@__PURE__*/ S.Array(
-  RunRescheduleV1ResponseAttemptsItem,
-) as any as S.Schema<RunRescheduleV1ResponseAttemptsList>;
+export const RunRescheduleV1ResponseAttemptsList =
+  GetRunV1ResponseAttemptsList as any as S.Schema<RunRescheduleV1ResponseAttemptsList>;
 
 export interface RunRescheduleV1Response {
   /** The unique ID of the run, prefixed with `run_` */
@@ -4053,19 +4029,8 @@ export interface BatchTriggerTaskRequestBodyItemOptions {
   /** The machine preset to use for this run. This will override the task's machine preset and any defaults. */
   machine?: BatchTriggerTaskRequestBodyItemOptionsMachine | (string & {});
 }
-export const BatchTriggerTaskRequestBodyItemOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    queue: S.optional(QueueOptions),
-    concurrencyKey: S.optional(S.String),
-    idempotencyKey: S.optional(S.String),
-    ttl: S.optional(S.Unknown),
-    delay: S.optional(S.String),
-    tags: S.optional(RunTags),
-    machine: S.optional(BatchTriggerTaskRequestBodyItemOptionsMachine),
-  }),
-).annotate({
-  identifier: "BatchTriggerTaskRequestBodyItemOptions",
-}) as any as S.Schema<BatchTriggerTaskRequestBodyItemOptions>;
+export const BatchTriggerTaskRequestBodyItemOptions =
+  TriggerTaskRequestBodyOptions as any as S.Schema<BatchTriggerTaskRequestBodyItemOptions>;
 
 export interface BatchTriggerTaskRequestBodyItem {
   /** The payload can include any valid JSON */
@@ -4129,19 +4094,8 @@ export interface TriggerTaskV1RequestOptions {
   /** The machine preset to use for this run. This will override the task's machine preset and any defaults. */
   machine?: TriggerTaskV1RequestOptionsMachine | (string & {});
 }
-export const TriggerTaskV1RequestOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    queue: S.optional(QueueOptions),
-    concurrencyKey: S.optional(S.String),
-    idempotencyKey: S.optional(S.String),
-    ttl: S.optional(S.Unknown),
-    delay: S.optional(S.String),
-    tags: S.optional(RunTags),
-    machine: S.optional(TriggerTaskV1RequestOptionsMachine),
-  }),
-).annotate({
-  identifier: "TriggerTaskV1RequestOptions",
-}) as any as S.Schema<TriggerTaskV1RequestOptions>;
+export const TriggerTaskV1RequestOptions =
+  TriggerTaskRequestBodyOptions as any as S.Schema<TriggerTaskV1RequestOptions>;
 
 export interface TriggerTaskV1Request {
   /** The id of a task. If the id contains characters that are reserved in a URL path, such as a slash (`/`), percent-encode it when building the request path (e.g. `types/zod` becomes `types%2Fzod`). */

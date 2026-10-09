@@ -5460,14 +5460,8 @@ export interface ManagedLedgerDigestUploadsProperties {
   /** Specifies the state of ledger digest upload. */
   state?: ManagedLedgerDigestUploadsPropertiesState | (string & {});
 }
-export const ManagedLedgerDigestUploadsProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    digestStorageEndpoint: S.optional(S.String),
-    state: S.optional(ManagedLedgerDigestUploadsPropertiesState),
-  }),
-).annotate({
-  identifier: "ManagedLedgerDigestUploadsProperties",
-}) as any as S.Schema<ManagedLedgerDigestUploadsProperties>;
+export const ManagedLedgerDigestUploadsProperties =
+  LedgerDigestUploadsProperties as any as S.Schema<ManagedLedgerDigestUploadsProperties>;
 
 export interface DisableManagedLedgerDigestUploadResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -5481,17 +5475,8 @@ export interface DisableManagedLedgerDigestUploadResponse {
   /** Resource properties. */
   properties?: ManagedLedgerDigestUploadsProperties;
 }
-export const DisableManagedLedgerDigestUploadResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ManagedLedgerDigestUploadsProperties),
-  }),
-).annotate({
-  identifier: "DisableManagedLedgerDigestUploadResponse",
-}) as any as S.Schema<DisableManagedLedgerDigestUploadResponse>;
+export const DisableManagedLedgerDigestUploadResponse =
+  DisableLedgerDigestUploadResponse as any as S.Schema<DisableManagedLedgerDigestUploadResponse>;
 
 export type DisableSensitivityLabelRecommendationRequestSensitivityLabelSource = "recommended";
 export const DisableSensitivityLabelRecommendationRequestSensitivityLabelSource = S.String;
@@ -10586,14 +10571,8 @@ export interface InstanceFailoverGroupReadWriteEndpoint {
   /** Grace period before failover with data loss is attempted for the read-write endpoint. If failoverPolicy is Automatic then failoverWithDataLossGracePeriodMinutes is required. */
   failoverWithDataLossGracePeriodMinutes?: number;
 }
-export const InstanceFailoverGroupReadWriteEndpoint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    failoverPolicy: InstanceFailoverGroupReadWriteEndpointFailoverPolicy,
-    failoverWithDataLossGracePeriodMinutes: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "InstanceFailoverGroupReadWriteEndpoint",
-}) as any as S.Schema<InstanceFailoverGroupReadWriteEndpoint>;
+export const InstanceFailoverGroupReadWriteEndpoint =
+  FailoverGroupReadWriteEndpoint as any as S.Schema<InstanceFailoverGroupReadWriteEndpoint>;
 
 /** Failover policy of the read-only endpoint for the failover group. */
 export type InstanceFailoverGroupReadOnlyEndpointFailoverPolicy = "Disabled" | "Enabled";
@@ -13765,13 +13744,8 @@ export interface ManagedTransparentDataEncryptionProperties {
   /** Specifies the state of the transparent data encryption. */
   state: ManagedTransparentDataEncryptionPropertiesState | (string & {});
 }
-export const ManagedTransparentDataEncryptionProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: ManagedTransparentDataEncryptionPropertiesState,
-  }),
-).annotate({
-  identifier: "ManagedTransparentDataEncryptionProperties",
-}) as any as S.Schema<ManagedTransparentDataEncryptionProperties>;
+export const ManagedTransparentDataEncryptionProperties =
+  GeoBackupPolicyPropertiesInput as any as S.Schema<ManagedTransparentDataEncryptionProperties>;
 
 export interface GetManagedDatabaseTransparentDataEncryptionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -16935,18 +16909,8 @@ export interface ServerExternalAdministrator {
   /** Azure Active Directory only Authentication enabled. */
   azureADOnlyAuthentication?: boolean;
 }
-export const ServerExternalAdministrator = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    administratorType: S.optional(ServerExternalAdministratorAdministratorType),
-    principalType: S.optional(ServerExternalAdministratorPrincipalType),
-    login: S.optional(S.String),
-    sid: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    azureADOnlyAuthentication: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ServerExternalAdministrator",
-}) as any as S.Schema<ServerExternalAdministrator>;
+export const ServerExternalAdministrator =
+  ManagedInstanceExternalAdministrator as any as S.Schema<ServerExternalAdministrator>;
 
 /** Whether or not to restrict outbound network access for this server. Value is optional but if passed in, must be 'Enabled' or 'Disabled' */
 export type ServerPropertiesRestrictOutboundNetworkAccess =
@@ -18340,13 +18304,8 @@ export interface SqlAgentConfigurationProperties {
   /** The state of Sql Agent. */
   state?: SqlAgentConfigurationPropertiesState | (string & {});
 }
-export const SqlAgentConfigurationProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: S.optional(SqlAgentConfigurationPropertiesState),
-  }),
-).annotate({
-  identifier: "SqlAgentConfigurationProperties",
-}) as any as S.Schema<SqlAgentConfigurationProperties>;
+export const SqlAgentConfigurationProperties =
+  SqlVulnerabilityAssessmentPolicyProperties as any as S.Schema<SqlAgentConfigurationProperties>;
 
 export interface GetSqlAgentResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -20877,12 +20836,7 @@ export interface LogSizeCapability {
   /** The units that the limit is expressed in. */
   unit?: LogSizeCapabilityUnit;
 }
-export const LogSizeCapability = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    limit: S.optional(S.Number),
-    unit: S.optional(LogSizeCapabilityUnit),
-  }),
-).annotate({ identifier: "LogSizeCapability" }) as any as S.Schema<LogSizeCapability>;
+export const LogSizeCapability = MaxSizeCapability as any as S.Schema<LogSizeCapability>;
 
 /** The status of the capability. */
 export type MaxSizeRangeCapabilityStatus = "Visible" | "Available" | "Default" | "Disabled";
@@ -35192,15 +35146,8 @@ export interface ManagedInstanceEncryptionProtectorPropertiesInput {
   /** Key auto rotation opt-in flag. Either true or false. */
   autoRotationEnabled?: boolean;
 }
-export const ManagedInstanceEncryptionProtectorPropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serverKeyName: S.optional(S.String),
-    serverKeyType: ManagedInstanceEncryptionProtectorPropertiesInputServerKeyType,
-    autoRotationEnabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ManagedInstanceEncryptionProtectorPropertiesInput",
-}) as any as S.Schema<ManagedInstanceEncryptionProtectorPropertiesInput>;
+export const ManagedInstanceEncryptionProtectorPropertiesInput =
+  EncryptionProtectorPropertiesInput as any as S.Schema<ManagedInstanceEncryptionProtectorPropertiesInput>;
 
 export interface ManagedInstanceEncryptionProtectorsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -38933,17 +38880,8 @@ export interface SqlAgentCreateOrUpdateResponse {
   /** Resource properties. */
   properties?: SqlAgentConfigurationProperties;
 }
-export const SqlAgentCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SqlAgentConfigurationProperties),
-  }),
-).annotate({
-  identifier: "SqlAgentCreateOrUpdateResponse",
-}) as any as S.Schema<SqlAgentCreateOrUpdateResponse>;
+export const SqlAgentCreateOrUpdateResponse =
+  GetDatabaseSqlVulnerabilityAssessmentsSettingsResponse as any as S.Schema<SqlAgentCreateOrUpdateResponse>;
 
 export type SqlVulnerabilityAssessmentBaselinesCreateOrUpdateRequestVulnerabilityAssessmentName =
   "default";
@@ -41932,24 +41870,15 @@ export interface AutomaticTuningServerOptionsInput {
   /** Reason description if desired and actual state are different. */
   reasonDesc?: AutomaticTuningServerOptionsInputReasonDesc | (string & {});
 }
-export const AutomaticTuningServerOptionsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    desiredState: S.optional(AutomaticTuningServerOptionsInputDesiredState),
-    actualState: S.optional(AutomaticTuningServerOptionsInputActualState),
-    reasonDesc: S.optional(AutomaticTuningServerOptionsInputReasonDesc),
-  }),
-).annotate({
-  identifier: "AutomaticTuningServerOptionsInput",
-}) as any as S.Schema<AutomaticTuningServerOptionsInput>;
+export const AutomaticTuningServerOptionsInput =
+  AutomaticTuningOptionsInput as any as S.Schema<AutomaticTuningServerOptionsInput>;
 
 /** Automatic tuning options definition. */
 export type AutomaticTuningServerPropertiesInputOptionsMap = {
   [key: string]: AutomaticTuningServerOptionsInput | undefined;
 };
-export const AutomaticTuningServerPropertiesInputOptionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  AutomaticTuningServerOptionsInput,
-) as any as S.Schema<AutomaticTuningServerPropertiesInputOptionsMap>;
+export const AutomaticTuningServerPropertiesInputOptionsMap =
+  DatabaseAutomaticTuningPropertiesInputOptionsMap as any as S.Schema<AutomaticTuningServerPropertiesInputOptionsMap>;
 
 /** Server-level Automatic Tuning properties. */
 export interface AutomaticTuningServerPropertiesInput {
@@ -41960,15 +41889,8 @@ export interface AutomaticTuningServerPropertiesInput {
   /** Automatic tuning options definition. */
   options?: AutomaticTuningServerPropertiesInputOptionsMap;
 }
-export const AutomaticTuningServerPropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    desiredState: S.optional(AutomaticTuningServerPropertiesInputDesiredState),
-    actualState: S.optional(AutomaticTuningServerPropertiesInputActualState),
-    options: S.optional(AutomaticTuningServerPropertiesInputOptionsMap),
-  }),
-).annotate({
-  identifier: "AutomaticTuningServerPropertiesInput",
-}) as any as S.Schema<AutomaticTuningServerPropertiesInput>;
+export const AutomaticTuningServerPropertiesInput =
+  DatabaseAutomaticTuningPropertiesInput as any as S.Schema<AutomaticTuningServerPropertiesInput>;
 
 export interface UpdateServerAutomaticTuningRequest {
   /** The ID of the target subscription. The value must be an UUID. */

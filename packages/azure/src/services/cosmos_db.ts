@@ -5886,9 +5886,8 @@ export const BackupStorageRedundancy = S.String;
 
 /** The properties of available backup storage redundancies. */
 export type LocationPropertiesBackupStorageRedundanciesList = Array<BackupStorageRedundancy>;
-export const LocationPropertiesBackupStorageRedundanciesList = /*@__PURE__*/ S.Array(
-  BackupStorageRedundancy,
-) as any as S.Schema<LocationPropertiesBackupStorageRedundanciesList>;
+export const LocationPropertiesBackupStorageRedundanciesList =
+  SpatialSpecTypesList as any as S.Schema<LocationPropertiesBackupStorageRedundanciesList>;
 
 /** Cosmos DB location metadata */
 export interface LocationProperties {
@@ -6259,32 +6258,16 @@ export interface MongoDBDatabaseGetPropertiesResource {
   /** A system generated property representing the resource etag required for optimistic concurrency control. */
   _etag?: string;
 }
-export const MongoDBDatabaseGetPropertiesResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    restoreParameters: S.optional(RestoreParametersBase),
-    createMode: S.optional(MongoDBDatabaseGetPropertiesResourceCreateMode),
-    _rid: S.optional(S.String),
-    _ts: S.optional(S.Number),
-    _etag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "MongoDBDatabaseGetPropertiesResource",
-}) as any as S.Schema<MongoDBDatabaseGetPropertiesResource>;
+export const MongoDBDatabaseGetPropertiesResource =
+  GremlinDatabaseGetPropertiesResource as any as S.Schema<MongoDBDatabaseGetPropertiesResource>;
 
 /** The properties of an Azure Cosmos DB MongoDB database */
 export interface MongoDBDatabaseGetProperties {
   resource?: MongoDBDatabaseGetPropertiesResource;
   options?: OptionsResource;
 }
-export const MongoDBDatabaseGetProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resource: S.optional(MongoDBDatabaseGetPropertiesResource),
-    options: S.optional(OptionsResource),
-  }),
-).annotate({
-  identifier: "MongoDBDatabaseGetProperties",
-}) as any as S.Schema<MongoDBDatabaseGetProperties>;
+export const MongoDBDatabaseGetProperties =
+  GremlinDatabaseGetProperties as any as S.Schema<MongoDBDatabaseGetProperties>;
 
 /** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with \"defaultExperience\": \"Cassandra\". Current \"defaultExperience\" values also include \"Table\", \"Graph\", \"DocumentDB\", and \"MongoDB\". */
 export type GetMongoDBResourceMongoDBDatabaseResponseTagsMap = {
@@ -8164,18 +8147,8 @@ export interface TableGetPropertiesResource {
   /** A system generated property representing the resource etag required for optimistic concurrency control. */
   _etag?: string;
 }
-export const TableGetPropertiesResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    restoreParameters: S.optional(RestoreParametersBase),
-    createMode: S.optional(TableGetPropertiesResourceCreateMode),
-    _rid: S.optional(S.String),
-    _ts: S.optional(S.Number),
-    _etag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TableGetPropertiesResource",
-}) as any as S.Schema<TableGetPropertiesResource>;
+export const TableGetPropertiesResource =
+  GremlinDatabaseGetPropertiesResource as any as S.Schema<TableGetPropertiesResource>;
 
 /** The properties of an Azure Cosmos Table */
 export interface TableGetProperties {
@@ -15122,13 +15095,8 @@ export interface MongoDBDatabaseResource {
   /** Enum to indicate the mode of account creation. */
   createMode?: MongoDBDatabaseResourceCreateMode | (string & {});
 }
-export const MongoDBDatabaseResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    restoreParameters: S.optional(RestoreParametersBase),
-    createMode: S.optional(MongoDBDatabaseResourceCreateMode),
-  }),
-).annotate({ identifier: "MongoDBDatabaseResource" }) as any as S.Schema<MongoDBDatabaseResource>;
+export const MongoDBDatabaseResource =
+  GremlinDatabaseResource as any as S.Schema<MongoDBDatabaseResource>;
 
 /** Properties to create and update Azure Cosmos DB MongoDB database. */
 export interface MongoDBDatabaseCreateUpdateProperties {
@@ -15137,14 +15105,8 @@ export interface MongoDBDatabaseCreateUpdateProperties {
   /** A key-value pair of options to be applied for the request. This corresponds to the headers sent with the request. */
   options?: CreateUpdateOptions;
 }
-export const MongoDBDatabaseCreateUpdateProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resource: MongoDBDatabaseResource,
-    options: S.optional(CreateUpdateOptions),
-  }),
-).annotate({
-  identifier: "MongoDBDatabaseCreateUpdateProperties",
-}) as any as S.Schema<MongoDBDatabaseCreateUpdateProperties>;
+export const MongoDBDatabaseCreateUpdateProperties =
+  GremlinDatabaseCreateUpdateProperties as any as S.Schema<MongoDBDatabaseCreateUpdateProperties>;
 
 export interface MongoDBResourcesCreateUpdateMongoDBDatabaseRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -15877,13 +15839,7 @@ export interface SqlDatabaseResource {
   /** Enum to indicate the mode of account creation. */
   createMode?: SqlDatabaseResourceCreateMode | (string & {});
 }
-export const SqlDatabaseResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    restoreParameters: S.optional(RestoreParametersBase),
-    createMode: S.optional(SqlDatabaseResourceCreateMode),
-  }),
-).annotate({ identifier: "SqlDatabaseResource" }) as any as S.Schema<SqlDatabaseResource>;
+export const SqlDatabaseResource = GremlinDatabaseResource as any as S.Schema<SqlDatabaseResource>;
 
 /** Properties to create and update Azure Cosmos DB SQL database. */
 export interface SqlDatabaseCreateUpdateProperties {
@@ -15892,14 +15848,8 @@ export interface SqlDatabaseCreateUpdateProperties {
   /** A key-value pair of options to be applied for the request. This corresponds to the headers sent with the request. */
   options?: CreateUpdateOptions;
 }
-export const SqlDatabaseCreateUpdateProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resource: SqlDatabaseResource,
-    options: S.optional(CreateUpdateOptions),
-  }),
-).annotate({
-  identifier: "SqlDatabaseCreateUpdateProperties",
-}) as any as S.Schema<SqlDatabaseCreateUpdateProperties>;
+export const SqlDatabaseCreateUpdateProperties =
+  GremlinDatabaseCreateUpdateProperties as any as S.Schema<SqlDatabaseCreateUpdateProperties>;
 
 export interface SqlResourcesCreateUpdateSqlDatabaseRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -16584,13 +16534,7 @@ export interface TableResource {
   /** Enum to indicate the mode of account creation. */
   createMode?: TableResourceCreateMode | (string & {});
 }
-export const TableResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    restoreParameters: S.optional(RestoreParametersBase),
-    createMode: S.optional(TableResourceCreateMode),
-  }),
-).annotate({ identifier: "TableResource" }) as any as S.Schema<TableResource>;
+export const TableResource = GremlinDatabaseResource as any as S.Schema<TableResource>;
 
 /** Properties to create and update Azure Cosmos DB Table. */
 export interface TableCreateUpdateProperties {
@@ -16599,14 +16543,8 @@ export interface TableCreateUpdateProperties {
   /** A key-value pair of options to be applied for the request. This corresponds to the headers sent with the request. */
   options?: CreateUpdateOptions;
 }
-export const TableCreateUpdateProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resource: TableResource,
-    options: S.optional(CreateUpdateOptions),
-  }),
-).annotate({
-  identifier: "TableCreateUpdateProperties",
-}) as any as S.Schema<TableCreateUpdateProperties>;
+export const TableCreateUpdateProperties =
+  GremlinDatabaseCreateUpdateProperties as any as S.Schema<TableCreateUpdateProperties>;
 
 export interface TableResourcesCreateUpdateTableRequest {
   /** The ID of the target subscription. The value must be an UUID. */

@@ -339,15 +339,8 @@ export interface CreatePayoutResponsePayoutMethodSupportedPayoutMethod {
   /** Supported payout method display name. */
   payer_name: string | null;
 }
-export const CreatePayoutResponsePayoutMethodSupportedPayoutMethod = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    delivery_type: CreatePayoutResponsePayoutMethodSupportedPayoutMethodDeliveryType,
-    icon_url: S.NullOr(S.String),
-    payer_name: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "CreatePayoutResponsePayoutMethodSupportedPayoutMethod",
-}) as any as S.Schema<CreatePayoutResponsePayoutMethodSupportedPayoutMethod>;
+export const CreatePayoutResponsePayoutMethodSupportedPayoutMethod =
+  CancelPayoutResponsePayoutMethodSupportedPayoutMethod as any as S.Schema<CreatePayoutResponsePayoutMethodSupportedPayoutMethod>;
 
 /** The saved payout method used. Requires payout:destination:read; null without it. */
 export interface CreatePayoutResponsePayoutMethod {
@@ -356,14 +349,8 @@ export interface CreatePayoutResponsePayoutMethod {
   /** Supported payout method display details. */
   supported_payout_method: CreatePayoutResponsePayoutMethodSupportedPayoutMethod | null;
 }
-export const CreatePayoutResponsePayoutMethod = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nickname: S.NullOr(S.String),
-    supported_payout_method: S.NullOr(CreatePayoutResponsePayoutMethodSupportedPayoutMethod),
-  }),
-).annotate({
-  identifier: "CreatePayoutResponsePayoutMethod",
-}) as any as S.Schema<CreatePayoutResponsePayoutMethod>;
+export const CreatePayoutResponsePayoutMethod =
+  CancelPayoutResponsePayoutMethod as any as S.Schema<CreatePayoutResponsePayoutMethod>;
 
 /** How the payout was created. `automatic` means a scheduled auto-payout; `null` on payouts created before source tracking or through internal tooling. */
 export type CreatePayoutResponseSource = "api" | "dashboard" | "automatic";
@@ -804,15 +791,8 @@ export interface GetPayoutResponsePayoutMethodSupportedPayoutMethod {
   /** Supported payout method display name. */
   payer_name: string | null;
 }
-export const GetPayoutResponsePayoutMethodSupportedPayoutMethod = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    delivery_type: GetPayoutResponsePayoutMethodSupportedPayoutMethodDeliveryType,
-    icon_url: S.NullOr(S.String),
-    payer_name: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "GetPayoutResponsePayoutMethodSupportedPayoutMethod",
-}) as any as S.Schema<GetPayoutResponsePayoutMethodSupportedPayoutMethod>;
+export const GetPayoutResponsePayoutMethodSupportedPayoutMethod =
+  CancelPayoutResponsePayoutMethodSupportedPayoutMethod as any as S.Schema<GetPayoutResponsePayoutMethodSupportedPayoutMethod>;
 
 /** The saved payout method used. Requires payout:destination:read; null without it. */
 export interface GetPayoutResponsePayoutMethod {
@@ -821,14 +801,8 @@ export interface GetPayoutResponsePayoutMethod {
   /** Supported payout method display details. */
   supported_payout_method: GetPayoutResponsePayoutMethodSupportedPayoutMethod | null;
 }
-export const GetPayoutResponsePayoutMethod = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nickname: S.NullOr(S.String),
-    supported_payout_method: S.NullOr(GetPayoutResponsePayoutMethodSupportedPayoutMethod),
-  }),
-).annotate({
-  identifier: "GetPayoutResponsePayoutMethod",
-}) as any as S.Schema<GetPayoutResponsePayoutMethod>;
+export const GetPayoutResponsePayoutMethod =
+  CancelPayoutResponsePayoutMethod as any as S.Schema<GetPayoutResponsePayoutMethod>;
 
 /** How the payout was created. `automatic` means a scheduled auto-payout; `null` on payouts created before source tracking or through internal tooling. */
 export type GetPayoutResponseSource = "api" | "dashboard" | "automatic";
@@ -1866,19 +1840,8 @@ export interface UpdatePayoutMethodResponseSupportedPayoutMethod {
   supports_plaid: boolean;
   supports_standard_delivery: boolean;
 }
-export const UpdatePayoutMethodResponseSupportedPayoutMethod = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    country_code: S.NullOr(S.String),
-    delivery_type: UpdatePayoutMethodResponseSupportedPayoutMethodDeliveryType,
-    icon_url: S.NullOr(S.String),
-    name: S.NullOr(S.String),
-    supports_instant_delivery: S.Boolean,
-    supports_plaid: S.Boolean,
-    supports_standard_delivery: S.Boolean,
-  }),
-).annotate({
-  identifier: "UpdatePayoutMethodResponseSupportedPayoutMethod",
-}) as any as S.Schema<UpdatePayoutMethodResponseSupportedPayoutMethod>;
+export const UpdatePayoutMethodResponseSupportedPayoutMethod =
+  ListPayoutMethodsResponseDataItemSupportedPayoutMethod as any as S.Schema<UpdatePayoutMethodResponseSupportedPayoutMethod>;
 
 /** Why this method is unavailable: `destination_retired` means the payout provider stopped offering the destination. Whop may automatically remap an eligible method that was not linked through Plaid to a compatible replacement; otherwise, the account owner must re-add it. `null` means no unavailability reason is known. */
 export type UpdatePayoutMethodResponseUnavailableReason = "destination_retired";

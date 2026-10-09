@@ -1042,7 +1042,7 @@ export type AgentHealthCode =
 export const AgentHealthCode = S.String;
 
 export type AgentHealthCodeList = AgentHealthCode[];
-export const AgentHealthCodeList = /*@__PURE__*/ S.Array(AgentHealthCode);
+export const AgentHealthCodeList = AgentHealthList as any as S.Schema<AgentHealthCodeList>;
 export interface AgentFilter {
   agentHealths: AgentHealth[];
   agentHealthCodes: AgentHealthCode[];
@@ -1102,7 +1102,7 @@ export const ListParentArnList =
   AddRemoveAttributesFindingArnList as any as S.Schema<ListParentArnList>;
 export type NamePattern = string;
 export type AssessmentRunStateList = AssessmentRunState[];
-export const AssessmentRunStateList = /*@__PURE__*/ S.Array(AssessmentRunState);
+export const AssessmentRunStateList = AgentHealthList as any as S.Schema<AssessmentRunStateList>;
 export interface DurationRange {
   minSeconds?: number;
   maxSeconds?: number;
@@ -1315,7 +1315,7 @@ export type RuleName = string;
 export type RuleNameList = string[];
 export const RuleNameList = AddRemoveAttributesFindingArnList as any as S.Schema<RuleNameList>;
 export type SeverityList = Severity[];
-export const SeverityList = /*@__PURE__*/ S.Array(Severity);
+export const SeverityList = AgentHealthList as any as S.Schema<SeverityList>;
 export interface FindingFilter {
   agentIds?: string[];
   autoScalingGroups?: string[];

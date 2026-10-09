@@ -1870,9 +1870,9 @@ export const AccountIdList = /*@__PURE__*/ S.Array(S.String);
 export type RegionList = string[];
 export const RegionList = AccountIdList as any as S.Schema<RegionList>;
 export type ResourceTypeList = ResourceType[];
-export const ResourceTypeList = /*@__PURE__*/ S.Array(ResourceType);
+export const ResourceTypeList = ImplementationEffortList as any as S.Schema<ResourceTypeList>;
 export type ActionTypeList = ActionType[];
-export const ActionTypeList = /*@__PURE__*/ S.Array(ActionType);
+export const ActionTypeList = ImplementationEffortList as any as S.Schema<ActionTypeList>;
 export type ResourceIdList = string[];
 export const ResourceIdList = AccountIdList as any as S.Schema<ResourceIdList>;
 export type ResourceArnList = string[];
@@ -1988,7 +1988,7 @@ export type SummaryMetrics = "SavingsPercentage" | (string & {});
 export const SummaryMetrics = S.String;
 
 export type SummaryMetricsList = SummaryMetrics[];
-export const SummaryMetricsList = /*@__PURE__*/ S.Array(SummaryMetrics);
+export const SummaryMetricsList = ImplementationEffortList as any as S.Schema<SummaryMetricsList>;
 export interface ListRecommendationSummariesRequest {
   filter?: Filter;
   groupBy: string;

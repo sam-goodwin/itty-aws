@@ -203,7 +203,7 @@ export type MatchOption =
 export const MatchOption = S.String;
 
 export type MatchOptions = MatchOption[];
-export const MatchOptions = /*@__PURE__*/ S.Array(MatchOption);
+export const MatchOptions = MetricNames as any as S.Schema<MatchOptions>;
 export interface DimensionValues {
   key: Dimension;
   values: string[];
@@ -599,7 +599,7 @@ export type StatusReason =
 export const StatusReason = S.String;
 
 export type StatusReasonList = StatusReason[];
-export const StatusReasonList = /*@__PURE__*/ S.Array(StatusReason);
+export const StatusReasonList = MetricNames as any as S.Schema<StatusReasonList>;
 export interface HealthStatus {
   statusCode: HealthStatusCode;
   lastRefreshedAt?: Date;

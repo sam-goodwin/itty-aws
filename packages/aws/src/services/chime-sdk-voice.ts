@@ -1915,7 +1915,8 @@ export type SessionBorderControllerType =
 export const SessionBorderControllerType = S.String;
 
 export type SessionBorderControllerTypeList = SessionBorderControllerType[];
-export const SessionBorderControllerTypeList = /*@__PURE__*/ S.Array(SessionBorderControllerType);
+export const SessionBorderControllerTypeList =
+  CapabilityList as any as S.Schema<SessionBorderControllerTypeList>;
 export type ContactCenterSystemType =
   | "GENESYS_ENGAGE_ON_PREMISES"
   | "AVAYA_AURA_CALL_CENTER_ELITE"
@@ -1925,7 +1926,8 @@ export type ContactCenterSystemType =
 export const ContactCenterSystemType = S.String;
 
 export type ContactCenterSystemTypeList = ContactCenterSystemType[];
-export const ContactCenterSystemTypeList = /*@__PURE__*/ S.Array(ContactCenterSystemType);
+export const ContactCenterSystemTypeList =
+  CapabilityList as any as S.Schema<ContactCenterSystemTypeList>;
 export interface ExternalSystemsConfiguration {
   SessionBorderControllerTypes?: SessionBorderControllerType[];
   ContactCenterSystemTypes?: ContactCenterSystemType[];
@@ -2351,7 +2353,8 @@ export const ListAvailableVoiceConnectorRegionsRequest = /*@__PURE__*/ S.suspend
   identifier: "ListAvailableVoiceConnectorRegionsRequest",
 }) as any as S.Schema<ListAvailableVoiceConnectorRegionsRequest>;
 export type VoiceConnectorAwsRegionList = VoiceConnectorAwsRegion[];
-export const VoiceConnectorAwsRegionList = /*@__PURE__*/ S.Array(VoiceConnectorAwsRegion);
+export const VoiceConnectorAwsRegionList =
+  CapabilityList as any as S.Schema<VoiceConnectorAwsRegionList>;
 export interface ListAvailableVoiceConnectorRegionsResponse {
   VoiceConnectorRegions?: VoiceConnectorAwsRegion[];
 }
@@ -2511,7 +2514,7 @@ export const ListSupportedPhoneNumberCountriesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListSupportedPhoneNumberCountriesRequest",
 }) as any as S.Schema<ListSupportedPhoneNumberCountriesRequest>;
 export type PhoneNumberTypeList = PhoneNumberType[];
-export const PhoneNumberTypeList = /*@__PURE__*/ S.Array(PhoneNumberType);
+export const PhoneNumberTypeList = CapabilityList as any as S.Schema<PhoneNumberTypeList>;
 export interface PhoneNumberCountry {
   CountryCode?: string;
   SupportedPhoneNumberTypes?: PhoneNumberType[];

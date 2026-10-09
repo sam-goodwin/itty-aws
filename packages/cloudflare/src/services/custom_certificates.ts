@@ -340,13 +340,8 @@ export const GetResponseGeoRestrictionsLabel = S.String;
 export interface GetResponseGeoRestrictions {
   label?: GetResponseGeoRestrictionsLabel | null;
 }
-export const GetResponseGeoRestrictions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    label: S.optional(S.NullOr(GetResponseGeoRestrictionsLabel)),
-  }),
-).annotate({
-  identifier: "GetResponseGeoRestrictions",
-}) as any as S.Schema<GetResponseGeoRestrictions>;
+export const GetResponseGeoRestrictions =
+  CreateResponseGeoRestrictions as any as S.Schema<GetResponseGeoRestrictions>;
 
 export type GetResponseHostsList = Array<string>;
 export const GetResponseHostsList =
@@ -498,13 +493,8 @@ export const ListResultItemGeoRestrictionsLabel = S.String;
 export interface ListResultItemGeoRestrictions {
   label?: ListResultItemGeoRestrictionsLabel | null;
 }
-export const ListResultItemGeoRestrictions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    label: S.optional(S.NullOr(ListResultItemGeoRestrictionsLabel)),
-  }),
-).annotate({
-  identifier: "ListResultItemGeoRestrictions",
-}) as any as S.Schema<ListResultItemGeoRestrictions>;
+export const ListResultItemGeoRestrictions =
+  CreateResponseGeoRestrictions as any as S.Schema<ListResultItemGeoRestrictions>;
 
 export type ListResultItemHostsList = Array<string>;
 export const ListResultItemHostsList =
@@ -646,13 +636,8 @@ export const EditRequestGeoRestrictionsLabel = S.String;
 export interface EditRequestGeoRestrictions {
   label?: EditRequestGeoRestrictionsLabel | (string & {});
 }
-export const EditRequestGeoRestrictions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    label: S.optional(EditRequestGeoRestrictionsLabel),
-  }),
-).annotate({
-  identifier: "EditRequestGeoRestrictions",
-}) as any as S.Schema<EditRequestGeoRestrictions>;
+export const EditRequestGeoRestrictions =
+  CreateRequestGeoRestrictions as any as S.Schema<EditRequestGeoRestrictions>;
 
 export interface PatchCustomCertificateRequest {
   /** Identifier. */
@@ -707,13 +692,8 @@ export const EditResponseGeoRestrictionsLabel = S.String;
 export interface EditResponseGeoRestrictions {
   label?: EditResponseGeoRestrictionsLabel | null;
 }
-export const EditResponseGeoRestrictions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    label: S.optional(S.NullOr(EditResponseGeoRestrictionsLabel)),
-  }),
-).annotate({
-  identifier: "EditResponseGeoRestrictions",
-}) as any as S.Schema<EditResponseGeoRestrictions>;
+export const EditResponseGeoRestrictions =
+  CreateResponseGeoRestrictions as any as S.Schema<EditResponseGeoRestrictions>;
 
 export type EditResponseHostsList = Array<string>;
 export const EditResponseHostsList =
@@ -873,13 +853,8 @@ export const PrioritizeUpdateResultItemGeoRestrictionsLabel = S.String;
 export interface PrioritizeUpdateResultItemGeoRestrictions {
   label?: PrioritizeUpdateResultItemGeoRestrictionsLabel | null;
 }
-export const PrioritizeUpdateResultItemGeoRestrictions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    label: S.optional(S.NullOr(PrioritizeUpdateResultItemGeoRestrictionsLabel)),
-  }),
-).annotate({
-  identifier: "PrioritizeUpdateResultItemGeoRestrictions",
-}) as any as S.Schema<PrioritizeUpdateResultItemGeoRestrictions>;
+export const PrioritizeUpdateResultItemGeoRestrictions =
+  CreateResponseGeoRestrictions as any as S.Schema<PrioritizeUpdateResultItemGeoRestrictions>;
 
 export type PrioritizeUpdateResultItemHostsList = Array<string>;
 export const PrioritizeUpdateResultItemHostsList =

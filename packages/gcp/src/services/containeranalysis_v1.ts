@@ -2555,12 +2555,7 @@ export interface MalwareScanResult {
   /** Status of the scan. */
   scanStatus?: MalwareScanResultScanStatusEnum | (string & {});
 }
-export const MalwareScanResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    verdict: S.optional(MalwareScanResultVerdictEnum),
-    scanStatus: S.optional(MalwareScanResultScanStatusEnum),
-  }),
-).annotate({ identifier: "MalwareScanResult" }) as any as S.Schema<MalwareScanResult>;
+export const MalwareScanResult = WorkspacePolicyResult as any as S.Schema<MalwareScanResult>;
 
 export interface PerScannerVerdict {
   /** Malicious Content Static scan result. */

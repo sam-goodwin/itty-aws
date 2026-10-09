@@ -551,18 +551,12 @@ export interface ProductReviewDestinationStatus {
   /** Output only. The name of the reporting context. */
   reportingContext?: ProductReviewDestinationStatusReportingContextEnum | (string & {});
 }
-export const ProductReviewDestinationStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    reportingContext: S.optional(ProductReviewDestinationStatusReportingContextEnum),
-  }),
-).annotate({
-  identifier: "ProductReviewDestinationStatus",
-}) as any as S.Schema<ProductReviewDestinationStatus>;
+export const ProductReviewDestinationStatus =
+  MerchantReviewDestinationStatus as any as S.Schema<ProductReviewDestinationStatus>;
 
 export type ProductReviewDestinationStatusList = Array<ProductReviewDestinationStatus>;
-export const ProductReviewDestinationStatusList = /*@__PURE__*/ S.Array(
-  ProductReviewDestinationStatus,
-) as any as S.Schema<ProductReviewDestinationStatusList>;
+export const ProductReviewDestinationStatusList =
+  MerchantReviewDestinationStatusList as any as S.Schema<ProductReviewDestinationStatusList>;
 
 export type ProductReviewItemLevelIssueSeverityEnum =
   | "SEVERITY_UNSPECIFIED"

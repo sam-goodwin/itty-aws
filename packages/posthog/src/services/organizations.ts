@@ -7961,9 +7961,8 @@ export const IngestionPipelineEnum = S.String;
 
 /** Ingestion pipelines the restriction applies to. Filters combine with AND; values within a filter combine with OR. */
 export type EventIngestionRestrictionPipelinesList = Array<IngestionPipelineEnum>;
-export const EventIngestionRestrictionPipelinesList = /*@__PURE__*/ S.Array(
-  IngestionPipelineEnum,
-) as any as S.Schema<EventIngestionRestrictionPipelinesList>;
+export const EventIngestionRestrictionPipelinesList =
+  ProjectBackwardCompatAvailableSetupTaskIdsList as any as S.Schema<EventIngestionRestrictionPipelinesList>;
 
 export interface EventIngestionRestriction {
   /** What happens to matching events: dropped, sent to the overflow lane, or ingested without person processing. * `skip_person_processing` - Skip Person Processing * `drop_event_from_ingestion` - Drop Event From Ingestion * `force_overflow_from_ingestion` - Force Overflow From Ingestion * `redirect_to_dlq` - Redirect To Dlq * `redirect_to_topic` - Redirect To Topic */

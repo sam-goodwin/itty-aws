@@ -1689,9 +1689,8 @@ export type ResourceRuntimePoliciesItemEnum =
 export const ResourceRuntimePoliciesItemEnum = S.String;
 
 export type ResourceRuntimePoliciesItemEnumList = Array<ResourceRuntimePoliciesItemEnum>;
-export const ResourceRuntimePoliciesItemEnumList = /*@__PURE__*/ S.Array(
-  ResourceRuntimePoliciesItemEnum,
-) as any as S.Schema<ResourceRuntimePoliciesItemEnumList>;
+export const ResourceRuntimePoliciesItemEnumList =
+  ResourceUpdateRuntimePoliciesItemEnumList as any as S.Schema<ResourceRuntimePoliciesItemEnumList>;
 
 export interface Resource {
   /** Output only. If warning messages are generated during processing of this resource, this field will be populated. */

@@ -7577,20 +7577,12 @@ export interface FollowerObject {
   user_id?: number;
   user_name?: string | null;
 }
-export const FollowerObject = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.optional(FollowerObjectAction),
-    user_email: S.optional(S.String),
-    user_id: S.optional(S.Number),
-    user_name: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({ identifier: "FollowerObject" }) as any as S.Schema<FollowerObject>;
+export const FollowerObject = EmailCCObject as any as S.Schema<FollowerObject>;
 
 /** Write only. An array of objects that represents agent followers to add or delete from the ticket. See [Setting followers](/documentation/ticketing/managing-tickets/creating-and-updating-tickets/#setting-followers). Ignored when [CCs and followers](https://support.zendesk.com/hc/en-us/articles/4408822451482) is not enabled */
 export type TicketObjectInputFollowersList = Array<FollowerObject>;
-export const TicketObjectInputFollowersList = /*@__PURE__*/ S.Array(
-  FollowerObject,
-) as any as S.Schema<TicketObjectInputFollowersList>;
+export const TicketObjectInputFollowersList =
+  TicketObjectInputEmailCcsList as any as S.Schema<TicketObjectInputFollowersList>;
 
 /** Write only. List of macro IDs to be recorded in the ticket audit */
 export type TicketObjectInputMacroIdsList = Array<number>;
@@ -8793,15 +8785,8 @@ export interface TicketCreateVoicemailTicketInputInputTdeWorkspace {
   type?: TicketCreateVoicemailTicketInputInputTdeWorkspaceType | (string & {});
   workspace?: TicketObjectInputTdeWorkspacePreviousWorkspace;
 }
-export const TicketCreateVoicemailTicketInputInputTdeWorkspace = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    previous_workspace: S.optional(TicketObjectInputTdeWorkspacePreviousWorkspace),
-    type: S.optional(TicketCreateVoicemailTicketInputInputTdeWorkspaceType),
-    workspace: S.optional(TicketObjectInputTdeWorkspacePreviousWorkspace),
-  }),
-).annotate({
-  identifier: "TicketCreateVoicemailTicketInputInputTdeWorkspace",
-}) as any as S.Schema<TicketCreateVoicemailTicketInputInputTdeWorkspace>;
+export const TicketCreateVoicemailTicketInputInputTdeWorkspace =
+  TicketObjectInputTdeWorkspace as any as S.Schema<TicketCreateVoicemailTicketInputInputTdeWorkspace>;
 
 /** Write only. A TPE voice comment for Talk Partner Edition tickets */
 export type TicketCreateVoicemailTicketInputInputTpeVoiceComment = TicketObjectInputTpeVoiceComment;
@@ -9419,9 +9404,8 @@ export const CreateUserSuspensionRequestSuspensionSuspendedChannelsItem = S.Stri
 export type CreateUserSuspensionRequestSuspensionSuspendedChannelsList = Array<
   CreateUserSuspensionRequestSuspensionSuspendedChannelsItem | (string & {})
 >;
-export const CreateUserSuspensionRequestSuspensionSuspendedChannelsList = /*@__PURE__*/ S.Array(
-  CreateUserSuspensionRequestSuspensionSuspendedChannelsItem,
-) as any as S.Schema<CreateUserSuspensionRequestSuspensionSuspendedChannelsList>;
+export const CreateUserSuspensionRequestSuspensionSuspendedChannelsList =
+  UserForAdminSuspensionDetailsChannelsList as any as S.Schema<CreateUserSuspensionRequestSuspensionSuspendedChannelsList>;
 
 export interface CreateUserSuspensionRequestSuspension {
   additional_comments?: string;
@@ -9490,9 +9474,8 @@ export const SuspensionObjectSuspendedChannelsItem = S.String;
 
 /** Only present when the account has the messaging channel suspension feature enabled. See [Announcing user suspension from messaging channels only](https://support.zendesk.com/hc/en-us/articles/10575252020250-Announcing-user-suspension-from-messaging-channels-only). */
 export type SuspensionObjectSuspendedChannelsList = Array<SuspensionObjectSuspendedChannelsItem>;
-export const SuspensionObjectSuspendedChannelsList = /*@__PURE__*/ S.Array(
-  SuspensionObjectSuspendedChannelsItem,
-) as any as S.Schema<SuspensionObjectSuspendedChannelsList>;
+export const SuspensionObjectSuspendedChannelsList =
+  UserForAdminSuspensionDetailsChannelsList as any as S.Schema<SuspensionObjectSuspendedChannelsList>;
 
 export interface SuspendedUserSummaryObject {
   email?: string;
@@ -14007,22 +13990,16 @@ export const CurrentUserResponseUserSuspensionDetailsChannelsItem = S.String;
 /** Channels on which the user is suspended. `["all"]` means suspended across every channel. If "all" is present, it must be the only element */
 export type CurrentUserResponseUserSuspensionDetailsChannelsList =
   Array<CurrentUserResponseUserSuspensionDetailsChannelsItem>;
-export const CurrentUserResponseUserSuspensionDetailsChannelsList = /*@__PURE__*/ S.Array(
-  CurrentUserResponseUserSuspensionDetailsChannelsItem,
-) as any as S.Schema<CurrentUserResponseUserSuspensionDetailsChannelsList>;
+export const CurrentUserResponseUserSuspensionDetailsChannelsList =
+  UserForAdminSuspensionDetailsChannelsList as any as S.Schema<CurrentUserResponseUserSuspensionDetailsChannelsList>;
 
 /** Channel-level suspension state for the user. The value is null if the user has no active channel-level suspension */
 export interface CurrentUserResponseUserSuspensionDetails {
   /** Channels on which the user is suspended. `["all"]` means suspended across every channel. If "all" is present, it must be the only element */
   channels: CurrentUserResponseUserSuspensionDetailsChannelsList;
 }
-export const CurrentUserResponseUserSuspensionDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    channels: CurrentUserResponseUserSuspensionDetailsChannelsList,
-  }),
-).annotate({
-  identifier: "CurrentUserResponseUserSuspensionDetails",
-}) as any as S.Schema<CurrentUserResponseUserSuspensionDetails>;
+export const CurrentUserResponseUserSuspensionDetails =
+  UserForAdminSuspensionDetails as any as S.Schema<CurrentUserResponseUserSuspensionDetails>;
 
 /** The user's tags. Only present if your account has user tagging enabled */
 export type CurrentUserResponseUserTagsList = Array<string>;
@@ -24083,9 +24060,8 @@ export const ListUserIdentitiesRequestTypeItem = S.String;
 export type ListUserIdentitiesRequestTypeList = Array<
   ListUserIdentitiesRequestTypeItem | (string & {})
 >;
-export const ListUserIdentitiesRequestTypeList = /*@__PURE__*/ S.Array(
-  ListUserIdentitiesRequestTypeItem,
-) as any as S.Schema<ListUserIdentitiesRequestTypeList>;
+export const ListUserIdentitiesRequestTypeList =
+  UserForAdminSuspensionDetailsChannelsList as any as S.Schema<ListUserIdentitiesRequestTypeList>;
 
 export type ListUserIdentitiesRequestPage = ListAuditLogsRequestPage;
 export const ListUserIdentitiesRequestPage = ListAuditLogsRequestPage;
@@ -26435,15 +26411,8 @@ export interface TicketsUpdateRequestInputCase0TicketTdeWorkspace {
   type?: TicketsUpdateRequestInputCase0TicketTdeWorkspaceType | (string & {});
   workspace?: TicketObjectInputTdeWorkspacePreviousWorkspace;
 }
-export const TicketsUpdateRequestInputCase0TicketTdeWorkspace = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    previous_workspace: S.optional(TicketObjectInputTdeWorkspacePreviousWorkspace),
-    type: S.optional(TicketsUpdateRequestInputCase0TicketTdeWorkspaceType),
-    workspace: S.optional(TicketObjectInputTdeWorkspacePreviousWorkspace),
-  }),
-).annotate({
-  identifier: "TicketsUpdateRequestInputCase0TicketTdeWorkspace",
-}) as any as S.Schema<TicketsUpdateRequestInputCase0TicketTdeWorkspace>;
+export const TicketsUpdateRequestInputCase0TicketTdeWorkspace =
+  TicketObjectInputTdeWorkspace as any as S.Schema<TicketsUpdateRequestInputCase0TicketTdeWorkspace>;
 
 /** Write only. A TPE voice comment for Talk Partner Edition tickets */
 export type TicketsUpdateRequestInputCase0TicketTpeVoiceComment = TicketObjectInputTpeVoiceComment;
@@ -26784,15 +26753,8 @@ export interface TicketsUpdateRequestInputCase1TicketsItemTdeWorkspace {
   type?: TicketsUpdateRequestInputCase1TicketsItemTdeWorkspaceType | (string & {});
   workspace?: TicketObjectInputTdeWorkspacePreviousWorkspace;
 }
-export const TicketsUpdateRequestInputCase1TicketsItemTdeWorkspace = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    previous_workspace: S.optional(TicketObjectInputTdeWorkspacePreviousWorkspace),
-    type: S.optional(TicketsUpdateRequestInputCase1TicketsItemTdeWorkspaceType),
-    workspace: S.optional(TicketObjectInputTdeWorkspacePreviousWorkspace),
-  }),
-).annotate({
-  identifier: "TicketsUpdateRequestInputCase1TicketsItemTdeWorkspace",
-}) as any as S.Schema<TicketsUpdateRequestInputCase1TicketsItemTdeWorkspace>;
+export const TicketsUpdateRequestInputCase1TicketsItemTdeWorkspace =
+  TicketObjectInputTdeWorkspace as any as S.Schema<TicketsUpdateRequestInputCase1TicketsItemTdeWorkspace>;
 
 /** Write only. A TPE voice comment for Talk Partner Edition tickets */
 export type TicketsUpdateRequestInputCase1TicketsItemTpeVoiceComment =
@@ -29100,9 +29062,8 @@ export const UpdateUserSuspensionRequestSuspensionSuspendedChannelsItem = S.Stri
 export type UpdateUserSuspensionRequestSuspensionSuspendedChannelsList = Array<
   UpdateUserSuspensionRequestSuspensionSuspendedChannelsItem | (string & {})
 >;
-export const UpdateUserSuspensionRequestSuspensionSuspendedChannelsList = /*@__PURE__*/ S.Array(
-  UpdateUserSuspensionRequestSuspensionSuspendedChannelsItem,
-) as any as S.Schema<UpdateUserSuspensionRequestSuspensionSuspendedChannelsList>;
+export const UpdateUserSuspensionRequestSuspensionSuspendedChannelsList =
+  UserForAdminSuspensionDetailsChannelsList as any as S.Schema<UpdateUserSuspensionRequestSuspensionSuspendedChannelsList>;
 
 export interface UpdateUserSuspensionRequestSuspension {
   additional_comments?: string;

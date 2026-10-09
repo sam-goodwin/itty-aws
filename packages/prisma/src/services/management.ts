@@ -543,25 +543,8 @@ export interface CreateConnectionRotateResponseData {
   /** Deprecated: use `endpoints.direct.connectionString` or `endpoints.pooled.connectionString` instead. */
   user: string | null;
 }
-export const CreateConnectionRotateResponseData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: S.String,
-    url: S.String,
-    name: S.String,
-    createdAt: S.String,
-    kind: CreateConnectionRotateResponseDataKind,
-    endpoints: CreateConnectionResponseDataEndpoints,
-    connectionString: S.String.pipe(T.SensitiveValue({})),
-    directConnection: S.optional(S.NullOr(CreateConnectionResponseDataDirectConnection)),
-    database: CreateBucketResponseDataProject,
-    host: S.NullOr(S.String),
-    pass: S.NullOr(S.String),
-    user: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "CreateConnectionRotateResponseData",
-}) as any as S.Schema<CreateConnectionRotateResponseData>;
+export const CreateConnectionRotateResponseData =
+  CreateConnectionResponseData as any as S.Schema<CreateConnectionRotateResponseData>;
 
 export interface CreateConnectionRotateResponse {
   data: CreateConnectionRotateResponseData;
@@ -917,36 +900,14 @@ export interface CreateDatabaseConnectionResponseData {
   /** Deprecated: use `endpoints.direct.connectionString` or `endpoints.pooled.connectionString` instead. */
   user: string | null;
 }
-export const CreateDatabaseConnectionResponseData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: S.String,
-    url: S.String,
-    name: S.String,
-    createdAt: S.String,
-    kind: CreateDatabaseConnectionResponseDataKind,
-    endpoints: CreateConnectionResponseDataEndpoints,
-    connectionString: S.String.pipe(T.SensitiveValue({})),
-    directConnection: S.optional(S.NullOr(CreateConnectionResponseDataDirectConnection)),
-    database: CreateBucketResponseDataProject,
-    host: S.NullOr(S.String),
-    pass: S.NullOr(S.String),
-    user: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "CreateDatabaseConnectionResponseData",
-}) as any as S.Schema<CreateDatabaseConnectionResponseData>;
+export const CreateDatabaseConnectionResponseData =
+  CreateConnectionResponseData as any as S.Schema<CreateDatabaseConnectionResponseData>;
 
 export interface CreateDatabaseConnectionResponse {
   data: CreateDatabaseConnectionResponseData;
 }
-export const CreateDatabaseConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: CreateDatabaseConnectionResponseData,
-  }),
-).annotate({
-  identifier: "CreateDatabaseConnectionResponse",
-}) as any as S.Schema<CreateDatabaseConnectionResponse>;
+export const CreateDatabaseConnectionResponse =
+  CreateConnectionRotateResponse as any as S.Schema<CreateDatabaseConnectionResponse>;
 
 export type CreateDatabaseRestoreRequestSource = CreateDatabaseRequestSourceCase1;
 export const CreateDatabaseRestoreRequestSource = CreateDatabaseRequestSourceCase1;
@@ -1409,27 +1370,13 @@ export interface CreateProjectResponseDataDatabaseConnectionsItem {
   directConnection?: CreateConnectionResponseDataDirectConnection | null;
   database: CreateBucketResponseDataProject;
 }
-export const CreateProjectResponseDataDatabaseConnectionsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: S.String,
-    url: S.String,
-    name: S.String,
-    createdAt: S.String,
-    kind: CreateProjectResponseDataDatabaseConnectionsItemKind,
-    endpoints: CreateDatabaseResponseDataConnectionsItemEndpoints,
-    directConnection: S.optional(S.NullOr(CreateConnectionResponseDataDirectConnection)),
-    database: CreateBucketResponseDataProject,
-  }),
-).annotate({
-  identifier: "CreateProjectResponseDataDatabaseConnectionsItem",
-}) as any as S.Schema<CreateProjectResponseDataDatabaseConnectionsItem>;
+export const CreateProjectResponseDataDatabaseConnectionsItem =
+  CreateDatabaseResponseDataConnectionsItem as any as S.Schema<CreateProjectResponseDataDatabaseConnectionsItem>;
 
 export type CreateProjectResponseDataDatabaseConnectionsList =
   Array<CreateProjectResponseDataDatabaseConnectionsItem>;
-export const CreateProjectResponseDataDatabaseConnectionsList = /*@__PURE__*/ S.Array(
-  CreateProjectResponseDataDatabaseConnectionsItem,
-) as any as S.Schema<CreateProjectResponseDataDatabaseConnectionsList>;
+export const CreateProjectResponseDataDatabaseConnectionsList =
+  CreateDatabaseResponseDataConnectionsList as any as S.Schema<CreateProjectResponseDataDatabaseConnectionsList>;
 
 export type CreateProjectResponseDataDatabaseRegion = CreateDatabaseResponseDataRegion;
 export const CreateProjectResponseDataDatabaseRegion = CreateDatabaseResponseDataRegion;
@@ -1842,27 +1789,13 @@ export interface CreateProjectDatabaseResponseDataConnectionsItem {
   directConnection?: CreateConnectionResponseDataDirectConnection | null;
   database: CreateBucketResponseDataProject;
 }
-export const CreateProjectDatabaseResponseDataConnectionsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: S.String,
-    url: S.String,
-    name: S.String,
-    createdAt: S.String,
-    kind: CreateProjectDatabaseResponseDataConnectionsItemKind,
-    endpoints: CreateDatabaseResponseDataConnectionsItemEndpoints,
-    directConnection: S.optional(S.NullOr(CreateConnectionResponseDataDirectConnection)),
-    database: CreateBucketResponseDataProject,
-  }),
-).annotate({
-  identifier: "CreateProjectDatabaseResponseDataConnectionsItem",
-}) as any as S.Schema<CreateProjectDatabaseResponseDataConnectionsItem>;
+export const CreateProjectDatabaseResponseDataConnectionsItem =
+  CreateDatabaseResponseDataConnectionsItem as any as S.Schema<CreateProjectDatabaseResponseDataConnectionsItem>;
 
 export type CreateProjectDatabaseResponseDataConnectionsList =
   Array<CreateProjectDatabaseResponseDataConnectionsItem>;
-export const CreateProjectDatabaseResponseDataConnectionsList = /*@__PURE__*/ S.Array(
-  CreateProjectDatabaseResponseDataConnectionsItem,
-) as any as S.Schema<CreateProjectDatabaseResponseDataConnectionsList>;
+export const CreateProjectDatabaseResponseDataConnectionsList =
+  CreateDatabaseResponseDataConnectionsList as any as S.Schema<CreateProjectDatabaseResponseDataConnectionsList>;
 
 export type CreateProjectDatabaseResponseDataProject = CreateBucketResponseDataProject;
 export const CreateProjectDatabaseResponseDataProject = CreateBucketResponseDataProject;
@@ -1933,28 +1866,14 @@ export interface CreateProjectDatabaseResponseDataApiKeysItem {
   /** Deprecated: use `endpoints.direct` instead. */
   directConnection?: CreateConnectionResponseDataDirectConnection | null;
 }
-export const CreateProjectDatabaseResponseDataApiKeysItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: S.String,
-    url: S.String,
-    name: S.String,
-    createdAt: S.String,
-    kind: CreateProjectDatabaseResponseDataApiKeysItemKind,
-    endpoints: CreateDatabaseRestoreResponseDataConnectionsItemEndpoints,
-    connectionString: S.String.pipe(T.SensitiveValue({})),
-    directConnection: S.optional(S.NullOr(CreateConnectionResponseDataDirectConnection)),
-  }),
-).annotate({
-  identifier: "CreateProjectDatabaseResponseDataApiKeysItem",
-}) as any as S.Schema<CreateProjectDatabaseResponseDataApiKeysItem>;
+export const CreateProjectDatabaseResponseDataApiKeysItem =
+  CreateProjectResponseDataDatabaseApiKeysItem as any as S.Schema<CreateProjectDatabaseResponseDataApiKeysItem>;
 
 /** Deprecated: use `connections[]` instead. */
 export type CreateProjectDatabaseResponseDataApiKeysList =
   Array<CreateProjectDatabaseResponseDataApiKeysItem>;
-export const CreateProjectDatabaseResponseDataApiKeysList = /*@__PURE__*/ S.Array(
-  CreateProjectDatabaseResponseDataApiKeysItem,
-) as any as S.Schema<CreateProjectDatabaseResponseDataApiKeysList>;
+export const CreateProjectDatabaseResponseDataApiKeysList =
+  CreateProjectResponseDataDatabaseApiKeysList as any as S.Schema<CreateProjectDatabaseResponseDataApiKeysList>;
 
 /** Deprecated: use `connections[].endpoints.direct` instead. */
 export type CreateProjectDatabaseResponseDataDirectConnection =
@@ -3308,21 +3227,8 @@ export interface GetConnectionResponseData {
   directConnection?: CreateConnectionResponseDataDirectConnection | null;
   database: CreateBucketResponseDataProject;
 }
-export const GetConnectionResponseData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: S.String,
-    url: S.String,
-    name: S.String,
-    createdAt: S.String,
-    kind: GetConnectionResponseDataKind,
-    endpoints: CreateDatabaseRestoreResponseDataConnectionsItemEndpoints,
-    directConnection: S.optional(S.NullOr(CreateConnectionResponseDataDirectConnection)),
-    database: CreateBucketResponseDataProject,
-  }),
-).annotate({
-  identifier: "GetConnectionResponseData",
-}) as any as S.Schema<GetConnectionResponseData>;
+export const GetConnectionResponseData =
+  CreateDatabaseRestoreResponseDataConnectionsItem as any as S.Schema<GetConnectionResponseData>;
 
 export interface GetConnectionResponse {
   data: GetConnectionResponseData;
@@ -3390,26 +3296,12 @@ export interface GetConnectionsResponseDataItem {
   directConnection?: CreateConnectionResponseDataDirectConnection | null;
   database: CreateBucketResponseDataProject;
 }
-export const GetConnectionsResponseDataItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: S.String,
-    url: S.String,
-    name: S.String,
-    createdAt: S.String,
-    kind: GetConnectionsResponseDataItemKind,
-    endpoints: CreateDatabaseRestoreResponseDataConnectionsItemEndpoints,
-    directConnection: S.optional(S.NullOr(CreateConnectionResponseDataDirectConnection)),
-    database: CreateBucketResponseDataProject,
-  }),
-).annotate({
-  identifier: "GetConnectionsResponseDataItem",
-}) as any as S.Schema<GetConnectionsResponseDataItem>;
+export const GetConnectionsResponseDataItem =
+  CreateDatabaseRestoreResponseDataConnectionsItem as any as S.Schema<GetConnectionsResponseDataItem>;
 
 export type GetConnectionsResponseDataList = Array<GetConnectionsResponseDataItem>;
-export const GetConnectionsResponseDataList = /*@__PURE__*/ S.Array(
-  GetConnectionsResponseDataItem,
-) as any as S.Schema<GetConnectionsResponseDataList>;
+export const GetConnectionsResponseDataList =
+  CreateDatabaseRestoreResponseDataConnectionsList as any as S.Schema<GetConnectionsResponseDataList>;
 
 export type GetConnectionsResponsePagination = GetBucketKeysResponsePagination;
 export const GetConnectionsResponsePagination = GetBucketKeysResponsePagination;
@@ -3481,26 +3373,12 @@ export interface GetDatabaseResponseDataConnectionsItem {
   directConnection?: CreateConnectionResponseDataDirectConnection | null;
   database: CreateBucketResponseDataProject;
 }
-export const GetDatabaseResponseDataConnectionsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: S.String,
-    url: S.String,
-    name: S.String,
-    createdAt: S.String,
-    kind: GetDatabaseResponseDataConnectionsItemKind,
-    endpoints: CreateDatabaseRestoreResponseDataConnectionsItemEndpoints,
-    directConnection: S.optional(S.NullOr(CreateConnectionResponseDataDirectConnection)),
-    database: CreateBucketResponseDataProject,
-  }),
-).annotate({
-  identifier: "GetDatabaseResponseDataConnectionsItem",
-}) as any as S.Schema<GetDatabaseResponseDataConnectionsItem>;
+export const GetDatabaseResponseDataConnectionsItem =
+  CreateDatabaseRestoreResponseDataConnectionsItem as any as S.Schema<GetDatabaseResponseDataConnectionsItem>;
 
 export type GetDatabaseResponseDataConnectionsList = Array<GetDatabaseResponseDataConnectionsItem>;
-export const GetDatabaseResponseDataConnectionsList = /*@__PURE__*/ S.Array(
-  GetDatabaseResponseDataConnectionsItem,
-) as any as S.Schema<GetDatabaseResponseDataConnectionsList>;
+export const GetDatabaseResponseDataConnectionsList =
+  CreateDatabaseRestoreResponseDataConnectionsList as any as S.Schema<GetDatabaseResponseDataConnectionsList>;
 
 export type GetDatabaseResponseDataProject = CreateBucketResponseDataProject;
 export const GetDatabaseResponseDataProject = CreateBucketResponseDataProject;
@@ -3720,26 +3598,12 @@ export interface GetDatabaseConnectionsResponseDataItem {
   directConnection?: CreateConnectionResponseDataDirectConnection | null;
   database: CreateBucketResponseDataProject;
 }
-export const GetDatabaseConnectionsResponseDataItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: S.String,
-    url: S.String,
-    name: S.String,
-    createdAt: S.String,
-    kind: GetDatabaseConnectionsResponseDataItemKind,
-    endpoints: CreateDatabaseRestoreResponseDataConnectionsItemEndpoints,
-    directConnection: S.optional(S.NullOr(CreateConnectionResponseDataDirectConnection)),
-    database: CreateBucketResponseDataProject,
-  }),
-).annotate({
-  identifier: "GetDatabaseConnectionsResponseDataItem",
-}) as any as S.Schema<GetDatabaseConnectionsResponseDataItem>;
+export const GetDatabaseConnectionsResponseDataItem =
+  CreateDatabaseRestoreResponseDataConnectionsItem as any as S.Schema<GetDatabaseConnectionsResponseDataItem>;
 
 export type GetDatabaseConnectionsResponseDataList = Array<GetDatabaseConnectionsResponseDataItem>;
-export const GetDatabaseConnectionsResponseDataList = /*@__PURE__*/ S.Array(
-  GetDatabaseConnectionsResponseDataItem,
-) as any as S.Schema<GetDatabaseConnectionsResponseDataList>;
+export const GetDatabaseConnectionsResponseDataList =
+  CreateDatabaseRestoreResponseDataConnectionsList as any as S.Schema<GetDatabaseConnectionsResponseDataList>;
 
 export type GetDatabaseConnectionsResponsePagination = GetBucketKeysResponsePagination;
 export const GetDatabaseConnectionsResponsePagination = GetBucketKeysResponsePagination;
@@ -3827,27 +3691,13 @@ export interface GetDatabasesResponseDataItemConnectionsItem {
   directConnection?: CreateConnectionResponseDataDirectConnection | null;
   database: CreateBucketResponseDataProject;
 }
-export const GetDatabasesResponseDataItemConnectionsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: S.String,
-    url: S.String,
-    name: S.String,
-    createdAt: S.String,
-    kind: GetDatabasesResponseDataItemConnectionsItemKind,
-    endpoints: CreateDatabaseRestoreResponseDataConnectionsItemEndpoints,
-    directConnection: S.optional(S.NullOr(CreateConnectionResponseDataDirectConnection)),
-    database: CreateBucketResponseDataProject,
-  }),
-).annotate({
-  identifier: "GetDatabasesResponseDataItemConnectionsItem",
-}) as any as S.Schema<GetDatabasesResponseDataItemConnectionsItem>;
+export const GetDatabasesResponseDataItemConnectionsItem =
+  CreateDatabaseRestoreResponseDataConnectionsItem as any as S.Schema<GetDatabasesResponseDataItemConnectionsItem>;
 
 export type GetDatabasesResponseDataItemConnectionsList =
   Array<GetDatabasesResponseDataItemConnectionsItem>;
-export const GetDatabasesResponseDataItemConnectionsList = /*@__PURE__*/ S.Array(
-  GetDatabasesResponseDataItemConnectionsItem,
-) as any as S.Schema<GetDatabasesResponseDataItemConnectionsList>;
+export const GetDatabasesResponseDataItemConnectionsList =
+  CreateDatabaseRestoreResponseDataConnectionsList as any as S.Schema<GetDatabasesResponseDataItemConnectionsList>;
 
 export type GetDatabasesResponseDataItemProject = CreateBucketResponseDataProject;
 export const GetDatabasesResponseDataItemProject = CreateBucketResponseDataProject;
@@ -4187,34 +4037,14 @@ export interface GetEnvironmentVariableResponseData {
   createdAt: string;
   updatedAt: string;
 }
-export const GetEnvironmentVariableResponseData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: S.String,
-    url: S.String,
-    projectId: S.String,
-    branchId: S.NullOr(S.String),
-    class: GetEnvironmentVariableResponseDataClass,
-    key: S.String,
-    valueKid: S.String,
-    isManagedBySystem: S.Boolean,
-    createdAt: S.String,
-    updatedAt: S.String,
-  }),
-).annotate({
-  identifier: "GetEnvironmentVariableResponseData",
-}) as any as S.Schema<GetEnvironmentVariableResponseData>;
+export const GetEnvironmentVariableResponseData =
+  CreateEnvironmentVariableResponseData as any as S.Schema<GetEnvironmentVariableResponseData>;
 
 export interface GetEnvironmentVariableResponse {
   data: GetEnvironmentVariableResponseData;
 }
-export const GetEnvironmentVariableResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: GetEnvironmentVariableResponseData,
-  }),
-).annotate({
-  identifier: "GetEnvironmentVariableResponse",
-}) as any as S.Schema<GetEnvironmentVariableResponse>;
+export const GetEnvironmentVariableResponse =
+  CreateEnvironmentVariableResponse as any as S.Schema<GetEnvironmentVariableResponse>;
 
 export type GetEnvironmentVariablesRequestClass = "production" | "preview";
 export const GetEnvironmentVariablesRequestClass = S.String;
@@ -4256,23 +4086,8 @@ export interface GetEnvironmentVariablesResponseDataItem {
   createdAt: string;
   updatedAt: string;
 }
-export const GetEnvironmentVariablesResponseDataItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: S.String,
-    url: S.String,
-    projectId: S.String,
-    branchId: S.NullOr(S.String),
-    class: GetEnvironmentVariablesResponseDataItemClass,
-    key: S.String,
-    valueKid: S.String,
-    isManagedBySystem: S.Boolean,
-    createdAt: S.String,
-    updatedAt: S.String,
-  }),
-).annotate({
-  identifier: "GetEnvironmentVariablesResponseDataItem",
-}) as any as S.Schema<GetEnvironmentVariablesResponseDataItem>;
+export const GetEnvironmentVariablesResponseDataItem =
+  CreateEnvironmentVariableResponseData as any as S.Schema<GetEnvironmentVariablesResponseDataItem>;
 
 export type GetEnvironmentVariablesResponseDataList =
   Array<GetEnvironmentVariablesResponseDataItem>;
@@ -4870,16 +4685,8 @@ export interface GetProjectBranchApplicationTopologyResponseDataEdgesItemTo {
   direction: GetProjectBranchApplicationTopologyResponseDataEdgesItemToDirection;
   name: string;
 }
-export const GetProjectBranchApplicationTopologyResponseDataEdgesItemTo = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      logicalId: S.String,
-      direction: GetProjectBranchApplicationTopologyResponseDataEdgesItemToDirection,
-      name: S.String,
-    }),
-).annotate({
-  identifier: "GetProjectBranchApplicationTopologyResponseDataEdgesItemTo",
-}) as any as S.Schema<GetProjectBranchApplicationTopologyResponseDataEdgesItemTo>;
+export const GetProjectBranchApplicationTopologyResponseDataEdgesItemTo =
+  GetProjectBranchApplicationTopologyResponseDataEdgesItemFrom as any as S.Schema<GetProjectBranchApplicationTopologyResponseDataEdgesItemTo>;
 
 export type GetProjectBranchApplicationTopologyResponseDataEdgesItemFamily =
   | "communication"
@@ -4978,21 +4785,8 @@ export interface GetProjectBranchesResponseDataItem {
   /** Thin reference to the parent Project. Member resources are intentionally NOT inlined -- list /v1/databases?branchId=<br_xxx> or /v1/apps?branchId=<br_xxx> instead (see API design principles "Flat and Hierarchical Coexistence"). */
   project: CreateBucketResponseDataProject;
 }
-export const GetProjectBranchesResponseDataItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: S.String,
-    url: S.String,
-    gitName: S.String,
-    isDefault: S.Boolean,
-    role: GetProjectBranchesResponseDataItemRole,
-    createdAt: S.String,
-    updatedAt: S.String,
-    project: CreateBucketResponseDataProject,
-  }),
-).annotate({
-  identifier: "GetProjectBranchesResponseDataItem",
-}) as any as S.Schema<GetProjectBranchesResponseDataItem>;
+export const GetProjectBranchesResponseDataItem =
+  CreateProjectBranchResponseData as any as S.Schema<GetProjectBranchesResponseDataItem>;
 
 export type GetProjectBranchesResponseDataList = Array<GetProjectBranchesResponseDataItem>;
 export const GetProjectBranchesResponseDataList = /*@__PURE__*/ S.Array(
@@ -5087,27 +4881,13 @@ export interface GetProjectDatabasesResponseDataItemConnectionsItem {
   directConnection?: CreateConnectionResponseDataDirectConnection | null;
   database: CreateBucketResponseDataProject;
 }
-export const GetProjectDatabasesResponseDataItemConnectionsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: S.String,
-    url: S.String,
-    name: S.String,
-    createdAt: S.String,
-    kind: GetProjectDatabasesResponseDataItemConnectionsItemKind,
-    endpoints: CreateDatabaseRestoreResponseDataConnectionsItemEndpoints,
-    directConnection: S.optional(S.NullOr(CreateConnectionResponseDataDirectConnection)),
-    database: CreateBucketResponseDataProject,
-  }),
-).annotate({
-  identifier: "GetProjectDatabasesResponseDataItemConnectionsItem",
-}) as any as S.Schema<GetProjectDatabasesResponseDataItemConnectionsItem>;
+export const GetProjectDatabasesResponseDataItemConnectionsItem =
+  CreateDatabaseRestoreResponseDataConnectionsItem as any as S.Schema<GetProjectDatabasesResponseDataItemConnectionsItem>;
 
 export type GetProjectDatabasesResponseDataItemConnectionsList =
   Array<GetProjectDatabasesResponseDataItemConnectionsItem>;
-export const GetProjectDatabasesResponseDataItemConnectionsList = /*@__PURE__*/ S.Array(
-  GetProjectDatabasesResponseDataItemConnectionsItem,
-) as any as S.Schema<GetProjectDatabasesResponseDataItemConnectionsList>;
+export const GetProjectDatabasesResponseDataItemConnectionsList =
+  CreateDatabaseRestoreResponseDataConnectionsList as any as S.Schema<GetProjectDatabasesResponseDataItemConnectionsList>;
 
 export type GetProjectDatabasesResponseDataItemProject = CreateBucketResponseDataProject;
 export const GetProjectDatabasesResponseDataItemProject = CreateBucketResponseDataProject;
@@ -5770,25 +5550,8 @@ export interface GetSourceRepositoriesResponseDataItem {
   createdAt: string;
   updatedAt: string;
 }
-export const GetSourceRepositoriesResponseDataItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: S.String,
-    url: S.String,
-    repoId: S.Number,
-    provider: GetSourceRepositoriesResponseDataItemProvider,
-    repoFullName: S.String,
-    defaultBranch: S.String,
-    isPrivate: S.Boolean,
-    status: GetSourceRepositoriesResponseDataItemStatus,
-    projectId: S.String,
-    installationId: S.String,
-    createdAt: S.String,
-    updatedAt: S.String,
-  }),
-).annotate({
-  identifier: "GetSourceRepositoriesResponseDataItem",
-}) as any as S.Schema<GetSourceRepositoriesResponseDataItem>;
+export const GetSourceRepositoriesResponseDataItem =
+  CreateSourceRepositoryResponseData as any as S.Schema<GetSourceRepositoriesResponseDataItem>;
 
 export type GetSourceRepositoriesResponseDataList = Array<GetSourceRepositoriesResponseDataItem>;
 export const GetSourceRepositoriesResponseDataList = /*@__PURE__*/ S.Array(
@@ -5843,38 +5606,15 @@ export interface GetSourceRepositoryResponseData {
   createdAt: string;
   updatedAt: string;
 }
-export const GetSourceRepositoryResponseData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: S.String,
-    url: S.String,
-    repoId: S.Number,
-    provider: GetSourceRepositoryResponseDataProvider,
-    repoFullName: S.String,
-    defaultBranch: S.String,
-    isPrivate: S.Boolean,
-    status: GetSourceRepositoryResponseDataStatus,
-    projectId: S.String,
-    installationId: S.String,
-    createdAt: S.String,
-    updatedAt: S.String,
-  }),
-).annotate({
-  identifier: "GetSourceRepositoryResponseData",
-}) as any as S.Schema<GetSourceRepositoryResponseData>;
+export const GetSourceRepositoryResponseData =
+  CreateSourceRepositoryResponseData as any as S.Schema<GetSourceRepositoryResponseData>;
 
 export interface GetSourceRepositoryResponse {
   data: GetSourceRepositoryResponseData;
   hint?: string;
 }
-export const GetSourceRepositoryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: GetSourceRepositoryResponseData,
-    hint: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetSourceRepositoryResponse",
-}) as any as S.Schema<GetSourceRepositoryResponse>;
+export const GetSourceRepositoryResponse =
+  CreateSourceRepositoryResponse as any as S.Schema<GetSourceRepositoryResponse>;
 
 export interface GetWorkspaceRequest {
   id: string;
@@ -6263,15 +6003,8 @@ export interface PutProjectBranchApplicationTopologyRequestEdgesItemTo {
   direction: PutProjectBranchApplicationTopologyRequestEdgesItemToDirection | (string & {});
   name: string;
 }
-export const PutProjectBranchApplicationTopologyRequestEdgesItemTo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    logicalId: S.String,
-    direction: PutProjectBranchApplicationTopologyRequestEdgesItemToDirection,
-    name: S.String,
-  }),
-).annotate({
-  identifier: "PutProjectBranchApplicationTopologyRequestEdgesItemTo",
-}) as any as S.Schema<PutProjectBranchApplicationTopologyRequestEdgesItemTo>;
+export const PutProjectBranchApplicationTopologyRequestEdgesItemTo =
+  PutProjectBranchApplicationTopologyRequestEdgesItemFrom as any as S.Schema<PutProjectBranchApplicationTopologyRequestEdgesItemTo>;
 
 export type PutProjectBranchApplicationTopologyRequestEdgesItemFamily = "communication" | "data";
 export const PutProjectBranchApplicationTopologyRequestEdgesItemFamily = S.String;
@@ -6338,23 +6071,13 @@ export interface PutProjectBranchApplicationTopologyResponseDataNodesItem {
   kind: PutProjectBranchApplicationTopologyResponseDataNodesItemKind;
   type?: string;
 }
-export const PutProjectBranchApplicationTopologyResponseDataNodesItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      logicalId: S.String,
-      parentLogicalId: S.NullOr(S.String),
-      kind: PutProjectBranchApplicationTopologyResponseDataNodesItemKind,
-      type: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "PutProjectBranchApplicationTopologyResponseDataNodesItem",
-}) as any as S.Schema<PutProjectBranchApplicationTopologyResponseDataNodesItem>;
+export const PutProjectBranchApplicationTopologyResponseDataNodesItem =
+  GetProjectBranchApplicationTopologyResponseDataNodesItem as any as S.Schema<PutProjectBranchApplicationTopologyResponseDataNodesItem>;
 
 export type PutProjectBranchApplicationTopologyResponseDataNodesList =
   Array<PutProjectBranchApplicationTopologyResponseDataNodesItem>;
-export const PutProjectBranchApplicationTopologyResponseDataNodesList = /*@__PURE__*/ S.Array(
-  PutProjectBranchApplicationTopologyResponseDataNodesItem,
-) as any as S.Schema<PutProjectBranchApplicationTopologyResponseDataNodesList>;
+export const PutProjectBranchApplicationTopologyResponseDataNodesList =
+  GetProjectBranchApplicationTopologyResponseDataNodesList as any as S.Schema<PutProjectBranchApplicationTopologyResponseDataNodesList>;
 
 export type PutProjectBranchApplicationTopologyResponseDataPortsItemDirection = "in" | "out";
 export const PutProjectBranchApplicationTopologyResponseDataPortsItemDirection = S.String;
@@ -6366,24 +6089,13 @@ export interface PutProjectBranchApplicationTopologyResponseDataPortsItem {
   contractKind?: string;
   contractHash?: string;
 }
-export const PutProjectBranchApplicationTopologyResponseDataPortsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      logicalId: S.String,
-      direction: PutProjectBranchApplicationTopologyResponseDataPortsItemDirection,
-      name: S.String,
-      contractKind: S.optional(S.String),
-      contractHash: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "PutProjectBranchApplicationTopologyResponseDataPortsItem",
-}) as any as S.Schema<PutProjectBranchApplicationTopologyResponseDataPortsItem>;
+export const PutProjectBranchApplicationTopologyResponseDataPortsItem =
+  GetProjectBranchApplicationTopologyResponseDataPortsItem as any as S.Schema<PutProjectBranchApplicationTopologyResponseDataPortsItem>;
 
 export type PutProjectBranchApplicationTopologyResponseDataPortsList =
   Array<PutProjectBranchApplicationTopologyResponseDataPortsItem>;
-export const PutProjectBranchApplicationTopologyResponseDataPortsList = /*@__PURE__*/ S.Array(
-  PutProjectBranchApplicationTopologyResponseDataPortsItem,
-) as any as S.Schema<PutProjectBranchApplicationTopologyResponseDataPortsList>;
+export const PutProjectBranchApplicationTopologyResponseDataPortsList =
+  GetProjectBranchApplicationTopologyResponseDataPortsList as any as S.Schema<PutProjectBranchApplicationTopologyResponseDataPortsList>;
 
 export type PutProjectBranchApplicationTopologyResponseDataEdgesItemFromDirection = "in" | "out";
 export const PutProjectBranchApplicationTopologyResponseDataEdgesItemFromDirection = S.String;
@@ -6393,16 +6105,8 @@ export interface PutProjectBranchApplicationTopologyResponseDataEdgesItemFrom {
   direction: PutProjectBranchApplicationTopologyResponseDataEdgesItemFromDirection;
   name: string;
 }
-export const PutProjectBranchApplicationTopologyResponseDataEdgesItemFrom = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      logicalId: S.String,
-      direction: PutProjectBranchApplicationTopologyResponseDataEdgesItemFromDirection,
-      name: S.String,
-    }),
-).annotate({
-  identifier: "PutProjectBranchApplicationTopologyResponseDataEdgesItemFrom",
-}) as any as S.Schema<PutProjectBranchApplicationTopologyResponseDataEdgesItemFrom>;
+export const PutProjectBranchApplicationTopologyResponseDataEdgesItemFrom =
+  GetProjectBranchApplicationTopologyResponseDataEdgesItemFrom as any as S.Schema<PutProjectBranchApplicationTopologyResponseDataEdgesItemFrom>;
 
 export type PutProjectBranchApplicationTopologyResponseDataEdgesItemToDirection = "in" | "out";
 export const PutProjectBranchApplicationTopologyResponseDataEdgesItemToDirection = S.String;
@@ -6412,16 +6116,8 @@ export interface PutProjectBranchApplicationTopologyResponseDataEdgesItemTo {
   direction: PutProjectBranchApplicationTopologyResponseDataEdgesItemToDirection;
   name: string;
 }
-export const PutProjectBranchApplicationTopologyResponseDataEdgesItemTo = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      logicalId: S.String,
-      direction: PutProjectBranchApplicationTopologyResponseDataEdgesItemToDirection,
-      name: S.String,
-    }),
-).annotate({
-  identifier: "PutProjectBranchApplicationTopologyResponseDataEdgesItemTo",
-}) as any as S.Schema<PutProjectBranchApplicationTopologyResponseDataEdgesItemTo>;
+export const PutProjectBranchApplicationTopologyResponseDataEdgesItemTo =
+  GetProjectBranchApplicationTopologyResponseDataEdgesItemFrom as any as S.Schema<PutProjectBranchApplicationTopologyResponseDataEdgesItemTo>;
 
 export type PutProjectBranchApplicationTopologyResponseDataEdgesItemFamily =
   | "communication"
@@ -6434,23 +6130,13 @@ export interface PutProjectBranchApplicationTopologyResponseDataEdgesItem {
   family: PutProjectBranchApplicationTopologyResponseDataEdgesItemFamily;
   style?: string;
 }
-export const PutProjectBranchApplicationTopologyResponseDataEdgesItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      from: PutProjectBranchApplicationTopologyResponseDataEdgesItemFrom,
-      to: PutProjectBranchApplicationTopologyResponseDataEdgesItemTo,
-      family: PutProjectBranchApplicationTopologyResponseDataEdgesItemFamily,
-      style: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "PutProjectBranchApplicationTopologyResponseDataEdgesItem",
-}) as any as S.Schema<PutProjectBranchApplicationTopologyResponseDataEdgesItem>;
+export const PutProjectBranchApplicationTopologyResponseDataEdgesItem =
+  GetProjectBranchApplicationTopologyResponseDataEdgesItem as any as S.Schema<PutProjectBranchApplicationTopologyResponseDataEdgesItem>;
 
 export type PutProjectBranchApplicationTopologyResponseDataEdgesList =
   Array<PutProjectBranchApplicationTopologyResponseDataEdgesItem>;
-export const PutProjectBranchApplicationTopologyResponseDataEdgesList = /*@__PURE__*/ S.Array(
-  PutProjectBranchApplicationTopologyResponseDataEdgesItem,
-) as any as S.Schema<PutProjectBranchApplicationTopologyResponseDataEdgesList>;
+export const PutProjectBranchApplicationTopologyResponseDataEdgesList =
+  GetProjectBranchApplicationTopologyResponseDataEdgesList as any as S.Schema<PutProjectBranchApplicationTopologyResponseDataEdgesList>;
 
 export interface PutProjectBranchApplicationTopologyResponseData {
   nodes: PutProjectBranchApplicationTopologyResponseDataNodesList;
@@ -6459,28 +6145,14 @@ export interface PutProjectBranchApplicationTopologyResponseData {
   contentHash?: string;
   writtenAt?: string;
 }
-export const PutProjectBranchApplicationTopologyResponseData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nodes: PutProjectBranchApplicationTopologyResponseDataNodesList,
-    ports: PutProjectBranchApplicationTopologyResponseDataPortsList,
-    edges: PutProjectBranchApplicationTopologyResponseDataEdgesList,
-    contentHash: S.optional(S.String),
-    writtenAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PutProjectBranchApplicationTopologyResponseData",
-}) as any as S.Schema<PutProjectBranchApplicationTopologyResponseData>;
+export const PutProjectBranchApplicationTopologyResponseData =
+  GetProjectBranchApplicationTopologyResponseData as any as S.Schema<PutProjectBranchApplicationTopologyResponseData>;
 
 export interface PutProjectBranchApplicationTopologyResponse {
   data: PutProjectBranchApplicationTopologyResponseData;
 }
-export const PutProjectBranchApplicationTopologyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: PutProjectBranchApplicationTopologyResponseData,
-  }),
-).annotate({
-  identifier: "PutProjectBranchApplicationTopologyResponse",
-}) as any as S.Schema<PutProjectBranchApplicationTopologyResponse>;
+export const PutProjectBranchApplicationTopologyResponse =
+  GetProjectBranchApplicationTopologyResponse as any as S.Schema<PutProjectBranchApplicationTopologyResponse>;
 
 export interface UpdateBranchRequest {
   branchId: string;
@@ -6512,28 +6184,13 @@ export interface UpdateBranchResponseData {
   /** Thin reference to the parent Project. Member resources are intentionally NOT inlined -- list /v1/databases?branchId=<br_xxx> or /v1/apps?branchId=<br_xxx> instead (see API design principles "Flat and Hierarchical Coexistence"). */
   project: CreateBucketResponseDataProject;
 }
-export const UpdateBranchResponseData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: S.String,
-    url: S.String,
-    gitName: S.String,
-    isDefault: S.Boolean,
-    role: UpdateBranchResponseDataRole,
-    createdAt: S.String,
-    updatedAt: S.String,
-    project: CreateBucketResponseDataProject,
-  }),
-).annotate({ identifier: "UpdateBranchResponseData" }) as any as S.Schema<UpdateBranchResponseData>;
+export const UpdateBranchResponseData =
+  GetBranchResponseData as any as S.Schema<UpdateBranchResponseData>;
 
 export interface UpdateBranchResponse {
   data: UpdateBranchResponseData;
 }
-export const UpdateBranchResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: UpdateBranchResponseData,
-  }),
-).annotate({ identifier: "UpdateBranchResponse" }) as any as S.Schema<UpdateBranchResponse>;
+export const UpdateBranchResponse = GetBranchResponse as any as S.Schema<UpdateBranchResponse>;
 
 export interface UpdateBucketRequest {
   bucketId: string;
@@ -6643,36 +6300,13 @@ export interface UpdateBuildResponseData {
   startedAt: string | null;
   finishedAt: string | null;
 }
-export const UpdateBuildResponseData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    source: UpdateBuildResponseDataSource,
-    state: UpdateBuildResponseDataState,
-    phase: S.NullOr(UpdateBuildResponseDataPhase),
-    commitSha: S.String,
-    branchName: S.String,
-    gitRepoId: S.NullOr(S.String),
-    projectId: S.NullOr(S.String),
-    branchId: S.NullOr(S.String),
-    externalLogUrl: S.NullOr(S.String),
-    deployedUrl: S.NullOr(S.String),
-    applicationTopologyContentHash: S.NullOr(S.String),
-    errorMessage: S.NullOr(S.String),
-    failingStep: S.NullOr(S.String),
-    createdAt: S.String,
-    startedAt: S.NullOr(S.String),
-    finishedAt: S.NullOr(S.String),
-  }),
-).annotate({ identifier: "UpdateBuildResponseData" }) as any as S.Schema<UpdateBuildResponseData>;
+export const UpdateBuildResponseData =
+  CreateBuildResponseData as any as S.Schema<UpdateBuildResponseData>;
 
 export interface UpdateBuildResponse {
   data: UpdateBuildResponseData;
 }
-export const UpdateBuildResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: UpdateBuildResponseData,
-  }),
-).annotate({ identifier: "UpdateBuildResponse" }) as any as S.Schema<UpdateBuildResponse>;
+export const UpdateBuildResponse = CreateBuildResponse as any as S.Schema<UpdateBuildResponse>;
 
 export interface UpdateDatabaseRequest {
   databaseId: string;
@@ -6742,27 +6376,13 @@ export interface UpdateDatabaseResponseDataConnectionsItem {
   directConnection?: CreateConnectionResponseDataDirectConnection | null;
   database: CreateBucketResponseDataProject;
 }
-export const UpdateDatabaseResponseDataConnectionsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: S.String,
-    url: S.String,
-    name: S.String,
-    createdAt: S.String,
-    kind: UpdateDatabaseResponseDataConnectionsItemKind,
-    endpoints: CreateDatabaseRestoreResponseDataConnectionsItemEndpoints,
-    directConnection: S.optional(S.NullOr(CreateConnectionResponseDataDirectConnection)),
-    database: CreateBucketResponseDataProject,
-  }),
-).annotate({
-  identifier: "UpdateDatabaseResponseDataConnectionsItem",
-}) as any as S.Schema<UpdateDatabaseResponseDataConnectionsItem>;
+export const UpdateDatabaseResponseDataConnectionsItem =
+  CreateDatabaseRestoreResponseDataConnectionsItem as any as S.Schema<UpdateDatabaseResponseDataConnectionsItem>;
 
 export type UpdateDatabaseResponseDataConnectionsList =
   Array<UpdateDatabaseResponseDataConnectionsItem>;
-export const UpdateDatabaseResponseDataConnectionsList = /*@__PURE__*/ S.Array(
-  UpdateDatabaseResponseDataConnectionsItem,
-) as any as S.Schema<UpdateDatabaseResponseDataConnectionsList>;
+export const UpdateDatabaseResponseDataConnectionsList =
+  CreateDatabaseRestoreResponseDataConnectionsList as any as S.Schema<UpdateDatabaseResponseDataConnectionsList>;
 
 export type UpdateDatabaseResponseDataProject = CreateBucketResponseDataProject;
 export const UpdateDatabaseResponseDataProject = CreateBucketResponseDataProject;
@@ -6866,34 +6486,14 @@ export interface UpdateEnvironmentVariableResponseData {
   createdAt: string;
   updatedAt: string;
 }
-export const UpdateEnvironmentVariableResponseData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: S.String,
-    url: S.String,
-    projectId: S.String,
-    branchId: S.NullOr(S.String),
-    class: UpdateEnvironmentVariableResponseDataClass,
-    key: S.String,
-    valueKid: S.String,
-    isManagedBySystem: S.Boolean,
-    createdAt: S.String,
-    updatedAt: S.String,
-  }),
-).annotate({
-  identifier: "UpdateEnvironmentVariableResponseData",
-}) as any as S.Schema<UpdateEnvironmentVariableResponseData>;
+export const UpdateEnvironmentVariableResponseData =
+  CreateEnvironmentVariableResponseData as any as S.Schema<UpdateEnvironmentVariableResponseData>;
 
 export interface UpdateEnvironmentVariableResponse {
   data: UpdateEnvironmentVariableResponseData;
 }
-export const UpdateEnvironmentVariableResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: UpdateEnvironmentVariableResponseData,
-  }),
-).annotate({
-  identifier: "UpdateEnvironmentVariableResponse",
-}) as any as S.Schema<UpdateEnvironmentVariableResponse>;
+export const UpdateEnvironmentVariableResponse =
+  CreateEnvironmentVariableResponse as any as S.Schema<UpdateEnvironmentVariableResponse>;
 
 export type UpdateProjectRequestSettingsMap = { [key: string]: unknown | undefined };
 export const UpdateProjectRequestSettingsMap = /*@__PURE__*/ S.Record(

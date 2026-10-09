@@ -142,12 +142,7 @@ export interface ConditionVariable {
   /** Optional key element context for map variables (e.g., matching a 'Host' header key). */
   value?: string;
 }
-export const ConditionVariable = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: Variable,
-    value: S.optional(S.String),
-  }),
-).annotate({ identifier: "ConditionVariable" }) as any as S.Schema<ConditionVariable>;
+export const ConditionVariable = ConditionOperator as any as S.Schema<ConditionVariable>;
 
 export interface Condition {
   operator: ConditionOperator;

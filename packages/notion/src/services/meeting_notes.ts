@@ -1180,14 +1180,7 @@ export interface QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3ValueC
   value: QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3ValueCase2Value | (string & {});
 }
 export const QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3ValueCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.String,
-      value: QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3ValueCase2Value,
-    }),
-  ).annotate({
-    identifier: "QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3ValueCase2",
-  }) as any as S.Schema<QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3ValueCase2>;
+  QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase2ValueCase0 as any as S.Schema<QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3ValueCase2>;
 
 /** Use the is_empty operator to match an unset date. */
 export interface QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3ValueCase3Value {
@@ -1433,14 +1426,7 @@ export interface QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilter
     | (string & {});
 }
 export const QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase2ValueCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.String,
-      value: QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase2ValueCase0Value,
-    }),
-  ).annotate({
-    identifier: "QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase2ValueCase0",
-  }) as any as S.Schema<QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase2ValueCase0>;
+  QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase2ValueCase0 as any as S.Schema<QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase2ValueCase0>;
 
 export type QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase2ValueCase1ValueCase0 =
   QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase2ValueCase1ValueCase0;
@@ -1576,15 +1562,7 @@ export interface QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilter
     | (string & {});
 }
 export const QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase3ValueCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.String,
-      value: S.String,
-      unit: QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase3ValueCase1Unit,
-    }),
-  ).annotate({
-    identifier: "QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase3ValueCase1",
-  }) as any as S.Schema<QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase3ValueCase1>;
+  QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3ValueCase1 as any as S.Schema<QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase3ValueCase1>;
 
 /** One of: `this_week`, `the_past_week`, `the_past_month`, `the_past_year`, `the_next_week`, `the_next_month`, `the_next_year` */
 export type QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase3ValueCase2Value =
@@ -1607,14 +1585,7 @@ export interface QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilter
     | (string & {});
 }
 export const QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase3ValueCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.String,
-      value: QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase3ValueCase2Value,
-    }),
-  ).annotate({
-    identifier: "QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase3ValueCase2",
-  }) as any as S.Schema<QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase3ValueCase2>;
+  QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase2ValueCase0 as any as S.Schema<QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase3ValueCase2>;
 
 /** Use the is_empty operator to match an unset date. */
 export type QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase3ValueCase3Value =

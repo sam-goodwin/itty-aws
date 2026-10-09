@@ -1205,7 +1205,8 @@ export type PrimaryNeedFromAws =
 export const PrimaryNeedFromAws = S.String;
 
 export type PrimaryNeedsFromAws = PrimaryNeedFromAws[];
-export const PrimaryNeedsFromAws = /*@__PURE__*/ S.Array(PrimaryNeedFromAws);
+export const PrimaryNeedsFromAws =
+  ReceiverResponsibilityList as any as S.Schema<PrimaryNeedsFromAws>;
 export type NationalSecurity = "Yes" | "No" | (string & {});
 export const NationalSecurity = S.String;
 
@@ -1284,7 +1285,7 @@ export type DeliveryModel =
 export const DeliveryModel = S.String;
 
 export type DeliveryModels = DeliveryModel[];
-export const DeliveryModels = /*@__PURE__*/ S.Array(DeliveryModel);
+export const DeliveryModels = ReceiverResponsibilityList as any as S.Schema<DeliveryModels>;
 export type ExpectedContractDurationTerm = "Months" | (string & {});
 export const ExpectedContractDurationTerm = S.String;
 
@@ -1311,7 +1312,7 @@ export type SalesActivity =
 export const SalesActivity = S.String;
 
 export type SalesActivities = SalesActivity[];
-export const SalesActivities = /*@__PURE__*/ S.Array(SalesActivity);
+export const SalesActivities = ReceiverResponsibilityList as any as S.Schema<SalesActivities>;
 export type CompetitorName =
   | "Oracle Cloud"
   | "On-Prem"
@@ -1390,7 +1391,7 @@ export type Channel =
 export const Channel = S.String;
 
 export type Channels = Channel[];
-export const Channels = /*@__PURE__*/ S.Array(Channel);
+export const Channels = ReceiverResponsibilityList as any as S.Schema<Channels>;
 export type AwsFundingUsed = "Yes" | "No" | (string & {});
 export const AwsFundingUsed = S.String;
 
@@ -2596,7 +2597,7 @@ export type TaskStatus = "IN_PROGRESS" | "COMPLETE" | "FAILED" | (string & {});
 export const TaskStatus = S.String;
 
 export type TaskStatuses = TaskStatus[];
-export const TaskStatuses = /*@__PURE__*/ S.Array(TaskStatus);
+export const TaskStatuses = ReceiverResponsibilityList as any as S.Schema<TaskStatuses>;
 export type OpportunityIdentifiers = string[];
 export const OpportunityIdentifiers =
   EligibleProgramsList as any as S.Schema<OpportunityIdentifiers>;
@@ -2809,7 +2810,8 @@ export type ParticipantType = "SENDER" | "RECEIVER" | (string & {});
 export const ParticipantType = S.String;
 
 export type InvitationStatusList = InvitationStatus[];
-export const InvitationStatusList = /*@__PURE__*/ S.Array(InvitationStatus);
+export const InvitationStatusList =
+  ReceiverResponsibilityList as any as S.Schema<InvitationStatusList>;
 export interface ListEngagementInvitationsRequest {
   Catalog: string;
   MaxResults?: number;
@@ -3003,7 +3005,8 @@ export const ListEngagementResourceAssociationsResponse = /*@__PURE__*/ S.suspen
 export type AwsAccountList = (string | redacted.Redacted<string>)[];
 export const AwsAccountList = AwsAccountIdOrAliasList as any as S.Schema<AwsAccountList>;
 export type EngagementContextTypeList = EngagementContextType[];
-export const EngagementContextTypeList = /*@__PURE__*/ S.Array(EngagementContextType);
+export const EngagementContextTypeList =
+  ReceiverResponsibilityList as any as S.Schema<EngagementContextTypeList>;
 export type EngagementSortName = "CreatedDate" | (string & {});
 export const EngagementSortName = S.String;
 
@@ -3011,9 +3014,7 @@ export interface EngagementSort {
   SortOrder: SortOrder;
   SortBy: EngagementSortName;
 }
-export const EngagementSort = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SortOrder: SortOrder, SortBy: EngagementSortName }),
-).annotate({ identifier: "EngagementSort" }) as any as S.Schema<EngagementSort>;
+export const EngagementSort = ListTasksSortBase as any as S.Schema<EngagementSort>;
 export type EngagementPageSize = number;
 export interface ListEngagementsRequest {
   Catalog: string;
@@ -3085,9 +3086,7 @@ export interface OpportunitySort {
   SortOrder: SortOrder;
   SortBy: OpportunitySortName;
 }
-export const OpportunitySort = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SortOrder: SortOrder, SortBy: OpportunitySortName }),
-).annotate({ identifier: "OpportunitySort" }) as any as S.Schema<OpportunitySort>;
+export const OpportunitySort = ListTasksSortBase as any as S.Schema<OpportunitySort>;
 export interface LastModifiedDate {
   AfterLastModifiedDate?: Date;
   BeforeLastModifiedDate?: Date;
@@ -3101,9 +3100,11 @@ export const LastModifiedDate = /*@__PURE__*/ S.suspend(() =>
 export type FilterIdentifier = string[];
 export const FilterIdentifier = EligibleProgramsList as any as S.Schema<FilterIdentifier>;
 export type FilterLifeCycleStage = Stage[];
-export const FilterLifeCycleStage = /*@__PURE__*/ S.Array(Stage);
+export const FilterLifeCycleStage =
+  ReceiverResponsibilityList as any as S.Schema<FilterLifeCycleStage>;
 export type FilterLifeCycleReviewStatus = ReviewStatus[];
-export const FilterLifeCycleReviewStatus = /*@__PURE__*/ S.Array(ReviewStatus);
+export const FilterLifeCycleReviewStatus =
+  ReceiverResponsibilityList as any as S.Schema<FilterLifeCycleReviewStatus>;
 export interface CreatedDateFilter {
   AfterCreatedDate?: Date;
   BeforeCreatedDate?: Date;
@@ -3356,11 +3357,8 @@ export interface ProspectingFromEngagementTaskSort {
   SortOrder: SortOrder;
   SortBy: ProspectingFromEngagementTaskSortName;
 }
-export const ProspectingFromEngagementTaskSort = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SortOrder: SortOrder, SortBy: ProspectingFromEngagementTaskSortName }),
-).annotate({
-  identifier: "ProspectingFromEngagementTaskSort",
-}) as any as S.Schema<ProspectingFromEngagementTaskSort>;
+export const ProspectingFromEngagementTaskSort =
+  OpportunityEngagementInvitationSort as any as S.Schema<ProspectingFromEngagementTaskSort>;
 export interface ListProspectingFromEngagementTasksRequest {
   Catalog: string;
   MaxResults?: number;
@@ -3568,14 +3566,12 @@ export interface SolutionSort {
   SortOrder: SortOrder;
   SortBy: SolutionSortName;
 }
-export const SolutionSort = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SortOrder: SortOrder, SortBy: SolutionSortName }),
-).annotate({ identifier: "SolutionSort" }) as any as S.Schema<SolutionSort>;
+export const SolutionSort = ListTasksSortBase as any as S.Schema<SolutionSort>;
 export type SolutionStatus = "Active" | "Inactive" | "Draft" | (string & {});
 export const SolutionStatus = S.String;
 
 export type FilterStatus = SolutionStatus[];
-export const FilterStatus = /*@__PURE__*/ S.Array(SolutionStatus);
+export const FilterStatus = ReceiverResponsibilityList as any as S.Schema<FilterStatus>;
 export type AwsMarketplaceSolutionArn = string;
 export type AwsMarketplaceSolutionArnList = string[];
 export const AwsMarketplaceSolutionArnList =

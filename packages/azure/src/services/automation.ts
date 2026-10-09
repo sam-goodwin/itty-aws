@@ -5226,16 +5226,7 @@ export interface PackagePropertiesAllOf {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const PackagePropertiesAllOf = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(PackagePropertiesAllOfCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(PackagePropertiesAllOfLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({ identifier: "PackagePropertiesAllOf" }) as any as S.Schema<PackagePropertiesAllOf>;
+export const PackagePropertiesAllOf = SystemData as any as S.Schema<PackagePropertiesAllOf>;
 
 /** Definition of the package property type. */
 export interface PackageProperties {

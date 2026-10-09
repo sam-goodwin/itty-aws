@@ -1587,13 +1587,8 @@ export const QueryAgentsRequestFilterCase0Case7SelectEquals = S.String;
 export interface QueryAgentsRequestFilterCase0Case7Select {
   equals: QueryAgentsRequestFilterCase0Case7SelectEquals | (string & {});
 }
-export const QueryAgentsRequestFilterCase0Case7Select = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    equals: QueryAgentsRequestFilterCase0Case7SelectEquals,
-  }),
-).annotate({
-  identifier: "QueryAgentsRequestFilterCase0Case7Select",
-}) as any as S.Schema<QueryAgentsRequestFilterCase0Case7Select>;
+export const QueryAgentsRequestFilterCase0Case7Select =
+  QueryAgentsRequestFilterCase0Case1String as any as S.Schema<QueryAgentsRequestFilterCase0Case7Select>;
 
 export interface QueryAgentsRequestFilterCase0Case7 {
   property: string;
@@ -1778,14 +1773,8 @@ export const QueryAgentsRequestFilterCase1Case0AndItemCase0Case7SelectEquals = S
 export interface QueryAgentsRequestFilterCase1Case0AndItemCase0Case7Select {
   equals: QueryAgentsRequestFilterCase1Case0AndItemCase0Case7SelectEquals | (string & {});
 }
-export const QueryAgentsRequestFilterCase1Case0AndItemCase0Case7Select = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      equals: QueryAgentsRequestFilterCase1Case0AndItemCase0Case7SelectEquals,
-    }),
-).annotate({
-  identifier: "QueryAgentsRequestFilterCase1Case0AndItemCase0Case7Select",
-}) as any as S.Schema<QueryAgentsRequestFilterCase1Case0AndItemCase0Case7Select>;
+export const QueryAgentsRequestFilterCase1Case0AndItemCase0Case7Select =
+  QueryAgentsRequestFilterCase1Case0AndItemCase0Case1String as any as S.Schema<QueryAgentsRequestFilterCase1Case0AndItemCase0Case7Select>;
 
 export interface QueryAgentsRequestFilterCase1Case0AndItemCase0Case7 {
   property: string;
@@ -1928,9 +1917,7 @@ export type QueryAgentsRequestFilterCase1Case0AndItemCase1Case0AndItemCase6Statu
   QueryAgentsRequestFilterCase1Case0AndItemCase1Case0AndItemCase6StatusInItem | (string & {})
 >;
 export const QueryAgentsRequestFilterCase1Case0AndItemCase1Case0AndItemCase6StatusInList =
-  /*@__PURE__*/ S.Array(
-    QueryAgentsRequestFilterCase1Case0AndItemCase1Case0AndItemCase6StatusInItem,
-  ) as any as S.Schema<QueryAgentsRequestFilterCase1Case0AndItemCase1Case0AndItemCase6StatusInList>;
+  QueryAgentsRequestFilterCase1Case0AndItemCase0Case6StatusInList as any as S.Schema<QueryAgentsRequestFilterCase1Case0AndItemCase1Case0AndItemCase6StatusInList>;
 
 export interface QueryAgentsRequestFilterCase1Case0AndItemCase1Case0AndItemCase6Status {
   in: QueryAgentsRequestFilterCase1Case0AndItemCase1Case0AndItemCase6StatusInList;
@@ -1969,13 +1956,7 @@ export interface QueryAgentsRequestFilterCase1Case0AndItemCase1Case0AndItemCase7
     | (string & {});
 }
 export const QueryAgentsRequestFilterCase1Case0AndItemCase1Case0AndItemCase7Select =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      equals: QueryAgentsRequestFilterCase1Case0AndItemCase1Case0AndItemCase7SelectEquals,
-    }),
-  ).annotate({
-    identifier: "QueryAgentsRequestFilterCase1Case0AndItemCase1Case0AndItemCase7Select",
-  }) as any as S.Schema<QueryAgentsRequestFilterCase1Case0AndItemCase1Case0AndItemCase7Select>;
+  QueryAgentsRequestFilterCase1Case0AndItemCase1Case0AndItemCase1String as any as S.Schema<QueryAgentsRequestFilterCase1Case0AndItemCase1Case0AndItemCase7Select>;
 
 export interface QueryAgentsRequestFilterCase1Case0AndItemCase1Case0AndItemCase7 {
   property: string;
@@ -2064,27 +2045,14 @@ export interface QueryAgentsRequestFilterCase1Case0AndItemCase1Case1OrItemCase1S
     | (string & {});
 }
 export const QueryAgentsRequestFilterCase1Case0AndItemCase1Case1OrItemCase1String =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      equals: QueryAgentsRequestFilterCase1Case0AndItemCase1Case1OrItemCase1StringEquals,
-    }),
-  ).annotate({
-    identifier: "QueryAgentsRequestFilterCase1Case0AndItemCase1Case1OrItemCase1String",
-  }) as any as S.Schema<QueryAgentsRequestFilterCase1Case0AndItemCase1Case1OrItemCase1String>;
+  QueryAgentsRequestFilterCase1Case0AndItemCase1Case0AndItemCase1String as any as S.Schema<QueryAgentsRequestFilterCase1Case0AndItemCase1Case1OrItemCase1String>;
 
 export interface QueryAgentsRequestFilterCase1Case0AndItemCase1Case1OrItemCase1 {
   property: string;
   string: QueryAgentsRequestFilterCase1Case0AndItemCase1Case1OrItemCase1String;
 }
 export const QueryAgentsRequestFilterCase1Case0AndItemCase1Case1OrItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      property: S.String,
-      string: QueryAgentsRequestFilterCase1Case0AndItemCase1Case1OrItemCase1String,
-    }),
-  ).annotate({
-    identifier: "QueryAgentsRequestFilterCase1Case0AndItemCase1Case1OrItemCase1",
-  }) as any as S.Schema<QueryAgentsRequestFilterCase1Case0AndItemCase1Case1OrItemCase1>;
+  QueryAgentsRequestFilterCase1Case0AndItemCase1Case0AndItemCase1 as any as S.Schema<QueryAgentsRequestFilterCase1Case0AndItemCase1Case1OrItemCase1>;
 
 export type QueryAgentsRequestFilterCase1Case0AndItemCase1Case1OrItemCase2People =
   QueryAgentsRequestFilterCase0Case2People;
@@ -2136,35 +2104,20 @@ export type QueryAgentsRequestFilterCase1Case0AndItemCase1Case1OrItemCase6Status
   QueryAgentsRequestFilterCase1Case0AndItemCase1Case1OrItemCase6StatusInItem | (string & {})
 >;
 export const QueryAgentsRequestFilterCase1Case0AndItemCase1Case1OrItemCase6StatusInList =
-  /*@__PURE__*/ S.Array(
-    QueryAgentsRequestFilterCase1Case0AndItemCase1Case1OrItemCase6StatusInItem,
-  ) as any as S.Schema<QueryAgentsRequestFilterCase1Case0AndItemCase1Case1OrItemCase6StatusInList>;
+  QueryAgentsRequestFilterCase1Case0AndItemCase0Case6StatusInList as any as S.Schema<QueryAgentsRequestFilterCase1Case0AndItemCase1Case1OrItemCase6StatusInList>;
 
 export interface QueryAgentsRequestFilterCase1Case0AndItemCase1Case1OrItemCase6Status {
   in: QueryAgentsRequestFilterCase1Case0AndItemCase1Case1OrItemCase6StatusInList;
 }
 export const QueryAgentsRequestFilterCase1Case0AndItemCase1Case1OrItemCase6Status =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      in: QueryAgentsRequestFilterCase1Case0AndItemCase1Case1OrItemCase6StatusInList,
-    }),
-  ).annotate({
-    identifier: "QueryAgentsRequestFilterCase1Case0AndItemCase1Case1OrItemCase6Status",
-  }) as any as S.Schema<QueryAgentsRequestFilterCase1Case0AndItemCase1Case1OrItemCase6Status>;
+  QueryAgentsRequestFilterCase1Case0AndItemCase1Case0AndItemCase6Status as any as S.Schema<QueryAgentsRequestFilterCase1Case0AndItemCase1Case1OrItemCase6Status>;
 
 export interface QueryAgentsRequestFilterCase1Case0AndItemCase1Case1OrItemCase6 {
   property: string;
   status: QueryAgentsRequestFilterCase1Case0AndItemCase1Case1OrItemCase6Status;
 }
 export const QueryAgentsRequestFilterCase1Case0AndItemCase1Case1OrItemCase6 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      property: S.String,
-      status: QueryAgentsRequestFilterCase1Case0AndItemCase1Case1OrItemCase6Status,
-    }),
-  ).annotate({
-    identifier: "QueryAgentsRequestFilterCase1Case0AndItemCase1Case1OrItemCase6",
-  }) as any as S.Schema<QueryAgentsRequestFilterCase1Case0AndItemCase1Case1OrItemCase6>;
+  QueryAgentsRequestFilterCase1Case0AndItemCase1Case0AndItemCase6 as any as S.Schema<QueryAgentsRequestFilterCase1Case0AndItemCase1Case1OrItemCase6>;
 
 export type QueryAgentsRequestFilterCase1Case0AndItemCase1Case1OrItemCase7SelectEquals =
   | "auto"
@@ -2177,27 +2130,14 @@ export interface QueryAgentsRequestFilterCase1Case0AndItemCase1Case1OrItemCase7S
     | (string & {});
 }
 export const QueryAgentsRequestFilterCase1Case0AndItemCase1Case1OrItemCase7Select =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      equals: QueryAgentsRequestFilterCase1Case0AndItemCase1Case1OrItemCase7SelectEquals,
-    }),
-  ).annotate({
-    identifier: "QueryAgentsRequestFilterCase1Case0AndItemCase1Case1OrItemCase7Select",
-  }) as any as S.Schema<QueryAgentsRequestFilterCase1Case0AndItemCase1Case1OrItemCase7Select>;
+  QueryAgentsRequestFilterCase1Case0AndItemCase1Case0AndItemCase1String as any as S.Schema<QueryAgentsRequestFilterCase1Case0AndItemCase1Case1OrItemCase7Select>;
 
 export interface QueryAgentsRequestFilterCase1Case0AndItemCase1Case1OrItemCase7 {
   property: string;
   select: QueryAgentsRequestFilterCase1Case0AndItemCase1Case1OrItemCase7Select;
 }
 export const QueryAgentsRequestFilterCase1Case0AndItemCase1Case1OrItemCase7 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      property: S.String,
-      select: QueryAgentsRequestFilterCase1Case0AndItemCase1Case1OrItemCase7Select,
-    }),
-  ).annotate({
-    identifier: "QueryAgentsRequestFilterCase1Case0AndItemCase1Case1OrItemCase7",
-  }) as any as S.Schema<QueryAgentsRequestFilterCase1Case0AndItemCase1Case1OrItemCase7>;
+  QueryAgentsRequestFilterCase1Case0AndItemCase1Case0AndItemCase7 as any as S.Schema<QueryAgentsRequestFilterCase1Case0AndItemCase1Case1OrItemCase7>;
 
 export type QueryAgentsRequestFilterCase1Case0AndItemCase1Case1OrItemCase8Number =
   QueryAgentsRequestFilterCase0Case8Number;
@@ -2297,27 +2237,15 @@ export const QueryAgentsRequestFilterCase1Case1OrItemCase0Case1StringEquals = S.
 export interface QueryAgentsRequestFilterCase1Case1OrItemCase0Case1String {
   equals: QueryAgentsRequestFilterCase1Case1OrItemCase0Case1StringEquals | (string & {});
 }
-export const QueryAgentsRequestFilterCase1Case1OrItemCase0Case1String = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      equals: QueryAgentsRequestFilterCase1Case1OrItemCase0Case1StringEquals,
-    }),
-).annotate({
-  identifier: "QueryAgentsRequestFilterCase1Case1OrItemCase0Case1String",
-}) as any as S.Schema<QueryAgentsRequestFilterCase1Case1OrItemCase0Case1String>;
+export const QueryAgentsRequestFilterCase1Case1OrItemCase0Case1String =
+  QueryAgentsRequestFilterCase1Case0AndItemCase0Case1String as any as S.Schema<QueryAgentsRequestFilterCase1Case1OrItemCase0Case1String>;
 
 export interface QueryAgentsRequestFilterCase1Case1OrItemCase0Case1 {
   property: string;
   string: QueryAgentsRequestFilterCase1Case1OrItemCase0Case1String;
 }
-export const QueryAgentsRequestFilterCase1Case1OrItemCase0Case1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    property: S.String,
-    string: QueryAgentsRequestFilterCase1Case1OrItemCase0Case1String,
-  }),
-).annotate({
-  identifier: "QueryAgentsRequestFilterCase1Case1OrItemCase0Case1",
-}) as any as S.Schema<QueryAgentsRequestFilterCase1Case1OrItemCase0Case1>;
+export const QueryAgentsRequestFilterCase1Case1OrItemCase0Case1 =
+  QueryAgentsRequestFilterCase1Case0AndItemCase0Case1 as any as S.Schema<QueryAgentsRequestFilterCase1Case1OrItemCase0Case1>;
 
 export type QueryAgentsRequestFilterCase1Case1OrItemCase0Case2People =
   QueryAgentsRequestFilterCase0Case2People;
@@ -2364,9 +2292,8 @@ export const QueryAgentsRequestFilterCase1Case1OrItemCase0Case6StatusInItem = S.
 export type QueryAgentsRequestFilterCase1Case1OrItemCase0Case6StatusInList = Array<
   QueryAgentsRequestFilterCase1Case1OrItemCase0Case6StatusInItem | (string & {})
 >;
-export const QueryAgentsRequestFilterCase1Case1OrItemCase0Case6StatusInList = /*@__PURE__*/ S.Array(
-  QueryAgentsRequestFilterCase1Case1OrItemCase0Case6StatusInItem,
-) as any as S.Schema<QueryAgentsRequestFilterCase1Case1OrItemCase0Case6StatusInList>;
+export const QueryAgentsRequestFilterCase1Case1OrItemCase0Case6StatusInList =
+  QueryAgentsRequestFilterCase0Case6StatusInList as any as S.Schema<QueryAgentsRequestFilterCase1Case1OrItemCase0Case6StatusInList>;
 
 export interface QueryAgentsRequestFilterCase1Case1OrItemCase0Case6Status {
   in: QueryAgentsRequestFilterCase1Case1OrItemCase0Case6StatusInList;
@@ -2399,27 +2326,15 @@ export const QueryAgentsRequestFilterCase1Case1OrItemCase0Case7SelectEquals = S.
 export interface QueryAgentsRequestFilterCase1Case1OrItemCase0Case7Select {
   equals: QueryAgentsRequestFilterCase1Case1OrItemCase0Case7SelectEquals | (string & {});
 }
-export const QueryAgentsRequestFilterCase1Case1OrItemCase0Case7Select = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      equals: QueryAgentsRequestFilterCase1Case1OrItemCase0Case7SelectEquals,
-    }),
-).annotate({
-  identifier: "QueryAgentsRequestFilterCase1Case1OrItemCase0Case7Select",
-}) as any as S.Schema<QueryAgentsRequestFilterCase1Case1OrItemCase0Case7Select>;
+export const QueryAgentsRequestFilterCase1Case1OrItemCase0Case7Select =
+  QueryAgentsRequestFilterCase1Case0AndItemCase0Case1String as any as S.Schema<QueryAgentsRequestFilterCase1Case1OrItemCase0Case7Select>;
 
 export interface QueryAgentsRequestFilterCase1Case1OrItemCase0Case7 {
   property: string;
   select: QueryAgentsRequestFilterCase1Case1OrItemCase0Case7Select;
 }
-export const QueryAgentsRequestFilterCase1Case1OrItemCase0Case7 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    property: S.String,
-    select: QueryAgentsRequestFilterCase1Case1OrItemCase0Case7Select,
-  }),
-).annotate({
-  identifier: "QueryAgentsRequestFilterCase1Case1OrItemCase0Case7",
-}) as any as S.Schema<QueryAgentsRequestFilterCase1Case1OrItemCase0Case7>;
+export const QueryAgentsRequestFilterCase1Case1OrItemCase0Case7 =
+  QueryAgentsRequestFilterCase1Case0AndItemCase0Case7 as any as S.Schema<QueryAgentsRequestFilterCase1Case1OrItemCase0Case7>;
 
 export type QueryAgentsRequestFilterCase1Case1OrItemCase0Case8Number =
   QueryAgentsRequestFilterCase0Case8Number;
@@ -2475,27 +2390,14 @@ export interface QueryAgentsRequestFilterCase1Case1OrItemCase1Case0AndItemCase1S
     | (string & {});
 }
 export const QueryAgentsRequestFilterCase1Case1OrItemCase1Case0AndItemCase1String =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      equals: QueryAgentsRequestFilterCase1Case1OrItemCase1Case0AndItemCase1StringEquals,
-    }),
-  ).annotate({
-    identifier: "QueryAgentsRequestFilterCase1Case1OrItemCase1Case0AndItemCase1String",
-  }) as any as S.Schema<QueryAgentsRequestFilterCase1Case1OrItemCase1Case0AndItemCase1String>;
+  QueryAgentsRequestFilterCase1Case0AndItemCase1Case0AndItemCase1String as any as S.Schema<QueryAgentsRequestFilterCase1Case1OrItemCase1Case0AndItemCase1String>;
 
 export interface QueryAgentsRequestFilterCase1Case1OrItemCase1Case0AndItemCase1 {
   property: string;
   string: QueryAgentsRequestFilterCase1Case1OrItemCase1Case0AndItemCase1String;
 }
 export const QueryAgentsRequestFilterCase1Case1OrItemCase1Case0AndItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      property: S.String,
-      string: QueryAgentsRequestFilterCase1Case1OrItemCase1Case0AndItemCase1String,
-    }),
-  ).annotate({
-    identifier: "QueryAgentsRequestFilterCase1Case1OrItemCase1Case0AndItemCase1",
-  }) as any as S.Schema<QueryAgentsRequestFilterCase1Case1OrItemCase1Case0AndItemCase1>;
+  QueryAgentsRequestFilterCase1Case0AndItemCase1Case0AndItemCase1 as any as S.Schema<QueryAgentsRequestFilterCase1Case1OrItemCase1Case0AndItemCase1>;
 
 export type QueryAgentsRequestFilterCase1Case1OrItemCase1Case0AndItemCase2People =
   QueryAgentsRequestFilterCase0Case2People;
@@ -2547,35 +2449,20 @@ export type QueryAgentsRequestFilterCase1Case1OrItemCase1Case0AndItemCase6Status
   QueryAgentsRequestFilterCase1Case1OrItemCase1Case0AndItemCase6StatusInItem | (string & {})
 >;
 export const QueryAgentsRequestFilterCase1Case1OrItemCase1Case0AndItemCase6StatusInList =
-  /*@__PURE__*/ S.Array(
-    QueryAgentsRequestFilterCase1Case1OrItemCase1Case0AndItemCase6StatusInItem,
-  ) as any as S.Schema<QueryAgentsRequestFilterCase1Case1OrItemCase1Case0AndItemCase6StatusInList>;
+  QueryAgentsRequestFilterCase1Case0AndItemCase0Case6StatusInList as any as S.Schema<QueryAgentsRequestFilterCase1Case1OrItemCase1Case0AndItemCase6StatusInList>;
 
 export interface QueryAgentsRequestFilterCase1Case1OrItemCase1Case0AndItemCase6Status {
   in: QueryAgentsRequestFilterCase1Case1OrItemCase1Case0AndItemCase6StatusInList;
 }
 export const QueryAgentsRequestFilterCase1Case1OrItemCase1Case0AndItemCase6Status =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      in: QueryAgentsRequestFilterCase1Case1OrItemCase1Case0AndItemCase6StatusInList,
-    }),
-  ).annotate({
-    identifier: "QueryAgentsRequestFilterCase1Case1OrItemCase1Case0AndItemCase6Status",
-  }) as any as S.Schema<QueryAgentsRequestFilterCase1Case1OrItemCase1Case0AndItemCase6Status>;
+  QueryAgentsRequestFilterCase1Case0AndItemCase1Case0AndItemCase6Status as any as S.Schema<QueryAgentsRequestFilterCase1Case1OrItemCase1Case0AndItemCase6Status>;
 
 export interface QueryAgentsRequestFilterCase1Case1OrItemCase1Case0AndItemCase6 {
   property: string;
   status: QueryAgentsRequestFilterCase1Case1OrItemCase1Case0AndItemCase6Status;
 }
 export const QueryAgentsRequestFilterCase1Case1OrItemCase1Case0AndItemCase6 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      property: S.String,
-      status: QueryAgentsRequestFilterCase1Case1OrItemCase1Case0AndItemCase6Status,
-    }),
-  ).annotate({
-    identifier: "QueryAgentsRequestFilterCase1Case1OrItemCase1Case0AndItemCase6",
-  }) as any as S.Schema<QueryAgentsRequestFilterCase1Case1OrItemCase1Case0AndItemCase6>;
+  QueryAgentsRequestFilterCase1Case0AndItemCase1Case0AndItemCase6 as any as S.Schema<QueryAgentsRequestFilterCase1Case1OrItemCase1Case0AndItemCase6>;
 
 export type QueryAgentsRequestFilterCase1Case1OrItemCase1Case0AndItemCase7SelectEquals =
   | "auto"
@@ -2588,27 +2475,14 @@ export interface QueryAgentsRequestFilterCase1Case1OrItemCase1Case0AndItemCase7S
     | (string & {});
 }
 export const QueryAgentsRequestFilterCase1Case1OrItemCase1Case0AndItemCase7Select =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      equals: QueryAgentsRequestFilterCase1Case1OrItemCase1Case0AndItemCase7SelectEquals,
-    }),
-  ).annotate({
-    identifier: "QueryAgentsRequestFilterCase1Case1OrItemCase1Case0AndItemCase7Select",
-  }) as any as S.Schema<QueryAgentsRequestFilterCase1Case1OrItemCase1Case0AndItemCase7Select>;
+  QueryAgentsRequestFilterCase1Case0AndItemCase1Case0AndItemCase1String as any as S.Schema<QueryAgentsRequestFilterCase1Case1OrItemCase1Case0AndItemCase7Select>;
 
 export interface QueryAgentsRequestFilterCase1Case1OrItemCase1Case0AndItemCase7 {
   property: string;
   select: QueryAgentsRequestFilterCase1Case1OrItemCase1Case0AndItemCase7Select;
 }
 export const QueryAgentsRequestFilterCase1Case1OrItemCase1Case0AndItemCase7 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      property: S.String,
-      select: QueryAgentsRequestFilterCase1Case1OrItemCase1Case0AndItemCase7Select,
-    }),
-  ).annotate({
-    identifier: "QueryAgentsRequestFilterCase1Case1OrItemCase1Case0AndItemCase7",
-  }) as any as S.Schema<QueryAgentsRequestFilterCase1Case1OrItemCase1Case0AndItemCase7>;
+  QueryAgentsRequestFilterCase1Case0AndItemCase1Case0AndItemCase7 as any as S.Schema<QueryAgentsRequestFilterCase1Case1OrItemCase1Case0AndItemCase7>;
 
 export type QueryAgentsRequestFilterCase1Case1OrItemCase1Case0AndItemCase8Number =
   QueryAgentsRequestFilterCase0Case8Number;
@@ -2681,27 +2555,14 @@ export interface QueryAgentsRequestFilterCase1Case1OrItemCase1Case1OrItemCase1St
   equals: QueryAgentsRequestFilterCase1Case1OrItemCase1Case1OrItemCase1StringEquals | (string & {});
 }
 export const QueryAgentsRequestFilterCase1Case1OrItemCase1Case1OrItemCase1String =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      equals: QueryAgentsRequestFilterCase1Case1OrItemCase1Case1OrItemCase1StringEquals,
-    }),
-  ).annotate({
-    identifier: "QueryAgentsRequestFilterCase1Case1OrItemCase1Case1OrItemCase1String",
-  }) as any as S.Schema<QueryAgentsRequestFilterCase1Case1OrItemCase1Case1OrItemCase1String>;
+  QueryAgentsRequestFilterCase1Case0AndItemCase1Case0AndItemCase1String as any as S.Schema<QueryAgentsRequestFilterCase1Case1OrItemCase1Case1OrItemCase1String>;
 
 export interface QueryAgentsRequestFilterCase1Case1OrItemCase1Case1OrItemCase1 {
   property: string;
   string: QueryAgentsRequestFilterCase1Case1OrItemCase1Case1OrItemCase1String;
 }
 export const QueryAgentsRequestFilterCase1Case1OrItemCase1Case1OrItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      property: S.String,
-      string: QueryAgentsRequestFilterCase1Case1OrItemCase1Case1OrItemCase1String,
-    }),
-  ).annotate({
-    identifier: "QueryAgentsRequestFilterCase1Case1OrItemCase1Case1OrItemCase1",
-  }) as any as S.Schema<QueryAgentsRequestFilterCase1Case1OrItemCase1Case1OrItemCase1>;
+  QueryAgentsRequestFilterCase1Case0AndItemCase1Case0AndItemCase1 as any as S.Schema<QueryAgentsRequestFilterCase1Case1OrItemCase1Case1OrItemCase1>;
 
 export type QueryAgentsRequestFilterCase1Case1OrItemCase1Case1OrItemCase2People =
   QueryAgentsRequestFilterCase0Case2People;
@@ -2753,35 +2614,20 @@ export type QueryAgentsRequestFilterCase1Case1OrItemCase1Case1OrItemCase6StatusI
   QueryAgentsRequestFilterCase1Case1OrItemCase1Case1OrItemCase6StatusInItem | (string & {})
 >;
 export const QueryAgentsRequestFilterCase1Case1OrItemCase1Case1OrItemCase6StatusInList =
-  /*@__PURE__*/ S.Array(
-    QueryAgentsRequestFilterCase1Case1OrItemCase1Case1OrItemCase6StatusInItem,
-  ) as any as S.Schema<QueryAgentsRequestFilterCase1Case1OrItemCase1Case1OrItemCase6StatusInList>;
+  QueryAgentsRequestFilterCase1Case0AndItemCase0Case6StatusInList as any as S.Schema<QueryAgentsRequestFilterCase1Case1OrItemCase1Case1OrItemCase6StatusInList>;
 
 export interface QueryAgentsRequestFilterCase1Case1OrItemCase1Case1OrItemCase6Status {
   in: QueryAgentsRequestFilterCase1Case1OrItemCase1Case1OrItemCase6StatusInList;
 }
 export const QueryAgentsRequestFilterCase1Case1OrItemCase1Case1OrItemCase6Status =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      in: QueryAgentsRequestFilterCase1Case1OrItemCase1Case1OrItemCase6StatusInList,
-    }),
-  ).annotate({
-    identifier: "QueryAgentsRequestFilterCase1Case1OrItemCase1Case1OrItemCase6Status",
-  }) as any as S.Schema<QueryAgentsRequestFilterCase1Case1OrItemCase1Case1OrItemCase6Status>;
+  QueryAgentsRequestFilterCase1Case0AndItemCase1Case0AndItemCase6Status as any as S.Schema<QueryAgentsRequestFilterCase1Case1OrItemCase1Case1OrItemCase6Status>;
 
 export interface QueryAgentsRequestFilterCase1Case1OrItemCase1Case1OrItemCase6 {
   property: string;
   status: QueryAgentsRequestFilterCase1Case1OrItemCase1Case1OrItemCase6Status;
 }
 export const QueryAgentsRequestFilterCase1Case1OrItemCase1Case1OrItemCase6 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      property: S.String,
-      status: QueryAgentsRequestFilterCase1Case1OrItemCase1Case1OrItemCase6Status,
-    }),
-  ).annotate({
-    identifier: "QueryAgentsRequestFilterCase1Case1OrItemCase1Case1OrItemCase6",
-  }) as any as S.Schema<QueryAgentsRequestFilterCase1Case1OrItemCase1Case1OrItemCase6>;
+  QueryAgentsRequestFilterCase1Case0AndItemCase1Case0AndItemCase6 as any as S.Schema<QueryAgentsRequestFilterCase1Case1OrItemCase1Case1OrItemCase6>;
 
 export type QueryAgentsRequestFilterCase1Case1OrItemCase1Case1OrItemCase7SelectEquals =
   | "auto"
@@ -2792,27 +2638,14 @@ export interface QueryAgentsRequestFilterCase1Case1OrItemCase1Case1OrItemCase7Se
   equals: QueryAgentsRequestFilterCase1Case1OrItemCase1Case1OrItemCase7SelectEquals | (string & {});
 }
 export const QueryAgentsRequestFilterCase1Case1OrItemCase1Case1OrItemCase7Select =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      equals: QueryAgentsRequestFilterCase1Case1OrItemCase1Case1OrItemCase7SelectEquals,
-    }),
-  ).annotate({
-    identifier: "QueryAgentsRequestFilterCase1Case1OrItemCase1Case1OrItemCase7Select",
-  }) as any as S.Schema<QueryAgentsRequestFilterCase1Case1OrItemCase1Case1OrItemCase7Select>;
+  QueryAgentsRequestFilterCase1Case0AndItemCase1Case0AndItemCase1String as any as S.Schema<QueryAgentsRequestFilterCase1Case1OrItemCase1Case1OrItemCase7Select>;
 
 export interface QueryAgentsRequestFilterCase1Case1OrItemCase1Case1OrItemCase7 {
   property: string;
   select: QueryAgentsRequestFilterCase1Case1OrItemCase1Case1OrItemCase7Select;
 }
 export const QueryAgentsRequestFilterCase1Case1OrItemCase1Case1OrItemCase7 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      property: S.String,
-      select: QueryAgentsRequestFilterCase1Case1OrItemCase1Case1OrItemCase7Select,
-    }),
-  ).annotate({
-    identifier: "QueryAgentsRequestFilterCase1Case1OrItemCase1Case1OrItemCase7",
-  }) as any as S.Schema<QueryAgentsRequestFilterCase1Case1OrItemCase1Case1OrItemCase7>;
+  QueryAgentsRequestFilterCase1Case0AndItemCase1Case0AndItemCase7 as any as S.Schema<QueryAgentsRequestFilterCase1Case1OrItemCase1Case1OrItemCase7>;
 
 export type QueryAgentsRequestFilterCase1Case1OrItemCase1Case1OrItemCase8Number =
   QueryAgentsRequestFilterCase0Case8Number;

@@ -5411,11 +5411,7 @@ export const PointPlotWidgetLegendType = S.String;
 export interface PointPlotWidgetLegend {
   type: PointPlotWidgetLegendType | (string & {});
 }
-export const PointPlotWidgetLegend = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: PointPlotWidgetLegendType,
-  }),
-).annotate({ identifier: "PointPlotWidgetLegend" }) as any as S.Schema<PointPlotWidgetLegend>;
+export const PointPlotWidgetLegend = BarChartWidgetFlat as any as S.Schema<PointPlotWidgetLegend>;
 
 /** List of markers for the widget. */
 export type PointPlotWidgetDefinitionMarkersList = Array<WidgetMarker>;
@@ -5988,9 +5984,8 @@ export const WidgetTimeWindows = S.String;
 
 /** Times being monitored. */
 export type SLOWidgetDefinitionTimeWindowsList = Array<WidgetTimeWindows | (string & {})>;
-export const SLOWidgetDefinitionTimeWindowsList = /*@__PURE__*/ S.Array(
-  WidgetTimeWindows,
-) as any as S.Schema<SLOWidgetDefinitionTimeWindowsList>;
+export const SLOWidgetDefinitionTimeWindowsList =
+  ListStreamQueryStatesList as any as S.Schema<SLOWidgetDefinitionTimeWindowsList>;
 
 /** Type of the SLO widget. */
 export type SLOWidgetDefinitionType = "slo";
@@ -6692,9 +6687,8 @@ export const TableWidgetHasSearchBar = S.String;
 export type TableWidgetRequestCellDisplayModeList = Array<
   TableWidgetCellDisplayMode | (string & {})
 >;
-export const TableWidgetRequestCellDisplayModeList = /*@__PURE__*/ S.Array(
-  TableWidgetCellDisplayMode,
-) as any as S.Schema<TableWidgetRequestCellDisplayModeList>;
+export const TableWidgetRequestCellDisplayModeList =
+  ListStreamQueryStatesList as any as S.Schema<TableWidgetRequestCellDisplayModeList>;
 
 /** List of conditional formats. */
 export type TableWidgetRequestConditionalFormatsList = Array<WidgetConditionalFormat>;
@@ -6847,9 +6841,8 @@ export const TimeseriesWidgetLegendColumn = S.String;
 export type TimeseriesWidgetDefinitionLegendColumnsList = Array<
   TimeseriesWidgetLegendColumn | (string & {})
 >;
-export const TimeseriesWidgetDefinitionLegendColumnsList = /*@__PURE__*/ S.Array(
-  TimeseriesWidgetLegendColumn,
-) as any as S.Schema<TimeseriesWidgetDefinitionLegendColumnsList>;
+export const TimeseriesWidgetDefinitionLegendColumnsList =
+  ListStreamQueryStatesList as any as S.Schema<TimeseriesWidgetDefinitionLegendColumnsList>;
 
 /** Layout of the legend. */
 export type TimeseriesWidgetLegendLayout = "auto" | "horizontal" | "vertical";
@@ -7105,12 +7098,7 @@ export interface ToplistWidgetStacked {
   legend?: ToplistWidgetLegend | (string & {});
   type: ToplistWidgetStackedType;
 }
-export const ToplistWidgetStacked = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    legend: S.optional(ToplistWidgetLegend),
-    type: ToplistWidgetStackedType,
-  }),
-).annotate({ identifier: "ToplistWidgetStacked" }) as any as S.Schema<ToplistWidgetStacked>;
+export const ToplistWidgetStacked = BarChartWidgetStacked as any as S.Schema<ToplistWidgetStacked>;
 
 /** Top list widget flat display type. */
 export type ToplistWidgetFlatType = "flat";
@@ -7120,11 +7108,7 @@ export const ToplistWidgetFlatType = S.String;
 export interface ToplistWidgetFlat {
   type: ToplistWidgetFlatType;
 }
-export const ToplistWidgetFlat = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ToplistWidgetFlatType,
-  }),
-).annotate({ identifier: "ToplistWidgetFlat" }) as any as S.Schema<ToplistWidgetFlat>;
+export const ToplistWidgetFlat = BarChartWidgetFlat as any as S.Schema<ToplistWidgetFlat>;
 
 /** Top list widget display options. */
 export type ToplistWidgetDisplay = ToplistWidgetStacked | ToplistWidgetFlat;
@@ -9735,9 +9719,8 @@ export const MonitorRenotifyStatusType = S.String;
 export type MonitorOptionsInputRenotifyStatusesList = Array<
   MonitorRenotifyStatusType | (string & {})
 >;
-export const MonitorOptionsInputRenotifyStatusesList = /*@__PURE__*/ S.Array(
-  MonitorRenotifyStatusType,
-) as any as S.Schema<MonitorOptionsInputRenotifyStatusesList>;
+export const MonitorOptionsInputRenotifyStatusesList =
+  ListStreamQueryStatesList as any as S.Schema<MonitorOptionsInputRenotifyStatusesList>;
 
 /** Configuration for a recurrence set on the monitor options for custom schedule. */
 export interface MonitorOptionsCustomScheduleRecurrence {
@@ -9930,15 +9913,8 @@ export interface MonitorFormulaAndFunctionEventQueryGroupBySort {
   metric?: string;
   order?: QuerySortOrder | (string & {});
 }
-export const MonitorFormulaAndFunctionEventQueryGroupBySort = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    aggregation: MonitorFormulaAndFunctionEventAggregation,
-    metric: S.optional(S.String),
-    order: S.optional(QuerySortOrder),
-  }),
-).annotate({
-  identifier: "MonitorFormulaAndFunctionEventQueryGroupBySort",
-}) as any as S.Schema<MonitorFormulaAndFunctionEventQueryGroupBySort>;
+export const MonitorFormulaAndFunctionEventQueryGroupBySort =
+  FormulaAndFunctionEventQueryGroupBySort as any as S.Schema<MonitorFormulaAndFunctionEventQueryGroupBySort>;
 
 /** List of objects used to group by. */
 export interface MonitorFormulaAndFunctionEventQueryGroupBy {
@@ -10746,9 +10722,8 @@ export const MonitorDeviceID = S.String;
 
 /** IDs of the device the Synthetics monitor is running on. */
 export type MonitorOptionsDeviceIdsList = Array<MonitorDeviceID>;
-export const MonitorOptionsDeviceIdsList = /*@__PURE__*/ S.Array(
-  MonitorDeviceID,
-) as any as S.Schema<MonitorOptionsDeviceIdsList>;
+export const MonitorOptionsDeviceIdsList =
+  ListStreamQueryStatesList as any as S.Schema<MonitorOptionsDeviceIdsList>;
 
 /** Controls what granularity a monitor alerts on. Only available for monitors with groupings. For instance, a monitor grouped by `cluster`, `namespace`, and `pod` can be configured to only notify on each new `cluster` violating the alert conditions by setting `notify_by` to `["cluster"]`. Tags mentioned in `notify_by` must be a subset of the grouping tags in the query. For example, a query grouped by `cluster` and `namespace` cannot notify on `region`. Setting `notify_by` to `["*"]` configures the monitor to notify as a simple-alert. */
 export type MonitorOptionsNotifyByList = Array<string>;
@@ -12831,9 +12806,8 @@ export const SyntheticsMCPServerCapability = S.String;
 export type SyntheticsAssertionMCPServerCapabilitiesTargetTargetList = Array<
   SyntheticsMCPServerCapability | (string & {})
 >;
-export const SyntheticsAssertionMCPServerCapabilitiesTargetTargetList = /*@__PURE__*/ S.Array(
-  SyntheticsMCPServerCapability,
-) as any as S.Schema<SyntheticsAssertionMCPServerCapabilitiesTargetTargetList>;
+export const SyntheticsAssertionMCPServerCapabilitiesTargetTargetList =
+  ListStreamQueryStatesList as any as S.Schema<SyntheticsAssertionMCPServerCapabilitiesTargetTargetList>;
 
 /** Type of the assertion. */
 export type SyntheticsAssertionMCPServerCapabilitiesType = "mcpServerCapabilities";
@@ -12864,13 +12838,8 @@ export const SyntheticsAssertionMCPRespectsSpecificationType = S.String;
 export interface SyntheticsAssertionMCPRespectsSpecification {
   type: SyntheticsAssertionMCPRespectsSpecificationType;
 }
-export const SyntheticsAssertionMCPRespectsSpecification = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: SyntheticsAssertionMCPRespectsSpecificationType,
-  }),
-).annotate({
-  identifier: "SyntheticsAssertionMCPRespectsSpecification",
-}) as any as S.Schema<SyntheticsAssertionMCPRespectsSpecification>;
+export const SyntheticsAssertionMCPRespectsSpecification =
+  SunburstWidgetLegendTable as any as S.Schema<SyntheticsAssertionMCPRespectsSpecification>;
 
 /** Object describing the assertions type, their associated operator, which property they apply, and upon which target. */
 export type SyntheticsAssertion =
@@ -15443,9 +15412,8 @@ export const DeleteSLOCorrectionResponse =
 
 /** An array of all SLO timeframes. */
 export type SLOBulkDeleteValueList = Array<SLOTimeframe | (string & {})>;
-export const SLOBulkDeleteValueList = /*@__PURE__*/ S.Array(
-  SLOTimeframe,
-) as any as S.Schema<SLOBulkDeleteValueList>;
+export const SLOBulkDeleteValueList =
+  ListStreamQueryStatesList as any as S.Schema<SLOBulkDeleteValueList>;
 
 /** A map of service level objective object IDs to arrays of timeframes, which indicate the thresholds to delete for each ID. */
 export type SLOBulkDelete = { [key: string]: SLOBulkDeleteValueList | undefined };
@@ -16465,14 +16433,8 @@ export interface SyntheticsBrowserTestResultFailure {
   /** The browser test error message. */
   message?: string;
 }
-export const SyntheticsBrowserTestResultFailure = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(SyntheticsBrowserTestFailureCode),
-    message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SyntheticsBrowserTestResultFailure",
-}) as any as S.Schema<SyntheticsBrowserTestResultFailure>;
+export const SyntheticsBrowserTestResultFailure =
+  SyntheticsApiTestResultFailure as any as S.Schema<SyntheticsBrowserTestResultFailure>;
 
 /** Error type returned by a browser test. */
 export type SyntheticsBrowserErrorType = "network" | "js";

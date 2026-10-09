@@ -84,9 +84,8 @@ export const FilterOperatingStatusItemEnum = S.String;
 export type FilterOperatingStatusItemEnumList = Array<
   FilterOperatingStatusItemEnum | (string & {})
 >;
-export const FilterOperatingStatusItemEnumList = /*@__PURE__*/ S.Array(
-  FilterOperatingStatusItemEnum,
-) as any as S.Schema<FilterOperatingStatusItemEnumList>;
+export const FilterOperatingStatusItemEnumList =
+  ComputeInsightsRequestInsightsItemEnumList as any as S.Schema<FilterOperatingStatusItemEnumList>;
 
 /** Average user rating filters. */
 export interface RatingFilter {
@@ -196,9 +195,8 @@ export type FilterPriceLevelsItemEnum =
 export const FilterPriceLevelsItemEnum = S.String;
 
 export type FilterPriceLevelsItemEnumList = Array<FilterPriceLevelsItemEnum | (string & {})>;
-export const FilterPriceLevelsItemEnumList = /*@__PURE__*/ S.Array(
-  FilterPriceLevelsItemEnum,
-) as any as S.Schema<FilterPriceLevelsItemEnumList>;
+export const FilterPriceLevelsItemEnumList =
+  ComputeInsightsRequestInsightsItemEnumList as any as S.Schema<FilterPriceLevelsItemEnumList>;
 
 export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;

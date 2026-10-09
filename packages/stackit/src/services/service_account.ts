@@ -873,19 +873,8 @@ export interface PartialUpdateServiceAccountKeyResponse {
   /** If specified, the timestamp until the key is active. May be null */
   validUntil?: string;
 }
-export const PartialUpdateServiceAccountKeyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    active: S.Boolean,
-    createdAt: S.String,
-    id: S.String,
-    keyAlgorithm: PartialUpdateServiceAccountKeyResponseKeyAlgorithm,
-    keyOrigin: PartialUpdateServiceAccountKeyResponseKeyOrigin,
-    keyType: PartialUpdateServiceAccountKeyResponseKeyType,
-    validUntil: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PartialUpdateServiceAccountKeyResponse",
-}) as any as S.Schema<PartialUpdateServiceAccountKeyResponse>;
+export const PartialUpdateServiceAccountKeyResponse =
+  ServiceAccountKeyListResponse as any as S.Schema<PartialUpdateServiceAccountKeyResponse>;
 
 export type CreateFederatedIdentityProviderError =
   | BadRequest

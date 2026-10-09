@@ -1424,11 +1424,8 @@ export interface CodeInterpreterNetworkConfiguration {
   networkMode: CodeInterpreterNetworkMode;
   vpcConfig?: VpcConfig;
 }
-export const CodeInterpreterNetworkConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ networkMode: CodeInterpreterNetworkMode, vpcConfig: S.optional(VpcConfig) }),
-).annotate({
-  identifier: "CodeInterpreterNetworkConfiguration",
-}) as any as S.Schema<CodeInterpreterNetworkConfiguration>;
+export const CodeInterpreterNetworkConfiguration =
+  BrowserNetworkConfiguration as any as S.Schema<CodeInterpreterNetworkConfiguration>;
 export interface CreateCodeInterpreterRequest {
   name: string;
   description?: string | redacted.Redacted<string>;
@@ -2600,7 +2597,7 @@ export const ApiGatewayToolOverride = /*@__PURE__*/ S.suspend(() =>
 export type ApiGatewayToolOverrides = ApiGatewayToolOverride[];
 export const ApiGatewayToolOverrides = /*@__PURE__*/ S.Array(ApiGatewayToolOverride);
 export type RestApiMethods = RestApiMethod[];
-export const RestApiMethods = /*@__PURE__*/ S.Array(RestApiMethod);
+export const RestApiMethods = GatewayInterceptionPoints as any as S.Schema<RestApiMethods>;
 export interface ApiGatewayToolFilter {
   filterPath: string;
   methods: RestApiMethod[];
@@ -5595,7 +5592,8 @@ export type ClusteringFrequency = "DAILY" | "WEEKLY" | "MONTHLY" | (string & {})
 export const ClusteringFrequency = S.String;
 
 export type ClusteringFrequencyList = ClusteringFrequency[];
-export const ClusteringFrequencyList = /*@__PURE__*/ S.Array(ClusteringFrequency);
+export const ClusteringFrequencyList =
+  GatewayInterceptionPoints as any as S.Schema<ClusteringFrequencyList>;
 export interface ClusteringConfig {
   frequencies: ClusteringFrequency[];
 }
@@ -10309,28 +10307,17 @@ export interface PaymentCredentialProviderItem {
   createdTime: Date;
   lastUpdatedTime: Date;
 }
-export const PaymentCredentialProviderItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    credentialProviderVendor: PaymentCredentialProviderVendorType,
-    credentialProviderArn: S.String,
-    createdTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    lastUpdatedTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-  }),
-).annotate({
-  identifier: "PaymentCredentialProviderItem",
-}) as any as S.Schema<PaymentCredentialProviderItem>;
+export const PaymentCredentialProviderItem =
+  Oauth2CredentialProviderItem as any as S.Schema<PaymentCredentialProviderItem>;
 export type PaymentCredentialProviders = PaymentCredentialProviderItem[];
-export const PaymentCredentialProviders = /*@__PURE__*/ S.Array(PaymentCredentialProviderItem);
+export const PaymentCredentialProviders =
+  Oauth2CredentialProviders as any as S.Schema<PaymentCredentialProviders>;
 export interface ListPaymentCredentialProvidersResponse {
   credentialProviders: PaymentCredentialProviderItem[];
   nextToken?: string;
 }
-export const ListPaymentCredentialProvidersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ credentialProviders: PaymentCredentialProviders, nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListPaymentCredentialProvidersResponse",
-}) as any as S.Schema<ListPaymentCredentialProvidersResponse>;
+export const ListPaymentCredentialProvidersResponse =
+  ListOauth2CredentialProvidersResponse as any as S.Schema<ListPaymentCredentialProvidersResponse>;
 export interface ListPaymentManagersRequest {
   maxResults?: number;
   nextToken?: string;
@@ -10947,7 +10934,7 @@ export type CoinbaseCdpSecret = "API_KEY" | "WALLET_SECRET" | (string & {});
 export const CoinbaseCdpSecret = S.String;
 
 export type CoinbaseCdpSecrets = CoinbaseCdpSecret[];
-export const CoinbaseCdpSecrets = /*@__PURE__*/ S.Array(CoinbaseCdpSecret);
+export const CoinbaseCdpSecrets = GatewayInterceptionPoints as any as S.Schema<CoinbaseCdpSecrets>;
 export interface CoinbaseCdpRotationTargets {
   secrets: CoinbaseCdpSecret[];
 }

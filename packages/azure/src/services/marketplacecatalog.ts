@@ -3234,9 +3234,8 @@ export const PricingType = S.String;
 
 /** The list of the pricing types for which this plan is designated */
 export type PlanPricingTypesList = Array<PricingType>;
-export const PlanPricingTypesList = /*@__PURE__*/ S.Array(
-  PricingType,
-) as any as S.Schema<PlanPricingTypesList>;
+export const PlanPricingTypesList =
+  CatalogItemDeterminedStorefrontsList as any as S.Schema<PlanPricingTypesList>;
 
 export interface Plan {
   /** Plan id */
@@ -4961,9 +4960,8 @@ export const PrivateStoreAllow = S.String;
 export type SearchPostArmRequestPrivateStoreAllowancesList = Array<
   PrivateStoreAllow | (string & {})
 >;
-export const SearchPostArmRequestPrivateStoreAllowancesList = /*@__PURE__*/ S.Array(
-  PrivateStoreAllow,
-) as any as S.Schema<SearchPostArmRequestPrivateStoreAllowancesList>;
+export const SearchPostArmRequestPrivateStoreAllowancesList =
+  CatalogItemDeterminedStorefrontsList as any as S.Schema<SearchPostArmRequestPrivateStoreAllowancesList>;
 
 export type SearchPostArmRequestAppSourceIndustriesList = Array<string>;
 export const SearchPostArmRequestAppSourceIndustriesList =

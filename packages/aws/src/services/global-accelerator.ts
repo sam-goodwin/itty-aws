@@ -652,7 +652,7 @@ export type Protocol = "TCP" | "UDP" | (string & {});
 export const Protocol = S.String;
 
 export type Protocols = Protocol[];
-export const Protocols = /*@__PURE__*/ S.Array(Protocol);
+export const Protocols = CustomRoutingProtocols as any as S.Schema<Protocols>;
 export interface CustomRoutingDestinationDescription {
   FromPort?: number;
   ToPort?: number;

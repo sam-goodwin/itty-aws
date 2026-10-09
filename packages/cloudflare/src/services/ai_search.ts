@@ -635,14 +635,7 @@ export interface InstancesChatCompletionsResponseChoicesItemMessageContentCase1I
   type: InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase0Type;
 }
 export const InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      text: S.String,
-      type: InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase0Type,
-    }),
-  ).annotate({
-    identifier: "InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase0",
-  }) as any as S.Schema<InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase0>;
+  InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase0 as any as S.Schema<InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase0>;
 
 export type InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1ImageUrl =
   InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl;
@@ -658,16 +651,7 @@ export interface InstancesChatCompletionsResponseChoicesItemMessageContentCase1I
   type: InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1Type;
 }
 export const InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      imageUrl: InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl.pipe(
-        T.Body("image_url"),
-      ),
-      type: InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1Type,
-    }),
-  ).annotate({
-    identifier: "InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1",
-  }) as any as S.Schema<InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1>;
+  InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1 as any as S.Schema<InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1>;
 
 export interface InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase2File {
   filename: string;
@@ -892,18 +876,8 @@ export interface NamespacesChatCompletionsRequestAiSearchOptionsCache {
     | (string & {});
   enabled?: boolean;
 }
-export const NamespacesChatCompletionsRequestAiSearchOptionsCache = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cacheThreshold: S.optional(
-      NamespacesChatCompletionsRequestAiSearchOptionsCacheCacheThreshold.pipe(
-        T.Body("cache_threshold"),
-      ),
-    ),
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "NamespacesChatCompletionsRequestAiSearchOptionsCache",
-}) as any as S.Schema<NamespacesChatCompletionsRequestAiSearchOptionsCache>;
+export const NamespacesChatCompletionsRequestAiSearchOptionsCache =
+  InstancesChatCompletionsRequestAiSearchOptionsCache as any as S.Schema<NamespacesChatCompletionsRequestAiSearchOptionsCache>;
 
 export type NamespacesChatCompletionsRequestAiSearchOptionsCustomMetadataValue =
   | string
@@ -948,23 +922,12 @@ export interface NamespacesChatCompletionsRequestAiSearchOptionsRetrievalBoostBy
     | (string & {});
 }
 export const NamespacesChatCompletionsRequestAiSearchOptionsRetrievalBoostByItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      field: S.String,
-      direction: S.optional(
-        NamespacesChatCompletionsRequestAiSearchOptionsRetrievalBoostByItemDirection,
-      ),
-    }),
-  ).annotate({
-    identifier: "NamespacesChatCompletionsRequestAiSearchOptionsRetrievalBoostByItem",
-  }) as any as S.Schema<NamespacesChatCompletionsRequestAiSearchOptionsRetrievalBoostByItem>;
+  InstancesChatCompletionsRequestAiSearchOptionsRetrievalBoostByItem as any as S.Schema<NamespacesChatCompletionsRequestAiSearchOptionsRetrievalBoostByItem>;
 
 export type NamespacesChatCompletionsRequestAiSearchOptionsRetrievalBoostByList =
   Array<NamespacesChatCompletionsRequestAiSearchOptionsRetrievalBoostByItem>;
 export const NamespacesChatCompletionsRequestAiSearchOptionsRetrievalBoostByList =
-  /*@__PURE__*/ S.Array(
-    NamespacesChatCompletionsRequestAiSearchOptionsRetrievalBoostByItem,
-  ) as any as S.Schema<NamespacesChatCompletionsRequestAiSearchOptionsRetrievalBoostByList>;
+  InstancesChatCompletionsRequestAiSearchOptionsRetrievalBoostByList as any as S.Schema<NamespacesChatCompletionsRequestAiSearchOptionsRetrievalBoostByList>;
 
 export type NamespacesChatCompletionsRequestAiSearchOptionsRetrievalFiltersMap = {
   [key: string]: unknown | undefined;
@@ -1074,14 +1037,7 @@ export interface NamespacesChatCompletionsRequestMessagesItemContentCase1ItemCas
   type: NamespacesChatCompletionsRequestMessagesItemContentCase1ItemCase0Type;
 }
 export const NamespacesChatCompletionsRequestMessagesItemContentCase1ItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      text: S.String,
-      type: NamespacesChatCompletionsRequestMessagesItemContentCase1ItemCase0Type,
-    }),
-  ).annotate({
-    identifier: "NamespacesChatCompletionsRequestMessagesItemContentCase1ItemCase0",
-  }) as any as S.Schema<NamespacesChatCompletionsRequestMessagesItemContentCase1ItemCase0>;
+  InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase0 as any as S.Schema<NamespacesChatCompletionsRequestMessagesItemContentCase1ItemCase0>;
 
 export type NamespacesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl =
   InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl;
@@ -1096,16 +1052,7 @@ export interface NamespacesChatCompletionsRequestMessagesItemContentCase1ItemCas
   type: NamespacesChatCompletionsRequestMessagesItemContentCase1ItemCase1Type;
 }
 export const NamespacesChatCompletionsRequestMessagesItemContentCase1ItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      imageUrl: InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl.pipe(
-        T.Body("image_url"),
-      ),
-      type: NamespacesChatCompletionsRequestMessagesItemContentCase1ItemCase1Type,
-    }),
-  ).annotate({
-    identifier: "NamespacesChatCompletionsRequestMessagesItemContentCase1ItemCase1",
-  }) as any as S.Schema<NamespacesChatCompletionsRequestMessagesItemContentCase1ItemCase1>;
+  InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1 as any as S.Schema<NamespacesChatCompletionsRequestMessagesItemContentCase1ItemCase1>;
 
 export type NamespacesChatCompletionsRequestMessagesItemContentCase1ItemCase2File =
   InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase2File;
@@ -1120,14 +1067,7 @@ export interface NamespacesChatCompletionsRequestMessagesItemContentCase1ItemCas
   type: NamespacesChatCompletionsRequestMessagesItemContentCase1ItemCase2Type;
 }
 export const NamespacesChatCompletionsRequestMessagesItemContentCase1ItemCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      file: InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase2File,
-      type: NamespacesChatCompletionsRequestMessagesItemContentCase1ItemCase2Type,
-    }),
-  ).annotate({
-    identifier: "NamespacesChatCompletionsRequestMessagesItemContentCase1ItemCase2",
-  }) as any as S.Schema<NamespacesChatCompletionsRequestMessagesItemContentCase1ItemCase2>;
+  InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase2 as any as S.Schema<NamespacesChatCompletionsRequestMessagesItemContentCase1ItemCase2>;
 
 export type NamespacesChatCompletionsRequestMessagesItemContentCase1Item =
   | NamespacesChatCompletionsRequestMessagesItemContentCase1ItemCase0
@@ -1226,14 +1166,7 @@ export interface NamespacesChatCompletionsResponseChoicesItemMessageContentCase1
   type: NamespacesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase0Type;
 }
 export const NamespacesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      text: S.String,
-      type: NamespacesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase0Type,
-    }),
-  ).annotate({
-    identifier: "NamespacesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase0",
-  }) as any as S.Schema<NamespacesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase0>;
+  InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase0 as any as S.Schema<NamespacesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase0>;
 
 export type NamespacesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1ImageUrl =
   InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl;
@@ -1250,16 +1183,7 @@ export interface NamespacesChatCompletionsResponseChoicesItemMessageContentCase1
   type: NamespacesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1Type;
 }
 export const NamespacesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      imageUrl: InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl.pipe(
-        T.Body("image_url"),
-      ),
-      type: NamespacesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1Type,
-    }),
-  ).annotate({
-    identifier: "NamespacesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1",
-  }) as any as S.Schema<NamespacesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1>;
+  InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1 as any as S.Schema<NamespacesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1>;
 
 export type NamespacesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase2File =
   InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase2File;
@@ -1275,14 +1199,7 @@ export interface NamespacesChatCompletionsResponseChoicesItemMessageContentCase1
   type: NamespacesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase2Type;
 }
 export const NamespacesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      file: InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase2File,
-      type: NamespacesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase2Type,
-    }),
-  ).annotate({
-    identifier: "NamespacesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase2",
-  }) as any as S.Schema<NamespacesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase2>;
+  InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase2 as any as S.Schema<NamespacesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase2>;
 
 export type NamespacesChatCompletionsResponseChoicesItemMessageContentCase1Item =
   | NamespacesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase0
@@ -1378,23 +1295,8 @@ export interface NamespacesChatCompletionsResponseChunksItemScoringDetails {
   vectorRank?: number | null;
   vectorScore?: number | null;
 }
-export const NamespacesChatCompletionsResponseChunksItemScoringDetails = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      fusionMethod: S.optional(
-        S.NullOr(NamespacesChatCompletionsResponseChunksItemScoringDetailsFusionMethod).pipe(
-          T.Body("fusion_method"),
-        ),
-      ),
-      keywordRank: S.optional(S.NullOr(S.Number).pipe(T.Body("keyword_rank"))),
-      keywordScore: S.optional(S.NullOr(S.Number).pipe(T.Body("keyword_score"))),
-      rerankingScore: S.optional(S.NullOr(S.Number).pipe(T.Body("reranking_score"))),
-      vectorRank: S.optional(S.NullOr(S.Number).pipe(T.Body("vector_rank"))),
-      vectorScore: S.optional(S.NullOr(S.Number).pipe(T.Body("vector_score"))),
-    }),
-).annotate({
-  identifier: "NamespacesChatCompletionsResponseChunksItemScoringDetails",
-}) as any as S.Schema<NamespacesChatCompletionsResponseChunksItemScoringDetails>;
+export const NamespacesChatCompletionsResponseChunksItemScoringDetails =
+  InstancesChatCompletionsResponseChunksItemScoringDetails as any as S.Schema<NamespacesChatCompletionsResponseChunksItemScoringDetails>;
 
 export interface NamespacesChatCompletionsResponseChunksItem {
   id: string;
@@ -1458,14 +1360,7 @@ export interface NamespacesInstancesChatCompletionsRequestMessagesItemContentCas
   type: NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1ItemCase0Type;
 }
 export const NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1ItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      text: S.String,
-      type: NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1ItemCase0Type,
-    }),
-  ).annotate({
-    identifier: "NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1ItemCase0",
-  }) as any as S.Schema<NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1ItemCase0>;
+  InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase0 as any as S.Schema<NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1ItemCase0>;
 
 export type NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl =
   InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl;
@@ -1482,16 +1377,7 @@ export interface NamespacesInstancesChatCompletionsRequestMessagesItemContentCas
   type: NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1Type;
 }
 export const NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      imageUrl: InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl.pipe(
-        T.Body("image_url"),
-      ),
-      type: NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1Type,
-    }),
-  ).annotate({
-    identifier: "NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1",
-  }) as any as S.Schema<NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1>;
+  InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1 as any as S.Schema<NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1>;
 
 export type NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1ItemCase2File =
   InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase2File;
@@ -1507,14 +1393,7 @@ export interface NamespacesInstancesChatCompletionsRequestMessagesItemContentCas
   type: NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1ItemCase2Type;
 }
 export const NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1ItemCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      file: InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase2File,
-      type: NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1ItemCase2Type,
-    }),
-  ).annotate({
-    identifier: "NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1ItemCase2",
-  }) as any as S.Schema<NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1ItemCase2>;
+  InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase2 as any as S.Schema<NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1ItemCase2>;
 
 export type NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1Item =
   | NamespacesInstancesChatCompletionsRequestMessagesItemContentCase1ItemCase0
@@ -1644,23 +1523,12 @@ export interface NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetriev
     | (string & {});
 }
 export const NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalBoostByItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      field: S.String,
-      direction: S.optional(
-        NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalBoostByItemDirection,
-      ),
-    }),
-  ).annotate({
-    identifier: "NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalBoostByItem",
-  }) as any as S.Schema<NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalBoostByItem>;
+  InstancesChatCompletionsRequestAiSearchOptionsRetrievalBoostByItem as any as S.Schema<NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalBoostByItem>;
 
 export type NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalBoostByList =
   Array<NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalBoostByItem>;
 export const NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalBoostByList =
-  /*@__PURE__*/ S.Array(
-    NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalBoostByItem,
-  ) as any as S.Schema<NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalBoostByList>;
+  InstancesChatCompletionsRequestAiSearchOptionsRetrievalBoostByList as any as S.Schema<NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalBoostByList>;
 
 export type NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalFiltersMap = {
   [key: string]: unknown | undefined;
@@ -1813,14 +1681,7 @@ export interface NamespacesInstancesChatCompletionsResponseChoicesItemMessageCon
   type: NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase0Type;
 }
 export const NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      text: S.String,
-      type: NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase0Type,
-    }),
-  ).annotate({
-    identifier: "NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase0",
-  }) as any as S.Schema<NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase0>;
+  InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase0 as any as S.Schema<NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase0>;
 
 export type NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1ImageUrl =
   InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl;
@@ -1837,16 +1698,7 @@ export interface NamespacesInstancesChatCompletionsResponseChoicesItemMessageCon
   type: NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1Type;
 }
 export const NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      imageUrl: InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl.pipe(
-        T.Body("image_url"),
-      ),
-      type: NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1Type,
-    }),
-  ).annotate({
-    identifier: "NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1",
-  }) as any as S.Schema<NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1>;
+  InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1 as any as S.Schema<NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1>;
 
 export type NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase2File =
   InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase2File;
@@ -1863,14 +1715,7 @@ export interface NamespacesInstancesChatCompletionsResponseChoicesItemMessageCon
   type: NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase2Type;
 }
 export const NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      file: InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase2File,
-      type: NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase2Type,
-    }),
-  ).annotate({
-    identifier: "NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase2",
-  }) as any as S.Schema<NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase2>;
+  InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase2 as any as S.Schema<NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase2>;
 
 export type NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1Item =
   | NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase0
@@ -2706,20 +2551,13 @@ export interface InstancesCreateResponseCustomMetadataItem {
   dataType: InstancesCreateResponseCustomMetadataItemDataType;
   fieldName: string;
 }
-export const InstancesCreateResponseCustomMetadataItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dataType: InstancesCreateResponseCustomMetadataItemDataType.pipe(T.Body("data_type")),
-    fieldName: S.String.pipe(T.Body("field_name")),
-  }),
-).annotate({
-  identifier: "InstancesCreateResponseCustomMetadataItem",
-}) as any as S.Schema<InstancesCreateResponseCustomMetadataItem>;
+export const InstancesCreateResponseCustomMetadataItem =
+  InstancesCreateRequestCustomMetadataItem as any as S.Schema<InstancesCreateResponseCustomMetadataItem>;
 
 export type InstancesCreateResponseCustomMetadataList =
   Array<InstancesCreateResponseCustomMetadataItem>;
-export const InstancesCreateResponseCustomMetadataList = /*@__PURE__*/ S.Array(
-  InstancesCreateResponseCustomMetadataItem,
-) as any as S.Schema<InstancesCreateResponseCustomMetadataList>;
+export const InstancesCreateResponseCustomMetadataList =
+  InstancesCreateRequestCustomMetadataList as any as S.Schema<InstancesCreateResponseCustomMetadataList>;
 
 export type InstancesCreateResponseFusionMethod = "max" | "rrf";
 export const InstancesCreateResponseFusionMethod = S.String;
@@ -3292,15 +3130,8 @@ export interface NamespacesCreateRequestPublicEndpointParamsRateLimit {
   requests?: number;
   technique?: NamespacesCreateRequestPublicEndpointParamsRateLimitTechnique | (string & {});
 }
-export const NamespacesCreateRequestPublicEndpointParamsRateLimit = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    periodMs: S.optional(S.Number.pipe(T.Body("period_ms"))),
-    requests: S.optional(S.Number),
-    technique: S.optional(NamespacesCreateRequestPublicEndpointParamsRateLimitTechnique),
-  }),
-).annotate({
-  identifier: "NamespacesCreateRequestPublicEndpointParamsRateLimit",
-}) as any as S.Schema<NamespacesCreateRequestPublicEndpointParamsRateLimit>;
+export const NamespacesCreateRequestPublicEndpointParamsRateLimit =
+  InstancesCreateRequestPublicEndpointParamsRateLimit as any as S.Schema<NamespacesCreateRequestPublicEndpointParamsRateLimit>;
 
 export type NamespacesCreateRequestPublicEndpointParamsSearchEndpoint =
   InstancesCreateRequestPublicEndpointParamsSearchEndpoint;
@@ -3405,15 +3236,8 @@ export interface NamespacesCreateResponsePublicEndpointParamsRateLimit {
   requests?: number | null;
   technique?: NamespacesCreateResponsePublicEndpointParamsRateLimitTechnique | null;
 }
-export const NamespacesCreateResponsePublicEndpointParamsRateLimit = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    periodMs: S.optional(S.NullOr(S.Number).pipe(T.Body("period_ms"))),
-    requests: S.optional(S.NullOr(S.Number)),
-    technique: S.optional(S.NullOr(NamespacesCreateResponsePublicEndpointParamsRateLimitTechnique)),
-  }),
-).annotate({
-  identifier: "NamespacesCreateResponsePublicEndpointParamsRateLimit",
-}) as any as S.Schema<NamespacesCreateResponsePublicEndpointParamsRateLimit>;
+export const NamespacesCreateResponsePublicEndpointParamsRateLimit =
+  InstancesCreateResponsePublicEndpointParamsRateLimit as any as S.Schema<NamespacesCreateResponsePublicEndpointParamsRateLimit>;
 
 export type NamespacesCreateResponsePublicEndpointParamsSearchEndpoint =
   InstancesCreateResponsePublicEndpointParamsSearchEndpoint;
@@ -3524,20 +3348,13 @@ export interface NamespacesInstancesCreateRequestCustomMetadataItem {
   dataType: NamespacesInstancesCreateRequestCustomMetadataItemDataType | (string & {});
   fieldName: string;
 }
-export const NamespacesInstancesCreateRequestCustomMetadataItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dataType: NamespacesInstancesCreateRequestCustomMetadataItemDataType.pipe(T.Body("data_type")),
-    fieldName: S.String.pipe(T.Body("field_name")),
-  }),
-).annotate({
-  identifier: "NamespacesInstancesCreateRequestCustomMetadataItem",
-}) as any as S.Schema<NamespacesInstancesCreateRequestCustomMetadataItem>;
+export const NamespacesInstancesCreateRequestCustomMetadataItem =
+  InstancesCreateRequestCustomMetadataItem as any as S.Schema<NamespacesInstancesCreateRequestCustomMetadataItem>;
 
 export type NamespacesInstancesCreateRequestCustomMetadataList =
   Array<NamespacesInstancesCreateRequestCustomMetadataItem>;
-export const NamespacesInstancesCreateRequestCustomMetadataList = /*@__PURE__*/ S.Array(
-  NamespacesInstancesCreateRequestCustomMetadataItem,
-) as any as S.Schema<NamespacesInstancesCreateRequestCustomMetadataList>;
+export const NamespacesInstancesCreateRequestCustomMetadataList =
+  InstancesCreateRequestCustomMetadataList as any as S.Schema<NamespacesInstancesCreateRequestCustomMetadataList>;
 
 export type NamespacesInstancesCreateRequestFusionMethod = "max" | "rrf";
 export const NamespacesInstancesCreateRequestFusionMethod = S.String;
@@ -4028,20 +3845,13 @@ export interface NamespacesInstancesCreateResponseCustomMetadataItem {
   dataType: NamespacesInstancesCreateResponseCustomMetadataItemDataType;
   fieldName: string;
 }
-export const NamespacesInstancesCreateResponseCustomMetadataItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dataType: NamespacesInstancesCreateResponseCustomMetadataItemDataType.pipe(T.Body("data_type")),
-    fieldName: S.String.pipe(T.Body("field_name")),
-  }),
-).annotate({
-  identifier: "NamespacesInstancesCreateResponseCustomMetadataItem",
-}) as any as S.Schema<NamespacesInstancesCreateResponseCustomMetadataItem>;
+export const NamespacesInstancesCreateResponseCustomMetadataItem =
+  InstancesCreateRequestCustomMetadataItem as any as S.Schema<NamespacesInstancesCreateResponseCustomMetadataItem>;
 
 export type NamespacesInstancesCreateResponseCustomMetadataList =
   Array<NamespacesInstancesCreateResponseCustomMetadataItem>;
-export const NamespacesInstancesCreateResponseCustomMetadataList = /*@__PURE__*/ S.Array(
-  NamespacesInstancesCreateResponseCustomMetadataItem,
-) as any as S.Schema<NamespacesInstancesCreateResponseCustomMetadataList>;
+export const NamespacesInstancesCreateResponseCustomMetadataList =
+  InstancesCreateRequestCustomMetadataList as any as S.Schema<NamespacesInstancesCreateResponseCustomMetadataList>;
 
 export type NamespacesInstancesCreateResponseFusionMethod = "max" | "rrf";
 export const NamespacesInstancesCreateResponseFusionMethod = S.String;
@@ -4058,18 +3868,8 @@ export interface NamespacesInstancesCreateResponseIndexingOptions {
   /** Enables OCR ingestion for PDFs and images. Changing this triggers a full re-index. Defaults to false. */
   useOcr?: boolean | null;
 }
-export const NamespacesInstancesCreateResponseIndexingOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    keywordTokenizer: S.optional(
-      S.NullOr(NamespacesInstancesCreateResponseIndexingOptionsKeywordTokenizer).pipe(
-        T.Body("keyword_tokenizer"),
-      ),
-    ),
-    useOcr: S.optional(S.NullOr(S.Boolean).pipe(T.Body("use_ocr"))),
-  }),
-).annotate({
-  identifier: "NamespacesInstancesCreateResponseIndexingOptions",
-}) as any as S.Schema<NamespacesInstancesCreateResponseIndexingOptions>;
+export const NamespacesInstancesCreateResponseIndexingOptions =
+  InstancesCreateResponseIndexingOptions as any as S.Schema<NamespacesInstancesCreateResponseIndexingOptions>;
 
 export type NamespacesInstancesCreateResponseMetadata = InstancesCreateResponseMetadata;
 export const NamespacesInstancesCreateResponseMetadata = InstancesCreateResponseMetadata;
@@ -4565,19 +4365,8 @@ export interface CreateNamespaceInstanceJobResponse {
   lastSeenAt?: string | null;
   startedAt?: string | null;
 }
-export const CreateNamespaceInstanceJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    source: NamespacesInstancesJobsCreateResponseSource,
-    description: S.optional(S.NullOr(S.String)),
-    endReason: S.optional(S.NullOr(S.String).pipe(T.Body("end_reason"))),
-    endedAt: S.optional(S.NullOr(S.String).pipe(T.Body("ended_at"))),
-    lastSeenAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_seen_at"))),
-    startedAt: S.optional(S.NullOr(S.String).pipe(T.Body("started_at"))),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "CreateNamespaceInstanceJobResponse",
-}) as any as S.Schema<CreateNamespaceInstanceJobResponse>;
+export const CreateNamespaceInstanceJobResponse =
+  CreateInstanceJobResponse as any as S.Schema<CreateNamespaceInstanceJobResponse>;
 
 export type NamespacesInstancesItemsCreateOrUpdateRequestNextAction = "INDEX";
 export const NamespacesInstancesItemsCreateOrUpdateRequestNextAction = S.String;
@@ -4773,20 +4562,13 @@ export interface InstancesDeleteResponseCustomMetadataItem {
   dataType: InstancesDeleteResponseCustomMetadataItemDataType;
   fieldName: string;
 }
-export const InstancesDeleteResponseCustomMetadataItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dataType: InstancesDeleteResponseCustomMetadataItemDataType.pipe(T.Body("data_type")),
-    fieldName: S.String.pipe(T.Body("field_name")),
-  }),
-).annotate({
-  identifier: "InstancesDeleteResponseCustomMetadataItem",
-}) as any as S.Schema<InstancesDeleteResponseCustomMetadataItem>;
+export const InstancesDeleteResponseCustomMetadataItem =
+  InstancesCreateRequestCustomMetadataItem as any as S.Schema<InstancesDeleteResponseCustomMetadataItem>;
 
 export type InstancesDeleteResponseCustomMetadataList =
   Array<InstancesDeleteResponseCustomMetadataItem>;
-export const InstancesDeleteResponseCustomMetadataList = /*@__PURE__*/ S.Array(
-  InstancesDeleteResponseCustomMetadataItem,
-) as any as S.Schema<InstancesDeleteResponseCustomMetadataList>;
+export const InstancesDeleteResponseCustomMetadataList =
+  InstancesCreateRequestCustomMetadataList as any as S.Schema<InstancesDeleteResponseCustomMetadataList>;
 
 export type InstancesDeleteResponseFusionMethod = "max" | "rrf";
 export const InstancesDeleteResponseFusionMethod = S.String;
@@ -4803,18 +4585,8 @@ export interface InstancesDeleteResponseIndexingOptions {
   /** Enables OCR ingestion for PDFs and images. Changing this triggers a full re-index. Defaults to false. */
   useOcr?: boolean | null;
 }
-export const InstancesDeleteResponseIndexingOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    keywordTokenizer: S.optional(
-      S.NullOr(InstancesDeleteResponseIndexingOptionsKeywordTokenizer).pipe(
-        T.Body("keyword_tokenizer"),
-      ),
-    ),
-    useOcr: S.optional(S.NullOr(S.Boolean).pipe(T.Body("use_ocr"))),
-  }),
-).annotate({
-  identifier: "InstancesDeleteResponseIndexingOptions",
-}) as any as S.Schema<InstancesDeleteResponseIndexingOptions>;
+export const InstancesDeleteResponseIndexingOptions =
+  InstancesCreateResponseIndexingOptions as any as S.Schema<InstancesDeleteResponseIndexingOptions>;
 
 export type InstancesDeleteResponseMetadata = InstancesCreateResponseMetadata;
 export const InstancesDeleteResponseMetadata = InstancesCreateResponseMetadata;
@@ -4845,15 +4617,8 @@ export interface InstancesDeleteResponsePublicEndpointParamsRateLimit {
   requests?: number | null;
   technique?: InstancesDeleteResponsePublicEndpointParamsRateLimitTechnique | null;
 }
-export const InstancesDeleteResponsePublicEndpointParamsRateLimit = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    periodMs: S.optional(S.NullOr(S.Number).pipe(T.Body("period_ms"))),
-    requests: S.optional(S.NullOr(S.Number)),
-    technique: S.optional(S.NullOr(InstancesDeleteResponsePublicEndpointParamsRateLimitTechnique)),
-  }),
-).annotate({
-  identifier: "InstancesDeleteResponsePublicEndpointParamsRateLimit",
-}) as any as S.Schema<InstancesDeleteResponsePublicEndpointParamsRateLimit>;
+export const InstancesDeleteResponsePublicEndpointParamsRateLimit =
+  InstancesCreateResponsePublicEndpointParamsRateLimit as any as S.Schema<InstancesDeleteResponsePublicEndpointParamsRateLimit>;
 
 export type InstancesDeleteResponsePublicEndpointParamsSearchEndpoint =
   InstancesCreateResponsePublicEndpointParamsSearchEndpoint;
@@ -4918,20 +4683,13 @@ export interface InstancesDeleteResponseRetrievalOptionsBoostByItem {
   /** Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional -- defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. */
   direction?: InstancesDeleteResponseRetrievalOptionsBoostByItemDirection | null;
 }
-export const InstancesDeleteResponseRetrievalOptionsBoostByItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    field: S.String,
-    direction: S.optional(S.NullOr(InstancesDeleteResponseRetrievalOptionsBoostByItemDirection)),
-  }),
-).annotate({
-  identifier: "InstancesDeleteResponseRetrievalOptionsBoostByItem",
-}) as any as S.Schema<InstancesDeleteResponseRetrievalOptionsBoostByItem>;
+export const InstancesDeleteResponseRetrievalOptionsBoostByItem =
+  InstancesCreateResponseRetrievalOptionsBoostByItem as any as S.Schema<InstancesDeleteResponseRetrievalOptionsBoostByItem>;
 
 export type InstancesDeleteResponseRetrievalOptionsBoostByList =
   Array<InstancesDeleteResponseRetrievalOptionsBoostByItem>;
-export const InstancesDeleteResponseRetrievalOptionsBoostByList = /*@__PURE__*/ S.Array(
-  InstancesDeleteResponseRetrievalOptionsBoostByItem,
-) as any as S.Schema<InstancesDeleteResponseRetrievalOptionsBoostByList>;
+export const InstancesDeleteResponseRetrievalOptionsBoostByList =
+  InstancesCreateResponseRetrievalOptionsBoostByList as any as S.Schema<InstancesDeleteResponseRetrievalOptionsBoostByList>;
 
 export type InstancesDeleteResponseRetrievalOptionsKeywordMatchMode = "and" | "or";
 export const InstancesDeleteResponseRetrievalOptionsKeywordMatchMode = S.String;
@@ -4942,20 +4700,8 @@ export interface InstancesDeleteResponseRetrievalOptions {
   /** Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted on an update, the existing stored value is preserved; when never set, search falls back to 'and'. */
   keywordMatchMode?: InstancesDeleteResponseRetrievalOptionsKeywordMatchMode | null;
 }
-export const InstancesDeleteResponseRetrievalOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    boostBy: S.optional(
-      S.NullOr(InstancesDeleteResponseRetrievalOptionsBoostByList).pipe(T.Body("boost_by")),
-    ),
-    keywordMatchMode: S.optional(
-      S.NullOr(InstancesDeleteResponseRetrievalOptionsKeywordMatchMode).pipe(
-        T.Body("keyword_match_mode"),
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "InstancesDeleteResponseRetrievalOptions",
-}) as any as S.Schema<InstancesDeleteResponseRetrievalOptions>;
+export const InstancesDeleteResponseRetrievalOptions =
+  InstancesCreateResponseRetrievalOptions as any as S.Schema<InstancesDeleteResponseRetrievalOptions>;
 
 export type InstancesDeleteResponseSourceParamsExcludeItemsList = Array<string>;
 export const InstancesDeleteResponseSourceParamsExcludeItemsList =
@@ -4985,21 +4731,8 @@ export interface InstancesDeleteResponseSourceParamsWebCrawlerDiscoverOptions {
   /** Where the crawler looks for URLs: 'sitemaps' reads sitemap XML only, 'links' follows page links only, 'all' does both. */
   source?: InstancesDeleteResponseSourceParamsWebCrawlerDiscoverOptionsSource | null;
 }
-export const InstancesDeleteResponseSourceParamsWebCrawlerDiscoverOptions = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      depth: S.optional(S.NullOr(S.Number)),
-      includeExternalLinks: S.optional(S.NullOr(S.Boolean).pipe(T.Body("include_external_links"))),
-      includeSubdomains: S.optional(S.NullOr(S.Boolean).pipe(T.Body("include_subdomains"))),
-      limit: S.optional(S.NullOr(S.Number)),
-      maxAge: S.optional(S.NullOr(S.Number).pipe(T.Body("max_age"))),
-      source: S.optional(
-        S.NullOr(InstancesDeleteResponseSourceParamsWebCrawlerDiscoverOptionsSource),
-      ),
-    }),
-).annotate({
-  identifier: "InstancesDeleteResponseSourceParamsWebCrawlerDiscoverOptions",
-}) as any as S.Schema<InstancesDeleteResponseSourceParamsWebCrawlerDiscoverOptions>;
+export const InstancesDeleteResponseSourceParamsWebCrawlerDiscoverOptions =
+  InstancesCreateResponseSourceParamsWebCrawlerDiscoverOptions as any as S.Schema<InstancesDeleteResponseSourceParamsWebCrawlerDiscoverOptions>;
 
 export type InstancesDeleteResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem =
   InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem;
@@ -5299,20 +5032,13 @@ export interface NamespacesInstancesDeleteResponseCustomMetadataItem {
   dataType: NamespacesInstancesDeleteResponseCustomMetadataItemDataType;
   fieldName: string;
 }
-export const NamespacesInstancesDeleteResponseCustomMetadataItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dataType: NamespacesInstancesDeleteResponseCustomMetadataItemDataType.pipe(T.Body("data_type")),
-    fieldName: S.String.pipe(T.Body("field_name")),
-  }),
-).annotate({
-  identifier: "NamespacesInstancesDeleteResponseCustomMetadataItem",
-}) as any as S.Schema<NamespacesInstancesDeleteResponseCustomMetadataItem>;
+export const NamespacesInstancesDeleteResponseCustomMetadataItem =
+  InstancesCreateRequestCustomMetadataItem as any as S.Schema<NamespacesInstancesDeleteResponseCustomMetadataItem>;
 
 export type NamespacesInstancesDeleteResponseCustomMetadataList =
   Array<NamespacesInstancesDeleteResponseCustomMetadataItem>;
-export const NamespacesInstancesDeleteResponseCustomMetadataList = /*@__PURE__*/ S.Array(
-  NamespacesInstancesDeleteResponseCustomMetadataItem,
-) as any as S.Schema<NamespacesInstancesDeleteResponseCustomMetadataList>;
+export const NamespacesInstancesDeleteResponseCustomMetadataList =
+  InstancesCreateRequestCustomMetadataList as any as S.Schema<NamespacesInstancesDeleteResponseCustomMetadataList>;
 
 export type NamespacesInstancesDeleteResponseFusionMethod = "max" | "rrf";
 export const NamespacesInstancesDeleteResponseFusionMethod = S.String;
@@ -5329,18 +5055,8 @@ export interface NamespacesInstancesDeleteResponseIndexingOptions {
   /** Enables OCR ingestion for PDFs and images. Changing this triggers a full re-index. Defaults to false. */
   useOcr?: boolean | null;
 }
-export const NamespacesInstancesDeleteResponseIndexingOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    keywordTokenizer: S.optional(
-      S.NullOr(NamespacesInstancesDeleteResponseIndexingOptionsKeywordTokenizer).pipe(
-        T.Body("keyword_tokenizer"),
-      ),
-    ),
-    useOcr: S.optional(S.NullOr(S.Boolean).pipe(T.Body("use_ocr"))),
-  }),
-).annotate({
-  identifier: "NamespacesInstancesDeleteResponseIndexingOptions",
-}) as any as S.Schema<NamespacesInstancesDeleteResponseIndexingOptions>;
+export const NamespacesInstancesDeleteResponseIndexingOptions =
+  InstancesCreateResponseIndexingOptions as any as S.Schema<NamespacesInstancesDeleteResponseIndexingOptions>;
 
 export type NamespacesInstancesDeleteResponseMetadata = InstancesCreateResponseMetadata;
 export const NamespacesInstancesDeleteResponseMetadata = InstancesCreateResponseMetadata;
@@ -5375,17 +5091,7 @@ export interface NamespacesInstancesDeleteResponsePublicEndpointParamsRateLimit 
   technique?: NamespacesInstancesDeleteResponsePublicEndpointParamsRateLimitTechnique | null;
 }
 export const NamespacesInstancesDeleteResponsePublicEndpointParamsRateLimit =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      periodMs: S.optional(S.NullOr(S.Number).pipe(T.Body("period_ms"))),
-      requests: S.optional(S.NullOr(S.Number)),
-      technique: S.optional(
-        S.NullOr(NamespacesInstancesDeleteResponsePublicEndpointParamsRateLimitTechnique),
-      ),
-    }),
-  ).annotate({
-    identifier: "NamespacesInstancesDeleteResponsePublicEndpointParamsRateLimit",
-  }) as any as S.Schema<NamespacesInstancesDeleteResponsePublicEndpointParamsRateLimit>;
+  NamespacesInstancesCreateResponsePublicEndpointParamsRateLimit as any as S.Schema<NamespacesInstancesDeleteResponsePublicEndpointParamsRateLimit>;
 
 export type NamespacesInstancesDeleteResponsePublicEndpointParamsSearchEndpoint =
   InstancesCreateResponsePublicEndpointParamsSearchEndpoint;
@@ -5452,23 +5158,13 @@ export interface NamespacesInstancesDeleteResponseRetrievalOptionsBoostByItem {
   /** Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional -- defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. */
   direction?: NamespacesInstancesDeleteResponseRetrievalOptionsBoostByItemDirection | null;
 }
-export const NamespacesInstancesDeleteResponseRetrievalOptionsBoostByItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      field: S.String,
-      direction: S.optional(
-        S.NullOr(NamespacesInstancesDeleteResponseRetrievalOptionsBoostByItemDirection),
-      ),
-    }),
-).annotate({
-  identifier: "NamespacesInstancesDeleteResponseRetrievalOptionsBoostByItem",
-}) as any as S.Schema<NamespacesInstancesDeleteResponseRetrievalOptionsBoostByItem>;
+export const NamespacesInstancesDeleteResponseRetrievalOptionsBoostByItem =
+  NamespacesInstancesCreateResponseRetrievalOptionsBoostByItem as any as S.Schema<NamespacesInstancesDeleteResponseRetrievalOptionsBoostByItem>;
 
 export type NamespacesInstancesDeleteResponseRetrievalOptionsBoostByList =
   Array<NamespacesInstancesDeleteResponseRetrievalOptionsBoostByItem>;
-export const NamespacesInstancesDeleteResponseRetrievalOptionsBoostByList = /*@__PURE__*/ S.Array(
-  NamespacesInstancesDeleteResponseRetrievalOptionsBoostByItem,
-) as any as S.Schema<NamespacesInstancesDeleteResponseRetrievalOptionsBoostByList>;
+export const NamespacesInstancesDeleteResponseRetrievalOptionsBoostByList =
+  NamespacesInstancesCreateResponseRetrievalOptionsBoostByList as any as S.Schema<NamespacesInstancesDeleteResponseRetrievalOptionsBoostByList>;
 
 export type NamespacesInstancesDeleteResponseRetrievalOptionsKeywordMatchMode = "and" | "or";
 export const NamespacesInstancesDeleteResponseRetrievalOptionsKeywordMatchMode = S.String;
@@ -5479,22 +5175,8 @@ export interface NamespacesInstancesDeleteResponseRetrievalOptions {
   /** Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted on an update, the existing stored value is preserved; when never set, search falls back to 'and'. */
   keywordMatchMode?: NamespacesInstancesDeleteResponseRetrievalOptionsKeywordMatchMode | null;
 }
-export const NamespacesInstancesDeleteResponseRetrievalOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    boostBy: S.optional(
-      S.NullOr(NamespacesInstancesDeleteResponseRetrievalOptionsBoostByList).pipe(
-        T.Body("boost_by"),
-      ),
-    ),
-    keywordMatchMode: S.optional(
-      S.NullOr(NamespacesInstancesDeleteResponseRetrievalOptionsKeywordMatchMode).pipe(
-        T.Body("keyword_match_mode"),
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "NamespacesInstancesDeleteResponseRetrievalOptions",
-}) as any as S.Schema<NamespacesInstancesDeleteResponseRetrievalOptions>;
+export const NamespacesInstancesDeleteResponseRetrievalOptions =
+  NamespacesInstancesCreateResponseRetrievalOptions as any as S.Schema<NamespacesInstancesDeleteResponseRetrievalOptions>;
 
 export type NamespacesInstancesDeleteResponseSourceParamsExcludeItemsList = Array<string>;
 export const NamespacesInstancesDeleteResponseSourceParamsExcludeItemsList =
@@ -5526,20 +5208,7 @@ export interface NamespacesInstancesDeleteResponseSourceParamsWebCrawlerDiscover
   source?: NamespacesInstancesDeleteResponseSourceParamsWebCrawlerDiscoverOptionsSource | null;
 }
 export const NamespacesInstancesDeleteResponseSourceParamsWebCrawlerDiscoverOptions =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      depth: S.optional(S.NullOr(S.Number)),
-      includeExternalLinks: S.optional(S.NullOr(S.Boolean).pipe(T.Body("include_external_links"))),
-      includeSubdomains: S.optional(S.NullOr(S.Boolean).pipe(T.Body("include_subdomains"))),
-      limit: S.optional(S.NullOr(S.Number)),
-      maxAge: S.optional(S.NullOr(S.Number).pipe(T.Body("max_age"))),
-      source: S.optional(
-        S.NullOr(NamespacesInstancesDeleteResponseSourceParamsWebCrawlerDiscoverOptionsSource),
-      ),
-    }),
-  ).annotate({
-    identifier: "NamespacesInstancesDeleteResponseSourceParamsWebCrawlerDiscoverOptions",
-  }) as any as S.Schema<NamespacesInstancesDeleteResponseSourceParamsWebCrawlerDiscoverOptions>;
+  NamespacesInstancesCreateResponseSourceParamsWebCrawlerDiscoverOptions as any as S.Schema<NamespacesInstancesDeleteResponseSourceParamsWebCrawlerDiscoverOptions>;
 
 export type NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem =
   InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem;
@@ -6039,19 +5708,8 @@ export interface GetNamespaceInstanceJobResponse {
   lastSeenAt?: string | null;
   startedAt?: string | null;
 }
-export const GetNamespaceInstanceJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    source: NamespacesInstancesJobsGetResponseSource,
-    description: S.optional(S.NullOr(S.String)),
-    endReason: S.optional(S.NullOr(S.String).pipe(T.Body("end_reason"))),
-    endedAt: S.optional(S.NullOr(S.String).pipe(T.Body("ended_at"))),
-    lastSeenAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_seen_at"))),
-    startedAt: S.optional(S.NullOr(S.String).pipe(T.Body("started_at"))),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "GetNamespaceInstanceJobResponse",
-}) as any as S.Schema<GetNamespaceInstanceJobResponse>;
+export const GetNamespaceInstanceJobResponse =
+  CreateInstanceJobResponse as any as S.Schema<GetNamespaceInstanceJobResponse>;
 
 export interface ListInstanceJobsRequest {
   accountId: string;
@@ -6192,20 +5850,13 @@ export interface InstancesListResultItemCustomMetadataItem {
   dataType: InstancesListResultItemCustomMetadataItemDataType;
   fieldName: string;
 }
-export const InstancesListResultItemCustomMetadataItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dataType: InstancesListResultItemCustomMetadataItemDataType.pipe(T.Body("data_type")),
-    fieldName: S.String.pipe(T.Body("field_name")),
-  }),
-).annotate({
-  identifier: "InstancesListResultItemCustomMetadataItem",
-}) as any as S.Schema<InstancesListResultItemCustomMetadataItem>;
+export const InstancesListResultItemCustomMetadataItem =
+  InstancesCreateRequestCustomMetadataItem as any as S.Schema<InstancesListResultItemCustomMetadataItem>;
 
 export type InstancesListResultItemCustomMetadataList =
   Array<InstancesListResultItemCustomMetadataItem>;
-export const InstancesListResultItemCustomMetadataList = /*@__PURE__*/ S.Array(
-  InstancesListResultItemCustomMetadataItem,
-) as any as S.Schema<InstancesListResultItemCustomMetadataList>;
+export const InstancesListResultItemCustomMetadataList =
+  InstancesCreateRequestCustomMetadataList as any as S.Schema<InstancesListResultItemCustomMetadataList>;
 
 export type InstancesListResultItemFusionMethod = "max" | "rrf";
 export const InstancesListResultItemFusionMethod = S.String;
@@ -6224,18 +5875,8 @@ export interface InstancesListResultItemIndexingOptions {
   keywordTokenizer?: InstancesListResultItemIndexingOptionsKeywordTokenizer | null;
   useOcr?: boolean | null;
 }
-export const InstancesListResultItemIndexingOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    keywordTokenizer: S.optional(
-      S.NullOr(InstancesListResultItemIndexingOptionsKeywordTokenizer).pipe(
-        T.Body("keyword_tokenizer"),
-      ),
-    ),
-    useOcr: S.optional(S.NullOr(S.Boolean).pipe(T.Body("use_ocr"))),
-  }),
-).annotate({
-  identifier: "InstancesListResultItemIndexingOptions",
-}) as any as S.Schema<InstancesListResultItemIndexingOptions>;
+export const InstancesListResultItemIndexingOptions =
+  InstancesCreateResponseIndexingOptions as any as S.Schema<InstancesListResultItemIndexingOptions>;
 
 export type InstancesListResultItemMetadata = InstancesCreateResponseMetadata;
 export const InstancesListResultItemMetadata = InstancesCreateResponseMetadata;
@@ -6269,15 +5910,8 @@ export interface InstancesListResultItemPublicEndpointParamsRateLimit {
   requests?: number | null;
   technique?: InstancesListResultItemPublicEndpointParamsRateLimitTechnique | null;
 }
-export const InstancesListResultItemPublicEndpointParamsRateLimit = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    periodMs: S.optional(S.NullOr(S.Number).pipe(T.Body("period_ms"))),
-    requests: S.optional(S.NullOr(S.Number)),
-    technique: S.optional(S.NullOr(InstancesListResultItemPublicEndpointParamsRateLimitTechnique)),
-  }),
-).annotate({
-  identifier: "InstancesListResultItemPublicEndpointParamsRateLimit",
-}) as any as S.Schema<InstancesListResultItemPublicEndpointParamsRateLimit>;
+export const InstancesListResultItemPublicEndpointParamsRateLimit =
+  InstancesCreateResponsePublicEndpointParamsRateLimit as any as S.Schema<InstancesListResultItemPublicEndpointParamsRateLimit>;
 
 export type InstancesListResultItemPublicEndpointParamsSearchEndpoint =
   InstancesListResultItemPublicEndpointParamsChatCompletionsEndpoint;
@@ -6407,21 +6041,8 @@ export interface InstancesListResultItemSourceParamsWebCrawlerDiscoverOptions {
   maxAge?: number | null;
   source?: InstancesListResultItemSourceParamsWebCrawlerDiscoverOptionsSource | null;
 }
-export const InstancesListResultItemSourceParamsWebCrawlerDiscoverOptions = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      depth: S.optional(S.NullOr(S.Number)),
-      includeExternalLinks: S.optional(S.NullOr(S.Boolean).pipe(T.Body("include_external_links"))),
-      includeSubdomains: S.optional(S.NullOr(S.Boolean).pipe(T.Body("include_subdomains"))),
-      limit: S.optional(S.NullOr(S.Number)),
-      maxAge: S.optional(S.NullOr(S.Number).pipe(T.Body("max_age"))),
-      source: S.optional(
-        S.NullOr(InstancesListResultItemSourceParamsWebCrawlerDiscoverOptionsSource),
-      ),
-    }),
-).annotate({
-  identifier: "InstancesListResultItemSourceParamsWebCrawlerDiscoverOptions",
-}) as any as S.Schema<InstancesListResultItemSourceParamsWebCrawlerDiscoverOptions>;
+export const InstancesListResultItemSourceParamsWebCrawlerDiscoverOptions =
+  InstancesCreateResponseSourceParamsWebCrawlerDiscoverOptions as any as S.Schema<InstancesListResultItemSourceParamsWebCrawlerDiscoverOptions>;
 
 export interface InstancesListResultItemSourceParamsWebCrawlerParseOptionsContentSelectorItem {
   path: string;
@@ -6824,24 +6445,12 @@ export interface NamespacesInstancesJobsListResultItem {
   lastSeenAt?: string | null;
   startedAt?: string | null;
 }
-export const NamespacesInstancesJobsListResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    source: NamespacesInstancesJobsListResultItemSource,
-    description: S.optional(S.NullOr(S.String)),
-    endReason: S.optional(S.NullOr(S.String).pipe(T.Body("end_reason"))),
-    endedAt: S.optional(S.NullOr(S.String).pipe(T.Body("ended_at"))),
-    lastSeenAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_seen_at"))),
-    startedAt: S.optional(S.NullOr(S.String).pipe(T.Body("started_at"))),
-  }),
-).annotate({
-  identifier: "NamespacesInstancesJobsListResultItem",
-}) as any as S.Schema<NamespacesInstancesJobsListResultItem>;
+export const NamespacesInstancesJobsListResultItem =
+  InstancesJobsListResultItem as any as S.Schema<NamespacesInstancesJobsListResultItem>;
 
 export type NamespacesInstancesJobsListResultList = Array<NamespacesInstancesJobsListResultItem>;
-export const NamespacesInstancesJobsListResultList = /*@__PURE__*/ S.Array(
-  NamespacesInstancesJobsListResultItem,
-) as any as S.Schema<NamespacesInstancesJobsListResultList>;
+export const NamespacesInstancesJobsListResultList =
+  InstancesJobsListResultList as any as S.Schema<NamespacesInstancesJobsListResultList>;
 
 export interface ListNamespaceInstanceJobsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
@@ -6939,20 +6548,13 @@ export interface NamespacesInstancesListResultItemCustomMetadataItem {
   dataType: NamespacesInstancesListResultItemCustomMetadataItemDataType;
   fieldName: string;
 }
-export const NamespacesInstancesListResultItemCustomMetadataItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dataType: NamespacesInstancesListResultItemCustomMetadataItemDataType.pipe(T.Body("data_type")),
-    fieldName: S.String.pipe(T.Body("field_name")),
-  }),
-).annotate({
-  identifier: "NamespacesInstancesListResultItemCustomMetadataItem",
-}) as any as S.Schema<NamespacesInstancesListResultItemCustomMetadataItem>;
+export const NamespacesInstancesListResultItemCustomMetadataItem =
+  InstancesCreateRequestCustomMetadataItem as any as S.Schema<NamespacesInstancesListResultItemCustomMetadataItem>;
 
 export type NamespacesInstancesListResultItemCustomMetadataList =
   Array<NamespacesInstancesListResultItemCustomMetadataItem>;
-export const NamespacesInstancesListResultItemCustomMetadataList = /*@__PURE__*/ S.Array(
-  NamespacesInstancesListResultItemCustomMetadataItem,
-) as any as S.Schema<NamespacesInstancesListResultItemCustomMetadataList>;
+export const NamespacesInstancesListResultItemCustomMetadataList =
+  InstancesCreateRequestCustomMetadataList as any as S.Schema<NamespacesInstancesListResultItemCustomMetadataList>;
 
 export type NamespacesInstancesListResultItemFusionMethod = "max" | "rrf";
 export const NamespacesInstancesListResultItemFusionMethod = S.String;
@@ -6967,18 +6569,8 @@ export interface NamespacesInstancesListResultItemIndexingOptions {
   keywordTokenizer?: NamespacesInstancesListResultItemIndexingOptionsKeywordTokenizer | null;
   useOcr?: boolean | null;
 }
-export const NamespacesInstancesListResultItemIndexingOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    keywordTokenizer: S.optional(
-      S.NullOr(NamespacesInstancesListResultItemIndexingOptionsKeywordTokenizer).pipe(
-        T.Body("keyword_tokenizer"),
-      ),
-    ),
-    useOcr: S.optional(S.NullOr(S.Boolean).pipe(T.Body("use_ocr"))),
-  }),
-).annotate({
-  identifier: "NamespacesInstancesListResultItemIndexingOptions",
-}) as any as S.Schema<NamespacesInstancesListResultItemIndexingOptions>;
+export const NamespacesInstancesListResultItemIndexingOptions =
+  InstancesCreateResponseIndexingOptions as any as S.Schema<NamespacesInstancesListResultItemIndexingOptions>;
 
 export type NamespacesInstancesListResultItemMetadata = InstancesCreateResponseMetadata;
 export const NamespacesInstancesListResultItemMetadata = InstancesCreateResponseMetadata;
@@ -7013,17 +6605,7 @@ export interface NamespacesInstancesListResultItemPublicEndpointParamsRateLimit 
   technique?: NamespacesInstancesListResultItemPublicEndpointParamsRateLimitTechnique | null;
 }
 export const NamespacesInstancesListResultItemPublicEndpointParamsRateLimit =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      periodMs: S.optional(S.NullOr(S.Number).pipe(T.Body("period_ms"))),
-      requests: S.optional(S.NullOr(S.Number)),
-      technique: S.optional(
-        S.NullOr(NamespacesInstancesListResultItemPublicEndpointParamsRateLimitTechnique),
-      ),
-    }),
-  ).annotate({
-    identifier: "NamespacesInstancesListResultItemPublicEndpointParamsRateLimit",
-  }) as any as S.Schema<NamespacesInstancesListResultItemPublicEndpointParamsRateLimit>;
+  NamespacesInstancesCreateResponsePublicEndpointParamsRateLimit as any as S.Schema<NamespacesInstancesListResultItemPublicEndpointParamsRateLimit>;
 
 export type NamespacesInstancesListResultItemPublicEndpointParamsSearchEndpoint =
   InstancesListResultItemPublicEndpointParamsChatCompletionsEndpoint;
@@ -7164,20 +6746,7 @@ export interface NamespacesInstancesListResultItemSourceParamsWebCrawlerDiscover
   source?: NamespacesInstancesListResultItemSourceParamsWebCrawlerDiscoverOptionsSource | null;
 }
 export const NamespacesInstancesListResultItemSourceParamsWebCrawlerDiscoverOptions =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      depth: S.optional(S.NullOr(S.Number)),
-      includeExternalLinks: S.optional(S.NullOr(S.Boolean).pipe(T.Body("include_external_links"))),
-      includeSubdomains: S.optional(S.NullOr(S.Boolean).pipe(T.Body("include_subdomains"))),
-      limit: S.optional(S.NullOr(S.Number)),
-      maxAge: S.optional(S.NullOr(S.Number).pipe(T.Body("max_age"))),
-      source: S.optional(
-        S.NullOr(NamespacesInstancesListResultItemSourceParamsWebCrawlerDiscoverOptionsSource),
-      ),
-    }),
-  ).annotate({
-    identifier: "NamespacesInstancesListResultItemSourceParamsWebCrawlerDiscoverOptions",
-  }) as any as S.Schema<NamespacesInstancesListResultItemSourceParamsWebCrawlerDiscoverOptions>;
+  NamespacesInstancesCreateResponseSourceParamsWebCrawlerDiscoverOptions as any as S.Schema<NamespacesInstancesListResultItemSourceParamsWebCrawlerDiscoverOptions>;
 
 export type NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptionsContentSelectorItem =
   InstancesListResultItemSourceParamsWebCrawlerParseOptionsContentSelectorItem;
@@ -7465,15 +7034,8 @@ export interface NamespacesListResultItemPublicEndpointParamsRateLimit {
   requests?: number | null;
   technique?: NamespacesListResultItemPublicEndpointParamsRateLimitTechnique | null;
 }
-export const NamespacesListResultItemPublicEndpointParamsRateLimit = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    periodMs: S.optional(S.NullOr(S.Number).pipe(T.Body("period_ms"))),
-    requests: S.optional(S.NullOr(S.Number)),
-    technique: S.optional(S.NullOr(NamespacesListResultItemPublicEndpointParamsRateLimitTechnique)),
-  }),
-).annotate({
-  identifier: "NamespacesListResultItemPublicEndpointParamsRateLimit",
-}) as any as S.Schema<NamespacesListResultItemPublicEndpointParamsRateLimit>;
+export const NamespacesListResultItemPublicEndpointParamsRateLimit =
+  InstancesCreateResponsePublicEndpointParamsRateLimit as any as S.Schema<NamespacesListResultItemPublicEndpointParamsRateLimit>;
 
 export type NamespacesListResultItemPublicEndpointParamsSearchEndpoint =
   InstancesCreateResponsePublicEndpointParamsSearchEndpoint;
@@ -7845,19 +7407,8 @@ export interface PatchNamespaceInstanceJobResponse {
   lastSeenAt?: string | null;
   startedAt?: string | null;
 }
-export const PatchNamespaceInstanceJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    source: NamespacesInstancesJobsUpdateResponseSource,
-    description: S.optional(S.NullOr(S.String)),
-    endReason: S.optional(S.NullOr(S.String).pipe(T.Body("end_reason"))),
-    endedAt: S.optional(S.NullOr(S.String).pipe(T.Body("ended_at"))),
-    lastSeenAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_seen_at"))),
-    startedAt: S.optional(S.NullOr(S.String).pipe(T.Body("started_at"))),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "PatchNamespaceInstanceJobResponse",
-}) as any as S.Schema<PatchNamespaceInstanceJobResponse>;
+export const PatchNamespaceInstanceJobResponse =
+  CreateInstanceJobResponse as any as S.Schema<PatchNamespaceInstanceJobResponse>;
 
 export interface ReadInstanceRequest {
   accountId: string;
@@ -7905,20 +7456,13 @@ export interface InstancesReadResponseCustomMetadataItem {
   dataType: InstancesReadResponseCustomMetadataItemDataType;
   fieldName: string;
 }
-export const InstancesReadResponseCustomMetadataItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dataType: InstancesReadResponseCustomMetadataItemDataType.pipe(T.Body("data_type")),
-    fieldName: S.String.pipe(T.Body("field_name")),
-  }),
-).annotate({
-  identifier: "InstancesReadResponseCustomMetadataItem",
-}) as any as S.Schema<InstancesReadResponseCustomMetadataItem>;
+export const InstancesReadResponseCustomMetadataItem =
+  InstancesCreateRequestCustomMetadataItem as any as S.Schema<InstancesReadResponseCustomMetadataItem>;
 
 export type InstancesReadResponseCustomMetadataList =
   Array<InstancesReadResponseCustomMetadataItem>;
-export const InstancesReadResponseCustomMetadataList = /*@__PURE__*/ S.Array(
-  InstancesReadResponseCustomMetadataItem,
-) as any as S.Schema<InstancesReadResponseCustomMetadataList>;
+export const InstancesReadResponseCustomMetadataList =
+  InstancesCreateRequestCustomMetadataList as any as S.Schema<InstancesReadResponseCustomMetadataList>;
 
 export type InstancesReadResponseFusionMethod = "max" | "rrf";
 export const InstancesReadResponseFusionMethod = S.String;
@@ -7935,18 +7479,8 @@ export interface InstancesReadResponseIndexingOptions {
   /** Enables OCR ingestion for PDFs and images. Changing this triggers a full re-index. Defaults to false. */
   useOcr?: boolean | null;
 }
-export const InstancesReadResponseIndexingOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    keywordTokenizer: S.optional(
-      S.NullOr(InstancesReadResponseIndexingOptionsKeywordTokenizer).pipe(
-        T.Body("keyword_tokenizer"),
-      ),
-    ),
-    useOcr: S.optional(S.NullOr(S.Boolean).pipe(T.Body("use_ocr"))),
-  }),
-).annotate({
-  identifier: "InstancesReadResponseIndexingOptions",
-}) as any as S.Schema<InstancesReadResponseIndexingOptions>;
+export const InstancesReadResponseIndexingOptions =
+  InstancesCreateResponseIndexingOptions as any as S.Schema<InstancesReadResponseIndexingOptions>;
 
 export type InstancesReadResponseMetadata = InstancesCreateResponseMetadata;
 export const InstancesReadResponseMetadata = InstancesCreateResponseMetadata;
@@ -7977,15 +7511,8 @@ export interface InstancesReadResponsePublicEndpointParamsRateLimit {
   requests?: number | null;
   technique?: InstancesReadResponsePublicEndpointParamsRateLimitTechnique | null;
 }
-export const InstancesReadResponsePublicEndpointParamsRateLimit = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    periodMs: S.optional(S.NullOr(S.Number).pipe(T.Body("period_ms"))),
-    requests: S.optional(S.NullOr(S.Number)),
-    technique: S.optional(S.NullOr(InstancesReadResponsePublicEndpointParamsRateLimitTechnique)),
-  }),
-).annotate({
-  identifier: "InstancesReadResponsePublicEndpointParamsRateLimit",
-}) as any as S.Schema<InstancesReadResponsePublicEndpointParamsRateLimit>;
+export const InstancesReadResponsePublicEndpointParamsRateLimit =
+  InstancesCreateResponsePublicEndpointParamsRateLimit as any as S.Schema<InstancesReadResponsePublicEndpointParamsRateLimit>;
 
 export type InstancesReadResponsePublicEndpointParamsSearchEndpoint =
   InstancesCreateResponsePublicEndpointParamsSearchEndpoint;
@@ -8050,20 +7577,13 @@ export interface InstancesReadResponseRetrievalOptionsBoostByItem {
   /** Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional -- defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. */
   direction?: InstancesReadResponseRetrievalOptionsBoostByItemDirection | null;
 }
-export const InstancesReadResponseRetrievalOptionsBoostByItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    field: S.String,
-    direction: S.optional(S.NullOr(InstancesReadResponseRetrievalOptionsBoostByItemDirection)),
-  }),
-).annotate({
-  identifier: "InstancesReadResponseRetrievalOptionsBoostByItem",
-}) as any as S.Schema<InstancesReadResponseRetrievalOptionsBoostByItem>;
+export const InstancesReadResponseRetrievalOptionsBoostByItem =
+  InstancesCreateResponseRetrievalOptionsBoostByItem as any as S.Schema<InstancesReadResponseRetrievalOptionsBoostByItem>;
 
 export type InstancesReadResponseRetrievalOptionsBoostByList =
   Array<InstancesReadResponseRetrievalOptionsBoostByItem>;
-export const InstancesReadResponseRetrievalOptionsBoostByList = /*@__PURE__*/ S.Array(
-  InstancesReadResponseRetrievalOptionsBoostByItem,
-) as any as S.Schema<InstancesReadResponseRetrievalOptionsBoostByList>;
+export const InstancesReadResponseRetrievalOptionsBoostByList =
+  InstancesCreateResponseRetrievalOptionsBoostByList as any as S.Schema<InstancesReadResponseRetrievalOptionsBoostByList>;
 
 export type InstancesReadResponseRetrievalOptionsKeywordMatchMode = "and" | "or";
 export const InstancesReadResponseRetrievalOptionsKeywordMatchMode = S.String;
@@ -8074,20 +7594,8 @@ export interface InstancesReadResponseRetrievalOptions {
   /** Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted on an update, the existing stored value is preserved; when never set, search falls back to 'and'. */
   keywordMatchMode?: InstancesReadResponseRetrievalOptionsKeywordMatchMode | null;
 }
-export const InstancesReadResponseRetrievalOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    boostBy: S.optional(
-      S.NullOr(InstancesReadResponseRetrievalOptionsBoostByList).pipe(T.Body("boost_by")),
-    ),
-    keywordMatchMode: S.optional(
-      S.NullOr(InstancesReadResponseRetrievalOptionsKeywordMatchMode).pipe(
-        T.Body("keyword_match_mode"),
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "InstancesReadResponseRetrievalOptions",
-}) as any as S.Schema<InstancesReadResponseRetrievalOptions>;
+export const InstancesReadResponseRetrievalOptions =
+  InstancesCreateResponseRetrievalOptions as any as S.Schema<InstancesReadResponseRetrievalOptions>;
 
 export type InstancesReadResponseSourceParamsExcludeItemsList = Array<string>;
 export const InstancesReadResponseSourceParamsExcludeItemsList =
@@ -8117,21 +7625,8 @@ export interface InstancesReadResponseSourceParamsWebCrawlerDiscoverOptions {
   /** Where the crawler looks for URLs: 'sitemaps' reads sitemap XML only, 'links' follows page links only, 'all' does both. */
   source?: InstancesReadResponseSourceParamsWebCrawlerDiscoverOptionsSource | null;
 }
-export const InstancesReadResponseSourceParamsWebCrawlerDiscoverOptions = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      depth: S.optional(S.NullOr(S.Number)),
-      includeExternalLinks: S.optional(S.NullOr(S.Boolean).pipe(T.Body("include_external_links"))),
-      includeSubdomains: S.optional(S.NullOr(S.Boolean).pipe(T.Body("include_subdomains"))),
-      limit: S.optional(S.NullOr(S.Number)),
-      maxAge: S.optional(S.NullOr(S.Number).pipe(T.Body("max_age"))),
-      source: S.optional(
-        S.NullOr(InstancesReadResponseSourceParamsWebCrawlerDiscoverOptionsSource),
-      ),
-    }),
-).annotate({
-  identifier: "InstancesReadResponseSourceParamsWebCrawlerDiscoverOptions",
-}) as any as S.Schema<InstancesReadResponseSourceParamsWebCrawlerDiscoverOptions>;
+export const InstancesReadResponseSourceParamsWebCrawlerDiscoverOptions =
+  InstancesCreateResponseSourceParamsWebCrawlerDiscoverOptions as any as S.Schema<InstancesReadResponseSourceParamsWebCrawlerDiscoverOptions>;
 
 export type InstancesReadResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem =
   InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem;
@@ -8423,15 +7918,8 @@ export interface NamespacesReadResponsePublicEndpointParamsRateLimit {
   requests?: number | null;
   technique?: NamespacesReadResponsePublicEndpointParamsRateLimitTechnique | null;
 }
-export const NamespacesReadResponsePublicEndpointParamsRateLimit = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    periodMs: S.optional(S.NullOr(S.Number).pipe(T.Body("period_ms"))),
-    requests: S.optional(S.NullOr(S.Number)),
-    technique: S.optional(S.NullOr(NamespacesReadResponsePublicEndpointParamsRateLimitTechnique)),
-  }),
-).annotate({
-  identifier: "NamespacesReadResponsePublicEndpointParamsRateLimit",
-}) as any as S.Schema<NamespacesReadResponsePublicEndpointParamsRateLimit>;
+export const NamespacesReadResponsePublicEndpointParamsRateLimit =
+  InstancesCreateResponsePublicEndpointParamsRateLimit as any as S.Schema<NamespacesReadResponsePublicEndpointParamsRateLimit>;
 
 export type NamespacesReadResponsePublicEndpointParamsSearchEndpoint =
   InstancesCreateResponsePublicEndpointParamsSearchEndpoint;
@@ -8565,20 +8053,13 @@ export interface NamespacesInstancesReadResponseCustomMetadataItem {
   dataType: NamespacesInstancesReadResponseCustomMetadataItemDataType;
   fieldName: string;
 }
-export const NamespacesInstancesReadResponseCustomMetadataItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dataType: NamespacesInstancesReadResponseCustomMetadataItemDataType.pipe(T.Body("data_type")),
-    fieldName: S.String.pipe(T.Body("field_name")),
-  }),
-).annotate({
-  identifier: "NamespacesInstancesReadResponseCustomMetadataItem",
-}) as any as S.Schema<NamespacesInstancesReadResponseCustomMetadataItem>;
+export const NamespacesInstancesReadResponseCustomMetadataItem =
+  InstancesCreateRequestCustomMetadataItem as any as S.Schema<NamespacesInstancesReadResponseCustomMetadataItem>;
 
 export type NamespacesInstancesReadResponseCustomMetadataList =
   Array<NamespacesInstancesReadResponseCustomMetadataItem>;
-export const NamespacesInstancesReadResponseCustomMetadataList = /*@__PURE__*/ S.Array(
-  NamespacesInstancesReadResponseCustomMetadataItem,
-) as any as S.Schema<NamespacesInstancesReadResponseCustomMetadataList>;
+export const NamespacesInstancesReadResponseCustomMetadataList =
+  InstancesCreateRequestCustomMetadataList as any as S.Schema<NamespacesInstancesReadResponseCustomMetadataList>;
 
 export type NamespacesInstancesReadResponseFusionMethod = "max" | "rrf";
 export const NamespacesInstancesReadResponseFusionMethod = S.String;
@@ -8595,18 +8076,8 @@ export interface NamespacesInstancesReadResponseIndexingOptions {
   /** Enables OCR ingestion for PDFs and images. Changing this triggers a full re-index. Defaults to false. */
   useOcr?: boolean | null;
 }
-export const NamespacesInstancesReadResponseIndexingOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    keywordTokenizer: S.optional(
-      S.NullOr(NamespacesInstancesReadResponseIndexingOptionsKeywordTokenizer).pipe(
-        T.Body("keyword_tokenizer"),
-      ),
-    ),
-    useOcr: S.optional(S.NullOr(S.Boolean).pipe(T.Body("use_ocr"))),
-  }),
-).annotate({
-  identifier: "NamespacesInstancesReadResponseIndexingOptions",
-}) as any as S.Schema<NamespacesInstancesReadResponseIndexingOptions>;
+export const NamespacesInstancesReadResponseIndexingOptions =
+  InstancesCreateResponseIndexingOptions as any as S.Schema<NamespacesInstancesReadResponseIndexingOptions>;
 
 export type NamespacesInstancesReadResponseMetadata = InstancesCreateResponseMetadata;
 export const NamespacesInstancesReadResponseMetadata = InstancesCreateResponseMetadata;
@@ -8717,23 +8188,13 @@ export interface NamespacesInstancesReadResponseRetrievalOptionsBoostByItem {
   /** Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional -- defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. */
   direction?: NamespacesInstancesReadResponseRetrievalOptionsBoostByItemDirection | null;
 }
-export const NamespacesInstancesReadResponseRetrievalOptionsBoostByItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      field: S.String,
-      direction: S.optional(
-        S.NullOr(NamespacesInstancesReadResponseRetrievalOptionsBoostByItemDirection),
-      ),
-    }),
-).annotate({
-  identifier: "NamespacesInstancesReadResponseRetrievalOptionsBoostByItem",
-}) as any as S.Schema<NamespacesInstancesReadResponseRetrievalOptionsBoostByItem>;
+export const NamespacesInstancesReadResponseRetrievalOptionsBoostByItem =
+  NamespacesInstancesCreateResponseRetrievalOptionsBoostByItem as any as S.Schema<NamespacesInstancesReadResponseRetrievalOptionsBoostByItem>;
 
 export type NamespacesInstancesReadResponseRetrievalOptionsBoostByList =
   Array<NamespacesInstancesReadResponseRetrievalOptionsBoostByItem>;
-export const NamespacesInstancesReadResponseRetrievalOptionsBoostByList = /*@__PURE__*/ S.Array(
-  NamespacesInstancesReadResponseRetrievalOptionsBoostByItem,
-) as any as S.Schema<NamespacesInstancesReadResponseRetrievalOptionsBoostByList>;
+export const NamespacesInstancesReadResponseRetrievalOptionsBoostByList =
+  NamespacesInstancesCreateResponseRetrievalOptionsBoostByList as any as S.Schema<NamespacesInstancesReadResponseRetrievalOptionsBoostByList>;
 
 export type NamespacesInstancesReadResponseRetrievalOptionsKeywordMatchMode = "and" | "or";
 export const NamespacesInstancesReadResponseRetrievalOptionsKeywordMatchMode = S.String;
@@ -8788,20 +8249,7 @@ export interface NamespacesInstancesReadResponseSourceParamsWebCrawlerDiscoverOp
   source?: NamespacesInstancesReadResponseSourceParamsWebCrawlerDiscoverOptionsSource | null;
 }
 export const NamespacesInstancesReadResponseSourceParamsWebCrawlerDiscoverOptions =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      depth: S.optional(S.NullOr(S.Number)),
-      includeExternalLinks: S.optional(S.NullOr(S.Boolean).pipe(T.Body("include_external_links"))),
-      includeSubdomains: S.optional(S.NullOr(S.Boolean).pipe(T.Body("include_subdomains"))),
-      limit: S.optional(S.NullOr(S.Number)),
-      maxAge: S.optional(S.NullOr(S.Number).pipe(T.Body("max_age"))),
-      source: S.optional(
-        S.NullOr(NamespacesInstancesReadResponseSourceParamsWebCrawlerDiscoverOptionsSource),
-      ),
-    }),
-  ).annotate({
-    identifier: "NamespacesInstancesReadResponseSourceParamsWebCrawlerDiscoverOptions",
-  }) as any as S.Schema<NamespacesInstancesReadResponseSourceParamsWebCrawlerDiscoverOptions>;
+  NamespacesInstancesCreateResponseSourceParamsWebCrawlerDiscoverOptions as any as S.Schema<NamespacesInstancesReadResponseSourceParamsWebCrawlerDiscoverOptions>;
 
 export type NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem =
   InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem;
@@ -9119,21 +8567,13 @@ export interface InstancesSearchRequestAiSearchOptionsRetrievalBoostByItem {
   /** Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional -- defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. */
   direction?: InstancesSearchRequestAiSearchOptionsRetrievalBoostByItemDirection | (string & {});
 }
-export const InstancesSearchRequestAiSearchOptionsRetrievalBoostByItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      field: S.String,
-      direction: S.optional(InstancesSearchRequestAiSearchOptionsRetrievalBoostByItemDirection),
-    }),
-).annotate({
-  identifier: "InstancesSearchRequestAiSearchOptionsRetrievalBoostByItem",
-}) as any as S.Schema<InstancesSearchRequestAiSearchOptionsRetrievalBoostByItem>;
+export const InstancesSearchRequestAiSearchOptionsRetrievalBoostByItem =
+  NamespacesInstancesCreateRequestRetrievalOptionsBoostByItem as any as S.Schema<InstancesSearchRequestAiSearchOptionsRetrievalBoostByItem>;
 
 export type InstancesSearchRequestAiSearchOptionsRetrievalBoostByList =
   Array<InstancesSearchRequestAiSearchOptionsRetrievalBoostByItem>;
-export const InstancesSearchRequestAiSearchOptionsRetrievalBoostByList = /*@__PURE__*/ S.Array(
-  InstancesSearchRequestAiSearchOptionsRetrievalBoostByItem,
-) as any as S.Schema<InstancesSearchRequestAiSearchOptionsRetrievalBoostByList>;
+export const InstancesSearchRequestAiSearchOptionsRetrievalBoostByList =
+  NamespacesInstancesCreateRequestRetrievalOptionsBoostByList as any as S.Schema<InstancesSearchRequestAiSearchOptionsRetrievalBoostByList>;
 
 export type InstancesSearchRequestAiSearchOptionsRetrievalFiltersMap = {
   [key: string]: unknown | undefined;
@@ -9462,16 +8902,8 @@ export interface NamespacesSearchRequestAiSearchOptionsCache {
   cacheThreshold?: NamespacesSearchRequestAiSearchOptionsCacheCacheThreshold | (string & {});
   enabled?: boolean;
 }
-export const NamespacesSearchRequestAiSearchOptionsCache = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cacheThreshold: S.optional(
-      NamespacesSearchRequestAiSearchOptionsCacheCacheThreshold.pipe(T.Body("cache_threshold")),
-    ),
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "NamespacesSearchRequestAiSearchOptionsCache",
-}) as any as S.Schema<NamespacesSearchRequestAiSearchOptionsCache>;
+export const NamespacesSearchRequestAiSearchOptionsCache =
+  InstancesSearchRequestAiSearchOptionsCache as any as S.Schema<NamespacesSearchRequestAiSearchOptionsCache>;
 
 export type NamespacesSearchRequestAiSearchOptionsCustomMetadataValue = string | number | boolean;
 export const NamespacesSearchRequestAiSearchOptionsCustomMetadataValue =
@@ -9508,21 +8940,13 @@ export interface NamespacesSearchRequestAiSearchOptionsRetrievalBoostByItem {
   /** Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional -- defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. */
   direction?: NamespacesSearchRequestAiSearchOptionsRetrievalBoostByItemDirection | (string & {});
 }
-export const NamespacesSearchRequestAiSearchOptionsRetrievalBoostByItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      field: S.String,
-      direction: S.optional(NamespacesSearchRequestAiSearchOptionsRetrievalBoostByItemDirection),
-    }),
-).annotate({
-  identifier: "NamespacesSearchRequestAiSearchOptionsRetrievalBoostByItem",
-}) as any as S.Schema<NamespacesSearchRequestAiSearchOptionsRetrievalBoostByItem>;
+export const NamespacesSearchRequestAiSearchOptionsRetrievalBoostByItem =
+  NamespacesInstancesCreateRequestRetrievalOptionsBoostByItem as any as S.Schema<NamespacesSearchRequestAiSearchOptionsRetrievalBoostByItem>;
 
 export type NamespacesSearchRequestAiSearchOptionsRetrievalBoostByList =
   Array<NamespacesSearchRequestAiSearchOptionsRetrievalBoostByItem>;
-export const NamespacesSearchRequestAiSearchOptionsRetrievalBoostByList = /*@__PURE__*/ S.Array(
-  NamespacesSearchRequestAiSearchOptionsRetrievalBoostByItem,
-) as any as S.Schema<NamespacesSearchRequestAiSearchOptionsRetrievalBoostByList>;
+export const NamespacesSearchRequestAiSearchOptionsRetrievalBoostByList =
+  NamespacesInstancesCreateRequestRetrievalOptionsBoostByList as any as S.Schema<NamespacesSearchRequestAiSearchOptionsRetrievalBoostByList>;
 
 export type NamespacesSearchRequestAiSearchOptionsRetrievalFiltersMap = {
   [key: string]: unknown | undefined;
@@ -9778,22 +9202,8 @@ export interface NamespacesSearchResponseChunksItemScoringDetails {
   vectorRank?: number | null;
   vectorScore?: number | null;
 }
-export const NamespacesSearchResponseChunksItemScoringDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fusionMethod: S.optional(
-      S.NullOr(NamespacesSearchResponseChunksItemScoringDetailsFusionMethod).pipe(
-        T.Body("fusion_method"),
-      ),
-    ),
-    keywordRank: S.optional(S.NullOr(S.Number).pipe(T.Body("keyword_rank"))),
-    keywordScore: S.optional(S.NullOr(S.Number).pipe(T.Body("keyword_score"))),
-    rerankingScore: S.optional(S.NullOr(S.Number).pipe(T.Body("reranking_score"))),
-    vectorRank: S.optional(S.NullOr(S.Number).pipe(T.Body("vector_rank"))),
-    vectorScore: S.optional(S.NullOr(S.Number).pipe(T.Body("vector_score"))),
-  }),
-).annotate({
-  identifier: "NamespacesSearchResponseChunksItemScoringDetails",
-}) as any as S.Schema<NamespacesSearchResponseChunksItemScoringDetails>;
+export const NamespacesSearchResponseChunksItemScoringDetails =
+  InstancesSearchResponseChunksItemScoringDetails as any as S.Schema<NamespacesSearchResponseChunksItemScoringDetails>;
 
 export interface NamespacesSearchResponseChunksItem {
   id: string;
@@ -9875,18 +9285,8 @@ export interface NamespacesInstancesSearchRequestAiSearchOptionsCache {
     | (string & {});
   enabled?: boolean;
 }
-export const NamespacesInstancesSearchRequestAiSearchOptionsCache = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cacheThreshold: S.optional(
-      NamespacesInstancesSearchRequestAiSearchOptionsCacheCacheThreshold.pipe(
-        T.Body("cache_threshold"),
-      ),
-    ),
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "NamespacesInstancesSearchRequestAiSearchOptionsCache",
-}) as any as S.Schema<NamespacesInstancesSearchRequestAiSearchOptionsCache>;
+export const NamespacesInstancesSearchRequestAiSearchOptionsCache =
+  InstancesChatCompletionsRequestAiSearchOptionsCache as any as S.Schema<NamespacesInstancesSearchRequestAiSearchOptionsCache>;
 
 export type NamespacesInstancesSearchRequestAiSearchOptionsCustomMetadataValue =
   | string
@@ -9931,23 +9331,12 @@ export interface NamespacesInstancesSearchRequestAiSearchOptionsRetrievalBoostBy
     | (string & {});
 }
 export const NamespacesInstancesSearchRequestAiSearchOptionsRetrievalBoostByItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      field: S.String,
-      direction: S.optional(
-        NamespacesInstancesSearchRequestAiSearchOptionsRetrievalBoostByItemDirection,
-      ),
-    }),
-  ).annotate({
-    identifier: "NamespacesInstancesSearchRequestAiSearchOptionsRetrievalBoostByItem",
-  }) as any as S.Schema<NamespacesInstancesSearchRequestAiSearchOptionsRetrievalBoostByItem>;
+  InstancesChatCompletionsRequestAiSearchOptionsRetrievalBoostByItem as any as S.Schema<NamespacesInstancesSearchRequestAiSearchOptionsRetrievalBoostByItem>;
 
 export type NamespacesInstancesSearchRequestAiSearchOptionsRetrievalBoostByList =
   Array<NamespacesInstancesSearchRequestAiSearchOptionsRetrievalBoostByItem>;
 export const NamespacesInstancesSearchRequestAiSearchOptionsRetrievalBoostByList =
-  /*@__PURE__*/ S.Array(
-    NamespacesInstancesSearchRequestAiSearchOptionsRetrievalBoostByItem,
-  ) as any as S.Schema<NamespacesInstancesSearchRequestAiSearchOptionsRetrievalBoostByList>;
+  InstancesChatCompletionsRequestAiSearchOptionsRetrievalBoostByList as any as S.Schema<NamespacesInstancesSearchRequestAiSearchOptionsRetrievalBoostByList>;
 
 export type NamespacesInstancesSearchRequestAiSearchOptionsRetrievalFiltersMap = {
   [key: string]: unknown | undefined;
@@ -10053,14 +9442,7 @@ export interface NamespacesInstancesSearchRequestMessagesItemContentCase1ItemCas
   type: NamespacesInstancesSearchRequestMessagesItemContentCase1ItemCase0Type;
 }
 export const NamespacesInstancesSearchRequestMessagesItemContentCase1ItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      text: S.String,
-      type: NamespacesInstancesSearchRequestMessagesItemContentCase1ItemCase0Type,
-    }),
-  ).annotate({
-    identifier: "NamespacesInstancesSearchRequestMessagesItemContentCase1ItemCase0",
-  }) as any as S.Schema<NamespacesInstancesSearchRequestMessagesItemContentCase1ItemCase0>;
+  InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase0 as any as S.Schema<NamespacesInstancesSearchRequestMessagesItemContentCase1ItemCase0>;
 
 export type NamespacesInstancesSearchRequestMessagesItemContentCase1ItemCase1ImageUrl =
   InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl;
@@ -10075,16 +9457,7 @@ export interface NamespacesInstancesSearchRequestMessagesItemContentCase1ItemCas
   type: NamespacesInstancesSearchRequestMessagesItemContentCase1ItemCase1Type;
 }
 export const NamespacesInstancesSearchRequestMessagesItemContentCase1ItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      imageUrl: InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1ImageUrl.pipe(
-        T.Body("image_url"),
-      ),
-      type: NamespacesInstancesSearchRequestMessagesItemContentCase1ItemCase1Type,
-    }),
-  ).annotate({
-    identifier: "NamespacesInstancesSearchRequestMessagesItemContentCase1ItemCase1",
-  }) as any as S.Schema<NamespacesInstancesSearchRequestMessagesItemContentCase1ItemCase1>;
+  InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase1 as any as S.Schema<NamespacesInstancesSearchRequestMessagesItemContentCase1ItemCase1>;
 
 export type NamespacesInstancesSearchRequestMessagesItemContentCase1ItemCase2File =
   InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase2File;
@@ -10099,14 +9472,7 @@ export interface NamespacesInstancesSearchRequestMessagesItemContentCase1ItemCas
   type: NamespacesInstancesSearchRequestMessagesItemContentCase1ItemCase2Type;
 }
 export const NamespacesInstancesSearchRequestMessagesItemContentCase1ItemCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      file: InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase2File,
-      type: NamespacesInstancesSearchRequestMessagesItemContentCase1ItemCase2Type,
-    }),
-  ).annotate({
-    identifier: "NamespacesInstancesSearchRequestMessagesItemContentCase1ItemCase2",
-  }) as any as S.Schema<NamespacesInstancesSearchRequestMessagesItemContentCase1ItemCase2>;
+  InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase2 as any as S.Schema<NamespacesInstancesSearchRequestMessagesItemContentCase1ItemCase2>;
 
 export type NamespacesInstancesSearchRequestMessagesItemContentCase1Item =
   | NamespacesInstancesSearchRequestMessagesItemContentCase1ItemCase0
@@ -10223,23 +9589,8 @@ export interface NamespacesInstancesSearchResponseChunksItemScoringDetails {
   vectorRank?: number | null;
   vectorScore?: number | null;
 }
-export const NamespacesInstancesSearchResponseChunksItemScoringDetails = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      fusionMethod: S.optional(
-        S.NullOr(NamespacesInstancesSearchResponseChunksItemScoringDetailsFusionMethod).pipe(
-          T.Body("fusion_method"),
-        ),
-      ),
-      keywordRank: S.optional(S.NullOr(S.Number).pipe(T.Body("keyword_rank"))),
-      keywordScore: S.optional(S.NullOr(S.Number).pipe(T.Body("keyword_score"))),
-      rerankingScore: S.optional(S.NullOr(S.Number).pipe(T.Body("reranking_score"))),
-      vectorRank: S.optional(S.NullOr(S.Number).pipe(T.Body("vector_rank"))),
-      vectorScore: S.optional(S.NullOr(S.Number).pipe(T.Body("vector_score"))),
-    }),
-).annotate({
-  identifier: "NamespacesInstancesSearchResponseChunksItemScoringDetails",
-}) as any as S.Schema<NamespacesInstancesSearchResponseChunksItemScoringDetails>;
+export const NamespacesInstancesSearchResponseChunksItemScoringDetails =
+  InstancesChatCompletionsResponseChunksItemScoringDetails as any as S.Schema<NamespacesInstancesSearchResponseChunksItemScoringDetails>;
 
 export interface NamespacesInstancesSearchResponseChunksItem {
   id: string;
@@ -10614,20 +9965,13 @@ export interface InstancesUpdateRequestCustomMetadataItem {
   dataType: InstancesUpdateRequestCustomMetadataItemDataType | (string & {});
   fieldName: string;
 }
-export const InstancesUpdateRequestCustomMetadataItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dataType: InstancesUpdateRequestCustomMetadataItemDataType.pipe(T.Body("data_type")),
-    fieldName: S.String.pipe(T.Body("field_name")),
-  }),
-).annotate({
-  identifier: "InstancesUpdateRequestCustomMetadataItem",
-}) as any as S.Schema<InstancesUpdateRequestCustomMetadataItem>;
+export const InstancesUpdateRequestCustomMetadataItem =
+  InstancesCreateRequestCustomMetadataItem as any as S.Schema<InstancesUpdateRequestCustomMetadataItem>;
 
 export type InstancesUpdateRequestCustomMetadataList =
   Array<InstancesUpdateRequestCustomMetadataItem>;
-export const InstancesUpdateRequestCustomMetadataList = /*@__PURE__*/ S.Array(
-  InstancesUpdateRequestCustomMetadataItem,
-) as any as S.Schema<InstancesUpdateRequestCustomMetadataList>;
+export const InstancesUpdateRequestCustomMetadataList =
+  InstancesCreateRequestCustomMetadataList as any as S.Schema<InstancesUpdateRequestCustomMetadataList>;
 
 export type InstancesUpdateRequestFusionMethod = "max" | "rrf";
 export const InstancesUpdateRequestFusionMethod = S.String;
@@ -10644,16 +9988,8 @@ export interface InstancesUpdateRequestIndexingOptions {
   /** Enables OCR ingestion for PDFs and images. Changing this triggers a full re-index. Defaults to false. */
   useOcr?: boolean;
 }
-export const InstancesUpdateRequestIndexingOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    keywordTokenizer: S.optional(
-      InstancesUpdateRequestIndexingOptionsKeywordTokenizer.pipe(T.Body("keyword_tokenizer")),
-    ),
-    useOcr: S.optional(S.Boolean.pipe(T.Body("use_ocr"))),
-  }),
-).annotate({
-  identifier: "InstancesUpdateRequestIndexingOptions",
-}) as any as S.Schema<InstancesUpdateRequestIndexingOptions>;
+export const InstancesUpdateRequestIndexingOptions =
+  InstancesCreateRequestIndexingOptions as any as S.Schema<InstancesUpdateRequestIndexingOptions>;
 
 export type InstancesUpdateRequestMetadata = InstancesCreateRequestMetadata;
 export const InstancesUpdateRequestMetadata = InstancesCreateRequestMetadata;
@@ -10684,15 +10020,8 @@ export interface InstancesUpdateRequestPublicEndpointParamsRateLimit {
   requests?: number;
   technique?: InstancesUpdateRequestPublicEndpointParamsRateLimitTechnique | (string & {});
 }
-export const InstancesUpdateRequestPublicEndpointParamsRateLimit = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    periodMs: S.optional(S.Number.pipe(T.Body("period_ms"))),
-    requests: S.optional(S.Number),
-    technique: S.optional(InstancesUpdateRequestPublicEndpointParamsRateLimitTechnique),
-  }),
-).annotate({
-  identifier: "InstancesUpdateRequestPublicEndpointParamsRateLimit",
-}) as any as S.Schema<InstancesUpdateRequestPublicEndpointParamsRateLimit>;
+export const InstancesUpdateRequestPublicEndpointParamsRateLimit =
+  InstancesCreateRequestPublicEndpointParamsRateLimit as any as S.Schema<InstancesUpdateRequestPublicEndpointParamsRateLimit>;
 
 export type InstancesUpdateRequestPublicEndpointParamsSearchEndpoint =
   InstancesCreateRequestPublicEndpointParamsSearchEndpoint;
@@ -10753,20 +10082,13 @@ export interface InstancesUpdateRequestRetrievalOptionsBoostByItem {
   /** Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional -- defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. */
   direction?: InstancesUpdateRequestRetrievalOptionsBoostByItemDirection | (string & {});
 }
-export const InstancesUpdateRequestRetrievalOptionsBoostByItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    field: S.String,
-    direction: S.optional(InstancesUpdateRequestRetrievalOptionsBoostByItemDirection),
-  }),
-).annotate({
-  identifier: "InstancesUpdateRequestRetrievalOptionsBoostByItem",
-}) as any as S.Schema<InstancesUpdateRequestRetrievalOptionsBoostByItem>;
+export const InstancesUpdateRequestRetrievalOptionsBoostByItem =
+  InstancesCreateRequestRetrievalOptionsBoostByItem as any as S.Schema<InstancesUpdateRequestRetrievalOptionsBoostByItem>;
 
 export type InstancesUpdateRequestRetrievalOptionsBoostByList =
   Array<InstancesUpdateRequestRetrievalOptionsBoostByItem>;
-export const InstancesUpdateRequestRetrievalOptionsBoostByList = /*@__PURE__*/ S.Array(
-  InstancesUpdateRequestRetrievalOptionsBoostByItem,
-) as any as S.Schema<InstancesUpdateRequestRetrievalOptionsBoostByList>;
+export const InstancesUpdateRequestRetrievalOptionsBoostByList =
+  InstancesCreateRequestRetrievalOptionsBoostByList as any as S.Schema<InstancesUpdateRequestRetrievalOptionsBoostByList>;
 
 export type InstancesUpdateRequestRetrievalOptionsKeywordMatchMode = "and" | "or";
 export const InstancesUpdateRequestRetrievalOptionsKeywordMatchMode = S.String;
@@ -10777,16 +10099,8 @@ export interface InstancesUpdateRequestRetrievalOptions {
   /** Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted on an update, the existing stored value is preserved; when never set, search falls back to 'and'. */
   keywordMatchMode?: InstancesUpdateRequestRetrievalOptionsKeywordMatchMode | (string & {});
 }
-export const InstancesUpdateRequestRetrievalOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    boostBy: S.optional(InstancesUpdateRequestRetrievalOptionsBoostByList.pipe(T.Body("boost_by"))),
-    keywordMatchMode: S.optional(
-      InstancesUpdateRequestRetrievalOptionsKeywordMatchMode.pipe(T.Body("keyword_match_mode")),
-    ),
-  }),
-).annotate({
-  identifier: "InstancesUpdateRequestRetrievalOptions",
-}) as any as S.Schema<InstancesUpdateRequestRetrievalOptions>;
+export const InstancesUpdateRequestRetrievalOptions =
+  InstancesCreateRequestRetrievalOptions as any as S.Schema<InstancesUpdateRequestRetrievalOptions>;
 
 export type InstancesUpdateRequestSourceParamsExcludeItemsList = Array<string>;
 export const InstancesUpdateRequestSourceParamsExcludeItemsList =
@@ -10816,19 +10130,8 @@ export interface InstancesUpdateRequestSourceParamsWebCrawlerDiscoverOptions {
   /** Where the crawler looks for URLs: 'sitemaps' reads sitemap XML only, 'links' follows page links only, 'all' does both. */
   source?: InstancesUpdateRequestSourceParamsWebCrawlerDiscoverOptionsSource | (string & {});
 }
-export const InstancesUpdateRequestSourceParamsWebCrawlerDiscoverOptions = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      depth: S.optional(S.Number),
-      includeExternalLinks: S.optional(S.Boolean.pipe(T.Body("include_external_links"))),
-      includeSubdomains: S.optional(S.Boolean.pipe(T.Body("include_subdomains"))),
-      limit: S.optional(S.Number),
-      maxAge: S.optional(S.Number.pipe(T.Body("max_age"))),
-      source: S.optional(InstancesUpdateRequestSourceParamsWebCrawlerDiscoverOptionsSource),
-    }),
-).annotate({
-  identifier: "InstancesUpdateRequestSourceParamsWebCrawlerDiscoverOptions",
-}) as any as S.Schema<InstancesUpdateRequestSourceParamsWebCrawlerDiscoverOptions>;
+export const InstancesUpdateRequestSourceParamsWebCrawlerDiscoverOptions =
+  InstancesCreateRequestSourceParamsWebCrawlerDiscoverOptions as any as S.Schema<InstancesUpdateRequestSourceParamsWebCrawlerDiscoverOptions>;
 
 export type InstancesUpdateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem =
   InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem;
@@ -11058,20 +10361,13 @@ export interface InstancesUpdateResponseCustomMetadataItem {
   dataType: InstancesUpdateResponseCustomMetadataItemDataType;
   fieldName: string;
 }
-export const InstancesUpdateResponseCustomMetadataItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dataType: InstancesUpdateResponseCustomMetadataItemDataType.pipe(T.Body("data_type")),
-    fieldName: S.String.pipe(T.Body("field_name")),
-  }),
-).annotate({
-  identifier: "InstancesUpdateResponseCustomMetadataItem",
-}) as any as S.Schema<InstancesUpdateResponseCustomMetadataItem>;
+export const InstancesUpdateResponseCustomMetadataItem =
+  InstancesCreateRequestCustomMetadataItem as any as S.Schema<InstancesUpdateResponseCustomMetadataItem>;
 
 export type InstancesUpdateResponseCustomMetadataList =
   Array<InstancesUpdateResponseCustomMetadataItem>;
-export const InstancesUpdateResponseCustomMetadataList = /*@__PURE__*/ S.Array(
-  InstancesUpdateResponseCustomMetadataItem,
-) as any as S.Schema<InstancesUpdateResponseCustomMetadataList>;
+export const InstancesUpdateResponseCustomMetadataList =
+  InstancesCreateRequestCustomMetadataList as any as S.Schema<InstancesUpdateResponseCustomMetadataList>;
 
 export type InstancesUpdateResponseFusionMethod = "max" | "rrf";
 export const InstancesUpdateResponseFusionMethod = S.String;
@@ -11088,18 +10384,8 @@ export interface InstancesUpdateResponseIndexingOptions {
   /** Enables OCR ingestion for PDFs and images. Changing this triggers a full re-index. Defaults to false. */
   useOcr?: boolean | null;
 }
-export const InstancesUpdateResponseIndexingOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    keywordTokenizer: S.optional(
-      S.NullOr(InstancesUpdateResponseIndexingOptionsKeywordTokenizer).pipe(
-        T.Body("keyword_tokenizer"),
-      ),
-    ),
-    useOcr: S.optional(S.NullOr(S.Boolean).pipe(T.Body("use_ocr"))),
-  }),
-).annotate({
-  identifier: "InstancesUpdateResponseIndexingOptions",
-}) as any as S.Schema<InstancesUpdateResponseIndexingOptions>;
+export const InstancesUpdateResponseIndexingOptions =
+  InstancesCreateResponseIndexingOptions as any as S.Schema<InstancesUpdateResponseIndexingOptions>;
 
 export type InstancesUpdateResponseMetadata = InstancesCreateResponseMetadata;
 export const InstancesUpdateResponseMetadata = InstancesCreateResponseMetadata;
@@ -11130,15 +10416,8 @@ export interface InstancesUpdateResponsePublicEndpointParamsRateLimit {
   requests?: number | null;
   technique?: InstancesUpdateResponsePublicEndpointParamsRateLimitTechnique | null;
 }
-export const InstancesUpdateResponsePublicEndpointParamsRateLimit = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    periodMs: S.optional(S.NullOr(S.Number).pipe(T.Body("period_ms"))),
-    requests: S.optional(S.NullOr(S.Number)),
-    technique: S.optional(S.NullOr(InstancesUpdateResponsePublicEndpointParamsRateLimitTechnique)),
-  }),
-).annotate({
-  identifier: "InstancesUpdateResponsePublicEndpointParamsRateLimit",
-}) as any as S.Schema<InstancesUpdateResponsePublicEndpointParamsRateLimit>;
+export const InstancesUpdateResponsePublicEndpointParamsRateLimit =
+  InstancesCreateResponsePublicEndpointParamsRateLimit as any as S.Schema<InstancesUpdateResponsePublicEndpointParamsRateLimit>;
 
 export type InstancesUpdateResponsePublicEndpointParamsSearchEndpoint =
   InstancesCreateResponsePublicEndpointParamsSearchEndpoint;
@@ -11203,20 +10482,13 @@ export interface InstancesUpdateResponseRetrievalOptionsBoostByItem {
   /** Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional -- defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. */
   direction?: InstancesUpdateResponseRetrievalOptionsBoostByItemDirection | null;
 }
-export const InstancesUpdateResponseRetrievalOptionsBoostByItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    field: S.String,
-    direction: S.optional(S.NullOr(InstancesUpdateResponseRetrievalOptionsBoostByItemDirection)),
-  }),
-).annotate({
-  identifier: "InstancesUpdateResponseRetrievalOptionsBoostByItem",
-}) as any as S.Schema<InstancesUpdateResponseRetrievalOptionsBoostByItem>;
+export const InstancesUpdateResponseRetrievalOptionsBoostByItem =
+  InstancesCreateResponseRetrievalOptionsBoostByItem as any as S.Schema<InstancesUpdateResponseRetrievalOptionsBoostByItem>;
 
 export type InstancesUpdateResponseRetrievalOptionsBoostByList =
   Array<InstancesUpdateResponseRetrievalOptionsBoostByItem>;
-export const InstancesUpdateResponseRetrievalOptionsBoostByList = /*@__PURE__*/ S.Array(
-  InstancesUpdateResponseRetrievalOptionsBoostByItem,
-) as any as S.Schema<InstancesUpdateResponseRetrievalOptionsBoostByList>;
+export const InstancesUpdateResponseRetrievalOptionsBoostByList =
+  InstancesCreateResponseRetrievalOptionsBoostByList as any as S.Schema<InstancesUpdateResponseRetrievalOptionsBoostByList>;
 
 export type InstancesUpdateResponseRetrievalOptionsKeywordMatchMode = "and" | "or";
 export const InstancesUpdateResponseRetrievalOptionsKeywordMatchMode = S.String;
@@ -11227,20 +10499,8 @@ export interface InstancesUpdateResponseRetrievalOptions {
   /** Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted on an update, the existing stored value is preserved; when never set, search falls back to 'and'. */
   keywordMatchMode?: InstancesUpdateResponseRetrievalOptionsKeywordMatchMode | null;
 }
-export const InstancesUpdateResponseRetrievalOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    boostBy: S.optional(
-      S.NullOr(InstancesUpdateResponseRetrievalOptionsBoostByList).pipe(T.Body("boost_by")),
-    ),
-    keywordMatchMode: S.optional(
-      S.NullOr(InstancesUpdateResponseRetrievalOptionsKeywordMatchMode).pipe(
-        T.Body("keyword_match_mode"),
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "InstancesUpdateResponseRetrievalOptions",
-}) as any as S.Schema<InstancesUpdateResponseRetrievalOptions>;
+export const InstancesUpdateResponseRetrievalOptions =
+  InstancesCreateResponseRetrievalOptions as any as S.Schema<InstancesUpdateResponseRetrievalOptions>;
 
 export type InstancesUpdateResponseSourceParamsExcludeItemsList = Array<string>;
 export const InstancesUpdateResponseSourceParamsExcludeItemsList =
@@ -11270,21 +10530,8 @@ export interface InstancesUpdateResponseSourceParamsWebCrawlerDiscoverOptions {
   /** Where the crawler looks for URLs: 'sitemaps' reads sitemap XML only, 'links' follows page links only, 'all' does both. */
   source?: InstancesUpdateResponseSourceParamsWebCrawlerDiscoverOptionsSource | null;
 }
-export const InstancesUpdateResponseSourceParamsWebCrawlerDiscoverOptions = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      depth: S.optional(S.NullOr(S.Number)),
-      includeExternalLinks: S.optional(S.NullOr(S.Boolean).pipe(T.Body("include_external_links"))),
-      includeSubdomains: S.optional(S.NullOr(S.Boolean).pipe(T.Body("include_subdomains"))),
-      limit: S.optional(S.NullOr(S.Number)),
-      maxAge: S.optional(S.NullOr(S.Number).pipe(T.Body("max_age"))),
-      source: S.optional(
-        S.NullOr(InstancesUpdateResponseSourceParamsWebCrawlerDiscoverOptionsSource),
-      ),
-    }),
-).annotate({
-  identifier: "InstancesUpdateResponseSourceParamsWebCrawlerDiscoverOptions",
-}) as any as S.Schema<InstancesUpdateResponseSourceParamsWebCrawlerDiscoverOptions>;
+export const InstancesUpdateResponseSourceParamsWebCrawlerDiscoverOptions =
+  InstancesCreateResponseSourceParamsWebCrawlerDiscoverOptions as any as S.Schema<InstancesUpdateResponseSourceParamsWebCrawlerDiscoverOptions>;
 
 export type InstancesUpdateResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem =
   InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem;
@@ -11536,15 +10783,8 @@ export interface NamespacesUpdateRequestPublicEndpointParamsRateLimit {
   requests?: number;
   technique?: NamespacesUpdateRequestPublicEndpointParamsRateLimitTechnique | (string & {});
 }
-export const NamespacesUpdateRequestPublicEndpointParamsRateLimit = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    periodMs: S.optional(S.Number.pipe(T.Body("period_ms"))),
-    requests: S.optional(S.Number),
-    technique: S.optional(NamespacesUpdateRequestPublicEndpointParamsRateLimitTechnique),
-  }),
-).annotate({
-  identifier: "NamespacesUpdateRequestPublicEndpointParamsRateLimit",
-}) as any as S.Schema<NamespacesUpdateRequestPublicEndpointParamsRateLimit>;
+export const NamespacesUpdateRequestPublicEndpointParamsRateLimit =
+  InstancesCreateRequestPublicEndpointParamsRateLimit as any as S.Schema<NamespacesUpdateRequestPublicEndpointParamsRateLimit>;
 
 export type NamespacesUpdateRequestPublicEndpointParamsSearchEndpoint =
   InstancesCreateRequestPublicEndpointParamsSearchEndpoint;
@@ -11655,15 +10895,8 @@ export interface NamespacesUpdateResponsePublicEndpointParamsRateLimit {
   requests?: number | null;
   technique?: NamespacesUpdateResponsePublicEndpointParamsRateLimitTechnique | null;
 }
-export const NamespacesUpdateResponsePublicEndpointParamsRateLimit = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    periodMs: S.optional(S.NullOr(S.Number).pipe(T.Body("period_ms"))),
-    requests: S.optional(S.NullOr(S.Number)),
-    technique: S.optional(S.NullOr(NamespacesUpdateResponsePublicEndpointParamsRateLimitTechnique)),
-  }),
-).annotate({
-  identifier: "NamespacesUpdateResponsePublicEndpointParamsRateLimit",
-}) as any as S.Schema<NamespacesUpdateResponsePublicEndpointParamsRateLimit>;
+export const NamespacesUpdateResponsePublicEndpointParamsRateLimit =
+  InstancesCreateResponsePublicEndpointParamsRateLimit as any as S.Schema<NamespacesUpdateResponsePublicEndpointParamsRateLimit>;
 
 export type NamespacesUpdateResponsePublicEndpointParamsSearchEndpoint =
   InstancesCreateResponsePublicEndpointParamsSearchEndpoint;
@@ -11774,20 +11007,13 @@ export interface NamespacesInstancesUpdateRequestCustomMetadataItem {
   dataType: NamespacesInstancesUpdateRequestCustomMetadataItemDataType | (string & {});
   fieldName: string;
 }
-export const NamespacesInstancesUpdateRequestCustomMetadataItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dataType: NamespacesInstancesUpdateRequestCustomMetadataItemDataType.pipe(T.Body("data_type")),
-    fieldName: S.String.pipe(T.Body("field_name")),
-  }),
-).annotate({
-  identifier: "NamespacesInstancesUpdateRequestCustomMetadataItem",
-}) as any as S.Schema<NamespacesInstancesUpdateRequestCustomMetadataItem>;
+export const NamespacesInstancesUpdateRequestCustomMetadataItem =
+  InstancesCreateRequestCustomMetadataItem as any as S.Schema<NamespacesInstancesUpdateRequestCustomMetadataItem>;
 
 export type NamespacesInstancesUpdateRequestCustomMetadataList =
   Array<NamespacesInstancesUpdateRequestCustomMetadataItem>;
-export const NamespacesInstancesUpdateRequestCustomMetadataList = /*@__PURE__*/ S.Array(
-  NamespacesInstancesUpdateRequestCustomMetadataItem,
-) as any as S.Schema<NamespacesInstancesUpdateRequestCustomMetadataList>;
+export const NamespacesInstancesUpdateRequestCustomMetadataList =
+  InstancesCreateRequestCustomMetadataList as any as S.Schema<NamespacesInstancesUpdateRequestCustomMetadataList>;
 
 export type NamespacesInstancesUpdateRequestFusionMethod = "max" | "rrf";
 export const NamespacesInstancesUpdateRequestFusionMethod = S.String;
@@ -11806,18 +11032,8 @@ export interface NamespacesInstancesUpdateRequestIndexingOptions {
   /** Enables OCR ingestion for PDFs and images. Changing this triggers a full re-index. Defaults to false. */
   useOcr?: boolean;
 }
-export const NamespacesInstancesUpdateRequestIndexingOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    keywordTokenizer: S.optional(
-      NamespacesInstancesUpdateRequestIndexingOptionsKeywordTokenizer.pipe(
-        T.Body("keyword_tokenizer"),
-      ),
-    ),
-    useOcr: S.optional(S.Boolean.pipe(T.Body("use_ocr"))),
-  }),
-).annotate({
-  identifier: "NamespacesInstancesUpdateRequestIndexingOptions",
-}) as any as S.Schema<NamespacesInstancesUpdateRequestIndexingOptions>;
+export const NamespacesInstancesUpdateRequestIndexingOptions =
+  NamespacesInstancesCreateRequestIndexingOptions as any as S.Schema<NamespacesInstancesUpdateRequestIndexingOptions>;
 
 export type NamespacesInstancesUpdateRequestMetadata = InstancesCreateRequestMetadata;
 export const NamespacesInstancesUpdateRequestMetadata = InstancesCreateRequestMetadata;
@@ -11853,15 +11069,7 @@ export interface NamespacesInstancesUpdateRequestPublicEndpointParamsRateLimit {
     | (string & {});
 }
 export const NamespacesInstancesUpdateRequestPublicEndpointParamsRateLimit =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      periodMs: S.optional(S.Number.pipe(T.Body("period_ms"))),
-      requests: S.optional(S.Number),
-      technique: S.optional(NamespacesInstancesUpdateRequestPublicEndpointParamsRateLimitTechnique),
-    }),
-  ).annotate({
-    identifier: "NamespacesInstancesUpdateRequestPublicEndpointParamsRateLimit",
-  }) as any as S.Schema<NamespacesInstancesUpdateRequestPublicEndpointParamsRateLimit>;
+  NamespacesInstancesCreateRequestPublicEndpointParamsRateLimit as any as S.Schema<NamespacesInstancesUpdateRequestPublicEndpointParamsRateLimit>;
 
 export type NamespacesInstancesUpdateRequestPublicEndpointParamsSearchEndpoint =
   InstancesCreateRequestPublicEndpointParamsSearchEndpoint;
@@ -11924,21 +11132,13 @@ export interface NamespacesInstancesUpdateRequestRetrievalOptionsBoostByItem {
   /** Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional -- defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. */
   direction?: NamespacesInstancesUpdateRequestRetrievalOptionsBoostByItemDirection | (string & {});
 }
-export const NamespacesInstancesUpdateRequestRetrievalOptionsBoostByItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      field: S.String,
-      direction: S.optional(NamespacesInstancesUpdateRequestRetrievalOptionsBoostByItemDirection),
-    }),
-).annotate({
-  identifier: "NamespacesInstancesUpdateRequestRetrievalOptionsBoostByItem",
-}) as any as S.Schema<NamespacesInstancesUpdateRequestRetrievalOptionsBoostByItem>;
+export const NamespacesInstancesUpdateRequestRetrievalOptionsBoostByItem =
+  NamespacesInstancesCreateRequestRetrievalOptionsBoostByItem as any as S.Schema<NamespacesInstancesUpdateRequestRetrievalOptionsBoostByItem>;
 
 export type NamespacesInstancesUpdateRequestRetrievalOptionsBoostByList =
   Array<NamespacesInstancesUpdateRequestRetrievalOptionsBoostByItem>;
-export const NamespacesInstancesUpdateRequestRetrievalOptionsBoostByList = /*@__PURE__*/ S.Array(
-  NamespacesInstancesUpdateRequestRetrievalOptionsBoostByItem,
-) as any as S.Schema<NamespacesInstancesUpdateRequestRetrievalOptionsBoostByList>;
+export const NamespacesInstancesUpdateRequestRetrievalOptionsBoostByList =
+  NamespacesInstancesCreateRequestRetrievalOptionsBoostByList as any as S.Schema<NamespacesInstancesUpdateRequestRetrievalOptionsBoostByList>;
 
 export type NamespacesInstancesUpdateRequestRetrievalOptionsKeywordMatchMode = "and" | "or";
 export const NamespacesInstancesUpdateRequestRetrievalOptionsKeywordMatchMode = S.String;
@@ -11951,20 +11151,8 @@ export interface NamespacesInstancesUpdateRequestRetrievalOptions {
     | NamespacesInstancesUpdateRequestRetrievalOptionsKeywordMatchMode
     | (string & {});
 }
-export const NamespacesInstancesUpdateRequestRetrievalOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    boostBy: S.optional(
-      NamespacesInstancesUpdateRequestRetrievalOptionsBoostByList.pipe(T.Body("boost_by")),
-    ),
-    keywordMatchMode: S.optional(
-      NamespacesInstancesUpdateRequestRetrievalOptionsKeywordMatchMode.pipe(
-        T.Body("keyword_match_mode"),
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "NamespacesInstancesUpdateRequestRetrievalOptions",
-}) as any as S.Schema<NamespacesInstancesUpdateRequestRetrievalOptions>;
+export const NamespacesInstancesUpdateRequestRetrievalOptions =
+  NamespacesInstancesCreateRequestRetrievalOptions as any as S.Schema<NamespacesInstancesUpdateRequestRetrievalOptions>;
 
 export type NamespacesInstancesUpdateRequestSourceParamsExcludeItemsList = Array<string>;
 export const NamespacesInstancesUpdateRequestSourceParamsExcludeItemsList =
@@ -11997,20 +11185,7 @@ export interface NamespacesInstancesUpdateRequestSourceParamsWebCrawlerDiscoverO
     | (string & {});
 }
 export const NamespacesInstancesUpdateRequestSourceParamsWebCrawlerDiscoverOptions =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      depth: S.optional(S.Number),
-      includeExternalLinks: S.optional(S.Boolean.pipe(T.Body("include_external_links"))),
-      includeSubdomains: S.optional(S.Boolean.pipe(T.Body("include_subdomains"))),
-      limit: S.optional(S.Number),
-      maxAge: S.optional(S.Number.pipe(T.Body("max_age"))),
-      source: S.optional(
-        NamespacesInstancesUpdateRequestSourceParamsWebCrawlerDiscoverOptionsSource,
-      ),
-    }),
-  ).annotate({
-    identifier: "NamespacesInstancesUpdateRequestSourceParamsWebCrawlerDiscoverOptions",
-  }) as any as S.Schema<NamespacesInstancesUpdateRequestSourceParamsWebCrawlerDiscoverOptions>;
+  NamespacesInstancesCreateRequestSourceParamsWebCrawlerDiscoverOptions as any as S.Schema<NamespacesInstancesUpdateRequestSourceParamsWebCrawlerDiscoverOptions>;
 
 export type NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem =
   InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem;
@@ -12260,20 +11435,13 @@ export interface NamespacesInstancesUpdateResponseCustomMetadataItem {
   dataType: NamespacesInstancesUpdateResponseCustomMetadataItemDataType;
   fieldName: string;
 }
-export const NamespacesInstancesUpdateResponseCustomMetadataItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dataType: NamespacesInstancesUpdateResponseCustomMetadataItemDataType.pipe(T.Body("data_type")),
-    fieldName: S.String.pipe(T.Body("field_name")),
-  }),
-).annotate({
-  identifier: "NamespacesInstancesUpdateResponseCustomMetadataItem",
-}) as any as S.Schema<NamespacesInstancesUpdateResponseCustomMetadataItem>;
+export const NamespacesInstancesUpdateResponseCustomMetadataItem =
+  InstancesCreateRequestCustomMetadataItem as any as S.Schema<NamespacesInstancesUpdateResponseCustomMetadataItem>;
 
 export type NamespacesInstancesUpdateResponseCustomMetadataList =
   Array<NamespacesInstancesUpdateResponseCustomMetadataItem>;
-export const NamespacesInstancesUpdateResponseCustomMetadataList = /*@__PURE__*/ S.Array(
-  NamespacesInstancesUpdateResponseCustomMetadataItem,
-) as any as S.Schema<NamespacesInstancesUpdateResponseCustomMetadataList>;
+export const NamespacesInstancesUpdateResponseCustomMetadataList =
+  InstancesCreateRequestCustomMetadataList as any as S.Schema<NamespacesInstancesUpdateResponseCustomMetadataList>;
 
 export type NamespacesInstancesUpdateResponseFusionMethod = "max" | "rrf";
 export const NamespacesInstancesUpdateResponseFusionMethod = S.String;
@@ -12290,18 +11458,8 @@ export interface NamespacesInstancesUpdateResponseIndexingOptions {
   /** Enables OCR ingestion for PDFs and images. Changing this triggers a full re-index. Defaults to false. */
   useOcr?: boolean | null;
 }
-export const NamespacesInstancesUpdateResponseIndexingOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    keywordTokenizer: S.optional(
-      S.NullOr(NamespacesInstancesUpdateResponseIndexingOptionsKeywordTokenizer).pipe(
-        T.Body("keyword_tokenizer"),
-      ),
-    ),
-    useOcr: S.optional(S.NullOr(S.Boolean).pipe(T.Body("use_ocr"))),
-  }),
-).annotate({
-  identifier: "NamespacesInstancesUpdateResponseIndexingOptions",
-}) as any as S.Schema<NamespacesInstancesUpdateResponseIndexingOptions>;
+export const NamespacesInstancesUpdateResponseIndexingOptions =
+  InstancesCreateResponseIndexingOptions as any as S.Schema<NamespacesInstancesUpdateResponseIndexingOptions>;
 
 export type NamespacesInstancesUpdateResponseMetadata = InstancesCreateResponseMetadata;
 export const NamespacesInstancesUpdateResponseMetadata = InstancesCreateResponseMetadata;
@@ -12336,17 +11494,7 @@ export interface NamespacesInstancesUpdateResponsePublicEndpointParamsRateLimit 
   technique?: NamespacesInstancesUpdateResponsePublicEndpointParamsRateLimitTechnique | null;
 }
 export const NamespacesInstancesUpdateResponsePublicEndpointParamsRateLimit =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      periodMs: S.optional(S.NullOr(S.Number).pipe(T.Body("period_ms"))),
-      requests: S.optional(S.NullOr(S.Number)),
-      technique: S.optional(
-        S.NullOr(NamespacesInstancesUpdateResponsePublicEndpointParamsRateLimitTechnique),
-      ),
-    }),
-  ).annotate({
-    identifier: "NamespacesInstancesUpdateResponsePublicEndpointParamsRateLimit",
-  }) as any as S.Schema<NamespacesInstancesUpdateResponsePublicEndpointParamsRateLimit>;
+  NamespacesInstancesCreateResponsePublicEndpointParamsRateLimit as any as S.Schema<NamespacesInstancesUpdateResponsePublicEndpointParamsRateLimit>;
 
 export type NamespacesInstancesUpdateResponsePublicEndpointParamsSearchEndpoint =
   InstancesCreateResponsePublicEndpointParamsSearchEndpoint;
@@ -12413,23 +11561,13 @@ export interface NamespacesInstancesUpdateResponseRetrievalOptionsBoostByItem {
   /** Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional -- defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields. */
   direction?: NamespacesInstancesUpdateResponseRetrievalOptionsBoostByItemDirection | null;
 }
-export const NamespacesInstancesUpdateResponseRetrievalOptionsBoostByItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      field: S.String,
-      direction: S.optional(
-        S.NullOr(NamespacesInstancesUpdateResponseRetrievalOptionsBoostByItemDirection),
-      ),
-    }),
-).annotate({
-  identifier: "NamespacesInstancesUpdateResponseRetrievalOptionsBoostByItem",
-}) as any as S.Schema<NamespacesInstancesUpdateResponseRetrievalOptionsBoostByItem>;
+export const NamespacesInstancesUpdateResponseRetrievalOptionsBoostByItem =
+  NamespacesInstancesCreateResponseRetrievalOptionsBoostByItem as any as S.Schema<NamespacesInstancesUpdateResponseRetrievalOptionsBoostByItem>;
 
 export type NamespacesInstancesUpdateResponseRetrievalOptionsBoostByList =
   Array<NamespacesInstancesUpdateResponseRetrievalOptionsBoostByItem>;
-export const NamespacesInstancesUpdateResponseRetrievalOptionsBoostByList = /*@__PURE__*/ S.Array(
-  NamespacesInstancesUpdateResponseRetrievalOptionsBoostByItem,
-) as any as S.Schema<NamespacesInstancesUpdateResponseRetrievalOptionsBoostByList>;
+export const NamespacesInstancesUpdateResponseRetrievalOptionsBoostByList =
+  NamespacesInstancesCreateResponseRetrievalOptionsBoostByList as any as S.Schema<NamespacesInstancesUpdateResponseRetrievalOptionsBoostByList>;
 
 export type NamespacesInstancesUpdateResponseRetrievalOptionsKeywordMatchMode = "and" | "or";
 export const NamespacesInstancesUpdateResponseRetrievalOptionsKeywordMatchMode = S.String;
@@ -12440,22 +11578,8 @@ export interface NamespacesInstancesUpdateResponseRetrievalOptions {
   /** Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted on an update, the existing stored value is preserved; when never set, search falls back to 'and'. */
   keywordMatchMode?: NamespacesInstancesUpdateResponseRetrievalOptionsKeywordMatchMode | null;
 }
-export const NamespacesInstancesUpdateResponseRetrievalOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    boostBy: S.optional(
-      S.NullOr(NamespacesInstancesUpdateResponseRetrievalOptionsBoostByList).pipe(
-        T.Body("boost_by"),
-      ),
-    ),
-    keywordMatchMode: S.optional(
-      S.NullOr(NamespacesInstancesUpdateResponseRetrievalOptionsKeywordMatchMode).pipe(
-        T.Body("keyword_match_mode"),
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "NamespacesInstancesUpdateResponseRetrievalOptions",
-}) as any as S.Schema<NamespacesInstancesUpdateResponseRetrievalOptions>;
+export const NamespacesInstancesUpdateResponseRetrievalOptions =
+  NamespacesInstancesCreateResponseRetrievalOptions as any as S.Schema<NamespacesInstancesUpdateResponseRetrievalOptions>;
 
 export type NamespacesInstancesUpdateResponseSourceParamsExcludeItemsList = Array<string>;
 export const NamespacesInstancesUpdateResponseSourceParamsExcludeItemsList =
@@ -12487,20 +11611,7 @@ export interface NamespacesInstancesUpdateResponseSourceParamsWebCrawlerDiscover
   source?: NamespacesInstancesUpdateResponseSourceParamsWebCrawlerDiscoverOptionsSource | null;
 }
 export const NamespacesInstancesUpdateResponseSourceParamsWebCrawlerDiscoverOptions =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      depth: S.optional(S.NullOr(S.Number)),
-      includeExternalLinks: S.optional(S.NullOr(S.Boolean).pipe(T.Body("include_external_links"))),
-      includeSubdomains: S.optional(S.NullOr(S.Boolean).pipe(T.Body("include_subdomains"))),
-      limit: S.optional(S.NullOr(S.Number)),
-      maxAge: S.optional(S.NullOr(S.Number).pipe(T.Body("max_age"))),
-      source: S.optional(
-        S.NullOr(NamespacesInstancesUpdateResponseSourceParamsWebCrawlerDiscoverOptionsSource),
-      ),
-    }),
-  ).annotate({
-    identifier: "NamespacesInstancesUpdateResponseSourceParamsWebCrawlerDiscoverOptions",
-  }) as any as S.Schema<NamespacesInstancesUpdateResponseSourceParamsWebCrawlerDiscoverOptions>;
+  NamespacesInstancesCreateResponseSourceParamsWebCrawlerDiscoverOptions as any as S.Schema<NamespacesInstancesUpdateResponseSourceParamsWebCrawlerDiscoverOptions>;
 
 export type NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem =
   InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem;

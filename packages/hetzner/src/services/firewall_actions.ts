@@ -281,9 +281,8 @@ export const ListFirewallActionsRequestStatusItem = S.String;
 export type ListFirewallActionsRequestStatusList = Array<
   ListFirewallActionsRequestStatusItem | (string & {})
 >;
-export const ListFirewallActionsRequestStatusList = /*@__PURE__*/ S.Array(
-  ListFirewallActionsRequestStatusItem,
-) as any as S.Schema<ListFirewallActionsRequestStatusList>;
+export const ListFirewallActionsRequestStatusList =
+  ListFirewallActionsRequestSortList as any as S.Schema<ListFirewallActionsRequestStatusList>;
 
 export interface ListFirewallActionsRequest {
   /** ID of the Firewall. */
@@ -447,9 +446,8 @@ export const ListFirewallsActionsRequestSortItem = S.String;
 export type ListFirewallsActionsRequestSortList = Array<
   ListFirewallsActionsRequestSortItem | (string & {})
 >;
-export const ListFirewallsActionsRequestSortList = /*@__PURE__*/ S.Array(
-  ListFirewallsActionsRequestSortItem,
-) as any as S.Schema<ListFirewallsActionsRequestSortList>;
+export const ListFirewallsActionsRequestSortList =
+  ListFirewallActionsRequestSortList as any as S.Schema<ListFirewallsActionsRequestSortList>;
 
 /** Status of the Action. */
 export type ListFirewallsActionsRequestStatusItem = "running" | "success" | "error";
@@ -458,9 +456,8 @@ export const ListFirewallsActionsRequestStatusItem = S.String;
 export type ListFirewallsActionsRequestStatusList = Array<
   ListFirewallsActionsRequestStatusItem | (string & {})
 >;
-export const ListFirewallsActionsRequestStatusList = /*@__PURE__*/ S.Array(
-  ListFirewallsActionsRequestStatusItem,
-) as any as S.Schema<ListFirewallsActionsRequestStatusList>;
+export const ListFirewallsActionsRequestStatusList =
+  ListFirewallActionsRequestSortList as any as S.Schema<ListFirewallsActionsRequestStatusList>;
 
 export interface ListFirewallsActionsRequest {
   /** Filter the actions by ID. May be used multiple times. The response will only contain actions matching the specified IDs. */
@@ -590,22 +587,14 @@ export interface RemoveFirewallFromResourcesRequestRemoveFromItem {
   /** [Label Selector](#description/label-selector) the [Firewall](#tag/firewalls) is applied to. Only set for `type` `label_selector`, otherwise `null`. */
   label_selector?: ApplyFirewallToResourcesRequestApplyToItemLabelSelector;
 }
-export const RemoveFirewallFromResourcesRequestRemoveFromItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: RemoveFirewallFromResourcesRequestRemoveFromItemType,
-    server: S.optional(ApplyFirewallToResourcesRequestApplyToItemServer),
-    label_selector: S.optional(ApplyFirewallToResourcesRequestApplyToItemLabelSelector),
-  }),
-).annotate({
-  identifier: "RemoveFirewallFromResourcesRequestRemoveFromItem",
-}) as any as S.Schema<RemoveFirewallFromResourcesRequestRemoveFromItem>;
+export const RemoveFirewallFromResourcesRequestRemoveFromItem =
+  ApplyFirewallToResourcesRequestApplyToItem as any as S.Schema<RemoveFirewallFromResourcesRequestRemoveFromItem>;
 
 /** Resources to remove the [Firewall](#tag/firewalls) from. */
 export type RemoveFirewallFromResourcesRequestRemoveFromList =
   Array<RemoveFirewallFromResourcesRequestRemoveFromItem>;
-export const RemoveFirewallFromResourcesRequestRemoveFromList = /*@__PURE__*/ S.Array(
-  RemoveFirewallFromResourcesRequestRemoveFromItem,
-) as any as S.Schema<RemoveFirewallFromResourcesRequestRemoveFromList>;
+export const RemoveFirewallFromResourcesRequestRemoveFromList =
+  ApplyFirewallToResourcesRequestApplyToList as any as S.Schema<RemoveFirewallFromResourcesRequestRemoveFromList>;
 
 export interface RemoveFirewallFromResourcesRequest {
   /** ID of the Firewall. */

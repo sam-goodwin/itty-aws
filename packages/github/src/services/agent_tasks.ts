@@ -698,14 +698,8 @@ export interface GetTaskByRepoAndIdResponseSessionsItemUsage {
   /** Number of billing units used by this session. When the `type` is `ai_credits`, the value is a whole number, expressed in nano units. When presenting this to a human, divide by 1,000,000,000 and round to one decimal place. When aggregating (for example, summing usage across sessions), sum the nano values first, and divide once at the end before presenting to a human to avoid losing precision. When the `type` is `premium_requests`, the value may be fractional (for example `1.5`). */
   amount: number;
 }
-export const GetTaskByRepoAndIdResponseSessionsItemUsage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: GetTaskByRepoAndIdResponseSessionsItemUsageType,
-    amount: S.Number,
-  }),
-).annotate({
-  identifier: "GetTaskByRepoAndIdResponseSessionsItemUsage",
-}) as any as S.Schema<GetTaskByRepoAndIdResponseSessionsItemUsage>;
+export const GetTaskByRepoAndIdResponseSessionsItemUsage =
+  GetTaskByIdResponseSessionsItemUsage as any as S.Schema<GetTaskByRepoAndIdResponseSessionsItemUsage>;
 
 /** Error details for a failed session */
 export type GetTaskByRepoAndIdResponseSessionsItemError = GetTaskByIdResponseSessionsItemError;
@@ -746,34 +740,13 @@ export interface GetTaskByRepoAndIdResponseSessionsItem {
   /** Error details for a failed session */
   error?: GetTaskByIdResponseSessionsItemError;
 }
-export const GetTaskByRepoAndIdResponseSessionsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.optional(S.String),
-    user: S.optional(CreateTaskInRepoResponseCreator),
-    owner: S.optional(CreateTaskInRepoResponseCreator),
-    repository: S.optional(CreateTaskInRepoResponseRepository),
-    task_id: S.optional(S.String),
-    state: GetTaskByRepoAndIdResponseSessionsItemState,
-    created_at: S.String,
-    updated_at: S.optional(S.String),
-    completed_at: S.optional(S.String),
-    prompt: S.optional(S.String),
-    head_ref: S.optional(S.String),
-    base_ref: S.optional(S.String),
-    model: S.optional(S.String),
-    usage: S.optional(GetTaskByRepoAndIdResponseSessionsItemUsage),
-    error: S.optional(GetTaskByIdResponseSessionsItemError),
-  }),
-).annotate({
-  identifier: "GetTaskByRepoAndIdResponseSessionsItem",
-}) as any as S.Schema<GetTaskByRepoAndIdResponseSessionsItem>;
+export const GetTaskByRepoAndIdResponseSessionsItem =
+  GetTaskByIdResponseSessionsItem as any as S.Schema<GetTaskByRepoAndIdResponseSessionsItem>;
 
 /** Sessions associated with this task */
 export type GetTaskByRepoAndIdResponseSessionsList = Array<GetTaskByRepoAndIdResponseSessionsItem>;
-export const GetTaskByRepoAndIdResponseSessionsList = /*@__PURE__*/ S.Array(
-  GetTaskByRepoAndIdResponseSessionsItem,
-) as any as S.Schema<GetTaskByRepoAndIdResponseSessionsList>;
+export const GetTaskByRepoAndIdResponseSessionsList =
+  GetTaskByIdResponseSessionsList as any as S.Schema<GetTaskByRepoAndIdResponseSessionsList>;
 
 export interface GetTaskByRepoAndIdResponse {
   /** Unique task identifier */

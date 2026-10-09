@@ -527,33 +527,20 @@ export interface ReplacePaymentRuleRequestConditionsAllItem {
   operator: ReplacePaymentRuleRequestConditionsAllItemOperator | (string & {});
   value: PaymentRuleConditionValue;
 }
-export const ReplacePaymentRuleRequestConditionsAllItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    field: ReplacePaymentRuleRequestConditionsAllItemField,
-    operator: ReplacePaymentRuleRequestConditionsAllItemOperator,
-    value: PaymentRuleConditionValue,
-  }),
-).annotate({
-  identifier: "ReplacePaymentRuleRequestConditionsAllItem",
-}) as any as S.Schema<ReplacePaymentRuleRequestConditionsAllItem>;
+export const ReplacePaymentRuleRequestConditionsAllItem =
+  CreatePaymentRuleRequestConditionsAllItem as any as S.Schema<ReplacePaymentRuleRequestConditionsAllItem>;
 
 export type ReplacePaymentRuleRequestConditionsAllList =
   Array<ReplacePaymentRuleRequestConditionsAllItem>;
-export const ReplacePaymentRuleRequestConditionsAllList = /*@__PURE__*/ S.Array(
-  ReplacePaymentRuleRequestConditionsAllItem,
-) as any as S.Schema<ReplacePaymentRuleRequestConditionsAllList>;
+export const ReplacePaymentRuleRequestConditionsAllList =
+  CreatePaymentRuleRequestConditionsAllList as any as S.Schema<ReplacePaymentRuleRequestConditionsAllList>;
 
 /** The conditions a payment is matched against. Up to 10 conditions, and 8 KiB once serialized. */
 export interface ReplacePaymentRuleRequestConditions {
   all: ReplacePaymentRuleRequestConditionsAllList;
 }
-export const ReplacePaymentRuleRequestConditions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    all: ReplacePaymentRuleRequestConditionsAllList,
-  }),
-).annotate({
-  identifier: "ReplacePaymentRuleRequestConditions",
-}) as any as S.Schema<ReplacePaymentRuleRequestConditions>;
+export const ReplacePaymentRuleRequestConditions =
+  CreatePaymentRuleRequestConditions as any as S.Schema<ReplacePaymentRuleRequestConditions>;
 
 export interface ReplacePaymentRuleRequest {
   /** The payment rule ID. */

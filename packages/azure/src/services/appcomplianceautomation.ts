@@ -1508,9 +1508,8 @@ export const NotificationEvent = S.String;
 
 /** under which event notification should be sent. */
 export type WebhookPropertiesEventsList = Array<NotificationEvent>;
-export const WebhookPropertiesEventsList = /*@__PURE__*/ S.Array(
-  NotificationEvent,
-) as any as S.Schema<WebhookPropertiesEventsList>;
+export const WebhookPropertiesEventsList =
+  ScopingQuestionRulesList as any as S.Schema<WebhookPropertiesEventsList>;
 
 /** content type */
 export type ContentType = "application/json";
@@ -2268,15 +2267,8 @@ export interface ReportNestedResourceCheckNameAvailabilityResponse {
   /** Detailed reason why the given name is available. */
   message?: string;
 }
-export const ReportNestedResourceCheckNameAvailabilityResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nameAvailable: S.optional(S.Boolean),
-    reason: S.optional(ReportNestedResourceCheckNameAvailabilityResponseReason),
-    message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ReportNestedResourceCheckNameAvailabilityResponse",
-}) as any as S.Schema<ReportNestedResourceCheckNameAvailabilityResponse>;
+export const ReportNestedResourceCheckNameAvailabilityResponse =
+  CheckProviderActionNameAvailabilityResponse as any as S.Schema<ReportNestedResourceCheckNameAvailabilityResponse>;
 
 /** List of scoping question answers. */
 export type ScopingConfigurationPropertiesInputAnswersList = Array<ScopingAnswer>;

@@ -881,7 +881,8 @@ export type EncryptionAlgorithmSpec =
 export const EncryptionAlgorithmSpec = S.String;
 
 export type EncryptionAlgorithmSpecList = EncryptionAlgorithmSpec[];
-export const EncryptionAlgorithmSpecList = /*@__PURE__*/ S.Array(EncryptionAlgorithmSpec);
+export const EncryptionAlgorithmSpecList =
+  GrantOperationList as any as S.Schema<EncryptionAlgorithmSpecList>;
 export type SigningAlgorithmSpec =
   | "RSASSA_PSS_SHA_256"
   | "RSASSA_PSS_SHA_384"
@@ -900,12 +901,14 @@ export type SigningAlgorithmSpec =
 export const SigningAlgorithmSpec = S.String;
 
 export type SigningAlgorithmSpecList = SigningAlgorithmSpec[];
-export const SigningAlgorithmSpecList = /*@__PURE__*/ S.Array(SigningAlgorithmSpec);
+export const SigningAlgorithmSpecList =
+  GrantOperationList as any as S.Schema<SigningAlgorithmSpecList>;
 export type KeyAgreementAlgorithmSpec = "ECDH" | (string & {});
 export const KeyAgreementAlgorithmSpec = S.String;
 
 export type KeyAgreementAlgorithmSpecList = KeyAgreementAlgorithmSpec[];
-export const KeyAgreementAlgorithmSpecList = /*@__PURE__*/ S.Array(KeyAgreementAlgorithmSpec);
+export const KeyAgreementAlgorithmSpecList =
+  GrantOperationList as any as S.Schema<KeyAgreementAlgorithmSpecList>;
 export type MultiRegionKeyType = "PRIMARY" | "REPLICA" | (string & {});
 export const MultiRegionKeyType = S.String;
 
@@ -941,7 +944,7 @@ export type MacAlgorithmSpec =
 export const MacAlgorithmSpec = S.String;
 
 export type MacAlgorithmSpecList = MacAlgorithmSpec[];
-export const MacAlgorithmSpecList = /*@__PURE__*/ S.Array(MacAlgorithmSpec);
+export const MacAlgorithmSpecList = GrantOperationList as any as S.Schema<MacAlgorithmSpecList>;
 export interface XksKeyConfigurationType {
   Id?: string;
 }
@@ -1032,7 +1035,7 @@ export type DryRunModifierType = "IGNORE_CIPHERTEXT" | (string & {});
 export const DryRunModifierType = S.String;
 
 export type DryRunModifierList = DryRunModifierType[];
-export const DryRunModifierList = /*@__PURE__*/ S.Array(DryRunModifierType);
+export const DryRunModifierList = GrantOperationList as any as S.Schema<DryRunModifierList>;
 export interface DecryptRequest {
   CiphertextBlob?: Uint8Array;
   EncryptionContext?: { [key: string]: string | undefined };

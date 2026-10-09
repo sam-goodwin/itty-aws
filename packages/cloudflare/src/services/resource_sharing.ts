@@ -572,19 +572,8 @@ export interface DeleteResourceResponse {
   /** Resource Status. */
   status: ResourcesDeleteResponseStatus;
 }
-export const DeleteResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    created: S.String,
-    meta: S.Unknown,
-    modified: S.String,
-    resourceAccountId: S.String.pipe(T.Body("resource_account_id")),
-    resourceId: S.String.pipe(T.Body("resource_id")),
-    resourceType: ResourcesDeleteResponseResourceType.pipe(T.Body("resource_type")),
-    resourceVersion: S.Number.pipe(T.Body("resource_version")),
-    status: ResourcesDeleteResponseStatus,
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "DeleteResourceResponse" }) as any as S.Schema<DeleteResourceResponse>;
+export const DeleteResourceResponse =
+  CreateResourceResponse as any as S.Schema<DeleteResourceResponse>;
 
 export interface DeleteResourceSharingRequest {
   /** Account identifier. */
@@ -645,26 +634,12 @@ export interface DeleteResponseResourcesItem {
   /** Resource Status. */
   status: DeleteResponseResourcesItemStatus;
 }
-export const DeleteResponseResourcesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    created: S.String,
-    meta: S.Unknown,
-    modified: S.String,
-    resourceAccountId: S.String.pipe(T.Body("resource_account_id")),
-    resourceId: S.String.pipe(T.Body("resource_id")),
-    resourceType: DeleteResponseResourcesItemResourceType.pipe(T.Body("resource_type")),
-    resourceVersion: S.Number.pipe(T.Body("resource_version")),
-    status: DeleteResponseResourcesItemStatus,
-  }),
-).annotate({
-  identifier: "DeleteResponseResourcesItem",
-}) as any as S.Schema<DeleteResponseResourcesItem>;
+export const DeleteResponseResourcesItem =
+  CreateResponseResourcesItem as any as S.Schema<DeleteResponseResourcesItem>;
 
 export type DeleteResponseResourcesList = Array<DeleteResponseResourcesItem>;
-export const DeleteResponseResourcesList = /*@__PURE__*/ S.Array(
-  DeleteResponseResourcesItem,
-) as any as S.Schema<DeleteResponseResourcesList>;
+export const DeleteResponseResourcesList =
+  CreateResponseResourcesList as any as S.Schema<DeleteResponseResourcesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteResourceSharingResponse {
@@ -696,35 +671,8 @@ export interface DeleteResourceSharingResponse {
   /** A list of resources that are part of the share. This field is only included when requested via the 'include_resources' parameter. */
   resources?: DeleteResponseResourcesList | null;
 }
-export const DeleteResourceSharingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    accountId: S.String.pipe(T.Body("account_id")),
-    accountName: S.String.pipe(T.Body("account_name")),
-    created: S.String,
-    modified: S.String,
-    name: S.String,
-    organizationId: S.String.pipe(T.Body("organization_id")),
-    status: DeleteResponseStatus,
-    targetType: DeleteResponseTargetType.pipe(T.Body("target_type")),
-    associatedRecipientCount: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("associated_recipient_count")),
-    ),
-    associatingRecipientCount: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("associating_recipient_count")),
-    ),
-    disassociatedRecipientCount: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("disassociated_recipient_count")),
-    ),
-    disassociatingRecipientCount: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("disassociating_recipient_count")),
-    ),
-    kind: S.optional(S.NullOr(DeleteResponseKind)),
-    resources: S.optional(S.NullOr(DeleteResponseResourcesList)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "DeleteResourceSharingResponse",
-}) as any as S.Schema<DeleteResourceSharingResponse>;
+export const DeleteResourceSharingResponse =
+  CreateResourceSharingResponse as any as S.Schema<DeleteResourceSharingResponse>;
 
 export interface GetRecipientRequest {
   /** Account identifier. */
@@ -850,19 +798,7 @@ export interface GetResourceResponse {
   /** Resource Status. */
   status: ResourcesGetResponseStatus;
 }
-export const GetResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    created: S.String,
-    meta: S.Unknown,
-    modified: S.String,
-    resourceAccountId: S.String.pipe(T.Body("resource_account_id")),
-    resourceId: S.String.pipe(T.Body("resource_id")),
-    resourceType: ResourcesGetResponseResourceType.pipe(T.Body("resource_type")),
-    resourceVersion: S.Number.pipe(T.Body("resource_version")),
-    status: ResourcesGetResponseStatus,
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "GetResourceResponse" }) as any as S.Schema<GetResourceResponse>;
+export const GetResourceResponse = CreateResourceResponse as any as S.Schema<GetResourceResponse>;
 
 export interface GetResourceSharingRequest {
   /** Account identifier. */
@@ -1173,24 +1109,12 @@ export interface ResourcesListResultItem {
   /** Resource Status. */
   status: ResourcesListResultItemStatus;
 }
-export const ResourcesListResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    created: S.String,
-    meta: S.Unknown,
-    modified: S.String,
-    resourceAccountId: S.String.pipe(T.Body("resource_account_id")),
-    resourceId: S.String.pipe(T.Body("resource_id")),
-    resourceType: ResourcesListResultItemResourceType.pipe(T.Body("resource_type")),
-    resourceVersion: S.Number.pipe(T.Body("resource_version")),
-    status: ResourcesListResultItemStatus,
-  }),
-).annotate({ identifier: "ResourcesListResultItem" }) as any as S.Schema<ResourcesListResultItem>;
+export const ResourcesListResultItem =
+  GetResponseResourcesItem as any as S.Schema<ResourcesListResultItem>;
 
 export type ResourcesListResultList = Array<ResourcesListResultItem>;
-export const ResourcesListResultList = /*@__PURE__*/ S.Array(
-  ResourcesListResultItem,
-) as any as S.Schema<ResourcesListResultList>;
+export const ResourcesListResultList =
+  GetResponseResourcesList as any as S.Schema<ResourcesListResultList>;
 
 export interface ListResourcesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
@@ -1329,26 +1253,12 @@ export interface ListResultItemResourcesItem {
   /** Resource Status. */
   status: ListResultItemResourcesItemStatus;
 }
-export const ListResultItemResourcesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    created: S.String,
-    meta: S.Unknown,
-    modified: S.String,
-    resourceAccountId: S.String.pipe(T.Body("resource_account_id")),
-    resourceId: S.String.pipe(T.Body("resource_id")),
-    resourceType: ListResultItemResourcesItemResourceType.pipe(T.Body("resource_type")),
-    resourceVersion: S.Number.pipe(T.Body("resource_version")),
-    status: ListResultItemResourcesItemStatus,
-  }),
-).annotate({
-  identifier: "ListResultItemResourcesItem",
-}) as any as S.Schema<ListResultItemResourcesItem>;
+export const ListResultItemResourcesItem =
+  CreateResponseResourcesItem as any as S.Schema<ListResultItemResourcesItem>;
 
 export type ListResultItemResourcesList = Array<ListResultItemResourcesItem>;
-export const ListResultItemResourcesList = /*@__PURE__*/ S.Array(
-  ListResultItemResourcesItem,
-) as any as S.Schema<ListResultItemResourcesList>;
+export const ListResultItemResourcesList =
+  CreateResponseResourcesList as any as S.Schema<ListResultItemResourcesList>;
 
 export interface ListResultItem {
   /** Share identifier tag. */
@@ -1488,19 +1398,8 @@ export interface UpdateResourceResponse {
   /** Resource Status. */
   status: ResourcesUpdateResponseStatus;
 }
-export const UpdateResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    created: S.String,
-    meta: S.Unknown,
-    modified: S.String,
-    resourceAccountId: S.String.pipe(T.Body("resource_account_id")),
-    resourceId: S.String.pipe(T.Body("resource_id")),
-    resourceType: ResourcesUpdateResponseResourceType.pipe(T.Body("resource_type")),
-    resourceVersion: S.Number.pipe(T.Body("resource_version")),
-    status: ResourcesUpdateResponseStatus,
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "UpdateResourceResponse" }) as any as S.Schema<UpdateResourceResponse>;
+export const UpdateResourceResponse =
+  CreateResourceResponse as any as S.Schema<UpdateResourceResponse>;
 
 export interface UpdateResourceSharingRequest {
   /** Account identifier. */
@@ -1564,26 +1463,12 @@ export interface UpdateResponseResourcesItem {
   /** Resource Status. */
   status: UpdateResponseResourcesItemStatus;
 }
-export const UpdateResponseResourcesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    created: S.String,
-    meta: S.Unknown,
-    modified: S.String,
-    resourceAccountId: S.String.pipe(T.Body("resource_account_id")),
-    resourceId: S.String.pipe(T.Body("resource_id")),
-    resourceType: UpdateResponseResourcesItemResourceType.pipe(T.Body("resource_type")),
-    resourceVersion: S.Number.pipe(T.Body("resource_version")),
-    status: UpdateResponseResourcesItemStatus,
-  }),
-).annotate({
-  identifier: "UpdateResponseResourcesItem",
-}) as any as S.Schema<UpdateResponseResourcesItem>;
+export const UpdateResponseResourcesItem =
+  CreateResponseResourcesItem as any as S.Schema<UpdateResponseResourcesItem>;
 
 export type UpdateResponseResourcesList = Array<UpdateResponseResourcesItem>;
-export const UpdateResponseResourcesList = /*@__PURE__*/ S.Array(
-  UpdateResponseResourcesItem,
-) as any as S.Schema<UpdateResponseResourcesList>;
+export const UpdateResponseResourcesList =
+  CreateResponseResourcesList as any as S.Schema<UpdateResponseResourcesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateResourceSharingResponse {
@@ -1615,35 +1500,8 @@ export interface UpdateResourceSharingResponse {
   /** A list of resources that are part of the share. This field is only included when requested via the 'include_resources' parameter. */
   resources?: UpdateResponseResourcesList | null;
 }
-export const UpdateResourceSharingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    accountId: S.String.pipe(T.Body("account_id")),
-    accountName: S.String.pipe(T.Body("account_name")),
-    created: S.String,
-    modified: S.String,
-    name: S.String,
-    organizationId: S.String.pipe(T.Body("organization_id")),
-    status: UpdateResponseStatus,
-    targetType: UpdateResponseTargetType.pipe(T.Body("target_type")),
-    associatedRecipientCount: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("associated_recipient_count")),
-    ),
-    associatingRecipientCount: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("associating_recipient_count")),
-    ),
-    disassociatedRecipientCount: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("disassociated_recipient_count")),
-    ),
-    disassociatingRecipientCount: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("disassociating_recipient_count")),
-    ),
-    kind: S.optional(S.NullOr(UpdateResponseKind)),
-    resources: S.optional(S.NullOr(UpdateResponseResourcesList)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "UpdateResourceSharingResponse",
-}) as any as S.Schema<UpdateResourceSharingResponse>;
+export const UpdateResourceSharingResponse =
+  CreateResourceSharingResponse as any as S.Schema<UpdateResourceSharingResponse>;
 
 export type CreateRecipientError = ShareNotFound | Forbidden | CloudflareOpError;
 /** Adds a single recipient to an account-targeted resource share, granting them access to the shared resources. The recipient account must belong to the same organization as the share owner. To replace the entire recipient list in one call, use `PUT /accounts/{account_id}/shares/{share_id}/recipients` instead. */

@@ -1403,9 +1403,8 @@ export const ArimaResultSeasonalPeriodsItemEnum = S.String;
 export type ArimaResultSeasonalPeriodsItemEnumList = Array<
   ArimaResultSeasonalPeriodsItemEnum | (string & {})
 >;
-export const ArimaResultSeasonalPeriodsItemEnumList = /*@__PURE__*/ S.Array(
-  ArimaResultSeasonalPeriodsItemEnum,
-) as any as S.Schema<ArimaResultSeasonalPeriodsItemEnumList>;
+export const ArimaResultSeasonalPeriodsItemEnumList =
+  ArimaModelInfoSeasonalPeriodsItemEnumList as any as S.Schema<ArimaResultSeasonalPeriodsItemEnumList>;
 
 /** (Auto-)arima fitting result. Wrap everything in ArimaResult for easier refactoring if we want to use model-specific iteration results. */
 export interface ArimaResult {
@@ -1626,9 +1625,8 @@ export const TrainingOptionsHolidayRegionsItemEnum = S.String;
 export type TrainingOptionsHolidayRegionsItemEnumList = Array<
   TrainingOptionsHolidayRegionsItemEnum | (string & {})
 >;
-export const TrainingOptionsHolidayRegionsItemEnumList = /*@__PURE__*/ S.Array(
-  TrainingOptionsHolidayRegionsItemEnum,
-) as any as S.Schema<TrainingOptionsHolidayRegionsItemEnumList>;
+export const TrainingOptionsHolidayRegionsItemEnumList =
+  ArimaModelInfoSeasonalPeriodsItemEnumList as any as S.Schema<TrainingOptionsHolidayRegionsItemEnumList>;
 
 export type TrainingOptionsDataSplitMethodEnum =
   | "DATA_SPLIT_METHOD_UNSPECIFIED"
@@ -1671,9 +1669,8 @@ export const TrainingOptionsHparamTuningObjectivesItemEnum = S.String;
 export type TrainingOptionsHparamTuningObjectivesItemEnumList = Array<
   TrainingOptionsHparamTuningObjectivesItemEnum | (string & {})
 >;
-export const TrainingOptionsHparamTuningObjectivesItemEnumList = /*@__PURE__*/ S.Array(
-  TrainingOptionsHparamTuningObjectivesItemEnum,
-) as any as S.Schema<TrainingOptionsHparamTuningObjectivesItemEnumList>;
+export const TrainingOptionsHparamTuningObjectivesItemEnumList =
+  ArimaModelInfoSeasonalPeriodsItemEnumList as any as S.Schema<TrainingOptionsHparamTuningObjectivesItemEnumList>;
 
 export type TrainingOptionsPcaSolverEnum = "UNSPECIFIED" | "FULL" | "RANDOMIZED" | "AUTO";
 export const TrainingOptionsPcaSolverEnum = S.String;
@@ -2351,9 +2348,8 @@ export const ArimaSingleModelForecastingMetricsSeasonalPeriodsItemEnum = S.Strin
 export type ArimaSingleModelForecastingMetricsSeasonalPeriodsItemEnumList = Array<
   ArimaSingleModelForecastingMetricsSeasonalPeriodsItemEnum | (string & {})
 >;
-export const ArimaSingleModelForecastingMetricsSeasonalPeriodsItemEnumList = /*@__PURE__*/ S.Array(
-  ArimaSingleModelForecastingMetricsSeasonalPeriodsItemEnum,
-) as any as S.Schema<ArimaSingleModelForecastingMetricsSeasonalPeriodsItemEnumList>;
+export const ArimaSingleModelForecastingMetricsSeasonalPeriodsItemEnumList =
+  ArimaModelInfoSeasonalPeriodsItemEnumList as any as S.Schema<ArimaSingleModelForecastingMetricsSeasonalPeriodsItemEnumList>;
 
 /** Model evaluation metrics for a single ARIMA forecasting model. */
 export interface ArimaSingleModelForecastingMetrics {
@@ -2417,9 +2413,8 @@ export const ArimaForecastingMetricsSeasonalPeriodsItemEnum = S.String;
 export type ArimaForecastingMetricsSeasonalPeriodsItemEnumList = Array<
   ArimaForecastingMetricsSeasonalPeriodsItemEnum | (string & {})
 >;
-export const ArimaForecastingMetricsSeasonalPeriodsItemEnumList = /*@__PURE__*/ S.Array(
-  ArimaForecastingMetricsSeasonalPeriodsItemEnum,
-) as any as S.Schema<ArimaForecastingMetricsSeasonalPeriodsItemEnumList>;
+export const ArimaForecastingMetricsSeasonalPeriodsItemEnumList =
+  ArimaModelInfoSeasonalPeriodsItemEnumList as any as S.Schema<ArimaForecastingMetricsSeasonalPeriodsItemEnumList>;
 
 /** Model evaluation metrics for ARIMA forecasting models. */
 export interface ArimaForecastingMetrics {
@@ -3580,9 +3575,8 @@ export const JobConfigurationLoadDecimalTargetTypesItemEnum = S.String;
 export type JobConfigurationLoadDecimalTargetTypesItemEnumList = Array<
   JobConfigurationLoadDecimalTargetTypesItemEnum | (string & {})
 >;
-export const JobConfigurationLoadDecimalTargetTypesItemEnumList = /*@__PURE__*/ S.Array(
-  JobConfigurationLoadDecimalTargetTypesItemEnum,
-) as any as S.Schema<JobConfigurationLoadDecimalTargetTypesItemEnumList>;
+export const JobConfigurationLoadDecimalTargetTypesItemEnumList =
+  ArimaModelInfoSeasonalPeriodsItemEnumList as any as S.Schema<JobConfigurationLoadDecimalTargetTypesItemEnumList>;
 
 /** Configuration for Cloud KMS encryption settings. */
 export interface EncryptionConfiguration {
@@ -4060,9 +4054,8 @@ export const ExternalDataConfigurationDecimalTargetTypesItemEnum = S.String;
 export type ExternalDataConfigurationDecimalTargetTypesItemEnumList = Array<
   ExternalDataConfigurationDecimalTargetTypesItemEnum | (string & {})
 >;
-export const ExternalDataConfigurationDecimalTargetTypesItemEnumList = /*@__PURE__*/ S.Array(
-  ExternalDataConfigurationDecimalTargetTypesItemEnum,
-) as any as S.Schema<ExternalDataConfigurationDecimalTargetTypesItemEnumList>;
+export const ExternalDataConfigurationDecimalTargetTypesItemEnumList =
+  ArimaModelInfoSeasonalPeriodsItemEnumList as any as S.Schema<ExternalDataConfigurationDecimalTargetTypesItemEnumList>;
 
 /** Information related to a Bigtable protobuf column. */
 export interface BigtableProtoConfig {
@@ -4876,9 +4869,8 @@ export const DatasetAccessEntryTargetTypesItemEnum = S.String;
 export type DatasetAccessEntryTargetTypesItemEnumList = Array<
   DatasetAccessEntryTargetTypesItemEnum | (string & {})
 >;
-export const DatasetAccessEntryTargetTypesItemEnumList = /*@__PURE__*/ S.Array(
-  DatasetAccessEntryTargetTypesItemEnum,
-) as any as S.Schema<DatasetAccessEntryTargetTypesItemEnumList>;
+export const DatasetAccessEntryTargetTypesItemEnumList =
+  ArimaModelInfoSeasonalPeriodsItemEnumList as any as S.Schema<DatasetAccessEntryTargetTypesItemEnumList>;
 
 /** Grants all resources of particular types in a particular dataset read access to the current dataset. Similar to how individually authorized views work, updates to any resource granted through its dataset (including creation of new resources) requires read permission to referenced resources, plus write permission to the authorizing dataset. */
 export interface DatasetAccessEntry {
@@ -7332,9 +7324,8 @@ export type ListJobsStateFilterEnum = "done" | "pending" | "running";
 export const ListJobsStateFilterEnum = S.String;
 
 export type ListJobsStateFilterEnumList = Array<ListJobsStateFilterEnum | (string & {})>;
-export const ListJobsStateFilterEnumList = /*@__PURE__*/ S.Array(
-  ListJobsStateFilterEnum,
-) as any as S.Schema<ListJobsStateFilterEnumList>;
+export const ListJobsStateFilterEnumList =
+  ArimaModelInfoSeasonalPeriodsItemEnumList as any as S.Schema<ListJobsStateFilterEnumList>;
 
 export interface ListJobsRequest {
   /** Whether to display jobs owned by all users in the project. Default False. */

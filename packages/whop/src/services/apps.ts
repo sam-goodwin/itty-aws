@@ -449,9 +449,7 @@ export type AppRequiredScopesItem = "read_user";
 export const AppRequiredScopesItem = S.String;
 
 export type AppRequiredScopesList = Array<AppRequiredScopesItem>;
-export const AppRequiredScopesList = /*@__PURE__*/ S.Array(
-  AppRequiredScopesItem,
-) as any as S.Schema<AppRequiredScopesList>;
+export const AppRequiredScopesList = AppElementsUsedList as any as S.Schema<AppRequiredScopesList>;
 
 /** Visibility on the Whop app store: `live` is publicly discoverable, `unlisted` is accessible only via direct link, `hidden` is not visible anywhere. */
 export type AppStatus = "live" | "unlisted" | "hidden";

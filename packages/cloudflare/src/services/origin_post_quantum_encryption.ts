@@ -135,16 +135,8 @@ export interface PutOriginPostQuantumEncryptionResponse {
   /** Last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const PutOriginPostQuantumEncryptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: UpdateResponseId,
-    editable: S.Boolean,
-    value: UpdateResponseValue,
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "PutOriginPostQuantumEncryptionResponse",
-}) as any as S.Schema<PutOriginPostQuantumEncryptionResponse>;
+export const PutOriginPostQuantumEncryptionResponse =
+  GetOriginPostQuantumEncryptionResponse as any as S.Schema<PutOriginPostQuantumEncryptionResponse>;
 
 export type GetOriginPostQuantumEncryptionError =
   | InvalidZoneIdentifier

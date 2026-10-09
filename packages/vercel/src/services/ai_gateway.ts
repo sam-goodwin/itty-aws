@@ -1105,9 +1105,8 @@ export const UpsertAiGatewayBudgetDefaultRequestAlertThresholdsItem = S.Number;
 export type UpsertAiGatewayBudgetDefaultRequestAlertThresholdsList = Array<
   UpsertAiGatewayBudgetDefaultRequestAlertThresholdsItem | (number & {})
 >;
-export const UpsertAiGatewayBudgetDefaultRequestAlertThresholdsList = /*@__PURE__*/ S.Array(
-  UpsertAiGatewayBudgetDefaultRequestAlertThresholdsItem,
-) as any as S.Schema<UpsertAiGatewayBudgetDefaultRequestAlertThresholdsList>;
+export const UpsertAiGatewayBudgetDefaultRequestAlertThresholdsList =
+  UpsertAiGatewayBudgetRequestAlertThresholdsList as any as S.Schema<UpsertAiGatewayBudgetDefaultRequestAlertThresholdsList>;
 
 export interface UpsertAiGatewayBudgetDefaultRequest {
   /** The Team identifier to perform the request on behalf of. */

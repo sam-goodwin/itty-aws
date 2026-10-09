@@ -510,15 +510,8 @@ export interface GetNamespaceResponse {
   /** True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?". */
   supportsUrlEncoding?: boolean | null;
 }
-export const GetNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    title: S.String,
-    jurisdiction: S.optional(S.NullOr(NamespacesGetResponseJurisdiction)),
-    mode: S.optional(S.NullOr(NamespacesGetResponseMode)),
-    supportsUrlEncoding: S.optional(S.NullOr(S.Boolean).pipe(T.Body("supports_url_encoding"))),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "GetNamespaceResponse" }) as any as S.Schema<GetNamespaceResponse>;
+export const GetNamespaceResponse =
+  CreateNamespaceResponse as any as S.Schema<GetNamespaceResponse>;
 
 export interface GetNamespaceMetadataRequest {
   /** ID of the Cloudflare account that owns the Workers KV namespaces. */
@@ -1031,15 +1024,8 @@ export interface UpdateNamespaceResponse {
   /** True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?". */
   supportsUrlEncoding?: boolean | null;
 }
-export const UpdateNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    title: S.String,
-    jurisdiction: S.optional(S.NullOr(NamespacesUpdateResponseJurisdiction)),
-    mode: S.optional(S.NullOr(NamespacesUpdateResponseMode)),
-    supportsUrlEncoding: S.optional(S.NullOr(S.Boolean).pipe(T.Body("supports_url_encoding"))),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "UpdateNamespaceResponse" }) as any as S.Schema<UpdateNamespaceResponse>;
+export const UpdateNamespaceResponse =
+  CreateNamespaceResponse as any as S.Schema<UpdateNamespaceResponse>;
 
 export type BulkDeleteNamespacesError =
   | NamespaceNotFound

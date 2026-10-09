@@ -678,9 +678,8 @@ export const StandardScheduleMonthsItemEnum = S.String;
 export type StandardScheduleMonthsItemEnumList = Array<
   StandardScheduleMonthsItemEnum | (string & {})
 >;
-export const StandardScheduleMonthsItemEnumList = /*@__PURE__*/ S.Array(
-  StandardScheduleMonthsItemEnum,
-) as any as S.Schema<StandardScheduleMonthsItemEnumList>;
+export const StandardScheduleMonthsItemEnumList =
+  StandardScheduleDaysOfWeekItemEnumList as any as S.Schema<StandardScheduleMonthsItemEnumList>;
 
 /** `StandardSchedule` defines a schedule that run within the confines of a defined window of days. We can define recurrence type for schedule as HOURLY, DAILY, WEEKLY, MONTHLY or YEARLY. */
 export interface StandardSchedule {

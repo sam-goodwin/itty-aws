@@ -3076,9 +3076,8 @@ export const ExplainDataAccessConsentInfoVariantsItemEnum = S.String;
 
 export type ExplainDataAccessConsentInfoVariantsItemEnumList =
   Array<ExplainDataAccessConsentInfoVariantsItemEnum>;
-export const ExplainDataAccessConsentInfoVariantsItemEnumList = /*@__PURE__*/ S.Array(
-  ExplainDataAccessConsentInfoVariantsItemEnum,
-) as any as S.Schema<ExplainDataAccessConsentInfoVariantsItemEnumList>;
+export const ExplainDataAccessConsentInfoVariantsItemEnumList =
+  AnalyzeEntitiesRequestLicensedVocabulariesItemEnumList as any as S.Schema<ExplainDataAccessConsentInfoVariantsItemEnumList>;
 
 export type ExplainDataAccessConsentInfoTypeEnum =
   | "CONSENT_POLICY_TYPE_UNSPECIFIED"

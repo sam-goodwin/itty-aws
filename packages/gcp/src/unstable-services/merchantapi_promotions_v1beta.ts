@@ -169,9 +169,8 @@ export const AttributesPromotionDestinationsItemEnum = S.String;
 export type AttributesPromotionDestinationsItemEnumList = Array<
   AttributesPromotionDestinationsItemEnum | (string & {})
 >;
-export const AttributesPromotionDestinationsItemEnumList = /*@__PURE__*/ S.Array(
-  AttributesPromotionDestinationsItemEnum,
-) as any as S.Schema<AttributesPromotionDestinationsItemEnumList>;
+export const AttributesPromotionDestinationsItemEnumList =
+  PromotionRedemptionChannelItemEnumList as any as S.Schema<AttributesPromotionDestinationsItemEnumList>;
 
 export type AttributesEventApplicabilityEnum =
   | "EVENT_APPLICABILITY_UNSPECIFIED"

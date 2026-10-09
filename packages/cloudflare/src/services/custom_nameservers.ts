@@ -195,19 +195,12 @@ export interface GetResultItemDnsRecordsItem {
   /** DNS record contents (an IPv4 or IPv6 address). */
   value?: string | null;
 }
-export const GetResultItemDnsRecordsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.NullOr(GetResultItemDnsRecordsItemType)),
-    value: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "GetResultItemDnsRecordsItem",
-}) as any as S.Schema<GetResultItemDnsRecordsItem>;
+export const GetResultItemDnsRecordsItem =
+  CreateResponseDnsRecordsItem as any as S.Schema<GetResultItemDnsRecordsItem>;
 
 export type GetResultItemDnsRecordsList = Array<GetResultItemDnsRecordsItem>;
-export const GetResultItemDnsRecordsList = /*@__PURE__*/ S.Array(
-  GetResultItemDnsRecordsItem,
-) as any as S.Schema<GetResultItemDnsRecordsList>;
+export const GetResultItemDnsRecordsList =
+  CreateResponseDnsRecordsList as any as S.Schema<GetResultItemDnsRecordsList>;
 
 export type GetResultItemStatus = "moved" | "pending" | "verified";
 export const GetResultItemStatus = S.String;

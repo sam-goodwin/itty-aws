@@ -1544,9 +1544,8 @@ export const UptimeCheckConfigSelectedRegionsItemEnum = S.String;
 export type UptimeCheckConfigSelectedRegionsItemEnumList = Array<
   UptimeCheckConfigSelectedRegionsItemEnum | (string & {})
 >;
-export const UptimeCheckConfigSelectedRegionsItemEnumList = /*@__PURE__*/ S.Array(
-  UptimeCheckConfigSelectedRegionsItemEnum,
-) as any as S.Schema<UptimeCheckConfigSelectedRegionsItemEnumList>;
+export const UptimeCheckConfigSelectedRegionsItemEnumList =
+  AlertStrategyNotificationPromptsItemEnumList as any as S.Schema<UptimeCheckConfigSelectedRegionsItemEnumList>;
 
 export type JsonPathMatcherJsonMatcherEnum =
   | "JSON_PATH_MATCHER_OPTION_UNSPECIFIED"
@@ -2724,9 +2723,8 @@ export const NotificationChannelDescriptorSupportedTiersItemEnum = S.String;
 
 export type NotificationChannelDescriptorSupportedTiersItemEnumList =
   Array<NotificationChannelDescriptorSupportedTiersItemEnum>;
-export const NotificationChannelDescriptorSupportedTiersItemEnumList = /*@__PURE__*/ S.Array(
-  NotificationChannelDescriptorSupportedTiersItemEnum,
-) as any as S.Schema<NotificationChannelDescriptorSupportedTiersItemEnumList>;
+export const NotificationChannelDescriptorSupportedTiersItemEnumList =
+  AlertStrategyNotificationPromptsItemEnumList as any as S.Schema<NotificationChannelDescriptorSupportedTiersItemEnumList>;
 
 export type NotificationChannelDescriptorLaunchStageEnum =
   | "LAUNCH_STAGE_UNSPECIFIED"

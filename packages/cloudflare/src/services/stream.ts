@@ -542,14 +542,8 @@ export interface CopyCreateResponseStatus {
   /** Specifies the processing status for all quality levels for a video. */
   state?: CopyCreateResponseStatusState | null;
 }
-export const CopyCreateResponseStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    errorReasonCode: S.optional(S.NullOr(S.String)),
-    errorReasonText: S.optional(S.NullOr(S.String)),
-    pctComplete: S.optional(S.NullOr(S.String)),
-    state: S.optional(S.NullOr(CopyCreateResponseStatusState)),
-  }),
-).annotate({ identifier: "CopyCreateResponseStatus" }) as any as S.Schema<CopyCreateResponseStatus>;
+export const CopyCreateResponseStatus =
+  ClipCreateResponseStatus as any as S.Schema<CopyCreateResponseStatus>;
 
 export type CopyCreateResponseWatermark = ClipCreateResponseWatermark;
 export const CopyCreateResponseWatermark = ClipCreateResponseWatermark;
@@ -764,15 +758,8 @@ export interface DownloadsCreateResponseDefault {
   /** The URL to access the generated download. */
   url?: string | null;
 }
-export const DownloadsCreateResponseDefault = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    percentComplete: S.Number,
-    status: DownloadsCreateResponseDefaultStatus,
-    url: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "DownloadsCreateResponseDefault",
-}) as any as S.Schema<DownloadsCreateResponseDefault>;
+export const DownloadsCreateResponseDefault =
+  DownloadsCreateResponseAudio as any as S.Schema<DownloadsCreateResponseDefault>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateDownloadResponse {
@@ -1661,14 +1648,7 @@ export interface EditResponseStatus {
   /** Specifies the processing status for all quality levels for a video. */
   state?: EditResponseStatusState | null;
 }
-export const EditResponseStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    errorReasonCode: S.optional(S.NullOr(S.String)),
-    errorReasonText: S.optional(S.NullOr(S.String)),
-    pctComplete: S.optional(S.NullOr(S.String)),
-    state: S.optional(S.NullOr(EditResponseStatusState)),
-  }),
-).annotate({ identifier: "EditResponseStatus" }) as any as S.Schema<EditResponseStatus>;
+export const EditResponseStatus = ClipCreateResponseStatus as any as S.Schema<EditResponseStatus>;
 
 export type EditResponseWatermark = ClipCreateResponseWatermark;
 export const EditResponseWatermark = ClipCreateResponseWatermark;
@@ -1914,16 +1894,8 @@ export interface GetCaptionLanguageResponse {
   /** The status of a generated caption. */
   status?: CaptionsLanguageGetResponseStatus | null;
 }
-export const GetCaptionLanguageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    generated: S.optional(S.NullOr(S.Boolean)),
-    label: S.optional(S.NullOr(S.String)),
-    language: S.optional(S.NullOr(S.String)),
-    status: S.optional(S.NullOr(CaptionsLanguageGetResponseStatus)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "GetCaptionLanguageResponse",
-}) as any as S.Schema<GetCaptionLanguageResponse>;
+export const GetCaptionLanguageResponse =
+  CreateCaptionLanguageResponse as any as S.Schema<GetCaptionLanguageResponse>;
 
 export interface GetCaptionLanguageVttRequest {
   /** Identifier. */
@@ -1987,15 +1959,8 @@ export interface DownloadsGetResponseAudio {
   /** The URL to access the generated download. */
   url?: string | null;
 }
-export const DownloadsGetResponseAudio = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    percentComplete: S.Number,
-    status: DownloadsGetResponseAudioStatus,
-    url: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "DownloadsGetResponseAudio",
-}) as any as S.Schema<DownloadsGetResponseAudio>;
+export const DownloadsGetResponseAudio =
+  DownloadsCreateResponseAudio as any as S.Schema<DownloadsGetResponseAudio>;
 
 export type DownloadsGetResponseDefaultStatus = "ready" | "inprogress" | "error";
 export const DownloadsGetResponseDefaultStatus = S.String;
@@ -2008,15 +1973,8 @@ export interface DownloadsGetResponseDefault {
   /** The URL to access the generated download. */
   url?: string | null;
 }
-export const DownloadsGetResponseDefault = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    percentComplete: S.Number,
-    status: DownloadsGetResponseDefaultStatus,
-    url: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "DownloadsGetResponseDefault",
-}) as any as S.Schema<DownloadsGetResponseDefault>;
+export const DownloadsGetResponseDefault =
+  DownloadsCreateResponseAudio as any as S.Schema<DownloadsGetResponseDefault>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetDownloadResponse {
@@ -2025,12 +1983,7 @@ export interface GetDownloadResponse {
   /** The default video download. Only present if this download type has been created. */
   default?: DownloadsGetResponseDefault | null;
 }
-export const GetDownloadResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    audio: S.optional(S.NullOr(DownloadsGetResponseAudio)),
-    default: S.optional(S.NullOr(DownloadsGetResponseDefault)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "GetDownloadResponse" }) as any as S.Schema<GetDownloadResponse>;
+export const GetDownloadResponse = CreateDownloadResponse as any as S.Schema<GetDownloadResponse>;
 
 export interface GetEmbedRequest {
   /** The account identifier tag. */
@@ -2289,14 +2242,7 @@ export interface GetResponseStatus {
   /** Specifies the processing status for all quality levels for a video. */
   state?: GetResponseStatusState | null;
 }
-export const GetResponseStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    errorReasonCode: S.optional(S.NullOr(S.String)),
-    errorReasonText: S.optional(S.NullOr(S.String)),
-    pctComplete: S.optional(S.NullOr(S.String)),
-    state: S.optional(S.NullOr(GetResponseStatusState)),
-  }),
-).annotate({ identifier: "GetResponseStatus" }) as any as S.Schema<GetResponseStatus>;
+export const GetResponseStatus = ClipCreateResponseStatus as any as S.Schema<GetResponseStatus>;
 
 export type GetResponseWatermark = ClipCreateResponseWatermark;
 export const GetResponseWatermark = ClipCreateResponseWatermark;
@@ -2689,14 +2635,8 @@ export interface ListResultItemStatus {
   /** Specifies the processing status for all quality levels for a video. */
   state?: ListResultItemStatusState | null;
 }
-export const ListResultItemStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    errorReasonCode: S.optional(S.NullOr(S.String)),
-    errorReasonText: S.optional(S.NullOr(S.String)),
-    pctComplete: S.optional(S.NullOr(S.String)),
-    state: S.optional(S.NullOr(ListResultItemStatusState)),
-  }),
-).annotate({ identifier: "ListResultItemStatus" }) as any as S.Schema<ListResultItemStatus>;
+export const ListResultItemStatus =
+  ClipCreateResponseStatus as any as S.Schema<ListResultItemStatus>;
 
 export type ListResultItemWatermark = ClipCreateResponseWatermark;
 export const ListResultItemWatermark = ClipCreateResponseWatermark;
@@ -2878,14 +2818,8 @@ export interface PatchAudioTrackResponse {
   /** A Cloudflare-generated unique identifier for a media item. */
   uid?: string | null;
 }
-export const PatchAudioTrackResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    default: S.optional(S.NullOr(S.Boolean)),
-    label: S.optional(S.NullOr(S.String)),
-    status: S.optional(S.NullOr(AudioTracksEditResponseStatus)),
-    uid: S.optional(S.NullOr(S.String)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "PatchAudioTrackResponse" }) as any as S.Schema<PatchAudioTrackResponse>;
+export const PatchAudioTrackResponse =
+  CopyAudioTrackResponse as any as S.Schema<PatchAudioTrackResponse>;
 
 export interface PutWebhookRequest {
   /** The account identifier tag. */
@@ -2993,16 +2927,8 @@ export interface UpdateCaptionLanguageResponse {
   /** The status of a generated caption. */
   status?: CaptionsLanguageUpdateResponseStatus | null;
 }
-export const UpdateCaptionLanguageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    generated: S.optional(S.NullOr(S.Boolean)),
-    label: S.optional(S.NullOr(S.String)),
-    language: S.optional(S.NullOr(S.String)),
-    status: S.optional(S.NullOr(CaptionsLanguageUpdateResponseStatus)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "UpdateCaptionLanguageResponse",
-}) as any as S.Schema<UpdateCaptionLanguageResponse>;
+export const UpdateCaptionLanguageResponse =
+  CreateCaptionLanguageResponse as any as S.Schema<UpdateCaptionLanguageResponse>;
 
 export type LiveInputsUpdateRequestRecordingAllowedOriginsList = Array<string>;
 export const LiveInputsUpdateRequestRecordingAllowedOriginsList =

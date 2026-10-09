@@ -933,9 +933,11 @@ export const ProtectionGroupIdFilters =
 export type ProtectionGroupPatternFilters = ProtectionGroupPattern[];
 export const ProtectionGroupPatternFilters = /*@__PURE__*/ S.Array(ProtectionGroupPattern);
 export type ProtectedResourceTypeFilters = ProtectedResourceType[];
-export const ProtectedResourceTypeFilters = /*@__PURE__*/ S.Array(ProtectedResourceType);
+export const ProtectedResourceTypeFilters =
+  ProtectionGroupPatternFilters as any as S.Schema<ProtectedResourceTypeFilters>;
 export type ProtectionGroupAggregationFilters = ProtectionGroupAggregation[];
-export const ProtectionGroupAggregationFilters = /*@__PURE__*/ S.Array(ProtectionGroupAggregation);
+export const ProtectionGroupAggregationFilters =
+  ProtectionGroupPatternFilters as any as S.Schema<ProtectionGroupAggregationFilters>;
 export interface InclusionProtectionGroupFilters {
   ProtectionGroupIds?: string[];
   Patterns?: ProtectionGroupPattern[];

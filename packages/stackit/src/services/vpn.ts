@@ -461,9 +461,8 @@ export const TunnelConfigurationPhase1EncryptionAlgorithmsItem = S.String;
 export type TunnelConfigurationPhase1EncryptionAlgorithmsList = Array<
   TunnelConfigurationPhase1EncryptionAlgorithmsItem | (string & {})
 >;
-export const TunnelConfigurationPhase1EncryptionAlgorithmsList = /*@__PURE__*/ S.Array(
-  TunnelConfigurationPhase1EncryptionAlgorithmsItem,
-) as any as S.Schema<TunnelConfigurationPhase1EncryptionAlgorithmsList>;
+export const TunnelConfigurationPhase1EncryptionAlgorithmsList =
+  TunnelConfigurationPhase1DhGroupsList as any as S.Schema<TunnelConfigurationPhase1EncryptionAlgorithmsList>;
 
 export type TunnelConfigurationPhase1IntegrityAlgorithmsItem =
   | "sha1"
@@ -476,9 +475,8 @@ export const TunnelConfigurationPhase1IntegrityAlgorithmsItem = S.String;
 export type TunnelConfigurationPhase1IntegrityAlgorithmsList = Array<
   TunnelConfigurationPhase1IntegrityAlgorithmsItem | (string & {})
 >;
-export const TunnelConfigurationPhase1IntegrityAlgorithmsList = /*@__PURE__*/ S.Array(
-  TunnelConfigurationPhase1IntegrityAlgorithmsItem,
-) as any as S.Schema<TunnelConfigurationPhase1IntegrityAlgorithmsList>;
+export const TunnelConfigurationPhase1IntegrityAlgorithmsList =
+  TunnelConfigurationPhase1DhGroupsList as any as S.Schema<TunnelConfigurationPhase1IntegrityAlgorithmsList>;
 
 export interface TunnelConfigurationPhase1 {
   /** The Diffie-Hellman Group. Required, except if AEAD algorithms are selected. */
@@ -512,9 +510,8 @@ export const TunnelConfigurationPhase2DhGroupsItem = S.String;
 export type TunnelConfigurationPhase2DhGroupsList = Array<
   TunnelConfigurationPhase2DhGroupsItem | (string & {})
 >;
-export const TunnelConfigurationPhase2DhGroupsList = /*@__PURE__*/ S.Array(
-  TunnelConfigurationPhase2DhGroupsItem,
-) as any as S.Schema<TunnelConfigurationPhase2DhGroupsList>;
+export const TunnelConfigurationPhase2DhGroupsList =
+  TunnelConfigurationPhase1DhGroupsList as any as S.Schema<TunnelConfigurationPhase2DhGroupsList>;
 
 export type TunnelConfigurationPhase2EncryptionAlgorithmsItem =
   | "aes256"
@@ -525,9 +522,8 @@ export const TunnelConfigurationPhase2EncryptionAlgorithmsItem = S.String;
 export type TunnelConfigurationPhase2EncryptionAlgorithmsList = Array<
   TunnelConfigurationPhase2EncryptionAlgorithmsItem | (string & {})
 >;
-export const TunnelConfigurationPhase2EncryptionAlgorithmsList = /*@__PURE__*/ S.Array(
-  TunnelConfigurationPhase2EncryptionAlgorithmsItem,
-) as any as S.Schema<TunnelConfigurationPhase2EncryptionAlgorithmsList>;
+export const TunnelConfigurationPhase2EncryptionAlgorithmsList =
+  TunnelConfigurationPhase1DhGroupsList as any as S.Schema<TunnelConfigurationPhase2EncryptionAlgorithmsList>;
 
 export type TunnelConfigurationPhase2IntegrityAlgorithmsItem =
   | "sha1"
@@ -540,9 +536,8 @@ export const TunnelConfigurationPhase2IntegrityAlgorithmsItem = S.String;
 export type TunnelConfigurationPhase2IntegrityAlgorithmsList = Array<
   TunnelConfigurationPhase2IntegrityAlgorithmsItem | (string & {})
 >;
-export const TunnelConfigurationPhase2IntegrityAlgorithmsList = /*@__PURE__*/ S.Array(
-  TunnelConfigurationPhase2IntegrityAlgorithmsItem,
-) as any as S.Schema<TunnelConfigurationPhase2IntegrityAlgorithmsList>;
+export const TunnelConfigurationPhase2IntegrityAlgorithmsList =
+  TunnelConfigurationPhase1DhGroupsList as any as S.Schema<TunnelConfigurationPhase2IntegrityAlgorithmsList>;
 
 /** Action to perform for this CHILD_SA on DPD timeout. "clear": Closes the CHILD_SA and does not take further action. "restart": immediately tries to re-negotiate the CILD_SA under a fresh IKE_SA. */
 export type TunnelConfigurationPhase2DpdAction = "clear" | "restart";
@@ -667,9 +662,8 @@ export const TunnelConfigurationOutputPhase1DhGroupsItem = S.String;
 /** The Diffie-Hellman Group. Required, except if AEAD algorithms are selected. */
 export type TunnelConfigurationOutputPhase1DhGroupsList =
   Array<TunnelConfigurationOutputPhase1DhGroupsItem>;
-export const TunnelConfigurationOutputPhase1DhGroupsList = /*@__PURE__*/ S.Array(
-  TunnelConfigurationOutputPhase1DhGroupsItem,
-) as any as S.Schema<TunnelConfigurationOutputPhase1DhGroupsList>;
+export const TunnelConfigurationOutputPhase1DhGroupsList =
+  TunnelConfigurationPhase1DhGroupsList as any as S.Schema<TunnelConfigurationOutputPhase1DhGroupsList>;
 
 export type TunnelConfigurationOutputPhase1EncryptionAlgorithmsItem =
   | "aes256"
@@ -679,9 +673,8 @@ export const TunnelConfigurationOutputPhase1EncryptionAlgorithmsItem = S.String;
 
 export type TunnelConfigurationOutputPhase1EncryptionAlgorithmsList =
   Array<TunnelConfigurationOutputPhase1EncryptionAlgorithmsItem>;
-export const TunnelConfigurationOutputPhase1EncryptionAlgorithmsList = /*@__PURE__*/ S.Array(
-  TunnelConfigurationOutputPhase1EncryptionAlgorithmsItem,
-) as any as S.Schema<TunnelConfigurationOutputPhase1EncryptionAlgorithmsList>;
+export const TunnelConfigurationOutputPhase1EncryptionAlgorithmsList =
+  TunnelConfigurationPhase1DhGroupsList as any as S.Schema<TunnelConfigurationOutputPhase1EncryptionAlgorithmsList>;
 
 export type TunnelConfigurationOutputPhase1IntegrityAlgorithmsItem =
   | "sha1"
@@ -693,9 +686,8 @@ export const TunnelConfigurationOutputPhase1IntegrityAlgorithmsItem = S.String;
 /** Supported integrity algorithms. SHA1 is deprecated and will be removed on 2026-12-31. */
 export type TunnelConfigurationOutputPhase1IntegrityAlgorithmsList =
   Array<TunnelConfigurationOutputPhase1IntegrityAlgorithmsItem>;
-export const TunnelConfigurationOutputPhase1IntegrityAlgorithmsList = /*@__PURE__*/ S.Array(
-  TunnelConfigurationOutputPhase1IntegrityAlgorithmsItem,
-) as any as S.Schema<TunnelConfigurationOutputPhase1IntegrityAlgorithmsList>;
+export const TunnelConfigurationOutputPhase1IntegrityAlgorithmsList =
+  TunnelConfigurationPhase1DhGroupsList as any as S.Schema<TunnelConfigurationOutputPhase1IntegrityAlgorithmsList>;
 
 export interface TunnelConfigurationOutputPhase1 {
   /** The Diffie-Hellman Group. Required, except if AEAD algorithms are selected. */
@@ -706,16 +698,8 @@ export interface TunnelConfigurationOutputPhase1 {
   /** Time to schedule a IKE re-keying (in seconds). */
   rekeyTime?: number;
 }
-export const TunnelConfigurationOutputPhase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dhGroups: S.optional(TunnelConfigurationOutputPhase1DhGroupsList),
-    encryptionAlgorithms: TunnelConfigurationOutputPhase1EncryptionAlgorithmsList,
-    integrityAlgorithms: TunnelConfigurationOutputPhase1IntegrityAlgorithmsList,
-    rekeyTime: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "TunnelConfigurationOutputPhase1",
-}) as any as S.Schema<TunnelConfigurationOutputPhase1>;
+export const TunnelConfigurationOutputPhase1 =
+  TunnelConfigurationPhase1 as any as S.Schema<TunnelConfigurationOutputPhase1>;
 
 export type TunnelConfigurationOutputPhase2DhGroupsItem =
   | "modp1024"
@@ -728,9 +712,8 @@ export const TunnelConfigurationOutputPhase2DhGroupsItem = S.String;
 /** The Diffie-Hellman Group. Required, except if AEAD algorithms are selected. */
 export type TunnelConfigurationOutputPhase2DhGroupsList =
   Array<TunnelConfigurationOutputPhase2DhGroupsItem>;
-export const TunnelConfigurationOutputPhase2DhGroupsList = /*@__PURE__*/ S.Array(
-  TunnelConfigurationOutputPhase2DhGroupsItem,
-) as any as S.Schema<TunnelConfigurationOutputPhase2DhGroupsList>;
+export const TunnelConfigurationOutputPhase2DhGroupsList =
+  TunnelConfigurationPhase1DhGroupsList as any as S.Schema<TunnelConfigurationOutputPhase2DhGroupsList>;
 
 export type TunnelConfigurationOutputPhase2EncryptionAlgorithmsItem =
   | "aes256"
@@ -740,9 +723,8 @@ export const TunnelConfigurationOutputPhase2EncryptionAlgorithmsItem = S.String;
 
 export type TunnelConfigurationOutputPhase2EncryptionAlgorithmsList =
   Array<TunnelConfigurationOutputPhase2EncryptionAlgorithmsItem>;
-export const TunnelConfigurationOutputPhase2EncryptionAlgorithmsList = /*@__PURE__*/ S.Array(
-  TunnelConfigurationOutputPhase2EncryptionAlgorithmsItem,
-) as any as S.Schema<TunnelConfigurationOutputPhase2EncryptionAlgorithmsList>;
+export const TunnelConfigurationOutputPhase2EncryptionAlgorithmsList =
+  TunnelConfigurationPhase1DhGroupsList as any as S.Schema<TunnelConfigurationOutputPhase2EncryptionAlgorithmsList>;
 
 export type TunnelConfigurationOutputPhase2IntegrityAlgorithmsItem =
   | "sha1"
@@ -754,9 +736,8 @@ export const TunnelConfigurationOutputPhase2IntegrityAlgorithmsItem = S.String;
 /** Supported integrity algorithms. SHA1 is deprecated and will be removed on 2026-12-31. */
 export type TunnelConfigurationOutputPhase2IntegrityAlgorithmsList =
   Array<TunnelConfigurationOutputPhase2IntegrityAlgorithmsItem>;
-export const TunnelConfigurationOutputPhase2IntegrityAlgorithmsList = /*@__PURE__*/ S.Array(
-  TunnelConfigurationOutputPhase2IntegrityAlgorithmsItem,
-) as any as S.Schema<TunnelConfigurationOutputPhase2IntegrityAlgorithmsList>;
+export const TunnelConfigurationOutputPhase2IntegrityAlgorithmsList =
+  TunnelConfigurationPhase1DhGroupsList as any as S.Schema<TunnelConfigurationOutputPhase2IntegrityAlgorithmsList>;
 
 /** Action to perform for this CHILD_SA on DPD timeout. "clear": Closes the CHILD_SA and does not take further action. "restart": immediately tries to re-negotiate the CILD_SA under a fresh IKE_SA. */
 export type TunnelConfigurationOutputPhase2DpdAction = "clear" | "restart";
@@ -779,18 +760,8 @@ export interface TunnelConfigurationOutputPhase2 {
   /** Action to perform after loading the connection configuration. "none": The connection will be loaded but needs to be manually initiated. "start": initiates the connection actively. */
   startAction?: TunnelConfigurationOutputPhase2StartAction;
 }
-export const TunnelConfigurationOutputPhase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dhGroups: S.optional(TunnelConfigurationOutputPhase2DhGroupsList),
-    encryptionAlgorithms: TunnelConfigurationOutputPhase2EncryptionAlgorithmsList,
-    integrityAlgorithms: TunnelConfigurationOutputPhase2IntegrityAlgorithmsList,
-    dpdAction: S.optional(TunnelConfigurationOutputPhase2DpdAction),
-    rekeyTime: S.optional(S.Number),
-    startAction: S.optional(TunnelConfigurationOutputPhase2StartAction),
-  }),
-).annotate({
-  identifier: "TunnelConfigurationOutputPhase2",
-}) as any as S.Schema<TunnelConfigurationOutputPhase2>;
+export const TunnelConfigurationOutputPhase2 =
+  TunnelConfigurationPhase2 as any as S.Schema<TunnelConfigurationOutputPhase2>;
 
 export interface TunnelConfigurationOutput {
   bgp?: BGPTunnelConfig;

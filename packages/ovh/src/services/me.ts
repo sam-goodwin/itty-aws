@@ -4437,17 +4437,8 @@ export interface NichandleAccessRestrictionU2FAccount {
   /** Status of this account */
   status?: NichandleAccessRestrictionU2FStatusEnum;
 }
-export const NichandleAccessRestrictionU2FAccount = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    creationDate: S.optional(S.String),
-    description: S.optional(S.String),
-    id: S.optional(S.Number),
-    lastUsedDate: S.optional(S.NullOr(S.String)),
-    status: S.optional(NichandleAccessRestrictionU2FStatusEnum),
-  }),
-).annotate({
-  identifier: "NichandleAccessRestrictionU2FAccount",
-}) as any as S.Schema<NichandleAccessRestrictionU2FAccount>;
+export const NichandleAccessRestrictionU2FAccount =
+  NichandleAccessRestrictionTOTPAccount as any as S.Schema<NichandleAccessRestrictionU2FAccount>;
 
 export interface GetMeAgreementRequest {
   /** Id of the contract */
@@ -4474,16 +4465,8 @@ export interface AgreementsContractAgreement {
   /** Id of the contract */
   id?: number;
 }
-export const AgreementsContractAgreement = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    agreed: S.optional(AgreementsAgreementStateEnum),
-    contractId: S.optional(S.Number),
-    date: S.optional(S.String),
-    id: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "AgreementsContractAgreement",
-}) as any as S.Schema<AgreementsContractAgreement>;
+export const AgreementsContractAgreement =
+  MeAgreementsContractAgreement as any as S.Schema<AgreementsContractAgreement>;
 
 export interface GetMeAgreementContractRequest {
   /** Id of the contract */
@@ -8326,9 +8309,8 @@ export const DomainDocumentFormatsEnum = S.String;
 
 /** List of accepted formats */
 export type NichandleDomainTaskArgumentAcceptedFormatsList = Array<DomainDocumentFormatsEnum>;
-export const NichandleDomainTaskArgumentAcceptedFormatsList = /*@__PURE__*/ S.Array(
-  DomainDocumentFormatsEnum,
-) as any as S.Schema<NichandleDomainTaskArgumentAcceptedFormatsList>;
+export const NichandleDomainTaskArgumentAcceptedFormatsList =
+  NichandleContactChangeTaskContactTypesList as any as S.Schema<NichandleDomainTaskArgumentAcceptedFormatsList>;
 
 /** List of accepted values */
 export type NichandleDomainTaskArgumentAcceptedValuesList = Array<string>;
@@ -8369,9 +8351,8 @@ export const XanderContactFieldEnum = S.String;
 
 /** List of impacted field names */
 export type NichandleDomainTaskArgumentFieldsList = Array<XanderContactFieldEnum>;
-export const NichandleDomainTaskArgumentFieldsList = /*@__PURE__*/ S.Array(
-  XanderContactFieldEnum,
-) as any as S.Schema<NichandleDomainTaskArgumentFieldsList>;
+export const NichandleDomainTaskArgumentFieldsList =
+  NichandleContactChangeTaskContactTypesList as any as S.Schema<NichandleDomainTaskArgumentFieldsList>;
 
 /** Domain operation argument */
 export interface NichandleDomainTaskArgument {
@@ -8457,9 +8438,8 @@ export const DomainOperationActionEnum = S.String;
 
 /** Action possible on task */
 export type NichandleDomainTaskProgressBarTaskActionsList = Array<DomainOperationActionEnum>;
-export const NichandleDomainTaskProgressBarTaskActionsList = /*@__PURE__*/ S.Array(
-  DomainOperationActionEnum,
-) as any as S.Schema<NichandleDomainTaskProgressBarTaskActionsList>;
+export const NichandleDomainTaskProgressBarTaskActionsList =
+  NichandleContactChangeTaskContactTypesList as any as S.Schema<NichandleDomainTaskProgressBarTaskActionsList>;
 
 /** Domain operation progress */
 export interface NichandleDomainTaskProgressBar {
@@ -9865,9 +9845,8 @@ export const OrderCartGenericProductPricingCapacitiesEnum = S.String;
 /** Capacities of the pricing (type of pricing) */
 export type OrderCartGenericProductPricingCapacitiesList =
   Array<OrderCartGenericProductPricingCapacitiesEnum>;
-export const OrderCartGenericProductPricingCapacitiesList = /*@__PURE__*/ S.Array(
-  OrderCartGenericProductPricingCapacitiesEnum,
-) as any as S.Schema<OrderCartGenericProductPricingCapacitiesList>;
+export const OrderCartGenericProductPricingCapacitiesList =
+  NichandleContactChangeTaskContactTypesList as any as S.Schema<OrderCartGenericProductPricingCapacitiesList>;
 
 /** Type of a pricing */
 export type OrderCartGenericProductPricingTypeEnum = "consumption" | "purchase" | "rental";

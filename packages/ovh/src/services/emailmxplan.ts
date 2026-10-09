@@ -1494,9 +1494,8 @@ export const EmailProDisclaimerAttributeEnum = S.String;
 
 export type ListEmailMxplanDomainDisclaimerAttributeResponseBodyList =
   Array<EmailProDisclaimerAttributeEnum>;
-export const ListEmailMxplanDomainDisclaimerAttributeResponseBodyList = /*@__PURE__*/ S.Array(
-  EmailProDisclaimerAttributeEnum,
-) as any as S.Schema<ListEmailMxplanDomainDisclaimerAttributeResponseBodyList>;
+export const ListEmailMxplanDomainDisclaimerAttributeResponseBodyList =
+  EmailMxplanAccountMailingFilterList as any as S.Schema<ListEmailMxplanDomainDisclaimerAttributeResponseBodyList>;
 
 export type ListEmailMxplanDomainDisclaimerAttributeResponse =
   ListEmailMxplanDomainDisclaimerAttributeResponseBodyList;

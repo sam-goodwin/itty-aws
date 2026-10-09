@@ -2530,21 +2530,13 @@ export interface Configv1MutingRuleLabelMatcher {
   /** Required. Matches against a label value based on the configured type. */
   value?: string;
 }
-export const Configv1MutingRuleLabelMatcher = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(Configv1MutingRuleLabelMatcherMatcherType),
-    name: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "Configv1MutingRuleLabelMatcher",
-}) as any as S.Schema<Configv1MutingRuleLabelMatcher>;
+export const Configv1MutingRuleLabelMatcher =
+  Configv1DerivedMetricLabelMatcher as any as S.Schema<Configv1MutingRuleLabelMatcher>;
 
 /** Required. Specifies which series are silenced by the muting rule. Alerting series must match all muting rule matchers to be silenced. You can't update this value. Updates must specify the original value. */
 export type Configv1MutingRuleInputLabelMatchersList = Array<Configv1MutingRuleLabelMatcher>;
-export const Configv1MutingRuleInputLabelMatchersList = /*@__PURE__*/ S.Array(
-  Configv1MutingRuleLabelMatcher,
-) as any as S.Schema<Configv1MutingRuleInputLabelMatchersList>;
+export const Configv1MutingRuleInputLabelMatchersList =
+  DerivedMetricSelectorLabelsList as any as S.Schema<Configv1MutingRuleInputLabelMatchersList>;
 
 export interface Configv1MutingRuleInput {
   /** Unique identifier of the MutingRule. If a `slug` isn't provided, one will be generated based of the `name` field. You can't modify this field after the MutingRule is created. */
@@ -4054,19 +4046,12 @@ export interface CommonPromQLMatcher {
   /** Prometheus label value for the matcher */
   value?: string;
 }
-export const CommonPromQLMatcher = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(CommonPromQLMatcherType),
-    name: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({ identifier: "CommonPromQLMatcher" }) as any as S.Schema<CommonPromQLMatcher>;
+export const CommonPromQLMatcher = Configv1LabelMatcher as any as S.Schema<CommonPromQLMatcher>;
 
 /** These are made available to the SLO queries and are intended to be used for things like `cluster!~"dev"` */
 export type Configv1SLIAdditionalPromqlFiltersList = Array<CommonPromQLMatcher>;
-export const Configv1SLIAdditionalPromqlFiltersList = /*@__PURE__*/ S.Array(
-  CommonPromQLMatcher,
-) as any as S.Schema<Configv1SLIAdditionalPromqlFiltersList>;
+export const Configv1SLIAdditionalPromqlFiltersList =
+  MonitorSeriesConditionsOverrideLabelMatchersList as any as S.Schema<Configv1SLIAdditionalPromqlFiltersList>;
 
 export interface Configv1SLI {
   custom_indicator?: SLICustomIndicatorConfig;

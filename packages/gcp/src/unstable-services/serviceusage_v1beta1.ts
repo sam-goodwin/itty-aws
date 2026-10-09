@@ -232,9 +232,7 @@ export type CreateServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEn
   CreateServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnum | (string & {})
 >;
 export const CreateServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnumList =
-  /*@__PURE__*/ S.Array(
-    CreateServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnum,
-  ) as any as S.Schema<CreateServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnumList>;
+  CreateServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnumList as any as S.Schema<CreateServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnumList>;
 
 export interface CreateServicesConsumerQuotaMetricsLimitsConsumerOverridesRequest {
   /** The list of quota safety checks to ignore before the override mutation. Unlike 'force' field that ignores all the quota safety checks, the 'force_only' field ignores only the specified checks; other checks are still enforced. The 'force' and 'force_only' fields cannot both be set. If force_only is specified, it is recommended to include a case id in "X-Goog-Request-Reason" header when sending the request. */
@@ -276,9 +274,7 @@ export type DeleteServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnumL
   DeleteServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnum | (string & {})
 >;
 export const DeleteServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnumList =
-  /*@__PURE__*/ S.Array(
-    DeleteServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnum,
-  ) as any as S.Schema<DeleteServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnumList>;
+  CreateServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnumList as any as S.Schema<DeleteServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnumList>;
 
 export interface DeleteServicesConsumerQuotaMetricsLimitsAdminOverridesRequest {
   /** The resource name of the override to delete. An example name would be: `projects/123/services/compute.googleapis.com/consumerQuotaMetrics/compute.googleapis.com%2Fcpus/limits/%2Fproject%2Fregion/adminOverrides/4a3f2c1d` */
@@ -317,9 +313,7 @@ export type DeleteServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEn
   DeleteServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnum | (string & {})
 >;
 export const DeleteServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnumList =
-  /*@__PURE__*/ S.Array(
-    DeleteServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnum,
-  ) as any as S.Schema<DeleteServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnumList>;
+  CreateServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnumList as any as S.Schema<DeleteServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnumList>;
 
 export interface DeleteServicesConsumerQuotaMetricsLimitsConsumerOverridesRequest {
   /** Whether to force the deletion of the quota override. Setting the force parameter to 'true' ignores all quota safety checks that would fail the request. QuotaSafetyCheck lists all such validations. If force is set to true, it is recommended to include a case id in "X-Goog-Request-Reason" header when sending the request. */
@@ -1351,9 +1345,8 @@ export const ImportConsumerOverridesRequestForceOnlyItemEnum = S.String;
 export type ImportConsumerOverridesRequestForceOnlyItemEnumList = Array<
   ImportConsumerOverridesRequestForceOnlyItemEnum | (string & {})
 >;
-export const ImportConsumerOverridesRequestForceOnlyItemEnumList = /*@__PURE__*/ S.Array(
-  ImportConsumerOverridesRequestForceOnlyItemEnum,
-) as any as S.Schema<ImportConsumerOverridesRequestForceOnlyItemEnumList>;
+export const ImportConsumerOverridesRequestForceOnlyItemEnumList =
+  ImportAdminOverridesRequestForceOnlyItemEnumList as any as S.Schema<ImportConsumerOverridesRequestForceOnlyItemEnumList>;
 
 /** Request message for ImportConsumerOverrides */
 export interface ImportConsumerOverridesRequest {
@@ -1629,9 +1622,7 @@ export type PatchServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnumLi
   PatchServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnum | (string & {})
 >;
 export const PatchServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnumList =
-  /*@__PURE__*/ S.Array(
-    PatchServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnum,
-  ) as any as S.Schema<PatchServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnumList>;
+  CreateServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnumList as any as S.Schema<PatchServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnumList>;
 
 export interface PatchServicesConsumerQuotaMetricsLimitsAdminOverridesRequest {
   /** Update only the specified fields of the override. If unset, all fields will be updated. */
@@ -1676,9 +1667,7 @@ export type PatchServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnu
   PatchServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnum | (string & {})
 >;
 export const PatchServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnumList =
-  /*@__PURE__*/ S.Array(
-    PatchServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnum,
-  ) as any as S.Schema<PatchServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnumList>;
+  CreateServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnumList as any as S.Schema<PatchServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnumList>;
 
 export interface PatchServicesConsumerQuotaMetricsLimitsConsumerOverridesRequest {
   /** The list of quota safety checks to ignore before the override mutation. Unlike 'force' field that ignores all the quota safety checks, the 'force_only' field ignores only the specified checks; other checks are still enforced. The 'force' and 'force_only' fields cannot both be set. If force_only is specified, it is recommended to include a case id in "X-Goog-Request-Reason" header when sending the request. */

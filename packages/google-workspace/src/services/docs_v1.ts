@@ -1899,12 +1899,7 @@ export interface CreateFooterRequest {
   /** The type of footer to create. */
   type?: CreateFooterRequestTypeEnum | (string & {});
 }
-export const CreateFooterRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sectionBreakLocation: S.optional(Location),
-    type: S.optional(CreateFooterRequestTypeEnum),
-  }),
-).annotate({ identifier: "CreateFooterRequest" }) as any as S.Schema<CreateFooterRequest>;
+export const CreateFooterRequest = CreateHeaderRequest as any as S.Schema<CreateFooterRequest>;
 
 /** A mask that indicates which of the fields on the base DropdownDefinitionProperties have been changed in this suggestion. For any field set to true, there's a new suggested value. */
 export interface DropdownDefinitionPropertiesSuggestionState {

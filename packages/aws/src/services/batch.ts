@@ -1867,7 +1867,8 @@ export type PlatformCapability = "EC2" | "FARGATE" | "MANAGED_INSTANCES" | (stri
 export const PlatformCapability = S.String;
 
 export type PlatformCapabilityList = PlatformCapability[];
-export const PlatformCapabilityList = /*@__PURE__*/ S.Array(PlatformCapability);
+export const PlatformCapabilityList =
+  DeviceCgroupPermissions as any as S.Schema<PlatformCapabilityList>;
 export interface JobDefinition {
   jobDefinitionName?: string;
   jobDefinitionArn?: string;

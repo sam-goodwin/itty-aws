@@ -1104,21 +1104,12 @@ export interface AddressMapsGetResponseMembershipsItem {
   /** The type of the membership. */
   kind?: AddressMapsGetResponseMembershipsItemKind | null;
 }
-export const AddressMapsGetResponseMembershipsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    canDelete: S.optional(S.NullOr(S.Boolean).pipe(T.Body("can_delete"))),
-    createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-    identifier: S.optional(S.NullOr(S.String)),
-    kind: S.optional(S.NullOr(AddressMapsGetResponseMembershipsItemKind)),
-  }),
-).annotate({
-  identifier: "AddressMapsGetResponseMembershipsItem",
-}) as any as S.Schema<AddressMapsGetResponseMembershipsItem>;
+export const AddressMapsGetResponseMembershipsItem =
+  AddressMapsCreateResponseMembershipsItem as any as S.Schema<AddressMapsGetResponseMembershipsItem>;
 
 export type AddressMapsGetResponseMembershipsList = Array<AddressMapsGetResponseMembershipsItem>;
-export const AddressMapsGetResponseMembershipsList = /*@__PURE__*/ S.Array(
-  AddressMapsGetResponseMembershipsItem,
-) as any as S.Schema<AddressMapsGetResponseMembershipsList>;
+export const AddressMapsGetResponseMembershipsList =
+  AddressMapsCreateResponseMembershipsList as any as S.Schema<AddressMapsGetResponseMembershipsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetAddressMapResponse {
@@ -1370,13 +1361,8 @@ export interface PrefixesServiceBindingsGetResponseProvisioning {
   /** When a binding has been deployed to a majority of Cloudflare datacenters, the binding will become active and can be used with its associated service. */
   state?: PrefixesServiceBindingsGetResponseProvisioningState | null;
 }
-export const PrefixesServiceBindingsGetResponseProvisioning = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: S.optional(S.NullOr(PrefixesServiceBindingsGetResponseProvisioningState)),
-  }),
-).annotate({
-  identifier: "PrefixesServiceBindingsGetResponseProvisioning",
-}) as any as S.Schema<PrefixesServiceBindingsGetResponseProvisioning>;
+export const PrefixesServiceBindingsGetResponseProvisioning =
+  PrefixesServiceBindingsCreateResponseProvisioning as any as S.Schema<PrefixesServiceBindingsGetResponseProvisioning>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetPrefixServiceBindingResponse {
@@ -1391,17 +1377,8 @@ export interface GetPrefixServiceBindingResponse {
   /** Name of a service running on the Cloudflare network */
   serviceName?: string | null;
 }
-export const GetPrefixServiceBindingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    cidr: S.optional(S.NullOr(S.String)),
-    provisioning: S.optional(S.NullOr(PrefixesServiceBindingsGetResponseProvisioning)),
-    serviceId: S.optional(S.NullOr(S.String).pipe(T.Body("service_id"))),
-    serviceName: S.optional(S.NullOr(S.String).pipe(T.Body("service_name"))),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "GetPrefixServiceBindingResponse",
-}) as any as S.Schema<GetPrefixServiceBindingResponse>;
+export const GetPrefixServiceBindingResponse =
+  CreatePrefixServiceBindingResponse as any as S.Schema<GetPrefixServiceBindingResponse>;
 
 export interface GetRegionalHostnameRequest {
   /** Identifier. */
@@ -1784,13 +1761,8 @@ export interface PrefixesServiceBindingsListResultItemProvisioning {
   /** When a binding has been deployed to a majority of Cloudflare datacenters, the binding will become active and can be used with its associated service. */
   state?: PrefixesServiceBindingsListResultItemProvisioningState | null;
 }
-export const PrefixesServiceBindingsListResultItemProvisioning = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: S.optional(S.NullOr(PrefixesServiceBindingsListResultItemProvisioningState)),
-  }),
-).annotate({
-  identifier: "PrefixesServiceBindingsListResultItemProvisioning",
-}) as any as S.Schema<PrefixesServiceBindingsListResultItemProvisioning>;
+export const PrefixesServiceBindingsListResultItemProvisioning =
+  PrefixesServiceBindingsCreateResponseProvisioning as any as S.Schema<PrefixesServiceBindingsListResultItemProvisioning>;
 
 export interface PrefixesServiceBindingsListResultItem {
   /** Identifier of a Service Binding. */

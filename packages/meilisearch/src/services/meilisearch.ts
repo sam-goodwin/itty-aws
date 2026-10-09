@@ -87,9 +87,8 @@ export type Status = "enqueued" | "processing" | "succeeded" | "failed" | "cance
 export const Status = S.String;
 
 export type CancelTasksRequestStatusesList = Array<Status | (string & {})>;
-export const CancelTasksRequestStatusesList = /*@__PURE__*/ S.Array(
-  Status,
-) as any as S.Schema<CancelTasksRequestStatusesList>;
+export const CancelTasksRequestStatusesList =
+  CancelTasksRequestTypesList as any as S.Schema<CancelTasksRequestStatusesList>;
 
 export type CancelTasksRequestIndexUidsList = Array<string>;
 export const CancelTasksRequestIndexUidsList = /*@__PURE__*/ S.Array(
@@ -267,14 +266,8 @@ export interface ChatCompletionRequestUserMessageContentPartCase0 {
   text: string;
   type: ChatCompletionRequestUserMessageContentPartCase0Type;
 }
-export const ChatCompletionRequestUserMessageContentPartCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    text: S.String,
-    type: ChatCompletionRequestUserMessageContentPartCase0Type,
-  }),
-).annotate({
-  identifier: "ChatCompletionRequestUserMessageContentPartCase0",
-}) as any as S.Schema<ChatCompletionRequestUserMessageContentPartCase0>;
+export const ChatCompletionRequestUserMessageContentPartCase0 =
+  ChatCompletionRequestSystemMessageContentPart as any as S.Schema<ChatCompletionRequestUserMessageContentPartCase0>;
 
 /** Specifies the detail level of the image. */
 export type ImageDetail = "auto" | "low" | "high";
@@ -392,14 +385,8 @@ export interface ChatCompletionRequestAssistantMessageContentPartCase0 {
   text: string;
   type: ChatCompletionRequestAssistantMessageContentPartCase0Type;
 }
-export const ChatCompletionRequestAssistantMessageContentPartCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    text: S.String,
-    type: ChatCompletionRequestAssistantMessageContentPartCase0Type,
-  }),
-).annotate({
-  identifier: "ChatCompletionRequestAssistantMessageContentPartCase0",
-}) as any as S.Schema<ChatCompletionRequestAssistantMessageContentPartCase0>;
+export const ChatCompletionRequestAssistantMessageContentPartCase0 =
+  ChatCompletionRequestSystemMessageContentPart as any as S.Schema<ChatCompletionRequestAssistantMessageContentPartCase0>;
 
 export type ChatCompletionRequestAssistantMessageContentPartCase1Type = "refusal";
 export const ChatCompletionRequestAssistantMessageContentPartCase1Type = S.String;
@@ -528,21 +515,14 @@ export interface ChatCompletionRequestToolMessageContentPart {
   text: string;
   type: ChatCompletionRequestToolMessageContentPartType | (string & {});
 }
-export const ChatCompletionRequestToolMessageContentPart = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    text: S.String,
-    type: ChatCompletionRequestToolMessageContentPartType,
-  }),
-).annotate({
-  identifier: "ChatCompletionRequestToolMessageContentPart",
-}) as any as S.Schema<ChatCompletionRequestToolMessageContentPart>;
+export const ChatCompletionRequestToolMessageContentPart =
+  ChatCompletionRequestSystemMessageContentPart as any as S.Schema<ChatCompletionRequestToolMessageContentPart>;
 
 /** An array of content parts with a defined type. For tool messages, only type `text` is supported. */
 export type ChatCompletionRequestToolMessageContentCase1List =
   Array<ChatCompletionRequestToolMessageContentPart>;
-export const ChatCompletionRequestToolMessageContentCase1List = /*@__PURE__*/ S.Array(
-  ChatCompletionRequestToolMessageContentPart,
-) as any as S.Schema<ChatCompletionRequestToolMessageContentCase1List>;
+export const ChatCompletionRequestToolMessageContentCase1List =
+  ChatCompletionRequestSystemMessageContentCase1List as any as S.Schema<ChatCompletionRequestToolMessageContentCase1List>;
 
 /** The contents of a tool message: either a text string or an array of text content parts. */
 export type ChatCompletionRequestToolMessageContent =
@@ -624,9 +604,8 @@ export const ChatCompletionModalities = S.String;
 
 /** Output types that you would like the model to generate for this request. Most models are capable of generating text, which is the default: `["text"]`. */
 export type ChatRequestModalitiesList = Array<ChatCompletionModalities | (string & {})>;
-export const ChatRequestModalitiesList = /*@__PURE__*/ S.Array(
-  ChatCompletionModalities,
-) as any as S.Schema<ChatRequestModalitiesList>;
+export const ChatRequestModalitiesList =
+  CancelTasksRequestTypesList as any as S.Schema<ChatRequestModalitiesList>;
 
 /** An array of content parts with a defined type. Supported options differ based on the [model](https://platform.openai.com/docs/models) being used to generate the response. Can contain text inputs. */
 export type PredictionContentContentCase1List = Array<ChatCompletionRequestMessageContentPartText>;
@@ -703,11 +682,7 @@ export const ResponseFormatCase1Type = S.String;
 export interface ResponseFormatCase1 {
   type: ResponseFormatCase1Type;
 }
-export const ResponseFormatCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ResponseFormatCase1Type,
-  }),
-).annotate({ identifier: "ResponseFormatCase1" }) as any as S.Schema<ResponseFormatCase1>;
+export const ResponseFormatCase1 = ResponseFormatCase0 as any as S.Schema<ResponseFormatCase1>;
 
 /** A JSON Schema-based response format specification for Structured Outputs. */
 export interface ResponseFormatJsonSchema {
@@ -1399,9 +1374,8 @@ export const Action = S.String;
 
 /** A list of actions permitted for the key. `["*"]` for all actions. The `*` character can be used as a wildcard when located at the last position. e.g. `documents.*` to authorize access on all documents endpoints. Valid actions include: `search`, `documents.add`, `documents.get`, `documents.delete`, `indexes.create`, `indexes.get`, `indexes.update`, `indexes.delete`, `indexes.swap`, `tasks.get`, `tasks.cancel`, `tasks.delete`, `settings.get`, `settings.update`, `stats.get`, `dumps.create`, `snapshots.create`, `version`, `keys.get`, `keys.create`, `keys.update`, `keys.delete`. Use `*` to grant all actions. */
 export type CreateApiKeyRequestActionsList = Array<Action | (string & {})>;
-export const CreateApiKeyRequestActionsList = /*@__PURE__*/ S.Array(
-  Action,
-) as any as S.Schema<CreateApiKeyRequestActionsList>;
+export const CreateApiKeyRequestActionsList =
+  CancelTasksRequestTypesList as any as S.Schema<CreateApiKeyRequestActionsList>;
 
 /** A list of accessible indexes permitted for the key. `["*"]` for all indexes. The `*` character can be used as a wildcard when located at the last position. e.g. `products_*` to allow access to all indexes whose names start with `products_`. */
 export type CreateApiKeyRequestIndexesList = Array<string>;
@@ -2910,9 +2884,8 @@ export const Locale = S.String;
 
 /** The list of locales (languages) to apply to matching attributes. When these attributes are indexed, Meilisearch will use language-specific tokenization rules. Examples: `["en", "fr"]` or `["jpn", "zho"]`. */
 export type LocalizedAttributesRuleViewLocalesList = Array<Locale | (string & {})>;
-export const LocalizedAttributesRuleViewLocalesList = /*@__PURE__*/ S.Array(
-  Locale,
-) as any as S.Schema<LocalizedAttributesRuleViewLocalesList>;
+export const LocalizedAttributesRuleViewLocalesList =
+  CancelTasksRequestTypesList as any as S.Schema<LocalizedAttributesRuleViewLocalesList>;
 
 /** Defines a rule for associating specific locales (languages) with attributes. This allows Meilisearch to use language-specific tokenization and processing for matched attributes, improving search quality for multilingual content. */
 export interface LocalizedAttributesRuleView {

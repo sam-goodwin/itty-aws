@@ -879,7 +879,8 @@ export type AuthFactorType =
 export const AuthFactorType = S.String;
 
 export type ConfiguredUserAuthFactorsListType = AuthFactorType[];
-export const ConfiguredUserAuthFactorsListType = /*@__PURE__*/ S.Array(AuthFactorType);
+export const ConfiguredUserAuthFactorsListType =
+  DeliveryMediumListType as any as S.Schema<ConfiguredUserAuthFactorsListType>;
 export interface AdminGetUserAuthFactorsResponse {
   Username: string | redacted.Redacted<string>;
   PreferredMfaSetting?: string;
@@ -1015,7 +1016,8 @@ export const AuthenticationResultType = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuthenticationResultType" }) as any as S.Schema<AuthenticationResultType>;
 export type AvailableChallengeListType = ChallengeNameType[];
-export const AvailableChallengeListType = /*@__PURE__*/ S.Array(ChallengeNameType);
+export const AvailableChallengeListType =
+  DeliveryMediumListType as any as S.Schema<AvailableChallengeListType>;
 export interface AdminInitiateAuthResponse {
   ChallengeName?: ChallengeNameType;
   Session?: string | redacted.Redacted<string>;
@@ -2083,11 +2085,8 @@ export interface CustomSMSLambdaVersionConfigType {
   LambdaVersion: CustomSMSSenderLambdaVersionType;
   LambdaArn: string;
 }
-export const CustomSMSLambdaVersionConfigType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ LambdaVersion: CustomSMSSenderLambdaVersionType, LambdaArn: S.String }),
-).annotate({
-  identifier: "CustomSMSLambdaVersionConfigType",
-}) as any as S.Schema<CustomSMSLambdaVersionConfigType>;
+export const CustomSMSLambdaVersionConfigType =
+  PreTokenGenerationVersionConfigType as any as S.Schema<CustomSMSLambdaVersionConfigType>;
 export type CustomEmailSenderLambdaVersionType = "V1_0" | (string & {});
 export const CustomEmailSenderLambdaVersionType = S.String;
 
@@ -2095,11 +2094,8 @@ export interface CustomEmailLambdaVersionConfigType {
   LambdaVersion: CustomEmailSenderLambdaVersionType;
   LambdaArn: string;
 }
-export const CustomEmailLambdaVersionConfigType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ LambdaVersion: CustomEmailSenderLambdaVersionType, LambdaArn: S.String }),
-).annotate({
-  identifier: "CustomEmailLambdaVersionConfigType",
-}) as any as S.Schema<CustomEmailLambdaVersionConfigType>;
+export const CustomEmailLambdaVersionConfigType =
+  PreTokenGenerationVersionConfigType as any as S.Schema<CustomEmailLambdaVersionConfigType>;
 export type InboundFederationLambdaVersionType = "V1_0" | (string & {});
 export const InboundFederationLambdaVersionType = S.String;
 
@@ -2107,11 +2103,8 @@ export interface InboundFederationLambdaType {
   LambdaVersion: InboundFederationLambdaVersionType;
   LambdaArn: string;
 }
-export const InboundFederationLambdaType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ LambdaVersion: InboundFederationLambdaVersionType, LambdaArn: S.String }),
-).annotate({
-  identifier: "InboundFederationLambdaType",
-}) as any as S.Schema<InboundFederationLambdaType>;
+export const InboundFederationLambdaType =
+  PreTokenGenerationVersionConfigType as any as S.Schema<InboundFederationLambdaType>;
 export interface LambdaConfigType {
   PreSignUp?: string;
   CustomMessage?: string;
@@ -2152,17 +2145,20 @@ export type VerifiedAttributeType = "phone_number" | "email" | (string & {});
 export const VerifiedAttributeType = S.String;
 
 export type VerifiedAttributesListType = VerifiedAttributeType[];
-export const VerifiedAttributesListType = /*@__PURE__*/ S.Array(VerifiedAttributeType);
+export const VerifiedAttributesListType =
+  DeliveryMediumListType as any as S.Schema<VerifiedAttributesListType>;
 export type AliasAttributeType = "phone_number" | "email" | "preferred_username" | (string & {});
 export const AliasAttributeType = S.String;
 
 export type AliasAttributesListType = AliasAttributeType[];
-export const AliasAttributesListType = /*@__PURE__*/ S.Array(AliasAttributeType);
+export const AliasAttributesListType =
+  DeliveryMediumListType as any as S.Schema<AliasAttributesListType>;
 export type UsernameAttributeType = "phone_number" | "email" | (string & {});
 export const UsernameAttributeType = S.String;
 
 export type UsernameAttributesListType = UsernameAttributeType[];
-export const UsernameAttributesListType = /*@__PURE__*/ S.Array(UsernameAttributeType);
+export const UsernameAttributesListType =
+  DeliveryMediumListType as any as S.Schema<UsernameAttributesListType>;
 export type SmsVerificationMessageType = string;
 export type EmailVerificationMessageType = string;
 export type EmailVerificationSubjectType = string;
@@ -2592,7 +2588,8 @@ export type ExplicitAuthFlowsType =
 export const ExplicitAuthFlowsType = S.String;
 
 export type ExplicitAuthFlowsListType = ExplicitAuthFlowsType[];
-export const ExplicitAuthFlowsListType = /*@__PURE__*/ S.Array(ExplicitAuthFlowsType);
+export const ExplicitAuthFlowsListType =
+  DeliveryMediumListType as any as S.Schema<ExplicitAuthFlowsListType>;
 export type SupportedIdentityProvidersListType = string[];
 export const SupportedIdentityProvidersListType =
   AttributeNameListType as any as S.Schema<SupportedIdentityProvidersListType>;
@@ -2605,7 +2602,7 @@ export type OAuthFlowType = "code" | "implicit" | "client_credentials" | (string
 export const OAuthFlowType = S.String;
 
 export type OAuthFlowsType = OAuthFlowType[];
-export const OAuthFlowsType = /*@__PURE__*/ S.Array(OAuthFlowType);
+export const OAuthFlowsType = DeliveryMediumListType as any as S.Schema<OAuthFlowsType>;
 export type ScopeType = string;
 export type ScopeListType = string[];
 export const ScopeListType = AttributeNameListType as any as S.Schema<ScopeListType>;
@@ -3124,7 +3121,7 @@ export type EventFilterType = "SIGN_IN" | "PASSWORD_CHANGE" | "SIGN_UP" | (strin
 export const EventFilterType = S.String;
 
 export type EventFiltersType = EventFilterType[];
-export const EventFiltersType = /*@__PURE__*/ S.Array(EventFilterType);
+export const EventFiltersType = DeliveryMediumListType as any as S.Schema<EventFiltersType>;
 export type CompromisedCredentialsEventActionType = "BLOCK" | "NO_ACTION" | (string & {});
 export const CompromisedCredentialsEventActionType = S.String;
 

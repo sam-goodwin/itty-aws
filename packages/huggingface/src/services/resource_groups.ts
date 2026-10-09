@@ -337,15 +337,8 @@ export interface ChangeUserRoleResponseAutoJoinCase0 {
   role: ChangeUserRoleResponseAutoJoinCase0Role;
   scope?: ChangeUserRoleResponseAutoJoinCase0Scope;
 }
-export const ChangeUserRoleResponseAutoJoinCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    role: ChangeUserRoleResponseAutoJoinCase0Role,
-    scope: S.optional(ChangeUserRoleResponseAutoJoinCase0Scope),
-  }),
-).annotate({
-  identifier: "ChangeUserRoleResponseAutoJoinCase0",
-}) as any as S.Schema<ChangeUserRoleResponseAutoJoinCase0>;
+export const ChangeUserRoleResponseAutoJoinCase0 =
+  AddUsersResponseAutoJoinCase0 as any as S.Schema<ChangeUserRoleResponseAutoJoinCase0>;
 
 export type ChangeUserRoleResponseAutoJoinCase1 = AddUsersResponseAutoJoinCase1;
 export const ChangeUserRoleResponseAutoJoinCase1 = AddUsersResponseAutoJoinCase1;
@@ -386,25 +379,12 @@ export interface ChangeUserRoleResponseUsersItem {
   orgRole: ChangeUserRoleResponseUsersItemOrgRole;
   addedBy?: string;
 }
-export const ChangeUserRoleResponseUsersItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    _id: S.String,
-    fullname: S.String,
-    name: S.String,
-    avatarUrl: S.String,
-    role: ChangeUserRoleResponseUsersItemRole,
-    orgRole: ChangeUserRoleResponseUsersItemOrgRole,
-    addedBy: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ChangeUserRoleResponseUsersItem",
-}) as any as S.Schema<ChangeUserRoleResponseUsersItem>;
+export const ChangeUserRoleResponseUsersItem =
+  AddUsersResponseUsersItem as any as S.Schema<ChangeUserRoleResponseUsersItem>;
 
 export type ChangeUserRoleResponseUsersList = Array<ChangeUserRoleResponseUsersItem>;
-export const ChangeUserRoleResponseUsersList = /*@__PURE__*/ S.Array(
-  ChangeUserRoleResponseUsersItem,
-) as any as S.Schema<ChangeUserRoleResponseUsersList>;
+export const ChangeUserRoleResponseUsersList =
+  AddUsersResponseUsersList as any as S.Schema<ChangeUserRoleResponseUsersList>;
 
 export type ChangeUserRoleResponseResourcesItemCase0Type =
   | "dataset"
@@ -421,16 +401,8 @@ export interface ChangeUserRoleResponseResourcesItemCase0 {
   addedBy?: string;
   private: boolean;
 }
-export const ChangeUserRoleResponseResourcesItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ChangeUserRoleResponseResourcesItemCase0Type,
-    name: S.String,
-    addedBy: S.optional(S.String),
-    private: S.Boolean,
-  }),
-).annotate({
-  identifier: "ChangeUserRoleResponseResourcesItemCase0",
-}) as any as S.Schema<ChangeUserRoleResponseResourcesItemCase0>;
+export const ChangeUserRoleResponseResourcesItemCase0 =
+  AddUsersResponseResourcesItemCase0 as any as S.Schema<ChangeUserRoleResponseResourcesItemCase0>;
 
 export type ChangeUserRoleResponseResourcesItemCase1 = AddUsersResponseResourcesItemCase1;
 export const ChangeUserRoleResponseResourcesItemCase1 = AddUsersResponseResourcesItemCase1;
@@ -492,14 +464,8 @@ export interface CreateResourceGroupRequestUsersItem {
   user: string;
   role: CreateResourceGroupRequestUsersItemRole | (string & {});
 }
-export const CreateResourceGroupRequestUsersItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    user: S.String,
-    role: CreateResourceGroupRequestUsersItemRole,
-  }),
-).annotate({
-  identifier: "CreateResourceGroupRequestUsersItem",
-}) as any as S.Schema<CreateResourceGroupRequestUsersItem>;
+export const CreateResourceGroupRequestUsersItem =
+  AddUsersRequestUsersItemCase1 as any as S.Schema<CreateResourceGroupRequestUsersItem>;
 
 export type CreateResourceGroupRequestUsersList = Array<CreateResourceGroupRequestUsersItem>;
 export const CreateResourceGroupRequestUsersList = /*@__PURE__*/ S.Array(
@@ -541,15 +507,8 @@ export interface CreateResourceGroupRequestAutoJoinCase0 {
   role: CreateResourceGroupRequestAutoJoinCase0Role | (string & {});
   scope?: CreateResourceGroupRequestAutoJoinCase0Scope | (string & {});
 }
-export const CreateResourceGroupRequestAutoJoinCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    role: CreateResourceGroupRequestAutoJoinCase0Role,
-    scope: S.optional(CreateResourceGroupRequestAutoJoinCase0Scope),
-  }),
-).annotate({
-  identifier: "CreateResourceGroupRequestAutoJoinCase0",
-}) as any as S.Schema<CreateResourceGroupRequestAutoJoinCase0>;
+export const CreateResourceGroupRequestAutoJoinCase0 =
+  AddUsersResponseAutoJoinCase0 as any as S.Schema<CreateResourceGroupRequestAutoJoinCase0>;
 
 export type CreateResourceGroupRequestAutoJoinCase1 = AddUsersResponseAutoJoinCase1;
 export const CreateResourceGroupRequestAutoJoinCase1 = AddUsersResponseAutoJoinCase1;
@@ -595,15 +554,8 @@ export interface CreateResourceGroupResponseAutoJoinCase0 {
   role: CreateResourceGroupResponseAutoJoinCase0Role;
   scope?: CreateResourceGroupResponseAutoJoinCase0Scope;
 }
-export const CreateResourceGroupResponseAutoJoinCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    role: CreateResourceGroupResponseAutoJoinCase0Role,
-    scope: S.optional(CreateResourceGroupResponseAutoJoinCase0Scope),
-  }),
-).annotate({
-  identifier: "CreateResourceGroupResponseAutoJoinCase0",
-}) as any as S.Schema<CreateResourceGroupResponseAutoJoinCase0>;
+export const CreateResourceGroupResponseAutoJoinCase0 =
+  AddUsersResponseAutoJoinCase0 as any as S.Schema<CreateResourceGroupResponseAutoJoinCase0>;
 
 export type CreateResourceGroupResponseAutoJoinCase1 = AddUsersResponseAutoJoinCase1;
 export const CreateResourceGroupResponseAutoJoinCase1 = AddUsersResponseAutoJoinCase1;
@@ -644,25 +596,12 @@ export interface CreateResourceGroupResponseUsersItem {
   orgRole: CreateResourceGroupResponseUsersItemOrgRole;
   addedBy?: string;
 }
-export const CreateResourceGroupResponseUsersItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    _id: S.String,
-    fullname: S.String,
-    name: S.String,
-    avatarUrl: S.String,
-    role: CreateResourceGroupResponseUsersItemRole,
-    orgRole: CreateResourceGroupResponseUsersItemOrgRole,
-    addedBy: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateResourceGroupResponseUsersItem",
-}) as any as S.Schema<CreateResourceGroupResponseUsersItem>;
+export const CreateResourceGroupResponseUsersItem =
+  AddUsersResponseUsersItem as any as S.Schema<CreateResourceGroupResponseUsersItem>;
 
 export type CreateResourceGroupResponseUsersList = Array<CreateResourceGroupResponseUsersItem>;
-export const CreateResourceGroupResponseUsersList = /*@__PURE__*/ S.Array(
-  CreateResourceGroupResponseUsersItem,
-) as any as S.Schema<CreateResourceGroupResponseUsersList>;
+export const CreateResourceGroupResponseUsersList =
+  AddUsersResponseUsersList as any as S.Schema<CreateResourceGroupResponseUsersList>;
 
 export type CreateResourceGroupResponseResourcesItemCase0Type =
   | "dataset"
@@ -679,16 +618,8 @@ export interface CreateResourceGroupResponseResourcesItemCase0 {
   addedBy?: string;
   private: boolean;
 }
-export const CreateResourceGroupResponseResourcesItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: CreateResourceGroupResponseResourcesItemCase0Type,
-    name: S.String,
-    addedBy: S.optional(S.String),
-    private: S.Boolean,
-  }),
-).annotate({
-  identifier: "CreateResourceGroupResponseResourcesItemCase0",
-}) as any as S.Schema<CreateResourceGroupResponseResourcesItemCase0>;
+export const CreateResourceGroupResponseResourcesItemCase0 =
+  AddUsersResponseResourcesItemCase0 as any as S.Schema<CreateResourceGroupResponseResourcesItemCase0>;
 
 export type CreateResourceGroupResponseResourcesItemCase1 = AddUsersResponseResourcesItemCase1;
 export const CreateResourceGroupResponseResourcesItemCase1 = AddUsersResponseResourcesItemCase1;
@@ -804,15 +735,8 @@ export interface GetResourceGroupResponseAutoJoinCase0 {
   role: GetResourceGroupResponseAutoJoinCase0Role;
   scope?: GetResourceGroupResponseAutoJoinCase0Scope;
 }
-export const GetResourceGroupResponseAutoJoinCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    role: GetResourceGroupResponseAutoJoinCase0Role,
-    scope: S.optional(GetResourceGroupResponseAutoJoinCase0Scope),
-  }),
-).annotate({
-  identifier: "GetResourceGroupResponseAutoJoinCase0",
-}) as any as S.Schema<GetResourceGroupResponseAutoJoinCase0>;
+export const GetResourceGroupResponseAutoJoinCase0 =
+  AddUsersResponseAutoJoinCase0 as any as S.Schema<GetResourceGroupResponseAutoJoinCase0>;
 
 export type GetResourceGroupResponseAutoJoinCase1 = AddUsersResponseAutoJoinCase1;
 export const GetResourceGroupResponseAutoJoinCase1 = AddUsersResponseAutoJoinCase1;
@@ -853,25 +777,12 @@ export interface GetResourceGroupResponseUsersItem {
   orgRole: GetResourceGroupResponseUsersItemOrgRole;
   addedBy?: string;
 }
-export const GetResourceGroupResponseUsersItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    _id: S.String,
-    fullname: S.String,
-    name: S.String,
-    avatarUrl: S.String,
-    role: GetResourceGroupResponseUsersItemRole,
-    orgRole: GetResourceGroupResponseUsersItemOrgRole,
-    addedBy: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetResourceGroupResponseUsersItem",
-}) as any as S.Schema<GetResourceGroupResponseUsersItem>;
+export const GetResourceGroupResponseUsersItem =
+  AddUsersResponseUsersItem as any as S.Schema<GetResourceGroupResponseUsersItem>;
 
 export type GetResourceGroupResponseUsersList = Array<GetResourceGroupResponseUsersItem>;
-export const GetResourceGroupResponseUsersList = /*@__PURE__*/ S.Array(
-  GetResourceGroupResponseUsersItem,
-) as any as S.Schema<GetResourceGroupResponseUsersList>;
+export const GetResourceGroupResponseUsersList =
+  AddUsersResponseUsersList as any as S.Schema<GetResourceGroupResponseUsersList>;
 
 export type GetResourceGroupResponseResourcesItemCase0Type =
   | "dataset"
@@ -888,16 +799,8 @@ export interface GetResourceGroupResponseResourcesItemCase0 {
   addedBy?: string;
   private: boolean;
 }
-export const GetResourceGroupResponseResourcesItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: GetResourceGroupResponseResourcesItemCase0Type,
-    name: S.String,
-    addedBy: S.optional(S.String),
-    private: S.Boolean,
-  }),
-).annotate({
-  identifier: "GetResourceGroupResponseResourcesItemCase0",
-}) as any as S.Schema<GetResourceGroupResponseResourcesItemCase0>;
+export const GetResourceGroupResponseResourcesItemCase0 =
+  AddUsersResponseResourcesItemCase0 as any as S.Schema<GetResourceGroupResponseResourcesItemCase0>;
 
 export type GetResourceGroupResponseResourcesItemCase1 = AddUsersResponseResourcesItemCase1;
 export const GetResourceGroupResponseResourcesItemCase1 = AddUsersResponseResourcesItemCase1;
@@ -972,15 +875,8 @@ export interface GetResourceGroupsResponseBodyItemAutoJoinCase0 {
   role: GetResourceGroupsResponseBodyItemAutoJoinCase0Role;
   scope?: GetResourceGroupsResponseBodyItemAutoJoinCase0Scope;
 }
-export const GetResourceGroupsResponseBodyItemAutoJoinCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    role: GetResourceGroupsResponseBodyItemAutoJoinCase0Role,
-    scope: S.optional(GetResourceGroupsResponseBodyItemAutoJoinCase0Scope),
-  }),
-).annotate({
-  identifier: "GetResourceGroupsResponseBodyItemAutoJoinCase0",
-}) as any as S.Schema<GetResourceGroupsResponseBodyItemAutoJoinCase0>;
+export const GetResourceGroupsResponseBodyItemAutoJoinCase0 =
+  AddUsersResponseAutoJoinCase0 as any as S.Schema<GetResourceGroupsResponseBodyItemAutoJoinCase0>;
 
 export type GetResourceGroupsResponseBodyItemAutoJoinCase1 = AddUsersResponseAutoJoinCase1;
 export const GetResourceGroupsResponseBodyItemAutoJoinCase1 = AddUsersResponseAutoJoinCase1;
@@ -1021,26 +917,13 @@ export interface GetResourceGroupsResponseBodyItemUsersItem {
   orgRole: GetResourceGroupsResponseBodyItemUsersItemOrgRole;
   addedBy?: string;
 }
-export const GetResourceGroupsResponseBodyItemUsersItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    _id: S.String,
-    fullname: S.String,
-    name: S.String,
-    avatarUrl: S.String,
-    role: GetResourceGroupsResponseBodyItemUsersItemRole,
-    orgRole: GetResourceGroupsResponseBodyItemUsersItemOrgRole,
-    addedBy: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetResourceGroupsResponseBodyItemUsersItem",
-}) as any as S.Schema<GetResourceGroupsResponseBodyItemUsersItem>;
+export const GetResourceGroupsResponseBodyItemUsersItem =
+  AddUsersResponseUsersItem as any as S.Schema<GetResourceGroupsResponseBodyItemUsersItem>;
 
 export type GetResourceGroupsResponseBodyItemUsersList =
   Array<GetResourceGroupsResponseBodyItemUsersItem>;
-export const GetResourceGroupsResponseBodyItemUsersList = /*@__PURE__*/ S.Array(
-  GetResourceGroupsResponseBodyItemUsersItem,
-) as any as S.Schema<GetResourceGroupsResponseBodyItemUsersList>;
+export const GetResourceGroupsResponseBodyItemUsersList =
+  AddUsersResponseUsersList as any as S.Schema<GetResourceGroupsResponseBodyItemUsersList>;
 
 export type GetResourceGroupsResponseBodyItemResourcesItemCase0Type =
   | "dataset"
@@ -1057,16 +940,8 @@ export interface GetResourceGroupsResponseBodyItemResourcesItemCase0 {
   addedBy?: string;
   private: boolean;
 }
-export const GetResourceGroupsResponseBodyItemResourcesItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: GetResourceGroupsResponseBodyItemResourcesItemCase0Type,
-    name: S.String,
-    addedBy: S.optional(S.String),
-    private: S.Boolean,
-  }),
-).annotate({
-  identifier: "GetResourceGroupsResponseBodyItemResourcesItemCase0",
-}) as any as S.Schema<GetResourceGroupsResponseBodyItemResourcesItemCase0>;
+export const GetResourceGroupsResponseBodyItemResourcesItemCase0 =
+  AddUsersResponseResourcesItemCase0 as any as S.Schema<GetResourceGroupsResponseBodyItemResourcesItemCase0>;
 
 export type GetResourceGroupsResponseBodyItemResourcesItemCase1 =
   AddUsersResponseResourcesItemCase1;
@@ -1225,15 +1100,8 @@ export interface JoinConfigureAutoResponseAutoJoinCase0 {
   role: JoinConfigureAutoResponseAutoJoinCase0Role;
   scope?: JoinConfigureAutoResponseAutoJoinCase0Scope;
 }
-export const JoinConfigureAutoResponseAutoJoinCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    role: JoinConfigureAutoResponseAutoJoinCase0Role,
-    scope: S.optional(JoinConfigureAutoResponseAutoJoinCase0Scope),
-  }),
-).annotate({
-  identifier: "JoinConfigureAutoResponseAutoJoinCase0",
-}) as any as S.Schema<JoinConfigureAutoResponseAutoJoinCase0>;
+export const JoinConfigureAutoResponseAutoJoinCase0 =
+  AddUsersResponseAutoJoinCase0 as any as S.Schema<JoinConfigureAutoResponseAutoJoinCase0>;
 
 export type JoinConfigureAutoResponseAutoJoinCase1 = AddUsersResponseAutoJoinCase1;
 export const JoinConfigureAutoResponseAutoJoinCase1 = AddUsersResponseAutoJoinCase1;
@@ -1274,25 +1142,12 @@ export interface JoinConfigureAutoResponseUsersItem {
   orgRole: JoinConfigureAutoResponseUsersItemOrgRole;
   addedBy?: string;
 }
-export const JoinConfigureAutoResponseUsersItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    _id: S.String,
-    fullname: S.String,
-    name: S.String,
-    avatarUrl: S.String,
-    role: JoinConfigureAutoResponseUsersItemRole,
-    orgRole: JoinConfigureAutoResponseUsersItemOrgRole,
-    addedBy: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "JoinConfigureAutoResponseUsersItem",
-}) as any as S.Schema<JoinConfigureAutoResponseUsersItem>;
+export const JoinConfigureAutoResponseUsersItem =
+  AddUsersResponseUsersItem as any as S.Schema<JoinConfigureAutoResponseUsersItem>;
 
 export type JoinConfigureAutoResponseUsersList = Array<JoinConfigureAutoResponseUsersItem>;
-export const JoinConfigureAutoResponseUsersList = /*@__PURE__*/ S.Array(
-  JoinConfigureAutoResponseUsersItem,
-) as any as S.Schema<JoinConfigureAutoResponseUsersList>;
+export const JoinConfigureAutoResponseUsersList =
+  AddUsersResponseUsersList as any as S.Schema<JoinConfigureAutoResponseUsersList>;
 
 export type JoinConfigureAutoResponseResourcesItemCase0Type =
   | "dataset"
@@ -1309,16 +1164,8 @@ export interface JoinConfigureAutoResponseResourcesItemCase0 {
   addedBy?: string;
   private: boolean;
 }
-export const JoinConfigureAutoResponseResourcesItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: JoinConfigureAutoResponseResourcesItemCase0Type,
-    name: S.String,
-    addedBy: S.optional(S.String),
-    private: S.Boolean,
-  }),
-).annotate({
-  identifier: "JoinConfigureAutoResponseResourcesItemCase0",
-}) as any as S.Schema<JoinConfigureAutoResponseResourcesItemCase0>;
+export const JoinConfigureAutoResponseResourcesItemCase0 =
+  AddUsersResponseResourcesItemCase0 as any as S.Schema<JoinConfigureAutoResponseResourcesItemCase0>;
 
 export type JoinConfigureAutoResponseResourcesItemCase1 = AddUsersResponseResourcesItemCase1;
 export const JoinConfigureAutoResponseResourcesItemCase1 = AddUsersResponseResourcesItemCase1;
@@ -1405,15 +1252,8 @@ export interface RemoveUserResponseAutoJoinCase0 {
   role: RemoveUserResponseAutoJoinCase0Role;
   scope?: RemoveUserResponseAutoJoinCase0Scope;
 }
-export const RemoveUserResponseAutoJoinCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    role: RemoveUserResponseAutoJoinCase0Role,
-    scope: S.optional(RemoveUserResponseAutoJoinCase0Scope),
-  }),
-).annotate({
-  identifier: "RemoveUserResponseAutoJoinCase0",
-}) as any as S.Schema<RemoveUserResponseAutoJoinCase0>;
+export const RemoveUserResponseAutoJoinCase0 =
+  AddUsersResponseAutoJoinCase0 as any as S.Schema<RemoveUserResponseAutoJoinCase0>;
 
 export type RemoveUserResponseAutoJoinCase1 = AddUsersResponseAutoJoinCase1;
 export const RemoveUserResponseAutoJoinCase1 = AddUsersResponseAutoJoinCase1;
@@ -1453,25 +1293,12 @@ export interface RemoveUserResponseUsersItem {
   orgRole: RemoveUserResponseUsersItemOrgRole;
   addedBy?: string;
 }
-export const RemoveUserResponseUsersItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    _id: S.String,
-    fullname: S.String,
-    name: S.String,
-    avatarUrl: S.String,
-    role: RemoveUserResponseUsersItemRole,
-    orgRole: RemoveUserResponseUsersItemOrgRole,
-    addedBy: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RemoveUserResponseUsersItem",
-}) as any as S.Schema<RemoveUserResponseUsersItem>;
+export const RemoveUserResponseUsersItem =
+  AddUsersResponseUsersItem as any as S.Schema<RemoveUserResponseUsersItem>;
 
 export type RemoveUserResponseUsersList = Array<RemoveUserResponseUsersItem>;
-export const RemoveUserResponseUsersList = /*@__PURE__*/ S.Array(
-  RemoveUserResponseUsersItem,
-) as any as S.Schema<RemoveUserResponseUsersList>;
+export const RemoveUserResponseUsersList =
+  AddUsersResponseUsersList as any as S.Schema<RemoveUserResponseUsersList>;
 
 export type RemoveUserResponseResourcesItemCase0Type =
   | "dataset"
@@ -1488,16 +1315,8 @@ export interface RemoveUserResponseResourcesItemCase0 {
   addedBy?: string;
   private: boolean;
 }
-export const RemoveUserResponseResourcesItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: RemoveUserResponseResourcesItemCase0Type,
-    name: S.String,
-    addedBy: S.optional(S.String),
-    private: S.Boolean,
-  }),
-).annotate({
-  identifier: "RemoveUserResponseResourcesItemCase0",
-}) as any as S.Schema<RemoveUserResponseResourcesItemCase0>;
+export const RemoveUserResponseResourcesItemCase0 =
+  AddUsersResponseResourcesItemCase0 as any as S.Schema<RemoveUserResponseResourcesItemCase0>;
 
 export type RemoveUserResponseResourcesItemCase1 = AddUsersResponseResourcesItemCase1;
 export const RemoveUserResponseResourcesItemCase1 = AddUsersResponseResourcesItemCase1;
@@ -1605,15 +1424,8 @@ export interface UpdateResourceGroupResponseAutoJoinCase0 {
   role: UpdateResourceGroupResponseAutoJoinCase0Role;
   scope?: UpdateResourceGroupResponseAutoJoinCase0Scope;
 }
-export const UpdateResourceGroupResponseAutoJoinCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    role: UpdateResourceGroupResponseAutoJoinCase0Role,
-    scope: S.optional(UpdateResourceGroupResponseAutoJoinCase0Scope),
-  }),
-).annotate({
-  identifier: "UpdateResourceGroupResponseAutoJoinCase0",
-}) as any as S.Schema<UpdateResourceGroupResponseAutoJoinCase0>;
+export const UpdateResourceGroupResponseAutoJoinCase0 =
+  AddUsersResponseAutoJoinCase0 as any as S.Schema<UpdateResourceGroupResponseAutoJoinCase0>;
 
 export type UpdateResourceGroupResponseAutoJoinCase1 = AddUsersResponseAutoJoinCase1;
 export const UpdateResourceGroupResponseAutoJoinCase1 = AddUsersResponseAutoJoinCase1;
@@ -1654,25 +1466,12 @@ export interface UpdateResourceGroupResponseUsersItem {
   orgRole: UpdateResourceGroupResponseUsersItemOrgRole;
   addedBy?: string;
 }
-export const UpdateResourceGroupResponseUsersItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    _id: S.String,
-    fullname: S.String,
-    name: S.String,
-    avatarUrl: S.String,
-    role: UpdateResourceGroupResponseUsersItemRole,
-    orgRole: UpdateResourceGroupResponseUsersItemOrgRole,
-    addedBy: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateResourceGroupResponseUsersItem",
-}) as any as S.Schema<UpdateResourceGroupResponseUsersItem>;
+export const UpdateResourceGroupResponseUsersItem =
+  AddUsersResponseUsersItem as any as S.Schema<UpdateResourceGroupResponseUsersItem>;
 
 export type UpdateResourceGroupResponseUsersList = Array<UpdateResourceGroupResponseUsersItem>;
-export const UpdateResourceGroupResponseUsersList = /*@__PURE__*/ S.Array(
-  UpdateResourceGroupResponseUsersItem,
-) as any as S.Schema<UpdateResourceGroupResponseUsersList>;
+export const UpdateResourceGroupResponseUsersList =
+  AddUsersResponseUsersList as any as S.Schema<UpdateResourceGroupResponseUsersList>;
 
 export type UpdateResourceGroupResponseResourcesItemCase0Type =
   | "dataset"
@@ -1689,16 +1488,8 @@ export interface UpdateResourceGroupResponseResourcesItemCase0 {
   addedBy?: string;
   private: boolean;
 }
-export const UpdateResourceGroupResponseResourcesItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: UpdateResourceGroupResponseResourcesItemCase0Type,
-    name: S.String,
-    addedBy: S.optional(S.String),
-    private: S.Boolean,
-  }),
-).annotate({
-  identifier: "UpdateResourceGroupResponseResourcesItemCase0",
-}) as any as S.Schema<UpdateResourceGroupResponseResourcesItemCase0>;
+export const UpdateResourceGroupResponseResourcesItemCase0 =
+  AddUsersResponseResourcesItemCase0 as any as S.Schema<UpdateResourceGroupResponseResourcesItemCase0>;
 
 export type UpdateResourceGroupResponseResourcesItemCase1 = AddUsersResponseResourcesItemCase1;
 export const UpdateResourceGroupResponseResourcesItemCase1 = AddUsersResponseResourcesItemCase1;

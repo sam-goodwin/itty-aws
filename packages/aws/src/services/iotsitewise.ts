@@ -557,7 +557,7 @@ export type Quality = "GOOD" | "BAD" | "UNCERTAIN" | (string & {});
 export const Quality = S.String;
 
 export type Qualities = Quality[];
-export const Qualities = /*@__PURE__*/ S.Array(Quality);
+export const Qualities = AggregateTypes as any as S.Schema<Qualities>;
 export type TimeOrdering = "ASCENDING" | "DESCENDING" | (string & {});
 export const TimeOrdering = S.String;
 
@@ -792,19 +792,11 @@ export interface BatchGetAssetPropertyValueErrorEntry {
   errorMessage: string;
   entryId: string;
 }
-export const BatchGetAssetPropertyValueErrorEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    errorCode: BatchGetAssetPropertyValueErrorCode,
-    errorMessage: S.String,
-    entryId: S.String,
-  }),
-).annotate({
-  identifier: "BatchGetAssetPropertyValueErrorEntry",
-}) as any as S.Schema<BatchGetAssetPropertyValueErrorEntry>;
+export const BatchGetAssetPropertyValueErrorEntry =
+  BatchGetAssetPropertyAggregatesErrorEntry as any as S.Schema<BatchGetAssetPropertyValueErrorEntry>;
 export type BatchGetAssetPropertyValueErrorEntries = BatchGetAssetPropertyValueErrorEntry[];
-export const BatchGetAssetPropertyValueErrorEntries = /*@__PURE__*/ S.Array(
-  BatchGetAssetPropertyValueErrorEntry,
-);
+export const BatchGetAssetPropertyValueErrorEntries =
+  BatchGetAssetPropertyAggregatesErrorEntries as any as S.Schema<BatchGetAssetPropertyValueErrorEntries>;
 export type PropertyValueStringValue = string;
 export type PropertyValueIntegerValue = number;
 export type PropertyValueDoubleValue = number;
@@ -859,32 +851,18 @@ export interface BatchGetAssetPropertyValueErrorInfo {
   errorCode: BatchGetAssetPropertyValueErrorCode;
   errorTimestamp: Date;
 }
-export const BatchGetAssetPropertyValueErrorInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    errorCode: BatchGetAssetPropertyValueErrorCode,
-    errorTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-  }),
-).annotate({
-  identifier: "BatchGetAssetPropertyValueErrorInfo",
-}) as any as S.Schema<BatchGetAssetPropertyValueErrorInfo>;
+export const BatchGetAssetPropertyValueErrorInfo =
+  BatchGetAssetPropertyAggregatesErrorInfo as any as S.Schema<BatchGetAssetPropertyValueErrorInfo>;
 export interface BatchGetAssetPropertyValueSkippedEntry {
   entryId: string;
   completionStatus: BatchEntryCompletionStatus;
   errorInfo?: BatchGetAssetPropertyValueErrorInfo;
 }
-export const BatchGetAssetPropertyValueSkippedEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    entryId: S.String,
-    completionStatus: BatchEntryCompletionStatus,
-    errorInfo: S.optional(BatchGetAssetPropertyValueErrorInfo),
-  }),
-).annotate({
-  identifier: "BatchGetAssetPropertyValueSkippedEntry",
-}) as any as S.Schema<BatchGetAssetPropertyValueSkippedEntry>;
+export const BatchGetAssetPropertyValueSkippedEntry =
+  BatchGetAssetPropertyAggregatesSkippedEntry as any as S.Schema<BatchGetAssetPropertyValueSkippedEntry>;
 export type BatchGetAssetPropertyValueSkippedEntries = BatchGetAssetPropertyValueSkippedEntry[];
-export const BatchGetAssetPropertyValueSkippedEntries = /*@__PURE__*/ S.Array(
-  BatchGetAssetPropertyValueSkippedEntry,
-);
+export const BatchGetAssetPropertyValueSkippedEntries =
+  BatchGetAssetPropertyAggregatesSkippedEntries as any as S.Schema<BatchGetAssetPropertyValueSkippedEntries>;
 export interface BatchGetAssetPropertyValueResponse {
   errorEntries: BatchGetAssetPropertyValueErrorEntry[];
   successEntries: BatchGetAssetPropertyValueSuccessEntry[];
@@ -965,20 +943,12 @@ export interface BatchGetAssetPropertyValueHistoryErrorEntry {
   errorMessage: string;
   entryId: string;
 }
-export const BatchGetAssetPropertyValueHistoryErrorEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    errorCode: BatchGetAssetPropertyValueHistoryErrorCode,
-    errorMessage: S.String,
-    entryId: S.String,
-  }),
-).annotate({
-  identifier: "BatchGetAssetPropertyValueHistoryErrorEntry",
-}) as any as S.Schema<BatchGetAssetPropertyValueHistoryErrorEntry>;
+export const BatchGetAssetPropertyValueHistoryErrorEntry =
+  BatchGetAssetPropertyAggregatesErrorEntry as any as S.Schema<BatchGetAssetPropertyValueHistoryErrorEntry>;
 export type BatchGetAssetPropertyValueHistoryErrorEntries =
   BatchGetAssetPropertyValueHistoryErrorEntry[];
-export const BatchGetAssetPropertyValueHistoryErrorEntries = /*@__PURE__*/ S.Array(
-  BatchGetAssetPropertyValueHistoryErrorEntry,
-);
+export const BatchGetAssetPropertyValueHistoryErrorEntries =
+  BatchGetAssetPropertyAggregatesErrorEntries as any as S.Schema<BatchGetAssetPropertyValueHistoryErrorEntries>;
 export type AssetPropertyValueHistory = AssetPropertyValue[];
 export const AssetPropertyValueHistory = /*@__PURE__*/ S.Array(AssetPropertyValue);
 export interface BatchGetAssetPropertyValueHistorySuccessEntry {
@@ -999,33 +969,19 @@ export interface BatchGetAssetPropertyValueHistoryErrorInfo {
   errorCode: BatchGetAssetPropertyValueHistoryErrorCode;
   errorTimestamp: Date;
 }
-export const BatchGetAssetPropertyValueHistoryErrorInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    errorCode: BatchGetAssetPropertyValueHistoryErrorCode,
-    errorTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-  }),
-).annotate({
-  identifier: "BatchGetAssetPropertyValueHistoryErrorInfo",
-}) as any as S.Schema<BatchGetAssetPropertyValueHistoryErrorInfo>;
+export const BatchGetAssetPropertyValueHistoryErrorInfo =
+  BatchGetAssetPropertyAggregatesErrorInfo as any as S.Schema<BatchGetAssetPropertyValueHistoryErrorInfo>;
 export interface BatchGetAssetPropertyValueHistorySkippedEntry {
   entryId: string;
   completionStatus: BatchEntryCompletionStatus;
   errorInfo?: BatchGetAssetPropertyValueHistoryErrorInfo;
 }
-export const BatchGetAssetPropertyValueHistorySkippedEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    entryId: S.String,
-    completionStatus: BatchEntryCompletionStatus,
-    errorInfo: S.optional(BatchGetAssetPropertyValueHistoryErrorInfo),
-  }),
-).annotate({
-  identifier: "BatchGetAssetPropertyValueHistorySkippedEntry",
-}) as any as S.Schema<BatchGetAssetPropertyValueHistorySkippedEntry>;
+export const BatchGetAssetPropertyValueHistorySkippedEntry =
+  BatchGetAssetPropertyAggregatesSkippedEntry as any as S.Schema<BatchGetAssetPropertyValueHistorySkippedEntry>;
 export type BatchGetAssetPropertyValueHistorySkippedEntries =
   BatchGetAssetPropertyValueHistorySkippedEntry[];
-export const BatchGetAssetPropertyValueHistorySkippedEntries = /*@__PURE__*/ S.Array(
-  BatchGetAssetPropertyValueHistorySkippedEntry,
-);
+export const BatchGetAssetPropertyValueHistorySkippedEntries =
+  BatchGetAssetPropertyAggregatesSkippedEntries as any as S.Schema<BatchGetAssetPropertyValueHistorySkippedEntries>;
 export interface BatchGetAssetPropertyValueHistoryResponse {
   errorEntries: BatchGetAssetPropertyValueHistoryErrorEntry[];
   successEntries: BatchGetAssetPropertyValueHistorySuccessEntry[];
@@ -1710,9 +1666,7 @@ export interface AssetModelStatus {
   state: AssetModelState;
   error?: ErrorDetails;
 }
-export const AssetModelStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ state: AssetModelState, error: S.optional(ErrorDetails) }),
-).annotate({ identifier: "AssetModelStatus" }) as any as S.Schema<AssetModelStatus>;
+export const AssetModelStatus = AssetStatus as any as S.Schema<AssetModelStatus>;
 export interface CreateAssetModelResponse {
   assetModelId: string;
   assetModelArn: string;
@@ -1812,7 +1766,7 @@ export type ColumnName =
 export const ColumnName = S.String;
 
 export type ColumnNames = ColumnName[];
-export const ColumnNames = /*@__PURE__*/ S.Array(ColumnName);
+export const ColumnNames = AggregateTypes as any as S.Schema<ColumnNames>;
 export interface Csv {
   columnNames: ColumnName[];
 }
@@ -2028,9 +1982,7 @@ export interface ComputationModelStatus {
   state: ComputationModelState;
   error?: ErrorDetails;
 }
-export const ComputationModelStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ state: ComputationModelState, error: S.optional(ErrorDetails) }),
-).annotate({ identifier: "ComputationModelStatus" }) as any as S.Schema<ComputationModelStatus>;
+export const ComputationModelStatus = AssetStatus as any as S.Schema<ComputationModelStatus>;
 export interface CreateComputationModelResponse {
   computationModelId: string;
   computationModelArn: string;
@@ -2161,9 +2113,7 @@ export interface DatasetStatus {
   state: DatasetState;
   error?: ErrorDetails;
 }
-export const DatasetStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ state: DatasetState, error: S.optional(ErrorDetails) }),
-).annotate({ identifier: "DatasetStatus" }) as any as S.Schema<DatasetStatus>;
+export const DatasetStatus = AssetStatus as any as S.Schema<DatasetStatus>;
 export interface CreateDatasetResponse {
   datasetId: string;
   datasetArn: string;
@@ -2214,7 +2164,7 @@ export type ExportDataType = "VIDEO" | "TELEMETRY" | "ANNOTATION" | (string & {}
 export const ExportDataType = S.String;
 
 export type ExportDataTypeList = ExportDataType[];
-export const ExportDataTypeList = /*@__PURE__*/ S.Array(ExportDataType);
+export const ExportDataTypeList = AggregateTypes as any as S.Schema<ExportDataTypeList>;
 export interface DatasetItem {
   datasetId: string;
   trimSettings?: TrimSettings;
@@ -2593,9 +2543,7 @@ export interface MonitorErrorDetails {
   code?: MonitorErrorCode;
   message?: string;
 }
-export const MonitorErrorDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ code: S.optional(MonitorErrorCode), message: S.optional(S.String) }),
-).annotate({ identifier: "MonitorErrorDetails" }) as any as S.Schema<MonitorErrorDetails>;
+export const MonitorErrorDetails = ResourceError as any as S.Schema<MonitorErrorDetails>;
 export interface PortalStatus {
   state: PortalState;
   error?: MonitorErrorDetails;
@@ -2831,9 +2779,7 @@ export interface WorkspaceErrorDetails {
   code: ErrorCode;
   message: string;
 }
-export const WorkspaceErrorDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ code: ErrorCode, message: S.String }),
-).annotate({ identifier: "WorkspaceErrorDetails" }) as any as S.Schema<WorkspaceErrorDetails>;
+export const WorkspaceErrorDetails = DetailedError as any as S.Schema<WorkspaceErrorDetails>;
 export interface WorkspaceStatus {
   state: WorkspaceState;
   error?: WorkspaceErrorDetails;
@@ -4390,9 +4336,7 @@ export const ExecutionState = S.String;
 export interface ExecutionStatus {
   state: ExecutionState;
 }
-export const ExecutionStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ state: ExecutionState }),
-).annotate({ identifier: "ExecutionStatus" }) as any as S.Schema<ExecutionStatus>;
+export const ExecutionStatus = ForwardingConfig as any as S.Schema<ExecutionStatus>;
 export type ExecutionResultKey = string;
 export type ExecutionResultValue = string;
 export type ExecutionResult = { [key: string]: string | undefined };
@@ -4654,11 +4598,9 @@ export interface DetailedPipelineError {
   code: DetailedPipelineErrorCode;
   message: string;
 }
-export const DetailedPipelineError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ code: DetailedPipelineErrorCode, message: S.String }),
-).annotate({ identifier: "DetailedPipelineError" }) as any as S.Schema<DetailedPipelineError>;
+export const DetailedPipelineError = DetailedError as any as S.Schema<DetailedPipelineError>;
 export type DetailedErrorList = DetailedPipelineError[];
-export const DetailedErrorList = /*@__PURE__*/ S.Array(DetailedPipelineError);
+export const DetailedErrorList = DetailedErrors as any as S.Schema<DetailedErrorList>;
 export interface PipelineExecutionStateDetails {
   code?: PipelineErrorCode;
   message: string;
@@ -6192,7 +6134,8 @@ export const ListAssetModelPropertiesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAssetModelPropertiesResponse",
 }) as any as S.Schema<ListAssetModelPropertiesResponse>;
 export type ListAssetModelsTypeFilter = AssetModelType[];
-export const ListAssetModelsTypeFilter = /*@__PURE__*/ S.Array(AssetModelType);
+export const ListAssetModelsTypeFilter =
+  AggregateTypes as any as S.Schema<ListAssetModelsTypeFilter>;
 export interface ListAssetModelsRequest {
   assetModelTypes?: AssetModelType[];
   nextToken?: string;
@@ -6914,12 +6857,8 @@ export interface DataSegmentEnrichment {
   status: EnrichmentStatus;
   lastEnrichedAt?: Date;
 }
-export const DataSegmentEnrichment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: EnrichmentStatus,
-    lastEnrichedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "DataSegmentEnrichment" }) as any as S.Schema<DataSegmentEnrichment>;
+export const DataSegmentEnrichment =
+  DatasetEnrichmentEntry as any as S.Schema<DataSegmentEnrichment>;
 export interface DataSegmentSummary {
   sourceDatasetId: string;
   timeSeriesId: string;
@@ -7572,11 +7511,11 @@ export const ListQueriesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListQueriesResponse" }) as any as S.Schema<ListQueriesResponse>;
 export type ListSearchesRequestMaxResultsInteger = number;
 export type SearchStatusFilterList = SearchStatus[];
-export const SearchStatusFilterList = /*@__PURE__*/ S.Array(SearchStatus);
+export const SearchStatusFilterList = AggregateTypes as any as S.Schema<SearchStatusFilterList>;
 export type GroupIdFilterList = string[];
 export const GroupIdFilterList = IDs as any as S.Schema<GroupIdFilterList>;
 export type SearchTypeFilterList = SearchType[];
-export const SearchTypeFilterList = /*@__PURE__*/ S.Array(SearchType);
+export const SearchTypeFilterList = AggregateTypes as any as S.Schema<SearchTypeFilterList>;
 export interface ListSearchesFilters {
   statusFilter?: SearchStatus[];
   startedAfter?: Date;

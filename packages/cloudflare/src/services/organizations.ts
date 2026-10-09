@@ -845,21 +845,15 @@ export const LogsAuditListRequestActionTypeNotItem = S.String;
 export type LogsAuditListRequestActionTypeNotList = Array<
   LogsAuditListRequestActionTypeNotItem | (string & {})
 >;
-export const LogsAuditListRequestActionTypeNotList = /*@__PURE__*/ S.Array(
-  LogsAuditListRequestActionTypeNotItem,
-) as any as S.Schema<LogsAuditListRequestActionTypeNotList>;
+export const LogsAuditListRequestActionTypeNotList =
+  LogsAuditListRequestActionResultNotList as any as S.Schema<LogsAuditListRequestActionTypeNotList>;
 
 export interface LogsAuditListRequestActionType {
   /** Filters out audit logs by the action type. */
   not?: LogsAuditListRequestActionTypeNotList;
 }
-export const LogsAuditListRequestActionType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    not: S.optional(LogsAuditListRequestActionTypeNotList),
-  }),
-).annotate({
-  identifier: "LogsAuditListRequestActionType",
-}) as any as S.Schema<LogsAuditListRequestActionType>;
+export const LogsAuditListRequestActionType =
+  LogsAuditListRequestActionResult as any as S.Schema<LogsAuditListRequestActionType>;
 
 export type LogsAuditListRequestActorContextNotItem =
   | "api"
@@ -873,21 +867,15 @@ export const LogsAuditListRequestActorContextNotItem = S.String;
 export type LogsAuditListRequestActorContextNotList = Array<
   LogsAuditListRequestActorContextNotItem | (string & {})
 >;
-export const LogsAuditListRequestActorContextNotList = /*@__PURE__*/ S.Array(
-  LogsAuditListRequestActorContextNotItem,
-) as any as S.Schema<LogsAuditListRequestActorContextNotList>;
+export const LogsAuditListRequestActorContextNotList =
+  LogsAuditListRequestActionResultNotList as any as S.Schema<LogsAuditListRequestActorContextNotList>;
 
 export interface LogsAuditListRequestActorContext {
   /** Filters out audit logs by the actor context. */
   not?: LogsAuditListRequestActorContextNotList;
 }
-export const LogsAuditListRequestActorContext = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    not: S.optional(LogsAuditListRequestActorContextNotList),
-  }),
-).annotate({
-  identifier: "LogsAuditListRequestActorContext",
-}) as any as S.Schema<LogsAuditListRequestActorContext>;
+export const LogsAuditListRequestActorContext =
+  LogsAuditListRequestActionResult as any as S.Schema<LogsAuditListRequestActorContext>;
 
 export type LogsAuditListRequestActorEmailNotList = Array<string>;
 export const LogsAuditListRequestActorEmailNotList =
@@ -955,21 +943,15 @@ export const LogsAuditListRequestActorTypeNotItem = S.String;
 export type LogsAuditListRequestActorTypeNotList = Array<
   LogsAuditListRequestActorTypeNotItem | (string & {})
 >;
-export const LogsAuditListRequestActorTypeNotList = /*@__PURE__*/ S.Array(
-  LogsAuditListRequestActorTypeNotItem,
-) as any as S.Schema<LogsAuditListRequestActorTypeNotList>;
+export const LogsAuditListRequestActorTypeNotList =
+  LogsAuditListRequestActionResultNotList as any as S.Schema<LogsAuditListRequestActorTypeNotList>;
 
 export interface LogsAuditListRequestActorType {
   /** Filters out audit logs by the actor type. */
   not?: LogsAuditListRequestActorTypeNotList;
 }
-export const LogsAuditListRequestActorType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    not: S.optional(LogsAuditListRequestActorTypeNotList),
-  }),
-).annotate({
-  identifier: "LogsAuditListRequestActorType",
-}) as any as S.Schema<LogsAuditListRequestActorType>;
+export const LogsAuditListRequestActorType =
+  LogsAuditListRequestActionResult as any as S.Schema<LogsAuditListRequestActorType>;
 
 export type LogsAuditListRequestDirection = "desc" | "asc";
 export const LogsAuditListRequestDirection = S.String;
@@ -1052,21 +1034,15 @@ export const LogsAuditListRequestResourceScopeNotItem = S.String;
 export type LogsAuditListRequestResourceScopeNotList = Array<
   LogsAuditListRequestResourceScopeNotItem | (string & {})
 >;
-export const LogsAuditListRequestResourceScopeNotList = /*@__PURE__*/ S.Array(
-  LogsAuditListRequestResourceScopeNotItem,
-) as any as S.Schema<LogsAuditListRequestResourceScopeNotList>;
+export const LogsAuditListRequestResourceScopeNotList =
+  LogsAuditListRequestActionResultNotList as any as S.Schema<LogsAuditListRequestResourceScopeNotList>;
 
 export interface LogsAuditListRequestResourceScope {
   /** Filters out audit logs by the resource scope, specifying whether the resource is associated with an organization. */
   not?: LogsAuditListRequestResourceScopeNotList;
 }
-export const LogsAuditListRequestResourceScope = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    not: S.optional(LogsAuditListRequestResourceScopeNotList),
-  }),
-).annotate({
-  identifier: "LogsAuditListRequestResourceScope",
-}) as any as S.Schema<LogsAuditListRequestResourceScope>;
+export const LogsAuditListRequestResourceScope =
+  LogsAuditListRequestActionResult as any as S.Schema<LogsAuditListRequestResourceScope>;
 
 export type LogsAuditListRequestResourceTypeNotList = Array<string>;
 export const LogsAuditListRequestResourceTypeNotList =
@@ -1363,9 +1339,8 @@ export type ListMembersRequestStatus = "active" | "pending" | "rejected" | "canc
 export const ListMembersRequestStatus = S.String;
 
 export type ListMembersRequestStatusList = Array<ListMembersRequestStatus | (string & {})>;
-export const ListMembersRequestStatusList = /*@__PURE__*/ S.Array(
-  ListMembersRequestStatus,
-) as any as S.Schema<ListMembersRequestStatusList>;
+export const ListMembersRequestStatusList =
+  LogsAuditListRequestActionResultNotList as any as S.Schema<ListMembersRequestStatusList>;
 
 export interface ListMembersRequestUser {
   /** Filter the list of memberships for a specific email that ends with a substring. */
@@ -1643,19 +1618,8 @@ export interface LogsAuditHistoryResultItemActor {
   /** The type of actor. */
   type?: LogsAuditHistoryResultItemActorType | null;
 }
-export const LogsAuditHistoryResultItemActor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    context: S.optional(S.NullOr(LogsAuditHistoryResultItemActorContext)),
-    email: S.optional(S.NullOr(S.String)),
-    ipAddress: S.optional(S.NullOr(S.String).pipe(T.Body("ip_address"))),
-    tokenId: S.optional(S.NullOr(S.String).pipe(T.Body("token_id"))),
-    tokenName: S.optional(S.NullOr(S.String).pipe(T.Body("token_name"))),
-    type: S.optional(S.NullOr(LogsAuditHistoryResultItemActorType)),
-  }),
-).annotate({
-  identifier: "LogsAuditHistoryResultItemActor",
-}) as any as S.Schema<LogsAuditHistoryResultItemActor>;
+export const LogsAuditHistoryResultItemActor =
+  LogsAuditListResultItemActor as any as S.Schema<LogsAuditHistoryResultItemActor>;
 
 export type LogsAuditHistoryResultItemOrganization = LogsAuditListResultItemOrganization;
 export const LogsAuditHistoryResultItemOrganization = LogsAuditListResultItemOrganization;

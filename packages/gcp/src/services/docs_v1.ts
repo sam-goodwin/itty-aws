@@ -1614,12 +1614,7 @@ export interface CreateFooterRequest {
   /** The location of the SectionBreak immediately preceding the section whose SectionStyle this footer should belong to. If this is unset or refers to the first section break in the document, the footer applies to the document style. */
   sectionBreakLocation?: Location;
 }
-export const CreateFooterRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(CreateFooterRequestTypeEnum),
-    sectionBreakLocation: S.optional(Location),
-  }),
-).annotate({ identifier: "CreateFooterRequest" }) as any as S.Schema<CreateFooterRequest>;
+export const CreateFooterRequest = CreateHeaderRequest as any as S.Schema<CreateFooterRequest>;
 
 export type InsertSectionBreakRequestSectionTypeEnum =
   | "SECTION_TYPE_UNSPECIFIED"

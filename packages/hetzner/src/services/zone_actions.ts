@@ -495,9 +495,8 @@ export const ListZoneActionsRequestStatusItem = S.String;
 export type ListZoneActionsRequestStatusList = Array<
   ListZoneActionsRequestStatusItem | (string & {})
 >;
-export const ListZoneActionsRequestStatusList = /*@__PURE__*/ S.Array(
-  ListZoneActionsRequestStatusItem,
-) as any as S.Schema<ListZoneActionsRequestStatusList>;
+export const ListZoneActionsRequestStatusList =
+  ListZoneActionsRequestSortList as any as S.Schema<ListZoneActionsRequestStatusList>;
 
 export interface ListZoneActionsRequest {
   /** ID or Name of the Zone. */
@@ -657,9 +656,8 @@ export const ListZonesActionsRequestSortItem = S.String;
 export type ListZonesActionsRequestSortList = Array<
   ListZonesActionsRequestSortItem | (string & {})
 >;
-export const ListZonesActionsRequestSortList = /*@__PURE__*/ S.Array(
-  ListZonesActionsRequestSortItem,
-) as any as S.Schema<ListZonesActionsRequestSortList>;
+export const ListZonesActionsRequestSortList =
+  ListZoneActionsRequestSortList as any as S.Schema<ListZonesActionsRequestSortList>;
 
 /** Status of the Action. */
 export type ListZonesActionsRequestStatusItem = "running" | "success" | "error";
@@ -668,9 +666,8 @@ export const ListZonesActionsRequestStatusItem = S.String;
 export type ListZonesActionsRequestStatusList = Array<
   ListZonesActionsRequestStatusItem | (string & {})
 >;
-export const ListZonesActionsRequestStatusList = /*@__PURE__*/ S.Array(
-  ListZonesActionsRequestStatusItem,
-) as any as S.Schema<ListZonesActionsRequestStatusList>;
+export const ListZonesActionsRequestStatusList =
+  ListZoneActionsRequestSortList as any as S.Schema<ListZonesActionsRequestStatusList>;
 
 export interface ListZonesActionsRequest {
   /** Filter the actions by ID. May be used multiple times. The response will only contain actions matching the specified IDs. */

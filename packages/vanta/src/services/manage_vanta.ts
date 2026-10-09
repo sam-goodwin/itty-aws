@@ -996,13 +996,8 @@ export const PersonInfoSourceTypeSCIM = S.String;
 export interface ScimBasedPersonInfoSource {
   type: PersonInfoSourceTypeSCIM;
 }
-export const ScimBasedPersonInfoSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: PersonInfoSourceTypeSCIM,
-  }),
-).annotate({
-  identifier: "ScimBasedPersonInfoSource",
-}) as any as S.Schema<ScimBasedPersonInfoSource>;
+export const ScimBasedPersonInfoSource =
+  VantaBasedPersonInfoSource as any as S.Schema<ScimBasedPersonInfoSource>;
 
 export type PersonInfoSourceTypeINTEGRATION = "INTEGRATION";
 export const PersonInfoSourceTypeINTEGRATION = S.String;
@@ -1331,17 +1326,8 @@ export interface CompleteBackgroundChecksTaskSummary {
   /** If the task is disabled, the reason and date when it was disabled. */
   disabled: CompleteTrainingsTaskSummaryDisabled | null;
 }
-export const CompleteBackgroundChecksTaskSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    taskType: TaskTypeCOMPLETEBACKGROUNDCHECKS,
-    status: TaskStatus,
-    dueDate: S.NullOr(S.String),
-    completionDate: S.NullOr(S.String),
-    disabled: S.NullOr(CompleteTrainingsTaskSummaryDisabled),
-  }),
-).annotate({
-  identifier: "CompleteBackgroundChecksTaskSummary",
-}) as any as S.Schema<CompleteBackgroundChecksTaskSummary>;
+export const CompleteBackgroundChecksTaskSummary =
+  InstallDeviceMonitoringTaskSummary as any as S.Schema<CompleteBackgroundChecksTaskSummary>;
 
 /** All detailed information about a person's tasks, split across task categories. */
 export interface TaskSummaryDetails {
@@ -3053,15 +3039,8 @@ export interface KnowledgeBaseResourceActorAssignment {
   id: string;
   displayName: string | null;
 }
-export const KnowledgeBaseResourceActorAssignment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: KnowledgeBaseResourceActorAssignmentType,
-    id: S.String,
-    displayName: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "KnowledgeBaseResourceActorAssignment",
-}) as any as S.Schema<KnowledgeBaseResourceActorAssignment>;
+export const KnowledgeBaseResourceActorAssignment =
+  AnswerLibraryActorAssignment as any as S.Schema<KnowledgeBaseResourceActorAssignment>;
 
 /** Customer-facing expiration status used by knowledge-base API responses (answer library entries and resources). Derived from the persisted `expiresAt` field at read time. */
 export type KnowledgeBaseExpirationStatus = "CURRENT" | "EXPIRED";
@@ -3980,14 +3959,8 @@ export interface KnowledgeBaseResourceActorAssignmentInput {
   /** The unique identifier of the user. */
   id: string;
 }
-export const KnowledgeBaseResourceActorAssignmentInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: KnowledgeBaseResourceActorAssignmentInputType,
-    id: S.String,
-  }),
-).annotate({
-  identifier: "KnowledgeBaseResourceActorAssignmentInput",
-}) as any as S.Schema<KnowledgeBaseResourceActorAssignmentInput>;
+export const KnowledgeBaseResourceActorAssignmentInput =
+  AnswerLibraryActorAssignmentInput as any as S.Schema<KnowledgeBaseResourceActorAssignmentInput>;
 
 /** Customer-facing visibility of a knowledge-base resource on the Trust Center. Use {@link CUSTOMER_VISIBILITY_TO_DB} to translate to {@link TrustCenterResourceVisibility} when persisting. */
 export type KnowledgeBaseCustomerVisibility = "PRIVATE" | "SHAREABLE" | "REQUEST_ACCESS" | "PUBLIC";
@@ -4903,9 +4876,8 @@ export const GetAssessmentsByVendorIdRequestTypeIdMatchesAnyList =
 export type GetAssessmentsByVendorIdRequestStatusMatchesAnyList = Array<
   AssessmentStatus | (string & {})
 >;
-export const GetAssessmentsByVendorIdRequestStatusMatchesAnyList = /*@__PURE__*/ S.Array(
-  AssessmentStatus,
-) as any as S.Schema<GetAssessmentsByVendorIdRequestStatusMatchesAnyList>;
+export const GetAssessmentsByVendorIdRequestStatusMatchesAnyList =
+  RiskScenarioCiaCategoriesList as any as S.Schema<GetAssessmentsByVendorIdRequestStatusMatchesAnyList>;
 
 export interface GetAssessmentsByVendorIdRequest {
   vendorId: string;
@@ -6265,9 +6237,8 @@ export type JSONSchema7TypeName =
 export const JSONSchema7TypeName = S.String;
 
 export type JSONSchema7TypeCase1List = Array<JSONSchema7TypeName>;
-export const JSONSchema7TypeCase1List = /*@__PURE__*/ S.Array(
-  JSONSchema7TypeName,
-) as any as S.Schema<JSONSchema7TypeCase1List>;
+export const JSONSchema7TypeCase1List =
+  RiskScenarioCiaCategoriesList as any as S.Schema<JSONSchema7TypeCase1List>;
 
 export type JSONSchema7Type = JSONSchema7TypeName | JSONSchema7TypeCase1List;
 export const JSONSchema7Type = S.Unknown as any as S.Schema<JSONSchema7Type>;
@@ -7255,12 +7226,8 @@ export interface VendorDocumentUploadedBy {
   type: UploadedDocumentUploadedByType;
   id: string;
 }
-export const VendorDocumentUploadedBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: UploadedDocumentUploadedByType,
-    id: S.String,
-  }),
-).annotate({ identifier: "VendorDocumentUploadedBy" }) as any as S.Schema<VendorDocumentUploadedBy>;
+export const VendorDocumentUploadedBy =
+  ActorAssignmentInput as any as S.Schema<VendorDocumentUploadedBy>;
 
 export interface VendorDocument {
   /** Unique identifier for the document. */
@@ -7473,9 +7440,8 @@ export const NotificationChannelType = S.String;
 
 export type EnabledPersonnelNotificationSettingsEnabledChannelsList =
   Array<NotificationChannelType>;
-export const EnabledPersonnelNotificationSettingsEnabledChannelsList = /*@__PURE__*/ S.Array(
-  NotificationChannelType,
-) as any as S.Schema<EnabledPersonnelNotificationSettingsEnabledChannelsList>;
+export const EnabledPersonnelNotificationSettingsEnabledChannelsList =
+  RiskScenarioCiaCategoriesList as any as S.Schema<EnabledPersonnelNotificationSettingsEnabledChannelsList>;
 
 export interface EnabledPersonnelNotificationSettings {
   enabled: boolean;
@@ -8456,24 +8422,20 @@ export const ListRequestReadableIssueIdMatchesAnyList =
   ControlDomainsList as any as S.Schema<ListRequestReadableIssueIdMatchesAnyList>;
 
 export type ListRequestStatusMatchesAnyList = Array<IssueStatus | (string & {})>;
-export const ListRequestStatusMatchesAnyList = /*@__PURE__*/ S.Array(
-  IssueStatus,
-) as any as S.Schema<ListRequestStatusMatchesAnyList>;
+export const ListRequestStatusMatchesAnyList =
+  RiskScenarioCiaCategoriesList as any as S.Schema<ListRequestStatusMatchesAnyList>;
 
 export type ListRequestSeverityMatchesAnyList = Array<IssueSeverity | (string & {})>;
-export const ListRequestSeverityMatchesAnyList = /*@__PURE__*/ S.Array(
-  IssueSeverity,
-) as any as S.Schema<ListRequestSeverityMatchesAnyList>;
+export const ListRequestSeverityMatchesAnyList =
+  RiskScenarioCiaCategoriesList as any as S.Schema<ListRequestSeverityMatchesAnyList>;
 
 export type ListRequestSourceMatchesAnyList = Array<SourceType | (string & {})>;
-export const ListRequestSourceMatchesAnyList = /*@__PURE__*/ S.Array(
-  SourceType,
-) as any as S.Schema<ListRequestSourceMatchesAnyList>;
+export const ListRequestSourceMatchesAnyList =
+  RiskScenarioCiaCategoriesList as any as S.Schema<ListRequestSourceMatchesAnyList>;
 
 export type ListRequestTypeMatchesAnyList = Array<StandardIssueType | (string & {})>;
-export const ListRequestTypeMatchesAnyList = /*@__PURE__*/ S.Array(
-  StandardIssueType,
-) as any as S.Schema<ListRequestTypeMatchesAnyList>;
+export const ListRequestTypeMatchesAnyList =
+  RiskScenarioCiaCategoriesList as any as S.Schema<ListRequestTypeMatchesAnyList>;
 
 export type ListRequestOwnerIdMatchesAnyList = Array<string>;
 export const ListRequestOwnerIdMatchesAnyList =
@@ -8483,14 +8445,12 @@ export type IssueTemplate = "STANDARD_ISSUE" | "STANDARD_POAM";
 export const IssueTemplate = S.String;
 
 export type ListRequestTemplateMatchesAnyList = Array<IssueTemplate | (string & {})>;
-export const ListRequestTemplateMatchesAnyList = /*@__PURE__*/ S.Array(
-  IssueTemplate,
-) as any as S.Schema<ListRequestTemplateMatchesAnyList>;
+export const ListRequestTemplateMatchesAnyList =
+  RiskScenarioCiaCategoriesList as any as S.Schema<ListRequestTemplateMatchesAnyList>;
 
 export type ListRequestCloseReasonMatchesAnyList = Array<ClosedReason | (string & {})>;
-export const ListRequestCloseReasonMatchesAnyList = /*@__PURE__*/ S.Array(
-  ClosedReason,
-) as any as S.Schema<ListRequestCloseReasonMatchesAnyList>;
+export const ListRequestCloseReasonMatchesAnyList =
+  RiskScenarioCiaCategoriesList as any as S.Schema<ListRequestCloseReasonMatchesAnyList>;
 
 export type ListRequestAuditIdMatchesAnyList = Array<string>;
 export const ListRequestAuditIdMatchesAnyList =
@@ -9445,9 +9405,8 @@ export const ListDocumentsRequestFrameworkMatchesAnyList =
   ControlDomainsList as any as S.Schema<ListDocumentsRequestFrameworkMatchesAnyList>;
 
 export type ListDocumentsRequestStatusMatchesAnyList = Array<DocumentStatus | (string & {})>;
-export const ListDocumentsRequestStatusMatchesAnyList = /*@__PURE__*/ S.Array(
-  DocumentStatus,
-) as any as S.Schema<ListDocumentsRequestStatusMatchesAnyList>;
+export const ListDocumentsRequestStatusMatchesAnyList =
+  RiskScenarioCiaCategoriesList as any as S.Schema<ListDocumentsRequestStatusMatchesAnyList>;
 
 export interface ListDocumentsRequest {
   pageSize?: number;
@@ -9839,9 +9798,8 @@ export const KnowledgeBaseResourceTypeFilter = S.String;
 export type ListKnowledgeBaseResourcesRequestTypeMatchesAnyList = Array<
   KnowledgeBaseResourceTypeFilter | (string & {})
 >;
-export const ListKnowledgeBaseResourcesRequestTypeMatchesAnyList = /*@__PURE__*/ S.Array(
-  KnowledgeBaseResourceTypeFilter,
-) as any as S.Schema<ListKnowledgeBaseResourcesRequestTypeMatchesAnyList>;
+export const ListKnowledgeBaseResourcesRequestTypeMatchesAnyList =
+  RiskScenarioCiaCategoriesList as any as S.Schema<ListKnowledgeBaseResourcesRequestTypeMatchesAnyList>;
 
 export interface ListKnowledgeBaseResourcesRequest {
   pageSize?: number;
@@ -10020,9 +9978,8 @@ export const PaginatedResponseMonitoredComputer = /*@__PURE__*/ S.suspend(() =>
 export type ListPeopleRequestTasksSummaryStatusMatchesAnyList = Array<
   TasksSummaryStatus | (string & {})
 >;
-export const ListPeopleRequestTasksSummaryStatusMatchesAnyList = /*@__PURE__*/ S.Array(
-  TasksSummaryStatus,
-) as any as S.Schema<ListPeopleRequestTasksSummaryStatusMatchesAnyList>;
+export const ListPeopleRequestTasksSummaryStatusMatchesAnyList =
+  RiskScenarioCiaCategoriesList as any as S.Schema<ListPeopleRequestTasksSummaryStatusMatchesAnyList>;
 
 /** The type a task summary falls into. COMPLETE_TRAININGS: The task summary containing security trainings. ACCEPT_POLICIES: The task summary containing policy acceptance. COMPLETE_CUSTOM_TASKS: The task summary containing custom tasks. INSTALL_DEVICE_MONITORING: The task summary containing device monitoring installation. COMPLETE_BACKGROUND_CHECKS: The task summary containing background checks. */
 export type TaskType =
@@ -10035,14 +9992,12 @@ export type TaskType =
 export const TaskType = S.String;
 
 export type ListPeopleRequestTaskTypeMatchesAnyList = Array<TaskType | (string & {})>;
-export const ListPeopleRequestTaskTypeMatchesAnyList = /*@__PURE__*/ S.Array(
-  TaskType,
-) as any as S.Schema<ListPeopleRequestTaskTypeMatchesAnyList>;
+export const ListPeopleRequestTaskTypeMatchesAnyList =
+  RiskScenarioCiaCategoriesList as any as S.Schema<ListPeopleRequestTaskTypeMatchesAnyList>;
 
 export type ListPeopleRequestTaskStatusMatchesAnyList = Array<TaskStatus | (string & {})>;
-export const ListPeopleRequestTaskStatusMatchesAnyList = /*@__PURE__*/ S.Array(
-  TaskStatus,
-) as any as S.Schema<ListPeopleRequestTaskStatusMatchesAnyList>;
+export const ListPeopleRequestTaskStatusMatchesAnyList =
+  RiskScenarioCiaCategoriesList as any as S.Schema<ListPeopleRequestTaskStatusMatchesAnyList>;
 
 export type ListPeopleRequestGroupIdsMatchesAnyList = Array<string>;
 export const ListPeopleRequestGroupIdsMatchesAnyList =
@@ -10306,16 +10261,14 @@ export const PaginatedResponseQuestionnaireResponseWithoutViewerPermissions =
 export type ListQuestionnairesRequestStatusMatchesAnyList = Array<
   QuestionnaireStatus | (string & {})
 >;
-export const ListQuestionnairesRequestStatusMatchesAnyList = /*@__PURE__*/ S.Array(
-  QuestionnaireStatus,
-) as any as S.Schema<ListQuestionnairesRequestStatusMatchesAnyList>;
+export const ListQuestionnairesRequestStatusMatchesAnyList =
+  RiskScenarioCiaCategoriesList as any as S.Schema<ListQuestionnairesRequestStatusMatchesAnyList>;
 
 export type ListQuestionnairesRequestTypeMatchesAnyList = Array<
   CustomerTrustQuestionnaireType | (string & {})
 >;
-export const ListQuestionnairesRequestTypeMatchesAnyList = /*@__PURE__*/ S.Array(
-  CustomerTrustQuestionnaireType,
-) as any as S.Schema<ListQuestionnairesRequestTypeMatchesAnyList>;
+export const ListQuestionnairesRequestTypeMatchesAnyList =
+  RiskScenarioCiaCategoriesList as any as S.Schema<ListQuestionnairesRequestTypeMatchesAnyList>;
 
 export type ListQuestionnairesRequestOwnerIdMatchesAnyList = Array<string>;
 export const ListQuestionnairesRequestOwnerIdMatchesAnyList =
@@ -10543,9 +10496,8 @@ export const ScoreGroup = S.String;
 export type ListRiskScenarioRequestInherentScoreGroupMatchesAnyList = Array<
   ScoreGroup | (string & {})
 >;
-export const ListRiskScenarioRequestInherentScoreGroupMatchesAnyList = /*@__PURE__*/ S.Array(
-  ScoreGroup,
-) as any as S.Schema<ListRiskScenarioRequestInherentScoreGroupMatchesAnyList>;
+export const ListRiskScenarioRequestInherentScoreGroupMatchesAnyList =
+  RiskScenarioCiaCategoriesList as any as S.Schema<ListRiskScenarioRequestInherentScoreGroupMatchesAnyList>;
 
 export type ListRiskScenarioRequestResidualScoreGroupMatchesAnyList = Array<
   ScoreGroup | (string & {})
@@ -10554,9 +10506,8 @@ export const ListRiskScenarioRequestResidualScoreGroupMatchesAnyList =
   ListRiskScenarioRequestInherentScoreGroupMatchesAnyList as any as S.Schema<ListRiskScenarioRequestResidualScoreGroupMatchesAnyList>;
 
 export type ListRiskScenarioRequestReviewStatusMatchesAnyList = Array<ReviewStatus | (string & {})>;
-export const ListRiskScenarioRequestReviewStatusMatchesAnyList = /*@__PURE__*/ S.Array(
-  ReviewStatus,
-) as any as S.Schema<ListRiskScenarioRequestReviewStatusMatchesAnyList>;
+export const ListRiskScenarioRequestReviewStatusMatchesAnyList =
+  RiskScenarioCiaCategoriesList as any as S.Schema<ListRiskScenarioRequestReviewStatusMatchesAnyList>;
 
 export type ListRiskScenarioRequestOrderBy = "description" | "createdAt";
 export const ListRiskScenarioRequestOrderBy = S.String;
@@ -10693,9 +10644,8 @@ export const CustomerTrustProductContextIdFilter = S.String;
 export type ListTagCategoriesRequestProductContextIdsMatchesAnyList = Array<
   CustomerTrustProductContextIdFilter | (string & {})
 >;
-export const ListTagCategoriesRequestProductContextIdsMatchesAnyList = /*@__PURE__*/ S.Array(
-  CustomerTrustProductContextIdFilter,
-) as any as S.Schema<ListTagCategoriesRequestProductContextIdsMatchesAnyList>;
+export const ListTagCategoriesRequestProductContextIdsMatchesAnyList =
+  RiskScenarioCiaCategoriesList as any as S.Schema<ListTagCategoriesRequestProductContextIdsMatchesAnyList>;
 
 export interface ListTagCategoriesRequest {
   productContextIdsMatchesAny?: ListTagCategoriesRequestProductContextIdsMatchesAnyList;
@@ -10870,9 +10820,8 @@ export const ActivityEventType = S.String;
 export type ListTrustCenterActivityEventsRequestEventTypesMatchesAnyList = Array<
   ActivityEventType | (string & {})
 >;
-export const ListTrustCenterActivityEventsRequestEventTypesMatchesAnyList = /*@__PURE__*/ S.Array(
-  ActivityEventType,
-) as any as S.Schema<ListTrustCenterActivityEventsRequestEventTypesMatchesAnyList>;
+export const ListTrustCenterActivityEventsRequestEventTypesMatchesAnyList =
+  RiskScenarioCiaCategoriesList as any as S.Schema<ListTrustCenterActivityEventsRequestEventTypesMatchesAnyList>;
 
 export interface ListTrustCenterActivityEventsRequest {
   slugId: string;
@@ -11754,9 +11703,8 @@ export const PaginatedResponseVendorRiskAttribute = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<PaginatedResponseVendorRiskAttribute>;
 
 export type ListVendorsRequestStatusMatchesAnyList = Array<VendorStatus | (string & {})>;
-export const ListVendorsRequestStatusMatchesAnyList = /*@__PURE__*/ S.Array(
-  VendorStatus,
-) as any as S.Schema<ListVendorsRequestStatusMatchesAnyList>;
+export const ListVendorsRequestStatusMatchesAnyList =
+  RiskScenarioCiaCategoriesList as any as S.Schema<ListVendorsRequestStatusMatchesAnyList>;
 
 export interface ListVendorsRequest {
   pageSize?: number;
@@ -12819,12 +12767,7 @@ export interface UpdateActorAssignment {
   /** The unique identifier of the user or team. */
   id: string;
 }
-export const UpdateActorAssignment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: UpdateActorAssignmentType,
-    id: S.String,
-  }),
-).annotate({ identifier: "UpdateActorAssignment" }) as any as S.Schema<UpdateActorAssignment>;
+export const UpdateActorAssignment = ActorAssignmentInput as any as S.Schema<UpdateActorAssignment>;
 
 /** Metadata key-value pairs */
 export type UpdateQuestionnaireRequestMetadataList = Array<QuestionnaireMetadata>;

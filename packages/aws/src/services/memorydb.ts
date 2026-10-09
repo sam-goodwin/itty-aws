@@ -1990,7 +1990,7 @@ export const DescribeReservedNodesOfferingsResponse = /*@__PURE__*/ S.suspend(()
   identifier: "DescribeReservedNodesOfferingsResponse",
 }) as any as S.Schema<DescribeReservedNodesOfferingsResponse>;
 export type ServiceUpdateStatusList = ServiceUpdateStatus[];
-export const ServiceUpdateStatusList = /*@__PURE__*/ S.Array(ServiceUpdateStatus);
+export const ServiceUpdateStatusList = NetworkTypeList as any as S.Schema<ServiceUpdateStatusList>;
 export interface DescribeServiceUpdatesRequest {
   ServiceUpdateName?: string;
   ClusterNames?: string[];

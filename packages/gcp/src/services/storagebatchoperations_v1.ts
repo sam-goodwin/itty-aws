@@ -295,9 +295,8 @@ export const LoggingConfigLogActionStatesItemEnum = S.String;
 export type LoggingConfigLogActionStatesItemEnumList = Array<
   LoggingConfigLogActionStatesItemEnum | (string & {})
 >;
-export const LoggingConfigLogActionStatesItemEnumList = /*@__PURE__*/ S.Array(
-  LoggingConfigLogActionStatesItemEnum,
-) as any as S.Schema<LoggingConfigLogActionStatesItemEnumList>;
+export const LoggingConfigLogActionStatesItemEnumList =
+  LoggingConfigLogActionsItemEnumList as any as S.Schema<LoggingConfigLogActionStatesItemEnumList>;
 
 /** Specifies the Cloud Logging behavior. */
 export interface LoggingConfig {

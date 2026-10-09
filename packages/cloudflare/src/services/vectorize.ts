@@ -560,15 +560,8 @@ export interface IndexesListResultItemConfig {
   /** Specifies the preset to use for the index. */
   preset?: IndexesListResultItemConfigPreset | null;
 }
-export const IndexesListResultItemConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dimensions: S.Number,
-    metric: IndexesListResultItemConfigMetric,
-    preset: S.optional(S.NullOr(IndexesListResultItemConfigPreset)),
-  }),
-).annotate({
-  identifier: "IndexesListResultItemConfig",
-}) as any as S.Schema<IndexesListResultItemConfig>;
+export const IndexesListResultItemConfig =
+  IndexesCreateResponseConfig as any as S.Schema<IndexesListResultItemConfig>;
 
 export interface IndexesListResultItem {
   config?: IndexesListResultItemConfig | null;

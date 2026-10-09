@@ -1911,9 +1911,8 @@ export const XdslOperatorTypeEnum = S.String;
 
 /** Operator */
 export type XdslIncidentOperatorsList = Array<XdslOperatorTypeEnum>;
-export const XdslIncidentOperatorsList = /*@__PURE__*/ S.Array(
-  XdslOperatorTypeEnum,
-) as any as S.Schema<XdslIncidentOperatorsList>;
+export const XdslIncidentOperatorsList =
+  XdslFiberEligibilityGrtsList as any as S.Schema<XdslIncidentOperatorsList>;
 
 /** Detected incident */
 export interface XdslIncident {
@@ -2843,9 +2842,8 @@ export const XdslResiliationReasonEnum = S.String;
 
 /** List of available resiliation reasons */
 export type XdslResiliationTermsResiliationReasonsList = Array<XdslResiliationReasonEnum>;
-export const XdslResiliationTermsResiliationReasonsList = /*@__PURE__*/ S.Array(
-  XdslResiliationReasonEnum,
-) as any as S.Schema<XdslResiliationTermsResiliationReasonsList>;
+export const XdslResiliationTermsResiliationReasonsList =
+  XdslFiberEligibilityGrtsList as any as S.Schema<XdslResiliationTermsResiliationReasonsList>;
 
 /** Show the resiliation terms */
 export interface XdslResiliationTerms {
@@ -5278,9 +5276,8 @@ export const XdslLineDiagnosticCustomerActionsEnum = S.String;
 export type UpdateLineDiagnosticRequestActionsDoneList = Array<
   XdslLineDiagnosticCustomerActionsEnum | (string & {})
 >;
-export const UpdateLineDiagnosticRequestActionsDoneList = /*@__PURE__*/ S.Array(
-  XdslLineDiagnosticCustomerActionsEnum,
-) as any as S.Schema<UpdateLineDiagnosticRequestActionsDoneList>;
+export const UpdateLineDiagnosticRequestActionsDoneList =
+  XdslFiberEligibilityGrtsList as any as S.Schema<UpdateLineDiagnosticRequestActionsDoneList>;
 
 /** Customer answers for line diagnostic */
 export type XdslLineDiagnosticAnswersInput = IamResourceTagFilterInput;

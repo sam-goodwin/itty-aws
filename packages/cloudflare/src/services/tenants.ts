@@ -84,14 +84,8 @@ export interface EntitlementsGetResponseAllowAutoAcceptInvites {
   type: EntitlementsGetResponseAllowAutoAcceptInvitesType;
   value: boolean;
 }
-export const EntitlementsGetResponseAllowAutoAcceptInvites = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: EntitlementsGetResponseAllowAutoAcceptInvitesType,
-    value: S.Boolean,
-  }),
-).annotate({
-  identifier: "EntitlementsGetResponseAllowAutoAcceptInvites",
-}) as any as S.Schema<EntitlementsGetResponseAllowAutoAcceptInvites>;
+export const EntitlementsGetResponseAllowAutoAcceptInvites =
+  EntitlementsGetResponseAllowAddSubdomain as any as S.Schema<EntitlementsGetResponseAllowAutoAcceptInvites>;
 
 export type EntitlementsGetResponseCnameSetupAllowedType = "bool";
 export const EntitlementsGetResponseCnameSetupAllowedType = S.String;
@@ -100,14 +94,8 @@ export interface EntitlementsGetResponseCnameSetupAllowed {
   type: EntitlementsGetResponseCnameSetupAllowedType;
   value: boolean;
 }
-export const EntitlementsGetResponseCnameSetupAllowed = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: EntitlementsGetResponseCnameSetupAllowedType,
-    value: S.Boolean,
-  }),
-).annotate({
-  identifier: "EntitlementsGetResponseCnameSetupAllowed",
-}) as any as S.Schema<EntitlementsGetResponseCnameSetupAllowed>;
+export const EntitlementsGetResponseCnameSetupAllowed =
+  EntitlementsGetResponseAllowAddSubdomain as any as S.Schema<EntitlementsGetResponseCnameSetupAllowed>;
 
 export type EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIMaxCountAllocationType =
   "max_count";
@@ -237,14 +225,8 @@ export interface EntitlementsGetResponsePartialSetupAllowed {
   type: EntitlementsGetResponsePartialSetupAllowedType;
   value: boolean;
 }
-export const EntitlementsGetResponsePartialSetupAllowed = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: EntitlementsGetResponsePartialSetupAllowedType,
-    value: S.Boolean,
-  }),
-).annotate({
-  identifier: "EntitlementsGetResponsePartialSetupAllowed",
-}) as any as S.Schema<EntitlementsGetResponsePartialSetupAllowed>;
+export const EntitlementsGetResponsePartialSetupAllowed =
+  EntitlementsGetResponseAllowAddSubdomain as any as S.Schema<EntitlementsGetResponsePartialSetupAllowed>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetEntitlementResponse {

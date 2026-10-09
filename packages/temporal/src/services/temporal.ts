@@ -2990,9 +2990,8 @@ export const DescribeTaskQueueRequestTaskQueueTypesItem = S.String;
 export type DescribeTaskQueueRequestTaskQueueTypesList = Array<
   DescribeTaskQueueRequestTaskQueueTypesItem | (string & {})
 >;
-export const DescribeTaskQueueRequestTaskQueueTypesList = /*@__PURE__*/ S.Array(
-  DescribeTaskQueueRequestTaskQueueTypesItem,
-) as any as S.Schema<DescribeTaskQueueRequestTaskQueueTypesList>;
+export const DescribeTaskQueueRequestTaskQueueTypesList =
+  ComputeConfigScalingGroupTaskQueueTypesList as any as S.Schema<DescribeTaskQueueRequestTaskQueueTypesList>;
 
 export interface DescribeTaskQueueRequest {
   namespace: string;
@@ -3660,9 +3659,8 @@ export const ComputeConfigScalingGroupSummaryTaskQueueTypesItem = S.String;
 
 export type ComputeConfigScalingGroupSummaryTaskQueueTypesList =
   Array<ComputeConfigScalingGroupSummaryTaskQueueTypesItem>;
-export const ComputeConfigScalingGroupSummaryTaskQueueTypesList = /*@__PURE__*/ S.Array(
-  ComputeConfigScalingGroupSummaryTaskQueueTypesItem,
-) as any as S.Schema<ComputeConfigScalingGroupSummaryTaskQueueTypesList>;
+export const ComputeConfigScalingGroupSummaryTaskQueueTypesList =
+  ComputeConfigScalingGroupTaskQueueTypesList as any as S.Schema<ComputeConfigScalingGroupSummaryTaskQueueTypesList>;
 
 export interface ComputeConfigScalingGroupSummary {
   taskQueueTypes?: ComputeConfigScalingGroupSummaryTaskQueueTypesList;
@@ -5289,9 +5287,8 @@ export const TaskQueueReachabilityReachabilityItem = S.String;
 
 /** Task reachability for a worker in a single task queue. See the TaskReachability docstring for information about each enum variant. If reachability is empty, this worker is considered unreachable in this task queue. */
 export type TaskQueueReachabilityReachabilityList = Array<TaskQueueReachabilityReachabilityItem>;
-export const TaskQueueReachabilityReachabilityList = /*@__PURE__*/ S.Array(
-  TaskQueueReachabilityReachabilityItem,
-) as any as S.Schema<TaskQueueReachabilityReachabilityList>;
+export const TaskQueueReachabilityReachabilityList =
+  ComputeConfigScalingGroupTaskQueueTypesList as any as S.Schema<TaskQueueReachabilityReachabilityList>;
 
 /** Reachability of tasks for a worker on a single task queue. */
 export interface TaskQueueReachability {
@@ -8405,10 +8402,8 @@ export const ListSearchAttributesResponseSystemAttributesValue = S.String;
 export type ListSearchAttributesResponseSystemAttributesMap = {
   [key: string]: ListSearchAttributesResponseSystemAttributesValue | undefined;
 };
-export const ListSearchAttributesResponseSystemAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ListSearchAttributesResponseSystemAttributesValue,
-) as any as S.Schema<ListSearchAttributesResponseSystemAttributesMap>;
+export const ListSearchAttributesResponseSystemAttributesMap =
+  ListSearchAttributesResponseCustomAttributesMap as any as S.Schema<ListSearchAttributesResponseSystemAttributesMap>;
 
 /** Mapping from the attribute name to the visibility storage native type. */
 export type ListSearchAttributesResponseStorageSchemaMap = { [key: string]: string | undefined };
@@ -9409,9 +9404,8 @@ export const ResetWorkflowExecutionRequestResetReapplyExcludeTypesItem = S.Strin
 export type ResetWorkflowExecutionRequestResetReapplyExcludeTypesList = Array<
   ResetWorkflowExecutionRequestResetReapplyExcludeTypesItem | (string & {})
 >;
-export const ResetWorkflowExecutionRequestResetReapplyExcludeTypesList = /*@__PURE__*/ S.Array(
-  ResetWorkflowExecutionRequestResetReapplyExcludeTypesItem,
-) as any as S.Schema<ResetWorkflowExecutionRequestResetReapplyExcludeTypesList>;
+export const ResetWorkflowExecutionRequestResetReapplyExcludeTypesList =
+  ComputeConfigScalingGroupTaskQueueTypesList as any as S.Schema<ResetWorkflowExecutionRequestResetReapplyExcludeTypesList>;
 
 /** Links to be associated with the WorkflowExecutionSignaled event. */
 export type PostResetOperationSignalWorkflowLinksList = Array<Link>;
@@ -10448,9 +10442,8 @@ export const ResetOptionsResetReapplyExcludeTypesItem = S.String;
 export type ResetOptionsResetReapplyExcludeTypesList = Array<
   ResetOptionsResetReapplyExcludeTypesItem | (string & {})
 >;
-export const ResetOptionsResetReapplyExcludeTypesList = /*@__PURE__*/ S.Array(
-  ResetOptionsResetReapplyExcludeTypesItem,
-) as any as S.Schema<ResetOptionsResetReapplyExcludeTypesList>;
+export const ResetOptionsResetReapplyExcludeTypesList =
+  ComputeConfigScalingGroupTaskQueueTypesList as any as S.Schema<ResetOptionsResetReapplyExcludeTypesList>;
 
 /** Describes where and how to reset a workflow, used for batch reset currently and may be used for single-workflow reset later. */
 export interface ResetOptions {

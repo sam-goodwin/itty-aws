@@ -490,9 +490,8 @@ export const PromotionRedemptionChannelItemEnum = S.String;
 export type PromotionRedemptionChannelItemEnumList = Array<
   PromotionRedemptionChannelItemEnum | (string & {})
 >;
-export const PromotionRedemptionChannelItemEnumList = /*@__PURE__*/ S.Array(
-  PromotionRedemptionChannelItemEnum,
-) as any as S.Schema<PromotionRedemptionChannelItemEnumList>;
+export const PromotionRedemptionChannelItemEnumList =
+  AttributesPromotionDestinationsItemEnumList as any as S.Schema<PromotionRedemptionChannelItemEnumList>;
 
 /** Represents a promotion. See the following articles for more details. Required promotion input attributes to pass data validation checks are primarily defined below: * [Promotions data specification](https://support.google.com/merchants/answer/2906014) * [Local promotions data specification](https://support.google.com/merchants/answer/10146130) After inserting, updating a promotion input, it may take several minutes before the final promotion can be retrieved. */
 export interface Promotion {

@@ -883,11 +883,7 @@ export interface QuarantinePolicy {
   /** The value that indicates whether the policy is enabled or not. */
   status?: QuarantinePolicyStatus | (string & {});
 }
-export const QuarantinePolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(QuarantinePolicyStatus),
-  }),
-).annotate({ identifier: "QuarantinePolicy" }) as any as S.Schema<QuarantinePolicy>;
+export const QuarantinePolicy = ActivationProperties as any as S.Schema<QuarantinePolicy>;
 
 /** The type of trust policy. */
 export type TrustPolicyType = "Notary";
@@ -938,11 +934,7 @@ export interface ExportPolicy {
   /** The value that indicates whether the policy is enabled or not. */
   status?: ExportPolicyStatus | (string & {});
 }
-export const ExportPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(ExportPolicyStatus),
-  }),
-).annotate({ identifier: "ExportPolicy" }) as any as S.Schema<ExportPolicy>;
+export const ExportPolicy = ActivationProperties as any as S.Schema<ExportPolicy>;
 
 /** The value that indicates whether the policy is enabled or not. */
 export type AzureADAuthenticationAsArmPolicyStatus = "enabled" | "disabled";
@@ -2496,9 +2488,8 @@ export const WebhookAction = S.String;
 
 /** The list of actions that trigger the webhook to post notifications. */
 export type WebhookPropertiesCreateParametersActionsList = Array<WebhookAction | (string & {})>;
-export const WebhookPropertiesCreateParametersActionsList = /*@__PURE__*/ S.Array(
-  WebhookAction,
-) as any as S.Schema<WebhookPropertiesCreateParametersActionsList>;
+export const WebhookPropertiesCreateParametersActionsList =
+  SourceTriggerSourceTriggerEventsList as any as S.Schema<WebhookPropertiesCreateParametersActionsList>;
 
 /** The parameters for creating the properties of a webhook. */
 export interface WebhookPropertiesCreateParameters {
@@ -6098,24 +6089,8 @@ export interface TaskStepUpdateParameters {
   /** FileTask/EncodedTask step: values to override ({ name, value, isSecret }[]). */
   values?: unknown;
 }
-export const TaskStepUpdateParameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: TaskStepUpdateParametersType,
-    contextPath: S.optional(S.String),
-    contextAccessToken: S.optional(S.String),
-    dockerFilePath: S.optional(S.String),
-    imageNames: S.optional(S.Unknown),
-    isPushEnabled: S.optional(S.Boolean),
-    noCache: S.optional(S.Boolean),
-    target: S.optional(S.String),
-    arguments: S.optional(S.Unknown),
-    taskFilePath: S.optional(S.String),
-    valuesFilePath: S.optional(S.String),
-    encodedTaskContent: S.optional(S.String),
-    encodedValuesContent: S.optional(S.String),
-    values: S.optional(S.Unknown),
-  }),
-).annotate({ identifier: "TaskStepUpdateParameters" }) as any as S.Schema<TaskStepUpdateParameters>;
+export const TaskStepUpdateParameters =
+  TaskStepPropertiesInput as any as S.Schema<TaskStepUpdateParameters>;
 
 /** The current status of trigger. */
 export type TimerTriggerUpdateParametersStatus = "Disabled" | "Enabled";
@@ -6204,9 +6179,8 @@ export const SourceTriggerUpdateParametersSourceTriggerEventsItem = S.String;
 export type SourceTriggerUpdateParametersSourceTriggerEventsList = Array<
   SourceTriggerUpdateParametersSourceTriggerEventsItem | (string & {})
 >;
-export const SourceTriggerUpdateParametersSourceTriggerEventsList = /*@__PURE__*/ S.Array(
-  SourceTriggerUpdateParametersSourceTriggerEventsItem,
-) as any as S.Schema<SourceTriggerUpdateParametersSourceTriggerEventsList>;
+export const SourceTriggerUpdateParametersSourceTriggerEventsList =
+  SourceTriggerSourceTriggerEventsList as any as S.Schema<SourceTriggerUpdateParametersSourceTriggerEventsList>;
 
 /** The current status of trigger. */
 export type SourceTriggerUpdateParametersStatus = "Disabled" | "Enabled";

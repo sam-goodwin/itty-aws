@@ -400,9 +400,8 @@ export const ExtensionsCase1Item = S.String;
 
 /** Array of extensions to enable. */
 export type ExtensionsCase1List = Array<ExtensionsCase1Item | (string & {})>;
-export const ExtensionsCase1List = /*@__PURE__*/ S.Array(
-  ExtensionsCase1Item,
-) as any as S.Schema<ExtensionsCase1List>;
+export const ExtensionsCase1List =
+  CreateAPITokenRequestScopesList as any as S.Schema<ExtensionsCase1List>;
 
 /** The extensions to enable for new databases created in this group. Users looking to enable vector extensions should instead use the native [libSQL vector datatype](/features/ai-and-embeddings). */
 export type Extensions = ExtensionsCase0 | ExtensionsCase1List;

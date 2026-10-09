@@ -678,9 +678,8 @@ export const ListProcessesUserProcessFilter_userAccessLevelsEnum = S.String;
 export type ListProcessesUserProcessFilter_userAccessLevelsEnumList = Array<
   ListProcessesUserProcessFilter_userAccessLevelsEnum | (string & {})
 >;
-export const ListProcessesUserProcessFilter_userAccessLevelsEnumList = /*@__PURE__*/ S.Array(
-  ListProcessesUserProcessFilter_userAccessLevelsEnum,
-) as any as S.Schema<ListProcessesUserProcessFilter_userAccessLevelsEnumList>;
+export const ListProcessesUserProcessFilter_userAccessLevelsEnumList =
+  ListProcessesUserProcessFilter_typesEnumList as any as S.Schema<ListProcessesUserProcessFilter_userAccessLevelsEnumList>;
 
 export type ListProcessesUserProcessFilter_statusesEnum =
   | "PROCESS_STATUS_UNSPECIFIED"
@@ -698,9 +697,8 @@ export const ListProcessesUserProcessFilter_statusesEnum = S.String;
 export type ListProcessesUserProcessFilter_statusesEnumList = Array<
   ListProcessesUserProcessFilter_statusesEnum | (string & {})
 >;
-export const ListProcessesUserProcessFilter_statusesEnumList = /*@__PURE__*/ S.Array(
-  ListProcessesUserProcessFilter_statusesEnum,
-) as any as S.Schema<ListProcessesUserProcessFilter_statusesEnumList>;
+export const ListProcessesUserProcessFilter_statusesEnumList =
+  ListProcessesUserProcessFilter_typesEnumList as any as S.Schema<ListProcessesUserProcessFilter_statusesEnumList>;
 
 export interface ListProcessesRequest {
   /** Optional field used to limit returned processes to those having one of the specified process types. */
@@ -959,9 +957,8 @@ export const ListScriptProcessesProcessesScriptProcessFilter_typesEnum = S.Strin
 export type ListScriptProcessesProcessesScriptProcessFilter_typesEnumList = Array<
   ListScriptProcessesProcessesScriptProcessFilter_typesEnum | (string & {})
 >;
-export const ListScriptProcessesProcessesScriptProcessFilter_typesEnumList = /*@__PURE__*/ S.Array(
-  ListScriptProcessesProcessesScriptProcessFilter_typesEnum,
-) as any as S.Schema<ListScriptProcessesProcessesScriptProcessFilter_typesEnumList>;
+export const ListScriptProcessesProcessesScriptProcessFilter_typesEnumList =
+  ListProcessesUserProcessFilter_typesEnumList as any as S.Schema<ListScriptProcessesProcessesScriptProcessFilter_typesEnumList>;
 
 export type ListScriptProcessesProcessesScriptProcessFilter_statusesEnum =
   | "PROCESS_STATUS_UNSPECIFIED"
@@ -980,9 +977,7 @@ export type ListScriptProcessesProcessesScriptProcessFilter_statusesEnumList = A
   ListScriptProcessesProcessesScriptProcessFilter_statusesEnum | (string & {})
 >;
 export const ListScriptProcessesProcessesScriptProcessFilter_statusesEnumList =
-  /*@__PURE__*/ S.Array(
-    ListScriptProcessesProcessesScriptProcessFilter_statusesEnum,
-  ) as any as S.Schema<ListScriptProcessesProcessesScriptProcessFilter_statusesEnumList>;
+  ListScriptProcessesProcessesScriptProcessFilter_userAccessLevelsEnumList as any as S.Schema<ListScriptProcessesProcessesScriptProcessFilter_statusesEnumList>;
 
 export interface ListScriptProcessesProcessesRequest {
   /** The script ID of the project whose processes are listed. */

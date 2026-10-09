@@ -1198,7 +1198,7 @@ export const AdminScopeFilter = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ excludeOnly: AdminScopeSelection }),
 ]);
 export type FirewallTypeList = PolicyFirewallType[];
-export const FirewallTypeList = /*@__PURE__*/ S.Array(PolicyFirewallType);
+export const FirewallTypeList = DeploymentResourceTypeList as any as S.Schema<FirewallTypeList>;
 export interface AdminFirewallTypeScope {
   allFirewallTypesEnabled?: boolean;
   firewallTypes?: PolicyFirewallType[];

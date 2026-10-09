@@ -372,9 +372,8 @@ export const AgentGatewayProtocolsItemEnum = S.String;
 export type AgentGatewayProtocolsItemEnumList = Array<
   AgentGatewayProtocolsItemEnum | (string & {})
 >;
-export const AgentGatewayProtocolsItemEnumList = /*@__PURE__*/ S.Array(
-  AgentGatewayProtocolsItemEnum,
-) as any as S.Schema<AgentGatewayProtocolsItemEnumList>;
+export const AgentGatewayProtocolsItemEnumList =
+  AgentConnectivityTemplateAccessTypesItemEnumList as any as S.Schema<AgentGatewayProtocolsItemEnumList>;
 
 /** AgentGatewayOutputCard contains informational output-only fields */
 export interface AgentGatewayAgentGatewayOutputCard {
@@ -613,9 +612,8 @@ export const ExtensionChainExtensionSupportedEventsItemEnum = S.String;
 export type ExtensionChainExtensionSupportedEventsItemEnumList = Array<
   ExtensionChainExtensionSupportedEventsItemEnum | (string & {})
 >;
-export const ExtensionChainExtensionSupportedEventsItemEnumList = /*@__PURE__*/ S.Array(
-  ExtensionChainExtensionSupportedEventsItemEnum,
-) as any as S.Schema<ExtensionChainExtensionSupportedEventsItemEnumList>;
+export const ExtensionChainExtensionSupportedEventsItemEnumList =
+  AgentConnectivityTemplateAccessTypesItemEnumList as any as S.Schema<ExtensionChainExtensionSupportedEventsItemEnumList>;
 
 /** A single extension in the chain to execute for the matching request. */
 export interface ExtensionChainExtension {
@@ -1037,9 +1035,8 @@ export const ExtensionBindingTargetScopeResourceTypesItemEnum = S.String;
 export type ExtensionBindingTargetScopeResourceTypesItemEnumList = Array<
   ExtensionBindingTargetScopeResourceTypesItemEnum | (string & {})
 >;
-export const ExtensionBindingTargetScopeResourceTypesItemEnumList = /*@__PURE__*/ S.Array(
-  ExtensionBindingTargetScopeResourceTypesItemEnum,
-) as any as S.Schema<ExtensionBindingTargetScopeResourceTypesItemEnumList>;
+export const ExtensionBindingTargetScopeResourceTypesItemEnumList =
+  AgentConnectivityTemplateAccessTypesItemEnumList as any as S.Schema<ExtensionBindingTargetScopeResourceTypesItemEnumList>;
 
 /** Specifies the scope of resources to which this binding should attach. */
 export interface ExtensionBindingTargetScope {
@@ -2291,9 +2288,8 @@ export const ProducerExtensionExtensionSettingsSupportedEventsItemEnum = S.Strin
 export type ProducerExtensionExtensionSettingsSupportedEventsItemEnumList = Array<
   ProducerExtensionExtensionSettingsSupportedEventsItemEnum | (string & {})
 >;
-export const ProducerExtensionExtensionSettingsSupportedEventsItemEnumList = /*@__PURE__*/ S.Array(
-  ProducerExtensionExtensionSettingsSupportedEventsItemEnum,
-) as any as S.Schema<ProducerExtensionExtensionSettingsSupportedEventsItemEnumList>;
+export const ProducerExtensionExtensionSettingsSupportedEventsItemEnumList =
+  AgentConnectivityTemplateAccessTypesItemEnumList as any as S.Schema<ProducerExtensionExtensionSettingsSupportedEventsItemEnumList>;
 
 /** The configuration for the service that this `ProducerExtension` offers. */
 export interface ProducerExtensionExtensionSettings {

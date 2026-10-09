@@ -401,7 +401,7 @@ export type EntityType =
 export const EntityType = S.String;
 
 export type EntityTypeList = EntityType[];
-export const EntityTypeList = /*@__PURE__*/ S.Array(EntityType);
+export const EntityTypeList = MetricsList as any as S.Schema<EntityTypeList>;
 export type CustomDataIdentifier = string;
 export type CustomDataIdentifierList = string[];
 export const CustomDataIdentifierList =
@@ -486,16 +486,14 @@ export interface TrainedModelExportsMaxSize {
   unit: TrainedModelExportsMaxSizeUnitType;
   value: number;
 }
-export const TrainedModelExportsMaxSize = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ unit: TrainedModelExportsMaxSizeUnitType, value: S.Number }),
-).annotate({
-  identifier: "TrainedModelExportsMaxSize",
-}) as any as S.Schema<TrainedModelExportsMaxSize>;
+export const TrainedModelExportsMaxSize =
+  TrainedModelArtifactMaxSize as any as S.Schema<TrainedModelExportsMaxSize>;
 export type TrainedModelExportFileType = "MODEL" | "OUTPUT" | (string & {});
 export const TrainedModelExportFileType = S.String;
 
 export type TrainedModelExportFileTypeList = TrainedModelExportFileType[];
-export const TrainedModelExportFileTypeList = /*@__PURE__*/ S.Array(TrainedModelExportFileType);
+export const TrainedModelExportFileTypeList =
+  MetricsList as any as S.Schema<TrainedModelExportFileTypeList>;
 export interface TrainedModelExportsConfigurationPolicy {
   maxSize: TrainedModelExportsMaxSize;
   filesToExport: TrainedModelExportFileType[];
@@ -513,11 +511,8 @@ export interface TrainedModelInferenceMaxOutputSize {
   unit: TrainedModelInferenceMaxOutputSizeUnitType;
   value: number;
 }
-export const TrainedModelInferenceMaxOutputSize = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ unit: TrainedModelInferenceMaxOutputSizeUnitType, value: S.Number }),
-).annotate({
-  identifier: "TrainedModelInferenceMaxOutputSize",
-}) as any as S.Schema<TrainedModelInferenceMaxOutputSize>;
+export const TrainedModelInferenceMaxOutputSize =
+  TrainedModelArtifactMaxSize as any as S.Schema<TrainedModelInferenceMaxOutputSize>;
 export interface TrainedModelInferenceJobsConfigurationPolicy {
   containerLogs?: LogsConfigurationPolicy[];
   maxOutputSize?: TrainedModelInferenceMaxOutputSize;
@@ -996,7 +991,7 @@ export type ColumnType =
 export const ColumnType = S.String;
 
 export type ColumnTypeList = ColumnType[];
-export const ColumnTypeList = /*@__PURE__*/ S.Array(ColumnType);
+export const ColumnTypeList = MetricsList as any as S.Schema<ColumnTypeList>;
 export interface ColumnSchema {
   columnName: string;
   columnTypes: ColumnType[];

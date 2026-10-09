@@ -345,9 +345,7 @@ export type InstanceGeneration = "current" | "previous" | (string & {});
 export const InstanceGeneration = S.String;
 
 export type InstanceGenerationSet = InstanceGeneration[];
-export const InstanceGenerationSet = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ InstanceGeneration.pipe(/*@__PURE__*/ T.XmlName("item")),
-);
+export const InstanceGenerationSet = CpuManufacturerSet as any as S.Schema<InstanceGenerationSet>;
 export type BareMetal = "included" | "required" | "excluded" | (string & {});
 export const BareMetal = S.String;
 
@@ -370,9 +368,7 @@ export type LocalStorageType = "hdd" | "ssd" | (string & {});
 export const LocalStorageType = S.String;
 
 export type LocalStorageTypeSet = LocalStorageType[];
-export const LocalStorageTypeSet = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ LocalStorageType.pipe(/*@__PURE__*/ T.XmlName("item")),
-);
+export const LocalStorageTypeSet = CpuManufacturerSet as any as S.Schema<LocalStorageTypeSet>;
 export interface TotalLocalStorageGBRequest {
   min?: number;
   max?: number;
@@ -389,9 +385,7 @@ export type AcceleratorType = "gpu" | "fpga" | "inference" | (string & {});
 export const AcceleratorType = S.String;
 
 export type AcceleratorTypeSet = AcceleratorType[];
-export const AcceleratorTypeSet = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ AcceleratorType.pipe(/*@__PURE__*/ T.XmlName("item")),
-);
+export const AcceleratorTypeSet = CpuManufacturerSet as any as S.Schema<AcceleratorTypeSet>;
 export interface AcceleratorCountRequest {
   min?: number;
   max?: number;
@@ -408,9 +402,8 @@ export type AcceleratorManufacturer =
 export const AcceleratorManufacturer = S.String;
 
 export type AcceleratorManufacturerSet = AcceleratorManufacturer[];
-export const AcceleratorManufacturerSet = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ AcceleratorManufacturer.pipe(/*@__PURE__*/ T.XmlName("item")),
-);
+export const AcceleratorManufacturerSet =
+  CpuManufacturerSet as any as S.Schema<AcceleratorManufacturerSet>;
 export type AcceleratorName =
   | "a100"
   | "inferentia"
@@ -428,9 +421,7 @@ export type AcceleratorName =
 export const AcceleratorName = S.String;
 
 export type AcceleratorNameSet = AcceleratorName[];
-export const AcceleratorNameSet = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ AcceleratorName.pipe(/*@__PURE__*/ T.XmlName("item")),
-);
+export const AcceleratorNameSet = CpuManufacturerSet as any as S.Schema<AcceleratorNameSet>;
 export interface AcceleratorTotalMemoryMiBRequest {
   min?: number;
   max?: number;
@@ -2363,7 +2354,8 @@ export type DeviceCgroupPermission = "read" | "write" | "mknod" | (string & {});
 export const DeviceCgroupPermission = S.String;
 
 export type DeviceCgroupPermissions = DeviceCgroupPermission[];
-export const DeviceCgroupPermissions = /*@__PURE__*/ S.Array(DeviceCgroupPermission);
+export const DeviceCgroupPermissions =
+  DeploymentLifecycleHookStageList as any as S.Schema<DeviceCgroupPermissions>;
 export interface Device {
   hostPath: string;
   containerPath?: string;
@@ -2495,11 +2487,9 @@ export interface ResourceRequirement {
   value: string;
   type: ResourceType;
 }
-export const ResourceRequirement = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ value: S.String, type: ResourceType }),
-).annotate({ identifier: "ResourceRequirement" }) as any as S.Schema<ResourceRequirement>;
+export const ResourceRequirement = EnvironmentFile as any as S.Schema<ResourceRequirement>;
 export type ResourceRequirements = ResourceRequirement[];
-export const ResourceRequirements = /*@__PURE__*/ S.Array(ResourceRequirement);
+export const ResourceRequirements = EnvironmentFiles as any as S.Schema<ResourceRequirements>;
 export type FirelensConfigurationType = "fluentd" | "fluentbit" | (string & {});
 export const FirelensConfigurationType = S.String;
 
@@ -2758,7 +2748,8 @@ export type Compatibility = "EC2" | "FARGATE" | "EXTERNAL" | "MANAGED_INSTANCES"
 export const Compatibility = S.String;
 
 export type CompatibilityList = Compatibility[];
-export const CompatibilityList = /*@__PURE__*/ S.Array(Compatibility);
+export const CompatibilityList =
+  DeploymentLifecycleHookStageList as any as S.Schema<CompatibilityList>;
 export type CPUArchitecture = "X86_64" | "ARM64" | (string & {});
 export const CPUArchitecture = S.String;
 
@@ -3106,7 +3097,8 @@ export type CapacityProviderField = "TAGS" | (string & {});
 export const CapacityProviderField = S.String;
 
 export type CapacityProviderFieldList = CapacityProviderField[];
-export const CapacityProviderFieldList = /*@__PURE__*/ S.Array(CapacityProviderField);
+export const CapacityProviderFieldList =
+  DeploymentLifecycleHookStageList as any as S.Schema<CapacityProviderFieldList>;
 export interface DescribeCapacityProvidersRequest {
   capacityProviders?: string[];
   cluster?: string;
@@ -3151,7 +3143,8 @@ export type ClusterField =
 export const ClusterField = S.String;
 
 export type ClusterFieldList = ClusterField[];
-export const ClusterFieldList = /*@__PURE__*/ S.Array(ClusterField);
+export const ClusterFieldList =
+  DeploymentLifecycleHookStageList as any as S.Schema<ClusterFieldList>;
 export interface DescribeClustersRequest {
   clusters?: string[];
   include?: ClusterField[];
@@ -3174,7 +3167,8 @@ export type ContainerInstanceField = "TAGS" | "CONTAINER_INSTANCE_HEALTH" | (str
 export const ContainerInstanceField = S.String;
 
 export type ContainerInstanceFieldList = ContainerInstanceField[];
-export const ContainerInstanceFieldList = /*@__PURE__*/ S.Array(ContainerInstanceField);
+export const ContainerInstanceFieldList =
+  DeploymentLifecycleHookStageList as any as S.Schema<ContainerInstanceFieldList>;
 export interface DescribeContainerInstancesRequest {
   cluster?: string;
   containerInstances: string[];
@@ -3650,7 +3644,8 @@ export type ExpressGatewayServiceInclude = "TAGS" | (string & {});
 export const ExpressGatewayServiceInclude = S.String;
 
 export type ExpressGatewayServiceIncludeList = ExpressGatewayServiceInclude[];
-export const ExpressGatewayServiceIncludeList = /*@__PURE__*/ S.Array(ExpressGatewayServiceInclude);
+export const ExpressGatewayServiceIncludeList =
+  DeploymentLifecycleHookStageList as any as S.Schema<ExpressGatewayServiceIncludeList>;
 export interface DescribeExpressGatewayServiceRequest {
   serviceArn: string;
   include?: ExpressGatewayServiceInclude[];
@@ -3796,13 +3791,8 @@ export interface ServiceDeploymentAlarms {
   alarmNames?: string[];
   triggeredAlarmNames?: string[];
 }
-export const ServiceDeploymentAlarms = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(ServiceDeploymentRollbackMonitorsStatus),
-    alarmNames: S.optional(StringList),
-    triggeredAlarmNames: S.optional(StringList),
-  }),
-).annotate({ identifier: "ServiceDeploymentAlarms" }) as any as S.Schema<ServiceDeploymentAlarms>;
+export const ServiceDeploymentAlarms =
+  DaemonDeploymentAlarms as any as S.Schema<ServiceDeploymentAlarms>;
 export interface ServiceDeployment {
   serviceDeploymentArn?: string;
   serviceArn?: string;
@@ -4205,7 +4195,8 @@ export type ServiceField = "TAGS" | (string & {});
 export const ServiceField = S.String;
 
 export type ServiceFieldList = ServiceField[];
-export const ServiceFieldList = /*@__PURE__*/ S.Array(ServiceField);
+export const ServiceFieldList =
+  DeploymentLifecycleHookStageList as any as S.Schema<ServiceFieldList>;
 export interface DescribeServicesRequest {
   cluster?: string;
   services: string[];
@@ -4231,7 +4222,8 @@ export type TaskDefinitionField = "TAGS" | (string & {});
 export const TaskDefinitionField = S.String;
 
 export type TaskDefinitionFieldList = TaskDefinitionField[];
-export const TaskDefinitionFieldList = /*@__PURE__*/ S.Array(TaskDefinitionField);
+export const TaskDefinitionFieldList =
+  DeploymentLifecycleHookStageList as any as S.Schema<TaskDefinitionFieldList>;
 export interface DescribeTaskDefinitionRequest {
   taskDefinition: string;
   include?: TaskDefinitionField[];
@@ -4256,7 +4248,7 @@ export type TaskField = "TAGS" | (string & {});
 export const TaskField = S.String;
 
 export type TaskFieldList = TaskField[];
-export const TaskFieldList = /*@__PURE__*/ S.Array(TaskField);
+export const TaskFieldList = DeploymentLifecycleHookStageList as any as S.Schema<TaskFieldList>;
 export interface DescribeTasksRequest {
   cluster?: string;
   tasks: string[];
@@ -4542,7 +4534,8 @@ export type TaskSetField = "TAGS" | (string & {});
 export const TaskSetField = S.String;
 
 export type TaskSetFieldList = TaskSetField[];
-export const TaskSetFieldList = /*@__PURE__*/ S.Array(TaskSetField);
+export const TaskSetFieldList =
+  DeploymentLifecycleHookStageList as any as S.Schema<TaskSetFieldList>;
 export interface DescribeTaskSetsRequest {
   cluster: string;
   service: string;
@@ -4779,7 +4772,8 @@ export const ListContainerInstancesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListContainerInstancesResponse",
 }) as any as S.Schema<ListContainerInstancesResponse>;
 export type DaemonDeploymentStatusList = DaemonDeploymentStatus[];
-export const DaemonDeploymentStatusList = /*@__PURE__*/ S.Array(DaemonDeploymentStatus);
+export const DaemonDeploymentStatusList =
+  DeploymentLifecycleHookStageList as any as S.Schema<DaemonDeploymentStatusList>;
 export interface CreatedAt {
   before?: Date;
   after?: Date;
@@ -4956,7 +4950,8 @@ export const ListDaemonTaskDefinitionsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDaemonTaskDefinitionsResponse",
 }) as any as S.Schema<ListDaemonTaskDefinitionsResponse>;
 export type ServiceDeploymentStatusList = ServiceDeploymentStatus[];
-export const ServiceDeploymentStatusList = /*@__PURE__*/ S.Array(ServiceDeploymentStatus);
+export const ServiceDeploymentStatusList =
+  DeploymentLifecycleHookStageList as any as S.Schema<ServiceDeploymentStatusList>;
 export interface ListServiceDeploymentsRequest {
   service: string;
   cluster?: string;

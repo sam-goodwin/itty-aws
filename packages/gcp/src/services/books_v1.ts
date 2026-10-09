@@ -3288,9 +3288,8 @@ export const ListVolumesMybooksAcquireMethodEnum = S.String;
 export type ListVolumesMybooksAcquireMethodEnumList = Array<
   ListVolumesMybooksAcquireMethodEnum | (string & {})
 >;
-export const ListVolumesMybooksAcquireMethodEnumList = /*@__PURE__*/ S.Array(
-  ListVolumesMybooksAcquireMethodEnum,
-) as any as S.Schema<ListVolumesMybooksAcquireMethodEnumList>;
+export const ListVolumesMybooksAcquireMethodEnumList =
+  ListVolumesMybooksProcessingStateEnumList as any as S.Schema<ListVolumesMybooksAcquireMethodEnumList>;
 
 export interface ListVolumesMybooksRequest {
   /** The processing state of the user uploaded volumes to be returned. Applicable only if the UPLOADED is specified in the acquireMethod. */
@@ -3370,9 +3369,8 @@ export const ListVolumesUseruploadedProcessingStateEnum = S.String;
 export type ListVolumesUseruploadedProcessingStateEnumList = Array<
   ListVolumesUseruploadedProcessingStateEnum | (string & {})
 >;
-export const ListVolumesUseruploadedProcessingStateEnumList = /*@__PURE__*/ S.Array(
-  ListVolumesUseruploadedProcessingStateEnum,
-) as any as S.Schema<ListVolumesUseruploadedProcessingStateEnumList>;
+export const ListVolumesUseruploadedProcessingStateEnumList =
+  ListVolumesMybooksProcessingStateEnumList as any as S.Schema<ListVolumesUseruploadedProcessingStateEnumList>;
 
 export interface ListVolumesUseruploadedRequest {
   /** The processing state of the user uploaded volumes to be returned. */
@@ -3783,9 +3781,8 @@ export const SyncVolumeLicensesMyconfigFeaturesEnum = S.String;
 export type SyncVolumeLicensesMyconfigFeaturesEnumList = Array<
   SyncVolumeLicensesMyconfigFeaturesEnum | (string & {})
 >;
-export const SyncVolumeLicensesMyconfigFeaturesEnumList = /*@__PURE__*/ S.Array(
-  SyncVolumeLicensesMyconfigFeaturesEnum,
-) as any as S.Schema<SyncVolumeLicensesMyconfigFeaturesEnumList>;
+export const SyncVolumeLicensesMyconfigFeaturesEnumList =
+  ListVolumesMybooksProcessingStateEnumList as any as S.Schema<SyncVolumeLicensesMyconfigFeaturesEnumList>;
 
 export interface SyncVolumeLicensesMyconfigRequest {
   /** ISO-639-1, ISO-3166-1 codes for message localization, i.e. en_US. */

@@ -895,9 +895,8 @@ export const ListAccountsProductsIncludeEnum = S.String;
 export type ListAccountsProductsIncludeEnumList = Array<
   ListAccountsProductsIncludeEnum | (string & {})
 >;
-export const ListAccountsProductsIncludeEnumList = /*@__PURE__*/ S.Array(
-  ListAccountsProductsIncludeEnum,
-) as any as S.Schema<ListAccountsProductsIncludeEnumList>;
+export const ListAccountsProductsIncludeEnumList =
+  GetAccountsProductsIncludeEnumList as any as S.Schema<ListAccountsProductsIncludeEnumList>;
 
 export interface ListAccountsProductsRequest {
   /** Parent ID in the format `accounts/{account_id}`. `account_id` - The ID of the Manufacturer Center account. */

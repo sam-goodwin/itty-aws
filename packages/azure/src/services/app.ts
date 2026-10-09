@@ -952,15 +952,8 @@ export interface CheckNamespaceNameAvailabilityResponse {
   /** Detailed reason why the given name is available. */
   message?: string;
 }
-export const CheckNamespaceNameAvailabilityResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nameAvailable: S.optional(S.Boolean),
-    reason: S.optional(CheckNamespaceNameAvailabilityResponseReason),
-    message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CheckNamespaceNameAvailabilityResponse",
-}) as any as S.Schema<CheckNamespaceNameAvailabilityResponse>;
+export const CheckNamespaceNameAvailabilityResponse =
+  CheckConnectedEnvironmentNameAvailabilityResponse as any as S.Schema<CheckNamespaceNameAvailabilityResponse>;
 
 /** Resource tags. */
 export type ConnectedEnvironmentsCertificatesCreateOrUpdateRequestTagsMap = {
@@ -4357,18 +4350,12 @@ export interface ManagedIdentitySetting {
   /** Use to select the lifecycle stages of a Session Pool during which the Managed Identity should be available. */
   lifecycle?: ManagedIdentitySettingLifecycle | (string & {});
 }
-export const ManagedIdentitySetting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    identity: S.String,
-    lifecycle: S.optional(ManagedIdentitySettingLifecycle),
-  }),
-).annotate({ identifier: "ManagedIdentitySetting" }) as any as S.Schema<ManagedIdentitySetting>;
+export const ManagedIdentitySetting = IdentitySettings as any as S.Schema<ManagedIdentitySetting>;
 
 /** Optional settings for a Managed Identity that is assigned to the Session pool. */
 export type SessionPoolPropertiesInputManagedIdentitySettingsList = Array<ManagedIdentitySetting>;
-export const SessionPoolPropertiesInputManagedIdentitySettingsList = /*@__PURE__*/ S.Array(
-  ManagedIdentitySetting,
-) as any as S.Schema<SessionPoolPropertiesInputManagedIdentitySettingsList>;
+export const SessionPoolPropertiesInputManagedIdentitySettingsList =
+  ConfigurationInputIdentitySettingsList as any as S.Schema<SessionPoolPropertiesInputManagedIdentitySettingsList>;
 
 /** Container App session pool resource specific properties */
 export interface SessionPoolPropertiesInput {

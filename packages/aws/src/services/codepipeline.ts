@@ -2287,21 +2287,11 @@ export interface RuleConfigurationProperty {
   description?: string;
   type?: RuleConfigurationPropertyType;
 }
-export const RuleConfigurationProperty = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    required: S.Boolean,
-    key: S.Boolean,
-    secret: S.Boolean,
-    queryable: S.optional(S.Boolean),
-    description: S.optional(S.String),
-    type: S.optional(RuleConfigurationPropertyType),
-  }),
-).annotate({
-  identifier: "RuleConfigurationProperty",
-}) as any as S.Schema<RuleConfigurationProperty>;
+export const RuleConfigurationProperty =
+  ActionConfigurationProperty as any as S.Schema<RuleConfigurationProperty>;
 export type RuleConfigurationPropertyList = RuleConfigurationProperty[];
-export const RuleConfigurationPropertyList = /*@__PURE__*/ S.Array(RuleConfigurationProperty);
+export const RuleConfigurationPropertyList =
+  ActionConfigurationPropertyList as any as S.Schema<RuleConfigurationPropertyList>;
 export interface RuleType {
   id: RuleTypeId;
   settings?: RuleTypeSettings;

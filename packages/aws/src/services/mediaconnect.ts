@@ -3940,13 +3940,8 @@ export interface DeleteRouterNetworkInterfaceResponse {
   Name: string;
   State: RouterNetworkInterfaceState;
 }
-export const DeleteRouterNetworkInterfaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Arn: S.String, Name: S.String, State: RouterNetworkInterfaceState }).pipe(
-    S.encodeKeys({ Arn: "arn", Name: "name", State: "state" }),
-  ),
-).annotate({
-  identifier: "DeleteRouterNetworkInterfaceResponse",
-}) as any as S.Schema<DeleteRouterNetworkInterfaceResponse>;
+export const DeleteRouterNetworkInterfaceResponse =
+  DeleteRouterInputResponse as any as S.Schema<DeleteRouterNetworkInterfaceResponse>;
 export interface DeleteRouterOutputRequest {
   Arn: string;
 }
@@ -3969,13 +3964,8 @@ export interface DeleteRouterOutputResponse {
   Name: string;
   State: RouterOutputState;
 }
-export const DeleteRouterOutputResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Arn: S.String, Name: S.String, State: RouterOutputState }).pipe(
-    S.encodeKeys({ Arn: "arn", Name: "name", State: "state" }),
-  ),
-).annotate({
-  identifier: "DeleteRouterOutputResponse",
-}) as any as S.Schema<DeleteRouterOutputResponse>;
+export const DeleteRouterOutputResponse =
+  DeleteRouterInputResponse as any as S.Schema<DeleteRouterOutputResponse>;
 export type GatewayInstanceArn = string;
 export interface DeregisterGatewayInstanceRequest {
   Force?: boolean;
@@ -5229,7 +5219,7 @@ export const StringList = __listOfString as any as S.Schema<StringList>;
 export type RoutingScopeList = RoutingScope[];
 export const RoutingScopeList = /*@__PURE__*/ S.Array(RoutingScope);
 export type RouterInputTypeList = RouterInputType[];
-export const RouterInputTypeList = /*@__PURE__*/ S.Array(RouterInputType);
+export const RouterInputTypeList = RoutingScopeList as any as S.Schema<RouterInputTypeList>;
 export type RouterInputFilter =
   | {
       NameContains: string[];
@@ -5358,7 +5348,8 @@ export const ListRouterInputsResponse = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "ListRouterInputsResponse" }) as any as S.Schema<ListRouterInputsResponse>;
 export type RouterNetworkInterfaceTypeList = RouterNetworkInterfaceType[];
-export const RouterNetworkInterfaceTypeList = /*@__PURE__*/ S.Array(RouterNetworkInterfaceType);
+export const RouterNetworkInterfaceTypeList =
+  RoutingScopeList as any as S.Schema<RouterNetworkInterfaceTypeList>;
 export type RouterNetworkInterfaceFilter =
   | { RegionNames: string[]; NetworkInterfaceTypes?: never; NameContains?: never }
   | {
@@ -5457,7 +5448,7 @@ export const ListRouterNetworkInterfacesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListRouterNetworkInterfacesResponse",
 }) as any as S.Schema<ListRouterNetworkInterfacesResponse>;
 export type RouterOutputTypeList = RouterOutputType[];
-export const RouterOutputTypeList = /*@__PURE__*/ S.Array(RouterOutputType);
+export const RouterOutputTypeList = RoutingScopeList as any as S.Schema<RouterOutputTypeList>;
 export type RouterOutputFilter =
   | {
       RegionNames: string[];
@@ -6129,11 +6120,8 @@ export interface StopRouterOutputResponse {
   Name: string;
   State: RouterOutputState;
 }
-export const StopRouterOutputResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Arn: S.String, Name: S.String, State: RouterOutputState }).pipe(
-    S.encodeKeys({ Arn: "arn", Name: "name", State: "state" }),
-  ),
-).annotate({ identifier: "StopRouterOutputResponse" }) as any as S.Schema<StopRouterOutputResponse>;
+export const StopRouterOutputResponse =
+  StopRouterInputResponse as any as S.Schema<StopRouterOutputResponse>;
 export interface TagGlobalResourceRequest {
   ResourceArn: string;
   Tags?: { [key: string]: string | undefined };

@@ -1133,18 +1133,13 @@ export interface TemplateSubtotalSetting {
   /** The display preference. */
   display_preference?: TemplateDisplayPreference;
 }
-export const TemplateSubtotalSetting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    field_name: S.optional(TemplateSubtotalField),
-    display_preference: S.optional(TemplateDisplayPreference),
-  }),
-).annotate({ identifier: "TemplateSubtotalSetting" }) as any as S.Schema<TemplateSubtotalSetting>;
+export const TemplateSubtotalSetting =
+  TemplateItemSetting as any as S.Schema<TemplateSubtotalSetting>;
 
 /** The template subtotal headers display preference. */
 export type TemplateSubtotalSettingList = Array<TemplateSubtotalSetting>;
-export const TemplateSubtotalSettingList = /*@__PURE__*/ S.Array(
-  TemplateSubtotalSetting,
-) as any as S.Schema<TemplateSubtotalSettingList>;
+export const TemplateSubtotalSettingList =
+  TemplateItemSettingList as any as S.Schema<TemplateSubtotalSettingList>;
 
 /** The template settings. Sets a template as the default template or edit template. */
 export interface TemplateSettings {

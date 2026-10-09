@@ -1483,9 +1483,7 @@ export type GoogleCloudAiplatformV1beta1ToolComputerUseDisabledSafetyPoliciesIte
   GoogleCloudAiplatformV1beta1ToolComputerUseDisabledSafetyPoliciesItemEnum | (string & {})
 >;
 export const GoogleCloudAiplatformV1beta1ToolComputerUseDisabledSafetyPoliciesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudAiplatformV1beta1ToolComputerUseDisabledSafetyPoliciesItemEnum,
-  ) as any as S.Schema<GoogleCloudAiplatformV1beta1ToolComputerUseDisabledSafetyPoliciesItemEnumList>;
+  GoogleCloudAiplatformV1beta1GenerationConfigResponseModalitiesItemEnumList as any as S.Schema<GoogleCloudAiplatformV1beta1ToolComputerUseDisabledSafetyPoliciesItemEnumList>;
 
 /** A tool that enables the model to interact directly with a computer environment. */
 export interface GoogleCloudAiplatformV1beta1ToolComputerUse {

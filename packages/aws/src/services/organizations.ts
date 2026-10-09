@@ -1890,11 +1890,9 @@ export interface Parent {
   Id?: string;
   Type?: ParentType;
 }
-export const Parent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Id: S.optional(S.String), Type: S.optional(ParentType) }),
-).annotate({ identifier: "Parent" }) as any as S.Schema<Parent>;
+export const Parent = Child as any as S.Schema<Parent>;
 export type Parents = Parent[];
-export const Parents = /*@__PURE__*/ S.Array(Parent);
+export const Parents = Children as any as S.Schema<Parents>;
 export interface ListParentsResponse {
   Parents?: Parent[];
   NextToken?: string;

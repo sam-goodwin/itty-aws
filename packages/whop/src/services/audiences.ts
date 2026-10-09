@@ -196,16 +196,8 @@ export interface AudienceEngagementFacebookPageRule {
   /** Connected social account ID, prefixed `sacc_`, with advertising access. */
   social_account_id: string;
 }
-export const AudienceEngagementFacebookPageRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    event: AudienceEngagementFacebookPageRuleEvent,
-    object: AudienceEngagementFacebookPageRuleObject,
-    retention_days: S.Number,
-    social_account_id: S.String,
-  }),
-).annotate({
-  identifier: "AudienceEngagementFacebookPageRule",
-}) as any as S.Schema<AudienceEngagementFacebookPageRule>;
+export const AudienceEngagementFacebookPageRule =
+  AudienceEngagementInstagramProfileRule as any as S.Schema<AudienceEngagementFacebookPageRule>;
 
 export type AudienceEngagementRule =
   | AudienceEngagementVideoRule

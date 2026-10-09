@@ -3190,11 +3190,8 @@ export interface EvaluationFormItemEnablementSourceValue {
   Type: EvaluationFormItemEnablementSourceValueType;
   RefId?: string;
 }
-export const EvaluationFormItemEnablementSourceValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Type: EvaluationFormItemEnablementSourceValueType, RefId: S.optional(S.String) }),
-).annotate({
-  identifier: "EvaluationFormItemEnablementSourceValue",
-}) as any as S.Schema<EvaluationFormItemEnablementSourceValue>;
+export const EvaluationFormItemEnablementSourceValue =
+  EvaluationFormItemEnablementSource as any as S.Schema<EvaluationFormItemEnablementSourceValue>;
 export type EvaluationFormItemEnablementSourceValueList = EvaluationFormItemEnablementSourceValue[];
 export const EvaluationFormItemEnablementSourceValueList = /*@__PURE__*/ S.Array(
   EvaluationFormItemEnablementSourceValue,
@@ -6065,7 +6062,7 @@ export type ContactField =
 export const ContactField = S.String;
 
 export type ContactFields = ContactField[];
-export const ContactFields = /*@__PURE__*/ S.Array(ContactField);
+export const ContactFields = AllowedUserActions as any as S.Schema<ContactFields>;
 export interface DeleteContactDataRequest {
   InstanceId: string;
   ContactId: string;
@@ -9966,7 +9963,7 @@ export type RuleCapabilityTier = "GenerativeAI" | (string & {});
 export const RuleCapabilityTier = S.String;
 
 export type RuleCapabilityTiers = RuleCapabilityTier[];
-export const RuleCapabilityTiers = /*@__PURE__*/ S.Array(RuleCapabilityTier);
+export const RuleCapabilityTiers = AllowedUserActions as any as S.Schema<RuleCapabilityTiers>;
 export interface Rule {
   Name: string;
   RuleId: string;
@@ -11293,7 +11290,7 @@ export const GetCrossRegionRoutingResponse = /*@__PURE__*/ S.suspend(() =>
 export type Queues = string[];
 export const Queues = QuickConnectsList as any as S.Schema<Queues>;
 export type Channels = Channel[];
-export const Channels = /*@__PURE__*/ S.Array(Channel);
+export const Channels = AllowedUserActions as any as S.Schema<Channels>;
 export type RoutingProfiles = string[];
 export const RoutingProfiles = QuickConnectsList as any as S.Schema<RoutingProfiles>;
 export type RoutingExpression = string;
@@ -11339,7 +11336,7 @@ export type Grouping =
 export const Grouping = S.String;
 
 export type Groupings = Grouping[];
-export const Groupings = /*@__PURE__*/ S.Array(Grouping);
+export const Groupings = AllowedUserActions as any as S.Schema<Groupings>;
 export type CurrentMetricName =
   | "AGENTS_ONLINE"
   | "AGENTS_AVAILABLE"
@@ -11512,7 +11509,7 @@ export type ContactState =
 export const ContactState = S.String;
 
 export type ContactStates = ContactState[];
-export const ContactStates = /*@__PURE__*/ S.Array(ContactState);
+export const ContactStates = AllowedUserActions as any as S.Schema<ContactStates>;
 export interface ContactFilter {
   ContactStates?: ContactState[];
 }
@@ -12493,7 +12490,7 @@ export const ImportWorkspaceMediaResponse =
   AssociateBotResponse as any as S.Schema<ImportWorkspaceMediaResponse>;
 export type MaxResult1000 = number;
 export type AgentStatusTypes = AgentStatusType[];
-export const AgentStatusTypes = /*@__PURE__*/ S.Array(AgentStatusType);
+export const AgentStatusTypes = AllowedUserActions as any as S.Schema<AgentStatusTypes>;
 export interface ListAgentStatusRequest {
   InstanceId: string;
   NextToken?: string;
@@ -13185,7 +13182,7 @@ export const ListContactFlowModuleVersionsResponse = /*@__PURE__*/ S.suspend(() 
   identifier: "ListContactFlowModuleVersionsResponse",
 }) as any as S.Schema<ListContactFlowModuleVersionsResponse>;
 export type ContactFlowTypes = ContactFlowType[];
-export const ContactFlowTypes = /*@__PURE__*/ S.Array(ContactFlowType);
+export const ContactFlowTypes = AllowedUserActions as any as S.Schema<ContactFlowTypes>;
 export interface ListContactFlowsRequest {
   InstanceId: string;
   ContactFlowTypes?: ContactFlowType[];
@@ -13286,7 +13283,7 @@ export const ListContactFlowVersionsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListContactFlowVersionsResponse",
 }) as any as S.Schema<ListContactFlowVersionsResponse>;
 export type ReferenceTypes = ReferenceType[];
-export const ReferenceTypes = /*@__PURE__*/ S.Array(ReferenceType);
+export const ReferenceTypes = AllowedUserActions as any as S.Schema<ReferenceTypes>;
 export interface ListContactReferencesRequest {
   InstanceId: string;
   ContactId: string;
@@ -14593,9 +14590,10 @@ export const ListNotificationsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListNotificationsResponse",
 }) as any as S.Schema<ListNotificationsResponse>;
 export type PhoneNumberTypes = PhoneNumberType[];
-export const PhoneNumberTypes = /*@__PURE__*/ S.Array(PhoneNumberType);
+export const PhoneNumberTypes = AllowedUserActions as any as S.Schema<PhoneNumberTypes>;
 export type PhoneNumberCountryCodes = PhoneNumberCountryCode[];
-export const PhoneNumberCountryCodes = /*@__PURE__*/ S.Array(PhoneNumberCountryCode);
+export const PhoneNumberCountryCodes =
+  AllowedUserActions as any as S.Schema<PhoneNumberCountryCodes>;
 export interface ListPhoneNumbersRequest {
   InstanceId: string;
   PhoneNumberTypes?: PhoneNumberType[];
@@ -14925,7 +14923,7 @@ export type QueueType = "STANDARD" | "AGENT" | (string & {});
 export const QueueType = S.String;
 
 export type QueueTypes = QueueType[];
-export const QueueTypes = /*@__PURE__*/ S.Array(QueueType);
+export const QueueTypes = AllowedUserActions as any as S.Schema<QueueTypes>;
 export interface ListQueuesRequest {
   InstanceId: string;
   QueueTypes?: QueueType[];
@@ -14978,7 +14976,7 @@ export const ListQueuesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ QueueSummaryList: S.optional(QueueSummaryList), NextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListQueuesResponse" }) as any as S.Schema<ListQueuesResponse>;
 export type QuickConnectTypes = QuickConnectType[];
-export const QuickConnectTypes = /*@__PURE__*/ S.Array(QuickConnectType);
+export const QuickConnectTypes = AllowedUserActions as any as S.Schema<QuickConnectTypes>;
 export interface ListQuickConnectsRequest {
   InstanceId: string;
   NextToken?: string;
@@ -16798,7 +16796,8 @@ export type MonitorCapability = "SILENT_MONITOR" | "BARGE" | (string & {});
 export const MonitorCapability = S.String;
 
 export type AllowedMonitorCapabilities = MonitorCapability[];
-export const AllowedMonitorCapabilities = /*@__PURE__*/ S.Array(MonitorCapability);
+export const AllowedMonitorCapabilities =
+  AllowedUserActions as any as S.Schema<AllowedMonitorCapabilities>;
 export interface MonitorContactRequest {
   InstanceId: string;
   ContactId: string;
@@ -17215,14 +17214,7 @@ export interface DecimalCondition {
   MaxValue?: number;
   ComparisonType?: DecimalComparisonType;
 }
-export const DecimalCondition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    FieldName: S.optional(S.String),
-    MinValue: S.optional(S.Number),
-    MaxValue: S.optional(S.Number),
-    ComparisonType: S.optional(DecimalComparisonType),
-  }),
-).annotate({ identifier: "DecimalCondition" }) as any as S.Schema<DecimalCondition>;
+export const DecimalCondition = NumberCondition as any as S.Schema<DecimalCondition>;
 export interface EvaluationSearchCriteria {
   OrConditions?: EvaluationSearchCriteria[];
   AndConditions?: EvaluationSearchCriteria[];
@@ -17746,7 +17738,7 @@ export const ContactAnalysis = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Transcript: S.optional(Transcript) }),
 ).annotate({ identifier: "ContactAnalysis" }) as any as S.Schema<ContactAnalysis>;
 export type InitiationMethodList = ContactInitiationMethod[];
-export const InitiationMethodList = /*@__PURE__*/ S.Array(ContactInitiationMethod);
+export const InitiationMethodList = AllowedUserActions as any as S.Schema<InitiationMethodList>;
 export type QueueIdList = string[];
 export const QueueIdList = QuickConnectsList as any as S.Schema<QueueIdList>;
 export interface SearchableAgentCriteriaStep {
@@ -18396,13 +18388,7 @@ export interface DateCondition {
   Value?: string;
   ComparisonType?: DateComparisonType;
 }
-export const DateCondition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    FieldName: S.optional(S.String),
-    Value: S.optional(S.String),
-    ComparisonType: S.optional(DateComparisonType),
-  }),
-).annotate({ identifier: "DateCondition" }) as any as S.Schema<DateCondition>;
+export const DateCondition = StringCondition as any as S.Schema<DateCondition>;
 export interface HoursOfOperationOverrideSearchCriteria {
   OrConditions?: HoursOfOperationOverrideSearchCriteria[];
   AndConditions?: HoursOfOperationOverrideSearchCriteria[];
@@ -20383,9 +20369,8 @@ export type DisconnectOnCustomerExitParticipantType = "AGENT" | (string & {});
 export const DisconnectOnCustomerExitParticipantType = S.String;
 
 export type DisconnectOnCustomerExit = DisconnectOnCustomerExitParticipantType[];
-export const DisconnectOnCustomerExit = /*@__PURE__*/ S.Array(
-  DisconnectOnCustomerExitParticipantType,
-);
+export const DisconnectOnCustomerExit =
+  RealTimeContactAnalysisSegmentTypes as any as S.Schema<DisconnectOnCustomerExit>;
 export type ConnectionType =
   | "WEBSOCKET"
   | "CONNECTION_CREDENTIALS"
@@ -20395,7 +20380,7 @@ export type ConnectionType =
 export const ConnectionType = S.String;
 
 export type ConnectionTypeList = ConnectionType[];
-export const ConnectionTypeList = /*@__PURE__*/ S.Array(ConnectionType);
+export const ConnectionTypeList = AllowedUserActions as any as S.Schema<ConnectionTypeList>;
 export interface StartChatContactRequest {
   InstanceId: string;
   ContactFlowId: string;
@@ -20471,7 +20456,7 @@ export const StartChatContactResponse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "StartChatContactResponse" }) as any as S.Schema<StartChatContactResponse>;
 export type AnalyticsModes = AnalyticsMode[];
-export const AnalyticsModes = /*@__PURE__*/ S.Array(AnalyticsMode);
+export const AnalyticsModes = AllowedUserActions as any as S.Schema<AnalyticsModes>;
 export type LanguageLocale = string;
 export interface LanguageConfiguration {
   LanguageLocale?: string;
@@ -20515,7 +20500,7 @@ export type SummaryMode = "PostContact" | "AutomatedInteraction" | "ContactChain
 export const SummaryMode = S.String;
 
 export type SummaryModes = SummaryMode[];
-export const SummaryModes = /*@__PURE__*/ S.Array(SummaryMode);
+export const SummaryModes = AllowedUserActions as any as S.Schema<SummaryModes>;
 export interface SummaryConfiguration {
   SummaryModes: SummaryMode[];
 }
@@ -20754,10 +20739,7 @@ export const EmailHeaderType = S.String;
 
 export type EmailHeaderValue = string;
 export type EmailHeaders = { [key in EmailHeaderType]?: string };
-export const EmailHeaders = /*@__PURE__*/ S.Record(
-  EmailHeaderType,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const EmailHeaders = NotificationContent as any as S.Schema<EmailHeaders>;
 export interface InboundRawMessage {
   Subject: string | redacted.Redacted<string>;
   Body: string | redacted.Redacted<string>;

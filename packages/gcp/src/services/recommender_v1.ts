@@ -472,14 +472,8 @@ export interface GoogleCloudRecommenderV1RecommendationStateInfo {
   /** A map of metadata for the state, provided by user or automations systems. */
   stateMetadata?: StringMap;
 }
-export const GoogleCloudRecommenderV1RecommendationStateInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: S.optional(GoogleCloudRecommenderV1RecommendationStateInfoStateEnum),
-    stateMetadata: S.optional(StringMap),
-  }),
-).annotate({
-  identifier: "GoogleCloudRecommenderV1RecommendationStateInfo",
-}) as any as S.Schema<GoogleCloudRecommenderV1RecommendationStateInfo>;
+export const GoogleCloudRecommenderV1RecommendationStateInfo =
+  GoogleCloudRecommenderV1InsightStateInfo as any as S.Schema<GoogleCloudRecommenderV1RecommendationStateInfo>;
 
 /** Reference to an associated insight. */
 export interface GoogleCloudRecommenderV1RecommendationInsightReference {

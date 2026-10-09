@@ -1232,9 +1232,8 @@ export const ConversationsRecentTicketsWidgetConfigPrioritiesItem = S.String;
 export type ConversationsRecentTicketsWidgetConfigPrioritiesList = Array<
   ConversationsRecentTicketsWidgetConfigPrioritiesItem | (string & {})
 >;
-export const ConversationsRecentTicketsWidgetConfigPrioritiesList = /*@__PURE__*/ S.Array(
-  ConversationsRecentTicketsWidgetConfigPrioritiesItem,
-) as any as S.Schema<ConversationsRecentTicketsWidgetConfigPrioritiesList>;
+export const ConversationsRecentTicketsWidgetConfigPrioritiesList =
+  LogsListWidgetConfigSeverityLevelsList as any as S.Schema<ConversationsRecentTicketsWidgetConfigPrioritiesList>;
 
 /** Ticket channel filter. */
 export type ConversationsRecentTicketsWidgetConfigChannel =
@@ -5401,9 +5400,8 @@ export type PathType = "$pageview" | "$screen" | "custom_event" | "hogql";
 export const PathType = S.String;
 
 export type PathsFilterIncludeEventTypesList = Array<PathType>;
-export const PathsFilterIncludeEventTypesList = /*@__PURE__*/ S.Array(
-  PathType,
-) as any as S.Schema<PathsFilterIncludeEventTypesList>;
+export const PathsFilterIncludeEventTypesList =
+  LogsListWidgetConfigSeverityLevelsList as any as S.Schema<PathsFilterIncludeEventTypesList>;
 
 export interface PathCleaningFilter {
   /** The replacement for the matched path. Use angle-bracket placeholders (`<id>`, `<uuid>`, `<slug>`) by convention, or reuse a capture group from the regex with ClickHouse `replaceRegexpAll` replacement syntax: `\1` to `\9` for a group and `\0` for the whole match. */
@@ -6200,9 +6198,8 @@ export type LifecycleToggle = "new" | "resurrecting" | "returning" | "dormant";
 export const LifecycleToggle = S.String;
 
 export type LifecycleFilterToggledLifecyclesList = Array<LifecycleToggle>;
-export const LifecycleFilterToggledLifecyclesList = /*@__PURE__*/ S.Array(
-  LifecycleToggle,
-) as any as S.Schema<LifecycleFilterToggledLifecyclesList>;
+export const LifecycleFilterToggledLifecyclesList =
+  LogsListWidgetConfigSeverityLevelsList as any as S.Schema<LifecycleFilterToggledLifecyclesList>;
 
 export interface LifecycleFilter {
   /** Where the in-chart legend sits relative to the plot. Only applies to the in-chart legend. */
@@ -9660,9 +9657,8 @@ export type TaxonomicFilterGroupType =
 export const TaxonomicFilterGroupType = S.String;
 
 export type DataTableNodeShowPropertyFilterCase1List = Array<TaxonomicFilterGroupType>;
-export const DataTableNodeShowPropertyFilterCase1List = /*@__PURE__*/ S.Array(
-  TaxonomicFilterGroupType,
-) as any as S.Schema<DataTableNodeShowPropertyFilterCase1List>;
+export const DataTableNodeShowPropertyFilterCase1List =
+  LogsListWidgetConfigSeverityLevelsList as any as S.Schema<DataTableNodeShowPropertyFilterCase1List>;
 
 /** Include a property filter above the table */
 export type DataTableNodeShowPropertyFilter = boolean | DataTableNodeShowPropertyFilterCase1List;
@@ -11146,9 +11142,8 @@ export const ExperimentStatsValidationFailure = S.String;
 
 export type ExperimentStatsBaseValidatedValidationFailuresList =
   Array<ExperimentStatsValidationFailure>;
-export const ExperimentStatsBaseValidatedValidationFailuresList = /*@__PURE__*/ S.Array(
-  ExperimentStatsValidationFailure,
-) as any as S.Schema<ExperimentStatsBaseValidatedValidationFailuresList>;
+export const ExperimentStatsBaseValidatedValidationFailuresList =
+  LogsListWidgetConfigSeverityLevelsList as any as S.Schema<ExperimentStatsBaseValidatedValidationFailuresList>;
 
 export interface ExperimentStatsBaseValidated {
   covariate_sum?: number | null;
@@ -12828,9 +12823,8 @@ export type SessionAttributionGroupBy =
 export const SessionAttributionGroupBy = S.String;
 
 export type SessionAttributionExplorerQueryGroupByList = Array<SessionAttributionGroupBy>;
-export const SessionAttributionExplorerQueryGroupByList = /*@__PURE__*/ S.Array(
-  SessionAttributionGroupBy,
-) as any as S.Schema<SessionAttributionExplorerQueryGroupByList>;
+export const SessionAttributionExplorerQueryGroupByList =
+  LogsListWidgetConfigSeverityLevelsList as any as S.Schema<SessionAttributionExplorerQueryGroupByList>;
 
 export type SessionAttributionExplorerQueryResponseColumnsList = Array<unknown>;
 export const SessionAttributionExplorerQueryResponseColumnsList =

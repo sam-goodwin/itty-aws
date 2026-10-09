@@ -2814,9 +2814,7 @@ export type GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipSource
     GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipSourcesItemEnum | (string & {})
   >;
 export const GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipSourcesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipSourcesItemEnum,
-  ) as any as S.Schema<GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipSourcesItemEnumList>;
+  GoogleCloudDataplexV1DataDocumentationSpecGenerationScopesItemEnumList as any as S.Schema<GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipSourcesItemEnumList>;
 
 /** Details of the relationship between the schema of two resources. */
 export interface GoogleCloudDataplexV1DataDocumentationResultSchemaRelationship {
@@ -3106,32 +3104,15 @@ export interface GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQ
     | (string & {});
 }
 export const GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      message: S.optional(S.String),
-      state: S.optional(
-        GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResultStateEnum,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResult",
-  }) as any as S.Schema<GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResult>;
+  GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResult as any as S.Schema<GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResult>;
 
 /** The result of post scan actions of DataProfileScan job. */
 export interface GoogleCloudDataplexV1DataProfileResultPostScanActionsResult {
   /** Output only. The result of BigQuery export post scan action. */
   bigqueryExportResult?: GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResult;
 }
-export const GoogleCloudDataplexV1DataProfileResultPostScanActionsResult = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      bigqueryExportResult: S.optional(
-        GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResult,
-      ),
-    }),
-).annotate({
-  identifier: "GoogleCloudDataplexV1DataProfileResultPostScanActionsResult",
-}) as any as S.Schema<GoogleCloudDataplexV1DataProfileResultPostScanActionsResult>;
+export const GoogleCloudDataplexV1DataProfileResultPostScanActionsResult =
+  GoogleCloudDataplexV1DataQualityResultPostScanActionsResult as any as S.Schema<GoogleCloudDataplexV1DataProfileResultPostScanActionsResult>;
 
 /** DataProfileResult defines the output of DataProfileScan. Each field of the table will have field type specific profile result. */
 export interface GoogleCloudDataplexV1DataProfileResult {
@@ -5263,9 +5244,7 @@ export type GoogleCloudDataplexV1MetadataFeedFiltersChangeTypesItemEnumList = Ar
   GoogleCloudDataplexV1MetadataFeedFiltersChangeTypesItemEnum | (string & {})
 >;
 export const GoogleCloudDataplexV1MetadataFeedFiltersChangeTypesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudDataplexV1MetadataFeedFiltersChangeTypesItemEnum,
-  ) as any as S.Schema<GoogleCloudDataplexV1MetadataFeedFiltersChangeTypesItemEnumList>;
+  GoogleCloudDataplexV1DataDocumentationSpecGenerationScopesItemEnumList as any as S.Schema<GoogleCloudDataplexV1MetadataFeedFiltersChangeTypesItemEnumList>;
 
 /** Filters defines the type of changes that you want to listen to. You can have multiple entry type filters and multiple aspect type filters. All of the entry type filters are OR'ed together. All of the aspect type filters are OR'ed together. All of the entry type filters and aspect type filters are AND'ed together. */
 export interface GoogleCloudDataplexV1MetadataFeedFilters {

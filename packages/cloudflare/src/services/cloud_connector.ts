@@ -181,21 +181,10 @@ export interface RulesUpdateResultItem {
   /** Cloud Provider type */
   provider?: RulesUpdateResultItemProvider | null;
 }
-export const RulesUpdateResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    description: S.optional(S.NullOr(S.String)),
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    expression: S.optional(S.NullOr(S.String)),
-    parameters: S.optional(S.NullOr(RulesListResultItemParameters)),
-    provider: S.optional(S.NullOr(RulesUpdateResultItemProvider)),
-  }),
-).annotate({ identifier: "RulesUpdateResultItem" }) as any as S.Schema<RulesUpdateResultItem>;
+export const RulesUpdateResultItem = RulesListResultItem as any as S.Schema<RulesUpdateResultItem>;
 
 export type RulesUpdateResultList = Array<RulesUpdateResultItem>;
-export const RulesUpdateResultList = /*@__PURE__*/ S.Array(
-  RulesUpdateResultItem,
-) as any as S.Schema<RulesUpdateResultList>;
+export const RulesUpdateResultList = RulesListResultList as any as S.Schema<RulesUpdateResultList>;
 
 export interface PutRuleResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
@@ -203,12 +192,7 @@ export interface PutRuleResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const PutRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: RulesUpdateResultList.pipe(T.EnvelopePayload()),
-    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
-).annotate({ identifier: "PutRuleResponse" }) as any as S.Schema<PutRuleResponse>;
+export const PutRuleResponse = ListRulesResponse as any as S.Schema<PutRuleResponse>;
 
 export type ListRulesError = Forbidden | CloudConnectorRulesNotFound | CloudflareOpError;
 /** Retrieves the Cloud Connector rules configured for a zone. Rules define how traffic is routed to cloud services. */

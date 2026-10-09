@@ -1049,9 +1049,8 @@ export const CreateTableRequestXIcebergAccessDelegationItem = S.String;
 export type CreateTableRequestXIcebergAccessDelegationList = Array<
   CreateTableRequestXIcebergAccessDelegationItem | (string & {})
 >;
-export const CreateTableRequestXIcebergAccessDelegationList = /*@__PURE__*/ S.Array(
-  CreateTableRequestXIcebergAccessDelegationItem,
-) as any as S.Schema<CreateTableRequestXIcebergAccessDelegationList>;
+export const CreateTableRequestXIcebergAccessDelegationList =
+  CancelPlanningRequestXIcebergAccessDelegationList as any as S.Schema<CreateTableRequestXIcebergAccessDelegationList>;
 
 export type CreateTableRequestPropertiesMap = { [key: string]: string | undefined };
 export const CreateTableRequestPropertiesMap =
@@ -1895,9 +1894,8 @@ export const FetchPlanningResultRequestXIcebergAccessDelegationItem = S.String;
 export type FetchPlanningResultRequestXIcebergAccessDelegationList = Array<
   FetchPlanningResultRequestXIcebergAccessDelegationItem | (string & {})
 >;
-export const FetchPlanningResultRequestXIcebergAccessDelegationList = /*@__PURE__*/ S.Array(
-  FetchPlanningResultRequestXIcebergAccessDelegationItem,
-) as any as S.Schema<FetchPlanningResultRequestXIcebergAccessDelegationList>;
+export const FetchPlanningResultRequestXIcebergAccessDelegationList =
+  CancelPlanningRequestXIcebergAccessDelegationList as any as S.Schema<FetchPlanningResultRequestXIcebergAccessDelegationList>;
 
 export interface FetchPlanningResultRequest {
   /** A namespace identifier as a single string. Multipart namespace parts must be separated by the namespace separator as indicated via the /config override `namespace-separator`, which defaults to the unit separator `0x1F` byte (url encoded `%1F`). To be compatible with older clients, servers must use both the advertised separator and `0x1F` as valid separators when decoding namespaces. The `namespace-separator` should be provided in a url encoded form. */
@@ -2887,9 +2885,8 @@ export const LoadTableRequestXIcebergAccessDelegationItem = S.String;
 export type LoadTableRequestXIcebergAccessDelegationList = Array<
   LoadTableRequestXIcebergAccessDelegationItem | (string & {})
 >;
-export const LoadTableRequestXIcebergAccessDelegationList = /*@__PURE__*/ S.Array(
-  LoadTableRequestXIcebergAccessDelegationItem,
-) as any as S.Schema<LoadTableRequestXIcebergAccessDelegationList>;
+export const LoadTableRequestXIcebergAccessDelegationList =
+  CancelPlanningRequestXIcebergAccessDelegationList as any as S.Schema<LoadTableRequestXIcebergAccessDelegationList>;
 
 export interface LoadTableRequest {
   /** A namespace identifier as a single string. Multipart namespace parts must be separated by the namespace separator as indicated via the /config override `namespace-separator`, which defaults to the unit separator `0x1F` byte (url encoded `%1F`). To be compatible with older clients, servers must use both the advertised separator and `0x1F` as valid separators when decoding namespaces. The `namespace-separator` should be provided in a url encoded form. */
@@ -2962,9 +2959,8 @@ export const PlanTableScanRequestXIcebergAccessDelegationItem = S.String;
 export type PlanTableScanRequestXIcebergAccessDelegationList = Array<
   PlanTableScanRequestXIcebergAccessDelegationItem | (string & {})
 >;
-export const PlanTableScanRequestXIcebergAccessDelegationList = /*@__PURE__*/ S.Array(
-  PlanTableScanRequestXIcebergAccessDelegationItem,
-) as any as S.Schema<PlanTableScanRequestXIcebergAccessDelegationList>;
+export const PlanTableScanRequestXIcebergAccessDelegationList =
+  CancelPlanningRequestXIcebergAccessDelegationList as any as S.Schema<PlanTableScanRequestXIcebergAccessDelegationList>;
 
 /** List of selected schema fields */
 export type PlanTableScanRequestSelectList = Array<string>;
@@ -3109,9 +3105,8 @@ export const RegisterTableRequestXIcebergAccessDelegationItem = S.String;
 export type RegisterTableRequestXIcebergAccessDelegationList = Array<
   RegisterTableRequestXIcebergAccessDelegationItem | (string & {})
 >;
-export const RegisterTableRequestXIcebergAccessDelegationList = /*@__PURE__*/ S.Array(
-  RegisterTableRequestXIcebergAccessDelegationItem,
-) as any as S.Schema<RegisterTableRequestXIcebergAccessDelegationList>;
+export const RegisterTableRequestXIcebergAccessDelegationList =
+  CancelPlanningRequestXIcebergAccessDelegationList as any as S.Schema<RegisterTableRequestXIcebergAccessDelegationList>;
 
 export interface RegisterTableRequest {
   /** A namespace identifier as a single string. Multipart namespace parts must be separated by the namespace separator as indicated via the /config override `namespace-separator`, which defaults to the unit separator `0x1F` byte (url encoded `%1F`). To be compatible with older clients, servers must use both the advertised separator and `0x1F` as valid separators when decoding namespaces. The `namespace-separator` should be provided in a url encoded form. */

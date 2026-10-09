@@ -298,23 +298,14 @@ export interface CreateExperimentRequestTargetingRulesItemConditionsItem {
   /** Value or list of values to match against. Pass an array for `any`/`none`, a scalar for the others. */
   value: unknown;
 }
-export const CreateExperimentRequestTargetingRulesItemConditionsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    field: S.optional(S.NullOr(S.String)),
-    operator: CreateExperimentRequestTargetingRulesItemConditionsItemOperator,
-    type: CreateExperimentRequestTargetingRulesItemConditionsItemType,
-    value: S.Unknown,
-  }),
-).annotate({
-  identifier: "CreateExperimentRequestTargetingRulesItemConditionsItem",
-}) as any as S.Schema<CreateExperimentRequestTargetingRulesItemConditionsItem>;
+export const CreateExperimentRequestTargetingRulesItemConditionsItem =
+  ExperimentTargetingRulesItemConditionsItem as any as S.Schema<CreateExperimentRequestTargetingRulesItemConditionsItem>;
 
 /** Conditions within this rule. Must be non-empty. All conditions must be satisfied for the rule to match (AND logic). Rules are OR-ed together. */
 export type CreateExperimentRequestTargetingRulesItemConditionsList =
   Array<CreateExperimentRequestTargetingRulesItemConditionsItem>;
-export const CreateExperimentRequestTargetingRulesItemConditionsList = /*@__PURE__*/ S.Array(
-  CreateExperimentRequestTargetingRulesItemConditionsItem,
-) as any as S.Schema<CreateExperimentRequestTargetingRulesItemConditionsList>;
+export const CreateExperimentRequestTargetingRulesItemConditionsList =
+  ExperimentTargetingRulesItemConditionsList as any as S.Schema<CreateExperimentRequestTargetingRulesItemConditionsList>;
 
 /** `include` -- users matching this rule qualify; `exclude` -- users matching this rule are always excluded, overriding any include rule. Defaults to `include`. */
 export type CreateExperimentRequestTargetingRulesItemType = "include" | "exclude";
@@ -326,21 +317,14 @@ export interface CreateExperimentRequestTargetingRulesItem {
   /** `include` -- users matching this rule qualify; `exclude` -- users matching this rule are always excluded, overriding any include rule. Defaults to `include`. */
   type?: CreateExperimentRequestTargetingRulesItemType | (string & {});
 }
-export const CreateExperimentRequestTargetingRulesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    conditions: CreateExperimentRequestTargetingRulesItemConditionsList,
-    type: S.optional(CreateExperimentRequestTargetingRulesItemType),
-  }),
-).annotate({
-  identifier: "CreateExperimentRequestTargetingRulesItem",
-}) as any as S.Schema<CreateExperimentRequestTargetingRulesItem>;
+export const CreateExperimentRequestTargetingRulesItem =
+  ExperimentTargetingRulesItem as any as S.Schema<CreateExperimentRequestTargetingRulesItem>;
 
 /** Rules that determine which subjects qualify for the experiment. */
 export type CreateExperimentRequestTargetingRulesList =
   Array<CreateExperimentRequestTargetingRulesItem>;
-export const CreateExperimentRequestTargetingRulesList = /*@__PURE__*/ S.Array(
-  CreateExperimentRequestTargetingRulesItem,
-) as any as S.Schema<CreateExperimentRequestTargetingRulesList>;
+export const CreateExperimentRequestTargetingRulesList =
+  ExperimentTargetingRulesList as any as S.Schema<CreateExperimentRequestTargetingRulesList>;
 
 export interface CreateExperimentRequestVariantsItem {
   /** Treatment identifier. `control` is reserved for the implicit remainder. */
@@ -653,23 +637,14 @@ export interface UpdateExperimentRequestTargetingRulesItemConditionsItem {
   /** Value or list of values to match against. Pass an array for `any`/`none`, a scalar for the others. */
   value: unknown;
 }
-export const UpdateExperimentRequestTargetingRulesItemConditionsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    field: S.optional(S.NullOr(S.String)),
-    operator: UpdateExperimentRequestTargetingRulesItemConditionsItemOperator,
-    type: UpdateExperimentRequestTargetingRulesItemConditionsItemType,
-    value: S.Unknown,
-  }),
-).annotate({
-  identifier: "UpdateExperimentRequestTargetingRulesItemConditionsItem",
-}) as any as S.Schema<UpdateExperimentRequestTargetingRulesItemConditionsItem>;
+export const UpdateExperimentRequestTargetingRulesItemConditionsItem =
+  ExperimentTargetingRulesItemConditionsItem as any as S.Schema<UpdateExperimentRequestTargetingRulesItemConditionsItem>;
 
 /** Conditions within this rule. Must be non-empty. All conditions must be satisfied for the rule to match (AND logic). Rules are OR-ed together. */
 export type UpdateExperimentRequestTargetingRulesItemConditionsList =
   Array<UpdateExperimentRequestTargetingRulesItemConditionsItem>;
-export const UpdateExperimentRequestTargetingRulesItemConditionsList = /*@__PURE__*/ S.Array(
-  UpdateExperimentRequestTargetingRulesItemConditionsItem,
-) as any as S.Schema<UpdateExperimentRequestTargetingRulesItemConditionsList>;
+export const UpdateExperimentRequestTargetingRulesItemConditionsList =
+  ExperimentTargetingRulesItemConditionsList as any as S.Schema<UpdateExperimentRequestTargetingRulesItemConditionsList>;
 
 /** `include` -- users matching this rule qualify; `exclude` -- users matching this rule are always excluded, overriding any include rule. Defaults to `include`. */
 export type UpdateExperimentRequestTargetingRulesItemType = "include" | "exclude";
@@ -681,21 +656,14 @@ export interface UpdateExperimentRequestTargetingRulesItem {
   /** `include` -- users matching this rule qualify; `exclude` -- users matching this rule are always excluded, overriding any include rule. Defaults to `include`. */
   type?: UpdateExperimentRequestTargetingRulesItemType | (string & {});
 }
-export const UpdateExperimentRequestTargetingRulesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    conditions: UpdateExperimentRequestTargetingRulesItemConditionsList,
-    type: S.optional(UpdateExperimentRequestTargetingRulesItemType),
-  }),
-).annotate({
-  identifier: "UpdateExperimentRequestTargetingRulesItem",
-}) as any as S.Schema<UpdateExperimentRequestTargetingRulesItem>;
+export const UpdateExperimentRequestTargetingRulesItem =
+  ExperimentTargetingRulesItem as any as S.Schema<UpdateExperimentRequestTargetingRulesItem>;
 
 /** Replace the targeting rules with this set. Omit to leave unchanged. */
 export type UpdateExperimentRequestTargetingRulesList =
   Array<UpdateExperimentRequestTargetingRulesItem>;
-export const UpdateExperimentRequestTargetingRulesList = /*@__PURE__*/ S.Array(
-  UpdateExperimentRequestTargetingRulesItem,
-) as any as S.Schema<UpdateExperimentRequestTargetingRulesList>;
+export const UpdateExperimentRequestTargetingRulesList =
+  ExperimentTargetingRulesList as any as S.Schema<UpdateExperimentRequestTargetingRulesList>;
 
 export interface UpdateExperimentRequestVariantsItem {
   /** Treatment name. Pass every existing treatment (weights equal or higher); append new names to add arms. `control` is reserved. */

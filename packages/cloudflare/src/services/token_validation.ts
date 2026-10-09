@@ -662,18 +662,7 @@ export interface ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentia
   y: string;
 }
 export const ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      alg: ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384Alg,
-      crv: ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384Crv,
-      kid: S.String,
-      kty: ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384Kty,
-      x: S.String,
-      y: S.String,
-    }),
-  ).annotate({
-    identifier: "ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384",
-  }) as any as S.Schema<ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384>;
+  ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256 as any as S.Schema<ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384>;
 
 export type ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyOctRequestAlg =
   | "HS256"
@@ -801,17 +790,7 @@ export interface ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredenti
   n: string;
 }
 export const ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyRSA =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      alg: ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyRSAAlg,
-      e: S.String,
-      kid: S.String,
-      kty: ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyRSAKty,
-      n: S.String,
-    }),
-  ).annotate({
-    identifier: "ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyRSA",
-  }) as any as S.Schema<ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyRSA>;
+  ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyRSA as any as S.Schema<ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyRSA>;
 
 export type ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256Alg =
   "ES256";
@@ -843,18 +822,7 @@ export interface ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredenti
   y: string;
 }
 export const ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      alg: ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256Alg,
-      crv: ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256Crv,
-      kid: S.String,
-      kty: ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256Kty,
-      x: S.String,
-      y: S.String,
-    }),
-  ).annotate({
-    identifier: "ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256",
-  }) as any as S.Schema<ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256>;
+  ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256 as any as S.Schema<ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256>;
 
 export type ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384Alg =
   "ES384";
@@ -886,18 +854,7 @@ export interface ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredenti
   y: string;
 }
 export const ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      alg: ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384Alg,
-      crv: ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384Crv,
-      kid: S.String,
-      kty: ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384Kty,
-      x: S.String,
-      y: S.String,
-    }),
-  ).annotate({
-    identifier: "ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384",
-  }) as any as S.Schema<ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384>;
+  ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256 as any as S.Schema<ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384>;
 
 export type ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyOctResponseAlg =
   | "HS256"
@@ -1244,17 +1201,7 @@ export interface EditConfigurationCredentialsRequestKeysItemAPIShieldCredentials
   n: string;
 }
 export const EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKeyRSA =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      alg: EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKeyRSAAlg,
-      e: S.String,
-      kid: S.String,
-      kty: EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKeyRSAKty,
-      n: S.String,
-    }),
-  ).annotate({
-    identifier: "EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKeyRSA",
-  }) as any as S.Schema<EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKeyRSA>;
+  ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyRSA as any as S.Schema<EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKeyRSA>;
 
 export type EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKeyEcEs256Alg =
   "ES256";
@@ -1285,18 +1232,7 @@ export interface EditConfigurationCredentialsRequestKeysItemAPIShieldCredentials
   y: string;
 }
 export const EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKeyEcEs256 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      alg: EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKeyEcEs256Alg,
-      crv: EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKeyEcEs256Crv,
-      kid: S.String,
-      kty: EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKeyEcEs256Kty,
-      x: S.String,
-      y: S.String,
-    }),
-  ).annotate({
-    identifier: "EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKeyEcEs256",
-  }) as any as S.Schema<EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKeyEcEs256>;
+  ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256 as any as S.Schema<EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKeyEcEs256>;
 
 export type EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKeyEcEs384Alg =
   "ES384";
@@ -1327,18 +1263,7 @@ export interface EditConfigurationCredentialsRequestKeysItemAPIShieldCredentials
   y: string;
 }
 export const EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKeyEcEs384 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      alg: EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKeyEcEs384Alg,
-      crv: EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKeyEcEs384Crv,
-      kid: S.String,
-      kty: EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKeyEcEs384Kty,
-      x: S.String,
-      y: S.String,
-    }),
-  ).annotate({
-    identifier: "EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKeyEcEs384",
-  }) as any as S.Schema<EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKeyEcEs384>;
+  ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256 as any as S.Schema<EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKeyEcEs384>;
 
 export type EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKeyOctPatchRequestAlg =
   | "HS256"
@@ -1449,17 +1374,7 @@ export interface EditConfigurationCredentialsResponseKeysItemAPIShieldCredential
   n: string;
 }
 export const EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyRSA =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      alg: EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyRSAAlg,
-      e: S.String,
-      kid: S.String,
-      kty: EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyRSAKty,
-      n: S.String,
-    }),
-  ).annotate({
-    identifier: "EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyRSA",
-  }) as any as S.Schema<EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyRSA>;
+  ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyRSA as any as S.Schema<EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyRSA>;
 
 export type EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyEcEs256Alg =
   "ES256";
@@ -1490,18 +1405,7 @@ export interface EditConfigurationCredentialsResponseKeysItemAPIShieldCredential
   y: string;
 }
 export const EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyEcEs256 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      alg: EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyEcEs256Alg,
-      crv: EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyEcEs256Crv,
-      kid: S.String,
-      kty: EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyEcEs256Kty,
-      x: S.String,
-      y: S.String,
-    }),
-  ).annotate({
-    identifier: "EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyEcEs256",
-  }) as any as S.Schema<EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyEcEs256>;
+  ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256 as any as S.Schema<EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyEcEs256>;
 
 export type EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyEcEs384Alg =
   "ES384";
@@ -1532,18 +1436,7 @@ export interface EditConfigurationCredentialsResponseKeysItemAPIShieldCredential
   y: string;
 }
 export const EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyEcEs384 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      alg: EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyEcEs384Alg,
-      crv: EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyEcEs384Crv,
-      kid: S.String,
-      kty: EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyEcEs384Kty,
-      x: S.String,
-      y: S.String,
-    }),
-  ).annotate({
-    identifier: "EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyEcEs384",
-  }) as any as S.Schema<EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyEcEs384>;
+  ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256 as any as S.Schema<EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyEcEs384>;
 
 export type EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyOctResponseAlg =
   | "HS256"
@@ -1654,17 +1547,7 @@ export interface ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentials
   n: string;
 }
 export const ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyRSA =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      alg: ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyRSAAlg,
-      e: S.String,
-      kid: S.String,
-      kty: ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyRSAKty,
-      n: S.String,
-    }),
-  ).annotate({
-    identifier: "ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyRSA",
-  }) as any as S.Schema<ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyRSA>;
+  ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyRSA as any as S.Schema<ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyRSA>;
 
 export type ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256Alg =
   "ES256";
@@ -1695,18 +1578,7 @@ export interface ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentials
   y: string;
 }
 export const ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      alg: ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256Alg,
-      crv: ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256Crv,
-      kid: S.String,
-      kty: ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256Kty,
-      x: S.String,
-      y: S.String,
-    }),
-  ).annotate({
-    identifier: "ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256",
-  }) as any as S.Schema<ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256>;
+  ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256 as any as S.Schema<ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256>;
 
 export type ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384Alg =
   "ES384";
@@ -1737,18 +1609,7 @@ export interface ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentials
   y: string;
 }
 export const ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      alg: ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384Alg,
-      crv: ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384Crv,
-      kid: S.String,
-      kty: ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384Kty,
-      x: S.String,
-      y: S.String,
-    }),
-  ).annotate({
-    identifier: "ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384",
-  }) as any as S.Schema<ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384>;
+  ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256 as any as S.Schema<ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384>;
 
 export type ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyOctResponseAlg =
   | "HS256"
@@ -1771,15 +1632,7 @@ export interface ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentials
   kty: ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyOctResponseKty;
 }
 export const ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyOctResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      alg: ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyOctResponseAlg,
-      kid: S.String,
-      kty: ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyOctResponseKty,
-    }),
-  ).annotate({
-    identifier: "ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyOctResponse",
-  }) as any as S.Schema<ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyOctResponse>;
+  EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyOctResponse as any as S.Schema<ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyOctResponse>;
 
 export type ConfigurationGetResponseCredentialsKeysItem =
   | ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyRSA
@@ -1999,17 +1852,7 @@ export interface ConfigurationListResultItemCredentialsKeysItemAPIShieldCredenti
   n: string;
 }
 export const ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyRSA =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      alg: ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyRSAAlg,
-      e: S.String,
-      kid: S.String,
-      kty: ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyRSAKty,
-      n: S.String,
-    }),
-  ).annotate({
-    identifier: "ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyRSA",
-  }) as any as S.Schema<ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyRSA>;
+  ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyRSA as any as S.Schema<ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyRSA>;
 
 export type ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256Alg =
   "ES256";
@@ -2041,18 +1884,7 @@ export interface ConfigurationListResultItemCredentialsKeysItemAPIShieldCredenti
   y: string;
 }
 export const ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      alg: ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256Alg,
-      crv: ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256Crv,
-      kid: S.String,
-      kty: ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256Kty,
-      x: S.String,
-      y: S.String,
-    }),
-  ).annotate({
-    identifier: "ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256",
-  }) as any as S.Schema<ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256>;
+  ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256 as any as S.Schema<ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256>;
 
 export type ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384Alg =
   "ES384";
@@ -2084,18 +1916,7 @@ export interface ConfigurationListResultItemCredentialsKeysItemAPIShieldCredenti
   y: string;
 }
 export const ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      alg: ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384Alg,
-      crv: ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384Crv,
-      kid: S.String,
-      kty: ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384Kty,
-      x: S.String,
-      y: S.String,
-    }),
-  ).annotate({
-    identifier: "ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384",
-  }) as any as S.Schema<ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384>;
+  ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256 as any as S.Schema<ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384>;
 
 export type ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyOctResponseAlg =
   | "HS256"
@@ -2118,16 +1939,7 @@ export interface ConfigurationListResultItemCredentialsKeysItemAPIShieldCredenti
   kty: ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyOctResponseKty;
 }
 export const ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyOctResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      alg: ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyOctResponseAlg,
-      kid: S.String,
-      kty: ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyOctResponseKty,
-    }),
-  ).annotate({
-    identifier:
-      "ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyOctResponse",
-  }) as any as S.Schema<ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyOctResponse>;
+  ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyOctResponse as any as S.Schema<ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyOctResponse>;
 
 export type ConfigurationListResultItemCredentialsKeysItem =
   | ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyRSA
@@ -2634,17 +2446,7 @@ export interface ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentia
   n: string;
 }
 export const ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyRSA =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      alg: ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyRSAAlg,
-      e: S.String,
-      kid: S.String,
-      kty: ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyRSAKty,
-      n: S.String,
-    }),
-  ).annotate({
-    identifier: "ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyRSA",
-  }) as any as S.Schema<ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyRSA>;
+  ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyRSA as any as S.Schema<ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyRSA>;
 
 export type ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyEcEs256Alg =
   "ES256";
@@ -2676,18 +2478,7 @@ export interface ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentia
   y: string;
 }
 export const ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyEcEs256 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      alg: ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyEcEs256Alg,
-      crv: ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyEcEs256Crv,
-      kid: S.String,
-      kty: ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyEcEs256Kty,
-      x: S.String,
-      y: S.String,
-    }),
-  ).annotate({
-    identifier: "ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyEcEs256",
-  }) as any as S.Schema<ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyEcEs256>;
+  ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256 as any as S.Schema<ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyEcEs256>;
 
 export type ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyEcEs384Alg =
   "ES384";
@@ -2719,18 +2510,7 @@ export interface ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentia
   y: string;
 }
 export const ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyEcEs384 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      alg: ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyEcEs384Alg,
-      crv: ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyEcEs384Crv,
-      kid: S.String,
-      kty: ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyEcEs384Kty,
-      x: S.String,
-      y: S.String,
-    }),
-  ).annotate({
-    identifier: "ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyEcEs384",
-  }) as any as S.Schema<ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyEcEs384>;
+  ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256 as any as S.Schema<ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyEcEs384>;
 
 export type ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyOctRequestAlg =
   | "HS256"
@@ -2757,16 +2537,7 @@ export interface ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentia
   kty: ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyOctRequestKty;
 }
 export const ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyOctRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      alg: ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyOctRequestAlg,
-      k: S.String,
-      kid: S.String,
-      kty: ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyOctRequestKty,
-    }),
-  ).annotate({
-    identifier: "ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyOctRequest",
-  }) as any as S.Schema<ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyOctRequest>;
+  ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyOctRequest as any as S.Schema<ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyOctRequest>;
 
 export type ConfigurationCredentialsUpdateRequestKeysItem =
   | ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyRSA
@@ -2840,17 +2611,7 @@ export interface ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredenti
   n: string;
 }
 export const ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyRSA =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      alg: ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyRSAAlg,
-      e: S.String,
-      kid: S.String,
-      kty: ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyRSAKty,
-      n: S.String,
-    }),
-  ).annotate({
-    identifier: "ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyRSA",
-  }) as any as S.Schema<ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyRSA>;
+  ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyRSA as any as S.Schema<ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyRSA>;
 
 export type ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyEcEs256Alg =
   "ES256";
@@ -2882,18 +2643,7 @@ export interface ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredenti
   y: string;
 }
 export const ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyEcEs256 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      alg: ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyEcEs256Alg,
-      crv: ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyEcEs256Crv,
-      kid: S.String,
-      kty: ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyEcEs256Kty,
-      x: S.String,
-      y: S.String,
-    }),
-  ).annotate({
-    identifier: "ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyEcEs256",
-  }) as any as S.Schema<ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyEcEs256>;
+  ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256 as any as S.Schema<ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyEcEs256>;
 
 export type ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyEcEs384Alg =
   "ES384";
@@ -2925,18 +2675,7 @@ export interface ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredenti
   y: string;
 }
 export const ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyEcEs384 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      alg: ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyEcEs384Alg,
-      crv: ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyEcEs384Crv,
-      kid: S.String,
-      kty: ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyEcEs384Kty,
-      x: S.String,
-      y: S.String,
-    }),
-  ).annotate({
-    identifier: "ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyEcEs384",
-  }) as any as S.Schema<ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyEcEs384>;
+  ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256 as any as S.Schema<ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyEcEs384>;
 
 export type ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyOctResponseAlg =
   | "HS256"
@@ -2959,16 +2698,7 @@ export interface ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredenti
   kty: ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyOctResponseKty;
 }
 export const ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyOctResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      alg: ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyOctResponseAlg,
-      kid: S.String,
-      kty: ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyOctResponseKty,
-    }),
-  ).annotate({
-    identifier:
-      "ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyOctResponse",
-  }) as any as S.Schema<ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyOctResponse>;
+  ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyOctResponse as any as S.Schema<ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyOctResponse>;
 
 export type ConfigurationCredentialsUpdateResponseKeysItem =
   | ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyRSA

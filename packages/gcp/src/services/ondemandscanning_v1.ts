@@ -2475,12 +2475,7 @@ export interface WorkspacePolicyResult {
   /** Status of the scan. */
   scanStatus?: WorkspacePolicyResultScanStatusEnum;
 }
-export const WorkspacePolicyResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    verdict: S.optional(WorkspacePolicyResultVerdictEnum),
-    scanStatus: S.optional(WorkspacePolicyResultScanStatusEnum),
-  }),
-).annotate({ identifier: "WorkspacePolicyResult" }) as any as S.Schema<WorkspacePolicyResult>;
+export const WorkspacePolicyResult = MalwareScanResult as any as S.Schema<WorkspacePolicyResult>;
 
 export interface PerScannerVerdict {
   /** Malicious Content LLM scan result. */

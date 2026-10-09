@@ -257,23 +257,13 @@ export interface GetNetworkResponseNetworkSubnetsItem {
   /** ID of the robot vSwitch if the subnet is of type `vswitch`. */
   vswitch_id?: number | null;
 }
-export const GetNetworkResponseNetworkSubnetsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: GetNetworkResponseNetworkSubnetsItemType,
-    ip_range: S.optional(S.String),
-    network_zone: S.String,
-    gateway: S.String,
-    vswitch_id: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "GetNetworkResponseNetworkSubnetsItem",
-}) as any as S.Schema<GetNetworkResponseNetworkSubnetsItem>;
+export const GetNetworkResponseNetworkSubnetsItem =
+  CreateNetworkResponseNetworkSubnetsItem as any as S.Schema<GetNetworkResponseNetworkSubnetsItem>;
 
 /** List of subnets allocated in this [Network](#tag/networks). */
 export type GetNetworkResponseNetworkSubnetsList = Array<GetNetworkResponseNetworkSubnetsItem>;
-export const GetNetworkResponseNetworkSubnetsList = /*@__PURE__*/ S.Array(
-  GetNetworkResponseNetworkSubnetsItem,
-) as any as S.Schema<GetNetworkResponseNetworkSubnetsList>;
+export const GetNetworkResponseNetworkSubnetsList =
+  CreateNetworkResponseNetworkSubnetsList as any as S.Schema<GetNetworkResponseNetworkSubnetsList>;
 
 export type GetNetworkResponseNetworkRoutesItem = CreateNetworkRequestRoutesItem;
 export const GetNetworkResponseNetworkRoutesItem = CreateNetworkRequestRoutesItem;
@@ -381,9 +371,8 @@ export const ListNetworkMembersRequestStatusItem = S.String;
 export type ListNetworkMembersRequestStatusList = Array<
   ListNetworkMembersRequestStatusItem | (string & {})
 >;
-export const ListNetworkMembersRequestStatusList = /*@__PURE__*/ S.Array(
-  ListNetworkMembersRequestStatusItem,
-) as any as S.Schema<ListNetworkMembersRequestStatusList>;
+export const ListNetworkMembersRequestStatusList =
+  ListNetworkMembersRequestTypeList as any as S.Schema<ListNetworkMembersRequestStatusList>;
 
 export type ListNetworkMembersRequestSortItem =
   | "id"
@@ -403,9 +392,8 @@ export const ListNetworkMembersRequestSortItem = S.String;
 export type ListNetworkMembersRequestSortList = Array<
   ListNetworkMembersRequestSortItem | (string & {})
 >;
-export const ListNetworkMembersRequestSortList = /*@__PURE__*/ S.Array(
-  ListNetworkMembersRequestSortItem,
-) as any as S.Schema<ListNetworkMembersRequestSortList>;
+export const ListNetworkMembersRequestSortList =
+  ListNetworkMembersRequestTypeList as any as S.Schema<ListNetworkMembersRequestSortList>;
 
 export interface ListNetworkMembersRequest {
   /** ID of the Network. */
@@ -553,9 +541,8 @@ export type ListNetworksRequestSortItem =
 export const ListNetworksRequestSortItem = S.String;
 
 export type ListNetworksRequestSortList = Array<ListNetworksRequestSortItem | (string & {})>;
-export const ListNetworksRequestSortList = /*@__PURE__*/ S.Array(
-  ListNetworksRequestSortItem,
-) as any as S.Schema<ListNetworksRequestSortList>;
+export const ListNetworksRequestSortList =
+  ListNetworkMembersRequestTypeList as any as S.Schema<ListNetworksRequestSortList>;
 
 export interface ListNetworksRequest {
   /** Sort resources by field and direction. May be used multiple times. For more information, see "[Sorting](#description/sorting)". */
@@ -595,24 +582,14 @@ export interface ListNetworksResponseNetworksItemSubnetsItem {
   /** ID of the robot vSwitch if the subnet is of type `vswitch`. */
   vswitch_id?: number | null;
 }
-export const ListNetworksResponseNetworksItemSubnetsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ListNetworksResponseNetworksItemSubnetsItemType,
-    ip_range: S.optional(S.String),
-    network_zone: S.String,
-    gateway: S.String,
-    vswitch_id: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "ListNetworksResponseNetworksItemSubnetsItem",
-}) as any as S.Schema<ListNetworksResponseNetworksItemSubnetsItem>;
+export const ListNetworksResponseNetworksItemSubnetsItem =
+  CreateNetworkResponseNetworkSubnetsItem as any as S.Schema<ListNetworksResponseNetworksItemSubnetsItem>;
 
 /** List of subnets allocated in this [Network](#tag/networks). */
 export type ListNetworksResponseNetworksItemSubnetsList =
   Array<ListNetworksResponseNetworksItemSubnetsItem>;
-export const ListNetworksResponseNetworksItemSubnetsList = /*@__PURE__*/ S.Array(
-  ListNetworksResponseNetworksItemSubnetsItem,
-) as any as S.Schema<ListNetworksResponseNetworksItemSubnetsList>;
+export const ListNetworksResponseNetworksItemSubnetsList =
+  CreateNetworkResponseNetworkSubnetsList as any as S.Schema<ListNetworksResponseNetworksItemSubnetsList>;
 
 export type ListNetworksResponseNetworksItemRoutesItem = CreateNetworkRequestRoutesItem;
 export const ListNetworksResponseNetworksItemRoutesItem = CreateNetworkRequestRoutesItem;
@@ -746,24 +723,14 @@ export interface UpdateNetworkResponseNetworkSubnetsItem {
   /** ID of the robot vSwitch if the subnet is of type `vswitch`. */
   vswitch_id?: number | null;
 }
-export const UpdateNetworkResponseNetworkSubnetsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: UpdateNetworkResponseNetworkSubnetsItemType,
-    ip_range: S.optional(S.String),
-    network_zone: S.String,
-    gateway: S.String,
-    vswitch_id: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "UpdateNetworkResponseNetworkSubnetsItem",
-}) as any as S.Schema<UpdateNetworkResponseNetworkSubnetsItem>;
+export const UpdateNetworkResponseNetworkSubnetsItem =
+  CreateNetworkResponseNetworkSubnetsItem as any as S.Schema<UpdateNetworkResponseNetworkSubnetsItem>;
 
 /** List of subnets allocated in this [Network](#tag/networks). */
 export type UpdateNetworkResponseNetworkSubnetsList =
   Array<UpdateNetworkResponseNetworkSubnetsItem>;
-export const UpdateNetworkResponseNetworkSubnetsList = /*@__PURE__*/ S.Array(
-  UpdateNetworkResponseNetworkSubnetsItem,
-) as any as S.Schema<UpdateNetworkResponseNetworkSubnetsList>;
+export const UpdateNetworkResponseNetworkSubnetsList =
+  CreateNetworkResponseNetworkSubnetsList as any as S.Schema<UpdateNetworkResponseNetworkSubnetsList>;
 
 export type UpdateNetworkResponseNetworkRoutesItem = CreateNetworkRequestRoutesItem;
 export const UpdateNetworkResponseNetworkRoutesItem = CreateNetworkRequestRoutesItem;

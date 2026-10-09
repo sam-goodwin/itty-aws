@@ -669,9 +669,8 @@ export const DnsRecordRelevantStateItemEnum = S.String;
 export type DnsRecordRelevantStateItemEnumList = Array<
   DnsRecordRelevantStateItemEnum | (string & {})
 >;
-export const DnsRecordRelevantStateItemEnumList = /*@__PURE__*/ S.Array(
-  DnsRecordRelevantStateItemEnum,
-) as any as S.Schema<DnsRecordRelevantStateItemEnumList>;
+export const DnsRecordRelevantStateItemEnumList =
+  EnvironmentVariableAvailabilityItemEnumList as any as S.Schema<DnsRecordRelevantStateItemEnumList>;
 
 /** A representation of a DNS records for a domain. DNS records are resource records that define how systems and services should behave when handling requests for a domain. For example, when you add `A` records to your domain's DNS records, you're informing other systems (such as your users' web browsers) to contact those IPv4 addresses to retrieve resources relevant to your domain (such as your App Hosting files). */
 export interface DnsRecord {

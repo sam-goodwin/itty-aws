@@ -35,9 +35,8 @@ export const SearchContextRequestContentTypesItem = S.String;
 export type SearchContextRequestContentTypesList = Array<
   SearchContextRequestContentTypesItem | (string & {})
 >;
-export const SearchContextRequestContentTypesList = /*@__PURE__*/ S.Array(
-  SearchContextRequestContentTypesItem,
-) as any as S.Schema<SearchContextRequestContentTypesList>;
+export const SearchContextRequestContentTypesList =
+  SearchContextRequestChannelTypesList as any as S.Schema<SearchContextRequestContentTypesList>;
 
 /** The field to sort the results by. Defaults to score. Can be one of: score, timestamp. */
 export type SearchContextRequestSort = "score" | "timestamp";

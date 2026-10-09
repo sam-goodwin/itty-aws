@@ -213,9 +213,8 @@ export const ListImageActionsRequestStatusItem = S.String;
 export type ListImageActionsRequestStatusList = Array<
   ListImageActionsRequestStatusItem | (string & {})
 >;
-export const ListImageActionsRequestStatusList = /*@__PURE__*/ S.Array(
-  ListImageActionsRequestStatusItem,
-) as any as S.Schema<ListImageActionsRequestStatusList>;
+export const ListImageActionsRequestStatusList =
+  ListImageActionsRequestSortList as any as S.Schema<ListImageActionsRequestStatusList>;
 
 export interface ListImageActionsRequest {
   /** ID of the Image. */
@@ -373,9 +372,8 @@ export const ListImagesActionsRequestSortItem = S.String;
 export type ListImagesActionsRequestSortList = Array<
   ListImagesActionsRequestSortItem | (string & {})
 >;
-export const ListImagesActionsRequestSortList = /*@__PURE__*/ S.Array(
-  ListImagesActionsRequestSortItem,
-) as any as S.Schema<ListImagesActionsRequestSortList>;
+export const ListImagesActionsRequestSortList =
+  ListImageActionsRequestSortList as any as S.Schema<ListImagesActionsRequestSortList>;
 
 /** Status of the Action. */
 export type ListImagesActionsRequestStatusItem = "running" | "success" | "error";
@@ -384,9 +382,8 @@ export const ListImagesActionsRequestStatusItem = S.String;
 export type ListImagesActionsRequestStatusList = Array<
   ListImagesActionsRequestStatusItem | (string & {})
 >;
-export const ListImagesActionsRequestStatusList = /*@__PURE__*/ S.Array(
-  ListImagesActionsRequestStatusItem,
-) as any as S.Schema<ListImagesActionsRequestStatusList>;
+export const ListImagesActionsRequestStatusList =
+  ListImageActionsRequestSortList as any as S.Schema<ListImagesActionsRequestStatusList>;
 
 export interface ListImagesActionsRequest {
   /** Filter the actions by ID. May be used multiple times. The response will only contain actions matching the specified IDs. */

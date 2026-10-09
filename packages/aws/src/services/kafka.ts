@@ -1505,13 +1505,8 @@ export const ReplicationTopicNameConfigurationType = S.String;
 export interface ReplicationTopicNameConfiguration {
   Type?: ReplicationTopicNameConfigurationType;
 }
-export const ReplicationTopicNameConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Type: S.optional(ReplicationTopicNameConfigurationType) }).pipe(
-    S.encodeKeys({ Type: "type" }),
-  ),
-).annotate({
-  identifier: "ReplicationTopicNameConfiguration",
-}) as any as S.Schema<ReplicationTopicNameConfiguration>;
+export const ReplicationTopicNameConfiguration =
+  ReplicationStartingPosition as any as S.Schema<ReplicationTopicNameConfiguration>;
 export type __stringMax249 = string;
 export type __listOf__stringMax249 = string[];
 export const __listOf__stringMax249 = __listOf__string as any as S.Schema<__listOf__stringMax249>;

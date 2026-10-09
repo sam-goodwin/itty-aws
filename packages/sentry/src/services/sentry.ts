@@ -680,9 +680,8 @@ export const AddProjectSymbolSourceResponseBodyCase0FiltersFiletypesItem = S.Str
 
 export type AddProjectSymbolSourceResponseBodyCase0FiltersFiletypesList =
   Array<AddProjectSymbolSourceResponseBodyCase0FiltersFiletypesItem>;
-export const AddProjectSymbolSourceResponseBodyCase0FiltersFiletypesList = /*@__PURE__*/ S.Array(
-  AddProjectSymbolSourceResponseBodyCase0FiltersFiletypesItem,
-) as any as S.Schema<AddProjectSymbolSourceResponseBodyCase0FiltersFiletypesList>;
+export const AddProjectSymbolSourceResponseBodyCase0FiltersFiletypesList =
+  AddProjectSymbolSourceRequestFiltersFiletypesList as any as S.Schema<AddProjectSymbolSourceResponseBodyCase0FiltersFiletypesList>;
 
 export type AddProjectSymbolSourceResponseBodyCase0FiltersPathPatternsList = Array<string>;
 export const AddProjectSymbolSourceResponseBodyCase0FiltersPathPatternsList =
@@ -766,14 +765,8 @@ export interface AddProjectSymbolSourceResponseBodyCase1Layout {
   type: AddProjectSymbolSourceResponseBodyCase1LayoutType;
   casing?: AddProjectSymbolSourceResponseBodyCase1LayoutCasing;
 }
-export const AddProjectSymbolSourceResponseBodyCase1Layout = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: AddProjectSymbolSourceResponseBodyCase1LayoutType,
-    casing: S.optional(AddProjectSymbolSourceResponseBodyCase1LayoutCasing),
-  }),
-).annotate({
-  identifier: "AddProjectSymbolSourceResponseBodyCase1Layout",
-}) as any as S.Schema<AddProjectSymbolSourceResponseBodyCase1Layout>;
+export const AddProjectSymbolSourceResponseBodyCase1Layout =
+  AddProjectSymbolSourceResponseBodyCase0Layout as any as S.Schema<AddProjectSymbolSourceResponseBodyCase1Layout>;
 
 export type AddProjectSymbolSourceResponseBodyCase1FiltersFiletypesItem =
   | "pe"
@@ -796,9 +789,8 @@ export const AddProjectSymbolSourceResponseBodyCase1FiltersFiletypesItem = S.Str
 
 export type AddProjectSymbolSourceResponseBodyCase1FiltersFiletypesList =
   Array<AddProjectSymbolSourceResponseBodyCase1FiltersFiletypesItem>;
-export const AddProjectSymbolSourceResponseBodyCase1FiltersFiletypesList = /*@__PURE__*/ S.Array(
-  AddProjectSymbolSourceResponseBodyCase1FiltersFiletypesItem,
-) as any as S.Schema<AddProjectSymbolSourceResponseBodyCase1FiltersFiletypesList>;
+export const AddProjectSymbolSourceResponseBodyCase1FiltersFiletypesList =
+  AddProjectSymbolSourceRequestFiltersFiletypesList as any as S.Schema<AddProjectSymbolSourceResponseBodyCase1FiltersFiletypesList>;
 
 export type AddProjectSymbolSourceResponseBodyCase1FiltersPathPatternsList = Array<string>;
 export const AddProjectSymbolSourceResponseBodyCase1FiltersPathPatternsList =
@@ -886,14 +878,8 @@ export interface AddProjectSymbolSourceResponseBodyCase2Layout {
   type: AddProjectSymbolSourceResponseBodyCase2LayoutType;
   casing?: AddProjectSymbolSourceResponseBodyCase2LayoutCasing;
 }
-export const AddProjectSymbolSourceResponseBodyCase2Layout = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: AddProjectSymbolSourceResponseBodyCase2LayoutType,
-    casing: S.optional(AddProjectSymbolSourceResponseBodyCase2LayoutCasing),
-  }),
-).annotate({
-  identifier: "AddProjectSymbolSourceResponseBodyCase2Layout",
-}) as any as S.Schema<AddProjectSymbolSourceResponseBodyCase2Layout>;
+export const AddProjectSymbolSourceResponseBodyCase2Layout =
+  AddProjectSymbolSourceResponseBodyCase0Layout as any as S.Schema<AddProjectSymbolSourceResponseBodyCase2Layout>;
 
 export type AddProjectSymbolSourceResponseBodyCase2FiltersFiletypesItem =
   | "pe"
@@ -916,9 +902,8 @@ export const AddProjectSymbolSourceResponseBodyCase2FiltersFiletypesItem = S.Str
 
 export type AddProjectSymbolSourceResponseBodyCase2FiltersFiletypesList =
   Array<AddProjectSymbolSourceResponseBodyCase2FiltersFiletypesItem>;
-export const AddProjectSymbolSourceResponseBodyCase2FiltersFiletypesList = /*@__PURE__*/ S.Array(
-  AddProjectSymbolSourceResponseBodyCase2FiltersFiletypesItem,
-) as any as S.Schema<AddProjectSymbolSourceResponseBodyCase2FiltersFiletypesList>;
+export const AddProjectSymbolSourceResponseBodyCase2FiltersFiletypesList =
+  AddProjectSymbolSourceRequestFiltersFiletypesList as any as S.Schema<AddProjectSymbolSourceResponseBodyCase2FiltersFiletypesList>;
 
 export type AddProjectSymbolSourceResponseBodyCase2FiltersPathPatternsList = Array<string>;
 export const AddProjectSymbolSourceResponseBodyCase2FiltersPathPatternsList =
@@ -1004,14 +989,8 @@ export interface AddProjectSymbolSourceResponseBodyCase3Layout {
   type: AddProjectSymbolSourceResponseBodyCase3LayoutType;
   casing?: AddProjectSymbolSourceResponseBodyCase3LayoutCasing;
 }
-export const AddProjectSymbolSourceResponseBodyCase3Layout = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: AddProjectSymbolSourceResponseBodyCase3LayoutType,
-    casing: S.optional(AddProjectSymbolSourceResponseBodyCase3LayoutCasing),
-  }),
-).annotate({
-  identifier: "AddProjectSymbolSourceResponseBodyCase3Layout",
-}) as any as S.Schema<AddProjectSymbolSourceResponseBodyCase3Layout>;
+export const AddProjectSymbolSourceResponseBodyCase3Layout =
+  AddProjectSymbolSourceResponseBodyCase0Layout as any as S.Schema<AddProjectSymbolSourceResponseBodyCase3Layout>;
 
 export type AddProjectSymbolSourceResponseBodyCase3FiltersFiletypesItem =
   | "pe"
@@ -1034,9 +1013,8 @@ export const AddProjectSymbolSourceResponseBodyCase3FiltersFiletypesItem = S.Str
 
 export type AddProjectSymbolSourceResponseBodyCase3FiltersFiletypesList =
   Array<AddProjectSymbolSourceResponseBodyCase3FiltersFiletypesItem>;
-export const AddProjectSymbolSourceResponseBodyCase3FiltersFiletypesList = /*@__PURE__*/ S.Array(
-  AddProjectSymbolSourceResponseBodyCase3FiltersFiletypesItem,
-) as any as S.Schema<AddProjectSymbolSourceResponseBodyCase3FiltersFiletypesList>;
+export const AddProjectSymbolSourceResponseBodyCase3FiltersFiletypesList =
+  AddProjectSymbolSourceRequestFiltersFiletypesList as any as S.Schema<AddProjectSymbolSourceResponseBodyCase3FiltersFiletypesList>;
 
 export type AddProjectSymbolSourceResponseBodyCase3FiltersPathPatternsList = Array<string>;
 export const AddProjectSymbolSourceResponseBodyCase3FiltersPathPatternsList =
@@ -4571,16 +4549,8 @@ export interface CreateOrganizationProjectDetectorResponseOwner {
   name: string;
   email?: string;
 }
-export const CreateOrganizationProjectDetectorResponseOwner = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: CreateOrganizationProjectDetectorResponseOwnerType,
-    id: S.String,
-    name: S.String,
-    email: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateOrganizationProjectDetectorResponseOwner",
-}) as any as S.Schema<CreateOrganizationProjectDetectorResponseOwner>;
+export const CreateOrganizationProjectDetectorResponseOwner =
+  CreateOrganizationMonitorResponseOwner as any as S.Schema<CreateOrganizationProjectDetectorResponseOwner>;
 
 export type CreateOrganizationProjectDetectorResponseLatestGroupMap = {
   [key: string]: unknown | undefined;
@@ -9014,16 +8984,8 @@ export interface GetOrganizationDetectorResponseOwner {
   name: string;
   email?: string;
 }
-export const GetOrganizationDetectorResponseOwner = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: GetOrganizationDetectorResponseOwnerType,
-    id: S.String,
-    name: S.String,
-    email: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetOrganizationDetectorResponseOwner",
-}) as any as S.Schema<GetOrganizationDetectorResponseOwner>;
+export const GetOrganizationDetectorResponseOwner =
+  CreateOrganizationMonitorResponseOwner as any as S.Schema<GetOrganizationDetectorResponseOwner>;
 
 export type GetOrganizationDetectorResponseLatestGroupMap = { [key: string]: unknown | undefined };
 export const GetOrganizationDetectorResponseLatestGroupMap =
@@ -9407,9 +9369,8 @@ export const GetOrganizationIssueRequestExpandItem = S.String;
 export type GetOrganizationIssueRequestExpandList = Array<
   GetOrganizationIssueRequestExpandItem | (string & {})
 >;
-export const GetOrganizationIssueRequestExpandList = /*@__PURE__*/ S.Array(
-  GetOrganizationIssueRequestExpandItem,
-) as any as S.Schema<GetOrganizationIssueRequestExpandList>;
+export const GetOrganizationIssueRequestExpandList =
+  AddProjectSymbolSourceRequestFiltersFiletypesList as any as S.Schema<GetOrganizationIssueRequestExpandList>;
 
 export type GetOrganizationIssueRequestCollapseItem = "release" | "stats" | "tags";
 export const GetOrganizationIssueRequestCollapseItem = S.String;
@@ -9417,9 +9378,8 @@ export const GetOrganizationIssueRequestCollapseItem = S.String;
 export type GetOrganizationIssueRequestCollapseList = Array<
   GetOrganizationIssueRequestCollapseItem | (string & {})
 >;
-export const GetOrganizationIssueRequestCollapseList = /*@__PURE__*/ S.Array(
-  GetOrganizationIssueRequestCollapseItem,
-) as any as S.Schema<GetOrganizationIssueRequestCollapseList>;
+export const GetOrganizationIssueRequestCollapseList =
+  AddProjectSymbolSourceRequestFiltersFiletypesList as any as S.Schema<GetOrganizationIssueRequestCollapseList>;
 
 export interface GetOrganizationIssueRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -9695,16 +9655,8 @@ export interface GetOrganizationIssueResponseAssignedTo {
   name: string;
   email?: string;
 }
-export const GetOrganizationIssueResponseAssignedTo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: GetOrganizationIssueResponseAssignedToType,
-    id: S.String,
-    name: S.String,
-    email: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetOrganizationIssueResponseAssignedTo",
-}) as any as S.Schema<GetOrganizationIssueResponseAssignedTo>;
+export const GetOrganizationIssueResponseAssignedTo =
+  CreateOrganizationMonitorResponseOwner as any as S.Schema<GetOrganizationIssueResponseAssignedTo>;
 
 export interface GetOrganizationIssueResponseSubscriptionDetails {
   disabled?: boolean;
@@ -10507,14 +10459,8 @@ export interface GetOrganizationIssueEventResponseFormatted {
   format: GetOrganizationIssueEventResponseFormattedFormat;
   content: string;
 }
-export const GetOrganizationIssueEventResponseFormatted = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    format: GetOrganizationIssueEventResponseFormattedFormat,
-    content: S.String,
-  }),
-).annotate({
-  identifier: "GetOrganizationIssueEventResponseFormatted",
-}) as any as S.Schema<GetOrganizationIssueEventResponseFormatted>;
+export const GetOrganizationIssueEventResponseFormatted =
+  GetOrganizationIssueAutofixStateResponseFormatted as any as S.Schema<GetOrganizationIssueEventResponseFormatted>;
 
 export interface GetOrganizationIssueEventResponse {
   id: string;
@@ -11099,16 +11045,8 @@ export interface GetOrganizationMonitorResponseOwner {
   name: string;
   email?: string;
 }
-export const GetOrganizationMonitorResponseOwner = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: GetOrganizationMonitorResponseOwnerType,
-    id: S.String,
-    name: S.String,
-    email: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetOrganizationMonitorResponseOwner",
-}) as any as S.Schema<GetOrganizationMonitorResponseOwner>;
+export const GetOrganizationMonitorResponseOwner =
+  CreateOrganizationMonitorResponseOwner as any as S.Schema<GetOrganizationMonitorResponseOwner>;
 
 export interface GetOrganizationMonitorResponse {
   alertRule?: GetOrganizationMonitorResponseAlertRule;
@@ -11734,28 +11672,13 @@ export interface GetOrganizationPreprodArtifactSnapshotResponseRemovedItem {
   height?: number;
   canvas_theme?: GetOrganizationPreprodArtifactSnapshotResponseRemovedItemCanvasTheme | null;
 }
-export const GetOrganizationPreprodArtifactSnapshotResponseRemovedItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      key: S.optional(S.String),
-      display_name: S.optional(S.NullOr(S.String)),
-      group: S.optional(S.NullOr(S.String)),
-      image_file_name: S.optional(S.String),
-      width: S.optional(S.Number),
-      height: S.optional(S.Number),
-      canvas_theme: S.optional(
-        S.NullOr(GetOrganizationPreprodArtifactSnapshotResponseRemovedItemCanvasTheme),
-      ),
-    }),
-).annotate({
-  identifier: "GetOrganizationPreprodArtifactSnapshotResponseRemovedItem",
-}) as any as S.Schema<GetOrganizationPreprodArtifactSnapshotResponseRemovedItem>;
+export const GetOrganizationPreprodArtifactSnapshotResponseRemovedItem =
+  GetOrganizationPreprodArtifactSnapshotResponseImagesItem as any as S.Schema<GetOrganizationPreprodArtifactSnapshotResponseRemovedItem>;
 
 export type GetOrganizationPreprodArtifactSnapshotResponseRemovedList =
   Array<GetOrganizationPreprodArtifactSnapshotResponseRemovedItem>;
-export const GetOrganizationPreprodArtifactSnapshotResponseRemovedList = /*@__PURE__*/ S.Array(
-  GetOrganizationPreprodArtifactSnapshotResponseRemovedItem,
-) as any as S.Schema<GetOrganizationPreprodArtifactSnapshotResponseRemovedList>;
+export const GetOrganizationPreprodArtifactSnapshotResponseRemovedList =
+  GetOrganizationPreprodArtifactSnapshotResponseImagesList as any as S.Schema<GetOrganizationPreprodArtifactSnapshotResponseRemovedList>;
 
 export type GetOrganizationPreprodArtifactSnapshotResponseRenamedItemBaseImageCanvasTheme =
   | "light"
@@ -11805,21 +11728,7 @@ export interface GetOrganizationPreprodArtifactSnapshotResponseRenamedItemHeadIm
   canvas_theme?: GetOrganizationPreprodArtifactSnapshotResponseRenamedItemHeadImageCanvasTheme | null;
 }
 export const GetOrganizationPreprodArtifactSnapshotResponseRenamedItemHeadImage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.optional(S.String),
-      display_name: S.optional(S.NullOr(S.String)),
-      group: S.optional(S.NullOr(S.String)),
-      image_file_name: S.optional(S.String),
-      width: S.optional(S.Number),
-      height: S.optional(S.Number),
-      canvas_theme: S.optional(
-        S.NullOr(GetOrganizationPreprodArtifactSnapshotResponseRenamedItemHeadImageCanvasTheme),
-      ),
-    }),
-  ).annotate({
-    identifier: "GetOrganizationPreprodArtifactSnapshotResponseRenamedItemHeadImage",
-  }) as any as S.Schema<GetOrganizationPreprodArtifactSnapshotResponseRenamedItemHeadImage>;
+  GetOrganizationPreprodArtifactSnapshotResponseRenamedItemBaseImage as any as S.Schema<GetOrganizationPreprodArtifactSnapshotResponseRenamedItemHeadImage>;
 
 export interface GetOrganizationPreprodArtifactSnapshotResponseRenamedItem {
   base_image?: GetOrganizationPreprodArtifactSnapshotResponseRenamedItemBaseImage;
@@ -11861,21 +11770,7 @@ export interface GetOrganizationPreprodArtifactSnapshotResponseChangedItemBaseIm
   canvas_theme?: GetOrganizationPreprodArtifactSnapshotResponseChangedItemBaseImageCanvasTheme | null;
 }
 export const GetOrganizationPreprodArtifactSnapshotResponseChangedItemBaseImage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.optional(S.String),
-      display_name: S.optional(S.NullOr(S.String)),
-      group: S.optional(S.NullOr(S.String)),
-      image_file_name: S.optional(S.String),
-      width: S.optional(S.Number),
-      height: S.optional(S.Number),
-      canvas_theme: S.optional(
-        S.NullOr(GetOrganizationPreprodArtifactSnapshotResponseChangedItemBaseImageCanvasTheme),
-      ),
-    }),
-  ).annotate({
-    identifier: "GetOrganizationPreprodArtifactSnapshotResponseChangedItemBaseImage",
-  }) as any as S.Schema<GetOrganizationPreprodArtifactSnapshotResponseChangedItemBaseImage>;
+  GetOrganizationPreprodArtifactSnapshotResponseRenamedItemBaseImage as any as S.Schema<GetOrganizationPreprodArtifactSnapshotResponseChangedItemBaseImage>;
 
 export type GetOrganizationPreprodArtifactSnapshotResponseChangedItemHeadImageCanvasTheme =
   | "light"
@@ -11893,21 +11788,7 @@ export interface GetOrganizationPreprodArtifactSnapshotResponseChangedItemHeadIm
   canvas_theme?: GetOrganizationPreprodArtifactSnapshotResponseChangedItemHeadImageCanvasTheme | null;
 }
 export const GetOrganizationPreprodArtifactSnapshotResponseChangedItemHeadImage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.optional(S.String),
-      display_name: S.optional(S.NullOr(S.String)),
-      group: S.optional(S.NullOr(S.String)),
-      image_file_name: S.optional(S.String),
-      width: S.optional(S.Number),
-      height: S.optional(S.Number),
-      canvas_theme: S.optional(
-        S.NullOr(GetOrganizationPreprodArtifactSnapshotResponseChangedItemHeadImageCanvasTheme),
-      ),
-    }),
-  ).annotate({
-    identifier: "GetOrganizationPreprodArtifactSnapshotResponseChangedItemHeadImage",
-  }) as any as S.Schema<GetOrganizationPreprodArtifactSnapshotResponseChangedItemHeadImage>;
+  GetOrganizationPreprodArtifactSnapshotResponseRenamedItemBaseImage as any as S.Schema<GetOrganizationPreprodArtifactSnapshotResponseChangedItemHeadImage>;
 
 export interface GetOrganizationPreprodArtifactSnapshotResponseChangedItem {
   base_image?: GetOrganizationPreprodArtifactSnapshotResponseChangedItemBaseImage;
@@ -11915,23 +11796,13 @@ export interface GetOrganizationPreprodArtifactSnapshotResponseChangedItem {
   diff_image_key?: string | null;
   diff?: number | null;
 }
-export const GetOrganizationPreprodArtifactSnapshotResponseChangedItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      base_image: S.optional(GetOrganizationPreprodArtifactSnapshotResponseChangedItemBaseImage),
-      head_image: S.optional(GetOrganizationPreprodArtifactSnapshotResponseChangedItemHeadImage),
-      diff_image_key: S.optional(S.NullOr(S.String)),
-      diff: S.optional(S.NullOr(S.Number)),
-    }),
-).annotate({
-  identifier: "GetOrganizationPreprodArtifactSnapshotResponseChangedItem",
-}) as any as S.Schema<GetOrganizationPreprodArtifactSnapshotResponseChangedItem>;
+export const GetOrganizationPreprodArtifactSnapshotResponseChangedItem =
+  GetOrganizationPreprodArtifactSnapshotResponseRenamedItem as any as S.Schema<GetOrganizationPreprodArtifactSnapshotResponseChangedItem>;
 
 export type GetOrganizationPreprodArtifactSnapshotResponseChangedList =
   Array<GetOrganizationPreprodArtifactSnapshotResponseChangedItem>;
-export const GetOrganizationPreprodArtifactSnapshotResponseChangedList = /*@__PURE__*/ S.Array(
-  GetOrganizationPreprodArtifactSnapshotResponseChangedItem,
-) as any as S.Schema<GetOrganizationPreprodArtifactSnapshotResponseChangedList>;
+export const GetOrganizationPreprodArtifactSnapshotResponseChangedList =
+  GetOrganizationPreprodArtifactSnapshotResponseRenamedList as any as S.Schema<GetOrganizationPreprodArtifactSnapshotResponseChangedList>;
 
 export type GetOrganizationPreprodArtifactSnapshotResponseUnchangedItemCanvasTheme =
   | "light"
@@ -11947,28 +11818,13 @@ export interface GetOrganizationPreprodArtifactSnapshotResponseUnchangedItem {
   height?: number;
   canvas_theme?: GetOrganizationPreprodArtifactSnapshotResponseUnchangedItemCanvasTheme | null;
 }
-export const GetOrganizationPreprodArtifactSnapshotResponseUnchangedItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      key: S.optional(S.String),
-      display_name: S.optional(S.NullOr(S.String)),
-      group: S.optional(S.NullOr(S.String)),
-      image_file_name: S.optional(S.String),
-      width: S.optional(S.Number),
-      height: S.optional(S.Number),
-      canvas_theme: S.optional(
-        S.NullOr(GetOrganizationPreprodArtifactSnapshotResponseUnchangedItemCanvasTheme),
-      ),
-    }),
-).annotate({
-  identifier: "GetOrganizationPreprodArtifactSnapshotResponseUnchangedItem",
-}) as any as S.Schema<GetOrganizationPreprodArtifactSnapshotResponseUnchangedItem>;
+export const GetOrganizationPreprodArtifactSnapshotResponseUnchangedItem =
+  GetOrganizationPreprodArtifactSnapshotResponseImagesItem as any as S.Schema<GetOrganizationPreprodArtifactSnapshotResponseUnchangedItem>;
 
 export type GetOrganizationPreprodArtifactSnapshotResponseUnchangedList =
   Array<GetOrganizationPreprodArtifactSnapshotResponseUnchangedItem>;
-export const GetOrganizationPreprodArtifactSnapshotResponseUnchangedList = /*@__PURE__*/ S.Array(
-  GetOrganizationPreprodArtifactSnapshotResponseUnchangedItem,
-) as any as S.Schema<GetOrganizationPreprodArtifactSnapshotResponseUnchangedList>;
+export const GetOrganizationPreprodArtifactSnapshotResponseUnchangedList =
+  GetOrganizationPreprodArtifactSnapshotResponseImagesList as any as S.Schema<GetOrganizationPreprodArtifactSnapshotResponseUnchangedList>;
 
 export type GetOrganizationPreprodArtifactSnapshotResponseErroredItemBaseImageCanvasTheme =
   | "light"
@@ -11986,21 +11842,7 @@ export interface GetOrganizationPreprodArtifactSnapshotResponseErroredItemBaseIm
   canvas_theme?: GetOrganizationPreprodArtifactSnapshotResponseErroredItemBaseImageCanvasTheme | null;
 }
 export const GetOrganizationPreprodArtifactSnapshotResponseErroredItemBaseImage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.optional(S.String),
-      display_name: S.optional(S.NullOr(S.String)),
-      group: S.optional(S.NullOr(S.String)),
-      image_file_name: S.optional(S.String),
-      width: S.optional(S.Number),
-      height: S.optional(S.Number),
-      canvas_theme: S.optional(
-        S.NullOr(GetOrganizationPreprodArtifactSnapshotResponseErroredItemBaseImageCanvasTheme),
-      ),
-    }),
-  ).annotate({
-    identifier: "GetOrganizationPreprodArtifactSnapshotResponseErroredItemBaseImage",
-  }) as any as S.Schema<GetOrganizationPreprodArtifactSnapshotResponseErroredItemBaseImage>;
+  GetOrganizationPreprodArtifactSnapshotResponseRenamedItemBaseImage as any as S.Schema<GetOrganizationPreprodArtifactSnapshotResponseErroredItemBaseImage>;
 
 export type GetOrganizationPreprodArtifactSnapshotResponseErroredItemHeadImageCanvasTheme =
   | "light"
@@ -12018,21 +11860,7 @@ export interface GetOrganizationPreprodArtifactSnapshotResponseErroredItemHeadIm
   canvas_theme?: GetOrganizationPreprodArtifactSnapshotResponseErroredItemHeadImageCanvasTheme | null;
 }
 export const GetOrganizationPreprodArtifactSnapshotResponseErroredItemHeadImage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.optional(S.String),
-      display_name: S.optional(S.NullOr(S.String)),
-      group: S.optional(S.NullOr(S.String)),
-      image_file_name: S.optional(S.String),
-      width: S.optional(S.Number),
-      height: S.optional(S.Number),
-      canvas_theme: S.optional(
-        S.NullOr(GetOrganizationPreprodArtifactSnapshotResponseErroredItemHeadImageCanvasTheme),
-      ),
-    }),
-  ).annotate({
-    identifier: "GetOrganizationPreprodArtifactSnapshotResponseErroredItemHeadImage",
-  }) as any as S.Schema<GetOrganizationPreprodArtifactSnapshotResponseErroredItemHeadImage>;
+  GetOrganizationPreprodArtifactSnapshotResponseRenamedItemBaseImage as any as S.Schema<GetOrganizationPreprodArtifactSnapshotResponseErroredItemHeadImage>;
 
 export interface GetOrganizationPreprodArtifactSnapshotResponseErroredItem {
   base_image?: GetOrganizationPreprodArtifactSnapshotResponseErroredItemBaseImage;
@@ -12040,23 +11868,13 @@ export interface GetOrganizationPreprodArtifactSnapshotResponseErroredItem {
   diff_image_key?: string | null;
   diff?: number | null;
 }
-export const GetOrganizationPreprodArtifactSnapshotResponseErroredItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      base_image: S.optional(GetOrganizationPreprodArtifactSnapshotResponseErroredItemBaseImage),
-      head_image: S.optional(GetOrganizationPreprodArtifactSnapshotResponseErroredItemHeadImage),
-      diff_image_key: S.optional(S.NullOr(S.String)),
-      diff: S.optional(S.NullOr(S.Number)),
-    }),
-).annotate({
-  identifier: "GetOrganizationPreprodArtifactSnapshotResponseErroredItem",
-}) as any as S.Schema<GetOrganizationPreprodArtifactSnapshotResponseErroredItem>;
+export const GetOrganizationPreprodArtifactSnapshotResponseErroredItem =
+  GetOrganizationPreprodArtifactSnapshotResponseRenamedItem as any as S.Schema<GetOrganizationPreprodArtifactSnapshotResponseErroredItem>;
 
 export type GetOrganizationPreprodArtifactSnapshotResponseErroredList =
   Array<GetOrganizationPreprodArtifactSnapshotResponseErroredItem>;
-export const GetOrganizationPreprodArtifactSnapshotResponseErroredList = /*@__PURE__*/ S.Array(
-  GetOrganizationPreprodArtifactSnapshotResponseErroredItem,
-) as any as S.Schema<GetOrganizationPreprodArtifactSnapshotResponseErroredList>;
+export const GetOrganizationPreprodArtifactSnapshotResponseErroredList =
+  GetOrganizationPreprodArtifactSnapshotResponseRenamedList as any as S.Schema<GetOrganizationPreprodArtifactSnapshotResponseErroredList>;
 
 export type GetOrganizationPreprodArtifactSnapshotResponseSkippedItemCanvasTheme = "light" | "dark";
 export const GetOrganizationPreprodArtifactSnapshotResponseSkippedItemCanvasTheme = S.String;
@@ -12070,28 +11888,13 @@ export interface GetOrganizationPreprodArtifactSnapshotResponseSkippedItem {
   height?: number;
   canvas_theme?: GetOrganizationPreprodArtifactSnapshotResponseSkippedItemCanvasTheme | null;
 }
-export const GetOrganizationPreprodArtifactSnapshotResponseSkippedItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      key: S.optional(S.String),
-      display_name: S.optional(S.NullOr(S.String)),
-      group: S.optional(S.NullOr(S.String)),
-      image_file_name: S.optional(S.String),
-      width: S.optional(S.Number),
-      height: S.optional(S.Number),
-      canvas_theme: S.optional(
-        S.NullOr(GetOrganizationPreprodArtifactSnapshotResponseSkippedItemCanvasTheme),
-      ),
-    }),
-).annotate({
-  identifier: "GetOrganizationPreprodArtifactSnapshotResponseSkippedItem",
-}) as any as S.Schema<GetOrganizationPreprodArtifactSnapshotResponseSkippedItem>;
+export const GetOrganizationPreprodArtifactSnapshotResponseSkippedItem =
+  GetOrganizationPreprodArtifactSnapshotResponseImagesItem as any as S.Schema<GetOrganizationPreprodArtifactSnapshotResponseSkippedItem>;
 
 export type GetOrganizationPreprodArtifactSnapshotResponseSkippedList =
   Array<GetOrganizationPreprodArtifactSnapshotResponseSkippedItem>;
-export const GetOrganizationPreprodArtifactSnapshotResponseSkippedList = /*@__PURE__*/ S.Array(
-  GetOrganizationPreprodArtifactSnapshotResponseSkippedItem,
-) as any as S.Schema<GetOrganizationPreprodArtifactSnapshotResponseSkippedList>;
+export const GetOrganizationPreprodArtifactSnapshotResponseSkippedList =
+  GetOrganizationPreprodArtifactSnapshotResponseImagesList as any as S.Schema<GetOrganizationPreprodArtifactSnapshotResponseSkippedList>;
 
 export type GetOrganizationPreprodArtifactSnapshotResponseApproversItemSource = "sentry" | "github";
 export const GetOrganizationPreprodArtifactSnapshotResponseApproversItemSource = S.String;
@@ -12488,9 +12291,8 @@ export const GetOrganizationProfilingFlamegraphRequestExpandItem = S.String;
 export type GetOrganizationProfilingFlamegraphRequestExpandList = Array<
   GetOrganizationProfilingFlamegraphRequestExpandItem | (string & {})
 >;
-export const GetOrganizationProfilingFlamegraphRequestExpandList = /*@__PURE__*/ S.Array(
-  GetOrganizationProfilingFlamegraphRequestExpandItem,
-) as any as S.Schema<GetOrganizationProfilingFlamegraphRequestExpandList>;
+export const GetOrganizationProfilingFlamegraphRequestExpandList =
+  AddProjectSymbolSourceRequestFiltersFiletypesList as any as S.Schema<GetOrganizationProfilingFlamegraphRequestExpandList>;
 
 export interface GetOrganizationProfilingFlamegraphRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -13003,9 +12805,8 @@ export const GetOrganizationReplayRequestFieldItem = S.String;
 export type GetOrganizationReplayRequestFieldList = Array<
   GetOrganizationReplayRequestFieldItem | (string & {})
 >;
-export const GetOrganizationReplayRequestFieldList = /*@__PURE__*/ S.Array(
-  GetOrganizationReplayRequestFieldItem,
-) as any as S.Schema<GetOrganizationReplayRequestFieldList>;
+export const GetOrganizationReplayRequestFieldList =
+  AddProjectSymbolSourceRequestFiltersFiletypesList as any as S.Schema<GetOrganizationReplayRequestFieldList>;
 
 export type GetOrganizationReplayRequestProjectItem = number | string;
 export const GetOrganizationReplayRequestProjectItem =
@@ -14366,25 +14167,8 @@ export interface GetOrganizationTraceResponseBodyItemCase1 {
   short_id: string | null;
   issue_type: number;
 }
-export const GetOrganizationTraceResponseBodyItemCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.String,
-    event_id: S.String,
-    project_id: S.Number,
-    project_slug: S.String,
-    transaction: S.String,
-    event_type: GetOrganizationTraceResponseBodyItemCase1EventType,
-    issue_id: S.Number,
-    level: S.String,
-    start_timestamp: S.Number,
-    end_timestamp: S.optional(S.Number),
-    culprit: S.NullOr(S.String),
-    short_id: S.NullOr(S.String),
-    issue_type: S.Number,
-  }),
-).annotate({
-  identifier: "GetOrganizationTraceResponseBodyItemCase1",
-}) as any as S.Schema<GetOrganizationTraceResponseBodyItemCase1>;
+export const GetOrganizationTraceResponseBodyItemCase1 =
+  GetOrganizationTraceResponseBodyItemCase0ErrorsItem as any as S.Schema<GetOrganizationTraceResponseBodyItemCase1>;
 
 export type GetOrganizationTraceResponseBodyItemCase2EventType = "uptime_check";
 export const GetOrganizationTraceResponseBodyItemCase2EventType = S.String;
@@ -14418,31 +14202,13 @@ export interface GetOrganizationTraceResponseBodyItemCase2ErrorsItem {
   short_id: string | null;
   issue_type: number;
 }
-export const GetOrganizationTraceResponseBodyItemCase2ErrorsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.String,
-    event_id: S.String,
-    project_id: S.Number,
-    project_slug: S.String,
-    transaction: S.String,
-    event_type: GetOrganizationTraceResponseBodyItemCase2ErrorsItemEventType,
-    issue_id: S.Number,
-    level: S.String,
-    start_timestamp: S.Number,
-    end_timestamp: S.optional(S.Number),
-    culprit: S.NullOr(S.String),
-    short_id: S.NullOr(S.String),
-    issue_type: S.Number,
-  }),
-).annotate({
-  identifier: "GetOrganizationTraceResponseBodyItemCase2ErrorsItem",
-}) as any as S.Schema<GetOrganizationTraceResponseBodyItemCase2ErrorsItem>;
+export const GetOrganizationTraceResponseBodyItemCase2ErrorsItem =
+  GetOrganizationTraceResponseBodyItemCase0ErrorsItem as any as S.Schema<GetOrganizationTraceResponseBodyItemCase2ErrorsItem>;
 
 export type GetOrganizationTraceResponseBodyItemCase2ErrorsList =
   Array<GetOrganizationTraceResponseBodyItemCase2ErrorsItem>;
-export const GetOrganizationTraceResponseBodyItemCase2ErrorsList = /*@__PURE__*/ S.Array(
-  GetOrganizationTraceResponseBodyItemCase2ErrorsItem,
-) as any as S.Schema<GetOrganizationTraceResponseBodyItemCase2ErrorsList>;
+export const GetOrganizationTraceResponseBodyItemCase2ErrorsList =
+  GetOrganizationTraceResponseBodyItemCase0ErrorsList as any as S.Schema<GetOrganizationTraceResponseBodyItemCase2ErrorsList>;
 
 export type GetOrganizationTraceResponseBodyItemCase2OccurrencesItemEventType =
   | "error"
@@ -14464,32 +14230,13 @@ export interface GetOrganizationTraceResponseBodyItemCase2OccurrencesItem {
   short_id: string | null;
   issue_type: number;
 }
-export const GetOrganizationTraceResponseBodyItemCase2OccurrencesItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      description: S.String,
-      event_id: S.String,
-      project_id: S.Number,
-      project_slug: S.String,
-      transaction: S.String,
-      event_type: GetOrganizationTraceResponseBodyItemCase2OccurrencesItemEventType,
-      issue_id: S.Number,
-      level: S.String,
-      start_timestamp: S.Number,
-      end_timestamp: S.optional(S.Number),
-      culprit: S.NullOr(S.String),
-      short_id: S.NullOr(S.String),
-      issue_type: S.Number,
-    }),
-).annotate({
-  identifier: "GetOrganizationTraceResponseBodyItemCase2OccurrencesItem",
-}) as any as S.Schema<GetOrganizationTraceResponseBodyItemCase2OccurrencesItem>;
+export const GetOrganizationTraceResponseBodyItemCase2OccurrencesItem =
+  GetOrganizationTraceResponseBodyItemCase0OccurrencesItem as any as S.Schema<GetOrganizationTraceResponseBodyItemCase2OccurrencesItem>;
 
 export type GetOrganizationTraceResponseBodyItemCase2OccurrencesList =
   Array<GetOrganizationTraceResponseBodyItemCase2OccurrencesItem>;
-export const GetOrganizationTraceResponseBodyItemCase2OccurrencesList = /*@__PURE__*/ S.Array(
-  GetOrganizationTraceResponseBodyItemCase2OccurrencesItem,
-) as any as S.Schema<GetOrganizationTraceResponseBodyItemCase2OccurrencesList>;
+export const GetOrganizationTraceResponseBodyItemCase2OccurrencesList =
+  GetOrganizationTraceResponseBodyItemCase0OccurrencesList as any as S.Schema<GetOrganizationTraceResponseBodyItemCase2OccurrencesList>;
 
 export type GetOrganizationTraceResponseBodyItemCase2AdditionalAttributesMap = {
   [key: string]: unknown | undefined;
@@ -16024,16 +15771,7 @@ export interface GetProjectEventSourceMapDebugResponseExceptionsItemFramesItemSc
   status: GetProjectEventSourceMapDebugResponseExceptionsItemFramesItemScrapingProcessSourceFileCase1Status;
 }
 export const GetProjectEventSourceMapDebugResponseExceptionsItemFramesItemScrapingProcessSourceFileCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      url: S.String,
-      status:
-        GetProjectEventSourceMapDebugResponseExceptionsItemFramesItemScrapingProcessSourceFileCase1Status,
-    }),
-  ).annotate({
-    identifier:
-      "GetProjectEventSourceMapDebugResponseExceptionsItemFramesItemScrapingProcessSourceFileCase1",
-  }) as any as S.Schema<GetProjectEventSourceMapDebugResponseExceptionsItemFramesItemScrapingProcessSourceFileCase1>;
+  GetProjectEventSourceMapDebugResponseExceptionsItemFramesItemScrapingProcessSourceFileCase0 as any as S.Schema<GetProjectEventSourceMapDebugResponseExceptionsItemFramesItemScrapingProcessSourceFileCase1>;
 
 export type GetProjectEventSourceMapDebugResponseExceptionsItemFramesItemScrapingProcessSourceFileCase2Status =
   "failure";
@@ -16090,16 +15828,7 @@ export interface GetProjectEventSourceMapDebugResponseExceptionsItemFramesItemSc
   status: GetProjectEventSourceMapDebugResponseExceptionsItemFramesItemScrapingProcessSourceMapCase0Status;
 }
 export const GetProjectEventSourceMapDebugResponseExceptionsItemFramesItemScrapingProcessSourceMapCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      url: S.String,
-      status:
-        GetProjectEventSourceMapDebugResponseExceptionsItemFramesItemScrapingProcessSourceMapCase0Status,
-    }),
-  ).annotate({
-    identifier:
-      "GetProjectEventSourceMapDebugResponseExceptionsItemFramesItemScrapingProcessSourceMapCase0",
-  }) as any as S.Schema<GetProjectEventSourceMapDebugResponseExceptionsItemFramesItemScrapingProcessSourceMapCase0>;
+  GetProjectEventSourceMapDebugResponseExceptionsItemFramesItemScrapingProcessSourceFileCase0 as any as S.Schema<GetProjectEventSourceMapDebugResponseExceptionsItemFramesItemScrapingProcessSourceMapCase0>;
 
 export type GetProjectEventSourceMapDebugResponseExceptionsItemFramesItemScrapingProcessSourceMapCase1Status =
   "not_attempted";
@@ -16111,16 +15840,7 @@ export interface GetProjectEventSourceMapDebugResponseExceptionsItemFramesItemSc
   status: GetProjectEventSourceMapDebugResponseExceptionsItemFramesItemScrapingProcessSourceMapCase1Status;
 }
 export const GetProjectEventSourceMapDebugResponseExceptionsItemFramesItemScrapingProcessSourceMapCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      url: S.String,
-      status:
-        GetProjectEventSourceMapDebugResponseExceptionsItemFramesItemScrapingProcessSourceMapCase1Status,
-    }),
-  ).annotate({
-    identifier:
-      "GetProjectEventSourceMapDebugResponseExceptionsItemFramesItemScrapingProcessSourceMapCase1",
-  }) as any as S.Schema<GetProjectEventSourceMapDebugResponseExceptionsItemFramesItemScrapingProcessSourceMapCase1>;
+  GetProjectEventSourceMapDebugResponseExceptionsItemFramesItemScrapingProcessSourceFileCase0 as any as S.Schema<GetProjectEventSourceMapDebugResponseExceptionsItemFramesItemScrapingProcessSourceMapCase1>;
 
 export type GetProjectEventSourceMapDebugResponseExceptionsItemFramesItemScrapingProcessSourceMapCase2Status =
   "failure";
@@ -16145,19 +15865,7 @@ export interface GetProjectEventSourceMapDebugResponseExceptionsItemFramesItemSc
   details: string | null;
 }
 export const GetProjectEventSourceMapDebugResponseExceptionsItemFramesItemScrapingProcessSourceMapCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      url: S.String,
-      status:
-        GetProjectEventSourceMapDebugResponseExceptionsItemFramesItemScrapingProcessSourceMapCase2Status,
-      reason:
-        GetProjectEventSourceMapDebugResponseExceptionsItemFramesItemScrapingProcessSourceMapCase2Reason,
-      details: S.NullOr(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GetProjectEventSourceMapDebugResponseExceptionsItemFramesItemScrapingProcessSourceMapCase2",
-  }) as any as S.Schema<GetProjectEventSourceMapDebugResponseExceptionsItemFramesItemScrapingProcessSourceMapCase2>;
+  GetProjectEventSourceMapDebugResponseExceptionsItemFramesItemScrapingProcessSourceFileCase2 as any as S.Schema<GetProjectEventSourceMapDebugResponseExceptionsItemFramesItemScrapingProcessSourceMapCase2>;
 
 export type GetProjectEventSourceMapDebugResponseExceptionsItemFramesItemScrapingProcessSourceMap =
   | GetProjectEventSourceMapDebugResponseExceptionsItemFramesItemScrapingProcessSourceMapCase0
@@ -16649,16 +16357,8 @@ export interface GetProjectMonitorResponseOwner {
   name: string;
   email?: string;
 }
-export const GetProjectMonitorResponseOwner = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: GetProjectMonitorResponseOwnerType,
-    id: S.String,
-    name: S.String,
-    email: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetProjectMonitorResponseOwner",
-}) as any as S.Schema<GetProjectMonitorResponseOwner>;
+export const GetProjectMonitorResponseOwner =
+  CreateOrganizationMonitorResponseOwner as any as S.Schema<GetProjectMonitorResponseOwner>;
 
 export interface GetProjectMonitorResponse {
   alertRule?: GetProjectMonitorResponseAlertRule;
@@ -17556,9 +17256,8 @@ export const GetTraceItemStatisticsRequestStatsTypeItem = S.String;
 export type GetTraceItemStatisticsRequestStatsTypeList = Array<
   GetTraceItemStatisticsRequestStatsTypeItem | (string & {})
 >;
-export const GetTraceItemStatisticsRequestStatsTypeList = /*@__PURE__*/ S.Array(
-  GetTraceItemStatisticsRequestStatsTypeItem,
-) as any as S.Schema<GetTraceItemStatisticsRequestStatsTypeList>;
+export const GetTraceItemStatisticsRequestStatsTypeList =
+  AddProjectSymbolSourceRequestFiltersFiletypesList as any as S.Schema<GetTraceItemStatisticsRequestStatsTypeList>;
 
 export type GetTraceItemStatisticsRequestProjectItem = number | string;
 export const GetTraceItemStatisticsRequestProjectItem =
@@ -18345,9 +18044,8 @@ export const ListOrganizationDashboardsRequestFilterItem = S.String;
 export type ListOrganizationDashboardsRequestFilterList = Array<
   ListOrganizationDashboardsRequestFilterItem | (string & {})
 >;
-export const ListOrganizationDashboardsRequestFilterList = /*@__PURE__*/ S.Array(
-  ListOrganizationDashboardsRequestFilterItem,
-) as any as S.Schema<ListOrganizationDashboardsRequestFilterList>;
+export const ListOrganizationDashboardsRequestFilterList =
+  AddProjectSymbolSourceRequestFiltersFiletypesList as any as S.Schema<ListOrganizationDashboardsRequestFilterList>;
 
 export type ListOrganizationDashboardsRequestPin = "favorites";
 export const ListOrganizationDashboardsRequestPin = S.String;
@@ -18653,16 +18351,8 @@ export interface ListOrganizationDetectorsResponseBodyItemOwner {
   name: string;
   email?: string;
 }
-export const ListOrganizationDetectorsResponseBodyItemOwner = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ListOrganizationDetectorsResponseBodyItemOwnerType,
-    id: S.String,
-    name: S.String,
-    email: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListOrganizationDetectorsResponseBodyItemOwner",
-}) as any as S.Schema<ListOrganizationDetectorsResponseBodyItemOwner>;
+export const ListOrganizationDetectorsResponseBodyItemOwner =
+  CreateOrganizationMonitorResponseOwner as any as S.Schema<ListOrganizationDetectorsResponseBodyItemOwner>;
 
 export type ListOrganizationDetectorsResponseBodyItemLatestGroupMap = {
   [key: string]: unknown | undefined;
@@ -19374,27 +19064,12 @@ export interface ListOrganizationEventsTimeseriesResponseMetaAcceptedAnnotations
   byteSize?: number;
 }
 export const ListOrganizationEventsTimeseriesResponseMetaAcceptedAnnotationsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: ListOrganizationEventsTimeseriesResponseMetaAcceptedAnnotationsItemType,
-      category: S.String,
-      outcome: S.String,
-      reason: S.String,
-      start: S.Number,
-      end: S.Number,
-      eventCount: S.Number,
-      byteSize: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "ListOrganizationEventsTimeseriesResponseMetaAcceptedAnnotationsItem",
-  }) as any as S.Schema<ListOrganizationEventsTimeseriesResponseMetaAcceptedAnnotationsItem>;
+  ListOrganizationEventsTimeseriesResponseMetaDroppedAnnotationsItem as any as S.Schema<ListOrganizationEventsTimeseriesResponseMetaAcceptedAnnotationsItem>;
 
 export type ListOrganizationEventsTimeseriesResponseMetaAcceptedAnnotationsList =
   Array<ListOrganizationEventsTimeseriesResponseMetaAcceptedAnnotationsItem>;
 export const ListOrganizationEventsTimeseriesResponseMetaAcceptedAnnotationsList =
-  /*@__PURE__*/ S.Array(
-    ListOrganizationEventsTimeseriesResponseMetaAcceptedAnnotationsItem,
-  ) as any as S.Schema<ListOrganizationEventsTimeseriesResponseMetaAcceptedAnnotationsList>;
+  ListOrganizationEventsTimeseriesResponseMetaDroppedAnnotationsList as any as S.Schema<ListOrganizationEventsTimeseriesResponseMetaAcceptedAnnotationsList>;
 
 /** Ingestion status for the data behind a response. */
 export type ListOrganizationEventsTimeseriesResponseMetaIngestion =
@@ -20708,9 +20383,8 @@ export const ListOrganizationIssuesRequestExpandItem = S.String;
 export type ListOrganizationIssuesRequestExpandList = Array<
   ListOrganizationIssuesRequestExpandItem | (string & {})
 >;
-export const ListOrganizationIssuesRequestExpandList = /*@__PURE__*/ S.Array(
-  ListOrganizationIssuesRequestExpandItem,
-) as any as S.Schema<ListOrganizationIssuesRequestExpandList>;
+export const ListOrganizationIssuesRequestExpandList =
+  AddProjectSymbolSourceRequestFiltersFiletypesList as any as S.Schema<ListOrganizationIssuesRequestExpandList>;
 
 export type ListOrganizationIssuesRequestCollapseItem =
   | "base"
@@ -20723,9 +20397,8 @@ export const ListOrganizationIssuesRequestCollapseItem = S.String;
 export type ListOrganizationIssuesRequestCollapseList = Array<
   ListOrganizationIssuesRequestCollapseItem | (string & {})
 >;
-export const ListOrganizationIssuesRequestCollapseList = /*@__PURE__*/ S.Array(
-  ListOrganizationIssuesRequestCollapseItem,
-) as any as S.Schema<ListOrganizationIssuesRequestCollapseList>;
+export const ListOrganizationIssuesRequestCollapseList =
+  AddProjectSymbolSourceRequestFiltersFiletypesList as any as S.Schema<ListOrganizationIssuesRequestCollapseList>;
 
 export interface ListOrganizationIssuesRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -20988,16 +20661,8 @@ export interface ListOrganizationIssuesResponseBodyItemAssignedTo {
   name: string;
   email?: string;
 }
-export const ListOrganizationIssuesResponseBodyItemAssignedTo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ListOrganizationIssuesResponseBodyItemAssignedToType,
-    id: S.String,
-    name: S.String,
-    email: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListOrganizationIssuesResponseBodyItemAssignedTo",
-}) as any as S.Schema<ListOrganizationIssuesResponseBodyItemAssignedTo>;
+export const ListOrganizationIssuesResponseBodyItemAssignedTo =
+  CreateOrganizationMonitorResponseOwner as any as S.Schema<ListOrganizationIssuesResponseBodyItemAssignedTo>;
 
 export type ListOrganizationIssuesResponseBodyItemSubscriptionDetails =
   GetOrganizationIssueResponseSubscriptionDetails;
@@ -21274,9 +20939,8 @@ export const ListOrganizationIssueViewsRequestSortItem = S.String;
 export type ListOrganizationIssueViewsRequestSortList = Array<
   ListOrganizationIssueViewsRequestSortItem | (string & {})
 >;
-export const ListOrganizationIssueViewsRequestSortList = /*@__PURE__*/ S.Array(
-  ListOrganizationIssueViewsRequestSortItem,
-) as any as S.Schema<ListOrganizationIssueViewsRequestSortList>;
+export const ListOrganizationIssueViewsRequestSortList =
+  AddProjectSymbolSourceRequestFiltersFiletypesList as any as S.Schema<ListOrganizationIssueViewsRequestSortList>;
 
 export interface ListOrganizationIssueViewsRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -21886,16 +21550,8 @@ export interface ListOrganizationMonitorsResponseBodyItemOwner {
   name: string;
   email?: string;
 }
-export const ListOrganizationMonitorsResponseBodyItemOwner = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ListOrganizationMonitorsResponseBodyItemOwnerType,
-    id: S.String,
-    name: S.String,
-    email: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListOrganizationMonitorsResponseBodyItemOwner",
-}) as any as S.Schema<ListOrganizationMonitorsResponseBodyItemOwner>;
+export const ListOrganizationMonitorsResponseBodyItemOwner =
+  CreateOrganizationMonitorResponseOwner as any as S.Schema<ListOrganizationMonitorsResponseBodyItemOwner>;
 
 export interface ListOrganizationMonitorsResponseBodyItem {
   alertRule?: ListOrganizationMonitorsResponseBodyItemAlertRule;
@@ -23460,9 +23116,8 @@ export const ListOrganizationReplaysRequestFieldItem = S.String;
 export type ListOrganizationReplaysRequestFieldList = Array<
   ListOrganizationReplaysRequestFieldItem | (string & {})
 >;
-export const ListOrganizationReplaysRequestFieldList = /*@__PURE__*/ S.Array(
-  ListOrganizationReplaysRequestFieldItem,
-) as any as S.Schema<ListOrganizationReplaysRequestFieldList>;
+export const ListOrganizationReplaysRequestFieldList =
+  AddProjectSymbolSourceRequestFiltersFiletypesList as any as S.Schema<ListOrganizationReplaysRequestFieldList>;
 
 export type ListOrganizationReplaysRequestProjectItem = number | string;
 export const ListOrganizationReplaysRequestProjectItem =
@@ -24929,9 +24584,8 @@ export const ListOrganizationStatsV2RequestGroupByItem = S.String;
 export type ListOrganizationStatsV2RequestGroupByList = Array<
   ListOrganizationStatsV2RequestGroupByItem | (string & {})
 >;
-export const ListOrganizationStatsV2RequestGroupByList = /*@__PURE__*/ S.Array(
-  ListOrganizationStatsV2RequestGroupByItem,
-) as any as S.Schema<ListOrganizationStatsV2RequestGroupByList>;
+export const ListOrganizationStatsV2RequestGroupByList =
+  AddProjectSymbolSourceRequestFiltersFiletypesList as any as S.Schema<ListOrganizationStatsV2RequestGroupByList>;
 
 export type ListOrganizationStatsV2RequestField = "sum(quantity)" | "sum(times_seen)";
 export const ListOrganizationStatsV2RequestField = S.String;
@@ -25469,9 +25123,8 @@ export const ListOrganizationTraceItemAttributesRequestAttributeTypeItem = S.Str
 export type ListOrganizationTraceItemAttributesRequestAttributeTypeList = Array<
   ListOrganizationTraceItemAttributesRequestAttributeTypeItem | (string & {})
 >;
-export const ListOrganizationTraceItemAttributesRequestAttributeTypeList = /*@__PURE__*/ S.Array(
-  ListOrganizationTraceItemAttributesRequestAttributeTypeItem,
-) as any as S.Schema<ListOrganizationTraceItemAttributesRequestAttributeTypeList>;
+export const ListOrganizationTraceItemAttributesRequestAttributeTypeList =
+  AddProjectSymbolSourceRequestFiltersFiletypesList as any as S.Schema<ListOrganizationTraceItemAttributesRequestAttributeTypeList>;
 
 export interface ListOrganizationTraceItemAttributesRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -25627,9 +25280,8 @@ export const ListOrganizationTraceMetricsRequestExpandItem = S.String;
 export type ListOrganizationTraceMetricsRequestExpandList = Array<
   ListOrganizationTraceMetricsRequestExpandItem | (string & {})
 >;
-export const ListOrganizationTraceMetricsRequestExpandList = /*@__PURE__*/ S.Array(
-  ListOrganizationTraceMetricsRequestExpandItem,
-) as any as S.Schema<ListOrganizationTraceMetricsRequestExpandList>;
+export const ListOrganizationTraceMetricsRequestExpandList =
+  AddProjectSymbolSourceRequestFiltersFiletypesList as any as S.Schema<ListOrganizationTraceMetricsRequestExpandList>;
 
 export interface ListOrganizationTraceMetricsRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -26371,9 +26023,8 @@ export const ListProjectCodeOwnersRequestExpandItem = S.String;
 export type ListProjectCodeOwnersRequestExpandList = Array<
   ListProjectCodeOwnersRequestExpandItem | (string & {})
 >;
-export const ListProjectCodeOwnersRequestExpandList = /*@__PURE__*/ S.Array(
-  ListProjectCodeOwnersRequestExpandItem,
-) as any as S.Schema<ListProjectCodeOwnersRequestExpandList>;
+export const ListProjectCodeOwnersRequestExpandList =
+  AddProjectSymbolSourceRequestFiltersFiletypesList as any as S.Schema<ListProjectCodeOwnersRequestExpandList>;
 
 export interface ListProjectCodeOwnersRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -28453,14 +28104,8 @@ export interface ListProjectSymbolSourcesResponseBodyItemCase0Layout {
   type: ListProjectSymbolSourcesResponseBodyItemCase0LayoutType;
   casing?: ListProjectSymbolSourcesResponseBodyItemCase0LayoutCasing;
 }
-export const ListProjectSymbolSourcesResponseBodyItemCase0Layout = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ListProjectSymbolSourcesResponseBodyItemCase0LayoutType,
-    casing: S.optional(ListProjectSymbolSourcesResponseBodyItemCase0LayoutCasing),
-  }),
-).annotate({
-  identifier: "ListProjectSymbolSourcesResponseBodyItemCase0Layout",
-}) as any as S.Schema<ListProjectSymbolSourcesResponseBodyItemCase0Layout>;
+export const ListProjectSymbolSourcesResponseBodyItemCase0Layout =
+  AddProjectSymbolSourceResponseBodyCase0Layout as any as S.Schema<ListProjectSymbolSourcesResponseBodyItemCase0Layout>;
 
 export type ListProjectSymbolSourcesResponseBodyItemCase0FiltersFiletypesItem =
   | "pe"
@@ -28570,14 +28215,8 @@ export interface ListProjectSymbolSourcesResponseBodyItemCase1Layout {
   type: ListProjectSymbolSourcesResponseBodyItemCase1LayoutType;
   casing?: ListProjectSymbolSourcesResponseBodyItemCase1LayoutCasing;
 }
-export const ListProjectSymbolSourcesResponseBodyItemCase1Layout = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ListProjectSymbolSourcesResponseBodyItemCase1LayoutType,
-    casing: S.optional(ListProjectSymbolSourcesResponseBodyItemCase1LayoutCasing),
-  }),
-).annotate({
-  identifier: "ListProjectSymbolSourcesResponseBodyItemCase1Layout",
-}) as any as S.Schema<ListProjectSymbolSourcesResponseBodyItemCase1Layout>;
+export const ListProjectSymbolSourcesResponseBodyItemCase1Layout =
+  AddProjectSymbolSourceResponseBodyCase0Layout as any as S.Schema<ListProjectSymbolSourcesResponseBodyItemCase1Layout>;
 
 export type ListProjectSymbolSourcesResponseBodyItemCase1FiltersFiletypesItem =
   | "pe"
@@ -28601,9 +28240,7 @@ export const ListProjectSymbolSourcesResponseBodyItemCase1FiltersFiletypesItem =
 export type ListProjectSymbolSourcesResponseBodyItemCase1FiltersFiletypesList =
   Array<ListProjectSymbolSourcesResponseBodyItemCase1FiltersFiletypesItem>;
 export const ListProjectSymbolSourcesResponseBodyItemCase1FiltersFiletypesList =
-  /*@__PURE__*/ S.Array(
-    ListProjectSymbolSourcesResponseBodyItemCase1FiltersFiletypesItem,
-  ) as any as S.Schema<ListProjectSymbolSourcesResponseBodyItemCase1FiltersFiletypesList>;
+  ListProjectSymbolSourcesResponseBodyItemCase0FiltersFiletypesList as any as S.Schema<ListProjectSymbolSourcesResponseBodyItemCase1FiltersFiletypesList>;
 
 export type ListProjectSymbolSourcesResponseBodyItemCase1FiltersPathPatternsList = Array<string>;
 export const ListProjectSymbolSourcesResponseBodyItemCase1FiltersPathPatternsList =
@@ -28691,14 +28328,8 @@ export interface ListProjectSymbolSourcesResponseBodyItemCase2Layout {
   type: ListProjectSymbolSourcesResponseBodyItemCase2LayoutType;
   casing?: ListProjectSymbolSourcesResponseBodyItemCase2LayoutCasing;
 }
-export const ListProjectSymbolSourcesResponseBodyItemCase2Layout = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ListProjectSymbolSourcesResponseBodyItemCase2LayoutType,
-    casing: S.optional(ListProjectSymbolSourcesResponseBodyItemCase2LayoutCasing),
-  }),
-).annotate({
-  identifier: "ListProjectSymbolSourcesResponseBodyItemCase2Layout",
-}) as any as S.Schema<ListProjectSymbolSourcesResponseBodyItemCase2Layout>;
+export const ListProjectSymbolSourcesResponseBodyItemCase2Layout =
+  AddProjectSymbolSourceResponseBodyCase0Layout as any as S.Schema<ListProjectSymbolSourcesResponseBodyItemCase2Layout>;
 
 export type ListProjectSymbolSourcesResponseBodyItemCase2FiltersFiletypesItem =
   | "pe"
@@ -28722,9 +28353,7 @@ export const ListProjectSymbolSourcesResponseBodyItemCase2FiltersFiletypesItem =
 export type ListProjectSymbolSourcesResponseBodyItemCase2FiltersFiletypesList =
   Array<ListProjectSymbolSourcesResponseBodyItemCase2FiltersFiletypesItem>;
 export const ListProjectSymbolSourcesResponseBodyItemCase2FiltersFiletypesList =
-  /*@__PURE__*/ S.Array(
-    ListProjectSymbolSourcesResponseBodyItemCase2FiltersFiletypesItem,
-  ) as any as S.Schema<ListProjectSymbolSourcesResponseBodyItemCase2FiltersFiletypesList>;
+  ListProjectSymbolSourcesResponseBodyItemCase0FiltersFiletypesList as any as S.Schema<ListProjectSymbolSourcesResponseBodyItemCase2FiltersFiletypesList>;
 
 export type ListProjectSymbolSourcesResponseBodyItemCase2FiltersPathPatternsList = Array<string>;
 export const ListProjectSymbolSourcesResponseBodyItemCase2FiltersPathPatternsList =
@@ -28810,14 +28439,8 @@ export interface ListProjectSymbolSourcesResponseBodyItemCase3Layout {
   type: ListProjectSymbolSourcesResponseBodyItemCase3LayoutType;
   casing?: ListProjectSymbolSourcesResponseBodyItemCase3LayoutCasing;
 }
-export const ListProjectSymbolSourcesResponseBodyItemCase3Layout = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ListProjectSymbolSourcesResponseBodyItemCase3LayoutType,
-    casing: S.optional(ListProjectSymbolSourcesResponseBodyItemCase3LayoutCasing),
-  }),
-).annotate({
-  identifier: "ListProjectSymbolSourcesResponseBodyItemCase3Layout",
-}) as any as S.Schema<ListProjectSymbolSourcesResponseBodyItemCase3Layout>;
+export const ListProjectSymbolSourcesResponseBodyItemCase3Layout =
+  AddProjectSymbolSourceResponseBodyCase0Layout as any as S.Schema<ListProjectSymbolSourcesResponseBodyItemCase3Layout>;
 
 export type ListProjectSymbolSourcesResponseBodyItemCase3FiltersFiletypesItem =
   | "pe"
@@ -28841,9 +28464,7 @@ export const ListProjectSymbolSourcesResponseBodyItemCase3FiltersFiletypesItem =
 export type ListProjectSymbolSourcesResponseBodyItemCase3FiltersFiletypesList =
   Array<ListProjectSymbolSourcesResponseBodyItemCase3FiltersFiletypesItem>;
 export const ListProjectSymbolSourcesResponseBodyItemCase3FiltersFiletypesList =
-  /*@__PURE__*/ S.Array(
-    ListProjectSymbolSourcesResponseBodyItemCase3FiltersFiletypesItem,
-  ) as any as S.Schema<ListProjectSymbolSourcesResponseBodyItemCase3FiltersFiletypesList>;
+  ListProjectSymbolSourcesResponseBodyItemCase0FiltersFiletypesList as any as S.Schema<ListProjectSymbolSourcesResponseBodyItemCase3FiltersFiletypesList>;
 
 export type ListProjectSymbolSourcesResponseBodyItemCase3FiltersPathPatternsList = Array<string>;
 export const ListProjectSymbolSourcesResponseBodyItemCase3FiltersPathPatternsList =
@@ -28919,21 +28540,8 @@ export interface ListProjectSymbolSourcesResponseBodyItemCase4 {
   appId: string;
   bundleId: string;
 }
-export const ListProjectSymbolSourcesResponseBodyItemCase4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ListProjectSymbolSourcesResponseBodyItemCase4Type,
-    id: S.String,
-    name: S.String,
-    appconnectIssuer: S.String,
-    appconnectKey: S.String,
-    appconnectPrivateKey: S.String,
-    appName: S.String,
-    appId: S.String,
-    bundleId: S.String,
-  }),
-).annotate({
-  identifier: "ListProjectSymbolSourcesResponseBodyItemCase4",
-}) as any as S.Schema<ListProjectSymbolSourcesResponseBodyItemCase4>;
+export const ListProjectSymbolSourcesResponseBodyItemCase4 =
+  AddProjectSymbolSourceResponseBodyCase4 as any as S.Schema<ListProjectSymbolSourcesResponseBodyItemCase4>;
 
 export type ListProjectSymbolSourcesResponseBodyItem =
   | ListProjectSymbolSourcesResponseBodyItemCase0
@@ -29889,9 +29497,8 @@ export const ResolveOrganizationShortIdRequestCollapseItem = S.String;
 export type ResolveOrganizationShortIdRequestCollapseList = Array<
   ResolveOrganizationShortIdRequestCollapseItem | (string & {})
 >;
-export const ResolveOrganizationShortIdRequestCollapseList = /*@__PURE__*/ S.Array(
-  ResolveOrganizationShortIdRequestCollapseItem,
-) as any as S.Schema<ResolveOrganizationShortIdRequestCollapseList>;
+export const ResolveOrganizationShortIdRequestCollapseList =
+  AddProjectSymbolSourceRequestFiltersFiletypesList as any as S.Schema<ResolveOrganizationShortIdRequestCollapseList>;
 
 export interface ResolveOrganizationShortIdRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -30078,16 +29685,8 @@ export interface ResolveOrganizationShortIdResponseGroupAssignedTo {
   name: string;
   email?: string;
 }
-export const ResolveOrganizationShortIdResponseGroupAssignedTo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ResolveOrganizationShortIdResponseGroupAssignedToType,
-    id: S.String,
-    name: S.String,
-    email: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ResolveOrganizationShortIdResponseGroupAssignedTo",
-}) as any as S.Schema<ResolveOrganizationShortIdResponseGroupAssignedTo>;
+export const ResolveOrganizationShortIdResponseGroupAssignedTo =
+  CreateOrganizationMonitorResponseOwner as any as S.Schema<ResolveOrganizationShortIdResponseGroupAssignedTo>;
 
 export type ResolveOrganizationShortIdResponseGroupSubscriptionDetails =
   GetOrganizationIssueResponseSubscriptionDetails;
@@ -31975,16 +31574,8 @@ export interface UpdateOrganizationDetectorResponseOwner {
   name: string;
   email?: string;
 }
-export const UpdateOrganizationDetectorResponseOwner = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: UpdateOrganizationDetectorResponseOwnerType,
-    id: S.String,
-    name: S.String,
-    email: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateOrganizationDetectorResponseOwner",
-}) as any as S.Schema<UpdateOrganizationDetectorResponseOwner>;
+export const UpdateOrganizationDetectorResponseOwner =
+  CreateOrganizationMonitorResponseOwner as any as S.Schema<UpdateOrganizationDetectorResponseOwner>;
 
 export type UpdateOrganizationDetectorResponseLatestGroupMap = {
   [key: string]: unknown | undefined;
@@ -32109,16 +31700,8 @@ export interface UpdateOrganizationDetectorsResponseBodyItemOwner {
   name: string;
   email?: string;
 }
-export const UpdateOrganizationDetectorsResponseBodyItemOwner = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: UpdateOrganizationDetectorsResponseBodyItemOwnerType,
-    id: S.String,
-    name: S.String,
-    email: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateOrganizationDetectorsResponseBodyItemOwner",
-}) as any as S.Schema<UpdateOrganizationDetectorsResponseBodyItemOwner>;
+export const UpdateOrganizationDetectorsResponseBodyItemOwner =
+  CreateOrganizationMonitorResponseOwner as any as S.Schema<UpdateOrganizationDetectorsResponseBodyItemOwner>;
 
 export type UpdateOrganizationDetectorsResponseBodyItemLatestGroupMap = {
   [key: string]: unknown | undefined;
@@ -32983,16 +32566,8 @@ export interface UpdateOrganizationIssueResponseAssignedTo {
   name: string;
   email?: string;
 }
-export const UpdateOrganizationIssueResponseAssignedTo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: UpdateOrganizationIssueResponseAssignedToType,
-    id: S.String,
-    name: S.String,
-    email: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateOrganizationIssueResponseAssignedTo",
-}) as any as S.Schema<UpdateOrganizationIssueResponseAssignedTo>;
+export const UpdateOrganizationIssueResponseAssignedTo =
+  CreateOrganizationMonitorResponseOwner as any as S.Schema<UpdateOrganizationIssueResponseAssignedTo>;
 
 export type UpdateOrganizationIssueResponseSubscriptionDetails =
   GetOrganizationIssueResponseSubscriptionDetails;
@@ -33263,16 +32838,8 @@ export interface UpdateOrganizationIssuesResponseAssignedTo {
   name: string;
   email?: string;
 }
-export const UpdateOrganizationIssuesResponseAssignedTo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: UpdateOrganizationIssuesResponseAssignedToType,
-    id: S.String,
-    name: S.String,
-    email: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateOrganizationIssuesResponseAssignedTo",
-}) as any as S.Schema<UpdateOrganizationIssuesResponseAssignedTo>;
+export const UpdateOrganizationIssuesResponseAssignedTo =
+  CreateOrganizationMonitorResponseOwner as any as S.Schema<UpdateOrganizationIssuesResponseAssignedTo>;
 
 export type UpdateOrganizationIssuesResponseMergeChildrenList = Array<string>;
 export const UpdateOrganizationIssuesResponseMergeChildrenList =
@@ -34252,19 +33819,8 @@ export interface UpdateOrganizationMonitorRequestConfig {
   /** How many successful check-ins in a row before resolving an issue. */
   recovery_threshold?: number | null;
 }
-export const UpdateOrganizationMonitorRequestConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    schedule_type: S.optional(UpdateOrganizationMonitorRequestConfigScheduleType),
-    schedule: S.Unknown,
-    checkin_margin: S.optional(S.NullOr(S.Number)),
-    max_runtime: S.optional(S.NullOr(S.Number)),
-    timezone: S.optional(UpdateOrganizationMonitorRequestConfigTimezone),
-    failure_issue_threshold: S.optional(S.NullOr(S.Number)),
-    recovery_threshold: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "UpdateOrganizationMonitorRequestConfig",
-}) as any as S.Schema<UpdateOrganizationMonitorRequestConfig>;
+export const UpdateOrganizationMonitorRequestConfig =
+  CreateOrganizationMonitorRequestConfig as any as S.Schema<UpdateOrganizationMonitorRequestConfig>;
 
 /** Status of the monitor. Disabled monitors will not accept events and will not count towards the monitor quota. * `active` * `disabled` */
 export type UpdateOrganizationMonitorRequestStatus = "active" | "disabled";
@@ -34472,16 +34028,8 @@ export interface UpdateOrganizationMonitorResponseOwner {
   name: string;
   email?: string;
 }
-export const UpdateOrganizationMonitorResponseOwner = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: UpdateOrganizationMonitorResponseOwnerType,
-    id: S.String,
-    name: S.String,
-    email: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateOrganizationMonitorResponseOwner",
-}) as any as S.Schema<UpdateOrganizationMonitorResponseOwner>;
+export const UpdateOrganizationMonitorResponseOwner =
+  CreateOrganizationMonitorResponseOwner as any as S.Schema<UpdateOrganizationMonitorResponseOwner>;
 
 export interface UpdateOrganizationMonitorResponse {
   alertRule?: UpdateOrganizationMonitorResponseAlertRule;
@@ -36620,9 +36168,8 @@ export const UpdateProjectFilterRequestSubfiltersItem = S.String;
 export type UpdateProjectFilterRequestSubfiltersList = Array<
   UpdateProjectFilterRequestSubfiltersItem | (string & {})
 >;
-export const UpdateProjectFilterRequestSubfiltersList = /*@__PURE__*/ S.Array(
-  UpdateProjectFilterRequestSubfiltersItem,
-) as any as S.Schema<UpdateProjectFilterRequestSubfiltersList>;
+export const UpdateProjectFilterRequestSubfiltersList =
+  AddProjectSymbolSourceRequestFiltersFiletypesList as any as S.Schema<UpdateProjectFilterRequestSubfiltersList>;
 
 export interface UpdateProjectFilterRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -37391,19 +36938,8 @@ export interface UpdateProjectMonitorRequestConfig {
   /** How many successful check-ins in a row before resolving an issue. */
   recovery_threshold?: number | null;
 }
-export const UpdateProjectMonitorRequestConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    schedule_type: S.optional(UpdateProjectMonitorRequestConfigScheduleType),
-    schedule: S.Unknown,
-    checkin_margin: S.optional(S.NullOr(S.Number)),
-    max_runtime: S.optional(S.NullOr(S.Number)),
-    timezone: S.optional(UpdateProjectMonitorRequestConfigTimezone),
-    failure_issue_threshold: S.optional(S.NullOr(S.Number)),
-    recovery_threshold: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "UpdateProjectMonitorRequestConfig",
-}) as any as S.Schema<UpdateProjectMonitorRequestConfig>;
+export const UpdateProjectMonitorRequestConfig =
+  CreateOrganizationMonitorRequestConfig as any as S.Schema<UpdateProjectMonitorRequestConfig>;
 
 /** Status of the monitor. Disabled monitors will not accept events and will not count towards the monitor quota. * `active` * `disabled` */
 export type UpdateProjectMonitorRequestStatus = "active" | "disabled";
@@ -37612,16 +37148,8 @@ export interface UpdateProjectMonitorResponseOwner {
   name: string;
   email?: string;
 }
-export const UpdateProjectMonitorResponseOwner = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: UpdateProjectMonitorResponseOwnerType,
-    id: S.String,
-    name: S.String,
-    email: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateProjectMonitorResponseOwner",
-}) as any as S.Schema<UpdateProjectMonitorResponseOwner>;
+export const UpdateProjectMonitorResponseOwner =
+  CreateOrganizationMonitorResponseOwner as any as S.Schema<UpdateProjectMonitorResponseOwner>;
 
 export interface UpdateProjectMonitorResponse {
   alertRule?: UpdateProjectMonitorResponseAlertRule;
@@ -37765,14 +37293,8 @@ export interface UpdateProjectSymbolSourceRequestLayout {
   /** The source's casing rules. * `lowercase` * `uppercase` * `default` */
   casing: UpdateProjectSymbolSourceRequestLayoutCasing | (string & {});
 }
-export const UpdateProjectSymbolSourceRequestLayout = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: UpdateProjectSymbolSourceRequestLayoutType,
-    casing: UpdateProjectSymbolSourceRequestLayoutCasing,
-  }),
-).annotate({
-  identifier: "UpdateProjectSymbolSourceRequestLayout",
-}) as any as S.Schema<UpdateProjectSymbolSourceRequestLayout>;
+export const UpdateProjectSymbolSourceRequestLayout =
+  AddProjectSymbolSourceRequestLayout as any as S.Schema<UpdateProjectSymbolSourceRequestLayout>;
 
 /** * `pe` * `pdb` * `portablepdb` * `mach_debug` * `mach_code` * `elf_debug` * `elf_code` * `wasm_debug` * `wasm_code` * `breakpad` * `sourcebundle` * `uuidmap` * `bcsymbolmap` * `il2cpp` * `proguard` * `dartsymbolmap` */
 export type UpdateProjectSymbolSourceRequestFiltersFiletypesItem =
@@ -37798,9 +37320,8 @@ export const UpdateProjectSymbolSourceRequestFiltersFiletypesItem = S.String;
 export type UpdateProjectSymbolSourceRequestFiltersFiletypesList = Array<
   UpdateProjectSymbolSourceRequestFiltersFiletypesItem | (string & {})
 >;
-export const UpdateProjectSymbolSourceRequestFiltersFiletypesList = /*@__PURE__*/ S.Array(
-  UpdateProjectSymbolSourceRequestFiltersFiletypesItem,
-) as any as S.Schema<UpdateProjectSymbolSourceRequestFiltersFiletypesList>;
+export const UpdateProjectSymbolSourceRequestFiltersFiletypesList =
+  AddProjectSymbolSourceRequestFiltersFiletypesList as any as S.Schema<UpdateProjectSymbolSourceRequestFiltersFiletypesList>;
 
 /** The debug and code file paths enabled for the source. */
 export type UpdateProjectSymbolSourceRequestFiltersPathPatternsList = Array<string>;
@@ -37960,14 +37481,8 @@ export interface UpdateProjectSymbolSourceResponseBodyCase0Layout {
   type: UpdateProjectSymbolSourceResponseBodyCase0LayoutType;
   casing?: UpdateProjectSymbolSourceResponseBodyCase0LayoutCasing;
 }
-export const UpdateProjectSymbolSourceResponseBodyCase0Layout = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: UpdateProjectSymbolSourceResponseBodyCase0LayoutType,
-    casing: S.optional(UpdateProjectSymbolSourceResponseBodyCase0LayoutCasing),
-  }),
-).annotate({
-  identifier: "UpdateProjectSymbolSourceResponseBodyCase0Layout",
-}) as any as S.Schema<UpdateProjectSymbolSourceResponseBodyCase0Layout>;
+export const UpdateProjectSymbolSourceResponseBodyCase0Layout =
+  AddProjectSymbolSourceResponseBodyCase0Layout as any as S.Schema<UpdateProjectSymbolSourceResponseBodyCase0Layout>;
 
 export type UpdateProjectSymbolSourceResponseBodyCase0FiltersFiletypesItem =
   | "pe"
@@ -37990,9 +37505,8 @@ export const UpdateProjectSymbolSourceResponseBodyCase0FiltersFiletypesItem = S.
 
 export type UpdateProjectSymbolSourceResponseBodyCase0FiltersFiletypesList =
   Array<UpdateProjectSymbolSourceResponseBodyCase0FiltersFiletypesItem>;
-export const UpdateProjectSymbolSourceResponseBodyCase0FiltersFiletypesList = /*@__PURE__*/ S.Array(
-  UpdateProjectSymbolSourceResponseBodyCase0FiltersFiletypesItem,
-) as any as S.Schema<UpdateProjectSymbolSourceResponseBodyCase0FiltersFiletypesList>;
+export const UpdateProjectSymbolSourceResponseBodyCase0FiltersFiletypesList =
+  AddProjectSymbolSourceRequestFiltersFiletypesList as any as S.Schema<UpdateProjectSymbolSourceResponseBodyCase0FiltersFiletypesList>;
 
 export type UpdateProjectSymbolSourceResponseBodyCase0FiltersPathPatternsList = Array<string>;
 export const UpdateProjectSymbolSourceResponseBodyCase0FiltersPathPatternsList =
@@ -38076,14 +37590,8 @@ export interface UpdateProjectSymbolSourceResponseBodyCase1Layout {
   type: UpdateProjectSymbolSourceResponseBodyCase1LayoutType;
   casing?: UpdateProjectSymbolSourceResponseBodyCase1LayoutCasing;
 }
-export const UpdateProjectSymbolSourceResponseBodyCase1Layout = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: UpdateProjectSymbolSourceResponseBodyCase1LayoutType,
-    casing: S.optional(UpdateProjectSymbolSourceResponseBodyCase1LayoutCasing),
-  }),
-).annotate({
-  identifier: "UpdateProjectSymbolSourceResponseBodyCase1Layout",
-}) as any as S.Schema<UpdateProjectSymbolSourceResponseBodyCase1Layout>;
+export const UpdateProjectSymbolSourceResponseBodyCase1Layout =
+  AddProjectSymbolSourceResponseBodyCase0Layout as any as S.Schema<UpdateProjectSymbolSourceResponseBodyCase1Layout>;
 
 export type UpdateProjectSymbolSourceResponseBodyCase1FiltersFiletypesItem =
   | "pe"
@@ -38106,9 +37614,8 @@ export const UpdateProjectSymbolSourceResponseBodyCase1FiltersFiletypesItem = S.
 
 export type UpdateProjectSymbolSourceResponseBodyCase1FiltersFiletypesList =
   Array<UpdateProjectSymbolSourceResponseBodyCase1FiltersFiletypesItem>;
-export const UpdateProjectSymbolSourceResponseBodyCase1FiltersFiletypesList = /*@__PURE__*/ S.Array(
-  UpdateProjectSymbolSourceResponseBodyCase1FiltersFiletypesItem,
-) as any as S.Schema<UpdateProjectSymbolSourceResponseBodyCase1FiltersFiletypesList>;
+export const UpdateProjectSymbolSourceResponseBodyCase1FiltersFiletypesList =
+  AddProjectSymbolSourceRequestFiltersFiletypesList as any as S.Schema<UpdateProjectSymbolSourceResponseBodyCase1FiltersFiletypesList>;
 
 export type UpdateProjectSymbolSourceResponseBodyCase1FiltersPathPatternsList = Array<string>;
 export const UpdateProjectSymbolSourceResponseBodyCase1FiltersPathPatternsList =
@@ -38196,14 +37703,8 @@ export interface UpdateProjectSymbolSourceResponseBodyCase2Layout {
   type: UpdateProjectSymbolSourceResponseBodyCase2LayoutType;
   casing?: UpdateProjectSymbolSourceResponseBodyCase2LayoutCasing;
 }
-export const UpdateProjectSymbolSourceResponseBodyCase2Layout = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: UpdateProjectSymbolSourceResponseBodyCase2LayoutType,
-    casing: S.optional(UpdateProjectSymbolSourceResponseBodyCase2LayoutCasing),
-  }),
-).annotate({
-  identifier: "UpdateProjectSymbolSourceResponseBodyCase2Layout",
-}) as any as S.Schema<UpdateProjectSymbolSourceResponseBodyCase2Layout>;
+export const UpdateProjectSymbolSourceResponseBodyCase2Layout =
+  AddProjectSymbolSourceResponseBodyCase0Layout as any as S.Schema<UpdateProjectSymbolSourceResponseBodyCase2Layout>;
 
 export type UpdateProjectSymbolSourceResponseBodyCase2FiltersFiletypesItem =
   | "pe"
@@ -38226,9 +37727,8 @@ export const UpdateProjectSymbolSourceResponseBodyCase2FiltersFiletypesItem = S.
 
 export type UpdateProjectSymbolSourceResponseBodyCase2FiltersFiletypesList =
   Array<UpdateProjectSymbolSourceResponseBodyCase2FiltersFiletypesItem>;
-export const UpdateProjectSymbolSourceResponseBodyCase2FiltersFiletypesList = /*@__PURE__*/ S.Array(
-  UpdateProjectSymbolSourceResponseBodyCase2FiltersFiletypesItem,
-) as any as S.Schema<UpdateProjectSymbolSourceResponseBodyCase2FiltersFiletypesList>;
+export const UpdateProjectSymbolSourceResponseBodyCase2FiltersFiletypesList =
+  AddProjectSymbolSourceRequestFiltersFiletypesList as any as S.Schema<UpdateProjectSymbolSourceResponseBodyCase2FiltersFiletypesList>;
 
 export type UpdateProjectSymbolSourceResponseBodyCase2FiltersPathPatternsList = Array<string>;
 export const UpdateProjectSymbolSourceResponseBodyCase2FiltersPathPatternsList =
@@ -38314,14 +37814,8 @@ export interface UpdateProjectSymbolSourceResponseBodyCase3Layout {
   type: UpdateProjectSymbolSourceResponseBodyCase3LayoutType;
   casing?: UpdateProjectSymbolSourceResponseBodyCase3LayoutCasing;
 }
-export const UpdateProjectSymbolSourceResponseBodyCase3Layout = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: UpdateProjectSymbolSourceResponseBodyCase3LayoutType,
-    casing: S.optional(UpdateProjectSymbolSourceResponseBodyCase3LayoutCasing),
-  }),
-).annotate({
-  identifier: "UpdateProjectSymbolSourceResponseBodyCase3Layout",
-}) as any as S.Schema<UpdateProjectSymbolSourceResponseBodyCase3Layout>;
+export const UpdateProjectSymbolSourceResponseBodyCase3Layout =
+  AddProjectSymbolSourceResponseBodyCase0Layout as any as S.Schema<UpdateProjectSymbolSourceResponseBodyCase3Layout>;
 
 export type UpdateProjectSymbolSourceResponseBodyCase3FiltersFiletypesItem =
   | "pe"
@@ -38344,9 +37838,8 @@ export const UpdateProjectSymbolSourceResponseBodyCase3FiltersFiletypesItem = S.
 
 export type UpdateProjectSymbolSourceResponseBodyCase3FiltersFiletypesList =
   Array<UpdateProjectSymbolSourceResponseBodyCase3FiltersFiletypesItem>;
-export const UpdateProjectSymbolSourceResponseBodyCase3FiltersFiletypesList = /*@__PURE__*/ S.Array(
-  UpdateProjectSymbolSourceResponseBodyCase3FiltersFiletypesItem,
-) as any as S.Schema<UpdateProjectSymbolSourceResponseBodyCase3FiltersFiletypesList>;
+export const UpdateProjectSymbolSourceResponseBodyCase3FiltersFiletypesList =
+  AddProjectSymbolSourceRequestFiltersFiletypesList as any as S.Schema<UpdateProjectSymbolSourceResponseBodyCase3FiltersFiletypesList>;
 
 export type UpdateProjectSymbolSourceResponseBodyCase3FiltersPathPatternsList = Array<string>;
 export const UpdateProjectSymbolSourceResponseBodyCase3FiltersPathPatternsList =
@@ -38422,21 +37915,8 @@ export interface UpdateProjectSymbolSourceResponseBodyCase4 {
   appId: string;
   bundleId: string;
 }
-export const UpdateProjectSymbolSourceResponseBodyCase4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: UpdateProjectSymbolSourceResponseBodyCase4Type,
-    id: S.String,
-    name: S.String,
-    appconnectIssuer: S.String,
-    appconnectKey: S.String,
-    appconnectPrivateKey: S.String,
-    appName: S.String,
-    appId: S.String,
-    bundleId: S.String,
-  }),
-).annotate({
-  identifier: "UpdateProjectSymbolSourceResponseBodyCase4",
-}) as any as S.Schema<UpdateProjectSymbolSourceResponseBodyCase4>;
+export const UpdateProjectSymbolSourceResponseBodyCase4 =
+  AddProjectSymbolSourceResponseBodyCase4 as any as S.Schema<UpdateProjectSymbolSourceResponseBodyCase4>;
 
 export type UpdateProjectSymbolSourceResponseBody =
   | UpdateProjectSymbolSourceResponseBodyCase0

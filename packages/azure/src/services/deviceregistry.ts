@@ -2234,12 +2234,7 @@ export interface OutboundIdentity {
   /** The resource ID of the user-assigned managed identity. Required when type is UserAssigned. */
   userAssignedIdentity?: string;
 }
-export const OutboundIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: OutboundIdentityType,
-    userAssignedIdentity: S.optional(S.String),
-  }),
-).annotate({ identifier: "OutboundIdentity" }) as any as S.Schema<OutboundIdentity>;
+export const OutboundIdentity = InboundCallerIdentity as any as S.Schema<OutboundIdentity>;
 
 /** The namespace properties model. */
 export interface NamespaceProperties {
@@ -2437,17 +2432,12 @@ export interface EventDestination {
   /** Target destination. */
   target: EventDestinationTarget | (string & {});
 }
-export const EventDestination = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    target: EventDestinationTarget,
-  }),
-).annotate({ identifier: "EventDestination" }) as any as S.Schema<EventDestination>;
+export const EventDestination = DatasetDestination as any as S.Schema<EventDestination>;
 
 /** Default destinations for an event. */
 export type NamespaceAssetPropertiesDefaultEventsDestinationsList = Array<EventDestination>;
-export const NamespaceAssetPropertiesDefaultEventsDestinationsList = /*@__PURE__*/ S.Array(
-  EventDestination,
-) as any as S.Schema<NamespaceAssetPropertiesDefaultEventsDestinationsList>;
+export const NamespaceAssetPropertiesDefaultEventsDestinationsList =
+  NamespaceAssetPropertiesDefaultDatasetsDestinationsList as any as S.Schema<NamespaceAssetPropertiesDefaultEventsDestinationsList>;
 
 /** The set of supported stream destinations for an asset. */
 export type StreamDestinationTarget = "Mqtt" | "Storage";
@@ -2458,17 +2448,12 @@ export interface StreamDestination {
   /** Target destination. */
   target: StreamDestinationTarget | (string & {});
 }
-export const StreamDestination = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    target: StreamDestinationTarget,
-  }),
-).annotate({ identifier: "StreamDestination" }) as any as S.Schema<StreamDestination>;
+export const StreamDestination = DatasetDestination as any as S.Schema<StreamDestination>;
 
 /** Default destinations for a stream. */
 export type NamespaceAssetPropertiesDefaultStreamsDestinationsList = Array<StreamDestination>;
-export const NamespaceAssetPropertiesDefaultStreamsDestinationsList = /*@__PURE__*/ S.Array(
-  StreamDestination,
-) as any as S.Schema<NamespaceAssetPropertiesDefaultStreamsDestinationsList>;
+export const NamespaceAssetPropertiesDefaultStreamsDestinationsList =
+  NamespaceAssetPropertiesDefaultDatasetsDestinationsList as any as S.Schema<NamespaceAssetPropertiesDefaultStreamsDestinationsList>;
 
 /** Destinations for a dataset. */
 export type NamespaceDatasetDestinationsList = Array<DatasetDestination>;
@@ -3438,17 +3423,13 @@ export const NamespaceDiscoveredAssetPropertiesDefaultDatasetsDestinationsList =
 export type NamespaceDiscoveredAssetPropertiesDefaultEventsDestinationsList =
   Array<EventDestination>;
 export const NamespaceDiscoveredAssetPropertiesDefaultEventsDestinationsList =
-  /*@__PURE__*/ S.Array(
-    EventDestination,
-  ) as any as S.Schema<NamespaceDiscoveredAssetPropertiesDefaultEventsDestinationsList>;
+  NamespaceDiscoveredAssetPropertiesDefaultDatasetsDestinationsList as any as S.Schema<NamespaceDiscoveredAssetPropertiesDefaultEventsDestinationsList>;
 
 /** Default destinations for a stream. */
 export type NamespaceDiscoveredAssetPropertiesDefaultStreamsDestinationsList =
   Array<StreamDestination>;
 export const NamespaceDiscoveredAssetPropertiesDefaultStreamsDestinationsList =
-  /*@__PURE__*/ S.Array(
-    StreamDestination,
-  ) as any as S.Schema<NamespaceDiscoveredAssetPropertiesDefaultStreamsDestinationsList>;
+  NamespaceDiscoveredAssetPropertiesDefaultDatasetsDestinationsList as any as S.Schema<NamespaceDiscoveredAssetPropertiesDefaultStreamsDestinationsList>;
 
 /** Destinations for a dataset. */
 export type NamespaceDiscoveredDatasetDestinationsList = Array<DatasetDestination>;

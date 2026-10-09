@@ -316,9 +316,8 @@ export const GenerateAccountsReportsDimensionsEnum = S.String;
 export type GenerateAccountsReportsDimensionsEnumList = Array<
   GenerateAccountsReportsDimensionsEnum | (string & {})
 >;
-export const GenerateAccountsReportsDimensionsEnumList = /*@__PURE__*/ S.Array(
-  GenerateAccountsReportsDimensionsEnum,
-) as any as S.Schema<GenerateAccountsReportsDimensionsEnumList>;
+export const GenerateAccountsReportsDimensionsEnumList =
+  GenerateAccountsReportsMetricsEnumList as any as S.Schema<GenerateAccountsReportsDimensionsEnumList>;
 
 export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
@@ -620,9 +619,8 @@ export const GenerateCsvAccountsReportsMetricsEnum = S.String;
 export type GenerateCsvAccountsReportsMetricsEnumList = Array<
   GenerateCsvAccountsReportsMetricsEnum | (string & {})
 >;
-export const GenerateCsvAccountsReportsMetricsEnumList = /*@__PURE__*/ S.Array(
-  GenerateCsvAccountsReportsMetricsEnum,
-) as any as S.Schema<GenerateCsvAccountsReportsMetricsEnumList>;
+export const GenerateCsvAccountsReportsMetricsEnumList =
+  GenerateAccountsReportsMetricsEnumList as any as S.Schema<GenerateCsvAccountsReportsMetricsEnumList>;
 
 export type GenerateCsvAccountsReportsDimensionsEnum =
   | "DIMENSION_UNSPECIFIED"
@@ -687,9 +685,8 @@ export const GenerateCsvAccountsReportsDimensionsEnum = S.String;
 export type GenerateCsvAccountsReportsDimensionsEnumList = Array<
   GenerateCsvAccountsReportsDimensionsEnum | (string & {})
 >;
-export const GenerateCsvAccountsReportsDimensionsEnumList = /*@__PURE__*/ S.Array(
-  GenerateCsvAccountsReportsDimensionsEnum,
-) as any as S.Schema<GenerateCsvAccountsReportsDimensionsEnumList>;
+export const GenerateCsvAccountsReportsDimensionsEnumList =
+  GenerateAccountsReportsMetricsEnumList as any as S.Schema<GenerateCsvAccountsReportsDimensionsEnumList>;
 
 export type GenerateCsvAccountsReportsReportingTimeZoneEnum =
   | "REPORTING_TIME_ZONE_UNSPECIFIED"

@@ -1776,7 +1776,7 @@ export const ListSupportedPhoneNumberCountriesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListSupportedPhoneNumberCountriesRequest",
 }) as any as S.Schema<ListSupportedPhoneNumberCountriesRequest>;
 export type PhoneNumberTypeList = PhoneNumberType[];
-export const PhoneNumberTypeList = /*@__PURE__*/ S.Array(PhoneNumberType);
+export const PhoneNumberTypeList = LicenseList as any as S.Schema<PhoneNumberTypeList>;
 export interface PhoneNumberCountry {
   CountryCode?: string;
   SupportedPhoneNumberTypes?: PhoneNumberType[];

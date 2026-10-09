@@ -165,9 +165,8 @@ export const AcceleratorManufacturer = S.String;
 export type VMAttributesAcceleratorManufacturersList = Array<
   AcceleratorManufacturer | (string & {})
 >;
-export const VMAttributesAcceleratorManufacturersList = /*@__PURE__*/ S.Array(
-  AcceleratorManufacturer,
-) as any as S.Schema<VMAttributesAcceleratorManufacturersList>;
+export const VMAttributesAcceleratorManufacturersList =
+  VMAttributesLocalStorageDiskTypesList as any as S.Schema<VMAttributesAcceleratorManufacturersList>;
 
 /** Accelerator types supported by Azure VMs. */
 export type AcceleratorType = "GPU" | "FPGA";
@@ -175,9 +174,8 @@ export const AcceleratorType = S.String;
 
 /** The accelerator types specified as a list. acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute. If acceleratorSupport is "Excluded", this VMAttribute can not be used. */
 export type VMAttributesAcceleratorTypesList = Array<AcceleratorType | (string & {})>;
-export const VMAttributesAcceleratorTypesList = /*@__PURE__*/ S.Array(
-  AcceleratorType,
-) as any as S.Schema<VMAttributesAcceleratorTypesList>;
+export const VMAttributesAcceleratorTypesList =
+  VMAttributesLocalStorageDiskTypesList as any as S.Schema<VMAttributesAcceleratorTypesList>;
 
 /** VMCategories defined for Azure VMs. See: https://learn.microsoft.com/en-us/azure/virtual-machines/sizes/overview?tabs=breakdownseries%2Cgeneralsizelist%2Ccomputesizelist%2Cmemorysizelist%2Cstoragesizelist%2Cgpusizelist%2Cfpgasizelist%2Chpcsizelist#general-purpose */
 export type VMCategory =
@@ -192,9 +190,8 @@ export const VMCategory = S.String;
 
 /** The VM category specified as a list. Optional parameter. */
 export type VMAttributesVmCategoriesList = Array<VMCategory | (string & {})>;
-export const VMAttributesVmCategoriesList = /*@__PURE__*/ S.Array(
-  VMCategory,
-) as any as S.Schema<VMAttributesVmCategoriesList>;
+export const VMAttributesVmCategoriesList =
+  VMAttributesLocalStorageDiskTypesList as any as S.Schema<VMAttributesVmCategoriesList>;
 
 /** Architecture types supported by Azure VMs. */
 export type ArchitectureType = "ARM64" | "X64";
@@ -202,9 +199,8 @@ export const ArchitectureType = S.String;
 
 /** The VM architecture types specified as a list. Optional parameter. */
 export type VMAttributesArchitectureTypesList = Array<ArchitectureType | (string & {})>;
-export const VMAttributesArchitectureTypesList = /*@__PURE__*/ S.Array(
-  ArchitectureType,
-) as any as S.Schema<VMAttributesArchitectureTypesList>;
+export const VMAttributesArchitectureTypesList =
+  VMAttributesLocalStorageDiskTypesList as any as S.Schema<VMAttributesArchitectureTypesList>;
 
 /** Cpu Manufacturers supported by Azure VMs. */
 export type CpuManufacturer = "Intel" | "AMD" | "Microsoft" | "Ampere";
@@ -212,9 +208,8 @@ export const CpuManufacturer = S.String;
 
 /** The VM CPU manufacturers specified as a list. Optional parameter. */
 export type VMAttributesCpuManufacturersList = Array<CpuManufacturer | (string & {})>;
-export const VMAttributesCpuManufacturersList = /*@__PURE__*/ S.Array(
-  CpuManufacturer,
-) as any as S.Schema<VMAttributesCpuManufacturersList>;
+export const VMAttributesCpuManufacturersList =
+  VMAttributesLocalStorageDiskTypesList as any as S.Schema<VMAttributesCpuManufacturersList>;
 
 /** Specifies which VMSizes should be excluded while building Fleet. Optional parameter. */
 export type VMAttributesExcludedVMSizesList = Array<string>;
@@ -500,14 +495,8 @@ export interface LinuxVMGuestPatchAutomaticByPlatformSettings {
   /** Enables customer to schedule patching without accidental upgrades */
   bypassPlatformSafetyChecksOnUserSchedule?: boolean;
 }
-export const LinuxVMGuestPatchAutomaticByPlatformSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rebootSetting: S.optional(LinuxVMGuestPatchAutomaticByPlatformRebootSetting),
-    bypassPlatformSafetyChecksOnUserSchedule: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "LinuxVMGuestPatchAutomaticByPlatformSettings",
-}) as any as S.Schema<LinuxVMGuestPatchAutomaticByPlatformSettings>;
+export const LinuxVMGuestPatchAutomaticByPlatformSettings =
+  WindowsVMGuestPatchAutomaticByPlatformSettings as any as S.Schema<LinuxVMGuestPatchAutomaticByPlatformSettings>;
 
 /** Specifies settings related to VM Guest Patching on Linux. */
 export interface LinuxPatchSettings {

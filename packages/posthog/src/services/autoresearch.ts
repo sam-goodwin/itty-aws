@@ -409,13 +409,8 @@ export const AutoresearchValidateCreateRequestTargetDefinitionCase0Type = S.Stri
 export interface AutoresearchValidateCreateRequestTargetDefinitionCase0 {
   type: AutoresearchValidateCreateRequestTargetDefinitionCase0Type;
 }
-export const AutoresearchValidateCreateRequestTargetDefinitionCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: AutoresearchValidateCreateRequestTargetDefinitionCase0Type,
-  }),
-).annotate({
-  identifier: "AutoresearchValidateCreateRequestTargetDefinitionCase0",
-}) as any as S.Schema<AutoresearchValidateCreateRequestTargetDefinitionCase0>;
+export const AutoresearchValidateCreateRequestTargetDefinitionCase0 =
+  AutoresearchPipelineTargetDefinitionCase0 as any as S.Schema<AutoresearchValidateCreateRequestTargetDefinitionCase0>;
 
 export type AutoresearchValidateCreateRequestTargetDefinitionCase1Type = "action";
 export const AutoresearchValidateCreateRequestTargetDefinitionCase1Type = S.String;
@@ -426,14 +421,8 @@ export interface AutoresearchValidateCreateRequestTargetDefinitionCase1 {
   /** ID of the action to predict. */
   action_id: number;
 }
-export const AutoresearchValidateCreateRequestTargetDefinitionCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: AutoresearchValidateCreateRequestTargetDefinitionCase1Type,
-    action_id: S.Number,
-  }),
-).annotate({
-  identifier: "AutoresearchValidateCreateRequestTargetDefinitionCase1",
-}) as any as S.Schema<AutoresearchValidateCreateRequestTargetDefinitionCase1>;
+export const AutoresearchValidateCreateRequestTargetDefinitionCase1 =
+  AutoresearchPipelineTargetDefinitionCase1 as any as S.Schema<AutoresearchValidateCreateRequestTargetDefinitionCase1>;
 
 /** Optional target definition. Pass {"type": "action", "action_id": N} to predict a PostHog action (multi-step / property / autocapture matcher) instead of a single event. */
 export type AutoresearchValidateCreateRequestTargetDefinition =
@@ -627,13 +616,8 @@ export const CreateAutoresearchRequestTargetDefinitionCase0Type = S.String;
 export interface CreateAutoresearchRequestTargetDefinitionCase0 {
   type: CreateAutoresearchRequestTargetDefinitionCase0Type;
 }
-export const CreateAutoresearchRequestTargetDefinitionCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: CreateAutoresearchRequestTargetDefinitionCase0Type,
-  }),
-).annotate({
-  identifier: "CreateAutoresearchRequestTargetDefinitionCase0",
-}) as any as S.Schema<CreateAutoresearchRequestTargetDefinitionCase0>;
+export const CreateAutoresearchRequestTargetDefinitionCase0 =
+  AutoresearchPipelineTargetDefinitionCase0 as any as S.Schema<CreateAutoresearchRequestTargetDefinitionCase0>;
 
 export type CreateAutoresearchRequestTargetDefinitionCase1Type = "action";
 export const CreateAutoresearchRequestTargetDefinitionCase1Type = S.String;
@@ -644,14 +628,8 @@ export interface CreateAutoresearchRequestTargetDefinitionCase1 {
   /** ID of the action to predict. */
   action_id: number;
 }
-export const CreateAutoresearchRequestTargetDefinitionCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: CreateAutoresearchRequestTargetDefinitionCase1Type,
-    action_id: S.Number,
-  }),
-).annotate({
-  identifier: "CreateAutoresearchRequestTargetDefinitionCase1",
-}) as any as S.Schema<CreateAutoresearchRequestTargetDefinitionCase1>;
+export const CreateAutoresearchRequestTargetDefinitionCase1 =
+  AutoresearchPipelineTargetDefinitionCase1 as any as S.Schema<CreateAutoresearchRequestTargetDefinitionCase1>;
 
 /** Omit (or pass {"type": "event"}) to predict target_event; pass {"type": "action", "action_id": N} to predict a PostHog action. No other shapes are accepted. */
 export type CreateAutoresearchRequestTargetDefinition =
@@ -2283,13 +2261,8 @@ export const UpdateAutoresearchRequestTargetDefinitionCase0Type = S.String;
 export interface UpdateAutoresearchRequestTargetDefinitionCase0 {
   type: UpdateAutoresearchRequestTargetDefinitionCase0Type;
 }
-export const UpdateAutoresearchRequestTargetDefinitionCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: UpdateAutoresearchRequestTargetDefinitionCase0Type,
-  }),
-).annotate({
-  identifier: "UpdateAutoresearchRequestTargetDefinitionCase0",
-}) as any as S.Schema<UpdateAutoresearchRequestTargetDefinitionCase0>;
+export const UpdateAutoresearchRequestTargetDefinitionCase0 =
+  AutoresearchPipelineTargetDefinitionCase0 as any as S.Schema<UpdateAutoresearchRequestTargetDefinitionCase0>;
 
 export type UpdateAutoresearchRequestTargetDefinitionCase1Type = "action";
 export const UpdateAutoresearchRequestTargetDefinitionCase1Type = S.String;
@@ -2300,14 +2273,8 @@ export interface UpdateAutoresearchRequestTargetDefinitionCase1 {
   /** ID of the action to predict. */
   action_id: number;
 }
-export const UpdateAutoresearchRequestTargetDefinitionCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: UpdateAutoresearchRequestTargetDefinitionCase1Type,
-    action_id: S.Number,
-  }),
-).annotate({
-  identifier: "UpdateAutoresearchRequestTargetDefinitionCase1",
-}) as any as S.Schema<UpdateAutoresearchRequestTargetDefinitionCase1>;
+export const UpdateAutoresearchRequestTargetDefinitionCase1 =
+  AutoresearchPipelineTargetDefinitionCase1 as any as S.Schema<UpdateAutoresearchRequestTargetDefinitionCase1>;
 
 /** Omit (or pass {"type": "event"}) to predict target_event; pass {"type": "action", "action_id": N} to predict a PostHog action. No other shapes are accepted. */
 export type UpdateAutoresearchRequestTargetDefinition =
@@ -2379,13 +2346,8 @@ export const AutoresearchPipelineCreateTargetDefinitionCase0Type = S.String;
 export interface AutoresearchPipelineCreateTargetDefinitionCase0 {
   type: AutoresearchPipelineCreateTargetDefinitionCase0Type;
 }
-export const AutoresearchPipelineCreateTargetDefinitionCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: AutoresearchPipelineCreateTargetDefinitionCase0Type,
-  }),
-).annotate({
-  identifier: "AutoresearchPipelineCreateTargetDefinitionCase0",
-}) as any as S.Schema<AutoresearchPipelineCreateTargetDefinitionCase0>;
+export const AutoresearchPipelineCreateTargetDefinitionCase0 =
+  AutoresearchPipelineTargetDefinitionCase0 as any as S.Schema<AutoresearchPipelineCreateTargetDefinitionCase0>;
 
 export type AutoresearchPipelineCreateTargetDefinitionCase1Type = "action";
 export const AutoresearchPipelineCreateTargetDefinitionCase1Type = S.String;
@@ -2396,14 +2358,8 @@ export interface AutoresearchPipelineCreateTargetDefinitionCase1 {
   /** ID of the action to predict. */
   action_id: number;
 }
-export const AutoresearchPipelineCreateTargetDefinitionCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: AutoresearchPipelineCreateTargetDefinitionCase1Type,
-    action_id: S.Number,
-  }),
-).annotate({
-  identifier: "AutoresearchPipelineCreateTargetDefinitionCase1",
-}) as any as S.Schema<AutoresearchPipelineCreateTargetDefinitionCase1>;
+export const AutoresearchPipelineCreateTargetDefinitionCase1 =
+  AutoresearchPipelineTargetDefinitionCase1 as any as S.Schema<AutoresearchPipelineCreateTargetDefinitionCase1>;
 
 /** Omit (or pass {"type": "event"}) to predict target_event; pass {"type": "action", "action_id": N} to predict a PostHog action. No other shapes are accepted. */
 export type AutoresearchPipelineCreateTargetDefinition =
@@ -2467,13 +2423,8 @@ export const UpdateAutoresearchPartialRequestTargetDefinitionCase0Type = S.Strin
 export interface UpdateAutoresearchPartialRequestTargetDefinitionCase0 {
   type: UpdateAutoresearchPartialRequestTargetDefinitionCase0Type;
 }
-export const UpdateAutoresearchPartialRequestTargetDefinitionCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: UpdateAutoresearchPartialRequestTargetDefinitionCase0Type,
-  }),
-).annotate({
-  identifier: "UpdateAutoresearchPartialRequestTargetDefinitionCase0",
-}) as any as S.Schema<UpdateAutoresearchPartialRequestTargetDefinitionCase0>;
+export const UpdateAutoresearchPartialRequestTargetDefinitionCase0 =
+  AutoresearchPipelineTargetDefinitionCase0 as any as S.Schema<UpdateAutoresearchPartialRequestTargetDefinitionCase0>;
 
 export type UpdateAutoresearchPartialRequestTargetDefinitionCase1Type = "action";
 export const UpdateAutoresearchPartialRequestTargetDefinitionCase1Type = S.String;
@@ -2484,14 +2435,8 @@ export interface UpdateAutoresearchPartialRequestTargetDefinitionCase1 {
   /** ID of the action to predict. */
   action_id: number;
 }
-export const UpdateAutoresearchPartialRequestTargetDefinitionCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: UpdateAutoresearchPartialRequestTargetDefinitionCase1Type,
-    action_id: S.Number,
-  }),
-).annotate({
-  identifier: "UpdateAutoresearchPartialRequestTargetDefinitionCase1",
-}) as any as S.Schema<UpdateAutoresearchPartialRequestTargetDefinitionCase1>;
+export const UpdateAutoresearchPartialRequestTargetDefinitionCase1 =
+  AutoresearchPipelineTargetDefinitionCase1 as any as S.Schema<UpdateAutoresearchPartialRequestTargetDefinitionCase1>;
 
 /** Omit (or pass {"type": "event"}) to predict target_event; pass {"type": "action", "action_id": N} to predict a PostHog action. No other shapes are accepted. */
 export type UpdateAutoresearchPartialRequestTargetDefinition =

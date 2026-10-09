@@ -776,7 +776,7 @@ export type Event =
 export const Event = S.String;
 
 export type Events = Event[];
-export const Events = /*@__PURE__*/ S.Array(Event);
+export const Events = BlockedCategories as any as S.Schema<Events>;
 export type EventFilter =
   | { all: Record<string, never>; include?: never }
   | { all?: never; include: Event[] };

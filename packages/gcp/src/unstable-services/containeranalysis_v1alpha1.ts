@@ -2926,12 +2926,7 @@ export interface WorkspacePolicyResult {
   /** Output only. State of the scan. */
   scanState?: WorkspacePolicyResultScanStateEnum | (string & {});
 }
-export const WorkspacePolicyResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    verdict: S.optional(WorkspacePolicyResultVerdictEnum),
-    scanState: S.optional(WorkspacePolicyResultScanStateEnum),
-  }),
-).annotate({ identifier: "WorkspacePolicyResult" }) as any as S.Schema<WorkspacePolicyResult>;
+export const WorkspacePolicyResult = MalwareScanResult as any as S.Schema<WorkspacePolicyResult>;
 
 /** Per scanner verdict details. */
 export interface PerScannerVerdict {

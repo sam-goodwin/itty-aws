@@ -1994,19 +1994,7 @@ export interface Scte35TimeSignalApos {
   NoRegionalBlackoutFlag?: Scte35AposNoRegionalBlackoutBehavior;
   WebDeliveryAllowedFlag?: Scte35AposWebDeliveryAllowedBehavior;
 }
-export const Scte35TimeSignalApos = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AdAvailOffset: S.optional(S.Number),
-    NoRegionalBlackoutFlag: S.optional(Scte35AposNoRegionalBlackoutBehavior),
-    WebDeliveryAllowedFlag: S.optional(Scte35AposWebDeliveryAllowedBehavior),
-  }).pipe(
-    S.encodeKeys({
-      AdAvailOffset: "adAvailOffset",
-      NoRegionalBlackoutFlag: "noRegionalBlackoutFlag",
-      WebDeliveryAllowedFlag: "webDeliveryAllowedFlag",
-    }),
-  ),
-).annotate({ identifier: "Scte35TimeSignalApos" }) as any as S.Schema<Scte35TimeSignalApos>;
+export const Scte35TimeSignalApos = Scte35SpliceInsert as any as S.Schema<Scte35TimeSignalApos>;
 export interface AvailSettings {
   Esam?: Esam;
   Scte35SpliceInsert?: Scte35SpliceInsert;
@@ -2243,51 +2231,8 @@ export interface DvbSubDestinationSettings {
   YPosition?: number;
   SubtitleRows?: DvbSubDestinationSubtitleRows;
 }
-export const DvbSubDestinationSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Alignment: S.optional(DvbSubDestinationAlignment),
-    BackgroundColor: S.optional(DvbSubDestinationBackgroundColor),
-    BackgroundOpacity: S.optional(S.Number),
-    Font: S.optional(InputLocation),
-    FontColor: S.optional(DvbSubDestinationFontColor),
-    FontOpacity: S.optional(S.Number),
-    FontResolution: S.optional(S.Number),
-    FontSize: S.optional(S.String),
-    OutlineColor: S.optional(DvbSubDestinationOutlineColor),
-    OutlineSize: S.optional(S.Number),
-    ShadowColor: S.optional(DvbSubDestinationShadowColor),
-    ShadowOpacity: S.optional(S.Number),
-    ShadowXOffset: S.optional(S.Number),
-    ShadowYOffset: S.optional(S.Number),
-    TeletextGridControl: S.optional(DvbSubDestinationTeletextGridControl),
-    XPosition: S.optional(S.Number),
-    YPosition: S.optional(S.Number),
-    SubtitleRows: S.optional(DvbSubDestinationSubtitleRows),
-  }).pipe(
-    S.encodeKeys({
-      Alignment: "alignment",
-      BackgroundColor: "backgroundColor",
-      BackgroundOpacity: "backgroundOpacity",
-      Font: "font",
-      FontColor: "fontColor",
-      FontOpacity: "fontOpacity",
-      FontResolution: "fontResolution",
-      FontSize: "fontSize",
-      OutlineColor: "outlineColor",
-      OutlineSize: "outlineSize",
-      ShadowColor: "shadowColor",
-      ShadowOpacity: "shadowOpacity",
-      ShadowXOffset: "shadowXOffset",
-      ShadowYOffset: "shadowYOffset",
-      TeletextGridControl: "teletextGridControl",
-      XPosition: "xPosition",
-      YPosition: "yPosition",
-      SubtitleRows: "subtitleRows",
-    }),
-  ),
-).annotate({
-  identifier: "DvbSubDestinationSettings",
-}) as any as S.Schema<DvbSubDestinationSettings>;
+export const DvbSubDestinationSettings =
+  BurnInDestinationSettings as any as S.Schema<DvbSubDestinationSettings>;
 export type __stringMax1000 = string;
 export type EbuTtDFillLineGapControl = "DISABLED" | "ENABLED" | (string & {});
 export const EbuTtDFillLineGapControl = S.String;
@@ -2484,7 +2429,8 @@ export type DashRoleCaption =
 export const DashRoleCaption = S.String;
 
 export type __listOfDashRoleCaption = DashRoleCaption[];
-export const __listOfDashRoleCaption = /*@__PURE__*/ S.Array(DashRoleCaption);
+export const __listOfDashRoleCaption =
+  __listOfDashRoleAudio as any as S.Schema<__listOfDashRoleCaption>;
 export interface CaptionDescription {
   Accessibility?: AccessibilityType;
   CaptionSelectorName?: string;
@@ -2803,7 +2749,7 @@ export type HlsAdMarkers = "ADOBE" | "ELEMENTAL" | "ELEMENTAL_SCTE35" | (string 
 export const HlsAdMarkers = S.String;
 
 export type __listOfHlsAdMarkers = HlsAdMarkers[];
-export const __listOfHlsAdMarkers = /*@__PURE__*/ S.Array(HlsAdMarkers);
+export const __listOfHlsAdMarkers = __listOfDashRoleAudio as any as S.Schema<__listOfHlsAdMarkers>;
 export type __integerMin1Max4 = number;
 export type __stringMin3Max3 = string;
 export interface CaptionLanguageMapping {
@@ -3512,7 +3458,8 @@ export type RtmpAdMarkers = "ON_CUE_POINT_SCTE35" | (string & {});
 export const RtmpAdMarkers = S.String;
 
 export type __listOfRtmpAdMarkers = RtmpAdMarkers[];
-export const __listOfRtmpAdMarkers = /*@__PURE__*/ S.Array(RtmpAdMarkers);
+export const __listOfRtmpAdMarkers =
+  __listOfDashRoleAudio as any as S.Schema<__listOfRtmpAdMarkers>;
 export type AuthenticationScheme = "AKAMAI" | "COMMON" | (string & {});
 export const AuthenticationScheme = S.String;
 
@@ -4294,7 +4241,7 @@ export type OutputUsage =
 export const OutputUsage = S.String;
 
 export type __listOfOutputUsage = OutputUsage[];
-export const __listOfOutputUsage = /*@__PURE__*/ S.Array(OutputUsage);
+export const __listOfOutputUsage = __listOfDashRoleAudio as any as S.Schema<__listOfOutputUsage>;
 export interface MediaPackageV2DestinationSettings {
   AudioGroupId?: string;
   AudioRenditionSets?: string;
@@ -6106,11 +6053,7 @@ export interface Scte27SourceSettings {
   OcrLanguage?: Scte27OcrLanguage;
   Pid?: number;
 }
-export const Scte27SourceSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ OcrLanguage: S.optional(Scte27OcrLanguage), Pid: S.optional(S.Number) }).pipe(
-    S.encodeKeys({ OcrLanguage: "ocrLanguage", Pid: "pid" }),
-  ),
-).annotate({ identifier: "Scte27SourceSettings" }) as any as S.Schema<Scte27SourceSettings>;
+export const Scte27SourceSettings = DvbSubSourceSettings as any as S.Schema<Scte27SourceSettings>;
 export type __doubleMin0Max100 = number;
 export interface CaptionRectangle {
   Height?: number;
@@ -6580,7 +6523,8 @@ export type EnrichmentMethod = "SCTE35_ELEMENTAL_INFERENCE_QUERY_PARAMS" | (stri
 export const EnrichmentMethod = S.String;
 
 export type __listOfEnrichmentMethod = EnrichmentMethod[];
-export const __listOfEnrichmentMethod = /*@__PURE__*/ S.Array(EnrichmentMethod);
+export const __listOfEnrichmentMethod =
+  __listOfDashRoleAudio as any as S.Schema<__listOfEnrichmentMethod>;
 export interface InferenceSettings {
   FeedArn?: string;
   AudioFeedInputs?: AudioFeedInput[];
@@ -12980,29 +12924,10 @@ export interface MultiplexAlert {
   SetTimestamp?: Date;
   State?: MultiplexAlertState;
 }
-export const MultiplexAlert = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AlertType: S.optional(S.String),
-    ClearedTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    Id: S.optional(S.String),
-    Message: S.optional(S.String),
-    PipelineId: S.optional(S.String),
-    SetTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    State: S.optional(MultiplexAlertState),
-  }).pipe(
-    S.encodeKeys({
-      AlertType: "alertType",
-      ClearedTimestamp: "clearedTimestamp",
-      Id: "id",
-      Message: "message",
-      PipelineId: "pipelineId",
-      SetTimestamp: "setTimestamp",
-      State: "state",
-    }),
-  ),
-).annotate({ identifier: "MultiplexAlert" }) as any as S.Schema<MultiplexAlert>;
+export const MultiplexAlert = ChannelAlert as any as S.Schema<MultiplexAlert>;
 export type __listOfMultiplexAlert = MultiplexAlert[];
-export const __listOfMultiplexAlert = /*@__PURE__*/ S.Array(MultiplexAlert);
+export const __listOfMultiplexAlert =
+  __listOfChannelAlert as any as S.Schema<__listOfMultiplexAlert>;
 export interface ListMultiplexAlertsResponse {
   Alerts?: MultiplexAlert[];
   NextToken?: string;
@@ -13633,7 +13558,8 @@ export type ChannelPipelineIdToRestart = "PIPELINE_0" | "PIPELINE_1" | (string &
 export const ChannelPipelineIdToRestart = S.String;
 
 export type __listOfChannelPipelineIdToRestart = ChannelPipelineIdToRestart[];
-export const __listOfChannelPipelineIdToRestart = /*@__PURE__*/ S.Array(ChannelPipelineIdToRestart);
+export const __listOfChannelPipelineIdToRestart =
+  __listOfDashRoleAudio as any as S.Schema<__listOfChannelPipelineIdToRestart>;
 export interface RestartChannelPipelinesRequest {
   ChannelId: string;
   PipelineIds?: ChannelPipelineIdToRestart[];
@@ -16379,19 +16305,12 @@ export interface InputDeviceConfigurableAudioChannelPairConfig {
   Id?: number;
   Profile?: InputDeviceConfigurableAudioChannelPairProfile;
 }
-export const InputDeviceConfigurableAudioChannelPairConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Id: S.optional(S.Number),
-    Profile: S.optional(InputDeviceConfigurableAudioChannelPairProfile),
-  }).pipe(S.encodeKeys({ Id: "id", Profile: "profile" })),
-).annotate({
-  identifier: "InputDeviceConfigurableAudioChannelPairConfig",
-}) as any as S.Schema<InputDeviceConfigurableAudioChannelPairConfig>;
+export const InputDeviceConfigurableAudioChannelPairConfig =
+  InputDeviceUhdAudioChannelPairConfig as any as S.Schema<InputDeviceConfigurableAudioChannelPairConfig>;
 export type __listOfInputDeviceConfigurableAudioChannelPairConfig =
   InputDeviceConfigurableAudioChannelPairConfig[];
-export const __listOfInputDeviceConfigurableAudioChannelPairConfig = /*@__PURE__*/ S.Array(
-  InputDeviceConfigurableAudioChannelPairConfig,
-);
+export const __listOfInputDeviceConfigurableAudioChannelPairConfig =
+  __listOfInputDeviceUhdAudioChannelPairConfig as any as S.Schema<__listOfInputDeviceConfigurableAudioChannelPairConfig>;
 export interface InputDeviceConfigurableSettings {
   ConfiguredInput?: InputDeviceConfiguredInput;
   MaxBitrate?: number;

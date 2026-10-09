@@ -1425,9 +1425,8 @@ export const RecipientInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** Payment methods the recipient may submit details for. */
 export type CreateRecipientInviteRequestPaymentMethodsList = Array<PaymentMethod | (string & {})>;
-export const CreateRecipientInviteRequestPaymentMethodsList = /*@__PURE__*/ S.Array(
-  PaymentMethod,
-) as any as S.Schema<CreateRecipientInviteRequestPaymentMethodsList>;
+export const CreateRecipientInviteRequestPaymentMethodsList =
+  CardCategoryLocksList as any as S.Schema<CreateRecipientInviteRequestPaymentMethodsList>;
 
 export interface CreateRecipientInviteRequest {
   contactEmail: unknown;
@@ -1588,9 +1587,8 @@ export const WebhookEventType = S.String;
 
 /** Optional array of event types to subscribe to. Nothing means subscribe to all event types. */
 export type CreateWebhookRequestEventTypesList = Array<WebhookEventType | (string & {})>;
-export const CreateWebhookRequestEventTypesList = /*@__PURE__*/ S.Array(
-  WebhookEventType,
-) as any as S.Schema<CreateWebhookRequestEventTypesList>;
+export const CreateWebhookRequestEventTypesList =
+  CardCategoryLocksList as any as S.Schema<CreateWebhookRequestEventTypesList>;
 
 export type ResourceField =
   | "transaction.amount"
@@ -1626,9 +1624,8 @@ export const ResourceField = S.String;
 
 /** Optional array of resource field paths to filter events by. When specified, webhook events will only be sent when one of these fields changes. Nothing means no filtering (all events are sent). */
 export type CreateWebhookRequestFilterPathsList = Array<ResourceField | (string & {})>;
-export const CreateWebhookRequestFilterPathsList = /*@__PURE__*/ S.Array(
-  ResourceField,
-) as any as S.Schema<CreateWebhookRequestFilterPathsList>;
+export const CreateWebhookRequestFilterPathsList =
+  CardCategoryLocksList as any as S.Schema<CreateWebhookRequestFilterPathsList>;
 
 export interface CreateWebhookRequest {
   /** Optional array of event types to subscribe to. Nothing means subscribe to all event types. */
@@ -3019,9 +3016,8 @@ export type GetWebhooksRequestStatusItem = "active" | "paused" | "disabled" | "d
 export const GetWebhooksRequestStatusItem = S.String;
 
 export type GetWebhooksRequestStatusList = Array<GetWebhooksRequestStatusItem | (string & {})>;
-export const GetWebhooksRequestStatusList = /*@__PURE__*/ S.Array(
-  GetWebhooksRequestStatusItem,
-) as any as S.Schema<GetWebhooksRequestStatusList>;
+export const GetWebhooksRequestStatusList =
+  CardCategoryLocksList as any as S.Schema<GetWebhooksRequestStatusList>;
 
 /** Sort order. Can be 'asc' or 'desc'. Defaults to 'asc' */
 export type GetWebhooksRequestOrder = "asc" | "desc";
@@ -3146,27 +3142,24 @@ export const ListCardsRequestStatusItem = S.String;
 
 /** Filter cards by one or more statuses. */
 export type ListCardsRequestStatusList = Array<ListCardsRequestStatusItem | (string & {})>;
-export const ListCardsRequestStatusList = /*@__PURE__*/ S.Array(
-  ListCardsRequestStatusItem,
-) as any as S.Schema<ListCardsRequestStatusList>;
+export const ListCardsRequestStatusList =
+  CardCategoryLocksList as any as S.Schema<ListCardsRequestStatusList>;
 
 export type ListCardsRequestTypeItem = "virtual" | "physical";
 export const ListCardsRequestTypeItem = S.String;
 
 /** Filter cards by type (virtual or physical). */
 export type ListCardsRequestTypeList = Array<ListCardsRequestTypeItem | (string & {})>;
-export const ListCardsRequestTypeList = /*@__PURE__*/ S.Array(
-  ListCardsRequestTypeItem,
-) as any as S.Schema<ListCardsRequestTypeList>;
+export const ListCardsRequestTypeList =
+  CardCategoryLocksList as any as S.Schema<ListCardsRequestTypeList>;
 
 export type ListCardsRequestKindItem = "debit" | "credit";
 export const ListCardsRequestKindItem = S.String;
 
 /** Filter cards by kind (debit or credit). */
 export type ListCardsRequestKindList = Array<ListCardsRequestKindItem | (string & {})>;
-export const ListCardsRequestKindList = /*@__PURE__*/ S.Array(
-  ListCardsRequestKindItem,
-) as any as S.Schema<ListCardsRequestKindList>;
+export const ListCardsRequestKindList =
+  CardCategoryLocksList as any as S.Schema<ListCardsRequestKindList>;
 
 /** Sort order. Can be 'asc' or 'desc'. Defaults to 'asc' */
 export type ListCardsRequestOrder = "asc" | "desc";
@@ -3725,9 +3718,8 @@ export const ListTransactionsRequestStatusItem = S.String;
 export type ListTransactionsRequestStatusList = Array<
   ListTransactionsRequestStatusItem | (string & {})
 >;
-export const ListTransactionsRequestStatusList = /*@__PURE__*/ S.Array(
-  ListTransactionsRequestStatusItem,
-) as any as S.Schema<ListTransactionsRequestStatusList>;
+export const ListTransactionsRequestStatusList =
+  CardCategoryLocksList as any as S.Schema<ListTransactionsRequestStatusList>;
 
 export type ListTransactionsRequestAccountIdList = Array<string>;
 export const ListTransactionsRequestAccountIdList =

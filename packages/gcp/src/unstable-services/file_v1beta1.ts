@@ -510,9 +510,8 @@ export const InstanceSuspensionReasonsItemEnum = S.String;
 export type InstanceSuspensionReasonsItemEnumList = Array<
   InstanceSuspensionReasonsItemEnum | (string & {})
 >;
-export const InstanceSuspensionReasonsItemEnumList = /*@__PURE__*/ S.Array(
-  InstanceSuspensionReasonsItemEnum,
-) as any as S.Schema<InstanceSuspensionReasonsItemEnumList>;
+export const InstanceSuspensionReasonsItemEnumList =
+  ReplicaConfigStateReasonsItemEnumList as any as S.Schema<InstanceSuspensionReasonsItemEnumList>;
 
 export type InstanceTierEnum =
   | "TIER_UNSPECIFIED"
@@ -557,9 +556,8 @@ export const NfsExportOptionsSecurityFlavorsItemEnum = S.String;
 export type NfsExportOptionsSecurityFlavorsItemEnumList = Array<
   NfsExportOptionsSecurityFlavorsItemEnum | (string & {})
 >;
-export const NfsExportOptionsSecurityFlavorsItemEnumList = /*@__PURE__*/ S.Array(
-  NfsExportOptionsSecurityFlavorsItemEnum,
-) as any as S.Schema<NfsExportOptionsSecurityFlavorsItemEnumList>;
+export const NfsExportOptionsSecurityFlavorsItemEnumList =
+  ReplicaConfigStateReasonsItemEnumList as any as S.Schema<NfsExportOptionsSecurityFlavorsItemEnumList>;
 
 /** NFS export options specifications. */
 export interface NfsExportOptions {
@@ -636,9 +634,8 @@ export type NetworkConfigModesItemEnum = "ADDRESS_MODE_UNSPECIFIED" | "MODE_IPV4
 export const NetworkConfigModesItemEnum = S.String;
 
 export type NetworkConfigModesItemEnumList = Array<NetworkConfigModesItemEnum | (string & {})>;
-export const NetworkConfigModesItemEnumList = /*@__PURE__*/ S.Array(
-  NetworkConfigModesItemEnum,
-) as any as S.Schema<NetworkConfigModesItemEnumList>;
+export const NetworkConfigModesItemEnumList =
+  ReplicaConfigStateReasonsItemEnumList as any as S.Schema<NetworkConfigModesItemEnumList>;
 
 /** Private Service Connect configuration. */
 export interface PscConfig {

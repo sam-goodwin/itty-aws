@@ -2299,9 +2299,7 @@ export const GoogleCloudChannelV1CustomerConstraintsPromotionalOrderTypesItemEnu
 export type GoogleCloudChannelV1CustomerConstraintsPromotionalOrderTypesItemEnumList =
   Array<GoogleCloudChannelV1CustomerConstraintsPromotionalOrderTypesItemEnum>;
 export const GoogleCloudChannelV1CustomerConstraintsPromotionalOrderTypesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudChannelV1CustomerConstraintsPromotionalOrderTypesItemEnum,
-  ) as any as S.Schema<GoogleCloudChannelV1CustomerConstraintsPromotionalOrderTypesItemEnumList>;
+  GoogleCloudChannelV1CustomerConstraintsAllowedCustomerTypesItemEnumList as any as S.Schema<GoogleCloudChannelV1CustomerConstraintsPromotionalOrderTypesItemEnumList>;
 
 /** Represents constraints required to purchase the Offer for a customer. */
 export interface GoogleCloudChannelV1CustomerConstraints {

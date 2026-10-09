@@ -1595,15 +1595,8 @@ export interface GetExtensionResponseIdentity {
   /** The identity type. */
   type?: GetExtensionResponseIdentityType;
 }
-export const GetExtensionResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: S.optional(GetExtensionResponseIdentityType),
-  }),
-).annotate({
-  identifier: "GetExtensionResponseIdentity",
-}) as any as S.Schema<GetExtensionResponseIdentity>;
+export const GetExtensionResponseIdentity =
+  CreateExtensionResponseIdentity as any as S.Schema<GetExtensionResponseIdentity>;
 
 /** Plan for the resource. */
 export type GetExtensionResponsePlan = CreateExtensionRequestPlan;
@@ -1627,18 +1620,8 @@ export interface GetExtensionResponse {
   /** Plan for the resource. */
   plan?: CreateExtensionRequestPlan;
 }
-export const GetExtensionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ExtensionProperties),
-    identity: S.optional(GetExtensionResponseIdentity),
-    managedBy: S.optional(S.String),
-    plan: S.optional(CreateExtensionRequestPlan),
-  }),
-).annotate({ identifier: "GetExtensionResponse" }) as any as S.Schema<GetExtensionResponse>;
+export const GetExtensionResponse =
+  CreateExtensionResponse as any as S.Schema<GetExtensionResponse>;
 
 export interface GetFluxConfigOperationStatusRequest {
   /** The ID of the target subscription. */
@@ -2436,25 +2419,8 @@ export interface SourceControlConfigurationProperties {
   /** Compliance Status of the Configuration */
   complianceStatus?: ComplianceStatus;
 }
-export const SourceControlConfigurationProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    repositoryUrl: S.optional(S.String),
-    operatorNamespace: S.optional(S.String),
-    operatorInstanceName: S.optional(S.String),
-    operatorType: S.optional(OperatorTypeDefinition),
-    operatorParams: S.optional(S.String),
-    configurationProtectedSettings: S.optional(ConfigurationProtectedSettings),
-    operatorScope: S.optional(OperatorScopeDefinition),
-    repositoryPublicKey: S.optional(S.String),
-    sshKnownHostsContents: S.optional(S.String),
-    enableHelmOperator: S.optional(S.Boolean),
-    helmOperatorProperties: S.optional(HelmOperatorProperties),
-    provisioningState: S.optional(SourceControlConfigurationPropertiesProvisioningState),
-    complianceStatus: S.optional(ComplianceStatus),
-  }),
-).annotate({
-  identifier: "SourceControlConfigurationProperties",
-}) as any as S.Schema<SourceControlConfigurationProperties>;
+export const SourceControlConfigurationProperties =
+  GetSourceControlConfigurationResponseProperties as any as S.Schema<SourceControlConfigurationProperties>;
 
 /** The type of identity that created the resource. */
 export type SourceControlConfigurationSystemDataCreatedByType =
@@ -2855,15 +2821,8 @@ export interface UpdateExtensionResponseIdentity {
   /** The identity type. */
   type?: UpdateExtensionResponseIdentityType;
 }
-export const UpdateExtensionResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: S.optional(UpdateExtensionResponseIdentityType),
-  }),
-).annotate({
-  identifier: "UpdateExtensionResponseIdentity",
-}) as any as S.Schema<UpdateExtensionResponseIdentity>;
+export const UpdateExtensionResponseIdentity =
+  CreateExtensionResponseIdentity as any as S.Schema<UpdateExtensionResponseIdentity>;
 
 /** Plan for the resource. */
 export type UpdateExtensionResponsePlan = CreateExtensionRequestPlan;
@@ -2887,18 +2846,8 @@ export interface UpdateExtensionResponse {
   /** Plan for the resource. */
   plan?: CreateExtensionRequestPlan;
 }
-export const UpdateExtensionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ExtensionProperties),
-    identity: S.optional(UpdateExtensionResponseIdentity),
-    managedBy: S.optional(S.String),
-    plan: S.optional(CreateExtensionRequestPlan),
-  }),
-).annotate({ identifier: "UpdateExtensionResponse" }) as any as S.Schema<UpdateExtensionResponse>;
+export const UpdateExtensionResponse =
+  CreateExtensionResponse as any as S.Schema<UpdateExtensionResponse>;
 
 /** Source Kind to pull the configuration data from. */
 export type SourceKindType = "GitRepository" | "Bucket" | "AzureBlob" | "OCIRepository";

@@ -449,13 +449,8 @@ export interface GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec {
   /** Mode of the DynamicFacet feature. Defaults to Mode.DISABLED if it's unset. */
   mode?: GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecModeEnum | (string & {});
 }
-export const GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: S.optional(GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecModeEnum),
-  }),
-).annotate({
-  identifier: "GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec",
-}) as any as S.Schema<GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec>;
+export const GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec =
+  GoogleCloudRetailV2betaSearchRequestPersonalizationSpec as any as S.Schema<GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec>;
 
 /** Configures metadata that is used to generate serving time results (e.g. search results or recommendation predictions). */
 export interface GoogleCloudRetailV2betaServingConfig {
@@ -1859,9 +1854,8 @@ export const GoogleCloudRetailV2betaControlSolutionTypesItemEnum = S.String;
 export type GoogleCloudRetailV2betaControlSolutionTypesItemEnumList = Array<
   GoogleCloudRetailV2betaControlSolutionTypesItemEnum | (string & {})
 >;
-export const GoogleCloudRetailV2betaControlSolutionTypesItemEnumList = /*@__PURE__*/ S.Array(
-  GoogleCloudRetailV2betaControlSolutionTypesItemEnum,
-) as any as S.Schema<GoogleCloudRetailV2betaControlSolutionTypesItemEnumList>;
+export const GoogleCloudRetailV2betaControlSolutionTypesItemEnumList =
+  GoogleCloudRetailV2betaServingConfigSolutionTypesItemEnumList as any as S.Schema<GoogleCloudRetailV2betaControlSolutionTypesItemEnumList>;
 
 export type GoogleCloudRetailV2betaControlSearchSolutionUseCaseItemEnum =
   | "SEARCH_SOLUTION_USE_CASE_UNSPECIFIED"
@@ -4730,13 +4724,8 @@ export interface GoogleCloudRetailV2betaSearchRequestSpellCorrectionSpec {
   /** The mode under which spell correction should take effect to replace the original search query. Default to Mode.AUTO. */
   mode?: GoogleCloudRetailV2betaSearchRequestSpellCorrectionSpecModeEnum | (string & {});
 }
-export const GoogleCloudRetailV2betaSearchRequestSpellCorrectionSpec = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: S.optional(GoogleCloudRetailV2betaSearchRequestSpellCorrectionSpecModeEnum),
-  }),
-).annotate({
-  identifier: "GoogleCloudRetailV2betaSearchRequestSpellCorrectionSpec",
-}) as any as S.Schema<GoogleCloudRetailV2betaSearchRequestSpellCorrectionSpec>;
+export const GoogleCloudRetailV2betaSearchRequestSpellCorrectionSpec =
+  GoogleCloudRetailV2betaSearchRequestPersonalizationSpec as any as S.Schema<GoogleCloudRetailV2betaSearchRequestSpellCorrectionSpec>;
 
 export type GoogleCloudRetailV2betaProductAttributeValueList =
   Array<GoogleCloudRetailV2betaProductAttributeValue>;

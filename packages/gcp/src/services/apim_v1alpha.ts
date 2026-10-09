@@ -778,19 +778,12 @@ export interface HttpOperationQueryParam {
   /** Name of query param */
   name?: string;
 }
-export const HttpOperationQueryParam = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dataType: S.optional(HttpOperationQueryParamDataTypeEnum),
-    count: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
-).annotate({ identifier: "HttpOperationQueryParam" }) as any as S.Schema<HttpOperationQueryParam>;
+export const HttpOperationQueryParam =
+  HttpOperationHeader as any as S.Schema<HttpOperationQueryParam>;
 
 export type HttpOperationQueryParamMap = { [key: string]: HttpOperationQueryParam | undefined };
-export const HttpOperationQueryParamMap = /*@__PURE__*/ S.Record(
-  S.String,
-  HttpOperationQueryParam,
-) as any as S.Schema<HttpOperationQueryParamMap>;
+export const HttpOperationQueryParamMap =
+  HttpOperationHeaderMap as any as S.Schema<HttpOperationQueryParamMap>;
 
 /** An HTTP-based API Operation, sometimes called a "REST" Operation. */
 export interface HttpOperation {

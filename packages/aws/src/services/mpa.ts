@@ -1187,7 +1187,7 @@ export type UpdateAction = "SYNCHRONIZE_MFA_DEVICES" | (string & {});
 export const UpdateAction = S.String;
 
 export type UpdateActions = UpdateAction[];
-export const UpdateActions = /*@__PURE__*/ S.Array(UpdateAction);
+export const UpdateActions = AdditionalSecurityRequirements as any as S.Schema<UpdateActions>;
 export interface UpdateApprovalTeamRequest {
   ApprovalStrategy?: ApprovalStrategy;
   Approvers?: ApprovalTeamRequestApprover[];

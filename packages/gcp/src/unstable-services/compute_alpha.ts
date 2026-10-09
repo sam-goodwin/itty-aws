@@ -11527,21 +11527,14 @@ export interface StatefulPolicyPreservedStateDiskDevice {
   /** These stateful disks will never be deleted during autohealing, update or VM instance recreate operations. This flag is used to configure if the disk should be deleted after it is no longer used by the group, e.g. when the given instance or the whole group is deleted. Note: disks attached inREAD_ONLY mode cannot be auto-deleted. */
   autoDelete?: StatefulPolicyPreservedStateDiskDeviceAutoDeleteEnum | (string & {});
 }
-export const StatefulPolicyPreservedStateDiskDevice = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    autoDelete: S.optional(StatefulPolicyPreservedStateDiskDeviceAutoDeleteEnum),
-  }),
-).annotate({
-  identifier: "StatefulPolicyPreservedStateDiskDevice",
-}) as any as S.Schema<StatefulPolicyPreservedStateDiskDevice>;
+export const StatefulPolicyPreservedStateDiskDevice =
+  StatefulPolicyPreservedStateNetworkIp as any as S.Schema<StatefulPolicyPreservedStateDiskDevice>;
 
 export type StatefulPolicyPreservedStateDiskDeviceMap = {
   [key: string]: StatefulPolicyPreservedStateDiskDevice | undefined;
 };
-export const StatefulPolicyPreservedStateDiskDeviceMap = /*@__PURE__*/ S.Record(
-  S.String,
-  StatefulPolicyPreservedStateDiskDevice,
-) as any as S.Schema<StatefulPolicyPreservedStateDiskDeviceMap>;
+export const StatefulPolicyPreservedStateDiskDeviceMap =
+  StatefulPolicyPreservedStateNetworkIpMap as any as S.Schema<StatefulPolicyPreservedStateDiskDeviceMap>;
 
 /** Configuration of preserved resources. */
 export interface StatefulPolicyPreservedState {
@@ -12817,9 +12810,8 @@ export const UpcomingMaintenanceMaintenanceReasonsItemEnum = S.String;
 export type UpcomingMaintenanceMaintenanceReasonsItemEnumList = Array<
   UpcomingMaintenanceMaintenanceReasonsItemEnum | (string & {})
 >;
-export const UpcomingMaintenanceMaintenanceReasonsItemEnumList = /*@__PURE__*/ S.Array(
-  UpcomingMaintenanceMaintenanceReasonsItemEnum,
-) as any as S.Schema<UpcomingMaintenanceMaintenanceReasonsItemEnumList>;
+export const UpcomingMaintenanceMaintenanceReasonsItemEnumList =
+  InstanceGroupManagerUpdatePolicyAllowedActionsItemEnumList as any as S.Schema<UpcomingMaintenanceMaintenanceReasonsItemEnumList>;
 
 /** Represents a window of time using two timestamps: `earliest` and `latest`. */
 export interface UpcomingMaintenanceTimeWindow {
@@ -13483,11 +13475,7 @@ export const SchedulingVsockModeModeEnum = S.String;
 export interface SchedulingVsockMode {
   mode?: SchedulingVsockModeModeEnum | (string & {});
 }
-export const SchedulingVsockMode = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: S.optional(SchedulingVsockModeModeEnum),
-  }),
-).annotate({ identifier: "SchedulingVsockMode" }) as any as S.Schema<SchedulingVsockMode>;
+export const SchedulingVsockMode = MutualTls as any as S.Schema<SchedulingVsockMode>;
 
 export type SchedulingMaintenanceIntervalEnum = "AS_NEEDED" | "PERIODIC" | "RECURRENT";
 export const SchedulingMaintenanceIntervalEnum = S.String;
@@ -17484,11 +17472,7 @@ export const ServerBindingTypeEnum = S.String;
 export interface ServerBinding {
   type?: ServerBindingTypeEnum | (string & {});
 }
-export const ServerBinding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(ServerBindingTypeEnum),
-  }),
-).annotate({ identifier: "ServerBinding" }) as any as S.Schema<ServerBinding>;
+export const ServerBinding = GuestOsFeature as any as S.Schema<ServerBinding>;
 
 export interface NodeTemplateNodeTypeFlexibility {
   memory?: string;
@@ -22613,9 +22597,8 @@ export const RouterBgpPeerAdvertisedGroupsItemEnum = S.String;
 export type RouterBgpPeerAdvertisedGroupsItemEnumList = Array<
   RouterBgpPeerAdvertisedGroupsItemEnum | (string & {})
 >;
-export const RouterBgpPeerAdvertisedGroupsItemEnumList = /*@__PURE__*/ S.Array(
-  RouterBgpPeerAdvertisedGroupsItemEnum,
-) as any as S.Schema<RouterBgpPeerAdvertisedGroupsItemEnumList>;
+export const RouterBgpPeerAdvertisedGroupsItemEnumList =
+  InstanceGroupManagerUpdatePolicyAllowedActionsItemEnumList as any as S.Schema<RouterBgpPeerAdvertisedGroupsItemEnumList>;
 
 /** Description-tagged IP ranges for the router to advertise. */
 export interface RouterAdvertisedIpRange {
@@ -22778,9 +22761,8 @@ export const RouterBgpAdvertisedGroupsItemEnum = S.String;
 export type RouterBgpAdvertisedGroupsItemEnumList = Array<
   RouterBgpAdvertisedGroupsItemEnum | (string & {})
 >;
-export const RouterBgpAdvertisedGroupsItemEnumList = /*@__PURE__*/ S.Array(
-  RouterBgpAdvertisedGroupsItemEnum,
-) as any as S.Schema<RouterBgpAdvertisedGroupsItemEnumList>;
+export const RouterBgpAdvertisedGroupsItemEnumList =
+  InstanceGroupManagerUpdatePolicyAllowedActionsItemEnumList as any as S.Schema<RouterBgpAdvertisedGroupsItemEnumList>;
 
 export interface RouterBgp {
   /** Explicitly specifies a range of valid BGP Identifiers for this Router. It is provided as a link-local IPv4 range (from 169.254.0.0/16), of size at least /30, even if the BGP sessions are over IPv6. It must not overlap with any IPv4 BGP session ranges. Other vendors commonly call this "router ID". */
@@ -22922,9 +22904,8 @@ export const RouterNatEndpointTypesItemEnum = S.String;
 export type RouterNatEndpointTypesItemEnumList = Array<
   RouterNatEndpointTypesItemEnum | (string & {})
 >;
-export const RouterNatEndpointTypesItemEnumList = /*@__PURE__*/ S.Array(
-  RouterNatEndpointTypesItemEnum,
-) as any as S.Schema<RouterNatEndpointTypesItemEnumList>;
+export const RouterNatEndpointTypesItemEnumList =
+  InstanceGroupManagerUpdatePolicyAllowedActionsItemEnumList as any as S.Schema<RouterNatEndpointTypesItemEnumList>;
 
 export type RouterNatSubnetworkToNatSourceIpRangesToNatItemEnum =
   | "ALL_IP_RANGES"
@@ -22935,9 +22916,8 @@ export const RouterNatSubnetworkToNatSourceIpRangesToNatItemEnum = S.String;
 export type RouterNatSubnetworkToNatSourceIpRangesToNatItemEnumList = Array<
   RouterNatSubnetworkToNatSourceIpRangesToNatItemEnum | (string & {})
 >;
-export const RouterNatSubnetworkToNatSourceIpRangesToNatItemEnumList = /*@__PURE__*/ S.Array(
-  RouterNatSubnetworkToNatSourceIpRangesToNatItemEnum,
-) as any as S.Schema<RouterNatSubnetworkToNatSourceIpRangesToNatItemEnumList>;
+export const RouterNatSubnetworkToNatSourceIpRangesToNatItemEnumList =
+  InstanceGroupManagerUpdatePolicyAllowedActionsItemEnumList as any as S.Schema<RouterNatSubnetworkToNatSourceIpRangesToNatItemEnumList>;
 
 /** Defines the IP ranges that want to use NAT for a subnetwork. */
 export interface RouterNatSubnetworkToNat {
@@ -26058,9 +26038,8 @@ export const AggregatedListSubnetworksViewsEnum = S.String;
 export type AggregatedListSubnetworksViewsEnumList = Array<
   AggregatedListSubnetworksViewsEnum | (string & {})
 >;
-export const AggregatedListSubnetworksViewsEnumList = /*@__PURE__*/ S.Array(
-  AggregatedListSubnetworksViewsEnum,
-) as any as S.Schema<AggregatedListSubnetworksViewsEnumList>;
+export const AggregatedListSubnetworksViewsEnumList =
+  InstanceGroupManagerUpdatePolicyAllowedActionsItemEnumList as any as S.Schema<AggregatedListSubnetworksViewsEnumList>;
 
 export interface AggregatedListSubnetworksRequest {
   /** A filter expression that filters resources listed in the response. Most Compute resources support two types of filter expressions: expressions that support regular expressions and expressions that follow API improvement proposal AIP-160. These two types of filter expressions cannot be mixed in one request. If you want to use AIP-160, your expression must specify the field name, an operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For example, if you are filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying `name != example-instance`. The `:*` comparison can be used to test whether a key has been defined. For example, to find all objects with `owner` label use: ``` labels.owner:* ``` You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based onresource labels. To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart = true) ``` If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or against multiple parenthesized expressions. Examples: `fieldname eq unquoted literal` `fieldname eq 'single quoted literal'` `fieldname eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne "literal")` The literal value is interpreted as a regular expression using GoogleRE2 library syntax. The literal value must match the entire field. For example, to filter for instances that do not end with name "instance", you would use `name ne .*instance`. You cannot combine constraints on multiple fields using regular expressions. */
@@ -29670,9 +29649,8 @@ export const VpnTunnelAdditionalKeyExchangesKe6sItemEnum = S.String;
 export type VpnTunnelAdditionalKeyExchangesKe6sItemEnumList = Array<
   VpnTunnelAdditionalKeyExchangesKe6sItemEnum | (string & {})
 >;
-export const VpnTunnelAdditionalKeyExchangesKe6sItemEnumList = /*@__PURE__*/ S.Array(
-  VpnTunnelAdditionalKeyExchangesKe6sItemEnum,
-) as any as S.Schema<VpnTunnelAdditionalKeyExchangesKe6sItemEnumList>;
+export const VpnTunnelAdditionalKeyExchangesKe6sItemEnumList =
+  InstanceGroupManagerUpdatePolicyAllowedActionsItemEnumList as any as S.Schema<VpnTunnelAdditionalKeyExchangesKe6sItemEnumList>;
 
 export type VpnTunnelAdditionalKeyExchangesKe7sItemEnum =
   | "KEY_ENCAPSULATION_MECHANISM_UNSPECIFIED"
@@ -29684,9 +29662,8 @@ export const VpnTunnelAdditionalKeyExchangesKe7sItemEnum = S.String;
 export type VpnTunnelAdditionalKeyExchangesKe7sItemEnumList = Array<
   VpnTunnelAdditionalKeyExchangesKe7sItemEnum | (string & {})
 >;
-export const VpnTunnelAdditionalKeyExchangesKe7sItemEnumList = /*@__PURE__*/ S.Array(
-  VpnTunnelAdditionalKeyExchangesKe7sItemEnum,
-) as any as S.Schema<VpnTunnelAdditionalKeyExchangesKe7sItemEnumList>;
+export const VpnTunnelAdditionalKeyExchangesKe7sItemEnumList =
+  InstanceGroupManagerUpdatePolicyAllowedActionsItemEnumList as any as S.Schema<VpnTunnelAdditionalKeyExchangesKe7sItemEnumList>;
 
 export type VpnTunnelAdditionalKeyExchangesKe3sItemEnum =
   | "KEY_ENCAPSULATION_MECHANISM_UNSPECIFIED"
@@ -29698,9 +29675,8 @@ export const VpnTunnelAdditionalKeyExchangesKe3sItemEnum = S.String;
 export type VpnTunnelAdditionalKeyExchangesKe3sItemEnumList = Array<
   VpnTunnelAdditionalKeyExchangesKe3sItemEnum | (string & {})
 >;
-export const VpnTunnelAdditionalKeyExchangesKe3sItemEnumList = /*@__PURE__*/ S.Array(
-  VpnTunnelAdditionalKeyExchangesKe3sItemEnum,
-) as any as S.Schema<VpnTunnelAdditionalKeyExchangesKe3sItemEnumList>;
+export const VpnTunnelAdditionalKeyExchangesKe3sItemEnumList =
+  InstanceGroupManagerUpdatePolicyAllowedActionsItemEnumList as any as S.Schema<VpnTunnelAdditionalKeyExchangesKe3sItemEnumList>;
 
 export type VpnTunnelAdditionalKeyExchangesKe5sItemEnum =
   | "KEY_ENCAPSULATION_MECHANISM_UNSPECIFIED"
@@ -29712,9 +29688,8 @@ export const VpnTunnelAdditionalKeyExchangesKe5sItemEnum = S.String;
 export type VpnTunnelAdditionalKeyExchangesKe5sItemEnumList = Array<
   VpnTunnelAdditionalKeyExchangesKe5sItemEnum | (string & {})
 >;
-export const VpnTunnelAdditionalKeyExchangesKe5sItemEnumList = /*@__PURE__*/ S.Array(
-  VpnTunnelAdditionalKeyExchangesKe5sItemEnum,
-) as any as S.Schema<VpnTunnelAdditionalKeyExchangesKe5sItemEnumList>;
+export const VpnTunnelAdditionalKeyExchangesKe5sItemEnumList =
+  InstanceGroupManagerUpdatePolicyAllowedActionsItemEnumList as any as S.Schema<VpnTunnelAdditionalKeyExchangesKe5sItemEnumList>;
 
 export type VpnTunnelAdditionalKeyExchangesKe2sItemEnum =
   | "KEY_ENCAPSULATION_MECHANISM_UNSPECIFIED"
@@ -29726,9 +29701,8 @@ export const VpnTunnelAdditionalKeyExchangesKe2sItemEnum = S.String;
 export type VpnTunnelAdditionalKeyExchangesKe2sItemEnumList = Array<
   VpnTunnelAdditionalKeyExchangesKe2sItemEnum | (string & {})
 >;
-export const VpnTunnelAdditionalKeyExchangesKe2sItemEnumList = /*@__PURE__*/ S.Array(
-  VpnTunnelAdditionalKeyExchangesKe2sItemEnum,
-) as any as S.Schema<VpnTunnelAdditionalKeyExchangesKe2sItemEnumList>;
+export const VpnTunnelAdditionalKeyExchangesKe2sItemEnumList =
+  InstanceGroupManagerUpdatePolicyAllowedActionsItemEnumList as any as S.Schema<VpnTunnelAdditionalKeyExchangesKe2sItemEnumList>;
 
 export type VpnTunnelAdditionalKeyExchangesKe4sItemEnum =
   | "KEY_ENCAPSULATION_MECHANISM_UNSPECIFIED"
@@ -29740,9 +29714,8 @@ export const VpnTunnelAdditionalKeyExchangesKe4sItemEnum = S.String;
 export type VpnTunnelAdditionalKeyExchangesKe4sItemEnumList = Array<
   VpnTunnelAdditionalKeyExchangesKe4sItemEnum | (string & {})
 >;
-export const VpnTunnelAdditionalKeyExchangesKe4sItemEnumList = /*@__PURE__*/ S.Array(
-  VpnTunnelAdditionalKeyExchangesKe4sItemEnum,
-) as any as S.Schema<VpnTunnelAdditionalKeyExchangesKe4sItemEnumList>;
+export const VpnTunnelAdditionalKeyExchangesKe4sItemEnumList =
+  InstanceGroupManagerUpdatePolicyAllowedActionsItemEnumList as any as S.Schema<VpnTunnelAdditionalKeyExchangesKe4sItemEnumList>;
 
 export type VpnTunnelAdditionalKeyExchangesKe1sItemEnum =
   | "KEY_ENCAPSULATION_MECHANISM_UNSPECIFIED"
@@ -29754,9 +29727,8 @@ export const VpnTunnelAdditionalKeyExchangesKe1sItemEnum = S.String;
 export type VpnTunnelAdditionalKeyExchangesKe1sItemEnumList = Array<
   VpnTunnelAdditionalKeyExchangesKe1sItemEnum | (string & {})
 >;
-export const VpnTunnelAdditionalKeyExchangesKe1sItemEnumList = /*@__PURE__*/ S.Array(
-  VpnTunnelAdditionalKeyExchangesKe1sItemEnum,
-) as any as S.Schema<VpnTunnelAdditionalKeyExchangesKe1sItemEnumList>;
+export const VpnTunnelAdditionalKeyExchangesKe1sItemEnumList =
+  InstanceGroupManagerUpdatePolicyAllowedActionsItemEnumList as any as S.Schema<VpnTunnelAdditionalKeyExchangesKe1sItemEnumList>;
 
 /** User specified list of PQC key exchanges. */
 export interface VpnTunnelAdditionalKeyExchanges {
@@ -30784,9 +30756,7 @@ export type RegionInstanceGroupManagersApplyUpdatesRequestAllowedActionsItemEnum
   RegionInstanceGroupManagersApplyUpdatesRequestAllowedActionsItemEnum | (string & {})
 >;
 export const RegionInstanceGroupManagersApplyUpdatesRequestAllowedActionsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    RegionInstanceGroupManagersApplyUpdatesRequestAllowedActionsItemEnum,
-  ) as any as S.Schema<RegionInstanceGroupManagersApplyUpdatesRequestAllowedActionsItemEnumList>;
+  InstanceGroupManagersApplyUpdatesRequestAllowedActionsItemEnumList as any as S.Schema<RegionInstanceGroupManagersApplyUpdatesRequestAllowedActionsItemEnumList>;
 
 export type RegionInstanceGroupManagersApplyUpdatesRequestMaximalActionEnum =
   | "NONE"
@@ -32299,9 +32269,8 @@ export const CapacityHistoryRequestTypesItemEnum = S.String;
 export type CapacityHistoryRequestTypesItemEnumList = Array<
   CapacityHistoryRequestTypesItemEnum | (string & {})
 >;
-export const CapacityHistoryRequestTypesItemEnumList = /*@__PURE__*/ S.Array(
-  CapacityHistoryRequestTypesItemEnum,
-) as any as S.Schema<CapacityHistoryRequestTypesItemEnumList>;
+export const CapacityHistoryRequestTypesItemEnumList =
+  InstanceGroupManagerUpdatePolicyAllowedActionsItemEnumList as any as S.Schema<CapacityHistoryRequestTypesItemEnumList>;
 
 /** A request to get the capacity history. */
 export interface CapacityHistoryRequest {
@@ -33026,9 +32995,7 @@ export type InterconnectGroupsCreateMembersInterconnectInputRequestedFeaturesIte
   InterconnectGroupsCreateMembersInterconnectInputRequestedFeaturesItemEnum | (string & {})
 >;
 export const InterconnectGroupsCreateMembersInterconnectInputRequestedFeaturesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    InterconnectGroupsCreateMembersInterconnectInputRequestedFeaturesItemEnum,
-  ) as any as S.Schema<InterconnectGroupsCreateMembersInterconnectInputRequestedFeaturesItemEnumList>;
+  InstanceGroupManagersApplyUpdatesRequestAllowedActionsItemEnumList as any as S.Schema<InterconnectGroupsCreateMembersInterconnectInputRequestedFeaturesItemEnumList>;
 
 export type InterconnectGroupsCreateMembersInterconnectInputLinkTypeEnum =
   | "LINK_TYPE_ETHERNET_100G_LR"
@@ -42539,9 +42506,8 @@ export const InterconnectLocationAvailableFeaturesItemEnum = S.String;
 
 export type InterconnectLocationAvailableFeaturesItemEnumList =
   Array<InterconnectLocationAvailableFeaturesItemEnum>;
-export const InterconnectLocationAvailableFeaturesItemEnumList = /*@__PURE__*/ S.Array(
-  InterconnectLocationAvailableFeaturesItemEnum,
-) as any as S.Schema<InterconnectLocationAvailableFeaturesItemEnumList>;
+export const InterconnectLocationAvailableFeaturesItemEnumList =
+  InstanceGroupManagerUpdatePolicyAllowedActionsItemEnumList as any as S.Schema<InterconnectLocationAvailableFeaturesItemEnumList>;
 
 export type InterconnectLocationStatusEnum = "AVAILABLE" | "CLOSED";
 export const InterconnectLocationStatusEnum = S.String;
@@ -42616,9 +42582,8 @@ export const InterconnectLocationAvailableLinkTypesItemEnum = S.String;
 
 export type InterconnectLocationAvailableLinkTypesItemEnumList =
   Array<InterconnectLocationAvailableLinkTypesItemEnum>;
-export const InterconnectLocationAvailableLinkTypesItemEnumList = /*@__PURE__*/ S.Array(
-  InterconnectLocationAvailableLinkTypesItemEnum,
-) as any as S.Schema<InterconnectLocationAvailableLinkTypesItemEnumList>;
+export const InterconnectLocationAvailableLinkTypesItemEnumList =
+  InstanceGroupManagerUpdatePolicyAllowedActionsItemEnumList as any as S.Schema<InterconnectLocationAvailableLinkTypesItemEnumList>;
 
 export type InterconnectLocationContinentEnum =
   | "AFRICA"
@@ -43022,9 +42987,8 @@ export const InterconnectRequestedFeaturesItemEnum = S.String;
 export type InterconnectRequestedFeaturesItemEnumList = Array<
   InterconnectRequestedFeaturesItemEnum | (string & {})
 >;
-export const InterconnectRequestedFeaturesItemEnumList = /*@__PURE__*/ S.Array(
-  InterconnectRequestedFeaturesItemEnum,
-) as any as S.Schema<InterconnectRequestedFeaturesItemEnumList>;
+export const InterconnectRequestedFeaturesItemEnumList =
+  InstanceGroupManagerUpdatePolicyAllowedActionsItemEnumList as any as S.Schema<InterconnectRequestedFeaturesItemEnumList>;
 
 export type InterconnectLinkTypeEnum =
   | "LINK_TYPE_ETHERNET_100G_LR"
@@ -43041,9 +43005,8 @@ export const InterconnectAvailableFeaturesItemEnum = S.String;
 export type InterconnectAvailableFeaturesItemEnumList = Array<
   InterconnectAvailableFeaturesItemEnum | (string & {})
 >;
-export const InterconnectAvailableFeaturesItemEnumList = /*@__PURE__*/ S.Array(
-  InterconnectAvailableFeaturesItemEnum,
-) as any as S.Schema<InterconnectAvailableFeaturesItemEnumList>;
+export const InterconnectAvailableFeaturesItemEnumList =
+  InstanceGroupManagerUpdatePolicyAllowedActionsItemEnumList as any as S.Schema<InterconnectAvailableFeaturesItemEnumList>;
 
 /** Specify configuration for StrictPriorityPolicy. */
 export type InterconnectApplicationAwareInterconnectStrictPriorityPolicy =
@@ -44425,9 +44388,8 @@ export const NetworkProfileNetworkFeaturesFirewallPolicyTypesItemEnum = S.String
 
 export type NetworkProfileNetworkFeaturesFirewallPolicyTypesItemEnumList =
   Array<NetworkProfileNetworkFeaturesFirewallPolicyTypesItemEnum>;
-export const NetworkProfileNetworkFeaturesFirewallPolicyTypesItemEnumList = /*@__PURE__*/ S.Array(
-  NetworkProfileNetworkFeaturesFirewallPolicyTypesItemEnum,
-) as any as S.Schema<NetworkProfileNetworkFeaturesFirewallPolicyTypesItemEnumList>;
+export const NetworkProfileNetworkFeaturesFirewallPolicyTypesItemEnumList =
+  InstanceGroupManagerUpdatePolicyAllowedActionsItemEnumList as any as S.Schema<NetworkProfileNetworkFeaturesFirewallPolicyTypesItemEnumList>;
 
 export type NetworkProfileNetworkFeaturesAllowVpcFirewallRulesEnum =
   | "VPC_FIREWALL_RULES_ALLOWED"
@@ -44442,9 +44404,8 @@ export const NetworkProfileNetworkFeaturesSubnetworkStackTypesItemEnum = S.Strin
 
 export type NetworkProfileNetworkFeaturesSubnetworkStackTypesItemEnumList =
   Array<NetworkProfileNetworkFeaturesSubnetworkStackTypesItemEnum>;
-export const NetworkProfileNetworkFeaturesSubnetworkStackTypesItemEnumList = /*@__PURE__*/ S.Array(
-  NetworkProfileNetworkFeaturesSubnetworkStackTypesItemEnum,
-) as any as S.Schema<NetworkProfileNetworkFeaturesSubnetworkStackTypesItemEnumList>;
+export const NetworkProfileNetworkFeaturesSubnetworkStackTypesItemEnumList =
+  InstanceGroupManagerUpdatePolicyAllowedActionsItemEnumList as any as S.Schema<NetworkProfileNetworkFeaturesSubnetworkStackTypesItemEnumList>;
 
 export type NetworkProfileNetworkFeaturesAllowPacketMirroringEnum =
   | "PACKET_MIRRORING_ALLOWED"
@@ -44458,9 +44419,8 @@ export const NetworkProfileNetworkFeaturesSubnetPurposesItemEnum = S.String;
 
 export type NetworkProfileNetworkFeaturesSubnetPurposesItemEnumList =
   Array<NetworkProfileNetworkFeaturesSubnetPurposesItemEnum>;
-export const NetworkProfileNetworkFeaturesSubnetPurposesItemEnumList = /*@__PURE__*/ S.Array(
-  NetworkProfileNetworkFeaturesSubnetPurposesItemEnum,
-) as any as S.Schema<NetworkProfileNetworkFeaturesSubnetPurposesItemEnumList>;
+export const NetworkProfileNetworkFeaturesSubnetPurposesItemEnumList =
+  InstanceGroupManagerUpdatePolicyAllowedActionsItemEnumList as any as S.Schema<NetworkProfileNetworkFeaturesSubnetPurposesItemEnumList>;
 
 export interface NetworkProfileNetworkFeaturesPredefinedSubnetworkRange {
   /** The naming prefix of the predefined subnetwork. */
@@ -44501,9 +44461,8 @@ export const NetworkProfileNetworkFeaturesSubnetStackTypesItemEnum = S.String;
 
 export type NetworkProfileNetworkFeaturesSubnetStackTypesItemEnumList =
   Array<NetworkProfileNetworkFeaturesSubnetStackTypesItemEnum>;
-export const NetworkProfileNetworkFeaturesSubnetStackTypesItemEnumList = /*@__PURE__*/ S.Array(
-  NetworkProfileNetworkFeaturesSubnetStackTypesItemEnum,
-) as any as S.Schema<NetworkProfileNetworkFeaturesSubnetStackTypesItemEnumList>;
+export const NetworkProfileNetworkFeaturesSubnetStackTypesItemEnumList =
+  InstanceGroupManagerUpdatePolicyAllowedActionsItemEnumList as any as S.Schema<NetworkProfileNetworkFeaturesSubnetStackTypesItemEnumList>;
 
 export type NetworkProfileNetworkFeaturesAllowVpcPeeringEnum =
   | "VPC_PEERING_ALLOWED"
@@ -44537,9 +44496,8 @@ export const NetworkProfileNetworkFeaturesAddressPurposesItemEnum = S.String;
 
 export type NetworkProfileNetworkFeaturesAddressPurposesItemEnumList =
   Array<NetworkProfileNetworkFeaturesAddressPurposesItemEnum>;
-export const NetworkProfileNetworkFeaturesAddressPurposesItemEnumList = /*@__PURE__*/ S.Array(
-  NetworkProfileNetworkFeaturesAddressPurposesItemEnum,
-) as any as S.Schema<NetworkProfileNetworkFeaturesAddressPurposesItemEnumList>;
+export const NetworkProfileNetworkFeaturesAddressPurposesItemEnumList =
+  InstanceGroupManagerUpdatePolicyAllowedActionsItemEnumList as any as S.Schema<NetworkProfileNetworkFeaturesAddressPurposesItemEnumList>;
 
 export type NetworkProfileNetworkFeaturesAllowNccEnum = "NCC_ALLOWED" | "NCC_BLOCKED";
 export const NetworkProfileNetworkFeaturesAllowNccEnum = S.String;
@@ -44555,9 +44513,8 @@ export const NetworkProfileNetworkFeaturesInterfaceTypesItemEnum = S.String;
 
 export type NetworkProfileNetworkFeaturesInterfaceTypesItemEnumList =
   Array<NetworkProfileNetworkFeaturesInterfaceTypesItemEnum>;
-export const NetworkProfileNetworkFeaturesInterfaceTypesItemEnumList = /*@__PURE__*/ S.Array(
-  NetworkProfileNetworkFeaturesInterfaceTypesItemEnum,
-) as any as S.Schema<NetworkProfileNetworkFeaturesInterfaceTypesItemEnumList>;
+export const NetworkProfileNetworkFeaturesInterfaceTypesItemEnumList =
+  InstanceGroupManagerUpdatePolicyAllowedActionsItemEnumList as any as S.Schema<NetworkProfileNetworkFeaturesInterfaceTypesItemEnumList>;
 
 export type NetworkProfileNetworkFeaturesAllowExternalIpAccessEnum =
   | "EXTERNAL_IP_ACCESS_ALLOWED"
@@ -44672,9 +44629,8 @@ export const NetworkProfileNetworkFeaturesSubnetworkPurposesItemEnum = S.String;
 
 export type NetworkProfileNetworkFeaturesSubnetworkPurposesItemEnumList =
   Array<NetworkProfileNetworkFeaturesSubnetworkPurposesItemEnum>;
-export const NetworkProfileNetworkFeaturesSubnetworkPurposesItemEnumList = /*@__PURE__*/ S.Array(
-  NetworkProfileNetworkFeaturesSubnetworkPurposesItemEnum,
-) as any as S.Schema<NetworkProfileNetworkFeaturesSubnetworkPurposesItemEnumList>;
+export const NetworkProfileNetworkFeaturesSubnetworkPurposesItemEnumList =
+  InstanceGroupManagerUpdatePolicyAllowedActionsItemEnumList as any as S.Schema<NetworkProfileNetworkFeaturesSubnetworkPurposesItemEnumList>;
 
 export interface NetworkProfileNetworkFeatures {
   firewallPolicyTypes?: NetworkProfileNetworkFeaturesFirewallPolicyTypesItemEnumList;
@@ -45633,21 +45589,14 @@ export interface RolloutWaveDetailsOrchestratedWaveDetailsLocationStatus {
   /** Output only. Location state of the wave. */
   state?: RolloutWaveDetailsOrchestratedWaveDetailsLocationStatusStateEnum;
 }
-export const RolloutWaveDetailsOrchestratedWaveDetailsLocationStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: S.optional(RolloutWaveDetailsOrchestratedWaveDetailsLocationStatusStateEnum),
-  }),
-).annotate({
-  identifier: "RolloutWaveDetailsOrchestratedWaveDetailsLocationStatus",
-}) as any as S.Schema<RolloutWaveDetailsOrchestratedWaveDetailsLocationStatus>;
+export const RolloutWaveDetailsOrchestratedWaveDetailsLocationStatus =
+  DiskResourceStatusAsyncReplicationStatus as any as S.Schema<RolloutWaveDetailsOrchestratedWaveDetailsLocationStatus>;
 
 export type RolloutWaveDetailsOrchestratedWaveDetailsLocationStatusMap = {
   [key: string]: RolloutWaveDetailsOrchestratedWaveDetailsLocationStatus | undefined;
 };
-export const RolloutWaveDetailsOrchestratedWaveDetailsLocationStatusMap = /*@__PURE__*/ S.Record(
-  S.String,
-  RolloutWaveDetailsOrchestratedWaveDetailsLocationStatus,
-) as any as S.Schema<RolloutWaveDetailsOrchestratedWaveDetailsLocationStatusMap>;
+export const RolloutWaveDetailsOrchestratedWaveDetailsLocationStatusMap =
+  DiskResourceStatusAsyncReplicationStatusMap as any as S.Schema<RolloutWaveDetailsOrchestratedWaveDetailsLocationStatusMap>;
 
 /** Details of the wave for products using the Orchestrated integration model. */
 export interface RolloutWaveDetailsOrchestratedWaveDetails {
@@ -50245,9 +50194,8 @@ export type GetSubnetworksViewsEnum = "DEFAULT" | "WITH_UTILIZATION";
 export const GetSubnetworksViewsEnum = S.String;
 
 export type GetSubnetworksViewsEnumList = Array<GetSubnetworksViewsEnum | (string & {})>;
-export const GetSubnetworksViewsEnumList = /*@__PURE__*/ S.Array(
-  GetSubnetworksViewsEnum,
-) as any as S.Schema<GetSubnetworksViewsEnumList>;
+export const GetSubnetworksViewsEnumList =
+  InstanceGroupManagerUpdatePolicyAllowedActionsItemEnumList as any as S.Schema<GetSubnetworksViewsEnumList>;
 
 export interface GetSubnetworksRequest {
   /** Project ID for this request. */
@@ -50587,9 +50535,8 @@ export const HostsGetVersionRequestSbomSelectionsItemEnum = S.String;
 export type HostsGetVersionRequestSbomSelectionsItemEnumList = Array<
   HostsGetVersionRequestSbomSelectionsItemEnum | (string & {})
 >;
-export const HostsGetVersionRequestSbomSelectionsItemEnumList = /*@__PURE__*/ S.Array(
-  HostsGetVersionRequestSbomSelectionsItemEnum,
-) as any as S.Schema<HostsGetVersionRequestSbomSelectionsItemEnumList>;
+export const HostsGetVersionRequestSbomSelectionsItemEnumList =
+  InstanceGroupManagerUpdatePolicyAllowedActionsItemEnumList as any as S.Schema<HostsGetVersionRequestSbomSelectionsItemEnumList>;
 
 export interface HostsGetVersionRequest {
   /** The SBOM selection to return. Duplicate values in the list will be ignored. */
@@ -50641,9 +50588,8 @@ export const ReservationSlotsGetVersionRequestSbomSelectionsItemEnum = S.String;
 export type ReservationSlotsGetVersionRequestSbomSelectionsItemEnumList = Array<
   ReservationSlotsGetVersionRequestSbomSelectionsItemEnum | (string & {})
 >;
-export const ReservationSlotsGetVersionRequestSbomSelectionsItemEnumList = /*@__PURE__*/ S.Array(
-  ReservationSlotsGetVersionRequestSbomSelectionsItemEnum,
-) as any as S.Schema<ReservationSlotsGetVersionRequestSbomSelectionsItemEnumList>;
+export const ReservationSlotsGetVersionRequestSbomSelectionsItemEnumList =
+  InstanceGroupManagerUpdatePolicyAllowedActionsItemEnumList as any as S.Schema<ReservationSlotsGetVersionRequestSbomSelectionsItemEnumList>;
 
 export interface ReservationSlotsGetVersionRequest {
   /** The SBOM selection to return. Duplicate values in the list will be ignored. */
@@ -50700,9 +50646,7 @@ export type ReservationSubBlocksGetVersionRequestSbomSelectionsItemEnumList = Ar
   ReservationSubBlocksGetVersionRequestSbomSelectionsItemEnum | (string & {})
 >;
 export const ReservationSubBlocksGetVersionRequestSbomSelectionsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    ReservationSubBlocksGetVersionRequestSbomSelectionsItemEnum,
-  ) as any as S.Schema<ReservationSubBlocksGetVersionRequestSbomSelectionsItemEnumList>;
+  InstanceGroupManagersApplyUpdatesRequestAllowedActionsItemEnumList as any as S.Schema<ReservationSubBlocksGetVersionRequestSbomSelectionsItemEnumList>;
 
 export interface ReservationSubBlocksGetVersionRequest {
   /** The SBOM selection to return. */
@@ -51168,11 +51112,7 @@ export interface WireGroupProperties {
   /** The type of the wire group, one of the following: - WIRE: a single pseudowire over two Interconnect connections with no redundancy. - REDUNDANT: two pseudowires over four Interconnect connections, with two connections in one metro and two connections in another metro. Each redundant pair of Interconnect connections spans both edge availability domains of the metro. Each pseudowire connects Interconnect connections in matching edge availability domains of the two metros. - BOX_AND_CROSS: four pseudowires over four Interconnect connections, with two connections in one metro and two connections in another metro. Each redundant pair of Interconnect connections spans both edge availability domains of the metro. Two pseudowires connect Interconnect connections in matching edge availability domains of the two metros. Two additional pseudowires connect the non-matching edge availability domains of the two metros. */
   type?: WireGroupPropertiesTypeEnum | (string & {});
 }
-export const WireGroupProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(WireGroupPropertiesTypeEnum),
-  }),
-).annotate({ identifier: "WireGroupProperties" }) as any as S.Schema<WireGroupProperties>;
+export const WireGroupProperties = GuestOsFeature as any as S.Schema<WireGroupProperties>;
 
 /** Wire endpoints are specific Interconnect connections. */
 export interface WireEndpoint {
@@ -70190,9 +70130,8 @@ export type ListSubnetworksViewsEnum = "DEFAULT" | "WITH_UTILIZATION";
 export const ListSubnetworksViewsEnum = S.String;
 
 export type ListSubnetworksViewsEnumList = Array<ListSubnetworksViewsEnum | (string & {})>;
-export const ListSubnetworksViewsEnumList = /*@__PURE__*/ S.Array(
-  ListSubnetworksViewsEnum,
-) as any as S.Schema<ListSubnetworksViewsEnumList>;
+export const ListSubnetworksViewsEnumList =
+  InstanceGroupManagerUpdatePolicyAllowedActionsItemEnumList as any as S.Schema<ListSubnetworksViewsEnumList>;
 
 export interface ListSubnetworksRequest {
   /** Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name. You can also sort results in descending order based on the creation timestamp using `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first. Currently, only sorting by `name` or `creationTimestamp desc` is supported. */
@@ -75700,13 +75639,8 @@ export interface ReservationsPerformMaintenanceRequest {
   /** Specifies if all, running or unused hosts are in scope for this request. */
   maintenanceScope?: ReservationsPerformMaintenanceRequestMaintenanceScopeEnum | (string & {});
 }
-export const ReservationsPerformMaintenanceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maintenanceScope: S.optional(ReservationsPerformMaintenanceRequestMaintenanceScopeEnum),
-  }),
-).annotate({
-  identifier: "ReservationsPerformMaintenanceRequest",
-}) as any as S.Schema<ReservationsPerformMaintenanceRequest>;
+export const ReservationsPerformMaintenanceRequest =
+  ReservationsBlocksPerformMaintenanceRequest as any as S.Schema<ReservationsPerformMaintenanceRequest>;
 
 export interface PerformMaintenanceReservationsRequest {
   /** Project ID for this request. */
@@ -76674,20 +76608,13 @@ export interface InstancesReportHostAsFaultyRequestFaultReason {
   behavior?: InstancesReportHostAsFaultyRequestFaultReasonBehaviorEnum | (string & {});
   description?: string;
 }
-export const InstancesReportHostAsFaultyRequestFaultReason = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    behavior: S.optional(InstancesReportHostAsFaultyRequestFaultReasonBehaviorEnum),
-    description: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "InstancesReportHostAsFaultyRequestFaultReason",
-}) as any as S.Schema<InstancesReportHostAsFaultyRequestFaultReason>;
+export const InstancesReportHostAsFaultyRequestFaultReason =
+  ReservationSubBlocksReportFaultyRequestFaultReason as any as S.Schema<InstancesReportHostAsFaultyRequestFaultReason>;
 
 export type InstancesReportHostAsFaultyRequestFaultReasonList =
   Array<InstancesReportHostAsFaultyRequestFaultReason>;
-export const InstancesReportHostAsFaultyRequestFaultReasonList = /*@__PURE__*/ S.Array(
-  InstancesReportHostAsFaultyRequestFaultReason,
-) as any as S.Schema<InstancesReportHostAsFaultyRequestFaultReasonList>;
+export const InstancesReportHostAsFaultyRequestFaultReasonList =
+  ReservationSubBlocksReportFaultyRequestFaultReasonList as any as S.Schema<InstancesReportHostAsFaultyRequestFaultReasonList>;
 
 export type InstancesReportHostAsFaultyRequestActionHintEnum =
   | "ACTION_HINT_UNSPECIFIED"
@@ -80085,13 +80012,8 @@ export interface TargetTcpProxiesSetProxyHeaderRequest {
   /** The new type of proxy header to append before sending data to the backend. NONE or PROXY_V1 are allowed. */
   proxyHeader?: TargetTcpProxiesSetProxyHeaderRequestProxyHeaderEnum | (string & {});
 }
-export const TargetTcpProxiesSetProxyHeaderRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    proxyHeader: S.optional(TargetTcpProxiesSetProxyHeaderRequestProxyHeaderEnum),
-  }),
-).annotate({
-  identifier: "TargetTcpProxiesSetProxyHeaderRequest",
-}) as any as S.Schema<TargetTcpProxiesSetProxyHeaderRequest>;
+export const TargetTcpProxiesSetProxyHeaderRequest =
+  TargetSslProxiesSetProxyHeaderRequest as any as S.Schema<TargetTcpProxiesSetProxyHeaderRequest>;
 
 export interface SetProxyHeaderTargetTcpProxiesRequest {
   /** Project ID for this request. */
@@ -85437,9 +85359,8 @@ export const UrlMapsValidateRequestLoadBalancingSchemesItemEnum = S.String;
 export type UrlMapsValidateRequestLoadBalancingSchemesItemEnumList = Array<
   UrlMapsValidateRequestLoadBalancingSchemesItemEnum | (string & {})
 >;
-export const UrlMapsValidateRequestLoadBalancingSchemesItemEnumList = /*@__PURE__*/ S.Array(
-  UrlMapsValidateRequestLoadBalancingSchemesItemEnum,
-) as any as S.Schema<UrlMapsValidateRequestLoadBalancingSchemesItemEnumList>;
+export const UrlMapsValidateRequestLoadBalancingSchemesItemEnumList =
+  InstanceGroupManagerUpdatePolicyAllowedActionsItemEnumList as any as S.Schema<UrlMapsValidateRequestLoadBalancingSchemesItemEnumList>;
 
 export interface UrlMapsValidateRequest {
   /** Content of the UrlMap to be validated. */

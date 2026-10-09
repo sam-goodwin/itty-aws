@@ -188,7 +188,7 @@ export type AdditionalArtifact = "REDSHIFT" | "QUICKSIGHT" | "ATHENA" | (string 
 export const AdditionalArtifact = S.String;
 
 export type AdditionalArtifactList = AdditionalArtifact[];
-export const AdditionalArtifactList = /*@__PURE__*/ S.Array(AdditionalArtifact);
+export const AdditionalArtifactList = SchemaElementList as any as S.Schema<AdditionalArtifactList>;
 export type RefreshClosedReports = boolean;
 export type ReportVersioning = "CREATE_NEW_REPORT" | "OVERWRITE_REPORT" | (string & {});
 export const ReportVersioning = S.String;

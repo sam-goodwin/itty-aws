@@ -430,11 +430,9 @@ export interface ListTargetsFilter {
   Name: ListTargetsFilterName;
   Value: string;
 }
-export const ListTargetsFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: ListTargetsFilterName, Value: S.String }),
-).annotate({ identifier: "ListTargetsFilter" }) as any as S.Schema<ListTargetsFilter>;
+export const ListTargetsFilter = ListEventTypesFilter as any as S.Schema<ListTargetsFilter>;
 export type ListTargetsFilters = ListTargetsFilter[];
-export const ListTargetsFilters = /*@__PURE__*/ S.Array(ListTargetsFilter);
+export const ListTargetsFilters = ListEventTypesFilters as any as S.Schema<ListTargetsFilters>;
 export interface ListTargetsRequest {
   Filters?: ListTargetsFilter[];
   NextToken?: string;

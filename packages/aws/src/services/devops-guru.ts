@@ -169,7 +169,8 @@ export type NotificationMessageType =
 export const NotificationMessageType = S.String;
 
 export type NotificationMessageTypes = NotificationMessageType[];
-export const NotificationMessageTypes = /*@__PURE__*/ S.Array(NotificationMessageType);
+export const NotificationMessageTypes =
+  InsightSeverities as any as S.Schema<NotificationMessageTypes>;
 export interface NotificationFilterConfig {
   Severities?: InsightSeverity[];
   MessageTypes?: NotificationMessageType[];
@@ -1328,7 +1329,7 @@ export const StartTimeRange = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StartTimeRange" }) as any as S.Schema<StartTimeRange>;
 export type ListAnomaliesForInsightMaxResults = number;
 export type ServiceNames = ServiceName[];
-export const ServiceNames = /*@__PURE__*/ S.Array(ServiceName);
+export const ServiceNames = InsightSeverities as any as S.Schema<ServiceNames>;
 export interface ServiceCollection {
   ServiceNames?: ServiceName[];
 }
@@ -1783,7 +1784,7 @@ export type ResourceTypeFilter =
 export const ResourceTypeFilter = S.String;
 
 export type ResourceTypeFilters = ResourceTypeFilter[];
-export const ResourceTypeFilters = /*@__PURE__*/ S.Array(ResourceTypeFilter);
+export const ResourceTypeFilters = InsightSeverities as any as S.Schema<ResourceTypeFilters>;
 export interface ListMonitoredResourcesFilters {
   ResourcePermission: ResourcePermission;
   ResourceTypeFilters: ResourceTypeFilter[];
@@ -2152,7 +2153,7 @@ export const RemoveNotificationChannelResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "RemoveNotificationChannelResponse",
 }) as any as S.Schema<RemoveNotificationChannelResponse>;
 export type InsightStatuses = InsightStatus[];
-export const InsightStatuses = /*@__PURE__*/ S.Array(InsightStatus);
+export const InsightStatuses = InsightSeverities as any as S.Schema<InsightStatuses>;
 export interface SearchInsightsFilters {
   Severities?: InsightSeverity[];
   Statuses?: InsightStatus[];

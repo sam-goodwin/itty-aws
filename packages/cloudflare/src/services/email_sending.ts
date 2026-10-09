@@ -185,13 +185,8 @@ export interface CreateSuppressionResponseScopeType {
   /** Blocks the recipient for every sending domain of the account. */
   type: CreateSuppressionResponseScopeTypeType;
 }
-export const CreateSuppressionResponseScopeType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: CreateSuppressionResponseScopeTypeType,
-  }),
-).annotate({
-  identifier: "CreateSuppressionResponseScopeType",
-}) as any as S.Schema<CreateSuppressionResponseScopeType>;
+export const CreateSuppressionResponseScopeType =
+  CreateSuppressionRequestScopeType as any as S.Schema<CreateSuppressionResponseScopeType>;
 
 export type CreateSuppressionResponseScopeCase1Type = "sending_domain";
 export const CreateSuppressionResponseScopeCase1Type = S.String;
@@ -202,14 +197,8 @@ export interface CreateSuppressionResponseScopeCase1 {
   /** The sending domain: the domain part of the envelope MAIL FROM, lowercase, without a trailing dot. */
   value: string;
 }
-export const CreateSuppressionResponseScopeCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: CreateSuppressionResponseScopeCase1Type,
-    value: S.String,
-  }),
-).annotate({
-  identifier: "CreateSuppressionResponseScopeCase1",
-}) as any as S.Schema<CreateSuppressionResponseScopeCase1>;
+export const CreateSuppressionResponseScopeCase1 =
+  CreateSuppressionRequestScopeCase1 as any as S.Schema<CreateSuppressionResponseScopeCase1>;
 
 export type CreateSuppressionResponseScope =
   | CreateSuppressionResponseScopeType
@@ -291,13 +280,8 @@ export interface DeleteSuppressionResponseScopeType {
   /** Blocks the recipient for every sending domain of the account. */
   type: DeleteSuppressionResponseScopeTypeType;
 }
-export const DeleteSuppressionResponseScopeType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: DeleteSuppressionResponseScopeTypeType,
-  }),
-).annotate({
-  identifier: "DeleteSuppressionResponseScopeType",
-}) as any as S.Schema<DeleteSuppressionResponseScopeType>;
+export const DeleteSuppressionResponseScopeType =
+  CreateSuppressionRequestScopeType as any as S.Schema<DeleteSuppressionResponseScopeType>;
 
 export type DeleteSuppressionResponseScopeCase1Type = "sending_domain";
 export const DeleteSuppressionResponseScopeCase1Type = S.String;
@@ -308,14 +292,8 @@ export interface DeleteSuppressionResponseScopeCase1 {
   /** The sending domain: the domain part of the envelope MAIL FROM, lowercase, without a trailing dot. */
   value: string;
 }
-export const DeleteSuppressionResponseScopeCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: DeleteSuppressionResponseScopeCase1Type,
-    value: S.String,
-  }),
-).annotate({
-  identifier: "DeleteSuppressionResponseScopeCase1",
-}) as any as S.Schema<DeleteSuppressionResponseScopeCase1>;
+export const DeleteSuppressionResponseScopeCase1 =
+  CreateSuppressionRequestScopeCase1 as any as S.Schema<DeleteSuppressionResponseScopeCase1>;
 
 export type DeleteSuppressionResponseScope =
   | DeleteSuppressionResponseScopeType
@@ -431,13 +409,8 @@ export interface EditSuppressionResponseScopeType {
   /** Blocks the recipient for every sending domain of the account. */
   type: EditSuppressionResponseScopeTypeType;
 }
-export const EditSuppressionResponseScopeType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: EditSuppressionResponseScopeTypeType,
-  }),
-).annotate({
-  identifier: "EditSuppressionResponseScopeType",
-}) as any as S.Schema<EditSuppressionResponseScopeType>;
+export const EditSuppressionResponseScopeType =
+  CreateSuppressionRequestScopeType as any as S.Schema<EditSuppressionResponseScopeType>;
 
 export type EditSuppressionResponseScopeCase1Type = "sending_domain";
 export const EditSuppressionResponseScopeCase1Type = S.String;
@@ -448,14 +421,8 @@ export interface EditSuppressionResponseScopeCase1 {
   /** The sending domain: the domain part of the envelope MAIL FROM, lowercase, without a trailing dot. */
   value: string;
 }
-export const EditSuppressionResponseScopeCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: EditSuppressionResponseScopeCase1Type,
-    value: S.String,
-  }),
-).annotate({
-  identifier: "EditSuppressionResponseScopeCase1",
-}) as any as S.Schema<EditSuppressionResponseScopeCase1>;
+export const EditSuppressionResponseScopeCase1 =
+  CreateSuppressionRequestScopeCase1 as any as S.Schema<EditSuppressionResponseScopeCase1>;
 
 export type EditSuppressionResponseScope =
   | EditSuppressionResponseScopeType
@@ -656,13 +623,8 @@ export interface GetSuppressionResponseScopeType {
   /** Blocks the recipient for every sending domain of the account. */
   type: GetSuppressionResponseScopeTypeType;
 }
-export const GetSuppressionResponseScopeType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: GetSuppressionResponseScopeTypeType,
-  }),
-).annotate({
-  identifier: "GetSuppressionResponseScopeType",
-}) as any as S.Schema<GetSuppressionResponseScopeType>;
+export const GetSuppressionResponseScopeType =
+  CreateSuppressionRequestScopeType as any as S.Schema<GetSuppressionResponseScopeType>;
 
 export type GetSuppressionResponseScopeCase1Type = "sending_domain";
 export const GetSuppressionResponseScopeCase1Type = S.String;
@@ -673,14 +635,8 @@ export interface GetSuppressionResponseScopeCase1 {
   /** The sending domain: the domain part of the envelope MAIL FROM, lowercase, without a trailing dot. */
   value: string;
 }
-export const GetSuppressionResponseScopeCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: GetSuppressionResponseScopeCase1Type,
-    value: S.String,
-  }),
-).annotate({
-  identifier: "GetSuppressionResponseScopeCase1",
-}) as any as S.Schema<GetSuppressionResponseScopeCase1>;
+export const GetSuppressionResponseScopeCase1 =
+  CreateSuppressionRequestScopeCase1 as any as S.Schema<GetSuppressionResponseScopeCase1>;
 
 export type GetSuppressionResponseScope =
   | GetSuppressionResponseScopeType
@@ -731,13 +687,8 @@ export interface ImportSuppressionRequestItemsItemScopeType {
   /** Blocks the recipient for every sending domain of the account. */
   type: ImportSuppressionRequestItemsItemScopeTypeType;
 }
-export const ImportSuppressionRequestItemsItemScopeType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ImportSuppressionRequestItemsItemScopeTypeType,
-  }),
-).annotate({
-  identifier: "ImportSuppressionRequestItemsItemScopeType",
-}) as any as S.Schema<ImportSuppressionRequestItemsItemScopeType>;
+export const ImportSuppressionRequestItemsItemScopeType =
+  CreateSuppressionRequestScopeType as any as S.Schema<ImportSuppressionRequestItemsItemScopeType>;
 
 export type ImportSuppressionRequestItemsItemScopeCase1Type = "sending_domain";
 export const ImportSuppressionRequestItemsItemScopeCase1Type = S.String;
@@ -748,14 +699,8 @@ export interface ImportSuppressionRequestItemsItemScopeCase1 {
   /** The sending domain to suppress for: the domain part of the envelope MAIL FROM. It is lowercased and trailing dots are removed. Internationalized domains must use the ASCII (punycode) form. Ownership is not checked; a domain the account does not send from never matches. */
   value: string;
 }
-export const ImportSuppressionRequestItemsItemScopeCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ImportSuppressionRequestItemsItemScopeCase1Type,
-    value: S.String,
-  }),
-).annotate({
-  identifier: "ImportSuppressionRequestItemsItemScopeCase1",
-}) as any as S.Schema<ImportSuppressionRequestItemsItemScopeCase1>;
+export const ImportSuppressionRequestItemsItemScopeCase1 =
+  CreateSuppressionRequestScopeCase1 as any as S.Schema<ImportSuppressionRequestItemsItemScopeCase1>;
 
 export type ImportSuppressionRequestItemsItemScope =
   | ImportSuppressionRequestItemsItemScopeType
@@ -828,13 +773,8 @@ export interface ImportSuppressionResponseItemsItemScopeType {
   /** Blocks the recipient for every sending domain of the account. */
   type: ImportSuppressionResponseItemsItemScopeTypeType;
 }
-export const ImportSuppressionResponseItemsItemScopeType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ImportSuppressionResponseItemsItemScopeTypeType,
-  }),
-).annotate({
-  identifier: "ImportSuppressionResponseItemsItemScopeType",
-}) as any as S.Schema<ImportSuppressionResponseItemsItemScopeType>;
+export const ImportSuppressionResponseItemsItemScopeType =
+  CreateSuppressionRequestScopeType as any as S.Schema<ImportSuppressionResponseItemsItemScopeType>;
 
 export type ImportSuppressionResponseItemsItemScopeCase1Type = "sending_domain";
 export const ImportSuppressionResponseItemsItemScopeCase1Type = S.String;
@@ -845,14 +785,8 @@ export interface ImportSuppressionResponseItemsItemScopeCase1 {
   /** The sending domain: the domain part of the envelope MAIL FROM, lowercase, without a trailing dot. */
   value: string;
 }
-export const ImportSuppressionResponseItemsItemScopeCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ImportSuppressionResponseItemsItemScopeCase1Type,
-    value: S.String,
-  }),
-).annotate({
-  identifier: "ImportSuppressionResponseItemsItemScopeCase1",
-}) as any as S.Schema<ImportSuppressionResponseItemsItemScopeCase1>;
+export const ImportSuppressionResponseItemsItemScopeCase1 =
+  CreateSuppressionRequestScopeCase1 as any as S.Schema<ImportSuppressionResponseItemsItemScopeCase1>;
 
 export type ImportSuppressionResponseItemsItemScope =
   | ImportSuppressionResponseItemsItemScopeType
@@ -1050,13 +984,8 @@ export interface ListSuppressionsResultItemScopeType {
   /** Blocks the recipient for every sending domain of the account. */
   type: ListSuppressionsResultItemScopeTypeType;
 }
-export const ListSuppressionsResultItemScopeType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ListSuppressionsResultItemScopeTypeType,
-  }),
-).annotate({
-  identifier: "ListSuppressionsResultItemScopeType",
-}) as any as S.Schema<ListSuppressionsResultItemScopeType>;
+export const ListSuppressionsResultItemScopeType =
+  CreateSuppressionRequestScopeType as any as S.Schema<ListSuppressionsResultItemScopeType>;
 
 export type ListSuppressionsResultItemScopeCase1Type = "sending_domain";
 export const ListSuppressionsResultItemScopeCase1Type = S.String;
@@ -1067,14 +996,8 @@ export interface ListSuppressionsResultItemScopeCase1 {
   /** The sending domain: the domain part of the envelope MAIL FROM, lowercase, without a trailing dot. */
   value: string;
 }
-export const ListSuppressionsResultItemScopeCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ListSuppressionsResultItemScopeCase1Type,
-    value: S.String,
-  }),
-).annotate({
-  identifier: "ListSuppressionsResultItemScopeCase1",
-}) as any as S.Schema<ListSuppressionsResultItemScopeCase1>;
+export const ListSuppressionsResultItemScopeCase1 =
+  CreateSuppressionRequestScopeCase1 as any as S.Schema<ListSuppressionsResultItemScopeCase1>;
 
 export type ListSuppressionsResultItemScope =
   | ListSuppressionsResultItemScopeType

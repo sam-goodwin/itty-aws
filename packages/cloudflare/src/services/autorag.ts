@@ -179,16 +179,7 @@ export interface ListJobsResultItem {
   lastSeenAt?: string | null;
   startedAt?: string | null;
 }
-export const ListJobsResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    source: ListJobsResultItemSource,
-    endReason: S.optional(S.NullOr(S.String).pipe(T.Body("end_reason"))),
-    endedAt: S.optional(S.NullOr(S.String).pipe(T.Body("ended_at"))),
-    lastSeenAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_seen_at"))),
-    startedAt: S.optional(S.NullOr(S.String).pipe(T.Body("started_at"))),
-  }),
-).annotate({ identifier: "ListJobsResultItem" }) as any as S.Schema<ListJobsResultItem>;
+export const ListJobsResultItem = GetJobResponse as any as S.Schema<ListJobsResultItem>;
 
 export type ListJobsResultList = Array<ListJobsResultItem>;
 export const ListJobsResultList = /*@__PURE__*/ S.Array(
@@ -500,12 +491,8 @@ export interface SearchAiRequestReranking {
   enabled?: boolean;
   model?: SearchAiRequestRerankingModel | (string & {});
 }
-export const SearchAiRequestReranking = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-    model: S.optional(SearchAiRequestRerankingModel),
-  }),
-).annotate({ identifier: "SearchAiRequestReranking" }) as any as S.Schema<SearchAiRequestReranking>;
+export const SearchAiRequestReranking =
+  SearchRequestReranking as any as S.Schema<SearchAiRequestReranking>;
 
 export interface SearchAiRequest {
   accountId: string;

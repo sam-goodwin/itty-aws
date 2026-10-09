@@ -1399,9 +1399,8 @@ export const ReturnPolicyOnlineItemConditionsItemEnum = /*@__PURE__*/ S.String;
 export type ReturnPolicyOnlineItemConditionsItemEnumList = Array<
   ReturnPolicyOnlineItemConditionsItemEnum | (string & {})
 >;
-export const ReturnPolicyOnlineItemConditionsItemEnumList = /*@__PURE__*/ S.Array(
-  ReturnPolicyOnlineItemConditionsItemEnum,
-) as any as S.Schema<ReturnPolicyOnlineItemConditionsItemEnumList>;
+export const ReturnPolicyOnlineItemConditionsItemEnumList =
+  PromotionRedemptionChannelItemEnumList as any as S.Schema<ReturnPolicyOnlineItemConditionsItemEnumList>;
 
 /** The restocking fee. This can either be a fixed fee or a micro percent. */
 export interface ReturnPolicyOnlineRestockingFee {
@@ -1429,9 +1428,8 @@ export const ReturnPolicyOnlineReturnMethodsItemEnum = /*@__PURE__*/ S.String;
 export type ReturnPolicyOnlineReturnMethodsItemEnumList = Array<
   ReturnPolicyOnlineReturnMethodsItemEnum | (string & {})
 >;
-export const ReturnPolicyOnlineReturnMethodsItemEnumList = /*@__PURE__*/ S.Array(
-  ReturnPolicyOnlineReturnMethodsItemEnum,
-) as any as S.Schema<ReturnPolicyOnlineReturnMethodsItemEnumList>;
+export const ReturnPolicyOnlineReturnMethodsItemEnumList =
+  PromotionRedemptionChannelItemEnumList as any as S.Schema<ReturnPolicyOnlineReturnMethodsItemEnumList>;
 
 /** Return policy online object. This is currently used to represent return policies for ads and free listings programs. */
 export interface ReturnPolicyOnline {
@@ -9195,14 +9193,8 @@ export interface RenderProductIssuesRequestPayload {
     | RenderProductIssuesRequestPayloadUserInputActionOptionEnum
     | (string & {});
 }
-export const RenderProductIssuesRequestPayload = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contentOption: S.optional(RenderProductIssuesRequestPayloadContentOptionEnum),
-    userInputActionOption: S.optional(RenderProductIssuesRequestPayloadUserInputActionOptionEnum),
-  }),
-).annotate({
-  identifier: "RenderProductIssuesRequestPayload",
-}) as any as S.Schema<RenderProductIssuesRequestPayload>;
+export const RenderProductIssuesRequestPayload =
+  RenderAccountIssuesRequestPayload as any as S.Schema<RenderProductIssuesRequestPayload>;
 
 export interface RenderproductissuesMerchantsupportRequest {
   /** Optional. The [IANA](https://www.iana.org/time-zones) timezone used to localize times in support content. For example 'America/Los_Angeles'. If not set, results will use as a default UTC. */

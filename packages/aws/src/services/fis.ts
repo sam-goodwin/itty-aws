@@ -1160,9 +1160,7 @@ export interface SafetyLeverState {
   status?: SafetyLeverStatus;
   reason?: string;
 }
-export const SafetyLeverState = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ status: S.optional(SafetyLeverStatus), reason: S.optional(S.String) }),
-).annotate({ identifier: "SafetyLeverState" }) as any as S.Schema<SafetyLeverState>;
+export const SafetyLeverState = ExperimentActionState as any as S.Schema<SafetyLeverState>;
 export interface SafetyLever {
   id?: string;
   arn?: string;

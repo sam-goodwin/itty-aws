@@ -300,22 +300,8 @@ export interface GetMtlsCertificateResponse {
   /** This is the time the certificate was uploaded. */
   uploadedOn?: string | null;
 }
-export const GetMtlsCertificateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    ca: S.optional(S.NullOr(S.Boolean)),
-    certificates: S.optional(S.NullOr(S.String)),
-    expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
-    issuer: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-    serialNumber: S.optional(S.NullOr(S.String).pipe(T.Body("serial_number"))),
-    signature: S.optional(S.NullOr(S.String)),
-    type: S.optional(S.NullOr(GetResponseType)),
-    uploadedOn: S.optional(S.NullOr(S.String).pipe(T.Body("uploaded_on"))),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "GetMtlsCertificateResponse",
-}) as any as S.Schema<GetMtlsCertificateResponse>;
+export const GetMtlsCertificateResponse =
+  DeleteMtlsCertificateResponse as any as S.Schema<GetMtlsCertificateResponse>;
 
 export type ListRequestType = "custom" | "gateway_managed" | "access_managed";
 export const ListRequestType = S.String;

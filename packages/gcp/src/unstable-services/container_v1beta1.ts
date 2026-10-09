@@ -1480,9 +1480,8 @@ export const HostConfigCapabilitiesItemEnum = S.String;
 export type HostConfigCapabilitiesItemEnumList = Array<
   HostConfigCapabilitiesItemEnum | (string & {})
 >;
-export const HostConfigCapabilitiesItemEnumList = /*@__PURE__*/ S.Array(
-  HostConfigCapabilitiesItemEnum,
-) as any as S.Schema<HostConfigCapabilitiesItemEnumList>;
+export const HostConfigCapabilitiesItemEnumList =
+  LoggingComponentConfigEnableComponentsItemEnumList as any as S.Schema<HostConfigCapabilitiesItemEnumList>;
 
 export type CertificateConfigList = Array<CertificateConfig>;
 export const CertificateConfigList = /*@__PURE__*/ S.Array(
@@ -2144,9 +2143,8 @@ export type FilterEventTypeItemEnum =
 export const FilterEventTypeItemEnum = S.String;
 
 export type FilterEventTypeItemEnumList = Array<FilterEventTypeItemEnum | (string & {})>;
-export const FilterEventTypeItemEnumList = /*@__PURE__*/ S.Array(
-  FilterEventTypeItemEnum,
-) as any as S.Schema<FilterEventTypeItemEnumList>;
+export const FilterEventTypeItemEnumList =
+  LoggingComponentConfigEnableComponentsItemEnumList as any as S.Schema<FilterEventTypeItemEnumList>;
 
 /** Allows filtering to one or more specific event types. If event types are present, those and only those event types will be transmitted to the cluster. Other types will be skipped. If no filter is specified, or no event types are present, all event types will be sent */
 export interface Filter {
@@ -3840,11 +3838,7 @@ export interface ReleaseChannel {
   /** channel specifies which release channel the cluster is subscribed to. */
   channel?: ReleaseChannelChannelEnum | (string & {});
 }
-export const ReleaseChannel = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    channel: S.optional(ReleaseChannelChannelEnum),
-  }),
-).annotate({ identifier: "ReleaseChannel" }) as any as S.Schema<ReleaseChannel>;
+export const ReleaseChannel = GatewayAPIConfig as any as S.Schema<ReleaseChannel>;
 
 /** Parameters for controlling consumption metering. */
 export interface ConsumptionMeteringConfig {
@@ -4119,9 +4113,8 @@ export const MonitoringComponentConfigEnableComponentsItemEnum = S.String;
 export type MonitoringComponentConfigEnableComponentsItemEnumList = Array<
   MonitoringComponentConfigEnableComponentsItemEnum | (string & {})
 >;
-export const MonitoringComponentConfigEnableComponentsItemEnumList = /*@__PURE__*/ S.Array(
-  MonitoringComponentConfigEnableComponentsItemEnum,
-) as any as S.Schema<MonitoringComponentConfigEnableComponentsItemEnumList>;
+export const MonitoringComponentConfigEnableComponentsItemEnumList =
+  LoggingComponentConfigEnableComponentsItemEnumList as any as S.Schema<MonitoringComponentConfigEnableComponentsItemEnumList>;
 
 /** MonitoringComponentConfig is cluster monitoring component configuration. */
 export interface MonitoringComponentConfig {
@@ -5386,9 +5379,8 @@ export const ClusterUpgradeInfoAutoUpgradeStatusItemEnum = S.String;
 
 export type ClusterUpgradeInfoAutoUpgradeStatusItemEnumList =
   Array<ClusterUpgradeInfoAutoUpgradeStatusItemEnum>;
-export const ClusterUpgradeInfoAutoUpgradeStatusItemEnumList = /*@__PURE__*/ S.Array(
-  ClusterUpgradeInfoAutoUpgradeStatusItemEnum,
-) as any as S.Schema<ClusterUpgradeInfoAutoUpgradeStatusItemEnumList>;
+export const ClusterUpgradeInfoAutoUpgradeStatusItemEnumList =
+  LoggingComponentConfigEnableComponentsItemEnumList as any as S.Schema<ClusterUpgradeInfoAutoUpgradeStatusItemEnumList>;
 
 export type ClusterUpgradeInfoPausedReasonItemEnum =
   | "AUTO_UPGRADE_PAUSED_REASON_UNSPECIFIED"
@@ -5402,9 +5394,8 @@ export const ClusterUpgradeInfoPausedReasonItemEnum = S.String;
 
 export type ClusterUpgradeInfoPausedReasonItemEnumList =
   Array<ClusterUpgradeInfoPausedReasonItemEnum>;
-export const ClusterUpgradeInfoPausedReasonItemEnumList = /*@__PURE__*/ S.Array(
-  ClusterUpgradeInfoPausedReasonItemEnum,
-) as any as S.Schema<ClusterUpgradeInfoPausedReasonItemEnumList>;
+export const ClusterUpgradeInfoPausedReasonItemEnumList =
+  LoggingComponentConfigEnableComponentsItemEnumList as any as S.Schema<ClusterUpgradeInfoPausedReasonItemEnumList>;
 
 export type RollbackSafeUpgradeStatusModeEnum =
   | "MODE_UNSPECIFIED"
@@ -5569,9 +5560,8 @@ export const NodePoolUpgradeInfoPausedReasonItemEnum = S.String;
 
 export type NodePoolUpgradeInfoPausedReasonItemEnumList =
   Array<NodePoolUpgradeInfoPausedReasonItemEnum>;
-export const NodePoolUpgradeInfoPausedReasonItemEnumList = /*@__PURE__*/ S.Array(
-  NodePoolUpgradeInfoPausedReasonItemEnum,
-) as any as S.Schema<NodePoolUpgradeInfoPausedReasonItemEnumList>;
+export const NodePoolUpgradeInfoPausedReasonItemEnumList =
+  LoggingComponentConfigEnableComponentsItemEnumList as any as S.Schema<NodePoolUpgradeInfoPausedReasonItemEnumList>;
 
 export type NodePoolUpgradeInfoAutoUpgradeStatusItemEnum =
   | "UNKNOWN"
@@ -5582,9 +5572,8 @@ export const NodePoolUpgradeInfoAutoUpgradeStatusItemEnum = S.String;
 
 export type NodePoolUpgradeInfoAutoUpgradeStatusItemEnumList =
   Array<NodePoolUpgradeInfoAutoUpgradeStatusItemEnum>;
-export const NodePoolUpgradeInfoAutoUpgradeStatusItemEnumList = /*@__PURE__*/ S.Array(
-  NodePoolUpgradeInfoAutoUpgradeStatusItemEnum,
-) as any as S.Schema<NodePoolUpgradeInfoAutoUpgradeStatusItemEnumList>;
+export const NodePoolUpgradeInfoAutoUpgradeStatusItemEnumList =
+  LoggingComponentConfigEnableComponentsItemEnumList as any as S.Schema<NodePoolUpgradeInfoAutoUpgradeStatusItemEnumList>;
 
 /** NodePoolUpgradeInfo contains the upgrade information of a node pool. */
 export interface NodePoolUpgradeInfo {

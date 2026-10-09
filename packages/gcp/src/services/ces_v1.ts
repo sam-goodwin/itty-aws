@@ -5605,9 +5605,8 @@ export const ListProjectsLocationsAppsConversationsSourcesEnum = S.String;
 export type ListProjectsLocationsAppsConversationsSourcesEnumList = Array<
   ListProjectsLocationsAppsConversationsSourcesEnum | (string & {})
 >;
-export const ListProjectsLocationsAppsConversationsSourcesEnumList = /*@__PURE__*/ S.Array(
-  ListProjectsLocationsAppsConversationsSourcesEnum,
-) as any as S.Schema<ListProjectsLocationsAppsConversationsSourcesEnumList>;
+export const ListProjectsLocationsAppsConversationsSourcesEnumList =
+  ConversationInputTypesItemEnumList as any as S.Schema<ListProjectsLocationsAppsConversationsSourcesEnumList>;
 
 export type ListProjectsLocationsAppsConversationsSourceEnum =
   | "SOURCE_UNSPECIFIED"
@@ -6774,9 +6773,8 @@ export const StreamChatAiAssistantRequestClientCapabilitiesItemEnum = S.String;
 export type StreamChatAiAssistantRequestClientCapabilitiesItemEnumList = Array<
   StreamChatAiAssistantRequestClientCapabilitiesItemEnum | (string & {})
 >;
-export const StreamChatAiAssistantRequestClientCapabilitiesItemEnumList = /*@__PURE__*/ S.Array(
-  StreamChatAiAssistantRequestClientCapabilitiesItemEnum,
-) as any as S.Schema<StreamChatAiAssistantRequestClientCapabilitiesItemEnumList>;
+export const StreamChatAiAssistantRequestClientCapabilitiesItemEnumList =
+  ConversationInputTypesItemEnumList as any as S.Schema<StreamChatAiAssistantRequestClientCapabilitiesItemEnumList>;
 
 /** Event sent by the client or background worker to resume an assistant session after an asynchronous Long-Running Operation (LRO) completes. */
 export interface OperationCompletedEvent {

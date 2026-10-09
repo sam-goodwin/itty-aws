@@ -1168,15 +1168,8 @@ export interface GlobalSecondaryIndexWarmThroughputDescription {
   WriteUnitsPerSecond?: number;
   Status?: IndexStatus;
 }
-export const GlobalSecondaryIndexWarmThroughputDescription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ReadUnitsPerSecond: S.optional(S.Number),
-    WriteUnitsPerSecond: S.optional(S.Number),
-    Status: S.optional(IndexStatus),
-  }),
-).annotate({
-  identifier: "GlobalSecondaryIndexWarmThroughputDescription",
-}) as any as S.Schema<GlobalSecondaryIndexWarmThroughputDescription>;
+export const GlobalSecondaryIndexWarmThroughputDescription =
+  TableWarmThroughputDescription as any as S.Schema<GlobalSecondaryIndexWarmThroughputDescription>;
 export interface ReplicaGlobalSecondaryIndexDescription {
   IndexName?: string;
   ProvisionedThroughputOverride?: ProvisionedThroughputOverride;

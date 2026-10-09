@@ -10047,21 +10047,14 @@ export interface StatefulPolicyPreservedStateDiskDevice {
   /** These stateful disks will never be deleted during autohealing, update or VM instance recreate operations. This flag is used to configure if the disk should be deleted after it is no longer used by the group, e.g. when the given instance or the whole group is deleted. Note: disks attached inREAD_ONLY mode cannot be auto-deleted. */
   autoDelete?: StatefulPolicyPreservedStateDiskDeviceAutoDeleteEnum | (string & {});
 }
-export const StatefulPolicyPreservedStateDiskDevice = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    autoDelete: S.optional(StatefulPolicyPreservedStateDiskDeviceAutoDeleteEnum),
-  }),
-).annotate({
-  identifier: "StatefulPolicyPreservedStateDiskDevice",
-}) as any as S.Schema<StatefulPolicyPreservedStateDiskDevice>;
+export const StatefulPolicyPreservedStateDiskDevice =
+  StatefulPolicyPreservedStateNetworkIp as any as S.Schema<StatefulPolicyPreservedStateDiskDevice>;
 
 export type StatefulPolicyPreservedStateDiskDeviceMap = {
   [key: string]: StatefulPolicyPreservedStateDiskDevice | undefined;
 };
-export const StatefulPolicyPreservedStateDiskDeviceMap = /*@__PURE__*/ S.Record(
-  S.String,
-  StatefulPolicyPreservedStateDiskDevice,
-) as any as S.Schema<StatefulPolicyPreservedStateDiskDeviceMap>;
+export const StatefulPolicyPreservedStateDiskDeviceMap =
+  StatefulPolicyPreservedStateNetworkIpMap as any as S.Schema<StatefulPolicyPreservedStateDiskDeviceMap>;
 
 /** Configuration of preserved resources. */
 export interface StatefulPolicyPreservedState {
@@ -14847,11 +14840,7 @@ export const ServerBindingTypeEnum = S.String;
 export interface ServerBinding {
   type?: ServerBindingTypeEnum | (string & {});
 }
-export const ServerBinding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(ServerBindingTypeEnum),
-  }),
-).annotate({ identifier: "ServerBinding" }) as any as S.Schema<ServerBinding>;
+export const ServerBinding = GuestOsFeature as any as S.Schema<ServerBinding>;
 
 export type NodeTemplateStatusEnum = "CREATING" | "DELETING" | "INVALID" | "READY";
 export const NodeTemplateStatusEnum = S.String;
@@ -18928,9 +18917,8 @@ export const RouterNatSubnetworkToNatSourceIpRangesToNatItemEnum = S.String;
 export type RouterNatSubnetworkToNatSourceIpRangesToNatItemEnumList = Array<
   RouterNatSubnetworkToNatSourceIpRangesToNatItemEnum | (string & {})
 >;
-export const RouterNatSubnetworkToNatSourceIpRangesToNatItemEnumList = /*@__PURE__*/ S.Array(
-  RouterNatSubnetworkToNatSourceIpRangesToNatItemEnum,
-) as any as S.Schema<RouterNatSubnetworkToNatSourceIpRangesToNatItemEnumList>;
+export const RouterNatSubnetworkToNatSourceIpRangesToNatItemEnumList =
+  UpcomingMaintenanceMaintenanceReasonsItemEnumList as any as S.Schema<RouterNatSubnetworkToNatSourceIpRangesToNatItemEnumList>;
 
 /** Defines the IP ranges that want to use NAT for a subnetwork. */
 export interface RouterNatSubnetworkToNat {
@@ -19048,9 +19036,8 @@ export const RouterNatEndpointTypesItemEnum = S.String;
 export type RouterNatEndpointTypesItemEnumList = Array<
   RouterNatEndpointTypesItemEnum | (string & {})
 >;
-export const RouterNatEndpointTypesItemEnumList = /*@__PURE__*/ S.Array(
-  RouterNatEndpointTypesItemEnum,
-) as any as S.Schema<RouterNatEndpointTypesItemEnumList>;
+export const RouterNatEndpointTypesItemEnumList =
+  UpcomingMaintenanceMaintenanceReasonsItemEnumList as any as S.Schema<RouterNatEndpointTypesItemEnumList>;
 
 /** Represents a Nat resource. It enables the VMs within the specified subnetworks to access Internet without external IP addresses. It specifies a list of subnetworks (and the ranges within) that want to use NAT. Customers can also provide the external IPs that would be used for NAT. GCP would auto-allocate ephemeral IPs if no external IPs are provided. */
 export interface RouterNat {
@@ -19159,9 +19146,8 @@ export const RouterBgpAdvertisedGroupsItemEnum = S.String;
 export type RouterBgpAdvertisedGroupsItemEnumList = Array<
   RouterBgpAdvertisedGroupsItemEnum | (string & {})
 >;
-export const RouterBgpAdvertisedGroupsItemEnumList = /*@__PURE__*/ S.Array(
-  RouterBgpAdvertisedGroupsItemEnum,
-) as any as S.Schema<RouterBgpAdvertisedGroupsItemEnumList>;
+export const RouterBgpAdvertisedGroupsItemEnumList =
+  UpcomingMaintenanceMaintenanceReasonsItemEnumList as any as S.Schema<RouterBgpAdvertisedGroupsItemEnumList>;
 
 export interface RouterBgp {
   /** User-specified flag to indicate which mode to use for advertisement. The options are DEFAULT or CUSTOM. */
@@ -19294,9 +19280,8 @@ export const RouterBgpPeerAdvertisedGroupsItemEnum = S.String;
 export type RouterBgpPeerAdvertisedGroupsItemEnumList = Array<
   RouterBgpPeerAdvertisedGroupsItemEnum | (string & {})
 >;
-export const RouterBgpPeerAdvertisedGroupsItemEnumList = /*@__PURE__*/ S.Array(
-  RouterBgpPeerAdvertisedGroupsItemEnum,
-) as any as S.Schema<RouterBgpPeerAdvertisedGroupsItemEnumList>;
+export const RouterBgpPeerAdvertisedGroupsItemEnumList =
+  UpcomingMaintenanceMaintenanceReasonsItemEnumList as any as S.Schema<RouterBgpPeerAdvertisedGroupsItemEnumList>;
 
 export interface RouterBgpPeer {
   /** User-specified list of individual IP ranges to advertise in custom mode. This field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These IP ranges are advertised in addition to any specified groups. Leave this field blank to advertise no custom IP ranges. */
@@ -21758,9 +21743,8 @@ export const AggregatedListSubnetworksViewsEnum = S.String;
 export type AggregatedListSubnetworksViewsEnumList = Array<
   AggregatedListSubnetworksViewsEnum | (string & {})
 >;
-export const AggregatedListSubnetworksViewsEnumList = /*@__PURE__*/ S.Array(
-  AggregatedListSubnetworksViewsEnum,
-) as any as S.Schema<AggregatedListSubnetworksViewsEnumList>;
+export const AggregatedListSubnetworksViewsEnumList =
+  UpcomingMaintenanceMaintenanceReasonsItemEnumList as any as S.Schema<AggregatedListSubnetworksViewsEnumList>;
 
 export interface AggregatedListSubnetworksRequest {
   /** A filter expression that filters resources listed in the response. Most Compute resources support two types of filter expressions: expressions that support regular expressions and expressions that follow API improvement proposal AIP-160. These two types of filter expressions cannot be mixed in one request. If you want to use AIP-160, your expression must specify the field name, an operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For example, if you are filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying `name != example-instance`. The `:*` comparison can be used to test whether a key has been defined. For example, to find all objects with `owner` label use: ``` labels.owner:* ``` You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based onresource labels. To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart = true) ``` If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or against multiple parenthesized expressions. Examples: `fieldname eq unquoted literal` `fieldname eq 'single quoted literal'` `fieldname eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne "literal")` The literal value is interpreted as a regular expression using GoogleRE2 library syntax. The literal value must match the entire field. For example, to filter for instances that do not end with name "instance", you would use `name ne .*instance`. You cannot combine constraints on multiple fields using regular expressions. */
@@ -26849,15 +26833,8 @@ export interface CapacityHistoryRequestInstancePropertiesScheduling {
     | CapacityHistoryRequestInstancePropertiesSchedulingProvisioningModelEnum
     | (string & {});
 }
-export const CapacityHistoryRequestInstancePropertiesScheduling = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    provisioningModel: S.optional(
-      CapacityHistoryRequestInstancePropertiesSchedulingProvisioningModelEnum,
-    ),
-  }),
-).annotate({
-  identifier: "CapacityHistoryRequestInstancePropertiesScheduling",
-}) as any as S.Schema<CapacityHistoryRequestInstancePropertiesScheduling>;
+export const CapacityHistoryRequestInstancePropertiesScheduling =
+  CapacityAdviceRequestInstancePropertiesScheduling as any as S.Schema<CapacityHistoryRequestInstancePropertiesScheduling>;
 
 export type CapacityHistoryRequestInstancePropertiesAttachedDiskTypeEnum =
   | "DISK_TYPE_UNSPECIFIED"
@@ -26927,9 +26904,8 @@ export const CapacityHistoryRequestTypesItemEnum = S.String;
 export type CapacityHistoryRequestTypesItemEnumList = Array<
   CapacityHistoryRequestTypesItemEnum | (string & {})
 >;
-export const CapacityHistoryRequestTypesItemEnumList = /*@__PURE__*/ S.Array(
-  CapacityHistoryRequestTypesItemEnum,
-) as any as S.Schema<CapacityHistoryRequestTypesItemEnumList>;
+export const CapacityHistoryRequestTypesItemEnumList =
+  UpcomingMaintenanceMaintenanceReasonsItemEnumList as any as S.Schema<CapacityHistoryRequestTypesItemEnumList>;
 
 /** A request to get the capacity history. */
 export interface CapacityHistoryRequest {
@@ -35928,9 +35904,8 @@ export const InterconnectLocationAvailableLinkTypesItemEnum = S.String;
 
 export type InterconnectLocationAvailableLinkTypesItemEnumList =
   Array<InterconnectLocationAvailableLinkTypesItemEnum>;
-export const InterconnectLocationAvailableLinkTypesItemEnumList = /*@__PURE__*/ S.Array(
-  InterconnectLocationAvailableLinkTypesItemEnum,
-) as any as S.Schema<InterconnectLocationAvailableLinkTypesItemEnumList>;
+export const InterconnectLocationAvailableLinkTypesItemEnumList =
+  UpcomingMaintenanceMaintenanceReasonsItemEnumList as any as S.Schema<InterconnectLocationAvailableLinkTypesItemEnumList>;
 
 export type InterconnectLocationAvailableFeaturesItemEnum =
   | "IF_CROSS_SITE_NETWORK"
@@ -35940,9 +35915,8 @@ export const InterconnectLocationAvailableFeaturesItemEnum = S.String;
 
 export type InterconnectLocationAvailableFeaturesItemEnumList =
   Array<InterconnectLocationAvailableFeaturesItemEnum>;
-export const InterconnectLocationAvailableFeaturesItemEnumList = /*@__PURE__*/ S.Array(
-  InterconnectLocationAvailableFeaturesItemEnum,
-) as any as S.Schema<InterconnectLocationAvailableFeaturesItemEnumList>;
+export const InterconnectLocationAvailableFeaturesItemEnumList =
+  UpcomingMaintenanceMaintenanceReasonsItemEnumList as any as S.Schema<InterconnectLocationAvailableFeaturesItemEnumList>;
 
 export type InterconnectLocationContinentEnum =
   | "AFRICA"
@@ -36214,9 +36188,8 @@ export const InterconnectAvailableFeaturesItemEnum = S.String;
 export type InterconnectAvailableFeaturesItemEnumList = Array<
   InterconnectAvailableFeaturesItemEnum | (string & {})
 >;
-export const InterconnectAvailableFeaturesItemEnumList = /*@__PURE__*/ S.Array(
-  InterconnectAvailableFeaturesItemEnum,
-) as any as S.Schema<InterconnectAvailableFeaturesItemEnumList>;
+export const InterconnectAvailableFeaturesItemEnumList =
+  UpcomingMaintenanceMaintenanceReasonsItemEnumList as any as S.Schema<InterconnectAvailableFeaturesItemEnumList>;
 
 export type InterconnectInterconnectTypeEnum = "DEDICATED" | "IT_PRIVATE" | "PARTNER";
 export const InterconnectInterconnectTypeEnum = S.String;
@@ -36442,9 +36415,8 @@ export const InterconnectRequestedFeaturesItemEnum = S.String;
 export type InterconnectRequestedFeaturesItemEnumList = Array<
   InterconnectRequestedFeaturesItemEnum | (string & {})
 >;
-export const InterconnectRequestedFeaturesItemEnumList = /*@__PURE__*/ S.Array(
-  InterconnectRequestedFeaturesItemEnum,
-) as any as S.Schema<InterconnectRequestedFeaturesItemEnumList>;
+export const InterconnectRequestedFeaturesItemEnumList =
+  UpcomingMaintenanceMaintenanceReasonsItemEnumList as any as S.Schema<InterconnectRequestedFeaturesItemEnumList>;
 
 export type InterconnectSubzoneEnum = "SUBZONE_A" | "SUBZONE_B";
 export const InterconnectSubzoneEnum = S.String;
@@ -37733,9 +37705,8 @@ export const NetworkProfileNetworkFeaturesInterfaceTypesItemEnum = S.String;
 
 export type NetworkProfileNetworkFeaturesInterfaceTypesItemEnumList =
   Array<NetworkProfileNetworkFeaturesInterfaceTypesItemEnum>;
-export const NetworkProfileNetworkFeaturesInterfaceTypesItemEnumList = /*@__PURE__*/ S.Array(
-  NetworkProfileNetworkFeaturesInterfaceTypesItemEnum,
-) as any as S.Schema<NetworkProfileNetworkFeaturesInterfaceTypesItemEnumList>;
+export const NetworkProfileNetworkFeaturesInterfaceTypesItemEnumList =
+  UpcomingMaintenanceMaintenanceReasonsItemEnumList as any as S.Schema<NetworkProfileNetworkFeaturesInterfaceTypesItemEnumList>;
 
 export type NetworkProfileNetworkFeaturesAllowPacketMirroringEnum =
   | "PACKET_MIRRORING_ALLOWED"
@@ -37789,9 +37760,8 @@ export const NetworkProfileNetworkFeaturesFirewallPolicyTypesItemEnum = S.String
 
 export type NetworkProfileNetworkFeaturesFirewallPolicyTypesItemEnumList =
   Array<NetworkProfileNetworkFeaturesFirewallPolicyTypesItemEnum>;
-export const NetworkProfileNetworkFeaturesFirewallPolicyTypesItemEnumList = /*@__PURE__*/ S.Array(
-  NetworkProfileNetworkFeaturesFirewallPolicyTypesItemEnum,
-) as any as S.Schema<NetworkProfileNetworkFeaturesFirewallPolicyTypesItemEnumList>;
+export const NetworkProfileNetworkFeaturesFirewallPolicyTypesItemEnumList =
+  UpcomingMaintenanceMaintenanceReasonsItemEnumList as any as S.Schema<NetworkProfileNetworkFeaturesFirewallPolicyTypesItemEnumList>;
 
 export type NetworkProfileNetworkFeaturesAllowPrivateGoogleAccessEnum =
   | "PRIVATE_GOOGLE_ACCESS_ALLOWED"
@@ -37814,9 +37784,8 @@ export const NetworkProfileNetworkFeaturesSubnetworkStackTypesItemEnum = S.Strin
 
 export type NetworkProfileNetworkFeaturesSubnetworkStackTypesItemEnumList =
   Array<NetworkProfileNetworkFeaturesSubnetworkStackTypesItemEnum>;
-export const NetworkProfileNetworkFeaturesSubnetworkStackTypesItemEnumList = /*@__PURE__*/ S.Array(
-  NetworkProfileNetworkFeaturesSubnetworkStackTypesItemEnum,
-) as any as S.Schema<NetworkProfileNetworkFeaturesSubnetworkStackTypesItemEnumList>;
+export const NetworkProfileNetworkFeaturesSubnetworkStackTypesItemEnumList =
+  UpcomingMaintenanceMaintenanceReasonsItemEnumList as any as S.Schema<NetworkProfileNetworkFeaturesSubnetworkStackTypesItemEnumList>;
 
 export type NetworkProfileNetworkFeaturesSubnetPurposesItemEnum =
   | "SUBNET_PURPOSE_CUSTOM_HARDWARE"
@@ -37825,9 +37794,8 @@ export const NetworkProfileNetworkFeaturesSubnetPurposesItemEnum = S.String;
 
 export type NetworkProfileNetworkFeaturesSubnetPurposesItemEnumList =
   Array<NetworkProfileNetworkFeaturesSubnetPurposesItemEnum>;
-export const NetworkProfileNetworkFeaturesSubnetPurposesItemEnumList = /*@__PURE__*/ S.Array(
-  NetworkProfileNetworkFeaturesSubnetPurposesItemEnum,
-) as any as S.Schema<NetworkProfileNetworkFeaturesSubnetPurposesItemEnumList>;
+export const NetworkProfileNetworkFeaturesSubnetPurposesItemEnumList =
+  UpcomingMaintenanceMaintenanceReasonsItemEnumList as any as S.Schema<NetworkProfileNetworkFeaturesSubnetPurposesItemEnumList>;
 
 export type NetworkProfileNetworkFeaturesAllowInterconnectEnum =
   | "INTERCONNECT_ALLOWED"
@@ -37883,9 +37851,8 @@ export const NetworkProfileNetworkFeaturesSubnetworkPurposesItemEnum = S.String;
 
 export type NetworkProfileNetworkFeaturesSubnetworkPurposesItemEnumList =
   Array<NetworkProfileNetworkFeaturesSubnetworkPurposesItemEnum>;
-export const NetworkProfileNetworkFeaturesSubnetworkPurposesItemEnumList = /*@__PURE__*/ S.Array(
-  NetworkProfileNetworkFeaturesSubnetworkPurposesItemEnum,
-) as any as S.Schema<NetworkProfileNetworkFeaturesSubnetworkPurposesItemEnumList>;
+export const NetworkProfileNetworkFeaturesSubnetworkPurposesItemEnumList =
+  UpcomingMaintenanceMaintenanceReasonsItemEnumList as any as S.Schema<NetworkProfileNetworkFeaturesSubnetworkPurposesItemEnumList>;
 
 export type NetworkProfileNetworkFeaturesUnicastEnum = "UNICAST_SDN" | "UNICAST_ULL";
 export const NetworkProfileNetworkFeaturesUnicastEnum = S.String;
@@ -37928,9 +37895,8 @@ export const NetworkProfileNetworkFeaturesAddressPurposesItemEnum = S.String;
 
 export type NetworkProfileNetworkFeaturesAddressPurposesItemEnumList =
   Array<NetworkProfileNetworkFeaturesAddressPurposesItemEnum>;
-export const NetworkProfileNetworkFeaturesAddressPurposesItemEnumList = /*@__PURE__*/ S.Array(
-  NetworkProfileNetworkFeaturesAddressPurposesItemEnum,
-) as any as S.Schema<NetworkProfileNetworkFeaturesAddressPurposesItemEnumList>;
+export const NetworkProfileNetworkFeaturesAddressPurposesItemEnumList =
+  UpcomingMaintenanceMaintenanceReasonsItemEnumList as any as S.Schema<NetworkProfileNetworkFeaturesAddressPurposesItemEnumList>;
 
 export type NetworkProfileNetworkFeaturesAllowStaticRoutesEnum =
   | "STATIC_ROUTES_ALLOWED"
@@ -37965,9 +37931,8 @@ export const NetworkProfileNetworkFeaturesSubnetStackTypesItemEnum = S.String;
 
 export type NetworkProfileNetworkFeaturesSubnetStackTypesItemEnumList =
   Array<NetworkProfileNetworkFeaturesSubnetStackTypesItemEnum>;
-export const NetworkProfileNetworkFeaturesSubnetStackTypesItemEnumList = /*@__PURE__*/ S.Array(
-  NetworkProfileNetworkFeaturesSubnetStackTypesItemEnum,
-) as any as S.Schema<NetworkProfileNetworkFeaturesSubnetStackTypesItemEnumList>;
+export const NetworkProfileNetworkFeaturesSubnetStackTypesItemEnumList =
+  UpcomingMaintenanceMaintenanceReasonsItemEnumList as any as S.Schema<NetworkProfileNetworkFeaturesSubnetStackTypesItemEnumList>;
 
 export interface NetworkProfileNetworkFeatures {
   /** Specifies whether cloud router creation is allowed. */
@@ -41157,21 +41122,14 @@ export interface RolloutWaveDetailsOrchestratedWaveDetailsLocationStatus {
   /** Output only. Location state of the wave. */
   state?: RolloutWaveDetailsOrchestratedWaveDetailsLocationStatusStateEnum;
 }
-export const RolloutWaveDetailsOrchestratedWaveDetailsLocationStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: S.optional(RolloutWaveDetailsOrchestratedWaveDetailsLocationStatusStateEnum),
-  }),
-).annotate({
-  identifier: "RolloutWaveDetailsOrchestratedWaveDetailsLocationStatus",
-}) as any as S.Schema<RolloutWaveDetailsOrchestratedWaveDetailsLocationStatus>;
+export const RolloutWaveDetailsOrchestratedWaveDetailsLocationStatus =
+  DiskResourceStatusAsyncReplicationStatus as any as S.Schema<RolloutWaveDetailsOrchestratedWaveDetailsLocationStatus>;
 
 export type RolloutWaveDetailsOrchestratedWaveDetailsLocationStatusMap = {
   [key: string]: RolloutWaveDetailsOrchestratedWaveDetailsLocationStatus | undefined;
 };
-export const RolloutWaveDetailsOrchestratedWaveDetailsLocationStatusMap = /*@__PURE__*/ S.Record(
-  S.String,
-  RolloutWaveDetailsOrchestratedWaveDetailsLocationStatus,
-) as any as S.Schema<RolloutWaveDetailsOrchestratedWaveDetailsLocationStatusMap>;
+export const RolloutWaveDetailsOrchestratedWaveDetailsLocationStatusMap =
+  DiskResourceStatusAsyncReplicationStatusMap as any as S.Schema<RolloutWaveDetailsOrchestratedWaveDetailsLocationStatusMap>;
 
 /** Details of the wave for products using the Orchestrated integration model. */
 export interface RolloutWaveDetailsOrchestratedWaveDetails {
@@ -42589,9 +42547,8 @@ export type GetSubnetworksViewsEnum = "DEFAULT" | "WITH_UTILIZATION";
 export const GetSubnetworksViewsEnum = S.String;
 
 export type GetSubnetworksViewsEnumList = Array<GetSubnetworksViewsEnum | (string & {})>;
-export const GetSubnetworksViewsEnumList = /*@__PURE__*/ S.Array(
-  GetSubnetworksViewsEnum,
-) as any as S.Schema<GetSubnetworksViewsEnumList>;
+export const GetSubnetworksViewsEnumList =
+  UpcomingMaintenanceMaintenanceReasonsItemEnumList as any as S.Schema<GetSubnetworksViewsEnumList>;
 
 export interface GetSubnetworksRequest {
   /** Name of the region scoping this request. */
@@ -42903,9 +42860,8 @@ export const HostsGetVersionRequestSbomSelectionsItemEnum = S.String;
 export type HostsGetVersionRequestSbomSelectionsItemEnumList = Array<
   HostsGetVersionRequestSbomSelectionsItemEnum | (string & {})
 >;
-export const HostsGetVersionRequestSbomSelectionsItemEnumList = /*@__PURE__*/ S.Array(
-  HostsGetVersionRequestSbomSelectionsItemEnum,
-) as any as S.Schema<HostsGetVersionRequestSbomSelectionsItemEnumList>;
+export const HostsGetVersionRequestSbomSelectionsItemEnumList =
+  UpcomingMaintenanceMaintenanceReasonsItemEnumList as any as S.Schema<HostsGetVersionRequestSbomSelectionsItemEnumList>;
 
 export interface HostsGetVersionRequest {
   /** The SBOM selection to return. Duplicate values in the list will be ignored. */
@@ -42957,9 +42913,8 @@ export const ReservationSlotsGetVersionRequestSbomSelectionsItemEnum = S.String;
 export type ReservationSlotsGetVersionRequestSbomSelectionsItemEnumList = Array<
   ReservationSlotsGetVersionRequestSbomSelectionsItemEnum | (string & {})
 >;
-export const ReservationSlotsGetVersionRequestSbomSelectionsItemEnumList = /*@__PURE__*/ S.Array(
-  ReservationSlotsGetVersionRequestSbomSelectionsItemEnum,
-) as any as S.Schema<ReservationSlotsGetVersionRequestSbomSelectionsItemEnumList>;
+export const ReservationSlotsGetVersionRequestSbomSelectionsItemEnumList =
+  UpcomingMaintenanceMaintenanceReasonsItemEnumList as any as S.Schema<ReservationSlotsGetVersionRequestSbomSelectionsItemEnumList>;
 
 export interface ReservationSlotsGetVersionRequest {
   /** The SBOM selection to return. Duplicate values in the list will be ignored. */
@@ -43016,9 +42971,7 @@ export type ReservationSubBlocksGetVersionRequestSbomSelectionsItemEnumList = Ar
   ReservationSubBlocksGetVersionRequestSbomSelectionsItemEnum | (string & {})
 >;
 export const ReservationSubBlocksGetVersionRequestSbomSelectionsItemEnumList =
-  /*@__PURE__*/ S.Array(
-    ReservationSubBlocksGetVersionRequestSbomSelectionsItemEnum,
-  ) as any as S.Schema<ReservationSubBlocksGetVersionRequestSbomSelectionsItemEnumList>;
+  InterconnectGroupsCreateMembersInterconnectInputRequestedFeaturesItemEnumList as any as S.Schema<ReservationSubBlocksGetVersionRequestSbomSelectionsItemEnumList>;
 
 export interface ReservationSubBlocksGetVersionRequest {
   /** The SBOM selection to return. */
@@ -59607,9 +59560,8 @@ export type ListSubnetworksViewsEnum = "DEFAULT" | "WITH_UTILIZATION";
 export const ListSubnetworksViewsEnum = S.String;
 
 export type ListSubnetworksViewsEnumList = Array<ListSubnetworksViewsEnum | (string & {})>;
-export const ListSubnetworksViewsEnumList = /*@__PURE__*/ S.Array(
-  ListSubnetworksViewsEnum,
-) as any as S.Schema<ListSubnetworksViewsEnumList>;
+export const ListSubnetworksViewsEnumList =
+  UpcomingMaintenanceMaintenanceReasonsItemEnumList as any as S.Schema<ListSubnetworksViewsEnumList>;
 
 export interface ListSubnetworksRequest {
   /** The maximum number of results per page that should be returned. If the number of available results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`) */
@@ -64058,13 +64010,8 @@ export interface ReservationsPerformMaintenanceRequest {
   /** Specifies if all, running or unused hosts are in scope for this request. */
   maintenanceScope?: ReservationsPerformMaintenanceRequestMaintenanceScopeEnum | (string & {});
 }
-export const ReservationsPerformMaintenanceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maintenanceScope: S.optional(ReservationsPerformMaintenanceRequestMaintenanceScopeEnum),
-  }),
-).annotate({
-  identifier: "ReservationsPerformMaintenanceRequest",
-}) as any as S.Schema<ReservationsPerformMaintenanceRequest>;
+export const ReservationsPerformMaintenanceRequest =
+  ReservationsBlocksPerformMaintenanceRequest as any as S.Schema<ReservationsPerformMaintenanceRequest>;
 
 export interface PerformMaintenanceReservationsRequest {
   /** The name of the reservation. Name should conform to RFC1035 or be a resource ID. */
@@ -65097,20 +65044,13 @@ export interface InstancesReportHostAsFaultyRequestFaultReason {
   description?: string;
   behavior?: InstancesReportHostAsFaultyRequestFaultReasonBehaviorEnum | (string & {});
 }
-export const InstancesReportHostAsFaultyRequestFaultReason = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    behavior: S.optional(InstancesReportHostAsFaultyRequestFaultReasonBehaviorEnum),
-  }),
-).annotate({
-  identifier: "InstancesReportHostAsFaultyRequestFaultReason",
-}) as any as S.Schema<InstancesReportHostAsFaultyRequestFaultReason>;
+export const InstancesReportHostAsFaultyRequestFaultReason =
+  ReservationSubBlocksReportFaultyRequestFaultReason as any as S.Schema<InstancesReportHostAsFaultyRequestFaultReason>;
 
 export type InstancesReportHostAsFaultyRequestFaultReasonList =
   Array<InstancesReportHostAsFaultyRequestFaultReason>;
-export const InstancesReportHostAsFaultyRequestFaultReasonList = /*@__PURE__*/ S.Array(
-  InstancesReportHostAsFaultyRequestFaultReason,
-) as any as S.Schema<InstancesReportHostAsFaultyRequestFaultReasonList>;
+export const InstancesReportHostAsFaultyRequestFaultReasonList =
+  ReservationSubBlocksReportFaultyRequestFaultReasonList as any as S.Schema<InstancesReportHostAsFaultyRequestFaultReasonList>;
 
 export type InstancesReportHostAsFaultyRequestDisruptionScheduleEnum =
   | "DISRUPTION_SCHEDULE_UNSPECIFIED"
@@ -68038,13 +67978,8 @@ export interface TargetTcpProxiesSetProxyHeaderRequest {
   /** The new type of proxy header to append before sending data to the backend. NONE or PROXY_V1 are allowed. */
   proxyHeader?: TargetTcpProxiesSetProxyHeaderRequestProxyHeaderEnum | (string & {});
 }
-export const TargetTcpProxiesSetProxyHeaderRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    proxyHeader: S.optional(TargetTcpProxiesSetProxyHeaderRequestProxyHeaderEnum),
-  }),
-).annotate({
-  identifier: "TargetTcpProxiesSetProxyHeaderRequest",
-}) as any as S.Schema<TargetTcpProxiesSetProxyHeaderRequest>;
+export const TargetTcpProxiesSetProxyHeaderRequest =
+  TargetSslProxiesSetProxyHeaderRequest as any as S.Schema<TargetTcpProxiesSetProxyHeaderRequest>;
 
 export interface SetProxyHeaderTargetTcpProxiesRequest {
   /** Name of the TargetTcpProxy resource whose ProxyHeader is to be set. */
@@ -72429,9 +72364,8 @@ export const UrlMapsValidateRequestLoadBalancingSchemesItemEnum = S.String;
 export type UrlMapsValidateRequestLoadBalancingSchemesItemEnumList = Array<
   UrlMapsValidateRequestLoadBalancingSchemesItemEnum | (string & {})
 >;
-export const UrlMapsValidateRequestLoadBalancingSchemesItemEnumList = /*@__PURE__*/ S.Array(
-  UrlMapsValidateRequestLoadBalancingSchemesItemEnum,
-) as any as S.Schema<UrlMapsValidateRequestLoadBalancingSchemesItemEnumList>;
+export const UrlMapsValidateRequestLoadBalancingSchemesItemEnumList =
+  UpcomingMaintenanceMaintenanceReasonsItemEnumList as any as S.Schema<UrlMapsValidateRequestLoadBalancingSchemesItemEnumList>;
 
 export interface UrlMapsValidateRequest {
   /** Specifies the load balancer type(s) this validation request is for. UseEXTERNAL_MANAGED for global external Application Load Balancers and regional external Application Load Balancers. Use EXTERNAL for classic Application Load Balancers. Use INTERNAL_MANAGED for internal Application Load Balancers. For more information, refer to Choosing a load balancer. If unspecified, the load balancing scheme will be inferred from the backend service resources this URL map references. If that can not be inferred (for example, this URL map only references backend buckets, or this Url map is for rewrites and redirects only and doesn't reference any backends),EXTERNAL will be used as the default type. If specified, the scheme(s) must not conflict with the load balancing scheme of the backend service resources this Url map references. */

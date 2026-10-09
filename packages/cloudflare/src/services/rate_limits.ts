@@ -220,13 +220,7 @@ export interface EditRequestAction {
   /** The time in seconds during which Cloudflare will perform the mitigation action. Must be an integer value greater than or equal to the period. Notes: If "mode" is "challenge", "managed_challenge", or "js_challenge", Cloudflare will use the zone's Challenge Passage time and you should not provide this value. */
   timeout?: number;
 }
-export const EditRequestAction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: S.optional(EditRequestActionMode),
-    response: S.optional(CreateRequestActionResponse),
-    timeout: S.optional(S.Number),
-  }),
-).annotate({ identifier: "EditRequestAction" }) as any as S.Schema<EditRequestAction>;
+export const EditRequestAction = CreateRequestAction as any as S.Schema<EditRequestAction>;
 
 export type EditRequestMatchHeadersItemOp = "eq" | "ne";
 export const EditRequestMatchHeadersItemOp = S.String;
@@ -239,20 +233,12 @@ export interface EditRequestMatchHeadersItem {
   /** The value of the response header, which must match exactly. */
   value?: string;
 }
-export const EditRequestMatchHeadersItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    op: S.optional(EditRequestMatchHeadersItemOp),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "EditRequestMatchHeadersItem",
-}) as any as S.Schema<EditRequestMatchHeadersItem>;
+export const EditRequestMatchHeadersItem =
+  CreateRequestMatchHeadersItem as any as S.Schema<EditRequestMatchHeadersItem>;
 
 export type EditRequestMatchHeadersList = Array<EditRequestMatchHeadersItem>;
-export const EditRequestMatchHeadersList = /*@__PURE__*/ S.Array(
-  EditRequestMatchHeadersItem,
-) as any as S.Schema<EditRequestMatchHeadersList>;
+export const EditRequestMatchHeadersList =
+  CreateRequestMatchHeadersList as any as S.Schema<EditRequestMatchHeadersList>;
 
 export type EditRequestMatchRequestMethodsItem =
   | "GET"
@@ -267,9 +253,8 @@ export const EditRequestMatchRequestMethodsItem = S.String;
 export type EditRequestMatchRequestMethodsList = Array<
   EditRequestMatchRequestMethodsItem | (string & {})
 >;
-export const EditRequestMatchRequestMethodsList = /*@__PURE__*/ S.Array(
-  EditRequestMatchRequestMethodsItem,
-) as any as S.Schema<EditRequestMatchRequestMethodsList>;
+export const EditRequestMatchRequestMethodsList =
+  CreateRequestMatchRequestMethodsList as any as S.Schema<EditRequestMatchRequestMethodsList>;
 
 export type EditRequestMatchRequestSchemesList = Array<string>;
 export const EditRequestMatchRequestSchemesList =

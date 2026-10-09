@@ -1140,9 +1140,7 @@ export const Permission = S.String;
 
 export type AccountByIdResponseOwnerPendingUserInvitationsItemPermissionsList = Array<Permission>;
 export const AccountByIdResponseOwnerPendingUserInvitationsItemPermissionsList =
-  /*@__PURE__*/ S.Array(
-    Permission,
-  ) as any as S.Schema<AccountByIdResponseOwnerPendingUserInvitationsItemPermissionsList>;
+  AccessTokenSetAccessTokenRevokedResponseOwnerAccountsItemSsoAllowedAuthProvidersList as any as S.Schema<AccountByIdResponseOwnerPendingUserInvitationsItemPermissionsList>;
 
 export type Role =
   | "ADMIN"
@@ -1667,9 +1665,8 @@ export type AccountByIdResponseSentryInstallation = AccountByIdResponsePendingSe
 export const AccountByIdResponseSentryInstallation = AccountByIdResponsePendingSentryInstallation;
 
 export type AccountByIdResponseSsoAllowedAuthProvidersList = Array<AuthProviderIdentifier>;
-export const AccountByIdResponseSsoAllowedAuthProvidersList = /*@__PURE__*/ S.Array(
-  AuthProviderIdentifier,
-) as any as S.Schema<AccountByIdResponseSsoAllowedAuthProvidersList>;
+export const AccountByIdResponseSsoAllowedAuthProvidersList =
+  AccountByIdResponseAppStoreConnectApiKeysItemRolesList as any as S.Schema<AccountByIdResponseSsoAllowedAuthProvidersList>;
 
 export type AuthProtocolType = "OIDC";
 export const AuthProtocolType = S.String;
@@ -1922,9 +1919,8 @@ export const AccountByIdResponseSupabaseConnection = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<AccountByIdResponseSupabaseConnection>;
 
 export type AccountByIdResponseUserInvitationsItemPermissionsList = Array<Permission>;
-export const AccountByIdResponseUserInvitationsItemPermissionsList = /*@__PURE__*/ S.Array(
-  Permission,
-) as any as S.Schema<AccountByIdResponseUserInvitationsItemPermissionsList>;
+export const AccountByIdResponseUserInvitationsItemPermissionsList =
+  AccountByIdResponseAppStoreConnectApiKeysItemRolesList as any as S.Schema<AccountByIdResponseUserInvitationsItemPermissionsList>;
 
 export interface AccountByIdResponseUserInvitationsItem {
   accountName: string;
@@ -3210,9 +3206,7 @@ export const AccountCancelAllSubscriptionsImmediatelyResponseAppStoreConnectApiK
 export type AccountCancelAllSubscriptionsImmediatelyResponseAppStoreConnectApiKeysItemRolesList =
   Array<AppStoreConnectUserRole>;
 export const AccountCancelAllSubscriptionsImmediatelyResponseAppStoreConnectApiKeysItemRolesList =
-  /*@__PURE__*/ S.Array(
-    AppStoreConnectUserRole,
-  ) as any as S.Schema<AccountCancelAllSubscriptionsImmediatelyResponseAppStoreConnectApiKeysItemRolesList>;
+  AccessTokenSetAccessTokenRevokedResponseOwnerAccountsItemSsoAllowedAuthProvidersList as any as S.Schema<AccountCancelAllSubscriptionsImmediatelyResponseAppStoreConnectApiKeysItemRolesList>;
 
 export interface AccountCancelAllSubscriptionsImmediatelyResponseAppStoreConnectApiKeysItem {
   appleTeam: AccountByIdResponseAppStoreConnectApiKeysItemAppleTeam | null;
@@ -8475,9 +8469,8 @@ export const AccountChangePlanResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountChangePlanResponse>;
 
 export type PermissionList = (Permission | null)[];
-export const PermissionList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.NullOr(Permission),
-) as any as S.Schema<PermissionList>;
+export const PermissionList =
+  AccountByIdResponseOffersItemFeaturesList as any as S.Schema<PermissionList>;
 
 export interface AccountGrantActorPermissionsRequest {
   accountName?: string | null;
@@ -42228,9 +42221,8 @@ export type TargetEntityMutationType = "CREATE" | "DELETE" | "UPDATE";
 export const TargetEntityMutationType = S.String;
 
 export type TargetEntityMutationTypeList = Array<TargetEntityMutationType | (string & {})>;
-export const TargetEntityMutationTypeList = /*@__PURE__*/ S.Array(
-  TargetEntityMutationType,
-) as any as S.Schema<TargetEntityMutationTypeList>;
+export const TargetEntityMutationTypeList =
+  AccountByIdResponseAppStoreConnectApiKeysItemRolesList as any as S.Schema<TargetEntityMutationTypeList>;
 
 export type EntityTypeName =
   | "AccountEntity"
@@ -42275,9 +42267,8 @@ export type EntityTypeName =
 export const EntityTypeName = S.String;
 
 export type EntityTypeNameList = Array<EntityTypeName | (string & {})>;
-export const EntityTypeNameList = /*@__PURE__*/ S.Array(
-  EntityTypeName,
-) as any as S.Schema<EntityTypeNameList>;
+export const EntityTypeNameList =
+  AccountByIdResponseAppStoreConnectApiKeysItemRolesList as any as S.Schema<EntityTypeNameList>;
 
 export interface AuditLogExportInput {
   accountId: string;
@@ -87243,9 +87234,8 @@ export const RuntimesByIdResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RuntimesByIdResponse" }) as any as S.Schema<RuntimesByIdResponse>;
 
 export type SandboxStatusList = Array<SandboxStatus | (string & {})>;
-export const SandboxStatusList = /*@__PURE__*/ S.Array(
-  SandboxStatus,
-) as any as S.Schema<SandboxStatusList>;
+export const SandboxStatusList =
+  AccountByIdResponseAppStoreConnectApiKeysItemRolesList as any as S.Schema<SandboxStatusList>;
 
 export interface SandboxFilterInput {
   statuses?: SandboxStatusList | null;
@@ -89900,9 +89890,8 @@ export type StatuspageServiceName =
 export const StatuspageServiceName = S.String;
 
 export type StatuspageServiceNameList = Array<StatuspageServiceName | (string & {})>;
-export const StatuspageServiceNameList = /*@__PURE__*/ S.Array(
-  StatuspageServiceName,
-) as any as S.Schema<StatuspageServiceNameList>;
+export const StatuspageServiceNameList =
+  AccountByIdResponseAppStoreConnectApiKeysItemRolesList as any as S.Schema<StatuspageServiceNameList>;
 
 export interface StatuspageServiceByServiceNamesRequest {
   /** Service names to use to look up components. */
@@ -105614,9 +105603,8 @@ export type UserEntityTypeName =
 export const UserEntityTypeName = S.String;
 
 export type UserEntityTypeNameList = Array<UserEntityTypeName | (string & {})>;
-export const UserEntityTypeNameList = /*@__PURE__*/ S.Array(
-  UserEntityTypeName,
-) as any as S.Schema<UserEntityTypeNameList>;
+export const UserEntityTypeNameList =
+  AccountByIdResponseAppStoreConnectApiKeysItemRolesList as any as S.Schema<UserEntityTypeNameList>;
 
 export interface UserAuditLogExportInput {
   createdAfter: string;
@@ -106056,19 +106044,12 @@ export interface UserAuditLogsResponseTypeNamesMapItem {
   publicName: string;
   typeName: UserEntityTypeName;
 }
-export const UserAuditLogsResponseTypeNamesMapItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    publicName: S.String,
-    typeName: UserEntityTypeName,
-  }),
-).annotate({
-  identifier: "UserAuditLogsResponseTypeNamesMapItem",
-}) as any as S.Schema<UserAuditLogsResponseTypeNamesMapItem>;
+export const UserAuditLogsResponseTypeNamesMapItem =
+  AuditLogsResponseTypeNamesMapItem as any as S.Schema<UserAuditLogsResponseTypeNamesMapItem>;
 
 export type UserAuditLogsResponseTypeNamesMapList = Array<UserAuditLogsResponseTypeNamesMapItem>;
-export const UserAuditLogsResponseTypeNamesMapList = /*@__PURE__*/ S.Array(
-  UserAuditLogsResponseTypeNamesMapItem,
-) as any as S.Schema<UserAuditLogsResponseTypeNamesMapList>;
+export const UserAuditLogsResponseTypeNamesMapList =
+  AuditLogsResponseTypeNamesMapList as any as S.Schema<UserAuditLogsResponseTypeNamesMapList>;
 
 /** Selection set for `userAuditLogs` (unwrapped from the GraphQL `data` envelope). */
 export interface UserAuditLogsResponse {
@@ -121805,14 +121786,12 @@ export const WorkflowsByIdResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WorkflowsByIdResponse" }) as any as S.Schema<WorkflowsByIdResponse>;
 
 export type WorkflowRunStatusList = Array<WorkflowRunStatus | (string & {})>;
-export const WorkflowRunStatusList = /*@__PURE__*/ S.Array(
-  WorkflowRunStatus,
-) as any as S.Schema<WorkflowRunStatusList>;
+export const WorkflowRunStatusList =
+  AccountByIdResponseAppStoreConnectApiKeysItemRolesList as any as S.Schema<WorkflowRunStatusList>;
 
 export type WorkflowRunTriggerEventTypeList = Array<WorkflowRunTriggerEventType | (string & {})>;
-export const WorkflowRunTriggerEventTypeList = /*@__PURE__*/ S.Array(
-  WorkflowRunTriggerEventType,
-) as any as S.Schema<WorkflowRunTriggerEventTypeList>;
+export const WorkflowRunTriggerEventTypeList =
+  AccountByIdResponseAppStoreConnectApiKeysItemRolesList as any as S.Schema<WorkflowRunTriggerEventTypeList>;
 
 export interface WorkflowsInsightsFiltersInput {
   gitRefRequested?: StringList | null;

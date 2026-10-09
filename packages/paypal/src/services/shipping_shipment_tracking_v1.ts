@@ -1143,19 +1143,12 @@ export interface LinkDescription2 {
   /** The HTTP method required to make the related call. */
   method?: LinkDescription2Method;
 }
-export const LinkDescription2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    href: S.String,
-    rel: S.String,
-    method: S.optional(LinkDescription2Method),
-  }),
-).annotate({ identifier: "LinkDescription2" }) as any as S.Schema<LinkDescription2>;
+export const LinkDescription2 = LinkDescription as any as S.Schema<LinkDescription2>;
 
 /** An array of request-related [HATEOAS links](/api/rest/responses/#hateoas-links) that are either relevant to the issue by providing additional information or offering potential resolutions. */
 export type DefinitionsLinkDescriptionList = Array<LinkDescription2>;
-export const DefinitionsLinkDescriptionList = /*@__PURE__*/ S.Array(
-  LinkDescription2,
-) as any as S.Schema<DefinitionsLinkDescriptionList>;
+export const DefinitionsLinkDescriptionList =
+  LinkDescriptionList as any as S.Schema<DefinitionsLinkDescriptionList>;
 
 /** The error details. Required for client-side `4XX` errors. */
 export interface ErrorDetails2 {

@@ -567,19 +567,12 @@ export interface UpdateWatchSettingsRequestAddItem {
   id: string;
   type: UpdateWatchSettingsRequestAddItemType | (string & {});
 }
-export const UpdateWatchSettingsRequestAddItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: UpdateWatchSettingsRequestAddItemType,
-  }),
-).annotate({
-  identifier: "UpdateWatchSettingsRequestAddItem",
-}) as any as S.Schema<UpdateWatchSettingsRequestAddItem>;
+export const UpdateWatchSettingsRequestAddItem =
+  UpdateWatchSettingsRequestDeleteItem as any as S.Schema<UpdateWatchSettingsRequestAddItem>;
 
 export type UpdateWatchSettingsRequestAddList = Array<UpdateWatchSettingsRequestAddItem>;
-export const UpdateWatchSettingsRequestAddList = /*@__PURE__*/ S.Array(
-  UpdateWatchSettingsRequestAddItem,
-) as any as S.Schema<UpdateWatchSettingsRequestAddList>;
+export const UpdateWatchSettingsRequestAddList =
+  UpdateWatchSettingsRequestDeleteList as any as S.Schema<UpdateWatchSettingsRequestAddList>;
 
 export interface UpdateWatchSettingsRequest {
   delete?: UpdateWatchSettingsRequestDeleteList;

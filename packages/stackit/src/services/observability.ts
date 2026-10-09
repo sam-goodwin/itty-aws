@@ -809,9 +809,8 @@ export const CreateBackupScheduleRequestBackupTargetItem = S.String;
 export type CreateBackupScheduleRequestBackupTargetList = Array<
   CreateBackupScheduleRequestBackupTargetItem | (string & {})
 >;
-export const CreateBackupScheduleRequestBackupTargetList = /*@__PURE__*/ S.Array(
-  CreateBackupScheduleRequestBackupTargetItem,
-) as any as S.Schema<CreateBackupScheduleRequestBackupTargetList>;
+export const CreateBackupScheduleRequestBackupTargetList =
+  CreateBackupRequestBackupTargetList as any as S.Schema<CreateBackupScheduleRequestBackupTargetList>;
 
 export interface CreateBackupScheduleRequest {
   projectId: string;
@@ -3477,9 +3476,8 @@ export const ListBackupsRequestBackupTargetItem = S.String;
 export type ListBackupsRequestBackupTargetList = Array<
   ListBackupsRequestBackupTargetItem | (string & {})
 >;
-export const ListBackupsRequestBackupTargetList = /*@__PURE__*/ S.Array(
-  ListBackupsRequestBackupTargetItem,
-) as any as S.Schema<ListBackupsRequestBackupTargetList>;
+export const ListBackupsRequestBackupTargetList =
+  CreateBackupRequestBackupTargetList as any as S.Schema<ListBackupsRequestBackupTargetList>;
 
 export interface ListBackupsRequest {
   projectId: string;
@@ -3545,9 +3543,8 @@ export const ListBackupSchedulesRequestBackupTargetItem = S.String;
 export type ListBackupSchedulesRequestBackupTargetList = Array<
   ListBackupSchedulesRequestBackupTargetItem | (string & {})
 >;
-export const ListBackupSchedulesRequestBackupTargetList = /*@__PURE__*/ S.Array(
-  ListBackupSchedulesRequestBackupTargetItem,
-) as any as S.Schema<ListBackupSchedulesRequestBackupTargetList>;
+export const ListBackupSchedulesRequestBackupTargetList =
+  CreateBackupRequestBackupTargetList as any as S.Schema<ListBackupSchedulesRequestBackupTargetList>;
 
 export interface ListBackupSchedulesRequest {
   projectId: string;

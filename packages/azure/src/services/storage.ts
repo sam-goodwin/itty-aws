@@ -5438,9 +5438,8 @@ export const AllowedMethods = S.String;
 
 /** Required if CorsRule element is present. A list of HTTP methods that are allowed to be executed by the origin. */
 export type CorsRuleAllowedMethodsList = Array<AllowedMethods | (string & {})>;
-export const CorsRuleAllowedMethodsList = /*@__PURE__*/ S.Array(
-  AllowedMethods,
-) as any as S.Schema<CorsRuleAllowedMethodsList>;
+export const CorsRuleAllowedMethodsList =
+  AdvancedPlatformMetricsRulePropertiesInputMetricsToEmitList as any as S.Schema<CorsRuleAllowedMethodsList>;
 
 /** Required if CorsRule element is present. A list of response headers to expose to CORS clients. */
 export type CorsRuleExposedHeadersList = Array<string>;

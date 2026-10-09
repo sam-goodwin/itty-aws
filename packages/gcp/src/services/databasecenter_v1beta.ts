@@ -1308,9 +1308,8 @@ export const MaintenanceInfoPossibleFailureReasonsItemEnum = S.String;
 
 export type MaintenanceInfoPossibleFailureReasonsItemEnumList =
   Array<MaintenanceInfoPossibleFailureReasonsItemEnum>;
-export const MaintenanceInfoPossibleFailureReasonsItemEnumList = /*@__PURE__*/ S.Array(
-  MaintenanceInfoPossibleFailureReasonsItemEnum,
-) as any as S.Schema<MaintenanceInfoPossibleFailureReasonsItemEnumList>;
+export const MaintenanceInfoPossibleFailureReasonsItemEnumList =
+  SignalTypeGroupSignalTypesItemEnumList as any as S.Schema<MaintenanceInfoPossibleFailureReasonsItemEnumList>;
 
 /** Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`. */
 export interface TimeOfDay {

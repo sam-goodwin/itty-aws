@@ -1206,7 +1206,8 @@ export const StartApplicationRefreshOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "StartApplicationRefreshOutput",
 }) as any as S.Schema<StartApplicationRefreshOutput>;
 export type ConfigurationCheckTypeList = ConfigurationCheckType[];
-export const ConfigurationCheckTypeList = /*@__PURE__*/ S.Array(ConfigurationCheckType);
+export const ConfigurationCheckTypeList =
+  ApplicationTypeList as any as S.Schema<ConfigurationCheckTypeList>;
 export interface StartConfigurationChecksInput {
   ApplicationId: string;
   ConfigurationCheckIds?: ConfigurationCheckType[];

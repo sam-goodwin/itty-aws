@@ -1187,9 +1187,8 @@ export const AccountPermissionAccountProfilesItemEnum = S.String;
 
 export type AccountPermissionAccountProfilesItemEnumList =
   Array<AccountPermissionAccountProfilesItemEnum>;
-export const AccountPermissionAccountProfilesItemEnumList = /*@__PURE__*/ S.Array(
-  AccountPermissionAccountProfilesItemEnum,
-) as any as S.Schema<AccountPermissionAccountProfilesItemEnumList>;
+export const AccountPermissionAccountProfilesItemEnumList =
+  GeneratetagsPlacementsTagFormatsEnumList as any as S.Schema<AccountPermissionAccountProfilesItemEnumList>;
 
 /** AccountPermissions contains information about a particular account permission. Some features of Campaign Manager require an account permission to be present in the account. */
 export interface AccountPermission {
@@ -2088,9 +2087,8 @@ export const DayPartTargetingDaysOfWeekItemEnum = S.String;
 export type DayPartTargetingDaysOfWeekItemEnumList = Array<
   DayPartTargetingDaysOfWeekItemEnum | (string & {})
 >;
-export const DayPartTargetingDaysOfWeekItemEnumList = /*@__PURE__*/ S.Array(
-  DayPartTargetingDaysOfWeekItemEnum,
-) as any as S.Schema<DayPartTargetingDaysOfWeekItemEnumList>;
+export const DayPartTargetingDaysOfWeekItemEnumList =
+  GeneratetagsPlacementsTagFormatsEnumList as any as S.Schema<DayPartTargetingDaysOfWeekItemEnumList>;
 
 export type IntegerList = Array<number>;
 export const IntegerList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IntegerList>;
@@ -2247,9 +2245,8 @@ export const CountryTvDataProvidersItemEnum = S.String;
 export type CountryTvDataProvidersItemEnumList = Array<
   CountryTvDataProvidersItemEnum | (string & {})
 >;
-export const CountryTvDataProvidersItemEnumList = /*@__PURE__*/ S.Array(
-  CountryTvDataProvidersItemEnum,
-) as any as S.Schema<CountryTvDataProvidersItemEnumList>;
+export const CountryTvDataProvidersItemEnumList =
+  GeneratetagsPlacementsTagFormatsEnumList as any as S.Schema<CountryTvDataProvidersItemEnumList>;
 
 /** Contains information about a country that can be targeted by ads. */
 export interface Country {
@@ -3435,9 +3432,8 @@ export const CreativeCompatibilityItemEnum = S.String;
 export type CreativeCompatibilityItemEnumList = Array<
   CreativeCompatibilityItemEnum | (string & {})
 >;
-export const CreativeCompatibilityItemEnumList = /*@__PURE__*/ S.Array(
-  CreativeCompatibilityItemEnum,
-) as any as S.Schema<CreativeCompatibilityItemEnumList>;
+export const CreativeCompatibilityItemEnumList =
+  GeneratetagsPlacementsTagFormatsEnumList as any as S.Schema<CreativeCompatibilityItemEnumList>;
 
 export type ThirdPartyTrackingUrlThirdPartyUrlTypeEnum =
   | "IMPRESSION"
@@ -3760,9 +3756,8 @@ export const CreativeBackupImageFeaturesItemEnum = S.String;
 export type CreativeBackupImageFeaturesItemEnumList = Array<
   CreativeBackupImageFeaturesItemEnum | (string & {})
 >;
-export const CreativeBackupImageFeaturesItemEnumList = /*@__PURE__*/ S.Array(
-  CreativeBackupImageFeaturesItemEnum,
-) as any as S.Schema<CreativeBackupImageFeaturesItemEnumList>;
+export const CreativeBackupImageFeaturesItemEnumList =
+  GeneratetagsPlacementsTagFormatsEnumList as any as S.Schema<CreativeBackupImageFeaturesItemEnumList>;
 
 export type TargetWindowTargetWindowOptionEnum = "NEW_WINDOW" | "CURRENT_WINDOW" | "CUSTOM";
 export const TargetWindowTargetWindowOptionEnum = S.String;
@@ -4002,9 +3997,8 @@ export const CreativeAssetDetectedFeaturesItemEnum = S.String;
 export type CreativeAssetDetectedFeaturesItemEnumList = Array<
   CreativeAssetDetectedFeaturesItemEnum | (string & {})
 >;
-export const CreativeAssetDetectedFeaturesItemEnumList = /*@__PURE__*/ S.Array(
-  CreativeAssetDetectedFeaturesItemEnum,
-) as any as S.Schema<CreativeAssetDetectedFeaturesItemEnumList>;
+export const CreativeAssetDetectedFeaturesItemEnumList =
+  GeneratetagsPlacementsTagFormatsEnumList as any as S.Schema<CreativeAssetDetectedFeaturesItemEnumList>;
 
 export type CreativeAssetDisplayTypeEnum =
   | "ASSET_DISPLAY_TYPE_INPAGE"
@@ -4491,9 +4485,8 @@ export const DirectorySiteInpageTagFormatsItemEnum = S.String;
 export type DirectorySiteInpageTagFormatsItemEnumList = Array<
   DirectorySiteInpageTagFormatsItemEnum | (string & {})
 >;
-export const DirectorySiteInpageTagFormatsItemEnumList = /*@__PURE__*/ S.Array(
-  DirectorySiteInpageTagFormatsItemEnum,
-) as any as S.Schema<DirectorySiteInpageTagFormatsItemEnumList>;
+export const DirectorySiteInpageTagFormatsItemEnumList =
+  GeneratetagsPlacementsTagFormatsEnumList as any as S.Schema<DirectorySiteInpageTagFormatsItemEnumList>;
 
 export type DirectorySiteInterstitialTagFormatsItemEnum =
   | "IFRAME_JAVASCRIPT_INTERSTITIAL"
@@ -4504,9 +4497,8 @@ export const DirectorySiteInterstitialTagFormatsItemEnum = S.String;
 export type DirectorySiteInterstitialTagFormatsItemEnumList = Array<
   DirectorySiteInterstitialTagFormatsItemEnum | (string & {})
 >;
-export const DirectorySiteInterstitialTagFormatsItemEnumList = /*@__PURE__*/ S.Array(
-  DirectorySiteInterstitialTagFormatsItemEnum,
-) as any as S.Schema<DirectorySiteInterstitialTagFormatsItemEnumList>;
+export const DirectorySiteInterstitialTagFormatsItemEnumList =
+  GeneratetagsPlacementsTagFormatsEnumList as any as S.Schema<DirectorySiteInterstitialTagFormatsItemEnumList>;
 
 /** DirectorySites contains properties of a website from the Site Directory. Sites need to be added to an account via the Sites resource before they can be assigned to a placement. */
 export interface DirectorySite {
@@ -5689,9 +5681,8 @@ export const FloodlightActivityUserDefinedVariableTypesItemEnum = S.String;
 export type FloodlightActivityUserDefinedVariableTypesItemEnumList = Array<
   FloodlightActivityUserDefinedVariableTypesItemEnum | (string & {})
 >;
-export const FloodlightActivityUserDefinedVariableTypesItemEnumList = /*@__PURE__*/ S.Array(
-  FloodlightActivityUserDefinedVariableTypesItemEnum,
-) as any as S.Schema<FloodlightActivityUserDefinedVariableTypesItemEnumList>;
+export const FloodlightActivityUserDefinedVariableTypesItemEnumList =
+  GeneratetagsPlacementsTagFormatsEnumList as any as S.Schema<FloodlightActivityUserDefinedVariableTypesItemEnumList>;
 
 export type FloodlightActivityCacheBustingTypeEnum =
   | "JAVASCRIPT"
@@ -6726,9 +6717,8 @@ export type PlacementTagFormatsItemEnum =
 export const PlacementTagFormatsItemEnum = S.String;
 
 export type PlacementTagFormatsItemEnumList = Array<PlacementTagFormatsItemEnum | (string & {})>;
-export const PlacementTagFormatsItemEnumList = /*@__PURE__*/ S.Array(
-  PlacementTagFormatsItemEnum,
-) as any as S.Schema<PlacementTagFormatsItemEnumList>;
+export const PlacementTagFormatsItemEnumList =
+  GeneratetagsPlacementsTagFormatsEnumList as any as S.Schema<PlacementTagFormatsItemEnumList>;
 
 export interface PlacementSingleConversionDomain {
   conversionDomainId?: string;
@@ -6789,9 +6779,8 @@ export const YoutubeSettingsCallToActionsItemEnum = S.String;
 export type YoutubeSettingsCallToActionsItemEnumList = Array<
   YoutubeSettingsCallToActionsItemEnum | (string & {})
 >;
-export const YoutubeSettingsCallToActionsItemEnumList = /*@__PURE__*/ S.Array(
-  YoutubeSettingsCallToActionsItemEnum,
-) as any as S.Schema<YoutubeSettingsCallToActionsItemEnumList>;
+export const YoutubeSettingsCallToActionsItemEnumList =
+  GeneratetagsPlacementsTagFormatsEnumList as any as S.Schema<YoutubeSettingsCallToActionsItemEnumList>;
 
 /** Contains the YouTube settings. */
 export interface YoutubeSettings {
@@ -7393,9 +7382,8 @@ export const ReportScheduleRepeatsOnWeekDaysItemEnum = S.String;
 export type ReportScheduleRepeatsOnWeekDaysItemEnumList = Array<
   ReportScheduleRepeatsOnWeekDaysItemEnum | (string & {})
 >;
-export const ReportScheduleRepeatsOnWeekDaysItemEnumList = /*@__PURE__*/ S.Array(
-  ReportScheduleRepeatsOnWeekDaysItemEnum,
-) as any as S.Schema<ReportScheduleRepeatsOnWeekDaysItemEnumList>;
+export const ReportScheduleRepeatsOnWeekDaysItemEnumList =
+  GeneratetagsPlacementsTagFormatsEnumList as any as S.Schema<ReportScheduleRepeatsOnWeekDaysItemEnumList>;
 
 export type ReportScheduleRunsOnDayOfMonthEnum = "DAY_OF_MONTH" | "WEEK_OF_MONTH";
 export const ReportScheduleRunsOnDayOfMonthEnum = S.String;
@@ -8882,9 +8870,8 @@ export const CreativeAssetMetadataDetectedFeaturesItemEnum = S.String;
 export type CreativeAssetMetadataDetectedFeaturesItemEnumList = Array<
   CreativeAssetMetadataDetectedFeaturesItemEnum | (string & {})
 >;
-export const CreativeAssetMetadataDetectedFeaturesItemEnumList = /*@__PURE__*/ S.Array(
-  CreativeAssetMetadataDetectedFeaturesItemEnum,
-) as any as S.Schema<CreativeAssetMetadataDetectedFeaturesItemEnumList>;
+export const CreativeAssetMetadataDetectedFeaturesItemEnumList =
+  GeneratetagsPlacementsTagFormatsEnumList as any as S.Schema<CreativeAssetMetadataDetectedFeaturesItemEnumList>;
 
 export type CreativeAssetMetadataWarnedValidationRulesItemEnum =
   | "CLICK_TAG_NON_TOP_LEVEL"
@@ -8918,9 +8905,8 @@ export const CreativeAssetMetadataWarnedValidationRulesItemEnum = S.String;
 export type CreativeAssetMetadataWarnedValidationRulesItemEnumList = Array<
   CreativeAssetMetadataWarnedValidationRulesItemEnum | (string & {})
 >;
-export const CreativeAssetMetadataWarnedValidationRulesItemEnumList = /*@__PURE__*/ S.Array(
-  CreativeAssetMetadataWarnedValidationRulesItemEnum,
-) as any as S.Schema<CreativeAssetMetadataWarnedValidationRulesItemEnumList>;
+export const CreativeAssetMetadataWarnedValidationRulesItemEnumList =
+  GeneratetagsPlacementsTagFormatsEnumList as any as S.Schema<CreativeAssetMetadataWarnedValidationRulesItemEnumList>;
 
 /** CreativeAssets contains properties of a creative asset file which will be uploaded or has already been uploaded. Refer to the creative sample code for how to upload assets and insert a creative. */
 export interface CreativeAssetMetadata {
@@ -9811,9 +9797,8 @@ export type ListAdsTypeEnum =
 export const ListAdsTypeEnum = S.String;
 
 export type ListAdsTypeEnumList = Array<ListAdsTypeEnum | (string & {})>;
-export const ListAdsTypeEnumList = /*@__PURE__*/ S.Array(
-  ListAdsTypeEnum,
-) as any as S.Schema<ListAdsTypeEnumList>;
+export const ListAdsTypeEnumList =
+  GeneratetagsPlacementsTagFormatsEnumList as any as S.Schema<ListAdsTypeEnumList>;
 
 export type ListAdsSortOrderEnum = "ASCENDING" | "DESCENDING";
 export const ListAdsSortOrderEnum = S.String;
@@ -10356,9 +10341,8 @@ export const ListBillingProfilesStatusEnum = S.String;
 export type ListBillingProfilesStatusEnumList = Array<
   ListBillingProfilesStatusEnum | (string & {})
 >;
-export const ListBillingProfilesStatusEnumList = /*@__PURE__*/ S.Array(
-  ListBillingProfilesStatusEnum,
-) as any as S.Schema<ListBillingProfilesStatusEnumList>;
+export const ListBillingProfilesStatusEnumList =
+  GeneratetagsPlacementsTagFormatsEnumList as any as S.Schema<ListBillingProfilesStatusEnumList>;
 
 export type ListBillingProfilesSortOrderEnum = "ASCENDING" | "DESCENDING";
 export const ListBillingProfilesSortOrderEnum = S.String;
@@ -11289,9 +11273,8 @@ export type ListCreativesTypesEnum =
 export const ListCreativesTypesEnum = S.String;
 
 export type ListCreativesTypesEnumList = Array<ListCreativesTypesEnum | (string & {})>;
-export const ListCreativesTypesEnumList = /*@__PURE__*/ S.Array(
-  ListCreativesTypesEnum,
-) as any as S.Schema<ListCreativesTypesEnumList>;
+export const ListCreativesTypesEnumList =
+  GeneratetagsPlacementsTagFormatsEnumList as any as S.Schema<ListCreativesTypesEnumList>;
 
 export interface ListCreativesRequest {
   /** Select only creatives corresponding to this Studio creative ID. */
@@ -11531,9 +11514,8 @@ export const ListEventTagsEventTagTypesEnum = S.String;
 export type ListEventTagsEventTagTypesEnumList = Array<
   ListEventTagsEventTagTypesEnum | (string & {})
 >;
-export const ListEventTagsEventTagTypesEnumList = /*@__PURE__*/ S.Array(
-  ListEventTagsEventTagTypesEnum,
-) as any as S.Schema<ListEventTagsEventTagTypesEnumList>;
+export const ListEventTagsEventTagTypesEnumList =
+  GeneratetagsPlacementsTagFormatsEnumList as any as S.Schema<ListEventTagsEventTagTypesEnumList>;
 
 export interface ListEventTagsRequest {
   /** Examine only the specified campaign or advertiser's event tags for matching selector criteria. When set to false, the parent advertiser and parent campaign of the specified ad or campaign is examined as well. In addition, when set to false, the status field is examined as well, along with the enabledByDefault field. This parameter can not be set to true when adId is specified as ads do not define their own even tags. */
@@ -11952,9 +11934,8 @@ export const ListMobileAppsDirectoriesEnum = S.String;
 export type ListMobileAppsDirectoriesEnumList = Array<
   ListMobileAppsDirectoriesEnum | (string & {})
 >;
-export const ListMobileAppsDirectoriesEnumList = /*@__PURE__*/ S.Array(
-  ListMobileAppsDirectoriesEnum,
-) as any as S.Schema<ListMobileAppsDirectoriesEnumList>;
+export const ListMobileAppsDirectoriesEnumList =
+  GeneratetagsPlacementsTagFormatsEnumList as any as S.Schema<ListMobileAppsDirectoriesEnumList>;
 
 export interface ListMobileAppsRequest {
   /** Select only apps from these directories. */
@@ -12120,9 +12101,8 @@ export const ListPlacementGroupsActiveStatusEnum = S.String;
 export type ListPlacementGroupsActiveStatusEnumList = Array<
   ListPlacementGroupsActiveStatusEnum | (string & {})
 >;
-export const ListPlacementGroupsActiveStatusEnumList = /*@__PURE__*/ S.Array(
-  ListPlacementGroupsActiveStatusEnum,
-) as any as S.Schema<ListPlacementGroupsActiveStatusEnumList>;
+export const ListPlacementGroupsActiveStatusEnumList =
+  GeneratetagsPlacementsTagFormatsEnumList as any as S.Schema<ListPlacementGroupsActiveStatusEnumList>;
 
 export type ListPlacementGroupsSortFieldEnum = "ID" | "NAME";
 export const ListPlacementGroupsSortFieldEnum = S.String;
@@ -12145,9 +12125,8 @@ export const ListPlacementGroupsPricingTypesEnum = S.String;
 export type ListPlacementGroupsPricingTypesEnumList = Array<
   ListPlacementGroupsPricingTypesEnum | (string & {})
 >;
-export const ListPlacementGroupsPricingTypesEnumList = /*@__PURE__*/ S.Array(
-  ListPlacementGroupsPricingTypesEnum,
-) as any as S.Schema<ListPlacementGroupsPricingTypesEnumList>;
+export const ListPlacementGroupsPricingTypesEnumList =
+  GeneratetagsPlacementsTagFormatsEnumList as any as S.Schema<ListPlacementGroupsPricingTypesEnumList>;
 
 export interface ListPlacementGroupsRequest {
   /** Select only placements with these active statuses. */
@@ -12265,9 +12244,8 @@ export const ListPlacementsActiveStatusEnum = S.String;
 export type ListPlacementsActiveStatusEnumList = Array<
   ListPlacementsActiveStatusEnum | (string & {})
 >;
-export const ListPlacementsActiveStatusEnumList = /*@__PURE__*/ S.Array(
-  ListPlacementsActiveStatusEnum,
-) as any as S.Schema<ListPlacementsActiveStatusEnumList>;
+export const ListPlacementsActiveStatusEnumList =
+  GeneratetagsPlacementsTagFormatsEnumList as any as S.Schema<ListPlacementsActiveStatusEnumList>;
 
 export type ListPlacementsPricingTypesEnum =
   | "PRICING_TYPE_CPM"
@@ -12281,9 +12259,8 @@ export const ListPlacementsPricingTypesEnum = S.String;
 export type ListPlacementsPricingTypesEnumList = Array<
   ListPlacementsPricingTypesEnum | (string & {})
 >;
-export const ListPlacementsPricingTypesEnumList = /*@__PURE__*/ S.Array(
-  ListPlacementsPricingTypesEnum,
-) as any as S.Schema<ListPlacementsPricingTypesEnumList>;
+export const ListPlacementsPricingTypesEnumList =
+  GeneratetagsPlacementsTagFormatsEnumList as any as S.Schema<ListPlacementsPricingTypesEnumList>;
 
 export type ListPlacementsCompatibilitiesEnum =
   | "DISPLAY"
@@ -12297,9 +12274,8 @@ export const ListPlacementsCompatibilitiesEnum = S.String;
 export type ListPlacementsCompatibilitiesEnumList = Array<
   ListPlacementsCompatibilitiesEnum | (string & {})
 >;
-export const ListPlacementsCompatibilitiesEnumList = /*@__PURE__*/ S.Array(
-  ListPlacementsCompatibilitiesEnum,
-) as any as S.Schema<ListPlacementsCompatibilitiesEnumList>;
+export const ListPlacementsCompatibilitiesEnumList =
+  GeneratetagsPlacementsTagFormatsEnumList as any as S.Schema<ListPlacementsCompatibilitiesEnumList>;
 
 export type ListPlacementsSortOrderEnum = "ASCENDING" | "DESCENDING";
 export const ListPlacementsSortOrderEnum = S.String;

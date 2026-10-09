@@ -123,9 +123,8 @@ export const FlowType = S.String;
 
 /** The flow types being requested for this connection. This FlowType property has reached end of life support starting version 2025-05-30-preview. Please create a FlowProfile resource instead. */
 export type ConnectionPropertiesFlowTypesList = Array<FlowType>;
-export const ConnectionPropertiesFlowTypesList = /*@__PURE__*/ S.Array(
-  FlowType,
-) as any as S.Schema<ConnectionPropertiesFlowTypesList>;
+export const ConnectionPropertiesFlowTypesList =
+  ConnectionPropertiesForceDisabledStatusList as any as S.Schema<ConnectionPropertiesFlowTypesList>;
 
 /** The secondary contacts for this connection request */
 export type ConnectionPropertiesSecondaryContactsList = Array<string>;
@@ -2381,18 +2380,8 @@ export interface PendingConnectionSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const PendingConnectionSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(PendingConnectionSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(PendingConnectionSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PendingConnectionSystemData",
-}) as any as S.Schema<PendingConnectionSystemData>;
+export const PendingConnectionSystemData =
+  ReadPipelineConnectionSystemData as any as S.Schema<PendingConnectionSystemData>;
 
 /** Pending connection object */
 export interface PendingConnection {
@@ -2582,16 +2571,7 @@ export interface PendingFlowSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const PendingFlowSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(PendingFlowSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(PendingFlowSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({ identifier: "PendingFlowSystemData" }) as any as S.Schema<PendingFlowSystemData>;
+export const PendingFlowSystemData = SystemData as any as S.Schema<PendingFlowSystemData>;
 
 /** Pending flow object */
 export interface PendingFlow {

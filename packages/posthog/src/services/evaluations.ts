@@ -366,13 +366,8 @@ export interface EvaluationEvaluationConfigCase2 {
   /** Classify sentiment from user messages in the generation input. The classifier is trained on English, so labels are unreliable for other languages; use an 'llm_judge' evaluation for multilingual agents. */
   source?: EvaluationEvaluationConfigCase2Source;
 }
-export const EvaluationEvaluationConfigCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    source: S.optional(EvaluationEvaluationConfigCase2Source),
-  }),
-).annotate({
-  identifier: "EvaluationEvaluationConfigCase2",
-}) as any as S.Schema<EvaluationEvaluationConfigCase2>;
+export const EvaluationEvaluationConfigCase2 =
+  CreateEvaluationRequestEvaluationConfigCase2 as any as S.Schema<EvaluationEvaluationConfigCase2>;
 
 /** Configuration dict. For 'llm_judge': {prompt}; for 'hog': {source}; for 'sentiment': {source: 'user_messages'}. */
 export type EvaluationEvaluationConfig =
@@ -404,14 +399,8 @@ export interface EvaluationOutputConfigPassingRuleCase0 {
   /** Finite passing threshold within any configured score bounds. */
   threshold: number;
 }
-export const EvaluationOutputConfigPassingRuleCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operator: EvaluationOutputConfigPassingRuleCase0Operator,
-    threshold: S.Number,
-  }),
-).annotate({
-  identifier: "EvaluationOutputConfigPassingRuleCase0",
-}) as any as S.Schema<EvaluationOutputConfigPassingRuleCase0>;
+export const EvaluationOutputConfigPassingRuleCase0 =
+  CreateEvaluationRequestOutputConfigPassingRuleCase0 as any as S.Schema<EvaluationOutputConfigPassingRuleCase0>;
 
 /** Passing category keys. With keys selected, results must be non-empty and contain only these keys. If no passing keys are selected, only an empty result passes. */
 export type EvaluationOutputConfigPassingRuleCase1CategoriesList = Array<string>;
@@ -485,14 +474,8 @@ export interface EvaluationTargetConfigCase0 {
   /** Seconds to wait after the first matching generation before evaluating the whole unit. Captured when the run is scheduled -- editing it does not change runs already in flight. The accepted range depends on `target`: 10-7200 for 'trace', 10-604800 for 'session'. The default also depends on `target`; see the field-level help_text. */
   window_seconds?: number;
 }
-export const EvaluationTargetConfigCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    strategy: EvaluationTargetConfigCase0Strategy,
-    window_seconds: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "EvaluationTargetConfigCase0",
-}) as any as S.Schema<EvaluationTargetConfigCase0>;
+export const EvaluationTargetConfigCase0 =
+  CreateEvaluationRequestTargetConfigCase0 as any as S.Schema<EvaluationTargetConfigCase0>;
 
 /** Evaluate once the unit has had no new activity for the quiet period. */
 export type EvaluationTargetConfigCase1Strategy = "inactivity";
@@ -506,15 +489,8 @@ export interface EvaluationTargetConfigCase1 {
   /** Hard cap in seconds on the total wait from the first matching generation, even if the unit stays active. Must be at least quiet_period_seconds. The accepted range depends on `target`: 60-7200 for 'trace', 60-604800 for 'session'. The default also depends on `target`; see the field-level help_text. */
   max_age_seconds?: number;
 }
-export const EvaluationTargetConfigCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    strategy: EvaluationTargetConfigCase1Strategy,
-    quiet_period_seconds: S.optional(S.Number),
-    max_age_seconds: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "EvaluationTargetConfigCase1",
-}) as any as S.Schema<EvaluationTargetConfigCase1>;
+export const EvaluationTargetConfigCase1 =
+  CreateEvaluationRequestTargetConfigCase1 as any as S.Schema<EvaluationTargetConfigCase1>;
 
 /** Target-specific config. For 'trace' and 'session' targets: a settle config discriminated on `strategy`, either 'fixed_window' {window_seconds} or 'inactivity' {quiet_period_seconds, max_age_seconds}. Send `strategy` explicitly. The server fills in any other field you omit, using per-target defaults, and the accepted bounds also depend on `target`. Empty for 'generation'. */
 export type EvaluationTargetConfig = EvaluationTargetConfigCase0 | EvaluationTargetConfigCase1;
@@ -1291,13 +1267,8 @@ export interface UpdateEvaluationRequestEvaluationConfigCase2 {
   /** Classify sentiment from user messages in the generation input. The classifier is trained on English, so labels are unreliable for other languages; use an 'llm_judge' evaluation for multilingual agents. */
   source?: UpdateEvaluationRequestEvaluationConfigCase2Source | (string & {});
 }
-export const UpdateEvaluationRequestEvaluationConfigCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    source: S.optional(UpdateEvaluationRequestEvaluationConfigCase2Source),
-  }),
-).annotate({
-  identifier: "UpdateEvaluationRequestEvaluationConfigCase2",
-}) as any as S.Schema<UpdateEvaluationRequestEvaluationConfigCase2>;
+export const UpdateEvaluationRequestEvaluationConfigCase2 =
+  CreateEvaluationRequestEvaluationConfigCase2 as any as S.Schema<UpdateEvaluationRequestEvaluationConfigCase2>;
 
 /** Configuration dict. For 'llm_judge': {prompt}; for 'hog': {source}; for 'sentiment': {source: 'user_messages'}. */
 export type UpdateEvaluationRequestEvaluationConfig =
@@ -1332,14 +1303,8 @@ export interface UpdateEvaluationRequestOutputConfigPassingRuleCase0 {
   /** Finite passing threshold within any configured score bounds. */
   threshold: number;
 }
-export const UpdateEvaluationRequestOutputConfigPassingRuleCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operator: UpdateEvaluationRequestOutputConfigPassingRuleCase0Operator,
-    threshold: S.Number,
-  }),
-).annotate({
-  identifier: "UpdateEvaluationRequestOutputConfigPassingRuleCase0",
-}) as any as S.Schema<UpdateEvaluationRequestOutputConfigPassingRuleCase0>;
+export const UpdateEvaluationRequestOutputConfigPassingRuleCase0 =
+  CreateEvaluationRequestOutputConfigPassingRuleCase0 as any as S.Schema<UpdateEvaluationRequestOutputConfigPassingRuleCase0>;
 
 /** Passing category keys. With keys selected, results must be non-empty and contain only these keys. If no passing keys are selected, only an empty result passes. */
 export type UpdateEvaluationRequestOutputConfigPassingRuleCase1CategoriesList = Array<string>;
@@ -1409,14 +1374,8 @@ export interface UpdateEvaluationRequestTargetConfigCase0 {
   /** Seconds to wait after the first matching generation before evaluating the whole unit. Captured when the run is scheduled -- editing it does not change runs already in flight. The accepted range depends on `target`: 10-7200 for 'trace', 10-604800 for 'session'. The default also depends on `target`; see the field-level help_text. */
   window_seconds?: number;
 }
-export const UpdateEvaluationRequestTargetConfigCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    strategy: UpdateEvaluationRequestTargetConfigCase0Strategy,
-    window_seconds: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "UpdateEvaluationRequestTargetConfigCase0",
-}) as any as S.Schema<UpdateEvaluationRequestTargetConfigCase0>;
+export const UpdateEvaluationRequestTargetConfigCase0 =
+  CreateEvaluationRequestTargetConfigCase0 as any as S.Schema<UpdateEvaluationRequestTargetConfigCase0>;
 
 /** Evaluate once the unit has had no new activity for the quiet period. */
 export type UpdateEvaluationRequestTargetConfigCase1Strategy = "inactivity";
@@ -1430,15 +1389,8 @@ export interface UpdateEvaluationRequestTargetConfigCase1 {
   /** Hard cap in seconds on the total wait from the first matching generation, even if the unit stays active. Must be at least quiet_period_seconds. The accepted range depends on `target`: 60-7200 for 'trace', 60-604800 for 'session'. The default also depends on `target`; see the field-level help_text. */
   max_age_seconds?: number;
 }
-export const UpdateEvaluationRequestTargetConfigCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    strategy: UpdateEvaluationRequestTargetConfigCase1Strategy,
-    quiet_period_seconds: S.optional(S.Number),
-    max_age_seconds: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "UpdateEvaluationRequestTargetConfigCase1",
-}) as any as S.Schema<UpdateEvaluationRequestTargetConfigCase1>;
+export const UpdateEvaluationRequestTargetConfigCase1 =
+  CreateEvaluationRequestTargetConfigCase1 as any as S.Schema<UpdateEvaluationRequestTargetConfigCase1>;
 
 /** Target-specific config. For 'trace' and 'session' targets: a settle config discriminated on `strategy`, either 'fixed_window' {window_seconds} or 'inactivity' {quiet_period_seconds, max_age_seconds}. Send `strategy` explicitly. The server fills in any other field you omit, using per-target defaults, and the accepted bounds also depend on `target`. Empty for 'generation'. */
 export type UpdateEvaluationRequestTargetConfig =
@@ -1519,13 +1471,8 @@ export interface UpdateEvaluationsPartialRequestEvaluationConfigCase2 {
   /** Classify sentiment from user messages in the generation input. The classifier is trained on English, so labels are unreliable for other languages; use an 'llm_judge' evaluation for multilingual agents. */
   source?: UpdateEvaluationsPartialRequestEvaluationConfigCase2Source | (string & {});
 }
-export const UpdateEvaluationsPartialRequestEvaluationConfigCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    source: S.optional(UpdateEvaluationsPartialRequestEvaluationConfigCase2Source),
-  }),
-).annotate({
-  identifier: "UpdateEvaluationsPartialRequestEvaluationConfigCase2",
-}) as any as S.Schema<UpdateEvaluationsPartialRequestEvaluationConfigCase2>;
+export const UpdateEvaluationsPartialRequestEvaluationConfigCase2 =
+  CreateEvaluationRequestEvaluationConfigCase2 as any as S.Schema<UpdateEvaluationsPartialRequestEvaluationConfigCase2>;
 
 /** Configuration dict. For 'llm_judge': {prompt}; for 'hog': {source}; for 'sentiment': {source: 'user_messages'}. */
 export type UpdateEvaluationsPartialRequestEvaluationConfig =
@@ -1560,15 +1507,8 @@ export interface UpdateEvaluationsPartialRequestOutputConfigPassingRuleCase0 {
   /** Finite passing threshold within any configured score bounds. */
   threshold: number;
 }
-export const UpdateEvaluationsPartialRequestOutputConfigPassingRuleCase0 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      operator: UpdateEvaluationsPartialRequestOutputConfigPassingRuleCase0Operator,
-      threshold: S.Number,
-    }),
-).annotate({
-  identifier: "UpdateEvaluationsPartialRequestOutputConfigPassingRuleCase0",
-}) as any as S.Schema<UpdateEvaluationsPartialRequestOutputConfigPassingRuleCase0>;
+export const UpdateEvaluationsPartialRequestOutputConfigPassingRuleCase0 =
+  CreateEvaluationsTestHogRequestOutputConfigPassingRuleCase0 as any as S.Schema<UpdateEvaluationsPartialRequestOutputConfigPassingRuleCase0>;
 
 /** Passing category keys. With keys selected, results must be non-empty and contain only these keys. If no passing keys are selected, only an empty result passes. */
 export type UpdateEvaluationsPartialRequestOutputConfigPassingRuleCase1CategoriesList =
@@ -1639,14 +1579,8 @@ export interface UpdateEvaluationsPartialRequestTargetConfigCase0 {
   /** Seconds to wait after the first matching generation before evaluating the whole unit. Captured when the run is scheduled -- editing it does not change runs already in flight. The accepted range depends on `target`: 10-7200 for 'trace', 10-604800 for 'session'. The default also depends on `target`; see the field-level help_text. */
   window_seconds?: number;
 }
-export const UpdateEvaluationsPartialRequestTargetConfigCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    strategy: UpdateEvaluationsPartialRequestTargetConfigCase0Strategy,
-    window_seconds: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "UpdateEvaluationsPartialRequestTargetConfigCase0",
-}) as any as S.Schema<UpdateEvaluationsPartialRequestTargetConfigCase0>;
+export const UpdateEvaluationsPartialRequestTargetConfigCase0 =
+  CreateEvaluationRequestTargetConfigCase0 as any as S.Schema<UpdateEvaluationsPartialRequestTargetConfigCase0>;
 
 /** Evaluate once the unit has had no new activity for the quiet period. */
 export type UpdateEvaluationsPartialRequestTargetConfigCase1Strategy = "inactivity";
@@ -1660,15 +1594,8 @@ export interface UpdateEvaluationsPartialRequestTargetConfigCase1 {
   /** Hard cap in seconds on the total wait from the first matching generation, even if the unit stays active. Must be at least quiet_period_seconds. The accepted range depends on `target`: 60-7200 for 'trace', 60-604800 for 'session'. The default also depends on `target`; see the field-level help_text. */
   max_age_seconds?: number;
 }
-export const UpdateEvaluationsPartialRequestTargetConfigCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    strategy: UpdateEvaluationsPartialRequestTargetConfigCase1Strategy,
-    quiet_period_seconds: S.optional(S.Number),
-    max_age_seconds: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "UpdateEvaluationsPartialRequestTargetConfigCase1",
-}) as any as S.Schema<UpdateEvaluationsPartialRequestTargetConfigCase1>;
+export const UpdateEvaluationsPartialRequestTargetConfigCase1 =
+  CreateEvaluationRequestTargetConfigCase1 as any as S.Schema<UpdateEvaluationsPartialRequestTargetConfigCase1>;
 
 /** Target-specific config. For 'trace' and 'session' targets: a settle config discriminated on `strategy`, either 'fixed_window' {window_seconds} or 'inactivity' {quiet_period_seconds, max_age_seconds}. Send `strategy` explicitly. The server fills in any other field you omit, using per-target defaults, and the accepted bounds also depend on `target`. Empty for 'generation'. */
 export type UpdateEvaluationsPartialRequestTargetConfig =

@@ -1947,16 +1947,8 @@ export interface DatabasePrincipalPropertiesInput {
   /** Principal type. */
   principalType: PrincipalType | (string & {});
 }
-export const DatabasePrincipalPropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.String,
-    role: DatabasePrincipalRole,
-    tenantId: S.optional(S.String),
-    principalType: PrincipalType,
-  }),
-).annotate({
-  identifier: "DatabasePrincipalPropertiesInput",
-}) as any as S.Schema<DatabasePrincipalPropertiesInput>;
+export const DatabasePrincipalPropertiesInput =
+  ClusterPrincipalPropertiesInput as any as S.Schema<DatabasePrincipalPropertiesInput>;
 
 export interface DatabasePrincipalAssignmentsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -2011,20 +2003,8 @@ export interface DatabasePrincipalProperties {
   /** The service principal object id in AAD (Azure active directory) */
   aadObjectId?: string;
 }
-export const DatabasePrincipalProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.String,
-    role: DatabasePrincipalRole,
-    tenantId: S.optional(S.String),
-    principalType: PrincipalType,
-    tenantName: S.optional(S.String),
-    principalName: S.optional(S.String),
-    provisioningState: S.optional(ProvisioningState),
-    aadObjectId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DatabasePrincipalProperties",
-}) as any as S.Schema<DatabasePrincipalProperties>;
+export const DatabasePrincipalProperties =
+  ClusterPrincipalProperties as any as S.Schema<DatabasePrincipalProperties>;
 
 export interface DatabasePrincipalAssignmentsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2038,17 +2018,8 @@ export interface DatabasePrincipalAssignmentsCreateOrUpdateResponse {
   /** The database principal. */
   properties?: DatabasePrincipalProperties;
 }
-export const DatabasePrincipalAssignmentsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DatabasePrincipalProperties),
-  }),
-).annotate({
-  identifier: "DatabasePrincipalAssignmentsCreateOrUpdateResponse",
-}) as any as S.Schema<DatabasePrincipalAssignmentsCreateOrUpdateResponse>;
+export const DatabasePrincipalAssignmentsCreateOrUpdateResponse =
+  ClusterPrincipalAssignmentsCreateOrUpdateResponse as any as S.Schema<DatabasePrincipalAssignmentsCreateOrUpdateResponse>;
 
 export type DatabasesCreateOrUpdateRequestCallerRole = "Admin" | "None";
 export const DatabasesCreateOrUpdateRequestCallerRole = S.String;
@@ -4515,22 +4486,12 @@ export interface DataConnection {
   /** Kind of the endpoint for the data connection */
   kind: DataConnectionKind;
 }
-export const DataConnection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    location: S.optional(S.String),
-    kind: DataConnectionKind,
-  }),
-).annotate({ identifier: "DataConnection" }) as any as S.Schema<DataConnection>;
+export const DataConnection = Database as any as S.Schema<DataConnection>;
 
 /** The list of Kusto data connections. */
 export type DataConnectionListResultValueList = Array<DataConnection>;
-export const DataConnectionListResultValueList = /*@__PURE__*/ S.Array(
-  DataConnection,
-) as any as S.Schema<DataConnectionListResultValueList>;
+export const DataConnectionListResultValueList =
+  DatabaseListResultValueList as any as S.Schema<DataConnectionListResultValueList>;
 
 /** The list Kusto data connections operation response. */
 export interface DataConnectionListResult {

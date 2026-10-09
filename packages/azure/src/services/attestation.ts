@@ -841,16 +841,7 @@ export interface OperationListSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const OperationListSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(OperationListSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(OperationListSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({ identifier: "OperationListSystemData" }) as any as S.Schema<OperationListSystemData>;
+export const OperationListSystemData = SystemData as any as S.Schema<OperationListSystemData>;
 
 /** Display object with properties of the operation. */
 export interface OperationsDisplayDefinition {

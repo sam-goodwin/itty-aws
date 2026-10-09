@@ -1031,9 +1031,7 @@ export type GoogleCloudDatacatalogV1beta1SerializedTaxonomyActivatedPolicyTypesI
   GoogleCloudDatacatalogV1beta1SerializedTaxonomyActivatedPolicyTypesItemEnum | (string & {})
 >;
 export const GoogleCloudDatacatalogV1beta1SerializedTaxonomyActivatedPolicyTypesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudDatacatalogV1beta1SerializedTaxonomyActivatedPolicyTypesItemEnum,
-  ) as any as S.Schema<GoogleCloudDatacatalogV1beta1SerializedTaxonomyActivatedPolicyTypesItemEnumList>;
+  GoogleCloudDatacatalogV1beta1TaxonomyActivatedPolicyTypesItemEnumList as any as S.Schema<GoogleCloudDatacatalogV1beta1SerializedTaxonomyActivatedPolicyTypesItemEnumList>;
 
 /** Message representing one policy tag when exported as a nested proto. */
 export interface GoogleCloudDatacatalogV1beta1SerializedPolicyTag {

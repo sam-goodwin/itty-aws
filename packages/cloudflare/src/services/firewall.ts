@@ -285,9 +285,8 @@ export type RulesBulkEditResultItemProductsItem =
 export const RulesBulkEditResultItemProductsItem = S.String;
 
 export type RulesBulkEditResultItemProductsList = Array<RulesBulkEditResultItemProductsItem>;
-export const RulesBulkEditResultItemProductsList = /*@__PURE__*/ S.Array(
-  RulesBulkEditResultItemProductsItem,
-) as any as S.Schema<RulesBulkEditResultItemProductsList>;
+export const RulesBulkEditResultItemProductsList =
+  RulesBulkDeleteResultItemProductsList as any as S.Schema<RulesBulkEditResultItemProductsList>;
 
 export interface RulesBulkEditResultItem {
   /** The unique identifier of the firewall rule. */
@@ -392,9 +391,8 @@ export type RulesBulkUpdateResultItemProductsItem =
 export const RulesBulkUpdateResultItemProductsItem = S.String;
 
 export type RulesBulkUpdateResultItemProductsList = Array<RulesBulkUpdateResultItemProductsItem>;
-export const RulesBulkUpdateResultItemProductsList = /*@__PURE__*/ S.Array(
-  RulesBulkUpdateResultItemProductsItem,
-) as any as S.Schema<RulesBulkUpdateResultItemProductsList>;
+export const RulesBulkUpdateResultItemProductsList =
+  RulesBulkDeleteResultItemProductsList as any as S.Schema<RulesBulkUpdateResultItemProductsList>;
 
 export interface RulesBulkUpdateResultItem {
   /** The unique identifier of the firewall rule. */
@@ -492,14 +490,7 @@ export interface AccessRulesCreateRequestConfigurationAccessRuleCIDRConfiguratio
   value?: string;
 }
 export const AccessRulesCreateRequestConfigurationAccessRuleCIDRConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      target: S.optional(AccessRulesCreateRequestConfigurationAccessRuleCIDRConfigurationTarget),
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "AccessRulesCreateRequestConfigurationAccessRuleCIDRConfiguration",
-  }) as any as S.Schema<AccessRulesCreateRequestConfigurationAccessRuleCIDRConfiguration>;
+  AccessRulesCreateRequestConfigurationAccessRuleIPConfiguration as any as S.Schema<AccessRulesCreateRequestConfigurationAccessRuleCIDRConfiguration>;
 
 export type AccessRulesCreateRequestConfigurationASNConfigurationTarget = "asn";
 export const AccessRulesCreateRequestConfigurationASNConfigurationTarget = S.String;
@@ -510,14 +501,8 @@ export interface AccessRulesCreateRequestConfigurationASNConfiguration {
   /** The AS number to match. */
   value?: string;
 }
-export const AccessRulesCreateRequestConfigurationASNConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    target: S.optional(AccessRulesCreateRequestConfigurationASNConfigurationTarget),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AccessRulesCreateRequestConfigurationASNConfiguration",
-}) as any as S.Schema<AccessRulesCreateRequestConfigurationASNConfiguration>;
+export const AccessRulesCreateRequestConfigurationASNConfiguration =
+  AccessRulesCreateRequestConfigurationIPV6Configuration as any as S.Schema<AccessRulesCreateRequestConfigurationASNConfiguration>;
 
 export type AccessRulesCreateRequestConfigurationCountryConfigurationTarget = "country";
 export const AccessRulesCreateRequestConfigurationCountryConfigurationTarget = S.String;
@@ -604,9 +589,8 @@ export const AccessRulesCreateResponseAllowedModesItem = S.String;
 
 export type AccessRulesCreateResponseAllowedModesList =
   Array<AccessRulesCreateResponseAllowedModesItem>;
-export const AccessRulesCreateResponseAllowedModesList = /*@__PURE__*/ S.Array(
-  AccessRulesCreateResponseAllowedModesItem,
-) as any as S.Schema<AccessRulesCreateResponseAllowedModesList>;
+export const AccessRulesCreateResponseAllowedModesList =
+  RulesBulkDeleteResultItemProductsList as any as S.Schema<AccessRulesCreateResponseAllowedModesList>;
 
 export type AccessRulesCreateResponseConfigurationAccessRuleIPConfigurationTarget = "ip";
 export const AccessRulesCreateResponseConfigurationAccessRuleIPConfigurationTarget = S.String;
@@ -657,16 +641,7 @@ export interface AccessRulesCreateResponseConfigurationAccessRuleCIDRConfigurati
   value?: string | null;
 }
 export const AccessRulesCreateResponseConfigurationAccessRuleCIDRConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      target: S.optional(
-        S.NullOr(AccessRulesCreateResponseConfigurationAccessRuleCIDRConfigurationTarget),
-      ),
-      value: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "AccessRulesCreateResponseConfigurationAccessRuleCIDRConfiguration",
-  }) as any as S.Schema<AccessRulesCreateResponseConfigurationAccessRuleCIDRConfiguration>;
+  AccessRulesCreateResponseConfigurationAccessRuleIPConfiguration as any as S.Schema<AccessRulesCreateResponseConfigurationAccessRuleCIDRConfiguration>;
 
 export type AccessRulesCreateResponseConfigurationASNConfigurationTarget = "asn";
 export const AccessRulesCreateResponseConfigurationASNConfigurationTarget = S.String;
@@ -677,14 +652,8 @@ export interface AccessRulesCreateResponseConfigurationASNConfiguration {
   /** The AS number to match. */
   value?: string | null;
 }
-export const AccessRulesCreateResponseConfigurationASNConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    target: S.optional(S.NullOr(AccessRulesCreateResponseConfigurationASNConfigurationTarget)),
-    value: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "AccessRulesCreateResponseConfigurationASNConfiguration",
-}) as any as S.Schema<AccessRulesCreateResponseConfigurationASNConfiguration>;
+export const AccessRulesCreateResponseConfigurationASNConfiguration =
+  AccessRulesCreateResponseConfigurationIPV6Configuration as any as S.Schema<AccessRulesCreateResponseConfigurationASNConfiguration>;
 
 export type AccessRulesCreateResponseConfigurationCountryConfigurationTarget = "country";
 export const AccessRulesCreateResponseConfigurationCountryConfigurationTarget = S.String;
@@ -821,17 +790,8 @@ export interface LockdownsCreateRequestConfigurationsLockdownIPConfiguration {
   /** The IP address to match. This address will be compared to the IP address of incoming requests. */
   value?: string | null;
 }
-export const LockdownsCreateRequestConfigurationsLockdownIPConfiguration = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      target: S.optional(
-        S.NullOr(LockdownsCreateRequestConfigurationsLockdownIPConfigurationTarget),
-      ),
-      value: S.optional(S.NullOr(S.String)),
-    }),
-).annotate({
-  identifier: "LockdownsCreateRequestConfigurationsLockdownIPConfiguration",
-}) as any as S.Schema<LockdownsCreateRequestConfigurationsLockdownIPConfiguration>;
+export const LockdownsCreateRequestConfigurationsLockdownIPConfiguration =
+  AccessRulesCreateResponseConfigurationCountryConfiguration as any as S.Schema<LockdownsCreateRequestConfigurationsLockdownIPConfiguration>;
 
 export type LockdownsCreateRequestConfigurationsLockdownCIDRConfigurationTarget = "ip_range";
 export const LockdownsCreateRequestConfigurationsLockdownCIDRConfigurationTarget = S.String;
@@ -846,16 +806,7 @@ export interface LockdownsCreateRequestConfigurationsLockdownCIDRConfiguration {
   value?: string | null;
 }
 export const LockdownsCreateRequestConfigurationsLockdownCIDRConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      target: S.optional(
-        S.NullOr(LockdownsCreateRequestConfigurationsLockdownCIDRConfigurationTarget),
-      ),
-      value: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "LockdownsCreateRequestConfigurationsLockdownCIDRConfiguration",
-  }) as any as S.Schema<LockdownsCreateRequestConfigurationsLockdownCIDRConfiguration>;
+  AccessRulesCreateResponseConfigurationAccessRuleIPConfiguration as any as S.Schema<LockdownsCreateRequestConfigurationsLockdownCIDRConfiguration>;
 
 export type LockdownsCreateRequestConfigurations =
   | LockdownsCreateRequestConfigurationsLockdownIPConfiguration
@@ -1061,9 +1012,8 @@ export type RulesCreateResultItemProductsItem =
 export const RulesCreateResultItemProductsItem = S.String;
 
 export type RulesCreateResultItemProductsList = Array<RulesCreateResultItemProductsItem>;
-export const RulesCreateResultItemProductsList = /*@__PURE__*/ S.Array(
-  RulesCreateResultItemProductsItem,
-) as any as S.Schema<RulesCreateResultItemProductsList>;
+export const RulesCreateResultItemProductsList =
+  RulesBulkDeleteResultItemProductsList as any as S.Schema<RulesCreateResultItemProductsList>;
 
 export interface RulesCreateResultItem {
   /** The unique identifier of the firewall rule. */
@@ -1121,14 +1071,8 @@ export interface UaRulesCreateRequestConfiguration {
   /** the user agent to exactly match */
   value?: string;
 }
-export const UaRulesCreateRequestConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    target: S.optional(UaRulesCreateRequestConfigurationTarget),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UaRulesCreateRequestConfiguration",
-}) as any as S.Schema<UaRulesCreateRequestConfiguration>;
+export const UaRulesCreateRequestConfiguration =
+  AccessRulesCreateRequestConfigurationIPV6Configuration as any as S.Schema<UaRulesCreateRequestConfiguration>;
 
 export type UaRulesCreateRequestMode =
   | "block"
@@ -1374,9 +1318,8 @@ export type RulesDeleteResponseProductsItem =
 export const RulesDeleteResponseProductsItem = S.String;
 
 export type RulesDeleteResponseProductsList = Array<RulesDeleteResponseProductsItem>;
-export const RulesDeleteResponseProductsList = /*@__PURE__*/ S.Array(
-  RulesDeleteResponseProductsItem,
-) as any as S.Schema<RulesDeleteResponseProductsList>;
+export const RulesDeleteResponseProductsList =
+  RulesBulkDeleteResultItemProductsList as any as S.Schema<RulesDeleteResponseProductsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteRuleResponse {
@@ -1452,15 +1395,7 @@ export interface DeleteUaRuleResponse {
   /** When true, indicates that the rule is currently paused. */
   paused?: boolean | null;
 }
-export const DeleteUaRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    configuration: S.optional(S.NullOr(UaRulesCreateResponseConfiguration)),
-    description: S.optional(S.NullOr(S.String)),
-    mode: S.optional(S.NullOr(UaRulesDeleteResponseMode)),
-    paused: S.optional(S.NullOr(S.Boolean)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "DeleteUaRuleResponse" }) as any as S.Schema<DeleteUaRuleResponse>;
+export const DeleteUaRuleResponse = CreateUaRuleResponse as any as S.Schema<DeleteUaRuleResponse>;
 
 export interface DeleteWafOverrideRequest {
   /** Defines an identifier. */
@@ -1519,9 +1454,8 @@ export type AccessRulesGetResponseAllowedModesItem =
 export const AccessRulesGetResponseAllowedModesItem = S.String;
 
 export type AccessRulesGetResponseAllowedModesList = Array<AccessRulesGetResponseAllowedModesItem>;
-export const AccessRulesGetResponseAllowedModesList = /*@__PURE__*/ S.Array(
-  AccessRulesGetResponseAllowedModesItem,
-) as any as S.Schema<AccessRulesGetResponseAllowedModesList>;
+export const AccessRulesGetResponseAllowedModesList =
+  RulesBulkDeleteResultItemProductsList as any as S.Schema<AccessRulesGetResponseAllowedModesList>;
 
 export type AccessRulesGetResponseConfigurationAccessRuleIPConfigurationTarget = "ip";
 export const AccessRulesGetResponseConfigurationAccessRuleIPConfigurationTarget = S.String;
@@ -1532,17 +1466,8 @@ export interface AccessRulesGetResponseConfigurationAccessRuleIPConfiguration {
   /** The IP address to match. This address will be compared to the IP address of incoming requests. */
   value?: string | null;
 }
-export const AccessRulesGetResponseConfigurationAccessRuleIPConfiguration = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      target: S.optional(
-        S.NullOr(AccessRulesGetResponseConfigurationAccessRuleIPConfigurationTarget),
-      ),
-      value: S.optional(S.NullOr(S.String)),
-    }),
-).annotate({
-  identifier: "AccessRulesGetResponseConfigurationAccessRuleIPConfiguration",
-}) as any as S.Schema<AccessRulesGetResponseConfigurationAccessRuleIPConfiguration>;
+export const AccessRulesGetResponseConfigurationAccessRuleIPConfiguration =
+  AccessRulesCreateResponseConfigurationCountryConfiguration as any as S.Schema<AccessRulesGetResponseConfigurationAccessRuleIPConfiguration>;
 
 export type AccessRulesGetResponseConfigurationIPV6ConfigurationTarget = "ip6";
 export const AccessRulesGetResponseConfigurationIPV6ConfigurationTarget = S.String;
@@ -1553,14 +1478,8 @@ export interface AccessRulesGetResponseConfigurationIPV6Configuration {
   /** The IPv6 address to match. */
   value?: string | null;
 }
-export const AccessRulesGetResponseConfigurationIPV6Configuration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    target: S.optional(S.NullOr(AccessRulesGetResponseConfigurationIPV6ConfigurationTarget)),
-    value: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "AccessRulesGetResponseConfigurationIPV6Configuration",
-}) as any as S.Schema<AccessRulesGetResponseConfigurationIPV6Configuration>;
+export const AccessRulesGetResponseConfigurationIPV6Configuration =
+  AccessRulesCreateResponseConfigurationIPV6Configuration as any as S.Schema<AccessRulesGetResponseConfigurationIPV6Configuration>;
 
 export type AccessRulesGetResponseConfigurationAccessRuleCIDRConfigurationTarget = "ip_range";
 export const AccessRulesGetResponseConfigurationAccessRuleCIDRConfigurationTarget = S.String;
@@ -1572,16 +1491,7 @@ export interface AccessRulesGetResponseConfigurationAccessRuleCIDRConfiguration 
   value?: string | null;
 }
 export const AccessRulesGetResponseConfigurationAccessRuleCIDRConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      target: S.optional(
-        S.NullOr(AccessRulesGetResponseConfigurationAccessRuleCIDRConfigurationTarget),
-      ),
-      value: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "AccessRulesGetResponseConfigurationAccessRuleCIDRConfiguration",
-  }) as any as S.Schema<AccessRulesGetResponseConfigurationAccessRuleCIDRConfiguration>;
+  AccessRulesCreateResponseConfigurationAccessRuleIPConfiguration as any as S.Schema<AccessRulesGetResponseConfigurationAccessRuleCIDRConfiguration>;
 
 export type AccessRulesGetResponseConfigurationASNConfigurationTarget = "asn";
 export const AccessRulesGetResponseConfigurationASNConfigurationTarget = S.String;
@@ -1592,14 +1502,8 @@ export interface AccessRulesGetResponseConfigurationASNConfiguration {
   /** The AS number to match. */
   value?: string | null;
 }
-export const AccessRulesGetResponseConfigurationASNConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    target: S.optional(S.NullOr(AccessRulesGetResponseConfigurationASNConfigurationTarget)),
-    value: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "AccessRulesGetResponseConfigurationASNConfiguration",
-}) as any as S.Schema<AccessRulesGetResponseConfigurationASNConfiguration>;
+export const AccessRulesGetResponseConfigurationASNConfiguration =
+  AccessRulesCreateResponseConfigurationIPV6Configuration as any as S.Schema<AccessRulesGetResponseConfigurationASNConfiguration>;
 
 export type AccessRulesGetResponseConfigurationCountryConfigurationTarget = "country";
 export const AccessRulesGetResponseConfigurationCountryConfigurationTarget = S.String;
@@ -1610,14 +1514,8 @@ export interface AccessRulesGetResponseConfigurationCountryConfiguration {
   /** The two-letter ISO-3166-1 alpha-2 code to match. For more information, refer to [IP Access rules: Parameters](https://developers.cloudflare.com/waf/tools/ip-access-rules/parameters/#country). */
   value?: string | null;
 }
-export const AccessRulesGetResponseConfigurationCountryConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    target: S.optional(S.NullOr(AccessRulesGetResponseConfigurationCountryConfigurationTarget)),
-    value: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "AccessRulesGetResponseConfigurationCountryConfiguration",
-}) as any as S.Schema<AccessRulesGetResponseConfigurationCountryConfiguration>;
+export const AccessRulesGetResponseConfigurationCountryConfiguration =
+  AccessRulesCreateResponseConfigurationIPV6Configuration as any as S.Schema<AccessRulesGetResponseConfigurationCountryConfiguration>;
 
 export type AccessRulesGetResponseConfiguration =
   | AccessRulesGetResponseConfigurationAccessRuleIPConfiguration
@@ -1657,15 +1555,8 @@ export interface AccessRulesGetResponseScope {
   /** Defines the scope of the rule. */
   type?: AccessRulesGetResponseScopeType | null;
 }
-export const AccessRulesGetResponseScope = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    email: S.optional(S.NullOr(S.String)),
-    type: S.optional(S.NullOr(AccessRulesGetResponseScopeType)),
-  }),
-).annotate({
-  identifier: "AccessRulesGetResponseScope",
-}) as any as S.Schema<AccessRulesGetResponseScope>;
+export const AccessRulesGetResponseScope =
+  AccessRulesCreateResponseScope as any as S.Schema<AccessRulesGetResponseScope>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetAccessRuleResponse {
@@ -1820,9 +1711,8 @@ export type RulesGetResponseProductsItem =
 export const RulesGetResponseProductsItem = S.String;
 
 export type RulesGetResponseProductsList = Array<RulesGetResponseProductsItem>;
-export const RulesGetResponseProductsList = /*@__PURE__*/ S.Array(
-  RulesGetResponseProductsItem,
-) as any as S.Schema<RulesGetResponseProductsList>;
+export const RulesGetResponseProductsList =
+  RulesBulkDeleteResultItemProductsList as any as S.Schema<RulesGetResponseProductsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetRuleResponse {
@@ -1890,15 +1780,7 @@ export interface GetUaRuleResponse {
   /** When true, indicates that the rule is currently paused. */
   paused?: boolean | null;
 }
-export const GetUaRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    configuration: S.optional(S.NullOr(UaRulesCreateResponseConfiguration)),
-    description: S.optional(S.NullOr(S.String)),
-    mode: S.optional(S.NullOr(UaRulesGetResponseMode)),
-    paused: S.optional(S.NullOr(S.Boolean)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "GetUaRuleResponse" }) as any as S.Schema<GetUaRuleResponse>;
+export const GetUaRuleResponse = CreateUaRuleResponse as any as S.Schema<GetUaRuleResponse>;
 
 export interface GetWafOverrideRequest {
   /** Defines an identifier. */
@@ -2022,14 +1904,8 @@ export interface AccessRulesListRequestConfiguration {
   /** Defines the target value to search for in existing rules: an IP address, an IP address range, or a country code, depending on the provided `configuration.target`. Notes: You can search for a single IPv4 address, an IP address range with a subnet of '/16' or '/24', or a two-letter ISO-3166-1 alpha-2 country code. */
   value?: string;
 }
-export const AccessRulesListRequestConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    target: S.optional(AccessRulesListRequestConfigurationTarget),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AccessRulesListRequestConfiguration",
-}) as any as S.Schema<AccessRulesListRequestConfiguration>;
+export const AccessRulesListRequestConfiguration =
+  AccessRulesCreateRequestConfigurationIPV6Configuration as any as S.Schema<AccessRulesListRequestConfiguration>;
 
 export type AccessRulesListRequestDirection = "asc" | "desc";
 export const AccessRulesListRequestDirection = S.String;
@@ -2103,9 +1979,8 @@ export const AccessRulesListResultItemAllowedModesItem = S.String;
 
 export type AccessRulesListResultItemAllowedModesList =
   Array<AccessRulesListResultItemAllowedModesItem>;
-export const AccessRulesListResultItemAllowedModesList = /*@__PURE__*/ S.Array(
-  AccessRulesListResultItemAllowedModesItem,
-) as any as S.Schema<AccessRulesListResultItemAllowedModesList>;
+export const AccessRulesListResultItemAllowedModesList =
+  RulesBulkDeleteResultItemProductsList as any as S.Schema<AccessRulesListResultItemAllowedModesList>;
 
 export type AccessRulesListResultItemConfigurationAccessRuleIPConfigurationTarget = "ip";
 export const AccessRulesListResultItemConfigurationAccessRuleIPConfigurationTarget = S.String;
@@ -2117,16 +1992,7 @@ export interface AccessRulesListResultItemConfigurationAccessRuleIPConfiguration
   value?: string | null;
 }
 export const AccessRulesListResultItemConfigurationAccessRuleIPConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      target: S.optional(
-        S.NullOr(AccessRulesListResultItemConfigurationAccessRuleIPConfigurationTarget),
-      ),
-      value: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "AccessRulesListResultItemConfigurationAccessRuleIPConfiguration",
-  }) as any as S.Schema<AccessRulesListResultItemConfigurationAccessRuleIPConfiguration>;
+  AccessRulesCreateResponseConfigurationAccessRuleIPConfiguration as any as S.Schema<AccessRulesListResultItemConfigurationAccessRuleIPConfiguration>;
 
 export type AccessRulesListResultItemConfigurationIPV6ConfigurationTarget = "ip6";
 export const AccessRulesListResultItemConfigurationIPV6ConfigurationTarget = S.String;
@@ -2137,14 +2003,8 @@ export interface AccessRulesListResultItemConfigurationIPV6Configuration {
   /** The IPv6 address to match. */
   value?: string | null;
 }
-export const AccessRulesListResultItemConfigurationIPV6Configuration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    target: S.optional(S.NullOr(AccessRulesListResultItemConfigurationIPV6ConfigurationTarget)),
-    value: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "AccessRulesListResultItemConfigurationIPV6Configuration",
-}) as any as S.Schema<AccessRulesListResultItemConfigurationIPV6Configuration>;
+export const AccessRulesListResultItemConfigurationIPV6Configuration =
+  AccessRulesCreateResponseConfigurationIPV6Configuration as any as S.Schema<AccessRulesListResultItemConfigurationIPV6Configuration>;
 
 export type AccessRulesListResultItemConfigurationAccessRuleCIDRConfigurationTarget = "ip_range";
 export const AccessRulesListResultItemConfigurationAccessRuleCIDRConfigurationTarget = S.String;
@@ -2156,16 +2016,7 @@ export interface AccessRulesListResultItemConfigurationAccessRuleCIDRConfigurati
   value?: string | null;
 }
 export const AccessRulesListResultItemConfigurationAccessRuleCIDRConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      target: S.optional(
-        S.NullOr(AccessRulesListResultItemConfigurationAccessRuleCIDRConfigurationTarget),
-      ),
-      value: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "AccessRulesListResultItemConfigurationAccessRuleCIDRConfiguration",
-  }) as any as S.Schema<AccessRulesListResultItemConfigurationAccessRuleCIDRConfiguration>;
+  AccessRulesCreateResponseConfigurationAccessRuleIPConfiguration as any as S.Schema<AccessRulesListResultItemConfigurationAccessRuleCIDRConfiguration>;
 
 export type AccessRulesListResultItemConfigurationASNConfigurationTarget = "asn";
 export const AccessRulesListResultItemConfigurationASNConfigurationTarget = S.String;
@@ -2176,14 +2027,8 @@ export interface AccessRulesListResultItemConfigurationASNConfiguration {
   /** The AS number to match. */
   value?: string | null;
 }
-export const AccessRulesListResultItemConfigurationASNConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    target: S.optional(S.NullOr(AccessRulesListResultItemConfigurationASNConfigurationTarget)),
-    value: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "AccessRulesListResultItemConfigurationASNConfiguration",
-}) as any as S.Schema<AccessRulesListResultItemConfigurationASNConfiguration>;
+export const AccessRulesListResultItemConfigurationASNConfiguration =
+  AccessRulesCreateResponseConfigurationIPV6Configuration as any as S.Schema<AccessRulesListResultItemConfigurationASNConfiguration>;
 
 export type AccessRulesListResultItemConfigurationCountryConfigurationTarget = "country";
 export const AccessRulesListResultItemConfigurationCountryConfigurationTarget = S.String;
@@ -2194,17 +2039,8 @@ export interface AccessRulesListResultItemConfigurationCountryConfiguration {
   /** The two-letter ISO-3166-1 alpha-2 code to match. For more information, refer to [IP Access rules: Parameters](https://developers.cloudflare.com/waf/tools/ip-access-rules/parameters/#country). */
   value?: string | null;
 }
-export const AccessRulesListResultItemConfigurationCountryConfiguration = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      target: S.optional(
-        S.NullOr(AccessRulesListResultItemConfigurationCountryConfigurationTarget),
-      ),
-      value: S.optional(S.NullOr(S.String)),
-    }),
-).annotate({
-  identifier: "AccessRulesListResultItemConfigurationCountryConfiguration",
-}) as any as S.Schema<AccessRulesListResultItemConfigurationCountryConfiguration>;
+export const AccessRulesListResultItemConfigurationCountryConfiguration =
+  AccessRulesCreateResponseConfigurationCountryConfiguration as any as S.Schema<AccessRulesListResultItemConfigurationCountryConfiguration>;
 
 export type AccessRulesListResultItemConfiguration =
   | AccessRulesListResultItemConfigurationAccessRuleIPConfiguration
@@ -2244,15 +2080,8 @@ export interface AccessRulesListResultItemScope {
   /** Defines the scope of the rule. */
   type?: AccessRulesListResultItemScopeType | null;
 }
-export const AccessRulesListResultItemScope = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    email: S.optional(S.NullOr(S.String)),
-    type: S.optional(S.NullOr(AccessRulesListResultItemScopeType)),
-  }),
-).annotate({
-  identifier: "AccessRulesListResultItemScope",
-}) as any as S.Schema<AccessRulesListResultItemScope>;
+export const AccessRulesListResultItemScope =
+  AccessRulesCreateResponseScope as any as S.Schema<AccessRulesListResultItemScope>;
 
 export interface AccessRulesListResultItem {
   /** The unique identifier of the IP Access rule. */
@@ -2510,9 +2339,8 @@ export type RulesListResultItemProductsItem =
 export const RulesListResultItemProductsItem = S.String;
 
 export type RulesListResultItemProductsList = Array<RulesListResultItemProductsItem>;
-export const RulesListResultItemProductsList = /*@__PURE__*/ S.Array(
-  RulesListResultItemProductsItem,
-) as any as S.Schema<RulesListResultItemProductsList>;
+export const RulesListResultItemProductsList =
+  RulesBulkDeleteResultItemProductsList as any as S.Schema<RulesListResultItemProductsList>;
 
 export interface RulesListResultItem {
   /** The unique identifier of the firewall rule. */
@@ -2727,9 +2555,8 @@ export const WafPackagesGroupsListResultItemAllowedModesItem = S.String;
 
 export type WafPackagesGroupsListResultItemAllowedModesList =
   Array<WafPackagesGroupsListResultItemAllowedModesItem>;
-export const WafPackagesGroupsListResultItemAllowedModesList = /*@__PURE__*/ S.Array(
-  WafPackagesGroupsListResultItemAllowedModesItem,
-) as any as S.Schema<WafPackagesGroupsListResultItemAllowedModesList>;
+export const WafPackagesGroupsListResultItemAllowedModesList =
+  RulesBulkDeleteResultItemProductsList as any as S.Schema<WafPackagesGroupsListResultItemAllowedModesList>;
 
 export interface WafPackagesGroupsListResultItem {
   /** Defines the unique identifier of the rule group. */
@@ -2922,9 +2749,7 @@ export const WafPackagesRulesListResultItemWAFManagedRulesTraditionalDenyRuleAll
 export type WafPackagesRulesListResultItemWAFManagedRulesTraditionalDenyRuleAllowedModesList =
   Array<WafPackagesRulesListResultItemWAFManagedRulesTraditionalDenyRuleAllowedModesItem>;
 export const WafPackagesRulesListResultItemWAFManagedRulesTraditionalDenyRuleAllowedModesList =
-  /*@__PURE__*/ S.Array(
-    WafPackagesRulesListResultItemWAFManagedRulesTraditionalDenyRuleAllowedModesItem,
-  ) as any as S.Schema<WafPackagesRulesListResultItemWAFManagedRulesTraditionalDenyRuleAllowedModesList>;
+  WafPackagesRulesListResultItemWAFManagedRulesAnomalyRuleAllowedModesList as any as S.Schema<WafPackagesRulesListResultItemWAFManagedRulesTraditionalDenyRuleAllowedModesList>;
 
 export type WafPackagesRulesListResultItemWAFManagedRulesTraditionalDenyRuleDefaultMode =
   | "disable"
@@ -2994,9 +2819,7 @@ export const WafPackagesRulesListResultItemWAFManagedRulesTraditionalAllowRuleAl
 export type WafPackagesRulesListResultItemWAFManagedRulesTraditionalAllowRuleAllowedModesList =
   Array<WafPackagesRulesListResultItemWAFManagedRulesTraditionalAllowRuleAllowedModesItem>;
 export const WafPackagesRulesListResultItemWAFManagedRulesTraditionalAllowRuleAllowedModesList =
-  /*@__PURE__*/ S.Array(
-    WafPackagesRulesListResultItemWAFManagedRulesTraditionalAllowRuleAllowedModesItem,
-  ) as any as S.Schema<WafPackagesRulesListResultItemWAFManagedRulesTraditionalAllowRuleAllowedModesList>;
+  WafPackagesRulesListResultItemWAFManagedRulesAnomalyRuleAllowedModesList as any as S.Schema<WafPackagesRulesListResultItemWAFManagedRulesTraditionalAllowRuleAllowedModesList>;
 
 export type WafPackagesRulesListResultItemWAFManagedRulesTraditionalAllowRuleGroup =
   WafPackagesRulesListResultItemWAFManagedRulesAnomalyRuleGroup;
@@ -3125,15 +2948,8 @@ export interface AccessRulesEditRequestConfigurationAccessRuleIPConfiguration {
   /** The IP address to match. This address will be compared to the IP address of incoming requests. */
   value?: string;
 }
-export const AccessRulesEditRequestConfigurationAccessRuleIPConfiguration = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      target: S.optional(AccessRulesEditRequestConfigurationAccessRuleIPConfigurationTarget),
-      value: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "AccessRulesEditRequestConfigurationAccessRuleIPConfiguration",
-}) as any as S.Schema<AccessRulesEditRequestConfigurationAccessRuleIPConfiguration>;
+export const AccessRulesEditRequestConfigurationAccessRuleIPConfiguration =
+  AccessRulesCreateRequestConfigurationCountryConfiguration as any as S.Schema<AccessRulesEditRequestConfigurationAccessRuleIPConfiguration>;
 
 export type AccessRulesEditRequestConfigurationIPV6ConfigurationTarget = "ip6";
 export const AccessRulesEditRequestConfigurationIPV6ConfigurationTarget = S.String;
@@ -3144,14 +2960,8 @@ export interface AccessRulesEditRequestConfigurationIPV6Configuration {
   /** The IPv6 address to match. */
   value?: string;
 }
-export const AccessRulesEditRequestConfigurationIPV6Configuration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    target: S.optional(AccessRulesEditRequestConfigurationIPV6ConfigurationTarget),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AccessRulesEditRequestConfigurationIPV6Configuration",
-}) as any as S.Schema<AccessRulesEditRequestConfigurationIPV6Configuration>;
+export const AccessRulesEditRequestConfigurationIPV6Configuration =
+  AccessRulesCreateRequestConfigurationIPV6Configuration as any as S.Schema<AccessRulesEditRequestConfigurationIPV6Configuration>;
 
 export type AccessRulesEditRequestConfigurationAccessRuleCIDRConfigurationTarget = "ip_range";
 export const AccessRulesEditRequestConfigurationAccessRuleCIDRConfigurationTarget = S.String;
@@ -3163,14 +2973,7 @@ export interface AccessRulesEditRequestConfigurationAccessRuleCIDRConfiguration 
   value?: string;
 }
 export const AccessRulesEditRequestConfigurationAccessRuleCIDRConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      target: S.optional(AccessRulesEditRequestConfigurationAccessRuleCIDRConfigurationTarget),
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "AccessRulesEditRequestConfigurationAccessRuleCIDRConfiguration",
-  }) as any as S.Schema<AccessRulesEditRequestConfigurationAccessRuleCIDRConfiguration>;
+  AccessRulesCreateRequestConfigurationAccessRuleIPConfiguration as any as S.Schema<AccessRulesEditRequestConfigurationAccessRuleCIDRConfiguration>;
 
 export type AccessRulesEditRequestConfigurationASNConfigurationTarget = "asn";
 export const AccessRulesEditRequestConfigurationASNConfigurationTarget = S.String;
@@ -3181,14 +2984,8 @@ export interface AccessRulesEditRequestConfigurationASNConfiguration {
   /** The AS number to match. */
   value?: string;
 }
-export const AccessRulesEditRequestConfigurationASNConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    target: S.optional(AccessRulesEditRequestConfigurationASNConfigurationTarget),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AccessRulesEditRequestConfigurationASNConfiguration",
-}) as any as S.Schema<AccessRulesEditRequestConfigurationASNConfiguration>;
+export const AccessRulesEditRequestConfigurationASNConfiguration =
+  AccessRulesCreateRequestConfigurationIPV6Configuration as any as S.Schema<AccessRulesEditRequestConfigurationASNConfiguration>;
 
 export type AccessRulesEditRequestConfigurationCountryConfigurationTarget = "country";
 export const AccessRulesEditRequestConfigurationCountryConfigurationTarget = S.String;
@@ -3199,14 +2996,8 @@ export interface AccessRulesEditRequestConfigurationCountryConfiguration {
   /** The two-letter ISO-3166-1 alpha-2 code to match. For more information, refer to [IP Access rules: Parameters](https://developers.cloudflare.com/waf/tools/ip-access-rules/parameters/#country). */
   value?: string;
 }
-export const AccessRulesEditRequestConfigurationCountryConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    target: S.optional(AccessRulesEditRequestConfigurationCountryConfigurationTarget),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AccessRulesEditRequestConfigurationCountryConfiguration",
-}) as any as S.Schema<AccessRulesEditRequestConfigurationCountryConfiguration>;
+export const AccessRulesEditRequestConfigurationCountryConfiguration =
+  AccessRulesCreateRequestConfigurationIPV6Configuration as any as S.Schema<AccessRulesEditRequestConfigurationCountryConfiguration>;
 
 export type AccessRulesEditRequestConfiguration =
   | AccessRulesEditRequestConfigurationAccessRuleIPConfiguration
@@ -3277,9 +3068,8 @@ export const AccessRulesEditResponseAllowedModesItem = S.String;
 
 export type AccessRulesEditResponseAllowedModesList =
   Array<AccessRulesEditResponseAllowedModesItem>;
-export const AccessRulesEditResponseAllowedModesList = /*@__PURE__*/ S.Array(
-  AccessRulesEditResponseAllowedModesItem,
-) as any as S.Schema<AccessRulesEditResponseAllowedModesList>;
+export const AccessRulesEditResponseAllowedModesList =
+  RulesBulkDeleteResultItemProductsList as any as S.Schema<AccessRulesEditResponseAllowedModesList>;
 
 export type AccessRulesEditResponseConfigurationAccessRuleIPConfigurationTarget = "ip";
 export const AccessRulesEditResponseConfigurationAccessRuleIPConfigurationTarget = S.String;
@@ -3291,16 +3081,7 @@ export interface AccessRulesEditResponseConfigurationAccessRuleIPConfiguration {
   value?: string | null;
 }
 export const AccessRulesEditResponseConfigurationAccessRuleIPConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      target: S.optional(
-        S.NullOr(AccessRulesEditResponseConfigurationAccessRuleIPConfigurationTarget),
-      ),
-      value: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "AccessRulesEditResponseConfigurationAccessRuleIPConfiguration",
-  }) as any as S.Schema<AccessRulesEditResponseConfigurationAccessRuleIPConfiguration>;
+  AccessRulesCreateResponseConfigurationAccessRuleIPConfiguration as any as S.Schema<AccessRulesEditResponseConfigurationAccessRuleIPConfiguration>;
 
 export type AccessRulesEditResponseConfigurationIPV6ConfigurationTarget = "ip6";
 export const AccessRulesEditResponseConfigurationIPV6ConfigurationTarget = S.String;
@@ -3311,14 +3092,8 @@ export interface AccessRulesEditResponseConfigurationIPV6Configuration {
   /** The IPv6 address to match. */
   value?: string | null;
 }
-export const AccessRulesEditResponseConfigurationIPV6Configuration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    target: S.optional(S.NullOr(AccessRulesEditResponseConfigurationIPV6ConfigurationTarget)),
-    value: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "AccessRulesEditResponseConfigurationIPV6Configuration",
-}) as any as S.Schema<AccessRulesEditResponseConfigurationIPV6Configuration>;
+export const AccessRulesEditResponseConfigurationIPV6Configuration =
+  AccessRulesCreateResponseConfigurationIPV6Configuration as any as S.Schema<AccessRulesEditResponseConfigurationIPV6Configuration>;
 
 export type AccessRulesEditResponseConfigurationAccessRuleCIDRConfigurationTarget = "ip_range";
 export const AccessRulesEditResponseConfigurationAccessRuleCIDRConfigurationTarget = S.String;
@@ -3330,16 +3105,7 @@ export interface AccessRulesEditResponseConfigurationAccessRuleCIDRConfiguration
   value?: string | null;
 }
 export const AccessRulesEditResponseConfigurationAccessRuleCIDRConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      target: S.optional(
-        S.NullOr(AccessRulesEditResponseConfigurationAccessRuleCIDRConfigurationTarget),
-      ),
-      value: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "AccessRulesEditResponseConfigurationAccessRuleCIDRConfiguration",
-  }) as any as S.Schema<AccessRulesEditResponseConfigurationAccessRuleCIDRConfiguration>;
+  AccessRulesCreateResponseConfigurationAccessRuleIPConfiguration as any as S.Schema<AccessRulesEditResponseConfigurationAccessRuleCIDRConfiguration>;
 
 export type AccessRulesEditResponseConfigurationASNConfigurationTarget = "asn";
 export const AccessRulesEditResponseConfigurationASNConfigurationTarget = S.String;
@@ -3350,14 +3116,8 @@ export interface AccessRulesEditResponseConfigurationASNConfiguration {
   /** The AS number to match. */
   value?: string | null;
 }
-export const AccessRulesEditResponseConfigurationASNConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    target: S.optional(S.NullOr(AccessRulesEditResponseConfigurationASNConfigurationTarget)),
-    value: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "AccessRulesEditResponseConfigurationASNConfiguration",
-}) as any as S.Schema<AccessRulesEditResponseConfigurationASNConfiguration>;
+export const AccessRulesEditResponseConfigurationASNConfiguration =
+  AccessRulesCreateResponseConfigurationIPV6Configuration as any as S.Schema<AccessRulesEditResponseConfigurationASNConfiguration>;
 
 export type AccessRulesEditResponseConfigurationCountryConfigurationTarget = "country";
 export const AccessRulesEditResponseConfigurationCountryConfigurationTarget = S.String;
@@ -3416,15 +3176,8 @@ export interface AccessRulesEditResponseScope {
   /** Defines the scope of the rule. */
   type?: AccessRulesEditResponseScopeType | null;
 }
-export const AccessRulesEditResponseScope = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    email: S.optional(S.NullOr(S.String)),
-    type: S.optional(S.NullOr(AccessRulesEditResponseScopeType)),
-  }),
-).annotate({
-  identifier: "AccessRulesEditResponseScope",
-}) as any as S.Schema<AccessRulesEditResponseScope>;
+export const AccessRulesEditResponseScope =
+  AccessRulesCreateResponseScope as any as S.Schema<AccessRulesEditResponseScope>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchAccessRuleResponse {
@@ -3543,9 +3296,8 @@ export type RulesEditResultItemProductsItem =
 export const RulesEditResultItemProductsItem = S.String;
 
 export type RulesEditResultItemProductsList = Array<RulesEditResultItemProductsItem>;
-export const RulesEditResultItemProductsList = /*@__PURE__*/ S.Array(
-  RulesEditResultItemProductsItem,
-) as any as S.Schema<RulesEditResultItemProductsList>;
+export const RulesEditResultItemProductsList =
+  RulesBulkDeleteResultItemProductsList as any as S.Schema<RulesEditResultItemProductsList>;
 
 export interface RulesEditResultItem {
   /** The unique identifier of the firewall rule. */
@@ -3675,9 +3427,7 @@ export const WafPackagesRulesEditResultWAFManagedRulesAnomalyRuleAllowedModesIte
 export type WafPackagesRulesEditResultWAFManagedRulesAnomalyRuleAllowedModesList =
   Array<WafPackagesRulesEditResultWAFManagedRulesAnomalyRuleAllowedModesItem>;
 export const WafPackagesRulesEditResultWAFManagedRulesAnomalyRuleAllowedModesList =
-  /*@__PURE__*/ S.Array(
-    WafPackagesRulesEditResultWAFManagedRulesAnomalyRuleAllowedModesItem,
-  ) as any as S.Schema<WafPackagesRulesEditResultWAFManagedRulesAnomalyRuleAllowedModesList>;
+  WafPackagesRulesListResultItemWAFManagedRulesAnomalyRuleAllowedModesList as any as S.Schema<WafPackagesRulesEditResultWAFManagedRulesAnomalyRuleAllowedModesList>;
 
 export type WafPackagesRulesEditResultWAFManagedRulesAnomalyRuleGroup =
   WafPackagesRulesListResultItemWAFManagedRulesAnomalyRuleGroup;
@@ -3731,9 +3481,7 @@ export const WafPackagesRulesEditResultWAFManagedRulesTraditionalDenyRuleAllowed
 export type WafPackagesRulesEditResultWAFManagedRulesTraditionalDenyRuleAllowedModesList =
   Array<WafPackagesRulesEditResultWAFManagedRulesTraditionalDenyRuleAllowedModesItem>;
 export const WafPackagesRulesEditResultWAFManagedRulesTraditionalDenyRuleAllowedModesList =
-  /*@__PURE__*/ S.Array(
-    WafPackagesRulesEditResultWAFManagedRulesTraditionalDenyRuleAllowedModesItem,
-  ) as any as S.Schema<WafPackagesRulesEditResultWAFManagedRulesTraditionalDenyRuleAllowedModesList>;
+  WafPackagesRulesListResultItemWAFManagedRulesAnomalyRuleAllowedModesList as any as S.Schema<WafPackagesRulesEditResultWAFManagedRulesTraditionalDenyRuleAllowedModesList>;
 
 export type WafPackagesRulesEditResultWAFManagedRulesTraditionalDenyRuleDefaultMode =
   | "disable"
@@ -3803,9 +3551,7 @@ export const WafPackagesRulesEditResultWAFManagedRulesTraditionalAllowRuleAllowe
 export type WafPackagesRulesEditResultWAFManagedRulesTraditionalAllowRuleAllowedModesList =
   Array<WafPackagesRulesEditResultWAFManagedRulesTraditionalAllowRuleAllowedModesItem>;
 export const WafPackagesRulesEditResultWAFManagedRulesTraditionalAllowRuleAllowedModesList =
-  /*@__PURE__*/ S.Array(
-    WafPackagesRulesEditResultWAFManagedRulesTraditionalAllowRuleAllowedModesItem,
-  ) as any as S.Schema<WafPackagesRulesEditResultWAFManagedRulesTraditionalAllowRuleAllowedModesList>;
+  WafPackagesRulesListResultItemWAFManagedRulesAnomalyRuleAllowedModesList as any as S.Schema<WafPackagesRulesEditResultWAFManagedRulesTraditionalAllowRuleAllowedModesList>;
 
 export type WafPackagesRulesEditResultWAFManagedRulesTraditionalAllowRuleGroup =
   WafPackagesRulesListResultItemWAFManagedRulesAnomalyRuleGroup;
@@ -3832,22 +3578,7 @@ export interface WafPackagesRulesEditResultWAFManagedRulesTraditionalAllowRule {
   priority: string;
 }
 export const WafPackagesRulesEditResultWAFManagedRulesTraditionalAllowRule =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      allowedModes:
-        WafPackagesRulesEditResultWAFManagedRulesTraditionalAllowRuleAllowedModesList.pipe(
-          T.Body("allowed_modes"),
-        ),
-      description: S.String,
-      group: WafPackagesRulesListResultItemWAFManagedRulesAnomalyRuleGroup,
-      mode: WafPackagesRulesEditResultWAFManagedRulesTraditionalAllowRuleMode,
-      packageId: S.String.pipe(T.Body("package_id")),
-      priority: S.String,
-    }),
-  ).annotate({
-    identifier: "WafPackagesRulesEditResultWAFManagedRulesTraditionalAllowRule",
-  }) as any as S.Schema<WafPackagesRulesEditResultWAFManagedRulesTraditionalAllowRule>;
+  WafPackagesRulesListResultItemWAFManagedRulesTraditionalAllowRule as any as S.Schema<WafPackagesRulesEditResultWAFManagedRulesTraditionalAllowRule>;
 
 export type WafPackagesRulesEditResult =
   | WafPackagesRulesEditResultWAFManagedRulesAnomalyRule
@@ -3953,13 +3684,8 @@ export interface RulesUpdateRequestAction {
   /** The time in seconds during which Cloudflare will perform the mitigation action. Must be an integer value greater than or equal to the period. Notes: If "mode" is "challenge", "managed_challenge", or "js_challenge", Cloudflare will use the zone's Challenge Passage time and you should not provide this value. */
   timeout?: number;
 }
-export const RulesUpdateRequestAction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: S.optional(RulesUpdateRequestActionMode),
-    response: S.optional(RulesCreateRequestActionResponse),
-    timeout: S.optional(S.Number),
-  }),
-).annotate({ identifier: "RulesUpdateRequestAction" }) as any as S.Schema<RulesUpdateRequestAction>;
+export const RulesUpdateRequestAction =
+  RulesCreateRequestAction as any as S.Schema<RulesUpdateRequestAction>;
 
 export type RulesUpdateRequestFilter = RulesCreateRequestFilter;
 export const RulesUpdateRequestFilter = RulesCreateRequestFilter;
@@ -4022,9 +3748,8 @@ export type RulesUpdateResponseProductsItem =
 export const RulesUpdateResponseProductsItem = S.String;
 
 export type RulesUpdateResponseProductsList = Array<RulesUpdateResponseProductsItem>;
-export const RulesUpdateResponseProductsList = /*@__PURE__*/ S.Array(
-  RulesUpdateResponseProductsItem,
-) as any as S.Schema<RulesUpdateResponseProductsList>;
+export const RulesUpdateResponseProductsList =
+  RulesBulkDeleteResultItemProductsList as any as S.Schema<RulesUpdateResponseProductsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateRuleResponse {
@@ -4065,15 +3790,8 @@ export interface UaRulesUpdateRequestConfigurationAccessRuleIPConfiguration {
   /** The IP address to match. This address will be compared to the IP address of incoming requests. */
   value?: string;
 }
-export const UaRulesUpdateRequestConfigurationAccessRuleIPConfiguration = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      target: S.optional(UaRulesUpdateRequestConfigurationAccessRuleIPConfigurationTarget),
-      value: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "UaRulesUpdateRequestConfigurationAccessRuleIPConfiguration",
-}) as any as S.Schema<UaRulesUpdateRequestConfigurationAccessRuleIPConfiguration>;
+export const UaRulesUpdateRequestConfigurationAccessRuleIPConfiguration =
+  AccessRulesCreateRequestConfigurationCountryConfiguration as any as S.Schema<UaRulesUpdateRequestConfigurationAccessRuleIPConfiguration>;
 
 export type UaRulesUpdateRequestConfigurationIPV6ConfigurationTarget = "ip6";
 export const UaRulesUpdateRequestConfigurationIPV6ConfigurationTarget = S.String;
@@ -4084,14 +3802,8 @@ export interface UaRulesUpdateRequestConfigurationIPV6Configuration {
   /** The IPv6 address to match. */
   value?: string;
 }
-export const UaRulesUpdateRequestConfigurationIPV6Configuration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    target: S.optional(UaRulesUpdateRequestConfigurationIPV6ConfigurationTarget),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UaRulesUpdateRequestConfigurationIPV6Configuration",
-}) as any as S.Schema<UaRulesUpdateRequestConfigurationIPV6Configuration>;
+export const UaRulesUpdateRequestConfigurationIPV6Configuration =
+  AccessRulesCreateRequestConfigurationIPV6Configuration as any as S.Schema<UaRulesUpdateRequestConfigurationIPV6Configuration>;
 
 export type UaRulesUpdateRequestConfigurationAccessRuleCIDRConfigurationTarget = "ip_range";
 export const UaRulesUpdateRequestConfigurationAccessRuleCIDRConfigurationTarget = S.String;
@@ -4102,15 +3814,8 @@ export interface UaRulesUpdateRequestConfigurationAccessRuleCIDRConfiguration {
   /** The IP address range to match. You can only use prefix lengths `/16` and `/24` for IPv4 ranges, and prefix lengths `/32`, `/48`, and `/64` for IPv6 ranges. */
   value?: string;
 }
-export const UaRulesUpdateRequestConfigurationAccessRuleCIDRConfiguration = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      target: S.optional(UaRulesUpdateRequestConfigurationAccessRuleCIDRConfigurationTarget),
-      value: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "UaRulesUpdateRequestConfigurationAccessRuleCIDRConfiguration",
-}) as any as S.Schema<UaRulesUpdateRequestConfigurationAccessRuleCIDRConfiguration>;
+export const UaRulesUpdateRequestConfigurationAccessRuleCIDRConfiguration =
+  AccessRulesCreateRequestConfigurationCountryConfiguration as any as S.Schema<UaRulesUpdateRequestConfigurationAccessRuleCIDRConfiguration>;
 
 export type UaRulesUpdateRequestConfigurationASNConfigurationTarget = "asn";
 export const UaRulesUpdateRequestConfigurationASNConfigurationTarget = S.String;
@@ -4121,14 +3826,8 @@ export interface UaRulesUpdateRequestConfigurationASNConfiguration {
   /** The AS number to match. */
   value?: string;
 }
-export const UaRulesUpdateRequestConfigurationASNConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    target: S.optional(UaRulesUpdateRequestConfigurationASNConfigurationTarget),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UaRulesUpdateRequestConfigurationASNConfiguration",
-}) as any as S.Schema<UaRulesUpdateRequestConfigurationASNConfiguration>;
+export const UaRulesUpdateRequestConfigurationASNConfiguration =
+  AccessRulesCreateRequestConfigurationIPV6Configuration as any as S.Schema<UaRulesUpdateRequestConfigurationASNConfiguration>;
 
 export type UaRulesUpdateRequestConfigurationCountryConfigurationTarget = "country";
 export const UaRulesUpdateRequestConfigurationCountryConfigurationTarget = S.String;
@@ -4139,14 +3838,8 @@ export interface UaRulesUpdateRequestConfigurationCountryConfiguration {
   /** The two-letter ISO-3166-1 alpha-2 code to match. For more information, refer to [IP Access rules: Parameters](https://developers.cloudflare.com/waf/tools/ip-access-rules/parameters/#country). */
   value?: string;
 }
-export const UaRulesUpdateRequestConfigurationCountryConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    target: S.optional(UaRulesUpdateRequestConfigurationCountryConfigurationTarget),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UaRulesUpdateRequestConfigurationCountryConfiguration",
-}) as any as S.Schema<UaRulesUpdateRequestConfigurationCountryConfiguration>;
+export const UaRulesUpdateRequestConfigurationCountryConfiguration =
+  AccessRulesCreateRequestConfigurationIPV6Configuration as any as S.Schema<UaRulesUpdateRequestConfigurationCountryConfiguration>;
 
 export type UaRulesUpdateRequestConfiguration =
   | UaRulesUpdateRequestConfigurationAccessRuleIPConfiguration
@@ -4227,15 +3920,7 @@ export interface UpdateUaRuleResponse {
   /** When true, indicates that the rule is currently paused. */
   paused?: boolean | null;
 }
-export const UpdateUaRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    configuration: S.optional(S.NullOr(UaRulesCreateResponseConfiguration)),
-    description: S.optional(S.NullOr(S.String)),
-    mode: S.optional(S.NullOr(UaRulesUpdateResponseMode)),
-    paused: S.optional(S.NullOr(S.Boolean)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "UpdateUaRuleResponse" }) as any as S.Schema<UpdateUaRuleResponse>;
+export const UpdateUaRuleResponse = CreateUaRuleResponse as any as S.Schema<UpdateUaRuleResponse>;
 
 export type WafOverridesUpdateRequestRewriteActionBlock =
   | "challenge"

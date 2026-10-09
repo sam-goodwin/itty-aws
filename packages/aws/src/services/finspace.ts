@@ -2560,11 +2560,8 @@ export const KxDeploymentStrategy = S.String;
 export interface KxDeploymentConfiguration {
   deploymentStrategy: KxDeploymentStrategy;
 }
-export const KxDeploymentConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ deploymentStrategy: KxDeploymentStrategy }),
-).annotate({
-  identifier: "KxDeploymentConfiguration",
-}) as any as S.Schema<KxDeploymentConfiguration>;
+export const KxDeploymentConfiguration =
+  KxClusterCodeDeploymentConfiguration as any as S.Schema<KxDeploymentConfiguration>;
 export interface UpdateKxClusterDatabasesRequest {
   environmentId: string;
   clusterName: string;

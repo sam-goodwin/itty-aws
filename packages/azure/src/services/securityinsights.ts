@@ -1913,19 +1913,8 @@ export interface DataConnectorDefinitionsCreateOrUpdateResponse {
   /** Data connector definition properties (polymorphic on `kind`, e.g. Customizable). */
   properties?: unknown;
 }
-export const DataConnectorDefinitionsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    kind: DataConnectorDefinitionKind,
-    etag: S.optional(S.String),
-    properties: S.optional(S.Unknown),
-  }),
-).annotate({
-  identifier: "DataConnectorDefinitionsCreateOrUpdateResponse",
-}) as any as S.Schema<DataConnectorDefinitionsCreateOrUpdateResponse>;
+export const DataConnectorDefinitionsCreateOrUpdateResponse =
+  AlertRulesCreateOrUpdateResponse as any as S.Schema<DataConnectorDefinitionsCreateOrUpdateResponse>;
 
 /** The kind of the data connector */
 export type DataConnectorKind =
@@ -1995,19 +1984,8 @@ export interface DataConnectorsCreateOrUpdateResponse {
   /** Data connector properties (polymorphic on `kind`). */
   properties?: unknown;
 }
-export const DataConnectorsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    kind: DataConnectorKind,
-    etag: S.optional(S.String),
-    properties: S.optional(S.Unknown),
-  }),
-).annotate({
-  identifier: "DataConnectorsCreateOrUpdateResponse",
-}) as any as S.Schema<DataConnectorsCreateOrUpdateResponse>;
+export const DataConnectorsCreateOrUpdateResponse =
+  AlertRulesCreateOrUpdateResponse as any as S.Schema<DataConnectorsCreateOrUpdateResponse>;
 
 export interface DeleteActionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3270,17 +3248,8 @@ export interface GetDataConnectorResponse {
   /** Data connector properties (polymorphic on `kind`). */
   properties?: unknown;
 }
-export const GetDataConnectorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    kind: DataConnectorKind,
-    etag: S.optional(S.String),
-    properties: S.optional(S.Unknown),
-  }),
-).annotate({ identifier: "GetDataConnectorResponse" }) as any as S.Schema<GetDataConnectorResponse>;
+export const GetDataConnectorResponse =
+  GetAlertRuleResponse as any as S.Schema<GetDataConnectorResponse>;
 
 export interface GetDataConnectorDefinitionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3454,9 +3423,8 @@ export const AttackTactic = S.String;
 
 /** The tactics associated with incident */
 export type IncidentAdditionalDataTacticsList = Array<AttackTactic>;
-export const IncidentAdditionalDataTacticsList = /*@__PURE__*/ S.Array(
-  AttackTactic,
-) as any as S.Schema<IncidentAdditionalDataTacticsList>;
+export const IncidentAdditionalDataTacticsList =
+  SourceControlPropertiesInputContentTypesList as any as S.Schema<IncidentAdditionalDataTacticsList>;
 
 /** Incident additional data property bag. */
 export interface IncidentAdditionalData {
@@ -4236,19 +4204,8 @@ export interface GetSecurityMLAnalyticsSettingsResponse {
   /** Security ML analytics settings properties (polymorphic on `kind`, e.g. Anomaly). */
   properties?: unknown;
 }
-export const GetSecurityMLAnalyticsSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    kind: SecurityMLAnalyticsSettingsKind,
-    etag: S.optional(S.String),
-    properties: S.optional(S.Unknown),
-  }),
-).annotate({
-  identifier: "GetSecurityMLAnalyticsSettingsResponse",
-}) as any as S.Schema<GetSecurityMLAnalyticsSettingsResponse>;
+export const GetSecurityMLAnalyticsSettingsResponse =
+  AlertRulesCreateOrUpdateResponse as any as S.Schema<GetSecurityMLAnalyticsSettingsResponse>;
 
 export interface GetSentinelOnboardingStateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5725,22 +5682,12 @@ export interface DataConnectorDefinition {
   /** Etag of the azure resource */
   etag?: string;
 }
-export const DataConnectorDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    kind: DataConnectorDefinitionKind,
-    etag: S.optional(S.String),
-  }),
-).annotate({ identifier: "DataConnectorDefinition" }) as any as S.Schema<DataConnectorDefinition>;
+export const DataConnectorDefinition = AlertRule as any as S.Schema<DataConnectorDefinition>;
 
 /** List of data connector definitions. */
 export type DataConnectorDefinitionArmCollectionWrapperValueList = Array<DataConnectorDefinition>;
-export const DataConnectorDefinitionArmCollectionWrapperValueList = /*@__PURE__*/ S.Array(
-  DataConnectorDefinition,
-) as any as S.Schema<DataConnectorDefinitionArmCollectionWrapperValueList>;
+export const DataConnectorDefinitionArmCollectionWrapperValueList =
+  AlertRulesListValueList as any as S.Schema<DataConnectorDefinitionArmCollectionWrapperValueList>;
 
 /** Encapsulate the data connector definition object */
 export interface DataConnectorDefinitionArmCollectionWrapper {
@@ -5798,22 +5745,12 @@ export interface DataConnector {
   /** Etag of the azure resource */
   etag?: string;
 }
-export const DataConnector = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    kind: DataConnectorKind,
-    etag: S.optional(S.String),
-  }),
-).annotate({ identifier: "DataConnector" }) as any as S.Schema<DataConnector>;
+export const DataConnector = AlertRule as any as S.Schema<DataConnector>;
 
 /** The DataConnector items on this page */
 export type DataConnectorListValueList = Array<DataConnector>;
-export const DataConnectorListValueList = /*@__PURE__*/ S.Array(
-  DataConnector,
-) as any as S.Schema<DataConnectorListValueList>;
+export const DataConnectorListValueList =
+  AlertRulesListValueList as any as S.Schema<DataConnectorListValueList>;
 
 /** List all the data connectors. */
 export interface DataConnectorList {
@@ -5822,12 +5759,7 @@ export interface DataConnectorList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const DataConnectorList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: DataConnectorListValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({ identifier: "DataConnectorList" }) as any as S.Schema<DataConnectorList>;
+export const DataConnectorList = AlertRulesList as any as S.Schema<DataConnectorList>;
 
 export interface ListIncidentAlertsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6349,21 +6281,12 @@ export interface Entity {
   /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
   kind: EntityKindEnum;
 }
-export const Entity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    kind: EntityKindEnum,
-  }),
-).annotate({ identifier: "Entity" }) as any as S.Schema<Entity>;
+export const Entity = AlertRuleTemplate as any as S.Schema<Entity>;
 
 /** Array of the incident related entities. */
 export type IncidentEntitiesResponseEntitiesList = Array<Entity>;
-export const IncidentEntitiesResponseEntitiesList = /*@__PURE__*/ S.Array(
-  Entity,
-) as any as S.Schema<IncidentEntitiesResponseEntitiesList>;
+export const IncidentEntitiesResponseEntitiesList =
+  AlertRuleTemplatesListValueList as any as S.Schema<IncidentEntitiesResponseEntitiesList>;
 
 /** Information of a specific aggregation in the incident related entities result. */
 export interface IncidentEntitiesResultsMetadata {

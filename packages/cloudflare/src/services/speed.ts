@@ -196,15 +196,8 @@ export interface PagesTestsCreateResponseMobileReportError {
   /** The final URL displayed to the user. */
   finalDisplayedUrl?: string | null;
 }
-export const PagesTestsCreateResponseMobileReportError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.NullOr(PagesTestsCreateResponseMobileReportErrorCode)),
-    detail: S.optional(S.NullOr(S.String)),
-    finalDisplayedUrl: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "PagesTestsCreateResponseMobileReportError",
-}) as any as S.Schema<PagesTestsCreateResponseMobileReportError>;
+export const PagesTestsCreateResponseMobileReportError =
+  PagesTestsCreateResponseDesktopReportError as any as S.Schema<PagesTestsCreateResponseMobileReportError>;
 
 export type PagesTestsCreateResponseMobileReportState = "RUNNING" | "COMPLETE" | "FAILED";
 export const PagesTestsCreateResponseMobileReportState = S.String;
@@ -234,24 +227,8 @@ export interface PagesTestsCreateResponseMobileReport {
   /** Time To Interactive. */
   tti?: number | null;
 }
-export const PagesTestsCreateResponseMobileReport = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cls: S.optional(S.NullOr(S.Number)),
-    deviceType: S.optional(S.NullOr(PagesTestsCreateResponseMobileReportDeviceType)),
-    error: S.optional(S.NullOr(PagesTestsCreateResponseMobileReportError)),
-    fcp: S.optional(S.NullOr(S.Number)),
-    jsonReportUrl: S.optional(S.NullOr(S.String)),
-    lcp: S.optional(S.NullOr(S.Number)),
-    performanceScore: S.optional(S.NullOr(S.Number)),
-    si: S.optional(S.NullOr(S.Number)),
-    state: S.optional(S.NullOr(PagesTestsCreateResponseMobileReportState)),
-    tbt: S.optional(S.NullOr(S.Number)),
-    ttfb: S.optional(S.NullOr(S.Number)),
-    tti: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "PagesTestsCreateResponseMobileReport",
-}) as any as S.Schema<PagesTestsCreateResponseMobileReport>;
+export const PagesTestsCreateResponseMobileReport =
+  PagesTestsCreateResponseDesktopReport as any as S.Schema<PagesTestsCreateResponseMobileReport>;
 
 export type PagesTestsCreateResponseRegionValue =
   | "asia-east1"
@@ -434,15 +411,8 @@ export interface ScheduleCreateResponseTestDesktopReportError {
   /** The final URL displayed to the user. */
   finalDisplayedUrl?: string | null;
 }
-export const ScheduleCreateResponseTestDesktopReportError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.NullOr(ScheduleCreateResponseTestDesktopReportErrorCode)),
-    detail: S.optional(S.NullOr(S.String)),
-    finalDisplayedUrl: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "ScheduleCreateResponseTestDesktopReportError",
-}) as any as S.Schema<ScheduleCreateResponseTestDesktopReportError>;
+export const ScheduleCreateResponseTestDesktopReportError =
+  PagesTestsCreateResponseDesktopReportError as any as S.Schema<ScheduleCreateResponseTestDesktopReportError>;
 
 export type ScheduleCreateResponseTestDesktopReportState = "RUNNING" | "COMPLETE" | "FAILED";
 export const ScheduleCreateResponseTestDesktopReportState = S.String;
@@ -472,24 +442,8 @@ export interface ScheduleCreateResponseTestDesktopReport {
   /** Time To Interactive. */
   tti?: number | null;
 }
-export const ScheduleCreateResponseTestDesktopReport = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cls: S.optional(S.NullOr(S.Number)),
-    deviceType: S.optional(S.NullOr(ScheduleCreateResponseTestDesktopReportDeviceType)),
-    error: S.optional(S.NullOr(ScheduleCreateResponseTestDesktopReportError)),
-    fcp: S.optional(S.NullOr(S.Number)),
-    jsonReportUrl: S.optional(S.NullOr(S.String)),
-    lcp: S.optional(S.NullOr(S.Number)),
-    performanceScore: S.optional(S.NullOr(S.Number)),
-    si: S.optional(S.NullOr(S.Number)),
-    state: S.optional(S.NullOr(ScheduleCreateResponseTestDesktopReportState)),
-    tbt: S.optional(S.NullOr(S.Number)),
-    ttfb: S.optional(S.NullOr(S.Number)),
-    tti: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "ScheduleCreateResponseTestDesktopReport",
-}) as any as S.Schema<ScheduleCreateResponseTestDesktopReport>;
+export const ScheduleCreateResponseTestDesktopReport =
+  PagesTestsCreateResponseDesktopReport as any as S.Schema<ScheduleCreateResponseTestDesktopReport>;
 
 export type ScheduleCreateResponseTestMobileReportDeviceType = "DESKTOP" | "MOBILE";
 export const ScheduleCreateResponseTestMobileReportDeviceType = S.String;
@@ -510,15 +464,8 @@ export interface ScheduleCreateResponseTestMobileReportError {
   /** The final URL displayed to the user. */
   finalDisplayedUrl?: string | null;
 }
-export const ScheduleCreateResponseTestMobileReportError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.NullOr(ScheduleCreateResponseTestMobileReportErrorCode)),
-    detail: S.optional(S.NullOr(S.String)),
-    finalDisplayedUrl: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "ScheduleCreateResponseTestMobileReportError",
-}) as any as S.Schema<ScheduleCreateResponseTestMobileReportError>;
+export const ScheduleCreateResponseTestMobileReportError =
+  PagesTestsCreateResponseDesktopReportError as any as S.Schema<ScheduleCreateResponseTestMobileReportError>;
 
 export type ScheduleCreateResponseTestMobileReportState = "RUNNING" | "COMPLETE" | "FAILED";
 export const ScheduleCreateResponseTestMobileReportState = S.String;
@@ -548,24 +495,8 @@ export interface ScheduleCreateResponseTestMobileReport {
   /** Time To Interactive. */
   tti?: number | null;
 }
-export const ScheduleCreateResponseTestMobileReport = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cls: S.optional(S.NullOr(S.Number)),
-    deviceType: S.optional(S.NullOr(ScheduleCreateResponseTestMobileReportDeviceType)),
-    error: S.optional(S.NullOr(ScheduleCreateResponseTestMobileReportError)),
-    fcp: S.optional(S.NullOr(S.Number)),
-    jsonReportUrl: S.optional(S.NullOr(S.String)),
-    lcp: S.optional(S.NullOr(S.Number)),
-    performanceScore: S.optional(S.NullOr(S.Number)),
-    si: S.optional(S.NullOr(S.Number)),
-    state: S.optional(S.NullOr(ScheduleCreateResponseTestMobileReportState)),
-    tbt: S.optional(S.NullOr(S.Number)),
-    ttfb: S.optional(S.NullOr(S.Number)),
-    tti: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "ScheduleCreateResponseTestMobileReport",
-}) as any as S.Schema<ScheduleCreateResponseTestMobileReport>;
+export const ScheduleCreateResponseTestMobileReport =
+  PagesTestsCreateResponseDesktopReport as any as S.Schema<ScheduleCreateResponseTestMobileReport>;
 
 export type ScheduleCreateResponseTestRegionValue =
   | "asia-east1"
@@ -596,14 +527,8 @@ export interface ScheduleCreateResponseTestRegion {
   /** A test region. */
   value?: ScheduleCreateResponseTestRegionValue | null;
 }
-export const ScheduleCreateResponseTestRegion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    label: S.optional(S.NullOr(S.String)),
-    value: S.optional(S.NullOr(ScheduleCreateResponseTestRegionValue)),
-  }),
-).annotate({
-  identifier: "ScheduleCreateResponseTestRegion",
-}) as any as S.Schema<ScheduleCreateResponseTestRegion>;
+export const ScheduleCreateResponseTestRegion =
+  PagesTestsCreateResponseRegion as any as S.Schema<ScheduleCreateResponseTestRegion>;
 
 export type ScheduleCreateResponseTestScheduleFrequency = "DAILY" | "WEEKLY";
 export const ScheduleCreateResponseTestScheduleFrequency = S.String;
@@ -797,15 +722,8 @@ export interface PagesTestsGetResponseDesktopReportError {
   /** The final URL displayed to the user. */
   finalDisplayedUrl?: string | null;
 }
-export const PagesTestsGetResponseDesktopReportError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.NullOr(PagesTestsGetResponseDesktopReportErrorCode)),
-    detail: S.optional(S.NullOr(S.String)),
-    finalDisplayedUrl: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "PagesTestsGetResponseDesktopReportError",
-}) as any as S.Schema<PagesTestsGetResponseDesktopReportError>;
+export const PagesTestsGetResponseDesktopReportError =
+  PagesTestsCreateResponseDesktopReportError as any as S.Schema<PagesTestsGetResponseDesktopReportError>;
 
 export type PagesTestsGetResponseDesktopReportState = "RUNNING" | "COMPLETE" | "FAILED";
 export const PagesTestsGetResponseDesktopReportState = S.String;
@@ -835,24 +753,8 @@ export interface PagesTestsGetResponseDesktopReport {
   /** Time To Interactive. */
   tti?: number | null;
 }
-export const PagesTestsGetResponseDesktopReport = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cls: S.optional(S.NullOr(S.Number)),
-    deviceType: S.optional(S.NullOr(PagesTestsGetResponseDesktopReportDeviceType)),
-    error: S.optional(S.NullOr(PagesTestsGetResponseDesktopReportError)),
-    fcp: S.optional(S.NullOr(S.Number)),
-    jsonReportUrl: S.optional(S.NullOr(S.String)),
-    lcp: S.optional(S.NullOr(S.Number)),
-    performanceScore: S.optional(S.NullOr(S.Number)),
-    si: S.optional(S.NullOr(S.Number)),
-    state: S.optional(S.NullOr(PagesTestsGetResponseDesktopReportState)),
-    tbt: S.optional(S.NullOr(S.Number)),
-    ttfb: S.optional(S.NullOr(S.Number)),
-    tti: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "PagesTestsGetResponseDesktopReport",
-}) as any as S.Schema<PagesTestsGetResponseDesktopReport>;
+export const PagesTestsGetResponseDesktopReport =
+  PagesTestsCreateResponseDesktopReport as any as S.Schema<PagesTestsGetResponseDesktopReport>;
 
 export type PagesTestsGetResponseMobileReportDeviceType = "DESKTOP" | "MOBILE";
 export const PagesTestsGetResponseMobileReportDeviceType = S.String;
@@ -873,15 +775,8 @@ export interface PagesTestsGetResponseMobileReportError {
   /** The final URL displayed to the user. */
   finalDisplayedUrl?: string | null;
 }
-export const PagesTestsGetResponseMobileReportError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.NullOr(PagesTestsGetResponseMobileReportErrorCode)),
-    detail: S.optional(S.NullOr(S.String)),
-    finalDisplayedUrl: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "PagesTestsGetResponseMobileReportError",
-}) as any as S.Schema<PagesTestsGetResponseMobileReportError>;
+export const PagesTestsGetResponseMobileReportError =
+  PagesTestsCreateResponseDesktopReportError as any as S.Schema<PagesTestsGetResponseMobileReportError>;
 
 export type PagesTestsGetResponseMobileReportState = "RUNNING" | "COMPLETE" | "FAILED";
 export const PagesTestsGetResponseMobileReportState = S.String;
@@ -911,24 +806,8 @@ export interface PagesTestsGetResponseMobileReport {
   /** Time To Interactive. */
   tti?: number | null;
 }
-export const PagesTestsGetResponseMobileReport = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cls: S.optional(S.NullOr(S.Number)),
-    deviceType: S.optional(S.NullOr(PagesTestsGetResponseMobileReportDeviceType)),
-    error: S.optional(S.NullOr(PagesTestsGetResponseMobileReportError)),
-    fcp: S.optional(S.NullOr(S.Number)),
-    jsonReportUrl: S.optional(S.NullOr(S.String)),
-    lcp: S.optional(S.NullOr(S.Number)),
-    performanceScore: S.optional(S.NullOr(S.Number)),
-    si: S.optional(S.NullOr(S.Number)),
-    state: S.optional(S.NullOr(PagesTestsGetResponseMobileReportState)),
-    tbt: S.optional(S.NullOr(S.Number)),
-    ttfb: S.optional(S.NullOr(S.Number)),
-    tti: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "PagesTestsGetResponseMobileReport",
-}) as any as S.Schema<PagesTestsGetResponseMobileReport>;
+export const PagesTestsGetResponseMobileReport =
+  PagesTestsCreateResponseDesktopReport as any as S.Schema<PagesTestsGetResponseMobileReport>;
 
 export type PagesTestsGetResponseRegionValue =
   | "asia-east1"
@@ -959,14 +838,8 @@ export interface PagesTestsGetResponseRegion {
   /** A test region. */
   value?: PagesTestsGetResponseRegionValue | null;
 }
-export const PagesTestsGetResponseRegion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    label: S.optional(S.NullOr(S.String)),
-    value: S.optional(S.NullOr(PagesTestsGetResponseRegionValue)),
-  }),
-).annotate({
-  identifier: "PagesTestsGetResponseRegion",
-}) as any as S.Schema<PagesTestsGetResponseRegion>;
+export const PagesTestsGetResponseRegion =
+  PagesTestsCreateResponseRegion as any as S.Schema<PagesTestsGetResponseRegion>;
 
 export type PagesTestsGetResponseScheduleFrequency = "DAILY" | "WEEKLY";
 export const PagesTestsGetResponseScheduleFrequency = S.String;
@@ -987,17 +860,7 @@ export interface GetPageTestResponse {
   /** A URL. */
   url?: string | null;
 }
-export const GetPageTestResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    date: S.optional(S.NullOr(S.String)),
-    desktopReport: S.optional(S.NullOr(PagesTestsGetResponseDesktopReport)),
-    mobileReport: S.optional(S.NullOr(PagesTestsGetResponseMobileReport)),
-    region: S.optional(S.NullOr(PagesTestsGetResponseRegion)),
-    scheduleFrequency: S.optional(S.NullOr(PagesTestsGetResponseScheduleFrequency)),
-    url: S.optional(S.NullOr(S.String)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "GetPageTestResponse" }) as any as S.Schema<GetPageTestResponse>;
+export const GetPageTestResponse = CreatePageTestResponse as any as S.Schema<GetPageTestResponse>;
 
 export type ScheduleGetRequestRegion =
   | "asia-east1"
@@ -1191,14 +1054,8 @@ export interface AvailabilitiesListResponseRegionsItem {
   /** A test region. */
   value?: AvailabilitiesListResponseRegionsItemValue | null;
 }
-export const AvailabilitiesListResponseRegionsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    label: S.optional(S.NullOr(S.String)),
-    value: S.optional(S.NullOr(AvailabilitiesListResponseRegionsItemValue)),
-  }),
-).annotate({
-  identifier: "AvailabilitiesListResponseRegionsItem",
-}) as any as S.Schema<AvailabilitiesListResponseRegionsItem>;
+export const AvailabilitiesListResponseRegionsItem =
+  PagesTestsCreateResponseRegion as any as S.Schema<AvailabilitiesListResponseRegionsItem>;
 
 export type AvailabilitiesListResponseRegionsList = Array<AvailabilitiesListResponseRegionsItem>;
 export const AvailabilitiesListResponseRegionsList = /*@__PURE__*/ S.Array(
@@ -1234,20 +1091,13 @@ export interface AvailabilitiesListResponseRegionsPerPlanBusinessItem {
   /** A test region. */
   value?: AvailabilitiesListResponseRegionsPerPlanBusinessItemValue | null;
 }
-export const AvailabilitiesListResponseRegionsPerPlanBusinessItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    label: S.optional(S.NullOr(S.String)),
-    value: S.optional(S.NullOr(AvailabilitiesListResponseRegionsPerPlanBusinessItemValue)),
-  }),
-).annotate({
-  identifier: "AvailabilitiesListResponseRegionsPerPlanBusinessItem",
-}) as any as S.Schema<AvailabilitiesListResponseRegionsPerPlanBusinessItem>;
+export const AvailabilitiesListResponseRegionsPerPlanBusinessItem =
+  PagesTestsCreateResponseRegion as any as S.Schema<AvailabilitiesListResponseRegionsPerPlanBusinessItem>;
 
 export type AvailabilitiesListResponseRegionsPerPlanBusinessList =
   Array<AvailabilitiesListResponseRegionsPerPlanBusinessItem>;
-export const AvailabilitiesListResponseRegionsPerPlanBusinessList = /*@__PURE__*/ S.Array(
-  AvailabilitiesListResponseRegionsPerPlanBusinessItem,
-) as any as S.Schema<AvailabilitiesListResponseRegionsPerPlanBusinessList>;
+export const AvailabilitiesListResponseRegionsPerPlanBusinessList =
+  AvailabilitiesListResponseRegionsList as any as S.Schema<AvailabilitiesListResponseRegionsPerPlanBusinessList>;
 
 export type AvailabilitiesListResponseRegionsPerPlanEnterpriseItemValue =
   | "asia-east1"
@@ -1278,20 +1128,13 @@ export interface AvailabilitiesListResponseRegionsPerPlanEnterpriseItem {
   /** A test region. */
   value?: AvailabilitiesListResponseRegionsPerPlanEnterpriseItemValue | null;
 }
-export const AvailabilitiesListResponseRegionsPerPlanEnterpriseItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    label: S.optional(S.NullOr(S.String)),
-    value: S.optional(S.NullOr(AvailabilitiesListResponseRegionsPerPlanEnterpriseItemValue)),
-  }),
-).annotate({
-  identifier: "AvailabilitiesListResponseRegionsPerPlanEnterpriseItem",
-}) as any as S.Schema<AvailabilitiesListResponseRegionsPerPlanEnterpriseItem>;
+export const AvailabilitiesListResponseRegionsPerPlanEnterpriseItem =
+  PagesTestsCreateResponseRegion as any as S.Schema<AvailabilitiesListResponseRegionsPerPlanEnterpriseItem>;
 
 export type AvailabilitiesListResponseRegionsPerPlanEnterpriseList =
   Array<AvailabilitiesListResponseRegionsPerPlanEnterpriseItem>;
-export const AvailabilitiesListResponseRegionsPerPlanEnterpriseList = /*@__PURE__*/ S.Array(
-  AvailabilitiesListResponseRegionsPerPlanEnterpriseItem,
-) as any as S.Schema<AvailabilitiesListResponseRegionsPerPlanEnterpriseList>;
+export const AvailabilitiesListResponseRegionsPerPlanEnterpriseList =
+  AvailabilitiesListResponseRegionsList as any as S.Schema<AvailabilitiesListResponseRegionsPerPlanEnterpriseList>;
 
 export type AvailabilitiesListResponseRegionsPerPlanFreeItemValue =
   | "asia-east1"
@@ -1322,20 +1165,13 @@ export interface AvailabilitiesListResponseRegionsPerPlanFreeItem {
   /** A test region. */
   value?: AvailabilitiesListResponseRegionsPerPlanFreeItemValue | null;
 }
-export const AvailabilitiesListResponseRegionsPerPlanFreeItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    label: S.optional(S.NullOr(S.String)),
-    value: S.optional(S.NullOr(AvailabilitiesListResponseRegionsPerPlanFreeItemValue)),
-  }),
-).annotate({
-  identifier: "AvailabilitiesListResponseRegionsPerPlanFreeItem",
-}) as any as S.Schema<AvailabilitiesListResponseRegionsPerPlanFreeItem>;
+export const AvailabilitiesListResponseRegionsPerPlanFreeItem =
+  PagesTestsCreateResponseRegion as any as S.Schema<AvailabilitiesListResponseRegionsPerPlanFreeItem>;
 
 export type AvailabilitiesListResponseRegionsPerPlanFreeList =
   Array<AvailabilitiesListResponseRegionsPerPlanFreeItem>;
-export const AvailabilitiesListResponseRegionsPerPlanFreeList = /*@__PURE__*/ S.Array(
-  AvailabilitiesListResponseRegionsPerPlanFreeItem,
-) as any as S.Schema<AvailabilitiesListResponseRegionsPerPlanFreeList>;
+export const AvailabilitiesListResponseRegionsPerPlanFreeList =
+  AvailabilitiesListResponseRegionsList as any as S.Schema<AvailabilitiesListResponseRegionsPerPlanFreeList>;
 
 export type AvailabilitiesListResponseRegionsPerPlanProItemValue =
   | "asia-east1"
@@ -1366,20 +1202,13 @@ export interface AvailabilitiesListResponseRegionsPerPlanProItem {
   /** A test region. */
   value?: AvailabilitiesListResponseRegionsPerPlanProItemValue | null;
 }
-export const AvailabilitiesListResponseRegionsPerPlanProItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    label: S.optional(S.NullOr(S.String)),
-    value: S.optional(S.NullOr(AvailabilitiesListResponseRegionsPerPlanProItemValue)),
-  }),
-).annotate({
-  identifier: "AvailabilitiesListResponseRegionsPerPlanProItem",
-}) as any as S.Schema<AvailabilitiesListResponseRegionsPerPlanProItem>;
+export const AvailabilitiesListResponseRegionsPerPlanProItem =
+  PagesTestsCreateResponseRegion as any as S.Schema<AvailabilitiesListResponseRegionsPerPlanProItem>;
 
 export type AvailabilitiesListResponseRegionsPerPlanProList =
   Array<AvailabilitiesListResponseRegionsPerPlanProItem>;
-export const AvailabilitiesListResponseRegionsPerPlanProList = /*@__PURE__*/ S.Array(
-  AvailabilitiesListResponseRegionsPerPlanProItem,
-) as any as S.Schema<AvailabilitiesListResponseRegionsPerPlanProList>;
+export const AvailabilitiesListResponseRegionsPerPlanProList =
+  AvailabilitiesListResponseRegionsList as any as S.Schema<AvailabilitiesListResponseRegionsPerPlanProList>;
 
 export interface AvailabilitiesListResponseRegionsPerPlan {
   business?: AvailabilitiesListResponseRegionsPerPlanBusinessList | null;
@@ -1456,14 +1285,8 @@ export interface PagesListResultItemRegion {
   /** A test region. */
   value?: PagesListResultItemRegionValue | null;
 }
-export const PagesListResultItemRegion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    label: S.optional(S.NullOr(S.String)),
-    value: S.optional(S.NullOr(PagesListResultItemRegionValue)),
-  }),
-).annotate({
-  identifier: "PagesListResultItemRegion",
-}) as any as S.Schema<PagesListResultItemRegion>;
+export const PagesListResultItemRegion =
+  PagesTestsCreateResponseRegion as any as S.Schema<PagesListResultItemRegion>;
 
 export type PagesListResultItemScheduleFrequency = "DAILY" | "WEEKLY";
 export const PagesListResultItemScheduleFrequency = S.String;
@@ -1487,15 +1310,8 @@ export interface PagesListResultItemTestsItemDesktopReportError {
   /** The final URL displayed to the user. */
   finalDisplayedUrl?: string | null;
 }
-export const PagesListResultItemTestsItemDesktopReportError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.NullOr(PagesListResultItemTestsItemDesktopReportErrorCode)),
-    detail: S.optional(S.NullOr(S.String)),
-    finalDisplayedUrl: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "PagesListResultItemTestsItemDesktopReportError",
-}) as any as S.Schema<PagesListResultItemTestsItemDesktopReportError>;
+export const PagesListResultItemTestsItemDesktopReportError =
+  PagesTestsCreateResponseDesktopReportError as any as S.Schema<PagesListResultItemTestsItemDesktopReportError>;
 
 export type PagesListResultItemTestsItemDesktopReportState = "RUNNING" | "COMPLETE" | "FAILED";
 export const PagesListResultItemTestsItemDesktopReportState = S.String;
@@ -1525,24 +1341,8 @@ export interface PagesListResultItemTestsItemDesktopReport {
   /** Time To Interactive. */
   tti?: number | null;
 }
-export const PagesListResultItemTestsItemDesktopReport = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cls: S.optional(S.NullOr(S.Number)),
-    deviceType: S.optional(S.NullOr(PagesListResultItemTestsItemDesktopReportDeviceType)),
-    error: S.optional(S.NullOr(PagesListResultItemTestsItemDesktopReportError)),
-    fcp: S.optional(S.NullOr(S.Number)),
-    jsonReportUrl: S.optional(S.NullOr(S.String)),
-    lcp: S.optional(S.NullOr(S.Number)),
-    performanceScore: S.optional(S.NullOr(S.Number)),
-    si: S.optional(S.NullOr(S.Number)),
-    state: S.optional(S.NullOr(PagesListResultItemTestsItemDesktopReportState)),
-    tbt: S.optional(S.NullOr(S.Number)),
-    ttfb: S.optional(S.NullOr(S.Number)),
-    tti: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "PagesListResultItemTestsItemDesktopReport",
-}) as any as S.Schema<PagesListResultItemTestsItemDesktopReport>;
+export const PagesListResultItemTestsItemDesktopReport =
+  PagesTestsCreateResponseDesktopReport as any as S.Schema<PagesListResultItemTestsItemDesktopReport>;
 
 export type PagesListResultItemTestsItemMobileReportDeviceType = "DESKTOP" | "MOBILE";
 export const PagesListResultItemTestsItemMobileReportDeviceType = S.String;
@@ -1563,15 +1363,8 @@ export interface PagesListResultItemTestsItemMobileReportError {
   /** The final URL displayed to the user. */
   finalDisplayedUrl?: string | null;
 }
-export const PagesListResultItemTestsItemMobileReportError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.NullOr(PagesListResultItemTestsItemMobileReportErrorCode)),
-    detail: S.optional(S.NullOr(S.String)),
-    finalDisplayedUrl: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "PagesListResultItemTestsItemMobileReportError",
-}) as any as S.Schema<PagesListResultItemTestsItemMobileReportError>;
+export const PagesListResultItemTestsItemMobileReportError =
+  PagesTestsCreateResponseDesktopReportError as any as S.Schema<PagesListResultItemTestsItemMobileReportError>;
 
 export type PagesListResultItemTestsItemMobileReportState = "RUNNING" | "COMPLETE" | "FAILED";
 export const PagesListResultItemTestsItemMobileReportState = S.String;
@@ -1601,24 +1394,8 @@ export interface PagesListResultItemTestsItemMobileReport {
   /** Time To Interactive. */
   tti?: number | null;
 }
-export const PagesListResultItemTestsItemMobileReport = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cls: S.optional(S.NullOr(S.Number)),
-    deviceType: S.optional(S.NullOr(PagesListResultItemTestsItemMobileReportDeviceType)),
-    error: S.optional(S.NullOr(PagesListResultItemTestsItemMobileReportError)),
-    fcp: S.optional(S.NullOr(S.Number)),
-    jsonReportUrl: S.optional(S.NullOr(S.String)),
-    lcp: S.optional(S.NullOr(S.Number)),
-    performanceScore: S.optional(S.NullOr(S.Number)),
-    si: S.optional(S.NullOr(S.Number)),
-    state: S.optional(S.NullOr(PagesListResultItemTestsItemMobileReportState)),
-    tbt: S.optional(S.NullOr(S.Number)),
-    ttfb: S.optional(S.NullOr(S.Number)),
-    tti: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "PagesListResultItemTestsItemMobileReport",
-}) as any as S.Schema<PagesListResultItemTestsItemMobileReport>;
+export const PagesListResultItemTestsItemMobileReport =
+  PagesTestsCreateResponseDesktopReport as any as S.Schema<PagesListResultItemTestsItemMobileReport>;
 
 export type PagesListResultItemTestsItemRegionValue =
   | "asia-east1"
@@ -1649,14 +1426,8 @@ export interface PagesListResultItemTestsItemRegion {
   /** A test region. */
   value?: PagesListResultItemTestsItemRegionValue | null;
 }
-export const PagesListResultItemTestsItemRegion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    label: S.optional(S.NullOr(S.String)),
-    value: S.optional(S.NullOr(PagesListResultItemTestsItemRegionValue)),
-  }),
-).annotate({
-  identifier: "PagesListResultItemTestsItemRegion",
-}) as any as S.Schema<PagesListResultItemTestsItemRegion>;
+export const PagesListResultItemTestsItemRegion =
+  PagesTestsCreateResponseRegion as any as S.Schema<PagesListResultItemTestsItemRegion>;
 
 export type PagesListResultItemTestsItemScheduleFrequency = "DAILY" | "WEEKLY";
 export const PagesListResultItemTestsItemScheduleFrequency = S.String;
@@ -1676,19 +1447,8 @@ export interface PagesListResultItemTestsItem {
   /** A URL. */
   url?: string | null;
 }
-export const PagesListResultItemTestsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    date: S.optional(S.NullOr(S.String)),
-    desktopReport: S.optional(S.NullOr(PagesListResultItemTestsItemDesktopReport)),
-    mobileReport: S.optional(S.NullOr(PagesListResultItemTestsItemMobileReport)),
-    region: S.optional(S.NullOr(PagesListResultItemTestsItemRegion)),
-    scheduleFrequency: S.optional(S.NullOr(PagesListResultItemTestsItemScheduleFrequency)),
-    url: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "PagesListResultItemTestsItem",
-}) as any as S.Schema<PagesListResultItemTestsItem>;
+export const PagesListResultItemTestsItem =
+  ScheduleCreateResponseTest as any as S.Schema<PagesListResultItemTestsItem>;
 
 export type PagesListResultItemTestsList = Array<PagesListResultItemTestsItem>;
 export const PagesListResultItemTestsList = /*@__PURE__*/ S.Array(
@@ -1796,15 +1556,8 @@ export interface PagesTestsListResultItemDesktopReportError {
   /** The final URL displayed to the user. */
   finalDisplayedUrl?: string | null;
 }
-export const PagesTestsListResultItemDesktopReportError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.NullOr(PagesTestsListResultItemDesktopReportErrorCode)),
-    detail: S.optional(S.NullOr(S.String)),
-    finalDisplayedUrl: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "PagesTestsListResultItemDesktopReportError",
-}) as any as S.Schema<PagesTestsListResultItemDesktopReportError>;
+export const PagesTestsListResultItemDesktopReportError =
+  PagesTestsCreateResponseDesktopReportError as any as S.Schema<PagesTestsListResultItemDesktopReportError>;
 
 export type PagesTestsListResultItemDesktopReportState = "RUNNING" | "COMPLETE" | "FAILED";
 export const PagesTestsListResultItemDesktopReportState = S.String;
@@ -1834,24 +1587,8 @@ export interface PagesTestsListResultItemDesktopReport {
   /** Time To Interactive. */
   tti?: number | null;
 }
-export const PagesTestsListResultItemDesktopReport = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cls: S.optional(S.NullOr(S.Number)),
-    deviceType: S.optional(S.NullOr(PagesTestsListResultItemDesktopReportDeviceType)),
-    error: S.optional(S.NullOr(PagesTestsListResultItemDesktopReportError)),
-    fcp: S.optional(S.NullOr(S.Number)),
-    jsonReportUrl: S.optional(S.NullOr(S.String)),
-    lcp: S.optional(S.NullOr(S.Number)),
-    performanceScore: S.optional(S.NullOr(S.Number)),
-    si: S.optional(S.NullOr(S.Number)),
-    state: S.optional(S.NullOr(PagesTestsListResultItemDesktopReportState)),
-    tbt: S.optional(S.NullOr(S.Number)),
-    ttfb: S.optional(S.NullOr(S.Number)),
-    tti: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "PagesTestsListResultItemDesktopReport",
-}) as any as S.Schema<PagesTestsListResultItemDesktopReport>;
+export const PagesTestsListResultItemDesktopReport =
+  PagesTestsCreateResponseDesktopReport as any as S.Schema<PagesTestsListResultItemDesktopReport>;
 
 export type PagesTestsListResultItemMobileReportDeviceType = "DESKTOP" | "MOBILE";
 export const PagesTestsListResultItemMobileReportDeviceType = S.String;
@@ -1872,15 +1609,8 @@ export interface PagesTestsListResultItemMobileReportError {
   /** The final URL displayed to the user. */
   finalDisplayedUrl?: string | null;
 }
-export const PagesTestsListResultItemMobileReportError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.NullOr(PagesTestsListResultItemMobileReportErrorCode)),
-    detail: S.optional(S.NullOr(S.String)),
-    finalDisplayedUrl: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "PagesTestsListResultItemMobileReportError",
-}) as any as S.Schema<PagesTestsListResultItemMobileReportError>;
+export const PagesTestsListResultItemMobileReportError =
+  PagesTestsCreateResponseDesktopReportError as any as S.Schema<PagesTestsListResultItemMobileReportError>;
 
 export type PagesTestsListResultItemMobileReportState = "RUNNING" | "COMPLETE" | "FAILED";
 export const PagesTestsListResultItemMobileReportState = S.String;
@@ -1910,24 +1640,8 @@ export interface PagesTestsListResultItemMobileReport {
   /** Time To Interactive. */
   tti?: number | null;
 }
-export const PagesTestsListResultItemMobileReport = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cls: S.optional(S.NullOr(S.Number)),
-    deviceType: S.optional(S.NullOr(PagesTestsListResultItemMobileReportDeviceType)),
-    error: S.optional(S.NullOr(PagesTestsListResultItemMobileReportError)),
-    fcp: S.optional(S.NullOr(S.Number)),
-    jsonReportUrl: S.optional(S.NullOr(S.String)),
-    lcp: S.optional(S.NullOr(S.Number)),
-    performanceScore: S.optional(S.NullOr(S.Number)),
-    si: S.optional(S.NullOr(S.Number)),
-    state: S.optional(S.NullOr(PagesTestsListResultItemMobileReportState)),
-    tbt: S.optional(S.NullOr(S.Number)),
-    ttfb: S.optional(S.NullOr(S.Number)),
-    tti: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "PagesTestsListResultItemMobileReport",
-}) as any as S.Schema<PagesTestsListResultItemMobileReport>;
+export const PagesTestsListResultItemMobileReport =
+  PagesTestsCreateResponseDesktopReport as any as S.Schema<PagesTestsListResultItemMobileReport>;
 
 export type PagesTestsListResultItemRegionValue =
   | "asia-east1"
@@ -1958,14 +1672,8 @@ export interface PagesTestsListResultItemRegion {
   /** A test region. */
   value?: PagesTestsListResultItemRegionValue | null;
 }
-export const PagesTestsListResultItemRegion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    label: S.optional(S.NullOr(S.String)),
-    value: S.optional(S.NullOr(PagesTestsListResultItemRegionValue)),
-  }),
-).annotate({
-  identifier: "PagesTestsListResultItemRegion",
-}) as any as S.Schema<PagesTestsListResultItemRegion>;
+export const PagesTestsListResultItemRegion =
+  PagesTestsCreateResponseRegion as any as S.Schema<PagesTestsListResultItemRegion>;
 
 export type PagesTestsListResultItemScheduleFrequency = "DAILY" | "WEEKLY";
 export const PagesTestsListResultItemScheduleFrequency = S.String;

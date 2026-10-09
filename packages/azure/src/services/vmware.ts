@@ -8257,11 +8257,7 @@ export interface VcfLicenseInput {
   /** License kind */
   kind: VcfLicenseKind | (string & {});
 }
-export const VcfLicenseInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: VcfLicenseKind,
-  }),
-).annotate({ identifier: "VcfLicenseInput" }) as any as S.Schema<VcfLicenseInput>;
+export const VcfLicenseInput = HostLicense as any as S.Schema<VcfLicenseInput>;
 
 /** The properties of a private cloud resource */
 export interface PrivateCloudPropertiesInput {

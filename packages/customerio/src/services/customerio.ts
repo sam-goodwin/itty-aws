@@ -3876,19 +3876,8 @@ export interface CreateEmailResponseEmailTransformersFormatterMinify {
   /** Remove all line breaks from the output. */
   remove_line_breaks?: boolean;
 }
-export const CreateEmailResponseEmailTransformersFormatterMinify = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    line_length_limit: S.optional(S.Number),
-    remove_css_comments: S.optional(S.Boolean),
-    remove_html_comments: S.optional(
-      CreateEmailResponseEmailTransformersFormatterMinifyRemoveHtmlComments,
-    ),
-    remove_indentations: S.optional(S.Boolean),
-    remove_line_breaks: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "CreateEmailResponseEmailTransformersFormatterMinify",
-}) as any as S.Schema<CreateEmailResponseEmailTransformersFormatterMinify>;
+export const CreateEmailResponseEmailTransformersFormatterMinify =
+  CreateEmailRequestTransformersFormatterMinify as any as S.Schema<CreateEmailResponseEmailTransformersFormatterMinify>;
 
 /** Character used for indentation. */
 export type CreateEmailResponseEmailTransformersFormatterPrettifyIndentCharacter =
@@ -5055,16 +5044,8 @@ export interface CreateNewsletterRequestBodyCase1RecipientsAttribute {
   /** The value to compare against. Required when `operator` is `eq`. */
   value?: string;
 }
-export const CreateNewsletterRequestBodyCase1RecipientsAttribute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    field: S.optional(S.String),
-    inverse: S.optional(S.Boolean),
-    operator: S.optional(CreateNewsletterRequestBodyCase1RecipientsAttributeOperator),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateNewsletterRequestBodyCase1RecipientsAttribute",
-}) as any as S.Schema<CreateNewsletterRequestBodyCase1RecipientsAttribute>;
+export const CreateNewsletterRequestBodyCase1RecipientsAttribute =
+  CreateNewsletterRequestBodyCase0RecipientsAttribute as any as S.Schema<CreateNewsletterRequestBodyCase1RecipientsAttribute>;
 
 /** An array of conditions where at least one must be true. On this endpoint, `or` arrays can contain only segment conditions. */
 export type CreateNewsletterRequestBodyCase1RecipientsOrList = Array<unknown>;
@@ -5187,16 +5168,8 @@ export interface CreateNewsletterRequestBodyCase2RecipientsAttribute {
   /** The value to compare against. Required when `operator` is `eq`. */
   value?: string;
 }
-export const CreateNewsletterRequestBodyCase2RecipientsAttribute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    field: S.optional(S.String),
-    inverse: S.optional(S.Boolean),
-    operator: S.optional(CreateNewsletterRequestBodyCase2RecipientsAttributeOperator),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateNewsletterRequestBodyCase2RecipientsAttribute",
-}) as any as S.Schema<CreateNewsletterRequestBodyCase2RecipientsAttribute>;
+export const CreateNewsletterRequestBodyCase2RecipientsAttribute =
+  CreateNewsletterRequestBodyCase0RecipientsAttribute as any as S.Schema<CreateNewsletterRequestBodyCase2RecipientsAttribute>;
 
 /** An array of conditions where at least one must be true. On this endpoint, `or` arrays can contain only segment conditions. */
 export type CreateNewsletterRequestBodyCase2RecipientsOrList = Array<unknown>;
@@ -5322,16 +5295,8 @@ export interface CreateNewsletterRequestBodyCase3RecipientsAttribute {
   /** The value to compare against. Required when `operator` is `eq`. */
   value?: string;
 }
-export const CreateNewsletterRequestBodyCase3RecipientsAttribute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    field: S.optional(S.String),
-    inverse: S.optional(S.Boolean),
-    operator: S.optional(CreateNewsletterRequestBodyCase3RecipientsAttributeOperator),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateNewsletterRequestBodyCase3RecipientsAttribute",
-}) as any as S.Schema<CreateNewsletterRequestBodyCase3RecipientsAttribute>;
+export const CreateNewsletterRequestBodyCase3RecipientsAttribute =
+  CreateNewsletterRequestBodyCase0RecipientsAttribute as any as S.Schema<CreateNewsletterRequestBodyCase3RecipientsAttribute>;
 
 /** An array of conditions where at least one must be true. On this endpoint, `or` arrays can contain only segment conditions. */
 export type CreateNewsletterRequestBodyCase3RecipientsOrList = Array<unknown>;
@@ -5463,16 +5428,8 @@ export interface CreateNewsletterRequestBodyCase4RecipientsAttribute {
   /** The value to compare against. Required when `operator` is `eq`. */
   value?: string;
 }
-export const CreateNewsletterRequestBodyCase4RecipientsAttribute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    field: S.optional(S.String),
-    inverse: S.optional(S.Boolean),
-    operator: S.optional(CreateNewsletterRequestBodyCase4RecipientsAttributeOperator),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateNewsletterRequestBodyCase4RecipientsAttribute",
-}) as any as S.Schema<CreateNewsletterRequestBodyCase4RecipientsAttribute>;
+export const CreateNewsletterRequestBodyCase4RecipientsAttribute =
+  CreateNewsletterRequestBodyCase0RecipientsAttribute as any as S.Schema<CreateNewsletterRequestBodyCase4RecipientsAttribute>;
 
 /** An array of conditions where at least one must be true. On this endpoint, `or` arrays can contain only segment conditions. */
 export type CreateNewsletterRequestBodyCase4RecipientsOrList = Array<unknown>;
@@ -5601,16 +5558,8 @@ export interface CreateNewsletterRequestBodyCase5RecipientsAttribute {
   /** The value to compare against. Required when `operator` is `eq`. */
   value?: string;
 }
-export const CreateNewsletterRequestBodyCase5RecipientsAttribute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    field: S.optional(S.String),
-    inverse: S.optional(S.Boolean),
-    operator: S.optional(CreateNewsletterRequestBodyCase5RecipientsAttributeOperator),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateNewsletterRequestBodyCase5RecipientsAttribute",
-}) as any as S.Schema<CreateNewsletterRequestBodyCase5RecipientsAttribute>;
+export const CreateNewsletterRequestBodyCase5RecipientsAttribute =
+  CreateNewsletterRequestBodyCase0RecipientsAttribute as any as S.Schema<CreateNewsletterRequestBodyCase5RecipientsAttribute>;
 
 /** An array of conditions where at least one must be true. On this endpoint, `or` arrays can contain only segment conditions. */
 export type CreateNewsletterRequestBodyCase5RecipientsOrList = Array<unknown>;
@@ -6627,9 +6576,8 @@ export const CreateWebhookResponseEventsItem = S.String;
 
 /** Specifies the types of events you want to report to your webhook. See our [reporting webhooks reference](/integrations/api/webhooks/) for more information about event types and the information they return. */
 export type CreateWebhookResponseEventsList = Array<CreateWebhookResponseEventsItem>;
-export const CreateWebhookResponseEventsList = /*@__PURE__*/ S.Array(
-  CreateWebhookResponseEventsItem,
-) as any as S.Schema<CreateWebhookResponseEventsList>;
+export const CreateWebhookResponseEventsList =
+  CreateWebhookRequestEventsList as any as S.Schema<CreateWebhookResponseEventsList>;
 
 /** The type of webhook--`webhook` for a standard reporting webhook or `js` for a JavaScript webhook. */
 export type CreateWebhookResponseType = "webhook" | "js";
@@ -7533,15 +7481,7 @@ export interface ExportPeopleDataRequestFiltersCase0AndItemNotCase1OrItemCase1At
   value?: string;
 }
 export const ExportPeopleDataRequestFiltersCase0AndItemNotCase1OrItemCase1Attribute =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      field: S.String,
-      operator: ExportPeopleDataRequestFiltersCase0AndItemNotCase1OrItemCase1AttributeOperator,
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ExportPeopleDataRequestFiltersCase0AndItemNotCase1OrItemCase1Attribute",
-  }) as any as S.Schema<ExportPeopleDataRequestFiltersCase0AndItemNotCase1OrItemCase1Attribute>;
+  ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase1Attribute as any as S.Schema<ExportPeopleDataRequestFiltersCase0AndItemNotCase1OrItemCase1Attribute>;
 
 /** filter for people who have an attribute or an attribute value. */
 export interface ExportPeopleDataRequestFiltersCase0AndItemNotCase1OrItemCase1 {
@@ -7666,15 +7606,7 @@ export interface ExportPeopleDataRequestFiltersCase0AndItemOrItemCase1Attribute 
   value?: string;
 }
 export const ExportPeopleDataRequestFiltersCase0AndItemOrItemCase1Attribute =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      field: S.String,
-      operator: ExportPeopleDataRequestFiltersCase0AndItemOrItemCase1AttributeOperator,
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ExportPeopleDataRequestFiltersCase0AndItemOrItemCase1Attribute",
-  }) as any as S.Schema<ExportPeopleDataRequestFiltersCase0AndItemOrItemCase1Attribute>;
+  ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase1Attribute as any as S.Schema<ExportPeopleDataRequestFiltersCase0AndItemOrItemCase1Attribute>;
 
 /** filter for people who have an attribute or an attribute value. */
 export interface ExportPeopleDataRequestFiltersCase0AndItemOrItemCase1 {
@@ -7776,28 +7708,15 @@ export interface ExportPeopleDataRequestFiltersCase1OrItemAndItemCase1Attribute 
   value?: string;
 }
 export const ExportPeopleDataRequestFiltersCase1OrItemAndItemCase1Attribute =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      field: S.String,
-      operator: ExportPeopleDataRequestFiltersCase1OrItemAndItemCase1AttributeOperator,
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ExportPeopleDataRequestFiltersCase1OrItemAndItemCase1Attribute",
-  }) as any as S.Schema<ExportPeopleDataRequestFiltersCase1OrItemAndItemCase1Attribute>;
+  ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase1Attribute as any as S.Schema<ExportPeopleDataRequestFiltersCase1OrItemAndItemCase1Attribute>;
 
 /** filter for people who have an attribute or an attribute value. */
 export interface ExportPeopleDataRequestFiltersCase1OrItemAndItemCase1 {
   /** Filter your audience by attribute. */
   attribute?: ExportPeopleDataRequestFiltersCase1OrItemAndItemCase1Attribute;
 }
-export const ExportPeopleDataRequestFiltersCase1OrItemAndItemCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attribute: S.optional(ExportPeopleDataRequestFiltersCase1OrItemAndItemCase1Attribute),
-  }),
-).annotate({
-  identifier: "ExportPeopleDataRequestFiltersCase1OrItemAndItemCase1",
-}) as any as S.Schema<ExportPeopleDataRequestFiltersCase1OrItemAndItemCase1>;
+export const ExportPeopleDataRequestFiltersCase1OrItemAndItemCase1 =
+  ExportPeopleDataRequestFiltersCase0AndItemOrItemCase1 as any as S.Schema<ExportPeopleDataRequestFiltersCase1OrItemAndItemCase1>;
 
 export type ExportPeopleDataRequestFiltersCase1OrItemAndItem =
   | ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0
@@ -7825,15 +7744,8 @@ export interface ExportPeopleDataRequestFiltersCase1OrItemAttribute {
   /** The value you want to match for this attribute. You must include a value if you use the `eq` operator. */
   value?: string;
 }
-export const ExportPeopleDataRequestFiltersCase1OrItemAttribute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    field: S.String,
-    operator: ExportPeopleDataRequestFiltersCase1OrItemAttributeOperator,
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ExportPeopleDataRequestFiltersCase1OrItemAttribute",
-}) as any as S.Schema<ExportPeopleDataRequestFiltersCase1OrItemAttribute>;
+export const ExportPeopleDataRequestFiltersCase1OrItemAttribute =
+  ExportPeopleDataRequestFiltersCase0AndItemAttribute as any as S.Schema<ExportPeopleDataRequestFiltersCase1OrItemAttribute>;
 
 /** Provide the `id` of a segment containing people you want to search for. */
 export type ExportPeopleDataRequestFiltersCase1OrItemNotCase0AndItemCase0Segment =
@@ -7866,15 +7778,7 @@ export interface ExportPeopleDataRequestFiltersCase1OrItemNotCase0AndItemCase1At
   value?: string;
 }
 export const ExportPeopleDataRequestFiltersCase1OrItemNotCase0AndItemCase1Attribute =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      field: S.String,
-      operator: ExportPeopleDataRequestFiltersCase1OrItemNotCase0AndItemCase1AttributeOperator,
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ExportPeopleDataRequestFiltersCase1OrItemNotCase0AndItemCase1Attribute",
-  }) as any as S.Schema<ExportPeopleDataRequestFiltersCase1OrItemNotCase0AndItemCase1Attribute>;
+  ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase1Attribute as any as S.Schema<ExportPeopleDataRequestFiltersCase1OrItemNotCase0AndItemCase1Attribute>;
 
 /** filter for people who have an attribute or an attribute value. */
 export interface ExportPeopleDataRequestFiltersCase1OrItemNotCase0AndItemCase1 {
@@ -7882,13 +7786,7 @@ export interface ExportPeopleDataRequestFiltersCase1OrItemNotCase0AndItemCase1 {
   attribute?: ExportPeopleDataRequestFiltersCase1OrItemNotCase0AndItemCase1Attribute;
 }
 export const ExportPeopleDataRequestFiltersCase1OrItemNotCase0AndItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      attribute: S.optional(ExportPeopleDataRequestFiltersCase1OrItemNotCase0AndItemCase1Attribute),
-    }),
-  ).annotate({
-    identifier: "ExportPeopleDataRequestFiltersCase1OrItemNotCase0AndItemCase1",
-  }) as any as S.Schema<ExportPeopleDataRequestFiltersCase1OrItemNotCase0AndItemCase1>;
+  ExportPeopleDataRequestFiltersCase0AndItemNotCase1OrItemCase1 as any as S.Schema<ExportPeopleDataRequestFiltersCase1OrItemNotCase0AndItemCase1>;
 
 export type ExportPeopleDataRequestFiltersCase1OrItemNotCase0AndItem =
   | ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0
@@ -7946,15 +7844,7 @@ export interface ExportPeopleDataRequestFiltersCase1OrItemNotCase1OrItemCase1Att
   value?: string;
 }
 export const ExportPeopleDataRequestFiltersCase1OrItemNotCase1OrItemCase1Attribute =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      field: S.String,
-      operator: ExportPeopleDataRequestFiltersCase1OrItemNotCase1OrItemCase1AttributeOperator,
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ExportPeopleDataRequestFiltersCase1OrItemNotCase1OrItemCase1Attribute",
-  }) as any as S.Schema<ExportPeopleDataRequestFiltersCase1OrItemNotCase1OrItemCase1Attribute>;
+  ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase1Attribute as any as S.Schema<ExportPeopleDataRequestFiltersCase1OrItemNotCase1OrItemCase1Attribute>;
 
 /** filter for people who have an attribute or an attribute value. */
 export interface ExportPeopleDataRequestFiltersCase1OrItemNotCase1OrItemCase1 {
@@ -8019,28 +7909,15 @@ export interface ExportPeopleDataRequestFiltersCase1OrItemNotCase3Attribute {
   /** The value you want to match for this attribute. You must include a value if you use the `eq` operator. */
   value?: string;
 }
-export const ExportPeopleDataRequestFiltersCase1OrItemNotCase3Attribute = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      field: S.String,
-      operator: ExportPeopleDataRequestFiltersCase1OrItemNotCase3AttributeOperator,
-      value: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "ExportPeopleDataRequestFiltersCase1OrItemNotCase3Attribute",
-}) as any as S.Schema<ExportPeopleDataRequestFiltersCase1OrItemNotCase3Attribute>;
+export const ExportPeopleDataRequestFiltersCase1OrItemNotCase3Attribute =
+  ExportPeopleDataRequestFiltersCase0AndItemNotCase3Attribute as any as S.Schema<ExportPeopleDataRequestFiltersCase1OrItemNotCase3Attribute>;
 
 export interface ExportPeopleDataRequestFiltersCase1OrItemNotCase3 {
   /** Filter your audience by attribute. */
   attribute?: ExportPeopleDataRequestFiltersCase1OrItemNotCase3Attribute;
 }
-export const ExportPeopleDataRequestFiltersCase1OrItemNotCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attribute: S.optional(ExportPeopleDataRequestFiltersCase1OrItemNotCase3Attribute),
-  }),
-).annotate({
-  identifier: "ExportPeopleDataRequestFiltersCase1OrItemNotCase3",
-}) as any as S.Schema<ExportPeopleDataRequestFiltersCase1OrItemNotCase3>;
+export const ExportPeopleDataRequestFiltersCase1OrItemNotCase3 =
+  ExportPeopleDataRequestFiltersCase0AndItemNotCase3 as any as S.Schema<ExportPeopleDataRequestFiltersCase1OrItemNotCase3>;
 
 /** Returns results if a condition is false. While and/or support an array of items, `not` supports a single filter object. */
 export type ExportPeopleDataRequestFiltersCase1OrItemNot =
@@ -8128,29 +8005,15 @@ export interface ExportPeopleDataRequestFiltersCase2Case0AndItemAndItemCase1Attr
   value?: string;
 }
 export const ExportPeopleDataRequestFiltersCase2Case0AndItemAndItemCase1Attribute =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      field: S.String,
-      operator: ExportPeopleDataRequestFiltersCase2Case0AndItemAndItemCase1AttributeOperator,
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ExportPeopleDataRequestFiltersCase2Case0AndItemAndItemCase1Attribute",
-  }) as any as S.Schema<ExportPeopleDataRequestFiltersCase2Case0AndItemAndItemCase1Attribute>;
+  ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase1Attribute as any as S.Schema<ExportPeopleDataRequestFiltersCase2Case0AndItemAndItemCase1Attribute>;
 
 /** filter for people who have an attribute or an attribute value. */
 export interface ExportPeopleDataRequestFiltersCase2Case0AndItemAndItemCase1 {
   /** Filter your audience by attribute. */
   attribute?: ExportPeopleDataRequestFiltersCase2Case0AndItemAndItemCase1Attribute;
 }
-export const ExportPeopleDataRequestFiltersCase2Case0AndItemAndItemCase1 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      attribute: S.optional(ExportPeopleDataRequestFiltersCase2Case0AndItemAndItemCase1Attribute),
-    }),
-).annotate({
-  identifier: "ExportPeopleDataRequestFiltersCase2Case0AndItemAndItemCase1",
-}) as any as S.Schema<ExportPeopleDataRequestFiltersCase2Case0AndItemAndItemCase1>;
+export const ExportPeopleDataRequestFiltersCase2Case0AndItemAndItemCase1 =
+  ExportPeopleDataRequestFiltersCase1OrItemNotCase1OrItemCase1 as any as S.Schema<ExportPeopleDataRequestFiltersCase2Case0AndItemAndItemCase1>;
 
 export type ExportPeopleDataRequestFiltersCase2Case0AndItemAndItem =
   | ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0
@@ -8178,16 +8041,8 @@ export interface ExportPeopleDataRequestFiltersCase2Case0AndItemAttribute {
   /** The value you want to match for this attribute. You must include a value if you use the `eq` operator. */
   value?: string;
 }
-export const ExportPeopleDataRequestFiltersCase2Case0AndItemAttribute = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      field: S.String,
-      operator: ExportPeopleDataRequestFiltersCase2Case0AndItemAttributeOperator,
-      value: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "ExportPeopleDataRequestFiltersCase2Case0AndItemAttribute",
-}) as any as S.Schema<ExportPeopleDataRequestFiltersCase2Case0AndItemAttribute>;
+export const ExportPeopleDataRequestFiltersCase2Case0AndItemAttribute =
+  ExportPeopleDataRequestFiltersCase0AndItemNotCase3Attribute as any as S.Schema<ExportPeopleDataRequestFiltersCase2Case0AndItemAttribute>;
 
 /** Provide the `id` of a segment containing people you want to search for. */
 export type ExportPeopleDataRequestFiltersCase2Case0AndItemNotCase0AndItemCase0Segment =
@@ -8303,15 +8158,7 @@ export interface ExportPeopleDataRequestFiltersCase2Case0AndItemNotCase1OrItemCa
   value?: string;
 }
 export const ExportPeopleDataRequestFiltersCase2Case0AndItemNotCase1OrItemCase1Attribute =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      field: S.String,
-      operator: ExportPeopleDataRequestFiltersCase2Case0AndItemNotCase1OrItemCase1AttributeOperator,
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ExportPeopleDataRequestFiltersCase2Case0AndItemNotCase1OrItemCase1Attribute",
-  }) as any as S.Schema<ExportPeopleDataRequestFiltersCase2Case0AndItemNotCase1OrItemCase1Attribute>;
+  ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase1Attribute as any as S.Schema<ExportPeopleDataRequestFiltersCase2Case0AndItemNotCase1OrItemCase1Attribute>;
 
 /** filter for people who have an attribute or an attribute value. */
 export interface ExportPeopleDataRequestFiltersCase2Case0AndItemNotCase1OrItemCase1 {
@@ -8319,15 +8166,7 @@ export interface ExportPeopleDataRequestFiltersCase2Case0AndItemNotCase1OrItemCa
   attribute?: ExportPeopleDataRequestFiltersCase2Case0AndItemNotCase1OrItemCase1Attribute;
 }
 export const ExportPeopleDataRequestFiltersCase2Case0AndItemNotCase1OrItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      attribute: S.optional(
-        ExportPeopleDataRequestFiltersCase2Case0AndItemNotCase1OrItemCase1Attribute,
-      ),
-    }),
-  ).annotate({
-    identifier: "ExportPeopleDataRequestFiltersCase2Case0AndItemNotCase1OrItemCase1",
-  }) as any as S.Schema<ExportPeopleDataRequestFiltersCase2Case0AndItemNotCase1OrItemCase1>;
+  ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase1 as any as S.Schema<ExportPeopleDataRequestFiltersCase2Case0AndItemNotCase1OrItemCase1>;
 
 export type ExportPeopleDataRequestFiltersCase2Case0AndItemNotCase1OrItem =
   | ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0
@@ -8383,27 +8222,14 @@ export interface ExportPeopleDataRequestFiltersCase2Case0AndItemNotCase3Attribut
   value?: string;
 }
 export const ExportPeopleDataRequestFiltersCase2Case0AndItemNotCase3Attribute =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      field: S.String,
-      operator: ExportPeopleDataRequestFiltersCase2Case0AndItemNotCase3AttributeOperator,
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ExportPeopleDataRequestFiltersCase2Case0AndItemNotCase3Attribute",
-  }) as any as S.Schema<ExportPeopleDataRequestFiltersCase2Case0AndItemNotCase3Attribute>;
+  ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase1Attribute as any as S.Schema<ExportPeopleDataRequestFiltersCase2Case0AndItemNotCase3Attribute>;
 
 export interface ExportPeopleDataRequestFiltersCase2Case0AndItemNotCase3 {
   /** Filter your audience by attribute. */
   attribute?: ExportPeopleDataRequestFiltersCase2Case0AndItemNotCase3Attribute;
 }
-export const ExportPeopleDataRequestFiltersCase2Case0AndItemNotCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attribute: S.optional(ExportPeopleDataRequestFiltersCase2Case0AndItemNotCase3Attribute),
-  }),
-).annotate({
-  identifier: "ExportPeopleDataRequestFiltersCase2Case0AndItemNotCase3",
-}) as any as S.Schema<ExportPeopleDataRequestFiltersCase2Case0AndItemNotCase3>;
+export const ExportPeopleDataRequestFiltersCase2Case0AndItemNotCase3 =
+  ExportPeopleDataRequestFiltersCase0AndItemOrItemCase1 as any as S.Schema<ExportPeopleDataRequestFiltersCase2Case0AndItemNotCase3>;
 
 /** Returns results if a condition is false. While and/or support an array of items, `not` supports a single filter object. */
 export type ExportPeopleDataRequestFiltersCase2Case0AndItemNot =
@@ -8444,29 +8270,15 @@ export interface ExportPeopleDataRequestFiltersCase2Case0AndItemOrItemCase1Attri
   value?: string;
 }
 export const ExportPeopleDataRequestFiltersCase2Case0AndItemOrItemCase1Attribute =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      field: S.String,
-      operator: ExportPeopleDataRequestFiltersCase2Case0AndItemOrItemCase1AttributeOperator,
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ExportPeopleDataRequestFiltersCase2Case0AndItemOrItemCase1Attribute",
-  }) as any as S.Schema<ExportPeopleDataRequestFiltersCase2Case0AndItemOrItemCase1Attribute>;
+  ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase1Attribute as any as S.Schema<ExportPeopleDataRequestFiltersCase2Case0AndItemOrItemCase1Attribute>;
 
 /** filter for people who have an attribute or an attribute value. */
 export interface ExportPeopleDataRequestFiltersCase2Case0AndItemOrItemCase1 {
   /** Filter your audience by attribute. */
   attribute?: ExportPeopleDataRequestFiltersCase2Case0AndItemOrItemCase1Attribute;
 }
-export const ExportPeopleDataRequestFiltersCase2Case0AndItemOrItemCase1 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      attribute: S.optional(ExportPeopleDataRequestFiltersCase2Case0AndItemOrItemCase1Attribute),
-    }),
-).annotate({
-  identifier: "ExportPeopleDataRequestFiltersCase2Case0AndItemOrItemCase1",
-}) as any as S.Schema<ExportPeopleDataRequestFiltersCase2Case0AndItemOrItemCase1>;
+export const ExportPeopleDataRequestFiltersCase2Case0AndItemOrItemCase1 =
+  ExportPeopleDataRequestFiltersCase1OrItemNotCase1OrItemCase1 as any as S.Schema<ExportPeopleDataRequestFiltersCase2Case0AndItemOrItemCase1>;
 
 export type ExportPeopleDataRequestFiltersCase2Case0AndItemOrItem =
   | ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0
@@ -8561,29 +8373,15 @@ export interface ExportPeopleDataRequestFiltersCase2Case1OrItemAndItemCase1Attri
   value?: string;
 }
 export const ExportPeopleDataRequestFiltersCase2Case1OrItemAndItemCase1Attribute =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      field: S.String,
-      operator: ExportPeopleDataRequestFiltersCase2Case1OrItemAndItemCase1AttributeOperator,
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ExportPeopleDataRequestFiltersCase2Case1OrItemAndItemCase1Attribute",
-  }) as any as S.Schema<ExportPeopleDataRequestFiltersCase2Case1OrItemAndItemCase1Attribute>;
+  ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase1Attribute as any as S.Schema<ExportPeopleDataRequestFiltersCase2Case1OrItemAndItemCase1Attribute>;
 
 /** filter for people who have an attribute or an attribute value. */
 export interface ExportPeopleDataRequestFiltersCase2Case1OrItemAndItemCase1 {
   /** Filter your audience by attribute. */
   attribute?: ExportPeopleDataRequestFiltersCase2Case1OrItemAndItemCase1Attribute;
 }
-export const ExportPeopleDataRequestFiltersCase2Case1OrItemAndItemCase1 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      attribute: S.optional(ExportPeopleDataRequestFiltersCase2Case1OrItemAndItemCase1Attribute),
-    }),
-).annotate({
-  identifier: "ExportPeopleDataRequestFiltersCase2Case1OrItemAndItemCase1",
-}) as any as S.Schema<ExportPeopleDataRequestFiltersCase2Case1OrItemAndItemCase1>;
+export const ExportPeopleDataRequestFiltersCase2Case1OrItemAndItemCase1 =
+  ExportPeopleDataRequestFiltersCase1OrItemNotCase1OrItemCase1 as any as S.Schema<ExportPeopleDataRequestFiltersCase2Case1OrItemAndItemCase1>;
 
 export type ExportPeopleDataRequestFiltersCase2Case1OrItemAndItem =
   | ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0
@@ -8611,15 +8409,8 @@ export interface ExportPeopleDataRequestFiltersCase2Case1OrItemAttribute {
   /** The value you want to match for this attribute. You must include a value if you use the `eq` operator. */
   value?: string;
 }
-export const ExportPeopleDataRequestFiltersCase2Case1OrItemAttribute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    field: S.String,
-    operator: ExportPeopleDataRequestFiltersCase2Case1OrItemAttributeOperator,
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ExportPeopleDataRequestFiltersCase2Case1OrItemAttribute",
-}) as any as S.Schema<ExportPeopleDataRequestFiltersCase2Case1OrItemAttribute>;
+export const ExportPeopleDataRequestFiltersCase2Case1OrItemAttribute =
+  ExportPeopleDataRequestFiltersCase0AndItemAttribute as any as S.Schema<ExportPeopleDataRequestFiltersCase2Case1OrItemAttribute>;
 
 /** Provide the `id` of a segment containing people you want to search for. */
 export type ExportPeopleDataRequestFiltersCase2Case1OrItemNotCase0AndItemCase0Segment =
@@ -8652,15 +8443,7 @@ export interface ExportPeopleDataRequestFiltersCase2Case1OrItemNotCase0AndItemCa
   value?: string;
 }
 export const ExportPeopleDataRequestFiltersCase2Case1OrItemNotCase0AndItemCase1Attribute =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      field: S.String,
-      operator: ExportPeopleDataRequestFiltersCase2Case1OrItemNotCase0AndItemCase1AttributeOperator,
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ExportPeopleDataRequestFiltersCase2Case1OrItemNotCase0AndItemCase1Attribute",
-  }) as any as S.Schema<ExportPeopleDataRequestFiltersCase2Case1OrItemNotCase0AndItemCase1Attribute>;
+  ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase1Attribute as any as S.Schema<ExportPeopleDataRequestFiltersCase2Case1OrItemNotCase0AndItemCase1Attribute>;
 
 /** filter for people who have an attribute or an attribute value. */
 export interface ExportPeopleDataRequestFiltersCase2Case1OrItemNotCase0AndItemCase1 {
@@ -8668,15 +8451,7 @@ export interface ExportPeopleDataRequestFiltersCase2Case1OrItemNotCase0AndItemCa
   attribute?: ExportPeopleDataRequestFiltersCase2Case1OrItemNotCase0AndItemCase1Attribute;
 }
 export const ExportPeopleDataRequestFiltersCase2Case1OrItemNotCase0AndItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      attribute: S.optional(
-        ExportPeopleDataRequestFiltersCase2Case1OrItemNotCase0AndItemCase1Attribute,
-      ),
-    }),
-  ).annotate({
-    identifier: "ExportPeopleDataRequestFiltersCase2Case1OrItemNotCase0AndItemCase1",
-  }) as any as S.Schema<ExportPeopleDataRequestFiltersCase2Case1OrItemNotCase0AndItemCase1>;
+  ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase1 as any as S.Schema<ExportPeopleDataRequestFiltersCase2Case1OrItemNotCase0AndItemCase1>;
 
 export type ExportPeopleDataRequestFiltersCase2Case1OrItemNotCase0AndItem =
   | ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0
@@ -8734,15 +8509,7 @@ export interface ExportPeopleDataRequestFiltersCase2Case1OrItemNotCase1OrItemCas
   value?: string;
 }
 export const ExportPeopleDataRequestFiltersCase2Case1OrItemNotCase1OrItemCase1Attribute =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      field: S.String,
-      operator: ExportPeopleDataRequestFiltersCase2Case1OrItemNotCase1OrItemCase1AttributeOperator,
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ExportPeopleDataRequestFiltersCase2Case1OrItemNotCase1OrItemCase1Attribute",
-  }) as any as S.Schema<ExportPeopleDataRequestFiltersCase2Case1OrItemNotCase1OrItemCase1Attribute>;
+  ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase1Attribute as any as S.Schema<ExportPeopleDataRequestFiltersCase2Case1OrItemNotCase1OrItemCase1Attribute>;
 
 /** filter for people who have an attribute or an attribute value. */
 export interface ExportPeopleDataRequestFiltersCase2Case1OrItemNotCase1OrItemCase1 {
@@ -8750,15 +8517,7 @@ export interface ExportPeopleDataRequestFiltersCase2Case1OrItemNotCase1OrItemCas
   attribute?: ExportPeopleDataRequestFiltersCase2Case1OrItemNotCase1OrItemCase1Attribute;
 }
 export const ExportPeopleDataRequestFiltersCase2Case1OrItemNotCase1OrItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      attribute: S.optional(
-        ExportPeopleDataRequestFiltersCase2Case1OrItemNotCase1OrItemCase1Attribute,
-      ),
-    }),
-  ).annotate({
-    identifier: "ExportPeopleDataRequestFiltersCase2Case1OrItemNotCase1OrItemCase1",
-  }) as any as S.Schema<ExportPeopleDataRequestFiltersCase2Case1OrItemNotCase1OrItemCase1>;
+  ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase1 as any as S.Schema<ExportPeopleDataRequestFiltersCase2Case1OrItemNotCase1OrItemCase1>;
 
 export type ExportPeopleDataRequestFiltersCase2Case1OrItemNotCase1OrItem =
   | ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0
@@ -8812,27 +8571,14 @@ export interface ExportPeopleDataRequestFiltersCase2Case1OrItemNotCase3Attribute
   value?: string;
 }
 export const ExportPeopleDataRequestFiltersCase2Case1OrItemNotCase3Attribute =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      field: S.String,
-      operator: ExportPeopleDataRequestFiltersCase2Case1OrItemNotCase3AttributeOperator,
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ExportPeopleDataRequestFiltersCase2Case1OrItemNotCase3Attribute",
-  }) as any as S.Schema<ExportPeopleDataRequestFiltersCase2Case1OrItemNotCase3Attribute>;
+  ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase1Attribute as any as S.Schema<ExportPeopleDataRequestFiltersCase2Case1OrItemNotCase3Attribute>;
 
 export interface ExportPeopleDataRequestFiltersCase2Case1OrItemNotCase3 {
   /** Filter your audience by attribute. */
   attribute?: ExportPeopleDataRequestFiltersCase2Case1OrItemNotCase3Attribute;
 }
-export const ExportPeopleDataRequestFiltersCase2Case1OrItemNotCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attribute: S.optional(ExportPeopleDataRequestFiltersCase2Case1OrItemNotCase3Attribute),
-  }),
-).annotate({
-  identifier: "ExportPeopleDataRequestFiltersCase2Case1OrItemNotCase3",
-}) as any as S.Schema<ExportPeopleDataRequestFiltersCase2Case1OrItemNotCase3>;
+export const ExportPeopleDataRequestFiltersCase2Case1OrItemNotCase3 =
+  ExportPeopleDataRequestFiltersCase0AndItemOrItemCase1 as any as S.Schema<ExportPeopleDataRequestFiltersCase2Case1OrItemNotCase3>;
 
 /** Returns results if a condition is false. While and/or support an array of items, `not` supports a single filter object. */
 export type ExportPeopleDataRequestFiltersCase2Case1OrItemNot =
@@ -8873,29 +8619,15 @@ export interface ExportPeopleDataRequestFiltersCase2Case1OrItemOrItemCase1Attrib
   value?: string;
 }
 export const ExportPeopleDataRequestFiltersCase2Case1OrItemOrItemCase1Attribute =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      field: S.String,
-      operator: ExportPeopleDataRequestFiltersCase2Case1OrItemOrItemCase1AttributeOperator,
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ExportPeopleDataRequestFiltersCase2Case1OrItemOrItemCase1Attribute",
-  }) as any as S.Schema<ExportPeopleDataRequestFiltersCase2Case1OrItemOrItemCase1Attribute>;
+  ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase1Attribute as any as S.Schema<ExportPeopleDataRequestFiltersCase2Case1OrItemOrItemCase1Attribute>;
 
 /** filter for people who have an attribute or an attribute value. */
 export interface ExportPeopleDataRequestFiltersCase2Case1OrItemOrItemCase1 {
   /** Filter your audience by attribute. */
   attribute?: ExportPeopleDataRequestFiltersCase2Case1OrItemOrItemCase1Attribute;
 }
-export const ExportPeopleDataRequestFiltersCase2Case1OrItemOrItemCase1 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      attribute: S.optional(ExportPeopleDataRequestFiltersCase2Case1OrItemOrItemCase1Attribute),
-    }),
-).annotate({
-  identifier: "ExportPeopleDataRequestFiltersCase2Case1OrItemOrItemCase1",
-}) as any as S.Schema<ExportPeopleDataRequestFiltersCase2Case1OrItemOrItemCase1>;
+export const ExportPeopleDataRequestFiltersCase2Case1OrItemOrItemCase1 =
+  ExportPeopleDataRequestFiltersCase1OrItemNotCase1OrItemCase1 as any as S.Schema<ExportPeopleDataRequestFiltersCase2Case1OrItemOrItemCase1>;
 
 export type ExportPeopleDataRequestFiltersCase2Case1OrItemOrItem =
   | ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0
@@ -8984,15 +8716,8 @@ export interface ExportPeopleDataRequestFiltersCase2Case3Attribute {
   /** The value you want to match for this attribute. You must include a value if you use the `eq` operator. */
   value?: string;
 }
-export const ExportPeopleDataRequestFiltersCase2Case3Attribute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    field: S.String,
-    operator: ExportPeopleDataRequestFiltersCase2Case3AttributeOperator,
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ExportPeopleDataRequestFiltersCase2Case3Attribute",
-}) as any as S.Schema<ExportPeopleDataRequestFiltersCase2Case3Attribute>;
+export const ExportPeopleDataRequestFiltersCase2Case3Attribute =
+  ExportPeopleDataRequestFiltersCase0AndItemAttribute as any as S.Schema<ExportPeopleDataRequestFiltersCase2Case3Attribute>;
 
 export interface ExportPeopleDataRequestFiltersCase2Case3 {
   /** Filter your audience by attribute. */
@@ -9040,28 +8765,16 @@ export interface ExportPeopleDataRequestFiltersCase4Attribute {
   /** The value you want to match for this attribute. You must include a value if you use the `eq` operator. */
   value?: string;
 }
-export const ExportPeopleDataRequestFiltersCase4Attribute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    field: S.String,
-    operator: ExportPeopleDataRequestFiltersCase4AttributeOperator,
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ExportPeopleDataRequestFiltersCase4Attribute",
-}) as any as S.Schema<ExportPeopleDataRequestFiltersCase4Attribute>;
+export const ExportPeopleDataRequestFiltersCase4Attribute =
+  ExportPeopleDataRequestFiltersCase0AndItemAttribute as any as S.Schema<ExportPeopleDataRequestFiltersCase4Attribute>;
 
 /** filter for people who have an attribute or an attribute value. */
 export interface ExportPeopleDataRequestFiltersCase4 {
   /** Filter your audience by attribute. */
   attribute?: ExportPeopleDataRequestFiltersCase4Attribute;
 }
-export const ExportPeopleDataRequestFiltersCase4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attribute: S.optional(ExportPeopleDataRequestFiltersCase4Attribute),
-  }),
-).annotate({
-  identifier: "ExportPeopleDataRequestFiltersCase4",
-}) as any as S.Schema<ExportPeopleDataRequestFiltersCase4>;
+export const ExportPeopleDataRequestFiltersCase4 =
+  ExportPeopleDataRequestFiltersCase2Case3 as any as S.Schema<ExportPeopleDataRequestFiltersCase4>;
 
 /** Use `and`, `or`, and `not` to combine segment and attribute conditions. The top-level object accepts one property; nest groups for complex filters. */
 export type ExportPeopleDataRequestFilters =
@@ -9126,24 +8839,8 @@ export interface ExportPeopleDataResponseExport {
   /** The user who created the export. */
   user_id?: number;
 }
-export const ExportPeopleDataResponseExport = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    created_at: S.optional(S.Number),
-    deduplicate_id: S.optional(S.String),
-    description: S.optional(S.String),
-    downloads: S.optional(S.Number),
-    failed: S.optional(S.Boolean),
-    id: S.optional(S.Number),
-    status: S.optional(ExportPeopleDataResponseExportStatus),
-    total: S.optional(S.Number),
-    type: S.optional(ExportPeopleDataResponseExportType),
-    updated_at: S.optional(S.Number),
-    user_email: S.optional(S.String),
-    user_id: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ExportPeopleDataResponseExport",
-}) as any as S.Schema<ExportPeopleDataResponseExport>;
+export const ExportPeopleDataResponseExport =
+  ExportDeliveriesDataResponseExport as any as S.Schema<ExportPeopleDataResponseExport>;
 
 export interface ExportPeopleDataResponse {
   /** Metadata about an export. */
@@ -9336,21 +9033,14 @@ export interface GetBroadcastResponseBroadcastMsgTemplateIdsItem {
   /** The type of template. */
   type?: GetBroadcastResponseBroadcastMsgTemplateIdsItemType;
 }
-export const GetBroadcastResponseBroadcastMsgTemplateIdsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.Number),
-    type: S.optional(GetBroadcastResponseBroadcastMsgTemplateIdsItemType),
-  }),
-).annotate({
-  identifier: "GetBroadcastResponseBroadcastMsgTemplateIdsItem",
-}) as any as S.Schema<GetBroadcastResponseBroadcastMsgTemplateIdsItem>;
+export const GetBroadcastResponseBroadcastMsgTemplateIdsItem =
+  GetBroadcastResponseBroadcastActionsItem as any as S.Schema<GetBroadcastResponseBroadcastMsgTemplateIdsItem>;
 
 /** Indicates the message template(s) used in this broadcast. */
 export type GetBroadcastResponseBroadcastMsgTemplateIdsList =
   Array<GetBroadcastResponseBroadcastMsgTemplateIdsItem>;
-export const GetBroadcastResponseBroadcastMsgTemplateIdsList = /*@__PURE__*/ S.Array(
-  GetBroadcastResponseBroadcastMsgTemplateIdsItem,
-) as any as S.Schema<GetBroadcastResponseBroadcastMsgTemplateIdsList>;
+export const GetBroadcastResponseBroadcastMsgTemplateIdsList =
+  GetBroadcastResponseBroadcastActionsList as any as S.Schema<GetBroadcastResponseBroadcastMsgTemplateIdsList>;
 
 /** The state of the broadcast. */
 export type GetBroadcastResponseBroadcastState = "running" | "draft";
@@ -9506,37 +9196,8 @@ export interface GetBroadcastActionResponseActionCase0 {
   /** The date time when the referenced ID was last updated. */
   updated?: number;
 }
-export const GetBroadcastActionResponseActionCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bcc: S.optional(S.String),
-    body: S.optional(S.String),
-    body_amp: S.optional(S.String),
-    broadcast_id: S.optional(S.Number),
-    cc: S.optional(S.String),
-    created: S.optional(S.Number),
-    deduplicate_id: S.optional(S.String),
-    fake_bcc: S.optional(S.Boolean),
-    from: S.optional(S.String),
-    from_id: S.optional(S.Number),
-    headers: S.optional(S.String),
-    id: S.optional(S.Number),
-    language: S.optional(S.String),
-    layout: S.optional(S.String),
-    multi_language_branch_action_id: S.optional(S.Number),
-    name: S.optional(S.String),
-    preheader_text: S.optional(S.String),
-    preprocessor: S.optional(GetBroadcastActionResponseActionCase0Preprocessor),
-    recipient: S.optional(S.String),
-    reply_to: S.optional(S.String),
-    reply_to_id: S.optional(S.NullOr(S.Number)),
-    sending_state: S.optional(GetBroadcastActionResponseActionCase0SendingState),
-    subject: S.optional(S.String),
-    type: S.optional(GetBroadcastActionResponseActionCase0Type),
-    updated: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GetBroadcastActionResponseActionCase0",
-}) as any as S.Schema<GetBroadcastActionResponseActionCase0>;
+export const GetBroadcastActionResponseActionCase0 =
+  BroadcastActionsResponseActionsItemCase0 as any as S.Schema<GetBroadcastActionResponseActionCase0>;
 
 /** Determines the sending behavior for the action. `automatic` sends the action automatically when triggered; `draft` queues drafts when the action is triggered; or `off` to disable the action. */
 export type GetBroadcastActionResponseActionCase1SendingState = "automatic" | "draft" | "off";
@@ -9576,26 +9237,8 @@ export interface GetBroadcastActionResponseActionCase1 {
   /** The date time when the referenced ID was last updated. */
   updated?: number;
 }
-export const GetBroadcastActionResponseActionCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(S.String),
-    broadcast_id: S.optional(S.Number),
-    created: S.optional(S.Number),
-    deduplicate_id: S.optional(S.String),
-    id: S.optional(S.Number),
-    image_url: S.optional(S.String),
-    language: S.optional(S.String),
-    layout: S.optional(S.String),
-    multi_language_branch_action_id: S.optional(S.Number),
-    name: S.optional(S.String),
-    recipient: S.optional(S.String),
-    sending_state: S.optional(GetBroadcastActionResponseActionCase1SendingState),
-    type: S.optional(GetBroadcastActionResponseActionCase1Type),
-    updated: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GetBroadcastActionResponseActionCase1",
-}) as any as S.Schema<GetBroadcastActionResponseActionCase1>;
+export const GetBroadcastActionResponseActionCase1 =
+  BroadcastActionsResponseActionsItemCase1 as any as S.Schema<GetBroadcastActionResponseActionCase1>;
 
 /** Determines the sending behavior for the action. `automatic` sends the action automatically when triggered; `draft` queues drafts when the action is triggered; or `off` to disable the action. */
 export type GetBroadcastActionResponseActionCase2SendingState = "automatic" | "draft" | "off";
@@ -9640,28 +9283,8 @@ export interface GetBroadcastActionResponseActionCase2 {
   /** The date time when the referenced ID was last updated. */
   updated?: number;
 }
-export const GetBroadcastActionResponseActionCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(S.String),
-    body_json: S.optional(S.String),
-    broadcast_id: S.optional(S.Number),
-    created: S.optional(S.Number),
-    deduplicate_id: S.optional(S.String),
-    id: S.optional(S.Number),
-    language: S.optional(S.String),
-    multi_language_branch_action_id: S.optional(S.Number),
-    name: S.optional(S.String),
-    recipient: S.optional(S.String),
-    send_to_unsubscribed: S.optional(S.Boolean),
-    sender_identity_id: S.optional(S.Number),
-    sending_state: S.optional(GetBroadcastActionResponseActionCase2SendingState),
-    tracked: S.optional(S.Boolean),
-    type: S.optional(GetBroadcastActionResponseActionCase2Type),
-    updated: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GetBroadcastActionResponseActionCase2",
-}) as any as S.Schema<GetBroadcastActionResponseActionCase2>;
+export const GetBroadcastActionResponseActionCase2 =
+  BroadcastActionsResponseActionsItemCase2 as any as S.Schema<GetBroadcastActionResponseActionCase2>;
 
 /** The HTTP method for your webhook. */
 export type GetBroadcastActionResponseActionCase3Method =
@@ -9710,26 +9333,8 @@ export interface GetBroadcastActionResponseActionCase3 {
   /** The URL to send a webhook to, applies to `webhook` type actions. */
   url?: string;
 }
-export const GetBroadcastActionResponseActionCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(S.String),
-    broadcast_id: S.optional(S.Number),
-    created: S.optional(S.Number),
-    deduplicate_id: S.optional(S.String),
-    headers: S.optional(S.String),
-    id: S.optional(S.Number),
-    layout: S.optional(S.String),
-    method: S.optional(GetBroadcastActionResponseActionCase3Method),
-    multi_language_branch_action_id: S.optional(S.Number),
-    name: S.optional(S.String),
-    sending_state: S.optional(GetBroadcastActionResponseActionCase3SendingState),
-    type: S.optional(GetBroadcastActionResponseActionCase3Type),
-    updated: S.optional(S.Number),
-    url: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetBroadcastActionResponseActionCase3",
-}) as any as S.Schema<GetBroadcastActionResponseActionCase3>;
+export const GetBroadcastActionResponseActionCase3 =
+  BroadcastActionsResponseActionsItemCase3 as any as S.Schema<GetBroadcastActionResponseActionCase3>;
 
 export type GetBroadcastActionResponseAction =
   | GetBroadcastActionResponseActionCase0
@@ -9847,37 +9452,8 @@ export interface GetBroadcastActionLanguageResponseActionCase0 {
   /** The date time when the referenced ID was last updated. */
   updated?: number;
 }
-export const GetBroadcastActionLanguageResponseActionCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bcc: S.optional(S.String),
-    body: S.optional(S.String),
-    body_amp: S.optional(S.String),
-    broadcast_id: S.optional(S.Number),
-    cc: S.optional(S.String),
-    created: S.optional(S.Number),
-    deduplicate_id: S.optional(S.String),
-    fake_bcc: S.optional(S.Boolean),
-    from: S.optional(S.String),
-    from_id: S.optional(S.Number),
-    headers: S.optional(S.String),
-    id: S.optional(S.Number),
-    language: S.optional(S.String),
-    layout: S.optional(S.String),
-    multi_language_branch_action_id: S.optional(S.Number),
-    name: S.optional(S.String),
-    preheader_text: S.optional(S.String),
-    preprocessor: S.optional(GetBroadcastActionLanguageResponseActionCase0Preprocessor),
-    recipient: S.optional(S.String),
-    reply_to: S.optional(S.String),
-    reply_to_id: S.optional(S.NullOr(S.Number)),
-    sending_state: S.optional(GetBroadcastActionLanguageResponseActionCase0SendingState),
-    subject: S.optional(S.String),
-    type: S.optional(GetBroadcastActionLanguageResponseActionCase0Type),
-    updated: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GetBroadcastActionLanguageResponseActionCase0",
-}) as any as S.Schema<GetBroadcastActionLanguageResponseActionCase0>;
+export const GetBroadcastActionLanguageResponseActionCase0 =
+  BroadcastActionsResponseActionsItemCase0 as any as S.Schema<GetBroadcastActionLanguageResponseActionCase0>;
 
 /** Determines the sending behavior for the action. `automatic` sends the action automatically when triggered; `draft` queues drafts when the action is triggered; or `off` to disable the action. */
 export type GetBroadcastActionLanguageResponseActionCase1SendingState =
@@ -9920,26 +9496,8 @@ export interface GetBroadcastActionLanguageResponseActionCase1 {
   /** The date time when the referenced ID was last updated. */
   updated?: number;
 }
-export const GetBroadcastActionLanguageResponseActionCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(S.String),
-    broadcast_id: S.optional(S.Number),
-    created: S.optional(S.Number),
-    deduplicate_id: S.optional(S.String),
-    id: S.optional(S.Number),
-    image_url: S.optional(S.String),
-    language: S.optional(S.String),
-    layout: S.optional(S.String),
-    multi_language_branch_action_id: S.optional(S.Number),
-    name: S.optional(S.String),
-    recipient: S.optional(S.String),
-    sending_state: S.optional(GetBroadcastActionLanguageResponseActionCase1SendingState),
-    type: S.optional(GetBroadcastActionLanguageResponseActionCase1Type),
-    updated: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GetBroadcastActionLanguageResponseActionCase1",
-}) as any as S.Schema<GetBroadcastActionLanguageResponseActionCase1>;
+export const GetBroadcastActionLanguageResponseActionCase1 =
+  BroadcastActionsResponseActionsItemCase1 as any as S.Schema<GetBroadcastActionLanguageResponseActionCase1>;
 
 /** Determines the sending behavior for the action. `automatic` sends the action automatically when triggered; `draft` queues drafts when the action is triggered; or `off` to disable the action. */
 export type GetBroadcastActionLanguageResponseActionCase2SendingState =
@@ -9987,28 +9545,8 @@ export interface GetBroadcastActionLanguageResponseActionCase2 {
   /** The date time when the referenced ID was last updated. */
   updated?: number;
 }
-export const GetBroadcastActionLanguageResponseActionCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(S.String),
-    body_json: S.optional(S.String),
-    broadcast_id: S.optional(S.Number),
-    created: S.optional(S.Number),
-    deduplicate_id: S.optional(S.String),
-    id: S.optional(S.Number),
-    language: S.optional(S.String),
-    multi_language_branch_action_id: S.optional(S.Number),
-    name: S.optional(S.String),
-    recipient: S.optional(S.String),
-    send_to_unsubscribed: S.optional(S.Boolean),
-    sender_identity_id: S.optional(S.Number),
-    sending_state: S.optional(GetBroadcastActionLanguageResponseActionCase2SendingState),
-    tracked: S.optional(S.Boolean),
-    type: S.optional(GetBroadcastActionLanguageResponseActionCase2Type),
-    updated: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GetBroadcastActionLanguageResponseActionCase2",
-}) as any as S.Schema<GetBroadcastActionLanguageResponseActionCase2>;
+export const GetBroadcastActionLanguageResponseActionCase2 =
+  BroadcastActionsResponseActionsItemCase2 as any as S.Schema<GetBroadcastActionLanguageResponseActionCase2>;
 
 /** The HTTP method for your webhook. */
 export type GetBroadcastActionLanguageResponseActionCase3Method =
@@ -10060,26 +9598,8 @@ export interface GetBroadcastActionLanguageResponseActionCase3 {
   /** The URL to send a webhook to, applies to `webhook` type actions. */
   url?: string;
 }
-export const GetBroadcastActionLanguageResponseActionCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(S.String),
-    broadcast_id: S.optional(S.Number),
-    created: S.optional(S.Number),
-    deduplicate_id: S.optional(S.String),
-    headers: S.optional(S.String),
-    id: S.optional(S.Number),
-    layout: S.optional(S.String),
-    method: S.optional(GetBroadcastActionLanguageResponseActionCase3Method),
-    multi_language_branch_action_id: S.optional(S.Number),
-    name: S.optional(S.String),
-    sending_state: S.optional(GetBroadcastActionLanguageResponseActionCase3SendingState),
-    type: S.optional(GetBroadcastActionLanguageResponseActionCase3Type),
-    updated: S.optional(S.Number),
-    url: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetBroadcastActionLanguageResponseActionCase3",
-}) as any as S.Schema<GetBroadcastActionLanguageResponseActionCase3>;
+export const GetBroadcastActionLanguageResponseActionCase3 =
+  BroadcastActionsResponseActionsItemCase3 as any as S.Schema<GetBroadcastActionLanguageResponseActionCase3>;
 
 export type GetBroadcastActionLanguageResponseAction =
   | GetBroadcastActionLanguageResponseActionCase0
@@ -10545,39 +10065,8 @@ export interface GetCampaignActionTranslationResponseActionCase0 {
   /** The date time when the referenced ID was last updated. */
   updated?: number;
 }
-export const GetCampaignActionTranslationResponseActionCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bcc: S.optional(S.String),
-    body: S.optional(S.String),
-    body_amp: S.optional(S.String),
-    broadcast_id: S.optional(S.Number),
-    campaign_id: S.optional(S.Number),
-    cc: S.optional(S.String),
-    created: S.optional(S.Number),
-    deduplicate_id: S.optional(S.String),
-    fake_bcc: S.optional(S.Boolean),
-    from: S.optional(S.String),
-    from_id: S.optional(S.Number),
-    headers: S.optional(S.String),
-    id: S.optional(S.Number),
-    language: S.optional(S.String),
-    layout: S.optional(S.String),
-    multi_language_branch_action_id: S.optional(S.Number),
-    name: S.optional(S.String),
-    parent_action_id: S.optional(S.Number),
-    preheader_text: S.optional(S.String),
-    preprocessor: S.optional(GetCampaignActionTranslationResponseActionCase0Preprocessor),
-    recipient: S.optional(S.String),
-    reply_to: S.optional(S.String),
-    reply_to_id: S.optional(S.NullOr(S.Number)),
-    sending_state: S.optional(GetCampaignActionTranslationResponseActionCase0SendingState),
-    subject: S.optional(S.String),
-    type: S.optional(GetCampaignActionTranslationResponseActionCase0Type),
-    updated: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GetCampaignActionTranslationResponseActionCase0",
-}) as any as S.Schema<GetCampaignActionTranslationResponseActionCase0>;
+export const GetCampaignActionTranslationResponseActionCase0 =
+  GetCampaignActionResponseActionCase0 as any as S.Schema<GetCampaignActionTranslationResponseActionCase0>;
 
 /** Determines the sending behavior for the action. `automatic` sends the action automatically when triggered; `draft` queues drafts when the action is triggered; or `off` to disable the action. */
 export type GetCampaignActionTranslationResponseActionCase1SendingState =
@@ -10622,27 +10111,8 @@ export interface GetCampaignActionTranslationResponseActionCase1 {
   /** The date time when the referenced ID was last updated. */
   updated?: number;
 }
-export const GetCampaignActionTranslationResponseActionCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(S.String),
-    campaign_id: S.optional(S.Number),
-    created: S.optional(S.Number),
-    deduplicate_id: S.optional(S.String),
-    id: S.optional(S.Number),
-    image_url: S.optional(S.String),
-    language: S.optional(S.String),
-    layout: S.optional(S.String),
-    multi_language_branch_action_id: S.optional(S.Number),
-    name: S.optional(S.String),
-    parent_action_id: S.optional(S.Number),
-    recipient: S.optional(S.String),
-    sending_state: S.optional(GetCampaignActionTranslationResponseActionCase1SendingState),
-    type: S.optional(GetCampaignActionTranslationResponseActionCase1Type),
-    updated: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GetCampaignActionTranslationResponseActionCase1",
-}) as any as S.Schema<GetCampaignActionTranslationResponseActionCase1>;
+export const GetCampaignActionTranslationResponseActionCase1 =
+  GetCampaignActionResponseActionCase1 as any as S.Schema<GetCampaignActionTranslationResponseActionCase1>;
 
 /** Determines the sending behavior for the action. `automatic` sends the action automatically when triggered; `draft` queues drafts when the action is triggered; or `off` to disable the action. */
 export type GetCampaignActionTranslationResponseActionCase2SendingState =
@@ -10692,29 +10162,8 @@ export interface GetCampaignActionTranslationResponseActionCase2 {
   /** The date time when the referenced ID was last updated. */
   updated?: number;
 }
-export const GetCampaignActionTranslationResponseActionCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(S.String),
-    body_json: S.optional(S.String),
-    campaign_id: S.optional(S.Number),
-    created: S.optional(S.Number),
-    deduplicate_id: S.optional(S.String),
-    id: S.optional(S.Number),
-    language: S.optional(S.String),
-    multi_language_branch_action_id: S.optional(S.Number),
-    name: S.optional(S.String),
-    parent_action_id: S.optional(S.Number),
-    recipient: S.optional(S.String),
-    send_to_unsubscribed: S.optional(S.Boolean),
-    sender_identity_id: S.optional(S.Number),
-    sending_state: S.optional(GetCampaignActionTranslationResponseActionCase2SendingState),
-    tracked: S.optional(S.Boolean),
-    type: S.optional(GetCampaignActionTranslationResponseActionCase2Type),
-    updated: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GetCampaignActionTranslationResponseActionCase2",
-}) as any as S.Schema<GetCampaignActionTranslationResponseActionCase2>;
+export const GetCampaignActionTranslationResponseActionCase2 =
+  GetCampaignActionResponseActionCase2 as any as S.Schema<GetCampaignActionTranslationResponseActionCase2>;
 
 /** The HTTP method for your webhook. */
 export type GetCampaignActionTranslationResponseActionCase3Method =
@@ -10768,27 +10217,8 @@ export interface GetCampaignActionTranslationResponseActionCase3 {
   /** The URL to send a webhook to, applies to `webhook` type actions. */
   url?: string;
 }
-export const GetCampaignActionTranslationResponseActionCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(S.String),
-    campaign_id: S.optional(S.Number),
-    created: S.optional(S.Number),
-    deduplicate_id: S.optional(S.String),
-    headers: S.optional(S.String),
-    id: S.optional(S.Number),
-    layout: S.optional(S.String),
-    method: S.optional(GetCampaignActionTranslationResponseActionCase3Method),
-    multi_language_branch_action_id: S.optional(S.Number),
-    name: S.optional(S.String),
-    parent_action_id: S.optional(S.Number),
-    sending_state: S.optional(GetCampaignActionTranslationResponseActionCase3SendingState),
-    type: S.optional(GetCampaignActionTranslationResponseActionCase3Type),
-    updated: S.optional(S.Number),
-    url: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetCampaignActionTranslationResponseActionCase3",
-}) as any as S.Schema<GetCampaignActionTranslationResponseActionCase3>;
+export const GetCampaignActionTranslationResponseActionCase3 =
+  GetCampaignActionResponseActionCase3 as any as S.Schema<GetCampaignActionTranslationResponseActionCase3>;
 
 export type GetCampaignActionTranslationResponseAction =
   | GetCampaignActionTranslationResponseActionCase0
@@ -11042,21 +10472,14 @@ export interface GetCampaignsResponseCampaignCase0MsgTemplatesItem {
   /** The message type the template represents. */
   type?: GetCampaignsResponseCampaignCase0MsgTemplatesItemType;
 }
-export const GetCampaignsResponseCampaignCase0MsgTemplatesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.Number),
-    type: S.optional(GetCampaignsResponseCampaignCase0MsgTemplatesItemType),
-  }),
-).annotate({
-  identifier: "GetCampaignsResponseCampaignCase0MsgTemplatesItem",
-}) as any as S.Schema<GetCampaignsResponseCampaignCase0MsgTemplatesItem>;
+export const GetCampaignsResponseCampaignCase0MsgTemplatesItem =
+  GetBroadcastResponseBroadcastActionsItem as any as S.Schema<GetCampaignsResponseCampaignCase0MsgTemplatesItem>;
 
 /** Indicates the message templates used in this automation. */
 export type GetCampaignsResponseCampaignCase0MsgTemplatesList =
   Array<GetCampaignsResponseCampaignCase0MsgTemplatesItem>;
-export const GetCampaignsResponseCampaignCase0MsgTemplatesList = /*@__PURE__*/ S.Array(
-  GetCampaignsResponseCampaignCase0MsgTemplatesItem,
-) as any as S.Schema<GetCampaignsResponseCampaignCase0MsgTemplatesList>;
+export const GetCampaignsResponseCampaignCase0MsgTemplatesList =
+  GetBroadcastResponseBroadcastActionsList as any as S.Schema<GetCampaignsResponseCampaignCase0MsgTemplatesList>;
 
 /** The status of the automation. */
 export type GetCampaignsResponseCampaignCase0State = "running" | "draft" | "stopped";
@@ -12072,19 +11495,8 @@ export interface GetEmailResponseEmailTransformersFormatterMinify {
   /** Remove all line breaks from the output. */
   remove_line_breaks?: boolean;
 }
-export const GetEmailResponseEmailTransformersFormatterMinify = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    line_length_limit: S.optional(S.Number),
-    remove_css_comments: S.optional(S.Boolean),
-    remove_html_comments: S.optional(
-      GetEmailResponseEmailTransformersFormatterMinifyRemoveHtmlComments,
-    ),
-    remove_indentations: S.optional(S.Boolean),
-    remove_line_breaks: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "GetEmailResponseEmailTransformersFormatterMinify",
-}) as any as S.Schema<GetEmailResponseEmailTransformersFormatterMinify>;
+export const GetEmailResponseEmailTransformersFormatterMinify =
+  CreateEmailRequestTransformersFormatterMinify as any as S.Schema<GetEmailResponseEmailTransformersFormatterMinify>;
 
 /** Character used for indentation. */
 export type GetEmailResponseEmailTransformersFormatterPrettifyIndentCharacter = "spaces" | "tabs";
@@ -12099,15 +11511,8 @@ export interface GetEmailResponseEmailTransformersFormatterPrettify {
   /** Wrap HTML attributes onto separate lines (`force-expand-multiline` mode). */
   wrap_attributes?: boolean;
 }
-export const GetEmailResponseEmailTransformersFormatterPrettify = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    indent_character: S.optional(GetEmailResponseEmailTransformersFormatterPrettifyIndentCharacter),
-    indent_size: S.optional(S.Number),
-    wrap_attributes: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "GetEmailResponseEmailTransformersFormatterPrettify",
-}) as any as S.Schema<GetEmailResponseEmailTransformersFormatterPrettify>;
+export const GetEmailResponseEmailTransformersFormatterPrettify =
+  CreateEmailRequestTransformersFormatterPrettify as any as S.Schema<GetEmailResponseEmailTransformersFormatterPrettify>;
 
 /** Formatting mode to apply. */
 export type GetEmailResponseEmailTransformersFormatterType = "none" | "prettify" | "minify";
@@ -12122,15 +11527,8 @@ export interface GetEmailResponseEmailTransformersFormatter {
   /** Formatting mode to apply. */
   type?: GetEmailResponseEmailTransformersFormatterType;
 }
-export const GetEmailResponseEmailTransformersFormatter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    minify: S.optional(GetEmailResponseEmailTransformersFormatterMinify),
-    prettify: S.optional(GetEmailResponseEmailTransformersFormatterPrettify),
-    type: S.optional(GetEmailResponseEmailTransformersFormatterType),
-  }),
-).annotate({
-  identifier: "GetEmailResponseEmailTransformersFormatter",
-}) as any as S.Schema<GetEmailResponseEmailTransformersFormatter>;
+export const GetEmailResponseEmailTransformersFormatter =
+  CreateEmailRequestTransformersFormatter as any as S.Schema<GetEmailResponseEmailTransformersFormatter>;
 
 /** Replaces the last space in text blocks with a non-breaking space (`&nbsp;`) to prevent a single word from wrapping onto its own line (a "widow"). Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags (`{{ }} ` and `{% %}`). */
 export type GetEmailResponseEmailTransformersPreventWidows =
@@ -12381,19 +11779,7 @@ export interface GetEmailTranslationResponseEmailTranslationTransformersFormatte
   remove_line_breaks?: boolean;
 }
 export const GetEmailTranslationResponseEmailTranslationTransformersFormatterMinify =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      line_length_limit: S.optional(S.Number),
-      remove_css_comments: S.optional(S.Boolean),
-      remove_html_comments: S.optional(
-        GetEmailTranslationResponseEmailTranslationTransformersFormatterMinifyRemoveHtmlComments,
-      ),
-      remove_indentations: S.optional(S.Boolean),
-      remove_line_breaks: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "GetEmailTranslationResponseEmailTranslationTransformersFormatterMinify",
-  }) as any as S.Schema<GetEmailTranslationResponseEmailTranslationTransformersFormatterMinify>;
+  CreateEmailTranslationResponseEmailTranslationTransformersFormatterMinify as any as S.Schema<GetEmailTranslationResponseEmailTranslationTransformersFormatterMinify>;
 
 /** Character used for indentation. */
 export type GetEmailTranslationResponseEmailTranslationTransformersFormatterPrettifyIndentCharacter =
@@ -12412,17 +11798,7 @@ export interface GetEmailTranslationResponseEmailTranslationTransformersFormatte
   wrap_attributes?: boolean;
 }
 export const GetEmailTranslationResponseEmailTranslationTransformersFormatterPrettify =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      indent_character: S.optional(
-        GetEmailTranslationResponseEmailTranslationTransformersFormatterPrettifyIndentCharacter,
-      ),
-      indent_size: S.optional(S.Number),
-      wrap_attributes: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "GetEmailTranslationResponseEmailTranslationTransformersFormatterPrettify",
-  }) as any as S.Schema<GetEmailTranslationResponseEmailTranslationTransformersFormatterPrettify>;
+  CreateEmailTranslationResponseEmailTranslationTransformersFormatterPrettify as any as S.Schema<GetEmailTranslationResponseEmailTranslationTransformersFormatterPrettify>;
 
 /** Formatting mode to apply. */
 export type GetEmailTranslationResponseEmailTranslationTransformersFormatterType =
@@ -12441,17 +11817,7 @@ export interface GetEmailTranslationResponseEmailTranslationTransformersFormatte
   type?: GetEmailTranslationResponseEmailTranslationTransformersFormatterType;
 }
 export const GetEmailTranslationResponseEmailTranslationTransformersFormatter =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      minify: S.optional(GetEmailTranslationResponseEmailTranslationTransformersFormatterMinify),
-      prettify: S.optional(
-        GetEmailTranslationResponseEmailTranslationTransformersFormatterPrettify,
-      ),
-      type: S.optional(GetEmailTranslationResponseEmailTranslationTransformersFormatterType),
-    }),
-  ).annotate({
-    identifier: "GetEmailTranslationResponseEmailTranslationTransformersFormatter",
-  }) as any as S.Schema<GetEmailTranslationResponseEmailTranslationTransformersFormatter>;
+  CreateEmailTranslationResponseEmailTranslationTransformersFormatter as any as S.Schema<GetEmailTranslationResponseEmailTranslationTransformersFormatter>;
 
 /** Replaces the last space in text blocks with a non-breaking space (`&nbsp;`) to prevent a single word from wrapping onto its own line (a "widow"). Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags (`{{ }} ` and `{% %}`). */
 export type GetEmailTranslationResponseEmailTranslationTransformersPreventWidows =
@@ -14155,44 +13521,14 @@ export interface GetNewsletterVariantTranslationResponseContent {
   /** Channel type for a one-time send or one-time send content variant. */
   type?: GetNewsletterVariantTranslationResponseContentType;
 }
-export const GetNewsletterVariantTranslationResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bcc: S.optional(S.String),
-    body: S.optional(S.String),
-    body_amp: S.optional(S.String),
-    cc: S.optional(S.String),
-    deduplicate_id: S.optional(S.String),
-    fake_bcc: S.optional(S.Boolean),
-    from: S.optional(S.String),
-    from_id: S.optional(S.Number),
-    headers: S.optional(S.String),
-    id: S.optional(S.Number),
-    language: S.optional(S.String),
-    layout: S.optional(S.String),
-    name: S.optional(S.String),
-    newsletter_id: S.optional(S.Number),
-    preheader_text: S.optional(S.String),
-    preprocessor: S.optional(GetNewsletterVariantTranslationResponseContentPreprocessor),
-    recipient: S.optional(S.String),
-    reply_to: S.optional(S.String),
-    reply_to_id: S.optional(S.NullOr(S.Number)),
-    subject: S.optional(S.String),
-    type: S.optional(GetNewsletterVariantTranslationResponseContentType),
-  }),
-).annotate({
-  identifier: "GetNewsletterVariantTranslationResponseContent",
-}) as any as S.Schema<GetNewsletterVariantTranslationResponseContent>;
+export const GetNewsletterVariantTranslationResponseContent =
+  GetNewsletterVariantResponseContent as any as S.Schema<GetNewsletterVariantTranslationResponseContent>;
 
 export interface GetNewsletterVariantTranslationResponse {
   content?: GetNewsletterVariantTranslationResponseContent;
 }
-export const GetNewsletterVariantTranslationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    content: S.optional(GetNewsletterVariantTranslationResponseContent),
-  }),
-).annotate({
-  identifier: "GetNewsletterVariantTranslationResponse",
-}) as any as S.Schema<GetNewsletterVariantTranslationResponse>;
+export const GetNewsletterVariantTranslationResponse =
+  GetNewsletterVariantResponse as any as S.Schema<GetNewsletterVariantTranslationResponse>;
 
 export interface GetNewsletterVariantTranslationTestRequest {
   /** The identifier of a one-time send. */
@@ -14276,44 +13612,14 @@ export interface GetNewsletterVariantTranslationTestResponseContent {
   /** Channel type for a one-time send or one-time send content variant. */
   type?: GetNewsletterVariantTranslationTestResponseContentType;
 }
-export const GetNewsletterVariantTranslationTestResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bcc: S.optional(S.String),
-    body: S.optional(S.String),
-    body_amp: S.optional(S.String),
-    cc: S.optional(S.String),
-    deduplicate_id: S.optional(S.String),
-    fake_bcc: S.optional(S.Boolean),
-    from: S.optional(S.String),
-    from_id: S.optional(S.Number),
-    headers: S.optional(S.String),
-    id: S.optional(S.Number),
-    language: S.optional(S.String),
-    layout: S.optional(S.String),
-    name: S.optional(S.String),
-    newsletter_id: S.optional(S.Number),
-    preheader_text: S.optional(S.String),
-    preprocessor: S.optional(GetNewsletterVariantTranslationTestResponseContentPreprocessor),
-    recipient: S.optional(S.String),
-    reply_to: S.optional(S.String),
-    reply_to_id: S.optional(S.NullOr(S.Number)),
-    subject: S.optional(S.String),
-    type: S.optional(GetNewsletterVariantTranslationTestResponseContentType),
-  }),
-).annotate({
-  identifier: "GetNewsletterVariantTranslationTestResponseContent",
-}) as any as S.Schema<GetNewsletterVariantTranslationTestResponseContent>;
+export const GetNewsletterVariantTranslationTestResponseContent =
+  GetNewsletterVariantResponseContent as any as S.Schema<GetNewsletterVariantTranslationTestResponseContent>;
 
 export interface GetNewsletterVariantTranslationTestResponse {
   content?: GetNewsletterVariantTranslationTestResponseContent;
 }
-export const GetNewsletterVariantTranslationTestResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    content: S.optional(GetNewsletterVariantTranslationTestResponseContent),
-  }),
-).annotate({
-  identifier: "GetNewsletterVariantTranslationTestResponse",
-}) as any as S.Schema<GetNewsletterVariantTranslationTestResponse>;
+export const GetNewsletterVariantTranslationTestResponse =
+  GetNewsletterVariantResponse as any as S.Schema<GetNewsletterVariantTranslationTestResponse>;
 
 export type GetObjectAttributesRequestIdType = "object_id" | "cio_object_id";
 export const GetObjectAttributesRequestIdType = S.String;
@@ -14628,29 +13934,16 @@ export interface GetObjectsFilterRequestFilterCase2NotObjectAttribute {
   /** The value you want to match for this attribute. You must include a value if you use the `eq` operator. */
   value?: string;
 }
-export const GetObjectsFilterRequestFilterCase2NotObjectAttribute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    field: S.String,
-    operator: GetObjectsFilterRequestFilterCase2NotObjectAttributeOperator,
-    type_id: S.String,
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetObjectsFilterRequestFilterCase2NotObjectAttribute",
-}) as any as S.Schema<GetObjectsFilterRequestFilterCase2NotObjectAttribute>;
+export const GetObjectsFilterRequestFilterCase2NotObjectAttribute =
+  GetObjectsFilterRequestFilterCase1OrItemObjectAttribute as any as S.Schema<GetObjectsFilterRequestFilterCase2NotObjectAttribute>;
 
 /** Returns results if a condition is false. While and/or support an array of items, `not` supports a single condition. */
 export interface GetObjectsFilterRequestFilterCase2Not {
   /** Filter your objects by their attributes. */
   object_attribute?: GetObjectsFilterRequestFilterCase2NotObjectAttribute;
 }
-export const GetObjectsFilterRequestFilterCase2Not = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    object_attribute: S.optional(GetObjectsFilterRequestFilterCase2NotObjectAttribute),
-  }),
-).annotate({
-  identifier: "GetObjectsFilterRequestFilterCase2Not",
-}) as any as S.Schema<GetObjectsFilterRequestFilterCase2Not>;
+export const GetObjectsFilterRequestFilterCase2Not =
+  GetObjectsFilterRequestFilterCase1OrItem as any as S.Schema<GetObjectsFilterRequestFilterCase2Not>;
 
 export interface GetObjectsFilterRequestFilterCase2 {
   /** Returns results if a condition is false. While and/or support an array of items, `not` supports a single condition. */
@@ -14679,29 +13972,16 @@ export interface GetObjectsFilterRequestFilterCase3ObjectAttribute {
   /** The value you want to match for this attribute. You must include a value if you use the `eq` operator. */
   value?: string;
 }
-export const GetObjectsFilterRequestFilterCase3ObjectAttribute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    field: S.String,
-    operator: GetObjectsFilterRequestFilterCase3ObjectAttributeOperator,
-    type_id: S.String,
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetObjectsFilterRequestFilterCase3ObjectAttribute",
-}) as any as S.Schema<GetObjectsFilterRequestFilterCase3ObjectAttribute>;
+export const GetObjectsFilterRequestFilterCase3ObjectAttribute =
+  GetObjectsFilterRequestFilterCase1OrItemObjectAttribute as any as S.Schema<GetObjectsFilterRequestFilterCase3ObjectAttribute>;
 
 /** A simple filter to find objects matching an attribute condition. */
 export interface GetObjectsFilterRequestFilterCase3 {
   /** Filter your objects by their attributes. */
   object_attribute?: GetObjectsFilterRequestFilterCase3ObjectAttribute;
 }
-export const GetObjectsFilterRequestFilterCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    object_attribute: S.optional(GetObjectsFilterRequestFilterCase3ObjectAttribute),
-  }),
-).annotate({
-  identifier: "GetObjectsFilterRequestFilterCase3",
-}) as any as S.Schema<GetObjectsFilterRequestFilterCase3>;
+export const GetObjectsFilterRequestFilterCase3 =
+  GetObjectsFilterRequestFilterCase1OrItem as any as S.Schema<GetObjectsFilterRequestFilterCase3>;
 
 /** Use `and`, `or`, and `not` to combine object attribute conditions. The top-level object accepts one property; nest groups for complex filters. */
 export type GetObjectsFilterRequestFilter =
@@ -15183,15 +14463,8 @@ export interface GetPeopleFilterRequestFilterCase0AndItemAttribute {
   /** The value you want to match for this attribute. You must include a value if you use the `eq` operator. */
   value?: string;
 }
-export const GetPeopleFilterRequestFilterCase0AndItemAttribute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    field: S.String,
-    operator: GetPeopleFilterRequestFilterCase0AndItemAttributeOperator,
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetPeopleFilterRequestFilterCase0AndItemAttribute",
-}) as any as S.Schema<GetPeopleFilterRequestFilterCase0AndItemAttribute>;
+export const GetPeopleFilterRequestFilterCase0AndItemAttribute =
+  ExportPeopleDataRequestFiltersCase0AndItemAttribute as any as S.Schema<GetPeopleFilterRequestFilterCase0AndItemAttribute>;
 
 /** Provide the `id` of a segment containing people you want to search for. */
 export type GetPeopleFilterRequestFilterCase0AndItemNotCase0AndItemCase0Segment =
@@ -15224,29 +14497,15 @@ export interface GetPeopleFilterRequestFilterCase0AndItemNotCase0AndItemCase1Att
   value?: string;
 }
 export const GetPeopleFilterRequestFilterCase0AndItemNotCase0AndItemCase1Attribute =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      field: S.String,
-      operator: GetPeopleFilterRequestFilterCase0AndItemNotCase0AndItemCase1AttributeOperator,
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GetPeopleFilterRequestFilterCase0AndItemNotCase0AndItemCase1Attribute",
-  }) as any as S.Schema<GetPeopleFilterRequestFilterCase0AndItemNotCase0AndItemCase1Attribute>;
+  ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase1Attribute as any as S.Schema<GetPeopleFilterRequestFilterCase0AndItemNotCase0AndItemCase1Attribute>;
 
 /** filter for people who have an attribute or an attribute value. */
 export interface GetPeopleFilterRequestFilterCase0AndItemNotCase0AndItemCase1 {
   /** Filter your audience by attribute. */
   attribute?: GetPeopleFilterRequestFilterCase0AndItemNotCase0AndItemCase1Attribute;
 }
-export const GetPeopleFilterRequestFilterCase0AndItemNotCase0AndItemCase1 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      attribute: S.optional(GetPeopleFilterRequestFilterCase0AndItemNotCase0AndItemCase1Attribute),
-    }),
-).annotate({
-  identifier: "GetPeopleFilterRequestFilterCase0AndItemNotCase0AndItemCase1",
-}) as any as S.Schema<GetPeopleFilterRequestFilterCase0AndItemNotCase0AndItemCase1>;
+export const GetPeopleFilterRequestFilterCase0AndItemNotCase0AndItemCase1 =
+  ExportPeopleDataRequestFiltersCase1OrItemNotCase1OrItemCase1 as any as S.Schema<GetPeopleFilterRequestFilterCase0AndItemNotCase0AndItemCase1>;
 
 export type GetPeopleFilterRequestFilterCase0AndItemNotCase0AndItem =
   | ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0
@@ -15304,29 +14563,15 @@ export interface GetPeopleFilterRequestFilterCase0AndItemNotCase1OrItemCase1Attr
   value?: string;
 }
 export const GetPeopleFilterRequestFilterCase0AndItemNotCase1OrItemCase1Attribute =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      field: S.String,
-      operator: GetPeopleFilterRequestFilterCase0AndItemNotCase1OrItemCase1AttributeOperator,
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GetPeopleFilterRequestFilterCase0AndItemNotCase1OrItemCase1Attribute",
-  }) as any as S.Schema<GetPeopleFilterRequestFilterCase0AndItemNotCase1OrItemCase1Attribute>;
+  ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase1Attribute as any as S.Schema<GetPeopleFilterRequestFilterCase0AndItemNotCase1OrItemCase1Attribute>;
 
 /** filter for people who have an attribute or an attribute value. */
 export interface GetPeopleFilterRequestFilterCase0AndItemNotCase1OrItemCase1 {
   /** Filter your audience by attribute. */
   attribute?: GetPeopleFilterRequestFilterCase0AndItemNotCase1OrItemCase1Attribute;
 }
-export const GetPeopleFilterRequestFilterCase0AndItemNotCase1OrItemCase1 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      attribute: S.optional(GetPeopleFilterRequestFilterCase0AndItemNotCase1OrItemCase1Attribute),
-    }),
-).annotate({
-  identifier: "GetPeopleFilterRequestFilterCase0AndItemNotCase1OrItemCase1",
-}) as any as S.Schema<GetPeopleFilterRequestFilterCase0AndItemNotCase1OrItemCase1>;
+export const GetPeopleFilterRequestFilterCase0AndItemNotCase1OrItemCase1 =
+  ExportPeopleDataRequestFiltersCase1OrItemNotCase1OrItemCase1 as any as S.Schema<GetPeopleFilterRequestFilterCase0AndItemNotCase1OrItemCase1>;
 
 export type GetPeopleFilterRequestFilterCase0AndItemNotCase1OrItem =
   | ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0
@@ -15377,28 +14622,15 @@ export interface GetPeopleFilterRequestFilterCase0AndItemNotCase3Attribute {
   /** The value you want to match for this attribute. You must include a value if you use the `eq` operator. */
   value?: string;
 }
-export const GetPeopleFilterRequestFilterCase0AndItemNotCase3Attribute = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      field: S.String,
-      operator: GetPeopleFilterRequestFilterCase0AndItemNotCase3AttributeOperator,
-      value: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GetPeopleFilterRequestFilterCase0AndItemNotCase3Attribute",
-}) as any as S.Schema<GetPeopleFilterRequestFilterCase0AndItemNotCase3Attribute>;
+export const GetPeopleFilterRequestFilterCase0AndItemNotCase3Attribute =
+  ExportPeopleDataRequestFiltersCase0AndItemNotCase3Attribute as any as S.Schema<GetPeopleFilterRequestFilterCase0AndItemNotCase3Attribute>;
 
 export interface GetPeopleFilterRequestFilterCase0AndItemNotCase3 {
   /** Filter your audience by attribute. */
   attribute?: GetPeopleFilterRequestFilterCase0AndItemNotCase3Attribute;
 }
-export const GetPeopleFilterRequestFilterCase0AndItemNotCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attribute: S.optional(GetPeopleFilterRequestFilterCase0AndItemNotCase3Attribute),
-  }),
-).annotate({
-  identifier: "GetPeopleFilterRequestFilterCase0AndItemNotCase3",
-}) as any as S.Schema<GetPeopleFilterRequestFilterCase0AndItemNotCase3>;
+export const GetPeopleFilterRequestFilterCase0AndItemNotCase3 =
+  ExportPeopleDataRequestFiltersCase0AndItemNotCase3 as any as S.Schema<GetPeopleFilterRequestFilterCase0AndItemNotCase3>;
 
 /** Returns results if a condition is false. While and/or support an array of items, `not` supports a single filter object. */
 export type GetPeopleFilterRequestFilterCase0AndItemNot =
@@ -15434,29 +14666,16 @@ export interface GetPeopleFilterRequestFilterCase0AndItemOrItemCase1Attribute {
   /** The value you want to match for this attribute. You must include a value if you use the `eq` operator. */
   value?: string;
 }
-export const GetPeopleFilterRequestFilterCase0AndItemOrItemCase1Attribute = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      field: S.String,
-      operator: GetPeopleFilterRequestFilterCase0AndItemOrItemCase1AttributeOperator,
-      value: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GetPeopleFilterRequestFilterCase0AndItemOrItemCase1Attribute",
-}) as any as S.Schema<GetPeopleFilterRequestFilterCase0AndItemOrItemCase1Attribute>;
+export const GetPeopleFilterRequestFilterCase0AndItemOrItemCase1Attribute =
+  ExportPeopleDataRequestFiltersCase0AndItemNotCase3Attribute as any as S.Schema<GetPeopleFilterRequestFilterCase0AndItemOrItemCase1Attribute>;
 
 /** filter for people who have an attribute or an attribute value. */
 export interface GetPeopleFilterRequestFilterCase0AndItemOrItemCase1 {
   /** Filter your audience by attribute. */
   attribute?: GetPeopleFilterRequestFilterCase0AndItemOrItemCase1Attribute;
 }
-export const GetPeopleFilterRequestFilterCase0AndItemOrItemCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attribute: S.optional(GetPeopleFilterRequestFilterCase0AndItemOrItemCase1Attribute),
-  }),
-).annotate({
-  identifier: "GetPeopleFilterRequestFilterCase0AndItemOrItemCase1",
-}) as any as S.Schema<GetPeopleFilterRequestFilterCase0AndItemOrItemCase1>;
+export const GetPeopleFilterRequestFilterCase0AndItemOrItemCase1 =
+  ExportPeopleDataRequestFiltersCase0AndItemNotCase3 as any as S.Schema<GetPeopleFilterRequestFilterCase0AndItemOrItemCase1>;
 
 export type GetPeopleFilterRequestFilterCase0AndItemOrItem =
   | ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0
@@ -15542,29 +14761,16 @@ export interface GetPeopleFilterRequestFilterCase1OrItemAndItemCase1Attribute {
   /** The value you want to match for this attribute. You must include a value if you use the `eq` operator. */
   value?: string;
 }
-export const GetPeopleFilterRequestFilterCase1OrItemAndItemCase1Attribute = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      field: S.String,
-      operator: GetPeopleFilterRequestFilterCase1OrItemAndItemCase1AttributeOperator,
-      value: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GetPeopleFilterRequestFilterCase1OrItemAndItemCase1Attribute",
-}) as any as S.Schema<GetPeopleFilterRequestFilterCase1OrItemAndItemCase1Attribute>;
+export const GetPeopleFilterRequestFilterCase1OrItemAndItemCase1Attribute =
+  ExportPeopleDataRequestFiltersCase0AndItemNotCase3Attribute as any as S.Schema<GetPeopleFilterRequestFilterCase1OrItemAndItemCase1Attribute>;
 
 /** filter for people who have an attribute or an attribute value. */
 export interface GetPeopleFilterRequestFilterCase1OrItemAndItemCase1 {
   /** Filter your audience by attribute. */
   attribute?: GetPeopleFilterRequestFilterCase1OrItemAndItemCase1Attribute;
 }
-export const GetPeopleFilterRequestFilterCase1OrItemAndItemCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attribute: S.optional(GetPeopleFilterRequestFilterCase1OrItemAndItemCase1Attribute),
-  }),
-).annotate({
-  identifier: "GetPeopleFilterRequestFilterCase1OrItemAndItemCase1",
-}) as any as S.Schema<GetPeopleFilterRequestFilterCase1OrItemAndItemCase1>;
+export const GetPeopleFilterRequestFilterCase1OrItemAndItemCase1 =
+  ExportPeopleDataRequestFiltersCase0AndItemNotCase3 as any as S.Schema<GetPeopleFilterRequestFilterCase1OrItemAndItemCase1>;
 
 export type GetPeopleFilterRequestFilterCase1OrItemAndItem =
   | ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0
@@ -15592,15 +14798,8 @@ export interface GetPeopleFilterRequestFilterCase1OrItemAttribute {
   /** The value you want to match for this attribute. You must include a value if you use the `eq` operator. */
   value?: string;
 }
-export const GetPeopleFilterRequestFilterCase1OrItemAttribute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    field: S.String,
-    operator: GetPeopleFilterRequestFilterCase1OrItemAttributeOperator,
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetPeopleFilterRequestFilterCase1OrItemAttribute",
-}) as any as S.Schema<GetPeopleFilterRequestFilterCase1OrItemAttribute>;
+export const GetPeopleFilterRequestFilterCase1OrItemAttribute =
+  ExportPeopleDataRequestFiltersCase0AndItemAttribute as any as S.Schema<GetPeopleFilterRequestFilterCase1OrItemAttribute>;
 
 /** Provide the `id` of a segment containing people you want to search for. */
 export type GetPeopleFilterRequestFilterCase1OrItemNotCase0AndItemCase0Segment =
@@ -15633,29 +14832,15 @@ export interface GetPeopleFilterRequestFilterCase1OrItemNotCase0AndItemCase1Attr
   value?: string;
 }
 export const GetPeopleFilterRequestFilterCase1OrItemNotCase0AndItemCase1Attribute =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      field: S.String,
-      operator: GetPeopleFilterRequestFilterCase1OrItemNotCase0AndItemCase1AttributeOperator,
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GetPeopleFilterRequestFilterCase1OrItemNotCase0AndItemCase1Attribute",
-  }) as any as S.Schema<GetPeopleFilterRequestFilterCase1OrItemNotCase0AndItemCase1Attribute>;
+  ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase1Attribute as any as S.Schema<GetPeopleFilterRequestFilterCase1OrItemNotCase0AndItemCase1Attribute>;
 
 /** filter for people who have an attribute or an attribute value. */
 export interface GetPeopleFilterRequestFilterCase1OrItemNotCase0AndItemCase1 {
   /** Filter your audience by attribute. */
   attribute?: GetPeopleFilterRequestFilterCase1OrItemNotCase0AndItemCase1Attribute;
 }
-export const GetPeopleFilterRequestFilterCase1OrItemNotCase0AndItemCase1 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      attribute: S.optional(GetPeopleFilterRequestFilterCase1OrItemNotCase0AndItemCase1Attribute),
-    }),
-).annotate({
-  identifier: "GetPeopleFilterRequestFilterCase1OrItemNotCase0AndItemCase1",
-}) as any as S.Schema<GetPeopleFilterRequestFilterCase1OrItemNotCase0AndItemCase1>;
+export const GetPeopleFilterRequestFilterCase1OrItemNotCase0AndItemCase1 =
+  ExportPeopleDataRequestFiltersCase1OrItemNotCase1OrItemCase1 as any as S.Schema<GetPeopleFilterRequestFilterCase1OrItemNotCase0AndItemCase1>;
 
 export type GetPeopleFilterRequestFilterCase1OrItemNotCase0AndItem =
   | ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0
@@ -15712,29 +14897,15 @@ export interface GetPeopleFilterRequestFilterCase1OrItemNotCase1OrItemCase1Attri
   value?: string;
 }
 export const GetPeopleFilterRequestFilterCase1OrItemNotCase1OrItemCase1Attribute =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      field: S.String,
-      operator: GetPeopleFilterRequestFilterCase1OrItemNotCase1OrItemCase1AttributeOperator,
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GetPeopleFilterRequestFilterCase1OrItemNotCase1OrItemCase1Attribute",
-  }) as any as S.Schema<GetPeopleFilterRequestFilterCase1OrItemNotCase1OrItemCase1Attribute>;
+  ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase1Attribute as any as S.Schema<GetPeopleFilterRequestFilterCase1OrItemNotCase1OrItemCase1Attribute>;
 
 /** filter for people who have an attribute or an attribute value. */
 export interface GetPeopleFilterRequestFilterCase1OrItemNotCase1OrItemCase1 {
   /** Filter your audience by attribute. */
   attribute?: GetPeopleFilterRequestFilterCase1OrItemNotCase1OrItemCase1Attribute;
 }
-export const GetPeopleFilterRequestFilterCase1OrItemNotCase1OrItemCase1 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      attribute: S.optional(GetPeopleFilterRequestFilterCase1OrItemNotCase1OrItemCase1Attribute),
-    }),
-).annotate({
-  identifier: "GetPeopleFilterRequestFilterCase1OrItemNotCase1OrItemCase1",
-}) as any as S.Schema<GetPeopleFilterRequestFilterCase1OrItemNotCase1OrItemCase1>;
+export const GetPeopleFilterRequestFilterCase1OrItemNotCase1OrItemCase1 =
+  ExportPeopleDataRequestFiltersCase1OrItemNotCase1OrItemCase1 as any as S.Schema<GetPeopleFilterRequestFilterCase1OrItemNotCase1OrItemCase1>;
 
 export type GetPeopleFilterRequestFilterCase1OrItemNotCase1OrItem =
   | ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0
@@ -15785,28 +14956,15 @@ export interface GetPeopleFilterRequestFilterCase1OrItemNotCase3Attribute {
   /** The value you want to match for this attribute. You must include a value if you use the `eq` operator. */
   value?: string;
 }
-export const GetPeopleFilterRequestFilterCase1OrItemNotCase3Attribute = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      field: S.String,
-      operator: GetPeopleFilterRequestFilterCase1OrItemNotCase3AttributeOperator,
-      value: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GetPeopleFilterRequestFilterCase1OrItemNotCase3Attribute",
-}) as any as S.Schema<GetPeopleFilterRequestFilterCase1OrItemNotCase3Attribute>;
+export const GetPeopleFilterRequestFilterCase1OrItemNotCase3Attribute =
+  ExportPeopleDataRequestFiltersCase0AndItemNotCase3Attribute as any as S.Schema<GetPeopleFilterRequestFilterCase1OrItemNotCase3Attribute>;
 
 export interface GetPeopleFilterRequestFilterCase1OrItemNotCase3 {
   /** Filter your audience by attribute. */
   attribute?: GetPeopleFilterRequestFilterCase1OrItemNotCase3Attribute;
 }
-export const GetPeopleFilterRequestFilterCase1OrItemNotCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attribute: S.optional(GetPeopleFilterRequestFilterCase1OrItemNotCase3Attribute),
-  }),
-).annotate({
-  identifier: "GetPeopleFilterRequestFilterCase1OrItemNotCase3",
-}) as any as S.Schema<GetPeopleFilterRequestFilterCase1OrItemNotCase3>;
+export const GetPeopleFilterRequestFilterCase1OrItemNotCase3 =
+  ExportPeopleDataRequestFiltersCase0AndItemNotCase3 as any as S.Schema<GetPeopleFilterRequestFilterCase1OrItemNotCase3>;
 
 /** Returns results if a condition is false. While and/or support an array of items, `not` supports a single filter object. */
 export type GetPeopleFilterRequestFilterCase1OrItemNot =
@@ -15893,29 +15051,15 @@ export interface GetPeopleFilterRequestFilterCase2Case0AndItemAndItemCase1Attrib
   value?: string;
 }
 export const GetPeopleFilterRequestFilterCase2Case0AndItemAndItemCase1Attribute =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      field: S.String,
-      operator: GetPeopleFilterRequestFilterCase2Case0AndItemAndItemCase1AttributeOperator,
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GetPeopleFilterRequestFilterCase2Case0AndItemAndItemCase1Attribute",
-  }) as any as S.Schema<GetPeopleFilterRequestFilterCase2Case0AndItemAndItemCase1Attribute>;
+  ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase1Attribute as any as S.Schema<GetPeopleFilterRequestFilterCase2Case0AndItemAndItemCase1Attribute>;
 
 /** filter for people who have an attribute or an attribute value. */
 export interface GetPeopleFilterRequestFilterCase2Case0AndItemAndItemCase1 {
   /** Filter your audience by attribute. */
   attribute?: GetPeopleFilterRequestFilterCase2Case0AndItemAndItemCase1Attribute;
 }
-export const GetPeopleFilterRequestFilterCase2Case0AndItemAndItemCase1 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      attribute: S.optional(GetPeopleFilterRequestFilterCase2Case0AndItemAndItemCase1Attribute),
-    }),
-).annotate({
-  identifier: "GetPeopleFilterRequestFilterCase2Case0AndItemAndItemCase1",
-}) as any as S.Schema<GetPeopleFilterRequestFilterCase2Case0AndItemAndItemCase1>;
+export const GetPeopleFilterRequestFilterCase2Case0AndItemAndItemCase1 =
+  ExportPeopleDataRequestFiltersCase1OrItemNotCase1OrItemCase1 as any as S.Schema<GetPeopleFilterRequestFilterCase2Case0AndItemAndItemCase1>;
 
 export type GetPeopleFilterRequestFilterCase2Case0AndItemAndItem =
   | ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0
@@ -15943,15 +15087,8 @@ export interface GetPeopleFilterRequestFilterCase2Case0AndItemAttribute {
   /** The value you want to match for this attribute. You must include a value if you use the `eq` operator. */
   value?: string;
 }
-export const GetPeopleFilterRequestFilterCase2Case0AndItemAttribute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    field: S.String,
-    operator: GetPeopleFilterRequestFilterCase2Case0AndItemAttributeOperator,
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetPeopleFilterRequestFilterCase2Case0AndItemAttribute",
-}) as any as S.Schema<GetPeopleFilterRequestFilterCase2Case0AndItemAttribute>;
+export const GetPeopleFilterRequestFilterCase2Case0AndItemAttribute =
+  ExportPeopleDataRequestFiltersCase0AndItemAttribute as any as S.Schema<GetPeopleFilterRequestFilterCase2Case0AndItemAttribute>;
 
 /** Provide the `id` of a segment containing people you want to search for. */
 export type GetPeopleFilterRequestFilterCase2Case0AndItemNotCase0AndItemCase0Segment =
@@ -15984,15 +15121,7 @@ export interface GetPeopleFilterRequestFilterCase2Case0AndItemNotCase0AndItemCas
   value?: string;
 }
 export const GetPeopleFilterRequestFilterCase2Case0AndItemNotCase0AndItemCase1Attribute =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      field: S.String,
-      operator: GetPeopleFilterRequestFilterCase2Case0AndItemNotCase0AndItemCase1AttributeOperator,
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GetPeopleFilterRequestFilterCase2Case0AndItemNotCase0AndItemCase1Attribute",
-  }) as any as S.Schema<GetPeopleFilterRequestFilterCase2Case0AndItemNotCase0AndItemCase1Attribute>;
+  ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase1Attribute as any as S.Schema<GetPeopleFilterRequestFilterCase2Case0AndItemNotCase0AndItemCase1Attribute>;
 
 /** filter for people who have an attribute or an attribute value. */
 export interface GetPeopleFilterRequestFilterCase2Case0AndItemNotCase0AndItemCase1 {
@@ -16000,15 +15129,7 @@ export interface GetPeopleFilterRequestFilterCase2Case0AndItemNotCase0AndItemCas
   attribute?: GetPeopleFilterRequestFilterCase2Case0AndItemNotCase0AndItemCase1Attribute;
 }
 export const GetPeopleFilterRequestFilterCase2Case0AndItemNotCase0AndItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      attribute: S.optional(
-        GetPeopleFilterRequestFilterCase2Case0AndItemNotCase0AndItemCase1Attribute,
-      ),
-    }),
-  ).annotate({
-    identifier: "GetPeopleFilterRequestFilterCase2Case0AndItemNotCase0AndItemCase1",
-  }) as any as S.Schema<GetPeopleFilterRequestFilterCase2Case0AndItemNotCase0AndItemCase1>;
+  ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase1 as any as S.Schema<GetPeopleFilterRequestFilterCase2Case0AndItemNotCase0AndItemCase1>;
 
 export type GetPeopleFilterRequestFilterCase2Case0AndItemNotCase0AndItem =
   | ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0
@@ -16066,15 +15187,7 @@ export interface GetPeopleFilterRequestFilterCase2Case0AndItemNotCase1OrItemCase
   value?: string;
 }
 export const GetPeopleFilterRequestFilterCase2Case0AndItemNotCase1OrItemCase1Attribute =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      field: S.String,
-      operator: GetPeopleFilterRequestFilterCase2Case0AndItemNotCase1OrItemCase1AttributeOperator,
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GetPeopleFilterRequestFilterCase2Case0AndItemNotCase1OrItemCase1Attribute",
-  }) as any as S.Schema<GetPeopleFilterRequestFilterCase2Case0AndItemNotCase1OrItemCase1Attribute>;
+  ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase1Attribute as any as S.Schema<GetPeopleFilterRequestFilterCase2Case0AndItemNotCase1OrItemCase1Attribute>;
 
 /** filter for people who have an attribute or an attribute value. */
 export interface GetPeopleFilterRequestFilterCase2Case0AndItemNotCase1OrItemCase1 {
@@ -16082,15 +15195,7 @@ export interface GetPeopleFilterRequestFilterCase2Case0AndItemNotCase1OrItemCase
   attribute?: GetPeopleFilterRequestFilterCase2Case0AndItemNotCase1OrItemCase1Attribute;
 }
 export const GetPeopleFilterRequestFilterCase2Case0AndItemNotCase1OrItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      attribute: S.optional(
-        GetPeopleFilterRequestFilterCase2Case0AndItemNotCase1OrItemCase1Attribute,
-      ),
-    }),
-  ).annotate({
-    identifier: "GetPeopleFilterRequestFilterCase2Case0AndItemNotCase1OrItemCase1",
-  }) as any as S.Schema<GetPeopleFilterRequestFilterCase2Case0AndItemNotCase1OrItemCase1>;
+  ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase1 as any as S.Schema<GetPeopleFilterRequestFilterCase2Case0AndItemNotCase1OrItemCase1>;
 
 export type GetPeopleFilterRequestFilterCase2Case0AndItemNotCase1OrItem =
   | ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0
@@ -16144,27 +15249,14 @@ export interface GetPeopleFilterRequestFilterCase2Case0AndItemNotCase3Attribute 
   value?: string;
 }
 export const GetPeopleFilterRequestFilterCase2Case0AndItemNotCase3Attribute =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      field: S.String,
-      operator: GetPeopleFilterRequestFilterCase2Case0AndItemNotCase3AttributeOperator,
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GetPeopleFilterRequestFilterCase2Case0AndItemNotCase3Attribute",
-  }) as any as S.Schema<GetPeopleFilterRequestFilterCase2Case0AndItemNotCase3Attribute>;
+  ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase1Attribute as any as S.Schema<GetPeopleFilterRequestFilterCase2Case0AndItemNotCase3Attribute>;
 
 export interface GetPeopleFilterRequestFilterCase2Case0AndItemNotCase3 {
   /** Filter your audience by attribute. */
   attribute?: GetPeopleFilterRequestFilterCase2Case0AndItemNotCase3Attribute;
 }
-export const GetPeopleFilterRequestFilterCase2Case0AndItemNotCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attribute: S.optional(GetPeopleFilterRequestFilterCase2Case0AndItemNotCase3Attribute),
-  }),
-).annotate({
-  identifier: "GetPeopleFilterRequestFilterCase2Case0AndItemNotCase3",
-}) as any as S.Schema<GetPeopleFilterRequestFilterCase2Case0AndItemNotCase3>;
+export const GetPeopleFilterRequestFilterCase2Case0AndItemNotCase3 =
+  ExportPeopleDataRequestFiltersCase0AndItemOrItemCase1 as any as S.Schema<GetPeopleFilterRequestFilterCase2Case0AndItemNotCase3>;
 
 /** Returns results if a condition is false. While and/or support an array of items, `not` supports a single filter object. */
 export type GetPeopleFilterRequestFilterCase2Case0AndItemNot =
@@ -16205,29 +15297,15 @@ export interface GetPeopleFilterRequestFilterCase2Case0AndItemOrItemCase1Attribu
   value?: string;
 }
 export const GetPeopleFilterRequestFilterCase2Case0AndItemOrItemCase1Attribute =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      field: S.String,
-      operator: GetPeopleFilterRequestFilterCase2Case0AndItemOrItemCase1AttributeOperator,
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GetPeopleFilterRequestFilterCase2Case0AndItemOrItemCase1Attribute",
-  }) as any as S.Schema<GetPeopleFilterRequestFilterCase2Case0AndItemOrItemCase1Attribute>;
+  ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase1Attribute as any as S.Schema<GetPeopleFilterRequestFilterCase2Case0AndItemOrItemCase1Attribute>;
 
 /** filter for people who have an attribute or an attribute value. */
 export interface GetPeopleFilterRequestFilterCase2Case0AndItemOrItemCase1 {
   /** Filter your audience by attribute. */
   attribute?: GetPeopleFilterRequestFilterCase2Case0AndItemOrItemCase1Attribute;
 }
-export const GetPeopleFilterRequestFilterCase2Case0AndItemOrItemCase1 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      attribute: S.optional(GetPeopleFilterRequestFilterCase2Case0AndItemOrItemCase1Attribute),
-    }),
-).annotate({
-  identifier: "GetPeopleFilterRequestFilterCase2Case0AndItemOrItemCase1",
-}) as any as S.Schema<GetPeopleFilterRequestFilterCase2Case0AndItemOrItemCase1>;
+export const GetPeopleFilterRequestFilterCase2Case0AndItemOrItemCase1 =
+  ExportPeopleDataRequestFiltersCase1OrItemNotCase1OrItemCase1 as any as S.Schema<GetPeopleFilterRequestFilterCase2Case0AndItemOrItemCase1>;
 
 export type GetPeopleFilterRequestFilterCase2Case0AndItemOrItem =
   | ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0
@@ -16322,29 +15400,15 @@ export interface GetPeopleFilterRequestFilterCase2Case1OrItemAndItemCase1Attribu
   value?: string;
 }
 export const GetPeopleFilterRequestFilterCase2Case1OrItemAndItemCase1Attribute =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      field: S.String,
-      operator: GetPeopleFilterRequestFilterCase2Case1OrItemAndItemCase1AttributeOperator,
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GetPeopleFilterRequestFilterCase2Case1OrItemAndItemCase1Attribute",
-  }) as any as S.Schema<GetPeopleFilterRequestFilterCase2Case1OrItemAndItemCase1Attribute>;
+  ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase1Attribute as any as S.Schema<GetPeopleFilterRequestFilterCase2Case1OrItemAndItemCase1Attribute>;
 
 /** filter for people who have an attribute or an attribute value. */
 export interface GetPeopleFilterRequestFilterCase2Case1OrItemAndItemCase1 {
   /** Filter your audience by attribute. */
   attribute?: GetPeopleFilterRequestFilterCase2Case1OrItemAndItemCase1Attribute;
 }
-export const GetPeopleFilterRequestFilterCase2Case1OrItemAndItemCase1 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      attribute: S.optional(GetPeopleFilterRequestFilterCase2Case1OrItemAndItemCase1Attribute),
-    }),
-).annotate({
-  identifier: "GetPeopleFilterRequestFilterCase2Case1OrItemAndItemCase1",
-}) as any as S.Schema<GetPeopleFilterRequestFilterCase2Case1OrItemAndItemCase1>;
+export const GetPeopleFilterRequestFilterCase2Case1OrItemAndItemCase1 =
+  ExportPeopleDataRequestFiltersCase1OrItemNotCase1OrItemCase1 as any as S.Schema<GetPeopleFilterRequestFilterCase2Case1OrItemAndItemCase1>;
 
 export type GetPeopleFilterRequestFilterCase2Case1OrItemAndItem =
   | ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0
@@ -16372,15 +15436,8 @@ export interface GetPeopleFilterRequestFilterCase2Case1OrItemAttribute {
   /** The value you want to match for this attribute. You must include a value if you use the `eq` operator. */
   value?: string;
 }
-export const GetPeopleFilterRequestFilterCase2Case1OrItemAttribute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    field: S.String,
-    operator: GetPeopleFilterRequestFilterCase2Case1OrItemAttributeOperator,
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetPeopleFilterRequestFilterCase2Case1OrItemAttribute",
-}) as any as S.Schema<GetPeopleFilterRequestFilterCase2Case1OrItemAttribute>;
+export const GetPeopleFilterRequestFilterCase2Case1OrItemAttribute =
+  ExportPeopleDataRequestFiltersCase0AndItemAttribute as any as S.Schema<GetPeopleFilterRequestFilterCase2Case1OrItemAttribute>;
 
 /** Provide the `id` of a segment containing people you want to search for. */
 export type GetPeopleFilterRequestFilterCase2Case1OrItemNotCase0AndItemCase0Segment =
@@ -16413,15 +15470,7 @@ export interface GetPeopleFilterRequestFilterCase2Case1OrItemNotCase0AndItemCase
   value?: string;
 }
 export const GetPeopleFilterRequestFilterCase2Case1OrItemNotCase0AndItemCase1Attribute =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      field: S.String,
-      operator: GetPeopleFilterRequestFilterCase2Case1OrItemNotCase0AndItemCase1AttributeOperator,
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GetPeopleFilterRequestFilterCase2Case1OrItemNotCase0AndItemCase1Attribute",
-  }) as any as S.Schema<GetPeopleFilterRequestFilterCase2Case1OrItemNotCase0AndItemCase1Attribute>;
+  ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase1Attribute as any as S.Schema<GetPeopleFilterRequestFilterCase2Case1OrItemNotCase0AndItemCase1Attribute>;
 
 /** filter for people who have an attribute or an attribute value. */
 export interface GetPeopleFilterRequestFilterCase2Case1OrItemNotCase0AndItemCase1 {
@@ -16429,15 +15478,7 @@ export interface GetPeopleFilterRequestFilterCase2Case1OrItemNotCase0AndItemCase
   attribute?: GetPeopleFilterRequestFilterCase2Case1OrItemNotCase0AndItemCase1Attribute;
 }
 export const GetPeopleFilterRequestFilterCase2Case1OrItemNotCase0AndItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      attribute: S.optional(
-        GetPeopleFilterRequestFilterCase2Case1OrItemNotCase0AndItemCase1Attribute,
-      ),
-    }),
-  ).annotate({
-    identifier: "GetPeopleFilterRequestFilterCase2Case1OrItemNotCase0AndItemCase1",
-  }) as any as S.Schema<GetPeopleFilterRequestFilterCase2Case1OrItemNotCase0AndItemCase1>;
+  ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase1 as any as S.Schema<GetPeopleFilterRequestFilterCase2Case1OrItemNotCase0AndItemCase1>;
 
 export type GetPeopleFilterRequestFilterCase2Case1OrItemNotCase0AndItem =
   | ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0
@@ -16495,15 +15536,7 @@ export interface GetPeopleFilterRequestFilterCase2Case1OrItemNotCase1OrItemCase1
   value?: string;
 }
 export const GetPeopleFilterRequestFilterCase2Case1OrItemNotCase1OrItemCase1Attribute =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      field: S.String,
-      operator: GetPeopleFilterRequestFilterCase2Case1OrItemNotCase1OrItemCase1AttributeOperator,
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GetPeopleFilterRequestFilterCase2Case1OrItemNotCase1OrItemCase1Attribute",
-  }) as any as S.Schema<GetPeopleFilterRequestFilterCase2Case1OrItemNotCase1OrItemCase1Attribute>;
+  ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase1Attribute as any as S.Schema<GetPeopleFilterRequestFilterCase2Case1OrItemNotCase1OrItemCase1Attribute>;
 
 /** filter for people who have an attribute or an attribute value. */
 export interface GetPeopleFilterRequestFilterCase2Case1OrItemNotCase1OrItemCase1 {
@@ -16511,15 +15544,7 @@ export interface GetPeopleFilterRequestFilterCase2Case1OrItemNotCase1OrItemCase1
   attribute?: GetPeopleFilterRequestFilterCase2Case1OrItemNotCase1OrItemCase1Attribute;
 }
 export const GetPeopleFilterRequestFilterCase2Case1OrItemNotCase1OrItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      attribute: S.optional(
-        GetPeopleFilterRequestFilterCase2Case1OrItemNotCase1OrItemCase1Attribute,
-      ),
-    }),
-  ).annotate({
-    identifier: "GetPeopleFilterRequestFilterCase2Case1OrItemNotCase1OrItemCase1",
-  }) as any as S.Schema<GetPeopleFilterRequestFilterCase2Case1OrItemNotCase1OrItemCase1>;
+  ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase1 as any as S.Schema<GetPeopleFilterRequestFilterCase2Case1OrItemNotCase1OrItemCase1>;
 
 export type GetPeopleFilterRequestFilterCase2Case1OrItemNotCase1OrItem =
   | ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0
@@ -16571,27 +15596,14 @@ export interface GetPeopleFilterRequestFilterCase2Case1OrItemNotCase3Attribute {
   value?: string;
 }
 export const GetPeopleFilterRequestFilterCase2Case1OrItemNotCase3Attribute =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      field: S.String,
-      operator: GetPeopleFilterRequestFilterCase2Case1OrItemNotCase3AttributeOperator,
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GetPeopleFilterRequestFilterCase2Case1OrItemNotCase3Attribute",
-  }) as any as S.Schema<GetPeopleFilterRequestFilterCase2Case1OrItemNotCase3Attribute>;
+  ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase1Attribute as any as S.Schema<GetPeopleFilterRequestFilterCase2Case1OrItemNotCase3Attribute>;
 
 export interface GetPeopleFilterRequestFilterCase2Case1OrItemNotCase3 {
   /** Filter your audience by attribute. */
   attribute?: GetPeopleFilterRequestFilterCase2Case1OrItemNotCase3Attribute;
 }
-export const GetPeopleFilterRequestFilterCase2Case1OrItemNotCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attribute: S.optional(GetPeopleFilterRequestFilterCase2Case1OrItemNotCase3Attribute),
-  }),
-).annotate({
-  identifier: "GetPeopleFilterRequestFilterCase2Case1OrItemNotCase3",
-}) as any as S.Schema<GetPeopleFilterRequestFilterCase2Case1OrItemNotCase3>;
+export const GetPeopleFilterRequestFilterCase2Case1OrItemNotCase3 =
+  ExportPeopleDataRequestFiltersCase0AndItemOrItemCase1 as any as S.Schema<GetPeopleFilterRequestFilterCase2Case1OrItemNotCase3>;
 
 /** Returns results if a condition is false. While and/or support an array of items, `not` supports a single filter object. */
 export type GetPeopleFilterRequestFilterCase2Case1OrItemNot =
@@ -16632,28 +15644,15 @@ export interface GetPeopleFilterRequestFilterCase2Case1OrItemOrItemCase1Attribut
   value?: string;
 }
 export const GetPeopleFilterRequestFilterCase2Case1OrItemOrItemCase1Attribute =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      field: S.String,
-      operator: GetPeopleFilterRequestFilterCase2Case1OrItemOrItemCase1AttributeOperator,
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GetPeopleFilterRequestFilterCase2Case1OrItemOrItemCase1Attribute",
-  }) as any as S.Schema<GetPeopleFilterRequestFilterCase2Case1OrItemOrItemCase1Attribute>;
+  ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase1Attribute as any as S.Schema<GetPeopleFilterRequestFilterCase2Case1OrItemOrItemCase1Attribute>;
 
 /** filter for people who have an attribute or an attribute value. */
 export interface GetPeopleFilterRequestFilterCase2Case1OrItemOrItemCase1 {
   /** Filter your audience by attribute. */
   attribute?: GetPeopleFilterRequestFilterCase2Case1OrItemOrItemCase1Attribute;
 }
-export const GetPeopleFilterRequestFilterCase2Case1OrItemOrItemCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attribute: S.optional(GetPeopleFilterRequestFilterCase2Case1OrItemOrItemCase1Attribute),
-  }),
-).annotate({
-  identifier: "GetPeopleFilterRequestFilterCase2Case1OrItemOrItemCase1",
-}) as any as S.Schema<GetPeopleFilterRequestFilterCase2Case1OrItemOrItemCase1>;
+export const GetPeopleFilterRequestFilterCase2Case1OrItemOrItemCase1 =
+  ExportPeopleDataRequestFiltersCase0AndItemOrItemCase1 as any as S.Schema<GetPeopleFilterRequestFilterCase2Case1OrItemOrItemCase1>;
 
 export type GetPeopleFilterRequestFilterCase2Case1OrItemOrItem =
   | ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0
@@ -16742,27 +15741,15 @@ export interface GetPeopleFilterRequestFilterCase2Case3Attribute {
   /** The value you want to match for this attribute. You must include a value if you use the `eq` operator. */
   value?: string;
 }
-export const GetPeopleFilterRequestFilterCase2Case3Attribute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    field: S.String,
-    operator: GetPeopleFilterRequestFilterCase2Case3AttributeOperator,
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetPeopleFilterRequestFilterCase2Case3Attribute",
-}) as any as S.Schema<GetPeopleFilterRequestFilterCase2Case3Attribute>;
+export const GetPeopleFilterRequestFilterCase2Case3Attribute =
+  ExportPeopleDataRequestFiltersCase0AndItemAttribute as any as S.Schema<GetPeopleFilterRequestFilterCase2Case3Attribute>;
 
 export interface GetPeopleFilterRequestFilterCase2Case3 {
   /** Filter your audience by attribute. */
   attribute?: GetPeopleFilterRequestFilterCase2Case3Attribute;
 }
-export const GetPeopleFilterRequestFilterCase2Case3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attribute: S.optional(GetPeopleFilterRequestFilterCase2Case3Attribute),
-  }),
-).annotate({
-  identifier: "GetPeopleFilterRequestFilterCase2Case3",
-}) as any as S.Schema<GetPeopleFilterRequestFilterCase2Case3>;
+export const GetPeopleFilterRequestFilterCase2Case3 =
+  ExportPeopleDataRequestFiltersCase2Case3 as any as S.Schema<GetPeopleFilterRequestFilterCase2Case3>;
 
 /** Returns results if a condition is false. While and/or support an array of items, `not` supports a single filter object. */
 export type GetPeopleFilterRequestFilterCase2 =
@@ -16798,28 +15785,16 @@ export interface GetPeopleFilterRequestFilterCase4Attribute {
   /** The value you want to match for this attribute. You must include a value if you use the `eq` operator. */
   value?: string;
 }
-export const GetPeopleFilterRequestFilterCase4Attribute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    field: S.String,
-    operator: GetPeopleFilterRequestFilterCase4AttributeOperator,
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetPeopleFilterRequestFilterCase4Attribute",
-}) as any as S.Schema<GetPeopleFilterRequestFilterCase4Attribute>;
+export const GetPeopleFilterRequestFilterCase4Attribute =
+  ExportPeopleDataRequestFiltersCase0AndItemAttribute as any as S.Schema<GetPeopleFilterRequestFilterCase4Attribute>;
 
 /** filter for people who have an attribute or an attribute value. */
 export interface GetPeopleFilterRequestFilterCase4 {
   /** Filter your audience by attribute. */
   attribute?: GetPeopleFilterRequestFilterCase4Attribute;
 }
-export const GetPeopleFilterRequestFilterCase4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attribute: S.optional(GetPeopleFilterRequestFilterCase4Attribute),
-  }),
-).annotate({
-  identifier: "GetPeopleFilterRequestFilterCase4",
-}) as any as S.Schema<GetPeopleFilterRequestFilterCase4>;
+export const GetPeopleFilterRequestFilterCase4 =
+  ExportPeopleDataRequestFiltersCase2Case3 as any as S.Schema<GetPeopleFilterRequestFilterCase4>;
 
 /** Use `and`, `or`, and `not` to combine segment and attribute conditions. The top-level object accepts one property; nest groups for complex filters. */
 export type GetPeopleFilterRequestFilter =
@@ -17575,20 +16550,13 @@ export interface GetPersonOptoutsResponseOptoutsItem {
   /** The sender that the person is opted out of. For SMS, this is a sender phone number (E.164), an alphanumeric sender ID, or a messaging-service SID; for WhatsApp, it's the sender phone number. */
   from?: string;
 }
-export const GetPersonOptoutsResponseOptoutsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    channel: S.optional(GetPersonOptoutsResponseOptoutsItemChannel),
-    from: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetPersonOptoutsResponseOptoutsItem",
-}) as any as S.Schema<GetPersonOptoutsResponseOptoutsItem>;
+export const GetPersonOptoutsResponseOptoutsItem =
+  GetOptoutsResponseOptoutsItemOptoutsItem as any as S.Schema<GetPersonOptoutsResponseOptoutsItem>;
 
 /** The senders and channels that the person is opted out of. An entry's presence means the person is opted out of that sender on that channel. */
 export type GetPersonOptoutsResponseOptoutsList = Array<GetPersonOptoutsResponseOptoutsItem>;
-export const GetPersonOptoutsResponseOptoutsList = /*@__PURE__*/ S.Array(
-  GetPersonOptoutsResponseOptoutsItem,
-) as any as S.Schema<GetPersonOptoutsResponseOptoutsList>;
+export const GetPersonOptoutsResponseOptoutsList =
+  GetOptoutsResponseOptoutsItemOptoutsList as any as S.Schema<GetPersonOptoutsResponseOptoutsList>;
 
 export interface GetPersonOptoutsResponse {
   /** The senders and channels that the person is opted out of. An entry's presence means the person is opted out of that sender on that channel. */
@@ -18715,32 +17683,8 @@ export interface GetTransactionalVariantResponseContentItem {
   /** The date time when the referenced ID was last updated. */
   updated?: number;
 }
-export const GetTransactionalVariantResponseContentItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bcc: S.optional(S.String),
-    body: S.optional(S.String),
-    body_amp: S.optional(S.String),
-    cc: S.optional(S.String),
-    created: S.optional(S.Number),
-    fake_bcc: S.optional(S.Boolean),
-    from: S.optional(S.String),
-    from_id: S.optional(S.Number),
-    headers: S.optional(S.String),
-    id: S.optional(S.Number),
-    language: S.optional(S.String),
-    name: S.optional(S.String),
-    preheader_text: S.optional(S.String),
-    preprocessor: S.optional(GetTransactionalVariantResponseContentItemPreprocessor),
-    recipient: S.optional(S.String),
-    reply_to: S.optional(S.String),
-    reply_to_id: S.optional(S.NullOr(S.Number)),
-    subject: S.optional(S.String),
-    type: S.optional(GetTransactionalVariantResponseContentItemType),
-    updated: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GetTransactionalVariantResponseContentItem",
-}) as any as S.Schema<GetTransactionalVariantResponseContentItem>;
+export const GetTransactionalVariantResponseContentItem =
+  GetTransactionalTranslationByIdResponseContent as any as S.Schema<GetTransactionalVariantResponseContentItem>;
 
 /** The object represents a variant. */
 export type GetTransactionalVariantResponseContentList =
@@ -19288,19 +18232,8 @@ export interface GetVersionResponseNodeTransformersFormatterMinify {
   /** Remove all line breaks from the output. */
   remove_line_breaks?: boolean;
 }
-export const GetVersionResponseNodeTransformersFormatterMinify = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    line_length_limit: S.optional(S.Number),
-    remove_css_comments: S.optional(S.Boolean),
-    remove_html_comments: S.optional(
-      GetVersionResponseNodeTransformersFormatterMinifyRemoveHtmlComments,
-    ),
-    remove_indentations: S.optional(S.Boolean),
-    remove_line_breaks: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "GetVersionResponseNodeTransformersFormatterMinify",
-}) as any as S.Schema<GetVersionResponseNodeTransformersFormatterMinify>;
+export const GetVersionResponseNodeTransformersFormatterMinify =
+  CreateEmailRequestTransformersFormatterMinify as any as S.Schema<GetVersionResponseNodeTransformersFormatterMinify>;
 
 /** Character used for indentation. */
 export type GetVersionResponseNodeTransformersFormatterPrettifyIndentCharacter = "spaces" | "tabs";
@@ -19315,17 +18248,8 @@ export interface GetVersionResponseNodeTransformersFormatterPrettify {
   /** Wrap HTML attributes onto separate lines (`force-expand-multiline` mode). */
   wrap_attributes?: boolean;
 }
-export const GetVersionResponseNodeTransformersFormatterPrettify = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    indent_character: S.optional(
-      GetVersionResponseNodeTransformersFormatterPrettifyIndentCharacter,
-    ),
-    indent_size: S.optional(S.Number),
-    wrap_attributes: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "GetVersionResponseNodeTransformersFormatterPrettify",
-}) as any as S.Schema<GetVersionResponseNodeTransformersFormatterPrettify>;
+export const GetVersionResponseNodeTransformersFormatterPrettify =
+  CreateEmailResponseEmailTransformersFormatterPrettify as any as S.Schema<GetVersionResponseNodeTransformersFormatterPrettify>;
 
 /** Formatting mode to apply. */
 export type GetVersionResponseNodeTransformersFormatterType = "none" | "prettify" | "minify";
@@ -19340,15 +18264,8 @@ export interface GetVersionResponseNodeTransformersFormatter {
   /** Formatting mode to apply. */
   type?: GetVersionResponseNodeTransformersFormatterType;
 }
-export const GetVersionResponseNodeTransformersFormatter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    minify: S.optional(GetVersionResponseNodeTransformersFormatterMinify),
-    prettify: S.optional(GetVersionResponseNodeTransformersFormatterPrettify),
-    type: S.optional(GetVersionResponseNodeTransformersFormatterType),
-  }),
-).annotate({
-  identifier: "GetVersionResponseNodeTransformersFormatter",
-}) as any as S.Schema<GetVersionResponseNodeTransformersFormatter>;
+export const GetVersionResponseNodeTransformersFormatter =
+  CreateEmailResponseEmailTransformersFormatter as any as S.Schema<GetVersionResponseNodeTransformersFormatter>;
 
 /** Replaces the last space in text blocks with a non-breaking space (`&nbsp;`) to prevent a single word from wrapping onto its own line (a "widow"). Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags (`{{ }} ` and `{% %}`). */
 export type GetVersionResponseNodeTransformersPreventWidows =
@@ -19626,9 +18543,8 @@ export const GetWebhookResponseEventsItem = S.String;
 
 /** Specifies the types of events you want to report to your webhook. See our [reporting webhooks reference](/integrations/api/webhooks/) for more information about event types and the information they return. */
 export type GetWebhookResponseEventsList = Array<GetWebhookResponseEventsItem>;
-export const GetWebhookResponseEventsList = /*@__PURE__*/ S.Array(
-  GetWebhookResponseEventsItem,
-) as any as S.Schema<GetWebhookResponseEventsList>;
+export const GetWebhookResponseEventsList =
+  CreateWebhookRequestEventsList as any as S.Schema<GetWebhookResponseEventsList>;
 
 /** The type of webhook--`webhook` for a standard reporting webhook or `js` for a JavaScript webhook. */
 export type GetWebhookResponseType = "webhook" | "js";
@@ -19652,18 +18568,7 @@ export interface GetWebhookResponse {
   /** Set to `true` to include the message `body` in `_sent` events. */
   with_content?: boolean;
 }
-export const GetWebhookResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endpoint: S.String,
-    events: GetWebhookResponseEventsList,
-    name: S.String,
-    disabled: S.optional(S.Boolean),
-    full_resolution: S.optional(S.Boolean),
-    id: S.optional(S.Number),
-    type: S.optional(GetWebhookResponseType),
-    with_content: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "GetWebhookResponse" }) as any as S.Schema<GetWebhookResponse>;
+export const GetWebhookResponse = CreateWebhookResponse as any as S.Schema<GetWebhookResponse>;
 
 /** The type of identifier you want to use to identify people in your sheet--`id` or `email`. At least one column in the CSV must contain an identifier. */
 export type ImportRequestImportCase0Identifier = "id" | "email";
@@ -19730,16 +18635,8 @@ export interface ImportRequestImportCase1 {
   /** A helpful description that can help you find and recognize your import operation. */
   description?: string;
 }
-export const ImportRequestImportCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data_file_url: S.String,
-    identifier: ImportRequestImportCase1Identifier,
-    name: S.String,
-    type: ImportRequestImportCase1Type,
-    data_to_process: S.optional(ImportRequestImportCase1DataToProcess),
-    description: S.optional(S.String),
-  }),
-).annotate({ identifier: "ImportRequestImportCase1" }) as any as S.Schema<ImportRequestImportCase1>;
+export const ImportRequestImportCase1 =
+  ImportRequestImportCase0 as any as S.Schema<ImportRequestImportCase1>;
 
 /** The type of identifier used to identify the person in each relationship--`id`, `email`, or `cio_id`. */
 export type ImportRequestImportCase2Identifier = "id" | "email" | "cio_id";
@@ -19768,16 +18665,8 @@ export interface ImportRequestImportCase2 {
   /** A helpful description that can help you find and recognize your import operation. */
   description?: string;
 }
-export const ImportRequestImportCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data_file_url: S.String,
-    identifier: ImportRequestImportCase2Identifier,
-    name: S.String,
-    type: ImportRequestImportCase2Type,
-    data_to_process: S.optional(ImportRequestImportCase2DataToProcess),
-    description: S.optional(S.String),
-  }),
-).annotate({ identifier: "ImportRequestImportCase2" }) as any as S.Schema<ImportRequestImportCase2>;
+export const ImportRequestImportCase2 =
+  ImportRequestImportCase0 as any as S.Schema<ImportRequestImportCase2>;
 
 /** The type of import. */
 export type ImportRequestImportCase3Type = "object";
@@ -19975,14 +18864,8 @@ export interface LinkEmailResponseTarget {
   /** The ID of the transactional message linked. */
   transactional_message_id?: number;
 }
-export const LinkEmailResponseTarget = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: LinkEmailResponseTargetType,
-    action_id: S.optional(S.Number),
-    newsletter_id: S.optional(S.Number),
-    transactional_message_id: S.optional(S.Number),
-  }),
-).annotate({ identifier: "LinkEmailResponseTarget" }) as any as S.Schema<LinkEmailResponseTarget>;
+export const LinkEmailResponseTarget =
+  LinkEmailRequestTarget as any as S.Schema<LinkEmailResponseTarget>;
 
 export interface LinkEmailResponse {
   /** The UUID of the linked message. */
@@ -20530,21 +19413,14 @@ export interface ListBroadcastsResponseBroadcastsItemActionsItem {
   /** The type of action. */
   type?: ListBroadcastsResponseBroadcastsItemActionsItemType;
 }
-export const ListBroadcastsResponseBroadcastsItemActionsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.Number),
-    type: S.optional(ListBroadcastsResponseBroadcastsItemActionsItemType),
-  }),
-).annotate({
-  identifier: "ListBroadcastsResponseBroadcastsItemActionsItem",
-}) as any as S.Schema<ListBroadcastsResponseBroadcastsItemActionsItem>;
+export const ListBroadcastsResponseBroadcastsItemActionsItem =
+  GetBroadcastResponseBroadcastActionsItem as any as S.Schema<ListBroadcastsResponseBroadcastsItemActionsItem>;
 
 /** A list of actions used by the broadcast. */
 export type ListBroadcastsResponseBroadcastsItemActionsList =
   Array<ListBroadcastsResponseBroadcastsItemActionsItem>;
-export const ListBroadcastsResponseBroadcastsItemActionsList = /*@__PURE__*/ S.Array(
-  ListBroadcastsResponseBroadcastsItemActionsItem,
-) as any as S.Schema<ListBroadcastsResponseBroadcastsItemActionsList>;
+export const ListBroadcastsResponseBroadcastsItemActionsList =
+  GetBroadcastResponseBroadcastActionsList as any as S.Schema<ListBroadcastsResponseBroadcastsItemActionsList>;
 
 /** The type of template. */
 export type ListBroadcastsResponseBroadcastsItemMsgTemplateIdsItemType =
@@ -20561,21 +19437,14 @@ export interface ListBroadcastsResponseBroadcastsItemMsgTemplateIdsItem {
   /** The type of template. */
   type?: ListBroadcastsResponseBroadcastsItemMsgTemplateIdsItemType;
 }
-export const ListBroadcastsResponseBroadcastsItemMsgTemplateIdsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.Number),
-    type: S.optional(ListBroadcastsResponseBroadcastsItemMsgTemplateIdsItemType),
-  }),
-).annotate({
-  identifier: "ListBroadcastsResponseBroadcastsItemMsgTemplateIdsItem",
-}) as any as S.Schema<ListBroadcastsResponseBroadcastsItemMsgTemplateIdsItem>;
+export const ListBroadcastsResponseBroadcastsItemMsgTemplateIdsItem =
+  GetBroadcastResponseBroadcastActionsItem as any as S.Schema<ListBroadcastsResponseBroadcastsItemMsgTemplateIdsItem>;
 
 /** Indicates the message template(s) used in this broadcast. */
 export type ListBroadcastsResponseBroadcastsItemMsgTemplateIdsList =
   Array<ListBroadcastsResponseBroadcastsItemMsgTemplateIdsItem>;
-export const ListBroadcastsResponseBroadcastsItemMsgTemplateIdsList = /*@__PURE__*/ S.Array(
-  ListBroadcastsResponseBroadcastsItemMsgTemplateIdsItem,
-) as any as S.Schema<ListBroadcastsResponseBroadcastsItemMsgTemplateIdsList>;
+export const ListBroadcastsResponseBroadcastsItemMsgTemplateIdsList =
+  GetBroadcastResponseBroadcastActionsList as any as S.Schema<ListBroadcastsResponseBroadcastsItemMsgTemplateIdsList>;
 
 /** The state of the broadcast. */
 export type ListBroadcastsResponseBroadcastsItemState = "running" | "draft";
@@ -20789,39 +19658,8 @@ export interface ListCampaignActionsResponseActionsItemCase0 {
   /** The date time when the referenced ID was last updated. */
   updated?: number;
 }
-export const ListCampaignActionsResponseActionsItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bcc: S.optional(S.String),
-    body: S.optional(S.String),
-    body_amp: S.optional(S.String),
-    broadcast_id: S.optional(S.Number),
-    campaign_id: S.optional(S.Number),
-    cc: S.optional(S.String),
-    created: S.optional(S.Number),
-    deduplicate_id: S.optional(S.String),
-    fake_bcc: S.optional(S.Boolean),
-    from: S.optional(S.String),
-    from_id: S.optional(S.Number),
-    headers: S.optional(S.String),
-    id: S.optional(S.Number),
-    language: S.optional(S.String),
-    layout: S.optional(S.String),
-    multi_language_branch_action_id: S.optional(S.Number),
-    name: S.optional(S.String),
-    parent_action_id: S.optional(S.Number),
-    preheader_text: S.optional(S.String),
-    preprocessor: S.optional(ListCampaignActionsResponseActionsItemCase0Preprocessor),
-    recipient: S.optional(S.String),
-    reply_to: S.optional(S.String),
-    reply_to_id: S.optional(S.NullOr(S.Number)),
-    sending_state: S.optional(ListCampaignActionsResponseActionsItemCase0SendingState),
-    subject: S.optional(S.String),
-    type: S.optional(ListCampaignActionsResponseActionsItemCase0Type),
-    updated: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ListCampaignActionsResponseActionsItemCase0",
-}) as any as S.Schema<ListCampaignActionsResponseActionsItemCase0>;
+export const ListCampaignActionsResponseActionsItemCase0 =
+  GetCampaignActionResponseActionCase0 as any as S.Schema<ListCampaignActionsResponseActionsItemCase0>;
 
 /** Determines the sending behavior for the action. `automatic` sends the action automatically when triggered; `draft` queues drafts when the action is triggered; or `off` to disable the action. */
 export type ListCampaignActionsResponseActionsItemCase1SendingState = "automatic" | "draft" | "off";
@@ -20863,27 +19701,8 @@ export interface ListCampaignActionsResponseActionsItemCase1 {
   /** The date time when the referenced ID was last updated. */
   updated?: number;
 }
-export const ListCampaignActionsResponseActionsItemCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(S.String),
-    campaign_id: S.optional(S.Number),
-    created: S.optional(S.Number),
-    deduplicate_id: S.optional(S.String),
-    id: S.optional(S.Number),
-    image_url: S.optional(S.String),
-    language: S.optional(S.String),
-    layout: S.optional(S.String),
-    multi_language_branch_action_id: S.optional(S.Number),
-    name: S.optional(S.String),
-    parent_action_id: S.optional(S.Number),
-    recipient: S.optional(S.String),
-    sending_state: S.optional(ListCampaignActionsResponseActionsItemCase1SendingState),
-    type: S.optional(ListCampaignActionsResponseActionsItemCase1Type),
-    updated: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ListCampaignActionsResponseActionsItemCase1",
-}) as any as S.Schema<ListCampaignActionsResponseActionsItemCase1>;
+export const ListCampaignActionsResponseActionsItemCase1 =
+  GetCampaignActionResponseActionCase1 as any as S.Schema<ListCampaignActionsResponseActionsItemCase1>;
 
 /** Determines the sending behavior for the action. `automatic` sends the action automatically when triggered; `draft` queues drafts when the action is triggered; or `off` to disable the action. */
 export type ListCampaignActionsResponseActionsItemCase2SendingState = "automatic" | "draft" | "off";
@@ -20930,29 +19749,8 @@ export interface ListCampaignActionsResponseActionsItemCase2 {
   /** The date time when the referenced ID was last updated. */
   updated?: number;
 }
-export const ListCampaignActionsResponseActionsItemCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(S.String),
-    body_json: S.optional(S.String),
-    campaign_id: S.optional(S.Number),
-    created: S.optional(S.Number),
-    deduplicate_id: S.optional(S.String),
-    id: S.optional(S.Number),
-    language: S.optional(S.String),
-    multi_language_branch_action_id: S.optional(S.Number),
-    name: S.optional(S.String),
-    parent_action_id: S.optional(S.Number),
-    recipient: S.optional(S.String),
-    send_to_unsubscribed: S.optional(S.Boolean),
-    sender_identity_id: S.optional(S.Number),
-    sending_state: S.optional(ListCampaignActionsResponseActionsItemCase2SendingState),
-    tracked: S.optional(S.Boolean),
-    type: S.optional(ListCampaignActionsResponseActionsItemCase2Type),
-    updated: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ListCampaignActionsResponseActionsItemCase2",
-}) as any as S.Schema<ListCampaignActionsResponseActionsItemCase2>;
+export const ListCampaignActionsResponseActionsItemCase2 =
+  GetCampaignActionResponseActionCase2 as any as S.Schema<ListCampaignActionsResponseActionsItemCase2>;
 
 /** The HTTP method for your webhook. */
 export type ListCampaignActionsResponseActionsItemCase3Method =
@@ -21003,27 +19801,8 @@ export interface ListCampaignActionsResponseActionsItemCase3 {
   /** The URL to send a webhook to, applies to `webhook` type actions. */
   url?: string;
 }
-export const ListCampaignActionsResponseActionsItemCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(S.String),
-    campaign_id: S.optional(S.Number),
-    created: S.optional(S.Number),
-    deduplicate_id: S.optional(S.String),
-    headers: S.optional(S.String),
-    id: S.optional(S.Number),
-    layout: S.optional(S.String),
-    method: S.optional(ListCampaignActionsResponseActionsItemCase3Method),
-    multi_language_branch_action_id: S.optional(S.Number),
-    name: S.optional(S.String),
-    parent_action_id: S.optional(S.Number),
-    sending_state: S.optional(ListCampaignActionsResponseActionsItemCase3SendingState),
-    type: S.optional(ListCampaignActionsResponseActionsItemCase3Type),
-    updated: S.optional(S.Number),
-    url: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListCampaignActionsResponseActionsItemCase3",
-}) as any as S.Schema<ListCampaignActionsResponseActionsItemCase3>;
+export const ListCampaignActionsResponseActionsItemCase3 =
+  GetCampaignActionResponseActionCase3 as any as S.Schema<ListCampaignActionsResponseActionsItemCase3>;
 
 export type ListCampaignActionsResponseActionsItem =
   | ListCampaignActionsResponseActionsItemCase0
@@ -21089,21 +19868,14 @@ export interface ListCampaignsResponseCampaignsItemCase0MsgTemplatesItem {
   /** The message type the template represents. */
   type?: ListCampaignsResponseCampaignsItemCase0MsgTemplatesItemType;
 }
-export const ListCampaignsResponseCampaignsItemCase0MsgTemplatesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.Number),
-    type: S.optional(ListCampaignsResponseCampaignsItemCase0MsgTemplatesItemType),
-  }),
-).annotate({
-  identifier: "ListCampaignsResponseCampaignsItemCase0MsgTemplatesItem",
-}) as any as S.Schema<ListCampaignsResponseCampaignsItemCase0MsgTemplatesItem>;
+export const ListCampaignsResponseCampaignsItemCase0MsgTemplatesItem =
+  GetBroadcastResponseBroadcastActionsItem as any as S.Schema<ListCampaignsResponseCampaignsItemCase0MsgTemplatesItem>;
 
 /** Indicates the message templates used in this automation. */
 export type ListCampaignsResponseCampaignsItemCase0MsgTemplatesList =
   Array<ListCampaignsResponseCampaignsItemCase0MsgTemplatesItem>;
-export const ListCampaignsResponseCampaignsItemCase0MsgTemplatesList = /*@__PURE__*/ S.Array(
-  ListCampaignsResponseCampaignsItemCase0MsgTemplatesItem,
-) as any as S.Schema<ListCampaignsResponseCampaignsItemCase0MsgTemplatesList>;
+export const ListCampaignsResponseCampaignsItemCase0MsgTemplatesList =
+  GetBroadcastResponseBroadcastActionsList as any as S.Schema<ListCampaignsResponseCampaignsItemCase0MsgTemplatesList>;
 
 /** The status of the automation. */
 export type ListCampaignsResponseCampaignsItemCase0State = "running" | "draft" | "stopped";
@@ -22092,19 +20864,7 @@ export interface ListEmailTranslationsResponseEmailTranslationsItemTransformersF
   remove_line_breaks?: boolean;
 }
 export const ListEmailTranslationsResponseEmailTranslationsItemTransformersFormatterMinify =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      line_length_limit: S.optional(S.Number),
-      remove_css_comments: S.optional(S.Boolean),
-      remove_html_comments: S.optional(
-        ListEmailTranslationsResponseEmailTranslationsItemTransformersFormatterMinifyRemoveHtmlComments,
-      ),
-      remove_indentations: S.optional(S.Boolean),
-      remove_line_breaks: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "ListEmailTranslationsResponseEmailTranslationsItemTransformersFormatterMinify",
-  }) as any as S.Schema<ListEmailTranslationsResponseEmailTranslationsItemTransformersFormatterMinify>;
+  CreateEmailTranslationResponseEmailTranslationTransformersFormatterMinify as any as S.Schema<ListEmailTranslationsResponseEmailTranslationsItemTransformersFormatterMinify>;
 
 /** Character used for indentation. */
 export type ListEmailTranslationsResponseEmailTranslationsItemTransformersFormatterPrettifyIndentCharacter =
@@ -22123,17 +20883,7 @@ export interface ListEmailTranslationsResponseEmailTranslationsItemTransformersF
   wrap_attributes?: boolean;
 }
 export const ListEmailTranslationsResponseEmailTranslationsItemTransformersFormatterPrettify =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      indent_character: S.optional(
-        ListEmailTranslationsResponseEmailTranslationsItemTransformersFormatterPrettifyIndentCharacter,
-      ),
-      indent_size: S.optional(S.Number),
-      wrap_attributes: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "ListEmailTranslationsResponseEmailTranslationsItemTransformersFormatterPrettify",
-  }) as any as S.Schema<ListEmailTranslationsResponseEmailTranslationsItemTransformersFormatterPrettify>;
+  CreateEmailTranslationResponseEmailTranslationTransformersFormatterPrettify as any as S.Schema<ListEmailTranslationsResponseEmailTranslationsItemTransformersFormatterPrettify>;
 
 /** Formatting mode to apply. */
 export type ListEmailTranslationsResponseEmailTranslationsItemTransformersFormatterType =
@@ -22365,24 +21115,8 @@ export interface ListExportsResponseExportsItem {
   /** The user who created the export. */
   user_id?: number;
 }
-export const ListExportsResponseExportsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    created_at: S.optional(S.Number),
-    deduplicate_id: S.optional(S.String),
-    description: S.optional(S.String),
-    downloads: S.optional(S.Number),
-    failed: S.optional(S.Boolean),
-    id: S.optional(S.Number),
-    status: S.optional(ListExportsResponseExportsItemStatus),
-    total: S.optional(S.Number),
-    type: S.optional(ListExportsResponseExportsItemType),
-    updated_at: S.optional(S.Number),
-    user_email: S.optional(S.String),
-    user_id: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ListExportsResponseExportsItem",
-}) as any as S.Schema<ListExportsResponseExportsItem>;
+export const ListExportsResponseExportsItem =
+  ExportDeliveriesDataResponseExport as any as S.Schema<ListExportsResponseExportsItem>;
 
 export type ListExportsResponseExportsList = Array<ListExportsResponseExportsItem>;
 export const ListExportsResponseExportsList = /*@__PURE__*/ S.Array(
@@ -23026,33 +21760,8 @@ export interface ListNewsletterVariantsResponseContentsItem {
   /** Channel type for a one-time send or one-time send content variant. */
   type?: ListNewsletterVariantsResponseContentsItemType;
 }
-export const ListNewsletterVariantsResponseContentsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bcc: S.optional(S.String),
-    body: S.optional(S.String),
-    body_amp: S.optional(S.String),
-    cc: S.optional(S.String),
-    deduplicate_id: S.optional(S.String),
-    fake_bcc: S.optional(S.Boolean),
-    from: S.optional(S.String),
-    from_id: S.optional(S.Number),
-    headers: S.optional(S.String),
-    id: S.optional(S.Number),
-    language: S.optional(S.String),
-    layout: S.optional(S.String),
-    name: S.optional(S.String),
-    newsletter_id: S.optional(S.Number),
-    preheader_text: S.optional(S.String),
-    preprocessor: S.optional(ListNewsletterVariantsResponseContentsItemPreprocessor),
-    recipient: S.optional(S.String),
-    reply_to: S.optional(S.String),
-    reply_to_id: S.optional(S.NullOr(S.Number)),
-    subject: S.optional(S.String),
-    type: S.optional(ListNewsletterVariantsResponseContentsItemType),
-  }),
-).annotate({
-  identifier: "ListNewsletterVariantsResponseContentsItem",
-}) as any as S.Schema<ListNewsletterVariantsResponseContentsItem>;
+export const ListNewsletterVariantsResponseContentsItem =
+  GetNewsletterVariantResponseContent as any as S.Schema<ListNewsletterVariantsResponseContentsItem>;
 
 export type ListNewsletterVariantsResponseContentsList =
   Array<ListNewsletterVariantsResponseContentsItem>;
@@ -23197,21 +21906,8 @@ export interface ListSendersResponseSenderIdentitiesItem {
   /** The type of sender. */
   template_type?: ListSendersResponseSenderIdentitiesItemTemplateType;
 }
-export const ListSendersResponseSenderIdentitiesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    address: S.optional(S.String),
-    auto_generated: S.optional(S.Boolean),
-    deduplicate_id: S.optional(S.String),
-    email: S.optional(S.String),
-    hidden: S.optional(S.Boolean),
-    id: S.optional(S.Number),
-    name: S.optional(S.String),
-    phone: S.optional(S.String),
-    template_type: S.optional(ListSendersResponseSenderIdentitiesItemTemplateType),
-  }),
-).annotate({
-  identifier: "ListSendersResponseSenderIdentitiesItem",
-}) as any as S.Schema<ListSendersResponseSenderIdentitiesItem>;
+export const ListSendersResponseSenderIdentitiesItem =
+  GetSenderResponseSenderIdentity as any as S.Schema<ListSendersResponseSenderIdentitiesItem>;
 
 export type ListSendersResponseSenderIdentitiesList =
   Array<ListSendersResponseSenderIdentitiesItem>;
@@ -23343,39 +22039,14 @@ export interface ListTransactionalVariantsResponseContentsItem {
   /** The date time when the referenced ID was last updated. */
   updated?: number;
 }
-export const ListTransactionalVariantsResponseContentsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bcc: S.optional(S.String),
-    body: S.optional(S.String),
-    body_amp: S.optional(S.String),
-    cc: S.optional(S.String),
-    created: S.optional(S.Number),
-    fake_bcc: S.optional(S.Boolean),
-    from: S.optional(S.String),
-    from_id: S.optional(S.Number),
-    headers: S.optional(S.String),
-    id: S.optional(S.Number),
-    language: S.optional(S.String),
-    name: S.optional(S.String),
-    preheader_text: S.optional(S.String),
-    preprocessor: S.optional(ListTransactionalVariantsResponseContentsItemPreprocessor),
-    recipient: S.optional(S.String),
-    reply_to: S.optional(S.String),
-    reply_to_id: S.optional(S.NullOr(S.Number)),
-    subject: S.optional(S.String),
-    type: S.optional(ListTransactionalVariantsResponseContentsItemType),
-    updated: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ListTransactionalVariantsResponseContentsItem",
-}) as any as S.Schema<ListTransactionalVariantsResponseContentsItem>;
+export const ListTransactionalVariantsResponseContentsItem =
+  GetTransactionalTranslationByIdResponseContent as any as S.Schema<ListTransactionalVariantsResponseContentsItem>;
 
 /** Each object represents one of the variants. */
 export type ListTransactionalVariantsResponseContentsList =
   Array<ListTransactionalVariantsResponseContentsItem>;
-export const ListTransactionalVariantsResponseContentsList = /*@__PURE__*/ S.Array(
-  ListTransactionalVariantsResponseContentsItem,
-) as any as S.Schema<ListTransactionalVariantsResponseContentsList>;
+export const ListTransactionalVariantsResponseContentsList =
+  GetTransactionalVariantResponseContentList as any as S.Schema<ListTransactionalVariantsResponseContentsList>;
 
 export interface ListTransactionalVariantsResponse {
   /** Each object represents one of the variants. */
@@ -23427,20 +22098,8 @@ export interface ListVersionsResponseVersionsItem {
   /** Always `"EMAIL"`. */
   node_type?: ListVersionsResponseVersionsItemNodeType;
 }
-export const ListVersionsResponseVersionsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    created: S.optional(S.Number),
-    created_on_publish: S.optional(S.Boolean),
-    description: S.optional(S.String),
-    feedback: S.optional(S.Boolean),
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    node_id: S.optional(S.String),
-    node_type: S.optional(ListVersionsResponseVersionsItemNodeType),
-  }),
-).annotate({
-  identifier: "ListVersionsResponseVersionsItem",
-}) as any as S.Schema<ListVersionsResponseVersionsItem>;
+export const ListVersionsResponseVersionsItem =
+  GetVersionResponseVersion as any as S.Schema<ListVersionsResponseVersionsItem>;
 
 export type ListVersionsResponseVersionsList = Array<ListVersionsResponseVersionsItem>;
 export const ListVersionsResponseVersionsList = /*@__PURE__*/ S.Array(
@@ -23539,9 +22198,8 @@ export const ListWebhooksResponseReportingWebhooksItemEventsItem = S.String;
 /** Specifies the types of events you want to report to your webhook. See our [reporting webhooks reference](/integrations/api/webhooks/) for more information about event types and the information they return. */
 export type ListWebhooksResponseReportingWebhooksItemEventsList =
   Array<ListWebhooksResponseReportingWebhooksItemEventsItem>;
-export const ListWebhooksResponseReportingWebhooksItemEventsList = /*@__PURE__*/ S.Array(
-  ListWebhooksResponseReportingWebhooksItemEventsItem,
-) as any as S.Schema<ListWebhooksResponseReportingWebhooksItemEventsList>;
+export const ListWebhooksResponseReportingWebhooksItemEventsList =
+  CreateWebhookRequestEventsList as any as S.Schema<ListWebhooksResponseReportingWebhooksItemEventsList>;
 
 /** The type of webhook--`webhook` for a standard reporting webhook or `js` for a JavaScript webhook. */
 export type ListWebhooksResponseReportingWebhooksItemType = "webhook" | "js";
@@ -24248,20 +22906,8 @@ export interface SaveVersionResponseVersion {
   /** Always `"EMAIL"`. */
   node_type?: SaveVersionResponseVersionNodeType;
 }
-export const SaveVersionResponseVersion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    created: S.optional(S.Number),
-    created_on_publish: S.optional(S.Boolean),
-    description: S.optional(S.String),
-    feedback: S.optional(S.Boolean),
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    node_id: S.optional(S.String),
-    node_type: S.optional(SaveVersionResponseVersionNodeType),
-  }),
-).annotate({
-  identifier: "SaveVersionResponseVersion",
-}) as any as S.Schema<SaveVersionResponseVersion>;
+export const SaveVersionResponseVersion =
+  GetVersionResponseVersion as any as S.Schema<SaveVersionResponseVersion>;
 
 export interface SaveVersionResponse {
   /** `false` when the email and its dependencies matched the most recent version exactly, so no new version was saved. `true` when this call created a new version. */
@@ -26569,15 +25215,7 @@ export interface TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemAttribute
   value?: string;
 }
 export const TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemAttribute =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      field: S.String,
-      operator: TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemAttributeOperator,
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemAttribute",
-  }) as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemAttribute>;
+  ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase1Attribute as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemAttribute>;
 
 /** Provide the `id` of a segment containing people you want to search for. */
 export type TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemNotCase0AndItemCase0Segment =
@@ -26696,17 +25334,7 @@ export interface TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemNotCase1O
   value?: string;
 }
 export const TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemNotCase1OrItemCase1Attribute =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      field: S.String,
-      operator:
-        TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemNotCase1OrItemCase1AttributeOperator,
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemNotCase1OrItemCase1Attribute",
-  }) as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemNotCase1OrItemCase1Attribute>;
+  TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemNotCase0AndItemCase1Attribute as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemNotCase1OrItemCase1Attribute>;
 
 /** filter for people who have an attribute or an attribute value. */
 export interface TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemNotCase1OrItemCase1 {
@@ -26714,15 +25342,7 @@ export interface TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemNotCase1O
   attribute?: TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemNotCase1OrItemCase1Attribute;
 }
 export const TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemNotCase1OrItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      attribute: S.optional(
-        TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemNotCase1OrItemCase1Attribute,
-      ),
-    }),
-  ).annotate({
-    identifier: "TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemNotCase1OrItemCase1",
-  }) as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemNotCase1OrItemCase1>;
+  TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemNotCase0AndItemCase1 as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemNotCase1OrItemCase1>;
 
 export type TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemNotCase1OrItem =
   | ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0
@@ -26781,30 +25401,14 @@ export interface TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemNotCase3A
   value?: string;
 }
 export const TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemNotCase3Attribute =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      field: S.String,
-      operator: TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemNotCase3AttributeOperator,
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemNotCase3Attribute",
-  }) as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemNotCase3Attribute>;
+  ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase1Attribute as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemNotCase3Attribute>;
 
 export interface TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemNotCase3 {
   /** Filter your audience by attribute. */
   attribute?: TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemNotCase3Attribute;
 }
 export const TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemNotCase3 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      attribute: S.optional(
-        TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemNotCase3Attribute,
-      ),
-    }),
-  ).annotate({
-    identifier: "TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemNotCase3",
-  }) as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemNotCase3>;
+  ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase1 as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemNotCase3>;
 
 /** Returns results if a condition is false. While and/or support an array of items, `not` supports a single filter object. */
 export type TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemNot =
@@ -26846,15 +25450,7 @@ export interface TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemOrItemCas
   value?: string;
 }
 export const TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemOrItemCase1Attribute =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      field: S.String,
-      operator: TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemOrItemCase1AttributeOperator,
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemOrItemCase1Attribute",
-  }) as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemOrItemCase1Attribute>;
+  ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase1Attribute as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemOrItemCase1Attribute>;
 
 /** filter for people who have an attribute or an attribute value. */
 export interface TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemOrItemCase1 {
@@ -26862,15 +25458,7 @@ export interface TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemOrItemCas
   attribute?: TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemOrItemCase1Attribute;
 }
 export const TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemOrItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      attribute: S.optional(
-        TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemOrItemCase1Attribute,
-      ),
-    }),
-  ).annotate({
-    identifier: "TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemOrItemCase1",
-  }) as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemOrItemCase1>;
+  ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase1 as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemOrItemCase1>;
 
 export type TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemOrItem =
   | ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0
@@ -26962,15 +25550,7 @@ export interface TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemAndItemCas
   value?: string;
 }
 export const TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemAndItemCase1Attribute =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      field: S.String,
-      operator: TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemAndItemCase1AttributeOperator,
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemAndItemCase1Attribute",
-  }) as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemAndItemCase1Attribute>;
+  ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase1Attribute as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemAndItemCase1Attribute>;
 
 /** filter for people who have an attribute or an attribute value. */
 export interface TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemAndItemCase1 {
@@ -26978,15 +25558,7 @@ export interface TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemAndItemCas
   attribute?: TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemAndItemCase1Attribute;
 }
 export const TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemAndItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      attribute: S.optional(
-        TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemAndItemCase1Attribute,
-      ),
-    }),
-  ).annotate({
-    identifier: "TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemAndItemCase1",
-  }) as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemAndItemCase1>;
+  ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase1 as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemAndItemCase1>;
 
 export type TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemAndItem =
   | ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0
@@ -27017,15 +25589,7 @@ export interface TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemAttribute 
   value?: string;
 }
 export const TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemAttribute =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      field: S.String,
-      operator: TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemAttributeOperator,
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemAttribute",
-  }) as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemAttribute>;
+  ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase1Attribute as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemAttribute>;
 
 /** Provide the `id` of a segment containing people you want to search for. */
 export type TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemNotCase0AndItemCase0Segment =
@@ -27058,17 +25622,7 @@ export interface TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemNotCase0An
   value?: string;
 }
 export const TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemNotCase0AndItemCase1Attribute =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      field: S.String,
-      operator:
-        TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemNotCase0AndItemCase1AttributeOperator,
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemNotCase0AndItemCase1Attribute",
-  }) as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemNotCase0AndItemCase1Attribute>;
+  TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemNotCase0AndItemCase1Attribute as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemNotCase0AndItemCase1Attribute>;
 
 /** filter for people who have an attribute or an attribute value. */
 export interface TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemNotCase0AndItemCase1 {
@@ -27076,15 +25630,7 @@ export interface TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemNotCase0An
   attribute?: TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemNotCase0AndItemCase1Attribute;
 }
 export const TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemNotCase0AndItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      attribute: S.optional(
-        TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemNotCase0AndItemCase1Attribute,
-      ),
-    }),
-  ).annotate({
-    identifier: "TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemNotCase0AndItemCase1",
-  }) as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemNotCase0AndItemCase1>;
+  TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemNotCase0AndItemCase1 as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemNotCase0AndItemCase1>;
 
 export type TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemNotCase0AndItem =
   | ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0
@@ -27144,16 +25690,7 @@ export interface TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemNotCase1Or
   value?: string;
 }
 export const TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemNotCase1OrItemCase1Attribute =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      field: S.String,
-      operator:
-        TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemNotCase1OrItemCase1AttributeOperator,
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemNotCase1OrItemCase1Attribute",
-  }) as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemNotCase1OrItemCase1Attribute>;
+  ExportPeopleDataRequestFiltersCase2Case0AndItemNotCase0AndItemCase1Attribute as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemNotCase1OrItemCase1Attribute>;
 
 /** filter for people who have an attribute or an attribute value. */
 export interface TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemNotCase1OrItemCase1 {
@@ -27161,15 +25698,7 @@ export interface TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemNotCase1Or
   attribute?: TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemNotCase1OrItemCase1Attribute;
 }
 export const TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemNotCase1OrItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      attribute: S.optional(
-        TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemNotCase1OrItemCase1Attribute,
-      ),
-    }),
-  ).annotate({
-    identifier: "TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemNotCase1OrItemCase1",
-  }) as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemNotCase1OrItemCase1>;
+  ExportPeopleDataRequestFiltersCase2Case0AndItemNotCase0AndItemCase1 as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemNotCase1OrItemCase1>;
 
 export type TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemNotCase1OrItem =
   | ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0
@@ -27228,28 +25757,14 @@ export interface TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemNotCase3At
   value?: string;
 }
 export const TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemNotCase3Attribute =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      field: S.String,
-      operator: TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemNotCase3AttributeOperator,
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemNotCase3Attribute",
-  }) as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemNotCase3Attribute>;
+  ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase1Attribute as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemNotCase3Attribute>;
 
 export interface TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemNotCase3 {
   /** Filter your audience by attribute. */
   attribute?: TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemNotCase3Attribute;
 }
 export const TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemNotCase3 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      attribute: S.optional(TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemNotCase3Attribute),
-    }),
-  ).annotate({
-    identifier: "TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemNotCase3",
-  }) as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemNotCase3>;
+  ExportPeopleDataRequestFiltersCase0AndItemNotCase1OrItemCase1 as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemNotCase3>;
 
 /** Returns results if a condition is false. While and/or support an array of items, `not` supports a single filter object. */
 export type TriggerBroadcastRequestBodyCase1RecipientsCase1OrItemNot =
@@ -27337,16 +25852,7 @@ export interface TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemAndI
   value?: string;
 }
 export const TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemAndItemCase1Attribute =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      field: S.String,
-      operator:
-        TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemAndItemCase1AttributeOperator,
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemAndItemCase1Attribute",
-  }) as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemAndItemCase1Attribute>;
+  ExportPeopleDataRequestFiltersCase2Case0AndItemNotCase0AndItemCase1Attribute as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemAndItemCase1Attribute>;
 
 /** filter for people who have an attribute or an attribute value. */
 export interface TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemAndItemCase1 {
@@ -27354,15 +25860,7 @@ export interface TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemAndI
   attribute?: TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemAndItemCase1Attribute;
 }
 export const TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemAndItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      attribute: S.optional(
-        TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemAndItemCase1Attribute,
-      ),
-    }),
-  ).annotate({
-    identifier: "TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemAndItemCase1",
-  }) as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemAndItemCase1>;
+  ExportPeopleDataRequestFiltersCase2Case0AndItemNotCase0AndItemCase1 as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemAndItemCase1>;
 
 export type TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemAndItem =
   | ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0
@@ -27397,15 +25895,7 @@ export interface TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemAttr
   value?: string;
 }
 export const TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemAttribute =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      field: S.String,
-      operator: TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemAttributeOperator,
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemAttribute",
-  }) as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemAttribute>;
+  ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase1Attribute as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemAttribute>;
 
 /** Provide the `id` of a segment containing people you want to search for. */
 export type TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemNotCase0AndItemCase0Segment =
@@ -27438,17 +25928,7 @@ export interface TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemNotC
   value?: string;
 }
 export const TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemNotCase0AndItemCase1Attribute =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      field: S.String,
-      operator:
-        TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemNotCase0AndItemCase1AttributeOperator,
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemNotCase0AndItemCase1Attribute",
-  }) as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemNotCase0AndItemCase1Attribute>;
+  TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemNotCase0AndItemCase1Attribute as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemNotCase0AndItemCase1Attribute>;
 
 /** filter for people who have an attribute or an attribute value. */
 export interface TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemNotCase0AndItemCase1 {
@@ -27456,15 +25936,7 @@ export interface TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemNotC
   attribute?: TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemNotCase0AndItemCase1Attribute;
 }
 export const TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemNotCase0AndItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      attribute: S.optional(
-        TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemNotCase0AndItemCase1Attribute,
-      ),
-    }),
-  ).annotate({
-    identifier: "TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemNotCase0AndItemCase1",
-  }) as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemNotCase0AndItemCase1>;
+  TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemNotCase0AndItemCase1 as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemNotCase0AndItemCase1>;
 
 export type TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemNotCase0AndItem =
   | ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0
@@ -27524,17 +25996,7 @@ export interface TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemNotC
   value?: string;
 }
 export const TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemNotCase1OrItemCase1Attribute =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      field: S.String,
-      operator:
-        TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemNotCase1OrItemCase1AttributeOperator,
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemNotCase1OrItemCase1Attribute",
-  }) as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemNotCase1OrItemCase1Attribute>;
+  TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemNotCase0AndItemCase1Attribute as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemNotCase1OrItemCase1Attribute>;
 
 /** filter for people who have an attribute or an attribute value. */
 export interface TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemNotCase1OrItemCase1 {
@@ -27542,15 +26004,7 @@ export interface TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemNotC
   attribute?: TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemNotCase1OrItemCase1Attribute;
 }
 export const TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemNotCase1OrItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      attribute: S.optional(
-        TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemNotCase1OrItemCase1Attribute,
-      ),
-    }),
-  ).annotate({
-    identifier: "TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemNotCase1OrItemCase1",
-  }) as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemNotCase1OrItemCase1>;
+  TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemNotCase0AndItemCase1 as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemNotCase1OrItemCase1>;
 
 export type TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemNotCase1OrItem =
   | ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0
@@ -27609,31 +26063,14 @@ export interface TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemNotC
   value?: string;
 }
 export const TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemNotCase3Attribute =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      field: S.String,
-      operator:
-        TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemNotCase3AttributeOperator,
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemNotCase3Attribute",
-  }) as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemNotCase3Attribute>;
+  ExportPeopleDataRequestFiltersCase2Case0AndItemNotCase0AndItemCase1Attribute as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemNotCase3Attribute>;
 
 export interface TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemNotCase3 {
   /** Filter your audience by attribute. */
   attribute?: TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemNotCase3Attribute;
 }
 export const TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemNotCase3 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      attribute: S.optional(
-        TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemNotCase3Attribute,
-      ),
-    }),
-  ).annotate({
-    identifier: "TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemNotCase3",
-  }) as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemNotCase3>;
+  ExportPeopleDataRequestFiltersCase2Case0AndItemNotCase0AndItemCase1 as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemNotCase3>;
 
 /** Returns results if a condition is false. While and/or support an array of items, `not` supports a single filter object. */
 export type TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemNot =
@@ -27675,16 +26112,7 @@ export interface TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemOrIt
   value?: string;
 }
 export const TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemOrItemCase1Attribute =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      field: S.String,
-      operator:
-        TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemOrItemCase1AttributeOperator,
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemOrItemCase1Attribute",
-  }) as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemOrItemCase1Attribute>;
+  ExportPeopleDataRequestFiltersCase2Case0AndItemNotCase0AndItemCase1Attribute as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemOrItemCase1Attribute>;
 
 /** filter for people who have an attribute or an attribute value. */
 export interface TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemOrItemCase1 {
@@ -27692,15 +26120,7 @@ export interface TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemOrIt
   attribute?: TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemOrItemCase1Attribute;
 }
 export const TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemOrItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      attribute: S.optional(
-        TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemOrItemCase1Attribute,
-      ),
-    }),
-  ).annotate({
-    identifier: "TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemOrItemCase1",
-  }) as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemOrItemCase1>;
+  ExportPeopleDataRequestFiltersCase2Case0AndItemNotCase0AndItemCase1 as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemOrItemCase1>;
 
 export type TriggerBroadcastRequestBodyCase1RecipientsCase2Case0AndItemOrItem =
   | ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0
@@ -27798,16 +26218,7 @@ export interface TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemAndIt
   value?: string;
 }
 export const TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemAndItemCase1Attribute =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      field: S.String,
-      operator:
-        TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemAndItemCase1AttributeOperator,
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemAndItemCase1Attribute",
-  }) as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemAndItemCase1Attribute>;
+  ExportPeopleDataRequestFiltersCase2Case0AndItemNotCase0AndItemCase1Attribute as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemAndItemCase1Attribute>;
 
 /** filter for people who have an attribute or an attribute value. */
 export interface TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemAndItemCase1 {
@@ -27815,15 +26226,7 @@ export interface TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemAndIt
   attribute?: TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemAndItemCase1Attribute;
 }
 export const TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemAndItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      attribute: S.optional(
-        TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemAndItemCase1Attribute,
-      ),
-    }),
-  ).annotate({
-    identifier: "TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemAndItemCase1",
-  }) as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemAndItemCase1>;
+  ExportPeopleDataRequestFiltersCase2Case0AndItemNotCase0AndItemCase1 as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemAndItemCase1>;
 
 export type TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemAndItem =
   | ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0
@@ -27857,15 +26260,7 @@ export interface TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemAttri
   value?: string;
 }
 export const TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemAttribute =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      field: S.String,
-      operator: TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemAttributeOperator,
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemAttribute",
-  }) as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemAttribute>;
+  ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase1Attribute as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemAttribute>;
 
 /** Provide the `id` of a segment containing people you want to search for. */
 export type TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemNotCase0AndItemCase0Segment =
@@ -27898,17 +26293,7 @@ export interface TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemNotCa
   value?: string;
 }
 export const TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemNotCase0AndItemCase1Attribute =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      field: S.String,
-      operator:
-        TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemNotCase0AndItemCase1AttributeOperator,
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemNotCase0AndItemCase1Attribute",
-  }) as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemNotCase0AndItemCase1Attribute>;
+  TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemNotCase0AndItemCase1Attribute as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemNotCase0AndItemCase1Attribute>;
 
 /** filter for people who have an attribute or an attribute value. */
 export interface TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemNotCase0AndItemCase1 {
@@ -27916,15 +26301,7 @@ export interface TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemNotCa
   attribute?: TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemNotCase0AndItemCase1Attribute;
 }
 export const TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemNotCase0AndItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      attribute: S.optional(
-        TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemNotCase0AndItemCase1Attribute,
-      ),
-    }),
-  ).annotate({
-    identifier: "TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemNotCase0AndItemCase1",
-  }) as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemNotCase0AndItemCase1>;
+  TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemNotCase0AndItemCase1 as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemNotCase0AndItemCase1>;
 
 export type TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemNotCase0AndItem =
   | ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0
@@ -27984,17 +26361,7 @@ export interface TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemNotCa
   value?: string;
 }
 export const TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemNotCase1OrItemCase1Attribute =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      field: S.String,
-      operator:
-        TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemNotCase1OrItemCase1AttributeOperator,
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemNotCase1OrItemCase1Attribute",
-  }) as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemNotCase1OrItemCase1Attribute>;
+  TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemNotCase0AndItemCase1Attribute as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemNotCase1OrItemCase1Attribute>;
 
 /** filter for people who have an attribute or an attribute value. */
 export interface TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemNotCase1OrItemCase1 {
@@ -28002,15 +26369,7 @@ export interface TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemNotCa
   attribute?: TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemNotCase1OrItemCase1Attribute;
 }
 export const TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemNotCase1OrItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      attribute: S.optional(
-        TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemNotCase1OrItemCase1Attribute,
-      ),
-    }),
-  ).annotate({
-    identifier: "TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemNotCase1OrItemCase1",
-  }) as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemNotCase1OrItemCase1>;
+  TriggerBroadcastRequestBodyCase1RecipientsCase0AndItemNotCase0AndItemCase1 as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemNotCase1OrItemCase1>;
 
 export type TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemNotCase1OrItem =
   | ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0
@@ -28069,30 +26428,14 @@ export interface TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemNotCa
   value?: string;
 }
 export const TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemNotCase3Attribute =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      field: S.String,
-      operator: TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemNotCase3AttributeOperator,
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemNotCase3Attribute",
-  }) as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemNotCase3Attribute>;
+  ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase1Attribute as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemNotCase3Attribute>;
 
 export interface TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemNotCase3 {
   /** Filter your audience by attribute. */
   attribute?: TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemNotCase3Attribute;
 }
 export const TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemNotCase3 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      attribute: S.optional(
-        TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemNotCase3Attribute,
-      ),
-    }),
-  ).annotate({
-    identifier: "TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemNotCase3",
-  }) as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemNotCase3>;
+  ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase1 as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemNotCase3>;
 
 /** Returns results if a condition is false. While and/or support an array of items, `not` supports a single filter object. */
 export type TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemNot =
@@ -28134,16 +26477,7 @@ export interface TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemOrIte
   value?: string;
 }
 export const TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemOrItemCase1Attribute =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      field: S.String,
-      operator:
-        TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemOrItemCase1AttributeOperator,
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemOrItemCase1Attribute",
-  }) as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemOrItemCase1Attribute>;
+  ExportPeopleDataRequestFiltersCase2Case0AndItemNotCase0AndItemCase1Attribute as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemOrItemCase1Attribute>;
 
 /** filter for people who have an attribute or an attribute value. */
 export interface TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemOrItemCase1 {
@@ -28151,15 +26485,7 @@ export interface TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemOrIte
   attribute?: TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemOrItemCase1Attribute;
 }
 export const TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemOrItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      attribute: S.optional(
-        TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemOrItemCase1Attribute,
-      ),
-    }),
-  ).annotate({
-    identifier: "TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemOrItemCase1",
-  }) as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemOrItemCase1>;
+  ExportPeopleDataRequestFiltersCase2Case0AndItemNotCase0AndItemCase1 as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemOrItemCase1>;
 
 export type TriggerBroadcastRequestBodyCase1RecipientsCase2Case1OrItemOrItem =
   | ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0
@@ -28251,27 +26577,14 @@ export interface TriggerBroadcastRequestBodyCase1RecipientsCase2Case3Attribute {
   value?: string;
 }
 export const TriggerBroadcastRequestBodyCase1RecipientsCase2Case3Attribute =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      field: S.String,
-      operator: TriggerBroadcastRequestBodyCase1RecipientsCase2Case3AttributeOperator,
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "TriggerBroadcastRequestBodyCase1RecipientsCase2Case3Attribute",
-  }) as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase2Case3Attribute>;
+  ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase1Attribute as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase2Case3Attribute>;
 
 export interface TriggerBroadcastRequestBodyCase1RecipientsCase2Case3 {
   /** Filter your audience by attribute. */
   attribute?: TriggerBroadcastRequestBodyCase1RecipientsCase2Case3Attribute;
 }
-export const TriggerBroadcastRequestBodyCase1RecipientsCase2Case3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attribute: S.optional(TriggerBroadcastRequestBodyCase1RecipientsCase2Case3Attribute),
-  }),
-).annotate({
-  identifier: "TriggerBroadcastRequestBodyCase1RecipientsCase2Case3",
-}) as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase2Case3>;
+export const TriggerBroadcastRequestBodyCase1RecipientsCase2Case3 =
+  ExportPeopleDataRequestFiltersCase0AndItemOrItemCase1 as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase2Case3>;
 
 /** Returns results if a condition is false. While and/or support an array of items, `not` supports a single filter object. */
 export type TriggerBroadcastRequestBodyCase1RecipientsCase2 =
@@ -28307,29 +26620,16 @@ export interface TriggerBroadcastRequestBodyCase1RecipientsCase4Attribute {
   /** The value you want to match for this attribute. You must include a value if you use the `eq` operator. */
   value?: string;
 }
-export const TriggerBroadcastRequestBodyCase1RecipientsCase4Attribute = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      field: S.String,
-      operator: TriggerBroadcastRequestBodyCase1RecipientsCase4AttributeOperator,
-      value: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "TriggerBroadcastRequestBodyCase1RecipientsCase4Attribute",
-}) as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase4Attribute>;
+export const TriggerBroadcastRequestBodyCase1RecipientsCase4Attribute =
+  ExportPeopleDataRequestFiltersCase0AndItemNotCase3Attribute as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase4Attribute>;
 
 /** filter for people who have an attribute or an attribute value. */
 export interface TriggerBroadcastRequestBodyCase1RecipientsCase4 {
   /** Filter your audience by attribute. */
   attribute?: TriggerBroadcastRequestBodyCase1RecipientsCase4Attribute;
 }
-export const TriggerBroadcastRequestBodyCase1RecipientsCase4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attribute: S.optional(TriggerBroadcastRequestBodyCase1RecipientsCase4Attribute),
-  }),
-).annotate({
-  identifier: "TriggerBroadcastRequestBodyCase1RecipientsCase4",
-}) as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase4>;
+export const TriggerBroadcastRequestBodyCase1RecipientsCase4 =
+  ExportPeopleDataRequestFiltersCase0AndItemNotCase3 as any as S.Schema<TriggerBroadcastRequestBodyCase1RecipientsCase4>;
 
 /** Use `and`, `or`, and `not` to combine segment and attribute conditions. The top-level object accepts one property; nest groups for complex filters. */
 export type TriggerBroadcastRequestBodyCase1Recipients =
@@ -28966,37 +27266,8 @@ export interface UpdateBroadcastActionResponseActionCase0 {
   /** The date time when the referenced ID was last updated. */
   updated?: number;
 }
-export const UpdateBroadcastActionResponseActionCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bcc: S.optional(S.String),
-    body: S.optional(S.String),
-    body_amp: S.optional(S.String),
-    broadcast_id: S.optional(S.Number),
-    cc: S.optional(S.String),
-    created: S.optional(S.Number),
-    deduplicate_id: S.optional(S.String),
-    fake_bcc: S.optional(S.Boolean),
-    from: S.optional(S.String),
-    from_id: S.optional(S.Number),
-    headers: S.optional(S.String),
-    id: S.optional(S.Number),
-    language: S.optional(S.String),
-    layout: S.optional(S.String),
-    multi_language_branch_action_id: S.optional(S.Number),
-    name: S.optional(S.String),
-    preheader_text: S.optional(S.String),
-    preprocessor: S.optional(UpdateBroadcastActionResponseActionCase0Preprocessor),
-    recipient: S.optional(S.String),
-    reply_to: S.optional(S.String),
-    reply_to_id: S.optional(S.NullOr(S.Number)),
-    sending_state: S.optional(UpdateBroadcastActionResponseActionCase0SendingState),
-    subject: S.optional(S.String),
-    type: S.optional(UpdateBroadcastActionResponseActionCase0Type),
-    updated: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "UpdateBroadcastActionResponseActionCase0",
-}) as any as S.Schema<UpdateBroadcastActionResponseActionCase0>;
+export const UpdateBroadcastActionResponseActionCase0 =
+  BroadcastActionsResponseActionsItemCase0 as any as S.Schema<UpdateBroadcastActionResponseActionCase0>;
 
 /** Determines the sending behavior for the action. `automatic` sends the action automatically when triggered; `draft` queues drafts when the action is triggered; or `off` to disable the action. */
 export type UpdateBroadcastActionResponseActionCase1SendingState = "automatic" | "draft" | "off";
@@ -29036,26 +27307,8 @@ export interface UpdateBroadcastActionResponseActionCase1 {
   /** The date time when the referenced ID was last updated. */
   updated?: number;
 }
-export const UpdateBroadcastActionResponseActionCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(S.String),
-    broadcast_id: S.optional(S.Number),
-    created: S.optional(S.Number),
-    deduplicate_id: S.optional(S.String),
-    id: S.optional(S.Number),
-    image_url: S.optional(S.String),
-    language: S.optional(S.String),
-    layout: S.optional(S.String),
-    multi_language_branch_action_id: S.optional(S.Number),
-    name: S.optional(S.String),
-    recipient: S.optional(S.String),
-    sending_state: S.optional(UpdateBroadcastActionResponseActionCase1SendingState),
-    type: S.optional(UpdateBroadcastActionResponseActionCase1Type),
-    updated: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "UpdateBroadcastActionResponseActionCase1",
-}) as any as S.Schema<UpdateBroadcastActionResponseActionCase1>;
+export const UpdateBroadcastActionResponseActionCase1 =
+  BroadcastActionsResponseActionsItemCase1 as any as S.Schema<UpdateBroadcastActionResponseActionCase1>;
 
 /** Determines the sending behavior for the action. `automatic` sends the action automatically when triggered; `draft` queues drafts when the action is triggered; or `off` to disable the action. */
 export type UpdateBroadcastActionResponseActionCase2SendingState = "automatic" | "draft" | "off";
@@ -29100,28 +27353,8 @@ export interface UpdateBroadcastActionResponseActionCase2 {
   /** The date time when the referenced ID was last updated. */
   updated?: number;
 }
-export const UpdateBroadcastActionResponseActionCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(S.String),
-    body_json: S.optional(S.String),
-    broadcast_id: S.optional(S.Number),
-    created: S.optional(S.Number),
-    deduplicate_id: S.optional(S.String),
-    id: S.optional(S.Number),
-    language: S.optional(S.String),
-    multi_language_branch_action_id: S.optional(S.Number),
-    name: S.optional(S.String),
-    recipient: S.optional(S.String),
-    send_to_unsubscribed: S.optional(S.Boolean),
-    sender_identity_id: S.optional(S.Number),
-    sending_state: S.optional(UpdateBroadcastActionResponseActionCase2SendingState),
-    tracked: S.optional(S.Boolean),
-    type: S.optional(UpdateBroadcastActionResponseActionCase2Type),
-    updated: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "UpdateBroadcastActionResponseActionCase2",
-}) as any as S.Schema<UpdateBroadcastActionResponseActionCase2>;
+export const UpdateBroadcastActionResponseActionCase2 =
+  BroadcastActionsResponseActionsItemCase2 as any as S.Schema<UpdateBroadcastActionResponseActionCase2>;
 
 /** The HTTP method for your webhook. */
 export type UpdateBroadcastActionResponseActionCase3Method =
@@ -29170,26 +27403,8 @@ export interface UpdateBroadcastActionResponseActionCase3 {
   /** The URL to send a webhook to, applies to `webhook` type actions. */
   url?: string;
 }
-export const UpdateBroadcastActionResponseActionCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(S.String),
-    broadcast_id: S.optional(S.Number),
-    created: S.optional(S.Number),
-    deduplicate_id: S.optional(S.String),
-    headers: S.optional(S.String),
-    id: S.optional(S.Number),
-    layout: S.optional(S.String),
-    method: S.optional(UpdateBroadcastActionResponseActionCase3Method),
-    multi_language_branch_action_id: S.optional(S.Number),
-    name: S.optional(S.String),
-    sending_state: S.optional(UpdateBroadcastActionResponseActionCase3SendingState),
-    type: S.optional(UpdateBroadcastActionResponseActionCase3Type),
-    updated: S.optional(S.Number),
-    url: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateBroadcastActionResponseActionCase3",
-}) as any as S.Schema<UpdateBroadcastActionResponseActionCase3>;
+export const UpdateBroadcastActionResponseActionCase3 =
+  BroadcastActionsResponseActionsItemCase3 as any as S.Schema<UpdateBroadcastActionResponseActionCase3>;
 
 export type UpdateBroadcastActionResponseAction =
   | UpdateBroadcastActionResponseActionCase0
@@ -29286,17 +27501,8 @@ export interface UpdateBroadcastActionLanguageRequestBodyCase1 {
   /** Determines the sending behavior for the action. `automatic` sends the action automatically when triggered; `draft` queues drafts when the action is triggered; or `off` to disable the action. */
   sending_state?: UpdateBroadcastActionLanguageRequestBodyCase1SendingState | (string & {});
 }
-export const UpdateBroadcastActionLanguageRequestBodyCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(S.String),
-    broadcast_id: S.optional(S.Number),
-    image_url: S.optional(S.String),
-    recipient: S.optional(S.String),
-    sending_state: S.optional(UpdateBroadcastActionLanguageRequestBodyCase1SendingState),
-  }),
-).annotate({
-  identifier: "UpdateBroadcastActionLanguageRequestBodyCase1",
-}) as any as S.Schema<UpdateBroadcastActionLanguageRequestBodyCase1>;
+export const UpdateBroadcastActionLanguageRequestBodyCase1 =
+  UpdateBroadcastActionRequestBodyCase1 as any as S.Schema<UpdateBroadcastActionLanguageRequestBodyCase1>;
 
 /** Determines the sending behavior for the action. `automatic` sends the action automatically when triggered; `draft` queues drafts when the action is triggered; or `off` to disable the action. */
 export type UpdateBroadcastActionLanguageRequestBodyCase2SendingState =
@@ -29324,20 +27530,8 @@ export interface UpdateBroadcastActionLanguageRequestBodyCase2 {
   /** Whether links in template parameters should be tracked. */
   tracked?: boolean;
 }
-export const UpdateBroadcastActionLanguageRequestBodyCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(S.String),
-    body_json: S.optional(S.String),
-    broadcast_id: S.optional(S.Number),
-    recipient: S.optional(S.String),
-    send_to_unsubscribed: S.optional(S.Boolean),
-    sender_identity_id: S.optional(S.Number),
-    sending_state: S.optional(UpdateBroadcastActionLanguageRequestBodyCase2SendingState),
-    tracked: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "UpdateBroadcastActionLanguageRequestBodyCase2",
-}) as any as S.Schema<UpdateBroadcastActionLanguageRequestBodyCase2>;
+export const UpdateBroadcastActionLanguageRequestBodyCase2 =
+  UpdateBroadcastActionRequestBodyCase2 as any as S.Schema<UpdateBroadcastActionLanguageRequestBodyCase2>;
 
 /** The HTTP method for your webhook. */
 export type UpdateBroadcastActionLanguageRequestBodyCase3Method =
@@ -29369,18 +27563,8 @@ export interface UpdateBroadcastActionLanguageRequestBodyCase3 {
   /** The URL to send a webhook to, applies to `webhook` type actions. */
   url?: string;
 }
-export const UpdateBroadcastActionLanguageRequestBodyCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(S.String),
-    broadcast_id: S.optional(S.Number),
-    headers: S.optional(S.String),
-    method: S.optional(UpdateBroadcastActionLanguageRequestBodyCase3Method),
-    sending_state: S.optional(UpdateBroadcastActionLanguageRequestBodyCase3SendingState),
-    url: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateBroadcastActionLanguageRequestBodyCase3",
-}) as any as S.Schema<UpdateBroadcastActionLanguageRequestBodyCase3>;
+export const UpdateBroadcastActionLanguageRequestBodyCase3 =
+  UpdateBroadcastActionRequestBodyCase3 as any as S.Schema<UpdateBroadcastActionLanguageRequestBodyCase3>;
 
 export type UpdateBroadcastActionLanguageRequestBody =
   | UpdateBroadcastActionLanguageRequestBodyCase0
@@ -29489,37 +27673,8 @@ export interface UpdateBroadcastActionLanguageResponseActionCase0 {
   /** The date time when the referenced ID was last updated. */
   updated?: number;
 }
-export const UpdateBroadcastActionLanguageResponseActionCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bcc: S.optional(S.String),
-    body: S.optional(S.String),
-    body_amp: S.optional(S.String),
-    broadcast_id: S.optional(S.Number),
-    cc: S.optional(S.String),
-    created: S.optional(S.Number),
-    deduplicate_id: S.optional(S.String),
-    fake_bcc: S.optional(S.Boolean),
-    from: S.optional(S.String),
-    from_id: S.optional(S.Number),
-    headers: S.optional(S.String),
-    id: S.optional(S.Number),
-    language: S.optional(S.String),
-    layout: S.optional(S.String),
-    multi_language_branch_action_id: S.optional(S.Number),
-    name: S.optional(S.String),
-    preheader_text: S.optional(S.String),
-    preprocessor: S.optional(UpdateBroadcastActionLanguageResponseActionCase0Preprocessor),
-    recipient: S.optional(S.String),
-    reply_to: S.optional(S.String),
-    reply_to_id: S.optional(S.NullOr(S.Number)),
-    sending_state: S.optional(UpdateBroadcastActionLanguageResponseActionCase0SendingState),
-    subject: S.optional(S.String),
-    type: S.optional(UpdateBroadcastActionLanguageResponseActionCase0Type),
-    updated: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "UpdateBroadcastActionLanguageResponseActionCase0",
-}) as any as S.Schema<UpdateBroadcastActionLanguageResponseActionCase0>;
+export const UpdateBroadcastActionLanguageResponseActionCase0 =
+  BroadcastActionsResponseActionsItemCase0 as any as S.Schema<UpdateBroadcastActionLanguageResponseActionCase0>;
 
 /** Determines the sending behavior for the action. `automatic` sends the action automatically when triggered; `draft` queues drafts when the action is triggered; or `off` to disable the action. */
 export type UpdateBroadcastActionLanguageResponseActionCase1SendingState =
@@ -29562,26 +27717,8 @@ export interface UpdateBroadcastActionLanguageResponseActionCase1 {
   /** The date time when the referenced ID was last updated. */
   updated?: number;
 }
-export const UpdateBroadcastActionLanguageResponseActionCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(S.String),
-    broadcast_id: S.optional(S.Number),
-    created: S.optional(S.Number),
-    deduplicate_id: S.optional(S.String),
-    id: S.optional(S.Number),
-    image_url: S.optional(S.String),
-    language: S.optional(S.String),
-    layout: S.optional(S.String),
-    multi_language_branch_action_id: S.optional(S.Number),
-    name: S.optional(S.String),
-    recipient: S.optional(S.String),
-    sending_state: S.optional(UpdateBroadcastActionLanguageResponseActionCase1SendingState),
-    type: S.optional(UpdateBroadcastActionLanguageResponseActionCase1Type),
-    updated: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "UpdateBroadcastActionLanguageResponseActionCase1",
-}) as any as S.Schema<UpdateBroadcastActionLanguageResponseActionCase1>;
+export const UpdateBroadcastActionLanguageResponseActionCase1 =
+  BroadcastActionsResponseActionsItemCase1 as any as S.Schema<UpdateBroadcastActionLanguageResponseActionCase1>;
 
 /** Determines the sending behavior for the action. `automatic` sends the action automatically when triggered; `draft` queues drafts when the action is triggered; or `off` to disable the action. */
 export type UpdateBroadcastActionLanguageResponseActionCase2SendingState =
@@ -29629,28 +27766,8 @@ export interface UpdateBroadcastActionLanguageResponseActionCase2 {
   /** The date time when the referenced ID was last updated. */
   updated?: number;
 }
-export const UpdateBroadcastActionLanguageResponseActionCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(S.String),
-    body_json: S.optional(S.String),
-    broadcast_id: S.optional(S.Number),
-    created: S.optional(S.Number),
-    deduplicate_id: S.optional(S.String),
-    id: S.optional(S.Number),
-    language: S.optional(S.String),
-    multi_language_branch_action_id: S.optional(S.Number),
-    name: S.optional(S.String),
-    recipient: S.optional(S.String),
-    send_to_unsubscribed: S.optional(S.Boolean),
-    sender_identity_id: S.optional(S.Number),
-    sending_state: S.optional(UpdateBroadcastActionLanguageResponseActionCase2SendingState),
-    tracked: S.optional(S.Boolean),
-    type: S.optional(UpdateBroadcastActionLanguageResponseActionCase2Type),
-    updated: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "UpdateBroadcastActionLanguageResponseActionCase2",
-}) as any as S.Schema<UpdateBroadcastActionLanguageResponseActionCase2>;
+export const UpdateBroadcastActionLanguageResponseActionCase2 =
+  BroadcastActionsResponseActionsItemCase2 as any as S.Schema<UpdateBroadcastActionLanguageResponseActionCase2>;
 
 /** The HTTP method for your webhook. */
 export type UpdateBroadcastActionLanguageResponseActionCase3Method =
@@ -29702,26 +27819,8 @@ export interface UpdateBroadcastActionLanguageResponseActionCase3 {
   /** The URL to send a webhook to, applies to `webhook` type actions. */
   url?: string;
 }
-export const UpdateBroadcastActionLanguageResponseActionCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(S.String),
-    broadcast_id: S.optional(S.Number),
-    created: S.optional(S.Number),
-    deduplicate_id: S.optional(S.String),
-    headers: S.optional(S.String),
-    id: S.optional(S.Number),
-    layout: S.optional(S.String),
-    method: S.optional(UpdateBroadcastActionLanguageResponseActionCase3Method),
-    multi_language_branch_action_id: S.optional(S.Number),
-    name: S.optional(S.String),
-    sending_state: S.optional(UpdateBroadcastActionLanguageResponseActionCase3SendingState),
-    type: S.optional(UpdateBroadcastActionLanguageResponseActionCase3Type),
-    updated: S.optional(S.Number),
-    url: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateBroadcastActionLanguageResponseActionCase3",
-}) as any as S.Schema<UpdateBroadcastActionLanguageResponseActionCase3>;
+export const UpdateBroadcastActionLanguageResponseActionCase3 =
+  BroadcastActionsResponseActionsItemCase3 as any as S.Schema<UpdateBroadcastActionLanguageResponseActionCase3>;
 
 export type UpdateBroadcastActionLanguageResponseAction =
   | UpdateBroadcastActionLanguageResponseActionCase0
@@ -30006,39 +28105,8 @@ export interface UpdateCampaignActionResponseActionCase0 {
   /** The date time when the referenced ID was last updated. */
   updated?: number;
 }
-export const UpdateCampaignActionResponseActionCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bcc: S.optional(S.String),
-    body: S.optional(S.String),
-    body_amp: S.optional(S.String),
-    broadcast_id: S.optional(S.Number),
-    campaign_id: S.optional(S.Number),
-    cc: S.optional(S.String),
-    created: S.optional(S.Number),
-    deduplicate_id: S.optional(S.String),
-    fake_bcc: S.optional(S.Boolean),
-    from: S.optional(S.String),
-    from_id: S.optional(S.Number),
-    headers: S.optional(S.String),
-    id: S.optional(S.Number),
-    language: S.optional(S.String),
-    layout: S.optional(S.String),
-    multi_language_branch_action_id: S.optional(S.Number),
-    name: S.optional(S.String),
-    parent_action_id: S.optional(S.Number),
-    preheader_text: S.optional(S.String),
-    preprocessor: S.optional(UpdateCampaignActionResponseActionCase0Preprocessor),
-    recipient: S.optional(S.String),
-    reply_to: S.optional(S.String),
-    reply_to_id: S.optional(S.NullOr(S.Number)),
-    sending_state: S.optional(UpdateCampaignActionResponseActionCase0SendingState),
-    subject: S.optional(S.String),
-    type: S.optional(UpdateCampaignActionResponseActionCase0Type),
-    updated: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "UpdateCampaignActionResponseActionCase0",
-}) as any as S.Schema<UpdateCampaignActionResponseActionCase0>;
+export const UpdateCampaignActionResponseActionCase0 =
+  GetCampaignActionResponseActionCase0 as any as S.Schema<UpdateCampaignActionResponseActionCase0>;
 
 /** Determines the sending behavior for the action. `automatic` sends the action automatically when triggered; `draft` queues drafts when the action is triggered; or `off` to disable the action. */
 export type UpdateCampaignActionResponseActionCase1SendingState = "automatic" | "draft" | "off";
@@ -30080,27 +28148,8 @@ export interface UpdateCampaignActionResponseActionCase1 {
   /** The date time when the referenced ID was last updated. */
   updated?: number;
 }
-export const UpdateCampaignActionResponseActionCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(S.String),
-    campaign_id: S.optional(S.Number),
-    created: S.optional(S.Number),
-    deduplicate_id: S.optional(S.String),
-    id: S.optional(S.Number),
-    image_url: S.optional(S.String),
-    language: S.optional(S.String),
-    layout: S.optional(S.String),
-    multi_language_branch_action_id: S.optional(S.Number),
-    name: S.optional(S.String),
-    parent_action_id: S.optional(S.Number),
-    recipient: S.optional(S.String),
-    sending_state: S.optional(UpdateCampaignActionResponseActionCase1SendingState),
-    type: S.optional(UpdateCampaignActionResponseActionCase1Type),
-    updated: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "UpdateCampaignActionResponseActionCase1",
-}) as any as S.Schema<UpdateCampaignActionResponseActionCase1>;
+export const UpdateCampaignActionResponseActionCase1 =
+  GetCampaignActionResponseActionCase1 as any as S.Schema<UpdateCampaignActionResponseActionCase1>;
 
 /** Determines the sending behavior for the action. `automatic` sends the action automatically when triggered; `draft` queues drafts when the action is triggered; or `off` to disable the action. */
 export type UpdateCampaignActionResponseActionCase2SendingState = "automatic" | "draft" | "off";
@@ -30147,29 +28196,8 @@ export interface UpdateCampaignActionResponseActionCase2 {
   /** The date time when the referenced ID was last updated. */
   updated?: number;
 }
-export const UpdateCampaignActionResponseActionCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(S.String),
-    body_json: S.optional(S.String),
-    campaign_id: S.optional(S.Number),
-    created: S.optional(S.Number),
-    deduplicate_id: S.optional(S.String),
-    id: S.optional(S.Number),
-    language: S.optional(S.String),
-    multi_language_branch_action_id: S.optional(S.Number),
-    name: S.optional(S.String),
-    parent_action_id: S.optional(S.Number),
-    recipient: S.optional(S.String),
-    send_to_unsubscribed: S.optional(S.Boolean),
-    sender_identity_id: S.optional(S.Number),
-    sending_state: S.optional(UpdateCampaignActionResponseActionCase2SendingState),
-    tracked: S.optional(S.Boolean),
-    type: S.optional(UpdateCampaignActionResponseActionCase2Type),
-    updated: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "UpdateCampaignActionResponseActionCase2",
-}) as any as S.Schema<UpdateCampaignActionResponseActionCase2>;
+export const UpdateCampaignActionResponseActionCase2 =
+  GetCampaignActionResponseActionCase2 as any as S.Schema<UpdateCampaignActionResponseActionCase2>;
 
 /** The HTTP method for your webhook. */
 export type UpdateCampaignActionResponseActionCase3Method =
@@ -30220,27 +28248,8 @@ export interface UpdateCampaignActionResponseActionCase3 {
   /** The URL to send a webhook to, applies to `webhook` type actions. */
   url?: string;
 }
-export const UpdateCampaignActionResponseActionCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(S.String),
-    campaign_id: S.optional(S.Number),
-    created: S.optional(S.Number),
-    deduplicate_id: S.optional(S.String),
-    headers: S.optional(S.String),
-    id: S.optional(S.Number),
-    layout: S.optional(S.String),
-    method: S.optional(UpdateCampaignActionResponseActionCase3Method),
-    multi_language_branch_action_id: S.optional(S.Number),
-    name: S.optional(S.String),
-    parent_action_id: S.optional(S.Number),
-    sending_state: S.optional(UpdateCampaignActionResponseActionCase3SendingState),
-    type: S.optional(UpdateCampaignActionResponseActionCase3Type),
-    updated: S.optional(S.Number),
-    url: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateCampaignActionResponseActionCase3",
-}) as any as S.Schema<UpdateCampaignActionResponseActionCase3>;
+export const UpdateCampaignActionResponseActionCase3 =
+  GetCampaignActionResponseActionCase3 as any as S.Schema<UpdateCampaignActionResponseActionCase3>;
 
 export type UpdateCampaignActionResponseAction =
   | UpdateCampaignActionResponseActionCase0
@@ -30340,17 +28349,8 @@ export interface UpdateCampaignActionTranslationRequestBodyCase1 {
   /** Determines the sending behavior for the action. `automatic` sends the action automatically when triggered; `draft` queues drafts when the action is triggered; or `off` to disable the action. */
   sending_state?: UpdateCampaignActionTranslationRequestBodyCase1SendingState | (string & {});
 }
-export const UpdateCampaignActionTranslationRequestBodyCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(S.String),
-    campaign_id: S.optional(S.Number),
-    image_url: S.optional(S.String),
-    recipient: S.optional(S.String),
-    sending_state: S.optional(UpdateCampaignActionTranslationRequestBodyCase1SendingState),
-  }),
-).annotate({
-  identifier: "UpdateCampaignActionTranslationRequestBodyCase1",
-}) as any as S.Schema<UpdateCampaignActionTranslationRequestBodyCase1>;
+export const UpdateCampaignActionTranslationRequestBodyCase1 =
+  UpdateCampaignActionRequestBodyCase1 as any as S.Schema<UpdateCampaignActionTranslationRequestBodyCase1>;
 
 /** Determines the sending behavior for the action. `automatic` sends the action automatically when triggered; `draft` queues drafts when the action is triggered; or `off` to disable the action. */
 export type UpdateCampaignActionTranslationRequestBodyCase2SendingState =
@@ -30378,20 +28378,8 @@ export interface UpdateCampaignActionTranslationRequestBodyCase2 {
   /** Whether links in template parameters should be tracked. */
   tracked?: boolean;
 }
-export const UpdateCampaignActionTranslationRequestBodyCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(S.String),
-    body_json: S.optional(S.String),
-    campaign_id: S.optional(S.Number),
-    recipient: S.optional(S.String),
-    send_to_unsubscribed: S.optional(S.Boolean),
-    sender_identity_id: S.optional(S.Number),
-    sending_state: S.optional(UpdateCampaignActionTranslationRequestBodyCase2SendingState),
-    tracked: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "UpdateCampaignActionTranslationRequestBodyCase2",
-}) as any as S.Schema<UpdateCampaignActionTranslationRequestBodyCase2>;
+export const UpdateCampaignActionTranslationRequestBodyCase2 =
+  UpdateCampaignActionRequestBodyCase2 as any as S.Schema<UpdateCampaignActionTranslationRequestBodyCase2>;
 
 /** The HTTP method for your webhook. */
 export type UpdateCampaignActionTranslationRequestBodyCase3Method =
@@ -30423,18 +28411,8 @@ export interface UpdateCampaignActionTranslationRequestBodyCase3 {
   /** The URL to send a webhook to, applies to `webhook` type actions. */
   url?: string;
 }
-export const UpdateCampaignActionTranslationRequestBodyCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(S.String),
-    campaign_id: S.optional(S.Number),
-    headers: S.optional(S.String),
-    method: S.optional(UpdateCampaignActionTranslationRequestBodyCase3Method),
-    sending_state: S.optional(UpdateCampaignActionTranslationRequestBodyCase3SendingState),
-    url: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateCampaignActionTranslationRequestBodyCase3",
-}) as any as S.Schema<UpdateCampaignActionTranslationRequestBodyCase3>;
+export const UpdateCampaignActionTranslationRequestBodyCase3 =
+  UpdateCampaignActionRequestBodyCase3 as any as S.Schema<UpdateCampaignActionTranslationRequestBodyCase3>;
 
 export type UpdateCampaignActionTranslationRequestBody =
   | UpdateCampaignActionTranslationRequestBodyCase0
@@ -30547,39 +28525,8 @@ export interface UpdateCampaignActionTranslationResponseActionCase0 {
   /** The date time when the referenced ID was last updated. */
   updated?: number;
 }
-export const UpdateCampaignActionTranslationResponseActionCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bcc: S.optional(S.String),
-    body: S.optional(S.String),
-    body_amp: S.optional(S.String),
-    broadcast_id: S.optional(S.Number),
-    campaign_id: S.optional(S.Number),
-    cc: S.optional(S.String),
-    created: S.optional(S.Number),
-    deduplicate_id: S.optional(S.String),
-    fake_bcc: S.optional(S.Boolean),
-    from: S.optional(S.String),
-    from_id: S.optional(S.Number),
-    headers: S.optional(S.String),
-    id: S.optional(S.Number),
-    language: S.optional(S.String),
-    layout: S.optional(S.String),
-    multi_language_branch_action_id: S.optional(S.Number),
-    name: S.optional(S.String),
-    parent_action_id: S.optional(S.Number),
-    preheader_text: S.optional(S.String),
-    preprocessor: S.optional(UpdateCampaignActionTranslationResponseActionCase0Preprocessor),
-    recipient: S.optional(S.String),
-    reply_to: S.optional(S.String),
-    reply_to_id: S.optional(S.NullOr(S.Number)),
-    sending_state: S.optional(UpdateCampaignActionTranslationResponseActionCase0SendingState),
-    subject: S.optional(S.String),
-    type: S.optional(UpdateCampaignActionTranslationResponseActionCase0Type),
-    updated: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "UpdateCampaignActionTranslationResponseActionCase0",
-}) as any as S.Schema<UpdateCampaignActionTranslationResponseActionCase0>;
+export const UpdateCampaignActionTranslationResponseActionCase0 =
+  GetCampaignActionResponseActionCase0 as any as S.Schema<UpdateCampaignActionTranslationResponseActionCase0>;
 
 /** Determines the sending behavior for the action. `automatic` sends the action automatically when triggered; `draft` queues drafts when the action is triggered; or `off` to disable the action. */
 export type UpdateCampaignActionTranslationResponseActionCase1SendingState =
@@ -30624,27 +28571,8 @@ export interface UpdateCampaignActionTranslationResponseActionCase1 {
   /** The date time when the referenced ID was last updated. */
   updated?: number;
 }
-export const UpdateCampaignActionTranslationResponseActionCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(S.String),
-    campaign_id: S.optional(S.Number),
-    created: S.optional(S.Number),
-    deduplicate_id: S.optional(S.String),
-    id: S.optional(S.Number),
-    image_url: S.optional(S.String),
-    language: S.optional(S.String),
-    layout: S.optional(S.String),
-    multi_language_branch_action_id: S.optional(S.Number),
-    name: S.optional(S.String),
-    parent_action_id: S.optional(S.Number),
-    recipient: S.optional(S.String),
-    sending_state: S.optional(UpdateCampaignActionTranslationResponseActionCase1SendingState),
-    type: S.optional(UpdateCampaignActionTranslationResponseActionCase1Type),
-    updated: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "UpdateCampaignActionTranslationResponseActionCase1",
-}) as any as S.Schema<UpdateCampaignActionTranslationResponseActionCase1>;
+export const UpdateCampaignActionTranslationResponseActionCase1 =
+  GetCampaignActionResponseActionCase1 as any as S.Schema<UpdateCampaignActionTranslationResponseActionCase1>;
 
 /** Determines the sending behavior for the action. `automatic` sends the action automatically when triggered; `draft` queues drafts when the action is triggered; or `off` to disable the action. */
 export type UpdateCampaignActionTranslationResponseActionCase2SendingState =
@@ -30694,29 +28622,8 @@ export interface UpdateCampaignActionTranslationResponseActionCase2 {
   /** The date time when the referenced ID was last updated. */
   updated?: number;
 }
-export const UpdateCampaignActionTranslationResponseActionCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(S.String),
-    body_json: S.optional(S.String),
-    campaign_id: S.optional(S.Number),
-    created: S.optional(S.Number),
-    deduplicate_id: S.optional(S.String),
-    id: S.optional(S.Number),
-    language: S.optional(S.String),
-    multi_language_branch_action_id: S.optional(S.Number),
-    name: S.optional(S.String),
-    parent_action_id: S.optional(S.Number),
-    recipient: S.optional(S.String),
-    send_to_unsubscribed: S.optional(S.Boolean),
-    sender_identity_id: S.optional(S.Number),
-    sending_state: S.optional(UpdateCampaignActionTranslationResponseActionCase2SendingState),
-    tracked: S.optional(S.Boolean),
-    type: S.optional(UpdateCampaignActionTranslationResponseActionCase2Type),
-    updated: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "UpdateCampaignActionTranslationResponseActionCase2",
-}) as any as S.Schema<UpdateCampaignActionTranslationResponseActionCase2>;
+export const UpdateCampaignActionTranslationResponseActionCase2 =
+  GetCampaignActionResponseActionCase2 as any as S.Schema<UpdateCampaignActionTranslationResponseActionCase2>;
 
 /** The HTTP method for your webhook. */
 export type UpdateCampaignActionTranslationResponseActionCase3Method =
@@ -30770,27 +28677,8 @@ export interface UpdateCampaignActionTranslationResponseActionCase3 {
   /** The URL to send a webhook to, applies to `webhook` type actions. */
   url?: string;
 }
-export const UpdateCampaignActionTranslationResponseActionCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(S.String),
-    campaign_id: S.optional(S.Number),
-    created: S.optional(S.Number),
-    deduplicate_id: S.optional(S.String),
-    headers: S.optional(S.String),
-    id: S.optional(S.Number),
-    layout: S.optional(S.String),
-    method: S.optional(UpdateCampaignActionTranslationResponseActionCase3Method),
-    multi_language_branch_action_id: S.optional(S.Number),
-    name: S.optional(S.String),
-    parent_action_id: S.optional(S.Number),
-    sending_state: S.optional(UpdateCampaignActionTranslationResponseActionCase3SendingState),
-    type: S.optional(UpdateCampaignActionTranslationResponseActionCase3Type),
-    updated: S.optional(S.Number),
-    url: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateCampaignActionTranslationResponseActionCase3",
-}) as any as S.Schema<UpdateCampaignActionTranslationResponseActionCase3>;
+export const UpdateCampaignActionTranslationResponseActionCase3 =
+  GetCampaignActionResponseActionCase3 as any as S.Schema<UpdateCampaignActionTranslationResponseActionCase3>;
 
 export type UpdateCampaignActionTranslationResponseAction =
   | UpdateCampaignActionTranslationResponseActionCase0
@@ -31054,19 +28942,8 @@ export interface UpdateEmailRequestTransformersFormatterMinify {
   /** Remove all line breaks from the output. */
   remove_line_breaks?: boolean;
 }
-export const UpdateEmailRequestTransformersFormatterMinify = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    line_length_limit: S.optional(S.Number),
-    remove_css_comments: S.optional(S.Boolean),
-    remove_html_comments: S.optional(
-      UpdateEmailRequestTransformersFormatterMinifyRemoveHtmlComments,
-    ),
-    remove_indentations: S.optional(S.Boolean),
-    remove_line_breaks: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "UpdateEmailRequestTransformersFormatterMinify",
-}) as any as S.Schema<UpdateEmailRequestTransformersFormatterMinify>;
+export const UpdateEmailRequestTransformersFormatterMinify =
+  CreateEmailRequestTransformersFormatterMinify as any as S.Schema<UpdateEmailRequestTransformersFormatterMinify>;
 
 /** Character used for indentation. */
 export type UpdateEmailRequestTransformersFormatterPrettifyIndentCharacter = "spaces" | "tabs";
@@ -31081,15 +28958,8 @@ export interface UpdateEmailRequestTransformersFormatterPrettify {
   /** Wrap HTML attributes onto separate lines (`force-expand-multiline` mode). */
   wrap_attributes?: boolean;
 }
-export const UpdateEmailRequestTransformersFormatterPrettify = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    indent_character: S.optional(UpdateEmailRequestTransformersFormatterPrettifyIndentCharacter),
-    indent_size: S.optional(S.Number),
-    wrap_attributes: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "UpdateEmailRequestTransformersFormatterPrettify",
-}) as any as S.Schema<UpdateEmailRequestTransformersFormatterPrettify>;
+export const UpdateEmailRequestTransformersFormatterPrettify =
+  CreateEmailRequestTransformersFormatterPrettify as any as S.Schema<UpdateEmailRequestTransformersFormatterPrettify>;
 
 /** Formatting mode to apply. */
 export type UpdateEmailRequestTransformersFormatterType = "none" | "prettify" | "minify";
@@ -31104,15 +28974,8 @@ export interface UpdateEmailRequestTransformersFormatter {
   /** Formatting mode to apply. */
   type?: UpdateEmailRequestTransformersFormatterType | (string & {});
 }
-export const UpdateEmailRequestTransformersFormatter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    minify: S.optional(UpdateEmailRequestTransformersFormatterMinify),
-    prettify: S.optional(UpdateEmailRequestTransformersFormatterPrettify),
-    type: S.optional(UpdateEmailRequestTransformersFormatterType),
-  }),
-).annotate({
-  identifier: "UpdateEmailRequestTransformersFormatter",
-}) as any as S.Schema<UpdateEmailRequestTransformersFormatter>;
+export const UpdateEmailRequestTransformersFormatter =
+  CreateEmailRequestTransformersFormatter as any as S.Schema<UpdateEmailRequestTransformersFormatter>;
 
 /** Replaces the last space in text blocks with a non-breaking space (`&nbsp;`) to prevent a single word from wrapping onto its own line (a "widow"). Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags (`{{ }} ` and `{% %}`). */
 export type UpdateEmailRequestTransformersPreventWidows =
@@ -31321,20 +29184,8 @@ export interface UpdateEmailTranslationRequestTransformersFormatterMinify {
   /** Remove all line breaks from the output. */
   remove_line_breaks?: boolean;
 }
-export const UpdateEmailTranslationRequestTransformersFormatterMinify = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      line_length_limit: S.optional(S.Number),
-      remove_css_comments: S.optional(S.Boolean),
-      remove_html_comments: S.optional(
-        UpdateEmailTranslationRequestTransformersFormatterMinifyRemoveHtmlComments,
-      ),
-      remove_indentations: S.optional(S.Boolean),
-      remove_line_breaks: S.optional(S.Boolean),
-    }),
-).annotate({
-  identifier: "UpdateEmailTranslationRequestTransformersFormatterMinify",
-}) as any as S.Schema<UpdateEmailTranslationRequestTransformersFormatterMinify>;
+export const UpdateEmailTranslationRequestTransformersFormatterMinify =
+  CreateEmailTranslationRequestTransformersFormatterMinify as any as S.Schema<UpdateEmailTranslationRequestTransformersFormatterMinify>;
 
 /** Character used for indentation. */
 export type UpdateEmailTranslationRequestTransformersFormatterPrettifyIndentCharacter =
@@ -31353,18 +29204,8 @@ export interface UpdateEmailTranslationRequestTransformersFormatterPrettify {
   /** Wrap HTML attributes onto separate lines (`force-expand-multiline` mode). */
   wrap_attributes?: boolean;
 }
-export const UpdateEmailTranslationRequestTransformersFormatterPrettify = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      indent_character: S.optional(
-        UpdateEmailTranslationRequestTransformersFormatterPrettifyIndentCharacter,
-      ),
-      indent_size: S.optional(S.Number),
-      wrap_attributes: S.optional(S.Boolean),
-    }),
-).annotate({
-  identifier: "UpdateEmailTranslationRequestTransformersFormatterPrettify",
-}) as any as S.Schema<UpdateEmailTranslationRequestTransformersFormatterPrettify>;
+export const UpdateEmailTranslationRequestTransformersFormatterPrettify =
+  CreateEmailTranslationRequestTransformersFormatterPrettify as any as S.Schema<UpdateEmailTranslationRequestTransformersFormatterPrettify>;
 
 /** Formatting mode to apply. */
 export type UpdateEmailTranslationRequestTransformersFormatterType = "none" | "prettify" | "minify";
@@ -31379,15 +29220,8 @@ export interface UpdateEmailTranslationRequestTransformersFormatter {
   /** Formatting mode to apply. */
   type?: UpdateEmailTranslationRequestTransformersFormatterType | (string & {});
 }
-export const UpdateEmailTranslationRequestTransformersFormatter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    minify: S.optional(UpdateEmailTranslationRequestTransformersFormatterMinify),
-    prettify: S.optional(UpdateEmailTranslationRequestTransformersFormatterPrettify),
-    type: S.optional(UpdateEmailTranslationRequestTransformersFormatterType),
-  }),
-).annotate({
-  identifier: "UpdateEmailTranslationRequestTransformersFormatter",
-}) as any as S.Schema<UpdateEmailTranslationRequestTransformersFormatter>;
+export const UpdateEmailTranslationRequestTransformersFormatter =
+  CreateEmailTranslationRequestTransformersFormatter as any as S.Schema<UpdateEmailTranslationRequestTransformersFormatter>;
 
 /** Replaces the last space in text blocks with a non-breaking space (`&nbsp;`) to prevent a single word from wrapping onto its own line (a "widow"). Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags (`{{ }} ` and `{% %}`). */
 export type UpdateEmailTranslationRequestTransformersPreventWidows =
@@ -31836,44 +29670,14 @@ export interface UpdateNewsletterTestTranslationResponseContent {
   /** Channel type for a one-time send or one-time send content variant. */
   type?: UpdateNewsletterTestTranslationResponseContentType;
 }
-export const UpdateNewsletterTestTranslationResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bcc: S.optional(S.String),
-    body: S.optional(S.String),
-    body_amp: S.optional(S.String),
-    cc: S.optional(S.String),
-    deduplicate_id: S.optional(S.String),
-    fake_bcc: S.optional(S.Boolean),
-    from: S.optional(S.String),
-    from_id: S.optional(S.Number),
-    headers: S.optional(S.String),
-    id: S.optional(S.Number),
-    language: S.optional(S.String),
-    layout: S.optional(S.String),
-    name: S.optional(S.String),
-    newsletter_id: S.optional(S.Number),
-    preheader_text: S.optional(S.String),
-    preprocessor: S.optional(UpdateNewsletterTestTranslationResponseContentPreprocessor),
-    recipient: S.optional(S.String),
-    reply_to: S.optional(S.String),
-    reply_to_id: S.optional(S.NullOr(S.Number)),
-    subject: S.optional(S.String),
-    type: S.optional(UpdateNewsletterTestTranslationResponseContentType),
-  }),
-).annotate({
-  identifier: "UpdateNewsletterTestTranslationResponseContent",
-}) as any as S.Schema<UpdateNewsletterTestTranslationResponseContent>;
+export const UpdateNewsletterTestTranslationResponseContent =
+  GetNewsletterVariantResponseContent as any as S.Schema<UpdateNewsletterTestTranslationResponseContent>;
 
 export interface UpdateNewsletterTestTranslationResponse {
   content?: UpdateNewsletterTestTranslationResponseContent;
 }
-export const UpdateNewsletterTestTranslationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    content: S.optional(UpdateNewsletterTestTranslationResponseContent),
-  }),
-).annotate({
-  identifier: "UpdateNewsletterTestTranslationResponse",
-}) as any as S.Schema<UpdateNewsletterTestTranslationResponse>;
+export const UpdateNewsletterTestTranslationResponse =
+  GetNewsletterVariantResponse as any as S.Schema<UpdateNewsletterTestTranslationResponse>;
 
 /** Update the contents of an email one-time send variant. You can set the sender with `from_id`. If you don't provide it, the existing sender is preserved. */
 export type UpdateNewsletterVariantRequestBodyCase0 =
@@ -32017,44 +29821,14 @@ export interface UpdateNewsletterVariantResponseContent {
   /** Channel type for a one-time send or one-time send content variant. */
   type?: UpdateNewsletterVariantResponseContentType;
 }
-export const UpdateNewsletterVariantResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bcc: S.optional(S.String),
-    body: S.optional(S.String),
-    body_amp: S.optional(S.String),
-    cc: S.optional(S.String),
-    deduplicate_id: S.optional(S.String),
-    fake_bcc: S.optional(S.Boolean),
-    from: S.optional(S.String),
-    from_id: S.optional(S.Number),
-    headers: S.optional(S.String),
-    id: S.optional(S.Number),
-    language: S.optional(S.String),
-    layout: S.optional(S.String),
-    name: S.optional(S.String),
-    newsletter_id: S.optional(S.Number),
-    preheader_text: S.optional(S.String),
-    preprocessor: S.optional(UpdateNewsletterVariantResponseContentPreprocessor),
-    recipient: S.optional(S.String),
-    reply_to: S.optional(S.String),
-    reply_to_id: S.optional(S.NullOr(S.Number)),
-    subject: S.optional(S.String),
-    type: S.optional(UpdateNewsletterVariantResponseContentType),
-  }),
-).annotate({
-  identifier: "UpdateNewsletterVariantResponseContent",
-}) as any as S.Schema<UpdateNewsletterVariantResponseContent>;
+export const UpdateNewsletterVariantResponseContent =
+  GetNewsletterVariantResponseContent as any as S.Schema<UpdateNewsletterVariantResponseContent>;
 
 export interface UpdateNewsletterVariantResponse {
   content?: UpdateNewsletterVariantResponseContent;
 }
-export const UpdateNewsletterVariantResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    content: S.optional(UpdateNewsletterVariantResponseContent),
-  }),
-).annotate({
-  identifier: "UpdateNewsletterVariantResponse",
-}) as any as S.Schema<UpdateNewsletterVariantResponse>;
+export const UpdateNewsletterVariantResponse =
+  GetNewsletterVariantResponse as any as S.Schema<UpdateNewsletterVariantResponse>;
 
 /** Update the contents of an email one-time send variant. You can set the sender with `from_id`. If you don't provide it, the existing sender is preserved. */
 export type UpdateNewsletterVariantTranslationRequestBodyCase0 =
@@ -32198,44 +29972,14 @@ export interface UpdateNewsletterVariantTranslationResponseContent {
   /** Channel type for a one-time send or one-time send content variant. */
   type?: UpdateNewsletterVariantTranslationResponseContentType;
 }
-export const UpdateNewsletterVariantTranslationResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bcc: S.optional(S.String),
-    body: S.optional(S.String),
-    body_amp: S.optional(S.String),
-    cc: S.optional(S.String),
-    deduplicate_id: S.optional(S.String),
-    fake_bcc: S.optional(S.Boolean),
-    from: S.optional(S.String),
-    from_id: S.optional(S.Number),
-    headers: S.optional(S.String),
-    id: S.optional(S.Number),
-    language: S.optional(S.String),
-    layout: S.optional(S.String),
-    name: S.optional(S.String),
-    newsletter_id: S.optional(S.Number),
-    preheader_text: S.optional(S.String),
-    preprocessor: S.optional(UpdateNewsletterVariantTranslationResponseContentPreprocessor),
-    recipient: S.optional(S.String),
-    reply_to: S.optional(S.String),
-    reply_to_id: S.optional(S.NullOr(S.Number)),
-    subject: S.optional(S.String),
-    type: S.optional(UpdateNewsletterVariantTranslationResponseContentType),
-  }),
-).annotate({
-  identifier: "UpdateNewsletterVariantTranslationResponseContent",
-}) as any as S.Schema<UpdateNewsletterVariantTranslationResponseContent>;
+export const UpdateNewsletterVariantTranslationResponseContent =
+  GetNewsletterVariantResponseContent as any as S.Schema<UpdateNewsletterVariantTranslationResponseContent>;
 
 export interface UpdateNewsletterVariantTranslationResponse {
   content?: UpdateNewsletterVariantTranslationResponseContent;
 }
-export const UpdateNewsletterVariantTranslationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    content: S.optional(UpdateNewsletterVariantTranslationResponseContent),
-  }),
-).annotate({
-  identifier: "UpdateNewsletterVariantTranslationResponse",
-}) as any as S.Schema<UpdateNewsletterVariantTranslationResponse>;
+export const UpdateNewsletterVariantTranslationResponse =
+  GetNewsletterVariantResponse as any as S.Schema<UpdateNewsletterVariantTranslationResponse>;
 
 export type UpdatePersonOptoutsRequestIdType = "id" | "email" | "phone" | "cio_id";
 export const UpdatePersonOptoutsRequestIdType = S.String;
@@ -32420,50 +30164,20 @@ export interface UpdateTransactionalResponseContentItem {
   /** The date time when the referenced ID was last updated. */
   updated?: number;
 }
-export const UpdateTransactionalResponseContentItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bcc: S.optional(S.String),
-    body: S.optional(S.String),
-    body_amp: S.optional(S.String),
-    cc: S.optional(S.String),
-    created: S.optional(S.Number),
-    fake_bcc: S.optional(S.Boolean),
-    from: S.optional(S.String),
-    from_id: S.optional(S.Number),
-    headers: S.optional(S.String),
-    id: S.optional(S.Number),
-    language: S.optional(S.String),
-    name: S.optional(S.String),
-    preheader_text: S.optional(S.String),
-    preprocessor: S.optional(UpdateTransactionalResponseContentItemPreprocessor),
-    recipient: S.optional(S.String),
-    reply_to: S.optional(S.String),
-    reply_to_id: S.optional(S.NullOr(S.Number)),
-    subject: S.optional(S.String),
-    type: S.optional(UpdateTransactionalResponseContentItemType),
-    updated: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "UpdateTransactionalResponseContentItem",
-}) as any as S.Schema<UpdateTransactionalResponseContentItem>;
+export const UpdateTransactionalResponseContentItem =
+  GetTransactionalTranslationByIdResponseContent as any as S.Schema<UpdateTransactionalResponseContentItem>;
 
 /** The object includes the transactional message content and metadata. */
 export type UpdateTransactionalResponseContentList = Array<UpdateTransactionalResponseContentItem>;
-export const UpdateTransactionalResponseContentList = /*@__PURE__*/ S.Array(
-  UpdateTransactionalResponseContentItem,
-) as any as S.Schema<UpdateTransactionalResponseContentList>;
+export const UpdateTransactionalResponseContentList =
+  GetTransactionalVariantResponseContentList as any as S.Schema<UpdateTransactionalResponseContentList>;
 
 export interface UpdateTransactionalResponse {
   /** The object includes the transactional message content and metadata. */
   content?: UpdateTransactionalResponseContentList;
 }
-export const UpdateTransactionalResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    content: S.optional(UpdateTransactionalResponseContentList),
-  }),
-).annotate({
-  identifier: "UpdateTransactionalResponse",
-}) as any as S.Schema<UpdateTransactionalResponse>;
+export const UpdateTransactionalResponse =
+  GetTransactionalVariantResponse as any as S.Schema<UpdateTransactionalResponse>;
 
 export type UpdateTransactionalVariantRequestHeadersItem =
   UpdateBroadcastActionRequestBodyCase0HeadersItem;
@@ -32571,51 +30285,21 @@ export interface UpdateTransactionalVariantResponseContentItem {
   /** The date time when the referenced ID was last updated. */
   updated?: number;
 }
-export const UpdateTransactionalVariantResponseContentItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bcc: S.optional(S.String),
-    body: S.optional(S.String),
-    body_amp: S.optional(S.String),
-    cc: S.optional(S.String),
-    created: S.optional(S.Number),
-    fake_bcc: S.optional(S.Boolean),
-    from: S.optional(S.String),
-    from_id: S.optional(S.Number),
-    headers: S.optional(S.String),
-    id: S.optional(S.Number),
-    language: S.optional(S.String),
-    name: S.optional(S.String),
-    preheader_text: S.optional(S.String),
-    preprocessor: S.optional(UpdateTransactionalVariantResponseContentItemPreprocessor),
-    recipient: S.optional(S.String),
-    reply_to: S.optional(S.String),
-    reply_to_id: S.optional(S.NullOr(S.Number)),
-    subject: S.optional(S.String),
-    type: S.optional(UpdateTransactionalVariantResponseContentItemType),
-    updated: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "UpdateTransactionalVariantResponseContentItem",
-}) as any as S.Schema<UpdateTransactionalVariantResponseContentItem>;
+export const UpdateTransactionalVariantResponseContentItem =
+  GetTransactionalTranslationByIdResponseContent as any as S.Schema<UpdateTransactionalVariantResponseContentItem>;
 
 /** Each object represents one of the variants. */
 export type UpdateTransactionalVariantResponseContentList =
   Array<UpdateTransactionalVariantResponseContentItem>;
-export const UpdateTransactionalVariantResponseContentList = /*@__PURE__*/ S.Array(
-  UpdateTransactionalVariantResponseContentItem,
-) as any as S.Schema<UpdateTransactionalVariantResponseContentList>;
+export const UpdateTransactionalVariantResponseContentList =
+  GetTransactionalVariantResponseContentList as any as S.Schema<UpdateTransactionalVariantResponseContentList>;
 
 export interface UpdateTransactionalVariantResponse {
   /** Each object represents one of the variants. */
   content?: UpdateTransactionalVariantResponseContentList;
 }
-export const UpdateTransactionalVariantResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    content: S.optional(UpdateTransactionalVariantResponseContentList),
-  }),
-).annotate({
-  identifier: "UpdateTransactionalVariantResponse",
-}) as any as S.Schema<UpdateTransactionalVariantResponse>;
+export const UpdateTransactionalVariantResponse =
+  GetTransactionalVariantResponse as any as S.Schema<UpdateTransactionalVariantResponse>;
 
 export type UpdateWebhookRequestEventsItem =
   | "customer_subscribed"
@@ -32694,9 +30378,8 @@ export const UpdateWebhookRequestEventsItem = S.String;
 
 /** Specifies the types of events you want to report to your webhook. See our [reporting webhooks reference](/integrations/api/webhooks/) for more information about event types and the information they return. */
 export type UpdateWebhookRequestEventsList = Array<UpdateWebhookRequestEventsItem | (string & {})>;
-export const UpdateWebhookRequestEventsList = /*@__PURE__*/ S.Array(
-  UpdateWebhookRequestEventsItem,
-) as any as S.Schema<UpdateWebhookRequestEventsList>;
+export const UpdateWebhookRequestEventsList =
+  CreateWebhookRequestEventsList as any as S.Schema<UpdateWebhookRequestEventsList>;
 
 export interface UpdateWebhookRequest {
   /** The identifier of a webhook. */
@@ -32803,9 +30486,8 @@ export const UpdateWebhookResponseEventsItem = S.String;
 
 /** Specifies the types of events you want to report to your webhook. See our [reporting webhooks reference](/integrations/api/webhooks/) for more information about event types and the information they return. */
 export type UpdateWebhookResponseEventsList = Array<UpdateWebhookResponseEventsItem>;
-export const UpdateWebhookResponseEventsList = /*@__PURE__*/ S.Array(
-  UpdateWebhookResponseEventsItem,
-) as any as S.Schema<UpdateWebhookResponseEventsList>;
+export const UpdateWebhookResponseEventsList =
+  CreateWebhookRequestEventsList as any as S.Schema<UpdateWebhookResponseEventsList>;
 
 /** The type of webhook--`webhook` for a standard reporting webhook or `js` for a JavaScript webhook. */
 export type UpdateWebhookResponseType = "webhook" | "js";
@@ -32829,18 +30511,8 @@ export interface UpdateWebhookResponse {
   /** Set to `true` to include the message `body` in `_sent` events. */
   with_content?: boolean;
 }
-export const UpdateWebhookResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endpoint: S.String,
-    events: UpdateWebhookResponseEventsList,
-    name: S.String,
-    disabled: S.optional(S.Boolean),
-    full_resolution: S.optional(S.Boolean),
-    id: S.optional(S.Number),
-    type: S.optional(UpdateWebhookResponseType),
-    with_content: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "UpdateWebhookResponse" }) as any as S.Schema<UpdateWebhookResponse>;
+export const UpdateWebhookResponse =
+  CreateWebhookResponse as any as S.Schema<UpdateWebhookResponse>;
 
 export type AddCollectionError = BadRequest | CustomerioOpError;
 /** Create a collection Create a new collection and provide the `data` that you'll access from the collection or the `url` that you'll download CSV or JSON data from. **Note**: A collection cannot be more than 10 MB in size. No individual row in the collection can be more than 10 KB. */

@@ -2477,9 +2477,8 @@ export const PackXdslPromotionCodeReasonCodes = S.String;
 /** Enum of the possible errors */
 export type PackXdslPromotionCodeCapabilitiesReasonCodesList =
   Array<PackXdslPromotionCodeReasonCodes>;
-export const PackXdslPromotionCodeCapabilitiesReasonCodesList = /*@__PURE__*/ S.Array(
-  PackXdslPromotionCodeReasonCodes,
-) as any as S.Schema<PackXdslPromotionCodeCapabilitiesReasonCodesList>;
+export const PackXdslPromotionCodeCapabilitiesReasonCodesList =
+  PackXdslResiliationTermsResiliationReasonsList as any as S.Schema<PackXdslPromotionCodeCapabilitiesReasonCodesList>;
 
 /** Informations about a promotion code */
 export interface PackXdslPromotionCodeCapabilities {

@@ -689,16 +689,8 @@ export interface MoveResourceSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const MoveResourceSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(MoveResourceSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(MoveResourceSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({ identifier: "MoveResourceSystemData" }) as any as S.Schema<MoveResourceSystemData>;
+export const MoveResourceSystemData =
+  MoveCollectionSystemData as any as S.Schema<MoveResourceSystemData>;
 
 /** Defines the move resource. */
 export interface MoveResource {

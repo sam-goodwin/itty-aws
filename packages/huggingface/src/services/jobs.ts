@@ -794,25 +794,14 @@ export interface CreateScheduledJobRequestJobSpecCase1VolumesItem {
   /** Subfolder prefix inside the bucket/repo to mount, e.g. 'path/to/dir' */
   path?: string;
 }
-export const CreateScheduledJobRequestJobSpecCase1VolumesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: CreateScheduledJobRequestJobSpecCase1VolumesItemType,
-    source: S.String,
-    mountPath: S.String,
-    revision: S.optional(S.String),
-    readOnly: S.optional(S.Boolean),
-    path: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateScheduledJobRequestJobSpecCase1VolumesItem",
-}) as any as S.Schema<CreateScheduledJobRequestJobSpecCase1VolumesItem>;
+export const CreateScheduledJobRequestJobSpecCase1VolumesItem =
+  CreateScheduledJobRequestJobSpecCase0VolumesItem as any as S.Schema<CreateScheduledJobRequestJobSpecCase1VolumesItem>;
 
 /** HuggingFace Buckets or Repos to mount as volumes in the job container. */
 export type CreateScheduledJobRequestJobSpecCase1VolumesList =
   Array<CreateScheduledJobRequestJobSpecCase1VolumesItem>;
-export const CreateScheduledJobRequestJobSpecCase1VolumesList = /*@__PURE__*/ S.Array(
-  CreateScheduledJobRequestJobSpecCase1VolumesItem,
-) as any as S.Schema<CreateScheduledJobRequestJobSpecCase1VolumesList>;
+export const CreateScheduledJobRequestJobSpecCase1VolumesList =
+  CreateScheduledJobRequestJobSpecCase0VolumesList as any as S.Schema<CreateScheduledJobRequestJobSpecCase1VolumesList>;
 
 export type CreateScheduledJobRequestJobSpecCase1ExposePortsList = Array<number>;
 export const CreateScheduledJobRequestJobSpecCase1ExposePortsList =
@@ -983,16 +972,8 @@ export interface CreateScheduledJobResponseInitiator {
   avatarUrl: string;
   type: CreateScheduledJobResponseInitiatorType;
 }
-export const CreateScheduledJobResponseInitiator = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    avatarUrl: S.String,
-    type: CreateScheduledJobResponseInitiatorType,
-  }),
-).annotate({
-  identifier: "CreateScheduledJobResponseInitiator",
-}) as any as S.Schema<CreateScheduledJobResponseInitiator>;
+export const CreateScheduledJobResponseInitiator =
+  CreateScheduledJobResponseOwner as any as S.Schema<CreateScheduledJobResponseInitiator>;
 
 export type CreateScheduledJobResponseJobSpecEnvironmentMap = { [key: string]: string | undefined };
 export const CreateScheduledJobResponseJobSpecEnvironmentMap =
@@ -1338,16 +1319,8 @@ export interface DuplicateJobResponseOwner {
   type: DuplicateJobResponseOwnerType;
   avatarUrl: string;
 }
-export const DuplicateJobResponseOwner = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    type: DuplicateJobResponseOwnerType,
-    avatarUrl: S.String,
-  }),
-).annotate({
-  identifier: "DuplicateJobResponseOwner",
-}) as any as S.Schema<DuplicateJobResponseOwner>;
+export const DuplicateJobResponseOwner =
+  CancelJobResponseInitiatorCase0 as any as S.Schema<DuplicateJobResponseOwner>;
 
 export type DuplicateJobResponseResourceGroup = CancelJobResponseResourceGroup;
 export const DuplicateJobResponseResourceGroup = CancelJobResponseResourceGroup;
@@ -1362,16 +1335,8 @@ export interface DuplicateJobResponseInitiatorCase0 {
   type: DuplicateJobResponseInitiatorCase0Type;
   avatarUrl: string;
 }
-export const DuplicateJobResponseInitiatorCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    type: DuplicateJobResponseInitiatorCase0Type,
-    avatarUrl: S.String,
-  }),
-).annotate({
-  identifier: "DuplicateJobResponseInitiatorCase0",
-}) as any as S.Schema<DuplicateJobResponseInitiatorCase0>;
+export const DuplicateJobResponseInitiatorCase0 =
+  CancelJobResponseInitiatorCase0 as any as S.Schema<DuplicateJobResponseInitiatorCase0>;
 
 export type DuplicateJobResponseInitiatorCase1 = CancelJobResponseInitiatorCase1;
 export const DuplicateJobResponseInitiatorCase1 = CancelJobResponseInitiatorCase1;
@@ -1459,17 +1424,8 @@ export interface DuplicateJobResponseHfToken {
   tokenId?: string;
   settingsUrl?: string;
 }
-export const DuplicateJobResponseHfToken = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ownerName: S.String,
-    orgName: S.optional(S.String),
-    tokenRole: S.optional(DuplicateJobResponseHfTokenTokenRole),
-    tokenId: S.optional(S.String),
-    settingsUrl: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DuplicateJobResponseHfToken",
-}) as any as S.Schema<DuplicateJobResponseHfToken>;
+export const DuplicateJobResponseHfToken =
+  CreateScheduledJobResponseJobSpecHfToken as any as S.Schema<DuplicateJobResponseHfToken>;
 
 export interface DuplicateJobResponse {
   id: string;
@@ -1648,14 +1604,7 @@ export interface GetJobResponseOwner {
   type: GetJobResponseOwnerType;
   avatarUrl: string;
 }
-export const GetJobResponseOwner = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    type: GetJobResponseOwnerType,
-    avatarUrl: S.String,
-  }),
-).annotate({ identifier: "GetJobResponseOwner" }) as any as S.Schema<GetJobResponseOwner>;
+export const GetJobResponseOwner = CancelJobResponseOwner as any as S.Schema<GetJobResponseOwner>;
 
 export type GetJobResponseResourceGroup = CancelJobResponseResourceGroup;
 export const GetJobResponseResourceGroup = CancelJobResponseResourceGroup;
@@ -1670,16 +1619,8 @@ export interface GetJobResponseInitiatorCase0 {
   type: GetJobResponseInitiatorCase0Type;
   avatarUrl: string;
 }
-export const GetJobResponseInitiatorCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    type: GetJobResponseInitiatorCase0Type,
-    avatarUrl: S.String,
-  }),
-).annotate({
-  identifier: "GetJobResponseInitiatorCase0",
-}) as any as S.Schema<GetJobResponseInitiatorCase0>;
+export const GetJobResponseInitiatorCase0 =
+  CancelJobResponseInitiatorCase0 as any as S.Schema<GetJobResponseInitiatorCase0>;
 
 export type GetJobResponseInitiatorCase1 = CancelJobResponseInitiatorCase1;
 export const GetJobResponseInitiatorCase1 = CancelJobResponseInitiatorCase1;
@@ -1762,15 +1703,8 @@ export interface GetJobResponseHfToken {
   tokenId?: string;
   settingsUrl?: string;
 }
-export const GetJobResponseHfToken = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ownerName: S.String,
-    orgName: S.optional(S.String),
-    tokenRole: S.optional(GetJobResponseHfTokenTokenRole),
-    tokenId: S.optional(S.String),
-    settingsUrl: S.optional(S.String),
-  }),
-).annotate({ identifier: "GetJobResponseHfToken" }) as any as S.Schema<GetJobResponseHfToken>;
+export const GetJobResponseHfToken =
+  CancelJobResponseHfToken as any as S.Schema<GetJobResponseHfToken>;
 
 export interface GetJobResponse {
   id: string;
@@ -1929,16 +1863,8 @@ export interface GetScheduledJobResponseOwner {
   avatarUrl: string;
   type: GetScheduledJobResponseOwnerType;
 }
-export const GetScheduledJobResponseOwner = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    avatarUrl: S.String,
-    type: GetScheduledJobResponseOwnerType,
-  }),
-).annotate({
-  identifier: "GetScheduledJobResponseOwner",
-}) as any as S.Schema<GetScheduledJobResponseOwner>;
+export const GetScheduledJobResponseOwner =
+  CreateScheduledJobResponseOwner as any as S.Schema<GetScheduledJobResponseOwner>;
 
 export type GetScheduledJobResponseInitiatorType = "user" | "org";
 export const GetScheduledJobResponseInitiatorType = S.String;
@@ -1950,16 +1876,8 @@ export interface GetScheduledJobResponseInitiator {
   avatarUrl: string;
   type: GetScheduledJobResponseInitiatorType;
 }
-export const GetScheduledJobResponseInitiator = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    avatarUrl: S.String,
-    type: GetScheduledJobResponseInitiatorType,
-  }),
-).annotate({
-  identifier: "GetScheduledJobResponseInitiator",
-}) as any as S.Schema<GetScheduledJobResponseInitiator>;
+export const GetScheduledJobResponseInitiator =
+  CreateScheduledJobResponseOwner as any as S.Schema<GetScheduledJobResponseInitiator>;
 
 export type GetScheduledJobResponseJobSpecEnvironmentMap = { [key: string]: string | undefined };
 export const GetScheduledJobResponseJobSpecEnvironmentMap =
@@ -2073,17 +1991,8 @@ export interface GetScheduledJobResponseJobSpecHfToken {
   tokenId?: string;
   settingsUrl?: string;
 }
-export const GetScheduledJobResponseJobSpecHfToken = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ownerName: S.String,
-    orgName: S.optional(S.String),
-    tokenRole: S.optional(GetScheduledJobResponseJobSpecHfTokenTokenRole),
-    tokenId: S.optional(S.String),
-    settingsUrl: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetScheduledJobResponseJobSpecHfToken",
-}) as any as S.Schema<GetScheduledJobResponseJobSpecHfToken>;
+export const GetScheduledJobResponseJobSpecHfToken =
+  CreateScheduledJobResponseJobSpecHfToken as any as S.Schema<GetScheduledJobResponseJobSpecHfToken>;
 
 export interface GetScheduledJobResponseJobSpec {
   spaceId?: string;
@@ -2192,9 +2101,8 @@ export type ListJobsRequestStageCase1Item =
 export const ListJobsRequestStageCase1Item = S.String;
 
 export type ListJobsRequestStageCase1List = Array<ListJobsRequestStageCase1Item | (string & {})>;
-export const ListJobsRequestStageCase1List = /*@__PURE__*/ S.Array(
-  ListJobsRequestStageCase1Item,
-) as any as S.Schema<ListJobsRequestStageCase1List>;
+export const ListJobsRequestStageCase1List =
+  CountJobsRequestStageCase1List as any as S.Schema<ListJobsRequestStageCase1List>;
 
 /** Filter jobs by status stage. Repeat the parameter to filter by several stages. */
 export type ListJobsRequestStage = ListJobsRequestStageCase0 | ListJobsRequestStageCase1List;
@@ -2318,16 +2226,8 @@ export interface ListJobsResponseBodyItemOwner {
   type: ListJobsResponseBodyItemOwnerType;
   avatarUrl: string;
 }
-export const ListJobsResponseBodyItemOwner = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    type: ListJobsResponseBodyItemOwnerType,
-    avatarUrl: S.String,
-  }),
-).annotate({
-  identifier: "ListJobsResponseBodyItemOwner",
-}) as any as S.Schema<ListJobsResponseBodyItemOwner>;
+export const ListJobsResponseBodyItemOwner =
+  CancelJobResponseInitiatorCase0 as any as S.Schema<ListJobsResponseBodyItemOwner>;
 
 export type ListJobsResponseBodyItemResourceGroup = CancelJobResponseResourceGroup;
 export const ListJobsResponseBodyItemResourceGroup = CancelJobResponseResourceGroup;
@@ -2342,16 +2242,8 @@ export interface ListJobsResponseBodyItemInitiatorCase0 {
   type: ListJobsResponseBodyItemInitiatorCase0Type;
   avatarUrl: string;
 }
-export const ListJobsResponseBodyItemInitiatorCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    type: ListJobsResponseBodyItemInitiatorCase0Type,
-    avatarUrl: S.String,
-  }),
-).annotate({
-  identifier: "ListJobsResponseBodyItemInitiatorCase0",
-}) as any as S.Schema<ListJobsResponseBodyItemInitiatorCase0>;
+export const ListJobsResponseBodyItemInitiatorCase0 =
+  CancelJobResponseInitiatorCase0 as any as S.Schema<ListJobsResponseBodyItemInitiatorCase0>;
 
 export type ListJobsResponseBodyItemInitiatorCase1 = CancelJobResponseInitiatorCase1;
 export const ListJobsResponseBodyItemInitiatorCase1 = CancelJobResponseInitiatorCase1;
@@ -2439,17 +2331,8 @@ export interface ListJobsResponseBodyItemHfToken {
   tokenId?: string;
   settingsUrl?: string;
 }
-export const ListJobsResponseBodyItemHfToken = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ownerName: S.String,
-    orgName: S.optional(S.String),
-    tokenRole: S.optional(ListJobsResponseBodyItemHfTokenTokenRole),
-    tokenId: S.optional(S.String),
-    settingsUrl: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListJobsResponseBodyItemHfToken",
-}) as any as S.Schema<ListJobsResponseBodyItemHfToken>;
+export const ListJobsResponseBodyItemHfToken =
+  CreateScheduledJobResponseJobSpecHfToken as any as S.Schema<ListJobsResponseBodyItemHfToken>;
 
 export interface ListJobsResponseBodyItem {
   id: string;
@@ -2553,16 +2436,8 @@ export interface ListScheduledJobsResponseBodyItemOwner {
   avatarUrl: string;
   type: ListScheduledJobsResponseBodyItemOwnerType;
 }
-export const ListScheduledJobsResponseBodyItemOwner = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    avatarUrl: S.String,
-    type: ListScheduledJobsResponseBodyItemOwnerType,
-  }),
-).annotate({
-  identifier: "ListScheduledJobsResponseBodyItemOwner",
-}) as any as S.Schema<ListScheduledJobsResponseBodyItemOwner>;
+export const ListScheduledJobsResponseBodyItemOwner =
+  CreateScheduledJobResponseOwner as any as S.Schema<ListScheduledJobsResponseBodyItemOwner>;
 
 export type ListScheduledJobsResponseBodyItemInitiatorType = "user" | "org";
 export const ListScheduledJobsResponseBodyItemInitiatorType = S.String;
@@ -2574,16 +2449,8 @@ export interface ListScheduledJobsResponseBodyItemInitiator {
   avatarUrl: string;
   type: ListScheduledJobsResponseBodyItemInitiatorType;
 }
-export const ListScheduledJobsResponseBodyItemInitiator = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    avatarUrl: S.String,
-    type: ListScheduledJobsResponseBodyItemInitiatorType,
-  }),
-).annotate({
-  identifier: "ListScheduledJobsResponseBodyItemInitiator",
-}) as any as S.Schema<ListScheduledJobsResponseBodyItemInitiator>;
+export const ListScheduledJobsResponseBodyItemInitiator =
+  CreateScheduledJobResponseOwner as any as S.Schema<ListScheduledJobsResponseBodyItemInitiator>;
 
 export type ListScheduledJobsResponseBodyItemJobSpecEnvironmentMap = {
   [key: string]: string | undefined;
@@ -2705,17 +2572,8 @@ export interface ListScheduledJobsResponseBodyItemJobSpecHfToken {
   tokenId?: string;
   settingsUrl?: string;
 }
-export const ListScheduledJobsResponseBodyItemJobSpecHfToken = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ownerName: S.String,
-    orgName: S.optional(S.String),
-    tokenRole: S.optional(ListScheduledJobsResponseBodyItemJobSpecHfTokenTokenRole),
-    tokenId: S.optional(S.String),
-    settingsUrl: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListScheduledJobsResponseBodyItemJobSpecHfToken",
-}) as any as S.Schema<ListScheduledJobsResponseBodyItemJobSpecHfToken>;
+export const ListScheduledJobsResponseBodyItemJobSpecHfToken =
+  CreateScheduledJobResponseJobSpecHfToken as any as S.Schema<ListScheduledJobsResponseBodyItemJobSpecHfToken>;
 
 export interface ListScheduledJobsResponseBodyItemJobSpec {
   spaceId?: string;
@@ -2946,14 +2804,7 @@ export interface RunJobResponseOwner {
   type: RunJobResponseOwnerType;
   avatarUrl: string;
 }
-export const RunJobResponseOwner = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    type: RunJobResponseOwnerType,
-    avatarUrl: S.String,
-  }),
-).annotate({ identifier: "RunJobResponseOwner" }) as any as S.Schema<RunJobResponseOwner>;
+export const RunJobResponseOwner = CancelJobResponseOwner as any as S.Schema<RunJobResponseOwner>;
 
 export type RunJobResponseResourceGroup = CancelJobResponseResourceGroup;
 export const RunJobResponseResourceGroup = CancelJobResponseResourceGroup;
@@ -2968,16 +2819,8 @@ export interface RunJobResponseInitiatorCase0 {
   type: RunJobResponseInitiatorCase0Type;
   avatarUrl: string;
 }
-export const RunJobResponseInitiatorCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    type: RunJobResponseInitiatorCase0Type,
-    avatarUrl: S.String,
-  }),
-).annotate({
-  identifier: "RunJobResponseInitiatorCase0",
-}) as any as S.Schema<RunJobResponseInitiatorCase0>;
+export const RunJobResponseInitiatorCase0 =
+  CancelJobResponseInitiatorCase0 as any as S.Schema<RunJobResponseInitiatorCase0>;
 
 export type RunJobResponseInitiatorCase1 = CancelJobResponseInitiatorCase1;
 export const RunJobResponseInitiatorCase1 = CancelJobResponseInitiatorCase1;
@@ -3060,15 +2903,8 @@ export interface RunJobResponseHfToken {
   tokenId?: string;
   settingsUrl?: string;
 }
-export const RunJobResponseHfToken = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ownerName: S.String,
-    orgName: S.optional(S.String),
-    tokenRole: S.optional(RunJobResponseHfTokenTokenRole),
-    tokenId: S.optional(S.String),
-    settingsUrl: S.optional(S.String),
-  }),
-).annotate({ identifier: "RunJobResponseHfToken" }) as any as S.Schema<RunJobResponseHfToken>;
+export const RunJobResponseHfToken =
+  CancelJobResponseHfToken as any as S.Schema<RunJobResponseHfToken>;
 
 export interface RunJobResponse {
   id: string;
@@ -3205,24 +3041,13 @@ export interface StartJobRequestBodyCase0VolumesItem {
   /** Subfolder prefix inside the bucket/repo to mount, e.g. 'path/to/dir' */
   path?: string;
 }
-export const StartJobRequestBodyCase0VolumesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: StartJobRequestBodyCase0VolumesItemType,
-    source: S.String,
-    mountPath: S.String,
-    revision: S.optional(S.String),
-    readOnly: S.optional(S.Boolean),
-    path: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "StartJobRequestBodyCase0VolumesItem",
-}) as any as S.Schema<StartJobRequestBodyCase0VolumesItem>;
+export const StartJobRequestBodyCase0VolumesItem =
+  CreateScheduledJobRequestJobSpecCase0VolumesItem as any as S.Schema<StartJobRequestBodyCase0VolumesItem>;
 
 /** HuggingFace Buckets or Repos to mount as volumes in the job container. */
 export type StartJobRequestBodyCase0VolumesList = Array<StartJobRequestBodyCase0VolumesItem>;
-export const StartJobRequestBodyCase0VolumesList = /*@__PURE__*/ S.Array(
-  StartJobRequestBodyCase0VolumesItem,
-) as any as S.Schema<StartJobRequestBodyCase0VolumesList>;
+export const StartJobRequestBodyCase0VolumesList =
+  CreateScheduledJobRequestJobSpecCase0VolumesList as any as S.Schema<StartJobRequestBodyCase0VolumesList>;
 
 export type StartJobRequestBodyCase0ExposePortsList = Array<number>;
 export const StartJobRequestBodyCase0ExposePortsList =
@@ -3378,24 +3203,13 @@ export interface StartJobRequestBodyCase1VolumesItem {
   /** Subfolder prefix inside the bucket/repo to mount, e.g. 'path/to/dir' */
   path?: string;
 }
-export const StartJobRequestBodyCase1VolumesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: StartJobRequestBodyCase1VolumesItemType,
-    source: S.String,
-    mountPath: S.String,
-    revision: S.optional(S.String),
-    readOnly: S.optional(S.Boolean),
-    path: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "StartJobRequestBodyCase1VolumesItem",
-}) as any as S.Schema<StartJobRequestBodyCase1VolumesItem>;
+export const StartJobRequestBodyCase1VolumesItem =
+  CreateScheduledJobRequestJobSpecCase0VolumesItem as any as S.Schema<StartJobRequestBodyCase1VolumesItem>;
 
 /** HuggingFace Buckets or Repos to mount as volumes in the job container. */
 export type StartJobRequestBodyCase1VolumesList = Array<StartJobRequestBodyCase1VolumesItem>;
-export const StartJobRequestBodyCase1VolumesList = /*@__PURE__*/ S.Array(
-  StartJobRequestBodyCase1VolumesItem,
-) as any as S.Schema<StartJobRequestBodyCase1VolumesList>;
+export const StartJobRequestBodyCase1VolumesList =
+  CreateScheduledJobRequestJobSpecCase0VolumesList as any as S.Schema<StartJobRequestBodyCase1VolumesList>;
 
 export type StartJobRequestBodyCase1ExposePortsList = Array<number>;
 export const StartJobRequestBodyCase1ExposePortsList =
@@ -3596,14 +3410,8 @@ export interface StartJobResponseOwner {
   type: StartJobResponseOwnerType;
   avatarUrl: string;
 }
-export const StartJobResponseOwner = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    type: StartJobResponseOwnerType,
-    avatarUrl: S.String,
-  }),
-).annotate({ identifier: "StartJobResponseOwner" }) as any as S.Schema<StartJobResponseOwner>;
+export const StartJobResponseOwner =
+  CancelJobResponseOwner as any as S.Schema<StartJobResponseOwner>;
 
 export type StartJobResponseResourceGroup = CancelJobResponseResourceGroup;
 export const StartJobResponseResourceGroup = CancelJobResponseResourceGroup;
@@ -3618,16 +3426,8 @@ export interface StartJobResponseInitiatorCase0 {
   type: StartJobResponseInitiatorCase0Type;
   avatarUrl: string;
 }
-export const StartJobResponseInitiatorCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    type: StartJobResponseInitiatorCase0Type,
-    avatarUrl: S.String,
-  }),
-).annotate({
-  identifier: "StartJobResponseInitiatorCase0",
-}) as any as S.Schema<StartJobResponseInitiatorCase0>;
+export const StartJobResponseInitiatorCase0 =
+  CancelJobResponseInitiatorCase0 as any as S.Schema<StartJobResponseInitiatorCase0>;
 
 export type StartJobResponseInitiatorCase1 = CancelJobResponseInitiatorCase1;
 export const StartJobResponseInitiatorCase1 = CancelJobResponseInitiatorCase1;
@@ -3710,15 +3510,8 @@ export interface StartJobResponseHfToken {
   tokenId?: string;
   settingsUrl?: string;
 }
-export const StartJobResponseHfToken = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ownerName: S.String,
-    orgName: S.optional(S.String),
-    tokenRole: S.optional(StartJobResponseHfTokenTokenRole),
-    tokenId: S.optional(S.String),
-    settingsUrl: S.optional(S.String),
-  }),
-).annotate({ identifier: "StartJobResponseHfToken" }) as any as S.Schema<StartJobResponseHfToken>;
+export const StartJobResponseHfToken =
+  CancelJobResponseHfToken as any as S.Schema<StartJobResponseHfToken>;
 
 export interface StartJobResponse {
   id: string;
@@ -3979,16 +3772,8 @@ export interface UpdateJobExposedPortsResponseOwner {
   type: UpdateJobExposedPortsResponseOwnerType;
   avatarUrl: string;
 }
-export const UpdateJobExposedPortsResponseOwner = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    type: UpdateJobExposedPortsResponseOwnerType,
-    avatarUrl: S.String,
-  }),
-).annotate({
-  identifier: "UpdateJobExposedPortsResponseOwner",
-}) as any as S.Schema<UpdateJobExposedPortsResponseOwner>;
+export const UpdateJobExposedPortsResponseOwner =
+  CancelJobResponseInitiatorCase0 as any as S.Schema<UpdateJobExposedPortsResponseOwner>;
 
 export type UpdateJobExposedPortsResponseResourceGroup = CancelJobResponseResourceGroup;
 export const UpdateJobExposedPortsResponseResourceGroup = CancelJobResponseResourceGroup;
@@ -4003,16 +3788,8 @@ export interface UpdateJobExposedPortsResponseInitiatorCase0 {
   type: UpdateJobExposedPortsResponseInitiatorCase0Type;
   avatarUrl: string;
 }
-export const UpdateJobExposedPortsResponseInitiatorCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    type: UpdateJobExposedPortsResponseInitiatorCase0Type,
-    avatarUrl: S.String,
-  }),
-).annotate({
-  identifier: "UpdateJobExposedPortsResponseInitiatorCase0",
-}) as any as S.Schema<UpdateJobExposedPortsResponseInitiatorCase0>;
+export const UpdateJobExposedPortsResponseInitiatorCase0 =
+  CancelJobResponseInitiatorCase0 as any as S.Schema<UpdateJobExposedPortsResponseInitiatorCase0>;
 
 export type UpdateJobExposedPortsResponseInitiatorCase1 = CancelJobResponseInitiatorCase1;
 export const UpdateJobExposedPortsResponseInitiatorCase1 = CancelJobResponseInitiatorCase1;
@@ -4100,17 +3877,8 @@ export interface UpdateJobExposedPortsResponseHfToken {
   tokenId?: string;
   settingsUrl?: string;
 }
-export const UpdateJobExposedPortsResponseHfToken = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ownerName: S.String,
-    orgName: S.optional(S.String),
-    tokenRole: S.optional(UpdateJobExposedPortsResponseHfTokenTokenRole),
-    tokenId: S.optional(S.String),
-    settingsUrl: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateJobExposedPortsResponseHfToken",
-}) as any as S.Schema<UpdateJobExposedPortsResponseHfToken>;
+export const UpdateJobExposedPortsResponseHfToken =
+  CreateScheduledJobResponseJobSpecHfToken as any as S.Schema<UpdateJobExposedPortsResponseHfToken>;
 
 export interface UpdateJobExposedPortsResponse {
   id: string;
@@ -4299,16 +4067,8 @@ export interface UpdateJobLabelsResponseOwner {
   type: UpdateJobLabelsResponseOwnerType;
   avatarUrl: string;
 }
-export const UpdateJobLabelsResponseOwner = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    type: UpdateJobLabelsResponseOwnerType,
-    avatarUrl: S.String,
-  }),
-).annotate({
-  identifier: "UpdateJobLabelsResponseOwner",
-}) as any as S.Schema<UpdateJobLabelsResponseOwner>;
+export const UpdateJobLabelsResponseOwner =
+  CancelJobResponseInitiatorCase0 as any as S.Schema<UpdateJobLabelsResponseOwner>;
 
 export type UpdateJobLabelsResponseResourceGroup = CancelJobResponseResourceGroup;
 export const UpdateJobLabelsResponseResourceGroup = CancelJobResponseResourceGroup;
@@ -4323,16 +4083,8 @@ export interface UpdateJobLabelsResponseInitiatorCase0 {
   type: UpdateJobLabelsResponseInitiatorCase0Type;
   avatarUrl: string;
 }
-export const UpdateJobLabelsResponseInitiatorCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    type: UpdateJobLabelsResponseInitiatorCase0Type,
-    avatarUrl: S.String,
-  }),
-).annotate({
-  identifier: "UpdateJobLabelsResponseInitiatorCase0",
-}) as any as S.Schema<UpdateJobLabelsResponseInitiatorCase0>;
+export const UpdateJobLabelsResponseInitiatorCase0 =
+  CancelJobResponseInitiatorCase0 as any as S.Schema<UpdateJobLabelsResponseInitiatorCase0>;
 
 export type UpdateJobLabelsResponseInitiatorCase1 = CancelJobResponseInitiatorCase1;
 export const UpdateJobLabelsResponseInitiatorCase1 = CancelJobResponseInitiatorCase1;
@@ -4420,17 +4172,8 @@ export interface UpdateJobLabelsResponseHfToken {
   tokenId?: string;
   settingsUrl?: string;
 }
-export const UpdateJobLabelsResponseHfToken = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ownerName: S.String,
-    orgName: S.optional(S.String),
-    tokenRole: S.optional(UpdateJobLabelsResponseHfTokenTokenRole),
-    tokenId: S.optional(S.String),
-    settingsUrl: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateJobLabelsResponseHfToken",
-}) as any as S.Schema<UpdateJobLabelsResponseHfToken>;
+export const UpdateJobLabelsResponseHfToken =
+  CreateScheduledJobResponseJobSpecHfToken as any as S.Schema<UpdateJobLabelsResponseHfToken>;
 
 export interface UpdateJobLabelsResponse {
   id: string;
@@ -4527,16 +4270,8 @@ export interface UpdateJobScheduleResponseOwner {
   avatarUrl: string;
   type: UpdateJobScheduleResponseOwnerType;
 }
-export const UpdateJobScheduleResponseOwner = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    avatarUrl: S.String,
-    type: UpdateJobScheduleResponseOwnerType,
-  }),
-).annotate({
-  identifier: "UpdateJobScheduleResponseOwner",
-}) as any as S.Schema<UpdateJobScheduleResponseOwner>;
+export const UpdateJobScheduleResponseOwner =
+  CreateScheduledJobResponseOwner as any as S.Schema<UpdateJobScheduleResponseOwner>;
 
 export type UpdateJobScheduleResponseInitiatorType = "user" | "org";
 export const UpdateJobScheduleResponseInitiatorType = S.String;
@@ -4548,16 +4283,8 @@ export interface UpdateJobScheduleResponseInitiator {
   avatarUrl: string;
   type: UpdateJobScheduleResponseInitiatorType;
 }
-export const UpdateJobScheduleResponseInitiator = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    avatarUrl: S.String,
-    type: UpdateJobScheduleResponseInitiatorType,
-  }),
-).annotate({
-  identifier: "UpdateJobScheduleResponseInitiator",
-}) as any as S.Schema<UpdateJobScheduleResponseInitiator>;
+export const UpdateJobScheduleResponseInitiator =
+  CreateScheduledJobResponseOwner as any as S.Schema<UpdateJobScheduleResponseInitiator>;
 
 export type UpdateJobScheduleResponseJobSpecEnvironmentMap = { [key: string]: string | undefined };
 export const UpdateJobScheduleResponseJobSpecEnvironmentMap =
@@ -4671,17 +4398,8 @@ export interface UpdateJobScheduleResponseJobSpecHfToken {
   tokenId?: string;
   settingsUrl?: string;
 }
-export const UpdateJobScheduleResponseJobSpecHfToken = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ownerName: S.String,
-    orgName: S.optional(S.String),
-    tokenRole: S.optional(UpdateJobScheduleResponseJobSpecHfTokenTokenRole),
-    tokenId: S.optional(S.String),
-    settingsUrl: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateJobScheduleResponseJobSpecHfToken",
-}) as any as S.Schema<UpdateJobScheduleResponseJobSpecHfToken>;
+export const UpdateJobScheduleResponseJobSpecHfToken =
+  CreateScheduledJobResponseJobSpecHfToken as any as S.Schema<UpdateJobScheduleResponseJobSpecHfToken>;
 
 export interface UpdateJobScheduleResponseJobSpec {
   spaceId?: string;
@@ -4805,16 +4523,8 @@ export interface UpdateScheduledJobLabelsResponseOwner {
   avatarUrl: string;
   type: UpdateScheduledJobLabelsResponseOwnerType;
 }
-export const UpdateScheduledJobLabelsResponseOwner = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    avatarUrl: S.String,
-    type: UpdateScheduledJobLabelsResponseOwnerType,
-  }),
-).annotate({
-  identifier: "UpdateScheduledJobLabelsResponseOwner",
-}) as any as S.Schema<UpdateScheduledJobLabelsResponseOwner>;
+export const UpdateScheduledJobLabelsResponseOwner =
+  CreateScheduledJobResponseOwner as any as S.Schema<UpdateScheduledJobLabelsResponseOwner>;
 
 export type UpdateScheduledJobLabelsResponseInitiatorType = "user" | "org";
 export const UpdateScheduledJobLabelsResponseInitiatorType = S.String;
@@ -4826,16 +4536,8 @@ export interface UpdateScheduledJobLabelsResponseInitiator {
   avatarUrl: string;
   type: UpdateScheduledJobLabelsResponseInitiatorType;
 }
-export const UpdateScheduledJobLabelsResponseInitiator = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    avatarUrl: S.String,
-    type: UpdateScheduledJobLabelsResponseInitiatorType,
-  }),
-).annotate({
-  identifier: "UpdateScheduledJobLabelsResponseInitiator",
-}) as any as S.Schema<UpdateScheduledJobLabelsResponseInitiator>;
+export const UpdateScheduledJobLabelsResponseInitiator =
+  CreateScheduledJobResponseOwner as any as S.Schema<UpdateScheduledJobLabelsResponseInitiator>;
 
 export type UpdateScheduledJobLabelsResponseJobSpecEnvironmentMap = {
   [key: string]: string | undefined;
@@ -4957,17 +4659,8 @@ export interface UpdateScheduledJobLabelsResponseJobSpecHfToken {
   tokenId?: string;
   settingsUrl?: string;
 }
-export const UpdateScheduledJobLabelsResponseJobSpecHfToken = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ownerName: S.String,
-    orgName: S.optional(S.String),
-    tokenRole: S.optional(UpdateScheduledJobLabelsResponseJobSpecHfTokenTokenRole),
-    tokenId: S.optional(S.String),
-    settingsUrl: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateScheduledJobLabelsResponseJobSpecHfToken",
-}) as any as S.Schema<UpdateScheduledJobLabelsResponseJobSpecHfToken>;
+export const UpdateScheduledJobLabelsResponseJobSpecHfToken =
+  CreateScheduledJobResponseJobSpecHfToken as any as S.Schema<UpdateScheduledJobLabelsResponseJobSpecHfToken>;
 
 export interface UpdateScheduledJobLabelsResponseJobSpec {
   spaceId?: string;

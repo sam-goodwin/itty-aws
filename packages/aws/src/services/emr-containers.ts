@@ -1240,7 +1240,7 @@ export const ListJobTemplatesResponse = /*@__PURE__*/ S.suspend(() =>
 export type EndpointTypes = string[];
 export const EndpointTypes = SubnetIds as any as S.Schema<EndpointTypes>;
 export type EndpointStates = EndpointState[];
-export const EndpointStates = /*@__PURE__*/ S.Array(EndpointState);
+export const EndpointStates = JobRunStates as any as S.Schema<EndpointStates>;
 export interface ListManagedEndpointsRequest {
   virtualClusterId: string;
   createdBefore?: Date;
@@ -1343,7 +1343,7 @@ export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTagsForResourceResponse",
 }) as any as S.Schema<ListTagsForResourceResponse>;
 export type VirtualClusterStates = VirtualClusterState[];
-export const VirtualClusterStates = /*@__PURE__*/ S.Array(VirtualClusterState);
+export const VirtualClusterStates = JobRunStates as any as S.Schema<VirtualClusterStates>;
 export interface ListVirtualClustersRequest {
   containerProviderId?: string;
   containerProviderType?: ContainerProviderType;

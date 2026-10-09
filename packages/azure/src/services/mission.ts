@@ -1964,9 +1964,8 @@ export const EnclaveEndpointProtocol = S.String;
 export type EnclaveEndpointDestinationRuleProtocolsList = Array<
   EnclaveEndpointProtocol | (string & {})
 >;
-export const EnclaveEndpointDestinationRuleProtocolsList = /*@__PURE__*/ S.Array(
-  EnclaveEndpointProtocol,
-) as any as S.Schema<EnclaveEndpointDestinationRuleProtocolsList>;
+export const EnclaveEndpointDestinationRuleProtocolsList =
+  CommunityEndpointDestinationRuleProtocolsList as any as S.Schema<EnclaveEndpointDestinationRuleProtocolsList>;
 
 /** Enclave Endpoint Rule Properties */
 export interface EnclaveEndpointDestinationRule {
@@ -5090,13 +5089,8 @@ export interface EnclaveDefaultSettingsModelInput {
   /** Diagnostic Destination. */
   diagnosticDestination?: EnclaveDefaultSettingsModelInputDiagnosticDestination | (string & {});
 }
-export const EnclaveDefaultSettingsModelInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    diagnosticDestination: S.optional(EnclaveDefaultSettingsModelInputDiagnosticDestination),
-  }),
-).annotate({
-  identifier: "EnclaveDefaultSettingsModelInput",
-}) as any as S.Schema<EnclaveDefaultSettingsModelInput>;
+export const EnclaveDefaultSettingsModelInput =
+  EnclaveDefaultSettingsPatchModel as any as S.Schema<EnclaveDefaultSettingsModelInput>;
 
 /** Virtual Enclave Resource properties */
 export interface VirtualEnclavePropertiesInput {

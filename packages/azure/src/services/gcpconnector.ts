@@ -3255,9 +3255,8 @@ export const EnableComponents = S.String;
 
 /** Select components to collect logs. An empty set would disable all logging. */
 export type LoggingComponentConfigEnableComponentsList = Array<EnableComponents | (string & {})>;
-export const LoggingComponentConfigEnableComponentsList = /*@__PURE__*/ S.Array(
-  EnableComponents,
-) as any as S.Schema<LoggingComponentConfigEnableComponentsList>;
+export const LoggingComponentConfigEnableComponentsList =
+  DatasetAccessEntryTargetTypesList as any as S.Schema<LoggingComponentConfigEnableComponentsList>;
 
 /** LoggingComponentConfig is cluster logging component configuration */
 export interface LoggingComponentConfig {
@@ -3510,9 +3509,8 @@ export const MonitoringComponentEnableComponents = S.String;
 export type MonitoringComponentConfigEnableComponentsList = Array<
   MonitoringComponentEnableComponents | (string & {})
 >;
-export const MonitoringComponentConfigEnableComponentsList = /*@__PURE__*/ S.Array(
-  MonitoringComponentEnableComponents,
-) as any as S.Schema<MonitoringComponentConfigEnableComponentsList>;
+export const MonitoringComponentConfigEnableComponentsList =
+  DatasetAccessEntryTargetTypesList as any as S.Schema<MonitoringComponentConfigEnableComponentsList>;
 
 /** MonitoringComponentConfig is cluster monitoring component configuration */
 export interface MonitoringComponentConfig {
@@ -3974,11 +3972,7 @@ export interface SandboxConfig {
   /** Type of the sandbox to use for the node */
   type?: SandboxType | (string & {});
 }
-export const SandboxConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(SandboxType),
-  }),
-).annotate({ identifier: "SandboxConfig" }) as any as S.Schema<SandboxConfig>;
+export const SandboxConfig = GuestOsFeature as any as S.Schema<SandboxConfig>;
 
 /** SecondaryBootDisk.mode values, as defined by the Google Cloud API. */
 export type SecondaryBootDiskMode = "MODE_UNSPECIFIED" | "CONTAINER_IMAGE_CACHE";
@@ -4608,9 +4602,8 @@ export const FilterEventType = S.String;
 
 /** Event types to include in the filter */
 export type FilterEventTypeList = Array<FilterEventType | (string & {})>;
-export const FilterEventTypeList = /*@__PURE__*/ S.Array(
-  FilterEventType,
-) as any as S.Schema<FilterEventTypeList>;
+export const FilterEventTypeList =
+  DatasetAccessEntryTargetTypesList as any as S.Schema<FilterEventTypeList>;
 
 /** Filter configuration for notifications */
 export interface Filter {
@@ -4714,11 +4707,7 @@ export interface ReleaseChannel {
   /** The release channel the cluster is subscribed to */
   channel?: ReleaseChannelChannel | (string & {});
 }
-export const ReleaseChannel = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    channel: S.optional(ReleaseChannelChannel),
-  }),
-).annotate({ identifier: "ReleaseChannel" }) as any as S.Schema<ReleaseChannel>;
+export const ReleaseChannel = GatewayApiConfig as any as S.Schema<ReleaseChannel>;
 
 /** The resource labels for the cluster to use to annotate any related Google Compute Engine resources. */
 export type GcpContainerClusterPropertiesResourceLabelsMap = { [key: string]: string | undefined };
@@ -4772,11 +4761,8 @@ export interface SecurityPostureConfig {
   /** Mode of the security posture */
   mode?: SecurityPostureMode | (string & {});
 }
-export const SecurityPostureConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: S.optional(SecurityPostureMode),
-  }),
-).annotate({ identifier: "SecurityPostureConfig" }) as any as S.Schema<SecurityPostureConfig>;
+export const SecurityPostureConfig =
+  WorkloadMetadataConfig as any as S.Schema<SecurityPostureConfig>;
 
 /** Configuration of Shielded Nodes */
 export interface ShieldedNodes {

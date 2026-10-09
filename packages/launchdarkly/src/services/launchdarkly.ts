@@ -180,9 +180,8 @@ export const CopyFeatureFlagRequestExcludedActionsItem = S.String;
 export type CopyFeatureFlagRequestExcludedActionsList = Array<
   CopyFeatureFlagRequestExcludedActionsItem | (string & {})
 >;
-export const CopyFeatureFlagRequestExcludedActionsList = /*@__PURE__*/ S.Array(
-  CopyFeatureFlagRequestExcludedActionsItem,
-) as any as S.Schema<CopyFeatureFlagRequestExcludedActionsList>;
+export const CopyFeatureFlagRequestExcludedActionsList =
+  CopyFeatureFlagRequestIncludedActionsList as any as S.Schema<CopyFeatureFlagRequestExcludedActionsList>;
 
 export interface CopyFeatureFlagRequest {
   /** The project key */
@@ -2926,20 +2925,7 @@ export interface AnalysisConfigRep {
   /** Whether sequential testing is enabled for Frequentist analysis */
   sequentialTestingEnabled?: boolean;
 }
-export const AnalysisConfigRep = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bayesianThreshold: S.optional(S.String),
-    significanceThreshold: S.optional(S.String),
-    testDirection: S.optional(S.String),
-    multipleComparisonCorrectionMethod: S.optional(
-      AnalysisConfigRepMultipleComparisonCorrectionMethod,
-    ),
-    multipleComparisonCorrectionScope: S.optional(
-      AnalysisConfigRepMultipleComparisonCorrectionScope,
-    ),
-    sequentialTestingEnabled: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "AnalysisConfigRep" }) as any as S.Schema<AnalysisConfigRep>;
+export const AnalysisConfigRep = AnalysisConfigInput as any as S.Schema<AnalysisConfigRep>;
 
 export type MutableFieldsByStatusRepNotStartedValueList = Array<string>;
 export const MutableFieldsByStatusRepNotStartedValueList =
@@ -16683,9 +16669,8 @@ export const GetLinkedResourcesRequestExpandItem = S.String;
 export type GetLinkedResourcesRequestExpandList = Array<
   GetLinkedResourcesRequestExpandItem | (string & {})
 >;
-export const GetLinkedResourcesRequestExpandList = /*@__PURE__*/ S.Array(
-  GetLinkedResourcesRequestExpandItem,
-) as any as S.Schema<GetLinkedResourcesRequestExpandList>;
+export const GetLinkedResourcesRequestExpandList =
+  CopyFeatureFlagRequestIncludedActionsList as any as S.Schema<GetLinkedResourcesRequestExpandList>;
 
 export interface GetLinkedResourcesRequest {
   projectKey: string;
@@ -19652,9 +19637,8 @@ export type GetViewRequestExpandItem =
 export const GetViewRequestExpandItem = S.String;
 
 export type GetViewRequestExpandList = Array<GetViewRequestExpandItem | (string & {})>;
-export const GetViewRequestExpandList = /*@__PURE__*/ S.Array(
-  GetViewRequestExpandItem,
-) as any as S.Schema<GetViewRequestExpandList>;
+export const GetViewRequestExpandList =
+  CopyFeatureFlagRequestIncludedActionsList as any as S.Schema<GetViewRequestExpandList>;
 
 export interface GetViewRequest {
   projectKey: string;
@@ -19696,9 +19680,8 @@ export type GetViewsRequestExpandItem =
 export const GetViewsRequestExpandItem = S.String;
 
 export type GetViewsRequestExpandList = Array<GetViewsRequestExpandItem | (string & {})>;
-export const GetViewsRequestExpandList = /*@__PURE__*/ S.Array(
-  GetViewsRequestExpandItem,
-) as any as S.Schema<GetViewsRequestExpandList>;
+export const GetViewsRequestExpandList =
+  CopyFeatureFlagRequestIncludedActionsList as any as S.Schema<GetViewsRequestExpandList>;
 
 export interface GetViewsRequest {
   projectKey: string;
@@ -23382,9 +23365,8 @@ export const PostFlagCopyConfigApprovalRequestRequestIncludedActionsItem = S.Str
 export type PostFlagCopyConfigApprovalRequestRequestIncludedActionsList = Array<
   PostFlagCopyConfigApprovalRequestRequestIncludedActionsItem | (string & {})
 >;
-export const PostFlagCopyConfigApprovalRequestRequestIncludedActionsList = /*@__PURE__*/ S.Array(
-  PostFlagCopyConfigApprovalRequestRequestIncludedActionsItem,
-) as any as S.Schema<PostFlagCopyConfigApprovalRequestRequestIncludedActionsList>;
+export const PostFlagCopyConfigApprovalRequestRequestIncludedActionsList =
+  CopyFeatureFlagRequestIncludedActionsList as any as S.Schema<PostFlagCopyConfigApprovalRequestRequestIncludedActionsList>;
 
 export type PostFlagCopyConfigApprovalRequestRequestExcludedActionsItem =
   | "updateOn"
@@ -23399,9 +23381,8 @@ export const PostFlagCopyConfigApprovalRequestRequestExcludedActionsItem = S.Str
 export type PostFlagCopyConfigApprovalRequestRequestExcludedActionsList = Array<
   PostFlagCopyConfigApprovalRequestRequestExcludedActionsItem | (string & {})
 >;
-export const PostFlagCopyConfigApprovalRequestRequestExcludedActionsList = /*@__PURE__*/ S.Array(
-  PostFlagCopyConfigApprovalRequestRequestExcludedActionsItem,
-) as any as S.Schema<PostFlagCopyConfigApprovalRequestRequestExcludedActionsList>;
+export const PostFlagCopyConfigApprovalRequestRequestExcludedActionsList =
+  CopyFeatureFlagRequestIncludedActionsList as any as S.Schema<PostFlagCopyConfigApprovalRequestRequestExcludedActionsList>;
 
 export interface PostFlagCopyConfigApprovalRequestRequest {
   /** The project key */

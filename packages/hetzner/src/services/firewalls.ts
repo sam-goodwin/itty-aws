@@ -509,14 +509,7 @@ export interface GetFirewallResponseFirewallAppliedToItemAppliedToResourcesItem 
   server?: CreateFirewallRequestApplyToItemServer;
 }
 export const GetFirewallResponseFirewallAppliedToItemAppliedToResourcesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.optional(GetFirewallResponseFirewallAppliedToItemAppliedToResourcesItemType),
-      server: S.optional(CreateFirewallRequestApplyToItemServer),
-    }),
-  ).annotate({
-    identifier: "GetFirewallResponseFirewallAppliedToItemAppliedToResourcesItem",
-  }) as any as S.Schema<GetFirewallResponseFirewallAppliedToItemAppliedToResourcesItem>;
+  CreateFirewallResponseFirewallAppliedToItemAppliedToResourcesItem as any as S.Schema<GetFirewallResponseFirewallAppliedToItemAppliedToResourcesItem>;
 
 /** Resources applied to via this [Label Selector](#description/label-selector). */
 export type GetFirewallResponseFirewallAppliedToItemAppliedToResourcesList =
@@ -721,22 +714,13 @@ export interface ListFirewallsResponseFirewallsItemAppliedToItemAppliedToResourc
   server?: CreateFirewallRequestApplyToItemServer;
 }
 export const ListFirewallsResponseFirewallsItemAppliedToItemAppliedToResourcesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.optional(ListFirewallsResponseFirewallsItemAppliedToItemAppliedToResourcesItemType),
-      server: S.optional(CreateFirewallRequestApplyToItemServer),
-    }),
-  ).annotate({
-    identifier: "ListFirewallsResponseFirewallsItemAppliedToItemAppliedToResourcesItem",
-  }) as any as S.Schema<ListFirewallsResponseFirewallsItemAppliedToItemAppliedToResourcesItem>;
+  CreateFirewallResponseFirewallAppliedToItemAppliedToResourcesItem as any as S.Schema<ListFirewallsResponseFirewallsItemAppliedToItemAppliedToResourcesItem>;
 
 /** Resources applied to via this [Label Selector](#description/label-selector). */
 export type ListFirewallsResponseFirewallsItemAppliedToItemAppliedToResourcesList =
   Array<ListFirewallsResponseFirewallsItemAppliedToItemAppliedToResourcesItem>;
 export const ListFirewallsResponseFirewallsItemAppliedToItemAppliedToResourcesList =
-  /*@__PURE__*/ S.Array(
-    ListFirewallsResponseFirewallsItemAppliedToItemAppliedToResourcesItem,
-  ) as any as S.Schema<ListFirewallsResponseFirewallsItemAppliedToItemAppliedToResourcesList>;
+  CreateFirewallResponseFirewallAppliedToItemAppliedToResourcesList as any as S.Schema<ListFirewallsResponseFirewallsItemAppliedToItemAppliedToResourcesList>;
 
 export interface ListFirewallsResponseFirewallsItemAppliedToItem {
   /** The type of resource to apply. */
@@ -748,24 +732,13 @@ export interface ListFirewallsResponseFirewallsItemAppliedToItem {
   /** Resources applied to via this [Label Selector](#description/label-selector). */
   applied_to_resources?: ListFirewallsResponseFirewallsItemAppliedToItemAppliedToResourcesList;
 }
-export const ListFirewallsResponseFirewallsItemAppliedToItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ListFirewallsResponseFirewallsItemAppliedToItemType,
-    server: S.optional(CreateFirewallRequestApplyToItemServer),
-    label_selector: S.optional(CreateFirewallRequestApplyToItemLabelSelector),
-    applied_to_resources: S.optional(
-      ListFirewallsResponseFirewallsItemAppliedToItemAppliedToResourcesList,
-    ),
-  }),
-).annotate({
-  identifier: "ListFirewallsResponseFirewallsItemAppliedToItem",
-}) as any as S.Schema<ListFirewallsResponseFirewallsItemAppliedToItem>;
+export const ListFirewallsResponseFirewallsItemAppliedToItem =
+  CreateFirewallResponseFirewallAppliedToItem as any as S.Schema<ListFirewallsResponseFirewallsItemAppliedToItem>;
 
 export type ListFirewallsResponseFirewallsItemAppliedToList =
   Array<ListFirewallsResponseFirewallsItemAppliedToItem>;
-export const ListFirewallsResponseFirewallsItemAppliedToList = /*@__PURE__*/ S.Array(
-  ListFirewallsResponseFirewallsItemAppliedToItem,
-) as any as S.Schema<ListFirewallsResponseFirewallsItemAppliedToList>;
+export const ListFirewallsResponseFirewallsItemAppliedToList =
+  CreateFirewallResponseFirewallAppliedToList as any as S.Schema<ListFirewallsResponseFirewallsItemAppliedToList>;
 
 export interface ListFirewallsResponseFirewallsItem {
   /** ID of the [Firewall](#tag/firewalls). */
@@ -963,22 +936,13 @@ export interface UpdateFirewallResponseFirewallAppliedToItemAppliedToResourcesIt
   server?: CreateFirewallRequestApplyToItemServer;
 }
 export const UpdateFirewallResponseFirewallAppliedToItemAppliedToResourcesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.optional(UpdateFirewallResponseFirewallAppliedToItemAppliedToResourcesItemType),
-      server: S.optional(CreateFirewallRequestApplyToItemServer),
-    }),
-  ).annotate({
-    identifier: "UpdateFirewallResponseFirewallAppliedToItemAppliedToResourcesItem",
-  }) as any as S.Schema<UpdateFirewallResponseFirewallAppliedToItemAppliedToResourcesItem>;
+  CreateFirewallResponseFirewallAppliedToItemAppliedToResourcesItem as any as S.Schema<UpdateFirewallResponseFirewallAppliedToItemAppliedToResourcesItem>;
 
 /** Resources applied to via this [Label Selector](#description/label-selector). */
 export type UpdateFirewallResponseFirewallAppliedToItemAppliedToResourcesList =
   Array<UpdateFirewallResponseFirewallAppliedToItemAppliedToResourcesItem>;
 export const UpdateFirewallResponseFirewallAppliedToItemAppliedToResourcesList =
-  /*@__PURE__*/ S.Array(
-    UpdateFirewallResponseFirewallAppliedToItemAppliedToResourcesItem,
-  ) as any as S.Schema<UpdateFirewallResponseFirewallAppliedToItemAppliedToResourcesList>;
+  CreateFirewallResponseFirewallAppliedToItemAppliedToResourcesList as any as S.Schema<UpdateFirewallResponseFirewallAppliedToItemAppliedToResourcesList>;
 
 export interface UpdateFirewallResponseFirewallAppliedToItem {
   /** The type of resource to apply. */
@@ -990,24 +954,13 @@ export interface UpdateFirewallResponseFirewallAppliedToItem {
   /** Resources applied to via this [Label Selector](#description/label-selector). */
   applied_to_resources?: UpdateFirewallResponseFirewallAppliedToItemAppliedToResourcesList;
 }
-export const UpdateFirewallResponseFirewallAppliedToItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: UpdateFirewallResponseFirewallAppliedToItemType,
-    server: S.optional(CreateFirewallRequestApplyToItemServer),
-    label_selector: S.optional(CreateFirewallRequestApplyToItemLabelSelector),
-    applied_to_resources: S.optional(
-      UpdateFirewallResponseFirewallAppliedToItemAppliedToResourcesList,
-    ),
-  }),
-).annotate({
-  identifier: "UpdateFirewallResponseFirewallAppliedToItem",
-}) as any as S.Schema<UpdateFirewallResponseFirewallAppliedToItem>;
+export const UpdateFirewallResponseFirewallAppliedToItem =
+  CreateFirewallResponseFirewallAppliedToItem as any as S.Schema<UpdateFirewallResponseFirewallAppliedToItem>;
 
 export type UpdateFirewallResponseFirewallAppliedToList =
   Array<UpdateFirewallResponseFirewallAppliedToItem>;
-export const UpdateFirewallResponseFirewallAppliedToList = /*@__PURE__*/ S.Array(
-  UpdateFirewallResponseFirewallAppliedToItem,
-) as any as S.Schema<UpdateFirewallResponseFirewallAppliedToList>;
+export const UpdateFirewallResponseFirewallAppliedToList =
+  CreateFirewallResponseFirewallAppliedToList as any as S.Schema<UpdateFirewallResponseFirewallAppliedToList>;
 
 export interface UpdateFirewallResponseFirewall {
   /** ID of the [Firewall](#tag/firewalls). */

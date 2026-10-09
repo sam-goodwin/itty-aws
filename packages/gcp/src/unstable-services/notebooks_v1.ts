@@ -444,9 +444,8 @@ export const InstanceMigrationEligibilityErrorsItemEnum = S.String;
 export type InstanceMigrationEligibilityErrorsItemEnumList = Array<
   InstanceMigrationEligibilityErrorsItemEnum | (string & {})
 >;
-export const InstanceMigrationEligibilityErrorsItemEnumList = /*@__PURE__*/ S.Array(
-  InstanceMigrationEligibilityErrorsItemEnum,
-) as any as S.Schema<InstanceMigrationEligibilityErrorsItemEnumList>;
+export const InstanceMigrationEligibilityErrorsItemEnumList =
+  InstanceMigrationEligibilityWarningsItemEnumList as any as S.Schema<InstanceMigrationEligibilityErrorsItemEnumList>;
 
 /** InstanceMigrationEligibility represents the feasibility information of a migration from UmN to WbI. */
 export interface InstanceMigrationEligibility {
@@ -872,9 +871,8 @@ export const RuntimeMigrationEligibilityWarningsItemEnum = S.String;
 export type RuntimeMigrationEligibilityWarningsItemEnumList = Array<
   RuntimeMigrationEligibilityWarningsItemEnum | (string & {})
 >;
-export const RuntimeMigrationEligibilityWarningsItemEnumList = /*@__PURE__*/ S.Array(
-  RuntimeMigrationEligibilityWarningsItemEnum,
-) as any as S.Schema<RuntimeMigrationEligibilityWarningsItemEnumList>;
+export const RuntimeMigrationEligibilityWarningsItemEnumList =
+  InstanceMigrationEligibilityWarningsItemEnumList as any as S.Schema<RuntimeMigrationEligibilityWarningsItemEnumList>;
 
 export type RuntimeMigrationEligibilityErrorsItemEnum = "ERROR_UNSPECIFIED" | "CUSTOM_CONTAINER";
 export const RuntimeMigrationEligibilityErrorsItemEnum = S.String;
@@ -882,9 +880,8 @@ export const RuntimeMigrationEligibilityErrorsItemEnum = S.String;
 export type RuntimeMigrationEligibilityErrorsItemEnumList = Array<
   RuntimeMigrationEligibilityErrorsItemEnum | (string & {})
 >;
-export const RuntimeMigrationEligibilityErrorsItemEnumList = /*@__PURE__*/ S.Array(
-  RuntimeMigrationEligibilityErrorsItemEnum,
-) as any as S.Schema<RuntimeMigrationEligibilityErrorsItemEnumList>;
+export const RuntimeMigrationEligibilityErrorsItemEnumList =
+  InstanceMigrationEligibilityWarningsItemEnumList as any as S.Schema<RuntimeMigrationEligibilityErrorsItemEnumList>;
 
 /** RuntimeMigrationEligibility represents the feasibility information of a migration from GmN to WbI. */
 export interface RuntimeMigrationEligibility {
@@ -893,14 +890,8 @@ export interface RuntimeMigrationEligibility {
   /** Output only. Certain configurations make the GmN ineligible for an automatic migration. A manual migration is required. */
   errors?: RuntimeMigrationEligibilityErrorsItemEnumList;
 }
-export const RuntimeMigrationEligibility = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    warnings: S.optional(RuntimeMigrationEligibilityWarningsItemEnumList),
-    errors: S.optional(RuntimeMigrationEligibilityErrorsItemEnumList),
-  }),
-).annotate({
-  identifier: "RuntimeMigrationEligibility",
-}) as any as S.Schema<RuntimeMigrationEligibility>;
+export const RuntimeMigrationEligibility =
+  InstanceMigrationEligibility as any as S.Schema<RuntimeMigrationEligibility>;
 
 export type RuntimeSoftwareConfigPostStartupScriptBehaviorEnum =
   | "POST_STARTUP_SCRIPT_BEHAVIOR_UNSPECIFIED"
@@ -994,12 +985,8 @@ export interface RuntimeAcceleratorConfig {
   /** Count of cores of this accelerator. */
   coreCount?: string;
 }
-export const RuntimeAcceleratorConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(RuntimeAcceleratorConfigTypeEnum),
-    coreCount: S.optional(S.String),
-  }),
-).annotate({ identifier: "RuntimeAcceleratorConfig" }) as any as S.Schema<RuntimeAcceleratorConfig>;
+export const RuntimeAcceleratorConfig =
+  AcceleratorConfig as any as S.Schema<RuntimeAcceleratorConfig>;
 
 /** Definition of the boot image used by the Runtime. Used to facilitate runtime upgradeability. */
 export type BootImage = CancelOperationRequest;
@@ -2633,14 +2620,8 @@ export interface SetInstanceAcceleratorRequest {
   /** Required. Count of cores of this accelerator. Note that not all combinations of `type` and `core_count` are valid. See [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus/#gpus-list) to find a valid combination. TPUs are not supported. */
   coreCount?: string;
 }
-export const SetInstanceAcceleratorRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(SetInstanceAcceleratorRequestTypeEnum),
-    coreCount: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SetInstanceAcceleratorRequest",
-}) as any as S.Schema<SetInstanceAcceleratorRequest>;
+export const SetInstanceAcceleratorRequest =
+  SchedulerAcceleratorConfig as any as S.Schema<SetInstanceAcceleratorRequest>;
 
 export interface SetAcceleratorProjectsLocationsInstancesRequest {
   /** Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}` */

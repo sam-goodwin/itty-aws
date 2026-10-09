@@ -704,14 +704,8 @@ export interface CreateWarehouseSavedQueryRequestQuery {
   kind?: CreateWarehouseSavedQueryRequestQueryKind | (string & {});
   query: string;
 }
-export const CreateWarehouseSavedQueryRequestQuery = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(CreateWarehouseSavedQueryRequestQueryKind),
-    query: S.String,
-  }),
-).annotate({
-  identifier: "CreateWarehouseSavedQueryRequestQuery",
-}) as any as S.Schema<CreateWarehouseSavedQueryRequestQuery>;
+export const CreateWarehouseSavedQueryRequestQuery =
+  DataWarehouseSavedQueryOutputQuery as any as S.Schema<CreateWarehouseSavedQueryRequestQuery>;
 
 export interface CreateWarehouseSavedQueryRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -981,14 +975,8 @@ export interface UpdateWarehouseSavedQueriesPartialRequestQuery {
   kind?: UpdateWarehouseSavedQueriesPartialRequestQueryKind | (string & {});
   query: string;
 }
-export const UpdateWarehouseSavedQueriesPartialRequestQuery = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(UpdateWarehouseSavedQueriesPartialRequestQueryKind),
-    query: S.String,
-  }),
-).annotate({
-  identifier: "UpdateWarehouseSavedQueriesPartialRequestQuery",
-}) as any as S.Schema<UpdateWarehouseSavedQueriesPartialRequestQuery>;
+export const UpdateWarehouseSavedQueriesPartialRequestQuery =
+  DataWarehouseSavedQueryOutputQuery as any as S.Schema<UpdateWarehouseSavedQueriesPartialRequestQuery>;
 
 export interface UpdateWarehouseSavedQueriesPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1049,14 +1037,8 @@ export interface UpdateWarehouseSavedQueryRequestQuery {
   kind?: UpdateWarehouseSavedQueryRequestQueryKind | (string & {});
   query: string;
 }
-export const UpdateWarehouseSavedQueryRequestQuery = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(UpdateWarehouseSavedQueryRequestQueryKind),
-    query: S.String,
-  }),
-).annotate({
-  identifier: "UpdateWarehouseSavedQueryRequestQuery",
-}) as any as S.Schema<UpdateWarehouseSavedQueryRequestQuery>;
+export const UpdateWarehouseSavedQueryRequestQuery =
+  DataWarehouseSavedQueryOutputQuery as any as S.Schema<UpdateWarehouseSavedQueryRequestQuery>;
 
 export interface UpdateWarehouseSavedQueryRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1117,14 +1099,8 @@ export interface WarehouseSavedQueriesCancelCreateRequestQuery {
   kind?: WarehouseSavedQueriesCancelCreateRequestQueryKind | (string & {});
   query: string;
 }
-export const WarehouseSavedQueriesCancelCreateRequestQuery = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(WarehouseSavedQueriesCancelCreateRequestQueryKind),
-    query: S.String,
-  }),
-).annotate({
-  identifier: "WarehouseSavedQueriesCancelCreateRequestQuery",
-}) as any as S.Schema<WarehouseSavedQueriesCancelCreateRequestQuery>;
+export const WarehouseSavedQueriesCancelCreateRequestQuery =
+  DataWarehouseSavedQueryOutputQuery as any as S.Schema<WarehouseSavedQueriesCancelCreateRequestQuery>;
 
 export interface WarehouseSavedQueriesCancelCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */

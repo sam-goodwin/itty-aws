@@ -326,9 +326,8 @@ export const CreateAdGroupRequestMessageAppsItem = S.String;
 export type CreateAdGroupRequestMessageAppsList = Array<
   CreateAdGroupRequestMessageAppsItem | (string & {})
 >;
-export const CreateAdGroupRequestMessageAppsList = /*@__PURE__*/ S.Array(
-  CreateAdGroupRequestMessageAppsItem,
-) as any as S.Schema<CreateAdGroupRequestMessageAppsList>;
+export const CreateAdGroupRequestMessageAppsList =
+  AdGroupDevicesBodyPlatformsList as any as S.Schema<CreateAdGroupRequestMessageAppsList>;
 
 /** The result the ad group's delivery is optimized to get the most of. */
 export type CreateAdGroupRequestOptimizationGoal =
@@ -758,20 +757,12 @@ export interface AdGroupDemographicCategory {
   /** Kind of demographic the category belongs to. */
   type: AdGroupDemographicCategoryType;
 }
-export const AdGroupDemographicCategory = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.optional(S.String),
-    type: AdGroupDemographicCategoryType,
-  }),
-).annotate({
-  identifier: "AdGroupDemographicCategory",
-}) as any as S.Schema<AdGroupDemographicCategory>;
+export const AdGroupDemographicCategory =
+  AdGroupDetailedTargetingBodyDemographicsItem as any as S.Schema<AdGroupDemographicCategory>;
 
 export type AdGroupDetailedTargetingDemographicsList = Array<AdGroupDemographicCategory>;
-export const AdGroupDetailedTargetingDemographicsList = /*@__PURE__*/ S.Array(
-  AdGroupDemographicCategory,
-) as any as S.Schema<AdGroupDetailedTargetingDemographicsList>;
+export const AdGroupDetailedTargetingDemographicsList =
+  AdGroupDetailedTargetingBodyDemographicsList as any as S.Schema<AdGroupDetailedTargetingDemographicsList>;
 
 export type AdGroupTargetingCategory = AdGroupDetailedTargetingBodyInterestsItem;
 export const AdGroupTargetingCategory = AdGroupDetailedTargetingBodyInterestsItem;
@@ -821,9 +812,8 @@ export type AdGroupDevicesPlatformsItem = "mobile" | "desktop";
 export const AdGroupDevicesPlatformsItem = S.String;
 
 export type AdGroupDevicesPlatformsList = Array<AdGroupDevicesPlatformsItem>;
-export const AdGroupDevicesPlatformsList = /*@__PURE__*/ S.Array(
-  AdGroupDevicesPlatformsItem,
-) as any as S.Schema<AdGroupDevicesPlatformsList>;
+export const AdGroupDevicesPlatformsList =
+  AdGroupDevicesBodyPlatformsList as any as S.Schema<AdGroupDevicesPlatformsList>;
 
 export interface AdGroupDevices {
   operating_systems: AdGroupDevicesOperatingSystemsList;
@@ -886,9 +876,8 @@ export type AdGroupMessageAppsItem = "messenger" | "instagram" | "whatsapp";
 export const AdGroupMessageAppsItem = S.String;
 
 export type AdGroupMessageAppsList = Array<AdGroupMessageAppsItem>;
-export const AdGroupMessageAppsList = /*@__PURE__*/ S.Array(
-  AdGroupMessageAppsItem,
-) as any as S.Schema<AdGroupMessageAppsList>;
+export const AdGroupMessageAppsList =
+  AdGroupDevicesBodyPlatformsList as any as S.Schema<AdGroupMessageAppsList>;
 
 /** The result the ad group's delivery is optimized to get the most of. */
 export type AdGroupOptimizationGoal =
@@ -1592,9 +1581,8 @@ export const SearchAdGroupTargetingOptionsRequestTypesItem = S.String;
 export type SearchAdGroupTargetingOptionsRequestTypesList = Array<
   SearchAdGroupTargetingOptionsRequestTypesItem | (string & {})
 >;
-export const SearchAdGroupTargetingOptionsRequestTypesList = /*@__PURE__*/ S.Array(
-  SearchAdGroupTargetingOptionsRequestTypesItem,
-) as any as S.Schema<SearchAdGroupTargetingOptionsRequestTypesList>;
+export const SearchAdGroupTargetingOptionsRequestTypesList =
+  AdGroupDevicesBodyPlatformsList as any as S.Schema<SearchAdGroupTargetingOptionsRequestTypesList>;
 
 export type SearchAdGroupTargetingOptionsRequestLocationTypesItem =
   | "country"
@@ -1609,9 +1597,8 @@ export const SearchAdGroupTargetingOptionsRequestLocationTypesItem = S.String;
 export type SearchAdGroupTargetingOptionsRequestLocationTypesList = Array<
   SearchAdGroupTargetingOptionsRequestLocationTypesItem | (string & {})
 >;
-export const SearchAdGroupTargetingOptionsRequestLocationTypesList = /*@__PURE__*/ S.Array(
-  SearchAdGroupTargetingOptionsRequestLocationTypesItem,
-) as any as S.Schema<SearchAdGroupTargetingOptionsRequestLocationTypesList>;
+export const SearchAdGroupTargetingOptionsRequestLocationTypesList =
+  AdGroupDevicesBodyPlatformsList as any as S.Schema<SearchAdGroupTargetingOptionsRequestLocationTypesList>;
 
 export type SearchAdGroupTargetingOptionsRequestSpecialAdCategoriesItem =
   | "housing"
@@ -1623,9 +1610,8 @@ export const SearchAdGroupTargetingOptionsRequestSpecialAdCategoriesItem = S.Str
 export type SearchAdGroupTargetingOptionsRequestSpecialAdCategoriesList = Array<
   SearchAdGroupTargetingOptionsRequestSpecialAdCategoriesItem | (string & {})
 >;
-export const SearchAdGroupTargetingOptionsRequestSpecialAdCategoriesList = /*@__PURE__*/ S.Array(
-  SearchAdGroupTargetingOptionsRequestSpecialAdCategoriesItem,
-) as any as S.Schema<SearchAdGroupTargetingOptionsRequestSpecialAdCategoriesList>;
+export const SearchAdGroupTargetingOptionsRequestSpecialAdCategoriesList =
+  AdGroupDevicesBodyPlatformsList as any as S.Schema<SearchAdGroupTargetingOptionsRequestSpecialAdCategoriesList>;
 
 export interface SearchAdGroupTargetingOptionsRequest {
   /** Account to search on behalf of. Defaults to the authenticated account. */
@@ -1851,9 +1837,8 @@ export const UpdateAdGroupRequestMessageAppsItem = S.String;
 export type UpdateAdGroupRequestMessageAppsList = Array<
   UpdateAdGroupRequestMessageAppsItem | (string & {})
 >;
-export const UpdateAdGroupRequestMessageAppsList = /*@__PURE__*/ S.Array(
-  UpdateAdGroupRequestMessageAppsItem,
-) as any as S.Schema<UpdateAdGroupRequestMessageAppsList>;
+export const UpdateAdGroupRequestMessageAppsList =
+  AdGroupDevicesBodyPlatformsList as any as S.Schema<UpdateAdGroupRequestMessageAppsList>;
 
 /** The result the ad group's delivery is optimized to get the most of. */
 export type UpdateAdGroupRequestOptimizationGoal =

@@ -340,9 +340,8 @@ export type ListResponseErrorCodeItemEnum =
 export const ListResponseErrorCodeItemEnum = S.String;
 
 export type ListResponseErrorCodeItemEnumList = Array<ListResponseErrorCodeItemEnum>;
-export const ListResponseErrorCodeItemEnumList = /*@__PURE__*/ S.Array(
-  ListResponseErrorCodeItemEnum,
-) as any as S.Schema<ListResponseErrorCodeItemEnumList>;
+export const ListResponseErrorCodeItemEnumList =
+  CheckResponseErrorCodeItemEnumList as any as S.Schema<ListResponseErrorCodeItemEnumList>;
 
 /** Describes a reliable statement that has been made about the relationship between a source asset and a target asset. Statements are always made by the source asset, either directly or by delegating to a statement list that is stored elsewhere. For more detailed definitions of statements and assets, please refer to our [API documentation landing page](/digital-asset-links/v1/getting-started). */
 export interface Statement {

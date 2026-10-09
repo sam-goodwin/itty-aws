@@ -130,9 +130,8 @@ export const PretargetingConfigIncludedUserIdTypesItemEnum = S.String;
 export type PretargetingConfigIncludedUserIdTypesItemEnumList = Array<
   PretargetingConfigIncludedUserIdTypesItemEnum | (string & {})
 >;
-export const PretargetingConfigIncludedUserIdTypesItemEnumList = /*@__PURE__*/ S.Array(
-  PretargetingConfigIncludedUserIdTypesItemEnum,
-) as any as S.Schema<PretargetingConfigIncludedUserIdTypesItemEnumList>;
+export const PretargetingConfigIncludedUserIdTypesItemEnumList =
+  PretargetingConfigIncludedFormatsItemEnumList as any as S.Schema<PretargetingConfigIncludedUserIdTypesItemEnumList>;
 
 export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
@@ -218,9 +217,8 @@ export const PretargetingConfigAllowedUserTargetingModesItemEnum = S.String;
 export type PretargetingConfigAllowedUserTargetingModesItemEnumList = Array<
   PretargetingConfigAllowedUserTargetingModesItemEnum | (string & {})
 >;
-export const PretargetingConfigAllowedUserTargetingModesItemEnumList = /*@__PURE__*/ S.Array(
-  PretargetingConfigAllowedUserTargetingModesItemEnum,
-) as any as S.Schema<PretargetingConfigAllowedUserTargetingModesItemEnumList>;
+export const PretargetingConfigAllowedUserTargetingModesItemEnumList =
+  PretargetingConfigIncludedFormatsItemEnumList as any as S.Schema<PretargetingConfigAllowedUserTargetingModesItemEnumList>;
 
 export type PretargetingConfigIncludedPlatformsItemEnum =
   | "PLATFORM_UNSPECIFIED"
@@ -233,9 +231,8 @@ export const PretargetingConfigIncludedPlatformsItemEnum = S.String;
 export type PretargetingConfigIncludedPlatformsItemEnumList = Array<
   PretargetingConfigIncludedPlatformsItemEnum | (string & {})
 >;
-export const PretargetingConfigIncludedPlatformsItemEnumList = /*@__PURE__*/ S.Array(
-  PretargetingConfigIncludedPlatformsItemEnum,
-) as any as S.Schema<PretargetingConfigIncludedPlatformsItemEnumList>;
+export const PretargetingConfigIncludedPlatformsItemEnumList =
+  PretargetingConfigIncludedFormatsItemEnumList as any as S.Schema<PretargetingConfigIncludedPlatformsItemEnumList>;
 
 export type PretargetingConfigIncludedEnvironmentsItemEnum =
   | "ENVIRONMENT_UNSPECIFIED"
@@ -246,9 +243,8 @@ export const PretargetingConfigIncludedEnvironmentsItemEnum = S.String;
 export type PretargetingConfigIncludedEnvironmentsItemEnumList = Array<
   PretargetingConfigIncludedEnvironmentsItemEnum | (string & {})
 >;
-export const PretargetingConfigIncludedEnvironmentsItemEnumList = /*@__PURE__*/ S.Array(
-  PretargetingConfigIncludedEnvironmentsItemEnum,
-) as any as S.Schema<PretargetingConfigIncludedEnvironmentsItemEnumList>;
+export const PretargetingConfigIncludedEnvironmentsItemEnumList =
+  PretargetingConfigIncludedFormatsItemEnumList as any as S.Schema<PretargetingConfigIncludedEnvironmentsItemEnumList>;
 
 export type PretargetingConfigInterstitialTargetingEnum =
   | "INTERSTITIAL_TARGETING_UNSPECIFIED"
@@ -462,9 +458,8 @@ export const CreativeDeclaredRestrictedCategoriesItemEnum = S.String;
 export type CreativeDeclaredRestrictedCategoriesItemEnumList = Array<
   CreativeDeclaredRestrictedCategoriesItemEnum | (string & {})
 >;
-export const CreativeDeclaredRestrictedCategoriesItemEnumList = /*@__PURE__*/ S.Array(
-  CreativeDeclaredRestrictedCategoriesItemEnum,
-) as any as S.Schema<CreativeDeclaredRestrictedCategoriesItemEnumList>;
+export const CreativeDeclaredRestrictedCategoriesItemEnumList =
+  PretargetingConfigIncludedFormatsItemEnumList as any as S.Schema<CreativeDeclaredRestrictedCategoriesItemEnumList>;
 
 export type IntegerList = Array<number>;
 export const IntegerList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IntegerList>;
@@ -482,9 +477,8 @@ export const CreativeRestrictedCategoriesItemEnum = S.String;
 export type CreativeRestrictedCategoriesItemEnumList = Array<
   CreativeRestrictedCategoriesItemEnum | (string & {})
 >;
-export const CreativeRestrictedCategoriesItemEnumList = /*@__PURE__*/ S.Array(
-  CreativeRestrictedCategoriesItemEnum,
-) as any as S.Schema<CreativeRestrictedCategoriesItemEnumList>;
+export const CreativeRestrictedCategoriesItemEnumList =
+  PretargetingConfigIncludedFormatsItemEnumList as any as S.Schema<CreativeRestrictedCategoriesItemEnumList>;
 
 /** HTML content for a creative. */
 export interface HtmlContent {
@@ -873,9 +867,8 @@ export const CreativeServingDecisionDetectedAttributesItemEnum = S.String;
 export type CreativeServingDecisionDetectedAttributesItemEnumList = Array<
   CreativeServingDecisionDetectedAttributesItemEnum | (string & {})
 >;
-export const CreativeServingDecisionDetectedAttributesItemEnumList = /*@__PURE__*/ S.Array(
-  CreativeServingDecisionDetectedAttributesItemEnum,
-) as any as S.Schema<CreativeServingDecisionDetectedAttributesItemEnumList>;
+export const CreativeServingDecisionDetectedAttributesItemEnumList =
+  PretargetingConfigIncludedFormatsItemEnumList as any as S.Schema<CreativeServingDecisionDetectedAttributesItemEnumList>;
 
 /** Top level status and detected attributes of a creative. */
 export interface CreativeServingDecision {
@@ -1047,9 +1040,8 @@ export const CreativeDeclaredAttributesItemEnum = S.String;
 export type CreativeDeclaredAttributesItemEnumList = Array<
   CreativeDeclaredAttributesItemEnum | (string & {})
 >;
-export const CreativeDeclaredAttributesItemEnumList = /*@__PURE__*/ S.Array(
-  CreativeDeclaredAttributesItemEnum,
-) as any as S.Schema<CreativeDeclaredAttributesItemEnumList>;
+export const CreativeDeclaredAttributesItemEnumList =
+  PretargetingConfigIncludedFormatsItemEnumList as any as S.Schema<CreativeDeclaredAttributesItemEnumList>;
 
 /** A creative and its classification data. */
 export interface Creative {

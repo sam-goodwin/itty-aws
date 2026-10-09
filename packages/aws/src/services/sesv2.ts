@@ -589,7 +589,7 @@ export type EventType =
 export const EventType = S.String;
 
 export type EventTypes = EventType[];
-export const EventTypes = /*@__PURE__*/ S.Array(EventType);
+export const EventTypes = SuppressionListReasons as any as S.Schema<EventTypes>;
 export type AmazonResourceName = string;
 export interface KinesisFirehoseDestination {
   IamRoleArn: string;
@@ -1246,12 +1246,14 @@ export type DeliveryEventType =
 export const DeliveryEventType = S.String;
 
 export type LastDeliveryEventList = DeliveryEventType[];
-export const LastDeliveryEventList = /*@__PURE__*/ S.Array(DeliveryEventType);
+export const LastDeliveryEventList =
+  SuppressionListReasons as any as S.Schema<LastDeliveryEventList>;
 export type EngagementEventType = "OPEN" | "CLICK" | (string & {});
 export const EngagementEventType = S.String;
 
 export type LastEngagementEventList = EngagementEventType[];
-export const LastEngagementEventList = /*@__PURE__*/ S.Array(EngagementEventType);
+export const LastEngagementEventList =
+  SuppressionListReasons as any as S.Schema<LastEngagementEventList>;
 export interface MessageInsightsFilters {
   FromEmailAddress?: (string | redacted.Redacted<string>)[];
   Destination?: (string | redacted.Redacted<string>)[];
@@ -3270,10 +3272,7 @@ export const ConfigurationSetFilterKey = S.String;
 
 export type ConfigurationSetFilterValue = string;
 export type ConfigurationSetFilter = { [key in ConfigurationSetFilterKey]?: string };
-export const ConfigurationSetFilter = /*@__PURE__*/ S.Record(
-  ConfigurationSetFilterKey,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const ConfigurationSetFilter = Dimensions as any as S.Schema<ConfigurationSetFilter>;
 export interface ListConfigurationSetsRequest {
   Filter?: { [key: string]: string | undefined };
   NextToken?: string;
@@ -3589,10 +3588,7 @@ export const IdentityFilterKey = S.String;
 
 export type IdentityFilterValue = string;
 export type IdentityFilter = { [key in IdentityFilterKey]?: string };
-export const IdentityFilter = /*@__PURE__*/ S.Record(
-  IdentityFilterKey,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const IdentityFilter = Dimensions as any as S.Schema<IdentityFilter>;
 export interface ListEmailIdentitiesRequest {
   Filter?: { [key: string]: string | undefined };
   NextToken?: string;
@@ -3902,10 +3898,7 @@ export const ListRecommendationsFilterKey = S.String;
 
 export type ListRecommendationFilterValue = string;
 export type ListRecommendationsFilter = { [key in ListRecommendationsFilterKey]?: string };
-export const ListRecommendationsFilter = /*@__PURE__*/ S.Record(
-  ListRecommendationsFilterKey,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const ListRecommendationsFilter = Dimensions as any as S.Schema<ListRecommendationsFilter>;
 export interface ListRecommendationsRequest {
   Filter?: { [key: string]: string | undefined };
   NextToken?: string;
@@ -3986,10 +3979,7 @@ export const ReputationEntityFilterKey = S.String;
 
 export type ReputationEntityFilterValue = string;
 export type ReputationEntityFilter = { [key in ReputationEntityFilterKey]?: string };
-export const ReputationEntityFilter = /*@__PURE__*/ S.Record(
-  ReputationEntityFilterKey,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const ReputationEntityFilter = Dimensions as any as S.Schema<ReputationEntityFilter>;
 export interface ListReputationEntitiesRequest {
   Filter?: { [key: string]: string | undefined };
   NextToken?: string;
@@ -4162,10 +4152,7 @@ export const ListTenantResourcesFilterKey = S.String;
 
 export type ListTenantResourcesFilterValue = string;
 export type ListTenantResourcesFilter = { [key in ListTenantResourcesFilterKey]?: string };
-export const ListTenantResourcesFilter = /*@__PURE__*/ S.Record(
-  ListTenantResourcesFilterKey,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const ListTenantResourcesFilter = Dimensions as any as S.Schema<ListTenantResourcesFilter>;
 export interface ListTenantResourcesRequest {
   TenantName: string;
   Filter?: { [key: string]: string | undefined };
@@ -4221,10 +4208,7 @@ export const ListTenantsFilterKey = S.String;
 
 export type ListTenantsFilterValue = string;
 export type ListTenantsFilter = { [key in ListTenantsFilterKey]?: string };
-export const ListTenantsFilter = /*@__PURE__*/ S.Record(
-  ListTenantsFilterKey,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const ListTenantsFilter = Dimensions as any as S.Schema<ListTenantsFilter>;
 export interface ListTenantsRequest {
   Filter?: { [key: string]: string | undefined };
   NextToken?: string;

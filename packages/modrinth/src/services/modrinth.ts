@@ -1389,9 +1389,8 @@ export const GetLatestVersionFromHashRequestVersionTypesItem = S.String;
 export type GetLatestVersionFromHashRequestVersionTypesList = Array<
   GetLatestVersionFromHashRequestVersionTypesItem | (string & {})
 >;
-export const GetLatestVersionFromHashRequestVersionTypesList = /*@__PURE__*/ S.Array(
-  GetLatestVersionFromHashRequestVersionTypesItem,
-) as any as S.Schema<GetLatestVersionFromHashRequestVersionTypesList>;
+export const GetLatestVersionFromHashRequestVersionTypesList =
+  ProjectEnvironmentList as any as S.Schema<GetLatestVersionFromHashRequestVersionTypesList>;
 
 export interface GetLatestVersionFromHashRequest {
   /** The hash of the file, considering its byte content, and encoded in hexadecimal */
@@ -1534,9 +1533,8 @@ export const GetLatestVersionsFromHashesRequestVersionTypesItem = S.String;
 export type GetLatestVersionsFromHashesRequestVersionTypesList = Array<
   GetLatestVersionsFromHashesRequestVersionTypesItem | (string & {})
 >;
-export const GetLatestVersionsFromHashesRequestVersionTypesList = /*@__PURE__*/ S.Array(
-  GetLatestVersionsFromHashesRequestVersionTypesItem,
-) as any as S.Schema<GetLatestVersionsFromHashesRequestVersionTypesList>;
+export const GetLatestVersionsFromHashesRequestVersionTypesList =
+  ProjectEnvironmentList as any as S.Schema<GetLatestVersionsFromHashesRequestVersionTypesList>;
 
 export interface GetLatestVersionsFromHashesRequest {
   hashes: GetLatestVersionsFromHashesRequestHashesList;
@@ -2011,19 +2009,7 @@ export interface GetReportResponse {
   /** The ID of the moderation thread associated with this report */
   thread_id: string;
 }
-export const GetReportResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    report_type: S.String,
-    item_id: S.String,
-    item_type: GetReportResponseItemType,
-    body: S.String,
-    id: S.optional(S.String),
-    reporter: S.String,
-    created: S.String,
-    closed: S.Boolean,
-    thread_id: S.String,
-  }),
-).annotate({ identifier: "GetReportResponse" }) as any as S.Schema<GetReportResponse>;
+export const GetReportResponse = Report as any as S.Schema<GetReportResponse>;
 
 export interface GetReportsRequest {
   /** The IDs of the reports */
@@ -3331,9 +3317,8 @@ export const ProjectResultAllProjectTypesItem = S.String;
 
 /** All project types across every version of the project, unlike `project_type` which only reflects a version-specific type */
 export type ProjectResultAllProjectTypesList = Array<ProjectResultAllProjectTypesItem>;
-export const ProjectResultAllProjectTypesList = /*@__PURE__*/ S.Array(
-  ProjectResultAllProjectTypesItem,
-) as any as S.Schema<ProjectResultAllProjectTypesList>;
+export const ProjectResultAllProjectTypesList =
+  ProjectEnvironmentList as any as S.Schema<ProjectResultAllProjectTypesList>;
 
 /** A list of the featured categories that the project has. */
 export type ProjectResultCategoriesList = Array<string>;
@@ -3375,9 +3360,8 @@ export const DisclosureTypeEnum = S.String;
 
 /** Disclosures listed on the project. */
 export type ProjectResultDisclosureTypesList = Array<DisclosureTypeEnum>;
-export const ProjectResultDisclosureTypesList = /*@__PURE__*/ S.Array(
-  DisclosureTypeEnum,
-) as any as S.Schema<ProjectResultDisclosureTypesList>;
+export const ProjectResultDisclosureTypesList =
+  ProjectEnvironmentList as any as S.Schema<ProjectResultDisclosureTypesList>;
 
 /** A list of images that have been uploaded to the project's gallery */
 export type ProjectResultGalleryList = Array<string>;
@@ -3636,19 +3620,7 @@ export interface SubmitReportResponse {
   /** The ID of the moderation thread associated with this report */
   thread_id: string;
 }
-export const SubmitReportResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    report_type: S.String,
-    item_id: S.String,
-    item_type: SubmitReportResponseItemType,
-    body: S.String,
-    id: S.optional(S.String),
-    reporter: S.String,
-    created: S.String,
-    closed: S.Boolean,
-    thread_id: S.String,
-  }),
-).annotate({ identifier: "SubmitReportResponse" }) as any as S.Schema<SubmitReportResponse>;
+export const SubmitReportResponse = Report as any as S.Schema<SubmitReportResponse>;
 
 export interface TransferTeamOwnershipRequest {
   /** The ID of the team */

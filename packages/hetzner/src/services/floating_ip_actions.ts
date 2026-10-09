@@ -374,9 +374,8 @@ export const ListFloatingIpActionsRequestStatusItem = S.String;
 export type ListFloatingIpActionsRequestStatusList = Array<
   ListFloatingIpActionsRequestStatusItem | (string & {})
 >;
-export const ListFloatingIpActionsRequestStatusList = /*@__PURE__*/ S.Array(
-  ListFloatingIpActionsRequestStatusItem,
-) as any as S.Schema<ListFloatingIpActionsRequestStatusList>;
+export const ListFloatingIpActionsRequestStatusList =
+  ListFloatingIpActionsRequestSortList as any as S.Schema<ListFloatingIpActionsRequestStatusList>;
 
 export interface ListFloatingIpActionsRequest {
   /** ID of the Floating IP. */
@@ -539,9 +538,8 @@ export const ListFloatingIpsActionsRequestSortItem = S.String;
 export type ListFloatingIpsActionsRequestSortList = Array<
   ListFloatingIpsActionsRequestSortItem | (string & {})
 >;
-export const ListFloatingIpsActionsRequestSortList = /*@__PURE__*/ S.Array(
-  ListFloatingIpsActionsRequestSortItem,
-) as any as S.Schema<ListFloatingIpsActionsRequestSortList>;
+export const ListFloatingIpsActionsRequestSortList =
+  ListFloatingIpActionsRequestSortList as any as S.Schema<ListFloatingIpsActionsRequestSortList>;
 
 /** Status of the Action. */
 export type ListFloatingIpsActionsRequestStatusItem = "running" | "success" | "error";
@@ -550,9 +548,8 @@ export const ListFloatingIpsActionsRequestStatusItem = S.String;
 export type ListFloatingIpsActionsRequestStatusList = Array<
   ListFloatingIpsActionsRequestStatusItem | (string & {})
 >;
-export const ListFloatingIpsActionsRequestStatusList = /*@__PURE__*/ S.Array(
-  ListFloatingIpsActionsRequestStatusItem,
-) as any as S.Schema<ListFloatingIpsActionsRequestStatusList>;
+export const ListFloatingIpsActionsRequestStatusList =
+  ListFloatingIpActionsRequestSortList as any as S.Schema<ListFloatingIpsActionsRequestStatusList>;
 
 export interface ListFloatingIpsActionsRequest {
   /** Filter the actions by ID. May be used multiple times. The response will only contain actions matching the specified IDs. */

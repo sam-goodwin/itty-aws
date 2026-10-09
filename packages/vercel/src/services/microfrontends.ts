@@ -1310,14 +1310,7 @@ export interface GetMicrofrontendsInGroupResponseProjectsItemCustomEnvironmentsI
   type: GetMicrofrontendsInGroupResponseProjectsItemCustomEnvironmentsItemBranchMatcherType;
 }
 export const GetMicrofrontendsInGroupResponseProjectsItemCustomEnvironmentsItemBranchMatcher =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pattern: S.String,
-      type: GetMicrofrontendsInGroupResponseProjectsItemCustomEnvironmentsItemBranchMatcherType,
-    }),
-  ).annotate({
-    identifier: "GetMicrofrontendsInGroupResponseProjectsItemCustomEnvironmentsItemBranchMatcher",
-  }) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemCustomEnvironmentsItemBranchMatcher>;
+  GetMicrofrontendsInGroupResponseProjectsItemAliasItemDeploymentBranchMatcher as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemCustomEnvironmentsItemBranchMatcher>;
 
 /** List of aliases for the current deployment */
 export type GetMicrofrontendsInGroupResponseProjectsItemCustomEnvironmentsItemCurrentDeploymentAliasesList =
@@ -1765,16 +1758,7 @@ export interface GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicyGit
   type: GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicyGitSourcesItemEnvironmentsItemCase0Type;
 }
 export const GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicyGitSourcesItemEnvironmentsItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      target:
-        GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicyGitSourcesItemEnvironmentsItemCase0Target,
-      type: GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicyGitSourcesItemEnvironmentsItemCase0Type,
-    }),
-  ).annotate({
-    identifier:
-      "GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicyGitSourcesItemEnvironmentsItemCase0",
-  }) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicyGitSourcesItemEnvironmentsItemCase0>;
+  GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase0 as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicyGitSourcesItemEnvironmentsItemCase0>;
 
 export type GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicyGitSourcesItemEnvironmentsItemCase1Type =
   "custom";
@@ -1786,15 +1770,7 @@ export interface GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicyGit
   type: GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicyGitSourcesItemEnvironmentsItemCase1Type;
 }
 export const GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicyGitSourcesItemEnvironmentsItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      environmentId: S.String,
-      type: GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicyGitSourcesItemEnvironmentsItemCase1Type,
-    }),
-  ).annotate({
-    identifier:
-      "GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicyGitSourcesItemEnvironmentsItemCase1",
-  }) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicyGitSourcesItemEnvironmentsItemCase1>;
+  GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicyDeploymentSourcesItemEnvironmentsItemCase1 as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicyGitSourcesItemEnvironmentsItemCase1>;
 
 export type GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicyGitSourcesItemEnvironmentsItem =
   | GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicyGitSourcesItemEnvironmentsItemCase0
@@ -2011,14 +1987,7 @@ export interface GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintC
   type: GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase1Type;
 }
 export const GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storeId: S.String,
-      type: GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase1Type,
-    }),
-  ).annotate({
-    identifier: "GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase1",
-  }) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase1>;
+  GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase0 as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase1>;
 
 export type GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase2Type =
   "redis-rest-api-token";
@@ -2029,14 +1998,7 @@ export interface GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintC
   type: GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase2Type;
 }
 export const GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storeId: S.String,
-      type: GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase2Type,
-    }),
-  ).annotate({
-    identifier: "GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase2",
-  }) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase2>;
+  GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase0 as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase2>;
 
 export type GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase3Type =
   "redis-rest-api-read-only-token";
@@ -2047,14 +2009,7 @@ export interface GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintC
   type: GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase3Type;
 }
 export const GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase3 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storeId: S.String,
-      type: GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase3Type,
-    }),
-  ).annotate({
-    identifier: "GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase3",
-  }) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase3>;
+  GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase0 as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase3>;
 
 export type GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase4Type =
   "blob-read-write-token";
@@ -2065,14 +2020,7 @@ export interface GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintC
   type: GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase4Type;
 }
 export const GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase4 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storeId: S.String,
-      type: GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase4Type,
-    }),
-  ).annotate({
-    identifier: "GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase4",
-  }) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase4>;
+  GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase0 as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase4>;
 
 export type GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase5Type =
   "blob-store-id";
@@ -2083,14 +2031,7 @@ export interface GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintC
   type: GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase5Type;
 }
 export const GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase5 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storeId: S.String,
-      type: GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase5Type,
-    }),
-  ).annotate({
-    identifier: "GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase5",
-  }) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase5>;
+  GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase0 as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase5>;
 
 export type GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase6Type =
   "blob-webhook-public-key";
@@ -2101,14 +2042,7 @@ export interface GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintC
   type: GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase6Type;
 }
 export const GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase6 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storeId: S.String,
-      type: GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase6Type,
-    }),
-  ).annotate({
-    identifier: "GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase6",
-  }) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase6>;
+  GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase0 as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase6>;
 
 export type GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase7Type =
   "postgres-url";
@@ -2119,14 +2053,7 @@ export interface GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintC
   type: GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase7Type;
 }
 export const GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase7 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storeId: S.String,
-      type: GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase7Type,
-    }),
-  ).annotate({
-    identifier: "GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase7",
-  }) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase7>;
+  GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase0 as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase7>;
 
 export type GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase8Type =
   "postgres-url-non-pooling";
@@ -2137,14 +2064,7 @@ export interface GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintC
   type: GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase8Type;
 }
 export const GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase8 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storeId: S.String,
-      type: GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase8Type,
-    }),
-  ).annotate({
-    identifier: "GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase8",
-  }) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase8>;
+  GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase0 as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase8>;
 
 export type GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase9Type =
   "postgres-prisma-url";
@@ -2155,14 +2075,7 @@ export interface GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintC
   type: GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase9Type;
 }
 export const GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase9 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storeId: S.String,
-      type: GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase9Type,
-    }),
-  ).annotate({
-    identifier: "GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase9",
-  }) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase9>;
+  GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase0 as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase9>;
 
 export type GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase10Type =
   "postgres-user";
@@ -2173,14 +2086,7 @@ export interface GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintC
   type: GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase10Type;
 }
 export const GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase10 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storeId: S.String,
-      type: GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase10Type,
-    }),
-  ).annotate({
-    identifier: "GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase10",
-  }) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase10>;
+  GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase0 as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase10>;
 
 export type GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase11Type =
   "postgres-host";
@@ -2191,14 +2097,7 @@ export interface GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintC
   type: GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase11Type;
 }
 export const GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase11 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storeId: S.String,
-      type: GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase11Type,
-    }),
-  ).annotate({
-    identifier: "GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase11",
-  }) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase11>;
+  GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase0 as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase11>;
 
 export type GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase12Type =
   "postgres-password";
@@ -2209,14 +2108,7 @@ export interface GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintC
   type: GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase12Type;
 }
 export const GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase12 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storeId: S.String,
-      type: GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase12Type,
-    }),
-  ).annotate({
-    identifier: "GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase12",
-  }) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase12>;
+  GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase0 as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase12>;
 
 export type GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase13Type =
   "postgres-database";
@@ -2227,14 +2119,7 @@ export interface GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintC
   type: GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase13Type;
 }
 export const GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase13 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storeId: S.String,
-      type: GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase13Type,
-    }),
-  ).annotate({
-    identifier: "GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase13",
-  }) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase13>;
+  GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase0 as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase13>;
 
 export type GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase14Type =
   "postgres-url-no-ssl";
@@ -2245,14 +2130,7 @@ export interface GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintC
   type: GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase14Type;
 }
 export const GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase14 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storeId: S.String,
-      type: GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase14Type,
-    }),
-  ).annotate({
-    identifier: "GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase14",
-  }) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase14>;
+  GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase0 as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase14>;
 
 export type GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHintCase15Type =
   "integration-store-secret";
@@ -2353,9 +2231,7 @@ export const GetMicrofrontendsInGroupResponseProjectsItemEnvItemTargetCase0Item 
 export type GetMicrofrontendsInGroupResponseProjectsItemEnvItemTargetCase0List =
   Array<GetMicrofrontendsInGroupResponseProjectsItemEnvItemTargetCase0Item>;
 export const GetMicrofrontendsInGroupResponseProjectsItemEnvItemTargetCase0List =
-  /*@__PURE__*/ S.Array(
-    GetMicrofrontendsInGroupResponseProjectsItemEnvItemTargetCase0Item,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemEnvItemTargetCase0List>;
+  GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicyDeploymentSourcesItemSourcesList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemEnvItemTargetCase0List>;
 
 export type GetMicrofrontendsInGroupResponseProjectsItemEnvItemTargetCase1 =
   | "development"
@@ -2958,14 +2834,7 @@ export interface GetMicrofrontendsInGroupResponseProjectsItemLatestDeploymentsIt
   type: GetMicrofrontendsInGroupResponseProjectsItemLatestDeploymentsItemBranchMatcherType;
 }
 export const GetMicrofrontendsInGroupResponseProjectsItemLatestDeploymentsItemBranchMatcher =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pattern: S.String,
-      type: GetMicrofrontendsInGroupResponseProjectsItemLatestDeploymentsItemBranchMatcherType,
-    }),
-  ).annotate({
-    identifier: "GetMicrofrontendsInGroupResponseProjectsItemLatestDeploymentsItemBranchMatcher",
-  }) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemLatestDeploymentsItemBranchMatcher>;
+  GetMicrofrontendsInGroupResponseProjectsItemAliasItemDeploymentBranchMatcher as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemLatestDeploymentsItemBranchMatcher>;
 
 export type GetMicrofrontendsInGroupResponseProjectsItemLatestDeploymentsItemBuildsItem =
   GetMicrofrontendsInGroupResponseProjectsItemAliasItemDeploymentBuildsItem;
@@ -3750,9 +3619,7 @@ export const ACLAction = S.String;
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList>;
+  GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicyDeploymentSourcesItemSourcesList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsAgentList = Array<ACLAction>;
@@ -6886,17 +6753,7 @@ export interface GetMicrofrontendsInGroupResponseProjectsItemResourceConfigBuild
   direction: GetMicrofrontendsInGroupResponseProjectsItemResourceConfigBuildMachineElasticTransitionDirection;
 }
 export const GetMicrofrontendsInGroupResponseProjectsItemResourceConfigBuildMachineElasticTransition =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      algorithmVersion: S.String,
-      at: S.Number,
-      direction:
-        GetMicrofrontendsInGroupResponseProjectsItemResourceConfigBuildMachineElasticTransitionDirection,
-    }),
-  ).annotate({
-    identifier:
-      "GetMicrofrontendsInGroupResponseProjectsItemResourceConfigBuildMachineElasticTransition",
-  }) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemResourceConfigBuildMachineElasticTransition>;
+  GetMicrofrontendsInGroupResponseProjectsItemDefaultResourceConfigBuildMachineElasticTransition as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemResourceConfigBuildMachineElasticTransition>;
 
 export type GetMicrofrontendsInGroupResponseProjectsItemResourceConfigBuildMachineSelection =
   | "elastic"
@@ -6921,15 +6778,7 @@ export interface GetMicrofrontendsInGroupResponseProjectsItemResourceConfigBuild
   configuration?: GetMicrofrontendsInGroupResponseProjectsItemResourceConfigBuildQueueConfiguration;
 }
 export const GetMicrofrontendsInGroupResponseProjectsItemResourceConfigBuildQueue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      configuration: S.optional(
-        GetMicrofrontendsInGroupResponseProjectsItemResourceConfigBuildQueueConfiguration,
-      ),
-    }),
-  ).annotate({
-    identifier: "GetMicrofrontendsInGroupResponseProjectsItemResourceConfigBuildQueue",
-  }) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemResourceConfigBuildQueue>;
+  GetMicrofrontendsInGroupResponseProjectsItemDefaultResourceConfigBuildQueue as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemResourceConfigBuildQueue>;
 
 export type GetMicrofrontendsInGroupResponseProjectsItemResourceConfigFunctionDefaultMemoryType =
   | "performance"
@@ -7190,9 +7039,7 @@ export const GetMicrofrontendsInGroupResponseProjectsItemSandboxFailoverRegionsI
 export type GetMicrofrontendsInGroupResponseProjectsItemSandboxFailoverRegionsList =
   Array<GetMicrofrontendsInGroupResponseProjectsItemSandboxFailoverRegionsItem>;
 export const GetMicrofrontendsInGroupResponseProjectsItemSandboxFailoverRegionsList =
-  /*@__PURE__*/ S.Array(
-    GetMicrofrontendsInGroupResponseProjectsItemSandboxFailoverRegionsItem,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemSandboxFailoverRegionsList>;
+  GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicyDeploymentSourcesItemSourcesList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemSandboxFailoverRegionsList>;
 
 export type GetMicrofrontendsInGroupResponseProjectsItemSandboxRegion =
   | "arn1"
@@ -7284,16 +7131,7 @@ export interface GetMicrofrontendsInGroupResponseProjectsItemSecurityManagedRule
   active: boolean;
 }
 export const GetMicrofrontendsInGroupResponseProjectsItemSecurityManagedRulesBotFilter =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      action: S.optional(
-        GetMicrofrontendsInGroupResponseProjectsItemSecurityManagedRulesBotFilterAction,
-      ),
-      active: S.Boolean,
-    }),
-  ).annotate({
-    identifier: "GetMicrofrontendsInGroupResponseProjectsItemSecurityManagedRulesBotFilter",
-  }) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemSecurityManagedRulesBotFilter>;
+  GetMicrofrontendsInGroupResponseProjectsItemSecurityManagedRulesAiBots as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemSecurityManagedRulesBotFilter>;
 
 export type GetMicrofrontendsInGroupResponseProjectsItemSecurityManagedRulesOwaspAction =
   | "challenge"
@@ -7306,16 +7144,7 @@ export interface GetMicrofrontendsInGroupResponseProjectsItemSecurityManagedRule
   active: boolean;
 }
 export const GetMicrofrontendsInGroupResponseProjectsItemSecurityManagedRulesOwasp =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      action: S.optional(
-        GetMicrofrontendsInGroupResponseProjectsItemSecurityManagedRulesOwaspAction,
-      ),
-      active: S.Boolean,
-    }),
-  ).annotate({
-    identifier: "GetMicrofrontendsInGroupResponseProjectsItemSecurityManagedRulesOwasp",
-  }) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemSecurityManagedRulesOwasp>;
+  GetMicrofrontendsInGroupResponseProjectsItemSecurityManagedRulesAiBots as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemSecurityManagedRulesOwasp>;
 
 export type GetMicrofrontendsInGroupResponseProjectsItemSecurityManagedRulesTrafficSourcesAction =
   | "challenge"
@@ -7329,16 +7158,7 @@ export interface GetMicrofrontendsInGroupResponseProjectsItemSecurityManagedRule
   active: boolean;
 }
 export const GetMicrofrontendsInGroupResponseProjectsItemSecurityManagedRulesTrafficSources =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      action: S.optional(
-        GetMicrofrontendsInGroupResponseProjectsItemSecurityManagedRulesTrafficSourcesAction,
-      ),
-      active: S.Boolean,
-    }),
-  ).annotate({
-    identifier: "GetMicrofrontendsInGroupResponseProjectsItemSecurityManagedRulesTrafficSources",
-  }) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemSecurityManagedRulesTrafficSources>;
+  GetMicrofrontendsInGroupResponseProjectsItemSecurityManagedRulesAiBots as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemSecurityManagedRulesTrafficSources>;
 
 export type GetMicrofrontendsInGroupResponseProjectsItemSecurityManagedRulesVercelRulesetAction =
   | "challenge"
@@ -7352,16 +7172,7 @@ export interface GetMicrofrontendsInGroupResponseProjectsItemSecurityManagedRule
   active: boolean;
 }
 export const GetMicrofrontendsInGroupResponseProjectsItemSecurityManagedRulesVercelRuleset =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      action: S.optional(
-        GetMicrofrontendsInGroupResponseProjectsItemSecurityManagedRulesVercelRulesetAction,
-      ),
-      active: S.Boolean,
-    }),
-  ).annotate({
-    identifier: "GetMicrofrontendsInGroupResponseProjectsItemSecurityManagedRulesVercelRuleset",
-  }) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemSecurityManagedRulesVercelRuleset>;
+  GetMicrofrontendsInGroupResponseProjectsItemSecurityManagedRulesAiBots as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemSecurityManagedRulesVercelRuleset>;
 
 export interface GetMicrofrontendsInGroupResponseProjectsItemSecurityManagedRules {
   ai_bots: GetMicrofrontendsInGroupResponseProjectsItemSecurityManagedRulesAiBots;
@@ -7789,14 +7600,7 @@ export interface GetMicrofrontendsInGroupResponseProjectsItemTargetsValueBranchM
   type: GetMicrofrontendsInGroupResponseProjectsItemTargetsValueBranchMatcherType;
 }
 export const GetMicrofrontendsInGroupResponseProjectsItemTargetsValueBranchMatcher =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pattern: S.String,
-      type: GetMicrofrontendsInGroupResponseProjectsItemTargetsValueBranchMatcherType,
-    }),
-  ).annotate({
-    identifier: "GetMicrofrontendsInGroupResponseProjectsItemTargetsValueBranchMatcher",
-  }) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemTargetsValueBranchMatcher>;
+  GetMicrofrontendsInGroupResponseProjectsItemAliasItemDeploymentBranchMatcher as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemTargetsValueBranchMatcher>;
 
 export type GetMicrofrontendsInGroupResponseProjectsItemTargetsValueBuildsItem =
   GetMicrofrontendsInGroupResponseProjectsItemAliasItemDeploymentBuildsItem;

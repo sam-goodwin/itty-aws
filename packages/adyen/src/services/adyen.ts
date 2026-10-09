@@ -3526,38 +3526,7 @@ export interface CardDetails {
   /** Default payment method details. Common for scheme payment methods, and for simple payment method details. */
   type?: CardDetailsType | (string & {});
 }
-export const CardDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    billingSequenceNumber: S.optional(S.String),
-    brand: S.optional(S.String),
-    checkoutAttemptId: S.optional(S.String),
-    cupsecureplus_smscode: S.optional(S.String.pipe(T.Body("cupsecureplus.smscode"))),
-    cvc: S.optional(S.String),
-    encryptedCard: S.optional(S.String),
-    encryptedCardNumber: S.optional(S.String),
-    encryptedExpiryMonth: S.optional(S.String),
-    encryptedExpiryYear: S.optional(S.String),
-    encryptedPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    encryptedSecurityCode: S.optional(S.String),
-    expiryMonth: S.optional(S.String),
-    expiryYear: S.optional(S.String),
-    fastlaneData: S.optional(S.String),
-    fundingSource: S.optional(CardDetailsFundingSource),
-    holderName: S.optional(S.String),
-    networkPaymentReference: S.optional(S.String),
-    number: S.optional(S.String),
-    recurringDetailReference: S.optional(S.String),
-    sdkData: S.optional(S.String),
-    shopperNotificationReference: S.optional(S.String),
-    srcCorrelationId: S.optional(S.String),
-    srcDigitalCardId: S.optional(S.String),
-    srcScheme: S.optional(S.String),
-    srcTokenReference: S.optional(S.String),
-    storedPaymentMethodId: S.optional(S.String),
-    threeDS2SdkVersion: S.optional(S.String),
-    type: S.optional(CardDetailsType),
-  }),
-).annotate({ identifier: "CardDetails" }) as any as S.Schema<CardDetails>;
+export const CardDetails = CardDonations as any as S.Schema<CardDetails>;
 
 export interface SubMerchant {
   /** The city of the sub-merchant's address. * Format: Alphanumeric * Maximum length: 13 characters */
@@ -4004,17 +3973,7 @@ export interface ApplePayDetails {
   /** **applepay** */
   type?: ApplePayDetailsType | (string & {});
 }
-export const ApplePayDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    applePayToken: S.String,
-    checkoutAttemptId: S.optional(S.String),
-    fundingSource: S.optional(ApplePayDetailsFundingSource),
-    recurringDetailReference: S.optional(S.String),
-    sdkData: S.optional(S.String),
-    storedPaymentMethodId: S.optional(S.String),
-    type: S.optional(ApplePayDetailsType),
-  }),
-).annotate({ identifier: "ApplePayDetails" }) as any as S.Schema<ApplePayDetails>;
+export const ApplePayDetails = ApplePayDonations as any as S.Schema<ApplePayDetails>;
 
 /** **aupay** */
 export type AuPayDetailsType = "aupay";
@@ -4032,15 +3991,7 @@ export interface AuPayDetails {
   /** **aupay** */
   type?: AuPayDetailsType | (string & {});
 }
-export const AuPayDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    checkoutAttemptId: S.optional(S.String),
-    recurringDetailReference: S.optional(S.String),
-    sdkData: S.optional(S.String),
-    storedPaymentMethodId: S.optional(S.String),
-    type: S.optional(AuPayDetailsType),
-  }),
-).annotate({ identifier: "AuPayDetails" }) as any as S.Schema<AuPayDetails>;
+export const AuPayDetails = SepaDirectDebitDonations as any as S.Schema<AuPayDetails>;
 
 /** **directdebit_GB** */
 export type BacsDirectDebitDetailsType = "directdebit_GB";
@@ -4215,15 +4166,7 @@ export interface DBaraiDetails {
   /** **dbarai** */
   type?: DBaraiDetailsType | (string & {});
 }
-export const DBaraiDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    checkoutAttemptId: S.optional(S.String),
-    recurringDetailReference: S.optional(S.String),
-    sdkData: S.optional(S.String),
-    storedPaymentMethodId: S.optional(S.String),
-    type: S.optional(DBaraiDetailsType),
-  }),
-).annotate({ identifier: "DBaraiDetails" }) as any as S.Schema<DBaraiDetails>;
+export const DBaraiDetails = SepaDirectDebitDonations as any as S.Schema<DBaraiDetails>;
 
 /** **directdebit_AU** */
 export type DirectDebitAuDetailsType = "directdebit_AU";
@@ -4560,19 +4503,7 @@ export interface GooglePayDetails {
   /** **googlepay**, **paywithgoogle** */
   type?: GooglePayDetailsType | (string & {});
 }
-export const GooglePayDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    checkoutAttemptId: S.optional(S.String),
-    fundingSource: S.optional(GooglePayDetailsFundingSource),
-    googlePayCardNetwork: S.optional(S.String),
-    googlePayToken: S.String,
-    recurringDetailReference: S.optional(S.String),
-    sdkData: S.optional(S.String),
-    storedPaymentMethodId: S.optional(S.String),
-    threeDS2SdkVersion: S.optional(S.String),
-    type: S.optional(GooglePayDetailsType),
-  }),
-).annotate({ identifier: "GooglePayDetails" }) as any as S.Schema<GooglePayDetails>;
+export const GooglePayDetails = GooglePayDonations as any as S.Schema<GooglePayDetails>;
 
 /** **ideal** */
 export type IdealDetailsType = "ideal";
@@ -4592,16 +4523,7 @@ export interface IdealDetails {
   /** **ideal** */
   type?: IdealDetailsType | (string & {});
 }
-export const IdealDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    checkoutAttemptId: S.optional(S.String),
-    issuer: S.optional(S.String),
-    recurringDetailReference: S.optional(S.String),
-    sdkData: S.optional(S.String),
-    storedPaymentMethodId: S.optional(S.String),
-    type: S.optional(IdealDetailsType),
-  }),
-).annotate({ identifier: "IdealDetails" }) as any as S.Schema<IdealDetails>;
+export const IdealDetails = IdealDonations as any as S.Schema<IdealDetails>;
 
 /** **klarna** */
 export type KlarnaDetailsType =
@@ -4752,13 +4674,7 @@ export interface MobilePayDetails {
   /** **mobilepay** */
   type?: MobilePayDetailsType | (string & {});
 }
-export const MobilePayDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    checkoutAttemptId: S.optional(S.String),
-    sdkData: S.optional(S.String),
-    type: S.optional(MobilePayDetailsType),
-  }),
-).annotate({ identifier: "MobilePayDetails" }) as any as S.Schema<MobilePayDetails>;
+export const MobilePayDetails = AndroidPayDetails as any as S.Schema<MobilePayDetails>;
 
 /** **molpay** */
 export type MolPayDetailsType = "molpay_ebanking_fpx_MY" | "molpay_ebanking_TH";
@@ -4774,14 +4690,7 @@ export interface MolPayDetails {
   /** **molpay** */
   type: MolPayDetailsType | (string & {});
 }
-export const MolPayDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    checkoutAttemptId: S.optional(S.String),
-    issuer: S.String,
-    sdkData: S.optional(S.String),
-    type: MolPayDetailsType,
-  }),
-).annotate({ identifier: "MolPayDetails" }) as any as S.Schema<MolPayDetails>;
+export const MolPayDetails = BillDeskDetails as any as S.Schema<MolPayDetails>;
 
 /** **openinvoice** */
 export type OpenInvoiceDetailsType = "openinvoice" | "afterpay_directdebit" | "atome_pos";
@@ -4862,17 +4771,8 @@ export interface PayByBankCADirectDebitDetails {
   /** The type of payment method */
   type: PayByBankCADirectDebitDetailsType;
 }
-export const PayByBankCADirectDebitDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    checkoutAttemptId: S.optional(S.String),
-    recurringDetailReference: S.optional(S.String),
-    sdkData: S.optional(S.String),
-    storedPaymentMethodId: S.optional(S.String),
-    type: PayByBankCADirectDebitDetailsType,
-  }),
-).annotate({
-  identifier: "PayByBankCADirectDebitDetails",
-}) as any as S.Schema<PayByBankCADirectDebitDetails>;
+export const PayByBankCADirectDebitDetails =
+  PayByBankAISDirectDebitDetails as any as S.Schema<PayByBankCADirectDebitDetails>;
 
 /** **paybybank** */
 export type PayByBankDetailsType = "paybybank";
@@ -4888,14 +4788,7 @@ export interface PayByBankDetails {
   /** **paybybank** */
   type: PayByBankDetailsType;
 }
-export const PayByBankDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    checkoutAttemptId: S.optional(S.String),
-    issuer: S.optional(S.String),
-    sdkData: S.optional(S.String),
-    type: PayByBankDetailsType,
-  }),
-).annotate({ identifier: "PayByBankDetails" }) as any as S.Schema<PayByBankDetails>;
+export const PayByBankDetails = EBankingFinlandDetails as any as S.Schema<PayByBankDetails>;
 
 /** The type of flow to initiate. */
 export type PayPalDetailsSubtype = "express" | "redirect" | "sdk";
@@ -4958,15 +4851,7 @@ export interface PayPayDetails {
   /** **paypay** */
   type?: PayPayDetailsType | (string & {});
 }
-export const PayPayDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    checkoutAttemptId: S.optional(S.String),
-    recurringDetailReference: S.optional(S.String),
-    sdkData: S.optional(S.String),
-    storedPaymentMethodId: S.optional(S.String),
-    type: S.optional(PayPayDetailsType),
-  }),
-).annotate({ identifier: "PayPayDetails" }) as any as S.Schema<PayPayDetails>;
+export const PayPayDetails = SepaDirectDebitDonations as any as S.Schema<PayPayDetails>;
 
 /** **payto** */
 export type PayToDetailsType = "payto";
@@ -5055,18 +4940,7 @@ export interface PayWithGoogleDetails {
   /** **paywithgoogle** */
   type?: PayWithGoogleDetailsType | (string & {});
 }
-export const PayWithGoogleDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    checkoutAttemptId: S.optional(S.String),
-    fundingSource: S.optional(PayWithGoogleDetailsFundingSource),
-    googlePayToken: S.String,
-    recurringDetailReference: S.optional(S.String),
-    sdkData: S.optional(S.String),
-    storedPaymentMethodId: S.optional(S.String),
-    threeDS2SdkVersion: S.optional(S.String),
-    type: S.optional(PayWithGoogleDetailsType),
-  }),
-).annotate({ identifier: "PayWithGoogleDetails" }) as any as S.Schema<PayWithGoogleDetails>;
+export const PayWithGoogleDetails = PayWithGoogleDonations as any as S.Schema<PayWithGoogleDetails>;
 
 /** The payment method type. */
 export type PaymentDetailsType =
@@ -5166,13 +5040,7 @@ export interface PaymentDetails {
   /** The payment method type. */
   type?: PaymentDetailsType | (string & {});
 }
-export const PaymentDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    checkoutAttemptId: S.optional(S.String),
-    sdkData: S.optional(S.String),
-    type: S.optional(PaymentDetailsType),
-  }),
-).annotate({ identifier: "PaymentDetails" }) as any as S.Schema<PaymentDetails>;
+export const PaymentDetails = AndroidPayDetails as any as S.Schema<PaymentDetails>;
 
 /** The frequency at which the shopper will be charged. */
 export type PixRecurringFrequency = "weekly" | "monthly" | "quarterly" | "half-yearly" | "yearly";
@@ -5372,15 +5240,7 @@ export interface RakutenPayDetails {
   /** **rakutenpay** */
   type?: RakutenPayDetailsType | (string & {});
 }
-export const RakutenPayDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    checkoutAttemptId: S.optional(S.String),
-    recurringDetailReference: S.optional(S.String),
-    sdkData: S.optional(S.String),
-    storedPaymentMethodId: S.optional(S.String),
-    type: S.optional(RakutenPayDetailsType),
-  }),
-).annotate({ identifier: "RakutenPayDetails" }) as any as S.Schema<RakutenPayDetails>;
+export const RakutenPayDetails = SepaDirectDebitDonations as any as S.Schema<RakutenPayDetails>;
 
 /** **ratepay** */
 export type RatepayDetailsType = "ratepay" | "ratepay_directdebit";
@@ -5404,18 +5264,7 @@ export interface RatepayDetails {
   /** **ratepay** */
   type: RatepayDetailsType | (string & {});
 }
-export const RatepayDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    billingAddress: S.optional(S.String),
-    checkoutAttemptId: S.optional(S.String),
-    deliveryAddress: S.optional(S.String),
-    personalDetails: S.optional(S.String),
-    recurringDetailReference: S.optional(S.String),
-    sdkData: S.optional(S.String),
-    storedPaymentMethodId: S.optional(S.String),
-    type: RatepayDetailsType,
-  }),
-).annotate({ identifier: "RatepayDetails" }) as any as S.Schema<RatepayDetails>;
+export const RatepayDetails = AfterpayDetails as any as S.Schema<RatepayDetails>;
 
 /** **riverty** */
 export type RivertyDetailsType =
@@ -5802,13 +5651,7 @@ export interface WeChatPayDetails {
   /** **wechatpay** */
   type?: WeChatPayDetailsType | (string & {});
 }
-export const WeChatPayDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    checkoutAttemptId: S.optional(S.String),
-    sdkData: S.optional(S.String),
-    type: S.optional(WeChatPayDetailsType),
-  }),
-).annotate({ identifier: "WeChatPayDetails" }) as any as S.Schema<WeChatPayDetails>;
+export const WeChatPayDetails = AndroidPayDetails as any as S.Schema<WeChatPayDetails>;
 
 /** **wechatpayMiniProgram** */
 export type WeChatPayMiniProgramDetailsType = "wechatpayMiniProgram";
@@ -6714,9 +6557,8 @@ export const InstallmentOptionPlansItem = S.String;
 
 /** Defines the type of installment plan. If not set, defaults to **regular**. Possible values: * **regular** * **revolving** */
 export type InstallmentOptionPlansList = Array<InstallmentOptionPlansItem | (string & {})>;
-export const InstallmentOptionPlansList = /*@__PURE__*/ S.Array(
-  InstallmentOptionPlansItem,
-) as any as S.Schema<InstallmentOptionPlansList>;
+export const InstallmentOptionPlansList =
+  DeviceRenderOptionsSdkUiTypeList as any as S.Schema<InstallmentOptionPlansList>;
 
 /** An array of the number of installments that the shopper can choose from. For example, **[2,3,5]**. This cannot be specified simultaneously with `maxValue`. */
 export type InstallmentOptionValuesList = Array<number>;
@@ -6780,9 +6622,8 @@ export const CreatePaymentLinkRequestRequiredShopperFieldsItem = S.String;
 export type CreatePaymentLinkRequestRequiredShopperFieldsList = Array<
   CreatePaymentLinkRequestRequiredShopperFieldsItem | (string & {})
 >;
-export const CreatePaymentLinkRequestRequiredShopperFieldsList = /*@__PURE__*/ S.Array(
-  CreatePaymentLinkRequestRequiredShopperFieldsItem,
-) as any as S.Schema<CreatePaymentLinkRequestRequiredShopperFieldsList>;
+export const CreatePaymentLinkRequestRequiredShopperFieldsList =
+  DeviceRenderOptionsSdkUiTypeList as any as S.Schema<CreatePaymentLinkRequestRequiredShopperFieldsList>;
 
 /** An array of objects specifying how to split a payment when using [Adyen for Platforms](https://docs.adyen.com/platforms/process-payments#providing-split-information), [Classic Platforms integration](https://docs.adyen.com/classic-platforms/processing-payments#providing-split-information), or [Issuing](https://docs.adyen.com/issuing/manage-funds#split). */
 export type CreatePaymentLinkRequestSplitsList = Array<Split>;
@@ -7012,9 +6853,8 @@ export const PaymentLinkResponseRequiredShopperFieldsItem = S.String;
 /** List of fields that the shopper has to provide on the payment page before completing the payment. For more information, refer to [Provide shopper information](https://docs.adyen.com/unified-commerce/pay-by-link/payment-links/api#shopper-information). Possible values: * **billingAddress** - The address where to send the invoice. * **deliveryAddress** - The address where the purchased goods should be delivered. * **shopperEmail** - The shopper's email address. * **shopperName** - The shopper's full name. * **telephoneNumber** - The shopper's phone number. */
 export type PaymentLinkResponseRequiredShopperFieldsList =
   Array<PaymentLinkResponseRequiredShopperFieldsItem>;
-export const PaymentLinkResponseRequiredShopperFieldsList = /*@__PURE__*/ S.Array(
-  PaymentLinkResponseRequiredShopperFieldsItem,
-) as any as S.Schema<PaymentLinkResponseRequiredShopperFieldsList>;
+export const PaymentLinkResponseRequiredShopperFieldsList =
+  DeviceRenderOptionsSdkUiTypeList as any as S.Schema<PaymentLinkResponseRequiredShopperFieldsList>;
 
 /** An array of objects specifying how to split a payment when using [Adyen for Platforms](https://docs.adyen.com/platforms/process-payments#providing-split-information), [Classic Platforms integration](https://docs.adyen.com/classic-platforms/processing-payments#providing-split-information), or [Issuing](https://docs.adyen.com/issuing/manage-funds#split). */
 export type PaymentLinkResponseSplitsList = Array<Split>;
@@ -8214,15 +8054,8 @@ export interface PaymentReversalResponse {
   /** The status of your request. This will always have the value **received**. */
   status: PaymentReversalResponseStatus;
 }
-export const PaymentReversalResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    merchantAccount: S.String,
-    paymentPspReference: S.String,
-    pspReference: S.String,
-    reference: S.optional(S.String),
-    status: PaymentReversalResponseStatus,
-  }),
-).annotate({ identifier: "PaymentReversalResponse" }) as any as S.Schema<PaymentReversalResponse>;
+export const PaymentReversalResponse =
+  PaymentCancelResponse as any as S.Schema<PaymentReversalResponse>;
 
 export interface DetailsRequestAuthenticationData {
   /** Required to trigger the [authentication-only flow](https://docs.adyen.com/online-payments/3d-secure/authentication-only/). If set to **true**, you will only perform the 3D Secure 2 authentication, and will not proceed to the payment authorization.Default: **false**. */
@@ -8545,9 +8378,8 @@ export const CheckoutSessionInstallmentOptionPlansItem = S.String;
 export type CheckoutSessionInstallmentOptionPlansList = Array<
   CheckoutSessionInstallmentOptionPlansItem | (string & {})
 >;
-export const CheckoutSessionInstallmentOptionPlansList = /*@__PURE__*/ S.Array(
-  CheckoutSessionInstallmentOptionPlansItem,
-) as any as S.Schema<CheckoutSessionInstallmentOptionPlansList>;
+export const CheckoutSessionInstallmentOptionPlansList =
+  DeviceRenderOptionsSdkUiTypeList as any as S.Schema<CheckoutSessionInstallmentOptionPlansList>;
 
 /** An array of the number of installments that the shopper can choose from. For example, **[2,3,5]**. */
 export type CheckoutSessionInstallmentOptionValuesList = Array<number>;

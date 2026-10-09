@@ -511,9 +511,8 @@ export const VoiceOptionsCoveredDataItemEnum = S.String;
 export type VoiceOptionsCoveredDataItemEnumList = Array<
   VoiceOptionsCoveredDataItemEnum | (string & {})
 >;
-export const VoiceOptionsCoveredDataItemEnumList = /*@__PURE__*/ S.Array(
-  VoiceOptionsCoveredDataItemEnum,
-) as any as S.Schema<VoiceOptionsCoveredDataItemEnumList>;
+export const VoiceOptionsCoveredDataItemEnumList =
+  CalendarOptionsResponseStatusesItemEnumList as any as S.Schema<VoiceOptionsCoveredDataItemEnumList>;
 
 /** Additional options for Voice search */
 export interface VoiceOptions {
@@ -837,11 +836,7 @@ export interface GeminiExportOptions {
   /** The file format for exported messages. */
   exportFormat?: GeminiExportOptionsExportFormatEnum | (string & {});
 }
-export const GeminiExportOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    exportFormat: S.optional(GeminiExportOptionsExportFormatEnum),
-  }),
-).annotate({ identifier: "GeminiExportOptions" }) as any as S.Schema<GeminiExportOptions>;
+export const GeminiExportOptions = GroupsExportOptions as any as S.Schema<GeminiExportOptions>;
 
 export type HangoutsChatExportOptionsExportFormatEnum =
   | "EXPORT_FORMAT_UNSPECIFIED"
@@ -879,11 +874,7 @@ export interface VoiceExportOptions {
   /** The file format for exported text messages. */
   exportFormat?: VoiceExportOptionsExportFormatEnum | (string & {});
 }
-export const VoiceExportOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    exportFormat: S.optional(VoiceExportOptionsExportFormatEnum),
-  }),
-).annotate({ identifier: "VoiceExportOptions" }) as any as S.Schema<VoiceExportOptions>;
+export const VoiceExportOptions = GroupsExportOptions as any as S.Schema<VoiceExportOptions>;
 
 export type CalendarExportOptionsExportFormatEnum =
   | "EXPORT_FORMAT_UNSPECIFIED"
@@ -899,11 +890,7 @@ export interface CalendarExportOptions {
   /** The file format for exported text messages. */
   exportFormat?: CalendarExportOptionsExportFormatEnum | (string & {});
 }
-export const CalendarExportOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    exportFormat: S.optional(CalendarExportOptionsExportFormatEnum),
-  }),
-).annotate({ identifier: "CalendarExportOptions" }) as any as S.Schema<CalendarExportOptions>;
+export const CalendarExportOptions = GroupsExportOptions as any as S.Schema<CalendarExportOptions>;
 
 export type ExportOptionsRegionEnum = "EXPORT_REGION_UNSPECIFIED" | "ANY" | "US" | "EUROPE";
 export const ExportOptionsRegionEnum = S.String;
@@ -1126,20 +1113,15 @@ export const HeldVoiceQueryCoveredDataItemEnum = S.String;
 export type HeldVoiceQueryCoveredDataItemEnumList = Array<
   HeldVoiceQueryCoveredDataItemEnum | (string & {})
 >;
-export const HeldVoiceQueryCoveredDataItemEnumList = /*@__PURE__*/ S.Array(
-  HeldVoiceQueryCoveredDataItemEnum,
-) as any as S.Schema<HeldVoiceQueryCoveredDataItemEnumList>;
+export const HeldVoiceQueryCoveredDataItemEnumList =
+  CalendarOptionsResponseStatusesItemEnumList as any as S.Schema<HeldVoiceQueryCoveredDataItemEnumList>;
 
 /** Options for Voice holds. */
 export interface HeldVoiceQuery {
   /** A list of data types covered by the hold. Should be non-empty. Order does not matter and duplicates are ignored. */
   coveredData?: HeldVoiceQueryCoveredDataItemEnumList;
 }
-export const HeldVoiceQuery = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    coveredData: S.optional(HeldVoiceQueryCoveredDataItemEnumList),
-  }),
-).annotate({ identifier: "HeldVoiceQuery" }) as any as S.Schema<HeldVoiceQuery>;
+export const HeldVoiceQuery = VoiceOptions as any as S.Schema<HeldVoiceQuery>;
 
 /** Options for Chat holds. */
 export interface HeldHangoutsChatQuery {

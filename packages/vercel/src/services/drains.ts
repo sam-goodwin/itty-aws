@@ -104,9 +104,8 @@ export const CreateDrainRequestFilterFilterCase0DeploymentEnvironmentsItem = S.S
 export type CreateDrainRequestFilterFilterCase0DeploymentEnvironmentsList = Array<
   CreateDrainRequestFilterFilterCase0DeploymentEnvironmentsItem | (string & {})
 >;
-export const CreateDrainRequestFilterFilterCase0DeploymentEnvironmentsList = /*@__PURE__*/ S.Array(
-  CreateDrainRequestFilterFilterCase0DeploymentEnvironmentsItem,
-) as any as S.Schema<CreateDrainRequestFilterFilterCase0DeploymentEnvironmentsList>;
+export const CreateDrainRequestFilterFilterCase0DeploymentEnvironmentsList =
+  CreateDrainRequestFilterFilterCase0LogSourcesList as any as S.Schema<CreateDrainRequestFilterFilterCase0DeploymentEnvironmentsList>;
 
 export interface CreateDrainRequestFilterFilterCase0Deployment {
   environments?: CreateDrainRequestFilterFilterCase0DeploymentEnvironmentsList;
@@ -513,13 +512,8 @@ export const CreateDrainResponseBodyCase0DeliveryCase1SecretCase1Kind = S.String
 export interface CreateDrainResponseBodyCase0DeliveryCase1SecretCase1 {
   kind: CreateDrainResponseBodyCase0DeliveryCase1SecretCase1Kind;
 }
-export const CreateDrainResponseBodyCase0DeliveryCase1SecretCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: CreateDrainResponseBodyCase0DeliveryCase1SecretCase1Kind,
-  }),
-).annotate({
-  identifier: "CreateDrainResponseBodyCase0DeliveryCase1SecretCase1",
-}) as any as S.Schema<CreateDrainResponseBodyCase0DeliveryCase1SecretCase1>;
+export const CreateDrainResponseBodyCase0DeliveryCase1SecretCase1 =
+  CreateDrainResponseBodyCase0DeliveryCase0SecretCase1 as any as S.Schema<CreateDrainResponseBodyCase0DeliveryCase1SecretCase1>;
 
 export type CreateDrainResponseBodyCase0DeliveryCase1Secret =
   | string
@@ -804,9 +798,8 @@ export const CreateDrainResponseBodyCase0FilterV2FilterCase0LogSourcesItem = S.S
 
 export type CreateDrainResponseBodyCase0FilterV2FilterCase0LogSourcesList =
   Array<CreateDrainResponseBodyCase0FilterV2FilterCase0LogSourcesItem>;
-export const CreateDrainResponseBodyCase0FilterV2FilterCase0LogSourcesList = /*@__PURE__*/ S.Array(
-  CreateDrainResponseBodyCase0FilterV2FilterCase0LogSourcesItem,
-) as any as S.Schema<CreateDrainResponseBodyCase0FilterV2FilterCase0LogSourcesList>;
+export const CreateDrainResponseBodyCase0FilterV2FilterCase0LogSourcesList =
+  CreateDrainRequestFilterFilterCase0LogSourcesList as any as S.Schema<CreateDrainResponseBodyCase0FilterV2FilterCase0LogSourcesList>;
 
 export interface CreateDrainResponseBodyCase0FilterV2FilterCase0Log {
   legacy_excludeCachedStaticAssetLogs?: boolean;
@@ -950,13 +943,8 @@ export const CreateDrainResponseBodyCase1DeliveryCase0SecretCase1Kind = S.String
 export interface CreateDrainResponseBodyCase1DeliveryCase0SecretCase1 {
   kind: CreateDrainResponseBodyCase1DeliveryCase0SecretCase1Kind;
 }
-export const CreateDrainResponseBodyCase1DeliveryCase0SecretCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: CreateDrainResponseBodyCase1DeliveryCase0SecretCase1Kind,
-  }),
-).annotate({
-  identifier: "CreateDrainResponseBodyCase1DeliveryCase0SecretCase1",
-}) as any as S.Schema<CreateDrainResponseBodyCase1DeliveryCase0SecretCase1>;
+export const CreateDrainResponseBodyCase1DeliveryCase0SecretCase1 =
+  CreateDrainResponseBodyCase0DeliveryCase0SecretCase1 as any as S.Schema<CreateDrainResponseBodyCase1DeliveryCase0SecretCase1>;
 
 export type CreateDrainResponseBodyCase1DeliveryCase0Secret =
   | string
@@ -1008,13 +996,8 @@ export const CreateDrainResponseBodyCase1DeliveryCase1SecretCase1Kind = S.String
 export interface CreateDrainResponseBodyCase1DeliveryCase1SecretCase1 {
   kind: CreateDrainResponseBodyCase1DeliveryCase1SecretCase1Kind;
 }
-export const CreateDrainResponseBodyCase1DeliveryCase1SecretCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: CreateDrainResponseBodyCase1DeliveryCase1SecretCase1Kind,
-  }),
-).annotate({
-  identifier: "CreateDrainResponseBodyCase1DeliveryCase1SecretCase1",
-}) as any as S.Schema<CreateDrainResponseBodyCase1DeliveryCase1SecretCase1>;
+export const CreateDrainResponseBodyCase1DeliveryCase1SecretCase1 =
+  CreateDrainResponseBodyCase0DeliveryCase0SecretCase1 as any as S.Schema<CreateDrainResponseBodyCase1DeliveryCase1SecretCase1>;
 
 export type CreateDrainResponseBodyCase1DeliveryCase1Secret =
   | string
@@ -1052,15 +1035,8 @@ export interface CreateDrainResponseBodyCase1DeliveryCase2 {
   table: string;
   type: CreateDrainResponseBodyCase1DeliveryCase2Type;
 }
-export const CreateDrainResponseBodyCase1DeliveryCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endpoint: S.String,
-    table: S.String,
-    type: CreateDrainResponseBodyCase1DeliveryCase2Type,
-  }),
-).annotate({
-  identifier: "CreateDrainResponseBodyCase1DeliveryCase2",
-}) as any as S.Schema<CreateDrainResponseBodyCase1DeliveryCase2>;
+export const CreateDrainResponseBodyCase1DeliveryCase2 =
+  CreateDrainResponseBodyCase0DeliveryCase2 as any as S.Schema<CreateDrainResponseBodyCase1DeliveryCase2>;
 
 export type CreateDrainResponseBodyCase1DeliveryCase3Compression = "none";
 export const CreateDrainResponseBodyCase1DeliveryCase3Compression = S.String;
@@ -1101,21 +1077,8 @@ export interface CreateDrainResponseBodyCase1DeliveryCase3 {
   serverSideEncryption?: CreateDrainResponseBodyCase1DeliveryCase3ServerSideEncryption;
   type: CreateDrainResponseBodyCase1DeliveryCase3Type;
 }
-export const CreateDrainResponseBodyCase1DeliveryCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    compression: CreateDrainResponseBodyCase1DeliveryCase3Compression,
-    encoding: CreateDrainResponseBodyCase1DeliveryCase3Encoding,
-    endpoint: S.String,
-    fileStructure: CreateDrainResponseBodyCase1DeliveryCase3FileStructure,
-    objectAcl: S.optional(CreateDrainResponseBodyCase1DeliveryCase3ObjectAcl),
-    region: S.String,
-    roleArn: S.String,
-    serverSideEncryption: S.optional(CreateDrainResponseBodyCase1DeliveryCase3ServerSideEncryption),
-    type: CreateDrainResponseBodyCase1DeliveryCase3Type,
-  }),
-).annotate({
-  identifier: "CreateDrainResponseBodyCase1DeliveryCase3",
-}) as any as S.Schema<CreateDrainResponseBodyCase1DeliveryCase3>;
+export const CreateDrainResponseBodyCase1DeliveryCase3 =
+  CreateDrainResponseBodyCase0DeliveryCase3 as any as S.Schema<CreateDrainResponseBodyCase1DeliveryCase3>;
 
 export type CreateDrainResponseBodyCase1DeliveryCase4Target = "vercel-otel-traces-db";
 export const CreateDrainResponseBodyCase1DeliveryCase4Target = S.String;
@@ -1127,14 +1090,8 @@ export interface CreateDrainResponseBodyCase1DeliveryCase4 {
   target: CreateDrainResponseBodyCase1DeliveryCase4Target;
   type: CreateDrainResponseBodyCase1DeliveryCase4Type;
 }
-export const CreateDrainResponseBodyCase1DeliveryCase4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    target: CreateDrainResponseBodyCase1DeliveryCase4Target,
-    type: CreateDrainResponseBodyCase1DeliveryCase4Type,
-  }),
-).annotate({
-  identifier: "CreateDrainResponseBodyCase1DeliveryCase4",
-}) as any as S.Schema<CreateDrainResponseBodyCase1DeliveryCase4>;
+export const CreateDrainResponseBodyCase1DeliveryCase4 =
+  CreateDrainResponseBodyCase0DeliveryCase4 as any as S.Schema<CreateDrainResponseBodyCase1DeliveryCase4>;
 
 export type CreateDrainResponseBodyCase1Delivery =
   | CreateDrainResponseBodyCase1DeliveryCase0
@@ -1169,22 +1126,13 @@ export interface CreateDrainResponseBodyCase1SamplingItem {
   requestPath?: string;
   type: CreateDrainResponseBodyCase1SamplingItemType;
 }
-export const CreateDrainResponseBodyCase1SamplingItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    env: S.optional(CreateDrainResponseBodyCase1SamplingItemEnv),
-    rate: S.Number,
-    requestPath: S.optional(S.String),
-    type: CreateDrainResponseBodyCase1SamplingItemType,
-  }),
-).annotate({
-  identifier: "CreateDrainResponseBodyCase1SamplingItem",
-}) as any as S.Schema<CreateDrainResponseBodyCase1SamplingItem>;
+export const CreateDrainResponseBodyCase1SamplingItem =
+  CreateDrainResponseBodyCase0SamplingItem as any as S.Schema<CreateDrainResponseBodyCase1SamplingItem>;
 
 export type CreateDrainResponseBodyCase1SamplingList =
   Array<CreateDrainResponseBodyCase1SamplingItem>;
-export const CreateDrainResponseBodyCase1SamplingList = /*@__PURE__*/ S.Array(
-  CreateDrainResponseBodyCase1SamplingItem,
-) as any as S.Schema<CreateDrainResponseBodyCase1SamplingList>;
+export const CreateDrainResponseBodyCase1SamplingList =
+  CreateDrainResponseBodyCase0SamplingList as any as S.Schema<CreateDrainResponseBodyCase1SamplingList>;
 
 export type CreateDrainResponseBodyCase1Schemas = CreateDrainResponseBodyCase0Schemas;
 export const CreateDrainResponseBodyCase1Schemas = CreateDrainResponseBodyCase0Schemas;
@@ -1201,14 +1149,8 @@ export interface CreateDrainResponseBodyCase1SourceCase0 {
   defaultFor?: CreateDrainResponseBodyCase1SourceCase0DefaultFor;
   kind: CreateDrainResponseBodyCase1SourceCase0Kind;
 }
-export const CreateDrainResponseBodyCase1SourceCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultFor: S.optional(CreateDrainResponseBodyCase1SourceCase0DefaultFor),
-    kind: CreateDrainResponseBodyCase1SourceCase0Kind,
-  }),
-).annotate({
-  identifier: "CreateDrainResponseBodyCase1SourceCase0",
-}) as any as S.Schema<CreateDrainResponseBodyCase1SourceCase0>;
+export const CreateDrainResponseBodyCase1SourceCase0 =
+  CreateDrainResponseBodyCase0SourceCase0 as any as S.Schema<CreateDrainResponseBodyCase1SourceCase0>;
 
 export type CreateDrainResponseBodyCase1SourceCase1Kind = "integration";
 export const CreateDrainResponseBodyCase1SourceCase1Kind = S.String;
@@ -1220,17 +1162,8 @@ export interface CreateDrainResponseBodyCase1SourceCase1 {
   kind: CreateDrainResponseBodyCase1SourceCase1Kind;
   resourceId?: string;
 }
-export const CreateDrainResponseBodyCase1SourceCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    externalResourceId: S.optional(S.String),
-    integrationConfigurationId: S.String,
-    integrationId: S.String,
-    kind: CreateDrainResponseBodyCase1SourceCase1Kind,
-    resourceId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateDrainResponseBodyCase1SourceCase1",
-}) as any as S.Schema<CreateDrainResponseBodyCase1SourceCase1>;
+export const CreateDrainResponseBodyCase1SourceCase1 =
+  CreateDrainResponseBodyCase0SourceCase1 as any as S.Schema<CreateDrainResponseBodyCase1SourceCase1>;
 
 export type CreateDrainResponseBodyCase1Source =
   | CreateDrainResponseBodyCase1SourceCase0
@@ -1249,23 +1182,13 @@ export const CreateDrainResponseBodyCase1FilterV2FilterCase0DeploymentEnvironmen
 export type CreateDrainResponseBodyCase1FilterV2FilterCase0DeploymentEnvironmentsList =
   Array<CreateDrainResponseBodyCase1FilterV2FilterCase0DeploymentEnvironmentsItem>;
 export const CreateDrainResponseBodyCase1FilterV2FilterCase0DeploymentEnvironmentsList =
-  /*@__PURE__*/ S.Array(
-    CreateDrainResponseBodyCase1FilterV2FilterCase0DeploymentEnvironmentsItem,
-  ) as any as S.Schema<CreateDrainResponseBodyCase1FilterV2FilterCase0DeploymentEnvironmentsList>;
+  CreateDrainResponseBodyCase0FilterV2FilterCase0DeploymentEnvironmentsList as any as S.Schema<CreateDrainResponseBodyCase1FilterV2FilterCase0DeploymentEnvironmentsList>;
 
 export interface CreateDrainResponseBodyCase1FilterV2FilterCase0Deployment {
   environments?: CreateDrainResponseBodyCase1FilterV2FilterCase0DeploymentEnvironmentsList;
 }
-export const CreateDrainResponseBodyCase1FilterV2FilterCase0Deployment = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      environments: S.optional(
-        CreateDrainResponseBodyCase1FilterV2FilterCase0DeploymentEnvironmentsList,
-      ),
-    }),
-).annotate({
-  identifier: "CreateDrainResponseBodyCase1FilterV2FilterCase0Deployment",
-}) as any as S.Schema<CreateDrainResponseBodyCase1FilterV2FilterCase0Deployment>;
+export const CreateDrainResponseBodyCase1FilterV2FilterCase0Deployment =
+  CreateDrainResponseBodyCase0FilterV2FilterCase0Deployment as any as S.Schema<CreateDrainResponseBodyCase1FilterV2FilterCase0Deployment>;
 
 export type CreateDrainResponseBodyCase1FilterV2FilterCase0LogSourcesItem =
   | "build"
@@ -1279,22 +1202,15 @@ export const CreateDrainResponseBodyCase1FilterV2FilterCase0LogSourcesItem = S.S
 
 export type CreateDrainResponseBodyCase1FilterV2FilterCase0LogSourcesList =
   Array<CreateDrainResponseBodyCase1FilterV2FilterCase0LogSourcesItem>;
-export const CreateDrainResponseBodyCase1FilterV2FilterCase0LogSourcesList = /*@__PURE__*/ S.Array(
-  CreateDrainResponseBodyCase1FilterV2FilterCase0LogSourcesItem,
-) as any as S.Schema<CreateDrainResponseBodyCase1FilterV2FilterCase0LogSourcesList>;
+export const CreateDrainResponseBodyCase1FilterV2FilterCase0LogSourcesList =
+  CreateDrainRequestFilterFilterCase0LogSourcesList as any as S.Schema<CreateDrainResponseBodyCase1FilterV2FilterCase0LogSourcesList>;
 
 export interface CreateDrainResponseBodyCase1FilterV2FilterCase0Log {
   legacy_excludeCachedStaticAssetLogs?: boolean;
   sources?: CreateDrainResponseBodyCase1FilterV2FilterCase0LogSourcesList;
 }
-export const CreateDrainResponseBodyCase1FilterV2FilterCase0Log = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    legacy_excludeCachedStaticAssetLogs: S.optional(S.Boolean),
-    sources: S.optional(CreateDrainResponseBodyCase1FilterV2FilterCase0LogSourcesList),
-  }),
-).annotate({
-  identifier: "CreateDrainResponseBodyCase1FilterV2FilterCase0Log",
-}) as any as S.Schema<CreateDrainResponseBodyCase1FilterV2FilterCase0Log>;
+export const CreateDrainResponseBodyCase1FilterV2FilterCase0Log =
+  CreateDrainResponseBodyCase0FilterV2FilterCase0Log as any as S.Schema<CreateDrainResponseBodyCase1FilterV2FilterCase0Log>;
 
 export type CreateDrainResponseBodyCase1FilterV2FilterCase0ProjectIdsList = Array<string>;
 export const CreateDrainResponseBodyCase1FilterV2FilterCase0ProjectIdsList =
@@ -1333,14 +1249,8 @@ export interface CreateDrainResponseBodyCase1FilterV2FilterCase1 {
   text: string;
   type: CreateDrainResponseBodyCase1FilterV2FilterCase1Type;
 }
-export const CreateDrainResponseBodyCase1FilterV2FilterCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    text: S.String,
-    type: CreateDrainResponseBodyCase1FilterV2FilterCase1Type,
-  }),
-).annotate({
-  identifier: "CreateDrainResponseBodyCase1FilterV2FilterCase1",
-}) as any as S.Schema<CreateDrainResponseBodyCase1FilterV2FilterCase1>;
+export const CreateDrainResponseBodyCase1FilterV2FilterCase1 =
+  CreateDrainResponseBodyCase0FilterV2FilterCase1 as any as S.Schema<CreateDrainResponseBodyCase1FilterV2FilterCase1>;
 
 export type CreateDrainResponseBodyCase1FilterV2Filter =
   | CreateDrainResponseBodyCase1FilterV2FilterCase0
@@ -1526,13 +1436,8 @@ export const GetDrainResponseBodyCase0DeliveryCase0SecretCase1Kind = S.String;
 export interface GetDrainResponseBodyCase0DeliveryCase0SecretCase1 {
   kind: GetDrainResponseBodyCase0DeliveryCase0SecretCase1Kind;
 }
-export const GetDrainResponseBodyCase0DeliveryCase0SecretCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: GetDrainResponseBodyCase0DeliveryCase0SecretCase1Kind,
-  }),
-).annotate({
-  identifier: "GetDrainResponseBodyCase0DeliveryCase0SecretCase1",
-}) as any as S.Schema<GetDrainResponseBodyCase0DeliveryCase0SecretCase1>;
+export const GetDrainResponseBodyCase0DeliveryCase0SecretCase1 =
+  CreateDrainResponseBodyCase0DeliveryCase0SecretCase1 as any as S.Schema<GetDrainResponseBodyCase0DeliveryCase0SecretCase1>;
 
 export type GetDrainResponseBodyCase0DeliveryCase0Secret =
   | string
@@ -1584,13 +1489,8 @@ export const GetDrainResponseBodyCase0DeliveryCase1SecretCase1Kind = S.String;
 export interface GetDrainResponseBodyCase0DeliveryCase1SecretCase1 {
   kind: GetDrainResponseBodyCase0DeliveryCase1SecretCase1Kind;
 }
-export const GetDrainResponseBodyCase0DeliveryCase1SecretCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: GetDrainResponseBodyCase0DeliveryCase1SecretCase1Kind,
-  }),
-).annotate({
-  identifier: "GetDrainResponseBodyCase0DeliveryCase1SecretCase1",
-}) as any as S.Schema<GetDrainResponseBodyCase0DeliveryCase1SecretCase1>;
+export const GetDrainResponseBodyCase0DeliveryCase1SecretCase1 =
+  CreateDrainResponseBodyCase0DeliveryCase0SecretCase1 as any as S.Schema<GetDrainResponseBodyCase0DeliveryCase1SecretCase1>;
 
 export type GetDrainResponseBodyCase0DeliveryCase1Secret =
   | string
@@ -1628,15 +1528,8 @@ export interface GetDrainResponseBodyCase0DeliveryCase2 {
   table: string;
   type: GetDrainResponseBodyCase0DeliveryCase2Type;
 }
-export const GetDrainResponseBodyCase0DeliveryCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endpoint: S.String,
-    table: S.String,
-    type: GetDrainResponseBodyCase0DeliveryCase2Type,
-  }),
-).annotate({
-  identifier: "GetDrainResponseBodyCase0DeliveryCase2",
-}) as any as S.Schema<GetDrainResponseBodyCase0DeliveryCase2>;
+export const GetDrainResponseBodyCase0DeliveryCase2 =
+  CreateDrainResponseBodyCase0DeliveryCase2 as any as S.Schema<GetDrainResponseBodyCase0DeliveryCase2>;
 
 export type GetDrainResponseBodyCase0DeliveryCase3Compression = "none";
 export const GetDrainResponseBodyCase0DeliveryCase3Compression = S.String;
@@ -1677,21 +1570,8 @@ export interface GetDrainResponseBodyCase0DeliveryCase3 {
   serverSideEncryption?: GetDrainResponseBodyCase0DeliveryCase3ServerSideEncryption;
   type: GetDrainResponseBodyCase0DeliveryCase3Type;
 }
-export const GetDrainResponseBodyCase0DeliveryCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    compression: GetDrainResponseBodyCase0DeliveryCase3Compression,
-    encoding: GetDrainResponseBodyCase0DeliveryCase3Encoding,
-    endpoint: S.String,
-    fileStructure: GetDrainResponseBodyCase0DeliveryCase3FileStructure,
-    objectAcl: S.optional(GetDrainResponseBodyCase0DeliveryCase3ObjectAcl),
-    region: S.String,
-    roleArn: S.String,
-    serverSideEncryption: S.optional(GetDrainResponseBodyCase0DeliveryCase3ServerSideEncryption),
-    type: GetDrainResponseBodyCase0DeliveryCase3Type,
-  }),
-).annotate({
-  identifier: "GetDrainResponseBodyCase0DeliveryCase3",
-}) as any as S.Schema<GetDrainResponseBodyCase0DeliveryCase3>;
+export const GetDrainResponseBodyCase0DeliveryCase3 =
+  CreateDrainResponseBodyCase0DeliveryCase3 as any as S.Schema<GetDrainResponseBodyCase0DeliveryCase3>;
 
 export type GetDrainResponseBodyCase0DeliveryCase4Target = "vercel-otel-traces-db";
 export const GetDrainResponseBodyCase0DeliveryCase4Target = S.String;
@@ -1703,14 +1583,8 @@ export interface GetDrainResponseBodyCase0DeliveryCase4 {
   target: GetDrainResponseBodyCase0DeliveryCase4Target;
   type: GetDrainResponseBodyCase0DeliveryCase4Type;
 }
-export const GetDrainResponseBodyCase0DeliveryCase4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    target: GetDrainResponseBodyCase0DeliveryCase4Target,
-    type: GetDrainResponseBodyCase0DeliveryCase4Type,
-  }),
-).annotate({
-  identifier: "GetDrainResponseBodyCase0DeliveryCase4",
-}) as any as S.Schema<GetDrainResponseBodyCase0DeliveryCase4>;
+export const GetDrainResponseBodyCase0DeliveryCase4 =
+  CreateDrainResponseBodyCase0DeliveryCase4 as any as S.Schema<GetDrainResponseBodyCase0DeliveryCase4>;
 
 export type GetDrainResponseBodyCase0Delivery =
   | GetDrainResponseBodyCase0DeliveryCase0
@@ -1745,21 +1619,12 @@ export interface GetDrainResponseBodyCase0SamplingItem {
   requestPath?: string;
   type: GetDrainResponseBodyCase0SamplingItemType;
 }
-export const GetDrainResponseBodyCase0SamplingItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    env: S.optional(GetDrainResponseBodyCase0SamplingItemEnv),
-    rate: S.Number,
-    requestPath: S.optional(S.String),
-    type: GetDrainResponseBodyCase0SamplingItemType,
-  }),
-).annotate({
-  identifier: "GetDrainResponseBodyCase0SamplingItem",
-}) as any as S.Schema<GetDrainResponseBodyCase0SamplingItem>;
+export const GetDrainResponseBodyCase0SamplingItem =
+  CreateDrainResponseBodyCase0SamplingItem as any as S.Schema<GetDrainResponseBodyCase0SamplingItem>;
 
 export type GetDrainResponseBodyCase0SamplingList = Array<GetDrainResponseBodyCase0SamplingItem>;
-export const GetDrainResponseBodyCase0SamplingList = /*@__PURE__*/ S.Array(
-  GetDrainResponseBodyCase0SamplingItem,
-) as any as S.Schema<GetDrainResponseBodyCase0SamplingList>;
+export const GetDrainResponseBodyCase0SamplingList =
+  CreateDrainResponseBodyCase0SamplingList as any as S.Schema<GetDrainResponseBodyCase0SamplingList>;
 
 export type GetDrainResponseBodyCase0Schemas = CreateDrainResponseBodyCase0Schemas;
 export const GetDrainResponseBodyCase0Schemas = CreateDrainResponseBodyCase0Schemas;
@@ -1776,14 +1641,8 @@ export interface GetDrainResponseBodyCase0SourceCase0 {
   defaultFor?: GetDrainResponseBodyCase0SourceCase0DefaultFor;
   kind: GetDrainResponseBodyCase0SourceCase0Kind;
 }
-export const GetDrainResponseBodyCase0SourceCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultFor: S.optional(GetDrainResponseBodyCase0SourceCase0DefaultFor),
-    kind: GetDrainResponseBodyCase0SourceCase0Kind,
-  }),
-).annotate({
-  identifier: "GetDrainResponseBodyCase0SourceCase0",
-}) as any as S.Schema<GetDrainResponseBodyCase0SourceCase0>;
+export const GetDrainResponseBodyCase0SourceCase0 =
+  CreateDrainResponseBodyCase0SourceCase0 as any as S.Schema<GetDrainResponseBodyCase0SourceCase0>;
 
 export type GetDrainResponseBodyCase0SourceCase1Kind = "integration";
 export const GetDrainResponseBodyCase0SourceCase1Kind = S.String;
@@ -1795,17 +1654,8 @@ export interface GetDrainResponseBodyCase0SourceCase1 {
   kind: GetDrainResponseBodyCase0SourceCase1Kind;
   resourceId?: string;
 }
-export const GetDrainResponseBodyCase0SourceCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    externalResourceId: S.optional(S.String),
-    integrationConfigurationId: S.String,
-    integrationId: S.String,
-    kind: GetDrainResponseBodyCase0SourceCase1Kind,
-    resourceId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetDrainResponseBodyCase0SourceCase1",
-}) as any as S.Schema<GetDrainResponseBodyCase0SourceCase1>;
+export const GetDrainResponseBodyCase0SourceCase1 =
+  CreateDrainResponseBodyCase0SourceCase1 as any as S.Schema<GetDrainResponseBodyCase0SourceCase1>;
 
 export type GetDrainResponseBodyCase0Source =
   | GetDrainResponseBodyCase0SourceCase0
@@ -1824,9 +1674,7 @@ export const GetDrainResponseBodyCase0FilterV2FilterCase0DeploymentEnvironmentsI
 export type GetDrainResponseBodyCase0FilterV2FilterCase0DeploymentEnvironmentsList =
   Array<GetDrainResponseBodyCase0FilterV2FilterCase0DeploymentEnvironmentsItem>;
 export const GetDrainResponseBodyCase0FilterV2FilterCase0DeploymentEnvironmentsList =
-  /*@__PURE__*/ S.Array(
-    GetDrainResponseBodyCase0FilterV2FilterCase0DeploymentEnvironmentsItem,
-  ) as any as S.Schema<GetDrainResponseBodyCase0FilterV2FilterCase0DeploymentEnvironmentsList>;
+  CreateDrainResponseBodyCase0FilterV2FilterCase0DeploymentEnvironmentsList as any as S.Schema<GetDrainResponseBodyCase0FilterV2FilterCase0DeploymentEnvironmentsList>;
 
 export interface GetDrainResponseBodyCase0FilterV2FilterCase0Deployment {
   environments?: GetDrainResponseBodyCase0FilterV2FilterCase0DeploymentEnvironmentsList;
@@ -1853,22 +1701,15 @@ export const GetDrainResponseBodyCase0FilterV2FilterCase0LogSourcesItem = S.Stri
 
 export type GetDrainResponseBodyCase0FilterV2FilterCase0LogSourcesList =
   Array<GetDrainResponseBodyCase0FilterV2FilterCase0LogSourcesItem>;
-export const GetDrainResponseBodyCase0FilterV2FilterCase0LogSourcesList = /*@__PURE__*/ S.Array(
-  GetDrainResponseBodyCase0FilterV2FilterCase0LogSourcesItem,
-) as any as S.Schema<GetDrainResponseBodyCase0FilterV2FilterCase0LogSourcesList>;
+export const GetDrainResponseBodyCase0FilterV2FilterCase0LogSourcesList =
+  CreateDrainRequestFilterFilterCase0LogSourcesList as any as S.Schema<GetDrainResponseBodyCase0FilterV2FilterCase0LogSourcesList>;
 
 export interface GetDrainResponseBodyCase0FilterV2FilterCase0Log {
   legacy_excludeCachedStaticAssetLogs?: boolean;
   sources?: GetDrainResponseBodyCase0FilterV2FilterCase0LogSourcesList;
 }
-export const GetDrainResponseBodyCase0FilterV2FilterCase0Log = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    legacy_excludeCachedStaticAssetLogs: S.optional(S.Boolean),
-    sources: S.optional(GetDrainResponseBodyCase0FilterV2FilterCase0LogSourcesList),
-  }),
-).annotate({
-  identifier: "GetDrainResponseBodyCase0FilterV2FilterCase0Log",
-}) as any as S.Schema<GetDrainResponseBodyCase0FilterV2FilterCase0Log>;
+export const GetDrainResponseBodyCase0FilterV2FilterCase0Log =
+  CreateDrainResponseBodyCase0FilterV2FilterCase0Log as any as S.Schema<GetDrainResponseBodyCase0FilterV2FilterCase0Log>;
 
 export type GetDrainResponseBodyCase0FilterV2FilterCase0ProjectIdsList = Array<string>;
 export const GetDrainResponseBodyCase0FilterV2FilterCase0ProjectIdsList =
@@ -1907,14 +1748,8 @@ export interface GetDrainResponseBodyCase0FilterV2FilterCase1 {
   text: string;
   type: GetDrainResponseBodyCase0FilterV2FilterCase1Type;
 }
-export const GetDrainResponseBodyCase0FilterV2FilterCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    text: S.String,
-    type: GetDrainResponseBodyCase0FilterV2FilterCase1Type,
-  }),
-).annotate({
-  identifier: "GetDrainResponseBodyCase0FilterV2FilterCase1",
-}) as any as S.Schema<GetDrainResponseBodyCase0FilterV2FilterCase1>;
+export const GetDrainResponseBodyCase0FilterV2FilterCase1 =
+  CreateDrainResponseBodyCase0FilterV2FilterCase1 as any as S.Schema<GetDrainResponseBodyCase0FilterV2FilterCase1>;
 
 export type GetDrainResponseBodyCase0FilterV2Filter =
   | GetDrainResponseBodyCase0FilterV2FilterCase0
@@ -1999,13 +1834,8 @@ export const GetDrainResponseBodyCase1DeliveryCase0SecretCase1Kind = S.String;
 export interface GetDrainResponseBodyCase1DeliveryCase0SecretCase1 {
   kind: GetDrainResponseBodyCase1DeliveryCase0SecretCase1Kind;
 }
-export const GetDrainResponseBodyCase1DeliveryCase0SecretCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: GetDrainResponseBodyCase1DeliveryCase0SecretCase1Kind,
-  }),
-).annotate({
-  identifier: "GetDrainResponseBodyCase1DeliveryCase0SecretCase1",
-}) as any as S.Schema<GetDrainResponseBodyCase1DeliveryCase0SecretCase1>;
+export const GetDrainResponseBodyCase1DeliveryCase0SecretCase1 =
+  CreateDrainResponseBodyCase0DeliveryCase0SecretCase1 as any as S.Schema<GetDrainResponseBodyCase1DeliveryCase0SecretCase1>;
 
 export type GetDrainResponseBodyCase1DeliveryCase0Secret =
   | string
@@ -2057,13 +1887,8 @@ export const GetDrainResponseBodyCase1DeliveryCase1SecretCase1Kind = S.String;
 export interface GetDrainResponseBodyCase1DeliveryCase1SecretCase1 {
   kind: GetDrainResponseBodyCase1DeliveryCase1SecretCase1Kind;
 }
-export const GetDrainResponseBodyCase1DeliveryCase1SecretCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: GetDrainResponseBodyCase1DeliveryCase1SecretCase1Kind,
-  }),
-).annotate({
-  identifier: "GetDrainResponseBodyCase1DeliveryCase1SecretCase1",
-}) as any as S.Schema<GetDrainResponseBodyCase1DeliveryCase1SecretCase1>;
+export const GetDrainResponseBodyCase1DeliveryCase1SecretCase1 =
+  CreateDrainResponseBodyCase0DeliveryCase0SecretCase1 as any as S.Schema<GetDrainResponseBodyCase1DeliveryCase1SecretCase1>;
 
 export type GetDrainResponseBodyCase1DeliveryCase1Secret =
   | string
@@ -2101,15 +1926,8 @@ export interface GetDrainResponseBodyCase1DeliveryCase2 {
   table: string;
   type: GetDrainResponseBodyCase1DeliveryCase2Type;
 }
-export const GetDrainResponseBodyCase1DeliveryCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endpoint: S.String,
-    table: S.String,
-    type: GetDrainResponseBodyCase1DeliveryCase2Type,
-  }),
-).annotate({
-  identifier: "GetDrainResponseBodyCase1DeliveryCase2",
-}) as any as S.Schema<GetDrainResponseBodyCase1DeliveryCase2>;
+export const GetDrainResponseBodyCase1DeliveryCase2 =
+  CreateDrainResponseBodyCase0DeliveryCase2 as any as S.Schema<GetDrainResponseBodyCase1DeliveryCase2>;
 
 export type GetDrainResponseBodyCase1DeliveryCase3Compression = "none";
 export const GetDrainResponseBodyCase1DeliveryCase3Compression = S.String;
@@ -2150,21 +1968,8 @@ export interface GetDrainResponseBodyCase1DeliveryCase3 {
   serverSideEncryption?: GetDrainResponseBodyCase1DeliveryCase3ServerSideEncryption;
   type: GetDrainResponseBodyCase1DeliveryCase3Type;
 }
-export const GetDrainResponseBodyCase1DeliveryCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    compression: GetDrainResponseBodyCase1DeliveryCase3Compression,
-    encoding: GetDrainResponseBodyCase1DeliveryCase3Encoding,
-    endpoint: S.String,
-    fileStructure: GetDrainResponseBodyCase1DeliveryCase3FileStructure,
-    objectAcl: S.optional(GetDrainResponseBodyCase1DeliveryCase3ObjectAcl),
-    region: S.String,
-    roleArn: S.String,
-    serverSideEncryption: S.optional(GetDrainResponseBodyCase1DeliveryCase3ServerSideEncryption),
-    type: GetDrainResponseBodyCase1DeliveryCase3Type,
-  }),
-).annotate({
-  identifier: "GetDrainResponseBodyCase1DeliveryCase3",
-}) as any as S.Schema<GetDrainResponseBodyCase1DeliveryCase3>;
+export const GetDrainResponseBodyCase1DeliveryCase3 =
+  CreateDrainResponseBodyCase0DeliveryCase3 as any as S.Schema<GetDrainResponseBodyCase1DeliveryCase3>;
 
 export type GetDrainResponseBodyCase1DeliveryCase4Target = "vercel-otel-traces-db";
 export const GetDrainResponseBodyCase1DeliveryCase4Target = S.String;
@@ -2176,14 +1981,8 @@ export interface GetDrainResponseBodyCase1DeliveryCase4 {
   target: GetDrainResponseBodyCase1DeliveryCase4Target;
   type: GetDrainResponseBodyCase1DeliveryCase4Type;
 }
-export const GetDrainResponseBodyCase1DeliveryCase4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    target: GetDrainResponseBodyCase1DeliveryCase4Target,
-    type: GetDrainResponseBodyCase1DeliveryCase4Type,
-  }),
-).annotate({
-  identifier: "GetDrainResponseBodyCase1DeliveryCase4",
-}) as any as S.Schema<GetDrainResponseBodyCase1DeliveryCase4>;
+export const GetDrainResponseBodyCase1DeliveryCase4 =
+  CreateDrainResponseBodyCase0DeliveryCase4 as any as S.Schema<GetDrainResponseBodyCase1DeliveryCase4>;
 
 export type GetDrainResponseBodyCase1Delivery =
   | GetDrainResponseBodyCase1DeliveryCase0
@@ -2218,21 +2017,12 @@ export interface GetDrainResponseBodyCase1SamplingItem {
   requestPath?: string;
   type: GetDrainResponseBodyCase1SamplingItemType;
 }
-export const GetDrainResponseBodyCase1SamplingItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    env: S.optional(GetDrainResponseBodyCase1SamplingItemEnv),
-    rate: S.Number,
-    requestPath: S.optional(S.String),
-    type: GetDrainResponseBodyCase1SamplingItemType,
-  }),
-).annotate({
-  identifier: "GetDrainResponseBodyCase1SamplingItem",
-}) as any as S.Schema<GetDrainResponseBodyCase1SamplingItem>;
+export const GetDrainResponseBodyCase1SamplingItem =
+  CreateDrainResponseBodyCase0SamplingItem as any as S.Schema<GetDrainResponseBodyCase1SamplingItem>;
 
 export type GetDrainResponseBodyCase1SamplingList = Array<GetDrainResponseBodyCase1SamplingItem>;
-export const GetDrainResponseBodyCase1SamplingList = /*@__PURE__*/ S.Array(
-  GetDrainResponseBodyCase1SamplingItem,
-) as any as S.Schema<GetDrainResponseBodyCase1SamplingList>;
+export const GetDrainResponseBodyCase1SamplingList =
+  CreateDrainResponseBodyCase0SamplingList as any as S.Schema<GetDrainResponseBodyCase1SamplingList>;
 
 export type GetDrainResponseBodyCase1Schemas = CreateDrainResponseBodyCase0Schemas;
 export const GetDrainResponseBodyCase1Schemas = CreateDrainResponseBodyCase0Schemas;
@@ -2249,14 +2039,8 @@ export interface GetDrainResponseBodyCase1SourceCase0 {
   defaultFor?: GetDrainResponseBodyCase1SourceCase0DefaultFor;
   kind: GetDrainResponseBodyCase1SourceCase0Kind;
 }
-export const GetDrainResponseBodyCase1SourceCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultFor: S.optional(GetDrainResponseBodyCase1SourceCase0DefaultFor),
-    kind: GetDrainResponseBodyCase1SourceCase0Kind,
-  }),
-).annotate({
-  identifier: "GetDrainResponseBodyCase1SourceCase0",
-}) as any as S.Schema<GetDrainResponseBodyCase1SourceCase0>;
+export const GetDrainResponseBodyCase1SourceCase0 =
+  CreateDrainResponseBodyCase0SourceCase0 as any as S.Schema<GetDrainResponseBodyCase1SourceCase0>;
 
 export type GetDrainResponseBodyCase1SourceCase1Kind = "integration";
 export const GetDrainResponseBodyCase1SourceCase1Kind = S.String;
@@ -2268,17 +2052,8 @@ export interface GetDrainResponseBodyCase1SourceCase1 {
   kind: GetDrainResponseBodyCase1SourceCase1Kind;
   resourceId?: string;
 }
-export const GetDrainResponseBodyCase1SourceCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    externalResourceId: S.optional(S.String),
-    integrationConfigurationId: S.String,
-    integrationId: S.String,
-    kind: GetDrainResponseBodyCase1SourceCase1Kind,
-    resourceId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetDrainResponseBodyCase1SourceCase1",
-}) as any as S.Schema<GetDrainResponseBodyCase1SourceCase1>;
+export const GetDrainResponseBodyCase1SourceCase1 =
+  CreateDrainResponseBodyCase0SourceCase1 as any as S.Schema<GetDrainResponseBodyCase1SourceCase1>;
 
 export type GetDrainResponseBodyCase1Source =
   | GetDrainResponseBodyCase1SourceCase0
@@ -2297,22 +2072,13 @@ export const GetDrainResponseBodyCase1FilterV2FilterCase0DeploymentEnvironmentsI
 export type GetDrainResponseBodyCase1FilterV2FilterCase0DeploymentEnvironmentsList =
   Array<GetDrainResponseBodyCase1FilterV2FilterCase0DeploymentEnvironmentsItem>;
 export const GetDrainResponseBodyCase1FilterV2FilterCase0DeploymentEnvironmentsList =
-  /*@__PURE__*/ S.Array(
-    GetDrainResponseBodyCase1FilterV2FilterCase0DeploymentEnvironmentsItem,
-  ) as any as S.Schema<GetDrainResponseBodyCase1FilterV2FilterCase0DeploymentEnvironmentsList>;
+  CreateDrainResponseBodyCase0FilterV2FilterCase0DeploymentEnvironmentsList as any as S.Schema<GetDrainResponseBodyCase1FilterV2FilterCase0DeploymentEnvironmentsList>;
 
 export interface GetDrainResponseBodyCase1FilterV2FilterCase0Deployment {
   environments?: GetDrainResponseBodyCase1FilterV2FilterCase0DeploymentEnvironmentsList;
 }
-export const GetDrainResponseBodyCase1FilterV2FilterCase0Deployment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    environments: S.optional(
-      GetDrainResponseBodyCase1FilterV2FilterCase0DeploymentEnvironmentsList,
-    ),
-  }),
-).annotate({
-  identifier: "GetDrainResponseBodyCase1FilterV2FilterCase0Deployment",
-}) as any as S.Schema<GetDrainResponseBodyCase1FilterV2FilterCase0Deployment>;
+export const GetDrainResponseBodyCase1FilterV2FilterCase0Deployment =
+  GetDrainResponseBodyCase0FilterV2FilterCase0Deployment as any as S.Schema<GetDrainResponseBodyCase1FilterV2FilterCase0Deployment>;
 
 export type GetDrainResponseBodyCase1FilterV2FilterCase0LogSourcesItem =
   | "build"
@@ -2326,22 +2092,15 @@ export const GetDrainResponseBodyCase1FilterV2FilterCase0LogSourcesItem = S.Stri
 
 export type GetDrainResponseBodyCase1FilterV2FilterCase0LogSourcesList =
   Array<GetDrainResponseBodyCase1FilterV2FilterCase0LogSourcesItem>;
-export const GetDrainResponseBodyCase1FilterV2FilterCase0LogSourcesList = /*@__PURE__*/ S.Array(
-  GetDrainResponseBodyCase1FilterV2FilterCase0LogSourcesItem,
-) as any as S.Schema<GetDrainResponseBodyCase1FilterV2FilterCase0LogSourcesList>;
+export const GetDrainResponseBodyCase1FilterV2FilterCase0LogSourcesList =
+  CreateDrainRequestFilterFilterCase0LogSourcesList as any as S.Schema<GetDrainResponseBodyCase1FilterV2FilterCase0LogSourcesList>;
 
 export interface GetDrainResponseBodyCase1FilterV2FilterCase0Log {
   legacy_excludeCachedStaticAssetLogs?: boolean;
   sources?: GetDrainResponseBodyCase1FilterV2FilterCase0LogSourcesList;
 }
-export const GetDrainResponseBodyCase1FilterV2FilterCase0Log = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    legacy_excludeCachedStaticAssetLogs: S.optional(S.Boolean),
-    sources: S.optional(GetDrainResponseBodyCase1FilterV2FilterCase0LogSourcesList),
-  }),
-).annotate({
-  identifier: "GetDrainResponseBodyCase1FilterV2FilterCase0Log",
-}) as any as S.Schema<GetDrainResponseBodyCase1FilterV2FilterCase0Log>;
+export const GetDrainResponseBodyCase1FilterV2FilterCase0Log =
+  CreateDrainResponseBodyCase0FilterV2FilterCase0Log as any as S.Schema<GetDrainResponseBodyCase1FilterV2FilterCase0Log>;
 
 export type GetDrainResponseBodyCase1FilterV2FilterCase0ProjectIdsList = Array<string>;
 export const GetDrainResponseBodyCase1FilterV2FilterCase0ProjectIdsList =
@@ -2380,14 +2139,8 @@ export interface GetDrainResponseBodyCase1FilterV2FilterCase1 {
   text: string;
   type: GetDrainResponseBodyCase1FilterV2FilterCase1Type;
 }
-export const GetDrainResponseBodyCase1FilterV2FilterCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    text: S.String,
-    type: GetDrainResponseBodyCase1FilterV2FilterCase1Type,
-  }),
-).annotate({
-  identifier: "GetDrainResponseBodyCase1FilterV2FilterCase1",
-}) as any as S.Schema<GetDrainResponseBodyCase1FilterV2FilterCase1>;
+export const GetDrainResponseBodyCase1FilterV2FilterCase1 =
+  CreateDrainResponseBodyCase0FilterV2FilterCase1 as any as S.Schema<GetDrainResponseBodyCase1FilterV2FilterCase1>;
 
 export type GetDrainResponseBodyCase1FilterV2Filter =
   | GetDrainResponseBodyCase1FilterV2FilterCase0
@@ -2421,14 +2174,8 @@ export interface GetDrainResponseBodyCase1ProjectAccessCase0 {
   access: GetDrainResponseBodyCase1ProjectAccessCase0Access;
   managedBy: GetDrainResponseBodyCase1ProjectAccessCase0ManagedBy;
 }
-export const GetDrainResponseBodyCase1ProjectAccessCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    access: GetDrainResponseBodyCase1ProjectAccessCase0Access,
-    managedBy: GetDrainResponseBodyCase1ProjectAccessCase0ManagedBy,
-  }),
-).annotate({
-  identifier: "GetDrainResponseBodyCase1ProjectAccessCase0",
-}) as any as S.Schema<GetDrainResponseBodyCase1ProjectAccessCase0>;
+export const GetDrainResponseBodyCase1ProjectAccessCase0 =
+  CreateDrainResponseBodyCase1ProjectAccessCase0 as any as S.Schema<GetDrainResponseBodyCase1ProjectAccessCase0>;
 
 export type GetDrainResponseBodyCase1ProjectAccessCase1Access = "some";
 export const GetDrainResponseBodyCase1ProjectAccessCase1Access = S.String;
@@ -2614,14 +2361,8 @@ export const GetDrainsResponseDrainsCase0ItemDeliveryCase1SecretCase1Kind = S.St
 export interface GetDrainsResponseDrainsCase0ItemDeliveryCase1SecretCase1 {
   kind: GetDrainsResponseDrainsCase0ItemDeliveryCase1SecretCase1Kind;
 }
-export const GetDrainsResponseDrainsCase0ItemDeliveryCase1SecretCase1 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      kind: GetDrainsResponseDrainsCase0ItemDeliveryCase1SecretCase1Kind,
-    }),
-).annotate({
-  identifier: "GetDrainsResponseDrainsCase0ItemDeliveryCase1SecretCase1",
-}) as any as S.Schema<GetDrainsResponseDrainsCase0ItemDeliveryCase1SecretCase1>;
+export const GetDrainsResponseDrainsCase0ItemDeliveryCase1SecretCase1 =
+  GetDrainsResponseDrainsCase0ItemDeliveryCase0SecretCase1 as any as S.Schema<GetDrainsResponseDrainsCase0ItemDeliveryCase1SecretCase1>;
 
 export type GetDrainsResponseDrainsCase0ItemDeliveryCase1Secret =
   | string
@@ -2659,15 +2400,8 @@ export interface GetDrainsResponseDrainsCase0ItemDeliveryCase2 {
   table: string;
   type: GetDrainsResponseDrainsCase0ItemDeliveryCase2Type;
 }
-export const GetDrainsResponseDrainsCase0ItemDeliveryCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endpoint: S.String,
-    table: S.String,
-    type: GetDrainsResponseDrainsCase0ItemDeliveryCase2Type,
-  }),
-).annotate({
-  identifier: "GetDrainsResponseDrainsCase0ItemDeliveryCase2",
-}) as any as S.Schema<GetDrainsResponseDrainsCase0ItemDeliveryCase2>;
+export const GetDrainsResponseDrainsCase0ItemDeliveryCase2 =
+  CreateDrainResponseBodyCase0DeliveryCase2 as any as S.Schema<GetDrainsResponseDrainsCase0ItemDeliveryCase2>;
 
 export type GetDrainsResponseDrainsCase0ItemDeliveryCase3Compression = "none";
 export const GetDrainsResponseDrainsCase0ItemDeliveryCase3Compression = S.String;
@@ -2736,14 +2470,8 @@ export interface GetDrainsResponseDrainsCase0ItemDeliveryCase4 {
   target: GetDrainsResponseDrainsCase0ItemDeliveryCase4Target;
   type: GetDrainsResponseDrainsCase0ItemDeliveryCase4Type;
 }
-export const GetDrainsResponseDrainsCase0ItemDeliveryCase4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    target: GetDrainsResponseDrainsCase0ItemDeliveryCase4Target,
-    type: GetDrainsResponseDrainsCase0ItemDeliveryCase4Type,
-  }),
-).annotate({
-  identifier: "GetDrainsResponseDrainsCase0ItemDeliveryCase4",
-}) as any as S.Schema<GetDrainsResponseDrainsCase0ItemDeliveryCase4>;
+export const GetDrainsResponseDrainsCase0ItemDeliveryCase4 =
+  CreateDrainResponseBodyCase0DeliveryCase4 as any as S.Schema<GetDrainsResponseDrainsCase0ItemDeliveryCase4>;
 
 export type GetDrainsResponseDrainsCase0ItemDelivery =
   | GetDrainsResponseDrainsCase0ItemDeliveryCase0
@@ -2778,22 +2506,13 @@ export interface GetDrainsResponseDrainsCase0ItemSamplingItem {
   requestPath?: string;
   type: GetDrainsResponseDrainsCase0ItemSamplingItemType;
 }
-export const GetDrainsResponseDrainsCase0ItemSamplingItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    env: S.optional(GetDrainsResponseDrainsCase0ItemSamplingItemEnv),
-    rate: S.Number,
-    requestPath: S.optional(S.String),
-    type: GetDrainsResponseDrainsCase0ItemSamplingItemType,
-  }),
-).annotate({
-  identifier: "GetDrainsResponseDrainsCase0ItemSamplingItem",
-}) as any as S.Schema<GetDrainsResponseDrainsCase0ItemSamplingItem>;
+export const GetDrainsResponseDrainsCase0ItemSamplingItem =
+  CreateDrainResponseBodyCase0SamplingItem as any as S.Schema<GetDrainsResponseDrainsCase0ItemSamplingItem>;
 
 export type GetDrainsResponseDrainsCase0ItemSamplingList =
   Array<GetDrainsResponseDrainsCase0ItemSamplingItem>;
-export const GetDrainsResponseDrainsCase0ItemSamplingList = /*@__PURE__*/ S.Array(
-  GetDrainsResponseDrainsCase0ItemSamplingItem,
-) as any as S.Schema<GetDrainsResponseDrainsCase0ItemSamplingList>;
+export const GetDrainsResponseDrainsCase0ItemSamplingList =
+  CreateDrainResponseBodyCase0SamplingList as any as S.Schema<GetDrainsResponseDrainsCase0ItemSamplingList>;
 
 export type GetDrainsResponseDrainsCase0ItemSchemas = CreateDrainResponseBodyCase0Schemas;
 export const GetDrainsResponseDrainsCase0ItemSchemas = CreateDrainResponseBodyCase0Schemas;
@@ -2810,14 +2529,8 @@ export interface GetDrainsResponseDrainsCase0ItemSourceCase0 {
   defaultFor?: GetDrainsResponseDrainsCase0ItemSourceCase0DefaultFor;
   kind: GetDrainsResponseDrainsCase0ItemSourceCase0Kind;
 }
-export const GetDrainsResponseDrainsCase0ItemSourceCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultFor: S.optional(GetDrainsResponseDrainsCase0ItemSourceCase0DefaultFor),
-    kind: GetDrainsResponseDrainsCase0ItemSourceCase0Kind,
-  }),
-).annotate({
-  identifier: "GetDrainsResponseDrainsCase0ItemSourceCase0",
-}) as any as S.Schema<GetDrainsResponseDrainsCase0ItemSourceCase0>;
+export const GetDrainsResponseDrainsCase0ItemSourceCase0 =
+  CreateDrainResponseBodyCase0SourceCase0 as any as S.Schema<GetDrainsResponseDrainsCase0ItemSourceCase0>;
 
 export type GetDrainsResponseDrainsCase0ItemSourceCase1Kind = "integration";
 export const GetDrainsResponseDrainsCase0ItemSourceCase1Kind = S.String;
@@ -2829,17 +2542,8 @@ export interface GetDrainsResponseDrainsCase0ItemSourceCase1 {
   kind: GetDrainsResponseDrainsCase0ItemSourceCase1Kind;
   resourceId?: string;
 }
-export const GetDrainsResponseDrainsCase0ItemSourceCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    externalResourceId: S.optional(S.String),
-    integrationConfigurationId: S.String,
-    integrationId: S.String,
-    kind: GetDrainsResponseDrainsCase0ItemSourceCase1Kind,
-    resourceId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetDrainsResponseDrainsCase0ItemSourceCase1",
-}) as any as S.Schema<GetDrainsResponseDrainsCase0ItemSourceCase1>;
+export const GetDrainsResponseDrainsCase0ItemSourceCase1 =
+  CreateDrainResponseBodyCase0SourceCase1 as any as S.Schema<GetDrainsResponseDrainsCase0ItemSourceCase1>;
 
 export type GetDrainsResponseDrainsCase0ItemSource =
   | GetDrainsResponseDrainsCase0ItemSourceCase0
@@ -2859,9 +2563,7 @@ export const GetDrainsResponseDrainsCase0ItemFilterV2FilterCase0DeploymentEnviro
 export type GetDrainsResponseDrainsCase0ItemFilterV2FilterCase0DeploymentEnvironmentsList =
   Array<GetDrainsResponseDrainsCase0ItemFilterV2FilterCase0DeploymentEnvironmentsItem>;
 export const GetDrainsResponseDrainsCase0ItemFilterV2FilterCase0DeploymentEnvironmentsList =
-  /*@__PURE__*/ S.Array(
-    GetDrainsResponseDrainsCase0ItemFilterV2FilterCase0DeploymentEnvironmentsItem,
-  ) as any as S.Schema<GetDrainsResponseDrainsCase0ItemFilterV2FilterCase0DeploymentEnvironmentsList>;
+  CreateDrainResponseBodyCase0FilterV2FilterCase0DeploymentEnvironmentsList as any as S.Schema<GetDrainsResponseDrainsCase0ItemFilterV2FilterCase0DeploymentEnvironmentsList>;
 
 export interface GetDrainsResponseDrainsCase0ItemFilterV2FilterCase0Deployment {
   environments?: GetDrainsResponseDrainsCase0ItemFilterV2FilterCase0DeploymentEnvironmentsList;
@@ -2890,9 +2592,7 @@ export const GetDrainsResponseDrainsCase0ItemFilterV2FilterCase0LogSourcesItem =
 export type GetDrainsResponseDrainsCase0ItemFilterV2FilterCase0LogSourcesList =
   Array<GetDrainsResponseDrainsCase0ItemFilterV2FilterCase0LogSourcesItem>;
 export const GetDrainsResponseDrainsCase0ItemFilterV2FilterCase0LogSourcesList =
-  /*@__PURE__*/ S.Array(
-    GetDrainsResponseDrainsCase0ItemFilterV2FilterCase0LogSourcesItem,
-  ) as any as S.Schema<GetDrainsResponseDrainsCase0ItemFilterV2FilterCase0LogSourcesList>;
+  CreateDrainResponseBodyCase0FilterV2FilterCase0DeploymentEnvironmentsList as any as S.Schema<GetDrainsResponseDrainsCase0ItemFilterV2FilterCase0LogSourcesList>;
 
 export interface GetDrainsResponseDrainsCase0ItemFilterV2FilterCase0Log {
   legacy_excludeCachedStaticAssetLogs?: boolean;
@@ -2952,14 +2652,8 @@ export interface GetDrainsResponseDrainsCase0ItemFilterV2FilterCase1 {
   text: string;
   type: GetDrainsResponseDrainsCase0ItemFilterV2FilterCase1Type;
 }
-export const GetDrainsResponseDrainsCase0ItemFilterV2FilterCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    text: S.String,
-    type: GetDrainsResponseDrainsCase0ItemFilterV2FilterCase1Type,
-  }),
-).annotate({
-  identifier: "GetDrainsResponseDrainsCase0ItemFilterV2FilterCase1",
-}) as any as S.Schema<GetDrainsResponseDrainsCase0ItemFilterV2FilterCase1>;
+export const GetDrainsResponseDrainsCase0ItemFilterV2FilterCase1 =
+  CreateDrainResponseBodyCase0FilterV2FilterCase1 as any as S.Schema<GetDrainsResponseDrainsCase0ItemFilterV2FilterCase1>;
 
 export type GetDrainsResponseDrainsCase0ItemFilterV2Filter =
   | GetDrainsResponseDrainsCase0ItemFilterV2FilterCase0
@@ -3049,14 +2743,8 @@ export const GetDrainsResponseDrainsCase1ItemDeliveryCase0SecretCase1Kind = S.St
 export interface GetDrainsResponseDrainsCase1ItemDeliveryCase0SecretCase1 {
   kind: GetDrainsResponseDrainsCase1ItemDeliveryCase0SecretCase1Kind;
 }
-export const GetDrainsResponseDrainsCase1ItemDeliveryCase0SecretCase1 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      kind: GetDrainsResponseDrainsCase1ItemDeliveryCase0SecretCase1Kind,
-    }),
-).annotate({
-  identifier: "GetDrainsResponseDrainsCase1ItemDeliveryCase0SecretCase1",
-}) as any as S.Schema<GetDrainsResponseDrainsCase1ItemDeliveryCase0SecretCase1>;
+export const GetDrainsResponseDrainsCase1ItemDeliveryCase0SecretCase1 =
+  GetDrainsResponseDrainsCase0ItemDeliveryCase0SecretCase1 as any as S.Schema<GetDrainsResponseDrainsCase1ItemDeliveryCase0SecretCase1>;
 
 export type GetDrainsResponseDrainsCase1ItemDeliveryCase0Secret =
   | string
@@ -3108,14 +2796,8 @@ export const GetDrainsResponseDrainsCase1ItemDeliveryCase1SecretCase1Kind = S.St
 export interface GetDrainsResponseDrainsCase1ItemDeliveryCase1SecretCase1 {
   kind: GetDrainsResponseDrainsCase1ItemDeliveryCase1SecretCase1Kind;
 }
-export const GetDrainsResponseDrainsCase1ItemDeliveryCase1SecretCase1 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      kind: GetDrainsResponseDrainsCase1ItemDeliveryCase1SecretCase1Kind,
-    }),
-).annotate({
-  identifier: "GetDrainsResponseDrainsCase1ItemDeliveryCase1SecretCase1",
-}) as any as S.Schema<GetDrainsResponseDrainsCase1ItemDeliveryCase1SecretCase1>;
+export const GetDrainsResponseDrainsCase1ItemDeliveryCase1SecretCase1 =
+  GetDrainsResponseDrainsCase0ItemDeliveryCase0SecretCase1 as any as S.Schema<GetDrainsResponseDrainsCase1ItemDeliveryCase1SecretCase1>;
 
 export type GetDrainsResponseDrainsCase1ItemDeliveryCase1Secret =
   | string
@@ -3153,15 +2835,8 @@ export interface GetDrainsResponseDrainsCase1ItemDeliveryCase2 {
   table: string;
   type: GetDrainsResponseDrainsCase1ItemDeliveryCase2Type;
 }
-export const GetDrainsResponseDrainsCase1ItemDeliveryCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endpoint: S.String,
-    table: S.String,
-    type: GetDrainsResponseDrainsCase1ItemDeliveryCase2Type,
-  }),
-).annotate({
-  identifier: "GetDrainsResponseDrainsCase1ItemDeliveryCase2",
-}) as any as S.Schema<GetDrainsResponseDrainsCase1ItemDeliveryCase2>;
+export const GetDrainsResponseDrainsCase1ItemDeliveryCase2 =
+  CreateDrainResponseBodyCase0DeliveryCase2 as any as S.Schema<GetDrainsResponseDrainsCase1ItemDeliveryCase2>;
 
 export type GetDrainsResponseDrainsCase1ItemDeliveryCase3Compression = "none";
 export const GetDrainsResponseDrainsCase1ItemDeliveryCase3Compression = S.String;
@@ -3202,23 +2877,8 @@ export interface GetDrainsResponseDrainsCase1ItemDeliveryCase3 {
   serverSideEncryption?: GetDrainsResponseDrainsCase1ItemDeliveryCase3ServerSideEncryption;
   type: GetDrainsResponseDrainsCase1ItemDeliveryCase3Type;
 }
-export const GetDrainsResponseDrainsCase1ItemDeliveryCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    compression: GetDrainsResponseDrainsCase1ItemDeliveryCase3Compression,
-    encoding: GetDrainsResponseDrainsCase1ItemDeliveryCase3Encoding,
-    endpoint: S.String,
-    fileStructure: GetDrainsResponseDrainsCase1ItemDeliveryCase3FileStructure,
-    objectAcl: S.optional(GetDrainsResponseDrainsCase1ItemDeliveryCase3ObjectAcl),
-    region: S.String,
-    roleArn: S.String,
-    serverSideEncryption: S.optional(
-      GetDrainsResponseDrainsCase1ItemDeliveryCase3ServerSideEncryption,
-    ),
-    type: GetDrainsResponseDrainsCase1ItemDeliveryCase3Type,
-  }),
-).annotate({
-  identifier: "GetDrainsResponseDrainsCase1ItemDeliveryCase3",
-}) as any as S.Schema<GetDrainsResponseDrainsCase1ItemDeliveryCase3>;
+export const GetDrainsResponseDrainsCase1ItemDeliveryCase3 =
+  GetDrainsResponseDrainsCase0ItemDeliveryCase3 as any as S.Schema<GetDrainsResponseDrainsCase1ItemDeliveryCase3>;
 
 export type GetDrainsResponseDrainsCase1ItemDeliveryCase4Target = "vercel-otel-traces-db";
 export const GetDrainsResponseDrainsCase1ItemDeliveryCase4Target = S.String;
@@ -3230,14 +2890,8 @@ export interface GetDrainsResponseDrainsCase1ItemDeliveryCase4 {
   target: GetDrainsResponseDrainsCase1ItemDeliveryCase4Target;
   type: GetDrainsResponseDrainsCase1ItemDeliveryCase4Type;
 }
-export const GetDrainsResponseDrainsCase1ItemDeliveryCase4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    target: GetDrainsResponseDrainsCase1ItemDeliveryCase4Target,
-    type: GetDrainsResponseDrainsCase1ItemDeliveryCase4Type,
-  }),
-).annotate({
-  identifier: "GetDrainsResponseDrainsCase1ItemDeliveryCase4",
-}) as any as S.Schema<GetDrainsResponseDrainsCase1ItemDeliveryCase4>;
+export const GetDrainsResponseDrainsCase1ItemDeliveryCase4 =
+  CreateDrainResponseBodyCase0DeliveryCase4 as any as S.Schema<GetDrainsResponseDrainsCase1ItemDeliveryCase4>;
 
 export type GetDrainsResponseDrainsCase1ItemDelivery =
   | GetDrainsResponseDrainsCase1ItemDeliveryCase0
@@ -3272,22 +2926,13 @@ export interface GetDrainsResponseDrainsCase1ItemSamplingItem {
   requestPath?: string;
   type: GetDrainsResponseDrainsCase1ItemSamplingItemType;
 }
-export const GetDrainsResponseDrainsCase1ItemSamplingItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    env: S.optional(GetDrainsResponseDrainsCase1ItemSamplingItemEnv),
-    rate: S.Number,
-    requestPath: S.optional(S.String),
-    type: GetDrainsResponseDrainsCase1ItemSamplingItemType,
-  }),
-).annotate({
-  identifier: "GetDrainsResponseDrainsCase1ItemSamplingItem",
-}) as any as S.Schema<GetDrainsResponseDrainsCase1ItemSamplingItem>;
+export const GetDrainsResponseDrainsCase1ItemSamplingItem =
+  CreateDrainResponseBodyCase0SamplingItem as any as S.Schema<GetDrainsResponseDrainsCase1ItemSamplingItem>;
 
 export type GetDrainsResponseDrainsCase1ItemSamplingList =
   Array<GetDrainsResponseDrainsCase1ItemSamplingItem>;
-export const GetDrainsResponseDrainsCase1ItemSamplingList = /*@__PURE__*/ S.Array(
-  GetDrainsResponseDrainsCase1ItemSamplingItem,
-) as any as S.Schema<GetDrainsResponseDrainsCase1ItemSamplingList>;
+export const GetDrainsResponseDrainsCase1ItemSamplingList =
+  CreateDrainResponseBodyCase0SamplingList as any as S.Schema<GetDrainsResponseDrainsCase1ItemSamplingList>;
 
 export type GetDrainsResponseDrainsCase1ItemSchemas = CreateDrainResponseBodyCase0Schemas;
 export const GetDrainsResponseDrainsCase1ItemSchemas = CreateDrainResponseBodyCase0Schemas;
@@ -3304,14 +2949,8 @@ export interface GetDrainsResponseDrainsCase1ItemSourceCase0 {
   defaultFor?: GetDrainsResponseDrainsCase1ItemSourceCase0DefaultFor;
   kind: GetDrainsResponseDrainsCase1ItemSourceCase0Kind;
 }
-export const GetDrainsResponseDrainsCase1ItemSourceCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultFor: S.optional(GetDrainsResponseDrainsCase1ItemSourceCase0DefaultFor),
-    kind: GetDrainsResponseDrainsCase1ItemSourceCase0Kind,
-  }),
-).annotate({
-  identifier: "GetDrainsResponseDrainsCase1ItemSourceCase0",
-}) as any as S.Schema<GetDrainsResponseDrainsCase1ItemSourceCase0>;
+export const GetDrainsResponseDrainsCase1ItemSourceCase0 =
+  CreateDrainResponseBodyCase0SourceCase0 as any as S.Schema<GetDrainsResponseDrainsCase1ItemSourceCase0>;
 
 export type GetDrainsResponseDrainsCase1ItemSourceCase1Kind = "integration";
 export const GetDrainsResponseDrainsCase1ItemSourceCase1Kind = S.String;
@@ -3323,17 +2962,8 @@ export interface GetDrainsResponseDrainsCase1ItemSourceCase1 {
   kind: GetDrainsResponseDrainsCase1ItemSourceCase1Kind;
   resourceId?: string;
 }
-export const GetDrainsResponseDrainsCase1ItemSourceCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    externalResourceId: S.optional(S.String),
-    integrationConfigurationId: S.String,
-    integrationId: S.String,
-    kind: GetDrainsResponseDrainsCase1ItemSourceCase1Kind,
-    resourceId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetDrainsResponseDrainsCase1ItemSourceCase1",
-}) as any as S.Schema<GetDrainsResponseDrainsCase1ItemSourceCase1>;
+export const GetDrainsResponseDrainsCase1ItemSourceCase1 =
+  CreateDrainResponseBodyCase0SourceCase1 as any as S.Schema<GetDrainsResponseDrainsCase1ItemSourceCase1>;
 
 export type GetDrainsResponseDrainsCase1ItemSource =
   | GetDrainsResponseDrainsCase1ItemSourceCase0
@@ -3353,23 +2983,13 @@ export const GetDrainsResponseDrainsCase1ItemFilterV2FilterCase0DeploymentEnviro
 export type GetDrainsResponseDrainsCase1ItemFilterV2FilterCase0DeploymentEnvironmentsList =
   Array<GetDrainsResponseDrainsCase1ItemFilterV2FilterCase0DeploymentEnvironmentsItem>;
 export const GetDrainsResponseDrainsCase1ItemFilterV2FilterCase0DeploymentEnvironmentsList =
-  /*@__PURE__*/ S.Array(
-    GetDrainsResponseDrainsCase1ItemFilterV2FilterCase0DeploymentEnvironmentsItem,
-  ) as any as S.Schema<GetDrainsResponseDrainsCase1ItemFilterV2FilterCase0DeploymentEnvironmentsList>;
+  CreateDrainResponseBodyCase0FilterV2FilterCase0DeploymentEnvironmentsList as any as S.Schema<GetDrainsResponseDrainsCase1ItemFilterV2FilterCase0DeploymentEnvironmentsList>;
 
 export interface GetDrainsResponseDrainsCase1ItemFilterV2FilterCase0Deployment {
   environments?: GetDrainsResponseDrainsCase1ItemFilterV2FilterCase0DeploymentEnvironmentsList;
 }
 export const GetDrainsResponseDrainsCase1ItemFilterV2FilterCase0Deployment =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      environments: S.optional(
-        GetDrainsResponseDrainsCase1ItemFilterV2FilterCase0DeploymentEnvironmentsList,
-      ),
-    }),
-  ).annotate({
-    identifier: "GetDrainsResponseDrainsCase1ItemFilterV2FilterCase0Deployment",
-  }) as any as S.Schema<GetDrainsResponseDrainsCase1ItemFilterV2FilterCase0Deployment>;
+  GetDrainsResponseDrainsCase0ItemFilterV2FilterCase0Deployment as any as S.Schema<GetDrainsResponseDrainsCase1ItemFilterV2FilterCase0Deployment>;
 
 export type GetDrainsResponseDrainsCase1ItemFilterV2FilterCase0LogSourcesItem =
   | "build"
@@ -3384,22 +3004,14 @@ export const GetDrainsResponseDrainsCase1ItemFilterV2FilterCase0LogSourcesItem =
 export type GetDrainsResponseDrainsCase1ItemFilterV2FilterCase0LogSourcesList =
   Array<GetDrainsResponseDrainsCase1ItemFilterV2FilterCase0LogSourcesItem>;
 export const GetDrainsResponseDrainsCase1ItemFilterV2FilterCase0LogSourcesList =
-  /*@__PURE__*/ S.Array(
-    GetDrainsResponseDrainsCase1ItemFilterV2FilterCase0LogSourcesItem,
-  ) as any as S.Schema<GetDrainsResponseDrainsCase1ItemFilterV2FilterCase0LogSourcesList>;
+  CreateDrainResponseBodyCase0FilterV2FilterCase0DeploymentEnvironmentsList as any as S.Schema<GetDrainsResponseDrainsCase1ItemFilterV2FilterCase0LogSourcesList>;
 
 export interface GetDrainsResponseDrainsCase1ItemFilterV2FilterCase0Log {
   legacy_excludeCachedStaticAssetLogs?: boolean;
   sources?: GetDrainsResponseDrainsCase1ItemFilterV2FilterCase0LogSourcesList;
 }
-export const GetDrainsResponseDrainsCase1ItemFilterV2FilterCase0Log = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    legacy_excludeCachedStaticAssetLogs: S.optional(S.Boolean),
-    sources: S.optional(GetDrainsResponseDrainsCase1ItemFilterV2FilterCase0LogSourcesList),
-  }),
-).annotate({
-  identifier: "GetDrainsResponseDrainsCase1ItemFilterV2FilterCase0Log",
-}) as any as S.Schema<GetDrainsResponseDrainsCase1ItemFilterV2FilterCase0Log>;
+export const GetDrainsResponseDrainsCase1ItemFilterV2FilterCase0Log =
+  GetDrainsResponseDrainsCase0ItemFilterV2FilterCase0Log as any as S.Schema<GetDrainsResponseDrainsCase1ItemFilterV2FilterCase0Log>;
 
 export type GetDrainsResponseDrainsCase1ItemFilterV2FilterCase0ProjectIdsList = Array<string>;
 export const GetDrainsResponseDrainsCase1ItemFilterV2FilterCase0ProjectIdsList =
@@ -3438,14 +3050,8 @@ export interface GetDrainsResponseDrainsCase1ItemFilterV2FilterCase1 {
   text: string;
   type: GetDrainsResponseDrainsCase1ItemFilterV2FilterCase1Type;
 }
-export const GetDrainsResponseDrainsCase1ItemFilterV2FilterCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    text: S.String,
-    type: GetDrainsResponseDrainsCase1ItemFilterV2FilterCase1Type,
-  }),
-).annotate({
-  identifier: "GetDrainsResponseDrainsCase1ItemFilterV2FilterCase1",
-}) as any as S.Schema<GetDrainsResponseDrainsCase1ItemFilterV2FilterCase1>;
+export const GetDrainsResponseDrainsCase1ItemFilterV2FilterCase1 =
+  CreateDrainResponseBodyCase0FilterV2FilterCase1 as any as S.Schema<GetDrainsResponseDrainsCase1ItemFilterV2FilterCase1>;
 
 export type GetDrainsResponseDrainsCase1ItemFilterV2Filter =
   | GetDrainsResponseDrainsCase1ItemFilterV2FilterCase0
@@ -3479,14 +3085,8 @@ export interface GetDrainsResponseDrainsCase1ItemProjectAccessCase0 {
   access: GetDrainsResponseDrainsCase1ItemProjectAccessCase0Access;
   managedBy: GetDrainsResponseDrainsCase1ItemProjectAccessCase0ManagedBy;
 }
-export const GetDrainsResponseDrainsCase1ItemProjectAccessCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    access: GetDrainsResponseDrainsCase1ItemProjectAccessCase0Access,
-    managedBy: GetDrainsResponseDrainsCase1ItemProjectAccessCase0ManagedBy,
-  }),
-).annotate({
-  identifier: "GetDrainsResponseDrainsCase1ItemProjectAccessCase0",
-}) as any as S.Schema<GetDrainsResponseDrainsCase1ItemProjectAccessCase0>;
+export const GetDrainsResponseDrainsCase1ItemProjectAccessCase0 =
+  CreateDrainResponseBodyCase1ProjectAccessCase0 as any as S.Schema<GetDrainsResponseDrainsCase1ItemProjectAccessCase0>;
 
 export type GetDrainsResponseDrainsCase1ItemProjectAccessCase1Access = "some";
 export const GetDrainsResponseDrainsCase1ItemProjectAccessCase1Access = S.String;
@@ -3690,21 +3290,8 @@ export interface TestDrainRequestDeliveryCase2 {
   serverSideEncryption?: TestDrainRequestDeliveryCase2ServerSideEncryption | (string & {});
   objectAcl?: TestDrainRequestDeliveryCase2ObjectAcl | (string & {});
 }
-export const TestDrainRequestDeliveryCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    endpoint: S.String,
-    encoding: TestDrainRequestDeliveryCase2Encoding,
-    compression: TestDrainRequestDeliveryCase2Compression,
-    fileStructure: TestDrainRequestDeliveryCase2FileStructure,
-    roleArn: S.String,
-    region: S.String,
-    serverSideEncryption: S.optional(TestDrainRequestDeliveryCase2ServerSideEncryption),
-    objectAcl: S.optional(TestDrainRequestDeliveryCase2ObjectAcl),
-  }),
-).annotate({
-  identifier: "TestDrainRequestDeliveryCase2",
-}) as any as S.Schema<TestDrainRequestDeliveryCase2>;
+export const TestDrainRequestDeliveryCase2 =
+  CreateDrainRequestDeliveryCase2 as any as S.Schema<TestDrainRequestDeliveryCase2>;
 
 export type TestDrainRequestDelivery =
   | TestDrainRequestDeliveryCase0
@@ -3782,20 +3369,14 @@ export const UpdateDrainRequestFilterCase1FilterCase0LogSourcesItem = S.String;
 export type UpdateDrainRequestFilterCase1FilterCase0LogSourcesList = Array<
   UpdateDrainRequestFilterCase1FilterCase0LogSourcesItem | (string & {})
 >;
-export const UpdateDrainRequestFilterCase1FilterCase0LogSourcesList = /*@__PURE__*/ S.Array(
-  UpdateDrainRequestFilterCase1FilterCase0LogSourcesItem,
-) as any as S.Schema<UpdateDrainRequestFilterCase1FilterCase0LogSourcesList>;
+export const UpdateDrainRequestFilterCase1FilterCase0LogSourcesList =
+  CreateDrainRequestFilterFilterCase0LogSourcesList as any as S.Schema<UpdateDrainRequestFilterCase1FilterCase0LogSourcesList>;
 
 export interface UpdateDrainRequestFilterCase1FilterCase0Log {
   sources?: UpdateDrainRequestFilterCase1FilterCase0LogSourcesList;
 }
-export const UpdateDrainRequestFilterCase1FilterCase0Log = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sources: S.optional(UpdateDrainRequestFilterCase1FilterCase0LogSourcesList),
-  }),
-).annotate({
-  identifier: "UpdateDrainRequestFilterCase1FilterCase0Log",
-}) as any as S.Schema<UpdateDrainRequestFilterCase1FilterCase0Log>;
+export const UpdateDrainRequestFilterCase1FilterCase0Log =
+  CreateDrainRequestFilterFilterCase0Log as any as S.Schema<UpdateDrainRequestFilterCase1FilterCase0Log>;
 
 export type UpdateDrainRequestFilterCase1FilterCase0DeploymentEnvironmentsItem =
   | "production"
@@ -3806,9 +3387,7 @@ export type UpdateDrainRequestFilterCase1FilterCase0DeploymentEnvironmentsList =
   UpdateDrainRequestFilterCase1FilterCase0DeploymentEnvironmentsItem | (string & {})
 >;
 export const UpdateDrainRequestFilterCase1FilterCase0DeploymentEnvironmentsList =
-  /*@__PURE__*/ S.Array(
-    UpdateDrainRequestFilterCase1FilterCase0DeploymentEnvironmentsItem,
-  ) as any as S.Schema<UpdateDrainRequestFilterCase1FilterCase0DeploymentEnvironmentsList>;
+  CreateDrainResponseBodyCase0FilterV2FilterCase0DeploymentEnvironmentsList as any as S.Schema<UpdateDrainRequestFilterCase1FilterCase0DeploymentEnvironmentsList>;
 
 export interface UpdateDrainRequestFilterCase1FilterCase0Deployment {
   environments?: UpdateDrainRequestFilterCase1FilterCase0DeploymentEnvironmentsList;
@@ -3964,21 +3543,8 @@ export interface UpdateDrainRequestDeliveryCase2 {
   serverSideEncryption?: UpdateDrainRequestDeliveryCase2ServerSideEncryption | (string & {});
   objectAcl?: UpdateDrainRequestDeliveryCase2ObjectAcl | (string & {});
 }
-export const UpdateDrainRequestDeliveryCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    endpoint: S.String,
-    encoding: UpdateDrainRequestDeliveryCase2Encoding,
-    compression: UpdateDrainRequestDeliveryCase2Compression,
-    fileStructure: UpdateDrainRequestDeliveryCase2FileStructure,
-    roleArn: S.String,
-    region: S.String,
-    serverSideEncryption: S.optional(UpdateDrainRequestDeliveryCase2ServerSideEncryption),
-    objectAcl: S.optional(UpdateDrainRequestDeliveryCase2ObjectAcl),
-  }),
-).annotate({
-  identifier: "UpdateDrainRequestDeliveryCase2",
-}) as any as S.Schema<UpdateDrainRequestDeliveryCase2>;
+export const UpdateDrainRequestDeliveryCase2 =
+  CreateDrainRequestDeliveryCase2 as any as S.Schema<UpdateDrainRequestDeliveryCase2>;
 
 export type UpdateDrainRequestDelivery =
   | UpdateDrainRequestDeliveryCase0
@@ -3999,21 +3565,12 @@ export interface UpdateDrainRequestSamplingItem {
   /** Request path prefix to apply the sampling rule to */
   requestPath?: string;
 }
-export const UpdateDrainRequestSamplingItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    rate: S.Number,
-    env: S.optional(UpdateDrainRequestSamplingItemEnv),
-    requestPath: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateDrainRequestSamplingItem",
-}) as any as S.Schema<UpdateDrainRequestSamplingItem>;
+export const UpdateDrainRequestSamplingItem =
+  CreateDrainRequestSamplingItem as any as S.Schema<UpdateDrainRequestSamplingItem>;
 
 export type UpdateDrainRequestSamplingList = Array<UpdateDrainRequestSamplingItem>;
-export const UpdateDrainRequestSamplingList = /*@__PURE__*/ S.Array(
-  UpdateDrainRequestSamplingItem,
-) as any as S.Schema<UpdateDrainRequestSamplingList>;
+export const UpdateDrainRequestSamplingList =
+  CreateDrainRequestSamplingList as any as S.Schema<UpdateDrainRequestSamplingList>;
 
 export type UpdateDrainRequestTransformsItem = CreateDrainRequestTransformsItem;
 export const UpdateDrainRequestTransformsItem = CreateDrainRequestTransformsItem;
@@ -4102,13 +3659,8 @@ export const UpdateDrainResponseBodyCase0DeliveryCase0SecretCase1Kind = S.String
 export interface UpdateDrainResponseBodyCase0DeliveryCase0SecretCase1 {
   kind: UpdateDrainResponseBodyCase0DeliveryCase0SecretCase1Kind;
 }
-export const UpdateDrainResponseBodyCase0DeliveryCase0SecretCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: UpdateDrainResponseBodyCase0DeliveryCase0SecretCase1Kind,
-  }),
-).annotate({
-  identifier: "UpdateDrainResponseBodyCase0DeliveryCase0SecretCase1",
-}) as any as S.Schema<UpdateDrainResponseBodyCase0DeliveryCase0SecretCase1>;
+export const UpdateDrainResponseBodyCase0DeliveryCase0SecretCase1 =
+  CreateDrainResponseBodyCase0DeliveryCase0SecretCase1 as any as S.Schema<UpdateDrainResponseBodyCase0DeliveryCase0SecretCase1>;
 
 export type UpdateDrainResponseBodyCase0DeliveryCase0Secret =
   | string
@@ -4160,13 +3712,8 @@ export const UpdateDrainResponseBodyCase0DeliveryCase1SecretCase1Kind = S.String
 export interface UpdateDrainResponseBodyCase0DeliveryCase1SecretCase1 {
   kind: UpdateDrainResponseBodyCase0DeliveryCase1SecretCase1Kind;
 }
-export const UpdateDrainResponseBodyCase0DeliveryCase1SecretCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: UpdateDrainResponseBodyCase0DeliveryCase1SecretCase1Kind,
-  }),
-).annotate({
-  identifier: "UpdateDrainResponseBodyCase0DeliveryCase1SecretCase1",
-}) as any as S.Schema<UpdateDrainResponseBodyCase0DeliveryCase1SecretCase1>;
+export const UpdateDrainResponseBodyCase0DeliveryCase1SecretCase1 =
+  CreateDrainResponseBodyCase0DeliveryCase0SecretCase1 as any as S.Schema<UpdateDrainResponseBodyCase0DeliveryCase1SecretCase1>;
 
 export type UpdateDrainResponseBodyCase0DeliveryCase1Secret =
   | string
@@ -4204,15 +3751,8 @@ export interface UpdateDrainResponseBodyCase0DeliveryCase2 {
   table: string;
   type: UpdateDrainResponseBodyCase0DeliveryCase2Type;
 }
-export const UpdateDrainResponseBodyCase0DeliveryCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endpoint: S.String,
-    table: S.String,
-    type: UpdateDrainResponseBodyCase0DeliveryCase2Type,
-  }),
-).annotate({
-  identifier: "UpdateDrainResponseBodyCase0DeliveryCase2",
-}) as any as S.Schema<UpdateDrainResponseBodyCase0DeliveryCase2>;
+export const UpdateDrainResponseBodyCase0DeliveryCase2 =
+  CreateDrainResponseBodyCase0DeliveryCase2 as any as S.Schema<UpdateDrainResponseBodyCase0DeliveryCase2>;
 
 export type UpdateDrainResponseBodyCase0DeliveryCase3Compression = "none";
 export const UpdateDrainResponseBodyCase0DeliveryCase3Compression = S.String;
@@ -4253,21 +3793,8 @@ export interface UpdateDrainResponseBodyCase0DeliveryCase3 {
   serverSideEncryption?: UpdateDrainResponseBodyCase0DeliveryCase3ServerSideEncryption;
   type: UpdateDrainResponseBodyCase0DeliveryCase3Type;
 }
-export const UpdateDrainResponseBodyCase0DeliveryCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    compression: UpdateDrainResponseBodyCase0DeliveryCase3Compression,
-    encoding: UpdateDrainResponseBodyCase0DeliveryCase3Encoding,
-    endpoint: S.String,
-    fileStructure: UpdateDrainResponseBodyCase0DeliveryCase3FileStructure,
-    objectAcl: S.optional(UpdateDrainResponseBodyCase0DeliveryCase3ObjectAcl),
-    region: S.String,
-    roleArn: S.String,
-    serverSideEncryption: S.optional(UpdateDrainResponseBodyCase0DeliveryCase3ServerSideEncryption),
-    type: UpdateDrainResponseBodyCase0DeliveryCase3Type,
-  }),
-).annotate({
-  identifier: "UpdateDrainResponseBodyCase0DeliveryCase3",
-}) as any as S.Schema<UpdateDrainResponseBodyCase0DeliveryCase3>;
+export const UpdateDrainResponseBodyCase0DeliveryCase3 =
+  CreateDrainResponseBodyCase0DeliveryCase3 as any as S.Schema<UpdateDrainResponseBodyCase0DeliveryCase3>;
 
 export type UpdateDrainResponseBodyCase0DeliveryCase4Target = "vercel-otel-traces-db";
 export const UpdateDrainResponseBodyCase0DeliveryCase4Target = S.String;
@@ -4279,14 +3806,8 @@ export interface UpdateDrainResponseBodyCase0DeliveryCase4 {
   target: UpdateDrainResponseBodyCase0DeliveryCase4Target;
   type: UpdateDrainResponseBodyCase0DeliveryCase4Type;
 }
-export const UpdateDrainResponseBodyCase0DeliveryCase4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    target: UpdateDrainResponseBodyCase0DeliveryCase4Target,
-    type: UpdateDrainResponseBodyCase0DeliveryCase4Type,
-  }),
-).annotate({
-  identifier: "UpdateDrainResponseBodyCase0DeliveryCase4",
-}) as any as S.Schema<UpdateDrainResponseBodyCase0DeliveryCase4>;
+export const UpdateDrainResponseBodyCase0DeliveryCase4 =
+  CreateDrainResponseBodyCase0DeliveryCase4 as any as S.Schema<UpdateDrainResponseBodyCase0DeliveryCase4>;
 
 export type UpdateDrainResponseBodyCase0Delivery =
   | UpdateDrainResponseBodyCase0DeliveryCase0
@@ -4321,22 +3842,13 @@ export interface UpdateDrainResponseBodyCase0SamplingItem {
   requestPath?: string;
   type: UpdateDrainResponseBodyCase0SamplingItemType;
 }
-export const UpdateDrainResponseBodyCase0SamplingItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    env: S.optional(UpdateDrainResponseBodyCase0SamplingItemEnv),
-    rate: S.Number,
-    requestPath: S.optional(S.String),
-    type: UpdateDrainResponseBodyCase0SamplingItemType,
-  }),
-).annotate({
-  identifier: "UpdateDrainResponseBodyCase0SamplingItem",
-}) as any as S.Schema<UpdateDrainResponseBodyCase0SamplingItem>;
+export const UpdateDrainResponseBodyCase0SamplingItem =
+  CreateDrainResponseBodyCase0SamplingItem as any as S.Schema<UpdateDrainResponseBodyCase0SamplingItem>;
 
 export type UpdateDrainResponseBodyCase0SamplingList =
   Array<UpdateDrainResponseBodyCase0SamplingItem>;
-export const UpdateDrainResponseBodyCase0SamplingList = /*@__PURE__*/ S.Array(
-  UpdateDrainResponseBodyCase0SamplingItem,
-) as any as S.Schema<UpdateDrainResponseBodyCase0SamplingList>;
+export const UpdateDrainResponseBodyCase0SamplingList =
+  CreateDrainResponseBodyCase0SamplingList as any as S.Schema<UpdateDrainResponseBodyCase0SamplingList>;
 
 export type UpdateDrainResponseBodyCase0Schemas = CreateDrainResponseBodyCase0Schemas;
 export const UpdateDrainResponseBodyCase0Schemas = CreateDrainResponseBodyCase0Schemas;
@@ -4353,14 +3865,8 @@ export interface UpdateDrainResponseBodyCase0SourceCase0 {
   defaultFor?: UpdateDrainResponseBodyCase0SourceCase0DefaultFor;
   kind: UpdateDrainResponseBodyCase0SourceCase0Kind;
 }
-export const UpdateDrainResponseBodyCase0SourceCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultFor: S.optional(UpdateDrainResponseBodyCase0SourceCase0DefaultFor),
-    kind: UpdateDrainResponseBodyCase0SourceCase0Kind,
-  }),
-).annotate({
-  identifier: "UpdateDrainResponseBodyCase0SourceCase0",
-}) as any as S.Schema<UpdateDrainResponseBodyCase0SourceCase0>;
+export const UpdateDrainResponseBodyCase0SourceCase0 =
+  CreateDrainResponseBodyCase0SourceCase0 as any as S.Schema<UpdateDrainResponseBodyCase0SourceCase0>;
 
 export type UpdateDrainResponseBodyCase0SourceCase1Kind = "integration";
 export const UpdateDrainResponseBodyCase0SourceCase1Kind = S.String;
@@ -4372,17 +3878,8 @@ export interface UpdateDrainResponseBodyCase0SourceCase1 {
   kind: UpdateDrainResponseBodyCase0SourceCase1Kind;
   resourceId?: string;
 }
-export const UpdateDrainResponseBodyCase0SourceCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    externalResourceId: S.optional(S.String),
-    integrationConfigurationId: S.String,
-    integrationId: S.String,
-    kind: UpdateDrainResponseBodyCase0SourceCase1Kind,
-    resourceId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateDrainResponseBodyCase0SourceCase1",
-}) as any as S.Schema<UpdateDrainResponseBodyCase0SourceCase1>;
+export const UpdateDrainResponseBodyCase0SourceCase1 =
+  CreateDrainResponseBodyCase0SourceCase1 as any as S.Schema<UpdateDrainResponseBodyCase0SourceCase1>;
 
 export type UpdateDrainResponseBodyCase0Source =
   | UpdateDrainResponseBodyCase0SourceCase0
@@ -4401,23 +3898,13 @@ export const UpdateDrainResponseBodyCase0FilterV2FilterCase0DeploymentEnvironmen
 export type UpdateDrainResponseBodyCase0FilterV2FilterCase0DeploymentEnvironmentsList =
   Array<UpdateDrainResponseBodyCase0FilterV2FilterCase0DeploymentEnvironmentsItem>;
 export const UpdateDrainResponseBodyCase0FilterV2FilterCase0DeploymentEnvironmentsList =
-  /*@__PURE__*/ S.Array(
-    UpdateDrainResponseBodyCase0FilterV2FilterCase0DeploymentEnvironmentsItem,
-  ) as any as S.Schema<UpdateDrainResponseBodyCase0FilterV2FilterCase0DeploymentEnvironmentsList>;
+  CreateDrainResponseBodyCase0FilterV2FilterCase0DeploymentEnvironmentsList as any as S.Schema<UpdateDrainResponseBodyCase0FilterV2FilterCase0DeploymentEnvironmentsList>;
 
 export interface UpdateDrainResponseBodyCase0FilterV2FilterCase0Deployment {
   environments?: UpdateDrainResponseBodyCase0FilterV2FilterCase0DeploymentEnvironmentsList;
 }
-export const UpdateDrainResponseBodyCase0FilterV2FilterCase0Deployment = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      environments: S.optional(
-        UpdateDrainResponseBodyCase0FilterV2FilterCase0DeploymentEnvironmentsList,
-      ),
-    }),
-).annotate({
-  identifier: "UpdateDrainResponseBodyCase0FilterV2FilterCase0Deployment",
-}) as any as S.Schema<UpdateDrainResponseBodyCase0FilterV2FilterCase0Deployment>;
+export const UpdateDrainResponseBodyCase0FilterV2FilterCase0Deployment =
+  CreateDrainResponseBodyCase0FilterV2FilterCase0Deployment as any as S.Schema<UpdateDrainResponseBodyCase0FilterV2FilterCase0Deployment>;
 
 export type UpdateDrainResponseBodyCase0FilterV2FilterCase0LogSourcesItem =
   | "build"
@@ -4431,22 +3918,15 @@ export const UpdateDrainResponseBodyCase0FilterV2FilterCase0LogSourcesItem = S.S
 
 export type UpdateDrainResponseBodyCase0FilterV2FilterCase0LogSourcesList =
   Array<UpdateDrainResponseBodyCase0FilterV2FilterCase0LogSourcesItem>;
-export const UpdateDrainResponseBodyCase0FilterV2FilterCase0LogSourcesList = /*@__PURE__*/ S.Array(
-  UpdateDrainResponseBodyCase0FilterV2FilterCase0LogSourcesItem,
-) as any as S.Schema<UpdateDrainResponseBodyCase0FilterV2FilterCase0LogSourcesList>;
+export const UpdateDrainResponseBodyCase0FilterV2FilterCase0LogSourcesList =
+  CreateDrainRequestFilterFilterCase0LogSourcesList as any as S.Schema<UpdateDrainResponseBodyCase0FilterV2FilterCase0LogSourcesList>;
 
 export interface UpdateDrainResponseBodyCase0FilterV2FilterCase0Log {
   legacy_excludeCachedStaticAssetLogs?: boolean;
   sources?: UpdateDrainResponseBodyCase0FilterV2FilterCase0LogSourcesList;
 }
-export const UpdateDrainResponseBodyCase0FilterV2FilterCase0Log = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    legacy_excludeCachedStaticAssetLogs: S.optional(S.Boolean),
-    sources: S.optional(UpdateDrainResponseBodyCase0FilterV2FilterCase0LogSourcesList),
-  }),
-).annotate({
-  identifier: "UpdateDrainResponseBodyCase0FilterV2FilterCase0Log",
-}) as any as S.Schema<UpdateDrainResponseBodyCase0FilterV2FilterCase0Log>;
+export const UpdateDrainResponseBodyCase0FilterV2FilterCase0Log =
+  CreateDrainResponseBodyCase0FilterV2FilterCase0Log as any as S.Schema<UpdateDrainResponseBodyCase0FilterV2FilterCase0Log>;
 
 export type UpdateDrainResponseBodyCase0FilterV2FilterCase0ProjectIdsList = Array<string>;
 export const UpdateDrainResponseBodyCase0FilterV2FilterCase0ProjectIdsList =
@@ -4485,14 +3965,8 @@ export interface UpdateDrainResponseBodyCase0FilterV2FilterCase1 {
   text: string;
   type: UpdateDrainResponseBodyCase0FilterV2FilterCase1Type;
 }
-export const UpdateDrainResponseBodyCase0FilterV2FilterCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    text: S.String,
-    type: UpdateDrainResponseBodyCase0FilterV2FilterCase1Type,
-  }),
-).annotate({
-  identifier: "UpdateDrainResponseBodyCase0FilterV2FilterCase1",
-}) as any as S.Schema<UpdateDrainResponseBodyCase0FilterV2FilterCase1>;
+export const UpdateDrainResponseBodyCase0FilterV2FilterCase1 =
+  CreateDrainResponseBodyCase0FilterV2FilterCase1 as any as S.Schema<UpdateDrainResponseBodyCase0FilterV2FilterCase1>;
 
 export type UpdateDrainResponseBodyCase0FilterV2Filter =
   | UpdateDrainResponseBodyCase0FilterV2FilterCase0
@@ -4577,13 +4051,8 @@ export const UpdateDrainResponseBodyCase1DeliveryCase0SecretCase1Kind = S.String
 export interface UpdateDrainResponseBodyCase1DeliveryCase0SecretCase1 {
   kind: UpdateDrainResponseBodyCase1DeliveryCase0SecretCase1Kind;
 }
-export const UpdateDrainResponseBodyCase1DeliveryCase0SecretCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: UpdateDrainResponseBodyCase1DeliveryCase0SecretCase1Kind,
-  }),
-).annotate({
-  identifier: "UpdateDrainResponseBodyCase1DeliveryCase0SecretCase1",
-}) as any as S.Schema<UpdateDrainResponseBodyCase1DeliveryCase0SecretCase1>;
+export const UpdateDrainResponseBodyCase1DeliveryCase0SecretCase1 =
+  CreateDrainResponseBodyCase0DeliveryCase0SecretCase1 as any as S.Schema<UpdateDrainResponseBodyCase1DeliveryCase0SecretCase1>;
 
 export type UpdateDrainResponseBodyCase1DeliveryCase0Secret =
   | string
@@ -4635,13 +4104,8 @@ export const UpdateDrainResponseBodyCase1DeliveryCase1SecretCase1Kind = S.String
 export interface UpdateDrainResponseBodyCase1DeliveryCase1SecretCase1 {
   kind: UpdateDrainResponseBodyCase1DeliveryCase1SecretCase1Kind;
 }
-export const UpdateDrainResponseBodyCase1DeliveryCase1SecretCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: UpdateDrainResponseBodyCase1DeliveryCase1SecretCase1Kind,
-  }),
-).annotate({
-  identifier: "UpdateDrainResponseBodyCase1DeliveryCase1SecretCase1",
-}) as any as S.Schema<UpdateDrainResponseBodyCase1DeliveryCase1SecretCase1>;
+export const UpdateDrainResponseBodyCase1DeliveryCase1SecretCase1 =
+  CreateDrainResponseBodyCase0DeliveryCase0SecretCase1 as any as S.Schema<UpdateDrainResponseBodyCase1DeliveryCase1SecretCase1>;
 
 export type UpdateDrainResponseBodyCase1DeliveryCase1Secret =
   | string
@@ -4679,15 +4143,8 @@ export interface UpdateDrainResponseBodyCase1DeliveryCase2 {
   table: string;
   type: UpdateDrainResponseBodyCase1DeliveryCase2Type;
 }
-export const UpdateDrainResponseBodyCase1DeliveryCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endpoint: S.String,
-    table: S.String,
-    type: UpdateDrainResponseBodyCase1DeliveryCase2Type,
-  }),
-).annotate({
-  identifier: "UpdateDrainResponseBodyCase1DeliveryCase2",
-}) as any as S.Schema<UpdateDrainResponseBodyCase1DeliveryCase2>;
+export const UpdateDrainResponseBodyCase1DeliveryCase2 =
+  CreateDrainResponseBodyCase0DeliveryCase2 as any as S.Schema<UpdateDrainResponseBodyCase1DeliveryCase2>;
 
 export type UpdateDrainResponseBodyCase1DeliveryCase3Compression = "none";
 export const UpdateDrainResponseBodyCase1DeliveryCase3Compression = S.String;
@@ -4728,21 +4185,8 @@ export interface UpdateDrainResponseBodyCase1DeliveryCase3 {
   serverSideEncryption?: UpdateDrainResponseBodyCase1DeliveryCase3ServerSideEncryption;
   type: UpdateDrainResponseBodyCase1DeliveryCase3Type;
 }
-export const UpdateDrainResponseBodyCase1DeliveryCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    compression: UpdateDrainResponseBodyCase1DeliveryCase3Compression,
-    encoding: UpdateDrainResponseBodyCase1DeliveryCase3Encoding,
-    endpoint: S.String,
-    fileStructure: UpdateDrainResponseBodyCase1DeliveryCase3FileStructure,
-    objectAcl: S.optional(UpdateDrainResponseBodyCase1DeliveryCase3ObjectAcl),
-    region: S.String,
-    roleArn: S.String,
-    serverSideEncryption: S.optional(UpdateDrainResponseBodyCase1DeliveryCase3ServerSideEncryption),
-    type: UpdateDrainResponseBodyCase1DeliveryCase3Type,
-  }),
-).annotate({
-  identifier: "UpdateDrainResponseBodyCase1DeliveryCase3",
-}) as any as S.Schema<UpdateDrainResponseBodyCase1DeliveryCase3>;
+export const UpdateDrainResponseBodyCase1DeliveryCase3 =
+  CreateDrainResponseBodyCase0DeliveryCase3 as any as S.Schema<UpdateDrainResponseBodyCase1DeliveryCase3>;
 
 export type UpdateDrainResponseBodyCase1DeliveryCase4Target = "vercel-otel-traces-db";
 export const UpdateDrainResponseBodyCase1DeliveryCase4Target = S.String;
@@ -4754,14 +4198,8 @@ export interface UpdateDrainResponseBodyCase1DeliveryCase4 {
   target: UpdateDrainResponseBodyCase1DeliveryCase4Target;
   type: UpdateDrainResponseBodyCase1DeliveryCase4Type;
 }
-export const UpdateDrainResponseBodyCase1DeliveryCase4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    target: UpdateDrainResponseBodyCase1DeliveryCase4Target,
-    type: UpdateDrainResponseBodyCase1DeliveryCase4Type,
-  }),
-).annotate({
-  identifier: "UpdateDrainResponseBodyCase1DeliveryCase4",
-}) as any as S.Schema<UpdateDrainResponseBodyCase1DeliveryCase4>;
+export const UpdateDrainResponseBodyCase1DeliveryCase4 =
+  CreateDrainResponseBodyCase0DeliveryCase4 as any as S.Schema<UpdateDrainResponseBodyCase1DeliveryCase4>;
 
 export type UpdateDrainResponseBodyCase1Delivery =
   | UpdateDrainResponseBodyCase1DeliveryCase0
@@ -4796,22 +4234,13 @@ export interface UpdateDrainResponseBodyCase1SamplingItem {
   requestPath?: string;
   type: UpdateDrainResponseBodyCase1SamplingItemType;
 }
-export const UpdateDrainResponseBodyCase1SamplingItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    env: S.optional(UpdateDrainResponseBodyCase1SamplingItemEnv),
-    rate: S.Number,
-    requestPath: S.optional(S.String),
-    type: UpdateDrainResponseBodyCase1SamplingItemType,
-  }),
-).annotate({
-  identifier: "UpdateDrainResponseBodyCase1SamplingItem",
-}) as any as S.Schema<UpdateDrainResponseBodyCase1SamplingItem>;
+export const UpdateDrainResponseBodyCase1SamplingItem =
+  CreateDrainResponseBodyCase0SamplingItem as any as S.Schema<UpdateDrainResponseBodyCase1SamplingItem>;
 
 export type UpdateDrainResponseBodyCase1SamplingList =
   Array<UpdateDrainResponseBodyCase1SamplingItem>;
-export const UpdateDrainResponseBodyCase1SamplingList = /*@__PURE__*/ S.Array(
-  UpdateDrainResponseBodyCase1SamplingItem,
-) as any as S.Schema<UpdateDrainResponseBodyCase1SamplingList>;
+export const UpdateDrainResponseBodyCase1SamplingList =
+  CreateDrainResponseBodyCase0SamplingList as any as S.Schema<UpdateDrainResponseBodyCase1SamplingList>;
 
 export type UpdateDrainResponseBodyCase1Schemas = CreateDrainResponseBodyCase0Schemas;
 export const UpdateDrainResponseBodyCase1Schemas = CreateDrainResponseBodyCase0Schemas;
@@ -4828,14 +4257,8 @@ export interface UpdateDrainResponseBodyCase1SourceCase0 {
   defaultFor?: UpdateDrainResponseBodyCase1SourceCase0DefaultFor;
   kind: UpdateDrainResponseBodyCase1SourceCase0Kind;
 }
-export const UpdateDrainResponseBodyCase1SourceCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultFor: S.optional(UpdateDrainResponseBodyCase1SourceCase0DefaultFor),
-    kind: UpdateDrainResponseBodyCase1SourceCase0Kind,
-  }),
-).annotate({
-  identifier: "UpdateDrainResponseBodyCase1SourceCase0",
-}) as any as S.Schema<UpdateDrainResponseBodyCase1SourceCase0>;
+export const UpdateDrainResponseBodyCase1SourceCase0 =
+  CreateDrainResponseBodyCase0SourceCase0 as any as S.Schema<UpdateDrainResponseBodyCase1SourceCase0>;
 
 export type UpdateDrainResponseBodyCase1SourceCase1Kind = "integration";
 export const UpdateDrainResponseBodyCase1SourceCase1Kind = S.String;
@@ -4847,17 +4270,8 @@ export interface UpdateDrainResponseBodyCase1SourceCase1 {
   kind: UpdateDrainResponseBodyCase1SourceCase1Kind;
   resourceId?: string;
 }
-export const UpdateDrainResponseBodyCase1SourceCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    externalResourceId: S.optional(S.String),
-    integrationConfigurationId: S.String,
-    integrationId: S.String,
-    kind: UpdateDrainResponseBodyCase1SourceCase1Kind,
-    resourceId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateDrainResponseBodyCase1SourceCase1",
-}) as any as S.Schema<UpdateDrainResponseBodyCase1SourceCase1>;
+export const UpdateDrainResponseBodyCase1SourceCase1 =
+  CreateDrainResponseBodyCase0SourceCase1 as any as S.Schema<UpdateDrainResponseBodyCase1SourceCase1>;
 
 export type UpdateDrainResponseBodyCase1Source =
   | UpdateDrainResponseBodyCase1SourceCase0
@@ -4876,23 +4290,13 @@ export const UpdateDrainResponseBodyCase1FilterV2FilterCase0DeploymentEnvironmen
 export type UpdateDrainResponseBodyCase1FilterV2FilterCase0DeploymentEnvironmentsList =
   Array<UpdateDrainResponseBodyCase1FilterV2FilterCase0DeploymentEnvironmentsItem>;
 export const UpdateDrainResponseBodyCase1FilterV2FilterCase0DeploymentEnvironmentsList =
-  /*@__PURE__*/ S.Array(
-    UpdateDrainResponseBodyCase1FilterV2FilterCase0DeploymentEnvironmentsItem,
-  ) as any as S.Schema<UpdateDrainResponseBodyCase1FilterV2FilterCase0DeploymentEnvironmentsList>;
+  CreateDrainResponseBodyCase0FilterV2FilterCase0DeploymentEnvironmentsList as any as S.Schema<UpdateDrainResponseBodyCase1FilterV2FilterCase0DeploymentEnvironmentsList>;
 
 export interface UpdateDrainResponseBodyCase1FilterV2FilterCase0Deployment {
   environments?: UpdateDrainResponseBodyCase1FilterV2FilterCase0DeploymentEnvironmentsList;
 }
-export const UpdateDrainResponseBodyCase1FilterV2FilterCase0Deployment = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      environments: S.optional(
-        UpdateDrainResponseBodyCase1FilterV2FilterCase0DeploymentEnvironmentsList,
-      ),
-    }),
-).annotate({
-  identifier: "UpdateDrainResponseBodyCase1FilterV2FilterCase0Deployment",
-}) as any as S.Schema<UpdateDrainResponseBodyCase1FilterV2FilterCase0Deployment>;
+export const UpdateDrainResponseBodyCase1FilterV2FilterCase0Deployment =
+  CreateDrainResponseBodyCase0FilterV2FilterCase0Deployment as any as S.Schema<UpdateDrainResponseBodyCase1FilterV2FilterCase0Deployment>;
 
 export type UpdateDrainResponseBodyCase1FilterV2FilterCase0LogSourcesItem =
   | "build"
@@ -4906,22 +4310,15 @@ export const UpdateDrainResponseBodyCase1FilterV2FilterCase0LogSourcesItem = S.S
 
 export type UpdateDrainResponseBodyCase1FilterV2FilterCase0LogSourcesList =
   Array<UpdateDrainResponseBodyCase1FilterV2FilterCase0LogSourcesItem>;
-export const UpdateDrainResponseBodyCase1FilterV2FilterCase0LogSourcesList = /*@__PURE__*/ S.Array(
-  UpdateDrainResponseBodyCase1FilterV2FilterCase0LogSourcesItem,
-) as any as S.Schema<UpdateDrainResponseBodyCase1FilterV2FilterCase0LogSourcesList>;
+export const UpdateDrainResponseBodyCase1FilterV2FilterCase0LogSourcesList =
+  CreateDrainRequestFilterFilterCase0LogSourcesList as any as S.Schema<UpdateDrainResponseBodyCase1FilterV2FilterCase0LogSourcesList>;
 
 export interface UpdateDrainResponseBodyCase1FilterV2FilterCase0Log {
   legacy_excludeCachedStaticAssetLogs?: boolean;
   sources?: UpdateDrainResponseBodyCase1FilterV2FilterCase0LogSourcesList;
 }
-export const UpdateDrainResponseBodyCase1FilterV2FilterCase0Log = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    legacy_excludeCachedStaticAssetLogs: S.optional(S.Boolean),
-    sources: S.optional(UpdateDrainResponseBodyCase1FilterV2FilterCase0LogSourcesList),
-  }),
-).annotate({
-  identifier: "UpdateDrainResponseBodyCase1FilterV2FilterCase0Log",
-}) as any as S.Schema<UpdateDrainResponseBodyCase1FilterV2FilterCase0Log>;
+export const UpdateDrainResponseBodyCase1FilterV2FilterCase0Log =
+  CreateDrainResponseBodyCase0FilterV2FilterCase0Log as any as S.Schema<UpdateDrainResponseBodyCase1FilterV2FilterCase0Log>;
 
 export type UpdateDrainResponseBodyCase1FilterV2FilterCase0ProjectIdsList = Array<string>;
 export const UpdateDrainResponseBodyCase1FilterV2FilterCase0ProjectIdsList =
@@ -4960,14 +4357,8 @@ export interface UpdateDrainResponseBodyCase1FilterV2FilterCase1 {
   text: string;
   type: UpdateDrainResponseBodyCase1FilterV2FilterCase1Type;
 }
-export const UpdateDrainResponseBodyCase1FilterV2FilterCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    text: S.String,
-    type: UpdateDrainResponseBodyCase1FilterV2FilterCase1Type,
-  }),
-).annotate({
-  identifier: "UpdateDrainResponseBodyCase1FilterV2FilterCase1",
-}) as any as S.Schema<UpdateDrainResponseBodyCase1FilterV2FilterCase1>;
+export const UpdateDrainResponseBodyCase1FilterV2FilterCase1 =
+  CreateDrainResponseBodyCase0FilterV2FilterCase1 as any as S.Schema<UpdateDrainResponseBodyCase1FilterV2FilterCase1>;
 
 export type UpdateDrainResponseBodyCase1FilterV2Filter =
   | UpdateDrainResponseBodyCase1FilterV2FilterCase0
@@ -5001,14 +4392,8 @@ export interface UpdateDrainResponseBodyCase1ProjectAccessCase0 {
   access: UpdateDrainResponseBodyCase1ProjectAccessCase0Access;
   managedBy: UpdateDrainResponseBodyCase1ProjectAccessCase0ManagedBy;
 }
-export const UpdateDrainResponseBodyCase1ProjectAccessCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    access: UpdateDrainResponseBodyCase1ProjectAccessCase0Access,
-    managedBy: UpdateDrainResponseBodyCase1ProjectAccessCase0ManagedBy,
-  }),
-).annotate({
-  identifier: "UpdateDrainResponseBodyCase1ProjectAccessCase0",
-}) as any as S.Schema<UpdateDrainResponseBodyCase1ProjectAccessCase0>;
+export const UpdateDrainResponseBodyCase1ProjectAccessCase0 =
+  CreateDrainResponseBodyCase1ProjectAccessCase0 as any as S.Schema<UpdateDrainResponseBodyCase1ProjectAccessCase0>;
 
 export type UpdateDrainResponseBodyCase1ProjectAccessCase1Access = "some";
 export const UpdateDrainResponseBodyCase1ProjectAccessCase1Access = S.String;

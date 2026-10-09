@@ -447,7 +447,7 @@ export type Metric =
 export const Metric = S.String;
 
 export type Metrics = Metric[];
-export const Metrics = /*@__PURE__*/ S.Array(Metric);
+export const Metrics = MatchOptions as any as S.Schema<Metrics>;
 export type BillingViewArn = string;
 export type HealthStatusValue = "HEALTHY" | "UNHEALTHY" | (string & {});
 export const HealthStatusValue = S.String;

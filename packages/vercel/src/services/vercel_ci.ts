@@ -967,9 +967,8 @@ export const GetVercelCiJobRunLogsRequestLevelItem = S.String;
 export type GetVercelCiJobRunLogsRequestLevelList = Array<
   GetVercelCiJobRunLogsRequestLevelItem | (string & {})
 >;
-export const GetVercelCiJobRunLogsRequestLevelList = /*@__PURE__*/ S.Array(
-  GetVercelCiJobRunLogsRequestLevelItem,
-) as any as S.Schema<GetVercelCiJobRunLogsRequestLevelList>;
+export const GetVercelCiJobRunLogsRequestLevelList =
+  GetVercelCiInvocationLogsRequestLevelList as any as S.Schema<GetVercelCiJobRunLogsRequestLevelList>;
 
 export interface GetVercelCiJobRunLogsRequest {
   invocationId: string;
@@ -1038,9 +1037,8 @@ export const GetVercelCiTaskLogsRequestConclusionItem = S.String;
 export type GetVercelCiTaskLogsRequestConclusionList = Array<
   GetVercelCiTaskLogsRequestConclusionItem | (string & {})
 >;
-export const GetVercelCiTaskLogsRequestConclusionList = /*@__PURE__*/ S.Array(
-  GetVercelCiTaskLogsRequestConclusionItem,
-) as any as S.Schema<GetVercelCiTaskLogsRequestConclusionList>;
+export const GetVercelCiTaskLogsRequestConclusionList =
+  GetVercelCiInvocationLogsRequestLevelList as any as S.Schema<GetVercelCiTaskLogsRequestConclusionList>;
 
 export type GetVercelCiTaskLogsRequestLevelItem =
   | "trace"
@@ -1057,9 +1055,8 @@ export const GetVercelCiTaskLogsRequestLevelItem = S.String;
 export type GetVercelCiTaskLogsRequestLevelList = Array<
   GetVercelCiTaskLogsRequestLevelItem | (string & {})
 >;
-export const GetVercelCiTaskLogsRequestLevelList = /*@__PURE__*/ S.Array(
-  GetVercelCiTaskLogsRequestLevelItem,
-) as any as S.Schema<GetVercelCiTaskLogsRequestLevelList>;
+export const GetVercelCiTaskLogsRequestLevelList =
+  GetVercelCiInvocationLogsRequestLevelList as any as S.Schema<GetVercelCiTaskLogsRequestLevelList>;
 
 export interface GetVercelCiTaskLogsRequest {
   invocationId: string;
@@ -1202,9 +1199,8 @@ export const GetVercelCiTaskRunLogsRequestLevelItem = S.String;
 export type GetVercelCiTaskRunLogsRequestLevelList = Array<
   GetVercelCiTaskRunLogsRequestLevelItem | (string & {})
 >;
-export const GetVercelCiTaskRunLogsRequestLevelList = /*@__PURE__*/ S.Array(
-  GetVercelCiTaskRunLogsRequestLevelItem,
-) as any as S.Schema<GetVercelCiTaskRunLogsRequestLevelList>;
+export const GetVercelCiTaskRunLogsRequestLevelList =
+  GetVercelCiInvocationLogsRequestLevelList as any as S.Schema<GetVercelCiTaskRunLogsRequestLevelList>;
 
 export interface GetVercelCiTaskRunLogsRequest {
   invocationId: string;
@@ -1490,9 +1486,8 @@ export const ListVercelCiInvocationsRequestStatusItem = S.String;
 export type ListVercelCiInvocationsRequestStatusList = Array<
   ListVercelCiInvocationsRequestStatusItem | (string & {})
 >;
-export const ListVercelCiInvocationsRequestStatusList = /*@__PURE__*/ S.Array(
-  ListVercelCiInvocationsRequestStatusItem,
-) as any as S.Schema<ListVercelCiInvocationsRequestStatusList>;
+export const ListVercelCiInvocationsRequestStatusList =
+  GetVercelCiInvocationLogsRequestLevelList as any as S.Schema<ListVercelCiInvocationsRequestStatusList>;
 
 export type ListVercelCiInvocationsRequestConclusionItem = "succeeded" | "failed" | "skipped";
 export const ListVercelCiInvocationsRequestConclusionItem = S.String;
@@ -1500,9 +1495,8 @@ export const ListVercelCiInvocationsRequestConclusionItem = S.String;
 export type ListVercelCiInvocationsRequestConclusionList = Array<
   ListVercelCiInvocationsRequestConclusionItem | (string & {})
 >;
-export const ListVercelCiInvocationsRequestConclusionList = /*@__PURE__*/ S.Array(
-  ListVercelCiInvocationsRequestConclusionItem,
-) as any as S.Schema<ListVercelCiInvocationsRequestConclusionList>;
+export const ListVercelCiInvocationsRequestConclusionList =
+  GetVercelCiInvocationLogsRequestLevelList as any as S.Schema<ListVercelCiInvocationsRequestConclusionList>;
 
 export type ListVercelCiInvocationsRequestSourceItem = "vercel-ci" | "vercel-native-checks";
 export const ListVercelCiInvocationsRequestSourceItem = S.String;
@@ -1510,9 +1504,8 @@ export const ListVercelCiInvocationsRequestSourceItem = S.String;
 export type ListVercelCiInvocationsRequestSourceList = Array<
   ListVercelCiInvocationsRequestSourceItem | (string & {})
 >;
-export const ListVercelCiInvocationsRequestSourceList = /*@__PURE__*/ S.Array(
-  ListVercelCiInvocationsRequestSourceItem,
-) as any as S.Schema<ListVercelCiInvocationsRequestSourceList>;
+export const ListVercelCiInvocationsRequestSourceList =
+  GetVercelCiInvocationLogsRequestLevelList as any as S.Schema<ListVercelCiInvocationsRequestSourceList>;
 
 export interface ListVercelCiInvocationsRequest {
   /** Repository provider (e.g., \"github\"). */
@@ -2141,9 +2134,8 @@ export const SearchVercelCiLogsRequestLevelItem = S.String;
 export type SearchVercelCiLogsRequestLevelList = Array<
   SearchVercelCiLogsRequestLevelItem | (string & {})
 >;
-export const SearchVercelCiLogsRequestLevelList = /*@__PURE__*/ S.Array(
-  SearchVercelCiLogsRequestLevelItem,
-) as any as S.Schema<SearchVercelCiLogsRequestLevelList>;
+export const SearchVercelCiLogsRequestLevelList =
+  GetVercelCiInvocationLogsRequestLevelList as any as S.Schema<SearchVercelCiLogsRequestLevelList>;
 
 export interface SearchVercelCiLogsRequest {
   /** Invocation attempts to search, as \"<invocationId>:<attempt>\" (at most 50). */

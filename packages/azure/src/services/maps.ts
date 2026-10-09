@@ -548,18 +548,8 @@ export interface CreatorsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const CreatorsCreateOrUpdateResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(CreatorsCreateOrUpdateResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(CreatorsCreateOrUpdateResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreatorsCreateOrUpdateResponseSystemData",
-}) as any as S.Schema<CreatorsCreateOrUpdateResponseSystemData>;
+export const CreatorsCreateOrUpdateResponseSystemData =
+  AccountsCreateOrUpdateResponseSystemData as any as S.Schema<CreatorsCreateOrUpdateResponseSystemData>;
 
 export interface CreatorsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -707,18 +697,8 @@ export interface GetAccountResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetAccountResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetAccountResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetAccountResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetAccountResponseSystemData",
-}) as any as S.Schema<GetAccountResponseSystemData>;
+export const GetAccountResponseSystemData =
+  AccountsCreateOrUpdateResponseSystemData as any as S.Schema<GetAccountResponseSystemData>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type GetAccountResponseIdentity = AccountsCreateOrUpdateResponseIdentity;
@@ -823,18 +803,8 @@ export interface GetCreatorResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetCreatorResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetCreatorResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetCreatorResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetCreatorResponseSystemData",
-}) as any as S.Schema<GetCreatorResponseSystemData>;
+export const GetCreatorResponseSystemData =
+  AccountsCreateOrUpdateResponseSystemData as any as S.Schema<GetCreatorResponseSystemData>;
 
 export interface GetCreatorResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1171,16 +1141,7 @@ export interface CreatorSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const CreatorSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(CreatorSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(CreatorSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({ identifier: "CreatorSystemData" }) as any as S.Schema<CreatorSystemData>;
+export const CreatorSystemData = MapsAccountSystemData as any as S.Schema<CreatorSystemData>;
 
 /** An Azure resource which represents Maps Creator product and provides ability to manage private location data. */
 export interface Creator {
@@ -1550,18 +1511,8 @@ export interface UpdateAccountResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdateAccountResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(UpdateAccountResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(UpdateAccountResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateAccountResponseSystemData",
-}) as any as S.Schema<UpdateAccountResponseSystemData>;
+export const UpdateAccountResponseSystemData =
+  AccountsCreateOrUpdateResponseSystemData as any as S.Schema<UpdateAccountResponseSystemData>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateAccountResponseIdentity = AccountsCreateOrUpdateResponseIdentity;
@@ -1677,18 +1628,8 @@ export interface UpdateCreatorResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdateCreatorResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(UpdateCreatorResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(UpdateCreatorResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateCreatorResponseSystemData",
-}) as any as S.Schema<UpdateCreatorResponseSystemData>;
+export const UpdateCreatorResponseSystemData =
+  AccountsCreateOrUpdateResponseSystemData as any as S.Schema<UpdateCreatorResponseSystemData>;
 
 export interface UpdateCreatorResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */

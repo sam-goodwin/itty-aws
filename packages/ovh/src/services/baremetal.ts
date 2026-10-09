@@ -2775,9 +2775,8 @@ export const DedicatedServerBiosSettingsSupportSgxOptionsPrmrrList = /*@__PURE__
 /** Supported SGX statuses */
 export type DedicatedServerBiosSettingsSupportSgxOptionsStatusList =
   Array<DedicatedServerBiosSettingsSgxStatusEnum>;
-export const DedicatedServerBiosSettingsSupportSgxOptionsStatusList = /*@__PURE__*/ S.Array(
-  DedicatedServerBiosSettingsSgxStatusEnum,
-) as any as S.Schema<DedicatedServerBiosSettingsSupportSgxOptionsStatusList>;
+export const DedicatedServerBiosSettingsSupportSgxOptionsStatusList =
+  DedicatedServerBiosSettingsSupportSgxOptionsPrmrrList as any as S.Schema<DedicatedServerBiosSettingsSupportSgxOptionsStatusList>;
 
 /** A structure describing supported SGX options values */
 export interface DedicatedServerBiosSettingsSupportSgxOptions {
@@ -4406,9 +4405,8 @@ export const DedicatedVirtualNetworkInterfaceVirtualNetworkInterfaceModeEnum = S
 /** (DEPRECATED) What modes are supported */
 export type DedicatedServerOlaDetailsSupportedModesList =
   Array<DedicatedVirtualNetworkInterfaceVirtualNetworkInterfaceModeEnum>;
-export const DedicatedServerOlaDetailsSupportedModesList = /*@__PURE__*/ S.Array(
-  DedicatedVirtualNetworkInterfaceVirtualNetworkInterfaceModeEnum,
-) as any as S.Schema<DedicatedServerOlaDetailsSupportedModesList>;
+export const DedicatedServerOlaDetailsSupportedModesList =
+  DedicatedServerBiosSettingsSupportSgxOptionsPrmrrList as any as S.Schema<DedicatedServerOlaDetailsSupportedModesList>;
 
 /** A structure describing OVH Link Aggregation available modes for this dedicated server */
 export interface DedicatedServerOlaDetails {
@@ -5065,9 +5063,8 @@ export const ListDedicatedServerBootOptionRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListDedicatedServerBootOptionRequest>;
 
 export type ListDedicatedServerBootOptionResponseBodyList = Array<DedicatedServerBootOptionEnum>;
-export const ListDedicatedServerBootOptionResponseBodyList = /*@__PURE__*/ S.Array(
-  DedicatedServerBootOptionEnum,
-) as any as S.Schema<ListDedicatedServerBootOptionResponseBodyList>;
+export const ListDedicatedServerBootOptionResponseBodyList =
+  DedicatedServerBiosSettingsSupportSgxOptionsPrmrrList as any as S.Schema<ListDedicatedServerBootOptionResponseBodyList>;
 
 export type ListDedicatedServerBootOptionResponse = ListDedicatedServerBootOptionResponseBodyList;
 export const ListDedicatedServerBootOptionResponse = /*@__PURE__*/ S.suspend(() =>
@@ -5939,17 +5936,13 @@ export const DedicatedServerIpCountryEnum = S.String;
 
 export type ListDedicatedServerIpCountryAvailableResponseBodyList =
   Array<DedicatedServerIpCountryEnum>;
-export const ListDedicatedServerIpCountryAvailableResponseBodyList = /*@__PURE__*/ S.Array(
-  DedicatedServerIpCountryEnum,
-) as any as S.Schema<ListDedicatedServerIpCountryAvailableResponseBodyList>;
+export const ListDedicatedServerIpCountryAvailableResponseBodyList =
+  DedicatedServerBiosSettingsSupportSgxOptionsPrmrrList as any as S.Schema<ListDedicatedServerIpCountryAvailableResponseBodyList>;
 
 export type ListDedicatedServerIpCountryAvailableResponse =
   ListDedicatedServerIpCountryAvailableResponseBodyList;
-export const ListDedicatedServerIpCountryAvailableResponse = /*@__PURE__*/ S.suspend(() =>
-  ListDedicatedServerIpCountryAvailableResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListDedicatedServerIpCountryAvailableResponse",
-}) as any as S.Schema<ListDedicatedServerIpCountryAvailableResponse>;
+export const ListDedicatedServerIpCountryAvailableResponse =
+  ListDedicatedServerBootOptionResponse as any as S.Schema<ListDedicatedServerIpCountryAvailableResponse>;
 
 export interface ListDedicatedServerIpsRequest {
   /** The internal name of your dedicated server */
@@ -5991,17 +5984,13 @@ export const ListDedicatedServerLicenseCompliantWindowsRequest = /*@__PURE__*/ S
 
 export type ListDedicatedServerLicenseCompliantWindowsResponseBodyList =
   Array<LicenseWindowsOsVersionEnum>;
-export const ListDedicatedServerLicenseCompliantWindowsResponseBodyList = /*@__PURE__*/ S.Array(
-  LicenseWindowsOsVersionEnum,
-) as any as S.Schema<ListDedicatedServerLicenseCompliantWindowsResponseBodyList>;
+export const ListDedicatedServerLicenseCompliantWindowsResponseBodyList =
+  DedicatedServerBiosSettingsSupportSgxOptionsPrmrrList as any as S.Schema<ListDedicatedServerLicenseCompliantWindowsResponseBodyList>;
 
 export type ListDedicatedServerLicenseCompliantWindowsResponse =
   ListDedicatedServerLicenseCompliantWindowsResponseBodyList;
-export const ListDedicatedServerLicenseCompliantWindowsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListDedicatedServerLicenseCompliantWindowsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListDedicatedServerLicenseCompliantWindowsResponse",
-}) as any as S.Schema<ListDedicatedServerLicenseCompliantWindowsResponse>;
+export const ListDedicatedServerLicenseCompliantWindowsResponse =
+  ListDedicatedServerBootOptionResponse as any as S.Schema<ListDedicatedServerLicenseCompliantWindowsResponse>;
 
 export interface ListDedicatedServerLicenseCompliantWindowsSqlServerRequest {
   /** The internal name of your dedicated server */
@@ -6270,16 +6259,12 @@ export const ListDedicatedServerOptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDedicatedServerOptionRequest>;
 
 export type ListDedicatedServerOptionResponseBodyList = Array<DedicatedServerOptionEnum>;
-export const ListDedicatedServerOptionResponseBodyList = /*@__PURE__*/ S.Array(
-  DedicatedServerOptionEnum,
-) as any as S.Schema<ListDedicatedServerOptionResponseBodyList>;
+export const ListDedicatedServerOptionResponseBodyList =
+  DedicatedServerBiosSettingsSupportSgxOptionsPrmrrList as any as S.Schema<ListDedicatedServerOptionResponseBodyList>;
 
 export type ListDedicatedServerOptionResponse = ListDedicatedServerOptionResponseBodyList;
-export const ListDedicatedServerOptionResponse = /*@__PURE__*/ S.suspend(() =>
-  ListDedicatedServerOptionResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListDedicatedServerOptionResponse",
-}) as any as S.Schema<ListDedicatedServerOptionResponse>;
+export const ListDedicatedServerOptionResponse =
+  ListDedicatedServerBootOptionResponse as any as S.Schema<ListDedicatedServerOptionResponse>;
 
 export interface ListDedicatedServerOrderableBackupStorageRequest {
   /** The internal name of your dedicated server */
@@ -6351,9 +6336,8 @@ export const DedicatedServerBandwidthOrderEnum = S.Number;
 /** Bandwidth "platinum" orderable in mbps */
 export type DedicatedServerBandwidthOrderablePlatinumList =
   Array<DedicatedServerBandwidthOrderEnum>;
-export const DedicatedServerBandwidthOrderablePlatinumList = /*@__PURE__*/ S.Array(
-  DedicatedServerBandwidthOrderEnum,
-) as any as S.Schema<DedicatedServerBandwidthOrderablePlatinumList>;
+export const DedicatedServerBandwidthOrderablePlatinumList =
+  DedicatedServerBackupStorageOrderableCapacitiesList as any as S.Schema<DedicatedServerBandwidthOrderablePlatinumList>;
 
 /** Bandwidth "premium" orderable in mbps */
 export type DedicatedServerBandwidthOrderablePremiumList = Array<DedicatedServerBandwidthOrderEnum>;
@@ -6413,9 +6397,8 @@ export const DedicatedServerBandwidthvRackOrderEnum = S.Number;
 /** vRack Bandwidth orderable in mbps */
 export type DedicatedServerBandwidthvRackOrderableVrackList =
   Array<DedicatedServerBandwidthvRackOrderEnum>;
-export const DedicatedServerBandwidthvRackOrderableVrackList = /*@__PURE__*/ S.Array(
-  DedicatedServerBandwidthvRackOrderEnum,
-) as any as S.Schema<DedicatedServerBandwidthvRackOrderableVrackList>;
+export const DedicatedServerBandwidthvRackOrderableVrackList =
+  DedicatedServerBackupStorageOrderableCapacitiesList as any as S.Schema<DedicatedServerBandwidthvRackOrderableVrackList>;
 
 /** A structure describing informations bandwidth orderable for this dedicated server */
 export interface DedicatedServerBandwidthvRackOrderable {
@@ -6453,9 +6436,8 @@ export const DedicatedServerIpBlockSizeEnum = S.Number;
 
 /** Orderable IP blocks sizes */
 export type DedicatedServerIpOrderableDetailsBlockSizesList = Array<DedicatedServerIpBlockSizeEnum>;
-export const DedicatedServerIpOrderableDetailsBlockSizesList = /*@__PURE__*/ S.Array(
-  DedicatedServerIpBlockSizeEnum,
-) as any as S.Schema<DedicatedServerIpOrderableDetailsBlockSizesList>;
+export const DedicatedServerIpOrderableDetailsBlockSizesList =
+  DedicatedServerBackupStorageOrderableCapacitiesList as any as S.Schema<DedicatedServerIpOrderableDetailsBlockSizesList>;
 
 /** Required option */
 export type DedicatedServerOptionRequiredEnum = "professionalUse";
@@ -6545,9 +6527,8 @@ export const DedicatedServerSupportLevelOrderableEnum = S.String;
 /** Support level orderable */
 export type DedicatedServerSupportLevelOrderableLevelsList =
   Array<DedicatedServerSupportLevelOrderableEnum>;
-export const DedicatedServerSupportLevelOrderableLevelsList = /*@__PURE__*/ S.Array(
-  DedicatedServerSupportLevelOrderableEnum,
-) as any as S.Schema<DedicatedServerSupportLevelOrderableLevelsList>;
+export const DedicatedServerSupportLevelOrderableLevelsList =
+  DedicatedServerBiosSettingsSupportSgxOptionsPrmrrList as any as S.Schema<DedicatedServerSupportLevelOrderableLevelsList>;
 
 /** A structure describing informations support level orderable for this dedicated server */
 export interface DedicatedServerSupportLevelOrderable {
@@ -6588,9 +6569,8 @@ export const DedicatedServerTrafficOrderEnum = S.String;
 
 /** traffic orderable */
 export type DedicatedServerTrafficOrderableTrafficList = Array<DedicatedServerTrafficOrderEnum>;
-export const DedicatedServerTrafficOrderableTrafficList = /*@__PURE__*/ S.Array(
-  DedicatedServerTrafficOrderEnum,
-) as any as S.Schema<DedicatedServerTrafficOrderableTrafficList>;
+export const DedicatedServerTrafficOrderableTrafficList =
+  DedicatedServerBiosSettingsSupportSgxOptionsPrmrrList as any as S.Schema<DedicatedServerTrafficOrderableTrafficList>;
 
 /** A structure describing informations bandwidth orderable for this dedicated server */
 export interface DedicatedServerTrafficOrderable {
@@ -6629,9 +6609,8 @@ export const DedicatedServerUsbKeyCapacityEnum = S.Number;
 /** Orderable USB keys capacity in gigabytes */
 export type DedicatedServerUsbKeyOrderableDetailsCapacityList =
   Array<DedicatedServerUsbKeyCapacityEnum>;
-export const DedicatedServerUsbKeyOrderableDetailsCapacityList = /*@__PURE__*/ S.Array(
-  DedicatedServerUsbKeyCapacityEnum,
-) as any as S.Schema<DedicatedServerUsbKeyOrderableDetailsCapacityList>;
+export const DedicatedServerUsbKeyOrderableDetailsCapacityList =
+  DedicatedServerBackupStorageOrderableCapacitiesList as any as S.Schema<DedicatedServerUsbKeyOrderableDetailsCapacityList>;
 
 /** A structure describing informations about orderable USB keys */
 export interface DedicatedServerUsbKeyOrderableDetails {
@@ -6724,9 +6703,8 @@ export const DedicatedServerAvailabilityRegionalizationEnum = S.String;
 export type ListDedicatedServerRegionAvailabilitiesRequestRegionsList = Array<
   DedicatedServerAvailabilityRegionalizationEnum | (string & {})
 >;
-export const ListDedicatedServerRegionAvailabilitiesRequestRegionsList = /*@__PURE__*/ S.Array(
-  DedicatedServerAvailabilityRegionalizationEnum,
-) as any as S.Schema<ListDedicatedServerRegionAvailabilitiesRequestRegionsList>;
+export const ListDedicatedServerRegionAvailabilitiesRequestRegionsList =
+  DedicatedServerBiosSettingsSupportSgxOptionsPrmrrList as any as S.Schema<ListDedicatedServerRegionAvailabilitiesRequestRegionsList>;
 
 export interface ListDedicatedServerRegionAvailabilitiesRequest {
   /** If true, all regions are returned except those listed in regions parameter */

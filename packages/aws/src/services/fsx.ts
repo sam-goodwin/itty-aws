@@ -885,9 +885,7 @@ export interface RetentionPeriod {
   Type?: RetentionPeriodType;
   Value?: number;
 }
-export const RetentionPeriod = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Type: S.optional(RetentionPeriodType), Value: S.optional(S.Number) }),
-).annotate({ identifier: "RetentionPeriod" }) as any as S.Schema<RetentionPeriod>;
+export const RetentionPeriod = AutocommitPeriod as any as S.Schema<RetentionPeriod>;
 export interface SnaplockRetentionPeriod {
   DefaultRetention?: RetentionPeriod;
   MinimumRetention?: RetentionPeriod;
@@ -1290,11 +1288,8 @@ export interface OpenZFSReadCacheConfiguration {
   SizingMode?: OpenZFSReadCacheSizingMode;
   SizeGiB?: number;
 }
-export const OpenZFSReadCacheConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SizingMode: S.optional(OpenZFSReadCacheSizingMode), SizeGiB: S.optional(S.Number) }),
-).annotate({
-  identifier: "OpenZFSReadCacheConfiguration",
-}) as any as S.Schema<OpenZFSReadCacheConfiguration>;
+export const OpenZFSReadCacheConfiguration =
+  LustreReadCacheConfiguration as any as S.Schema<OpenZFSReadCacheConfiguration>;
 export interface OpenZFSFileSystemConfiguration {
   AutomaticBackupRetentionDays?: number;
   CopyTagsToBackups?: boolean;
@@ -1966,7 +1961,7 @@ export type EventType = "NEW" | "CHANGED" | "DELETED" | (string & {});
 export const EventType = S.String;
 
 export type EventTypes = EventType[];
-export const EventTypes = /*@__PURE__*/ S.Array(EventType);
+export const EventTypes = UpdateOpenZFSVolumeOptions as any as S.Schema<EventTypes>;
 export interface AutoImportPolicy {
   Events?: EventType[];
 }
@@ -3333,7 +3328,8 @@ export type DeleteFileSystemOpenZFSOption = "DELETE_CHILD_VOLUMES_AND_SNAPSHOTS"
 export const DeleteFileSystemOpenZFSOption = S.String;
 
 export type DeleteFileSystemOpenZFSOptions = DeleteFileSystemOpenZFSOption[];
-export const DeleteFileSystemOpenZFSOptions = /*@__PURE__*/ S.Array(DeleteFileSystemOpenZFSOption);
+export const DeleteFileSystemOpenZFSOptions =
+  UpdateOpenZFSVolumeOptions as any as S.Schema<DeleteFileSystemOpenZFSOptions>;
 export interface DeleteFileSystemOpenZFSConfiguration {
   SkipFinalBackup?: boolean;
   FinalBackupTags?: Tag[];
@@ -3466,7 +3462,8 @@ export type DeleteOpenZFSVolumeOption = "DELETE_CHILD_VOLUMES_AND_SNAPSHOTS" | (
 export const DeleteOpenZFSVolumeOption = S.String;
 
 export type DeleteOpenZFSVolumeOptions = DeleteOpenZFSVolumeOption[];
-export const DeleteOpenZFSVolumeOptions = /*@__PURE__*/ S.Array(DeleteOpenZFSVolumeOption);
+export const DeleteOpenZFSVolumeOptions =
+  UpdateOpenZFSVolumeOptions as any as S.Schema<DeleteOpenZFSVolumeOptions>;
 export interface DeleteVolumeOpenZFSConfiguration {
   Options?: DeleteOpenZFSVolumeOption[];
 }
@@ -4379,7 +4376,8 @@ export type RestoreOpenZFSVolumeOption =
 export const RestoreOpenZFSVolumeOption = S.String;
 
 export type RestoreOpenZFSVolumeOptions = RestoreOpenZFSVolumeOption[];
-export const RestoreOpenZFSVolumeOptions = /*@__PURE__*/ S.Array(RestoreOpenZFSVolumeOption);
+export const RestoreOpenZFSVolumeOptions =
+  UpdateOpenZFSVolumeOptions as any as S.Schema<RestoreOpenZFSVolumeOptions>;
 export interface RestoreVolumeFromSnapshotRequest {
   ClientRequestToken?: string;
   VolumeId?: string;

@@ -1416,9 +1416,8 @@ export const ListServerActionsRequestStatusItem = S.String;
 export type ListServerActionsRequestStatusList = Array<
   ListServerActionsRequestStatusItem | (string & {})
 >;
-export const ListServerActionsRequestStatusList = /*@__PURE__*/ S.Array(
-  ListServerActionsRequestStatusItem,
-) as any as S.Schema<ListServerActionsRequestStatusList>;
+export const ListServerActionsRequestStatusList =
+  ListServerActionsRequestSortList as any as S.Schema<ListServerActionsRequestStatusList>;
 
 export interface ListServerActionsRequest {
   /** ID of the Server. */
@@ -1579,9 +1578,8 @@ export const ListServersActionsRequestSortItem = S.String;
 export type ListServersActionsRequestSortList = Array<
   ListServersActionsRequestSortItem | (string & {})
 >;
-export const ListServersActionsRequestSortList = /*@__PURE__*/ S.Array(
-  ListServersActionsRequestSortItem,
-) as any as S.Schema<ListServersActionsRequestSortList>;
+export const ListServersActionsRequestSortList =
+  ListServerActionsRequestSortList as any as S.Schema<ListServersActionsRequestSortList>;
 
 /** Status of the Action. */
 export type ListServersActionsRequestStatusItem = "running" | "success" | "error";
@@ -1590,9 +1588,8 @@ export const ListServersActionsRequestStatusItem = S.String;
 export type ListServersActionsRequestStatusList = Array<
   ListServersActionsRequestStatusItem | (string & {})
 >;
-export const ListServersActionsRequestStatusList = /*@__PURE__*/ S.Array(
-  ListServersActionsRequestStatusItem,
-) as any as S.Schema<ListServersActionsRequestStatusList>;
+export const ListServersActionsRequestStatusList =
+  ListServerActionsRequestSortList as any as S.Schema<ListServersActionsRequestStatusList>;
 
 export interface ListServersActionsRequest {
   /** Filter the actions by ID. May be used multiple times. The response will only contain actions matching the specified IDs. */

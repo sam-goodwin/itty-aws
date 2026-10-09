@@ -738,15 +738,7 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegat
     | (string & {});
 }
 export const GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfo =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      outputType: S.optional(
-        GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfoOutputTypeEnum,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfo",
-  }) as any as S.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfo>;
+  GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedUserInfo as any as S.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfo>;
 
 export type GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedGroupInfoOutputTypeEnum =
   | "OUTPUT_TYPE_UNSPECIFIED"
@@ -764,15 +756,7 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegat
     | (string & {});
 }
 export const GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedGroupInfo =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      outputType: S.optional(
-        GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedGroupInfoOutputTypeEnum,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedGroupInfo",
-  }) as any as S.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedGroupInfo>;
+  GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedUserInfo as any as S.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedGroupInfo>;
 
 export type GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDispatchInfoOutputTypeEnum =
   | "OUTPUT_TYPE_UNSPECIFIED"
@@ -790,15 +774,7 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegat
     | (string & {});
 }
 export const GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDispatchInfo =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      outputType: S.optional(
-        GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDispatchInfoOutputTypeEnum,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDispatchInfo",
-  }) as any as S.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDispatchInfo>;
+  GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedUserInfo as any as S.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDispatchInfo>;
 
 /** Contextual headers configuration. */
 export interface GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeaders {

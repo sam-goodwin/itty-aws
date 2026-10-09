@@ -1714,7 +1714,8 @@ export type PersistentAppUIType = "SHS" | "TEZ" | "YTS" | (string & {});
 export const PersistentAppUIType = S.String;
 
 export type PersistentAppUITypeList = PersistentAppUIType[];
-export const PersistentAppUITypeList = /*@__PURE__*/ S.Array(PersistentAppUIType);
+export const PersistentAppUITypeList =
+  JobFlowExecutionStateList as any as S.Schema<PersistentAppUITypeList>;
 export interface PersistentAppUI {
   PersistentAppUIId?: string;
   PersistentAppUITypeList?: PersistentAppUIType[];
@@ -1858,9 +1859,8 @@ export interface StepStateChangeReason {
   Code?: StepStateChangeReasonCode;
   Message?: string;
 }
-export const StepStateChangeReason = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Code: S.optional(StepStateChangeReasonCode), Message: S.optional(S.String) }),
-).annotate({ identifier: "StepStateChangeReason" }) as any as S.Schema<StepStateChangeReason>;
+export const StepStateChangeReason =
+  ClusterStateChangeReason as any as S.Schema<StepStateChangeReason>;
 export interface FailureDetails {
   Reason?: string;
   Message?: string;
@@ -2466,7 +2466,7 @@ export const ListBootstrapActionsOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListBootstrapActionsOutput",
 }) as any as S.Schema<ListBootstrapActionsOutput>;
 export type ClusterStateList = ClusterState[];
-export const ClusterStateList = /*@__PURE__*/ S.Array(ClusterState);
+export const ClusterStateList = JobFlowExecutionStateList as any as S.Schema<ClusterStateList>;
 export interface ListClustersInput {
   CreatedAfter?: Date;
   CreatedBefore?: Date;
@@ -2682,11 +2682,8 @@ export interface InstanceGroupStateChangeReason {
   Code?: InstanceGroupStateChangeReasonCode;
   Message?: string;
 }
-export const InstanceGroupStateChangeReason = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Code: S.optional(InstanceGroupStateChangeReasonCode), Message: S.optional(S.String) }),
-).annotate({
-  identifier: "InstanceGroupStateChangeReason",
-}) as any as S.Schema<InstanceGroupStateChangeReason>;
+export const InstanceGroupStateChangeReason =
+  InstanceFleetStateChangeReason as any as S.Schema<InstanceGroupStateChangeReason>;
 export interface InstanceGroupTimeline {
   CreationDateTime?: Date;
   ReadyDateTime?: Date;
@@ -2860,7 +2857,8 @@ export const ListInstanceGroupsOutput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "ListInstanceGroupsOutput" }) as any as S.Schema<ListInstanceGroupsOutput>;
 export type InstanceGroupTypeList = InstanceGroupType[];
-export const InstanceGroupTypeList = /*@__PURE__*/ S.Array(InstanceGroupType);
+export const InstanceGroupTypeList =
+  JobFlowExecutionStateList as any as S.Schema<InstanceGroupTypeList>;
 export type InstanceState =
   | "AWAITING_FULFILLMENT"
   | "PROVISIONING"
@@ -2871,7 +2869,7 @@ export type InstanceState =
 export const InstanceState = S.String;
 
 export type InstanceStateList = InstanceState[];
-export const InstanceStateList = /*@__PURE__*/ S.Array(InstanceState);
+export const InstanceStateList = JobFlowExecutionStateList as any as S.Schema<InstanceStateList>;
 export interface ListInstancesInput {
   ClusterId?: string;
   InstanceGroupId?: string;
@@ -2905,11 +2903,8 @@ export interface InstanceStateChangeReason {
   Code?: InstanceStateChangeReasonCode;
   Message?: string;
 }
-export const InstanceStateChangeReason = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Code: S.optional(InstanceStateChangeReasonCode), Message: S.optional(S.String) }),
-).annotate({
-  identifier: "InstanceStateChangeReason",
-}) as any as S.Schema<InstanceStateChangeReason>;
+export const InstanceStateChangeReason =
+  InstanceFleetStateChangeReason as any as S.Schema<InstanceStateChangeReason>;
 export interface InstanceTimeline {
   CreationDateTime?: Date;
   ReadyDateTime?: Date;
@@ -3095,7 +3090,7 @@ export const ListSecurityConfigurationsOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListSecurityConfigurationsOutput",
 }) as any as S.Schema<ListSecurityConfigurationsOutput>;
 export type SessionStateList = SessionState[];
-export const SessionStateList = /*@__PURE__*/ S.Array(SessionState);
+export const SessionStateList = JobFlowExecutionStateList as any as S.Schema<SessionStateList>;
 export interface ListSessionsInput {
   ClusterId?: string;
   SessionStates?: SessionState[];
@@ -3125,7 +3120,7 @@ export const ListSessionsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Sessions: S.optional(SessionList), NextToken: S.optional(S.String) }).pipe(ns),
 ).annotate({ identifier: "ListSessionsOutput" }) as any as S.Schema<ListSessionsOutput>;
 export type StepStateList = StepState[];
-export const StepStateList = /*@__PURE__*/ S.Array(StepState);
+export const StepStateList = JobFlowExecutionStateList as any as S.Schema<StepStateList>;
 export interface ListStepsInput {
   ClusterId?: string;
   StepStates?: StepState[];

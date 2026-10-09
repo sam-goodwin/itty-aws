@@ -511,7 +511,7 @@ export const QuoteConstraintList = /*@__PURE__*/ S.Array(QuoteConstraint);
 export type PaymentOptionList = PaymentOption[];
 export const PaymentOptionList = /*@__PURE__*/ S.Array(PaymentOption);
 export type PaymentTermList = PaymentTerm[];
-export const PaymentTermList = /*@__PURE__*/ S.Array(PaymentTerm);
+export const PaymentTermList = PaymentOptionList as any as S.Schema<PaymentTermList>;
 export type QuoteDescription = string | redacted.Redacted<string>;
 export interface CreateQuoteInput {
   OutpostIdentifier?: string;
@@ -1087,7 +1087,7 @@ export type AWSServiceName =
 export const AWSServiceName = S.String;
 
 export type AWSServiceNameList = AWSServiceName[];
-export const AWSServiceNameList = /*@__PURE__*/ S.Array(AWSServiceName);
+export const AWSServiceNameList = PaymentOptionList as any as S.Schema<AWSServiceNameList>;
 export interface InstancesToExclude {
   Instances?: string[];
   AccountIds?: string[];
@@ -1191,7 +1191,7 @@ export type SupportedStorageEnum = "EBS" | "S3" | (string & {});
 export const SupportedStorageEnum = S.String;
 
 export type SupportedStorageList = SupportedStorageEnum[];
-export const SupportedStorageList = /*@__PURE__*/ S.Array(SupportedStorageEnum);
+export const SupportedStorageList = PaymentOptionList as any as S.Schema<SupportedStorageList>;
 export interface CatalogItem {
   CatalogItemId?: string;
   ItemStatus?: CatalogItemStatus;
@@ -1637,7 +1637,7 @@ export type AssetState = "ACTIVE" | "RETIRING" | "ISOLATED" | "INSTALLING" | (st
 export const AssetState = S.String;
 
 export type StatusList = AssetState[];
-export const StatusList = /*@__PURE__*/ S.Array(AssetState);
+export const StatusList = PaymentOptionList as any as S.Schema<StatusList>;
 export type AssetType =
   | "COMPUTE"
   | "STORAGE"
@@ -1648,7 +1648,7 @@ export type AssetType =
 export const AssetType = S.String;
 
 export type AssetTypeList = AssetType[];
-export const AssetTypeList = /*@__PURE__*/ S.Array(AssetType);
+export const AssetTypeList = PaymentOptionList as any as S.Schema<AssetTypeList>;
 export interface ListAssetsInput {
   OutpostIdentifier: string;
   HostIdFilter?: string[];
@@ -1796,7 +1796,7 @@ export const ListBlockingInstancesForCapacityTaskOutput = /*@__PURE__*/ S.suspen
   identifier: "ListBlockingInstancesForCapacityTaskOutput",
 }) as any as S.Schema<ListBlockingInstancesForCapacityTaskOutput>;
 export type CapacityTaskStatusList = CapacityTaskStatus[];
-export const CapacityTaskStatusList = /*@__PURE__*/ S.Array(CapacityTaskStatus);
+export const CapacityTaskStatusList = PaymentOptionList as any as S.Schema<CapacityTaskStatusList>;
 export interface ListCapacityTasksInput {
   OutpostIdentifierFilter?: string;
   MaxResults?: number;
@@ -1848,7 +1848,7 @@ export type CatalogItemClass = "RACK" | "SERVER" | (string & {});
 export const CatalogItemClass = S.String;
 
 export type CatalogItemClassList = CatalogItemClass[];
-export const CatalogItemClassList = /*@__PURE__*/ S.Array(CatalogItemClass);
+export const CatalogItemClassList = PaymentOptionList as any as S.Schema<CatalogItemClassList>;
 export type EC2FamilyList = string[];
 export const EC2FamilyList = MacAddressList as any as S.Schema<EC2FamilyList>;
 export interface ListCatalogItemsInput {
@@ -2245,7 +2245,8 @@ export type BlockingResourceType =
 export const BlockingResourceType = S.String;
 
 export type BlockingResourceTypeList = BlockingResourceType[];
-export const BlockingResourceTypeList = /*@__PURE__*/ S.Array(BlockingResourceType);
+export const BlockingResourceTypeList =
+  PaymentOptionList as any as S.Schema<BlockingResourceTypeList>;
 export interface StartOutpostDecommissionOutput {
   Status?: DecommissionRequestStatus;
   BlockingResourceTypes?: BlockingResourceType[];

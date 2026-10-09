@@ -447,7 +447,8 @@ export type ImageExtractionCategoryType =
 export const ImageExtractionCategoryType = S.String;
 
 export type ImageExtractionCategoryTypes = ImageExtractionCategoryType[];
-export const ImageExtractionCategoryTypes = /*@__PURE__*/ S.Array(ImageExtractionCategoryType);
+export const ImageExtractionCategoryTypes =
+  DocumentOutputTextFormatTypes as any as S.Schema<ImageExtractionCategoryTypes>;
 export interface ImageExtractionCategory {
   state: State;
   types?: ImageExtractionCategoryType[];
@@ -472,9 +473,8 @@ export type ImageStandardGenerativeFieldType = "IMAGE_SUMMARY" | "IAB" | (string
 export const ImageStandardGenerativeFieldType = S.String;
 
 export type ImageStandardGenerativeFieldTypes = ImageStandardGenerativeFieldType[];
-export const ImageStandardGenerativeFieldTypes = /*@__PURE__*/ S.Array(
-  ImageStandardGenerativeFieldType,
-);
+export const ImageStandardGenerativeFieldTypes =
+  DocumentExtractionGranularityTypes as any as S.Schema<ImageStandardGenerativeFieldTypes>;
 export interface ImageStandardGenerativeField {
   state: State;
   types?: ImageStandardGenerativeFieldType[];
@@ -505,14 +505,14 @@ export type VideoExtractionCategoryType =
 export const VideoExtractionCategoryType = S.String;
 
 export type VideoExtractionCategoryTypes = VideoExtractionCategoryType[];
-export const VideoExtractionCategoryTypes = /*@__PURE__*/ S.Array(VideoExtractionCategoryType);
+export const VideoExtractionCategoryTypes =
+  DocumentOutputTextFormatTypes as any as S.Schema<VideoExtractionCategoryTypes>;
 export interface VideoExtractionCategory {
   state: State;
   types?: VideoExtractionCategoryType[];
 }
-export const VideoExtractionCategory = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ state: State, types: S.optional(VideoExtractionCategoryTypes) }),
-).annotate({ identifier: "VideoExtractionCategory" }) as any as S.Schema<VideoExtractionCategory>;
+export const VideoExtractionCategory =
+  ImageExtractionCategory as any as S.Schema<VideoExtractionCategory>;
 export interface VideoBoundingBox {
   state: State;
 }
@@ -532,18 +532,14 @@ export type VideoStandardGenerativeFieldType =
 export const VideoStandardGenerativeFieldType = S.String;
 
 export type VideoStandardGenerativeFieldTypes = VideoStandardGenerativeFieldType[];
-export const VideoStandardGenerativeFieldTypes = /*@__PURE__*/ S.Array(
-  VideoStandardGenerativeFieldType,
-);
+export const VideoStandardGenerativeFieldTypes =
+  DocumentExtractionGranularityTypes as any as S.Schema<VideoStandardGenerativeFieldTypes>;
 export interface VideoStandardGenerativeField {
   state: State;
   types?: VideoStandardGenerativeFieldType[];
 }
-export const VideoStandardGenerativeField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ state: State, types: S.optional(VideoStandardGenerativeFieldTypes) }),
-).annotate({
-  identifier: "VideoStandardGenerativeField",
-}) as any as S.Schema<VideoStandardGenerativeField>;
+export const VideoStandardGenerativeField =
+  ImageStandardGenerativeField as any as S.Schema<VideoStandardGenerativeField>;
 export interface VideoStandardOutputConfiguration {
   extraction?: VideoStandardExtraction;
   generativeField?: VideoStandardGenerativeField;
@@ -564,7 +560,8 @@ export type AudioExtractionCategoryType =
 export const AudioExtractionCategoryType = S.String;
 
 export type AudioExtractionCategoryTypes = AudioExtractionCategoryType[];
-export const AudioExtractionCategoryTypes = /*@__PURE__*/ S.Array(AudioExtractionCategoryType);
+export const AudioExtractionCategoryTypes =
+  DocumentOutputTextFormatTypes as any as S.Schema<AudioExtractionCategoryTypes>;
 export interface SpeakerLabelingConfiguration {
   state: State;
 }
@@ -619,18 +616,14 @@ export type AudioStandardGenerativeFieldType =
 export const AudioStandardGenerativeFieldType = S.String;
 
 export type AudioStandardGenerativeFieldTypes = AudioStandardGenerativeFieldType[];
-export const AudioStandardGenerativeFieldTypes = /*@__PURE__*/ S.Array(
-  AudioStandardGenerativeFieldType,
-);
+export const AudioStandardGenerativeFieldTypes =
+  DocumentExtractionGranularityTypes as any as S.Schema<AudioStandardGenerativeFieldTypes>;
 export interface AudioStandardGenerativeField {
   state: State;
   types?: AudioStandardGenerativeFieldType[];
 }
-export const AudioStandardGenerativeField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ state: State, types: S.optional(AudioStandardGenerativeFieldTypes) }),
-).annotate({
-  identifier: "AudioStandardGenerativeField",
-}) as any as S.Schema<AudioStandardGenerativeField>;
+export const AudioStandardGenerativeField =
+  ImageStandardGenerativeField as any as S.Schema<AudioStandardGenerativeField>;
 export interface AudioStandardOutputConfiguration {
   extraction?: AudioStandardExtraction;
   generativeField?: AudioStandardGenerativeField;
@@ -716,7 +709,8 @@ export type SensitiveDataDetectionScopeType = "STANDARD" | "CUSTOM" | (string & 
 export const SensitiveDataDetectionScopeType = S.String;
 
 export type SensitiveDataDetectionScope = SensitiveDataDetectionScopeType[];
-export const SensitiveDataDetectionScope = /*@__PURE__*/ S.Array(SensitiveDataDetectionScopeType);
+export const SensitiveDataDetectionScope =
+  DocumentOutputTextFormatTypes as any as S.Schema<SensitiveDataDetectionScope>;
 export type PIIEntityType =
   | "ALL"
   | "ADDRESS"
@@ -754,7 +748,7 @@ export type PIIEntityType =
 export const PIIEntityType = S.String;
 
 export type PIIEntityTypes = PIIEntityType[];
-export const PIIEntityTypes = /*@__PURE__*/ S.Array(PIIEntityType);
+export const PIIEntityTypes = DocumentOutputTextFormatTypes as any as S.Schema<PIIEntityTypes>;
 export type PIIRedactionMaskMode = "PII" | "ENTITY_TYPE" | (string & {});
 export const PIIRedactionMaskMode = S.String;
 
@@ -830,7 +824,8 @@ export type Language =
 export const Language = S.String;
 
 export type AudioInputLanguages = Language[];
-export const AudioInputLanguages = /*@__PURE__*/ S.Array(Language);
+export const AudioInputLanguages =
+  DocumentOutputTextFormatTypes as any as S.Schema<AudioInputLanguages>;
 export type AudioGenerativeOutputLanguage = "DEFAULT" | "EN" | (string & {});
 export const AudioGenerativeOutputLanguage = S.String;
 

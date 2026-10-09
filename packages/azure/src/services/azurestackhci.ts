@@ -4932,15 +4932,8 @@ export interface EdgeMachineDiskPrivilegedJobPropertiesInput {
   /** The error detail. */
   error?: LogCollectionPropertiesInput;
 }
-export const EdgeMachineDiskPrivilegedJobPropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    jobType: PrivilegedJobType,
-    deploymentMode: S.optional(DeploymentMode),
-    error: S.optional(LogCollectionPropertiesInput),
-  }),
-).annotate({
-  identifier: "EdgeMachineDiskPrivilegedJobPropertiesInput",
-}) as any as S.Schema<EdgeMachineDiskPrivilegedJobPropertiesInput>;
+export const EdgeMachineDiskPrivilegedJobPropertiesInput =
+  EdgeMachineDiskJobPropertiesInput as any as S.Schema<EdgeMachineDiskPrivilegedJobPropertiesInput>;
 
 export interface EdgeMachineDiskPrivilegedJobsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5311,15 +5304,8 @@ export interface EdgeMachineJobPropertiesInput {
   /** The error detail. */
   error?: LogCollectionPropertiesInput;
 }
-export const EdgeMachineJobPropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    jobType: EdgeMachineJobType,
-    deploymentMode: S.optional(DeploymentMode),
-    error: S.optional(LogCollectionPropertiesInput),
-  }),
-).annotate({
-  identifier: "EdgeMachineJobPropertiesInput",
-}) as any as S.Schema<EdgeMachineJobPropertiesInput>;
+export const EdgeMachineJobPropertiesInput =
+  EdgeMachineDiskJobPropertiesInput as any as S.Schema<EdgeMachineJobPropertiesInput>;
 
 export interface EdgeMachineJobsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5451,15 +5437,8 @@ export interface EdgeMachineNetworkAdapterJobPropertiesInput {
   /** The error detail. */
   error?: LogCollectionPropertiesInput;
 }
-export const EdgeMachineNetworkAdapterJobPropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    jobType: NetworkAdapterJobType,
-    deploymentMode: S.optional(DeploymentMode),
-    error: S.optional(LogCollectionPropertiesInput),
-  }),
-).annotate({
-  identifier: "EdgeMachineNetworkAdapterJobPropertiesInput",
-}) as any as S.Schema<EdgeMachineNetworkAdapterJobPropertiesInput>;
+export const EdgeMachineNetworkAdapterJobPropertiesInput =
+  EdgeMachineDiskJobPropertiesInput as any as S.Schema<EdgeMachineNetworkAdapterJobPropertiesInput>;
 
 export interface EdgeMachineNetworkAdapterJobsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -8564,14 +8543,8 @@ export interface NetworkAdapterProvisioningStatus {
   /** The status of the operation performed on the network adapter. */
   status?: NetworkAdapterOperationStatus;
 }
-export const NetworkAdapterProvisioningStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operationId: S.optional(S.String),
-    status: S.optional(NetworkAdapterOperationStatus),
-  }),
-).annotate({
-  identifier: "NetworkAdapterProvisioningStatus",
-}) as any as S.Schema<NetworkAdapterProvisioningStatus>;
+export const NetworkAdapterProvisioningStatus =
+  GalleryImageStatusProvisioningStatus as any as S.Schema<NetworkAdapterProvisioningStatus>;
 
 /** The observed state of network adapters. */
 export interface NetworkAdapterStatus {
@@ -9375,14 +9348,8 @@ export interface LogicalNetworkStatusProvisioningStatus {
   /** The status of the operation performed on the logical network [Succeeded, Failed, InProgress] */
   status?: LogicalNetworkStatusProvisioningStatusStatus;
 }
-export const LogicalNetworkStatusProvisioningStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operationId: S.optional(S.String),
-    status: S.optional(LogicalNetworkStatusProvisioningStatusStatus),
-  }),
-).annotate({
-  identifier: "LogicalNetworkStatusProvisioningStatus",
-}) as any as S.Schema<LogicalNetworkStatusProvisioningStatus>;
+export const LogicalNetworkStatusProvisioningStatus =
+  GalleryImageStatusProvisioningStatus as any as S.Schema<LogicalNetworkStatusProvisioningStatus>;
 
 /** The observed state of logical networks */
 export interface LogicalNetworkStatus {
@@ -9392,13 +9359,7 @@ export interface LogicalNetworkStatus {
   errorMessage?: string;
   provisioningStatus?: LogicalNetworkStatusProvisioningStatus;
 }
-export const LogicalNetworkStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    errorCode: S.optional(S.String),
-    errorMessage: S.optional(S.String),
-    provisioningStatus: S.optional(LogicalNetworkStatusProvisioningStatus),
-  }),
-).annotate({ identifier: "LogicalNetworkStatus" }) as any as S.Schema<LogicalNetworkStatus>;
+export const LogicalNetworkStatus = NetworkAdapterStatus as any as S.Schema<LogicalNetworkStatus>;
 
 /** Properties under the logical network resource */
 export interface LogicalNetworkProperties {
@@ -9525,14 +9486,8 @@ export interface MarketplaceGalleryImageStatusProvisioningStatus {
   /** The status of the operation performed on the gallery image [Succeeded, Failed, InProgress] */
   status?: MarketplaceGalleryImageStatusProvisioningStatusStatus;
 }
-export const MarketplaceGalleryImageStatusProvisioningStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operationId: S.optional(S.String),
-    status: S.optional(MarketplaceGalleryImageStatusProvisioningStatusStatus),
-  }),
-).annotate({
-  identifier: "MarketplaceGalleryImageStatusProvisioningStatus",
-}) as any as S.Schema<MarketplaceGalleryImageStatusProvisioningStatus>;
+export const MarketplaceGalleryImageStatusProvisioningStatus =
+  GalleryImageStatusProvisioningStatus as any as S.Schema<MarketplaceGalleryImageStatusProvisioningStatus>;
 
 /** The download status of the gallery image */
 export type MarketplaceGalleryImageStatusDownloadStatus = GalleryImageStatusDownloadStatus;
@@ -9751,14 +9706,8 @@ export interface NetworkInterfaceStatusProvisioningStatus {
   /** The status of the operation performed on the network interface [Succeeded, Failed, InProgress] */
   status?: NetworkInterfaceStatusProvisioningStatusStatus;
 }
-export const NetworkInterfaceStatusProvisioningStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operationId: S.optional(S.String),
-    status: S.optional(NetworkInterfaceStatusProvisioningStatusStatus),
-  }),
-).annotate({
-  identifier: "NetworkInterfaceStatusProvisioningStatus",
-}) as any as S.Schema<NetworkInterfaceStatusProvisioningStatus>;
+export const NetworkInterfaceStatusProvisioningStatus =
+  GalleryImageStatusProvisioningStatus as any as S.Schema<NetworkInterfaceStatusProvisioningStatus>;
 
 /** The observed state of network interfaces */
 export interface NetworkInterfaceStatus {
@@ -9768,13 +9717,8 @@ export interface NetworkInterfaceStatus {
   errorMessage?: string;
   provisioningStatus?: NetworkInterfaceStatusProvisioningStatus;
 }
-export const NetworkInterfaceStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    errorCode: S.optional(S.String),
-    errorMessage: S.optional(S.String),
-    provisioningStatus: S.optional(NetworkInterfaceStatusProvisioningStatus),
-  }),
-).annotate({ identifier: "NetworkInterfaceStatus" }) as any as S.Schema<NetworkInterfaceStatus>;
+export const NetworkInterfaceStatus =
+  NetworkAdapterStatus as any as S.Schema<NetworkInterfaceStatus>;
 
 /** Properties under the network interface resource */
 export interface NetworkInterfaceProperties {
@@ -10270,14 +10214,8 @@ export interface StorageContainerStatusProvisioningStatus {
   /** The status of the operation performed on the storage container [Succeeded, Failed, InProgress] */
   status?: StorageContainerStatusProvisioningStatusStatus;
 }
-export const StorageContainerStatusProvisioningStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operationId: S.optional(S.String),
-    status: S.optional(StorageContainerStatusProvisioningStatusStatus),
-  }),
-).annotate({
-  identifier: "StorageContainerStatusProvisioningStatus",
-}) as any as S.Schema<StorageContainerStatusProvisioningStatus>;
+export const StorageContainerStatusProvisioningStatus =
+  GalleryImageStatusProvisioningStatus as any as S.Schema<StorageContainerStatusProvisioningStatus>;
 
 /** The observed state of storage containers */
 export interface StorageContainerStatus {
@@ -11210,14 +11148,8 @@ export interface VirtualHardDiskStatusProvisioningStatus {
   /** The status of the operation performed on the virtual hard disk [Succeeded, Failed, InProgress] */
   status?: VirtualHardDiskStatusProvisioningStatusStatus;
 }
-export const VirtualHardDiskStatusProvisioningStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operationId: S.optional(S.String),
-    status: S.optional(VirtualHardDiskStatusProvisioningStatusStatus),
-  }),
-).annotate({
-  identifier: "VirtualHardDiskStatusProvisioningStatus",
-}) as any as S.Schema<VirtualHardDiskStatusProvisioningStatus>;
+export const VirtualHardDiskStatusProvisioningStatus =
+  GalleryImageStatusProvisioningStatus as any as S.Schema<VirtualHardDiskStatusProvisioningStatus>;
 
 /** The observed state of virtual hard disks */
 export interface VirtualHardDiskStatus {
@@ -11227,13 +11159,7 @@ export interface VirtualHardDiskStatus {
   errorMessage?: string;
   provisioningStatus?: VirtualHardDiskStatusProvisioningStatus;
 }
-export const VirtualHardDiskStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    errorCode: S.optional(S.String),
-    errorMessage: S.optional(S.String),
-    provisioningStatus: S.optional(VirtualHardDiskStatusProvisioningStatus),
-  }),
-).annotate({ identifier: "VirtualHardDiskStatus" }) as any as S.Schema<VirtualHardDiskStatus>;
+export const VirtualHardDiskStatus = NetworkAdapterStatus as any as S.Schema<VirtualHardDiskStatus>;
 
 /** Properties under the virtual hard disk resource */
 export interface VirtualHardDiskProperties {
@@ -11761,14 +11687,8 @@ export interface VirtualMachineInstanceStatusProvisioningStatus {
   /** The status of the operation performed on the virtual machine instance [Succeeded, Failed, InProgress] */
   status?: VirtualMachineInstanceStatusProvisioningStatusStatus;
 }
-export const VirtualMachineInstanceStatusProvisioningStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operationId: S.optional(S.String),
-    status: S.optional(VirtualMachineInstanceStatusProvisioningStatusStatus),
-  }),
-).annotate({
-  identifier: "VirtualMachineInstanceStatusProvisioningStatus",
-}) as any as S.Schema<VirtualMachineInstanceStatusProvisioningStatus>;
+export const VirtualMachineInstanceStatusProvisioningStatus =
+  GalleryImageStatusProvisioningStatus as any as S.Schema<VirtualMachineInstanceStatusProvisioningStatus>;
 
 /** The observed state of virtual machine instances */
 export interface VirtualMachineInstanceStatus {
@@ -11915,15 +11835,8 @@ export interface GetVirtualMachineInstanceResponseIdentity {
   /** The identity type. */
   type?: GetVirtualMachineInstanceResponseIdentityType;
 }
-export const GetVirtualMachineInstanceResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: S.optional(GetVirtualMachineInstanceResponseIdentityType),
-  }),
-).annotate({
-  identifier: "GetVirtualMachineInstanceResponseIdentity",
-}) as any as S.Schema<GetVirtualMachineInstanceResponseIdentity>;
+export const GetVirtualMachineInstanceResponseIdentity =
+  HybridIdentityMetadataPropertiesIdentity as any as S.Schema<GetVirtualMachineInstanceResponseIdentity>;
 
 export interface GetVirtualMachineInstanceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -14523,15 +14436,8 @@ export interface VirtualMachineInstanceIdentity {
   /** The identity type. */
   type?: VirtualMachineInstanceIdentityType;
 }
-export const VirtualMachineInstanceIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: S.optional(VirtualMachineInstanceIdentityType),
-  }),
-).annotate({
-  identifier: "VirtualMachineInstanceIdentity",
-}) as any as S.Schema<VirtualMachineInstanceIdentity>;
+export const VirtualMachineInstanceIdentity =
+  HybridIdentityMetadataPropertiesIdentity as any as S.Schema<VirtualMachineInstanceIdentity>;
 
 /** The virtual machine instance resource definition. */
 export interface VirtualMachineInstance {
@@ -15491,15 +15397,8 @@ export interface RestartVirtualMachineInstanceResponseIdentity {
   /** The identity type. */
   type?: RestartVirtualMachineInstanceResponseIdentityType;
 }
-export const RestartVirtualMachineInstanceResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: S.optional(RestartVirtualMachineInstanceResponseIdentityType),
-  }),
-).annotate({
-  identifier: "RestartVirtualMachineInstanceResponseIdentity",
-}) as any as S.Schema<RestartVirtualMachineInstanceResponseIdentity>;
+export const RestartVirtualMachineInstanceResponseIdentity =
+  HybridIdentityMetadataPropertiesIdentity as any as S.Schema<RestartVirtualMachineInstanceResponseIdentity>;
 
 export interface RestartVirtualMachineInstanceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -15516,19 +15415,8 @@ export interface RestartVirtualMachineInstanceResponse {
   /** Identity for the resource. */
   identity?: RestartVirtualMachineInstanceResponseIdentity;
 }
-export const RestartVirtualMachineInstanceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(VirtualMachineInstanceProperties),
-    extendedLocation: S.optional(GalleryImagesCreateOrUpdateResponseExtendedLocation),
-    identity: S.optional(RestartVirtualMachineInstanceResponseIdentity),
-  }),
-).annotate({
-  identifier: "RestartVirtualMachineInstanceResponse",
-}) as any as S.Schema<RestartVirtualMachineInstanceResponse>;
+export const RestartVirtualMachineInstanceResponse =
+  GetVirtualMachineInstanceResponse as any as S.Schema<RestartVirtualMachineInstanceResponse>;
 
 /** Secured Core Compliance Assignment */
 export type SecurityPropertiesInputSecuredCoreComplianceAssignment =
@@ -15656,15 +15544,8 @@ export interface StartVirtualMachineInstanceResponseIdentity {
   /** The identity type. */
   type?: StartVirtualMachineInstanceResponseIdentityType;
 }
-export const StartVirtualMachineInstanceResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: S.optional(StartVirtualMachineInstanceResponseIdentityType),
-  }),
-).annotate({
-  identifier: "StartVirtualMachineInstanceResponseIdentity",
-}) as any as S.Schema<StartVirtualMachineInstanceResponseIdentity>;
+export const StartVirtualMachineInstanceResponseIdentity =
+  HybridIdentityMetadataPropertiesIdentity as any as S.Schema<StartVirtualMachineInstanceResponseIdentity>;
 
 export interface StartVirtualMachineInstanceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -15681,19 +15562,8 @@ export interface StartVirtualMachineInstanceResponse {
   /** Identity for the resource. */
   identity?: StartVirtualMachineInstanceResponseIdentity;
 }
-export const StartVirtualMachineInstanceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(VirtualMachineInstanceProperties),
-    extendedLocation: S.optional(GalleryImagesCreateOrUpdateResponseExtendedLocation),
-    identity: S.optional(StartVirtualMachineInstanceResponseIdentity),
-  }),
-).annotate({
-  identifier: "StartVirtualMachineInstanceResponse",
-}) as any as S.Schema<StartVirtualMachineInstanceResponse>;
+export const StartVirtualMachineInstanceResponse =
+  GetVirtualMachineInstanceResponse as any as S.Schema<StartVirtualMachineInstanceResponse>;
 
 export interface StopVirtualMachineInstanceRequest {
   /** The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended. */
@@ -15733,15 +15603,8 @@ export interface StopVirtualMachineInstanceResponseIdentity {
   /** The identity type. */
   type?: StopVirtualMachineInstanceResponseIdentityType;
 }
-export const StopVirtualMachineInstanceResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: S.optional(StopVirtualMachineInstanceResponseIdentityType),
-  }),
-).annotate({
-  identifier: "StopVirtualMachineInstanceResponseIdentity",
-}) as any as S.Schema<StopVirtualMachineInstanceResponseIdentity>;
+export const StopVirtualMachineInstanceResponseIdentity =
+  HybridIdentityMetadataPropertiesIdentity as any as S.Schema<StopVirtualMachineInstanceResponseIdentity>;
 
 export interface StopVirtualMachineInstanceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -15758,19 +15621,8 @@ export interface StopVirtualMachineInstanceResponse {
   /** Identity for the resource. */
   identity?: StopVirtualMachineInstanceResponseIdentity;
 }
-export const StopVirtualMachineInstanceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(VirtualMachineInstanceProperties),
-    extendedLocation: S.optional(GalleryImagesCreateOrUpdateResponseExtendedLocation),
-    identity: S.optional(StopVirtualMachineInstanceResponseIdentity),
-  }),
-).annotate({
-  identifier: "StopVirtualMachineInstanceResponse",
-}) as any as S.Schema<StopVirtualMachineInstanceResponse>;
+export const StopVirtualMachineInstanceResponse =
+  GetVirtualMachineInstanceResponse as any as S.Schema<StopVirtualMachineInstanceResponse>;
 
 /** Resource tags. */
 export type StorageContainersCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
@@ -17021,15 +16873,8 @@ export interface UpdateVirtualMachineInstanceResponseIdentity {
   /** The identity type. */
   type?: UpdateVirtualMachineInstanceResponseIdentityType;
 }
-export const UpdateVirtualMachineInstanceResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: S.optional(UpdateVirtualMachineInstanceResponseIdentityType),
-  }),
-).annotate({
-  identifier: "UpdateVirtualMachineInstanceResponseIdentity",
-}) as any as S.Schema<UpdateVirtualMachineInstanceResponseIdentity>;
+export const UpdateVirtualMachineInstanceResponseIdentity =
+  HybridIdentityMetadataPropertiesIdentity as any as S.Schema<UpdateVirtualMachineInstanceResponseIdentity>;
 
 export interface UpdateVirtualMachineInstanceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -17046,19 +16891,8 @@ export interface UpdateVirtualMachineInstanceResponse {
   /** Identity for the resource. */
   identity?: UpdateVirtualMachineInstanceResponseIdentity;
 }
-export const UpdateVirtualMachineInstanceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(VirtualMachineInstanceProperties),
-    extendedLocation: S.optional(GalleryImagesCreateOrUpdateResponseExtendedLocation),
-    identity: S.optional(UpdateVirtualMachineInstanceResponseIdentity),
-  }),
-).annotate({
-  identifier: "UpdateVirtualMachineInstanceResponse",
-}) as any as S.Schema<UpdateVirtualMachineInstanceResponse>;
+export const UpdateVirtualMachineInstanceResponse =
+  GetVirtualMachineInstanceResponse as any as S.Schema<UpdateVirtualMachineInstanceResponse>;
 
 export type RawCertificateDataCertificatesList = Array<string>;
 export const RawCertificateDataCertificatesList =
@@ -17411,18 +17245,8 @@ export interface VirtualMachineInstancePropertiesInputHardwareProfile {
   memoryMB?: number;
   dynamicMemoryConfig?: VirtualMachineInstancePropertiesHardwareProfileDynamicMemoryConfig;
 }
-export const VirtualMachineInstancePropertiesInputHardwareProfile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    vmSize: S.optional(VirtualMachineInstancePropertiesInputHardwareProfileVmSize),
-    processors: S.optional(S.Number),
-    memoryMB: S.optional(S.Number),
-    dynamicMemoryConfig: S.optional(
-      VirtualMachineInstancePropertiesHardwareProfileDynamicMemoryConfig,
-    ),
-  }),
-).annotate({
-  identifier: "VirtualMachineInstancePropertiesInputHardwareProfile",
-}) as any as S.Schema<VirtualMachineInstancePropertiesInputHardwareProfile>;
+export const VirtualMachineInstancePropertiesInputHardwareProfile =
+  VirtualMachineInstancePropertiesHardwareProfile as any as S.Schema<VirtualMachineInstancePropertiesInputHardwareProfile>;
 
 export type VirtualMachineInstancePropertiesInputNetworkProfileNetworkInterfacesItem =
   VirtualMachineInstancePropertiesNetworkProfileNetworkInterfacesItem;
@@ -17479,15 +17303,8 @@ export interface VirtualMachineInstancePropertiesInputSecurityProfile {
   /** Specifies the SecurityType of the virtual machine. EnableTPM and SecureBootEnabled must be set to true for SecurityType to function. */
   securityType?: VirtualMachineInstancePropertiesInputSecurityProfileSecurityType | (string & {});
 }
-export const VirtualMachineInstancePropertiesInputSecurityProfile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enableTPM: S.optional(S.Boolean),
-    uefiSettings: S.optional(VirtualMachineInstancePropertiesSecurityProfileUefiSettings),
-    securityType: S.optional(VirtualMachineInstancePropertiesInputSecurityProfileSecurityType),
-  }),
-).annotate({
-  identifier: "VirtualMachineInstancePropertiesInputSecurityProfile",
-}) as any as S.Schema<VirtualMachineInstancePropertiesInputSecurityProfile>;
+export const VirtualMachineInstancePropertiesInputSecurityProfile =
+  VirtualMachineInstancePropertiesSecurityProfile as any as S.Schema<VirtualMachineInstancePropertiesInputSecurityProfile>;
 
 export type VirtualMachineInstancePropertiesInputStorageProfileDataDisksItem =
   VirtualMachineInstancePropertiesStorageProfileDataDisksItem;
@@ -17604,13 +17421,8 @@ export interface VirtualMachineInstancesCreateOrUpdateRequestIdentity {
   /** The identity type. */
   type?: VirtualMachineInstancesCreateOrUpdateRequestIdentityType | (string & {});
 }
-export const VirtualMachineInstancesCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(VirtualMachineInstancesCreateOrUpdateRequestIdentityType),
-  }),
-).annotate({
-  identifier: "VirtualMachineInstancesCreateOrUpdateRequestIdentity",
-}) as any as S.Schema<VirtualMachineInstancesCreateOrUpdateRequestIdentity>;
+export const VirtualMachineInstancesCreateOrUpdateRequestIdentity =
+  UpdateVirtualMachineInstanceRequestIdentity as any as S.Schema<VirtualMachineInstancesCreateOrUpdateRequestIdentity>;
 
 export interface VirtualMachineInstancesCreateOrUpdateRequest {
   /** The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended. */
@@ -17658,15 +17470,8 @@ export interface VirtualMachineInstancesCreateOrUpdateResponseIdentity {
   /** The identity type. */
   type?: VirtualMachineInstancesCreateOrUpdateResponseIdentityType;
 }
-export const VirtualMachineInstancesCreateOrUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: S.optional(VirtualMachineInstancesCreateOrUpdateResponseIdentityType),
-  }),
-).annotate({
-  identifier: "VirtualMachineInstancesCreateOrUpdateResponseIdentity",
-}) as any as S.Schema<VirtualMachineInstancesCreateOrUpdateResponseIdentity>;
+export const VirtualMachineInstancesCreateOrUpdateResponseIdentity =
+  HybridIdentityMetadataPropertiesIdentity as any as S.Schema<VirtualMachineInstancesCreateOrUpdateResponseIdentity>;
 
 export interface VirtualMachineInstancesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -17683,19 +17488,8 @@ export interface VirtualMachineInstancesCreateOrUpdateResponse {
   /** Identity for the resource. */
   identity?: VirtualMachineInstancesCreateOrUpdateResponseIdentity;
 }
-export const VirtualMachineInstancesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(VirtualMachineInstanceProperties),
-    extendedLocation: S.optional(GalleryImagesCreateOrUpdateResponseExtendedLocation),
-    identity: S.optional(VirtualMachineInstancesCreateOrUpdateResponseIdentity),
-  }),
-).annotate({
-  identifier: "VirtualMachineInstancesCreateOrUpdateResponse",
-}) as any as S.Schema<VirtualMachineInstancesCreateOrUpdateResponse>;
+export const VirtualMachineInstancesCreateOrUpdateResponse =
+  GetVirtualMachineInstanceResponse as any as S.Schema<VirtualMachineInstancesCreateOrUpdateResponse>;
 
 export type ArcSettingsConsentAndInstallDefaultExtensionsError = AzureOpError;
 /** Add consent time for default extensions and initiate extensions installation */

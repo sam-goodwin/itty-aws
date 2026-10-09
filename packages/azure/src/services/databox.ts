@@ -1024,9 +1024,8 @@ export const PreferencesStorageAccountAccessTierPreferencesItem = S.String;
 /** Preferences related to the Access Tier of storage accounts. */
 export type PreferencesStorageAccountAccessTierPreferencesList =
   Array<PreferencesStorageAccountAccessTierPreferencesItem>;
-export const PreferencesStorageAccountAccessTierPreferencesList = /*@__PURE__*/ S.Array(
-  PreferencesStorageAccountAccessTierPreferencesItem,
-) as any as S.Schema<PreferencesStorageAccountAccessTierPreferencesList>;
+export const PreferencesStorageAccountAccessTierPreferencesList =
+  PreferencesInputStorageAccountAccessTierPreferencesList as any as S.Schema<PreferencesStorageAccountAccessTierPreferencesList>;
 
 /** Preferences related to the order */
 export interface Preferences {
@@ -1115,9 +1114,8 @@ export const CustomerResolutionCode = S.String;
 
 /** Available actions on the job. */
 export type JobDetailsActionsList = Array<CustomerResolutionCode>;
-export const JobDetailsActionsList = /*@__PURE__*/ S.Array(
-  CustomerResolutionCode,
-) as any as S.Schema<JobDetailsActionsList>;
+export const JobDetailsActionsList =
+  PreferencesInputStorageAccountAccessTierPreferencesList as any as S.Schema<JobDetailsActionsList>;
 
 /** Last Mitigation Action Performed On Job */
 export interface LastMitigationActionOnJob {
@@ -1888,9 +1886,8 @@ export const OperationList = /*@__PURE__*/ S.suspend(() =>
 export type ListServiceAvailableSkusByResourceGroupRequestSkuNamesList = Array<
   SkuName | (string & {})
 >;
-export const ListServiceAvailableSkusByResourceGroupRequestSkuNamesList = /*@__PURE__*/ S.Array(
-  SkuName,
-) as any as S.Schema<ListServiceAvailableSkusByResourceGroupRequestSkuNamesList>;
+export const ListServiceAvailableSkusByResourceGroupRequestSkuNamesList =
+  PreferencesInputStorageAccountAccessTierPreferencesList as any as S.Schema<ListServiceAvailableSkusByResourceGroupRequestSkuNamesList>;
 
 export interface ListServiceAvailableSkusByResourceGroupRequest {
   /** The ID of the target subscription. */

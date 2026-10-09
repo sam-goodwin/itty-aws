@@ -66,14 +66,8 @@ export interface GetAsyncTaskResponseBodyCase1Operation {
   surface: GetAsyncTaskResponseBodyCase1OperationSurface;
   name: string;
 }
-export const GetAsyncTaskResponseBodyCase1Operation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    surface: GetAsyncTaskResponseBodyCase1OperationSurface,
-    name: S.String,
-  }),
-).annotate({
-  identifier: "GetAsyncTaskResponseBodyCase1Operation",
-}) as any as S.Schema<GetAsyncTaskResponseBodyCase1Operation>;
+export const GetAsyncTaskResponseBodyCase1Operation =
+  GetAsyncTaskResponseBodyCase0Operation as any as S.Schema<GetAsyncTaskResponseBodyCase1Operation>;
 
 export type PublicApiAsyncTaskStatusResultJsonValueCase3List =
   Array<PublicApiAsyncTaskStatusResultJsonValue>;
@@ -136,14 +130,8 @@ export interface GetAsyncTaskResponseBodyCase2Operation {
   surface: GetAsyncTaskResponseBodyCase2OperationSurface;
   name: string;
 }
-export const GetAsyncTaskResponseBodyCase2Operation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    surface: GetAsyncTaskResponseBodyCase2OperationSurface,
-    name: S.String,
-  }),
-).annotate({
-  identifier: "GetAsyncTaskResponseBodyCase2Operation",
-}) as any as S.Schema<GetAsyncTaskResponseBodyCase2Operation>;
+export const GetAsyncTaskResponseBodyCase2Operation =
+  GetAsyncTaskResponseBodyCase0Operation as any as S.Schema<GetAsyncTaskResponseBodyCase2Operation>;
 
 export type GetAsyncTaskResponseBodyCase2ErrorCase0AdditionalDataValueCase1List = Array<string>;
 export const GetAsyncTaskResponseBodyCase2ErrorCase0AdditionalDataValueCase1List =

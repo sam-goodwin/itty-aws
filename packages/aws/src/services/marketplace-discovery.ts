@@ -400,11 +400,9 @@ export interface PurchaseOptionBadge {
   displayName: string;
   badgeType: PurchaseOptionBadgeType;
 }
-export const PurchaseOptionBadge = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ displayName: S.String, badgeType: PurchaseOptionBadgeType }),
-).annotate({ identifier: "PurchaseOptionBadge" }) as any as S.Schema<PurchaseOptionBadge>;
+export const PurchaseOptionBadge = ListingBadge as any as S.Schema<PurchaseOptionBadge>;
 export type PurchaseOptionBadgeList = PurchaseOptionBadge[];
-export const PurchaseOptionBadgeList = /*@__PURE__*/ S.Array(PurchaseOptionBadge);
+export const PurchaseOptionBadgeList = ListingBadgeList as any as S.Schema<PurchaseOptionBadgeList>;
 export interface GetOfferOutput {
   locale?: string;
   offerId: string;

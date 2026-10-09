@@ -245,9 +245,8 @@ export const PoolsBulkEditResultItemHealthSourcesItem = S.String;
 
 export type PoolsBulkEditResultItemHealthSourcesList =
   Array<PoolsBulkEditResultItemHealthSourcesItem>;
-export const PoolsBulkEditResultItemHealthSourcesList = /*@__PURE__*/ S.Array(
-  PoolsBulkEditResultItemHealthSourcesItem,
-) as any as S.Schema<PoolsBulkEditResultItemHealthSourcesList>;
+export const PoolsBulkEditResultItemHealthSourcesList =
+  PoolsBulkEditResultItemCheckRegionsList as any as S.Schema<PoolsBulkEditResultItemHealthSourcesList>;
 
 export type PoolsBulkEditResultItemLoadSheddingDefaultPolicy = "random" | "hash";
 export const PoolsBulkEditResultItemLoadSheddingDefaultPolicy = S.String;
@@ -2310,17 +2309,15 @@ export type PoolsCreateResponseCheckRegionsItem =
 export const PoolsCreateResponseCheckRegionsItem = S.String;
 
 export type PoolsCreateResponseCheckRegionsList = Array<PoolsCreateResponseCheckRegionsItem>;
-export const PoolsCreateResponseCheckRegionsList = /*@__PURE__*/ S.Array(
-  PoolsCreateResponseCheckRegionsItem,
-) as any as S.Schema<PoolsCreateResponseCheckRegionsList>;
+export const PoolsCreateResponseCheckRegionsList =
+  PoolsBulkEditResultItemCheckRegionsList as any as S.Schema<PoolsCreateResponseCheckRegionsList>;
 
 export type PoolsCreateResponseHealthSourcesItem = "local" | "regional" | "global";
 export const PoolsCreateResponseHealthSourcesItem = S.String;
 
 export type PoolsCreateResponseHealthSourcesList = Array<PoolsCreateResponseHealthSourcesItem>;
-export const PoolsCreateResponseHealthSourcesList = /*@__PURE__*/ S.Array(
-  PoolsCreateResponseHealthSourcesItem,
-) as any as S.Schema<PoolsCreateResponseHealthSourcesList>;
+export const PoolsCreateResponseHealthSourcesList =
+  PoolsBulkEditResultItemCheckRegionsList as any as S.Schema<PoolsCreateResponseHealthSourcesList>;
 
 export type PoolsCreateResponseLoadSheddingDefaultPolicy = "random" | "hash";
 export const PoolsCreateResponseLoadSheddingDefaultPolicy = S.String;
@@ -2338,20 +2335,8 @@ export interface PoolsCreateResponseLoadShedding {
   /** Only the hash policy is supported for existing sessions (to avoid exponential decay). */
   sessionPolicy?: PoolsCreateResponseLoadSheddingSessionPolicy | null;
 }
-export const PoolsCreateResponseLoadShedding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultPercent: S.optional(S.NullOr(S.Number).pipe(T.Body("default_percent"))),
-    defaultPolicy: S.optional(
-      S.NullOr(PoolsCreateResponseLoadSheddingDefaultPolicy).pipe(T.Body("default_policy")),
-    ),
-    sessionPercent: S.optional(S.NullOr(S.Number).pipe(T.Body("session_percent"))),
-    sessionPolicy: S.optional(
-      S.NullOr(PoolsCreateResponseLoadSheddingSessionPolicy).pipe(T.Body("session_policy")),
-    ),
-  }),
-).annotate({
-  identifier: "PoolsCreateResponseLoadShedding",
-}) as any as S.Schema<PoolsCreateResponseLoadShedding>;
+export const PoolsCreateResponseLoadShedding =
+  PoolsBulkEditResultItemLoadShedding as any as S.Schema<PoolsCreateResponseLoadShedding>;
 
 export type PoolsCreateResponseNetworksList = Array<string>;
 export const PoolsCreateResponseNetworksList =
@@ -2381,13 +2366,8 @@ export interface PoolsCreateResponseOriginSteering {
   /** The type of origin steering policy to use. */
   policy?: PoolsCreateResponseOriginSteeringPolicy | null;
 }
-export const PoolsCreateResponseOriginSteering = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policy: S.optional(S.NullOr(PoolsCreateResponseOriginSteeringPolicy)),
-  }),
-).annotate({
-  identifier: "PoolsCreateResponseOriginSteering",
-}) as any as S.Schema<PoolsCreateResponseOriginSteering>;
+export const PoolsCreateResponseOriginSteering =
+  PoolsBulkEditResultItemOriginSteering as any as S.Schema<PoolsCreateResponseOriginSteering>;
 
 export type PoolsCreateResponseOriginsItemHeaderHostList = Array<string>;
 export const PoolsCreateResponseOriginsItemHeaderHostList =
@@ -2809,16 +2789,8 @@ export interface GetResponseLocationStrategy {
   /** Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. */
   preferEcs?: GetResponseLocationStrategyPreferEcs | null;
 }
-export const GetResponseLocationStrategy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: S.optional(S.NullOr(GetResponseLocationStrategyMode)),
-    preferEcs: S.optional(
-      S.NullOr(GetResponseLocationStrategyPreferEcs).pipe(T.Body("prefer_ecs")),
-    ),
-  }),
-).annotate({
-  identifier: "GetResponseLocationStrategy",
-}) as any as S.Schema<GetResponseLocationStrategy>;
+export const GetResponseLocationStrategy =
+  CreateResponseLocationStrategy as any as S.Schema<GetResponseLocationStrategy>;
 
 export type GetResponseNetworksList = Array<string>;
 export const GetResponseNetworksList =
@@ -3002,16 +2974,8 @@ export interface GetResponseRulesItemOverridesLocationStrategy {
   /** Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. */
   preferEcs?: GetResponseRulesItemOverridesLocationStrategyPreferEcs | null;
 }
-export const GetResponseRulesItemOverridesLocationStrategy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: S.optional(S.NullOr(GetResponseRulesItemOverridesLocationStrategyMode)),
-    preferEcs: S.optional(
-      S.NullOr(GetResponseRulesItemOverridesLocationStrategyPreferEcs).pipe(T.Body("prefer_ecs")),
-    ),
-  }),
-).annotate({
-  identifier: "GetResponseRulesItemOverridesLocationStrategy",
-}) as any as S.Schema<GetResponseRulesItemOverridesLocationStrategy>;
+export const GetResponseRulesItemOverridesLocationStrategy =
+  CreateResponseLocationStrategy as any as S.Schema<GetResponseRulesItemOverridesLocationStrategy>;
 
 export type GetResponseRulesItemOverridesPoolWeightsMap = { [key: string]: number | undefined };
 export const GetResponseRulesItemOverridesPoolWeightsMap =
@@ -3631,23 +3595,12 @@ export interface MonitorsReferencesGetResultItem {
   resourceName?: string | null;
   resourceType?: string | null;
 }
-export const MonitorsReferencesGetResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    referenceType: S.optional(
-      S.NullOr(MonitorsReferencesGetResultItemReferenceType).pipe(T.Body("reference_type")),
-    ),
-    resourceId: S.optional(S.NullOr(S.String).pipe(T.Body("resource_id"))),
-    resourceName: S.optional(S.NullOr(S.String).pipe(T.Body("resource_name"))),
-    resourceType: S.optional(S.NullOr(S.String).pipe(T.Body("resource_type"))),
-  }),
-).annotate({
-  identifier: "MonitorsReferencesGetResultItem",
-}) as any as S.Schema<MonitorsReferencesGetResultItem>;
+export const MonitorsReferencesGetResultItem =
+  MonitorGroupsReferencesGetResultItem as any as S.Schema<MonitorsReferencesGetResultItem>;
 
 export type MonitorsReferencesGetResultList = Array<MonitorsReferencesGetResultItem>;
-export const MonitorsReferencesGetResultList = /*@__PURE__*/ S.Array(
-  MonitorsReferencesGetResultItem,
-) as any as S.Schema<MonitorsReferencesGetResultList>;
+export const MonitorsReferencesGetResultList =
+  MonitorGroupsReferencesGetResultList as any as S.Schema<MonitorsReferencesGetResultList>;
 
 export interface GetMonitorReferenceResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
@@ -3655,14 +3608,8 @@ export interface GetMonitorReferenceResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const GetMonitorReferenceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: MonitorsReferencesGetResultList.pipe(T.EnvelopePayload()),
-    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "GetMonitorReferenceResponse",
-}) as any as S.Schema<GetMonitorReferenceResponse>;
+export const GetMonitorReferenceResponse =
+  GetMonitorGroupReferenceResponse as any as S.Schema<GetMonitorReferenceResponse>;
 
 export interface GetPoolRequest {
   /** Identifier. */
@@ -3703,17 +3650,15 @@ export type PoolsGetResponseCheckRegionsItem =
 export const PoolsGetResponseCheckRegionsItem = S.String;
 
 export type PoolsGetResponseCheckRegionsList = Array<PoolsGetResponseCheckRegionsItem>;
-export const PoolsGetResponseCheckRegionsList = /*@__PURE__*/ S.Array(
-  PoolsGetResponseCheckRegionsItem,
-) as any as S.Schema<PoolsGetResponseCheckRegionsList>;
+export const PoolsGetResponseCheckRegionsList =
+  PoolsBulkEditResultItemCheckRegionsList as any as S.Schema<PoolsGetResponseCheckRegionsList>;
 
 export type PoolsGetResponseHealthSourcesItem = "local" | "regional" | "global";
 export const PoolsGetResponseHealthSourcesItem = S.String;
 
 export type PoolsGetResponseHealthSourcesList = Array<PoolsGetResponseHealthSourcesItem>;
-export const PoolsGetResponseHealthSourcesList = /*@__PURE__*/ S.Array(
-  PoolsGetResponseHealthSourcesItem,
-) as any as S.Schema<PoolsGetResponseHealthSourcesList>;
+export const PoolsGetResponseHealthSourcesList =
+  PoolsBulkEditResultItemCheckRegionsList as any as S.Schema<PoolsGetResponseHealthSourcesList>;
 
 export type PoolsGetResponseLoadSheddingDefaultPolicy = "random" | "hash";
 export const PoolsGetResponseLoadSheddingDefaultPolicy = S.String;
@@ -3731,20 +3676,8 @@ export interface PoolsGetResponseLoadShedding {
   /** Only the hash policy is supported for existing sessions (to avoid exponential decay). */
   sessionPolicy?: PoolsGetResponseLoadSheddingSessionPolicy | null;
 }
-export const PoolsGetResponseLoadShedding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultPercent: S.optional(S.NullOr(S.Number).pipe(T.Body("default_percent"))),
-    defaultPolicy: S.optional(
-      S.NullOr(PoolsGetResponseLoadSheddingDefaultPolicy).pipe(T.Body("default_policy")),
-    ),
-    sessionPercent: S.optional(S.NullOr(S.Number).pipe(T.Body("session_percent"))),
-    sessionPolicy: S.optional(
-      S.NullOr(PoolsGetResponseLoadSheddingSessionPolicy).pipe(T.Body("session_policy")),
-    ),
-  }),
-).annotate({
-  identifier: "PoolsGetResponseLoadShedding",
-}) as any as S.Schema<PoolsGetResponseLoadShedding>;
+export const PoolsGetResponseLoadShedding =
+  PoolsBulkEditResultItemLoadShedding as any as S.Schema<PoolsGetResponseLoadShedding>;
 
 export type PoolsGetResponseNetworksList = Array<string>;
 export const PoolsGetResponseNetworksList =
@@ -3774,13 +3707,8 @@ export interface PoolsGetResponseOriginSteering {
   /** The type of origin steering policy to use. */
   policy?: PoolsGetResponseOriginSteeringPolicy | null;
 }
-export const PoolsGetResponseOriginSteering = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policy: S.optional(S.NullOr(PoolsGetResponseOriginSteeringPolicy)),
-  }),
-).annotate({
-  identifier: "PoolsGetResponseOriginSteering",
-}) as any as S.Schema<PoolsGetResponseOriginSteering>;
+export const PoolsGetResponseOriginSteering =
+  PoolsBulkEditResultItemOriginSteering as any as S.Schema<PoolsGetResponseOriginSteering>;
 
 export type PoolsGetResponseOriginsItemHeaderHostList = Array<string>;
 export const PoolsGetResponseOriginsItemHeaderHostList =
@@ -4008,23 +3936,12 @@ export interface PoolsReferencesGetResultItem {
   resourceName?: string | null;
   resourceType?: string | null;
 }
-export const PoolsReferencesGetResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    referenceType: S.optional(
-      S.NullOr(PoolsReferencesGetResultItemReferenceType).pipe(T.Body("reference_type")),
-    ),
-    resourceId: S.optional(S.NullOr(S.String).pipe(T.Body("resource_id"))),
-    resourceName: S.optional(S.NullOr(S.String).pipe(T.Body("resource_name"))),
-    resourceType: S.optional(S.NullOr(S.String).pipe(T.Body("resource_type"))),
-  }),
-).annotate({
-  identifier: "PoolsReferencesGetResultItem",
-}) as any as S.Schema<PoolsReferencesGetResultItem>;
+export const PoolsReferencesGetResultItem =
+  MonitorGroupsReferencesGetResultItem as any as S.Schema<PoolsReferencesGetResultItem>;
 
 export type PoolsReferencesGetResultList = Array<PoolsReferencesGetResultItem>;
-export const PoolsReferencesGetResultList = /*@__PURE__*/ S.Array(
-  PoolsReferencesGetResultItem,
-) as any as S.Schema<PoolsReferencesGetResultList>;
+export const PoolsReferencesGetResultList =
+  MonitorGroupsReferencesGetResultList as any as S.Schema<PoolsReferencesGetResultList>;
 
 export interface GetPoolReferenceResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
@@ -4186,16 +4103,8 @@ export interface ListResultItemLocationStrategy {
   /** Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. */
   preferEcs?: ListResultItemLocationStrategyPreferEcs | null;
 }
-export const ListResultItemLocationStrategy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: S.optional(S.NullOr(ListResultItemLocationStrategyMode)),
-    preferEcs: S.optional(
-      S.NullOr(ListResultItemLocationStrategyPreferEcs).pipe(T.Body("prefer_ecs")),
-    ),
-  }),
-).annotate({
-  identifier: "ListResultItemLocationStrategy",
-}) as any as S.Schema<ListResultItemLocationStrategy>;
+export const ListResultItemLocationStrategy =
+  CreateResponseLocationStrategy as any as S.Schema<ListResultItemLocationStrategy>;
 
 export type ListResultItemNetworksList = Array<string>;
 export const ListResultItemNetworksList =
@@ -4385,18 +4294,8 @@ export interface ListResultItemRulesItemOverridesLocationStrategy {
   /** Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. */
   preferEcs?: ListResultItemRulesItemOverridesLocationStrategyPreferEcs | null;
 }
-export const ListResultItemRulesItemOverridesLocationStrategy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: S.optional(S.NullOr(ListResultItemRulesItemOverridesLocationStrategyMode)),
-    preferEcs: S.optional(
-      S.NullOr(ListResultItemRulesItemOverridesLocationStrategyPreferEcs).pipe(
-        T.Body("prefer_ecs"),
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "ListResultItemRulesItemOverridesLocationStrategy",
-}) as any as S.Schema<ListResultItemRulesItemOverridesLocationStrategy>;
+export const ListResultItemRulesItemOverridesLocationStrategy =
+  CreateResponseRulesItemOverridesLocationStrategy as any as S.Schema<ListResultItemRulesItemOverridesLocationStrategy>;
 
 export type ListResultItemRulesItemOverridesPoolWeightsMap = { [key: string]: number | undefined };
 export const ListResultItemRulesItemOverridesPoolWeightsMap =
@@ -5020,17 +4919,15 @@ export type PoolsListResultItemCheckRegionsItem =
 export const PoolsListResultItemCheckRegionsItem = S.String;
 
 export type PoolsListResultItemCheckRegionsList = Array<PoolsListResultItemCheckRegionsItem>;
-export const PoolsListResultItemCheckRegionsList = /*@__PURE__*/ S.Array(
-  PoolsListResultItemCheckRegionsItem,
-) as any as S.Schema<PoolsListResultItemCheckRegionsList>;
+export const PoolsListResultItemCheckRegionsList =
+  PoolsBulkEditResultItemCheckRegionsList as any as S.Schema<PoolsListResultItemCheckRegionsList>;
 
 export type PoolsListResultItemHealthSourcesItem = "local" | "regional" | "global";
 export const PoolsListResultItemHealthSourcesItem = S.String;
 
 export type PoolsListResultItemHealthSourcesList = Array<PoolsListResultItemHealthSourcesItem>;
-export const PoolsListResultItemHealthSourcesList = /*@__PURE__*/ S.Array(
-  PoolsListResultItemHealthSourcesItem,
-) as any as S.Schema<PoolsListResultItemHealthSourcesList>;
+export const PoolsListResultItemHealthSourcesList =
+  PoolsBulkEditResultItemCheckRegionsList as any as S.Schema<PoolsListResultItemHealthSourcesList>;
 
 export type PoolsListResultItemLoadSheddingDefaultPolicy = "random" | "hash";
 export const PoolsListResultItemLoadSheddingDefaultPolicy = S.String;
@@ -5048,20 +4945,8 @@ export interface PoolsListResultItemLoadShedding {
   /** Only the hash policy is supported for existing sessions (to avoid exponential decay). */
   sessionPolicy?: PoolsListResultItemLoadSheddingSessionPolicy | null;
 }
-export const PoolsListResultItemLoadShedding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultPercent: S.optional(S.NullOr(S.Number).pipe(T.Body("default_percent"))),
-    defaultPolicy: S.optional(
-      S.NullOr(PoolsListResultItemLoadSheddingDefaultPolicy).pipe(T.Body("default_policy")),
-    ),
-    sessionPercent: S.optional(S.NullOr(S.Number).pipe(T.Body("session_percent"))),
-    sessionPolicy: S.optional(
-      S.NullOr(PoolsListResultItemLoadSheddingSessionPolicy).pipe(T.Body("session_policy")),
-    ),
-  }),
-).annotate({
-  identifier: "PoolsListResultItemLoadShedding",
-}) as any as S.Schema<PoolsListResultItemLoadShedding>;
+export const PoolsListResultItemLoadShedding =
+  PoolsBulkEditResultItemLoadShedding as any as S.Schema<PoolsListResultItemLoadShedding>;
 
 export type PoolsListResultItemNetworksList = Array<string>;
 export const PoolsListResultItemNetworksList =
@@ -5091,13 +4976,8 @@ export interface PoolsListResultItemOriginSteering {
   /** The type of origin steering policy to use. */
   policy?: PoolsListResultItemOriginSteeringPolicy | null;
 }
-export const PoolsListResultItemOriginSteering = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policy: S.optional(S.NullOr(PoolsListResultItemOriginSteeringPolicy)),
-  }),
-).annotate({
-  identifier: "PoolsListResultItemOriginSteering",
-}) as any as S.Schema<PoolsListResultItemOriginSteering>;
+export const PoolsListResultItemOriginSteering =
+  PoolsBulkEditResultItemOriginSteering as any as S.Schema<PoolsListResultItemOriginSteering>;
 
 export type PoolsListResultItemOriginsItemHeaderHostList = Array<string>;
 export const PoolsListResultItemOriginsItemHeaderHostList =
@@ -5363,14 +5243,8 @@ export interface EditRequestLocationStrategy {
   /** Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. */
   preferEcs?: EditRequestLocationStrategyPreferEcs | (string & {});
 }
-export const EditRequestLocationStrategy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: S.optional(EditRequestLocationStrategyMode),
-    preferEcs: S.optional(EditRequestLocationStrategyPreferEcs.pipe(T.Body("prefer_ecs"))),
-  }),
-).annotate({
-  identifier: "EditRequestLocationStrategy",
-}) as any as S.Schema<EditRequestLocationStrategy>;
+export const EditRequestLocationStrategy =
+  CreateRequestLocationStrategy as any as S.Schema<EditRequestLocationStrategy>;
 
 export type EditRequestNetworksList = Array<string>;
 export const EditRequestNetworksList =
@@ -5443,16 +5317,8 @@ export interface EditRequestRulesItemOverridesLocationStrategy {
   /** Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. */
   preferEcs?: EditRequestRulesItemOverridesLocationStrategyPreferEcs | (string & {});
 }
-export const EditRequestRulesItemOverridesLocationStrategy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: S.optional(EditRequestRulesItemOverridesLocationStrategyMode),
-    preferEcs: S.optional(
-      EditRequestRulesItemOverridesLocationStrategyPreferEcs.pipe(T.Body("prefer_ecs")),
-    ),
-  }),
-).annotate({
-  identifier: "EditRequestRulesItemOverridesLocationStrategy",
-}) as any as S.Schema<EditRequestRulesItemOverridesLocationStrategy>;
+export const EditRequestRulesItemOverridesLocationStrategy =
+  CreateRequestRulesItemOverridesLocationStrategy as any as S.Schema<EditRequestRulesItemOverridesLocationStrategy>;
 
 export type EditRequestRulesItemOverridesPoolWeightsMap = { [key: string]: number | undefined };
 export const EditRequestRulesItemOverridesPoolWeightsMap =
@@ -5850,16 +5716,8 @@ export interface EditResponseLocationStrategy {
   /** Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. */
   preferEcs?: EditResponseLocationStrategyPreferEcs | null;
 }
-export const EditResponseLocationStrategy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: S.optional(S.NullOr(EditResponseLocationStrategyMode)),
-    preferEcs: S.optional(
-      S.NullOr(EditResponseLocationStrategyPreferEcs).pipe(T.Body("prefer_ecs")),
-    ),
-  }),
-).annotate({
-  identifier: "EditResponseLocationStrategy",
-}) as any as S.Schema<EditResponseLocationStrategy>;
+export const EditResponseLocationStrategy =
+  CreateResponseLocationStrategy as any as S.Schema<EditResponseLocationStrategy>;
 
 export type EditResponseNetworksList = Array<string>;
 export const EditResponseNetworksList =
@@ -6043,16 +5901,8 @@ export interface EditResponseRulesItemOverridesLocationStrategy {
   /** Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. */
   preferEcs?: EditResponseRulesItemOverridesLocationStrategyPreferEcs | null;
 }
-export const EditResponseRulesItemOverridesLocationStrategy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: S.optional(S.NullOr(EditResponseRulesItemOverridesLocationStrategyMode)),
-    preferEcs: S.optional(
-      S.NullOr(EditResponseRulesItemOverridesLocationStrategyPreferEcs).pipe(T.Body("prefer_ecs")),
-    ),
-  }),
-).annotate({
-  identifier: "EditResponseRulesItemOverridesLocationStrategy",
-}) as any as S.Schema<EditResponseRulesItemOverridesLocationStrategy>;
+export const EditResponseRulesItemOverridesLocationStrategy =
+  CreateResponseLocationStrategy as any as S.Schema<EditResponseRulesItemOverridesLocationStrategy>;
 
 export type EditResponseRulesItemOverridesPoolWeightsMap = { [key: string]: number | undefined };
 export const EditResponseRulesItemOverridesPoolWeightsMap =
@@ -6671,9 +6521,8 @@ export const PoolsEditRequestCheckRegionsItem = S.String;
 export type PoolsEditRequestCheckRegionsList = Array<
   PoolsEditRequestCheckRegionsItem | (string & {})
 >;
-export const PoolsEditRequestCheckRegionsList = /*@__PURE__*/ S.Array(
-  PoolsEditRequestCheckRegionsItem,
-) as any as S.Schema<PoolsEditRequestCheckRegionsList>;
+export const PoolsEditRequestCheckRegionsList =
+  PoolsBulkEditResultItemCheckRegionsList as any as S.Schema<PoolsEditRequestCheckRegionsList>;
 
 export type PoolsEditRequestHealthSourcesItem = "local" | "regional" | "global";
 export const PoolsEditRequestHealthSourcesItem = S.String;
@@ -6681,9 +6530,8 @@ export const PoolsEditRequestHealthSourcesItem = S.String;
 export type PoolsEditRequestHealthSourcesList = Array<
   PoolsEditRequestHealthSourcesItem | (string & {})
 >;
-export const PoolsEditRequestHealthSourcesList = /*@__PURE__*/ S.Array(
-  PoolsEditRequestHealthSourcesItem,
-) as any as S.Schema<PoolsEditRequestHealthSourcesList>;
+export const PoolsEditRequestHealthSourcesList =
+  PoolsBulkEditResultItemCheckRegionsList as any as S.Schema<PoolsEditRequestHealthSourcesList>;
 
 export type PoolsEditRequestLoadSheddingDefaultPolicy = "random" | "hash";
 export const PoolsEditRequestLoadSheddingDefaultPolicy = S.String;
@@ -6701,20 +6549,8 @@ export interface PoolsEditRequestLoadShedding {
   /** Only the hash policy is supported for existing sessions (to avoid exponential decay). */
   sessionPolicy?: PoolsEditRequestLoadSheddingSessionPolicy | (string & {});
 }
-export const PoolsEditRequestLoadShedding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultPercent: S.optional(S.Number.pipe(T.Body("default_percent"))),
-    defaultPolicy: S.optional(
-      PoolsEditRequestLoadSheddingDefaultPolicy.pipe(T.Body("default_policy")),
-    ),
-    sessionPercent: S.optional(S.Number.pipe(T.Body("session_percent"))),
-    sessionPolicy: S.optional(
-      PoolsEditRequestLoadSheddingSessionPolicy.pipe(T.Body("session_policy")),
-    ),
-  }),
-).annotate({
-  identifier: "PoolsEditRequestLoadShedding",
-}) as any as S.Schema<PoolsEditRequestLoadShedding>;
+export const PoolsEditRequestLoadShedding =
+  PoolsCreateRequestLoadShedding as any as S.Schema<PoolsEditRequestLoadShedding>;
 
 export type PoolsEditRequestNotificationFilterOrigin = PoolsCreateRequestNotificationFilterOrigin;
 export const PoolsEditRequestNotificationFilterOrigin = PoolsCreateRequestNotificationFilterOrigin;
@@ -6736,13 +6572,8 @@ export interface PoolsEditRequestOriginSteering {
   /** The type of origin steering policy to use. */
   policy?: PoolsEditRequestOriginSteeringPolicy | (string & {});
 }
-export const PoolsEditRequestOriginSteering = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policy: S.optional(PoolsEditRequestOriginSteeringPolicy),
-  }),
-).annotate({
-  identifier: "PoolsEditRequestOriginSteering",
-}) as any as S.Schema<PoolsEditRequestOriginSteering>;
+export const PoolsEditRequestOriginSteering =
+  PoolsCreateRequestOriginSteering as any as S.Schema<PoolsEditRequestOriginSteering>;
 
 export type PoolsEditRequestOriginsItemHeaderHostList = Array<string>;
 export const PoolsEditRequestOriginsItemHeaderHostList =
@@ -6868,17 +6699,15 @@ export type PoolsEditResponseCheckRegionsItem =
 export const PoolsEditResponseCheckRegionsItem = S.String;
 
 export type PoolsEditResponseCheckRegionsList = Array<PoolsEditResponseCheckRegionsItem>;
-export const PoolsEditResponseCheckRegionsList = /*@__PURE__*/ S.Array(
-  PoolsEditResponseCheckRegionsItem,
-) as any as S.Schema<PoolsEditResponseCheckRegionsList>;
+export const PoolsEditResponseCheckRegionsList =
+  PoolsBulkEditResultItemCheckRegionsList as any as S.Schema<PoolsEditResponseCheckRegionsList>;
 
 export type PoolsEditResponseHealthSourcesItem = "local" | "regional" | "global";
 export const PoolsEditResponseHealthSourcesItem = S.String;
 
 export type PoolsEditResponseHealthSourcesList = Array<PoolsEditResponseHealthSourcesItem>;
-export const PoolsEditResponseHealthSourcesList = /*@__PURE__*/ S.Array(
-  PoolsEditResponseHealthSourcesItem,
-) as any as S.Schema<PoolsEditResponseHealthSourcesList>;
+export const PoolsEditResponseHealthSourcesList =
+  PoolsBulkEditResultItemCheckRegionsList as any as S.Schema<PoolsEditResponseHealthSourcesList>;
 
 export type PoolsEditResponseLoadSheddingDefaultPolicy = "random" | "hash";
 export const PoolsEditResponseLoadSheddingDefaultPolicy = S.String;
@@ -6896,20 +6725,8 @@ export interface PoolsEditResponseLoadShedding {
   /** Only the hash policy is supported for existing sessions (to avoid exponential decay). */
   sessionPolicy?: PoolsEditResponseLoadSheddingSessionPolicy | null;
 }
-export const PoolsEditResponseLoadShedding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultPercent: S.optional(S.NullOr(S.Number).pipe(T.Body("default_percent"))),
-    defaultPolicy: S.optional(
-      S.NullOr(PoolsEditResponseLoadSheddingDefaultPolicy).pipe(T.Body("default_policy")),
-    ),
-    sessionPercent: S.optional(S.NullOr(S.Number).pipe(T.Body("session_percent"))),
-    sessionPolicy: S.optional(
-      S.NullOr(PoolsEditResponseLoadSheddingSessionPolicy).pipe(T.Body("session_policy")),
-    ),
-  }),
-).annotate({
-  identifier: "PoolsEditResponseLoadShedding",
-}) as any as S.Schema<PoolsEditResponseLoadShedding>;
+export const PoolsEditResponseLoadShedding =
+  PoolsBulkEditResultItemLoadShedding as any as S.Schema<PoolsEditResponseLoadShedding>;
 
 export type PoolsEditResponseNetworksList = Array<string>;
 export const PoolsEditResponseNetworksList =
@@ -6939,13 +6756,8 @@ export interface PoolsEditResponseOriginSteering {
   /** The type of origin steering policy to use. */
   policy?: PoolsEditResponseOriginSteeringPolicy | null;
 }
-export const PoolsEditResponseOriginSteering = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policy: S.optional(S.NullOr(PoolsEditResponseOriginSteeringPolicy)),
-  }),
-).annotate({
-  identifier: "PoolsEditResponseOriginSteering",
-}) as any as S.Schema<PoolsEditResponseOriginSteering>;
+export const PoolsEditResponseOriginSteering =
+  PoolsBulkEditResultItemOriginSteering as any as S.Schema<PoolsEditResponseOriginSteering>;
 
 export type PoolsEditResponseOriginsItemHeaderHostList = Array<string>;
 export const PoolsEditResponseOriginsItemHeaderHostList =
@@ -7087,14 +6899,8 @@ export interface UpdateRequestLocationStrategy {
   /** Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. */
   preferEcs?: UpdateRequestLocationStrategyPreferEcs | (string & {});
 }
-export const UpdateRequestLocationStrategy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: S.optional(UpdateRequestLocationStrategyMode),
-    preferEcs: S.optional(UpdateRequestLocationStrategyPreferEcs.pipe(T.Body("prefer_ecs"))),
-  }),
-).annotate({
-  identifier: "UpdateRequestLocationStrategy",
-}) as any as S.Schema<UpdateRequestLocationStrategy>;
+export const UpdateRequestLocationStrategy =
+  CreateRequestLocationStrategy as any as S.Schema<UpdateRequestLocationStrategy>;
 
 export type UpdateRequestNetworksList = Array<string>;
 export const UpdateRequestNetworksList =
@@ -7169,16 +6975,8 @@ export interface UpdateRequestRulesItemOverridesLocationStrategy {
   /** Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. */
   preferEcs?: UpdateRequestRulesItemOverridesLocationStrategyPreferEcs | (string & {});
 }
-export const UpdateRequestRulesItemOverridesLocationStrategy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: S.optional(UpdateRequestRulesItemOverridesLocationStrategyMode),
-    preferEcs: S.optional(
-      UpdateRequestRulesItemOverridesLocationStrategyPreferEcs.pipe(T.Body("prefer_ecs")),
-    ),
-  }),
-).annotate({
-  identifier: "UpdateRequestRulesItemOverridesLocationStrategy",
-}) as any as S.Schema<UpdateRequestRulesItemOverridesLocationStrategy>;
+export const UpdateRequestRulesItemOverridesLocationStrategy =
+  CreateRequestRulesItemOverridesLocationStrategy as any as S.Schema<UpdateRequestRulesItemOverridesLocationStrategy>;
 
 export type UpdateRequestRulesItemOverridesPoolWeightsMap = { [key: string]: number | undefined };
 export const UpdateRequestRulesItemOverridesPoolWeightsMap =
@@ -7580,16 +7378,8 @@ export interface UpdateResponseLocationStrategy {
   /** Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. */
   preferEcs?: UpdateResponseLocationStrategyPreferEcs | null;
 }
-export const UpdateResponseLocationStrategy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: S.optional(S.NullOr(UpdateResponseLocationStrategyMode)),
-    preferEcs: S.optional(
-      S.NullOr(UpdateResponseLocationStrategyPreferEcs).pipe(T.Body("prefer_ecs")),
-    ),
-  }),
-).annotate({
-  identifier: "UpdateResponseLocationStrategy",
-}) as any as S.Schema<UpdateResponseLocationStrategy>;
+export const UpdateResponseLocationStrategy =
+  CreateResponseLocationStrategy as any as S.Schema<UpdateResponseLocationStrategy>;
 
 export type UpdateResponseNetworksList = Array<string>;
 export const UpdateResponseNetworksList =
@@ -7779,18 +7569,8 @@ export interface UpdateResponseRulesItemOverridesLocationStrategy {
   /** Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. */
   preferEcs?: UpdateResponseRulesItemOverridesLocationStrategyPreferEcs | null;
 }
-export const UpdateResponseRulesItemOverridesLocationStrategy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: S.optional(S.NullOr(UpdateResponseRulesItemOverridesLocationStrategyMode)),
-    preferEcs: S.optional(
-      S.NullOr(UpdateResponseRulesItemOverridesLocationStrategyPreferEcs).pipe(
-        T.Body("prefer_ecs"),
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "UpdateResponseRulesItemOverridesLocationStrategy",
-}) as any as S.Schema<UpdateResponseRulesItemOverridesLocationStrategy>;
+export const UpdateResponseRulesItemOverridesLocationStrategy =
+  CreateResponseRulesItemOverridesLocationStrategy as any as S.Schema<UpdateResponseRulesItemOverridesLocationStrategy>;
 
 export type UpdateResponseRulesItemOverridesPoolWeightsMap = { [key: string]: number | undefined };
 export const UpdateResponseRulesItemOverridesPoolWeightsMap =
@@ -8467,9 +8247,8 @@ export const PoolsUpdateRequestCheckRegionsItem = S.String;
 export type PoolsUpdateRequestCheckRegionsList = Array<
   PoolsUpdateRequestCheckRegionsItem | (string & {})
 >;
-export const PoolsUpdateRequestCheckRegionsList = /*@__PURE__*/ S.Array(
-  PoolsUpdateRequestCheckRegionsItem,
-) as any as S.Schema<PoolsUpdateRequestCheckRegionsList>;
+export const PoolsUpdateRequestCheckRegionsList =
+  PoolsBulkEditResultItemCheckRegionsList as any as S.Schema<PoolsUpdateRequestCheckRegionsList>;
 
 export type PoolsUpdateRequestHealthSourcesItem = "local" | "regional" | "global";
 export const PoolsUpdateRequestHealthSourcesItem = S.String;
@@ -8477,9 +8256,8 @@ export const PoolsUpdateRequestHealthSourcesItem = S.String;
 export type PoolsUpdateRequestHealthSourcesList = Array<
   PoolsUpdateRequestHealthSourcesItem | (string & {})
 >;
-export const PoolsUpdateRequestHealthSourcesList = /*@__PURE__*/ S.Array(
-  PoolsUpdateRequestHealthSourcesItem,
-) as any as S.Schema<PoolsUpdateRequestHealthSourcesList>;
+export const PoolsUpdateRequestHealthSourcesList =
+  PoolsBulkEditResultItemCheckRegionsList as any as S.Schema<PoolsUpdateRequestHealthSourcesList>;
 
 export type PoolsUpdateRequestLoadSheddingDefaultPolicy = "random" | "hash";
 export const PoolsUpdateRequestLoadSheddingDefaultPolicy = S.String;
@@ -8497,20 +8275,8 @@ export interface PoolsUpdateRequestLoadShedding {
   /** Only the hash policy is supported for existing sessions (to avoid exponential decay). */
   sessionPolicy?: PoolsUpdateRequestLoadSheddingSessionPolicy | (string & {});
 }
-export const PoolsUpdateRequestLoadShedding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultPercent: S.optional(S.Number.pipe(T.Body("default_percent"))),
-    defaultPolicy: S.optional(
-      PoolsUpdateRequestLoadSheddingDefaultPolicy.pipe(T.Body("default_policy")),
-    ),
-    sessionPercent: S.optional(S.Number.pipe(T.Body("session_percent"))),
-    sessionPolicy: S.optional(
-      PoolsUpdateRequestLoadSheddingSessionPolicy.pipe(T.Body("session_policy")),
-    ),
-  }),
-).annotate({
-  identifier: "PoolsUpdateRequestLoadShedding",
-}) as any as S.Schema<PoolsUpdateRequestLoadShedding>;
+export const PoolsUpdateRequestLoadShedding =
+  PoolsCreateRequestLoadShedding as any as S.Schema<PoolsUpdateRequestLoadShedding>;
 
 export type PoolsUpdateRequestNotificationFilterOrigin = PoolsCreateRequestNotificationFilterOrigin;
 export const PoolsUpdateRequestNotificationFilterOrigin =
@@ -8533,13 +8299,8 @@ export interface PoolsUpdateRequestOriginSteering {
   /** The type of origin steering policy to use. */
   policy?: PoolsUpdateRequestOriginSteeringPolicy | (string & {});
 }
-export const PoolsUpdateRequestOriginSteering = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policy: S.optional(PoolsUpdateRequestOriginSteeringPolicy),
-  }),
-).annotate({
-  identifier: "PoolsUpdateRequestOriginSteering",
-}) as any as S.Schema<PoolsUpdateRequestOriginSteering>;
+export const PoolsUpdateRequestOriginSteering =
+  PoolsCreateRequestOriginSteering as any as S.Schema<PoolsUpdateRequestOriginSteering>;
 
 export interface UpdatePoolRequest {
   /** Identifier. */
@@ -8627,17 +8388,15 @@ export type PoolsUpdateResponseCheckRegionsItem =
 export const PoolsUpdateResponseCheckRegionsItem = S.String;
 
 export type PoolsUpdateResponseCheckRegionsList = Array<PoolsUpdateResponseCheckRegionsItem>;
-export const PoolsUpdateResponseCheckRegionsList = /*@__PURE__*/ S.Array(
-  PoolsUpdateResponseCheckRegionsItem,
-) as any as S.Schema<PoolsUpdateResponseCheckRegionsList>;
+export const PoolsUpdateResponseCheckRegionsList =
+  PoolsBulkEditResultItemCheckRegionsList as any as S.Schema<PoolsUpdateResponseCheckRegionsList>;
 
 export type PoolsUpdateResponseHealthSourcesItem = "local" | "regional" | "global";
 export const PoolsUpdateResponseHealthSourcesItem = S.String;
 
 export type PoolsUpdateResponseHealthSourcesList = Array<PoolsUpdateResponseHealthSourcesItem>;
-export const PoolsUpdateResponseHealthSourcesList = /*@__PURE__*/ S.Array(
-  PoolsUpdateResponseHealthSourcesItem,
-) as any as S.Schema<PoolsUpdateResponseHealthSourcesList>;
+export const PoolsUpdateResponseHealthSourcesList =
+  PoolsBulkEditResultItemCheckRegionsList as any as S.Schema<PoolsUpdateResponseHealthSourcesList>;
 
 export type PoolsUpdateResponseLoadSheddingDefaultPolicy = "random" | "hash";
 export const PoolsUpdateResponseLoadSheddingDefaultPolicy = S.String;
@@ -8655,20 +8414,8 @@ export interface PoolsUpdateResponseLoadShedding {
   /** Only the hash policy is supported for existing sessions (to avoid exponential decay). */
   sessionPolicy?: PoolsUpdateResponseLoadSheddingSessionPolicy | null;
 }
-export const PoolsUpdateResponseLoadShedding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultPercent: S.optional(S.NullOr(S.Number).pipe(T.Body("default_percent"))),
-    defaultPolicy: S.optional(
-      S.NullOr(PoolsUpdateResponseLoadSheddingDefaultPolicy).pipe(T.Body("default_policy")),
-    ),
-    sessionPercent: S.optional(S.NullOr(S.Number).pipe(T.Body("session_percent"))),
-    sessionPolicy: S.optional(
-      S.NullOr(PoolsUpdateResponseLoadSheddingSessionPolicy).pipe(T.Body("session_policy")),
-    ),
-  }),
-).annotate({
-  identifier: "PoolsUpdateResponseLoadShedding",
-}) as any as S.Schema<PoolsUpdateResponseLoadShedding>;
+export const PoolsUpdateResponseLoadShedding =
+  PoolsBulkEditResultItemLoadShedding as any as S.Schema<PoolsUpdateResponseLoadShedding>;
 
 export type PoolsUpdateResponseNetworksList = Array<string>;
 export const PoolsUpdateResponseNetworksList =
@@ -8698,13 +8445,8 @@ export interface PoolsUpdateResponseOriginSteering {
   /** The type of origin steering policy to use. */
   policy?: PoolsUpdateResponseOriginSteeringPolicy | null;
 }
-export const PoolsUpdateResponseOriginSteering = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policy: S.optional(S.NullOr(PoolsUpdateResponseOriginSteeringPolicy)),
-  }),
-).annotate({
-  identifier: "PoolsUpdateResponseOriginSteering",
-}) as any as S.Schema<PoolsUpdateResponseOriginSteering>;
+export const PoolsUpdateResponseOriginSteering =
+  PoolsBulkEditResultItemOriginSteering as any as S.Schema<PoolsUpdateResponseOriginSteering>;
 
 export type PoolsUpdateResponseOriginsItemHeaderHostList = Array<string>;
 export const PoolsUpdateResponseOriginsItemHeaderHostList =

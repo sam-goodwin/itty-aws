@@ -257,9 +257,7 @@ export type DeleteServicesConsumerQuotaMetricsLimitsProducerOverridesForceOnlyEn
   DeleteServicesConsumerQuotaMetricsLimitsProducerOverridesForceOnlyEnum | (string & {})
 >;
 export const DeleteServicesConsumerQuotaMetricsLimitsProducerOverridesForceOnlyEnumList =
-  /*@__PURE__*/ S.Array(
-    DeleteServicesConsumerQuotaMetricsLimitsProducerOverridesForceOnlyEnum,
-  ) as any as S.Schema<DeleteServicesConsumerQuotaMetricsLimitsProducerOverridesForceOnlyEnumList>;
+  CreateServicesConsumerQuotaMetricsLimitsProducerOverridesForceOnlyEnumList as any as S.Schema<DeleteServicesConsumerQuotaMetricsLimitsProducerOverridesForceOnlyEnumList>;
 
 export interface DeleteServicesConsumerQuotaMetricsLimitsProducerOverridesRequest {
   /** Whether to force the deletion of the quota override. Setting the force parameter to 'true' ignores all quota safety checks that would fail the request. QuotaSafetyCheck lists all such validations. */
@@ -781,9 +779,7 @@ export type PatchServicesConsumerQuotaMetricsLimitsProducerOverridesForceOnlyEnu
   PatchServicesConsumerQuotaMetricsLimitsProducerOverridesForceOnlyEnum | (string & {})
 >;
 export const PatchServicesConsumerQuotaMetricsLimitsProducerOverridesForceOnlyEnumList =
-  /*@__PURE__*/ S.Array(
-    PatchServicesConsumerQuotaMetricsLimitsProducerOverridesForceOnlyEnum,
-  ) as any as S.Schema<PatchServicesConsumerQuotaMetricsLimitsProducerOverridesForceOnlyEnumList>;
+  CreateServicesConsumerQuotaMetricsLimitsProducerOverridesForceOnlyEnumList as any as S.Schema<PatchServicesConsumerQuotaMetricsLimitsProducerOverridesForceOnlyEnumList>;
 
 export interface PatchServicesConsumerQuotaMetricsLimitsProducerOverridesRequest {
   /** Whether to force the update of the quota override. Setting the force parameter to 'true' ignores all quota safety checks that would fail the request. QuotaSafetyCheck lists all such validations. */

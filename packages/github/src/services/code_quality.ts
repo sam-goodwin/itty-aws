@@ -314,9 +314,8 @@ export const UpdateSetupRequestLanguagesItem = S.String;
 export type UpdateSetupRequestLanguagesList = Array<
   UpdateSetupRequestLanguagesItem | (string & {})
 >;
-export const UpdateSetupRequestLanguagesList = /*@__PURE__*/ S.Array(
-  UpdateSetupRequestLanguagesItem,
-) as any as S.Schema<UpdateSetupRequestLanguagesList>;
+export const UpdateSetupRequestLanguagesList =
+  CodeQualitySetupLanguagesList as any as S.Schema<UpdateSetupRequestLanguagesList>;
 
 /** Whether AI findings run for Code Quality on this repository. */
 export type UpdateSetupRequestAiFindingsOption = "disabled" | "on_push";

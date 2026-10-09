@@ -623,18 +623,8 @@ export interface GetFluidRelayServerResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetFluidRelayServerResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetFluidRelayServerResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(GetFluidRelayServerResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetFluidRelayServerResponseSystemData",
-}) as any as S.Schema<GetFluidRelayServerResponseSystemData>;
+export const GetFluidRelayServerResponseSystemData =
+  GetFluidRelayContainerResponseSystemData as any as S.Schema<GetFluidRelayServerResponseSystemData>;
 
 export interface GetFluidRelayServerResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -725,18 +715,8 @@ export interface FluidRelayContainerSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const FluidRelayContainerSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(FluidRelayContainerSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(FluidRelayContainerSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "FluidRelayContainerSystemData",
-}) as any as S.Schema<FluidRelayContainerSystemData>;
+export const FluidRelayContainerSystemData =
+  GetFluidRelayContainerResponseSystemData as any as S.Schema<FluidRelayContainerSystemData>;
 
 /** A FluidRelay Container. */
 export interface FluidRelayContainer {
@@ -910,18 +890,8 @@ export interface FluidRelayServerSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const FluidRelayServerSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(FluidRelayServerSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(FluidRelayServerSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "FluidRelayServerSystemData",
-}) as any as S.Schema<FluidRelayServerSystemData>;
+export const FluidRelayServerSystemData =
+  GetFluidRelayContainerResponseSystemData as any as S.Schema<FluidRelayServerSystemData>;
 
 /** A FluidRelay Server. */
 export interface FluidRelayServer {
@@ -1156,18 +1126,8 @@ export interface UpdateFluidRelayServerResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdateFluidRelayServerResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(UpdateFluidRelayServerResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(UpdateFluidRelayServerResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateFluidRelayServerResponseSystemData",
-}) as any as S.Schema<UpdateFluidRelayServerResponseSystemData>;
+export const UpdateFluidRelayServerResponseSystemData =
+  GetFluidRelayContainerResponseSystemData as any as S.Schema<UpdateFluidRelayServerResponseSystemData>;
 
 export interface UpdateFluidRelayServerResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */

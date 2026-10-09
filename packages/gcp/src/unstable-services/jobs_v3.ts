@@ -618,9 +618,8 @@ export type JobDegreeTypesItemEnum =
 export const JobDegreeTypesItemEnum = S.String;
 
 export type JobDegreeTypesItemEnumList = Array<JobDegreeTypesItemEnum | (string & {})>;
-export const JobDegreeTypesItemEnumList = /*@__PURE__*/ S.Array(
-  JobDegreeTypesItemEnum,
-) as any as S.Schema<JobDegreeTypesItemEnumList>;
+export const JobDegreeTypesItemEnumList =
+  JobEmploymentTypesItemEnumList as any as S.Schema<JobDegreeTypesItemEnumList>;
 
 export type ProcessingOptionsHtmlSanitizationEnum =
   | "HTML_SANITIZATION_UNSPECIFIED"
@@ -705,9 +704,8 @@ export type JobJobBenefitsItemEnum =
 export const JobJobBenefitsItemEnum = S.String;
 
 export type JobJobBenefitsItemEnumList = Array<JobJobBenefitsItemEnum | (string & {})>;
-export const JobJobBenefitsItemEnumList = /*@__PURE__*/ S.Array(
-  JobJobBenefitsItemEnum,
-) as any as S.Schema<JobJobBenefitsItemEnumList>;
+export const JobJobBenefitsItemEnumList =
+  JobEmploymentTypesItemEnumList as any as S.Schema<JobJobBenefitsItemEnumList>;
 
 export type JobJobLevelEnum =
   | "JOB_LEVEL_UNSPECIFIED"
@@ -762,9 +760,8 @@ export const JobDerivedInfoJobCategoriesItemEnum = S.String;
 export type JobDerivedInfoJobCategoriesItemEnumList = Array<
   JobDerivedInfoJobCategoriesItemEnum | (string & {})
 >;
-export const JobDerivedInfoJobCategoriesItemEnumList = /*@__PURE__*/ S.Array(
-  JobDerivedInfoJobCategoriesItemEnum,
-) as any as S.Schema<JobDerivedInfoJobCategoriesItemEnumList>;
+export const JobDerivedInfoJobCategoriesItemEnumList =
+  JobEmploymentTypesItemEnumList as any as S.Schema<JobDerivedInfoJobCategoriesItemEnumList>;
 
 export type LocationList = Array<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
@@ -1208,9 +1205,8 @@ export const JobQueryJobCategoriesItemEnum = S.String;
 export type JobQueryJobCategoriesItemEnumList = Array<
   JobQueryJobCategoriesItemEnum | (string & {})
 >;
-export const JobQueryJobCategoriesItemEnumList = /*@__PURE__*/ S.Array(
-  JobQueryJobCategoriesItemEnum,
-) as any as S.Schema<JobQueryJobCategoriesItemEnumList>;
+export const JobQueryJobCategoriesItemEnumList =
+  JobEmploymentTypesItemEnumList as any as S.Schema<JobQueryJobCategoriesItemEnumList>;
 
 export type CompensationFilterUnitsItemEnum =
   | "COMPENSATION_UNIT_UNSPECIFIED"
@@ -1226,9 +1222,8 @@ export const CompensationFilterUnitsItemEnum = S.String;
 export type CompensationFilterUnitsItemEnumList = Array<
   CompensationFilterUnitsItemEnum | (string & {})
 >;
-export const CompensationFilterUnitsItemEnumList = /*@__PURE__*/ S.Array(
-  CompensationFilterUnitsItemEnum,
-) as any as S.Schema<CompensationFilterUnitsItemEnumList>;
+export const CompensationFilterUnitsItemEnumList =
+  JobEmploymentTypesItemEnumList as any as S.Schema<CompensationFilterUnitsItemEnumList>;
 
 export type CompensationFilterTypeEnum =
   | "FILTER_TYPE_UNSPECIFIED"
@@ -1310,9 +1305,8 @@ export const JobQueryEmploymentTypesItemEnum = S.String;
 export type JobQueryEmploymentTypesItemEnumList = Array<
   JobQueryEmploymentTypesItemEnum | (string & {})
 >;
-export const JobQueryEmploymentTypesItemEnumList = /*@__PURE__*/ S.Array(
-  JobQueryEmploymentTypesItemEnum,
-) as any as S.Schema<JobQueryEmploymentTypesItemEnumList>;
+export const JobQueryEmploymentTypesItemEnumList =
+  JobEmploymentTypesItemEnumList as any as S.Schema<JobQueryEmploymentTypesItemEnumList>;
 
 /** Message representing a period of time between two timestamps. */
 export interface TimestampRange {
@@ -1398,9 +1392,8 @@ export const HistogramFacetsSimpleHistogramFacetsItemEnum = S.String;
 export type HistogramFacetsSimpleHistogramFacetsItemEnumList = Array<
   HistogramFacetsSimpleHistogramFacetsItemEnum | (string & {})
 >;
-export const HistogramFacetsSimpleHistogramFacetsItemEnumList = /*@__PURE__*/ S.Array(
-  HistogramFacetsSimpleHistogramFacetsItemEnum,
-) as any as S.Schema<HistogramFacetsSimpleHistogramFacetsItemEnumList>;
+export const HistogramFacetsSimpleHistogramFacetsItemEnumList =
+  JobEmploymentTypesItemEnumList as any as S.Schema<HistogramFacetsSimpleHistogramFacetsItemEnumList>;
 
 export type DoubleList = Array<number>;
 export const DoubleList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<DoubleList>;

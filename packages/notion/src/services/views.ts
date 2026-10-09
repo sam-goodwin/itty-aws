@@ -223,16 +223,8 @@ export interface PersonGroupByConfigRequest {
   /** Whether to hide groups that have no items. */
   hide_empty_groups?: boolean;
 }
-export const PersonGroupByConfigRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: PersonGroupByConfigRequestType,
-    property_id: S.String,
-    sort: GroupSortRequest,
-    hide_empty_groups: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "PersonGroupByConfigRequest",
-}) as any as S.Schema<PersonGroupByConfigRequest>;
+export const PersonGroupByConfigRequest =
+  SelectGroupByConfigRequest as any as S.Schema<PersonGroupByConfigRequest>;
 
 export interface RelationGroupByConfigRequest {
   /** The property type for grouping. */
@@ -1324,13 +1316,8 @@ export interface ViewFilterResponseCase2OrItemCase2OrItemCase1 {
   /** The timestamp to filter on. */
   timestamp: ViewFilterResponseCase2OrItemCase2OrItemCase1Timestamp;
 }
-export const ViewFilterResponseCase2OrItemCase2OrItemCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    timestamp: ViewFilterResponseCase2OrItemCase2OrItemCase1Timestamp,
-  }),
-).annotate({
-  identifier: "ViewFilterResponseCase2OrItemCase2OrItemCase1",
-}) as any as S.Schema<ViewFilterResponseCase2OrItemCase2OrItemCase1>;
+export const ViewFilterResponseCase2OrItemCase2OrItemCase1 =
+  ViewFilterResponseCase2OrItemCase1 as any as S.Schema<ViewFilterResponseCase2OrItemCase2OrItemCase1>;
 
 /** A property filter or timestamp filter. */
 export type ViewFilterResponseCase2OrItemCase2OrItem =
@@ -1361,13 +1348,8 @@ export interface ViewFilterResponseCase2OrItemCase2AndItemCase1 {
   /** The timestamp to filter on. */
   timestamp: ViewFilterResponseCase2OrItemCase2AndItemCase1Timestamp;
 }
-export const ViewFilterResponseCase2OrItemCase2AndItemCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    timestamp: ViewFilterResponseCase2OrItemCase2AndItemCase1Timestamp,
-  }),
-).annotate({
-  identifier: "ViewFilterResponseCase2OrItemCase2AndItemCase1",
-}) as any as S.Schema<ViewFilterResponseCase2OrItemCase2AndItemCase1>;
+export const ViewFilterResponseCase2OrItemCase2AndItemCase1 =
+  ViewFilterResponseCase2OrItemCase1 as any as S.Schema<ViewFilterResponseCase2OrItemCase2AndItemCase1>;
 
 /** A property filter or timestamp filter. */
 export type ViewFilterResponseCase2OrItemCase2AndItem =
@@ -1426,13 +1408,8 @@ export interface ViewFilterResponseCase2AndItemCase1 {
   /** The timestamp to filter on. */
   timestamp: ViewFilterResponseCase2AndItemCase1Timestamp;
 }
-export const ViewFilterResponseCase2AndItemCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    timestamp: ViewFilterResponseCase2AndItemCase1Timestamp,
-  }),
-).annotate({
-  identifier: "ViewFilterResponseCase2AndItemCase1",
-}) as any as S.Schema<ViewFilterResponseCase2AndItemCase1>;
+export const ViewFilterResponseCase2AndItemCase1 =
+  ViewFilterResponseCase2OrItemCase1 as any as S.Schema<ViewFilterResponseCase2AndItemCase1>;
 
 /** A filter condition on a specific property. The property field specifies which property to filter, and an additional field specifies the filter type and condition (e.g., title, rich_text, number, checkbox, select, multi_select, date, people, files, relation, formula, rollup, etc.). */
 export type ViewFilterResponseCase2AndItemCase2OrItemCase0 = ViewFilterResponseCase0;
@@ -1449,13 +1426,8 @@ export interface ViewFilterResponseCase2AndItemCase2OrItemCase1 {
   /** The timestamp to filter on. */
   timestamp: ViewFilterResponseCase2AndItemCase2OrItemCase1Timestamp;
 }
-export const ViewFilterResponseCase2AndItemCase2OrItemCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    timestamp: ViewFilterResponseCase2AndItemCase2OrItemCase1Timestamp,
-  }),
-).annotate({
-  identifier: "ViewFilterResponseCase2AndItemCase2OrItemCase1",
-}) as any as S.Schema<ViewFilterResponseCase2AndItemCase2OrItemCase1>;
+export const ViewFilterResponseCase2AndItemCase2OrItemCase1 =
+  ViewFilterResponseCase2OrItemCase1 as any as S.Schema<ViewFilterResponseCase2AndItemCase2OrItemCase1>;
 
 /** A property filter or timestamp filter. */
 export type ViewFilterResponseCase2AndItemCase2OrItem =
@@ -1486,13 +1458,8 @@ export interface ViewFilterResponseCase2AndItemCase2AndItemCase1 {
   /** The timestamp to filter on. */
   timestamp: ViewFilterResponseCase2AndItemCase2AndItemCase1Timestamp;
 }
-export const ViewFilterResponseCase2AndItemCase2AndItemCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    timestamp: ViewFilterResponseCase2AndItemCase2AndItemCase1Timestamp,
-  }),
-).annotate({
-  identifier: "ViewFilterResponseCase2AndItemCase2AndItemCase1",
-}) as any as S.Schema<ViewFilterResponseCase2AndItemCase2AndItemCase1>;
+export const ViewFilterResponseCase2AndItemCase2AndItemCase1 =
+  ViewFilterResponseCase2OrItemCase1 as any as S.Schema<ViewFilterResponseCase2AndItemCase2AndItemCase1>;
 
 /** A property filter or timestamp filter. */
 export type ViewFilterResponseCase2AndItemCase2AndItem =
@@ -1686,11 +1653,7 @@ export interface GroupSortResponse {
   /** Sort direction for groups. */
   type: GroupSortResponseType;
 }
-export const GroupSortResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: GroupSortResponseType,
-  }),
-).annotate({ identifier: "GroupSortResponse" }) as any as S.Schema<GroupSortResponse>;
+export const GroupSortResponse = GroupSortRequest as any as S.Schema<GroupSortResponse>;
 
 export interface SelectGroupByConfigResponse {
   /** The property type for grouping. */
@@ -1763,17 +1726,8 @@ export interface PersonGroupByConfigResponse {
   /** Whether to hide groups that have no items. */
   hide_empty_groups?: boolean;
 }
-export const PersonGroupByConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: PersonGroupByConfigResponseType,
-    property_id: S.String,
-    sort: GroupSortResponse,
-    property_name: S.optional(S.String),
-    hide_empty_groups: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "PersonGroupByConfigResponse",
-}) as any as S.Schema<PersonGroupByConfigResponse>;
+export const PersonGroupByConfigResponse =
+  SelectGroupByConfigResponse as any as S.Schema<PersonGroupByConfigResponse>;
 
 export interface RelationGroupByConfigResponse {
   /** The property type for grouping. */
@@ -1942,16 +1896,8 @@ export interface FormulaDateSubGroupByResponse {
   /** Start day of week for week grouping (0 = Sunday, 1 = Monday). */
   start_day_of_week?: FormulaDateSubGroupByResponseStartDayOfWeek;
 }
-export const FormulaDateSubGroupByResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    group_by: FormulaDateSubGroupByResponseGroupBy,
-    sort: GroupSortResponse,
-    start_day_of_week: S.optional(FormulaDateSubGroupByResponseStartDayOfWeek),
-  }),
-).annotate({
-  identifier: "FormulaDateSubGroupByResponse",
-}) as any as S.Schema<FormulaDateSubGroupByResponse>;
+export const FormulaDateSubGroupByResponse =
+  FormulaDateSubGroupByRequest as any as S.Schema<FormulaDateSubGroupByResponse>;
 
 /** How to group text values. "exact" = exact match, "alphabet_prefix" = first letter. */
 export type FormulaTextSubGroupByResponseGroupBy = "exact" | "alphabet_prefix";
@@ -1965,15 +1911,8 @@ export interface FormulaTextSubGroupByResponse {
   /** Sort order for groups. */
   sort: GroupSortResponse;
 }
-export const FormulaTextSubGroupByResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    group_by: FormulaTextSubGroupByResponseGroupBy,
-    sort: GroupSortResponse,
-  }),
-).annotate({
-  identifier: "FormulaTextSubGroupByResponse",
-}) as any as S.Schema<FormulaTextSubGroupByResponse>;
+export const FormulaTextSubGroupByResponse =
+  FormulaTextSubGroupByRequest as any as S.Schema<FormulaTextSubGroupByResponse>;
 
 export interface FormulaNumberSubGroupByResponse {
   /** The formula result type for grouping. */
@@ -1987,17 +1926,8 @@ export interface FormulaNumberSubGroupByResponse {
   /** Size of each bucket in number grouping. */
   range_size?: number;
 }
-export const FormulaNumberSubGroupByResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    sort: GroupSortResponse,
-    range_start: S.optional(S.Number),
-    range_end: S.optional(S.Number),
-    range_size: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "FormulaNumberSubGroupByResponse",
-}) as any as S.Schema<FormulaNumberSubGroupByResponse>;
+export const FormulaNumberSubGroupByResponse =
+  FormulaNumberSubGroupByRequest as any as S.Schema<FormulaNumberSubGroupByResponse>;
 
 export interface FormulaCheckboxSubGroupByResponse {
   /** The formula result type for grouping. */
@@ -2005,14 +1935,8 @@ export interface FormulaCheckboxSubGroupByResponse {
   /** Sort order for groups (only manual for checkbox). */
   sort: GroupSortResponse;
 }
-export const FormulaCheckboxSubGroupByResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    sort: GroupSortResponse,
-  }),
-).annotate({
-  identifier: "FormulaCheckboxSubGroupByResponse",
-}) as any as S.Schema<FormulaCheckboxSubGroupByResponse>;
+export const FormulaCheckboxSubGroupByResponse =
+  FormulaCheckboxSubGroupByRequest as any as S.Schema<FormulaCheckboxSubGroupByResponse>;
 
 /** Sub-group-by configuration for formula properties based on result type. */
 export type FormulaSubGroupByResponse =
@@ -2079,14 +2003,7 @@ export interface SubtaskConfigResponse {
   /** Property ID of the column showing the sub-item expand/collapse toggle. */
   toggle_column_id?: string;
 }
-export const SubtaskConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    property_id: S.optional(S.String),
-    display_mode: S.optional(SubtaskConfigResponseDisplayMode),
-    filter_scope: S.optional(SubtaskConfigResponseFilterScope),
-    toggle_column_id: S.optional(S.String),
-  }),
-).annotate({ identifier: "SubtaskConfigResponse" }) as any as S.Schema<SubtaskConfigResponse>;
+export const SubtaskConfigResponse = SubtaskConfigRequest as any as S.Schema<SubtaskConfigResponse>;
 
 export interface TableViewConfigResponse {
   /** The view configuration type. */
@@ -2135,12 +2052,7 @@ export interface CoverConfigResponse {
   /** Property ID when type is "property". */
   property_id?: string;
 }
-export const CoverConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: CoverConfigResponseType,
-    property_id: S.optional(S.String),
-  }),
-).annotate({ identifier: "CoverConfigResponse" }) as any as S.Schema<CoverConfigResponse>;
+export const CoverConfigResponse = CoverConfigRequest as any as S.Schema<CoverConfigResponse>;
 
 /** Cover image size. */
 export type BoardViewConfigResponseCoverSize = "small" | "medium" | "large";
@@ -2249,14 +2161,8 @@ export interface TimelinePreferenceResponse {
   /** Center timestamp for the timeline view (Unix timestamp in ms). */
   center_timestamp?: number;
 }
-export const TimelinePreferenceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoom_level: TimelinePreferenceResponseZoomLevel,
-    center_timestamp: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "TimelinePreferenceResponse",
-}) as any as S.Schema<TimelinePreferenceResponse>;
+export const TimelinePreferenceResponse =
+  TimelinePreferenceRequest as any as S.Schema<TimelinePreferenceResponse>;
 
 export interface TimelineArrowsByResponse {
   /** Relation property ID used for dependency arrows. */
@@ -2462,12 +2368,8 @@ export interface ChartAggregationResponse {
   /** The property to aggregate on. Required for all operators except "count". */
   property_id?: string;
 }
-export const ChartAggregationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    aggregator: ChartAggregationResponseAggregator,
-    property_id: S.optional(S.String),
-  }),
-).annotate({ identifier: "ChartAggregationResponse" }) as any as S.Schema<ChartAggregationResponse>;
+export const ChartAggregationResponse =
+  ChartAggregationRequest as any as S.Schema<ChartAggregationResponse>;
 
 /** Sort order for chart data. */
 export type ChartViewConfigResponseSort =
@@ -3056,12 +2958,8 @@ export interface ViewPropertySortRequest {
   /** Sort direction. */
   direction: SortDirectionRequest | (string & {});
 }
-export const ViewPropertySortRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    property: S.String,
-    direction: SortDirectionRequest,
-  }),
-).annotate({ identifier: "ViewPropertySortRequest" }) as any as S.Schema<ViewPropertySortRequest>;
+export const ViewPropertySortRequest =
+  PropertySortResponse as any as S.Schema<ViewPropertySortRequest>;
 
 export type ViewPropertySortsRequest = Array<ViewPropertySortRequest>;
 export const ViewPropertySortsRequest = /*@__PURE__*/ S.Array(

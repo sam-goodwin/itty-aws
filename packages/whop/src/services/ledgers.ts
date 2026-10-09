@@ -1055,9 +1055,8 @@ export const ListFinancialActivityRequestLineTypesItem = S.String;
 export type ListFinancialActivityRequestLineTypesList = Array<
   ListFinancialActivityRequestLineTypesItem | (string & {})
 >;
-export const ListFinancialActivityRequestLineTypesList = /*@__PURE__*/ S.Array(
-  ListFinancialActivityRequestLineTypesItem,
-) as any as S.Schema<ListFinancialActivityRequestLineTypesList>;
+export const ListFinancialActivityRequestLineTypesList =
+  GetFinancialReportRequestLineTypesList as any as S.Schema<ListFinancialActivityRequestLineTypesList>;
 
 export type ListFinancialActivityRequestDirection = "money_in" | "money_out";
 export const ListFinancialActivityRequestDirection = S.String;
@@ -1446,17 +1445,8 @@ export interface LedgerActivityResourceCase0 {
   /** Account display name. */
   title: string | null;
 }
-export const LedgerActivityResourceCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    logo_url: S.NullOr(S.String),
-    object: LedgerActivityResourceCase0Object,
-    route: S.NullOr(S.String),
-    title: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "LedgerActivityResourceCase0",
-}) as any as S.Schema<LedgerActivityResourceCase0>;
+export const LedgerActivityResourceCase0 =
+  LedgerActivityAccountCase0 as any as S.Schema<LedgerActivityResourceCase0>;
 
 export type LedgerActivityResourceCase1Object = "user";
 export const LedgerActivityResourceCase1Object = S.String;
@@ -1472,17 +1462,8 @@ export interface LedgerActivityResourceCase1 {
   /** User's username. */
   username: string | null;
 }
-export const LedgerActivityResourceCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.NullOr(S.String),
-    object: LedgerActivityResourceCase1Object,
-    profile_picture_url: S.NullOr(S.String),
-    username: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "LedgerActivityResourceCase1",
-}) as any as S.Schema<LedgerActivityResourceCase1>;
+export const LedgerActivityResourceCase1 =
+  LedgerActivityAccountCase1 as any as S.Schema<LedgerActivityResourceCase1>;
 
 export type LedgerActivityResourceCase2Object = "bounty";
 export const LedgerActivityResourceCase2Object = S.String;
@@ -1524,17 +1505,8 @@ export interface LedgerActivityResourceCase3OwnerCase0 {
   /** Account display name. */
   title: string | null;
 }
-export const LedgerActivityResourceCase3OwnerCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    logo_url: S.NullOr(S.String),
-    object: LedgerActivityResourceCase3OwnerCase0Object,
-    route: S.NullOr(S.String),
-    title: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "LedgerActivityResourceCase3OwnerCase0",
-}) as any as S.Schema<LedgerActivityResourceCase3OwnerCase0>;
+export const LedgerActivityResourceCase3OwnerCase0 =
+  LedgerActivityAccountCase0 as any as S.Schema<LedgerActivityResourceCase3OwnerCase0>;
 
 export type LedgerActivityResourceCase3OwnerCase1Object = "user";
 export const LedgerActivityResourceCase3OwnerCase1Object = S.String;
@@ -1550,17 +1522,8 @@ export interface LedgerActivityResourceCase3OwnerCase1 {
   /** User's username. */
   username: string | null;
 }
-export const LedgerActivityResourceCase3OwnerCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.NullOr(S.String),
-    object: LedgerActivityResourceCase3OwnerCase1Object,
-    profile_picture_url: S.NullOr(S.String),
-    username: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "LedgerActivityResourceCase3OwnerCase1",
-}) as any as S.Schema<LedgerActivityResourceCase3OwnerCase1>;
+export const LedgerActivityResourceCase3OwnerCase1 =
+  LedgerActivityAccountCase1 as any as S.Schema<LedgerActivityResourceCase3OwnerCase1>;
 
 export type LedgerActivityResourceCase3Owner =
   | LedgerActivityResourceCase3OwnerCase0

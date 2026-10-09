@@ -702,9 +702,8 @@ export const DnsRecordRelevantStateItemEnum = S.String;
 export type DnsRecordRelevantStateItemEnumList = Array<
   DnsRecordRelevantStateItemEnum | (string & {})
 >;
-export const DnsRecordRelevantStateItemEnumList = /*@__PURE__*/ S.Array(
-  DnsRecordRelevantStateItemEnum,
-) as any as S.Schema<DnsRecordRelevantStateItemEnumList>;
+export const DnsRecordRelevantStateItemEnumList =
+  EnvironmentVariableAvailabilityItemEnumList as any as S.Schema<DnsRecordRelevantStateItemEnumList>;
 
 export type DnsRecordRequiredActionEnum = "NONE" | "ADD" | "REMOVE";
 export const DnsRecordRequiredActionEnum = S.String;

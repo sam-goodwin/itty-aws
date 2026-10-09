@@ -730,7 +730,7 @@ export const GetInsightImpactGraphResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetInsightImpactGraphResult",
 }) as any as S.Schema<GetInsightImpactGraphResult>;
 export type InsightStateList = InsightState[];
-export const InsightStateList = /*@__PURE__*/ S.Array(InsightState);
+export const InsightStateList = InsightCategoryList as any as S.Schema<InsightStateList>;
 export type GetInsightSummariesMaxResults = number;
 export interface GetInsightSummariesRequest {
   States?: InsightState[];

@@ -144,7 +144,7 @@ export type LoggingStrategy = "VENDED_LOGS" | "LEGACY_CLOUDWATCH" | (string & {}
 export const LoggingStrategy = S.String;
 
 export type __listOfLoggingStrategies = LoggingStrategy[];
-export const __listOfLoggingStrategies = /*@__PURE__*/ S.Array(LoggingStrategy);
+export const __listOfLoggingStrategies = LogTypes as any as S.Schema<__listOfLoggingStrategies>;
 export type AdsInteractionPublishOptInEventType =
   | "RAW_ADS_RESPONSE"
   | "RAW_ADS_REQUEST"
@@ -216,9 +216,8 @@ export type AdsInteractionExcludeEventType =
 export const AdsInteractionExcludeEventType = S.String;
 
 export type __adsInteractionExcludeEventTypesList = AdsInteractionExcludeEventType[];
-export const __adsInteractionExcludeEventTypesList = /*@__PURE__*/ S.Array(
-  AdsInteractionExcludeEventType,
-);
+export const __adsInteractionExcludeEventTypesList =
+  __adsInteractionPublishOptInEventTypesList as any as S.Schema<__adsInteractionExcludeEventTypesList>;
 export interface AdsInteractionLog {
   PublishOptInEventTypes?: AdsInteractionPublishOptInEventType[];
   ExcludeEventTypes?: AdsInteractionExcludeEventType[];
@@ -236,9 +235,8 @@ export type ManifestServicePublishOptInEventType =
 export const ManifestServicePublishOptInEventType = S.String;
 
 export type __manifestServicePublishOptInEventTypesList = ManifestServicePublishOptInEventType[];
-export const __manifestServicePublishOptInEventTypesList = /*@__PURE__*/ S.Array(
-  ManifestServicePublishOptInEventType,
-);
+export const __manifestServicePublishOptInEventTypesList =
+  __adsInteractionPublishOptInEventTypesList as any as S.Schema<__manifestServicePublishOptInEventTypesList>;
 export type ManifestServiceExcludeEventType =
   | "GENERATED_MANIFEST"
   | "ORIGIN_MANIFEST"
@@ -278,9 +276,8 @@ export type ManifestServiceExcludeEventType =
 export const ManifestServiceExcludeEventType = S.String;
 
 export type __manifestServiceExcludeEventTypesList = ManifestServiceExcludeEventType[];
-export const __manifestServiceExcludeEventTypesList = /*@__PURE__*/ S.Array(
-  ManifestServiceExcludeEventType,
-);
+export const __manifestServiceExcludeEventTypesList =
+  __adsInteractionPublishOptInEventTypesList as any as S.Schema<__manifestServiceExcludeEventTypesList>;
 export interface ManifestServiceInteractionLog {
   PublishOptInEventTypes?: ManifestServicePublishOptInEventType[];
   ExcludeEventTypes?: ManifestServiceExcludeEventType[];
@@ -363,7 +360,7 @@ export type AdMarkupType = "DATERANGE" | "SCTE35_ENHANCED" | (string & {});
 export const AdMarkupType = S.String;
 
 export type AdMarkupTypes = AdMarkupType[];
-export const AdMarkupTypes = /*@__PURE__*/ S.Array(AdMarkupType);
+export const AdMarkupTypes = LogTypes as any as S.Schema<AdMarkupTypes>;
 export interface HlsPlaylistSettings {
   ManifestWindowSeconds?: number;
   AdMarkupType?: AdMarkupType[];
@@ -1968,9 +1965,7 @@ export const AdSequencingMode = S.String;
 export interface VastResponse {
   AdSequencingMode?: AdSequencingMode;
 }
-export const VastResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AdSequencingMode: S.optional(AdSequencingMode) }),
-).annotate({ identifier: "VastResponse" }) as any as S.Schema<VastResponse>;
+export const VastResponse = PreRollVastResponse as any as S.Schema<VastResponse>;
 export interface AdDecisionServerConfiguration {
   HttpRequest?: HttpRequest;
   VastResponse?: VastResponse;
@@ -2052,7 +2047,7 @@ export type BeaconEventType = "MUTE" | "UNMUTE" | "PAUSE" | "SKIP" | (string & {
 export const BeaconEventType = S.String;
 
 export type BeaconEventTypeList = BeaconEventType[];
-export const BeaconEventTypeList = /*@__PURE__*/ S.Array(BeaconEventType);
+export const BeaconEventTypeList = LogTypes as any as S.Schema<BeaconEventTypeList>;
 export interface ClientSideBeaconingConfiguration {
   ReportingMode: ClientSideBeaconingMode;
   AdditionalEventTypes?: BeaconEventType[];

@@ -542,7 +542,7 @@ export type ResourceItemStatus = "SUCCESS" | "FAILED" | "IN_PROGRESS" | "SKIPPED
 export const ResourceItemStatus = S.String;
 
 export type GetAssociatedResourceFilter = ResourceItemStatus[];
-export const GetAssociatedResourceFilter = /*@__PURE__*/ S.Array(ResourceItemStatus);
+export const GetAssociatedResourceFilter = Options as any as S.Schema<GetAssociatedResourceFilter>;
 export type MaxResults = number;
 export interface GetAssociatedResourceRequest {
   application: string;

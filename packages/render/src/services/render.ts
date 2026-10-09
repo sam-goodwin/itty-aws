@@ -2674,9 +2674,8 @@ export const Type = S.String;
 
 /** The event types that will trigger the webhook. An empty list means all event types will trigger the webhook. */
 export type CreateWebhookRequestEventFilterList = Array<Type | (string & {})>;
-export const CreateWebhookRequestEventFilterList = /*@__PURE__*/ S.Array(
-  Type,
-) as any as S.Schema<CreateWebhookRequestEventFilterList>;
+export const CreateWebhookRequestEventFilterList =
+  PostgresDetailSuspendersList as any as S.Schema<CreateWebhookRequestEventFilterList>;
 
 export interface CreateWebhookRequest {
   /** The ID of the owner (team or personal user) whose resources should be returned */
@@ -7187,9 +7186,8 @@ export const ListDedicatedIpsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListDedicatedIpsResponse" }) as any as S.Schema<ListDedicatedIpsResponse>;
 
 export type ListDeploysRequestStatusList = Array<DeployStatus | (string & {})>;
-export const ListDeploysRequestStatusList = /*@__PURE__*/ S.Array(
-  DeployStatus,
-) as any as S.Schema<ListDeploysRequestStatusList>;
+export const ListDeploysRequestStatusList =
+  PostgresDetailSuspendersList as any as S.Schema<ListDeploysRequestStatusList>;
 
 export interface ListDeploysRequest {
   /** The ID of the service */
@@ -8013,9 +8011,8 @@ export type ListJobRequestStatusItem = "pending" | "running" | "succeeded" | "fa
 export const ListJobRequestStatusItem = S.String;
 
 export type ListJobRequestStatusList = Array<ListJobRequestStatusItem | (string & {})>;
-export const ListJobRequestStatusList = /*@__PURE__*/ S.Array(
-  ListJobRequestStatusItem,
-) as any as S.Schema<ListJobRequestStatusList>;
+export const ListJobRequestStatusList =
+  PostgresDetailSuspendersList as any as S.Schema<ListJobRequestStatusList>;
 
 export interface ListJobRequest {
   /** The ID of the service */
@@ -8080,9 +8077,8 @@ export const ListKeyValueRequestNameList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListKeyValueRequestNameList>;
 
 export type ListKeyValueRequestRegionList = Array<Region | (string & {})>;
-export const ListKeyValueRequestRegionList = /*@__PURE__*/ S.Array(
-  Region,
-) as any as S.Schema<ListKeyValueRequestRegionList>;
+export const ListKeyValueRequestRegionList =
+  PostgresDetailSuspendersList as any as S.Schema<ListKeyValueRequestRegionList>;
 
 export type ListKeyValueRequestOwnerIdList = Array<string>;
 export const ListKeyValueRequestOwnerIdList =
@@ -8536,9 +8532,8 @@ export const ListMaintenanceRequestStateItem = S.String;
 export type ListMaintenanceRequestStateList = Array<
   ListMaintenanceRequestStateItem | (string & {})
 >;
-export const ListMaintenanceRequestStateList = /*@__PURE__*/ S.Array(
-  ListMaintenanceRequestStateItem,
-) as any as S.Schema<ListMaintenanceRequestStateList>;
+export const ListMaintenanceRequestStateList =
+  PostgresDetailSuspendersList as any as S.Schema<ListMaintenanceRequestStateList>;
 
 export interface ListMaintenanceRequest {
   resourceId?: ListMaintenanceRequestResourceIdList;
@@ -8974,9 +8969,8 @@ export const ListPostgresRequestSuspendedItem = S.String;
 export type ListPostgresRequestSuspendedList = Array<
   ListPostgresRequestSuspendedItem | (string & {})
 >;
-export const ListPostgresRequestSuspendedList = /*@__PURE__*/ S.Array(
-  ListPostgresRequestSuspendedItem,
-) as any as S.Schema<ListPostgresRequestSuspendedList>;
+export const ListPostgresRequestSuspendedList =
+  PostgresDetailSuspendersList as any as S.Schema<ListPostgresRequestSuspendedList>;
 
 export type ListPostgresRequestOwnerIdList = Array<string>;
 export const ListPostgresRequestOwnerIdList =
@@ -9500,9 +9494,8 @@ export const ListRegistryCredentialsRequestUsernameList =
 export type ListRegistryCredentialsRequestTypeList = Array<
   RegistryCredentialRegistry | (string & {})
 >;
-export const ListRegistryCredentialsRequestTypeList = /*@__PURE__*/ S.Array(
-  RegistryCredentialRegistry,
-) as any as S.Schema<ListRegistryCredentialsRequestTypeList>;
+export const ListRegistryCredentialsRequestTypeList =
+  PostgresDetailSuspendersList as any as S.Schema<ListRegistryCredentialsRequestTypeList>;
 
 export type ListRegistryCredentialsRequestOwnerIdList = Array<string>;
 export const ListRegistryCredentialsRequestOwnerIdList =
@@ -9578,9 +9571,8 @@ export const ListResourceLogStreamsRequestSettingItem = S.String;
 export type ListResourceLogStreamsRequestSettingList = Array<
   ListResourceLogStreamsRequestSettingItem | (string & {})
 >;
-export const ListResourceLogStreamsRequestSettingList = /*@__PURE__*/ S.Array(
-  ListResourceLogStreamsRequestSettingItem,
-) as any as S.Schema<ListResourceLogStreamsRequestSettingList>;
+export const ListResourceLogStreamsRequestSettingList =
+  PostgresDetailSuspendersList as any as S.Schema<ListResourceLogStreamsRequestSettingList>;
 
 export interface ListResourceLogStreamsRequest {
   /** The ID of the workspaces to return resources for */
@@ -9641,9 +9633,8 @@ export type ListRoutesRequestTypeItem = "redirect" | "rewrite";
 export const ListRoutesRequestTypeItem = S.String;
 
 export type ListRoutesRequestTypeList = Array<ListRoutesRequestTypeItem | (string & {})>;
-export const ListRoutesRequestTypeList = /*@__PURE__*/ S.Array(
-  ListRoutesRequestTypeItem,
-) as any as S.Schema<ListRoutesRequestTypeList>;
+export const ListRoutesRequestTypeList =
+  PostgresDetailSuspendersList as any as S.Schema<ListRoutesRequestTypeList>;
 
 export type ListRoutesRequestSourceList = Array<string>;
 export const ListRoutesRequestSourceList =
@@ -9770,18 +9761,16 @@ export const ListServicesRequestNameList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListServicesRequestNameList>;
 
 export type ListServicesRequestTypeList = Array<ServiceType | (string & {})>;
-export const ListServicesRequestTypeList = /*@__PURE__*/ S.Array(
-  ServiceType,
-) as any as S.Schema<ListServicesRequestTypeList>;
+export const ListServicesRequestTypeList =
+  PostgresDetailSuspendersList as any as S.Schema<ListServicesRequestTypeList>;
 
 export type ListServicesRequestEnvironmentIdList = Array<string>;
 export const ListServicesRequestEnvironmentIdList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListServicesRequestEnvironmentIdList>;
 
 export type ListServicesRequestEnvList = Array<ServiceRuntime | (string & {})>;
-export const ListServicesRequestEnvList = /*@__PURE__*/ S.Array(
-  ServiceRuntime,
-) as any as S.Schema<ListServicesRequestEnvList>;
+export const ListServicesRequestEnvList =
+  PostgresDetailSuspendersList as any as S.Schema<ListServicesRequestEnvList>;
 
 export type ListServicesRequestRegionList = Array<Region | (string & {})>;
 export const ListServicesRequestRegionList =
@@ -9793,9 +9782,8 @@ export const ListServicesRequestSuspendedItem = S.String;
 export type ListServicesRequestSuspendedList = Array<
   ListServicesRequestSuspendedItem | (string & {})
 >;
-export const ListServicesRequestSuspendedList = /*@__PURE__*/ S.Array(
-  ListServicesRequestSuspendedItem,
-) as any as S.Schema<ListServicesRequestSuspendedList>;
+export const ListServicesRequestSuspendedList =
+  PostgresDetailSuspendersList as any as S.Schema<ListServicesRequestSuspendedList>;
 
 export type ListServicesRequestOwnerIdList = Array<string>;
 export const ListServicesRequestOwnerIdList =

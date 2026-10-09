@@ -527,16 +527,8 @@ export interface ListResponseWarehousesItemMaintenanceConfigCompaction {
   /** Sets the target file size for compaction in megabytes. Defaults to "128". */
   targetSizeMb: ListResponseWarehousesItemMaintenanceConfigCompactionTargetSizeMb;
 }
-export const ListResponseWarehousesItemMaintenanceConfigCompaction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: ListResponseWarehousesItemMaintenanceConfigCompactionState,
-    targetSizeMb: ListResponseWarehousesItemMaintenanceConfigCompactionTargetSizeMb.pipe(
-      T.Body("target_size_mb"),
-    ),
-  }),
-).annotate({
-  identifier: "ListResponseWarehousesItemMaintenanceConfigCompaction",
-}) as any as S.Schema<ListResponseWarehousesItemMaintenanceConfigCompaction>;
+export const ListResponseWarehousesItemMaintenanceConfigCompaction =
+  GetMaintenanceConfigResponseMaintenanceConfigCompaction as any as S.Schema<ListResponseWarehousesItemMaintenanceConfigCompaction>;
 
 export type ListResponseWarehousesItemMaintenanceConfigSnapshotExpirationState =
   | "enabled"
@@ -552,15 +544,7 @@ export interface ListResponseWarehousesItemMaintenanceConfigSnapshotExpiration {
   state: ListResponseWarehousesItemMaintenanceConfigSnapshotExpirationState;
 }
 export const ListResponseWarehousesItemMaintenanceConfigSnapshotExpiration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      maxSnapshotAge: S.String.pipe(T.Body("max_snapshot_age")),
-      minSnapshotsToKeep: S.Number.pipe(T.Body("min_snapshots_to_keep")),
-      state: ListResponseWarehousesItemMaintenanceConfigSnapshotExpirationState,
-    }),
-  ).annotate({
-    identifier: "ListResponseWarehousesItemMaintenanceConfigSnapshotExpiration",
-  }) as any as S.Schema<ListResponseWarehousesItemMaintenanceConfigSnapshotExpiration>;
+  GetMaintenanceConfigResponseMaintenanceConfigSnapshotExpiration as any as S.Schema<ListResponseWarehousesItemMaintenanceConfigSnapshotExpiration>;
 
 export interface ListResponseWarehousesItemMaintenanceConfig {
   /** Configures compaction for catalog maintenance. */
@@ -570,19 +554,8 @@ export interface ListResponseWarehousesItemMaintenanceConfig {
   /** Configures snapshot expiration settings. */
   snapshotExpiration?: ListResponseWarehousesItemMaintenanceConfigSnapshotExpiration | null;
 }
-export const ListResponseWarehousesItemMaintenanceConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    compaction: S.optional(S.NullOr(ListResponseWarehousesItemMaintenanceConfigCompaction)),
-    interval: S.optional(S.NullOr(S.String)),
-    snapshotExpiration: S.optional(
-      S.NullOr(ListResponseWarehousesItemMaintenanceConfigSnapshotExpiration).pipe(
-        T.Body("snapshot_expiration"),
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "ListResponseWarehousesItemMaintenanceConfig",
-}) as any as S.Schema<ListResponseWarehousesItemMaintenanceConfig>;
+export const ListResponseWarehousesItemMaintenanceConfig =
+  GetMaintenanceConfigResponseMaintenanceConfig as any as S.Schema<ListResponseWarehousesItemMaintenanceConfig>;
 
 export interface ListResponseWarehousesItem {
   /** Use this to uniquely identify the catalog. */
@@ -950,16 +923,8 @@ export interface UpdateMaintenanceConfigResponseCompaction {
   /** Sets the target file size for compaction in megabytes. Defaults to "128". */
   targetSizeMb: UpdateMaintenanceConfigResponseCompactionTargetSizeMb;
 }
-export const UpdateMaintenanceConfigResponseCompaction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: UpdateMaintenanceConfigResponseCompactionState,
-    targetSizeMb: UpdateMaintenanceConfigResponseCompactionTargetSizeMb.pipe(
-      T.Body("target_size_mb"),
-    ),
-  }),
-).annotate({
-  identifier: "UpdateMaintenanceConfigResponseCompaction",
-}) as any as S.Schema<UpdateMaintenanceConfigResponseCompaction>;
+export const UpdateMaintenanceConfigResponseCompaction =
+  GetMaintenanceConfigResponseMaintenanceConfigCompaction as any as S.Schema<UpdateMaintenanceConfigResponseCompaction>;
 
 export type UpdateMaintenanceConfigResponseSnapshotExpirationState = "enabled" | "disabled";
 export const UpdateMaintenanceConfigResponseSnapshotExpirationState = S.String;
@@ -972,15 +937,8 @@ export interface UpdateMaintenanceConfigResponseSnapshotExpiration {
   /** Specifies the state of maintenance operations. */
   state: UpdateMaintenanceConfigResponseSnapshotExpirationState;
 }
-export const UpdateMaintenanceConfigResponseSnapshotExpiration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxSnapshotAge: S.String.pipe(T.Body("max_snapshot_age")),
-    minSnapshotsToKeep: S.Number.pipe(T.Body("min_snapshots_to_keep")),
-    state: UpdateMaintenanceConfigResponseSnapshotExpirationState,
-  }),
-).annotate({
-  identifier: "UpdateMaintenanceConfigResponseSnapshotExpiration",
-}) as any as S.Schema<UpdateMaintenanceConfigResponseSnapshotExpiration>;
+export const UpdateMaintenanceConfigResponseSnapshotExpiration =
+  GetResponseMaintenanceConfigSnapshotExpiration as any as S.Schema<UpdateMaintenanceConfigResponseSnapshotExpiration>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateMaintenanceConfigResponse {
@@ -1143,16 +1101,7 @@ export interface UpdateNamespacesTablesMaintenanceConfigResponseSnapshotExpirati
   nextEligibleAt?: string | null;
 }
 export const UpdateNamespacesTablesMaintenanceConfigResponseSnapshotExpiration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      maxSnapshotAge: S.String.pipe(T.Body("max_snapshot_age")),
-      minSnapshotsToKeep: S.Number.pipe(T.Body("min_snapshots_to_keep")),
-      state: UpdateNamespacesTablesMaintenanceConfigResponseSnapshotExpirationState,
-      nextEligibleAt: S.optional(S.NullOr(S.String).pipe(T.Body("next_eligible_at"))),
-    }),
-  ).annotate({
-    identifier: "UpdateNamespacesTablesMaintenanceConfigResponseSnapshotExpiration",
-  }) as any as S.Schema<UpdateNamespacesTablesMaintenanceConfigResponseSnapshotExpiration>;
+  GetNamespacesTablesMaintenanceConfigResponseMaintenanceConfigSnapshotExpiration as any as S.Schema<UpdateNamespacesTablesMaintenanceConfigResponseSnapshotExpiration>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateNamespacesTablesMaintenanceConfigResponse {

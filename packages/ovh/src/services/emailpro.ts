@@ -1859,9 +1859,8 @@ export const EmailProDisclaimerAttributeEnum = S.String;
 
 export type ListEmailProDomainDisclaimerAttributeResponseBodyList =
   Array<EmailProDisclaimerAttributeEnum>;
-export const ListEmailProDomainDisclaimerAttributeResponseBodyList = /*@__PURE__*/ S.Array(
-  EmailProDisclaimerAttributeEnum,
-) as any as S.Schema<ListEmailProDomainDisclaimerAttributeResponseBodyList>;
+export const ListEmailProDomainDisclaimerAttributeResponseBodyList =
+  EmailProAccountNativeMailingFilterList as any as S.Schema<ListEmailProDomainDisclaimerAttributeResponseBodyList>;
 
 export type ListEmailProDomainDisclaimerAttributeResponse =
   ListEmailProDomainDisclaimerAttributeResponseBodyList;

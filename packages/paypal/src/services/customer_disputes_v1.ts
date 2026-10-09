@@ -2897,9 +2897,8 @@ export const AcknowledgementType = S.String;
 
 /** The types of response when the merchant acknowledges a returned item. */
 export type AcknowledgementTypeList = Array<AcknowledgementType>;
-export const AcknowledgementTypeList = /*@__PURE__*/ S.Array(
-  AcknowledgementType,
-) as any as S.Schema<AcknowledgementTypeList>;
+export const AcknowledgementTypeList =
+  DefinitionsSubReasonsList as any as S.Schema<AcknowledgementTypeList>;
 
 /** The allowed response options when the seller acknowledges that the buyer has returned an item for the dispute. */
 export interface AcknowledgeReturnItemResponseOptions {
@@ -2923,9 +2922,8 @@ export const AcceptClaimType = S.String;
 
 /** The types of refund the merchant can provide the customer. */
 export type AcceptClaimTypeList = Array<AcceptClaimType>;
-export const AcceptClaimTypeList = /*@__PURE__*/ S.Array(
-  AcceptClaimType,
-) as any as S.Schema<AcceptClaimTypeList>;
+export const AcceptClaimTypeList =
+  DefinitionsSubReasonsList as any as S.Schema<AcceptClaimTypeList>;
 
 /** The allowed response options when the merchant is accepting the claim. */
 export interface AcceptClaimResponseOptions {
@@ -2941,7 +2939,7 @@ export const AcceptClaimResponseOptions = /*@__PURE__*/ S.suspend(() =>
 
 /** The types of offer the merchant can offer the customer. */
 export type OfferTypeList = Array<OfferType>;
-export const OfferTypeList = /*@__PURE__*/ S.Array(OfferType) as any as S.Schema<OfferTypeList>;
+export const OfferTypeList = SubReasonsList as any as S.Schema<OfferTypeList>;
 
 /** The allowed response options when the merchant makes offer to the customer. */
 export interface MakeOfferResponseOptions {

@@ -1007,22 +1007,16 @@ export const PolicyControllerMonitoringConfigBackendsItemEnum = S.String;
 export type PolicyControllerMonitoringConfigBackendsItemEnumList = Array<
   PolicyControllerMonitoringConfigBackendsItemEnum | (string & {})
 >;
-export const PolicyControllerMonitoringConfigBackendsItemEnumList = /*@__PURE__*/ S.Array(
-  PolicyControllerMonitoringConfigBackendsItemEnum,
-) as any as S.Schema<PolicyControllerMonitoringConfigBackendsItemEnumList>;
+export const PolicyControllerMonitoringConfigBackendsItemEnumList =
+  ConfigManagementPolicyControllerMonitoringBackendsItemEnumList as any as S.Schema<PolicyControllerMonitoringConfigBackendsItemEnumList>;
 
 /** MonitoringConfig specifies the backends Policy Controller should export metrics to. For example, to specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: ["cloudmonitoring", "prometheus"] */
 export interface PolicyControllerMonitoringConfig {
   /** Specifies the list of backends Policy Controller will export to. An empty list would effectively disable metrics export. */
   backends?: PolicyControllerMonitoringConfigBackendsItemEnumList;
 }
-export const PolicyControllerMonitoringConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    backends: S.optional(PolicyControllerMonitoringConfigBackendsItemEnumList),
-  }),
-).annotate({
-  identifier: "PolicyControllerMonitoringConfig",
-}) as any as S.Schema<PolicyControllerMonitoringConfig>;
+export const PolicyControllerMonitoringConfig =
+  ConfigManagementPolicyControllerMonitoring as any as S.Schema<PolicyControllerMonitoringConfig>;
 
 /** Configuration for Policy Controller */
 export interface PolicyControllerHubConfig {
@@ -1711,22 +1705,14 @@ export interface WorkloadIdentityNamespaceStateDetail {
   /** A human-readable description of the current state or returned error. */
   description?: string;
 }
-export const WorkloadIdentityNamespaceStateDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(WorkloadIdentityNamespaceStateDetailCodeEnum),
-    description: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WorkloadIdentityNamespaceStateDetail",
-}) as any as S.Schema<WorkloadIdentityNamespaceStateDetail>;
+export const WorkloadIdentityNamespaceStateDetail =
+  WorkloadIdentityWorkloadIdentityPoolStateDetail as any as S.Schema<WorkloadIdentityNamespaceStateDetail>;
 
 export type WorkloadIdentityNamespaceStateDetailMap = {
   [key: string]: WorkloadIdentityNamespaceStateDetail | undefined;
 };
-export const WorkloadIdentityNamespaceStateDetailMap = /*@__PURE__*/ S.Record(
-  S.String,
-  WorkloadIdentityNamespaceStateDetail,
-) as any as S.Schema<WorkloadIdentityNamespaceStateDetailMap>;
+export const WorkloadIdentityNamespaceStateDetailMap =
+  WorkloadIdentityWorkloadIdentityPoolStateDetailMap as any as S.Schema<WorkloadIdentityNamespaceStateDetailMap>;
 
 export type WorkloadIdentityFeatureStateNamespaceStatesValueEnum =
   | "NAMESPACE_STATE_UNSPECIFIED"
@@ -3603,11 +3589,7 @@ export interface MembershipState {
   /** Output only. The current state of the Membership resource. */
   code?: MembershipStateCodeEnum | (string & {});
 }
-export const MembershipState = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(MembershipStateCodeEnum),
-  }),
-).annotate({ identifier: "MembershipState" }) as any as S.Schema<MembershipState>;
+export const MembershipState = FleetLifecycleState as any as S.Schema<MembershipState>;
 
 export type MembershipClusterTierEnum = "CLUSTER_TIER_UNSPECIFIED" | "STANDARD" | "ENTERPRISE";
 export const MembershipClusterTierEnum = S.String;
@@ -4014,13 +3996,8 @@ export interface RBACRoleBindingLifecycleState {
   /** Output only. The current state of the rbacrolebinding resource. */
   code?: RBACRoleBindingLifecycleStateCodeEnum | (string & {});
 }
-export const RBACRoleBindingLifecycleState = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(RBACRoleBindingLifecycleStateCodeEnum),
-  }),
-).annotate({
-  identifier: "RBACRoleBindingLifecycleState",
-}) as any as S.Schema<RBACRoleBindingLifecycleState>;
+export const RBACRoleBindingLifecycleState =
+  MembershipBindingLifecycleState as any as S.Schema<RBACRoleBindingLifecycleState>;
 
 /** RBACRoleBinding represents a rbacrolebinding across the Fleet */
 export interface RBACRoleBinding {
@@ -4116,9 +4093,8 @@ export const RolloutCreationScopeUpgradeTypesItemEnum = S.String;
 export type RolloutCreationScopeUpgradeTypesItemEnumList = Array<
   RolloutCreationScopeUpgradeTypesItemEnum | (string & {})
 >;
-export const RolloutCreationScopeUpgradeTypesItemEnumList = /*@__PURE__*/ S.Array(
-  RolloutCreationScopeUpgradeTypesItemEnum,
-) as any as S.Schema<RolloutCreationScopeUpgradeTypesItemEnumList>;
+export const RolloutCreationScopeUpgradeTypesItemEnumList =
+  ConfigManagementPolicyControllerMonitoringBackendsItemEnumList as any as S.Schema<RolloutCreationScopeUpgradeTypesItemEnumList>;
 
 /** The scope for automatic rollout creation. */
 export interface RolloutCreationScope {
@@ -4186,9 +4162,8 @@ export const OperationalStateReasonsItemEnum = S.String;
 export type OperationalStateReasonsItemEnumList = Array<
   OperationalStateReasonsItemEnum | (string & {})
 >;
-export const OperationalStateReasonsItemEnumList = /*@__PURE__*/ S.Array(
-  OperationalStateReasonsItemEnum,
-) as any as S.Schema<OperationalStateReasonsItemEnumList>;
+export const OperationalStateReasonsItemEnumList =
+  ConfigManagementPolicyControllerMonitoringBackendsItemEnumList as any as S.Schema<OperationalStateReasonsItemEnumList>;
 
 /** Operational state of the Rollout Sequence. */
 export interface OperationalState {
@@ -4306,11 +4281,7 @@ export interface ScopeLifecycleState {
   /** Output only. The current state of the scope resource. */
   code?: ScopeLifecycleStateCodeEnum | (string & {});
 }
-export const ScopeLifecycleState = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(ScopeLifecycleStateCodeEnum),
-  }),
-).annotate({ identifier: "ScopeLifecycleState" }) as any as S.Schema<ScopeLifecycleState>;
+export const ScopeLifecycleState = FleetLifecycleState as any as S.Schema<ScopeLifecycleState>;
 
 /** Scope represents a Scope in a Fleet. */
 export interface Scope {
@@ -4381,11 +4352,8 @@ export interface NamespaceLifecycleState {
   /** Output only. The current state of the Namespace resource. */
   code?: NamespaceLifecycleStateCodeEnum | (string & {});
 }
-export const NamespaceLifecycleState = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(NamespaceLifecycleStateCodeEnum),
-  }),
-).annotate({ identifier: "NamespaceLifecycleState" }) as any as S.Schema<NamespaceLifecycleState>;
+export const NamespaceLifecycleState =
+  FleetLifecycleState as any as S.Schema<NamespaceLifecycleState>;
 
 /** Namespace represents a namespace across the Fleet */
 export interface Namespace {

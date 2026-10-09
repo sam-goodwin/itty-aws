@@ -1960,7 +1960,8 @@ export const ListAppAssessmentResourceDriftsResponse = /*@__PURE__*/ S.suspend((
   identifier: "ListAppAssessmentResourceDriftsResponse",
 }) as any as S.Schema<ListAppAssessmentResourceDriftsResponse>;
 export type AssessmentStatusList = AssessmentStatus[];
-export const AssessmentStatusList = /*@__PURE__*/ S.Array(AssessmentStatus);
+export const AssessmentStatusList =
+  RenderRecommendationTypeList as any as S.Schema<AssessmentStatusList>;
 export interface ListAppAssessmentsRequest {
   appArn?: string;
   assessmentName?: string;
@@ -2541,7 +2542,8 @@ export const ListMetricsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ rows: RowList, nextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListMetricsResponse" }) as any as S.Schema<ListMetricsResponse>;
 export type RecommendationTemplateStatusList = RecommendationTemplateStatus[];
-export const RecommendationTemplateStatusList = /*@__PURE__*/ S.Array(RecommendationTemplateStatus);
+export const RecommendationTemplateStatusList =
+  RenderRecommendationTypeList as any as S.Schema<RecommendationTemplateStatusList>;
 export interface ListRecommendationTemplatesRequest {
   assessmentArn?: string;
   reverseOrder?: boolean;

@@ -962,9 +962,7 @@ export const GetTrendingResponseRecentlyTrendingItemCase0RepoDataDatasetsServerI
 export type GetTrendingResponseRecentlyTrendingItemCase0RepoDataDatasetsServerInfoFormatsList =
   Array<GetTrendingResponseRecentlyTrendingItemCase0RepoDataDatasetsServerInfoFormatsItem>;
 export const GetTrendingResponseRecentlyTrendingItemCase0RepoDataDatasetsServerInfoFormatsList =
-  /*@__PURE__*/ S.Array(
-    GetTrendingResponseRecentlyTrendingItemCase0RepoDataDatasetsServerInfoFormatsItem,
-  ) as any as S.Schema<GetTrendingResponseRecentlyTrendingItemCase0RepoDataDatasetsServerInfoFormatsList>;
+  GetTrendingResponseRecentlyTrendingItemCase0RepoDataDatasetsServerInfoLibrariesList as any as S.Schema<GetTrendingResponseRecentlyTrendingItemCase0RepoDataDatasetsServerInfoFormatsList>;
 
 export type GetTrendingResponseRecentlyTrendingItemCase0RepoDataDatasetsServerInfoModalitiesItem =
   | "3d"
@@ -982,9 +980,7 @@ export const GetTrendingResponseRecentlyTrendingItemCase0RepoDataDatasetsServerI
 export type GetTrendingResponseRecentlyTrendingItemCase0RepoDataDatasetsServerInfoModalitiesList =
   Array<GetTrendingResponseRecentlyTrendingItemCase0RepoDataDatasetsServerInfoModalitiesItem>;
 export const GetTrendingResponseRecentlyTrendingItemCase0RepoDataDatasetsServerInfoModalitiesList =
-  /*@__PURE__*/ S.Array(
-    GetTrendingResponseRecentlyTrendingItemCase0RepoDataDatasetsServerInfoModalitiesItem,
-  ) as any as S.Schema<GetTrendingResponseRecentlyTrendingItemCase0RepoDataDatasetsServerInfoModalitiesList>;
+  GetTrendingResponseRecentlyTrendingItemCase0RepoDataDatasetsServerInfoLibrariesList as any as S.Schema<GetTrendingResponseRecentlyTrendingItemCase0RepoDataDatasetsServerInfoModalitiesList>;
 
 export interface GetTrendingResponseRecentlyTrendingItemCase0RepoDataDatasetsServerInfo {
   viewer: GetTrendingResponseRecentlyTrendingItemCase0RepoDataDatasetsServerInfoViewer;
@@ -1862,23 +1858,7 @@ export interface GetTrendingResponseRecentlyTrendingItemCase2RepoDataAuthorDataC
   isUserFollowing?: boolean;
 }
 export const GetTrendingResponseRecentlyTrendingItemCase2RepoDataAuthorDataCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      _id: S.String,
-      avatarUrl: S.String,
-      fullname: S.String,
-      name: S.String,
-      isHf: S.Boolean,
-      isHfAdmin: S.Boolean,
-      isMod: S.Boolean,
-      followerCount: S.optional(S.Number),
-      type: S.String,
-      plan: S.optional(GetTrendingResponseRecentlyTrendingItemCase2RepoDataAuthorDataCase0Plan),
-      isUserFollowing: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "GetTrendingResponseRecentlyTrendingItemCase2RepoDataAuthorDataCase0",
-  }) as any as S.Schema<GetTrendingResponseRecentlyTrendingItemCase2RepoDataAuthorDataCase0>;
+  GetTrendingResponseRecentlyTrendingItemCase1RepoDataAuthorDataCase0 as any as S.Schema<GetTrendingResponseRecentlyTrendingItemCase2RepoDataAuthorDataCase0>;
 
 export type GetTrendingResponseRecentlyTrendingItemCase2RepoDataAuthorDataCase1PrimaryOrgPlan =
   | "team"
@@ -1911,27 +1891,7 @@ export interface GetTrendingResponseRecentlyTrendingItemCase2RepoDataAuthorDataC
   numUsers?: number;
 }
 export const GetTrendingResponseRecentlyTrendingItemCase2RepoDataAuthorDataCase1PrimaryOrg =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      avatarUrl: S.String,
-      fullname: S.String,
-      name: S.String,
-      type: S.String,
-      isHf: S.Boolean,
-      isFollowing: S.optional(S.Boolean),
-      plan: S.optional(
-        GetTrendingResponseRecentlyTrendingItemCase2RepoDataAuthorDataCase1PrimaryOrgPlan,
-      ),
-      details: S.optional(S.String),
-      hasPrivateMembersList: S.optional(S.Boolean),
-      userRole: S.optional(
-        GetTrendingResponseRecentlyTrendingItemCase2RepoDataAuthorDataCase1PrimaryOrgUserRole,
-      ),
-      numUsers: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "GetTrendingResponseRecentlyTrendingItemCase2RepoDataAuthorDataCase1PrimaryOrg",
-  }) as any as S.Schema<GetTrendingResponseRecentlyTrendingItemCase2RepoDataAuthorDataCase1PrimaryOrg>;
+  GetTrendingResponseRecentlyTrendingItemCase1RepoDataAuthorDataCase1PrimaryOrg as any as S.Schema<GetTrendingResponseRecentlyTrendingItemCase2RepoDataAuthorDataCase1PrimaryOrg>;
 
 export interface GetTrendingResponseRecentlyTrendingItemCase2RepoDataAuthorDataCase1 {
   /** A hex string of 24 characters representing an ObjectId. */
@@ -1949,26 +1909,7 @@ export interface GetTrendingResponseRecentlyTrendingItemCase2RepoDataAuthorDataC
   primaryOrg?: GetTrendingResponseRecentlyTrendingItemCase2RepoDataAuthorDataCase1PrimaryOrg;
 }
 export const GetTrendingResponseRecentlyTrendingItemCase2RepoDataAuthorDataCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      _id: S.String,
-      avatarUrl: S.String,
-      fullname: S.String,
-      name: S.String,
-      isHf: S.Boolean,
-      isHfAdmin: S.Boolean,
-      isMod: S.Boolean,
-      followerCount: S.optional(S.Number),
-      type: S.String,
-      isPro: S.Boolean,
-      isUserFollowing: S.optional(S.Boolean),
-      primaryOrg: S.optional(
-        GetTrendingResponseRecentlyTrendingItemCase2RepoDataAuthorDataCase1PrimaryOrg,
-      ),
-    }),
-  ).annotate({
-    identifier: "GetTrendingResponseRecentlyTrendingItemCase2RepoDataAuthorDataCase1",
-  }) as any as S.Schema<GetTrendingResponseRecentlyTrendingItemCase2RepoDataAuthorDataCase1>;
+  GetTrendingResponseRecentlyTrendingItemCase1RepoDataAuthorDataCase1 as any as S.Schema<GetTrendingResponseRecentlyTrendingItemCase2RepoDataAuthorDataCase1>;
 
 export type GetTrendingResponseRecentlyTrendingItemCase2RepoDataAuthorData =
   | GetTrendingResponseRecentlyTrendingItemCase2RepoDataAuthorDataCase0
@@ -2726,22 +2667,12 @@ export interface ListFolderContentResponseBodyItemSecurityFileStatusAvScanPickle
   safety: ListFolderContentResponseBodyItemSecurityFileStatusAvScanPickleImportsItemSafety;
 }
 export const ListFolderContentResponseBodyItemSecurityFileStatusAvScanPickleImportsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      module: S.String,
-      name: S.String,
-      safety: ListFolderContentResponseBodyItemSecurityFileStatusAvScanPickleImportsItemSafety,
-    }),
-  ).annotate({
-    identifier: "ListFolderContentResponseBodyItemSecurityFileStatusAvScanPickleImportsItem",
-  }) as any as S.Schema<ListFolderContentResponseBodyItemSecurityFileStatusAvScanPickleImportsItem>;
+  ListFolderContentResponseBodyItemSecurityFileStatusJFrogScanPickleImportsItem as any as S.Schema<ListFolderContentResponseBodyItemSecurityFileStatusAvScanPickleImportsItem>;
 
 export type ListFolderContentResponseBodyItemSecurityFileStatusAvScanPickleImportsList =
   Array<ListFolderContentResponseBodyItemSecurityFileStatusAvScanPickleImportsItem>;
 export const ListFolderContentResponseBodyItemSecurityFileStatusAvScanPickleImportsList =
-  /*@__PURE__*/ S.Array(
-    ListFolderContentResponseBodyItemSecurityFileStatusAvScanPickleImportsItem,
-  ) as any as S.Schema<ListFolderContentResponseBodyItemSecurityFileStatusAvScanPickleImportsList>;
+  ListFolderContentResponseBodyItemSecurityFileStatusJFrogScanPickleImportsList as any as S.Schema<ListFolderContentResponseBodyItemSecurityFileStatusAvScanPickleImportsList>;
 
 export interface ListFolderContentResponseBodyItemSecurityFileStatusAvScan {
   status: ListFolderContentResponseBodyItemSecurityFileStatusAvScanStatus;
@@ -2751,21 +2682,8 @@ export interface ListFolderContentResponseBodyItemSecurityFileStatusAvScan {
   pickleImports?: ListFolderContentResponseBodyItemSecurityFileStatusAvScanPickleImportsList;
   version?: string;
 }
-export const ListFolderContentResponseBodyItemSecurityFileStatusAvScan = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      status: ListFolderContentResponseBodyItemSecurityFileStatusAvScanStatus,
-      message: S.optional(S.String),
-      reportLink: S.optional(S.String),
-      reportLabel: S.optional(S.String),
-      pickleImports: S.optional(
-        ListFolderContentResponseBodyItemSecurityFileStatusAvScanPickleImportsList,
-      ),
-      version: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "ListFolderContentResponseBodyItemSecurityFileStatusAvScan",
-}) as any as S.Schema<ListFolderContentResponseBodyItemSecurityFileStatusAvScan>;
+export const ListFolderContentResponseBodyItemSecurityFileStatusAvScan =
+  ListFolderContentResponseBodyItemSecurityFileStatusJFrogScan as any as S.Schema<ListFolderContentResponseBodyItemSecurityFileStatusAvScan>;
 
 export type ListFolderContentResponseBodyItemSecurityFileStatusPickleImportScanStatus =
   | "unscanned"
@@ -2856,24 +2774,12 @@ export interface ListFolderContentResponseBodyItemSecurityFileStatusVirusTotalSc
   safety: ListFolderContentResponseBodyItemSecurityFileStatusVirusTotalScanPickleImportsItemSafety;
 }
 export const ListFolderContentResponseBodyItemSecurityFileStatusVirusTotalScanPickleImportsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      module: S.String,
-      name: S.String,
-      safety:
-        ListFolderContentResponseBodyItemSecurityFileStatusVirusTotalScanPickleImportsItemSafety,
-    }),
-  ).annotate({
-    identifier:
-      "ListFolderContentResponseBodyItemSecurityFileStatusVirusTotalScanPickleImportsItem",
-  }) as any as S.Schema<ListFolderContentResponseBodyItemSecurityFileStatusVirusTotalScanPickleImportsItem>;
+  ListFolderContentResponseBodyItemSecurityFileStatusPickleImportScanPickleImportsItem as any as S.Schema<ListFolderContentResponseBodyItemSecurityFileStatusVirusTotalScanPickleImportsItem>;
 
 export type ListFolderContentResponseBodyItemSecurityFileStatusVirusTotalScanPickleImportsList =
   Array<ListFolderContentResponseBodyItemSecurityFileStatusVirusTotalScanPickleImportsItem>;
 export const ListFolderContentResponseBodyItemSecurityFileStatusVirusTotalScanPickleImportsList =
-  /*@__PURE__*/ S.Array(
-    ListFolderContentResponseBodyItemSecurityFileStatusVirusTotalScanPickleImportsItem,
-  ) as any as S.Schema<ListFolderContentResponseBodyItemSecurityFileStatusVirusTotalScanPickleImportsList>;
+  ListFolderContentResponseBodyItemSecurityFileStatusPickleImportScanPickleImportsList as any as S.Schema<ListFolderContentResponseBodyItemSecurityFileStatusVirusTotalScanPickleImportsList>;
 
 export interface ListFolderContentResponseBodyItemSecurityFileStatusVirusTotalScan {
   status: ListFolderContentResponseBodyItemSecurityFileStatusVirusTotalScanStatus;
@@ -2884,20 +2790,7 @@ export interface ListFolderContentResponseBodyItemSecurityFileStatusVirusTotalSc
   version?: string;
 }
 export const ListFolderContentResponseBodyItemSecurityFileStatusVirusTotalScan =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      status: ListFolderContentResponseBodyItemSecurityFileStatusVirusTotalScanStatus,
-      message: S.optional(S.String),
-      reportLink: S.optional(S.String),
-      reportLabel: S.optional(S.String),
-      pickleImports: S.optional(
-        ListFolderContentResponseBodyItemSecurityFileStatusVirusTotalScanPickleImportsList,
-      ),
-      version: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListFolderContentResponseBodyItemSecurityFileStatusVirusTotalScan",
-  }) as any as S.Schema<ListFolderContentResponseBodyItemSecurityFileStatusVirusTotalScan>;
+  ListFolderContentResponseBodyItemSecurityFileStatusPickleImportScan as any as S.Schema<ListFolderContentResponseBodyItemSecurityFileStatusVirusTotalScan>;
 
 export interface ListFolderContentResponseBodyItemSecurityFileStatus {
   status: ListFolderContentResponseBodyItemSecurityFileStatusStatus;
@@ -3103,9 +2996,8 @@ export type ListLikersRequestExpandItem = "likedAt";
 export const ListLikersRequestExpandItem = S.String;
 
 export type ListLikersRequestExpandList = Array<ListLikersRequestExpandItem | (string & {})>;
-export const ListLikersRequestExpandList = /*@__PURE__*/ S.Array(
-  ListLikersRequestExpandItem,
-) as any as S.Schema<ListLikersRequestExpandList>;
+export const ListLikersRequestExpandList =
+  ListCommitsRequestExpandList as any as S.Schema<ListLikersRequestExpandList>;
 
 export interface ListLikersRequest {
   namespace: string;
@@ -3205,22 +3097,12 @@ export interface ListPathsInfoResponseBodyItemSecurityFileStatusJFrogScanPickleI
   safety: ListPathsInfoResponseBodyItemSecurityFileStatusJFrogScanPickleImportsItemSafety;
 }
 export const ListPathsInfoResponseBodyItemSecurityFileStatusJFrogScanPickleImportsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      module: S.String,
-      name: S.String,
-      safety: ListPathsInfoResponseBodyItemSecurityFileStatusJFrogScanPickleImportsItemSafety,
-    }),
-  ).annotate({
-    identifier: "ListPathsInfoResponseBodyItemSecurityFileStatusJFrogScanPickleImportsItem",
-  }) as any as S.Schema<ListPathsInfoResponseBodyItemSecurityFileStatusJFrogScanPickleImportsItem>;
+  ListFolderContentResponseBodyItemSecurityFileStatusJFrogScanPickleImportsItem as any as S.Schema<ListPathsInfoResponseBodyItemSecurityFileStatusJFrogScanPickleImportsItem>;
 
 export type ListPathsInfoResponseBodyItemSecurityFileStatusJFrogScanPickleImportsList =
   Array<ListPathsInfoResponseBodyItemSecurityFileStatusJFrogScanPickleImportsItem>;
 export const ListPathsInfoResponseBodyItemSecurityFileStatusJFrogScanPickleImportsList =
-  /*@__PURE__*/ S.Array(
-    ListPathsInfoResponseBodyItemSecurityFileStatusJFrogScanPickleImportsItem,
-  ) as any as S.Schema<ListPathsInfoResponseBodyItemSecurityFileStatusJFrogScanPickleImportsList>;
+  ListFolderContentResponseBodyItemSecurityFileStatusJFrogScanPickleImportsList as any as S.Schema<ListPathsInfoResponseBodyItemSecurityFileStatusJFrogScanPickleImportsList>;
 
 export interface ListPathsInfoResponseBodyItemSecurityFileStatusJFrogScan {
   status: ListPathsInfoResponseBodyItemSecurityFileStatusJFrogScanStatus;
@@ -3230,21 +3112,8 @@ export interface ListPathsInfoResponseBodyItemSecurityFileStatusJFrogScan {
   pickleImports?: ListPathsInfoResponseBodyItemSecurityFileStatusJFrogScanPickleImportsList;
   version?: string;
 }
-export const ListPathsInfoResponseBodyItemSecurityFileStatusJFrogScan = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      status: ListPathsInfoResponseBodyItemSecurityFileStatusJFrogScanStatus,
-      message: S.optional(S.String),
-      reportLink: S.optional(S.String),
-      reportLabel: S.optional(S.String),
-      pickleImports: S.optional(
-        ListPathsInfoResponseBodyItemSecurityFileStatusJFrogScanPickleImportsList,
-      ),
-      version: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "ListPathsInfoResponseBodyItemSecurityFileStatusJFrogScan",
-}) as any as S.Schema<ListPathsInfoResponseBodyItemSecurityFileStatusJFrogScan>;
+export const ListPathsInfoResponseBodyItemSecurityFileStatusJFrogScan =
+  ListFolderContentResponseBodyItemSecurityFileStatusJFrogScan as any as S.Schema<ListPathsInfoResponseBodyItemSecurityFileStatusJFrogScan>;
 
 export type ListPathsInfoResponseBodyItemSecurityFileStatusProtectAiScanStatus =
   | "unscanned"
@@ -3269,22 +3138,12 @@ export interface ListPathsInfoResponseBodyItemSecurityFileStatusProtectAiScanPic
   safety: ListPathsInfoResponseBodyItemSecurityFileStatusProtectAiScanPickleImportsItemSafety;
 }
 export const ListPathsInfoResponseBodyItemSecurityFileStatusProtectAiScanPickleImportsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      module: S.String,
-      name: S.String,
-      safety: ListPathsInfoResponseBodyItemSecurityFileStatusProtectAiScanPickleImportsItemSafety,
-    }),
-  ).annotate({
-    identifier: "ListPathsInfoResponseBodyItemSecurityFileStatusProtectAiScanPickleImportsItem",
-  }) as any as S.Schema<ListPathsInfoResponseBodyItemSecurityFileStatusProtectAiScanPickleImportsItem>;
+  ListFolderContentResponseBodyItemSecurityFileStatusJFrogScanPickleImportsItem as any as S.Schema<ListPathsInfoResponseBodyItemSecurityFileStatusProtectAiScanPickleImportsItem>;
 
 export type ListPathsInfoResponseBodyItemSecurityFileStatusProtectAiScanPickleImportsList =
   Array<ListPathsInfoResponseBodyItemSecurityFileStatusProtectAiScanPickleImportsItem>;
 export const ListPathsInfoResponseBodyItemSecurityFileStatusProtectAiScanPickleImportsList =
-  /*@__PURE__*/ S.Array(
-    ListPathsInfoResponseBodyItemSecurityFileStatusProtectAiScanPickleImportsItem,
-  ) as any as S.Schema<ListPathsInfoResponseBodyItemSecurityFileStatusProtectAiScanPickleImportsList>;
+  ListFolderContentResponseBodyItemSecurityFileStatusJFrogScanPickleImportsList as any as S.Schema<ListPathsInfoResponseBodyItemSecurityFileStatusProtectAiScanPickleImportsList>;
 
 export interface ListPathsInfoResponseBodyItemSecurityFileStatusProtectAiScan {
   status: ListPathsInfoResponseBodyItemSecurityFileStatusProtectAiScanStatus;
@@ -3294,21 +3153,8 @@ export interface ListPathsInfoResponseBodyItemSecurityFileStatusProtectAiScan {
   pickleImports?: ListPathsInfoResponseBodyItemSecurityFileStatusProtectAiScanPickleImportsList;
   version?: string;
 }
-export const ListPathsInfoResponseBodyItemSecurityFileStatusProtectAiScan = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      status: ListPathsInfoResponseBodyItemSecurityFileStatusProtectAiScanStatus,
-      message: S.optional(S.String),
-      reportLink: S.optional(S.String),
-      reportLabel: S.optional(S.String),
-      pickleImports: S.optional(
-        ListPathsInfoResponseBodyItemSecurityFileStatusProtectAiScanPickleImportsList,
-      ),
-      version: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "ListPathsInfoResponseBodyItemSecurityFileStatusProtectAiScan",
-}) as any as S.Schema<ListPathsInfoResponseBodyItemSecurityFileStatusProtectAiScan>;
+export const ListPathsInfoResponseBodyItemSecurityFileStatusProtectAiScan =
+  ListFolderContentResponseBodyItemSecurityFileStatusJFrogScan as any as S.Schema<ListPathsInfoResponseBodyItemSecurityFileStatusProtectAiScan>;
 
 export type ListPathsInfoResponseBodyItemSecurityFileStatusAvScanStatus =
   | "unscanned"
@@ -3333,22 +3179,12 @@ export interface ListPathsInfoResponseBodyItemSecurityFileStatusAvScanPickleImpo
   safety: ListPathsInfoResponseBodyItemSecurityFileStatusAvScanPickleImportsItemSafety;
 }
 export const ListPathsInfoResponseBodyItemSecurityFileStatusAvScanPickleImportsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      module: S.String,
-      name: S.String,
-      safety: ListPathsInfoResponseBodyItemSecurityFileStatusAvScanPickleImportsItemSafety,
-    }),
-  ).annotate({
-    identifier: "ListPathsInfoResponseBodyItemSecurityFileStatusAvScanPickleImportsItem",
-  }) as any as S.Schema<ListPathsInfoResponseBodyItemSecurityFileStatusAvScanPickleImportsItem>;
+  ListFolderContentResponseBodyItemSecurityFileStatusJFrogScanPickleImportsItem as any as S.Schema<ListPathsInfoResponseBodyItemSecurityFileStatusAvScanPickleImportsItem>;
 
 export type ListPathsInfoResponseBodyItemSecurityFileStatusAvScanPickleImportsList =
   Array<ListPathsInfoResponseBodyItemSecurityFileStatusAvScanPickleImportsItem>;
 export const ListPathsInfoResponseBodyItemSecurityFileStatusAvScanPickleImportsList =
-  /*@__PURE__*/ S.Array(
-    ListPathsInfoResponseBodyItemSecurityFileStatusAvScanPickleImportsItem,
-  ) as any as S.Schema<ListPathsInfoResponseBodyItemSecurityFileStatusAvScanPickleImportsList>;
+  ListFolderContentResponseBodyItemSecurityFileStatusJFrogScanPickleImportsList as any as S.Schema<ListPathsInfoResponseBodyItemSecurityFileStatusAvScanPickleImportsList>;
 
 export interface ListPathsInfoResponseBodyItemSecurityFileStatusAvScan {
   status: ListPathsInfoResponseBodyItemSecurityFileStatusAvScanStatus;
@@ -3396,23 +3232,12 @@ export interface ListPathsInfoResponseBodyItemSecurityFileStatusPickleImportScan
   safety: ListPathsInfoResponseBodyItemSecurityFileStatusPickleImportScanPickleImportsItemSafety;
 }
 export const ListPathsInfoResponseBodyItemSecurityFileStatusPickleImportScanPickleImportsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      module: S.String,
-      name: S.String,
-      safety:
-        ListPathsInfoResponseBodyItemSecurityFileStatusPickleImportScanPickleImportsItemSafety,
-    }),
-  ).annotate({
-    identifier: "ListPathsInfoResponseBodyItemSecurityFileStatusPickleImportScanPickleImportsItem",
-  }) as any as S.Schema<ListPathsInfoResponseBodyItemSecurityFileStatusPickleImportScanPickleImportsItem>;
+  ListFolderContentResponseBodyItemSecurityFileStatusProtectAiScanPickleImportsItem as any as S.Schema<ListPathsInfoResponseBodyItemSecurityFileStatusPickleImportScanPickleImportsItem>;
 
 export type ListPathsInfoResponseBodyItemSecurityFileStatusPickleImportScanPickleImportsList =
   Array<ListPathsInfoResponseBodyItemSecurityFileStatusPickleImportScanPickleImportsItem>;
 export const ListPathsInfoResponseBodyItemSecurityFileStatusPickleImportScanPickleImportsList =
-  /*@__PURE__*/ S.Array(
-    ListPathsInfoResponseBodyItemSecurityFileStatusPickleImportScanPickleImportsItem,
-  ) as any as S.Schema<ListPathsInfoResponseBodyItemSecurityFileStatusPickleImportScanPickleImportsList>;
+  ListFolderContentResponseBodyItemSecurityFileStatusProtectAiScanPickleImportsList as any as S.Schema<ListPathsInfoResponseBodyItemSecurityFileStatusPickleImportScanPickleImportsList>;
 
 export interface ListPathsInfoResponseBodyItemSecurityFileStatusPickleImportScan {
   status: ListPathsInfoResponseBodyItemSecurityFileStatusPickleImportScanStatus;
@@ -3423,20 +3248,7 @@ export interface ListPathsInfoResponseBodyItemSecurityFileStatusPickleImportScan
   version?: string;
 }
 export const ListPathsInfoResponseBodyItemSecurityFileStatusPickleImportScan =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      status: ListPathsInfoResponseBodyItemSecurityFileStatusPickleImportScanStatus,
-      message: S.optional(S.String),
-      reportLink: S.optional(S.String),
-      reportLabel: S.optional(S.String),
-      pickleImports: S.optional(
-        ListPathsInfoResponseBodyItemSecurityFileStatusPickleImportScanPickleImportsList,
-      ),
-      version: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListPathsInfoResponseBodyItemSecurityFileStatusPickleImportScan",
-  }) as any as S.Schema<ListPathsInfoResponseBodyItemSecurityFileStatusPickleImportScan>;
+  ListFolderContentResponseBodyItemSecurityFileStatusProtectAiScan as any as S.Schema<ListPathsInfoResponseBodyItemSecurityFileStatusPickleImportScan>;
 
 export type ListPathsInfoResponseBodyItemSecurityFileStatusVirusTotalScanStatus =
   | "unscanned"
@@ -3461,22 +3273,12 @@ export interface ListPathsInfoResponseBodyItemSecurityFileStatusVirusTotalScanPi
   safety: ListPathsInfoResponseBodyItemSecurityFileStatusVirusTotalScanPickleImportsItemSafety;
 }
 export const ListPathsInfoResponseBodyItemSecurityFileStatusVirusTotalScanPickleImportsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      module: S.String,
-      name: S.String,
-      safety: ListPathsInfoResponseBodyItemSecurityFileStatusVirusTotalScanPickleImportsItemSafety,
-    }),
-  ).annotate({
-    identifier: "ListPathsInfoResponseBodyItemSecurityFileStatusVirusTotalScanPickleImportsItem",
-  }) as any as S.Schema<ListPathsInfoResponseBodyItemSecurityFileStatusVirusTotalScanPickleImportsItem>;
+  ListFolderContentResponseBodyItemSecurityFileStatusJFrogScanPickleImportsItem as any as S.Schema<ListPathsInfoResponseBodyItemSecurityFileStatusVirusTotalScanPickleImportsItem>;
 
 export type ListPathsInfoResponseBodyItemSecurityFileStatusVirusTotalScanPickleImportsList =
   Array<ListPathsInfoResponseBodyItemSecurityFileStatusVirusTotalScanPickleImportsItem>;
 export const ListPathsInfoResponseBodyItemSecurityFileStatusVirusTotalScanPickleImportsList =
-  /*@__PURE__*/ S.Array(
-    ListPathsInfoResponseBodyItemSecurityFileStatusVirusTotalScanPickleImportsItem,
-  ) as any as S.Schema<ListPathsInfoResponseBodyItemSecurityFileStatusVirusTotalScanPickleImportsList>;
+  ListFolderContentResponseBodyItemSecurityFileStatusJFrogScanPickleImportsList as any as S.Schema<ListPathsInfoResponseBodyItemSecurityFileStatusVirusTotalScanPickleImportsList>;
 
 export interface ListPathsInfoResponseBodyItemSecurityFileStatusVirusTotalScan {
   status: ListPathsInfoResponseBodyItemSecurityFileStatusVirusTotalScanStatus;

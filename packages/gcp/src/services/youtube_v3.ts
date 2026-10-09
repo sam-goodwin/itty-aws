@@ -3503,9 +3503,8 @@ export const VideoSuggestionsProcessingErrorsItemEnum = S.String;
 export type VideoSuggestionsProcessingErrorsItemEnumList = Array<
   VideoSuggestionsProcessingErrorsItemEnum | (string & {})
 >;
-export const VideoSuggestionsProcessingErrorsItemEnumList = /*@__PURE__*/ S.Array(
-  VideoSuggestionsProcessingErrorsItemEnum,
-) as any as S.Schema<VideoSuggestionsProcessingErrorsItemEnumList>;
+export const VideoSuggestionsProcessingErrorsItemEnumList =
+  VideoSuggestionsEditorSuggestionsItemEnumList as any as S.Schema<VideoSuggestionsProcessingErrorsItemEnumList>;
 
 export type VideoSuggestionsProcessingHintsItemEnum =
   | "nonStreamableMov"
@@ -3519,9 +3518,8 @@ export const VideoSuggestionsProcessingHintsItemEnum = S.String;
 export type VideoSuggestionsProcessingHintsItemEnumList = Array<
   VideoSuggestionsProcessingHintsItemEnum | (string & {})
 >;
-export const VideoSuggestionsProcessingHintsItemEnumList = /*@__PURE__*/ S.Array(
-  VideoSuggestionsProcessingHintsItemEnum,
-) as any as S.Schema<VideoSuggestionsProcessingHintsItemEnumList>;
+export const VideoSuggestionsProcessingHintsItemEnumList =
+  VideoSuggestionsEditorSuggestionsItemEnumList as any as S.Schema<VideoSuggestionsProcessingHintsItemEnumList>;
 
 export type VideoSuggestionsProcessingWarningsItemEnum =
   | "unknownContainer"
@@ -3541,9 +3539,8 @@ export const VideoSuggestionsProcessingWarningsItemEnum = S.String;
 export type VideoSuggestionsProcessingWarningsItemEnumList = Array<
   VideoSuggestionsProcessingWarningsItemEnum | (string & {})
 >;
-export const VideoSuggestionsProcessingWarningsItemEnumList = /*@__PURE__*/ S.Array(
-  VideoSuggestionsProcessingWarningsItemEnum,
-) as any as S.Schema<VideoSuggestionsProcessingWarningsItemEnumList>;
+export const VideoSuggestionsProcessingWarningsItemEnumList =
+  VideoSuggestionsEditorSuggestionsItemEnumList as any as S.Schema<VideoSuggestionsProcessingWarningsItemEnumList>;
 
 /** A single tag suggestion with its relevance information. */
 export interface VideoSuggestionsTagSuggestion {
@@ -4028,9 +4025,8 @@ export const ContentRatingDjctqRatingReasonsItemEnum = S.String;
 export type ContentRatingDjctqRatingReasonsItemEnumList = Array<
   ContentRatingDjctqRatingReasonsItemEnum | (string & {})
 >;
-export const ContentRatingDjctqRatingReasonsItemEnumList = /*@__PURE__*/ S.Array(
-  ContentRatingDjctqRatingReasonsItemEnum,
-) as any as S.Schema<ContentRatingDjctqRatingReasonsItemEnumList>;
+export const ContentRatingDjctqRatingReasonsItemEnumList =
+  VideoSuggestionsEditorSuggestionsItemEnumList as any as S.Schema<ContentRatingDjctqRatingReasonsItemEnumList>;
 
 export type ContentRatingMoctwRatingEnum =
   | "moctwUnspecified"
@@ -4081,9 +4077,8 @@ export const ContentRatingFpbRatingReasonsItemEnum = S.String;
 export type ContentRatingFpbRatingReasonsItemEnumList = Array<
   ContentRatingFpbRatingReasonsItemEnum | (string & {})
 >;
-export const ContentRatingFpbRatingReasonsItemEnumList = /*@__PURE__*/ S.Array(
-  ContentRatingFpbRatingReasonsItemEnum,
-) as any as S.Schema<ContentRatingFpbRatingReasonsItemEnumList>;
+export const ContentRatingFpbRatingReasonsItemEnumList =
+  VideoSuggestionsEditorSuggestionsItemEnumList as any as S.Schema<ContentRatingFpbRatingReasonsItemEnumList>;
 
 export type ContentRatingKfcbRatingEnum =
   | "kfcbUnspecified"

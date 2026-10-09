@@ -1031,9 +1031,8 @@ export type SalesforceChatterFeedIncludeFilterType =
 export const SalesforceChatterFeedIncludeFilterType = S.String;
 
 export type SalesforceChatterFeedIncludeFilterTypes = SalesforceChatterFeedIncludeFilterType[];
-export const SalesforceChatterFeedIncludeFilterTypes = /*@__PURE__*/ S.Array(
-  SalesforceChatterFeedIncludeFilterType,
-);
+export const SalesforceChatterFeedIncludeFilterTypes =
+  SalesforceKnowledgeArticleStateList as any as S.Schema<SalesforceChatterFeedIncludeFilterTypes>;
 export interface SalesforceChatterFeedConfiguration {
   DocumentDataFieldName: string;
   DocumentTitleFieldName?: string;
@@ -1261,19 +1260,11 @@ export interface ConfluencePageToIndexFieldMapping {
   DateFieldFormat?: string;
   IndexFieldName?: string;
 }
-export const ConfluencePageToIndexFieldMapping = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DataSourceFieldName: S.optional(ConfluencePageFieldName),
-    DateFieldFormat: S.optional(S.String),
-    IndexFieldName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ConfluencePageToIndexFieldMapping",
-}) as any as S.Schema<ConfluencePageToIndexFieldMapping>;
+export const ConfluencePageToIndexFieldMapping =
+  ConfluenceSpaceToIndexFieldMapping as any as S.Schema<ConfluencePageToIndexFieldMapping>;
 export type ConfluencePageFieldMappingsList = ConfluencePageToIndexFieldMapping[];
-export const ConfluencePageFieldMappingsList = /*@__PURE__*/ S.Array(
-  ConfluencePageToIndexFieldMapping,
-);
+export const ConfluencePageFieldMappingsList =
+  ConfluenceSpaceFieldMappingsList as any as S.Schema<ConfluencePageFieldMappingsList>;
 export interface ConfluencePageConfiguration {
   PageFieldMappings?: ConfluencePageToIndexFieldMapping[];
 }
@@ -1300,19 +1291,11 @@ export interface ConfluenceBlogToIndexFieldMapping {
   DateFieldFormat?: string;
   IndexFieldName?: string;
 }
-export const ConfluenceBlogToIndexFieldMapping = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DataSourceFieldName: S.optional(ConfluenceBlogFieldName),
-    DateFieldFormat: S.optional(S.String),
-    IndexFieldName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ConfluenceBlogToIndexFieldMapping",
-}) as any as S.Schema<ConfluenceBlogToIndexFieldMapping>;
+export const ConfluenceBlogToIndexFieldMapping =
+  ConfluenceSpaceToIndexFieldMapping as any as S.Schema<ConfluenceBlogToIndexFieldMapping>;
 export type ConfluenceBlogFieldMappingsList = ConfluenceBlogToIndexFieldMapping[];
-export const ConfluenceBlogFieldMappingsList = /*@__PURE__*/ S.Array(
-  ConfluenceBlogToIndexFieldMapping,
-);
+export const ConfluenceBlogFieldMappingsList =
+  ConfluenceSpaceFieldMappingsList as any as S.Schema<ConfluenceBlogFieldMappingsList>;
 export interface ConfluenceBlogConfiguration {
   BlogFieldMappings?: ConfluenceBlogToIndexFieldMapping[];
 }
@@ -1341,19 +1324,11 @@ export interface ConfluenceAttachmentToIndexFieldMapping {
   DateFieldFormat?: string;
   IndexFieldName?: string;
 }
-export const ConfluenceAttachmentToIndexFieldMapping = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DataSourceFieldName: S.optional(ConfluenceAttachmentFieldName),
-    DateFieldFormat: S.optional(S.String),
-    IndexFieldName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ConfluenceAttachmentToIndexFieldMapping",
-}) as any as S.Schema<ConfluenceAttachmentToIndexFieldMapping>;
+export const ConfluenceAttachmentToIndexFieldMapping =
+  ConfluenceSpaceToIndexFieldMapping as any as S.Schema<ConfluenceAttachmentToIndexFieldMapping>;
 export type ConfluenceAttachmentFieldMappingsList = ConfluenceAttachmentToIndexFieldMapping[];
-export const ConfluenceAttachmentFieldMappingsList = /*@__PURE__*/ S.Array(
-  ConfluenceAttachmentToIndexFieldMapping,
-);
+export const ConfluenceAttachmentFieldMappingsList =
+  ConfluenceSpaceFieldMappingsList as any as S.Schema<ConfluenceAttachmentFieldMappingsList>;
 export interface ConfluenceAttachmentConfiguration {
   CrawlAttachments?: boolean;
   AttachmentFieldMappings?: ConfluenceAttachmentToIndexFieldMapping[];
@@ -1682,7 +1657,7 @@ export type IssueSubEntity = "COMMENTS" | "ATTACHMENTS" | "WORKLOGS" | (string &
 export const IssueSubEntity = S.String;
 
 export type IssueSubEntityFilter = IssueSubEntity[];
-export const IssueSubEntityFilter = /*@__PURE__*/ S.Array(IssueSubEntity);
+export const IssueSubEntityFilter = SlackEntityList as any as S.Schema<IssueSubEntityFilter>;
 export interface JiraConfiguration {
   JiraAccountUrl: string;
   SecretArn: string;
@@ -1827,7 +1802,7 @@ export type AlfrescoEntity = "wiki" | "blog" | "documentLibrary" | (string & {})
 export const AlfrescoEntity = S.String;
 
 export type EntityFilter = AlfrescoEntity[];
-export const EntityFilter = /*@__PURE__*/ S.Array(AlfrescoEntity);
+export const EntityFilter = SlackEntityList as any as S.Schema<EntityFilter>;
 export interface AlfrescoConfiguration {
   SiteUrl: string;
   SiteId: string;
@@ -3084,7 +3059,7 @@ export type SuggestionType = "QUERY" | "DOCUMENT_ATTRIBUTES" | (string & {});
 export const SuggestionType = S.String;
 
 export type SuggestionTypes = SuggestionType[];
-export const SuggestionTypes = /*@__PURE__*/ S.Array(SuggestionType);
+export const SuggestionTypes = SlackEntityList as any as S.Schema<SuggestionTypes>;
 export type DocumentAttributeKeyList = string[];
 export const DocumentAttributeKeyList = DocumentIdList as any as S.Schema<DocumentAttributeKeyList>;
 export type AttributeFilterList = AttributeFilter[];

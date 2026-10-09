@@ -1479,14 +1479,8 @@ export interface ConnectConnectorCreateResultUpdatedByCase0 {
   /** Principal kind. */
   type: ConnectConnectorCreateResultUpdatedByCase0Type;
 }
-export const ConnectConnectorCreateResultUpdatedByCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: ConnectConnectorCreateResultUpdatedByCase0Type,
-  }),
-).annotate({
-  identifier: "ConnectConnectorCreateResultUpdatedByCase0",
-}) as any as S.Schema<ConnectConnectorCreateResultUpdatedByCase0>;
+export const ConnectConnectorCreateResultUpdatedByCase0 =
+  ConnectConnectorCreateResultCreatedByCase0 as any as S.Schema<ConnectConnectorCreateResultUpdatedByCase0>;
 
 export type ConnectConnectorCreateResultUpdatedByCase1EnvironmentCase1 =
   | "development"
@@ -2048,14 +2042,8 @@ export interface ConnectConnectorCreatedByCase0 {
   /** Principal kind. */
   type: ConnectConnectorCreatedByCase0Type;
 }
-export const ConnectConnectorCreatedByCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: ConnectConnectorCreatedByCase0Type,
-  }),
-).annotate({
-  identifier: "ConnectConnectorCreatedByCase0",
-}) as any as S.Schema<ConnectConnectorCreatedByCase0>;
+export const ConnectConnectorCreatedByCase0 =
+  ConnectConnectorCreateResultCreatedByCase0 as any as S.Schema<ConnectConnectorCreatedByCase0>;
 
 export type ConnectConnectorCreatedByCase1EnvironmentCase1 =
   | "development"
@@ -2153,14 +2141,8 @@ export interface ConnectConnectorUpdatedByCase0 {
   /** Principal kind. */
   type: ConnectConnectorUpdatedByCase0Type;
 }
-export const ConnectConnectorUpdatedByCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: ConnectConnectorUpdatedByCase0Type,
-  }),
-).annotate({
-  identifier: "ConnectConnectorUpdatedByCase0",
-}) as any as S.Schema<ConnectConnectorUpdatedByCase0>;
+export const ConnectConnectorUpdatedByCase0 =
+  ConnectConnectorCreateResultCreatedByCase0 as any as S.Schema<ConnectConnectorUpdatedByCase0>;
 
 export type ConnectConnectorUpdatedByCase1EnvironmentCase1 =
   | "development"
@@ -2483,13 +2465,8 @@ export const GetConnectorTokenRequestSubjectCase0Type = S.String;
 export interface GetConnectorTokenRequestSubjectCase0 {
   type: GetConnectorTokenRequestSubjectCase0Type;
 }
-export const GetConnectorTokenRequestSubjectCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: GetConnectorTokenRequestSubjectCase0Type,
-  }),
-).annotate({
-  identifier: "GetConnectorTokenRequestSubjectCase0",
-}) as any as S.Schema<GetConnectorTokenRequestSubjectCase0>;
+export const GetConnectorTokenRequestSubjectCase0 =
+  CreateConnectorAuthorizationRequestRequestSubjectCase0 as any as S.Schema<GetConnectorTokenRequestSubjectCase0>;
 
 export type GetConnectorTokenRequestSubjectCase1Type = "user";
 export const GetConnectorTokenRequestSubjectCase1Type = S.String;
@@ -2499,15 +2476,8 @@ export interface GetConnectorTokenRequestSubjectCase1 {
   id?: string;
   issuer?: string;
 }
-export const GetConnectorTokenRequestSubjectCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: GetConnectorTokenRequestSubjectCase1Type,
-    id: S.optional(S.String),
-    issuer: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetConnectorTokenRequestSubjectCase1",
-}) as any as S.Schema<GetConnectorTokenRequestSubjectCase1>;
+export const GetConnectorTokenRequestSubjectCase1 =
+  CreateConnectorAuthorizationRequestRequestSubjectCase1 as any as S.Schema<GetConnectorTokenRequestSubjectCase1>;
 
 export type GetConnectorTokenRequestSubjectCase2Type = "jwt-bearer";
 export const GetConnectorTokenRequestSubjectCase2Type = S.String;
@@ -2544,14 +2514,8 @@ export interface GetConnectorTokenRequestSubjectCase3 {
   type: GetConnectorTokenRequestSubjectCase3Type;
   token: string;
 }
-export const GetConnectorTokenRequestSubjectCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: GetConnectorTokenRequestSubjectCase3Type,
-    token: S.String,
-  }),
-).annotate({
-  identifier: "GetConnectorTokenRequestSubjectCase3",
-}) as any as S.Schema<GetConnectorTokenRequestSubjectCase3>;
+export const GetConnectorTokenRequestSubjectCase3 =
+  CreateConnectorAuthorizationRequestRequestSubjectCase3 as any as S.Schema<GetConnectorTokenRequestSubjectCase3>;
 
 export type GetConnectorTokenRequestSubjectCase4 =
   CreateConnectorAuthorizationRequestRequestSubjectCase4;
@@ -3498,16 +3462,8 @@ export interface ConnectConnectorUpdateDataCase2Owner {
   /** GitHub App owner display name. */
   name?: string;
 }
-export const ConnectConnectorUpdateDataCase2Owner = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ConnectConnectorUpdateDataCase2OwnerType,
-    id: S.Number,
-    slug: S.String,
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ConnectConnectorUpdateDataCase2Owner",
-}) as any as S.Schema<ConnectConnectorUpdateDataCase2Owner>;
+export const ConnectConnectorUpdateDataCase2Owner =
+  ConnectConnectorCreateDataCase2Owner as any as S.Schema<ConnectConnectorUpdateDataCase2Owner>;
 
 /** Additional provider metadata stored with the connector. */
 export type ConnectConnectorUpdateDataCase2ExtrasMap = { [key: string]: unknown | undefined };
@@ -3711,23 +3667,14 @@ export interface ConnectConnectorUpdateDataCase5ShortcutsItem {
   /** Description shown for the shortcut in Slack. */
   description: string;
 }
-export const ConnectConnectorUpdateDataCase5ShortcutsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ConnectConnectorUpdateDataCase5ShortcutsItemType,
-    name: S.String,
-    callbackId: S.String,
-    description: S.String,
-  }),
-).annotate({
-  identifier: "ConnectConnectorUpdateDataCase5ShortcutsItem",
-}) as any as S.Schema<ConnectConnectorUpdateDataCase5ShortcutsItem>;
+export const ConnectConnectorUpdateDataCase5ShortcutsItem =
+  ConnectConnectorCreateDataCase7ShortcutsItem as any as S.Schema<ConnectConnectorUpdateDataCase5ShortcutsItem>;
 
 /** Global and message shortcuts configured for the Slack app. */
 export type ConnectConnectorUpdateDataCase5ShortcutsList =
   Array<ConnectConnectorUpdateDataCase5ShortcutsItem>;
-export const ConnectConnectorUpdateDataCase5ShortcutsList = /*@__PURE__*/ S.Array(
-  ConnectConnectorUpdateDataCase5ShortcutsItem,
-) as any as S.Schema<ConnectConnectorUpdateDataCase5ShortcutsList>;
+export const ConnectConnectorUpdateDataCase5ShortcutsList =
+  ConnectConnectorCreateDataCase7ShortcutsList as any as S.Schema<ConnectConnectorUpdateDataCase5ShortcutsList>;
 
 /** Additional provider metadata stored with the connector. */
 export type ConnectConnectorUpdateDataCase5ExtrasMap = { [key: string]: unknown | undefined };

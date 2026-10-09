@@ -876,11 +876,7 @@ export interface ResourceIdentityInput {
   /** Identity type */
   type?: MsiIdentityType | (string & {});
 }
-export const ResourceIdentityInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(MsiIdentityType),
-  }),
-).annotate({ identifier: "ResourceIdentityInput" }) as any as S.Schema<ResourceIdentityInput>;
+export const ResourceIdentityInput = DataResidency as any as S.Schema<ResourceIdentityInput>;
 
 export interface DevicesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -1001,9 +997,8 @@ export const RoleTypes = S.String;
 
 /** Type of compute roles configured. */
 export type DataBoxEdgeDevicePropertiesConfiguredRoleTypesList = Array<RoleTypes>;
-export const DataBoxEdgeDevicePropertiesConfiguredRoleTypesList = /*@__PURE__*/ S.Array(
-  RoleTypes,
-) as any as S.Schema<DataBoxEdgeDevicePropertiesConfiguredRoleTypesList>;
+export const DataBoxEdgeDevicePropertiesConfiguredRoleTypesList =
+  BandwidthSchedulePropertiesDaysList as any as S.Schema<DataBoxEdgeDevicePropertiesConfiguredRoleTypesList>;
 
 /** Denotes whether move operation is in progress */
 export type ResourceMoveStatus = "None" | "ResourceMoveInProgress" | "ResourceMoveFailed";
@@ -3456,15 +3451,7 @@ export interface GetRoleResponse {
   /** Role type. */
   kind: RoleTypes;
 }
-export const GetRoleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    kind: RoleTypes,
-  }),
-).annotate({ identifier: "GetRoleResponse" }) as any as S.Schema<GetRoleResponse>;
+export const GetRoleResponse = GetAddonResponse as any as S.Schema<GetRoleResponse>;
 
 export interface GetShareRequest {
   /** The ID of the target subscription. */
@@ -3882,15 +3869,7 @@ export interface GetTriggerResponse {
   /** Trigger Kind. */
   kind: TriggerEventType;
 }
-export const GetTriggerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    kind: TriggerEventType,
-  }),
-).annotate({ identifier: "GetTriggerResponse" }) as any as S.Schema<GetTriggerResponse>;
+export const GetTriggerResponse = GetAddonResponse as any as S.Schema<GetTriggerResponse>;
 
 export interface GetUserRequest {
   /** The ID of the target subscription. */
@@ -4228,9 +4207,8 @@ export const SkuAvailability = S.String;
 
 /** List of Shipment Types supported by this SKU */
 export type DataBoxEdgeSkuShipmentTypesList = Array<ShipmentType>;
-export const DataBoxEdgeSkuShipmentTypesList = /*@__PURE__*/ S.Array(
-  ShipmentType,
-) as any as S.Schema<DataBoxEdgeSkuShipmentTypesList>;
+export const DataBoxEdgeSkuShipmentTypesList =
+  BandwidthSchedulePropertiesDaysList as any as S.Schema<DataBoxEdgeSkuShipmentTypesList>;
 
 /** The metadata to describe the capability. */
 export interface SkuCapability {
@@ -4804,14 +4782,12 @@ export const TimeGrain = S.String;
 
 /** Support granularity of metrics. */
 export type MetricSpecificationV1SupportedTimeGrainTypesList = Array<TimeGrain>;
-export const MetricSpecificationV1SupportedTimeGrainTypesList = /*@__PURE__*/ S.Array(
-  TimeGrain,
-) as any as S.Schema<MetricSpecificationV1SupportedTimeGrainTypesList>;
+export const MetricSpecificationV1SupportedTimeGrainTypesList =
+  BandwidthSchedulePropertiesDaysList as any as S.Schema<MetricSpecificationV1SupportedTimeGrainTypesList>;
 
 export type MetricSpecificationV1SupportedAggregationTypesList = Array<MetricAggregationType>;
-export const MetricSpecificationV1SupportedAggregationTypesList = /*@__PURE__*/ S.Array(
-  MetricAggregationType,
-) as any as S.Schema<MetricSpecificationV1SupportedAggregationTypesList>;
+export const MetricSpecificationV1SupportedAggregationTypesList =
+  BandwidthSchedulePropertiesDaysList as any as S.Schema<MetricSpecificationV1SupportedAggregationTypesList>;
 
 /** Metric specification version 1. */
 export interface MetricSpecificationV1 {
@@ -5636,17 +5612,8 @@ export interface RolesCreateOrUpdateResponse {
   /** Role type. */
   kind: RoleTypes;
 }
-export const RolesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    kind: RoleTypes,
-  }),
-).annotate({
-  identifier: "RolesCreateOrUpdateResponse",
-}) as any as S.Schema<RolesCreateOrUpdateResponse>;
+export const RolesCreateOrUpdateResponse =
+  AddonsCreateOrUpdateResponse as any as S.Schema<RolesCreateOrUpdateResponse>;
 
 /** Mapping of users and corresponding access rights on the share (required for SMB protocol). */
 export type SharePropertiesInputUserAccessRightsList = Array<UserAccessRight>;
@@ -5905,17 +5872,8 @@ export interface TriggersCreateOrUpdateResponse {
   /** Trigger Kind. */
   kind: TriggerEventType;
 }
-export const TriggersCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    kind: TriggerEventType,
-  }),
-).annotate({
-  identifier: "TriggersCreateOrUpdateResponse",
-}) as any as S.Schema<TriggersCreateOrUpdateResponse>;
+export const TriggersCreateOrUpdateResponse =
+  AddonsCreateOrUpdateResponse as any as S.Schema<TriggersCreateOrUpdateResponse>;
 
 /** The share properties. */
 export interface SupportPackageRequestProperties {
@@ -6144,20 +6102,8 @@ export interface UpdateDeviceExtendedInformationResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdateDeviceExtendedInformationResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(UpdateDeviceExtendedInformationResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      UpdateDeviceExtendedInformationResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateDeviceExtendedInformationResponseSystemData",
-}) as any as S.Schema<UpdateDeviceExtendedInformationResponseSystemData>;
+export const UpdateDeviceExtendedInformationResponseSystemData =
+  GetDeviceExtendedInformationResponseSystemData as any as S.Schema<UpdateDeviceExtendedInformationResponseSystemData>;
 
 export interface UpdateDeviceExtendedInformationResponse {
   /** The path ID that uniquely identifies the object. */
@@ -6171,17 +6117,8 @@ export interface UpdateDeviceExtendedInformationResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: UpdateDeviceExtendedInformationResponseSystemData;
 }
-export const UpdateDeviceExtendedInformationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(DataBoxEdgeDeviceExtendedInfoProperties),
-    systemData: S.optional(UpdateDeviceExtendedInformationResponseSystemData),
-  }),
-).annotate({
-  identifier: "UpdateDeviceExtendedInformationResponse",
-}) as any as S.Schema<UpdateDeviceExtendedInformationResponse>;
+export const UpdateDeviceExtendedInformationResponse =
+  GetDeviceExtendedInformationResponse as any as S.Schema<UpdateDeviceExtendedInformationResponse>;
 
 export interface UpdateDiagnosticSettingsDiagnosticProactiveLogCollectionSettingsRequest {
   /** The ID of the target subscription. */

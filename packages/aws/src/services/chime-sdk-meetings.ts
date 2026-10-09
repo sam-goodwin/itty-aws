@@ -397,9 +397,7 @@ export const ContentResolution = S.String;
 export interface ContentFeatures {
   MaxResolution?: ContentResolution;
 }
-export const ContentFeatures = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ MaxResolution: S.optional(ContentResolution) }),
-).annotate({ identifier: "ContentFeatures" }) as any as S.Schema<ContentFeatures>;
+export const ContentFeatures = VideoFeatures as any as S.Schema<ContentFeatures>;
 export type AttendeeMax = number;
 export interface AttendeeFeatures {
   MaxCount?: number;

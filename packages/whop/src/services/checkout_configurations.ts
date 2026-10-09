@@ -749,24 +749,8 @@ export interface GetCheckoutConfigurationResponsePlan {
   /** Whether the plan is visible to customers or hidden from public view. */
   visibility: GetCheckoutConfigurationResponsePlanVisibility;
 }
-export const GetCheckoutConfigurationResponsePlan = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    adaptive_pricing_enabled: S.Boolean,
-    billing_period: S.NullOr(S.Number),
-    currency: S.String,
-    expiration_days: S.NullOr(S.Number),
-    id: S.String,
-    initial_price: S.Number,
-    plan_type: GetCheckoutConfigurationResponsePlanPlanType,
-    release_method: GetCheckoutConfigurationResponsePlanReleaseMethod,
-    renewal_price: S.Number,
-    three_ds_level: S.NullOr(GetCheckoutConfigurationResponsePlanThreeDsLevel),
-    trial_period_days: S.NullOr(S.Number),
-    visibility: GetCheckoutConfigurationResponsePlanVisibility,
-  }),
-).annotate({
-  identifier: "GetCheckoutConfigurationResponsePlan",
-}) as any as S.Schema<GetCheckoutConfigurationResponsePlan>;
+export const GetCheckoutConfigurationResponsePlan =
+  CreateCheckoutConfigurationResponsePlan as any as S.Schema<GetCheckoutConfigurationResponsePlan>;
 
 /** 3D Secure behavior for supported on-session card payments. `mandate_challenge` requires a 3DS challenge before payment processing; `mandate_if_required` mandates a challenge only when the payment processor requires it; `frictionless_if_required` uses the regular frictionless 3DS flow. Payments of $1,000 or more use `mandate_if_required` unless `mandate_challenge` is selected. Risk and authentication recovery requirements can override the preference. Applies in setup mode; `null` uses frictionless 3DS. Payment mode uses the plan policy. */
 export type GetCheckoutConfigurationResponseThreeDsLevel =
@@ -971,24 +955,8 @@ export interface ListCheckoutConfigurationsResponseDataItemPlan {
   /** Whether the plan is visible to customers or hidden from public view. */
   visibility: ListCheckoutConfigurationsResponseDataItemPlanVisibility;
 }
-export const ListCheckoutConfigurationsResponseDataItemPlan = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    adaptive_pricing_enabled: S.Boolean,
-    billing_period: S.NullOr(S.Number),
-    currency: S.String,
-    expiration_days: S.NullOr(S.Number),
-    id: S.String,
-    initial_price: S.Number,
-    plan_type: ListCheckoutConfigurationsResponseDataItemPlanPlanType,
-    release_method: ListCheckoutConfigurationsResponseDataItemPlanReleaseMethod,
-    renewal_price: S.Number,
-    three_ds_level: S.NullOr(ListCheckoutConfigurationsResponseDataItemPlanThreeDsLevel),
-    trial_period_days: S.NullOr(S.Number),
-    visibility: ListCheckoutConfigurationsResponseDataItemPlanVisibility,
-  }),
-).annotate({
-  identifier: "ListCheckoutConfigurationsResponseDataItemPlan",
-}) as any as S.Schema<ListCheckoutConfigurationsResponseDataItemPlan>;
+export const ListCheckoutConfigurationsResponseDataItemPlan =
+  CreateCheckoutConfigurationResponsePlan as any as S.Schema<ListCheckoutConfigurationsResponseDataItemPlan>;
 
 /** 3D Secure behavior for supported on-session card payments. `mandate_challenge` requires a 3DS challenge before payment processing; `mandate_if_required` mandates a challenge only when the payment processor requires it; `frictionless_if_required` uses the regular frictionless 3DS flow. Payments of $1,000 or more use `mandate_if_required` unless `mandate_challenge` is selected. Risk and authentication recovery requirements can override the preference. Applies in setup mode; `null` uses frictionless 3DS. Payment mode uses the plan policy. */
 export type ListCheckoutConfigurationsResponseDataItemThreeDsLevel =

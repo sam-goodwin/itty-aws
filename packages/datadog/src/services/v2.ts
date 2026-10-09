@@ -1023,14 +1023,8 @@ export interface TeamHierarchyLinkCreateTeam {
   id: string;
   type: TeamType;
 }
-export const TeamHierarchyLinkCreateTeam = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: TeamType,
-  }),
-).annotate({
-  identifier: "TeamHierarchyLinkCreateTeam",
-}) as any as S.Schema<TeamHierarchyLinkCreateTeam>;
+export const TeamHierarchyLinkCreateTeam =
+  NullableUserRelationshipData as any as S.Schema<TeamHierarchyLinkCreateTeam>;
 
 /** Data about each team that will be connected by the team hierarchy link */
 export interface TeamHierarchyLinkCreateTeamRelationship {
@@ -1463,12 +1457,8 @@ export interface RelationshipToUserData {
   id: string;
   type: UsersType | (string & {});
 }
-export const RelationshipToUserData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: UsersType,
-  }),
-).annotate({ identifier: "RelationshipToUserData" }) as any as S.Schema<RelationshipToUserData>;
+export const RelationshipToUserData =
+  ProjectRelationshipData as any as S.Schema<RelationshipToUserData>;
 
 export interface AddUserToRoleRequest {
   /** The unique identifier of the role. */
@@ -1542,26 +1532,15 @@ export interface RelationshipToOrganizationData {
   id: string;
   type: OrganizationsType;
 }
-export const RelationshipToOrganizationData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: OrganizationsType,
-  }),
-).annotate({
-  identifier: "RelationshipToOrganizationData",
-}) as any as S.Schema<RelationshipToOrganizationData>;
+export const RelationshipToOrganizationData =
+  NullableUserRelationshipData as any as S.Schema<RelationshipToOrganizationData>;
 
 /** Relationship to an organization. */
 export interface RelationshipToOrganization {
   data: RelationshipToOrganizationData;
 }
-export const RelationshipToOrganization = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: RelationshipToOrganizationData,
-  }),
-).annotate({
-  identifier: "RelationshipToOrganization",
-}) as any as S.Schema<RelationshipToOrganization>;
+export const RelationshipToOrganization =
+  TeamHierarchyLinkCreateTeamRelationship as any as S.Schema<RelationshipToOrganization>;
 
 /** Relationships to organization objects. */
 export type RelationshipToOrganizationsDataList = Array<RelationshipToOrganizationData>;
@@ -2679,20 +2658,12 @@ export interface LogsCompute {
   metric?: string;
   type?: LogsComputeType | (string & {});
 }
-export const LogsCompute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    aggregation: LogsAggregationFunction,
-    interval: S.optional(S.String),
-    metric: S.optional(S.String),
-    type: S.optional(LogsComputeType),
-  }),
-).annotate({ identifier: "LogsCompute" }) as any as S.Schema<LogsCompute>;
+export const LogsCompute = CIAppCompute as any as S.Schema<LogsCompute>;
 
 /** The list of metrics or timeseries to compute for the retrieved buckets. */
 export type AggregateLogsRequestComputeList = Array<LogsCompute>;
-export const AggregateLogsRequestComputeList = /*@__PURE__*/ S.Array(
-  LogsCompute,
-) as any as S.Schema<AggregateLogsRequestComputeList>;
+export const AggregateLogsRequestComputeList =
+  AggregateCIAppPipelineEventsRequestComputeList as any as S.Schema<AggregateLogsRequestComputeList>;
 
 /** For customers with multiple indexes, the indexes to search. Defaults to ['*'] which means all indexes. */
 export type LogsQueryFilterIndexesList = Array<string>;
@@ -2756,14 +2727,7 @@ export interface LogsAggregateSort {
   order?: LogsSortOrder | (string & {});
   type?: LogsAggregateSortType | (string & {});
 }
-export const LogsAggregateSort = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    aggregation: S.optional(LogsAggregationFunction),
-    metric: S.optional(S.String),
-    order: S.optional(LogsSortOrder),
-    type: S.optional(LogsAggregateSortType),
-  }),
-).annotate({ identifier: "LogsAggregateSort" }) as any as S.Schema<LogsAggregateSort>;
+export const LogsAggregateSort = CIAppAggregateSort as any as S.Schema<LogsAggregateSort>;
 
 /** A resulting object to put the given computes in over all the matching records. */
 export type LogsGroupByTotal = boolean | string | number;
@@ -2997,20 +2961,12 @@ export interface RUMCompute {
   metric?: string;
   type?: RUMComputeType | (string & {});
 }
-export const RUMCompute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    aggregation: RUMAggregationFunction,
-    interval: S.optional(S.String),
-    metric: S.optional(S.String),
-    type: S.optional(RUMComputeType),
-  }),
-).annotate({ identifier: "RUMCompute" }) as any as S.Schema<RUMCompute>;
+export const RUMCompute = CIAppCompute as any as S.Schema<RUMCompute>;
 
 /** The list of metrics or timeseries to compute for the retrieved buckets. */
 export type AggregateRUMEventsRequestComputeList = Array<RUMCompute>;
-export const AggregateRUMEventsRequestComputeList = /*@__PURE__*/ S.Array(
-  RUMCompute,
-) as any as S.Schema<AggregateRUMEventsRequestComputeList>;
+export const AggregateRUMEventsRequestComputeList =
+  AggregateCIAppPipelineEventsRequestComputeList as any as S.Schema<AggregateRUMEventsRequestComputeList>;
 
 /** The search and filter query settings. */
 export interface RUMQueryFilter {
@@ -3053,14 +3009,7 @@ export interface RUMAggregateSort {
   order?: RUMSortOrder | (string & {});
   type?: RUMAggregateSortType | (string & {});
 }
-export const RUMAggregateSort = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    aggregation: S.optional(RUMAggregationFunction),
-    metric: S.optional(S.String),
-    order: S.optional(RUMSortOrder),
-    type: S.optional(RUMAggregateSortType),
-  }),
-).annotate({ identifier: "RUMAggregateSort" }) as any as S.Schema<RUMAggregateSort>;
+export const RUMAggregateSort = CIAppAggregateSort as any as S.Schema<RUMAggregateSort>;
 
 /** A resulting object to put the given computes in over all the matching records. */
 export type RUMGroupByTotal = boolean | string | number;
@@ -3283,20 +3232,12 @@ export interface SpansCompute {
   metric?: string;
   type?: SpansComputeType | (string & {});
 }
-export const SpansCompute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    aggregation: SpansAggregationFunction,
-    interval: S.optional(S.String),
-    metric: S.optional(S.String),
-    type: S.optional(SpansComputeType),
-  }),
-).annotate({ identifier: "SpansCompute" }) as any as S.Schema<SpansCompute>;
+export const SpansCompute = CIAppCompute as any as S.Schema<SpansCompute>;
 
 /** The list of metrics or timeseries to compute for the retrieved buckets. */
 export type SpansAggregateRequestAttributesComputeList = Array<SpansCompute>;
-export const SpansAggregateRequestAttributesComputeList = /*@__PURE__*/ S.Array(
-  SpansCompute,
-) as any as S.Schema<SpansAggregateRequestAttributesComputeList>;
+export const SpansAggregateRequestAttributesComputeList =
+  AggregateCIAppPipelineEventsRequestComputeList as any as S.Schema<SpansAggregateRequestAttributesComputeList>;
 
 /** The search and filter query settings. */
 export interface SpansQueryFilter {
@@ -3333,14 +3274,7 @@ export interface SpansAggregateSort {
   order?: SpansSortOrder | (string & {});
   type?: SpansAggregateSortType | (string & {});
 }
-export const SpansAggregateSort = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    aggregation: S.optional(SpansAggregationFunction),
-    metric: S.optional(S.String),
-    order: S.optional(SpansSortOrder),
-    type: S.optional(SpansAggregateSortType),
-  }),
-).annotate({ identifier: "SpansAggregateSort" }) as any as S.Schema<SpansAggregateSort>;
+export const SpansAggregateSort = CIAppAggregateSort as any as S.Schema<SpansAggregateSort>;
 
 /** A resulting object to put the given computes in over all the matching records. */
 export type SpansGroupByTotal = boolean | string | number;
@@ -4150,18 +4084,11 @@ export interface FindingData {
   id: string;
   type: FindingDataType | (string & {});
 }
-export const FindingData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: FindingDataType,
-  }),
-).annotate({ identifier: "FindingData" }) as any as S.Schema<FindingData>;
+export const FindingData = ProjectRelationshipData as any as S.Schema<FindingData>;
 
 /** Array of security finding data objects. */
 export type FindingsDataList = Array<FindingData>;
-export const FindingsDataList = /*@__PURE__*/ S.Array(
-  FindingData,
-) as any as S.Schema<FindingsDataList>;
+export const FindingsDataList = RelationshipToUsersDataList as any as S.Schema<FindingsDataList>;
 
 /** A list of security findings. */
 export interface Findings {
@@ -4222,11 +4149,7 @@ export const AttachCaseRequest = /*@__PURE__*/ S.suspend(() =>
 export interface RelationshipToUser {
   data: RelationshipToUserData;
 }
-export const RelationshipToUser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: RelationshipToUserData,
-  }),
-).annotate({ identifier: "RelationshipToUser" }) as any as S.Schema<RelationshipToUser>;
+export const RelationshipToUser = ProjectRelationship as any as S.Schema<RelationshipToUser>;
 
 export type FindingCaseResponseDataAttributesAttributesValueList = Array<string>;
 export const FindingCaseResponseDataAttributesAttributesValueList =
@@ -4458,14 +4381,8 @@ export interface CaseManagementProjectData {
   id: string;
   type: CaseManagementProjectDataType | (string & {});
 }
-export const CaseManagementProjectData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: CaseManagementProjectDataType,
-  }),
-).annotate({
-  identifier: "CaseManagementProjectData",
-}) as any as S.Schema<CaseManagementProjectData>;
+export const CaseManagementProjectData =
+  NullableUserRelationshipData as any as S.Schema<CaseManagementProjectData>;
 
 /** Case management project. */
 export interface CaseManagementProject {
@@ -5092,19 +5009,12 @@ export interface TableRowResourceIdentifier {
   id: string;
   type: TableRowResourceDataType | (string & {});
 }
-export const TableRowResourceIdentifier = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: TableRowResourceDataType,
-  }),
-).annotate({
-  identifier: "TableRowResourceIdentifier",
-}) as any as S.Schema<TableRowResourceIdentifier>;
+export const TableRowResourceIdentifier =
+  NullableUserRelationshipData as any as S.Schema<TableRowResourceIdentifier>;
 
 export type BatchRowsQueryResponseDataRelationshipsRowsDataList = Array<TableRowResourceIdentifier>;
-export const BatchRowsQueryResponseDataRelationshipsRowsDataList = /*@__PURE__*/ S.Array(
-  TableRowResourceIdentifier,
-) as any as S.Schema<BatchRowsQueryResponseDataRelationshipsRowsDataList>;
+export const BatchRowsQueryResponseDataRelationshipsRowsDataList =
+  RelationshipToOrganizationsDataList as any as S.Schema<BatchRowsQueryResponseDataRelationshipsRowsDataList>;
 
 /** Relationship data containing the list of matching rows. */
 export interface BatchRowsQueryResponseDataRelationshipsRows {
@@ -6469,26 +6379,15 @@ export interface OrgGroupRelationshipToOneData {
   id: string;
   type: OrgGroupType | (string & {});
 }
-export const OrgGroupRelationshipToOneData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: OrgGroupType,
-  }),
-).annotate({
-  identifier: "OrgGroupRelationshipToOneData",
-}) as any as S.Schema<OrgGroupRelationshipToOneData>;
+export const OrgGroupRelationshipToOneData =
+  NullableUserRelationshipData as any as S.Schema<OrgGroupRelationshipToOneData>;
 
 /** Relationship to a single org group. */
 export interface OrgGroupRelationshipToOne {
   data: OrgGroupRelationshipToOneData;
 }
-export const OrgGroupRelationshipToOne = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: OrgGroupRelationshipToOneData,
-  }),
-).annotate({
-  identifier: "OrgGroupRelationshipToOne",
-}) as any as S.Schema<OrgGroupRelationshipToOne>;
+export const OrgGroupRelationshipToOne =
+  TeamHierarchyLinkCreateTeamRelationship as any as S.Schema<OrgGroupRelationshipToOne>;
 
 /** Relationships for bulk updating memberships. */
 export interface OrgGroupMembershipBulkUpdateRelationships {
@@ -9101,12 +9000,7 @@ export interface CircleCIAPIKey {
   api_token: string | Redacted.Redacted<string>;
   type: CircleCIAPIKeyType | (string & {});
 }
-export const CircleCIAPIKey = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    api_token: S.String.pipe(T.SensitiveValue({})),
-    type: CircleCIAPIKeyType,
-  }),
-).annotate({ identifier: "CircleCIAPIKey" }) as any as S.Schema<CircleCIAPIKey>;
+export const CircleCIAPIKey = AnthropicAPIKey as any as S.Schema<CircleCIAPIKey>;
 
 /** The definition of the `CircleCIIntegrationType` object. */
 export type CircleCIIntegrationType = "CircleCI";
@@ -9117,12 +9011,7 @@ export interface CircleCIIntegration {
   credentials: CircleCIAPIKey;
   type: CircleCIIntegrationType;
 }
-export const CircleCIIntegration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    credentials: CircleCIAPIKey,
-    type: CircleCIIntegrationType,
-  }),
-).annotate({ identifier: "CircleCIIntegration" }) as any as S.Schema<CircleCIIntegration>;
+export const CircleCIIntegration = AnthropicIntegration as any as S.Schema<CircleCIIntegration>;
 
 /** The definition of the `ClickupAPIKey` object. */
 export type ClickupAPIKeyType = "ClickupAPIKey";
@@ -9134,12 +9023,7 @@ export interface ClickupAPIKey {
   api_token: string | Redacted.Redacted<string>;
   type: ClickupAPIKeyType | (string & {});
 }
-export const ClickupAPIKey = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    api_token: S.String.pipe(T.SensitiveValue({})),
-    type: ClickupAPIKeyType,
-  }),
-).annotate({ identifier: "ClickupAPIKey" }) as any as S.Schema<ClickupAPIKey>;
+export const ClickupAPIKey = AnthropicAPIKey as any as S.Schema<ClickupAPIKey>;
 
 /** The definition of the `ClickupIntegrationType` object. */
 export type ClickupIntegrationType = "Clickup";
@@ -9150,12 +9034,7 @@ export interface ClickupIntegration {
   credentials: ClickupAPIKey;
   type: ClickupIntegrationType;
 }
-export const ClickupIntegration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    credentials: ClickupAPIKey,
-    type: ClickupIntegrationType,
-  }),
-).annotate({ identifier: "ClickupIntegration" }) as any as S.Schema<ClickupIntegration>;
+export const ClickupIntegration = AnthropicIntegration as any as S.Schema<ClickupIntegration>;
 
 /** The definition of the `CloudflareAPIToken` object. */
 export type CloudflareAPITokenType = "CloudflareAPIToken";
@@ -9167,12 +9046,7 @@ export interface CloudflareAPIToken {
   api_token: string | Redacted.Redacted<string>;
   type: CloudflareAPITokenType;
 }
-export const CloudflareAPIToken = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    api_token: S.String.pipe(T.SensitiveValue({})),
-    type: CloudflareAPITokenType,
-  }),
-).annotate({ identifier: "CloudflareAPIToken" }) as any as S.Schema<CloudflareAPIToken>;
+export const CloudflareAPIToken = AnthropicAPIKey as any as S.Schema<CloudflareAPIToken>;
 
 /** The definition of the `CloudflareGlobalAPIToken` object. */
 export type CloudflareGlobalAPITokenType = "CloudflareGlobalAPIToken";
@@ -9410,12 +9284,7 @@ export interface GeminiAPIKey {
   api_key: string | Redacted.Redacted<string>;
   type: GeminiAPIKeyType | (string & {});
 }
-export const GeminiAPIKey = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    api_key: S.String.pipe(T.SensitiveValue({})),
-    type: GeminiAPIKeyType,
-  }),
-).annotate({ identifier: "GeminiAPIKey" }) as any as S.Schema<GeminiAPIKey>;
+export const GeminiAPIKey = FastlyAPIKey as any as S.Schema<GeminiAPIKey>;
 
 /** The definition of the `GeminiIntegrationType` object. */
 export type GeminiIntegrationType = "Gemini";
@@ -9426,12 +9295,7 @@ export interface GeminiIntegration {
   credentials: GeminiAPIKey;
   type: GeminiIntegrationType;
 }
-export const GeminiIntegration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    credentials: GeminiAPIKey,
-    type: GeminiIntegrationType,
-  }),
-).annotate({ identifier: "GeminiIntegration" }) as any as S.Schema<GeminiIntegration>;
+export const GeminiIntegration = FastlyIntegration as any as S.Schema<GeminiIntegration>;
 
 /** The definition of the `GitlabAPIKey` object. */
 export type GitlabAPIKeyType = "GitlabAPIKey";
@@ -9443,12 +9307,7 @@ export interface GitlabAPIKey {
   api_token: string | Redacted.Redacted<string>;
   type: GitlabAPIKeyType | (string & {});
 }
-export const GitlabAPIKey = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    api_token: S.String.pipe(T.SensitiveValue({})),
-    type: GitlabAPIKeyType,
-  }),
-).annotate({ identifier: "GitlabAPIKey" }) as any as S.Schema<GitlabAPIKey>;
+export const GitlabAPIKey = AnthropicAPIKey as any as S.Schema<GitlabAPIKey>;
 
 /** The definition of the `GitlabIntegrationType` object. */
 export type GitlabIntegrationType = "Gitlab";
@@ -9459,12 +9318,7 @@ export interface GitlabIntegration {
   credentials: GitlabAPIKey;
   type: GitlabIntegrationType;
 }
-export const GitlabIntegration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    credentials: GitlabAPIKey,
-    type: GitlabIntegrationType,
-  }),
-).annotate({ identifier: "GitlabIntegration" }) as any as S.Schema<GitlabIntegration>;
+export const GitlabIntegration = AnthropicIntegration as any as S.Schema<GitlabIntegration>;
 
 /** The definition of the `GreyNoiseAPIKey` object. */
 export type GreyNoiseAPIKeyType = "GreyNoiseAPIKey";
@@ -9476,12 +9330,7 @@ export interface GreyNoiseAPIKey {
   api_key: string | Redacted.Redacted<string>;
   type: GreyNoiseAPIKeyType | (string & {});
 }
-export const GreyNoiseAPIKey = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    api_key: S.String.pipe(T.SensitiveValue({})),
-    type: GreyNoiseAPIKeyType,
-  }),
-).annotate({ identifier: "GreyNoiseAPIKey" }) as any as S.Schema<GreyNoiseAPIKey>;
+export const GreyNoiseAPIKey = FastlyAPIKey as any as S.Schema<GreyNoiseAPIKey>;
 
 /** The definition of the `GreyNoiseIntegrationType` object. */
 export type GreyNoiseIntegrationType = "GreyNoise";
@@ -9492,12 +9341,7 @@ export interface GreyNoiseIntegration {
   credentials: GreyNoiseAPIKey;
   type: GreyNoiseIntegrationType;
 }
-export const GreyNoiseIntegration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    credentials: GreyNoiseAPIKey,
-    type: GreyNoiseIntegrationType,
-  }),
-).annotate({ identifier: "GreyNoiseIntegration" }) as any as S.Schema<GreyNoiseIntegration>;
+export const GreyNoiseIntegration = FastlyIntegration as any as S.Schema<GreyNoiseIntegration>;
 
 /** The definition of `HTTPBody` object. */
 export interface HTTPBody {
@@ -9626,12 +9470,7 @@ export interface LaunchDarklyAPIKey {
   api_token: string | Redacted.Redacted<string>;
   type: LaunchDarklyAPIKeyType | (string & {});
 }
-export const LaunchDarklyAPIKey = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    api_token: S.String.pipe(T.SensitiveValue({})),
-    type: LaunchDarklyAPIKeyType,
-  }),
-).annotate({ identifier: "LaunchDarklyAPIKey" }) as any as S.Schema<LaunchDarklyAPIKey>;
+export const LaunchDarklyAPIKey = AnthropicAPIKey as any as S.Schema<LaunchDarklyAPIKey>;
 
 /** The definition of the `LaunchDarklyIntegrationType` object. */
 export type LaunchDarklyIntegrationType = "LaunchDarkly";
@@ -9642,12 +9481,8 @@ export interface LaunchDarklyIntegration {
   credentials: LaunchDarklyAPIKey;
   type: LaunchDarklyIntegrationType;
 }
-export const LaunchDarklyIntegration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    credentials: LaunchDarklyAPIKey,
-    type: LaunchDarklyIntegrationType,
-  }),
-).annotate({ identifier: "LaunchDarklyIntegration" }) as any as S.Schema<LaunchDarklyIntegration>;
+export const LaunchDarklyIntegration =
+  AnthropicIntegration as any as S.Schema<LaunchDarklyIntegration>;
 
 /** The definition of the `NotionAPIKey` object. */
 export type NotionAPIKeyType = "NotionAPIKey";
@@ -9659,12 +9494,7 @@ export interface NotionAPIKey {
   api_token: string | Redacted.Redacted<string>;
   type: NotionAPIKeyType | (string & {});
 }
-export const NotionAPIKey = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    api_token: S.String.pipe(T.SensitiveValue({})),
-    type: NotionAPIKeyType,
-  }),
-).annotate({ identifier: "NotionAPIKey" }) as any as S.Schema<NotionAPIKey>;
+export const NotionAPIKey = AnthropicAPIKey as any as S.Schema<NotionAPIKey>;
 
 /** The definition of the `NotionIntegrationType` object. */
 export type NotionIntegrationType = "Notion";
@@ -9675,12 +9505,7 @@ export interface NotionIntegration {
   credentials: NotionAPIKey;
   type: NotionIntegrationType;
 }
-export const NotionIntegration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    credentials: NotionAPIKey,
-    type: NotionIntegrationType,
-  }),
-).annotate({ identifier: "NotionIntegration" }) as any as S.Schema<NotionIntegration>;
+export const NotionIntegration = AnthropicIntegration as any as S.Schema<NotionIntegration>;
 
 /** The definition of the `OktaAPIToken` object. */
 export type OktaAPITokenType = "OktaAPIToken";
@@ -9728,12 +9553,7 @@ export interface OpenAIAPIKey {
   api_token: string | Redacted.Redacted<string>;
   type: OpenAIAPIKeyType | (string & {});
 }
-export const OpenAIAPIKey = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    api_token: S.String.pipe(T.SensitiveValue({})),
-    type: OpenAIAPIKeyType,
-  }),
-).annotate({ identifier: "OpenAIAPIKey" }) as any as S.Schema<OpenAIAPIKey>;
+export const OpenAIAPIKey = AnthropicAPIKey as any as S.Schema<OpenAIAPIKey>;
 
 /** The definition of the `OpenAIIntegrationType` object. */
 export type OpenAIIntegrationType = "OpenAI";
@@ -9744,12 +9564,7 @@ export interface OpenAIIntegration {
   credentials: OpenAIAPIKey;
   type: OpenAIIntegrationType;
 }
-export const OpenAIIntegration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    credentials: OpenAIAPIKey,
-    type: OpenAIIntegrationType,
-  }),
-).annotate({ identifier: "OpenAIIntegration" }) as any as S.Schema<OpenAIIntegration>;
+export const OpenAIIntegration = AnthropicIntegration as any as S.Schema<OpenAIIntegration>;
 
 /** The definition of the `ServiceNowBasicAuth` object. */
 export type ServiceNowBasicAuthType = "ServiceNowBasicAuth";
@@ -9800,12 +9615,7 @@ export interface SplitAPIKey {
   api_key: string | Redacted.Redacted<string>;
   type: SplitAPIKeyType | (string & {});
 }
-export const SplitAPIKey = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    api_key: S.String.pipe(T.SensitiveValue({})),
-    type: SplitAPIKeyType,
-  }),
-).annotate({ identifier: "SplitAPIKey" }) as any as S.Schema<SplitAPIKey>;
+export const SplitAPIKey = FastlyAPIKey as any as S.Schema<SplitAPIKey>;
 
 /** The definition of the `SplitIntegrationType` object. */
 export type SplitIntegrationType = "Split";
@@ -9816,12 +9626,7 @@ export interface SplitIntegration {
   credentials: SplitAPIKey;
   type: SplitIntegrationType;
 }
-export const SplitIntegration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    credentials: SplitAPIKey,
-    type: SplitIntegrationType,
-  }),
-).annotate({ identifier: "SplitIntegration" }) as any as S.Schema<SplitIntegration>;
+export const SplitIntegration = FastlyIntegration as any as S.Schema<SplitIntegration>;
 
 /** The definition of the `StatsigAPIKey` object. */
 export type StatsigAPIKeyType = "StatsigAPIKey";
@@ -9833,12 +9638,7 @@ export interface StatsigAPIKey {
   api_key: string | Redacted.Redacted<string>;
   type: StatsigAPIKeyType | (string & {});
 }
-export const StatsigAPIKey = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    api_key: S.String.pipe(T.SensitiveValue({})),
-    type: StatsigAPIKeyType,
-  }),
-).annotate({ identifier: "StatsigAPIKey" }) as any as S.Schema<StatsigAPIKey>;
+export const StatsigAPIKey = FastlyAPIKey as any as S.Schema<StatsigAPIKey>;
 
 /** The definition of the `StatsigIntegrationType` object. */
 export type StatsigIntegrationType = "Statsig";
@@ -9849,12 +9649,7 @@ export interface StatsigIntegration {
   credentials: StatsigAPIKey;
   type: StatsigIntegrationType;
 }
-export const StatsigIntegration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    credentials: StatsigAPIKey,
-    type: StatsigIntegrationType,
-  }),
-).annotate({ identifier: "StatsigIntegration" }) as any as S.Schema<StatsigIntegration>;
+export const StatsigIntegration = FastlyIntegration as any as S.Schema<StatsigIntegration>;
 
 /** The definition of the `VirusTotalAPIKey` object. */
 export type VirusTotalAPIKeyType = "VirusTotalAPIKey";
@@ -9866,12 +9661,7 @@ export interface VirusTotalAPIKey {
   api_key: string | Redacted.Redacted<string>;
   type: VirusTotalAPIKeyType | (string & {});
 }
-export const VirusTotalAPIKey = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    api_key: S.String.pipe(T.SensitiveValue({})),
-    type: VirusTotalAPIKeyType,
-  }),
-).annotate({ identifier: "VirusTotalAPIKey" }) as any as S.Schema<VirusTotalAPIKey>;
+export const VirusTotalAPIKey = FastlyAPIKey as any as S.Schema<VirusTotalAPIKey>;
 
 /** The definition of the `VirusTotalIntegrationType` object. */
 export type VirusTotalIntegrationType = "VirusTotal";
@@ -9882,12 +9672,7 @@ export interface VirusTotalIntegration {
   credentials: VirusTotalAPIKey;
   type: VirusTotalIntegrationType;
 }
-export const VirusTotalIntegration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    credentials: VirusTotalAPIKey,
-    type: VirusTotalIntegrationType,
-  }),
-).annotate({ identifier: "VirusTotalIntegration" }) as any as S.Schema<VirusTotalIntegration>;
+export const VirusTotalIntegration = FastlyIntegration as any as S.Schema<VirusTotalIntegration>;
 
 /** The definition of `ActionConnectionIntegration` object. */
 export type ActionConnectionIntegrationInput =
@@ -12122,12 +11907,8 @@ export interface CreateAppResponseData {
   id: string;
   type: AppDefinitionType;
 }
-export const CreateAppResponseData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: AppDefinitionType,
-  }),
-).annotate({ identifier: "CreateAppResponseData" }) as any as S.Schema<CreateAppResponseData>;
+export const CreateAppResponseData =
+  ProjectRelationshipData as any as S.Schema<CreateAppResponseData>;
 
 /** The response object after a new app is successfully created, with the app ID. */
 export interface CreateAppResponse {
@@ -13280,22 +13061,14 @@ export interface RelationshipToTeamData {
   id?: string;
   type?: TeamType;
 }
-export const RelationshipToTeamData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    type: S.optional(TeamType),
-  }),
-).annotate({ identifier: "RelationshipToTeamData" }) as any as S.Schema<RelationshipToTeamData>;
+export const RelationshipToTeamData =
+  RelationshipToRoleData as any as S.Schema<RelationshipToTeamData>;
 
 /** Relationship to team. */
 export interface RelationshipToTeam {
   data?: RelationshipToTeamData;
 }
-export const RelationshipToTeam = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: S.optional(RelationshipToTeamData),
-  }),
-).annotate({ identifier: "RelationshipToTeam" }) as any as S.Schema<RelationshipToTeam>;
+export const RelationshipToTeam = RelationshipToRole as any as S.Schema<RelationshipToTeam>;
 
 /** Relationship of AuthN Mapping to a Team. */
 export interface AuthNMappingRelationshipToTeam {
@@ -13378,26 +13151,15 @@ export interface RelationshipToSAMLAssertionAttributeData {
   id: string;
   type: SAMLAssertionAttributesType;
 }
-export const RelationshipToSAMLAssertionAttributeData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: SAMLAssertionAttributesType,
-  }),
-).annotate({
-  identifier: "RelationshipToSAMLAssertionAttributeData",
-}) as any as S.Schema<RelationshipToSAMLAssertionAttributeData>;
+export const RelationshipToSAMLAssertionAttributeData =
+  NullableUserRelationshipData as any as S.Schema<RelationshipToSAMLAssertionAttributeData>;
 
 /** AuthN Mapping relationship to SAML Assertion Attribute. */
 export interface RelationshipToSAMLAssertionAttribute {
   data: RelationshipToSAMLAssertionAttributeData;
 }
-export const RelationshipToSAMLAssertionAttribute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: RelationshipToSAMLAssertionAttributeData,
-  }),
-).annotate({
-  identifier: "RelationshipToSAMLAssertionAttribute",
-}) as any as S.Schema<RelationshipToSAMLAssertionAttribute>;
+export const RelationshipToSAMLAssertionAttribute =
+  TeamHierarchyLinkCreateTeamRelationship as any as S.Schema<RelationshipToSAMLAssertionAttribute>;
 
 /** All relationships associated with AuthN Mapping. */
 export interface AuthNMappingRelationships {
@@ -14909,26 +14671,15 @@ export interface DegradationDataRelationshipsCreatedByUserData {
   id: string;
   type: StatusPagesUserType;
 }
-export const DegradationDataRelationshipsCreatedByUserData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: StatusPagesUserType,
-  }),
-).annotate({
-  identifier: "DegradationDataRelationshipsCreatedByUserData",
-}) as any as S.Schema<DegradationDataRelationshipsCreatedByUserData>;
+export const DegradationDataRelationshipsCreatedByUserData =
+  NullableUserRelationshipData as any as S.Schema<DegradationDataRelationshipsCreatedByUserData>;
 
 /** The Datadog user who created the degradation. */
 export interface DegradationDataRelationshipsCreatedByUser {
   data: DegradationDataRelationshipsCreatedByUserData;
 }
-export const DegradationDataRelationshipsCreatedByUser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: DegradationDataRelationshipsCreatedByUserData,
-  }),
-).annotate({
-  identifier: "DegradationDataRelationshipsCreatedByUser",
-}) as any as S.Schema<DegradationDataRelationshipsCreatedByUser>;
+export const DegradationDataRelationshipsCreatedByUser =
+  TeamHierarchyLinkCreateTeamRelationship as any as S.Schema<DegradationDataRelationshipsCreatedByUser>;
 
 /** The data object identifying the Datadog user who last modified the degradation. */
 export interface DegradationDataRelationshipsLastModifiedByUserData {
@@ -14956,26 +14707,15 @@ export interface DegradationDataRelationshipsStatusPageData {
   id: string;
   type: StatusPageDataType;
 }
-export const DegradationDataRelationshipsStatusPageData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: StatusPageDataType,
-  }),
-).annotate({
-  identifier: "DegradationDataRelationshipsStatusPageData",
-}) as any as S.Schema<DegradationDataRelationshipsStatusPageData>;
+export const DegradationDataRelationshipsStatusPageData =
+  NullableUserRelationshipData as any as S.Schema<DegradationDataRelationshipsStatusPageData>;
 
 /** The status page the degradation belongs to. */
 export interface DegradationDataRelationshipsStatusPage {
   data: DegradationDataRelationshipsStatusPageData;
 }
-export const DegradationDataRelationshipsStatusPage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: DegradationDataRelationshipsStatusPageData,
-  }),
-).annotate({
-  identifier: "DegradationDataRelationshipsStatusPage",
-}) as any as S.Schema<DegradationDataRelationshipsStatusPage>;
+export const DegradationDataRelationshipsStatusPage =
+  TeamHierarchyLinkCreateTeamRelationship as any as S.Schema<DegradationDataRelationshipsStatusPage>;
 
 /** The data object identifying the template the degradation was created from. */
 export interface DegradationDataRelationshipsTemplateData {
@@ -14983,26 +14723,15 @@ export interface DegradationDataRelationshipsTemplateData {
   id: string;
   type: PatchDegradationTemplateRequestDataType;
 }
-export const DegradationDataRelationshipsTemplateData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: PatchDegradationTemplateRequestDataType,
-  }),
-).annotate({
-  identifier: "DegradationDataRelationshipsTemplateData",
-}) as any as S.Schema<DegradationDataRelationshipsTemplateData>;
+export const DegradationDataRelationshipsTemplateData =
+  NullableUserRelationshipData as any as S.Schema<DegradationDataRelationshipsTemplateData>;
 
 /** The template the degradation was created from. */
 export interface DegradationDataRelationshipsTemplate {
   data: DegradationDataRelationshipsTemplateData;
 }
-export const DegradationDataRelationshipsTemplate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: DegradationDataRelationshipsTemplateData,
-  }),
-).annotate({
-  identifier: "DegradationDataRelationshipsTemplate",
-}) as any as S.Schema<DegradationDataRelationshipsTemplate>;
+export const DegradationDataRelationshipsTemplate =
+  TeamHierarchyLinkCreateTeamRelationship as any as S.Schema<DegradationDataRelationshipsTemplate>;
 
 /** The relationships of a degradation. */
 export interface DegradationDataRelationships {
@@ -15335,22 +15064,13 @@ export interface CreateMaintenanceRequestDataAttributesComponentsAffectedItemsIn
   status: PatchMaintenanceRequestDataAttributesComponentsAffectedItemsStatus | (string & {});
 }
 export const CreateMaintenanceRequestDataAttributesComponentsAffectedItemsInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      status: PatchMaintenanceRequestDataAttributesComponentsAffectedItemsStatus,
-    }),
-  ).annotate({
-    identifier: "CreateMaintenanceRequestDataAttributesComponentsAffectedItemsInput",
-  }) as any as S.Schema<CreateMaintenanceRequestDataAttributesComponentsAffectedItemsInput>;
+  CreateDegradationRequestDataAttributesComponentsAffectedItemsInput as any as S.Schema<CreateMaintenanceRequestDataAttributesComponentsAffectedItemsInput>;
 
 /** The components affected. */
 export type CreateBackfilledMaintenanceRequestDataAttributesUpdatesItemsInputComponentsAffectedList =
   Array<CreateMaintenanceRequestDataAttributesComponentsAffectedItemsInput>;
 export const CreateBackfilledMaintenanceRequestDataAttributesUpdatesItemsInputComponentsAffectedList =
-  /*@__PURE__*/ S.Array(
-    CreateMaintenanceRequestDataAttributesComponentsAffectedItemsInput,
-  ) as any as S.Schema<CreateBackfilledMaintenanceRequestDataAttributesUpdatesItemsInputComponentsAffectedList>;
+  CreateBackfilledDegradationRequestDataAttributesUpdatesItemsInputComponentsAffectedList as any as S.Schema<CreateBackfilledMaintenanceRequestDataAttributesUpdatesItemsInputComponentsAffectedList>;
 
 /** The status of a maintenance update. */
 export type CreateMaintenanceRequestDataAttributesUpdatesItemsStatus = "in_progress" | "completed";
@@ -15415,40 +15135,22 @@ export interface CreateBackfilledMaintenanceRequestDataRelationshipsTemplateData
   type: PatchMaintenanceTemplateRequestDataType | (string & {});
 }
 export const CreateBackfilledMaintenanceRequestDataRelationshipsTemplateData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      type: PatchMaintenanceTemplateRequestDataType,
-    }),
-  ).annotate({
-    identifier: "CreateBackfilledMaintenanceRequestDataRelationshipsTemplateData",
-  }) as any as S.Schema<CreateBackfilledMaintenanceRequestDataRelationshipsTemplateData>;
+  CreateBackfilledDegradationRequestDataRelationshipsTemplateData as any as S.Schema<CreateBackfilledMaintenanceRequestDataRelationshipsTemplateData>;
 
 /** The template used to create the backfilled maintenance. */
 export interface CreateBackfilledMaintenanceRequestDataRelationshipsTemplate {
   data: CreateBackfilledMaintenanceRequestDataRelationshipsTemplateData;
 }
-export const CreateBackfilledMaintenanceRequestDataRelationshipsTemplate = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      data: CreateBackfilledMaintenanceRequestDataRelationshipsTemplateData,
-    }),
-).annotate({
-  identifier: "CreateBackfilledMaintenanceRequestDataRelationshipsTemplate",
-}) as any as S.Schema<CreateBackfilledMaintenanceRequestDataRelationshipsTemplate>;
+export const CreateBackfilledMaintenanceRequestDataRelationshipsTemplate =
+  CreateBackfilledDegradationRequestDataRelationshipsTemplate as any as S.Schema<CreateBackfilledMaintenanceRequestDataRelationshipsTemplate>;
 
 /** The supported relationships for creating a backfilled maintenance. */
 export interface CreateBackfilledMaintenanceRequestDataRelationships {
   /** The template used to create the backfilled maintenance. */
   template?: CreateBackfilledMaintenanceRequestDataRelationshipsTemplate;
 }
-export const CreateBackfilledMaintenanceRequestDataRelationships = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    template: S.optional(CreateBackfilledMaintenanceRequestDataRelationshipsTemplate),
-  }),
-).annotate({
-  identifier: "CreateBackfilledMaintenanceRequestDataRelationships",
-}) as any as S.Schema<CreateBackfilledMaintenanceRequestDataRelationships>;
+export const CreateBackfilledMaintenanceRequestDataRelationships =
+  CreateBackfilledDegradationRequestDataRelationships as any as S.Schema<CreateBackfilledMaintenanceRequestDataRelationships>;
 
 /** Maintenances resource type. */
 export type PatchMaintenanceRequestDataType = "maintenances";
@@ -15501,22 +15203,14 @@ export interface MaintenanceDataAttributesComponentsAffectedItems {
   name?: string;
   status: PatchMaintenanceRequestDataAttributesComponentsAffectedItemsStatus;
 }
-export const MaintenanceDataAttributesComponentsAffectedItems = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.optional(S.String),
-    status: PatchMaintenanceRequestDataAttributesComponentsAffectedItemsStatus,
-  }),
-).annotate({
-  identifier: "MaintenanceDataAttributesComponentsAffectedItems",
-}) as any as S.Schema<MaintenanceDataAttributesComponentsAffectedItems>;
+export const MaintenanceDataAttributesComponentsAffectedItems =
+  DegradationDataAttributesComponentsAffectedItems as any as S.Schema<MaintenanceDataAttributesComponentsAffectedItems>;
 
 /** Components affected by the maintenance. */
 export type MaintenanceDataAttributesComponentsAffectedList =
   Array<MaintenanceDataAttributesComponentsAffectedItems>;
-export const MaintenanceDataAttributesComponentsAffectedList = /*@__PURE__*/ S.Array(
-  MaintenanceDataAttributesComponentsAffectedItems,
-) as any as S.Schema<MaintenanceDataAttributesComponentsAffectedList>;
+export const MaintenanceDataAttributesComponentsAffectedList =
+  DegradationDataAttributesComponentsAffectedList as any as S.Schema<MaintenanceDataAttributesComponentsAffectedList>;
 
 /** The status of the maintenance. */
 export type MaintenanceDataAttributesStatus = "scheduled" | "in_progress" | "completed";
@@ -15531,23 +15225,14 @@ export interface MaintenanceDataAttributesUpdatesItemsComponentsAffectedItems {
   /** The status of the component affected at the time of the update. */
   status: PatchMaintenanceRequestDataAttributesComponentsAffectedItemsStatus;
 }
-export const MaintenanceDataAttributesUpdatesItemsComponentsAffectedItems = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      name: S.optional(S.String),
-      status: PatchMaintenanceRequestDataAttributesComponentsAffectedItemsStatus,
-    }),
-).annotate({
-  identifier: "MaintenanceDataAttributesUpdatesItemsComponentsAffectedItems",
-}) as any as S.Schema<MaintenanceDataAttributesUpdatesItemsComponentsAffectedItems>;
+export const MaintenanceDataAttributesUpdatesItemsComponentsAffectedItems =
+  DegradationDataAttributesUpdatesItemsComponentsAffectedItems as any as S.Schema<MaintenanceDataAttributesUpdatesItemsComponentsAffectedItems>;
 
 /** The components affected at the time of the update. */
 export type MaintenanceDataAttributesUpdatesItemsComponentsAffectedList =
   Array<MaintenanceDataAttributesUpdatesItemsComponentsAffectedItems>;
-export const MaintenanceDataAttributesUpdatesItemsComponentsAffectedList = /*@__PURE__*/ S.Array(
-  MaintenanceDataAttributesUpdatesItemsComponentsAffectedItems,
-) as any as S.Schema<MaintenanceDataAttributesUpdatesItemsComponentsAffectedList>;
+export const MaintenanceDataAttributesUpdatesItemsComponentsAffectedList =
+  DegradationDataAttributesUpdatesItemsComponentsAffectedList as any as S.Schema<MaintenanceDataAttributesUpdatesItemsComponentsAffectedList>;
 
 /** An update made to a maintenance. */
 export interface MaintenanceDataAttributesUpdatesItems {
@@ -15685,26 +15370,15 @@ export interface MaintenanceDataRelationshipsTemplateData {
   id: string;
   type: PatchMaintenanceTemplateRequestDataType;
 }
-export const MaintenanceDataRelationshipsTemplateData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: PatchMaintenanceTemplateRequestDataType,
-  }),
-).annotate({
-  identifier: "MaintenanceDataRelationshipsTemplateData",
-}) as any as S.Schema<MaintenanceDataRelationshipsTemplateData>;
+export const MaintenanceDataRelationshipsTemplateData =
+  NullableUserRelationshipData as any as S.Schema<MaintenanceDataRelationshipsTemplateData>;
 
 /** The template the maintenance was created from. */
 export interface MaintenanceDataRelationshipsTemplate {
   data: MaintenanceDataRelationshipsTemplateData;
 }
-export const MaintenanceDataRelationshipsTemplate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: MaintenanceDataRelationshipsTemplateData,
-  }),
-).annotate({
-  identifier: "MaintenanceDataRelationshipsTemplate",
-}) as any as S.Schema<MaintenanceDataRelationshipsTemplate>;
+export const MaintenanceDataRelationshipsTemplate =
+  TeamHierarchyLinkCreateTeamRelationship as any as S.Schema<MaintenanceDataRelationshipsTemplate>;
 
 /** The relationships of a maintenance. */
 export interface MaintenanceDataRelationships {
@@ -16170,11 +15844,7 @@ export const NotebookResourceType = S.String;
 export interface NotebookCreateData {
   type: NotebookResourceType | (string & {});
 }
-export const NotebookCreateData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: NotebookResourceType,
-  }),
-).annotate({ identifier: "NotebookCreateData" }) as any as S.Schema<NotebookCreateData>;
+export const NotebookCreateData = CaseEmpty as any as S.Schema<NotebookCreateData>;
 
 export interface CreateCaseNotebookRequest {
   /** Case's UUID or key */
@@ -16705,34 +16375,22 @@ export interface ChangeRequestDecisionRelationshipData {
   id: string;
   type: ChangeRequestDecisionResourceType;
 }
-export const ChangeRequestDecisionRelationshipData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: ChangeRequestDecisionResourceType,
-  }),
-).annotate({
-  identifier: "ChangeRequestDecisionRelationshipData",
-}) as any as S.Schema<ChangeRequestDecisionRelationshipData>;
+export const ChangeRequestDecisionRelationshipData =
+  NullableUserRelationshipData as any as S.Schema<ChangeRequestDecisionRelationshipData>;
 
 /** Array of decision relationship data. */
 export type ChangeRequestDecisionsRelationshipDataList =
   Array<ChangeRequestDecisionRelationshipData>;
-export const ChangeRequestDecisionsRelationshipDataList = /*@__PURE__*/ S.Array(
-  ChangeRequestDecisionRelationshipData,
-) as any as S.Schema<ChangeRequestDecisionsRelationshipDataList>;
+export const ChangeRequestDecisionsRelationshipDataList =
+  RelationshipToOrganizationsDataList as any as S.Schema<ChangeRequestDecisionsRelationshipDataList>;
 
 /** Relationship to change request decisions. */
 export interface ChangeRequestDecisionsRelationship {
   /** Array of decision relationship data. */
   data: ChangeRequestDecisionsRelationshipDataList;
 }
-export const ChangeRequestDecisionsRelationship = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: ChangeRequestDecisionsRelationshipDataList,
-  }),
-).annotate({
-  identifier: "ChangeRequestDecisionsRelationship",
-}) as any as S.Schema<ChangeRequestDecisionsRelationship>;
+export const ChangeRequestDecisionsRelationship =
+  RelationshipToOrganizations as any as S.Schema<ChangeRequestDecisionsRelationship>;
 
 /** User relationship data. */
 export interface ChangeRequestUserRelationshipData {
@@ -18234,14 +17892,8 @@ export interface CreateComponentRequestDataRelationshipsGroupData {
   id: string;
   type: StatusPagesComponentGroupType;
 }
-export const CreateComponentRequestDataRelationshipsGroupData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: StatusPagesComponentGroupType,
-  }),
-).annotate({
-  identifier: "CreateComponentRequestDataRelationshipsGroupData",
-}) as any as S.Schema<CreateComponentRequestDataRelationshipsGroupData>;
+export const CreateComponentRequestDataRelationshipsGroupData =
+  NullableUserRelationshipData as any as S.Schema<CreateComponentRequestDataRelationshipsGroupData>;
 
 /** The group to create the component within. */
 export interface CreateComponentRequestDataRelationshipsGroup {
@@ -21437,18 +21089,13 @@ export interface DashboardListItemRequest {
   id: string;
   type: DashboardType | (string & {});
 }
-export const DashboardListItemRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: DashboardType,
-  }),
-).annotate({ identifier: "DashboardListItemRequest" }) as any as S.Schema<DashboardListItemRequest>;
+export const DashboardListItemRequest =
+  ProjectRelationshipData as any as S.Schema<DashboardListItemRequest>;
 
 /** List of dashboards to add the dashboard list. */
 export type CreateDashboardListItemsRequestDashboardsList = Array<DashboardListItemRequest>;
-export const CreateDashboardListItemsRequestDashboardsList = /*@__PURE__*/ S.Array(
-  DashboardListItemRequest,
-) as any as S.Schema<CreateDashboardListItemsRequestDashboardsList>;
+export const CreateDashboardListItemsRequestDashboardsList =
+  RelationshipToUsersDataList as any as S.Schema<CreateDashboardListItemsRequestDashboardsList>;
 
 export interface CreateDashboardListItemsRequest {
   /** ID of the dashboard list to add items to. */
@@ -21477,21 +21124,14 @@ export interface DashboardListItemResponse {
   id: string;
   type: DashboardType;
 }
-export const DashboardListItemResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: DashboardType,
-  }),
-).annotate({
-  identifier: "DashboardListItemResponse",
-}) as any as S.Schema<DashboardListItemResponse>;
+export const DashboardListItemResponse =
+  NullableUserRelationshipData as any as S.Schema<DashboardListItemResponse>;
 
 /** List of dashboards added to the dashboard list. */
 export type DashboardListAddItemsResponseAddedDashboardsToListList =
   Array<DashboardListItemResponse>;
-export const DashboardListAddItemsResponseAddedDashboardsToListList = /*@__PURE__*/ S.Array(
-  DashboardListItemResponse,
-) as any as S.Schema<DashboardListAddItemsResponseAddedDashboardsToListList>;
+export const DashboardListAddItemsResponseAddedDashboardsToListList =
+  RelationshipToOrganizationsDataList as any as S.Schema<DashboardListAddItemsResponseAddedDashboardsToListList>;
 
 /** Response containing a list of added dashboards. */
 export interface DashboardListAddItemsResponse {
@@ -22551,14 +22191,8 @@ export interface CreateAppsDatastoreResponseData {
   id?: string;
   type: DatastoreDataType;
 }
-export const CreateAppsDatastoreResponseData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    type: DatastoreDataType,
-  }),
-).annotate({
-  identifier: "CreateAppsDatastoreResponseData",
-}) as any as S.Schema<CreateAppsDatastoreResponseData>;
+export const CreateAppsDatastoreResponseData =
+  DeleteAppsDatastoreItemResponseData as any as S.Schema<CreateAppsDatastoreResponseData>;
 
 /** Response after successfully creating a new datastore, containing the datastore's assigned ID. */
 export interface CreateAppsDatastoreResponse {
@@ -22685,22 +22319,13 @@ export interface CreateDegradationTemplateRequestDataAttributesComponentsAffecte
     | (string & {});
 }
 export const CreateDegradationTemplateRequestDataAttributesComponentsAffectedItemsInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      status: PatchDegradationTemplateRequestDataAttributesComponentsAffectedItemsStatus,
-    }),
-  ).annotate({
-    identifier: "CreateDegradationTemplateRequestDataAttributesComponentsAffectedItemsInput",
-  }) as any as S.Schema<CreateDegradationTemplateRequestDataAttributesComponentsAffectedItemsInput>;
+  CreateDegradationRequestDataAttributesComponentsAffectedItemsInput as any as S.Schema<CreateDegradationTemplateRequestDataAttributesComponentsAffectedItemsInput>;
 
 /** The components affected by a degradation created from this template. */
 export type CreateDegradationTemplateRequestDataAttributesInputComponentsAffectedList =
   Array<CreateDegradationTemplateRequestDataAttributesComponentsAffectedItemsInput>;
 export const CreateDegradationTemplateRequestDataAttributesInputComponentsAffectedList =
-  /*@__PURE__*/ S.Array(
-    CreateDegradationTemplateRequestDataAttributesComponentsAffectedItemsInput,
-  ) as any as S.Schema<CreateDegradationTemplateRequestDataAttributesInputComponentsAffectedList>;
+  CreateBackfilledDegradationRequestDataAttributesUpdatesItemsInputComponentsAffectedList as any as S.Schema<CreateDegradationTemplateRequestDataAttributesInputComponentsAffectedList>;
 
 /** A pre-filled update for a degradation created from this template. */
 export interface CreateDegradationTemplateRequestDataAttributesUpdatesItems {
@@ -22794,23 +22419,14 @@ export interface DegradationTemplateDataAttributesComponentsAffectedItems {
   name?: string;
   status: PatchDegradationTemplateRequestDataAttributesComponentsAffectedItemsStatus;
 }
-export const DegradationTemplateDataAttributesComponentsAffectedItems = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      name: S.optional(S.String),
-      status: PatchDegradationTemplateRequestDataAttributesComponentsAffectedItemsStatus,
-    }),
-).annotate({
-  identifier: "DegradationTemplateDataAttributesComponentsAffectedItems",
-}) as any as S.Schema<DegradationTemplateDataAttributesComponentsAffectedItems>;
+export const DegradationTemplateDataAttributesComponentsAffectedItems =
+  DegradationDataAttributesUpdatesItemsComponentsAffectedItems as any as S.Schema<DegradationTemplateDataAttributesComponentsAffectedItems>;
 
 /** The components affected by a degradation created from this template. */
 export type DegradationTemplateDataAttributesComponentsAffectedList =
   Array<DegradationTemplateDataAttributesComponentsAffectedItems>;
-export const DegradationTemplateDataAttributesComponentsAffectedList = /*@__PURE__*/ S.Array(
-  DegradationTemplateDataAttributesComponentsAffectedItems,
-) as any as S.Schema<DegradationTemplateDataAttributesComponentsAffectedList>;
+export const DegradationTemplateDataAttributesComponentsAffectedList =
+  DegradationDataAttributesUpdatesItemsComponentsAffectedList as any as S.Schema<DegradationTemplateDataAttributesComponentsAffectedList>;
 
 /** A pre-filled update for a degradation created from this template. */
 export interface DegradationTemplateDataAttributesUpdatesItems {
@@ -23582,9 +23198,8 @@ export const DowntimeNotifyEndStateTypes = S.String;
 
 /** States that will trigger a monitor notification when the `notify_end_types` action occurs. */
 export type DowntimeNotifyEndStates = Array<DowntimeNotifyEndStateTypes | (string & {})>;
-export const DowntimeNotifyEndStates = /*@__PURE__*/ S.Array(
-  DowntimeNotifyEndStateTypes,
-) as any as S.Schema<DowntimeNotifyEndStates>;
+export const DowntimeNotifyEndStates =
+  SyntheticsDowntimeWeekdays as any as S.Schema<DowntimeNotifyEndStates>;
 
 /** Action that will trigger a monitor notification if the downtime is in the `notify_end_types` state. */
 export type DowntimeNotifyEndStateActions = "canceled" | "expired";
@@ -23592,9 +23207,8 @@ export const DowntimeNotifyEndStateActions = S.String;
 
 /** Actions that will trigger a monitor notification if the downtime is in the `notify_end_types` state. */
 export type DowntimeNotifyEndTypes = Array<DowntimeNotifyEndStateActions | (string & {})>;
-export const DowntimeNotifyEndTypes = /*@__PURE__*/ S.Array(
-  DowntimeNotifyEndStateActions,
-) as any as S.Schema<DowntimeNotifyEndTypes>;
+export const DowntimeNotifyEndTypes =
+  SyntheticsDowntimeWeekdays as any as S.Schema<DowntimeNotifyEndTypes>;
 
 /** An object defining the recurrence of the downtime. */
 export interface DowntimeScheduleRecurrenceCreateUpdateRequest {
@@ -23722,18 +23336,13 @@ export interface DowntimeRunAsPrincipal {
   id: string;
   type: DowntimeRunAsPrincipalType;
 }
-export const DowntimeRunAsPrincipal = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: DowntimeRunAsPrincipalType,
-  }),
-).annotate({ identifier: "DowntimeRunAsPrincipal" }) as any as S.Schema<DowntimeRunAsPrincipal>;
+export const DowntimeRunAsPrincipal =
+  ProjectRelationshipData as any as S.Schema<DowntimeRunAsPrincipal>;
 
 /** List of principals allowed to act on behalf of the downtime. */
 export type DowntimeRunAsItemPrincipalsList = Array<DowntimeRunAsPrincipal>;
-export const DowntimeRunAsItemPrincipalsList = /*@__PURE__*/ S.Array(
-  DowntimeRunAsPrincipal,
-) as any as S.Schema<DowntimeRunAsItemPrincipalsList>;
+export const DowntimeRunAsItemPrincipalsList =
+  RelationshipToUsersDataList as any as S.Schema<DowntimeRunAsItemPrincipalsList>;
 
 /** A set of principals allowed to act on behalf of the downtime. */
 export interface DowntimeRunAsItem {
@@ -23881,14 +23490,8 @@ export interface DowntimeRelationshipsCreatedByData {
   id?: string;
   type?: UsersType;
 }
-export const DowntimeRelationshipsCreatedByData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    type: S.optional(UsersType),
-  }),
-).annotate({
-  identifier: "DowntimeRelationshipsCreatedByData",
-}) as any as S.Schema<DowntimeRelationshipsCreatedByData>;
+export const DowntimeRelationshipsCreatedByData =
+  RelationshipToPermissionData as any as S.Schema<DowntimeRelationshipsCreatedByData>;
 
 /** The user who created the downtime. */
 export interface DowntimeRelationshipsCreatedBy {
@@ -23912,26 +23515,15 @@ export interface DowntimeRelationshipsMonitorData {
   id?: string;
   type?: DowntimeIncludedMonitorType;
 }
-export const DowntimeRelationshipsMonitorData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    type: S.optional(DowntimeIncludedMonitorType),
-  }),
-).annotate({
-  identifier: "DowntimeRelationshipsMonitorData",
-}) as any as S.Schema<DowntimeRelationshipsMonitorData>;
+export const DowntimeRelationshipsMonitorData =
+  RelationshipToPermissionData as any as S.Schema<DowntimeRelationshipsMonitorData>;
 
 /** The monitor identified by the downtime. */
 export interface DowntimeRelationshipsMonitor {
   data?: DowntimeRelationshipsMonitorData | null;
 }
-export const DowntimeRelationshipsMonitor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: S.optional(S.NullOr(DowntimeRelationshipsMonitorData)),
-  }),
-).annotate({
-  identifier: "DowntimeRelationshipsMonitor",
-}) as any as S.Schema<DowntimeRelationshipsMonitor>;
+export const DowntimeRelationshipsMonitor =
+  DowntimeRelationshipsCreatedBy as any as S.Schema<DowntimeRelationshipsMonitor>;
 
 /** All relationships associated with downtime. */
 export interface DowntimeRelationships {
@@ -24462,14 +24054,8 @@ export interface ChangeEventCustomAttributesChangedResource {
   name: string;
   type: ChangeEventCustomAttributesChangedResourceType | (string & {});
 }
-export const ChangeEventCustomAttributesChangedResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    type: ChangeEventCustomAttributesChangedResourceType,
-  }),
-).annotate({
-  identifier: "ChangeEventCustomAttributesChangedResource",
-}) as any as S.Schema<ChangeEventCustomAttributesChangedResource>;
+export const ChangeEventCustomAttributesChangedResource =
+  ChangeEventCustomAttributesAuthor as any as S.Schema<ChangeEventCustomAttributesChangedResource>;
 
 /** The type of the impacted resource. */
 export type ChangeEventCustomAttributesImpactedResourcesItemsType = "service";
@@ -24481,14 +24067,8 @@ export interface ChangeEventCustomAttributesImpactedResourcesItems {
   name: string;
   type: ChangeEventCustomAttributesImpactedResourcesItemsType | (string & {});
 }
-export const ChangeEventCustomAttributesImpactedResourcesItems = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    type: ChangeEventCustomAttributesImpactedResourcesItemsType,
-  }),
-).annotate({
-  identifier: "ChangeEventCustomAttributesImpactedResourcesItems",
-}) as any as S.Schema<ChangeEventCustomAttributesImpactedResourcesItems>;
+export const ChangeEventCustomAttributesImpactedResourcesItems =
+  ChangeEventCustomAttributesAuthor as any as S.Schema<ChangeEventCustomAttributesImpactedResourcesItems>;
 
 /** A list of resources impacted by this change. It is recommended to provide an impacted resource to display the change event at the correct location. Only resources of type `service` are supported. Maximum of 100 impacted resources allowed. */
 export type ChangeEventCustomAttributesImpactedResourcesList =
@@ -28372,14 +27952,8 @@ export interface HistoricalMetricsConfigurationCreateData {
   id: string;
   type: HistoricalMetricsConfigurationType | (string & {});
 }
-export const HistoricalMetricsConfigurationCreateData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: HistoricalMetricsConfigurationType,
-  }),
-).annotate({
-  identifier: "HistoricalMetricsConfigurationCreateData",
-}) as any as S.Schema<HistoricalMetricsConfigurationCreateData>;
+export const HistoricalMetricsConfigurationCreateData =
+  NullableUserRelationshipData as any as S.Schema<HistoricalMetricsConfigurationCreateData>;
 
 export interface CreateHistoricalMetricsConfigurationRequest {
   data: HistoricalMetricsConfigurationCreateData;
@@ -28772,33 +28346,21 @@ export interface RelationshipToIncidentAttachmentData {
   id: string;
   type: IncidentAttachmentType;
 }
-export const RelationshipToIncidentAttachmentData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: IncidentAttachmentType,
-  }),
-).annotate({
-  identifier: "RelationshipToIncidentAttachmentData",
-}) as any as S.Schema<RelationshipToIncidentAttachmentData>;
+export const RelationshipToIncidentAttachmentData =
+  NullableUserRelationshipData as any as S.Schema<RelationshipToIncidentAttachmentData>;
 
 /** An array of incident attachments. */
 export type RelationshipToIncidentAttachmentDataList = Array<RelationshipToIncidentAttachmentData>;
-export const RelationshipToIncidentAttachmentDataList = /*@__PURE__*/ S.Array(
-  RelationshipToIncidentAttachmentData,
-) as any as S.Schema<RelationshipToIncidentAttachmentDataList>;
+export const RelationshipToIncidentAttachmentDataList =
+  RelationshipToOrganizationsDataList as any as S.Schema<RelationshipToIncidentAttachmentDataList>;
 
 /** A relationship reference for attachments. */
 export interface RelationshipToIncidentAttachment {
   /** An array of incident attachments. */
   data: RelationshipToIncidentAttachmentDataList;
 }
-export const RelationshipToIncidentAttachment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: RelationshipToIncidentAttachmentDataList,
-  }),
-).annotate({
-  identifier: "RelationshipToIncidentAttachment",
-}) as any as S.Schema<RelationshipToIncidentAttachment>;
+export const RelationshipToIncidentAttachment =
+  RelationshipToOrganizations as any as S.Schema<RelationshipToIncidentAttachment>;
 
 /** The incident impacts type. */
 export type IncidentImpactsType = "incident_impacts";
@@ -28810,33 +28372,21 @@ export interface RelationshipToIncidentImpactData {
   id: string;
   type: IncidentImpactsType;
 }
-export const RelationshipToIncidentImpactData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: IncidentImpactsType,
-  }),
-).annotate({
-  identifier: "RelationshipToIncidentImpactData",
-}) as any as S.Schema<RelationshipToIncidentImpactData>;
+export const RelationshipToIncidentImpactData =
+  NullableUserRelationshipData as any as S.Schema<RelationshipToIncidentImpactData>;
 
 /** An array of incident impacts. */
 export type RelationshipToIncidentImpactsDataList = Array<RelationshipToIncidentImpactData>;
-export const RelationshipToIncidentImpactsDataList = /*@__PURE__*/ S.Array(
-  RelationshipToIncidentImpactData,
-) as any as S.Schema<RelationshipToIncidentImpactsDataList>;
+export const RelationshipToIncidentImpactsDataList =
+  RelationshipToOrganizationsDataList as any as S.Schema<RelationshipToIncidentImpactsDataList>;
 
 /** Relationship to impacts. */
 export interface RelationshipToIncidentImpacts {
   /** An array of incident impacts. */
   data: RelationshipToIncidentImpactsDataList;
 }
-export const RelationshipToIncidentImpacts = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: RelationshipToIncidentImpactsDataList,
-  }),
-).annotate({
-  identifier: "RelationshipToIncidentImpacts",
-}) as any as S.Schema<RelationshipToIncidentImpacts>;
+export const RelationshipToIncidentImpacts =
+  RelationshipToOrganizations as any as S.Schema<RelationshipToIncidentImpacts>;
 
 /** Integration metadata resource type. */
 export type IncidentIntegrationMetadataType = "incident_integrations";
@@ -28848,34 +28398,22 @@ export interface RelationshipToIncidentIntegrationMetadataData {
   id: string;
   type: IncidentIntegrationMetadataType | (string & {});
 }
-export const RelationshipToIncidentIntegrationMetadataData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: IncidentIntegrationMetadataType,
-  }),
-).annotate({
-  identifier: "RelationshipToIncidentIntegrationMetadataData",
-}) as any as S.Schema<RelationshipToIncidentIntegrationMetadataData>;
+export const RelationshipToIncidentIntegrationMetadataData =
+  NullableUserRelationshipData as any as S.Schema<RelationshipToIncidentIntegrationMetadataData>;
 
 /** Integration metadata relationship array */
 export type RelationshipToIncidentIntegrationMetadatasDataList =
   Array<RelationshipToIncidentIntegrationMetadataData>;
-export const RelationshipToIncidentIntegrationMetadatasDataList = /*@__PURE__*/ S.Array(
-  RelationshipToIncidentIntegrationMetadataData,
-) as any as S.Schema<RelationshipToIncidentIntegrationMetadatasDataList>;
+export const RelationshipToIncidentIntegrationMetadatasDataList =
+  RelationshipToOrganizationsDataList as any as S.Schema<RelationshipToIncidentIntegrationMetadatasDataList>;
 
 /** A relationship reference for multiple integration metadata objects. */
 export interface RelationshipToIncidentIntegrationMetadatas {
   /** Integration metadata relationship array */
   data: RelationshipToIncidentIntegrationMetadatasDataList;
 }
-export const RelationshipToIncidentIntegrationMetadatas = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: RelationshipToIncidentIntegrationMetadatasDataList,
-  }),
-).annotate({
-  identifier: "RelationshipToIncidentIntegrationMetadatas",
-}) as any as S.Schema<RelationshipToIncidentIntegrationMetadatas>;
+export const RelationshipToIncidentIntegrationMetadatas =
+  RelationshipToOrganizations as any as S.Schema<RelationshipToIncidentIntegrationMetadatas>;
 
 /** The incident responders type. */
 export type IncidentRespondersType = "incident_responders";
@@ -28887,33 +28425,21 @@ export interface RelationshipToIncidentResponderData {
   id: string;
   type: IncidentRespondersType;
 }
-export const RelationshipToIncidentResponderData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: IncidentRespondersType,
-  }),
-).annotate({
-  identifier: "RelationshipToIncidentResponderData",
-}) as any as S.Schema<RelationshipToIncidentResponderData>;
+export const RelationshipToIncidentResponderData =
+  NullableUserRelationshipData as any as S.Schema<RelationshipToIncidentResponderData>;
 
 /** An array of incident responders. */
 export type RelationshipToIncidentRespondersDataList = Array<RelationshipToIncidentResponderData>;
-export const RelationshipToIncidentRespondersDataList = /*@__PURE__*/ S.Array(
-  RelationshipToIncidentResponderData,
-) as any as S.Schema<RelationshipToIncidentRespondersDataList>;
+export const RelationshipToIncidentRespondersDataList =
+  RelationshipToOrganizationsDataList as any as S.Schema<RelationshipToIncidentRespondersDataList>;
 
 /** Relationship to incident responders. */
 export interface RelationshipToIncidentResponders {
   /** An array of incident responders. */
   data: RelationshipToIncidentRespondersDataList;
 }
-export const RelationshipToIncidentResponders = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: RelationshipToIncidentRespondersDataList,
-  }),
-).annotate({
-  identifier: "RelationshipToIncidentResponders",
-}) as any as S.Schema<RelationshipToIncidentResponders>;
+export const RelationshipToIncidentResponders =
+  RelationshipToOrganizations as any as S.Schema<RelationshipToIncidentResponders>;
 
 /** The incident user defined fields type. */
 export type IncidentUserDefinedFieldType = "user_defined_field";
@@ -28925,34 +28451,22 @@ export interface RelationshipToIncidentUserDefinedFieldData {
   id: string;
   type: IncidentUserDefinedFieldType;
 }
-export const RelationshipToIncidentUserDefinedFieldData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: IncidentUserDefinedFieldType,
-  }),
-).annotate({
-  identifier: "RelationshipToIncidentUserDefinedFieldData",
-}) as any as S.Schema<RelationshipToIncidentUserDefinedFieldData>;
+export const RelationshipToIncidentUserDefinedFieldData =
+  NullableUserRelationshipData as any as S.Schema<RelationshipToIncidentUserDefinedFieldData>;
 
 /** An array of user defined fields. */
 export type RelationshipToIncidentUserDefinedFieldsDataList =
   Array<RelationshipToIncidentUserDefinedFieldData>;
-export const RelationshipToIncidentUserDefinedFieldsDataList = /*@__PURE__*/ S.Array(
-  RelationshipToIncidentUserDefinedFieldData,
-) as any as S.Schema<RelationshipToIncidentUserDefinedFieldsDataList>;
+export const RelationshipToIncidentUserDefinedFieldsDataList =
+  RelationshipToOrganizationsDataList as any as S.Schema<RelationshipToIncidentUserDefinedFieldsDataList>;
 
 /** Relationship to incident user defined fields. */
 export interface RelationshipToIncidentUserDefinedFields {
   /** An array of user defined fields. */
   data: RelationshipToIncidentUserDefinedFieldsDataList;
 }
-export const RelationshipToIncidentUserDefinedFields = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: RelationshipToIncidentUserDefinedFieldsDataList,
-  }),
-).annotate({
-  identifier: "RelationshipToIncidentUserDefinedFields",
-}) as any as S.Schema<RelationshipToIncidentUserDefinedFields>;
+export const RelationshipToIncidentUserDefinedFields =
+  RelationshipToOrganizations as any as S.Schema<RelationshipToIncidentUserDefinedFields>;
 
 /** The incident's relationships from a response. */
 export interface IncidentResponseRelationships {
@@ -29040,24 +28554,15 @@ export interface RelationshipToIncidentData {
   id: string;
   type: IncidentType;
 }
-export const RelationshipToIncidentData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: IncidentType,
-  }),
-).annotate({
-  identifier: "RelationshipToIncidentData",
-}) as any as S.Schema<RelationshipToIncidentData>;
+export const RelationshipToIncidentData =
+  NullableUserRelationshipData as any as S.Schema<RelationshipToIncidentData>;
 
 /** Relationship to incident. */
 export interface RelationshipToIncident {
   data: RelationshipToIncidentData;
 }
-export const RelationshipToIncident = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: RelationshipToIncidentData,
-  }),
-).annotate({ identifier: "RelationshipToIncident" }) as any as S.Schema<RelationshipToIncident>;
+export const RelationshipToIncident =
+  CaseManagementProject as any as S.Schema<RelationshipToIncident>;
 
 /** The attachment's resource relationships. */
 export interface AttachmentDataRelationships {
@@ -29355,26 +28860,15 @@ export interface RelationshipToIncidentTypeData {
   id: string;
   type: IncidentTypeType;
 }
-export const RelationshipToIncidentTypeData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: IncidentTypeType,
-  }),
-).annotate({
-  identifier: "RelationshipToIncidentTypeData",
-}) as any as S.Schema<RelationshipToIncidentTypeData>;
+export const RelationshipToIncidentTypeData =
+  NullableUserRelationshipData as any as S.Schema<RelationshipToIncidentTypeData>;
 
 /** Relationship to an incident type. */
 export interface RelationshipToIncidentType {
   data: RelationshipToIncidentTypeData;
 }
-export const RelationshipToIncidentType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: RelationshipToIncidentTypeData,
-  }),
-).annotate({
-  identifier: "RelationshipToIncidentType",
-}) as any as S.Schema<RelationshipToIncidentType>;
+export const RelationshipToIncidentType =
+  TeamHierarchyLinkCreateTeamRelationship as any as S.Schema<RelationshipToIncidentType>;
 
 /** Relationships for a Google Chat configuration create request. */
 export interface IncidentGoogleChatConfigurationRelationshipsRequest {
@@ -29641,9 +29135,8 @@ export const IncidentImpactRelatedObject = S.String;
 export type CreateIncidentImpactRequestIncludeList = Array<
   IncidentImpactRelatedObject | (string & {})
 >;
-export const CreateIncidentImpactRequestIncludeList = /*@__PURE__*/ S.Array(
-  IncidentImpactRelatedObject,
-) as any as S.Schema<CreateIncidentImpactRequestIncludeList>;
+export const CreateIncidentImpactRequestIncludeList =
+  SyntheticsDowntimeWeekdays as any as S.Schema<CreateIncidentImpactRequestIncludeList>;
 
 /** An object mapping impact field names to field values. */
 export type IncidentImpactFieldsObject = { [key: string]: unknown | undefined };
@@ -30277,26 +29770,15 @@ export interface RelationshipToIncidentNotificationTemplateData {
   id: string;
   type: IncidentNotificationTemplateType;
 }
-export const RelationshipToIncidentNotificationTemplateData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: IncidentNotificationTemplateType,
-  }),
-).annotate({
-  identifier: "RelationshipToIncidentNotificationTemplateData",
-}) as any as S.Schema<RelationshipToIncidentNotificationTemplateData>;
+export const RelationshipToIncidentNotificationTemplateData =
+  NullableUserRelationshipData as any as S.Schema<RelationshipToIncidentNotificationTemplateData>;
 
 /** A relationship reference to a notification template. */
 export interface RelationshipToIncidentNotificationTemplate {
   data: RelationshipToIncidentNotificationTemplateData;
 }
-export const RelationshipToIncidentNotificationTemplate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: RelationshipToIncidentNotificationTemplateData,
-  }),
-).annotate({
-  identifier: "RelationshipToIncidentNotificationTemplate",
-}) as any as S.Schema<RelationshipToIncidentNotificationTemplate>;
+export const RelationshipToIncidentNotificationTemplate =
+  TeamHierarchyLinkCreateTeamRelationship as any as S.Schema<RelationshipToIncidentNotificationTemplate>;
 
 /** The definition of `NotificationRuleCreateDataRelationships` object. */
 export interface IncidentNotificationRuleCreateDataRelationships {
@@ -34388,9 +33870,8 @@ export const LLMObsPromptVersionLabel = S.String;
 export type LLMObsCreatePromptDataAttributesLabelsList = Array<
   LLMObsPromptVersionLabel | (string & {})
 >;
-export const LLMObsCreatePromptDataAttributesLabelsList = /*@__PURE__*/ S.Array(
-  LLMObsPromptVersionLabel,
-) as any as S.Schema<LLMObsCreatePromptDataAttributesLabelsList>;
+export const LLMObsCreatePromptDataAttributesLabelsList =
+  SyntheticsDowntimeWeekdays as any as S.Schema<LLMObsCreatePromptDataAttributesLabelsList>;
 
 /** A single chat message in a prompt template. */
 export interface LLMObsPromptChatMessage {
@@ -34416,14 +33897,8 @@ export interface LLMObsPromptMessagePlaceholder {
   name: string;
   type: LLMObsPromptMessagePlaceholderType;
 }
-export const LLMObsPromptMessagePlaceholder = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    type: LLMObsPromptMessagePlaceholderType,
-  }),
-).annotate({
-  identifier: "LLMObsPromptMessagePlaceholder",
-}) as any as S.Schema<LLMObsPromptMessagePlaceholder>;
+export const LLMObsPromptMessagePlaceholder =
+  ChangeEventCustomAttributesAuthor as any as S.Schema<LLMObsPromptMessagePlaceholder>;
 
 /** A chat message or a named message placeholder in a prompt template. */
 export type LLMObsPromptChatTemplateItem = LLMObsPromptChatMessage | LLMObsPromptMessagePlaceholder;
@@ -38594,20 +38069,13 @@ export interface DataRelationshipsTeamsDataItems {
   id: string;
   type: DataRelationshipsTeamsDataItemsType | (string & {});
 }
-export const DataRelationshipsTeamsDataItems = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: DataRelationshipsTeamsDataItemsType,
-  }),
-).annotate({
-  identifier: "DataRelationshipsTeamsDataItems",
-}) as any as S.Schema<DataRelationshipsTeamsDataItems>;
+export const DataRelationshipsTeamsDataItems =
+  NullableUserRelationshipData as any as S.Schema<DataRelationshipsTeamsDataItems>;
 
 /** An array of team references for this schedule. */
 export type DataRelationshipsTeamsDataList = Array<DataRelationshipsTeamsDataItems>;
-export const DataRelationshipsTeamsDataList = /*@__PURE__*/ S.Array(
-  DataRelationshipsTeamsDataItems,
-) as any as S.Schema<DataRelationshipsTeamsDataList>;
+export const DataRelationshipsTeamsDataList =
+  RelationshipToOrganizationsDataList as any as S.Schema<DataRelationshipsTeamsDataList>;
 
 /** Associates teams with this schedule in a data structure. */
 export interface DataRelationshipsTeams {
@@ -38695,34 +38163,22 @@ export interface EscalationPolicyDataRelationshipsStepsDataItems {
   id: string;
   type: EscalationPolicyDataRelationshipsStepsDataItemsType;
 }
-export const EscalationPolicyDataRelationshipsStepsDataItems = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: EscalationPolicyDataRelationshipsStepsDataItemsType,
-  }),
-).annotate({
-  identifier: "EscalationPolicyDataRelationshipsStepsDataItems",
-}) as any as S.Schema<EscalationPolicyDataRelationshipsStepsDataItems>;
+export const EscalationPolicyDataRelationshipsStepsDataItems =
+  NullableUserRelationshipData as any as S.Schema<EscalationPolicyDataRelationshipsStepsDataItems>;
 
 /** An array of references to the steps defined in this escalation policy. */
 export type EscalationPolicyDataRelationshipsStepsDataList =
   Array<EscalationPolicyDataRelationshipsStepsDataItems>;
-export const EscalationPolicyDataRelationshipsStepsDataList = /*@__PURE__*/ S.Array(
-  EscalationPolicyDataRelationshipsStepsDataItems,
-) as any as S.Schema<EscalationPolicyDataRelationshipsStepsDataList>;
+export const EscalationPolicyDataRelationshipsStepsDataList =
+  RelationshipToOrganizationsDataList as any as S.Schema<EscalationPolicyDataRelationshipsStepsDataList>;
 
 /** Defines the relationship to a collection of steps within an escalation policy. Contains an array of step data references. */
 export interface EscalationPolicyDataRelationshipsSteps {
   /** An array of references to the steps defined in this escalation policy. */
   data?: EscalationPolicyDataRelationshipsStepsDataList;
 }
-export const EscalationPolicyDataRelationshipsSteps = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: S.optional(EscalationPolicyDataRelationshipsStepsDataList),
-  }),
-).annotate({
-  identifier: "EscalationPolicyDataRelationshipsSteps",
-}) as any as S.Schema<EscalationPolicyDataRelationshipsSteps>;
+export const EscalationPolicyDataRelationshipsSteps =
+  BatchRowsQueryResponseDataRelationshipsRows as any as S.Schema<EscalationPolicyDataRelationshipsSteps>;
 
 /** Represents the relationships for an escalation policy, including references to steps and teams. */
 export interface EscalationPolicyDataRelationships {
@@ -38784,12 +38240,7 @@ export interface TeamTarget {
   id: string;
   type: TeamTargetType;
 }
-export const TeamTarget = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: TeamTargetType,
-  }),
-).annotate({ identifier: "TeamTarget" }) as any as S.Schema<TeamTarget>;
+export const TeamTarget = ProjectRelationshipData as any as S.Schema<TeamTarget>;
 
 /** Indicates that the resource is of type `users`. */
 export type UserTargetType = "users";
@@ -38801,12 +38252,7 @@ export interface UserTarget {
   id: string;
   type: UserTargetType;
 }
-export const UserTarget = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: UserTargetType,
-  }),
-).annotate({ identifier: "UserTarget" }) as any as S.Schema<UserTarget>;
+export const UserTarget = ProjectRelationshipData as any as S.Schema<UserTarget>;
 
 /** Indicates that the resource is of type `schedules`. */
 export type ScheduleTargetType = "schedules";
@@ -38818,12 +38264,7 @@ export interface ScheduleTarget {
   id: string;
   type: ScheduleTargetType;
 }
-export const ScheduleTarget = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: ScheduleTargetType,
-  }),
-).annotate({ identifier: "ScheduleTarget" }) as any as S.Schema<ScheduleTarget>;
+export const ScheduleTarget = ProjectRelationshipData as any as S.Schema<ScheduleTarget>;
 
 /** Indicates that the resource is of type `schedule_target`. */
 export type ConfiguredScheduleTargetType = "schedule_target";
@@ -38835,12 +38276,8 @@ export interface ConfiguredScheduleTarget {
   id: string;
   type: ConfiguredScheduleTargetType;
 }
-export const ConfiguredScheduleTarget = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: ConfiguredScheduleTargetType,
-  }),
-).annotate({ identifier: "ConfiguredScheduleTarget" }) as any as S.Schema<ConfiguredScheduleTarget>;
+export const ConfiguredScheduleTarget =
+  ProjectRelationshipData as any as S.Schema<ConfiguredScheduleTarget>;
 
 /** Represents an escalation target, which can be a team, user, schedule, or configured schedule target. */
 export type EscalationTarget = TeamTarget | UserTarget | ScheduleTarget | ConfiguredScheduleTarget;
@@ -38969,34 +38406,22 @@ export interface ScheduleDataRelationshipsLayersDataItems {
   id: string;
   type: ScheduleDataRelationshipsLayersDataItemsType;
 }
-export const ScheduleDataRelationshipsLayersDataItems = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: ScheduleDataRelationshipsLayersDataItemsType,
-  }),
-).annotate({
-  identifier: "ScheduleDataRelationshipsLayersDataItems",
-}) as any as S.Schema<ScheduleDataRelationshipsLayersDataItems>;
+export const ScheduleDataRelationshipsLayersDataItems =
+  NullableUserRelationshipData as any as S.Schema<ScheduleDataRelationshipsLayersDataItems>;
 
 /** An array of layer references for this schedule. */
 export type ScheduleDataRelationshipsLayersDataList =
   Array<ScheduleDataRelationshipsLayersDataItems>;
-export const ScheduleDataRelationshipsLayersDataList = /*@__PURE__*/ S.Array(
-  ScheduleDataRelationshipsLayersDataItems,
-) as any as S.Schema<ScheduleDataRelationshipsLayersDataList>;
+export const ScheduleDataRelationshipsLayersDataList =
+  RelationshipToOrganizationsDataList as any as S.Schema<ScheduleDataRelationshipsLayersDataList>;
 
 /** Associates layers with this schedule in a data structure. */
 export interface ScheduleDataRelationshipsLayers {
   /** An array of layer references for this schedule. */
   data?: ScheduleDataRelationshipsLayersDataList;
 }
-export const ScheduleDataRelationshipsLayers = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: S.optional(ScheduleDataRelationshipsLayersDataList),
-  }),
-).annotate({
-  identifier: "ScheduleDataRelationshipsLayers",
-}) as any as S.Schema<ScheduleDataRelationshipsLayers>;
+export const ScheduleDataRelationshipsLayers =
+  BatchRowsQueryResponseDataRelationshipsRows as any as S.Schema<ScheduleDataRelationshipsLayers>;
 
 /** Groups the relationships for a schedule object, referencing layers and teams. */
 export interface ScheduleDataRelationships {
@@ -39239,12 +38664,7 @@ export interface CreatePageResponseData {
   id?: string;
   type: CreatePageResponseDataType;
 }
-export const CreatePageResponseData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    type: CreatePageResponseDataType,
-  }),
-).annotate({ identifier: "CreatePageResponseData" }) as any as S.Schema<CreatePageResponseData>;
+export const CreatePageResponseData = SessionIdData as any as S.Schema<CreatePageResponseData>;
 
 /** The full response object after creating a new On-Call Page. */
 export interface CreatePageResponse {
@@ -39266,14 +38686,8 @@ export interface IncidentPageRoleReference {
   id: string;
   type: IncidentPageRoleType | (string & {});
 }
-export const IncidentPageRoleReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: IncidentPageRoleType,
-  }),
-).annotate({
-  identifier: "IncidentPageRoleReference",
-}) as any as S.Schema<IncidentPageRoleReference>;
+export const IncidentPageRoleReference =
+  NullableUserRelationshipData as any as S.Schema<IncidentPageRoleReference>;
 
 /** List of affected services. */
 export type IncidentCreateOnCallPageDataAttributesRequestServicesList = Array<string>;
@@ -39370,24 +38784,15 @@ export interface IncidentPageUUIDDataResponse {
   id: string;
   type: IncidentPageUUIDType;
 }
-export const IncidentPageUUIDDataResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: IncidentPageUUIDType,
-  }),
-).annotate({
-  identifier: "IncidentPageUUIDDataResponse",
-}) as any as S.Schema<IncidentPageUUIDDataResponse>;
+export const IncidentPageUUIDDataResponse =
+  NullableUserRelationshipData as any as S.Schema<IncidentPageUUIDDataResponse>;
 
 /** Response with a page UUID. */
 export interface IncidentPageUUIDResponse {
   data: IncidentPageUUIDDataResponse;
 }
-export const IncidentPageUUIDResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: IncidentPageUUIDDataResponse,
-  }),
-).annotate({ identifier: "IncidentPageUUIDResponse" }) as any as S.Schema<IncidentPageUUIDResponse>;
+export const IncidentPageUUIDResponse =
+  CaseManagementProject as any as S.Schema<IncidentPageUUIDResponse>;
 
 /** Defines how often the rotation repeats, using a combination of days and optional seconds. Should be at least 1 hour. */
 export interface LayerAttributesInterval {
@@ -39612,33 +39017,21 @@ export interface LayerRelationshipsMembersDataItems {
   id: string;
   type: LayerRelationshipsMembersDataItemsType;
 }
-export const LayerRelationshipsMembersDataItems = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: LayerRelationshipsMembersDataItemsType,
-  }),
-).annotate({
-  identifier: "LayerRelationshipsMembersDataItems",
-}) as any as S.Schema<LayerRelationshipsMembersDataItems>;
+export const LayerRelationshipsMembersDataItems =
+  NullableUserRelationshipData as any as S.Schema<LayerRelationshipsMembersDataItems>;
 
 /** The list of members who belong to this layer. */
 export type LayerRelationshipsMembersDataList = Array<LayerRelationshipsMembersDataItems>;
-export const LayerRelationshipsMembersDataList = /*@__PURE__*/ S.Array(
-  LayerRelationshipsMembersDataItems,
-) as any as S.Schema<LayerRelationshipsMembersDataList>;
+export const LayerRelationshipsMembersDataList =
+  RelationshipToOrganizationsDataList as any as S.Schema<LayerRelationshipsMembersDataList>;
 
 /** Holds an array of references to the members of a Layer, each containing member IDs. */
 export interface LayerRelationshipsMembers {
   /** The list of members who belong to this layer. */
   data?: LayerRelationshipsMembersDataList;
 }
-export const LayerRelationshipsMembers = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: S.optional(LayerRelationshipsMembersDataList),
-  }),
-).annotate({
-  identifier: "LayerRelationshipsMembers",
-}) as any as S.Schema<LayerRelationshipsMembers>;
+export const LayerRelationshipsMembers =
+  BatchRowsQueryResponseDataRelationshipsRows as any as S.Schema<LayerRelationshipsMembers>;
 
 /** Holds references to objects related to the Layer entity, such as its members. */
 export interface LayerRelationships {
@@ -39681,26 +39074,15 @@ export interface ScheduleMemberRelationshipsUserData {
   id: string;
   type: ScheduleMemberRelationshipsUserDataType;
 }
-export const ScheduleMemberRelationshipsUserData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: ScheduleMemberRelationshipsUserDataType,
-  }),
-).annotate({
-  identifier: "ScheduleMemberRelationshipsUserData",
-}) as any as S.Schema<ScheduleMemberRelationshipsUserData>;
+export const ScheduleMemberRelationshipsUserData =
+  NullableUserRelationshipData as any as S.Schema<ScheduleMemberRelationshipsUserData>;
 
 /** Wraps the user data reference for a schedule member. */
 export interface ScheduleMemberRelationshipsUser {
   data: ScheduleMemberRelationshipsUserData;
 }
-export const ScheduleMemberRelationshipsUser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: ScheduleMemberRelationshipsUserData,
-  }),
-).annotate({
-  identifier: "ScheduleMemberRelationshipsUser",
-}) as any as S.Schema<ScheduleMemberRelationshipsUser>;
+export const ScheduleMemberRelationshipsUser =
+  TeamHierarchyLinkCreateTeamRelationship as any as S.Schema<ScheduleMemberRelationshipsUser>;
 
 /** Defines relationships for a schedule member, primarily referencing a single user. */
 export interface ScheduleMemberRelationships {
@@ -39748,13 +39130,7 @@ export interface ScheduleUser {
   id?: string;
   type: ScheduleUserType;
 }
-export const ScheduleUser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attributes: S.optional(EscalationPolicyUserAttributes),
-    id: S.optional(S.String),
-    type: ScheduleUserType,
-  }),
-).annotate({ identifier: "ScheduleUser" }) as any as S.Schema<ScheduleUser>;
+export const ScheduleUser = EscalationPolicyUser as any as S.Schema<ScheduleUser>;
 
 /** Any additional resources related to this schedule, such as teams and layers. */
 export type ScheduleDataIncludedItem = TeamReference | Layer | ScheduleMember | ScheduleUser;
@@ -40071,9 +39447,8 @@ export const OrgConnectionTypeEnum = S.String;
 export type OrgConnectionCreateAttributesConnectionTypesList = Array<
   OrgConnectionTypeEnum | (string & {})
 >;
-export const OrgConnectionCreateAttributesConnectionTypesList = /*@__PURE__*/ S.Array(
-  OrgConnectionTypeEnum,
-) as any as S.Schema<OrgConnectionCreateAttributesConnectionTypesList>;
+export const OrgConnectionCreateAttributesConnectionTypesList =
+  SyntheticsDowntimeWeekdays as any as S.Schema<OrgConnectionCreateAttributesConnectionTypesList>;
 
 /** Attributes for creating an org connection. */
 export interface OrgConnectionCreateAttributes {
@@ -40194,27 +39569,15 @@ export interface OrgConnectionUserRelationshipData {
   name?: string;
   type?: OrgConnectionUserRelationshipDataType;
 }
-export const OrgConnectionUserRelationshipData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(OrgConnectionUserRelationshipDataType),
-  }),
-).annotate({
-  identifier: "OrgConnectionUserRelationshipData",
-}) as any as S.Schema<OrgConnectionUserRelationshipData>;
+export const OrgConnectionUserRelationshipData =
+  OrgConnectionOrgRelationshipData as any as S.Schema<OrgConnectionUserRelationshipData>;
 
 /** User relationship. */
 export interface OrgConnectionUserRelationship {
   data?: OrgConnectionUserRelationshipData;
 }
-export const OrgConnectionUserRelationship = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: S.optional(OrgConnectionUserRelationshipData),
-  }),
-).annotate({
-  identifier: "OrgConnectionUserRelationship",
-}) as any as S.Schema<OrgConnectionUserRelationship>;
+export const OrgConnectionUserRelationship =
+  OrgConnectionOrgRelationship as any as S.Schema<OrgConnectionUserRelationship>;
 
 /** Related organizations and user. */
 export interface OrgConnectionRelationships {
@@ -40492,26 +39855,15 @@ export interface OrgGroupPolicyRelationshipToOneData {
   id: string;
   type: OrgGroupPolicyType | (string & {});
 }
-export const OrgGroupPolicyRelationshipToOneData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: OrgGroupPolicyType,
-  }),
-).annotate({
-  identifier: "OrgGroupPolicyRelationshipToOneData",
-}) as any as S.Schema<OrgGroupPolicyRelationshipToOneData>;
+export const OrgGroupPolicyRelationshipToOneData =
+  NullableUserRelationshipData as any as S.Schema<OrgGroupPolicyRelationshipToOneData>;
 
 /** Relationship to a single org group policy. */
 export interface OrgGroupPolicyRelationshipToOne {
   data: OrgGroupPolicyRelationshipToOneData;
 }
-export const OrgGroupPolicyRelationshipToOne = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: OrgGroupPolicyRelationshipToOneData,
-  }),
-).annotate({
-  identifier: "OrgGroupPolicyRelationshipToOne",
-}) as any as S.Schema<OrgGroupPolicyRelationshipToOne>;
+export const OrgGroupPolicyRelationshipToOne =
+  TeamHierarchyLinkCreateTeamRelationship as any as S.Schema<OrgGroupPolicyRelationshipToOne>;
 
 /** Relationships for creating a policy override. */
 export interface OrgGroupPolicyOverrideCreateRelationships {
@@ -40842,15 +40194,8 @@ export interface ServiceDefinitionV2Dot1Slack {
   name?: string;
   type: ServiceDefinitionV2Dot1SlackType;
 }
-export const ServiceDefinitionV2Dot1Slack = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contact: S.String,
-    name: S.optional(S.String),
-    type: ServiceDefinitionV2Dot1SlackType,
-  }),
-).annotate({
-  identifier: "ServiceDefinitionV2Dot1Slack",
-}) as any as S.Schema<ServiceDefinitionV2Dot1Slack>;
+export const ServiceDefinitionV2Dot1Slack =
+  ServiceDefinitionV2Dot1Email as any as S.Schema<ServiceDefinitionV2Dot1Slack>;
 
 /** Contact type. */
 export type ServiceDefinitionV2Dot1MSTeamsType = "microsoft-teams";
@@ -40864,15 +40209,8 @@ export interface ServiceDefinitionV2Dot1MSTeams {
   name?: string;
   type: ServiceDefinitionV2Dot1MSTeamsType;
 }
-export const ServiceDefinitionV2Dot1MSTeams = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contact: S.String,
-    name: S.optional(S.String),
-    type: ServiceDefinitionV2Dot1MSTeamsType,
-  }),
-).annotate({
-  identifier: "ServiceDefinitionV2Dot1MSTeams",
-}) as any as S.Schema<ServiceDefinitionV2Dot1MSTeams>;
+export const ServiceDefinitionV2Dot1MSTeams =
+  ServiceDefinitionV2Dot1Email as any as S.Schema<ServiceDefinitionV2Dot1MSTeams>;
 
 /** Service owner's contacts information. */
 export type ServiceDefinitionV2Dot1Contact =
@@ -40903,14 +40241,8 @@ export interface ServiceDefinitionV2Dot1Opsgenie {
   /** Opsgenie service url. */
   service_url: string;
 }
-export const ServiceDefinitionV2Dot1Opsgenie = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    region: S.optional(ServiceDefinitionV2Dot1OpsgenieRegion),
-    service_url: S.String.pipe(T.Body("service-url")),
-  }),
-).annotate({
-  identifier: "ServiceDefinitionV2Dot1Opsgenie",
-}) as any as S.Schema<ServiceDefinitionV2Dot1Opsgenie>;
+export const ServiceDefinitionV2Dot1Opsgenie =
+  ServiceDefinitionV2Dot2Opsgenie as any as S.Schema<ServiceDefinitionV2Dot1Opsgenie>;
 
 /** PagerDuty integration for the service. */
 export type ServiceDefinitionV2Dot1Pagerduty = ServiceDefinitionV2Dot2Pagerduty;
@@ -40921,14 +40253,8 @@ export interface ServiceDefinitionV2Dot1Integrations {
   opsgenie?: ServiceDefinitionV2Dot1Opsgenie;
   pagerduty?: ServiceDefinitionV2Dot2Pagerduty;
 }
-export const ServiceDefinitionV2Dot1Integrations = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    opsgenie: S.optional(ServiceDefinitionV2Dot1Opsgenie),
-    pagerduty: S.optional(ServiceDefinitionV2Dot2Pagerduty),
-  }),
-).annotate({
-  identifier: "ServiceDefinitionV2Dot1Integrations",
-}) as any as S.Schema<ServiceDefinitionV2Dot1Integrations>;
+export const ServiceDefinitionV2Dot1Integrations =
+  ServiceDefinitionV2Dot2Integrations as any as S.Schema<ServiceDefinitionV2Dot1Integrations>;
 
 /** Link type. */
 export type ServiceDefinitionV2Dot1LinkType = "doc" | "repo" | "runbook" | "dashboard" | "other";
@@ -41044,13 +40370,8 @@ export interface ServiceDefinitionV2Slack {
   name?: string;
   type: ServiceDefinitionV2SlackType;
 }
-export const ServiceDefinitionV2Slack = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contact: S.String,
-    name: S.optional(S.String),
-    type: ServiceDefinitionV2SlackType,
-  }),
-).annotate({ identifier: "ServiceDefinitionV2Slack" }) as any as S.Schema<ServiceDefinitionV2Slack>;
+export const ServiceDefinitionV2Slack =
+  ServiceDefinitionV2Email as any as S.Schema<ServiceDefinitionV2Slack>;
 
 /** Contact type. */
 export type ServiceDefinitionV2MSTeamsType = "microsoft-teams";
@@ -41064,15 +40385,8 @@ export interface ServiceDefinitionV2MSTeams {
   name?: string;
   type: ServiceDefinitionV2MSTeamsType;
 }
-export const ServiceDefinitionV2MSTeams = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contact: S.String,
-    name: S.optional(S.String),
-    type: ServiceDefinitionV2MSTeamsType,
-  }),
-).annotate({
-  identifier: "ServiceDefinitionV2MSTeams",
-}) as any as S.Schema<ServiceDefinitionV2MSTeams>;
+export const ServiceDefinitionV2MSTeams =
+  ServiceDefinitionV2Dot1Email as any as S.Schema<ServiceDefinitionV2MSTeams>;
 
 /** Service owner's contacts information. */
 export type ServiceDefinitionV2Contact =
@@ -41125,14 +40439,8 @@ export interface ServiceDefinitionV2Opsgenie {
   /** Opsgenie service url. */
   service_url: string;
 }
-export const ServiceDefinitionV2Opsgenie = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    region: S.optional(ServiceDefinitionV2OpsgenieRegion),
-    service_url: S.String.pipe(T.Body("service-url")),
-  }),
-).annotate({
-  identifier: "ServiceDefinitionV2Opsgenie",
-}) as any as S.Schema<ServiceDefinitionV2Opsgenie>;
+export const ServiceDefinitionV2Opsgenie =
+  ServiceDefinitionV2Dot2Opsgenie as any as S.Schema<ServiceDefinitionV2Opsgenie>;
 
 /** Third party integrations that Datadog supports. */
 export interface ServiceDefinitionV2Integrations {
@@ -41848,15 +41156,8 @@ export interface ObservabilityPipelineMemoryBufferOptions {
   type?: ObservabilityPipelineBufferOptionsMemoryType | (string & {});
   when_full?: ObservabilityPipelineBufferOptionsWhenFull | (string & {});
 }
-export const ObservabilityPipelineMemoryBufferOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    max_size: S.Number,
-    type: S.optional(ObservabilityPipelineBufferOptionsMemoryType),
-    when_full: S.optional(ObservabilityPipelineBufferOptionsWhenFull),
-  }),
-).annotate({
-  identifier: "ObservabilityPipelineMemoryBufferOptions",
-}) as any as S.Schema<ObservabilityPipelineMemoryBufferOptions>;
+export const ObservabilityPipelineMemoryBufferOptions =
+  ObservabilityPipelineDiskBufferOptions as any as S.Schema<ObservabilityPipelineMemoryBufferOptions>;
 
 /** Options for configuring a memory buffer by queue length. */
 export interface ObservabilityPipelineMemoryBufferSizeOptions {
@@ -42218,14 +41519,8 @@ export interface ObservabilityPipelineAmazonS3DestinationCompressionGzip {
   /** Gzip compression level. Valid values range from `1` to `9`. */
   level: number;
 }
-export const ObservabilityPipelineAmazonS3DestinationCompressionGzip = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    algorithm: ObservabilityPipelineAmazonS3DestinationCompressionGzipType,
-    level: S.Number,
-  }),
-).annotate({
-  identifier: "ObservabilityPipelineAmazonS3DestinationCompressionGzip",
-}) as any as S.Schema<ObservabilityPipelineAmazonS3DestinationCompressionGzip>;
+export const ObservabilityPipelineAmazonS3DestinationCompressionGzip =
+  ObservabilityPipelineAmazonS3DestinationCompressionZstd as any as S.Schema<ObservabilityPipelineAmazonS3DestinationCompressionGzip>;
 
 /** Compression configuration for archived logs. When omitted, logs are compressed with gzip for backward compatibility. */
 export type ObservabilityPipelineAmazonS3DestinationCompression =
@@ -42332,14 +41627,8 @@ export interface ObservabilityPipelineAmazonS3GenericCompressionZstd {
   /** Zstd compression level. */
   level: number;
 }
-export const ObservabilityPipelineAmazonS3GenericCompressionZstd = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    algorithm: ObservabilityPipelineAmazonS3GenericCompressionZstdType,
-    level: S.Number,
-  }),
-).annotate({
-  identifier: "ObservabilityPipelineAmazonS3GenericCompressionZstd",
-}) as any as S.Schema<ObservabilityPipelineAmazonS3GenericCompressionZstd>;
+export const ObservabilityPipelineAmazonS3GenericCompressionZstd =
+  ObservabilityPipelineAmazonS3DestinationCompressionZstd as any as S.Schema<ObservabilityPipelineAmazonS3GenericCompressionZstd>;
 
 /** The compression type. Always `gzip`. */
 export type ObservabilityPipelineAmazonS3GenericCompressionGzipType = "gzip";
@@ -42351,14 +41640,8 @@ export interface ObservabilityPipelineAmazonS3GenericCompressionGzip {
   /** Gzip compression level. */
   level: number;
 }
-export const ObservabilityPipelineAmazonS3GenericCompressionGzip = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    algorithm: ObservabilityPipelineAmazonS3GenericCompressionGzipType,
-    level: S.Number,
-  }),
-).annotate({
-  identifier: "ObservabilityPipelineAmazonS3GenericCompressionGzip",
-}) as any as S.Schema<ObservabilityPipelineAmazonS3GenericCompressionGzip>;
+export const ObservabilityPipelineAmazonS3GenericCompressionGzip =
+  ObservabilityPipelineAmazonS3DestinationCompressionZstd as any as S.Schema<ObservabilityPipelineAmazonS3GenericCompressionGzip>;
 
 /** The compression type. Always `snappy`. */
 export type ObservabilityPipelineAmazonS3GenericCompressionSnappyType = "snappy";
@@ -42368,13 +41651,8 @@ export const ObservabilityPipelineAmazonS3GenericCompressionSnappyType = S.Strin
 export interface ObservabilityPipelineAmazonS3GenericCompressionSnappy {
   algorithm: ObservabilityPipelineAmazonS3GenericCompressionSnappyType;
 }
-export const ObservabilityPipelineAmazonS3GenericCompressionSnappy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    algorithm: ObservabilityPipelineAmazonS3GenericCompressionSnappyType,
-  }),
-).annotate({
-  identifier: "ObservabilityPipelineAmazonS3GenericCompressionSnappy",
-}) as any as S.Schema<ObservabilityPipelineAmazonS3GenericCompressionSnappy>;
+export const ObservabilityPipelineAmazonS3GenericCompressionSnappy =
+  ObservabilityPipelineHttpClientDestinationCompression as any as S.Schema<ObservabilityPipelineAmazonS3GenericCompressionSnappy>;
 
 /** Compression algorithm applied to encoded logs. */
 export type ObservabilityPipelineAmazonS3GenericCompression =
@@ -42392,13 +41670,8 @@ export const ObservabilityPipelineAmazonS3GenericEncodingJsonType = S.String;
 export interface ObservabilityPipelineAmazonS3GenericEncodingJson {
   type: ObservabilityPipelineAmazonS3GenericEncodingJsonType;
 }
-export const ObservabilityPipelineAmazonS3GenericEncodingJson = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ObservabilityPipelineAmazonS3GenericEncodingJsonType,
-  }),
-).annotate({
-  identifier: "ObservabilityPipelineAmazonS3GenericEncodingJson",
-}) as any as S.Schema<ObservabilityPipelineAmazonS3GenericEncodingJson>;
+export const ObservabilityPipelineAmazonS3GenericEncodingJson =
+  CustomDestinationResponseHttpDestinationAuthBasic as any as S.Schema<ObservabilityPipelineAmazonS3GenericEncodingJson>;
 
 /** The encoding type. Always `parquet`. */
 export type ObservabilityPipelineAmazonS3GenericEncodingParquetType = "parquet";
@@ -42408,13 +41681,8 @@ export const ObservabilityPipelineAmazonS3GenericEncodingParquetType = S.String;
 export interface ObservabilityPipelineAmazonS3GenericEncodingParquet {
   type: ObservabilityPipelineAmazonS3GenericEncodingParquetType;
 }
-export const ObservabilityPipelineAmazonS3GenericEncodingParquet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ObservabilityPipelineAmazonS3GenericEncodingParquetType,
-  }),
-).annotate({
-  identifier: "ObservabilityPipelineAmazonS3GenericEncodingParquet",
-}) as any as S.Schema<ObservabilityPipelineAmazonS3GenericEncodingParquet>;
+export const ObservabilityPipelineAmazonS3GenericEncodingParquet =
+  CustomDestinationResponseHttpDestinationAuthBasic as any as S.Schema<ObservabilityPipelineAmazonS3GenericEncodingParquet>;
 
 /** Encoding format for the destination. */
 export type ObservabilityPipelineAmazonS3GenericEncoding =
@@ -42552,15 +41820,8 @@ export interface ObservabilityPipelineAzureStorageDestinationCompressionGzip {
   /** Gzip compression level. Valid values range from `1` to `9`. */
   level: number;
 }
-export const ObservabilityPipelineAzureStorageDestinationCompressionGzip = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      algorithm: ObservabilityPipelineAzureStorageDestinationCompressionGzipType,
-      level: S.Number,
-    }),
-).annotate({
-  identifier: "ObservabilityPipelineAzureStorageDestinationCompressionGzip",
-}) as any as S.Schema<ObservabilityPipelineAzureStorageDestinationCompressionGzip>;
+export const ObservabilityPipelineAzureStorageDestinationCompressionGzip =
+  ObservabilityPipelineAzureStorageDestinationCompressionZstd as any as S.Schema<ObservabilityPipelineAzureStorageDestinationCompressionGzip>;
 
 /** Compression configuration for archived logs. When omitted, logs are compressed with gzip for backward compatibility. */
 export type ObservabilityPipelineAzureStorageDestinationCompression =
@@ -42619,15 +41880,8 @@ export interface ObservabilityPipelineClickhouseDestinationAuth {
   /** Name of the environment variable or secret that contains the ClickHouse username. */
   username_key?: string;
 }
-export const ObservabilityPipelineClickhouseDestinationAuth = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    password_key: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    strategy: ObservabilityPipelineClickhouseDestinationAuthStrategy,
-    username_key: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ObservabilityPipelineClickhouseDestinationAuth",
-}) as any as S.Schema<ObservabilityPipelineClickhouseDestinationAuth>;
+export const ObservabilityPipelineClickhouseDestinationAuth =
+  ObservabilityPipelineElasticsearchDestinationAuth as any as S.Schema<ObservabilityPipelineClickhouseDestinationAuth>;
 
 /** Batching configuration for ClickHouse inserts. */
 export interface ObservabilityPipelineClickhouseDestinationBatch {
@@ -42674,15 +41928,8 @@ export interface ObservabilityPipelineClickhouseDestinationCompressionObject {
   /** Compression level (1-9). Only applicable when `algorithm` is `gzip`. */
   level?: number;
 }
-export const ObservabilityPipelineClickhouseDestinationCompressionObject = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      algorithm: ObservabilityPipelineClickhouseDestinationCompressionAlgorithm,
-      level: S.optional(S.Number),
-    }),
-).annotate({
-  identifier: "ObservabilityPipelineClickhouseDestinationCompressionObject",
-}) as any as S.Schema<ObservabilityPipelineClickhouseDestinationCompressionObject>;
+export const ObservabilityPipelineClickhouseDestinationCompressionObject =
+  ObservabilityPipelineElasticsearchDestinationCompression as any as S.Schema<ObservabilityPipelineClickhouseDestinationCompressionObject>;
 
 /** Compression setting for outbound HTTP requests to ClickHouse. Can be specified as a shorthand string (`"gzip"` or `"none"`) or as an object with an `algorithm` field and an optional `level` (gzip only, 1-9). */
 export type ObservabilityPipelineClickhouseDestinationCompression =
@@ -43021,14 +42268,7 @@ export interface ObservabilityPipelineGoogleCloudStorageDestinationCompressionGz
   level: number;
 }
 export const ObservabilityPipelineGoogleCloudStorageDestinationCompressionGzip =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      algorithm: ObservabilityPipelineGoogleCloudStorageDestinationCompressionGzipType,
-      level: S.Number,
-    }),
-  ).annotate({
-    identifier: "ObservabilityPipelineGoogleCloudStorageDestinationCompressionGzip",
-  }) as any as S.Schema<ObservabilityPipelineGoogleCloudStorageDestinationCompressionGzip>;
+  ObservabilityPipelineGoogleCloudStorageDestinationCompressionZstd as any as S.Schema<ObservabilityPipelineGoogleCloudStorageDestinationCompressionGzip>;
 
 /** Compression configuration for archived logs. When omitted, logs are compressed with gzip for backward compatibility. */
 export type ObservabilityPipelineGoogleCloudStorageDestinationCompression =
@@ -44215,17 +43455,8 @@ export interface ObservabilityPipelineAddHostnameProcessor {
   include: string;
   type: ObservabilityPipelineAddHostnameProcessorType;
 }
-export const ObservabilityPipelineAddHostnameProcessor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    display_name: S.optional(S.String),
-    enabled: S.Boolean,
-    id: S.String,
-    include: S.String,
-    type: ObservabilityPipelineAddHostnameProcessorType,
-  }),
-).annotate({
-  identifier: "ObservabilityPipelineAddHostnameProcessor",
-}) as any as S.Schema<ObservabilityPipelineAddHostnameProcessor>;
+export const ObservabilityPipelineAddHostnameProcessor =
+  ObservabilityPipelineFilterProcessor as any as S.Schema<ObservabilityPipelineAddHostnameProcessor>;
 
 /** Defines a single VRL remap rule with its own filtering and transformation logic. */
 export interface ObservabilityPipelineCustomProcessorRemap {
@@ -45771,14 +45002,7 @@ export interface ObservabilityPipelineSensitiveDataScannerProcessorScopeExclude 
   target: ObservabilityPipelineSensitiveDataScannerProcessorScopeExcludeTarget;
 }
 export const ObservabilityPipelineSensitiveDataScannerProcessorScopeExclude =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      options: ObservabilityPipelineSensitiveDataScannerProcessorScopeOptions,
-      target: ObservabilityPipelineSensitiveDataScannerProcessorScopeExcludeTarget,
-    }),
-  ).annotate({
-    identifier: "ObservabilityPipelineSensitiveDataScannerProcessorScopeExclude",
-  }) as any as S.Schema<ObservabilityPipelineSensitiveDataScannerProcessorScopeExclude>;
+  ObservabilityPipelineSensitiveDataScannerProcessorScopeInclude as any as S.Schema<ObservabilityPipelineSensitiveDataScannerProcessorScopeExclude>;
 
 /** Applies the rule to all fields. */
 export type ObservabilityPipelineSensitiveDataScannerProcessorScopeAllTarget = "all";
@@ -46071,14 +45295,8 @@ export interface ObservabilityPipelineMetricEnrichmentTableTagLookup {
   name: string;
   type: ObservabilityPipelineMetricEnrichmentTableTagLookupType;
 }
-export const ObservabilityPipelineMetricEnrichmentTableTagLookup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    type: ObservabilityPipelineMetricEnrichmentTableTagLookupType,
-  }),
-).annotate({
-  identifier: "ObservabilityPipelineMetricEnrichmentTableTagLookup",
-}) as any as S.Schema<ObservabilityPipelineMetricEnrichmentTableTagLookup>;
+export const ObservabilityPipelineMetricEnrichmentTableTagLookup =
+  ChangeEventCustomAttributesAuthor as any as S.Schema<ObservabilityPipelineMetricEnrichmentTableTagLookup>;
 
 /** Specifies the source of the key value used for metric enrichment table lookups. The lookup key can be either the metric name or a metric tag. */
 export type ObservabilityPipelineMetricEnrichmentTableLookupSource =
@@ -46695,16 +45913,8 @@ export interface ObservabilityPipelineFluentdSource {
   tls?: ObservabilityPipelineMtlsServerTls;
   type: ObservabilityPipelineFluentdSourceType;
 }
-export const ObservabilityPipelineFluentdSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    address_key: S.optional(S.String),
-    id: S.String,
-    tls: S.optional(ObservabilityPipelineMtlsServerTls),
-    type: ObservabilityPipelineFluentdSourceType,
-  }),
-).annotate({
-  identifier: "ObservabilityPipelineFluentdSource",
-}) as any as S.Schema<ObservabilityPipelineFluentdSource>;
+export const ObservabilityPipelineFluentdSource =
+  ObservabilityPipelineFluentBitSource as any as S.Schema<ObservabilityPipelineFluentdSource>;
 
 /** The decoding format used to interpret incoming logs. */
 export type ObservabilityPipelineDecoding = "bytes" | "gelf" | "json" | "syslog";
@@ -46966,16 +46176,8 @@ export interface ObservabilityPipelineLogstashSource {
   tls?: ObservabilityPipelineMtlsServerTls;
   type: ObservabilityPipelineLogstashSourceType;
 }
-export const ObservabilityPipelineLogstashSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    address_key: S.optional(S.String),
-    id: S.String,
-    tls: S.optional(ObservabilityPipelineMtlsServerTls),
-    type: ObservabilityPipelineLogstashSourceType,
-  }),
-).annotate({
-  identifier: "ObservabilityPipelineLogstashSource",
-}) as any as S.Schema<ObservabilityPipelineLogstashSource>;
+export const ObservabilityPipelineLogstashSource =
+  ObservabilityPipelineFluentBitSource as any as S.Schema<ObservabilityPipelineLogstashSource>;
 
 /** Protocol used by the syslog source to receive messages. */
 export type ObservabilityPipelineSyslogSourceMode = "tcp" | "udp";
@@ -47032,13 +46234,8 @@ export const ObservabilityPipelineSocketSourceFramingBytesMethod = S.String;
 export interface ObservabilityPipelineSocketSourceFramingBytes {
   method: ObservabilityPipelineSocketSourceFramingBytesMethod;
 }
-export const ObservabilityPipelineSocketSourceFramingBytes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    method: ObservabilityPipelineSocketSourceFramingBytesMethod,
-  }),
-).annotate({
-  identifier: "ObservabilityPipelineSocketSourceFramingBytes",
-}) as any as S.Schema<ObservabilityPipelineSocketSourceFramingBytes>;
+export const ObservabilityPipelineSocketSourceFramingBytes =
+  ObservabilityPipelineSocketDestinationFramingBytes as any as S.Schema<ObservabilityPipelineSocketSourceFramingBytes>;
 
 /** Byte frames which are delimited by a chosen character. */
 export type ObservabilityPipelineSocketSourceFramingCharacterDelimitedMethod =
@@ -47069,13 +46266,8 @@ export const ObservabilityPipelineSocketSourceFramingOctetCountingMethod = S.Str
 export interface ObservabilityPipelineSocketSourceFramingOctetCounting {
   method: ObservabilityPipelineSocketSourceFramingOctetCountingMethod;
 }
-export const ObservabilityPipelineSocketSourceFramingOctetCounting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    method: ObservabilityPipelineSocketSourceFramingOctetCountingMethod,
-  }),
-).annotate({
-  identifier: "ObservabilityPipelineSocketSourceFramingOctetCounting",
-}) as any as S.Schema<ObservabilityPipelineSocketSourceFramingOctetCounting>;
+export const ObservabilityPipelineSocketSourceFramingOctetCounting =
+  ObservabilityPipelineSocketDestinationFramingBytes as any as S.Schema<ObservabilityPipelineSocketSourceFramingOctetCounting>;
 
 /** Byte frames which are chunked GELF messages. */
 export type ObservabilityPipelineSocketSourceFramingChunkedGelfMethod = "chunked_gelf";
@@ -47085,13 +46277,8 @@ export const ObservabilityPipelineSocketSourceFramingChunkedGelfMethod = S.Strin
 export interface ObservabilityPipelineSocketSourceFramingChunkedGelf {
   method: ObservabilityPipelineSocketSourceFramingChunkedGelfMethod;
 }
-export const ObservabilityPipelineSocketSourceFramingChunkedGelf = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    method: ObservabilityPipelineSocketSourceFramingChunkedGelfMethod,
-  }),
-).annotate({
-  identifier: "ObservabilityPipelineSocketSourceFramingChunkedGelf",
-}) as any as S.Schema<ObservabilityPipelineSocketSourceFramingChunkedGelf>;
+export const ObservabilityPipelineSocketSourceFramingChunkedGelf =
+  ObservabilityPipelineSocketDestinationFramingBytes as any as S.Schema<ObservabilityPipelineSocketSourceFramingChunkedGelf>;
 
 /** Framing method configuration for the socket source. */
 export type ObservabilityPipelineSocketSourceFraming =
@@ -47254,17 +46441,8 @@ export interface ObservabilityPipelineSyslogNgSource {
   tls?: ObservabilityPipelineMtlsServerTls;
   type: ObservabilityPipelineSyslogNgSourceType;
 }
-export const ObservabilityPipelineSyslogNgSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    address_key: S.optional(S.String),
-    id: S.String,
-    mode: ObservabilityPipelineSyslogSourceMode,
-    tls: S.optional(ObservabilityPipelineMtlsServerTls),
-    type: ObservabilityPipelineSyslogNgSourceType,
-  }),
-).annotate({
-  identifier: "ObservabilityPipelineSyslogNgSource",
-}) as any as S.Schema<ObservabilityPipelineSyslogNgSource>;
+export const ObservabilityPipelineSyslogNgSource =
+  ObservabilityPipelineRsyslogSource as any as S.Schema<ObservabilityPipelineSyslogNgSource>;
 
 /** Authentication strategy for the WebSocket source connection. */
 export type ObservabilityPipelineWebsocketSourceAuthStrategy =
@@ -48446,20 +47624,13 @@ export interface RelationshipToTeamLinkData {
   id: string;
   type: TeamLinkType;
 }
-export const RelationshipToTeamLinkData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: TeamLinkType,
-  }),
-).annotate({
-  identifier: "RelationshipToTeamLinkData",
-}) as any as S.Schema<RelationshipToTeamLinkData>;
+export const RelationshipToTeamLinkData =
+  NullableUserRelationshipData as any as S.Schema<RelationshipToTeamLinkData>;
 
 /** Related team links */
 export type RelationshipToTeamLinksDataList = Array<RelationshipToTeamLinkData>;
-export const RelationshipToTeamLinksDataList = /*@__PURE__*/ S.Array(
-  RelationshipToTeamLinkData,
-) as any as S.Schema<RelationshipToTeamLinksDataList>;
+export const RelationshipToTeamLinksDataList =
+  RelationshipToOrganizationsDataList as any as S.Schema<RelationshipToTeamLinksDataList>;
 
 /** Links attributes. */
 export interface TeamRelationshipsLinks {
@@ -48491,9 +47662,8 @@ export const UserRelationshipData = NullableUserRelationshipData;
 
 /** Relationships to user objects. */
 export type UsersRelationshipDataList = Array<NullableUserRelationshipData>;
-export const UsersRelationshipDataList = /*@__PURE__*/ S.Array(
-  NullableUserRelationshipData,
-) as any as S.Schema<UsersRelationshipDataList>;
+export const UsersRelationshipDataList =
+  RelationshipToOrganizationsDataList as any as S.Schema<UsersRelationshipDataList>;
 
 /** Relationship to users. */
 export interface UsersRelationship {
@@ -49154,21 +48324,14 @@ export interface CreateTableRequestDataAttributesSchemaFieldsItems {
   name: string;
   type: ReferenceTableSchemaFieldType | (string & {});
 }
-export const CreateTableRequestDataAttributesSchemaFieldsItems = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    type: ReferenceTableSchemaFieldType,
-  }),
-).annotate({
-  identifier: "CreateTableRequestDataAttributesSchemaFieldsItems",
-}) as any as S.Schema<CreateTableRequestDataAttributesSchemaFieldsItems>;
+export const CreateTableRequestDataAttributesSchemaFieldsItems =
+  ChangeEventCustomAttributesAuthor as any as S.Schema<CreateTableRequestDataAttributesSchemaFieldsItems>;
 
 /** The schema fields. Maximum of 200 columns. */
 export type CreateTableRequestDataAttributesSchemaFieldsList =
   Array<CreateTableRequestDataAttributesSchemaFieldsItems>;
-export const CreateTableRequestDataAttributesSchemaFieldsList = /*@__PURE__*/ S.Array(
-  CreateTableRequestDataAttributesSchemaFieldsItems,
-) as any as S.Schema<CreateTableRequestDataAttributesSchemaFieldsList>;
+export const CreateTableRequestDataAttributesSchemaFieldsList =
+  ChangeEventCustomAttributesImpactedResourcesList as any as S.Schema<CreateTableRequestDataAttributesSchemaFieldsList>;
 
 /** List of field names that serve as primary keys for the table. Only one primary key is supported, and it is used as an ID to retrieve rows. */
 export type CreateTableRequestDataAttributesSchemaPrimaryKeysList = Array<string>;
@@ -49925,26 +49088,15 @@ export interface ReportScheduleAuthorRelationshipData {
   id: string;
   type: ReportScheduleAuthorType;
 }
-export const ReportScheduleAuthorRelationshipData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: ReportScheduleAuthorType,
-  }),
-).annotate({
-  identifier: "ReportScheduleAuthorRelationshipData",
-}) as any as S.Schema<ReportScheduleAuthorRelationshipData>;
+export const ReportScheduleAuthorRelationshipData =
+  NullableUserRelationshipData as any as S.Schema<ReportScheduleAuthorRelationshipData>;
 
 /** Relationship to the author of the report schedule. */
 export interface ReportScheduleAuthorRelationship {
   data: ReportScheduleAuthorRelationshipData;
 }
-export const ReportScheduleAuthorRelationship = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: ReportScheduleAuthorRelationshipData,
-  }),
-).annotate({
-  identifier: "ReportScheduleAuthorRelationship",
-}) as any as S.Schema<ReportScheduleAuthorRelationship>;
+export const ReportScheduleAuthorRelationship =
+  TeamHierarchyLinkCreateTeamRelationship as any as S.Schema<ReportScheduleAuthorRelationship>;
 
 /** Relationships for the report schedule. */
 export interface ReportScheduleResponseRelationships {
@@ -50748,13 +49900,7 @@ export interface RumMetricCompute {
   /** The path to the value the RUM-based metric will aggregate on. Only present when `aggregation_type` is `distribution`. */
   path?: string;
 }
-export const RumMetricCompute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    aggregation_type: RumMetricComputeAggregationType,
-    include_percentiles: S.optional(S.Boolean),
-    path: S.optional(S.String),
-  }),
-).annotate({ identifier: "RumMetricCompute" }) as any as S.Schema<RumMetricCompute>;
+export const RumMetricCompute = LogsMetricCompute as any as S.Schema<RumMetricCompute>;
 
 /** The type of RUM events to filter on. */
 export type RumMetricEventType =
@@ -51680,9 +50826,8 @@ export const SensitiveDataScannerProduct = S.String;
 export type SensitiveDataScannerGroupAttributesProductListList = Array<
   SensitiveDataScannerProduct | (string & {})
 >;
-export const SensitiveDataScannerGroupAttributesProductListList = /*@__PURE__*/ S.Array(
-  SensitiveDataScannerProduct,
-) as any as S.Schema<SensitiveDataScannerGroupAttributesProductListList>;
+export const SensitiveDataScannerGroupAttributesProductListList =
+  SyntheticsDowntimeWeekdays as any as S.Schema<SensitiveDataScannerGroupAttributesProductListList>;
 
 /** Sampling configurations for the Scanning Group. */
 export interface SensitiveDataScannerSamplings {
@@ -51742,14 +50887,8 @@ export interface SensitiveDataScannerConfiguration {
   id?: string;
   type?: SensitiveDataScannerConfigurationType | (string & {});
 }
-export const SensitiveDataScannerConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    type: S.optional(SensitiveDataScannerConfigurationType),
-  }),
-).annotate({
-  identifier: "SensitiveDataScannerConfiguration",
-}) as any as S.Schema<SensitiveDataScannerConfiguration>;
+export const SensitiveDataScannerConfiguration =
+  RelationshipToPermissionData as any as S.Schema<SensitiveDataScannerConfiguration>;
 
 /** A Sensitive Data Scanner configuration data. */
 export interface SensitiveDataScannerConfigurationData {
@@ -51773,18 +50912,13 @@ export interface SensitiveDataScannerRule {
   id?: string;
   type?: SensitiveDataScannerRuleType | (string & {});
 }
-export const SensitiveDataScannerRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    type: S.optional(SensitiveDataScannerRuleType),
-  }),
-).annotate({ identifier: "SensitiveDataScannerRule" }) as any as S.Schema<SensitiveDataScannerRule>;
+export const SensitiveDataScannerRule =
+  RelationshipToRoleData as any as S.Schema<SensitiveDataScannerRule>;
 
 /** Rules included in the group. The order is important. */
 export type SensitiveDataScannerRuleDataDataList = Array<SensitiveDataScannerRule>;
-export const SensitiveDataScannerRuleDataDataList = /*@__PURE__*/ S.Array(
-  SensitiveDataScannerRule,
-) as any as S.Schema<SensitiveDataScannerRuleDataDataList>;
+export const SensitiveDataScannerRuleDataDataList =
+  RelationshipToRolesDataList as any as S.Schema<SensitiveDataScannerRuleDataDataList>;
 
 /** Rules included in the group. */
 export interface SensitiveDataScannerRuleData {
@@ -52043,26 +51177,15 @@ export interface SensitiveDataScannerGroup {
   id?: string;
   type?: SensitiveDataScannerGroupType | (string & {});
 }
-export const SensitiveDataScannerGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    type: S.optional(SensitiveDataScannerGroupType),
-  }),
-).annotate({
-  identifier: "SensitiveDataScannerGroup",
-}) as any as S.Schema<SensitiveDataScannerGroup>;
+export const SensitiveDataScannerGroup =
+  RelationshipToPermissionData as any as S.Schema<SensitiveDataScannerGroup>;
 
 /** A scanning group data. */
 export interface SensitiveDataScannerGroupData {
   data?: SensitiveDataScannerGroup;
 }
-export const SensitiveDataScannerGroupData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: S.optional(SensitiveDataScannerGroup),
-  }),
-).annotate({
-  identifier: "SensitiveDataScannerGroupData",
-}) as any as S.Schema<SensitiveDataScannerGroupData>;
+export const SensitiveDataScannerGroupData =
+  SensitiveDataScannerConfigurationData as any as S.Schema<SensitiveDataScannerGroupData>;
 
 /** Sensitive Data Scanner standard pattern type. */
 export type SensitiveDataScannerStandardPatternType = "sensitive_data_scanner_standard_pattern";
@@ -52074,26 +51197,15 @@ export interface SensitiveDataScannerStandardPattern {
   id?: string;
   type?: SensitiveDataScannerStandardPatternType | (string & {});
 }
-export const SensitiveDataScannerStandardPattern = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    type: S.optional(SensitiveDataScannerStandardPatternType),
-  }),
-).annotate({
-  identifier: "SensitiveDataScannerStandardPattern",
-}) as any as S.Schema<SensitiveDataScannerStandardPattern>;
+export const SensitiveDataScannerStandardPattern =
+  RelationshipToPermissionData as any as S.Schema<SensitiveDataScannerStandardPattern>;
 
 /** A standard pattern. */
 export interface SensitiveDataScannerStandardPatternData {
   data?: SensitiveDataScannerStandardPattern;
 }
-export const SensitiveDataScannerStandardPatternData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: S.optional(SensitiveDataScannerStandardPattern),
-  }),
-).annotate({
-  identifier: "SensitiveDataScannerStandardPatternData",
-}) as any as S.Schema<SensitiveDataScannerStandardPatternData>;
+export const SensitiveDataScannerStandardPatternData =
+  SensitiveDataScannerConfigurationData as any as S.Schema<SensitiveDataScannerStandardPatternData>;
 
 /** Relationships of a scanning rule. */
 export interface SensitiveDataScannerRuleRelationships {
@@ -53131,14 +52243,8 @@ export interface RelationshipToRuleDataObject {
   id?: string;
   type?: ScorecardType;
 }
-export const RelationshipToRuleDataObject = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    type: S.optional(ScorecardType),
-  }),
-).annotate({
-  identifier: "RelationshipToRuleDataObject",
-}) as any as S.Schema<RelationshipToRuleDataObject>;
+export const RelationshipToRuleDataObject =
+  RelationshipToPermissionData as any as S.Schema<RelationshipToRuleDataObject>;
 
 /** Relationship data for a rule. */
 export interface RelationshipToRuleData {
@@ -53417,9 +52523,8 @@ export const SecurityFindingType = S.String;
 
 /** The list of security finding types that the automation rule applies to. */
 export type SecurityFindingTypes = Array<SecurityFindingType | (string & {})>;
-export const SecurityFindingTypes = /*@__PURE__*/ S.Array(
-  SecurityFindingType,
-) as any as S.Schema<SecurityFindingTypes>;
+export const SecurityFindingTypes =
+  SyntheticsDowntimeWeekdays as any as S.Schema<SecurityFindingTypes>;
 
 /** Defines the scope of findings to which the automation rule applies. */
 export interface AutomationRuleScope {
@@ -54466,26 +53571,15 @@ export interface SecurityMonitoringDatasetCreateResponseData {
   id: string;
   type: SecurityMonitoringDatasetType;
 }
-export const SecurityMonitoringDatasetCreateResponseData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: SecurityMonitoringDatasetType,
-  }),
-).annotate({
-  identifier: "SecurityMonitoringDatasetCreateResponseData",
-}) as any as S.Schema<SecurityMonitoringDatasetCreateResponseData>;
+export const SecurityMonitoringDatasetCreateResponseData =
+  NullableUserRelationshipData as any as S.Schema<SecurityMonitoringDatasetCreateResponseData>;
 
 /** Response returned after creating a dataset. */
 export interface SecurityMonitoringDatasetCreateResponse {
   data: SecurityMonitoringDatasetCreateResponseData;
 }
-export const SecurityMonitoringDatasetCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: SecurityMonitoringDatasetCreateResponseData,
-  }),
-).annotate({
-  identifier: "SecurityMonitoringDatasetCreateResponse",
-}) as any as S.Schema<SecurityMonitoringDatasetCreateResponse>;
+export const SecurityMonitoringDatasetCreateResponse =
+  TeamHierarchyLinkCreateTeamRelationship as any as S.Schema<SecurityMonitoringDatasetCreateResponse>;
 
 /** The source type for a Google Workspace entity context sync. */
 export type SecurityMonitoringIntegrationTypeGoogleWorkspace = "GOOGLE_WORKSPACE";
@@ -55751,26 +54845,15 @@ export interface RelationshipToServiceAccountData {
   id: string;
   type: ServiceAccountType;
 }
-export const RelationshipToServiceAccountData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: ServiceAccountType,
-  }),
-).annotate({
-  identifier: "RelationshipToServiceAccountData",
-}) as any as S.Schema<RelationshipToServiceAccountData>;
+export const RelationshipToServiceAccountData =
+  NullableUserRelationshipData as any as S.Schema<RelationshipToServiceAccountData>;
 
 /** Relationship to service account. */
 export interface RelationshipToServiceAccount {
   data: RelationshipToServiceAccountData;
 }
-export const RelationshipToServiceAccount = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: RelationshipToServiceAccountData,
-  }),
-).annotate({
-  identifier: "RelationshipToServiceAccount",
-}) as any as S.Schema<RelationshipToServiceAccount>;
+export const RelationshipToServiceAccount =
+  TeamHierarchyLinkCreateTeamRelationship as any as S.Schema<RelationshipToServiceAccount>;
 
 /** Resources related to the access token. */
 export interface FullServiceAccessTokenRelationships {
@@ -56060,9 +55143,8 @@ export const RuleSeverity = S.String;
 
 /** The security rules severities to consider. */
 export type SelectorsSeveritiesList = Array<RuleSeverity | (string & {})>;
-export const SelectorsSeveritiesList = /*@__PURE__*/ S.Array(
-  RuleSeverity,
-) as any as S.Schema<SelectorsSeveritiesList>;
+export const SelectorsSeveritiesList =
+  SyntheticsDowntimeWeekdays as any as S.Schema<SelectorsSeveritiesList>;
 
 /** The type of security issues on which the rule applies. Notification rules based on security signals need to use the trigger source "security_signals", while notification rules based on security vulnerabilities need to use the trigger source "security_findings". */
 export type TriggerSource = "security_findings" | "security_signals";
@@ -57063,13 +56145,7 @@ export interface SpansMetricCompute {
   /** The path to the value the span-based metric will aggregate on (only used if the aggregation type is a "distribution"). */
   path?: string;
 }
-export const SpansMetricCompute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    aggregation_type: SpansMetricComputeAggregationType,
-    include_percentiles: S.optional(S.Boolean),
-    path: S.optional(S.String),
-  }),
-).annotate({ identifier: "SpansMetricCompute" }) as any as S.Schema<SpansMetricCompute>;
+export const SpansMetricCompute = LogsMetricCompute as any as S.Schema<SpansMetricCompute>;
 
 /** The span-based metric filter. Spans matching this filter will be aggregated in this metric. */
 export interface SpansMetricFilter {
@@ -57143,15 +56219,8 @@ export interface SpansMetricResponseCompute {
   /** The path to the value the span-based metric will aggregate on (only used if the aggregation type is a "distribution"). */
   path?: string;
 }
-export const SpansMetricResponseCompute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    aggregation_type: S.optional(SpansMetricComputeAggregationType),
-    include_percentiles: S.optional(S.Boolean),
-    path: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SpansMetricResponseCompute",
-}) as any as S.Schema<SpansMetricResponseCompute>;
+export const SpansMetricResponseCompute =
+  LogsMetricResponseCompute as any as S.Schema<SpansMetricResponseCompute>;
 
 /** The span-based metric filter. Spans matching this filter will be aggregated in this metric. */
 export type SpansMetricResponseFilter = SpansMetricFilter;
@@ -58478,16 +57547,8 @@ export interface SyntheticsNetworkAssertionMultiNetworkHop {
   target: number;
   type: SyntheticsNetworkAssertionMultiNetworkHopType;
 }
-export const SyntheticsNetworkAssertionMultiNetworkHop = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operator: SyntheticsNetworkAssertionOperator,
-    property: SyntheticsNetworkAssertionProperty,
-    target: S.Number,
-    type: SyntheticsNetworkAssertionMultiNetworkHopType,
-  }),
-).annotate({
-  identifier: "SyntheticsNetworkAssertionMultiNetworkHop",
-}) as any as S.Schema<SyntheticsNetworkAssertionMultiNetworkHop>;
+export const SyntheticsNetworkAssertionMultiNetworkHop =
+  SyntheticsNetworkAssertionLatency as any as S.Schema<SyntheticsNetworkAssertionMultiNetworkHop>;
 
 /** Type of the packet loss percentage assertion. */
 export type SyntheticsNetworkAssertionPacketLossPercentageType = "packetLossPercentage";
@@ -58521,15 +57582,8 @@ export interface SyntheticsNetworkAssertionJitter {
   target: number;
   type: SyntheticsNetworkAssertionJitterType;
 }
-export const SyntheticsNetworkAssertionJitter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operator: SyntheticsNetworkAssertionOperator,
-    target: S.Number,
-    type: SyntheticsNetworkAssertionJitterType,
-  }),
-).annotate({
-  identifier: "SyntheticsNetworkAssertionJitter",
-}) as any as S.Schema<SyntheticsNetworkAssertionJitter>;
+export const SyntheticsNetworkAssertionJitter =
+  SyntheticsNetworkAssertionPacketLossPercentage as any as S.Schema<SyntheticsNetworkAssertionJitter>;
 
 /** Object describing an assertion for a Network Path test. */
 export type SyntheticsNetworkAssertion =
@@ -59182,26 +58236,15 @@ export interface MetricVolumesRelationshipData {
   id?: string;
   type?: MetricIngestedIndexedVolumeType;
 }
-export const MetricVolumesRelationshipData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    type: S.optional(MetricIngestedIndexedVolumeType),
-  }),
-).annotate({
-  identifier: "MetricVolumesRelationshipData",
-}) as any as S.Schema<MetricVolumesRelationshipData>;
+export const MetricVolumesRelationshipData =
+  RelationshipToPermissionData as any as S.Schema<MetricVolumesRelationshipData>;
 
 /** Relationship to a metric volume included in the response. */
 export interface MetricVolumesRelationship {
   data?: MetricVolumesRelationshipData;
 }
-export const MetricVolumesRelationship = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: S.optional(MetricVolumesRelationshipData),
-  }),
-).annotate({
-  identifier: "MetricVolumesRelationship",
-}) as any as S.Schema<MetricVolumesRelationship>;
+export const MetricVolumesRelationship =
+  SensitiveDataScannerConfigurationData as any as S.Schema<MetricVolumesRelationship>;
 
 /** Relationships for a metric. */
 export interface MetricRelationships {
@@ -60101,24 +59144,15 @@ export interface TagRuleScoreRelationshipData {
   id: string;
   type: TagRuleScoreResourceType;
 }
-export const TagRuleScoreRelationshipData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: TagRuleScoreResourceType,
-  }),
-).annotate({
-  identifier: "TagRuleScoreRelationshipData",
-}) as any as S.Schema<TagRuleScoreRelationshipData>;
+export const TagRuleScoreRelationshipData =
+  NullableUserRelationshipData as any as S.Schema<TagRuleScoreRelationshipData>;
 
 /** A relationship to the compliance score resource for this rule. */
 export interface TagRuleScoreRelationship {
   data: TagRuleScoreRelationshipData;
 }
-export const TagRuleScoreRelationship = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: TagRuleScoreRelationshipData,
-  }),
-).annotate({ identifier: "TagRuleScoreRelationship" }) as any as S.Schema<TagRuleScoreRelationship>;
+export const TagRuleScoreRelationship =
+  CaseManagementProject as any as S.Schema<TagRuleScoreRelationship>;
 
 /** Related resources for a tag rule. Only present when the corresponding `include` query parameter is supplied. */
 export interface TagRuleRelationships {
@@ -60339,14 +59373,8 @@ export interface RelationshipToUserTeamPermissionData {
   id: string;
   type: UserTeamPermissionType;
 }
-export const RelationshipToUserTeamPermissionData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: UserTeamPermissionType,
-  }),
-).annotate({
-  identifier: "RelationshipToUserTeamPermissionData",
-}) as any as S.Schema<RelationshipToUserTeamPermissionData>;
+export const RelationshipToUserTeamPermissionData =
+  NullableUserRelationshipData as any as S.Schema<RelationshipToUserTeamPermissionData>;
 
 /** Relationship between a user team permission and a team */
 export interface RelationshipToUserTeamPermission {
@@ -60425,22 +59453,14 @@ export interface ConnectedTeamRefData {
   id: string;
   type: ConnectedTeamRefDataType | (string & {});
 }
-export const ConnectedTeamRefData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: ConnectedTeamRefDataType,
-  }),
-).annotate({ identifier: "ConnectedTeamRefData" }) as any as S.Schema<ConnectedTeamRefData>;
+export const ConnectedTeamRefData =
+  ProjectRelationshipData as any as S.Schema<ConnectedTeamRefData>;
 
 /** Reference to a team from an external system. */
 export interface ConnectedTeamRef {
   data?: ConnectedTeamRefData;
 }
-export const ConnectedTeamRef = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: S.optional(ConnectedTeamRefData),
-  }),
-).annotate({ identifier: "ConnectedTeamRef" }) as any as S.Schema<ConnectedTeamRef>;
+export const ConnectedTeamRef = CreateAppResponse as any as S.Schema<ConnectedTeamRef>;
 
 /** Datadog team resource type. */
 export type TeamRefDataType = "team";
@@ -60452,22 +59472,13 @@ export interface TeamRefData {
   id: string;
   type: TeamRefDataType | (string & {});
 }
-export const TeamRefData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: TeamRefDataType,
-  }),
-).annotate({ identifier: "TeamRefData" }) as any as S.Schema<TeamRefData>;
+export const TeamRefData = ProjectRelationshipData as any as S.Schema<TeamRefData>;
 
 /** Reference to a Datadog team. */
 export interface TeamRef {
   data?: TeamRefData;
 }
-export const TeamRef = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: S.optional(TeamRefData),
-  }),
-).annotate({ identifier: "TeamRef" }) as any as S.Schema<TeamRef>;
+export const TeamRef = CreateAppResponse as any as S.Schema<TeamRef>;
 
 /** Relationships of the team connection. */
 export interface TeamConnectionRelationships {
@@ -60709,26 +59720,15 @@ export interface RelationshipToUserTeamTeamData {
   id: string;
   type: UserTeamTeamType | (string & {});
 }
-export const RelationshipToUserTeamTeamData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: UserTeamTeamType,
-  }),
-).annotate({
-  identifier: "RelationshipToUserTeamTeamData",
-}) as any as S.Schema<RelationshipToUserTeamTeamData>;
+export const RelationshipToUserTeamTeamData =
+  NullableUserRelationshipData as any as S.Schema<RelationshipToUserTeamTeamData>;
 
 /** Relationship between team membership and team */
 export interface RelationshipToUserTeamTeam {
   data: RelationshipToUserTeamTeamData;
 }
-export const RelationshipToUserTeamTeam = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: RelationshipToUserTeamTeamData,
-  }),
-).annotate({
-  identifier: "RelationshipToUserTeamTeam",
-}) as any as S.Schema<RelationshipToUserTeamTeam>;
+export const RelationshipToUserTeamTeam =
+  TeamHierarchyLinkCreateTeamRelationship as any as S.Schema<RelationshipToUserTeamTeam>;
 
 /** User team user type */
 export type UserTeamUserType = "users";
@@ -60740,26 +59740,15 @@ export interface RelationshipToUserTeamUserData {
   id: string;
   type: UserTeamUserType | (string & {});
 }
-export const RelationshipToUserTeamUserData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: UserTeamUserType,
-  }),
-).annotate({
-  identifier: "RelationshipToUserTeamUserData",
-}) as any as S.Schema<RelationshipToUserTeamUserData>;
+export const RelationshipToUserTeamUserData =
+  NullableUserRelationshipData as any as S.Schema<RelationshipToUserTeamUserData>;
 
 /** Relationship between team membership and user */
 export interface RelationshipToUserTeamUser {
   data: RelationshipToUserTeamUserData;
 }
-export const RelationshipToUserTeamUser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: RelationshipToUserTeamUserData,
-  }),
-).annotate({
-  identifier: "RelationshipToUserTeamUser",
-}) as any as S.Schema<RelationshipToUserTeamUser>;
+export const RelationshipToUserTeamUser =
+  TeamHierarchyLinkCreateTeamRelationship as any as S.Schema<RelationshipToUserTeamUser>;
 
 /** Relationship between membership and a user */
 export interface UserTeamRelationships {
@@ -61171,14 +60160,8 @@ export interface TeamsOwnershipMappingBatchOperationRef {
   id: string;
   type: TeamsOwnershipMappingType | (string & {});
 }
-export const TeamsOwnershipMappingBatchOperationRef = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: TeamsOwnershipMappingType,
-  }),
-).annotate({
-  identifier: "TeamsOwnershipMappingBatchOperationRef",
-}) as any as S.Schema<TeamsOwnershipMappingBatchOperationRef>;
+export const TeamsOwnershipMappingBatchOperationRef =
+  NullableUserRelationshipData as any as S.Schema<TeamsOwnershipMappingBatchOperationRef>;
 
 /** A single add or remove operation, applied atomically with every other operation in the request. */
 export interface TeamsOwnershipMappingBatchOperation {
@@ -62609,15 +61592,8 @@ export interface TwilioIntegrationAccountBasicAuthRequest {
   /** Non-secret username or public identifier for the credential pair. */
   username: string;
 }
-export const TwilioIntegrationAccountBasicAuthRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    auth_type: TwilioIntegrationAccountBasicAuthType,
-    password: S.String.pipe(T.SensitiveValue({})),
-    username: S.String,
-  }),
-).annotate({
-  identifier: "TwilioIntegrationAccountBasicAuthRequest",
-}) as any as S.Schema<TwilioIntegrationAccountBasicAuthRequest>;
+export const TwilioIntegrationAccountBasicAuthRequest =
+  ElasticCloudIntegrationAccountBasicAuthRequest as any as S.Schema<TwilioIntegrationAccountBasicAuthRequest>;
 
 /** Twilio Alert resource logs, which detail the errors and warnings raised when Twilio makes a webhook request to your server or when your application calls the Twilio REST API. This is the one kind of data the integration collects by default. */
 export interface TwilioAlertsLogsIntegrationDataflowRequest {
@@ -62753,14 +61729,8 @@ export interface TwilioIntegrationAccountBasicAuthResponse {
   /** Non-secret username or public identifier for the credential pair. */
   username: string;
 }
-export const TwilioIntegrationAccountBasicAuthResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    auth_type: TwilioIntegrationAccountBasicAuthType,
-    username: S.String,
-  }),
-).annotate({
-  identifier: "TwilioIntegrationAccountBasicAuthResponse",
-}) as any as S.Schema<TwilioIntegrationAccountBasicAuthResponse>;
+export const TwilioIntegrationAccountBasicAuthResponse =
+  ElasticCloudIntegrationAccountBasicAuthResponse as any as S.Schema<TwilioIntegrationAccountBasicAuthResponse>;
 
 /** Twilio Alert resource logs, which detail the errors and warnings raised when Twilio makes a webhook request to your server or when your application calls the Twilio REST API. */
 export type TwilioAlertsLogsIntegrationDataflowResponse =
@@ -63095,9 +62065,8 @@ export const NotificationChannelEmailFormatType = S.String;
 export type CreateEmailNotificationChannelConfigFormatsList = Array<
   NotificationChannelEmailFormatType | (string & {})
 >;
-export const CreateEmailNotificationChannelConfigFormatsList = /*@__PURE__*/ S.Array(
-  NotificationChannelEmailFormatType,
-) as any as S.Schema<CreateEmailNotificationChannelConfigFormatsList>;
+export const CreateEmailNotificationChannelConfigFormatsList =
+  SyntheticsDowntimeWeekdays as any as S.Schema<CreateEmailNotificationChannelConfigFormatsList>;
 
 /** Indicates that the notification channel is an e-mail address */
 export type NotificationChannelEmailConfigType = "email";
@@ -63338,14 +62307,8 @@ export interface OnCallNotificationRuleChannelRelationshipData {
   id?: string;
   type?: NotificationChannelType | (string & {});
 }
-export const OnCallNotificationRuleChannelRelationshipData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    type: S.optional(NotificationChannelType),
-  }),
-).annotate({
-  identifier: "OnCallNotificationRuleChannelRelationshipData",
-}) as any as S.Schema<OnCallNotificationRuleChannelRelationshipData>;
+export const OnCallNotificationRuleChannelRelationshipData =
+  RelationshipToPermissionData as any as S.Schema<OnCallNotificationRuleChannelRelationshipData>;
 
 /** Relationship object for creating a notification rule */
 export interface OnCallNotificationRuleChannelRelationship {
@@ -63830,11 +62793,7 @@ export const WorkflowRunAsOwnerType = S.String;
 export interface WorkflowRunAsOwner {
   type: WorkflowRunAsOwnerType;
 }
-export const WorkflowRunAsOwner = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: WorkflowRunAsOwnerType,
-  }),
-).annotate({ identifier: "WorkflowRunAsOwner" }) as any as S.Schema<WorkflowRunAsOwner>;
+export const WorkflowRunAsOwner = CaseEmpty as any as S.Schema<WorkflowRunAsOwner>;
 
 /** The service account run-as type. */
 export type WorkflowRunAsServiceAccountType = "service_account";
@@ -63846,14 +62805,8 @@ export interface WorkflowRunAsServiceAccount {
   id: string;
   type: WorkflowRunAsServiceAccountType;
 }
-export const WorkflowRunAsServiceAccount = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: WorkflowRunAsServiceAccountType,
-  }),
-).annotate({
-  identifier: "WorkflowRunAsServiceAccount",
-}) as any as S.Schema<WorkflowRunAsServiceAccount>;
+export const WorkflowRunAsServiceAccount =
+  NullableUserRelationshipData as any as S.Schema<WorkflowRunAsServiceAccount>;
 
 /** The initiator run-as type. */
 export type WorkflowRunAsInitiatorType = "initiator";
@@ -63863,11 +62816,7 @@ export const WorkflowRunAsInitiatorType = S.String;
 export interface WorkflowRunAsInitiator {
   type: WorkflowRunAsInitiatorType;
 }
-export const WorkflowRunAsInitiator = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: WorkflowRunAsInitiatorType,
-  }),
-).annotate({ identifier: "WorkflowRunAsInitiator" }) as any as S.Schema<WorkflowRunAsInitiator>;
+export const WorkflowRunAsInitiator = CaseEmpty as any as S.Schema<WorkflowRunAsInitiator>;
 
 /** Identity used to run the workflow. */
 export type WorkflowRunAs =
@@ -65127,14 +64076,8 @@ export interface WorkflowUserRelationshipData {
   id: string;
   type: WorkflowUserRelationshipType;
 }
-export const WorkflowUserRelationshipData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: WorkflowUserRelationshipType,
-  }),
-).annotate({
-  identifier: "WorkflowUserRelationshipData",
-}) as any as S.Schema<WorkflowUserRelationshipData>;
+export const WorkflowUserRelationshipData =
+  NullableUserRelationshipData as any as S.Schema<WorkflowUserRelationshipData>;
 
 /** The definition of `WorkflowUserRelationship` object. */
 export interface WorkflowUserRelationship {
@@ -65611,20 +64554,13 @@ export interface DeleteAppsRequestDataItems {
   id: string;
   type: AppDefinitionType | (string & {});
 }
-export const DeleteAppsRequestDataItems = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: AppDefinitionType,
-  }),
-).annotate({
-  identifier: "DeleteAppsRequestDataItems",
-}) as any as S.Schema<DeleteAppsRequestDataItems>;
+export const DeleteAppsRequestDataItems =
+  NullableUserRelationshipData as any as S.Schema<DeleteAppsRequestDataItems>;
 
 /** An array of objects containing the IDs of the apps to delete. */
 export type DeleteAppsRequestDataList = Array<DeleteAppsRequestDataItems>;
-export const DeleteAppsRequestDataList = /*@__PURE__*/ S.Array(
-  DeleteAppsRequestDataItems,
-) as any as S.Schema<DeleteAppsRequestDataList>;
+export const DeleteAppsRequestDataList =
+  RelationshipToOrganizationsDataList as any as S.Schema<DeleteAppsRequestDataList>;
 
 export interface DeleteAppsRequest {
   /** An array of objects containing the IDs of the apps to delete. */
@@ -66689,13 +65625,8 @@ export const DeleteDatastoreItemRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteAppsDatastoreItemResponse {
   data?: DeleteAppsDatastoreItemResponseData;
 }
-export const DeleteAppsDatastoreItemResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: S.optional(DeleteAppsDatastoreItemResponseData),
-  }),
-).annotate({
-  identifier: "DeleteAppsDatastoreItemResponse",
-}) as any as S.Schema<DeleteAppsDatastoreItemResponse>;
+export const DeleteAppsDatastoreItemResponse =
+  CreateAppsDatastoreResponse as any as S.Schema<DeleteAppsDatastoreItemResponse>;
 
 export interface DeleteDegradationRequest {
   /** The ID of the status page. */
@@ -67039,22 +65970,13 @@ export interface DeleteFormData {
   id: string;
   type: FormType;
 }
-export const DeleteFormData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: FormType,
-  }),
-).annotate({ identifier: "DeleteFormData" }) as any as S.Schema<DeleteFormData>;
+export const DeleteFormData = ProjectRelationshipData as any as S.Schema<DeleteFormData>;
 
 /** A response returned after deleting a form. */
 export interface DeleteFormResponse {
   data?: DeleteFormData;
 }
-export const DeleteFormResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: S.optional(DeleteFormData),
-  }),
-).annotate({ identifier: "DeleteFormResponse" }) as any as S.Schema<DeleteFormResponse>;
+export const DeleteFormResponse = CreateAppResponse as any as S.Schema<DeleteFormResponse>;
 
 export interface DeleteGcpScanOptionsRequest {
   /** The GCP project ID. */
@@ -70556,20 +69478,13 @@ export interface TeamConnectionDeleteRequestDataItem {
   id: string;
   type: TeamConnectionType | (string & {});
 }
-export const TeamConnectionDeleteRequestDataItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: TeamConnectionType,
-  }),
-).annotate({
-  identifier: "TeamConnectionDeleteRequestDataItem",
-}) as any as S.Schema<TeamConnectionDeleteRequestDataItem>;
+export const TeamConnectionDeleteRequestDataItem =
+  NullableUserRelationshipData as any as S.Schema<TeamConnectionDeleteRequestDataItem>;
 
 /** Array of team connection IDs to delete. */
 export type DeleteTeamConnectionsRequestDataList = Array<TeamConnectionDeleteRequestDataItem>;
-export const DeleteTeamConnectionsRequestDataList = /*@__PURE__*/ S.Array(
-  TeamConnectionDeleteRequestDataItem,
-) as any as S.Schema<DeleteTeamConnectionsRequestDataList>;
+export const DeleteTeamConnectionsRequestDataList =
+  RelationshipToOrganizationsDataList as any as S.Schema<DeleteTeamConnectionsRequestDataList>;
 
 export interface DeleteTeamConnectionsRequest {
   /** Array of team connection IDs to delete. */
@@ -71500,26 +70415,15 @@ export interface DegradationUpdateDataRelationshipsDegradationData {
   id: string;
   type: PatchDegradationRequestDataType;
 }
-export const DegradationUpdateDataRelationshipsDegradationData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: PatchDegradationRequestDataType,
-  }),
-).annotate({
-  identifier: "DegradationUpdateDataRelationshipsDegradationData",
-}) as any as S.Schema<DegradationUpdateDataRelationshipsDegradationData>;
+export const DegradationUpdateDataRelationshipsDegradationData =
+  NullableUserRelationshipData as any as S.Schema<DegradationUpdateDataRelationshipsDegradationData>;
 
 /** The degradation relationship of a degradation update. */
 export interface DegradationUpdateDataRelationshipsDegradation {
   data: DegradationUpdateDataRelationshipsDegradationData;
 }
-export const DegradationUpdateDataRelationshipsDegradation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: DegradationUpdateDataRelationshipsDegradationData,
-  }),
-).annotate({
-  identifier: "DegradationUpdateDataRelationshipsDegradation",
-}) as any as S.Schema<DegradationUpdateDataRelationshipsDegradation>;
+export const DegradationUpdateDataRelationshipsDegradation =
+  TeamHierarchyLinkCreateTeamRelationship as any as S.Schema<DegradationUpdateDataRelationshipsDegradation>;
 
 /** The status page linked to a degradation update. */
 export type DegradationUpdateDataRelationshipsStatusPageData =
@@ -72950,26 +71854,15 @@ export interface WebhooksOAuth2ClientCredentialsRelationshipData {
   id?: string;
   type?: WebhooksOAuth2ClientCredentialsType;
 }
-export const WebhooksOAuth2ClientCredentialsRelationshipData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    type: S.optional(WebhooksOAuth2ClientCredentialsType),
-  }),
-).annotate({
-  identifier: "WebhooksOAuth2ClientCredentialsRelationshipData",
-}) as any as S.Schema<WebhooksOAuth2ClientCredentialsRelationshipData>;
+export const WebhooksOAuth2ClientCredentialsRelationshipData =
+  RelationshipToPermissionData as any as S.Schema<WebhooksOAuth2ClientCredentialsRelationshipData>;
 
 /** Relationship pointing to the OAuth2 client credentials resource for this auth method. */
 export interface WebhooksOAuth2ClientCredentialsRelationship {
   data?: WebhooksOAuth2ClientCredentialsRelationshipData;
 }
-export const WebhooksOAuth2ClientCredentialsRelationship = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: S.optional(WebhooksOAuth2ClientCredentialsRelationshipData),
-  }),
-).annotate({
-  identifier: "WebhooksOAuth2ClientCredentialsRelationship",
-}) as any as S.Schema<WebhooksOAuth2ClientCredentialsRelationship>;
+export const WebhooksOAuth2ClientCredentialsRelationship =
+  SensitiveDataScannerConfigurationData as any as S.Schema<WebhooksOAuth2ClientCredentialsRelationship>;
 
 /** Relationships of a webhooks auth method to its protocol-specific resource. */
 export interface WebhooksAuthMethodRelationships {
@@ -73351,24 +72244,8 @@ export interface RetentionFilterAllAttributes {
   /** Sample rate to apply to traces containing spans going through this retention filter. A value of 1.0 keeps all traces with spans matching the query. */
   trace_rate?: number;
 }
-export const RetentionFilterAllAttributes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    created_at: S.optional(S.Number),
-    created_by: S.optional(S.String),
-    editable: S.optional(S.Boolean),
-    enabled: S.optional(S.Boolean),
-    execution_order: S.optional(S.Number),
-    filter: S.optional(SpansFilter),
-    filter_type: S.optional(RetentionFilterAllType),
-    modified_at: S.optional(S.Number),
-    modified_by: S.optional(S.String),
-    name: S.optional(S.String),
-    rate: S.optional(S.Number),
-    trace_rate: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RetentionFilterAllAttributes",
-}) as any as S.Schema<RetentionFilterAllAttributes>;
+export const RetentionFilterAllAttributes =
+  RetentionFilterAttributes as any as S.Schema<RetentionFilterAllAttributes>;
 
 /** The definition of the retention filter. */
 export interface RetentionFilterAll {
@@ -73377,13 +72254,7 @@ export interface RetentionFilterAll {
   id: string;
   type: ApmRetentionFilterType;
 }
-export const RetentionFilterAll = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attributes: RetentionFilterAllAttributes,
-    id: S.String,
-    type: ApmRetentionFilterType,
-  }),
-).annotate({ identifier: "RetentionFilterAll" }) as any as S.Schema<RetentionFilterAll>;
+export const RetentionFilterAll = RetentionFilter as any as S.Schema<RetentionFilterAll>;
 
 /** The retention filters definition. */
 export interface RetentionFilterResponse {
@@ -73572,14 +72443,8 @@ export interface DeploymentRelationshipData {
   id?: string;
   type?: AppDeploymentType;
 }
-export const DeploymentRelationshipData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    type: S.optional(AppDeploymentType),
-  }),
-).annotate({
-  identifier: "DeploymentRelationshipData",
-}) as any as S.Schema<DeploymentRelationshipData>;
+export const DeploymentRelationshipData =
+  RelationshipToPermissionData as any as S.Schema<DeploymentRelationshipData>;
 
 /** Information pointing to the app's publication status. */
 export interface DeploymentRelationship {
@@ -73647,12 +72512,7 @@ export interface AppKeyRegistrationData {
   id?: string;
   type: AppKeyRegistrationDataType;
 }
-export const AppKeyRegistrationData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    type: AppKeyRegistrationDataType,
-  }),
-).annotate({ identifier: "AppKeyRegistrationData" }) as any as S.Schema<AppKeyRegistrationData>;
+export const AppKeyRegistrationData = SessionIdData as any as S.Schema<AppKeyRegistrationData>;
 
 /** The response object after getting an app key registration. */
 export interface GetAppKeyRegistrationResponse {
@@ -76252,13 +75112,8 @@ export const SecurityMonitoringContentPackAuditDetailsType = S.String;
 export interface SecurityMonitoringContentPackAuditDetails {
   type: SecurityMonitoringContentPackAuditDetailsType;
 }
-export const SecurityMonitoringContentPackAuditDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: SecurityMonitoringContentPackAuditDetailsType,
-  }),
-).annotate({
-  identifier: "SecurityMonitoringContentPackAuditDetails",
-}) as any as S.Schema<SecurityMonitoringContentPackAuditDetails>;
+export const SecurityMonitoringContentPackAuditDetails =
+  CustomDestinationResponseHttpDestinationAuthBasic as any as S.Schema<SecurityMonitoringContentPackAuditDetails>;
 
 /** Type for Application Security content pack details. */
 export type SecurityMonitoringContentPackAppSecDetailsType = "appsec";
@@ -76268,13 +75123,8 @@ export const SecurityMonitoringContentPackAppSecDetailsType = S.String;
 export interface SecurityMonitoringContentPackAppSecDetails {
   type: SecurityMonitoringContentPackAppSecDetailsType;
 }
-export const SecurityMonitoringContentPackAppSecDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: SecurityMonitoringContentPackAppSecDetailsType,
-  }),
-).annotate({
-  identifier: "SecurityMonitoringContentPackAppSecDetails",
-}) as any as S.Schema<SecurityMonitoringContentPackAppSecDetails>;
+export const SecurityMonitoringContentPackAppSecDetails =
+  CustomDestinationResponseHttpDestinationAuthBasic as any as S.Schema<SecurityMonitoringContentPackAppSecDetails>;
 
 /** Type for vulnerability content pack details. */
 export type SecurityMonitoringContentPackVulnerabilityDetailsType = "vulnerability";
@@ -76287,16 +75137,8 @@ export interface SecurityMonitoringContentPackVulnerabilityDetails {
   integration_installed_status: SecurityMonitoringContentPackIntegrationStatus;
   type: SecurityMonitoringContentPackVulnerabilityDetailsType;
 }
-export const SecurityMonitoringContentPackVulnerabilityDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cp_activation: SecurityMonitoringContentPackActivation,
-    data_last_seen: SecurityMonitoringContentPackTimestampBucket,
-    integration_installed_status: SecurityMonitoringContentPackIntegrationStatus,
-    type: SecurityMonitoringContentPackVulnerabilityDetailsType,
-  }),
-).annotate({
-  identifier: "SecurityMonitoringContentPackVulnerabilityDetails",
-}) as any as S.Schema<SecurityMonitoringContentPackVulnerabilityDetails>;
+export const SecurityMonitoringContentPackVulnerabilityDetails =
+  SecurityMonitoringContentPackThreatIntelDetails as any as S.Schema<SecurityMonitoringContentPackVulnerabilityDetails>;
 
 /** Type for onboarding content pack details. */
 export type SecurityMonitoringContentPackOnboardingDetailsType = "onboarding";
@@ -77022,29 +75864,19 @@ export interface CostCurrency {
   id: string;
   type: CostCurrencyType;
 }
-export const CostCurrency = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: CostCurrencyType,
-  }),
-).annotate({ identifier: "CostCurrency" }) as any as S.Schema<CostCurrency>;
+export const CostCurrency = ProjectRelationshipData as any as S.Schema<CostCurrency>;
 
 /** The dominant billing currency. Empty when no data is available, or a single entry otherwise. */
 export type CostCurrencyResponseDataList = Array<CostCurrency>;
-export const CostCurrencyResponseDataList = /*@__PURE__*/ S.Array(
-  CostCurrency,
-) as any as S.Schema<CostCurrencyResponseDataList>;
+export const CostCurrencyResponseDataList =
+  RelationshipToUsersDataList as any as S.Schema<CostCurrencyResponseDataList>;
 
 /** The dominant Cloud Cost Management billing currency for the requested period. The `data` array contains at most one entry, and is empty when no currency data is available. */
 export interface CostCurrencyResponse {
   /** The dominant billing currency. Empty when no data is available, or a single entry otherwise. */
   data: CostCurrencyResponseDataList;
 }
-export const CostCurrencyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: CostCurrencyResponseDataList,
-  }),
-).annotate({ identifier: "CostCurrencyResponse" }) as any as S.Schema<CostCurrencyResponse>;
+export const CostCurrencyResponse = RelationshipToUsers as any as S.Schema<CostCurrencyResponse>;
 
 export interface GetCriticalAssetsAffectingRuleRequest {
   /** The ID of the rule. */
@@ -79808,14 +78640,8 @@ export interface ChangeEventAttributesChangedResource {
   name?: string;
   type?: ChangeEventAttributesChangedResourceType;
 }
-export const ChangeEventAttributesChangedResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    type: S.optional(ChangeEventAttributesChangedResourceType),
-  }),
-).annotate({
-  identifier: "ChangeEventAttributesChangedResource",
-}) as any as S.Schema<ChangeEventAttributesChangedResource>;
+export const ChangeEventAttributesChangedResource =
+  ChangeEventAttributesAuthor as any as S.Schema<ChangeEventAttributesChangedResource>;
 
 /** Event category identifying the type of event. */
 export type EventSystemAttributesCategory = "change" | "alert";
@@ -79856,14 +78682,8 @@ export interface ChangeEventAttributesImpactedResourcesItem {
   name?: string;
   type?: ChangeEventAttributesImpactedResourcesItemType;
 }
-export const ChangeEventAttributesImpactedResourcesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    type: S.optional(ChangeEventAttributesImpactedResourcesItemType),
-  }),
-).annotate({
-  identifier: "ChangeEventAttributesImpactedResourcesItem",
-}) as any as S.Schema<ChangeEventAttributesImpactedResourcesItem>;
+export const ChangeEventAttributesImpactedResourcesItem =
+  ChangeEventAttributesAuthor as any as S.Schema<ChangeEventAttributesImpactedResourcesItem>;
 
 /** A list of resources impacted by this change. */
 export type ChangeEventAttributesImpactedResourcesList =
@@ -82732,26 +81552,15 @@ export interface GoogleChatOrganizationRelationshipsDelegatedUserData {
   id?: string;
   type?: GoogleChatDelegatedUserType;
 }
-export const GoogleChatOrganizationRelationshipsDelegatedUserData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    type: S.optional(GoogleChatDelegatedUserType),
-  }),
-).annotate({
-  identifier: "GoogleChatOrganizationRelationshipsDelegatedUserData",
-}) as any as S.Schema<GoogleChatOrganizationRelationshipsDelegatedUserData>;
+export const GoogleChatOrganizationRelationshipsDelegatedUserData =
+  RelationshipToPermissionData as any as S.Schema<GoogleChatOrganizationRelationshipsDelegatedUserData>;
 
 /** The delegated user relationship. */
 export interface GoogleChatOrganizationRelationshipsDelegatedUser {
   data?: GoogleChatOrganizationRelationshipsDelegatedUserData;
 }
-export const GoogleChatOrganizationRelationshipsDelegatedUser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: S.optional(GoogleChatOrganizationRelationshipsDelegatedUserData),
-  }),
-).annotate({
-  identifier: "GoogleChatOrganizationRelationshipsDelegatedUser",
-}) as any as S.Schema<GoogleChatOrganizationRelationshipsDelegatedUser>;
+export const GoogleChatOrganizationRelationshipsDelegatedUser =
+  SensitiveDataScannerConfigurationData as any as S.Schema<GoogleChatOrganizationRelationshipsDelegatedUser>;
 
 /** Google Chat organization relationships. */
 export interface GoogleChatOrganizationRelationships {
@@ -83758,9 +82567,8 @@ export type IncidentRelatedObject = "users" | "attachments";
 export const IncidentRelatedObject = S.String;
 
 export type GetIncidentRequestIncludeList = Array<IncidentRelatedObject | (string & {})>;
-export const GetIncidentRequestIncludeList = /*@__PURE__*/ S.Array(
-  IncidentRelatedObject,
-) as any as S.Schema<GetIncidentRequestIncludeList>;
+export const GetIncidentRequestIncludeList =
+  SyntheticsDowntimeWeekdays as any as S.Schema<GetIncidentRequestIncludeList>;
 
 export interface GetIncidentRequest {
   /** The UUID of the incident. */
@@ -84834,9 +83642,8 @@ export type GetIssueIncludeQueryParameterItem = "assignee" | "case" | "team_owne
 export const GetIssueIncludeQueryParameterItem = S.String;
 
 export type GetIssueRequestIncludeList = Array<GetIssueIncludeQueryParameterItem | (string & {})>;
-export const GetIssueRequestIncludeList = /*@__PURE__*/ S.Array(
-  GetIssueIncludeQueryParameterItem,
-) as any as S.Schema<GetIssueRequestIncludeList>;
+export const GetIssueRequestIncludeList =
+  SyntheticsDowntimeWeekdays as any as S.Schema<GetIssueRequestIncludeList>;
 
 export interface GetIssueRequest {
   /** The identifier of the issue. */
@@ -84884,9 +83691,8 @@ export const IssueLanguage = S.String;
 
 /** Array of programming languages associated with the issue. */
 export type IssueAttributesLanguagesList = Array<IssueLanguage>;
-export const IssueAttributesLanguagesList = /*@__PURE__*/ S.Array(
-  IssueLanguage,
-) as any as S.Schema<IssueAttributesLanguagesList>;
+export const IssueAttributesLanguagesList =
+  SyntheticsDowntimeWeekdays as any as S.Schema<IssueAttributesLanguagesList>;
 
 /** Platform associated with the issue. */
 export type IssuePlatform =
@@ -84978,24 +83784,14 @@ export interface IssueUserReference {
   id: string;
   type: IssueUserType;
 }
-export const IssueUserReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: IssueUserType,
-  }),
-).annotate({ identifier: "IssueUserReference" }) as any as S.Schema<IssueUserReference>;
+export const IssueUserReference = ProjectRelationshipData as any as S.Schema<IssueUserReference>;
 
 /** Relationship between the issue and assignee. */
 export interface IssueAssigneeRelationship {
   data: IssueUserReference;
 }
-export const IssueAssigneeRelationship = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: IssueUserReference,
-  }),
-).annotate({
-  identifier: "IssueAssigneeRelationship",
-}) as any as S.Schema<IssueAssigneeRelationship>;
+export const IssueAssigneeRelationship =
+  ConfiguredScheduleTargetRelationshipsSchedule as any as S.Schema<IssueAssigneeRelationship>;
 
 /** Type of the object. */
 export type IssueCaseResourceType = "case";
@@ -85007,22 +83803,13 @@ export interface IssueCaseReference {
   id: string;
   type: IssueCaseResourceType;
 }
-export const IssueCaseReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: IssueCaseResourceType,
-  }),
-).annotate({ identifier: "IssueCaseReference" }) as any as S.Schema<IssueCaseReference>;
+export const IssueCaseReference = ProjectRelationshipData as any as S.Schema<IssueCaseReference>;
 
 /** Relationship between the issue and case. */
 export interface IssueCaseRelationship {
   data: IssueCaseReference;
 }
-export const IssueCaseRelationship = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: IssueCaseReference,
-  }),
-).annotate({ identifier: "IssueCaseRelationship" }) as any as S.Schema<IssueCaseRelationship>;
+export const IssueCaseRelationship = ProjectRelationship as any as S.Schema<IssueCaseRelationship>;
 
 /** Type of the object. */
 export type IssueTeamType = "team";
@@ -85034,18 +83821,12 @@ export interface IssueTeamReference {
   id: string;
   type: IssueTeamType;
 }
-export const IssueTeamReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: IssueTeamType,
-  }),
-).annotate({ identifier: "IssueTeamReference" }) as any as S.Schema<IssueTeamReference>;
+export const IssueTeamReference = ProjectRelationshipData as any as S.Schema<IssueTeamReference>;
 
 /** Array of teams that are owners of the issue. */
 export type IssueTeamOwnersRelationshipDataList = Array<IssueTeamReference>;
-export const IssueTeamOwnersRelationshipDataList = /*@__PURE__*/ S.Array(
-  IssueTeamReference,
-) as any as S.Schema<IssueTeamOwnersRelationshipDataList>;
+export const IssueTeamOwnersRelationshipDataList =
+  RelationshipToUsersDataList as any as S.Schema<IssueTeamOwnersRelationshipDataList>;
 
 /** Relationship between the issue and teams. */
 export interface IssueTeamOwnersRelationship {
@@ -87890,34 +86671,22 @@ export interface TeamRoutingRulesDataRelationshipsRulesDataItems {
   id: string;
   type: TeamRoutingRulesDataRelationshipsRulesDataItemsType;
 }
-export const TeamRoutingRulesDataRelationshipsRulesDataItems = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: TeamRoutingRulesDataRelationshipsRulesDataItemsType,
-  }),
-).annotate({
-  identifier: "TeamRoutingRulesDataRelationshipsRulesDataItems",
-}) as any as S.Schema<TeamRoutingRulesDataRelationshipsRulesDataItems>;
+export const TeamRoutingRulesDataRelationshipsRulesDataItems =
+  NullableUserRelationshipData as any as S.Schema<TeamRoutingRulesDataRelationshipsRulesDataItems>;
 
 /** An array of references to the routing rules associated with this team. */
 export type TeamRoutingRulesDataRelationshipsRulesDataList =
   Array<TeamRoutingRulesDataRelationshipsRulesDataItems>;
-export const TeamRoutingRulesDataRelationshipsRulesDataList = /*@__PURE__*/ S.Array(
-  TeamRoutingRulesDataRelationshipsRulesDataItems,
-) as any as S.Schema<TeamRoutingRulesDataRelationshipsRulesDataList>;
+export const TeamRoutingRulesDataRelationshipsRulesDataList =
+  RelationshipToOrganizationsDataList as any as S.Schema<TeamRoutingRulesDataRelationshipsRulesDataList>;
 
 /** Holds references to a set of routing rules in a relationship. */
 export interface TeamRoutingRulesDataRelationshipsRules {
   /** An array of references to the routing rules associated with this team. */
   data?: TeamRoutingRulesDataRelationshipsRulesDataList;
 }
-export const TeamRoutingRulesDataRelationshipsRules = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: S.optional(TeamRoutingRulesDataRelationshipsRulesDataList),
-  }),
-).annotate({
-  identifier: "TeamRoutingRulesDataRelationshipsRules",
-}) as any as S.Schema<TeamRoutingRulesDataRelationshipsRules>;
+export const TeamRoutingRulesDataRelationshipsRules =
+  BatchRowsQueryResponseDataRelationshipsRows as any as S.Schema<TeamRoutingRulesDataRelationshipsRules>;
 
 /** Specifies relationships for team routing rules, including rule references. */
 export interface TeamRoutingRulesDataRelationships {
@@ -88003,14 +86772,8 @@ export interface TriggerWorkflowAutomationAction {
   handle: string;
   type: TriggerWorkflowAutomationActionType;
 }
-export const TriggerWorkflowAutomationAction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    handle: S.String,
-    type: TriggerWorkflowAutomationActionType,
-  }),
-).annotate({
-  identifier: "TriggerWorkflowAutomationAction",
-}) as any as S.Schema<TriggerWorkflowAutomationAction>;
+export const TriggerWorkflowAutomationAction =
+  ControlNotificationTarget as any as S.Schema<TriggerWorkflowAutomationAction>;
 
 /** The list of support hours time windows. */
 export type RoutingRuleEscalationPolicyActionSupportHoursRestrictionsList = Array<TimeRestriction>;
@@ -88124,14 +86887,8 @@ export interface RoutingRuleRelationshipsPolicyData {
   id: string;
   type: RoutingRuleRelationshipsPolicyDataType;
 }
-export const RoutingRuleRelationshipsPolicyData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: RoutingRuleRelationshipsPolicyDataType,
-  }),
-).annotate({
-  identifier: "RoutingRuleRelationshipsPolicyData",
-}) as any as S.Schema<RoutingRuleRelationshipsPolicyData>;
+export const RoutingRuleRelationshipsPolicyData =
+  NullableUserRelationshipData as any as S.Schema<RoutingRuleRelationshipsPolicyData>;
 
 /** Defines the relationship that links a routing rule to a policy. */
 export interface RoutingRuleRelationshipsPolicy {
@@ -88348,26 +87105,15 @@ export interface OrgAuthorizedClientRelationshipOAuth2ClientData {
   id: string;
   type: OrgAuthorizedClientRelationshipOAuth2ClientDataType;
 }
-export const OrgAuthorizedClientRelationshipOAuth2ClientData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: OrgAuthorizedClientRelationshipOAuth2ClientDataType,
-  }),
-).annotate({
-  identifier: "OrgAuthorizedClientRelationshipOAuth2ClientData",
-}) as any as S.Schema<OrgAuthorizedClientRelationshipOAuth2ClientData>;
+export const OrgAuthorizedClientRelationshipOAuth2ClientData =
+  NullableUserRelationshipData as any as S.Schema<OrgAuthorizedClientRelationshipOAuth2ClientData>;
 
 /** Relationship to the OAuth2 client for this org authorized client. */
 export interface OrgAuthorizedClientRelationshipOAuth2Client {
   data: OrgAuthorizedClientRelationshipOAuth2ClientData;
 }
-export const OrgAuthorizedClientRelationshipOAuth2Client = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: OrgAuthorizedClientRelationshipOAuth2ClientData,
-  }),
-).annotate({
-  identifier: "OrgAuthorizedClientRelationshipOAuth2Client",
-}) as any as S.Schema<OrgAuthorizedClientRelationshipOAuth2Client>;
+export const OrgAuthorizedClientRelationshipOAuth2Client =
+  TeamHierarchyLinkCreateTeamRelationship as any as S.Schema<OrgAuthorizedClientRelationshipOAuth2Client>;
 
 /** User authorized client resource type. */
 export type OrgAuthorizedClientRelationshipUserAuthorizedClientsDataType =
@@ -88380,15 +87126,8 @@ export interface OrgAuthorizedClientRelationshipUserAuthorizedClientsData {
   id: string;
   type: OrgAuthorizedClientRelationshipUserAuthorizedClientsDataType;
 }
-export const OrgAuthorizedClientRelationshipUserAuthorizedClientsData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      type: OrgAuthorizedClientRelationshipUserAuthorizedClientsDataType,
-    }),
-).annotate({
-  identifier: "OrgAuthorizedClientRelationshipUserAuthorizedClientsData",
-}) as any as S.Schema<OrgAuthorizedClientRelationshipUserAuthorizedClientsData>;
+export const OrgAuthorizedClientRelationshipUserAuthorizedClientsData =
+  StatusPagesComponentDataRelationshipsLastModifiedByUserData as any as S.Schema<OrgAuthorizedClientRelationshipUserAuthorizedClientsData>;
 
 /** List of user authorized client relationship data objects. */
 export type OrgAuthorizedClientRelationshipUserAuthorizedClientsDataList =
@@ -89222,9 +87961,8 @@ export const PersonalAccessTokensIncludeQueryParameterItem = S.String;
 export type GetPersonalAccessTokenRequestIncludeList = Array<
   PersonalAccessTokensIncludeQueryParameterItem | (string & {})
 >;
-export const GetPersonalAccessTokenRequestIncludeList = /*@__PURE__*/ S.Array(
-  PersonalAccessTokensIncludeQueryParameterItem,
-) as any as S.Schema<GetPersonalAccessTokenRequestIncludeList>;
+export const GetPersonalAccessTokenRequestIncludeList =
+  SyntheticsDowntimeWeekdays as any as S.Schema<GetPersonalAccessTokenRequestIncludeList>;
 
 export interface GetPersonalAccessTokenRequest {
   /** The ID of the access token. */
@@ -89283,24 +88021,15 @@ export interface RelationshipToLeakedKeyData {
   id: string;
   type: LeakedKeyType;
 }
-export const RelationshipToLeakedKeyData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: LeakedKeyType,
-  }),
-).annotate({
-  identifier: "RelationshipToLeakedKeyData",
-}) as any as S.Schema<RelationshipToLeakedKeyData>;
+export const RelationshipToLeakedKeyData =
+  NullableUserRelationshipData as any as S.Schema<RelationshipToLeakedKeyData>;
 
 /** Relationship to the leak the access token was found in. `data` is null when the access token has not been detected as leaked. */
 export interface RelationshipToLeakedKey {
   data: RelationshipToLeakedKeyData | null;
 }
-export const RelationshipToLeakedKey = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: S.NullOr(RelationshipToLeakedKeyData),
-  }),
-).annotate({ identifier: "RelationshipToLeakedKey" }) as any as S.Schema<RelationshipToLeakedKey>;
+export const RelationshipToLeakedKey =
+  NullableUserRelationship as any as S.Schema<RelationshipToLeakedKey>;
 
 /** Resources related to the access token. */
 export interface PersonalAccessTokenRelationships {
@@ -89728,26 +88457,15 @@ export interface ReportScheduleListResourceRelationshipData {
   id: string;
   type: ReportScheduleIncludedResourceType;
 }
-export const ReportScheduleListResourceRelationshipData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: ReportScheduleIncludedResourceType,
-  }),
-).annotate({
-  identifier: "ReportScheduleListResourceRelationshipData",
-}) as any as S.Schema<ReportScheduleListResourceRelationshipData>;
+export const ReportScheduleListResourceRelationshipData =
+  NullableUserRelationshipData as any as S.Schema<ReportScheduleListResourceRelationshipData>;
 
 /** Relationship to the report target resource. */
 export interface ReportScheduleListResourceRelationship {
   data: ReportScheduleListResourceRelationshipData;
 }
-export const ReportScheduleListResourceRelationship = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: ReportScheduleListResourceRelationshipData,
-  }),
-).annotate({
-  identifier: "ReportScheduleListResourceRelationship",
-}) as any as S.Schema<ReportScheduleListResourceRelationship>;
+export const ReportScheduleListResourceRelationship =
+  TeamHierarchyLinkCreateTeamRelationship as any as S.Schema<ReportScheduleListResourceRelationship>;
 
 /** Relationships for a report schedule in a list response. */
 export interface ReportScheduleListResponseRelationships {
@@ -90678,9 +89396,8 @@ export const RumSdkConfigTracingUrlPropagatorType = S.String;
 export type RumSdkConfigTracingUrlConfigPropagatorTypesList = Array<
   RumSdkConfigTracingUrlPropagatorType | (string & {})
 >;
-export const RumSdkConfigTracingUrlConfigPropagatorTypesList = /*@__PURE__*/ S.Array(
-  RumSdkConfigTracingUrlPropagatorType,
-) as any as S.Schema<RumSdkConfigTracingUrlConfigPropagatorTypesList>;
+export const RumSdkConfigTracingUrlConfigPropagatorTypesList =
+  SyntheticsDowntimeWeekdays as any as S.Schema<RumSdkConfigTracingUrlConfigPropagatorTypesList>;
 
 /** Configuration for a URL that should have distributed tracing enabled. */
 export interface RumSdkConfigTracingUrlConfig {
@@ -91409,22 +90126,14 @@ export interface ScheduleOnCallRespondersDataRelationshipsRespondersDataItems {
   id: string;
   type: ScheduleOnCallRespondersDataRelationshipsRespondersDataItemsType;
 }
-export const ScheduleOnCallRespondersDataRelationshipsRespondersDataItems = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      type: ScheduleOnCallRespondersDataRelationshipsRespondersDataItemsType,
-    }),
-).annotate({
-  identifier: "ScheduleOnCallRespondersDataRelationshipsRespondersDataItems",
-}) as any as S.Schema<ScheduleOnCallRespondersDataRelationshipsRespondersDataItems>;
+export const ScheduleOnCallRespondersDataRelationshipsRespondersDataItems =
+  StatusPagesComponentDataRelationshipsLastModifiedByUserData as any as S.Schema<ScheduleOnCallRespondersDataRelationshipsRespondersDataItems>;
 
 /** Array of references to the responder groups included in the response. */
 export type ScheduleOnCallRespondersDataRelationshipsRespondersDataList =
   Array<ScheduleOnCallRespondersDataRelationshipsRespondersDataItems>;
-export const ScheduleOnCallRespondersDataRelationshipsRespondersDataList = /*@__PURE__*/ S.Array(
-  ScheduleOnCallRespondersDataRelationshipsRespondersDataItems,
-) as any as S.Schema<ScheduleOnCallRespondersDataRelationshipsRespondersDataList>;
+export const ScheduleOnCallRespondersDataRelationshipsRespondersDataList =
+  OrgAuthorizedClientRelationshipUserAuthorizedClientsDataList as any as S.Schema<ScheduleOnCallRespondersDataRelationshipsRespondersDataList>;
 
 /** Defines the list of per-position (previous, current, next) responder groups for the schedule. */
 export interface ScheduleOnCallRespondersDataRelationshipsResponders {
@@ -91449,14 +90158,8 @@ export interface ScheduleOnCallRespondersDataRelationshipsScheduleData {
   id: string;
   type: ScheduleOnCallRespondersDataRelationshipsScheduleDataType;
 }
-export const ScheduleOnCallRespondersDataRelationshipsScheduleData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: ScheduleOnCallRespondersDataRelationshipsScheduleDataType,
-  }),
-).annotate({
-  identifier: "ScheduleOnCallRespondersDataRelationshipsScheduleData",
-}) as any as S.Schema<ScheduleOnCallRespondersDataRelationshipsScheduleData>;
+export const ScheduleOnCallRespondersDataRelationshipsScheduleData =
+  NullableUserRelationshipData as any as S.Schema<ScheduleOnCallRespondersDataRelationshipsScheduleData>;
 
 /** Defines the relationship to the schedule this on-call responders lookup was performed for. */
 export interface ScheduleOnCallRespondersDataRelationshipsSchedule {
@@ -91524,34 +90227,22 @@ export interface ScheduleOnCallResponderDataRelationshipsShiftsDataItems {
   id: string;
   type: ScheduleOnCallResponderDataRelationshipsShiftsDataItemsType;
 }
-export const ScheduleOnCallResponderDataRelationshipsShiftsDataItems = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: ScheduleOnCallResponderDataRelationshipsShiftsDataItemsType,
-  }),
-).annotate({
-  identifier: "ScheduleOnCallResponderDataRelationshipsShiftsDataItems",
-}) as any as S.Schema<ScheduleOnCallResponderDataRelationshipsShiftsDataItems>;
+export const ScheduleOnCallResponderDataRelationshipsShiftsDataItems =
+  NullableUserRelationshipData as any as S.Schema<ScheduleOnCallResponderDataRelationshipsShiftsDataItems>;
 
 /** Array of references to the shifts included in the response. */
 export type ScheduleOnCallResponderDataRelationshipsShiftsDataList =
   Array<ScheduleOnCallResponderDataRelationshipsShiftsDataItems>;
-export const ScheduleOnCallResponderDataRelationshipsShiftsDataList = /*@__PURE__*/ S.Array(
-  ScheduleOnCallResponderDataRelationshipsShiftsDataItems,
-) as any as S.Schema<ScheduleOnCallResponderDataRelationshipsShiftsDataList>;
+export const ScheduleOnCallResponderDataRelationshipsShiftsDataList =
+  RelationshipToOrganizationsDataList as any as S.Schema<ScheduleOnCallResponderDataRelationshipsShiftsDataList>;
 
 /** Defines the list of shifts satisfying this responder group's position. Multiple shifts occur when a schedule has multiple concurrent on-call responders at that position. */
 export interface ScheduleOnCallResponderDataRelationshipsShifts {
   /** Array of references to the shifts included in the response. */
   data?: ScheduleOnCallResponderDataRelationshipsShiftsDataList;
 }
-export const ScheduleOnCallResponderDataRelationshipsShifts = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: S.optional(ScheduleOnCallResponderDataRelationshipsShiftsDataList),
-  }),
-).annotate({
-  identifier: "ScheduleOnCallResponderDataRelationshipsShifts",
-}) as any as S.Schema<ScheduleOnCallResponderDataRelationshipsShifts>;
+export const ScheduleOnCallResponderDataRelationshipsShifts =
+  BatchRowsQueryResponseDataRelationshipsRows as any as S.Schema<ScheduleOnCallResponderDataRelationshipsShifts>;
 
 /** Relationships for a single position's (previous, current, or next) responder group. */
 export interface ScheduleOnCallResponderDataRelationships {
@@ -91612,26 +90303,15 @@ export interface ShiftDataRelationshipsUserData {
   id: string;
   type: ShiftDataRelationshipsUserDataType;
 }
-export const ShiftDataRelationshipsUserData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: ShiftDataRelationshipsUserDataType,
-  }),
-).annotate({
-  identifier: "ShiftDataRelationshipsUserData",
-}) as any as S.Schema<ShiftDataRelationshipsUserData>;
+export const ShiftDataRelationshipsUserData =
+  NullableUserRelationshipData as any as S.Schema<ShiftDataRelationshipsUserData>;
 
 /** Defines the relationship between a shift and the user who is working that shift. */
 export interface ShiftDataRelationshipsUser {
   data: ShiftDataRelationshipsUserData;
 }
-export const ShiftDataRelationshipsUser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: ShiftDataRelationshipsUserData,
-  }),
-).annotate({
-  identifier: "ShiftDataRelationshipsUser",
-}) as any as S.Schema<ShiftDataRelationshipsUser>;
+export const ShiftDataRelationshipsUser =
+  TeamHierarchyLinkCreateTeamRelationship as any as S.Schema<ShiftDataRelationshipsUser>;
 
 /** Relationships for an on-call shift. */
 export interface ShiftDataRelationships {
@@ -91721,9 +90401,8 @@ export const OAuthOidcScope = S.String;
 
 /** OIDC scopes the client is restricted to. */
 export type OAuthScopesRestrictionOidcScopesList = Array<OAuthOidcScope>;
-export const OAuthScopesRestrictionOidcScopesList = /*@__PURE__*/ S.Array(
-  OAuthOidcScope,
-) as any as S.Schema<OAuthScopesRestrictionOidcScopesList>;
+export const OAuthScopesRestrictionOidcScopesList =
+  SyntheticsDowntimeWeekdays as any as S.Schema<OAuthScopesRestrictionOidcScopesList>;
 
 /** Datadog permission scopes the client is restricted to. */
 export type OAuthScopesRestrictionPermissionScopesList = Array<string>;
@@ -97237,35 +95916,22 @@ export interface TeamOnCallRespondersDataRelationshipsEscalationsDataItems {
   id: string;
   type: TeamOnCallRespondersDataRelationshipsEscalationsDataItemsType;
 }
-export const TeamOnCallRespondersDataRelationshipsEscalationsDataItems = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      type: TeamOnCallRespondersDataRelationshipsEscalationsDataItemsType,
-    }),
-).annotate({
-  identifier: "TeamOnCallRespondersDataRelationshipsEscalationsDataItems",
-}) as any as S.Schema<TeamOnCallRespondersDataRelationshipsEscalationsDataItems>;
+export const TeamOnCallRespondersDataRelationshipsEscalationsDataItems =
+  StatusPagesComponentDataRelationshipsLastModifiedByUserData as any as S.Schema<TeamOnCallRespondersDataRelationshipsEscalationsDataItems>;
 
 /** Array of escalation step references. */
 export type TeamOnCallRespondersDataRelationshipsEscalationsDataList =
   Array<TeamOnCallRespondersDataRelationshipsEscalationsDataItems>;
-export const TeamOnCallRespondersDataRelationshipsEscalationsDataList = /*@__PURE__*/ S.Array(
-  TeamOnCallRespondersDataRelationshipsEscalationsDataItems,
-) as any as S.Schema<TeamOnCallRespondersDataRelationshipsEscalationsDataList>;
+export const TeamOnCallRespondersDataRelationshipsEscalationsDataList =
+  OrgAuthorizedClientRelationshipUserAuthorizedClientsDataList as any as S.Schema<TeamOnCallRespondersDataRelationshipsEscalationsDataList>;
 
 /** Defines the escalation policy steps linked to the team's on-call configuration. */
 export interface TeamOnCallRespondersDataRelationshipsEscalations {
   /** Array of escalation step references. */
   data?: TeamOnCallRespondersDataRelationshipsEscalationsDataList;
 }
-export const TeamOnCallRespondersDataRelationshipsEscalations = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: S.optional(TeamOnCallRespondersDataRelationshipsEscalationsDataList),
-  }),
-).annotate({
-  identifier: "TeamOnCallRespondersDataRelationshipsEscalations",
-}) as any as S.Schema<TeamOnCallRespondersDataRelationshipsEscalations>;
+export const TeamOnCallRespondersDataRelationshipsEscalations =
+  ScheduleOnCallRespondersDataRelationshipsResponders as any as S.Schema<TeamOnCallRespondersDataRelationshipsEscalations>;
 
 /** Identifies the resource type for individual user entities associated with on-call response. */
 export type TeamOnCallRespondersDataRelationshipsRespondersDataItemsType = "users";
@@ -97277,35 +95943,22 @@ export interface TeamOnCallRespondersDataRelationshipsRespondersDataItems {
   id: string;
   type: TeamOnCallRespondersDataRelationshipsRespondersDataItemsType;
 }
-export const TeamOnCallRespondersDataRelationshipsRespondersDataItems = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      type: TeamOnCallRespondersDataRelationshipsRespondersDataItemsType,
-    }),
-).annotate({
-  identifier: "TeamOnCallRespondersDataRelationshipsRespondersDataItems",
-}) as any as S.Schema<TeamOnCallRespondersDataRelationshipsRespondersDataItems>;
+export const TeamOnCallRespondersDataRelationshipsRespondersDataItems =
+  StatusPagesComponentDataRelationshipsLastModifiedByUserData as any as S.Schema<TeamOnCallRespondersDataRelationshipsRespondersDataItems>;
 
 /** Array of user references associated as responders. */
 export type TeamOnCallRespondersDataRelationshipsRespondersDataList =
   Array<TeamOnCallRespondersDataRelationshipsRespondersDataItems>;
-export const TeamOnCallRespondersDataRelationshipsRespondersDataList = /*@__PURE__*/ S.Array(
-  TeamOnCallRespondersDataRelationshipsRespondersDataItems,
-) as any as S.Schema<TeamOnCallRespondersDataRelationshipsRespondersDataList>;
+export const TeamOnCallRespondersDataRelationshipsRespondersDataList =
+  OrgAuthorizedClientRelationshipUserAuthorizedClientsDataList as any as S.Schema<TeamOnCallRespondersDataRelationshipsRespondersDataList>;
 
 /** Defines the list of users assigned as on-call responders for the team. */
 export interface TeamOnCallRespondersDataRelationshipsResponders {
   /** Array of user references associated as responders. */
   data?: TeamOnCallRespondersDataRelationshipsRespondersDataList;
 }
-export const TeamOnCallRespondersDataRelationshipsResponders = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: S.optional(TeamOnCallRespondersDataRelationshipsRespondersDataList),
-  }),
-).annotate({
-  identifier: "TeamOnCallRespondersDataRelationshipsResponders",
-}) as any as S.Schema<TeamOnCallRespondersDataRelationshipsResponders>;
+export const TeamOnCallRespondersDataRelationshipsResponders =
+  ScheduleOnCallRespondersDataRelationshipsResponders as any as S.Schema<TeamOnCallRespondersDataRelationshipsResponders>;
 
 /** Relationship objects linked to a team's on-call responder configuration, including escalations and responders. */
 export interface TeamOnCallRespondersDataRelationships {
@@ -97350,34 +96003,22 @@ export interface EscalationRelationshipsRespondersDataItems {
   id: string;
   type: EscalationRelationshipsRespondersDataItemsType;
 }
-export const EscalationRelationshipsRespondersDataItems = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: EscalationRelationshipsRespondersDataItemsType,
-  }),
-).annotate({
-  identifier: "EscalationRelationshipsRespondersDataItems",
-}) as any as S.Schema<EscalationRelationshipsRespondersDataItems>;
+export const EscalationRelationshipsRespondersDataItems =
+  NullableUserRelationshipData as any as S.Schema<EscalationRelationshipsRespondersDataItems>;
 
 /** Array of user references assigned as responders for this escalation step. */
 export type EscalationRelationshipsRespondersDataList =
   Array<EscalationRelationshipsRespondersDataItems>;
-export const EscalationRelationshipsRespondersDataList = /*@__PURE__*/ S.Array(
-  EscalationRelationshipsRespondersDataItems,
-) as any as S.Schema<EscalationRelationshipsRespondersDataList>;
+export const EscalationRelationshipsRespondersDataList =
+  RelationshipToOrganizationsDataList as any as S.Schema<EscalationRelationshipsRespondersDataList>;
 
 /** Lists the users involved in a specific step of the escalation policy. */
 export interface EscalationRelationshipsResponders {
   /** Array of user references assigned as responders for this escalation step. */
   data?: EscalationRelationshipsRespondersDataList;
 }
-export const EscalationRelationshipsResponders = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: S.optional(EscalationRelationshipsRespondersDataList),
-  }),
-).annotate({
-  identifier: "EscalationRelationshipsResponders",
-}) as any as S.Schema<EscalationRelationshipsResponders>;
+export const EscalationRelationshipsResponders =
+  BatchRowsQueryResponseDataRelationshipsRows as any as S.Schema<EscalationRelationshipsResponders>;
 
 /** Contains the relationships of an escalation object, including its responders. */
 export interface EscalationRelationships {
@@ -97459,9 +96100,8 @@ export const TeamPermissionSettingValue = S.String;
 
 /** Possible values for action */
 export type TeamPermissionSettingValues = Array<TeamPermissionSettingValue>;
-export const TeamPermissionSettingValues = /*@__PURE__*/ S.Array(
-  TeamPermissionSettingValue,
-) as any as S.Schema<TeamPermissionSettingValues>;
+export const TeamPermissionSettingValues =
+  SyntheticsDowntimeWeekdays as any as S.Schema<TeamPermissionSettingValues>;
 
 /** Team permission setting attributes */
 export interface TeamPermissionSettingAttributes {
@@ -97851,14 +96491,8 @@ export interface TestOptimizationGetServiceSettingsRequestData {
   attributes: TestOptimizationDeleteServiceSettingsRequestAttributes;
   type: TestOptimizationGetServiceSettingsRequestDataType | (string & {});
 }
-export const TestOptimizationGetServiceSettingsRequestData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attributes: TestOptimizationDeleteServiceSettingsRequestAttributes,
-    type: TestOptimizationGetServiceSettingsRequestDataType,
-  }),
-).annotate({
-  identifier: "TestOptimizationGetServiceSettingsRequestData",
-}) as any as S.Schema<TestOptimizationGetServiceSettingsRequestData>;
+export const TestOptimizationGetServiceSettingsRequestData =
+  TestOptimizationDeleteServiceSettingsRequestData as any as S.Schema<TestOptimizationGetServiceSettingsRequestData>;
 
 export interface GetTestOptimizationServiceSettingsRequest {
   data: TestOptimizationGetServiceSettingsRequestData;
@@ -98279,26 +96913,15 @@ export interface UserAuthorizedClientRelationshipOAuth2ClientData {
   id: string;
   type: UserAuthorizedClientRelationshipOAuth2ClientDataType;
 }
-export const UserAuthorizedClientRelationshipOAuth2ClientData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: UserAuthorizedClientRelationshipOAuth2ClientDataType,
-  }),
-).annotate({
-  identifier: "UserAuthorizedClientRelationshipOAuth2ClientData",
-}) as any as S.Schema<UserAuthorizedClientRelationshipOAuth2ClientData>;
+export const UserAuthorizedClientRelationshipOAuth2ClientData =
+  NullableUserRelationshipData as any as S.Schema<UserAuthorizedClientRelationshipOAuth2ClientData>;
 
 /** Relationship to the OAuth2 client that was authorized. */
 export interface UserAuthorizedClientRelationshipOAuth2Client {
   data: UserAuthorizedClientRelationshipOAuth2ClientData;
 }
-export const UserAuthorizedClientRelationshipOAuth2Client = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: UserAuthorizedClientRelationshipOAuth2ClientData,
-  }),
-).annotate({
-  identifier: "UserAuthorizedClientRelationshipOAuth2Client",
-}) as any as S.Schema<UserAuthorizedClientRelationshipOAuth2Client>;
+export const UserAuthorizedClientRelationshipOAuth2Client =
+  TeamHierarchyLinkCreateTeamRelationship as any as S.Schema<UserAuthorizedClientRelationshipOAuth2Client>;
 
 /** Scope resource type. */
 export type UserAuthorizedClientRelationshipScopeDataType = "scopes";
@@ -98310,33 +96933,21 @@ export interface UserAuthorizedClientRelationshipScopeData {
   id: string;
   type: UserAuthorizedClientRelationshipScopeDataType;
 }
-export const UserAuthorizedClientRelationshipScopeData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: UserAuthorizedClientRelationshipScopeDataType,
-  }),
-).annotate({
-  identifier: "UserAuthorizedClientRelationshipScopeData",
-}) as any as S.Schema<UserAuthorizedClientRelationshipScopeData>;
+export const UserAuthorizedClientRelationshipScopeData =
+  NullableUserRelationshipData as any as S.Schema<UserAuthorizedClientRelationshipScopeData>;
 
 /** List of scope relationship data objects. */
 export type UserAuthorizedClientRelationshipScopeDataList =
   Array<UserAuthorizedClientRelationshipScopeData>;
-export const UserAuthorizedClientRelationshipScopeDataList = /*@__PURE__*/ S.Array(
-  UserAuthorizedClientRelationshipScopeData,
-) as any as S.Schema<UserAuthorizedClientRelationshipScopeDataList>;
+export const UserAuthorizedClientRelationshipScopeDataList =
+  RelationshipToOrganizationsDataList as any as S.Schema<UserAuthorizedClientRelationshipScopeDataList>;
 
 /** Relationship to the scopes granted to the OAuth2 client. */
 export interface UserAuthorizedClientRelationshipScopes {
   data: UserAuthorizedClientRelationshipScopeDataList;
 }
-export const UserAuthorizedClientRelationshipScopes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: UserAuthorizedClientRelationshipScopeDataList,
-  }),
-).annotate({
-  identifier: "UserAuthorizedClientRelationshipScopes",
-}) as any as S.Schema<UserAuthorizedClientRelationshipScopes>;
+export const UserAuthorizedClientRelationshipScopes =
+  RelationshipToOrganizations as any as S.Schema<UserAuthorizedClientRelationshipScopes>;
 
 /** User resource type. */
 export type UserAuthorizedClientRelationshipUserDataType = "users";
@@ -98348,26 +96959,15 @@ export interface UserAuthorizedClientRelationshipUserData {
   id: string;
   type: UserAuthorizedClientRelationshipUserDataType;
 }
-export const UserAuthorizedClientRelationshipUserData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: UserAuthorizedClientRelationshipUserDataType,
-  }),
-).annotate({
-  identifier: "UserAuthorizedClientRelationshipUserData",
-}) as any as S.Schema<UserAuthorizedClientRelationshipUserData>;
+export const UserAuthorizedClientRelationshipUserData =
+  NullableUserRelationshipData as any as S.Schema<UserAuthorizedClientRelationshipUserData>;
 
 /** Relationship to the user who granted this authorization. */
 export interface UserAuthorizedClientRelationshipUser {
   data: UserAuthorizedClientRelationshipUserData;
 }
-export const UserAuthorizedClientRelationshipUser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: UserAuthorizedClientRelationshipUserData,
-  }),
-).annotate({
-  identifier: "UserAuthorizedClientRelationshipUser",
-}) as any as S.Schema<UserAuthorizedClientRelationshipUser>;
+export const UserAuthorizedClientRelationshipUser =
+  TeamHierarchyLinkCreateTeamRelationship as any as S.Schema<UserAuthorizedClientRelationshipUser>;
 
 /** Relationships for a user authorized client. */
 export interface UserAuthorizedClientRelationships {
@@ -98742,9 +97342,8 @@ export type IncidentImportRelatedObject =
 export const IncidentImportRelatedObject = S.String;
 
 export type ImportIncidentRequestIncludeList = Array<IncidentImportRelatedObject | (string & {})>;
-export const ImportIncidentRequestIncludeList = /*@__PURE__*/ S.Array(
-  IncidentImportRelatedObject,
-) as any as S.Schema<ImportIncidentRequestIncludeList>;
+export const ImportIncidentRequestIncludeList =
+  SyntheticsDowntimeWeekdays as any as S.Schema<ImportIncidentRequestIncludeList>;
 
 /** A field with a single value selected. */
 export interface IncidentImportFieldAttributesSingleValue {
@@ -99316,12 +97915,8 @@ export interface IncidentRelationshipData {
   id: string;
   type: IncidentResourceType | (string & {});
 }
-export const IncidentRelationshipData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: IncidentResourceType,
-  }),
-).annotate({ identifier: "IncidentRelationshipData" }) as any as S.Schema<IncidentRelationshipData>;
+export const IncidentRelationshipData =
+  ProjectRelationshipData as any as S.Schema<IncidentRelationshipData>;
 
 export interface LinkIncidentRequest {
   /** Case's UUID or key */
@@ -100203,9 +98798,8 @@ export const ListAppKeyRegistrationsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of app key registrations. */
 export type ListAppKeyRegistrationsResponseDataList = Array<AppKeyRegistrationData>;
-export const ListAppKeyRegistrationsResponseDataList = /*@__PURE__*/ S.Array(
-  AppKeyRegistrationData,
-) as any as S.Schema<ListAppKeyRegistrationsResponseDataList>;
+export const ListAppKeyRegistrationsResponseDataList =
+  BulkRemoveRumReplayPlaylistSessionsRequestDataList as any as S.Schema<ListAppKeyRegistrationsResponseDataList>;
 
 /** The definition of `ListAppKeyRegistrationsResponseMeta` object. */
 export interface ListAppKeyRegistrationsResponseMeta {
@@ -100436,9 +99030,8 @@ export type AppsSortField =
 export const AppsSortField = S.String;
 
 export type ListAppsRequestSortList = Array<AppsSortField | (string & {})>;
-export const ListAppsRequestSortList = /*@__PURE__*/ S.Array(
-  AppsSortField,
-) as any as S.Schema<ListAppsRequestSortList>;
+export const ListAppsRequestSortList =
+  SyntheticsDowntimeWeekdays as any as S.Schema<ListAppsRequestSortList>;
 
 export interface ListAppsRequest {
   /** The number of apps to return per page. */
@@ -101652,13 +100245,8 @@ export const ListCaseWatchersRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CaseWatcherUserRelationship {
   data: NullableUserRelationshipData;
 }
-export const CaseWatcherUserRelationship = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: NullableUserRelationshipData,
-  }),
-).annotate({
-  identifier: "CaseWatcherUserRelationship",
-}) as any as S.Schema<CaseWatcherUserRelationship>;
+export const CaseWatcherUserRelationship =
+  TeamHierarchyLinkCreateTeamRelationship as any as S.Schema<CaseWatcherUserRelationship>;
 
 /** Relationships for a case watcher, linking to the underlying user resource. */
 export interface CaseWatcherRelationships {
@@ -104288,26 +102876,13 @@ export interface ContainerMetaPage {
   total?: number;
   type?: ContainerMetaPageType;
 }
-export const ContainerMetaPage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cursor: S.optional(S.String),
-    limit: S.optional(S.Number),
-    next_cursor: S.optional(S.String),
-    prev_cursor: S.optional(S.NullOr(S.String)),
-    total: S.optional(S.Number),
-    type: S.optional(ContainerMetaPageType),
-  }),
-).annotate({ identifier: "ContainerMetaPage" }) as any as S.Schema<ContainerMetaPage>;
+export const ContainerMetaPage = ContainerImageMetaPage as any as S.Schema<ContainerMetaPage>;
 
 /** Response metadata object. */
 export interface ContainerMeta {
   pagination?: ContainerMetaPage;
 }
-export const ContainerMeta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pagination: S.optional(ContainerMetaPage),
-  }),
-).annotate({ identifier: "ContainerMeta" }) as any as S.Schema<ContainerMeta>;
+export const ContainerMeta = ContainerImageMeta as any as S.Schema<ContainerMeta>;
 
 /** List of containers. */
 export interface ContainersResponse {
@@ -104847,29 +103422,19 @@ export interface CostMetric {
   id: string;
   type: CostMetricType;
 }
-export const CostMetric = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: CostMetricType,
-  }),
-).annotate({ identifier: "CostMetric" }) as any as S.Schema<CostMetric>;
+export const CostMetric = ProjectRelationshipData as any as S.Schema<CostMetric>;
 
 /** List of available metrics. */
 export type CostMetricsResponseDataList = Array<CostMetric>;
-export const CostMetricsResponseDataList = /*@__PURE__*/ S.Array(
-  CostMetric,
-) as any as S.Schema<CostMetricsResponseDataList>;
+export const CostMetricsResponseDataList =
+  RelationshipToUsersDataList as any as S.Schema<CostMetricsResponseDataList>;
 
 /** List of available Cloud Cost Management metrics for the requested period. */
 export interface CostMetricsResponse {
   /** List of available metrics. */
   data: CostMetricsResponseDataList;
 }
-export const CostMetricsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: CostMetricsResponseDataList,
-  }),
-).annotate({ identifier: "CostMetricsResponse" }) as any as S.Schema<CostMetricsResponse>;
+export const CostMetricsResponse = RelationshipToUsers as any as S.Schema<CostMetricsResponse>;
 
 export interface ListCostTagMetadataMonthsRequest {
   /** Provider to scope the query to. Use the value of the `providername` tag in CCM (for example, `aws`, `azure`, `gcp`, `Oracle`, `Confluent Cloud`, `Snowflake`). For costs uploaded through the Custom Costs API, use `custom`. Values are case-sensitive. */
@@ -104893,31 +103458,21 @@ export interface CostTagMetadataMonth {
   id: string;
   type: CostTagMetadataMonthType;
 }
-export const CostTagMetadataMonth = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: CostTagMetadataMonthType,
-  }),
-).annotate({ identifier: "CostTagMetadataMonth" }) as any as S.Schema<CostTagMetadataMonth>;
+export const CostTagMetadataMonth =
+  ProjectRelationshipData as any as S.Schema<CostTagMetadataMonth>;
 
 /** List of months that have tag metadata available. */
 export type CostTagMetadataMonthsResponseDataList = Array<CostTagMetadataMonth>;
-export const CostTagMetadataMonthsResponseDataList = /*@__PURE__*/ S.Array(
-  CostTagMetadataMonth,
-) as any as S.Schema<CostTagMetadataMonthsResponseDataList>;
+export const CostTagMetadataMonthsResponseDataList =
+  RelationshipToUsersDataList as any as S.Schema<CostTagMetadataMonthsResponseDataList>;
 
 /** List of months that have Cloud Cost Management tag metadata for the requested provider, ordered most-recent first and capped at 36 months. */
 export interface CostTagMetadataMonthsResponse {
   /** List of months that have tag metadata available. */
   data: CostTagMetadataMonthsResponseDataList;
 }
-export const CostTagMetadataMonthsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: CostTagMetadataMonthsResponseDataList,
-  }),
-).annotate({
-  identifier: "CostTagMetadataMonthsResponse",
-}) as any as S.Schema<CostTagMetadataMonthsResponse>;
+export const CostTagMetadataMonthsResponse =
+  IssueTeamOwnersRelationship as any as S.Schema<CostTagMetadataMonthsResponse>;
 
 export interface ListCostTagMetadataOrchestratorsRequest {
   /** The month to scope the query to, in `YYYY-MM` format. */
@@ -104944,31 +103499,20 @@ export interface CostOrchestrator {
   id: string;
   type: CostOrchestratorType;
 }
-export const CostOrchestrator = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: CostOrchestratorType,
-  }),
-).annotate({ identifier: "CostOrchestrator" }) as any as S.Schema<CostOrchestrator>;
+export const CostOrchestrator = ProjectRelationshipData as any as S.Schema<CostOrchestrator>;
 
 /** List of detected container orchestrators. */
 export type CostOrchestratorsResponseDataList = Array<CostOrchestrator>;
-export const CostOrchestratorsResponseDataList = /*@__PURE__*/ S.Array(
-  CostOrchestrator,
-) as any as S.Schema<CostOrchestratorsResponseDataList>;
+export const CostOrchestratorsResponseDataList =
+  RelationshipToUsersDataList as any as S.Schema<CostOrchestratorsResponseDataList>;
 
 /** List of container orchestrators detected in Cloud Cost Management data for the requested period. */
 export interface CostOrchestratorsResponse {
   /** List of detected container orchestrators. */
   data: CostOrchestratorsResponseDataList;
 }
-export const CostOrchestratorsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: CostOrchestratorsResponseDataList,
-  }),
-).annotate({
-  identifier: "CostOrchestratorsResponse",
-}) as any as S.Schema<CostOrchestratorsResponse>;
+export const CostOrchestratorsResponse =
+  IssueTeamOwnersRelationship as any as S.Schema<CostOrchestratorsResponse>;
 
 export type ListCostTagsRequestFilterTagsList = Array<string>;
 export const ListCostTagsRequestFilterTagsList =
@@ -106806,14 +105350,8 @@ export interface DORAListFailuresRequestData {
   attributes: DORAListDeploymentsRequestAttributes;
   type?: DORAListFailuresRequestDataType | (string & {});
 }
-export const DORAListFailuresRequestData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attributes: DORAListDeploymentsRequestAttributes,
-    type: S.optional(DORAListFailuresRequestDataType),
-  }),
-).annotate({
-  identifier: "DORAListFailuresRequestData",
-}) as any as S.Schema<DORAListFailuresRequestData>;
+export const DORAListFailuresRequestData =
+  DORAListDeploymentsRequestData as any as S.Schema<DORAListFailuresRequestData>;
 
 export interface ListDORAFailuresRequest {
   data: DORAListFailuresRequestData;
@@ -107359,16 +105897,14 @@ export const ListExecutionPoliciesRequestFilterIdsList =
 export type ListExecutionPoliciesRequestFilterIntegrationList = Array<
   ExecutionPolicyIntegration | (string & {})
 >;
-export const ListExecutionPoliciesRequestFilterIntegrationList = /*@__PURE__*/ S.Array(
-  ExecutionPolicyIntegration,
-) as any as S.Schema<ListExecutionPoliciesRequestFilterIntegrationList>;
+export const ListExecutionPoliciesRequestFilterIntegrationList =
+  SyntheticsDowntimeWeekdays as any as S.Schema<ListExecutionPoliciesRequestFilterIntegrationList>;
 
 export type ListExecutionPoliciesRequestFilterEffectsList = Array<
   ExecutionPolicyEffect | (string & {})
 >;
-export const ListExecutionPoliciesRequestFilterEffectsList = /*@__PURE__*/ S.Array(
-  ExecutionPolicyEffect,
-) as any as S.Schema<ListExecutionPoliciesRequestFilterEffectsList>;
+export const ListExecutionPoliciesRequestFilterEffectsList =
+  SyntheticsDowntimeWeekdays as any as S.Schema<ListExecutionPoliciesRequestFilterEffectsList>;
 
 export type ListExecutionPoliciesRequestFilterCreatorIdsList = Array<string>;
 export const ListExecutionPoliciesRequestFilterCreatorIdsList =
@@ -107500,9 +106036,8 @@ export const ExperimentsExperimentMetricGroupV2DTOArray = /*@__PURE__*/ S.suspen
 export type ListExperimentProtocolsRequestFilterStatusList = Array<
   ExperimentsPublicProtocolResponseDataAttributesStatus | (string & {})
 >;
-export const ListExperimentProtocolsRequestFilterStatusList = /*@__PURE__*/ S.Array(
-  ExperimentsPublicProtocolResponseDataAttributesStatus,
-) as any as S.Schema<ListExperimentProtocolsRequestFilterStatusList>;
+export const ListExperimentProtocolsRequestFilterStatusList =
+  SyntheticsDowntimeWeekdays as any as S.Schema<ListExperimentProtocolsRequestFilterStatusList>;
 
 export interface ListExperimentProtocolsRequest {
   /** Filter by protocol status. Repeat this parameter to select more than one status. */
@@ -108258,9 +106793,8 @@ export const FindingVulnerabilityType = S.String;
 export type ListFindingsRequestFilterVulnerabilityTypeList = Array<
   FindingVulnerabilityType | (string & {})
 >;
-export const ListFindingsRequestFilterVulnerabilityTypeList = /*@__PURE__*/ S.Array(
-  FindingVulnerabilityType,
-) as any as S.Schema<ListFindingsRequestFilterVulnerabilityTypeList>;
+export const ListFindingsRequestFilterVulnerabilityTypeList =
+  SyntheticsDowntimeWeekdays as any as S.Schema<ListFindingsRequestFilterVulnerabilityTypeList>;
 
 export interface ListFindingsRequest {
   /** Limit the number of findings returned. Must be <= 1000. */
@@ -113299,33 +111833,21 @@ export interface MetricAssetDashboardRelationship {
   id?: string;
   type?: MetricDashboardType;
 }
-export const MetricAssetDashboardRelationship = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    type: S.optional(MetricDashboardType),
-  }),
-).annotate({
-  identifier: "MetricAssetDashboardRelationship",
-}) as any as S.Schema<MetricAssetDashboardRelationship>;
+export const MetricAssetDashboardRelationship =
+  RelationshipToPermissionData as any as S.Schema<MetricAssetDashboardRelationship>;
 
 /** A list of dashboards that can be referenced in the `included` data. */
 export type MetricAssetDashboardRelationshipsDataList = Array<MetricAssetDashboardRelationship>;
-export const MetricAssetDashboardRelationshipsDataList = /*@__PURE__*/ S.Array(
-  MetricAssetDashboardRelationship,
-) as any as S.Schema<MetricAssetDashboardRelationshipsDataList>;
+export const MetricAssetDashboardRelationshipsDataList =
+  RelationshipToPermissionsDataList as any as S.Schema<MetricAssetDashboardRelationshipsDataList>;
 
 /** An object containing the list of dashboards that can be referenced in the `included` data. */
 export interface MetricAssetDashboardRelationships {
   /** A list of dashboards that can be referenced in the `included` data. */
   data?: MetricAssetDashboardRelationshipsDataList;
 }
-export const MetricAssetDashboardRelationships = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: S.optional(MetricAssetDashboardRelationshipsDataList),
-  }),
-).annotate({
-  identifier: "MetricAssetDashboardRelationships",
-}) as any as S.Schema<MetricAssetDashboardRelationships>;
+export const MetricAssetDashboardRelationships =
+  RelationshipToPermissions as any as S.Schema<MetricAssetDashboardRelationships>;
 
 /** Monitor resource type. */
 export type MetricMonitorType = "monitors";
@@ -113336,33 +111858,21 @@ export interface MetricAssetMonitorRelationship {
   id?: string;
   type?: MetricMonitorType;
 }
-export const MetricAssetMonitorRelationship = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    type: S.optional(MetricMonitorType),
-  }),
-).annotate({
-  identifier: "MetricAssetMonitorRelationship",
-}) as any as S.Schema<MetricAssetMonitorRelationship>;
+export const MetricAssetMonitorRelationship =
+  RelationshipToPermissionData as any as S.Schema<MetricAssetMonitorRelationship>;
 
 /** A list of monitors that can be referenced in the `included` data. */
 export type MetricAssetMonitorRelationshipsDataList = Array<MetricAssetMonitorRelationship>;
-export const MetricAssetMonitorRelationshipsDataList = /*@__PURE__*/ S.Array(
-  MetricAssetMonitorRelationship,
-) as any as S.Schema<MetricAssetMonitorRelationshipsDataList>;
+export const MetricAssetMonitorRelationshipsDataList =
+  RelationshipToPermissionsDataList as any as S.Schema<MetricAssetMonitorRelationshipsDataList>;
 
 /** A object containing the list of monitors that can be referenced in the `included` data. */
 export interface MetricAssetMonitorRelationships {
   /** A list of monitors that can be referenced in the `included` data. */
   data?: MetricAssetMonitorRelationshipsDataList;
 }
-export const MetricAssetMonitorRelationships = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: S.optional(MetricAssetMonitorRelationshipsDataList),
-  }),
-).annotate({
-  identifier: "MetricAssetMonitorRelationships",
-}) as any as S.Schema<MetricAssetMonitorRelationships>;
+export const MetricAssetMonitorRelationships =
+  RelationshipToPermissions as any as S.Schema<MetricAssetMonitorRelationships>;
 
 /** Notebook resource type. */
 export type MetricNotebookType = "notebooks";
@@ -113373,33 +111883,21 @@ export interface MetricAssetNotebookRelationship {
   id?: string;
   type?: MetricNotebookType;
 }
-export const MetricAssetNotebookRelationship = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    type: S.optional(MetricNotebookType),
-  }),
-).annotate({
-  identifier: "MetricAssetNotebookRelationship",
-}) as any as S.Schema<MetricAssetNotebookRelationship>;
+export const MetricAssetNotebookRelationship =
+  RelationshipToPermissionData as any as S.Schema<MetricAssetNotebookRelationship>;
 
 /** A list of notebooks that can be referenced in the `included` data. */
 export type MetricAssetNotebookRelationshipsDataList = Array<MetricAssetNotebookRelationship>;
-export const MetricAssetNotebookRelationshipsDataList = /*@__PURE__*/ S.Array(
-  MetricAssetNotebookRelationship,
-) as any as S.Schema<MetricAssetNotebookRelationshipsDataList>;
+export const MetricAssetNotebookRelationshipsDataList =
+  RelationshipToPermissionsDataList as any as S.Schema<MetricAssetNotebookRelationshipsDataList>;
 
 /** An object containing the list of notebooks that can be referenced in the `included` data. */
 export interface MetricAssetNotebookRelationships {
   /** A list of notebooks that can be referenced in the `included` data. */
   data?: MetricAssetNotebookRelationshipsDataList;
 }
-export const MetricAssetNotebookRelationships = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: S.optional(MetricAssetNotebookRelationshipsDataList),
-  }),
-).annotate({
-  identifier: "MetricAssetNotebookRelationships",
-}) as any as S.Schema<MetricAssetNotebookRelationships>;
+export const MetricAssetNotebookRelationships =
+  RelationshipToPermissions as any as S.Schema<MetricAssetNotebookRelationships>;
 
 /** SLO resource type. */
 export type MetricSLOType = "slos";
@@ -113410,33 +111908,21 @@ export interface MetricAssetSLORelationship {
   id?: string;
   type?: MetricSLOType;
 }
-export const MetricAssetSLORelationship = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    type: S.optional(MetricSLOType),
-  }),
-).annotate({
-  identifier: "MetricAssetSLORelationship",
-}) as any as S.Schema<MetricAssetSLORelationship>;
+export const MetricAssetSLORelationship =
+  RelationshipToPermissionData as any as S.Schema<MetricAssetSLORelationship>;
 
 /** A list of SLOs that can be referenced in the `included` data. */
 export type MetricAssetSLORelationshipsDataList = Array<MetricAssetSLORelationship>;
-export const MetricAssetSLORelationshipsDataList = /*@__PURE__*/ S.Array(
-  MetricAssetSLORelationship,
-) as any as S.Schema<MetricAssetSLORelationshipsDataList>;
+export const MetricAssetSLORelationshipsDataList =
+  RelationshipToPermissionsDataList as any as S.Schema<MetricAssetSLORelationshipsDataList>;
 
 /** An object containing a list of SLOs that can be referenced in the `included` data. */
 export interface MetricAssetSLORelationships {
   /** A list of SLOs that can be referenced in the `included` data. */
   data?: MetricAssetSLORelationshipsDataList;
 }
-export const MetricAssetSLORelationships = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: S.optional(MetricAssetSLORelationshipsDataList),
-  }),
-).annotate({
-  identifier: "MetricAssetSLORelationships",
-}) as any as S.Schema<MetricAssetSLORelationships>;
+export const MetricAssetSLORelationships =
+  RelationshipToPermissions as any as S.Schema<MetricAssetSLORelationships>;
 
 /** Relationships to assets related to the metric. */
 export interface MetricAssetResponseRelationships {
@@ -113553,13 +112039,7 @@ export interface MetricNotebookAsset {
   id: string;
   type: MetricNotebookType;
 }
-export const MetricNotebookAsset = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attributes: S.optional(MetricAssetAttributes),
-    id: S.String,
-    type: MetricNotebookType,
-  }),
-).annotate({ identifier: "MetricNotebookAsset" }) as any as S.Schema<MetricNotebookAsset>;
+export const MetricNotebookAsset = MetricMonitorAsset as any as S.Schema<MetricNotebookAsset>;
 
 /** A SLO object with title. */
 export interface MetricSLOAsset {
@@ -113567,13 +112047,7 @@ export interface MetricSLOAsset {
   id: string;
   type: MetricSLOType;
 }
-export const MetricSLOAsset = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attributes: S.optional(MetricAssetAttributes),
-    id: S.String,
-    type: MetricSLOType,
-  }),
-).annotate({ identifier: "MetricSLOAsset" }) as any as S.Schema<MetricSLOAsset>;
+export const MetricSLOAsset = MetricMonitorAsset as any as S.Schema<MetricSLOAsset>;
 
 /** List of included assets with full set of attributes. */
 export type MetricAssetResponseIncluded =
@@ -115542,43 +114016,27 @@ export interface OrgRelationshipData {
   id: string;
   type: OrgResourceType;
 }
-export const OrgRelationshipData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: OrgResourceType,
-  }),
-).annotate({ identifier: "OrgRelationshipData" }) as any as S.Schema<OrgRelationshipData>;
+export const OrgRelationshipData = ProjectRelationshipData as any as S.Schema<OrgRelationshipData>;
 
 /** Relationship to the current organization. */
 export interface ManagedOrgsRelationshipToOrg {
   data: OrgRelationshipData;
 }
-export const ManagedOrgsRelationshipToOrg = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: OrgRelationshipData,
-  }),
-).annotate({
-  identifier: "ManagedOrgsRelationshipToOrg",
-}) as any as S.Schema<ManagedOrgsRelationshipToOrg>;
+export const ManagedOrgsRelationshipToOrg =
+  ConfiguredScheduleTargetRelationshipsSchedule as any as S.Schema<ManagedOrgsRelationshipToOrg>;
 
 /** List of managed organization references. */
 export type ManagedOrgsRelationshipToOrgsDataList = Array<OrgRelationshipData>;
-export const ManagedOrgsRelationshipToOrgsDataList = /*@__PURE__*/ S.Array(
-  OrgRelationshipData,
-) as any as S.Schema<ManagedOrgsRelationshipToOrgsDataList>;
+export const ManagedOrgsRelationshipToOrgsDataList =
+  RelationshipToUsersDataList as any as S.Schema<ManagedOrgsRelationshipToOrgsDataList>;
 
 /** Relationship to the managed organizations. */
 export interface ManagedOrgsRelationshipToOrgs {
   /** List of managed organization references. */
   data: ManagedOrgsRelationshipToOrgsDataList;
 }
-export const ManagedOrgsRelationshipToOrgs = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: ManagedOrgsRelationshipToOrgsDataList,
-  }),
-).annotate({
-  identifier: "ManagedOrgsRelationshipToOrgs",
-}) as any as S.Schema<ManagedOrgsRelationshipToOrgs>;
+export const ManagedOrgsRelationshipToOrgs =
+  IssueTeamOwnersRelationship as any as S.Schema<ManagedOrgsRelationshipToOrgs>;
 
 /** Relationships of the managed organizations resource. */
 export interface ManagedOrgsRelationships {
@@ -116092,40 +114550,23 @@ export interface RelationshipToAccessTokenOwnerData {
   id: string;
   type: AccessTokenOwnerType;
 }
-export const RelationshipToAccessTokenOwnerData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: AccessTokenOwnerType,
-  }),
-).annotate({
-  identifier: "RelationshipToAccessTokenOwnerData",
-}) as any as S.Schema<RelationshipToAccessTokenOwnerData>;
+export const RelationshipToAccessTokenOwnerData =
+  NullableUserRelationshipData as any as S.Schema<RelationshipToAccessTokenOwnerData>;
 
 /** Relationship to the access token's owner. */
 export interface RelationshipToAccessTokenOwner {
   data: RelationshipToAccessTokenOwnerData;
 }
-export const RelationshipToAccessTokenOwner = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: RelationshipToAccessTokenOwnerData,
-  }),
-).annotate({
-  identifier: "RelationshipToAccessTokenOwner",
-}) as any as S.Schema<RelationshipToAccessTokenOwner>;
+export const RelationshipToAccessTokenOwner =
+  TeamHierarchyLinkCreateTeamRelationship as any as S.Schema<RelationshipToAccessTokenOwner>;
 
 /** Resources related to the access token entry in the mixed list response. */
 export interface AccessTokenListItemRelationships {
   leak_information?: RelationshipToLeakedKey;
   owned_by?: RelationshipToAccessTokenOwner;
 }
-export const AccessTokenListItemRelationships = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    leak_information: S.optional(RelationshipToLeakedKey),
-    owned_by: S.optional(RelationshipToAccessTokenOwner),
-  }),
-).annotate({
-  identifier: "AccessTokenListItemRelationships",
-}) as any as S.Schema<AccessTokenListItemRelationships>;
+export const AccessTokenListItemRelationships =
+  ServiceAccessTokenRelationships as any as S.Schema<AccessTokenListItemRelationships>;
 
 /** Resource type returned by the access tokens list endpoint. Includes both personal and service access tokens. */
 export type AccessTokensType = "personal_access_tokens" | "service_access_tokens";
@@ -117045,14 +115486,8 @@ export interface ProductAnalyticsJourneyNodeTarget {
   /** Alias of the targeted node. */
   value: string;
 }
-export const ProductAnalyticsJourneyNodeTarget = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ProductAnalyticsJourneyNodeTargetType,
-    value: S.String,
-  }),
-).annotate({
-  identifier: "ProductAnalyticsJourneyNodeTarget",
-}) as any as S.Schema<ProductAnalyticsJourneyNodeTarget>;
+export const ProductAnalyticsJourneyNodeTarget =
+  TeamSyncSelectionStateExternalId as any as S.Schema<ProductAnalyticsJourneyNodeTarget>;
 
 /** The discriminator identifying a target that references a range of steps. */
 export type ProductAnalyticsJourneyPathTargetType = "path";
@@ -117293,14 +115728,8 @@ export interface ProductAnalyticsJourneyListSort {
   facet?: string;
   order?: QuerySortOrder | (string & {});
 }
-export const ProductAnalyticsJourneyListSort = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    facet: S.optional(S.String),
-    order: S.optional(QuerySortOrder),
-  }),
-).annotate({
-  identifier: "ProductAnalyticsJourneyListSort",
-}) as any as S.Schema<ProductAnalyticsJourneyListSort>;
+export const ProductAnalyticsJourneyListSort =
+  ProductAnalyticsAnalyticsListSort as any as S.Schema<ProductAnalyticsJourneyListSort>;
 
 /** Query definition for a journey list request. */
 export interface ProductAnalyticsJourneyListQuery {
@@ -117509,14 +115938,8 @@ export interface ProductAnalyticsRetentionAggregationTarget {
   /** The aggregation that produced the rolled-up row. */
   value: string;
 }
-export const ProductAnalyticsRetentionAggregationTarget = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ProductAnalyticsRetentionAggregationTargetType,
-    value: S.String,
-  }),
-).annotate({
-  identifier: "ProductAnalyticsRetentionAggregationTarget",
-}) as any as S.Schema<ProductAnalyticsRetentionAggregationTarget>;
+export const ProductAnalyticsRetentionAggregationTarget =
+  TeamSyncSelectionStateExternalId as any as S.Schema<ProductAnalyticsRetentionAggregationTarget>;
 
 /** Selects a cohort, either by index or by the aggregation that rolls all cohorts together. */
 export type ProductAnalyticsRetentionCohortTarget =
@@ -118991,14 +117414,8 @@ export interface ScannedAssetMetadataAsset {
   name: string;
   type: CloudAssetType;
 }
-export const ScannedAssetMetadataAsset = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    type: CloudAssetType,
-  }),
-).annotate({
-  identifier: "ScannedAssetMetadataAsset",
-}) as any as S.Schema<ScannedAssetMetadataAsset>;
+export const ScannedAssetMetadataAsset =
+  ChangeEventCustomAttributesAuthor as any as S.Schema<ScannedAssetMetadataAsset>;
 
 /** The list of origins of the last success scan of the asset. */
 export type ScannedAssetMetadataLastSuccessOriginList = Array<string>;
@@ -119103,22 +117520,16 @@ export const SensitiveDataScannerGroupItem = SensitiveDataScannerGroup;
 
 /** List of groups. The order is important. */
 export type SensitiveDataScannerGroupListDataList = Array<SensitiveDataScannerGroup>;
-export const SensitiveDataScannerGroupListDataList = /*@__PURE__*/ S.Array(
-  SensitiveDataScannerGroup,
-) as any as S.Schema<SensitiveDataScannerGroupListDataList>;
+export const SensitiveDataScannerGroupListDataList =
+  RelationshipToPermissionsDataList as any as S.Schema<SensitiveDataScannerGroupListDataList>;
 
 /** List of groups, ordered. */
 export interface SensitiveDataScannerGroupList {
   /** List of groups. The order is important. */
   data?: SensitiveDataScannerGroupListDataList;
 }
-export const SensitiveDataScannerGroupList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: S.optional(SensitiveDataScannerGroupListDataList),
-  }),
-).annotate({
-  identifier: "SensitiveDataScannerGroupList",
-}) as any as S.Schema<SensitiveDataScannerGroupList>;
+export const SensitiveDataScannerGroupList =
+  RelationshipToPermissions as any as S.Schema<SensitiveDataScannerGroupList>;
 
 /** Relationships of the configuration. */
 export interface SensitiveDataScannerConfigurationRelationships {
@@ -119352,24 +117763,15 @@ export interface RelationshipToOutcomeData {
   id?: string;
   type?: RuleType;
 }
-export const RelationshipToOutcomeData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    type: S.optional(RuleType),
-  }),
-).annotate({
-  identifier: "RelationshipToOutcomeData",
-}) as any as S.Schema<RelationshipToOutcomeData>;
+export const RelationshipToOutcomeData =
+  RelationshipToPermissionData as any as S.Schema<RelationshipToOutcomeData>;
 
 /** The JSON:API relationship to a scorecard outcome. */
 export interface RelationshipToOutcome {
   data?: RelationshipToOutcomeData;
 }
-export const RelationshipToOutcome = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: S.optional(RelationshipToOutcomeData),
-  }),
-).annotate({ identifier: "RelationshipToOutcome" }) as any as S.Schema<RelationshipToOutcome>;
+export const RelationshipToOutcome =
+  RelationshipToRuleData as any as S.Schema<RelationshipToOutcome>;
 
 /** The JSON:API relationship to a scorecard rule. */
 export interface RuleOutcomeRelationships {
@@ -121323,26 +119725,15 @@ export interface SharedDashboardRelationshipDashboardData {
   id: string;
   type: SharedDashboardIncludedDashboardType;
 }
-export const SharedDashboardRelationshipDashboardData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: SharedDashboardIncludedDashboardType,
-  }),
-).annotate({
-  identifier: "SharedDashboardRelationshipDashboardData",
-}) as any as S.Schema<SharedDashboardRelationshipDashboardData>;
+export const SharedDashboardRelationshipDashboardData =
+  NullableUserRelationshipData as any as S.Schema<SharedDashboardRelationshipDashboardData>;
 
 /** Dashboard associated with the shared dashboard. */
 export interface SharedDashboardRelationshipDashboard {
   data: SharedDashboardRelationshipDashboardData;
 }
-export const SharedDashboardRelationshipDashboard = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: SharedDashboardRelationshipDashboardData,
-  }),
-).annotate({
-  identifier: "SharedDashboardRelationshipDashboard",
-}) as any as S.Schema<SharedDashboardRelationshipDashboard>;
+export const SharedDashboardRelationshipDashboard =
+  TeamHierarchyLinkCreateTeamRelationship as any as S.Schema<SharedDashboardRelationshipDashboard>;
 
 /** User who shared the dashboard. */
 export type SharedDashboardRelationshipSharer = CaseWatcherUserRelationship;
@@ -121502,18 +119893,12 @@ export interface SlackUserBindingData {
   id?: string;
   type?: SlackUserBindingType;
 }
-export const SlackUserBindingData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    type: S.optional(SlackUserBindingType),
-  }),
-).annotate({ identifier: "SlackUserBindingData" }) as any as S.Schema<SlackUserBindingData>;
+export const SlackUserBindingData = RelationshipToRoleData as any as S.Schema<SlackUserBindingData>;
 
 /** An array of Slack user bindings. */
 export type SlackUserBindingsResponseDataList = Array<SlackUserBindingData>;
-export const SlackUserBindingsResponseDataList = /*@__PURE__*/ S.Array(
-  SlackUserBindingData,
-) as any as S.Schema<SlackUserBindingsResponseDataList>;
+export const SlackUserBindingsResponseDataList =
+  RelationshipToRolesDataList as any as S.Schema<SlackUserBindingsResponseDataList>;
 
 /** Response with a list of Slack user bindings. */
 export interface SlackUserBindingsResponse {
@@ -123050,18 +121435,12 @@ export interface TagData {
   id: string;
   type: TagDataType;
 }
-export const TagData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: TagDataType,
-  }),
-).annotate({ identifier: "TagData" }) as any as S.Schema<TagData>;
+export const TagData = ProjectRelationshipData as any as S.Schema<TagData>;
 
 /** An array of tags. */
 export type AppBuilderListTagsResponseDataList = Array<TagData>;
-export const AppBuilderListTagsResponseDataList = /*@__PURE__*/ S.Array(
-  TagData,
-) as any as S.Schema<AppBuilderListTagsResponseDataList>;
+export const AppBuilderListTagsResponseDataList =
+  RelationshipToUsersDataList as any as S.Schema<AppBuilderListTagsResponseDataList>;
 
 /** The response for listing tags associated with apps. */
 export interface AppBuilderListTagsResponse {
@@ -123276,9 +121655,8 @@ export type ListTeamsInclude = "team_links" | "user_team_permissions";
 export const ListTeamsInclude = S.String;
 
 export type ListTeamsRequestIncludeList = Array<ListTeamsInclude | (string & {})>;
-export const ListTeamsRequestIncludeList = /*@__PURE__*/ S.Array(
-  ListTeamsInclude,
-) as any as S.Schema<ListTeamsRequestIncludeList>;
+export const ListTeamsRequestIncludeList =
+  SyntheticsDowntimeWeekdays as any as S.Schema<ListTeamsRequestIncludeList>;
 
 /** Supported teams field. */
 export type TeamsField =
@@ -123300,9 +121678,8 @@ export type TeamsField =
 export const TeamsField = S.String;
 
 export type ListTeamsRequestFieldsTeamList = Array<TeamsField | (string & {})>;
-export const ListTeamsRequestFieldsTeamList = /*@__PURE__*/ S.Array(
-  TeamsField,
-) as any as S.Schema<ListTeamsRequestFieldsTeamList>;
+export const ListTeamsRequestFieldsTeamList =
+  SyntheticsDowntimeWeekdays as any as S.Schema<ListTeamsRequestFieldsTeamList>;
 
 export interface ListTeamsRequest {
   /** Specific page number to return. */
@@ -123904,29 +122281,20 @@ export interface ProjectFavorite {
   id: string;
   type: ProjectFavoriteResourceType;
 }
-export const ProjectFavorite = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: ProjectFavoriteResourceType,
-  }),
-).annotate({ identifier: "ProjectFavorite" }) as any as S.Schema<ProjectFavorite>;
+export const ProjectFavorite = ProjectRelationshipData as any as S.Schema<ProjectFavorite>;
 
 /** List of project favorites. */
 export type ProjectFavoritesResponseDataList = Array<ProjectFavorite>;
-export const ProjectFavoritesResponseDataList = /*@__PURE__*/ S.Array(
-  ProjectFavorite,
-) as any as S.Schema<ProjectFavoritesResponseDataList>;
+export const ProjectFavoritesResponseDataList =
+  RelationshipToUsersDataList as any as S.Schema<ProjectFavoritesResponseDataList>;
 
 /** Response containing the list of projects the current user has favorited. */
 export interface ProjectFavoritesResponse {
   /** List of project favorites. */
   data: ProjectFavoritesResponseDataList;
 }
-export const ProjectFavoritesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: ProjectFavoritesResponseDataList,
-  }),
-).annotate({ identifier: "ProjectFavoritesResponse" }) as any as S.Schema<ProjectFavoritesResponse>;
+export const ProjectFavoritesResponse =
+  RelationshipToUsers as any as S.Schema<ProjectFavoritesResponse>;
 
 export interface ListUserNotificationChannelsRequest {
   /** The user ID */
@@ -124815,20 +123183,13 @@ export interface RumRetentionFiltersOrderData {
   id: string;
   type: RumRetentionFilterType | (string & {});
 }
-export const RumRetentionFiltersOrderData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: RumRetentionFilterType,
-  }),
-).annotate({
-  identifier: "RumRetentionFiltersOrderData",
-}) as any as S.Schema<RumRetentionFiltersOrderData>;
+export const RumRetentionFiltersOrderData =
+  NullableUserRelationshipData as any as S.Schema<RumRetentionFiltersOrderData>;
 
 /** A list of RUM retention filter IDs along with type. */
 export type OrderRetentionFiltersRequestDataList = Array<RumRetentionFiltersOrderData>;
-export const OrderRetentionFiltersRequestDataList = /*@__PURE__*/ S.Array(
-  RumRetentionFiltersOrderData,
-) as any as S.Schema<OrderRetentionFiltersRequestDataList>;
+export const OrderRetentionFiltersRequestDataList =
+  RelationshipToOrganizationsDataList as any as S.Schema<OrderRetentionFiltersRequestDataList>;
 
 export interface OrderRetentionFiltersRequest {
   /** RUM application ID. */
@@ -124879,14 +123240,8 @@ export interface DORADeploymentPatchByVersionRemediationByID {
   id: string;
   type: DORADeploymentPatchRemediationType | (string & {});
 }
-export const DORADeploymentPatchByVersionRemediationByID = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: DORADeploymentPatchRemediationType,
-  }),
-).annotate({
-  identifier: "DORADeploymentPatchByVersionRemediationByID",
-}) as any as S.Schema<DORADeploymentPatchByVersionRemediationByID>;
+export const DORADeploymentPatchByVersionRemediationByID =
+  NullableUserRelationshipData as any as S.Schema<DORADeploymentPatchByVersionRemediationByID>;
 
 /** Remediation details identified by the version of the remediation deployment, matched against the same service and environment as the failed deployment. */
 export interface DORADeploymentPatchByVersionRemediationByVersion {
@@ -125348,26 +123703,15 @@ export interface MaintenanceUpdateDataRelationshipsMaintenanceData {
   id: string;
   type: PatchMaintenanceRequestDataType;
 }
-export const MaintenanceUpdateDataRelationshipsMaintenanceData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: PatchMaintenanceRequestDataType,
-  }),
-).annotate({
-  identifier: "MaintenanceUpdateDataRelationshipsMaintenanceData",
-}) as any as S.Schema<MaintenanceUpdateDataRelationshipsMaintenanceData>;
+export const MaintenanceUpdateDataRelationshipsMaintenanceData =
+  NullableUserRelationshipData as any as S.Schema<MaintenanceUpdateDataRelationshipsMaintenanceData>;
 
 /** The parent maintenance of the update. */
 export interface MaintenanceUpdateDataRelationshipsMaintenance {
   data: MaintenanceUpdateDataRelationshipsMaintenanceData;
 }
-export const MaintenanceUpdateDataRelationshipsMaintenance = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: MaintenanceUpdateDataRelationshipsMaintenanceData,
-  }),
-).annotate({
-  identifier: "MaintenanceUpdateDataRelationshipsMaintenance",
-}) as any as S.Schema<MaintenanceUpdateDataRelationshipsMaintenance>;
+export const MaintenanceUpdateDataRelationshipsMaintenance =
+  TeamHierarchyLinkCreateTeamRelationship as any as S.Schema<MaintenanceUpdateDataRelationshipsMaintenance>;
 
 /** Relationships of a maintenance update resource. */
 export interface MaintenanceUpdateDataRelationships {
@@ -129577,11 +127921,7 @@ export const RegisterAppKeyRequest = /*@__PURE__*/ S.suspend(() =>
 export interface RegisterAppKeyResponse {
   data?: AppKeyRegistrationData;
 }
-export const RegisterAppKeyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: S.optional(AppKeyRegistrationData),
-  }),
-).annotate({ identifier: "RegisterAppKeyResponse" }) as any as S.Schema<RegisterAppKeyResponse>;
+export const RegisterAppKeyResponse = CreatePageResponse as any as S.Schema<RegisterAppKeyResponse>;
 
 /** OAuth 2.0 grant type that a registered client may use. */
 export type OAuthClientRegistrationGrantType = "authorization_code" | "refresh_token";
@@ -129591,9 +127931,8 @@ export const OAuthClientRegistrationGrantType = S.String;
 export type RegisterOAuthClientRequestGrantTypesList = Array<
   OAuthClientRegistrationGrantType | (string & {})
 >;
-export const RegisterOAuthClientRequestGrantTypesList = /*@__PURE__*/ S.Array(
-  OAuthClientRegistrationGrantType,
-) as any as S.Schema<RegisterOAuthClientRequestGrantTypesList>;
+export const RegisterOAuthClientRequestGrantTypesList =
+  SyntheticsDowntimeWeekdays as any as S.Schema<RegisterOAuthClientRequestGrantTypesList>;
 
 /** Array of redirection URI strings used by the client in redirect-based flows. */
 export type RegisterOAuthClientRequestRedirectUrisList = Array<string>;
@@ -129608,9 +127947,8 @@ export const OAuthClientRegistrationResponseType = S.String;
 export type RegisterOAuthClientRequestResponseTypesList = Array<
   OAuthClientRegistrationResponseType | (string & {})
 >;
-export const RegisterOAuthClientRequestResponseTypesList = /*@__PURE__*/ S.Array(
-  OAuthClientRegistrationResponseType,
-) as any as S.Schema<RegisterOAuthClientRequestResponseTypesList>;
+export const RegisterOAuthClientRequestResponseTypesList =
+  SyntheticsDowntimeWeekdays as any as S.Schema<RegisterOAuthClientRequestResponseTypesList>;
 
 export interface RegisterOAuthClientRequest {
   /** Human-readable name of the client. Control characters are rejected. */
@@ -129856,20 +128194,13 @@ export interface RetentionFilterWithoutAttributes {
   id: string;
   type: ApmRetentionFilterType | (string & {});
 }
-export const RetentionFilterWithoutAttributes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: ApmRetentionFilterType,
-  }),
-).annotate({
-  identifier: "RetentionFilterWithoutAttributes",
-}) as any as S.Schema<RetentionFilterWithoutAttributes>;
+export const RetentionFilterWithoutAttributes =
+  NullableUserRelationshipData as any as S.Schema<RetentionFilterWithoutAttributes>;
 
 /** A list of retention filters objects. */
 export type ReorderApmRetentionFiltersRequestDataList = Array<RetentionFilterWithoutAttributes>;
-export const ReorderApmRetentionFiltersRequestDataList = /*@__PURE__*/ S.Array(
-  RetentionFilterWithoutAttributes,
-) as any as S.Schema<ReorderApmRetentionFiltersRequestDataList>;
+export const ReorderApmRetentionFiltersRequestDataList =
+  RelationshipToOrganizationsDataList as any as S.Schema<ReorderApmRetentionFiltersRequestDataList>;
 
 export interface ReorderApmRetentionFiltersRequest {
   /** A list of retention filters objects. */
@@ -129903,18 +128234,12 @@ export interface ReorderRuleResourceData {
   id?: string;
   type: ReorderRuleResourceDataType | (string & {});
 }
-export const ReorderRuleResourceData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    type: ReorderRuleResourceDataType,
-  }),
-).annotate({ identifier: "ReorderRuleResourceData" }) as any as S.Schema<ReorderRuleResourceData>;
+export const ReorderRuleResourceData = SessionIdData as any as S.Schema<ReorderRuleResourceData>;
 
 /** The `ReorderRuleResourceArray` `data`. */
 export type ReorderCustomAllocationRulesRequestDataList = Array<ReorderRuleResourceData>;
-export const ReorderCustomAllocationRulesRequestDataList = /*@__PURE__*/ S.Array(
-  ReorderRuleResourceData,
-) as any as S.Schema<ReorderCustomAllocationRulesRequestDataList>;
+export const ReorderCustomAllocationRulesRequestDataList =
+  BulkRemoveRumReplayPlaylistSessionsRequestDataList as any as S.Schema<ReorderCustomAllocationRulesRequestDataList>;
 
 export interface ReorderCustomAllocationRulesRequest {
   /** The `ReorderRuleResourceArray` `data`. */
@@ -129980,18 +128305,13 @@ export interface DueDateRuleReorderItem {
   id: string;
   type: DueDateRuleType | (string & {});
 }
-export const DueDateRuleReorderItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: DueDateRuleType,
-  }),
-).annotate({ identifier: "DueDateRuleReorderItem" }) as any as S.Schema<DueDateRuleReorderItem>;
+export const DueDateRuleReorderItem =
+  ProjectRelationshipData as any as S.Schema<DueDateRuleReorderItem>;
 
 /** The ordered list of all due date rules. Every rule must be included. */
 export type DueDateRuleReorderData = Array<DueDateRuleReorderItem>;
-export const DueDateRuleReorderData = /*@__PURE__*/ S.Array(
-  DueDateRuleReorderItem,
-) as any as S.Schema<DueDateRuleReorderData>;
+export const DueDateRuleReorderData =
+  RelationshipToUsersDataList as any as S.Schema<DueDateRuleReorderData>;
 
 export interface ReorderSecurityFindingsAutomationDueDateRulesRequest {
   data: DueDateRuleReorderData;
@@ -130014,13 +128334,8 @@ export const ReorderSecurityFindingsAutomationDueDateRulesRequest = /*@__PURE__*
 export interface DueDateRuleReorderResponse {
   data: DueDateRuleReorderData;
 }
-export const DueDateRuleReorderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: DueDateRuleReorderData,
-  }),
-).annotate({
-  identifier: "DueDateRuleReorderResponse",
-}) as any as S.Schema<DueDateRuleReorderResponse>;
+export const DueDateRuleReorderResponse =
+  IssueTeamOwnersRelationship as any as S.Schema<DueDateRuleReorderResponse>;
 
 /** A reference to an inbox rule used for reordering. */
 export interface InboxRuleReorderItem {
@@ -130028,18 +128343,13 @@ export interface InboxRuleReorderItem {
   id: string;
   type: InboxRuleType | (string & {});
 }
-export const InboxRuleReorderItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: InboxRuleType,
-  }),
-).annotate({ identifier: "InboxRuleReorderItem" }) as any as S.Schema<InboxRuleReorderItem>;
+export const InboxRuleReorderItem =
+  ProjectRelationshipData as any as S.Schema<InboxRuleReorderItem>;
 
 /** The ordered list of all inbox rules. Every rule must be included. */
 export type InboxRuleReorderData = Array<InboxRuleReorderItem>;
-export const InboxRuleReorderData = /*@__PURE__*/ S.Array(
-  InboxRuleReorderItem,
-) as any as S.Schema<InboxRuleReorderData>;
+export const InboxRuleReorderData =
+  RelationshipToUsersDataList as any as S.Schema<InboxRuleReorderData>;
 
 export interface ReorderSecurityFindingsAutomationInboxRulesRequest {
   data: InboxRuleReorderData;
@@ -130062,11 +128372,8 @@ export const ReorderSecurityFindingsAutomationInboxRulesRequest = /*@__PURE__*/ 
 export interface InboxRuleReorderResponse {
   data: InboxRuleReorderData;
 }
-export const InboxRuleReorderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: InboxRuleReorderData,
-  }),
-).annotate({ identifier: "InboxRuleReorderResponse" }) as any as S.Schema<InboxRuleReorderResponse>;
+export const InboxRuleReorderResponse =
+  RelationshipToUsers as any as S.Schema<InboxRuleReorderResponse>;
 
 /** A reference to a mute rule used for reordering. */
 export interface MuteRuleReorderItem {
@@ -130074,18 +128381,12 @@ export interface MuteRuleReorderItem {
   id: string;
   type: MuteRuleType | (string & {});
 }
-export const MuteRuleReorderItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: MuteRuleType,
-  }),
-).annotate({ identifier: "MuteRuleReorderItem" }) as any as S.Schema<MuteRuleReorderItem>;
+export const MuteRuleReorderItem = ProjectRelationshipData as any as S.Schema<MuteRuleReorderItem>;
 
 /** The ordered list of all mute rules. Every rule must be included. */
 export type MuteRuleReorderData = Array<MuteRuleReorderItem>;
-export const MuteRuleReorderData = /*@__PURE__*/ S.Array(
-  MuteRuleReorderItem,
-) as any as S.Schema<MuteRuleReorderData>;
+export const MuteRuleReorderData =
+  RelationshipToUsersDataList as any as S.Schema<MuteRuleReorderData>;
 
 export interface ReorderSecurityFindingsAutomationMuteRulesRequest {
   data: MuteRuleReorderData;
@@ -130108,11 +128409,8 @@ export const ReorderSecurityFindingsAutomationMuteRulesRequest = /*@__PURE__*/ S
 export interface MuteRuleReorderResponse {
   data: MuteRuleReorderData;
 }
-export const MuteRuleReorderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: MuteRuleReorderData,
-  }),
-).annotate({ identifier: "MuteRuleReorderResponse" }) as any as S.Schema<MuteRuleReorderResponse>;
+export const MuteRuleReorderResponse =
+  RelationshipToUsers as any as S.Schema<MuteRuleReorderResponse>;
 
 /** A reference to a severity modifier rule used for reordering. */
 export interface SeverityModifierRuleReorderItem {
@@ -130120,20 +128418,13 @@ export interface SeverityModifierRuleReorderItem {
   id: string;
   type: SeverityModifierRuleType | (string & {});
 }
-export const SeverityModifierRuleReorderItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: SeverityModifierRuleType,
-  }),
-).annotate({
-  identifier: "SeverityModifierRuleReorderItem",
-}) as any as S.Schema<SeverityModifierRuleReorderItem>;
+export const SeverityModifierRuleReorderItem =
+  NullableUserRelationshipData as any as S.Schema<SeverityModifierRuleReorderItem>;
 
 /** The ordered list of all severity modifier rules. Every rule must be included. */
 export type SeverityModifierRuleReorderData = Array<SeverityModifierRuleReorderItem>;
-export const SeverityModifierRuleReorderData = /*@__PURE__*/ S.Array(
-  SeverityModifierRuleReorderItem,
-) as any as S.Schema<SeverityModifierRuleReorderData>;
+export const SeverityModifierRuleReorderData =
+  RelationshipToOrganizationsDataList as any as S.Schema<SeverityModifierRuleReorderData>;
 
 export interface ReorderSecurityFindingsAutomationSeverityModifierRulesRequest {
   data: SeverityModifierRuleReorderData;
@@ -130157,13 +128448,8 @@ export const ReorderSecurityFindingsAutomationSeverityModifierRulesRequest =
 export interface SeverityModifierRuleReorderResponse {
   data: SeverityModifierRuleReorderData;
 }
-export const SeverityModifierRuleReorderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: SeverityModifierRuleReorderData,
-  }),
-).annotate({
-  identifier: "SeverityModifierRuleReorderResponse",
-}) as any as S.Schema<SeverityModifierRuleReorderResponse>;
+export const SeverityModifierRuleReorderResponse =
+  RelationshipToOrganizations as any as S.Schema<SeverityModifierRuleReorderResponse>;
 
 /** A reference to a ticket creation rule used for reordering. */
 export interface TicketCreationRuleReorderItem {
@@ -130171,20 +128457,13 @@ export interface TicketCreationRuleReorderItem {
   id: string;
   type: TicketCreationRuleType | (string & {});
 }
-export const TicketCreationRuleReorderItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: TicketCreationRuleType,
-  }),
-).annotate({
-  identifier: "TicketCreationRuleReorderItem",
-}) as any as S.Schema<TicketCreationRuleReorderItem>;
+export const TicketCreationRuleReorderItem =
+  NullableUserRelationshipData as any as S.Schema<TicketCreationRuleReorderItem>;
 
 /** The ordered list of all ticket creation rules. Every rule must be included. */
 export type TicketCreationRuleReorderData = Array<TicketCreationRuleReorderItem>;
-export const TicketCreationRuleReorderData = /*@__PURE__*/ S.Array(
-  TicketCreationRuleReorderItem,
-) as any as S.Schema<TicketCreationRuleReorderData>;
+export const TicketCreationRuleReorderData =
+  RelationshipToOrganizationsDataList as any as S.Schema<TicketCreationRuleReorderData>;
 
 export interface ReorderSecurityFindingsAutomationTicketCreationRulesRequest {
   data: TicketCreationRuleReorderData;
@@ -130208,13 +128487,8 @@ export const ReorderSecurityFindingsAutomationTicketCreationRulesRequest = /*@__
 export interface TicketCreationRuleReorderResponse {
   data: TicketCreationRuleReorderData;
 }
-export const TicketCreationRuleReorderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: TicketCreationRuleReorderData,
-  }),
-).annotate({
-  identifier: "TicketCreationRuleReorderResponse",
-}) as any as S.Schema<TicketCreationRuleReorderResponse>;
+export const TicketCreationRuleReorderResponse =
+  RelationshipToOrganizations as any as S.Schema<TicketCreationRuleReorderResponse>;
 
 /** Ordered list of tag indexing rule UUIDs. The server assigns rule_order 1, 2, ... matching position in this list. */
 export type TagIndexingRuleOrderAttributesRuleIdsList = Array<string>;
@@ -130271,20 +128545,13 @@ export interface ReorderRulesetResourceData {
   id?: string;
   type: ReorderRulesetResourceDataType | (string & {});
 }
-export const ReorderRulesetResourceData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    type: ReorderRulesetResourceDataType,
-  }),
-).annotate({
-  identifier: "ReorderRulesetResourceData",
-}) as any as S.Schema<ReorderRulesetResourceData>;
+export const ReorderRulesetResourceData =
+  DeleteAppsDatastoreItemResponseData as any as S.Schema<ReorderRulesetResourceData>;
 
 /** The `ReorderRulesetResourceArray` `data`. */
 export type ReorderTagPipelinesRulesetsRequestDataList = Array<ReorderRulesetResourceData>;
-export const ReorderTagPipelinesRulesetsRequestDataList = /*@__PURE__*/ S.Array(
-  ReorderRulesetResourceData,
-) as any as S.Schema<ReorderTagPipelinesRulesetsRequestDataList>;
+export const ReorderTagPipelinesRulesetsRequestDataList =
+  DeleteAppsDatastoreItemResponseArrayDataList as any as S.Schema<ReorderTagPipelinesRulesetsRequestDataList>;
 
 export interface ReorderTagPipelinesRulesetsRequest {
   /** The `ReorderRulesetResourceArray` `data`. */
@@ -130786,26 +129053,15 @@ export interface RunDataObservabilityMonitorResponseData {
   id: string;
   type: DataObservabilityMonitorRunType;
 }
-export const RunDataObservabilityMonitorResponseData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: DataObservabilityMonitorRunType,
-  }),
-).annotate({
-  identifier: "RunDataObservabilityMonitorResponseData",
-}) as any as S.Schema<RunDataObservabilityMonitorResponseData>;
+export const RunDataObservabilityMonitorResponseData =
+  NullableUserRelationshipData as any as S.Schema<RunDataObservabilityMonitorResponseData>;
 
 /** The response returned when a data observability monitor run is triggered. */
 export interface RunDataObservabilityMonitorResponse {
   data: RunDataObservabilityMonitorResponseData;
 }
-export const RunDataObservabilityMonitorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: RunDataObservabilityMonitorResponseData,
-  }),
-).annotate({
-  identifier: "RunDataObservabilityMonitorResponse",
-}) as any as S.Schema<RunDataObservabilityMonitorResponse>;
+export const RunDataObservabilityMonitorResponse =
+  TeamHierarchyLinkCreateTeamRelationship as any as S.Schema<RunDataObservabilityMonitorResponse>;
 
 /** Notifications sent when the job is completed. */
 export type JobDefinitionFromRuleNotificationsList = Array<string>;
@@ -130888,22 +129144,14 @@ export interface JobCreateResponseData {
   id?: string;
   type?: HistoricalJobDataType;
 }
-export const JobCreateResponseData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    type: S.optional(HistoricalJobDataType),
-  }),
-).annotate({ identifier: "JobCreateResponseData" }) as any as S.Schema<JobCreateResponseData>;
+export const JobCreateResponseData =
+  RelationshipToRoleData as any as S.Schema<JobCreateResponseData>;
 
 /** Run a historical job response. */
 export interface JobCreateResponse {
   data?: JobCreateResponseData;
 }
-export const JobCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: S.optional(JobCreateResponseData),
-  }),
-).annotate({ identifier: "JobCreateResponse" }) as any as S.Schema<JobCreateResponse>;
+export const JobCreateResponse = RelationshipToRole as any as S.Schema<JobCreateResponse>;
 
 /** Search and filter query settings. */
 export interface AuditLogsQueryFilter {
@@ -132186,9 +130434,8 @@ export const SearchIssuesIncludeQueryParameterItem = S.String;
 export type SearchIssuesRequestIncludeList = Array<
   SearchIssuesIncludeQueryParameterItem | (string & {})
 >;
-export const SearchIssuesRequestIncludeList = /*@__PURE__*/ S.Array(
-  SearchIssuesIncludeQueryParameterItem,
-) as any as S.Schema<SearchIssuesRequestIncludeList>;
+export const SearchIssuesRequestIncludeList =
+  SyntheticsDowntimeWeekdays as any as S.Schema<SearchIssuesRequestIncludeList>;
 
 /** Filter issues by assignee IDs. Multiple values are combined with OR logic. */
 export type IssuesSearchRequestDataAttributesAssigneeIdsList = Array<string>;
@@ -132209,9 +130456,8 @@ export const IssuesSearchRequestDataAttributesPersona = S.String;
 
 /** Filter issues by state. Multiple values are combined with OR logic. */
 export type IssuesSearchRequestDataAttributesStatesList = Array<IssueState | (string & {})>;
-export const IssuesSearchRequestDataAttributesStatesList = /*@__PURE__*/ S.Array(
-  IssueState,
-) as any as S.Schema<IssuesSearchRequestDataAttributesStatesList>;
+export const IssuesSearchRequestDataAttributesStatesList =
+  SyntheticsDowntimeWeekdays as any as S.Schema<IssuesSearchRequestDataAttributesStatesList>;
 
 /** Filter issues by team IDs. Multiple values are combined with OR logic. */
 export type IssuesSearchRequestDataAttributesTeamIdsList = Array<string>;
@@ -132309,24 +130555,14 @@ export interface IssueReference {
   id: string;
   type: IssueType;
 }
-export const IssueReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: IssueType,
-  }),
-).annotate({ identifier: "IssueReference" }) as any as S.Schema<IssueReference>;
+export const IssueReference = ProjectRelationshipData as any as S.Schema<IssueReference>;
 
 /** Relationship between the search result and the corresponding issue. */
 export interface IssuesSearchResultIssueRelationship {
   data: IssueReference;
 }
-export const IssuesSearchResultIssueRelationship = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: IssueReference,
-  }),
-).annotate({
-  identifier: "IssuesSearchResultIssueRelationship",
-}) as any as S.Schema<IssuesSearchResultIssueRelationship>;
+export const IssuesSearchResultIssueRelationship =
+  ConfiguredScheduleTargetRelationshipsSchedule as any as S.Schema<IssuesSearchResultIssueRelationship>;
 
 /** Relationships between the search result and other resources. */
 export interface IssuesSearchResultRelationships {
@@ -133501,14 +131737,8 @@ export interface ExperimentsStartExperimentV2RequestData {
   id?: string;
   type: ExperimentsStartExperimentV2RequestDataType | (string & {});
 }
-export const ExperimentsStartExperimentV2RequestData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    type: ExperimentsStartExperimentV2RequestDataType,
-  }),
-).annotate({
-  identifier: "ExperimentsStartExperimentV2RequestData",
-}) as any as S.Schema<ExperimentsStartExperimentV2RequestData>;
+export const ExperimentsStartExperimentV2RequestData =
+  DeleteAppsDatastoreItemResponseData as any as S.Schema<ExperimentsStartExperimentV2RequestData>;
 
 export interface StartExperimentRequest {
   /** The UUID of the experiment. */
@@ -134023,13 +132253,8 @@ export const TestSecurityMonitoringRuleRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ReportScheduleToggleRequestAttributes {
   status: ReportScheduleStatus | (string & {});
 }
-export const ReportScheduleToggleRequestAttributes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: ReportScheduleStatus,
-  }),
-).annotate({
-  identifier: "ReportScheduleToggleRequestAttributes",
-}) as any as S.Schema<ReportScheduleToggleRequestAttributes>;
+export const ReportScheduleToggleRequestAttributes =
+  CustomerOrgDisableResponseAttributes as any as S.Schema<ReportScheduleToggleRequestAttributes>;
 
 /** The JSON:API data object for a report schedule toggle request. */
 export interface ReportScheduleToggleRequestData {
@@ -135027,26 +133252,15 @@ export interface CircleCIAPIKeyUpdate {
   api_token?: string | Redacted.Redacted<string>;
   type: CircleCIAPIKeyType | (string & {});
 }
-export const CircleCIAPIKeyUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    api_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    type: CircleCIAPIKeyType,
-  }),
-).annotate({ identifier: "CircleCIAPIKeyUpdate" }) as any as S.Schema<CircleCIAPIKeyUpdate>;
+export const CircleCIAPIKeyUpdate = AnthropicAPIKeyUpdate as any as S.Schema<CircleCIAPIKeyUpdate>;
 
 /** The definition of the `CircleCIIntegrationUpdate` object. */
 export interface CircleCIIntegrationUpdate {
   credentials?: CircleCIAPIKeyUpdate;
   type: CircleCIIntegrationType;
 }
-export const CircleCIIntegrationUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    credentials: S.optional(CircleCIAPIKeyUpdate),
-    type: CircleCIIntegrationType,
-  }),
-).annotate({
-  identifier: "CircleCIIntegrationUpdate",
-}) as any as S.Schema<CircleCIIntegrationUpdate>;
+export const CircleCIIntegrationUpdate =
+  AnthropicIntegrationUpdate as any as S.Schema<CircleCIIntegrationUpdate>;
 
 /** The definition of the `ClickupAPIKey` object. */
 export interface ClickupAPIKeyUpdate {
@@ -135054,12 +133268,7 @@ export interface ClickupAPIKeyUpdate {
   api_token?: string | Redacted.Redacted<string>;
   type: ClickupAPIKeyType | (string & {});
 }
-export const ClickupAPIKeyUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    api_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    type: ClickupAPIKeyType,
-  }),
-).annotate({ identifier: "ClickupAPIKeyUpdate" }) as any as S.Schema<ClickupAPIKeyUpdate>;
+export const ClickupAPIKeyUpdate = AnthropicAPIKeyUpdate as any as S.Schema<ClickupAPIKeyUpdate>;
 
 /** The definition of the `ClickupIntegrationUpdate` object. */
 export interface ClickupIntegrationUpdate {
@@ -135079,12 +133288,8 @@ export interface CloudflareAPITokenUpdate {
   api_token?: string | Redacted.Redacted<string>;
   type: CloudflareAPITokenType;
 }
-export const CloudflareAPITokenUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    api_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    type: CloudflareAPITokenType,
-  }),
-).annotate({ identifier: "CloudflareAPITokenUpdate" }) as any as S.Schema<CloudflareAPITokenUpdate>;
+export const CloudflareAPITokenUpdate =
+  AnthropicAPIKeyUpdate as any as S.Schema<CloudflareAPITokenUpdate>;
 
 /** The definition of the `CloudflareGlobalAPIToken` object. */
 export interface CloudflareGlobalAPITokenUpdate {
@@ -135279,24 +133484,15 @@ export interface GeminiAPIKeyUpdate {
   api_key?: string | Redacted.Redacted<string>;
   type: GeminiAPIKeyType | (string & {});
 }
-export const GeminiAPIKeyUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    api_key: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    type: GeminiAPIKeyType,
-  }),
-).annotate({ identifier: "GeminiAPIKeyUpdate" }) as any as S.Schema<GeminiAPIKeyUpdate>;
+export const GeminiAPIKeyUpdate = FastlyAPIKeyUpdate as any as S.Schema<GeminiAPIKeyUpdate>;
 
 /** The definition of the `GeminiIntegrationUpdate` object. */
 export interface GeminiIntegrationUpdate {
   credentials?: GeminiAPIKeyUpdate;
   type: GeminiIntegrationType;
 }
-export const GeminiIntegrationUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    credentials: S.optional(GeminiAPIKeyUpdate),
-    type: GeminiIntegrationType,
-  }),
-).annotate({ identifier: "GeminiIntegrationUpdate" }) as any as S.Schema<GeminiIntegrationUpdate>;
+export const GeminiIntegrationUpdate =
+  FastlyIntegrationUpdate as any as S.Schema<GeminiIntegrationUpdate>;
 
 /** The definition of the `GitlabAPIKey` object. */
 export interface GitlabAPIKeyUpdate {
@@ -135304,24 +133500,15 @@ export interface GitlabAPIKeyUpdate {
   api_token?: string | Redacted.Redacted<string>;
   type: GitlabAPIKeyType | (string & {});
 }
-export const GitlabAPIKeyUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    api_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    type: GitlabAPIKeyType,
-  }),
-).annotate({ identifier: "GitlabAPIKeyUpdate" }) as any as S.Schema<GitlabAPIKeyUpdate>;
+export const GitlabAPIKeyUpdate = AnthropicAPIKeyUpdate as any as S.Schema<GitlabAPIKeyUpdate>;
 
 /** The definition of the `GitlabIntegrationUpdate` object. */
 export interface GitlabIntegrationUpdate {
   credentials?: GitlabAPIKeyUpdate;
   type: GitlabIntegrationType;
 }
-export const GitlabIntegrationUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    credentials: S.optional(GitlabAPIKeyUpdate),
-    type: GitlabIntegrationType,
-  }),
-).annotate({ identifier: "GitlabIntegrationUpdate" }) as any as S.Schema<GitlabIntegrationUpdate>;
+export const GitlabIntegrationUpdate =
+  ClickupIntegrationUpdate as any as S.Schema<GitlabIntegrationUpdate>;
 
 /** The definition of the `GreyNoiseAPIKey` object. */
 export interface GreyNoiseAPIKeyUpdate {
@@ -135329,12 +133516,7 @@ export interface GreyNoiseAPIKeyUpdate {
   api_key?: string | Redacted.Redacted<string>;
   type: GreyNoiseAPIKeyType | (string & {});
 }
-export const GreyNoiseAPIKeyUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    api_key: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    type: GreyNoiseAPIKeyType,
-  }),
-).annotate({ identifier: "GreyNoiseAPIKeyUpdate" }) as any as S.Schema<GreyNoiseAPIKeyUpdate>;
+export const GreyNoiseAPIKeyUpdate = FastlyAPIKeyUpdate as any as S.Schema<GreyNoiseAPIKeyUpdate>;
 
 /** The definition of the `GreyNoiseIntegrationUpdate` object. */
 export interface GreyNoiseIntegrationUpdate {
@@ -135455,26 +133637,16 @@ export interface LaunchDarklyAPIKeyUpdate {
   api_token?: string | Redacted.Redacted<string>;
   type: LaunchDarklyAPIKeyType | (string & {});
 }
-export const LaunchDarklyAPIKeyUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    api_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    type: LaunchDarklyAPIKeyType,
-  }),
-).annotate({ identifier: "LaunchDarklyAPIKeyUpdate" }) as any as S.Schema<LaunchDarklyAPIKeyUpdate>;
+export const LaunchDarklyAPIKeyUpdate =
+  AnthropicAPIKeyUpdate as any as S.Schema<LaunchDarklyAPIKeyUpdate>;
 
 /** The definition of the `LaunchDarklyIntegrationUpdate` object. */
 export interface LaunchDarklyIntegrationUpdate {
   credentials?: LaunchDarklyAPIKeyUpdate;
   type: LaunchDarklyIntegrationType;
 }
-export const LaunchDarklyIntegrationUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    credentials: S.optional(LaunchDarklyAPIKeyUpdate),
-    type: LaunchDarklyIntegrationType,
-  }),
-).annotate({
-  identifier: "LaunchDarklyIntegrationUpdate",
-}) as any as S.Schema<LaunchDarklyIntegrationUpdate>;
+export const LaunchDarklyIntegrationUpdate =
+  AnthropicIntegrationUpdate as any as S.Schema<LaunchDarklyIntegrationUpdate>;
 
 /** The definition of the `NotionAPIKey` object. */
 export interface NotionAPIKeyUpdate {
@@ -135482,24 +133654,15 @@ export interface NotionAPIKeyUpdate {
   api_token?: string | Redacted.Redacted<string>;
   type: NotionAPIKeyType | (string & {});
 }
-export const NotionAPIKeyUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    api_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    type: NotionAPIKeyType,
-  }),
-).annotate({ identifier: "NotionAPIKeyUpdate" }) as any as S.Schema<NotionAPIKeyUpdate>;
+export const NotionAPIKeyUpdate = AnthropicAPIKeyUpdate as any as S.Schema<NotionAPIKeyUpdate>;
 
 /** The definition of the `NotionIntegrationUpdate` object. */
 export interface NotionIntegrationUpdate {
   credentials?: NotionAPIKeyUpdate;
   type: NotionIntegrationType;
 }
-export const NotionIntegrationUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    credentials: S.optional(NotionAPIKeyUpdate),
-    type: NotionIntegrationType,
-  }),
-).annotate({ identifier: "NotionIntegrationUpdate" }) as any as S.Schema<NotionIntegrationUpdate>;
+export const NotionIntegrationUpdate =
+  ClickupIntegrationUpdate as any as S.Schema<NotionIntegrationUpdate>;
 
 /** The definition of the `OktaAPIToken` object. */
 export interface OktaAPITokenUpdate {
@@ -135535,24 +133698,15 @@ export interface OpenAIAPIKeyUpdate {
   api_token?: string | Redacted.Redacted<string>;
   type: OpenAIAPIKeyType | (string & {});
 }
-export const OpenAIAPIKeyUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    api_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    type: OpenAIAPIKeyType,
-  }),
-).annotate({ identifier: "OpenAIAPIKeyUpdate" }) as any as S.Schema<OpenAIAPIKeyUpdate>;
+export const OpenAIAPIKeyUpdate = AnthropicAPIKeyUpdate as any as S.Schema<OpenAIAPIKeyUpdate>;
 
 /** The definition of the `OpenAIIntegrationUpdate` object. */
 export interface OpenAIIntegrationUpdate {
   credentials?: OpenAIAPIKeyUpdate;
   type: OpenAIIntegrationType;
 }
-export const OpenAIIntegrationUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    credentials: S.optional(OpenAIAPIKeyUpdate),
-    type: OpenAIIntegrationType,
-  }),
-).annotate({ identifier: "OpenAIIntegrationUpdate" }) as any as S.Schema<OpenAIIntegrationUpdate>;
+export const OpenAIIntegrationUpdate =
+  ClickupIntegrationUpdate as any as S.Schema<OpenAIIntegrationUpdate>;
 
 /** The definition of the `ServiceNowBasicAuth` object. */
 export interface ServiceNowBasicAuthUpdate {
@@ -135595,24 +133749,15 @@ export interface SplitAPIKeyUpdate {
   api_key?: string | Redacted.Redacted<string>;
   type: SplitAPIKeyType | (string & {});
 }
-export const SplitAPIKeyUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    api_key: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    type: SplitAPIKeyType,
-  }),
-).annotate({ identifier: "SplitAPIKeyUpdate" }) as any as S.Schema<SplitAPIKeyUpdate>;
+export const SplitAPIKeyUpdate = FastlyAPIKeyUpdate as any as S.Schema<SplitAPIKeyUpdate>;
 
 /** The definition of the `SplitIntegrationUpdate` object. */
 export interface SplitIntegrationUpdate {
   credentials?: SplitAPIKeyUpdate;
   type: SplitIntegrationType;
 }
-export const SplitIntegrationUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    credentials: S.optional(SplitAPIKeyUpdate),
-    type: SplitIntegrationType,
-  }),
-).annotate({ identifier: "SplitIntegrationUpdate" }) as any as S.Schema<SplitIntegrationUpdate>;
+export const SplitIntegrationUpdate =
+  FastlyIntegrationUpdate as any as S.Schema<SplitIntegrationUpdate>;
 
 /** The definition of the `StatsigAPIKey` object. */
 export interface StatsigAPIKeyUpdate {
@@ -135620,24 +133765,15 @@ export interface StatsigAPIKeyUpdate {
   api_key?: string | Redacted.Redacted<string>;
   type: StatsigAPIKeyType | (string & {});
 }
-export const StatsigAPIKeyUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    api_key: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    type: StatsigAPIKeyType,
-  }),
-).annotate({ identifier: "StatsigAPIKeyUpdate" }) as any as S.Schema<StatsigAPIKeyUpdate>;
+export const StatsigAPIKeyUpdate = FastlyAPIKeyUpdate as any as S.Schema<StatsigAPIKeyUpdate>;
 
 /** The definition of the `StatsigIntegrationUpdate` object. */
 export interface StatsigIntegrationUpdate {
   credentials?: StatsigAPIKeyUpdate;
   type: StatsigIntegrationType;
 }
-export const StatsigIntegrationUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    credentials: S.optional(StatsigAPIKeyUpdate),
-    type: StatsigIntegrationType,
-  }),
-).annotate({ identifier: "StatsigIntegrationUpdate" }) as any as S.Schema<StatsigIntegrationUpdate>;
+export const StatsigIntegrationUpdate =
+  FastlyIntegrationUpdate as any as S.Schema<StatsigIntegrationUpdate>;
 
 /** The definition of the `VirusTotalAPIKey` object. */
 export interface VirusTotalAPIKeyUpdate {
@@ -135645,26 +133781,15 @@ export interface VirusTotalAPIKeyUpdate {
   api_key?: string | Redacted.Redacted<string>;
   type: VirusTotalAPIKeyType | (string & {});
 }
-export const VirusTotalAPIKeyUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    api_key: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    type: VirusTotalAPIKeyType,
-  }),
-).annotate({ identifier: "VirusTotalAPIKeyUpdate" }) as any as S.Schema<VirusTotalAPIKeyUpdate>;
+export const VirusTotalAPIKeyUpdate = FastlyAPIKeyUpdate as any as S.Schema<VirusTotalAPIKeyUpdate>;
 
 /** The definition of the `VirusTotalIntegrationUpdate` object. */
 export interface VirusTotalIntegrationUpdate {
   credentials?: VirusTotalAPIKeyUpdate;
   type: VirusTotalIntegrationType;
 }
-export const VirusTotalIntegrationUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    credentials: S.optional(VirusTotalAPIKeyUpdate),
-    type: VirusTotalIntegrationType,
-  }),
-).annotate({
-  identifier: "VirusTotalIntegrationUpdate",
-}) as any as S.Schema<VirusTotalIntegrationUpdate>;
+export const VirusTotalIntegrationUpdate =
+  GreyNoiseIntegrationUpdate as any as S.Schema<VirusTotalIntegrationUpdate>;
 
 /** The definition of `ActionConnectionIntegrationUpdate` object. */
 export type ActionConnectionIntegrationUpdate =
@@ -135927,18 +134052,8 @@ export interface RetentionFilterUpdateAttributes {
   /** Sample rate to apply to traces containing spans going through this retention filter. A value of 1.0 keeps all traces with spans matching the query. */
   trace_rate?: number;
 }
-export const RetentionFilterUpdateAttributes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    filter: SpansFilterCreate,
-    filter_type: RetentionFilterAllType,
-    name: S.String,
-    rate: S.Number,
-    trace_rate: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RetentionFilterUpdateAttributes",
-}) as any as S.Schema<RetentionFilterUpdateAttributes>;
+export const RetentionFilterUpdateAttributes =
+  RetentionFilterCreateAttributes as any as S.Schema<RetentionFilterUpdateAttributes>;
 
 /** The body of the retention filter to be updated. */
 export interface RetentionFilterUpdateData {
@@ -140908,26 +139023,15 @@ export interface RelationshipToIncidentPostmortemData {
   id: string;
   type: IncidentPostmortemType | (string & {});
 }
-export const RelationshipToIncidentPostmortemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: IncidentPostmortemType,
-  }),
-).annotate({
-  identifier: "RelationshipToIncidentPostmortemData",
-}) as any as S.Schema<RelationshipToIncidentPostmortemData>;
+export const RelationshipToIncidentPostmortemData =
+  NullableUserRelationshipData as any as S.Schema<RelationshipToIncidentPostmortemData>;
 
 /** A relationship reference for postmortems. */
 export interface RelationshipToIncidentPostmortem {
   data: RelationshipToIncidentPostmortemData;
 }
-export const RelationshipToIncidentPostmortem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: RelationshipToIncidentPostmortemData,
-  }),
-).annotate({
-  identifier: "RelationshipToIncidentPostmortem",
-}) as any as S.Schema<RelationshipToIncidentPostmortem>;
+export const RelationshipToIncidentPostmortem =
+  TeamHierarchyLinkCreateTeamRelationship as any as S.Schema<RelationshipToIncidentPostmortem>;
 
 /** The incident's relationships for an update request. */
 export interface IncidentUpdateRelationships {
@@ -141875,14 +139979,8 @@ export interface IssueUpdateAssigneeRequestData {
   id: string;
   type: IssueUpdateAssigneeRequestDataType | (string & {});
 }
-export const IssueUpdateAssigneeRequestData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: IssueUpdateAssigneeRequestDataType,
-  }),
-).annotate({
-  identifier: "IssueUpdateAssigneeRequestData",
-}) as any as S.Schema<IssueUpdateAssigneeRequestData>;
+export const IssueUpdateAssigneeRequestData =
+  NullableUserRelationshipData as any as S.Schema<IssueUpdateAssigneeRequestData>;
 
 export interface UpdateIssueAssigneeRequest {
   /** The identifier of the issue. */
@@ -145226,27 +143324,16 @@ export const RUMOperationStrongLinkUpdateStatus = S.String;
 export interface RUMOperationStrongLinkUpdateRequestAttributes {
   status: RUMOperationStrongLinkUpdateStatus | (string & {});
 }
-export const RUMOperationStrongLinkUpdateRequestAttributes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: RUMOperationStrongLinkUpdateStatus,
-  }),
-).annotate({
-  identifier: "RUMOperationStrongLinkUpdateRequestAttributes",
-}) as any as S.Schema<RUMOperationStrongLinkUpdateRequestAttributes>;
+export const RUMOperationStrongLinkUpdateRequestAttributes =
+  CustomerOrgDisableResponseAttributes as any as S.Schema<RUMOperationStrongLinkUpdateRequestAttributes>;
 
 /** The data object for updating a RUM operation link. */
 export interface RUMOperationStrongLinkUpdateRequestData {
   attributes: RUMOperationStrongLinkUpdateRequestAttributes;
   type: RUMOperationStrongLinkType | (string & {});
 }
-export const RUMOperationStrongLinkUpdateRequestData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attributes: RUMOperationStrongLinkUpdateRequestAttributes,
-    type: RUMOperationStrongLinkType,
-  }),
-).annotate({
-  identifier: "RUMOperationStrongLinkUpdateRequestData",
-}) as any as S.Schema<RUMOperationStrongLinkUpdateRequestData>;
+export const RUMOperationStrongLinkUpdateRequestData =
+  ReportScheduleToggleRequestData as any as S.Schema<RUMOperationStrongLinkUpdateRequestData>;
 
 export interface UpdateRUMOperationStrongLinkRequest {
   /** The unique identifier of the RUM operation. */
@@ -146008,14 +144095,8 @@ export interface SecurityMonitoringDatasetUpdateData {
   attributes: SecurityMonitoringDatasetAttributesRequest;
   type: SecurityMonitoringDatasetUpdateType | (string & {});
 }
-export const SecurityMonitoringDatasetUpdateData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attributes: SecurityMonitoringDatasetAttributesRequest,
-    type: SecurityMonitoringDatasetUpdateType,
-  }),
-).annotate({
-  identifier: "SecurityMonitoringDatasetUpdateData",
-}) as any as S.Schema<SecurityMonitoringDatasetUpdateData>;
+export const SecurityMonitoringDatasetUpdateData =
+  SecurityMonitoringDatasetCreateData as any as S.Schema<SecurityMonitoringDatasetUpdateData>;
 
 export interface UpdateSecurityMonitoringDatasetRequest {
   /** The UUID of the dataset. */
@@ -147745,15 +145826,8 @@ export interface TwilioIntegrationAccountBasicAuthUpdate {
   /** Non-secret username or public identifier for the credential pair. */
   username?: string;
 }
-export const TwilioIntegrationAccountBasicAuthUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    auth_type: TwilioIntegrationAccountBasicAuthType,
-    password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    username: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TwilioIntegrationAccountBasicAuthUpdate",
-}) as any as S.Schema<TwilioIntegrationAccountBasicAuthUpdate>;
+export const TwilioIntegrationAccountBasicAuthUpdate =
+  ElasticCloudIntegrationAccountBasicAuthUpdate as any as S.Schema<TwilioIntegrationAccountBasicAuthUpdate>;
 
 /** Settings for updating the Twilio integration account. Only the fields provided are changed. */
 export interface TwilioIntegrationAccountSettingsUpdate {
@@ -147878,20 +145952,13 @@ export interface UserRelationshipIdentityProviderData {
   id: string;
   type: UserRelationshipIdentityProviderDataType | (string & {});
 }
-export const UserRelationshipIdentityProviderData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: UserRelationshipIdentityProviderDataType,
-  }),
-).annotate({
-  identifier: "UserRelationshipIdentityProviderData",
-}) as any as S.Schema<UserRelationshipIdentityProviderData>;
+export const UserRelationshipIdentityProviderData =
+  NullableUserRelationshipData as any as S.Schema<UserRelationshipIdentityProviderData>;
 
 /** List of identity provider resource identifiers for a relationship update. */
 export type UserRelationshipIdentityProviderDataList = Array<UserRelationshipIdentityProviderData>;
-export const UserRelationshipIdentityProviderDataList = /*@__PURE__*/ S.Array(
-  UserRelationshipIdentityProviderData,
-) as any as S.Schema<UserRelationshipIdentityProviderDataList>;
+export const UserRelationshipIdentityProviderDataList =
+  RelationshipToOrganizationsDataList as any as S.Schema<UserRelationshipIdentityProviderDataList>;
 
 export interface UpdateUserIdentityProvidersRequest {
   /** The ID of the user. */

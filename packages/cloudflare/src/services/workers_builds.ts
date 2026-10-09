@@ -869,23 +869,8 @@ export interface GetBuildResponseTriggerRepoConnection {
   /** Human-readable repository name. */
   repoName?: string | null;
 }
-export const GetBuildResponseTriggerRepoConnection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-    deletedOn: S.optional(S.NullOr(S.String).pipe(T.Body("deleted_on"))),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-    providerAccountId: S.optional(S.NullOr(S.String).pipe(T.Body("provider_account_id"))),
-    providerAccountName: S.optional(S.NullOr(S.String).pipe(T.Body("provider_account_name"))),
-    providerType: S.optional(
-      S.NullOr(GetBuildResponseTriggerRepoConnectionProviderType).pipe(T.Body("provider_type")),
-    ),
-    repoConnectionUuid: S.optional(S.NullOr(S.String).pipe(T.Body("repo_connection_uuid"))),
-    repoId: S.optional(S.NullOr(S.String).pipe(T.Body("repo_id"))),
-    repoName: S.optional(S.NullOr(S.String).pipe(T.Body("repo_name"))),
-  }),
-).annotate({
-  identifier: "GetBuildResponseTriggerRepoConnection",
-}) as any as S.Schema<GetBuildResponseTriggerRepoConnection>;
+export const GetBuildResponseTriggerRepoConnection =
+  CreateTriggerResponseRepoConnection as any as S.Schema<GetBuildResponseTriggerRepoConnection>;
 
 export interface GetBuildResponseTrigger {
   /** Branch patterns that must not start builds. */
@@ -1882,23 +1867,8 @@ export interface ListBuildsResultItemTriggerRepoConnection {
   /** Human-readable repository name. */
   repoName?: string | null;
 }
-export const ListBuildsResultItemTriggerRepoConnection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-    deletedOn: S.optional(S.NullOr(S.String).pipe(T.Body("deleted_on"))),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-    providerAccountId: S.optional(S.NullOr(S.String).pipe(T.Body("provider_account_id"))),
-    providerAccountName: S.optional(S.NullOr(S.String).pipe(T.Body("provider_account_name"))),
-    providerType: S.optional(
-      S.NullOr(ListBuildsResultItemTriggerRepoConnectionProviderType).pipe(T.Body("provider_type")),
-    ),
-    repoConnectionUuid: S.optional(S.NullOr(S.String).pipe(T.Body("repo_connection_uuid"))),
-    repoId: S.optional(S.NullOr(S.String).pipe(T.Body("repo_id"))),
-    repoName: S.optional(S.NullOr(S.String).pipe(T.Body("repo_name"))),
-  }),
-).annotate({
-  identifier: "ListBuildsResultItemTriggerRepoConnection",
-}) as any as S.Schema<ListBuildsResultItemTriggerRepoConnection>;
+export const ListBuildsResultItemTriggerRepoConnection =
+  CreateTriggerResponseRepoConnection as any as S.Schema<ListBuildsResultItemTriggerRepoConnection>;
 
 export interface ListBuildsResultItemTrigger {
   /** Branch patterns that must not start builds. */
@@ -2104,23 +2074,8 @@ export interface ListTriggersResultItemRepoConnection {
   /** Human-readable repository name. */
   repoName?: string | null;
 }
-export const ListTriggersResultItemRepoConnection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-    deletedOn: S.optional(S.NullOr(S.String).pipe(T.Body("deleted_on"))),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-    providerAccountId: S.optional(S.NullOr(S.String).pipe(T.Body("provider_account_id"))),
-    providerAccountName: S.optional(S.NullOr(S.String).pipe(T.Body("provider_account_name"))),
-    providerType: S.optional(
-      S.NullOr(ListTriggersResultItemRepoConnectionProviderType).pipe(T.Body("provider_type")),
-    ),
-    repoConnectionUuid: S.optional(S.NullOr(S.String).pipe(T.Body("repo_connection_uuid"))),
-    repoId: S.optional(S.NullOr(S.String).pipe(T.Body("repo_id"))),
-    repoName: S.optional(S.NullOr(S.String).pipe(T.Body("repo_name"))),
-  }),
-).annotate({
-  identifier: "ListTriggersResultItemRepoConnection",
-}) as any as S.Schema<ListTriggersResultItemRepoConnection>;
+export const ListTriggersResultItemRepoConnection =
+  CreateTriggerResponseRepoConnection as any as S.Schema<ListTriggersResultItemRepoConnection>;
 
 export interface ListTriggersResultItem {
   /** Branch patterns that must not start builds. */
@@ -2468,25 +2423,8 @@ export interface TriggersCreateBuildResponseTriggerRepoConnection {
   /** Human-readable repository name. */
   repoName?: string | null;
 }
-export const TriggersCreateBuildResponseTriggerRepoConnection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-    deletedOn: S.optional(S.NullOr(S.String).pipe(T.Body("deleted_on"))),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-    providerAccountId: S.optional(S.NullOr(S.String).pipe(T.Body("provider_account_id"))),
-    providerAccountName: S.optional(S.NullOr(S.String).pipe(T.Body("provider_account_name"))),
-    providerType: S.optional(
-      S.NullOr(TriggersCreateBuildResponseTriggerRepoConnectionProviderType).pipe(
-        T.Body("provider_type"),
-      ),
-    ),
-    repoConnectionUuid: S.optional(S.NullOr(S.String).pipe(T.Body("repo_connection_uuid"))),
-    repoId: S.optional(S.NullOr(S.String).pipe(T.Body("repo_id"))),
-    repoName: S.optional(S.NullOr(S.String).pipe(T.Body("repo_name"))),
-  }),
-).annotate({
-  identifier: "TriggersCreateBuildResponseTriggerRepoConnection",
-}) as any as S.Schema<TriggersCreateBuildResponseTriggerRepoConnection>;
+export const TriggersCreateBuildResponseTriggerRepoConnection =
+  GetLatestBuildsResponseBuildsValueTriggerRepoConnection as any as S.Schema<TriggersCreateBuildResponseTriggerRepoConnection>;
 
 export interface TriggersCreateBuildResponseTrigger {
   /** Branch patterns that must not start builds. */
@@ -2731,23 +2669,8 @@ export interface UpdateTriggerResponseRepoConnection {
   /** Human-readable repository name. */
   repoName?: string | null;
 }
-export const UpdateTriggerResponseRepoConnection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-    deletedOn: S.optional(S.NullOr(S.String).pipe(T.Body("deleted_on"))),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-    providerAccountId: S.optional(S.NullOr(S.String).pipe(T.Body("provider_account_id"))),
-    providerAccountName: S.optional(S.NullOr(S.String).pipe(T.Body("provider_account_name"))),
-    providerType: S.optional(
-      S.NullOr(UpdateTriggerResponseRepoConnectionProviderType).pipe(T.Body("provider_type")),
-    ),
-    repoConnectionUuid: S.optional(S.NullOr(S.String).pipe(T.Body("repo_connection_uuid"))),
-    repoId: S.optional(S.NullOr(S.String).pipe(T.Body("repo_id"))),
-    repoName: S.optional(S.NullOr(S.String).pipe(T.Body("repo_name"))),
-  }),
-).annotate({
-  identifier: "UpdateTriggerResponseRepoConnection",
-}) as any as S.Schema<UpdateTriggerResponseRepoConnection>;
+export const UpdateTriggerResponseRepoConnection =
+  CreateTriggerResponseRepoConnection as any as S.Schema<UpdateTriggerResponseRepoConnection>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateTriggerResponse {
@@ -2874,23 +2797,8 @@ export interface UpsertReposConnectionResponse {
   /** Human-readable repository name. */
   repoName?: string | null;
 }
-export const UpsertReposConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-    deletedOn: S.optional(S.NullOr(S.String).pipe(T.Body("deleted_on"))),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-    providerAccountId: S.optional(S.NullOr(S.String).pipe(T.Body("provider_account_id"))),
-    providerAccountName: S.optional(S.NullOr(S.String).pipe(T.Body("provider_account_name"))),
-    providerType: S.optional(
-      S.NullOr(UpsertReposConnectionResponseProviderType).pipe(T.Body("provider_type")),
-    ),
-    repoConnectionUuid: S.optional(S.NullOr(S.String).pipe(T.Body("repo_connection_uuid"))),
-    repoId: S.optional(S.NullOr(S.String).pipe(T.Body("repo_id"))),
-    repoName: S.optional(S.NullOr(S.String).pipe(T.Body("repo_name"))),
-  }),
-).annotate({
-  identifier: "UpsertReposConnectionResponse",
-}) as any as S.Schema<UpsertReposConnectionResponse>;
+export const UpsertReposConnectionResponse =
+  CreateTriggerResponseRepoConnection as any as S.Schema<UpsertReposConnectionResponse>;
 
 export interface UpsertTriggersEnvironmentVariableRequestBodyValue {
   /** Whether to hide the value after it is saved. Secret values remain available to builds but appear as `null` when you list variables; non-secret values remain visible. */

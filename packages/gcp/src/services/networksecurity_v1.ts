@@ -969,9 +969,8 @@ export const WildfireSubmissionRuleCustomFileTypesFileTypesItemEnum = S.String;
 export type WildfireSubmissionRuleCustomFileTypesFileTypesItemEnumList = Array<
   WildfireSubmissionRuleCustomFileTypesFileTypesItemEnum | (string & {})
 >;
-export const WildfireSubmissionRuleCustomFileTypesFileTypesItemEnumList = /*@__PURE__*/ S.Array(
-  WildfireSubmissionRuleCustomFileTypesFileTypesItemEnum,
-) as any as S.Schema<WildfireSubmissionRuleCustomFileTypesFileTypesItemEnumList>;
+export const WildfireSubmissionRuleCustomFileTypesFileTypesItemEnumList =
+  AddressGroupPurposeItemEnumList as any as S.Schema<WildfireSubmissionRuleCustomFileTypesFileTypesItemEnumList>;
 
 /** The options to submit a custom list of file types for scan. */
 export interface WildfireSubmissionRuleCustomFileTypes {
@@ -1145,17 +1144,12 @@ export interface WildfireInlineMlOverride {
   /** Required. Protocol to match for WildFire Inline ML override. */
   protocol?: WildfireInlineMlOverrideProtocolEnum | (string & {});
 }
-export const WildfireInlineMlOverride = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.optional(WildfireInlineMlOverrideActionEnum),
-    protocol: S.optional(WildfireInlineMlOverrideProtocolEnum),
-  }),
-).annotate({ identifier: "WildfireInlineMlOverride" }) as any as S.Schema<WildfireInlineMlOverride>;
+export const WildfireInlineMlOverride =
+  WildfireOverride as any as S.Schema<WildfireInlineMlOverride>;
 
 export type WildfireInlineMlOverrideList = Array<WildfireInlineMlOverride>;
-export const WildfireInlineMlOverrideList = /*@__PURE__*/ S.Array(
-  WildfireInlineMlOverride,
-) as any as S.Schema<WildfireInlineMlOverrideList>;
+export const WildfireInlineMlOverrideList =
+  WildfireOverrideList as any as S.Schema<WildfireInlineMlOverrideList>;
 
 export type WildfireInlineMlSettingsInlineMlConfigFileTypeEnum =
   | "INLINE_ML_CONFIG_UNSPECIFIED"
@@ -3296,21 +3290,13 @@ export interface MirroringEndpointGroupAssociationDetails {
   /** Output only. The associated network, for example: projects/123456789/global/networks/my-network. See https://google.aip.dev/124. */
   network?: string;
 }
-export const MirroringEndpointGroupAssociationDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    state: S.optional(MirroringEndpointGroupAssociationDetailsStateEnum),
-    network: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "MirroringEndpointGroupAssociationDetails",
-}) as any as S.Schema<MirroringEndpointGroupAssociationDetails>;
+export const MirroringEndpointGroupAssociationDetails =
+  InterceptEndpointGroupAssociationDetails as any as S.Schema<MirroringEndpointGroupAssociationDetails>;
 
 export type MirroringEndpointGroupAssociationDetailsList =
   Array<MirroringEndpointGroupAssociationDetails>;
-export const MirroringEndpointGroupAssociationDetailsList = /*@__PURE__*/ S.Array(
-  MirroringEndpointGroupAssociationDetails,
-) as any as S.Schema<MirroringEndpointGroupAssociationDetailsList>;
+export const MirroringEndpointGroupAssociationDetailsList =
+  InterceptEndpointGroupAssociationDetailsList as any as S.Schema<MirroringEndpointGroupAssociationDetailsList>;
 
 /** The endpoint group's view of a connected deployment group. */
 export interface MirroringEndpointGroupConnectedDeploymentGroup {

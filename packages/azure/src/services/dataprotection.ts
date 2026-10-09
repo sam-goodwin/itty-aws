@@ -1180,13 +1180,8 @@ export interface CrossRegionRestoreSettings {
   /** CrossRegionRestore state */
   state?: CrossRegionRestoreState | (string & {});
 }
-export const CrossRegionRestoreSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: S.optional(CrossRegionRestoreState),
-  }),
-).annotate({
-  identifier: "CrossRegionRestoreSettings",
-}) as any as S.Schema<CrossRegionRestoreSettings>;
+export const CrossRegionRestoreSettings =
+  CrossSubscriptionRestoreSettings as any as S.Schema<CrossRegionRestoreSettings>;
 
 /** Class containing feature settings of vault */
 export interface FeatureSettings {

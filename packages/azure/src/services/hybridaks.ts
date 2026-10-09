@@ -2125,14 +2125,8 @@ export interface VirtualNetworkExtendedLocation {
   /** ARM Id of the extended location. */
   name?: string;
 }
-export const VirtualNetworkExtendedLocation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(VirtualNetworkExtendedLocationType),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "VirtualNetworkExtendedLocation",
-}) as any as S.Schema<VirtualNetworkExtendedLocation>;
+export const VirtualNetworkExtendedLocation =
+  GetVirtualNetworkResponseExtendedLocation as any as S.Schema<VirtualNetworkExtendedLocation>;
 
 /** The Virtual Network resource definition. */
 export interface VirtualNetwork {
@@ -2381,37 +2375,8 @@ export interface ProvisionedClusterPropertiesInputAutoScalerProfile {
   /** The default is true. */
   skip_nodes_with_system_pods?: string;
 }
-export const ProvisionedClusterPropertiesInputAutoScalerProfile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    balance_similar_node_groups: S.optional(S.String.pipe(T.Body("balance-similar-node-groups"))),
-    expander: S.optional(ProvisionedClusterPropertiesInputAutoScalerProfileExpander),
-    max_empty_bulk_delete: S.optional(S.String.pipe(T.Body("max-empty-bulk-delete"))),
-    max_graceful_termination_sec: S.optional(S.String.pipe(T.Body("max-graceful-termination-sec"))),
-    max_node_provision_time: S.optional(S.String.pipe(T.Body("max-node-provision-time"))),
-    max_total_unready_percentage: S.optional(S.String.pipe(T.Body("max-total-unready-percentage"))),
-    new_pod_scale_up_delay: S.optional(S.String.pipe(T.Body("new-pod-scale-up-delay"))),
-    ok_total_unready_count: S.optional(S.String.pipe(T.Body("ok-total-unready-count"))),
-    scan_interval: S.optional(S.String.pipe(T.Body("scan-interval"))),
-    scale_down_delay_after_add: S.optional(S.String.pipe(T.Body("scale-down-delay-after-add"))),
-    scale_down_delay_after_delete: S.optional(
-      S.String.pipe(T.Body("scale-down-delay-after-delete")),
-    ),
-    scale_down_delay_after_failure: S.optional(
-      S.String.pipe(T.Body("scale-down-delay-after-failure")),
-    ),
-    scale_down_unneeded_time: S.optional(S.String.pipe(T.Body("scale-down-unneeded-time"))),
-    scale_down_unready_time: S.optional(S.String.pipe(T.Body("scale-down-unready-time"))),
-    scale_down_utilization_threshold: S.optional(
-      S.String.pipe(T.Body("scale-down-utilization-threshold")),
-    ),
-    skip_nodes_with_local_storage: S.optional(
-      S.String.pipe(T.Body("skip-nodes-with-local-storage")),
-    ),
-    skip_nodes_with_system_pods: S.optional(S.String.pipe(T.Body("skip-nodes-with-system-pods"))),
-  }),
-).annotate({
-  identifier: "ProvisionedClusterPropertiesInputAutoScalerProfile",
-}) as any as S.Schema<ProvisionedClusterPropertiesInputAutoScalerProfile>;
+export const ProvisionedClusterPropertiesInputAutoScalerProfile =
+  ProvisionedClusterPropertiesAutoScalerProfile as any as S.Schema<ProvisionedClusterPropertiesInputAutoScalerProfile>;
 
 /** Properties of the provisioned cluster. */
 export interface ProvisionedClusterPropertiesInput {
@@ -2688,14 +2653,8 @@ export interface UpdateVirtualNetworkResponseExtendedLocation {
   /** ARM Id of the extended location. */
   name?: string;
 }
-export const UpdateVirtualNetworkResponseExtendedLocation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(UpdateVirtualNetworkResponseExtendedLocationType),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateVirtualNetworkResponseExtendedLocation",
-}) as any as S.Schema<UpdateVirtualNetworkResponseExtendedLocation>;
+export const UpdateVirtualNetworkResponseExtendedLocation =
+  GetVirtualNetworkResponseExtendedLocation as any as S.Schema<UpdateVirtualNetworkResponseExtendedLocation>;
 
 export interface UpdateVirtualNetworkResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2807,14 +2766,8 @@ export interface VirtualNetworksCreateOrUpdateRequestExtendedLocation {
   /** ARM Id of the extended location. */
   name?: string;
 }
-export const VirtualNetworksCreateOrUpdateRequestExtendedLocation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(VirtualNetworksCreateOrUpdateRequestExtendedLocationType),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "VirtualNetworksCreateOrUpdateRequestExtendedLocation",
-}) as any as S.Schema<VirtualNetworksCreateOrUpdateRequestExtendedLocation>;
+export const VirtualNetworksCreateOrUpdateRequestExtendedLocation =
+  GetVirtualNetworkResponseExtendedLocation as any as S.Schema<VirtualNetworksCreateOrUpdateRequestExtendedLocation>;
 
 export interface VirtualNetworksCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2868,14 +2821,8 @@ export interface VirtualNetworksCreateOrUpdateResponseExtendedLocation {
   /** ARM Id of the extended location. */
   name?: string;
 }
-export const VirtualNetworksCreateOrUpdateResponseExtendedLocation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(VirtualNetworksCreateOrUpdateResponseExtendedLocationType),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "VirtualNetworksCreateOrUpdateResponseExtendedLocation",
-}) as any as S.Schema<VirtualNetworksCreateOrUpdateResponseExtendedLocation>;
+export const VirtualNetworksCreateOrUpdateResponseExtendedLocation =
+  GetVirtualNetworkResponseExtendedLocation as any as S.Schema<VirtualNetworksCreateOrUpdateResponseExtendedLocation>;
 
 export interface VirtualNetworksCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */

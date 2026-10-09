@@ -308,12 +308,7 @@ export interface AgentSpec {
   /** Required. The type of the agent spec content. */
   type?: AgentSpecTypeEnum | (string & {});
 }
-export const AgentSpec = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    content: S.optional(DocumentMap),
-    type: S.optional(AgentSpecTypeEnum),
-  }),
-).annotate({ identifier: "AgentSpec" }) as any as S.Schema<AgentSpec>;
+export const AgentSpec = EndpointSpec as any as S.Schema<AgentSpec>;
 
 /** Represents a user-defined Service. */
 export interface Service {
@@ -975,12 +970,7 @@ export interface Card {
   /** Output only. The type of agent card. */
   type?: CardTypeEnum;
 }
-export const Card = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    content: S.optional(DocumentMap),
-    type: S.optional(CardTypeEnum),
-  }),
-).annotate({ identifier: "Card" }) as any as S.Schema<Card>;
+export const Card = EndpointSpec as any as S.Schema<Card>;
 
 export type ProtocolTypeEnum = "TYPE_UNSPECIFIED" | "A2A_AGENT" | "CUSTOM";
 export const ProtocolTypeEnum = S.String;

@@ -425,13 +425,7 @@ export interface SimpleScopeTerm {
   key?: ScopeFilterKey;
   values?: string[];
 }
-export const SimpleScopeTerm = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    comparator: S.optional(JobComparator),
-    key: S.optional(ScopeFilterKey),
-    values: S.optional(__listOf__string),
-  }),
-).annotate({ identifier: "SimpleScopeTerm" }) as any as S.Schema<SimpleScopeTerm>;
+export const SimpleScopeTerm = SimpleCriterionForJob as any as S.Schema<SimpleScopeTerm>;
 export interface TagValuePair {
   key?: string;
   value?: string;
@@ -2814,7 +2808,8 @@ export type UnavailabilityReasonCode =
 export const UnavailabilityReasonCode = S.String;
 
 export type __listOfUnavailabilityReasonCode = UnavailabilityReasonCode[];
-export const __listOfUnavailabilityReasonCode = /*@__PURE__*/ S.Array(UnavailabilityReasonCode);
+export const __listOfUnavailabilityReasonCode =
+  __listOfFindingType as any as S.Schema<__listOfUnavailabilityReasonCode>;
 export interface GetSensitiveDataOccurrencesAvailabilityResponse {
   code?: AvailabilityCode;
   reasons?: UnavailabilityReasonCode[];
@@ -2908,13 +2903,8 @@ export interface UsageStatisticsFilter {
   key?: UsageStatisticsFilterKey;
   values?: string[];
 }
-export const UsageStatisticsFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    comparator: S.optional(UsageStatisticsFilterComparator),
-    key: S.optional(UsageStatisticsFilterKey),
-    values: S.optional(__listOf__string),
-  }),
-).annotate({ identifier: "UsageStatisticsFilter" }) as any as S.Schema<UsageStatisticsFilter>;
+export const UsageStatisticsFilter =
+  SimpleCriterionForJob as any as S.Schema<UsageStatisticsFilter>;
 export type __listOfUsageStatisticsFilter = UsageStatisticsFilter[];
 export const __listOfUsageStatisticsFilter = /*@__PURE__*/ S.Array(UsageStatisticsFilter);
 export type UsageStatisticsSortKey =
@@ -3147,15 +3137,10 @@ export interface ListJobsFilterTerm {
   key?: ListJobsFilterKey;
   values?: string[];
 }
-export const ListJobsFilterTerm = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    comparator: S.optional(JobComparator),
-    key: S.optional(ListJobsFilterKey),
-    values: S.optional(__listOf__string),
-  }),
-).annotate({ identifier: "ListJobsFilterTerm" }) as any as S.Schema<ListJobsFilterTerm>;
+export const ListJobsFilterTerm = SimpleCriterionForJob as any as S.Schema<ListJobsFilterTerm>;
 export type __listOfListJobsFilterTerm = ListJobsFilterTerm[];
-export const __listOfListJobsFilterTerm = /*@__PURE__*/ S.Array(ListJobsFilterTerm);
+export const __listOfListJobsFilterTerm =
+  __listOfUsageStatisticsFilter as any as S.Schema<__listOfListJobsFilterTerm>;
 export interface ListJobsFilterCriteria {
   excludes?: ListJobsFilterTerm[];
   includes?: ListJobsFilterTerm[];
@@ -3823,14 +3808,8 @@ export interface SearchResourcesSortCriteria {
   attributeName?: SearchResourcesSortAttributeName;
   orderBy?: OrderBy;
 }
-export const SearchResourcesSortCriteria = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attributeName: S.optional(SearchResourcesSortAttributeName),
-    orderBy: S.optional(OrderBy),
-  }),
-).annotate({
-  identifier: "SearchResourcesSortCriteria",
-}) as any as S.Schema<SearchResourcesSortCriteria>;
+export const SearchResourcesSortCriteria =
+  FindingStatisticsSortCriteria as any as S.Schema<SearchResourcesSortCriteria>;
 export interface SearchResourcesRequest {
   bucketCriteria?: SearchResourcesBucketCriteria;
   maxResults?: number;

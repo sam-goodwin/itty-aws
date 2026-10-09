@@ -458,27 +458,12 @@ export interface BusinessAddressDetail {
   /** The address type under which this is classified. For example, shipping or dropoff. */
   type: BusinessAddressType | (string & {});
 }
-export const BusinessAddressDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    address_line_1: S.optional(S.String),
-    address_line_2: S.optional(S.String),
-    address_line_3: S.optional(S.String),
-    admin_area_4: S.optional(S.String),
-    admin_area_3: S.optional(S.String),
-    admin_area_2: S.optional(S.String),
-    admin_area_1: S.optional(S.String),
-    postal_code: S.optional(S.String),
-    country_code: S.String,
-    address_details: S.optional(AddressDetails),
-    type: BusinessAddressType,
-  }),
-).annotate({ identifier: "BusinessAddressDetail" }) as any as S.Schema<BusinessAddressDetail>;
+export const BusinessAddressDetail = PersonAddressDetail as any as S.Schema<BusinessAddressDetail>;
 
 /** List of addresses associated with the business entity. */
 export type BusinessAddressDetailList = Array<BusinessAddressDetail>;
-export const BusinessAddressDetailList = /*@__PURE__*/ S.Array(
-  BusinessAddressDetail,
-) as any as S.Schema<BusinessAddressDetailList>;
+export const BusinessAddressDetailList =
+  PersonAddressDetailList as any as S.Schema<BusinessAddressDetailList>;
 
 /** The type of phone number provided. For example, home, work, or mobile. */
 export type BusinessPhoneType = "CUSTOMER_SERVICE" | "BUSINESS";
@@ -494,20 +479,12 @@ export interface BusinessPhoneDetail {
   /** The type of phone number provided. For example, home, work, or mobile. */
   type: BusinessPhoneType | (string & {});
 }
-export const BusinessPhoneDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    country_code: S.String,
-    national_number: S.String,
-    extension_number: S.optional(S.String),
-    type: BusinessPhoneType,
-  }),
-).annotate({ identifier: "BusinessPhoneDetail" }) as any as S.Schema<BusinessPhoneDetail>;
+export const BusinessPhoneDetail = PersonPhoneDetail as any as S.Schema<BusinessPhoneDetail>;
 
 /** List of phone number associated with the business. */
 export type BusinessPhoneDetailList = Array<BusinessPhoneDetail>;
-export const BusinessPhoneDetailList = /*@__PURE__*/ S.Array(
-  BusinessPhoneDetail,
-) as any as S.Schema<BusinessPhoneDetailList>;
+export const BusinessPhoneDetailList =
+  PersonPhoneDetailList as any as S.Schema<BusinessPhoneDetailList>;
 
 /** The type of documents. */
 export type BusinessDocumentType =
@@ -539,24 +516,12 @@ export interface BusinessDocumentInput {
   /** The actual type of the document. */
   type?: BusinessDocumentType | (string & {});
 }
-export const BusinessDocumentInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    labels: S.optional(LabelsList),
-    name: S.optional(S.String),
-    identification_number: S.optional(S.String),
-    issue_date: S.optional(S.String),
-    expiry_date: S.optional(S.String),
-    issuing_country_code: S.optional(S.String),
-    files: S.optional(FileReferenceList),
-    type: S.optional(BusinessDocumentType),
-  }),
-).annotate({ identifier: "BusinessDocumentInput" }) as any as S.Schema<BusinessDocumentInput>;
+export const BusinessDocumentInput = PersonDocumentInput as any as S.Schema<BusinessDocumentInput>;
 
 /** Business Party related Document data collected from the customer.. For example SSN, ITIN, Business registration number that were collected from the user. */
 export type BusinessDocumentListInput = Array<BusinessDocumentInput>;
-export const BusinessDocumentListInput = /*@__PURE__*/ S.Array(
-  BusinessDocumentInput,
-) as any as S.Schema<BusinessDocumentListInput>;
+export const BusinessDocumentListInput =
+  PersonDocumentListInput as any as S.Schema<BusinessDocumentListInput>;
 
 export interface IndividualBeneficialOwnerInput {
   names?: PersonNameList;
@@ -1072,9 +1037,7 @@ export const Capabilities = S.String;
 
 /** An array of capabilities which the partner wants to enable for the selected products. Supported only when products are specified. */
 export type CapabilitiesList = Array<Capabilities | (string & {})>;
-export const CapabilitiesList = /*@__PURE__*/ S.Array(
-  Capabilities,
-) as any as S.Schema<CapabilitiesList>;
+export const CapabilitiesList = RestEndpointFeaturesEnumList as any as S.Schema<CapabilitiesList>;
 
 /** An array of dependent processes. */
 export type DependentProcessList = Array<unknown>;
@@ -1386,26 +1349,11 @@ export interface BusinessDocument {
   /** The actual type of the document. */
   type?: BusinessDocumentType;
 }
-export const BusinessDocument = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    labels: S.optional(LabelsList),
-    name: S.optional(S.String),
-    identification_number: S.optional(S.String),
-    issue_date: S.optional(S.String),
-    expiry_date: S.optional(S.String),
-    issuing_country_code: S.optional(S.String),
-    files: S.optional(FileReferenceList),
-    links: S.optional(LinkDescriptionList),
-    type: S.optional(BusinessDocumentType),
-  }),
-).annotate({ identifier: "BusinessDocument" }) as any as S.Schema<BusinessDocument>;
+export const BusinessDocument = PersonDocument as any as S.Schema<BusinessDocument>;
 
 /** Business Party related Document data collected from the customer.. For example SSN, ITIN, Business registration number that were collected from the user. */
 export type BusinessDocumentList = Array<BusinessDocument>;
-export const BusinessDocumentList = /*@__PURE__*/ S.Array(
-  BusinessDocument,
-) as any as S.Schema<BusinessDocumentList>;
+export const BusinessDocumentList = PersonDocumentList as any as S.Schema<BusinessDocumentList>;
 
 export interface IndividualBeneficialOwner {
   /** The encrypted party ID. */

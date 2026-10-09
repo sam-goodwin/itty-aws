@@ -379,14 +379,8 @@ export interface AddFieldForUserRequestBodyCase0 {
   /** The field's data type. */
   data_type: AddFieldForUserRequestBodyCase0DataType | (string & {});
 }
-export const AddFieldForUserRequestBodyCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    data_type: AddFieldForUserRequestBodyCase0DataType,
-  }),
-).annotate({
-  identifier: "AddFieldForUserRequestBodyCase0",
-}) as any as S.Schema<AddFieldForUserRequestBodyCase0>;
+export const AddFieldForUserRequestBodyCase0 =
+  AddFieldForOrgRequestBodyCase1 as any as S.Schema<AddFieldForUserRequestBodyCase0>;
 
 /** The field's data type. */
 export type AddFieldForUserRequestBodyCase1DataType = "single_select";
@@ -427,15 +421,8 @@ export interface AddFieldForUserRequestBodyCase2 {
   data_type: AddFieldForUserRequestBodyCase2DataType;
   iteration_configuration: ProjectsV2FieldIterationConfiguration;
 }
-export const AddFieldForUserRequestBodyCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    data_type: AddFieldForUserRequestBodyCase2DataType,
-    iteration_configuration: ProjectsV2FieldIterationConfiguration,
-  }),
-).annotate({
-  identifier: "AddFieldForUserRequestBodyCase2",
-}) as any as S.Schema<AddFieldForUserRequestBodyCase2>;
+export const AddFieldForUserRequestBodyCase2 =
+  AddFieldForOrgRequestBodyCase3 as any as S.Schema<AddFieldForUserRequestBodyCase2>;
 
 export type AddFieldForUserRequestBody =
   | AddFieldForUserRequestBodyCase0

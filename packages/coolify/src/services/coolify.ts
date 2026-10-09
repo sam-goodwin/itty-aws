@@ -2723,25 +2723,13 @@ export interface CreatePrivateGithubAppApplicationRequestDockerComposeDomainsIte
     | null;
 }
 export const CreatePrivateGithubAppApplicationRequestDockerComposeDomainsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      domain: S.optional(S.String),
-      redirect: S.optional(
-        S.NullOr(CreatePrivateGithubAppApplicationRequestDockerComposeDomainsItemRedirect),
-      ),
-    }),
-  ).annotate({
-    identifier: "CreatePrivateGithubAppApplicationRequestDockerComposeDomainsItem",
-  }) as any as S.Schema<CreatePrivateGithubAppApplicationRequestDockerComposeDomainsItem>;
+  CreatePrivateDeployKeyApplicationRequestDockerComposeDomainsItem as any as S.Schema<CreatePrivateGithubAppApplicationRequestDockerComposeDomainsItem>;
 
 /** Array of URLs to be applied to containers of a dockercompose application. */
 export type CreatePrivateGithubAppApplicationRequestDockerComposeDomainsList =
   Array<CreatePrivateGithubAppApplicationRequestDockerComposeDomainsItem>;
 export const CreatePrivateGithubAppApplicationRequestDockerComposeDomainsList =
-  /*@__PURE__*/ S.Array(
-    CreatePrivateGithubAppApplicationRequestDockerComposeDomainsItem,
-  ) as any as S.Schema<CreatePrivateGithubAppApplicationRequestDockerComposeDomainsList>;
+  CreatePrivateDeployKeyApplicationRequestDockerComposeDomainsList as any as S.Schema<CreatePrivateGithubAppApplicationRequestDockerComposeDomainsList>;
 
 /** Tags to assign to the application. */
 export type CreatePrivateGithubAppApplicationRequestTagsList = Array<string>;
@@ -9735,22 +9723,14 @@ export interface UpdateApplicationByUuidRequestDockerComposeDomainsItem {
   /** Per-service www/non-www redirect for this compose service. */
   redirect?: UpdateApplicationByUuidRequestDockerComposeDomainsItemRedirect | (string & {}) | null;
 }
-export const UpdateApplicationByUuidRequestDockerComposeDomainsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    domain: S.optional(S.String),
-    redirect: S.optional(S.NullOr(UpdateApplicationByUuidRequestDockerComposeDomainsItemRedirect)),
-  }),
-).annotate({
-  identifier: "UpdateApplicationByUuidRequestDockerComposeDomainsItem",
-}) as any as S.Schema<UpdateApplicationByUuidRequestDockerComposeDomainsItem>;
+export const UpdateApplicationByUuidRequestDockerComposeDomainsItem =
+  CreatePublicApplicationRequestDockerComposeDomainsItem as any as S.Schema<UpdateApplicationByUuidRequestDockerComposeDomainsItem>;
 
 /** Array of URLs to be applied to containers of a dockercompose application. */
 export type UpdateApplicationByUuidRequestDockerComposeDomainsList =
   Array<UpdateApplicationByUuidRequestDockerComposeDomainsItem>;
-export const UpdateApplicationByUuidRequestDockerComposeDomainsList = /*@__PURE__*/ S.Array(
-  UpdateApplicationByUuidRequestDockerComposeDomainsItem,
-) as any as S.Schema<UpdateApplicationByUuidRequestDockerComposeDomainsList>;
+export const UpdateApplicationByUuidRequestDockerComposeDomainsList =
+  CreatePublicApplicationRequestDockerComposeDomainsList as any as S.Schema<UpdateApplicationByUuidRequestDockerComposeDomainsList>;
 
 export interface UpdateApplicationByUuidRequest {
   /** UUID of the application. */

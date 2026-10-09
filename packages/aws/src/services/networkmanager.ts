@@ -836,16 +836,9 @@ export interface ConnectPeerError {
   ResourceArn?: string;
   RequestId?: string;
 }
-export const ConnectPeerError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Code: S.optional(ConnectPeerErrorCode),
-    Message: S.optional(S.String),
-    ResourceArn: S.optional(S.String),
-    RequestId: S.optional(S.String),
-  }),
-).annotate({ identifier: "ConnectPeerError" }) as any as S.Schema<ConnectPeerError>;
+export const ConnectPeerError = AttachmentError as any as S.Schema<ConnectPeerError>;
 export type ConnectPeerErrorList = ConnectPeerError[];
-export const ConnectPeerErrorList = /*@__PURE__*/ S.Array(ConnectPeerError);
+export const ConnectPeerErrorList = AttachmentErrorList as any as S.Schema<ConnectPeerErrorList>;
 export interface ConnectPeer {
   CoreNetworkId?: string;
   ConnectAttachmentId?: string;
@@ -3039,7 +3032,7 @@ export type RouteType = "PROPAGATED" | "STATIC" | (string & {});
 export const RouteType = S.String;
 
 export type RouteTypeList = RouteType[];
-export const RouteTypeList = /*@__PURE__*/ S.Array(RouteType);
+export const RouteTypeList = RouteStateList as any as S.Schema<RouteTypeList>;
 export type FilterName = string;
 export type FilterValue = string;
 export type FilterValues = string[];

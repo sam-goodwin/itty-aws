@@ -1174,9 +1174,8 @@ export const DiskEncryptionTarget = S.String;
 
 /** On Linux pool, only "TemporaryDisk" is supported; on Windows pool, "OsDisk" and "TemporaryDisk" must be specified. */
 export type DiskEncryptionConfigurationTargetsList = Array<DiskEncryptionTarget | (string & {})>;
-export const DiskEncryptionConfigurationTargetsList = /*@__PURE__*/ S.Array(
-  DiskEncryptionTarget,
-) as any as S.Schema<DiskEncryptionConfigurationTargetsList>;
+export const DiskEncryptionConfigurationTargetsList =
+  BatchAccountCreatePropertiesAllowedAuthenticationModesList as any as S.Schema<DiskEncryptionConfigurationTargetsList>;
 
 /** The Customer Managed Key reference to encrypt the Disk. */
 export interface DiskCustomerManagedKey {
@@ -1616,9 +1615,8 @@ export const IPFamily = S.String;
 
 /** IP families are used to determine single-stack or dual-stack pools. For single-stack, the expected value is IPv4. For dual-stack, the expected values are IPv4 and IPv6. */
 export type PublicIPAddressConfigurationIpFamiliesList = Array<IPFamily | (string & {})>;
-export const PublicIPAddressConfigurationIpFamiliesList = /*@__PURE__*/ S.Array(
-  IPFamily,
-) as any as S.Schema<PublicIPAddressConfigurationIpFamiliesList>;
+export const PublicIPAddressConfigurationIpFamiliesList =
+  BatchAccountCreatePropertiesAllowedAuthenticationModesList as any as S.Schema<PublicIPAddressConfigurationIpFamiliesList>;
 
 /** Specifies how tasks should be distributed across compute nodes. */
 export interface IPTag {

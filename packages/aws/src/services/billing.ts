@@ -469,7 +469,8 @@ export type BillingViewStatusReason =
 export const BillingViewStatusReason = S.String;
 
 export type BillingViewStatusReasons = BillingViewStatusReason[];
-export const BillingViewStatusReasons = /*@__PURE__*/ S.Array(BillingViewStatusReason);
+export const BillingViewStatusReasons =
+  BillingFeatures as any as S.Schema<BillingViewStatusReasons>;
 export interface BillingViewHealthStatus {
   statusCode?: BillingViewStatus;
   statusReasons?: BillingViewStatusReason[];
@@ -894,7 +895,7 @@ export const ActiveTimeRange = /*@__PURE__*/ S.suspend(() =>
 export type BillingViewArnList = string[];
 export const BillingViewArnList = BillingViewSourceViewsList as any as S.Schema<BillingViewArnList>;
 export type BillingViewTypeList = BillingViewType[];
-export const BillingViewTypeList = /*@__PURE__*/ S.Array(BillingViewType);
+export const BillingViewTypeList = BillingFeatures as any as S.Schema<BillingViewTypeList>;
 export type SearchOption = "STARTS_WITH" | (string & {});
 export const SearchOption = S.String;
 

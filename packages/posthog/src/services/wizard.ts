@@ -670,9 +670,8 @@ export const ListWizardRunsRequestStatusItem = S.String;
 export type ListWizardRunsRequestStatusList = Array<
   ListWizardRunsRequestStatusItem | (string & {})
 >;
-export const ListWizardRunsRequestStatusList = /*@__PURE__*/ S.Array(
-  ListWizardRunsRequestStatusItem,
-) as any as S.Schema<ListWizardRunsRequestStatusList>;
+export const ListWizardRunsRequestStatusList =
+  WizardProgramSupportedEnvironmentsList as any as S.Schema<ListWizardRunsRequestStatusList>;
 
 export interface ListWizardRunsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */

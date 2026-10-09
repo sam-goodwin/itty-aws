@@ -144,22 +144,12 @@ export interface UpdateResponseEnforcementRulesItem {
   /** Whether the rule is active. */
   enabled?: boolean | null;
 }
-export const UpdateResponseEnforcementRulesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    expression: S.String,
-    mode: UpdateResponseEnforcementRulesItemMode,
-    id: S.optional(S.NullOr(S.String)),
-    description: S.optional(S.NullOr(S.String)),
-    enabled: S.optional(S.NullOr(S.Boolean)),
-  }),
-).annotate({
-  identifier: "UpdateResponseEnforcementRulesItem",
-}) as any as S.Schema<UpdateResponseEnforcementRulesItem>;
+export const UpdateResponseEnforcementRulesItem =
+  GetResponseEnforcementRulesItem as any as S.Schema<UpdateResponseEnforcementRulesItem>;
 
 export type UpdateResponseEnforcementRulesList = Array<UpdateResponseEnforcementRulesItem>;
-export const UpdateResponseEnforcementRulesList = /*@__PURE__*/ S.Array(
-  UpdateResponseEnforcementRulesItem,
-) as any as S.Schema<UpdateResponseEnforcementRulesList>;
+export const UpdateResponseEnforcementRulesList =
+  GetResponseEnforcementRulesList as any as S.Schema<UpdateResponseEnforcementRulesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateResponse {
@@ -168,14 +158,7 @@ export interface UpdateResponse {
   /** The ordered list of enforcement rules for the zone. */
   enforcementRules?: UpdateResponseEnforcementRulesList | null;
 }
-export const UpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultMode: S.optional(S.NullOr(UpdateResponseDefaultMode).pipe(T.Body("default_mode"))),
-    enforcementRules: S.optional(
-      S.NullOr(UpdateResponseEnforcementRulesList).pipe(T.Body("enforcement_rules")),
-    ),
-  }),
-).annotate({ identifier: "UpdateResponse" }) as any as S.Schema<UpdateResponse>;
+export const UpdateResponse = GetResponse as any as S.Schema<UpdateResponse>;
 
 export type GetError = CloudflareOpError;
 /** Retrieve a zone's Precursor configuration: the zone-level `default_mode` and the ordered list of `enforcement_rules`. */

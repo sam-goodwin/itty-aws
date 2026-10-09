@@ -392,16 +392,7 @@ export interface DatastoreSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const DatastoreSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(DatastoreSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(DatastoreSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({ identifier: "DatastoreSystemData" }) as any as S.Schema<DatastoreSystemData>;
+export const DatastoreSystemData = ClusterSystemData as any as S.Schema<DatastoreSystemData>;
 
 /** Gets or sets the Resource tags. */
 export type DatastoreTagsMap = { [key: string]: string | undefined };
@@ -584,16 +575,7 @@ export interface HostSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const HostSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(HostSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(HostSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({ identifier: "HostSystemData" }) as any as S.Schema<HostSystemData>;
+export const HostSystemData = ClusterSystemData as any as S.Schema<HostSystemData>;
 
 /** Gets or sets the Resource tags. */
 export type HostTagsMap = { [key: string]: string | undefined };
@@ -725,16 +707,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(SystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(SystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
+export const SystemData = ClusterSystemData as any as S.Schema<SystemData>;
 
 export interface CreateInventoryItemResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -941,16 +914,7 @@ export interface ResourcePoolSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const ResourcePoolSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(ResourcePoolSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(ResourcePoolSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({ identifier: "ResourcePoolSystemData" }) as any as S.Schema<ResourcePoolSystemData>;
+export const ResourcePoolSystemData = ClusterSystemData as any as S.Schema<ResourcePoolSystemData>;
 
 /** Gets or sets the Resource tags. */
 export type ResourcePoolTagsMap = { [key: string]: string | undefined };
@@ -1136,16 +1100,7 @@ export interface VCenterSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const VCenterSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(VCenterSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(VCenterSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({ identifier: "VCenterSystemData" }) as any as S.Schema<VCenterSystemData>;
+export const VCenterSystemData = ClusterSystemData as any as S.Schema<VCenterSystemData>;
 
 /** Gets or sets the Resource tags. */
 export type VCenterTagsMap = { [key: string]: string | undefined };
@@ -1726,16 +1681,8 @@ export interface VirtualNetworkSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const VirtualNetworkSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(VirtualNetworkSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(VirtualNetworkSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({ identifier: "VirtualNetworkSystemData" }) as any as S.Schema<VirtualNetworkSystemData>;
+export const VirtualNetworkSystemData =
+  ClusterSystemData as any as S.Schema<VirtualNetworkSystemData>;
 
 /** Gets or sets the Resource tags. */
 export type VirtualNetworkTagsMap = { [key: string]: string | undefined };

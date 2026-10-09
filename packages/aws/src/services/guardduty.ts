@@ -2238,10 +2238,7 @@ export type CoverageStatus = "HEALTHY" | "UNHEALTHY" | (string & {});
 export const CoverageStatus = S.String;
 
 export type CountByCoverageStatus = { [key in CoverageStatus]?: number };
-export const CountByCoverageStatus = /*@__PURE__*/ S.Record(
-  CoverageStatus,
-  /*@__PURE__*/ S.Number.pipe(S.optional),
-);
+export const CountByCoverageStatus = CountByResourceType as any as S.Schema<CountByCoverageStatus>;
 export interface CoverageStatistics {
   CountByResourceType?: { [key: string]: number | undefined };
   CountByCoverageStatus?: { [key: string]: number | undefined };
@@ -5759,7 +5756,8 @@ export type FindingStatisticType = "COUNT_BY_SEVERITY" | (string & {});
 export const FindingStatisticType = S.String;
 
 export type FindingStatisticTypes = FindingStatisticType[];
-export const FindingStatisticTypes = /*@__PURE__*/ S.Array(FindingStatisticType);
+export const FindingStatisticTypes =
+  CoverageStatisticsTypeList as any as S.Schema<FindingStatisticTypes>;
 export type GroupByType =
   | "ACCOUNT"
   | "DATE"
@@ -6631,27 +6629,11 @@ export interface MemberAdditionalConfigurationResult {
   UpdatedAt?: Date;
   ManagedBy?: ManagedBy;
 }
-export const MemberAdditionalConfigurationResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.optional(OrgFeatureAdditionalConfiguration),
-    Status: S.optional(FeatureStatus),
-    UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    ManagedBy: S.optional(ManagedBy),
-  }).pipe(
-    S.encodeKeys({
-      Name: "name",
-      Status: "status",
-      UpdatedAt: "updatedAt",
-      ManagedBy: "managedBy",
-    }),
-  ),
-).annotate({
-  identifier: "MemberAdditionalConfigurationResult",
-}) as any as S.Schema<MemberAdditionalConfigurationResult>;
+export const MemberAdditionalConfigurationResult =
+  DetectorAdditionalConfigurationResult as any as S.Schema<MemberAdditionalConfigurationResult>;
 export type MemberAdditionalConfigurationResults = MemberAdditionalConfigurationResult[];
-export const MemberAdditionalConfigurationResults = /*@__PURE__*/ S.Array(
-  MemberAdditionalConfigurationResult,
-);
+export const MemberAdditionalConfigurationResults =
+  DetectorAdditionalConfigurationResults as any as S.Schema<MemberAdditionalConfigurationResults>;
 export interface MemberFeaturesConfigurationResult {
   Name?: OrgFeature;
   Status?: FeatureStatus;
@@ -6659,29 +6641,11 @@ export interface MemberFeaturesConfigurationResult {
   AdditionalConfiguration?: MemberAdditionalConfigurationResult[];
   ManagedBy?: ManagedBy;
 }
-export const MemberFeaturesConfigurationResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.optional(OrgFeature),
-    Status: S.optional(FeatureStatus),
-    UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    AdditionalConfiguration: S.optional(MemberAdditionalConfigurationResults),
-    ManagedBy: S.optional(ManagedBy),
-  }).pipe(
-    S.encodeKeys({
-      Name: "name",
-      Status: "status",
-      UpdatedAt: "updatedAt",
-      AdditionalConfiguration: "additionalConfiguration",
-      ManagedBy: "managedBy",
-    }),
-  ),
-).annotate({
-  identifier: "MemberFeaturesConfigurationResult",
-}) as any as S.Schema<MemberFeaturesConfigurationResult>;
+export const MemberFeaturesConfigurationResult =
+  DetectorFeatureConfigurationResult as any as S.Schema<MemberFeaturesConfigurationResult>;
 export type MemberFeaturesConfigurationsResults = MemberFeaturesConfigurationResult[];
-export const MemberFeaturesConfigurationsResults = /*@__PURE__*/ S.Array(
-  MemberFeaturesConfigurationResult,
-);
+export const MemberFeaturesConfigurationsResults =
+  DetectorFeatureConfigurationsResults as any as S.Schema<MemberFeaturesConfigurationsResults>;
 export interface MemberDataSourceConfiguration {
   AccountId?: string;
   DataSources?: DataSourceConfigurationsResult;
@@ -7205,33 +7169,8 @@ export interface GetTrustedEntitySetResponse {
   UpdatedAt?: Date;
   ErrorDetails?: string;
 }
-export const GetTrustedEntitySetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.optional(S.String),
-    Format: S.optional(TrustedEntitySetFormat),
-    Location: S.optional(S.String),
-    ExpectedBucketOwner: S.optional(S.String),
-    Status: S.optional(TrustedEntitySetStatus),
-    Tags: S.optional(TagMap),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    ErrorDetails: S.optional(S.String),
-  }).pipe(
-    S.encodeKeys({
-      Name: "name",
-      Format: "format",
-      Location: "location",
-      ExpectedBucketOwner: "expectedBucketOwner",
-      Status: "status",
-      Tags: "tags",
-      CreatedAt: "createdAt",
-      UpdatedAt: "updatedAt",
-      ErrorDetails: "errorDetails",
-    }),
-  ),
-).annotate({
-  identifier: "GetTrustedEntitySetResponse",
-}) as any as S.Schema<GetTrustedEntitySetResponse>;
+export const GetTrustedEntitySetResponse =
+  GetThreatEntitySetResponse as any as S.Schema<GetTrustedEntitySetResponse>;
 export type UsageStatisticType =
   | "SUM_BY_ACCOUNT"
   | "SUM_BY_DATA_SOURCE"
@@ -7253,7 +7192,7 @@ export type DataSource =
 export const DataSource = S.String;
 
 export type DataSourceList = DataSource[];
-export const DataSourceList = /*@__PURE__*/ S.Array(DataSource);
+export const DataSourceList = CoverageStatisticsTypeList as any as S.Schema<DataSourceList>;
 export type ResourceList = string[];
 export const ResourceList = FindingIds as any as S.Schema<ResourceList>;
 export type UsageFeature =
@@ -7275,7 +7214,7 @@ export type UsageFeature =
 export const UsageFeature = S.String;
 
 export type UsageFeatureList = UsageFeature[];
-export const UsageFeatureList = /*@__PURE__*/ S.Array(UsageFeature);
+export const UsageFeatureList = CoverageStatisticsTypeList as any as S.Schema<UsageFeatureList>;
 export interface UsageCriteria {
   AccountIds?: string[];
   DataSources?: DataSource[];
@@ -9178,14 +9117,8 @@ export interface MemberAdditionalConfiguration {
   Name?: OrgFeatureAdditionalConfiguration;
   Status?: FeatureStatus;
 }
-export const MemberAdditionalConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.optional(OrgFeatureAdditionalConfiguration),
-    Status: S.optional(FeatureStatus),
-  }).pipe(S.encodeKeys({ Name: "name", Status: "status" })),
-).annotate({
-  identifier: "MemberAdditionalConfiguration",
-}) as any as S.Schema<MemberAdditionalConfiguration>;
+export const MemberAdditionalConfiguration =
+  DetectorAdditionalConfiguration as any as S.Schema<MemberAdditionalConfiguration>;
 export type MemberAdditionalConfigurations = MemberAdditionalConfiguration[];
 export const MemberAdditionalConfigurations = /*@__PURE__*/ S.Array(MemberAdditionalConfiguration);
 export interface MemberFeaturesConfiguration {

@@ -1006,7 +1006,7 @@ export const ListEnvironmentHostsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListEnvironmentHostsResponse",
 }) as any as S.Schema<ListEnvironmentHostsResponse>;
 export type EnvironmentStateList = EnvironmentState[];
-export const EnvironmentStateList = /*@__PURE__*/ S.Array(EnvironmentState);
+export const EnvironmentStateList = InstanceTypeList as any as S.Schema<EnvironmentStateList>;
 export interface ListEnvironmentsRequest {
   nextToken?: string;
   maxResults?: number;

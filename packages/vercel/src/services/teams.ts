@@ -534,9 +534,8 @@ export type TeamDefaultRolesTeamRolesItem =
 export const TeamDefaultRolesTeamRolesItem = S.String;
 
 export type TeamDefaultRolesTeamRolesList = Array<TeamDefaultRolesTeamRolesItem>;
-export const TeamDefaultRolesTeamRolesList = /*@__PURE__*/ S.Array(
-  TeamDefaultRolesTeamRolesItem,
-) as any as S.Schema<TeamDefaultRolesTeamRolesList>;
+export const TeamDefaultRolesTeamRolesList =
+  TeamDefaultRolesTeamPermissionsList as any as S.Schema<TeamDefaultRolesTeamRolesList>;
 
 /** Default roles for the team. */
 export interface TeamDefaultRoles {
@@ -613,9 +612,8 @@ export const TeamDeploymentPolicyDeploymentSourcesItemSourcesItem = S.String;
 
 export type TeamDeploymentPolicyDeploymentSourcesItemSourcesList =
   Array<TeamDeploymentPolicyDeploymentSourcesItemSourcesItem>;
-export const TeamDeploymentPolicyDeploymentSourcesItemSourcesList = /*@__PURE__*/ S.Array(
-  TeamDeploymentPolicyDeploymentSourcesItemSourcesItem,
-) as any as S.Schema<TeamDeploymentPolicyDeploymentSourcesItemSourcesList>;
+export const TeamDeploymentPolicyDeploymentSourcesItemSourcesList =
+  TeamDefaultRolesTeamPermissionsList as any as S.Schema<TeamDeploymentPolicyDeploymentSourcesItemSourcesList>;
 
 /** `enabled: true` with empty `sources` is deny-all. */
 export interface TeamDeploymentPolicyDeploymentSourcesItem {
@@ -964,9 +962,8 @@ export type TeamMembershipTeamPermissionsItem =
 export const TeamMembershipTeamPermissionsItem = S.String;
 
 export type TeamMembershipTeamPermissionsList = Array<TeamMembershipTeamPermissionsItem>;
-export const TeamMembershipTeamPermissionsList = /*@__PURE__*/ S.Array(
-  TeamMembershipTeamPermissionsItem,
-) as any as S.Schema<TeamMembershipTeamPermissionsList>;
+export const TeamMembershipTeamPermissionsList =
+  TeamDefaultRolesTeamPermissionsList as any as S.Schema<TeamMembershipTeamPermissionsList>;
 
 export type TeamMembershipTeamRolesItem =
   | "BILLING"
@@ -980,9 +977,8 @@ export type TeamMembershipTeamRolesItem =
 export const TeamMembershipTeamRolesItem = S.String;
 
 export type TeamMembershipTeamRolesList = Array<TeamMembershipTeamRolesItem>;
-export const TeamMembershipTeamRolesList = /*@__PURE__*/ S.Array(
-  TeamMembershipTeamRolesItem,
-) as any as S.Schema<TeamMembershipTeamRolesList>;
+export const TeamMembershipTeamRolesList =
+  TeamDefaultRolesTeamPermissionsList as any as S.Schema<TeamMembershipTeamRolesList>;
 
 /** The membership of the authenticated User in relation to the Team. */
 export interface TeamMembership {
@@ -1197,9 +1193,8 @@ export const TeamSamlRolesValueCase1TeamPermissionsItem = S.String;
 
 export type TeamSamlRolesValueCase1TeamPermissionsList =
   Array<TeamSamlRolesValueCase1TeamPermissionsItem>;
-export const TeamSamlRolesValueCase1TeamPermissionsList = /*@__PURE__*/ S.Array(
-  TeamSamlRolesValueCase1TeamPermissionsItem,
-) as any as S.Schema<TeamSamlRolesValueCase1TeamPermissionsList>;
+export const TeamSamlRolesValueCase1TeamPermissionsList =
+  TeamDefaultRolesTeamPermissionsList as any as S.Schema<TeamSamlRolesValueCase1TeamPermissionsList>;
 
 export type TeamSamlRolesValueCase1TeamRolesItem =
   | "BILLING"
@@ -1213,9 +1208,8 @@ export type TeamSamlRolesValueCase1TeamRolesItem =
 export const TeamSamlRolesValueCase1TeamRolesItem = S.String;
 
 export type TeamSamlRolesValueCase1TeamRolesList = Array<TeamSamlRolesValueCase1TeamRolesItem>;
-export const TeamSamlRolesValueCase1TeamRolesList = /*@__PURE__*/ S.Array(
-  TeamSamlRolesValueCase1TeamRolesItem,
-) as any as S.Schema<TeamSamlRolesValueCase1TeamRolesList>;
+export const TeamSamlRolesValueCase1TeamRolesList =
+  TeamDefaultRolesTeamPermissionsList as any as S.Schema<TeamSamlRolesValueCase1TeamRolesList>;
 
 /** When "Directory Sync" is configured, this object contains a mapping of which Directory Group (by ID) should be assigned to which Vercel Team roles and permissions, or an access group. Bare team roles are deprecated in favor of DirectorySyncRolesMapping. */
 export interface TeamSamlRolesValueCase1 {
@@ -1685,9 +1679,8 @@ export const GetTeamMembersResponseEmailInviteCodesItemTeamPermissionsItem = S.S
 
 export type GetTeamMembersResponseEmailInviteCodesItemTeamPermissionsList =
   Array<GetTeamMembersResponseEmailInviteCodesItemTeamPermissionsItem>;
-export const GetTeamMembersResponseEmailInviteCodesItemTeamPermissionsList = /*@__PURE__*/ S.Array(
-  GetTeamMembersResponseEmailInviteCodesItemTeamPermissionsItem,
-) as any as S.Schema<GetTeamMembersResponseEmailInviteCodesItemTeamPermissionsList>;
+export const GetTeamMembersResponseEmailInviteCodesItemTeamPermissionsList =
+  TeamDefaultRolesTeamPermissionsList as any as S.Schema<GetTeamMembersResponseEmailInviteCodesItemTeamPermissionsList>;
 
 export type GetTeamMembersResponseEmailInviteCodesItemTeamRolesItem =
   | "BILLING"
@@ -1702,9 +1695,8 @@ export const GetTeamMembersResponseEmailInviteCodesItemTeamRolesItem = S.String;
 
 export type GetTeamMembersResponseEmailInviteCodesItemTeamRolesList =
   Array<GetTeamMembersResponseEmailInviteCodesItemTeamRolesItem>;
-export const GetTeamMembersResponseEmailInviteCodesItemTeamRolesList = /*@__PURE__*/ S.Array(
-  GetTeamMembersResponseEmailInviteCodesItemTeamRolesItem,
-) as any as S.Schema<GetTeamMembersResponseEmailInviteCodesItemTeamRolesList>;
+export const GetTeamMembersResponseEmailInviteCodesItemTeamRolesList =
+  TeamDefaultRolesTeamPermissionsList as any as S.Schema<GetTeamMembersResponseEmailInviteCodesItemTeamRolesList>;
 
 export interface GetTeamMembersResponseEmailInviteCodesItem {
   accessGroups?: GetTeamMembersResponseEmailInviteCodesItemAccessGroupsList;
@@ -1984,9 +1976,8 @@ export type TeamLimitedLimitedByItem = "invalidated" | "mfa" | "scope";
 export const TeamLimitedLimitedByItem = S.String;
 
 export type TeamLimitedLimitedByList = Array<TeamLimitedLimitedByItem>;
-export const TeamLimitedLimitedByList = /*@__PURE__*/ S.Array(
-  TeamLimitedLimitedByItem,
-) as any as S.Schema<TeamLimitedLimitedByList>;
+export const TeamLimitedLimitedByList =
+  TeamDefaultRolesTeamPermissionsList as any as S.Schema<TeamLimitedLimitedByList>;
 
 export type TeamLimitedMembershipEntitlementsItem = TeamMembershipEntitlementsItem;
 export const TeamLimitedMembershipEntitlementsItem = TeamMembershipEntitlementsItem;
@@ -2087,9 +2078,8 @@ export const TeamLimitedMembershipTeamPermissionsItem = S.String;
 
 export type TeamLimitedMembershipTeamPermissionsList =
   Array<TeamLimitedMembershipTeamPermissionsItem>;
-export const TeamLimitedMembershipTeamPermissionsList = /*@__PURE__*/ S.Array(
-  TeamLimitedMembershipTeamPermissionsItem,
-) as any as S.Schema<TeamLimitedMembershipTeamPermissionsList>;
+export const TeamLimitedMembershipTeamPermissionsList =
+  TeamDefaultRolesTeamPermissionsList as any as S.Schema<TeamLimitedMembershipTeamPermissionsList>;
 
 export type TeamLimitedMembershipTeamRolesItem =
   | "BILLING"
@@ -2103,9 +2093,8 @@ export type TeamLimitedMembershipTeamRolesItem =
 export const TeamLimitedMembershipTeamRolesItem = S.String;
 
 export type TeamLimitedMembershipTeamRolesList = Array<TeamLimitedMembershipTeamRolesItem>;
-export const TeamLimitedMembershipTeamRolesList = /*@__PURE__*/ S.Array(
-  TeamLimitedMembershipTeamRolesItem,
-) as any as S.Schema<TeamLimitedMembershipTeamRolesList>;
+export const TeamLimitedMembershipTeamRolesList =
+  TeamDefaultRolesTeamPermissionsList as any as S.Schema<TeamLimitedMembershipTeamRolesList>;
 
 /** The membership of the authenticated User in relation to the Team. */
 export interface TeamLimitedMembership {
@@ -2190,16 +2179,8 @@ export interface TeamLimitedSamlDirectory {
   /** The Identity Provider "type", for example Okta. */
   type: string;
 }
-export const TeamLimitedSamlDirectory = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    connectedAt: S.Number,
-    lastReceivedWebhookEvent: S.optional(S.Number),
-    lastSyncedAt: S.optional(S.Number),
-    state: S.String,
-    syncState: S.optional(TeamLimitedSamlDirectorySyncState),
-    type: S.String,
-  }),
-).annotate({ identifier: "TeamLimitedSamlDirectory" }) as any as S.Schema<TeamLimitedSamlDirectory>;
+export const TeamLimitedSamlDirectory =
+  TeamSamlDirectory as any as S.Schema<TeamLimitedSamlDirectory>;
 
 /** When "Single Sign-On (SAML)" is configured, this object contains information that allows the client-side to identify whether or not this Team has SAML enforced. */
 export interface TeamLimitedSaml {
@@ -2392,9 +2373,8 @@ export const InvitedTeamMemberTeamPermissionsItem = S.String;
 
 /** The team permissions of the user */
 export type InvitedTeamMemberTeamPermissionsList = Array<InvitedTeamMemberTeamPermissionsItem>;
-export const InvitedTeamMemberTeamPermissionsList = /*@__PURE__*/ S.Array(
-  InvitedTeamMemberTeamPermissionsItem,
-) as any as S.Schema<InvitedTeamMemberTeamPermissionsList>;
+export const InvitedTeamMemberTeamPermissionsList =
+  TeamDefaultRolesTeamPermissionsList as any as S.Schema<InvitedTeamMemberTeamPermissionsList>;
 
 /** The team roles of the user */
 export type InvitedTeamMemberTeamRolesItem =
@@ -2410,9 +2390,8 @@ export const InvitedTeamMemberTeamRolesItem = S.String;
 
 /** The team roles of the user */
 export type InvitedTeamMemberTeamRolesList = Array<InvitedTeamMemberTeamRolesItem>;
-export const InvitedTeamMemberTeamRolesList = /*@__PURE__*/ S.Array(
-  InvitedTeamMemberTeamRolesItem,
-) as any as S.Schema<InvitedTeamMemberTeamRolesList>;
+export const InvitedTeamMemberTeamRolesList =
+  TeamDefaultRolesTeamPermissionsList as any as S.Schema<InvitedTeamMemberTeamRolesList>;
 
 /** The member was successfully added to the team. */
 export interface InvitedTeamMember {
@@ -3324,13 +3303,8 @@ export interface UpdateTeamRequestResourceConfigBuildMachine {
   /** Default build machine type for new builds: standard, enhanced, turbo, or elastic. */
   default?: UpdateTeamRequestResourceConfigBuildMachineDefault | (string & {});
 }
-export const UpdateTeamRequestResourceConfigBuildMachine = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    default: S.optional(UpdateTeamRequestResourceConfigBuildMachineDefault),
-  }),
-).annotate({
-  identifier: "UpdateTeamRequestResourceConfigBuildMachine",
-}) as any as S.Schema<UpdateTeamRequestResourceConfigBuildMachine>;
+export const UpdateTeamRequestResourceConfigBuildMachine =
+  TeamResourceConfigBuildMachine as any as S.Schema<UpdateTeamRequestResourceConfigBuildMachine>;
 
 /** Resource configuration for the team. */
 export interface UpdateTeamRequestResourceConfig {
@@ -3464,9 +3438,8 @@ export const UpdateTeamMemberRequestTeamPermissionsItem = S.String;
 export type UpdateTeamMemberRequestTeamPermissionsList = Array<
   UpdateTeamMemberRequestTeamPermissionsItem | (string & {})
 >;
-export const UpdateTeamMemberRequestTeamPermissionsList = /*@__PURE__*/ S.Array(
-  UpdateTeamMemberRequestTeamPermissionsItem,
-) as any as S.Schema<UpdateTeamMemberRequestTeamPermissionsList>;
+export const UpdateTeamMemberRequestTeamPermissionsList =
+  TeamDefaultRolesTeamPermissionsList as any as S.Schema<UpdateTeamMemberRequestTeamPermissionsList>;
 
 /** The project role of the member that will be added. \"null\" will remove this project level role. */
 export type UpdateTeamMemberRequestProjectsItemRole =

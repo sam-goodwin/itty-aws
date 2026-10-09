@@ -2992,9 +2992,8 @@ export const WellKnownCommunities = S.String;
 
 /** Supported well known Community List. */
 export type IpCommunityRuleWellKnownCommunitiesList = Array<WellKnownCommunities | (string & {})>;
-export const IpCommunityRuleWellKnownCommunitiesList = /*@__PURE__*/ S.Array(
-  WellKnownCommunities,
-) as any as S.Schema<IpCommunityRuleWellKnownCommunitiesList>;
+export const IpCommunityRuleWellKnownCommunitiesList =
+  BmpExportPolicyPropertiesExportPoliciesList as any as S.Schema<IpCommunityRuleWellKnownCommunitiesList>;
 
 /** List the community members of IP Community. */
 export type IpCommunityRuleCommunityMembersList = Array<string>;
@@ -5979,9 +5978,8 @@ export const BmpMonitoredAddressFamily = S.String;
 export type BmpConfigurationPropertiesMonitoredAddressFamiliesList = Array<
   BmpMonitoredAddressFamily | (string & {})
 >;
-export const BmpConfigurationPropertiesMonitoredAddressFamiliesList = /*@__PURE__*/ S.Array(
-  BmpMonitoredAddressFamily,
-) as any as S.Schema<BmpConfigurationPropertiesMonitoredAddressFamiliesList>;
+export const BmpConfigurationPropertiesMonitoredAddressFamiliesList =
+  BmpExportPolicyPropertiesExportPoliciesList as any as S.Schema<BmpConfigurationPropertiesMonitoredAddressFamiliesList>;
 
 /** BGP Monitoring Protocol (BMP) Configuration properties. */
 export interface BmpConfigurationProperties {
@@ -9286,9 +9284,8 @@ export const NetworkDeviceRoleName = S.String;
 
 /** Available roles for the network device. */
 export type NetworkDeviceSkuPropertiesSupportedRoleTypesList = Array<NetworkDeviceRoleName>;
-export const NetworkDeviceSkuPropertiesSupportedRoleTypesList = /*@__PURE__*/ S.Array(
-  NetworkDeviceRoleName,
-) as any as S.Schema<NetworkDeviceSkuPropertiesSupportedRoleTypesList>;
+export const NetworkDeviceSkuPropertiesSupportedRoleTypesList =
+  BmpExportPolicyPropertiesExportPoliciesList as any as S.Schema<NetworkDeviceSkuPropertiesSupportedRoleTypesList>;
 
 /** Supported connector properties. */
 export interface SupportedConnectorProperties {
@@ -15641,13 +15638,8 @@ export interface GlobalAccessControlListActionPatchProperties {
   /** Configuration to enable or disable ACL action count. */
   enableCount?: BooleanEnumProperty | (string & {});
 }
-export const GlobalAccessControlListActionPatchProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enableCount: S.optional(BooleanEnumProperty),
-  }),
-).annotate({
-  identifier: "GlobalAccessControlListActionPatchProperties",
-}) as any as S.Schema<GlobalAccessControlListActionPatchProperties>;
+export const GlobalAccessControlListActionPatchProperties =
+  GlobalAccessControlListActionProperties as any as S.Schema<GlobalAccessControlListActionPatchProperties>;
 
 /** Access Control Lists patch properties. */
 export interface AccessControlListPatchProperties {
@@ -16006,13 +15998,8 @@ export interface ExternalNetworkBmpPatchProperties {
   /** BMP Configuration State. */
   configurationState?: BmpConfigurationState | (string & {});
 }
-export const ExternalNetworkBmpPatchProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    configurationState: S.optional(BmpConfigurationState),
-  }),
-).annotate({
-  identifier: "ExternalNetworkBmpPatchProperties",
-}) as any as S.Schema<ExternalNetworkBmpPatchProperties>;
+export const ExternalNetworkBmpPatchProperties =
+  ExternalNetworkBmpProperties as any as S.Schema<ExternalNetworkBmpPatchProperties>;
 
 /** V4 over V6 BGP session state */
 export type V4OverV6BgpSessionState = "Enabled" | "Disabled";
@@ -17079,23 +17066,14 @@ export interface NeighborAddressBgpAdministrativeStatus {
   /** Error message. */
   error?: string;
 }
-export const NeighborAddressBgpAdministrativeStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    neighborAddress: S.optional(S.String),
-    administrativeState: S.optional(BgpAdministrativeState),
-    error: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "NeighborAddressBgpAdministrativeStatus",
-}) as any as S.Schema<NeighborAddressBgpAdministrativeStatus>;
+export const NeighborAddressBgpAdministrativeStatus =
+  NeighborAddressBfdAdministrativeStatus as any as S.Schema<NeighborAddressBgpAdministrativeStatus>;
 
 /** NeighborAddress administrative status */
 export type InternalNetworkUpdateBgpAdministrativeStateResponsePropertiesNeighborAddressAdministrativeStatusList =
   Array<NeighborAddressBgpAdministrativeStatus>;
 export const InternalNetworkUpdateBgpAdministrativeStateResponsePropertiesNeighborAddressAdministrativeStatusList =
-  /*@__PURE__*/ S.Array(
-    NeighborAddressBgpAdministrativeStatus,
-  ) as any as S.Schema<InternalNetworkUpdateBgpAdministrativeStateResponsePropertiesNeighborAddressAdministrativeStatusList>;
+  InternalNetworkUpdateBfdAdministrativeStateResponsePropertiesNeighborAddressAdministrativeStatusList as any as S.Schema<InternalNetworkUpdateBgpAdministrativeStateResponsePropertiesNeighborAddressAdministrativeStatusList>;
 
 /** Internal Network BGP Administrative State response properties */
 export interface InternalNetworkUpdateBgpAdministrativeStateResponseProperties {
@@ -17103,15 +17081,7 @@ export interface InternalNetworkUpdateBgpAdministrativeStateResponseProperties {
   neighborAddressAdministrativeStatus?: InternalNetworkUpdateBgpAdministrativeStateResponsePropertiesNeighborAddressAdministrativeStatusList;
 }
 export const InternalNetworkUpdateBgpAdministrativeStateResponseProperties =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      neighborAddressAdministrativeStatus: S.optional(
-        InternalNetworkUpdateBgpAdministrativeStateResponsePropertiesNeighborAddressAdministrativeStatusList,
-      ),
-    }),
-  ).annotate({
-    identifier: "InternalNetworkUpdateBgpAdministrativeStateResponseProperties",
-  }) as any as S.Schema<InternalNetworkUpdateBgpAdministrativeStateResponseProperties>;
+  InternalNetworkUpdateBfdAdministrativeStateResponseProperties as any as S.Schema<InternalNetworkUpdateBgpAdministrativeStateResponseProperties>;
 
 /** Internal Network Administrative State Response */
 export interface InternalNetworkUpdateBgpAdministrativeStateResponse {
@@ -18834,11 +18804,7 @@ export interface QosPatchProperties {
   /** QoS configuration state. Default is Disabled. */
   qosConfigurationState?: QosConfigurationState | (string & {});
 }
-export const QosPatchProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    qosConfigurationState: S.optional(QosConfigurationState),
-  }),
-).annotate({ identifier: "QosPatchProperties" }) as any as S.Schema<QosPatchProperties>;
+export const QosPatchProperties = QosProperties as any as S.Schema<QosPatchProperties>;
 
 /** NetworkFabric feature flag configuration information */
 export type NetworkFabricPatchPropertiesFeatureFlagsList = Array<FeatureFlagProperties>;
@@ -19880,14 +19846,8 @@ export interface GlobalNetworkTapRuleActionPatchProperties {
   /** Truncate. 0 indicates do not truncate. */
   truncate?: string;
 }
-export const GlobalNetworkTapRuleActionPatchProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enableCount: S.optional(BooleanEnumProperty),
-    truncate: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GlobalNetworkTapRuleActionPatchProperties",
-}) as any as S.Schema<GlobalNetworkTapRuleActionPatchProperties>;
+export const GlobalNetworkTapRuleActionPatchProperties =
+  GlobalNetworkTapRuleActionProperties as any as S.Schema<GlobalNetworkTapRuleActionPatchProperties>;
 
 /** Network Tap Rule Patch properties. */
 export interface NetworkTapRulePatchProperties {

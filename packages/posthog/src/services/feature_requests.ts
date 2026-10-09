@@ -690,9 +690,8 @@ export const ListFeatureRequestsRequestStatusesItem = S.String;
 export type ListFeatureRequestsRequestStatusesList = Array<
   ListFeatureRequestsRequestStatusesItem | (string & {})
 >;
-export const ListFeatureRequestsRequestStatusesList = /*@__PURE__*/ S.Array(
-  ListFeatureRequestsRequestStatusesItem,
-) as any as S.Schema<ListFeatureRequestsRequestStatusesList>;
+export const ListFeatureRequestsRequestStatusesList =
+  ListFeatureRequestsRequestPrioritiesList as any as S.Schema<ListFeatureRequestsRequestStatusesList>;
 
 export interface ListFeatureRequestsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -907,19 +906,8 @@ export interface FeatureRequestHistoryChangeAfterCase2 {
   issue_state: FeatureRequestHistoryChangeAfterCase2IssueState;
   sync_enabled: boolean;
 }
-export const FeatureRequestHistoryChangeAfterCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    issue_url: S.String,
-    repository: S.String,
-    issue_number: S.Number,
-    issue_title: S.String,
-    issue_state: FeatureRequestHistoryChangeAfterCase2IssueState,
-    sync_enabled: S.Boolean,
-  }),
-).annotate({
-  identifier: "FeatureRequestHistoryChangeAfterCase2",
-}) as any as S.Schema<FeatureRequestHistoryChangeAfterCase2>;
+export const FeatureRequestHistoryChangeAfterCase2 =
+  FeatureRequestHistoryChangeBeforeCase2 as any as S.Schema<FeatureRequestHistoryChangeAfterCase2>;
 
 export type FeatureRequestHistoryChangeAfterCase3 = FeatureRequestHistoryChangeBeforeCase3;
 export const FeatureRequestHistoryChangeAfterCase3 = FeatureRequestHistoryChangeBeforeCase3;

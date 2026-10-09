@@ -745,11 +745,7 @@ export interface SubscriptionOptions {
   /** Defines how the discount applies to subscription payments. */
   type: SubscriptionOptionsType | (string & {});
 }
-export const SubscriptionOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: SubscriptionOptionsType,
-  }),
-).annotate({ identifier: "SubscriptionOptions" }) as any as S.Schema<SubscriptionOptions>;
+export const SubscriptionOptions = PaymentPlanOptions as any as S.Schema<SubscriptionOptions>;
 
 /** Apply a fixed monetary amount off each reward item in a BUY_X_GET_Y discount. */
 export interface BuyXGetYFixedAmountTemplate {
@@ -2140,9 +2136,8 @@ export const ExternalCreateWebhookSubscriptionResponseTopicsItem = S.String;
 /** List of event topics that trigger a webhook notification. */
 export type ExternalCreateWebhookSubscriptionResponseTopicsList =
   Array<ExternalCreateWebhookSubscriptionResponseTopicsItem>;
-export const ExternalCreateWebhookSubscriptionResponseTopicsList = /*@__PURE__*/ S.Array(
-  ExternalCreateWebhookSubscriptionResponseTopicsItem,
-) as any as S.Schema<ExternalCreateWebhookSubscriptionResponseTopicsList>;
+export const ExternalCreateWebhookSubscriptionResponseTopicsList =
+  CreateWebhookSubscriptionRequestTopicsList as any as S.Schema<ExternalCreateWebhookSubscriptionResponseTopicsList>;
 
 export interface ExternalCreateWebhookSubscriptionResponse {
   /** Third-party client id. */
@@ -3831,9 +3826,8 @@ export const ListDiscountsRequestCriteriaItem = S.String;
 export type ListDiscountsRequestCriteriaList = Array<
   ListDiscountsRequestCriteriaItem | (string & {})
 >;
-export const ListDiscountsRequestCriteriaList = /*@__PURE__*/ S.Array(
-  ListDiscountsRequestCriteriaItem,
-) as any as S.Schema<ListDiscountsRequestCriteriaList>;
+export const ListDiscountsRequestCriteriaList =
+  CreateWebhookSubscriptionRequestTopicsList as any as S.Schema<ListDiscountsRequestCriteriaList>;
 
 export type ListDiscountsRequestTemplateItem =
   | "FIXED_AMOUNT"
@@ -3846,9 +3840,8 @@ export const ListDiscountsRequestTemplateItem = S.String;
 export type ListDiscountsRequestTemplateList = Array<
   ListDiscountsRequestTemplateItem | (string & {})
 >;
-export const ListDiscountsRequestTemplateList = /*@__PURE__*/ S.Array(
-  ListDiscountsRequestTemplateItem,
-) as any as S.Schema<ListDiscountsRequestTemplateList>;
+export const ListDiscountsRequestTemplateList =
+  CreateWebhookSubscriptionRequestTopicsList as any as S.Schema<ListDiscountsRequestTemplateList>;
 
 export type ListDiscountsRequestTrigger = "AUTO" | "CODE";
 export const ListDiscountsRequestTrigger = S.String;

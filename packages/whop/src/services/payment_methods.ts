@@ -768,15 +768,13 @@ export const ListPaymentMethodRequestPaymentMethodTypesList = /*@__PURE__*/ S.Ar
 
 /** Only return cards on these networks, such as the networks the seller accepts. Payment methods that are not cards are unaffected. */
 export type ListPaymentMethodRequestCardBrandsList = Array<CardBrands | (string & {})>;
-export const ListPaymentMethodRequestCardBrandsList = /*@__PURE__*/ S.Array(
-  CardBrands,
-) as any as S.Schema<ListPaymentMethodRequestCardBrandsList>;
+export const ListPaymentMethodRequestCardBrandsList =
+  ListPaymentMethodRequestPaymentMethodTypesList as any as S.Schema<ListPaymentMethodRequestCardBrandsList>;
 
 /** Only return cards funded this way. A card whose funding could not be determined is excluded, and payment methods that are not cards are unaffected. */
 export type ListPaymentMethodRequestCardFundingTypesList = Array<CardFundingTypes | (string & {})>;
-export const ListPaymentMethodRequestCardFundingTypesList = /*@__PURE__*/ S.Array(
-  CardFundingTypes,
-) as any as S.Schema<ListPaymentMethodRequestCardFundingTypesList>;
+export const ListPaymentMethodRequestCardFundingTypesList =
+  ListPaymentMethodRequestPaymentMethodTypesList as any as S.Schema<ListPaymentMethodRequestCardFundingTypesList>;
 
 export interface ListPaymentMethodRequest {
   after?: string;

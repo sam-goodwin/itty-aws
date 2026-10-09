@@ -142,15 +142,8 @@ export interface ListStarsResponseItemsItemCase4 {
   channel: string;
   date_create: number;
 }
-export const ListStarsResponseItemsItemCase4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ListStarsResponseItemsItemCase4Type,
-    channel: S.String,
-    date_create: S.Number,
-  }),
-).annotate({
-  identifier: "ListStarsResponseItemsItemCase4",
-}) as any as S.Schema<ListStarsResponseItemsItemCase4>;
+export const ListStarsResponseItemsItemCase4 =
+  ListStarsResponseItemsItemCase3 as any as S.Schema<ListStarsResponseItemsItemCase4>;
 
 export type ListStarsResponseItemsItemCase5Type = "group";
 export const ListStarsResponseItemsItemCase5Type = S.String;
@@ -160,15 +153,8 @@ export interface ListStarsResponseItemsItemCase5 {
   channel: string;
   date_create: number;
 }
-export const ListStarsResponseItemsItemCase5 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ListStarsResponseItemsItemCase5Type,
-    channel: S.String,
-    date_create: S.Number,
-  }),
-).annotate({
-  identifier: "ListStarsResponseItemsItemCase5",
-}) as any as S.Schema<ListStarsResponseItemsItemCase5>;
+export const ListStarsResponseItemsItemCase5 =
+  ListStarsResponseItemsItemCase3 as any as S.Schema<ListStarsResponseItemsItemCase5>;
 
 export type ListStarsResponseItemsItem =
   | ListStarsResponseItemsItemCase0

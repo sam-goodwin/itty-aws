@@ -770,7 +770,7 @@ export type LinuxCapability =
 export const LinuxCapability = S.String;
 
 export type LinuxCapabilityList = LinuxCapability[];
-export const LinuxCapabilityList = /*@__PURE__*/ S.Array(LinuxCapability);
+export const LinuxCapabilityList = FilterInstanceStatuses as any as S.Schema<LinuxCapabilityList>;
 export interface LinuxCapabilities {
   Include?: LinuxCapability[];
 }
@@ -1717,7 +1717,7 @@ export type FleetAction = "AUTO_SCALING" | (string & {});
 export const FleetAction = S.String;
 
 export type FleetActionList = FleetAction[];
-export const FleetActionList = /*@__PURE__*/ S.Array(FleetAction);
+export const FleetActionList = FilterInstanceStatuses as any as S.Schema<FleetActionList>;
 export interface FleetAttributes {
   FleetId?: string;
   FleetArn?: string;
@@ -2032,7 +2032,8 @@ export type GameServerGroupAction = "REPLACE_INSTANCE_TYPES" | (string & {});
 export const GameServerGroupAction = S.String;
 
 export type GameServerGroupActions = GameServerGroupAction[];
-export const GameServerGroupActions = /*@__PURE__*/ S.Array(GameServerGroupAction);
+export const GameServerGroupActions =
+  FilterInstanceStatuses as any as S.Schema<GameServerGroupActions>;
 export interface GameServerGroup {
   GameServerGroupName?: string;
   GameServerGroupArn?: string;
@@ -2228,7 +2229,7 @@ export type PriorityType = "LATENCY" | "COST" | "DESTINATION" | "LOCATION" | (st
 export const PriorityType = S.String;
 
 export type PriorityTypeList = PriorityType[];
-export const PriorityTypeList = /*@__PURE__*/ S.Array(PriorityType);
+export const PriorityTypeList = FilterInstanceStatuses as any as S.Schema<PriorityTypeList>;
 export interface PriorityConfiguration {
   PriorityOrder?: PriorityType[];
   LocationOrder?: string[];
@@ -5020,7 +5021,7 @@ export type LocationFilter = "AWS" | "CUSTOM" | (string & {});
 export const LocationFilter = S.String;
 
 export type LocationFilterList = LocationFilter[];
-export const LocationFilterList = /*@__PURE__*/ S.Array(LocationFilter);
+export const LocationFilterList = FilterInstanceStatuses as any as S.Schema<LocationFilterList>;
 export type ListLocationsLimit = number;
 export interface ListLocationsInput {
   Filters?: LocationFilter[];

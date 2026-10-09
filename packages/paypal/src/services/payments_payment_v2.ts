@@ -670,13 +670,8 @@ export interface CaptureAuthorizationResponseStatusDetails {
   /** The reason why the captured payment status is `PENDING` or `DENIED`. */
   reason?: CaptureAuthorizationResponseStatusDetailsReason;
 }
-export const CaptureAuthorizationResponseStatusDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    reason: S.optional(CaptureAuthorizationResponseStatusDetailsReason),
-  }),
-).annotate({
-  identifier: "CaptureAuthorizationResponseStatusDetails",
-}) as any as S.Schema<CaptureAuthorizationResponseStatusDetails>;
+export const CaptureAuthorizationResponseStatusDetails =
+  AuthorizationsReauthorizeResponseStatusDetails as any as S.Schema<CaptureAuthorizationResponseStatusDetails>;
 
 export type CaptureAuthorizationResponseAmount = AuthorizationsReauthorizeResponseAmount;
 export const CaptureAuthorizationResponseAmount = AuthorizationsReauthorizeResponseAmount;
@@ -698,9 +693,7 @@ export const CaptureAuthorizationResponseSellerProtectionDisputeCategoriesItem =
 export type CaptureAuthorizationResponseSellerProtectionDisputeCategoriesList =
   Array<CaptureAuthorizationResponseSellerProtectionDisputeCategoriesItem>;
 export const CaptureAuthorizationResponseSellerProtectionDisputeCategoriesList =
-  /*@__PURE__*/ S.Array(
-    CaptureAuthorizationResponseSellerProtectionDisputeCategoriesItem,
-  ) as any as S.Schema<CaptureAuthorizationResponseSellerProtectionDisputeCategoriesList>;
+  AuthorizationsReauthorizeResponseSellerProtectionDisputeCategoriesList as any as S.Schema<CaptureAuthorizationResponseSellerProtectionDisputeCategoriesList>;
 
 export interface CaptureAuthorizationResponseSellerProtection {
   /** Indicates whether the transaction is eligible for seller protection. For information, see [PayPal Seller Protection for Merchants](https://www.paypal.com/us/webapps/mpp/security/seller-protection). */
@@ -708,16 +701,8 @@ export interface CaptureAuthorizationResponseSellerProtection {
   /** An array of conditions that are covered for the transaction. */
   dispute_categories?: CaptureAuthorizationResponseSellerProtectionDisputeCategoriesList;
 }
-export const CaptureAuthorizationResponseSellerProtection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(CaptureAuthorizationResponseSellerProtectionStatus),
-    dispute_categories: S.optional(
-      CaptureAuthorizationResponseSellerProtectionDisputeCategoriesList,
-    ),
-  }),
-).annotate({
-  identifier: "CaptureAuthorizationResponseSellerProtection",
-}) as any as S.Schema<CaptureAuthorizationResponseSellerProtection>;
+export const CaptureAuthorizationResponseSellerProtection =
+  AuthorizationsReauthorizeResponseSellerProtection as any as S.Schema<CaptureAuthorizationResponseSellerProtection>;
 
 export type CaptureAuthorizationResponseSellerReceivableBreakdownGrossAmount =
   AuthorizationsReauthorizeRequestAmount;
@@ -1395,9 +1380,7 @@ export type FindEligibleMethodsRequestPreferencesPaymentSourceConstraintPaymentS
   PaymentMethod | (string & {})
 >;
 export const FindEligibleMethodsRequestPreferencesPaymentSourceConstraintPaymentSourcesList =
-  /*@__PURE__*/ S.Array(
-    PaymentMethod,
-  ) as any as S.Schema<FindEligibleMethodsRequestPreferencesPaymentSourceConstraintPaymentSourcesList>;
+  AuthorizationsReauthorizeResponseSellerProtectionDisputeCategoriesList as any as S.Schema<FindEligibleMethodsRequestPreferencesPaymentSourceConstraintPaymentSourcesList>;
 
 /** Payment source constraint defines the payment methods that needs to be included/excluded for eligibility assessment. If not passed, all payment methods will be assessed for eligibility. */
 export interface FindEligibleMethodsRequestPreferencesPaymentSourceConstraint {
@@ -1830,13 +1813,8 @@ export interface GetAuthorizationResponseStatusDetails {
   /** The reason why the authorized status is `PENDING`. */
   reason?: GetAuthorizationResponseStatusDetailsReason;
 }
-export const GetAuthorizationResponseStatusDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    reason: S.optional(GetAuthorizationResponseStatusDetailsReason),
-  }),
-).annotate({
-  identifier: "GetAuthorizationResponseStatusDetails",
-}) as any as S.Schema<GetAuthorizationResponseStatusDetails>;
+export const GetAuthorizationResponseStatusDetails =
+  AuthorizationsReauthorizeResponseStatusDetails as any as S.Schema<GetAuthorizationResponseStatusDetails>;
 
 export type GetAuthorizationResponseAmount = AuthorizationsReauthorizeResponseAmount;
 export const GetAuthorizationResponseAmount = AuthorizationsReauthorizeResponseAmount;
@@ -2136,13 +2114,8 @@ export interface GetCaptureResponseStatusDetails {
   /** The reason why the captured payment status is `PENDING` or `DENIED`. */
   reason?: GetCaptureResponseStatusDetailsReason;
 }
-export const GetCaptureResponseStatusDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    reason: S.optional(GetCaptureResponseStatusDetailsReason),
-  }),
-).annotate({
-  identifier: "GetCaptureResponseStatusDetails",
-}) as any as S.Schema<GetCaptureResponseStatusDetails>;
+export const GetCaptureResponseStatusDetails =
+  AuthorizationsReauthorizeResponseStatusDetails as any as S.Schema<GetCaptureResponseStatusDetails>;
 
 export type GetCaptureResponseAmount = AuthorizationsReauthorizeResponseAmount;
 export const GetCaptureResponseAmount = AuthorizationsReauthorizeResponseAmount;
@@ -2163,9 +2136,8 @@ export const GetCaptureResponseSellerProtectionDisputeCategoriesItem = S.String;
 /** An array of conditions that are covered for the transaction. */
 export type GetCaptureResponseSellerProtectionDisputeCategoriesList =
   Array<GetCaptureResponseSellerProtectionDisputeCategoriesItem>;
-export const GetCaptureResponseSellerProtectionDisputeCategoriesList = /*@__PURE__*/ S.Array(
-  GetCaptureResponseSellerProtectionDisputeCategoriesItem,
-) as any as S.Schema<GetCaptureResponseSellerProtectionDisputeCategoriesList>;
+export const GetCaptureResponseSellerProtectionDisputeCategoriesList =
+  GetAuthorizationResponseSellerProtectionDisputeCategoriesList as any as S.Schema<GetCaptureResponseSellerProtectionDisputeCategoriesList>;
 
 export interface GetCaptureResponseSellerProtection {
   /** Indicates whether the transaction is eligible for seller protection. For information, see [PayPal Seller Protection for Merchants](https://www.paypal.com/us/webapps/mpp/security/seller-protection). */
@@ -2173,14 +2145,8 @@ export interface GetCaptureResponseSellerProtection {
   /** An array of conditions that are covered for the transaction. */
   dispute_categories?: GetCaptureResponseSellerProtectionDisputeCategoriesList;
 }
-export const GetCaptureResponseSellerProtection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(GetCaptureResponseSellerProtectionStatus),
-    dispute_categories: S.optional(GetCaptureResponseSellerProtectionDisputeCategoriesList),
-  }),
-).annotate({
-  identifier: "GetCaptureResponseSellerProtection",
-}) as any as S.Schema<GetCaptureResponseSellerProtection>;
+export const GetCaptureResponseSellerProtection =
+  GetAuthorizationResponseSellerProtection as any as S.Schema<GetCaptureResponseSellerProtection>;
 
 export type GetCaptureResponseSellerReceivableBreakdownGrossAmount =
   AuthorizationsReauthorizeRequestAmount;
@@ -2657,16 +2623,8 @@ export interface GetCaptureResponseProcessorResponse {
   /** The declined payment transactions might have payment advice codes. The card networks, like Visa and Mastercard, return payment advice codes. */
   payment_advice_code?: GetCaptureResponseProcessorResponsePaymentAdviceCode;
 }
-export const GetCaptureResponseProcessorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    avs_code: S.optional(GetCaptureResponseProcessorResponseAvsCode),
-    cvv_code: S.optional(GetCaptureResponseProcessorResponseCvvCode),
-    response_code: S.optional(GetCaptureResponseProcessorResponseResponseCode),
-    payment_advice_code: S.optional(GetCaptureResponseProcessorResponsePaymentAdviceCode),
-  }),
-).annotate({
-  identifier: "GetCaptureResponseProcessorResponse",
-}) as any as S.Schema<GetCaptureResponseProcessorResponse>;
+export const GetCaptureResponseProcessorResponse =
+  CaptureAuthorizationResponseProcessorResponse as any as S.Schema<GetCaptureResponseProcessorResponse>;
 
 export type GetCaptureResponseSupplementaryDataRelatedIds =
   AuthorizationsReauthorizeResponseSupplementaryDataRelatedIds;
@@ -2753,13 +2711,8 @@ export interface GetRefundResponseStatusDetails {
   /** The reason why the refund has the `PENDING` or `FAILED` status. */
   reason?: GetRefundResponseStatusDetailsReason;
 }
-export const GetRefundResponseStatusDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    reason: S.optional(GetRefundResponseStatusDetailsReason),
-  }),
-).annotate({
-  identifier: "GetRefundResponseStatusDetails",
-}) as any as S.Schema<GetRefundResponseStatusDetails>;
+export const GetRefundResponseStatusDetails =
+  AuthorizationsReauthorizeResponseStatusDetails as any as S.Schema<GetRefundResponseStatusDetails>;
 
 export type GetRefundResponseAmount = AuthorizationsReauthorizeRequestAmount;
 export const GetRefundResponseAmount = AuthorizationsReauthorizeRequestAmount;
@@ -3172,13 +3125,8 @@ export interface RefundCaptureResponseStatusDetails {
   /** The reason why the refund has the `PENDING` or `FAILED` status. */
   reason?: RefundCaptureResponseStatusDetailsReason;
 }
-export const RefundCaptureResponseStatusDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    reason: S.optional(RefundCaptureResponseStatusDetailsReason),
-  }),
-).annotate({
-  identifier: "RefundCaptureResponseStatusDetails",
-}) as any as S.Schema<RefundCaptureResponseStatusDetails>;
+export const RefundCaptureResponseStatusDetails =
+  AuthorizationsReauthorizeResponseStatusDetails as any as S.Schema<RefundCaptureResponseStatusDetails>;
 
 export type RefundCaptureResponseAmount = AuthorizationsReauthorizeRequestAmount;
 export const RefundCaptureResponseAmount = AuthorizationsReauthorizeRequestAmount;
@@ -3548,13 +3496,8 @@ export interface VoidAuthorizationResponseStatusDetails {
   /** The reason why the authorized status is `PENDING`. */
   reason?: VoidAuthorizationResponseStatusDetailsReason;
 }
-export const VoidAuthorizationResponseStatusDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    reason: S.optional(VoidAuthorizationResponseStatusDetailsReason),
-  }),
-).annotate({
-  identifier: "VoidAuthorizationResponseStatusDetails",
-}) as any as S.Schema<VoidAuthorizationResponseStatusDetails>;
+export const VoidAuthorizationResponseStatusDetails =
+  AuthorizationsReauthorizeResponseStatusDetails as any as S.Schema<VoidAuthorizationResponseStatusDetails>;
 
 export type VoidAuthorizationResponseAmount = AuthorizationsReauthorizeResponseAmount;
 export const VoidAuthorizationResponseAmount = AuthorizationsReauthorizeResponseAmount;
@@ -3575,9 +3518,8 @@ export const VoidAuthorizationResponseSellerProtectionDisputeCategoriesItem = S.
 /** An array of conditions that are covered for the transaction. */
 export type VoidAuthorizationResponseSellerProtectionDisputeCategoriesList =
   Array<VoidAuthorizationResponseSellerProtectionDisputeCategoriesItem>;
-export const VoidAuthorizationResponseSellerProtectionDisputeCategoriesList = /*@__PURE__*/ S.Array(
-  VoidAuthorizationResponseSellerProtectionDisputeCategoriesItem,
-) as any as S.Schema<VoidAuthorizationResponseSellerProtectionDisputeCategoriesList>;
+export const VoidAuthorizationResponseSellerProtectionDisputeCategoriesList =
+  GetAuthorizationResponseSellerProtectionDisputeCategoriesList as any as S.Schema<VoidAuthorizationResponseSellerProtectionDisputeCategoriesList>;
 
 export interface VoidAuthorizationResponseSellerProtection {
   /** Indicates whether the transaction is eligible for seller protection. For information, see [PayPal Seller Protection for Merchants](https://www.paypal.com/us/webapps/mpp/security/seller-protection). */
@@ -3585,14 +3527,8 @@ export interface VoidAuthorizationResponseSellerProtection {
   /** An array of conditions that are covered for the transaction. */
   dispute_categories?: VoidAuthorizationResponseSellerProtectionDisputeCategoriesList;
 }
-export const VoidAuthorizationResponseSellerProtection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(VoidAuthorizationResponseSellerProtectionStatus),
-    dispute_categories: S.optional(VoidAuthorizationResponseSellerProtectionDisputeCategoriesList),
-  }),
-).annotate({
-  identifier: "VoidAuthorizationResponseSellerProtection",
-}) as any as S.Schema<VoidAuthorizationResponseSellerProtection>;
+export const VoidAuthorizationResponseSellerProtection =
+  GetAuthorizationResponseSellerProtection as any as S.Schema<VoidAuthorizationResponseSellerProtection>;
 
 /** The HTTP method required to make the related call. */
 export type VoidAuthorizationResponseLinksItemMethod =

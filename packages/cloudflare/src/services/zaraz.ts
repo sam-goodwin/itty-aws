@@ -1532,9 +1532,7 @@ export type UpdateResult = "realtime" | "preview";
 export const UpdateResult = S.String;
 
 export type PutZarazResponse = UpdateResult;
-export const PutZarazResponse = /*@__PURE__*/ S.suspend(() =>
-  UpdateResult.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "PutZarazResponse" }) as any as S.Schema<PutZarazResponse>;
+export const PutZarazResponse = GetWorkflowResponse as any as S.Schema<PutZarazResponse>;
 
 export type CreatePublishError = CloudflareOpError;
 /** Publish current Zaraz preview configuration for a zone. */

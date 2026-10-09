@@ -2004,16 +2004,8 @@ export interface UpdateInstallationRequestNotificationCase0 {
   message?: string;
   href?: string;
 }
-export const UpdateInstallationRequestNotificationCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    level: UpdateInstallationRequestNotificationCase0Level,
-    title: S.String,
-    message: S.optional(S.String),
-    href: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateInstallationRequestNotificationCase0",
-}) as any as S.Schema<UpdateInstallationRequestNotificationCase0>;
+export const UpdateInstallationRequestNotificationCase0 =
+  ImportResourceRequestNotification as any as S.Schema<UpdateInstallationRequestNotificationCase0>;
 
 /** A notification to display to your customer. Send `null` to clear the current notification. */
 export type UpdateInstallationRequestNotification =
@@ -2217,16 +2209,8 @@ export interface UpdateResourceRequestNotificationCase0 {
   message?: string;
   href?: string;
 }
-export const UpdateResourceRequestNotificationCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    level: UpdateResourceRequestNotificationCase0Level,
-    title: S.String,
-    message: S.optional(S.String),
-    href: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateResourceRequestNotificationCase0",
-}) as any as S.Schema<UpdateResourceRequestNotificationCase0>;
+export const UpdateResourceRequestNotificationCase0 =
+  ImportResourceRequestNotification as any as S.Schema<UpdateResourceRequestNotificationCase0>;
 
 export type UpdateResourceRequestNotification = UpdateResourceRequestNotificationCase0 | string;
 export const UpdateResourceRequestNotification =

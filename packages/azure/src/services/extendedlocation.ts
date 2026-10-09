@@ -603,18 +603,8 @@ export interface EnabledResourceTypeSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const EnabledResourceTypeSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(EnabledResourceTypeSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(EnabledResourceTypeSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "EnabledResourceTypeSystemData",
-}) as any as S.Schema<EnabledResourceTypeSystemData>;
+export const EnabledResourceTypeSystemData =
+  GetCustomLocationResponseSystemData as any as S.Schema<EnabledResourceTypeSystemData>;
 
 /** EnabledResourceType definition. */
 export interface EnabledResourceType {
@@ -814,18 +804,8 @@ export interface UpdateCustomLocationResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdateCustomLocationResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(UpdateCustomLocationResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(UpdateCustomLocationResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateCustomLocationResponseSystemData",
-}) as any as S.Schema<UpdateCustomLocationResponseSystemData>;
+export const UpdateCustomLocationResponseSystemData =
+  GetCustomLocationResponseSystemData as any as S.Schema<UpdateCustomLocationResponseSystemData>;
 
 export interface UpdateCustomLocationResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */

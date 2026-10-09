@@ -390,23 +390,8 @@ export interface GetKernelRevisionResponseAuthorDataCase0 {
   plan?: GetKernelRevisionResponseAuthorDataCase0Plan;
   isUserFollowing?: boolean;
 }
-export const GetKernelRevisionResponseAuthorDataCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    _id: S.String,
-    avatarUrl: S.String,
-    fullname: S.String,
-    name: S.String,
-    isHf: S.Boolean,
-    isHfAdmin: S.Boolean,
-    isMod: S.Boolean,
-    followerCount: S.optional(S.Number),
-    type: S.String,
-    plan: S.optional(GetKernelRevisionResponseAuthorDataCase0Plan),
-    isUserFollowing: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "GetKernelRevisionResponseAuthorDataCase0",
-}) as any as S.Schema<GetKernelRevisionResponseAuthorDataCase0>;
+export const GetKernelRevisionResponseAuthorDataCase0 =
+  GetKernelResponseAuthorDataCase0 as any as S.Schema<GetKernelRevisionResponseAuthorDataCase0>;
 
 export type GetKernelRevisionResponseAuthorDataCase1PrimaryOrgPlan =
   | "team"
@@ -436,23 +421,8 @@ export interface GetKernelRevisionResponseAuthorDataCase1PrimaryOrg {
   userRole?: GetKernelRevisionResponseAuthorDataCase1PrimaryOrgUserRole;
   numUsers?: number;
 }
-export const GetKernelRevisionResponseAuthorDataCase1PrimaryOrg = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    avatarUrl: S.String,
-    fullname: S.String,
-    name: S.String,
-    type: S.String,
-    isHf: S.Boolean,
-    isFollowing: S.optional(S.Boolean),
-    plan: S.optional(GetKernelRevisionResponseAuthorDataCase1PrimaryOrgPlan),
-    details: S.optional(S.String),
-    hasPrivateMembersList: S.optional(S.Boolean),
-    userRole: S.optional(GetKernelRevisionResponseAuthorDataCase1PrimaryOrgUserRole),
-    numUsers: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GetKernelRevisionResponseAuthorDataCase1PrimaryOrg",
-}) as any as S.Schema<GetKernelRevisionResponseAuthorDataCase1PrimaryOrg>;
+export const GetKernelRevisionResponseAuthorDataCase1PrimaryOrg =
+  GetKernelResponseAuthorDataCase1PrimaryOrg as any as S.Schema<GetKernelRevisionResponseAuthorDataCase1PrimaryOrg>;
 
 export interface GetKernelRevisionResponseAuthorDataCase1 {
   /** A hex string of 24 characters representing an ObjectId. */
@@ -469,24 +439,8 @@ export interface GetKernelRevisionResponseAuthorDataCase1 {
   isUserFollowing?: boolean;
   primaryOrg?: GetKernelRevisionResponseAuthorDataCase1PrimaryOrg;
 }
-export const GetKernelRevisionResponseAuthorDataCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    _id: S.String,
-    avatarUrl: S.String,
-    fullname: S.String,
-    name: S.String,
-    isHf: S.Boolean,
-    isHfAdmin: S.Boolean,
-    isMod: S.Boolean,
-    followerCount: S.optional(S.Number),
-    type: S.String,
-    isPro: S.Boolean,
-    isUserFollowing: S.optional(S.Boolean),
-    primaryOrg: S.optional(GetKernelRevisionResponseAuthorDataCase1PrimaryOrg),
-  }),
-).annotate({
-  identifier: "GetKernelRevisionResponseAuthorDataCase1",
-}) as any as S.Schema<GetKernelRevisionResponseAuthorDataCase1>;
+export const GetKernelRevisionResponseAuthorDataCase1 =
+  GetKernelResponseAuthorDataCase1 as any as S.Schema<GetKernelRevisionResponseAuthorDataCase1>;
 
 export type GetKernelRevisionResponseAuthorData =
   | GetKernelRevisionResponseAuthorDataCase0
@@ -509,9 +463,8 @@ export const GetKernelRevisionResponseSupportedDriverFamiliesItem = S.String;
 
 export type GetKernelRevisionResponseSupportedDriverFamiliesList =
   Array<GetKernelRevisionResponseSupportedDriverFamiliesItem>;
-export const GetKernelRevisionResponseSupportedDriverFamiliesList = /*@__PURE__*/ S.Array(
-  GetKernelRevisionResponseSupportedDriverFamiliesItem,
-) as any as S.Schema<GetKernelRevisionResponseSupportedDriverFamiliesList>;
+export const GetKernelRevisionResponseSupportedDriverFamiliesList =
+  GetKernelResponseSupportedDriverFamiliesList as any as S.Schema<GetKernelRevisionResponseSupportedDriverFamiliesList>;
 
 export interface GetKernelRevisionResponse {
   _id: string;
@@ -699,9 +652,8 @@ export const ListKernelsRequestExpandCase1Item = S.String;
 export type ListKernelsRequestExpandCase1List = Array<
   ListKernelsRequestExpandCase1Item | (string & {})
 >;
-export const ListKernelsRequestExpandCase1List = /*@__PURE__*/ S.Array(
-  ListKernelsRequestExpandCase1Item,
-) as any as S.Schema<ListKernelsRequestExpandCase1List>;
+export const ListKernelsRequestExpandCase1List =
+  GetKernelResponseSupportedDriverFamiliesList as any as S.Schema<ListKernelsRequestExpandCase1List>;
 
 /** Display specific fields in the response */
 export type ListKernelsRequestExpand =
@@ -774,9 +726,8 @@ export const ListKernelsResponseBodyItemBuildMetadataCompatibilityTorchItem = S.
 
 export type ListKernelsResponseBodyItemBuildMetadataCompatibilityTorchList =
   Array<ListKernelsResponseBodyItemBuildMetadataCompatibilityTorchItem>;
-export const ListKernelsResponseBodyItemBuildMetadataCompatibilityTorchList = /*@__PURE__*/ S.Array(
-  ListKernelsResponseBodyItemBuildMetadataCompatibilityTorchItem,
-) as any as S.Schema<ListKernelsResponseBodyItemBuildMetadataCompatibilityTorchList>;
+export const ListKernelsResponseBodyItemBuildMetadataCompatibilityTorchList =
+  GetKernelResponseSupportedDriverFamiliesList as any as S.Schema<ListKernelsResponseBodyItemBuildMetadataCompatibilityTorchList>;
 
 export type ListKernelsResponseBodyItemBuildMetadataCompatibilityOsItem =
   | "macos"
@@ -786,9 +737,8 @@ export const ListKernelsResponseBodyItemBuildMetadataCompatibilityOsItem = S.Str
 
 export type ListKernelsResponseBodyItemBuildMetadataCompatibilityOsList =
   Array<ListKernelsResponseBodyItemBuildMetadataCompatibilityOsItem>;
-export const ListKernelsResponseBodyItemBuildMetadataCompatibilityOsList = /*@__PURE__*/ S.Array(
-  ListKernelsResponseBodyItemBuildMetadataCompatibilityOsItem,
-) as any as S.Schema<ListKernelsResponseBodyItemBuildMetadataCompatibilityOsList>;
+export const ListKernelsResponseBodyItemBuildMetadataCompatibilityOsList =
+  GetKernelResponseSupportedDriverFamiliesList as any as S.Schema<ListKernelsResponseBodyItemBuildMetadataCompatibilityOsList>;
 
 export type ListKernelsResponseBodyItemBuildMetadataCompatibilityArchItem =
   | "x86_64"
@@ -798,9 +748,8 @@ export const ListKernelsResponseBodyItemBuildMetadataCompatibilityArchItem = S.S
 
 export type ListKernelsResponseBodyItemBuildMetadataCompatibilityArchList =
   Array<ListKernelsResponseBodyItemBuildMetadataCompatibilityArchItem>;
-export const ListKernelsResponseBodyItemBuildMetadataCompatibilityArchList = /*@__PURE__*/ S.Array(
-  ListKernelsResponseBodyItemBuildMetadataCompatibilityArchItem,
-) as any as S.Schema<ListKernelsResponseBodyItemBuildMetadataCompatibilityArchList>;
+export const ListKernelsResponseBodyItemBuildMetadataCompatibilityArchList =
+  GetKernelResponseSupportedDriverFamiliesList as any as S.Schema<ListKernelsResponseBodyItemBuildMetadataCompatibilityArchList>;
 
 export interface ListKernelsResponseBodyItemBuildMetadataCompatibility {
   torch: ListKernelsResponseBodyItemBuildMetadataCompatibilityTorchList;
@@ -962,9 +911,8 @@ export const ListKernelsResponseBodyItemSupportedDriverFamiliesItem = S.String;
 /** Driver families supported by the kernel (derived from build metadata) */
 export type ListKernelsResponseBodyItemSupportedDriverFamiliesList =
   Array<ListKernelsResponseBodyItemSupportedDriverFamiliesItem>;
-export const ListKernelsResponseBodyItemSupportedDriverFamiliesList = /*@__PURE__*/ S.Array(
-  ListKernelsResponseBodyItemSupportedDriverFamiliesItem,
-) as any as S.Schema<ListKernelsResponseBodyItemSupportedDriverFamiliesList>;
+export const ListKernelsResponseBodyItemSupportedDriverFamiliesList =
+  GetKernelResponseSupportedDriverFamiliesList as any as S.Schema<ListKernelsResponseBodyItemSupportedDriverFamiliesList>;
 
 /** Resource group information */
 export type ListKernelsResponseBodyItemResourceGroup = GetKernelResponseResourceGroup;
@@ -1049,9 +997,8 @@ export type ListLikersRequestExpandItem = "likedAt";
 export const ListLikersRequestExpandItem = S.String;
 
 export type ListLikersRequestExpandList = Array<ListLikersRequestExpandItem | (string & {})>;
-export const ListLikersRequestExpandList = /*@__PURE__*/ S.Array(
-  ListLikersRequestExpandItem,
-) as any as S.Schema<ListLikersRequestExpandList>;
+export const ListLikersRequestExpandList =
+  GetKernelResponseSupportedDriverFamiliesList as any as S.Schema<ListLikersRequestExpandList>;
 
 export interface ListLikersRequest {
   namespace: string;

@@ -8893,15 +8893,8 @@ export interface DropletMultiCreateInputBackupPolicy {
   /** The hour of the day that the backup window will start. */
   hour?: DropletMultiCreateInputBackupPolicyHour | (number & {});
 }
-export const DropletMultiCreateInputBackupPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    plan: S.optional(DropletMultiCreateInputBackupPolicyPlan),
-    weekday: S.optional(DropletMultiCreateInputBackupPolicyWeekday),
-    hour: S.optional(DropletMultiCreateInputBackupPolicyHour),
-  }),
-).annotate({
-  identifier: "DropletMultiCreateInputBackupPolicy",
-}) as any as S.Schema<DropletMultiCreateInputBackupPolicy>;
+export const DropletMultiCreateInputBackupPolicy =
+  DropletSingleCreateInputBackupPolicy as any as S.Schema<DropletMultiCreateInputBackupPolicy>;
 
 /** A flat array of tag names as strings to apply to the Droplet after it is created. Tag names can either be existing or new tags.<br>Requires `tag:create` scope. */
 export type DropletMultiCreateInputTagsList = Array<string>;
@@ -10900,9 +10893,8 @@ export const ApiPresetSaveSection = S.String;
 export type CreateGenaiModelEvaluationRunRequestPresetSaveSectionsList = Array<
   ApiPresetSaveSection | (string & {})
 >;
-export const CreateGenaiModelEvaluationRunRequestPresetSaveSectionsList = /*@__PURE__*/ S.Array(
-  ApiPresetSaveSection,
-) as any as S.Schema<CreateGenaiModelEvaluationRunRequestPresetSaveSectionsList>;
+export const CreateGenaiModelEvaluationRunRequestPresetSaveSectionsList =
+  ApiModelUsecasesList as any as S.Schema<CreateGenaiModelEvaluationRunRequestPresetSaveSectionsList>;
 
 export interface CreateGenaiModelEvaluationRunRequest {
   candidate_inference_config?: ApiCandidateInferenceConfig;
@@ -11559,24 +11551,7 @@ export interface Image {
   /** A string containing information about errors that may occur when importing a custom image. */
   error_message?: string;
 }
-export const Image = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.Number),
-    name: S.optional(S.String),
-    type: S.optional(ImageType),
-    distribution: S.optional(Distribution),
-    slug: S.optional(S.NullOr(S.String)),
-    public: S.optional(S.Boolean),
-    regions: S.optional(RegionsArray),
-    created_at: S.optional(S.String),
-    min_disk_size: S.optional(S.NullOr(S.Number)),
-    size_gigabytes: S.optional(S.NullOr(S.Number)),
-    description: S.optional(S.String),
-    tags: S.optional(S.NullOr(TagsArray)),
-    status: S.optional(ImageStatus),
-    error_message: S.optional(S.String),
-  }),
-).annotate({ identifier: "Image" }) as any as S.Schema<Image>;
+export const Image = DropletImage as any as S.Schema<Image>;
 
 export interface CreateImageCustomResponse {
   image?: Image;
@@ -12398,14 +12373,8 @@ export interface MessagesResponseTextBlock {
   /** Generated text for this block. */
   text: string;
 }
-export const MessagesResponseTextBlock = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: MessagesResponseTextBlockType,
-    text: S.String,
-  }),
-).annotate({
-  identifier: "MessagesResponseTextBlock",
-}) as any as S.Schema<MessagesResponseTextBlock>;
+export const MessagesResponseTextBlock =
+  MessagesRequestTextBlockParam as any as S.Schema<MessagesResponseTextBlock>;
 
 export type MessagesResponseToolUseBlockType = "tool_use";
 export const MessagesResponseToolUseBlockType = S.String;
@@ -12611,14 +12580,8 @@ export interface CreateInferenceResponseRequestToolChoiceCase1 {
   type: CreateInferenceResponseRequestToolChoiceCase1Type;
   function: CreateAgentInferenceChatCompletionRequestToolChoiceCase1Function;
 }
-export const CreateInferenceResponseRequestToolChoiceCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: CreateInferenceResponseRequestToolChoiceCase1Type,
-    function: CreateAgentInferenceChatCompletionRequestToolChoiceCase1Function,
-  }),
-).annotate({
-  identifier: "CreateInferenceResponseRequestToolChoiceCase1",
-}) as any as S.Schema<CreateInferenceResponseRequestToolChoiceCase1>;
+export const CreateInferenceResponseRequestToolChoiceCase1 =
+  CreateInferenceChatCompletionRequestToolChoiceCase1 as any as S.Schema<CreateInferenceResponseRequestToolChoiceCase1>;
 
 /** Controls which (if any) tool is called by the model. */
 export type CreateInferenceResponseRequestToolChoice =
@@ -12709,21 +12672,14 @@ export interface CreateResponseResponseOutputItemContentItem {
   /** The text content. */
   text: string;
 }
-export const CreateResponseResponseOutputItemContentItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: CreateResponseResponseOutputItemContentItemType,
-    text: S.String,
-  }),
-).annotate({
-  identifier: "CreateResponseResponseOutputItemContentItem",
-}) as any as S.Schema<CreateResponseResponseOutputItemContentItem>;
+export const CreateResponseResponseOutputItemContentItem =
+  MessagesRequestTextBlockParam as any as S.Schema<CreateResponseResponseOutputItemContentItem>;
 
 /** Array of content parts for this output item. Each part has a type and text. Content types include `reasoning_text` for reasoning items and `output_text` for final output. */
 export type CreateResponseResponseOutputItemContentList =
   Array<CreateResponseResponseOutputItemContentItem>;
-export const CreateResponseResponseOutputItemContentList = /*@__PURE__*/ S.Array(
-  CreateResponseResponseOutputItemContentItem,
-) as any as S.Schema<CreateResponseResponseOutputItemContentList>;
+export const CreateResponseResponseOutputItemContentList =
+  CreateInferenceMessagesRequestSystemCase1List as any as S.Schema<CreateResponseResponseOutputItemContentList>;
 
 export interface CreateResponseResponseOutputItem {
   /** The type of output item. One of `reasoning`, `message`, or `function_call`. */
@@ -13134,9 +13090,8 @@ export const NotificationChannelBindingNotifyOnItem = S.String;
 export type NotificationChannelBindingNotifyOnList = Array<
   NotificationChannelBindingNotifyOnItem | (string & {})
 >;
-export const NotificationChannelBindingNotifyOnList = /*@__PURE__*/ S.Array(
-  NotificationChannelBindingNotifyOnItem,
-) as any as S.Schema<NotificationChannelBindingNotifyOnList>;
+export const NotificationChannelBindingNotifyOnList =
+  ApiModelUsecasesList as any as S.Schema<NotificationChannelBindingNotifyOnList>;
 
 /** Binding from an alert rule to a notification channel. When `notify_on` is omitted or empty, the channel is notified for all severities. */
 export interface NotificationChannelBinding {
@@ -13530,9 +13485,8 @@ export const ClusterAutoscalerConfigurationExpandersItem = S.String;
 export type ClusterAutoscalerConfigurationExpandersList = Array<
   ClusterAutoscalerConfigurationExpandersItem | (string & {})
 >;
-export const ClusterAutoscalerConfigurationExpandersList = /*@__PURE__*/ S.Array(
-  ClusterAutoscalerConfigurationExpandersItem,
-) as any as S.Schema<ClusterAutoscalerConfigurationExpandersList>;
+export const ClusterAutoscalerConfigurationExpandersList =
+  ApiModelUsecasesList as any as S.Schema<ClusterAutoscalerConfigurationExpandersList>;
 
 /** An object specifying custom cluster autoscaler configuration. */
 export interface ClusterAutoscalerConfiguration {
@@ -15033,9 +14987,8 @@ export const AccessPolicyProtocolsItem = S.String;
 
 /** Allowed NFS protocols for this export. */
 export type AccessPolicyProtocolsList = Array<AccessPolicyProtocolsItem | (string & {})>;
-export const AccessPolicyProtocolsList = /*@__PURE__*/ S.Array(
-  AccessPolicyProtocolsItem,
-) as any as S.Schema<AccessPolicyProtocolsList>;
+export const AccessPolicyProtocolsList =
+  ApiModelUsecasesList as any as S.Schema<AccessPolicyProtocolsList>;
 
 /** The squash mode applied to the access point export. */
 export type AccessPolicySquashConfig = "NO_SQUASH" | "ROOT_SQUASH" | "ALL_SQUASH";
@@ -16926,9 +16879,8 @@ export const CreateUptimeCheckRequestRegionsItem = S.String;
 export type CreateUptimeCheckRequestRegionsList = Array<
   CreateUptimeCheckRequestRegionsItem | (string & {})
 >;
-export const CreateUptimeCheckRequestRegionsList = /*@__PURE__*/ S.Array(
-  CreateUptimeCheckRequestRegionsItem,
-) as any as S.Schema<CreateUptimeCheckRequestRegionsList>;
+export const CreateUptimeCheckRequestRegionsList =
+  ApiModelUsecasesList as any as S.Schema<CreateUptimeCheckRequestRegionsList>;
 
 export interface CreateUptimeCheckRequest {
   /** A human-friendly display name. */
@@ -16961,9 +16913,7 @@ export const CheckRegionsItem = S.String;
 
 /** An array containing the selected regions to perform healthchecks from. */
 export type CheckRegionsList = Array<CheckRegionsItem>;
-export const CheckRegionsList = /*@__PURE__*/ S.Array(
-  CheckRegionsItem,
-) as any as S.Schema<CheckRegionsList>;
+export const CheckRegionsList = ApiModelUsecasesList as any as S.Schema<CheckRegionsList>;
 
 export interface Check {
   /** A unique ID that can be used to identify and reference the check. */
@@ -17930,9 +17880,8 @@ export const LimitCategory = S.String;
 
 /** Required. Categories to clear, each at most once. */
 export type DeleteActorLimitRequestCategoriesList = Array<LimitCategory | (string & {})>;
-export const DeleteActorLimitRequestCategoriesList = /*@__PURE__*/ S.Array(
-  LimitCategory,
-) as any as S.Schema<DeleteActorLimitRequestCategoriesList>;
+export const DeleteActorLimitRequestCategoriesList =
+  ApiModelUsecasesList as any as S.Schema<DeleteActorLimitRequestCategoriesList>;
 
 export interface DeleteActorLimitRequest {
   /** Actor ID: a session `actor_id` or a connection `user_id`, 1 to 64 characters from `[A-Za-z0-9._-]`. */
@@ -18933,14 +18882,8 @@ export interface ApiDeleteModelEvaluationRunOutputPublic {
   error?: string;
   status?: ApiDeleteModelEvaluationRunStatus;
 }
-export const ApiDeleteModelEvaluationRunOutputPublic = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    error: S.optional(S.String),
-    status: S.optional(ApiDeleteModelEvaluationRunStatus),
-  }),
-).annotate({
-  identifier: "ApiDeleteModelEvaluationRunOutputPublic",
-}) as any as S.Schema<ApiDeleteModelEvaluationRunOutputPublic>;
+export const ApiDeleteModelEvaluationRunOutputPublic =
+  ApiDeleteCustomModelOutputPublic as any as S.Schema<ApiDeleteModelEvaluationRunOutputPublic>;
 
 export interface DeleteGenaiModelRouterRequest {
   /** Model router id */
@@ -22173,9 +22116,8 @@ export const PgbouncerAdvancedConfigIgnoreStartupParametersItem = S.String;
 export type PgbouncerAdvancedConfigIgnoreStartupParametersList = Array<
   PgbouncerAdvancedConfigIgnoreStartupParametersItem | (string & {})
 >;
-export const PgbouncerAdvancedConfigIgnoreStartupParametersList = /*@__PURE__*/ S.Array(
-  PgbouncerAdvancedConfigIgnoreStartupParametersItem,
-) as any as S.Schema<PgbouncerAdvancedConfigIgnoreStartupParametersList>;
+export const PgbouncerAdvancedConfigIgnoreStartupParametersList =
+  ApiModelUsecasesList as any as S.Schema<PgbouncerAdvancedConfigIgnoreStartupParametersList>;
 
 /** PGBouncer pool mode */
 export type PgbouncerAdvancedConfigAutodbPoolMode = "session" | "transaction" | "statement";
@@ -22248,9 +22190,8 @@ export const PostgresAdvancedConfigPgauditLogItem = S.String;
 export type PostgresAdvancedConfigPgauditLogList = Array<
   PostgresAdvancedConfigPgauditLogItem | (string & {})
 >;
-export const PostgresAdvancedConfigPgauditLogList = /*@__PURE__*/ S.Array(
-  PostgresAdvancedConfigPgauditLogItem,
-) as any as S.Schema<PostgresAdvancedConfigPgauditLogList>;
+export const PostgresAdvancedConfigPgauditLogList =
+  ApiModelUsecasesList as any as S.Schema<PostgresAdvancedConfigPgauditLogList>;
 
 /** System-wide settings for the pgaudit extension. When `feature_enabled` is true, the pgaudit extension is automatically installed. When false, the extension is uninstalled but auditing configurations (such as `log`) are preserved. */
 export interface PostgresAdvancedConfigPgaudit {
@@ -23169,17 +23110,8 @@ export interface GetDatabaseKafkaSchemaVersionResponse {
   /** The schema definition in the specified format. */
   schema: string;
 }
-export const GetDatabaseKafkaSchemaVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    schema_id: S.Number,
-    version: S.String,
-    subject_name: S.String,
-    schema_type: GetDatabaseKafkaSchemaVersionResponseSchemaType,
-    schema: S.String,
-  }),
-).annotate({
-  identifier: "GetDatabaseKafkaSchemaVersionResponse",
-}) as any as S.Schema<GetDatabaseKafkaSchemaVersionResponse>;
+export const GetDatabaseKafkaSchemaVersionResponse =
+  GetDatabaseKafkaSchemaResponse as any as S.Schema<GetDatabaseKafkaSchemaVersionResponse>;
 
 export interface GetDatabaseKafkaTopicRequest {
   /** A unique identifier for a database cluster. */
@@ -27263,12 +27195,7 @@ export interface ClusterReadStatus {
   /** An optional message providing additional information about the current cluster state. */
   message?: string;
 }
-export const ClusterReadStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: S.optional(ClusterReadStatusState),
-    message: S.optional(S.String),
-  }),
-).annotate({ identifier: "ClusterReadStatus" }) as any as S.Schema<ClusterReadStatus>;
+export const ClusterReadStatus = ClusterStatus as any as S.Schema<ClusterReadStatus>;
 
 /** An array of integrated DOCR registries. */
 export type ClusterReadRegistriesList = Array<string>;
@@ -29871,33 +29798,14 @@ export interface GetReservedIPsActionResponseAction {
   /** The UUID of the project to which the reserved IP currently belongs. */
   project_id?: string;
 }
-export const GetReservedIPsActionResponseAction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    status: GetReservedIPsActionResponseActionStatus,
-    type: S.optional(S.String),
-    started_at: S.optional(S.String),
-    completed_at: S.optional(S.NullOr(S.String)),
-    resource_id: S.optional(S.NullOr(S.Number)),
-    resource_type: S.optional(S.String),
-    region: S.optional(Region),
-    region_slug: S.optional(S.NullOr(S.String)),
-    project_id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetReservedIPsActionResponseAction",
-}) as any as S.Schema<GetReservedIPsActionResponseAction>;
+export const GetReservedIPsActionResponseAction =
+  GetFloatingIPsActionResponseAction as any as S.Schema<GetReservedIPsActionResponseAction>;
 
 export interface GetReservedIPsActionResponse {
   action?: GetReservedIPsActionResponseAction;
 }
-export const GetReservedIPsActionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.optional(GetReservedIPsActionResponseAction),
-  }),
-).annotate({
-  identifier: "GetReservedIPsActionResponse",
-}) as any as S.Schema<GetReservedIPsActionResponse>;
+export const GetReservedIPsActionResponse =
+  GetFloatingIPsActionResponse as any as S.Schema<GetReservedIPsActionResponse>;
 
 export interface GetReservedIPv6Request {
   /** A reserved IPv6 address. */
@@ -31765,9 +31673,8 @@ export const ListAppDeploymentsRequestDeploymentTypesItem = S.String;
 export type ListAppDeploymentsRequestDeploymentTypesList = Array<
   ListAppDeploymentsRequestDeploymentTypesItem | (string & {})
 >;
-export const ListAppDeploymentsRequestDeploymentTypesList = /*@__PURE__*/ S.Array(
-  ListAppDeploymentsRequestDeploymentTypesItem,
-) as any as S.Schema<ListAppDeploymentsRequestDeploymentTypesList>;
+export const ListAppDeploymentsRequestDeploymentTypesList =
+  ApiModelUsecasesList as any as S.Schema<ListAppDeploymentsRequestDeploymentTypesList>;
 
 export interface ListAppDeploymentsRequest {
   /** The app ID */
@@ -31819,9 +31726,8 @@ export const ListAppEventsRequestEventTypesItem = S.String;
 export type ListAppEventsRequestEventTypesList = Array<
   ListAppEventsRequestEventTypesItem | (string & {})
 >;
-export const ListAppEventsRequestEventTypesList = /*@__PURE__*/ S.Array(
-  ListAppEventsRequestEventTypesItem,
-) as any as S.Schema<ListAppEventsRequestEventTypesList>;
+export const ListAppEventsRequestEventTypesList =
+  ApiModelUsecasesList as any as S.Schema<ListAppEventsRequestEventTypesList>;
 
 export interface ListAppEventsRequest {
   /** The app ID */
@@ -35662,9 +35568,8 @@ export const ApiModelCatalogSortBy = S.String;
 
 /** All sort-by field values the client can offer in the sort UI. */
 export type ApiListModelCatalogOutputAvailableSortByList = Array<ApiModelCatalogSortBy>;
-export const ApiListModelCatalogOutputAvailableSortByList = /*@__PURE__*/ S.Array(
-  ApiModelCatalogSortBy,
-) as any as S.Schema<ApiListModelCatalogOutputAvailableSortByList>;
+export const ApiListModelCatalogOutputAvailableSortByList =
+  ApiModelUsecasesList as any as S.Schema<ApiListModelCatalogOutputAvailableSortByList>;
 
 /** Sort direction shared by list endpoints that support sorting. */
 export type ApiSortDirection =
@@ -35675,9 +35580,8 @@ export const ApiSortDirection = S.String;
 
 /** All sort-direction values the client can offer in the sort UI. */
 export type ApiListModelCatalogOutputAvailableSortDirectionsList = Array<ApiSortDirection>;
-export const ApiListModelCatalogOutputAvailableSortDirectionsList = /*@__PURE__*/ S.Array(
-  ApiSortDirection,
-) as any as S.Schema<ApiListModelCatalogOutputAvailableSortDirectionsList>;
+export const ApiListModelCatalogOutputAvailableSortDirectionsList =
+  ApiModelUsecasesList as any as S.Schema<ApiListModelCatalogOutputAvailableSortDirectionsList>;
 
 export type ApiModelCatalogEntryAvailabilityList = Array<string>;
 export const ApiModelCatalogEntryAvailabilityList =
@@ -35857,9 +35761,8 @@ export const ListGenaiModelEvaluationRunsRequestStatusesItem = S.String;
 export type ListGenaiModelEvaluationRunsRequestStatusesList = Array<
   ListGenaiModelEvaluationRunsRequestStatusesItem | (string & {})
 >;
-export const ListGenaiModelEvaluationRunsRequestStatusesList = /*@__PURE__*/ S.Array(
-  ListGenaiModelEvaluationRunsRequestStatusesItem,
-) as any as S.Schema<ListGenaiModelEvaluationRunsRequestStatusesList>;
+export const ListGenaiModelEvaluationRunsRequestStatusesList =
+  ApiModelUsecasesList as any as S.Schema<ListGenaiModelEvaluationRunsRequestStatusesList>;
 
 export type ListGenaiModelEvaluationRunsRequestCandidateTypesItem =
   | "CANDIDATE_MODEL_SOURCE_SERVERLESS"
@@ -35870,9 +35773,8 @@ export const ListGenaiModelEvaluationRunsRequestCandidateTypesItem = S.String;
 export type ListGenaiModelEvaluationRunsRequestCandidateTypesList = Array<
   ListGenaiModelEvaluationRunsRequestCandidateTypesItem | (string & {})
 >;
-export const ListGenaiModelEvaluationRunsRequestCandidateTypesList = /*@__PURE__*/ S.Array(
-  ListGenaiModelEvaluationRunsRequestCandidateTypesItem,
-) as any as S.Schema<ListGenaiModelEvaluationRunsRequestCandidateTypesList>;
+export const ListGenaiModelEvaluationRunsRequestCandidateTypesList =
+  ApiModelUsecasesList as any as S.Schema<ListGenaiModelEvaluationRunsRequestCandidateTypesList>;
 
 export type ListGenaiModelEvaluationRunsRequestSortBy =
   | "MODEL_EVALUATION_RUN_SORT_FIELD_UNSPECIFIED"
@@ -35927,16 +35829,14 @@ export const ListGenaiModelEvaluationRunsRequest = /*@__PURE__*/ S.suspend(() =>
 /** Full set of candidate model source types the FE can offer in the candidate-type filter UI. */
 export type ApiListModelEvaluationRunsOutputAvailableCandidateTypesList =
   Array<ApiCandidateModelSource>;
-export const ApiListModelEvaluationRunsOutputAvailableCandidateTypesList = /*@__PURE__*/ S.Array(
-  ApiCandidateModelSource,
-) as any as S.Schema<ApiListModelEvaluationRunsOutputAvailableCandidateTypesList>;
+export const ApiListModelEvaluationRunsOutputAvailableCandidateTypesList =
+  ApiModelUsecasesList as any as S.Schema<ApiListModelEvaluationRunsOutputAvailableCandidateTypesList>;
 
 /** Full set of statuses the FE can offer in the status filter UI. Returned on every list call so clients never need to hardcode the enum values. */
 export type ApiListModelEvaluationRunsOutputAvailableStatusesList =
   Array<ApiModelEvaluationRunStatus>;
-export const ApiListModelEvaluationRunsOutputAvailableStatusesList = /*@__PURE__*/ S.Array(
-  ApiModelEvaluationRunStatus,
-) as any as S.Schema<ApiListModelEvaluationRunsOutputAvailableStatusesList>;
+export const ApiListModelEvaluationRunsOutputAvailableStatusesList =
+  ApiModelUsecasesList as any as S.Schema<ApiListModelEvaluationRunsOutputAvailableStatusesList>;
 
 /** Summary view of evaluation runs for the run history list. */
 export type ApiListModelEvaluationRunsOutputRunsList = Array<ApiModelEvaluationRunSummary>;
@@ -36155,9 +36055,8 @@ export const ListGenaiModelsRequestUsecasesItem = S.String;
 export type ListGenaiModelsRequestUsecasesList = Array<
   ListGenaiModelsRequestUsecasesItem | (string & {})
 >;
-export const ListGenaiModelsRequestUsecasesList = /*@__PURE__*/ S.Array(
-  ListGenaiModelsRequestUsecasesItem,
-) as any as S.Schema<ListGenaiModelsRequestUsecasesList>;
+export const ListGenaiModelsRequestUsecasesList =
+  ApiModelUsecasesList as any as S.Schema<ListGenaiModelsRequestUsecasesList>;
 
 export interface ListGenaiModelsRequest {
   /** Include only models defined for the listed usecases. - MODEL_USECASE_UNKNOWN: The use case of the model is unknown - MODEL_USECASE_AGENT: The model maybe used in an agent - MODEL_USECASE_FINETUNED: The model maybe used for fine tuning - MODEL_USECASE_KNOWLEDGEBASE: The model maybe used for knowledge bases (embedding models) - MODEL_USECASE_GUARDRAIL: The model maybe used for guardrails - MODEL_USECASE_REASONING: The model usecase for reasoning - MODEL_USECASE_SERVERLESS: The model usecase for serverless inference */
@@ -36402,9 +36301,8 @@ export const ApiScenarioLibrarySortField = S.String;
 
 /** Sort-by values available for this list request. */
 export type ApiListScenarioLibraryOutputAvailableSortByList = Array<ApiScenarioLibrarySortField>;
-export const ApiListScenarioLibraryOutputAvailableSortByList = /*@__PURE__*/ S.Array(
-  ApiScenarioLibrarySortField,
-) as any as S.Schema<ApiListScenarioLibraryOutputAvailableSortByList>;
+export const ApiListScenarioLibraryOutputAvailableSortByList =
+  ApiModelUsecasesList as any as S.Schema<ApiListScenarioLibraryOutputAvailableSortByList>;
 
 /** Sort-direction values available for this list request. */
 export type ApiListScenarioLibraryOutputAvailableSortDirectionsList = Array<ApiSortDirection>;
@@ -36542,9 +36440,8 @@ export const ApiScenarioSortField = S.String;
 
 /** Sort-by values available for this list request. */
 export type ApiListScenariosOutputAvailableSortByList = Array<ApiScenarioSortField>;
-export const ApiListScenariosOutputAvailableSortByList = /*@__PURE__*/ S.Array(
-  ApiScenarioSortField,
-) as any as S.Schema<ApiListScenariosOutputAvailableSortByList>;
+export const ApiListScenariosOutputAvailableSortByList =
+  ApiModelUsecasesList as any as S.Schema<ApiListScenariosOutputAvailableSortByList>;
 
 /** Sort-direction values available for this list request. */
 export type ApiListScenariosOutputAvailableSortDirectionsList = Array<ApiSortDirection>;
@@ -36634,9 +36531,8 @@ export const ListGenaiScenarioSetsRequestStatusesItem = S.String;
 export type ListGenaiScenarioSetsRequestStatusesList = Array<
   ListGenaiScenarioSetsRequestStatusesItem | (string & {})
 >;
-export const ListGenaiScenarioSetsRequestStatusesList = /*@__PURE__*/ S.Array(
-  ListGenaiScenarioSetsRequestStatusesItem,
-) as any as S.Schema<ListGenaiScenarioSetsRequestStatusesList>;
+export const ListGenaiScenarioSetsRequestStatusesList =
+  ApiModelUsecasesList as any as S.Schema<ListGenaiScenarioSetsRequestStatusesList>;
 
 export type ListGenaiScenarioSetsRequestSourceKindsItem =
   | "SCENARIO_SET_SOURCE_KIND_UNSPECIFIED"
@@ -36649,9 +36545,8 @@ export const ListGenaiScenarioSetsRequestSourceKindsItem = S.String;
 export type ListGenaiScenarioSetsRequestSourceKindsList = Array<
   ListGenaiScenarioSetsRequestSourceKindsItem | (string & {})
 >;
-export const ListGenaiScenarioSetsRequestSourceKindsList = /*@__PURE__*/ S.Array(
-  ListGenaiScenarioSetsRequestSourceKindsItem,
-) as any as S.Schema<ListGenaiScenarioSetsRequestSourceKindsList>;
+export const ListGenaiScenarioSetsRequestSourceKindsList =
+  ApiModelUsecasesList as any as S.Schema<ListGenaiScenarioSetsRequestSourceKindsList>;
 
 export type ListGenaiScenarioSetsRequestSortBy =
   | "SCENARIO_SET_SORT_FIELD_UNSPECIFIED"
@@ -36710,9 +36605,8 @@ export const ApiScenarioSetSortField = S.String;
 
 /** Sort-by values available for this list request. */
 export type ApiListScenarioSetsOutputAvailableSortByList = Array<ApiScenarioSetSortField>;
-export const ApiListScenarioSetsOutputAvailableSortByList = /*@__PURE__*/ S.Array(
-  ApiScenarioSetSortField,
-) as any as S.Schema<ApiListScenarioSetsOutputAvailableSortByList>;
+export const ApiListScenarioSetsOutputAvailableSortByList =
+  ApiModelUsecasesList as any as S.Schema<ApiListScenarioSetsOutputAvailableSortByList>;
 
 /** Sort-direction values available for this list request. */
 export type ApiListScenarioSetsOutputAvailableSortDirectionsList = Array<ApiSortDirection>;
@@ -36721,15 +36615,13 @@ export const ApiListScenarioSetsOutputAvailableSortDirectionsList =
 
 /** Source kinds available for filtering this list request. */
 export type ApiListScenarioSetsOutputAvailableSourceKindsList = Array<ApiScenarioSetSourceKind>;
-export const ApiListScenarioSetsOutputAvailableSourceKindsList = /*@__PURE__*/ S.Array(
-  ApiScenarioSetSourceKind,
-) as any as S.Schema<ApiListScenarioSetsOutputAvailableSourceKindsList>;
+export const ApiListScenarioSetsOutputAvailableSourceKindsList =
+  ApiModelUsecasesList as any as S.Schema<ApiListScenarioSetsOutputAvailableSourceKindsList>;
 
 /** Statuses available for filtering this list request. */
 export type ApiListScenarioSetsOutputAvailableStatusesList = Array<ApiScenarioSetStatus>;
-export const ApiListScenarioSetsOutputAvailableStatusesList = /*@__PURE__*/ S.Array(
-  ApiScenarioSetStatus,
-) as any as S.Schema<ApiListScenarioSetsOutputAvailableStatusesList>;
+export const ApiListScenarioSetsOutputAvailableStatusesList =
+  ApiModelUsecasesList as any as S.Schema<ApiListScenarioSetsOutputAvailableStatusesList>;
 
 /** The scenario sets for the current page. */
 export type ApiListScenarioSetsOutputScenarioSetsList = Array<ApiScenarioSet>;
@@ -36777,9 +36669,8 @@ export const ListGenaiSimulationJourneysRequestStatusesItem = S.String;
 export type ListGenaiSimulationJourneysRequestStatusesList = Array<
   ListGenaiSimulationJourneysRequestStatusesItem | (string & {})
 >;
-export const ListGenaiSimulationJourneysRequestStatusesList = /*@__PURE__*/ S.Array(
-  ListGenaiSimulationJourneysRequestStatusesItem,
-) as any as S.Schema<ListGenaiSimulationJourneysRequestStatusesList>;
+export const ListGenaiSimulationJourneysRequestStatusesList =
+  ApiModelUsecasesList as any as S.Schema<ListGenaiSimulationJourneysRequestStatusesList>;
 
 export type ListGenaiSimulationJourneysRequestVerdictsItem =
   | "SIMULATION_JOURNEY_VERDICT_UNSPECIFIED"
@@ -36791,9 +36682,8 @@ export const ListGenaiSimulationJourneysRequestVerdictsItem = S.String;
 export type ListGenaiSimulationJourneysRequestVerdictsList = Array<
   ListGenaiSimulationJourneysRequestVerdictsItem | (string & {})
 >;
-export const ListGenaiSimulationJourneysRequestVerdictsList = /*@__PURE__*/ S.Array(
-  ListGenaiSimulationJourneysRequestVerdictsItem,
-) as any as S.Schema<ListGenaiSimulationJourneysRequestVerdictsList>;
+export const ListGenaiSimulationJourneysRequestVerdictsList =
+  ApiModelUsecasesList as any as S.Schema<ListGenaiSimulationJourneysRequestVerdictsList>;
 
 export type ListGenaiSimulationJourneysRequestSortBy =
   | "SIMULATION_JOURNEY_SORT_FIELD_UNSPECIFIED"
@@ -36859,9 +36749,8 @@ export const ApiSimulationJourneySortField = S.String;
 /** Sort-by values available for this list request. */
 export type ApiListSimulationJourneysOutputAvailableSortByList =
   Array<ApiSimulationJourneySortField>;
-export const ApiListSimulationJourneysOutputAvailableSortByList = /*@__PURE__*/ S.Array(
-  ApiSimulationJourneySortField,
-) as any as S.Schema<ApiListSimulationJourneysOutputAvailableSortByList>;
+export const ApiListSimulationJourneysOutputAvailableSortByList =
+  ApiModelUsecasesList as any as S.Schema<ApiListSimulationJourneysOutputAvailableSortByList>;
 
 /** Sort-direction values available for this list request. */
 export type ApiListSimulationJourneysOutputAvailableSortDirectionsList = Array<ApiSortDirection>;
@@ -36871,16 +36760,14 @@ export const ApiListSimulationJourneysOutputAvailableSortDirectionsList =
 /** Statuses available for filtering this list request. */
 export type ApiListSimulationJourneysOutputAvailableStatusesList =
   Array<ApiSimulationJourneyStatus>;
-export const ApiListSimulationJourneysOutputAvailableStatusesList = /*@__PURE__*/ S.Array(
-  ApiSimulationJourneyStatus,
-) as any as S.Schema<ApiListSimulationJourneysOutputAvailableStatusesList>;
+export const ApiListSimulationJourneysOutputAvailableStatusesList =
+  ApiModelUsecasesList as any as S.Schema<ApiListSimulationJourneysOutputAvailableStatusesList>;
 
 /** Verdicts available for filtering this list request. */
 export type ApiListSimulationJourneysOutputAvailableVerdictsList =
   Array<ApiSimulationJourneyVerdict>;
-export const ApiListSimulationJourneysOutputAvailableVerdictsList = /*@__PURE__*/ S.Array(
-  ApiSimulationJourneyVerdict,
-) as any as S.Schema<ApiListSimulationJourneysOutputAvailableVerdictsList>;
+export const ApiListSimulationJourneysOutputAvailableVerdictsList =
+  ApiModelUsecasesList as any as S.Schema<ApiListSimulationJourneysOutputAvailableVerdictsList>;
 
 /** The journeys for the current page. */
 export type ApiListSimulationJourneysOutputJourneysList = Array<ApiSimulationJourney>;
@@ -36933,9 +36820,8 @@ export const ListGenaiSimulationRunsRequestStatusesItem = S.String;
 export type ListGenaiSimulationRunsRequestStatusesList = Array<
   ListGenaiSimulationRunsRequestStatusesItem | (string & {})
 >;
-export const ListGenaiSimulationRunsRequestStatusesList = /*@__PURE__*/ S.Array(
-  ListGenaiSimulationRunsRequestStatusesItem,
-) as any as S.Schema<ListGenaiSimulationRunsRequestStatusesList>;
+export const ListGenaiSimulationRunsRequestStatusesList =
+  ApiModelUsecasesList as any as S.Schema<ListGenaiSimulationRunsRequestStatusesList>;
 
 export type ListGenaiSimulationRunsRequestSortBy =
   | "SIMULATION_RUN_SORT_FIELD_UNSPECIFIED"
@@ -36992,9 +36878,8 @@ export const ApiSimulationRunSortField = S.String;
 
 /** Sort-by values available for this list request. */
 export type ApiListSimulationRunsOutputAvailableSortByList = Array<ApiSimulationRunSortField>;
-export const ApiListSimulationRunsOutputAvailableSortByList = /*@__PURE__*/ S.Array(
-  ApiSimulationRunSortField,
-) as any as S.Schema<ApiListSimulationRunsOutputAvailableSortByList>;
+export const ApiListSimulationRunsOutputAvailableSortByList =
+  ApiModelUsecasesList as any as S.Schema<ApiListSimulationRunsOutputAvailableSortByList>;
 
 /** Sort-direction values available for this list request. */
 export type ApiListSimulationRunsOutputAvailableSortDirectionsList = Array<ApiSortDirection>;
@@ -37003,9 +36888,8 @@ export const ApiListSimulationRunsOutputAvailableSortDirectionsList =
 
 /** Statuses available for filtering this list request. */
 export type ApiListSimulationRunsOutputAvailableStatusesList = Array<ApiSimulationRunStatus>;
-export const ApiListSimulationRunsOutputAvailableStatusesList = /*@__PURE__*/ S.Array(
-  ApiSimulationRunStatus,
-) as any as S.Schema<ApiListSimulationRunsOutputAvailableStatusesList>;
+export const ApiListSimulationRunsOutputAvailableStatusesList =
+  ApiModelUsecasesList as any as S.Schema<ApiListSimulationRunsOutputAvailableStatusesList>;
 
 /** The simulation runs for the current page. */
 export type ApiListSimulationRunsOutputSimulationRunsList = Array<ApiSimulationRun>;
@@ -41206,15 +41090,8 @@ export interface DropletActionEnableBackupsInputBackupPolicy {
   /** The hour of the day that the backup window will start. */
   hour?: DropletActionEnableBackupsInputBackupPolicyHour | (number & {});
 }
-export const DropletActionEnableBackupsInputBackupPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    plan: S.optional(DropletActionEnableBackupsInputBackupPolicyPlan),
-    weekday: S.optional(DropletActionEnableBackupsInputBackupPolicyWeekday),
-    hour: S.optional(DropletActionEnableBackupsInputBackupPolicyHour),
-  }),
-).annotate({
-  identifier: "DropletActionEnableBackupsInputBackupPolicy",
-}) as any as S.Schema<DropletActionEnableBackupsInputBackupPolicy>;
+export const DropletActionEnableBackupsInputBackupPolicy =
+  DropletSingleCreateInputBackupPolicy as any as S.Schema<DropletActionEnableBackupsInputBackupPolicy>;
 
 export interface DropletActionEnableBackupsInput {
   /** The type of action to initiate for the Droplet. */
@@ -41276,15 +41153,8 @@ export interface DropletActionChangeBackupPolicyInputBackupPolicy {
   /** The hour of the day that the backup window will start. */
   hour?: DropletActionChangeBackupPolicyInputBackupPolicyHour | (number & {});
 }
-export const DropletActionChangeBackupPolicyInputBackupPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    plan: S.optional(DropletActionChangeBackupPolicyInputBackupPolicyPlan),
-    weekday: S.optional(DropletActionChangeBackupPolicyInputBackupPolicyWeekday),
-    hour: S.optional(DropletActionChangeBackupPolicyInputBackupPolicyHour),
-  }),
-).annotate({
-  identifier: "DropletActionChangeBackupPolicyInputBackupPolicy",
-}) as any as S.Schema<DropletActionChangeBackupPolicyInputBackupPolicy>;
+export const DropletActionChangeBackupPolicyInputBackupPolicy =
+  DropletSingleCreateInputBackupPolicy as any as S.Schema<DropletActionChangeBackupPolicyInputBackupPolicy>;
 
 export interface DropletActionChangeBackupPolicyInput {
   /** The type of action to initiate for the Droplet. */
@@ -41494,12 +41364,7 @@ export interface DropletActionSnapshot {
   /** The name to give the new snapshot of the Droplet. */
   name?: string;
 }
-export const DropletActionSnapshot = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: DropletActionSnapshotType,
-    name: S.optional(S.String),
-  }),
-).annotate({ identifier: "DropletActionSnapshot" }) as any as S.Schema<DropletActionSnapshot>;
+export const DropletActionSnapshot = DropletActionRename as any as S.Schema<DropletActionSnapshot>;
 
 export type PostDropletActionRequestBody =
   | DropletAction
@@ -41578,11 +41443,7 @@ export interface FloatingIpActionUnassign {
   /** The type of action to initiate for the floating IP. */
   type: FloatingIpActionUnassignType | (string & {});
 }
-export const FloatingIpActionUnassign = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: FloatingIpActionUnassignType,
-  }),
-).annotate({ identifier: "FloatingIpActionUnassign" }) as any as S.Schema<FloatingIpActionUnassign>;
+export const FloatingIpActionUnassign = DropletAction as any as S.Schema<FloatingIpActionUnassign>;
 
 /** The type of action to initiate for the floating IP. */
 export type FloatingIpActionAssignType = "assign" | "unassign";
@@ -41644,33 +41505,14 @@ export interface PostFloatingIPsActionResponseAction {
   /** The UUID of the project to which the reserved IP currently belongs. */
   project_id?: string;
 }
-export const PostFloatingIPsActionResponseAction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    status: PostFloatingIPsActionResponseActionStatus,
-    type: S.optional(S.String),
-    started_at: S.optional(S.String),
-    completed_at: S.optional(S.NullOr(S.String)),
-    resource_id: S.optional(S.NullOr(S.Number)),
-    resource_type: S.optional(S.String),
-    region: S.optional(Region),
-    region_slug: S.optional(S.NullOr(S.String)),
-    project_id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PostFloatingIPsActionResponseAction",
-}) as any as S.Schema<PostFloatingIPsActionResponseAction>;
+export const PostFloatingIPsActionResponseAction =
+  GetFloatingIPsActionResponseAction as any as S.Schema<PostFloatingIPsActionResponseAction>;
 
 export interface PostFloatingIPsActionResponse {
   action?: PostFloatingIPsActionResponseAction;
 }
-export const PostFloatingIPsActionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.optional(PostFloatingIPsActionResponseAction),
-  }),
-).annotate({
-  identifier: "PostFloatingIPsActionResponse",
-}) as any as S.Schema<PostFloatingIPsActionResponse>;
+export const PostFloatingIPsActionResponse =
+  GetFloatingIPsActionResponse as any as S.Schema<PostFloatingIPsActionResponse>;
 
 export interface PostImageAccountTransferDeclineRequest {
   /** A unique number that can be used to identify and reference a specific image. */
@@ -41701,11 +41543,7 @@ export interface ImageActionBase {
   /** The action to be taken on the image. Can be either `convert` or `transfer`. */
   type: ImageActionBaseType | (string & {});
 }
-export const ImageActionBase = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ImageActionBaseType,
-  }),
-).annotate({ identifier: "ImageActionBase" }) as any as S.Schema<ImageActionBase>;
+export const ImageActionBase = DropletAction as any as S.Schema<ImageActionBase>;
 
 /** The action to be taken on the image. Can be either `convert` or `transfer`. */
 export type ImageActionTransferType = "convert" | "transfer";
@@ -41746,11 +41584,7 @@ export interface ReservedIpActionUnassign {
   /** The type of action to initiate for the reserved IP. */
   type: ReservedIpActionUnassignType | (string & {});
 }
-export const ReservedIpActionUnassign = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ReservedIpActionUnassignType,
-  }),
-).annotate({ identifier: "ReservedIpActionUnassign" }) as any as S.Schema<ReservedIpActionUnassign>;
+export const ReservedIpActionUnassign = DropletAction as any as S.Schema<ReservedIpActionUnassign>;
 
 /** The type of action to initiate for the reserved IP. */
 export type ReservedIpActionAssignType = "assign" | "unassign";
@@ -41762,12 +41596,8 @@ export interface ReservedIpActionAssign {
   /** The ID of the Droplet that the reserved IP will be assigned to. */
   droplet_id: number;
 }
-export const ReservedIpActionAssign = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ReservedIpActionAssignType,
-    droplet_id: S.Number,
-  }),
-).annotate({ identifier: "ReservedIpActionAssign" }) as any as S.Schema<ReservedIpActionAssign>;
+export const ReservedIpActionAssign =
+  FloatingIpActionAssign as any as S.Schema<ReservedIpActionAssign>;
 
 export type PostReservedIPsActionRequestBody = ReservedIpActionUnassign | ReservedIpActionAssign;
 export const PostReservedIPsActionRequestBody =
@@ -41812,33 +41642,14 @@ export interface PostReservedIPsActionResponseAction {
   /** The UUID of the project to which the reserved IP currently belongs. */
   project_id?: string;
 }
-export const PostReservedIPsActionResponseAction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    status: PostReservedIPsActionResponseActionStatus,
-    type: S.optional(S.String),
-    started_at: S.optional(S.String),
-    completed_at: S.optional(S.NullOr(S.String)),
-    resource_id: S.optional(S.NullOr(S.Number)),
-    resource_type: S.optional(S.String),
-    region: S.optional(Region),
-    region_slug: S.optional(S.NullOr(S.String)),
-    project_id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PostReservedIPsActionResponseAction",
-}) as any as S.Schema<PostReservedIPsActionResponseAction>;
+export const PostReservedIPsActionResponseAction =
+  GetFloatingIPsActionResponseAction as any as S.Schema<PostReservedIPsActionResponseAction>;
 
 export interface PostReservedIPsActionResponse {
   action?: PostReservedIPsActionResponseAction;
 }
-export const PostReservedIPsActionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.optional(PostReservedIPsActionResponseAction),
-  }),
-).annotate({
-  identifier: "PostReservedIPsActionResponse",
-}) as any as S.Schema<PostReservedIPsActionResponse>;
+export const PostReservedIPsActionResponse =
+  GetFloatingIPsActionResponse as any as S.Schema<PostReservedIPsActionResponse>;
 
 /** The type of action to initiate for the reserved IPv6. */
 export type ReservedIpv6ActionUnassignType = "assign" | "unassign";
@@ -41866,12 +41677,8 @@ export interface ReservedIpv6ActionAssign {
   /** The ID of the Droplet that the reserved IPv6 will be assigned to. */
   droplet_id: number;
 }
-export const ReservedIpv6ActionAssign = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ReservedIpv6ActionAssignType,
-    droplet_id: S.Number,
-  }),
-).annotate({ identifier: "ReservedIpv6ActionAssign" }) as any as S.Schema<ReservedIpv6ActionAssign>;
+export const ReservedIpv6ActionAssign =
+  FloatingIpActionAssign as any as S.Schema<ReservedIpv6ActionAssign>;
 
 export type PostReservedIPv6ActionRequestBody =
   | ReservedIpv6ActionUnassign
@@ -42697,21 +42504,14 @@ export interface UnassignTagResourcesRequestResourcesItem {
   /** The type of the resource. */
   resource_type?: UnassignTagResourcesRequestResourcesItemResourceType | (string & {});
 }
-export const UnassignTagResourcesRequestResourcesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resource_id: S.optional(S.String),
-    resource_type: S.optional(UnassignTagResourcesRequestResourcesItemResourceType),
-  }),
-).annotate({
-  identifier: "UnassignTagResourcesRequestResourcesItem",
-}) as any as S.Schema<UnassignTagResourcesRequestResourcesItem>;
+export const UnassignTagResourcesRequestResourcesItem =
+  AssignTagResourcesRequestResourcesItem as any as S.Schema<UnassignTagResourcesRequestResourcesItem>;
 
 /** An array of objects containing resource_id and resource_type attributes. This response will only include resources that you are authorized to see. For example, to see Droplets, include the `droplet:read` scope. */
 export type UnassignTagResourcesRequestResourcesList =
   Array<UnassignTagResourcesRequestResourcesItem>;
-export const UnassignTagResourcesRequestResourcesList = /*@__PURE__*/ S.Array(
-  UnassignTagResourcesRequestResourcesItem,
-) as any as S.Schema<UnassignTagResourcesRequestResourcesList>;
+export const UnassignTagResourcesRequestResourcesList =
+  AssignTagResourcesRequestResourcesList as any as S.Schema<UnassignTagResourcesRequestResourcesList>;
 
 export interface UnassignTagResourcesRequest {
   /** The name of the tag. Tags may contain letters, numbers, colons, dashes, and underscores. There is a limit of 255 characters per tag. */
@@ -43052,13 +42852,8 @@ export interface UpdateDatabaseKafkaSchemaConfigResponse {
   /** The compatibility level of the schema registry. */
   compatibility_level: UpdateDatabaseKafkaSchemaConfigResponseCompatibilityLevel;
 }
-export const UpdateDatabaseKafkaSchemaConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    compatibility_level: UpdateDatabaseKafkaSchemaConfigResponseCompatibilityLevel,
-  }),
-).annotate({
-  identifier: "UpdateDatabaseKafkaSchemaConfigResponse",
-}) as any as S.Schema<UpdateDatabaseKafkaSchemaConfigResponse>;
+export const UpdateDatabaseKafkaSchemaConfigResponse =
+  GetDatabaseKafkaSchemaConfigResponse as any as S.Schema<UpdateDatabaseKafkaSchemaConfigResponse>;
 
 /** The compatibility level of the schema registry. */
 export type UpdateDatabaseKafkaSchemaSubjectConfigRequestCompatibilityLevel =
@@ -43114,14 +42909,8 @@ export interface UpdateDatabaseKafkaSchemaSubjectConfigResponse {
   /** The compatibility level of the schema registry. */
   compatibility_level: UpdateDatabaseKafkaSchemaSubjectConfigResponseCompatibilityLevel;
 }
-export const UpdateDatabaseKafkaSchemaSubjectConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subject_name: S.String,
-    compatibility_level: UpdateDatabaseKafkaSchemaSubjectConfigResponseCompatibilityLevel,
-  }),
-).annotate({
-  identifier: "UpdateDatabaseKafkaSchemaSubjectConfigResponse",
-}) as any as S.Schema<UpdateDatabaseKafkaSchemaSubjectConfigResponse>;
+export const UpdateDatabaseKafkaSchemaSubjectConfigResponse =
+  GetDatabaseKafkaSchemaSubjectConfigResponse as any as S.Schema<UpdateDatabaseKafkaSchemaSubjectConfigResponse>;
 
 export interface UpdateDatabaseKafkaTopicRequest {
   /** A unique identifier for a database cluster. */
@@ -43349,20 +43138,13 @@ export interface UserSettingsUpdateOpensearchAclItem {
   /** Permission set applied to the ACL. 'read' allows user to read from the index. 'write' allows for user to write to the index. 'readwrite' allows for both 'read' and 'write' permission. 'deny'(default) restricts user from performing any operation over an index. 'admin' allows for 'readwrite' as well as any operations to administer the index. */
   permission?: UserSettingsUpdateOpensearchAclItemPermission | (string & {});
 }
-export const UserSettingsUpdateOpensearchAclItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    index: S.optional(S.String),
-    permission: S.optional(UserSettingsUpdateOpensearchAclItemPermission),
-  }),
-).annotate({
-  identifier: "UserSettingsUpdateOpensearchAclItem",
-}) as any as S.Schema<UserSettingsUpdateOpensearchAclItem>;
+export const UserSettingsUpdateOpensearchAclItem =
+  UserSettingsOpensearchAclItem as any as S.Schema<UserSettingsUpdateOpensearchAclItem>;
 
 /** ACLs (Access Control Lists) specifying permissions on index within a OpenSearch cluster. */
 export type UserSettingsUpdateOpensearchAclList = Array<UserSettingsUpdateOpensearchAclItem>;
-export const UserSettingsUpdateOpensearchAclList = /*@__PURE__*/ S.Array(
-  UserSettingsUpdateOpensearchAclItem,
-) as any as S.Schema<UserSettingsUpdateOpensearchAclList>;
+export const UserSettingsUpdateOpensearchAclList =
+  UserSettingsOpensearchAclList as any as S.Schema<UserSettingsUpdateOpensearchAclList>;
 
 /** Permission set applied to the ACL. 'consume' allows for messages to be consumed from the topic. 'produce' allows for messages to be published to the topic. 'produceconsume' allows for both 'consume' and 'produce' permission. 'admin' allows for 'produceconsume' as well as any operations to administer the topic (delete, update). */
 export type UserSettingsUpdateAclItemPermission =
@@ -45337,9 +45119,8 @@ export const UpdateUptimeCheckRequestRegionsItem = S.String;
 export type UpdateUptimeCheckRequestRegionsList = Array<
   UpdateUptimeCheckRequestRegionsItem | (string & {})
 >;
-export const UpdateUptimeCheckRequestRegionsList = /*@__PURE__*/ S.Array(
-  UpdateUptimeCheckRequestRegionsItem,
-) as any as S.Schema<UpdateUptimeCheckRequestRegionsList>;
+export const UpdateUptimeCheckRequestRegionsList =
+  ApiModelUsecasesList as any as S.Schema<UpdateUptimeCheckRequestRegionsList>;
 
 export interface UpdateUptimeCheckRequest {
   /** A unique identifier for a check. */

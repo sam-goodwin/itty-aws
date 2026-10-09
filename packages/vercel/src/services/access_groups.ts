@@ -583,9 +583,8 @@ export const ReadAccessGroupResponseEntitlementsItem = S.String;
 
 export type ReadAccessGroupResponseEntitlementsList =
   Array<ReadAccessGroupResponseEntitlementsItem>;
-export const ReadAccessGroupResponseEntitlementsList = /*@__PURE__*/ S.Array(
-  ReadAccessGroupResponseEntitlementsItem,
-) as any as S.Schema<ReadAccessGroupResponseEntitlementsList>;
+export const ReadAccessGroupResponseEntitlementsList =
+  CreateAccessGroupResponseEntitlementsList as any as S.Schema<ReadAccessGroupResponseEntitlementsList>;
 
 export type ReadAccessGroupResponseTeamPermissionsItem =
   | "AiGatewayBudgetManager"
@@ -611,9 +610,8 @@ export const ReadAccessGroupResponseTeamPermissionsItem = S.String;
 
 export type ReadAccessGroupResponseTeamPermissionsList =
   Array<ReadAccessGroupResponseTeamPermissionsItem>;
-export const ReadAccessGroupResponseTeamPermissionsList = /*@__PURE__*/ S.Array(
-  ReadAccessGroupResponseTeamPermissionsItem,
-) as any as S.Schema<ReadAccessGroupResponseTeamPermissionsList>;
+export const ReadAccessGroupResponseTeamPermissionsList =
+  CreateAccessGroupResponseEntitlementsList as any as S.Schema<ReadAccessGroupResponseTeamPermissionsList>;
 
 /** Roles that the team has in the access group. */
 export type ReadAccessGroupResponseTeamRolesList = Array<string>;
@@ -697,18 +695,8 @@ export interface ReadAccessGroupProjectResponse {
   teamId: string;
   updatedAt: string;
 }
-export const ReadAccessGroupProjectResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accessGroupId: S.String,
-    createdAt: S.String,
-    projectId: S.String,
-    role: ReadAccessGroupProjectResponseRole,
-    teamId: S.String,
-    updatedAt: S.String,
-  }),
-).annotate({
-  identifier: "ReadAccessGroupProjectResponse",
-}) as any as S.Schema<ReadAccessGroupProjectResponse>;
+export const ReadAccessGroupProjectResponse =
+  CreateAccessGroupProjectResponse as any as S.Schema<ReadAccessGroupProjectResponse>;
 
 /** The project role that will be added to this Access Group. "null" will remove this project level role. */
 export type UpdateAccessGroupRequestProjectsItemRole =
@@ -723,19 +711,12 @@ export interface UpdateAccessGroupRequestProjectsItem {
   /** The project role that will be added to this Access Group. "null" will remove this project level role. */
   role: UpdateAccessGroupRequestProjectsItemRole | (string & {}) | null;
 }
-export const UpdateAccessGroupRequestProjectsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    projectId: S.String,
-    role: S.NullOr(UpdateAccessGroupRequestProjectsItemRole),
-  }),
-).annotate({
-  identifier: "UpdateAccessGroupRequestProjectsItem",
-}) as any as S.Schema<UpdateAccessGroupRequestProjectsItem>;
+export const UpdateAccessGroupRequestProjectsItem =
+  CreateAccessGroupRequestProjectsItem as any as S.Schema<UpdateAccessGroupRequestProjectsItem>;
 
 export type UpdateAccessGroupRequestProjectsList = Array<UpdateAccessGroupRequestProjectsItem>;
-export const UpdateAccessGroupRequestProjectsList = /*@__PURE__*/ S.Array(
-  UpdateAccessGroupRequestProjectsItem,
-) as any as S.Schema<UpdateAccessGroupRequestProjectsList>;
+export const UpdateAccessGroupRequestProjectsList =
+  CreateAccessGroupRequestProjectsList as any as S.Schema<UpdateAccessGroupRequestProjectsList>;
 
 /** List of members to add to the access group. */
 export type UpdateAccessGroupRequestMembersToAddList = Array<string>;
@@ -778,9 +759,8 @@ export const UpdateAccessGroupResponseEntitlementsItem = S.String;
 
 export type UpdateAccessGroupResponseEntitlementsList =
   Array<UpdateAccessGroupResponseEntitlementsItem>;
-export const UpdateAccessGroupResponseEntitlementsList = /*@__PURE__*/ S.Array(
-  UpdateAccessGroupResponseEntitlementsItem,
-) as any as S.Schema<UpdateAccessGroupResponseEntitlementsList>;
+export const UpdateAccessGroupResponseEntitlementsList =
+  CreateAccessGroupResponseEntitlementsList as any as S.Schema<UpdateAccessGroupResponseEntitlementsList>;
 
 /** Permissions that the team has in the access group. */
 export type UpdateAccessGroupResponseTeamPermissionsList = Array<string>;
@@ -877,18 +857,8 @@ export interface UpdateAccessGroupProjectResponse {
   teamId: string;
   updatedAt: string;
 }
-export const UpdateAccessGroupProjectResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accessGroupId: S.String,
-    createdAt: S.String,
-    projectId: S.String,
-    role: UpdateAccessGroupProjectResponseRole,
-    teamId: S.String,
-    updatedAt: S.String,
-  }),
-).annotate({
-  identifier: "UpdateAccessGroupProjectResponse",
-}) as any as S.Schema<UpdateAccessGroupProjectResponse>;
+export const UpdateAccessGroupProjectResponse =
+  CreateAccessGroupProjectResponse as any as S.Schema<UpdateAccessGroupProjectResponse>;
 
 export type CreateAccessGroupError = BadRequest | Forbidden | NotFound | VercelOpError;
 /** Creates an access group Allows to create an access group */

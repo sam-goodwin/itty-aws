@@ -270,13 +270,7 @@ export interface CapacitySku {
   /** The capacity of the SKU. */
   capacity?: number;
 }
-export const CapacitySku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(CapacitySkuTier),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({ identifier: "CapacitySku" }) as any as S.Schema<CapacitySku>;
+export const CapacitySku = AutoScaleVCoreSku as any as S.Schema<CapacitySku>;
 
 export interface CreateCapacityRequest {
   /** The ID of the target subscription. */

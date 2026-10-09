@@ -3173,9 +3173,8 @@ export type MonitoringPointErrorsItemEnum =
 export const MonitoringPointErrorsItemEnum = S.String;
 
 export type MonitoringPointErrorsItemEnumList = Array<MonitoringPointErrorsItemEnum>;
-export const MonitoringPointErrorsItemEnumList = /*@__PURE__*/ S.Array(
-  MonitoringPointErrorsItemEnum,
-) as any as S.Schema<MonitoringPointErrorsItemEnumList>;
+export const MonitoringPointErrorsItemEnumList =
+  ViewerPermissionMissingInfoResourceTypesItemEnumList as any as S.Schema<MonitoringPointErrorsItemEnumList>;
 
 /** Message describing network interfaces. */
 export interface NetworkInterface {

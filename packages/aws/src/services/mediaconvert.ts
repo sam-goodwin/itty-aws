@@ -2398,27 +2398,8 @@ export interface DashIsoImageBasedTrickPlaySettings {
   TileHeight?: number;
   TileWidth?: number;
 }
-export const DashIsoImageBasedTrickPlaySettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    IntervalCadence: S.optional(DashIsoIntervalCadence),
-    ThumbnailHeight: S.optional(S.Number),
-    ThumbnailInterval: S.optional(S.Number),
-    ThumbnailWidth: S.optional(S.Number),
-    TileHeight: S.optional(S.Number),
-    TileWidth: S.optional(S.Number),
-  }).pipe(
-    S.encodeKeys({
-      IntervalCadence: "intervalCadence",
-      ThumbnailHeight: "thumbnailHeight",
-      ThumbnailInterval: "thumbnailInterval",
-      ThumbnailWidth: "thumbnailWidth",
-      TileHeight: "tileHeight",
-      TileWidth: "tileWidth",
-    }),
-  ),
-).annotate({
-  identifier: "DashIsoImageBasedTrickPlaySettings",
-}) as any as S.Schema<DashIsoImageBasedTrickPlaySettings>;
+export const DashIsoImageBasedTrickPlaySettings =
+  CmafImageBasedTrickPlaySettings as any as S.Schema<DashIsoImageBasedTrickPlaySettings>;
 export interface DashIsoImageBasedTrickPlayVariant {
   IntervalCadence?: DashIsoIntervalCadence;
   ThumbnailHeight?: number;
@@ -2665,27 +2646,8 @@ export interface HlsImageBasedTrickPlaySettings {
   TileHeight?: number;
   TileWidth?: number;
 }
-export const HlsImageBasedTrickPlaySettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    IntervalCadence: S.optional(HlsIntervalCadence),
-    ThumbnailHeight: S.optional(S.Number),
-    ThumbnailInterval: S.optional(S.Number),
-    ThumbnailWidth: S.optional(S.Number),
-    TileHeight: S.optional(S.Number),
-    TileWidth: S.optional(S.Number),
-  }).pipe(
-    S.encodeKeys({
-      IntervalCadence: "intervalCadence",
-      ThumbnailHeight: "thumbnailHeight",
-      ThumbnailInterval: "thumbnailInterval",
-      ThumbnailWidth: "thumbnailWidth",
-      TileHeight: "tileHeight",
-      TileWidth: "tileWidth",
-    }),
-  ),
-).annotate({
-  identifier: "HlsImageBasedTrickPlaySettings",
-}) as any as S.Schema<HlsImageBasedTrickPlaySettings>;
+export const HlsImageBasedTrickPlaySettings =
+  CmafImageBasedTrickPlaySettings as any as S.Schema<HlsImageBasedTrickPlaySettings>;
 export interface HlsImageBasedTrickPlayVariant {
   IntervalCadence?: HlsIntervalCadence;
   ThumbnailHeight?: number;
@@ -2922,7 +2884,8 @@ export type FrameMetricType =
 export const FrameMetricType = S.String;
 
 export type __listOfFrameMetricType = FrameMetricType[];
-export const __listOfFrameMetricType = /*@__PURE__*/ S.Array(FrameMetricType);
+export const __listOfFrameMetricType =
+  __listOfHlsAdMarkers as any as S.Schema<__listOfFrameMetricType>;
 export type OutputGroupType =
   | "HLS_GROUP_SETTINGS"
   | "DASH_ISO_GROUP_SETTINGS"
@@ -2995,7 +2958,8 @@ export type AudioChannelTag =
 export const AudioChannelTag = S.String;
 
 export type __listOfAudioChannelTag = AudioChannelTag[];
-export const __listOfAudioChannelTag = /*@__PURE__*/ S.Array(AudioChannelTag);
+export const __listOfAudioChannelTag =
+  __listOfHlsAdMarkers as any as S.Schema<__listOfAudioChannelTag>;
 export interface AudioChannelTaggingSettings {
   ChannelTag?: AudioChannelTag;
   ChannelTags?: AudioChannelTag[];
@@ -4245,7 +4209,8 @@ export type TeletextPageType =
 export const TeletextPageType = S.String;
 
 export type __listOfTeletextPageType = TeletextPageType[];
-export const __listOfTeletextPageType = /*@__PURE__*/ S.Array(TeletextPageType);
+export const __listOfTeletextPageType =
+  __listOfHlsAdMarkers as any as S.Schema<__listOfTeletextPageType>;
 export interface TeletextDestinationSettings {
   PageNumber?: string;
   PageTypes?: TeletextPageType[];
@@ -6661,39 +6626,7 @@ export interface Vp9Settings {
   QualityTuningLevel?: Vp9QualityTuningLevel;
   RateControlMode?: Vp9RateControlMode;
 }
-export const Vp9Settings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Bitrate: S.optional(S.Number),
-    FramerateControl: S.optional(Vp9FramerateControl),
-    FramerateConversionAlgorithm: S.optional(Vp9FramerateConversionAlgorithm),
-    FramerateDenominator: S.optional(S.Number),
-    FramerateNumerator: S.optional(S.Number),
-    GopSize: S.optional(S.Number),
-    HrdBufferSize: S.optional(S.Number),
-    MaxBitrate: S.optional(S.Number),
-    ParControl: S.optional(Vp9ParControl),
-    ParDenominator: S.optional(S.Number),
-    ParNumerator: S.optional(S.Number),
-    QualityTuningLevel: S.optional(Vp9QualityTuningLevel),
-    RateControlMode: S.optional(Vp9RateControlMode),
-  }).pipe(
-    S.encodeKeys({
-      Bitrate: "bitrate",
-      FramerateControl: "framerateControl",
-      FramerateConversionAlgorithm: "framerateConversionAlgorithm",
-      FramerateDenominator: "framerateDenominator",
-      FramerateNumerator: "framerateNumerator",
-      GopSize: "gopSize",
-      HrdBufferSize: "hrdBufferSize",
-      MaxBitrate: "maxBitrate",
-      ParControl: "parControl",
-      ParDenominator: "parDenominator",
-      ParNumerator: "parNumerator",
-      QualityTuningLevel: "qualityTuningLevel",
-      RateControlMode: "rateControlMode",
-    }),
-  ),
-).annotate({ identifier: "Vp9Settings" }) as any as S.Schema<Vp9Settings>;
+export const Vp9Settings = Vp8Settings as any as S.Schema<Vp9Settings>;
 export type XavcAdaptiveQuantization =
   | "OFF"
   | "AUTO"
@@ -6756,13 +6689,8 @@ export const Xavc4kIntraVbrProfileClass = S.String;
 export interface Xavc4kIntraVbrProfileSettings {
   XavcClass?: Xavc4kIntraVbrProfileClass;
 }
-export const Xavc4kIntraVbrProfileSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ XavcClass: S.optional(Xavc4kIntraVbrProfileClass) }).pipe(
-    S.encodeKeys({ XavcClass: "xavcClass" }),
-  ),
-).annotate({
-  identifier: "Xavc4kIntraVbrProfileSettings",
-}) as any as S.Schema<Xavc4kIntraVbrProfileSettings>;
+export const Xavc4kIntraVbrProfileSettings =
+  Xavc4kIntraCbgProfileSettings as any as S.Schema<Xavc4kIntraVbrProfileSettings>;
 export type Xavc4kProfileBitrateClass =
   | "BITRATE_CLASS_100"
   | "BITRATE_CLASS_140"
@@ -7752,7 +7680,8 @@ export type ElementalInferenceFeature = "SMART_CROP" | (string & {});
 export const ElementalInferenceFeature = S.String;
 
 export type __listOfElementalInferenceFeature = ElementalInferenceFeature[];
-export const __listOfElementalInferenceFeature = /*@__PURE__*/ S.Array(ElementalInferenceFeature);
+export const __listOfElementalInferenceFeature =
+  __listOfHlsAdMarkers as any as S.Schema<__listOfElementalInferenceFeature>;
 export type ElementalInferenceFeedManagementState =
   | "CREATED"
   | "ASSOCIATED"

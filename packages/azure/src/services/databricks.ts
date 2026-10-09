@@ -1177,13 +1177,8 @@ export const EnhancedSecurityMonitoringValue = S.String;
 export interface EnhancedSecurityMonitoringDefinition {
   value?: EnhancedSecurityMonitoringValue | (string & {});
 }
-export const EnhancedSecurityMonitoringDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(EnhancedSecurityMonitoringValue),
-  }),
-).annotate({
-  identifier: "EnhancedSecurityMonitoringDefinition",
-}) as any as S.Schema<EnhancedSecurityMonitoringDefinition>;
+export const EnhancedSecurityMonitoringDefinition =
+  AutomaticClusterUpdateDefinition as any as S.Schema<EnhancedSecurityMonitoringDefinition>;
 
 /** Status of settings related to the Enhanced Security and Compliance Add-On. */
 export interface EnhancedSecurityComplianceDefinition {

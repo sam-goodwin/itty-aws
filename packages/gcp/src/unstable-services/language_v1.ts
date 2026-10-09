@@ -366,12 +366,7 @@ export interface AnalyzeSyntaxRequest {
   /** The encoding type used by the API to calculate offsets. */
   encodingType?: AnalyzeSyntaxRequestEncodingTypeEnum | (string & {});
 }
-export const AnalyzeSyntaxRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    document: S.optional(Document),
-    encodingType: S.optional(AnalyzeSyntaxRequestEncodingTypeEnum),
-  }),
-).annotate({ identifier: "AnalyzeSyntaxRequest" }) as any as S.Schema<AnalyzeSyntaxRequest>;
+export const AnalyzeSyntaxRequest = AnalyzeEntitiesRequest as any as S.Schema<AnalyzeSyntaxRequest>;
 
 export interface AnalyzeSyntaxDocumentsRequest {
   /** Request body */

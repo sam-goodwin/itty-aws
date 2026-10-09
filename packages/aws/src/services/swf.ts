@@ -767,11 +767,8 @@ export interface FailWorkflowExecutionFailedEventAttributes {
   cause: FailWorkflowExecutionFailedCause;
   decisionTaskCompletedEventId: number;
 }
-export const FailWorkflowExecutionFailedEventAttributes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ cause: FailWorkflowExecutionFailedCause, decisionTaskCompletedEventId: S.Number }),
-).annotate({
-  identifier: "FailWorkflowExecutionFailedEventAttributes",
-}) as any as S.Schema<FailWorkflowExecutionFailedEventAttributes>;
+export const FailWorkflowExecutionFailedEventAttributes =
+  CompleteWorkflowExecutionFailedEventAttributes as any as S.Schema<FailWorkflowExecutionFailedEventAttributes>;
 export type WorkflowExecutionTimeoutType = "START_TO_CLOSE" | (string & {});
 export const WorkflowExecutionTimeoutType = S.String;
 
@@ -803,11 +800,8 @@ export interface CancelWorkflowExecutionFailedEventAttributes {
   cause: CancelWorkflowExecutionFailedCause;
   decisionTaskCompletedEventId: number;
 }
-export const CancelWorkflowExecutionFailedEventAttributes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ cause: CancelWorkflowExecutionFailedCause, decisionTaskCompletedEventId: S.Number }),
-).annotate({
-  identifier: "CancelWorkflowExecutionFailedEventAttributes",
-}) as any as S.Schema<CancelWorkflowExecutionFailedEventAttributes>;
+export const CancelWorkflowExecutionFailedEventAttributes =
+  CompleteWorkflowExecutionFailedEventAttributes as any as S.Schema<CancelWorkflowExecutionFailedEventAttributes>;
 export interface WorkflowExecutionContinuedAsNewEventAttributes {
   input?: string;
   decisionTaskCompletedEventId: number;
@@ -1487,15 +1481,8 @@ export interface CancelTimerFailedEventAttributes {
   cause: CancelTimerFailedCause;
   decisionTaskCompletedEventId: number;
 }
-export const CancelTimerFailedEventAttributes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    timerId: S.String,
-    cause: CancelTimerFailedCause,
-    decisionTaskCompletedEventId: S.Number,
-  }),
-).annotate({
-  identifier: "CancelTimerFailedEventAttributes",
-}) as any as S.Schema<CancelTimerFailedEventAttributes>;
+export const CancelTimerFailedEventAttributes =
+  StartTimerFailedEventAttributes as any as S.Schema<CancelTimerFailedEventAttributes>;
 export type StartChildWorkflowExecutionFailedCause =
   | "WORKFLOW_TYPE_DOES_NOT_EXIST"
   | "WORKFLOW_TYPE_DEPRECATED"

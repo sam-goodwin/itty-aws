@@ -1001,19 +1001,12 @@ export interface GlobalAdvisoryIdentifiersItem {
   /** The identifier value. */
   value: string;
 }
-export const GlobalAdvisoryIdentifiersItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: GlobalAdvisoryIdentifiersItemType,
-    value: S.String,
-  }),
-).annotate({
-  identifier: "GlobalAdvisoryIdentifiersItem",
-}) as any as S.Schema<GlobalAdvisoryIdentifiersItem>;
+export const GlobalAdvisoryIdentifiersItem =
+  RepositoryAdvisoryIdentifiersItem as any as S.Schema<GlobalAdvisoryIdentifiersItem>;
 
 export type GlobalAdvisoryIdentifiersList = Array<GlobalAdvisoryIdentifiersItem>;
-export const GlobalAdvisoryIdentifiersList = /*@__PURE__*/ S.Array(
-  GlobalAdvisoryIdentifiersItem,
-) as any as S.Schema<GlobalAdvisoryIdentifiersList>;
+export const GlobalAdvisoryIdentifiersList =
+  RepositoryAdvisoryIdentifiersList as any as S.Schema<GlobalAdvisoryIdentifiersList>;
 
 export type GlobalAdvisoryReferencesList = Array<string>;
 export const GlobalAdvisoryReferencesList =
